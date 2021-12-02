@@ -1,17 +1,17 @@
 ---
-slug: automate-deployment-of-web-server-infrastructure-using-ansible
+slug: use-ansible-to-automate-web-server-infrastructure
 author:
   name: Nygel Bennett
   email: nygel.bennett@gmail.com
-description: 'Learn how to deploy two web servers along with a log server and a database server using Ansible.'
-og_description: 'Learn how to deploy two web servers along with a log server and a database server using Ansible.'
+description: 'Learn how to use Ansible to deploy two web servers along with a log server and a database server.'
 keywords: ["ansible", "playbook", "bash script", "linode cli", "apache", "mariadb", "rsyslog", "lamp", "python"]
+tags: ['automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-18
+published: 2021-11-03
 modified_by:
   name: Nygel Bennett
-title: "Automate Deployment of Web Server Infrastructure Using Ansible"
-h1_title: "How to Deploy a Web Server, Log Server, and Database Server with Ansible"
+title: "Use Ansible to Automate Deployment of Web Server Infrastructure"
+h1_title: "How to Use Ansible to Deploy a Web Server, Log Server, and Database Server"
 enable_h1: true
 contributor:
   name: Nygel Bennett
@@ -22,84 +22,87 @@ external_resources:
 ---
 
 ## What is Ansible?
-Ansible is an open-source, software provisioning tool that automates the application and IT infrastructure deployment. It is lightweight and agent-less, meaning there is no client or server software to install. Ansible uses SSH and Python to accomplish these amazing automation tasks.
+
+Ansible is an open-source, software provisioning tool that automates application and IT infrastructure deployment. It is lightweight and agent-less, meaning there is no client or server software to install. Ansible uses SSH and Python to accomplish its highly useful automation tasks.
 
 In this guide you:
 - Deploy and configure five Linodes. One is the Ansible control node and the others are worker nodes.
 - Configure and run an Ansible playbook that configures the worker nodes.
-- Test and confirm your running web servers and log server.
+- Test your running web servers and log server.
 
 {{< caution >}}
-The example instructions in this guide create five, [1GB Linodes](https://www.linode.com/pricing) (also known as Nanodes). These are billable resources to your Linode account. If you do not want to keep using the Linodes created, be sure to [delete the resources](https://www.linode.com/docs/guides/billing-and-payments/#removing-services) once you have finished this how-to guide.
+The example instructions in this guide create five, [1GB Linodes](https://www.linode.com/pricing). These add billable resources to your Linode account. If you do not want to keep using the Linodes created, be sure to [delete the resources](https://www.linode.com/docs/guides/billing-and-payments/#removing-services) once you have finished this how-to guide.
 
 If you remove these resources afterward, you are only [billed for the time](https://www.linode.com/docs/guides/how-linode-billing-works/) the resources were present on your account.
 {{</ caution >}}
 
 ## Prerequisites
+
 - Intermediate understanding of the Bash shell and its utilities.
-- Install the [Linode CLI](https://www.linode.com/docs/products/tools/cli/get-started/#install-the-cli) or you can use the [Cloud Manager GUI](https://cloud.linode.com/linodes).
+- Install the [Linode CLI](https://www.linode.com/docs/products/tools/cli/get-started/#install-the-cli) or you can use the [Linode Cloud Manager](https://cloud.linode.com/linodes).
   - Using the CLI allows you to save time creating, labeling, and tagging your Linodes.
-- Create a folder to work from. For example, you can name it, **"Ansible_Infra"**.
-
-
-<!-- Include one of the following notes if appropriate. --->
+- Create a new directory to work from. For example, you can name it, **"Ansible_Infra"**.
 
 {{< note >}}
-The steps in this guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{</ note >}}
 
-## Create Five Linodes Using the Linode-CLI Utility
+## Create Five Linodes Using the Linode CLI
 
 ### Create One Ansible Control Node and Four Managed Nodes
-On your local machine, set up an environment variable that is used in the `for` loop to create five Linodes. Substitute `yourrootpassword` for a secure password as this is used as the root password for all your newly created Linodes.
+
+{{< note >}}
+This section requires that you have the [Linode CLI](/docs/products/tools/cli/get-started/#install-the-cli) installed and configured on your computer.
+{{</ note >}}
+
+On your local machine, set up an environment variable to temporarily store a password. This environment variable will be sued in later steps in a `for` loop to create five Linodes. Substitute `yourrootpassword` for a secure password as this is used as the root password for all your newly created Linodes.
 
     pass=yourrootpassword
 
-Check if this password works by running `echo $pass` and you should see your newly created password as the output.
+Check if this password works by running `echo $pass`. You should see your newly created password as the output.
 
 {{< output >}}
-$ pass=madeuppassword
-$ echo $pass
-madeuppassword
+echo $pass
+yourrootpassword
 {{</ output >}}
 
-Run the below command to create five Linodes.
+Run the command below to create five Linodes.
 
     for i in {1..5}; do linode-cli linodes create --root_pass $pass; done
 
-You should see the output similar to the following example:
+Your output should resemble the following example:
+
 {{< output >}}
-$ for i in {1..5}; do linode-cli linodes create --root_pass $pass; done
 ┌──────────┬────────────────┬─────────┬─────────────┬────────────────────┬──────────────┬────────────────┐
 │ id       │ label          │ region  │ type        │ image              │ status       │ ipv4           │
 ├──────────┼────────────────┼─────────┼─────────────┼────────────────────┼──────────────┼────────────────┤
-│ 31202535 │ linode31202535 │ us-east │ g6-nanode-1 │ linode/ubuntu20.04 │ provisioning │ 172.104.211.74 │
+│ 31202535 │ linode31202535 │ us-east │ g6-nanode-1 │ linode/ubuntu20.04 │ provisioning │ 192.0.2.0      │
 └──────────┴────────────────┴─────────┴─────────────┴────────────────────┴──────────────┴────────────────┘
 ┌──────────┬────────────────┬─────────┬─────────────┬────────────────────┬──────────────┬────────────────┐
 │ id       │ label          │ region  │ type        │ image              │ status       │ ipv4           │
 ├──────────┼────────────────┼─────────┼─────────────┼────────────────────┼──────────────┼────────────────┤
-│ 31202548 │ linode31202548 │ us-east │ g6-nanode-1 │ linode/ubuntu20.04 │ provisioning │ 172.104.211.86 │
+│ 31202548 │ linode31202548 │ us-east │ g6-nanode-1 │ linode/ubuntu20.04 │ provisioning │ 192.0.2.1      │
 └──────────┴────────────────┴─────────┴─────────────┴────────────────────┴──────────────┴────────────────┘
 ┌──────────┬────────────────┬─────────┬─────────────┬────────────────────┬──────────────┬─────────────────┐
 │ id       │ label          │ region  │ type        │ image              │ status       │ ipv4            │
 ├──────────┼────────────────┼─────────┼─────────────┼────────────────────┼──────────────┼─────────────────┤
-│ 31202559 │ linode31202559 │ us-east │ g6-nanode-1 │ linode/ubuntu20.04 │ provisioning │ 172.104.211.135 │
+│ 31202559 │ linode31202559 │ us-east │ g6-nanode-1 │ linode/ubuntu20.04 │ provisioning │ 192.0.2.2       │
 └──────────┴────────────────┴─────────┴─────────────┴────────────────────┴──────────────┴─────────────────┘
 ┌──────────┬────────────────┬─────────┬─────────────┬────────────────────┬──────────────┬─────────────────┐
 │ id       │ label          │ region  │ type        │ image              │ status       │ ipv4            │
 ├──────────┼────────────────┼─────────┼─────────────┼────────────────────┼──────────────┼─────────────────┤
-│ 31202570 │ linode31202570 │ us-east │ g6-nanode-1 │ linode/ubuntu20.04 │ provisioning │ 172.104.211.138 │
+│ 31202570 │ linode31202570 │ us-east │ g6-nanode-1 │ linode/ubuntu20.04 │ provisioning │ 192.0.2.3       │
 └──────────┴────────────────┴─────────┴─────────────┴────────────────────┴──────────────┴─────────────────┘
 ┌──────────┬────────────────┬─────────┬─────────────┬────────────────────┬──────────────┬─────────────────┐
 │ id       │ label          │ region  │ type        │ image              │ status       │ ipv4            │
 ├──────────┼────────────────┼─────────┼─────────────┼────────────────────┼──────────────┼─────────────────┤
-│ 31202576 │ linode31202576 │ us-east │ g6-nanode-1 │ linode/ubuntu20.04 │ provisioning │ 172.104.211.160 │
+│ 31202576 │ linode31202576 │ us-east │ g6-nanode-1 │ linode/ubuntu20.04 │ provisioning │ 192.0.2.4       │
 └──────────┴────────────────┴─────────┴─────────────┴────────────────────┴──────────────┴─────────────────┘
 {{</ output >}}
 
-### Grab the Linode Ids and Put Them Into a Temp File
+### Store Your Linode Ids In a Temporary File
 
-Use the following command to print the last five Linode IDs and redirect the output to the `tmp.txt` file. You can use these Linode IDs to tag and label them.
+Use the following command to print the last five Linode IDs and redirect the output to the `tmp.txt` file. You can use these Linode IDs to tag and label your Linodes.
 
 {{< note >}}
 Tagging and labeling your Linodes helps to keep your Linode Cloud Manager organized.
@@ -107,15 +110,15 @@ Tagging and labeling your Linodes helps to keep your Linode Cloud Manager organi
 
     linode-cli linodes list --text | tail -5 | awk '{print $1}' > tmp.txt
 
-### Tag the Linodes with "Ansible"
+### Tag Your Ansible Linodes
 
 Use the following line of code to tag the Linodes with "Ansible". Doing this groups the Linodes together in the Cloud Manager.
 
     for i in $(cat tmp.txt); do linode-cli linodes update --tags Ansible $i; done
 
-### Label the Five Linodes From "vm1" to "vm5"
+### Label Your Ansible Linodes
 
-Loop through the Linode IDs from the `tmp.txt` file you created earlier. Then, assign each Linode a numbered label ("vm1" through "vm5") using the following line of code.
+Loop through the Linode IDs from the `tmp.txt` file you created earlier. Then, assign each Linode a numbered label (`vm1` through `vm5`) using the following line of code.
 
     i=1; for j in $(cat tmp.txt); do linode-cli linodes update --label vm$i $j; let "i++"; done
 
@@ -123,15 +126,17 @@ If you check the Cloud Manager GUI, you can see these five Linodes grouped under
 
 ![Cloud Manager GUI](cloud-gui-01.png "Cloud Manager GUI showing 5 Linodes grouped and labeled.")
 
-## Create Setup Files to Configure the Control Node and Worker Nodes
+## Create Setup Files to Configure the Ansible Control Node and Worker Nodes
 
-Create three files named `ansibleCN_setup.sh`, `ansibleMN_setup.sh`, and `myplaybook.yml`. Using a text editor, copy and paste the below codes into each respective file. The setup files help to secure your Linode, install needed software, and create a limited user on your instance. The playbook file, `myplaybook.yml` is what Ansible uses to configure the managed nodes.
+Create three files named `ansibleCN_setup.sh`, `ansibleMN_setup.sh`, and `myplaybook.yml`. Using a text editor, copy and paste the code in the example files below into each respective file. The setup files help to secure your Linode, install needed software, and create a limited user on your instance. The playbook file, `myplaybook.yml` is what Ansible uses to configure the managed nodes.
 
-As a shortcut, you can also `wget` this three configuration [files from GitHub](https://github.com/bennettnw2/Ansible_webserver_infra_files) and save them into the local, working, folder, `Ansible_Infra` which you had created earlier.
+{{< note >}}
+As a shortcut, you can also `wget` the configuration files from [the author's GitHub repository](https://github.com/bennettnw2/Ansible_webserver_infra_files) and save them in your local, working folder, `Ansible_Infra` that you created earlier.
 
     wget https://raw.githubusercontent.com/bennettnw2/Ansible_webserver_infra_files/main/ansibleCN_setup.sh
     wget https://raw.githubusercontent.com/bennettnw2/Ansible_webserver_infra_files/main/ansibleMN_setup.sh
     wget https://raw.githubusercontent.com/bennettnw2/Ansible_webserver_infra_files/main/myplaybook.yml
+{{</ note >}}
 
 {{< file "ansibleCN_setup.sh" bash >}}
 #! /bin/bash
@@ -246,7 +251,7 @@ echo "# Dunzo. Poke around if you like.  I recommend a reboot. #"
 echo "##########################################################"
 {{</ file >}}
 
-Ansible playbooks are what makes Ansible powerful software. The syntax of the tasks is very similar to plain language and therefore, makes the playbook file human readable. For best practice, have the task names be descriptive and precise. By reviewing the names of the tasks in `myplaybook.yml`, you can see what each task is supposed to do and each task shows how it is done.
+Ansible playbooks are what makes Ansible powerful software. The syntax of the tasks is very similar to plain language and therefore, makes the playbook file human readable. As a best practice, ensure your task names are descriptive and precise. Review the names of the tasks in `myplaybook.yml`, to learn what each task is supposed to do accomplish.
 
 {{< file "myplaybook.yml" yaml >}}
 ---
@@ -382,10 +387,11 @@ Ansible playbooks are what makes Ansible powerful software. The syntax of the ta
 {{</ file >}}
 
 ## Configure Your Control Node
+
 Using `scp`, the above files are sent to the Ansible control node. You can then log into the control node and execute the control node script, `ansibleCN_setup.sh`.
 
 {{< note >}}
-Throughout all the steps in this section, replace `VM1_IPADDRESS` with the IP address obtained from either the Linode-CLI or Cloud Manager GUI.
+Throughout all the steps in this section, replace `VM1_IPADDRESS` with the [IP address](/docs/guides/find-your-linodes-ip-address/) obtained from either the Linode CLI or Cloud Manager.
 {{< /note >}}
 
 {{< caution >}}
@@ -394,9 +400,9 @@ Do not forget the colon "**:**" at the end of the command below.
 
     scp ansibleCN_setup.sh ansibleMN_setup.sh myplaybook.yml root@VM1_IPADDRESS:
 
-### Update, Secure, and Install Needed Apps on the Linode
+### Update, Secure, and Install Package Dependencies on the Linode
 
-1. SSH into "vm1" and run `ansibleCN_setup.sh`. This updates, secures, and installs only the needed apps on the Linode.
+1. SSH into `vm1` and run `ansibleCN_setup.sh`. This updates, secures, and installs only the needed dependencies on the Linode.
 
         ssh root@VM1_IPADDRESS
 
@@ -412,15 +418,13 @@ Do not forget the colon "**:**" at the end of the command below.
 The script asks you to enter a username and password for the new user being created.
 {{</note>}}
 
-### Log Out and Reboot the Linode Using Either the Linode-CLI or Cloud Manager GUI
+### Reboot and Access your Ansible Linode
 
-Use the below command to reboot the Linode either using the Linode CLI or the Cloud Manager GUI.
+Use the command below to reboot the Linode either using the Linode CLI. You can also [reboot the Linode](/docs/products/tools/cloud-manager/guides/cloud-reboot-linode/) using the Cloud Manager.
 
     linode-cli linodes reboot LINODE_ID
 
-### SSH Into “vm1”
-
-Use the below command to SSH into "vm1".
+Use the command below to SSH into `vm1`.
 
 {{< caution >}}
 Be sure to use the new user you created because the setup script disables root logins.
@@ -431,38 +435,39 @@ Be sure to use the new user you created because the setup script disables root l
 You should see the hostname, **CtlNode**, configured on the command prompt along with your username.
 
 {{< output >}}
-nygelb@CtlNode:~$
+example_user@CtlNode:~$
 {{</ output >}}
 
-## Configure Control Node with IP Addresses of Instances
+## Configure your Control Node to Connect to the Worker Nodes
 
-### Set Up `/etc/hosts` File on Control Node With IPs for Managed Nodes
+### Set Up your Control Node's Hosts File
 
-This enables you to use hostnames when referring to different instances. Run the below command from your local machine.
+This enables you to use hostnames when referring to different instances. Run the command below from your local machine.
 
     linode-cli linodes list --text | grep vm | awk '{print $7,$2,$2".ansi.com"}' | column -t
 
-You should see the output similar to the following example:
+Your output should resemble the following example:
 
 {{< output >}}
-172.104.26.209  vm1  vm1.ansi.com
-172.104.26.246  vm2  vm2.ansi.com
-172.104.26.229  vm3  vm3.ansi.com
-172.104.26.48   vm4  vm4.ansi.com
-172.104.26.108  vm5  vm5.ansi.com
+192.0.2.0  vm1  vm1.ansi.com
+192.0.2.1  vm2  vm2.ansi.com
+192.0.2.2  vm3  vm3.ansi.com
+192.0.2.3   vm4  vm4.ansi.com
+192.0.2.4  vm5  vm5.ansi.com
 {{</ output >}}
 
-Using the text editor of your choice, copy and paste this output to the end of the `/etc/hosts/` file on "vm1".
+Using the text editor of your choice, copy and paste this output to the end of the `/etc/hosts/` file on `vm1`.
 
 {{<note>}}
 Use `sudo` to edit `/etc/hosts` using Vi(m).
 {{</note>}}
 
-Use the below line of code to ensure you can ping all the hostnames.
+Use the line of code below to ensure you can ping all the hostnames.
 
     for i in {1..5}; do ping -c 2 vm$i; done
 
-## Create Ansible Configs on the Control Node.
+## Create Ansible Configs on the Control Node
+
 Using a text editor, create and copy the configuration file, `ansible.cfg`, to your home directory.
 
 {{< file "/home/YOUR_USERNAME/ansible.cfg" yaml >}}
@@ -488,13 +493,14 @@ Create and copy the below Ansible hosts configuration file to your home director
  dbservers
 {{</ file >}}
 
-Using the below command ensure all hosts are accessible.
+Using the command below to ensure all hosts are accessible.
 
     ansible all --list-hosts
 
-You would see the output similar to the following:
+Your output should resemble the following:
+
 {{< output >}}
-nygelb@CtlNode:~$ ansible all --list-hosts
+example_user@CtlNode:~$ ansible all --list-hosts
   hosts (4):
     vm5
     vm2
@@ -504,9 +510,7 @@ nygelb@CtlNode:~$ ansible all --list-hosts
 
 ## Set Up Ansible Playbook to Configure Worker Nodes
 
-Using the playbook created earlier, add two parameters; a hashed password and the IP address of the log server.
-
-### Create and Add Hashed, Plain-Text Password to Playbook
+### Create and Add Hashed, Plain-Text Password to Ansible Playbook
 
 Run the command below from your Ansible control node. The command prompts you for a password. This password is used to access the web servers.
 
@@ -514,13 +518,14 @@ Run the command below from your Ansible control node. The command prompts you fo
 
 Be sure to copy the output from the dollar sign to the period. Paste the resulting hashed password into `myplaybook.yml`, in the place holder, **{{ HASHED_PASSWORD }}**.
 
-### Add Log Server IP Address to Playbook
+### Add your Log Server IP Address to Playbook
 
-Grab the IP address of logging sever (vm5) and paste it into `configure rsyslog` section of `myplaybook.yml`. Paste the IP address into the place holder, **{{ LOG_IP_ADDRESS }}**.
+Grab the IP address of logging sever (`vm5`) and paste it into `configure rsyslog` section of `myplaybook.yml`. Paste the IP address into the place holder, **{{ LOG_IP_ADDRESS }}**.
 
 ## Configure Ansible Managed Nodes
 
-### Send Setup Script, `ansibleMN_setup.sh` to Each Managed Node.
+### Send Setup Script to Each Managed Node
+
 Create a password file to use in the next step. Use the same root password you used when creating these Linodes.
 
     echo 'yourrootpassword' > ~/.ssh/file
@@ -529,47 +534,50 @@ Send the managed node setup script to each managed node.
 
     for i in {2..5}; do sshpass -f ~/.ssh/file scp ansibleMN_setup.sh root@vm$i:/root/; done
 
-Check to make sure each managed node contains the script by sending the 'ls' command via ssh.
+Check to make sure each managed node contains the script by sending the `ls` command via ssh.
 
     for i in {2..5}; do sshpass -f ~/.ssh/file ssh root@vm$i 'ls'; done
 
-Resulting output:
+The resulting output is the following:
+
 {{< output >}}
-nygelb@CtlNode:~$ for i in {2..5}; do sshpass -f ~/.ssh/file ssh root@vm$i 'ls'; done
+example_user@CtlNode:~$ for i in {2..5}; do sshpass -f ~/.ssh/file ssh root@vm$i 'ls'; done
 ansibleMN_setup.sh
 ansibleMN_setup.sh
 ansibleMN_setup.sh
 ansibleMN_setup.sh
 {{</ output >}}
 
-### Log into Each Worker Node and Run the `ansibleMN_setup.sh` Script.
-From the local computer, open four terminal sessions, and within each session, ssh into each managed node (vm2 - vm5). Once logged in, execute the managed node setup script.
+### Log into Each Worker Node and Run the Setup Script
+
+From the local computer, open four terminal sessions, and within each session, ssh into each managed node (`vm2` - `vm5`). Once logged in, execute the managed node setup script.
 
     ./ansibleMN_setup.sh
 
-{{<note>}}
+{{< note >}}
 The script asks you to enter a username and password for the new user being created.
-{{</note>}}
+{{</ note >}}
 
-Once the setup script has been completed for each managed node, reboot all your Ansible infrastructure Linodes with the below command.
+Once the setup script has been completed for each managed node, reboot all your Ansible infrastructure Linodes with the command below.
 
     for i in $(cat tmp.txt); do linode-cli linodes reboot $i; done
 
-### Upload SSH Key from the Control Node to the Managed Nodes.
-Log back into the control node and run the below command. This sends the control node's limited user's ssh key to each managed node. This allows easy, secure ssh communication from the control node to the managed nodes.
+### Upload the SSH Key from the Control Node to the Managed Nodes
+
+Log back into the control node and run the command below. This sends the control node's limited user's ssh key to each managed node. This allows easy, secure ssh communication from the control node to the managed nodes.
 
     for i in {2..5}; do sshpass -f ~/.ssh/file ssh-copy-id $USER@vm$i; done
 
-{{<note>}}
-If the limited user's password is different from the root user's password, please change the `~/.ssh/file` contents to match the limited user's password.
-{{</note>}}
+{{< note >}}
+If the limited user's password is different from the root user's password, change the `~/.ssh/file` contents to match the limited user's password.
+{{</ note >}}
 
 Confirm all hosts can be pinged using Ansible. A successful run of this command indicates the [ssh communication is working.](https://docs.ansible.com/ansible/2.7/user_guide/intro_getting_started.html#remote-connection-information)
 
     ansible all -m ping
 
 {{< output >}}
-nygelb@CtlNode:~$ ansible all -m ping
+example_user@CtlNode:~$ ansible all -m ping
 vm4 | SUCCESS => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python3"
@@ -600,17 +608,18 @@ vm5 | SUCCESS => {
 }
 {{</ output >}}
 
-## Run the Ansible Playbook to Configure Managed Nodes.
+## Run the Ansible Playbook to Configure Managed Nodes
 
-Run the playbook with the below command:
+Run the playbook with the command below:
 
     ansible-playbook myplaybook.yml
 
-If all is successful, you should see the below output. Note that "unreachable" and "failed" both show 0 instances.
+If all is successful, you should see the output included below. Note that `unreachable` and `failed` both show `0` instances.
 
 Truncated output:
+
 {{< output >}}
-nygelb@CtlNode:~$ ansible-playbook myplaybook.yml
+example_user@CtlNode:~$ ansible-playbook myplaybook.yml
 
 PLAY [webservers] *************************************************************************************************
 
@@ -631,27 +640,27 @@ vm4                        : ok=6    changed=3    unreachable=0    failed=0    s
 vm5                        : ok=6    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 {{</ output >}}
 
+## Check the Playbook Run for Success
 
-
-## Check the Playbook Run for Success.
-Curl the IP addresses of the web servers. (vm2 and vm3)
+cURL the IP addresses of the web servers. (`vm2` and `vm3`)
 
     curl vm2_IPADDRESS
     curl vm3_IPADDRESS
 
 {{< output >}}
-nygelb@CtlNode:~$ curl 172.104.214.155
-Welcome to li1924-155 on 172.104.214.155
-nygelb@CtlNode:~$ curl 172.104.214.165
-Welcome to li1924-165 on 172.104.214.165
+example_user@CtlNode:~$ curl 192.0.2.1
+Welcome to li1924-155 on 192.0.2.1
+
+example_user@CtlNode:~$ curl 192.0.2.2
+Welcome to li1924-165 on 192.0.2.2
 {{</ output >}}
 
-Send a `logger` command to the lamp stack defined in the `hosts` file.
+Send a `logger` command to the LAMP stack defined in the `hosts` file.
 
     ansible lamp -m command -a 'logger hurray it works'
 
 {{< output >}}
-nygelb@CtlNode:~$ ansible lamp -m command -a 'logger hurray it works'
+example_user@CtlNode:~$ ansible lamp -m command -a 'logger hurray it works'
 vm4 | CHANGED | rc=0 >>
 
 vm3 | CHANGED | rc=0 >>
@@ -659,14 +668,16 @@ vm3 | CHANGED | rc=0 >>
 vm2 | CHANGED | rc=0 >>
 {{</ output >}}
 
-Search the log server for the entry just sent.
+Search the log server for the entry you just sent.
 
     ansible logservers -m command -a "grep 'hurray it works$' /var/log/syslog" -b
 
 {{< output >}}
-nygelb@CtlNode:~$ ansible logservers -m command -a "grep 'hurray it works$' /var/log/syslog" -b
+example_user@CtlNode:~$ ansible logservers -m command -a "grep 'hurray it works$' /var/log/syslog" -b
 vm5 | CHANGED | rc=0 >>
-Oct 25 21:22:00 li1924-200 nygelb: hurray it works
-Oct 25 21:22:00 li1924-165 nygelb: hurray it works
-Oct 25 21:22:00 li1924-155 nygelb: hurray it works
+Oct 25 21:22:00 li1924-200 example_user: hurray it works
+Oct 25 21:22:00 li1924-165 example_user: hurray it works
+Oct 25 21:22:00 li1924-155 example_user: hurray it works
 {{</ output >}}
+
+You have now completed the deployment of your web server, log server, and database server using Ansible.
