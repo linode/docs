@@ -27,7 +27,7 @@ relations:
 ![Installing Multicraft on Ubuntu](Installing_Multicraft_on_Ubuntu_smg.jpg)
 
 
-[Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers, with free and paid versions available. This guide will help you install Multicraft on a Linode running Ubuntu 20.04 LTS.
+[Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers, with free and paid versions available. This guide provides information to install Multicraft on a Linode running Ubuntu 20.04 LTS.
 
 {{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -97,7 +97,7 @@ Multicraft for Linux depends on several software packages in order to run.
 
     After the script finishes, you can begin configuring the Multicraft install.
 
-1. Make a copy the file configuation file and access to the `www-data` user.
+1. Make a copy the file configuration file and access to the `www-data` user.
         cp /var/www/html/multicraft/protected/config/config.php.dist /var/www/html/multicraft/protected/config/config.php then
         chown www-data:www-data /var/www/html/multicraft/protected/config/config.php
 
@@ -170,7 +170,7 @@ Version 1.17 (minecraft_server.1.17.jar) is downloaded.
 
 1.  In your local web browser, navigate to `http://192.0.2.0/multicraft/`, replacing `192.0.2.0` with your Linode's IP address or domain name. Click `Servers`.
 
-1.  At this time you must accept the Multicraft EULA. A pop-up window will appear. By clicking Close you are indicating your agreement to the EULA here: `http://www.multicraft.org/eula.txt`. Click Close.
+1.  At this time you must accept the Multicraft EULA. A pop-up window appears. By clicking Close you are indicating your agreement to the EULA here: `http://www.multicraft.org/eula.txt`. Click Close.
 
        [![Multicraft EULA.](multicraft-eula-popup.png)](multicraft-eula-popup.png)
 
