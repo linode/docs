@@ -5,7 +5,7 @@ author:
 description: 'This introduction to Python in ML and AI defines each one, examines their differences and discusses why Python is good for machine learning. ✓ Learn more!'
 keywords: ['ai python code','python for ai','why is python used for machine learning']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-01
+published: 2021-12-03
 modified_by:
   name: Linode
 title: "Python Programming, Machine Learning, and AI"
@@ -38,17 +38,13 @@ There are more ML applications. The one thing that’s striking about most of th
 
 The easiest way to discover why Python is good for ML is to test it. Even if you can’t follow along in this section, you can see that using Python for ML is not difficult to implement by reading through the steps.
 
-1. [Install a copy of Python if necessary](https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python).
+1. [Install a copy of Python if necessary](https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python). Check the installation by typing `python --version` and press **Enter**. The output shows the Python version number.
 
-    Check the installation by typing `python --version` and press **Enter**. The output shows the Python version number.
-
-1. [Install a copy of scikit-learn if necessary](https://scikit-learn.org/stable/install.html).
-
-    Check the installation by typing `pip show scikit-learn` and press **Enter**. The output shows the scikit-learn version. The [scikit-learn package](https://scikit-learn.org/stable/) is one of the essentials for machine learning because it provides data analysis capability.
+1. [Install a copy of scikit-learn](https://scikit-learn.org/stable/install.html), if necessary. Check the installation by typing `pip show scikit-learn` and press **Enter**. The output shows the scikit-learn version. The [scikit-learn package](https://scikit-learn.org/stable/) is one of the essentials for machine learning because it provides data analysis capability.
 
 1. Open the Python interpreter by typing python and press **Enter** in a terminal window. The Python prompt appears.
 
-1. Type `from sklearn.datasets import load_iris` and press **Enter**. This English-like syntax imports a specific function, `load_iris()`, from the sklearn.dataset's namespace. Python doesn't make it hard to find datasets for testing. The [scikit-learn package](https://scikit-learn.org/stable/datasets/toy_dataset.html) provides several and if these aren’t enough, it’s possible to find [repositories for just about every other need](https://towardsdatascience.com/data-repositories-for-almost-every-type-of-data-science-project-7aa2f98128b).
+1. Type `from sklearn.datasets import load_iris` and press **Enter**. This English-like syntax imports a specific function, `load_iris()`, from the `sklearn.dataset` namespace. Python doesn't make it hard to find datasets for testing. The [scikit-learn package](https://scikit-learn.org/stable/datasets/toy_dataset.html) provides several datasets and if these aren’t enough, it’s possible to find [repositories for just about every other need](https://towardsdatascience.com/data-repositories-for-almost-every-type-of-data-science-project-7aa2f98128b).
 
 1. Type `data = load_iris()` and press **Enter**. The variable data now contains the iris dataset. No other language makes it nearly as straightforward to load data for testing and experimentation purposes. Using known datasets for testing and experimentation corrects errors in your code.
 
