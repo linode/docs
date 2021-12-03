@@ -1,12 +1,12 @@
 ---
-slug: golang-testing-unit-testing-go-applications
+slug: golang-unit-testing
 author:
   name: Martin Heller
 description: 'This guide provides an introduction to unit testing in the Go programming language. It also provides an example unit test from the Go testing package documentation.'
 keywords: ['golang testing']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
+published: 2021-12-03
 modified_by:
   name: Linode
 title: "Golang Testing: Unit Testing Go Applications"
@@ -46,7 +46,7 @@ All test output and summary lines are printed to Go's standard output. Go's stan
 
 ## Go Test Modes
 
-`go test` runs in two different modes. The first, called *local directory mode*, occurs when `go test` is invoked with no package arguments. In this mode, `go test` compiles the package sources and tests found in the current directory and then, runs the resulting test binary. [Caching](/docs/guides/golang-testing-unit-testing-your-go-applications/#go-test-caching) is also disabled in this mode. After the package test finishes, `go test` prints a summary line showing the test status (`ok` or `FAIL`), package name, and elapsed time.
+`go test` runs in two different modes. The first, called *local directory mode*, occurs when `go test` is invoked with no package arguments. In this mode, `go test` compiles the package sources and tests found in the current directory and then, runs the resulting test binary. [Caching](/docs/guides/golang-unit-testing/#go-test-caching) is also disabled in this mode. After the package test finishes, `go test` prints a summary line showing the test status (`ok` or `FAIL`), package name, and elapsed time.
 
 The second mode, called *package list mode*, occurs when `go test` is invoked with explicit package arguments. For example, the following commands trigger package list mode: `go test math`, `go test ./...`, and `go test .`. In this mode, `go test` compiles and tests each of the packages listed on the command line. When a package test passes, `go test` prints only the final `ok` summary line. When a package test fails, `go test` prints the full test output. When invoked with the `-bench` or `-v` flag, `go test` prints the full output even for package tests that pass. This is done in order to display the requested benchmark results or verbose logging. When all listed package tests finish, and their output is printed, `go test` prints a final `FAIL` status if any package test has failed.
 
