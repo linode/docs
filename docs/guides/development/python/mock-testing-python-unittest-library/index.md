@@ -5,7 +5,7 @@ author:
 description: 'The Python unittest mock object library helps you perform testing on your Python applications. This guide shows you how to create a mock object and use the patch decorator to test your code.'
 keywords: ['python unittest','unittest mock','python unittest assert','mock object', 'python mock patch']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
+published: 2021-12-03
 modified_by:
   name: Linode
 title: "Mock Testing Using the Python Unittest Library"
