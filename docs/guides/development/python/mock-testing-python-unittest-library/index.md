@@ -42,7 +42,7 @@ In mock testing, the unittest relies on a mock object. This mock object is desig
 
 - There is a need for microservice support that doesn't currently exist.
 
-- The application will eventually interact with third-party services, but access is currently unavailable.
+- The application eventually interacts with third-party services, but access is currently unavailable.
 
 - Resources needed by the unit or application are currently unavailable.
 
@@ -255,7 +255,7 @@ False
         [1, 2, 3, 4]
         []
 
-    MagicMock also supports the attirbutes in the list below. However, MagicMock does not configure these attributes with default values.
+    MagicMock also supports the attributes in the list below. However, MagicMock does not configure these attributes with default values.
 
 - `__delete__`
 - `__dir__`
