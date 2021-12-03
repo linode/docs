@@ -7,7 +7,7 @@ description: 'Learn how to use Ansible to deploy two web servers along with a lo
 keywords: ["ansible", "playbook", "bash script", "linode cli", "apache", "mariadb", "rsyslog", "lamp", "python"]
 tags: ['automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
+published: 2021-12-03
 modified_by:
   name: Nygel Bennett
 title: "Use Ansible to Automate Deployment of Web Server Infrastructure"
