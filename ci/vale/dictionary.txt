@@ -42,6 +42,9 @@ anonymizing
 ansi
 ansible
 antispam
+anycast
+anycasted
+anycasting
 ap
 apache2
 api
@@ -633,9 +636,12 @@ gmod
 gnulinux
 gnutls
 gobuster
+gocheck
 gogs
 golang
 goldmark
+gomega
+gopwt
 goroutine
 goroutines
 goto
@@ -1477,6 +1483,7 @@ rebased
 rebases
 rebasing
 rebootuser
+recompiles
 reconnections
 recordset
 recursing
@@ -1666,6 +1673,7 @@ sievers
 signup
 sintra
 sitename
+sklearn
 slackpkg
 slackware
 slavedb
@@ -1804,6 +1812,7 @@ tensorflow
 terrahelp
 terraria
 testdb
+testdeep
 testfile
 testkeys
 testparam
@@ -1829,6 +1838,7 @@ timey
 tinc
 tincd
 tinydb
+tiobe
 titlebar
 tl
 tld
