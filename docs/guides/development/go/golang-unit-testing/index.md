@@ -1,32 +1,31 @@
 ---
-slug: golang-testing-unit-testing-your-go-applications
+slug: golang-testing-unit-testing-go-applications
 author:
   name: Martin Heller
-description: 'This guide provides an introduction to the unit testing in the Go programming language. It also provides an example unit test from the Go testing package documentation.'
-og_description: 'This guide provides an introduction to the unit testing in the Go programming language. It also provides an example unit test from the Go testing package documentation.'
+description: 'This guide provides an introduction to unit testing in the Go programming language. It also provides an example unit test from the Go testing package documentation.'
 keywords: ['golang testing']
-tags: ['golang']
+tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-02
+published: 2021-11-03
 modified_by:
   name: Linode
-title: "Golang Testing: Unit Testing Your Go Applications"
-h1_title: "An Introduction to Unit Testing Your Go Applications"
+title: "Golang Testing: Unit Testing Go Applications"
+h1_title: "An Introduction to Golang Unit Testing"
 enable_h1: true
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller
 ---
 
-Unit testing verifies the functionality of a specific section of code in isolation. In the Go language, `go test` is the built-in command that runs unit tests, example functions, and benchmarks; does code profiling, and performs code coverage analysis. This guide focuses on unit testing in Go.
+Unit testing verifies the functionality of a specific section of code in isolation. In the Go language, `go test` is the built-in command that runs unit tests, example functions, and benchmarks; does code profiling, and performs code coverage analysis. This guide provides an introduction to unit testing in Go.
 
 ## Go Test Built-in Commands
 
-The `go test` command automates testing the packages named by import paths. The syntax used to run Go tests is as follows:
+The `go test` command automates testing packages named by import paths. The syntax used to run Go tests is as follows:
 
     go test [build/test flags] [packages] [build/test flags & test binary flags]
 
-Running your tests prints a summary of the test results similar to the following:
+Running your tests prints a summary of the test results as shown below:
 
 {{< output >}}
 ok   archive/tar   0.011s
@@ -37,33 +36,33 @@ ok   compress/gzip 0.033s
 
 A detailed output is provided for any check that fails.
 
-`go test` recompiles each package along with any files with names matching the file pattern `*_test.go`. These additional files can contain test functions, benchmark functions, and example functions. Each listed package causes the execution of a separate test binary. Files whose names begin with `_` (including `_test.go`) or `.` are ignored.
+`go test` recompiles each package and any files with names matching the file pattern `*_test.go`. These additional files can contain test functions, benchmark functions, and example functions. Each listed package causes the execution of a separate test binary. Files whose names begin with and underscore (`_`) (including `_test.go`) or a dot (`.`) are ignored.
 
-Test files that declare a package with the suffix `_test` are compiled as a separate package. They are then linked and run with the main test binary. The go tool ignores a directory named `testdata`, making it available to hold ancillary data needed by the tests.
+Test files that declare a package with the suffix `_test` are compiled as a separate package. They are then linked and run with the main test binary. Go's built-in test runner ignores a directory named `testdata`, making it available to store ancillary data needed by the tests.
 
-As part of building a test binary, `go test` runs `go vet` on the package and its test source files to identify significant problems. If `go vet` finds any problems, `go test` reports those and does not run the test binary. Only a high-confidence subset of the default `go vet` checks are used. The subset of checks are: `atomic`, `bool`, `buildtags`, `errorsas`, `ifaceassert`, `nilfunc`, `printf`, and `stringintconv`. You can see the documentation for these and other vet tests via `go doc cmd/vet`. To disable the running of `go vet`, use the `-vet=off` flag.
+As part of building a test binary, `go test` runs `go vet` on the package and its test source files to identify significant problems. If `go vet` finds any problems, `go test` reports those and does not run the test binary. Only a high-confidence subset of the default `go vet` checks are used. The subset of checks are: `atomic`, `bool`, `buildtags`, `errorsas`, `ifaceassert`, `nilfunc`, `printf`, and `stringintconv`. You can view the documentation for these and other vet tests by issuing the `go doc cmd/vet` command. To disable the running of `go vet`, use the `-vet=off` flag.
 
-All test output and summary lines are printed to the go command's standard output. This happens even if the test printed the test output to its own standard error. The go command's standard error is reserved for printing errors while building the tests.
+All test output and summary lines are printed to Go's standard output. Go's standard error is reserved for printing errors while building the tests.
 
 ## Go Test Modes
 
-Go test runs in two different modes. The first, called *local directory mode*, occurs when `go test` is invoked with no package arguments. In this mode, `go test` compiles the package sources and tests found in the current directory and then runs the resulting test binary. [Caching](/docs/guides/golang-testing-unit-testing-your-go-applications/#go-test-caching) is also disabled in this mode. After the package test finishes, `go test` prints a summary line showing the test status (`ok` or `FAIL`), package name, and elapsed time.
+`go test` runs in two different modes. The first, called *local directory mode*, occurs when `go test` is invoked with no package arguments. In this mode, `go test` compiles the package sources and tests found in the current directory and then, runs the resulting test binary. [Caching](/docs/guides/golang-testing-unit-testing-your-go-applications/#go-test-caching) is also disabled in this mode. After the package test finishes, `go test` prints a summary line showing the test status (`ok` or `FAIL`), package name, and elapsed time.
 
-The second mode, called *package list mode*, occurs when `go test` is invoked with explicit package arguments. For example, the following commands trigger package list mode: `go test math`, `go test ./...`, and `go test .`. In this mode, `go test` compiles and tests each of the packages listed on the command line. When a package test passes, `go test` prints only the final `ok` summary line. When a package test fails, `go test` prints the full test output. When invoked with the `-bench` or `-v` flag, `go test` prints the full output even for passing package tests. This is done in order to display the requested benchmark results or verbose logging. When all listed package tests finish, and their output is printed, `go test` prints a final `FAIL` status if any package test has failed.
+The second mode, called *package list mode*, occurs when `go test` is invoked with explicit package arguments. For example, the following commands trigger package list mode: `go test math`, `go test ./...`, and `go test .`. In this mode, `go test` compiles and tests each of the packages listed on the command line. When a package test passes, `go test` prints only the final `ok` summary line. When a package test fails, `go test` prints the full test output. When invoked with the `-bench` or `-v` flag, `go test` prints the full output even for package tests that pass. This is done in order to display the requested benchmark results or verbose logging. When all listed package tests finish, and their output is printed, `go test` prints a final `FAIL` status if any package test has failed.
 
 ## Go Test Caching
 
-In package list mode, `go test` only caches successful package test results to avoid rerunning tests that passed. When the result of a test can be recovered from the cache, `go test` displays the previous output instead of running the test binary again. When this happens, `go test` prints `(cached)` in place of the elapsed time in the summary line.
+In package list mode, `go test` only caches successful package test results to avoid rerunning tests that have already passed. When the result of a test can be recovered from the cache, `go test` displays the previous output instead of running the test binary again. When this happens, `go test` prints `(cached)` in place of the elapsed time in the summary line.
 
-In order for `go test` to use a cached test result, the run must involve the same test binary and the command-line flags must come from a restricted set of *cacheable* test flags. The restricted set of command-line flags include `-cpu`, `-list`, `-parallel`, `-run`, `-short`, and `-v`. When a run of `go test` has any test or non-test flags outside this set, the result is not cached. To disable test caching, use any test flag or argument other than the cacheable flags. The idiomatic way to disable test caching explicitly is to use `-count=1`. Tests that open files within the package's source root (usually `$GOPATH`) or that consult environment variables only match future runs in which the files and environment variables are unchanged. A cached test result is treated as executing in no time at all, so a successful package test result is cached and reused regardless of the `-timeout` setting.
+In order for `go test` to use a cached test result, the run must involve the same test binary and the command-line flags must come from a restricted set of *cacheable* test flags. The restricted set of command-line flags include `-cpu`, `-list`, `-parallel`, `-run`, `-short`, and `-v`. When a run of `go test` has any test or non-test flags outside this set, the result is not cached. To disable test caching, use any test flag or argument other than the cacheable flags. The idiomatic way to disable test caching explicitly is to use `-count=1`. Tests that rely on environment variables are only cacheable if the environment variables remain unchanged. Similarly, tests that open files  within the package's source root, are cached only if the opened files remain unchanged. A successful package test result is cached and reused regardless of the `-timeout` setting.
 
 ## Go Test Command-Line Flags
 
-In addition to the build flags, the flags handled by 'go test' are as follows:
+In addition to the build flags, some additional `go test` flags are the following:
 
 - `-args`: Pass the remainder of the command line (everything after `-args`) to the test binary, uninterpreted and unchanged. Because this flag consumes the remainder of the command line, the package list (if present) must appear before this flag.
 
-- `-c` : Compile the test binary to `pkg.test` but do not run it (where `pkg` is the last element of the package's import path). The file name can be changed with the `-o` flag.
+- `-c` : Compile the test binary to `pkg.test`, but do not run it (where `pkg` is the last element of the package's import path). The filename can be changed with the `-o` flag.
 
 - `-exec`: Run the test binary using `xprog`. The behavior is the same as in `go run`. See `go help run` for details.
 
@@ -73,13 +72,13 @@ In addition to the build flags, the flags handled by 'go test' are as follows:
 
 - `-o file`: Compile the test binary to the named file. The test still runs (unless `-c` or `-i` is specified).
 
-For more information about build flags, see `go help build`. For more information about specifying packages, see `go help packages`.
+For more information about build flags, run the `go help build` command. To access information about specifying packages, run the `go help packages` command.
 
-## Test Packages
+## Go Package Testing
 
-The standard Go language [testing package](https://golang.org/pkg/testing/) provides support for automated testing of Go code. Its intended use is in concert with the `go test` command. As with everything else in the Go language, the testing package design was driven by a minimalist philosophy. For example, test result comparisons using the testing package are implemented by writing ordinary Go code with comparison operators. This is in contrast to using assertions as you would in JUnit or NUnit.
+The standard Go language [testing package](https://golang.org/pkg/testing/) provides support for automated testing of Go code. It is intended to be used with the `go test` command. As with everything else in the Golang, the testing package design is driven by a minimalist philosophy. For example, test result comparisons using the testing package are implemented by writing ordinary Go code with comparison operators. This is in contrast to using assertions as you would in JUnit or NUnit.
 
-The following example test function is included in the testing package documentation. It’s not testable as given (it requires a matching `Abs()` function for integers), but it demonstrates the style.
+The following example test function is included in the testing package documentation. It’s not testable as given (it requires a matching `Abs()` function for integers), but it demonstrates the syntax required.
 
 {{< file "example.go" go>}}
 import "testing"
@@ -94,39 +93,37 @@ func TestAbs(t *testing.T) {
 
 Go test functions can easily be extended to perform table-driven tests to cover many cases. This is done from a single function with the help of a `for` loop. You can also take advantage of [Go interfaces](https://gobyexample.com/interfaces) and functional programming to implement mocks.
 
-In general, the *Go way* is to rely on the built-in functionality of the language as much as possible. In real life, many developers find writing tests in the basic testing package somewhat repetitive. They also find it different from tests they write in other programming languages.
-
-Knowing that it’s not surprising to find that there are several third-party Go language testing frameworks. These include:
+In general, the *Go way* is to rely on the built-in functionality of the language as much as possible. In practice, writing tests in the basic testing package can be somewhat repetitive. Writing tests in this way is also different from tests written in other programming languages. If you find this is the case for you, there are several third-party Golang testing frameworks you can use. These include:
 
 - [Testify](https://github.com/stretchr/testify): Assertion and mock helper functions.
 - [gocheck](https://labix.org/gocheck): Assertion helper functions.
 - [gopwt](https://github.com/ToQoz/gopwt): Power assertion helper functions.
 - [go-testdeep](https://github.com/maxatome/go-testdeep): Deep comparison helper functions.
-- [Ginkgo](https://github.com/onsi/ginkgo) and [Gomega](https://github.com/onsi/gomega): A heavyweight behavior-driven development (BDD) testing framework + assertion helpers.
+- [Ginkgo](https://github.com/onsi/ginkgo) and [Gomega](https://github.com/onsi/gomega): A heavyweight behavior-driven development (BDD) testing framework and assertion helpers.
 - [Goblin](https://github.com/franela/goblin): A Mocha-like BDD testing framework.
 - [GoConvey](https://github.com/smartystreets/goconvey): BDD testing framework with web UI.
 
-## Example Code and Unit Tests
+## Example Unit Test
 
 This section expands on an integer `Abs()` function and the sample unit test from the Go testing package documentation. Start by creating a directory called `abs_test` under your Go source code directory. In the examples below, the `GOPATH` is set to `~/work`, and the directory created for this project is `~/work/src/github.com/meheller/abs_test`.
 
-Open a terminal window, change (`cd`) to the directory you created and initialize the project.
+1. Open a terminal window, change (`cd`) to the directory you created and initialize the project.
 
     go mod init
 
-This creates a file named `go.mod`. The file should contain similar contents to the example below:
+    This creates a file named `go.mod`. The file includes content similar to the example below:
 
-{{< file "go.mod" go>}}
+    {{< file "go.mod" go>}}
 module github.com/meheller/abs_test
 
 go 1.16
-{{</ file >}}
+    {{</ file >}}
 
-Use the `cat` command to print the contents of your `go.mod` file, or view it in a programming editor such as Visual Studio Code or Vi(m).
+1. Use the `cat` command to print the contents of your `go.mod` file.
 
-Create a new `abs.go` file in `abs_test` directory, and insert the following contents:
+1. Create a new `abs.go` file in `abs_test` directory, and insert the following contents:
 
-{{< file "abs.go" go>}}
+    {{< file "abs.go" go>}}
 package abs
 
 func Abs(x int) (res int) {
@@ -136,11 +133,11 @@ func Abs(x int) (res int) {
     return -x
 }
 
-{{</ file >}}
+    {{</ file >}}
 
-Save the file and create another file, `abs_test.go`, in the same directory for the unit tests. Use the single test from the documentation, with a matching package tag added.
+1. Save the file and create another file, `abs_test.go`, in the same directory as the unit tests. Use the single test from the documentation, with a matching package tag added as show below:
 
-{{< file "abs_test.go" go>}}
+    {{< file "abs_test.go" go>}}
 package abs
 
 import (
@@ -153,23 +150,23 @@ func TestAbs(t *testing.T) {
         t.Errorf("Abs(-1) = %d; want 1", got)
     }
 }
-{{</ file >}}
+    {{</ file >}}
 
-Save this file. Go back to your terminal and make sure all three files are present.
+1. Go back to your terminal and make sure all three files are present.
 
-    ls
+        ls
 
-{{< output >}}
+    {{< output >}}
 abs.go abs_test.go go.mod
-{{</ output >}}
+    {{</ output >}}
 
-Now, run your tests using the following command:
+1. Now, run your tests using the following command:
 
-    go test -v
+        go test -v
 
-You should see a similar result:
+    You should see a similar result:
 
-{{< output >}}
+    {{< output >}}
 === RUN   TestAbs
 --- PASS: TestAbs (0.00s)
 PASS
