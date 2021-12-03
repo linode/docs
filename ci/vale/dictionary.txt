@@ -352,6 +352,7 @@ davfs2
 db8
 dbconfig
 dbd
+dbs
 dbdir
 dbfiles
 dbname
