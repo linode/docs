@@ -42,6 +42,9 @@ anonymizing
 ansi
 ansible
 antispam
+anycast
+anycasted
+anycasting
 ap
 apache2
 api
