@@ -37,3 +37,7 @@ Linode’s Professional Services team of experts can handle server installations
 ## Pricing
 
 Linode Managed carries no obligation or contract and costs $100 per month, per Linode on your account.
+
+{{< note >}}
+Nodes created and implemented by the [Linode Kubernetes Engine (LKE)](https://www.linode.com/products/kubernetes/) are not considered Linode Compute Instances for Managed billing purposes. LKE nodes will not be billed when enrolling in the Managed service.
+{{< /note >}}

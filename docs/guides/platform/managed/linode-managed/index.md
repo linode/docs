@@ -21,7 +21,7 @@ enable_h1: true
 These services include incident response, Longview Pro, the Linode Backup service, cPanel, additional dashboard metrics, and free site migrations. This robust, multi-homed monitoring system distributes monitoring checks to ensure that your servers remain online and available at all times. Linode Managed can monitor any service or software stack reachable over TCP or HTTP. Once you add a service to Linode Managed, Linode will monitor it for connectivity, response, and total request time. This guide shows you how to start monitoring your services with Linode Managed.
 
 {{< note >}}
-Linode Managed applies to all Linodes on an account and are billed at a rate of $100 per month for each Linode. If this service is not needed for all Linodes, a second account can be created to separate Managed Linodes from non-Managed Linodes. If needed, Linodes can be transferred by [opening up a Support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) from both accounts and requesting the transfer. You can also contact the support team to install cPanel, add a license, or transfer a license, and other services such as backup, and migration.
+Linode Managed applies to all Linodes on an account **Except** for nodes created and implemented by the [Linode Kubernetes Engine (LKE)](https://www.linode.com/products/kubernetes/). All eligible nodes are billed at a rate of $100 per month for each Linode. If this service is not needed for all Linodes, a second account can be created to separate Managed Linodes from non-Managed Linodes. If needed, Linodes can be transferred by [opening up a Support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) from both accounts and requesting the transfer. You can also contact the support team to install cPanel, add a license, or transfer a license, and other services such as backup, and migration.
 {{< /note >}}
 
 ## Benefits
@@ -43,6 +43,10 @@ All of the benefits for Linode Managed are also discussed on the [Linode Managed
 ## Pricing
 
 The cost for Linode Managed is $100 per Linode Compute Instance per month. For example, if there are 10 Linodes on your account, your total monthly cost will be $1,000.
+
+{{< note >}}
+Nodes created and implemented by the [Linode Kubernetes Engine (LKE)](https://www.linode.com/products/kubernetes/) are not considered Linode Compute Instances for Managed billing purposes. LKE nodes will not be billed when enrolling in the Managed service.
+{{< /note >}}
 
 ## Signing Up for Managed Services
 
