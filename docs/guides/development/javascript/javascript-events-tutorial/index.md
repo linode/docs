@@ -3,8 +3,8 @@ slug: javascript-events-tutorial
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Two to three sentences describing your guide."
-og_description: "Two to three sentences describing your guide when shared on social media."
+description: "Learn what JavaScript events are and see examples of how to use them."
+og_description: "Learn what JavaScript events are and see examples of how to use them."
 keywords: ['javascript events','javascript events examples','javascript event listeners']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-06
@@ -34,28 +34,26 @@ The examples in this guide use a web browser's developer tools to view the DOM a
 - On Chrome, refer to Google's [Open Chrome DevTools](https://developer.chrome.com/docs/devtools/open/#elements) documentation.
 - On Firefox, refer to Mozilla's [Open the Inspector](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Open_the_Inspector) documentation.
 
-Most of this guide's examples are based on an [example web page](example-page.html). You can follow along with the guide by visiting that page your web browser and opening developer tools on it.
+Most of this guide's examples use this [example web page](example-page.html). You can follow along with the guide by visiting that page in your web browser and opening developer tools on it.
 
 ## What Are JavaScript Events?
 
 Like in daily life, events are things that happen. More specifically though, JavaScript events are notifications provided when certain things happen in the DOM.
 
-One of the more common JavaScript events, for instance, is triggered when the user clicks an element. Another is when the user presses a key, and another when the user changes the contents of a text field. There is even a JavaScript event for when the browser window is resized.
+One of the more common JavaScript events, for instance, is triggered when the user clicks an element. Another triggers when the user presses a key, and another when the user changes the contents of a text field. There is even a JavaScript event for when the browser window is resized.
 
-JavaScript events typically have two parts. The next sections cover both of these. They also briefly cover an inline syntax that you may see around but which is no longer recommended.
+JavaScript events can be broken down into two parts. The next sections cover both of these.
 
 ### Event Listeners
 
 The key piece for JavaScript events is the **event listener**. Event listeners are triggered when particular events occur, and they initiate one or more actions in response. Essentially, they tell JavaScript to:
 
 - Look for a certain event trigger. If the listener is attached to an element, it looks for events occurring relative to that element.
-- Execute a particular function when the event occurs. This can be either a new function or a reference to an existing one.
-
-The functions executed by event listeners are themselves called event handlers, and you can see more on them in the next section.
+- Execute a particular function, called an event handler, when the event occurs. This can be either a new function or a reference to an existing one. Learn about them in the next section.
 
 Event listeners can be attached to either the `document` object or to particular elements. There are two ways of doing so:
 
-- Using the `addEventListener` method. This method has the advantage of allowing you to add multiple handlers for the same event on the same object.
+- Using the `addEventListener` method. This method has the advantage of allowing you to add multiple handlers for the same event on the same object and letting you remove specific listeners.
 - Using an event handler property. You can only assign one per event per object, but this can be helpful if you want to overwrite a previous event listener whenever you reassign it.
 
 You can learn more about how to create and attach event listeners in the [Adding and Removing Event Listeners](/docs/guides/javascript-events-tutorial/#adding-and-removing-event-listeners) section below. That section also includes a link to a full list of available event types and their designations.
@@ -67,32 +65,34 @@ To take action on event triggers, event listeners call on **event handlers**. Th
 Event handlers can be either separately defined functions or anonymous functions declared as part of the event listener declaration. In the [Creating Event Handlers](/docs/guides/javascript-events-tutorial/#creating-event-handlers) section further on, you can see both of these approaches in action.
 
 {{< note >}}
-Even handlers that are defined separately cannot have custom arguments passed to them. They only receive an `event` object, which has a specific set of values depending on the kind of event.
+Even handlers that are defined separately cannot have custom arguments passed to them. They only receive an event object, which has a specific set of values depending on the kind of event.
 
 To pass custom arguments, you need to use an anonymous function to call the predefined function. An example of this is also shown in the section below on crating event handlers.
 {{< /note >}}
 
 ### Inline Event Handlers
 
-You may have seen the event listener properties used directly in HTML, like this:
+You may have seen inline event handler properties like the one below, which creates a listener and assigns a handler directly in the HTML:
 
     <div onlick='displayMessage("Div clicked!")'>
       Click me!
     </div>
 
-These can be convenient for one-off event handling, but they are actually not recommended any longer. There are a few reasons for this:
+These can be convenient for one-off event handling, but this approach is actually not recommended any longer. There are a few reasons for this:
 
 - They make HTML markup more difficult to read
 - They spread out your event-related code, making it more difficult to maintain
 - They leave some JavaScript code in the HTML body, making things even more difficult to maintain
 
-Thus, this guide also does not use them and recommend you against them. They may work in the short term, but they can become out of hand and nearly unmanageable as projects scale.
+Thus, this guide does not use these properties and recommends against using them generally. They may work in the short term, but they can become out of hand and nearly unmanageable as projects scale.
 
 ## How to Use JavaScript Events
 
 Now you can start seeing how those two fundamental parts of events — listeners and handlers — combine to work with actual events in JavaScript. The next few sections walk you through working with events for [the example page](example-page.html) linked at the beginning of this guide.
 
-Most of these examples use a `displayMessage` function, which is already defined in the code for the example page. For reference, here is the code for that function:
+Just open up that page in your web browser, and open up your browser's JavaScript console on it. You can enter the example code given throughout the rest of this guide in that console.
+
+Several of the upcoming examples use a `displayMessage` function, which is already defined in the code for the example page. For reference, here is the code for that function:
 
 {{< file "example-page.html" js >}}
 // [...]
@@ -114,7 +114,7 @@ Most of these examples use a `displayMessage` function, which is already defined
 // [...]
 {{< /file >}}
 
-These sections only cover a few of the more commonly used event types, but they are by no stretch exhaustive. For a full list of event types, refer to Mozilla's [event reference documentation](https://developer.mozilla.org/en-US/docs/Web/Events).
+The following sections only cover a few of the more commonly used event types, but they are by no stretch exhaustive. For a full list of event types, refer to Mozilla's [event reference documentation](https://developer.mozilla.org/en-US/docs/Web/Events).
 
 ### Adding and Removing Event Listeners
 
@@ -126,7 +126,7 @@ Event handler properties let you define functions or provide function references
 
 They are called "event handler" properties because you assign them event handler functions, but they themselves play the role of adding event listeners to objects.
 
-To demonstrate, here is some JavaScript code to add an event listener to the page using the `onclick` property. This listener triggers when the `message-activate-button` element gets clicked, calling an existing function to display a message:
+To demonstrate, here is some JavaScript code to add an event listener to the example page using the `onclick` property. This listener triggers when the `message-activate-button` element gets clicked:
 
     const messageActivateButton = document.getElementById("message-activate-button");
 
@@ -136,7 +136,7 @@ To demonstrate, here is some JavaScript code to add an event listener to the pag
 
 Here, the `onclick` event property is assigned a function, its event handler, which calls another function to display a message.
 
-It is necessary to wrap the `displayMessage` call in a function here because the call needs to pass an argument. However, you can reference a function name directly if it does not have a custom argument, like this:
+It is necessary to wrap the `displayMessage` call in a function here because the call needs to pass a custom argument. However, you can reference a function name directly if it does not have a custom argument, like this:
 
     const displayActivationMessage = () => displayMessage("The message has been activated!");
 
@@ -144,13 +144,13 @@ It is necessary to wrap the `displayMessage` call in a function here because the
 
 ![Example of an event handler property being overwritten](event-handler-property-overwritten.png)
 
-This demonstrates another feature of the event handler properties, in fact. The code just above overwrites the previous assignment for the property. Only the message "The message has been activated!" now displays, instead of both messages.
+This demonstrates another feature of event handler properties, in fact. The code just above overwrites the previously assigned handler for this property. Only the message "The message has been activated!" now displays, instead of both messages.
 
 The fact that event handler properties can be overwritten can be useful in many use cases. However, it also means that they can only be used to define one event listener per event per object.
 
 #### Event Listener Methods
 
-There are actually two main methods related to event listeners: `addEventListener` and `removeEventListener`. This is because using the `addEventListener` method does not overwrite existing events. You can actually add multiple events of the same kind to one object.
+There are actually two main methods related to event listeners: `addEventListener` and `removeEventListener`. This is because using the `addEventListener` method does not overwrite existing events. You can actually add multiple events of the same kind to one object, and then remove individual events as needed.
 
 Here is an example that adds a listener to the `message-send-text` element for the `focus` event. The anonymous function assigned to handle the event clears the placeholder text whenever the user places focus in the text field:
 
@@ -162,16 +162,16 @@ Here is an example that adds a listener to the `message-send-text` element for t
 
 ![Example of the addEventListener method](event-listener-method.png)
 
-As above, you can also use a predefined function. Typically, in fact, this is the preferred approach for the `addEventListener` method because it allows you to later remove the listener. You can see how to do that below.
+As with event handler properties, you can replace the anonymous function with the name of a predefined function. In fact, this is usually the preferred approach with the `addEventListener` method because it allows you to later remove the listener. You can see how to do that below.
 
 For reference, the code below performs the same as the example above, but defines the function separately:
 
     const clearMessageSendText = () => messageSendTextElement.value = "";
     messageSendTextElement.addEventListener("focus", clearMessageSendText);
 
-As with the event handler properties, the `addEventListener` function cannot pass custom argument to its function reference. The section [Creating Event Handlers](/docs/guides/javascript-events-tutorial/#creating-event-handlers) below further explores how function references work.
+But, also like event handler properties, the `addEventListener` method cannot pass custom arguments to its function references. You can learn more about how function references work with this method in the [Creating Event Handlers](/docs/guides/javascript-events-tutorial/#creating-event-handlers) section below.
 
-There is a complimentary `removeEventListener` method to remove handlers, given the event name and the name of the handler function. You can use this with the example just above:
+The complimentary `removeEventListener` method allows you to remove handlers, given the event name and the name of the handler function. You can use this with the example just above:
 
     messageSendTextElement.remvoeEventListener("focus", clearMessageSendText);
 
@@ -179,9 +179,9 @@ This only works with the second `addEventListener` example. Because `addEventLis
 
 ### Creating Event Handlers
 
-Each of the event listeners created above also references an event handler function. In the section `addEventListener` example, the event handler is even defined as a separate function.
+Each of the event listeners created above also references an event handler function, sometimes as an anonymous function and sometimes as a predefined function.
 
-This next example aims to show more of the capabilities of the event handlers. It uses a combination of event handler properties and event listener methods, demonstrating some of the virtues of each. Follow along with the comments in the code:
+This next example aims to show more of the capabilities of event handlers. It uses a combination of event handler properties and event listener methods, demonstrating some of the virtues of each. Follow along with the comments in the code:
 
     const targetImage = document.getElementById("target-img");
 
@@ -213,9 +213,9 @@ This next example aims to show more of the capabilities of the event handlers. I
         }
     }
 
-    // Creates a event listener and handler for the keydown event, and looks
-    // for the "a" key . Adds the mousemove and click event listeners with the
-    // handler functions defined above.
+    // Creates an event listener and handler for the keydown event, and looks
+    // for the "a" key. If that key has been pressed, adds the mousemove and
+	// click event listeners with the handler functions defined above.
     document.onkeydown = (evt) => {
         if (evt.code == "KeyA") {
             targetImage.addEventListener("mousemove", messageTargetAimingLocation);
@@ -242,10 +242,12 @@ Here is another example, one that you can use to learn more and experiment with 
 
 The `keydown` event handler here is especially useful when you want to figure out exactly how certain keys are coded. Then, you can readily and accurately use them in functions, like the handler for the `keydown` event in the section above.
 
+Different kinds of events pass different objects. You can refer to Mozilla's event reference documentation, linked at the end of this guide. Follow the links there to the page for the particular event you want to use. There, if that event passes an object, you can find another link with details on the object (called an "interface").
+
 ## Conclusion
 
 You are now set up to be able to start effectively working with events in JavaScript. This guide aims to lay the fundamentals so you can create event listeners and handlers for whatever kind of event you need.
 
-Be sure to take a look at Mozilla's event reference documentation, linked below. It provides a comprehensive list of events, their property names, and the objects they pass to the handler functions.
+Be sure to take a look at Mozilla's event reference documentation linked below. It provides a comprehensive list of events, their property names, and the objects they pass to the handler functions.
 
 Wanting to learn more about working with the DOM through JavaScript? Take a look at the previous guides in this series, covering everything from the DOM basics to manipulating DOM elements to change web page displays.
