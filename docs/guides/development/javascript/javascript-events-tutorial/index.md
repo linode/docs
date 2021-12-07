@@ -215,7 +215,7 @@ This next example aims to show more of the capabilities of event handlers. It us
 
     // Creates an event listener and handler for the keydown event, and looks
     // for the "a" key. If that key has been pressed, adds the mousemove and
-	// click event listeners with the handler functions defined above.
+    // click event listeners with the handler functions defined above.
     document.onkeydown = (evt) => {
         if (evt.code == "KeyA") {
             targetImage.addEventListener("mousemove", messageTargetAimingLocation);
