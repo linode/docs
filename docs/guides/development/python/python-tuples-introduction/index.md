@@ -123,7 +123,7 @@ You can return the index number of a tuple's value using the `index()` method.
     2
 
 {{< note >}}
-Tuples are ordered collections, so they can contain duplicate values. If a tuple contains a duplicate value, th `index()` method returns the lowest-index instance of the value.
+Tuples are ordered collections, so they can contain duplicate values. If a tuple contains a duplicate value, the `index()` method returns the lowest-index instance of the value.
 {{</ note >}}
 
 ### How to Sort a Tuple
