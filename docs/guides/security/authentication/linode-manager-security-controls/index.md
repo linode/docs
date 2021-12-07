@@ -56,10 +56,9 @@ Enable two-factor authentication to start using it with your Linode account.
     ![Select 'My Settings'](security-my-profile.png "Select 'My Settings'")
 
 
-1.  Select the **Password & Authentication** tab.
-1.  If not already selected, navigate to the **Linode Credentials** tab.
+1.  Select the **Login & Authentication** tab.
 1.  In the **Two-Factor Authentication (TFA)** section, toggle the **Disabled** switch so that it reads **Enabled** to enable Two-Factor Authentication.
-1.  A new form (depicted below) appears. Write down the **Secret Key** and store it in a safe place:
+1.  A new form appears. Write down the **Secret Key** and store it in a safe place:
 
     ![The key and QR code for two-factor authentication.](security-tfa-settings.png "The key and QR code for two-factor authentication.")
 
@@ -74,7 +73,7 @@ Enable two-factor authentication to start using it with your Linode account.
 
 1.  In the **Token** field of the Two-Factor Authentication form, enter the Linode Token, and click **Save**.
 
-<!-- 12. Note the *Scratch Code* and store it in a secure place. You will use this code if the device with the two-factor code is not available. -->
+<!-- 12. Note the *Scratch Code* and store it in a secure place. You have to use this code if the device with the two-factor code is not available. -->
 
 That's it! You've successfully enabled two-factor authentication and set up token generation on your smartphone.
 
@@ -122,13 +121,12 @@ The Linode Cloud Manager allows you to generate a new secret key for your two-fa
 
     ![Select 'My Settings'](security-my-profile.png "Select My Settings")
 
-1.  Select the **Password & Authentication** tab.
-1.  If not already selected, navigate to the **Linode Credentials** tab.
+1.  Select the **Login & Authentication** tab.
 1.  In the **Two-Factor Authentication (TFA)** section, click **Reset two-factor authentication**, as shown below.
 
     ![Reset two-factor authentication.](security-reset-tfa.png "Reset two-factor authentication.")
 
-A new secret key and barcode will be generated for your account and displayed on the screen. Follow the instructions in the [Enabling Two-Factor Authentication](#enabling) section to add the new key to your smartphone.
+A new secret key and barcode is generated for your account and displayed on the screen. Follow the instructions in the [Enabling Two-Factor Authentication](#enabling) section to add the new key to your smartphone.
 
 ### Disable Two-Factor Authentication
 
@@ -139,8 +137,7 @@ You can disable two-factor authentication for your Linode account at any time. H
 
       ![Select 'My Settings'](security-my-profile.png "Select 'Settings")
 
-1.  Select the **Password & Authentication** tab.
-1.  If not already selected, navigate to the **Linode Credentials** tab.
+1.  Select the **Login & Authentication** tab.
 1.  In the **Two-Factor Authentication (TFA)** section, toggle the **Enabled** switch to disable two-factor Authentication.
 1.  A confirmation window appears asking if you want to disable two-factor authentication. Click **Disable Two-Factor Authentication**.
 
@@ -170,11 +167,11 @@ Whenever you log into the Cloud Manager from a new device or computer, you can c
 
       ![Select 'My Profile'](security-my-profile.png "Select 'My Profile")
 
-1.  Select the **Password & Authentication** tab. Then, select the **Linode Credentials** tab, and navigate to the  **Trusted Devices** section.
+1.  Select the **Login & Authentication** tab and navigate to the  **Trusted Devices** section.
 
       ![View trusted devices](trusted-devices.png "View trusted devices")
 
-    You can view all your account's trusted devices and *untrust* any device, as needed. Any device that is untrusted, will be prompted to re-enter their username and password when attempting to log into your Cloud Manager account.
+    You can view all your account's trusted devices and *revoke* any device, as needed. If any device that is untrusted, you are prompted to re-enter the username and password when attempting to log into your Cloud Manager account.
 
 <!--
 ## IP Address Whitelisting
@@ -191,7 +188,7 @@ The first step is enabling the IP address whitelist feature in the Linode Manage
 
    ![Select 'My Profile'](security-my-profile.png "Select 'My Profile')
 
-3.  Select the **Password & Authentication** tab.
+3.  Select the **Login & Authentication** tab.
 4.  In the *Account Security* section, select **Enabled** from the **Status** menu, as shown below.
 
     [![Enabling the IP address whitelist feature.](1294-2f-whitelist-1.png)](1294-2f-whitelist-1.png)
@@ -216,7 +213,7 @@ You can disable the IP address whitelist feature at any time. Here's how:
 1.  Log in to the [Linode Manager](https://cloud.linode.com).
 2.  Select the **my profile** link.
 3.  Enter your password, and then click **Authenticate**.
-4.  Select the **Password & Authentication** tab.
+4.  Select the **Login & Authentication** tab.
 5.  In the *Account Security* section, select **Disabled** from the **Status** menu, as shown below.
 
     [![Disabling the IP address whitelist feature.](1296-2f-whitelist-3.png)](1296-2f-whitelist-3.png)
