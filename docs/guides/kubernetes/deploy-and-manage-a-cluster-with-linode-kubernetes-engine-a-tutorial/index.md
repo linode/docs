@@ -248,6 +248,20 @@ Nodes can be recycled by selected the recycle option for an individual node, in 
 
 When selecting any recycle option a pop-up message will appear confirming that the node or nodes will be recycled. Select the `Recycle` option, and your Node or Node Pool will proceed to recycle its nodes. If the **Recycle all Nodes** or **Recycle Nodes** option are selected, then nodes will be upgraded on a rolling basis so that only one node will be down at a time throughout the recycling process.
 
+### Reset Cluster Kubeconfig
+
+In cases where access to a cluster using a current kubeconfig must be revoked, LKE provides the ability to **Reset** a cluster kubeconfig. This will effectively remove the current kubeconfig, and create a new one for cluster administrators to use.
+
+1. To reset the cluster kubeconfig access the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
+
+1. Select the **Reset** button under the **kubeconfig** sub-category.
+
+![Cluster Kubeconfig Reset](reset-kubeconfig.png "Cluster Node Reset.")
+
+1. A confirmation message will appear confirming the Kubeconfig reset. Select the **Reset kubeconfig** button to proceed.
+
+A new kubeconfig will now be created. Once this process is completed, the new kubeconfig can be [Accessed and Downloaded](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-and-download-your-kubeconfig) as usual.
+
 ## Delete a Cluster
 
 {{< content "kubernetes-delete-cluster-shortguide" >}}
