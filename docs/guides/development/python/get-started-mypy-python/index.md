@@ -16,7 +16,6 @@ h1_title: "Use Mypy for Python Static Type Checking"
 enable_h1: true
 contributor:
   name: Your Name
-  link: Github/Twitter Link
 ---
 
 Python is a dynamically-typed language that determines types at run time, rather than compile time. Some examples of Python types include integers, floats, strings, and boolean. Dynamically-typed languages stand in contrast to statically-typed languages, like C++, Java, Fortran that perform type checking at compile time.
