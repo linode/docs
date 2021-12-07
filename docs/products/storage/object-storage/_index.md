@@ -13,7 +13,7 @@ aliases: ['/platform/object-storage/pricing-and-limitations/', '/guides/pricing-
 
 ## Availability
 
-Object Storage is available within the follow data centers.
+Object Storage is available within the following data centers:
 
 | Data Center | Cluster ID |
 | ------------| --------------------- |
