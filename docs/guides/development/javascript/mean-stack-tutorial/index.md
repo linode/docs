@@ -1,9 +1,8 @@
 ---
-slug: mean-stack-tutorial-create-an-example-application
+slug: mean-stack-tutorial
 author:
   name: Cameron Laird
 description: 'This MEAN stack tutorial shows you how to build a basic model application that connects MongoDB with Angular on an Ubuntu 20.04 system.'
-og_description: 'This MEAN stack tutorial shows you how to build a basic model application that connects MongoDB with Angular on an Ubuntu 20.04 system.'
 keywords: ['angular mongodb', 'connect mongodb with angular', 'mean stack tutorial']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,11 +17,16 @@ contributor:
   link: https://twitter.com/Phaseit
 ---
 
-In web development, the term *full stack* refers to all the programmed parts of a web application. This includes the front end, which is seen by end-users, and the back end, where data is stored. The *MEAN* stack is one particular combination of technologies that covers the front end and the back end of an application. MEAN is widely regarded as particularly capable for large-scale, complex applications. This tutorial shows you how to build a basic model application that illustrates communication between Angular, on the front end, and MongoDB, on the back end.
+In web development, the term *full stack* refers to all the programmed parts of a web application. This includes the front end, which is seen by end-users, and the back end, where data is stored. The *MEAN* stack is one particular combination of technologies that covers the front end and the back end of an application. MEAN is widely regarded as particularly capable for large-scale, complex applications. This tutorial shows you how to build a basic application using the MEAN stack.
 
 ## What is the MEAN Stack?
 
-MEAN is an acronym for the combination of technology stacks–**M**ongoDB, **E**xpress.js, **A**ngular, and **N**ode.js. MongoDB is a persistent data store, Node.js scripts back-end actions, Express.js is a web application framework based on Node, and Angular is a web framework for the front end.
+MEAN is an acronym for the combination of technology stacks–**M**ongoDB, **E**xpress.js, **A**ngular, and **N**ode.js.
+
+- MongoDB is a document-based database solution.
+- Node.js is a back-end actions runtime environment.
+- Express.js is a web application framework based on Node.
+- Angular is a web framework for the front end.
 
 {{< note >}}
 You can learn about each technology of the MEAN stack in our guides on [Angular](/docs/guides/angular-tutorial-for-beginners/), [Node.js](/docs/guides/how-to-install-nodejs/), [MongoDB](https://www.linode.com/docs/topresults/?q=mongodb), and [Express.js](/docs/guides/express-js-tutorial/).
@@ -38,9 +42,9 @@ The steps in this section show you how to install Node.js, Express, Angular, and
 
         sudo apt install nodejs -y
 
-1. Validate your installation by creating your first Node application. Use a text editor of your choice to create a file named `my-app.js` and add the following content to it.
+1. Validate your installation by creating your a "Hello, World!" Node application. Use a text editor of your choice to create a file named `my-app.js` and add the following content to it.
 
-        console.log("Hello, world.");
+        console.log("Hello, world!");
 
 1. Run the `my-app.js` file using the following command:
 
@@ -49,14 +53,14 @@ The steps in this section show you how to install Node.js, Express, Angular, and
     Your output should display:
 
     {{< output >}}
-Hello, world
+Hello, world!
     {{</ output >}}
 
 You have now installed Node.js and confirmed that it is working on your Ubuntu system.
 
 ### Express Installation
 
-Install Express.js using the Node Package Manager.
+Install Express.js using the Node Package Manager (NPM).
 
     sudo npm init -y; sudo npm install express --save
 
@@ -90,7 +94,7 @@ my-angular-app is running!
 
 ### MongoDB Installation
 
-1. Install the dependencies necessary to add a new repository over HTTPS using the following commands:
+1. Install the dependencies necessary to add a new APT repository using the following commands:
 
         sudo apt update
         sudo apt install dirmngr gnupg apt-transport-https ca-certificates software-properties-common
@@ -112,21 +116,21 @@ my-angular-app is running!
 
 ## Use the MEAN Stack to Create an Example Application
 
-With all four of these components installed, this section shows you how to create a simple application that utilizes each component of the MEAN stack and demonstrates communication between each component. The example application illustrates how all the programmable pieces of a web application can be written in JavaScript, and how the different components handoff data between each other.
+This section shows you how to create a simple application that utilizes each component of the MEAN stack and demonstrates communication between each component. The example application illustrates how all the programmable pieces of a web application can be written in JavaScript. It also demonstrates how the different components exchange data between each other.
 
 {{< note >}}
-Some functionality you might incorporate into a production application is user authentication, reading and writing data from/to your MongoDB records, data backups, and load balancing.
+Some additional functionality you might incorporate into a production application is user authentication, reading and writing data from your MongoDB records, data backups, and load balancing.
 {{</ note >}}
 
 ### Create and Populate the MongoDB Database
 
-Applications often implement CRUD operations, that is, the ability to create, read, update, and delete records in a persistent data store. The example below defines the read operation for a rudimentary [software bill-of-materials](https://www.linuxfoundation.org/blog/generating-a-software-bill-of-materials-sbom-with-open-source-standards-and-tooling/), a hot topic in DevSecOps circles. It keeps the focus on communication between the four MEAN components.
+Applications often implement CRUD operations. CRUD operations include the ability to create, read, update, and delete records in a persistent data store. The example below defines the read operation for a rudimentary [software bill-of-materials](https://www.linuxfoundation.org/blog/generating-a-software-bill-of-materials-sbom-with-open-source-standards-and-tooling/). This example application focuses on implementing the communication between the four components of the MEAN stack.
 
 1. Launch MongoDB with the following command.
 
         mongod
 
-    If you get the following error: `NonExistentPath: Data directory /data/db not found`, then create a `data` directory to store data and set the ownership of the folder to the user that’s starting the mongod service.
+    If you receive the following error: `NonExistentPath: Data directory /data/db not found`, then create a `data` directory to store data and set the ownership of the folder to the user that’s starting the mongod service.
 
         sudo mkdir -p /data/db/
         sudo chown `id -u` /data/db
@@ -140,7 +144,7 @@ Applications often implement CRUD operations, that is, the ability to create, re
         use my-test
         db.users.insert({username: "myname", password: "mypassword"})
 
-    The `use my-test` command tells MongoDB that you want to work in a database called `my-test`. The `db.users.insert(...)` tells MongoDB to add a record to the `users` table within the current `my-test` database.
+    The `use my-test` command switches the current database to use the `my-test` database. The `db.users.insert(...)` command adds a record to the `users` table within the current `my-test` database.
 
 1. View the record you created in the previous step.
 
@@ -159,8 +163,7 @@ Applications often implement CRUD operations, that is, the ability to create, re
         db.artifact.save({scriptname: "sortable.min.js", version: "0.8.0", cdn: "cdnjs.cloudflare.com"})
         db.artifact.save({scriptname: "swagger-ui-bundle.js", version: "3.50.0", cdn: "cdn.jsdeliver.net"})
 
-    You have added three records to the `artifact` table, each one with data specified by the three attributes `cdn`, `scriptname`, and `version`.
-You should see a similar result:
+    You have added three records to the `artifact` table, each one with data specified by the three attributes `cdn`, `scriptname`, and `version`. You should see a similar result:
 
     {{< output >}}
 WriteResult({ "nInserted" : 1 })
@@ -180,15 +183,15 @@ users
 
 ### Connect to the Back End Runtime
 
-At this point, Node and Mongo are both installed and MongoDB is running successfully. We’ve created a Node project and a Mongo database with a couple of tables. Now it’s time for these two components to connect.
+At this point, Node and Mongo are both installed and MongoDB is running successfully. You've created a Node project and a Mongo database with a couple of tables. Now, it’s time for these two components to connect.
 
-1. Navigate to the `my-angular-app` directory you created in the [Angular Installation](/docs/guides/mean-stack-tutorial-create-an-example-application/#angular-installation) section.
+1. Navigate to the `my-angular-app` directory you created in the [Angular Installation](/docs/guides/mean-stack-tutorial/#angular-installation) section.
 
 1. Install the Node.js MongoDB driver:
 
         sudo npm install mongodb -g
 
-1. In your preferred text editor, create a new file named `sbom-backend1.js` and add the following contents to it:
+1. In your preferred text editor, create a new file named `sbom-backend1.js` and add the following content to it:
 
     {{< file "sbom-backend1.js" >}}
 var MongoClient = require('mongodb').MongoClient
@@ -209,7 +212,7 @@ MongoClient.connect(url, (err, client) => {
 })
         {{</ file >}}
 
-    The `sbom` name is a common initialism for *software bill of materials*.  The `sbom` table contains some of the information that commonly appears in a production software bill of materials.  The source `sbom-backend1.js` specifies a small program that retrieves the contents of a MongoDB table.
+    The `sbom` name is a common acronym for *software bill of materials*.  The `sbom` table contains some of the information that frequently appears in a production software bill of materials.  The source `sbom-backend1.js` specifies a small program that retrieves the contents of a MongoDB table.
 
 1. Use Node.js to run the `sbom-backend1.js` file.
 
@@ -227,7 +230,7 @@ Swagger-ui-bundle.js
 
 ### Launch a Data Server
 
-In this section, you activate Express.js, so that information in MongoDB can be exposed as JSON at a specific API endpoint.
+In this section, you activate Express.js. Express.js enables information in MongoDB to be exposed as JSON at a specific API endpoint.
 
 1. Create a new file named `sbom-dataserver.js` with the following content:
 
@@ -305,8 +308,8 @@ Listening on 3600.
 
     Notice the `sbom-dataserver.js` program defines three routes:
 
-    -   `/` gives a little diagnostic for a human to read;
-    - `/artifacts` lists the scriptnames of known artifacts; and
+    -   `/` provides a human-readable diagnostic of the app;
+    - `/artifacts` lists the script names of known artifacts; and
     - `/artifacts/scriptname` provides details about the `scriptname` artifact.
 
 1. In a web browser, navigate to `http://localhost:3600/artifacts`. You should see the following output:
@@ -344,7 +347,7 @@ cdn:        “cdnjs.cloudflare.com”
 ]
     {{</ output >}}
 
-    This interface to MongoDB serves a variety of front-end applications; part of the interest in SBOMs is that they help in a consolidated fashion with a number of distinct DevOps functions. The next section creates one example of a possible front-end implementation.
+    This interface to MongoDB can be applied to a variety of front-end applications. The next section creates a front-end implementation for the MongoDB powered data.
 
 ### Create your Application's Front End
 
@@ -360,7 +363,7 @@ With data in the database, and a data server to make them available, you are now
 
     All the steps in this section should be issued from the `sbom` directory.
 
-1. Create a pair of additional components and services.
+1. Create additional components and services for the app.
 
         ng generate component artifact-list
         ng generate component top
@@ -404,7 +407,7 @@ import { TopComponent } from './top/top.component'
 export class AppModule { }
         {{</ file >}}
 
-1. Similar to the previous step, open the `~/sbom/src/app/artifacts.ts` file and add the following contents:
+1. Similar to the previous step, open the `~/sbom/src/app/artifacts.ts` file and add the following content:
 
     {{< file "~/sbom/src/app/artifacts.ts" >}}
 /* MVC architecture is the foundation of Angular.  The
@@ -578,19 +581,18 @@ sortable.mis.js
 swagger-ui-bundle.js
     {{</ output >}}
 
-    Each of these names decorates a button, and the selection of any of the buttons brings up more details about that specific artifact.
+    The selection of any of the buttons brings up more details about that specific artifact.
 
-After completing the steps in this section, data is flowing back and forth between the application in your web browser, to the Angular application, between Angular, and Express.js, from Express.js to MongoDB, and back again.
+After completing the steps in this section, data is flowing back and forth between the application in your web browser. Data flows to the Angular application, between Angular, and Express.js, from Express.js to MongoDB, and back again.
 
 ## Application Context
 
-This is only a part of a truly useful application. A typical starting point for functional design, as already mentioned, is all four aspects of CRUD. The example above implements the read operation. A read is a dialogue: the frontend sends a request to the backend, which retrieves data, and then delivers it back to the frontend. A more complete application also creates, updates, and deletes records.
+This is only a part of a truly useful application. A typical starting point for a full-fledged app, as already mentioned, is all four aspects of CRUD. The example above implements the read operation. A read is a dialogue: the frontend sends a request to the backend, which retrieves data, and then delivers it back to the frontend. A more complete application also creates, updates, and deletes records.
 
 Typical considerations for building out a robust application include:
 
-- Tooling with an integrated development environment (IDE) that might include [nodemon](https://www.npmjs.com/package/nodemon).
 - A testing framework.
-- A more sophisticated architecture that likely hosts MongoDB, the data server, and Angular on three different servers.
+- Expanded infrastructure that hosts MongoDB, the data server, and Angular on three different servers.
 - Far more care with error-handling.
 - Visual design and implementation through CSS.
 - Security considerations, including:
