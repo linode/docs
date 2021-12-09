@@ -16,4 +16,4 @@
 {{- if  hugo.IsProduction  }}
   {{ $js = $js | fingerprint }}
 {{ end -}}
-<script src="{{ $js.RelPermalink }}" {{ if  hugo.IsProduction  }} integrity="{{ $js.Data.Integrity }}" {{ end }} crossorigin="anonymous"{{ if $defer }} defer{{ end }}></script>
+<script src="{{ $js.RelPermalink }}" {{ if  hugo.IsProduction  }} integrity="{{ $js.Data.Integrity }}" {{ end }}{{ if $defer }} defer{{ end}}></script>

@@ -2,7 +2,7 @@
 
 import { setDocumentMeta } from '../../helpers/index';
 import { newCreateHref } from '../../navigation/index';
-import { newDispatcher } from '../../search/index';
+import { newRequestCallbackFactoryTarget, SearchGroupIdentifier, RequestCallBackStatus } from 'js/main/search/request';
 
 var debug = 0 ? console.log.bind(console, '[list]') : function() {};
 
@@ -14,8 +14,45 @@ export function newSectionsController(searchConfig) {
 		throw 'newSectionsController: must provide searchConfig';
 	}
 
-	const dispatcher = newDispatcher();
 	const hrefFactory = newCreateHref(searchConfig);
+
+	const activateSearches = function(self) {
+		self.$store.search.updateLocationWithQuery();
+
+		let currPath = window.location.pathname;
+		let sectionConfig = self.data.sectionConfig;
+
+		let factory = {
+			status: function() {
+				return RequestCallBackStatus.Once;
+			},
+			create: (query) => {
+				let filters = `section.lvl${self.data.lvl}:'${self.key}'`;
+
+				encodeURIComponent(query.q);
+
+				let request = {
+					page: 0,
+					indexName: searchConfig.sections_merged.index_by_pubdate,
+					facets: [ 'section.*' ],
+					filters: filters,
+					facetFilters: query.toFacetFilters(),
+					params: `query=${query.q}`
+				};
+
+				return {
+					request: request,
+					callback: (result) => {
+						self.$store.search.withBlank(() => {
+							self.handleResult(result);
+						});
+					}
+				};
+			}
+		};
+
+		self.$store.search.addSearches(newRequestCallbackFactoryTarget(factory, SearchGroupIdentifier.Main));
+	};
 
 	function sortObject(obj, less) {
 		return Object.keys(obj).sort(less).reduce(function(result, key) {
@@ -36,7 +73,7 @@ export function newSectionsController(searchConfig) {
 		},
 		{
 			title: 'Sort Alphabetically',
-			field: 'title',
+			field: 'linkTitle',
 			firstText: 'Ascending',
 			secondText: 'Descending',
 			enabled: false,
@@ -97,131 +134,96 @@ export function newSectionsController(searchConfig) {
 		},
 
 		init: function() {
-			if (designMode) {
-				this.uiState.listGuidesPerSection = true;
-				this.uiState.sorting.open = true;
-			}
+			return this.$nextTick(() => {
+				if (designMode) {
+					this.uiState.listGuidesPerSection = true;
+					this.uiState.sorting.open = true;
+				}
 
-			let parts = hrefFactory.sectionsFromPath();
+				let parts = hrefFactory.sectionsFromPath();
 
-			let last = parts[parts.length - 1];
-			let indexName = parts[0];
-			this.key = parts.join(' > ');
-			let sectionConfig = searchConfig.sectionsSorted.find((s) => s.name === indexName);
-			if (!sectionConfig) {
-				throw `no search config found for section ${indexName}`;
-			}
-			this.data.lvl = parts.length - 1;
-			let filters = `section.lvl${this.data.lvl}:'${this.key}'`;
+				let last = parts[parts.length - 1];
+				let indexName = parts[0];
+				this.key = parts.join(' > ');
+				let sectionConfig = searchConfig.sectionsSorted.find((s) => s.name === indexName);
+				if (!sectionConfig) {
+					throw `no search config found for section ${indexName}`;
+				}
+				this.data.lvl = parts.length - 1;
+				this.data.sectionConfig = sectionConfig;
+				activateSearches(this);
+				this.data.meta.title = last.charAt(0).toUpperCase() + last.slice(1);
 
-			if (sectionConfig.explorer_leaf_filter) {
-				filters += ' AND ' + sectionConfig.explorer_leaf_filter;
-			}
+				var self = this;
 
-			this.request = {
-				page: 0,
-				indexName: sectionConfig.index_by_pubdate || sectionConfig.index,
-				facets: [ 'section.*' ],
-				filters: filters
-			};
-
-			this.data.sectionConfig = sectionConfig;
-			this.data.meta.title = last.charAt(0).toUpperCase() + last.slice(1);
-
-			this.dispatchQuery();
-
-			var self = this;
-
-			this.uiState.sorting.sort = function(opt) {
-				this.options.forEach((o) => {
-					o.enabled = opt === o;
-				});
-
-				if (opt.sortSections) {
-					self.data.hitsBySection = sortObject(self.data.hitsBySection, (a, b) => {
-						if (opt.down) {
-							return a < b ? 1 : -1;
-						}
-						return a < b ? -1 : 1;
+				this.uiState.sorting.sort = function(opt) {
+					this.options.forEach((o) => {
+						o.enabled = opt === o;
 					});
-					return;
-				}
 
-				self.data.result.hits.sort((a, b) => {
-					let f1 = a[opt.field];
-					let f2 = b[opt.field];
-					if (f1 === f2) {
-						return 0;
+					if (opt.sortSections) {
+						self.data.hitsBySection = sortObject(self.data.hitsBySection, (a, b) => {
+							if (opt.down) {
+								return a < b ? 1 : -1;
+							}
+							return a < b ? -1 : 1;
+						});
+						return;
 					}
-					if ((opt.moreIsLess && !opt.down) || (!opt.moreIsLess && opt.down)) {
-						return f1 < f2 ? 1 : -1;
+
+					self.data.result.hits.sort((a, b) => {
+						let f1 = a[opt.field];
+						let f2 = b[opt.field];
+						if (f1 === f2) {
+							return 0;
+						}
+						if ((opt.moreIsLess && !opt.down) || (!opt.moreIsLess && opt.down)) {
+							return f1 < f2 ? 1 : -1;
+						}
+						return f1 < f2 ? -1 : 1;
+					});
+				};
+
+				this.uiState.showSectionsTiles = function() {
+					if (!self.loaded) {
+						return false;
 					}
-					return f1 < f2 ? -1 : 1;
-				});
-			};
+					return !this.listGuidesPerSection && !this.listGuides;
+				};
+				this.uiState.showGuidesWithSortOption = function() {
+					if (!self.loaded) {
+						return false;
+					}
+					return this.listGuidesPerSection && !this.listGuides;
+				};
+				this.uiState.showGuidesPerSection = function() {
+					return this.listGuidesPerSection && (!this.sorting.open || this.sorting.options[0].enabled);
+				};
+				this.uiState.showSortedGuideList = function() {
+					if (!self.loaded) {
+						return false;
+					}
+					return this.listGuidesPerSection && (this.sorting.open && !this.sorting.options[0].enabled);
+				};
 
-			this.uiState.showSectionsTiles = function() {
-				if (!self.loaded) {
-					return false;
-				}
-				return !this.listGuidesPerSection && !this.listGuides;
-			};
-			this.uiState.showGuidesWithSortOption = function() {
-				if (!self.loaded) {
-					return false;
-				}
-				return this.listGuidesPerSection && !this.listGuides;
-			};
-			this.uiState.showGuidesPerSection = function() {
-				return this.listGuidesPerSection && (!this.sorting.open || this.sorting.options[0].enabled);
-			};
-			this.uiState.showSortedGuideList = function() {
-				if (!self.loaded) {
-					return false;
-				}
-				return this.listGuidesPerSection && (this.sorting.open && !this.sorting.options[0].enabled);
-			};
-
-			this.uiState.showGuidesTiles = function() {
-				if (!self.loaded) {
-					return false;
-				}
-				return this.listGuides;
-			};
+				this.uiState.showGuidesTiles = function() {
+					if (!self.loaded) {
+						return false;
+					}
+					return this.listGuides;
+				};
+			});
 		},
 
-		dispatchQuery: function() {
-			var currPath = window.location.pathname;
-			let opts = {
-				// This is used to apply the correct filters.
-				sectionConfig: this.data.sectionConfig,
-				requests: [ this.request ],
+		handleResult: function(result) {
+			debug('handleResult', result);
 
-				// Returns whether to cancel this subscription.
-				// We get refreshed search results on filter changes,
-				// but we don't need these when we're no longer on this page.
-				shouldCancel: function() {
-					return window.location.pathname !== currPath;
-				}
-			};
-			dispatcher.subscribe(searchName, opts, searchName);
-		},
-
-		receiveData: function(data) {
-			debug('receiveData', data);
-
-			let ns = data.namedSearches.get(searchName);
-			if (!ns) {
-				return;
-			}
-
-			this.data.result = ns.results[0];
-			this.data.sectionMetaMap = data.metaSearch;
-			let sectionMeta = this.data.sectionMetaMap.getSectionMeta(this.key);
+			this.data.result = result;
+			let sectionMeta = this.$store.search.results.blank.getSectionMeta(this.key);
 			if (sectionMeta) {
 				this.data.meta = sectionMeta;
 			} else {
-				if (!(this.data.results && this.data.results.nbHits)) {
+				if (!(this.data.result && this.data.result.nbHits)) {
 					this.status.code = 404;
 					this.status.message = 'Page Not Found';
 					return;
@@ -264,7 +266,7 @@ export function newSectionsController(searchConfig) {
 				for (let section of parts) {
 					sectionKeys.push(section);
 					let key = sectionKeys.join(' > ');
-					let sm = self.data.sectionMetaMap.getSectionMeta(key);
+					let sm = self.$store.search.results.blank.getSectionMeta(key);
 					if (sm) {
 						sections.push(sm);
 					}
@@ -287,7 +289,7 @@ export function newSectionsController(searchConfig) {
 			}
 
 			let newSection = function(key, value) {
-				let m = self.data.sectionMetaMap.getSectionMeta(key);
+				let m = self.$store.search.results.blank.getSectionMeta(key);
 				let s = { key, title: '', linkTitle: '', thumbnail: '', count: value };
 				s.href = hrefFactory.hrefSection(key);
 
@@ -310,11 +312,7 @@ export function newSectionsController(searchConfig) {
 		},
 
 		toggleShowGuides: function() {
-			let loadGuides = !this.uiState.listGuidesPerSection;
 			this.uiState.listGuidesPerSection = !this.uiState.listGuidesPerSection;
-			if (loadGuides) {
-				this.dispatchQuery();
-			}
 		}
 	};
 }

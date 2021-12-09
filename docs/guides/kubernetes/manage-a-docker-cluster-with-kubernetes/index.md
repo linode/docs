@@ -36,7 +36,7 @@ You can now create a Kubernetes cluster with one command using the Linode CLI. T
 
 ## System Requirements
 
-To complete this guide you will need three Linodes running Ubuntu 16.04 LTS, each with at least 4GB of RAM. Before beginning this guide, you should also use the Linode Manager to generate a [private IP address](/docs/guides/remote-access/#adding-private-ip-addresses) for each Linode.
+To complete this guide you will need three Linodes running Ubuntu 16.04 LTS, each with at least 4GB of RAM. Before beginning this guide, you should also use the Cloud Manager to generate a [private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each Linode.
 
 ## Before You Begin
 
@@ -96,28 +96,28 @@ spec:
 
         kubectl get deployments
 
-    ```
-    NAME           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-    nginx-server   1         1         1            1           13s
-    ```
+    {{< output >}}
+NAME           DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+nginx-server   1         1         1            1           13s
+{{</ output >}}
 
 4.  Check that your Pod is present:
 
         kubectl get pods
 
-    ```
-    NAME                           READY     STATUS    RESTARTS   AGE
-    nginx-server-b9bc6c6b5-d2gqv   1/1       Running   0          58s
-    ```
+    {{< output >}}
+NAME                           READY     STATUS    RESTARTS   AGE
+nginx-server-b9bc6c6b5-d2gqv   1/1       Running   0          58s
+{{</ output >}}
 
 5.  To see which node the deployment was created on, add the `-o wide` flag:
 
         kubectl get pods -o wide
 
-    ```
-    NAME                           READY     STATUS    RESTARTS   AGE       IP                NODE
-    nginx-server-b9bc6c6b5-d2gqv   1/1       Running   0          1m        192.168.255.197   kube-worker-02
-    ```
+    {{< output >}}
+NAME                           READY     STATUS    RESTARTS   AGE       IP                NODE
+nginx-server-b9bc6c6b5-d2gqv   1/1       Running   0          1m        192.168.255.197   kube-worker-02
+{{</ output >}}
 
 ### Scale Deployments
 
@@ -131,17 +131,17 @@ Kubernetes makes it easy to scale deployments to add or remove replicas.
 
         kubectl get pods -o wide
 
-    ```
-  NAME                           READY     STATUS    RESTARTS   AGE       IP               NODE
-  nginx-server-b9bc6c6b5-4mdf6   1/1       Running   0          41s       192.168.180.10   kube-worker-1
-  nginx-server-b9bc6c6b5-8mvrd   1/1       Running   0          3m        192.168.180.9    kube-worker-1
-  nginx-server-b9bc6c6b5-b99pt   1/1       Running   0          40s       192.168.180.12   kube-worker-1
-  nginx-server-b9bc6c6b5-fjg2c   1/1       Running   0          40s       192.168.127.12   kube-worker-2
-  nginx-server-b9bc6c6b5-kgdq5   1/1       Running   0          41s       192.168.127.11   kube-worker-2
-  nginx-server-b9bc6c6b5-mhb7s   1/1       Running   0          40s       192.168.180.11   kube-worker-1
-  nginx-server-b9bc6c6b5-rlf9w   1/1       Running   0          41s       192.168.127.10   kube-worker-2
-  nginx-server-b9bc6c6b5-scwgj   1/1       Running   0          40s       192.168.127.13   kube-worker-2
-    ```
+    {{< output >}}
+NAME                           READY     STATUS    RESTARTS   AGE       IP               NODE
+nginx-server-b9bc6c6b5-4mdf6   1/1       Running   0          41s       192.168.180.10   kube-worker-1
+nginx-server-b9bc6c6b5-8mvrd   1/1       Running   0          3m        192.168.180.9    kube-worker-1
+nginx-server-b9bc6c6b5-b99pt   1/1       Running   0          40s       192.168.180.12   kube-worker-1
+nginx-server-b9bc6c6b5-fjg2c   1/1       Running   0          40s       192.168.127.12   kube-worker-2
+nginx-server-b9bc6c6b5-kgdq5   1/1       Running   0          41s       192.168.127.11   kube-worker-2
+nginx-server-b9bc6c6b5-mhb7s   1/1       Running   0          40s       192.168.180.11   kube-worker-1
+nginx-server-b9bc6c6b5-rlf9w   1/1       Running   0          41s       192.168.127.10   kube-worker-2
+nginx-server-b9bc6c6b5-scwgj   1/1       Running   0          40s       192.168.127.13   kube-worker-2
+{{</ output >}}
 
 3.  The same command can be used to decrease the number of replicas:
 
@@ -161,7 +161,7 @@ Managing Pods with a Deployment allows you to make use of **rolling upgrades**. 
 
         kubectl rollout status deployment/nginx-server
 
-    ```
+    {{< output >}}
 Waiting for rollout to finish: 1 out of 3 new replicas have been updated...
 Waiting for rollout to finish: 1 out of 3 new replicas have been updated...
 Waiting for rollout to finish: 1 out of 3 new replicas have been updated...
@@ -171,7 +171,7 @@ Waiting for rollout to finish: 2 out of 3 new replicas have been updated...
 Waiting for rollout to finish: 1 old replicas are pending termination...
 Waiting for rollout to finish: 1 old replicas are pending termination...
 deployment "nginx-server" successfully rolled out
-    ```
+{{</ output >}}
 
 3.  You can manually check the application version with the `describe` command:
 
@@ -185,13 +185,13 @@ deployment "nginx-server" successfully rolled out
 
         kubectl get pods -o wide
 
-    ```
+    {{< output >}}
 NAME                            READY     STATUS             RESTARTS   AGE       IP               NODE
 nginx-server-76976d4555-7nv6z   1/1       Running            0          3m        192.168.127.15   kube-worker-2
 nginx-server-76976d4555-wg785   1/1       Running            0          3m        192.168.180.13   kube-worker-1
 nginx-server-76976d4555-ws4vf   1/1       Running            0          3m        192.168.127.14   kube-worker-2
 nginx-server-7ddd985dd6-mpn9h   0/1       ImagePullBackOff   0          2m        192.168.180.16   kube-worker-1
-    ```
+{{</ output >}}
 
     The Pod `nginx-server-7ddd985dd6-mpn9h` is trying to upgrade to an nonexistent version of NGINX.
 
@@ -203,12 +203,12 @@ nginx-server-7ddd985dd6-mpn9h   0/1       ImagePullBackOff   0          2m      
 
         kubectl rollout history deployment/nginx-server
 
-    ```
-    REVISION  CHANGE-CAUSE
-    1         kubectl scale deployment nginx-server --replicas=3
-    2         kubectl set image deployment/nginx-server nginx=nginx:1.13.8-alpine
-    3         kubectl set image deployment/nginx-server nginx=nginx:1.18
-    ```
+    {{< output >}}
+REVISION  CHANGE-CAUSE
+1         kubectl scale deployment nginx-server --replicas=3
+2         kubectl set image deployment/nginx-server nginx=nginx:1.13.8-alpine
+3         kubectl set image deployment/nginx-server nginx=nginx:1.18
+{{</ output >}}
 
 8.  You can then roll back to an earlier, working revision. To revert to the previous revision, use the `undo` command:
 
@@ -250,11 +250,11 @@ spec:
 
         kubectl get services
 
-    ```
+    {{< output >}}
 NAME            TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
 kubernetes      ClusterIP   10.96.0.1     <none>        443/TCP        2d
 nginx-service   NodePort    10.97.41.31   <none>        80:31738/TCP   38m
-    ```
+{{</ output >}}
 
     The service is running and accepting connections on port 31738.
 
@@ -266,7 +266,7 @@ nginx-service   NodePort    10.97.41.31   <none>        80:31738/TCP   38m
 
         kubectl describe service nginx-service
 
-    ```
+    {{< output >}}
 Name:                     nginx-service
 Namespace:                default
 Labels:                   run=nginx
@@ -281,7 +281,7 @@ Endpoints:                192.168.127.14:80,192.168.127.15:80,192.168.180.13:80
 Session Affinity:         None
 External Traffic Policy:  Cluster
 Events:                   <none>
-    ```
+{{</ output >}}
 
 ## Kubernetes Namespaces
 
@@ -291,11 +291,11 @@ Namespaces are logical environments that offer the flexibility to divide Cluster
 
         kubectl get namespaces
 
-    ```
+    {{< output >}}
 default       Active        7h
 kube-public   Active        7h
 kube-system   Active        7h
-    ```
+{{</ output >}}
 
     As the name implies, the `default` namespace is where your deployments will be placed if no other namespace is specified. `kube-system` is reserved for objects created by Kubernetes and `kube-public` is available for all users. Namespaces can be created from a `.json` file or directly from the command line.
 
@@ -408,12 +408,12 @@ A node may be a physical machine or a virtual machine. In this guide each Linode
 
         kubectl get nodes
 
-    ```
+    {{< output >}}
 NAME             STATUS    ROLES     AGE       VERSION
 kube-master      Ready     master    21h       v1.9.2
 kube-worker-1    Ready     <none>    19h       v1.9.2
 kube-worker-2    Ready     <none>    17h       v1.9.2
-    ```
+{{</ output >}}
 
 2.  For more detail, add the `-o` flag:
 
@@ -443,12 +443,12 @@ Kubernetes offers a very straightforward solution for taking nodes offline safel
 
         kubectl get nodes
 
-    ```
+    {{< output >}}
 NAME             STATUS                     ROLES     AGE       VERSION
 kube-master      Ready                      master    4h        v1.9.2
 kube-worker-1    Ready                      <none>    4h        v1.9.2
 kube-worker-2    Ready,SchedulingDisabled   <none>    4h        v1.9.2
-    ```
+{{</ output >}}
 
 5.  To test the Kubernetes controller and scheduler, scale up your deployment:
 
@@ -458,19 +458,19 @@ kube-worker-2    Ready,SchedulingDisabled   <none>    4h        v1.9.2
 
         kubectl get pods -o wide
 
-    ```
-    NAME                           READY     STATUS    RESTARTS   AGE       IP                NODE
-    nginx-server-b9bc6c6b5-2pnbk   1/1       Running   0          11s       192.168.188.146   kube-worker-1
-    nginx-server-b9bc6c6b5-4cls5   1/1       Running   0          11s       192.168.188.148   kube-worker-1
-    nginx-server-b9bc6c6b5-7nw5m   1/1       Running   0          3d        192.168.255.220   kube-worker-2
-    nginx-server-b9bc6c6b5-7s7w5   1/1       Running   0          44s       192.168.188.143   kube-worker-1
-    nginx-server-b9bc6c6b5-88dvp   1/1       Running   0          11s       192.168.188.145   kube-worker-1
-    nginx-server-b9bc6c6b5-95jgr   1/1       Running   0          3d        192.168.255.221   kube-worker-2
-    nginx-server-b9bc6c6b5-md4qd   1/1       Running   0          3d        192.168.188.139   kube-worker-1
-    nginx-server-b9bc6c6b5-r5krq   1/1       Running   0          11s       192.168.188.144   kube-worker-1
-    nginx-server-b9bc6c6b5-r5nd6   1/1       Running   0          44s       192.168.188.142   kube-worker-1
-    nginx-server-b9bc6c6b5-ztgmr   1/1       Running   0          11s       192.168.188.147   kube-worker-1
-    ```
+    {{< output >}}
+NAME                           READY     STATUS    RESTARTS   AGE       IP                NODE
+nginx-server-b9bc6c6b5-2pnbk   1/1       Running   0          11s       192.168.188.146   kube-worker-1
+nginx-server-b9bc6c6b5-4cls5   1/1       Running   0          11s       192.168.188.148   kube-worker-1
+nginx-server-b9bc6c6b5-7nw5m   1/1       Running   0          3d        192.168.255.220   kube-worker-2
+nginx-server-b9bc6c6b5-7s7w5   1/1       Running   0          44s       192.168.188.143   kube-worker-1
+nginx-server-b9bc6c6b5-88dvp   1/1       Running   0          11s       192.168.188.145   kube-worker-1
+nginx-server-b9bc6c6b5-95jgr   1/1       Running   0          3d        192.168.255.221   kube-worker-2
+nginx-server-b9bc6c6b5-md4qd   1/1       Running   0          3d        192.168.188.139   kube-worker-1
+nginx-server-b9bc6c6b5-r5krq   1/1       Running   0          11s       192.168.188.144   kube-worker-1
+nginx-server-b9bc6c6b5-r5nd6   1/1       Running   0          44s       192.168.188.142   kube-worker-1
+nginx-server-b9bc6c6b5-ztgmr   1/1       Running   0          11s       192.168.188.147   kube-worker-1
+{{</ output >}}
 
     There are ten Pods in total but new Pods were created only in the first node.
 
@@ -478,21 +478,21 @@ kube-worker-2    Ready,SchedulingDisabled   <none>    4h        v1.9.2
 
         kubectl drain kube-worker-2 --ignore-daemonsets
 
-    ```
-    node "kube-worker-2" already cordoned
-    WARNING: Ignoring DaemonSet-managed pods: calico-node-9mgc6, kube-proxy-2v8rw
-    pod "my-app-68845b9f68-wcqsb" evicted
-    pod "nginx-server-b9bc6c6b5-7nw5m" evicted
-    pod "nginx-server-b9bc6c6b5-95jgr" evicted
-    pod "my-app-68845b9f68-n5kpt" evicted
-    node "kube-worker-2" drained
-    ```
+    {{< output >}}
+node "kube-worker-2" already cordoned
+WARNING: Ignoring DaemonSet-managed pods: calico-node-9mgc6, kube-proxy-2v8rw
+pod "my-app-68845b9f68-wcqsb" evicted
+pod "nginx-server-b9bc6c6b5-7nw5m" evicted
+pod "nginx-server-b9bc6c6b5-95jgr" evicted
+pod "my-app-68845b9f68-n5kpt" evicted
+node "kube-worker-2" drained
+{{</ output >}}
 
 8.  Check the effect of this command on your Pods:
 
         kubectl get pods -o wide
 
-    ```
+    {{< output >}}
 NAME                           READY     STATUS    RESTARTS   AGE       IP                NODE
 nginx-server-b9bc6c6b5-2pnbk   1/1       Running   0          9m        192.168.188.146   kube-worker-1
 nginx-server-b9bc6c6b5-4cls5   1/1       Running   0          9m        192.168.188.148   kube-worker-1
@@ -504,7 +504,7 @@ nginx-server-b9bc6c6b5-md4qd   1/1       Running   0          3d        192.168.
 nginx-server-b9bc6c6b5-r5krq   1/1       Running   0          9m        192.168.188.144   kube-worker-1
 nginx-server-b9bc6c6b5-r5nd6   1/1       Running   0          9m        192.168.188.142   kube-worker-1
 nginx-server-b9bc6c6b5-ztgmr   1/1       Running   0          9m        192.168.188.147   kube-worker-1
-    ```
+{{</ output >}}
 
 9.  You are ready now to safely shut down your Linode without interrupting service.
 

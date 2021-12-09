@@ -8,21 +8,18 @@ keywords: ["dns manager", "linode dns", "Linode Cloud Manager dns", "dns configu
 tags: ["linode platform","networking","cloud manager","dns"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/dns-manager/','/platform/manager/dns-manager/','/networking/dns/dns-manager/','/platform/manager/dns-manager-new-manager/','/networking/dns/dns-manager-overview/','/platform/manager/dns-manager-classic-manager/']
-modified: 2021-06-15
+modified: 2021-11-30
 modified_by:
   name: Linode
 published: 2009-07-16
-title: DNS Manager
+title: "DNS Manager"
+image: dns-manager.png
 ---
 
-![DNS Manager](dns-manager.png "DNS Manager")
-
-<!-- ![DNS Manager Overview](dns-manager-overview.png) -->
-
-The *Domains* section of the [Linode Cloud Manager](https://cloud.linode.com/domains) is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. This guide covers the use of the **Domains** section and basic domain setup. For an introduction to DNS in general, see our [Introduction to DNS Records](/docs/networking/dns/dns-records-an-introduction/) guide.
+The *Domains* section of the [Cloud Manager](https://cloud.linode.com/domains) is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. This guide covers the use of the **Domains** section and basic domain setup. For an introduction to DNS in general, see our [Introduction to DNS Records](/docs/guides/dns-records-an-introduction/) guide.
 
 {{< note >}}
-Linode's DNS service employs [Cloudflare](https://cloudflare.com) to provide denial of service (DDoS) mitigation, load balancing, and increased geographic distribution for our [name servers](/docs/networking/dns/dns-records-an-introduction/#name-servers). These factors make our service reliable, fast, and a great choice for your DNS needs.
+Linode's DNS service is anycasted to over 250 locations around the world. This provides distributed denial-of-service (DDoS) attack mitigation, load balancing, and increased geographic distribution for our [name servers](/docs/guides/dns-records-an-introduction/#name-servers). These factors make our service reliable, fast, and a great choice for your DNS needs.
 {{</ note>}}
 
 {{< note >}}
@@ -44,8 +41,8 @@ DNS records are only actively hosted on accounts with at least one Linode. When 
 1.  Register (purchase) a domain name if you haven't already.
 2.  Set your domain name to [use Linode's name servers](#use-linodes-name-servers-with-your-domain). You'll need to do this on your domain registrar's website and then wait up to 24 hours for the change to take effect.
 3.  Use the DNS Manager to [add a domain](#add-a-domain), and then start [adding some basic DNS records](#add-dns-records).
-4.  [Set reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/).
-5.  If you have any special DNS requirements, such as when using a third-party email server, add additional DNS records [for your specific needs](/docs/networking/dns/common-dns-configurations/).
+4.  [Set reverse DNS](/docs/guides/configure-your-linode-for-reverse-dns/).
+5.  If you have any special DNS requirements, such as when using a third-party email server, add additional DNS records [for your specific needs](/docs/guides/common-dns-configurations/).
 
 ## Use Linode's Name Servers with Your Domain
 

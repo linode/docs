@@ -632,11 +632,11 @@ This template includes common API logic and functions.
               <div class="font-semibold py-4">
                 {{ $e.title2 }}
               </div>
-              <div class="code my-4 dark flex items-start justify-between" x-data="lnh.CopyToClipBoard()">
+              <div class="code my-4 dark flex items-start justify-between">
                 <div x-ref="code">
                   {{- highlight $e.body $lang "linenos=false" -}}
                 </div>
-                <div class="w-10 pt-5" @click="copy($refs.code)">
+                <div class="w-10 pt-5 cursor-pointer" @click="$copy($refs.code)">
                   {{ $copyIcon }}
                 </div>
               </div>
@@ -646,11 +646,11 @@ This template includes common API logic and functions.
           {{ if $e.dump }}
             <template x-if="active === {{ $i }}">
               <div>
-                <div class="code my-4 dark flex items-start justify-between " x-data="lnh.CopyToClipBoard()">
+                <div class="code my-4 dark flex items-start justify-between ">
                   <div x-ref="code">
                     {{- highlight $e.body $lang "linenos=false" -}}
                   </div>
-                  <div class="w-10 pt-5" @click="copy($refs.code)">
+                  <div class="w-10 pt-5 cursor-pointer" @click="$copy($refs.code)">
                     {{ $copyIcon }}
                   </div>
                 </div>
