@@ -1,3 +1,10 @@
+{{ $showToc := false}}
+{{ if not .Params.notoc  }}
+  {{ $showToc = .Params.toc }}
+  {{ if not $showToc }}
+    {{ $showToc = strings.Contains .Content "<h2" }}
+  {{ end }}
+{{ end }}
 <!DOCTYPE html>
 {{/* Note that the TailwindCSS config is "scoped" by the ln-docs ID, so don't change it for no good reason. */}}
 <html id="ln-docs" lang="{{ site.Language.Lang }}">
@@ -32,7 +39,7 @@
     }
   </style>
 </head>
-<body class="{{ block `body-class` . }}na {{ end }}type-{{ .Type }} kind-{{ .Kind }} {{ if or .Params.toc (and .IsPage (not .Params.notoc)) }}is-toc{{ else }}is-not-toc{{ end }}
+<body class="{{ block `body-class` . }}na {{ end }}type-{{ .Type }} kind-{{ .Kind }} {{ if $showToc }}is-toc{{ else }}is-not-toc{{ end }}
      no-js
      h-auto
      overflow-x-hidden
