@@ -26,7 +26,7 @@
         </button>
       </span>
     </div>
-    <div x-show.transition="open" class="origin-top-right absolute left-0 mt-1 w-64 z-10 rounded-sm border border-basicgray">
+    <div x-transition x-show="open" class="origin-top-right absolute left-0 mt-1 w-64 z-10 rounded-sm border border-basicgray">
       <div class="rounded-sm bg-white">
         {{ if .contentPartial }}
           {{ partial .contentPartial . }}

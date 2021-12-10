@@ -107,7 +107,7 @@ When you have finished testing, move on to the last step in migrating: updating 
 
 ## Migrating DNS Records
 
-To direct your visitors to your Linode, associate your domain with [your new Linode's IP](/docs/guides/remote-access/#network-access). There are two options for moving your DNS records:
+To direct your visitors to your Linode, associate your domain with [your new Linode's IP](/docs/guides/managing-ip-addresses/). There are two options for moving your DNS records:
 
 -  Use Linode's fast, stable [DNS hosting](/docs/guides/dns-manager/) which is free as long as you have one active Linode on your account.
 

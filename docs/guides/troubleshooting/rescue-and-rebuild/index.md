@@ -109,7 +109,7 @@ To connect with Lish:
 
     [![Linode Cloud Manager Lish console](cloud-manager-new-lish-window.png "Linode Cloud Manager Lish console")](cloud-manager-new-lish-window.png)
 
-Review the [Using the Linode Shell (Lish)](/docs/platform/manager/using-the-linode-shell-lish/) guide for further explanation of the Lish console and alternative methods for accessing it, including [from your computer's terminal application](/docs/platform/manager/using-the-linode-shell-lish/#use-a-terminal-application).
+Review the [Using the Lish Console](/docs/guides/using-the-lish-console/) guide for further explanation of the Lish console and alternative methods for accessing it, including [from your computer's terminal application](/docs/guides/using-the-lish-console/#through-ssh-using-a-terminal).
 
 ### Starting SSH
 

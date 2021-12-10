@@ -147,7 +147,7 @@ To communicate over the private network, your master and slave Linodes must resi
 
 1.  Set up both Linodes with a Redis instance, using the [Installation](#install-redis) and [Configuration](#configure-redis) steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/guides/disks-and-storage/#resizing-a-disk) option in the Cloud Manager.
 
-2.  Configure [Private IP Addresses](/docs/networking/remote-access/#adding-private-ip-addresses) on both Linodes, and make sure you can access the master Linode's private IP address from  the slave. You will use only private addresses for replication traffic for security reasons.
+2.  Configure [Private IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) on both Linodes, and make sure you can access the master Linode's private IP address from  the slave. You will use only private addresses for replication traffic for security reasons.
 
 ### Configure the Master Linode
 

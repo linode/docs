@@ -23,7 +23,7 @@ For the sake of organization, it has been split into two main sections:
 
 *  [Install a Custom Distribution](#install-a-custom-distribution): shows you how to use the advantages of **Direct Disk Boot** to easily install the custom distribution.
 
-*  [Linode Manager Compatibility](#linode-manager-compatibility): builds upon the steps in the first section, and offers instructions to make your custom distribution work with features of the Linode Manager such as disk resizing, helpers, and the [Linode Backup Service](/docs/guides/linode-backup-service/).
+*  [Linode Manager Compatibility](#linode-manager-compatibility): builds upon the steps in the first section, and offers instructions to make your custom distribution work with features of the Linode Manager such as disk resizing, helpers, and the [Linode Backup Service](/docs/products/storage/backups/).
 
 This guide uses Debian 8 (Jessie) as an example, but the steps provided are generic in nature and should work with most distributions.
 
@@ -85,7 +85,7 @@ If you intend to continue to the next section on [Linode Manager Compatibility](
 
 ### Download and Install Image
 
-1.  Boot into [Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/guides/using-the-linode-shell-lish/).
+1.  Boot into [Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/guides/using-the-lish-console/).
 
 1.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the Debian network installer, but you can replace the URL in the following command with the location of the image you want to install:
 

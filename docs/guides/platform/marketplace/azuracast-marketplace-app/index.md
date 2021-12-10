@@ -19,7 +19,7 @@ external_resources:
 - '[About AzuraCast](https://www.azuracast.com/about/)'
 - '[Troubleshooting AzuraCast](https://www.azuracast.com/help/)'
 - '[AzuraCast Github](https://github.com/azuracast/azuracast)'
-aliases: ['/platform/marketplace/how-to-deploy-azuracast-with-marketplace-apps/', '/platform/one-click/how-to-deploy-azuracast-with-one-click-apps/','/guides/how-to-deploy-azuracast-with-marketplace-apps/']
+aliases: ['/platform/marketplace/how-to-deploy-azuracast-with-marketplace-apps/', '/platform/one-click/how-to-deploy-azuracast-with-one-click-apps/','/guides/how-to-deploy-azuracast-with-one-click-apps/','/guides/how-to-deploy-azuracast-with-marketplace-apps/','/platform/one-click/deploy-azuracast-with-one-click-apps/','/guides/deploy-azuracast-with-one-click-apps/']
 ---
 
 [AzuraCast](https://www.azuracast.com) is a self-hosted web radio station and management suite. Installation is simple with Marketplace Apps, and the intuitive web interface makes running a web station easy. After installation, you can be broadcasting within in minutes.

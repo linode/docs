@@ -11,10 +11,6 @@
     display: none;
 }
 
-.no-js .grid--base #navbar__breadcrumbs {
-    display: block;
-}
-
 @screen md {
     .is-topbar-pinned .grid--base #navbar__breadcrumbs {
         display: block;

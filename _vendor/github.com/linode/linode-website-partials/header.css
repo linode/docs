@@ -289,7 +289,6 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   font-size: 18px;
   line-height: 1.3333333333;
   font-family: "Source Sans Pro", sans-serif;
-  font-weight: 400;
   letter-spacing: 0;
   color: #32363b;
   font-weight: 400;
@@ -313,7 +312,6 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   font-size: 16px;
   line-height: 1.25;
   font-family: "Source Sans Pro", sans-serif;
-  font-weight: 400;
   letter-spacing: 0;
   background-color: #ffffff;
   border-bottom: 1px solid #ededf4;
@@ -459,7 +457,6 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   font-size: 16px;
   line-height: 1.25;
   font-family: "Source Sans Pro", sans-serif;
-  font-weight: 400;
   letter-spacing: 0;
   margin-left: 0;
   min-width: 87.25px;
@@ -537,7 +534,6 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   font-size: 12px;
   line-height: 1.3333333333;
   font-family: "Source Sans Pro", sans-serif;
-  font-weight: 400;
   letter-spacing: 0;
   color: #999b9d;
   letter-spacing: 2px;
@@ -585,7 +581,6 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   font-size: 14px;
   line-height: 1.4285714286;
   font-family: "Source Sans Pro", sans-serif;
-  font-weight: 400;
   letter-spacing: 0;
 }
 .c-sub-menu .o-menu--featured .o-menu__item .title + .description {
@@ -643,7 +638,6 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   font-size: 14px;
   line-height: 1.4285714286;
   font-family: "Source Sans Pro", sans-serif;
-  font-weight: 400;
   letter-spacing: 0;
   margin-bottom: 16px;
 }
@@ -687,7 +681,6 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   font-size: 18px;
   line-height: 1.3333333333;
   font-family: "Source Sans Pro", sans-serif;
-  font-weight: 400;
   letter-spacing: 0;
 }
 @media (max-width: 61.99em) {

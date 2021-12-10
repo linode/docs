@@ -1,42 +1,35 @@
 'use strict';
 
+import { newRequestCallbackFactoryTarget, SearchGroupIdentifier, RequestCallBackStatus } from '../../search/request';
 import { isMobile, isTouchDevice, newSwiper } from '../../helpers/index';
-import { newDispatcher } from '../../search/index';
 
 var debug = 0 ? console.log.bind(console, '[home]') : function() {};
-
-const searchName = 'search:data-home';
 
 export function newHomeController(searchConfig, staticData) {
 	debug('newHomeController');
 
-	const dispatcher = newDispatcher();
+	// The section we paginate on the home page.
+	// This maps to section.lvl0 in linode-merged.
+	const sectionLevel0s = [ 'guides', 'blog', 'resources', 'marketplace', 'community' ];
+
+	// Avoid loading too much data when on mobile.
+	const tilesAlgoliaPreloadItems = isMobile() ? 12 : 30;
+
+	const requestFromSection = function(name) {
+		return {
+			page: 0,
+			params: `query=&hitsPerPage=${tilesAlgoliaPreloadItems}`,
+			indexName: searchConfig.sections_merged.index_by_pubdate,
+			facets: [ 'section.*' ],
+			filters: `section.lvl0:${name}`
+		};
+	};
 
 	// Number of tiles per paginated page.
 	// It will scale down with page size.
 	const tilesPageSize = 6;
 	const tilesPageSizeMobile = 2;
 	const productsStripPageSize = 6;
-	// Avoid loading too much data when on mobile.
-	const tilesAlgoliaPreloadItems = isMobile() ? 12 : 30;
-
-	// Set and removed when left menu opens.
-	const cssClassMenyStateChanging = 'kind-home--menu-state-is-changing';
-
-	// The section names we paginate on the home page.
-	// This maps to the name attribute in the search configuration.
-	// No filters are currently applied, and the order will be the order from Algolia.
-	const sectionNames = [ 'guides', 'blog', 'resources', 'marketplace', 'qa' ];
-
-	const withSectionConfigs = function(callback) {
-		sectionNames.forEach((name) => {
-			let sectionConfig = searchConfig.sectionsSorted.find((s) => s.name === name);
-			if (!sectionConfig) {
-				throw `no index with name ${name} found`;
-			}
-			callback(sectionConfig);
-		});
-	};
 
 	// Create a new pager for the given el and items.
 	// pageSize is the number of items per page.
@@ -46,7 +39,7 @@ export function newHomeController(searchConfig, staticData) {
 			throw 'pager element must be provided';
 		}
 
-		debug('newPager', el);
+		debug('newPager');
 
 		if (!items) {
 			// Set up some temporary placeholders. The real data will arrive later.
@@ -77,6 +70,10 @@ export function newHomeController(searchConfig, staticData) {
 
 		// We set up some dummy initial on component init and receive the real items a little bit later.
 		pager.setItems = function(items) {
+			if (!this.el) {
+				// User has navigated away.
+				return;
+			}
 			this.items = items;
 			this.initItems();
 		};
@@ -177,108 +174,98 @@ export function newHomeController(searchConfig, staticData) {
 		return pager;
 	};
 
+	// Maps the values in sectionLevel0s to their tiles data.
+	let sectionTiles = {};
+
 	return {
 		data: {
-			// Data for the top level products strip.
-			productsTiles: null,
-
-			// Data for the developers strip.
-			developersTiles: null,
-
-			// Maps the values in sectionNames to their tiles data.
-			sectionTiles: {},
-
-			// Metadata about sections.
-			sectionMeta: {},
-
-			// Loading state
-			loaded: false
+			sectionTiles: sectionTiles
 		},
+		loaded: false,
+		menuStateChanging: false,
 
 		init: function() {
 			debug('init');
 
-			var searchRequests = [];
-			withSectionConfigs((sectionConfig) => {
-				let filters = sectionConfig.filters || '';
-				searchRequests.push({
-					page: 0,
-					params: `query=&hitsPerPage=${tilesAlgoliaPreloadItems}`,
-					indexName: sectionConfig.index_by_pubdate || sectionConfig.index,
-					filters: filters
-				});
-			});
-
-			this.$nextTick(function() {
-				dispatcher.searchStandalone(
-					{
-						key: `home:section-tiles`,
-						requests: searchRequests
-					},
-					searchName
-				);
-			});
-
-			var self = this;
-
-			return function() {
-				withSectionConfigs((sectionConfig) => {
-					let name = sectionConfig.name;
-					let el = self.$refs[`carousel-${name}`];
+			this.$nextTick(() => {
+				debug('init: nextTick');
+				// Set up placeholders for the dynamic carousels.
+				// The data will arrive on intersect.
+				sectionLevel0s.forEach((name) => {
+					let el = this.$refs[`carousel-${name}`];
 					let pager = newPager(tilesPageSize, el);
-					self.data.sectionTiles[name] = pager;
+					this.data.sectionTiles[name] = pager;
 				});
 
-				self.data.productsTiles = newPager(
+				// Initialize the static carousels.
+				this.data.sectionTiles['products'] = newPager(
 					productsStripPageSize,
-					self.$refs[`carousel-products`],
+					this.$refs[`carousel-products`],
 					staticData.productItems
 				);
 				// Make the developers pager the same size as the products pager.
-				self.data.developersTiles = newPager(
+				this.data.sectionTiles['developers'] = newPager(
 					productsStripPageSize,
-					self.$refs[`carousel-developers`],
+					this.$refs[`carousel-developers`],
 					staticData.developerItems
 				);
-			};
+
+				this.loaded = true;
+			});
+		},
+
+		destroy: function() {
+			// Prevents memory leak.
+			Object.values(sectionTiles).forEach((tile) => {
+				tile.el = null;
+			});
+		},
+
+		initCarousels: function() {
+			debug('initCarousels');
+			this.$nextTick(() => {
+				sectionLevel0s.forEach((name) => {
+					let factory = {
+						status: function() {
+							return RequestCallBackStatus.Once;
+						},
+						create: () => {
+							return {
+								request: requestFromSection(name),
+								callback: (result) => {
+									this.data.sectionTiles[name].setItems(result.hits);
+								}
+							};
+						}
+					};
+
+					this.$store.search.addSearches(
+						newRequestCallbackFactoryTarget(factory, SearchGroupIdentifier.AdHoc)
+					);
+				});
+			});
+		},
+
+		onEffect: function() {
+			// This construct may look odd, but this method is called from an x-effect,
+			// so this will trigger on any change to the open state.
+			let el = this.$store.nav.open.explorer;
+			this.onNavChange(true);
 		},
 
 		// onNavChange triggers on screen resize or e.g. if the explorer opens/closes.
 		// The slide width may have changed so the pager number of pages may have changed.
-		onNavChange: function(data) {
-			let menuStateChange = data && data.what === 'explorer' && data.source === 'explorer';
+		onNavChange: function(menuStateChange = false) {
 			if (menuStateChange) {
 				// Avoid the scroll transition when the left menu changes state.
-				this.$el.classList.add(cssClassMenyStateChanging);
-			}
-			if (this.data.productsTiles) {
-				this.data.productsTiles.refreshPageSize();
-			}
-			if (this.data.developersTiles) {
-				this.data.developersTiles.refreshPageSize();
+				this.menuStateChanging = true;
 			}
 			for (let i in this.data.sectionTiles) {
 				this.data.sectionTiles[i].refreshPageSize();
 			}
 			if (menuStateChange) {
-				this.$el.classList.remove(cssClassMenyStateChanging);
+				this.menuStateChanging = false;
 			}
-		},
-
-		receiveData: function(results) {
-			debug('receiveData', results);
-			var self = this;
-			// Match results by index name.
-			let sectionConfigs = searchConfig.findSectionsBySearchResults(results);
-
-			for (let i in sectionConfigs) {
-				let sectionConfig = sectionConfigs[i];
-				let result = results[i];
-				let name = sectionConfig.name;
-				self.data.sectionTiles[name].setItems(result.hits);
-			}
-
-			this.data.loaded = true;
 		}
 	};
 }
