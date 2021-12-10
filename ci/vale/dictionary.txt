@@ -1997,6 +1997,7 @@ virtualenvs
 virtualenvwrapper
 virtualhost
 virtualizations
+virtualize
 virtualized
 virtualmin
 Virustotal
