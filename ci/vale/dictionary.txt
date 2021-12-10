@@ -1117,6 +1117,7 @@ Mojang
 moodle
 mongocryptd
 mongodb
+mongod
 mongoimport
 mongosh
 monit
@@ -1220,6 +1221,7 @@ nfs
 nftables
 ng
 nginx
+ngular
 nginxdemos
 ngrok
 ngx
@@ -1236,6 +1238,7 @@ nodebalancer
 nodebalancers
 nodejs
 nodemanager
+nodemon
 nodename
 nodeport
 nodesdirect
@@ -1593,6 +1596,7 @@ salesforce
 sam
 samy
 sandcat
+sanitization
 sar
 sasl
 sasl2
