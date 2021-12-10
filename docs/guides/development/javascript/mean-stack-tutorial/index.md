@@ -6,7 +6,7 @@ description: 'This MEAN stack tutorial shows you how to build a basic model appl
 keywords: ['angular mongodb', 'connect mongodb with angular', 'mean stack tutorial']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-01
+published: 2021-12-10
 modified_by:
   name: Linode
 title: "MEAN Stack Tutorial: Create an Example Application"
@@ -24,7 +24,7 @@ In web development, the term *full stack* refers to all the programmed parts of 
 MEAN is an acronym for the combination of technology stacks–**M**ongoDB, **E**xpress.js, **A**ngular, and **N**ode.js.
 
 - MongoDB is a document-based database solution.
-- Node.js is a back-end actions runtime environment.
+- Node.js is a back end JavaScript runtime environment.
 - Express.js is a web application framework based on Node.
 - Angular is a web framework for the front end.
 
@@ -181,7 +181,7 @@ artifact
 users
     {{</ output >}}
 
-### Connect to the Back End Runtime
+### Connect to the Back End Runtime (Node.js)
 
 At this point, Node and Mongo are both installed and MongoDB is running successfully. You've created a Node project and a Mongo database with a couple of tables. Now, it’s time for these two components to connect.
 
