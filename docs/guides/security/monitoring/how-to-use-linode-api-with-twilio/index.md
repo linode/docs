@@ -3,8 +3,8 @@ slug: how-to-use-the-linode-api-with-twilio
 author:
   name: John Mueller
   email: john@johnmuellerbooks.com
-description: 'Twilio is an internet messaging service that can be used to monitor infrastructure. This guide shows a first example of embedding Linode API data in a text message with Twilio.'
-og_description: 'Twilio is an internet messaging service that can be used to monitor infrastructure. This guide shows a first example of embedding Linode API data in a text message with Twilio.'
+description: 'Twilio is an internet messaging service that can be used to monitor server infrastructure. This guide shows a first example of embedding Linode API data in a text message with Twilio.'
+og_description: 'Twilio is an internet messaging service that can be used to monitor server infrastructure. This guide shows a first example of embedding Linode API data in a text message with Twilio.'
 keywords: []
 tags: ['python','monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
