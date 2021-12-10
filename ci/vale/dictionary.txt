@@ -1482,11 +1482,8 @@ rebase
 rebased
 rebases
 rebasing
-<<<<<<< HEAD
 rebootuser
-=======
 recompiles
->>>>>>> 3ae9fe060... add content and edits
 reconnections
 recordset
 recursing
