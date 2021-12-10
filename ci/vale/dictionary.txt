@@ -352,6 +352,7 @@ davfs2
 db8
 dbconfig
 dbd
+dbs
 dbdir
 dbfiles
 dbname
@@ -1114,8 +1115,10 @@ moddable
 modsecurity
 Mojang
 moodle
+mongocryptd
 mongodb
 mongoimport
+mongosh
 monit
 monitorix
 moolenaar
