@@ -352,6 +352,7 @@ davfs2
 db8
 dbconfig
 dbd
+dbs
 dbdir
 dbfiles
 dbname
@@ -1114,8 +1115,11 @@ moddable
 modsecurity
 Mojang
 moodle
+mongocryptd
 mongodb
+mongod
 mongoimport
+mongosh
 monit
 monitorix
 moolenaar
@@ -1217,6 +1221,7 @@ nfs
 nftables
 ng
 nginx
+ngular
 nginxdemos
 ngrok
 ngx
@@ -1233,6 +1238,7 @@ nodebalancer
 nodebalancers
 nodejs
 nodemanager
+nodemon
 nodename
 nodeport
 nodesdirect
@@ -1501,6 +1507,7 @@ redmine
 redstone
 reenable
 reenabling
+refactorable
 referer
 reflog
 reflogs
@@ -1589,6 +1596,7 @@ salesforce
 sam
 samy
 sandcat
+sanitization
 sar
 sasl
 sasl2
@@ -1989,6 +1997,7 @@ virtualenvs
 virtualenvwrapper
 virtualhost
 virtualizations
+virtualize
 virtualized
 virtualmin
 Virustotal
