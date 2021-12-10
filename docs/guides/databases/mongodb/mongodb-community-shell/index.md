@@ -1,13 +1,12 @@
 ---
-slug: install-and-use-the-mongodb-community-shell
+slug: mongodb-community-shell-installation
 author:
   name: Tom Henderson
-description: 'This tutorial explains how to install the MongoDB Community Shell on macOS, Windows 10, and Debian-derivative Linux systems.'
-og_description: 'This tutorial explains how to install the MongoDB Community Shell on macOS, Windows 10, and Debian-derivative Linux systems.'
+description: 'This tutorial explains how to install the MongoDB Community Shell on macOS, Windows 10, and Debian-based Linux systems.'
 keywords: ['mongodb community shell', 'mongosh', 'mongodb']
 tags: ['debian', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-03
+published: 2021-12-10
 modified_by:
   name: Linode
 title: "Install and Use the MongoDB Community Shell"
@@ -17,7 +16,7 @@ contributor:
   name: Tom Henderson
 ---
 
-MongoDB is a NoSQL database that can operate over many hosts, database shards, and collections. It supports non-relational, document-oriented databases. A key feature of MongoDB is its ability to associate disparate data types and sources into quickly returned results that link data together. The MongoDB shell can be used to perform queries, update records, and find useful correlations among collections. The MongoDB Shell provides a command-line interface to areas of your database. It can run all MongoDB queries, prints error messages, modify data, and provide access to JavaScript using JSON queries. This tutorial explains how to install the MongoDB Community Shell on macOS, Windows 10, and Debian-derivative Linux systems. It also shows you how to connect to a MongoDB deployment, provides tips on using the MongoDB Shell with examples.
+MongoDB is a non-relational, document-oriented database that can operate over many hosts, database shards, and collections. A key feature of MongoDB is its ability to associate disparate data types and sources into quickly returned results that link data together. The MongoDB shell can be used to perform queries, update records, and find useful correlations among collections. The MongoDB Shell provides a command-line interface to your database and can run all MongoDB queries. It prints error messages, modifies data, and provide access to JavaScript using JSON queries. This tutorial explains how to install the MongoDB Community Shell on macOS, Windows 10, and Debian. It also shows you how to connect to a MongoDB deployment and provides tips on using the MongoDB Shell with examples.
 
 ## Install the MongoDB Shell on Windows 10, macOS, and Linux
 
@@ -27,7 +26,7 @@ MongoDB is a NoSQL database that can operate over many hosts, database shards, a
 
 - You must have access to your MongoDB server instance and the necessary credentials to connect to your database.
 
-### Install the MongoDB Shell for macOS
+### Install the MongoDB Shell on macOS
 
 The steps in this section work on macOS 13.0 and above.
 
@@ -42,7 +41,7 @@ The steps in this section work on macOS 13.0 and above.
         cp ~/bin/mongosh /usr/local/bin
         cp ~/bin/mongocryptd-mongosh /usr/local/bin
 
-1. Under some circumstances, the unzipping/extraction process does not correctly set the binaries (`mongosh` and `mongocryptd-mongosh`) as executable. These files are contained in the `/usr/bin/` directory. Set them as executable using the commands below:
+1. Under some circumstances, the extraction process does not correctly set the binaries (`mongosh` and `mongocryptd-mongosh`) as executable. These files are contained in the `/usr/bin/` directory. Set them as executable using the commands below:
 
         chmod +x ~/bin/mongosh
         chmod +x ~/bin/mongocryptd-mongosh
@@ -52,7 +51,7 @@ The steps in this section work on macOS 13.0 and above.
         chmod +x /usr/local/bin/mongosh
         chmod +x /usr/local/bin/mongocryptd-mongosh
 
-    Depending on where you are placing the unzipped files, the location cited can change, and you need to change the directory argument to suit your file installation location.
+    Depending on where you are placing the unzipped files, the location cited can change. You should change the directory argument to suit your file installation location.
 
 1. Add the `mongosh` and `mongocryptd` binaries to your PATH.
 
@@ -60,15 +59,13 @@ The steps in this section work on macOS 13.0 and above.
 If, upon invocation, `mongosh` doesn't execute, it may be necessary (depending on the version of macOS) to navigate to *Application Security* in *System Preferences*. Then, verify that `mongosh` and `mongocryptd` have the correct permissions.
 {{</ note >}}
 
-### Install the MongoDB Shell for Linux
+### Install the MongoDB Shell on Debian Linux
 
-{{< note >}}
 MongoDB server instances installed with a Linux package manager (`apt` or `rpm`) often have the MongoDB Shell already installed. This also includes the [Linode Marketplace MondoDB Server instance](/docs/guides/mongodb-marketplace-app/). To verify that `mongosh` is installed, issue the following command to connect to your MongoDB server:
 
     mongosh
 
-If `mongosh` is already installed, you can skip this section.
-{{</ note >}}
+If `mongosh` is already installed, you can skip this section. To proceed with the installation follow the steps below.
 
 1. Download the MongoDB Linux tarball using the `wget` command.
 
@@ -95,7 +92,7 @@ If `mongosh` is already installed, you can skip this section.
         chmod +x /usr/local/bin/mongosh
         chmod +x /usr/local/bin/mongocryptd-mongosh
 
-    Depending on where you place the unzipped files, the location cited can change, and you need to change the directory argument to suit your file installation location.
+    Depending on where you place the unzipped files, the location cited can change. You should change the directory argument to suit your file installation location.
 
 ### Install MongoDB Shell on Windows 10
 
@@ -109,7 +106,7 @@ If `mongosh` is already installed, you can skip this section.
 
 1. Using the following steps, add the `mongosh` binary path to the Windows 10 environment variables.
 
-    - On the Windows 10 search bar, search for 'environment variable' and select the **Edit the system environment variables** option.
+    - On the Windows 10 search bar, search for *environment variable* and select the **Edit the system environment variables** option.
     - The **System Properties** modal is displayed. Click **Environment Variables**.
     - Under the **System variables** section, select **Path** and click **New**.
     - Add the `mongosh` binary path that you copied earlier and click **OK** to finish the setup.
@@ -124,9 +121,9 @@ If `mongosh` is already installed, you can skip this section.
 
 ## Connect to the MongoDB Shell
 
-MongoDB Shell requires a database to connect to; its installation does not include a working MongoDB database instance unless this was installed on a Linode Marketplace MongoDB Server instance.
+MongoDB Shell requires a database to connect to; its installation does not include a working MongoDB database instance. If you already created a database on your MongoDB Server instance, then you don't need to create a new database.
 
-Connecting to the database requires access credentials. The information required is the host to connect to, and optionally, the username, and password, and options where needed. For all MongoDB instances, there is also a port where the MongoDB instance listens for connections. This port is normally, by default, `27017`.
+Connecting to the database requires access credentials. The information required is the host to connect to, and optionally, username, password, and options where needed. You also need the port number that your MongoDB instance listens to for connections. By default, the port number is `27017`.
 
 - To connect to a MongoDB instance that is located on the same host as the MongoDB shell instance, issue the following command:
 
@@ -142,15 +139,15 @@ Connecting to the database requires access credentials. The information required
 
         mongosh “mongodb://mongodb5.example.com:14033”
 
-    In this example, MongoDB is located at port `14033`. It is recommended that remote host transport layer security/TLS connectivity is used. Append the string `/?tls=true` to the host URL to add TLS encryption to the connection.
+    In this example, MongoDB is listening on port `14033`. It is recommended that remote host transport layer security (TLS) connectivity is used. Append the string `/?tls=true` to the host URL to add TLS encryption to the connection.
 
 ## Using The MongoDB Shell
 
 Once MongoDB Shell is successfully installed, it can connect to one or more MongoDB instances, shards, replicas, or clusters. The MongoDB shell is used for a wide number of tasks. This section describes the most common tasks like connecting and authenticating, changing and configuring, querying, and ending a session.
 
-While you’re working inside the `mongosh`, you can use the **tab** key to complete commands as a shortcut. When multiple options are available, you can scroll through these to choose the correct choice. Then type the **tab** key until your syntax is correct.
+While you’re working inside `mongosh`, you can use the **tab** key to complete commands as a shortcut. When multiple options are available, you can scroll through these to choose the correct choice. Then type the **tab** key until your syntax is correct.
 
-### Show Databases With the MongoDB Shell
+### Show Databases with the MongoDB Shell
 
 1. Connect to the desired database.
 
@@ -186,7 +183,7 @@ config  12.3 kB
 local     41 kB
     {{</ output >}}
 
-### Change Database With MongoDB Shell
+### Change Databases with the MongoDB Shell
 
 To change or switch to a different database in the MongoDB shell:
 
@@ -198,7 +195,7 @@ To change or switch to a different database in the MongoDB shell:
 
         use <name of database>
 
-### Add A Record To A Collection
+### Add a Record to a Collection
 
 To add a record to a collection, use the `insert` or `insertOne` command. For example, viewing a database named `UsedCars`, insert a new record with the following command:
 
@@ -220,12 +217,16 @@ To add a record to a collection, use the `insert` or `insertOne` command. For ex
 
 ## Uninstall the MongoDB Shell
 
+{{< caution >}}
+When using the `rm` command ensure you are removing the desired file and directory. You cannot recover files or directories once they are removed.
+{{</ caution>}}
+
 ### Linux
 
 To remove MongoDB shell, remove the executable files from where they were placed during installation. For example:
 
-    rm -r /usr/local/bin/mongosh
-    rm -r /usr/local/bin/mongocryptd-mongosh
+    rm -ri /usr/local/bin/mongosh
+    rm -ri /usr/local/bin/mongocryptd-mongosh
 
 ### macOS
 
