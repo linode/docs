@@ -4,8 +4,9 @@ author:
   name: Andy Patrizio
 description: 'What is a cloud container? This guide introduces you to cloud containers, the benefits of container cloud computing and various use cases.'
 keywords: ['cloud containers','containers in cloud computing ','what is a container in cloud']
+tags: ['container', 'kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-09
+published: 2021-12-10
 modified_by:
   name: Linode
 title: "Introduction to Containers in Cloud Computing"
@@ -61,7 +62,8 @@ Cloud containers are designed to virtualize a single application, whether it’s
 ## The Benefits of Containers in Cloud Computing
 
 The benefits of using containers are numerous. First, the use of templates is similar to how classes and libraries work in object-oriented programming (OOP). In OOP, you create a class or object and then reuse it in multiple apps. The same holds true for containers. A single container image is used to create multiple containers. The OOP concept of inheritance also applies to containers since container images act as the parent for other, more customized container images.
-Containers run consistently on a desktop, local server, or the cloud. This makes testing them before deployment uncomplicated Some scenarios require a test bed similar in scale to the deployment setting, which means dedicating considerable resources for the test environment. Containers can be tested locally before cloud deployment with the knowledge that performance will be consistent.
+
+Containers run consistently on a desktop, local server, or the cloud. This makes testing them before deployment uncomplicated. Some scenarios require a test bed similar in scale to the deployment setting, which means dedicating considerable resources for the test environment. Containers can be tested locally before cloud deployment with the knowledge that performance will be consistent.
 
 The primary advantage of containers, especially when compared to a VM, is that containers are lightweight and portable. Containers share the machine OS kernel, which eliminates a lot of overhead. Their smaller size compared to VMs means they can spin up quickly and better support cloud-native applications that scale horizontally.
 
@@ -69,13 +71,13 @@ The primary advantage of containers, especially when compared to a VM, is that c
 
 1. Supports modern development architectures: Due to a combination of their deployment portability/consistency across platforms and their small size, containers are an ideal fit for modern development and application methodologies, such as Agile, DevOps, serverless, and microservices.
 
-1. Improves performance: Containerized apps are typically big apps broken down into manageable pieces. This has multiple benefits, not the least of which is performance improves because if a component needs increased resources, the container automatically scales to offer more CPU cores/memory/networking, then scales down when the load drops.
+1. Improves performance: Containerized apps are typically big apps broken down into manageable pieces. This has multiple benefits, not the least of which is performance improvements because if a component needs increased resources, the container automatically scales to offer more CPU cores/memory/networking, then scales down when the load drops.
 
 1. Efficient debugging: Another benefit of containerization over monolithic apps is it becomes quicker to find performance bottlenecks. With a monolithic app, developers have to do a lot of trial and error/process of elimination to find a performance bottleneck. When broken down into components, the offending code becomes more visible and the developers can zoom in on the problem spot faster.
 
 1. Hybrid/multi-cloud support: Because of its portability, containers can migrate back and forth between on-prem and the cloud. They can also move from one cloud provider to another.
 
-1. Application modernization: A common, if complacent, way to modernize a legacy on-prem application is to containerize it and move it “as is” to the cloud. This model is known as “lift and shift,” and is not recommended. On-prem apps behave differently than cloud-native apps and just moving an on-prem app to the cloud unchanged doesn't take advantage of cloud benefits like automatic scaling up and down.
+1. Application modernization: A common way to modernize a legacy on-prem application is to containerize it and move it “as is” to the cloud. This model is known as “lift and shift,” and is not recommended. On-prem apps behave differently than cloud-native apps and just moving an on-prem app to the cloud unchanged doesn't take advantage of cloud benefits like automatic scaling up and down.
 
 1. Improves utilization: Under a monolithic app, the whole app and all its memory use has to increase performance. This slows down the server. With a containerized app, just that performance-intensive component needs to scale. It does it automatically, and the orchestrator scales up resources when required, and then scales down when the task is done.
 
@@ -83,4 +85,4 @@ The primary advantage of containers, especially when compared to a VM, is that c
 
 Containers are an increasingly popular way for companies to migrate on-premises apps to the cloud and reap all the benefits the cloud brings: scale, elasticity, DevOps development, and off-loading on-prem resources to a cloud provider.
 
-The technology is mature, with a number of competitors to Docker, including Microsoft Azure, and competitors to Kubernetes, such as Red Hat OpenShift. Most cloud providers offer some ready-made container and orchestration services, including us here at Linode, with [Kubernetes](https://www.linode.com/products/kubernetes/) services. There are also several consulting services available, from [Accenture](https://www.accenture.com/us-en/blogs/software-engineering-blog/miha-kralj-containers) down to small consultancies.
+The technology is mature, with a number of competitors to Docker, including Microsoft Azure, and competitors to Kubernetes, such as Red Hat OpenShift. Most cloud providers offer some ready-made container and orchestration services, including us here at Linode, with a [managed Kubernetes](https://www.linode.com/products/kubernetes/) service.
