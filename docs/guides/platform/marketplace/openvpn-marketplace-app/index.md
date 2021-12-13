@@ -8,7 +8,7 @@ keywords: ['vpn','openvpn','tunnel','marketplace app']
 tags: ["ssl","cloud-manager","linode platform","security","marketplace","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-05
-modified: 2021-09-16
+modified: 2021-12-13
 modified_by:
   name: Linode
 title: "Deploying OpenVPN through the Linode Marketplace"
@@ -55,25 +55,43 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ## Getting Started After Deployment
 
-To obtain the credentials to log into your OpenVPN instance you can visit the [LISH Console](/docs/guides/using-the-lish-console/#through-the-cloud-manager-weblish) where the credentials have been output at the end of the installation script. The username you should use to log in to your OpenVPN server is `openvpn`. The password you can obtain by logging into to your Linode [via SSH](/docs/guides/connect-to-server-over-ssh/) and running the following command:
+### Access Details
 
-        cat /usr/local/openvpn_as/tmp/initial_ovpn_pass
+**OpenVPN Admin Interface:**
 
-Your VPN's administrative web interface will be available via a web browser at `https://192.0.2.2:943/admin/`, where `192.0.2.2` represents the IPv4 address of your new Linode instance. Your IPv4 address can be found under the **Networking** tab on your new Linode's detail page.
+- **URL:** `https://192.0.2.2:943/admin/`, where `192.0.2.2` represents the IPv4 address of your new Compute Instance. For assistance locating the IP address, see [Managing IP Addresses](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
+- **Username:** `openvpn`
+- **Password:** See [Obtaining the Admin Password](#obtaining-the-admin-password) below.
 
-The client web interface for your VPN is located at `https://192.0.2.2:943/`, where your Linode's IP address should take the place of the `192.0.2.2` example address. The client interface includes links to download the OpenVPN client software for your computer.
-{{< note >}}
+For more details on logging in to the OpenVPN admin interface for the first time (as well as changing the initial password), see the [Access Server Admin Web UI First Login](https://openvpn.net/access-server-manual/access-server-web-admin-ui-first-login/) article within OpenVPN's docs.
+
+**OpenVPN Client Interface:**
+
+- **URL:** `https://192.0.2.2:943/`, where your Linode's IPv4 address should take the place of the `192.0.2.2` example address. The client interface includes links to download the OpenVPN client software for your computer.
+
+    {{< note >}}
 The OpenVPN Access Server does not come with an HTTP (insecure) web server daemon. Hence, it is important that you use `https` in the address. If you use `http` in the address, the server does not respond.
 {{< /note >}}
+
+### Obtaining the Admin Password
+
+The password for the main administrator account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/guides/using-the-lish-console/#through-the-cloud-manager-weblish). Your credentials should appear towards the end of the installation script.
+
+{{<output>}}
+Access Server Web UIs are available here:
+Admin  UI: https://192.0.2.0:943/admin
+Client UI: https://192.0.2.0:943/
+Login as "openvpn" with "password" to continue
+(password can be changed on Admin UI)
++++++++++++++++++++++++++++++++++++++++++++++++
+{{</output>}}
+
+You can also obtain your password by running the following command:
+
+    cat /usr/local/openvpn_as/tmp/initial_ovpn_pass
 
 ### Open a Connection to your VPN
 
 To open a connection to your OpenVPN server from your computer, you'll need to install the OpenVPN client software. Follow the instructions in the [Client Software Installation](/docs/networking/vpn/install-openvpn-access-server-on-linux/#client-software-installation) section of our [OpenVPN](/docs/networking/vpn/install-openvpn-access-server-on-linux/#client-software-installation) guide for a detailed explanation of how to install and use this software.
-
-## Software Included
-
-| **Software** | **Description** |
-|--------------|-----------------|
-| [**OpenVPN Access Server**](https://openvpn.net/vpn-server/) | VPN server software. |
 
 {{< content "marketplace-update-note-shortguide">}}
