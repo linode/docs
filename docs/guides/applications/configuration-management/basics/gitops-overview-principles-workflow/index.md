@@ -1,9 +1,11 @@
 ---
-slug: gitops-overview-principles-workflow
+slug: an-overview-of-gitops-principles-and-workflow
 author:
   name: Jack Wallen
-description: 'Two to three sentences describing your guide.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'This guide provides an overview of GitOps, describes its workflow, and compares GitOps to DevOps and Kubernetes.'
+og_description: 'This guide provides an overview of GitOps, describes its workflow, and compares GitPps to DevOps and Kubernetes.'
+keywords: ['gitops vs devops', 'gitops and kubernetes', 'gitops workflow']
+tags: ['kubernetes', 'container', 'monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
 modified_by:
@@ -15,15 +17,15 @@ contributor:
   name: Jack Wallen
 ---
 
-If you're a developer chances are you know what [Git](/docs/guides/a-beginners-guide-to-github/) is. However, you may not be as familiar with *GitOps*. This guide gives you an understanding of GitOps, how it compares to DevOps and Kubernetes, describes the GitOps workflow, and the tools often used with this methodology.
+If you're a developer, chances are you know what [Git](/docs/guides/a-beginners-guide-to-github/) is. However, you may not be as familiar with *GitOps*. This guide gives you an understanding of GitOps, how it compares to DevOps and Kubernetes. It also describes the GitOps workflow, and the tools often used with this methodology.
 
 ## What is GitOps?
 
-GitOps is a paradigm shift that empowers developers to undertake tasks that might otherwise be handled by operations. Operations are the processes and services that are overseen by a company's IT department. This may include technology/infrastructure management (including software), quality assurance, network administration, device management, and ensuring products meet the needs and expectations of both internal and external clients. In other words, operations takes care of the general management of technology within a company.
+GitOps is a paradigm shift that empowers developers to undertake tasks that might otherwise be handled by operations. Operations are the processes and services that are overseen by a company's IT department. This may include technology/infrastructure management (including software), quality assurance, network administration, and device management. It also ensures that the products meet the needs & expectations of both internal & external clients. In other words, operations take care of the general management of technology within a company.
 
 Traditionally, developers don't function under the operations umbrella. The problem with that is it places development and operations in silos, such that they aren't aware of one another. GitOps aims to remove those silos, so development and operations work together.
 
-It's more than that, however. As the term GitOps contains Git, it makes sense that the distributed version control system plays a central role. GitOps ensures that Git is the one and only source of truth for code within a company. The GitOps paradigm requires that the desired state of a system must be stored in version control (Git) to ensure there's a reliable audit trail for all code. This trail includes traceable commits, which contains all the necessary information about a committer.
+It's more than that, however. As the term GitOps contains Git, it makes sense that the distributed version control system plays a central role. GitOps ensures that Git is the only source of truth for code within a company. The GitOps paradigm requires that the desired state of a system must be stored in version control (Git) to ensure there's a reliable audit trail for all code. This trail includes traceable commits, which contain all the necessary information about a committer.
 
 ## GitOps Principles
 
@@ -37,7 +39,7 @@ There are three basic components of GitOps:
 
 - IaC - [Infrastructure as Code](/docs/guides/introduction-to-infrastructure-as-code/), a methodology that stores all infrastructure configuration as code.
 - MRs - [Merge Requests](/docs/guides/resolving-git-merge-conflicts/) to serve as a change mechanism for infrastructure updates.
-- I/CD - [Continuous Integration/Continuous Delivery](/docs/guides/introduction-ci-cd/) which enforces automation in building, testing, and deploying applications and services.
+- CI/CD - [Continuous Integration/Continuous Delivery](/docs/guides/introduction-ci-cd/) which enforces automation in building, testing, and deploying applications, and services.
 
 ## GitOps vs. DevOps
 
@@ -45,11 +47,11 @@ GitOps borrows best practices from DevOps that are used for version control, col
 
 DevOps assists in the automation of the software development lifecycle and GitOPs to aid in the automation of infrastructure.
 
-There are a few key differences between GitOps and DevOps. First, GitOps uses Git to manage infrastructure provisioning and software deployment. DevOps, on the other hand, focuses primarily on CI/CD and does not focus on any one tool. The primary focus of GitOps is ensuring DevOps is done correctly, where DevOps focuses less on correctness. GitOps is also less flexible than DevOps. It is also much easier to adopt GitOps in a business that already employs DevOps.
+There are a few key differences between GitOps and DevOps. First, GitOps uses Git to manage infrastructure provisioning and software deployment. DevOps, on the other hand, focuses primarily on CI/CD and does not focus on any one tool. The primary focus of GitOps is ensuring DevOps is done correctly, whereas DevOps focuses less on correctness. GitOps is also less flexible than DevOps. It is also much easier to adopt GitOps in a business that already employs DevOps.
 
 ## GitOps and Kubernetes
 
-GitOps focuses on the automation of infrastructure, so it's a perfect workflow for businesses that employ Kubernetes. When you employ Kubernetes:
+GitOps focuses on the automation of infrastructure, so it's a perfect workflow for businesses that employ Kubernetes. When you employ GitOps and Kubernetes:
 
 - GitOps ensures everything operates as it was intended.
 - Kubernetes ensures stability and availability.
@@ -58,7 +60,7 @@ GitOps focuses on the automation of infrastructure, so it's a perfect workflow f
 
 ## The GitOps Workflow
 
-The traditional application lifecycle resembles the following:
+The traditional application lifecycle of the GitOps Workflow resembles the following:
 
 - Design
 - Build
@@ -66,7 +68,7 @@ The traditional application lifecycle resembles the following:
 - Test
 - Deploy
 
-When you add GitOps into the mix, that lifecycle looks as follows:
+When you add GitOps into the mix, that lifecycle resembles as:
 
 - Design
 - Build
@@ -79,7 +81,7 @@ When you add GitOps into the mix, that lifecycle looks as follows:
 
 With a Kubernetes workflow as your source of truth all necessary code is stored in a Git repository with the help of automation. Anyone with Kubernetes management rights can create pull requests, edit code, and issue merge requests to the repository. Once a merge request is complete, the automated GitOps operator detects the changes, another automator declares if the change is operational, and the change is automatically deployed to the cluster.
 
-Within the GitOps workflow you not only have a high level of automation, but there's also a much higher probability that every deployment works exactly as expected.
+Within the GitOps workflow you not only have a high level of automation but there's also a much higher probability that every deployment works exactly as expected.
 
 ## GitOps Tools
 
