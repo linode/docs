@@ -66,8 +66,6 @@ The client web interface for your VPN is located at `https://192.0.2.2:943/`, wh
 The OpenVPN Access Server does not come with an HTTP (insecure) web server daemon. Hence, it is important that you use `https` in the address. If you use `http` in the address, the server does not respond.
 {{< /note >}}
 
- The password for connecting to the VPN is the password you supplied in the Marketplace App creation form.
-
 ### Open a Connection to your VPN
 
 To open a connection to your OpenVPN server from your computer, you'll need to install the OpenVPN client software. Follow the instructions in the [Client Software Installation](/docs/networking/vpn/install-openvpn-access-server-on-linux/#client-software-installation) section of our [OpenVPN](/docs/networking/vpn/install-openvpn-access-server-on-linux/#client-software-installation) guide for a detailed explanation of how to install and use this software.
