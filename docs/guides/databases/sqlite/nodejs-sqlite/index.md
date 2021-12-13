@@ -24,15 +24,17 @@ external_resources:
 
 ## Getting Started with Node.js and SQLite
 
-SQLite makes a nice stand-alone database for applications that do not require a full client-server environment. Using SQLite with Node.js is easy, and can provide all the benefits of a SQL database persistence layer without needing a DBA or DevOps team.
+SQLite makes a nice stand-alone database for applications that do not require a full client-server environment. Using SQLite3 with Node.js is easy, and can provide all the benefits of a SQL database persistence layer without needing a DBA or DevOps team.
 
 For a demonstration of the general process, you can read the documentation of the [SQLite3 API](https://github.com/mapbox/node-sqlite3/wiki/API).
 
 **Prerequisite:**
-You must have installed Node.js and Node Package Manager (`npm`) on your machine. If you have not, install using the below commands:
+To get started with Node.js and SQLite3, you must have installed Node.js and Node Package Manager (`npm`) on your machine. If you have not, install using the below commands:
 
     sudo apt install npm
     sudo apt install nodejs
+
+Having installed Node.js, SQLite is now ready to be installed using an `npm` for SQLite3.
 
 ## Install SQLite
 
@@ -42,7 +44,7 @@ Install SQLite support into Node.js using `npm` on your local development enviro
 
 ## Create a Database
 
-This example uses a simple database application to track superheroes from the [Marvel Cinematic Universe](https://www.marvel.com/movies).
+Now we can create an SQLite database with Node.js. This example uses a simple database application to track superheroes from the [Marvel Cinematic Universe](https://www.marvel.com/movies).
 
 1. First, create a file called `sample.js` and import the `sqlite3` module into Node.js:
 
