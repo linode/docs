@@ -1633,6 +1633,7 @@ sendmail
 sentdex
 sentora
 seo
+serializable
 serv
 server1
 serverless
