@@ -21,7 +21,6 @@ Manually configuring systems is a good way to learn, but it's also a time consum
 
 For example, if your needs are relatively straightforward and concise, a shell script or Linode [StackScript](https://www.linode.com/stackscripts) could be all that is necessary. For more complex solutions, configuration orchestration and management exists to deploy and manage fleets of systems and services across multiple regions, networks, and service providers.
 
-
 ## Working with a Golden Image
 
 Using a *golden image* as a configuration base is a frequent starting point in cloud environment automation. This helps quickly deploy multiple systems which are exactly identical. Across the industry, golden images are also referred to as *master*, *base*, or *clone* images, among other terms. Irrespective of name, the idea behind a golden disk is simple: create the desired image and preserve it for cloning/deploying to other servers, thereby simplifying the deployment process and eliminating configuration gap.
@@ -37,7 +36,7 @@ Using a *golden image* as a configuration base is a frequent starting point in c
     - [Clone the disk](/docs/guides/disks-and-storage/#cloning-a-disk).
     - Alternatively, [take a snapshot](/docs/products/storage/backups/guides/take-a-snapshot/) of the disk with Linode Backups.
 1. Store your golden image. This can be done in a variety of ways. A few examples are:
-  - As a snapshot using [Linode Images](/docs/guides/linode-images/) or [Linode Backups](/docs/products/storage/backups/guides/take-a-snapshot/).
+  - As a snapshot using [Linode Images](/docs/products/tools/images/guides/capture-an-image/) or [Linode Backups](/docs/products/storage/backups/guides/take-a-snapshot/).
   - In a [version control](/docs/guides/introduction-to-version-control/) system running on a remote or local server.
   - On [local](/docs/guides/copying-a-disk-image-over-ssh/) storage.
 
