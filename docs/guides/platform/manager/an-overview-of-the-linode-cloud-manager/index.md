@@ -135,7 +135,7 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 - [Enabling Third Party Authentication (TPA)](/docs/guides/third-party-authentication/)
 - Managing trusted devices
 - [Adding and managing public SSH keys](/docs/guides/use-public-key-authentication-with-ssh/#upload-your-ssh-key-to-the-cloud-manager)
-- [Managing LISH authentication methods](/docs/guides/using-the-linode-shell-lish/#add-your-public-key)
+- [Managing LISH authentication methods](/docs/guides/using-the-lish-console/#add-your-public-key)
 - [Add and manage personal and third party API v4 access tokens](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token)
 - [Creating and managing OAuth Apps](/docs/guides/how-to-create-an-oauth-app-with-the-linode-python-api-library/#obtaining-a-client-id-and-a-client-secret)
 - [Access Linode referral codes](/docs/guides/how-linode-billing-works/#referral-credits)

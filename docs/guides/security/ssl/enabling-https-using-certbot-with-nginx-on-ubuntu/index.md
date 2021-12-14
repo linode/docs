@@ -28,13 +28,13 @@ relations:
 
 This guide provides instructions on using the open source [Certbot](https://certbot.eff.org/) utility with the NGINX web server on Ubuntu 20.04 LTS and 18.04 LTS. Certbot dramatically reduces the effort (and cost) of securing your websites with HTTPS. It works directly with the free [Let's Encrypt](https://letsencrypt.org/) certificate authority to request (or renew) a certificate, prove ownership of the domain, and install the certificate on NGINX (or other web servers).
 
-**Supported distributions:** Ubuntu 20.04 (Focal) and Ubuntu 18.04 (Bionic). Recent non-LTS releases like Ubuntu 21.04 (Hirsute) and 20.10 (Groovy) should also be supported. Ubuntu 16.04 (Xenial) should still be supported, though that LTS release is no longer receiving free security patches or software updates.
+**Supported distributions:** Ubuntu 20.04 (Focal Fossa) and Ubuntu 18.04 (Bionic Beaver). Recent non-LTS releases like Ubuntu 21.10 (Impish Indri), 21.04 (Hirsute Hippo), and 20.10 (Groovy Gorilla) should also be supported. Ubuntu 16.04 (Xenial Xerus) should still be supported, though that LTS release is no longer receiving free security patches or software updates.
 
 ## Before You Begin
 
 Before continuing with this guide, you need a website accessible over HTTP using your desired domain name. Breaking this down further, the following components are required:
 
-1.  **A server running on Ubuntu 20.04 LTS and 18.04 LTS (or another supported distribution)** with credentials to a standard user account (belonging to the `sudo` group) and the ability to access the server through[SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/). Review the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/guides/securing-your-server/) guides for information on deploying and configuring a Linode Compute Instance.
+1.  **A server running on Ubuntu 20.04 LTS and 18.04 LTS (or another supported distribution)** with credentials to a standard user account (belonging to the `sudo` group) and the ability to access the server through[SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/). Review the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/guides/securing-your-server/) guides for information on deploying and configuring a Linode Compute Instance.
 
 2.  **A registered domain name with DNS records pointing to the IPv4 (and optionally IPv6) address of your server.** A domain can be obtained through any registrar and can utilize any DNS service, such as Linode's [DNS Manager](/docs/guides/dns-manager/). Review the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guide for more information on configuring DNS.
 

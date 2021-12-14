@@ -7,13 +7,13 @@ description: "Learn how to create and manage configuration profiles for a Linode
 keywords: ["configuration profiles"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-05-17
+modified: 2021-10-26
 modified_by:
   name: Linode
 published: 2021-04-30
 image: Linode-Configuration-Profiles.jpg
-title: "How to Manage Linode Configuration Profiles"
-h1_title: "Linode Configuration Profiles"
+title: "How to Manage Configuration Profiles on a Linode"
+h1_title: "Managing Configuration Profiles on a Linode"
 enable_h1: true
 ---
 
@@ -110,7 +110,7 @@ You have successfully selected and booted your Linode from a configuration profi
 
 ## Determining Which Configuration Profile Was Used
 
-When a Linode is powered on or rebooted, it will use the settings stored within a configuration profile. You can determine which configuration profile was used by looking at the event history. Events are visible within the **Activity Feed** tab for a particular Linode or within the main [Events](https://cloud.linode.com/events) page for the account.
+When a Linode is powered on or rebooted, it uses the settings stored within a configuration profile. You can determine which configuration profile was used by looking at the event history. Events are visible within the **Activity Feed** tab for a particular Linode or within the main [Events](https://cloud.linode.com/events) page for the account.
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar, and select a Linode from the list.
 
@@ -118,7 +118,9 @@ When a Linode is powered on or rebooted, it will use the settings stored within 
 
 1. Locate the particular boot or reboot event and review the text. The configuration profile used during that boot will be mentioned here.
 
-![Viewing the boot history within the Activity Feed](activity-feed-booted-configuration-profile.png "Viewing the boot history within the Activity Feed")
+    ![Viewing the boot history within the Activity Feed](activity-feed-booted-configuration-profile.png)
+
+    Sometimes the boot or reboot event doesn't list a configuration profile, such as when the [Lassie Shutdown Watchdog](/docs/guides/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) initiates the event. In this case, look at the most recent reboot or boot event which does include the configuration profile that was used.
 
 ## Cloning a Configuration Profile and the Attached Disks
 

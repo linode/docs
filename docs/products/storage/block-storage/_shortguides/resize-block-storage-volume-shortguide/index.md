@@ -27,7 +27,7 @@ At this time, the size of Volumes are only able to be increased (not decreased).
 
 1.  Once your Linode has fully restarted, you need to run the previously mentioned commands to resize your Linode's Block Storage Volume
 
-    1. Login to your Linode using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/).
+    1. Login to your Linode using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 
     1.  Unmount the Volume:
 

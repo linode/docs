@@ -19,7 +19,7 @@ All Linodes are created with one IPv4 address and one for IPv6. An IPv4 address 
 
 ![Linux Static IP Configuration](linux-static-ip-configuration.png)
 
-If you want to manually configure static addressing in your Linode's operating system, this guide shows you how to do that. You will want to make these changes using [Lish](/docs/guides/using-the-linode-shell-lish/), so if a configuration error disconnects your SSH session, you won't be locked out of a system that has no network access.
+If you want to manually configure static addressing in your Linode's operating system, this guide shows you how to do that. You will want to make these changes using [Lish](/docs/guides/using-the-lish-console/), so if a configuration error disconnects your SSH session, you won't be locked out of a system that has no network access.
 
 ## General Information
 
@@ -41,9 +41,11 @@ Although your Linode may have multiple IP addresses assigned, and additionally m
 
 For example, if the address `198.51.100.5` is assigned to the interface `eth0:3`, you should use `198.51.100.1` as the gateway. A gateway should not be specified for private IP addresses.
 
+The gateway in this instance works similarly to a router, and provides access to the wider internet and other Linode services. This must always be configured on your Linode in order to have network access.
+
 **DNS Resolution**
 
-Your DNS resolver addresses are listed under the [**Networking**](/docs/guides/remote-access/) tab of the Linode detail page in the [Cloud Manager](https://cloud.linode.com/dashboard), though of course you are free to use any resolvers you choose.
+Your DNS resolver addresses are listed under the [**Networking**](/docs/guides/managing-ip-addresses/) tab of the Linode detail page in the [Cloud Manager](https://cloud.linode.com/dashboard), though of course you are free to use any resolvers you choose.
 
 However, unless you have a specific reason for doing so, you should *not* change your Linode's nameservers by editing `/etc/resolv.conf`. Depending on your distribution, `resolv.conf` may be overwritten by a networking service such as NetworkManager or systemd-resolved. Resolver options are usually set in the network interface's configuration file.
 

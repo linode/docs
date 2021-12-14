@@ -11,15 +11,14 @@ published: 2020-03-11
 modified: 2021-09-16
 modified_by:
   name: Linode
-title: "How to Deploy Flask with Marketplace Apps"
-h1_title: "Deploying Flask with Marketplace Apps"
+title: "Deploying Flask through the Linode Marketplace"
 image: Flask_oneclickapps.png
 contributor:
   name: Linode
 external_resources:
 - '[Flask Quickstart](https://flask.palletsprojects.com/en/1.1.x/quickstart/)'
 - '[Flask SQLAlchemy Documentation](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)'
-aliases: ['/platform/marketplace/how-to-deploy-flask-with-marketplace-apps/', '/platform/one-click/how-to-deploy-flask-with-one-click-apps/','/guides/how-to-deploy-flask-with-marketplace-apps/']
+aliases: ['/platform/marketplace/how-to-deploy-flask-with-marketplace-apps/', '/platform/one-click/how-to-deploy-flask-with-one-click-apps/','/guides/how-to-deploy-flask-with-one-click-apps/','/guides/how-to-deploy-flask-with-marketplace-apps/']
 ---
 
 [Flask](https://flask.palletsprojects.com/en/1.1.x/) is a quick and light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. It is designed to make getting started quick and easy, with the ability to scale up to support more complex applications.
@@ -34,7 +33,7 @@ aliases: ['/platform/marketplace/how-to-deploy-flask-with-marketplace-apps/', '/
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Debian 10
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment

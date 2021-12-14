@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html data-destination="{{ .Permalink }}">
+  <head>
+    <title>{{ .Permalink }}</title>
+    <link rel="canonical" href="{{ .Permalink }}" />
+    <meta name="robots" content="noindex" />
+    <meta charset="utf-8" />
+    <noscript>
+      <meta http-equiv="refresh" content="0; url={{ .Permalink }}" />
+    </noscript>
+  </head>
+  <script>
+    var destination = document.documentElement.getAttribute("data-destination");
+    window.location.href =
+      destination +
+      (window.location.search || "") +
+      (window.location.hash || "");
+  </script>
+</html>

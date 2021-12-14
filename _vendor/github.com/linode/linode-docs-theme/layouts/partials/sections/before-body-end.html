@@ -1,8 +1,5 @@
 <div id="consent_blackbar"></div>
 {{ partial "jslibs/instantpage/script-src.html" "-" }}
-{{- $js := resources.GetMatch "js/body/index.js" -}}
-{{ partial "helpers/script-src.html" (dict "js" $js "params" (dict "weglot_api_key" site.Params.weglot_api_key ) ) }}
-<div x-data="lnc.NewInitController()" x-init="init()"></div>
 {{/* Add the GTag info to a temporary array which is handled in the backing script. */}}
 {{ with $.Params.gtags }}
   <script>

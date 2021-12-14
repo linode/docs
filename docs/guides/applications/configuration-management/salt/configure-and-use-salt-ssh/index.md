@@ -111,7 +111,7 @@ linode1:
 
     {{< note >}}
 Permissions leverage via sudo works only if the NOPASSWD option is set up for the user that is connecting to the minion in `/etc/sudoers`.
-More information on Roster files can be found in the [Roster files documentation](https://docs.saltstack.com/en/latest/topics/ssh/roster.html#ssh-roster).
+More information on Roster files can be found in the [Roster files documentation](https://docs.saltproject.io/en/latest/topics/ssh/roster.html#ssh-roster).
 {{< /note >}}
 
 4.  Check that the master server has access to the client using the `salt-ssh` command:
@@ -167,7 +167,7 @@ Salt SSH executes commands concurrently, the default-maximum is 25 simultaneous 
                 22%
 
     {{< note >}}
-A full list of execution modules is available at [Execution modules documentation](https://docs.saltstack.com/en/latest/ref/modules/all/index.html).
+A full list of execution modules is available at [Execution modules documentation](https://docs.saltproject.io/en/latest/ref/modules/all/index.html).
 {{< /note >}}
 
 ## Install Salt-Minion Remotely via Salt SSH
@@ -189,8 +189,8 @@ salt-minion:
     pkgrepo.managed:
         - name: salt-latest
         - humanname: SaltStack Latest Release Channel for RHEL/Centos $releasever
-        - baseurl: https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest
-        - gpgkey: https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/SALTSTACK-GPG-KEY.pub
+        - baseurl: https://repo.saltproject.io/yum/redhat/$releasever/$basearch/latest
+        - gpgkey: https://repo.saltproject.io/yum/redhat/$releasever/$basearch/latest/SALTSTACK-GPG-KEY.pub
         - gpgcheck: 1
         - enabled: 1
     # Install the salt-minion package and all its dependencies.

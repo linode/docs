@@ -40,7 +40,7 @@ You may also want to back up your configuration files (usually located in `/etc/
 
 1.  Verify that you are booting with Debian's kernel using the *GRUB 2* [boot setting](/docs/platform/how-to-change-your-linodes-kernel/) in the Linode Cloud Manager. We recommend you use the distribution-supplied kernel unless you have a specific reason not to.
 
-2.  Exit the SSH session if you're currently logged in to one and instead open a Lish session to your Linode. Lish will give you continuous access to your Linode whereas SSH could disconnect during the upgrade. Read more about Lish [here](/docs/platform/manager/using-the-linode-shell-lish/).
+2.  Exit the SSH session if you're currently logged in to one and instead open a Lish session to your Linode. Lish will give you continuous access to your Linode whereas SSH could disconnect during the upgrade. Read more about Lish [here](/docs/guides/using-the-lish-console/).
 
 3.  Install all available updates for your current Debian system:
 
