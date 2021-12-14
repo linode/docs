@@ -15,19 +15,17 @@ contributor:
   name: Tom Henderson
 ---
 
-Beginners naturally refer to cheat sheets for the commands needed for day-to-day Linux host use. Every Linux administrator, advanced user, developer, and experimenter use the command line to adapt the Linux host infrastructure to their needs. These commands are a challenge to remember if you’re from the Windows world, although with experience, they become second nature. Linux commands are inherited from Unix and BSD-derivative operating systems and make host administration, monitoring, and maintenance less complex.
+Both beginners and advanced users of Linux can benefit from a Linux command cheat sheet. If you need to use a command that isn't part of your daily toolchain, or if you are coming from a non-Linux based operating system, a Linux command reference is what you need. These commands work on most Linux distributions released since 2012. Although different versions of these commands exist, each Linux distribution has *man pages*. The man pages are an authoritative for the version of the command found on your specific Linux distribution.
 
-This cheat sheet contains the most commonly-used Linux commands for Linodes. These commands also work on most Linux instances released since 2012. The GNU command-line apps are re-writes of Unix, BSD, Solaris, and other operating systems versions. These are updated, or even re-written to adapt to newer host technologies and infrastructure. Technologies like Bluetooth, Wireless Ethernet, USB, the PCI bus were only dreams when many of the early versions of these commands were written.  Although different versions of these commands exist, by tradition, each Linux version has *man pages* which are authoritative for the version of the command found on the specific Linux distribution under consideration.
+## Use the Man Pages For Specific Instructions
 
-## Use The Man Pages For Specific Instructions
-
-The man page for a command is usually updated when a command is updated, so the man page for any command is the reference for all arguments, options, and syntax for the commands found in this listing for any specific Linux host.
-
-The *man* command always has an argument of the command desired in the *man* (manual) pages. To leave the *man pages*, `<ctrl-q>` exits. Although some man pages explanations are terse, they are authoritative:
+The *manual* (man) page for a command is a reliable resource to learn about any Linux command's syntax and options. Most Linux distributions keep the man pages updated with a command's latest available options. Although some man pages explanations are terse, they are authoritative. To access the man pages for any command use the following:
 
     man <command>
 
-Some commands have built in help. The most common way to discover whether a command has built-in help information that can be displayed, is to use this syntax:
+To exit the man page you are viewing type **ctrl-q**.
+
+To access more succinct information about a specific command view your Linux system's built-in help information:
 
     <command> --help
 
