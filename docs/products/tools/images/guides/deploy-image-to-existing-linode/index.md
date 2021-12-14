@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-title: Rebuild and Deploy an Image to an Existing Linode
+title: "Rebuild an Existing Linode to Deploy an Image"
 description: "Rebuild and Deploy an Image to an Existing Linode"
 ---
 

@@ -1,6 +1,10 @@
 ---
 title: Images
 description: "Custom Images allow for rapid deployments of preconfigured disks to new or existing Linodes. They can be easily created by capturing a disk on an existing Linode or uploading an image file."
+keywords: ["linode Images", "imagize"]
+tags: ["linode platform","cloud manager"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['/guides/linode-images/','/linode-images/','/platform/disk-images/linode-images/','/platform/disk-images/linode-images-classic-manager/','/platform/linode-images/','/platform/disk-images/linode-images-new-manager/']
 tab_group_main:
     is_root: true
     title: Overview
@@ -10,7 +14,7 @@ cascade:
     product_description: "Create preconfigured disk images that can be rapidly deployed to new or existing Compute Instances."
 ---
 
-Linode's **Images** service allows users to store custom disk images in the Cloud. These images can be preconfigured with the exact software and settings required for your applications and workloads. Once created, they can be quickly deployed to new or existing Linode Compute Instances.
+Linode's **Images** service allows users to store custom disk images in the Cloud. These images can be preconfigured with the exact software and settings required for your applications and workloads. Once created, they can be quickly deployed to new or existing Linode Compute Instances, saving users time from manually setting up their entire system after each deployment.
 
 ## Create Golden Images
 

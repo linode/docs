@@ -1,17 +1,16 @@
 ---
-slug: deploy-an-image-to-a-linode
 author:
   name: Linode
   email: docs@linode.com
-description: 'Add an Image to a new disk on an existing Linode.'
+description: "Add an Image to a new disk on an existing Linode."
 keywords: ["linux", "linode manager", "image", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-04-28
 modified_by:
   name: Linode
 published: 2019-10-11
-title: Deploy an Image to a Disk on an Existing Linode
-aliases: ['/quick-answers/linode-platform/deploy-an-image-to-a-linode/','/quick-answers/linode-platform/deploy-an-image-to-a-linode-classic-manager/']
+title: "Add a Disk to an Existing Linode to Deploy an Image"
+aliases: ['/guides/deploy-an-image-to-a-linode/','/quick-answers/linode-platform/deploy-an-image-to-a-linode/','/quick-answers/linode-platform/deploy-an-image-to-a-linode-classic-manager/']
 tags: ["linode platform","cloud manager"]
 ---
 
