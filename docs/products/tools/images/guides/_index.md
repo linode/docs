@@ -9,17 +9,15 @@ tab_group_main:
 
 ### Create an Image
 
-- [Capture an Image](/docs/products/tools/images/guides/capture-an-image/): Create an Image from an existing Linode's disk.
+- [Capture an Image](/docs/products/tools/images/guides/capture-an-image/): Create an Image from an existing Compute Instance.
 
 - [Upload an Image](/docs/products/tools/images/guides/upload-an-image/): Create an Image from an image file.
 
 ### Deploy an Image
 
-- [Deploy an Image to a New Linode](/docs/products/tools/images/guides/deploy-image-to-new-linode/): Create a new Linode Compute Instance using an Image.
+- [Deploy an Image to a New Compute Instance](/docs/products/tools/images/guides/deploy-image-to-new-linode/): Create a new Compute Instance using an Image.
 
-- [Rebuild an Existing Linode to Deploy an Image](/docs/products/tools/images/guides/deploy-image-to-existing-linode/): Remove all data from an existing Linode Compute Instance and deploy the selected Image.
-
-- [Add a Disk to an Existing Linode to Deploy an Image](/docs/products/tools/images/guides/deploy-image-to-existing-linode-add-disk/): Add a disk on an existing Linode Compute Instance and deploy the selected Image.
+- [Deploy an Image to an Existing Compute Instance](/docs/products/tools/images/guides/deploy-image-to-existing-linode/): Deploy an Image by either rebuilding an existing Compute Instance or adding a disk.
 
 ## Going Further
 

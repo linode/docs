@@ -1,6 +1,6 @@
 ---
 title: Images
-description: "Custom Images allow for rapid deployments of preconfigured disks to new or existing Linodes. They can be easily created by capturing a disk on an existing Linode or uploading an image file."
+description: "Custom Images allow for rapid deployments of preconfigured disks to new or existing Compute Instances. They can be easily created by capturing a disk on an existing Instnace or uploading an image file."
 keywords: ["linode Images", "imagize"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,7 +22,7 @@ Easily create, store, and deploy *golden images* on your Linode account. A golde
 
 ## Retain Disks
 
-Custom Images can also be used to quickly take a snapshot of a disk on an existing Linode. This provides you with a copy of those disks should they need to be restored. For more comprehensive backups, including automated backups, consider using our [Backup Service](/docs/products/storage/backups/).
+Custom Images can also be used to quickly take a snapshot of a disk on an existing Compute Instance. This provides you with a copy of those disks should they need to be restored. For more comprehensive backups, including automated backups, consider using our [Backup Service](/docs/products/storage/backups/).
 
 ## Recover Recently Deleted Compute Instances
 
@@ -36,7 +36,7 @@ Images can be created and deployed across [all regions](https://www.linode.com/g
 
 {{< content "images-ga-pricing-update-shortguide" >}}
 
-User generated Custom Images cost $0.10/GB per month and can have a maximum size of 6GB. Recovery Images, generated automatically after a Linode is deleted, are provided as a free courtesy service.
+User generated Custom Images cost $0.10/GB per month and can have a maximum size of 6GB. Recovery Images, generated automatically after a Compute Instance is deleted, are provided as a free courtesy service.
 
 Keep in mind that Custom Images generated from an uploaded image file are billed based on the _uncompressed_ size of that image.
 

@@ -177,7 +177,7 @@ After the template file has been saved with your desired parameters, you're now 
 
 Once the Packer build process completes, a new [Custom Image](/docs/products/tools/images/) will appear on your account. This image can be deployed a few ways:
 
-- **Cloud Manager:** Use the Cloud Manager to deploy a Custom Image by following the [Deploy an Image to a New Linode](/docs/products/tools/images/guides/deploy-image-to-new-linode/) guide.
+- **Cloud Manager:** Use the Cloud Manager to deploy a Custom Image by following the [Deploy an Image to a New Compute Instance](/docs/products/tools/images/guides/deploy-image-to-new-linode/) guide.
 
 - **Linode CLI:** Use the Linode CLI through the command-line by following the [Using the Linode CLI](/docs/guides/linode-cli/) guide. The [Linode Instances](/docs/guides/linode-cli/#linode-instances) section of that guide will provide example commands. The command below will deploy a new Linode in the Newark data center. Replace *mypassword* with the root password you'd like to use and *linode/debian10* with the ID of your new image.
 
