@@ -1030,6 +1030,7 @@ maitis
 makefile
 makefiles
 maller
+malwarebytes
 managesieve
 mandriva
 manjaro
