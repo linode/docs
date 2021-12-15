@@ -390,6 +390,7 @@ dia
 dialogs
 diavel
 diffie
+digicert
 digium
 dirb
 dirbuster
