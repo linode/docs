@@ -67,6 +67,75 @@ Keyloggers and spyware both fall into the same category. They lurk in your compu
 
 Common sense is key in not opening emails from unknown sources. Regular antivirus scans pick up spyware. Network monitoring tools watch for suspicious outbound traffic. You can also check for unusual activity using a [system monitoring tool like gtop](/docs/guides/installing-and-using-gtop-on-linux/).
 
+### Rootkits
+
+Rootkits are a particularly nasty form of malware because they hide in the system internals of your computer and enjoy system-level protection. Rootkits are used to get full access to the system for stealing information or other malicious activity, like botnets, and keyloggers. Rootkits hide a large number of files and even system processes that might give it away.
+
+#### Rootkit Mitigation
+
+Rootkits are frequently delivered by email attachments and drive-by attacks, so standard cautions apply here as well. The problem is once they get into a system they are difficult to remove. Standard antivirus programs don’t remove them. You need specific anti-rootkit programs from vendors like [Malwarebytes](https://www.malwarebytes.com/antirootkit), [Avast](https://www.avast.com/c-rootkit-scanner-tool), [AVG](https://www.avg.com/en/signal/rootkit-scanner-tool), and [Lynis](https://github.com/CISOfy/lynis).
+
+## Man-in-the-Middle Attack
+
+Every connection on the Internet is a point-to-point connection, such as your connection to this page. There are many hops in between, but in the end, there is a direct connection between your client/endpoint and the server hosting this page.
+
+A man-in-the-middle attack is carried out by a particularly skilled hacker to get between you and a legitimate connection. For example; you forget the password to your bank account and request a change. An email comes in from your bank with a link to change the password. But the link doesn't go to your bank, it goes to a phishing site made to look like your bank. Now they have your account and password.
+
+That’s a man-in-the-middle attack. They intercept a legitimate connection, like an email, and redirect you to a theft site.
+
+### Man-in-the-Middle Attack Mitigation
+
+MITM attacks are traditionally done over unsecured routers, like public wi-fi spots. Home PC connections are considerably more secure due to the hardwired connection. Make sure to use the strongest encryption available for your home Wi-Fi network, WPA3 if possible or WPA2. Always use secure browsing, make sure there is `HTTPS://` in the URL and not `HTTP://`. Finally, don’t use the Starbucks wi-fi to access your bank or anything else vital. Wait until you are connected to the Internet over a trusted and secure network.
+
+## Botnet
+
+A botnet isn’t so much an attack as a takeover. The malicious payload is often a spam program designed to use a compromised computer to send out thousands of spam emails that can’t be traced back to the true source. They are also used to launch denial of service (DoS) attacks and other remote attacks.
+
+### Botnet Mitigation
+
+Standard security measures usually catch a botnet. Botnets are network-oriented attacks, so network security best practices apply. Use a firewall with outbound scanning, use *least privilege* on client PCs to prevent unauthorized installs, monitor for excessive outbound traffic, use a proxy server to filter outbound traffic, and if you can, adopt a [Zero Trust](https://www.crowdstrike.com/cybersecurity-101/zero-trust-security/) network.
+
+## Denial of Service (DOS) and Distributed Denial of Service (DDoS)
+
+These attacks are against organizations rather than individuals. Both are attacks where a web site, service, or online app is overloaded with connection requests so the service is taken down. The difference between a DoS and a DDoS attack is that the DoS attack is launched by a single machine or user while the DDoS attack is launched by multiple machines. This makes DDoS attacks more difficult to prevent than DoS attacks because the attack is considerably more powerful.
+
+### DOS and DDoS Mitigation
+
+DoS/DDoS attacks are the most expensive to mitigate because they require costly and comprehensive technology solutions, and the talent and expertise to go with it. It’s rare for SMBs and some enterprises to be hit because many DDoS attacks are against opportunistic or disliked corporate targets. Companies like Google and Amazon have been targeted, while the Pentagon is often the target of DDoS attacks originating outside of the USA.
+
+DoS/DDoS attacks require a strong, effective response plan, with a strategy to mitigate these attacks for your unique network. This includes hiring consultants with expertise in the field.
+
+The first active step to take is to increase bandwidth, since the attack affects the normal flow of traffic between the website and its server. A temporary increase in bandwidth may help. Adding redundancy to the servers is another key step. Content Delivery Networks (CDN) specialize in this so there is no single squeeze point. Concurrent with that is the use of load balancers to distribute your traffic equally among the servers on your host.
+
+## Worms
+
+Once one of the most common types of malware, worms do what their name implies. They spread across computer networks by exploiting operating system vulnerabilities and misconfigurations. A worm is a standalone program that replicates itself to infect other computers, without requiring action from anyone. Some are benign and simply want to see how far they can spread. Others are more malignant, acting as Trojans to deliver dangerous payloads.
+
+### Worms Mitigation
+
+Standard security practices apply here, with one additional step: zero trust networks. One of the inherent weaknesses of network design is that once a bad actor gets past the firewall, they are free to roam the network. Zero trust networks, as the name describes, require verification and credentials at every step of the way. They are designed that way to halt the actions of worms and human interlopers.
+
+## Basic Viruses
+
+The original malware, basic computer viruses are designed to damage the target computer or device by corrupting data, destroying the hard disk tables, or completely shutting down your system. They are written for no other purpose than malice.
+
+### Basic Viruses Mitigation
+
+Standard practices work here, with an addendum. Viruses replicate through disk transfer. They wreaked havoc in the era of the floppy disk. Today, thumb drives are the new floppy disk and a virus can easily travel via thumb drives. Antivirus programs detect when a thumb drive has been inserted in a USB port and pop up a window asking if you would like to scan it. Click yes. The minute or so a scan takes can make all the difference.
+
+## Conclusion
+
+The security industry tends to focus on “zero-day” malware, meaning newly discovered attacks. The fact is much of what is out there has been in the wild for months, if not years. Most common infections are not zero-day, but malware that has been known for months.
+
+Why does it persist? Because people are complacent about keeping their OS patched and computer checked. Large enterprises are better at keeping their endpoints locked down, but SMBs have a greater challenge.
+
+Much of what happens is not difficult to address. It’s no burden to run a full virus scan of your computer. Security experts should not have to continue to warn against clicking on an attachment from an unknown source.
+
+For all the anti-malware software and network security, the first and last line of defense is the staff, and with the proper information, it is not difficult to keep your computer safe.
+
+
+
+
 
 
 
