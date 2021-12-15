@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 title: "Deploy an Image to an Existing Compute Instance"
 description: "Learn how to deploy an Image to an existing Linode Compute Instance by rebuilding it or adding a new disk."
+aliases: ['/guides/deploy-an-image-to-a-linode/','/docs/quick-answers/linode-platform/deploy-an-image-to-a-linode/','/quick-answers/linode-platform/deploy-an-image-to-a-linode-classic-manager/']
 ---
 
 {{< content "images-ga-pricing-update-shortguide" >}}
@@ -39,7 +40,7 @@ If you instead wish to retain the data on your Compute Instance, you can add a d
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Compute Instance from the list.
 
-1. **Create a disk with the Image**. Follow the instructions to [create a disk](docs/guides/disks-and-storage/#creating-a-disk) using the [Cloud Manager](https://cloud.linode.com/). Keep the following considerations in mind:
+1. **Create a disk with the Image**. Follow the instructions to [create a disk](/docs/guides/disks-and-storage/#creating-a-disk) using the [Cloud Manager](https://cloud.linode.com/). Keep the following considerations in mind:
 
     - Confirm there is enough unallocated storage space to accommodate the new disk for the desired Image. If you aren't sure of the size of the Image, open the **[Images](https://cloud.linode.com/images)** page, find the Image within the list, and view the *Size* column.
     - When creating the disk, select the **Create from Image** option and select the Image you wish to deploy.
@@ -50,7 +51,7 @@ If you instead wish to retain the data on your Compute Instance, you can add a d
 
     1. In the **Add Disk** form, select **Create Empty Disk** and choose the *swap* option from the **Filesystem** dropdown menu. Then enter a *Label* and *Size* (usually 128MB, 256MB, or 512MB). Click the **Add** button to create the disk.
 
-1. **Create or edit a configuration profile**. To boot using the new disk, the disk needs to be properly assigned within a new or existing [configuration profile](/docs/guides/linode-configuration-profiles) and selected as the *Root Device*. 
+1. **Create or edit a configuration profile**. To boot using the new disk, the disk needs to be properly assigned within a new or existing [configuration profile](/docs/guides/linode-configuration-profiles) and selected as the *Root Device*.
 
     1. Navigate to the Linode's **Configuration** tab and click the **Add Configuration** button. It's also possible to adjust an existing configuration profile by clicking the *Edit* link next to that configuration.
 
