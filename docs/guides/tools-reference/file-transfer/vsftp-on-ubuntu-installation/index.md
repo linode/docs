@@ -55,8 +55,8 @@ To install a standard VSFPTD on Ubuntu 20.04 through the command line follow the
 
     {{< output >}}
 vsftpd.service - vsftpd FTP server
-	Loaded: loaded (/usr/lib/systemd/system/vsftpd.service, enabled)
-	Active: active (running)
+    Loaded: loaded (/usr/lib/systemd/system/vsftpd.service, enabled)
+    Active: active (running)
     {{</ output >}}
 
 1. In order to see VSFTPD in action--a kind of "Hello, world" for FTP--create a special-purpose account on your server:
