@@ -471,6 +471,7 @@ enix
 enum
 env
 envs
+eoan
 epel
 equifax
 erb

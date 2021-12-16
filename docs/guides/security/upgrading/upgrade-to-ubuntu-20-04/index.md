@@ -23,10 +23,10 @@ aliases: ['/security/upgrading/upgrade-to-ubuntu-20-04/']
 image:
 ---
 
-Ubuntu 20.04 is a Long-Term Support (LTS) release that is supported by Canonical until April 2025. This guide shows how to upgrade your Linode from Ubuntu 18.04 (Bionic Beaver) or Ubuntu 19.10 (Eoan Ermine) to Ubuntu 20.04 (Focal Fossa).
+Ubuntu 20.04 is a Long-Term Support (LTS) release that is supported by Canonical until April 2025. Use this guide to upgrade your Linode from Ubuntu 18.04 (Bionic Beaver) or Ubuntu 19.10 (Eoan Ermine) to Ubuntu 20.04 (Focal Fossa).
 
 {{< caution >}}
-Inline distribution upgrades can yield unpredictable results. Before continuing, read through our [Upgrading to the Latest Distribution (Clean Install)](/docs/guides/manually-upgrading-to-latest-distribution-version/) guide to learn more about your upgrade options, including performing a clean install of the latest distribution version.
+Inline distribution upgrades can yield unpredictable results. Before continuing, read through [Upgrading to the Latest Distribution (Clean Install)](/docs/guides/manually-upgrading-to-latest-distribution-version/) guide to learn more about your upgrade options. This guide also provides instructions to perform a clean install of the latest distribution version.
 
 The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/guides/using-the-linode-shell-lish) or [Glish](/docs/guides/using-the-linode-graphical-shell-glish/) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
 
@@ -198,4 +198,4 @@ Once you have upgraded to Ubuntu 20.04 or later from an earlier version, you sho
 
 ## Upgrading from Previous Ubuntu Releases
 
-If your Linode is running a release of Ubuntu older than 18.04 LTS, use the upgrade guides in the [Upgrading section](/docs/guides/security/upgrading) to upgrade to Ubuntu 18.04 LTS first. You may then upgrade your Linode to Ubuntu 20.04 LTS.
+If your Linode is running Ubuntu older than 18.04 LTS, use the upgrade guides in the [Upgrading section](/docs/guides/security/upgrading) to upgrade to Ubuntu 18.04 LTS. You may then upgrade your Linode to Ubuntu 20.04 LTS.
