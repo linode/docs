@@ -31,6 +31,7 @@ Searching for software affected by log4j is a good first step for identifying im
 
 - [NCSC Maintained List of Known Effected Software and Remediation Status](https://github.com/NCSC-NL/log4shell/tree/main/software): The NCSC maintained list of known effected software as well as the remediation status.
 - [CISA Log4j List of Known Effected Products and Guidance](https://github.com/cisagov/log4j-affected-db): CISA's list of known effected Software, as well as official Mitigation Guidance.
+- [CERTCC'S CVE-2021-44228_scanner](https://github.com/CERTCC/CVE-2021-44228_scanner): The Official recommendation for log4j identification by CISA, and developed by [Carnegie Mellon's CERT Coordination Center](https://www.kb.cert.org/vuls/), this tool will empower you to identify log4j vulnerabilities in all of their known forms.
 - [log4j-scan](https://github.com/fullhunt/log4j-scan): **log4j-scan** is an open source tool built to assist users in remote fuzzing of user owned domains, specifically to address log4j vulnerabilities.
 - [Log4j-Detector](https://github.com/mergebase/log4j-detector): **log4j-detector** is an open source tool that performs local queries to detect versions of log4j that are vulnerable to both CVE-2021-44228 and CVE-2021-45046.
 - [Log4j RCE Exploitation Detection](https://gist.github.com/Neo23x0/e4c8b03ff8cdf1fa63b7d15db6e3860b): A list of commands compiled by security expert [Florian Roth](https://twitter.com/cyb3rops) built to help users identify exploitation attempts.
