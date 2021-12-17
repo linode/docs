@@ -5,7 +5,7 @@ author:
 description: 'This guide to software security best practices teaches you about types of application security and how to secure a web application.'
 keywords: ['web application security best practices','application security best practices','software development security best practices']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-15
+published: 2021-12-17
 modified_by:
   name: Linode
 title: "Software Security Best Practices"
