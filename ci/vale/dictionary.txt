@@ -86,6 +86,7 @@ autojump
 autologin
 autologout
 automagically
+automator
 automattic
 automations
 automount
@@ -390,6 +391,7 @@ dia
 dialogs
 diavel
 diffie
+digicert
 digium
 dirb
 dirbuster
@@ -558,6 +560,7 @@ firstsite
 flamegraph
 flamegraphs
 flatpress
+florian
 flowlens
 flyspray
 foodcritic
@@ -1030,6 +1033,7 @@ maitis
 makefile
 makefiles
 maller
+malwarebytes
 managesieve
 mandriva
 manjaro
@@ -1877,6 +1881,7 @@ transcoding
 transpiled
 trello
 triaging
+trivy
 truststore
 tt
 ttl
