@@ -6,7 +6,7 @@ description: 'This guide provides an overview of GitOps, describes its workflow,
 keywords: ['gitops vs devops', 'gitops and kubernetes', 'gitops workflow']
 tags: ['kubernetes', 'container', 'monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-12
+published: 2021-12-17
 modified_by:
   name: Linode
 title: "An Overview of GitOps Principles and Workflow"
@@ -20,23 +20,23 @@ If you're a developer, chances are you know what [Git](/docs/guides/a-beginners-
 
 ## What is GitOps?
 
-GitOps is a paradigm that empowers developers to undertake tasks that might otherwise be handled by operations. Operations are the processes and services that are overseen by a company's IT department. This may include technology and infrastructure management (including software), quality assurance, network administration, and device management. It also ensures that the products meet the needs and expectations of both internal and external clients.
+GitOps is a paradigm that empowers developers to undertake tasks that might otherwise be handled by operations. Operations are the processes and services that are overseen by a company's IT department. This may include technology and infrastructure management (including software), quality assurance, network administration, and device management.
 
-Traditionally, developers don't function under the operations umbrella. The problem with that is it places development and operations in silos, such that they aren't aware of one another. GitOps aims to remove those silos, so development and operations can work together. GitOps, as its name implies, ensures that Git is the only source of truth for code within a company. The GitOps paradigm requires that the desired state of a system must be stored in version control (Git) to ensure there's a reliable audit trail for all code. This trail includes traceable commits that contain all the necessary information about a committer.
+Traditionally, developers don't function under the operations umbrella. This can place development and operations in their own silos. GitOps aims to remove those silos, and enable operations to employ the same tools and methodologies that developers use for efficient collaboration. GitOps, as its name implies, relies on Git as the only source of truth; even for code related to IT operations. GitOps is possible due to [Infrastructure as Code (IaC)](/docs/guides/introduction-to-infrastructure-as-code/) tools that allow you to create and manage your infrastructure using declarative configuration files.
 
 ## GitOps Principles
 
-GitOps relies on [Git](/docs/guides/how-to-use-git/), [GitHub](/docs/guides/a-beginners-guide-to-github/), [GitLab](/docs/guides/install-gitlab-on-ubuntu-18-04/), and Bitbucket. These platforms serve as the centralized repository for the source of truth.
+GitOps relies on version control tools like [Git](/docs/guides/how-to-use-git/), [GitHub](/docs/guides/a-beginners-guide-to-github/), [GitLab](/docs/guides/install-gitlab-on-ubuntu-18-04/), and Bitbucket. These platforms serve as the centralized repository for your IaC and orchestration files.
 
 Another central idea behind GitOps is that the desired state of a system is described using declarative specifications for every environment in the software development lifecycle. Some of these environments include testing, staging, and production. Declarative configuration files are housed within the same repository as the code, so they can be accessed by all relevant members of your project.
 
-The next crucial element of GitOps is that of *observability*. Observability is the ability to measure the internal state of a system by examining the output given by that system. Monitoring is the act of observing a system over time, whereas observability is the measure of how well a system state can be understood or inferred from external outputs. Monitoring requires you to know what to monitor and observability lets the user determine what to monitor based on how the system performs over time.
+The next crucial element of GitOps is *observability*. Observability is the ability to measure the internal state of a system by examining the output given by that system. Monitoring is the act of observing a system over time, whereas observability is the measure of how well a system state can be understood or inferred from external outputs. Monitoring requires you to know what to monitor and observability lets the user determine what to monitor based on how the system performs over time.
 
-There are three basic components of GitOps:
+The three basic components of GitOps are the following:
 
 - [Infrastructure as Code](/docs/guides/introduction-to-infrastructure-as-code/) (IaC), a methodology that stores all infrastructure configuration as code.
 - [Merge Requests](/docs/guides/resolving-git-merge-conflicts/) (MRs) to serve as a change mechanism for infrastructure updates.
-- [Continuous Integration/Continuous Delivery](/docs/guides/introduction-ci-cd/) (CI/CD) that automate building, testing, and deploying applications, and services.
+- [Continuous Integration/Continuous Delivery](/docs/guides/introduction-ci-cd/) (CI/CD) that automates building, testing, and deploying applications, and services.
 
 ## GitOps vs. DevOps
 
@@ -46,7 +46,7 @@ DevOps assists in the automation of the software development lifecycle, while Gi
 
 ## GitOps and Kubernetes
 
-GitOps focuses on the automation of infrastructure, so it's a perfect workflow for businesses that employ Kubernetes. When you employ GitOps and Kubernetes:
+GitOps focuses on automating infrastructure, so it's a perfect workflow for businesses that employ Kubernetes. When you employ GitOps and Kubernetes:
 
 - GitOps ensures everything operates as it was intended.
 - Kubernetes ensures stability and availability.
@@ -76,7 +76,7 @@ When you add GitOps into the mix, that lifecycle looks as follows:
 
 With a Kubernetes workflow as your source of truth all necessary code is stored in a Git repository with the help of automation. Anyone with Kubernetes management rights can create pull requests, edit code, and issue merge requests to the repository. Once a merge request is complete, the automated GitOps operator detects the changes, another automator declares if the change is operational, and the change is automatically deployed to the cluster.
 
-Within the GitOps workflow you not only have a high level of automation but there's also a much higher probability that every deployment works exactly as expected.
+Within the GitOps workflow you not only have a high level of automation, but there's also a much higher probability that every deployment works exactly as expected.
 
 ## GitOps Tools
 
