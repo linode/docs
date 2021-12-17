@@ -28,6 +28,12 @@ Custom Images can also be used to quickly take a snapshot of a disk on an existi
 
 Accidentally deleting a production server will almost certainly impact your users and business. Linode's Custom Images service makes recovery easier by saving temporary **Recovery Images** on your account. These images can be used to quickly restore the disks from a recently deleted Compute Instance. Linode offers this service as a convenience and it's important to note that a well rounded backup strategy typically involves multiple solutions (see [Backing Up Your Data](/docs/guides/backing-up-your-data/)).
 
+## Recommended Workloads
+
+- Web or software agencies deploying similar starter configurations for clients
+- Development workflows requiring the same base image for all developers or applications
+- Workflows requiring distributions other than [those provided by Linode](/docs/guides/choosing-a-distribution/)
+
 ## Availability
 
 Images can be created and deployed across [all regions](https://www.linode.com/global-infrastructure/).
@@ -40,9 +46,7 @@ User generated Custom Images cost $0.10/GB per month and can have a maximum size
 
 Keep in mind that Custom Images generated from an uploaded image file are billed based on the _uncompressed_ size of that image.
 
-## Limits and Considerations
-
-### Overall
+## Technical Specifications
 
 {{< content "images-limits-shortguide" >}}
 
