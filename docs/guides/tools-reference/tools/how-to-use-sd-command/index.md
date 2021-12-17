@@ -45,7 +45,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 `sd` is a find-and-replace tool that uses a common regular expression (regex) syntax. This makes `sd` adaptable to pretty much any text search need. `sd`'s common regex is popular and well-documented, so you also avoid the headaches of potentially quirky regex variants like the one used by `sed`.
 
-For that reason, `sd` stands out as an alternative for the most common use of the `sed` command, finding and replacing text. And, by focusing exclusively on that function, `sd` additionally streamlines its command structure. `sd` commands are much more intuitive and readable than `sed` commands, letting you put more focus on contructing your search patterns.
+For that reason, `sd` stands out as an alternative for the most common use of the `sed` command, finding and replacing text. And, by focusing exclusively on that function, `sd` additionally streamlines its command structure. `sd` commands are much more intuitive and readable than `sed` commands, letting you put more focus on constructing your search patterns.
 
 `sd` was built using Rust, and, like many tools taking advantage of the Rust environment, it shows in `sd`'s remarkable performance. In the [developer's benchmarks](https://github.com/chmln/sd#benchmarks), `sd` handily outperforms `sed` on complex substitution tasks.
 
