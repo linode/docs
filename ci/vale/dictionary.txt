@@ -86,6 +86,7 @@ autojump
 autologin
 autologout
 automagically
+automator
 automattic
 automations
 automount
