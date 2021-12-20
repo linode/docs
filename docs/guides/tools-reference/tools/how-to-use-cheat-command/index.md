@@ -1,25 +1,23 @@
 ---
-slug: how-to-use-cheat-command
+slug: linux-cheat-command
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Nathaniel Stickman
 description: "Learn how to install and use the cheat command to view and manage cheat sheets from the command line. The cheat command gives you quick access to a repository of community cheat sheets and also allows you to easily create your own."
-og_description: "Learn how to install and use the cheat command to view and manage cheat sheets from the command line. The cheat command gives you quick access to a repository of community cheat sheets and also allows you to easily create your own."
 keywords: ['cheat linux commands','cheat linux install','linux cheat sheet app']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-24
+published: 2021-12-23
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install and Use the cheat Command on Linux"
+title: "Installing and Using the cheat Command on Linux"
 h1_title: "How to Install and Use the cheat Command on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 ---
 
-`cheat` is a command-line tool that lets you view, create, and manage cheat sheets. The fact that, with `cheat`, you can easily access cheat sheets right from the command line makes it ideal for Linux administrators and other users. No more needing to hunt down a refresher for a command you haven't used in while — you can get one without leaving your terminal.
+`cheat` is a command-line tool that lets you view, create, and manage cheat sheets. This tool is ideal for Linux system administrators because you can access your cheat sheets directly from the command line. This minimizes your need to hunt down a refresher for a command you haven't used in while. You can find what you need without leaving your terminal.
 
-Learn more about `cheat`, including how to install and get started using it, in this guide.
+In this guide you learn more about the `cheat`command-line tool, including how to install and get started using it.
 
 ## Before You Begin
 
@@ -47,9 +45,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## What is cheat?
 
-[`cheat`](https://github.com/cheat/cheat) is a command-line tool for using and managing cheat sheets. The tool was designed with Linux administrators in mind. With so many command-line tools, each with its own command and set of options, it's easy to forget details for the ones that you don't end up using very often.
+[`cheat`](https://github.com/cheat/cheat) is a command-line tool for using and managing cheat sheets. The tool was designed for Linux administrators. This tool is especially handy to help you remember details about commands you don't use very often.
 
-With `cheat`, you can easily access refreshers for those commands right from the command-line. `cheat` supports community-sourced cheat sheets like the ones in the `cheatsheets` project, giving you a ready resource to get started. But also `cheat` fully supports creation of your own cheat sheets, letting you make just the kinds of resources you need.
+With `cheat`, you can easily access refreshers for those commands right from the command-line. `cheat` supports community-sourced cheat sheets like the ones in the [`cheatsheets` project](https://github.com/cheat/cheatsheets), giving you a ready resource to get started. The `cheat` Linux command-line tool also supports the creation of your own cheat sheets, letting you make the exact resource that you need.
 
 ## How to Install cheat
 
@@ -90,12 +88,18 @@ Architecture:        x86_64
         cheat --version
 
     {{< output >}}
-4.2.2
+4.2.3
     {{< /output >}}
 
 ### Setting Up cheat
 
 On its own, `cheat` does not come with any cheat sheets. However, you can have `cheat` download a collection of community-sourced cheat sheets from the [`cheatsheets` project](https://github.com/cheat/cheatsheets). When you first run `cheat`, it prompts you about downloading the collection, as well as about creating a default configuration file.
+
+{{< note >}}
+To automatically download the community cheat sheets, `cheat` uses Git. If your system does not have Git installed, install it prior to following the steps below.
+
+    sudo apt-get install git
+{{</ note >}}
 
 Run a `cheat` command like the one below, and answer **Yes** (**Y**) to the prompts to download the community cheat sheet collection and create the default configuration file:
 
@@ -135,7 +139,7 @@ The sections below show you how to get started using `cheat`. They help you lear
 
 ### Viewing and Navigating Cheat Sheets
 
-To view a cheat sheet, provide the `cheat` command with the name of the cheat sheet. Usually, this is the name of a command you want the cheat sheet on:
+To view a cheat sheet, provide the `cheat` command with the name of the cheat sheet. Usually, this is the name of a command for which you want to view its cheat sheet:
 
     cheat ls
 
@@ -159,7 +163,7 @@ ls -d */ <dir>
 ls -d .*/ */ <dir>
 {{< /output >}}
 
-There are some cheat sheets, like the `markdown` one, that don't correspond to a command, but to a topic that you may want access to easy reminders for.
+There are some cheat sheets, like the `markdown` one, that don't correspond to a command, but to a topic that you may want to learn more about.
 
 You can get a list of all of the cheat sheets you have installed with the `-l` option:
 
@@ -199,7 +203,9 @@ You can combine query options, too, to make fine-tuned searches:
 
 You can also use `cheat` to create cheat sheets of your own. The steps below create a cheat sheet for the `bat` command, a more-readable and modern clone of `cat`, as an example.
 
-(If you think you may be interested in `bat`, check out our guide [How to Install and Use the Linux bat Command](/docs/guides/how-to-install-and-use-the-bat-command-on-linux/) to learn more.)
+{{< note >}}
+If you think you may be interested in `bat`, check out our guide [How to Install and Use the Linux bat Command](/docs/guides/how-to-install-and-use-the-bat-command-on-linux/) to learn more.
+{{</ note >}}
 
 1. Use the `-e` option to start creating the new cheat sheet:
 
@@ -244,7 +250,7 @@ In the [Setting Up cheatsheets](/docs/guides/how-to-use-cheat-command/#setting-u
 
     cheatsheets pull
 
-The script, additionally, allows you to easily push your local cheat sheets to a remote repository. This requires that you first connect your cheat sheet directory to a Git repository. You can do that either by creating a Git repository from the directory or by downloading your own fork of the `cheatsheets` repository when setting up `cheat`.
+The script also allows you to easily push your local cheat sheets to a remote repository. This requires that you first connect your cheat sheet directory to a Git repository. You can do that either by creating a Git repository from the directory or by downloading your own fork of the `cheatsheets` repository when setting up `cheat`.
 
 Once you have that done, you can simply use this command to push you local changes:
 
@@ -252,6 +258,6 @@ Once you have that done, you can simply use this command to push you local chang
 
 ## Conclusion
 
-You are ready to start using `cheat` to make your command-line life easier! The above gives you the most useful features of `cheat`, but, if you are itching for a little more, you can also dig into the `cheat` configuration file to customize your experience even further.
+This guide gives you the most useful features of `cheat`, but, if you are looking for more control, you can view the `cheat` configuration file to customize your experience even further.
 
-Wanting to be a part of the community? Do you see something that could use a cheat sheet, or did you think of some handy command for an existing sheet? Jump into the [`cheatsheets` repository](https://github.com/cheat/cheatsheets) and contribute what you can!
+Do you see something that could use a cheat sheet, or did you think of some handy command for an existing sheet? Jump into the [`cheatsheets` repository](https://github.com/cheat/cheatsheets) and contribute your own cheat sheets
