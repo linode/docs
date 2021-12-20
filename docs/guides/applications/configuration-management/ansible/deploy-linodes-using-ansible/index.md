@@ -331,6 +331,7 @@ A [pull request](https://github.com/ansible/ansible/pull/51196) currently exists
             |  |  |--{label = simple-linode-36}
 
   - Open the `/etc/hosts` file and add your Linode's IPv4 address and label:
+
         127.0.0.1       localhost
         192.0.2.0 simple-linode-29
 
