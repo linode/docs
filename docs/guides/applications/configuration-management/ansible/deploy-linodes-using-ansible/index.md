@@ -135,7 +135,7 @@ You can now begin creating Linode instances using Ansible. In this section, you 
 ...
 - name: Print info about my Linode instance
   debug:
-  msg: "ID is {{ my_linode.instance.id }} IP is {{ my_linode.instance.ipv4 }}"
+    msg: "ID is {{ my_linode.instance.id }} IP is {{ my_linode.instance.ipv4 }}"
         {{</ file >}}
 
 ### Create the Variables File
@@ -332,10 +332,10 @@ A [pull request](https://github.com/ansible/ansible/pull/51196) currently exists
 
   - Open the `/etc/hosts` file and add your Linode's IPv4 address and label:
 
-          {{< file "/etc/hosts">}}
+          {{< output >}}
 127.0.0.1       localhost
 192.0.2.0 simple-linode-29
-          {{</ file >}}
+          {{</ output >}}
 
 1. Verify that you can communicate with your grouped inventory by pinging the Linodes. The ping command will use the dynamic inventory plugin configuration file to target `example_group`. The `u root` option will run the command as root on the Linode hosts.
 
