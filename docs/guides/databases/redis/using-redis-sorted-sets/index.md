@@ -21,7 +21,7 @@ external_resources:
 - '[Redis in Action: What Redis Data Structures Look Like](https://redis.com/ebook/part-1-getting-started/chapter-1-getting-to-know-redis/1-2-what-redis-data-structures-look-like/)'
 ---
 
-Redis, the open-source, in-memory database, is one of the most popular databases for caching, messaging, and other contexts where quick, low-latency storage is at a premium.
+Redis, the open-source, in-memory database, is a popular option for its quick, low-latency storage.
 
 Redis's **sorted set** data type attempts to capture the advantages of both lists and sets, giving you a useful tool for ordered collections of unique values.
 
@@ -60,6 +60,8 @@ Recall that, in Redis, sets are also collections of unique string values. But se
 With sorted sets, Redis provides a data type with the advantages of sets while forgoing the limitation of being unordered.
 
 Redis's sorted sets can actually be thought of as a cross between lists and hashes. Lists, because they are ordered, and hashes, because the scores act like keys for each value.
+
+Want to learn more about lists and sets in Redis? Read our guide [How to Use Lists and Sets in Redis Databases](/docs/guides/using-redis-lists-sets/).
 
 ### Sorted Sets and Scoring
 
@@ -117,7 +119,7 @@ Fetching items from a sorted set works more like doing so from a list than from 
 3) "C test value"
     {{< /output >}}
 
-- Use the `ZPOPMIN` and `ZPOPMAX` commands to fetch one or more values from the beginning or ending of a sorted set, respectively. The fetched values are then removed from the sorted set:
+- Use the `ZPOPMIN` and `ZPOPMAX` commands to fetch one or more values, with their corresponding scores, from the beginning or ending of a sorted set, respectively. The fetched values are then removed from the sorted set:
 
         ZADD example_sorted_set_two 1 "H" 2 "G" 3 "F" 4 "E"
 
@@ -147,13 +149,13 @@ Fetching items from a sorted set works more like doing so from a list than from 
 3) "C test value"
     {{< /output >}}
 
-    The scores in the command are inclusive by default. Precede the score number in the command with a `(` (as in `(1 (8`) to make the search exclusive.
+    The scores in the command are inclusive by default. Precede the score in the command with a `(` (as in `(1 (8`) to make the search exclusive.
 
 #### By Lexical Order
 
-By default, Redis's sorted sets order items with the same scores lexically by value. So, "A test value" comes before "B test value" if both have matching scores.
+By default, Redis's sorted sets order items with the same scores lexically based on the items' values. So, "A test value" comes before "B test value" if both have matching scores.
 
-To make an alphabetical sorted set, you just apply the same score to all value in the set, as in:
+To make an alphabetical sorted set, you just apply the same score to all values in the set, as in:
 
     ZADD example_sorted_set_three 0 "E test value" 0 "D test value" 0 "C test value" 0 "B test value" 0 "A test value"
     ZRANGE example_sorted_set_three 0 -1
@@ -202,7 +204,7 @@ You can update an element's score in a sorted set using the `ZADD` command again
 
 ### Removing Elements from a Sorted Set
 
-The `ZPOPMIN` and `ZPOPMAX` commands covered above (in [Fetching Elements from a Sorted Set](/docs/guides/using-redis-sorted-sets/#by-order)) remove elements from lowest to highest and highest to lowest values, respectively.
+The `ZPOPMIN` and `ZPOPMAX` commands covered above (in [Fetching Elements from a Sorted Set](/docs/guides/using-redis-sorted-sets/#by-order)) remove the lowest scored and highest scored elements, respectively.
 
 Sorted sets also have access to the `ZREM` command, which lets you remove an element based on its value:
 
@@ -260,4 +262,4 @@ You can see these commands demonstrated below. They use the sorted sets created 
 
 With this, you have a basis for beginning to work with sorted sets. You have the tools for creating, viewing, and modifying them, and should be ready to put them to use in your Redis database.
 
-Take a look at our upcoming guides on the series as well. These take you further into Redis usage and concepts, exploring topics like data types and server-assisted client-side caching.
+Take a look at our upcoming guides on the series as well. These take you further into Redis usage and concepts.
