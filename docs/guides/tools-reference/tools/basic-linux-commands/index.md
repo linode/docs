@@ -5,7 +5,7 @@ author:
 description: 'What are the basic linux commands you should know? Use our Linux commands cheat sheet to learn beneficial commands, including useful commands that go beyond the basics.'
 keywords: ['linux commands cheat sheet','linux commands list','linux basic commands','important linux commands']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-08
+published: 2021-12-22
 modified_by:
   name: Linode
 title: "A List of the Most Common Linux Commands"
