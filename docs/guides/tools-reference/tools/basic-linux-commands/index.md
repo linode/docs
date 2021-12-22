@@ -19,7 +19,7 @@ Both beginners and advanced users of Linux can benefit from a Linux command chea
 
 ## What Is The Linux Command Line?
 
-The Linux Command Line is most frequently presented through a shell session. Some Linux versions use programs called terminal, term, xterm, bash, ksh, and more. When the command line is needed, a user interface, usually 80x25, is created. This terminal-like session is a session which may or may not have specific shell options programmability built into the session.
+The Linux Command Line is most frequently presented through a shell session. Some Linux versions use programs called terminal, term, xterm, bash, and more. When the command line is needed, a user interface, usually 80x25, is created. This terminal-like session is a session which may or may not have specific shell options programmability built into the session.
 
 Linux traditionally opens a bash shell. Bash is an acronym and stands for the phrase, “Bourne Again SHell”. The bash shell keeps a history of commands that have been invoked by the currently logged user.
 
@@ -29,7 +29,7 @@ These Linux commands in this guide are common to most releases. Some of them hav
 
 Like other Unix operating systems, Linux has the ability to chain commands together into shell scripts, which in turn, have rudimentary to intermediate programmability. [Shell scripting](docs/guides/intro-bash-shell-scripting/), or the use of commands arranged to execute a series of Linux command line apps, is common. Variables can be passed, and jobs can also be programmed to execute a script at certain times.
 
-This cheat sheet contains the most commonly-used Linux commands for remote servers, like a Linode. The GNU command-line apps are re-writes of Unix, BSD, Solaris, and other operating systems versions. These are updated, or even re-written to adapt to newer host technologies and infrastructure. Technologies like Bluetooth, Wireless Ethernet, USB, the PCI bus were only dreams when many of the early versions of these commands were written.  Although different versions of these commands exist, by tradition, each Linux version has *man pages* which are authoritative for the version of the command found on the specific Linux distro under consideration.
+This cheat sheet contains the most commonly-used Linux commands for remote servers, like a Linode. The GNU command-line apps are re-writes of Unix, BSD, Solaris, and other operating systems versions. These are updated, or even re-written to adapt to newer host technologies and infrastructure. Technologies like Bluetooth, Wireless Ethernet, USB, the PCI bus were only dreams when many of the early versions of these commands were written. Although different versions of these commands exist, by tradition, each Linux version has *man pages* which are authoritative for the version of the command found on the specific Linux distribution under consideration.
 
 ## Benefits of Using Basic Linux Commands
 
@@ -37,7 +37,7 @@ Day to day administration requires many different steps for administrators, adva
 
 Most Linux commands are also known to macOS users, whose operating system is derived from the Darwin branch of BSD/Unix and often execute similarly. Microsoft Windows also has many commands that are either derived from Unix CP/M, and/or DOS, and have parallel functions in Linux. Microsoft’s Windows Powershell Commands and scripts also function in ways similar to Linux using Windows-specific context and syntax.
 
-## Use the Man Pages For Specific Instructions
+## View a Command's man pages for More Information
 
 The *manual* (man) page for a command is a reliable resource to learn about any Linux command's syntax and options. Most Linux distributions keep the man pages updated with a command's latest available options. Although some explanations in the man pages are terse, they are authoritative. To access the man pages for any command use the following syntax:
 
@@ -57,7 +57,7 @@ Many commands require specific permissions to execute. Some require a non-privil
 
 After using the `sudo` command, you are prompted to enter your user password.
 
-Many Linux versions support elevating a user to be the root user, although this is risky from a security perspective. You can  temporarily elevate a user be the root user using the `su` command, as follows:
+Many Linux versions support elevating a user to be the root user, although this is risky from a security perspective. You can temporarily elevate a user be the root user using the `su` command, as follows:
 
     sudo su
 
@@ -65,11 +65,11 @@ When executed, the shell that was created by this command is the root user of th
 
     exit
 
-## User And Group Administration
+## User and Group Administration
 
-The most common commands are user and group administration commands. Typical user administration includes creating new users and groups, managing their permissions, and changing passwords. This section includes all of the most common user adminstration commands.
+The most common commands are user and group administration commands. Typical user administration includes creating new users and groups, managing their permissions, and changing passwords. This section includes all of the most common user administration commands.
 
-### Add A User
+### Add a New User
 
 To add a new user, issue the command below. Replace `<username>` with the desired username.
 
@@ -77,25 +77,25 @@ To add a new user, issue the command below. Replace `<username>` with the desire
 
 Most Linux systems will prompt you to add additional data about the new user. Provide the requested information or leave the answers blanc by pressing the **return** key. You must, however, provide a password for the new user when prompted.
 
-### Add User To A Group
+### Add User to a Group
 
 Groups are most commonly used to share common file permissions, printing services, and applications resources. To add a user to an existing group use the command below. Ensure you replace `<groupname>` and `<username>` with your own values.
 
     adduser -a -G <groupname> <username>
 
-### Add A Group
+### Add a New Group
 
 To create a new group use the `groupadd` command with the desired name of the new group, as show below:
 
     groupadd <name>
 
-### Delete A Group
+### Delete a Group
 
 The `groupdel` command is used to delete an existing Linux system group, as show below:
 
     groupdel [opyiond] <groupname>
 
-### List Groups For The Current User
+### List Groups for the Current User
 
 Users and administrators sometimes forget the names of the groups associated with a username. The `id` command reveals the groups that the current user belongs to.
 
@@ -109,8 +109,7 @@ To list the groups that a different user is a member of, use the following comma
 
     groups <username>
 
-
-### Which Users Are Logged Into A Host?
+### View Which Users Are Logged Into a Host
 
 To determine the active users on a host use the who command:
 
@@ -128,117 +127,201 @@ Administrators occasionally need to remember the context of which user is the cu
 
 ### Modify a User Account
 
-Once the `id` command is used, the usermod command can change the user’s system account files for many characteristics, the long list of them described in the `man` pages.
+The `usermod` command is used to change a Linux user's settings. Any of these changes modifies the user's system account files. You can modify things like the groups a user belongs to, a user's home directory, and their default shell. The syntax for the `usermod` command is as follows:
 
     usermod [options] <username>
 
+For example, to change a user's home directory, use the following command:
+
+    sudo usermod -d /home/example-user-new-home example-user
+
+Consult our [An Overview of the usermod Command and How It's Used](/docs/guides/what-is-usermod-and-how-to-use-it/) to learn more.
+
 ## Disk and Media Management Commands
 
-Storage and storage configuration tasks aren’t frequently used, but when needed, are critical. Understanding settings and subsequently modifying them are common Linux administration tasks, especially during initial setup.
+This section provides a reference to common storage configuration commands. Understanding settings and how to modify them are common Linux administration tasks, especially during the initial setup of a system .
 
 ### Find System Block Devices
 
-Linux uses block/blk devices for storage, except RAM disks. To find currently connected block devices, the `lsblk` (list block) device command is used:
+Linux uses block devices for storage. Block devices provide access to data stored in fixed-size blocks. To find currently connected block devices, the `lsblk` (list block) device command is used:
 
-    lsblk <optional specific device, where known>
+    lsblk <optional specific device>
 
-### List And/Or Manipulate File System Partitions
+Your output may resemble the following:
 
-When resizing, deleting, creating, and/or moving is required, *parted* is used. To list known partition information, use the lower-case L option:
+{{< output >}}
+NAME MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda    8:0    0 49.5G  0 disk /
+sdb    8:16   0  512M  0 disk [SWAP]
+{{</ output >}}
 
-    parted -l
+### List and Manipulate File System Partitions
 
-### Mounting Or Listing Filesystem Mount Points
+To resize, delete, create, and move your file system partitions, use the `parted` command. To list known partition information, use the `-l` option:
 
-The `mount` command lists filesystem mounting points, and/or allows filesystems to be mounted under the / or root filing system for a host. To list currently known mounting points, use:
+    sudo parted -l
+
+{{< note >}}
+If the `parted` command is not available on your Linux system, use your distribution's package manager to install it. For example, to install `parted` on an Ubuntu system, use the following command:
+
+    sudo apt-get install parted
+{{</ note >}}
+
+Your output displays similar information:
+
+{{< output >}}
+Model: QEMU QEMU HARDDISK (scsi)
+Disk /dev/sda: 53.2GB
+Sector size (logical/physical): 512B/512B
+Partition Table: loop
+Disk Flags:
+
+Number  Start  End     Size    File system  Flags
+ 1      0.00B  53.2GB  53.2GB  ext4
+
+
+Model: QEMU QEMU HARDDISK (scsi)
+Disk /dev/sdb: 537MB
+Sector size (logical/physical): 512B/512B
+Partition Table: loop
+Disk Flags:
+
+Number  Start  End    Size   File system     Flags
+ 1      0.00B  537MB  537MB  linux-swap(v1)
+{{</ output >}}
+
+### Mounting and Listing File System Mount Points
+
+The `mount` command lists file system mounting points, and allows file systems to be mounted under the root directory (`/`) on a Linux host. To list currently known mounting points, use the following command:
 
     mount
 
-Or
+File system mounts are normally located in the `/etc/fstab` file or the `/etc/mtab` file. The file system mount is ephemeral, unless a file system mount is listed in the previously mentioned files.
 
-    mount -l
-
-Filesystem mounts are located traditionally in `/etc/fstab` or `/etc/mtab`; until listed in the `/etc/fstab` or `/etc/mtab` (system dependent), all filesystem mounts are ephemeral.
-
-Mounting a filesystem can be performed with this command:
+Mounting a file system can be performed with the following command:
 
     mount -t <filesystem type> <device name> <directory to mount filesystem, ex: /tmp>
 
-The `findmnt` command draws a tree of the current filesystem mounting points for discernibility:
+The `findmnt` command provides a tree of the current file system mounting points. This can be an easier way to read your system's mount point information.
 
     findmt <options>
 
-### Examine Or Change Disk Partitions
+### Manipulate your Linux Disk Partition Table
 
-Like parted, the fdisk command can change partitions, but also format them, too.
+The `fdisk` command is used to create and manipulate your Linux system's disk partition table. Like the `parted` command, the `fdisk` command can change system partitions. However, it can also format your disks. The syntax for this command is as follows:
 
-    fdisk <device name>
+    fdisk [options] <device name>
 
-### Determine Disk Space And Partitions
+To view all your system's disk partitions, use the following command:
 
-Rapid space reports for space on file systems, noting their mount points, can be discovered using the `df` command with:
+    sudo fdisk -l /dev/sda
+
+Your output resembles the following:
+
+{{< output >}}
+Disk /dev/sda: 49.5 GiB, 53150220288 bytes, 103809024 sectors
+Disk model: QEMU HARDDISK
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+{{</ output >}}
+
+### Determine Disk Space and Partitions
+
+Use the `df` command to view your system's available disk space. This command provides disk space information based on system mount points. The `-h` option makes the output more readable.
 
     df -h
 
-### Unmount A Filesystem
+The command outputs the following information:
 
-Removing a quiescent filesystem from the file hierarchy is performed by the `umount` command:
+{{< output >}}
+Filesystem      Size  Used Avail Use% Mounted on
+udev            984M     0  984M   0% /dev
+tmpfs           200M   21M  180M  11% /run
+/dev/sda         49G  1.6G   45G   4% /
+tmpfs           998M     0  998M   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           998M     0  998M   0% /sys/fs/cgroup
+tmpfs           200M     0  200M   0% /run/user/1000
+{{</ output >}}
+
+### Unmount a Disk in Linux
+
+To unmount file system or disk from your system use the `umount` command:
 
     umount <filesystem>
 
-## File Compression And Movement Commands
+## File Synchronization and Compression
 
-### Synchronize Files Locally
+### Synchronize Files to Local or Remote Destinations
 
-The `rsync` command synchronizes single files through entire filesystems to local or remote destinations. The syntax is:
+The `rsync` command synchronizes files and directories to local or remote destinations. The syntax for this command is the following:
 
     rsync <options> <source files> <destination directory>
 
-When rsync is used to move files between hosts, `ssh` is used:
+When `rsync` is used to move files between hosts, `ssh` is used:
 
     rsync <options> <source location> <username@IP_address>:/<destination directory>
 
-Where the `username@ipaddress` has valid SSH credentials. Some hosts use special SSH port addresses for communications. This is an example:
+You are prompted to provide valid SSH credentials when synching files to a remote destination.
+
+Some hosts use a SSH port number other than the default port `22`. To use a custom SSH port when connecting to a remote host, use the following command:
 
     rsync <options> <-e “ssh -p [port#]”> <source location> <username@IP_address>:/<destination directory>
 
-### Compress and Decompress Files
+### Archive, Compress, and Extract Files
 
-The `tar` command has numerous versatile options for file(s) compression or decompression, as tar is an archiving tool that’s descended from the TApe aRchive days:
+The `tar` command has numerous versatile options to archive or decompress files. `tar` is an archiving tool that’s descended from the TApe aRchive days. The basic syntax for the `tar` command is as follows:
 
     tar <options> <source> <destination>
 
-## System And Resources Listing And Manipulation
+To archive a directory named `example_dir`, use the following command:
 
-### See Bootup Messages
+    tar -cvf example_dir.tar example_dir/
 
-Upon system startup, processes send status messages which may or may not be useful to understand system states or problems. The `dmesg` command displays the list:
+To extract a tarball, use the following command:
 
-    dmesg
+    tar -xzvf example_dir.tar.gz
 
-### Quick Listing Of System Resources
+To compress a file, use the `gzip` command:
 
-The `top` command displays Linux system processes use and resources, and is updated every three seconds. Information about tasks, processes, and resources used is available in a single screen:
+    gzip example_dir.tar
+
+## List and Manipulate Linux System Resources
+
+### View System Startup Messages
+
+Upon system startup, processes send status messages that may be useful to understand your system's state or any system problems. Use the `dmesg` command to display the list of system start-up messages:
+
+    sudo dmesg
+
+You may consider filtering the output of the `dmesg` command using the `grep` command. For example:
+
+    sudo dmesg | grep "search term"
+
+### List System Processes and Resources
+
+The `top` command displays Linux system processes and resources. Its information is updated every three seconds. `top` allows you to view data about tasks, processes, and resources used in a single screen. Issue the following command to view your system processes:
 
     top
 
-Press the **c** key to sort by CPU utilization, and the **m** key to sort by memory utilization.
+Press the **c** key to sort by CPU utilization, and the **m** key to sort by memory utilization. To exit, press the **q** key.
 
 ### List All Processes
 
-Linux Processes are instantiated with a process identification number, called a PID. This number kills a process as well. This version of the `ps` command lists all processes:
+Linux Processes are instantiated with a process identification number, called a *PID*. You can also use this number to kills a process. The `ps` command below lists **all processes** using standard syntax:
 
     ps -ef
 
 ### Kill a Process
 
-The `kill` command sends a signal to a process. Using the kill command requires understanding the process and its effect on the system, because killing certain processes renders the system inoperable for some or all users.
+The `kill` command is used to send a signal to an existing system process. Using the `kill` command requires understanding the process and its effect on the system. Killing certain processes can render a Linux system inoperable.
 
-To find the types of messages available from kill to a process:
+To find the types of signals available to send to a process use the following command:
 
     kill -l
 
-To use the default message `-15 (TERM)`, the most graceful process termination:
+To use the default message `-15 (TERM)`, which is the most graceful process termination, issue the `kill` command along with the process ID number:
 
     kill <PID>
 
@@ -248,43 +331,70 @@ The `vmstat` command reports statistics from either the system startup, or the l
 
     vmstat
 
-### Show All Files In Use
+Its output resembles the following:
 
-The `lsof` command shows ALL files in use. As Linux, like all Unix derivatives, considers almost everything a file or inode, this can be a long list:
+{{< output >}}
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 0  0      0 858072   7240 933536    0    0     0     3   22   16  0  0 100  0  0
+{{</ output >}}
+
+### Show All Files in Use
+
+The `lsof` command shows all files currently in use by your system. Since Linux considers almost everything a file or inode, this can be a long list:
 
     lsof
 
-It’s possible to see all files in use by a process ID/PID:
+You can view all files in use by a specific process ID (PID) with the following command:
 
     lsof -p -<PID>
 
 ### List USB Services
 
-Host-connected USB devices that are powered-on during connection are shown by the `lsusb` command:
+You can view a Linux system's connected USB devices using the `lsusb` command, as follows:
 
     lsusb
 
+{{< note >}}
+If your system does not have the `lsusb` command installed, use your package manager to install it. For example, to install it on an Ubuntu 20.04 system, use the following command:
+
+    sudo apt-get install usbutils
+{{</ note >}}
+
 ### Enable Bluetooth
 
-To turn on Bluetooth on systemctl (not init.d) versions of Linux:
+To turn on Bluetooth on a Linux system using systemctl use the following command:
 
     systemctl enable bluetooth
 
-If enabled, `bluetoothctl` provides interactive control of devices. To find Bluetooth devices:
+If enabled, `bluetoothctl` provides interactive control of devices. To find Bluetooth devices use the command below:
 
     bluetoothctl scan on
 
-To enable host discoverability:
+To enable host discoverability use the following command:
 
     bluetoothctl discoverable on
 
-Turn off each after scanning or after the discoverability phase.
+Ensure you use the `bluetoothctl` command to turn off bluetooth scanning and discoverability.
 
 ### Display Discovered PCI Devices
 
-The `lspci` command displays characteristics of discovered PCI devices on any PCI buses discovered in the host. There may be more than one bus, and several devices possible in each bus:
+The `lspci` command displays information about a system's PCI busses and devices. PCI stands for *peripheral component interconnect* and is used to add hardware components to a Linux system. There may be more than one bus, and several devices possible in each bus. You can issue the `lspci` command without any options:
 
     lspci
+
+An example of this command's output is the following:
+
+{{< output >}}
+00:00.0 Host bridge: Intel Corporation 82G33/G31/P35/P31 Express DRAM Controller
+00:01.0 VGA compatible controller: Device 1234:1111 (rev 02)
+00:02.0 SCSI storage controller: Red Hat, Inc Virtio SCSI
+00:03.0 SCSI storage controller: Red Hat, Inc Virtio SCSI
+00:04.0 Ethernet controller: Red Hat, Inc Virtio network device
+00:1f.0 ISA bridge: Intel Corporation 82801IB (ICH9) LPC Interface Controller (rev 02)
+00:1f.2 SATA controller: Intel Corporation 82801IR/IO/IH (ICH9R/DO/DH) 6 port SATA Controller [AHCI mode] (rev 02)
+00:1f.3 SMBus: Intel Corporation 82801I (ICH9 Family) SMBus Controller (rev 02)
+{{</ output >}}
 
 ### Show BIOS Information
 
@@ -292,114 +402,170 @@ The `dmidecode` command displays information detected about BIOS settings and in
 
     dmidecode
 
+{{< note >}}
 The `dmidecode` command cannot change BIOS settings.
+{{</ note >}}
 
-## File Manipulation And Navigation
+## File Manipulation and Directory Navigation
 
 ### List Files
 
-The `ls` command lists files in the specified directory:
+The `ls` command lists files in the specified directory. Its syntax is as follows:
 
-    ls <options><target>
+    ls [options] <target directory>
 
-The default is the current directory.
+If no directory is given, the default is the current directory.
 
-### Create an Empty File (Inode)
+### Create a New File
 
-To make an empty file, use the `touch` command:
+To create a new and empty file, use the `touch` command:
 
-    touch <path/filename>
+    touch </path/filename>
 
-### Change Current Directory
+For example, to create a new file in your home directory, use the following command:
+
+    touch ~/new_file.txt
+
+### Change the Current Directory
 
 To change to a different directory, use the `cd` command:
 
     cd <desired_directory_path>
 
-### Move A File
+To move up one directory in your file system hierarchy, use the `..` symbol. For example:
+
+    cd ..
+
+This moves you up to the current directory's parent directory.
+
+### Move a File
 
 The `mv` command moves a file to a different directory:
 
-    mv <options> <source_path> <destination_path>
+    mv [options] <source_path> <destination_path>
 
-Using the `-r` option moves files recursively.
+To learn more about the `mv` command see our guide [How to Navigate the Linux Terminal and File System](/docs/guides/linux-navigation-commands/).
 
 ### Change File Permissions
 
-The `chmod` command [changes the file permissions and executable/symbolic link mask](/docs/guides/modify-file-permissions-with-chmod/) of a file or files:
+The `chmod` command changes the file permissions and executable and symbolic link mask of a file or files. Its basic syntax looks as follows:
 
-    chmod <executable_or_symbolic_file_option> <permissions_mask> <target_files_location(s)>
+    chmod [executable or symbolic file option] [permissions mask] <target_files_location(s)>
 
-### Delete A File
+You can use both symbolic and octal notation with the `chmod` command. To learn more about the `chmod` command see our guide [Modify File Permissions with chmod](/docs/guides/modify-file-permissions-with-chmod/)
 
-The rm (ReMove) command deletes a file. Caution is advised:
+### Delete a File
 
-    rm <option> <file path>
+The `rm` command deletes a file. You should use this command with caution, since you cannot retrieve a file once its removed. The `rm` command's syntax is the following:
 
-A commonly used option is `-r` which removes files recursively through the file path. Another option, `-rf` removes files forcibly.
+    rm [option] <file path>
+
+A commonly used option is `-r` which removes files recursively through the file path.
 
 ### Determine a File Location Within the Directory Tree
 
-The `locate` command files all instances of files matching a string argument:
+The `locate` command finds all instances of files matching the provided string argument. Its syntax is the following:
 
     locate <string>
 
-### Make A Directory
+### Create a Directory
 
-The `mkdir` command instantiates a directory at the current path or one specified:
+The `mkdir` command creates a new directory in the current path or the one specified. The command looks as follows:
 
     mkdir <path_and_name>
 
-### Copy a File
+### Copying a Files and Directories
 
-Files are copied using the `cp` command:
+Files are copied using the `cp` command. Use the following syntax to copy a file from one location to another:
 
-    cp <option> <file_source> <file_destination>
+    cp [option] <file_source> <file_destination>
 
-The `-r` option recursively copies files.
+To copy a directory and all of its contents use the `-r` option. For example:
+
+    cp -r example_dir/ ~/backup_example_dir
 
 ### Create Symbolic Link to a File
 
-A symbolic link permits a connection to a file from the current directory to the location of the actual file:
+A symbolic link contains a reference to the location of a target object. This allows a *link* to a file from the current directory to the location of the actual file. Its basic syntax resembles the following:
 
-    ln -s <file_or_link_to_establish> <source>
+    ln -s <file_link> <source>
 
-## Communications Control and Status
+## Networking Commands
 
-### Known Interface Status
+### View System Network Interfaces
 
-The `ifconfig` (INterface CONFIGuration) command shows known (established) interfaces and their status:
+The `ifconfig` command displays your system's network interfaces and their status. Its syntax is as follows:
 
-    ifconfig <optional_specific_interface>
+    ifconfig [options] <interface>
 
-Unless a specific interface is used as an argument, all established interfaces are displayed.
+Unless a specific interface is used as an argument, all established interfaces are displayed. Issuing the `ifconfig` command without any options gives you a similar result:
 
-### Monitor Network Interface Status and Statistics
+{{< output >}}
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 97.107.139.212  netmask 255.255.255.0  broadcast 97.107.139.255
+        inet6 fe80::f03c:92ff:fe34:2eda  prefixlen 64  scopeid 0x20<link>
+        inet6 2600:3c03::f03c:92ff:fe34:2eda  prefixlen 64  scopeid 0x0<global>
+        ether f2:3c:92:34:2e:da  txqueuelen 1000  (Ethernet)
+        RX packets 2396597  bytes 383419419 (365.6 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 201293  bytes 96268341 (91.8 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 
-The `netstat` command displays established interfaces and protocol statistics:
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 5621  bytes 594800 (580.8 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 5621  bytes 594800 (580.8 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+{{</ output >}}
 
-    netstat <options> <arguments>
+### View Network Information
 
-Some versions use the `ss` command, a direct replacement for `netstat`.
+The `netstat` command displays information about your system's network status. Its syntax looks as follows:
 
-### Watch Live Network Conversations
+    netstat [options]
 
-The `tcpdump` command displays communications activity for the default, or a specific network interface device:
+One common usage of the `netstat` command is to view all open ports on your Linux system.
 
-    tcpdump <options> <optional_specific_network_interface>
+    netstat -plntu
 
-### Find Duplicate IP Addresses
+You see a similar output:
 
-The `arp` command (Address Resolution Protocol) finds IP-to-MAC (Media Access Control layer) address mappings, and duplicate IP addresses, which foul network communications:
+{{< output >}}
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      17183/mysqld
+tcp        0      0 127.0.0.1:587           0.0.0.0:*               LISTEN      14728/sendmail: MTA
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      916/sshd
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      14728/sendmail: MTA
+tcp6       0      0 :::80                   :::*                    LISTEN      17255/apache2
+tcp6       0      0 :::21                   :::*                    LISTEN      7554/vsftpd
+tcp6       0      0 :::22                   :::*                    LISTEN      916/sshd
+udp        0      0 0.0.0.0:68              0.0.0.0:*                           390/dhclient
+{{</ output >}}
 
-    arp <options> <interface> <hostname>
+The `netstat` command has many powerful options to view information about different areas of your network. For a deeper dive, view our [Inspecting Network Information with netstat](/docs/guides/inspecting-network-information-with-netstat/).
 
-### Determine If a Host Is Reachable
+{{< note >}}
+Some Linux distributions use the `ss` command, a direct replacement for `netstat`.
+{{</ note >}}
 
-The `ping` command uses ICMP messaging to determine if a host is reachable. If a host cannot be found by DNS name, DNS may be unavailable. If an IP address cannot be reached, then a route is unavailable:
+### Inspect Network Traffic
+
+The `tcpdump` command displays network activity for the default, or a specific network interface device:
+
+    sudo tcpdump [options] <optional_specific_network_interface>
+
+The `tcpdump` command displays a continues output of all network packets unless you interrupt the command with **ctrl+c**.
+
+### Determine if a Host Is Reachable
+
+The `ping` command uses ICMP messaging to determine if a host is reachable. If a host cannot be found by DNS name, DNS may be unavailable. If an IP address cannot be reached, then a route is unavailable. The syntax for the `ping` command is as follows:
 
     ping <hostname_or_IP_address>
 
 ## Conclusion
 
-These basic Linux commands work in any shell on any Linode Linux edition, no matter the distribution family. To learn more about Linux Basic Commands, Ubuntu/Debian derivatives can be found at [Canonical’s site](https://ubuntu.com/tutorials/command-line-for-beginners).
+These basic Linux commands work in any shell on any Linode Linux edition, no matter the distribution family. To reference more in-depth information about common Linux commands, browse our [documentation library](https://www.linode.com/docs/guides/).
