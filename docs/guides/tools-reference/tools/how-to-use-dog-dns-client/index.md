@@ -4,20 +4,19 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Learn how to use the dog command-line DNS client, a modern and more user-friendly alternative to dig."
-og_description: "Learn how to use the dog command-line DNS client, a modern and more user-friendly alternative to dig."
 keywords: ['dog dns client','dig alternative linux','dig command examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-08
 modified_by:
   name: Nathaniel Stickman
 title: "Use the dog Command on Linux to Look Up DNS Records"
-h1_title: "Use the dog Command on Linux to Look Up DNS Records"
+h1_title: "How to Use the Linux dog Command to Look Up DNS Records"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 ---
 
-`dog` is a command-line DNS client, used for looking up DNS records for domain names. It's an alternative to the popular `dig` command, with `dog` giving you a simpler interface, more readable results, and additional features like DNS-over-TLS.
+`dog` is a command-line DNS client used for looking up DNS records for domain names. It's an alternative to the popular `dig` command. The `dog` command gives you a simpler interface, more readable results, and additional features like DNS over TLS.
 
 In this guide, learn more about `dog` and how to install and start using it on your Linux system.
 
@@ -43,23 +42,23 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## What is dog?
 
-[`dog`](https://github.com/ogham/dog) is an open-source DNS client for the command line, much like the popular `dig` tool. With `dog`, you get significant improvements to the interface, along with more readable, color-coded results and the ability to render those results in JSON. `dog` also adds support for DNS-over-TLS (DoT) and DNS-over-HTTPS (DoH) protocols, giving you more options for securing your DNS lookups.
+[`dog`](https://github.com/ogham/dog) is an open-source DNS client for the command line, much like the popular `dig` tool. With `dog`, you get significant improvements to the interface, along with more readable, color-coded results, and the ability to render those results in JSON. `dog` also adds support for DNS over TLS (DoT) and DNS over HTTPS (DoH) protocols, giving you more options for securing your DNS lookups.
 
-If you're interested, you can learn more about `dig` and its features in our guide [Use dig to Perform Manual DNS Queries](/docs/guides/use-dig-to-perform-manual-dns-queries/).
+You can learn more about the `dig` command and its features in our guide [Use dig to Perform Manual DNS Queries](/docs/guides/use-dig-to-perform-manual-dns-queries/).
 
 ## How to Install dog
 
-1. Install `gcc`, `tar`, and the developer package for `libssl` or `openssl`, depending on your distribution.
+1. Install `gcc`, `tar`, and the developer package for `libssl` or `openssl`. Choose the command for your particular Linux distribution.
 
-    - On Debian and Ubuntu, you can do so with:
+    - On **Debian** and **Ubuntu**, you can do so with:
 
             sudo apt install build-essential tar libssl-dev
 
-    - On AlmaLinux, CentOS, and Fedora, you can use:
+    - On **AlmaLinux**, **CentOS**, and **Fedora**, you can use:
 
             sudo dnf install gcc tar openssl-devel
 
-1. Install [Rust](https://www.rust-lang.org/), which needs to be used to compile the `dog` source code:
+1. Install [Rust](https://www.rust-lang.org/). You need Rust to compile the `dog` source code:
 
         curl --proto =https --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
