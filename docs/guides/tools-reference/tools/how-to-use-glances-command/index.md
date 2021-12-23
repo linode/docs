@@ -139,7 +139,7 @@ Once you're in Glances, there are plenty of interactive commands you can use to 
 
         cmdline:.*pyth.*
 
-    [![glances filtering processes based on command names matching '.*pyth.*'](glances-filtered_small.png)](glances-filtered.png)
+    [![glances filtering processes based on command names matching filter](glances-filtered_small.png)](glances-filtered.png)
 
     Once you have filtered the processes, you can press **Enter** again to edit your filter or press **E** (case sensitive) to reset the filter.
 
