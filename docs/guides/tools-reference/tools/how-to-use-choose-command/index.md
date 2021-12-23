@@ -87,9 +87,7 @@ choose 1.3.3
 
 To pick out pieces of text with `choose`, provide the indices for the words you want. Like `awk`, `choose` uses the space character as a delimiter for the input text by default:
 
-    echo 'With this text, we conduct a test of various command-line
-    text-processing tools' |
-    choose 0 10
+    echo 'With this text, we conduct a test of various command-line text-processing tools' | choose 0 10
 
 {{< output >}}
 With text-processing
@@ -97,21 +95,15 @@ With text-processing
 
 `choose` is different from the other tools here in that it starts its count at `0`. But, otherwise, you can see that it works similarly to `awk` in this case. The `awk` command just requires more boilerplate:
 
-    echo 'With this text, we conduct a test of various command-line
-    text-processing tools' |
-    awk '{print $1,$11}'
+    echo 'With this text, we conduct a test of various command-line text-processing tools' | awk '{print $1,$11}'
 
 For this kind of text selection, `cut`, on the other hand, requires you to explicitly define the delimiter and use a flag before giving word indices:
 
-    echo 'With this text, we conduct a test of various command-line
-    text-processing tools' |
-    cut -d " " -f 1,11
+    echo 'With this text, we conduct a test of various command-line text-processing tools' | cut -d " " -f 1,11
 
 The divide between the commands' syntaxes grows as the needs get a little more complex. The example below demonstrates the syntax for selecting a range using the `choose` command. `choose`'s syntax takes inspiration from Python's slice syntax, so `-1` refers to the last word, `-2` to the next-to-the-last word, etc.:
 
-    echo 'With this text, we conduct a test of various command-line
-    text-processing tools' |
-    choose 4:-1
+    echo 'With this text, we conduct a test of various command-line text-processing tools' |choose 4:-1
 
 {{< output >}}
 conduct a test of various command-line text-processing tools
@@ -119,9 +111,7 @@ conduct a test of various command-line text-processing tools
 
 Meanwhile, `awk` doesn't come with a simple way of selecting a range. You need to either indicate each index in the range (e.g., `5,6,7,8,9,10,11,12`) or use a conditional loop like the following one:
 
-    echo 'With this text, we conduct a test of various command-line
-    text-processing tools' |
-    awk '{for(i=5;i<=NF;i++) printf $i" "; print ""}'
+    echo 'With this text, we conduct a test of various command-line text-processing tools' | awk '{for(i=5;i<=NF;i++) printf $i" "; print ""}'
 
 The syntax for `cut` is simpler, but still not as intuitive as the `choose` command. Moreover, `cut` doesn't support a means for moving backwards, to select the next-to-last word, for instance:
 
@@ -131,9 +121,7 @@ The syntax for `cut` is simpler, but still not as intuitive as the `choose` comm
 
 With `choose`, it's also straightforward to combine the concepts above into a simple and, again, intuitive command to recombine text, like so:
 
-    echo 'With this text, we conduct a test of various command-line
-    text-processing tools' |
-    choose 0 10 4:-3 -1
+    echo 'With this text, we conduct a test of various command-line text-processing tools' | choose 0 10 4:-3 -1
 
 {{< output >}}
 With text-processing conduct a test of various command-line tools
