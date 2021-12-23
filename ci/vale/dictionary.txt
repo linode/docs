@@ -1013,6 +1013,7 @@ lucene
 luckystrike
 lugano
 luminus
+lunasec
 lxd
 lxml
 lynis
