@@ -17,7 +17,7 @@ tags: ["linode platform"]
 aliases: ['/platform/api/api-create-api-token-shortguide/']
 ---
 
-1.  Log in to the Cloud Manager.
+1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 
 2.  Click on your username at the top of the screen and select **My Profile**.
 
