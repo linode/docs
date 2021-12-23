@@ -214,6 +214,7 @@ changelogs
 changeme
 changeset
 characterwise
+chatbots
 chatrooms
 cheatsheet
 checkmarx
@@ -707,6 +708,7 @@ hl2
 hmac
 hoc
 homebrew
+homomorphic
 host1
 host2
 hostname
@@ -1013,6 +1015,7 @@ lucene
 luckystrike
 lugano
 luminus
+lunasec
 lxd
 lxml
 lynis
@@ -1285,6 +1288,7 @@ ohai
 ok
 oldstable
 oldfashioned
+onboarding
 oneof
 ons
 opcache
@@ -1819,6 +1823,7 @@ tcpwrappers
 teamspeak
 teardown
 techland
+telecom
 teleporting
 tensorflow
 terrahelp
