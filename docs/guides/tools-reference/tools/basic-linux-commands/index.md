@@ -75,7 +75,7 @@ To add a new user, issue the command below. Replace `<username>` with the desire
 
     adduser <username>
 
-Most Linux systems will prompt you to add additional data about the new user. Provide the requested information or leave the answers blanc by pressing the **return** key. You must, however, provide a password for the new user when prompted.
+Most Linux systems will prompt you to add additional data about the new user. Provide the requested information or leave the answers blank by pressing the **return** key. You must, however, provide a password for the new user when prompted.
 
 ### Add User to a Group
 
@@ -375,7 +375,7 @@ To enable host discoverability use the following command:
 
     bluetoothctl discoverable on
 
-Ensure you use the `bluetoothctl` command to turn off bluetooth scanning and discoverability.
+Ensure you use the `bluetoothctl` command to turn off Bluetooth scanning and discoverability.
 
 ### Display Discovered PCI Devices
 
