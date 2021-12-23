@@ -27,7 +27,7 @@ The person starting the Linux command-line session, is called the current user. 
 
 These Linux commands in this guide are common to most releases. Some of them have been upgraded, augmented, or modified to suit changing needs, times, or different syntax.
 
-Like other Unix operating systems, Linux has the ability to chain commands together into shell scripts, which in turn, have rudimentary to intermediate programmability. [Shell scripting](docs/guides/intro-bash-shell-scripting/), or the use of commands arranged to execute a series of Linux command line apps, is common. Variables can be passed, and jobs can also be programmed to execute a script at certain times.
+Like other Unix operating systems, Linux has the ability to chain commands together into shell scripts, which in turn, have rudimentary to intermediate programmability. [Shell scripting](/docs/guides/intro-bash-shell-scripting/), or the use of commands arranged to execute a series of Linux command line apps, is common. Variables can be passed, and jobs can also be programmed to execute a script at certain times.
 
 This cheat sheet contains the most commonly-used Linux commands for remote servers, like a Linode. The GNU command-line apps are re-writes of Unix, BSD, Solaris, and other operating systems versions. These are updated, or even re-written to adapt to newer host technologies and infrastructure. Technologies like Bluetooth, Wireless Ethernet, USB, the PCI bus were only dreams when many of the early versions of these commands were written. Although different versions of these commands exist, by tradition, each Linux version has *man pages* which are authoritative for the version of the command found on the specific Linux distribution under consideration.
 
