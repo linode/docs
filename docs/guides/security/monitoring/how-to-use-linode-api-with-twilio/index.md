@@ -8,7 +8,7 @@ og_description: 'Twilio is an internet messaging service that can be used to mon
 keywords: []
 tags: ['python','monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-10
+published: 2021-12-23
 modified_by:
   name: Linode
 title: "How to Use the Linode API with Twilio"
