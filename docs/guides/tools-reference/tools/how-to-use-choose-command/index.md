@@ -1,17 +1,15 @@
 ---
 slug: how-to-use-choose-command
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "In this guide, learn about the choose command. It’s a fast and intuitive alternative to other command-line tools for text processing like awk and cut."
-og_description: "In this guide, learn about the choose command. It’s a fast and intuitive alternative to other command-line tools for text processing like awk and cut."
+  name: Nathaniel Stickman
+description: "In this guide, learn about the Linux choose command. It’s a fast and intuitive alternative to other command-line tools for text processing like awk and cut."
 keywords: ['awk command unix','linux text processing commands','linux cut command']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-11
+published: 2021-12-30
 modified_by:
   name: Nathaniel Stickman
 title: "Use the choose Command for Text Processing on Linux"
-h1_title: "Use the choose Command for Text Processing on Linux"
+h1_title: "How to Use the choose Command for Text Processing on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -153,7 +151,7 @@ The list below includes a run down of some core elements of the `choose` command
 
 - Negative numbers let you move backward through the text. The last word in a line is `-1`, the next-to-last word is `-2`, etc. So, a command like `choose -5:-1` selects the last five words of each line.
 
-### Advanced Examples and Options in choose
+### Advanced choose Command Examples and Options
 
 While `choose` doesn't provide the complex features offered by `cut` and `awk`, it does have some options to give you a bit more control. Here, the guide takes a look at some of these while providing you with some more advanced examples of how you can use `choose`.
 
@@ -189,7 +187,7 @@ sixth seventh eighth ninth
 39 4 29 15
 {{< /output >}}
 
-`choose` also gives you a flag — `-o` — to define the output delimiter, which is used in the next example to make the output easier to read:
+`choose` also includes the `-o` flag to define the output delimiter, which is used in the next example to make the output easier to read:
 
     cat example-text.csv | choose -f ',' -o '\t\t' 0 5
 
@@ -227,4 +225,4 @@ sixth		seventh		eighth
 
 ## Conclusion
 
-With that, you're now ready to start using `choose` for your everyday text-processing needs! If you want to see more examples or learn more about the project, check out the [GitHub page for `choose`](https://github.com/theryangeary/choose).
+If you want to see more examples or learn more about the project, check out the [GitHub page for `choose`](https://github.com/theryangeary/choose).
