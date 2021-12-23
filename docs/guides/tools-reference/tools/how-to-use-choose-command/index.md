@@ -17,9 +17,7 @@ contributor:
   link: https://github.com/nasanos
 ---
 
-`choose` offers command-line text processing, like `cut` and `awk`, but with an emphasis on making the basics simple and intuitive. And, built on Rust, it's fast.
-
-Check out this guide to learn more about `choose` and how you can get started using it on your Linux system.
+`choose` offers command-line text processing, like `cut` and `awk`, but with an emphasis on making the basics simple and intuitive. This Linux command is built on Rust, so it has fast performance. This guide shows you how to get started using the `choose` command on your Linux system.
 
 ## Before You Begin
 
@@ -29,11 +27,11 @@ Check out this guide to learn more about `choose` and how you can get started us
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On **Debian** and **Ubuntu**, you can do this with:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use:
 
             sudo dnf upgrade
 
@@ -41,27 +39,27 @@ Check out this guide to learn more about `choose` and how you can get started us
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## What is choose?
+## What is the Linux choose Command?
 
-`choose` is a command-line text processing tool, similar to `cut` and `awk`. But where those two tools emphasize wide-ranging capability, `choose` focuses on being an easy go-to solution for most everyday text-processing tasks.
+`choose` is a command-line text processing tool, similar to `cut` and `awk`. But where those two tools are very powerful text and data processing tools, `choose` focuses on being a simpler solution for most everyday text-processing tasks.
 
-Compared to `cut`, `choose` has a more intuitive syntax, letting you throw together text selections quickly. Likewise, for basic, everyday tasks, `choose` comes with a much lower syntactic overhead than `awk`. In short, `choose` doesn't come with features to replace everything you can do in `cut` and `awk`. But, if you're reaching for a tool for basic text processing, `choose` is quicker to pick up and gives you a smoother experience.
+Compared to `cut`, `choose` has a more intuitive syntax, letting you generate text selections quickly. Likewise, for basic, everyday tasks, `choose` comes with a much lower syntactic overhead than `awk`. In short, `choose` doesn't come with features to replace everything you can do in `cut` and `awk`. But, if you're reaching for a tool for basic text processing, `choose` is quicker to pick up and gives you a smoother experience.
 
-Moreover, `choose` is built on Rust and takes advantage of the Rust environment to have exceptional performance. It comes in faster than both of its counterparts, making it a great choice for long files and other cases when performance is crucial.
+Moreover, `choose` is built on Rust which gives it exceptional performance. It comes in faster than both of its counterparts, making it a great choice for long files and other cases when performance is crucial.
 
 ## How to Install choose
 
 1. Install `gcc`.
 
-    - On Debian and Ubuntu, you can do so with:
+    - On **Debian** and **Ubuntu**, you can do so with:
 
             sudo apt install build-essential
 
-    - On AlmaLinux and CentOS (8 or later), use:
+    - On **AlmaLinux** and **CentOS** (8 or later), use:
 
             sudo dnf install gcc
 
-1. Install [Rust](https://www.rust-lang.org/), which includes the Cargo package manager used to install `choose`:
+1. Install [Rust](https://www.rust-lang.org/). The Rust installation includes the Cargo package manager, which you will use to install `choose`:
 
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -75,7 +73,7 @@ Moreover, `choose` is built on Rust and takes advantage of the Rust environment 
 
         cargo install choose
 
-1. You can then verify you installation with:
+1. You can then verify your installation with the following command:
 
         choose --version
 
@@ -83,13 +81,13 @@ Moreover, `choose` is built on Rust and takes advantage of the Rust environment 
 choose 1.3.3
     {{< /output >}}
 
-## How to Use choose
+## How to Use the choose Command
 
-`choose` is meant to be a tool that's easy to pick up when you need it, without the need to do research and extensive experimenting to get your syntax right. The next sections in this guide aim to set you up with the small bit of groundwork you need to get started using `choose`. Once you have these ideas in hand, you should be able to make use of `choose` wherever you need.
+`choose` is meant to be a tool that's easy to pick up when you need it, without the need to do research and extensive experimenting to get your syntax right. The next sections show you what you need to know to get started using `choose`.
 
-### Basic Examples of choose against Other Tools
+### The Linux choose Command vs. AWK and cut
 
-To pick out pieces of text with `choose`, just provide the indices for the words you want. Like `awk`, `choose` uses the space character as a delimiter for the input text by default:
+To pick out pieces of text with `choose`, provide the indices for the words you want. Like `awk`, `choose` uses the space character as a delimiter for the input text by default:
 
     echo 'With this text, we conduct a test of various command-line
     text-processing tools' |
@@ -99,7 +97,7 @@ To pick out pieces of text with `choose`, just provide the indices for the words
 With text-processing
 {{< /output >}}
 
-Note that `choose` is different from the other tools here in that it starts its count at `0`. But, otherwise, you can see that it works similarly to `awk` in this case. The `awk` command just requires more boilerplate:
+`choose` is different from the other tools here in that it starts its count at `0`. But, otherwise, you can see that it works similarly to `awk` in this case. The `awk` command just requires more boilerplate:
 
     echo 'With this text, we conduct a test of various command-line
     text-processing tools' |
@@ -111,7 +109,7 @@ For this kind of text selection, `cut`, on the other hand, requires you to expli
     text-processing tools' |
     cut -d " " -f 1,11
 
-The divide between the commands' syntaxes grows as the needs get a little more complex. Here's what the `choose` command for selecting a range looks like. `choose`'s syntax takes inspiration from Python's slice syntax, so `-1` refers to the last word, `-2` to the next-to-the-last word, etc.:
+The divide between the commands' syntaxes grows as the needs get a little more complex. The example below demonstrates the syntax for selecting a range using the `choose` command. `choose`'s syntax takes inspiration from Python's slice syntax, so `-1` refers to the last word, `-2` to the next-to-the-last word, etc.:
 
     echo 'With this text, we conduct a test of various command-line
     text-processing tools' |
@@ -121,7 +119,7 @@ The divide between the commands' syntaxes grows as the needs get a little more c
 conduct a test of various command-line text-processing tools
 {{< /output >}}
 
-Meanwhile, `awk` doesn't come with a simple way of selecting a range. You need to either indicate each index in the range (e.g., `5,6,7,8,9,10,11,12`) or use a conditional loop like this one:
+Meanwhile, `awk` doesn't come with a simple way of selecting a range. You need to either indicate each index in the range (e.g., `5,6,7,8,9,10,11,12`) or use a conditional loop like the following one:
 
     echo 'With this text, we conduct a test of various command-line
     text-processing tools' |
@@ -133,7 +131,7 @@ The syntax for `cut` is simpler, but still not as intuitive as the `choose` comm
     text-processing tools' |
     cut -d " " -f 5-
 
-With `choose`, it's also easy to combine the concepts above into a simple and, again, intuitive command to recombine text, like so:
+With `choose`, it's also straightforward to combine the concepts above into a simple and, again, intuitive command to recombine text, like so:
 
     echo 'With this text, we conduct a test of various command-line
     text-processing tools' |
@@ -143,11 +141,11 @@ With `choose`, it's also easy to combine the concepts above into a simple and, a
 With text-processing conduct a test of various command-line tools
 {{< /output >}}
 
-### Explanation of the Syntax for choose
+### The choose Command's Syntax
 
-As mentioned above, `choose`'s syntax takes inspiration from Python's slice syntax. Its conciseness and consistency make it an intuitive system once you get the fundamentals down. It quickly becomes easy to apply in a wide range of circumstances without having to consult the documentation again.
+As mentioned above, `choose`'s syntax takes inspiration from Python's slice syntax. Its brevity and consistency make it an intuitive system once you get the fundamentals down. Once you're familiar with `choose`, you can apply it to a wide range of circumstances without having to consult the documentation again.
 
-Here's a run down of some core elements of the syntax. Knowing these leaves you well-equipped to forge ahead on your own with `choose`:
+The list below includes a run down of some core elements of the `choose` command's syntax.
 
 - The index begins at `0`. This means that, to select the first word of each line, use `choose 0`, and, to select the second, use `choose 1`, etc.
 
