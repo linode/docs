@@ -1,5 +1,5 @@
 ---
-slug: how-to-use-choose-command
+slug: use-Linux-choose-command
 author:
   name: Nathaniel Stickman
 description: "In this guide, learn about the Linux choose command. It’s a fast and intuitive alternative to other command-line tools for text processing like awk and cut."
