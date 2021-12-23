@@ -1,15 +1,14 @@
 ---
-slug: how-to-use-dog-dns-client
+slug: use-dog-linux-dns-client
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Nathaniel Stickman
 description: "Learn how to use the dog command-line DNS client, a modern and more user-friendly alternative to dig."
 keywords: ['dog dns client','dig alternative linux','dig command examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-10-08
+published: 2021-12-23
 modified_by:
   name: Nathaniel Stickman
-title: "Use the dog Command on Linux to Look Up DNS Records"
+title: "Use the Linux dog Command to Look Up DNS Records"
 h1_title: "How to Use the Linux dog Command to Look Up DNS Records"
 contributor:
   name: Nathaniel Stickman
@@ -52,11 +51,15 @@ You can learn more about the `dig` command and its features in our guide [Use di
 
     - On **Debian** and **Ubuntu**, you can do so with:
 
-            sudo apt install build-essential tar libssl-dev
+            sudo apt install build-essential tar libssl-dev pkg-config
 
     - On **AlmaLinux**, **CentOS**, and **Fedora**, you can use:
 
             sudo dnf install gcc tar openssl-devel
+
+    {{< note >}}
+You may need to update your system's version of the GNU C library (glibc).
+{{</ note >}}
 
 1. Install [Rust](https://www.rust-lang.org/). You need Rust to compile the `dog` source code:
 
@@ -68,7 +71,11 @@ You can learn more about the `dig` command and its features in our guide [Use di
 
         source $HOME/.cargo/env
 
-1. Navigate to the [releases page](https://github.com/ogham/dog/releases/) for `dog`, identify the latest release, and copy the URL for the `Source code (tar.gz)` file.
+1. Navigate to the [releases page](https://github.com/ogham/dog/releases/) for `dog`, identify the latest release, and copy the URL for the `.tar.gz` file.
+
+    {{< note >}}
+To access the `.tar.gz` file, navigate to the [**Tags** section](https://github.com/ogham/dog/tags) of the dog releases page.
+    {{</ note >}}
 
 1. Download that file, replacing the URL below with the one you copied:
 
@@ -85,7 +92,7 @@ You can learn more about the `dig` command and its features in our guide [Use di
 
 1. Copy the resulting binary into your current user's `PATH`:
 
-        cp target/release/dog /usr/local/bin
+        sudo cp target/release/dog /usr/local/bin
 
 1. Verify your installation by checking the installed version of `dog`:
 
@@ -101,7 +108,7 @@ https://dns.lookup.dog/
 
 `dog` gives you much of the same functionality of `dig`, but pared down to the essential DNS records. This makes `dog`'s results easier to read and more manageable.
 
-In the section below, you can see how to get started with basic `dog` queries and learn more about its advanced options. You can find some links at the very end of this guide if you find yourself wanting to learn more about DNS and its role in managing your servers.
+In the section below, you can see how to get started with basic `dog` queries and learn more about its advanced options. If you want to learn more about DNS and its role in managing your servers, refer to the end of this guide for more resources.
 
 ### Basic Queries
 
@@ -110,21 +117,19 @@ At its simplest, you can start looking up DNS records with `dog` just by giving 
     dog github.com
 
 {{< output >}}
-A github.com. 51s   140.82.113.4
+A github.com. 51s   192.0.2.0
 {{< /output >}}
-
-![Basic dog lookup on github.com](dog-basic.png)
 
 The output includes the record type (**A**), the domain name, the time until the record is refreshed (51 seconds), and the record's main contents — a host IP address, in this case. The main contents for a record vary depending on the record type, which you can see with the next example.
 
-You can see, in the image above, that `dog` color codes portions of the record. This becomes especially helpful in quickly navigating when your response includes several records, like in the image for the next example command below.
+`dog` provides color codes to portions of the records it displays. This helps you navigate the information when your response includes several records, like in the image for the next example command below.
 
 `dog` looks up **A** type records by default, which contain IPv4 addresses. But you can easily add more record types to your `dog` lookup, like this:
 
     dog github.com A AAAA MX NS TXT
 
 {{< output >}}
-  A github.com.      40s   140.82.112.3
+  A github.com.      40s   192.0.2.0
 SOA github.com.   58m20s A "dns1.p08.nsone.net." "hostmaster.nsone.net." 1633608682 12h00m00s 2h00m00s 14d0h00m00s 1h00m00s
 SOA github.com.   58m20s A "dns1.p08.nsone.net." "hostmaster.nsone.net." 1633608682 12h00m00s 2h00m00s 14d0h00m00s 1h00m00s
  MX github.com.   42m35s   1 "aspmx.l.google.com."
@@ -150,8 +155,6 @@ TXT github.com.   11m02s   "stripe-verification=f88ef17321660a01bab1660454192e01
     TXT github.com.   11m02s   "v=spf1 ip4:192.30.252.0/22 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com include:spf.protection.outlook.com include:mail.zendesk.com include:_spf.salesforce.com include:servers.mcsv.net ip4:166.78.69.169 ip4:166.78.69.170 ip4:166.78.71.131 ip4:167.89.101.2 ip4:167.89.101.192/28 ip4:192.254.112.60 ip4:192.254.112.98/31 ip4:192.254.113.10 ip4:192.254.113.101 ip4:192.254.114.176 ~all"
 {{< /output >}}
 
-![dog looking up more record types for github.com](dog-record-types.png)
-
 For reference, here are some of the most frequently seen DNS record types, along with brief introductions to each:
 
 - **A**: Contain the IPv4 addresses for hosts
@@ -168,10 +171,10 @@ As with `dig`, `dog` gives you an option to output short records, using the `--s
     dog github.com A --short
 
 {{< output >}}
-140.82.112.3
+192.0.2.0
 {{< /output >}}
 
-In addition to providing more readable output generally, `dog` also comes with an option to export your results as JSON. Here's an example that uses a query similar to the one above and saves the results directly as a `.json` file:
+In addition to providing more readable output, `dog` also comes with an option to export your results as JSON. Here's an example that uses a query similar to the one above and saves the results directly as a `.json` file:
 
     dog github.com A NS TXT --json > dog-github-dns-lookup.json
 
@@ -182,12 +185,12 @@ Like `dig`, `dog` lets you specify a DNS server to use for your query. Domains t
     dog github.com @8.8.8.8
 
 {{< output >}}
-A github.com. 1m00s   140.82.112.4
+A github.com. 1m00s   192.0.2.0
 {{< /output >}}
 
 Both `dig` and `dog` support lookups for the TCP and UDP protocols. `dog` uses UDP by default, but you can easily use TCP by adding the `--tcp` flag to your command.
 
-However, in addition to these two protocols, `dog` adds options for two more: DNS-over-TLS (DoT) and DNS-over-HTTPS (DoH). Each of these protocols allows you to make more secure DNS queries.
+However, in addition to these two protocols, `dog` adds options for two more: DNS over TLS (DoT) and DNS over HTTPS (DoH). Each of these protocols allows you to make more secure DNS queries.
 
 Here is an example that uses the DoT protocol via a Google DNS server. Using this option can mitigate threats of interference in the request and response:
 
@@ -201,7 +204,7 @@ MX github.com. 12m40s   10 "alt3.aspmx.l.google.com."
 MX github.com. 12m40s   10 "alt4.aspmx.l.google.com."
 {{< /output >}}
 
-And here is an example using the DoH protocol via a Cloudflare DNS server. This protocol can be used for the same reason as the DoT protocol, but has the added feature that it runs on the popular **443** port. That potentially allows it to blend in with other traffic:
+Below is an example using the DoH protocol via a Cloudflare DNS server. This protocol can be used for the same reason as the DoT protocol, but has the added feature that it runs on the popular **443** port. That potentially allows it to blend in with other traffic:
 
     dog github.com NS --https @https://cloudflare-dns.com/dns-query
 
@@ -218,4 +221,4 @@ NS github.com. 6m21s   "ns-520.awsdns-01.net."
 
 ## Conclusion
 
-You should be ready now to start using `dog` for your DNS query needs! To learn more about DNS generally, including more about record types and the role of DNS in the Internet, take a look at our guide [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/). From there, you may also want to look at our guide [Troubleshooting DNS Records](/docs/guides/troubleshooting-dns/). It can give you some ideas for how you might use a tool like `dog` to help keep your DNS setup in order.
+To learn more about DNS, including more about record types and the role of DNS in the Internet, take a look at our guide [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/). From there, you may also want to look at our guide [Troubleshooting DNS Records](/docs/guides/troubleshooting-dns/). It can give you some ideas for how you might use a tool like `dog` to help keep your DNS setup in order.
