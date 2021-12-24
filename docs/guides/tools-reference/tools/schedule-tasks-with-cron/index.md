@@ -24,6 +24,8 @@ Cron is a classic utility found on Linux and UNIX systems for running tasks at p
 
 ## How to Use Cron and crontab - The Basics
 
+### What is a Cron Job?
+
 System Cron jobs exist as entries in the `/etc/crontab` file. Each job is described on a single line by defining a time interval, a user to run the command as, and the command to run. Cron can run any kind of script, command, or executable.
 
 Below is the default system `crontab` file from Debian 9:
@@ -57,7 +59,7 @@ Time intervals are denoted by numbers and operators filled in place of each aste
 -  **Months** specified as numbers from 1 to 12.
 -  **Days of the week**, specified as numbers from 0 to 7, with Sunday represented as either/both 0 and 7.
 
-See [man crontab](https://linux.die.net/man/1/crontab) for more information.
+See [man crontab](https://linux.die.net/man/1/crontab) for more information about Cron expressions.
 
 ### Add a Cron Job
 
@@ -82,7 +84,7 @@ Cron has additional operators to specify more complex time intervals. They are:
 
 ### Special Cron Syntaxes
 
-There are a number of special Cron schedule shortcuts used to specify common intervals. These are specified on the `crontab` entry in place of the conventional five column date specification. These special interval statements are:
+Automating systems in Cron time units follows a specific Cron schedule format. There are a number of special Cron schedule shortcuts used to specify common intervals. These are specified on the `crontab` entry in place of the conventional five column date specification. These special interval statements are:  
 
 - `@yearly` and `@annually` both run the specified task **every year** at 12:00am on the 1st of January. This is equivalent to specifying `0 0 1 1 *` in the `crontab` line.
 - `@daily` and `@midnight` both run the cronjob **every day** at 12:00am. This is equivalent to the following `cron` syntax: `0 0 * * *`.
@@ -135,3 +137,5 @@ The site [crontab.guru](https://crontab.guru/) has a large number of Cron job ex
     **Option B**
 
         @hourly /opt/bin/compress-static-files
+
+For additional help creating Cron expressions, users can also use a Cron translator or [Cron calculator](https://abunchofutils.com/u/computing/cron-format-helper/) to generate the appropriate syntax.
