@@ -36,7 +36,7 @@ Statistics** page in the **MagicSpam Admin** panel.
 ![Screenshot of email by country page](email-by-country.png "Email by Country - Outbound: All")
 
 After you have a better understanding about the geographical spread of your customer base, you can configure the **Country Authentication Restrictions** in the **Security** page.
-![Screenshot of country authentication restrictions page](country-authentications-restrictions.png "Country Authentication Restrictions")
+![Screenshot of country authentication restrictions page](country-authentication-restrictions.png "Country Authentication Restrictions")
 
 MagicSpam attempts to automatically detect and allow email authentication from the GeoIP location of the email server. If the automatic detection is not successful, then set the Default Server GeoIP to the appropriate country.
 The reason this is important is threat actors often use botnets of infected machines distributed all across the world to spread out their authentication attacks. You weaken their authentication attacks by limiting the number of infected machines in the botnet which can participate in the attack against your email server.
@@ -65,15 +65,15 @@ Any further updates to the Outbound Rate Limiter can be made through the **Anti-
 
 Also make sure that the Administration Email Address has been set to an actively monitored mailbox to receive notifications about Outbound Rate Limiter Block incidents.
 
-## Authentication and Outbound Rate Limiter Whitelists
+## Authentication and Outbound Rate Limiter
 
-MagicSpam comes with Authentication and Outbound Rate Limiter Whitelists which allows you to exempt IP addresses from being subjected to the email authentication security checks listed above. Sometimes you have that one odd case which would get restricted by the authentication restrictions. For example, you want to restrict authentication from cloud networks but you have a billing service running on a cloud network which needs to authenticate into an email account on your email server. In this case, you can add the IP address(es) you want to exempt through the **Anti-Spam Exemptions** page on the **MagicSpam Admin** panel.
+MagicSpam comes with Authentication and Outbound Rate Limiter lists which allows you to exempt IP addresses from being subjected to the email authentication security checks listed above. Sometimes you have that one odd case which would get restricted by the authentication restrictions. For example, you want to restrict authentication from cloud networks but you have a billing service running on a cloud network which needs to authenticate into an email account on your email server. In this case, you can add the IP address(es) you want to exempt through the **Anti-Spam Exemptions** page on the **MagicSpam Admin** panel.
 
-![Screenshot of ip authentication whitelist page](ip-authentication-whitelist.png "IP Authentication Whitelist")
+![Screenshot of ip authenticationpage](ip-authentication-whitelist.png "IP Authentication")
 
 Additionally, if you have customers who have a legitimate reason to send outbound email at a higher volume than the configured limits, then you can add the email account to the **Per-User Rate Limiter Whitelist**.
 
-![Screenshot of per-user rate limiter whitelist page](per-user.png "Per-User Rate LImiter Whitelist")
+![Screenshot of per-user rate limiter page](per-user.png "Per-User Rate Limiter ")
 
-You can have the best of both worlds with these whitelists and benefit from email authentication
+You can have the best of both worlds with these allowlists and benefit from email authentication
 security while being able to exempt edge cases.
