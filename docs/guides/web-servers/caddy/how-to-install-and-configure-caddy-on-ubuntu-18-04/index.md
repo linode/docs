@@ -46,12 +46,14 @@ aliases: ['/web-servers/caddy/how-to-install-and-configure-caddy-on-ubuntu-18-04
         curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo tee /etc/apt/trusted.gpg.d/caddy-stable.asc
         curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
 
-1.  Install Caddy:
-        sudo apt update
-        sudo apt install caddy
+2.  Install Caddy:
 
-1. To verify the installation of caddy type:
+         sudo apt update -y && sudo apt install caddy
+
+3. To verify the installation of caddy type:
+       
        caddy version
+       
     An output similar to the following appears:
 
         v2.4.3 h1:Y1FaV2N4WO3rBqxSYA8UZsZTQdN+PwcoOcAiZTM8C0I=
