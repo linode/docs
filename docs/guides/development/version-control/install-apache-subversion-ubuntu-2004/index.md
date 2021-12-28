@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-09
 modified_by:
   name: Linode
-title: "Install Apache Subversion Ubuntu 20.04"
+title: "Install Apache Subversion on Ubuntu 20.04"
 h1_title: "How to Install Apache Subversion on Ubuntu 20.04"
 enable_h1: true
 contributor:
@@ -65,7 +65,7 @@ The table below signifies some of the differences between Apache Subversion and 
 
 Following are the specific prerequisites depending on the desired role:
 
-| Role | Apache Subversion components needed |
+| Role | Apache Subversion components |
 | ---------------- | ---------------- |
 | A user connecting a Client to an external Subversion Server   | Client  |
 | User hosting the Subversion  | Server and client |
@@ -117,7 +117,7 @@ The steps in this tutorial demonstrate how to use the APT package manager to ins
 
 The steps in this section show you how to install the Apache Subversion client from Ubuntu’s repositories. It’s the best method of installing SVN.
 
-1. Install Apache Subversion library dependencies from Ubuntu repositories. These are not included in the Ubuntu 20.04 LTS distributions and must be added first:
+1. Install Apache Subversion library dependencies from Ubuntu repositories. These are not included in the Ubuntu 20.04 LTS distributions and must be added first.
 
         sudo apt install libsvn-dev libapache2-mod-svn subversion-tools
 
@@ -154,7 +154,7 @@ The links between the client Subversion and the modules used for the Apache repo
 
 1. In a text editor, create an example file named `dav_svn.conf` in your system’s `/etc/apache2/mods_enabled/` directory.
 
-1. Add the example content to the `dav_svn.conf` file. This [example configuration](https://nsrc.org/workshops/ws-files/2012/pacnog11-nmm/configs/etc/apache2/mods-enabled/dav_svn.conf) demonstrate how to configure repository authentication and access control.
+1. Add the example content to the `dav_svn.conf` file. The [example configuration](https://nsrc.org/workshops/ws-files/2012/pacnog11-nmm/configs/etc/apache2/mods-enabled/dav_svn.conf) below demonstrate how to configure repository authentication and access control.
 
     {{< file "dav_svn.conf" >}}
 # dav_svn.conf - Example Subversion/Apache configuration
@@ -215,7 +215,7 @@ AuthName "Subversion Repository"
 
 ### An Example Subversion Directory Structure
 
-Subversion does not enforce a directory structure. There are three directories commonly used, `trunk`, `tags`, and `branches`.
+Subversion does not enforce a directory structure. There are three directories commonly used–`trunk`, `tags`, and `branches`.
 
 By convention, SVN uses a root directory for each project, with the `trunk/tags/branches` underneath the root directory for the project. Following is an example Subversion directory structure:
 
@@ -248,7 +248,7 @@ Your Subversion repository can be accessed by pointing the browser at the Apache
 
     http://<<server IP or FQDN>>/svn/<<name of project>>
 
-This fetches subversion data from the desired host, where `<<server IP or FQDN>>` is the accessible IP address or the Fully Qualified Domain Name(FQDN) of the Apache instance. The `<<name of project>>` in our example is `test_project`.
+This fetches subversion data from the desired host, where `<<server IP or FQDN>>` is the accessible IP address or the Fully Qualified Domain Name(FQDN) of the Apache instance. The `<<name of project>>` for example, can be `test_project`.
 
 {{< note >}}
 A complete and in-depth discussion of Subversion commands, version control strategies, project skills, and steps can be found in the [Subversion documentation](https://svnbook.red-bean.com/).
