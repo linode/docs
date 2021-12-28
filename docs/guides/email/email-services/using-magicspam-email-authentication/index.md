@@ -1,4 +1,5 @@
 ---
+slug: using-magicspam-email-authentication
 author:
   name: Linode
   email: docs@linode.com
