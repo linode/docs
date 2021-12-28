@@ -47,7 +47,7 @@ MagicSpam also comes with Source Based Authentication Restrictions which allows 
 email authentication from cloud networks and networks previously detected performing authentication attacks.
 To enable this, go to the **Security** page in the **MagicSpam Admin** panel and make sure the Source Based Authentication Restrictions is set to **On**.
 
-![Screenshot of source based authentication restrictions page](source-based-authentications-restrictions.png "Source Based Authentication Restrictions")
+![Screenshot of source based authentication restrictions page](source-based-authentication-restrictions.png "Source Based Authentication Restrictions")
 
 No one should never authenticate into their email accounts from cloud networks, only services running on cloud networks would ever need to access an email account on your email server. You also never want networks previously detected performing authentication attacks to authenticate into your email server.
 
