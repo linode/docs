@@ -1,0 +1,236 @@
+{
+ "linode-documentation": {
+  "advancedSyntax": true,
+  "alternativesAsExact": [
+   "ignorePlurals",
+   "singleWordSynonym"
+  ],
+  "attributesForFaceting": [
+   "category",
+   "isBranch",
+   "languages",
+   "section",
+   "section.lvl0",
+   "section.lvl1",
+   "section.lvl2",
+   "section.lvl3",
+   "skillLevel",
+   "tags"
+  ],
+  "attributesToHighlight": [
+   "title"
+  ],
+  "attributesToRetrieve": [
+   "excerpt",
+   "firstPublishedTime",
+   "href",
+   "isBranch",
+   "languages",
+   "lastUpdatedTime",
+   "linkTitle",
+   "ordinal",
+   "section",
+   "skillLevel",
+   "thumbnailUrl",
+   "title"
+  ],
+  "customRanking": [
+   "desc(firstPublishedYear)"
+  ],
+  "exactOnSingleWordQuery": "attribute",
+  "highlightPostTag": "\u003c/em\u003e",
+  "highlightPreTag": "\u003cem\u003e",
+  "hitsPerPage": 20,
+  "ignorePlurals": [
+   "en"
+  ],
+  "maxValuesPerFacet": 200,
+  "minWordSizefor1Typo": 4,
+  "minWordSizefor2Typos": 8,
+  "paginationLimitedTo": 1000,
+  "queryType": "prefixLast",
+  "ranking": [
+   "typo",
+   "geo",
+   "words",
+   "filters",
+   "asc(deprecated)",
+   "proximity",
+   "attribute",
+   "exact",
+   "custom"
+  ],
+  "removeStopWords": [
+   "en"
+  ],
+  "removeWordsIfNoResults": "allOptional",
+  "replicas": [
+   "linode-documentation-sorted",
+   "linode-documentation-configtest"
+  ],
+  "searchableAttributes": [
+   "unordered(title)",
+   "keywords",
+   "toc",
+   "h1",
+   "unordered(excerpt)"
+  ],
+  "separatorsToIndex": "",
+  "snippetEllipsisText": "",
+  "version": 2
+ },
+ "linode-documentation-api": {
+  "advancedSyntax": true,
+  "alternativesAsExact": [
+   "ignorePlurals",
+   "singleWordSynonym"
+  ],
+  "attributesForFaceting": [
+   "section",
+   "section.lvl0",
+   "section.lvl1"
+  ],
+  "exactOnSingleWordQuery": "attribute",
+  "highlightPostTag": "\u003c/em\u003e",
+  "highlightPreTag": "\u003cem\u003e",
+  "hitsPerPage": 20,
+  "ignorePlurals": [
+   "en"
+  ],
+  "maxValuesPerFacet": 100,
+  "minWordSizefor1Typo": 4,
+  "minWordSizefor2Typos": 8,
+  "paginationLimitedTo": 1000,
+  "queryType": "prefixLast",
+  "ranking": [
+   "typo",
+   "geo",
+   "words",
+   "filters",
+   "proximity",
+   "attribute",
+   "exact",
+   "custom"
+  ],
+  "removeStopWords": [
+   "en"
+  ],
+  "removeWordsIfNoResults": "allOptional",
+  "searchableAttributes": [
+   "unordered(title)",
+   "unordered(exerpt)",
+   "unordered(section)",
+   "unordered(section.lvl0)"
+  ],
+  "separatorsToIndex": "",
+  "snippetEllipsisText": "",
+  "version": 2
+ },
+ "linode-documentation-sections": {
+  "alternativesAsExact": [
+   "ignorePlurals",
+   "singleWordSynonym"
+  ],
+  "attributesForFaceting": [
+   "section"
+  ],
+  "exactOnSingleWordQuery": "attribute",
+  "highlightPostTag": "\u003c/em\u003e",
+  "highlightPreTag": "\u003cem\u003e",
+  "hitsPerPage": 20,
+  "maxValuesPerFacet": 100,
+  "minWordSizefor1Typo": 4,
+  "minWordSizefor2Typos": 8,
+  "paginationLimitedTo": 1000,
+  "queryType": "prefixLast",
+  "ranking": [
+   "desc(firstPublishedTime)",
+   "typo",
+   "geo",
+   "words",
+   "filters",
+   "proximity",
+   "attribute",
+   "exact",
+   "custom"
+  ],
+  "removeWordsIfNoResults": "none",
+  "separatorsToIndex": "",
+  "snippetEllipsisText": "",
+  "version": 2
+ },
+ "linode-documentation-sorted": {
+  "alternativesAsExact": [
+   "ignorePlurals",
+   "singleWordSynonym"
+  ],
+  "attributesForFaceting": [
+   "category",
+   "isBranch",
+   "languages",
+   "section",
+   "section.lvl0",
+   "section.lvl1",
+   "section.lvl2",
+   "section.lvl3",
+   "skillLevel",
+   "tags"
+  ],
+  "attributesToHighlight": [
+   "title"
+  ],
+  "attributesToRetrieve": [
+   "excerpt",
+   "firstPublishedTime",
+   "href",
+   "isBranch",
+   "languages",
+   "lastUpdatedTime",
+   "linkTitle",
+   "ordinal",
+   "section",
+   "skillLevel",
+   "thumbnailUrl",
+   "title"
+  ],
+  "exactOnSingleWordQuery": "attribute",
+  "highlightPostTag": "\u003c/em\u003e",
+  "highlightPreTag": "\u003cem\u003e",
+  "hitsPerPage": 20,
+  "ignorePlurals": [
+   "en"
+  ],
+  "maxValuesPerFacet": 200,
+  "minWordSizefor1Typo": 4,
+  "minWordSizefor2Typos": 8,
+  "paginationLimitedTo": 1000,
+  "primary": "linode-documentation",
+  "queryType": "prefixLast",
+  "ranking": [
+   "desc(firstPublishedTime)",
+   "asc(deprecated)",
+   "typo",
+   "geo",
+   "words",
+   "filters",
+   "proximity",
+   "attribute",
+   "exact",
+   "custom"
+  ],
+  "removeStopWords": [
+   "en"
+  ],
+  "removeWordsIfNoResults": "allOptional",
+  "searchableAttributes": [
+   "title",
+   "keywords",
+   "toc",
+   "h1",
+   "unordered(excerpt)"
+  ],
+  "separatorsToIndex": "",
+  "snippetEllipsisText": "",
+  "version": 2
+ }
+}

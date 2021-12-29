@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <title>Marketplace Apps</title>
+  <clipPath id="clip-path-bFkhCw29PPlBDgAO67b2wW1hL03FKIg4">
+    <rect width="50.77" height="50.77" x="67.51" y="103.12" rx="9.96"/>
+  </clipPath>
+  <path d="M60.36 82.92H47.29v2.73L138.95 175l13.76-20.48-.88-84.33-7.2 7.06-5.68 5.67z" fill="currentColor"/>
+  <g stroke-width="4.6">
+    <path fill="none" stroke="#010101" stroke-linecap="round" stroke-miterlimit="10" d="M65.77 82.94c-2-14.72 2.53-29.68 11.44-38s20.49-8.28 29.4 0 13.42 23.24 11.44 38"/>
+    <path fill="none" stroke="#010101" stroke-linecap="round" stroke-miterlimit="10" d="M86.39 69.17c-2-14.72 2.53-29.68 11.44-38s20.5-8.28 29.41 0 13.41 23.24 11.43 38"/>
+    <path stroke="#010101" stroke-linecap="round" stroke-linejoin="round" d="M47.29 82.92h91.66V175H47.29z" fill="currentColor"/>
+    <path fill="none" stroke="#010101" stroke-linecap="round" stroke-miterlimit="10" d="M139 175l13.76-20.48v-80a5.33 5.33 0 00-5.33-5.33H61.05L47.29 82.92M150.31 71.57l-11.36 11.35"/>
+  </g>
+  <rect width="50.77" height="50.77" x="67.51" y="103.12" fill="#fff" rx="9.96"/>
+  <g clip-path="url(#clip-path-bFkhCw29PPlBDgAO67b2wW1hL03FKIg4)">
+    <path d="M64.24 99.21h59.15v29.29H64.24z" fill="currentColor"/>
+  </g>
+  <rect width="50.77" height="50.77" x="67.51" y="103.12" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="4.6" rx="9.96"/>
+</svg>
