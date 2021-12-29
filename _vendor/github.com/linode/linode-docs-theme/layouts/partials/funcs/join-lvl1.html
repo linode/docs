@@ -1,0 +1,40 @@
+{{/*
+The relations are stored in front matter like this:
+
+relations:
+    relation-key:
+        key: oracle-10g-express
+        keywords:
+            - distribution: Debian 5 Lenny
+            - platform: Platform2
+            
+This partial creates a big reverse index with the combined path as the key.
+
+This partial is meant to be used with partialCached.
+
+*/}}
+
+{{ $key := . }}
+
+{{ if not $key }}
+  {{ errorf "Must provide the first level key as the argument."}}
+{{ end }}
+
+{{ $m := newScratch }}
+{{ $lvl1 :=  site.RegularPages }}
+
+{{ range $i, $p := $lvl1 }}
+  {{ with $p.Params.relations }}
+    {{ $r := index . $key }}
+    {{ with $r }}
+      {{ $path := path.Join $key $r.key }}
+      {{ if not ($m.Get $path) }}
+        {{ $m.Add $path (slice $p) }}
+      {{ else }}
+        {{ $m.Add $path $p }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ return $m.Values }}

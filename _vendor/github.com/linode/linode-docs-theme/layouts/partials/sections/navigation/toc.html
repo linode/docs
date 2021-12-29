@@ -1,0 +1,80 @@
+<div id="toc-component" class="bg-white z-10 w-full h-full border-l-gray--md" x-data="lncToc()"
+    @scroll.window.debounce.10ms="onScroll()" @hashchange.window="onHashchange();" >
+  <div x-show="enabled" class="h-full relative" @click.away="closeIfMobile()" data-testid="toc">
+    <div class="flex flex-col">
+      <ul @click="toggleOpen()">
+        <li class="cursor-pointer navbar__row bg-white">
+          <div class="hide-if-topbar-is-pinned md:hidden h-full pr-container">
+            <div class="flex items-center h-full justify-end md:hidden">
+              <button aria-label="open" type="button" class="btn-icon">
+                <svg class="fill-current w-5 h-5" :class="{'text-brand': $store.nav.open.toc, 'text-titlecolor': !$store.nav.open.toc}">
+                  <use href="#icon--book"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="show-if-topbar-is-pinned md:block h-full w-full">
+            <div class="flex items-center justify-between pl-4" style="height: calc(100% - 4px)">
+              <template x-if="!showHeading || activeHeading.title === ''">
+                <div class="font-semibold text-titlecolor uppercase text-xs md:text-sm tracking-wide md:tracking-widest">
+                  Contents
+                </div>
+              </template>
+              <template x-if="showHeading && activeHeading.title !== ''">
+                <div class="font-semibold text-titlecolor text-xs tracking-wide md:tracking-widest md:text-sm truncate w-48" x-html="activeHeading.title"></div>
+              </template>
+              <button :aria-label="open ? 'close' : 'open'" type="button" class="btn-icon" data-testid="toc-open">
+                <template x-if="!$store.nav.open.toc">
+                  <div class="pl-2 pr-7">
+                    <svg class="text-titlecolor h-4 w-4">
+                      <use href="#icon--arrow-down"></use>
+                    </svg>
+                  </div>
+                </template>
+                <template x-if="$store.nav.open.toc">
+                  <div class="pl-2 pr-7">
+                    <svg class="text-titlecolor h-4 w-4">
+                      <use href="#icon--arrow-up"></use>
+                    </svg>
+                  </div>
+                </template>
+              </button>
+            </div>
+            <div style="background-color: rgba(2,177,89,0.2);" :class="{ 'invisible': !showHeading }">
+              <div class="bg-brand" :style="'height:4px;width:' + activeHeading.progress + '%'"></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <nav class="toc bg-white border-l-gray overflow-y-scroll absolute pt-2 pb-4 z-50" class="{ 'hidden w-0': !$store.nav.open.toc }" x-show="$store.nav.open.toc"
+            x-transition:enter="transition-transform transition-opacity ease-out duration-500 sm:duration-700" x-transition:enter-start="opacity-0 transform mobile:translate-x-8 sm:-translate-y-4"
+            x-transition:enter-end="opacity-100 transform mobile:translate-x-0 sm:translate-y-0">
+      <div class="flex justify-between items-center md:hidden px-container mt-4 mb-2">
+        <h3 class="letter-spacing: 0.07px;">
+          CONTENTS
+        </h3>
+        <button type="button" class="btn-icon" @click="close()">
+          <svg class="fill-current h-5 w-5">
+            <use href="#icon--times"></use>
+          </svg>
+        </button>
+      </div>
+      <div class="toc__inner"></div>
+    </nav>
+  </div>
+  <template x-ref="headerCloseButton">
+    <button type="button" class="btn-icon text-basicgray" @click="open = !open; $event.stopPropagation();">
+      <template x-if="open">
+        <svg class="fill-current h-4 w-4">
+          <use href="#icon--arrow-up"></use>
+        </svg>
+      </template>
+      <template x-if="!open">
+        <svg class="fill-current h-4 w-4">
+          <use href="#icon--arrow-down"></use>
+        </svg>
+      </template>
+    </button>
+  </template>
+</div>

@@ -1,0 +1,30 @@
+{{- $sections := where site.Pages "Kind" "section" -}}
+{{- $sections = where $sections "Section" "not in" (slice "content" "development") -}}
+{{- $list := slice -}}
+{{- range $i, $e := $sections -}}
+{{- $thumb := "" -}}
+{{/* Try the feature.svg icon first. */}}
+{{- with .Resources.GetMatch "*feature*.svg" -}}
+{{- $thumb = . -}}
+{{- else -}}
+{{- $img := partial "funcs/get-bundle-image.html" . -}}
+{{- $thumb = $img.Fill "640x400" -}}
+{{- end -}}
+{{- $objectID := (printf "%s" (replace .SectionsPath "/" " > ")) -}}
+{{-  $objectID =  $objectID | strings.TrimRight " >" -}}
+{{- $ordinal := 0 }}
+{{- with .Params.tab_group_main -}}
+{{/* This is set in products pages. */}}
+{{- $ordinal = .weight }}
+{{- end -}}
+{{- $list = $list | append  (dict "objectID" $objectID "section" .Section "ordinal" $ordinal "title" .Title "linkTitle" .LinkTitle "excerpt" ((.Params.description | markdownify )| default .Summary ) "thumbnail" $thumb.RelPermalink "lastUpdatedTime" .Lastmod.Unix "firstPublishedTime" .PublishDate.Unix) -}}
+{{- end -}}
+{{- $api := resources.Get "api/openapi.yaml" | openapi3.Unmarshal -}}
+{{ range $i, $e := $api.Tags -}}
+{{- $tag := .Name -}}
+{{- $description := .Description }}
+{{- $baseSection := $tag | anchorize -}}
+{{- $objectID := printf "api > %s" $baseSection -}}
+{{- $list = $list | append  (dict "objectID" $objectID "ordinal" (add $i 1) "section" "api" "title" $tag "linkTitle" $tag "excerpt" $description "thumbnail" "") -}}
+{{ end }}
+{{ $list | jsonify (dict "indent" "  ")  }}

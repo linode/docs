@@ -1,0 +1,55 @@
+/* Top navigation grid. */
+.grid--base #navbar {
+    --num-rows: 1;
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    grid-auto-rows: minmax(var(--height-navbar-row), auto);
+    justify-items: end;
+}
+
+.grid--base #navbar__breadcrumbs {
+    display: none;
+}
+
+@screen md {
+    .is-topbar-pinned .grid--base #navbar__breadcrumbs {
+        display: block;
+    }
+}
+
+.is-topbar-pinned.is-not-search-panel-open .grid--base #navbar {
+    grid-template-columns: auto 60px 1fr auto;
+}
+
+.is-topbar-pinned.is-not-search-panel-open .grid--base #navbar__search-input .search-input {
+    display: none;
+}
+
+.is-topbar-pinned.is-search-panel-open .grid--base #navbar__breadcrumbs {
+    display: none;
+}
+
+.no-js .grid--base #navbar__toc,
+.no-js .grid--base #navbar__search-input {
+    display: none;
+}
+
+.no-js .grid--base .navbar__explorer-toggle {
+    display: none;
+}
+
+@screen mobile {
+    .is-not-topbar-pinned.is-explorer-open .grid--base #navbar__icons--left .navbar__logo {
+        display: none;
+    }
+}
+
+@screen mobile {
+    .is-not-topbar-pinned .grid--base #navbar__toc {
+        width: 64px;
+    }
+}
+
+.grid--base #navbar__toc {
+    width: var(--width-right-column);
+}
