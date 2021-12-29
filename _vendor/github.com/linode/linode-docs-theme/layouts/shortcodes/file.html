@@ -1,0 +1,23 @@
+{{/* Note that the indentation in this file is carefully adjusted to avoid Goldmark preformatting the HTML.
+
+See https://github.com/yuin/goldmark/issues/125 for more context.
+
+*/}}
+{{ $title := (.Get 0) }}
+{{ $copyIcon := `<button type="button" aria-label="copy" class="btn-icon"><svg class="fill-current text-brand mr-3" style="width: 0.875rem; height: 1rem;"><use href="#icon--copy"></use></svg></button>` | safeHTML }}
+<dl class="relative file font-mono text-xs pull-out" x-data>
+    <div class="absolute right-0 top-0 pt-3 pr-2" @click="$copy($refs.code)">
+        {{ $copyIcon }}
+    </div>
+ {{ with $title }}
+ <dt class="px-8 py-3 bg-titlecolor  sm:rounded-t-md text-white">
+   File: {{ . }}
+ </dt>
+ {{ end}}
+ <dd class="overflow-x-auto" :class="{ 'is-scroll-x' : $isScrollX($refs.container) }" x-ref="container">
+  {{ $style := .Get 1 | default "bash" }}
+  <div x-ref="code">
+   {{- highlight (trim $.Inner "\n" )  $style "linenos=table" -}}
+  </div>
+ </dd>
+</dl>
