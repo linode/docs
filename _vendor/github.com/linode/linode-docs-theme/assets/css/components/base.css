@@ -1,0 +1,38 @@
+h1 {
+  @apply text-4xl font-normal text-titlecolor;
+}
+
+h2 {
+  @apply text-2xl tracking-tight font-semibold text-titlecolor;
+}
+
+h3 {
+  @apply text-base font-semibold text-titlecolor;
+}
+
+h4 {
+  @apply text-base font-semibold text-titlecolor;
+}
+
+a {
+  @apply cursor-pointer no-underline text-basicgray font-normal;
+}
+
+a:focus {
+  @apply outline-none border-blue-300;
+}
+
+a:hover {
+  @apply text-gray-600;
+}
+
+a.active {
+  @apply text-brand;
+}
+
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}

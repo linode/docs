@@ -1,0 +1,25 @@
+{{- $api := resources.Get "api/openapi.yaml" | openapi3.Unmarshal -}}
+{{ $ordinal := 0 }}
+
+{{- $index := slice -}}
+{{- range $k, $v :=  $api.Paths -}}
+{{ $ops := slice (dict "o" $v.Connect "m" "Connect") (dict "o" $v.Delete "m" "Delete")  (dict "o" $v.Get "m" "Get") }}
+{{ $ops = $ops | append  (dict "o" $v.Patch "m" "Patch") (dict "o" $v.Post "m" "Post")  (dict "o" $v.Put "m" "Put") (dict "o" $v.Trace "m" "Trace")}}
+{{- range $ops -}}
+{{- if .o -}}
+{{ $ordinal = add $ordinal 1 }}
+{{ $tag := partial "openapi3/get-tags-title-op" .o }}
+{{- $baseSection := $tag | anchorize -}}
+{{- $parts := split $k "/" -}}
+{{- $section := printf "api > %s" $baseSection -}}
+{{- $op := .o -}}
+{{- $exerpt := $op.Description -}}
+{{- $httpMethod := .m -}}
+{{- $title := $op.Summary }}
+{{- $href := printf "/docs/api/%s/#%s" $baseSection ($op.Summary | anchorize) -}}
+{{- $objectID := printf "%s: %s" $httpMethod $k }}
+{{- $index = $index | append (dict "objectID" $objectID "ordinal" $ordinal "href" $href "title" $title "section" $section "section.lvl0" "api" "section.lvl1" $section  "exerpt" $exerpt "httpMethod" $httpMethod) -}}
+{{- end -}}
+{{- end -}}
+{{- end  -}}
+{{- $index | jsonify (dict "indent" "  ") -}}

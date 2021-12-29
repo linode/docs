@@ -1,0 +1,15 @@
+.search-input[contenteditable][placeholder]:empty:before {
+    content: attr(placeholder);
+    position: absolute;
+    color: #a9aab0;
+    background-color: transparent;
+}
+
+.search-input[contenteditable] {
+    white-space: nowrap;
+}
+
+.search-panel em {
+    background-color: var(--color-brand--light);
+    @apply not-italic;
+}

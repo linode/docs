@@ -1,0 +1,7 @@
+<div class="main__navbar flex flex-row flex-wrap md:flex-nowrap justify-between md:items-start">
+  {{ if .mainNavPartial }}
+    <div class="mr-0 md:mr-8 mb-2 md:mb-0 flex-1">
+      {{ partial .mainNavPartial .page }}
+    </div>
+  {{ end }}
+</div>

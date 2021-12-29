@@ -1,0 +1,112 @@
+# Cluster Config
+#
+docker_root_dir: /var/lib/docker
+enable_cluster_alerting: false
+enable_cluster_monitoring: false
+enable_network_policy: false
+local_cluster_auth_endpoint:
+  enabled: true
+name: example-cluser
+#
+# Rancher Config
+#
+rancher_kubernetes_engine_config:
+  addons_include:
+    - https://linode.github.io/rancher-ui-driver-linode/releases/v0.3.0/linode-addons.yml
+  addons: |-
+    ---
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: linode
+      namespace: kube-system
+    stringData:
+      token: password
+      region: "..."
+    ---
+  addon_job_timeout: 30
+  authentication:
+    strategy: x509
+  ignore_docker_version: true
+#
+# # Currently only nginx ingress provider is supported.
+# # To disable ingress controller, set `provider: none`
+# # To enable ingress on specific nodes, use the node_selector, eg:
+#    provider: nginx
+#    node_selector:
+#      app: ingress
+#
+  ingress:
+    provider: nginx
+  kubernetes_version: v1.15.4-rancher1-1
+  monitoring:
+    provider: metrics-server
+#
+#   If you are using calico on AWS
+#
+#    network:
+#      plugin: calico
+#      calico_network_provider:
+#        cloud_provider: aws
+#
+# # To specify flannel interface
+#
+#    network:
+#      plugin: flannel
+#      flannel_network_provider:
+#      iface: eth1
+#
+# # To specify flannel interface for canal plugin
+#
+#    network:
+#      plugin: canal
+#      canal_network_provider:
+#        iface: eth1
+#
+  network:
+    options:
+      flannel_backend_type: vxlan
+    plugin: canal
+#
+#    services:
+#      kube-api:
+#        service_cluster_ip_range: 10.43.0.0/16
+#      kube-controller:
+#        cluster_cidr: 10.42.0.0/16
+#        service_cluster_ip_range: 10.43.0.0/16
+#      kubelet:
+#        cluster_domain: cluster.local
+#        cluster_dns_server: 10.43.0.10
+#
+  services:
+    etcd:
+      backup_config:
+        enabled: true
+        interval_hours: 12
+        retention: 6
+        safe_timestamp: false
+      creation: 12h
+      extra_args:
+        election-timeout: 5000
+        heartbeat-interval: 500
+      gid: 0
+      retention: 72h
+      snapshot: false
+      uid: 0
+    kube-api:
+      always_pull_images: false
+      pod_security_policy: false
+      service_node_port_range: "30000-32767"
+      extra_args:
+        feature-gates: "PersistentLocalVolumes=true,VolumeScheduling=true,CSINodeInfo=true,CSIDriverRegistry=true,BlockVolume=true,CSIBlockVolume=true"
+    kubelet:
+      fail_swap_on: false
+      extra_args:
+        cloud-provider: "external"
+        feature-gates: "PersistentLocalVolumes=true,VolumeScheduling=true,CSINodeInfo=true,CSIDriverRegistry=true,BlockVolume=true,CSIBlockVolume=true"
+    kube-controller:
+      extra_args:
+        cloud-provider: "external"
+  ssh_agent_auth: false
+windows_prefered_cluster: false
+

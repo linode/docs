@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Example App Using WebSockets and JWTs</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .column {
+            flex: 50%;
+        }
+
+        #loginForm {
+            text-align: center;
+        }
+
+        #errorMessage {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Example App Using WebSockets and JWTs</h1>
+    <div class="row">
+        <div class="column" id="loginForm">
+            <span id="errorMessage"></span>
+            <form>
+                <label for="username">Username: </label>
+                <input type="text" id="username"/><br/>
+                <label for="password">Password: </label>
+                <input type="text" id="password"/><br/>
+                <input type="button" id="login" value="Login" onclick="getJwtAuth()"/>
+            </form>
+            <form>
+                <label for="messageContent">Message: </label>
+                <textarea id="messageContent"></textarea>
+                <input type="button" id="send" value="Send" onclick="sendWsMessage()"/>
+            </form>
+        </div>
+        <div class="column" id="messages"></div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
