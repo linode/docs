@@ -29,7 +29,7 @@ Let’s learn how MagicSpam helps email administrators to avoid such a negative 
 
 ## Country Authentication Restrictions
 
-MagicSpam comes with Country Authentication Restrictions that allows you to restrict email authentication to only countries where your customers reside. If your customers are not physically located in certain countries, then why allow connections originating from these countries to access the mailboxes on your email server?
+MagicSpam comes with Country Authentication Restrictions. This allows you to restrict email authentication to only countries where your customers reside. If your customers are not located in certain countries, then why allow connections from these countries to access the mailboxes on your email server?
 
 
 
@@ -51,15 +51,15 @@ To enable this, go to the **Security** page in the **MagicSpam Admin** panel and
 
 ![Screenshot of source based authentication restrictions page](source-based-authentication-restrictions.png "Source Based Authentication Restrictions")
 
-No one should never authenticate into their email accounts from cloud networks, only services running on cloud networks would ever need to access an email account on your email server. You also never want networks previously detected performing authentication attacks to authenticate into your email server.
+No one should authenticate into their email accounts from cloud networks. Only services running on cloud networks would need to access an email account on your email server. You also never want networks previously detected performing authentication attacks to authenticate into your email server.
 
 Threat actors have abused cloud networks along with other infected networks to launch authentication attacks in the past. By limiting the avenues of attack available to threat actors, you reduce the probability of compromised email accounts.
 
-If you have a legitimate case for allowing email authentication from networks that would be restricted but still want to benefit from this feature, please refer to the sections that follow.
+If you have a case to allow email authentication from restricted networks, but want to benefit from this feature, refer to the following sections.
 
 ## Outbound Rate Limiter
-Besides the authentication restrictions, MagicSpam comes with an Outbound Rate Limiter which prevents compromised accounts from being abused and also notifies the email administrator about such incidents.
-It is important to limit and detect the abuse of compromised email accounts to lower the chances of damaging your IP reputation. The Outbound Rate Limiter is already effectively configured out-of-the box such that MagicSpam blocks an email account from sending outbound email for 6 hours when the email account has been detected sending more than 150 emails in a 5-minute period.
+Besides the authentication restrictions, MagicSpam comes with an Outbound Rate Limiter. This prevents compromised accounts from being abused and also notifies the email administrator about such incidents.
+It is important to limit and detect the abuse of compromised email accounts to lower the chances of damaging your IP reputation. The Outbound Rate Limiter is already effectively configured out-of-the box. MagicSpam blocks an email account from sending outbound email for 6 hours when the email account sends more than 150 emails in a 5-minute period.
 
 Any further updates to the Outbound Rate Limiter can be made through the **Anti-Spam System** page in the **MagicSpam Admin** panel.
 
@@ -69,13 +69,13 @@ Also make sure that the Administration Email Address has been set to an actively
 
 ## Authentication and Outbound Rate Limiter
 
-MagicSpam comes with Authentication and Outbound Rate Limiter lists which allows you to exempt IP addresses from being subjected to the email authentication security checks listed above. Sometimes you have that one odd case which would get restricted by the authentication restrictions. For example, you want to restrict authentication from cloud networks but you have a billing service running on a cloud network which needs to authenticate into an email account on your email server. In this case, you can add the IP address(es) you want to exempt through the **Anti-Spam Exemptions** page on the **MagicSpam Admin** panel.
+MagicSpam comes with Authentication and Outbound Rate Limiter lists. This allows you to exempt IP addresses from email authentication security checks listed above. Sometimes you have that one odd case which would get restricted by the authentication restrictions. For example, you want to restrict authentication from cloud networks but you have a billing service running on a cloud network which needs to authenticate into an email account on your email server. In this case, you can add the IP address(es) you want to exempt through the **Anti-Spam Exemptions** page on the **MagicSpam Admin** panel.
 
-![Screenshot of ip authenticationpage](ip-authentication-whitelist.png "IP Authentication")
+![Screenshot of ip authentication page](ip-authentication-whitelist.png "IP Authentication")
 
-Additionally, if you have customers who have a legitimate reason to send outbound email at a higher volume than the configured limits, then you can add the email account to the **Per-User Rate Limiter Whitelist**.
+If your customers need to send emails higher than the configured limits, then add the email account to the **Per-User Rate Limiter Whitelist**.
 
 ![Screenshot of per-user rate limiter page](per-user.png "Per-User Rate Limiter ")
 
-You can have the best of both worlds with these allowlists and benefit from email authentication
+You can have the best of both worlds with these allow lists and benefit from email authentication
 security while being able to exempt edge cases.
