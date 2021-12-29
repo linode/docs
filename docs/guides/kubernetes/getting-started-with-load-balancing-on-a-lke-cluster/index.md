@@ -146,6 +146,7 @@ The Linode CCM accepts annotations that configure the behavior and settings of y
 | `check-attempts` | &bull; integer <br> &bull; value between `1`-`30` | None | Number of health checks to perform before removing a back-end Node from service. |
 | `check-passive` | Boolean | `false` | When `true`, `5xx` status codes will cause the health check to fail. |
 | `preserve` | Boolean | `false` | When `true`, deleting a LoadBalancer service does not delete the underlying NodeBalancer |
+| `nodebalancer-id` | integer | None | When set, service uses existing NodeBalancer with nodebalancer-id |
 
 {{< note >}}
 To view a list of deprecated annotations, visit the [Linode CCM GitHub repository](https://github.com/linode/linode-cloud-controller-manager/blob/master/README.md#deprecated-annotations).
