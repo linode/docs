@@ -1,0 +1,213 @@
+/*
+Styles used on content/article type of content sections.
+Note that this is usually used in combination with Tailwind's Typography plugin and its prose classes.
+*/
+.content blockquote.callout {
+    @apply border rounded-md text-textcolor font-normal px-4 py-3;
+}
+
+@screen mobile {
+    .content blockquote.callout .code {
+        @apply mb-0;
+    }
+}
+
+.content blockquote.callout a {
+    @apply text-brand hover:text-green-400;
+}
+
+.content .callout-title {
+    display: block;
+    @apply text-titlecolor leading-tight text-base mb-2;
+}
+
+.content .callout-body > :first-child {
+    margin-top: 0;
+}
+
+.content .callout-body > :last-child {
+    margin-bottom: 0;
+}
+
+.content a {
+    @apply text-brand hover:text-green-400;
+}
+
+.content pre,
+.content .code {
+    @apply bg-selected rounded-md overflow-x-auto mb-4;
+}
+
+.content .is-scroll-x::-webkit-scrollbar {
+    height: 4px;
+}
+
+.content .is-scroll-x::-webkit-scrollbar-thumb {
+    background-color: #a9aab0;
+    opacity: 0.35;
+    border-radius: 3px;
+}
+
+.content .is-scroll-x::-webkit-scrollbar-track {
+    background-color: rgba(169, 170, 176, 0.2);
+}
+
+.content .code {
+    @apply mobile:-mx-4 mobile:rounded-none;
+}
+
+.content ul .code,
+.content ol .code {
+    @apply mobile:mx-0 mobile:rounded-md;
+}
+
+.content pre.dark,
+.content .code.dark {
+    background-color: var(--color-title);
+    color: #ffffff;
+}
+
+.content pre.light,
+.content .code.light,
+.content pre {
+    background-color: #ededf4;
+    color: #5e6065;
+}
+
+.content .code pre {
+    @apply py-1 my-3;
+    background-color: transparent;
+}
+
+.content .file {
+    @apply my-4;
+}
+
+.content .file .chroma {
+    @apply rounded-b-md m-0;
+}
+
+.content .file .chroma .lntable {
+    overflow: inherit;
+}
+
+.content .file tbody tr:first-child {
+    border: none;
+}
+
+.content .file dd {
+    @apply mt-0;
+}
+
+.content code {
+    @apply font-mono inline rounded px-1;
+}
+
+.content pre {
+    @apply rounded;
+    background-color: #ededf4;
+}
+
+.content pre code {
+    @apply block bg-transparent p-0 overflow-x-auto rounded-none;
+}
+
+.content .highlight tbody td code {
+    background-color: transparent;
+}
+
+.content table {
+    @apply border-collapse mobile:-mx-4;
+    border-style: hidden;
+}
+
+@screen mobile {
+    .content table {
+        width: calc(100% + 2rem);
+    }
+}
+
+.content tbody tr:first-child {
+    @apply border-t-2 border-gray-500;
+}
+
+.content table table {
+    @apply m-0 p-0;
+}
+
+.content table table td:first-child {
+    @apply pl-0;
+}
+
+.content table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.content table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+.content tbody tr td {
+    @apply bg-selected border-b;
+}
+
+.content tbody td code {
+    @apply bg-gray-300;
+}
+
+.chroma .lntable tbody td:first-child {
+    padding-left: 0;
+}
+
+.content img.marquee-img {
+    @apply rounded-lg w-full;
+}
+
+.content .marquee-img-container {
+    @apply mobile:-mx-4;
+}
+.content .marquee-img-container img {
+    @apply mobile:rounded-none;
+}
+
+.content .pull-out {
+    @apply mobile:-mx-4 mobile:rounded-none;
+}
+
+.content ul .pull-out,
+.content ol .pull-out {
+    @apply mobile:mx-0 mobile:rounded-md;
+}
+
+.content figure {
+    @apply w-full;
+}
+
+.content img {
+    @apply rounded-none;
+}
+
+@screen md {
+    .content figure {
+        @apply w-3/4;
+    }
+
+    .content img {
+        @apply rounded-lg;
+    }
+}
+
+/* Adjust anchor links vs fixed header height. */
+.content :target::before {
+    content: "";
+    display: block;
+    height: 80px;
+    margin: -80px 0 0;
+}
+
+/*
+Styles for use with API documentation
+*/
+.api-documentation table {
+    width: 100%;
+}

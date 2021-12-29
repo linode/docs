@@ -1,0 +1,53 @@
+{{/*
+The relations are stored in front matter like this:
+
+relations:
+    relation-key:
+        key: oracle-10g-express
+        keywords:
+            - distribution: Debian 5 Lenny
+            - platform: Platform2
+
+
+This partial is meant to be used with partialCached.
+
+*/}}
+
+{{ $path := . }}
+{{ if not $path }}
+  {{ errorf "Must provide the key path as the argument (on the form lvl1/lvl2)"}}
+{{ end }}
+
+{{ $keyParts := split $path "/" }}
+{{ $base := "" }}
+{{ $key1 := index $keyParts 0 }}
+{{ $key2 := index $keyParts 1 }}
+{{ $m := newScratch }}
+{{ $pages := index (partialCached "funcs/join-lvl1.html" $key1 $key1) $path }}
+{{ range $i, $p := $pages }}
+  {{ $r := index .Params.relations $key1 }}
+  {{ with $r }}
+    {{ $path := "" }}
+    {{ range $i, $e := .keywords }}
+      {{ range $k, $v := .  }}
+        {{ if eq $i 0 }}
+          {{ $base = $v}}
+        {{ end }}
+        {{ $path = path.Join $path $v }}
+      {{ end }}
+    {{ end }}
+    
+    {{ range .keywords }}
+      {{ range $k, $v := .  }}
+        {{ $d := dict "page" $p "value" $v "path" $path "base" $base }}
+        {{ if not ($m.Get $k) }}
+          {{ $m.Add $k (slice $d) }}
+        {{ else }}
+          {{ $m.Add $k $d }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ return $m.Values }}

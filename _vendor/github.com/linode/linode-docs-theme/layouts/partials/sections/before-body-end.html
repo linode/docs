@@ -1,0 +1,11 @@
+<div id="consent_blackbar"></div>
+{{ partial "jslibs/instantpage/script-src.html" "-" }}
+{{/* Add the GTag info to a temporary array which is handled in the backing script. */}}
+{{ with $.Params.gtags }}
+  <script>
+    window._dataLayer = [];
+    {{ range . -}}
+    window._dataLayer.push({'{{ .key }}': '{{ .value }}'});
+    {{ end -}}
+  </script>
+{{ end }}
