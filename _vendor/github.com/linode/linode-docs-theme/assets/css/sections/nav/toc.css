@@ -1,0 +1,74 @@
+nav.toc {
+    @apply w-full relative;
+    left: calc(100% - var(--width-right-column));
+    top: calc(var(--height-navbar-row) + 1px);
+    width: var(--width-right-column);
+    height: 90vh;
+}
+
+@screen mobile {
+    nav.toc {
+        height: 100vh;
+    }
+}
+
+nav.toc ol {
+    @apply p-0;
+}
+
+nav.toc li {
+    display: block;
+    list-style-type: none;
+    @apply z-10;
+}
+
+nav.toc li > a {
+    @apply font-normal text-textcolor box-border truncate px-4 py-2;
+    display: list-item;
+    list-style-position: inside;
+}
+
+@screen mobile {
+    nav.toc li.level-2 {
+        position: relative;
+    }
+    nav.toc li.level-2 > a {
+        @apply pr-10;
+    }
+    nav.toc li > button {
+        @apply px-3 py-2;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
+nav.toc li > a:hover {
+    background-color: var(--color-brand--light);
+}
+
+nav.toc li.active > a {
+    @apply bg-gray-200;
+}
+
+/* LEVEL 2 */
+nav.toc li.level-2 > a {
+    @apply font-semibold text-xs text-titlecolor;
+    list-style-type: decimal-leading-zero;
+}
+
+/* LEVEL 3,4 */
+nav.toc li.level-3 > a,
+nav.toc li.level-4 > a {
+    @apply font-normal text-xs;
+}
+
+nav.toc li.level-3 > a {
+    @apply pl-8;
+    list-style-type: upper-alpha;
+}
+
+nav.toc li.level-4 > a {
+    @apply pl-12;
+    list-style-type: upper-roman;
+}
