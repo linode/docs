@@ -145,11 +145,15 @@ This header signals to a connecting browser to enable its cross-site scripting f
 
     add_header X-XSS-Protection "1; mode=block";
 
+See the [X-XSS-Protection](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection) page on MDN for more information and other options.
+
 ### Referrer Policy
 
-This header controls policy of referrer information that should be included with requests. The policy below sends the origin, path, and query string when performing same-origin request, but only send the origin if protocol security level stays the same during cross-origin request, and send no header otherwise:
+This header controls policy of referrer information that should be included with requests. The example below sends the origin, path, and query string when performing a *same-origin* request. For secure (HTTPS -> HTTPS) *cross-origin* requests, only the origin is sent.
 
     add_header Referrer-Policy strict-origin-when-cross-origin;
+
+See the [Referrer-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy) page on MDN for more information and other options.
 
 ### Content Security Policy
 
@@ -157,11 +161,11 @@ Another way to minimize cross-site scripting attacks is by only allowing user ag
 
     add_header Content-Security-Policy "default-src 'self'; upgrade-insecure-requests;";
 
-See [Content-Security-Policy from MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) for complete list of directives.
+See the [Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) on MDN for complete list of directives.
 
 ### Feature Policy (Experimental)
 
-You can allow or deny browser features with this header, depending on whether your site support the feature in question. This header should be set per site basis on corresponding `server` block. For example, to allow the site to use encrypted media on the same origin, and deny automatic playing media without user actions, you would do:
+You can allow or deny browser features with this header, depending on whether your site and browser supports the feature. This header should be set on a per site basis. For example, to allow the site to use encrypted media on the same origin and deny automatic playing media without user actions, you could add the following line:
 
     add_header Feature-Policy "encrypted-media 'self'; autoplay 'none'";
 
