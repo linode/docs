@@ -1,0 +1,15 @@
+{{ if not .alt }}
+  {{ errorf "image-srcset called with no value for .alt" }}
+{{ end }}
+{{ if not .title }}
+  {{ errorf "image-srcset called with no value for .title" }}
+{{ end }}
+{{ $srcSet := "" }}
+{{ $src := $.img.RelPermalink }}
+{{ $scaled := (partial "funcs/scale-image" $ )}}
+{{ $loading := $.loading | default "eager" }}
+<picture>
+  {{/* Note: The Google Page Speed viewport is 360x640, but make it simple for now. */}}
+  <source srcset="{{ $scaled.resized2x.RelPermalink }}" media="(min-width: 640px)" />
+  <img  width="{{ $scaled.resized1x.Width }}" height="{{ $scaled.resized1x.Height }}" src="{{ $scaled.resized1x.RelPermalink }}" loading="{{ $loading }}" alt="{{ $.alt }}" title="{{ $.title }}" {{ with $.class }}class="{{ . }}" {{ end }}/>
+</picture>

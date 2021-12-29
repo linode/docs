@@ -1,0 +1,2 @@
+# Writes the hugo_stats.json file used for CSS pruning.
+writeStats = true

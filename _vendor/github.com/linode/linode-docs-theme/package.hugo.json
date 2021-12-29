@@ -1,0 +1,18 @@
+{
+	"scripts": {},
+	"devDependencies": {
+		"@babel/cli": "^7.15.7",
+		"@babel/core": "^7.15.5",
+		"@babel/preset-env": "^7.15.6",
+		"@fullhuman/postcss-purgecss": "^4.0.3",
+		"@tailwindcss/forms": "^0.3.4",
+		"@tailwindcss/typography": "^0.4.1",
+		"autoprefixer": "^10.3.7",
+		"core-js": "^3.18.1",
+		"netlify-plugin-cache": "^1.0.3",
+		"netlify-plugin-debug-cache": "^1.0.3",
+		"postcss": "^8.3.9",
+		"postcss-cli": "^9.0.1",
+		"tailwindcss": "^2.2.16"
+	}
+}

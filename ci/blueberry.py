@@ -239,9 +239,10 @@ def readfile(filename, section=None):
                 # WARNING: Implicitly converts dates to datetime
                 return post.metadata
 
-    except (LookupError, SyntaxError, UnicodeError, scanner.ScannerError):
+    except (LookupError, SyntaxError, UnicodeError, scanner.ScannerError) as err:
         # Return Error; require utf-8
         # Should this sys.exit(1) here?
+        print(err)
         print(f"{filename} caused the Blueberry script to crash.")
         sys.exit(1)
 
@@ -319,7 +320,7 @@ class TestManager(object):
     # TODO:
     # Gracefully handle non-existent filepath
 
-    def __init__(self, input_dir='docs/', ignore_paths=['docs/api/', 'docs/websites/'], **kwargs):
+    def __init__(self, input_dir='docs/', ignore_paths=['docs/api/', 'docs/headless/', 'docs/products/'], **kwargs):
         self.input_dir = input_dir
         self.files = find_files(path=input_dir, ignore_paths=ignore_paths, recursive=True)
 

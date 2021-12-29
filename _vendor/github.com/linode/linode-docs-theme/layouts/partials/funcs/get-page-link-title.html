@@ -1,0 +1,11 @@
+{{ $title := .LinkTitle }}
+{{ if eq .Section "products"}}
+  {{ $prefix := .CurrentSection.LinkTitle }}
+  {{ if and .IsSection .Parent }}
+    {{ $prefix = .Parent.LinkTitle }}
+  {{ end }}
+  {{ if ne $prefix $title }}
+    {{ $title = printf "%s - %s" $prefix .LinkTitle }}
+  {{ end }}
+{{ end }}
+{{ return $title }}

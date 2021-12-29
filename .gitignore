@@ -36,5 +36,11 @@ Thumbs.dbi
 .\#*
 *.sublime-workspace
 node_modules
-resources/_gen/assets/css/docs/css/styles.css_0a7609e807cbb0441390b6ce32d26025.content
-resources/_gen/assets/css/docs/css/styles.css_0a7609e807cbb0441390b6ce32d26025.json
+public/
+resources/_gen/assets
+yarn.lock
+search_index/
+resources/_gen/assets
+hugo_stats.json
+
+redirects.conf

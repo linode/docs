@@ -1,0 +1,31 @@
+{{ define "main"}}
+  <h1 class="font-bold leading-tight tracking-tight text-4xl text-titlecolor w-full">
+    {{ .Title }}
+  </h1>
+  <div class="mt-8 max-w-2xl">
+    {{ .Summary }}
+  </div>
+  <div class="mt-8 space-y-8">
+    {{ $pages := .Pages }}
+    {{ range $i, $ := $pages }}
+      <div class="bg-white rounded-md md:flex md:items-center{{ if eq $i 0 }} shadow-sm{{ end }}">
+        <div class="h-full bg-gray-200">
+          <div class="relative pb-20/9 md:pb-14/9 md:w-64 md:h-full overflow-hidden rounded-t-lg rounded-b-none md:rounded-l-lg md:rounded-r-none">
+            {{ partial "helpers/bundle-image.html" (dict "page" . "class" "absolute top-0 h-full w-full object-cover" "command" "Resize" "options" "640x jpg") }}
+          </div>
+        </div>
+        <div class="px-6 md:pl-10 py-4">
+          <a href="{{ .RelPermalink }}" class="tracking-tight cursor-pointer mb-4 text-titlecolor hover:text-gray-400">
+            <h3 class="mb-2 text-2xl ">
+              {{ .LinkTitle }}
+            </h3>
+          </a>
+          <p class="text-darkgray leading-6 text-sm md:text-base three-lines-ellipsis">
+            {{ .Summary  }}
+          </p>
+        </div>
+      </div>
+    {{ end }}
+  </div>
+  
+{{ end }}
