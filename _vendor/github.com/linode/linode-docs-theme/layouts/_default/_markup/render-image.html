@@ -1,0 +1,30 @@
+{{- $img := .Page.Resources.GetMatch .Destination -}}
+{{- with $img -}}
+  {{ if not ( $.Page.Scratch.Get (printf "%s-is-used" $img.RelPermalink))}}
+    {{/* We could resize/process the images here if needed. */}}
+    {{/* The elements from Markdown are: ![.Text](.Destination ".Title") */}}
+    {{ $width2x := 1388}}
+    {{ $width1x := 694}}
+    {{ $title := $.Title }}
+    {{ $alt := $.PlainText }}
+    {{ if not $title }}
+      {{ $title = $alt }}
+    {{ end }}
+    {{ if not $title }}
+      {{ $title = "Image" }}
+    {{ end }}
+    {{ if not $alt }}
+      {{ $alt = $title }}
+    {{ end }}
+    {{ if gt $img.Width $width1x }}
+      {{ $scaled := (partial "funcs/scale-image" (dict "dot" $ "img" $img "width1x" $width1x "width2x" $width2x ) )}}
+      {{ partial "components/image-modal.html" (dict "scaled"  $scaled "img" $img "alt" $alt "title" $title "class" "w-full" ) }}
+    {{ else }}
+      <figure>
+        {{ partial "components/image-srcset.html" (dict "dot" $ "img" $img "width1x" $width1x "width2x" $width2x "loading" "eager" "alt" $alt "title" $title "class" "w-full" )}}
+      </figure>
+    {{ end }}
+  {{ end }}
+{{- else -}}
+  <img src="{{ .Destination | safeURL }}" alt="{{ $.Text }}"/>
+{{- end -}}

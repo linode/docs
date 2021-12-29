@@ -1,0 +1,67 @@
+{{ $description := "" }}
+{{ if eq .Section "api" }}
+  {{ if $.IsNode }}
+    {{ $description = "Linode API reference and examples." }}
+  {{ else }}
+    {{ $description = printf "Linode API reference and examples for %s endpoints." .Title }}
+  {{ end }}
+{{ else }}
+  {{ $description = .Param "description" }}
+{{ end }}
+<meta name="description" content="{{ $description }}">
+{{ if .Params.no_index }}
+  <meta name="robots" content="noindex" />
+{{ end }}
+<meta name="google" content="notranslate" />
+<meta property="og:title" content="{{ .Params.og_title | default .Title }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:description" content="{{ .Params.og_description | default $description }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+
+
+{{/*  If a social media image is set in the frontmatter */}}
+{{ with .Params.image }}
+  {{ if eq (printf "%T" .) "string"}}
+    <meta property="og:image" content="{{ ($.Resources.GetMatch .).Permalink }}">
+  {{ else }}
+    {{ with .file }}
+      <meta property="og:image" content="{{ . }}">
+    {{ end }}
+    {{ with .width }}
+      <meta property="og:image:width" content="{{ . }}">
+    {{ end }}
+    {{ with .height }}
+      <meta property="og:image:height" content="{{ . }}">
+    {{ end }}
+  {{ end }}
+  {{/*  Otherwise, default to a generic social media image */}}
+{{ else }}
+  <meta property="og:image" content="{{ "media/images/default_social_image.png" | absURL }}">
+{{ end }}
+
+{{ if (isset .Params "twitter") }}
+  {{/*  If the twitter dictionary is set in frontmatter,
+      check if it contains a card key.
+      If the card key is set, use that as the Twitter card summary type */}}
+  {{ with .Params.twitter.card }}
+    <meta name="twitter:card" content="{{ . }}">
+  {{ end }}
+{{ else if (isset .Params "image") }}
+  {{/*  If no Twitter card frontmatter is specified,
+      but there is a custom social media image set in frontmatter,
+      then display a large summary Twitter card. */}}
+  <meta name="twitter:card" content="summary_large_image">
+{{ else }}
+  {{/*  If no Twitter card frontmatter is specified,
+      and no custom social media image was set in frontmatter,
+      then display a small summary Twitter card. */}}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="{{ "media/images/default_social_image_small.png" | absURL }}">
+{{ end }}
+
+<meta name="twitter:site" content="@linode">
+
+{{ range .OutputFormats -}}
+  <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+{{ end -}}

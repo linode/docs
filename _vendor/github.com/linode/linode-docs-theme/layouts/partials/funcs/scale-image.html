@@ -1,0 +1,7 @@
+{{ $imgFormatOptions := "%dx jpg #FAFAFC q71" }}
+{{/* Many of the guide images are on the small side and we want to avoid upscaling. */}}
+{{ $width2x := cond (gt $.img.Width $.width2x) $.img.Width $.width2x }}
+{{ $resized1x := $.img.Resize (printf $imgFormatOptions $.width1x) }}
+{{ $resized2x := $.img.Resize (printf $imgFormatOptions $width2x) }}
+
+{{ return (dict "resized1x" $resized1x "resized2x" $resized2x  )}} 

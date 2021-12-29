@@ -1,0 +1,41 @@
+<div class="flex flex-col items-start rounded-md border border-gray-500 w-full" 
+     :class="{ 'shadow-md border-basicgray': filters.data.tags.open }">
+  <div class="px-4 h-10 flex justify-between items-center content-start w-full" :class="{ 'mb-2':  filters.data.tags.open   }">
+    <input x-show="filters.data.tags.open"  class="form-input pl-0 border-none w-11/12" type="search" placeholder="Search by tag name…" x-model="filters.data.tags.searchString">
+    <div x-show="!filters.data.tags.open" >
+      Add tags
+    </div>
+    <button  type="button" @click="filters.data.tags.open = !filters.data.tags.open"
+                      class="btn p-0 m-0 text-sm md:text-sm truncate leading-5 font-medium text-gray-700 focus:outline-none active:bg-gray-50 active:text-titlecolor transition ease-in-out duration-150" data-testid="open-tags">
+      <div x-show="filters.data.tags.open">
+        <svg class="fill-current text-basicgray h-5 w-5">
+          <use href="#icon--arrow-up"></use>
+        </svg>
+      </div>
+      <div x-show="!filters.data.tags.open">
+        <svg class="fill-current text-basicgray h-5 w-5">
+          <use href="#icon--arrow-down"></use>
+        </svg>
+      </div>
+    </button>
+  </div>
+  <div x-transition x-show="filters.data.tags.open" class="mb-3 pl-4 h-40 w-full overflow-y-scroll scrollbar-v-gray">
+    <div x-bind:class="{ 'bg-brand':  filters.data.tags.filter.allChecked }" class="inline-block mr-1 mb-2 rounded bg-gray-300 px-2 pb-2 pt-1">
+      <label class="block">
+        <input class="mr-1 leading-tight form-checkbox text-white w-3 h-3" type="checkbox" x-model="filters.data.tags.filter.allChecked" @change="apply()">
+        <span x-bind:class="{ 'text-titlecolor':  !filters.data.tags.filter.allChecked, 'text-white': filters.data.tags.filter.allChecked }" class="text-xxs font-semibold">
+          All
+        </span>
+      </label>
+    </div>
+    <template x-for="checkbox in filters.data.tags.filterBySearchString()" :key="checkbox.value">
+      <div x-bind:class="{ 'bg-brand':  checkbox.checked }" class="inline-block mr-1 mb-2 bg-gray-300 rounded px-2 pb-2 pt-1">
+        <label class="block">
+          <input class="mr-1 leading-tight form-checkbox text-white w-3 h-3" type="checkbox" x-model="checkbox.checked" @change="apply()">
+          <span x-bind:class="{ 'text-titlecolor':  !checkbox.checked && checkbox.count > 0, 'text-white': checkbox.checked, 'text-gray-400': !checkbox.checked && checkbox.count === 0 }" class="text-xxs font-semibold capitalize" style="letter-spacing: 0.07px;"
+                                    x-text="checkbox.title"></span>
+        </label>
+      </div>
+    </template>
+  </div>
+</div>
