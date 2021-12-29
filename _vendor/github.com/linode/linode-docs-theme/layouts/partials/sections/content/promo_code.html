@@ -1,0 +1,39 @@
+<!-- Initialize the variables -->
+{{ $promo_code := "" }}
+{{ $promo_amount := "" }}
+{{ $promo_disclaimer := "" }}
+
+<!-- If a page's front matter contains BOTH promo_code and promo_code_amount,
+      use the front matter parameters. Otherwise use the site config parameters. -->
+{{ if and ($.Params.promo_code) ($.Params.promo_code_amount) }}
+  {{ $promo_code = $.Params.promo_code }}
+  {{ $promo_amount = $.Params.promo_code_amount }}
+  {{ $promo_disclaimer = $.Params.promo_code_disclaimer }}
+{{ else }}
+  {{ $promo_code = $.Site.Params.promo_code }}
+  {{ $promo_amount = $.Site.Params.promo_code_amount }}
+  {{ $promo_disclaimer = $.Site.Params.promo_code_disclaimer }}
+{{ end }}
+
+<div class="flex justify-between bg-brand pull-out items-center rounded-none md:rounded-md px-4 md:px-8 py-4">
+  <div class="text-white text-md md:text-lg font-regular tracking-normal w-3/4">
+    <span>
+        <a href="https://login.linode.com/signup?promo={{ $promo_code }}" class="font-semibold text-white hover:underline">
+          Create a Linode account
+        </a>
+        to try this guide with a ${{ $promo_amount }} credit.
+        {{ if $promo_disclaimer }}
+        <div class="text-sm italic">{{ $promo_disclaimer }}</div>
+        {{ end }}
+    </span>
+  </div>
+  <div>
+    <form action="https://login.linode.com/signup" data-turbo="false">
+      <input type="hidden" name="promo" value="{{ $promo_code }}" />
+      <button type="submit" target="_blank" class="bg-transparent hover:bg-gray-800 text-white text-md font-semibold py-2 px-4 border border-white hover:border-gray-800 rounded">
+        Sign
+        Up
+      </button>
+    </form>
+  </div>
+</div>

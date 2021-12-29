@@ -1,0 +1,9 @@
+/* We do (not always) remove the transparent class on img.onload, which creates this fade-in effect. */
+img {
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+img.img-transparent {
+    opacity: 0;
+}

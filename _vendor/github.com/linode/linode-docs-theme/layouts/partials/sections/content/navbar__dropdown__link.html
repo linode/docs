@@ -1,0 +1,12 @@
+<li class="block">
+  <a href="{{ .href }}" target="_blank" rel="noopener"
+      class="flex justify-start px-4 py-1 text-sm leading-5 whitespace-nowrap
+      text-gray-700 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">
+    {{ with .icon }}
+      <svg class="fill-current text-gray-400 h-5 w-5 mr-2">
+        <use href="{{ . | safeHTMLAttr }}"></use>
+      </svg>
+    {{ end }}
+    {{ .text }}
+  </a>
+</li>

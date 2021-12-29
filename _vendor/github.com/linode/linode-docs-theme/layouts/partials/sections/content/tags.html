@@ -1,0 +1,11 @@
+<div class="flex flex-wrap content-center hide-if-no-js" x-data="{}">
+  {{ with .Params.Tags }}
+    {{ range . }}
+      <a @click="$store.search.query.addFilter('tags', '{{ . | lower | htmlEscape }}'); $store.nav.openSearchPanel(true);"
+        class="bg-selected cursor-pointer border rounded-sm border-gray-500 text-basicgray text-sm leading-4 uppercase p-1 mb-1 mr-1"
+        style="letter-spacing: .5px;" data-testid="link-tag-{{ . | lower | htmlEscape }}">
+        {{ . }}
+      </a>
+    {{ end }}
+  {{ end }}
+</div>

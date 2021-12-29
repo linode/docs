@@ -1,0 +1,20 @@
+{{ define "body-class" }}
+  fullwidth
+{{ end }}
+{{ define "main" }}
+  <h1 class="font-bold leading-tight tracking-tight text-4xl text-titlecolor w-full">
+    {{ .Title }}
+  </h1>
+  <div class="mt-8 max-w-2xl">
+    {{ .Summary }}
+  </div>
+  {{ $deprecated := where site.RegularPages "Params.deprecated" true }}
+  {{ $pages := where site.RegularPages "Section" "in" (slice "guides" "products" ) | complement $deprecated }}
+
+  {{ $pages = $pages.ByLastmod.Reverse | first 20 }}
+  <div class="mt-8 grid mobile:grid-cols-1 grid-cols-2 lg:grid-cols-4 gap-4">
+    {{ range $pages }}
+      {{ partial "components/card.html" (dict "page" .)}}
+    {{ end }}
+  </div>
+{{ end }}
