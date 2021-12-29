@@ -7,7 +7,7 @@ description: "Configure and optimize NGINX to best suit your web server needs. H
 keywords: ["nginx", "web server", "nginx configuration", "multiple sites", "configure caching"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/configure-nginx-for-optimized-performance/','/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/','/websites/nginx/configure-nginx-for-optimized-performance/', '/guides/slightly-more-advanced-configurations-for-nginx/']
-modified: 2018-02-09
+modified: 2021-12-29
 modified_by:
   name: Linode
 published: 2018-02-09
@@ -15,17 +15,18 @@ title: "Getting Started with NGINX: Advanced Configuration"
 h1_title: "Getting Started with NGINX (Part 2): Advanced Configuration"
 enable_h1: true
 tags: ["web server","nginx"]
+image: Getting-Started-with-NGINX-Part-2-smg.jpg
 ---
 
 ![Getting Started with NGINX - Part 2](Getting-Started-with-NGINX-Part-2-smg.jpg)
 
 ## Before You Begin
 
-* This guide is Part 2 of our *Getting Started with NGINX* series, and you will need a working NGINX setup with a website accessible via HTTP. If you do not already have that, complete [Part 1: Basic Installation and Setup](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
+-   This guide is Part 2 of our *Getting Started with NGINX* series, and you will need a working NGINX setup with a website accessible via HTTP. If you do not already have that, complete [Part 1: Basic Installation and Setup](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
 
-* You will need root access to the system, or a user account with `sudo` privilege.
+-   You will need root access to the system, or a user account with `sudo` privilege.
 
-* You may want to make another backup of your `nginx.conf` so you have a snapshot of the work you've done up to this point:
+-   You may want to make another backup of your `nginx.conf` so you have a snapshot of the work you've done up to this point:
 
         cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup-pt2
 
@@ -56,8 +57,7 @@ server {
     error_log    logs/example2.error error;
 
     root         /var/www/example2.com/;
-
-    }
+}
 {{< /file >}}
 
 2.  Reload NGINX:
@@ -72,7 +72,7 @@ NGINX can cache files served by web applications and frameworks such as WordPres
 
 For more information, see the [NGINX docs](https://nginx.org/en/docs/http/ngx_http_proxy_module.html), [NGINX admin guide](https://www.nginx.com/resources/admin-guide/content-caching/), and the [NGINX blog](https://www.nginx.com/blog/nginx-caching-guide/).
 
-1. Create a folder to store cached content:
+1.  Create a folder to store cached content:
 
         mkdir /var/www/example.com/cache/
 
