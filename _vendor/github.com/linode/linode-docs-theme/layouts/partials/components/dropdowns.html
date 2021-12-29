@@ -1,0 +1,40 @@
+{{ $dropdowns := slice }}
+{{ range .dropdowns }}
+  {{ $dropdowns =  $dropdowns | append (dict "open" (.open | default false ) )}}
+{{ end }}
+
+<div class="flex justify-start space-x-2" x-data="lncDropdowns({{ $dropdowns | jsonify }})" @click.away="closeAll()">
+  {{ range $i, $e := .dropdowns }}
+    <div x-transition.opacity x-show="!isHidden({{ $i }})" x-cloak>
+      <div class="relative inline-block text-left">
+        <div>
+          <span class="rounded-sm">
+            <button type="button" aria-label="open" @click="toggleOpen({{ $i }})" :class="{ '': isOpen({{ $i }})}"
+                        class="btn-icon inline-flex w-full px-4 py-2 md:px-2 md:py-1 text-sm leading-4 font-medium text-gray-700 focus:outline-none active:bg-gray-50 active:text-titlecolor transition ease-in-out duration-150">
+              {{ with .icon }}
+                <svg class="fill-current text-textcolor w-4 h-4">
+                  <use href="{{ . | safeHTMLAttr }}"></use>
+                </svg>
+              {{ end }}
+              <div x-show="isOpen({{ $i }})">
+                <svg class="fill-current text-textcolor -mr-1 ml-2 h-4 w-4">
+                  <use href="#icon--arrow-up"></use>
+                </svg>
+              </div>
+              <div x-show="!isOpen({{ $i }})">
+                <svg class="fill-current text-textcolor -mr-1 ml-2 h-4 w-4">
+                  <use href="#icon--arrow-down"></use>
+                </svg>
+              </div>
+            </button>
+          </span>
+        </div>
+        <ul iv x-transition x-show="isOpen({{ $i }})" class="border border-gray-300 origin-top-right absolute right-0 m-0 mt-2 py-2 z-10 rounded-sm bg-white list-none" x-cloak>
+          {{ if .contentPartial }}
+            {{ partial .contentPartial . }}
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  {{ end }}
+</div>

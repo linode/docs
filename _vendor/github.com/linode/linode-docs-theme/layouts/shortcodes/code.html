@@ -1,0 +1,38 @@
+{{ $style := "bash" }}
+{{ $class := "light" }}
+{{ $title := .Get "title" }}
+{{ if .IsNamedParams }}
+  {{ with .Get "style" }}
+    {{ $style = . }}
+  {{ end }}
+  {{ with .Get "class" }}
+    {{ $class = . }}
+  {{ end }}
+{{ else }}
+  {{ with .Get 0 }}
+    {{ $style = . }}
+  {{ end }}
+{{ end }}
+{{ if not (or (strings.Contains $class "dark") (strings.Contains $class "light")) }}
+  {{ $class = printf "light %s" $class }}
+{{ end }}
+{{ $copyIcon := `<button type="button" aria-label="copy" class="btn-icon"><svg class="fill-current text-brand mr-4" style="width: 0.875rem; height: 1rem;"><use href="#icon--copy"></use></svg></button>` | safeHTML }}
+{{ with $title}}
+  <div class="text-sm font-semibold mt-4">
+    {{ . }}
+  </div>
+{{ end }}
+{{ $mt :=  "mt-4" }}
+{{ if $title }}
+  {{ $mt =  "mt-2" }}
+{{ end }}
+<div class="relative">
+  <div :class="{ 'is-scroll-x' : $isScrollX() }" class="code {{ $mt }} {{ $class }} flex items-start justify-between overflow-x-auto" x-data>
+    <div class="" x-ref="code">
+      {{- highlight (trim $.Inner "\n" ) $style "linenos=false"  -}}
+    </div>
+    <div class="absolute right-0 top-0 overflow-x-none pt-4 sm:pt-5" @click="$copy($refs.code)">
+      {{ $copyIcon }}
+    </div>
+  </div>
+</div>

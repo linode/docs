@@ -1,0 +1,27 @@
+/* Workaround for styling of checkboxes, see https://github.com/tailwindlabs/tailwindcss-forms/issues/27 */
+@layer components {
+    [type="checkbox"]:checked {
+        background-image: url("data:image/svg+xml,%3Csvg fill='%2302b159' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M435.848 83.466L172.804 346.51l-96.652-96.652c-4.686-4.686-12.284-4.686-16.971 0l-28.284 28.284c-4.686 4.686-4.686 12.284 0 16.971l133.421 133.421c4.686 4.686 12.284 4.686 16.971 0l299.813-299.813c4.686-4.686 4.686-12.284 0-16.971l-28.284-28.284c-4.686-4.686-12.284-4.686-16.97 0z'/%3E%3C/svg%3E");
+    }
+
+    [type="radio"]:checked {
+        background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23262626' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+    }
+
+    [type="checkbox"],
+    [type="radio"] {
+        @apply focus:ring-0 focus:ring-offset-0;
+    }
+
+    [type="checkbox"],
+    [type="checkbox"]:checked,
+    [type="checkbox"]:checked:hover,
+    [type="checkbox"]:checked:focus,
+    [type="checkbox"]:indeterminate:hover,
+    [type="radio"],
+    [type="radio"]:checked,
+    [type="radio"]:checked:hover,
+    [type="radio"]:checked:focus {
+        @apply border-gray-300;
+    }
+}
