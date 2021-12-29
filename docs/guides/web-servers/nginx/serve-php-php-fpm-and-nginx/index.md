@@ -3,33 +3,30 @@ slug: serve-php-php-fpm-and-nginx
 author:
   name: Linode
   email: docs@linode.com
-description: 'Proxy PHP requests with NGINX and FastCGI using PHP-FPM.'
+description: "Proxy PHP requests with NGINX and FastCGI using PHP-FPM."
 keywords: ["php", "php-fpm", "fastcgi"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/serve-php-php-fpm-and-nginx/','/websites/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/','/web-servers/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/','/web-servers/nginx/nginx-phpfastcgi-ubuntu-14-04/','/web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/']
-modified: 2018-02-19
+modified: 2021-12-29
 modified_by:
   name: Linode
 published: 2018-02-19
-title: Serve PHP with PHP-FPM and NGINX
+title: "Serve PHP with PHP-FPM and NGINX"
+image: serve-php-with-phpfpm-and-nginx-smp.jpg
 external_resources:
  - '[PHP Manual](https://secure.php.net/docs.php)'
 ---
 
-![Serve PHP with PHP-FPM and NGINX](serve-php-with-phpfpm-and-nginx-smp.jpg)
-
 The [PHP Fast Process Manager](https://php-fpm.org/) is a [FastCGI](https://en.wikipedia.org/wiki/FastCGI) handler for [PHP](https://secure.php.net/) scripts and applications. It's commonly paired with web servers to serve applications which require a PHP framework, such as web forums or login gateways, while the web server returns HTML, JavaScript, and other non-PHP content.
-
 
 ## Before You Begin
 
-- **You will need a working NGINX setup.** If you do not already have that, complete Part 1 of our Getting Started with NGINX series: [*Basic Installation and Setup*](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
+- **You need a working NGINX setup.** If you do not already have that, complete Part 1 of our Getting Started with NGINX series: [*Basic Installation and Setup*](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
 
 - You will need root access to the system, or a user account with `sudo` privileges.
 
 - Update your system’s packages.
-
 
 ## Install and Configure PHP-FPM
 
@@ -68,7 +65,7 @@ The [PHP Fast Process Manager](https://php-fpm.org/) is a [FastCGI](https://en.w
         sed -i 's/listen.owner = www-data/listen.owner = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
         sed -i 's/listen.group = www-data/listen.group = nginx/g' /etc/php/7.0/fpm/pool.d/www.conf
 
-4.  By default, PHP-FPM process is run as `www-data` user and group. Again, those need to be edited so that those match user and group of running NGINX instance, otherwise permission errors may occur when NGINX passed PHP requests to PHP-FPM.
+4.  By default, PHP-FPM process is run as the `www-data` user and group. Again, those need to be edited so that those match user and group of running NGINX instance, otherwise permission errors may occur when NGINX passed PHP requests to PHP-FPM.
 
     Change `user` and `group` directives to NGINX user and group:
 
