@@ -9,7 +9,7 @@ keywords: ['wireguard','vpn','debian']
 tags: ["networking","security","vpn","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-08
-modified: 2019-07-08
+modified: 2021-10-15
 modified_by:
   name: Linode
 title: "Set Up WireGuard VPN on Debian"
@@ -126,7 +126,7 @@ SaveConfig = true
 
 ### Set Up Firewall Rules
 
-1. Install UFW:
+1.  Install UFW:
 
         sudo apt-get install ufw
 
@@ -143,7 +143,7 @@ SaveConfig = true
 
 ### Start the WireGuard Service
 
-1. Start WireGuard:
+1.  Start WireGuard:
 
         sudo wg-quick up wg0
 
@@ -223,7 +223,7 @@ Address = 10.0.0.2/24, fd86:ea04:1115::5/64
 [Peer]
 PublicKey = <Server Public key>
 Endpoint = <Server Public IP>:51820
-AllowedIPs = 10.0.0.2/24, fd86:ea04:1115::0/64
+AllowedIPs = 10.0.0.1/24, fd86:ea04:1115::1/64
 {{< /file >}}
 
 1.  Edit the `wg0.conf` file on the server to add the client's public key and allowed IPs.
@@ -231,7 +231,7 @@ AllowedIPs = 10.0.0.2/24, fd86:ea04:1115::0/64
     {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Peer]
 PublicKey = <Client Public Key>
-AllowedIPs = 10.0.0.2/24, fd86:ea04:1115::0/64
+AllowedIPs = 10.0.0.2/24, fd86:ea04:1115::5/64
 {{< /file >}}
 
 1.  Restart the `wg` service on both the server and the client:
@@ -270,11 +270,11 @@ peer: iMT0RTu77sDVrX4RbXUgUBjaOqVeLYuQhwDSU+UI3G4=
 
 ### Test the Connection
 
-1. Return to the client and ping the server:
+1.  Return to the client and ping the server:
 
         ping 10.0.0.1
 
-    Once you've successfully established the ability to ping the server from the client, run the following command:
+1.  Once you've successfully established the ability to ping the server from the client, run the following command:
 
         sudo wg
 

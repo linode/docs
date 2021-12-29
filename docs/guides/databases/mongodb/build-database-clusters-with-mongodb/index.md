@@ -59,7 +59,7 @@ The problem in this configuration is that if one of the shard servers experience
 
 ## Configure Hosts File
 
-If your Linodes are all located in the same data center, we recommend [adding a private IP address](/docs/networking/remote-access#adding-private-ip-addresses) for each one and using those here to avoid transmitting data over the public internet. If you don't use private IP addresses, be sure to [encrypt your data with SSL/TLS](https://docs.mongodb.com/manual/tutorial/configure-ssl/).
+If your Linodes are all located in the same data center, we recommend [adding a private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each one and using those here to avoid transmitting data over the public internet. If you don't use private IP addresses, be sure to [encrypt your data with SSL/TLS](https://docs.mongodb.com/manual/tutorial/configure-ssl/).
 
 On each Linode in your cluster, add the following to the `/etc/hosts` file:
 
@@ -77,7 +77,7 @@ On each Linode in your cluster, add the following to the `/etc/hosts` file:
 Replace the IP addresses above with the IP addresses for each Linode. Also substitute the hostnames of the Linodes in your cluster for the hostnames above.
 
 {{< note >}}
-You may also configure DNS records for each host rather than using hosts file entries. However, be aware that public DNS servers, such as the ones used when configuring records in the [DNS Manager](/docs/platform/manager/dns-manager/), only support public IP addresses.
+You may also configure DNS records for each host rather than using hosts file entries. However, be aware that public DNS servers, such as the ones used when configuring records in the [DNS Manager](/docs/guides/dns-manager/), only support public IP addresses.
 {{< /note >}}
 
 ## Set Up MongoDB Authentication
@@ -513,4 +513,4 @@ This section is optional. To ensure your data is being distributed evenly in the
 
 Before using your cluster in a production environment, it's important to configure a firewall to limit ports 27017 and 27019 to only accept traffic between hosts within your cluster. Additional firewall configuration will likely be needed depending on the other services you're running. For more information, consult our [firewall guides](/docs/security/firewalls/).
 
-You may also want to create a master disk image consisting of a full MongoDB installation and whatever configuration settings your application requires. By doing so, you can use the Linode Manager to dynamically scale your cluster as your data storage needs grow. You may also do this from the [Linode CLI](/docs/platform/api/linode-cli/) if you'd like to automate the process. For more information, see our guide on [Linode images](/docs/platform/disk-images/linode-images/).
+You may also want to create a master disk image consisting of a full MongoDB installation and whatever configuration settings your application requires. By doing so, you can use the Linode Manager to dynamically scale your cluster as your data storage needs grow. You may also do this from the [Linode CLI](/docs/platform/api/linode-cli/) if you'd like to automate the process. For more information, see our guide on [Linode Images](/docs/products/tools/images/).

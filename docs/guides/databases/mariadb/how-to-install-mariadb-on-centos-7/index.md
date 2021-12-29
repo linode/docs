@@ -3,14 +3,16 @@ slug: how-to-install-mariadb-on-centos-7
 author:
     name: Linode
     email: docs@linode.com
-description: 'Getting started with MariaDB on CentOS 7'
+description: "Getting started with MariaDB on CentOS 7"
 keywords: ["MariaDB on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MariaDB", "database", "MySQL", "install MariaDB", "secure MariaDB", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-08-21
 modified_by:
     name: Linode
 published: 2015-08-21
-title: 'How to Install MariaDB on CentOS 7'
+title: "How to Install MariaDB on CentOS 7"
+h1_title: "Installing MariaDB on CentOS 7"
+enable_h1: true
 external_resources:
  - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
  - '[MySQL Reference Manuals](https://dev.mysql.com/doc/)'
@@ -30,7 +32,7 @@ MariaDB is a fork of the popular cross-platform MySQL database management system
 
 ![How to Install MariaDB on CentOS 7](how-to-install-mariadb-on-centos-7.png)
 
-MariaDB replaced MySQL as the default database system in the CentOS 7 repositories. Though installing MySQL into CentOS 7 is not difficult (see our [MySQL CentOS 7 guide](/docs/databases/mysql/how-to-install-mysql-on-centos-7/) for instructions), if you simply need a database MariaDB is recommended for official support and a minimal chance of incompatibilities with other repository software.
+MariaDB replaced MySQL as the default database system in the CentOS 7 repositories. Though installing MySQL into CentOS 7 is not difficult see, [install mysql CentOS 7](/docs/databases/mysql/how-to-install-mysql-on-centos-7/), if you simply need a database MariaDB is recommended for official support and a minimal chance of incompatibilities with other repository software.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.

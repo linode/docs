@@ -13,12 +13,12 @@ modified_by:
 published: 2019-01-15
 title: Getting Started with Puppet - Basic Installation and Setup
 external_resources:
-    - '[Puppet Labs](https://puppetlabs.com/)'
-    - '[Puppet Open Source Documentation](https://docs.puppetlabs.com/puppet/)'
+    - '[Puppet Labs](https://puppet.com/)'
+    - '[Puppet Open Source Documentation](https://docs.puppet.com/puppet/)'
 aliases: ['/applications/configuration-management/puppet/getting-started-with-puppet-6-1-basic-installation-and-setup/','/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/']
 ---
 
-[Puppet](https://puppetlabs.com/) is a configuration management tool that simplifies system administration. Puppet uses a client/server model in which your managed nodes, running a process called the Puppet *agent*, talk to and pull down configuration profiles from a Puppet *master*.
+[Puppet](https://puppet.com/) is a configuration management tool that simplifies system administration. Puppet uses a client/server model in which your managed nodes, running a process called the Puppet *agent*, talk to and pull down configuration profiles from a Puppet *master*.
 
 <!--
 Tnis graphic doesn't have the same title as the new title for this doc.
@@ -93,7 +93,7 @@ ff02::2 ip6-allrouters
 
 {{< /disclosure-note >}}
 
-1.  [Set up DNS records](/docs/platform/manager/dns-manager/#add-records) for your Linodes' FQDNs. For each Linode, create a new *A record* with the name specified by its FQDN and assign it to that Linode's IP address.
+1.  [Set up DNS records](/docs/guides/dns-manager/#add-dns-records) for your Linodes' FQDNs. For each Linode, create a new *A record* with the name specified by its FQDN and assign it to that Linode's IP address.
 
     If you don't use Linode's name servers for your domain, consult your name server authority's website for instructions on how to edit your DNS records.
 
@@ -113,7 +113,7 @@ The `puppetserver` service has the Puppet agent service as a dependency (which i
 
 1.  Download the Puppet repository, update your system packages, and install `puppetserver`:
 
-        wget https://apt.puppetlabs.com/puppet-release-bionic.deb
+        wget https://apt.puppet.com/puppet-release-bionic.deb
         dpkg -i puppet-release-bionic.deb
         apt update
         apt install puppetserver
@@ -176,7 +176,7 @@ This snippet incorporates the FQDN declaration described in the [Create your Lin
 
 1.  On your managed node running **Ubuntu 18.04**, install the `puppet-agent` package:
 
-        wget https://apt.puppetlabs.com/puppet-release-bionic.deb
+        wget https://apt.puppet.com/puppet-release-bionic.deb
         dpkg -i puppet-release-bionic.deb
         apt update
         apt install puppet-agent

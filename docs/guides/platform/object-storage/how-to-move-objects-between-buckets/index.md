@@ -36,7 +36,7 @@ In this guide you learn how to move objects between buckets using:
 
 To learn how to enable Object Storage, see the [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide.
 
-Object Storage is similar to a subscription service. **After it is enabled, you are billed at the flat rate regardless of whether or not there are active buckets on your account.** [Cancel Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#cancel-object-storage) to stop billing for this flat rate.
+Object Storage is similar to a subscription service. **After it is enabled, you are billed at the flat rate regardless of whether or not there are active buckets on your account.** [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/) to stop billing for this flat rate.
 
 In all Object Storage URLs the cluster where your bucket is hosted is a part of the URL string.
 
@@ -50,7 +50,7 @@ The easiest way to move objects between buckets is using a Graphical User Interf
 
 To transfer objects within the same cluster on the same account, you need to open only one Cyberduck window.
 
-1.  Open Cyberduck and make a connection to access your buckets as described in [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#cyberduck).
+1.  Open Cyberduck and make a connection to access your buckets as described in [Using Cyberduck with Object Storage](/docs/products/storage/object-storage/guides/cyberduck/).
 
 1.  Expand the two buckets you want to transfer objects between by clicking the down arrow to the left of the folders.
 

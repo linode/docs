@@ -11,7 +11,9 @@ published: 2017-10-27
 modified: 2019-01-02
 modified_by:
   name: Linode
-title: 'Configure and Use Salt Cloud and Cloud Maps to Provision Systems'
+title: "How to Use Salt Cloud and Cloud Maps to Provision Systems"
+h1_title: "Using Salt Cloud and Cloud Maps to Provision Systems"
+enable_h1: true
 contributor:
   name: Sergey Bulavintsev
 aliases: ['/applications/configuration-management/configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems/','/applications/configuration-management/salt/configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems/']
@@ -22,7 +24,7 @@ tags: ["automation","salt"]
 
 ## What is Salt Cloud?
 
-[Salt Cloud](https://docs.saltstack.com/en/latest/topics/cloud/) is a configuration management tool that allows users to provision systems on cloud hosts or hypervisors. During installation, Salt Cloud installs Salt on all provisioned systems by default. This enables the user to put systems into the desired state during provisioning.
+[Salt Cloud](https://docs.saltproject.io/en/latest/topics/cloud/) is a configuration management tool that allows users to provision systems on cloud hosts or hypervisors. During installation, Salt Cloud installs Salt on all provisioned systems by default. This enables the user to put systems into the desired state during provisioning.
 
 Salt Cloud:
 
@@ -45,11 +47,11 @@ This guide shows how to install Salt Cloud and configure it to work on a Linode.
 
 ## Install Salt and Salt Cloud via Bootstrap Script
 
-The recommended way to install Salt Cloud is with a Salt Bootstrap script. This script will install Salt, Salt Cloud packages, and all required dependencies. Run the script with the `-h` flag to view the additional options available, or refer to [Salt Bootstrap Guide](https://docs.saltstack.com/en/latest/topics/tutorials/salt_bootstrap.html) for detailed instructions.
+The recommended way to install Salt Cloud is with a Salt Bootstrap script. This script will install Salt, Salt Cloud packages, and all required dependencies. Run the script with the `-h` flag to view the additional options available, or refer to [Salt Bootstrap Guide](https://docs.saltproject.io/en/latest/topics/tutorials/salt_bootstrap.html) for detailed instructions.
 
 1. Download the Salt Bootstrap script via curl:
 
-        curl -o bootstrap-salt.sh -L https://bootstrap.saltstack.com
+        curl -o bootstrap-salt.sh -L https://bootstrap.saltproject.io
 
 2. Execute the script and use the `-L` option to install Salt and Salt Cloud:
 
@@ -167,7 +169,7 @@ linode_1gb_with_ssh_key:
 {{< /file >}}
 
     {{< note >}}
-If your master server is located behind a firewall, you will have to open ports `4505-4506` in [firewall](https://docs.saltstack.com/en/latest/topics/tutorials/firewall.html). Depending on your network configuration, you may have to set up port forwarding for these ports.
+If your master server is located behind a firewall, you will have to open ports `4505-4506` in [firewall](https://docs.saltproject.io/en/latest/topics/tutorials/firewall.html). Depending on your network configuration, you may have to set up port forwarding for these ports.
 {{< /note >}}
 
 ## Salt Cloud Interface
@@ -308,7 +310,7 @@ linode_1gb:
   - linode_db
 {{< /file >}}
 
-    Cloud map file allows you to define instances from several Linode accounts or even from a different provider. Check the [Cloud Map documentation](https://docs.saltstack.com/en/latest/topics/cloud/map.html) for an in-depth guide.
+    Cloud map file allows you to define instances from several Linode accounts or even from a different provider. Check the [Cloud Map documentation](https://docs.saltproject.io/en/latest/topics/cloud/map.html) for an in-depth guide.
 
 2.  To create instances from the Cloud map file, execute `salt-cloud` with the `-m` option and point to the `.map` file:
 

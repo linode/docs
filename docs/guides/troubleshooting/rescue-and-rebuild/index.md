@@ -61,13 +61,9 @@ To boot a Linode into Rescue Mode:
 
     [![Linode Cloud Manager dashboard - Linodes sidebar link highlighted](cloud-manager-dashboard.png "Linode Cloud Manager Dashboard with the Linodes link the sidebar highlighted")](cloud-manager-dashboard.png)
 
-1.  Select a Linode:
+1.  Click on the **more options ellipsis** next to the Linode that will be booted into rescue mode, and click on the **Rescue** option to open the Rescue form:
 
     [![Linode Cloud Manager Linodes page](cloud-manager-linodes-page.png "Linode Cloud Manager Linodes page with one Linode highlighted")](cloud-manager-linodes-page.png)
-
-1.  The Linode's detail page appears. Click the **Rescue** tab:
-
-    [![Linode Cloud Manager Linode detail page - Rescue tab highlighted](cloud-manager-linode-detail-page-rescue-tab-highlighted.png "Linode Cloud Manager Linode detail page with Rescue tab highlighted")](cloud-manager-linode-detail-page-rescue-tab-highlighted.png)
 
 1.  In the **Rescue** form, select the disks you want to mount:
 
@@ -84,14 +80,14 @@ Make a note of which devices the disks are assigned to (e.g. `/dev/sda`, `/dev/s
     {{< note >}}
 You can assign up to 7 disks in Rescue Mode. `/dev/sdh` is always assigned to the Finnix recovery distribution.
 
-For best results, you should review the names that your Linode's disks are using in your Linode's [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) (`/dev/sda`, `/dev/sdb`, etc.) and match those names to the device assignments you specify in the Rescue form before starting Rescue Mode.
+For best results, you should review the names that your Linode's disks are using in your Linode's [configuration profile](/docs/guides/linode-configuration-profiles/) (`/dev/sda`, `/dev/sdb`, etc.) and match those names to the device assignments you specify in the Rescue form before starting Rescue Mode.
 
 Matching these names will be especially important if you need to [change root](#change-root) within Rescue Mode. The chroot will be able to read your Linode's `/etc/fstab` file, which defines where and how your Linode mounts its disks when booting up, to automatically apply the correct mount options and mount directories to your disks.
 
 A mismatch in the names of your disks between your Linode's configuration profile and your Rescue Mode environment may cause the chroot to mount these disks in the wrong location or with the wrong mount options. As a result, it is important to ensure that these names match.
 {{< /note >}}
 
-1.  Click the **Submit** button. The Linode reboots into Rescue Mode, and a progress bar appears. When this progress bar completes, proceed to [Connecting to a Linode Running in Rescue Mode](#connecting-to-a-linode-running-in-rescue-mode).
+1.  Click the **Reboot into Rescue Mode** button. The Linode reboots into Rescue Mode, and the progress percentage appears. When the Linode appears as **Running** again, proceed to [Connecting to a Linode Running in Rescue Mode](#connecting-to-a-linode-running-in-rescue-mode).
 
     [![Linode Cloud Manager Rescue form - reboot progress bar highlighted](cloud-manager-rescue-form-reboot-progress-bar-highlighted.png "Linode Cloud Manager Rescue form with the reboot progress bar highlighted")](cloud-manager-rescue-form-reboot-progress-bar-highlighted.png)
 
@@ -113,7 +109,7 @@ To connect with Lish:
 
     [![Linode Cloud Manager Lish console](cloud-manager-new-lish-window.png "Linode Cloud Manager Lish console")](cloud-manager-new-lish-window.png)
 
-Review the [Using the Linode Shell (Lish)](/docs/platform/manager/using-the-linode-shell-lish/) guide for further explanation of the Lish console and alternative methods for accessing it, including [from your computer's terminal application](/docs/platform/manager/using-the-linode-shell-lish/#use-a-terminal-application).
+Review the [Using the Lish Console](/docs/guides/using-the-lish-console/) guide for further explanation of the Lish console and alternative methods for accessing it, including [from your computer's terminal application](/docs/guides/using-the-lish-console/#through-ssh-using-a-terminal).
 
 ### Starting SSH
 
@@ -209,7 +205,7 @@ The software packages you install is available as long as the Linode is running 
 ### Mounting Disks
 
 {{< note >}}
- Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab] (/docs/guides/install-a-custom-distribution-on-a-linode/#update-your-fstab) guide.
+ Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/guides/install-a-custom-distribution-on-a-linode/#update-your-fstab) guide.
  {{< /note >}}
 
 By default, your disks are not mounted when your Linode boots into Rescue Mode. However, you can manually mount a disk under Rescue Mode to perform system recovery and maintenance tasks.
@@ -286,7 +282,7 @@ If you mounted your disk without using the `exec` option prior to reviewing this
     {{< note >}}
 This `mount` command only specifies a disk name without specifying a mount point. This causes `mount` to use the `/etc/fstab` file in the chroot to determine the mount point and apply the correct mount options.
 
-As a result, this command depends on you having made these disks available to your Rescue Mode environment under the same names that they use in your Linode's [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles).
+As a result, this command depends on you having made these disks available to your Rescue Mode environment under the same names that they use in your Linode's [configuration profile](/docs/guides/linode-configuration-profiles/).
 
 If these names do not match, mounting your disks using only a device name will either fail completely, mount them at the wrong directory, and/or apply the wrong mount options to them.
 
@@ -330,9 +326,9 @@ The Linode Cloud Manager provides a *Rebuild* feature performs the following two
     {{< caution >}}
 If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/security/backups/backing-up-your-data) or [create a snapshot through Linode's Backup Service](/docs/platform/disk-images/linode-backup-service#take-a-manual-snapshot) to preserve data before using the Rebuild feature.
 
-If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk with a Linux Distribution Installed](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-disk-with-a-linux-distribution-installed) section of the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
+If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/guides/disks-and-storage/#creating-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
 
-The Linode needs to have some amount of unallocated disk space in order to provision a new distribution. If the Linode does not have enough unallocated space, you can [shrink your existing disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to free up space or [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a higher resource tier.
+The Linode needs to have some amount of unallocated disk space in order to provision a new distribution. If the Linode does not have enough unallocated space, you can [shrink your existing disks](/docs/guides/disks-and-storage/#resizing-a-disk) to free up space or [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a higher resource tier.
     {{< /caution >}}
 
     If you need to copy files from your existing disk to another location before rebuilding, you can [start SSH](#starting-ssh) under Rescue Mode and then use an SFTP client to copy files to your computer.
@@ -347,24 +343,16 @@ To use the Rebuild feature:
 
     [![Linode Cloud Manager dashboard - Linodes sidebar link highlighted](cloud-manager-dashboard.png "Linode Cloud Manager Dashboard with the Linodes link the sidebar highlighted")](cloud-manager-dashboard.png)
 
-1.  Select a Linode:
+1.  Click on the **more options ellipsis** next to the Linode that will be rebuilt, and click on the Rebuild option to open the Rebuild form:
 
-    [![Linode Cloud Manager Linodes page](cloud-manager-linodes-page.png "Linode Cloud Manager Linodes page with one Linode highlighted")](cloud-manager-linodes-page.png)
+    [![Linode Cloud Manager Linodes page](cloud-manager-linodes-rebuild.png "Linode Cloud Manager Linodes page with one Linode highlighted")](cloud-manager-linodes.png)
 
-1.  The Linode's detail page appears. Click the **Rebuild** tab:
-
-    [![Linode Cloud Manager Linode detail page - Rebuild tab highlighted](cloud-manager-linode-detail-page-rebuild-tab-highlighted.png "Linode Cloud Manager Linode detail page with Rebuild tab highlighted")](cloud-manager-linode-detail-page-rebuild-tab-highlighted.png)
-
-1.  Complete the Rebuild form. Select an image to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear).
+1.  Complete the Rebuild form. Select an image or StackScript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear).
 
 1.  Click on **Rebuild** button after completing the form:
 
     [![Linode Cloud Manager Rebuild form - Rebuild button highlighted](cloud-manager-rebuild-form-rebuild-button-highlighted.png "Linode Cloud Manager Rebuild form with Rebuild button highlighted")](cloud-manager-rebuild-form-rebuild-button-highlighted.png)
 
-1.  A confirmation dialog appears. Click **Rebuild** button in the dialog to start the rebuild process:
+1.  The Linode may take several minutes to complete the rebuild process. Select the Linode that is being rebuilt and select the `Activity Feed` tab to monitor rebuild progress and confirm that the rebuild has been completed:
 
-    [![Linode Cloud Manager Rebuild form confirmation dialog](cloud-manager-rebuild-form-confirmation-dialog.png "Linode Cloud Manager Rebuild form confirmation dialog")](cloud-manager-rebuild-form-confirmation-dialog.png)
-
-1.  The **Summary** tab for the Linode appears and a **Rebuilding** progress bar appears. When the operation completes, the Linode is booted under the new Linux image:
-
-    [![Linode Cloud Manager Linode detail page - Rebuild progress bar highlighted](cloud-manager-linode-detail-page-rebuild-progress-bar-highlighted.png "Linode Cloud Manager Linode detail page with the Rebuild progress bar highlighted")](cloud-manager-linode-detail-page-rebuild-progress-bar-highlighted.png)
+    [![Linode Cloud Manager Activity - Activity](cloud-manager-rescue-activity.png "Linode Cloud Manager Rescue Activity")](cloud-manager-rescue-activity.png)

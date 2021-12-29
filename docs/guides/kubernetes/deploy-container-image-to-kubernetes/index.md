@@ -3,14 +3,16 @@ slug: deploy-container-image-to-kubernetes
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide will show you how to package a Hugo static site in a Docker container image, host the image on Docker Hub, and deploy the container image on a Kubernetes cluster running on Linode.'
+description: "This guide shows how to package a Hugo static site in a Docker container image, host the image on Docker Hub, and deploy it on a Linode Kubernetes cluster."
 keywords: ['kubernetes','docker','docker hub','hugo', 'static site']
 tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-05-07
 modified_by:
   name: Linode
-title: "Create and Deploy a Docker Container Image to a Kubernetes Cluster"
+title: "Build & Deploy a Docker Image to Kubernetes Cluster"
+h1_title: "Create and Deploy a Docker Container Image to a Kubernetes Cluster"
+enable_h1: true
 aliases: ['/applications/containers/kubernetes/deploy-container-image-to-kubernetes/','/applications/containers/deploy-container-image-to-kubernetes/','/kubernetes/deploy-container-image-to-kubernetes/']
 contributor:
   name: Linode
@@ -72,7 +74,7 @@ Development of your Hugo site and Docker image will take place locally on your p
 
             brew install hugo
 
-1. {{< content "install-docker-ce" >}}
+1. {{< content "installing-docker-shortguide" >}}
 
 ## Create a Hugo Site
 
@@ -390,7 +392,7 @@ spec:
     - The `spec` key defines the Hugo site service object's desired behavior. It will create a service that exposes TCP port `80` on any pod with the `app: hugo-site` label.
     - The exposed container port is defined by the `targetPort:80` key-value pair.
 
-1. Create the service for your hugo site:
+1. Create the service for your Hugo site:
 
         kubectl create -f clientx/k8s-hugo/service-hugo.yaml
 
@@ -442,7 +444,7 @@ spec:
       - `imagePullPolicy: Always` means that the container image will be pulled every time the pod is started.
       - `containerPort: 80` states the port number to expose on the pod's IP address. The system does not rely on this field to expose the container port, instead, it provides information about the network connections a container uses.
 
-1. Create the deployment for your hugo site:
+1. Create the deployment for your Hugo site:
 
         kubectl create -f clientx/k8s-hugo/deployment.yaml
 
@@ -478,7 +480,7 @@ hugo-site   NodePort   10.108.110.6   <none>        80:30304/TCP   1d
 
 1. Open a browser window and enter in a worker node's IP address and exposed port. An example url to your Hugo site would be, `http://192.0.2.1:30304`. Your Hugo site should appear.
 
-    If desired, you can purchase a domain name and use [Linode's DNS Manager](/docs/platform/manager/dns-manager/) to assign a domain name to the cluster's worker node IP address.
+    If desired, you can purchase a domain name and use [Linode's DNS Manager](/docs/guides/dns-manager/) to assign a domain name to the cluster's worker node IP address.
 
 ## Tear Down Your Cluster
 

@@ -17,7 +17,7 @@ h1_title: 'Installing Apache Web Server on CentOS 8'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
-image: 'How_to_Install_Apache_Web_Server_on_CentOS_8_1200x631.png'
+image: InstallApache_CentOS8.png
 relations:
     platform:
         key: install-apache-server
@@ -34,7 +34,7 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) 
 
 1.  Set up your Linode in the [Getting Started](/docs/getting-started/) and [Securing your Server](/docs/security/securing-your-server/) guides.
 
-1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/platform/manager/dns-manager/) guide.
+1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/guides/dns-manager/) guide.
 
     - Don't forget to update your `/etc/hosts` file with your Linode's public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/getting-started/#update-your-system-s-hosts-file) section of the [Getting Started](/docs/getting-started/) guide.
 

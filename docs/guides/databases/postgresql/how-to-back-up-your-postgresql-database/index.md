@@ -3,12 +3,12 @@ slug: how-to-back-up-your-postgresql-database
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: 'This guide shows how to use pg_dump and pg_dumpall to make backups of your PostgreSQL databases.'
+description: 'Learn how to back up your PostgreSQL database with this guide for single database, multiple databases and automated backups.'
 og_description: 'This guide shows how to create backups of your PostgreSQL databases using pg_dump and use them to restore a lost or broken database.'
 keywords: ['postgres', 'postgresql', 'backup', 'sql dump', 'pg_dump', 'psql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-18
-modified: 2017-12-18
+modified: 2021-07-07
 modified_by:
   name: Jared Kobos
 title: "How to Back Up Your PostgreSQL Database"
@@ -20,7 +20,7 @@ aliases: ['/databases/postgresql/how-to-back-up-your-postgresql-database/']
 
 ![How to Back Up Your PostgreSQL Database](back-up-postgresql-database-title.jpg "How to Back Up Your PostgreSQL Database")
 
-If you are using PostgreSQL in a production environment, it is important to take precautions to ensure that your users' data is not lost. By frequently backing up your database, and/or automating backups with a cron task, you will be able to quickly restore your system in the event that your database is lost or corrupted. Fortunately, PostgreSQL includes tools to make this task simple and easy to manage.
+If you are using PostgreSQL in a production environment, it is important to take precautions to ensure that your users' data is not lost. By frequently backing up your database, and/or automating backups with a cron task, you can quickly restore your system in the event that your database is lost or corrupted. Fortunately, PostgreSQL includes tools to make this task simple and easy to manage.
 
 ## Before You Begin
 
@@ -61,7 +61,6 @@ PostgreSQL provides the `pg_dump` utility to simplify backing up a single databa
      - `*.sql`: plaintext dump
      - `*.tar`: tarball
 
-
 ### Remote Database
 
 Just as `psql` allows you to connect to a remote host, `pg_dump` can be run from a client computer to back up data on a remote server. Use the `-h` flag to specify the IP address of your Linode and `-p` to identify the port on which PostgreSQL is listening:
@@ -82,15 +81,15 @@ Because `pg_dump` only creates a backup of one database at a time, it does not s
 
 ## Automate Backups with a Cron Task
 
-You may want to set up a cron job so that your database will be backed up automatically at regular intervals. The steps in this section will set up a cron task that will run `pg_dump` once every week.
+You may want to set up a cron job so that your database backs up automatically at regular intervals. The steps in this section sets up a cron task that runs `pg_dump` once every week.
 
 1.  Make sure you are logged in as the `postgres` user:
 
         su - postgres
 
-2.  Create a directory to store the automatic backups:
+2.  Create a directory in the `postgres` user's home to store the automatic backups:
 
-        mkdir -p ~/postgres/backups
+        mkdir -p ~/backups
 
 3.  Edit the crontab to create the new cron task:
 
@@ -102,10 +101,40 @@ You may want to set up a cron job so that your database will be backed up automa
 0 0 * * 0 pg_dump -U postgres dbname > ~/postgres/backups/dbname.bak
 {{< /file >}}
 
-5.  Save and exit from the editor. Your database will be backed up at midnight every Sunday. To change the time or frequency of the updates, see our [Schedule Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) guide.
+5.  Save and exit from the editor. Your database is set to back up at midnight every Sunday. To change the time or frequency of the updates, see our [Schedule Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) guide.
+
+## How Do I Check My PostgreSQL Backup Status?
+
+You can set up error logging to check on the status of your PostgreSQL automated backups. If you aren’t creating a log file for your PostgreSQL, you can create one by adding the following at the end of your cron job.
+
+1.  Make sure you are logged in as the `postgres` user:
+
+        su - postgres
+
+1.  Create a directory in the `postgres` user's home to store your error log files:
+
+        mkdir -p ~/logs
+
+1.  Edit the crontab to modify the cron task:
+
+        crontab -e
+
+1.  Modify the cron task line to output and append any backup errors to a log file:
+
+    {{< file crontab >}}
+0 0 * * 0 pg_dump -U postgres dbname > ~/backups/dbname.bak 2>> ~/logs/dbname.bak.log
+{{< /file >}}
+
+1. If your system is capable of sending emails, you can also configure your cron task to send an email alert whenever there is a PostgreSQL backup error. For example, if `mailx` is installed and enabled for the `postgres` user, the following cron task sends the last line of your log file whenever an error occurs:
+
+    {{< file crontab >}}
+0 0 * * 0 pg_dump -U postgres dbname > ~/backups/dbname.bak 2>> ~/logs/dbname.bak.log || tail -1 ~/logs/dbname.bak.log | mailx 'example@linode.com' -s "Postgresql backup failure!"
+{{< /file >}}
+
+    Now, if there are any issues with the backup, you should receive an email containing the error.
 
 ## Next Steps
 
-PostgreSQL also offers more advanced ways to back up your databases. The [official docs](https://www.postgresql.org/docs/9.1/static/continuous-archiving.html) describe how to set up continuous archiving and point-in-time recovery. This is a much more complex process, but it will maintain a constant archive of your database and make it possible replay PostgreSQL's logs to recover the state of the database at any point in the past.
+PostgreSQL also offers more advanced ways to back up your databases. The [official docs](https://www.postgresql.org/docs/9.1/static/continuous-archiving.html) describe how to set up continuous archiving and point-in-time recovery. This is a much more complex process, but it can maintain a constant archive of your database and make it possible to replay PostgreSQL's logs to recover the state of the database at any point in the past.
 
 This method can also be helpful if you have a very large database although continuously archiving a large database consumes resources. Since the process is ongoing, there is no need to make frequent and time consuming full backups.

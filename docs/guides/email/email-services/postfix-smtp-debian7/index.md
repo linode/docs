@@ -49,7 +49,7 @@ At a high-level Postfix configuration involves the following steps:
 ## Postfix Configuration
 
 {{< note >}}
-If you’re using Gmail or Google Apps, see our [Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu](/docs/guides/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/) guide instead.
+If you’re using Gmail or Google Workspace, see our [Configure Postfix to Send Mail Using Gmail and Google Workspace on Debian or Ubuntu](/docs/guides/configure-postfix-to-send-mail-using-gmail-and-google-workspace-on-debian-or-ubuntu/) guide instead.
 {{</ note >}}
 
 ### Gathering Prerequisites
@@ -173,7 +173,7 @@ You can now test your Postfix Configurations by using your system's `mail` utili
 
 1. Compose an email to verify that your system is able to successfully send it. Replace the email address with your own and your intended recipient's email address.
 
-        echo  “body of your email” | mail -s “This is a subject” - a “From: you@example.com” recipient@elsewhere.com
+        echo  "body of your email" | mail -s "This is a subject" -a "From:you@example.com" recipient@elsewhere.com
 
     {{< note >}}
 

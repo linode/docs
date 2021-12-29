@@ -3,16 +3,14 @@ slug: common-stackscripts-use-cases
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Linode StackScripts can be used for a variety of use cases. This guide covers some of the more common use cases, like automating common system adminstration tasks, demonstrating your software, distributing your software, or deploying cluster instances. There are few limitations to what you can automate using a StackScript, because its underlying mechanism works just like any script you might execute on a Linux system.'
-og_description: 'Linode StackScripts can be used for a variety of use cases. This guide covers some of the more common use cases, like automating common system adminstration tasks, demonstrating your software, distributing your software, or deploying cluster instances. There are few limitations to what you can automate using a StackScript, because its underlying mechanism works just like any script you might execute on a Linux system.'
+description: "This guide covers some of the common use cases for Linode StackScripts along with limitations of the service."
 keywords: ['scripting','automation','bash','open source']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-21
-image: Common_Use_Cases_for_Linode_StackScripts_1200x631.png
+image: CommonUse_LinodeStackScripts.png
 modified_by:
   name: Linode
-title: "Common Linode StackScripts Use Cases"
-h1_title: "Common Use Cases for Linode StackScripts"
+title: "Common Use Cases for Linode StackScripts"
 contributor:
   name: Linode
 tags: ["linode platform","automation"]

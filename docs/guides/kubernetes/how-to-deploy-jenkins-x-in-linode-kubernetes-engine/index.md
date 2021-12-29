@@ -3,12 +3,13 @@ slug: how-to-deploy-jenkins-x-in-linode-kubernetes-engine
 author:
   name: Daniele Polencic
   email: daniele@learnk8s.io
-description: 'Jenkins X is CI/CD tool that automates the management of development environments and the promotion of new versions of applications between environments. This guide illustrates how to install Jenkins X on Linode Kubernetes Engine.'
-og_description: 'Jenkins X is CI/CD tool that automates the management of development environments and the promotion of new versions of applications between environments. This guide illustrates how to install Jenkins X on Linode Kubernetes Engine.'
+description: 'Learn how to install CI/CD tool Jenkins X on Linode Kubernetes Engine in this step-by-step guide.'
+og_description: 'Learn how to install CI/CD tool Jenkins X on Linode Kubernetes Engine in this step-by-step guide.'
 keywords: ['kubernetes','pipelines','ci/cd','kubernetes','jenkins x','jenkins']
 tags: ["docker","kubernetes","container","automation","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-29
+image: DeployJenkinsX_LinodeKubEng.png
 modified_by:
   name: Linode
 title: "How to Deploy Jenkins X in Linode Kubernetes Engine"

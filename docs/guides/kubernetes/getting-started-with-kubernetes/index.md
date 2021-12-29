@@ -11,7 +11,9 @@ published: 2019-04-30
 modified: 2020-12-03
 modified_by:
   name: Linode
-title: "Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode"
+title: "Use kubeadm to Deploy a Cluster on Linode"
+h1_title: "Using kubeadm to Deploy a Kubernetes Cluster"
+enable_h1: true
 aliases: ['/kubernetes/getting-started-with-kubernetes/','/applications/containers/getting-started-with-kubernetes/','/applications/containers/kubernetes/getting-started-with-kubernetes/']
 contributor:
   name: Linode
@@ -28,7 +30,7 @@ You can use <abbr title="kubeadm is a cloud provider agnostic tool that automate
 This guide's example instructions result in the creation of three billable Linodes. Information on how to tear down the Linodes are provided at the end of the guide. Interacting with the Linodes via the command line will provide the most opportunity for learning, however, this guide is written so that users can also benefit by reading along.
 {{< /note >}}
 
-### Alternatives for Creating Clusters
+## Alternatives for Creating Clusters
 
 While kubeadm automates several cluster-provisioning tasks, there are other even faster methods for creating a cluster, all of which are great options for production ready deployments:
 

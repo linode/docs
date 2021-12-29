@@ -3,14 +3,16 @@ slug: install-configure-run-spark-on-top-of-hadoop-yarn-cluster
 author:
   name: Florent Houbart
   email: docs@linode.com
-description: 'This guide shows you how to install, configure, and run Spark on top of a Hadoop YARN cluster.'
+description: "This guide shows you how to install, configure, and run Spark on top of a Hadoop YARN cluster."
 keywords: ["spark", "hadoop", "yarn", "hdfs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-20
 modified: 2017-10-23
 modified_by:
   name: Linode
-title: 'Install, Configure, and Run Spark on Top of a Hadoop YARN Cluster'
+title: "How to Run Spark on Top of a Hadoop YARN Cluster"
+h1_title: "Running Spark on Top of a Hadoop YARN Cluster"
+enable_h1: true
 contributor:
   name: Florent Houbart
 external_resources:
@@ -19,9 +21,6 @@ external_resources:
 tags: ["ubuntu","debian","database","centos"]
 aliases: ['/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster/']
 ---
-
-
-## What is Spark?
 
 Spark is a general purpose cluster computing system. It can deploy and run parallel applications on clusters ranging from a single node to thousands of distributed nodes. Spark was originally designed to run Scala applications, but also supports Java, Python and R.
 

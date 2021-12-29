@@ -3,9 +3,10 @@ slug: install-an-odoo-13-stack-on-ubuntu-18-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Odoo is an open-source suite of over 10,000 business applications. Odoo allows administrators to install, configure and customize any application to satisfy their needs. This guide covers how to install and configure Odoo using Git source so it will be easy to upgrade and maintain.'
-og_description: 'Odoo is an open-source suite of over 10,000 business applications. Odoo allows administrators to install, configure and customize any application to satisfy their needs. This guide covers how to install and configure Odoo using Git source so it will be easy to upgrade and maintain.'
+description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Ubuntu 18.04.'
+og_description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Ubuntu 18.04.'
 keywords: ["Odoo 13 install ubuntu 18.04", "install open source cms erp ubuntu"]
+tags: ["debian", "postgresql", "database", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-17
 modified: 2020-09-17
@@ -13,7 +14,7 @@ modified_by:
   name: Linode
 title: 'How to Install an Odoo 13 Stack on Ubuntu 18.04'
 h1_title: Installing an Odoo 13 Stack on Ubuntu 18.04
-image: install-an-odoo-13-stack-on-ubuntu-18-04-using-linode.png
+image: InstallOdoo13Stack_Ubuntu1804.png
 contributor:
   name: Damaso Sanoja
   link: https://twitter.com/damasosanoja
@@ -26,6 +27,11 @@ external_resources:
   - '[Install an SSL certificate with LetsEncrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates)'
   - '[How to Set up tinc, a Peer-to-Peer VPN](/docs/networking/vpn/how-to-set-up-tinc-peer-to-peer-vpn/)'
   - '[Using Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/)'
+relations:
+    platform:
+        key: install-an-odoo-13-stack
+        keywords:
+            - distribution: Ubuntu 18.04
 ---
 
 ## What is Odoo?
@@ -364,7 +370,7 @@ You have two options to backup your production database:
 
 1. You can install PostgreSQL 10 on the **Odoo** server using the procedure described on this guide. This installs `pg_dump` and other utilities, allowing you to use the Odoo GUI as before. Since Odoo configuration is explicit about database connection you do not have to worry about anything else. This method restores the database to the **PostgreSQL** server rather than **Odoo**.
 
-2. You can also use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](https://www.linode.com/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) from the backend **PostgreSQL** server.
+2. You can also use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) from the backend **PostgreSQL** server.
 
 ### Update Odoo Modules
 

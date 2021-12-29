@@ -3,8 +3,8 @@ slug: how-to-deploy-linkerd-with-linode-kubernetes-engine
 author:
   name: Linode
   email: docs@linode.com
-description: 'Linkerd is an ultra lightweight service mesh that offers monitoring, reporting, and encrypted connections between Kubernetes services without disturbing your existing applications. It does this by employing proxy sidecars along each instance. In this guide, learn how to deploy Linkerd to your Linode Kubernetes Engine cluster.'
-og_description: 'Linkerd is an ultra lightweight service mesh that offers monitoring, reporting, and encrypted connections between Kubernetes services without disturbing your existing applications. It does this by employing proxy sidecars along each instance. In this guide, learn how to deploy Linkerd to your Linode Kubernetes Engine cluster.'
+description: "Linkerd offers monitoring, reporting, and encrypted connections between Kubernetes service.. We'll show you how to deploy it to your LKE cluster."
+og_description: "Linkerd offers monitoring, reporting, and encrypted connections between Kubernetes service.. We'll show you how to deploy it to your LKE cluster."
 keywords: ['kubernetes','linkerd','container', 'service mesh', 'k8s']
 tags: ["monitoring","networking","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

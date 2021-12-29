@@ -105,7 +105,7 @@ ripfile=control/sc_serv.rip
 password=testing
 
 
-; password used for accessing the administation pages
+; password used for accessing the administration pages
 ; NOTE: remember to change this to something else
 adminpassword=changeme
 

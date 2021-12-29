@@ -12,6 +12,7 @@ modified_by:
 published: 2020-02-18
 title: How to Install and Configure Drupal on Ubuntu 18.04 LTS
 h1_title: Install and Configure Drupal on Ubuntu 18.04
+image: L_Drupal_on_Ubuntu1804.png
 relations:
     platform:
         key: how-to-install-drupal

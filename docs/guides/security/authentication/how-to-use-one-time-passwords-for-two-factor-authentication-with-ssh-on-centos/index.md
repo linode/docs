@@ -3,8 +3,7 @@ slug: how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ce
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on CentOS 7.'
-og_description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on CentOS 7.'
+description: "Use Google Authenticator to enable two-factor authentication for SSH connections on CentOS 7."
 keywords: ["two factor authentication", "ssh", "google authenticator", "centos"]
 aliases: ['/security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos/','/security/authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos/','/security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos-7/']
 tags: ["centos","ssh","security"]
@@ -12,8 +11,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
 modified_by:
   name: Linode
-title: "How to Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS 7"
-h1_title: "Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS 7"
+title: "How to Use Two-Factor Authentication with SSH on CentOS 7"
+h1_title: "Using 2FA (Two-Factor Authentication) with SSH on CentOS 7"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:
@@ -25,6 +25,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 ---
+
 !['Header Image: Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS7'](two-factor-authentication-centos-title.png)
 
 In this guide, you'll learn how to use one-time passwords for two-factor authentication with SSH on CentOS 7. No matter what kind of data you're hosting, securing access to your Linode is a critical step in preventing your information from being compromised. By default, you will need a password to log in, and you may also configure an authentication key-pair for even greater security. However, another option exists to complement these methods: [time-based one-time passwords](https://en.wikipedia.org/wiki/Time-based_One-time_Password_algorithm) (*TOTPs*).

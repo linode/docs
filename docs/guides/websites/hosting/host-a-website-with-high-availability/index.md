@@ -41,7 +41,7 @@ This guide shows how to host a highly available website with WordPress. However,
 
     You can call your nodes anything you like, but try to keep the naming consistent for organizational purposes. When you see one of the above names, be sure to substitute the hostname you configured for the corresponding node.
 
-1.  To create a private network among your Linodes, you'll need a [private IP address](/docs/networking/remote-access/#adding-private-ip-addresses) for each.
+1.  To create a private network among your Linodes, you'll need a [private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each.
 
 1.  Remember to update each Linode's package repositories before attempting to install software:
 
@@ -740,7 +740,7 @@ You've successfully configured a highly available WordPress site, and you're rea
 
 The NodeBalancer in the above system directs all incoming traffic to the application servers. As such, its IP address will be the one you should use when configuring your DNS records. To find this information, visit the **NodeBalancers** tab in the Linode Manager and look in the *IP Address* section.
 
-For more information on DNS configuration, refer to our [introduction to DNS records](/docs/networking/dns/dns-records-an-introduction/) and our guide on how to use the [DNS Manager](/docs/platform/manager/dns-manager/).
+For more information on DNS configuration, refer to our [introduction to DNS records](/docs/networking/dns/dns-records-an-introduction/) and our guide on how to use the [DNS Manager](/docs/guides/dns-manager/).
 
 ## Configuration Management
 

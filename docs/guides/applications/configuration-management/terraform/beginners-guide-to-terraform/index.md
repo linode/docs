@@ -60,6 +60,15 @@ The next sections will illustrate core Terraform concepts with examples written 
 Here's a simple example of a complete Terraform configuration in HCL:
 
 {{< file "example.tf" >}}
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.16.0"
+    }
+  }
+}
+
 provider "linode" {
     token = "your-linode-api-token"
 }
@@ -90,6 +99,21 @@ The `example_instance` string that follows the `linode_instance` resource type d
 The `label` argument specifies the label for the Linode instance in the Linode Manager. This name is independent of Terraform's name for the resource (though you can assign the same value to both). The Terraform name is only recorded in Terraform's [state](#state) and is not communicated to the Linode API. Labels for Linode instances in the same Linode account must be unique.
 {{< /note >}}
 
+### Data Sources
+
+In Terraform, data sources represent read-only values that can be retrieved and then used elsewhere in a terraform configuration. Using the Linode Provider gives users access to a number of [Linode Specific Data Sources](https://registry.terraform.io/providers/linode/linode/latest/docs/data-sources/account) that can be used for this purpose.
+
+Data sources are accessed by declaring a `data` block which contains any required information. Once the data block has been declared, the data source provides access to a number of attributes which can be called on as part of the terraform configuration. In the example below, the `linode_account` data source is called on in the `data` block, and is used later in the `output` block to output the `email` attribute:
+
+{{< file "example.tf" >}}
+...
+data "linode_account" "account" {}
+
+output "linode_account_email" {
+        value = "${data.linode_account.account.email}"
+}
+{{< /file >}}
+
 ### Dependencies
 
 Terraform resources can depend on each other. When one resource depends on another, it will be created after the resource it depends on, even if it is listed before the other resource in your configuration file.
@@ -97,6 +121,10 @@ Terraform resources can depend on each other. When one resource depends on anoth
 The following snippet expands on the previous example. It declares a new domain with an A record that targets the Linode instance's IP address:
 
 {{< file "example.tf" >}}
+terraform {
+...
+}
+
 provider "linode" {
     # ...
 }
@@ -132,6 +160,15 @@ The previous example hard-coded sensitive data in your configuration, including 
 Input variables can also be used for non-sensitive data. The following example files will employ variables for the sensitive `token` and `root_pass` arguments and the non-sensitive `authorized_keys` and `region` arguments:
 
 {{< file "example.tf" >}}
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.16.0"
+    }
+  }
+}
+
 provider "linode" {
     token = var.token
 }
@@ -209,6 +246,13 @@ The following example uploads a setup script to a newly created Linode instance 
 resource "linode_instance" "example_instance" {
   # ...
 
+  connection {
+      type     = "ssh"
+      user     = "root"
+      password = var.root_pass
+      host     = self.ip_address
+  }
+
   provisioner "file" {
       source      = "setup_script.sh"
       destination = "/tmp/setup_script.sh"
@@ -222,6 +266,8 @@ resource "linode_instance" "example_instance" {
   }
 }
 {{< /file >}}
+
+When a provisioner is assigned, it should also include the addition of a [connection block](https://www.terraform.io/docs/language/resources/provisioners/connection.html) nested within the resource block to describe how terraform will connect to the remote resource.
 
 Most provisioners are declared inside of a resource declaration. When multiple provisioners are declared inside a resource, they are executed in the order they are listed. For a full list of [provisioners](https://www.terraform.io/docs/provisioners/index.html), review the official Terraform documentation.
 

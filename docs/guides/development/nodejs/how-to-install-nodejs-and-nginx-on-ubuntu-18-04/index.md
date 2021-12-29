@@ -3,8 +3,7 @@ slug: how-to-install-nodejs-and-nginx-on-ubuntu-18-04
 author:
     name: Linode
     email: docs@linode.com
-description: 'In this guide you will install and configure NGINX to serve static site content on an Ubuntu 18.04 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server. '
-og_description: 'In this guide you will install and configure NGINX to serve static site content on an Ubuntu 18.04 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server.'
+description: In this guide, you will learn how to install, configure, and test NGINX and Node.js to serve static site content on an Ubuntu 18.04 server.
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", "ubuntu", " front-end requests", " back-end requests"]
 tags: ["ubuntu", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,9 @@ modified: 2020-04-14
 modified_by:
     name: Linode
 published: 2020-04-14
-title: 'How to Install Node.js and NGINX on Ubuntu 18.04'
-h1_title: 'Installing Node.js and NGINX on Ubuntu 18.04'
+title: How to Install Node.js and NGINX on Ubuntu 18.04
+h1_title: Installing Node.js and NGINX on Ubuntu 18.04
+enable_h1: true
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'
@@ -23,7 +23,7 @@ external_resources:
 audiences: ["intermediate"]
 concentrations: ["Web Applications"]
 languages: ["javascript"]
-image: 'Installing_Nodejs_and_NGINX_on_Ubuntu_1804_1200x631.png'
+image: Install_Nodejs_NGINX_Ubuntu1804.png
 relations:
     platform:
         key: install-nodejs-nginx

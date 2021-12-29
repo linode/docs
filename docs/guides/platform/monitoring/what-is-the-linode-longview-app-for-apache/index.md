@@ -14,6 +14,7 @@ modified_by:
 published: 2013-11-04
 title: What is the Linode Longview App for Apache
 h1_title: Using the Linode Longview App for Apache
+enable_h1: true
 classic_manager_link: platform/longview/longview-app-for-apache-classic
 external_resources:
  - '[cPanel Products News](https://news.cpanel.com/category/products/)'
@@ -52,7 +53,7 @@ If you already have Longview installed, and later want to install Apache and ena
 
 1. [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) whose system you are monitoring with Longview.
 
-1. Ensure that Apache is running using your distribution's initialization system.
+1.  Ensure that Apache is running using your distribution's initialization system.
 
     > **CentOS, Debian, and Ubuntu**
     >
@@ -62,7 +63,7 @@ If you already have Longview installed, and later want to install Apache and ena
     >
     >     sudo service apache2 status     # For distributions without systemd.
 
-1. Reconfigure the Apache Longview App:
+1.  Reconfigure the Apache Longview App:
 
         dpkg-reconfigure -phigh linode-longview
 
@@ -86,13 +87,13 @@ update-rc.d: using dependency based boot sequencing
 
 To enable the Apache Longview app manually, follow these steps on your Linode via SSH:
 
-1. [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) whose system you are monitoring with Longview.
+1.  [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) whose system you are monitoring with Longview.
 
 1.  Make sure **mod\_status** is enabled for Apache (it should be by default). You can follow the instructions list in the [apache.org](https://httpd.apache.org/docs/2.4/mod/mod_status.html) site. Or, on Debian and Ubuntu systems, run this command:
 
         sudo a2enmod status
 
-1. Update your Apache configuration file to include the block in the example file below. Depending on your Linux distribution and version, your Apache configuration file may be stored in one of the following locations:
+1.  Update your Apache configuration file to include the block in the example file below. Depending on your Linux distribution and version, your Apache configuration file may be stored in one of the following locations:
 
     - /etc/apache2/httpd.conf
     - /etc/apache2/apache2.conf
@@ -308,7 +309,7 @@ location http://127.0.0.1/custom/location/path
 
 7.  Restart Longview:
 
-        service longview restart
+        sudo service longview restart
 
 8.  Refresh the Longview in the Linode Cloud Manager to verify that it's working now.
 

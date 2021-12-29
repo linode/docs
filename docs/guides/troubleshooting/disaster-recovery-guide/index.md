@@ -39,7 +39,7 @@ If you have ensured that your Linode is booted, but do not have SSH access, you 
 
     If you have trouble logging in with your root password, consider [resetting the root password](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode-new-manager/) to rule out any password issues.
 
-The [Using a Linode Shell Guide](/docs/platform/manager/using-the-linode-shell-lish/) contains more information on Lish.
+The [Using the Lish Console](/docs/guides/using-the-lish-console/) contains more information on Lish.
 
 {{< note >}}
 Lish is an out-of-band management tool, so you can use your root login credentials, if needed.
@@ -83,7 +83,7 @@ Once you've rebooted your Linode and have SSH access via Lish, determine if a Li
 
         systemctl status -l  network.service
 
-1. To display all available ethernet interfaces, IP addresses and property information:
+1. To display all available Ethernet interfaces, IP addresses and property information:
 
         ip a
 

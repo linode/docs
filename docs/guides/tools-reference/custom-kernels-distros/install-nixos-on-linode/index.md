@@ -49,7 +49,7 @@ To create a new Linode, go to the [Create Linode page](https://cloud.linode.com/
 
 ### Create Disks for Nix
 
-[Create three disk images](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk): One for the installer, one for a swap partition, and one for the root partition. Label them:
+[Create three disk images](/docs/guides/disks-and-storage/#creating-a-disk): One for the installer, one for a swap partition, and one for the root partition. Label them:
 
 * **Installer**: A type `ext4` disk, 1024 MB in size.
 * **Swap**: A `swap` disk no larger than 512 MB.
@@ -57,7 +57,7 @@ To create a new Linode, go to the [Create Linode page](https://cloud.linode.com/
 
 ### Create Configuration Profiles
 
-[Create two configuration profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles), one for the installer and one to boot NixOS. For each profile, disable all of the options under **Filesystem/Boot Helpers** and set the **Configuration Profile** to match the following:
+[Create two configuration profiles](/docs/guides/linode-configuration-profiles/#creating-a-configuration-profile), one for the installer and one to boot NixOS. For each profile, disable all of the options under **Filesystem/Boot Helpers** and set the **Configuration Profile** to match the following:
 
   * **Installer profile**
     * **Label:** Installer
@@ -277,13 +277,13 @@ In this optional section, you'll create a deployable disk image of NixOS.
 
 If you're not confident with your install configuration, you can keep the installer and boot from it to reinstall adjusted configuration repeatedly.
 
-Otherwise, you can now delete the installer disk and profile from your Linode using the [removing a configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles#removing-a-configuration-profile) section of the Disk Images guide to remove the **Installer** profile.
+Otherwise, you can now delete the installer disk and profile from your Linode using the [Deleting a Configuration Profile](/docs/guides/linode-configuration-profiles/#deleting-a-configuration-profile) and [Deleting a Disk](/docs/guides/disks-and-storage/#deleting-a-disk) guides.
 
 Remove the **Installer** disk and reclaim the storage that the NixOS installation was using:
 
   1. Go to your Linode's dashboard and shutdown your Linode.
-  2. [Remove the *Installer* disk](/docs/platform/disk-images/disk-images-and-configuration-profiles#removing-a-disk).
-  3. [Resize the *NixOS* disk](/docs/platform/disk-images/disk-images-and-configuration-profiles#resizing-a-disk) to the maximum possible size.
+  2. [Remove the *Installer* disk](/docs/guides/disks-and-storage/#deleting-a-disk).
+  3. [Resize the *NixOS* disk](/docs/guides/disks-and-storage/#resizing-a-disk) to the maximum possible size.
 
 ## Enable Longview Agent (optional)
 
