@@ -8,6 +8,7 @@ keywords: ["container", "lxd", "lxc", "apache", "nginx", "reverse proxy", "virtu
 tags: ["proxy","ubuntu","container","apache","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-28
+modified: 2021-12-26
 modified_by:
   name: Linode
 title: "How to Set Up a Reverse Proxy to Host Websites in LXD"
