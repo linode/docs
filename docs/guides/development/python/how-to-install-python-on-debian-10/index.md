@@ -9,6 +9,7 @@ keywords: ['How to Install Python on Debian','Python','Python3','Python 2 end of
 tags: ['python', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-12
+image: InstallPython3_Deb10.png
 modified_by:
   name: Linode
 title: "How to Install Python 3 on Debian 10"

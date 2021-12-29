@@ -14,7 +14,7 @@ image: CreateaNodeBalancerwitTerraform.png
 title: "Create a NodeBalancer with Terraform"
 contributor:
   name: Linode
-external_resources:
+external_resources: 
 - '[Terraform Linode Provider Reference](https://www.terraform.io/docs/providers/linode/index.html)'
 - '[linode_nodebalancer Resource Reference](https://www.terraform.io/docs/providers/linode/r/nodebalancer.html)'
 - '[linode_nodebalancer_config Resource Reference](https://www.terraform.io/docs/providers/linode/r/nodebalancer_config.html)'
@@ -53,9 +53,19 @@ The examples in this guide were written to be compatible with [Terraform version
 
 The first step to take when creating a Terraform configuration file is to create a *provider block*. This block lets Terraform know which provider to use. The only configuration value that the Linode provider needs is an API access token.
 
-Create a file named `nodebalancer.tf` in your Terraform project directory. You will be adding to this file throughout the guide. Add the provider block to the file:
+Create a file named `nodebalancer.tf` in your Terraform project directory. You will be adding to this file throughout the guide. Add the provider blocks to the file:
 
 {{< file "nodebalancer.tf" >}}
+
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.16.0"
+    }
+  }
+}
+
 provider "linode" {
     token = var.token
 }

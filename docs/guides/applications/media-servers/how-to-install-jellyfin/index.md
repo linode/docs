@@ -1,10 +1,10 @@
 ---
 slug: how-to-install-jellyfin
 author:
-  name: The Linux Gamer
+  name: Gardiner Bryant
 contributor:
   name: Gardiner Bryant
-  link: http://youtube.com/thelinuxgamer
+  link: https://www.youtube.com/user/tuxreviews
 description: 'Jellyfin is a Free Software Media System that puts you in control of managing and streaming your media, this guide walks you through installing it on a Linode'
 keywords: ["Jellyfin", "Media Server", "PLEX"]
 tags: ["ubuntu"]

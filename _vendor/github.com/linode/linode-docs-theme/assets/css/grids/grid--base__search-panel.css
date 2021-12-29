@@ -8,7 +8,7 @@
 }
 
 .grid--base .search-panel__filters {
-    @apply lg:pt-10;
+    @apply lg:pt-14;
     grid-row: 1;
 }
 

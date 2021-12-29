@@ -3,7 +3,7 @@ slug: deploy-linodes-using-ansible
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'In this guide you learn how to deploy and manage Linodes using Ansible and the `linode_v4` module. You will also create an Ansible inventory for your Linode infrastructure using the dynamic inventory plugin for Linode.'
+description: "In this guide, learn how to deploy and manage Linodes using Ansible and the linode_v4 module."
 keywords: ['ansible','Linode module','dynamic inventory','configuration management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-06-04
@@ -37,18 +37,19 @@ If you remove the resource afterward, you will only be billed for the hour(s) th
 ## Before You Begin
 
 {{< note >}}
-The steps outlined in this guide require [Ansible version 2.8](https://github.com/ansible/ansible/releases/tag/v2.8.0).
+The steps outlined in this guide require [Ansible version 2.8](https://github.com/ansible/ansible/releases/tag/v2.8.0), and were created using Ubuntu 18.04.
 {{</ note >}}
 
-- Install Ansible on your computer. Use the steps in the [Install Ansible](/docs/guides/getting-started-with-ansible/#install-ansible) section of the [Getting Started With Ansible - Basic Installation and Setup](/docs/guides/getting-started-with-ansible/) guide.
-
+- Add a limited user to your Linode following the steps below, created by following the [Add a limited User Account](/docs/guides/securing-your-server/#add-a-limited-user-account) section of our  [Securing Your Server](/docs/guides/securing-your-server/) guide. Ensure that all commands are entered as your limited user.
+- Install Ansible on your computer. Use the steps in the [Control Node Setup](/docs/guides/getting-started-with-ansible/#set-up-the-control-node) section of the [Getting Started With Ansible - Basic Installation and Setup](/docs/guides/getting-started-with-ansible/) guide.
 - Ensure you have Python version 2.7 or higher installed on your computer. Issue the following command to check your system's Python version:
 
         python --version
 
 - Install the official [Python library for the Linode API v4](https://github.com/linode/linode_api4-python).
 
-        pip install linode_api4
+        sudo apt-get install python-pip
+        sudo pip install linode_api4
 
 - Generate a Linode API v4 access token with permission to read and write Linodes. You can follow the [Get an Access Token](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/) guide if you do not already have one.
 

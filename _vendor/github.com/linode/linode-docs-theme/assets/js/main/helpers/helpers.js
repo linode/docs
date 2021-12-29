@@ -1,11 +1,3 @@
-export function sendEvent(name, data, el = document) {
-	var event = new CustomEvent(name, {
-		bubbles: true,
-		detail: data
-	});
-	el.dispatchEvent(event);
-}
-
 export function setDocumentMeta(meta) {
 	document.title = meta.title;
 }
@@ -35,11 +27,17 @@ export function toggleClass(openClass, el, open) {
 	}
 }
 
-// See https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html#RULE_.237_-_Fixing_DOM_Cross-site_Scripting_Vulnerabilities
-export function sanitizeHTML(text) {
-	var element = document.createElement('div');
-	element.innerText = text;
-	return element.innerHTML;
+export function isObjectEmpty(object) {
+	for (key in object) {
+		return false;
+	}
+	return true;
+}
+
+// normalizeSpace replaces any whitespace character (spaces, tabs, newlines and Unicode space) with a space.
+// Multiple spaces are collapsed into one.
+export function normalizeSpace(text) {
+	return text.replace(/\s\s+/g, ' ');
 }
 
 export const capitalize = (s) => {
@@ -71,27 +69,32 @@ export function sprintf(format) {
 	});
 }
 
-export function waitUntil(condition) {
-	const checkResolved = function(resolve, condition, callCounter = 0) {
-		if (callCounter > 100) {
-			console.error('waitUntil timed out');
-			resolve();
-			return;
-		}
-		if (condition()) {
-			resolve();
-			return;
-		}
+// Function borrowed from https://stackoverflow.com/questions/123999/how-can-i-tell-if-a-dom-element-is-visible-in-the-current-viewport/7557433#7557433
+export function isElementInViewport(el) {
+	var rect = el.getBoundingClientRect();
 
-		callCounter++;
-		setTimeout(function() {
-			checkResolved(resolve, condition, callCounter);
-		}, 200);
-	};
+	return (
+		rect.top >= 0 &&
+		rect.left >= 0 &&
+		rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+		rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+	);
+}
 
-	return new Promise((resolve) => {
-		checkResolved(resolve, condition);
-	});
+// getOffsetTop returns the distance from container down to el.
+export function getOffsetTop(container, el) {
+	var distance = 0;
+
+	if (el.offsetParent) {
+		while (true) {
+			distance += el.offsetTop;
+			el = el.offsetParent;
+			if (!el || el === container) {
+				break;
+			}
+		}
+	}
+	return distance < 0 ? 0 : distance;
 }
 
 export function isMobile() {
@@ -113,4 +116,19 @@ export function isTouchDevice() {
 
 export function isTopBarPinned() {
 	return document.body.classList.contains('is-topbar-pinned');
+}
+
+export function walk(el, callback) {
+	if (typeof ShadowRoot === 'function' && el instanceof ShadowRoot) {
+		Array.from(el.childNodes).forEach((el2) => walk(el2, callback));
+		return;
+	}
+	let skip = false;
+	callback(el, () => (skip = true));
+	if (skip) return;
+	let node = el.firstElementChild;
+	while (node) {
+		walk(node, callback, false);
+		node = node.nextElementSibling;
+	}
 }

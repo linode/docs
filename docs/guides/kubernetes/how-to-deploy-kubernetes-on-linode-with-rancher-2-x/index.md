@@ -66,13 +66,14 @@ The Rancher web application will run on a Linode in your Cloud Manager account. 
 You will be able to create Kubernetes clusters in any Linode data center from the Rancher UI, even if your Rancher Linode is located in a different region.
 {{< /note >}}
 
-1.  The Rancher web application is run inside a Docker container, so you will also need to install Docker CE on your Linode. Follow the instructions for [installing Docker CE on Ubuntu 18.04](/docs/applications/containers/install-docker-ce-ubuntu-1804) and then return to this guide.
+1.  The Rancher web application is run inside a Docker container, so you will also need to install Docker CE on your Linode. Follow the instructions for [Installing and Using Docker on Ubuntu and Debian
+](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) and then return to this guide.
 
 You will also need to generate an API token and prepare a domain zone:
 
 1.  Rancher will need a Linode APIv4 token with read and write privileges from your Linode account in order to create your cluster. Review the instructions from the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) guide to get a token.
 
-1.  The [Set Up DNS](#set-up-dns-for-the-wordpress-app) section of this guide will assign an address to this guide's example app. In order to do so, you must already have a domain zone created in the Linode Cloud Manager. If you do not have a zone created, review the instructions from our [DNS Manager](/docs/platform/manager/dns-manager/#create-and-manage-domains) guide.
+1.  The [Set Up DNS](#set-up-dns-for-the-wordpress-app) section of this guide will assign an address to this guide's example app. In order to do so, you must already have a domain zone created in the Linode Cloud Manager. If you do not have a zone created, review the instructions from our [DNS Manager](/docs/guides/dns-manager/#create-and-manage-domains) guide.
 
     {{< note >}}
 If you haven't purchased a domain name, then you can read along with the DNS section of this guide without implementing it in your own cluster.
@@ -461,7 +462,7 @@ Avoid using symbols in the password you enter, as some symbols can cause syntax 
     These settings will result in your database deployment keeping its data in a Linode Block Storage Volume.
 
     {{< note >}}
-The default value for the **MariaDB Volume Size** field is 8GiB, but the minimum size for a Block Storage Volume is 10Gib. The Linode CSI will automatically upgrade any persistent volume claims that are smaller than 10GiB to 10GiB.
+The default value for the **MariaDB Volume Size** field is 8GB, but the minimum size for a Block Storage Volume is 10GB. The Linode CSI will automatically upgrade any persistent volume claims that are smaller than 10GB to 10GB.
 {{< /note >}}
 
 1.  In the **Services and Load Balancing** section, set **Expose app using Layer 7 Load Balancer** to **False**, then choose the **L4 Balancer** option from the **WordPress Service Type** dropdown menu:
@@ -529,7 +530,7 @@ metadata:
 
 1.  It may take some time for Linode's DNS database to update, so if you don't see the record show up in the Cloud Manager immediately, try refreshing it after a few minutes.
 
-    After the record becomes visible in the Cloud Manager, it can also take time for the DNS change to [propagate](/docs/platform/manager/dns-manager/#wait-for-propagation) to your local ISP. After the DNS change has propagated, you should be able to view your WordPress app by navigating to the address you set up.
+    After the record becomes visible in the Cloud Manager, it can also take time for the DNS change to propagate to your local ISP. After the DNS change has propagated, you should be able to view your WordPress app by navigating to the address you set up.
 
 ## Scaling your Cluster and App
 

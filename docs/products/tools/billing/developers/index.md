@@ -23,10 +23,10 @@ Linode’s [API v4](/docs/api) provides the ability to programmatically manage t
 
 - [Stage PayPay Payment](/docs/api/account/#stage-paypal-payment)
 
-- [Execute Staged/Approved PayPal Payment](/docs/account/#execute-stagedapproved-paypal-payment)
+- [Staged/Approved PayPal Payment Execute](/docs/api/account/#stagedapproved-paypal-payment-execute)
 
 - [Add/Edit Credit Card](/docs/api/account/#addedit-credit-card)
 
 ## Linode CLI
 
-The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the Linode API v4 that allows you to manage your Linode account and resources from the command line. Learn how to use the Linode CLI to [manage your account](http://localhost:1313/docs/platform/api/linode-cli/#account)
+The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the Linode API v4 that allows you to manage your Linode account and resources from the command line. Learn how to use the Linode CLI to [manage your account](/docs/platform/api/linode-cli/#account)

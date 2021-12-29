@@ -37,7 +37,7 @@ You can ensure that go has been installed by checking the version currently in u
 
 ### Install Node and NPM
 
-To support the JavaScript runtime environment used by the Linode documentation site, Node v13.14.0 must be installed on your system.
+To support the JavaScript runtime environment used by the Linode documentation site, Node v14.18.1 must be installed on your system.
 
 #### Install Node on macOS and Linux
 
@@ -53,19 +53,21 @@ You may need to exit and create a new command line session before NVM will work:
 
 Next, use NVM to both install NVM and set it as the version of Node that you're actively using:
 
-    nvm install 13.14.0
-    nvm use 13.14.0
+    nvm install 14.18.1
+    nvm use 14.18.1
 
 #### Install Node on Windows
 
-To Install Node 13.14.0 on Windows, navigate to the [downloads page for this release](https://nodejs.org/download/release/v13.14.0/) and install the appropriate `.msi` installer file for your type of processor (32-bit or 64-bit). Open the file and follow the prompts to complete the installation process. To confirm that Node and NPM has been installed successfully, open up your command prompt and enter the following command to check your version:
+To Install Node 14.18.1 on Windows, navigate to the [downloads page for this release](https://nodejs.org/download/release/v14.18.1/) and install the appropriate `.msi` installer file for your type of processor (32-bit or 64-bit). Open the file and follow the prompts to complete the installation process. To confirm that Node and NPM has been installed successfully, open up your command prompt and enter the following command to check your version:
 
     node -v
     npm -v
 
 ### Install Hugo
 
-The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you will need to install Hugo on your local computer. The library is compatible with **Hugo 0.78** or newer.
+The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you need to install Hugo on your local computer. The library is compatible with **Hugo 0.83.1** or newer.
+
+Note: the site's testing suite has not been run with Hugo versions after 0.83.1, but it will likely build normally with newer versions. If you observe any issues on a newer version, please [file an issue](https://github.com/linode/docs/issues) in the docs GitHub repository.
 
 #### Install Hugo on macOS
 
@@ -79,10 +81,10 @@ Then run this command to install Hugo:
 
 #### Install Hugo on Linux
 
-Go to the [Hugo releases page on GitHub](https://github.com/gohugoio/hugo/releases/) and download the most up to date binary for your platform. These commands will download the 64 bit binary of Hugo version 0.78 for Linux and place it in `/usr/local/bin`:
+Go to the [Hugo releases page on GitHub](https://github.com/gohugoio/hugo/releases/) and download the most up to date binary for your platform. These commands download the 64 bit binary of Hugo version 0.83.1 for Linux and place it in `/usr/local/bin`:
 
-    curl -OL https://github.com/gohugoio/hugo/releases/download/v0.78.0/hugo_0.78.0_Linux-64bit.tar.gz
-    tar -xvzf hugo_0.78.0_Linux-64bit.tar.gz
+    curl -OL https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_0.83.1_Linux-64bit.tar.gz
+    tar -xvzf hugo_0.83.1_Linux-64bit.tar.gz
     sudo mv hugo /usr/local/bin
 
 #### Install Hugo on Windows
@@ -113,12 +115,12 @@ For more information about using Git, refer to the [official Git documentation](
 
         git status
 
-    {{< output >}}
-On branch develop
-Your branch is up-to-date with 'origin/develop'.
+    ```
+    On branch develop
+    Your branch is up-to-date with 'origin/develop'.
 
-nothing to commit, working directory clean
-{{< /output >}}
+    nothing to commit, working directory clean
+    ```
 
 1.  Add the `linode/docs` repository that you forked from as the `upstream` [Git remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) for your local repository:
 

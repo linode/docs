@@ -3,13 +3,13 @@ slug: freenas-blockstorage
 author:
   name: Edward Angert
   email: docs@linode.com
-description: 'FreeNAS is network-attached storage software configured through a web interface. This guide shows how to install FreeNAS and connect it to a Block Storage Volume.'
+description: "FreeNAS is network-attached storage software configured through a web interface.  Learn how to install FreeNAS and connect it to a Block Storage Volume."
 keywords: ["zfs","freenas","block storage","nas"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-05-17
 modified_by:
   name: Linode
-title: 'Install FreeNAS on a Linode with Block Storage'
+title: "Install FreeNAS on a Linode with Block Storage"
 published: 2018-05-07
 external_resources:
  - '[FreeNAS Volume Manager Manual](http://doc.freenas.org/11/storage.html)'
@@ -33,7 +33,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 2.  Disable the [Lassie Shutdown Watchdog](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog/) to prevent it from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
 
-3.  [Create two disk images](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk/):
+3.  [Create two disks](/docs/guides/disks-and-storage/#creating-a-disk):
 
     1.  **Label:** Installer
         * **Type:** unformatted / raw
@@ -43,7 +43,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
         * **Type:** unformatted / raw
         * **Size:** Can be set to use remaining disk. At least 10240MB
 
-4.  Create two configuration profiles with the following settings. In each profile, disable all of the options under **Filesystem/Boot Helpers**.
+4.  [Create two configuration profiles](/docs/guides/linode-configuration-profiles/#creating-a-configuration-profile) with the following settings. In each profile, disable all of the options under **Filesystem/Boot Helpers**.
 
     1.  **Label:** Installer
         * **Kernel:** Direct Disk
@@ -60,7 +60,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 ## Create an Installer Disk
 
-1.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish](/docs/platform/manager/using-the-linode-shell-lish/) from the dashboard of your Linode from the Linode Cloud Manager.
+1.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish](/docs/guides/using-the-lish-console/) from the dashboard of your Linode from the Linode Cloud Manager.
 
 2.  Once in Rescue Mode, run the following command to set the [latest FreeNAS release](http://www.freenas.org/download-freenas-release/) (11.1 at the time of this writing) as a variable:
 
@@ -106,7 +106,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 2.  Use a web browser to navigate to the Linode's IP address. Log in with the user `root` and the password set in Step 4 of the previous section. Close any popup menu that appears when you first log in.
 
-3.  Click the **Network** icon and complete the network information using the Default Gateways and DNS Resolvers found in the [Networking](/docs/platform/manager/remote-access/) tab of the Linode Cloud Manager. Use the DNS Resolvers information to fill in the Nameserver fields. Click **Save** before continuing.
+3.  Click the **Network** icon and complete the network information using the Default Gateways and DNS Resolvers found in the Networking tab of the Linode Cloud Manager. Use the DNS Resolvers information to fill in the Nameserver fields. Click **Save** before continuing.
 
 4.  Select the **Interfaces** section of the Network tab, and click **Add Interface**. Name the interface and enable DHCP, then click **OK**.
 

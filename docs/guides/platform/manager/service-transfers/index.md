@@ -3,8 +3,7 @@ slug: service-transfers
 author:
   name: Linode
   email: docs@linode.com
-description: 'Transfer your Linode services to another account conveniently with Service Transfers.'
-og_description: 'Transfer your Linode services to another account conveniently with Service Transfers.'
+description: "Transfer your Linode services to another account conveniently with Service Transfers."
 keywords: ["linode transfer ownership", "transfer linode to another account", "linode can i transfer"]
 tags: ["cloud manager","linode platform","account"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,10 @@ modified: 2021-03-10
 modified_by:
   name: Linode
 published: 2021-03-10
-title: How to Transfer Ownership of Linode Services with Service Transfers
-h1_title: Transfer Ownership of Linode Services with Service Transfers
+image: TransferOwn_LinodeServ_ST.png
+title: How to Transfer Ownership of Linode Services
+h1_title: Transferring Ownership of Linode Services with Service Transfers
+enable_h1: true
 aliases: ['/guides/platform/manager/service-transfers/']
 ---
 
@@ -129,6 +130,12 @@ Service Transfers can take up to 3 hours to complete once accepted. Another conf
         - have any shared IP addresses.
 
         - have any assigned /56, /64, or /116 IPv6 ranges.
+
+{{< caution >}}
+When receiving Linode transfers, it is important to make sure that **Any Longview Key** is fully revoked and removed from the received Linode by removing the Longview agent. If Client keys are not revoked and removed, this can give the transferring user access to all data visible to any Longview client by using the pre-existing API key, even after the transfer has been completed. Users will not be informed by default if the received Linode has a Longview key installed, and should always follow the process for removing the Longview agent to be sure.
+
+For more information on revoking and removing a Longview key and uninstalling the Longview agent, see our [Documentation on Uninstalling Longview](/docs/guides/what-is-longview/#uninstall-the-longview-client).
+{{< /caution >}}
 
 ## Cancelling Service Transfers
 

@@ -3,8 +3,7 @@ slug: how-to-install-nodejs-and-nginx-on-debian-10
 author:
     name: Linode
     email: docs@linode.com
-description: 'In this guide you will install and configure NGINX to serve static site content on a Debian 10 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server. '
-og_description: 'In this guide you will install and configure NGINX to serve static site content on a Debian 10 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server.'
+description: In this guide, you will learn how to install, configure, and test NGINX and Node.js to serve static site content on a Debian 10 server.
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", "debian", " front-end requests", " back-end requests"]
 tags: ["debian", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,9 @@ modified: 2020-04-14
 modified_by:
     name: Linode
 published: 2020-04-14
-title: 'How to Install Node.js and NGINX on Debian 10'
-h1_title: 'Installing Node.js and NGINX on Debian 10'
+title: How to Install Node.js and NGINX on Debian 10
+h1_title: Installing Node.js and NGINX on Debian 10
+enable_h1: true
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'
@@ -23,7 +23,7 @@ external_resources:
 audiences: ["intermediate"]
 concentrations: ["Web Applications"]
 languages: ["javascript"]
-image: 'Installing_Nodejs_and_NGINX_on_Debian_10_1200x631.png'
+image: Install_Nodejs_NGINX_Deb10.png
 relations:
     platform:
         key: install-nodejs-nginx

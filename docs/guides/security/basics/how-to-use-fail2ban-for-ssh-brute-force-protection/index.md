@@ -2,8 +2,7 @@
 slug: how-to-use-fail2ban-for-ssh-brute-force-protection
 author:
   name: Hackersploit
-description: 'Fail2Ban is an intrusion prevention framework written in Python that protects Linux systems and servers from brute-force attacks. You can setup Fail2Ban to provide brute-force protection for SSH on your server.'
-og_description: 'Fail2Ban is an intrusion prevention framework written in Python that protects Linux systems and servers from brute-force attacks. You can setup Fail2Ban to provide brute-force protection for SSH on your server.'
+description: "Fail2Ban is an intrusion prevention framework that protects Linux systems and servers from brute-force attacks. Learn how it can do the same for SSH."
 keywords: ["using fail2ban for SSH brute-force protection", "brute-force protection with fail2ban"]
 tags: ["monitoring","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +10,10 @@ modified: 2020-10-13
 modified_by:
   name: Linode
 published: 2020-10-13
-title: How to Use Fail2Ban for SSH Brute-force Protection
-h1_title: Using Fail2Ban for SSH Brute-force Protection
-image: "SSH_brute_force_protection_Fail2Ban.png"
+title: "How to Use Fail2Ban for SSH Brute-force Protection"
+h1_title: "Using Fail2Ban for SSH Brute-force Protection"
+enable_h1: true
+image: fail2ban_bruteforceprotection.png
 aliases: ['/security/basics/how-to-use-fail2ban-for-ssh-brute-force-protection/']
 ---
 

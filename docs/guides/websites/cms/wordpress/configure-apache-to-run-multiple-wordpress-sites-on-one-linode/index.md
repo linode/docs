@@ -35,7 +35,7 @@ WordPress is a popular, dynamic, content management system that makes it easy to
 
 1. This guide will use sudo wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-1. If you have not already, [assign Linode's name servers](/docs/platform/manager/dns-manager/#use-linode-s-name-servers-with-your-domain) to your domain at your domain name's registrar.
+1. If you have not already, [assign Linode's name servers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain) to your domain at your domain name's registrar.
 
 1. Update your system:
 
@@ -222,5 +222,5 @@ If you do not yet have registered domains to use, you can still perform the Word
 
 1. You can begin configuring your WordPress sites. Follow the [Configure WordPress](/docs/websites/cms/install-wordpress-ubuntu-18-04/#configure-wordpress) section of our Install WordPress on Ubuntu 18.04 guide.
 
-1. If you have not yet added DNS records for your Domains, follow the *Add DNS Records* steps in the [Host a Website on Ubuntu 18.04](/docs/websites/hosting-a-website-ubuntu-18-04/#add-dns-records) guide.
+1. If you have not yet added DNS records for your Domains, follow Linode's [DNS Manager](/docs/guides/dns-manager/) guide.
 

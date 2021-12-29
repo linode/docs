@@ -3,17 +3,18 @@ slug: using-octant-with-kubernetes-a-tutorial
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Octant is a web-based dashboard for your Kubernetes clusters, and it includes visual graphs of your cluster objects' relationships. This guide will explore Octant's interface, and it will show how Octant can make troubleshooting Kubernetes easier."
-og_description: "Octant is a web-based dashboard for your Kubernetes clusters, and it includes visual graphs of your cluster objects' relationships. This guide will explore Octant's interface, and it will show how Octant can make troubleshooting Kubernetes easier."
+description: "Octant is a visual web-based dashboard for Kubernetes clusters. This guide explores Octant's interface and how it makes troubleshooting Kubernetes easier."
+og_description: "Octant is a visual web-based dashboard for Kubernetes clusters. This guide explores Octant's interface and how it makes troubleshooting Kubernetes easier."
 keywords: ['octant','kubernetes','cluster','graph','dashboard','troubleshoot']
 tags: ["monitoring","kubernetes","web application"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-06
 modified_by:
   name: Linode
-title: "Using Octant with Kubernetes - A Tutorial"
 image: using-octant-with-kube.jpg
-h1_title: "A Tutorial for Using Octant with Kubernetes"
+title: "How to Use Octant with Kubernetes (A Tutorial)"
+h1_title: "A Overview of Using Octant with Kubernetes"
+enable_h1: true
 external_resources:
 - '[Octant](https://octant.dev/)'
 - '[Octant on GitHub](https://github.com/vmware-tanzu/octant)'

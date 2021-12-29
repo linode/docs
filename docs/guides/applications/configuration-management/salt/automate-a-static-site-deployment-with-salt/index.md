@@ -3,7 +3,7 @@ slug: automate-a-static-site-deployment-with-salt
 author:
   name: Linode
   email: docs@linode.com
-description: 'Learn how to use Salt to configure a static site webserver and use webhooks to automatically deploy new site content.'
+description: "Learn how to use Salt to configure a static site webserver and use webhooks to automatically deploy new site content."
 keywords: ['salt','saltstack','github','webhooks','hugo','static site','deployment']
 tags: ["web server","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,14 +12,16 @@ modified: 2019-01-02
 modified_by:
   name: Linode
 image: Automate-Static-Site-DeploymentswithSaltGitandWebhooks.png
-title: "Automate Static Site Deployments with Salt, Git, and Webhooks"
+title: "Automate Static Site Deployments with Salt and Git"
+h1_title: "Automate Static Site Deployments with Salt, Git, and Webhooks"
+enable_h1: true
 contributor:
     name: "Nathan Melehan"
     link: "https://github.com/nmelehan"
 external_resources:
 - '[Hugo Documentation](https://gohugo.io/documentation/)'
-- '[SaltStack Git Fileserver Documentation](https://docs.saltstack.com/en/latest/topics/tutorials/gitfs.html#tutorial-gitfs)'
-- '[SaltStack Salt Formulas Documentation](https://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html)'
+- '[SaltStack Git Fileserver Documentation](https://docs.saltproject.io/en/latest/topics/tutorials/gitfs.html#tutorial-gitfs)'
+- '[SaltStack Salt Formulas Documentation](https://docs.saltproject.io/en/latest/topics/development/conventions/formulas.html)'
 - '[GitHub Developer - Webhooks](https://developer.github.com/webhooks/)'
 aliases: ['/applications/configuration-management/salt/automate-a-static-site-deployment-with-salt/','/applications/configuration-management/automate-a-static-site-deployment-with-salt/']
 ---
@@ -42,7 +44,7 @@ Two Git repositories will be created: one will track changes to the Hugo site, a
 
 Two Linodes will be created: one will act as the Salt master, and the other as the Salt minion. This guide was tested under Debian 9, but the instructions may work with other distributions as well. The Salt minion will run the production webserver which serves the Hugo site, and the master will configure the minion's software. The minion will also run a webhook server which will receive code update notifications from GitHub.
 
-It is possible to run Salt in a [masterless mode](https://docs.saltstack.com/en/latest/topics/tutorials/quickstart.html), but using a Salt master will make it easier to expand on your deployment in the future.
+It is possible to run Salt in a [masterless mode](https://docs.saltproject.io/en/latest/topics/tutorials/quickstart.html), but using a Salt master will make it easier to expand on your deployment in the future.
 
 {{< note >}}
 The workflow described in this guide is similar to how Linode's own [Guides & Tutorials](https://github.com/linode/docs) website is developed and deployed.
@@ -84,7 +86,7 @@ Development of your Hugo site and your Salt formula will take place on your pers
 
     {{< content "limited-user-note-shortguide" >}}
 
-1.  Configure DNS for your site by adding a [domain zone](/docs/platform/manager/dns-manager/#add-a-domain-zone) and setting up [reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/) on your Salt minion's IP address.
+1.  Configure DNS for your site by adding a [domain zone](/docs/guides/dns-manager/#add-a-domain) and setting up [reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/) on your Salt minion's IP address.
 
 ## Set Up the Salt Master and Salt Minion
 
@@ -92,7 +94,7 @@ Before you can start setting up the Salt formulas for the minion, you first need
 
 1.  Log into the Salt **master** Linode via SSH and run the Salt installation bootstrap script:
 
-        wget -O bootstrap-salt.sh https://bootstrap.saltstack.com
+        wget -O bootstrap-salt.sh https://bootstrap.saltproject.io
         sudo sh bootstrap-salt.sh -M -N
 
     {{< note >}}
@@ -117,7 +119,7 @@ This step needs to be completed **before installing Salt** on the minion, as Sal
 
 1.  Run the bootstrap script on the minion:
 
-        wget -O bootstrap-salt.sh https://bootstrap.saltstack.com
+        wget -O bootstrap-salt.sh https://bootstrap.saltproject.io
         sudo sh bootstrap-salt.sh
 
 1.  Edit `/etc/salt/minion` on the Salt minion. Uncomment the line that begins with `#master:` and enter your Salt **master's** IP after the colon (in place of `192.0.2.2`):
@@ -274,7 +276,7 @@ include:
     The `install` and `service` states will not be applied to the minion on their own--instead, only the combined `init` state will ever be applied. In Salt, when a file named `init.sls` exists inside a directory, Salt will refer to that particular state by the name of the directory it belongs to (i.e. `hugo` in our example).
 
     {{< note >}}
-The organization of the state files used here is not mandated by Salt. Salt does not place restrictions on how you organize your states. This specific structure is presented as an example of a [best practice](https://docs.saltstack.com/en/latest/topics/best_practices.html).
+The organization of the state files used here is not mandated by Salt. Salt does not place restrictions on how you organize your states. This specific structure is presented as an example of a [best practice](https://docs.saltproject.io/en/latest/topics/best_practices.html).
 {{< /note >}}
 
 ### Push the Salt Formula to GitHub
@@ -344,7 +346,7 @@ fileserver_backend:
   - gitfs
 {{< /file >}}
 
-    `roots` refers to Salt files stored on the master's filesystem. While the Hugo webserver Salt formula is stored on GitHub, the Salt [*Top file*](https://docs.saltstack.com/en/latest/ref/states/top.html#states-top) will be stored on the master. The Top file is how Salt maps states to the minions they will be applied to.
+    `roots` refers to Salt files stored on the master's filesystem. While the Hugo webserver Salt formula is stored on GitHub, the Salt [*Top file*](https://docs.saltproject.io/en/latest/ref/states/top.html#states-top) will be stored on the master. The Top file is how Salt maps states to the minions they will be applied to.
 
 1.  In the same file, uncomment the `gitfs_remotes` declaration and enter your Salt formula's repository URL:
 
@@ -406,7 +408,7 @@ Try running this command to manually fetch the Salt formula from GitHub, then ru
 
     sudo salt-run fileserver.update
 
-Salt's GitFS fetches files from remotes periodically, and this period [can be configured](https://docs.saltstack.com/en/latest/ref/configuration/master.html#std:conf_master-gitfs_update_interval).
+Salt's GitFS fetches files from remotes periodically, and this period [can be configured](https://docs.saltproject.io/en/latest/ref/configuration/master.html#std:conf_master-gitfs_update_interval).
 {{< /note >}}
 
 1.  If you visit your domain name in a web browser, you should now see NGINX's default test page served by the Salt minion.
@@ -488,13 +490,13 @@ The Salt minion's formula needs to be updated in order to serve the Hugo site. S
 
 -   Update the NGINX configuration to serve the built site.
 
-Some of the new state components will refer to data stored in [*Salt Pillar*](https://docs.saltstack.com/en/latest/topics/pillar/). Pillar is a Salt system that stores private data and other parameters that you don't want to list in your formulas. The Pillar data will be kept as a file on the Salt master and not checked into version control.
+Some of the new state components will refer to data stored in [*Salt Pillar*](https://docs.saltproject.io/en/latest/topics/pillar/). Pillar is a Salt system that stores private data and other parameters that you don't want to list in your formulas. The Pillar data will be kept as a file on the Salt master and not checked into version control.
 
 {{< note >}}
 There are methods for securely checking this data into version control or using other backends to host the data, but those strategies are outside the scope of this guide.
 {{< /note >}}
 
-Pillar data is injected into state files with Salt's [*Jinja* templating](https://docs.saltstack.com/en/latest/topics/jinja/index.html) feature. State files are first evaluated as Jinja templates and then as YAML afterwards.
+Pillar data is injected into state files with Salt's [*Jinja* templating](https://docs.saltproject.io/en/latest/topics/jinja/index.html) feature. State files are first evaluated as Jinja templates and then as YAML afterwards.
 
 ### Install Git and Hugo
 
@@ -774,7 +776,7 @@ On the Salt master, apply the new states to all minions:
     sudo salt '*' state.apply
 
 {{< note >}}
-In this guide there is only one minion, but Salt can use shell-style globbing and regular expressions to [match against minion IDs](https://docs.saltstack.com/en/latest/topics/targeting/globbing.html) when you have more than one. For example, this command would run a highstate on all minions whose IDs begin with `hugo`:
+In this guide there is only one minion, but Salt can use shell-style globbing and regular expressions to [match against minion IDs](https://docs.saltproject.io/en/latest/topics/targeting/globbing.html) when you have more than one. For example, this command would run a highstate on all minions whose IDs begin with `hugo`:
 
     sudo salt 'hugo*' state.apply
 {{< /note >}}

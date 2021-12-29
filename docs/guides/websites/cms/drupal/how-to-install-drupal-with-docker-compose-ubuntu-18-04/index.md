@@ -3,7 +3,7 @@ slug: how-to-install-drupal-with-docker-compose-ubuntu-18-04
 author:
     name: Linode
     email: docs@linode.com
-description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install and configure the Drupal CMS on your Ubuntu 18.04 Linode so you can begin developing your own websites.'
+description: "Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install and configure the Drupal CMS on your Ubuntu 18.04 Linode so you can begin developing your own websites."
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "ubuntu 18.04", "docker compose"]
 tags: ["drupal","docker","container","lamp","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,9 @@ modified_by:
     name: Linode
 published: 2020-02-18
 title: How to Install Drupal with Docker Compose on Ubuntu 18.04
-h1_title: Install Drupal with Docker Compose on Ubuntu 18.04
+h1_title: Installing Drupal with Docker Compose on Ubuntu 18.04
+enable_h1: true
+image: Drupal_DockerComp_Ubuntu1804.png
 relations:
     platform:
         key: how-to-install-drupal-docker-compose
@@ -46,7 +48,7 @@ Using the Drupal and PostgreSQL images from Docker Hub offers the following bene
 
 ### Install Docker
 
-{{< content "install-docker-ce-ubuntu-1804" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Install Docker Compose
 

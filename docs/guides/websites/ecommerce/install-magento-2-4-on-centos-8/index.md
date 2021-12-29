@@ -9,13 +9,14 @@ keywords: ["magento", "centos", "e-commerce", "magento centos"]
 tags: ["centos", "lamp", "cms", "magento"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-05
+image: InstallMagento_CentOS8.png
 modified_by:
   name: Linode
 title: "Install Magento 2.4 on Centos 8"
 h1_title: "Install Magento 2.4 on Centos 8"
 contributor:
   name: Jeffrey Novotny
-  link: Github/Twitter Link
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Magento site](https://magento.com/)'
 - '[Magento developer documentation](https://devdocs.magento.com/)'

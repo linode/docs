@@ -3,7 +3,7 @@ slug: install-a-half-life-2-deathmatch-dedicated-server-on-debian-or-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide explains how to host a Half-Life 2: Deathmatch server on a Linode running Debian or Ubuntu.'
+description: "This guide explains how to host a Half-Life 2: Deathmatch server on a Linode running Debian or Ubuntu."
 keywords: ["half-life 2", "deathmatch", "steamcmd", "host", "hl2", "multiplayer first-person shooter video game"]
 tags: ["ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,9 @@ published: 2017-08-17
 modified: 2019-02-01
 modified_by:
   name: Linode
-title: 'Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu'
+title: "How to Run Half-Life 2 Deathmatch on Debian or Ubuntu"
+h1_title: "Running a Half-Life 2 Deathmatch Server on Debian or Ubuntu"
+enable_h1: true
 contributor:
   name: Davide Beatrici
   link: https://github.com/davidebeatrici
@@ -24,8 +26,6 @@ external_resources:
 dedicated_cpu_link: true
 aliases: ['/game-servers/install-a-half-life-2-deathmatch-dedicated-server-on-debian-or-ubuntu/']
 ---
-
-
 
 ![Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu](HL2DM.jpg "Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu")
 

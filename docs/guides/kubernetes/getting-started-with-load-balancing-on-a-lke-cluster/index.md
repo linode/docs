@@ -3,20 +3,23 @@ slug: getting-started-with-load-balancing-on-a-lke-cluster
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'The Linode Kubernetes Engine (LKE) provides access to Linode''s load balancing service, NodeBalancers. NodeBalancers provide your Kubernetes cluster with a reliable way of exposing resources to the public internet. This guide contains details about the usage of Linode NodeBalancers, including adding NodeBalancers to a Kubernetes Service, and information on various NodeBalancer configurations.'
-og_description: 'The Linode Kubernetes Engine (LKE) provides access to Linode''s load balancing service, NodeBalancers. NodeBalancers provide your Kubernetes cluster with a reliable way of exposing resources to the public internet. This guide contains details about the usage of Linode NodeBalancers, including adding NodeBalancers to a Kubernetes Service, and information on various NodeBalancer configurations.'
+description: "We will walk you through everything you need to know about the usage of Linode NodeBalancers in Kubernetes, including adding them to a Kubernetes Service."
+og_description: "The Linode Kubernetes Engine (LKE) provides access to Linode''s load balancing service, NodeBalancers. NodeBalancers provide your Kubernetes cluster with a reliable way of exposing resources to the public internet. This guide contains details about the usage of Linode NodeBalancers, including adding NodeBalancers to a Kubernetes Service, and information on various NodeBalancer configurations."
 keywords: ['load balancers','kubernetes','nodebalancers','services']
 tags: ["http","kubernetes","container","networking","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-14
+image: GetStartLoadBal_LKECluster.png
 aliases: ['/kubernetes/deploy-nodebalancers-with-linode-ccm/','/kubernetes/getting-started-with-load-balancing-on-a-lke-cluster/']
 modified_by:
   name: Linode
-title: "Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster"
-h1_title: "Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster"
+title: "How to Get Started with Load Balancing on an LKE Cluster"
+h1_title: "Getting Started with Load Balancing on an LKE Cluster"
+enable_h1: true
 contributor:
   name: Linode
 ---
+
 The Linode Kubernetes Engine (LKE) is Linode's managed Kubernetes service. When you deploy an LKE cluster, you receive a Kubernetes Master which runs your cluster's control plane components, at no additional cost. The control plane includes [Linode's Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager/), which provides a way for your cluster to access additional Linode services. Linode's CCM provides access to Linode's load balancing service, [Linode NodeBalancers](/docs/platform/nodebalancer/).
 
 NodeBalancers provide your Kubernetes cluster with a reliable way of exposing resources to the public internet. The LKE control plane handles the creation and deletion of the NodeBalancer, and correctly identifies the resources, and their networking, that the NodeBalancer will route traffic to. Whenever a Kubernetes Service of the `LoadBalancer` type is created, your Kubernetes cluster will create a Linode NodeBalancer service with the help of the Linode CCM.
@@ -30,7 +33,7 @@ All existing LKE clusters receive CCM updates automatically every two weeks when
 {{</ note >}}
 
 {{< note >}}
-The [Linode Terraform K8s module](http://localhost:1313/docs/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/) also deploys a Kubernetes cluster with the Linode CCM installed by default. Any Kubernetes cluster with a Linode CCM installation can make use of Linode NodeBalancers in the ways described in this guide.
+The [Linode Terraform K8s module](/docs/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/) also deploys a Kubernetes cluster with the Linode CCM installed by default. Any Kubernetes cluster with a Linode CCM installation can make use of Linode NodeBalancers in the ways described in this guide.
 {{</ note>}}
 
 ## In this Guide
@@ -54,13 +57,14 @@ This guide assumes you have a working Kubernetes cluster that was deployed using
 An LKE cluster will already have Linode's Cloud Controller Manager installed in the cluster's control plane. If you **did not** deploy your Kubernetes cluster using LKE and would like to make use of the Linode Cloud Controller Manager, see [Installing the Linode CCM on an Unmanaged Kubernetes Cluster - A Tutorial](/docs/kubernetes/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/).
     {{</ note >}}
 
-
 ## Adding Linode NodeBalancers to your Kubernetes Cluster
 
 To add an external load balancer to your Kubernetes cluster you can add the example lines to a new configuration file, or more commonly, to a Service file. When the configuration is applied to your cluster, Linode NodeBalancers will be created, and added to your Kubernetes cluster. Your cluster will be accessible via a public IP address and the NodeBalancers will route external traffic to a Service running on healthy nodes in your cluster.
 
 {{< note >}}
 Billing for Linode NodeBalancers begin as soon as the example configuration is successfully applied to your Kubernetes cluster.
+
+In any NodeBalancer configuration, users should keep in mind that NodeBalancers have a maximum connection limit of 10,000 concurrent connections.
 {{</ note >}}
 
 {{< file >}}
@@ -203,7 +207,7 @@ tls.key:  1704 bytes
 
 By default, Kubernetes does not expose Services with TLS termination over HTTPS. In order to use `https` you'll need to instruct the Service to use the correct port using the required annotations. You can add the following code snippet to a Service file to enable TLS termination on your NodeBalancers:
 
-{{< file "example-serivce.yaml" yaml >}}
+{{< file "example-service.yaml" yaml >}}
 ...
 metadata:
   annotations:
@@ -218,7 +222,7 @@ metadata:
 
 If you have multiple Secrets and ports for different environments (testing, staging, etc.), you can define more than one secret and port pair:
 
-{{< file "example-serivce.yaml" yaml >}}
+{{< file "example-service.yaml" yaml >}}
 ...
 metadata:
   annotations:
@@ -230,7 +234,7 @@ metadata:
 
 ### Configuring Session Affinity for Cluster Pods
 
-`kube-proxy` will always attempt to proxy traffic to a random backend Pod. To direct traffic to the same Pod, you can use the `sessionAffinity` mechanism. When set to `clientIP`, `sessionAffinity` will ensure that all traffic from the same IP will be directed to the same Pod.  You can add the example lines to a Service configuration file to
+`kube-proxy` will always attempt to proxy traffic to a random backend Pod. To direct traffic to the same Pod, you can use the `sessionAffinity` mechanism. When set to `clientIP`, `sessionAffinity` will ensure that all traffic from the same IP will be directed to the same Pod. You can add the example lines to a Service configuration file to
 
 {{< file >}}
 spec:

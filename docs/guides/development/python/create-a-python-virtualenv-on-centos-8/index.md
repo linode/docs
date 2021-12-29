@@ -3,8 +3,7 @@ slug: create-a-python-virtualenv-on-centos-8
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide provides a brief introduction to Python virtual environments using the virtualenv tool. You will install the virtualenv tool on an CentOS 8 Linode and create a virtual environment running Python3.'
-og_description: 'This guide provides a brief introduction to Python virtual environments using the virtualenv tool. You will install the virtualenv tool on an CentOS 8 Linode and create a virtual environment running Python3.'
+description: This guide provides a brief introduction to Python virtual environments using the virtualenv tool on CentOS 8.
 keywords: ["python", "python virtual environment", "virtualenv", "centos 8"]
 tags: ["python","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,13 +11,14 @@ modified: 2020-04-07
 modified_by:
   name: Linode
 published: 2017-08-13
-title: 'How to Create a Python Virtual Environment on CentOS 8'
-h1_title: 'Creating a Python Virtual Environment on CentOS 8'
+title: How to Create a Python Virtual Environment on CentOS 8
+h1_title: Creating a Python Virtual Environment on CentOS 8
+enable_h1: true
 external_resources:
 - '[virtualenv Official Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]
 languages: ["python"]
-image: 'Creating_a_Python_Virtual_Environment_on_Centos_8_1200x631.png'
+image: Python_virtualenv_CentOS8.png
 relations:
     platform:
         key: python-virtual-env
@@ -47,7 +47,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 ## Create a Python Virtual Environment
 
 {{< note >}}
-CentOS 8 does not include any version of Python by default. To install Python on CentOS 8, read our guide on [installing Python 3 on CentOS 8](/docs/development/python/how-to-install-python-on-centos-8)
+CentOS 8 does not include any version of Python by default. To install Python on CentOS 8, read our guide on [installing Python 3 on CentOS 8](/docs/guides/how-to-install-python-on-centos-8/)
 {{</ note >}}
 
 1.  To install Python's virtual environment:
