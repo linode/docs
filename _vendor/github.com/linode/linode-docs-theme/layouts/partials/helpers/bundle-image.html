@@ -1,0 +1,17 @@
+{{ $img := partial "funcs/get-bundle-image.html" .page }}
+{{ $command := .command | default "Fill" }}
+{{ $options := .options | default "640x400" }}
+{{ $options = printf "%s jpg" $options }}
+{{ $loading := .loading | default "lazy" }}
+{{ $hasWidth := false }}
+{{ if ne $img.MediaType.SubType "svg" }}
+  {{ $hasWidth = true }}
+  {{ if eq $command "Fill" }}
+    {{ $img = $img.Fit $options }}
+  {{ else if eq $command "Fit" }}
+    {{ $img = $img.Fill $options }}
+  {{ else if eq $command "Resize" }}
+    {{ $img = $img.Resize $options }}
+  {{ end }}
+{{ end }}
+<img src="{{ $img.RelPermalink }}" alt="{{ $img.Title }}" {{ if $hasWidth }}width="{{ $img.Width }}" height="{{ $img.Height }}" {{ end }}class="{{ .class }}" loading="{{ $loading }}">

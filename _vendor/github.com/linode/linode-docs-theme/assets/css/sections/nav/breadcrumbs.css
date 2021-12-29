@@ -1,0 +1,34 @@
+.no-js .breadcrumbs.needs-js {
+    visibility: hidden;
+}
+
+.breadcrumbs a,
+.breadcrumbs span {
+    @apply text-basicgray;
+}
+
+/* Allow breadcrumbs to use the available whitespace to avoid wrapping on large screens */
+@screen lg {
+    .main__content .main__breadcrumbs {
+        margin-right: calc(-0.5 * (100vw - 100%) + 24px);
+    }
+    .is-explorer-open .main__content .main__breadcrumbs {
+        margin-right: calc(-1 * (100vw - 100% - var(--width-left-column) - 4rem));
+    }
+}
+
+.main__breadcrumbs a:hover {
+    @apply text-brand;
+}
+
+.breadcrumbs__icon--home {
+    width: 17px;
+    height: 14px;
+}
+
+@screen md {
+    .breadcrumbs__icon--home {
+        width: 18px;
+        height: 16px;
+    }
+}

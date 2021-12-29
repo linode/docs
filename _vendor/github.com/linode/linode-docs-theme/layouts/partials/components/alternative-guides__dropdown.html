@@ -1,0 +1,49 @@
+<div x-data="{ open: false }" @click.away="open = false">
+  <div class="relative text-left">
+    <div>
+        <button {{ if not (or .values .deprecatedguides) }}disabled{{ end }} type="button" @click="open = !open" :class="{ 'bg-gray-300 rounded-tr-md border-opacity-100': open }"
+                    class="flex justify-between w-full px-4 py-3 leading-5 font-bold text-gray-700 focus:outline-none transition ease-in-out duration-100 " aria-expanded="true" aria-haspopup="true">
+          <div class="flex-grow text-right">
+          {{ with .text }}
+            {{ . }}
+          {{ end }}
+          </div>
+          <div class="flex-grow-0" x-show="open">
+            <svg class="fill-current -mr-1 ml-2 h-4 w-5">
+              <use href="#icon--arrow-up"></use>
+            </svg>
+          </div>
+          <div class="flex-grow-0" x-show="!open">
+            <svg class="fill-current -mr-1 ml-2 h-4 w-5">
+              <use href="#icon--arrow-down"></use>
+            </svg>
+          </div>
+        </button>
+    </div>
+    <ul x-transition x-show="open" class="origin-top-right absolute right-0 w-full z-10 overflow-y-auto border border-gray-300 border-t-0 bg-white my-0 flex flex-col items-stretch" style="max-height: 20rem;" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
+      {{ range .values }}
+        <li class="">
+          <a href="{{ .page.RelPermalink }}"
+              class="block text-right w-full px-4 py-2 leading-5 font-bold text-gray-700 focus:outline-none" role="menuitem">
+            {{ .value }}
+          </a>
+        </li>
+      {{ end }}
+
+      {{ if gt (len .deprecatedguides) 0 }}
+      <li class="">
+          <div class="px-4 py-2 leading-5 text-600">Deprecated guides:</div>
+      </li>
+      {{ end }}
+
+      {{ range $index, $value := .deprecatedguides }}
+        <li class="">
+          <a href="{{ .page.RelPermalink }}"
+              class="block text-right w-full px-4 py-2 leading-5 text-gray-600 focus:outline-none hover:text-orange-600" role="menuitem">
+            {{ .value }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+</div>
