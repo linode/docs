@@ -8,7 +8,7 @@ keywords: ['find','linux','files','findutils','command line','find files','find 
 tags: ["linux","find"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/filter-file-systems-with-the-find-command/','/tools-reference/tools/find-files-in-linux-using-the-command-line/','/linux-tools/common-commands/find/']
-modified: 2021-05-04
+modified: 2021-12-29
 modified_by:
   name: Linode
 published: 2010-10-25
@@ -19,11 +19,13 @@ external_resources:
 - '[Ubuntu Manual page on find](http://manpages.ubuntu.com/manpages/focal/en/man1/find.1.html)'
 - '[GNU page on find](https://www.gnu.org/software/findutils/manual/html_mono/find.html)'
 ---
-![Find files in Linux using the command line](find-files-linux-command-line-title.jpg "Find Files in Linux using the command line")
+
+![Find files in Linux using the command line](find-files-linux-command-line-title.jpg)
 
 When you have to find a file in Linux, it's sometimes not as easy as finding a file in another operating system. This is especially true if you are running Linux without a graphical user interface and need to rely on the command line. This article covers the basics of how to find a file in Linux using the CLI. The `find` command in Linux is used to find a file (or files) by recursively filtering objects in the file system based on a simple conditional mechanism. You can use the `find` command to search for a file or directory on your file system. By using the `-exec` flag (`find -exec`), matches, which can be files, directories, symbolic links, system devices, etc., can be found and immediately [processed within the same command](#how-to-find-and-process-a-file-in-linux).
 
 ## Find a File in Linux by Name or Extension
+
 Use `find` from the command line to locate a specific file by name or extension.
 The following example searches for `*.err` files in the `/home/username/` directory and all sub-directories:
 
