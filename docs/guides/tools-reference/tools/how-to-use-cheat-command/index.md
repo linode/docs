@@ -246,7 +246,7 @@ The command below opens an editor for the (community) cheat sheet file on `ls`:
 
     cheat -e ls
 
-In the [Setting Up cheatsheets](/docs/guides/how-to-use-cheat-command/#setting-up-cheatsheets) section near the start of this guide, you got steps for installing a script for managing community cheat sheets. One of the primary benefits of this script is its ability to easily and automatically make sure your community sheets are up to date:
+In the [Setting Up cheatsheets](/docs/guides/linux-cheat-command/#setting-up-cheatsheets) section near the start of this guide, you got steps for installing a script for managing community cheat sheets. One of the primary benefits of this script is its ability to easily and automatically make sure your community sheets are up to date:
 
     cheatsheets pull
 
