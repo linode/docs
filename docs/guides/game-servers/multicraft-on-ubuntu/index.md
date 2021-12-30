@@ -181,4 +181,4 @@ Version 1.17 (minecraft_server.1.17.jar) is downloaded.
 
     [![Multicraft Server Settings.](multicraft-server-settings_small-1804.png)](multicraft-server-settings-1804.png)
 
-    You can now successfully start and manage your Minecraft server through Multicraft! For more information, see [Connect to your Minecraft Server](/docs/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/#connect-to-your-minecraft-server).
+    You can now successfully start and manage your Minecraft server through Multicraft! For more information, see the [Connect to your Minecraft Server](/docs/guides/how-to-set-up-minecraft-server-on-ubuntu-or-debian/#connect-to-your-minecraft-server) section on the [How to Set Up a Minecraft Server on Ubuntu or Debian](/docs/guides/how-to-set-up-minecraft-server-on-ubuntu-or-debian) guide.
