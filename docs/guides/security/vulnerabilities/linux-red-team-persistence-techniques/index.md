@@ -79,7 +79,7 @@ Note: Some persistence techniques will require “root” privileges in order to
 
 The first persistence technique we will be exploiting is the process of generating and using SSH key-based authentication as opposed to password-based authentication. This persistence technique will help maintain access to the target system if the user account passwords have been changed, as this is quite a common practice in companies that have password security policies in place.
 
-Note: This technique requires Public Key Authentication to be enabled in the SSH configuration file, more information about how this can be enabled can be found here: https://www.linode.com/docs/guides/use-public-key-authentication-with-ssh/
+Note: This technique requires Public Key Authentication to be enabled in the SSH configuration file, more information see [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/)
 
 In order to perform this technique, you need to have obtained initial access to the target system and you will require “root” privileges if you wish to modify the SSH configuration file.
 

@@ -93,7 +93,7 @@ The file above provides a high-level example that you can use to incorporate Par
 
 ## Second Paramiko Example: Connect to your Server Using SSH Keys
 
-One of Paramiko’s specific strengths is the correct handling of [SSH keys](/docs/guides/use-public-key-authentication-with-ssh/). The introductory example above depended on the use of your limited user account's password. It is more secure, however, to use SSH keys for server authentication. The example file below, provides a report that alerts you of any logins by users that are not included in your list of `expected` users. The Python script relies on Paramiko (notice the `key_based_connect()` function) to use SSHv2 authentication to connect to any of the servers provided in the code's `server_list` list.
+One of Paramiko’s specific strengths is the correct handling of [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/). The introductory example above depended on the use of your limited user account's password. It is more secure, however, to use SSH keys for server authentication. The example file below, provides a report that alerts you of any logins by users that are not included in your list of `expected` users. The Python script relies on Paramiko (notice the `key_based_connect()` function) to use SSHv2 authentication to connect to any of the servers provided in the code's `server_list` list.
 
 {{< file "key_based_login.py">}}
 # This is a small tool to report on successful logins
