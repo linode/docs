@@ -1,17 +1,20 @@
 ---
-slug: linode-disks
+slug: disks-and-storage
 author:
   name: Linode
   email: docs@linode.com
-description: A guide to Linode disks.
+description: "A guide for understanding how local storage works on a Linode and for help performing common tasks on a Linode's disks."
 keywords: ["disks", "storage", "disk space"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-04-30
+modified: 2021-10-15
 modified_by:
   name: Linode
 published: 2021-04-30
-title: Linode Disks and Storage
+title: "How to Manage Disks and Storage on a Linode"
+h1_title: "Managing Disks and Storage on a Linode"
+enable_h1: true
+aliases: ['/guides/linode-disks/']
 ---
 
 ## Understanding Storage
@@ -77,30 +80,7 @@ Once a disk has been created, you will need to modify the existing configuration
 
 ## Resizing a Disk
 
-The size of each disk can be increased or decreased as needed, though it's important to keep the following restrictions in mind:
-
-- The **maximum size** of a disk is equal to the current size of the disk and the remaining unallocated storage space on the Linode. The maximum size is displayed underneath the **Size** field when resizing the disk.
-- The **minimum size** of a disk is equal to the current disk usage within the filesystem. This number is not displayed in the Cloud Manager. To determine how much space the files on the disk are using, run the command `df -h` within the Linode's command Line (through [SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh) or [Lish](https://www.linode.com/docs/guides/using-the-linode-shell-lish/)).
-- **Raw disks** can only be resized to a larger disk.
-- Disks with **custom partitions** cannot be resized.
-
-{{< note >}}
-To resize a disk, the Linode needs to be powered off.
-{{< /note >}}
-
-1. Log in to the [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Linode from the list.
-
-1. Click the **Power Off** button in the upper right of the page or within the **ellipsis** menu. Before proceeding, wait until the Linode has been fully powered off.
-
-1. On the Linode's dashboard page, navigate to the **Storage** tab.
-
-1. Within the **Disks** table, locate the disk you wish to resize and click the corresponding **Resize** button, which may also appear within the **ellipsis** menu. This displays the **Resize Disk** form.
-
-1.  In the **Size** field, enter the new size for the disk in megabytes. The new size of the disk needs to be within the maximum and minimize disk size discussed above.
-
-1.  Click **Resize**. The progress can be monitored from the corresponding entry for the disk within the **Disks** table on the Linode's **Storage** page.
-
-1.  Once the disk has been successfully resized, click the **Power On** button to boot up the Linode.
+{{< content "resizing-a-compute-instance-disk-shortguide" >}}
 
 ## Cloning a Disk
 
@@ -117,6 +97,8 @@ Deleting a disk is permanent and cannot be undone. Make sure all required data i
 1. Log in to the [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Linode from the list.
 
 1. Click the **Power Off** button in the upper right of the page or within the **ellipsis** menu. Before proceeding, wait until the Linode has been fully powered off.
+
+    ![Screenshot of a Linode Details page with the Power Off button highlighted](power-off-linode-cloud-manager.png)
 
 1. On the Linode's dashboard page, navigate to the **Storage** tab.
 

@@ -43,7 +43,7 @@ This guide will show you how to:
 
 1.  Review the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) series to gain an understanding of key concepts within Kubernetes, including master and worker nodes, Pods, Deployments, and Services.
 
-1.  Purchase a domain name from a reliable domain registrar. In a later section, you will use Linode's DNS Manager to [create a new Domain](/docs/platform/manager/dns-manager/#add-a-domain) and to [add a DNS "A" record](/docs/platform/manager/dns-manager/#add-dns-records) for two subdomains: one named `blog` and another named `shop`. Your subdomains will point to the example Kubernetes Services you will create in this guide. The example domain names used throughout this guide are `blog.example.com` and `shop.example.com`.
+1.  Purchase a domain name from a reliable domain registrar. In a later section, you will use Linode's DNS Manager to [create a new Domain](/docs/guides/dns-manager/#add-a-domain) and to [add a DNS "A" record](/docs/guides/dns-manager/#add-dns-records) for two subdomains: one named `blog` and another named `shop`. Your subdomains will point to the example Kubernetes Services you will create in this guide. The example domain names used throughout this guide are `blog.example.com` and `shop.example.com`.
 
     {{< note >}}
 Optionally, you can create a Wildcard DNS record, `*.example.com` and point your NodeBalancer's external IP address to it. Using a Wildcard DNS record, will allow you to expose your Kubernetes services without requiring further configuration using the Linode DNS Manager.
@@ -175,10 +175,6 @@ kubernetes   ClusterIP   10.128.0.1       <none>        443/TCP   18m
 
 In this section you will use Helm to install the NGINX Ingress Controller on your Kubernetes Cluster. Installing the NGINX Ingress Controller will create Linode NodeBalancers that your cluster can make use of to load balance traffic to your example application.
 
-{{< note >}}
-If you would like a slightly deeper dive into the NGINX Ingress Controller, see our guide [Deploying NGINX Ingress on Linode Kubernetes Engine](https://www.linode.com/docs/kubernetes/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/).
-{{</ note >}}
-
 1.  Add the following Helm ingress-nginx repository to your Helm repos.
 
         helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -222,7 +218,7 @@ NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP    PORT
 my-ingress-nginx-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/instance=cingress-nginx,app.kubernetes.io/name=ingress-nginx
 {{</ output >}}
 
-1.  Copy the IP address of the `EXTERNAL IP` field and navigate to [Linode's DNS manager](https://cloud.linode.com/domains) and [add two "A" records](/docs/platform/manager/dns-manager/#add-dns-records) for the `blog` and `shop` subdomains. Ensure you point each record to the NodeBalancer's IPv4 address you retrieved in the previous step.
+1.  Copy the IP address of the `EXTERNAL IP` field and navigate to [Linode's DNS manager](https://cloud.linode.com/domains) and [add two "A" records](/docs/guides/dns-manager/#add-dns-records) for the `blog` and `shop` subdomains. Ensure you point each record to the NodeBalancer's IPv4 address you retrieved in the previous step.
 
 ## Configuring the Ingress Controller
 

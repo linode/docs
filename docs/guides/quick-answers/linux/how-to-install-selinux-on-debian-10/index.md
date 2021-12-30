@@ -11,6 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2020-03-17
+image: InstallSELinux_Deb10.png
 contributor:
   name: Linode
 title: "How to Install SELinux on Debian 10"
@@ -126,7 +127,7 @@ Max kernel policy version:      31
 
 1.  To maintain `enforcing` mode after reboot, modify the SELinux configuration file in `/etc/selinux/config` from the default `SELINUX=permissive` to `SELINUX=enforcing`:
 
-    {{< file "/etc/selinx/config" >}}
+    {{< file "/etc/selinux/config" >}}
 # This file controls the state of SELinux on the system.
 # SELINUX= can take one of these three values:
 # enforcing - SELinux security policy is enforced.

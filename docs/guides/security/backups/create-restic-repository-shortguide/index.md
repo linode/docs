@@ -55,7 +55,7 @@ Store this password securely and somewhere other than your Linode. Your backups 
 Your access key, secret key, and password are required every time Restic communicates with your repository. To make it easier to work with your repository, create a shell script containing your credentials.
 
 {{< note >}}
-The examples in this section use the Nano text editor. Refer to the [How to Use Nano Text Editor Commands in Linux](/docs/guides/use-nano-text-editor-commands/) guide if you're not familiar with Nano.
+The examples in this section use the Nano text editor. Refer to the [Nano Text Editor Commands](/docs/guides/use-nano-text-editor-commands/) guide if you're not familiar with Nano.
 {{</ note >}}
 
 1. To keep your credentials secure, using a text editor, create the example script in the root user's home directory, and run all your Restic scripts as the root user. The example uses the Nano text editor.

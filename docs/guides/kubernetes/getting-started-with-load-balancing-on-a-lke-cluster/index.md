@@ -9,6 +9,7 @@ keywords: ['load balancers','kubernetes','nodebalancers','services']
 tags: ["http","kubernetes","container","networking","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-14
+image: GetStartLoadBal_LKECluster.png
 aliases: ['/kubernetes/deploy-nodebalancers-with-linode-ccm/','/kubernetes/getting-started-with-load-balancing-on-a-lke-cluster/']
 modified_by:
   name: Linode

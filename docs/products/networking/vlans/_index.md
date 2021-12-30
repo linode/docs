@@ -27,11 +27,11 @@ Use the Cloud Manager to create a VLAN and attach Linode's to it in just a few c
 
 ### Reduce Network Transfer Costs
 
-Private network transfer is free. Any communication between Linodes over the private VLAN does not count against your monthly [network transfer quota](/docs/guides/network-transfer-quota/).
+Private network transfer is free. Any communication between Linodes over the private VLAN does not count against your [monthly network transfer usage](/docs/guides/network-transfer/).
 
 ## Pricing
 
-VLANs are free to use. Communication across your private network does not count against your monthly [network transfer quota](/docs/guides/network-transfer-quota/).
+VLANs are free to use. Communication across your private network does not count against your [monthly network transfer usage](/docs/guides/network-transfer/).
 
 
 {{< content "vlans-limitations-shortguide" >}}

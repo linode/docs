@@ -35,7 +35,7 @@ Most of the distribution images available on Linode use the upstream distributio
 
 There are may ways you can determine which kernel version is installed on your Linux system. The following instructions cover the most common methods:
 
-1.  Log in to the Linode through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/).
+1.  Log in to the Linode through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 
 1.  Run one of the following commands to display the kernel version:
 
@@ -89,7 +89,7 @@ Follow these steps if the Linode is using a Linode kernel:
 
 Follow these steps if the Linode is using an upstream kernel (the default for most new Linodes created after August 2018):
 
-1.  Log in to the Linode through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/).
+1.  Log in to the Linode through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 
 1.  Upgrade any system packages related to the kernel:
 
@@ -137,7 +137,7 @@ If your system does not boot and instead shows a GRUB command line prompt in Lis
 
 For new Linodes, an upstream kernel is already installed on your system and you **do not need to follow these steps**. In the case of older Linodes, this section outlines how to get both an upstream kernel (and GRUB) installed and configured on your system.
 
-1.  Log in to the Linode through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/).
+1.  Log in to the Linode through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 
 1.  Update your package management system and install the Linux kernel and GRUB 2. Choose `/dev/sda` if you're asked which disk to install to during installation. Linode provides the GRUB bootloader, so your system only needs to provide a `grub.cfg` file.
 
@@ -174,7 +174,7 @@ For new Linodes, an upstream kernel is already installed on your system and you 
     grub  initramfs-linux-fallback.img  initramfs-linux.img  vmlinuz-linux
     {{< /output >}}
 
-1. Next, configure the serial console and other GRUB settings so you can use [Lish](/docs/platform/manager/using-the-linode-shell-lish/) and [Glish](/docs/platform/manager/using-the-linode-graphical-shell-glish/). This is outlined in the following steps.
+1. Next, configure the serial console and other GRUB settings so you can use [Lish](/docs/guides/using-the-lish-console/) and [Glish](/docs/platform/manager/using-the-linode-graphical-shell-glish/). This is outlined in the following steps.
 
 1.  Open `/etc/default/grub` in a text editor and go to the line beginning with `GRUB_CMDLINE_LINUX`. Remove the word `quiet` if present, and add `console=ttyS0,19200n8 net.ifnames=0`. Leave the other entries in the line. For example, on CentOS 7 you should have something similar to:
 
@@ -194,7 +194,7 @@ GRUB_GFXPAYLOAD_LINUX=text
 
     -   **Debian and Ubuntu**
 
-            update-grub
+            sudo update-grub
 
     -   **CentOS**
 

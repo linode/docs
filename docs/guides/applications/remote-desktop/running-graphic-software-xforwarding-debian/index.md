@@ -4,7 +4,7 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: Forward the X11 Server Through SSH to Run GUI Applications from Your Linode
-keywords: ["x11", "debian", "debain 7", " debian 8", "x-forwarding", "ssh", "x over ssh"]
+keywords: ["x11", "debian", "debian 7", " debian 8", "x-forwarding", "ssh", "x over ssh"]
 tags: ["debian", "ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/remote-desktops/running-graphic-software-on-your-linode-with-xforwarding-on-debian-7/','/applications/remote-desktop/running-graphic-software-xforwarding-debian/','/remote-desktops/x-forwarding-debian-7/']

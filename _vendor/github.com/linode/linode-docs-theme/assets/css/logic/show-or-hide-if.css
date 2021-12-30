@@ -15,18 +15,6 @@
     display: none !important;
 }
 
-.show-if-search-input-is-open {
-    display: none;
-}
-
-.is-not-search-panel_filters-open .hide-if-is-not-search-panel_filters-open {
-    display: none !important;
-}
-
-.is-search-input-open .show-if-search-input-is-open {
-    display: block;
-}
-
 .is-search-panel-open .hide-if-search-panel-open {
     display: none !important;
 }

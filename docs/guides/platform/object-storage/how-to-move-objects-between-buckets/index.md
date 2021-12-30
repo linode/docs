@@ -50,7 +50,7 @@ The easiest way to move objects between buckets is using a Graphical User Interf
 
 To transfer objects within the same cluster on the same account, you need to open only one Cyberduck window.
 
-1.  Open Cyberduck and make a connection to access your buckets as described in [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#cyberduck).
+1.  Open Cyberduck and make a connection to access your buckets as described in [Using Cyberduck with Object Storage](/docs/products/storage/object-storage/guides/cyberduck/).
 
 1.  Expand the two buckets you want to transfer objects between by clicking the down arrow to the left of the folders.
 

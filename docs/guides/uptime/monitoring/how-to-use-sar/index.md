@@ -8,6 +8,7 @@ keywords: ['sar command in linux']
 tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-19
+image: UseSystemActivityReporter.png
 modified_by:
   name: Linode
 title: "How to Use the System Activity Reporter (sar)"
@@ -40,7 +41,7 @@ The open-source sar program is frequently used, but it's not included in most Li
 
         sudo apt-get install sysstat
 
-1. Sar must be enabled before it can begin to collect data. Using your preferred [text editor](/docs/guides/use-nano-text-editor-commands/), open the `/etc/default/sysstat` configuration file, and change the value of `ENABLED` to `true`.
+1. Sar must be enabled before it can begin to collect data. Using your preferred text editor, open the `/etc/default/sysstat` configuration file, and change the value of `ENABLED` to `true`.
 
     {{< file "/etc/default/sysstat" >}}
 #

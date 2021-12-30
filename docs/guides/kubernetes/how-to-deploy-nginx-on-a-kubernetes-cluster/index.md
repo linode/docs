@@ -10,6 +10,7 @@ modified_by:
   name: Linode
 modified: 2021-08-13
 published: 2017-11-27
+image: DeployNGINX_Linode.png
 title: 'How to Install, Configure, and Deploy NGINX on a Kubernetes Cluster'
 aliases: ['/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/','/applications/containers/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/','/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/']
 contributor:
@@ -40,7 +41,7 @@ You can now create a Kubernetes cluster with one command using the Linode CLI. T
 
 You will need:
 
-* Two or more Linodes with [Private IPs](/docs/platform/manager/remote-access/#adding-private-ip-addresses)
+* Two or more Linodes with [Private IPs](/docs/guides/managing-ip-addresses/#adding-an-ip-address)
 * Each Linode should have a 64-bit distribution of either:
     - Ubuntu 16.04+
     - Debian 9
@@ -56,7 +57,7 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
 
 1.  Create two Linodes with at least 2GB memory within the same data center.
 
-1.  For each node, go into the **Networking** tab of the Linode Cloud Manager and add a [private IP](/docs/platform/manager/remote-access/#adding-private-ip-addresses). It is possible to build a Kubernetes cluster using public IPs between data centers, but performance and security may suffer.
+1.  For each node, go into the **Networking** tab of the Linode Cloud Manager and add a [private IP](/docs/guides/managing-ip-addresses/#adding-an-ip-address). It is possible to build a Kubernetes cluster using public IPs between data centers, but performance and security may suffer.
 
 1.  Configure a firewall with [UFW](/docs/security/firewalls/configure-firewall-with-ufw/) or [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) to ensure only the two nodes can communicate with each other.
 

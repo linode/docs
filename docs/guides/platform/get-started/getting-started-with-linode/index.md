@@ -48,7 +48,7 @@ Newly created Linode accounts have restrictions on ports `25`, `465`, and `587`.
 
     ![Getting Started Add Linode](getting-started-add-linode.png "Getting Started with Linode")
 
-1.  Select the [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [One Click App](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) you would like to use.
+1.  Select the [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [Marketplace App](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) you would like to use.
 
     {{< note >}}
 Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. Some of the most popular StackScripts do things like install a LAMP stack, VPN, or WordPress. You can read more about Stackscripts and how they work in our [Automating Deployments with Stackscripts Guide.](/docs/platform/stackscripts/)
@@ -91,7 +91,7 @@ If Network Helper is unable to determine the operating system during boot, or if
 
 Communicating with your Linode is usually done using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between the client application on your computer and the Linode, including passwords and other sensitive information. There are SSH clients available for every desktop operating system.
 
-* **Windows:** Windows 10 users can connect to their Linode using the [PowerShell](/docs/guides/connect-to-server-over-ssh-on-windows/#powershell---windows-10) application, provided their system is fully updated. For users of Windows 8 and earlier, [Secure Shell on Chrome](/docs/guides/connect-to-server-over-ssh-on-chrome/), [PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/), or many other third party tools can be used instead. See [Connecting to a Remote Server Over SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/).
+* **Windows:** Windows 10 users can connect to their Linode using [SSH Windows](/docs/guides/connect-to-server-over-ssh-on-windows/#powershell---windows-10) application, provided their system is fully updated. For users of Windows 8 and earlier, [Secure Shell on Chrome](/docs/guides/connect-to-server-over-ssh-on-chrome/), [PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/), or many other third party tools can be used instead. See [Connecting to a Remote Server Over SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/).
 * **macOS:** The *Terminal* application is pre-installed on macOS. See [Connecting to a Remote Server Over SSH on a Mac](/docs/guides/connect-to-server-over-ssh-on-mac/).
 * **Linux:** You can use a terminal window, regardless of desktop environment or window manager. See [Connecting to a Remote Server Over SSH on Linux](https://www.linode.com/docs/guides/connect-to-server-over-ssh-on-linux/)
 
@@ -258,7 +258,7 @@ Add an entry for your Linode's IPv6 address. Applications requiring IPv6 will no
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For IPv6, you should also set up a DNS "AAAA" record pointing to your Linode's IPv6 address.
 
-See our guide to [Adding DNS Records](/docs/platform/manager/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
+See our guide to [Adding DNS Records](/docs/guides/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
 
 ## Set the Timezone
 

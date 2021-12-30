@@ -9,6 +9,7 @@ keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternat
 tags: ['centos', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-04
+image: MASTODON1.jpg
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install a Mastodon Server on CentOS Stream 8"
@@ -51,7 +52,7 @@ Mastodon servers range in size from small private instances to massive public in
 
 1. Complete the steps in the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) section to register a domain name to point to your Mastodon instance.
 
-1. Enable FirewallD for managing your machine's firewall rules. Refer to the [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/) guide.
+1. Enable FirewallD for managing your machine's firewall rules. Refer to the [firewall cmd list](/docs/guides/introduction-to-firewalld-on-centos/).
 
 1. Prepare an SMTP server for Mastodon to send email notifications to users when they register for the site, get a follower, receive a message, and for other Mastodon activities.
 

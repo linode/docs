@@ -12,6 +12,7 @@ modified_by:
   name: Nathaniel Stickman
 title: "An ASP.NET Core on Linux Tutorial"
 h1_title: "Tutorial: Hosting ASP.NET Core on Linux"
+image: ASPNET.jpg
 enable_h1: true
 contributor:
   name: Nathaniel Stickman

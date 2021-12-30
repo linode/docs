@@ -21,7 +21,7 @@ external_resources:
 - "[TypeScript's TSConfig Reference documentation](https://www.staging-typescript.org/tsconfig)"
 ---
 
-[TypeScript](https://www.typescriptlang.org/) is a [strongly typed programming language](https://en.wikipedia.org/wiki/Strong_and_weak_typing) that is built on top off JavaScript. JavaScript is increasingly used in complex web applications with large codebases. Since you can use TypeScript anywhere that JavaScript is supported, you can replace JavaScript for TypeScript to reap the benefits of a strongly typed language. TypeScript enables developers to build applications quickly and with less errors. Some benefits of TypeScript are:
+[TypeScript](https://www.typescriptlang.org/) is a [strongly typed programming language](https://en.wikipedia.org/wiki/Strong_and_weak_typing) that is built on top of JavaScript. JavaScript is increasingly used in complex web applications with large codebases. Since you can use TypeScript anywhere that JavaScript is supported, you can replace JavaScript for TypeScript to reap the benefits of a strongly typed language. TypeScript enables developers to build applications quickly and with less errors. Some benefits of TypeScript are:
 
 - Reduction of misspelled functions and properties
 - Ensures that you use the correct argument types and number of arguments with functions
@@ -208,4 +208,4 @@ app.listen(3000, () => {
 
 ## Conclusion
 
- When you use TypeScript to build a web application, you get the benefits of stricter programming language that is interchangeable with JavaScript. When using Express and Node.js with TypeScript your code is mush less error prone and verbose. Their benefits allow you to spend more time creating your web application's features. If you are a JavaScript programmer, refer to the [TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) tutorial to learn more about the differences between the two languages.
+ When you use TypeScript to build a web application, you get the benefits of stricter programming language that is interchangeable with JavaScript. When using Express and Node.js with TypeScript your code is mush less error prone and verbose. Their benefits allow you to spend more time creating your web application's features. If you are a JavaScript programmer, refer to the [TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html) tutorial to learn more about the differences between the two languages. If you are newer to TypeScript, you can refer to our guides on TypeScript [classes](/docs/guides/typescript-classes-get-started/), [decorators](/docs/guides/typescript-decorators-getting-started/), [functions](/docs/guides/typescript-functions-getting-started/), and [types](/docs/guides/typescript-types-get-started/).

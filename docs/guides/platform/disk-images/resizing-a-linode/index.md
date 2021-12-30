@@ -8,7 +8,7 @@ keywords: ["upgrading", "resizing", "disk space"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/disk-images/resizing-a-linode-classic-manager/','/resizing/','/platform/disk-images/resizing-a-linode/','/migrate-to-linode/disk-images/resizing-a-linode/']
-modified: 2021-09-01
+modified: 2021-10-18
 modified_by:
   name: Linode
 published: 2017-02-14
@@ -21,11 +21,13 @@ We make it easy to upgrade or downgrade your Linode by changing plans and adding
 
 ## What to Expect
 
-- You are able to upgrade your Linode to a larger plan, downgrade to a smaller plan, or even change to a different plan type (such as switching from a Shared CPU plan to a Dedicated CPU plan).
+- You can upgrade your Linode to a larger plan, downgrade to a smaller plan, or even change to a different plan type (such as switching from a Shared CPU plan to a Dedicated CPU plan).
 
-- The Linode will be powered off while it's resized. Please allow approximately 1 minute of downtime for every 3-5 GB of disk space.
+- While resizing a Linode, it is powered off and migrated to a different physical host within the same data center. This new host may have slightly different hardware, though performance is consistent across our entire fleet.
 
-- The Linode will be migrated to a different physical host within the same data center. This new host may have slightly different hardware, though performance is consistent across our entire fleet.
+-  The disks are transferred to the new hardware at a typical rate of ~150 MB/sec. While you can use this rate to approximate any downtime, the actual transfer speeds may vary and downtime may be shorter or longer than expected.
+
+- The Linode remains powered off during the entire resize process. After the resize completes, the Linode returns to its previous power state.
 
 ## Resizing a Linode
 
@@ -54,7 +56,7 @@ Here's how to resize your Linode to a different plan:
 
 1.  Enter the Linode's label in the **Confirm** field and select the **Resize Linode** button to initiate the resize.
 
-1.  If the Linode is powered on, it will be powered off for the duration of the resize. This process takes approximately 1 minute for each 3-5 GB of storage space. After the resize completes, the Linode returns to it's original power state.
+1.  If the Linode is powered on, it is powered off for the duration of the resize. After the resize completes, the Linode returns to it's original power state.
 
 You are now able to utilize the resources of your new plan.
 
@@ -74,7 +76,7 @@ Downgrading to a plan with less resources may be helpful when looking to reduce 
 
 1.  Determine the storage space that's included in the new desired plan. This information is listed on the [Pricing Page](https://www.linode.com/pricing/) (under the *Storage* column).
 
-1.  Determine the amount of disk space currently being used on your Linode. To do this, log in to your Linode via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-linode-shell-lish/) and run the following command:
+1.  Determine the amount of disk space currently being used on your Linode. To do this, log in to your Linode via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/) and run the following command:
 
         df -h
 
@@ -84,7 +86,7 @@ Downgrading to a plan with less resources may be helpful when looking to reduce 
 
     - If you're using more space than your intended plan allows, you need to remove some files to free up some space before moving onto the next step. See the options for doing this in the [Download Files from Your Linode](/docs/security/data-portability/download-files-from-your-linode/) guide.
 
-1.  Resize the Linode's disks to fit within the storage space of the new plan. See [Resize a Linode's Disk](/docs/guides/resize-a-linode-disk/)
+1.  Resize the Linode's disks to fit within the storage space of the new plan. See [Resizing a Disk](/docs/guides/resize-a-linode-disk/).
 
 ## Switching to a Different Plan Type
 

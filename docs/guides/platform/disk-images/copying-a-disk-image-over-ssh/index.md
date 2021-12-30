@@ -33,7 +33,7 @@ While this guide has been written to accommodate computers running Linux as thei
 
 ### Boot Linode into Rescue Mode
 
-1.  Reboot Your origin Linode into [Rescue Mode](/docs/guides/rescue-and-rebuild/#boot-linode-into-rescue-mode) and connect to it using [Lish](/docs/guides/remote-access/#console-access).
+1.  Reboot Your origin Linode into [Rescue Mode](/docs/guides/rescue-and-rebuild/#boot-linode-into-rescue-mode) and connect to it using [Lish](/docs/guides/using-the-lish-console/).
 
 1.  Set a root password for the rescue system and start the SSH server:
 

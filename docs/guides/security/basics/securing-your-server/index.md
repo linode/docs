@@ -304,7 +304,7 @@ Using a *firewall* to block unwanted inbound traffic to your Linode provides a h
 
 If for whatever reason you find yourself locked out of your Linode after putting your security controls into place, there are still a number of ways that you can regain access to your Linode.
 
-* Access your Linode through our out-of-band [Lish console](https://www.linode.com/docs/platform/manager/using-the-linode-shell-lish/) to regain access to the internals of your Linode without relying on SSH.
+* Access your Linode through our out-of-band [Lish console](/docs/guides/using-the-lish-console/) to regain access to the internals of your Linode without relying on SSH.
 
 * If you need to re-enable password authentication and/or root login over ssh to your Linode, you can do this by reversing the following sections of this file to reflect these changes
 

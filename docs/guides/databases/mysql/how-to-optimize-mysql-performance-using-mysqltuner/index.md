@@ -128,7 +128,7 @@ Changing the `key_buffer` allocates more memory to MySQL, which can substantiall
 According to MySQL's documentation, for servers with 256MB (or more) of RAM with many tables, a setting of 64M is recommended. Servers with 128MB of RAM and fewer tables can be set to 16M, the default value. Websites with even fewer resources and tables can have this value set lower.
 
 #### max_allowed_packet
-This parameter lets you set the maximum size of a sendable packet. A packet is a single SQL state, a single row being sent to a client, or a log being sent from a master to a slave. If you know that your MySQL server is going to be processing large packets, it is best to increase this to the size of your largest packet. Should this value be set too small, you would receive an error in your error log.
+This parameter lets you set the maximum size of a sendable packet. A packet is a single SQL state, a single row being sent to a client, or a log being sent from a source database to a replica. If you know that your MySQL server is going to be processing large packets, it is best to increase this to the size of your largest packet. Should this value be set too small, you would receive an error in your error log.
 
 #### thread_stack
 This value contains the stack size for each thread. MySQL considers the default value of the `thread_stack` variable sufficient for normal use; however, should an error relating to the `thread_stack` be logged, this can be increased.

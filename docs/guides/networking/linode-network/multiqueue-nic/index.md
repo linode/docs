@@ -8,6 +8,7 @@ og_description: "Configuring multiqueue NICs (Network Interface Controllers) on 
 keywords: ['networking','multi-queue']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-01
+image: NICS.jpg
 modified_by:
   name: Linode
 title: "How To Configure Multi-Queue NICs"
@@ -29,7 +30,7 @@ Check if multi-queue is already enabled on your network devices by using the [et
 
 1.  Review the number of CPU cores (vCPUs) available on your Compute Instance by finding your plan within the [Linode Pricing](https://www.linode.com/pricing/) page or by logging in to the [Cloud Manager](https://cloud.linode.com/), selecting your Linode Compute Instance, and reviewing the *CPU Cores* value under **Summary**.
 
-1.  Log in to your Compute Instance through [Lish](/docs/guides/using-the-linode-shell-lish/) or [SSH](/docs/guides/networking/ssh/connect-to-server-over-ssh/).
+1.  Log in to your Compute Instance through [Lish](/docs/guides/using-the-lish-console/) or [SSH](/docs/guides/networking/ssh/connect-to-server-over-ssh/).
 
 1.  Install the `ethtool` utility if not already installed.
 

@@ -9,6 +9,7 @@ keywords: ['ssh','linux','connect to server over ssh','connect to linode over ss
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
+image: SSHLINUX.jpg
 modified_by:
   name: Linode
 title: "How to Connect to a Remote Server Over SSH on Linux"
@@ -137,6 +138,6 @@ If SSH isn't connecting you to your Linode, you may need to investigate the stat
 
 ### Increasing Security
 
-- Now that you can connect from your Linux machine to the Linode over SSH, save not only time but also make the connection even more secure by using SSH public key authentication. See the guide [Use SSH Public Key Authentication on Linux, macOS, and Windows](/docs/guides/use-public-key-authentication-with-ssh/) for details.
+- Now that you can connect from your Linux machine to the Linode over SSH, save not only time but also make the connection even more secure by using SSH public key authentication. For more information, see [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/).
 
 - See the "Harden SSH Access" section of [Securing Your Server](/docs/security/securing-your-server/) to review how to secure SSH on the server's side, and the [Advanced SSH Server Security](/docs/guides/advanced-ssh-server-security/) for more information on making it even more secure.

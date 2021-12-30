@@ -61,7 +61,7 @@ First, you might want to give the [Linode Backup Service](http://www.linode.com/
 
 -   [Introduction to Rsync](/docs/tools-reference/tools/introduction-to-rsync/) - Using `rsync` to mirror files to another server.
 -   [Using Rdiff-backup with SSHFS](/docs/security/backups/using-rdiff-backup-with-sshfs/) - An easy approach to using the `rdiff-backup` utility to maintain differential backups.
--   [Duplicating a Disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#duplicating-a-disk) - Creating an exact copy of a disk in the Cloud Manager.
+-   [Cloning a Disk](/docs/guides/clone-your-linode/#cloning-to-an-existing-linode) - Creating an exact copy of a disk in the Cloud Manager.
 -   [Copying a Disk Over SSH](/docs/platform/disk-images/copying-a-disk-image-over-ssh/) - How to download an exact binary image of your Linode's disk over SSH.
 
 ## How can I install software on my Linode?
@@ -70,7 +70,7 @@ Please refer to our guide on [Linux package management](/docs/tools-reference/li
 
 ## How do I add another IP address?
 
-You may add an [additional public IP address](/docs/platform/manager/remote-access/#adding-public-ip-addresses) from the **Networking** tab for each Linode in the Linode Cloud Manager. After you've added a new IP address, you must [configure static networking](/docs/networking/linux-static-ip-configuration/) or enable [Network Helper](/docs/platform/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) and reboot your Linode before it can be used.
+You may add an [additional public IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) from the **Networking** tab for each Linode in the Linode Cloud Manager. After you've added a new IP address, you must [configure static networking](/docs/networking/linux-static-ip-configuration/) or enable [Network Helper](/docs/platform/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) and reboot your Linode before it can be used.
 
 {{< note >}}
 We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the [Support Tickets](https://cloud.linode.com/support/tickets) section of the Cloud Manager Manager explaining the reason for the new IP.
@@ -90,7 +90,7 @@ If an application is crashing, be sure to check its error logs. These are typica
 
 ## Why is my connection to my Linode slow or broken?
 
-First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Linode runs a firewall, [check your firewall rules](/docs/security/firewalls/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) to and from your Linode, and [submit them](/docs/platform/billing-and-support/support/#contacting-linode-support) via the  [Support Tickets](https://cloud.linode.com/support/tickets)  section in the Cloud Manager. You may need to use [Lish](/docs/platform/manager/using-the-linode-shell-lish/) if you're having problems reaching your Linode via normal networking.
+First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Linode runs a firewall, [check your firewall rules](/docs/security/firewalls/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) to and from your Linode, and [submit them](/docs/platform/billing-and-support/support/#contacting-linode-support) via the  [Support Tickets](https://cloud.linode.com/support/tickets)  section in the Cloud Manager. You may need to use [Lish](/docs/guides/using-the-lish-console/) if you're having problems reaching your Linode via normal networking.
 
 ## How can I upgrade or downgrade my Linode?
 

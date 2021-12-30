@@ -164,6 +164,12 @@ func IsTruthfulValue(val reflect.Value) (truth bool) {
 {{< /file >}}
 
 
+###  No Title
+
+{{< file >}} import { SayHello } from "/TestTypescript/Greetings"; {{</ file >}}
+
+
+
 ### Indented in list
 
 * Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Ut suscipit nec orci vel sagittis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce accumsan fringilla urna et maximus. Aliquam erat volutpat. Nam malesuada faucibus massa ac ultrices. Sed finibus diam at dolor maximus porttitor.
@@ -189,5 +195,16 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id me
 
 ## Styles
 
+Lorem ipsum dolor sit amet, **consectetur adipiscing elit**. Nunc sollicitudin id metus vel _malesuada_. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
+
+### Unordered list
+
 * This is a [**Bold Link**](https://example.com).
 * This is a [*Italic Link*](https://example.com).
+
+### Ordered list
+
+1. This is a [**Bold Link**](https://example.com).
+2. This is a [*Italic Link*](https://example.com).
+
+> This is a block quote. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. 

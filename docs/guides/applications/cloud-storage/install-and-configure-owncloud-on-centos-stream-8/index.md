@@ -8,6 +8,7 @@ og_description: "Simple, secure, and free, ownCloud is an excellent alternative 
 keywords: ['owncloud on Centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-05
+image: Install_ownCloud_CentOS_stream.png
 modified_by:
   name: Linode
 title: "How to Install and Configure ownCloud on CentOS Stream 8"
@@ -45,7 +46,7 @@ Why would you want to host your own cloud? Some common reasons are:
 - You own a small business and want to keep everything in-house.
 - You need an expandable storage solution.
 
-This tutorial walks you through the steps to install ownCloud on [CentOS Stream 8](https://www.centos.org/centos-stream/). There are only a few steps to install ownCloud on CentOS Stream 8. You [install the LAMP (Linux Apache MySQL/MariaDB PHP) stack](https://www.linode.com/docs/guides/how-to-install-a-lamp-stack-on-centos-8/); create a database and database user; configure Apache; and set up ownCloud using its graphical user interface.
+This tutorial walks you through the steps to install ownCloud on [CentOS Stream 8](https://www.centos.org/centos-stream/). There are only a few steps to install ownCloud on CentOS Stream 8. You [install the LAMP (Linux Apache MySQL/MariaDB PHP) stack](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/); create a database and database user; configure Apache; and set up ownCloud using its graphical user interface.
 
 ## Before You Begin
 

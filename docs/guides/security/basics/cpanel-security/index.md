@@ -15,7 +15,7 @@ title: cPanel Security
 h1_title: cPanel Security
 enable_h1: true
 aliases: ['security/basics/securing-cpanel/']
-image: cPanel_Security.png
+image: cPanelSecurity.png
 ---
 
 ## What is cPanel?
@@ -107,7 +107,7 @@ You can specify SSH access through the use of SSH keys for authentication. This 
 
 1.  Click **Manage SSH Keys**.
 
-1.  You have the options of importing an already created key generating your own key pair. For guidance and information on using and creating SSH Keys, see our guide on [How to Use SSH Public Key Authentication on Linux, macOS, and Windows](https://www.linode.com/docs/guides/use-public-key-authentication-with-ssh/).
+1.  You have the options of importing an already created key generating your own key pair. For guidance and information on using and creating SSH Keys, see [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/).
 
     ![Select 'Generate a New Key' or 'Import Key'.](cpanel-ssh-access.png "Select 'Generate a New Key' or 'Import Key'.")
 

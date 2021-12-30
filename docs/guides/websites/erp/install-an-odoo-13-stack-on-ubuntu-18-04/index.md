@@ -14,7 +14,7 @@ modified_by:
   name: Linode
 title: 'How to Install an Odoo 13 Stack on Ubuntu 18.04'
 h1_title: Installing an Odoo 13 Stack on Ubuntu 18.04
-image: install-an-odoo-13-stack-on-ubuntu-18-04-using-linode.png
+image: InstallOdoo13Stack_Ubuntu1804.png
 contributor:
   name: Damaso Sanoja
   link: https://twitter.com/damasosanoja
@@ -370,7 +370,7 @@ You have two options to backup your production database:
 
 1. You can install PostgreSQL 10 on the **Odoo** server using the procedure described on this guide. This installs `pg_dump` and other utilities, allowing you to use the Odoo GUI as before. Since Odoo configuration is explicit about database connection you do not have to worry about anything else. This method restores the database to the **PostgreSQL** server rather than **Odoo**.
 
-2. You can also use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](https://www.linode.com/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) from the backend **PostgreSQL** server.
+2. You can also use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) from the backend **PostgreSQL** server.
 
 ### Update Odoo Modules
 

@@ -25,7 +25,7 @@ Linode VLANs (Virtual Local Area Networks) are a completely free solution availa
 - **Privacy and security.** Linodes on the same account and in the same region can be added to a VLAN, allowing for private and secure communications between those Linodes. The public internet can also be disabled on a Linode to provide even more security.
 
     {{< note >}}
-VLANs are separate from [Private IP Addresses](https://www.linode.com/docs/guides/remote-access/#adding-private-ip-addresses). Private IPs are accessible to all Linodes in that same data center and can only be further restricted by firewall rules or additional internal configuration.
+VLANs are separate from [Private IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address). Private IPs are accessible to all Linodes in that same data center and can only be further restricted by firewall rules or additional internal configuration.
 {{< /note >}}
 
 - **Performance.** A VLAN is configured as a Layer 2 networking device on a Linode and provides low latency for latency-sensitive applications.
@@ -71,6 +71,10 @@ The `purpose` of a network interface is required and used to determine whether a
 - `public`: Configures a network interface for the public internet and enables the public (and private) IP address(es) for that Linode. If no network interface is configured as `public`, the Linode will not be able to access the internet or other Linodes within the data center's main private network.
 
 - `vlan`: Configures a network interface for the labeled VLAN and enables the Linode to communicate over the `ipam_address` if one is specified.
+
+{{< caution >}}
+The Public Internet must always be set to use the network interface `eth0`.
+{{< /caution >}}
 
 ### Configuring the Label of an Interface
 

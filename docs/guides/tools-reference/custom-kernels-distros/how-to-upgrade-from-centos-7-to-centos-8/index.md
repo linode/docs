@@ -60,7 +60,7 @@ It is important to note that automatic backups using Linode's Backup Service wil
 
 1.  From the **Images** drop down menu, select the CentOS 8 image and enter a Root Password. Optionally, add an SSH key.
 
-1.  Click the **Rebuild** Button. This will create a new CentOS 8 disk and configuration profile. You can read more about configuration profiles in the [Disk Images and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/) guide.
+1.  Click the **Rebuild** Button. This will create a new CentOS 8 disk and configuration profile. You can read more about configuration profiles in the [Managing Configuration Profiles on a Linode](/docs/guides/linode-configuration-profiles/) guide.
 
 1.  Shut down the Linode by clicking on the status icon and choosing **Power Off** from the drop down menu.
 
