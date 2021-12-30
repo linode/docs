@@ -3,11 +3,11 @@ slug: install-caddy-archlinux
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Caddy is an open source HTTP/2-enabled web server with automatic HTTPS. This guide demonstrates how to install Caddy on Arch Linux.'
+description: "Caddy is an open source HTTP/2-enabled web server with automatic HTTPS. This guide demonstrates how to install Caddy on Arch Linux."
 keywords: ['caddy', 'install caddy', 'archlinux', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-14
-modified: 2018-12-14
+modified: 2021-12-30
 modified_by:
   name: Linode
 title: "Install Caddy on Arch Linux"
@@ -43,19 +43,17 @@ Caddy is an open source HTTP/2 capable web server with automatic HTTPS written i
 
 ## Install Caddy
 
-You can install Caddy on Arch Linux by using the package. It comes with both of Caddy's systemd service unit files, but does not enable them by default.
+You can install Caddy on Arch Linux by using the caddy package. It comes with both of Caddy's systemd service unit files, but does not enable them by default.
 
-1. Install caddy using:
-
-        sudo pacman -Syu caddy
+    sudo pacman -Syu caddy
 
 ## Allow HTTP and HTTPS Connections
 
 Caddy serves websites using HTTP and HTTPS protocols, so you need to allow access to the ports 80, and 443.
 
-        sudo firewall-cmd --permanent --zone=public --add-service=http
-        sudo firewall-cmd --permanent --zone=public --add-service=https
-        sudo firewall-cmd --reload
+    sudo firewall-cmd --permanent --zone=public --add-service=http
+    sudo firewall-cmd --permanent --zone=public --add-service=https
+    sudo firewall-cmd --reload
 
 ## Add Web Content
 
@@ -66,7 +64,6 @@ Caddy serves websites using HTTP and HTTPS protocols, so you need to allow acces
 1.  Create a test page:
 
         echo '<!doctype html><head><title>Caddy Test Page</title></head><body><h1>Hello, World!</h1></body></html>' > /var/www/html/example.com/index.html
-
 
 ## Configure the Caddyfile
 
@@ -111,8 +108,8 @@ Sep 02 18:25:29 caddy caddy[19314]: {"level":"info","ts":1630587329.1325648..."}
 Sep 02 18:25:29 caddy caddy[19314]: {"level":"info","ts":1630587329.1326034..."}
 Sep 02 18:25:29 caddy caddy[19314]: {"level":"info","ts":1630587329.1326299..."}
 Hint: Some lines were ellipsized, use -l to show in full.
-    {{</ output >}}
+{{</ output >}}
 
-To check the latest logs without truncation use `sudo journalctl -u caddy --no-pager | less +G`.
+    To check the latest logs without truncation use `sudo journalctl -u caddy --no-pager | less +G`.
 
-1. Open a web browser and visit your domain. You should see the contents of the `index.html`page that you created in the [Add Web Content section](#add-web-content).
+1.  Open a web browser and visit your domain. You should see the contents of the `index.html`page that you created in the [Add Web Content section](#add-web-content).
