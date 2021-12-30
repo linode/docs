@@ -15,7 +15,7 @@ modified_by:
 published: 2020-02-28
 title: How to Install Drush on Debian 10
 h1_title: Install Drush on Debian 10
-image: feature.png
+image: Drush_onDebian10.png
 external_resources:
  - '[Drush Documentation](https://docs.drush.org/en/master/)'
  - '[Composer Documentation](https://getcomposer.org/doc/)'
@@ -62,7 +62,7 @@ The developers of Drush recommend installing Drush using [Composer](https://getc
 
 1. Composer has a few PHP dependencies it needs in order to run. Install them on your Debian system:
 
-        sudo apt install php-dom, php-zip, unzip, php-gd, php-mbstring
+        sudo apt install php-dom php-zip unzip php-gd php-mbstring
 
 ## Install Drush Globally
 

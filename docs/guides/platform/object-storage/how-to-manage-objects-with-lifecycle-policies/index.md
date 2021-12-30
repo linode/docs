@@ -3,14 +3,16 @@ slug: how-to-manage-objects-with-lifecycle-policies
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use lifecycle policies to manage deleting objects in Linode Object Storage.'
+description: "Use lifecycle policies to manage deleting objects in Linode Object Storage."
 keywords: ['object','storage','lifecycle','policy','policies','delete','bucket','version','multipart']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-10-18
+modified: 2021-11-24
 modified_by:
   name: Linode
 title: "How To Manage Objects with Lifecycle Policies"
 h1_title: "Managing Objects with Lifecycle Policies"
+enable_h1: true
 contributor:
   name: Linode
 aliases: ['/platform/object-storage/how-to-manage-objects-with-lifecycle-policies/','/platform/object-storage/lifecycle-policies/']
@@ -63,7 +65,7 @@ There is a chance that a lifecycle policy will not delete all of the files in a 
 [s3cmd](https://s3tools.org/s3cmd) allows users to set and manage lifecycle policies from the command line. In this section, you will find instructions on how to create and manage lifecycle policies to delete objects, previous versions of objects, and failed multipart uploads using s3cmd.
 
 {{< note >}}
-If you don't have s3cmd set up on your computer, visit the [Install and Configure s3cmd](/docs/platform/object-storage/how-to-use-object-storage/#install-and-configure-s3cmd) section of the How to Use Linode Object Storage guide.
+If you don't have s3cmd set up on your computer, visit the [Using s3cmd with Object Storage](/docs/products/storage/object-storage/guides/s3cmd/) guide.
 {{< /note >}}
 
 #### Creating a Lifecycle Policy File
@@ -181,53 +183,58 @@ A lifecycle policy file can only contain one `LifecycleConfiguration` block, but
 
 #### Uploading the Lifecycle Policy to a Bucket
 
-In order to apply a lifecycle policy to a bucket with s3cmd, you need to upload the lifecycle file to the bucket. This operation is not a normal PUT operation. Instead, the command to use is `setlifecycle`, followed by the name of the lifecycle policy file, and the name of bucket:
+In order to apply a lifecycle policy to a bucket with s3cmd, you need to upload the lifecycle file to the bucket. This operation is not a normal PUT operation. Instead, the command to use is `setlifecycle`, followed by the name of the lifecycle policy file and the name of the bucket. In the example below, replace *example-bucket* with the name of your bucket.
 
-    s3cmd setlifecycle lifecycle_policy.xml s3://lifecycle-policy-example
+    s3cmd setlifecycle lifecycle_policy.xml s3://example-bucket
 
 You should see output like the following:
 
-    s3://lifecycle-policy-example/: Lifecycle Policy updated
-
+{{< output >}}
+s3://example-bucket/: Lifecycle Policy updated
+{{</ output >}}
 
 Once the lifecycle policy has been uploaded, objects will be deleted according to the policy set in place.
 
 #### Viewing a Bucket's Lifecycle Policy
 
-To view a lifecycle policy after it has been uploaded to a bucket, use the `getlifecycle` command and provide the bucket name:
+To view a lifecycle policy after it has been uploaded to a bucket, use the `getlifecycle` command. Replace *example-bucket* with the name of your bucket:
 
-    s3cmd getlifecycle s3://lifecycle-policy-example
+    s3cmd getlifecycle s3://example-bucket
 
 You should see the contents of the XML file that was uploaded:
 
-    <?xml version="1.0" ?>
-    <LifecycleConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-      <Rule>
-        <ID>delete-all</ID>
-        <Prefix/>
-        <Status>Enabled</Status>
-        <Expiration>
-          <Days>1</Days>
-        </Expiration>
-      </Rule>
-    </LifecycleConfiguration>
+{{< output >}}
+<?xml version="1.0" ?>
+<LifecycleConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <Rule>
+    <ID>delete-all</ID>
+    <Prefix/>
+    <Status>Enabled</Status>
+    <Expiration>
+      <Days>1</Days>
+    </Expiration>
+  </Rule>
+</LifecycleConfiguration>
+{{</ output >}}
 
 #### Deleting a Lifecycle Policy
 
-To delete a lifecycle policy that you've uploaded, effectively disabling it, use the `dellifecycle` command and provide the bucket name:
+To delete a lifecycle policy that you've uploaded, effectively disabling it, use the `dellifecycle` command. Replace *example-bucket* with the name of your bucket:
 
-    s3cmd dellifecycle s3://lifecycle-policy-example
+    s3cmd dellifecycle s3://example-bucket
 
 You'll see a confirmation that the lifecycle policy was deleted:
 
-    s3://lifecycle-example/: Lifecycle Policy deleted
+{{< output >}}
+s3://example-bucket: Lifecycle Policy deleted
+{{</ output >}}
 
 ### Cyberduck
 
 [Cyberduck](https://cyberduck.io/) allows less control over lifecycle polices than the s3cmd CLI. In particular, Cyberduck does not allow you to set a lifecycle policy that removes outdated versions of objects stored in buckets where [versioning](/docs/platform/object-storage/bucket-versioning/) is enabled, nor does it allow you to delete multipart uploads. Cyberduck also limits the length of a lifecycle policy to commonly used time spans. Below you will learn how to set a lifecycle policy using Cyberduck.
 
 {{< note >}}
-If you don't have Cyberduck set up on your computer, visit the [Install and Configure Cyberduck](/docs/platform/object-storage/how-to-use-object-storage/#install-and-configure-cyberduck) section of the How to Use Linode Object Storage guide.
+If you don't have Cyberduck set up on your computer, visit the [Using Cyberduck with Object Storage](/docs/products/storage/object-storage/guides/cyberduck/) guide.
 {{< /note >}}
 
 #### Enable a Lifecycle Policy
@@ -236,11 +243,11 @@ If you don't have Cyberduck set up on your computer, visit the [Install and Conf
 
 1.  Click on the **S3** tab to open the S3 bucket settings.
 
-    [![Open the Cyberduck bucket settings menu.](lifecycle-policies-cyberduck-settings.png)](lifecycle-policies-cyberduck-settings.png)
+    ![Open the Cyberduck bucket settings menu.](lifecycle-policies-cyberduck-settings.png)
 
 1.  Click on the checkbox labeled **Delete files** and select a time interval from the drop-down menu below it.
 
-    [![Click on the "S3" tab and then check the box labeled "Delete files."](lifecycle-policies-cyberduck-lifecycle-settings.png)](lifecycle-policies-cyberduck-lifecycle-settings.png)
+    ![Click on the "S3" tab and then check the box labeled "Delete files."](lifecycle-policies-cyberduck-lifecycle-settings.png)
 
 This will enable the lifecycle policy and the objects within the bucket will be deleted after the designated time.
 

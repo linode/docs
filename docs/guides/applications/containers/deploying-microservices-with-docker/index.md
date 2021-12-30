@@ -47,7 +47,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Install Docker Compose
 

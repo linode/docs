@@ -15,7 +15,7 @@ published: 2010-08-05
 title: 'Redis on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
-        key: use-postrgesql-database
+        key: how-to-install-redis
         keywords:
             - distribution: Ubuntu 9.10
 tags: ["ubuntu","database","nosql"]

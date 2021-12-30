@@ -1,0 +1,61 @@
+{{ $schemaCommonParts := partialCached "partials/sections/head-structured-data-parts" . }}
+{{ $img := (partial "funcs/get-social-image.html" .).img }}
+
+{{ $p := .Params }}
+{{ $author :=  $p.author }}
+{{ $contributor :=  $p.contributor }}
+{{ $authorName := $author.name}}
+{{ if and (strings.Contains $authorName "Linode") $contributor }}
+  {{ with $contributor.name }}
+    {{ $authorName = . }}
+  {{ end }}
+{{ end }}
+
+{{ $author := dict }}
+{{ if or (not $authorName) (strings.Contains $authorName "Linode") }}
+  {{ $author = $schemaCommonParts.publisher }}
+{{ else }}
+  {{ $author = dict "@type" "Person" "name" $authorName }}
+{{ end }}
+
+{{ $mainEntityOfPage := dict "@type" "WebPage" "@id" .Permalink }}
+
+{{ $schema := dict
+    "@context" "https://schema.org" 
+    "@type" "NewsArticle"
+    "mainEntityOfPage" $mainEntityOfPage
+    "headline" .Title
+    "image" $img.Permalink
+    "datePublished" .PublishDate
+    "dateModified" .Lastmod
+    "author" $author
+    "publisher"  $schemaCommonParts.publisher
+}}
+
+{{ $script := printf `<script type="application/ld+json">%s%s%s</script>` "\n\t" ($schema | jsonify ) "\n" }}
+{{ $script | safeHTML }}
+{{/* We also look for structured data in a file called structured-data.json in the same folder as the content file (index.md/_index.md) */}}
+{{ $schemaFile := .Resources.GetMatch "structured-data.json" }}
+{{ with $schemaFile }}
+  {{ with .Content }}
+    {{ $schema := . | transform.Unmarshal }}
+    {{ $script := printf `<script type="application/ld+json">%s%s%s</script>` "\n\t" ($schema | jsonify ) "\n" }}
+    {{ $script | safeHTML }}
+  {{ else }}{{ end }}
+{{ end }}
+
+{{ define "partials/sections/head-structured-data-parts" }}
+  {{ $logo := "media/images/linode-logo-black.png" | absURL }}
+  {{ $publisher := printf `{
+    "@type": "Organization",
+    "name": "Linode",
+    "logo": {
+      "@type": "ImageObject",
+      "url": %q
+    }
+  }` $logo | transform.Unmarshal }}
+
+
+  {{ $parts := dict "publisher" $publisher }}
+  {{ return $parts }}
+{{ end }}

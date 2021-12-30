@@ -19,6 +19,10 @@ tab_group_main:
 
 - [Edit or Remove Node Pools](/docs/products/compute/kubernetes/guides/edit-remove-node-pools): You can easily edit or remove existing Node Pools from the Cloud Manager.
 
+- [Configure Cluster Autoscaling](/docs/products/compute/kubernetes/guides/enable-cluster-autoscaling): Enable, edit, or disable the LKE autoscaling feature to automatically scale nodes as the needs of Kubernetes pods change.
+
+- [Reset Kubeconfig](/docs/products/compute/kubernetes/guides/reset-kubeconfig): Reset an LKE cluster's kubeconfig from the Cloud Manager.
+
 ## Themes
 
 These guides explore topics such as using Docker, networking, deploying websites, and using LKE with third-party tools.

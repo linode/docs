@@ -3,8 +3,8 @@ slug: running-a-mail-server
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows how to run an email server on a Linode. It shows how to install the mail service, configure components, create DNS records and SSL certificates, and manage users.'
-og_description: 'Take control of your email with your own mail server. This guide explains how to install a mail server on your Linode, configure the necessary components and users, and send and receive your first emails.'
+description: 'Take control of your email with your own mail server. Learn how to install and configure it on your Linode.'
+og_description: 'Take control of your email with your own mail server. Learn how to install and configure it on your Linode.'
 keywords: ["mail server", "linode guide", "running a mail server", "Self-host Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/mailserver/','/email/running-a-mail-server/','/email/best-practices/running-a-mail-server/']
@@ -27,13 +27,17 @@ If you do, you'll have control over your domain's email, but you'll also have to
 
 In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after November 5th, 2019.
 
-If you have a need to send mail from your Linode, we ask that you first configure (1) [valid DNS A records](/docs/platform/manager/dns-manager/#add-dns-records) and (2) [rDNS records](/docs/networking/dns/configure-your-linode-for-reverse-dns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the name of the Linode(s) that will be used for mailing.
+If you have a need to send mail from your Linode, we ask that you first configure (1) [valid DNS A records](/docs/guides/dns-manager/#add-dns-records) and (2) [rDNS records](/docs/networking/dns/configure-your-linode-for-reverse-dns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the name of the Linode(s) that will be used for mailing.
 
 Once you’ve completed those steps and provided that information, our Support team will be happy to review your request.
 
+{{< note >}}
+If using multiple domains to send mail from a single Linode, rDNS will only need to be configured for one of the domains actively sending mail.
+{{< /note >}}
+
 ### Benefits
 
-If you want or need full control of your email, running your own mail server might be ideal solution. Doing so allows you to store your own email, access the mail server's logs, and access the raw email files in a user's mailbox.
+If you want or need full control of your email, running your own mail server might be an ideal solution. Doing so allows you to store your own email, access the mail server's logs, and access the raw email files in a user's mailbox.
 
 Some benefits of running a mail server are:
 
@@ -63,10 +67,10 @@ There are several third-party mail services available:
 
 - [Postmark](https://postmarkapp.com/why?utm_source=linode&utm_medium=referral&utm_campaign=awareness)
 - [Fastmail](https://www.fastmail.com)
-- [Google Apps](http://www.google.com/intl/en/enterprise/apps/business/) uses the familiar Gmail interface. Check out our guide to [using Google Apps with your Linode](/docs/email/using-google-apps-for-email/).
+- [Google Workspace](https://workspace.google.com/products/gmail/) uses the familiar Gmail interface. Check out our guide to [Using Google Workspace for Email](/docs/guides/using-google-workspace-for-email/).
 - [Office 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
 
-If you decide to use an outside mail service, you will still need to set up [DNS](/docs/platform/manager/dns-manager/) for your mail and use the settings provided by the third-party mail service.
+If you decide to use an outside mail service, you will still need to set up [DNS](/docs/guides/dns-manager/) for your mail and use the settings provided by the third-party mail service.
 
 ## How Mail Servers Work
 
@@ -89,7 +93,7 @@ Every mail server that lets you send and receive email with a local mail client 
 
 ## How to Choose Mail Server Components
 
-There are several software packages that can be used as MTAs, MDAs, and IMAP/POP3 servers, and this section will present some of the most popular options.
+There are several software packages that can be used as MTAs, MDAs, and IMAP/POP3 servers. This section presents some of the most popular options.
 
 The examples in the [later sections](#build-your-mail-server) of this guide use Postfix as the MTA and Dovecot as the MDA and IMAP/POP3 server.
 
@@ -165,27 +169,21 @@ It's also a good idea to keep your old mail server running for at least 48 hours
 
 #### MX Records
 
-MX records tell the Internet where to send your domain's email. If someone sends an email to `user@example.com`, the outgoing server looks up the DNS settings for the domain `example.com`. When it finds the MX record pointing to your Linode, it sends the message to your Linode.
+MX records tell the Internet where to send your domain's email. If someone sends an email to `user@example.com`, the outgoing server looks up the DNS settings of the domain `example.com` for an MX record. The MX record directs the outgoing server to your Linode mail server, allowing the outgoing server to send the message successfully.
 
 Create an MX record for each domain and subdomain for which you want to receive mail on your Linode.
 
 You can also set multiple MX records with different priorities for the same domain. This creates fallback mail servers for your domain in case the first one on the list is down. Lower numbers have a higher priority.
 
-Your MX record has a:
+Each MX record has a:
 
-| **Domain** | **TTL** | **Type** | **Priority** | **Target** |
-| ------------ |:--------:|:----:|:----:| ----- |
-| example.com  | 86400  | MX | 10 | 203.0.113.0 |
+| **Domain** | **TTL** | **Type** | **Priority** | **Mail Server** |
+| ------------ |:--------:|:----:|:----:| ----- | ----- |
+| example.com  | 86400  | MX | 10 | mail.example.com |
 
-A typical MX record looks like this:
+When using Linode's [DNS Manager](/docs/guides/dns-manager/), point your MX records to your Linode mail server's FQDN. Make sure that your Linode mail server's domain or subdomain has a corresponding *A record* that points to the correct IP address.
 
-{{< output >}}
-example.com         86400   MX      10      example.com
-example.com         86400   MX      10      203.0.113.0
-mail.example.com    86400   MX      10      203.0.113.0
-{{< /output >}}
-
-If you use Linode's [DNS Manager](/docs/platform/manager/dns-manager/), point your MX records to a target domain or subdomain that resolves to your Linode. Make sure that domain or subdomain has an *A record* that points to the correct IP address.
+To configure an MX record for a subdomain email address, use the "Subdomain" field when setting the MX record for your domain. For example, the address `user@sub.example.com` requires an MX record with a "Subdomain" value of `sub` under the `example.com` domain.
 
 #### SPF Records
 

@@ -13,7 +13,7 @@ modified_by:
 published: 2020-10-30
 title: Anti-Virus and Rootkit Protection with ClamAV and rkhunter
 h1_title: Anti-Virus and Rootkit Protection with ClamAV and rkhunter
-image: Anti_virus_rookit_protection_ClamAV_Rkhunter.png
+image: AntiVirus_Rootkitprotec_ClamAV_rkkunter.png
 aliases: ['/security/basics/anti-virus-and-rootkit-protection-with-clamav-and-rkhunter/']
 ---
 

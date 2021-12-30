@@ -3,7 +3,7 @@ slug: deploy-scalable-cassandra-on-ubuntu-18.04-and-centos-7
 author:
    name: Andrew Lescher
    email: docs@linode.com
-description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for both the Ubuntu 18.04 and CentOS 7 distros.'
+description: "This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for both the Ubuntu 18.04 and CentOS 7 distros."
 keywords: ["cassandra", " apache cassandra", " centos 7", " ubuntu 18.04", " database", " nosql"]
 aliases: ['/databases/deploy-scalable-cassandra/','/databases/cassandra/deploy-scalable-cassandra-on-ubuntu-18.04-and-centos-7/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,9 @@ published: 2017-06-12
 modified: 2018-08-05
 modified_by:
   name: 'Andrew Lescher'
-title: 'How to Install Apache Cassandra on Ubuntu 18.04 and CentOS 7'
+title: "How to Install Apache Cassandra on Ubuntu 18.04 & CentOS 7"
+h1_title: "Installing Apache Cassandra on Ubuntu 18.04 and CentOS 7"
+enable_h1: true
 contributor:
    name: Andrew Lescher
    link: https://www.linkedin.com/in/andrew-lescher-87027940/
@@ -224,7 +226,7 @@ After editing the file restart Cassandra.
 
 ## Add An Administration Superuser
 
-1.  Open the Cassandra command terminal by typing `cqlsh`. Log in with the credentials shown below for the default user "cassandra":
+1.  Open the Cassandra command terminal by typing `cqlsh`. Log in with the credentials shown below for the default user `cassandra`:
 
     ```
     cqlsh -u cassandra -p cassandra

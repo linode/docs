@@ -10,7 +10,9 @@ published: 2018-08-09
 modified: 2018-08-09
 modified_by:
   name: Linode
-title: "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI"
+h1_title: "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI"
+title: 'CI/CD Pipeline with Gatsby.js, Netlify and Travis CI'
+enable_h1: true
 contributor:
   name: Linode
 aliases: ['/websites/static-sites/install-gatsbyjs/']
@@ -60,7 +62,7 @@ This guide sets up the following flow of events:
 
     {{< content "limited-user-note-shortguide" >}}
 
-1.  Configure DNS for your site by adding a [domain zone](/docs/platform/manager/dns-manager/#add-a-domain-zone) and setting up [reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/) on your Linode's IP.
+1.  Configure DNS for your site by adding a [domain zone](/docs/guides/dns-manager/#add-a-domain) and setting up [reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/) on your Linode's IP.
 
 1.  Create a [GitHub](https://github.com/) account if you don't already have one. GitHub is free for open source projects.
 

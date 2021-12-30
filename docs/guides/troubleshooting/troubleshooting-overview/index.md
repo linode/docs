@@ -179,9 +179,9 @@ If you recently upgraded your plan, your Linode won't be able to take advantage 
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Click the **Linodes** link in the sidebar to view a list of your Linodes.
-1.  Select a Linode and the **Settings** tab.
-1.  Expand the **Advanced Configurations** section to view your disk storage allocation. If you have free storage space, you can allocate that space to your existing disks.
+1.  Select a Linode and the **Storage** tab.
+1.  Compare the total available disk space with the **Size** Column in the **Disks** table. If you have free storage space, you can allocate that space to your existing disks, or create new disks as needed.
 
     [![Disk storage allocation](disk-storage-allocation.png)](disk-storage-allocation.png)
 
-    Follow our steps for [resizing a disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to take advantage of the extra space.
+    Follow our steps for [resizing a disk](/docs/guides/disks-and-storage/#resizing-a-disk) to take advantage of the extra space.

@@ -21,6 +21,20 @@ Dropbox allows for the storage of your documents, files, videos, and photographs
 
 Prior to setting up Dropbox on your Linode it is recommended to follow the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server/) guides. You will need a [Dropbox account](https://www.dropbox.com/). Dropbox can be used on Debian, Ubuntu, and any Red Hat Enterprise Linux-based OS.
 
+## Installing Dependencies
+
+When installing Dropbox on the latest modern Distros, the installation of a few dependencies are required before proceeding. Enter the corresponding command for the distro you are using to install these dependencies:
+
+**Debian and Ubuntu**
+
+    sudo apt install libc6 libglapi-mesa libxdamage1 libxfixes3 libxcb-glx0 libxcb-dri2-0 libxcb-dri3-0 libxcb-present0 libxcb-sync1 libxshmfence1 libxxf86vm1
+
+**CentOS**
+
+    yum install tar wget libglapi libXext libXdamage libxshmfence libXxf86vm
+
+
+
 ## Installing and Configuring Dropbox
 
 1.  Download and install the Dropbox package:

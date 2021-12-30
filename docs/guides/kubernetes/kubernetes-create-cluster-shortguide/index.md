@@ -19,7 +19,7 @@ aliases: ['/kubernetes/kubernetes-create-cluster-shortguide/']
 
 1.  Log into your [Linode Cloud Manager](https://cloud.linode.com/) account.
 
-1.  From the Linode dashboard, click the **Create** button in the top right-hand side of the screen and select **Kubernetes** from the dropdown menu.
+1.  From the Linode dashboard, click the **Create** button at the top of the page and select **Kubernetes** from the dropdown menu.
 
     ![Create a Kubernetes Cluster Screen](create-lke-cluster.png "Create a Kubernetes Cluster Screen")
 
@@ -37,7 +37,7 @@ aliases: ['/kubernetes/kubernetes-create-cluster-shortguide/']
 1. In the **Add Node Pools** section, select the [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions) for the Linode worker node(s) that make up your LKE cluster. To the right of each plan, select the plus `+` and minus `-` to add or remove a Linode to a node pool one at time. Once you're satisfied with the number of nodes in a node pool, select **Add** to include it in your configuration. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#edit-or-remove-existing-node-pools).
 
     {{< note >}}
-Currently, the available plan types for LKE worker nodes are [Shared](/docs/platform/how-to-choose-a-linode-plan/#1-shared), [Dedicated CPU](/docs/platform/how-to-choose-a-linode-plan/#4-dedicated-cpu), and [High Memory](/docs/platform/how-to-choose-a-linode-plan/#3-high-memory) plans.
+Currently, the available plan types for LKE worker nodes are [Shared](/docs/platform/how-to-choose-a-linode-plan/#1-shared), [Dedicated CPU](/docs/platform/how-to-choose-a-linode-plan/#4-dedicated-cpu), and [High Memory](/docs/platform/how-to-choose-a-linode-plan/#3-high-memory) plans. In order to meet the minimum system requirements for LKE nodes, [1 GB Shared Nanodes](https://www.linode.com/pricing/) are not an option for worker nodes.
     {{< /note >}}
 
     ![Select your cluster's resources](select-your-cluster-resources.png "Select your cluster's resources")

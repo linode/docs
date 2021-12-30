@@ -3,8 +3,8 @@ slug: how-to-deploy-k3s-on-linode
 author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com
-description: 'K3s is lightweight, easy-to-install Kubernetes. This guide provides instructions to deploy a highly available, certified Kubernetes distribution designed for production workloads, and install an application on a K3s cluster.'
-og_description: 'K3s is lightweight, easy-to-install Kubernetes. This guide provides instructions to deploy a highly available, certified Kubernetes distribution designed for production workloads, and install an application on a K3s cluster.'
+description: "K3s is a lightweight, highly-available Kubernetes distribution designed for production workloads. We'll show you how to install and deploy it on Linode."
+og_description: "K3s is a lightweight, highly-available Kubernetes distribution designed for production workloads. We'll show you how to install and deploy it on Linode."
 keywords: ["rancher", "ubuntu", "18.04", "k3s", "kubernetes"]
 tags: ["mysql","kubernetes","database","container","postgresql","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,7 +13,7 @@ modified_by:
   name: Linode
 title: How to Deploy K3s on Linode
 h1_title: Deploying K3s on Linode
-image: how_to_deploy_k3s_on_linode.png
+image: DeployK3s_Linode.png
 external_resources:
   - '[Rancher Official Docs](https://rancher.com/docs/k3s/latest/en/)'
   - '[Kubernetes Official Docs] (https://kubernetes.io/docs/)'

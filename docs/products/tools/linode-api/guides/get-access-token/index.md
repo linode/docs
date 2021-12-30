@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-title: Get An API Access Token
+title: Get an API Access Token
 description: "How to get an API access token with the Linode API."
 ---
 

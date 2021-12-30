@@ -10,7 +10,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
 modified_by:
   name: Linode
-title: "A Beginner's Guide to Kubernetes, Part 1: Introduction"
+title: "Kubernetes Explained: A Beginners Guide"
+h1_title: "A Beginner's Guide to Kubernetes (Part 1): Introduction"
+enable_h1: true
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]

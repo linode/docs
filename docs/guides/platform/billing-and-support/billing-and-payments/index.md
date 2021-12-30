@@ -12,6 +12,9 @@ modified_by:
   name: Linode
 published: 2014-02-28
 title: Billing and Payments
+_build:
+  list: false
+noindex: true
 deprecated: true
 tags: ["linode platform"]
 ---

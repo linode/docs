@@ -27,7 +27,7 @@ In this guide you will complete the following steps:
 * [Create a word cloud using Python and the pandas library](/docs/development/visualize-history/#create-a-word-cloud-using-python).
 * [Develop a web browser based pie chart visualization using JavaScript and the D3.js package](/docs/development/visualize-history/#visualize-data-using-d3-js).
 
-### Before You Begin
+## Before You Begin
 
 Ensure you have the following programs and packages installed on your computer:
 

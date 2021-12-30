@@ -3,8 +3,8 @@ slug: how-to-use-fsck-qa
 author:
   name: Edward Angert
   email: docs@linode.com
-description: 'fsck is the Linux file system consistency check utility. This Quick Answer shows some of the often-used commands to use fsck to check a system for corrupt files and bad disk sectors, then attempt to repair any errors it finds.'
-og_description: 'fsck is the Linux file system consistency check utility. This Quick Answer shows some of the often-used commands to use fsck to check a system for corrupt files and bad disk sectors, then attempt to repair any errors it finds.'
+description: 'Learn about some of the frequently-used fsck commands to check a system for corrupt files and bad disk sectors and repair any errors it finds.'
+og_description: 'Learn about some of the frequently-used fsck commands to check a system for corrupt files and bad disk sectors and repair any errors it finds.'
 keywords: ["fsck", "file system", "disk repair", "troubleshoot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-04-30

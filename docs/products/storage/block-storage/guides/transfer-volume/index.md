@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-title: Transfer a Volume to a New Linode
-description: "How to transfer a Block Storage volume to a new Linode."
+title: Transfer a Block Storage Volume to a Different Linode
+description: "How to transfer a Block Storage Volume to a different Linode within the same data center."
 ---
 
 {{< content "transfer-block-storage-volume-shortguide" >}}

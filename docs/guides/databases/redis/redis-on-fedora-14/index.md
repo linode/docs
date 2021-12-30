@@ -15,7 +15,7 @@ published: 2010-12-06
 title: Redis on Fedora 14
 relations:
     platform:
-        key: use-postrgesql-database
+        key: how-to-install-redis
         keywords:
             - distribution: Fedora 14
 tags: ["nosql","database","fedora"]

@@ -3,8 +3,8 @@ slug: getting-started-with-ansible
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Ansible is an automation tool for server configuration, provisioning, and management. This guide shows how to use Ansible to perform basic configuration tasks on your Linodes as well as set up a simple web server.'
-og_description: 'Ansible is an automation tool for server configuration, provisioning, and management. This guide shows how to use Ansible to perform basic configuration tasks on your Linodes as well as set up a simple web server.'
+description: "In this guide, we'll show you how to use Ansible to perform basic configuration tasks on your Linodes as well as set up a simple web server."
+og_description: "In this guide, we'll show you how to use Ansible to perform basic configuration tasks on your Linodes as well as set up a simple web server."
 keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration change management", "ansible server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/ansible/getting-started-with-ansible/','/applications/configuration-management/getting-started-with-ansible/','/applications/configuration-management/ansible/getting-started-with-ansible/']
@@ -12,7 +12,9 @@ published: 2018-03-21
 modified: 2019-06-19
 modified_by:
     name: Ryan Syracuse
-title: 'Getting Started With Ansible - Basic Installation and Setup'
+title: "Getting Started with Ansible: Installation and Setup"
+h1_title: "Getting Started With Ansible: Basic Installation and Setup"
+enable_h1: true
 contributor:
     name: Joshua Lyman
     link: https://twitter.com/jlyman
@@ -29,23 +31,21 @@ tags: ["automation"]
 
 [Ansible](http://www.ansible.com/home) is an automation tool for server provisioning, configuration, and management. It allows you to organize your servers into groups, describe how those groups should be configured, and what actions should be taken on them, all from a central location.
 
-{{< disclosure-note "Ansible Definitions">}}
 To get started using Ansible, it is helpful to become familiar with a few basic terms and concepts used to describe Ansible's main components.
 
-* **Control Node**: Your infrastructure nodes are managed by Ansible from a **control node** which can be your personal computer or a server. For increased management speed, it is recommended to host your control node on a server that is as close to your managed nodes as possible.
+- **Control Node**: Your infrastructure nodes are managed by Ansible from a **control node** which can be your personal computer or a server. For increased management speed, it is recommended to host your control node on a server that is as close to your managed nodes as possible.
 
-* **Managed Nodes**: The hosts that compose your infrastructure and that are managed by the Ansible control node. Managed nodes do not require Ansible to be installed on them.
+- **Managed Nodes**: The hosts that compose your infrastructure and that are managed by the Ansible control node. Managed nodes do not require Ansible to be installed on them.
 
-* **Inventory**: Ansible keeps track of its managed nodes using an [inventory file](http://docs.ansible.com/ansible/intro_inventory.html) typically located in `/etc/ansible/hosts`. In the inventory file, you can group your managed nodes and use these groups to target specific hosts that make up your infrastructure. Ansible can use multiple inventory sources, like other inventory files and dynamic inventory pulled using an inventory plugin or script.
+- **Inventory**: Ansible keeps track of its managed nodes using an [inventory file](http://docs.ansible.com/ansible/intro_inventory.html) typically located in `/etc/ansible/hosts`. In the inventory file, you can group your managed nodes and use these groups to target specific hosts that make up your infrastructure. Ansible can use multiple inventory sources, like other inventory files and dynamic inventory pulled using an inventory plugin or script.
 
     If your Ansible managed infrastructure will change over time, it is recommended to use the [dynamic inventory plugin for Linode](https://docs.ansible.com/ansible/latest/plugins/inventory/linode.html). You can read the [How to use the Linode Ansible Module to Deploy Linodes](/docs/applications/configuration-management/deploy-linodes-using-ansible/) to learn how to use this plugin.
 
-* **Modules**: Modules add extra functionality to Ansible. You can call Ansible modules directly from the command line to execute on your managed nodes or use them in your Playbooks. See [Ansible's module index](https://docs.ansible.com/ansible/latest/modules/modules_by_category.html) for a list of available modules by category.
+- **Modules**: Modules add extra functionality to Ansible. You can call Ansible modules directly from the command line to execute on your managed nodes or use them in your Playbooks. See [Ansible's module index](https://docs.ansible.com/ansible/latest/modules/modules_by_category.html) for a list of available modules by category.
 
-* **Tasks**: The simplest unit of execution in Ansible is a task. Tasks utilize Ansible modules to manage your host's services, packages, files and to perform various system configurations. Tasks can be executed from the command line or within Playbooks.
+- **Tasks**: The simplest unit of execution in Ansible is a task. Tasks utilize Ansible modules to manage your host's services, packages, files and to perform various system configurations. Tasks can be executed from the command line or within Playbooks.
 
-* **Playbooks**: Playbooks are YAML files containing a list of tasks in the desired order of execution. You can run Playbooks on your managed nodes and reuse and share them. [Variables](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html) and [Jinja templating](https://docs.ansible.com/ansible/latest/user_guide/playbooks_templating.html) provide a powerful way to execute complex tasks on your managed hosts.
-{{</ disclosure-note >}}
+- **Playbooks**: Playbooks are YAML files containing a list of tasks in the desired order of execution. You can run Playbooks on your managed nodes and reuse and share them. [Variables](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html) and [Jinja templating](https://docs.ansible.com/ansible/latest/user_guide/playbooks_templating.html) provide a powerful way to execute complex tasks on your managed hosts.
 
 ## Scope of this Guide
 This guide introduces the basics of installing Ansible and preparing your environment to use [Playbooks](https://docs.ansible.com/ansible/latest/user_guide/playbooks.html). You will complete the following steps in this guide:
@@ -71,7 +71,7 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
         ssh-keygen -t rsa -b 4096
 
-2.  Copy the key to `node-1`. Replace `203.0.113.0` with your managed Linode's ip address.
+2.  Copy the key to `node-1`. Replace `203.0.113.0` with your managed Linode's IP address.
 
         ssh-copy-id root@203.0.113.0
 
@@ -155,7 +155,7 @@ By default, Ansible's configuration file location is `/etc/ansible/ansible.cfg`.
     {{< output >}}
   ACTION_WARNINGS:
   default: true
-  description: [By default Ansible will issue a warning when recieved from a task
+  description: [By default Ansible will issue a warning when received from a task
       action (module or action plugin), These warnings can be silenced by adjusting
       this setting to False.]
   env:

@@ -3,8 +3,7 @@ slug: linode-manager-security-controls
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to use two-factor authentication and other security controls in the Linode Cloud Manager.'
-og_description: 'This guide describes the security features of the Linode Cloud Manager, including two-factor authentication, IP address whitelisting, API access controls, forced password expiration, and more.'
+description: "This guide describes the security features of the Linode Cloud Manager, including 2FA, IP address whitelisting, API access controls, and password expiration"
 keywords: ["two-factor authentication", "password", "security", "Linode Cloud Manager", "token"]
 tags: ["security","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,7 +21,7 @@ The [Linode Cloud Manager](https://cloud.linode.com) is the gateway to all of yo
 
 This guide documents several of the Linode Cloud Manager's features that can help mitigate your risk. Whether you're worried about malicious users gaining access to your username and password, or authorized users abusing their access privileges, the Linode Cloud Manager's built-in security tools can help.
 
-Start by [enabling two-factor authentication](#enable-two-factor-authentication) to protect your account with a physical token, and then [configure security event notifications](/docs/platform/manager/what-are-the-cloud-manager-events-and-activity-feeds/#manage-email-event-notifications) for your Linode account. In this guide you also learn how to [control API access](#api-access), [configure user accounts](#configure-user-accounts), and [force password expirations](#force-password-expirations).
+Start by [enabling two-factor authentication](#enable-two-factor-authentication) to protect your account with a physical token, and then [configure security event notifications](/docs/guides/cloud-manager-events-and-activity-feeds/#managing-email-notifications-for-events) for your Linode account. In this guide you also learn how to [control API access](#api-access), [configure user accounts](#configure-user-accounts), and [force password expirations](#force-password-expirations).
 
 ## Two-Factor Authentication
 
@@ -51,9 +50,11 @@ Authy stores your authentication tokens (hashed for security) on their servers. 
 Enable two-factor authentication to start using it with your Linode account.
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1.  Select the **My Profile** link by clicking on your username at the top of the page:
 
-   ![Select 'My Profile'](security-my-profile.png "Select 'My Profile'")
+1.  Select the **My Settings** link by clicking on your username at the top of the page:
+
+    ![Select 'My Settings'](security-my-profile.png "Select 'My Settings'")
+
 
 1.  Select the **Password & Authentication** tab.
 1.  If not already selected, navigate to the **Linode Credentials** tab.
@@ -117,9 +118,9 @@ Generating a one-time use scratch code is also recommended. In the event that yo
 The Linode Cloud Manager allows you to generate a new secret key for your two-factor authentication token device. This is a good way to start using a new smartphone as your two-factor token device. Here's how to generate a new secret key:
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1.  Select the **My Profile** link by clicking on your username at the top of the page:
+1.  Select the **My Settings** link by clicking on your username at the top of the page:
 
-   ![Select 'My Profile'](security-my-profile.png "Select My Profile")
+    ![Select 'My Settings'](security-my-profile.png "Select My Settings")
 
 1.  Select the **Password & Authentication** tab.
 1.  If not already selected, navigate to the **Linode Credentials** tab.
@@ -134,9 +135,9 @@ A new secret key and barcode will be generated for your account and displayed on
 You can disable two-factor authentication for your Linode account at any time. Here's how:
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1.  Select the **My Profile** link by clicking on your username at the top of the page:
+1.  Select the **My Settings** link by clicking on your username at the top of the page:
 
-   ![Select 'My Profile'](security-my-profile.png "Select My Profile")
+      ![Select 'My Settings'](security-my-profile.png "Select 'Settings")
 
 1.  Select the **Password & Authentication** tab.
 1.  If not already selected, navigate to the **Linode Credentials** tab.
