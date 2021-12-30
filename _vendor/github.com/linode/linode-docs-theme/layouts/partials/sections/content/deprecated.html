@@ -1,0 +1,15 @@
+<blockquote class="callout mt-8" style="background-color: #ffeedf; border-color: #ffd4ac;">
+  <strong class="callout-title">
+    Deprecated
+  </strong>
+  <div class="mt-1">
+    <p>
+      This guide has been deprecated and is no longer being maintained.
+    </p>
+    {{ with .Params.deprecated_link}}
+      <p>
+        Please refer to the <a href="{{ . | relURL }}"> updated version of this guide.</a>
+      </p>
+    {{ end }}
+  </div>
+</blockquote>

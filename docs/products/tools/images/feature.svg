@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
+  <title>Images</title>
+  <path fill="#fff" stroke="#32363b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.51" d="M11.18 21.67v28.66L36 64.66l24.82-14.33V21.67L36 7.34z"/>
+  <path fill="currentColor" stroke="#32363b" stroke-miterlimit="10" stroke-width="1.18" d="M20.18 45.14V26.86L36 17.73l15.82 9.13v18.28L36 54.27z"/>
+  <g fill="#fff">
+    <path d="M24.54 29.71h10.65v2.07H24.54zM36.44 29.71h2.65v2.07h-2.65zM40.26 29.71h5.65v2.07h-5.65zM24.54 33.35h13.79v2.07H24.54zM39.51 33.35h2.79v2.07h-2.79zM43.58 33.35h2.79v2.07h-2.79zM24.54 37h3.88v2.07h-3.88zM43.58 37h3.88v2.07h-3.88zM29.49 37h12.88v2.07H29.49z"/>
+    <path d="M24.54 40.65h5.65v2.07h-5.65z"/>
+  </g>
+</svg>

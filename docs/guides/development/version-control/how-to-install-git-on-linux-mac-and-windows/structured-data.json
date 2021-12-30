@@ -1,0 +1,62 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Git pre-installed on Mac?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, Git does not come pre-installed on Mac. You’ll have to install it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know if Git is installed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To see if Git is installed on your system, open your terminal and type “git --version”. If terminal shows a Git version as an output that confirms you have Git installed on your system."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are Git and Github the same?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Git and Github are different. Github hosts Git repositories in a central location, whereas Git is a tool that manages multiple versions of source code on Github."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I download Git for Windows?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To download Git for Windows, click here and select the most recent version. Once you click on the version your download will start shortly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How to check the Git version?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To check your Git version type “git --version” and press enter in your terminal. This shows you your Git version as an output."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How to clone a repository in Git?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Go to the repository’s page on Github and copy the URL of the repository by clicking on the green button. To clone this repository on your system run “git clone URL”"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Getting “Package Git core has no installation candidate” error?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Getting “Package Git core has no installation candidate” error?"
+      }
+    }
+  ]
+}

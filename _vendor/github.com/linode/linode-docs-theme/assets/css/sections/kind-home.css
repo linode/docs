@@ -1,0 +1,141 @@
+/* The top level, green, hero block. */
+.kind-home__hero {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.kind-home__hero a {
+    @apply text-white;
+}
+
+.is-explorer-open .kind-home__hero {
+    padding-left: 2rem;
+}
+
+@mobile {
+    .is-not-loaded.is-explorer-open .kind-home__hero {
+        padding-left: 0;
+    }
+}
+
+.kind-home .container {
+    max-width: 100%;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* All the carousels on the home page. */
+.kind-home .carousel__container {
+    @apply relative;
+}
+
+.kind-home .carousel {
+    /* These are set by the JS client. */
+    --carousel-slide: 0;
+    --carousel-page-size--mobile: 2;
+    --carousel-page-size: var(--carousel-page-size--mobile);
+
+    /* Calculated. */
+    --carsousel-overlap: 0.4; /* Show a fraction of the first tile of next page. */
+    --carousel-page-size-real: calc(var(--carousel-page-size) + var(--carsousel-overlap));
+    --carsousel-slide-space-x: 1rem;
+    --carousel-space-x: 0px;
+    --carsousel-left-menu-width: 0px;
+    --carousel-slide-width: calc(
+        (100vw - var(--carsousel-left-menu-width) - 3rem - var(--carousel-space-x)) / var(--carousel-page-size-real)
+    );
+
+    --carousel-slide-height: calc(var(--carousel-slide-width) * 0.7777);
+    --carousel-tray-width: calc(var(--carousel-slide-count) * var(--carousel-slide-width));
+    --carousel-translate-x: calc(-1 * var(--carousel-slide) * var(--carousel-slide-width));
+}
+
+/* Avoid doing this on mobile as the tiles would be too small. In that situation the main area is grayed out. */
+@screen md {
+    .kind-home.is-explorer-open .carousel {
+        --carsousel-left-menu-width: var(--width-left-column);
+    }
+}
+
+.kind-home .carousel--square {
+    --carousel-slide-height: var(--carousel-slide-width);
+    min-height: var(--carousel-slide-height);
+}
+
+.kind-home .carousel {
+    min-height: var(--carousel-slide-height);
+}
+
+/* The Q&A slider. */
+.kind-home .carousel.qa {
+    --carousel-slide-height: 10rem;
+}
+
+/* Make all the other section sliders square. */
+.kind-home .carousel:not(.qa) {
+    --carousel-slide-height: var(--carousel-slide-width);
+}
+
+@screen md {
+    .kind-home .carousel {
+        --carousel-page-size: var(--carousel-page-size--md);
+    }
+
+    .kind-home.is-explorer-open .carousel {
+        --carousel-page-size: calc(var(--carousel-page-size--md) - 1);
+    }
+}
+
+@screen lg {
+    .kind-home .carousel {
+        --carousel-page-size: var(--carousel-page-size--lg);
+    }
+
+    .kind-home.is-explorer-open .carousel {
+        --carousel-page-size: calc(var(--carousel-page-size--lg) - 1);
+    }
+}
+
+@screen xl {
+    .kind-home .carousel {
+        --carousel-page-size: var(--carousel-page-size--xl);
+    }
+
+    .kind-home.is-explorer-open .carousel {
+        --carousel-page-size: calc(var(--carousel-page-size--xl) - 1);
+    }
+}
+
+/* This is just a pseudo-declaration to be able to read the pupdated --carousel-page-size on the client. */
+.kind-home .carousel .page-size {
+    z-index: var(--carousel-page-size);
+    display: none;
+}
+
+.kind-home .carousel__viewport {
+    overflow-x: visible;
+}
+
+.kind-home .carousel__tray {
+    width: var(--carousel-tray-width);
+    will-change: transform;
+    transition: transform 0.5s;
+    transform: translateX(var(--carousel-translate-x));
+}
+
+.kind-home .kind-home--menu-state-is-changing .carousel__tray {
+    transition: none;
+}
+
+.kind-home .carousel__tray > * + * {
+    margin-right: var(--carsousel-slide-space-x);
+}
+
+.kind-home .carousel__item--height {
+    height: var(--carousel-slide-height);
+}
+
+.kind-home .carousel__item {
+    width: var(--carousel-slide-width);
+    height: var(--carousel-slide-height);
+}
