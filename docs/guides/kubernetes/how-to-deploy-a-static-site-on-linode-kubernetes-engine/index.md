@@ -3,8 +3,8 @@ slug: how-to-deploy-a-static-site-on-linode-kubernetes-engine
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Learn how to deploy a static site on LKE. After creating a cluster on LKE, this guide will walk through how to: author a static site with Hugo; build the site in a Docker image; push the image to Docker Hub; and deploy that image to your cluster.'
-og_description: 'Learn how to deploy a static site on LKE. After creating a cluster on LKE, this guide will walk through how to: author a static site with Hugo; build the site in a Docker image; push the image to Docker Hub; and deploy that image to your cluster.'
+description: 'This guide walks you through how to author and deploy a static site with Hugo after creating a cluster on LKE.'
+og_description: 'This guide walks you through how to author and deploy a static site with Hugo after creating a cluster on LKE.'
 keywords: ['kubernetes','kubernetes tutorial','docker kubernetes','docker and kubernetes', 'static site generator','hugo static site']
 tags: ["docker","version control system","kubernetes","container","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +12,9 @@ published: 2019-11-12
 modified: 2020-12-03
 modified_by:
   name: Linode
-title: "How to Deploy a Static Site on Linode Kubernetes Engine"
-h1_title: "Deploying a Static Site on Linode Kubernetes Engine"
+h1_title: "How to Deploy a Static Site on Linode Kubernetes Engine"
+title: "Deploying a Static Site on Linode Kubernetes Engine"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:
@@ -75,7 +76,7 @@ To perform some of the commands in this guide you need to have Git installed on 
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Sign up for a Docker Hub Account
 
@@ -236,7 +237,7 @@ In this section you create a Docker container for your static site, which you th
 1.  Add the following contents to the `Dockerfile`. Each command has accompanying comments that describe their function:
 
     {{< file "lke-example/Dockerfile" >}}
-# Install the latest Debain operating system.
+# Install the latest Debian operating system.
 FROM alpine:3.12.0 as HUGO
 
 # Install Hugo.

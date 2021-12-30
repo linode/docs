@@ -3,16 +3,18 @@ slug: how-to-use-object-storage-acls-and-bucket-policies
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How to use Object Storage Access Control Lists (ACLs) and Bucket Policies to govern access to buckets and objects. Learn the differences between ACLs and Bucket Policies and how to apply each to your buckets and objects.'
-og_description: 'How to use Object Storage Access Control Lists (ACLs) and Bucket Policies to govern access to buckets and objects. Learn the differences between ACLs and Bucket Policies and how to apply each to your buckets and objects.'
+description: "Learn the differences between ACLs and Bucket Policies and how to apply each to your buckets and objects."
+og_description: "How to use Object Storage Access Control Lists (ACLs) and Bucket Policies to govern access to buckets and objects. Learn the differences between ACLs and Bucket Policies and how to apply each to your buckets and objects."
 keywords: ['object storage','acl','access control list','bucket policy','bucket policies']
 tags: ["linode platform","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-12-16
+modified: 2021-11-24
 modified_by:
   name: Linode
-title: "How to Enact Access Control Lists (ACLs) and Bucket Policies with Linode Object Storage"
-h1_title: "Enacting Access Control Lists (ACLs) and Bucket Policies with Linode Object Storage"
+title: "How to Use ACLs and Bucket Policies on Linode Object Storage"
+h1_title: "Enacting Access Control Lists (ACLs) and Bucket Policies on Object Storage"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:
@@ -37,35 +39,37 @@ In this guide you learn about:
 
 - This guide describes two ways to use ACLs to control access to buckets and bucket objects.
   - ACLs in the [Linode Cloud Manager](https://cloud.linode.com).
-  - ACLs using the [s3cmd](https://s3tools.org/s3cmd) command line utility to interact with Object Storage. For s3cmd installation and configuration instructions, visit our [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/#install-and-configure-s3cmd) guide.
+  - ACLs using the [s3cmd](https://s3tools.org/s3cmd) command line utility to interact with Object Storage. For s3cmd installation and configuration instructions, visit our [Using s3cmd with Object Storage](/docs/products/storage/object-storage/guides/s3cmd/) guide.
 
-- For the s3cmd method, you also need the [*canonical ID*](#retrieve-a-user-s-canonical-id) of every user you wish to grant additional permissions to.
+- For the s3cmd method, you also need the [*canonical ID*](#retrieving-a-canonical-id) of each account you wish to grant additional permissions to.
 
 {{< note >}}
-Currently, you can only create a new canonical ID by creating a completely new Linode account. A canonical ID is not assigned to a limited access user on an existing Linode account.
+Each Linode account has a single canonical ID within Object Storage, which means that all users and Object Storage API keys on an account share the same canonical ID.
 {{< /note >}}
 
-### Retrieve a User's Canonical ID
+### Retrieving a Canonical ID
 
-Follow these steps to determine the canonical ID of the Object Storage users you want to share with:
+Choose one of the following methods to determine a bucket owner's canonical ID.
 
-1. The following command returns the canonical ID of a user, given any of the user's buckets:
+#### Through s3cmd
 
-        s3cmd info s3://other-users-bucket
+Run the following command on a bucket belonging to a different Linode customer account, replacing *other-users-bucket* with the name of their bucket.
 
-    {{< note >}}
+    s3cmd info s3://other-users-bucket
+
+{{< note >}}
 The bucket referred to in this section is an arbitrary bucket on the target user's account. It is not related to the bucket on your account that you would like to set ACLs or bucket policies on.
 {{< /note >}}
 
-    There are two options for running this command:
+There are two options for running this command:
 
-    - The users you're granting or restricting access to can run this command on one of their buckets and share their canonical ID with you, or:
+- The users you're granting or restricting access to can run this command on one of their buckets and share their canonical ID with you, or:
 
-    - You can run this command yourself if you have use of their access tokens (you need to configure s3cmd to use their access tokens instead of your own).
+- You can run this command yourself if you have use of their access tokens (you need to configure s3cmd to use their access tokens instead of your own).
 
-1. Run the above command, replacing `other-users-bucket` with the name of the bucket. The output is similar to the following:
+The output is similar to the following:
 
-    {{< output >}}
+{{< output >}}
 s3://other-users-bucket/ (bucket):
 Location:  default
 Payer:     BucketOwner
@@ -75,42 +79,46 @@ CORS:      none
 ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
 {{</ output >}}
 
-1. The canonical ID of the owner of the bucket is the long string of letters, dashes, and numbers found in the line labeled `ACL`, which in this case is `a0000000-000a-0000-0000-00d0ff0f0000`.
+The canonical ID of the owner of the bucket is the long string of letters, dashes, and numbers found in the line labeled `ACL`, which in this case is `a0000000-000a-0000-0000-00d0ff0f0000`. If you see *none* as the ACL, it may indicate that your s3cmd is configured with a different region than the bucket is located within. See the [Additional Configuration Options](/docs/products/storage/object-storage/guides/s3cmd/#additional-configuration-options) of our s3cmd guide to learn how to manually edit the s3cmd configuration.
 
-1. Alternatively, you *may* be able to retrieve the canonical ID by curling a bucket and retrieving the Owner ID field from the returned XML. This method is an option when both of these conditions are true:
+#### Through curl
 
-    - The bucket has objects within it and has already been set to public (with a command like `s3cmd setacl s3://other-users-bucket --acl-public`).
-    - The bucket has not been set to serve static websites.
+Alternatively, you *may* be able to retrieve the canonical ID by curling a bucket and retrieving the Owner ID field from the returned XML. This method is an option when both of these conditions are true:
 
-1. Run the curl command, replacing the bucket name and cluster URL with the relevant values:
+- The bucket has objects within it and has already been set to public (with a command like `s3cmd setacl s3://other-users-bucket --acl-public`).
+- The bucket has not been set to serve static websites.
 
-        curl other-users-bucket.us-east-1.linodeobjects.com
+Run the following curl command, replacing *ther-users-bucket* with the bucket name and the cluster URL with the relevant value:
 
-    {{< content "object-storage-cluster-shortguide" >}}
+    curl other-users-bucket.us-east-1.linodeobjects.com
 
-1. This results in the following output:
+{{< content "object-storage-cluster-shortguide" >}}
 
-        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-            <Name>acl-bucket-example</Name>
-            <Prefix/>
-            <Marker/>
-            <MaxKeys>1000</MaxKeys>
-            <IsTruncated>false</IsTruncated>
-            <Contents>
-            <Key>cpanel_marketplace.gif</Key>
-            <LastModified>2019-11-20T16:52:49.946Z</LastModified>
-            <ETag>"9aeafcb192a8e540e7be5b51f7249e2e"</ETag>
-            <Size>961023</Size>
-            <StorageClass>STANDARD</StorageClass>
-            <Owner>
-                <ID>a0000000-000a-0000-0000-00d0ff0f0000</ID>
-                <DisplayName>a0000000-000a-0000-0000-00d0ff0f0000</DisplayName>
-            </Owner>
-            <Type>Normal</Type>
-            </Contents>
-        </ListBucketResult>
+This results in the following output:
 
-    In the above output, the canonical ID is `a0000000-000a-0000-0000-00d0ff0f0000`.
+{{< output >}}
+<ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <Name>acl-bucket-example</Name>
+    <Prefix/>
+    <Marker/>
+    <MaxKeys>1000</MaxKeys>
+    <IsTruncated>false</IsTruncated>
+    <Contents>
+    <Key>cpanel_marketplace.gif</Key>
+    <LastModified>2019-11-20T16:52:49.946Z</LastModified>
+    <ETag>"9aeafcb192a8e540e7be5b51f7249e2e"</ETag>
+    <Size>961023</Size>
+    <StorageClass>STANDARD</StorageClass>
+    <Owner>
+        <ID>a0000000-000a-0000-0000-00d0ff0f0000</ID>
+        <DisplayName>a0000000-000a-0000-0000-00d0ff0f0000</DisplayName>
+    </Owner>
+    <Type>Normal</Type>
+    </Contents>
+</ListBucketResult>
+{{</ output >}}
+
+In the above output, the canonical ID is `a0000000-000a-0000-0000-00d0ff0f0000`.
 
 ## ACLs vs Bucket Policies
 
@@ -296,7 +304,7 @@ Below is an example bucket policy written in JSON:
     "Effect": "Allow",
     "Principal": {
       "AWS": [
-        "arn:aws:iam:::a0000000-000a-0000-0000-00d0ff0f0000"
+        "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
       ]
     },
     "Action": [
@@ -314,7 +322,7 @@ Below is an example bucket policy written in JSON:
 This policy allows the user with the canonical ID `a0000000-000a-0000-0000-00d0ff0f0000`, known here as the "principal", to interact with the bucket, known as the "resource". The "resource" that is listed (`bucket-policy-example`) is the only bucket the user has access to.
 
 {{< note >}}
-The principal (a.k.a. the user) must have the prefix of `arn:aws:iam:::`, and the resource (a.k.a. the bucket) must have the prefix of `arn:aws:s3:::`.
+The principal (a.k.a. the user) must have the prefix of `arn:aws:iam:::user/`, and the resource (a.k.a. the bucket) must have the prefix of `arn:aws:s3:::`.
 {{< /note >}}
 
 The permissions are specified in the `Action` array. For the current example, these are:
@@ -339,7 +347,7 @@ You can also define a finer level of control over the level of access to your bu
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:iam::a0000000-000a-0000-0000-00d0ff0f0000"
+        "AWS": "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
       },
       "Action": [
         "s3:ListBucket"
@@ -351,7 +359,7 @@ You can also define a finer level of control over the level of access to your bu
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:iam::a0000000-000a-0000-0000-00d0ff0f0000"
+        "AWS": "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
       },
       "Action": [
         "s3:GetObject"
@@ -379,7 +387,7 @@ If you wanted to deny all access to a resource and whitelist by IP address, you 
     "Resource": "arn:aws:s3:::bucket-policy-example/*",
     "Condition": {
       "NotIpAddress": {
-        "aws:SourceIp": "172.104.2.4"
+        "aws:SourceIp": "192.0.2.0"
       }
     }
   }]
@@ -396,7 +404,7 @@ Only one policy file [can be enabled](#enable-a-bucket-policy) at a time. Theref
     "Effect": "Allow",
     "Principal": {
       "AWS": [
-        "arn:aws:iam:::a0000000-000a-0000-0000-00d0ff0f0000"
+        "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
       ]
     },
     "Action": [
@@ -411,7 +419,7 @@ Only one policy file [can be enabled](#enable-a-bucket-policy) at a time. Theref
   {
     "Effect": "Allow",
     "Principal": {
-      "AWS": "arn:aws:iam::a0000000-000a-0000-0000-00d0ff0f0000"
+      "AWS": "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
     },
     "Action": [
       "s3:ListBucket"
@@ -423,7 +431,7 @@ Only one policy file [can be enabled](#enable-a-bucket-policy) at a time. Theref
   {
     "Effect": "Allow",
     "Principal": {
-      "AWS": "arn:aws:iam::a0000000-000a-0000-0000-00d0ff0f0000"
+      "AWS": "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
     },
     "Action": [
       "s3:GetObject"
@@ -439,7 +447,7 @@ Only one policy file [can be enabled](#enable-a-bucket-policy) at a time. Theref
     "Resource": "arn:aws:s3:::bucket-policy-example/*",
     "Condition": {
       "NotIpAddress": {
-        "aws:SourceIp": "172.104.2.4"
+        "aws:SourceIp": "192.0.2.0"
       }
     }
   }]
@@ -463,7 +471,7 @@ s3://bucket-policy-example/ (bucket):
    Location:  default
    Payer:     BucketOwner
    Expiration Rule: none
-   Policy:    b'{\n  "Version": "2012-10-17",\n  "Statement": [{\n    "Effect": "Allow",\n    "Principal": {"AWS": ["arn:aws:iam:::a0000000-000a-0000-0000-00d0ff0f0000"]},\n    "Action": ["s3:PutObject","s3:GetObject","s3:ListBucket"],\n    "Resource": [\n      "arn:aws:s3:::bucket-policy-example/*"\n    ]\n  }]\n}'
+   Policy:    b'{\n  "Version": "2012-10-17",\n  "Statement": [{\n    "Effect": "Allow",\n    "Principal": {"AWS": ["arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"]},\n    "Action": ["s3:PutObject","s3:GetObject","s3:ListBucket"],\n    "Resource": [\n      "arn:aws:s3:::bucket-policy-example/*"\n    ]\n  }]\n}'
    CORS:      none
    ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
 {{</ output >}}

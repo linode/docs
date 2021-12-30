@@ -7,35 +7,27 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    product_description: "Secure your network with Linode Cloud Firewall. Create Firewall rules that only allow network traffic on selected ports and protocols."
+    product_description: "A free cloud-based firewall service that can be used to secure any Linode Compute Instance, allowing network traffic only on the specified ports, protocols, and IP addresses."
 ---
 
-{{< note >}}
-Cloud Firewall is now in beta, sign up through the [Linode Green Light program](https://www.linode.com/green-light/#sign-up-form) to test this feature before it's generally available. For more information visit the [Cloud Firewall](https://www.linode.com/products/firewall/) product page.
-{{</ note >}}
+Linode’s Cloud Firewall is a robust cloud-based firewall solution available at no additional charge for Linode customers. Through this service, you can create, configure, and add stateful network-based firewalls to any Linode Compute Instance.
+
+## Enhanced Security
+
+A Cloud Firewall sits between a Linode Compute Instance and the Internet and can be configured to filter out unwanted network traffic before it even reaches your server. Defend your apps and services from malicious attackers by creating rules to only allow traffic from trusted sources. Firewall rules can filter traffic at the network layer, providing fine-grained control over who can access your Linodes.
+
+## Simple Interface
+
+Control inbound and outbound traffic using the [Linode API](/docs/api/networking), [Linode CLI](/docs/guides/linode-cli/) or [Cloud Manager](https://www.linode.com/products/cloud-manager/). Each interface can be integrated into your workflow for seamless control over firewall rules. Cloud Firewalls make security more accessible and they enable you to secure your Linode's network traffic without needing to learn complicated firewall software or even access the command line.
+
+## Scalable Security in Seconds
+
+Stay protected as your network grows. Effortlessly apply the same ruleset across multiple Linode Compute Instances. This saves time as you no longer need to manually configure internal firewall software on each server.
 
 ## Availability
 
-Mumbai, India; Sydney, Australia; Toronto, Canada;
+Cloud Firewalls are available across [all regions](https://www.linode.com/global-infrastructure/).
 
-## Features
+## Limits and Considerations
 
-### Simple Interface
-
-Control inbound and outbound traffic using the [Linode API](/docs/api/networking), [Linode CLI](/docs/guides/linode-cli/) or [Cloud Manager](https://www.linode.com/products/cloud-manager/).
-
-### Scalable Security in Seconds
-
-Stay protected as your network grows. Effortlessly apply the same ruleset across multiple instances.
-
-### Protect Your Web Apps
-
-Defend your apps and services from malicious attackers by creating rules to only allow traffic from trusted sources. Firewall rules can filter traffic at the network layer, providing fine-grained control over who can access your Linodes.
-
-### Create Custom Firewall Rules
-
-Tailor rulesets for each Linode. Add up to 25 rules per ruleset, and use up to three active firewalls on a single Linode.
-
-### Making Security More Accessible
-
-Secure your Linode's network traffic without needing to learn or access the command line.
+{{< content "cloud-firewall-limits-shortguide" >}}

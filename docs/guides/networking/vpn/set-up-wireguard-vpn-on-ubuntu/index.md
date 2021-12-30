@@ -17,13 +17,11 @@ contributor:
   name: Sunit Nandi
 relations:
     platform:
-        key: secure-communications-openvpn
+        key: setup-wireguard-vpn
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/networking/vpn/set-up-wireguard-vpn-on-ubuntu/']
 ---
-
-![Set Up WireGuard VPN on Ubuntu](wireguard-marketplace-apps.png "Set Up WireGuard VPN on Ubuntu")
 
 [WireGuard](https://www.wireguard.com)&#174; is a simple, fast, and secure VPN that utilizes state-of-the-art cryptography. With a small source code footprint, it aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec. WireGuard is still under development, but even in its unoptimized state it is faster than the popular OpenVPN protocol.
 
@@ -48,11 +46,19 @@ The `GRUB 2` kernel is required for this guide. All distributions for all new Li
 
 1.  Add the Wireguard repository to your sources list. Apt will then automatically update the package cache.
 
-        sudo add-apt-repository ppa:wireguard/wireguard
+        echo "deb http://deb.debian.org/debian/ unstable main" > /etc/apt/sources.list.d/unstable-wireguard.list
+        printf 'Package: *\nPin: release a=unstable\nPin-Priority: 150\n' > /etc/apt/preferences.d/limit-unstable
 
-1.  Install Wireguard. The `wireguard` package will install all necessary dependencies.
+1.  Ubuntu 18.04 ships with Linux kernel 4.15, so you need to install the hardware-enablement kernel first (HWE), which installs kernel 5.4 on your system.
 
-        sudo apt install wireguard
+       sudo apt update
+       sudo apt install linux-generic-hwe-18.04-edge
+
+1.  Restart the Ubuntu server and install WireGuard. Update the packages and install WireGuard and WireGuard tools. DKMS (Dynamic Kernel Module Support) will build the WireGuard kernel module.
+
+        sudo shutdown -r now
+        sudo apt install wireguard-dkms wireguard-tools
+
 
     DKMS will then build the Wireguard kernel module. If successful, you'll see the following output:
 
@@ -165,6 +171,11 @@ wg0: flags=209<UP,POINTOPOINT,RUNNING,NOARP>  mtu 1420
 
 The process for setting up a client is similar to setting up the server. When using Ubuntu as your client's operating system, the only difference between the client and the server is the contents of the configuration file. If your client uses Ubuntu, follow the steps provided in the above sections and in this section. For installation instructions on other operating systems, see the [WireGuard docs](https://www.wireguard.com/install/).
 
+{{< note >}}
+You also need to install the `openresolv` package on the client to configure DNS server `sudo apt install openresolv`.
+{{< /note >}}
+
+
 1.  Generate a key pair for the client if you have not already:
 
         umask 077
@@ -180,7 +191,7 @@ Address = 10.0.0.2/24, fd86:ea04:1115::5/64
 
 ## Connect the Client and Server
 
-There are two ways to add peer information to WireGuard; this guide will demonstrate both methods.
+There are two ways to add peer information to WireGuard; this guide demonstrates both methods.
 
 {{< note >}}
 Stop the interface with `sudo wg-quick down wg0` on both the client and the server.

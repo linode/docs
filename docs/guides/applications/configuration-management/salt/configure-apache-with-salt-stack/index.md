@@ -126,7 +126,7 @@ IncludeOptional sites-enabled/*.conf
 
 ### Individual Steps
 
-This guide will be going through the process of creating the Apache for Debian and Ubuntu state file step by step. If you would like to view the entirety of the state file, [you can view it at the end of this section](http://localhost:1313/docs/applications/configuration-management/configure-apache-with-salt-stack/#complete-state-file).
+This guide will be going through the process of creating the Apache for Debian and Ubuntu state file step by step. If you would like to view the entirety of the state file, [you can view it at the end of this section](/docs/applications/configuration-management/configure-apache-with-salt-stack/#complete-state-file).
 
 1.  Create a state file named `apache-debian.sls` in `/srv/salt` and open it in a text editor of your choice.
 
@@ -146,7 +146,7 @@ apache2 Service:
 ...
 {{< /file >}}
 
-    Here Salt makes sure the `apache2` package is installed with `pkg.installed`. Likewise, it ensures the `apache2` service is running and enabled under `service.running`. Also under `service.running`, `apache-debian.sls` uses `require` to ensure that this command does not run before the `apache2` package is installed. This `require` step will be repeated throughout `apache-debain.sls`.
+    Here Salt makes sure the `apache2` package is installed with `pkg.installed`. Likewise, it ensures the `apache2` service is running and enabled under `service.running`. Also under `service.running`, `apache-debian.sls` uses `require` to ensure that this command does not run before the `apache2` package is installed. This `require` step will be repeated throughout `apache-debian.sls`.
 
     Lastly, a `watch` statement is employed to restart the `apache2` service if your site's configuration file changes. You will define that configuration file in a later step. Note that this configuration file is named using the domain you supplied when creating your Salt Pillar file in the first section. This Pillar data will be used throughout `apache-debian.sls`.
 
@@ -188,7 +188,7 @@ Enable tune_apache:
 ...
 {{< /file >}}
 
-    This step takes the `tune_apache.conf` file you created in the [Configuration Files](http://localhost:1313/docs/applications/configuration-management/configure-apache-with-salt-stack/#configuration-files) step and transfers it to your Salt minion. Then, Salt enables that configuration file with the [apache_conf module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache_conf.html).
+    This step takes the `tune_apache.conf` file you created in the [Configuration Files](/docs/applications/configuration-management/configure-apache-with-salt-stack/#configuration-files) step and transfers it to your Salt minion. Then, Salt enables that configuration file with the [apache_conf module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache_conf.html).
 
 1.  Create the necessary directories:
 

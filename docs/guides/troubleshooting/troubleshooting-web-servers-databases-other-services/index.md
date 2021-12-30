@@ -141,7 +141,7 @@ In addition to analyzing your firewall ruleset, you can also temporarily disable
 If your web server is not running or if connections are timing out, review the [general troubleshooting strategies](#general-troubleshooting-strategies).
 
 {{< note >}}
-Troubleshooting specific to Apache is outlined in [Troubleshooting Common Apache Issues](http://localhost:1313/docs/troubleshooting/troubleshooting-common-apache-issues/#check-virtual-host-definitions).
+Troubleshooting specific to Apache is outlined in [Troubleshooting Common Apache Issues](/docs/troubleshooting/troubleshooting-common-apache-issues/#check-virtual-host-definitions).
 {{< /note >}}
 
 If your web server is responding with an error code, your troubleshooting will vary by what code is returned. For more detailed information about each request that's failing, read your web server's logs. Here are some commands that can help you find your web server's logs:

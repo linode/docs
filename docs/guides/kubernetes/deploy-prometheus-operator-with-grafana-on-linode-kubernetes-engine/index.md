@@ -9,11 +9,11 @@ keywords: ['kubernetes', 'lke', 'prometheus', 'grafana']
 tags: ["monitoring","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-29
-image: feature.png
+image: DeployPromOp_Graf_LKE.png
 modified_by:
   name: Linode
-title: "How to Deploy Prometheus Operator and Grafana on Linode Kubernetes Engine"
-h1_title: "Deploying Prometheus Operator with Grafana on Linode Kubernetes Engine"
+title: "How to Deploy Prometheus Operator and Grafana on LKE"
+h1_title: "Deploying Prometheus Operator and Grafana on LKE (Linode Kubernetes Engine)"
 external_resources:
 - '[Prometheus Operator Helm Chart on Github](https://github.com/helm/charts/tree/master/stable/prometheus-operator): Useful for reviewing configuration parameters and troubleshooting.'
 - '[Prometheus Documentation](https://prometheus.io/docs/introduction/overview/)'
@@ -71,7 +71,7 @@ This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubern
 
 1.  (Optional) For [public access with HTTPS and basic auth](#prometheus-operator-deployment-with-https-and-basic-auth) configured for your web interfaces of your monitoring tools:
 
-    *   Purchase a domain name from a reliable domain registrar and configure your registrar to [use Linode's nameservers](/docs/platform/manager/dns-manager/#use-linode-s-name-servers-with-your-domain) with your domain. Using Linode's DNS Manager, [create a new Domain](/docs/platform/manager/dns-manager/#add-a-domain) for the one that you have purchased.
+    *   Purchase a domain name from a reliable domain registrar and configure your registrar to [use Linode's nameservers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain) with your domain. Using Linode's DNS Manager, [create a new Domain](/docs/guides/dns-manager/#add-a-domain) for the one that you have purchased.
 
     *   Ensure that `htpasswd` is installed to your local environment. For many systems, this tool has already been installed. Debian and Ubuntu users will have to install the apache2-utils package with the following command:
 
@@ -88,7 +88,7 @@ In this section, you will create a Helm chart values file and use it to deploy P
 1.  Using the text editor of your choice, create a file named `values.yaml` in the `~/lke-monitor` directory and save it with the configurations below. Since the control plane is Linode-managed, as part of this step we will also disable metrics collection for the control plane component:
 
     {{< caution >}}
-The below configuration will establish persistent data storage with three separate 10GiB [Block Storage Volumes](https://www.linode.com/products/block-storage/) for Prometheus, Alertmanager, and Grafana. Because the Prometheus Operator deploys as [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), these Volumes and their associated [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) resources must be deleted manually if you later decide to tear down this Helm release.
+The below configuration will establish persistent data storage with three separate 10GB [Block Storage Volumes](https://www.linode.com/products/block-storage/) for Prometheus, Alertmanager, and Grafana. Because the Prometheus Operator deploys as [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), these Volumes and their associated [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) resources must be deleted manually if you later decide to tear down this Helm release.
     {{< /caution >}}
 
     {{< file "~/lke-monitor/values.yaml" yaml >}}
@@ -219,7 +219,7 @@ Press **control+C** on your keyboard to terminate a port-forward process after e
             svc/lke-monitor-prometheus-ope-alertmanager  \
             9093
 
-    *    To provide access to the **Grafana** interface at the address `127.0.0.1:8081` in your web browser, enter:
+    *   To provide access to the **Grafana** interface at the address `127.0.0.1:8081` in your web browser, enter:
 
             kubectl -n monitoring \
             port-forward \
@@ -263,7 +263,7 @@ NAME                       TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)
 nginx-ingress-controller   LoadBalancer   10.128.41.200   192.0.2.0      80:30889/TCP,443:32300/TCP   59s   app.kubernetes.io/component=controller,app=nginx-ingress,release=nginx-ingress
     {{< /output >}}
 
-1.  Copy the IP address of the `EXTERNAL IP` field and navigate to Linode's DNS Manager and [create an A record](/docs/platform/manager/dns-manager/#add-dns-records) using this external IP address and a hostname value corresponding to the subdomain you plan to use with your domain.
+1.  Copy the IP address of the `EXTERNAL IP` field and navigate to Linode's DNS Manager and [create an A record](/docs/guides/dns-manager/#add-dns-records) using this external IP address and a hostname value corresponding to the subdomain you plan to use with your domain.
 
 Now that your NGINX Ingress Controller has been deployed and your domain's A record has been updated, you are ready to enable HTTPS on your monitoring interfaces.
 
@@ -431,7 +431,7 @@ Replace all instances of `example.com` below with the [domain you have configure
     {{< /note >}}
 
     {{< caution >}}
-The below configuration will establish persistent data storage with three separate 10GiB [Block Storage Volumes](https://www.linode.com/products/block-storage/) for Prometheus, Alertmanager, and Grafana. Because the Prometheus Operator deploys as [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), these Volumes and their associated [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) resources must be deleted manually if you later decide to tear down this Helm release.
+The below configuration will establish persistent data storage with three separate 10GB [Block Storage Volumes](https://www.linode.com/products/block-storage/) for Prometheus, Alertmanager, and Grafana. Because the Prometheus Operator deploys as [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), these Volumes and their associated [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) resources must be deleted manually if you later decide to tear down this Helm release.
     {{< /caution >}}
 
     {{< file "~/lke-monitor/values-https-basic-auth.yaml" yaml >}}
@@ -589,9 +589,9 @@ Your monitoring interfaces are now publicly accessible with HTTPS and basic auth
 
 | Resource     | Domain and path          |
 | ------------ | ------------------------ |
-| Prometheus   | example.com/prometheus   |
-| Alertmanager | example.com/alertmanager |
-| Grafana      | example.com/grafana      |
+| Prometheus   | `example.com/prometheus`   |
+| Alertmanager | `example.com/alertmanager` |
+| Grafana      | `example.com/grafana`      |
 
 When accessing an interface for the first time, log in as `admin` with the password you configured for [basic auth credentials](#configure-basic-auth-credentials).
 

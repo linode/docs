@@ -5,10 +5,6 @@ tab_group_main:
     weight: 30
 ---
 
-{{< note >}}
-Cloud Firewall is now in beta, sign up through the [Linode Green Light program](https://www.linode.com/green-light/#sign-up-form) to test this feature before it's generally available. For more information visit the [Cloud Firewall](https://www.linode.com/products/firewall/) product page.
-{{</ note >}}
-
 ## Building Blocks
 
 These introductory guides to Linode Cloud Firewall will help get you up and running with the service:
@@ -30,6 +26,8 @@ Delete individual rules that are no longer needed using the Cloud Manager.
 
 ### Cloud Firewall Basics
 
-- [Adding and Configuring Cloud Firewall](/docs/guides/getting-started-with-cloud-firewall/)
+- [Comparing Cloud Firewalls to Linux Firewall Software](/docs/products/networking/cloud-firewall/guides/comparing-firewalls/): Learn which firewall solution may work best for your use case.
+
+- [Getting Started with Cloud Firewalls](/docs/guides/getting-started-with-cloud-firewall/)
 
 - [Troubleshooting Firewalls](/docs/guides/troubleshooting-firewalls/)

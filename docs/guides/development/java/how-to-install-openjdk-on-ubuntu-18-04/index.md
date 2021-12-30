@@ -3,8 +3,8 @@ slug: how-to-install-openjdk-on-ubuntu-18-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 18.04. OpenJDK is the free and open-source implementation of the Oracle Java Standard Edition (Java SE) Development Kit. OpenJDK and Java SE are equivalent JDKs that include a Java runtime environment (JRE) and tools for developing and compiling Java applications. Optionally, you will also test your Open JDK installation by creating a simple "Hello World" application.
-og_description: This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 18.04. OpenJDK is the free and open-source implementation of the Oracle Java Standard Edition (Java SE) Development Kit. OpenJDK and Java SE are equivalent JDKs that include a Java runtime environment (JRE) and tools for developing and compiling Java applications. Optionally, you will also test your Open JDK installation by creating a simple "Hello World" application.
+description: This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 18.04 and test it by through a simple "Hello World" application.
+og_description: This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 18.04 and test it by through a simple "Hello World" application.
 keywords: ["java", "openjdk", "jdk", "11", "Ubuntu", "18.04"]
 aliases: ['/development/java/how-to-install-openjdk-on-ubuntu-18-04/','/development/java/install-java-on-ubuntu-18-04/']
 tags: ["java","ubuntu"]
@@ -16,6 +16,7 @@ modified_by:
 published: 2020-03-25
 title: How To Install Java Development Kit 11 on Ubuntu 18.04
 h1_title: Installing Java Development Kit 11 on Ubuntu 18.04
+enable_h1: true
 contributor:
   name: Rajakavitha Kodhandapani
 audiences: ["beginner"]

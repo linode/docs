@@ -3,14 +3,16 @@ slug: find-and-terminate-processes-from-the-linux-or-macos-command-line
 author:
   name: Sam Foo
   email: docs@linode.com
-description: Learn how to find a running process and terminate it from the command line in Linux and Mac OS.
+description: "Learn how to find a running process and terminate it from the command line in Linux and Mac OS."
 keywords: ["kill", "terminate", "PID", "command line"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-02-20
 modified_by:
   name: Sam Foo
 published: 2018-02-20
-title: Find and Terminate Processes from the Linux or Mac OS Command Line
+title: "Terminate Processes from the Mac or Linux Command Line"
+h1_title: "Find and Terminate Processes from the Linux or Mac OS Command Line"
+enable_h1: true
 tags: ["linux"]
 aliases: ['/quick-answers/linux/find-and-terminate-processes-from-the-linux-or-macos-command-line/']
 ---

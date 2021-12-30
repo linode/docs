@@ -3,16 +3,17 @@ slug: set-up-web-server-host-website
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to set up your first web server and point a domain name to your Linode.'
+description: "How to set up your first web server and point a domain name to your Linode."
 keywords: ["hosting a website", "website", "linode quickstart guide"]
 tags: ["web server","nginx","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-07
+modified: 2021-10-18
 modified_by:
   name: Linode
 published: 2012-03-13
-title: Set up a Web Server and Host a Website on Linode
+title: "Set up a Web Server and Host a Website on Linode"
 aliases: ['/websites/hosting/set-up-web-server-host-website/','/websites/set-up-web-server-host-website/']
+image: Hosting-a-Website-smg.jpg
 ---
 
 ![Hosting a Website](Hosting-a-Website-smg.jpg "Hosting a Website")
@@ -31,7 +32,7 @@ The application you use to serve your website depends on the type of site. Find 
 
 ### Static Sites
 
-If your website consists entirely of static files like HTML, CSS, JavaScript, and images, then you only need to set up a simple web server to serve the files. Static sites include everything from bare-bones HTML pages to much more complicated [React.js](/docs/development/javascript/deploy-a-react-app-on-linode/) apps. NGINX is a good choice for hosting this type of website.
+If your website consists entirely of static files like HTML, CSS, JavaScript, and images, then you only need to set up a simple web server to serve the files. Static sites include everything from bare-bones HTML pages to much more complicated [React.js](/docs/guides/how-to-deploy-a-react-app-on-ubuntu-18-04/) apps. NGINX is a good choice for hosting this type of website.
 
 If you plan to host a simple site such as a blog or photo gallery, another option is to use a [static site generator](/docs/websites/static-sites/how-to-choose-static-site-generator/).
 
@@ -91,7 +92,7 @@ server {
 
     If NGINX loads successfully, continue to the [Test your Website](#test-your-website) section below.
 
-This configuration is sufficient to get you started. For more advanced options and optimizations, see our [series on NGINX configuration](/docs/web-servers/nginx/nginx-installation-and-basic-setup/).
+This configuration is sufficient to get you started. For more advanced options and optimizations, see our [series on NGINX configuration](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
 
 ### LAMP Stack
 
@@ -112,21 +113,21 @@ Test your website(s) before you add DNS records and make the site available publ
 If you're new to Linode, or if you've just purchased a new domain name, the first step is to add a new domain in the **Domains** section of the Cloud Manager. If you don't know what DNS records to add, the DNS Manager can insert some basic records when you create the new domain.
 
 {{< note >}}
-Creating a domain also creates its corresponding domain zone. For a deep dive into the Linode DNS Manager, see our [DNS Manager](/docs/platform/manager/dns-manager/) guide.
+Creating a domain also creates its corresponding domain zone. For a deep dive into the Linode DNS Manager, see our [DNS Manager](/docs/guides/dns-manager/) guide.
 {{</ note >}}
 
-1.  From the **Domains** section, click on **Add a Domain**. The **Add a New Domain** panel will appear where you can fill out the form fields with your domain's information.
+1.  From the **Domains** section, click on **Create Domain**. The domain creation page is displayed.
 
-    ![This page lets you add a new domain](add-new-domain.png "This page let's you add a new domain.")
+    ![Screenshot of the domain creation page in Cloud Manager](create-a-domain-cloud-manager.png)
 
-1. If you want to add a *slave zone* instead of a master zone, click the **Slave** radio button.
+1. If you want to add a *secondary zone* instead of a primary zone, click the **Secondary** radio button.
 
     {{< note >}}
-In order for Linode's DNS servers to function as slaves, your DNS master server must notify and allow AXFR requests from the following IP addresses:
+In order for your domain to function as a secondary zone within Linode's DNS servers, your primary DNS server must notify and allow AXFR requests from the following IP addresses:
 
     104.237.137.10
     65.19.178.10
-    75.127.96.10
+    74.207.225.10
     207.192.70.10
     109.74.194.10
     2600:3c00::a
@@ -140,11 +141,9 @@ In order for Linode's DNS servers to function as slaves, your DNS master server 
 1.  Enter an administrator's email address in the **SOA Email Address** field.
 1.  If you are unfamiliar with DNS, the DNS Manager can automatically create some basic DNS records to get you started. To have it insert these records, select **Yes, insert a few records to get me started**, then select from the drop-down menu the Linode with which you want this domain zone associated.
 
-    ![Create default DNS records when adding a new domain.](create-default-records.png "Create default DNS records when adding a new domain.")
-
      Alternatively, to keep the domain zone empty and prevent the DNS Manager from creating DNS records, select **No, I want the zone empty**.
 
-1.  Click **Create**. If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible on the Domains detail page. The created records should include SOA, NS, MX, and A/AAA.
+1.  Click **Create Domain**. If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible on the Domains detail page. The created records should include SOA, NS, MX, and A/AAA.
 
     If you elected to keep the zone empty, you can start adding DNS records now. The Domain detail page will contain an SOA and NS record for the domain. Skip to the [Add DNS Records](#add-dns-records) section for instructions.
 

@@ -3,16 +3,16 @@ slug: how-to-configure-nextcloud-to-use-linode-object-storage-as-an-external-sto
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'In this guide you enable Nextcloud''s External Storage app and then configure it to use Linode Object Storage as a secondary storage location. Nextcloud is a full-featured file hosting and sharing solution that can be easily installed on a Linode using Marketplace Apps.'
-og_description: 'In this guide you enable Nextcloud''s External Storage app and then configure it to use Linode Object Storage as a secondary storage location. Nextcloud is a full-featured file hosting and sharing solution that can be easily installed on a Linode using Marketplace Apps.'
+description: "Learn how to enable Nextcloud's External Storage app and then configure it to use Linode Object Storage as a secondary storage location."
 keywords: ['file hosting','nextcloud','object storage','s3']
 tags: ["linode platform","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-16
 modified_by:
   name: Linode
-title: "How to Configure Nextcloud to use Linode Object Storage as an External Storage Mount"
+title: "How to Configure Nextcloud to use Object Storage"
 h1_title: "Configuring Nextcloud to use Linode Object Storage as an External Storage Mount"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:
@@ -114,6 +114,10 @@ Linode Object Storage is *S3-compatible*. Nextcloud connects to Amazon's Object 
 | Frankfurt, Germany | `eu-central-1` | eu-central-1.linodeobjects.com |
 | Singapore, Singapore | `ap-south-1` | ap-south-1.linodeobjects.com |
       {{</ disclosure-note >}}
+
+{{< note >}}
+There is a known bug when configuring Frankfurt buckets that will cause failure unless the the user enters `us-east-1` as the Region ID, despite the correct ID being `eu-central-1`. The correct bucket will still be configured using the hostname. If you are hosting a bucket in Frankfurt and the  Nextcloud configuration is not applying, this solution should be attempted.
+{{< /note >}}
 
 1. In the **Available for** text entry box, enter the group name(s) you would like to give access to the Linode Object Storage external storage. To learn more about user and group permissions related to external storage, see [Nextcloud's documentation](https://docs.nextcloud.com/server/15/admin_manual/configuration_files/external_storage_configuration_gui.html#user-and-group-permissions).
 

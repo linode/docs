@@ -1,0 +1,30 @@
+{
+  "@context": "http://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Linux Administration?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "<p>Linux administration is about setting up disaster recovery, managing new system builds, creating a backup to restore data, Linux hardware management, managing storage,  handling file systems, and managing the security of Linux systems. A big part of Linux administration is to ensure that Linux powered systems are stable and secure. </p>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What Should Linux Administrators Know? ",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "<p>Typically Linux system administrators are expected to handle Linux file systems, manage root, know bash commands, and manage users. </p>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What Are The Duties Of System Administrators In Linux?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "<p>Commonly, the Linux administration role typically involves: </p><ol><li>Maintenance of Linux environment </li><li>Troubleshoot and provide support when there’s an issue with the Linux servers </li><li>Analysis of log files(mainly error logs) and support LAN and web applications </li><li>Create operational and project-specific solutions for the organization</li><li>Proactively figure out ways to stabilize, lift security, and scalability of your Linux environment</li></ol><p><br></p>"
+      }
+    }
+  ]
+}

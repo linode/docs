@@ -16,7 +16,7 @@ published: 2011-02-23
 title: Using Apache for Proxy and Clustering Services on Fedora 14
 relations:
     platform:
-        key: how-to-install-phpbb
+        key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: Fedora 14
 ---

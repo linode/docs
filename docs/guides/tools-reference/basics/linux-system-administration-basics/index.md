@@ -3,21 +3,38 @@ slug: linux-system-administration-basics
 author:
   name: Linode
   email: docs@linode.com
-description: 'Troubleshooting tips, basic Linux commands, and software usage suggestions for beginner Linux system administrators.'
+description: "This guide covers almost everything you wanted to know about Linux system administration but were afraid to ask about."
 keywords: ["linux tips", "linux beginners", "systems administration", "admin", "linux", "mail", "http", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/basics/linux-system-administration-basics/','/using-linux/administration-basics/','/tools-reference/linux-system-administration-basics/']
-modified: 2016-10-05
+modified: 2021-05-14
 modified_by:
   name: Linode
 published: 2009-12-13
-title: Linux System Administration Basics
+title: "Linux System Administration Basics"
 tags: ["linux"]
 ---
 
 This guide presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope this collection of basic Linux commands will help you manage your system from the command line.
 
 ![Linux System Administration Basics](linux-system-administration-basics.png)
+
+## What is Linux Administration?
+Linux administration is about setting up disaster recovery, managing new system builds, creating a backup to restore data, Linux hardware management, managing storage,  handling file systems, and managing the security of Linux systems. A big part of Linux administration is ensuring that Linux powered systems are stable and secure.
+
+## What Should a Linux Administrator Should Know?
+
+Typically Linux system administrators are expected to handle Linux file systems, manage the root user, have a working knowledge of bash commands, and an ability to manage users.
+
+## What Are The Duties Of System Administrators In Linux?
+Commonly, the Linux administration role typically involves:
+
+1. Maintenance of a Linux environment.
+2. Troubleshooting and providing support when there’s an issue with Linux servers.
+3. Analysis of log files(mainly error logs).
+4. Support of LAN and web applications.
+5. Creation of operational and project-specific solutions for the organization
+6. Ability to proactively figure out ways to enforce strong security practices, and increase scalability of your Linux environment
 
 ## Basic Configuration
 
@@ -653,7 +670,7 @@ This will allow you to see new error messages as they appear. Problems can be di
 
 ## DNS Servers and Domain Names
 
-The *Domain Name System*, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/docs/networking/dns/dns-records-an-introduction/). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](/docs/platform/manager/dns-manager/).
+The *Domain Name System*, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/docs/networking/dns/dns-records-an-introduction/). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](/docs/guides/dns-manager/).
 
 ### Redirect DNS Queries with CNAMEs
 
@@ -661,7 +678,7 @@ The *Domain Name System*, or DNS, is the service that the internet uses to assoc
 
 CNAMEs are *only* valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/web-servers/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/) and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAMEs must point to a valid domain that has a valid A Record, or to another CNAME.
 
-Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://cloud.linode.com/), refer to our [DNS Manager Guide](/docs/platform/manager/dns-manager/).
+Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://cloud.linode.com/), refer to our [DNS Manager Guide](/docs/guides/dns-manager/).
 
 ### Set Up Subdomains
 
@@ -669,7 +686,7 @@ When [reading domain names](/docs/networking/dns/dns-records-an-introduction/#do
 
 Follow these steps to [create and host a sub-domain](/docs/networking/dns/common-dns-configurations/#configuring-subdomains):
 
-1.  First, create an [A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/platform/manager/dns-manager/). You may host the DNS for your domain with any provider you choose.
+1.  First, create an [A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/guides/dns-manager/). You may host the DNS for your domain with any provider you choose.
 
 2.  Set up a server to respond to requests sent to this domain. For web servers like [Apache](/docs/web-servers/apache/), this requires configuring a new virtual host. For XMPP servers you must configure an additional host to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
 
@@ -693,7 +710,7 @@ If you need an easy-to-install email solution, consider the [Citadel groupware s
 
 If, by contrast, you want a more simple and modular email stack, we urge you to consider one of our guides built around the [Postfix SMTP server](/docs/email/postfix/).
 
-Finally, it's possible to outsource email service to a third-party provider, such as [Google Apps](/docs/email/using-google-apps-for-email/) or [FastMail.fm](https://www.fastmail.fm). These services allows you to send and receive mail from your domain, without hosting email services on your Linode.
+Finally, it's possible to outsource email service to a third-party provider, such as [Google Workspace](/docs/guides/using-google-workspace-for-email/) or [FastMail.fm](https://www.fastmail.fm). These services allows you to send and receive mail from your domain, without hosting email services on your Linode.
 
 ### Send Email From Your Server
 
@@ -732,3 +749,57 @@ port 587
 The `.msmptrc` file needs to be set to mode 600 and owned by the user account that will be sending mail. For example, if the configuration file is located at `/srv/smtp/msmtprc`, you can call msmtp with the following command:
 
     /usr/bin/msmtp --file=/srv/smtp/msmtprc
+
+## How Do I Manage Files in Linux?
+To manage files and directories in Linux you can use wildcard patterns for file manipulation, use commands like `gzip`, `xz`, and `bzip2` to compress or decompress a file. Commands like `copy` `move` and `remove` can be used to remove files. There are many more commands that can be used, however these are the most common.
+
+You can view your current directory by running `echo $PWD`. To view all items within your current working directory, type `ls` and press enter.
+
+Typing ls will simply output all file names, but if you wish to see more details run the following command:
+
+                ls -al
+
+Output:
+
+                total 6
+
+                drwxr-xr-x  6   linode  linode  4096    Nov 30      00:35   .
+
+                drwxr-xr-x  45  linode  linode  4096    Dec 30      00:35   ..
+
+                drwxr-xr-x  5   linode  linode  4096    Nov 30      00:35   20122
+
+                drwxr-xr-x  7   linode  linode  4096    Nov 30      00:35   20122_db
+
+                drwxr-xr-x  3   linode  linode  4096    Nov 30      00:35   linode_1
+
+                -rw-rw-r--  1   linode  linode  93810   Nov 30      00:35   linode.png
+
+In the output, the `d` in `drwxr-xr` represents a directory and `-rw-rw-r--` represents a file since it is not prefaced with `d`.
+
+You can use `cp` to copy files, `mv` to move them and `rm` to delete files. Similarly, you can use `mkdir` to create directories,  and  `rmdir` to remove directories.
+
+For efficient Linux administration, you have to be able to handle multiple files recursively. You can use `-R` option for recursive listing, copying or even deletion.
+
+**Using Wildcards And Globbing For Better Linux Administration**
+
+Most other operations we saw in the section above were on a single filesystem, on the entire tree. As complexities in administration grow with your file system, it becomes difficult to use these options. This is where Wildcards and Globbing are extremely helpful.
+
+Globbing helps us point to target files using wildcard patterns. Here is how the matching works:
+*   `*` matches any string pattern
+*   `?` matches any single character
+*   `[` matches any single character within `[` brackets
+
+The following example will test a Wildcard to see how you can only filter files that have 3, 5, or between 3-5 characters. In the current directory, we have the following files:
+
+                ls
+
+                linode_1     linode_2   linode_3    linode_4    linode_5
+
+Now, if we run the following command:
+
+                ls linode[3-5]
+
+We will get the following output:
+
+                linode_3    linode_4    linode_5

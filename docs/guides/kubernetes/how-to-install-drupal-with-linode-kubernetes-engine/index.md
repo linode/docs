@@ -3,16 +3,16 @@ slug: how-to-install-drupal-with-linode-kubernetes-engine
 author:
   name: Linode
   email: docs@linode.com
-description: 'Drupal is a popular content management system. This guide provides instructions to install and configure the Drupal CMS with Linode Kubernetes Engine to develop websites.'
-og_description: 'Drupal is a popular content management system. This guide provides instructions to install and configure the Drupal CMS with Linode Kubernetes Engine to develop websites.'
+description: "Learn how to install and configure the Drupal CMS with Linode Kubernetes Engine to develop websites."
 keywords: ['kubernetes','drupal','websites', 'cms', 'k8s']
 tags: ["mysql","kubernetes","container","cms","drupal"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-07
 modified_by:
   name: Linode
-title: "How to Install Drupal with Linode Kubernetes Engine"
-h1_title: "Installing Drupal with Linode Kubernetes Engine"
+title: "How to Install Drupal on LKE (Linode Kubernetes Engine)"
+h1_title: "Installing Drupal on LKE"
+enable_h1: true
 contributor:
   name: Rajakavitha Kodhandapani
 
@@ -354,7 +354,7 @@ You need to log into the `mysql` Pod to set the root password for the Drupal UI 
 1.  In the browser, type the IP address listed under `EXTERNAL_IP` from the `kubectl get services drupal` command above followed by the port `:8081`, for example, `http://192.0.2.3:8081`. The Drupal configuration page appears.
 
     {{< note >}}
-If you have a registered domain name that you want to use for the Drupal website, add the domain in [Cloud Manager](http://cloud.linode.com) and select **Insert default records from one of my NodeBalancers** option. In this case, the `EXTERNAL_IP` address is the IP address of the NodeBalancer. For more information, see [Add a Domain](/docs/platform/manager/dns-manager/#add-a-domain).
+If you have a registered domain name that you want to use for the Drupal website, add the domain in [Cloud Manager](http://cloud.linode.com) and select **Insert default records from one of my NodeBalancers** option. In this case, the `EXTERNAL_IP` address is the IP address of the NodeBalancer. For more information, see [Add a Domain](/docs/guides/dns-manager/#add-a-domain).
 {{< /note >}}
 
     ![Drupal Configuration Screen](install-drupal-setup.png "Drupal Configuration Screen")

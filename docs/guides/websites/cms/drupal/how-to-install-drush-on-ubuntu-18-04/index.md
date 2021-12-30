@@ -15,7 +15,7 @@ modified_by:
 published: 2020-02-29
 title: How to Install Drush on Ubuntu 18.04
 h1_title: Install Drush on Ubuntu 18.04
-image: feature.png
+image: Drush_onUbuntu1804.png
 external_resources:
  - '[Drush Documentation](https://docs.drush.org/en/master/)'
  - '[Composer Documentation](https://getcomposer.org/doc/)'

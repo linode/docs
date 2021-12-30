@@ -27,6 +27,12 @@
     "type": "dict",
     "description": "First and last names of the original guide author."
   },
+  "bundles": {
+    "elements": false,
+    "required": false,
+    "type": "list",
+    "description": "A list of guide bundle taxonomies that a guide should belong to (e.g. 'gaming', 'security'). Bundles are listed at https://www.linode.com/docs/bundles/"
+  },
   "classic_manager_link": {
 	  "elements": false,
 	  "required": false,
@@ -50,7 +56,13 @@
     "required": false,
     "type": "text",
     "description": "This sets the H1, but leaves the title in the metadata"
-    },
+  },
+  "enable_h1": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "Defaults to false if not present, which means that a guide's title is shown instead of its h1_title at the top of the page. If set to true, the h1_title is displayed."
+  },
   "comments": {
     "elements": false,
     "required": false,

@@ -15,7 +15,7 @@ published: 2010-10-28
 title: 'Redis on Ubuntu 10.10 (Maverick)'
 relations:
     platform:
-        key: use-postrgesql-database
+        key: how-to-install-redis
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","database","nosql"]

@@ -1,0 +1,375 @@
+{{ define "head-meta-addons" }}
+  {{/* Turbolinks previews does not work that well for pages with lots of JS rendered content. */}}
+  <meta name="turbo-cache-control" content="no-preview">
+{{ end }}
+
+{{ define "main" }}
+  {{/* Set up the static content shown on this page. See content/headless/home for the queries. */}}
+  {{ $articleFeatured := "" }}
+  {{ $articleStarters := slice }}
+  {{ $headlessSection := site.GetPage "headless" }}
+  {{ $whereDoIStart := $headlessSection.GetPage "home/where-do-i-start" }}
+  {{ with $whereDoIStart }}
+    {{ $whereDoIStartData := .Resources.GetMatch "data.*" | transform.Unmarshal }}
+    {{ $articleFeatured = index (partial "funcs/build-query.html" $whereDoIStartData.queries.featured) 0 }}
+    {{ $articleStarters = partial "funcs/build-query.html" $whereDoIStartData.queries.getting_started | first 2 }}
+  {{ end }}
+  
+  {{/* Load the developers icons. */}}
+  {{ partial "icons/developer.html" . }}
+  
+  {{/* We don't have a search index for the developer section, so create the data structure here. */}}
+  {{ $developerItems := slice }}
+  {{ $developerItems = $developerItems | append (dict "href" "/docs/api/" "linkTitle" "API Reference" "svgRef" "#icon-developer--api-reference" )}}
+  {{ $developerItems = $developerItems | append (dict "href" "/docs/guides/platform/api/" "linkTitle" "API Guides" "svgRef" "#icon-developer--api-guides" )}}
+  {{ $developerItems = $developerItems | append (dict "href" "/docs/products/tools/cli/" "linkTitle" "CLI" "svgRef" "#icon-developer--cli" )}}
+  {{ $developerItems = $developerItems | append (dict "href" "https://developers.linode.com/changelog/" "linkTitle" "Changelog" "svgRef" "#icon-developer--changelog" )}}
+  {{ $developerItems = $developerItems | append (dict "href" "https://developers.linode.com/libraries-tools" "linkTitle" "Resource & Tools" "svgRef" "#icon-developer--resources-and-tools" )}}
+  
+  {{/* Load the second level product sections statically which makes the home page load faster. */}}
+  {{ $productSections := slice }}
+  {{ range (site.GetPage "products").Sections }}
+    {{ range .Sections }}
+      {{ $productSections = $productSections | append . }}
+    {{ end }}
+  {{ end }}
+  
+  {{ $productItems := slice }}
+  {{ range $productSections.ByTitle }}
+    {{ $thumb := ""}}
+    {{ with .Resources.GetMatch "*feature*.svg" }}
+      {{ $thumb = .RelPermalink }}
+    {{ end }}
+    {{ $productItems = $productItems | append (dict "href" .RelPermalink "title" .Title "linkTitle"  .LinkTitle "icon" $thumb "count" (len .RegularPagesRecursive ) )  }}
+  {{ end }}
+  
+  {{ partial "components/nojs.html" . }}
+  <noscript>
+    {{ template "home/hero" $}}
+  </noscript>
+  
+  {{/* The AlpineJS home component managing the pagers on this page. */}}
+  {{ $dataJSON := dict  `developerItems` $developerItems `productItems` $productItems  | jsonify }}
+  <div id="home-component" x-data="lncHome({{ $dataJSON  }})" @resize.window.debounce.200ms="onNavChange()" x-effect="onEffect()" :class="{ 'kind-home--menu-state-is-changing': menuStateChanging }">
+    {{ template "home/hero" $}}
+    
+    {{/* The top level products carousel */}}
+    <section class="mb-8">
+      {{ template "home/products/carousel" (dict "section" "products" "title" "Product Guides") }}
+    </section>
+    
+    {{/* Developer tiles. */}}
+    <section class="mb-10">
+      {{ template "home/developers/carousel" (dict "section" "developers" "title" "Developers") }}
+    </section>
+    
+    {{/* Featured guides section */}}
+    {{ with $articleFeatured }}
+      <section class="mb-10 py-9 bg-gradient-to-b from-gray-200 to-gray-300 full-width" x-cloak x-show="loaded">
+        <div class="flex flex-col md:flex-row h-auto container">
+          <div class="w-full md:w-1/2 md:mr-7">
+            {{ partial "helpers/bundle-image.html" (dict "page" . "class" "rounded-lg" "command" "Fit" "options" "693x364 center" "loading" "eager") }}
+          </div>
+          <div class="w-full md:w-1/3 flex flex-col md:mt-4">
+            <span class="text-basicgray uppercase text-sm hidden md:inline">
+              Featured Doc
+            </span>
+            <h2 class="mt-4 md:mt-3 text-center md:text-left">
+              {{ .Title }}
+            </h2>
+            <a href="{{ .RelPermalink }}" class="mt-6 text-center md:text-left">
+              <button aria-label="visit" class="w-full md:w-40 h-10 md:h-16 border-2 text-sm md:text-lg font-semibold text-white hover:text-opacity-75 focus: outline-none border-none bg-brand rounded-md" data-testid="mainButton">
+                Read the Doc
+              </button>
+            </a>
+          </div>
+        </div>
+      </section>
+    {{ end }}
+    
+    {{/* Carousels showing recent content in the different sections. */}}
+    
+    <section class="mb-10" x-intersect.once="initCarousels()">
+      {{ template "home/section/carousel" (dict "section" "guides" "title" "Guides") }}
+    </section>
+    <section class="mb-10">
+      {{ template "home/section/carousel" (dict "section" "blog" "title" "Blog") }}
+    </section>
+    <section class="mb-10">
+      {{ template "home/section/carousel" (dict "section" "resources" "title" "Resources") }}
+    </section>
+    <section class="mb-10">
+      {{ template "home/section/carousel" (dict "section" "marketplace" "title" "Marketplace") }}
+    </section>
+    
+    {{/* Starter guides section */}}
+    {{ with $articleStarters }}
+      <section class="mb-8 py-8 bg-gradient-to-r from-gray-200 to-gray-300 full-width" x-cloak x-show="loaded">
+        <div class="flex w-full space-x-4 h-auto container">
+          {{ range . }}
+            <div class="w-1/2 xl:flex">
+              <div class="w-full xl:w-2/3 xl:mr-4">
+                {{ partial "helpers/bundle-image.html" (dict "page" . "class" "rounded-lg" "command" "Fit" "options" "514x270 center" "loading" "eager") }}
+              </div>
+              <a href="{{ .RelPermalink }}" class="hover:text-basicgray">
+                <div class="w-full flex flex-col mt-4 md:mt-0">
+                  <h2 class="mt-4 md:mt-3 text-base md:text-2xl">
+                    {{ .Title }}
+                  </h2>
+                  <span class="hidden md:inline mt-6 text-sm text-green-500 hover:text-opacity-75 text-center md:text-left">
+                    Read the Doc
+                  </span>
+                </div>
+              </a>
+            </div>
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+    
+    {{/* Q&A carousel. */}}
+    <section class="mb-10">
+      {{ template "home/section/carousel" (dict "section" "community" "title" "Q&A") }}
+    </section>
+  </div>
+{{ end }}
+
+{{/* Hero components */}}
+
+{{ define "home/hero" }}
+  <section class="mb-5 md:mb-10 pt-7 pb-10  kind-home__hero full-width bg-brand">
+    {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
+    <div class="mt-4" style="max-width: 864px;">
+      <h1 class="font-bold text-4xl text-white">
+        {{ .Params.h1_title | default .Title }}
+      </h1>
+      {{ with .Summary }}
+        <div class="mt-6 text-lg leading-6 text-white">
+          {{ . }}
+        </div>
+      {{ end }}
+      <div>
+        <div class="mt-6 md:space-x-4 space-y-4 md:space-y-0 w-full flex flex-col md:flex-row">
+          {{ template "home/hero/link" (dict "href" "/docs/guides/getting-started/" "text" "Getting Started with Linode") }}
+          {{ template "home/hero/link" (dict "href" "/docs/guides/getting-started-with-the-linode-api/" "text" "Getting Started with the Linode API") }}
+          {{ template "home/hero/link" (dict "href" "/docs/guides/quick-answers/" "text" "Quick Answer Guides") }}
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}
+
+{{ define "home/hero/link" }}
+  <a href="{{ .href }}" class="">
+    <button aria-label="visit" class="w-full md:w-auto py-3 px-8 border-2 text-md md:text-lg font-semibold text-white hover:text-opacity-75 focus: outline-none border-none rounded-md" style="background-color: #353535;" data-testid="heroButton">
+      {{ .text }}
+    </button>
+  </a>
+{{ end }}
+
+{{/*  */}}
+{{ define "home/section/title"}}
+  {{ if eq .section "qa" }}
+    <div class="flex items-center">
+      <h2 class="text-3 md:text-3xl">
+        {{ .title }}
+      </h2>
+      {{/* Clicking this will spin up the search with the qa section filtered. */}}
+      <a class="text-xs md:text-sm text-basicgray ml-3 flex items-center" @click="$dispatch('search:filter', 'sections=community')">
+        Browse All
+        <svg class="w-2 h-3 ml-2 text-basicgray btn-icon">
+          <use href="#icon--arrow-right"></use>
+        </svg>
+      </a>
+    </div>
+  {{ else }}
+    <div class="flex items-center">
+      <h2 class="text-3 md:text-3xl">
+        {{ .title }}
+      </h2>
+      {{ with .pager }}
+        <template x-if="{{ . }} && {{ . }}.section">
+          <a class="text-xs md:text-sm text-basicgray ml-3 flex items-center" :href="{{ . }}.section.href">
+            Browse All
+            <svg class="w-2 h-3 ml-2 text-basicgray btn-icon">
+              <use href="#icon--arrow-right"></use>
+            </svg>
+          </a>
+        </template>
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}
+
+{{ define "home/carousel/button-left"}}
+  <button aria-label="previous"
+            :disabled="!{{ $ }}.hasPrev()"
+            :class="{'hidden md:block': {{ $ }}.hasPrev(), 'hidden': !{{ $ }}.hasPrev() }"
+            class="carousel__item--height bg-gradient-to-r from-backgroundcolor absolute left-0 z-30 -mx-8 w-10 outline-none cursor-pointer hover:text-brand" @click="{{ $ }}.prev()" data-testid="prev">
+    <svg x-show="{{ $ }}.showNavigation" class="w-3 ml-4" style="display: block; transform: scale(-1,1)">
+      <use href="#icon--arrow-right"></use>
+    </svg>
+  </button>
+{{ end }}
+{{ define "home/carousel/button-right"}}
+  <button aria-label="next"
+:disabled="!{{ $ }}.hasNext()"
+:class="{'hidden md:block': {{ $ }}.hasNext(), 'hidden': !{{ $ }}.hasNext() }"
+class="carousel__item--height bg-gradient-to-l from-backgroundcolor absolute right-0 z-30 w-20 -mr-6 outline-none cursor-pointer hover:text-brand"
+@click="{{ $ }}.next()" data-testid="next">
+    <svg x-show="{{ $ }}.showNavigation" class="w-3 float-right mx-6">
+      <use href="#icon--arrow-right"></use>
+    </svg>
+  </button>
+{{ end }}
+{{ define "home/carousel/progress"}}
+  <template x-if="{{ $ }} && {{ $ }}.showNavigation">
+    <div class="mr-8 hidden md:flex space-x-1">
+      <template x-for="(bar, i) in {{ $ }}.progress()">
+        <div style="height: 3px; width: 16px"
+  :class="{
+    'bg-brand': bar,
+    'bg-gray-500': !bar
+  }"
+></div>
+      </template>
+    </div>
+  </template>
+{{ end }}
+
+{{ define "home/products/carousel"}}
+  {{ $section := "products" }}
+  {{ $pager := printf "data.sectionTiles.%s"  $section }}
+  {{ $ctx := dict "pager" $pager | merge . }}
+  <div x-ref="carousel-products" class="carousel products carousel--square w-full">
+    <div class="page-size"></div>
+    <template x-if="{{ $pager }}">
+      <div class="w-full" data-testid="carousel-products">
+        <div class="flex items-center justify-between">
+          {{ template  "home/section/title" $ctx }}
+          {{ template "home/carousel/progress" $pager }}
+        </div>
+        <div class="carousel__container flex flex-nowrap w-full mt-7"  @mouseenter="{{ $pager }}.toggleShowNavigation(true)" @mouseleave="{{ $pager }}.toggleShowNavigation(false)">
+          {{ template "home/carousel/button-left" $pager }}
+          <div class="carousel__viewport">
+            <div class="carousel__tray flex flex-nowrap">
+              <template x-for="(item, i) in {{ $pager }}.items" :key="item.href">
+                {{ template "home/products/carousel/tile" }}
+              </template>
+            </div>
+          </div>
+          {{ template "home/carousel/button-right" $pager }}
+        </div>
+      </div>
+    </template>
+  </div>
+{{ end }}
+
+{{ define "home/developers/carousel"}}
+  {{ $section := "developers" }}
+  {{ $pager := printf "data.sectionTiles.%s"  $section }}
+  {{ $ctx := dict "pager" $pager | merge . }}
+  <div x-ref="carousel-developers" class="carousel developers carousel--square w-full">
+    <div class="page-size"></div>
+    <template x-if="{{ $pager }}">
+      <div class="w-full" data-testid="carousel-developers">
+        <div class="flex items-center justify-between">
+          {{ template  "home/section/title" $ctx }}
+          {{ template "home/carousel/progress" $pager }}
+        </div>
+        <div class="carousel__container flex flex-nowrap w-full mt-7" @mouseenter="{{ $pager }}.toggleShowNavigation(true)" @mouseleave="{{ $pager }}.toggleShowNavigation(false)">
+          {{ template "home/carousel/button-left" $pager }}
+          <div class="carousel__viewport">
+            <div class="carousel__tray flex flex-nowrap justify-between">
+              <template x-for="(item, i) in {{ $pager }}.items" :key="item.href">
+                {{ template "home/products/carousel/tile" }}
+              </template>
+            </div>
+          </div>
+          {{ template "home/carousel/button-right" $pager }}
+        </div>
+      </div>
+    </template>
+  </div>
+{{ end }}
+
+{{ define "home/products/carousel/tile" }}
+  <a
+  class="carousel__item flex items-center bg-white rounded-lg text-textcolor hover:shadow-lg hover:text-brand"
+  :href="item.href">
+    <div class="flex flex-col justify-center w-full px-4">
+      <div class="w-full flex justify-center mb-2">
+        <div class="w-16 h-16" :x-ref="item.href" x-svg="item.icon" x-show="!item.svgRef"></div>
+        <template x-if="item.svgRef">
+          <svg class="w-16 h-16">
+            <use :href="item.svgRef"></use>
+          </svg>
+        </template>
+      </div>
+      <h3 x-html="item.linkTitle" class="text-center text-md md:text-lg mb-2 pt-3" style="letter-spacing: -0.2px;"></h3>
+      <template x-if="item.count">
+        <span x-html="item.count + ' Guides'" class="text-center text-basicgray text-sm" style="letter-spacing: -0.3px;"></span>
+      </template>
+    </div>
+  </a>
+{{ end }}
+
+{{ define "home/section/carousel"}}
+  {{ $section := .section }}
+  {{ $pager := printf "data.sectionTiles.%s"  $section }}
+  {{ $ctx := dict "pager" $pager | merge . }}
+  <div x-ref="carousel-{{ $section }}" class="carousel {{ $section }} w-full">
+    <div class="page-size"></div>
+    <template x-if="{{ $pager }}">
+      <div>
+        <div class="flex items-center justify-between">
+          {{ template  "home/section/title" $ctx }}
+          {{ template "home/carousel/progress" $pager }}
+        </div>
+        {{ $section := .section }}
+        <div class="carousel__container flex flex-nowrap content-start w-full mt-7 p-0" data-testid="carousel-{{ $section }}" @mouseenter="{{ $pager }}.toggleShowNavigation(true)" @mouseleave="{{ $pager }}.toggleShowNavigation(false)">
+          {{ template "home/carousel/button-left" $pager }}
+          <div class="w-full">
+            <div class="carousel__viewport -mr-4">
+              <div class="carousel__tray flex flex-nowrap">
+                <template x-for="(item, i) in {{ $pager }}.items" :key="item.objectID">
+                  <div class="carousel__item">
+                    {{ if eq $section "qa" }}
+                      {{ template "home/section/carousel/item-qa" }}
+                    {{ else }}
+                      {{ template "home/section/carousel/item" }}
+                    {{ end }}
+                  </div>
+                </template>
+              </div>
+            </div>
+          </div>
+          {{ template "home/carousel/button-right" $pager }}
+        </div>
+      </div>
+    </template>
+  </div>
+{{ end }}
+
+{{ define "home/section/carousel/item"}}
+  <div class="bg-white h-full overflow-hidden rounded-lg shadow-sm hover:shadow-lg">
+    <a :href="item.href" class="no-underline block">
+      <div class="relative overflow-hidden pb-16/9 bg-gray-200">
+        <img :src="item.thumbnailUrl"
+        alt="Article image" class="absolute h-full w-full object-cover img-transparent" @load="$event.target.classList.remove('img-transparent')" loading="eager">
+      </div>
+      <div class="px-4 pt-6">
+        <h3 class="two-lines-ellipsis font-semibold text-sm md:text-lg" x-html="item.linkTitle"></h3>
+      </div>
+    </a>
+  </div>
+{{ end }}
+
+{{ define "home/section/carousel/item-qa"}}
+  <div class="bg-gradient-to-b from-green-500 to-green-600 p-5 rounded-lg shadow-sm hover:shadow-lg overflow-hidden h-full">
+    <a :href="item.href" target="_blank">
+      <h3 x-text="item.excerptTruncated(60)" class="hidden md:block text-white font-semibold text-md md:text-lg tracking-tight leading-tight"></h3>
+      <h3 x-html="item.excerptTruncated(90)" class="block md:hidden text-white font-semibold text-md md:text-lg tracking-tight leading-tight"></h3>
+    </a>
+  </div>
+{{ end }}

@@ -3,17 +3,17 @@ slug: writing-scripts-for-use-with-linode-stackscripts-a-tutorial
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Writing a script for use in a StackScript is similar to writing any script that can be executed by a Linux system. This guide provides you with details on the StackScript system, including script requirements, how to import an existing StackScript into a new StackScript, information on user defined fields, and more.'
-og_description: 'Writing a script for use in a StackScript is similar to writing any script that can be executed by a Linux system. This guide provides you with details on the StackScript system, including script requirements, how to import an existing StackScript into a new StackScript, information on user defined fields, and more.'
+description: "This guide details the StackScript system including script requirements, how to import an existing StackScript into a new StackScript, and more."
 keywords: ["automation", "scripts", "deployments", "instance"]
 tags: ["linode platform","automation","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-21
-image: Writing_Scripts_for_Use_with_Linode_StackScripts_1200x631.png
+image: WritingScripts_LinodeStackScripts.png
 modified_by:
   name: Linode
-title: "Writing Scripts for Use with Linode StackScripts - A Tutorial"
-h1_title: "Writing Scripts for Use with Linode StackScripts"
+title: "How to Write Scripts for Linode StackScripts (A Tutorial)"
+h1_title: "Writing Scripts for Linode StackScripts"
+enable_h1: true
 contributor:
   name: Linode
 aliases: ['/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/']
@@ -61,6 +61,12 @@ Linode images are created using "vanilla" versions of its given distribution. Co
     {{< file >}}
 #!/usr/bin/env python
 {{</ file >}}
+
+    Alternatively, python3 can be specified with the following:
+
+    {{< file >}}
+#!/usr/bin/python3
+{{< /file >}}
 
 ### Import a StackScript
 
@@ -138,6 +144,10 @@ If you would like to create a masked password input field, use the word `passwor
     |*oneof*      | A comma separated list of acceptable single values for the field. When this attribute is provided, a dropdown menu is presented to a user with a list of values to choose from within the Linode Cloud Manager. Only one value can be selected by the user. If your StackScript uses the *oneof* attribute, you cannot use the *manyof* attribute.| Comma separated list of strings. |
     |*manyof*     | A comma separated list of acceptable values for the field in any quantity, combination, or order. When this attribute is used, a dropdown menu is presented to a user. The menu lists the acceptable values they can choose from with the Linode Cloud Manager. Multiple values can be selected by the user. If your StackScript uses the *manyof* attribute, you cannot use the *oneof* attribute. | Comma separated list of strings. |
 
+{{< note >}}
+UDF fields are only usable by scripts written in bash.
+{{< /note >}}
+
 ### Default Environment Variables
 
 Linode StackScripts provide a set of default environment variables that you can use to provide your script with information about the Linode it has deployed.
@@ -145,7 +155,7 @@ Linode StackScripts provide a set of default environment variables that you can 
 | **Environment Variable**               | **Description**                                                                       |
 |:-----------------------------------|:------------------------------------------------------------------------------------------|
 | `LINODE_ID`           | The deployed Linode's ID number                                                            |
-| `LINODE_LISHUSERNAME` | The deployed Linode's full [Linode Shell (LISH)](/docs/platform/manager/using-the-linode-shell-lish/) accessible name. |
+| `LINODE_LISHUSERNAME` | The deployed Linode's full [Linode Shell (LISH)](/docs/guides/using-the-lish-console/) accessible name. |
 | `LINODE_RAM`          | The [RAM available on this Linode's plan](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions).                                                   |
 | `LINODE_DATACENTERID` | The ID number of the data center containing the Linode. You can use the [Linode API](https://developers.linode.com/api/v4/regions) to see a list of all data center IDs. |
 

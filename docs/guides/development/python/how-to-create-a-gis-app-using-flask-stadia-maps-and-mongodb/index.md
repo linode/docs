@@ -3,16 +3,17 @@ slug: how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide will use Stadia Maps free tier plan and hosted vector map tiles to create a GIS web app using Flask. Your Flask application will use a MongoDB database to store GeoJSON data to display as markers on your Stadia Map powered map.'
+description: "This guide will use the Stadia Maps free tier plan and hosted vector map tiles to create a GIS web app using Flask."
 keywords: ['maps','GIS','flask','mongodb', 'python']
 tags: ["web applications","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-21
 modified_by:
   name: Linode
-image: HowtoCreateaGISApplicationusingFlaskStadiaMapsandMongoDB.png
-title: "How to Create a GIS Application using Flask, Stadia Maps, and MongoDB"
-h1_title: "Create a GIS Application using Flask, Stadia Maps, and MongoDB"
+image: L_CreateGISapp.png
+title: "Creating a GIS App Using Flask, Stadia Maps, and MongoDB"
+h1_title: "Creating a GIS Application using Flask, Stadia Maps, and MongoDB"
+enable_h1: true
 contributor:
   name: Leslie Salazar
   link: https://twitter.com/leslitasalazar?s=03
@@ -77,7 +78,7 @@ Before creating your Flask App, you will set up your MongoDB database to store t
 
 1. Run your local MongoDB instance. The instance will need to run so that your Flask app can connect to your project's database. Follow  the steps in [MongoDB's official documentation](https://docs.mongodb.com/guides/server/install/#run-mongodb). These steps vary depending on your computer's operating system.
 
-1. In your `stadia-maps` project directory, create a file named `linodeStreetTrees.geojson` to store your GeoJSON data. Using the text editor of your choice, copy and paste the data located in [this linked file](/docs/development/python/how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb/linodeStreetTrees.geojson). Your file's final locations should be `~/stadia-maps/linodeStreetTrees.geojson`. You will use the data stored in your local file in the next step.
+1. In your `stadia-maps` project directory, create a file named `linodeStreetTrees.geojson` to store your GeoJSON data. Using the text editor of your choice, copy and paste the data located in [this linked file](linodeStreetTrees.geojson). Your file's final locations should be `~/stadia-maps/linodeStreetTrees.geojson`. You will use the data stored in your local file in the next step.
 
 1. Open a new terminal window and use the `mongoimport` command line tool to import your GeoJSON data to your database. The import will create a database and collection named `linodeStreetTrees` and will use the data stored in the `linodeStreetTrees.geojson` file to create your collection's documents. In MongoDB, databases hold collections of documents. Collections are analogous to tables in relational databases. Documents store data records of field-value pairs in BSON format, a binary representation of JSON.
 

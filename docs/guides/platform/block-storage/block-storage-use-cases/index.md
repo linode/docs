@@ -9,12 +9,15 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-27
 modified_by:
   name: Linode
-title: "Use Cases for Block Storage"
+title: "Common Block Storage Use Cases"
+h1_title: "Common Use Cases for Block Storage"
 contributor:
   name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/block-storage/block-storage-use-cases/']
 ---
+
+{{< content "nvme-block-storage-notice-shortguide" >}}
 
 ## What is Block Storage
 
@@ -40,10 +43,6 @@ Below you will find some of the more popular use cases for Block Storage.
 
 ## Use Cases
 
-### Databases
-
-Databases require quick read/write operations, and Block Storage Volumes are mounted directly to a cloud instance's filesystem, so there is a minimal delay in writing and retrieving data. Growing businesses often have increasing data storage demands, so it's also important for a database to be scalable. A Volume that stores your database can be resized to meet your storage needs.
-
 ### Persistent Storage
 
 Block Storage Volumes can be detached from a cloud instance just as easily as they are attached, meaning that it's possible to create hot-swappable drives with Block Storage. This is useful if you need to perform the same kind of tasks across a fleet of instances with the same data.
@@ -57,6 +56,10 @@ While the Block Storage service has full support for hot swapping, it is importa
 Containers, like those created with Docker or inside Kubernetes Pods, can benefit from having some type of persistent storage. This helps to keep a container's size down and makes it easy to maintain data outside of the normal lifecycle of the container or Pod.
 
 If you are using Docker, you can use the [Docker Volume Driver for Linode](https://github.com/linode/docker-volume-linode) to create a Docker volume from a Block Storage Volume. Similarly, if you are using Kubernetes you can use the [Container Storage Interface (CSI) Driver for Linode Block Storage](https://github.com/linode/linode-blockstorage-csi-driver) to create a Persistent Volume Claim that's backed by a Block Storage Volume.
+
+### Database Storage
+
+With the release of NVMe Block Storage, our Block Storage service is able to meet the demands of the most resource-intensive database applications. Many enterprise database solutions benefit from ultra-fast NVMe storage, as well as the redundancy and fault tolerance provided by Block Storage. See the Availability section in the [Block Storage Overview](/docs/products/storage/block-storage/#availability) page to learn which data centers have already been upgraded with NVMe Block Storage.
 
 ### Running Cloud Software
 

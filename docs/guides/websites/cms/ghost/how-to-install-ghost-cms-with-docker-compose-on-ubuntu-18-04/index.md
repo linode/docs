@@ -3,8 +3,7 @@ slug: how-to-install-ghost-cms-with-docker-compose-on-ubuntu-18-04
 author:
   name: Linode
   email: docs@linode.com
-description: 'This tutorial will teach you how to install Ghost, a publishing platform great for running blogs and sharing published content, on Ubuntu 18.04 and using Docker Compose'
-og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode.'
+description: "Learn how to install Ghost, a publishing platform great for running blogs and sharing published content, on Ubuntu 18.04."
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on ubuntu 18.04", "docker", "docker compose"]
 tags: ["nginx","ubuntu","docker","mysql","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,7 +12,9 @@ modified: 2018-08-20
 modified_by:
   name: Linode
 published: 2018-08-20
-title: How to Install Ghost CMS with Docker Compose on Ubuntu 18.04
+title: How to Install Ghost CMS with Docker on Ubuntu 18.04
+h1_title: Installing Ghost CMS with Docker Compose on Ubuntu 18.04
+enable_h1: true
 external_resources:
 - '[Ghost Setup Documentation](https://docs.ghost.org/v1.0.0)'
 - '[Ghost Theme Documentation](https://themes.ghost.org/v1.0.0)'
@@ -70,7 +71,7 @@ In your deployment, the web server will run in its own container, and the Certbo
 
 ### Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ### Install Docker Compose
 

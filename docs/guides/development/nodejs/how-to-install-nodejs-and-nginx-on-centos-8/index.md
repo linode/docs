@@ -3,17 +3,17 @@ slug: how-to-install-nodejs-and-nginx-on-centos-8
 author:
     name: Linode
     email: docs@linode.com
-description: 'In this guide you will install and configure NGINX to serve static site content on an CentOS 8 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server. '
-og_description: 'In this guide you will install and configure NGINX to serve static site content on an CentOS8 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server.'
+description: In this guide, you will learn how to install, configure, and test NGINX and Node.js to serve static site content on a CentOS 8 server.
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", "centos", " front-end requests", " back-end requests"]
 tags: ["centos", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-04-14
+modified: 2021-08-11
 modified_by:
     name: Linode
 published: 2020-04-14
-title: 'How to Install Node.js and NGINX on CentOS 8'
-h1_title: 'Installing Node.js and NGINX on CentOS 8'
+title: Installing Node.js and NGINX on CentOS 8
+h1_title: How to Install Node.js and NGINX on CentOS 8
+enable_h1: true
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'
@@ -23,7 +23,7 @@ external_resources:
 audiences: ["intermediate"]
 concentrations: ["Web Applications"]
 languages: ["javascript"]
-image: 'Installing_Nodejs_and_NGINX_on_CentOS_8_1200x631.png'
+image: Install_Nodejs_NGINX_CentOS8.png
 relations:
     platform:
         key: install-nodejs-nginx
@@ -77,7 +77,7 @@ NGINX site-specific configuration files are kept in `/etc/nginx/sites-available`
 
         sudo mkdir -p /etc/nginx/{sites-available,sites-enabled}
 
-1.   Using your preferred text editor, create a new NGINX site configuration file located in the `/etc/nginx/sites-available/` directory. Replace the example file name and any instances of `example.com` with your own domain name or IP address.
+1.  Using your preferred text editor, create a new NGINX site configuration file located in the `/etc/nginx/sites-available/` directory. Replace the example file name and any instances of `example.com` with your own domain name or IP address.
 
     {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 #Names a server and declares the listening port
@@ -101,17 +101,17 @@ server {
 
 {{< /file >}}
 
-1.   Create a symlink from your NGINX configuration file in the `sites-available` directory to the `sites-enabled` directory.
+1.  Create a symlink from your NGINX configuration file in the `sites-available` directory to the `sites-enabled` directory.
 
         sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
 
-1. Using a text editor, update your NGINX configuration file, `/etc/nginx/nginx.conf`, with the following two changes:
+1.  Using a text editor, update your NGINX configuration file, `/etc/nginx/nginx.conf`, with the following two changes:
 
       - Remove the `default_server` parameter from the `listen` directive.
 
       - Add an `include` directive to the `/etc/nginx/sites-enabled/*` directory. This `include` must be within your configuration file's `http` block. Place the `include` directive below the `include /etc/nginx/conf.d/*.conf;` line.
 
-    {{< file "/etc/nginx/nginx.conf" >}}
+    {{< file "/etc/nginx/nginx.conf" nginx >}}
 ...
 http {
 ...
@@ -137,9 +137,9 @@ If you plan to use any [httpd](https://en.wikipedia.org/wiki/Httpd) scripts and 
     sudo setsebool -P httpd_can_network_connect on
       {{< /note >}}
 
-{{< content "cloud-firewall-shortguide" >}}
+    {{< content "cloud-firewall-shortguide" >}}
 
-1. Verify that there are no syntax errors in your site's configuration file.
+1.  Verify that there are no syntax errors in your site's configuration file.
 
         sudo nginx -t
 
@@ -162,7 +162,7 @@ Ensure you replace `example.com` with your own site's name or IP address in all 
 
 1.  Using the text editor of your choice, create your site's index file in the root directory using the example below.
 
-    {{< file "/var/www/example.com/index.html" >}}
+    {{< file "/var/www/example.com/index.html" html >}}
 <!DOCTYPE html>
 <html>
 <body>
@@ -211,7 +211,7 @@ As of writing this guide, the latest LTS version of [Node.js](https://nodejs.org
 
         nvm install 12.16.2
 
-1. Use NVM to run your preferred version of Node.js.
+1.  Use NVM to run your preferred version of Node.js.
 
         nvm use 12.16.2
 
@@ -231,7 +231,7 @@ Ensure you replace `example.com` with your own site's name or IP address in all 
 
 1. Create the `test.js` file in your site's root directory.
 
-      {{< file "/var/www/example.com/test.js" >}}
+      {{< file "/var/www/example.com/test.js" html >}}
 <!DOCTYPE html>
 <html>
 <body>
@@ -256,7 +256,7 @@ In this section, you will create a file named `server.js` that will use Node.js 
 
 1. In your site's root directory, create the `server.js` file with the following content.
 
-      {{< file "/var/www/example.com/server.js">}}
+      {{< file "/var/www/example.com/server.js" js >}}
 //nodejs.org/api for API docs
 //Node.js web server
 var http = require("http"),                           //Import Node.js modules
@@ -288,11 +288,11 @@ console.log("Server is listening on port 3000.")      //Terminal output
         tmux
     Press **return** when prompted.
 
-1. Navigate to your root directory where your `test.js` file is located.
+1.  Navigate to your root directory where your `test.js` file is located.
 
         cd /var/www/example.com
 
-1. Run your Node.js web server. Appending `&` to the end of a command will keep the web server's process running in the background.
+1.  Run your Node.js web server. Appending `&` to the end of a command will keep the web server's process running in the background.
 
         node server.js &
 
