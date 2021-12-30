@@ -29,9 +29,18 @@ show_on_rss_feed: false
     | **Protocol** | Select the Transport Layer protocol to use for this Firewall rule. *Required*|
     | **Ports** | Select from a list of common port numbers, or select **Custom** to open the **Custom Port Range** configuration option. Up to 15 ports (and port ranges) can be added to a single Cloud Firewall rule. Port numbers must be within 1 and 65535 and they cannot contain leading zeroes. *Required for TCP and UDP protocols but not allowed for the ICMP protocol.* |
     | **Custom Port Range** | Provide a port number or a range of ports on which to take action. Multiple ports or ranges can be added by separating each port or range with a comma (`,`). To configure a **Port Range**, enter the starting port and ending port numbers separated by a dash (`-`). For example, here is an example value that applies the rule to ports 21, 993, 995, and 2000-3000: `21,993,995,2000-3000`.  *Optional* |
-    | **Sources** | **Required for Inbound rules only.** Select from a list of **Sources** that limit incoming connections to the chosen internet protocol, netmask, or specific IP address(es). |
-    | **Destinations** | **Required for Outbound rules only.** Select from a list of **Destinations** that limit the outgoing connections to the chosen internet protocol, netmask, or specific IP address(es). |
+    | **Sources** | **Required for Inbound rules only.** Select from a list of **Sources** that limit incoming connections to the chosen internet protocol, netmask, or specific IP address(es) and ranges. |
+    | **Destinations** | **Required for Outbound rules only.** Select from a list of **Destinations** that limit the outgoing connections to the chosen internet protocol, netmask, or specific IP address(es) and ranges. |
     | **Action** | Choose whether this rule will be to allow or drop traffic. The action defined in specific rules will take precedence over the default inbound and outbound traffic policy. *Required* |
+
+    {{< note >}}
+  When applying individual IP addresses or IP ranges to either the `source` or `destination` field, the addresses must always be valid and formatted correctly. An example valid IPv4 and IPv6 range is as follows:
+
+  - `139.144.0.0/16`
+  - `2001:db8:1234::/48`
+
+  As of the time of this writing, if an IP address or range is invalid, users will be unable to **Save Changes** after reviewing new firewall rules, and no error message will appear. Users should ensure that all IP addresses and Ranges are valid and formatted correctly should they encounter this issue.
+  {{< /note >}}
 
 1. Click on **Add Rule** to add the new rule to this Firewall. If you would like to add any additional rules, repeat the process outlined in this section.
 
