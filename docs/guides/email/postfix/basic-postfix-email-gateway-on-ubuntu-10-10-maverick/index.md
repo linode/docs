@@ -3,7 +3,7 @@ slug: basic-postfix-email-gateway-on-ubuntu-10-10-maverick
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configure the Postfix MTA as a basic email gateway.'
+description: 'Configure the Postfix MTA as a basic email gateway on Ubuntu 10.10 (Maverick)'
 keywords: ["email", "postfix", "mta", "forwarding"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

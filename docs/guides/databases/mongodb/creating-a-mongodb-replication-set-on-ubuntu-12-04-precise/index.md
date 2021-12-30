@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: Configure a MongoDB ReplSet
+description: Configure a MongoDB ReplSet on Ubuntu 12.04 (Precise)
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/creating-a-mongodb-replication-set-on-ubuntu-12-04-precise/','/databases/mongodb/ubuntu-12/']

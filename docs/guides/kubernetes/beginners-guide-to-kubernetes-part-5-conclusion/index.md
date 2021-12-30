@@ -3,7 +3,7 @@ slug: beginners-guide-to-kubernetes-part-5-conclusion
 author:
   name: Andy Stevens
   email: docs@linode.com
-description: 'An introduction to Kubernetes concepts and components.'
+description: 'An introduction to Kubernetes concepts and components Part 5 - Conclusion.'
 keywords: ['kubernetes','k8s','beginner','architecture']
 tags: ["networking","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

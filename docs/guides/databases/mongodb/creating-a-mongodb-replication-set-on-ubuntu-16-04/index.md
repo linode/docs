@@ -3,13 +3,13 @@ slug: creating-a-mongodb-replication-set-on-ubuntu-16-04
 author:
   name: Linode
   email: docs@linode.com
-description: Configure a MongoDB Replica Set
+description: Configure a MongoDB Replica Set on Ubuntu 16.04
 keywords: ["mongodb", "nosql", "clusters", "replica set"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2016-12-02
-title: 'How To Create a MongoDB Replica Set'
+title: 'How To Create a MongoDB Replica Set on Ubuntu 16.04'
 h1_title: 'Creating a MongoDB Replica Set'
 aliases: ['/databases/mongodb/create-a-mongodb-replica-set/','/databases/mongodb/creating-a-mongodb-replication-set-on-ubuntu-16-04/']
 external_resources:

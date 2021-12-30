@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy simple web applications with the Sinatra web development framework.'
+description: 'Deploy simple web applications with the Sinatra web development framework using Fedora 14.'
 keywords: ["sinatra", "ruby", "web applications", "development", "deployment"]
 tags: ["web applications","nginx","fedora","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

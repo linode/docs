@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Build a groupware system with eGroupware.'
+description: 'Build a groupware system with eGroupware on CentOS 5.'
 keywords: ["groupware", "email", "collaboration", "centos"]
 tags: ["centos", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

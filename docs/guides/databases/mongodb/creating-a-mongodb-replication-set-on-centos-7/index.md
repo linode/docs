@@ -3,13 +3,13 @@ slug: creating-a-mongodb-replication-set-on-centos-7
 author:
   name: Linode
   email: docs@linode.com
-description: Configure a MongoDB Replica Set
+description: Configure a MongoDB Replica Set on Centos 7
 keywords: ["mongodb", "nosql", "clusters", "replica set"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2016-12-02
-title: 'How To Create a MongoDB Replica Set'
+title: 'How To Create a MongoDB Replica Set On CentOS 7'
 h1_title: 'Creating a MongoDB Replica Set'
 aliases: ['/databases/mongodb/creating-a-mongodb-replication-set-on-centos-7/','/databases/mongodb/create-a-mongodb-replica-set/']
 external_resources:

@@ -3,7 +3,7 @@ slug: beginners-guide-to-kubernetes-part-3-objects
 author:
   name: Andy Stevens
   email: docs@linode.com
-description: 'An introduction to Kubernetes concepts and components.'
+description: 'An introduction to Kubernetes concepts and components Part 3 - Objects.'
 keywords: ['kubernetes','k8s','beginner','architecture']
 tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
