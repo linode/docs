@@ -8,26 +8,21 @@ keywords: ["two-factor authentication", "password", "security", "Linode Cloud Ma
 tags: ["security","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-manager-security/','/security/authentication/linode-manager-security-controls/','/security/linode-manager-security-controls-new-manager/','/platform/manager/keep-your-linode-account-safe/','/security/linode-manager-security-controls/','/security/authentication/two-factor-authentication/linode-manager-security-controls/']
-modified: 2019-01-08
+modified: 2021-12-30
 modified_by:
   name: Linode
 published: 2013-05-02
-title: Linode Cloud Manager Security Controls
+title: "Cloud Manager Security Controls"
+image: Linode_Manager_Security_Controls_smg.jpg
 ---
 
-The [Linode Cloud Manager](https://cloud.linode.com) is the gateway to all of your Linode products and services, and you should take steps to protect it from unauthorized access.
-
-![Linode Cloud Manager Security Controls](Linode_Manager_Security_Controls_smg.jpg)
-
-This guide documents several of the Linode Cloud Manager's features that can help mitigate your risk. Whether you're worried about malicious users gaining access to your username and password, or authorized users abusing their access privileges, the Linode Cloud Manager's built-in security tools can help.
+The [Cloud Manager](https://cloud.linode.com) is the gateway to all of your Linode products and services, and you should take steps to protect it from unauthorized access. This guide documents several of the Linode Cloud Manager's features that can help mitigate your risk. Whether you're worried about malicious users gaining access to your username and password, or authorized users abusing their access privileges, the Cloud Manager's built-in security tools can help.
 
 Start by [enabling two-factor authentication](#enable-two-factor-authentication) to protect your account with a physical token, and then [configure security event notifications](/docs/guides/cloud-manager-events-and-activity-feeds/#managing-email-notifications-for-events) for your Linode account. In this guide you also learn how to [control API access](#api-access), [configure user accounts](#configure-user-accounts), and [force password expirations](#force-password-expirations).
 
 ## Two-Factor Authentication
 
-Two-factor authentication increases the security of your Linode account by requiring two forms of authentication: something you have, and something you know. You're already familiar with this concept if you've ever used a debit card at an ATM. The debit card is something you have, and the PIN access code is something you know. You need both the debit card and the PIN to access your bank account.
-
-![Diagram of two-factor authentication with SSH login.](two-factor-authentication-diagram.png "Two-factor authentication with SSH login.")
+Two-factor authentication increases the security of your Linode account by requiring two forms of authentication: something you have and something you know. You're already familiar with this concept if you've ever used a debit card at an ATM. The debit card is something you have, and the PIN access code is something you know. You need both the debit card and the PIN to access your bank account.
 
 If you enable this optional feature in the Linode Cloud Manager, you access your Linode account using your smartphone as a physical token in addition to your username and password. This additional layer of security reduces the risk that an unauthorized individual can gain access to your Linode account.
 
@@ -49,33 +44,31 @@ Authy stores your authentication tokens (hashed for security) on their servers. 
 
 Enable two-factor authentication to start using it with your Linode account.
 
-1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 
-1.  Select the **My Settings** link by clicking on your username at the top of the page:
+1.  Navigate to the Login & Authentication page of your profile by clicking on your **username** in the top right of the screen. Select **Login & Authentication** from the dropdown menu.
 
-    ![Select 'My Settings'](security-my-profile.png "Select 'My Settings'")
+    ![Click your username and select Login & Authentication](profile-link.png)
 
+1. Within the **Login Method** section, select **Linode**. If you'd rather configure a Third-Party Authentication (TPA) providers, such as Google and GitHub, see [Enabling Third Party Authentication on Your Linode Account](/docs/guides/third-party-authentication/). Only one login provider can be active at a time. Once selected, you will be asked to confirm that you'd like to enable TPA with this provider.
 
-1.  Select the **Login & Authentication** tab.
-1.  In the **Two-Factor Authentication (TFA)** section, toggle the **Disabled** switch so that it reads **Enabled** to enable Two-Factor Authentication.
-1.  A new form appears. Write down the **Secret Key** and store it in a safe place:
+    ![Select the Login Method](tpa-options.png)
 
-    ![The key and QR code for two-factor authentication.](security-tfa-settings.png "The key and QR code for two-factor authentication.")
+1.  Under **Linode Authentication**, enable **Two-Factor Authentication (TFA)**.
 
+    ![Enable TFA](tfa-enable.png)
 
-1.  On your smartphone, open Authy.
+1.  A new form appears, displaying the QR code, secret key, and a section to enter a token.
 
-1.  Tap **Add Account**.
+1.  Open your preferred TFA provider on your smartphone or desktop. You can use Authy, Microsoft Authenticator, Google Authenticator, or even the built-in TFA functionality on password management tools like 1Password.
 
-1.  Tap **SCAN QR CODE**.
+1.  Scan the QR code into the app or enter the secret key. This process will vary depending on your provider. Within Authy, tap **Add Account** and then tap **SCAN QR CODE**. Point your device's camera at the barcode on your computer screen. The app automatically creates a new token for your Cloud Manager login. It is labeled **LinodeManager:user**. Change the account name if necessary, and press **Done**.
 
-1.  Point your device's camera at the barcode on your computer screen. The app creates a new token for your Cloud Manager login, automatically. It is labeled **LinodeManager:user**. Change the account name if necessary, and press **Done**.
+1.  In the **Token** field of the Two-Factor Authentication form, enter the token provided by the TFA app and click **Confirm Token**.
 
-1.  In the **Token** field of the Two-Factor Authentication form, enter the Linode Token, and click **Save**.
+    ![Enter the TFA token](confirm-tfa-token.png)
 
-<!-- 12. Note the *Scratch Code* and store it in a secure place. You have to use this code if the device with the two-factor code is not available. -->
-
-That's it! You've successfully enabled two-factor authentication and set up token generation on your smartphone.
+That's it! You've successfully enabled two-factor authentication.
 
 ### Log in with Two-Factor Authentication
 
@@ -93,35 +86,14 @@ Now that you have set up two-factor authentication for your account, you need to
 
 You have successfully logged in to the Linode Cloud Manager using two-factor authentication.
 
-<!--
-### Scratch Code
-
-Generating a one-time use scratch code is also recommended. In the event that your smartphone is unavailable or the token is lost, you can use this code one time to log back in to the Linode Manager and regenerate the secret key. By default the scratch code is disabled.
-
-1.  Click on the **generate** link to create a code.
-
-    [![Generate Scratch Code.](1364-manager_2fa_enabled_sm.png)](1361-manager_2fa_enabled.png)
-
-2.  A pop-up window will appear asking you to confirm the action. Click **OK**.
-
-    [![Confirmation Window.](1362-warning_generate_scratchcode.png)](1362-warning_generate_scratchcode.png)
-
-3.  The scratch code is displayed. This code will be displayed only once, so write it down and store it somewhere safe.
-
-    [![Confirmation Window.](1365-manager_scratchcode_enabled_sm.png)](1363-manager_scratchcode_enabled.png)
-
--->
-
 ### Generate a New Key
 
 The Linode Cloud Manager allows you to generate a new secret key for your two-factor authentication token device. This is a good way to start using a new smartphone as your two-factor token device. Here's how to generate a new secret key:
 
-1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1.  Select the **My Settings** link by clicking on your username at the top of the page:
+1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 
-    ![Select 'My Settings'](security-my-profile.png "Select My Settings")
+1.  Navigate to the Login & Authentication page of your profile by clicking on your **username** in the top right of the screen. Select **Login & Authentication** from the dropdown menu.
 
-1.  Select the **Login & Authentication** tab.
 1.  In the **Two-Factor Authentication (TFA)** section, click **Reset two-factor authentication**, as shown below.
 
     ![Reset two-factor authentication.](security-reset-tfa.png "Reset two-factor authentication.")
@@ -132,13 +104,12 @@ A new secret key and barcode is generated for your account and displayed on the 
 
 You can disable two-factor authentication for your Linode account at any time. Here's how:
 
-1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1.  Select the **My Settings** link by clicking on your username at the top of the page:
+1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 
-      ![Select 'My Settings'](security-my-profile.png "Select 'Settings")
+1.  Navigate to the Login & Authentication page of your profile by clicking on your **username** in the top right of the screen. Select **Login & Authentication** from the dropdown menu.
 
-1.  Select the **Login & Authentication** tab.
 1.  In the **Two-Factor Authentication (TFA)** section, toggle the **Enabled** switch to disable two-factor Authentication.
+
 1.  A confirmation window appears asking if you want to disable two-factor authentication. Click **Disable Two-Factor Authentication**.
 
 You have successfully disabled the two-factor authentication feature for your Linode Cloud Manager account.
@@ -162,14 +133,13 @@ If you prefer encrypted communication:
 
 Whenever you log into the Cloud Manager from a new device or computer, you can choose to _Trust this computer for 30 days_. This means your device is not prompted for a username or password for the next 30 days. The Cloud Manager displays a list of all trusted devices for your account and gives you the ability to *untrust* any device on the list. Your account's associated email address is notified whenever a new device is trusted. To view and manage your account's trusted devices:
 
-1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1.  Select the **My Profile** link by clicking on your username at the top of the page:
+1.  Log in to the [Cloud Manager](https://cloud.linode.com).
 
-      ![Select 'My Profile'](security-my-profile.png "Select 'My Profile")
+1.  Navigate to the Login & Authentication page of your profile by clicking on your **username** in the top right of the screen. Select **Login & Authentication** from the dropdown menu.
 
-1.  Select the **Login & Authentication** tab and navigate to the  **Trusted Devices** section.
+1.  Scroll down to the  **Trusted Devices** section.
 
-      ![View trusted devices](trusted-devices.png "View trusted devices")
+    ![View trusted devices](trusted-devices.png "View trusted devices")
 
     You can view all your account's trusted devices and *revoke* any device, as needed. If any device that is untrusted, you are prompted to re-enter the username and password when attempting to log into your Cloud Manager account.
 
