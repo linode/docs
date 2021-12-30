@@ -52,7 +52,7 @@ The following configuration options create a secure [Limited User](/docs/securit
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Debian 10
-- **Recommended minimum plan:** 2GB Dedicated CPU or Shared Compute Instance
+- **Recommended minimum plan:** 4GB Dedicated CPU or Shared Compute Instance
 
 ## Getting Started After Deployment
 

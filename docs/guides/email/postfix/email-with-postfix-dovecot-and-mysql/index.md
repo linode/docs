@@ -169,7 +169,7 @@ Follow the steps below to create the database and add tables for virtual users, 
 
         FLUSH PRIVILEGES;
 
-1.  Switch to the new `mailsever` database:
+1.  Switch to the new `mailserver` database:
 
         USE mailserver;
 
