@@ -76,7 +76,9 @@ In S3-compatible Object Storage, a lifecycle policy is represented by an XML fil
 <LifecycleConfiguration>
     <Rule>
         <ID>delete-all-objects</ID>
+        <Filter>
         <Prefix></Prefix>
+        </Filter>
         <Status>Enabled</Status>
         <Expiration>
             <Days>1</Days>
@@ -90,6 +92,7 @@ The above lifecycle policy deletes all objects in the bucket after one day. Each
 | Block | Description |
 |-------|-------------|
 | `ID` | Defines a name for the lifecycle policy rule. If your lifecycle policy contains multiple rules, then the ID for each should be unique. If one is not specified in your policy file, then a random alphanumeric ID will be assigned to your policy when the policy is applied to a bucket. |
+| `Filter` |A Lifecycle rule can apply to all or a subset of objects in a bucket based on the <Filter> element that you specify in the Lifecycle rule.You can filter objects by key prefix, object tags, or a combination of both.|
 | `Prefix` | This string is used to select objects for deletion with the same matching prefix. For example, objects that begin with `error_report-` could be targeted for deletion by providing this prefix. This Prefix can be empty if you want a rule to apply to all files in a bucket. |
 | `Status` | A string value describing the status of the lifecycle policy. To enable the policy, set this value to `Enabled`. To disable the policy set the value to `Disabled`. |
 | `Expiration` | Contains the `Days` block. The `Days` block is the number of days before this rule will be enforced. In the above example, the `Days` is set to `1`, meaning that the objects in the bucket will be deleted after one day. |
@@ -104,7 +107,7 @@ Other actions can also be specified in a rule:
 <LifecycleConfiguration>
     <Rule>
         <ID>delete-prior-versions</ID>
-        <Prefix></Prefix>
+        <Filter><Prefix></Prefix></Filter>
         <Status>Enabled</Status>
         <NoncurrentVersionExpiration>
             <NoncurrentDays>1</NoncurrentDays>
@@ -119,7 +122,7 @@ Other actions can also be specified in a rule:
 <LifecycleConfiguration>
     <Rule>
         <ID>delete-incomplete-multipart-uploads</ID>
-        <Prefix></Prefix>
+        <Filter><Prefix></Prefix></Filter>
         <Status>Enabled</Status>
         <AbortIncompleteMultipartUpload>
             <DaysAfterInitiation>3</DaysAfterInitiation>
@@ -140,7 +143,7 @@ More than one action can be specified in a single rule. For example, you may wan
 <LifecycleConfiguration>
     <Rule>
         <ID>delete-prior-versions</ID>
-        <Prefix></Prefix>
+        <Filter><Prefix></Prefix></Filter>
         <Status>Enabled</Status>
         <Expiration>
             <Days>10</Days>
@@ -164,7 +167,7 @@ A lifecycle policy file can only contain one `LifecycleConfiguration` block, but
 <LifecycleConfiguration>
     <Rule>
         <ID>delete-error-logs</ID>
-        <Prefix>error</Prefix>
+        <Filter><Prefix>error</Prefix></Filter>
         <Status>Enabled</Status>
         <Expiration>
             <Days>7</Days>
