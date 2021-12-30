@@ -8,7 +8,7 @@ keywords: [ 'mist.io', 'marketplace', 'server']
 tags: ["cloud-manager", "linode platform", "marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-18
-modified: 2021-09-16
+modified: 2021-12-23
 modified_by:
   name: Linode
 title: "Deploying Mist.io through the Linode Marketplace"
@@ -75,7 +75,7 @@ The Mist.io Marketplace App installs the following software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|
-| [**Docker Compose**](https://docs.docker.com/compose/) | Tool for defining and running multi-container Docker applications.|
-| [**Mist Community Edition v4.3.8**](https://github.com/mistio/mist-ce) | An open source Mult-Cloud Management Platform.|
+| [Docker Compose](https://docs.docker.com/compose/) | Tool for defining and running multi-container Docker applications.|
+| [Mist Community Edition](https://github.com/mistio/mist-ce) (installs the [latest version](https://github.com/mistio/mist-ce/releases/latest)) | An open source Mult-Cloud Management Platform.|
 
 {{< content "marketplace-update-note-shortguide">}}

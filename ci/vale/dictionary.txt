@@ -86,6 +86,7 @@ autojump
 autologin
 autologout
 automagically
+automator
 automattic
 automations
 automount
@@ -213,6 +214,7 @@ changelogs
 changeme
 changeset
 characterwise
+chatbots
 chatrooms
 cheatsheet
 checkmarx
@@ -390,6 +392,7 @@ dia
 dialogs
 diavel
 diffie
+digicert
 digium
 dirb
 dirbuster
@@ -558,6 +561,7 @@ firstsite
 flamegraph
 flamegraphs
 flatpress
+florian
 flowlens
 flyspray
 foodcritic
@@ -704,6 +708,7 @@ hl2
 hmac
 hoc
 homebrew
+homomorphic
 host1
 host2
 hostname
@@ -1010,6 +1015,7 @@ lucene
 luckystrike
 lugano
 luminus
+lunasec
 lxd
 lxml
 lynis
@@ -1030,6 +1036,7 @@ maitis
 makefile
 makefiles
 maller
+malwarebytes
 managesieve
 mandriva
 manjaro
@@ -1281,6 +1288,7 @@ ohai
 ok
 oldstable
 oldfashioned
+onboarding
 oneof
 ons
 opcache
@@ -1815,6 +1823,7 @@ tcpwrappers
 teamspeak
 teardown
 techland
+telecom
 teleporting
 tensorflow
 terrahelp
@@ -1877,6 +1886,7 @@ transcoding
 transpiled
 trello
 triaging
+trivy
 truststore
 tt
 ttl
