@@ -33,11 +33,11 @@ aliases: ['/platform/api/linode-cli-object-storage-shortguide/']
 
         linode-cli object-storage keys-update --keyId $key_id --label "my-new-object-storage-key"
 
-1.   Upload a TLS/SSL Certificate:
+1.  Upload a TLS/SSL Certificate:
 
         linode-cli object-storage ssl-upload us-east-1 example-bucket --certificate "my-full-certificate" --private_key "my-full-private-key"
 
-1. View an Active TLS/SSL Certificate:
+1.  View an Active TLS/SSL Certificate:
 
         linode-cli object-storage ssl-view us-east-1 example-bucket
 
@@ -45,7 +45,7 @@ aliases: ['/platform/api/linode-cli-object-storage-shortguide/']
 
         linode-cli object-storage keys-delete $key_id
 
-1. Delete an Active TLS/SSL Certificate:
+1.  Delete an Active TLS/SSL Certificate:
 
         linode-cli object-storage ssl-delete us-east-1 example-bucket
 
