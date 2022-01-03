@@ -603,6 +603,7 @@ gentoolkit
 geoip
 geolocating
 geolocation
+geospatial
 getmail
 getprivs
 getpwent
