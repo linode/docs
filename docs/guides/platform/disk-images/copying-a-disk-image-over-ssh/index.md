@@ -100,13 +100,13 @@ In some cases, it is necessary to upload your disk image to a new server. For ex
 
 1.  Once you've finished [Creating a New Linode](/docs/guides/getting-started/#create-a-linode) with enough disk space available to accommodate your disk image, prepare the new Linode to receive this image. This is completed by first deleting the primary disk created by default, and keeping the swap disk. A swap disk typically starts at 256 MB or 512 MB in size, but can be larger or smaller depending upon your needs.
 
-1.  Access your Linode through the Linode Cloud Manager. Click the **Disks/Configs** tab to navigate to the Disks/Configs section.
+1.  Access your Linode through the Linode Cloud Manager. Click the **Storage** tab to navigate to the *Disks* section.
 
 1. On the following page in the **Disks** menu, select the ellipsis next to any primary disks you are replacing and select **Delete**.
 
 1. Next, select **Add a Disk**.
 
-1.  The **Add Disk** panel appears. Select the **Create Empty Disk**, enter a **Label** that you can use as a personal identifier, select the file system that matches the format of the disk that was downloaded over SSH, and enter a Size that is larger enough to hold the contents of the disk you are uploading. Click **Save Changes**.
+1.  The **Add a Disk** panel appears. Select the **Create Empty Disk** option, enter a **Label** that you can use as a personal identifier, select the file system that matches the format of the disk that was downloaded over SSH, and enter a Size that is large enough to hold the contents of the disk you are uploading. Click **Save Changes**.
 
 1. Reboot Your Linode into [Rescue Mode](#boot-linode-into-rescue-mode) and start the secure SSH server using the following commands:
 
@@ -156,7 +156,7 @@ To use all available space on the new disk, execute the following from Rescue Mo
 
 You now need to create a new configuration profile on the receiving Linode.
 
-1.  Select your Linode, click the **Disks/Configs** tab, then select and select **Add a Configuration**.
+1.  Select your Linode, click the **Configurations** tab, then select **Add a Configuration**.
 
 1.  The **Add Linode Configuration** panel appears.
 
