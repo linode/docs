@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
+description: 'Installing and Configuring a LEMP Stack on Ubuntu 9.10 "Karmic".'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

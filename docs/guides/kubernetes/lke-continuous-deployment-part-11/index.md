@@ -3,8 +3,8 @@ slug: lke-continuous-deployment-part-11
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Going beyond metrics-server, this guide goes over collecting more advanced metrics using Prometheus (to capture the metrics) and Grafana (to display the metrics within a user interface)."
-og_description: "Going beyond metrics-server, this guide goes over collecting more advanced metrics using Prometheus (to capture the metrics) and Grafana (to display the metrics within a user interface)."
+description: "Continuous Deployment Using LKE Part 11 - Prometheus and Grafana."
+og_description: "Continuous Deployment Using LKE Part 11 - Prometheus and Grafana."
 title: "Continuous Deployment Using LKE: Prometheus and Grafana"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 11): Prometheus and Grafana"
 enable_h1: true

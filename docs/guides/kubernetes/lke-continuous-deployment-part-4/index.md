@@ -3,8 +3,8 @@ slug: lke-continuous-deployment-part-4
 author:
   name: Linode Community
   email: docs@linode.com
-description: "This is an optional part of the series that provides an introduction to Kubernetes. It covers deploying a simple application on Kubernetes and each of the components that are involved (such as pods, controllers, and services)."
-og_description: "This is an optional part of the series that provides an introduction to Kubernetes. It covers deploying a simple application on Kubernetes and each of the components that are involved (such as pods, controllers, and services)."
+description: "Continuous Deployment of LKE Part 4 - Kubernetes Review"
+og_description: "Continuous Deployment of LKE Part 4 - Kubernetes Review"
 title: "Continuous Deployment Using LKE: Kubernetes Review"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 4): Kubernetes Review"
 enable_h1: true

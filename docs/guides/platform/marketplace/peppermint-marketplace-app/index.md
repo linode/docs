@@ -3,7 +3,7 @@ slug: peppermint-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Peppermint is a ticket management system that allows teams and solo users the ability create and track tickets, todo items, and more. Learn how to deploy Peppermint with Linode's Marketplace."
+description: "Deploying Peppermint through the Linode Marketplace"
 keywords: ["ticket management", "marketplace"]
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

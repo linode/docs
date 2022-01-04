@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Set up and manage an online storefront with OpenCart.'
+description: 'Set up and manage an online storefront with OpenCar using Debian 6 "Squeeze".'
 keywords: ["opencart", "ecommerce", "commerce", "store", "debian", "squeeze"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/e-commerce/opencart/debian-6/','/websites/ecommerce/opencart-on-debian-6-squeeze/']

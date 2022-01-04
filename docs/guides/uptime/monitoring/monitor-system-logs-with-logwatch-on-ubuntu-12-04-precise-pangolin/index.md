@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use logwatch to monitor system logs and generate reports.'
+description: 'Use logwatch to monitor system logs and generate reports on Ubuntu 12.04 "Precise Pangolin".'
 keywords: ["logwatch", "security", "logging", "audit"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

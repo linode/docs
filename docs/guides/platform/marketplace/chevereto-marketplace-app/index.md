@@ -3,7 +3,7 @@ slug: chevereto-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
-description: "Chevereto is a modern image sharing solution with drag-and-drop upload experience, multi-server support, moderation tools, categories, user accounts, private albums, and more. This tutorial walks you through deploying Chevereto using the Linode Marketplace."
+description: "Deploying Chevereto through the Linode Marketplace"
 keywords: ['photo storage','images','Marketplace']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

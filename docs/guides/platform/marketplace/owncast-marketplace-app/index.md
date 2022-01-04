@@ -3,7 +3,7 @@ slug: owncast-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Owncast is a self-hosted live video and web chat server for use with existing popular broadcasting software. Learn how to deploy Owncast with Linode's Marketplace Apps."
+description: "Deploying Owncast through the Linode Marketplace"
 keywords: ['live streaming','marketplace','web chat']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

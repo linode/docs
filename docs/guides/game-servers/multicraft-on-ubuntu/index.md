@@ -3,7 +3,7 @@ slug: multicraft-on-ubuntu
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: "Installation of MultiCraft on a Linode running Debian or Ubuntu"
+description: "Installation of MultiCraft on a Linode running Ubuntu 20.04 LTS"
 keywords: ["minecraft", "ubuntu", "multicraft"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

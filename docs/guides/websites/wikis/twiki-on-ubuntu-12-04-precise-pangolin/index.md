@@ -3,7 +3,7 @@ slug: twiki-on-ubuntu-12-04-precise-pangolin
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install and configure a structured wiki with TWiki.'
+description: 'Install and configure a structured wiki with TWiki on Ubuntu 12.04 "Precise Pangolin".'
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

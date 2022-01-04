@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 keywords: ["linode cli", " command line interface", " man pages", " api key"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-description: 'The Linode Command Line Interface (CLI) is an open-source command line tool for managing your Linode services. You can reboot your Linode, update an MX record for your domain, manage your NodeBalancers, create a StackScript, and more from the command line on any computer, without logging into the Linode Manager.'
+description: 'How to Use the Linode CLI-API v3'
 modified: 2016-06-20
 modified_by:
   name: Alex Fornuto

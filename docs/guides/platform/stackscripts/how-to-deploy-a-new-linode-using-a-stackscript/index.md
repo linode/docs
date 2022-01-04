@@ -3,7 +3,7 @@ slug: how-to-deploy-a-new-linode-using-a-stackscript
 author:
   name: Linode
   email: docs@linode.com
-description: 'Linode StackScripts allow you to automate system administration and configuration tasks. You can deploy a new Linode using a StackScript that will perform its scripted tasks during the Linode''s first boot process. This guide will show you the various ways that you can deploy a new Linode using StackScripts and the Linode Cloud Manager.'
+description: 'How to Deploy a New Linode using a StackScript.'
 og_description: 'Linode StackScripts allow you to automate system administration and configuration tasks. You can deploy a new Linode using a StackScript that will perform its scripted tasks during the Linode''s first boot process. This guide will show you the various ways that you can deploy a new Linode using StackScripts and the Linode Cloud Manager.'
 keywords: ["stackscripts", "automation", "script", "custom instance", "deployment"]
 tags: ["linode platform","automation","cloud manager"]

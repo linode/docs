@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, PostgreSQL/MySQL, and Perl/Python/PHP.'
+description: 'Install and Configure a LEMP Stack on Fedora 13.'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","nginx","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

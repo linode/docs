@@ -3,7 +3,7 @@ slug: launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'This Counter Strike: Global Offensive (CS:GO) server guide contains instructions on how to install SteamCMD, download the dedicated server, and launch the game server.'
+description: 'Launch a CS:GO Server using Ubuntu 14.04.'
 keywords: ["counter strike", "counter strike global offensive", "csgo", "cs:go", "csgo server", "csgo server hosting", "steam servers", "game servers", "games", "ubuntu", "ubuntu 14.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

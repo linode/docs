@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
+description: 'Use uWSGI to deploy Python application servers in conjunction with nginx Using Arch Linux.'
 keywords: ["uwsgi", "wsgi", "nginx", "python", "arch linux"]
 tags: ["web server","python","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

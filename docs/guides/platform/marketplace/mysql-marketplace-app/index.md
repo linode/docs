@@ -3,7 +3,7 @@ slug: mysql-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "MySQL/MariaDB is an open-source database management system that uses a relational database and SQL (Structured Query Language) to manage its data. Easily deploy MySQL/MariaDB using Marketplace Apps."
+description: "Deploying MySQL/MariaDB through the Linode Marketplace"
 keywords: ['database','mysql','rdbms','relational database','mariadb']
 tags: ["database","cloud-manager","linode platform","mysql","marketplace","mariadb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

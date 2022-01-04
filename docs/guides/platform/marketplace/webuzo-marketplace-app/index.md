@@ -3,7 +3,7 @@ slug: webuzo-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Softaculous Webuzo is a LAMP stack control panel that allows you to deploy a growing number of applications and scripts on your server with a single click. Deploy Webuzo on a Linode with Marketplace Apps."
+description: "Deploying Webuzo through the Linode Marketplace"
 keywords: ['webuzo','control panel','dashboard','marketplace']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

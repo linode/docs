@@ -3,7 +3,7 @@ slug: email-with-postfix-dovecot-and-mysql-on-centos-6
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installing Postfix with Dovecot and MySQL on CentOS.'
+description: 'Installing Postfix with Dovecot and MySQL on CentOS 6.'
 keywords: ["postfix centos 6", "dovecot centos 6", "linux mail server", "email", "centos 6"]
 tags: ["centos","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

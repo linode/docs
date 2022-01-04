@@ -3,7 +3,7 @@ slug: redis-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Redis is an open-source, in-memory, data-structure store, with the optional ability to write and persist data to a disk, which can be used as a key-value database, cache, and message broker. Deploy a Redis instance using Linode's Marketplace Apps"
+description: "Deploying Redis through the Linode Marketplace"
 keywords: ['redis','data store','cluster','database']
 tags: ["linode platform","database","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,7 @@ slug: create-an-aggregate-blog-using-planet-venus-on-ubuntu-12-04-precise-pangol
 author:
   name: Linode
   email: docs@linode.com
-description: 'The Planet Venus feed aggregator provides an overview of a community by collecting all feeds produced by a community.'
+description: 'Create and Aggregate Blog Using Planet Venus on Ubuntu 12.04 "Precise Pangolin".'
 keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

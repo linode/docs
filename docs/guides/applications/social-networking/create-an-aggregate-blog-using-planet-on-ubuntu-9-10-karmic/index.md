@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'The Planet feed aggregator provides an overview of a community by collecting all feeds produced by a community.'
+description: 'Create an Aggregate Blog using Planet on Ubuntu 9.10 "Karmic".'
 keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
