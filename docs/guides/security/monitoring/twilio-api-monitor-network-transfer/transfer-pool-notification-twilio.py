@@ -1,7 +1,6 @@
 import os
 import sys
 from linode_api4 import LinodeClient
-from linode_api4 import SupportTicket
 from twilio.rest import Client
 
 try:
@@ -22,27 +21,20 @@ except KeyError:
 linode_client = LinodeClient(linode_api_token)
 twilio_client = Client(twilio_account_sid, twilio_auth_token)
 
-all_support_tickets = linode_client.support.tickets()
-open_support_tickets = linode_client.support.tickets(SupportTicket.status == "open")
+account_network_transfer = linode_client.account.transfer()
+pool_used_ratio = account_network_transfer.used/account_network_transfer.quota
 
-if len(open_support_tickets) > 0:
-    most_recent_ticket = open_support_tickets[0]
-    message_text = 'You have %s open Linode support tickets. ' \
-        'Your newest support ticket is: \n\n' \
-        '%s\n' \
-        'https://cloud.linode.com/support/tickets/%s' % \
-        (len(open_support_tickets), most_recent_ticket.summary, most_recent_ticket.id)
+summary_text = "Linode network transfer pool statistics"
 
-elif len(all_support_tickets) > 0:
-    most_recent_ticket = all_support_tickets[0]
-    message_text = 'You currently have no open Linode support tickets. ' \
-        'Your most recent support ticket was:\n\n' \
-        '%s\n' \
-        'https://cloud.linode.com/support/tickets/%s' % \
-        (most_recent_ticket.summary, most_recent_ticket.id)
+transfer_statistics_text = 'Used: %sGB\n' \
+    'Transfer pool size: %sGB\n' \
+    'Percent of pool used: %s%%\n\n' \
+    'https://www.linode.com/docs/guides/network-transfer/' % \
+    (account_network_transfer.used,
+    account_network_transfer.quota,
+    round(pool_used_ratio * 100, 4))
 
-else:
-    message_text = 'You do not have any Linode support tickets.'
+message_text = ('%s:\n\n%s' % (summary_text, transfer_statistics_text))
 
 message = twilio_client.messages.create(
     body = message_text,
