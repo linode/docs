@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-12-29
 modified_by:
   name: Linode
-published: 2014-12-29
+published: 2021-12-29
 title: "How to stop BEC and Compromised Accounts on cPanel or Plesk Server"
 h1_title: "Using MagicSpam to Secure your Email Server"
 enable_h1: true
