@@ -49,6 +49,31 @@ In addition to installing Flask, this Marketplace app installs and configures so
 - [Supervisor](http://supervisord.org/), a client/server system that allows its users to monitor and control a number of processes on UNIX-like operating systems, is installed and running on your Linode. Its configuration file can be found in the following location, `/etc/supervisor/conf.d/flask_app.conf`.
 - The example Flask app's logs can be found in the following locations, `var/log/flask_app/flask_app.out.log` and `/var/log/flask_app/flask_app.err.log`
 
+### Removing Default Application
+
+Users may find that they need to remove access to the default Flask application on port 80 to free up space for another application, or to otherwise remove components. The following steps can help to disable and decouple various aspects of the default flask application included with the flask marketplace app:
+
+- Unlink the default nginx site for the flask app:
+
+      sudo unlink /etc/nginx/sites-enabled/flask_app
+
+- Stop the application from being monitored and maintained by supervisorctl:
+
+      sudo supervisorctl stop all
+
+- Remove configuration files for the flask application:
+
+      sudo rm -rf /home/flask_app_project
+      sudo rm /etc/config.json
+
+- Remove the Supervisor configuration files:
+
+      sudo rm /etc/supervisor/conf.d/flask_app.conf
+
+{{< note >}}
+Many configuration files can be overwritten to support a new configuration instead of deleted outright. For more information on the default configuration, see our [Flask Installation Guide](/docs/guides/flask-and-gunicorn-on-ubuntu/) and the [Installed Software Section](/docs/guides/flask-marketplace-app/#installed-software) of this guide.
+{{< /note >}}
+
 ### Next Steps
 
 {{< content "marketplace-update-note-shortguide">}}
