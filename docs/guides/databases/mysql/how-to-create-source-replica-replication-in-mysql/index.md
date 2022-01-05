@@ -2,8 +2,8 @@
 slug: configure-source-replica-replication-in-mysql
 author:
   name: Jeff Novotny
-description: 'The popular MySQL database application is more reliable if replication is configured. This guide explains how to configure source-replica data replication in MySQL.'
-og_description: 'The popular MySQL database application is more reliable if replication is configured. This guide explains how to configure source-replica data replication in MySQL.'
+description: 'How to Configure Source-Replica Replication in MySQL'
+og_description: 'How to Configure Source-Replica Replication in MySQL'
 keywords: ['mysql replication']
 tags: ['mysql', 'database', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

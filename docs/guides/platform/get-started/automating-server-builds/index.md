@@ -3,7 +3,7 @@ slug: automating-server-builds
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to automating server builds with the Linode Manager.
+description: The Linode Guide to AUtomating Server Builds Using the Linode Manager.
 keywords: ["server builds", "disks", "golden disk", "puppet", "chef"]
 tags: ["linode platform","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

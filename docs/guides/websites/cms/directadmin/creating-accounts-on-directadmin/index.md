@@ -3,7 +3,7 @@ slug: creating-accounts-on-directadmin
 author:
   name: Chris Ciufo
   email: docs@linode.com
-description: Creating Accounts on DirectAdmin
+description: Linode's Guide to Creating Accounts on DirectAdmin
 keywords: ["directadmin", " reseller", " accounts"]
 tags: ["web server","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

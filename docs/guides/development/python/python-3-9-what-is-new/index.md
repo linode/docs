@@ -2,8 +2,8 @@
 slug: python-3-9-new-features
 author:
   name: John Mueller
-description: 'Python 3.9, released in October of 2020, include many new features aimed at simplifying existing features of the language. This guide highlights and show examples for three improved features: merge dictionaries, time zone implementation, and type annotations.'
-og_description: 'Python 3.9, released in October of 2020, include many new features aimed at simplifying existing features of the language. This guide highlights and show examples for three improved features: merge dictionaries, time zone implementation, and type annotations.'
+description: 'Python 3.9: An Overview of New Features'
+og_description: 'Python 3.9: An Overview of New Features'
 keywords: ['python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,7 @@ slug: host-a-website-with-high-availability
 author:
   name: Phil Zona
   email: docs@linode.com
-description: 'How to configure a highly available web server stack'
+description: 'How to configure a highly available web server stack on your Linode'
 keywords: ["high availability", "web server", "failover"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-07-12

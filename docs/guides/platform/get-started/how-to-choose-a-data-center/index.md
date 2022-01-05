@@ -3,7 +3,7 @@ slug: how-to-choose-a-data-center
 author:
   name: Linode
   email: docs@linode.com
-description: 'How determine which Linode data centers is right for you.'
+description: 'How To Determine Which of Linode's Data Center Locations Are Right For You.'
 keywords: ["data center", "datacenter", "dc", "speed"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-11-05

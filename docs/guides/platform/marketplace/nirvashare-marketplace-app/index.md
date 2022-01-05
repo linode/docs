@@ -3,7 +3,7 @@ slug: nirvashare-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
-description: "NirvaShare is a simplified and secure enterprise file sharing solution built on top of your existing file storage. This tutorial walks you through deploying NirvaShare using the Linode Marketplace."
+description: "Deploying NirvaShare through the Linode Marketplace"
 keywords: ['storage','file sharing', 'backups']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

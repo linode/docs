@@ -3,7 +3,7 @@ slug: deploy-scalable-cassandra-on-ubuntu-18.04-and-centos-7
 author:
    name: Andrew Lescher
    email: docs@linode.com
-description: "This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for both the Ubuntu 18.04 and CentOS 7 distros."
+description: "How to Install Apache Cassandra on Ubuntu 18.04 & CentOS 7"
 keywords: ["cassandra", " apache cassandra", " centos 7", " ubuntu 18.04", " database", " nosql"]
 aliases: ['/databases/deploy-scalable-cassandra/','/databases/cassandra/deploy-scalable-cassandra-on-ubuntu-18.04-and-centos-7/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

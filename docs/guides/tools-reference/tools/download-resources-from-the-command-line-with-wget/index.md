@@ -3,7 +3,7 @@ slug: download-resources-from-the-command-line-with-wget
 author:
   name: Linode
   email: docs@linode.com
-description: Use wget to download files on the command line
+description: How to Use wget to Download Resources From Your Linode
 keywords: ["wget", "command line", "linux common commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/download-resources-from-the-command-line-with-wget/','/linux-tools/common-commands/wget/']

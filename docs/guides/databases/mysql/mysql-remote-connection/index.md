@@ -2,8 +2,8 @@
 slug: connect-to-a-mysql-or-mariadb-database
 author:
   name: Nathaniel Stickman
-description: "Learn how to remotely connect to your MySQL or MariaDB database using the command line. Included in the guide are the database configuration steps to allow remote connections from a specific user."
-og_description:  "Learn how to remotely connect to your MySQL or MariaDB database using the command line. Included in the guide are the database configuration steps to allow remote connections from a specific user."
+description: "How to Connect to a MySQL or MariaDB Database"
+og_description:  "How to Connect to a MySQL or MariaDB Database"
 keywords: ['mysql connect to database','mariadb connect to database','mysql connect remote database','how to connect to mysql database']
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

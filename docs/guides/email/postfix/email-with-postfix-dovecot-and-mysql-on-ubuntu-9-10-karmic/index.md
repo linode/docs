@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'Installing Postfix with Dovecot and MySQL on Ubuntu 9.10 (Karmic).'
+description: 'How to Install Postfix with Dovecot and MySQL on Ubuntu 9.10 (Karmic).'
 keywords: ["postfix ubuntu 9.10", "postfix karmic", "postfix dovecot", "ubuntu mail server", "linux mail server"]
 tags: ["mysql","postfix","email","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy Python WSGI Applications with Apache and mod\_wsgi'
+description: 'How to Deploy Python WSGI Applications with Apache and mod\_wsgi Using Fedora 14'
 keywords: ["python", "apache", "mod\\_wsgi"]
 tags: ["web server","apache","fedora","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

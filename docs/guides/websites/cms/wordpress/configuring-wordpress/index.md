@@ -2,8 +2,8 @@
 slug: configuring-wordpress
 author:
   name: Nathaniel Stickman
-description: "You can configure your WordPress site''s default installation to enhance its functionality. For example, install the PHP GD extension to modify images within WordPress. Another common change is to prettify your WordPress site''s permalinks. This guide shows you how to configure your WordPress site to enable helpful utilities."
-og_description:  "You can configure your WordPress site''s default installation to enhance its functionality. For example, install the PHP GD extension to modify images within WordPress. Another common change is to prettify your WordPress site''s permalinks. This guide shows you how to configure your WordPress site to enable helpful utilities."
+description: "Linode's Guide to Configuring WordPress"
+og_description:  "Linode's Guide to Configuring WordPress"
 keywords: ['wordpress configurations']
 tags: ['wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

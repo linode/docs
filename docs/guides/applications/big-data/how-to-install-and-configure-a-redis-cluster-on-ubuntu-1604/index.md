@@ -3,8 +3,8 @@ slug: how-to-install-and-configure-a-redis-cluster-on-ubuntu-1604
 author:
   name: Sam Foo
   email: docs@linode.com
-description: 'Learn to set up a Redis cluster using three Linode servers and promoting a replica to become a master node with this guide. Redis is an in-memory key/value store offering high performance for caching and more.'
-og_description: 'Learn to set up a Redis cluster using three Linode servers and promoting a replica to become a master node with this guide. Redis is an in-memory key/value store offering high performance for caching and more.'
+description: 'How to Install and Configure a Redis Cluster on Ubuntu 16.04'
+og_description: 'How to Install and Configure a Redis Cluster on Ubuntu 16.04'
 keywords: ["redis", "redis cluster installation", "data store", "cache", "sharding", "redis cluster setup", "redis cluster set up", "ubuntu"]
 tags: ["nosql","database","ubuntu","redis"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'

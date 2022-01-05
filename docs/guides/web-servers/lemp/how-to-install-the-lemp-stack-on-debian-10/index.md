@@ -3,8 +3,8 @@ slug: how-to-install-the-lemp-stack-on-debian-10
 author:
   name: Linode
   email: docs@linode.com
-description: 'The LEMP stack (Linux, NGINX, MariaDB, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of the LEMP stack on Debian.'
-og_description: 'The LEMP stack (Linux, NGINX, MariaDB, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of the LEMP stack on Debian.'
+description: 'How to Install the LEMP Stack on Debian 10'
+og_description: 'THow to Install the LEMP Stack on Debian 10'
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "debian"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

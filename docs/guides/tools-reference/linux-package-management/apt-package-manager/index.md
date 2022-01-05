@@ -3,8 +3,8 @@ slug: apt-package-manager
 author:
   name: Linode
   email: docs@linode.com
-description: "APT is the default package manager on Debian-based Linux distributions, like Ubuntu. This guide walks you through the core features of APT and common commands for using APT to install, upgrade, and remove packages."
-og_description: "APT is the default package manager on Debian-based Linux distributions, like Ubuntu. This guide walks you through the core features of APT and common commands for using APT to install, upgrade, and remove packages."
+description: "How to Use APT to Manage Packages in Debian and Ubuntu"
+og_description: "How to Use APT to Manage Packages in Debian and Ubuntu"
 keywords: ['apt', 'apt-get','installing','updating','upgrading','uninstalling','removing','package repositories','debian', 'ubuntu']
 tags: ['apt','apt-get','debian','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

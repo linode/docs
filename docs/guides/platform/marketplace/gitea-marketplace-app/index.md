@@ -3,7 +3,7 @@ slug: gitea-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
-description: "Deploy Gitea on Linode using Marketplace Apps."
+description: "How to Deploy Gitea on Linode using Marketplace Apps."
 keywords: ['Gitea','version control','git']
 tags: ["linode platform","version control system","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

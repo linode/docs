@@ -3,7 +3,7 @@ slug: create-a-salt-execution-module
 author:
   name: Linode
   email: docs@linode.com
-description: 'Create a Salt execution module.'
+description: 'How to Create a Salt execution module in Linux'
 keywords: ['salt','execution module','saltstack']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-22

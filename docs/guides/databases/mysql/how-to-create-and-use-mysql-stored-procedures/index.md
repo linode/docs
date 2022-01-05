@@ -3,7 +3,7 @@ slug: how-to-create-and-use-mysql-stored-procedures
 author:
   name: Francis Ndungu
   email: francisndungu83@gmail.com
-description: 'Learn how to use MySQL stored procedures, which are user-defined SQL statements that are stored in a MySQL database. Learn the syntax for declaring procedures, create your first example procedure, and then learn how to execute it.'
+description: 'How to Create and Use MySQL Stored Procedures'
 keywords: ['mysql','stored procedures','database','database optimization']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-20

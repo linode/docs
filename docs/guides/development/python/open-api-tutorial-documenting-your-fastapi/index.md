@@ -2,8 +2,8 @@
 slug: documenting-a-fastapi-app-with-openapi
 author:
   name: Chelsea Troy
-description: 'FastAPI can automatically generate documentation for your API''s endpoints. This guide shows you how to access FastAPI''s generated documentation. It also shows you how to document your API''s custom behavior, if needed.'
-og_description: 'FastAPI can automatically generate documentation for your API''s endpoints. This guide shows you how to access FastAPI''s generated documentation. It also shows you how to document your API''s custom behavior, if needed.'
+description: 'How to Document a FastAPI App with OpenAPI'
+og_description: 'How to Document a FastAPI App with OpenAPI'
 keywords: ['openapi tutorial']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

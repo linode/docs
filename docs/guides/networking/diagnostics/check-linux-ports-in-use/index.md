@@ -3,8 +3,8 @@ slug: check-linux-ports-in-use
 author:
   name: Martin Heller
   email: martin.heller@gmail.com
-description: 'Tools like netstat, ss, and lsof can help you find which ports are in use on your Linux system. This information helps you monitor your system''s active connections and ensure your system is secure. Use this guide for an introduction to these common Linux networking tools and find links to guides that dive a little bit deeper into each one.'
-og_description: 'Tools like netstat, ss, and lsof can help you find which ports are in use on your Linux system. This information helps you monitor your system''s active connections and ensure your system is secure. Use this guide for an introduction to these common Linux networking tools and find links to guides that dive a little bit deeper into each one.'
+description: 'How to Check Which Ports are in Use on Your Linux System'
+og_description: 'How to Check Which Ports are in Use on Your Linux System'
 keywords: ['linux ports in use']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-25

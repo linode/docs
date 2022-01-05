@@ -3,8 +3,8 @@ slug: how-to-build-your-infrastructure-using-terraform-and-linode
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use Terraform to provision Linode environments.'
-og_description: 'Use Terraform to provision Linode environments.'
+description: 'How to Use Terraform to provision Linode environments.'
+og_description: 'How to Use Terraform to provision Linode environments.'
 keywords: ["terraform", "infrastructure", "IaC"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-06

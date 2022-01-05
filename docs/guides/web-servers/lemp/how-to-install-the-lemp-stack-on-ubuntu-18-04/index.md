@@ -3,8 +3,8 @@ slug: how-to-install-the-lemp-stack-on-ubuntu-18-04
 author:
   name: Linode
   email: docs@linode.com
-description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of the LEMP stack on Ubuntu.'
-og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will walk you through basic installation, setup and configuration of the LEMP stack on Ubuntu.'
+description: 'How to Install the LEMP Stack on Ubuntu 18.04'
+og_description: 'How to Install the LEMP Stack on Ubuntu 18.04'
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "ubuntu"]
 tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

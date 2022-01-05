@@ -2,7 +2,7 @@
 slug: git-rebase-command
 author:
   name: Stephen Savitzky
-description: 'This guide provides an introduction to the rebase command in Git. You learn when to use the rebase command to rewrite your Git history and when to use some of the various options available when rebasing.'
+description: 'THow to Use the Git Rebase Command'
 keywords: ['git rebase', 'git rebase interactive']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-15

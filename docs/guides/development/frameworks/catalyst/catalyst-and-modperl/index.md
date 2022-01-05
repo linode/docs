@@ -3,7 +3,7 @@ slug: catalyst-and-modperl
 author:
   name: Linode
   email: docs@linode.com
-description: 'Building dynamic websites and applications with Catalyst.'
+description: 'How to Build Dynamic Websites and Applications with Catalyst'
 keywords: ["Catalyst", "dynamic content", "web applications"]
 tags: ["web applications","apache","perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,7 @@ slug: email-with-postfix-dovecot-and-mariadb-on-centos-7
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installing Postfix with Dovecot and MariaDB on CentOS.'
+description: 'Installing Postfix with Dovecot and MariaDB on CentOS 7'
 keywords: ["postfix centos 7", "dovecot centos 7", "linux mail server", "email", "centos 7"]
 tags: ["centos","postfix","email","mariadb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

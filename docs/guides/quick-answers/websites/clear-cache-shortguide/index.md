@@ -3,8 +3,8 @@ slug: clear-cache-shortguide
 author:
   name: Linode
   email: docs@linode.com
-description: This guide show how to clear cache and cookies in your browser.
-og_description: This guide show how to clear cache and cookies in your browser.
+description: How to Clear Cache and Cookies in a Browser
+og_description: How to Clear Cache and Cookies in a Browser
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-28

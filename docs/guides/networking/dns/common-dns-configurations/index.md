@@ -3,8 +3,8 @@ slug: common-dns-configurations
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configurations for common DNS records.'
-og_description: 'This guide explains how to use the Linode Cloud Manger to configure DNS records'
+description: 'Linode's Guide to Configurations for common DNS records.'
+og_description: 'Linode's Guide to Configurations for common DNS records.'
 keywords: ["dns", "dnssec"]
 tags: ["dns","networking","cloud manager","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,8 +3,8 @@ slug: archiving-and-compressing-files-with-gnu-tar-and-gnu-zip
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use GNU tools to compress and archive files.'
-og_description: 'This guide will show you how to use GNU tar and Gzip to compress and archive files.'
+description: 'Archiving and Compressing files with GNU Tar and GNU Zip'
+og_description: 'Archiving and Compressing files with GNU Tar and GNU Zip'
 keywords: ["tar", "gnu tar", "gzip", "gnu zip", "tar.gz. tgz", "file archive", "compress", "tarball"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/archiving-and-compressing-files-with-gnu-tar-and-gnu-zip/','/linux-tools/common-commands/tar-gzip/']

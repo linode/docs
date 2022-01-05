@@ -3,8 +3,8 @@ slug: crud-read-operations-use-fastapi-to-write-an-api
 author:
   name: Chelsea Troy
   email: heychelseatroy@gmail.com
-description: 'The Python micro-framework, FastAPI, is a fast and easy-to-learn option when building an API. This guide shows you how to create an API that supports two basic read operations, List and View. You also learn how to write filtering for your API resources.'
-og_description:  'The Python micro-framework, FastAPI, is a fast and easy-to-learn option when building an API. This guide shows you how to create an API that supports two basic read operations, List and View. You also learn how to write filtering for your API resources.'
+description: 'RUD Read Operations: How to Use FastAPI to Write an API'
+og_description:  'RUD Read Operations: How to Use FastAPI to Write an API'
 keywords: ['python api framework fastapi rest']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-10

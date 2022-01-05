@@ -3,8 +3,8 @@ slug: how-to-install-openjdk-on-ubuntu-20-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: OpenJDK is the free and open-source implementation of the Oracle Java Standard Edition (Java SE) Development Kit.  Here''s how to install it on Ubuntu 20.04.
-og_description:  OpenJDK is the free and open-source implementation of the Oracle Java Standard Edition (Java SE) Development Kit.  Here''s how to install it on Ubuntu 20.04.
+description: How To Install Java Development Kit 11 on Ubuntu 20.04.
+og_description:  How To Install Java Development Kit 11 on Ubuntu 20.04.
 keywords: ["java", "openjdk", "jdk", "11", "Ubuntu", "20.04"]
 tags: ["java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

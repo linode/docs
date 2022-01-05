@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'Installing Postfix with Dovecot and MySQL on Debian 5 (Lenny).'
+description: 'How to Install Postfix with Dovecot and MySQL on Debian 5 (Lenny).'
 keywords: ["postfix", "dovecot", "email", "debian", "lenny"]
 tags: ["debian","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

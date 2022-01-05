@@ -3,7 +3,7 @@ slug: discussion-forums-with-mybb
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configuring the MyBB system for hosting web-based discussion forums.'
+description: 'How to Host Your Own Discussion Forums with MyBB at Linode'
 keywords: ["mybb", "forum software", "web applications", "PHP"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/forums/discussion-forums-with-mybb/','/web-applications/bulletin-boards/mybb/']

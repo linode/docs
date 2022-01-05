@@ -3,7 +3,7 @@ slug: how-to-choose-a-linode-plan
 author:
     name: Linode
     email: docs@linode.com
-description: 'Decide which Linode plan is right for you.'
+description: 'How to Decide Which Linode Plan is Right For You'
 keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-06-20

@@ -3,8 +3,8 @@ slug: how-to-install-mediawiki-ubuntu-2004
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'MediaWiki is a versatile, open, and free software behind collaboratively edited websites like Wikipedia. This guide will show you how to install MediaWiki on Ubuntu 20.04.'
-og_description: 'MediaWiki is a versatile, open, and free software behind collaboratively edited websites like Wikipedia. This guide will show you how to install MediaWiki on Ubuntu 20.04.'
+description: 'Mow to Install MediaWiki on Ubuntu 20.04'
+og_description: 'How to Install MediaWiki on Ubuntu 20.04'
 keywords: ["mediawiki", "install mediawiki", "deploy mediawiki on ubuntu 20.04"]
 tags: ["ubuntu", "wiki"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

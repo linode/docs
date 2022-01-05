@@ -3,7 +3,7 @@ slug: getting-started-with-nodebalancers
 author:
   name: Linode
   email: docs@linode.com
-description: 'Using a NodeBalancer to begin managing a simple web application.'
+description: 'How to Use a NodeBalancer to Begin Managing a Simple Web App'
 og_description: 'Get started with Linode NodeBalancers by using a NodeBalancer to begin managing a simple web application.'
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
 tags: ["cloud manager","linode platform","networking","web applications"]

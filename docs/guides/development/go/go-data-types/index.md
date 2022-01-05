@@ -3,7 +3,7 @@ slug: go-data-types
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: "There are several data types in the Go language. We''ll walk you through the basics, including pointers, available numeric types, arrays and slices, and maps."
+description: "Linode's Tutorial for Learning Go Data Types"
 keywords: ["Go", "Golang", "Pointers", "Arrays", "Slices", "Maps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-19

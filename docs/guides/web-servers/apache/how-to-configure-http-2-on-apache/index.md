@@ -2,8 +2,8 @@
 slug: how-to-configure-http-2-on-apache
 author:
   name: Jeff Novotny
-description: 'HTTP/2 is an update to the original Hypertext Transfer Protocol (HTTP) specification offering improvements in efficiency and latency. This guide explains how to configure and use HTTP/2 on an Apache server and how to test that it is working.'
-og_description: 'HTTP/2 is an update to the original Hypertext Transfer Protocol (HTTP) specification offering improvements in efficiency and latency. This guide explains how to configure and use HTTP/2 on an Apache server and how to test that it is working.'
+description: 'How to Configure HTTP/2 on Apache'
+og_description: 'How to Configure HTTP/2 on Apache'
 keywords: ['apache https']
 tags: ['web server', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

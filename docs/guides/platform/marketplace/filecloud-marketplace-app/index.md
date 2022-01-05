@@ -3,7 +3,7 @@ slug: filecloud-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
-description: "Deploy a FileCloud Server on Linode using Marketplace Apps."
+description: "How to Deploy a FileCloud Server on Linode using Marketplace Apps."
 keywords: [ 'filecloud','marketplace', 'server']
 tags: ["cloud-manager","linode platform", "marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,9 +3,9 @@ slug: how-to-move-machine-learning-model-to-production
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: 'This guide shows how to use an existing deep learning model as part of a production application. A pre-trained model is included as an API endpoint for a Flask app.'
+description: 'How to Move Your Machine Learning Model to Production'
 keywords: ["deep learning", "big data", "python", "keras", "flask", "machine learning", "neural networks"]
-og_description: 'Use a pre-trained deep learning model as part of a production application.'
+og_description: 'How to Move Your Machine Learning Model to Production'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-09
 modified: 2019-01-31

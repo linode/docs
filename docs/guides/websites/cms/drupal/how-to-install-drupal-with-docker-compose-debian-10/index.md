@@ -3,7 +3,7 @@ slug: how-to-install-drupal-with-docker-compose-debian-10
 author:
     name: Linode
     email: docs@linode.com
-description: "Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install and configure the Drupal CMS on your Debian 10 Linode so you can begin developing your own websites."
+description: "How to Install Drupal with Docker Compose on Debian 10"
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "debian 10", "docker compose"]
 tags: ["drupal","docker","container","lamp","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

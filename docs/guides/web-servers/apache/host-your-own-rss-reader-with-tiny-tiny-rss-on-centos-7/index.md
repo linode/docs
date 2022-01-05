@@ -3,7 +3,7 @@ slug: host-your-own-rss-reader-with-tiny-tiny-rss-on-centos-7
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Self-host your RSS reader on a CentOS 7 Linode with Tiny Tiny RSS.'
+description: 'How to Self-host your RSS reader on a CentOS 7 Linode with Tiny Tiny RSS.'
 keywords: ["apache", "centos", "rss", "reader", "ttrss", "tt-rss"]
 tags: ["centos","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,7 @@ slug: access-an-apache-web-server-inside-a-lxd-container
 author:
   name: Linode
   email: docs@linode.com
-description: "Compared to other Containers, LXDmachine containers each work like typical servers. Here's show to run Apache inside LXD and direct traffic to the container."
+description: "How to Acccess an Apache Web Server Inside a LXD Container"
 keywords: ["container", "lxd", "lxc", "virtual machine"]
 tags: ["ubuntu","container","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
