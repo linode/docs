@@ -3,7 +3,7 @@ slug: ikiwiki-on-debian-6-squeeze
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use Ikiwiki on Debian 6 to power a standard wiki implementation.'
+description: 'How to Use Ikiwiki on Debian 6 to Power a Standard Wiki'
 keywords: ["ikiwiki debian squeeze", "ikiwiki debian 6", "ikiwiki", "wiki", "perl", "git", "markdown", "debian"]
 tags: ["wiki","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

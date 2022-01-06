@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Creating a LAMP stack on a CentOS 5 Linode.'
+description: 'How to Create A LAMP Stack Using CentOS 5'
 keywords: ["LAMP", "CentOS", "CentOS 5"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

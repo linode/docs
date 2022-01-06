@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install Nginx and PHP via FastCGI on Ubuntu 12.04 (Precise Pangolin).'
+description: 'How to Install Nginx and PHP via FastCGI on Ubuntu 12.04 (Precise Pangolin).'
 keywords: ["nginx", "nginx ubuntu 12.04", "nginx fastcgi", "nginx php", "unix socket", "tcp socket", "php", "fastcgi"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

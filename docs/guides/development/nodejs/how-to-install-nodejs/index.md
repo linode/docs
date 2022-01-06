@@ -3,14 +3,14 @@ slug: how-to-install-nodejs
 author:
   name: Linode
   email: docs@linode.com
-description: 'Node.js is a cross-platform runtime environment for server-side JavaScript applications. There are multiple ways to install and maintain Node.js and the decision of which installation method to use can quickly become a confusing one, so here are the main choices.'
+description: 'How to Install Node.js On Linux'
 keywords: ["linode guide", "hosting a website", "website", "linode quickstart guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-02-15
 modified_by:
   name: Linode
 published: 2014-12-18
-title: How to Install Node.js
+title: How to Install Node.js On Linux
 aliases: ['/websites/nodejs/a-nodejs-installation-crash-course/','/websites/nodejs/installing-nodejs/','/development/nodejs/how-to-install-nodejs/','/development/nodejs/set-up-and-install-nodejs/','/development/nodjs/a-nodejs-installation-crash-course/','/development/nodejs/installing-nodejs/']
 external_resources:
  - '[NodeSchool](https://nodeschool.io/)'

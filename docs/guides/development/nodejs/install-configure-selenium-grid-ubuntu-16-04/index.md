@@ -3,8 +3,8 @@ slug: install-configure-selenium-grid-ubuntu-16-04
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: 'This guide shows how to set up a Selenium grid that can be used to test webpages and applications in different browsers, browser versions, and operating systems. It can also be used to spread a large test suite across several servers for increased performance.'
-og_description: 'This guide shows how to set up a Selenium grid that can be used to test webpages and applications in different browsers, browser versions, and operating systems. It can also be used to spread a large test suite across several servers for increased performance.'
+description: 'How to Install and Configure Selenium Grid on Ubuntu 16.04 for Automated Testing'
+og_description: 'How to Install and Configure Selenium Grid on Ubuntu 16.04 for Automated Testing'
 keywords: ["selenium", "node.js", " headless browser", "automation", "webdriver"]
 tags: ["automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,7 +12,7 @@ published: 2018-03-09
 modified: 2018-03-09
 modified_by:
   name: Linode
-title: 'Install and Configure Selenium Grid on Ubuntu 16.04 for Automated Testing'
+title: 'How to Install and Configure Selenium Grid on Ubuntu 16.04 for Automated Testing'
 h1_title: 'Use Selenium Grid for Cross-Browser Compatibility Testing'
 external_resources:
   - '[Selenium Project Home](https://www.seleniumhq.org/projects/webdriver/)'

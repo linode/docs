@@ -3,7 +3,7 @@ slug: how-to-use-docker-compose
 author:
   name: Linode
   email: docs@linode.com
-description: "How to Use Docker Compose"
+description: "How to Use Docker Compose to Orchestrate Containers"
 keywords: ["docker", "compose"]
 tags: ["container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

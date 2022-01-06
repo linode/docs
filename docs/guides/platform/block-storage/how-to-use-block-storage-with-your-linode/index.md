@@ -3,7 +3,7 @@ slug: how-to-use-block-storage-with-your-linode
 author:
   name: Linode
   email: docs@linode.com
-description: This tutorial explains how to use Linode's block storage service.
+description: How to Use Block Storage With Your Linode
 keywords: ["block storage", " volume", "media", "resize", "storage", "disk"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

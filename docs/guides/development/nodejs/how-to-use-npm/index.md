@@ -2,8 +2,8 @@
 slug: install-and-use-npm-on-linux
 author:
   name: Nathaniel Stickman
-description: "This guide shows you how to install and use the Node Package Manager (NPM) on a Linux system. NPM gives you access to a vast Node.js package repository to help you enhance your JavaScript based projects."
-og_description: "This guide shows you how to install and use the Node Package Manager (NPM) on a Linux system. NPM gives you access to a vast Node.js package repository to help you enhance your JavaScript based projects."
+description: "How to Install and Use the Node Package Manager (NPM) on Linux"
+og_description: "How to Install and Use the Node Package Manager (NPM) on Linux"
 keywords: ['npm','npm install','npm update']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

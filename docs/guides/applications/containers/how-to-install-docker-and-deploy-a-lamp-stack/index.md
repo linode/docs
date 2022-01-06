@@ -3,7 +3,7 @@ slug: how-to-install-docker-and-deploy-a-lamp-stack
 author:
   name: Joe D.
   email: docs@linode.com
-description: 'LAMP container with Docker on Linode'
+description: 'How to install Docker and deploy a LAMP Stack'
 keywords: ["docker", "lamp", "LAMP", "ubuntu", "debian"]
 tags: ["lamp","container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

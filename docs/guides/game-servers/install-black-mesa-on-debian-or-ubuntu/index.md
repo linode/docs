@@ -3,7 +3,7 @@ slug: install-black-mesa-on-debian-or-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Install Black Mesa on Debian or Ubuntu'
+description: 'How to Install Black Mesa on Debian or Ubuntu'
 keywords: ["black mesa", "steam", "steamcmd", "sourcemod", "metamod"]
 tags: ["debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

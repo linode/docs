@@ -2,8 +2,8 @@
 slug: install-and-use-ffmpeg-on-linux
 author:
   name: Jeff Novotny
-description: 'This guide shows you how to install FFmpeg on Linux. You also learn to transcode audio and video, cut and crop video, integrate the FFmpeg functionality with Python, and explore further FFmpeg options.'
-og_description: 'This guide shows you how to install FFmpeg on Linux. You also learn to transcode audio and video, cut and crop video, integrate the FFmpeg functionality with Python, and explore further FFmpeg options.'
+description: 'How to Install and Use FFmpeg on Linux'
+og_description: 'How to Install and Use FFmpeg on Linux'
 keywords: ['FFmpeg python','FFmpeg concat','FFmpeg trim video','FFmpeg crop','FFmpeg cut','FFmpeg mkv to mp4']
 tags: ['linux', 'python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

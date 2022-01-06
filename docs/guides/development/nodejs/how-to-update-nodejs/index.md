@@ -3,7 +3,7 @@ slug: how-to-update-nodejs
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide describes how to download a new version of Node.js and update an installed version of Node.js on Linux, macOS, and Windows using multiple methods.'
+description: 'How to Update Node.js on Linux, macOS, and Windows'
 keywords: ['nodejs','version','upgrade','update','installation','n','npm','nvm']
 tags: ["node.js"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

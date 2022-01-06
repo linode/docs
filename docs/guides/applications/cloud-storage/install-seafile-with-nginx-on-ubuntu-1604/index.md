@@ -3,7 +3,7 @@ slug: install-seafile-with-nginx-on-ubuntu-1604
 author:
   name: Linode
   email: docs@linode.com
-description: 'Seafile is an open-source cross-platform file hosting tool with server applications for Linux and Windows. We will show you how to install it on Ubuntu 16.04.'
+description: 'How to Install Seafile with NGINX on Ubuntu 16.04'
 keywords: ["Seafile", " nginx", " Ubuntu 16.04", " file server", " media", " sharing"]
 tags: ["ubuntu", "nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,7 @@ modified: 2017-06-21
 modified_by:
   name: Linode
 published: 2017-05-23
-title: Install Seafile with NGINX on Ubuntu 16.04
+title: How to Install Seafile with NGINX on Ubuntu 16.04
 external_resources:
  - '[Seafile Server Manual](https://manual.seafile.com/)'
 aliases: ['/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604/']

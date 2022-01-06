@@ -3,7 +3,7 @@ slug: kubernetes-use-cases
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Advantages of using Kubernetes.'
+description: 'What Are Some Use Cases for Kubernetes?'
 keywords: ['kubernets', 'k8s', 'use','cases','advantages']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-09-04

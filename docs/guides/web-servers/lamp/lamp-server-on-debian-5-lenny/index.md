@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to build a LAMP application server with Debian 5.0 (Lenny).'
+description: 'How to build a LAMP Server Using Debian 5.0 (Lenny).'
 keywords: ["Debian LAMP Server", "Debian LAMP guide", "LAMP howto"]
 tags: ["web server","php","mysql","apache","debian","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

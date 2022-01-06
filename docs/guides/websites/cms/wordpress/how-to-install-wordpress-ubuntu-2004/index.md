@@ -3,8 +3,8 @@ slug: how-to-install-wordpress-ubuntu-2004
 author:
   name: Linode Community
   email: docs@linode.com
-description: "WordPress is an immensely popular and open-source content management system (CMS). It comes with access to an array of themes and plug-ins to make it your own. This guide helps you get a WordPress up and running on your Ubuntu 20.04 server."
-og_description: "WordPress is an immensely popular and open-source content management system (CMS). It comes with access to an array of themes and plug-ins to make it your own. This guide helps you get a WordPress up and running on your Ubuntu 20.04 server."
+description: "How to Install WordPress on Ubuntu 20.04"
+og_description: "How to Install WordPress on Ubuntu 20.04"
 keywords: ['wordpress blog','wordpress download','what is wordpress','wordpress hosting','content management system','cms']
 tags: ['wordpress', 'cms', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

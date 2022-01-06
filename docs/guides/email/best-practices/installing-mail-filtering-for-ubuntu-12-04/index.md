@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Configuring Virus and Spam protection for your mail server.'
+description: 'How to Install Mail Filtering on Ubuntu 12.04.'
 keywords: ["email", "mail", "postfix", "dovecot", "mysql", "ubuntu", "12.04", "clamav", "spamassassin", "amavis"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

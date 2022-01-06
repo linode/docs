@@ -3,7 +3,7 @@ slug: install-nginx-debian
 author:
   name: Linode
   email: docs@linode.com
-description: 'Shortguide for installing NGINX on Debian.'
+description: 'How to Install NGINX on Linux - A Quick Guide.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-03-20

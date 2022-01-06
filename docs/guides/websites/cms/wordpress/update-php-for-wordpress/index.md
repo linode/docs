@@ -2,8 +2,8 @@
 slug: how-to-update-php-for-wordpress
 author:
   name: Jeff Novotny
-description: 'Most of the WordPress users are currently using PHP versions that are no longer supported, which is not good from a security perspective. This guide explains how and when to upgrade PHP without adversely affecting your site.'
-og_description: 'Most of the WordPress users are currently using PHP versions that are no longer supported, which is not good from a security perspective. This guide explains how and when to upgrade PHP without adversely affecting your site.'
+description: 'How to Update PHP for WordPress on Ubuntu 20.04'
+og_description: 'How to Update PHP for WordPress on Ubuntu 20.04'
 keywords: ['update php','update php wordpress','update php version','Ubuntu']
 tags: ['php', 'ubuntu', 'wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

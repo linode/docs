@@ -3,7 +3,7 @@ slug: install-gitlab-with-docker
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How to install GitLab with Docker.'
+description: 'How to install GitLab with Docker on Linux'
 keywords: ['gitlab', 'git', 'docker']
 tags: ["version control system","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,7 @@ slug: how-to-install-mariadb-on-centos-7
 author:
     name: Linode
     email: docs@linode.com
-description: "Getting started with MariaDB on CentOS 7"
+description: "How to Install MariaDB on CentOS 7"
 keywords: ["MariaDB on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MariaDB", "database", "MySQL", "install MariaDB", "secure MariaDB", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-08-21

@@ -3,8 +3,8 @@ slug: how-to-install-wordprress-using-wp-cli-on-debian-9
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Install WordPress Using WP-CLI on Debian 9'
-og_description: 'Install WordPress Using WP-CLI on Debian 9'
+description: 'How to Install WordPress Using the WP-CLI on Debian 9'
+og_description: 'How to Install WordPress Using the WP-CLI on Debian 9'
 keywords: ["install WP-CLI", "debian", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
 tags: ["debian","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -4,7 +4,7 @@ author:
   name: Nick Brewer
   email: docs@linode.com
 published: 2017-03-02
-description: 'Install a Custom Distribution or Linux Appliance on your KVM Linode.'
+description: 'How to Install a Custom Distribution or Linux Appliance on your Linode.'
 keywords: ["custom distro", "custom distribution", "advanced Linux", "kvm"]
 tags: ["debian", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

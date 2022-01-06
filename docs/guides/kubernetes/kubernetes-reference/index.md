@@ -3,7 +3,7 @@ slug: kubernetes-reference
 author:
   name: Linode
   email: docs@linode.com
-description: 'A reference for Kubernetes terminology.'
+description: 'Linode's Reference Guide to Kubernetes Terminology'
 keywords: ['kubernetes','k8s','definitions']
 tags: ["docker","networking","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

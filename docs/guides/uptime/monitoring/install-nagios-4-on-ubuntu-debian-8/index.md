@@ -3,7 +3,7 @@ slug: install-nagios-4-on-ubuntu-debian-8
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Nagios is a widely used tool for monitoring systems and services.'
+description: 'How to Install Nagios on Ubuntu 14.04 and Debian 8'
 keywords: ["nagios", "ubuntu", "monitoring", "install nagios", "nagios 4 ubuntu", "debian 8"]
 aliases: ['/uptime/monitoring/install-nagios-4-on-ubuntu-14-04-debian-8/','/uptime/monitoring/monitor-services-with-nagios-4-on-ubuntu-14-04/','/uptime/monitoring/install-nagios-4-on-ubuntu-debian-8/']
 tags: ["debian","monitoring","lamp","ubuntu"]

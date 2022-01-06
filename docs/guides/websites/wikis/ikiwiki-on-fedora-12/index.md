@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Using Ikiwiki on Fedora 12 to power a standard wiki implementation.'
+description: 'How to Use Ikiwiki on Fedora 12 to Run a Wiki Site'
 keywords: ["ikiwiki", "fedora", "fedora 12", "wiki", "perl", "git", "markdown"]
 tags: ["wiki","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

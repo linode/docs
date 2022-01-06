@@ -3,7 +3,7 @@ slug: install-java-on-debian
 author:
   name: Angel Guarisma
   email: aguarisma@linode.com
-description: This how-to tutorial will let you install Java on Debian 8
+description: How to Install Java Runtime Environment and JDK in Debian
 keywords: ["install Java", "Debian", "OpenJDK", "Java JDK"]
 tags: ["java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

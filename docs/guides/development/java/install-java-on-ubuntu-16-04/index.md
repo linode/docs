@@ -3,7 +3,7 @@ slug: install-java-on-ubuntu-16-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Install the Oracle Java development kit'
+description: 'How to Install the Oracle Java Development Kit on Ubuntu 16.04'
 keywords: ["oracle", "java", "JDK", "install java", "ubuntu"]
 tags: ["java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

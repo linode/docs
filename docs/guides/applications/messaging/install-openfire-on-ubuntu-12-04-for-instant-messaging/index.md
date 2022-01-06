@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Install Openfire on Ubuntu 12.04 for Instant Messaging.'
+description: 'How to Install Openfire on Ubuntu 12.04 for Instant Messaging'
 keywords: ["openfire", "ubuntu 12.04", "instant messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server", "JRE", "configure openfire"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,7 +13,7 @@ modified: 2016-03-14
 modified_by:
   name: Phil Zona
 published: 2012-11-13
-title: 'Install Openfire on Ubuntu 12.04 for Instant Messaging'
+title: 'How to Install Openfire on Ubuntu 12.04 for Instant Messaging'
 external_resources:
  - '[Openfire Documentation](http://www.igniterealtime.org/projects/openfire/documentation.jsp)'
  - '[XMPP Standards Foundation](http://xmpp.org/)'

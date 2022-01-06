@@ -3,7 +3,7 @@ slug: how-to-use-object-storage
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Get started using Linode's Object Storage."
+description: "How to Get Started with Linode's Object Storage"
 keywords: ['object','storage','bucket']
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

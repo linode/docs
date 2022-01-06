@@ -3,7 +3,7 @@ slug: install-plex-media-server-on-centos-7
 author:
   name: Nick Brewer
   email: nbrewer@linode.com
-description: View and organize your media library with Plex on CentOS 7
+description: How to View and Organize Your Media Library by Installing Plex on CentOS 7
 keywords: ["plex", "media", "centos"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,7 @@ slug: how-to-set-up-cloudflare-with-linode
 author:
   name: Nathan Melehan
   email: nmelehan@linode.com
-description: 'Learn how to use Cloudflare with a website running on Linode.'
+description: 'How to Setup Cloudflare with your Website and Linode'
 keywords: ["cloudflare", "dns"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-06-26

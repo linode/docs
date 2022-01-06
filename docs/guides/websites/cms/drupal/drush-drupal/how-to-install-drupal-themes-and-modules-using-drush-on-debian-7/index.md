@@ -3,7 +3,7 @@ slug: how-to-install-drupal-themes-and-modules-using-drush-on-debian-7
 author:
     name: Linode
     email: docs@linode.com
-description: 'Using Drush to install themes, modules, and backup systems'
+description: 'How to Install Drupal Themes and Modules Using Drush on Debian 7'
 keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framework", "debian", "drush"]
 aliases: ['/websites/cms/drupal/themes-modules-backups-drupal-drush-on-debian-7/','/websites/cms/themes-modules-backups-drupal-drush-on-debian-7/','/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-7/']
 tags: ["drupal","cms","debian"]

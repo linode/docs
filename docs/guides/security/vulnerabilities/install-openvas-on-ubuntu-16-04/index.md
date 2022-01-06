@@ -3,7 +3,7 @@ slug: install-openvas-on-ubuntu-16-04
 author:
   name: Phil Zona
   email: docs@linode.com
-description: Install OpenVAS 8 to scan your system for vulnerabilities.
+description: How to Install OpenVAS 8 to Scan Your System for Vulnerabilities
 keywords: ["openvas", "ubuntu", "install openvas"]
 aliases: ['/security/vulnerabilities/install-openvas-on-ubuntu-16-04/','/security/install-openvas-on-ubuntu-16-04/']
 tags: ["security","ubuntu"]

@@ -3,8 +3,8 @@ slug: install-canvas-lms-on-ubuntu-2004
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Canvas is a learning management system that you can use to create a fully-featured website for education or training courses. This guide walks you through installing Canvas on Ubuntu 20.04.'
-og_description: 'Canvas is a learning management system that you can use to create a fully-featured website for education or training courses. This guide walks you through installing Canvas on Ubuntu 20.04.'
+description: 'How to Install Canvas on Ubuntu 20.04'
+og_description: 'How to Install Canvas LMS on Ubuntu 20.04'
 keywords: ['canvas','education','training','learning management system','lms','install on ubuntu 20.04']
 tags: ['canvas', 'ubuntu', 'ssl', 'apache', 'redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

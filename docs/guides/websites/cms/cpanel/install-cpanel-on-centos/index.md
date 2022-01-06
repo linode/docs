@@ -3,7 +3,7 @@ slug: install-cpanel-on-centos
 author:
   name: Linode
   email: docs@Linode.com
-description: 'Use cPanel to manage services on your CentOS Linode.'
+description: 'How to Install cPanel on CentOS'
 keywords: ["cpanel", "Linode control panel", "install cpanel", "cpanel centos"]
 tags: ["centos","cms","cpanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

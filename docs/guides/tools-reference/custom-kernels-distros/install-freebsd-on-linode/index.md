@@ -3,7 +3,7 @@ slug: install-freebsd-on-linode
 author:
   name: Rainbow
   email: rainbow@linode.com
-description: 'FreeBSD is a free and open source operating system based on the Berkeley Software Distribution from the late 1970''s. Today FreeBSD is used all over the world.'
+description: 'How to Install FreeBSD on Linode'
 keywords: ["freebsd", "bsd"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,7 @@ modified: 2019-01-07
 modified_by:
   name: Linode
 published: 2016-03-14
-title: 'Install FreeBSD on Linode'
+title: 'How to Install FreeBSD on Linode'
 external_resources:
  - '[The FreeBSD Handbook](https://www.freebsd.org/doc/handbook/)'
  - '[Using the Lish Console](/docs/guides/using-the-lish-console/)'

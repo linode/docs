@@ -3,7 +3,7 @@ slug: install-gatsbyjs
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI'
+description: 'How to Create a CI/CD Pipeline with Gatsby and More'
 keywords: ['gatsbyjs','gatsby','ssg','static site generator', 'travis', 'netlify']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-09

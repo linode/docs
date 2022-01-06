@@ -3,7 +3,7 @@ slug: install-plex-media-server-with-salt
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install Plex Media Server on Ubuntu 18.04 with Salt masterless.'
+description: 'How to Install Plex Media Server on Ubuntu 18.04 with Salt masterless.'
 keywords: ['plex','media','server','ubuntu 18.04','ubuntu','salt','saltstack']
 tags: ["ubuntu", "salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

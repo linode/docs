@@ -2,8 +2,8 @@
 slug: how-to-understand-ip-addresses
 author:
   name: Jeffery Novotny
-description: 'The Internet Protocol (IP), as described in RFC 791, is the framework that underpins the behavior of the entire internet. This guide describes how to understand IP addresses, and how to describe and use them. You also learn how to find your computer''s IP address.'
-og_description: 'The Internet Protocol (IP), as described in RFC 791, is the framework that underpins the behavior of the entire internet. This guide describes how to understand IP addresses, and how to describe and use them. You also learn how to find your computer''s IP address.'
+description: 'How to Understand and Use IP Addresses'
+og_description: 'How to Understand and Use IP Addresses'
 keywords: ['IPv4','IPv6','IP address','Internet Protocol', 'what is ip address']
 tags: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

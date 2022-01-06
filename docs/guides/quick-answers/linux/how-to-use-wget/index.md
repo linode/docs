@@ -3,7 +3,7 @@ slug: how-to-use-wget
 author:
   name: Angel
   email: docs@linode.com
-description: 'This Quick Answer guide will explain how to use wget.'
+description: 'How to Download Files from the Command Line Using wget'
 keywords: ["linux", "how to", "grep", "wget"]
 aliases: ['/quick-answers/linux/how-to-use-wget/','/quick-answers/how-to-use-wget/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

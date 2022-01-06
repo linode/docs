@@ -3,7 +3,7 @@ slug: introduction-to-awk
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'Learn some basics of the AWK programming language.'
+description: 'An Introduction to the AWK Programming Language'
 keywords: ["UNIX", "shell", "AWK"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-30
