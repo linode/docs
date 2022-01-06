@@ -8,7 +8,7 @@ og_description: 'In this guide, you learn how to install Apache Subversion 20.04
 keywords: ['apache subversion', 'git', 'apache subversion vs git', 'apache subversion web interface']
 tags: ['apache', 'ubuntu', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-09
+published: 2022-01-06
 modified_by:
   name: Linode
 title: "Install Apache Subversion on Ubuntu 20.04"
@@ -17,36 +17,30 @@ enable_h1: true
 contributor:
   name: Tom Henderson
 ---
-This tutorial demonstrates how to install Apache’s Subversion on Ubuntu 20.014 server editions. Apache Subversion is an open-source software revision control and versioning system, released under the [Apache2 License](https://www.gnu.org/licenses/license-list.html#apache2).
-
-Designed as a feature enhancement of the *Concurrent Versions System(CVS)*, Apache Subversion was authored and maintained by Collabnet. In 2009, Subversion became an Apache Incubator Project, finally becoming a top-level project in 2010.
-
-The hierarchical model of Apache Subversion (principally its release and folder structures) was adopted readily, until perceived missing features and a distributed file system model evolved into Git.
+This tutorial shows you how to install Apache’s Subversion on Ubuntu 20.014 server edition. Apache Subversion is an open source version control system released in 2000 and available under the [Apache2 License](https://www.gnu.org/licenses/license-list.html#apache2). Designed as a feature enhancement of the *Concurrent Versions System(CVS)*, Apache Subversion was authored and maintained by Collabnet. In 2009, Subversion became an Apache Incubator Project, finally becoming a top-level project in 2010.
 
 ## What is Apache Subversion?
 
-Apache Subversion is a [version control system](/docs/guides/introduction-to-version-control/), primarily used by developers working on collaborative software projects. Version control documents and organizes successive iterations of changes made to the software components of a software package. In this guide, you learn how to install Apache Subversion 20.04 LTS on an Ubuntu 20.04 Linode server.
+Apache Subversion is a [version control system](/docs/guides/introduction-to-version-control/)(VCS) that manages, documents, and organizes the changes made to a project's files and directories. Subversion can work across networks to manage the same files and directories. This enables collaboration between developers who are working on the same code base. Although Subversion is commonly used to version control software development projects, you can use it to version control any group of files and directories. Apache Subversion is invoked on the command line using the `svn` command. For this reason it is sometimes also referred to as *SVN*.
 
-There are two primary components of Apache Subversion:
+Apache Subversion is made up of two primary components:
 
-- The server, that holds the repository
-- The client application, for organizing updates to and from the server.
+- Server: the server is used to store the Subversion repository.
+- Client: the client application is used to organize updates to and from the server that stores the repository.
 
-Both components, client and server, can be combined in the same Ubuntu 20.04 instance. The server instance must remain available and accessible for clients. There can be more than one client that can access the server at the same time.
+The Subversion server is a web-based repository consisting of a trunk and branches. Clients work on branches of the trunk until they are ready to be made a part of the trunk repository. A trunk and its branches are a base directory, while directories are branches.
 
-The server is a web-based repository/database consisting of a trunk (tree-like) and branches. Clients work on branches of the trunk until they are ready to be made a part of the trunk repository. A trunk and its branches are a base directory, while directories are branches.
+There can be more than one client that accesses the server at the same time. The server instance must remain available and accessible to all clients. Both client and server can be hosted on the same Ubuntu 20.04 instance.
 
-You can install Apache Subversion on most Unix-like systems including Linux, macOS, and Windows. However, this tutorial covers the steps for installing on **Ubuntu Server 20.04 LTS** from Ubuntu repositories and added library sources.
+This tutorial covers the steps for installing on **Ubuntu Server 20.04 LTS** from Ubuntu repositories and added library sources. However, you can install Apache Subversion on Linux, macOS, and Windows systems.
 
 {{< note >}}
-Installing Apache Subversion on Ubuntu Server 20.04 LTS requires the installation of libraries used by Apache Subversion that is not found in the standard distribution of Ubuntu 20.04. Subversion cannot be installed correctly without these specific libraries.
+Installing Apache Subversion on Ubuntu Server 20.04 LTS requires the installation of libraries used by Apache Subversion that are not found in the standard distribution of Ubuntu 20.04.
 {{< /note >}}
 
 ## Apache Subversion vs. Git
 
-Apache Subversion (also known by SVN for its command-line invocation) provides a different workflow and version control methodology from Git and its derivatives.
-
-The table below signifies some of the differences between Apache Subversion and Git.
+Apache Subversion provides a different workflow and version control methodology from Git and its derivatives. The table below lists some of the differences between Apache Subversion and Git.
 
 | Apache Subversion (SVN)  |  Git          |
 |---------------------|-------------------
@@ -57,7 +51,6 @@ The table below signifies some of the differences between Apache Subversion and 
 | SVN synchronizes distributed combinations into a single tree | Git can mess the codebase as there is no hierarchy |
 | SVN is more efficient for large codebases as it uses a single source of code truth | Git's ease of use makes it popular |
 | You must rebuild the entire repository if the SVN trunk is destroyed or becomes unavailable. Hence you must backup the SVN repositories. | Multiple independent copies of the repository can exist as Git replicates the codebase.  |
-
 
 ## Apache Subversion Installation Steps
 
