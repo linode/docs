@@ -147,7 +147,7 @@ The Linode CCM accepts annotations that configure the behavior and settings of y
 | `check-passive` | Boolean | `false` | When `true`, `5xx` status codes will cause the health check to fail. |
 | `preserve` | Boolean | `false` | When `true`, deleting a LoadBalancer service does not delete the underlying NodeBalancer |
 | `nodebalancer-id` | string | None | The ID of the NodeBalancer to front the service. When not specified, a new NodeBalancer will be created. This can be configured on service creation or patching. |
-| `hostname-only-ingress` | Boolean | `false` | When `true`, the LoadBalancerStatus for the service will only contain the Hostname. This is useful for bypassing kube-proxy's rerouting of in-cluster requests originally intended for the external LoadBalancer to the service's constituent pod IPs. |
+| `hostname-only-ingress` | Boolean | `false` | When `true`, the LoadBalancerStatus for the service will only contain the Hostname. This is useful for bypassing kube-proxy's rerouting of in-cluster requests originally intended for the external LoadBalancer to the service's constituent Pod IPs. |
 
 {{< note >}}
 To view a list of deprecated annotations, visit the [Linode CCM GitHub repository](https://github.com/linode/linode-cloud-controller-manager/blob/master/README.md#deprecated-annotations).
