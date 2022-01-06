@@ -1,17 +1,19 @@
 ---
-slug: getting-started-redis
+slug: how-to-connect-to-redis-and-use-the-redis-database
 author:
   name: Linode Community
   email: docs@linode.com
 description: "Learn how to start using Redis databases, connecting to a Redis server and working with data on it."
 og_description: "Learn how to start using Redis databases, connecting to a Redis server and working with data on it."
-keywords: ['connecting to redis server','how to create redis database','getting started with redis']
+keywords: ['connecting to redis server', 'how to create redis database', 'getting started with redis']
+tags: ['redis', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-11
 modified_by:
   name: Nathaniel Stickman
-title: "Connecting to Redis and Using Redis Databases"
+title: "How to Connect to Redis and Use The Redis Database"
 h1_title: "Connecting to Redis and Using Redis Databases"
+enable_h1 : true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -20,41 +22,41 @@ external_resources:
 - '[Redis: Redis Persistence](https://redis.io/topics/persistence)'
 ---
 
-Redis is an open-source NoSQL database for in-memory storage of data structures. It works exceptionally well for caching, messaging, and other data storage contexts where quick and low-latency storage is needed.
+Redis is an open-source NoSQL database for in-memory storage of data structures. It works exceptionally well for caching, messaging, and other data storage contexts where quick, and low-latency storage is needed.
 
 This tutorial gets you started using Redis. It explains how to connect to a Redis server, both locally and remotely. The guide then goes into details on creating, populating, and saving a Redis database.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
 
             sudo dnf upgrade
 
-1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to install a Redis server and command-line interface (CLI). Be sure to use the drop down menu at the top of that page to select your Linux distribution and get the appropriate steps.
+1. Follow the instructions in our [How to Install and Configure Redis on Ubuntu 20.04](/docs/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
 1. Replace `/etc/redis/redis.conf` throughout this guide with the actual location of your Redis server's configuration file.
 
-    Generally, on Debian and Ubuntu, the location defaults to the above. On AlmaLinux, CentOS, and Fedora, the default location is usually `/etc/redis.conf`.
+    Generally, on **Debian** and **Ubuntu**, the location defaults to the above. On **AlmaLinux**, **CentOS**, and **Fedora**, the default location is usually `/etc/redis.conf`.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Connect to Your Redis Server
 
-You can use the Redis CLI tool to connect to a Redis server, both locally and remotely. These next sections show you how to do both.
+You can use the Redis CLI tool to connect to a Redis server, both locally and remotely. The steps in the following sections show you how to do both.
 
-The examples coming up assume that you have created a user on the Redis server and have set up restricted access with `requirepass`. For these examples, the Redis authentication and user configuration are:
+The examples that follow assume that you have created a user on the Redis server and have set up restricted access using `requirepass` configuration directive. For these examples, the Redis authentication and user configuration is shown below:
 
 {{< file "/etc/redis/redis.conf" >}}
 # [...]
@@ -66,23 +68,25 @@ user example-user +@all allkeys on >password
 
 ### Local Connection
 
-The Redis CLI automatically connects to a local Redis server when you run the `redis-cli` command. From there, you just need to authenticate your connection to be able to view and modify Redis database on the server.
+The Redis CLI automatically connects to a local Redis server when you run the `redis-cli` command. From there, you just need to authenticate your connection to be able to view and modify the Redis database on the server.
 
-Redis gives you two ways of authenticating your connection.
+Redis gives you the following two ways of authenticating your connection:
 
-- Using command-line options. In this case, you would provide the username and password of your Redis user as part of the command-line command to start the Redis CLI. Use the `--user` flag to provide a username and the `--pass` flag to provide a password, as in:
+- **Using command-line options**: In this case, you would provide the username and password of your Redis user as part of the command-line command to start the Redis CLI. Use the `--user` flag to provide a username and the `--pass` flag to provide a password as shown below:
 
         redis-cli --user example-user --pass password
 
-- Using the CLI interface. The CLI has an `AUTH` command which authenticates a connection given a username and password. Here is an example:
+- **Using the CLI interface**: The CLI has an `AUTH` command which authenticates a connection given a username and password. Here is an example:
 
         AUTH example-user password
 
+    If the password provided via `AUTH` command matches the password in the `/etc/redis/redis.conf` configuration file, the server replies with the `OK` status code and starts accepting commands.
+
     {{< output >}}
-OK
+    OK
     {{< /output >}}
 
-Both options also support password-only authentication.
+Both options above also support password-only authentication.
 
 - Use the `-a` flag to authenticate by password on the command line:
 
@@ -96,21 +100,21 @@ Both options also support password-only authentication.
 
 To connect to your Redis server remotely, you first need to open the appropriate port in your firewall and bind Redis to an address.
 
-1. Open port **6379** on your system's firewall.
+1. Open port `6379` on your system's firewall.
 
-    - On Debian and Ubuntu, you can do so using UFW. See our guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) for more on using UFW. Typically, you can open the port with:
+    - On **Debian** and **Ubuntu**, you can do so using UFW. See our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide for more information on using UFW. Typically, you can open the port using the following commands:
 
             sudo ufw allow 6379
             sudo ufw reload
 
-    - On CentOS and Fedora, you can use FirewallD. Take a look at our guide [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/) for more on using FirewallD. You can usually open the port with:
+    - On **CentOS** and **Fedora**, you can use FirewallD. Take a look at our guide [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/) for more information on using FirewallD. You can usually open the port using the following commands:
 
             sudo firewall-cmd --zone=public --add-port=6379/tcp --permanent
             sudo firewall-cmd --reload
 
-1. Open the Redis configuration file, typically located at. Then, modify or add a line for `bind`, indicating your server's IP address or domain name.
+1. Open the `redis.conf` Redis configuration file, typically located at `/etc/redis/`. Then, modify or add a line for `bind`, indicating your server's IP address or domain name.
 
-    Here is an example that listens for both local and remote connections. Replace `192.0.2.0` with your server's IP address. You could, alternatively, replace this IP address with your server's domain name:
+    Here is an example that listens for both local and remote connections. Replace `192.0.2.0` with your server's IP address. You could, alternatively, replace this IP address with your server's domain name.
 
     {{< file "/etc/redis/redis.conf" >}}
 # [...]
@@ -118,23 +122,23 @@ bind 127.0.0.1 192.0.2.0
 # [...]
     {{< /file >}}
 
-    Subsequent examples use this IP address for your server, so replace those as you go.
+    Subsequent examples use this IP address for your server, so replace them as you go.
 
-Once you have these configurations set up on the server, you can connect to Redis from a remote client.
+1. Once you have these configurations set up on the server, you can connect to Redis from a remote client.
 
-Install the Redis CLI on the machine you want to access the server from, then execute a command like the following:
+    Install the Redis CLI on the machine you want to access the server from, then execute the following command:
 
-    redis-cli -h 192.0.2.0 -p 6379
+        redis-cli -h 192.0.2.0 -p 6379
 
-You can then authenticate using the Redis CLI interface, as shown in the previous section. Although you can still authenticate using command line flags, it is recommended that you use the CLI interface instead for added security.
+    You can then authenticate using the Redis CLI interface, as shown in the previous section. Although you can still authenticate using command-line flags, it is recommended that you use the CLI interface instead for added security.
 
 ### Verifying Connection
 
-To verify your connection to the Redis server, you can execute this Redis command:
+To verify your connection to the Redis server, you can execute the `PING` Redis command:
 
     PING
 
-The server responds with the output below, verifying that you are connected and authenticated:
+The server responds with the output below, verifying that you are connected and authenticated.
 
 {{< output >}}
 PONG
@@ -142,11 +146,11 @@ PONG
 
 ## How to Manage Redis Databases
 
-Once you are connected to the Redis server, you can start working with the databases and keys there. These next sections explain some of the most useful actions and commands you can use for managing your Redis databases.
+Once you are connected to the Redis server, you can start working with the databases and keys there. The following sections explain some of the most useful actions and command you can use for managing your Redis databases.
 
-### Creating a Redis Database
+### Create a Redis Database
 
-Redis, in fact, does not have database creation as such. By default, Redis creates 16 databases, indexed 0–15. You can see how to select between those databases in the next section.
+Redis does not have database creation as such. By default, Redis creates 16 databases, indexed 0–15. You can see how to select between those databases in the next section.
 
 You can alter the number of databases via the Redis configuration file. Here is what the default configuration looks like:
 
@@ -158,19 +162,19 @@ databases 16
 
 Redis does not give you a way to name or otherwise define a database beyond the databases' indices.
 
-### Selecting a Database
+### Select a Database
 
-You can choose which database you are currently viewing and operating on with the `SELECT` command. For instance, to start using the database at index `1`, you can use the command:
+You can choose which database you are currently viewing and operating on with the `SELECT` command. For instance, to start using the database at index `1`, you can use the command below:
 
     SELECT 1
 
-For any database index except `0`, the Redis CLI indicates the current index in the command prompt, as in:
+For any database index except `0`, the Redis CLI indicates the current index in the command prompt, as shown below:
 
 {{< output >}}
 127.0.0.1:6379[1]>
 {{< /output >}}
 
-### Moving Databases and Data
+### Move Databases and Data
 
 The Redis CLI gives you two options for moving data between Redis databases.
 
@@ -178,9 +182,9 @@ The Redis CLI gives you two options for moving data between Redis databases.
 
         SWAPDB 0 1
 
-- You can migrate keys from a database on one Redis server to another using the `MIGRATE` command. It takes the address of the destination server, its port number, the key name, and a number of milliseconds for timeout.
+- You can migrate keys from a database on one Redis server to another using the `MIGRATE` command. It takes the address of the destination server, its port number, the key name, and a number of milliseconds for a timeout.
 
-    Migration requires that you set up the remote server for remote access, as described in the [Remote Connection](/docs/guides/getting-started-redis/#remote-connection) section above.
+    Migration requires that you set up the remote server for remote access, as described in the [Remote Connection](/docs/guides/how-to-connect-to-redis-and-use-the-redis-database/#remote-connection) section above.
 
     The example below migrates a key called `key_1` from the current database to a remote database at `192.0.2.0`:
 
@@ -190,11 +194,11 @@ The Redis CLI gives you two options for moving data between Redis databases.
 
         MIGRATE 192.0.2.0 6379 "" 5000 KEYS key_1 key_2 key_3
 
-### Removing a Database
+### Remove a Database
 
 Because there is no database creation as such in Redis, it also lacks database deletion.
 
-However, you can clear out the data in a given database using the `FLUSHDB` command. This deletes all of the keys in the currently selected database:
+However, you can clear out the data in a given database using the `FLUSHDB` command. This deletes all of the keys in the currently selected database.
 
     FLUSHDB
 
@@ -208,17 +212,17 @@ Data in Redis databases are stored as key-value pairs. Each key can be as simple
 
 You can learn more about the data types Redis supports in our upcoming guides in this series. Each data type gets covered in depth in these guides, so be sure to check them out.
 
-These next sections show you how to start working with keys, no matter their types. You can see how to set new keys, to "query" for a particular key, and how to modify keys.
+The following sections show you how to start working with keys, no matter their types. You can see how to set new keys, to "query" for a particular key, and how to modify keys.
 
 ### Setting and Getting Keys
 
-Create new entries — keys — in your database with the `SET` command. It takes the name of the key and its value, like this:
+Create new entries — keys — in your database with the `SET` command. It takes the name of the key and its value as shown below:
 
     SET key_1 "Value 1"
 
-The example above assigns a string as the key's value. But, as mentioned above, Redis supports several different data types, which you can learn about in our upcoming guides in this series.
+The example above assigns a string `Value 1` as the key's value. But, as mentioned above, Redis supports several different data types, which you can learn about in our upcoming guides in this series.
 
-Redis does not have a query language like SQL or many other NoSQL databases. It, instead, provides a simple and straightforward key storage focused on speed and availability.
+Redis does not have a query language like SQL or many other NoSQL databases. It, instead, provides a simple, and straightforward key storage focused on speed, and availability.
 
 To view a key's value in a Redis database, you use the `GET` command followed by the key name:
 
@@ -228,23 +232,23 @@ To view a key's value in a Redis database, you use the `GET` command followed by
 "Value 1"
 {{< /output >}}
 
-### Modifying and Moving Keys
+### Modify and Move Keys
 
-To rename a key, you can use a command like the following. The example renames the `key_1` key to `key_one`:
+To rename a key, you can use a command like the following. The example below renames the `key_1` key to `key_one`.
 
     RENAME key_1 key_one
 
-There are two ways of deleting keys.
+There are two ways of deleting keys:
 
-- The `DEL` command deletes a key synchronously and immediately. It is the best option for most key deletions:
+- The `DEL` command deletes a key synchronously and immediately. It is the best option for most key deletions.
 
         DEL key_2
 
-- The `UNLINK` command is useful when you want to delete potentially large keys. It determines how long the deletion would take, and runs the deletion asynchronously if the estimate crosses a certain threshold. If the duration does not cross that threshold, the command works synchronously like `DEL`. This allows you to avoid tying up the database with heavy deletion tasks:
+- The `UNLINK` command is useful when you want to delete potentially large keys. It determines how long the deletion would take, and runs the deletion asynchronously if the estimate crosses a certain threshold. If the duration does not cross that threshold, the command works synchronously like `DEL`. This allows you to avoid tying up the database with heavy deletion tasks.
 
         UNLINK key_2
 
-You can move a key as well. The command below moves the `key_3` key from the current database to database `7`:
+You can move a key as well. The command below moves the `key_3` key from the current database to database `7`.
 
     MOVE key_3 7
 
@@ -259,11 +263,11 @@ With Redis, persistence is handled via backups. When the server backs up a datab
 
 By default, the Redis server backs up databases for any of the following three conditions:
 
-- An hour has passed and at least one change has occurred
-- Five minutes have passed and at least 100 changes have occurred
-- One minute has passed and at least 10,000 changes have occurred
+- An hour has passed and at least one change has occurred.
+- Five minutes have passed and at least 100 changes have occurred.
+- One minute has passed and at least 10,000 changes have occurred.
 
-You can alter how Redis backs up databases via the configuration file's `save` directive. This directive takes a number of seconds and a number of changes. For example, here is the default configuration represented as a configuration:
+You can alter how Redis backs up databases via the configuration file's `save` directive. This directive takes a number of seconds and a number of changes. For example, following is the default configuration represented as a configuration:
 
 {{< file "/etc/redis/redis.conf" >}}
 # [...]
@@ -273,15 +277,15 @@ save 60 10000
 # [...]
 {{< /file >}}
 
-### Manually Saving a Redis Database
+### Manually Save a Redis Database
 
-You also have the option to manually save the content of your Redis instance:
+You also have the option to manually save the content of your Redis instance.
 
     SAVE
 
 This command immediately backs up the entirety of your Redis server's databases. However, this option is not often feasible in a production environment because it operates synchronously and, therefore, ties up the server.
 
-Instead, you may want to use the following command for your production Redis instance:
+Instead, you may want to use the following command for your production Redis instance.
 
     BGSAVE
 
