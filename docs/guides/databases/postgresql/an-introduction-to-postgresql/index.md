@@ -1,14 +1,12 @@
 ---
 slug: an-introduction-to-postgresql
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Jeff Novotny
 description: 'This guide introduces the PostgreSQL database, outlining how it is different from other SQL databases like MySQL, and describes its benefits along with possible use cases.'
-og_description: 'This guide introduces the PostgreSQL database, outlining how it is different from other SQL databases like MySQL, and describes its benefits along with possible use cases.'
 keywords: ['postgresql vs mysql','what is postgresql?','difference between mysql and postgresql','postgres use cases']
 tags: ['postgresql', 'mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-09
+published: 2022-01-07
 modified_by:
   name: Linode
 title: "An Introduction to PostgreSQL"
@@ -19,14 +17,9 @@ contributor:
   link: https://github.com/JeffreyNovotny/
 external_resources:
 - '[PostgreSQL website](https://www.postgresql.org/)'
-- '[PostgreSQL documentation](https://www.postgresql.org/docs/)'
-- '[PostgreSQL Feature Matrix](https://www.postgresql.org/about/featurematrix/)'
-- '[Intro to PostgreSQL Tutorial](https://www.postgresqltutorial.com/)'
-- '[MySQL](https://www.mysql.com/)'
-- '[ACID Compliance page in Wikipedia](https://en.wikipedia.org/wiki/ACID)'
 ---
 
-[*PostgreSQL*](https://www.postgresql.org/) is an *object-relational database management system* (ORDBMS) that provides a powerful alternative to a traditional *relational database management system* (RDBMS). It combines relational and non-relational models to allow for more user flexibility and handle more complex scenarios and unstructured data. This guide answers the question "What is PostgreSQL?" and outlines the differences between [MySQL](https://www.mysql.com/) and PostgreSQL. It also explains the different PostgreSQL use cases.
+[*PostgreSQL*](https://www.postgresql.org/) is an *object-relational database management system* (ORDBMS) that provides a powerful alternative to a traditional *relational database management system* (RDBMS). It combines relational and non-relational models to allow for more user flexibility and can handle more complex scenarios and unstructured data. This guide answers the question "What is PostgreSQL?" and outlines the differences between [MySQL](https://www.mysql.com/) and PostgreSQL. It also explains the different PostgreSQL use cases.
 
 ## What is PostgreSQL?
 
@@ -44,7 +37,7 @@ Despite having many more features than its competitors, PostgreSQL can still han
 
 PostgreSQL implements concurrency using *Multi-Version Concurrency Control* (MVCC), which enables full *ACID compliance*. [ACID](https://en.wikipedia.org/wiki/ACID) is an acronym standing for "atomic, consistent, isolated, and durable". This set of properties guarantees a database and its contents remain intact and valid even in the presence of errors and failures. MVCC operates by taking a snapshot after each transaction that changes the database contents. It allows for three levels of transaction isolation, which are "Committed", "Repeatable Read", and "Serializable". PostgreSQL's MVCC implementation is considered one of its strongest selling points.
 
-PostgreSQL offers a comprehensive replication feature. The primary database can transmit changes to its replicas either synchronously or asynchronously. Replication can be specified on a per-database, user, session, or transaction basis. If synchronous replication is configured, the master waits until at least one node has written the data and sent a confirmation. However, this option can adversely affect performance. Replicas can be configured to handle read-only queries to enable load sharing. PostgreSQL also supports point-in-time recovery (PITR) for disaster recovery, along with the use of active standbys.
+PostgreSQL offers a comprehensive replication feature. The primary database can transmit changes to its replicas either synchronously or asynchronously. Replication can be specified on a per-database, user, session, or transaction basis. If synchronous replication is configured, the primary waits until at least one node has written the data and sent a confirmation. However, this option can adversely affect performance. Replicas can be configured to handle read-only queries to enable load sharing. PostgreSQL also supports point-in-time recovery (PITR) for disaster recovery, along with the use of active standbys.
 
 Some of PostgreSQL's other features include the following:
 
@@ -61,18 +54,19 @@ Because development and maintenance are community-driven, PostgreSQL has an acti
 
 For more information on installing and using PostgreSQL, consult the Linode guide on [How to Install and Use PostgreSQL on Ubuntu 20.04](https://www.linode.com/docs/guides/how-to-install-use-postgresql-ubuntu-20-04/).
 
-## Object-Relational Database (ORDBMS) vs Relational Database (RDBMS)
+## Object-Relational Database (ORDBMS) vs. Relational Database (RDBMS)
 
 ### What is a Relational Database?
 
 It is probably easiest to explain what an RDBMS is and then describe how an ORDBMS differs from it. MySQL and other RDBMS applications follow traditional database principles based on the relationships between tables and data.
-- Data is stored in tables, which consist of a series of columns.
+
+- Data is stored in tables that consist of a series of columns.
 - These columns represent the different attributes of the item being stored in the table.
 - Each row in a table represents a distinct entry in the database and can be located using its own unique primary key.
 - Tables are related to each other using foreign or compound keys.
 - The industry-standard SQL programming language is used to read and write data.
 
-An RDBMS is simple, easy-to-learn, fast, and reliable. It is easy to understand how the tables are structured and how they are related. Tables can be extended flexibly after creation. Both database objects and the data itself can be easily created, modified, and deleted. Some of the more famous RDBMS programs include Microsoft SQL Server, MySQL, SQLite, and MariaDB.
+An RDBMS is fast, reliable, and there are many resources available to learn how to use one. It is easy to understand how the tables are structured and how they are related. Tables can be extended flexibly after creation. Both database objects and the data itself can be easily created, modified, and deleted. Some of the more famous RDBMS programs include Microsoft SQL Server, MySQL, SQLite, and MariaDB.
 
 RDBMS applications are designed to store traditional field-based data. This data is typically either numeric or string-based. They are not meant for massive and unwieldy data objects like images, audio, and video.
 
@@ -82,7 +76,7 @@ Another limitation of RDBMS applications is their close coupling with SQL. It ca
 
 An ORDBMS extends the relational database model through the use of a separate object-oriented mode. It can do everything a relational, SQL-based database can do, but it also adds non-relational features. Therefore, an object-relational database can support a broader range of applications. Organizations can continue using their existing models and schemas without major changes while they add non-relational features. PostgreSQL is the best-known example of an ORDBMS.
 
-Object-relational databases are more flexible and support complex user-defined structures. They store data in tables of objects, rather than tables of rows. ORDBMS databases use catalogs, which include information about the tables, columns, data types, functions, and access methods. This means users can more easily modify and extend the behavior of an ORDBMS. In comparison, traditional RDBMS systems can only be changed if new vendor modules are added or the source code is rewritten.
+Object-relational databases are more flexible and support complex user-defined structures. They store data in tables of objects, rather than tables of rows. ORDBMS databases use catalogs that include information about the tables, columns, data types, functions, and access methods. This means users can more easily modify and extend the behavior of an ORDBMS. In comparison, traditional RDBMS systems can only be changed if new vendor modules are added or the source code is rewritten.
 
 An ORDBMS is designed to work with object-oriented languages and makes use of several object-oriented concepts. Users can incorporate table inheritance, encapsulation, and function overloading into their database design. They can create user-defined objects and more complex data types.
 
@@ -90,13 +84,13 @@ ORDBMS applications possess capabilities most other SQL databases lack. They spe
 
 As a downside, a new user can face challenges when initially designing, implementing, and optimizing an ORDBMS. The mix between models can be awkward and difficult to integrate. Non-relational databases are complex and are sometimes difficult to use and learn. With so many user-defined procedures, inconsistencies, redundancies, and inefficiencies can be accidentally introduced into the design.
 
-To summarize, an RDBMS is advantageous for systems with a large number of simple SQL reads and using strings and numbers. It is also the best choice when ease of use and a quick implementation or prototype is a priority. An ORDBMS such as PostgreSQL has an advantage in complex environments requiring complicated queries and large data objects. It also works well in an object-oriented design and with a larger range of programming languages.
+To summarize, an RDBMS is advantageous for systems with a large number of simple SQL reads and that use strings and numbers. It is also the best choice when ease of use and a quick implementation or prototype is a priority. An ORDBMS such as PostgreSQL has an advantage in complex environments requiring complicated queries and large data objects. It also works well in an object-oriented design and with a larger range of programming languages.
 
-## PostgreSQL vs MySQL
+## PostgreSQL vs. MySQL
 
 Historically, PostgreSQL and MySQL had quite different feature matrices. Over the years, the two applications have converged, but some differences remain. Much of this is due to PostgreSQL adding features, but MySQL is also expanding. For example, it recently added MVCC support. Even as PostgreSQL and MySQL move towards feature parity, the two programs still have different philosophies and take different approaches.
 
-MySQL is a very popular open-source RDBMS application. It is available for free under an open-source license and is part of the *LAMP Stack*, along with Linux, Apache, and PHP. It was originally designed for small-to-medium-sized applications, but can now handle very large amounts of data. MySQL is packaged with many extensions and utilities. It emphasizes stability, speed, reliability, and ease of use over perfect compliance.
+MySQL is a very popular open-source RDBMS application. It is available for free under an open-source license and is part of the [*LAMP Stack*](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/), along with Linux, Apache, and PHP. It was originally designed for small-to-medium-sized applications, but can now handle very large amounts of data. MySQL is packaged with many extensions and utilities. It emphasizes stability, speed, reliability, and ease of use over perfect compliance.
 
 Like all RDBMS applications, MySQL uses a relational approach. It lacks any non-relational or object-oriented features. This means it contains tables consisting of rows and columns. It allows administrators to define relationships within and between the tables and columns in the database. MySQL uses the SQL programming language to store and retrieve data.
 
