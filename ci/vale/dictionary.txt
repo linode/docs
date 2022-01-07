@@ -610,6 +610,7 @@ gentoolkit
 geoip
 geolocating
 geolocation
+geospatial
 getmail
 getprivs
 getpwent
@@ -1651,6 +1652,7 @@ sendmail
 sentdex
 sentora
 seo
+serializable
 serv
 server1
 serverless
