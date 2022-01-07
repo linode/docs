@@ -260,6 +260,7 @@ cnf
 codebase
 codec
 colab
+collabnet
 colormaps
 com2sec
 comodo
