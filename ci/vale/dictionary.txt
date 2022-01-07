@@ -1007,6 +1007,7 @@ lsadump
 lspci
 lsb
 lsd
+lsmod
 lsof
 lst
 lsyncd
@@ -1120,6 +1121,7 @@ mnesia
 mngtmpaddr
 moby
 moddable
+modinfo
 modsecurity
 Mojang
 moodle
@@ -1214,6 +1216,7 @@ nethogs
 netid
 netifrc
 netlify
+netlink
 netloc
 netmask
 netplan
