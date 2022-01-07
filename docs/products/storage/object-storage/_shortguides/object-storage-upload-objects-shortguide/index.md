@@ -31,6 +31,8 @@ Follow these steps to upload objects to a bucket using the Cloud Manager:
 You can drag and drop multiple files to the **Upload Files Pane** at one time.
     {{</ note >}}
 
+    {{< content "object-storage-character-warning-shortguide" >}}
+
     ![Drag and drop an object to the bucket](drag-drop-image-bucket.png "Drag and drop an object to the bucket")
 
     You can also click the **Browse Files** button to bring up the local computer's file browser and select a file to upload to the bucket.

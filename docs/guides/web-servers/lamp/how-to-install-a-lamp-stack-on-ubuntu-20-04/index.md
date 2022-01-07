@@ -217,7 +217,8 @@ If there are additional websites you wish to host on your Linode, repeat the abo
 
     {{< highlight sql >}}
 CREATE DATABASE webdata;
-GRANT ALL ON webdata.* TO 'webuser' IDENTIFIED BY 'password';
+CREATE USER 'webuser' IDENTIFIED BY 'password';
+GRANT ALL ON webdata.* TO 'webuser';
 {{< /highlight >}}
 
 1.  Exit the SQL shell:
