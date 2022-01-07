@@ -1676,6 +1676,7 @@ shellcode
 shellshock
 shellter
 shinagawa1
+shopify
 shortcode
 shortcodes
 shortguide
@@ -1905,6 +1906,7 @@ twilio
 txt
 txz
 tzurbaev
+uber
 ubuntu
 ucd
 udp
