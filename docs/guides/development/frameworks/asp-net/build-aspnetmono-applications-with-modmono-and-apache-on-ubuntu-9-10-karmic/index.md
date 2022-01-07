@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'Use the Mono project''s Apache module to run ASP.NET applications.'
+description: 'How to use the Mono Project''s Apache module to run ASP.NET applications on Ubuntu 9.10 "Karmic"'
 keywords: ["apache", "mono", ".net", "asp.net", "mod\\_mono"]
 tags: ["web applications","apache","php","mysql","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

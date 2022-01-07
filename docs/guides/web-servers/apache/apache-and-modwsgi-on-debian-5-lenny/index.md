@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy Python WSGI Applications with Apache and mod\_wsgi'
+description: 'This guide will instruct you on how to deploy Python WSGI Applications with Apache and mod\wsgi.
 keywords: ["python", "apache", "mod\\_wsgi"]
 tags: ["web server","apache","debian","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

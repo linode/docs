@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installing and configuring the Django web application development framework for Apache on CentOS 5.'
+description: 'Learn how to install and configure the Django web application development framework for Apache on CentOS 5.'
 keywords: ["django", "python", "apache", "mod\\_wsgi"]
 tags: ["web applications","django","apache","python","centos","cms","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

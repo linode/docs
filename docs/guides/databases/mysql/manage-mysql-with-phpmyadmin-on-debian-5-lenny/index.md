@@ -3,7 +3,7 @@ slug: manage-mysql-with-phpmyadmin-on-debian-5-lenny
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
+description: 'In this guide, learn how to use phpMyAdmin to manage MySQL databases and users though a web interface on Debian 5.'
 keywords: ["mysql", "phpmyadmin", "sql", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/manage-mysql-with-phpmyadmin-on-debian-5-lenny/','/databases/mysql/phpmyadmin-debian-5-lenny/']

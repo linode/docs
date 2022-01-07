@@ -3,7 +3,7 @@ slug: beginners-guide-to-kubernetes
 author:
   name: Andy Stevens
   email: docs@linode.com
-description: 'An introduction to Kubernetes concepts and components.'
+description: 'Beginner's Guide to Kubernetes - An introduction to Kubernetes concepts and components.'
 keywords: ['kubernetes','k8s','beginner','architecture']
 tags: ["kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

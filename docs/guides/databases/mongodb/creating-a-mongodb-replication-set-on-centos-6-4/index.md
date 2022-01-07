@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: Configure a MongoDB ReplSet
+description: In this guide, learn how to Configure a MongoDB ReplSet on CentOS 6.4
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/centos-6/','/databases/mongodb/creating-a-mongodb-replication-set-on-centos-6-4/']

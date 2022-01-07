@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Install Asterisk and FreePBX on Your Linode to Use and Manage a Telephone Exchange.'
+description: 'Learn how to Install Asterisk and FreePBX on Your Linode to Use and Manage a Telephone Exchange using Ubuntu 12.04 with this handy guide.'
 keywords: ["ubuntu 12.04", "asterisk", "freepbx", "pbx", "voip", "google voice", "grub", "lamp stack", "apache", "php"]
 tags: ["ubuntu", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

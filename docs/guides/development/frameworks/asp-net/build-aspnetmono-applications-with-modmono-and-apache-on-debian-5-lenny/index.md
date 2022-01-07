@@ -3,7 +3,7 @@ slug: build-aspnetmono-applications-with-modmono-and-apache-on-debian-5-lenny
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'Use the Mono project''s Apache module to run ASP.NET applications.'
+description: 'How to use the Mono Project''s Apache module to run ASP.NET applications in Debian 5 "Lenny"'
 keywords: ["apache", "mono", ".net", "asp.net", "mod\\_mono"]
 tags: ["web applications","apache","php","mysql","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

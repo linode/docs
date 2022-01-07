@@ -3,7 +3,7 @@ slug: apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy Python WSGI Applications with Apache and mod_wsgi.'
+description: 'This guide will instruct you on how to deploy Python WSGI Apps with Apache nad mod\wsgi on Ubuntu 14.04.'
 keywords: ["python", "apache", "mod\\_wsgi", "django"]
 tags: ["web server","apache","ubuntu","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

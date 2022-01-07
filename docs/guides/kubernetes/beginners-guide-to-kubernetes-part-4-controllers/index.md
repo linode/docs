@@ -3,7 +3,7 @@ slug: beginners-guide-to-kubernetes-part-4-controllers
 author:
   name: Andy Stevens
   email: docs@linode.com
-description: 'An introduction to Kubernetes concepts and components.'
+description: 'Beginner's Guide to Kubernetes - An introduction to Kubernetes concepts and components - Part 4'
 keywords: ['kubernetes','k8s','beginner','architecture']
 tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

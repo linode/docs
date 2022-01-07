@@ -3,7 +3,7 @@ slug: create-an-aggregate-blog-using-planet-on-debian-5-lenny
 author:
   name: Linode
   email: docs@linode.com
-description: 'The Planet feed aggregator provides an overview of a community by collecting all feeds produced by a community.'
+description: 'Learn how to use The Planet feed aggregator to provide an overview of a your community by collecting all feeds produced by a community on Debian 5 "Lenny".'
 keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

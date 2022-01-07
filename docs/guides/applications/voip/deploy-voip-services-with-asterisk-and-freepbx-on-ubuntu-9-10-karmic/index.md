@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install Asterisk and FreePBX on your Linode to use and manage a telephone exchange.'
+description: 'Learn how to install Asterisk and FreePBX on your Linode to use and manage a telephone exchange using Ubuntu 9.10 with this handy guide.'
 keywords: ["asterisk ubuntu 9.10", "asterisk", "asterisk linux", "freepbx", "freepbx ubuntu", "pbx", "voip"]
 tags: ["ubuntu", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

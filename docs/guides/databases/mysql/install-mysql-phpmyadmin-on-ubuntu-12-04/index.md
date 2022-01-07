@@ -4,7 +4,7 @@ deprecated: true
 author:
     name: James Stewart
     email: jstewart@linode.com
-description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
+description: 'In this guide, learn how to use phpMyAdmin to manage MySQL databases and users though a web interface using Ubuntun 12.04.'
 keywords: ["mysql", "phpmyadmin", "sql", "ubuntu", "precise", "ubuntu 12.04", "lts", "ubuntu lts", "localhost phpmyadmin", "php mysql", "http localhost phpmyadmin"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/phpmyadmin-ubuntu-12-04-precise/','/databases/mysql/install-mysql-phpmyadmin-on-ubuntu-12-04/','/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-12-04-precise-pangolin/']
