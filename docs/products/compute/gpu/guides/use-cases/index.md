@@ -1,18 +1,18 @@
 ---
-slug: why-linode-gpu
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use Cases for Linode GPU Instances'
+description: "Linode GPU Compute Instances are used to process large amounts of data, such as for machine learning, AI, and more."
 keywords: ["GPU","Linode GPU", "How to use GPU", "Machine Learning", "AI", "Deep Learning", "grub"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 2019-06-12
-title: Use Cases for Linode GPU Instances
+modified: 2022-01-07
+title: "Use Cases"
 image: use-cases-for-linode-gpu-instance.png
 modified_by:
   name: Linode
 tags: ["linode platform"]
-aliases: ['/platform/linode-gpu/why-linode-gpu/']
+aliases: ['/platform/linode-gpu/why-linode-gpu/','/guides/why-linode-gpu/']
 ---
 
 ## What are GPUs?
@@ -23,6 +23,7 @@ GPUs (Graphical Processing Units) are specialized hardware originally created to
 Linode GPU Instances include NVIDIA Quadro RTX 6000 GPU cards with Tensor, ray tracing (RT), and CUDA cores. Read more about the NVIDIA RTX 6000 [here](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf).
 
 ## Use Cases
+
 ### Machine Learning and AI
 
 Machine learning is a powerful approach to data science that uses large sets of data to build prediction algorithms. These prediction algorithms are commonly used in “recommendation” features on many popular music and video applications, online shops, and search engines. When you receive intelligent recommendations tailored to your own tastes, machine learning is often responsible. Other areas where you might find machine learning being used is in self-driving cars, process automation, security, marketing analytics, and health care.
