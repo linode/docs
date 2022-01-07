@@ -46,7 +46,7 @@ While this guide has been written to accommodate computers running Linux as thei
 
 1.  Copy the disk over SSH from the origin Linode to the receiving system. Run the following command on the receiving system, replacing `192.0.2.9` with the origin Linode's IP address and `/home/archive/linode.img` with the path where you want to store the disk.
 
-        ssh root@192.0.2.9 "dd if=/dev/sda " | dd of=/home/archive/linode.img
+        ssh root@192.0.2.9 "dd if=/dev/sda " | dd of=/home/archive/linode.img status=progress
 
 1.  The receiving system is now connected to the Linode, prompting you to verify that the SSH key fingerprints are valid. If valid, type `yes` and press **Enter** to continue:
 
