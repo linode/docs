@@ -2,12 +2,11 @@
 slug: monitor-linode-network-transfer-pool-with-twilio
 author:
   name: John Mueller
-description: 'You can use Twilio notifications along with the Linode API to send you important alerts about your Linode infrastructure. This guide shows you how to use Twilio and Linode''s Python Library to receive alerts about your Linode''s network transfer usage.'
-og_description: 'You can use Twilio notifications along with the Linode API to send you important alerts about your Linode infrastructure. This guide shows you how to use Twilio and Linode''s Python Library to receive alerts about your Linode''s network transfer usage.'
+description: "This guide shows you how to use Twilio and Linode's Python Library to receive alerts about your Linode's network transfer usage."
 keywords: ['twilio notifications']
 tags: ['python', 'monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-06
+published: 2022-01-07
 modified_by:
   name: Linode
 title: "Monitor your Linode's Network Transfer Pool"
@@ -69,13 +68,13 @@ The last part of this section shows how to run the script manually to deliver a 
 
 ### Import Modules and Initialize Service Credentials
 
-1. Log into your Linode under your limited Linux user [using SSH](/docs/guides/connect-to-server-over-ssh/).
+1.  Log into your Linode under your limited Linux user [using SSH](/docs/guides/connect-to-server-over-ssh/).
 
-1. Create a new file named `transfer-pool-notification-twilio.py` with your preferred terminal text editor. For example, when using `nano`, run:
+1.  Create a new file named `transfer-pool-notification-twilio.py` with your preferred terminal text editor. For example, when using `nano`, run:
 
         nano transfer-pool-notification-twilio.py
 
-1. Copy this snippet into the file:
+1.  Copy this snippet into the file:
 
     {{< file "transfer-pool-notification-twilio.py">}}
 import os
@@ -215,7 +214,7 @@ The code example is now complete. Your script should now look like the code in [
 
 ### Run the Code
 
-1. Before you run the script, set the [environment variables](/docs/guides/how-to-set-linux-environment-variables/) that the script expects in your terminal. In your SSH session with your Linode, run the following commands. After the `=` symbol in each command, insert the corresponding value:
+1.  Before you run the script, set the [environment variables](/docs/guides/how-to-set-linux-environment-variables/) that the script expects in your terminal. In your SSH session with your Linode, run the following commands. After the `=` symbol in each command, insert the corresponding value:
 
         export TWILIO_ACCOUNT_SID=
         export TWILIO_AUTH_TOKEN=
@@ -243,7 +242,7 @@ export LINODE_API_TOKEN=bKfoAoV8Awo8e9CVTFTYKEdojkpHdD8BNU6UvV66izq6KjduPikfQTGH
     | TWILIO_TO_PHONE_NUMBER | Your personal or testing phone number that you signed up to Twilio with. The phone number needs to be entered using [E.164](https://www.twilio.com/docs/glossary/what-e164) formatting. |
     | LINODE_API_TOKEN | [The Linode API token that you generated](/docs/guides/how-to-use-the-linode-api-with-twilio/#get-a-linode-api-token) and recorded |
 
-1. Run the script:
+1.  Run the script:
 
         python3 transfer-pool-notification-twilio.py
 
@@ -273,11 +272,11 @@ The notification system should be set up to run periodically on its own. By send
 
 To run the Python script automatically, set up a cron job on your Linode. [Cron](/docs/guides/schedule-tasks-with-cron/) is a Linux tool that runs processes at different time intervals that you specify.
 
-1. In your SSH session, start the *crontab* editor:
+1.  In your SSH session, start the *crontab* editor:
 
         crontab -e
 
-1. A text file appears in your text editor. This file has some commented-out lines (which begin with `# `) that tell you to set up a new scheduled task in the file. Below these comments, copy and paste the following lines:
+1.  A text file appears in your text editor. This file has some commented-out lines (which begin with `# `) that tell you to set up a new scheduled task in the file. Below these comments, copy and paste the following lines:
 
     {{< file >}}
 TWILIO_ACCOUNT_SID=
@@ -291,7 +290,7 @@ LINODE_API_TOKEN=
 
     The first five lines define your environment variables. The last line represents the scheduled task. The `0 14 * * *` at the start of the line represents when the task should run. Specifically, this string says that the task should run [at 2PM every day](https://crontab.guru/#0_14_*_*_*).
 
-1. After the `=` symbol in each of the first five lines, insert the corresponding value. The values are the same as they were in the previous [Run the Code](#run-the-code) section.
+1.  After the `=` symbol in each of the first five lines, insert the corresponding value. The values are the same as they were in the previous [Run the Code](#run-the-code) section.
 
     For example, the filled-in crontab file could look like:
 
@@ -305,9 +304,9 @@ export LINODE_API_TOKEN=bKfoAoV8Awo8e9CVTFTYKEdojkpHdD8BNU6UvV66izq6KjduPikfQTGH
 0 14 * * * python3 /home/exampleuser/transfer-pool-notification-twilio.py
 {{< /output >}}
 
-1. On the last line, update the file path to the Python script (e.g. `/home/exampleuser/transfer-pool-notification-twilio.py`) so that it matches the path of the file on your system.
+1.  On the last line, update the file path to the Python script (e.g. `/home/exampleuser/transfer-pool-notification-twilio.py`) so that it matches the path of the file on your system.
 
-1. Save the crontab file in your text editor and exit the editor. If it's still morning for you, you should receive a notification at 2PM of the current day. If it's in the afternoon, a notification is sent at 2PM the next day.
+1.  Save the crontab file in your text editor and exit the editor. If it's still morning for you, you should receive a notification at 2PM of the current day. If it's in the afternoon, a notification is sent at 2PM the next day.
 
 ### (Optional) Adjusting the Scheduled Notification Time
 
@@ -555,9 +554,9 @@ As well, the following possible solution may help:
 
 If you can [manually run the script](#run-the-code), but it does not run from your cron job, then the wrong script filepath may be set in your crontab.
 
-1. In your SSH session, navigate to the directory that you have stored your `transfer-pool-notification-twilio.py` script in.
+1.  In your SSH session, navigate to the directory that you have stored your `transfer-pool-notification-twilio.py` script in.
 
-1. Get the absolute path of your directory:
+1.  Get the absolute path of your directory:
 
         pwd
 
@@ -567,14 +566,14 @@ If you can [manually run the script](#run-the-code), but it does not run from yo
 /home/exampleuser/
 {{< /output >}}
 
-1. Look at your current crontab file:
+1.  Look at your current crontab file:
 
         crontab -l
 
-1. In the output from the previous command, find the line for your notification script. This should look like  `0 14 * * * python3 /home/exampleuser/transfer-pool-notification-twilio.py`.
+1.  In the output from the previous command, find the line for your notification script. This should look like  `0 14 * * * python3 /home/exampleuser/transfer-pool-notification-twilio.py`.
 
-1. If the directory on this line is different from the directory of the script on your system, then you need to update the line in your crontab. Open the crontab editor:
+1.  If the directory on this line is different from the directory of the script on your system, then you need to update the line in your crontab. Open the crontab editor:
 
         crontab -e
 
-1. Update the line that calls your script with the correct directory, then save the crontab file in your text editor.
+1.  Update the line that calls your script with the correct directory, then save the crontab file in your text editor.
