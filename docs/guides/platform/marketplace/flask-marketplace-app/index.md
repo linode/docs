@@ -51,9 +51,9 @@ In addition to installing Flask, this Marketplace app installs and configures so
 
 ### Removing Default Application
 
-Users may find that they need to remove access to the default Flask application on port 80 to free up space for another application, or to otherwise remove components. The following steps can help to disable and decouple various aspects of the default flask application included with the flask marketplace app:
+Users may find that they need to remove access to the default Flask application on port 80 to free up space for another application, or to otherwise remove components. The following steps can help to disable and decouple various aspects of the default Flask application included with the Flask Marketplace App:
 
-- Unlink the default nginx site for the flask app:
+- Unlink the default NGINX site for the Flask app:
 
       sudo unlink /etc/nginx/sites-enabled/flask_app
 
@@ -61,7 +61,7 @@ Users may find that they need to remove access to the default Flask application 
 
       sudo supervisorctl stop all
 
-- Remove configuration files for the flask application:
+- Remove configuration files for the Flask application:
 
       sudo rm -rf /home/flask_app_project
       sudo rm /etc/config.json
