@@ -44,6 +44,8 @@ To create a bucket in Cyberduck:
 
     ![Click the 'Action' button to use the file upload dialog.](object-storage-cyberduck-upload-menu.png)
 
+    {{< content "object-storage-character-warning-shortguide" >}}
+
 1.  To make the objects publicly accessible, meaning that you can access them from the object's URL, you need to set the proper READ permissions. Right click the object and select **Info**.
 
 1.  Click the **Permissions** tab.
