@@ -21,7 +21,7 @@ external_resources:
 aliases: ['/platform/marketplace/deploy-openlitespeed-with-marketplace-apps/', '/platform/one-click/deploy-openlitespeed-with-one-click-apps/','/guides/deploy-openlitespeed-with-one-click-apps/','/guides/deploy-openlitespeed-with-marketplace-apps/', '/guides/openlitespeed-marketplace-app/']
 ---
 
-This Marketplace App installs the OpenLightSpeed web server, WordPress, the LightSpeed caching plugin for Wordpress, as well as other necessary software. Together, these applications provide an accelerated hosting platform for WordPress. [OpenLiteSpeed](https://openlitespeed.org/) is the open source edition of the LiteSpeed web server. It combines speed, security, scalability, optimization, and simplicity in one friendly open-source package.
+This Marketplace App installs the OpenLiteSpeed web server, WordPress, the LiteSpeed caching plugin for Wordpress, as well as other necessary software. Together, these applications provide an accelerated hosting platform for WordPress. [OpenLiteSpeed](https://openlitespeed.org/) is the open source edition of the LiteSpeed web server. It combines speed, security, scalability, optimization, and simplicity in one friendly open-source package.
 
 ## Deploying the OpenLiteSpeed WordPress Marketplace App
 
@@ -67,13 +67,13 @@ For more documentation on how to assign a domain to your Linode, please review t
 
 ### Software Included
 
-The OpenLightSpeed WordPress Marketplace App installs the following required software on your Linode:
+The OpenLiteSpeed WordPress Marketplace App installs the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|
 | [**MariaDB Server**](https://www.mysql.com/) | Relational database server forked from MySQL. |
 | [**PHP 8**](https://www.php.net/) | Common programming language for web applications. |
-| [**OpenLiteSpeed**](https://openlitespeed.org/) | Open source web server based on [LightSpeed](https://www.litespeedtech.com/products/litespeed-web-server). |
+| [**OpenLiteSpeed**](https://openlitespeed.org/) | Open source web server based on [LiteSpeed](https://www.litespeedtech.com/products/litespeed-web-server). |
 | [**WordPress**](https://wordpress.org/) | Popular content management system (CMS) for building websites. |
 | [**LiteSpeed Cache**](https://www.litespeedtech.com/products/cache-plugins/wordpress-acceleration) | Cache management plugin for WordPress. |
 
