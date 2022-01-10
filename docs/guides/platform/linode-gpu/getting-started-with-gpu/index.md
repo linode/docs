@@ -7,8 +7,8 @@ description: "This guide will help you get your Linode GPU Instance up and runni
 keywords: ["GPU", "AI", "Machine Learning", "Video Encoding", "Linode GPU"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 2019-06-05
-title: A Beginner's Guide to Linode GPU Instances
-h1_title: Getting Started with Linode GPU Instances
+title: "A Beginner's Guide to Linode GPU Instances"
+h1_title: "Getting Started with Linode GPU Instances"
 enable_h1: true
 modified: 2020-12-04
 modified_by:
