@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to use separate web servers to host sites or applications using ProxyPass with Apache.'
+description: 'This guide shows how to use separate web servers to host sites or applications using ProxyPass with Apache Ubuntu 10.10 "Maverick".'
 keywords: ["apache", "proxypass", "apache on ubuntu", "multiple web servers"]
 tags: ["proxy","web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

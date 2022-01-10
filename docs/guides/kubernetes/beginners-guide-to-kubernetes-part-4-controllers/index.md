@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
 modified_by:
   name: Linode
-title: "Kubernetes Explained: Controllers"
+title: "This is part four in a beginner's guide to Kubernetes where you will be introduced to Kubernetes Controllers."
 h1_title: "A Beginner's Guide to Kubernetes (Part 4): Controllers"
 enable_h1: true
 contributor:

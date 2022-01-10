@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use logwatch to monitor system logs and generate reports.'
+description: 'This guide shows how to use logwatch to monitor system logs and generate reports on Fedora 13.'
 keywords: ["logwatch", "security", "logging", "audit"]
 tags: ["monitoring","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

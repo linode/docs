@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy applications that depend on the high performance key-value store Redis.'
+description: 'This guide shows how to deploy applications that depend on the high performance key-value store Redis on Debian 5 "Lenny".'
 keywords: ["redis debian 5", "redis lenny", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/debian-5-lenny/','/databases/redis/redis-on-debian-5-lenny/']

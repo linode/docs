@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
 modified_by:
   name: Linode
-title: "Kubernetes Explained: Pods, Services, and Namespaces"
+title: "This is part three in a multi-part beginners guide to Kubernetes where you will be introduced to Kubernetes Pods, Services, and Namespaces."
 h1_title: "A Beginner's Guide to Kubernetes (Part 3): Pods, Services, and Namespaces"
 enable_h1: true
 contributor:

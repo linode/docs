@@ -3,7 +3,7 @@ slug: install-mediawiki-on-ubuntu-1604
 author:
   name: Linode
   email: docs@linode.com
-description: 'A guide for getting started with the popular MediaWiki engine for powering wiki sites.'
+description: 'This guide will show youh ow to get started with the popular MediaWiki engine for powering wiki sites of all kinds on Ubuntu 16.04'
 keywords: ["mediawiki", "wiki", "web-applications"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

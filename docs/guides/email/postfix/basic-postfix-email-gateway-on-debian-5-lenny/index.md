@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configure the Postfix MTA as a basic email gateway.'
+description: 'In this tutorial, learn how to configure a Postfix MTA as a basic email gateway on Debian 5 "Lenny".'
 keywords: ["email", "postfix", "mta", "forwarding"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

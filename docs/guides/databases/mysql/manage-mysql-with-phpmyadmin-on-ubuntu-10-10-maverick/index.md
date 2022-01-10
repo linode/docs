@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
+description: 'This guide shows how to use phpMyAdmin to manage MySQL databases and users though a web interface on Ubuntu 10.10 "Maverick".'
 keywords: ["mysql", "phpmyadmin", "sql", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-10-10-maverick/','/databases/mysql/phpmyadmin-ubuntu-10-10-maverick/']
