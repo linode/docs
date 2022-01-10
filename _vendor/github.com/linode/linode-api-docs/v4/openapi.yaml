@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.112.0
+  version: 4.112.3
 
   title: Linode API
   description: |
@@ -601,6 +601,7 @@ paths:
     get:
       deprecated: true
       x-linode-grant: unrestricted only
+      x-linode-cli-skip: true
       parameters:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
@@ -639,6 +640,7 @@ paths:
     post:
       deprecated: true
       x-linode-grant: unrestricted only
+      x-linode-cli-skip: true
       tags:
       - Account
       summary: Entity Transfer Create
@@ -696,6 +698,7 @@ paths:
     get:
       deprecated: true
       x-linode-grant: unrestricted only
+      x-linode-cli-skip: true
       tags:
       - Account
       summary: Entity Transfer View
@@ -724,6 +727,7 @@ paths:
     delete:
       deprecated: true
       x-linode-grant: unrestricted only
+      x-linode-cli-skip: true
       tags:
       - Account
       summary: Entity Transfer Cancel
@@ -762,6 +766,7 @@ paths:
     post:
       deprecated: true
       x-linode-grant: unrestricted only
+      x-linode-cli-skip: true
       tags:
       - Account
       summary: Entity Transfer Accept
@@ -3344,6 +3349,7 @@ paths:
         source: >
           linode-cli domains zone-file 123
   /domains/import:
+    x-linode-cli-command: domains
     post:
       x-linode-grant: read_write
       x-linode-cli-command: domains
