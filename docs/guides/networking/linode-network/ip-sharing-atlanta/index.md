@@ -7,7 +7,7 @@ description: "This guide provides Linode users with steps to manually enable an 
 keywords: ['networking','Elastic IP','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-02
-modified: 2021-11-05
+modified: 2022-01-11
 modified_by:
   name: Linode
 title: "Enable IP Sharing (Elastic IPs) in Atlanta through FRR"
@@ -122,7 +122,7 @@ With FRR installed, you can now apply the required configurations to enable Elas
 
       {{< file "~/elastic.conf">}}
 hostname [HOSTNAME]
-
+i
 router bgp 65045
 no bgp ebgp-requires-policy
 coalesce-time 1000
