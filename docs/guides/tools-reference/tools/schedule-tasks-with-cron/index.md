@@ -51,7 +51,7 @@ The first job in the Cron table is:
 
 This means at 17 minutes past each hour, change directory to `/`, the root of the filesystem. Then, as the `root` user, run the `run-parts` binary to execute all jobs in `/etc/cron.hourly`.
 
-Time intervals are denoted by numbers and operators filled in place of each asterisk in a Cron job's `crontab` line. From left to right, the asterisks represent:
+Time intervals are denoted by numbers and operators filled in place of each asterisk in the `crontab` line of a Corn job. From left to right, the asterisks represent:
 
 -  **Minutes** specified as a number from 0 to 59.
 -  **Hours** specified as numbers from 0 to 23.
@@ -63,7 +63,7 @@ See [man crontab](https://linux.die.net/man/1/crontab) for more information abou
 
 ### Add a Cron Job
 
-1.  Open a `crontab` for your user in a text editor (`vi` in most distributions):
+1.  Open a `crontab` for in a text editor (`vi` in most distributions):
 
         crontab -e
 
@@ -72,7 +72,7 @@ See [man crontab](https://linux.die.net/man/1/crontab) for more information abou
     export EDITOR=vim
 {{< /note >}}
 
-2.  Add the Cron job, save, and exit. The `crontab` will be saved in `/var/spool/cron/crontabs`as a `crontab` specific to the user who created it. To later remove a Cron job from it, delete the line from the user's `crontab` file.
+2.  Add the Cron job, save, and exit. The `crontab` is saved in `/var/spool/cron/crontabs`as a `crontab` specific to the user who created it. To later remove a Cron job from it, delete the line from the `crontab` file of the user.
 
 ### Special Cron Operators
 
@@ -91,11 +91,11 @@ Automating systems in Cron time units follows a specific Cron schedule format. T
 - `@monthly` runs the job **once a month**, on the 1st, at 12:00am. In standard `cron` syntax this is equivalent to: `0 0 1 * *`.
 - `@weekly` runs the job **once a week** at 12:00am on Sunday. This is the same as specifying `0 0 * * 0` on the `crontab` line.
 - `@hourly` runs the job at the top of every hour. In standard `cron` syntax this is equivalent to: `0 * * * *`.
-- The `@reboot` statement runs the specified command once, at start up. Generally boot-time tasks are managed by the distribution's init system, but `@reboot` cronjobs may be useful for users who don't have access to edit systemd units or other init scripts.
+- The `@reboot` statement runs the specified command once, at start up. Generally boot-time tasks are managed by the init system of the distribution, but `@reboot` cronjobs may be useful for those who don't have access to edit systemd units or other init scripts.
 
 ## Run Jobs as Other Users
 
-Cron can run tasks as other system users than just `root`. This is useful if you want to restrict the ability of a script to write to certain locations. For example, the command below allows you to edit the `crontab` for the `www-data` user:
+Cron can run tasks as other system users than just `root`. This is useful if you want to restrict the ability of a script to write to certain locations. For example, in the following command you can edit the `crontab` for the `www-data` user:
 
     sudo crontab -u www-data -e
 
@@ -103,13 +103,13 @@ Cron can run tasks as other system users than just `root`. This is useful if you
 
 ## Redirect Cron Job Messages
 
-Cron will email the executing user by default with any output or errors that would normally be sent to the `stdout` or `stderr`. To disable email alerts, add `>/dev/null` to the end of the job's line in your `crontab` file.
+Cron sends emails to the executing user by default with any output or errors to the `stdout` or `stderr`. To disable email alerts, add `>/dev/null` to the end of the job's line in  the `crontab` file.
 
 For example, the full line would be:
 
     @hourly /opt/bin/job >/dev/null
 
-That will only ignore messages sent to `stdout`. If your script generates an error, Cron will still send it to your email.
+That ignores messages sent to `stdout`. If your script generates an error, Cron still sends it to your email.
 
 If you want to disable all output, including error messages, use `>/dev/null 2>&1` instead. Be aware that redirecting all output to `/dev/null` causes you to miss important errors if something goes wrong. For example:
 
@@ -118,7 +118,7 @@ If you want to disable all output, including error messages, use `>/dev/null 2>&
 
 ## Example crontab Entries
 
-The site [crontab.guru](https://crontab.guru/) has a large number of Cron job examples. Below are some quick `crontab` entries to get you started.
+The site [crontab.guru](https://crontab.guru/) has a large number of Cron job examples. The following are some quick `crontab` entries to get you started.
 
 - Run the `cal-update-daily` binary every day at at 12:01am (`1 0`).
 
@@ -138,4 +138,4 @@ The site [crontab.guru](https://crontab.guru/) has a large number of Cron job ex
 
         @hourly /opt/bin/compress-static-files
 
-For additional help creating Cron expressions, users can also use a Cron translator or [Cron calculator](https://abunchofutils.com/u/computing/cron-format-helper/) to generate the appropriate syntax.
+For additional helo to create Cron expressions, you can also use a Cron translator or [Cron calculator](https://abunchofutils.com/u/computing/cron-format-helper/) to generate the appropriate syntax.
