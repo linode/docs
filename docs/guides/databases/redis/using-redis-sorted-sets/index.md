@@ -206,7 +206,7 @@ You can update an element's score in a Sorted Set using the `ZADD` command again
 
 ### Remove Elements from a Sorted Set
 
-The `ZPOPMIN` and `ZPOPMAX` commands covered in [Fetch Elements from a Sorted Set](/docs/guides/using-redis-sorted-sets/#by-order) removes the lowest scored and highest scored elements, respectively.
+The `ZPOPMIN` and `ZPOPMAX` commands covered in [Fetch Elements from a Sorted Set](/docs/guides/using-sorted-sets-in-redis-database/#by-order) removes the lowest scored and highest scored elements, respectively.
 
 Sorted Sets also have access to the `ZREM` command, which lets you remove an element based on its value.
 
