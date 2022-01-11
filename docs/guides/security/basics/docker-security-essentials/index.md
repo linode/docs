@@ -2,7 +2,7 @@
 slug: docker-security-essentials
 author:
   name: Hackersploit
-description: "Learn about the basics of securing Docker containers, including managing user acess, preventing privilege escalation attacks, and limiting kernel capabilities."
+description: "This guide will show you the basics of securing Docker containers, including managing user access, preventing privliges escalations, and more."
 keywords: ["docker security", "docker container security", "docker security best practices"]
 tags: ["security", "docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

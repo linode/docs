@@ -3,8 +3,8 @@ slug: hosting-a-website-ubuntu-18-04
 author:
   name: Linode
   email: docs@linode.com
-description: 'Learn how to host a website on Ubuntu 18.04. This guide walks you through the installation of the Apache web server, configuration, and hosting of a website on Ubuntu.'
-og_description: 'Learn how to host a website on Ubuntu 18.04. This guide walks you through the installation of the Apache web server, configuration, and hosting of a website on Ubuntu.'
+description: 'In this guide, you will learn how to setup, configure, and host a website using Apache and Ubuntu 18.04.'
+og_description: 'In this guide, you will learn how to setup, configure, and host a website using Apache and Ubuntu 18.04.'
 keywords: ["linode guide", "hosting a website", "website", "linode quickstart guide"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
+description: 'This guide will show you how to use uWSGI to deploy Python application servers in conjunction with nginx on CentOS 5.'
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
 tags: ["centos","web server","python","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

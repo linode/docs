@@ -3,7 +3,7 @@ slug: twiki-on-debian-6-squeeze
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install and configure a structured wiki with TWiki.'
+description: 'This guide will show you how to install and configure a structured wiki with TWiki on Debian 6 "Squeeze".'
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,7 @@ slug: how-to-install-and-configure-fastcgi-and-php-fpm-on-centos-8
 author:
   name: Linode Community
   email: docs@linode.com
-description: "This guide will show you how to install mod_fcgid and PHP-FPM on CentOS 8. It will also provide a basic configuration that uses socket based connections, instead of TCP."
+description: "This guide will show you how to install and configure mod_fcgid and PHP-FPM using Apache on CentOS 8."
 keywords: ['list','of','keywords','and key phrases']
 tags: ["centos","web server","apache","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

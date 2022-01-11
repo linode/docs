@@ -3,8 +3,8 @@ slug: create-a-multicloud-infrastructure-using-terraform
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Multicloud Terraform provides a consistent workflow for you to manage infrastructure resources using only a couple of configuration files. This guide explains how to deploy cloud services that span across Linode and another Cloud vendor using Terraform and HCL configuration files.'
-og_description: 'Multicloud Terraform provides a consistent workflow for you to manage infrastructure resources using only a couple of configuration files. This guide explains how to deploy cloud services that span across Linode and another Cloud vendor using Terraform and HCL configuration files.'
+description: 'This guide shows you how to use Multicloud Terraform to provide a consistent workflow for you to manage infrastructure resources with only a few configuration files.'
+og_description: 'This guide shows you how to use Multicloud Terraform to provide a consistent workflow for you to manage infrastructure resources with only a few configuration files.'
 keywords: ['Terraform','Linode','IaC','multicloud', 'automation', 'cloud manager']
 tags: ['terraform','ubuntu', 'ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

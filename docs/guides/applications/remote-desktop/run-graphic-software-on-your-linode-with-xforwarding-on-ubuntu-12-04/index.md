@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: Forward the X11 Server Through SSH to Run GUI Applications from Your Linode
+description: 'This guide will show you how to foward the X11 Server Through SSH to Run GUI Applications from Your Linode on Ubuntu 12.04.'
 keywords: ["x11", "x-forwarding", "ssh", "x over ssh", "ubuntu", " ubuntu 12.04"]
 tags: ["ubuntu", "ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

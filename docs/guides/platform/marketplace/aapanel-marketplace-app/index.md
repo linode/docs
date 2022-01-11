@@ -3,7 +3,7 @@ slug: aapanel-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
-description: "aaPanel is a simple but powerful control panel that includes a one-click LAMP/LNMP web server and a web-based dashboard. This tutorial walks you through deploying aaPanel using the Linode Marketplace."
+description: "This tutorial walks you through deploying aaPanel using the Linode Marketplace on CentOS 7."
 keywords: ['control panel', 'web hosting']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

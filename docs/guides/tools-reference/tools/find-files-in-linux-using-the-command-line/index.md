@@ -3,7 +3,7 @@ slug: find-files-in-linux-using-the-command-line
 author:
   name: Linode
   email: docs@linode.com
-description: "This guide shows you how to find files in Linux using the command-line interface and the find command. Throughout this guide, you learn how to find image files, files with specific text, files in the current directory, and much more."
+description: "This guide shows you how to find files in Linux using the command-line interface and the find command."
 keywords: ['find','linux','files','findutils','command line','find files','find files in linux']
 tags: ["linux","find"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

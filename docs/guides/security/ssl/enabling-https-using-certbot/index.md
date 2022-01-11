@@ -3,7 +3,7 @@ slug: enabling-https-using-certbot
 author:
   name: Linode
   email: docs@linode.com
-description: "A list of tutorials outlining how to install and use Certbot with Apache on various Linux distributions. Certbot is a tool that automates the process of requesting a signed TLS/SSL certificate through Let’s Encrypt, easily enabling HTTPS on your websites."
+description: "This guide contains a list of tutorials outlining how to install and use Certbot with Apache on various Linux distributions."
 og_description:  "A list of tutorials outlining how to install and use Certbot with Apache on various Linux distributions. Certbot is a tool that automates the process of requesting a signed TLS/SSL certificate through Let’s Encrypt, easily enabling HTTPS on your websites."
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption']
 tags: ["ssl", "security", "web server"]

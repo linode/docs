@@ -3,8 +3,8 @@ slug: how-to-install-drupal-using-drush-on-debian-10
 author:
     name: Linode
     email: docs@linode.com
-description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode running Debian 10. To install Drupal, you will use Drush, a command line tool for creating, administrating, and modifying Drupal websites.'
-og_description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode running Debian 10. To install Drupal, you will use Drush, a command line tool for creating, administrating, and modifying Drupal websites.'
+description: 'This guide will show you how to install the popular content management system Drupal on Debian 10 using Drush.'
+og_description: 'This guide will show you how to install the popular content management system Drupal on Debian 10 using Drush.'
 keywords: ["drupal", "cms", "content management system", "content management framework","drush"]
 tags: ["drupal","lamp","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
