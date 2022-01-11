@@ -7,7 +7,7 @@ description: "This guide provides Linode users with steps to manually enable an 
 keywords: ['networking','Elastic IP','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-02
-modified: 2021-11-05
+modified: 2022-01-11
 modified_by:
   name: Linode
 title: "Enable IP Sharing (Elastic IPs) in Atlanta through FRR"
