@@ -23,7 +23,7 @@ Not all data centers supports configuring IP failover over BGP. Review the [Conf
 This guide covers using the open source [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) tool to configure IP failover with Linode Compute Instances. FRR is a routing service that uses BGP to monitor and fail over components in a high availability configuration. In a typical setup with IP failover, there is a **primary** Instance and a **secondary** Instance.
 
 - **Primary**: The primary Compute Instance is the one containing the IP address you'd like to configure for IP failover.
-- **Secondary**: The secondary Compute Instances are then configured to use that IP address in the event the primary Instance stops responding.
+- **Secondary**: The secondary Compute Instance is then configured to use that IP address in the event the primary Instance stops responding.
 
 ## Before You Begin
 
