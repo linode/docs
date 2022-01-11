@@ -81,7 +81,7 @@ If your data is stored in a database, you likely need to perform a *database dum
 
 -  [Use mysqldump to Back Up MySQL or MariaDB](/docs/guides/use-mysqldump-to-back-up-mysql-or-mariadb/)
 -  [Create Physical Backups of your MariaDB or MySQL Databases](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/)
--  [How to Back Up Your PostgreSQL Database](/docs/guides/how-to-back-up-your-postgresql-database/)
+-  Use [postgres dump database](/docs/guides/how-to-back-up-your-postgresql-database/)
 
 If your current host is a shared environment and you do not have full administrative/command-line access to it, then your host may offer an alternative method for exporting your data. If this is the case, then you should use those tools to download the data to your local computer or some other accessible location.
 

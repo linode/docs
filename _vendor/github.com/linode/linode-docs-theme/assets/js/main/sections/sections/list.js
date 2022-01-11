@@ -29,7 +29,7 @@ export function newSectionsController(searchConfig) {
 			create: (query) => {
 				let filters = `section.lvl${self.data.lvl}:'${self.key}'`;
 
-				encodeURIComponent(query.q);
+				encodeURIComponent(query.lndq);
 
 				let request = {
 					page: 0,
@@ -37,7 +37,7 @@ export function newSectionsController(searchConfig) {
 					facets: [ 'section.*' ],
 					filters: filters,
 					facetFilters: query.toFacetFilters(),
-					params: `query=${query.q}`
+					params: `query=${query.lndq}`
 				};
 
 				return {

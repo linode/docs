@@ -202,7 +202,7 @@ ip route add 192.168.100.0/24 dev $INTERFACE
     {{< file "/etc/tinc/linodeVPN/tinc-down" aconf >}}
 #!/bin/sh
 ip route del 192.168.100.0/24 dev $INTERFACE
-ip addr del 192.168.100.209 dev $INTERFACE
+ip addr del 192.168.100.130 dev $INTERFACE
 ip link set $INTERFACE down
 
 {{< /file >}}

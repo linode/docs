@@ -19,18 +19,22 @@ To learn more about Block Storage, visit the [Block Storage Overview](/docs/prod
 | Data Center | NVMe Block Storage |
 | -- | -- |
 | **Atlanta (Georgia, USA)** | **Deployed** |
-| Dallas (Texas, USA) | *Coming soon* |
+| Dallas (Texas, USA) | *Coming in Q1 2022* |
 | **Frankfurt (Germany)** | **Deployed** |
-| Fremont (California, USA) | *Coming soon* |
-| London (United Kingdom) | *Coming soon* |
-| Mumbai (India) | *Coming soon* |
+| Fremont (California, USA) | *Coming in Q1 2022* |
+| London (United Kingdom) | *Coming in Q1 2022* |
+| Mumbai (India) | *Coming in Q1 2022* |
 | **Newark (New Jersey, USA)** | **Deployed** |
-| Singapore | *Coming soon* |
-| Sydney (Australia) | *Coming soon* |
-| Tokyo (Japan) | *Coming soon* |
+| Singapore | *Coming in Q1 2022* |
+| Sydney (Australia) | *Coming in Q1 2022* |
+| Tokyo (Japan) | *Coming in Q1 2022* |
 | **Toronto (Canada)** | **Deployed** |
 
 Once NVMe Block Storage has been deployed in a data center, all *new* Volumes created after will use the new NVMe architecture.
+
+{{<note>}}
+Any of the above estimated launch dates are subject to change. To be emailed when Block Storage NVMe is available in a particular data center, [sign up for notifications](https://www.linode.com/products/block-storage/#nvme-block-storage).
+{{</note>}}
 
 ## Upgrading a Volume to NVMe Block Storage
 

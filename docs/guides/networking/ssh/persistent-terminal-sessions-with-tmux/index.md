@@ -3,16 +3,17 @@ slug: persistent-terminal-sessions-with-tmux
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide will show you how to use tmux Terminal multiplexer to host a server on your Linode and connect to it.'
-og_description: 'This guide will show you how to use tmux the terminal multiplexer. tmux allows you to save terminal sessions, and manage multiple terminal sessions within one window'
+description: "This guide will show you how to use tmux Terminal multiplexer to host a server on your Linode and connect to it."
+og_description: "This guide will show you how to use tmux the terminal multiplexer. tmux allows you to save terminal sessions, and manage multiple terminal sessions within one window"
 keywords: ['tmux','terminal','multiplexer','attach','detach','panes','sessions']
 tags: ["networking","ssh","ubuntu","debian","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-06
-modified: 2021-05-13
+modified: 2021-12-26
 modified_by:
   name: Linode
-title: 'How to Use tmux (a Terminal Multiplexer)'
+title: "How to Use tmux (a Terminal Multiplexer)"
+image: tmux.jpg
 contributor:
   name: Alexandru Andrei
 external_resources:
@@ -20,8 +21,6 @@ external_resources:
 - '[The Tao of tmux](https://leanpub.com/the-tao-of-tmux/read)'
 aliases: ['/networking/ssh/persistent-terminal-sessions-with-tmux/']
 ---
-
-![tmux](tmux.jpg)
 
 ## What is tmux?
 
@@ -88,7 +87,7 @@ There are three ways to issue commands to tmux:
 Most tmux tasks can be accomplished using any of these three methods.
 
 {{< note >}}
-You can change the prefix key by editing the `.tmux.config` file. For the remainder of this guide, **Prefix** will be used to refer to either the default `CTRL+b` or the combination you have chosen in your configuration file.
+You can change the prefix key by editing the `~/.tmux.conf` file. For the remainder of this guide, **Prefix** will be used to refer to either the default `CTRL+b` or the combination you have chosen in your configuration file.
 {{< /note >}}
 
 ### Getting Help with tmux by Reviewing Keyboard Shortcuts
@@ -172,9 +171,8 @@ It's also possible to type shorter versions of a command, for example: "new-se".
 | **Prefix** + **s**  | Display an interactive session list  |
 | **Prefix + d**  | detach from the current session  |
 | **Prefix + $**  | rename a session in tmux  |
-| **Prefix + L**  | Select the most recently used session (or the last session)  |
+| **Prefix + L**  | Select the most recently used session (or the last session). Use the same combination again to return.  |
 | `tmux ls`  | List all available sessions  |
-| `tmux attach -t 0`  | Zoom in on the active pane. Press the same combination again to exit zoom mode  |
 | `tmux kill-server`  | Destroy all sessions and kill all processes  |
 
 ## Create a tmux Configuration File

@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.111.0
+  version: 4.112.0
 
   title: Linode API
   description: |
@@ -10307,6 +10307,90 @@ paths:
             --region us-east \
             --assignments.address 2001:db8:3c4d:15::/64 \
             --assignments.linode_id 123
+  /networking/ips/share:
+    x-linode-cli-command: networking
+    post:
+      servers:
+      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
+      x-linode-grant: read_write
+      tags:
+      - Networking
+      summary: IP Addresses Share
+      description: |
+        Configure shared IPs.
+
+        IP sharing allows IP address reassignment (also referred to as IP failover) from one Linode to another if
+        the primary Linode becomes unresponsive. This means that requests to the primary Linode's IP address can be
+        automatically rerouted to secondary Linodes at the configured shared IP addresses.
+
+        IP failover requires configuration of a failover service (such as [Keepalived](/docs/guides/ip-failover-keepalived))
+        within the internal system of the primary Linode.
+
+        **Note**: IPv6 range sharing has limited availability in certain regions. Please contact customer support for
+        assistance in enabling IPv6 range sharing for your Linodes.
+      operationId: shareIPs
+      x-linode-cli-action: ip-share
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - ips:read_write
+        - linodes:read_write
+      requestBody:
+        description: Information about what IPs to share with which Linode.
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - linode_id
+              - ips
+              properties:
+                linode_id:
+                  type: integer
+                  description: >
+                    The ID of the primary Linode that the addresses will be shared with.
+                  example: 123
+                ips:
+                  type: array
+                  items:
+                    type: string
+                    format: ip
+                  description: |
+                    A list of secondary Linode IPs to share with the primary Linode.
+                    * Can include both IPv4 addresses and IPv6 ranges (omit /56 and /64 prefix lengths)
+                    * Can include both private and public IPv4 addresses.
+                    * You must have access to all of these addresses and they must be in the same Region as the primary
+                    Linode.
+                    * Enter an empty array to remove all shared IP addresses.
+      responses:
+        '200':
+          description: IP Address sharing successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X POST -d '{
+                "linode_id": 123,
+                "ips": [
+                  "192.0.2.1",
+                  "2001:db8:3c4d:15::"
+                ]
+              }' \
+              https://api.linode.com/v4beta2/networking/ips/share
+      - lang: CLI
+        source: >
+          linode-cli networking ip-share \
+            --linode_id 123 \
+            --ips 192.0.2.1 \
+            --ips 2001:db8:3c4d:15::
   /networking/ipv4/assign:
     x-linode-cli-command: networking
     post:
@@ -10407,13 +10491,13 @@ paths:
       x-linode-grant: read_write
       tags:
       - Networking
-      summary: IP Sharing Configure
+      summary: IPv4 Sharing Configure
       description: >
         Configure shared IPs.  A shared IP may be brought up on a Linode other
         than the one it lists in its response.  This can be used to allow one
         Linode to begin serving requests should another become unresponsive.
-      operationId: shareIPs
-      x-linode-cli-action: ip-share
+      operationId: shareIPv4s
+      x-linode-cli-skip: true
       security:
       - personalAccessToken: []
       - oauth:
@@ -10682,12 +10766,42 @@ paths:
           type: string
           format: ipv6
     x-linode-cli-command: networking
+    get:
+      tags:
+      - Networking
+      summary: IPv6 Range View
+      description: |
+        View IPv6 range information.
+      operationId: getIPv6Range
+      x-linode-cli-action: v6-range-view
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - ips:read
+      responses:
+        '200':
+          description: Returns IPv6 range information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPv6RangeBGP'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" https://api.linode.com/v4/networking/ipv6/ranges/2001:0db8::
+      - lang: CLI
+        source: >
+          linode-cli networking v6-range-view 2001:0db8::
     delete:
       tags:
       - Networking
       summary: IPv6 Range Delete
       description: |
         Removes this IPv6 range from your account and disconnects the range from any assigned Linodes.
+
+        **Note:** Shared IPv6 ranges cannot be deleted at this time. Please contact Customer Support for assistance.
       operationId: deleteIPv6Range
       x-linode-cli-action: v6-range-delete
       security:
@@ -16226,9 +16340,7 @@ components:
         country:
           type: string
           description: >
-            The two-letter country code of this Account's billing address.
-          minLength: 2
-          maxLength: 2
+            The two-letter ISO 3166 country code of this Account's billing address.
           example: US
         email:
           type: string
@@ -16938,7 +17050,8 @@ components:
 
             `NS`: The subdomain, if any, to use with the Domain of the Record.
 
-            `MX`: The mail server subdomain. Must be an empty string (`""`) for a Null MX Record.
+            `MX`: The mail subdomain. For example, `sub` for the address `user@sub.example.com` under the `example.com`
+            Domain. Must be an empty string (`""`) for a Null MX Record.
 
             `CNAME`: The hostname. Must be unique. Required.
 
@@ -16966,8 +17079,8 @@ components:
 
             `MX`: The mail server. Must be a valid domain unless creating a Null MX Record. To create a
             [Null MX Record](https://datatracker.ietf.org/doc/html/rfc7505), first
-            [remove](/docs/api/domains/#domain-record-delete) any additional MX records, then enter an empty string
-            (`""`) for this property. If a Domain has a Null MX record, new MX records cannot be created. Required.
+            [remove](/docs/api/domains/#domain-record-delete) any additional MX records, create an MX record with empty strings
+            (`""`) for the `target` and `name`. If a Domain has a Null MX record, new MX records cannot be created. Required.
 
             `CNAME`: The alias. Must be a valid domain. Required.
 
@@ -18462,6 +18575,48 @@ components:
             The last address in this block of IPv6 addresses.
           example: '2600:3c01::ffff:ffff:ffff:ffff'
           nullable: true
+    IPv6RangeBGP:
+      type: object
+      description: >
+        An object representing an IPv6 range.
+      properties:
+        range:
+          type: string
+          description: >
+            The IPv6 range of addresses in this pool.
+          example: '2600:3c01::'
+          readOnly: true
+          x-linode-cli-display: 1
+        prefix:
+          type: integer
+          description: >
+            The prefix length of the address, denoting how many addresses can be
+            assigned from this range calculated as 2 <sup>128-prefix</sup>.
+          example: 64
+          x-linode-cli-display: 2
+        region:
+          type: string
+          description: >
+            The region for this range of IPv6 addresses.
+          example: us-east
+          readOnly: true
+          x-linode-cli-display: 3
+        is_bgp:
+          type: boolean
+          description: >
+            Whether this IPv6 range is shared.
+          example: false
+          readOnly: true
+        linodes:
+          type: array
+          items:
+            type: integer
+          example:
+          - 123
+          description: >
+            A list of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
+          readOnly: true
+          x-linode-cli-display: 4
     Kernel:
       type: object
       description: Linux kernel object
@@ -20248,8 +20403,8 @@ components:
         hostname:
           type: string
           description: >
-            This NodeBalancer's hostname, ending with _.nodebalancer.linode.com_
-          example: nb-207-192-68-16.newark.nodebalancer.linode.com
+            This NodeBalancer's hostname, beginning with its IP address and ending with _.ip.linodeusercontent.com_.
+          example: 192.0.2.1.ip.linodeusercontent.com
           readOnly: true
           x-linode-cli-display: 4
         ipv4:

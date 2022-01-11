@@ -3,8 +3,7 @@ slug: lke-continuous-deployment-part-13
 author:
   name: Linode Community
   email: docs@linode.com
-description: "To complete this series, we will now build a continuous deployment pipeline using a self-hosted GitLab instance (running within our Kubernetes cluster). GitLab is a git platform and, once its set up, we will be able to push code changes to both a staging environment and a production environment."
-og_description: "To complete this series, we will now build a continuous deployment pipeline using a self-hosted GitLab instance (running within our Kubernetes cluster). GitLab is a git platform and, once its set up, we will be able to push code changes to both a staging environment and a production environment."
+description: "This guide covers building a continuous deployment pipeline using a self-hosted GitLab instance within our Kubernetes cluster."
 title: "Continuous Deployment Using LKE: CI/CD with GitLab"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 13): CI/CD with GitLab"
 enable_h1: true

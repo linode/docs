@@ -3,30 +3,28 @@ slug: how-to-install-a-lamp-stack-on-centos-7
 author:
     name: Joel Kruger
     email: docs@linode.com
-description: 'Install a LAMP stack on a CentOS 7 Linode. A LAMP stack includes Linux, Apache, MariaDB, and PHP.'
+description: "Install a LAMP stack on a CentOS 7 Linode. A LAMP stack includes Linux, Apache, MariaDB, and PHP."
 keywords: ["LAMP", "CentOS", "CentOS 7", "apache", "mysql", "php", "centos lamp"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-02-20
+modified: 2021-12-29
 modified_by:
     name: Linode
 published: 2015-12-01
-title: LAMP on CentOS 7
-h1_title: How to Install a LAMP Stack on CentOS 7
+title: "Installing a LAMP Stack on CentOS 7"
 aliases: ['/websites/lamp/lamp-on-centos-7/','/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/','/websites/lamp/lamp-server-on-centos-7/','/web-servers/lamp/lamp-on-centos-7/']
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
  - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
+image: lamp-on-centos-7-title-graphic.jpg
 relations:
     platform:
         key: install-lamp-stack
         keywords:
             - distribution: CentOS 7
 ---
-
-![LAMP on CentOS 7](lamp-on-centos-7-title-graphic.jpg "LAMP on CentOS 7")
 
 A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on a CentOS 7 Linode.
 
@@ -39,7 +37,7 @@ A *LAMP stack* is a particular bundle of software packages commonly used for hos
         hostname
         hostname -f
 
-2.  Update your system:
+1.  Update your system:
 
         sudo yum update
 
@@ -55,12 +53,12 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo yum install httpd
 
-1. Enable Apache to start at boot and start the Apache service:
+1.  Enable Apache to start at boot and start the Apache service:
 
         sudo systemctl enable httpd.service
         sudo systemctl start httpd.service
 
-2.  Create a `httpd-mpm.conf` file and add the code in the example to turn off KeepAlive and adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
+1.  Create a `httpd-mpm.conf` file and add the code in the example to turn off KeepAlive and adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
     {{< note >}}
 As a best practice, you should create a backup of your Apache configuration file, before making any configuration changes to your Apache installation. To make a backup in your home directory:
@@ -89,21 +87,21 @@ There are different ways to set up virtual hosts; however, the method below is r
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
-1. Create the directories to store your site's virtual hosts files:
+1.  Create the directories to store your site's virtual hosts files:
 
         sudo mkdir -p /etc/httpd/sites-available /etc/httpd/sites-enabled
 
-1. Edit Apache's configuration file to let it know to look for virtual host files in the `/etc/httpd/sites-enabled` directory. Add the example line to the bottom of your `httpd.conf` file:
+1.  Edit Apache's configuration file to let it know to look for virtual host files in the `/etc/httpd/sites-enabled` directory. Add the example line to the bottom of your `httpd.conf` file:
 
-      {{< file "/etc/httpd/conf/httpd.conf" apache>}}
+    {{< file "/etc/httpd/conf/httpd.conf" apache>}}
 IncludeOptional sites-enabled/*.conf
-      {{</ file >}}
+{{</ file >}}
 
-1. Navigate to your `/var/www/html/example.com` directory if you are not already there:
+1.  Navigate to your `/var/www/html/example.com` directory if you are not already there:
 
         cd /var/www/html/example.com
 
-1. Using your preferred text editor create a virtual hosts file. Copy the basic settings in the example below and paste them into the file. Replace all instances of `example.com` with your domain name:
+1.  Using your preferred text editor create a virtual hosts file. Copy the basic settings in the example below and paste them into the file. Replace all instances of `example.com` with your domain name:
 
     {{< file "/etc/httpd/sites-available/example.com.conf" apache>}}
 <Directory /var/www/html/example.com/public_html>
@@ -116,9 +114,9 @@ IncludeOptional sites-enabled/*.conf
     ErrorLog /var/www/html/example.com/logs/error.log
     CustomLog /var/www/html/example.com/logs/access.log combined
 </VirtualHost>
-    {{</ file>}}
+{{</ file>}}
 
-1. Create a symbolic link from your virtual hosts file in the `sites-available` directory to the `sites-enabled` directory. Replace `example.com.conf` with the name of your own virtual hosts file.
+1.  Create a symbolic link from your virtual hosts file in the `sites-available` directory to the `sites-enabled` directory. Replace `example.com.conf` with the name of your own virtual hosts file.
 
         sudo ln -s /etc/httpd/sites-available/example.com.conf /etc/httpd/sites-enabled/example.com.conf
 
@@ -131,7 +129,6 @@ If you receive an error when trying to reload your `httpd` service, follow the s
     {{</ note >}}
 
     Additional domains can be added to the `example.com.conf` file as needed.
-
 
     {{< note >}}
 `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
@@ -153,34 +150,40 @@ Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
 
         sudo chown apache:apache -R /var/www/html/example.com/
 
-2.  Modify the permissions for files and directories:
+1.  Modify the permissions for files and directories:
 
         cd /var/www/html/example.com/
         find . -type f -exec sudo chmod 0644 {} \;
         find . -type d -exec sudo chmod 0755 {} \;
 
-3.  Use SELinux's `chcon` to change the file security context for web content:
+1.  Use SELinux's `chcon` to change the file security context for web content:
 
         sudo chcon -t httpd_sys_content_t /var/www/html/example.com -R
         sudo chcon -t httpd_sys_rw_content_t /var/www/html/example.com -R
 
-4.  Enable Apache to start at boot, and restart the service for the above changes to take place:
+1.  Enable Apache to start at boot and restart the service for the above changes to take place:
 
         sudo systemctl enable httpd.service
         sudo systemctl restart httpd.service
+
+
+{{< note >}}
+In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the `sudo setsebool -P httpd_can_network_connect on` command.
+{{</ note >}}
 
 ### Configure FirewallD to Allow HTTP Connections
 
 FirewallD is enabled for CentOS 7 Linodes, but HTTP is not included in the default set of services.
 
-1. View the default set of services:
+1.  View the default set of services:
 
         sudo firewall-cmd --zone=public --list-services
-{{< output >}}
+
+    {{< output >}}
 ssh dhcpv6-client
 {{< /output >}}
 
-1. To allow connections to Apache, add HTTP as a service:
+1.  To allow connections to Apache, add HTTP as a service:
 
         sudo firewall-cmd --zone=public --add-service=http --permanent
         sudo firewall-cmd --zone=public --add-service=http
@@ -203,12 +206,12 @@ Rename Apache's default welcome page. When this file is present it will take pre
 
         sudo yum install mariadb-server
 
-2.  Set MariaDB to start at boot and start the daemon for the first time:
+1.  Set MariaDB to start at boot and start the daemon for the first time:
 
         sudo systemctl enable mariadb.service
         sudo systemctl start mariadb.service
 
-3.  Run `mysql_secure_installation` to secure MariaDB. You will be given the option to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases and reload privileges. It is recommended that you answer yes to these options:
+1.  Run `mysql_secure_installation` to secure MariaDB. You will be given the option to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases and reload privileges. It is recommended that you answer yes to these options:
 
         sudo mysql_secure_installation
 
@@ -220,14 +223,14 @@ Rename Apache's default welcome page. When this file is present it will take pre
 
     Enter MariaDB’s root password. You will get the MariaDB prompt.
 
-2.  Create a new database and user with permissions to use it:
+1.  Create a new database and user with permissions to use it:
 
         create database webdata;
         grant all on webdata.* to 'webuser' identified by 'password';
 
     In the above example `webdata` is the name of the database, `webuser` the user, and `password` a strong password.
 
-5.  Exit MariaDB
+1.  Exit MariaDB
 
         quit
 
@@ -242,7 +245,7 @@ With Apache and MariaDB installed, you are now ready to move on to installing PH
 
         sudo yum install php php-pear php-mysqlnd
 
-2.  Edit `/etc/php.ini` for better error messages and logs, and upgraded performance. These modifications provide a good starting point for a **Linode 2GB**:
+1.  Edit `/etc/php.ini` for better error messages and logs, and upgraded performance. These modifications provide a good starting point for a **Linode 2GB**:
 
     {{< file "/etc/php.ini" ini >}}
 error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
@@ -256,12 +259,12 @@ max_input_time = 30
 Ensure that all lines noted above are uncommented. A commented line begins with a semicolon (**;**).
 {{< /note >}}
 
-3.  Create the log directory for PHP and give the Apache user ownership:
+1.  Create the log directory for PHP and give the Apache user ownership:
 
         sudo mkdir /var/log/php
         sudo chown apache:apache /var/log/php
 
-4.  Reload Apache:
+1.  Reload Apache:
 
         sudo systemctl reload httpd.service
 
