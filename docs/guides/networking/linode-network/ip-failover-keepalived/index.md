@@ -33,6 +33,7 @@ Linode's IP failover feature using keepalived is compatible with various IP addr
 - **Public and Private IPv4 addresses:** Can be configured in a supported data center using keepalived. You must first configure Linode's IP Sharing feature as outlined in the [Configuring IP Sharing](#configuring-ip-sharing) section. Supported data centers include Dallas (USA), Frankfurt (Germany), Fremont (USA), London (UK), Newark (USA), Singapore, and Tokyo (Japan).
 
 - **IPv6 addresses:** IP failover with IPv6 addresses is not currently supported.
+
 - **VLAN IP addressses:** Can be configured in a supported data center using keepalived. Supported data centers include Atlanta (USA), Mumbai (India), Sydney (Australia), and Toronto (Canada).
 
 ## Configuring IP Sharing

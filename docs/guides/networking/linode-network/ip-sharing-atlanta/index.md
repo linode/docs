@@ -7,7 +7,7 @@ description: "This guide provides Linode users with steps to manually enable an 
 keywords: ['networking','Elastic IP','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-02
-modified: 2022-01-11
+modified: 2021-11-05
 modified_by:
   name: Linode
 title: "Enable IP Sharing (Elastic IPs) in Atlanta through FRR"
@@ -67,7 +67,7 @@ This section provides instructions for installing FRR on Debian, Ubuntu, and Cen
 
 ### CentOS/RHEL
 
-**Supported distributions:** *CentOS Stream (and 8), CentOS 7, other RHEL derivatives (including AlmaLinux 8, and Rocky Linux 8), and Fedora.*
+**Supported distributions:** *CentOS Stream 9 (and 8), CentOS 8 (and 7), other RHEL derivatives (including AlmaLinux 8, and Rocky Linux 8), and Fedora.*
 
 1.  Set the FRR environment variable as `frr-stable` to install the latest FRR release. Specific releases can also be targeted by setting the variable to `frr-8`, `frr-7`, `frr-6` (see [FRR RPM Repository](https://rpm.frrouting.org/) for more details).
 
@@ -122,7 +122,7 @@ With FRR installed, you can now apply the required configurations to enable Elas
 
       {{< file "~/elastic.conf">}}
 hostname [HOSTNAME]
-i
+
 router bgp 65045
 no bgp ebgp-requires-policy
 coalesce-time 1000
