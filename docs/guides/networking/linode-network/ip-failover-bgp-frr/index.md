@@ -1,7 +1,7 @@
 ---
 slug: ip-failover-bgp-frr
 author:
-  name: Linode Community
+  name: Linode
   email: docs@linode.com
 description: "Learn how to use Linode's IP Sharing feature to configure IP failover using FRR, a routing software that implements BGP"
 keywords: ['IP failover','elastic IP','frr','bgp']
@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-11
 modified_by:
   name: Linode
-title: "Configuring IP Failover using FRR (BGP)"
+title: "Configuring IP Failover over BGP using FRR (Advanced)"
 contributor:
   name: Linode
 external_resources:
@@ -17,10 +17,10 @@ external_resources:
 ---
 
 {{<note>}}
-Not all data centers supports configuring IP failover through FRR. Review the [Configuring IP Failover on a Compute Instance](/docs/guides/ip-failover/) to learn more about IP Sharing / IP failover availability within each data center.
+Not all data centers supports configuring IP failover over BGP. Review the [Configuring IP Failover on a Compute Instance](/docs/guides/ip-failover/) to learn more about IP Sharing / IP failover availability within each data center.
 {{</note>}}
 
-This guide covers using the open source [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) tool to configure IP failover with Linode Compute Instances. FRR is a routing service that uses BGP to monitor and fail over components in a high availability configuration. In a typical setup with IP failover, there is one **primary** Instance and one or more **secondary** Instances.
+This guide covers using the open source [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) tool to configure IP failover with Linode Compute Instances. FRR is a routing service that uses BGP to monitor and fail over components in a high availability configuration. In a typical setup with IP failover, there is a **primary** Instance and a **secondary** Instance.
 
 - **Primary**: The primary Compute Instance is the one containing the IP address you'd like to configure for IP failover.
 - **Secondary**: The secondary Compute Instances are then configured to use that IP address in the event the primary Instance stops responding.
@@ -145,12 +145,12 @@ With FRR installed, you can now configure it to enable IP failover.
         - Tokyo (Japan): `11`
         - Toronto (Canada): `15`
 
-1.  The template below should be used for the FRR configuration on Compute Instance within your IP failover setup. Ensure you replace any instances of `[SHARED_IP]`, `[HOSTNAME]`, `[ROLE]`, and `[DC_ID]` as outlined above. Store the template somewhere that you can easily access later. In a later step, you copy the contents of the template and paste them into the VTY interactive shell.
+1.  Edit the `/etc/frr/frr.conf` file and add the following lines. Ensure you replace any instances of `[SHARED_IP]`, `[HOSTNAME]`, `[ROLE]`, and `[DC_ID]` as outlined above.
 
-      {{< file "~/ipfailover.conf">}}
+      {{< file "/etc/frr/frr.conf">}}
 hostname [HOSTNAME]
 
-router bgp 65000
+router bgp 65001
 no bgp ebgp-requires-policy
 coalesce-time 1000
 bgp bestpath as-path multipath-relax
@@ -166,36 +166,14 @@ address-family ipv4 unicast
   redistribute static
 exit-address-family
 route-map primary permit 10
-set large-community 63949:1:1
+set community 65000:1
 route-map secondary permit 10
-set large-community 63949:1:2
+set community 65000:2
 {{</ file >}}
 
-1.  Run the VTY shell:
+1.  Restart the FRR service:
 
-        sudo vtysh
-
-1.  Enter configuration mode:
-
-        conf t
-
-1.  Copy the contents of your template configuration file and paste them into the VTY shell:
-
-1.  Tell the VTY shell that you are done entering your configurations:
-
-        end
-
-1. Write your configurations to VTY:
-
-        write
-
-1.  Verify that the configurations you entered were correctly written by showing VTY's running configuration:
-
-        show running-config
-
-1.  Exit out of the VTY shell:
-
-        q
+        sudo systemctl restart frr
 
 ## Configure the Network Interface
 
@@ -210,15 +188,6 @@ up   ip addr add [SHARED_IP]/32 dev eth0 label eth0
 down ip addr del [SHARED_IP]/32 dev eth0 label eth0
 {{</ file >}}
 
-        If you configured more than one Shared IP on your instance, you can add additional interface entries to your network interfaces configuration file as follows:
-
-        {{< file >}}
-up   ip addr add [SHARED_IP]/32 dev eth0 label eth0
-down ip addr del [SHARED_IP]/32 dev eth0 label eth0
-up   ip addr add [SHARED_IP2]/32 dev eth0 label eth0
-down ip addr del [SHARED_IP2]/32 dev eth0 label eth0
-{{</ file >}}
-
     - **Ubuntu 20.04**
 
         Edit the `/etc/systemd/network/05-eth0.network` file by adding an `Address` entry for the Shared IP.
@@ -230,13 +199,6 @@ Name=eth0
 Address=[SHARED_IP]/32
 {{</ file >}}
 
-        If you configured more than one Shared IP, you can add additional interface entries to your network interfaces configuration file as follows:
-
-        {{< file >}}
-Address=[SHARED_IP]/32
-Address=[SHARED_IP2]/32
-{{</ file >}}
-
     - **CentOS 8**
 
         Edit the `/etc/sysconfig/network-scripts/ifcfg-eth0` file with the following entry.
@@ -244,16 +206,6 @@ Address=[SHARED_IP2]/32
         {{< file >}}
 IPADDR1=[SHARED_IP]
 PREFIX1="32"
-{{</ file >}}
-
-        If you configured more than one Shared IP on your instance, you can add additional interface entries to your network interfaces configuration file as follows:
-
-        {{< file >}}
-IPADDR1=[SHARED_IP]
-PREFIX1="32"
-
-IPADDR2=[SHARED_IP2]
-PREFIX2="32"
 {{</ file >}}
 
 1.  Apply the `eth0` network interface configuration:
