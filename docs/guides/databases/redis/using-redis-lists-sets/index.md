@@ -81,7 +81,7 @@ Redis has another related data type: Sorted Sets. These are Sets that include a 
 
 Because of ordering, hashes, and labeling of values, Sorted Sets in Redis actually work as a cross between Lists.
 
-Sorted Sets have an array of commands and ways that you can work with their collections. To learn more about how Sorted Sets work and how you can start using them, take a look at our [How to Use Sorted Sets in Redis](/docs/guides/using-redis-sorted-sets/) guide.
+Sorted Sets have an array of commands and ways that you can work with their collections. To learn more about how Sorted Sets work and how you can start using them, take a look at our [How to Use Sorted Sets in Redis](/docs/guides/using-sorted-sets-in-redis-database/) guide.
 
 ## How to Use Lists in Redis
 
