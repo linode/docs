@@ -2,13 +2,8 @@
 slug: how-to-configure-http-2-on-apache
 author:
   name: Jeff Novotny
-<<<<<<< HEAD
-description: 'In this tutorial, you will learn how to configure HTTP/2 on Apache using Debian.'
-og_description: 'In this tutorial, you will learn how to configure HTTP/2 on Apache using Debian.'
-=======
 description: 'In this tutorial, you will learn how to configure HTTP/2 using Apache on Debian.'
-og_description: ''
->>>>>>> 1f6fde95d... TypoFixes
+og_description: 'In this tutorial, you will learn how to configure HTTP/2 using Apache on Debian.'
 keywords: ['apache https']
 tags: ['web server', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
