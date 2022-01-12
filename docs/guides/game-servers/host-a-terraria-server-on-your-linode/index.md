@@ -3,8 +3,8 @@ slug: host-a-terraria-server-on-your-linode
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'In this guide, you will learn how to install and configure a Terraria, a two-dimensional sandbox game similar to Minecraft, on a Linode.'
-og_description: 'In this guide, you will learn how to install and configure a Terraria, a two-dimensional sandbox game similar to Minecraft, on a Linode.'
+description: 'In this guide, you will learn how to install and configure Terraria, a two-dimensional sandbox game similar to Minecraft, on a Linode.'
+og_description: 'In this guide, you will learn how to install and configure Terraria, a two-dimensional sandbox game similar to Minecraft, on a Linode.'
 keywords: ["terraria", "steam", "minecraft", "gaming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-12-21
