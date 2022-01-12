@@ -1,28 +1,23 @@
 ---
 slug: strong-swan-vpn-server-ubuntu
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
+  name: Tom Henderson
+description: 'This guide shows you how to install a StrongSwan VPN server on an Ubuntu 20.04 server. You also learn how to connect to a StrongSwan VPN server from Ubuntu, Windows, and macOS clients.'
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-10
 modified_by:
   name: Linode
-title: "Strong Swan Vpn Server Ubuntu"
-h1_title: "h1 title displayed in the guide."
+title: "Install and Configure a StrongSwan Gateway VPN Server on Ubuntu 20.04"
+h1_title: "How to Install and Configure a StrongSwan Gateway VPN Server on Ubuntu 20.04"
 enable_h1: true
 contributor:
-  name: Your Name
-  link: Github/Twitter Link
+  name: Tom Henderson
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[Introduction to StrongSwan](https://wiki.strongswan.org/projects/strongswan/wiki/IntroductionTostrongSwan)'
 ---
 
-StrongSwan is an open source implementation of the IPsec protocol (explain VPN host gateway)
-StrongSwan is an open source virtual private network (VPN) tool that supports IPSec ISO/OSI Layer 2 networking. It also includes a variety of authentication tools, algorithms, and options. This tutorial shows you how to use StrongSwan and an Ubuntu 20.04 server as a gateway to network-connected resources “behind” or “inside” the server host. During this tutorial, you also learn how to install StrongSwan VPN on an Ubuntu 20.04 server. The Ubuntu server hosting the StrongSwan VPN makes network resources available to external Windows, macOS, iOS, Linux, and Android users who have the StrongSwan client software installed on their devices. VPN connections from the client to the server are encrypted and provide a secure gateway to other resource available on the server.
+StrongSwan is an open source tool that operates as a keying daemon and uses the Internet Key Exchange protocols (IKEv1 and IKEv2) to secure connections between two hosts. In this way, you can use StrongSwan to establish a Virtual Private Network (VPN). VPN connections from a client to the StrongSwan server are encrypted and provide a secure gateway to other resource available on the server and its network. This guide shows you how to install and configure a StrongSwan gateway VPN server on Ubuntu 20.04. You also learn how to set up and connect to a StrongSwan server from an Ubuntu, Windows, and macOS client.
 
 ## Install StrongSwan on Ubuntu 20.04 Server
 
@@ -44,23 +39,23 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1. Install StrongSwan and the supporting plugins and libraries.
 
-    sudo apt install strongswan strongswan-pki libcharon-extra-plugins libcharon-extauth-plugins libstrongswan-extra-plugins libtss2-tcti-tabrmd0 -y
+        sudo apt install strongswan strongswan-pki libcharon-extra-plugins libcharon-extauth-plugins libstrongswan-extra-plugins libtss2-tcti-tabrmd0 -y
 
 ### Generate Server Keys and Certificate
 
 1. Use the IPsec command line utility to create your IPsec private key. In the case of this tutorial, the private key is used to create the root certificate for StrongSwan. You can also use this key to generate other certificates.
 
-    sudo ipsec pki --gen --size 4096 --type rsa --outform pem > /etc/ipsec.d/private/ca.key.pem
+        sudo ipsec pki --gen --size 4096 --type rsa --outform pem > /etc/ipsec.d/private/ca.key.pem
 
 1. Create and sign the root certificate with the following configurations. Ensure you replace the value of the `CN` configuration with your own desired name for your StrongSwan VPN server.
 
-    ipsec pki --self --in /etc/ipsec.d/private/ca.key.pem --type rsa --dn "CN=<Name of this VPN Server>" --ca --lifetime 3650 --outform pem > /etc/ipsec.d/cacerts/ca.cert.pem
+        ipsec pki --self --in /etc/ipsec.d/private/ca.key.pem --type rsa --dn "CN=<Name of this VPN Server>" --ca --lifetime 3650 --outform pem > /etc/ipsec.d/cacerts/ca.cert.pem
 
 In the example above, the `--lifetime 3650` configuration sets the certificate's lifetime to 3650 days, or approximately ten years. The lifetime of the certificate determines when it is to be regenerated and distributed to your StrongSwan server and to connected clients. You can adjust this setting to your preferred value.
 
 1. Generate the StrongSwan VPN server's private certificate.
 
-    ipsec pki --gen --size 4096 --type rsa --outform pem > /etc/ipsec.d/private/server.key.pem
+        ipsec pki --gen --size 4096 --type rsa --outform pem > /etc/ipsec.d/private/server.key.pem
 
 1. Generate the host server certificate. There are two ways to generate the certificate, however, they cannot be mixed. The two ways are as follows:
 
@@ -76,7 +71,7 @@ In the example above, the `--lifetime 3650` configuration sets the certificate's
 
     The duplicate `–san=”<server static IP address>` configuration in the command below is correct; do not omit both configurations. Replace their values with your own gateway server's IPv4 address.
 
-    ipsec pki --pub --in /etc/ipsec.d/private/server.key.pem --type rsa | ipsec pki --issue --lifetime 3650 --cacert /etc/ipsec.d/cacerts/ca.cert.pem --cakey /etc/ipsec.d/private/ca.key.pem --dn "CN=<server static IP address>" –san=”<server static IP address>” --san="<server static IP address>" --flag serverAuth --flag ikeIntermediate --outform pem > /etc/ipsec.d/certs/server.cert.pem
+        ipsec pki --pub --in /etc/ipsec.d/private/server.key.pem --type rsa | ipsec pki --issue --lifetime 3650 --cacert /etc/ipsec.d/cacerts/ca.cert.pem --cakey /etc/ipsec.d/private/ca.key.pem --dn "CN=<server static IP address>" –san=”<server static IP address>” --san="<server static IP address>" --flag serverAuth --flag ikeIntermediate --outform pem > /etc/ipsec.d/certs/server.cert.pem
 
 At the end of this section, you should have generated the following files on your Ubuntu server:
 
@@ -106,7 +101,7 @@ net.ipv6.conf.all.accept_redirects = 0
 
     Within the context of StrongSwan, the gateway host server (your Ubuntu server) is referred to as *left* resources. External hosts connecting to the StrongSwan VPN are referred to as *right* resources.
 
-    {{< file >}}
+    {{< file "/etc/ipsec.conf" >}}
 config setup
         charondebug="ike 1, knl 1, cfg 0, net 1"
         strictcrlpolicy=no
@@ -142,7 +137,7 @@ esp=chacha20poly1305-sha512,aes256gcm16-ecp384,aes256-sha256,aes256-sha1,3des-sh
     {{< note >}}
 1. The `leftid` configuration matches the tunneled network assets that are exposed to VPN clients. A route through this subnet must be reachable if a local resolver is used to access resources.
 
-    The syntax for `leftid` must match the server certificate, resolver/DNS or IP address from step 4 in the [Generate Server Keys and Certificate]() secction. If the resolver/DNS method was used, place an `@` before the resolved host address. Do not place an `@` symbol in front of an IPv4 address.
+    The syntax for `leftid` must match the server certificate, resolver/DNS or IP address from step 4 in the [Generate Server Keys and Certificate]() section. If the resolver/DNS method was used, place an `@` before the resolved host address. Do not place an `@` symbol in front of an IPv4 address.
 
 1. The `rightsourceip` configuration sets the client IP addresses that are allowed to connect to the StrongSwan VPN. It is possible to limit the scope to an IP address range. This limits the number of addresses that will be considered for admission through the tunnel created by the host server VPN gateway. If the source addresses should only be allowed from a single subnet, specify that subnet. An example would be `10.0.100.0/24`. This subnet allows the 254 hosts in the `10.0.100.0` subnet. This configuration is used for internal VPN resource admittance control.
 
@@ -173,11 +168,11 @@ StrongSwan should be installed on a Linux systems using Ubuntu 16.04. Older vers
 
 1. Update your Ubuntu system.
 
-    sudo apt update && upgrade -y
+        sudo apt update && upgrade -y
 
 1. Install the StrongSwan client and required plugins.
 
-    sudo apt install strongswan libcharon-extra-plugins
+        sudo apt install strongswan libcharon-extra-plugins
 
 1. Download or copy the StrongSwan host gateway VPN server's certificate. The certificate is located on the VPN server in `/etc/ipsec.d/cacerts/ca.cert.pem`. Store the copied or downloaded certificate in the client's `/etc/ipsec.d/` directory.
 
@@ -193,5 +188,125 @@ StrongSwan should be installed on a Linux systems using Ubuntu 16.04. Older vers
 
     **Resolver/DNS**
 
+    {{< file "/etc/ipsec.conf" >}}
+config setup
+conn ikev2-rw
+    right=<qualified domain name and can also be left blank>
+    rightid=<qualified domain of this host>
+    rightsubnet=0.0.0.0/0
+    rightauth=pubkey
+    leftsourceip=%config
+    leftid=<username as matched in /etc/ipsec.secrets>
+    leftauth=eap-mschapv2
+    eap_identity=%identity
+    auto=start
+
+    {{</ file >}}
+
     **Server IPv4 Address**
+
+    {{< file "/etc/ipsec.conf" >}}
+config setup
+conn ikev2-rw
+    right=<IP address of the host VPN>
+    rightid=<host as named /etc/ipsec.conf>
+    rightsubnet=0.0.0.0/0
+    rightauth=pubkey
+    leftsourceip=%config
+    leftid=<username as matched in /etc/ipsec.secrets>
+    leftauth=eap-mschapv2
+    eap_identity=%identity
+    auto=start
+
+    {{</ file >}}
+
+1. To start the StrongSwan client VPN issue the following command:
+
+        systemctl start strongswan-starter
+
+1. To automatically start the VPN client after all reboots, use the following command:
+
+        systemctl enable strongswan-starter
+
+1. To stop StrongSwan use the following command:
+
+        systemctl stop strongswan-starter
+
+1. [Need information on verifying the connection from client to server]
+
+## Connecting to StrongSwan VPN on Windows 10
+
+### Importing the VPN Root Certificate on Windows 10
+
+To connect to a StrongSwan VPN gateway server, your Windows 10 system needs a copy of the gateway VPN server's certificate.
+
+- Import the VPN gateway server's certificate that is located in `/etc/ipsec.d/certs/server.cert.pem`. The certificate must be marked as a *VPN Root Certificate*.
+
+- Use the Microsoft Management Console/MMC to configure the VPN’s IPsec information.
+
+1. Open the **Run dialog** box, (**Windows_key-R**), or press the **Windows key**, and enter into the lower left dialog box, `mmc.exe`. This starts the Microsoft Management Console/MMC.
+
+1. From the **File** menu of the MMC, scroll to **Add or Remove Snap-in**. Select **Certificates** from the list, and click **Add**.
+
+    The Snap-in asks for the account type to manage. From the list that appears, choose **Computer account**.
+
+    Then, choose **Local Compute** unless you manage other computers that are also going to use this certificate. Click **Finish**, and the process is completed.
+
+1. The Console Root MMC displays a list of certificate types on the left side of the MMC, and in the middle, a list of certificates pertinent to the selection on the left.
+
+    On the left of the MMC, open **Trusted Root Certificate Authorities**, then click the **Certificates** folder that appears directly under **Trusted Root Certificate Authorities**.
+
+1. From the MMC **Action** menu, choose **All Tasks**, then **Import** and the **Certificate Import Wizard** appears. Choose **Local Machine**, then browse to the location where the `server.cert.pem` file was imported, and select it.
+
+1. The **Certificate Import Wizard** asks where to import the certificate. The wizard recognizes the type, and places the certificate into the **Trusted Root Certification Authorities certificate store**. Click **Finish** to complete the certificate import process.
+
+### Connecting a Windows Client to the StrongSwan Gateway VPN Server
+
+The client authentication process relies on the `ipsec.secrets` file located on the gateway VPN server.
+
+1. To configure a new VPN connection on your Windows computer, launch the **Control Panel** from the Windows menu by pressing the **Windows** key. Then, select **Network** and **Sharing Center**.
+
+1. Choose **Setup a new connection or network** and then, select **Connect to a workplace**. Next, select **Choose Use my Internet Connection (VPN)**.
+
+    During this step, you need some details about your gateway VPN server. You should know the server's DNS name, if that’s how it was configured in the `ipsec.conf` file. If, however, you used an IPv4 address when configuring the `leftid` value in the `ipsec.conf` file, provide or the server's IPv4 address. Finally, you enter a username and password that matches the VPN server's `ipsec.secrets` entry.
+
+1. Start the VPN by clicking its name from the **Taskbar Networks** list of choices.
+
+1. To terminate your VPN connection, click the VPN again and you are disconnected another network.
+
+## Connecting to StrongSwan VPN on macOS
+
+### Importing the VPN Root Certificate on macOS
+
+1. Download the `ca.cert.pem` file from the StrongSwan gateway VPN server host to your macOS computer [using scp](/docs/guides/download-files-from-your-linode/#secure-copy-protocol-scp).
+
+1. Click on the downloaded file to open **Keychain Access**. Provide your user's administrative password, to accept the certificate. Then, click **Modify Keychain**.
+
+    A dialog appears that asks you about the certificate's trust level. Choose *IP Security (IPSec) to Always Trust**, and enter the macOS user password again.
+
+### Connecting a macOS Client to the StrongSwan Gateway VPN Server
+
+1. Open **Systems Preferences** from your **Finder**. Click on the **Network** icon. Add a new network by clicking on the **+** button. You may be prompted to enter your user password again.
+
+1. Once the new network choice appears, set the **Interface** to **VPN**. Then, set the **VPN Type** to **IKEv2** and provide a name for this connection. Choose the name of the StrongSwan VPN server from the list.
+
+    You are prompted to provide the server name. Depending on how the VPN server was configured, provide its DNS name or its IPv4 address.
+
+    Provide the username and password configured in the VPN servers `ipsec.secrets` for the current user.
+
+1. To start the VPN, click on the **Network** icon in the top right menu bar and choose your StrongSwan VPN server's name from the list.
+
+    You can also start the connection from **System Preferences > Network**. Then, click on your StrongSwan VPN server's name.
+
+1. To disconnect, click the VPN server's name. VPN connections are persistent on macOS during **sleep** mode, but not after a reboot.
+
+## Troubleshooting StrongSwan
+
+- Connection problems are frequently due to mismatched username and passwords between the host gateway VPN server (`/etc/ipsec.secrets`) and the VPN client settings.
+
+- Connection issues can also be caused by your firewall settings. Ensure you [check your system's firewall settings](/docs/guides/configure-firewall-with-ufw/) when troubleshooting.
+
+- Finally, check your StrongSwan VPN server's log file (`/var/log/syslog`) to further investigate connection issues.
+
+
 

@@ -1762,6 +1762,7 @@ stopword
 stopwords
 storages
 streamlink
+strongswan
 su
 subcommand
 subcommands
