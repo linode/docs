@@ -940,6 +940,7 @@ lda
 ldap
 lego
 leiningen
+lelastic
 len
 lennart
 letsencrypt

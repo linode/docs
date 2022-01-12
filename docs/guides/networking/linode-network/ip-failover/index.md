@@ -19,7 +19,7 @@ There's always a small possibility that your Compute Instance may be powered off
 - **IP failover:** Routes an IP addresses's traffic to a secondary Compute Instance in the event the original Instance goes down.
 - **Load balancing:** Load balancing solutions, such as Linode's [NodeBalancers](/docs/products/networking/nodebalancers/) or [HAProxy](https://www.linode.com/docs/guides/how-to-use-haproxy-for-load-balancing/), can route incoming requests to preconfigured backend Compute Instances. This provides quite a lot of flexibility for your own unique highly available setup.
 
-This guide covers configuring IP failover to enable high availability. IP failover allows two Linode Compute Instances to share a single IP address, one serving as the primary and one serving as the secondary. If the primary Compute Instance becomes unavailable, the IP address will seamlessly failover to the secondary Compute Instance. Once the primary instance is back online, the IP address will fallback to that instance.
+This guide covers configuring IP failover to enable high availability. IP failover allows two Linode Compute Instances to share a single IP address, one serving as the *primary* and one serving as the *secondary*. If the primary Compute Instance becomes unavailable, the IP address will seamlessly failover to the secondary Compute Instance. Once the primary instance is back online, the IP address will fallback to that instance.
 
 ## IP Sharing
 
@@ -50,4 +50,5 @@ IP failover for VLAN IP addresses is supported within every data center where VL
 To configure IP failover, follow the instructions for the software implementation method supported by your data center:
 
 - [Configuring IP Failover using keepalived](/docs/guides/ip-failover-keepalived/)
-- [Configuring IP Failover using FRR (BGP)](/docs/guides/ip-failover-bgp-frr/)
+- [Configuring IP Failover over BGP](/docs/guides/ip-failover-bgp/)
+- [Configuring IP Failover over BPG using FRR (Advanced)](/docs/guides/ip-failover-bgp-frr/)
