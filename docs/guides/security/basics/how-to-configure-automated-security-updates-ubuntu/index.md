@@ -2,7 +2,7 @@
 slug: how-to-configure-automated-security-updates-ubuntu
 author:
   name: Hackersploit
-description: "Looking for better management of security updates on Ubuntu? Learn how to use the dnf-automatic tool or the Cockpit web application to manage these updates."
+description: "In this tutorial, you will learn how to configure automated updates on Ubuntu by using the dnf-automatic tool or the Cockpit web application."
 keywords: ["ubuntu unattended-upgrades", "configuring unattended-upgrades"]
 tags: ["ubuntu", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

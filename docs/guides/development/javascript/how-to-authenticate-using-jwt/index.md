@@ -2,8 +2,8 @@
 slug: how-to-authenticate-using-jwt
 author:
   name: Nathaniel Stickman
-description: "JSON Web Tokens (JWTs) provide a compact and secure standard for sending information, especially on the web. This guide explains the key concepts behind JWTs and walks you through getting started implementing your own using Express."
-og_description: "JSON Web Tokens (JWTs) provide a compact and secure standard for sending information, especially on the web. This guide explains the key concepts behind JWTs and walks you through getting started implementing your own using Express."
+description: "In this guide, you will learn key concepts behind JSON Web Tokens (JWTs) and how they provide a compact and secure standard for sending information, especially on the web. "
+og_description: ""
 keywords: ['json web tokens','jwt','encoding jwt','decoding jwt','what is a jwt']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
