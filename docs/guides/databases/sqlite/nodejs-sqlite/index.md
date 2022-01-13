@@ -47,7 +47,7 @@ Install SQLite support into Node.js using `npm` on your local development enviro
 Now you can create an SQLite database with Node.js. This example uses a simple database application to track superheroes from the [Marvel Cinematic Universe](https://www.marvel.com/movies).
 
 1. First, create a file called `sample.js` and import the `sqlite3` module into Node.js:
-      
+
     {{< file "sample.js" js >}}
 var sqlite3 = require('sqlite3');
 {{</ file >}}
