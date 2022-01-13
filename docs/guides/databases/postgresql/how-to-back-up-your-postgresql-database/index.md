@@ -20,7 +20,7 @@ aliases: ['/databases/postgresql/how-to-back-up-your-postgresql-database/']
 
 ![How to Back Up Your PostgreSQL Database](back-up-postgresql-database-title.jpg "How to Back Up Your PostgreSQL Database")
 
-If you are using PostgreSQL in a production environment, it is important to take precautions to ensure that your users' data is not lost. By frequently backing up your database, and/or automating backups with a cron task, you can quickly restore your system in the event that your database is lost or corrupted. Fortunately, PostgreSQL includes tools to make this task simple and easy to manage. Learn how to backup your PostgreSQL database in Linux, in this guide.
+If you are using PostgreSQL in a production environment, it is important to take precautions to ensure that your users' data is not lost. By frequently backing up your database, automating backups with a cron task, you can restore your system when your database is lost or corrupted. Fortunately, PostgreSQL includes tools to make this task simple and easy to manage. Learn how to backup your PostgreSQL database in Linux, in this guide.
 
 ## Before You Begin
 
@@ -44,9 +44,9 @@ PostgreSQL provides the `pg_dump` utility to simplify backing up a single databa
 
         pg_dump dbname > dbname.bak
 
-    After performing the PostgresQL load dump into a file, the resulting backup file containing the database is `dbname.bak`. This file can be transferred to another host with `scp` or stored locally for later use.
+    After performing the PostgreSQL load dump into a file, the resulting backup file containing the database is `dbname.bak`. This file can be transferred to another host with `scp` or stored locally for later use.
 
-3.  To demonstrate how to load a database in PostgresQL and restore lost data, first delete your example database and then create an empty database:
+3.  To demonstrate how to load a database in PostgreSQL and restore lost data, first delete your example database and then create an empty database:
 
         dropdb dbname
         createdb dbname
@@ -62,7 +62,7 @@ PostgreSQL provides the `pg_dump` utility to simplify backing up a single databa
      - `*.tar`: tarball
 
 After you restore a database using `pg_dump`, you can query the database to collect statistics about the database using:
-        
+
         analyze dbname
 
 ### Remote Database
@@ -85,7 +85,7 @@ Because `pg_dump` only creates a backup of one database at a time, it does not s
 
 ## Automate Backups with a Cron Task
 
-In this section, learn how to import a database in PostgresQL and automate the process. To do this you need to set up a cron job so that your database backs up automatically at regular intervals. The steps in this section sets up a cron task that runs `pg_dump` once every week.
+In this section, learn how to import a database in PostgreSQL and automate the process. To do this you need to set up a cron job so that your database backs up automatically at regular intervals. The steps in this section sets up a cron task that runs `pg_dump` once every week.
 
 1.  Make sure you are logged in as the `postgres` user:
 
@@ -109,9 +109,9 @@ In this section, learn how to import a database in PostgresQL and automate the p
 
 It is always a good idea to export a Postgres database before any major changes in structure or the installation of a new application. This applies to a Postgres import dump from a remote server.
 
-## How Do I Check My PostgreSQL Backup Status?
+## Check PostgreSQL Backup Status
 
-You can set up error logging to check on the status of your PostgreSQL automated backups. If you aren’t creating a log file for your PostgreSQL, you can create one by adding the following at the end of your cron job.
+You can set up error logging to check on the status of your PostgreSQL automated backups. If you aren’t creating a log file for your PostgreSQL, create one by adding the following at the end of your cron job.
 
 1.  Make sure you are logged in as the `postgres` user:
 
@@ -141,6 +141,6 @@ You can set up error logging to check on the status of your PostgreSQL automated
 
 ## Next Steps
 
-PostgreSQL also offers more advanced ways to back up your databases. The [official docs](https://www.postgresql.org/docs/9.1/static/continuous-archiving.html) describe how to set up continuous archiving and point-in-time recovery. This is a much more complex process, but it can maintain a constant archive of your database and make it possible to replay PostgreSQL's logs to recover the state of the database at any point in the past.
+PostgreSQL also offers more advanced ways to back up your databases. The [official docs](https://www.postgresql.org/docs/9.1/static/continuous-archiving.html) describe how to set up continuous archiving and point-in-time recovery. This is a much more complex process, but it can maintain a constant archive of your database. You can replay PostgreSQL's logs to recover the state of the database at any point in the past.
 
 This method can also be helpful if you have a very large database although continuously archiving a large database consumes resources. Since the process is ongoing, there is no need to make frequent and time consuming full backups.
