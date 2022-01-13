@@ -9,6 +9,7 @@ keywords: []
 tags: ['python','monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-23
+modified: 2022-01-07
 modified_by:
   name: Linode
 title: "How to Use the Linode API with Twilio"
@@ -132,9 +133,9 @@ This diagram depicts this interaction using pseudocode:
 {{< file "linode-api-twilio.py">}}
 import os
 import sys
-from twilio.rest import Client
 from linode_api4 import LinodeClient
 from linode_api4 import SupportTicket
+from twilio.rest import Client
 
 try:
     twilio_account_sid = os.environ['TWILIO_ACCOUNT_SID']
@@ -162,10 +163,10 @@ The `except KeyError` statement is executed if any of the environment variables 
 
 ### Create Linode API and Twilio API Python Clients
 
-Append the code from this snippet to the bottom of your script:
+Copy and paste the code from this snippet to the bottom of your script:
 
 {{< file "linode-api-twilio.py">}}
-# append to bottom of file:
+# copy and paste to bottom of file:
 
 linode_client = LinodeClient(linode_api_token)
 twilio_client = Client(twilio_account_sid, twilio_auth_token)
@@ -175,10 +176,10 @@ These lines create new client objects that can interact with the Linode and Twil
 
 ### Fetch Support Tickets from Linode API
 
-Append the code from this snippet to the bottom of your script:
+Copy and paste the code from this snippet to the bottom of your script:
 
 {{< file "linode-api-twilio.py">}}
-# append to bottom of file:
+# copy and paste to bottom of file:
 
 all_support_tickets = linode_client.support.tickets()
 open_support_tickets = linode_client.support.tickets(SupportTicket.status == "open")
@@ -196,14 +197,14 @@ In the next section, the message contents are customized according to whether or
 
 ### Prepare Twilio Text Message Body
 
-Append the code from this snippet to the bottom of your script:
+Copy and paste the code from this snippet to the bottom of your script:
 
 {{< file "linode-api-twilio.py">}}
-# append to bottom of file:
+# copy and paste to bottom of file:
 
 if len(open_support_tickets) > 0:
     most_recent_ticket = open_support_tickets[0]
-    content = 'You have %s open Linode support tickets. ' \
+    message_text = 'You have %s open Linode support tickets. ' \
         'Your newest support ticket is: \n\n' \
         '%s\n' \
         'https://cloud.linode.com/support/tickets/%s' % \
@@ -211,14 +212,14 @@ if len(open_support_tickets) > 0:
 
 elif len(all_support_tickets) > 0:
     most_recent_ticket = all_support_tickets[0]
-    content = 'You currently have no open Linode support tickets. ' \
+    message_text = 'You currently have no open Linode support tickets. ' \
         'Your most recent support ticket was:\n\n' \
         '%s\n' \
         'https://cloud.linode.com/support/tickets/%s' % \
         (most_recent_ticket.summary, most_recent_ticket.id)
 
 else:
-    content = 'You do not have any Linode support tickets.'
+    message_text = 'You do not have any Linode support tickets.'
 {{< /file >}}
 
 {{< disclosure-note "About the code" >}}
@@ -235,13 +236,13 @@ The `\n` character sequence appears in the message text strings. These character
 
 ### Create and Send a Text Message with Twilio
 
-Append the code from this snippet to the bottom of your script:
+1. Copy and paste the code from this snippet to the bottom of your script:
 
-{{< file "linode-api-twilio.py">}}
-# append to bottom of file:
+    {{< file "linode-api-twilio.py">}}
+# copy and paste to bottom of file:
 
 text = twilio_client.messages.create(
-    body = content,
+    body = message_text,
     from_ = twilio_from_phone_number,
     to = twilio_to_phone_number
 )
@@ -249,7 +250,7 @@ text = twilio_client.messages.create(
 print("Twilio message created with ID: %s" % (text.sid))
 {{< /file >}}
 
-{{< disclosure-note "About the code" >}}
+    {{< disclosure-note "About the code" >}}
 The `create` method tells the Twilio API to create *and* immediately send a new text message:
 
 - The text string from the last section is used as the body of the message.
@@ -261,7 +262,9 @@ The `create` method tells the Twilio API to create *and* immediately send a new 
 The `create` method returns a reference to the Twilio [message resource](https://www.twilio.com/docs/sms/api/message-resource) that was created. The last line prints the unique ID of the message.
 {{< /disclosure-note >}}
 
-{{< note >}}
+1. After appending the above snippet, save the file.
+
+    {{< note >}}
 The code example is now complete. The completed example should look like the code in [this file](linode-api-twilio.py).
 {{< /note >}}
 
@@ -270,7 +273,7 @@ The code example is now complete. The completed example should look like the cod
 1. Before you run the script, set the [environment variables](/docs/guides/how-to-set-linux-environment-variables/) that the script expects in your terminal:
 
     {{< disclosure-note "Setting the environment variables on Linux and macOS" >}}
-On **Linux and macOS**, run the following commands. After the `=` symbol in each command, append the corresponding value:
+On **Linux and macOS**, run the following commands. After the `=` symbol in each command, insert the corresponding value:
 
     export TWILIO_ACCOUNT_SID=
     export TWILIO_AUTH_TOKEN=
@@ -290,7 +293,7 @@ export LINODE_API_TOKEN=bKfoAoV8Awo8e9CVTFTYKEdojkpHdD8BNU6UvV66izq6KjduPikfQTGH
 {{< /disclosure-note >}}
 
     {{< disclosure-note "Setting the environment variables on Windows" >}}
-On **Windows**, run the following commands. After the `=` symbol in each command, append the corresponding value:
+On **Windows**, run the following commands. After the `=` symbol in each command, insert the corresponding value:
 
     set TWILIO_ACCOUNT_SID=
     set TWILIO_AUTH_TOKEN=
