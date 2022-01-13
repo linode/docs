@@ -3,8 +3,8 @@ slug: graphql-apollo-an-introduction
 author:
   name: Cameron Laird
   email: claird@phaseit.net
-description: 'Linode's Introduction to GraphQL Apollo'
-og_description: 'Linode's Introduction to GraphQL Apollo'
+description: "Linode's Introduction to GraphQL Apollo"
+og_description: "Linode's Introduction to GraphQL Apollo"
 keywords: ['what is apollo graphql', 'apollo graphql client', 'apollo graphql server']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

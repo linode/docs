@@ -3,7 +3,7 @@ slug: beginners-guide-to-go
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Linode's Beginner's Guide to Go'
+description: "Linode's Beginner's Guide to Go"
 keywords: ['golang','go','command line arguments']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-11

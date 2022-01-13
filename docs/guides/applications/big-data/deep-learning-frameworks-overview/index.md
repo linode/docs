@@ -2,8 +2,8 @@
 slug: deep-learning-frameworks-overview
 author:
   name: Andy Patrizio
-description: 'Linode's Overview of Deep Laerning Frameworks'
-og_description: 'Linode's Overview of Deep Laerning Frameworks'
+description: "Linode's Overview of Deep Learning Frameworks"
+og_description: "Linode's Overview of Deep Learning Frameworks"
 keywords: ['deep learning frameworks']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

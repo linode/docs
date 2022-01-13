@@ -3,8 +3,8 @@ slug: an-overview-of-the-linode-cloud-manager
 author:
   name: Linode
   email: docs@linode.com
-description: 'Linode's Overview of the Cloud Manager.'
-og_description: 'Linode's Overview of the Cloud Manager'
+description: "Linode's Overview of the Cloud Manager."
+og_description: "Linode's Overview of the Cloud Manager"
 keywords: ["classic manager","cloud manager","linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/manager/a-classic-to-cloud-manager-overview-guide/','/platform/manager/an-overview-of-the-linode-cloud-manager/']

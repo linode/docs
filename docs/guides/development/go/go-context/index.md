@@ -3,7 +3,7 @@ slug: go-context
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'Linode's Guide to Showcasing the use of the context Go package.'
+description: "Linode's Guide to Showcasing the use of the context Go package."
 keywords: ["go", "golang", "context"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-05-31

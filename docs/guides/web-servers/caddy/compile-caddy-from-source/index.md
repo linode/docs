@@ -3,7 +3,7 @@ slug: compile-caddy-from-source
 author:
   name: Linode
   email: docs@linode.com
-description: 'Linode's Guide to Compiling Caddy from Source'
+description: "Linode's Guide to Compiling Caddy from Source"
 keywords: ["caddy", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-14

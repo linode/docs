@@ -4,7 +4,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'How to Create a Multicloud Infrastructure Using Terraform'
-og_description: 'How to Create a Multicloud Infrastructure Using Terraform
+og_description: 'How to Create a Multicloud Infrastructure Using Terraform'
 keywords: ['Terraform','Linode','IaC','multicloud', 'automation', 'cloud manager']
 tags: ['terraform','ubuntu', 'ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

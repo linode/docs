@@ -3,7 +3,7 @@ slug: block-storage-use-cases
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Several Use Cases for Linode's Block Storage'
+description: "Several Use Cases for Linode's Block Storage"
 keywords: ['block','storage','use','cases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-27
