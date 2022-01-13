@@ -2,13 +2,8 @@
 slug: configuring-wordpress
 author:
   name: Nathaniel Stickman
-<<<<<<< HEAD
-description: "This guide shows you how to conifugure your WordPress site with additional utilities, such as installing PHP GD extensions and prettifying your permalinks."
-og_description:  "This guide shows you how to conifugure your WordPress site with additional utilities, such as installing PHP GD extensions and prettifying your permalinks."
-=======
 description: "This guide shows you how to configure your WordPress site with additional utilities, such as installing PHP GD extensions and prettifying your permalinks."
-og_description:  "This guide shows you how to configure your WordPress site with additional utilities, such as installing PHP GD extensions and prettifying your permalinks."
->>>>>>> 1f6fde95d... TypoFixes
+og_description: "This guide shows you how to configure your WordPress site with additional utilities, such as installing PHP GD extensions and prettifying your permalinks."
 keywords: ['wordpress configurations']
 tags: ['wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
