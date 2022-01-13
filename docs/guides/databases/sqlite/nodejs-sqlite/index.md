@@ -24,7 +24,7 @@ external_resources:
 
 ## Getting Started with Node.js and SQLite
 
-SQLite makes a nice stand-alone database for applications that do not require a full client-server environment. Using SQLite3 with Node.js is easy, and can provide all the benefits of a SQL database persistence layer without needing a DBA or DevOps team.
+SQLite makes a nice stand-alone database for applications that do not require a full client-server environment. Using SQLite3 with Node.js is easy. It can provide all the benefits of a SQL database persistence layer without needing a DBA or DevOps team.
 
 For a demonstration of the general process, you can read the documentation of the [SQLite3 API](https://github.com/mapbox/node-sqlite3/wiki/API).
 
@@ -34,7 +34,7 @@ To get started with Node.js and SQLite3, you must have installed Node.js and Nod
     sudo apt install npm
     sudo apt install nodejs
 
-Having installed Node.js, SQLite is now ready to be installed using an `npm` for SQLite3.
+Having installed Node.js, SQLite is now ready to be installed using `npm` for SQLite3.
 
 ## Install SQLite
 
@@ -44,10 +44,10 @@ Install SQLite support into Node.js using `npm` on your local development enviro
 
 ## Create a Database
 
-Now we can create an SQLite database with Node.js. This example uses a simple database application to track superheroes from the [Marvel Cinematic Universe](https://www.marvel.com/movies).
+Now you can create an SQLite database with Node.js. This example uses a simple database application to track superheroes from the [Marvel Cinematic Universe](https://www.marvel.com/movies).
 
 1. First, create a file called `sample.js` and import the `sqlite3` module into Node.js:
-
+      
     {{< file "sample.js" js >}}
 var sqlite3 = require('sqlite3');
 {{</ file >}}
@@ -106,7 +106,7 @@ The above code is similar to that of creating the database. However, this time t
 
 ## Create Tables and Insert Data
 
-The following code illustrates SQLite's `exec()` method to create the tables and populate them. The `exec()` method runs all the queries in the specified string. Once the tables are created and insertions are made, the `runQueries()` method is executed. The following code creates a table for popular Marvel superheroes and whether they are X-Men, or if they were snapped by Thanos, as well as creates a table for their superpowers.
+The following code illustrates SQLite's `exec()` method to create the tables and populate them. The `exec()` method runs all the queries in the specified string. After the tables are created and insertions are made, the `runQueries()` method is executed. The following code creates a table for popular Marvel superheroes such X-Men, Thanos, and others. It also creates a table for their superpowers.
         {{< file "sample.js" >}}
 function createTables(newdb) {
     newdb.exec(`
@@ -160,7 +160,7 @@ function runQueries(db) {
 The `all()` method of the sqlite3 returns an array of rows on success, or an error on failure.
 
 {{< note >}}
-It is good practice to parameterize the query by providing a list of substation values or an object with properties that can be substituted using `$properyname` syntax. This avoids SQL injection hacks.
+It is good practice to parameterize the query by providing a list of substation values or an object with properties. Because it can be substituted using `$properyname` syntax. This avoids SQL injection hacks.
 {{< /note >}}
 
 Below is the complete `sample.js` file:
