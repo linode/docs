@@ -3,8 +3,7 @@ slug: lke-continuous-deployment-part-6
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Continuous Deployment on LKE Part 6 - DNS, Ingress, and Metrics"
-og_description: "Continuous Deployment on LKE Part 6 - DNS, Ingress, and Metrics"
+description: "The next steps are to access our sample application over a domain (DNS), setup an Ingress Controller as a load balancer / reverse proxy, and collect metrics on our application."
 title: "Continuous Deployment Using LKE: DNS, Ingress, and Metrics"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 6): DNS, Ingress, and Metrics"
 enable_h1: true

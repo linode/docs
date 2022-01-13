@@ -3,8 +3,7 @@ slug: lke-continuous-deployment-part-9
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Continuous Deployment Using LKE Part 9 - Installing Traefik"
-og_description: "Continuous Deployment Using LKE Part 9 - Installing Traefik"
+description: "This guide discusses installing the popular Traefik Ingress Controller for Kubernetes and configuring an Ingress within our YAML file."
 title: "Continuous Deployment Using LKE: Installing Traefik"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 9): Installing Traefik"
 enable_h1: true

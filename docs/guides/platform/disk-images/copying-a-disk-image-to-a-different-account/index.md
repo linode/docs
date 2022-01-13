@@ -103,7 +103,7 @@ To start copying the files on the disk from one account to another, initiate the
 
 1.  Type the following command to start copying the disk, replace `192.0.2.0` with  the IP address of the *receiving* Linode:
 
-        dd if=/dev/sda | ssh -C 192.0.2.0 "dd of=/dev/sda"
+        dd if=/dev/sda | ssh -C 192.0.2.0 "dd of=/dev/sda" status=progress
 
 1.  The following output appears. Enter `yes` to continue connecting:
 

@@ -3,8 +3,7 @@ slug: lke-continuous-deployment-part-1
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Continuous Deployment Using LKE Part 1 - Get Ready"
-og_description: "Continuous Deployment Using LKE Part 1 - Get Ready"
+description: "The goal of this series is to set up a continuous deployment pipeline for a Kubernetes app on a Kubernetes cluster."
 title: "Continuous Deployment Using LKE: Get Ready"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 1): Get Ready"
 enable_h1: true

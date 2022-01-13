@@ -1,5 +1,5 @@
 ---
-slug: openlitespeed-marketplace-app
+slug: openlitespeed-wordpress-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
@@ -8,22 +8,22 @@ keywords: [ 'openlitespeed','marketplace','hosting']
 tags: ["cloud-manager","linode platform", "marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-15
-modified: 2021-09-16
+modified: 2022-01-06
 modified_by:
   name: Linode
-title: "Deploying OpenLiteSpeed through the Linode Marketplace"
+title: "Deploying OpenLiteSpeed WordPress through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
 - '[OpenLiteSpeed Quick Start guide](https://docs.litespeedtech.com/cloud/images/wordpress/#quick-start)'
 - '[OpenLiteSpeed Knowledge Base](https://openlitespeed.org/kb/)'
 - '[OpenLiteSpeed Forum](https://forum.openlitespeed.org/)'
-aliases: ['/platform/marketplace/deploy-openlitespeed-with-marketplace-apps/', '/platform/one-click/deploy-openlitespeed-with-one-click-apps/','/guides/deploy-openlitespeed-with-one-click-apps/','/guides/deploy-openlitespeed-with-marketplace-apps/']
+aliases: ['/platform/marketplace/deploy-openlitespeed-with-marketplace-apps/', '/platform/one-click/deploy-openlitespeed-with-one-click-apps/','/guides/deploy-openlitespeed-with-one-click-apps/','/guides/deploy-openlitespeed-with-marketplace-apps/', '/guides/openlitespeed-marketplace-app/']
 ---
 
-[OpenLiteSpeed](https://openlitespeed.org/) is the Open Source edition of LiteSpeed cache for WordPress plugin that provides accelerated hosting platform for WordPress. OpenLiteSpeed combines speed, security, scalability, optimization, and simplicity in one friendly open-source package.
+This Marketplace App installs the OpenLiteSpeed web server, WordPress, the LiteSpeed caching plugin for Wordpress, as well as other necessary software. Together, these applications provide an accelerated hosting platform for WordPress. [OpenLiteSpeed](https://openlitespeed.org/) is the open source edition of the LiteSpeed web server. It combines speed, security, scalability, optimization, and simplicity in one friendly open-source package.
 
-## Deploying the OpenLiteSpeed Marketplace App
+## Deploying the OpenLiteSpeed WordPress Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
@@ -67,14 +67,14 @@ For more documentation on how to assign a domain to your Linode, please review t
 
 ### Software Included
 
-The WordPress Marketplace App installs the following required software on your Linode:
+The OpenLiteSpeed WordPress Marketplace App installs the following required software on your Linode:
 
 | **Software** | **Description** |
 |:--------------|:------------|
-| [**MariaDB Server**](https://www.mysql.com/) | Relational database. |
-| [**PHP 7**](https://www.php.net/) | WordPress is written in PHP and requires PHP to operate. |
-| [**Apache HTTP Server**](https://httpd.apache.org/) | Web server used to serve the WordPress site. |
-| [**OpenLiteSpeed**](https://openlitespeed.org/) | Open source plugin for WordPress. |
-| [**LiteSpeed Cache**](https://www.litespeedtech.com/) | The cache management for WordPress. |
+| [**MariaDB Server**](https://www.mysql.com/) | Relational database server forked from MySQL. |
+| [**PHP 8**](https://www.php.net/) | Common programming language for web applications. |
+| [**OpenLiteSpeed**](https://openlitespeed.org/) | Open source web server based on [LiteSpeed](https://www.litespeedtech.com/products/litespeed-web-server). |
+| [**WordPress**](https://wordpress.org/) | Popular content management system (CMS) for building websites. |
+| [**LiteSpeed Cache**](https://www.litespeedtech.com/products/cache-plugins/wordpress-acceleration) | Cache management plugin for WordPress. |
 
 {{< content "marketplace-update-note-shortguide">}}

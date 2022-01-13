@@ -3,8 +3,7 @@ slug: lke-continuous-deployment-part-7
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Continuous Deployment with LKE Part 7 - Managing Stacks with Helm"
-og_description: "Continuous Deployment with LKE Part 7 - Managing Stacks with Helm"
+description: "This guide covers what Helm is, how we will use it, and the differences between Helm 2 and Helm 3."
 title: "Continuous Deployment Using LKE: Managing Stacks with Helm"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 7): Managing Stacks with Helm"
 enable_h1: true
