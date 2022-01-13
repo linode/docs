@@ -26,7 +26,7 @@ Editing files in Linux using Nano is a popular option. Compared to other editors
 
 ## Installing the Nano Text Editor in Linux
 
-Nano is included with many Linux distributions by default, but some users may need to install Nano for Linux through the [package management](https://www.linode.com/docs/using-linux/package-management/) tool of the distribution.
+Nano is included with many Linux distributions by default, but some users may need to install Nano on Linux using the [package management](https://www.linode.com/docs/using-linux/package-management/) tool of the distribution.
 
 **Debian/Ubuntu**:
 
@@ -54,7 +54,7 @@ A blank new file in the terminal similar to the following appears:
 
 ![new file in the terminal](new-file.png "A new file in the terminal with nano.")
 
-You can make changes to the file using the Nano eidtor. You may exit the file by pressing *Ctrl + X*. It prompts you to save the file and name it before you exit.
+You can make changes to the file using the Nano editor. You may exit the file by pressing *Ctrl + X*. It prompts you to save the file and name it before you exit.
 
 {{< note >}}
 Nano only prompts you if actual changes were made to the file. If you didn't make any changes, you simply exit the editor and you get no prompts.
