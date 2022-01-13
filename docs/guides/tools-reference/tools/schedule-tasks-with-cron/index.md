@@ -20,7 +20,7 @@ image: schedule-tasks-with-cron.png
 
 ## What is Cron?
 
-Cron is a classic utility found on Linux and UNIX systems for running tasks at pre-determined times or intervals. These tasks are referred to as **Cron tasks** or **Cron jobs**. Use Cron to schedule automated updates, report generation, or check for available disk space every day and send you an email if it falls below a certain amount.
+Cron is a classic utility found on Linux and UNIX systems for running tasks at pre-determined times or intervals. These tasks are referred to as **Cron tasks** or **Cron jobs**. Use Cron to schedule automated updates, generate reports, check for available disk space and notify if the space is below a certain amount.
 
 ## How to Use Cron and crontab - The Basics
 
@@ -78,13 +78,13 @@ See [man crontab](https://linux.die.net/man/1/crontab) for more information abou
 
 Cron has additional operators to specify more complex time intervals. They are:
 
-- `/` operator: "steps through" or "skips" specified units. Therefore `*/3` in the hour field, will run the specified job, at 12:00am, 3:00am, 6:00am, 9:00am, 12:00pm, 3:00pm, 6:00pm, and 9:00pm. A `*/3` in the "day of month" field, runs the given task on the 3rd, 6th, 9th, 12th, 15th, 18th, 21st, and 29th of every month.
+- `/` operator: "steps through" or "skips" specified units. Therefore `*/3` in the hour field, runs the specified job, at 12:00am, 3:00am, 6:00am, 9:00am, 12:00pm, 3:00pm, 6:00pm, and 9:00pm. A `*/3` in the "day of month" field, runs the given task on the 3rd, 6th, 9th, 12th, 15th, 18th, 21st, and 29th of every month.
 - `,` operator: allows you to specify a list of times for repetition. Comma separated lists of times must not contain a space.
-- `-` operator: specifies a range of values. `2-4` in the month field will run a task in February, March, and April. `1-5` in the day of week field will run a task every weekday.
+- `-` operator: specifies a range of values. `2-4` in the month field runs a task in February, March, and April. `1-5` in the day of week field runs a task every weekday.
 
 ### Special Cron Syntaxes
 
-Automating systems in Cron time units follows a specific Cron schedule format. There are a number of special Cron schedule shortcuts used to specify common intervals. These are specified on the `crontab` entry in place of the conventional five column date specification. These special interval statements are:  
+Automating systems in Cron time units follows a specific Cron schedule format. There are a number of special Cron schedule shortcuts used to specify common intervals. These are specified on the `crontab` entry in place of the conventional five column date specification. These special interval statements are:
 
 - `@yearly` and `@annually` both run the specified task **every year** at 12:00am on the 1st of January. This is equivalent to specifying `0 0 1 1 *` in the `crontab` line.
 - `@daily` and `@midnight` both run the cronjob **every day** at 12:00am. This is equivalent to the following `cron` syntax: `0 0 * * *`.
@@ -99,11 +99,11 @@ Cron can run tasks as other system users than just `root`. This is useful if you
 
     sudo crontab -u www-data -e
 
- While the ability to run jobs as system users is powerful, it can sometimes be confusing to manage a large number of `crontab` files dispersed among many system users. Also carefully consider the security implications of running a cronjob with more privileges than is required.
+ The ability to run jobs as system users is powerful. However, it is difficult to manage a large number of `crontab` files dispersed among many system users. Also carefully consider the security implications of running a cronjob with more privileges than is required.
 
 ## Redirect Cron Job Messages
 
-Cron sends emails to the executing user by default with any output or errors to the `stdout` or `stderr`. To disable email alerts, add `>/dev/null` to the end of the job's line in  the `crontab` file.
+Cron sends emails to the executing user by default with any output or errors to the `stdout` or `stderr`. To disable email alerts, add `>/dev/null` to the end of the job's line in the `crontab` file.
 
 For example, the full line would be:
 
@@ -138,4 +138,4 @@ The site [crontab.guru](https://crontab.guru/) has a large number of Cron job ex
 
         @hourly /opt/bin/compress-static-files
 
-For additional helo to create Cron expressions, you can also use a Cron translator or [Cron calculator](https://abunchofutils.com/u/computing/cron-format-helper/) to generate the appropriate syntax.
+For additional help to create Cron expressions, you can also use a Cron translator or [Cron calculator](https://abunchofutils.com/u/computing/cron-format-helper/) to generate the appropriate syntax.
