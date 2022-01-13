@@ -3,8 +3,8 @@ slug: kubernetes-security-best-practices
 author:
   name: Jack Wallen
   email: jlwallen@monkeypantz.net
-description: 'Kubernetes Security Best Practices: A Beginner's Overview.'
-og_description: 'Kubernetes Security Best Practices: A Beginner's Overview.'
+description: "Kubernetes Security Best Practices: A Beginner's Overview."
+og_description: "Kubernetes Security Best Practices: A Beginner's Overview."
 keywords: ['Kubernetes security best practices']
 tags: ['kubernetes', 'container']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

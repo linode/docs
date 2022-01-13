@@ -2,7 +2,7 @@
 slug: use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master
 author:
     name: Linode
-description: ''How to use Puppet Modules and Ubuntu 18.04 or CentOS 7 to manage files and more in this simple tutorial'
+description: 'How to use Puppet Modules and Ubuntu 18.04 or CentOS 7 to manage files and more in this simple tutorial'
 keywords: ["puppet", "automation", "lamp", "configuration management"]
 tags: ["lamp","ubuntu","automation","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

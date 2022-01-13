@@ -2,8 +2,8 @@
 slug: security-automation-business
 author:
   name: David Strom
-description: 'Security Automation for Today's Modern Business.'
-og_description:  'Security Automation for Today's Modern Business.'
+description: "Security Automation for Today's Modern Business."
+og_description: "Security Automation for Today's Modern Business."
 keywords: ['security automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-21
