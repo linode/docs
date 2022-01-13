@@ -26,7 +26,7 @@ Editing files in Linux using Nano is a popular option. Compared to other editors
 
 ## Installing the Nano Text Editor in Linux
 
-Nano is included with many Linux distributions by default, but some users may need to install Nano on Linux using the [package management](https://www.linode.com/docs/using-linux/package-management/) tool of the distribution.
+Nano is included with many Linux distributions by default. However, some users may need to install Nano on Linux using the [package management](https://www.linode.com/docs/using-linux/package-management/) tool of the distribution.
 
 **Debian/Ubuntu**:
 
@@ -38,7 +38,7 @@ Nano is included with many Linux distributions by default, but some users may ne
 
 ## Nano Command Keys
 
-When using nano commmands, control characters (CTRL) are represented by a carat `(^)`. For example, if you wish to cut a line of text, you would use the *CTRL* key followed by the *K* key. This sequence of commands is represented as `^K` in nano. Some commands use the *Alt* key in order to function, which is represented by the letter *M*.
+When using nano commands, control characters (CTRL) are represented by a carat `(^)`. For example, if you wish to cut a line of text, you would use the *CTRL* key followed by the *K* key. This sequence of commands is represented as `^K` in nano. Some commands use the *Alt* key in order to function, which is represented by the letter *M*.
 
 A command represented as M-R in nano is performed by pressing the *Alt* key followed by the *R* key. Mac users may need to use the *Escape* (Esc) key instead of the *Alt* key to use these commands.
 
