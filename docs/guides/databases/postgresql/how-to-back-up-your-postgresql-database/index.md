@@ -20,7 +20,7 @@ aliases: ['/databases/postgresql/how-to-back-up-your-postgresql-database/']
 
 ![How to Back Up Your PostgreSQL Database](back-up-postgresql-database-title.jpg "How to Back Up Your PostgreSQL Database")
 
-If you are using PostgreSQL in a production environment, it is important to take precautions to ensure that your users' data is not lost. By frequently backing up your database, and/or automating backups with a cron task, you can quickly restore your system in the event that your database is lost or corrupted. Fortunately, PostgreSQL includes tools to make this task simple and easy to manage. In this guide, you will learn how to backup your PostgreSQL database in Linux.
+If you are using PostgreSQL in a production environment, it is important to take precautions to ensure that your users' data is not lost. By frequently backing up your database, and/or automating backups with a cron task, you can quickly restore your system in the event that your database is lost or corrupted. Fortunately, PostgreSQL includes tools to make this task simple and easy to manage. Learn how to backup your PostgreSQL database in Linux, in this guide.
 
 ## Before You Begin
 
@@ -44,9 +44,9 @@ PostgreSQL provides the `pg_dump` utility to simplify backing up a single databa
 
         pg_dump dbname > dbname.bak
 
-    After performing the PostgresQL load dump into a file, the resulting backup file containing the database, `dbname.bak`, can be transferred to another host with `scp` or stored locally for later use.
+    After performing the PostgresQL load dump into a file, the resulting backup file containing the database is `dbname.bak`. This file can be transferred to another host with `scp` or stored locally for later use.
 
-3.  To demonstrate how to load a database in PostgresQL to restore lost data, delete your example database and create an empty database in its place:
+3.  To demonstrate how to load a database in PostgresQL and restore lost data, first delete your example database and then create an empty database:
 
         dropdb dbname
         createdb dbname
@@ -61,7 +61,9 @@ PostgreSQL provides the `pg_dump` utility to simplify backing up a single databa
      - `*.sql`: plaintext dump
      - `*.tar`: tarball
 
-After restoring a database and using `pg_dump`, query the database with the command `analyze` to collect statistics about the database. 
+After you restore a database using `pg_dump`, you can query the database to collect statistics about the database using:
+        
+        analyze dbname
 
 ### Remote Database
 
@@ -83,7 +85,7 @@ Because `pg_dump` only creates a backup of one database at a time, it does not s
 
 ## Automate Backups with a Cron Task
 
-In this next section, we will learn how to import a database in PostgresQL and automate the process. To do this you will need to set up a cron job so that your database backs up automatically at regular intervals. The steps in this section sets up a cron task that runs `pg_dump` once every week.
+In this section, learn how to import a database in PostgresQL and automate the process. To do this you need to set up a cron job so that your database backs up automatically at regular intervals. The steps in this section sets up a cron task that runs `pg_dump` once every week.
 
 1.  Make sure you are logged in as the `postgres` user:
 
@@ -105,7 +107,7 @@ In this next section, we will learn how to import a database in PostgresQL and a
 
 5.  Save and exit from the editor. Your database is set to back up at midnight every Sunday. To change the time or frequency of the updates, see our [Schedule Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) guide.
 
-It's always a good idea to export a Postgres database prior to any major changes in structure or the installation of a new application. The same applies with a Postgres import dump from a remote server.
+It is always a good idea to export a Postgres database before any major changes in structure or the installation of a new application. This applies to a Postgres import dump from a remote server.
 
 ## How Do I Check My PostgreSQL Backup Status?
 
