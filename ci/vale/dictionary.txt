@@ -936,6 +936,7 @@ launchd
 lbmethod
 lda
 ldap
+le
 lego
 leiningen
 len
@@ -1354,6 +1355,7 @@ pentesting
 pepi
 percona
 performant
+perl
 permalink
 permalinks
 Petazzoni
@@ -1423,6 +1425,7 @@ prestashop
 prettifier
 prettifiers
 Printf
+printf
 pritunl
 privesc
 processhider
