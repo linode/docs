@@ -2,9 +2,8 @@
 slug: subversion-svn-tutorial
 author:
   name: Cameron Laird
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'This guide shows you how to install the Subversion client and how to use the most essential SVN commands. These commands include checking out a branch and commiting your working copy changes.'
+keywords: ['svn tutorial, svn commands']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-09
 modified_by:
@@ -71,7 +70,7 @@ You can also use the short-hand version of the `checkout` command:
 
     svn co https://svn.code.sf.net/p/svnbook/source
 
-The example command creates a copy of the the SVN Red Bean book's source files on your local machine. If you issued the command from your home directory, you see a new directory named `~/username/source/`. Change into your new working copy to view its contents:
+The example command creates a copy of the the SVN Red Bean book's source files on your local machine. If you issued the command from your home directory, you see a new directory named `~/username/source/`. Change into your new working copy and view its contents:
 
     cd source
 
