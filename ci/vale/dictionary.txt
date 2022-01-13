@@ -66,6 +66,7 @@ askbot
 aske
 async
 asynchrony
+atlanta
 authdaemonrc
 authg
 authlib
@@ -336,6 +337,7 @@ daemonizes
 daemonizing
 daemonset
 dahdi
+dallas
 databags
 datacenter
 datadir
@@ -579,6 +581,7 @@ frakti
 framesets
 freedns
 freeipa
+fremont
 freshclam
 friendster
 frontend
@@ -748,6 +751,7 @@ hyperparameter
 hypervisor
 hypervisors
 IaC
+istio
 Istio
 i386
 iaas
@@ -1002,6 +1006,7 @@ logpath
 logrotate
 logstash
 logwatch
+london
 longview
 lookups
 loopback
@@ -1226,6 +1231,7 @@ netstat
 netstumbler
 netuser
 networkd
+newark
 newgrp
 newtag
 nextcloud
@@ -1695,6 +1701,7 @@ scribus
 sidekiq
 sievers
 signup
+singapore
 sintra
 sitename
 sklearn
@@ -1877,6 +1884,7 @@ togami
 tokenize
 tokenized
 tokenizing
+tokyo
 tokyo2
 tomacat
 tomcat6
