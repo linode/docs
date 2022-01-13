@@ -213,6 +213,7 @@ changelog
 changelogs
 changeme
 changeset
+changesets
 characterwise
 chatbots
 chatrooms
