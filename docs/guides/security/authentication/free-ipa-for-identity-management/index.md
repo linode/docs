@@ -67,7 +67,7 @@ First, the FreeIPA Server and Client Linodes must be prepared for the installati
 | 53 | DNS | TCP/UDP |
 | 123 | NTP | UDP |
 
-  All of the above ports can be opened using [firewalld](https://www.linode.com/docs/guides/introduction-to-firewalld-on-centos/) with the following command:
+  All of the above ports can be opened using the commands in[firewalld cmd list](/docs/guides/introduction-to-firewalld-on-centos/). Type the following command:
 
     firewall-cmd --permanent --add-port={80/tcp,443/tcp,389/tcp,636/tcp,88/tcp,464/tcp,53/tcp,88/udp,464/udp,53/udp,123/udp}
 

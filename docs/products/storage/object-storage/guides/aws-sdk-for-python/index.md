@@ -110,13 +110,13 @@ Outputs all the objects within a bucket (and with a certain prefix, if specified
 
 ### Examples
 
--  **List all objects:** List all objects within the bucket called "example-bucket":
+-   **List all objects:** List all objects within the bucket called "example-bucket":
 
         response = client.list_objects(Bucket='example-bucket')
         for object in response['Contents']:
             print(object['Key'])
 
--  **List all objects within a specific "folder":** List all objects stored in the "assets/" folder within the bucket called "example-bucket". Keep in mind that objects aren't actually stored in folders, but the [prefix value](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-prefixes.html) allows them to appear within a structure.
+-   **List all objects within a specific "folder":** List all objects stored in the "assets/" folder within the bucket called "example-bucket". Keep in mind that objects aren't actually stored in folders, but the [prefix value](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-prefixes.html) allows them to appear within a structure.
 
         response = client.list_objects(Bucket='example-bucket', Prefix='assets/')
         for object in response['Contents']:
@@ -139,11 +139,11 @@ Uploads a file as an object stored within the specified bucket. See [upload_file
 
 ### Examples
 
--  Upload the file "file.txt", which is located in the same directory as your python script, to the bucket called "example-bucket". Name this new object "file.txt", the same as the filename.
+-   Upload the file "file.txt", which is located in the same directory as your python script, to the bucket called "example-bucket". Name this new object "file.txt", the same as the filename.
 
         client.upload_file(Filename='file.txt', Bucket='example-bucket', Key='file.txt')
 
--  Upload the file "logo.jpg", located within a home folder, to the bucket called "example-bucket". Name this new object "images/logo.jpg", which allows it to be structured within a pseudo folder.
+-   Upload the file "logo.jpg", located within a home folder, to the bucket called "example-bucket". Name this new object "images/logo.jpg", which allows it to be structured within a pseudo folder.
 
         client.upload_file(Filename='/Users/user/logo.jpg', Bucket='example-bucket', Key='images/logo.jpg')
 

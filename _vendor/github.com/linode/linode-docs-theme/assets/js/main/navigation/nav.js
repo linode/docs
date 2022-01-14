@@ -31,7 +31,10 @@ const onNavSearchResults = function(self, val, oldVal) {
 		let newSearch = !isTopResultsPage();
 		if (newSearch) {
 			let queryString = queryHandler.queryToQueryString(self.$store.search.query);
-			self.$store.nav.pushState('/docs/topresults/?' + queryString);
+			if (queryString) {
+				queryString += "?"
+			}
+			self.$store.nav.pushState('/docs/topresults/' + queryString);
 		}
 	}
 };
@@ -76,7 +79,9 @@ export function newNavController(weglot_api_key) {
 				this.$store.nav.searchResults.open = true;
 			}
 			this.$store.search.query = queryHandler.queryFromLocation();
-			this.$watch('$store.search.query.q', (val) => {
+			this.$watch('$store.search.query.lndq', (val, oldVal) => {
+				this.$store.search.query.lndqCleared = oldVal && !val;
+
 				// Navigate back to page 0 when the user changes the text input.
 				if (this.$store.search.query.p) {
 					this.$store.search.query.p = 0;
