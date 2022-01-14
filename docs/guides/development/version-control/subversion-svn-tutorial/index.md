@@ -5,18 +5,20 @@ author:
 description: 'This guide shows you how to install the Subversion client and how to use the most essential SVN commands. These commands include checking out a branch and commiting your working copy changes.'
 keywords: ['svn tutorial, svn commands']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-09
+published: 2022-01-14
 modified_by:
   name: Linode
-title: "SVN Tutorial: Installing and Using the Subversion Client"
-h1_title: "How to Install and Use the Subversion Client"
+title: "SVN Tutorial: Installing and Using the Subversion CLI Client"
+h1_title: "How to Install and Use the Subversion CLI Client"
 enable_h1: true
 contributor:
   name: Cameron Laird
   link: https://twitter.com/Phaseit
 ---
 
-Subversion is a *centralized version control system* (VCS) that can be used to collaborate on the development of software projects. A centralized version control system includes a single remote instance of the project that stores all its versioned data. This instance can also be referred to as a *repository*. Collaborators make local shallow copies of the repository and work on the project using their local working copy. This version control system stands in contrast to a *distributed version control system* (DVCS), like Git. In a DVCS, users maintain complete local copies of a project and collaborate via changesets made to those local copies.
+Subversion (SVN) is a *centralized version control system* (VCS) that can be used to collaborate on the development of software projects. A centralized version control system uses a single remote instance of a project to stores its versioned data. This instance can also be referred to as a *repository*.
+
+Project collaborators make local shallow copies of the repository and make changes using their local working copy. This version control system stands in contrast to a *distributed version control system* (DVCS), like Git. In a DVCS, users maintain complete local copies of a project and collaborate by exchanging changesets made to those local copies.
 
 Users who want to collaborate on a Subversion project must install a Subversion client on their local machine. You use the local Subversion client to manage your changes and "publish" them to the project repository. This guide shows you how to install the Subversion CLI client on an Ubuntu system and provides commands to get you started collaborating on a Subversion project.
 
@@ -24,7 +26,7 @@ Users who want to collaborate on a Subversion project must install a Subversion 
 See our [How to Install Apache Subversion on Ubuntu 20.04](/docs/guides/install-apache-subversion-ubuntu/) guide to learn how to install and configure a Subversion server. A Subversion server can store and version control multiple projects.
 {{</ note >}}
 
-## Install the Subversion Client on Ubuntu or Debian
+## Install the Subversion Client on Ubuntu
 
 1. Update your system:
 
@@ -46,23 +48,23 @@ svn, version 1.10.4 (r1850624)
 ...
     {{</ output >}}
 
-## Subversion Command Line Client Commands
+## Subversion CLI Commands
 
-The Subversion CLI includes all the commands you need to work on a SVN versioned project. It supports several subcommands that accept options to further modify each subcommand's behavior. The sections below include the essential Subversion commands you need to start collaborating on a Subversion project.
+The Subversion CLI includes all the functionality you need to support your SVN workflow. It provides several subcommands that accept options to further modify each subcommand's behavior. The sections below include the essential Subversion commands you need to start collaborating on a Subversion project.
 
-### Create a Subversion Working Copy with the checkout Command
+### Create a Subversion Working Copy with the Checkout Command
 
-When you begin collaboration on a Subversion project, you need to create a local *working copy* of it. Your private working copy of the project enables you to modify the project's files and create multiple working copies of the project. Your modifications are not pushed to the primary SVN repository and made available to other collaborators until you commit your changes.
+When you begin collaborating on a Subversion project, you need to create a local *working copy* of the project. Your private working copy of the project enables you to modify the project's files and create multiple working copies of the project. Your changes are not pushed to the primary SVN repository and made available to other collaborators until you *commit* them.
 
 To create a working copy of an SVN project use the `checkout` subcommand. You should know the URL of the SVN repository you wish to copy. The syntax for this subcommand is as follows:
 
     svn checkout <http://example-subversion-server.com/repos/exampl_project/>
 
-For example, to create a working copy of the entire Subversion Red Bean Book repository, use the following command:
+For example, to create a working copy of the entire [Version Control with Subversion](https://svnbook.red-bean.com/) Book's repository, use the following command:
 
     svn checkout https://svn.code.sf.net/p/svnbook/source
 
-In the same way you checkout out the entire repository, you can checkout an individual file, directory, or trunk. To checkout an individual file, include its path:
+In the same way you checkout out an entire repository, you can checkout an individual file, directory, or trunk. To checkout an individual file, include its path:
 
     svn checkout <http://example-subversion-server.com/repos/exampl_project/trunk/example_file.txt> <target_local_directory>
 
@@ -70,11 +72,9 @@ You can also use the short-hand version of the `checkout` command:
 
     svn co https://svn.code.sf.net/p/svnbook/source
 
-The example command creates a copy of the the SVN Red Bean book's source files on your local machine. If you issued the command from your home directory, you see a new directory named `~/username/source/`. Change into your new working copy and view its contents:
+The example command creates a copy of the Version Control with Subversion book's source files on your local machine. If you issued the command from your home directory, you see a new directory named `~/username/source/`. Change into your new working copy and view its contents:
 
-    cd source
-
-    ls -A
+    cd source && ls -A
 
 You should see the following files and directories:
 
@@ -84,11 +84,11 @@ branches  README  .svn  tags  trunk  www
 
 In addition to the project files, you have a directory named `.svn`. This is your working copy's *administrative directory* that stores all the files needed by Subversion to manage and keep track of your local changes.
 
-The directories include in a Subversion project are a matter of convention. Typically, the `trunk` directory is where the *main line* of development happens within a Subversion repository. While the `branch` directory stores subdirectories, known as *branches*, with feature code that was made using the project's `trunk` as its base. This enables large changes to take place within a `branch` without disrupting the `trunk` of the project. Subversion project branches can be merged back into the `trunk`.
+The directories included in a Subversion project are a matter of convention. Typically, the `trunk` directory is where the *main line* of development happens within a Subversion repository. While the `branch` directory stores subdirectories, known as *branches*, with feature code that was made using the project's `trunk` as its base. This enables large changes to take place within a `branch` without disrupting the `trunk` of the project. Subversion project branches can be merged back into the `trunk`.
 
 ### Creating a Subversion Branch
 
-You may want to create a new *branch* of your Subversion project's trunk in order to develop a new feature. Creating a branch enables you to develop your feature without disturbing other collaborators. You are also able to frequently commit to the new branch that you create in the Subversion project without disturbing the trunk.
+You may want to create a new *branch* of your Subversion project's trunk in order to develop a new feature. Creating a branch enables you to develop your feature without disturbing other collaborators. In this way, you can frequently commit to the new branch that you create in the Subversion project without disturbing the trunk.
 
 To create a new branch use the `copy` subcommand to create a local copy of the Subversion project's trunk. The command copies the contents of your project's `trunk` directory and creates a new directory in your working copy's `branches` directory. The branch name is the one you assign to it. For example:
 
@@ -98,13 +98,13 @@ To create a new branch use the `copy` subcommand to create a local copy of the S
 
 When you issue the command to create a new branch, you create a commit in the Subversion repository and a new directory and revision is created.
 
-To start working on your new branch, use the `checkout` subcommand to check out a new working copy of the branch:
+To start working on your new branch, use the `checkout` subcommand to check out a new working copy of your new branch:
 
     svn checkout http://example-subversion-server.com/repos/exampl_project/branches/new-branch-name
 
 ### Updating a Subversion Working Copy
 
-It's important to update your local Subversion working copy so that it's synced with the project's latest revision. In this way, your working copy receives the latest updates by your collaborators.
+It's important to update your local Subversion working copy so that it's synced with the project's latest revision. This is how your working copy receives the latest updates by your collaborators.
 
 To update your working copy, use the following command:
 
@@ -213,4 +213,4 @@ This is the final step in a typical Subversion workflow. Your local changes are 
 
 ## Conclusion
 
-The commands included in this guide give you the basics needed to get started collaborating on a Subversion version controlled project. Consult the [SVN Red Bean book](https://svnbook.red-bean.com/) to learn more subcommands and conceptual topics related to managing a Subversion repository.
+The commands included in this guide give you the basics needed to get started collaborating on a Subversion version controlled project. Consult the [Version Control with Subversion Book](https://svnbook.red-bean.com/) to learn more subcommands and conceptual topics related to managing a Subversion repository.
