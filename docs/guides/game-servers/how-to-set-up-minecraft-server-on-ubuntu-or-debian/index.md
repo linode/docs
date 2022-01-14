@@ -199,7 +199,7 @@ To disconnect from the screen session without stopping the game server, press **
 
 1.  Optionally, you can take this opportunity to disconnect from the screen session and customize your game settings. When the `run.sh` script is executed, a world is created with the default variables. If you would like to create a new world with updated variables (like [world seeds](http://minecraft.gamepedia.com/Seed_(level_generation))), change the `level-name` directive in the `server.properties` file and modify other settings accordingly.
 
-    After stopping and restarting the server script with the `level-name` changed, a new directory is created that contains your game data for that world. 
+    After stopping and restarting the server script with the `level-name` changed, a new directory is created that contains your game data for that world.
 
 For more information on available settings and how to modify them, or how to run a Minecraft server upon startup of Ubuntu or Debian, refer to the [Minecraft Wiki settings page](http://minecraft.gamepedia.com/Server.properties).
 
