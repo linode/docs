@@ -19,7 +19,7 @@ tags: ["linode platform"]
 
 ## In This Guide
 
-At the time of this writing, the Linode API is currently able to be fully supported by both Python 2.x and Python 3.x depending on user preference and needs. That being said, as Python 2 has [reached it's end-of-life in early 2020](https://www.python.org/doc/sunset-python-2/#:~:text=We%20have%20decided%20that%20January,a%20security%20problem%20in%20it.), it is strongly recommended that users upgrade to the latest version of the CLI supported by python3 as soon as they are able.
+At the time of this writing, the Linode CLI is currently able to be fully supported by both Python 2.x and Python 3.x depending on user preference and needs. That being said, as Python 2 has [reached it's end-of-life in early 2020](https://www.python.org/doc/sunset-python-2/#:~:text=We%20have%20decided%20that%20January,a%20security%20problem%20in%20it.), it is strongly recommended that users upgrade to the latest version of the CLI supported by python3 as soon as they are able.
 
 In this guide, steps are provided to uninstall the version of the Linode CLI that relies on Python 2, and immediately replace it with the version of the Linode CLI built with Python 3.
 
