@@ -84,6 +84,8 @@ There is currently no defined command for deleting a bucket through s4cmd.
 
     s4cmd put file.txt s3://example-bucket/ --endpoint-url https://us-east-1.linodeobjects.com
 
+{{< content "object-storage-character-warning-shortguide" >}}
+
 ### Download an Object or Directory
 
 **Command:** `s4cmd get s3://[bucket-label]/[path]`, replacing *[bucket-label]* with the label for your bucket and *[path]* with the full path and optional filename of the file or directory you wish to download.

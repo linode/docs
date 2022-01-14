@@ -41,7 +41,7 @@ Here are the additional options available for this Marketplace App:
 | **Gitea Database Password** | The password for your Gitea database user. *Required*. |
 | **The limited sudo user to be created for the Linode** | The Linux username created for this Linode with sudo permissions. |
 | **The password for the limited sudo user** | The password for your limited sudo user. |
-| **SSH Public Key** | The [public key](/docs/guides/use-public-key-authentication-with-ssh/) for SSH access with your limited sudo user. |
+| **SSH Public Key** | The public key for SSH access with your limited sudo user. For more information, see [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/). |
 | **Enable passwordless sudo access for the limited user?** | Select **Yes** to [disable SSH password authentication](/docs/guides/securing-your-server/#ssh-daemon-options) for your limited sudo user as an additional security measure. Requires an **SSH Public Key** for SSH access to your Linode. |
 | **Disable root access over SSH?** | Select **Yes** to [disallow root logins over SSH](/docs/guides/securing-your-server/#ssh-daemon-options) as an additional security measure. Requires a configuration of a **limited sudo user** for SSH access to your Linode. |
 | **Configure automatic security updates?** | Select **Yes** to enable [automatic security updates](/docs/guides/securing-your-server/#automatic-security-updates) for your Linode. |

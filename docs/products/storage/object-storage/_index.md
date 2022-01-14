@@ -56,7 +56,7 @@ Object Storage provides an HTTP REST gateway to objects, which means a unique UR
 - **Rate limiting:** Users accessing Object Storage resources are limited to **750 requests per second**, per bucket.
 
 {{< note >}}
-If you need to increase the storage limit, the object limit, or the bucket limit, please [open up a Customer Support ticket](/docs/guides/support/#contacting-linode-support).
+There is a temporary limit of 5TB per cluster for new Object Storage accounts. If you need to increase the storage limit, the object limit, or the bucket limit, please [open up a Customer Support ticket](/docs/guides/support/#contacting-linode-support).
 {{</ note >}}
 
 ## Transfer Quotas
