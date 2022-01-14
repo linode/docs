@@ -57,6 +57,6 @@ Review the table below to learn which data centers have been upgraded with the l
 
 ## What Action is Required?
 
-- **Migtration of Compute Instances:** Once a data center has started the network infrastructure upgrades, live migrations will be scheduled for all Compute Instances that do not reside on upgraded hardware. This live migration will occur while your Compute Instance is powered on and operating normally. After the migration has been successfully completed, there may be a brief period of downtime while the Compute Instance is rebooted.
+- **Migration of Compute Instances:** Once a data center has started the network infrastructure upgrades, live migrations will be scheduled for all Compute Instances that do not reside on upgraded hardware. This live migration will occur while your Compute Instance is powered on and operating normally. After the migration has been successfully completed, there may be a brief period of downtime while the Compute Instance is rebooted.
 
 - **Update IP failover configuration:** If you have configured IP failover for a public IPv4 address, review the [Configuring IP Failover using FRR (BGP)](/docs/guides/ip-failover-bgp-frr/) guide to learn more about configuring IP failover using BGP. If you were using a now deprecated IPv6 /116 pool for IP failover, consider using an IPv6 /64 range instead. You can configure BGP ahead of time, but will not be able to test or use the configuration until after the network upgrades.
