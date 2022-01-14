@@ -12,7 +12,7 @@ published: 2021-06-25
 image: SSHWINDOWS.jpg
 modified_by:
   name: Linode
-title: "SSH Windows: Connecting to a Remote Server via CMD | Linode"
+title: "SSH Windows: Connecting to a Remote Server via CMD"
 h1_title: "Connecting to a Remote Server Over SSH on Windows"
 enable_h1: true
 aliases: ['/networking/ssh/using-ssh-on-windows/','/guides/using-ssh-on-windows/']
