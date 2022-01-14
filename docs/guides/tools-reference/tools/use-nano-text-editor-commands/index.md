@@ -3,7 +3,7 @@ slug: use-nano-text-editor-commands
 author:
   name: Linode
   email: docs@linode.com
-description: 'This tutorial teaches you how to install the Nano command text editor and use it to create and edit files in Linux. ✓ Click here to read our guide today!'
+description: 'This tutorial teaches you how to install the Nano text editor and use it to create and edit files in Linux. ✓ Click here to read our guide today!'
 og_description: This tutorial teaches you how to install the Nano text editor and use it to create and edit files in Linux.
 keywords: ["nano", "text editor"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
