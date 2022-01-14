@@ -42,7 +42,7 @@ There are different ways to install Git on Mac OSX. You can install Git using Ho
 
     ![Enter the install command.](1624-Homebrew-01-resized.png)
 
-2.  Press return once you are prompted. You should see an installation success message once the installation is complete. 
+2.  Press return once you are prompted. You should see an installation success message once the installation is complete.
 
     ![Enter your password.](1626-Homebrew-03-resized.png)
 
