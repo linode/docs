@@ -11,7 +11,7 @@ modified: 2020-02-20
 modified_by:
     name: Linode
 published: 2015-12-01
-title: "CentOS Install PHP MySQL, Apache, and MariaDB: A Guide"
+title: "Install PHP MySQL, Apache, and MariaDB on CentOS: A Guide"
 h1_title: How to Install a LAMP Stack on CentOS 7
 aliases: ['/websites/lamp/lamp-on-centos-7/','/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/','/websites/lamp/lamp-server-on-centos-7/','/web-servers/lamp/lamp-on-centos-7/']
 external_resources:
