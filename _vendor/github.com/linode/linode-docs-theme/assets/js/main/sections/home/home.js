@@ -21,7 +21,7 @@ export function newHomeController(searchConfig, staticData) {
 			params: `query=&hitsPerPage=${tilesAlgoliaPreloadItems}`,
 			indexName: searchConfig.sections_merged.index_by_pubdate,
 			facets: [ 'section.*' ],
-			filters: `section.lvl0:${name}`
+			filters: `section.lvl0:${name} AND NOT excludeFromViews:home`
 		};
 	};
 

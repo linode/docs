@@ -28,8 +28,6 @@ This guide will use an example Kubernetes Deployment and Service to demonstrate 
 The [*Linode Cloud Controller Manager*](https://github.com/linode/linode-cloud-controller-manager) provides a way for a Kubernetes cluster to create, configure, and delete Linode NodeBalancers. The Linode CCM is installed by default on clusters deployed with the [Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) and the [Linode Terraform K8s module](/docs/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/).
 
 To learn about the various configurations available for Linode NodeBalancers via [Kubernetes annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/), see [Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster](/docs/kubernetes/getting-started-with-load-balancing-on-a-lke-cluster/#configuring-your-linode-nodebalancers-with-annotations).
-
-While Linode NodeBalancers do support ProxyProtocol, the Linode CCM does not. For this reason, the Linode Kubernetes Engine does not support ProxyProtocol yet. This means you cannot both terminate TLS inside your Kubernetes cluster and create an allowlist for client IP addresses. ProxyProtocol support is coming soon to the Linode CCM.
 {{</ note >}}
 
 
