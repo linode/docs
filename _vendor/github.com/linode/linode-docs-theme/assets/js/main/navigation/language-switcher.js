@@ -1,8 +1,11 @@
 'use strict';
 
+import { getCurrentLangFromLocation, setIsTranslating } from '../helpers';
+
 var debug = 0 ? console.log.bind(console, '[language-switcher]') : function() {};
 
 export function newLanguageSwitcherController(weglot_api_key) {
+	debug('newLanguageSwitcherController');
 	let isWeglotInitialized = false;
 	const initAndSwitchTo = function(self) {
 		let lang = self.currentLang;
@@ -27,6 +30,11 @@ export function newLanguageSwitcherController(weglot_api_key) {
 			languages: [ { lang: 'en', name: 'English' }, { lang: 'es', name: 'Español' } ],
 
 			init: function() {
+				const langParam = getCurrentLangFromLocation();
+				if (langParam) {
+					this.currentLang = langParam;
+				}
+
 				if (!this.isDefaultLanguage()) {
 					this.$nextTick(() => {
 						initAndSwitchTo(this);
@@ -35,11 +43,16 @@ export function newLanguageSwitcherController(weglot_api_key) {
 			},
 
 			switchLanguage: function(lang) {
-				if (lang === this.currentLang) {
+				if (!lang || lang === this.currentLang) {
 					return;
 				}
-				this.currentLang = lang;
-				initAndSwitchTo(this);
+				// To a full refresh to make sure all links etc. gets updatedd.
+				if(window.location.search.includes("lang=")){
+					window.location.search = `lang=${lang}`;
+				} else {
+					window.location.search += `&lang=${lang}`;
+				}
+				
 			},
 
 			currentLanguage: function() {
@@ -52,7 +65,8 @@ export function newLanguageSwitcherController(weglot_api_key) {
 				return this.currentLang === 'en';
 			},
 
-			onTurboBeforeRender: function() {
+			onTurboRender: function() {
+				debug('onTurboRender', isWeglotInitialized);
 				// Avoid loading Weglot if it's English.
 				if (!this.isDefaultLanguage()) {
 					isWeglotInitialized = false;
@@ -64,6 +78,7 @@ export function newLanguageSwitcherController(weglot_api_key) {
 }
 
 function initWeglot(apiKey) {
+	debug('initWeglot');
 	// Initialization of Weglot.
 	// Note that Weglot checks for the presence of window.Turbolinks (we now use Turbo),
 	// so set a dummy window variable to signal that.
@@ -72,17 +87,5 @@ function initWeglot(apiKey) {
 	Weglot.initialize({
 		api_key: apiKey,
 		hide_switcher: true,
-		switchers: [
-			{
-				styleOpt: {
-					fullname: true,
-					withname: true,
-					is_dropdown: true,
-					with_flags: true,
-					invert_flags: true
-				},
-				sibling: null
-			}
-		]
 	});
 }
