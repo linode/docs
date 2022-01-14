@@ -3,19 +3,18 @@ slug: upgrade-to-linode-cli-python-3
 author:
   name: Linode
   email: docs@linode.com
-description: 'The Linode Command Line Interface (CLI) can be supported by both Python 2.x and Python 3.x, however As Python 2 has reached an end of life it is recommended that users upgrade to Python 3 as soon as they are able. This guide outlines the simplest methods for upgrading python and the Linode CLI.'
+description: "The Linode Command Line Interface (CLI) can be supported by both Python 2.x and Python 3.x, however As Python 2 has reached an end of life it is recommended that users upgrade to Python 3 as soon as they are able. This guide outlines the simplest methods for upgrading python and the Linode CLI."
 keywords: ["api","linode api", "cli", "linode cli", "python cli"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-01-14
 modified_by:
   name: Linode
-title: 'Upgrade the Linode CLI to use Python 3'
+title: "Upgrade the Linode CLI to use Python 3"
 published: 2022-01-14
 external_resources:
  - '[Linode API Documentation](https://developers.linode.com)'
 tags: ["linode platform"]
 ---
-
 
 ## In This Guide
 
@@ -27,7 +26,7 @@ In this guide, steps are provided to uninstall the version of the Linode CLI tha
 
 Before proceeding, users should first uninstall the Python 2 based version of the Linode CLI from their Linode using python 2's package manager `pip`:
 
-      sudo pip uninstall linode-cli
+    sudo pip uninstall linode-cli
 
 While uninstalling, you may be prompted to agree to the removal of some configuration files. Select `Y` to proceed and complete the removal process.
 
@@ -37,31 +36,31 @@ The upgrade path for the Python 3 Linode CLI depends on the Distro and package m
 
 ### Ubuntu/Debian
 
-1. Ensure that all available packages are up to date:
+1.  Ensure that all available packages are up to date:
 
-       sudo apt update
+        sudo apt update
 
-1. Install python3 and pip3:
+1.  Install python3 and pip3:
 
-       sudo apt install python3 && sudo apt install python3-pip
+        sudo apt install python3 && sudo apt install python3-pip
 
-1. Install the Linode CLI using pip3:
+1.  Install the Linode CLI using pip3:
 
-       sudo pip3 install linode-cli
+        sudo pip3 install linode-cli
 
 ### CentOS/RHEL Stream and Fedora
 
-1. Ensure that all available packages are up to date:
+1.  Ensure that all available packages are up to date:
 
-       dnf upgrade
+        dnf upgrade
 
-1. Install python3 and pip3:
+1.  Install python3 and pip3:
 
-       sudo dnf install python3 && sudo dnf install python3-pip
+        sudo dnf install python3 && sudo dnf install python3-pip
 
-1. Install the Linode CLI using pip3:
+1.  Install the Linode CLI using pip3:
 
-       sudo pip3 install linode-cli
+        sudo pip3 install linode-cli
 
 
 

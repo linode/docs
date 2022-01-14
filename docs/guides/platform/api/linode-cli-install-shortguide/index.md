@@ -5,19 +5,17 @@ author:
   email: docs@linode.com
 description: 'Shortguide that shows you how to install the Linode CLI.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-22
+modified: 2022-01-14
 modified_by:
   name: Ryan Syracuse
-published: 2021-01-13
-title: How to Install the Linode CLI
+published: 2020-07-22
+title: "How to Install the Linode CLI"
 keywords: ["linode cli"]
 headless: true
 show_on_rss_feed: false
 tags: ["linode platform"]
 aliases: ['/platform/api/linode-cli-install-shortguide/']
 ---
-
-
 
 The easiest way to install the CLI is through [Pip](https://pypi.org/project/pip/):
 
@@ -29,45 +27,43 @@ If you haven't yet installed `python3` and `pip3`, below is a brief outline sepa
 
 ### Ubuntu/Debian
 
-1. Ensure that all available packages are up to date:
+1.  Ensure that all available packages are up to date:
 
         sudo apt update
 
-1. Install python3 and pip3:
+1.  Install python3 and pip3:
 
         sudo apt install python3 && sudo apt install python3-pip
 
-1. Install the Linode CLI using pip3:
+1.  Install the Linode CLI using pip3:
 
         sudo pip3 install linode-cli
 
 ### CentOS/RHEL Stream and Fedora
 
-1. Ensure that all available packages are up to date:
+1.  Ensure that all available packages are up to date:
 
         dnf upgrade
 
-1. Install python3 and pip3:
+1.  Install python3 and pip3:
 
         sudo dnf install python3 && sudo dnf install python3-pip
 
-1. Install the Linode CLI using pip3:
+1.  Install the Linode CLI using pip3:
 
         sudo pip3 install linode-cli
 
-
-
 ### CentOS 7
 
-1. Ensure that all available packages are up to date:
+1.  Ensure that all available packages are up to date:
 
         sudo yum update
 
-1. Install python3 and pip3:
+1.  Install python3 and pip3:
 
         sudo yum install python3 && sudo yum install python3-pip
 
-1. Install the Linode CLI using pip3:
+1.  Install the Linode CLI using pip3:
 
         sudo pip3 install linode-cli
 
@@ -88,7 +84,6 @@ If you haven't yet installed `python3` and `pip3`, below is a brief outline sepa
 1. In the next step, ensure that the **Install for all users** option is enabled. Your configuration should reflect the following:
 
    ![Python on Windows Advanced Options](windows-python-options.png "Advanced Options on Windows Python3")
-
 
 1. Select `Next` to proceed with the installation. Once the installation is complete, a message will confirm Python3 was successfully installed will appear that can be safely closed.
 
