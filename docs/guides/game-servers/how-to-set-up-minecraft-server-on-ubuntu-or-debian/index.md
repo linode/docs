@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 keywords: ["minecraft", "ubuntu", "debian"]
 tags: ["ubuntu", "debian"]
-description: "Learn how to set up a Minecraft server on Ubuntu or Debian. This guide also shows you how to configure a Minecraft firewall to increase security."
+description: "Learn how to set up a Minecraft server on Ubuntu or Debian. This guide shows you how to configure a Minecraft firewall to increase security. ✓ Read now!"
 aliases: ['/applications/game-servers/minecraft-on-debian-and-ubuntu/','/game-servers/minecraft-on-debian-and-ubuntu/','/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-01-14

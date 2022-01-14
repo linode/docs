@@ -11,8 +11,9 @@ modified: 2022-01-14
 tags: ["networking","linux"]
 modified_by:
   name: Linode
-title: "Check Open Ports on Linux Using netstat and ss"
-h1_title: "How to Check Which Ports Are in Use on Your Linux System"
+title: "Check Open and Listening Ports on Linux Using netstat and ss"
+h1_title: "Checking Open and Listening Ports on Linux Using netstat and ss"
+enable_h1: true
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller
@@ -114,6 +115,5 @@ Google    55001     jdoe   37u  IPv4 0x3dab8c457579acbb      0t0  TCP localhost:
 hugo      57981     jdoe 8041u  IPv4 0x3dab8c45a423853b      0t0  TCP localhost:bmc_patroldb (LISTEN)
 hugo      57981     jdoe 8042u  IPv4 0x3dab8c45a3a8e2db      0t0  TCP localhost:bmc_patroldb->localhost:51706 (ESTABLISHED)
 {{</ output >}}
-
 
 `lsof` is a powerful diagnostic tool capable of a significant number of ways that you can combine its command line options to troubleshoot various issues. To learn more about the `lsof` command read our [How to List Open Files with lsof](/docs/guides/lsof/) guide. This guide provides information about command-line options, the anatomy of the lsof output, and filtering your output with regular expressions.

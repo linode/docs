@@ -12,7 +12,7 @@ modified: 2022-01-14
 image: NodeSQLite.jpg
 modified_by:
   name: Linode
-title: "A Beginner's Guide to NodeJS and SQLite"
+title: "NodeJS SQLite3: A Beginner's Guide to Installation & Usage"
 h1_title: "Getting Started with NodeJS SQLite"
 enable_h1: true
 contributor:
