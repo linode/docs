@@ -29,9 +29,9 @@ There are different ways to install Git on Mac OSX. You can install Git using Ho
 
     ![The "git" command requires the command line developer tools.](check-if-git-installed-mac-osx.png)
 
-2.  Click on **Install** to install Git Mac developer tools required
+2.  Click on **Install** to install Git on your Mac
 
-    These developer tools surrounding Xcode and Xcode app development utilities are available from Apple. Once you follow the prompts, agree to them, and download Git for Mac, at the end of the process you have a working version of Git.
+    You need Mac developer tools. These developer tools surrounding Xcode and Xcode app development utilities are available from Apple. After you follow the prompts, agree to them, and download Git for Mac, at the end of the process you have a working version of Git.
 
 
 ### Install Git using Homebrew on Mac OSX
