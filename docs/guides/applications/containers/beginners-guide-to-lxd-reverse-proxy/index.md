@@ -8,6 +8,7 @@ keywords: ["container", "lxd", "lxc", "apache", "nginx", "reverse proxy", "virtu
 tags: ["proxy","ubuntu","container","apache","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-28
+modified: 2021-12-26
 modified_by:
   name: Linode
 title: "How to Set Up a Reverse Proxy to Host Websites in LXD"
@@ -283,8 +284,8 @@ server {
         server_name apache1.example.com;
 
         location / {
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
+                include /etc/nginx/proxy_params;
+
                 proxy_pass http://apache1.lxd;
         }
 
@@ -333,8 +334,8 @@ server {
         server_name nginx1.example.com;
 
         location / {
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
+                include /etc/nginx/proxy_params;
+
                 proxy_pass http://nginx1.lxd;
         }
 

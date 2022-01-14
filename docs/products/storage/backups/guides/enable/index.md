@@ -2,8 +2,9 @@
 author:
   name: Linode
   email: docs@linode.com
-title: Enable Backups
+title: "Enable Backups"
 description: "How to enable the Linode Backup Service."
+aliases: ['/quick-answers/linode-platform/enable-backups-on-a-linode/', '/guides/enable-backups-on-a-linode/']
 ---
 
 The Backups service can be individually enabled on an existing Compute Instances and auto-enabled on all new Instances.

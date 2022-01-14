@@ -17,7 +17,7 @@ contributor:
   name: Linode
 external_resources:
 - '[NGINX Getting Started](https://www.nginx.com/resources/wiki/start/)'
-aliases: ['/platform/marketplace/deploy-lemp-stack-with-marketplace-apps/', '/platform/marketplace/deploy-lemp-stack-with-one-click-apps/','/guides/deploy-lemp-stack-with-marketplace-apps/' ]
+aliases: ['/platform/marketplace/deploy-lemp-stack-with-marketplace-apps/', '/platform/marketplace/deploy-lemp-stack-with-one-click-apps/', '/guides/deploy-lemp-stack-with-one-click-apps/','/guides/deploy-lemp-stack-with-marketplace-apps/' ]
 ---
 
 A LEMP (Linux, [NGINX](https://www.nginx.com/), [MySQL](https://www.mysql.com/), [PHP](https://www.php.net/)) stack is a popular, free, and open-source web software bundle used for hosting websites on the Linux operating system. While similar to a [LAMP Stack](/docs/guides/deploy-lamp-stack-with-marketplace-apps/), a LEMP stack uses the NGINX web server as opposed to [Apache](https://httpd.apache.org/). NGINX may be a preference for many reasons, however many will choose it due to it's speed and ability to perform under high load.

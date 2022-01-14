@@ -3,16 +3,17 @@ slug: how-to-install-and-configure-fastcgi-and-php-fpm-on-centos-8
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide will show you how to install mod_fcgid and PHP-FPM on CentOS 8. It will also provide a basic configuration that uses socket based connections, instead of TCP.'
-og_description: 'This guide will show you how to install mod_fcgid and PHP-FPM on CentOS 8. It will also provide a basic configuration that uses socket based connections, instead of TCP.'
+description: "This guide will show you how to install mod_fcgid and PHP-FPM on CentOS 8. It will also provide a basic configuration that uses socket based connections, instead of TCP."
 keywords: ['list','of','keywords','and key phrases']
 tags: ["centos","web server","apache","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-27
+modified: 2021-12-29
 modified_by:
   name: Linode
 title: "How to Install and Configure FastCGI and PHP-FPM on CentOS 8"
-h1_title: "Install and Configure FastCGI and PHP-FPM on CentOS 8"
+h1_title: "Installing and Configuring FastCGI and PHP-FPM on CentOS 8"
+enable_h1: true
 contributor:
   name: Linode
 relations:
@@ -34,7 +35,7 @@ This guide assumes that you are familiar and comfortable with setting up a [LAMP
 1. Complete the steps in the [How to Install a LAMP Stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/) guide. After completing the LAMP stack guide, you should have an Apache virtual hosts configuration for your own website. This guide will continue to refer to the site as `example.com`.
 
     {{< note >}}
-This guide's examples will use PHP version 7.3. When running commands related to PHP, ensure you replace any version numbers with your own system's PHP version.
+This guide's examples will use PHP version 7.2. By default, PHP 7.2 is available for installation from the default CentOS 8 repositories. When running commands related to PHP, ensure you replace any version numbers with your own system's PHP version.
     {{</ note >}}
 
 ## Install mod_fcgid and PHP-FPM
@@ -170,7 +171,7 @@ listen = /var/run/php-fpm/example.com.sock
 {{< /file >}}
 
 
-1.  Restart the `php7.3-fpm` process for the new pool to be created.
+1.  Restart the `php7.2-fpm` process for the new pool to be created.
 
         sudo systemctl restart php-fpm
 

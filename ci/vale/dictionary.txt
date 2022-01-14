@@ -20,6 +20,8 @@ ag
 ahci0
 Aho
 ahvz
+aircrack
+ajenti
 ajp
 aker
 alef
@@ -40,6 +42,9 @@ anonymizing
 ansi
 ansible
 antispam
+anycast
+anycasted
+anycasting
 ap
 apache2
 api
@@ -81,6 +86,7 @@ autojump
 autologin
 autologout
 automagically
+automator
 automattic
 automations
 automount
@@ -136,7 +142,9 @@ biomes
 bitbucket
 bitnami
 bitrate
+bitshift
 bitwarden
+bitwise
 blkid
 blockchain
 blocklists
@@ -206,6 +214,7 @@ changelogs
 changeme
 changeset
 characterwise
+chatbots
 chatrooms
 cheatsheet
 checkmarx
@@ -251,6 +260,7 @@ cnf
 codebase
 codec
 colab
+collabnet
 colormaps
 com2sec
 comodo
@@ -293,6 +303,8 @@ cronie
 cronjob
 cronjobs
 crontab
+crowdsourced
+crowdsourcing
 crt
 crypters
 crypto
@@ -309,6 +321,7 @@ ctx
 cuda
 curlie
 cutover
+cyber
 cyberduck
 cyberpanel
 cybersecurity
@@ -342,6 +355,7 @@ davfs2
 db8
 dbconfig
 dbd
+dbs
 dbdir
 dbfiles
 dbname
@@ -353,6 +367,7 @@ deathmatch
 debconf
 declaratively
 deduplication
+deepin
 defragment
 delpy
 demultiplexer
@@ -374,9 +389,11 @@ dex
 df
 dhclient
 dhparams
+dia
 dialogs
 diavel
 diffie
+digicert
 digium
 dirb
 dirbuster
@@ -458,7 +475,9 @@ enix
 enum
 env
 envs
+eoan
 epel
+equifax
 erb
 erlang
 esc
@@ -470,6 +489,7 @@ ethtool
 eugen
 eval
 evhost
+exabeam
 example1
 example2
 examplegroup
@@ -543,9 +563,11 @@ firstsite
 flamegraph
 flamegraphs
 flatpress
+florian
 flowlens
 flyspray
 foodcritic
+fortinet
 fortran
 fordham
 fmt
@@ -561,6 +583,7 @@ freshclam
 friendster
 frontend
 frontmatter
+froxlor
 fs
 fsck
 fstab
@@ -587,6 +610,7 @@ gentoolkit
 geoip
 geolocating
 geolocation
+geospatial
 getmail
 getprivs
 getpwent
@@ -620,9 +644,12 @@ gmod
 gnulinux
 gnutls
 gobuster
+gocheck
 gogs
 golang
 goldmark
+gomega
+gopwt
 goroutine
 goroutines
 goto
@@ -684,6 +711,7 @@ hl2
 hmac
 hoc
 homebrew
+homomorphic
 host1
 host2
 hostname
@@ -770,6 +798,7 @@ initramfs
 initrd
 inittab
 injectable
+inkscape
 inode
 inotify
 inrupt
@@ -886,7 +915,9 @@ kloxo
 knockpy
 knowledgebase
 konsole
+kotin
 konversation
+krita
 ktor
 kube
 kubeadm
@@ -978,6 +1009,7 @@ lsadump
 lspci
 lsb
 lsd
+lsmod
 lsof
 lst
 lsyncd
@@ -987,6 +1019,7 @@ lucene
 luckystrike
 lugano
 luminus
+lunasec
 lxd
 lxml
 lynis
@@ -1007,6 +1040,7 @@ maitis
 makefile
 makefiles
 maller
+malwarebytes
 managesieve
 mandriva
 manjaro
@@ -1089,11 +1123,15 @@ mnesia
 mngtmpaddr
 moby
 moddable
+modinfo
 modsecurity
 Mojang
 moodle
+mongocryptd
 mongodb
+mongod
 mongoimport
+mongosh
 monit
 monitorix
 moolenaar
@@ -1180,10 +1218,12 @@ nethogs
 netid
 netifrc
 netlify
+netlink
 netloc
 netmask
 netplan
 netstat
+netstumbler
 netuser
 networkd
 newgrp
@@ -1194,6 +1234,7 @@ nfs
 nftables
 ng
 nginx
+ngular
 nginxdemos
 ngrok
 ngx
@@ -1210,6 +1251,7 @@ nodebalancer
 nodebalancers
 nodejs
 nodemanager
+nodemon
 nodename
 nodeport
 nodesdirect
@@ -1236,6 +1278,7 @@ ntop
 ntopng
 ntp
 ntpd
+nullable
 nullval
 num
 numpy
@@ -1251,6 +1294,7 @@ ohai
 ok
 oldstable
 oldfashioned
+onboarding
 oneof
 ons
 opcache
@@ -1286,6 +1330,7 @@ paas
 packagist
 pagent
 pagespeed
+palo
 pandoc
 param
 parameterizing
@@ -1322,6 +1367,7 @@ pgpass
 pharmer
 pharo
 phonebook
+photoshop
 php
 php5
 php7
@@ -1457,6 +1503,7 @@ rebased
 rebases
 rebasing
 rebootuser
+recompiles
 reconnections
 recordset
 recursing
@@ -1474,6 +1521,7 @@ redmine
 redstone
 reenable
 reenabling
+refactorable
 referer
 reflog
 reflogs
@@ -1557,10 +1605,12 @@ s3cr37
 s3cret
 saas
 sakila
+safend
 salesforce
 sam
 samy
 sandcat
+sanitization
 sar
 sasl
 sasl2
@@ -1600,7 +1650,9 @@ selinux
 sendable
 sendmail
 sentdex
+sentora
 seo
+serializable
 serv
 server1
 serverless
@@ -1630,18 +1682,22 @@ shellcode
 shellshock
 shellter
 shinagawa1
+shopify
 shortcode
 shortcodes
 shortguide
 shortguides
 shortname
+shotcut
 shoutcast
 scikit
+scribus
 sidekiq
 sievers
 signup
 sintra
 sitename
+sklearn
 slackpkg
 slackware
 slavedb
@@ -1663,6 +1719,8 @@ solaris
 solr
 somaxconn
 someuser
+sonicwall
+sophos
 spamassassin
 spamd
 spamhaus
@@ -1735,6 +1793,7 @@ superset
 supervisord
 supervisorctl
 surbma
+suricata
 sury
 suse
 swappable
@@ -1760,6 +1819,7 @@ systeminfo
 systemname
 sysv
 sysvinit
+tanium
 targ
 tasksel
 taskserver
@@ -1771,11 +1831,13 @@ tcpwrappers
 teamspeak
 teardown
 techland
+telecom
 teleporting
 tensorflow
 terrahelp
 terraria
 testdb
+testdeep
 testfile
 testkeys
 testparam
@@ -1789,6 +1851,7 @@ thawte
 theano
 theming
 thingsboard
+thycotic
 tigervnc
 tightvncserver
 tika
@@ -1800,6 +1863,7 @@ timey
 tinc
 tincd
 tinydb
+tiobe
 titlebar
 tl
 tld
@@ -1830,6 +1894,7 @@ transcoding
 transpiled
 trello
 triaging
+trivy
 truststore
 tt
 ttl
@@ -1847,6 +1912,7 @@ twilio
 txt
 txz
 tzurbaev
+uber
 ubuntu
 ucd
 udp
@@ -1859,6 +1925,7 @@ un
 unaliased
 uname
 unarchive
+unary
 unban
 unbans
 unbilled
@@ -1933,6 +2000,7 @@ vcs
 vdev
 vdevs
 ve
+veeam
 venv
 ver
 veracode
@@ -1948,6 +2016,7 @@ virtualenvs
 virtualenvwrapper
 virtualhost
 virtualizations
+virtualize
 virtualized
 virtualmin
 Virustotal
@@ -2020,6 +2089,7 @@ winscp
 winsxs
 windowlist
 wireguard
+wireshark
 wkhtmltopdf
 wkhtmltox
 wll
@@ -2101,11 +2171,13 @@ zile
 zimbra
 zipkin
 zipkinhost
+zix
 zkcluster1root
 zlib
 znc
 zonefiles
 zope
+zorin
 zpool
 zsh
 zshrc

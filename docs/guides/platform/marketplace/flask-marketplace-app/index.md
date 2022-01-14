@@ -18,7 +18,7 @@ contributor:
 external_resources:
 - '[Flask Quickstart](https://flask.palletsprojects.com/en/1.1.x/quickstart/)'
 - '[Flask SQLAlchemy Documentation](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)'
-aliases: ['/platform/marketplace/how-to-deploy-flask-with-marketplace-apps/', '/platform/one-click/how-to-deploy-flask-with-one-click-apps/','/guides/how-to-deploy-flask-with-marketplace-apps/']
+aliases: ['/platform/marketplace/how-to-deploy-flask-with-marketplace-apps/', '/platform/one-click/how-to-deploy-flask-with-one-click-apps/','/guides/how-to-deploy-flask-with-one-click-apps/','/guides/how-to-deploy-flask-with-marketplace-apps/']
 ---
 
 [Flask](https://flask.palletsprojects.com/en/1.1.x/) is a quick and light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. It is designed to make getting started quick and easy, with the ability to scale up to support more complex applications.
@@ -48,6 +48,31 @@ In addition to installing Flask, this Marketplace app installs and configures so
 - [Gunicorn](https://gunicorn.org/), a Python WSGI (web server gateway interface) HTTP Server for UNIX, is installed and running. It is used to forward requests from your NGINX web server to your Flask application.
 - [Supervisor](http://supervisord.org/), a client/server system that allows its users to monitor and control a number of processes on UNIX-like operating systems, is installed and running on your Linode. Its configuration file can be found in the following location, `/etc/supervisor/conf.d/flask_app.conf`.
 - The example Flask app's logs can be found in the following locations, `var/log/flask_app/flask_app.out.log` and `/var/log/flask_app/flask_app.err.log`
+
+### Removing Default Application
+
+Users may find that they need to remove access to the default Flask application on port 80 to free up space for another application, or to otherwise remove components. The following steps can help to disable and decouple various aspects of the default Flask application included with the Flask Marketplace App:
+
+- Unlink the default NGINX site for the Flask app:
+
+      sudo unlink /etc/nginx/sites-enabled/flask_app
+
+- Stop the application from being monitored and maintained by supervisorctl:
+
+      sudo supervisorctl stop all
+
+- Remove configuration files for the Flask application:
+
+      sudo rm -rf /home/flask_app_project
+      sudo rm /etc/config.json
+
+- Remove the Supervisor configuration files:
+
+      sudo rm /etc/supervisor/conf.d/flask_app.conf
+
+{{< note >}}
+Many configuration files can be overwritten to support a new configuration instead of deleted outright. For more information on the default configuration, see our [Flask Installation Guide](/docs/guides/flask-and-gunicorn-on-ubuntu/) and the [Installed Software Section](/docs/guides/flask-marketplace-app/#installed-software) of this guide.
+{{< /note >}}
 
 ### Next Steps
 
