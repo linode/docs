@@ -42,6 +42,9 @@ anonymizing
 ansi
 ansible
 antispam
+anycast
+anycasted
+anycasting
 ap
 apache2
 api
@@ -83,6 +86,7 @@ autojump
 autologin
 autologout
 automagically
+automator
 automattic
 automations
 automount
@@ -210,6 +214,7 @@ changelogs
 changeme
 changeset
 characterwise
+chatbots
 chatrooms
 cheatsheet
 checkmarx
@@ -255,6 +260,7 @@ cnf
 codebase
 codec
 colab
+collabnet
 colormaps
 com2sec
 comodo
@@ -349,6 +355,7 @@ davfs2
 db8
 dbconfig
 dbd
+dbs
 dbdir
 dbfiles
 dbname
@@ -386,6 +393,7 @@ dia
 dialogs
 diavel
 diffie
+digicert
 digium
 dirb
 dirbuster
@@ -467,6 +475,7 @@ enix
 enum
 env
 envs
+eoan
 epel
 equifax
 erb
@@ -554,6 +563,7 @@ firstsite
 flamegraph
 flamegraphs
 flatpress
+florian
 flowlens
 flyspray
 foodcritic
@@ -600,6 +610,7 @@ gentoolkit
 geoip
 geolocating
 geolocation
+geospatial
 getmail
 getprivs
 getpwent
@@ -633,9 +644,12 @@ gmod
 gnulinux
 gnutls
 gobuster
+gocheck
 gogs
 golang
 goldmark
+gomega
+gopwt
 goroutine
 goroutines
 goto
@@ -697,6 +711,7 @@ hl2
 hmac
 hoc
 homebrew
+homomorphic
 host1
 host2
 hostname
@@ -994,6 +1009,7 @@ lsadump
 lspci
 lsb
 lsd
+lsmod
 lsof
 lst
 lsyncd
@@ -1003,6 +1019,7 @@ lucene
 luckystrike
 lugano
 luminus
+lunasec
 lxd
 lxml
 lynis
@@ -1023,6 +1040,7 @@ maitis
 makefile
 makefiles
 maller
+malwarebytes
 managesieve
 mandriva
 manjaro
@@ -1105,11 +1123,15 @@ mnesia
 mngtmpaddr
 moby
 moddable
+modinfo
 modsecurity
 Mojang
 moodle
+mongocryptd
 mongodb
+mongod
 mongoimport
+mongosh
 monit
 monitorix
 moolenaar
@@ -1196,6 +1218,7 @@ nethogs
 netid
 netifrc
 netlify
+netlink
 netloc
 netmask
 netplan
@@ -1211,6 +1234,7 @@ nfs
 nftables
 ng
 nginx
+ngular
 nginxdemos
 ngrok
 ngx
@@ -1227,6 +1251,7 @@ nodebalancer
 nodebalancers
 nodejs
 nodemanager
+nodemon
 nodename
 nodeport
 nodesdirect
@@ -1269,6 +1294,7 @@ ohai
 ok
 oldstable
 oldfashioned
+onboarding
 oneof
 ons
 opcache
@@ -1477,6 +1503,7 @@ rebased
 rebases
 rebasing
 rebootuser
+recompiles
 reconnections
 recordset
 recursing
@@ -1494,6 +1521,7 @@ redmine
 redstone
 reenable
 reenabling
+refactorable
 referer
 reflog
 reflogs
@@ -1582,6 +1610,7 @@ salesforce
 sam
 samy
 sandcat
+sanitization
 sar
 sasl
 sasl2
@@ -1623,6 +1652,7 @@ sendmail
 sentdex
 sentora
 seo
+serializable
 serv
 server1
 serverless
@@ -1652,6 +1682,7 @@ shellcode
 shellshock
 shellter
 shinagawa1
+shopify
 shortcode
 shortcodes
 shortguide
@@ -1666,6 +1697,7 @@ sievers
 signup
 sintra
 sitename
+sklearn
 slackpkg
 slackware
 slavedb
@@ -1799,11 +1831,13 @@ tcpwrappers
 teamspeak
 teardown
 techland
+telecom
 teleporting
 tensorflow
 terrahelp
 terraria
 testdb
+testdeep
 testfile
 testkeys
 testparam
@@ -1829,6 +1863,7 @@ timey
 tinc
 tincd
 tinydb
+tiobe
 titlebar
 tl
 tld
@@ -1859,6 +1894,7 @@ transcoding
 transpiled
 trello
 triaging
+trivy
 truststore
 tt
 ttl
@@ -1876,6 +1912,7 @@ twilio
 txt
 txz
 tzurbaev
+uber
 ubuntu
 ucd
 udp
@@ -1979,6 +2016,7 @@ virtualenvs
 virtualenvwrapper
 virtualhost
 virtualizations
+virtualize
 virtualized
 virtualmin
 Virustotal

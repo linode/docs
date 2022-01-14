@@ -15,7 +15,7 @@ modified_by:
 title: "Deploying Plex Media Server through the Linode Marketplace"
 external_resources:
 - '[Plex Support Articles](https://support.plex.tv/articles/)'
-aliases: ['/platform/marketplace/deploy-plex-with-marketplace-apps/', '/platform/marketplace/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-marketplace-apps/']
+aliases: ['/platform/marketplace/deploy-plex-with-marketplace-apps/', '/platform/marketplace/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-marketplace-apps/','/platform/one-click/deploy-plex-with-one-click-apps/','/platform/one-click/deploy-plex-with-one-click-apps/']
 ---
 
 [Plex](https://www.plex.tv/) is a feature-rich streaming platform that allows you to organize and stream your own digital video and audio to your devices. This guide shows you how to deploy the [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) using Linode's Plex Marketplace App, upload media to your Plex Server, and connect to it from a Plex client application. Your Plex Media Server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode) service with this app.
@@ -52,7 +52,7 @@ The following configuration options create a secure [Limited User](/docs/securit
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Debian 10
-- **Recommended minimum plan:** 2GB Dedicated CPU or Shared Compute Instance
+- **Recommended minimum plan:** 4GB Dedicated CPU or Shared Compute Instance
 
 ## Getting Started After Deployment
 

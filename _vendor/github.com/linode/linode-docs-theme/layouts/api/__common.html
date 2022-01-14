@@ -458,7 +458,7 @@ This template includes common API logic and functions.
       {{ if reflect.IsSlice $v }}
         {{/* This is a oneOf -- allow the user to select. */}}
         <tr>
-          <td>
+          <td colspan="2">
             {{ $oneOfTabs := slice }}
             {{ range $i, $e := $v }}
               {{ $ref := .Ref | strings.TrimPrefix "#/components/schemas/" }}

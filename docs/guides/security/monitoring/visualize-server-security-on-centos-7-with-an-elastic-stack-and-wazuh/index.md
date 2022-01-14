@@ -59,7 +59,7 @@ Wazuh is an open source branch of the original [OSSEC HIDS](https://ossec.github
 5. Install NGINX or Apache. Visit our guides on how to install a LEMP or LAMP stack for CentOS for help:
 
       - [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/guides/lemp-stack-on-centos-7-with-fastcgi/)
-      - [LAMP on CentOS 7](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/)
+      - [LAMP stack on CentOS 7](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/)
 
 6. Configure your webserver for virtual domain hosting:
 

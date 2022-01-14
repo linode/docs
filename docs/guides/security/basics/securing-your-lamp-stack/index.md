@@ -239,7 +239,7 @@ Permission denied, please try again.
 
 Key-based authentication utilizes asymmetric encryption to generate two keys that are used for the encryption and decryption of data. These two keys are called the public key and the private key. Together, they are called a public-private key-pair.
 
-The public key is used to encrypt data which only the corresponding private key can decrypt. This process can also be repeated vice versa. As a result, the private key must be kept private and secure, whereas the public key can be shared. For more information, check out our guide on [How to Use SSH Public Key Authentication on Linux, macOS, and Windows](/docs/guides/use-public-key-authentication-with-ssh/).
+The public key is used to encrypt data which only the corresponding private key can decrypt. This process can also be repeated vice versa. As a result, the private key must be kept private and secure, whereas the public key can be shared. For more information, see [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/).
 
 SSH key-pairs can be generated on your local machine by using the `ssh-keygen` utility, Then, you can upload the public key to your LAMP stack machine.
 

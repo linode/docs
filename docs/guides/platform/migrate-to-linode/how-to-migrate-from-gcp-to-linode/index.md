@@ -88,7 +88,7 @@ If your data is stored in a database, you will likely need to perform a *databas
 
 -  [Use mysqldump to Back Up MySQL or MariaDB](/docs/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb/)
 -  [Create Physical Backups of your MariaDB or MySQL Databases](/docs/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/)
--  [How to Back Up Your PostgreSQL Database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/)
+-  Use [postgres dump database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/)
 
 ### Use rsync to Transfer Your GCP Data to Your Linode
 
