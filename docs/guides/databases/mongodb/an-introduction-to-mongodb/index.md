@@ -1,35 +1,26 @@
 ---
-slug: introduction-to-mongodb-and-its-use-cases
+slug: mongodb-and-its-use-cases
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Jeff Novotny
 description: 'This article introduces MongoDB, explains how it differs from other SQL databases, and provides some use cases.'
-og_description: 'This article introduces MongoDB, explains how it differs from other SQL databases, and provides some use cases.'
 keywords: ['what is mongodb','mongodb vs sql','is mongodb a relational database','nosql']
 tags: ['mysql', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-14
+published: 2022-01-14
 modified_by:
   name: Linode
 title: "Introduction to MongoDB and Its Use Cases"
-h1_title: "What Is MongoDB and Why Use It"
+h1_title: "What Is MongoDB and Why Use It?"
 enable_h1: true
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny/
 external_resources:
-- '[MongoDB Website](https://www.mongodb.com/)'
 - '[MongoDB Basics Tutorial](https://university.mongodb.com/courses/M001/about)'
-- '[MongoDB documentation](https://docs.mongodb.com/)'
-- '[MongoDB Query API documentation](https://docs.mongodb.com/manual/crud/#std-label-crud)'
-- '[MongoDB transactions documentation](https://docs.mongodb.com/manual/core/transactions/)'
-- '[MongoDB data model design documentation](https://docs.mongodb.com/manual/core/data-model-design/)'
-- '[SQL to MongoDB Mapping Reference](https://docs.mongodb.com/manual/reference/sql-comparison/)'
-- '[MySQL](https://www.mysql.com/)'
-- '[Server Side Public License on Wikipedia](https://en.wikipedia.org/wiki/Server_Side_Public_License)'
+- '[MongoDB Documentation](https://docs.mongodb.com/)'
 ---
 
-[*MongoDB*](https://www.mongodb.com/) is a unique *document-oriented database* and an alternative to traditional *Relational DataBase Management System* (RDBMS) applications. MongoDB is a *NoSQL* database that stores data in a more flexible and less structured manner. This guide provides an introduction to MongoDB and describes how it works. It also explains how MongoDB differs from SQL-based databases including [MySQL](https://www.mysql.com/) and lists its main use cases.
+[*MongoDB*](https://www.mongodb.com/) is a *document-oriented database* and an alternative to traditional *Relational DataBase Management System* (RDBMS) applications. MongoDB is a *NoSQL* database that stores data in a more flexible and less structured manner. This guide provides an introduction to MongoDB and describes how it works. It also explains how MongoDB differs from SQL-based databases including [MySQL](https://www.mysql.com/) and lists its main use cases.
 
 ## What is MongoDB?
 
@@ -47,10 +38,10 @@ MongoDB does not use the *Structured Query Language* (SQL) for queries. It inste
 
 MongoDB has some other distinctive characteristics. It is designed as a distributed database, which allows it to scale and store large amounts of data and achieve high availability. MongoDB also supports ad hoc queries based on regular expressions or JavaScript functions. MongoDB provides support for real-time aggregation as a way to sort and organize the queries.
 
-For information on how to install MongoDB on a Linode, see the Linode CentOS guide on [How To Install MongoDB on CentOS 7](https://www.linode.com/docs/guides/install-mongodb-on-centos-7/), or the Linode Ubuntu guide on [How To Install MongoDB on Ubuntu 16.04](https://www.linode.com/docs/guides/install-mongodb-on-ubuntu-16-04/).
+For information on how to install MongoDB on a Linode, see our guide on [How To Install MongoDB on CentOS 7](/docs/guides/install-mongodb-on-centos-7/), or the guide on [How To Install MongoDB on Ubuntu 16.04](/docs/guides/install-mongodb-on-ubuntu-16-04/).
 
 {{< note >}}
-Earlier releases of MongoDB had some problems with security issues and some significant bugs. These have been fixed in recent releases and application security is now comparable to other databases. MongoDB claims to be ACID-compliant. However, some independent researchers do not feel it completely meets this standard when updating multiple documents.
+Earlier releases of MongoDB had some problems with security issues and some significant bugs. These have been fixed in recent releases and application security is now comparable to other databases.
 {{< /note >}}
 
 ## MongoDB vs SQL
@@ -62,7 +53,7 @@ The most popular type of database is the *Relational DataBase Management System*
 - A table is populated with rows. Each row in a table is a different entry in the database.
 - A database table is like a two-by-two matrix. Each square inside the matrix represents one column of a row and contains a piece of data.
 
-In contrast, MongoDB is a document-based database, which is a type of NoSQL database. As the name suggests, NoSQL databases do not use SQL. They access data using a proprietary API or another similar method. A MongoDB data is described using different terms than an RDBMS application. Instead of using tables, rows, and columns, MongoDB stores documents inside collections. Each document contains a list of fields, with each field containing a key-value pair. See the following sections for more information about the internal structure of MongoDB.
+In contrast, MongoDB is a document-based database, which is a type of NoSQL database. As the name suggests, NoSQL databases do not use SQL. They access data using a proprietary API or another similar method. MongoDB data is described using different terms than an RDBMS application. Instead of using tables, rows, and columns, MongoDB stores documents inside collections. Each document contains a list of fields, with each field containing a key-value pair. See the following sections for more information about the internal structure of MongoDB.
 
 On a system level, MongoDB differs from a typical RDBMS in several major ways. To make a sound decision on choosing a NoSQL vs a SQL database, consider the following points:
 
@@ -71,7 +62,7 @@ On a system level, MongoDB differs from a typical RDBMS in several major ways. T
 - SQL databases are highly suitable for well-structured data where the entries contain the same fields. MongoDB and other NoSQL databases are better for unstructured or variable data.
 - SQL databases are designed to update several rows at a time. NoSQL databases are most effective at updating one document at a time, although they can handle multiple simultaneous updates.
 - SQL databases are typically *vertically scalable*. The server administrator must increase the memory or CPU of the server to increase speed or handle more data. NoSQL databases are more frequently *horizontally scalable*. Capacity is increased by adding more servers to a cluster and configuring load balancing. Consequently, most NoSQL clusters can handle more data than a single-server relational database.
-- RDBMS systems are well established and very reliable. Resources for relational databases are widely available and industry knowledge is very deep. NoSQL databases are not as well established and do not have a large community.
+- RDBMS systems are well established and very reliable. Resources for relational databases are widely available and industry knowledge is very deep. NoSQL databases are not as well established and do not have as large of a community.
 -  NoSQL databases do not reduce data duplication the way relational databases do. Consequently, a NoSQL database typically requires more storage space than an equivalent RDBMS.
 
 Due to the very different models of SQL and NoSQL databases, they are often used in different scenarios. When designing and using a MongoDB database, keep the following points in mind, especially regarding the differences with an RDBMS.
@@ -83,11 +74,11 @@ Due to the very different models of SQL and NoSQL databases, they are often used
 - MongoDB is defined to work in tandem with object-oriented languages. A document can be designed so its fields match the attributes of a class. This allows an application to easily transfer data from an application to the database and vice versa. SQL-based databases have no concept of objects. This means it is typically easier for developers to design an application that interacts with MongoDB.
 - In MongoDB, cross-references are indicated through *references* from one document to another. The value of a field in one document can be the ID of another document. In SQL, other tables are referenced using foreign keys. For instance, the `clientID` in the `Accounts` table could be a foreign key that points to the `Customer` table.
 
-The freedom of MongoDB is very appealing, but it is important to spend some time thinking about the architecture beforehand. Decisions taken without any coordination or planning could result in an anarchic mess that is difficult to understand and use.
+The freedom of MongoDB is very appealing, but it is important to spend some time thinking about the architecture beforehand. Decisions taken without any coordination or planning could result in data that is difficult to understand and use.
 
 MongoDB and SQL databases also differ in terms of their atomicity, performance, and reliability.
 
-- **Atomicity:** In database terminology, an atomic operation is an indivisible operation. It either completely happens or it does not happen at all. A MongoDB writes operation on a single document is always atomic, even when updating embedded documents. The Query API permits multiple documents to be updated in the same operation, but this is not guaranteed to be atomic. In an RDBMS, transactions could be atomic depending on the database and the storage engine. For example, MySQL guarantees atomicity when used with the InnoDB storage facility. For more information on the atomicity of MongoDB, see the [MongoDB Transactions Documentation](https://docs.mongodb.com/manual/core/transactions/).
+- **Atomicity:** In database terminology, an atomic operation is an indivisible operation. It either completely happens or it does not happen at all. A MongoDB write operation on a single document is always atomic, even when updating embedded documents. The Query API permits multiple documents to be updated in the same operation, but this is not guaranteed to be atomic. In an RDBMS, transactions could be atomic depending on the database and the storage engine. For example, MySQL guarantees atomicity when used with the InnoDB storage facility. For more information on the atomicity of MongoDB, see the [MongoDB Transactions Documentation](https://docs.mongodb.com/manual/core/transactions/).
 - **Performance:** MongoDB features very good performance. This can be further improved using primary and secondary indexes and other optimizations. Performance between different database applications is sometimes difficult to compare. However, NoSQL databases are generally much faster than SQL-based databases. This is because they do not have to perform joins or verify indexes and foreign keys. The precise performance of MongoDB depends on how the data is stored and whether multiple documents must be accessed.
 - **High-availability:** Robust high-availability capabilities based on replica sets are built-in to MongoDB. A replica set consists of at least two and preferably three copies of the data, and an arbiter daemon. All reads and writes are done on the primary replica, while secondary replicas maintain their own copies. At start-up time, or when a primary replica fails, the arbiter chooses a new primary through an election process. It is also possible for a secondary replica to handle read-only operations, but secondary replicas are not guaranteed to be completely up-to-date. RDBMS systems are not designed with this feature in mind, but some applications might provide this functionality. Most relational databases are considered highly reliable even without backups.
 
@@ -105,11 +96,11 @@ versus the MongoDB Query API version:
         { employee_id: "b5007", age: 55, department: "Marketing" }
     )
 
-The MongoDB documentation includes a handy [SQL to MongoDB Mapping Chart](https://docs.mongodb.com/manual/reference/sql-comparison/).
+The MongoDB documentation includes a handy [SQL to MongoDB Mapping Chart](https://docs.mongodb.com/manual/reference/sql-comparison/)that you can reference.
 
 ### Documents and Collections
 
-The MongoDB architecture is described with different terms than a relational database. Instead of the terms table, row, column, and join, the words document, collection, and field are used.
+MongoDB's architecture is described with different terms than a relational database. Instead of the terms table, row, column, and join, the words document, collection, and field are used.
 
 Both SQL and MongoDB use the term *database* to refer to the top-level container. A single database typically serves a specific purpose or is used by an individual customer, and contains the entire body of data for this instance. MongoDB automatically creates a database when it is first used. This is different than in relational databases, where the database must be created before it is used.
 
@@ -134,7 +125,7 @@ To summarize, a MongoDB database contains a number of collections, and a collect
 
 Each MongoDB document is composed of a list of fields. These are equivalent to key-value pairs. A field must include both a key and a value, separated by the `:` symbol, to be syntactically valid. In MongoDB, all data must be stored in fields, so the key-value pairs collectively represent the entire contents of the database.
 
-The names of the keys can vary between documents. So can the number of fields. Type consistency is not enforced. Therefore, two documents in the same collection can look radically different. The field schema does not have to be defined ahead of time. Users can append new fields, or delete and modify existing ones, at any time, without regard to the rest of the collection. A table column in a SQL-based database is much more restrictive. In a relational database, the columns are consistent across all rows in a table. Additionally, the contents of a column must have the same type in every row.
+The names of the keys can vary between documents and so can the number of fields. Type consistency is not enforced. Therefore, two documents in the same collection can look radically different. The field schema does not have to be defined ahead of time. Users can append new fields, or delete and modify existing ones, at any time, without regard to the rest of the collection. A table column in a SQL-based database is much more restrictive. In a relational database, the columns are consistent across all rows in a table. Additionally, the contents of a column must have the same type in every row.
 
 The key-values are written in the BSON format. Experienced users can partially decipher BSON data, but it typically needs to be decoded into JSON to be completely understandable. Each document can contain a very large number of fields.
 
@@ -177,8 +168,8 @@ MongoDB is an excellent choice to use with semi-structured data in situations re
 - MongoDB can use the GridFS component to act as a file system. Files can be replicated and load-balanced across multiple servers.
 - The *capped collections* feature can be used to improve performance. This characteristic limits the size of a collection maintains insertion order and acts as a circular queue.
 
-## Concluding Thoughts about MongoDB
+## Conclusion
 
 This guide answers the question, "What is MongoDB?" MongoDB is a document-oriented NoSQL database, not a relational database. It stores its data entries as documents. Each MongoDB consists of a number of collections, and each collection contains a set of documents. The syntax of a MongoDB document is based on a variation of the JSON file format. It is composed of a set of fields, where each field has a key and a value. Fields can be nested inside each other. A nested field is referred to as an embedded document.
 
-In a MongoDB versus SQL comparison, MongoDB handles unstructured data more effectively and offers more flexibility. The documents inside a collection do not have to have the same fields or data types, and individual documents can easily be modified. MongoDB is much faster than an RDBMS, and scales more easily using horizontal scaling. MongoDB uses replicas to deliver an advanced high-availability system, and feature powerful ad-hoc queries that can incorporate regular expressions and JavaScript functions. For more information about MongoDB, see the [MongoDB documentation](https://docs.mongodb.com/).
+Compared to SQL, MongoDB handles unstructured data more effectively and offers more flexibility. The documents inside a collection do not have to have the same fields or data types, and individual documents can easily be modified. MongoDB is much faster than an RDBMS, and scales more easily using horizontal scaling. MongoDB uses replicas to deliver an advanced high-availability system, and feature powerful ad-hoc queries that can incorporate regular expressions and JavaScript functions. For more information about MongoDB, see the [MongoDB documentation](https://docs.mongodb.com/).
