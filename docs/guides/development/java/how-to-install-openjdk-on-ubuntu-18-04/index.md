@@ -14,8 +14,8 @@ image: Installing_Java_Development_Kit_11_on_Ubuntu1804_1200x631.png
 modified_by:
   name: Linode
 published: 2020-03-25
-title: "Install Java Ubuntu: How to Install JDK 11 on Bionic Beaver"
-h1_title: Installing Java Development Kit 11 on Ubuntu 18.04
+title: "Install OpenJDK 11 (Java Development Kit) on Ubuntu 18.04"
+h1_title: "Installing OpenJDK 11 (Java Development Kit) on Ubuntu 18.04"
 enable_h1: true
 contributor:
   name: Rajakavitha Kodhandapani

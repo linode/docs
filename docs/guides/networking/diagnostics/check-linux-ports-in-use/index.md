@@ -3,12 +3,7 @@ slug: check-linux-ports-in-use
 author:
   name: Martin Heller
   email: martin.heller@gmail.com
-<<<<<<< HEAD
-description: 'Tools like netstat, ss, & lsof can help you find which ports are in use on your Linux system. Use this guide for an introduction to Linux tools. ✓ Read now!'
-og_description: 'Tools like netstat, ss, and lsof can help you find which ports are in use on your Linux system. This information helps you monitor your system''s active connections and ensure your system is secure. Use this guide for an introduction to these common Linux networking tools and find links to guides that dive a little bit deeper into each one.'
-=======
 description: "Tools like netstat, ss, & lsof can help you find which ports are in use on your Linux system. Use this guide for an introduction to Linux tools. ✓ Read now!"
->>>>>>> upstream/develop
 keywords: ['linux ports in use']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-25
@@ -16,12 +11,8 @@ modified: 2022-01-14
 tags: ["networking","linux"]
 modified_by:
   name: Linode
-<<<<<<< HEAD
-title: "Check Open Ports Linux using Netstat Listening and More | Linode"
-=======
-title: "Check Open Ports on Linux Using netstat and ss"
->>>>>>> upstream/develop
-h1_title: "How to Check Which Ports Are in Use on Your Linux System"
+title: "Check Open and Listening Ports on Linux Using netstat and ss"
+h1title: "Checking Open and Listening Ports on Linux Using netstat and ss"
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller
@@ -124,9 +115,4 @@ hugo      57981     jdoe 8041u  IPv4 0x3dab8c45a423853b      0t0  TCP localhost:
 hugo      57981     jdoe 8042u  IPv4 0x3dab8c45a3a8e2db      0t0  TCP localhost:bmc_patroldb->localhost:51706 (ESTABLISHED)
 {{</ output >}}
 
-<<<<<<< HEAD
-To learn more about the `lsof` command read our [How to List Open Files with lsof](/docs/guides/lsof/) guide. This guide provides information about command-line options, the anatomy of the lsof output, and filtering your output with regular expressions.
-=======
-
 `lsof` is a powerful diagnostic tool capable of a significant number of ways that you can combine its command line options to troubleshoot various issues. To learn more about the `lsof` command read our [How to List Open Files with lsof](/docs/guides/lsof/) guide. This guide provides information about command-line options, the anatomy of the lsof output, and filtering your output with regular expressions.
->>>>>>> upstream/develop

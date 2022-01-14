@@ -11,7 +11,9 @@ published: 2015-09-28
 modified: 2015-10-12
 modified_by:
     name: Linode
-title: "FirewallD CMD List on CentOS: An Introduction | Linode"
+title: "Configure FirewallD on CentOS (Create and List Rules)"
+h1_title: "Enabling and Configuring FirewallD on CentOS"
+enable_h1: true
 contributor:
     name: Florent Houbart
 external_resources:
@@ -19,10 +21,8 @@ external_resources:
  - '[RHEL 7 Security Guide: Introduction to FirewallD](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html#sec-Introduction_to_firewalld)'
  - '[Fedora Wiki: FirewallD](https://fedoraproject.org/wiki/FirewallD)'
 aliases: ['/security/firewalls/introduction-to-firewalld-on-centos/']
+image: introduction-to-firewalld-on-centos.png
 ---
-
-
-![Introduction to FirewallD on CentOS](introduction-to-firewalld-on-centos.png "Introduction to FirewallD on CentOS")
 
 [FirewallD](http://www.firewalld.org/) is frontend controller for iptables used to implement persistent network traffic rules. It provides command line and graphical interfaces and is available in the repositories of most Linux distributions. Working with FirewallD has two main differences compared to directly controlling iptables:
 

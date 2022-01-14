@@ -13,9 +13,7 @@ modified: 2019-01-24
 modified_by:
   name: Linode
 published: 2014-05-30
-title: "Postfix Configuration: Sending Email Using External SMTP Servers"
 h1_title: "Configure Postfix to Send Email Using External SMTP Servers"
-enable_h1: true
 aliases: ['/email/email-services/postfix-smtp-debian7/','/email/postfix/postfix-smtp-debian7/']
 ---
 {{< note >}}
