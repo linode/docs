@@ -3,12 +3,12 @@ slug: how-to-back-up-your-postgresql-database
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: 'Learn how to back up your PostgreSQL database with this guide for single database, multiple databases and automated backups.'
-og_description: 'This guide shows how to create backups of your PostgreSQL databases using pg_dump and use them to restore a lost or broken database.'
+description: "Learn how to back up your PostgreSQL database with this guide for single database, multiple databases and automated backups."
+og_description: "This guide shows how to create backups of your PostgreSQL databases using pg_dump and use them to restore a lost or broken database."
 keywords: ['postgres', 'postgresql', 'backup', 'sql dump', 'pg_dump', 'psql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-18
-modified: 2021-07-07
+modified: 2022-01-14
 modified_by:
   name: Jared Kobos
 title: "How to Back Up Your PostgreSQL Database"
@@ -16,9 +16,8 @@ external_resources:
 - '[PostgreSQL Documentation](https://www.postgresql.org/docs/9.1/static/)'
 tags: ["database","postgresql"]
 aliases: ['/databases/postgresql/how-to-back-up-your-postgresql-database/']
+image: back-up-postgresql-database-title.jpg
 ---
-
-![How to Back Up Your PostgreSQL Database](back-up-postgresql-database-title.jpg "How to Back Up Your PostgreSQL Database")
 
 If you are using PostgreSQL in a production environment, it is important to take precautions to ensure that your users' data is not lost. By frequently backing up your database, automating backups with a cron task, you can restore your system when your database is lost or corrupted. Fortunately, PostgreSQL includes tools to make this task simple and easy to manage. Learn how to backup your PostgreSQL database in Linux, in this guide.
 
@@ -40,18 +39,18 @@ PostgreSQL provides the `pg_dump` utility to simplify backing up a single databa
 
         su - postgres
 
-2.  Dump the contents of a database to a file by running the following command. Replace `dbname` with the name of the database to be backed up.
+1.  Dump the contents of a database to a file by running the following command. Replace `dbname` with the name of the database to be backed up.
 
         pg_dump dbname > dbname.bak
 
     After performing the PostgreSQL load dump into a file, the resulting backup file containing the database is `dbname.bak`. This file can be transferred to another host with `scp` or stored locally for later use.
 
-3.  To demonstrate how to load a database in PostgreSQL and restore lost data, first delete your example database and then create an empty database:
+1.  To demonstrate how to load a database in PostgreSQL and restore lost data, first delete your example database and then create an empty database:
 
         dropdb dbname
         createdb dbname
 
-4.  Restore the database using `psql`:
+1.  Restore the database using `psql`:
 
         psql test < dbname.bak
 
@@ -63,7 +62,7 @@ PostgreSQL provides the `pg_dump` utility to simplify backing up a single databa
 
 After you restore a database using `pg_dump`, you can query the database to collect statistics about the database using:
 
-        analyze dbname
+    analyze dbname
 
 ### Remote Database
 
@@ -79,7 +78,7 @@ Because `pg_dump` only creates a backup of one database at a time, it does not s
 
         pg_dumpall > pg_backup.bak
 
-2.  Restore all databases from the backup:
+1.  Restore all databases from the backup:
 
         psql -f pg_backup.bak postgres
 
@@ -91,21 +90,21 @@ In this section, learn how to import a database in PostgreSQL and automate the p
 
         su - postgres
 
-2.  Create a directory in the `postgres` user's home to store the automatic backups:
+1.  Create a directory in the `postgres` user's home to store the automatic backups:
 
         mkdir -p ~/backups
 
-3.  Edit the crontab to create the new cron task:
+1.  Edit the crontab to create the new cron task:
 
         crontab -e
 
-4.  Add the following line to the end of the crontab:
+1.  Add the following line to the end of the crontab:
 
     {{< file crontab >}}
 0 0 * * 0 pg_dump -U postgres dbname > ~/postgres/backups/dbname.bak
 {{< /file >}}
 
-5.  Save and exit from the editor. Your database is set to back up at midnight every Sunday. To change the time or frequency of the updates, see our [Schedule Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) guide.
+1.  Save and exit from the editor. Your database is set to back up at midnight every Sunday. To change the time or frequency of the updates, see our [Schedule Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) guide.
 
 It is always a good idea to export a Postgres database before any major changes in structure or the installation of a new application. This applies to a Postgres import dump from a remote server.
 
