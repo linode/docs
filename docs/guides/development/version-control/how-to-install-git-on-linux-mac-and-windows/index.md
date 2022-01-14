@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 published: 2009-09-04
 os: ["mac", "linux", "windows"]
-title: "Install Git on Linux, Mac or Windows: A How To | Linode"
+title: "Install Git on Linux, Mac or Windows: A How To"
 h1_title: "Installing Git on Linux, Mac or Windows"
 enable_h1: true
 external_resources:
