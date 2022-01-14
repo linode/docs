@@ -11,7 +11,7 @@ modified: 2020-02-20
 modified_by:
     name: Linode
 published: 2015-12-01
-title: "CentOS Install PHP MySQL, Apache, and MariaDB: A Guide"
+title: "Install PHP MySQL, Apache, and MariaDB on CentOS: A Guide"
 h1_title: How to Install a LAMP Stack on CentOS 7
 aliases: ['/websites/lamp/lamp-on-centos-7/','/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/','/websites/lamp/lamp-server-on-centos-7/','/web-servers/lamp/lamp-on-centos-7/']
 external_resources:
@@ -143,7 +143,7 @@ If you receive an error when trying to reload your `httpd` service, follow the s
 
 SELinux is enabled by default on CentOS 7 Linodes. Its default setting is to restrict Apache's access to directories until explicit permissions are granted.
 
-Without these steps, Apache will not start and may give the following error:
+Without these steps, Apache does not start and may give the following error:
 
 {{< output >}}
 Jun 21 17:58:09 example.com systemd[1]: Failed to start The Apache HTTP Server.
@@ -190,7 +190,7 @@ ssh dhcpv6-client
     Visit your domain or public IP to test the Apache server and view the default Apache page.
 
     {{< note >}}
-Rename Apache's default welcome page. When this file is present it will take precedence over other configurations via the `LocationMatch` directive.
+Rename Apache's default welcome page. When this file is present it takes precedence over other configurations via the `LocationMatch` directive.
 
     sudo mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf.bk
 {{</ note >}}
@@ -291,7 +291,7 @@ In this section, you'll create a test page that shows whether Apache can render 
     // Create MariaDB connection
     $conn = mysqli_connect($servername, $username, $password);
 
-    // Check connection - if it fails, output will include the error message
+    // Check connection - if it fails, output includes the error message
     if (!$conn) {
     die('<p>Connection failed: </p>' . mysqli_connect_error());
     }
@@ -302,7 +302,7 @@ In this section, you'll create a test page that shows whether Apache can render 
 
     {{< /file >}}
 
-1.  Navigate to `example.com/phptest.php` from your local machine. If the components of your LAMP on CentOS 7 are working correctly, the browser will display a "Connected successfully" message. If not, the output will be an error message.
+1.  Navigate to `example.com/phptest.php` from your local machine. If the components of your LAMP on CentOS 7 are working correctly, the browser displays a "Connected successfully" message. If not, the output is an error message.
 
 1.  Remove the test file:
 
