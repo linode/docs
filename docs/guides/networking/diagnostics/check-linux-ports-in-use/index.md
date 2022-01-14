@@ -31,7 +31,7 @@ Three tools to help you check ports in use on a Linux system are:
 -  *ss*: You can view socket statistics with the ss tool. For example, ss allows you to monitor TCP, UDP, and UNIX sockets.
 - *lsof*: This Linux utility lists open files. Since everything on a Linux system can be considered a file, lsof provides a lot of information on your entire system.
 
-While all three tools help you learn how to check if a port is open in Linux, each program has its own advantages and disadvantages. See the following examples to identify which tool is the best fit for your purpose. 
+While all three tools help you learn how to check if a port is open in Linux, each program has its own advantages and disadvantages. See the following examples to identify which tool is the best fit for your purpose.
 
 ### Using netstat
 
@@ -96,7 +96,7 @@ To take a deeper dive into the ss tool, read our [Learning to Use the ss Tool to
 
 ### Using lsof
 
-Since everything on a Linux system can be considered a file, the **lsof** tool can report on many aspects of a system, including open network interfaces and network connections. By default, it has Linux list open ports. The lsof tool is preinstalled on many Linux distributions, so you may consider using it before a tool you need to install. 
+Since everything on a Linux system can be considered a file, the **lsof** tool can report on many aspects of a system, including open network interfaces and network connections. By default, it has Linux list open ports. The lsof tool is preinstalled on many Linux distributions, so you may consider using it before a tool you need to install.
 
 While one of the most frequent uses of `lsof` is determining which program listens to a given TCP port, one unique feature of the lsof tool is *repeat mode**. This mode allows you to run the `lsof` command continuously on a timed interval. When inspecting your system to find information about which ports are in use, lsof can return information about which user and processes are using a specific port. For example, when working with a local development environment you may want to find which localhost ports are currently in use. Use the following command to retrieve this information:
 
