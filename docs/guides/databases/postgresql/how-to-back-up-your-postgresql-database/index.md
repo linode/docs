@@ -11,7 +11,7 @@ published: 2017-12-18
 modified: 2022-01-14
 modified_by:
   name: Jared Kobos
-title: "How to Back Up a PostgreSQL Database (Database Dump)"
+title: "Backing Up a PostgreSQL Database (Postgres Database Dump)"
 h1_title: "Backing Up a PostgreSQL Database (Database Dump)"
 enable_h1: true
 external_resources:
