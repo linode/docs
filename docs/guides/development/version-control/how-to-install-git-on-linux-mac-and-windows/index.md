@@ -7,7 +7,7 @@ description: "Git is a popular distributed version control & source code managem
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/version-control/git-source-control-management/','/development/version-control/how-to-install-git-on-mac-and-windows/','/development/version-control/how-to-install-git-on-linux-mac-and-windows/','/linux-tools/version-control/git/','/applications/development/git-source-control-management/']
-modified: 2019-01-24
+modified: 2022-01-14
 modified_by:
   name: Linode
 published: 2009-09-04
@@ -38,18 +38,206 @@ For more information about using and configuring Git, see our [Getting Started w
 This guide uses `sudo` wherever possible. Complete the [Add a Limited User Account](/docs/guides/securing-your-server/#add-a-limited-user-account) of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account.
 {{< /note >}}
 
-
 ## How to Install Git on Mac OSX
 
-{{< content "how-to-install-git-mac" mac >}}
+There are different ways to install Git on Mac OSX. You can install Git using Homebrew, MacPorts, or by downloading the Git installer package.
+
+### Check if Git is already installed
+
+1.  Check if Git is already installed on your Mac using:
+
+        git --version
+
+    If Git isn’t installed on your computer, the terminal prompts you with the following message:
+
+    ![The "git" command requires the command line developer tools.](check-if-git-installed-mac-osx.png)
+
+2.  Click on **Install** to install the developer tools required to use Git on your Mac.
+
+    The Mac developer tools include Xcode and the Xcode app development utilities. After you follow the prompts, agree to them, and download Git for Mac, at the end of the process you have a working version of Git.
+
+
+### Install Git using Homebrew on MacOS
+
+1.  Execute the following command on your Mac terminal:
+
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+    ![Enter the install command.](1624-Homebrew-01-resized.png)
+
+2.  Press return once you are prompted. You should see an installation success message once the installation is complete.
+
+    ![Enter your password.](1626-Homebrew-03-resized.png)
+
+3.  The Homebrew version you just installed may not be the most recent stable build. Therefore, it's a good practice to update it. To update Homebrew, enter the following command in your terminal:
+
+        brew update
+
+4.  Finally, to install Git run:
+
+        brew install git
 
 ## How to Install Git on Windows
 
-{{< content "how-to-install-git-windows" windows >}}
+1.  Navigate to the Git website's [Download page](https://git-scm.com/download/win).
+
+    ![Click to download version for Windows.](how-to-download-git-for-windows.png)
+
+2.  Double click on a recent version of Git to download Git for Windows.
+
+3.  When you see an install prompt, click on **Yes**:
+
+    ![Click Yes to install Git on Windows.](installing-git-on-windows.png)
+
+4.  Agree to the GNU license terms:
+
+    ![Click Next to accept GNU License.](installing-git-accept-gnu-license.png)
+
+5.  Select the directory you want Git to be installed in or use the default location:
+
+    ![Click Next for default or Browse to change.](win-05-select-folder.png)
+
+6.  Select the components that you want to install. If you are unsure, go ahead with the default selection.
+
+    ![Accept the default or select additional components.](win-06-select-components.png)
+
+7.  Choose the default editor for Git:
+
+    ![Select the default text editor for Git.](win-08-default-text-editor.png)
+
+8.  Select how you want to use Git from the command line from the options that are presented:
+
+    ![Adjust Git's PATH](win-09-adjust-your-path.png)
+
+9.  Select the SSL/TLS library that you want Git to use for HTTPs connections:
+
+    ![Select the https transport backend.](git-https-transport-backend.png)
+
+10. Select how Git should treat the line endings in text files:
+
+    ![Select line ending conversions.](win-11-configure-line-endings.png)
+
+11. Select your terminal emulator, default behavior of `git pull`, and some extra configuring options.
+
+    For the simplest installation, keep MinTTY for the terminal emulator, use the default behavior (fast-forward or merge), and enable file system caching in configuring extra options. When you are done selecting your configuration options, click **Install** at the end.
+
+    ![Windows final Git installation screen.](windows-git-installation-completed.png)
+
+12. Click on **Finish**. You should have a working Git installation on your Windows machine.
 
 ## How to Install Git on Linux
 
-{{< content "how-to-install-git-linux" linux >}}
+The steps for installing Git on Linux depend on which Linux distribution you are using. This section shows you how you can install Git on Ubuntu, CentOS, Fedora, and Arch Linux.
+
+### Check if Git is already installed on Linux
+
+Before you begin, check whether Git is already installed on your computer by issuing the example command in your terminal. Some Linux distributions have Git preinstalled:
+
+    git --version
+
+If the output shows a Git version (see example below), you already have Git installed on your Linux machine.
+
+{{< output >}}
+git version 2.17.1
+{{</ output >}}
+
+If you need to install Git, your terminal shows the following error:
+
+{{< output >}}
+-bash: git: command not found
+{{</ output >}}
+
+If your terminal confirms that there’s no pre-installed version of Git, move on to the next section that is appropriate for your Linux system's distribution.
+
+### Installing Git on Ubuntu or Debian
+
+To install Git run the following command:
+
+    sudo apt install git
+
+If you see an error, consider running the following command before you install Git for Ubuntu:
+
+    sudo apt update
+
+### Installing Git on CentOS
+
+#### Option 1: Installing Git on CentOS using Yum
+
+To install Git on CentOS using Yum, run the following command:
+
+    sudo yum install git
+
+#### Option 2: Installing Git on CentOS from Source
+
+1. 	In order to install Git from source install its dependencies first using the following commands:
+
+        sudo yum group install “Development tools”
+        sudo yum install gettext-devel openssl-devel perl-CPAN perl-devel zlib-devel
+
+2. 	Now, go to [Git’s release page](https://github.com/git/git/releases) and select the version that you prefer to install. Find a stable Git version (select the one without an `-rc` suffix):
+
+    ![Git release page.](git-release-page.png)
+
+3. 	After finding the right Git version, click on it. You should see two files included in the release version you selected (with `.zip` and `tar.gz` extensions).
+
+    ![Git release page.](git-release-zipped-files.png)
+
+4. 	Right click and copy the link for the file with the `tar.gz` extension. For example, if you selected the version v2.29.1, your download link is `https://github.com/git/git/archive/v2.29.1.tar.gz`.
+
+5. 	Use `wget` to download your selected Git version on CentOS. Replace the example URL with the one you copied in the previous step.
+
+        wget https://github.com/git/git/archive/v2.29.1.tar.gz -O gitdownloadversion.tar.gz
+
+    This command downloads `v2.29.1.tar.gz` as `gitdownloadversion.tar.gz`.
+
+6. 	Unpack the file using `tar`. Decompress it and the extract files using the `-zxf` option. Use the following command to do it:
+
+        tar -zxf gitdownloadversion.tar.gz
+
+7. 	Change your directory to the unpacked folder:
+
+        cd gitdownloadversion-*
+
+8.	Create a Makefile in this directory to help compile the downloaded Git files:
+
+        make configure
+        ./configure --prefix=/usr/local
+
+9.	Once your Makefile is in place, compile your Git files using:
+
+        sudo make install
+
+10.	When completed, check the Git version to ensure the installation was successful.
+
+        git --version
+
+### Installing Git on Fedora
+
+Similar to CentOS, installing Git on Fedora can be done using two options:
+
+- Install Git using Yum
+
+- Install Git from source
+
+The process to install Git from source is similar to the CentOS installation above. To install Git using Yum on Fedora, enter the following command:
+
+    sudo yum install git-core
+
+Once successful, view the Git version that is running to confirm the installation:
+
+    git --version
+
+### Installing Git on Arch Linux
+
+To install Git on Arch Linux using pacman, run the following command:
+
+    sudo pacman -Sy git
+
+### Installing Git on Gentoo
+
+You can install Git on Gentoo using emerge:
+
+    sudo emerge --ask --verbose dev-vcs/git
 
 ## FAQs on Installing Git
 
