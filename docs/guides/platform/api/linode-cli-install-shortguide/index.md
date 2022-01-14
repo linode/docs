@@ -25,7 +25,7 @@ The easiest way to install the CLI is through [Pip](https://pypi.org/project/pip
 
         pip3 install linode-cli --upgrade
 
-If you haven't yet installed `python3` and `pip3`, below is a brief outline seperated by Distro and Operating System to help you complete the basic installation process:
+If you haven't yet installed `python3` and `pip3`, below is a brief outline separated by Distro and Operating System to help you complete the basic installation process:
 
 ### Ubuntu/Debian
 
