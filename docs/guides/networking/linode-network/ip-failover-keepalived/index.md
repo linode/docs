@@ -7,7 +7,7 @@ description: "Learn how to use Linode's IP Sharing feature to configure IP failo
 keywords: ['networking','IP failover','keepalived']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-19
-modified: 2022-01-11
+modified: 2022-01-14
 modified_by:
   name: Linode
 title: "Configuring IP Failover using keepalived"

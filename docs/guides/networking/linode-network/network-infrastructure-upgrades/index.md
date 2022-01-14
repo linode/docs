@@ -6,7 +6,7 @@ author:
 description: "An overview of changes and actions that may be required in advance of upgrades to Linode's networking infrastructure."
 keywords: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-11
+published: 2022-01-14
 modified_by:
   name: Linode
 title: "Upcoming Changes Related to Network Infrastructure Upgrades"
@@ -15,7 +15,7 @@ _build:
   list: false
 ---
 
-Over the next year, we’ll be rolling our networking infrastructure upgrades to all of our existing data centers. These upgrades increase the stability and resiliency of our already reliable network. It also enables us to bring features, such as VLAN and IP Sharing, to every data center.
+Throughout 2022, Linode is rolling out networking infrastructure upgrades to all of our existing data centers. These upgrades increase the stability and resiliency of our already reliable network. It also enables us to bring features, such as VLAN and IP Sharing, to every data center.
 
 For most customers, these upgrades are performed seamlessly behind the scenes. For customers that use certain features, such as IP Sharing and /116 IPv6 pools, there may be some changes that impact your current configuration. This document outlines what is changing, what data centers are impacted, and what, if anything, you may need to do in order to prepare for these upcoming changes.
 
@@ -33,9 +33,9 @@ The following is a list of breaking changes and any action that may be required 
 
     *Action:* If you were using /116 for IPv6 failover, consider using an IPv6 /64 instead.
 
-- **IP failover through BGP:** IP failover (IP Sharing) for public IPv4 addresses and IPv6 routed ranges will be facilitated through BGP instead of [keepalived](/docs/guides/ip-failover-keepalived/) immediately after the upgrades have occurred.
+- **IP failover through BGP:** IP failover (IP Sharing) for public IPv4 addresses and IPv6 routed ranges will be facilitated through BGP instead of ARP (configured through [keepalived](/docs/guides/ip-failover-keepalived/)).
 
-    *Action:* If you have previously configured IP failover for a public IPv4 address, review the [Configuring IP Failover using FRR (BGP)](/docs/guides/ip-failover-bgp-frr/) guide to learn more about configuring IP failover using BGP. You can configure BGP ahead of time, but will not be able to test or use the configuration until after the network upgrades.
+    *Action:* If you have previously configured IP failover for a public IPv4 address, review the [Configuring IP Failover using FRR (BGP)](/docs/guides/ip-failover-bgp-frr/) guide to learn more about configuring IP failover using BGP. You can configure BGP ahead of time, but will not be able to test or use the configuration until after the network upgrades have completed
 
 ## Which Data Centers Have Been Upgraded?
 

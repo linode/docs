@@ -6,7 +6,7 @@ author:
 description: "This guide discusses how to enable IP failover on a Linode Compute Instance through using our IP Sharing feature with software such as keepalived or FRR."
 keywords: ['IP failover','IP sharing','elastic IP']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-11
+published: 2022-01-14
 modified_by:
   name: Linode
 title: "Configuring IP Failover on a Compute Instance"
@@ -50,5 +50,4 @@ IP failover for VLAN IP addresses is supported within every data center where VL
 To configure IP failover, follow the instructions for the software implementation method supported by your data center:
 
 - [Configuring IP Failover using keepalived](/docs/guides/ip-failover-keepalived/)
-- [Configuring IP Failover over BGP](/docs/guides/ip-failover-bgp/)
-- [Configuring IP Failover over BPG using FRR (Advanced)](/docs/guides/ip-failover-bgp-frr/)
+- [Configuring IP Failover over BPG using FRR](/docs/guides/ip-failover-bgp-frr/)
