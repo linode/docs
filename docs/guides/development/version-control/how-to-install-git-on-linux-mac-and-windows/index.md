@@ -67,7 +67,7 @@ Git and GitHub are different. GitHub hosts Git repositories in a central locatio
 
 ### How do I download Git for Windows?
 
-To download Git for Windows, visit the [Downloads page](https://git-scm.com/download/win) on the Git documentation site and select the most recent version. Once you click on the version your download starts shortly and you can install Git for Windows. 
+To download Git for Windows, visit the [Downloads page](https://git-scm.com/download/win) on the Git documentation site and select the most recent version. Once you click on the version your download starts shortly and you can install Git for Windows.
 
 ### How to check the Git version?
 
@@ -75,7 +75,7 @@ To check your Git version type `git --version` and press enter in your terminal.
 
 ### Do I need to download Git Bash?
 
- Git Bash is included in the Git for Windows package. It is unnecessary to install Git Bash on a Mac, as Git can be run natively on MacOS. 
+ Git Bash is included in the Git for Windows package. It is unnecessary to install Git Bash on a Mac, as Git can be run natively on MacOS.
 
 ### How to clone a repository in Git?
 
