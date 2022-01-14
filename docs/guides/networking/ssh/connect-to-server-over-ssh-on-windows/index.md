@@ -35,7 +35,7 @@ This article covers the basics of connecting to a remote server (such as a Linod
 
 ## Open the Terminal
 
-On your local Windows computer, open the terminal application you wish to use. The terminal allows you to access your operating system's shell environment and run the `ssh` command on Windows. 
+On your local Windows computer, open the terminal application you wish to use. The terminal allows you to access your operating system's shell environment and run the `ssh` command on Windows.
 
 - [PowerShell - Windows 10](#powershell---windows-10): This is the easiest method for most people using a Windows 10 computer.
 - [Windows Subsystem for Linux - Windows 10](#windows-subsystem-for-linux-wsl---windows-10): This requires quite a few more installation and configuration steps, but may be a better option for those who prefer working within a Linux command-line.
@@ -57,7 +57,7 @@ The default terminal for Windows 10 is PowerShell. To connect to a server using 
 
     ![OpenSSH](openssh-installed-feature.png)
 
-1.  If the *OpenSSH Client* feature is not installed, enable the Windows ssh client. Click the **Add a feature** button at the top of the page. A dropdown menu appears. Select **OpenSSH Client** and press the **Install** button to install the ssh on Windows. 
+1.  If the *OpenSSH Client* feature is not installed, enable the Windows ssh client. Click the **Add a feature** button at the top of the page. A dropdown menu appears. Select **OpenSSH Client** and press the **Install** button to install the ssh on Windows.
 
 #### Open PowerShell
 
@@ -84,7 +84,7 @@ There is no native SSH client in Windows 8 and earlier. Instead, you'll need to 
 
 ## How to Connect to the Remote Server Over SSH from Windows
 
-1. In CMD, the ssh command prompts the connection to a remote server. Within the terminal, enter the following command, replacing *[username]* with the username of the remote user and *[ip-address]* with the IP address or domain name of the remote server. 
+1. In CMD, the ssh command prompts the connection to a remote server. Within the terminal, enter the following command, replacing *[username]* with the username of the remote user and *[ip-address]* with the IP address or domain name of the remote server.
 
        ssh [username]@[ip-address]
 
