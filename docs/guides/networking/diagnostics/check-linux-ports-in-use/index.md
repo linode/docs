@@ -11,7 +11,7 @@ published: 2021-02-25
 tags: ["networking","linux"]
 modified_by:
   name: Linode
-title: "Check Open Ports Linux via Netstat Listening and More | Linode"
+title: "Check Open Ports Linux using Netstat Listening and More | Linode"
 h1_title: "How to Check Which Ports Are in Use on Your Linux System"
 contributor:
   name: Martin Heller
