@@ -9,7 +9,7 @@ keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip addre
 tags: ["linode platform","cloud manager","networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/']
-modified: 2021-11-19
+modified: 2022-01-14
 modified_by:
   name: Linode
 published: 2016-08-23
@@ -178,11 +178,11 @@ IPv6 SLAAC addresses are not able to be transferred between Compute Instances. I
 
 ## Configuring IP Sharing
 
-{{< note >}}
-This feature is not yet supported in the Atlanta, Mumbai, Sydney, or Toronto data centers.
-{{</ note >}}
+*IP sharing*, also referred to as IP failover, is the process by which an IP address is reassigned from one Compute Instance to another in the event the first one fails or goes down. If you're using two Instances to make a website [highly available](/docs/websites/introduction-to-high-availability/) with Keepalived or a similar service, you can use the Cloud Manager to configure IP failover.
 
-*IP sharing*, also referred to as IP failover, is the process by which an IP address is reassigned from one Compute Instance to another in the event the first one fails or goes down. If you're using two Instances to make a website [highly available](/docs/websites/introduction-to-high-availability/) with Keepalived or a similar service, you can use the Cloud Manager to configure IP failover. Here's how:
+{{<note>}}
+Not all data centers currently support IP Sharing. Review the [Configuring IP Failover](/docs/guides/ip-failover) to learn more about IP Sharing and IP failover support.
+{{</note>}}
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
 1.  Click on your Linode Compute Instance from the list and navigate to the **Network** tab.
@@ -196,7 +196,7 @@ This feature is not yet supported in the Atlanta, Mumbai, Sydney, or Toronto dat
 
 1.  Click **Save** to enable IP Sharing.
 
-1.  After enabling IP Sharing in the Cloud Manager, the next step is to configure a failover service (such as Keepalived) within the internal system on each affected Compute Instance. For more information on a practical use case and configuring Keepalived, see our guide on [Configuring IP Failover using keepalived](/docs/guides/ip-failover-keepalived).
+1.  After enabling IP Sharing in the Cloud Manager, the next step is to configure a failover service (such as Keepalived) within the internal system on each affected Compute Instance. For more information, see our guide on [Configuring IP Failover](/docs/guides/ip-failover).
 
 Now, when a failover service such as Keepalived detects failure of your chosen Compute Instance, its IP address will be assigned to the new Instance to avoid an interruption in service.
 
