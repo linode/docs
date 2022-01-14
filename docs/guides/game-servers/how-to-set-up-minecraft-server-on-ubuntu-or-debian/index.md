@@ -201,7 +201,7 @@ To disconnect from the screen session without stopping the game server, press **
 
     After stopping and restarting the server script with the `level-name` changed, a new directory is created that contains your game data for that world. 
 
-For more information on available settings and how to modify them, or how to run a Minecraft server upon startup of Ubuntu, refer to the [Minecraft Wiki settings page](http://minecraft.gamepedia.com/Server.properties).
+For more information on available settings and how to modify them, or how to run a Minecraft server upon startup of Ubuntu or Debian, refer to the [Minecraft Wiki settings page](http://minecraft.gamepedia.com/Server.properties).
 
 ## Connect to your Minecraft Server
 
