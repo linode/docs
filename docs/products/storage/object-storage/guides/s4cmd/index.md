@@ -22,7 +22,7 @@ To install s4cmd on a Mac, python's package manager (`pip` or `pip3`) can be use
 
 The APT package manager can be used to install s4cmd on Debian or Ubuntu Linux distributions.
 
-    sudo apt-get install s4cmd
+    sudo apt install s4cmd
 
 ## Configuring Credentials
 
@@ -83,6 +83,8 @@ There is currently no defined command for deleting a bucket through s4cmd.
 **Example:** Upload the file "file.txt" to the bucket called "example-bucket", located in the Newark data center:
 
     s4cmd put file.txt s3://example-bucket/ --endpoint-url https://us-east-1.linodeobjects.com
+
+{{< content "object-storage-character-warning-shortguide" >}}
 
 ### Download an Object or Directory
 

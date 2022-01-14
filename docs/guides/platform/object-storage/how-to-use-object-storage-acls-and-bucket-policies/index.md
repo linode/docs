@@ -88,7 +88,7 @@ Alternatively, you *may* be able to retrieve the canonical ID by curling a bucke
 - The bucket has objects within it and has already been set to public (with a command like `s3cmd setacl s3://other-users-bucket --acl-public`).
 - The bucket has not been set to serve static websites.
 
-Run the following curl command, replacing *ther-users-bucket* with the bucket name and the cluster URL with the relevant value:
+Run the following curl command, replacing *other-users-bucket* with the bucket name and the cluster URL with the relevant value:
 
     curl other-users-bucket.us-east-1.linodeobjects.com
 

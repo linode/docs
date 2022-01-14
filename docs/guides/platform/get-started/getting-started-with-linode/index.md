@@ -5,7 +5,6 @@ author:
   email: docs@linode.com
 keywords: ["getting started", "intro", "basics", "first steps"]
 description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
-og_description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/']
 modified: 2021-08-11
@@ -18,6 +17,7 @@ title_short: "Getting Started"
 weight: 10
 icon: "book"
 show_on_rss_feed: false
+image: getting-started.jpg
 ---
 
 ![Getting Started with Linode](getting-started.jpg "Getting Started with Linode")
