@@ -5,11 +5,11 @@ author:
   email: docs@linode.com
 description: 'Shortguide that shows you how to install the Linode CLI.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-07-22
+modified: 2022-01-14
 modified_by:
-  name: Heather Zoppetti
+  name: Ryan Syracuse
 published: 2020-07-22
-title: How to Install the Linode CLI
+title: "How to Install the Linode CLI"
 keywords: ["linode cli"]
 headless: true
 show_on_rss_feed: false
@@ -22,6 +22,83 @@ The easiest way to install the CLI is through [Pip](https://pypi.org/project/pip
 1.  Install the CLI:
 
         pip3 install linode-cli --upgrade
+
+If you haven't yet installed `python3` and `pip3`, below is a brief outline separated by Distro and Operating System to help you complete the basic installation process:
+
+### Ubuntu/Debian
+
+1.  Ensure that all available packages are up to date:
+
+        sudo apt update
+
+1.  Install python3 and pip3:
+
+        sudo apt install python3 && sudo apt install python3-pip
+
+1.  Install the Linode CLI using pip3:
+
+        sudo pip3 install linode-cli
+
+### CentOS/RHEL Stream and Fedora
+
+1.  Ensure that all available packages are up to date:
+
+        dnf upgrade
+
+1.  Install python3 and pip3:
+
+        sudo dnf install python3 && sudo dnf install python3-pip
+
+1.  Install the Linode CLI using pip3:
+
+        sudo pip3 install linode-cli
+
+### CentOS 7
+
+1.  Ensure that all available packages are up to date:
+
+        sudo yum update
+
+1.  Install python3 and pip3:
+
+        sudo yum install python3 && sudo yum install python3-pip
+
+1.  Install the Linode CLI using pip3:
+
+        sudo pip3 install linode-cli
+
+### Windows 10
+
+1. Download the latest stable Windows package for python3 for your system at [Python's Downloads Page](https://www.python.org/downloads/windows/).
+
+1. Open up the installer `.exe` to begin the python installation process using Window's GUI.
+
+1. Before proceeding, ensure that your version of Python is added to PATH by checking the box which enables this option:
+
+   ![Python Windows Path Option](windows-python-path.png "Python Windows Path Checkbox")
+
+1. Select the **Customize Installation** option to proceed.
+
+1. Ensure that `pip` all desired optional features are selected before proceeding to the next step. The `pip` installation is required by the Linode CLI.
+
+1. In the next step, ensure that the **Install for all users** option is enabled. Your configuration should reflect the following:
+
+   ![Python on Windows Advanced Options](windows-python-options.png "Advanced Options on Windows Python3")
+
+1. Select `Next` to proceed with the installation. Once the installation is complete, a message will confirm Python3 was successfully installed will appear that can be safely closed.
+
+1. Open the windows command prompt and enter the following command to complete installation of the Linode CLI:
+
+        sudo pip3 install linode-cli
+
+
+### Mac OSx
+
+By default, python3 should already be installed and configured on the latest versions of Mac OSx. If for whatever reason it is not, you can use `brew` to install python3 which will additionally include `pip` by default:
+
+    brew install python3
+
+## Initial Configuration of the Linode CLI
 
 1.  You need a Personal Access Token to use the CLI. Use the [Linode Cloud Manager](https://cloud.linode.com/profile/tokens) to obtain a token.
 
