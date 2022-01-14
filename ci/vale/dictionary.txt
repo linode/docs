@@ -213,6 +213,7 @@ changelog
 changelogs
 changeme
 changeset
+changesets
 characterwise
 chatbots
 chatrooms
@@ -1886,6 +1887,7 @@ toolchain
 toolchains
 toolset
 towson
+trac
 traceroute
 trackbar
 traefik
