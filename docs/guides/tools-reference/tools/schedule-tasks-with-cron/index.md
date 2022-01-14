@@ -51,7 +51,7 @@ The first job in the Cron table is:
 
 This means at 17 minutes past each hour, change directory to `/`, the root of the filesystem. Then, as the `root` user, run the `run-parts` binary to execute all jobs in `/etc/cron.hourly`.
 
-Time intervals are denoted by numbers and operators filled in place of each asterisk in the `crontab` line of a Corn job. From left to right, the asterisks represent:
+Time intervals are denoted by numbers and operators filled in place of each asterisk in the `crontab` line of a Cron job. From left to right, the asterisks represent:
 
 -  **Minutes** specified as a number from 0 to 59.
 -  **Hours** specified as numbers from 0 to 23.
