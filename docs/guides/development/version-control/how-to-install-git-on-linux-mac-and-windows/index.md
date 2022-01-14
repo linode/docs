@@ -59,7 +59,7 @@ No, Git for Mac does not come pre-installed. You have to install Git for Mac usi
 
 ### How do I know if Git is installed?
 
-To see if Git is installed on your system, open your terminal and type `git --version`. If your terminal returns a Git version as an output, that confirms you have Git installed on your system. If not, you will have to download Git for Mac or Windows.
+To see if Git is installed on your system, open your terminal and type `git --version`. If your terminal returns a Git version as an output, that confirms you have Git installed on your system. If not, you have to download Git for Mac or Windows.
 
 ### Are Git and GitHub the same?
 
@@ -71,7 +71,7 @@ To download Git for Windows, visit the [Downloads page](https://git-scm.com/down
 
 ### How to check the Git version?
 
-To check your Git version type `git --version` and press enter in your terminal. This shows you your Git version as an output.
+To check your Git version type `git --version` and press enter in your terminal. This displays the Git version as an output.
 
 ### Do I need to download Git Bash?
 
