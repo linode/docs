@@ -3,7 +3,7 @@ slug: connect-to-server-over-ssh-on-windows
 author:
   name: Linode
   email: docs@linode.com
-description: 'Read our guide on how to connect to a remote server over SSH via Windows, including opening the terminal & structuring the command. ✓ Click to read!'
+description: 'Read our guide on how to connect to a remote server over SSH on Windows, including opening the terminal & structuring the command. ✓ Click to read!'
 og_description: 'A tutorial outlining how to connect to a remote server over SSH on a Windows PC, including opening the terminal and structuring the ssh command.'
 keywords: ['ssh','linux','windows','connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
@@ -31,11 +31,11 @@ This article covers the basics of connecting to a remote server (such as a Linod
 
 1.  Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Getting Started](/docs/getting-started/) guide to create a Linode.
 
-1.  If using Windows 10, install any pending updates to ensure you are running the latest version of Windows before you enable an ssh.
+1.  If using Windows 10, install any pending updates to ensure you are running the latest version of Windows before you enable SSH.
 
 ## Open the Terminal
 
-On your local Windows computer, open the terminal application you wish to use. The terminal allows you to access your operating system's shell environment and run the ssh command on Windows. 
+On your local Windows computer, open the terminal application you wish to use. The terminal allows you to access your operating system's shell environment and run the `ssh` command on Windows. 
 
 - [PowerShell - Windows 10](#powershell---windows-10): This is the easiest method for most people using a Windows 10 computer.
 - [Windows Subsystem for Linux - Windows 10](#windows-subsystem-for-linux-wsl---windows-10): This requires quite a few more installation and configuration steps, but may be a better option for those who prefer working within a Linux command-line.
@@ -57,7 +57,7 @@ The default terminal for Windows 10 is PowerShell. To connect to a server using 
 
     ![OpenSSH](openssh-installed-feature.png)
 
-1.  If the *OpenSSH Client* feature is not installed, you will need to enable the Windows ssh client. Click the **Add a feature** button at the top of the page. A dropdown menu appears. Select **OpenSSH Client** and press the **Install** button to install the ssh on Windows. 
+1.  If the *OpenSSH Client* feature is not installed, enable the Windows ssh client. Click the **Add a feature** button at the top of the page. A dropdown menu appears. Select **OpenSSH Client** and press the **Install** button to install the ssh on Windows. 
 
 #### Open PowerShell
 
