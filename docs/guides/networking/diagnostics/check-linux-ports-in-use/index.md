@@ -11,7 +11,7 @@ published: 2021-02-25
 tags: ["networking","linux"]
 modified_by:
   name: Linode
-title: "Check Open Ports Linux via Netstat Listening and More | Linode"
+title: "Check Open Ports on Linux Using Netstat Listening and More | Linode"
 h1_title: "How to Check Which Ports Are in Use on Your Linux System"
 contributor:
   name: Martin Heller
@@ -31,7 +31,7 @@ Three tools to help you check ports in use on a Linux system are:
 -  *ss*: You can view socket statistics with the ss tool. For example, ss allows you to monitor TCP, UDP, and UNIX sockets.
 - *lsof*: This Linux utility lists open files. Since everything on a Linux system can be considered a file, lsof provides a lot of information on your entire system.
 
-While all three tools will help you learn how to check if a port is open in Linux, each program has its own advantages and disadvantages. See the examples below to identify which tool is the best fit for your purpose. 
+While all three tools help you learn how to check if a port is open in Linux, each program has its own advantages and disadvantages. See the following examples to identify which tool is the best fit for your purpose. 
 
 ### Using netstat
 
