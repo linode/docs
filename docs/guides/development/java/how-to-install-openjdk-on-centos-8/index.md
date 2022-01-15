@@ -3,8 +3,8 @@ slug: how-to-install-openjdk-on-centos-8
 author:
   name: Linode Community
   email: docs@linode.com
-description: This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on CentOS 8. OpenJDK is the free and open-source implementation of the Oracle Java Standard Edition (Java SE) Development Kit. OpenJDK and Java SE are equivalent JDKs that include a Java runtime environment (JRE) and tools for developing and compiling Java applications. Optionally, you will also test your Open JDK installation by creating a simple "Hello World" application.
-og_description: This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on CentOS 8. OpenJDK is the free and open-source implementation of the Oracle Java Standard Edition (Java SE) Development Kit. OpenJDK and Java SE are equivalent JDKs that include a Java runtime environment (JRE) and tools for developing and compiling Java applications. Optionally, you will also test your Open JDK installation by creating a simple "Hello World" application.
+description: 'This guide will show you how to install the free and open-source Open Java Development Kit (OpenJDK) version of the Java Runtime Environment (JRE) on CentOS 8.'
+og_description: 'This guide will show you how to install the free and open-source Open Java Development Kit (OpenJDK) version of the Java Runtime Environment (JRE) on CentOS 8.'
 keywords: ["java", "openjdk", "jdk", "11", "CentOS", "8"]
 tags: ["java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
