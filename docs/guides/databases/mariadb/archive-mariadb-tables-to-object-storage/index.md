@@ -126,7 +126,7 @@ In this file, replace the following placeholders:
 * `eu-central-1.linodeobjects.com` with your bucket's assigned Object Storage cluster hostname.
 * `your-key` with the Object Storage access key you created in step 5.
 * `your-secret` with the Object Storage secret key you created in step 5.
-  {{< /note >}}
+{{< /note >}}
 
 {{< file "s3.cnf" ini >}}
 [mariadb]
