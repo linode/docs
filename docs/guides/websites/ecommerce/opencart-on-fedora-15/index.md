@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows how to set up and manage an online storefront with OpenCart on Fedora 15.'
+description: 'This guide will show you how to install, setup, configure, and manage a online storefront where you can sell anything with OpenCart on Fedora 15.'
 keywords: ["opencart", "ecommerce", "commerce", "store", "fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ecommerce/opencart-on-fedora-15/','/web-applications/e-commerce/opencart/fedora-15/']

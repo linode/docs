@@ -3,7 +3,7 @@ slug: multicraft-on-ubuntu
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: "This guide will show you how to install MultiCraft on a Linode running Ubuntun."
+description: "This guide will show you how to install MultiCraft, a free and open-source control panel for Minecraft servers, running on a Linode running Ubuntu."
 keywords: ["minecraft", "ubuntu", "multicraft"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

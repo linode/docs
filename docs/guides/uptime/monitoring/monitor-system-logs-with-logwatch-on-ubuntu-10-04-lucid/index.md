@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows how to use logwatch to monitor system logs and generate reports on Ubuntu 10.04 "Lucid".'
+description: 'This guide will show you how to use the logwatch utility to monitor system logs, generate reports, and monitor failed login attempts, and more on Ubuntu 10.04 "Lucid".'
 keywords: ["logwatch", "security", "logging", "audit"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

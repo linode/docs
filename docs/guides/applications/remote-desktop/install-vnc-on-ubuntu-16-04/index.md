@@ -3,7 +3,7 @@ slug: install-vnc-on-ubuntu-16-04
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'This guide will show you how to install and connect to a desktop environment on your Linode on Ubuntu 16.04'
+description: 'This guide will show you how to install and configure VNC enabling you to remotely connect to a live desktop environment on your Linode on Ubuntu 16.04.'
 og_description: "This guide shows how to install a desktop environment on your Linode and connect to it using VNC."
 keywords: ["vnc", "remote desktop", "ubuntu", "16.04"]
 tags: [ubuntu]

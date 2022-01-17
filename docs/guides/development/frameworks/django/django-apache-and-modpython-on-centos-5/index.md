@@ -3,7 +3,7 @@ slug: django-apache-and-modpython-on-centos-5
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will show you how to configure the Django web application development framework for Apache on Centos 5.'
+description: 'This guide will show you how to configure the Django web application development framework for Apache on Centos 5 so you can run Django Applications.'
 keywords: ["django", "python", "apache", "mod\\_python", "centos"]
 tags: ["web applications","django","apache","python","centos","cms","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

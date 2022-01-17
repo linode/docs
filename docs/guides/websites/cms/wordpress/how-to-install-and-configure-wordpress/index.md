@@ -3,7 +3,7 @@ slug: how-to-install-and-configure-wordpress
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will show you how to install and optimize the WordPress blogging and content management system on your Linode from scratch using a LAMP setup on Ubuntu 18.04.'
+description: 'This guide will show you how to install and optimize the WordPress blogging and CMS on your Linode from scratch using a LAMP setup on Ubuntu 18.04.'
 keywords: ["install WordPress", "WordPress on Linode", "WordPress how-to", "how to install wordpress", "how to configure wordpress"]
 tags: ["lamp","wordpress","cms","lemp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,7 @@ slug: basic-postfix-email-gateway-on-debian-6-squeeze
 author:
   name: Linode
   email: docs@linode.com
-description: 'In this tutorial, learn how to configure a Postfix MTA as a basic email gateway on Debian 6 "Squeeze".'
+description: 'In this tutorial, you will learn how to configure a Postfix MTA as a basic email gateway to send and receive email using POP, IMAP, and SMTP on Debian 6 "Squeeze".'
 keywords: ["email", "postfix", "mta", "forwarding"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

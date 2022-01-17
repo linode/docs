@@ -3,7 +3,7 @@ slug: install-an-odoo-11-stack-on-ubuntu-16-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide will show you how to install and configure Odoo using Git source so it will be easy to upgrade and maintain on Ubuntu 16.04.'
+description: 'This guide will show you how to install and configure Odoo using Git source so that it will be easy to upgrade and maintain on Ubuntu 16.04.'
 keywords: ["Odoo", "Odoo ERP", "CMS", "Ubuntu", "CRM", "OpenERP", "Odoo 11", "Ubuntu 16.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

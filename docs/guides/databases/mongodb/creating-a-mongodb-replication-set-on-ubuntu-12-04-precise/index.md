@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will show you how to confiugre a MongoDB ReplSet on Ubuntu 12.04 "Precise Pangolin"'
+description: 'This guide will show you how to configure a MongoDB Replica Set (aka cluster) with primary-secondary replication and automatic failover on Ubuntu 12.04 "Precise Pangolin".'
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/creating-a-mongodb-replication-set-on-ubuntu-12-04-precise/','/databases/mongodb/ubuntu-12/']
