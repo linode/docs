@@ -213,6 +213,7 @@ changelog
 changelogs
 changeme
 changeset
+changesets
 characterwise
 chatbots
 chatrooms
@@ -371,6 +372,7 @@ deepin
 defragment
 delpy
 demultiplexer
+denormalized
 deprovisioning
 descolada
 descr
@@ -940,6 +942,7 @@ lda
 ldap
 lego
 leiningen
+lelastic
 len
 lennart
 letsencrypt
@@ -1885,6 +1888,7 @@ toolchain
 toolchains
 toolset
 towson
+trac
 traceroute
 trackbar
 traefik

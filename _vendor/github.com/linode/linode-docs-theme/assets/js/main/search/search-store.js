@@ -1,6 +1,6 @@
 import { newQuery, QueryHandler } from './query';
-import { LRUMap, toDateString } from '../helpers';
-import { newCreateHref } from '../navigation/index';
+import { getCurrentLang, LRUMap, toDateString } from '../helpers';
+import { newCreateHref, addLangToHref } from '../navigation/index';
 import {
 	newRequestCallback,
 	newRequestCallbackFactories,
@@ -331,6 +331,8 @@ const normalizeResult = function(self, result) {
 		return sections;
 	};
 
+	let lang = getCurrentLang();
+
 	result.hits.forEach((hit) => {
 		hit.sectionTitle = hit.section;
 		if (hit.section) {
@@ -352,6 +354,10 @@ const normalizeResult = function(self, result) {
 
 		if (hit.href) {
 			hit.isExternalLink = hit.href.startsWith('http');
+		}
+
+		if (lang && lang !== 'en' && hit.href) {
+			hit.href = addLangToHref(hit.href, lang);
 		}
 
 		hit.firstPublishedDateString = '';

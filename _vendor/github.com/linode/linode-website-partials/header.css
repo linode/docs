@@ -806,6 +806,9 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   flex: 1;
   justify-content: flex-end;
 }
+.c-site-header__topbar .o-layout__col:last-child {
+  margin-right: -12px;
+}
 .c-site-header__topbar .o-layout__module {
   margin-bottom: 0;
   margin-top: 0;
@@ -872,10 +875,9 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   font-size: 13px;
   line-height: 1.2307692308;
   margin-left: -8px;
-  min-width: 68.83px;
 }
-.c-site-header__topbar .c-weglot-nav .country-selector {
-  margin-right: -12px;
+.c-site-header__topbar .c-weglot-nav .weglot_here {
+  min-width: 68.83px;
 }
 .c-site-header__topbar .c-weglot-nav .wgcurrent {
   margin: 0 12px;
