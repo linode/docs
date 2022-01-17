@@ -3,7 +3,7 @@ slug: how-to-install-and-configure-drupal-on-ubuntu-18-04
 author:
     name: Linode
     email: docs@linode.com
-description: 'This guide will show you how to install and configure the popular Content Management System, Drupal, on Ubuntu 18.04.'
+description: 'This guide will show you how to install and configure the very popular content management system, Drupal 8, on your Linode running Ubuntu 18.04.'
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "ubuntu 18.04"]
 tags: ["drupal","ubuntu","apache","lamp","php","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,8 +3,8 @@ slug: how-to-deploy-a-new-linode-using-a-stackscript
 author:
   name: Linode
   email: docs@linode.com
-description: 'In this guide, you will learn the various ways you can deploy a new Linode using a StackScript.'
-og_description: 'In this guide, you will learn the various ways you can deploy a new Linode using a StackScript.'
+description: 'In this guide, you will learn the various methods you can use in conjunction with the Cloud Manager to deploy a new Linode with a StackScript.'
+og_description: 'In this guide, you will learn the various methods you can use in conjunction with the Cloud Manager to deploy a new Linode with a StackScript.'
 keywords: ["stackscripts", "automation", "script", "custom instance", "deployment"]
 tags: ["linode platform","automation","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

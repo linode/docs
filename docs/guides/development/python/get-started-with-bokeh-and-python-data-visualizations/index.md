@@ -2,7 +2,7 @@
 slug: get-started-with-bokeh-and-python-data-visualizations
 author:
   name: John Mueller
-description: "This guide provides an overview of Bokeh, an interactive visualization library written in Python, and it's main features."
+description: 'This guide provides you with an overview of the utility Bokeh, which is an interactive visualization library written in Python and how to use it.'
 keywords: ['bokeh python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

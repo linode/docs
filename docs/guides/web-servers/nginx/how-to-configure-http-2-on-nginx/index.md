@@ -2,8 +2,8 @@
 slug: how-to-configure-http-2-on-nginx
 author:
   name: Jeff Novotny
-description: 'This guide will show you how to configure, use, and test, HTTP/2 using NGINX on Debian.'
-og_description: 'This guide will show you how to configure, use, and test, HTTP/2 using NGINX on Debian.'
+description: 'In this tutorial, you will learn how to configure HTTP/2, an updated version of the HTTP technology which adds several useful features using Apache on Debian.'
+og_description: 'In this tutorial, you will learn how to configure HTTP/2, an updated version of the HTTP technology which adds several useful features using NGINX on Debian.'
 keywords: ['nginx http2']
 tags: ['web server', 'nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

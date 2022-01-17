@@ -3,7 +3,7 @@ slug: beginners-guide-to-go
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide is an introduction to the Go programming language and will show you how run your first program and more.'
+description: 'This guide will introduce you to the Go programming language and will also instruct you on how you can create and run your first program and more.'
 keywords: ['golang','go','command line arguments']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-11

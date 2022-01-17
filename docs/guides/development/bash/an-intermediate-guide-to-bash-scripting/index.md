@@ -3,8 +3,8 @@ slug: an-intermediate-guide-to-bash-scripting
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'In this guide, you will put together more complex Bash scripts for common operations used by Linux system administrators.'
-og_description: 'In this guide, you will put together more complex Bash scripts for common operations used by Linux system administrators.'
+description: 'In this guide, you will learn more advanced methods of creating complex Bash Scripts to perform common operations frequently used by Linux system administrators.'
+og_description: 'In this guide, you will learn more advanced methods of creating complex Bash Scripts to perform common operations frequently used by Linux system administrators.'
 keywords: ["shell", "bash", "printf", "script"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-05

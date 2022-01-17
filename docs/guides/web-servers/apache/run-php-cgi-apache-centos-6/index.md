@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will show you how to use PHP CGI to run PHP scripts as indivudual users on CentOS 6.'
+description: 'This guide will show you how to install and configure the Apache Web Server and PHP-CGI to run custom PHP scripts as individual users CentOS 6.'
 keywords: ["php cgi", "php", "apache", "cgi", "http", "php scripts", "web apps", "web applications"]
 tags: ["centos","web server","apache","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,7 @@ slug: how-to-install-and-configure-drupal-on-debian-10
 author:
     name: Linode
     email: docs@linode.com
-description: 'This guide will show you how to install and configure the popular Content Management System, Drupal, on Debian 10. '
+description: 'This guide will show you how to install and configure the very popular content management system, Drupal 8, on your Linode running Debian 10.'
 keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8", "debian 10"]
 tags: ["drupal","apache","lamp","php","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

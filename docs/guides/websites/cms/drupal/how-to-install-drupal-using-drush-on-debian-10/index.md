@@ -3,8 +3,8 @@ slug: how-to-install-drupal-using-drush-on-debian-10
 author:
     name: Linode
     email: docs@linode.com
-description: 'This guide will show you how to install the popular content management system Drupal on Debian 10 using Drush.'
-og_description: 'This guide will show you how to install the popular content management system Drupal on Debian 10 using Drush.'
+description: 'This guide will show you how to install the popular content management system Drupal on CentOS 8 using the Drush command line tool on Debian 10.'
+og_description: 'This guide will show you how to install the popular content management system Drupal on CentOS 8 using the Drush command line tool on Debian 10..'
 keywords: ["drupal", "cms", "content management system", "content management framework","drush"]
 tags: ["drupal","lamp","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

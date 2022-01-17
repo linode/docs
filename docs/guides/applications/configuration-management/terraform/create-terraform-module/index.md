@@ -3,7 +3,7 @@ slug: create-terraform-module
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows you how to create a Terraform module with nested root, linode_instance, and stackscripts modules using a Linode StackScripts module that deploys a Linode instance.'
+description: 'This guide shows you how to create a Terraform module with nested root, linode_instance, and stackscripts modules using a Linode StackScripts installer.'
 keywords: ['terraform','resource','modules','provider']
 tags: ["terraform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

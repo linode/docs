@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will show you how to install and configure a structured wiki with TWiki on Ubuntu 10.04 "Lucid".'
+description: 'This guide will show you how to install and configure a structured wiki to share and store different types of information with TWiki on Ubuntu 10.04 "Lucid".'
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

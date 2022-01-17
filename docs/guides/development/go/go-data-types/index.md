@@ -3,7 +3,7 @@ slug: go-data-types
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: "In this guide, we will walk you through the basics of the Go language, including pointers, available numeric types, arrays, slices, and maps."
+description: "In this guide, we will walk you through the basics of the Go programming language, including pointers, available numeric types, arrays, slices, and maps."
 keywords: ["Go", "Golang", "Pointers", "Arrays", "Slices", "Maps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-19

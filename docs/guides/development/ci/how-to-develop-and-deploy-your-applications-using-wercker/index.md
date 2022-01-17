@@ -3,8 +3,8 @@ slug: how-to-develop-and-deploy-your-applications-using-wercker
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide will show you how to use Wrecker to setup automation pipelines for your apps with only a single configuration file.'
-og_description: 'This guide will show you how to use Wrecker to setup automation pipelines for your apps with only a single configuration file.'
+description: 'This guide will show you how to use the Wrecker utility to programmatically setup automation pipelines for your apps with only a single configuration file.'
+og_description: 'This guide will show you how to use the Wrecker utility to programmatically setup automation pipelines for your apps with only a single configuration file.'
 keywords: ["wercker", "docker", "development"]
 tags: ["automation","version control system","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

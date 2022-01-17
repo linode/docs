@@ -3,7 +3,7 @@ slug: antmediaserver-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "This guide will show you how to deploy Ant Media Server with Linode One-Click Marketplace Apps."
+description: 'This guide will show you how to install and configure Ant Media Server so you can stream video online using the Linode One-Click Marketplace App.'
 keywords: ['streaming', "marketplace", "live video streaming"]
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

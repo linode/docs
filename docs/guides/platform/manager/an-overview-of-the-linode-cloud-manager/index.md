@@ -3,8 +3,8 @@ slug: an-overview-of-the-linode-cloud-manager
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide provides an overview of the Linode Cloud Manager and covers specific features that you may need help finding.'
-og_description: 'This guide provides an overview of the Linode Cloud Manager and covers specific features that you may need help finding.'
+description: 'This guide provides you with an overview of the Linode Cloud Manager and covers how to locate features within Cloud Manager, create Linodes and more.'
+og_description: 'This guide provides you with an overview of the Linode Cloud Manager and covers how to locate features within Cloud Manager, create Linodes and more.'
 keywords: ["classic manager","cloud manager","linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/manager/a-classic-to-cloud-manager-overview-guide/','/platform/manager/an-overview-of-the-linode-cloud-manager/']
