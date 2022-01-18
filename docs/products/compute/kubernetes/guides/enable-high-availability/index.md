@@ -12,6 +12,12 @@ High Availability can be enabled during [cluster creation](/docs/guides/deploy-a
 
 {{< caution >}}
 While upgrading to an HA cluster is always possible, **downgrading your cluster is not currently supported**. Enabling HA is an **irreversible** change for your cluster.
+
+Additionally, Enabling HA will result in the following changes:
+
+- All nodes will be deleted and new nodes wil be created to replace them.
+- Any local storage (such as `hostPath` volumes) will be erased.
+- The upgrade process may take several minutes to complete, as nodes will be replaced on a rolling basis.
 {{< /caution >}}
 
 1. From the **Create a Kubernetes Cluster** page, navigate to the **Cluster Summary** section.
@@ -28,6 +34,12 @@ High Availability can be added to pre-existing clusters at any given time throug
 
 {{< caution >}}
 While upgrading to an HA cluster is always possible, **downgrading your cluster is not currently supported**. Enabling HA is an **irreversible** change for your cluster.
+
+Additionally, Enabling HA will result in the following changes:
+
+- All nodes will be deleted and new nodes wil be created to replace them.
+- Any local storage (such as `hostPath` volumes) will be erased.
+- The upgrade process may take several minutes to complete, as nodes will be replaced on a rolling basis.
 {{< /caution >}}
 
 1. To reach the summary page for the cluster, navigate first to the [Kubernetes section of the Cloud Manager](https://cloud.linode.com/kubernetes/clusters).
