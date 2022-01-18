@@ -23,6 +23,8 @@ tab_group_main:
 
 - [Enable High Availability](/docs/products/compute/kubernetes/guides/enable-high-availability): Enable High availability for your LKE cluster, creating additional replicas of your control plane components directly through the Cloud Manager.
 
+- [Reset Kubeconfig](/docs/products/compute/kubernetes/guides/reset-kubeconfig): Reset an LKE cluster's kubeconfig from the Cloud Manager.
+
 ## Themes
 
 These guides explore topics such as using Docker, networking, deploying websites, and using LKE with third-party tools.

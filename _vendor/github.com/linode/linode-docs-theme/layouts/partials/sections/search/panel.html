@@ -11,10 +11,10 @@
           <h1 class="block font-bold leading-tight tracking-tight text-4xl text-titlecolor w-full mb-4">
             Search Results
           </h1>
-          <p class="text-2xl" x-show="$store.search.query.q">
-            <span x-show="$store.search.query.q" x-text="$store.search.results.main.result.stats.totalNbHits" data-testid="search-nb-hits"></span>&nbspresults matching&nbsp<span class="font-bold" x-text="`${'“' + $store.search.query.q + '”'}`"></span>
+          <p class="text-2xl" x-show="$store.search.query.lndq">
+            <span x-show="$store.search.query.lndq" x-text="$store.search.results.main.result.stats.totalNbHits" data-testid="search-nb-hits"></span>&nbspresults matching&nbsp<span class="font-bold" x-text="`${'“' + $store.search.query.lndq + '”'}`"></span>
           </p>
-          <p class="text-2xl" x-show="!$store.search.query.q" >
+          <p class="text-2xl" x-show="!$store.search.query.lndq" >
             <span x-text="$store.search.results.main.result.stats.totalNbHits"></span>&nbspresults</span>
           </p>
         </div>

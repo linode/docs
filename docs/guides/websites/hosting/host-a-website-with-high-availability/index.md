@@ -7,7 +7,7 @@ description: 'How to configure a highly available web server stack'
 keywords: ["high availability", "web server", "failover"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-07-12
-modified: 2018-07-16
+modified: 2022-01-07
 modified_by:
   name: Angel Guarisma
 title: 'Host a Website with High Availability'
@@ -19,9 +19,8 @@ external_resources:
 - '[XtraBackup](https://www.percona.com/doc/percona-xtrabackup/2.4/index.html)'
 aliases: ['/websites/hosting/host-a-website-with-high-availability/','/websites/host-a-website-with-high-availability/']
 tags: ["web server"]
+image: host-a-website-with-high-availability-title-graphic.jpg
 ---
-
-![Host a Website with High Availability](host-a-website-with-high-availability-title-graphic.jpg "Host a Website with High Availability")
 
 When deploying a website or application, one of the most important elements to consider is availability, or the period of time for which your content is accessible to users. High availability is a term used to describe server setups that eliminate single points of failure by offering redundancy, monitoring, and failover. This ensures that even if one component of your web stack goes down, the content will still be accessible.
 
@@ -195,8 +194,8 @@ Install Galera and XtraDB on each Linode that will be in the database cluster.
 
 1.  Install the following packages on each database node:
 
-        yum install epel-release
-        yum install https://www.percona.com/redir/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm
+        yum install wget epel-release
+        yum install https://downloads.percona.com/downloads/percona-release/percona-release-0.1-6/redhat/percona-release-0.1-6.noarch.rpm
         yum install Percona-XtraDB-Cluster-57 Percona-XtraDB-Cluster-shared-57
 
     {{< note >}}
@@ -216,9 +215,10 @@ Run the following commands on each database node.
 <service>
   <short>Galera Replication</short>
   <description>Galera Master-Master Replication and State Transfer</description>
+  <port protocol="tcp" port="3306"/>
+  <port protocol="tcp" port="4444"/>
   <port protocol="tcp" port="4567"/>
   <port protocol="tcp" port="4568"/>
-  <port protocol="tcp" port="4444"/>
 </service>
 {{< /file >}}
 

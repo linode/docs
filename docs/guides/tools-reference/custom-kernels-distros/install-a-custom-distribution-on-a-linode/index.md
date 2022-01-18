@@ -87,19 +87,19 @@ If you intend to continue to the next section on [Linode Manager Compatibility](
 
 1.  Boot into [Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/guides/using-the-lish-console/).
 
-1.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the Debian network installer, but you can replace the URL in the following command with the location of the image you want to install:
+1.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the Debian 10.11 network installer, but you can replace the URL in the following command with the location of the image you want to install:
 
     {{< note >}}
 As an additional security step, you can use the keys provided in the same directory as the `iso` to [verify the authenticity](https://www.debian.org/CD/verify) of the image.
 {{< /note >}}
 
-        wget http://ftp.debian.org/debian/dists/jessie/main/installer-amd64/current/images/netboot/mini.iso
+        wget http://ftp.debian.org/debian/dists/Debian10.11/main/installer-amd64/current/images/netboot/mini.iso
         dd if=mini.iso of=/dev/sda
 
     {{< note >}}
 If you would prefer to write the installer directly to the disk as it downloads, use:
 
-    curl http://ftp.debian.org/debian/dists/jessie/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
+    curl http://ftp.debian.org/debian/dists/Debian10.11/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
 {{< /note >}}
 
 1.  Empty the cache so that you have enough space to unpack and install the image.
@@ -120,7 +120,7 @@ Some installers offer an option to place `/boot` on a separate partition. If you
 
 ### Configure Grub for Lish Access
 
-At this point you can connect to your Linode via SSH or the Glish graphical console. However, you can not connect to your Linode using the Lish serial console. To fix this, update the following settings in your `/etc/default/grub` file:
+At this point you can connect to your Linode via the Glish graphical console and SSH if it is enabled and included by default. However, you can not connect to your Linode using the Lish serial console. To fix this, update the following settings in your `/etc/default/grub` file:
 
 {{< file "/etc/default/grub" >}}
 GRUB_TIMEOUT=10
@@ -132,7 +132,7 @@ Once you've finished editing `grub`, issue the appropriate command to apply your
 
 *   Ubuntu and Debian:
 
-        update-grub
+        sudo update-grub
 
 *   CentOS and Fedora:
 
@@ -144,6 +144,10 @@ Once you've finished editing `grub`, issue the appropriate command to apply your
 
 {{< note >}}
 If you're still not able to access your Linode via Lish after updating your GRUB configuration, a reboot may be required. If this is the case, make sure you're rebooting into your *Boot* configuration profile.
+
+Additionally, in some cases, SSH will not be enabled or included by default as part of your installation. In Debian 10 for example, the `openssh-server` package will need to be installed manually with the following command before connecting to your Linode over SSH:
+
+    sudo apt install openssh-server
 {{< /note >}}
 
 ## Linode Manager Compatibility
@@ -244,4 +248,5 @@ In Rescue Mode, connect via Lish and transfer your root file system from the `/d
 Once the transfer completes, reboot into your *Installer-New* profile. You now have a custom distribution that works with the Linode Manager's extra features. In order to make use of the Backup Service, you need to remove the raw disks that were used during the installation process.
 
 ### Linode Images
-Linode offers an image feature. The feature allows users to quickly deploy custom or preconfigured distribution images to new Linodes. Read this [guide](/docs/guides/linode-images/) to learn more.
+
+Linode offers an image feature. The feature allows users to quickly deploy custom or preconfigured distribution images to new Linodes. Review the [Images](/docs/products/tools/images/) documentation to learn more.

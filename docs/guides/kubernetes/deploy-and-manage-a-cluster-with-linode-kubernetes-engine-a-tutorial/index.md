@@ -294,6 +294,19 @@ All clusters that have HA enabled will have an HA Cluster watermark on their sum
 
    ![LKE HA cluster watermark](ha-cluster-watermark.png "LKE HA cluster watermark.")
 
+### Reset Cluster Kubeconfig
+
+In cases where access to a cluster using a current kubeconfig must be revoked, LKE provides the ability to **Reset** a cluster kubeconfig. This will effectively remove the current kubeconfig, and create a new one for cluster administrators to use.
+
+1. To reset the cluster kubeconfig access the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
+
+1. Select the **Reset** button under the **kubeconfig** sub-category.
+
+![Cluster Kubeconfig Reset](reset-kubeconfig.png "Cluster Node Reset.")
+
+1. A confirmation message will appear confirming the Kubeconfig reset. Select the **Reset kubeconfig** button to proceed.
+
+A new kubeconfig will now be created. Once this process is completed, the new kubeconfig can be [Accessed and Downloaded](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-and-download-your-kubeconfig) as usual.
 
 ## Delete a Cluster
 
