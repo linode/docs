@@ -7,19 +7,23 @@ tab_group_main:
 
 ## Basics
 
-- [Getting Started with Linode GPU Instances](/docs/platform/linode-gpu/getting-started-with-gpu/)
+- [Getting Started with GPU Instances](/docs/products/compute/gpu/get-started/): A walkthrough for deploying a GPU instance and installing the required NVIDIA CUDA Toolkit.
 
-- [Use Cases for Linode GPU Instances](/docs/products/compute/gpu/guides/use-cases/)
+- [Use Cases for GPU Instances](/docs/products/compute/gpu/guides/use-cases/): Covers the primary applications for GPU instances and the reasons someone might benefit from parallel processing.
 
-## NVIDIA Drivers
+## NVIDIA Documentation
 
-- [Install NVIDIA Driver Dependencies](/docs/products/compute/gpu/guides/install-nvidia-driver-dependencies/): Some dependencies need to be installed before the drivers are installed.
+- [CUDA FAQ](https://developer.nvidia.com/cuda-faq): NVIDIA's FAQ resource for the CUDA platform.
 
-- [NVIDIA Driver CUDA Installation](/docs/products/compute/gpu/guides/install-nvidia-drivers-with-cuda/): If you're running Ubuntu 18.04, CentOS 7, or OpenSUSE, install the NVIDIA driver with CUDA.
+- [NVIDIA CUDA Installation Guide for Linux](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html): The main installation guide for installing the CUDA Toolkit.
 
-- [NVIDIA Driver Manual Installation](/docs/products/compute/gpu/guides/install-nvidia-drivers-manually/): If you're running Debian 9, install the NVIDIA driver manually.
+- [CUDA Samples](https://github.com/nvidia/cuda-samples): Code samples demonstrating features found within the CUDA Toolkit.
 
-## Guides for all Compute Instances
+- [CUDA C++ Best Practices Guide](https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html): Discusses the best practices that developers can implement to get the most out of GPU instances.
+
+- [CUDA C++ Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html): Provides details on how to develop programs that target GPUs.
+
+## Guides for All Compute Instances
 
 - [Getting Started with Linode](/docs/getting-started/)
 
