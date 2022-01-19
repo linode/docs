@@ -22,7 +22,7 @@ Linode offers multiple Compute Instance types, each of which can be equipped wit
 This guide provides you with the information needed to select the most appropriate instance, helping you sort through all of Linode's offerings and land on the right one for the job.
 
 {{< note >}}
-You can easily change between instance types and plans on an existing Compute Instance at any time. Review the [Resizing a Linode](/docs/guides/resizing-a-linode/) for instructions. 
+You can easily change between instance types and plans on an existing Compute Instance at any time. Review the [Resizing a Linode](/docs/guides/resizing-a-linode/) for instructions.
 {{< /note >}}
 
 ## Instance Types
@@ -102,8 +102,7 @@ Starting at $1000/mo ($1.50/hour)
 - [General Purpose Computing Using NVIDIA's CUDA Toolkit](/docs/platform/linode-gpu/why-linode-gpu/#general-purpose-computing-using-cuda)
 - [Graphics Processing](/docs/platform/linode-gpu/why-linode-gpu/#graphics-processing)
 
-
-## Compute Resource
+## Compute Resources
 
 When selecting a plan, it is important to understand the hardware resources allocated to your instance. These resources include the amount of vCPU cores, memory, storage space, network transfer, and more. Start by reviewing each resource below and the implications it may have for your application.
 
