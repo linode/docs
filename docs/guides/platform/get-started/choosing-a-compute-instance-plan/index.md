@@ -39,7 +39,7 @@ The different instance types represent different balances of the above resources
 **1 GB - 192 GB Memory, 1 - 32 Shared vCPU Cores, 25 GB - 2840 GB Storage**<br>
 Starting at $5/mo ($0.0075/hour). See [Shared CPU Pricing](https://www.linode.com/pricing/#compute-shared) for a full list of plans, resources, and pricing.
 
-[Shared CPU Instances](https://www.linode.com/products/shared/) offer a balanced array of resources coupled with shared CPUs that can burst up to 100% for short intervals. This keeps costs down while still supporting a wide variety of cloud applications. Your processes are scheduled on the same CPU cores as processes from other Compute Instances. This shared scheduling is done in a secure and performant manner and Linode works to minimize competition for CPU resources between your server and other servers.
+[Shared CPU Instances](/docs/products/compute/shared-cpu/) offer a balanced array of resources coupled with shared CPUs that can burst up to 100% for short intervals. This keeps costs down while still supporting a wide variety of cloud applications. Your processes are scheduled on the same CPU cores as processes from other Compute Instances. This shared scheduling is done in a secure and performant manner and Linode works to minimize competition for CPU resources between your server and other servers.
 
 **Recommended Use Cases:**
 
@@ -54,9 +54,9 @@ Starting at $5/mo ($0.0075/hour). See [Shared CPU Pricing](https://www.linode.co
 ### Dedicated CPU Instances
 
 **4 GB - 512 GB Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
-Starting at $30/mo ($0.045/hour)
+Starting at $30/mo ($0.045/hour). See [Dedicated CPU Pricing](https://www.linode.com/pricing/#compute-dedicated) for a full list of plans, resources, and pricing.
 
-[Dedicated CPU Instances](https://www.linode.com/pricing/#compute-dedicated) reserve physical CPU cores that you can utilize at 100% load 24/7 for as long as you need. This provides competition free guaranteed CPU resources and ensures your software can run at peak speed and efficiency. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations. These instances offer a perfectly balanced set of resources for most production applications.
+[Dedicated CPU Instances](/docs/products/compute/dedicated-cpu/) reserve physical CPU cores that you can utilize at 100% load 24/7 for as long as you need. This provides competition free guaranteed CPU resources and ensures your software can run at peak speed and efficiency. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations. These instances offer a perfectly balanced set of resources for most production applications.
 
 **Recommended Use Cases:**
 
@@ -74,9 +74,11 @@ Starting at $30/mo ($0.045/hour)
 ### High Memory Instances
 
 **24 GB - 300 GB Memory, 2 - 16 Dedicated vCPUs, 20 GB - 340 GB Storage**<br>
-Starting at $60/mo ($0.09/hour)
+Starting at $60/mo ($0.09/hour). See [High Memory Pricing](https://www.linode.com/pricing/#compute-high-memory) for a full list of plans, resources, and pricing.
 
-[High Memory Instances](https://www.linode.com/pricing/#compute-high-memory) are optimized for memory-intensive applications and equipped with dedicated CPUs, which provide competition free guaranteed CPU resources. These instances feature higher RAM allocations and relatively fewer vCPUs and less storage. This keeps your costs down and provides power to memory-intensive applications.
+[High Memory Instances](/docs/products/compute/high-memory/) are optimized for memory-intensive applications and equipped with dedicated CPUs, which provide competition free guaranteed CPU resources. These instances feature higher RAM allocations and relatively fewer vCPUs and less storage. This keeps your costs down and provides power to memory-intensive applications.
+
+**Recommended Use Cases:**
 
 *Best for in-memory databases, in-memory caching systems, big data processing, and any production application that requires a large amount of memory while keeping costs down.*
 
@@ -88,9 +90,9 @@ Starting at $60/mo ($0.09/hour)
 ### GPU Instances
 
 **32 GB - 128 GB Memory, 8 - 24 Dedicated vCPUs, 640 GB - 2560 GB Storage**<br>
-Starting at $1000/mo ($1.50/hour)
+Starting at $1000/mo ($1.50/hour). See [GPU Pricing](https://www.linode.com/pricing/#compute-gpu) for a full list of plans, resources, and pricing.
 
-[GPU Instances](https://www.linode.com/pricing/#compute-gpu) are the only instance type equipped with [NVIDIA Quadro RTX 6000 GPU cards](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf) (up to 4) for on demand execution of complex processing workloads. These GPUs have CUDA cores, Tensor cores, and RT (Ray Tracing) cores. GPUs are designed to process large blocks of data in parallel, meaning that they are an excellent choice for any workload requiring thousands of simultaneous threads. With significantly more logical cores than a standard CPU, GPUs can perform computations that process large amounts of data in parallel more efficiently.
+[GPU Instances](/docs/products/compute/gpu/) are the only instance type equipped with [NVIDIA Quadro RTX 6000 GPU cards](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf) (up to 4) for on demand execution of complex processing workloads. These GPUs have CUDA cores, Tensor cores, and RT (Ray Tracing) cores. GPUs are designed to process large blocks of data in parallel, meaning that they are an excellent choice for any workload requiring thousands of simultaneous threads. With significantly more logical cores than a standard CPU, GPUs can perform computations that process large amounts of data in parallel more efficiently.
 
 **Recommended Use Cases:**
 
