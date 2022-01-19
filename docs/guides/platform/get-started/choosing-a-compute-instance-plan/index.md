@@ -27,12 +27,14 @@ You can easily change between instance types and plans on an existing Compute In
 
 ## Instance Types
 
-The different instance types represent different balances of the above resources:
+These are the instance types offered by Linode:
 
 - [Shared CPU instances](#shared-cpu-instances)
 - [Dedicated CPU instances](#dedicated-cpu-instances)
 - [High Memory instances](#high-memory-instances)
 - [GPU instances](#gpu-instances)
+
+They each have unique characteristics and their resources are optimized for different types of workloads. Learn about each of these instance types below, along with the resources provided and their suggested use cases.
 
 ### Shared CPU Instances
 
