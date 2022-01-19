@@ -28,7 +28,7 @@ While upgrading to an HA cluster is always possible, **downgrading your cluster 
 
 Additionally, Enabling HA will result in the following changes:
 
-- All nodes will be deleted and new nodes wil be created to replace them.
+- All nodes will be deleted and new nodes will be created to replace them.
 - Any local storage (such as `hostPath` volumes) will be erased.
 - The upgrade process may take several minutes to complete, as nodes will be replaced on a rolling basis.
 {{< /caution >}}
