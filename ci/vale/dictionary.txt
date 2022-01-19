@@ -41,6 +41,7 @@ anonymize
 anonymizing
 ansi
 ansible
+anticompetitive
 antispam
 anycast
 anycasted
@@ -568,6 +569,7 @@ flowlens
 flyspray
 foodcritic
 fortinet
+fortnite
 fortran
 fordham
 fmt
@@ -1944,6 +1946,7 @@ unicode
 uninvoiced
 uniq
 unittest
+univac
 unix
 unmanaged
 unmerged
