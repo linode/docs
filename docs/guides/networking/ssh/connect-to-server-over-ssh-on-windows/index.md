@@ -3,12 +3,12 @@ slug: connect-to-server-over-ssh-on-windows
 author:
   name: Linode
   email: docs@linode.com
-description: 'A tutorial outlining how to connect to a remote server over SSH on a Windows PC, including opening the terminal and structuring the ssh command.'
-og_description: 'A tutorial outlining how to connect to a remote server over SSH on a Windows PC, including opening the terminal and structuring the ssh command.'
+description: "Read our guide on how to connect to a remote server over SSH on Windows, including opening the terminal & structuring the command. ✓ Click to read!"
 keywords: ['ssh','linux','windows','connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
+modified: 2022-01-14
 image: SSHWINDOWS.jpg
 modified_by:
   name: Linode
@@ -25,25 +25,25 @@ relations:
 
 A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of a connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.
 
-This article covers the basics of connecting to a remote server (such as a Linode) over SSH on a local Windows system.
+This article walks you through how to use SSH from Windows, covering the basics of installing a Windows SSH command-line tool and connecting to a remote server (such as a Linode) over SSH on a local Windows system.
 
 ## Before You Begin
 
 1.  Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Getting Started](/docs/getting-started/) guide to create a Linode.
 
-1.  If using Windows 10, install any pending updates to ensure you are running the latest version of Windows.
+1.  If using Windows 10 or Windows 11, install any pending updates to ensure you are running the latest version of Windows before you enable SSH.
 
 ## Open the Terminal
 
-On your local Windows computer, open the terminal application you wish to use. The terminal allows you to access your operating system's shell environment and run programs through the command line.
+On your local Windows computer, open the terminal application you wish to use. The terminal allows you to access your operating system's shell environment and run programs through the command line, such as the SSH command.
 
-- [PowerShell - Windows 10](#powershell---windows-10): This is the easiest method for most people using a Windows 10 computer.
-- [Windows Subsystem for Linux - Windows 10](#windows-subsystem-for-linux-wsl---windows-10): This requires quite a few more installation and configuration steps, but may be a better option for those who prefer working within a Linux command-line.
-- [PuTTY - Windows 8, 7, Vista, and XP](#putty---windows-8-7-vista-and-xp): For earlier versions of Windows, you  need to use PuTTY or any other third-party terminal emulator.
+- [Command Prompt (or PowerShell) - Windows 10 or 11](#command-prompt-or-powershell---windows-10-or-11): This is the easiest method for most people using Windows 10 or later.
+- [Windows Subsystem for Linux - Windows 10 or 11](#windows-subsystem-for-linux-wsl---windows-10-or-11): This requires quite a few more installation and configuration steps, but may be a better option for those who prefer working within a Linux command-line.
+- [PuTTY - Windows 8, 7, Vista, and XP](#putty---windows-8-7-vista-and-xp): For earlier versions of Windows, you need to use PuTTY or any other third-party terminal emulator.
 
-### PowerShell - Windows 10
+### Command Prompt (or PowerShell) - Windows 10 or 11
 
-The default terminal for Windows 10 is PowerShell. To connect to a server using SSH within PowerShell, the OpenSSH client needs to be installed. OpenSSH is available on newer versions of Windows 10 (April 2018 update and later), though it may need to be manually enabled.
+There are two terminals on Windows 10 and 11, the Command Prompt (also called CMD) and PowerShell. To connect to a server using SSH on Windows 10 within one of these tools, the OpenSSH client needs to be installed. OpenSSH is a Windows SSH client and available on newer versions of Windows 10 (April 2018 update and later), though it may need to be manually enabled.
 
 #### Install the OpenSSH Client
 
@@ -57,19 +57,19 @@ The default terminal for Windows 10 is PowerShell. To connect to a server using 
 
     ![OpenSSH](openssh-installed-feature.png)
 
-1.  If the *OpenSSH Client* feature is not installed, click the **Add a feature** button at the top of the page. A dropdown menu appears. Select **OpenSSH Client** and press the **Install** button.
+1.  If the *OpenSSH Client* feature is not installed, click the **Add a feature** button at the top of the page. A dropdown menu appears. Select **OpenSSH Client** and press the **Install** button to install the ssh on Windows.
 
-#### Open PowerShell
+#### Open the Command Prompt or PowerShell
 
-To use PowerShell, open **Windows Search** through the **Windows** + **S** hotkey, type "PowerShell" into the search area, and select the *Windows PowerShell* application from the results. [PowerShell 7](https://github.com/PowerShell/PowerShell) or later, the newer cross-platform PowerShell application, can also be used if installed.
+To run the SSH command, you first need to open your preferred command line utility. Open **Windows Search** through the **Windows** + **S** hotkey, type "Command Prompt" or "PowerShell" into the search area, and select the corresponding application from the results. [PowerShell 7](https://github.com/PowerShell/PowerShell) or later, the newer cross-platform PowerShell application, can also be used if installed.
 
-![The Windows PowerShell application within Windows Search](powershell-search.png "The Windows PowerShell application within Windows Search")
+![The Windows PowerShell application within Windows Search](powershell-search.png)
 
-### Windows Subsystem for Linux (WSL) - Windows 10
+### Windows Subsystem for Linux (WSL) - Windows 10 or 11
 
-Instead of using the PowerShell environment (which is significantly different than both the macOS and Linux command-line environments), you can run Linux directly within Windows through WSL (Windows Subsystem for Linux). This may be preferred if you are more comfortable working within a Linux shell environment.
+Instead of using the Command Prompt or PowerShell environment (which is significantly different than both the macOS and Linux command-line environments), you can run Linux directly within Windows through WSL (Windows Subsystem for Linux). This may be preferred if you are more comfortable working within a Linux shell environment.
 
-1.  Install WSL by following the instructions within Microsoft's [Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10). If you already have WSL1 installed, it's recommended to update to WSL2.
+1.  Install WSL by following the instructions within Microsoft's [Install WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) guide. If you already have WSL1 installed, it's recommended to update to WSL2.
 
 1.  Install your preferred Linux distribution, such as [Ubuntu](https://www.microsoft.com/store/apps/9nblggh4msv6), directly from the Microsoft Store. A full list of available distributions can be found under [Step 6 - Install your Linux distribution of choice](https://docs.microsoft.com/en-us/windows/wsl/install-win10#step-6---install-your-linux-distribution-of-choice) of the previously mentioned guide.
 
@@ -82,13 +82,15 @@ There is no native SSH client in Windows 8 and earlier. Instead, you'll need to 
 - [Connecting to a Remote Server Over SSH using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/)
 - [Connecting to a Remote Server Over SSH on Chrome](/docs/guides/connect-to-server-over-ssh-on-chrome/)
 
-## Connecting to the Remote Server Over SSH
+## Connecting to the Remote Server Over SSH from Windows
+
+Once you've opened your preferred Windows SSH client (Command Prompt, PowerShell, or WSL), you can run the `ssh` command to connect to your server.
 
 1. Within the terminal, enter the following command, replacing *[username]* with the username of the remote user and *[ip-address]* with the IP address or domain name of the remote server.
 
        ssh [username]@[ip-address]
 
-    The SSH client attempts to connect to the remote server over port 22 (the default SSH port).
+     The SSH client attempts to connect to the remote server over port 22 (the default SSH port).
 
     {{< note >}}
 If the server's SSH port is something other than 22, it needs to be specified in the SSH command. To do this, use the `-p` option as shown in the command below. Replace [port-number] with the port number that the remote SSH server is using.
@@ -96,7 +98,7 @@ If the server's SSH port is something other than 22, it needs to be specified in
     ssh [username]@[ip-address] -p [port-number]
 {{< /note >}}
 
-1.  When you connect with a server for the first time, the SSH client prompts you to check and verify the host key's fingerprint. This is normal, and results in output similar to:
+1.  When you connect with a server for the first time, the SSH client on Windows 10 prompts you to check and verify the host key's fingerprint. This is normal, and results in output similar to:
 
     {{< output >}}
 The authenticity of host ‘example.com (93.184.216.34)’ can't be established.

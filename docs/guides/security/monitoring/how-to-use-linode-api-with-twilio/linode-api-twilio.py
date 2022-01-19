@@ -1,8 +1,8 @@
 import os
 import sys
-from twilio.rest import Client
 from linode_api4 import LinodeClient
 from linode_api4 import SupportTicket
+from twilio.rest import Client
 
 try:
     twilio_account_sid = os.environ['TWILIO_ACCOUNT_SID']
@@ -19,15 +19,15 @@ except KeyError:
     print("LINODE_API_TOKEN")
     sys.exit(1)
 
-twilio_client = Client(twilio_account_sid, twilio_auth_token)
 linode_client = LinodeClient(linode_api_token)
+twilio_client = Client(twilio_account_sid, twilio_auth_token)
 
 all_support_tickets = linode_client.support.tickets()
 open_support_tickets = linode_client.support.tickets(SupportTicket.status == "open")
 
 if len(open_support_tickets) > 0:
     most_recent_ticket = open_support_tickets[0]
-    content = 'You have %s open Linode support tickets. ' \
+    message_text = 'You have %s open Linode support tickets. ' \
         'Your newest support ticket is: \n\n' \
         '%s\n' \
         'https://cloud.linode.com/support/tickets/%s' % \
@@ -35,19 +35,19 @@ if len(open_support_tickets) > 0:
 
 elif len(all_support_tickets) > 0:
     most_recent_ticket = all_support_tickets[0]
-    content = 'You currently have no open Linode support tickets. ' \
+    message_text = 'You currently have no open Linode support tickets. ' \
         'Your most recent support ticket was:\n\n' \
         '%s\n' \
         'https://cloud.linode.com/support/tickets/%s' % \
         (most_recent_ticket.summary, most_recent_ticket.id)
 
 else:
-    content = 'You do not have any Linode support tickets.'
+    message_text = 'You do not have any Linode support tickets.'
 
-text = twilio_client.messages.create(
-    body = content,
+message = twilio_client.messages.create(
+    body = message_text,
     from_ = twilio_from_phone_number,
     to = twilio_to_phone_number
 )
 
-print("Twilio message created with ID: %s" % (text.sid))
+print("Twilio message created with ID: %s" % (message.sid))

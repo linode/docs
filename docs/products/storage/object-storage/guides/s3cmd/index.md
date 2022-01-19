@@ -132,6 +132,8 @@ To delete a bucket that has files in it, include the `--recursive` (or `-r`) opt
 - `-P`: Makes the object publicly accessible. This will allow the object to be accessed by anyone with the URL. Once successfully uploaded, s3cmd will output the public URL.
 - `-e`: Encrypts the object (if you've configured the correct s3cmd options to enable encryption).
 
+{{< content "object-storage-character-warning-shortguide" >}}
+
 ### Download an Object or Directory
 
 **Command:** `s3cmd get s3://[bucket-label]/[path]`, replacing *[bucket-label]* with the label for your bucket and *[path]* with the full path and optional filename of the file or directory you wish to download.

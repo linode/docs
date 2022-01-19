@@ -91,6 +91,10 @@ To view your network utilization (in GB) for the current month, issue the follow
 You need to generate a Personal Access Token and install the Linode CLI before being able to use the CLI. See the [Linode CLI](/docs/guides/linode-cli/) guide for more information.
 {{</ note >}}
 
+### Email Alerts
+
+Linode automatically sends an email notification to [your account's email address](/docs/guides/accounts-and-passwords/#email-addresses-and-contact-information) when you have used 80%, 90%, and 100% of your transfer pool size.
+
 ## More Information
 
 Read the [Billing and Payments](/docs/guides/billing-and-payments/) guide for an overview of Linode billing.

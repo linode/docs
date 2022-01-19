@@ -96,6 +96,45 @@ export function getOffsetTop(container, el) {
 	}
 	return distance < 0 ? 0 : distance;
 }
+	
+export function setIsTranslating(el, timeout = 1000) {
+	let currentLang = getCurrentLang();
+	if (!currentLang || currentLang == 'en') {
+		return;
+	}
+
+	let els = isIterable(el) ? el : [ el ];
+
+	els.forEach((el) => {
+		el.classList.add('is-translating');
+	});
+
+	setTimeout(function() {
+		els.forEach((el) => {
+			el.classList.remove('is-translating');
+		});
+	}, timeout);
+}
+
+// getLang gets the language from either the URL or the browser's local storage.
+export function getCurrentLang() {
+	let lang = getCurrentLangFromLocation();
+	if (lang) {
+		return lang;
+	}
+
+	// _x_ is the special namespace used by AlpineJS.
+	// Read it directly here because we need to access it before Alpine is loaded.
+	return JSON.parse(localStorage.getItem('_x_currentLang'));
+}
+
+export function getCurrentLangFromLocation() {
+	return new URLSearchParams(window.location.search).get('lang');
+}
+
+export function isIterable(obj) {
+	return Symbol.iterator in Object(obj);
+}
 
 export function isMobile() {
 	return document.documentElement.clientWidth < 768;

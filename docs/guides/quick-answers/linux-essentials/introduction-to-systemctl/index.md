@@ -3,14 +3,14 @@ slug: introduction-to-systemctl
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will cover how to use `systemctl` to manage systemd services.'
+description: "Do you know what systemctl is? Our guide will cover how to use `systemctl` to manage systemd services. ✓ Click here to learn more today!"
 keywords: ['systemctl','systemd','service','unit file','target']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-31
 modified: 2018-08-31
 modified_by:
   name: Linode
-title: "Introduction to systemctl"
+title: "systemctl Commands: Restart, Reload, Stop Service and More"
 contributor:
   name: Linode
 external_resources:
