@@ -1,17 +1,15 @@
 ---
 slug: using-sorted-sets-in-redis-database
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Learn how to use sorted sets in your Redis databases, a powerful additional data type for ordered values."
-og_description: "Learn how to use sorted sets in your Redis databases, a powerful additional data type for ordered values."
+  name: Nathaniel Stickman
+description: "Learn how to use Sorted Sets in your Redis databases, a powerful additional data type for ordered values. You also learn common commands needed to manage Sorted Sets."
 keywords: ['redis sorted set example','redis sorted set commands','how do redis sorted sets work']
 tags: ['redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-20
 modified_by:
   name: Nathaniel Stickman
-title: "Using Sorted Sets in Redis Database"
+title: "Using Sorted Sets in Redis Databases"
 h1_title: "How to Use Sorted Sets in Redis Databases"
 enable_h1: true
 contributor:
@@ -19,17 +17,11 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - '[Redis: An Introduction to Redis Data Types and Abstractions](https://redis.io/topics/data-types-intro)'
-- '[Redis: Data Types](https://redis.io/topics/data-types)'
-- '[Redis in Action: What Redis Data Structures Look Like](https://redis.com/ebook/part-1-getting-started/chapter-1-getting-to-know-redis/1-2-what-redis-data-structures-look-like/)'
 ---
 
-Redis, the open-source, in-memory database, is a popular option for its quick, low-latency storage.
+Redis, the open-source, in-memory database, is a popular option for its quick, low-latency storage. Redis's *Sorted Set* data type captures the advantages of both Lists and Sets, giving you a useful tool for ordered collections of unique values. This tutorial dives into what Sorted Sets are and introduces you to commands you can use to manage them.
 
-Redis's **Sorted Set** data type attempts to capture the advantages of both Lists and Sets, giving you a useful tool for ordered collections of unique values.
-
-This tutorial tells you more about what Sorted Sets are and introduces you to commands you can use to manage them.
-
-Be sure to check out our other guides in this series, including our previous guide on **Connecting to Redis and Using Redis Databases** and upcoming guides on other Redis data types.
+Be sure to check out our other guides in this series, including our previous guide on onnecting to Redis and Using Redis Databases](/docs/guides/how-to-connect-to-redis/).
 
 ## Before You Begin
 
@@ -57,9 +49,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
 Redis's Sorted Set data type consists of a collection of unique string values. Each string value is scored with a numeric value, which becomes the primary sorting criteria for ordering the Sorted Set.
 
-Recall that, in Redis, Sets are also collections of unique string values. But Sets themselves are unordered.
-
-With Sorted Sets, Redis provides a data type with the advantages of sets while forgoing the limitation of being unordered.
+In Redis, Sets are also collections of unique string values. But Sets themselves are unordered. With Sorted Sets, Redis provides a data type with the advantages of sets while forgoing the limitation of being unordered.
 
 Redis's Sorted Sets can actually be thought of as a cross between Lists and Hashes. Lists, because they are ordered, and Hashes, because the scores act like keys for each value.
 
@@ -67,13 +57,11 @@ To learn more about Lists and Sets in Redis, read our [How to Use Lists and Sets
 
 ### Sorted Sets and Scoring
 
-As you can see in the examples in the following sections, each value in a Sorted Set is assigned a score. Scores then act as the primary means for ordering and navigating Sorted Sets.
-
-But Sorted Sets also have a secondary sorting method. Any values with matching scores are sorted lexically based on the values themselves. This can be very convenient when, for instance, you want a Set that can be organized alphabetically.
+Each value in a Sorted Set is assigned a score. Scores then act as the primary means for ordering and navigating Sorted Sets. Sorted Sets also have a secondary sorting method. Any values with matching scores are sorted lexically based on the values themselves. This can be very convenient when, for instance, you want a Set that can be organized alphabetically.
 
 ## How to Use Sorted Sets in Redis
 
-You may be familiar with how to use Redis Sets, but Sorted Sets come with their own array of commands. In fact, Sorted Sets operate more like Lists and Hashes in Redis.
+You may be familiar with how to use Redis Sets, but Sorted Sets come with their own commands. In fact, Sorted Sets operate more like Lists and Hashes in Redis.
 
 The following sections introduce you to some of the most useful operations and commands for Sorted Sets. By the end, you should be ready to start working with this data type in your Redis databases.
 
@@ -109,7 +97,7 @@ Fetching items from a Sorted Set works more like doing so from a List than from 
 5) "A test value"
     {{< /output >}}
 
-    Redis indices start at `0`, while negative indices begin at the end of a collection. So the above fetch all items from the first (`0`) to the last (`-1`). Using `-2` would refer to the next-to-last item in the Sorted Set, and so on.
+    Redis indices start at `0`, while negative indices begin at the end of a collection. The example above fetches all items from the first (`0`) to the last (`-1`) item. Using `-2` refers to the next-to-last item in the Sorted Set, and so on.
 
     You can reverse the order using the `ZREVRANGE` command instead. The example below does so and fetches only the first three items in the Sorted Set:
 
@@ -220,9 +208,7 @@ Sorted Sets also have access to the `ZREM` command, which lets you remove an ele
 4) "B test value"
 {{< /output >}}
 
-Redis additionally has a dedicated set of commands for removing ranges of elements based on where they are ordered.
-
-You can see these commands demonstrated below that use Sorted Sets.
+Redis additionally has a dedicated set of commands for removing ranges of elements based on where they are ordered. You can see an example of these commands below.
 
     ZADD example_sorted_set_four 1 "F" 2 "E" 3 "D" 4 "C" 5 "B" 6 "A"
     ZADD example_sorted_set_five 0 "L" 0 "K" 0 "J" 0 "I" 0 "H" 0 "G"
@@ -262,6 +248,4 @@ You can see these commands demonstrated below that use Sorted Sets.
 
 ## Conclusion
 
-With this, you have a basis for beginning to work with Sorted Sets. You have the tools for creating, viewing, and modifying them, and should be ready to put them to use in your Redis database.
-
-Take a look at our upcoming guides on the series as well. These take you further into Redis usage and concepts.
+This guide provides you the basis for beginning to work with Sorted Sets. You have the tools for creating, viewing, and modifying them, and should be ready to put them to use in your Redis database.

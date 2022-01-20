@@ -1,10 +1,8 @@
 ---
 slug: using-lists-and-sets-in-redis-database
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Learn how to use Lists and Sets for managing data in your Redis databases."
-og_description: "Learn how to use Lists and Sets for managing data in your Redis databases."
+  name: Nathaniel Stickman
+description: "Redis is a NoSQL database that is known for it support of various data types. This guide shows you how to use Lists and Sets for managing data in your Redis databases."
 keywords: ['redis lists tutorial','redis lists vs sets','redis sets example']
 tags: ['redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,15 +17,13 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - '[Redis: An Introduction to Redis Data Types and Abstractions](https://redis.io/topics/data-types-intro)'
-- '[Redis: Data Types](https://redis.io/topics/data-types)'
-- '[Redis in Action: What Redis Data Structures Look Like](https://redis.com/ebook/part-1-getting-started/chapter-1-getting-to-know-redis/1-2-what-redis-data-structures-look-like/)'
 ---
 
-Redis, the open-source NoSQL database, provides exceptionally effective storage for caching, messaging, and other contexts where quickness, and low latency are needed.
+Redis is an open-source NoSQL database that provides performant storage for caching, messaging, and other contexts where speed and low latency are needed.
 
-Redis has multiple data types for dealing with collections, the most common use of which are **Lists** and **Sets**. This tutorial explains what Redis's lists and sets are and illustrates how to use them.
+Redis has multiple data types for working with collections. The most common are **Lists** and **Sets**. This tutorial explains what Redis's lists and sets are and illustrates how to use them.
 
-Also, check out our other guides in this series, including our previous guide on **Connecting to Redis and Using Redis Databases** and upcoming guides on other Redis data types.
+Also, check out our other guides in this series, including our previous guide on [Connecting to Redis and Using Redis Databases](/docs/guides/how-to-connect-to-redis/).
 
 ## Before You Begin
 
@@ -53,23 +49,23 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ## What Are Lists and Sets in Redis?
 
-Redis's Lists and Sets data types each manage collections of string values. Each has its own approach, advantages, and disadvantages. Below, you can see an exploration of these data types.
+Redis Lists and Sets each manage collections of string values. Each has its own approach, advantages, and disadvantages. The sections below discuss each data type in more detail.
 
 ### Redis Lists
 
-In Redis, Lists are collections of strings kept in the order they were inserted in. They operate like Linked Lists in other programming contexts.
+In Redis, Lists are collections of strings kept in the order they were inserted. They operate like Linked Lists in other programming contexts.
 
-Lists are useful precisely because of their ordering methodology. Their ordering is consistent and can be controlled by how you insert new elements.
+Lists are useful precisely because of their ordering methodology. Their ordering is consistent and can be controlled by the way in which you insert new elements.
 
 ### Redis Sets
 
-Redis's Sets are unordered collections of unique strings. Because sets only include unique values, they can be useful in contexts where you need to avoid duplicates.
+Redis Sets are unordered collections of unique strings. Because Sets only include unique values, they can be useful in contexts where you need to avoid duplicates.
 
 Sets are unordered, so values are either fetched randomly or managed by the content of the values themselves.
 
 ### Differences Between Lists and Sets
 
-Lists are, as observed above, ordered based on insertion. Sets, by contrast, are unordered. This makes it necessary to use Lists when you need to consistently access elements based on their positions in the collection.
+Lists are, as observed above, ordered based on insertion. Sets, by contrast, are unordered. Use Lists when you need to consistently access elements based on their positions in the collection.
 
 But Sets also have a particular advantage when it comes to performance. Lists perform well when it comes to fetching elements from the beginning and end of the collection, no matter the collection's size. However, they lag when it comes to fetching values from somewhere in the middle of large collections.
 
@@ -77,7 +73,7 @@ With Sets, on the other hand, you can fetch elements from the middle of a collec
 
 ### Sorted Sets in Redis
 
-Redis has another related data type: Sorted Sets. These are Sets that include a scoring system, allowing you to order a Set by element scores.
+Redis has another related data type: *Sorted Sets*. These are Sets that include a scoring system, allowing you to order a Set by element scores.
 
 Because of ordering, hashes, and labeling of values, Sorted Sets in Redis actually work as a cross between Lists.
 
@@ -87,7 +83,7 @@ Sorted Sets have an array of commands and ways that you can work with their coll
 
 The following sections introduce you to some of the most useful operations and commands for Lists, and how you can create, view, and modify them.
 
-### Adding Elements
+### Adding Elements to a Redis List
 
 You can add elements to the beginning and ending of Lists in Redis with the `LPUSH` and `RPUSH` commands, respectively. These commands each also create a new List if the named List does not already exist.
 
@@ -99,12 +95,12 @@ For instance:
 As you can see from the `RPUSH` example above, the commands support adding multiple elements to a List at the same time.
 
 {{< note >}}
-In Redis, numbers are converted to strings automatically, though Redis also has a few special commands for handling strings that contain numbers. Like `INCR`, which increments the integer held in a string by one.
+In Redis, numbers are automatically converted to strings, though Redis also has a few special commands for handling strings that contain numbers. Like `INCR`, which increments the integer held in a string by one.
 {{< /note >}}
 
-In the next section, you can see how to retrieve the contents of a List to verify this.
+In the next section, you learn how to retrieve the contents of a List.
 
-### Selecting Elements
+### Selecting Elements from a Redis List
 
 You have a few options when it comes to fetching elements from a List in Redis.
 
@@ -114,7 +110,7 @@ You have a few options when it comes to fetching elements from a List in Redis.
 
     {{< output >}}
 "4"
-    {{< /output >}}
+    {{</ output >}}
 
 - Use `LRANGE` to get a range of elements or to get all elements in a List based on their indices. The example below fetches all the elements from the `example_list`.
 
@@ -126,7 +122,7 @@ You have a few options when it comes to fetching elements from a List in Redis.
 3) "4"
 4) "6"
 5) "8"
-    {{< /output >}}
+    {{</ output >}}
 
     Negative indices start at the end of the list, so the example above fetches all elements from the first (index `0`) to the last (index `-1`).
 
@@ -138,22 +134,22 @@ You have a few options when it comes to fetching elements from a List in Redis.
 1) "2"
 2) "4"
 3) "6"
-    {{< /output >}}
+    {{</ output >}}
 
-- Use `LPOP` and `RPOP` to get one or more elements from the beginning or end of a List and then remove those elements from the List. This can be useful, for instance, in the case of a Task List, where you want to remove an element as it is being worked.
+- Use `LPOP` and `RPOP` to get one or more elements from the beginning or end of a List and then remove those elements from the List. This can be useful, for instance, in the case of a Task List, where you want to remove an element as it is being worked on.
 
         LPOP example_list
 
     {{< output >}}
 "This is a test."
-    {{< /output >}}
+    {{</ output >}}
 
         RPOP example_list 2
 
     {{< output >}}
 "8"
 "6"
-    {{< /output >}}
+    {{</ output >}}
 
     When you take a look at the list now, you get:
 
@@ -164,7 +160,7 @@ You have a few options when it comes to fetching elements from a List in Redis.
 2) "4"
     {{< /output >}}
 
-### Removing Elements
+### Removing Elements from a Redis List
 
 Similar to how you can remove elements from the List using the `LPOP` and `RPOP` commands, you can also remove elements using the `LREM` command. It removes one or more elements from a List based on the elements' values. For example:
 
@@ -190,9 +186,9 @@ Finally, using the `DEL` command allows you to delete a List entirely.
 
 ### Using Capped Lists
 
-Redis allows you to use the `LTRIM` command to implement a Capped List, which is essentially a List limited to a certain length. This can be useful, for instance, when you only want a List to contain the newest *"X"* number of entries.
+Redis allows you to use the `LTRIM` command to implement a *Capped List*, which is essentially a List limited to a certain length. This can be useful, for instance, when you only want a List to contain the newest *"X"* number of entries.
 
-Here is an example. Assume that `long_example_list` contains at least 100 items and that new items are added to the end of the list with `RPUSH`. To only ever keep the newest 100 items, you run the `LTRIM` command as shown below every time you add a new item to the List:
+For example, assume that `long_example_list` contains at least 100 items and that new items are added to the end of the list with `RPUSH`. To only ever keep the newest 100 items, you run the `LTRIM` command every time you add a new item to the List:
 
     RPUSH long_example_list "New item"
     LTRIM long_example_list -100 -1
@@ -201,7 +197,7 @@ Here is an example. Assume that `long_example_list` contains at least 100 items 
 
 The sections below show some of the most useful operations and commands for Sets, from creating to viewing, and modifying them.
 
-### Adding Elements
+### Adding Elements to a Redis Set
 
 You can add elements to a Set using the `SADD` command. Like with Lists, this command also creates a new Set if one does not already exist.
 
@@ -219,7 +215,7 @@ Sets do not hold duplicate values. If you try to add a duplicate to the above `e
 (integer) 0
 {{< /output >}}
 
-### Checking and Selecting Elements
+### Checking and Selecting Elements from Redis Sets
 
 Redis provides two means of fetching elements from a Set.
 
@@ -233,7 +229,7 @@ Redis provides two means of fetching elements from a Set.
 3) "5"
 4) "7"
 5) "9"
-    {{< /output >}}
+    {{</ output >}}
 
 - Use the `SPOP` command to get a random element from a Set; at the same time, the command removes the selected element from the Set:
 
@@ -241,7 +237,7 @@ Redis provides two means of fetching elements from a Set.
 
     {{< output >}}
 "3"
-    {{< /output >}}
+    {{</ output >}}
 
         SMEMBERS example_set
 
@@ -250,7 +246,7 @@ Redis provides two means of fetching elements from a Set.
 2) "5"
 3) "7"
 4) "9"
-    {{< /output >}}
+    {{</ output >}}
 
 You can also check a Set to see whether an element with a certain value is a member, using the `SISMEMBER` command. It returns `1` for true and `0` for false:
 
@@ -258,9 +254,9 @@ You can also check a Set to see whether an element with a certain value is a mem
 
 {{< output >}}
 (integer) 1
-{{< /output >}}
+{{</ output >}}
 
-### Removing Elements
+### Removing Elements from Redis Sets
 
 You have seen how the `SPOP` command returns and removes an element from a Set.
 
@@ -278,5 +274,3 @@ However, you can use the `SREM` command to remove an element from a Set based on
 ## Conclusion
 
 You should now be ready to start working with Lists and Sets in Redis. You have the tools for creating, viewing, and modifying them, and should be ready to put them to use in your Redis database.
-
-Take a look at our upcoming guides on the series as well. These take you further into Redis usage and concepts.
