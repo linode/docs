@@ -6,7 +6,7 @@ description: "Redis is a NoSQL database that is known for it support of various 
 keywords: ['redis lists tutorial','redis lists vs sets','redis sets example']
 tags: ['redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-20
+published: 2022-01-21
 modified_by:
   name: Nathaniel Stickman
 title: "Using Lists and Sets in Redis Database"
