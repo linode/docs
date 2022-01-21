@@ -1758,6 +1758,7 @@ statusbar
 stdin
 stderr
 stdout
+steamcmd
 steamlab
 steven
 stopwait
