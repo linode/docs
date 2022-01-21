@@ -22,7 +22,7 @@ Each Linode account has a monthly *outbound* network transfer pool. The network 
 For more information on how your network transfer pool's size is computed, and which services can consume your outbound network transfer pool, review the [Transfer Allowance](/docs/guides/network-transfer/#transfer-allowance) section of the [Network Transfer Usage and Costs](/docs/guides/network-transfer/) guide.
 {{< /note >}}
 
-It's important to keep track of how much bandwidth your account has. If you use more than your pool size in a given month, then you are billed an overage fee for that month. If you observe that you have you a high percentage of your transfer pool, then you can start to plan or budget for a possible transfer overage. Linode provides a few ways to monitor your transfer usage:
+It's important to keep track of how much bandwidth your account has. If you use more than your pool size in a given month, then you are billed an overage fee for that month. If you observe that you have used a high percentage of your transfer pool, then you can start to plan or budget for a possible transfer overage. Linode provides a few ways to monitor your transfer usage:
 
 - The [Cloud Manager](/docs/guides/network-transfer/#cloud-manager) displays your current transfer usage.
 
@@ -295,11 +295,11 @@ LINODE_API_TOKEN=
     For example, the filled-in crontab file could look like:
 
     {{< output >}}
-export TWILIO_ACCOUNT_SID=96af3vrYKQG6hrcYCC743mR27XhBzXb8wQ
-export TWILIO_AUTH_TOKEN=LD9NWYXZzp3d3k7Mq7ME6L8QJJ8zu73r
-export TWILIO_FROM_PHONE_NUMBER=+122233344444
-export TWILIO_TO_PHONE_NUMBER=+15556667777
-export LINODE_API_TOKEN=bKfoAoV8Awo8e9CVTFTYKEdojkpHdD8BNU6UvV66izq6KjduPikfQTGHYmo3vFv6
+TWILIO_ACCOUNT_SID=96af3vrYKQG6hrcYCC743mR27XhBzXb8wQ
+TWILIO_AUTH_TOKEN=LD9NWYXZzp3d3k7Mq7ME6L8QJJ8zu73r
+TWILIO_FROM_PHONE_NUMBER=+122233344444
+TWILIO_TO_PHONE_NUMBER=+15556667777
+LINODE_API_TOKEN=bKfoAoV8Awo8e9CVTFTYKEdojkpHdD8BNU6UvV66izq6KjduPikfQTGHYmo3vFv6
 
 0 14 * * * python3 /home/exampleuser/transfer-pool-notification-twilio.py
 {{< /output >}}
