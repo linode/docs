@@ -3,6 +3,7 @@ slug: getting-started-after-deployment
 author:
   name: Linode
   email: docs@linode.com
+keywords: ["getting started", "deployment", "basics", "linux"]
 description: "Learn what additonal configuration may be necessary after deploying a Compute Instance."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/']
