@@ -1762,6 +1762,7 @@ statusbar
 stdin
 stderr
 stdout
+steamcmd
 steamlab
 stefani
 steven
