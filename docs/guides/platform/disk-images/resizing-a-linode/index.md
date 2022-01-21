@@ -97,7 +97,7 @@ There are quite a few types of Linode Compute Instances available to you, each w
 - **High Memory:** Optimized for memory-intensive applications. This plan type is also equipped with dedicated vCPU cores, though they contain more memory than other similarly priced plans. Use cases include large or high-traffic databases, caching servers, and more. See [High Memory Compute Instances](https://www.linode.com/products/high-memory/).
 - **GPU:** The only plan type that is equipped with high performance NVIDIA GPU cards. GPU plans are capable of processing large amounts of data in parallel, performing complex calculations much more efficiently. See [GPU Compute Instances](https://www.linode.com/products/gpu/).
 
-For help deciding on a plan type, review the [How to Choose a Linode Plan](/docs/guides/how-to-choose-a-linode-plan/) guide for advice and a comparison of each plan.
+For help deciding on a plan type, review the [Choosing a Compute Instance Type and Plan](/docs/guides/choosing-a-compute-instance-plan/) guide for advice and a comparison of each plan.
 
 To switch to a different plan type, follow the instructions outlined within [Resizing a Linode](#resizing-a-linode). When choosing the plan, select the tab that corresponds with your desired plan type.
 
