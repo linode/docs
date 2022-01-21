@@ -64,6 +64,12 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
     You can verify the fingerprint by following the instructions under the [Verifying the Host Key's Fingerprint](#verifying-the-host-keys-fingerprint) section.
 
+    {{<note>}}
+If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when remote host key changes. To fix this, revoke the key for that IP address.
+
+    ssh-keygen -R 198.51.100.4
+{{</note>}}
+
 1.  Accept the prompt by entering `yes`, which results in a one-time warning that is similar to:
 
     {{< output >}}

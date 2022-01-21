@@ -60,6 +60,12 @@ While PuTTY is compatible with Windows 10, you may want to review the [Connectin
 
     If you trust this connection, press the **Accept** button to continue connecting to the remote server. You can verify the fingerprint by following the instructions under the [Verifying the Host Key's Fingerprint](#verifying-the-host-keys-fingerprint) section.
 
+    {{<note>}}
+If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when remote host key changes. To fix this, you must remove the IP addresses manually from the following registry entry:
+
+    HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\SshHostKeys
+{{</note>}}
+
 1.  PuTTY now prompts you to enter the remote user and the password for that user.
 
 Once you have successfully connected, your terminal should be using the remote shell environment for the server. Your command prompt should now show the username and hostname configured for the server. You can now run any commands that you have available on that server. This includes many of the basic Linux commands, such as `ls`, `cd`, `rm`, and those covered in [Using the Terminal](/docs/guides/using-the-terminal/) guide. Getting to know these commands will help you navigate around your server.

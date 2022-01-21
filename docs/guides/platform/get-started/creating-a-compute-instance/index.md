@@ -3,348 +3,115 @@ slug: creating-a-compute-instance
 author:
   name: Linode
   email: docs@linode.com
-description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
+description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/']
-modified: 2022-01-19
+modified: 2022-01-21
 modified_by:
   name: Linode
-published: 2018-11-05
-title: "Creating a Compute Instance"
-show_on_frontpage: true
-title_short: "Getting Started"
-weight: 10
-icon: "book"
-show_on_rss_feed: false
-image: getting-started.jpg
+published: 2022-01-21
+title: "Creating a Compute Instance on the Linode Platform"
+h1_title: "Creating a Compute Instance"
+enable_h1: true
 ---
 
-Thank you for choosing Linode as your cloud hosting provider! This guide will help you sign up for an account and access Linode's [Cloud Manager](https://cloud.linode.com), a browser-based control panel which allows you to manage your Linode virtual servers and services.
+This guide walks you through creating a Linode Compute Instance through the Cloud Manager. Whether this is your first time using Linode or if you're a long time user, you should carefully consider each step in the process to make sure you're getting the most of your Linode services.
 
-From there you'll set up a Linux distribution, boot your Linode, and perform some basic system administration tasks. If you've already created an account and booted your Linode, skip ahead to [connecting to your Linode](#connect-to-your-linode-via-ssh) using SSH.
+1. [Open the Create Form in the Cloud Manager](#open-the-create-form-in-the-cloud-manager)
+1. [Choose a Distribution, App, or Image](#choose-a-distribution-app-or-image)
+1. [Select a Region](#select-a-region)
+1. [Choose an Instance Type and Plan](#choose-an-instance-type-and-plan)
+1. [Set the Label and Add Tags](#set-the-label-and-add-tags)
+1. [Create a Password and Add SSH Keys](#create-a-password-and-add-ssh-keys)
+1. [Configure Additional Options](#configure-additional-options)
+1. [Deploy the Instance](#deploy-the-instance)
+1. [Getting Started After Deployment](#getting-started-after-deployment)
 
-## Sign Up
+## Open the Create Form in the Cloud Manager
 
-First, you need to create a Linode account to start using our services. If you already have a Linode account, you can skip to the next section.
+Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Create** dropdown menu on the top bar, and select *Linode*. This opens the **Create Linode** form.
 
-1.  Create a new Linode account. {{< signup-link >}}
+![Open Create form in the Cloud Manager](create-instance-create.png)
 
-    {{< disclosure-note "Sending Email on Linode">}}
-Newly created Linode accounts have restrictions on ports `25`, `465`, and `587`. If you'd like to send email from a Linode, review the [Running a Mail Server](/docs/email/running-a-mail-server/#sending-email-on-linode) guide, then [open a ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) with our Support team.
-    {{</ disclosure-note >}}
+## Choose a Distribution, App, or Image
 
-1.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
+![Distribution selection in Cloud Manager](create-instance-distribution.png)
 
-## Create a Linode
+One of the first steps to deploy a Compute Instance is to decide *what* you actually wish to deploy. You're able to select a Linux distribution for a barebones install, a Marketplace App with your desired software, and a few other options.
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com) with the username and password you created when signing up.
+- **Distribution:** Select from any [supported Linux distribution](https://www.linode.com/distributions/). This option allows you to start with a stable Linux system and build your own software stack from scratch. Popular distributions include the latest LTS release of Ubuntu (20.04 LTS currently), the latest Debian (11 currently), and either CentOS Stream or RHEL 8 derived distributions like AlmaLinux 8 and Rocky Linux 8. Each distribution comes with its own set of preinstalled software and commands. See [Choosing a Linux Distribution](/docs/guides/choosing-a-distribution/).
 
-1.  At the top of the page, click **Create** and select **Linode**.
+- **Marketplace App** *(recommended for non-technical users)*: Select from the many [One-Click Apps](https://www.linode.com/marketplace/apps/) currently featured in the [Linode Marketplace](https://www.linode.com/marketplace/). This installs and configures your desired software, allowing you to start using your applications right away. Popular apps include [Wordpress](https://www.linode.com/marketplace/apps/linode/wordpress/), [WooCommerce](https://www.linode.com/marketplace/apps/linode/woocommerce/), [LEMP](https://www.linode.com/marketplace/apps/linode/lemp/), [cPanel](https://www.linode.com/marketplace/apps/cpanel/cpanel/), [Plesk](https://www.linode.com/marketplace/apps/plesk/plesk/), and [Nextcloud](https://www.linode.com/marketplace/apps/linode/nextcloud/). See [How to Use Linode's Marketplace Apps](/docs/guides/how-to-use-marketplace-apps-at-linode/).
 
-    ![Getting Started Add Linode](getting-started-add-linode.png "Getting Started with Linode")
+- **StackScript:** Select from any StackScripts previously created on your account or from a community StackScript. StackScripts automate the deployment of software and configuration by executing commands within your system after the first boot. See [How to Deploy a New Linode Using a StackScript](/docs/guides/how-to-deploy-a-new-linode-using-a-stackscript/).
 
-1.  Select the [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [Marketplace App](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) you would like to use.
+- **Image:** Select from any Custom Image or Recovery Image stored on your account. *Recovery Images* are generated after a Compute Instance has been deleted and *Custom Images* can be created based on existing instances or image files. See [Images - Get Started](/docs/products/tools/images/get-started/).
 
-    {{< note >}}
-Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. Some of the most popular StackScripts do things like install a LAMP stack, VPN, or WordPress. You can read more about Stackscripts and how they work in our [Automating Deployments with Stackscripts Guide.](/docs/platform/stackscripts/)
-{{< /note >}}
+- **Backup:** If you have the Backups service enabled on an existing Compute Instance, you can select any available backup snapshot to deploy from. See [Restore a Backup to a New Linode](/docs/products/storage/backups/guides/restore-to-a-new-linode/).
 
-1.  Choose the region where you would like your Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
+- **Clone:** Creates a new Compute Instance from the disks and configuration on an existing instance. See [Cloning a Linode](/docs/guides/clone-your-linode/).
 
-1. Select a Linode plan.
+This guide assumes you are creating a Compute Instance from a **Distribution**. If you select a different option, you may wish to follow the specific instructions within their own corresponding guides.
 
-    ![Getting Started Create Linode](getting-started-create1.png "Getting Started Create Linode")
+## Select a Region
 
-1.  Give your Linode a label. This is a name to help you easily identify it within the Cloud Manager's Dashboard. If desired, assign a tag to the Linode in the **Add Tags** field.
+![Region selection in Cloud Manager](create-instance-region.png)
 
-1. Create a root password for your Linode in the **Root Password** field. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique.
+Next, you must select the **region** that the Compute Instance will reside. Regions correspond with individual data centers, each located in a different geographical area. You should likely select the region closest to you and/or your customers. This helps reduce latency and can make a significant impact in connection speeds and quality. If you wish to make use of a particular Linode product or service, you may also wish to verify that the product is available within your desired data center.
 
-    ![Getting Started Create Linode 2](getting-started-create2.png "Getting Started Create Linode 2")
+- [Global Infrastructure](https://www.linode.com/global-infrastructure/)
+- [Speed Tests for Data Centers](https://www.linode.com/speed-test/)
+- [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center/)
 
-1.  Click **Create**. You will be directed back to the *Linodes* page which will report the status of your Linode as it boots up. You can now use the Cloud Manager to:
+## Choose an Instance Type and Plan
 
-    * Boot and shut down your Linode
-    * Access monitoring statistics
-    * Update your [billing](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/) and [account](/docs/platform/manager/accounts-and-passwords-new-manager/) information
-    * Add additional Linode services, like [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/)
-    * Open a [support](/docs/platform/billing-and-support/support-new-manager/) ticket and perform other administrative tasks
+![Plan selection in Cloud Manager](create-instance-plan.png)
 
-1.  Be sure to bookmark the [Linode Status page](https://status.linode.com/) or [subscribe](/docs/platform/linode-status-page/) to our system status updates by email.
+Linode offers a few different instance types and plan sizes, each with a certain amount of hardware resources (such as vCPU cores, memory, and storage space). With so many options, you are able to find a plan that fits your application's requirements and pricing considerations. The table below displays a list of instance types along with their plan sizes and use cases. Since every workload is different, you may wish to review the [Choosing a Compute Instance Type and Plan](/docs/guides/how-to-choose-a-linode-plan/) guide for advice on selecting the best plan for your needs.
 
-## Network Helper
+{{<note>}}
+You can resize to a different plan size or instance type at any time. This means your aren't locked in to whichever plan you select here. See [Resizing a Linode](/docs/guides/resizing-a-linode/) for instructions.
+{{</note>}}
 
-[Network Helper](/docs/platform/network-helper/) is a host-side service which automatically sets a static IPv4 address and gateway for your Linode. It is enabled by default. However, it can be [enabled and disabled globally](/docs/platform/network-helper/#global), and [per-Linode](/docs/platform/network-helper/#single-per-linode).
+{{< content "instance-comparison-shortguide" >}}
 
-- If you **disable** Network Helper globally on your account, and you want it enabled for a single Linode, you will need to enable it for that Linode.
-- If you **enable** Network Helper globally, every new Linode you create will have it enabled upon creation; you can disable it for single Linodes if desired.
+## Set the Label and Add Tags
 
-{{< note >}}
-If Network Helper is unable to determine the operating system during boot, or if you boot an unsupported operating system, Network Helper will not attempt to write any new configuration files. See the [Network Helper](/docs/platform/network-helper/) guide to learn which distributions it supports. Be aware that Network Helper configures only IPv4 addressing; your Linode’s IPv6 address is assigned by SLAAC.
-{{< /note >}}
+![Label selection in Cloud Manager](create-instance-label.png)
 
-## Connect to Your Linode via SSH
+- **Label:** The label is the name of the Compute Instance, allowing you to easily identify it from other instances. A good label should provide some indication as to what the instance is used for. As an example, a label of `acme-web-prod` may indicate that the instance is the production website for the company Acme. If you have already implemented your own naming conventions for your cloud infrastructure, follow those conventions. Labels must only use letters, numbers, underscores, dashes, and periods.
 
-Communicating with your Linode is usually done using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between the client application on your computer and the Linode, including passwords and other sensitive information. There are SSH clients available for every desktop operating system.
+- **Tags:** Adding tags gives you the ability to categorize your Linode services however you wish. If you're a web development agency, you could add a tag for each client you have. You could also add tags for which services are for development, staging, or production.
 
-* **Windows:** Windows 10 and 11 users can connect to their Linode using the [Command Prompt (or PowerShell)](/docs/guides/connect-to-server-over-ssh-on-windows/#command-prompt-or-powershell---windows-10-or-11) application, provided their system is fully updated. For users of Windows 8 and earlier, [Secure Shell on Chrome](/docs/guides/connect-to-server-over-ssh-on-chrome/), [PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/), or many other third party tools can be used instead. See [Connecting to a Remote Server Over SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/).
-* **macOS:** The *Terminal* application is pre-installed on macOS. See [Connecting to a Remote Server Over SSH on a Mac](/docs/guides/connect-to-server-over-ssh-on-mac/).
-* **Linux:** You can use a terminal window, regardless of desktop environment or window manager. See [Connecting to a Remote Server Over SSH on Linux](https://www.linode.com/docs/guides/connect-to-server-over-ssh-on-linux/)
+## Create a Password and Add SSH Keys
 
-### Find your Linode's IP Address
+![Enter root password in Cloud Manager](create-instance-password.png)
 
-Your Linode has a unique IP address that identifies it to other devices and users on the internet.
+- **Root Password:** The password used to log in to the system as the root user. The root user is the main account and has access to the entire system, including files and commands. This password should be extremely strong to prevent attackers from gaining access to your system. By default, the root user can log in over Lish and SSH using this password, though we do recommend disabling this within the [Securing Your Server](/docs/guides/securing-your-server/) guide.
 
-1.  Click the **Linodes** menu item in the [Cloud Manager's](https://cloud.linode.com/) left hand navigation.
+- **SSH Keys:** Add any SSH Keys to the root user account on the server. This enables you to log in through SSH without needing a password. SSH keys are created as a pair: a *private key* stored on your local computer and a *public key* that you can upload to remote systems and services. Since you only share your public key and your private key is kept safe and secure, this is a much more secure method for authentication than passwords. Learn more about generating SSH keys and uploading them through the Cloud Manager on the [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) guide.
 
-1.  Find your Linode, click on it's name and navigate to *Network*.
+## Configure Additional Options
 
-1.  Your IPv4 and IPv6 addresses appear under the *IPv4* and *IPv6* sections.
+The following features and services can be configured during the Compute Instance's creation or at any point after.
 
-    [![The Network settings tab for your Linode](getting-started-networking.png)](getting-started-networking.png)
+- **Attach a VLAN:** Add this Compute Instance to a secure private network. This feature is available at no additional cost. See [VLANs](/docs/products/networking/vlans/) to learn more.
 
-    You can also quickly reference your Linode's IP addresses from the **Linodes** page:
+- **Add the Backups service:** Safeguard your data with Linode’s Backups service, enabling automatic backups of the disks on your Compute Instances. Up to four backups are stored as part of this service, including automated daily, weekly, and biweekly backups in addition to a manual backup snapshot. See [Backups](/docs/products/storage/backups/) to learn more and view pricing.
 
-    ![IP address from the Linodes page](getting-started-quick-ip-address.png)
+- **Add a private IP:** A private IP gives you access to the data center's private network. This enables you to communicate over a non-public channel with other Compute Instances in the same region. Private IPs are needed to configure this instance as a NodeBalancer backend.
 
-### Log in Using SSH
+## Deploy the Instance
 
-Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and macOS. If you're using PuTTY on Windows, follow [these instructions](/docs/networking/ssh/ssh-connections-using-putty-on-windows/).
+![Summary section in Cloud Manager](create-instance-summary.png)
 
-1.  Enter the following into your terminal window or application. Replace the example IP address with your Linode's IP address:
+Confirm the details for this Compute Instance within the *Linode Summary* section. Once you are satisfied, click **Create Linode** to start the deployment process. This process can take anywhere from 3 minutes for Distribution Images to up to 30 minutes for some Marketplace Apps. After the creation process has started, you are automatically redirected to the detail page for this instance. From here, you can follow the status as the instance is deployed as well as see information about the new instance, such as the IP addresses.
 
-        ssh root@198.51.100.4
+![Details page in Cloud Manager](create-instance-details.png)
 
-1.  If this is the first time connecting to your Linode, you'll see the authenticity warning below. This is because your SSH client has never encountered the server's key fingerprint before. Type `yes` and press **Enter** to continue connecting.
+## Getting Started After Deployment
 
-    {{< output >}}
-The authenticity of host '198.51.100.4 (198.51.100.4)' can't be established.
-RSA key fingerprint is 11:eb:57:f3:a5:c3:e0:77:47:c4:15:3a:3c:df:6c:d2.
-Are you sure you want to continue connecting (yes/no)?
-{{< /output >}}
+Once the Compute Instance has been created and is done initializing, you can start configuring and using it. The next recommendation is to follow the guides linked below, which assist you in connecting to your instance, performing any initial configuration steps on your Linux system, and securing your server.
 
-    After you enter `yes`, the client confirms the addition:
-
-    {{< output >}}
-Warning: Permanently added '198.51.100.4' (RSA) to the list of known hosts.
-{{< /output >}}
-
-1.  The login prompt appears for you to enter the password you created for the `root` user above.
-
-    {{< output >}}
-root@198.51.100.4's password:
-{{< /output >}}
-
-1.  The SSH client initiates the connection and then the following prompt appears:
-
-    {{< output >}}
-root@li123-456:~#
-{{< /output >}}
-
-    {{< note >}}
-If you recently rebuilt an existing Linode, you might receive an error message when you try to
-reconnect via SSH. SSH clients try to match the remote host with the known keys on your desktop computer, so when you rebuild your Linode, the remote host key changes.
-
-To reconnect via SSH, revoke the key for that IP address.
-
-For Linux and macOS:
-
-    ssh-keygen -R 198.51.100.4
-
-For Windows, PuTTY users must remove the old host IP addresses manually. PuTTY's known hosts are in the registry entry:
-
-    HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\SshHostKeys
-{{< /note >}}
-
-## Install Software Updates
-
-The first thing you should do after connecting to your Linode is update the Linux distribution's packages. This applies the latest security patches and bug fixes to help protect your Linode against unauthorized access. Installing software updates should be performed regularly.
-
-### CentOS/RHEL Stream and Fedora
-
-*This includes CentOS Stream (and 8), other RHEL derivatives (including AlmaLinux 8, and Rocky Linux 8), and Fedora.*
-
-    dnf upgrade
-
-### Ubuntu and Debian
-
-    apt update && apt upgrade
-
-{{< note >}}
-You may be prompted to make a menu selection when the Grub package is updated on Ubuntu. If prompted, select `keep the local version currently installed`.
-{{< /note >}}
-
-### Other Distributions
-
-#### Alpine
-
-    apk update && apk upgrade
-
-#### Arch Linux
-
-    pacman -Syu
-
-#### CentOS 7
-
-    yum update
-
-#### Gentoo
-
-    emaint sync -a
-
-After running a sync, it may end with a message that you should upgrade Portage using a `--oneshot` emerge command. If so, run the Portage update. Then update the rest of the system:
-
-    emerge -uDU --keep-going --with-bdeps=y @world
-
-#### OpenSUSE
-
-    zypper update
-
-#### Slackware
-
-    slackpkg update
-    slackpkg upgrade-all
-
-## Set the Hostname
-
-A hostname is used to identify your Linode using an easy-to-remember name. Your Linode's hostname doesn't necessarily associate with websites or email services hosted on the system, but see our guide on using the [hosts file](/docs/networking/dns/using-your-systems-hosts-file/) if you want to assign your Linode a fully qualified domain name.
-
- Your hostname should be something unique, and should not be *www* or anything too generic. Some people name their servers after planets, philosophers, or animals. After you've made the change below, you may need to log out and log back in again to see the terminal prompt change from `localhost` to your new hostname. The command `hostname` should also show it correctly.
-
-### Most Distributions
-
-*This includes Ubuntu 16.04 (and newer), CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), Debian 8 (and newer), Fedora, OpenSuse, and Arch.*
-
-Replace `example-hostname` with one of your choice.
-
-    hostnamectl set-hostname example-hostname
-
-### Other Distributions
-
-#### Alpine
-
-See [Update Your Systems hosts File](#update-your-systems-hosts-file).
-
-#### Gentoo
-
-    echo "HOSTNAME=\"example-hostname\"" > /etc/conf.d/hostname
-    /etc/init.d/hostname restart
-
-#### Slackware
-
-    echo "example-hostname" > /etc/HOSTNAME
-    hostname -F /etc/HOSTNAME
-
-### Update Your System's `hosts` File
-
-The `hosts` file creates static associations between IP addresses and hostnames or domains which the system prioritizes before DNS for name resolution. Open this file in a text editor and add a line for your Linode's public IP address. You can associate this address with your Linode's **Fully Qualified Domain Name** (FQDN) if you have one, and with the local hostname you set in the steps above. In the example below, `203.0.113.10` is the public IP address, `example-hostname` is the local hostname, and `example-hostname.example.com` is the FQDN.
-
-{{< file "/etc/hosts" >}}
-127.0.0.1 localhost.localdomain localhost
-203.0.113.10 example-hostname.example.com example-hostname
-{{< /file >}}
-
-Add an entry for your Linode's IPv6 address. Applications requiring IPv6 will not work without this entry:
-
-{{< file "/etc/hosts" >}}
-127.0.0.1 localhost.localdomain localhost
-203.0.113.10 example-hostname.example.com example-hostname
-2600:3c01::a123:b456:c789:d012 example-hostname.example.com example-hostname
-{{< /file >}}
-
-The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For IPv6, you should also set up a DNS "AAAA" record pointing to your Linode's IPv6 address.
-
-See our guide to [Adding DNS Records](/docs/guides/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
-
-## Set the Timezone
-
-All new Linodes are set to UTC time by default. However, you may prefer your Linode use the time zone which you live in so log file timestamps are relative to your local time.
-
-### Most Distributions
-
-*This includes CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8, and Rocky Linux 8), Fedora, and Arch. These instructions also work for most Ubuntu, Debian, and OpenSuse distributions, though other methods may be preferred in those cases.*
-
-1.  Use `timedatectl` to output a list of available timezones.
-
-        timedatectl list-timezones
-
-1.  Use the arrow keys, `Page Up`, and `Page Down` to navigate. Copy the time zone you want as a mouse selection. Then press **q** to exit the list.
-
-1.  Set the time zone (for example, `America/New_York`).
-
-        timedatectl set-timezone 'America/New_York'
-
-### Ubuntu and Debian
-
-The instructions under the [Most Distributions](#most-distributions-1) section above (which outlines the `timedatectl` command) are valid. That said, both Ubuntu and Debian come with a more friendly tool called `tzdata`, outlined below.
-
-1.  Open the `tzdata` tool.
-
-        dpkg-reconfigure tzdata
-
-1.  Select the continent of your choice using the arrow keys and press **Enter**.
-1.  Select your region using the arrow keys and press **Enter**.
-
-### Other Distributions
-
-#### Alpine
-
-1.  Use the [setup-timezone](https://wiki.alpinelinux.org/wiki/Alpine_setup_scripts#setup-timezone) command to initiate the timezone selection process:
-
-        setup-timezone
-
-1.  Enter the timezone you are located within. If you aren't sure of the timezone string to use, enter `?` to display a list of available timezones
-
-1.  If you selected a region with sub-timezones, enter `?` again to see a list of available sub-timezones and then enter the sub-timezone you are located within.
-
-#### Gentoo
-
-1.  View a list of available time zones.
-
-        ls /usr/share/zoneinfo
-
-1.  Write the selected time zone to `/etc/timezone` (for example, EST for Eastern Standard Time).
-
-        echo "EST" > /etc/timezone
-
-1.  Configure the `sys-libs/timezone-data` package, which sets `/etc/localtime`.
-
-        emerge --config sys-libs/timezone-data
-
-#### OpenSUSE
-
-The instructions under the [Most Distributions](#most-distributions-1) section above (which outlines the `timedatectl` command) are valid. OpenSuse also has a more friendly way to select a timezone, discussed below.
-
-1. Open the YaST2 timezone selector tool.
-
-        yast2 timezone
-
-1.  Use the arrow keys to select your region within the *Region* pane.
-
-1.  Press **tab** to switch to the *Time Zone* pane and then use the arrow keys to select your time zone or sub-region.
-
-1. Press **F10** to save the changes. Alternatively, press **tab** until the `[OK]` text button is highlighted. Then press **enter**.
-
-#### Slackware
-
-1.  Run the `timeconfig` tool.
-
-        timeconfig
-
-1.  Select `NO Hardware clock is set to local time`.
-1.  Select a timezone.
-
-### Check the Time
-
-Use the `date` command to view the current date and time according to your server.
-
-{{< output >}}
-root@localhost:~# date
-Thu Feb 16 12:17:52 EST 2018
-{{< /output >}}
-
-## Next Steps
-
-Now that you've learned the basics of using the Cloud Manager and working with your Linode, secure it and your Linode account from unauthorized access. See the following guides to begin:
-
-* [Securing Your Server](/docs/security/securing-your-server/)
-* [Linode Manager Security Controls](/docs/security/linode-manager-security-controls-new-manager/)
+- [Getting Started After Deploying a Compute Instance](/docs/guides/getting-started-after-deployment/)
+- [Securing Your Server](/docs/guides/securing-your-server/)
