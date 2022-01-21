@@ -1,8 +1,10 @@
 ---
 title: "Get Started"
-description: "Get Started with GPU Instances. Deploy a GPU Instance using the Linode Cloud Manager."
+description: "Learn how to deploy a GPU Compute Instance on Linode."
 tab_group_main:
     weight: 20
+aliases: ['/platform/linode-gpu/getting-started-with-gpu/', '/guides/getting-started-with-gpu/']
+image: getting-started-with-linode-gpu-instances.png
 ---
 
 ## Deploy a GPU Linode Instance

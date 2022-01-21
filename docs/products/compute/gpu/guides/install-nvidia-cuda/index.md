@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 
 To take advantage of the powerful parallel processing capabilities offered by GPU instances equipped with NVIDIA Quadro RTX cards, you first need to install NVIDIA's CUDA Toolkit. This guide walks you through deploying a GPU instance and installing the CUDA Toolkit.
 
-1. Deploy a GPU Compute Instance using the [Cloud Manager](https://cloud.linode.com/), the Linode CLI, or the Linode API. It's recommended to follow the instructions within the following guides:
+1.  Deploy a GPU Compute Instance using the [Cloud Manager](https://cloud.linode.com/), the Linode CLI, or the Linode API. It's recommended to follow the instructions within the following guides:
 
     - [Getting Started with Linode](https://www.linode.com/docs/guides/getting-started/)
     - [Securing Your Server](https://www.linode.com/docs/guides/securing-your-server/)
@@ -37,7 +37,7 @@ To take advantage of the powerful parallel processing capabilities offered by GP
 
 1.  Install the NVIDIA CUDA Toolkit software for your distribution. There are two methods to do this locally: distribution-specific packages (through a package manager) or a distribution-independant runfile. These steps cover using the destribution-specific packages as recommended by NVIDIA. See NVIDIA's [Choose an Installation Method](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#choose-installation-method) for more details.
 
-    1.  Navigate to the [NVIDIA CUDA Toolkit Download](https://developer.nvidia.com/cuda-downloads) page. This page provides the installation instructions for the latest version of the CUDA Toolkit.
+    1. Navigate to the [NVIDIA CUDA Toolkit Download](https://developer.nvidia.com/cuda-downloads) page. This page provides the installation instructions for the latest version of the CUDA Toolkit.
 
     1. Under the **Select Target Platform** (or similar) section, choose the following options:
 
