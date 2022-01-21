@@ -7,7 +7,9 @@ tab_group_main:
 
 ## Basics
 
-- [Getting Started with GPU Instances](/docs/products/compute/gpu/get-started/): A walkthrough for deploying a GPU instance and installing the required NVIDIA CUDA Toolkit.
+- [Getting Started with GPU Instances](/docs/products/compute/gpu/get-started/): A walkthrough for deploying a GPU instance.
+
+- [Installing the NVIDIA CUDA Toolkit](/docs/products/compute/gpu/guides/install-nvidia-cuda/): Details on installing the NVIDIA CUDA Toolkit, required to make full use of your GPU instance.
 
 - [Use Cases for GPU Instances](/docs/products/compute/gpu/guides/use-cases/): Covers the primary applications for GPU instances and the reasons someone might benefit from parallel processing.
 

@@ -1,54 +1,44 @@
 ---
 title: "Get Started"
-description: "Learn how to deploy a GPU Compute Instance on Linode and install the NVIDIA CUDA Toolkit so you can run your workloads."
+description: "Get Started with GPU Instances. Deploy a GPU Instance using the Linode Cloud Manager."
 tab_group_main:
     weight: 20
-aliases: ['/platform/linode-gpu/getting-started-with-gpu/', '/guides/getting-started-with-gpu/']
-image: getting-started-with-linode-gpu-instances.png
 ---
 
-To take advantage of the powerful parallel processing capabilities offered by GPU instances equipped with NVIDIA Quadro RTX cards, you first need to install NVIDIA's CUDA Toolkit. This guide walks you through deploying a GPU instance and installing the CUDA Toolkit.
+## Deploy a GPU Linode Instance
 
-1. Deploy a GPU Compute Instance using the [Cloud Manager](https://cloud.linode.com/), the Linode CLI, or the Linode API. It's recommended to follow the instructions within the following guides:
+1. Log in to the [Cloud Manager](https://cloud.linode.com/) with the username and password you created when signing up.
 
-    - [Getting Started with Linode](https://www.linode.com/docs/guides/getting-started/)
-    - [Securing Your Server](https://www.linode.com/docs/guides/securing-your-server/)
+1. At the top of the page, click **Create** and select **Linode**.
 
-    Be sure to select a distribution that's compatible with the NVIDIA CUDA Toolkit. Review NVIDIA's [System Requirements](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements) to learn which distributions are supported.
+1. Select the [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [Marketplace App](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) you would like to use.
 
-1.  Install the kernel headers and development packages for your distribution. See NVIDIA's [Pre-installation Actions](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#pre-installation-actions) for additional information.
+    {{<note>}}
+Be sure to select a distribution that's compatible with the NVIDIA CUDA Toolkit. Review NVIDIA's [System Requirements](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements) to learn which distributions are supported.
+{{</note>}}
 
-    -   **Ubuntu and Debian**
+1. Choose the region where you would like your Linode to reside. If you’re not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
 
-            sudo apt update && sudo apt upgrade
-            sudo apt install build-essential linux-headers-$(uname -r)
+1. Select a GPU Linode plan.
 
-    -   **CentOS/RHEL 8, AlmaLinux 8, Rocky Linux 8, and Fedora**
+1. Give your Linode a label. This is a name to help you easily identify it within the Cloud Manager’s Dashboard. If desired, assign a tag to the Linode in the **Add Tags** field.
 
-            sudo dnf upgrade
-            sudo dnf install gcc kernel-devel-$(uname -r) kernel-headers-$(uname -r)
+1. Create a root password for your Linode in the **Root Password** field. This password must be provided when you log in to your Linode via SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique.
 
-    -   **CentOS/RHEL 7**
+1. Click **Create**. You are directed back to the Linode's page, and this page reports the status of your Linode as it boots up. You can now use the Cloud Manager to:
 
-            sudo yum update
-            sudo yum install gcc kernel-devel-$(uname -r) kernel-headers-$(uname -r)
+    - Boot and shut down your Linode
 
-1.  Install the NVIDIA CUDA Toolkit software for your distribution. There are two methods to do this locally: distribution-specific packages (through a package manager) or a distribution-independant runfile. These steps cover using the destribution-specific packages as recommended by NVIDIA. See NVIDIA's [Choose an Installation Method](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#choose-installation-method) for more details.
+    - Access monitoring statistics
 
-    1.  Navigate to the [NVIDIA CUDA Toolkit Download](https://developer.nvidia.com/cuda-downloads) page. This page provides the installation instructions for the latest version of the CUDA Toolkit.
+    - Update your [billing](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/) and [account](/docs/platform/manager/accounts-and-passwords/) information
 
-    1. Under the **Select Target Platform** (or similar) section, choose the following options:
+    - Add additional Linode services, like [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/)
 
-        - **Operating System:** Linux
-        - **Architecture:** x86_64
-        - **Distribution:** Select the distribution you have installed on your GPU instance (ex: Ubuntu)
-        - **Version:** Select the distribution version (ex: 20.04 for Ubuntu 20.04 LTS)
-        - **Installer Type:** rpm (local) for distributions using rpm packages or deb (local) for distributions deb packages.
+    - Open a [support ticket](/docs/platform/billing-and-support/support/) and perform other administrative tasks
 
-    1. The **Download Installer** (or similar) section should appear and display a list of commands needed to download and install the CUDA Toolkit. Run each command listed here.
+1. Be sure to bookmark the [Linode Status page](https://status.linode.com/) or [subscribe](/docs/platform/linode-status-page/) to our system status updates by email.
 
-    1. Reboot the GPU instance.
+1. After the Linode GPU is online, install the NVIDIA CUDA Toolkit:
 
-    1. Run `nvidia-smi` to verify that the NVIDIA drivers and CUDA Toolkit are installed successfully. This command should output details about the driver version, CUDA version, and the GPU itself.
-
-1.  You should now be ready to run your CUDA-optimized workloads. You can optionally download NVIDIA's [CUDA code samples](https://github.com/nvidia/cuda-samples) and review CUDA's [Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html) to learn more about developing software to take advantage of a GPU instance.
+    - [Installing the NVIDIA CUDA Toolkit](/docs/products/compute/gpu/guides/install-nvidia-cuda/)
