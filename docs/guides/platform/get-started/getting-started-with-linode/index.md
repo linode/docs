@@ -3,7 +3,7 @@ slug: getting-started
 author:
   name: Linode
   email: docs@linode.com
-keywords: ["getting started", "intro", "basics", "first steps"]
+keywords: ["getting started", "intro", "basics", "first steps", "linode platform"]
 description: "Learn how to create an account and use the Linode Cloud Platform."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/']
