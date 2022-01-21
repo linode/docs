@@ -905,6 +905,7 @@ keypairs
 keysize
 keyspace
 keystore
+khanaser
 kibana
 kickban
 kickbans
@@ -1569,6 +1570,7 @@ rkt
 rmdir
 rmem
 ro
+roadmunk
 rochko
 rockyou
 rocommunity
@@ -1761,6 +1763,7 @@ stdin
 stderr
 stdout
 steamlab
+stefani
 steven
 stopwait
 stopword
