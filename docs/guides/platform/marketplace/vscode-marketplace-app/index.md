@@ -3,7 +3,7 @@ slug: vscode-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Run VS Code Server in the browser with the VS Code Marketplace App. Code Server uses the open source code from Microsoft''s VS Code to provide a web interface for VS Code."
+description: "This guide shows you how to run VS Code Server in the browser to create, edit, and manipulate code by using the VS Code app from the Linode One-Click Marketplace."
 keywords: ['vscode', 'marketplace', 'vscode web browser']
 tags: ["debian","marketplace", "web applications","linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

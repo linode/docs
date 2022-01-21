@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configure a MongoDB ReplSet (Debian)'
+description: 'This guide provides you with step-by-step instructions for creating and configuring a MongoDB ReplSet (replication set) for redundancy on Debian.'
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/debian-7/','/databases/mongodb/creating-a-mongodb-replication-set-on-debian-7-wheezy/']

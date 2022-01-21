@@ -3,7 +3,7 @@ slug: how-to-install-mysql-on-debian-7
 author:
   name: Mike Rosabal
   email: docs@linode.com
-description: 'Getting started with MySQL on Debian 7.'
+description: 'This article is a guide to getting started with the popular database management system software, MySQL, including how to install the service on Debian 7.'
 keywords: ["MySQL on Linux", "Debian 7", "Debian Wheezy", "Debian", "cloud", "cloud hosting", "Linux", "MySQL", "database", "MariaDB", "install MySQL", "secure MySQL", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/debian-7-wheezy/','/databases/mysql/how-to-install-mysql-on-debian-7/','/databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy/']
