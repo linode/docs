@@ -1751,6 +1751,7 @@ stalkyard
 stallman
 starkiller
 starttls
+statsd
 statusbar
 stdin
 stderr
@@ -2028,6 +2029,7 @@ vmail
 vmem
 vmlinuz
 vmstat
+vmui
 vnc
 vset
 vswap
