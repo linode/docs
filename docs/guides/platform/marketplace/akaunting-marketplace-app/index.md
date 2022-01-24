@@ -1,13 +1,13 @@
 ---
 slug: akaunting-marketplace-app
 author:
-  name: Linode Community
+  name: Linode
   email: docs@linode.com
 description: "Deploy Akaunting on a Linode Compute Instance. This provides you a a free, open source accounting software designed for small businesses and freelancers."
 keywords: ['akaunting','accounting','productivity']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-12
+published: 2022-01-24
 modified_by:
   name: Linode
 title: "Deploying Akaunting through the Linode Marketplace"
@@ -19,15 +19,19 @@ external_resources:
 aliases: ['/guides/deploying-akaunting-marketplace-app/']
 ---
 
-Akaunting is a free, open source and online accounting software designed for small businesses and freelancers. It is built with modern technologies such as Laravel, VueJS, Bootstrap 4, RESTful API etc. Thanks to its modular structure, Akaunting provides an awesome App Store for users and developers.
+[Akaunting](https://akaunting.com/) is a free open source online accounting software designed for small businesses and freelancers. This universal accounting software can help you run your small business more efficiently. It has an extensive feature set that aims to provide you with an simple all-in-one accounting solution. From its user-friendly dashboard, you can track expenses, generate reports, manage your books, manage your employees, handle your invoices/bills, and so much more.
 
-Akaunting is universal accounting software that can help you run your small business more efficiently. You can track expenses, generate reports, manage your books, and many more. It comes with a set of features that can help you run your business from a single dashboard, manage your employees, handle your invoices/bills, and so.
+It is built with modern technologies (such as Laravel and VueJS) and includes a RESTful API. Akaunting can also be extended through the many apps and integrations available via its [App Store](https://akaunting.com/apps). This modular platform and Marketplace is easy to use and developer friendly.
+
+## Deploying the Akaunting Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
+**Software installation should complete within 5-10 minutes after the Linode has finished provisioning.**
+
 ### Akaunting Options
 
-You can configure your Akaunting App by providing values for the following fields:
+Here are the additional options available for this Marketplace App:
 
 | **Field** | **Description** |
 |:--------------|:------------|
@@ -40,8 +44,6 @@ You can configure your Akaunting App by providing values for the following field
 | **Database User** | Your Akaunting database user. *Required*. |
 | **Database User Password** | Your Akaunting database user password. *Required*. |
 
-**Software installation should complete within 5-10 minutes after the Linode has finished provisioning.**
-
 ### General Options
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
@@ -53,9 +55,9 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Accessing the Akaunting App
 
-1.  Open a browser and navigate to your [Instance's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/).
+1.  Open a browser and navigate to your Instance's [IP address](/docs/guides/managing-ip-addresses/).
 
-1.  The Akaunting login page will appear. The username for this instance will be `Admin Email` and the Password will be the `Admin Password` that were created in the beginning of your deployment.
+1.  The Akaunting login page appears. The username for this instance is the *Admin Email* and the password is the *Admin Password* that you set when you deployed this One-Click Marketplace App.
 
 Now that you’ve accessed your dashboard, check out [the official Akaunting documentation](https://akaunting.com/docs) to learn how to further utilize your Akaunting instance.
 
