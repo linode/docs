@@ -27,7 +27,7 @@ To learn more about Block Storage, visit the [Block Storage Overview](/docs/prod
 | **Newark (New Jersey, USA)** | **Deployed** |
 | Singapore | *Coming in Q1 2022* |
 | Sydney (Australia) | *Coming in Q1 2022* |
-| Tokyo (Japan) | *Coming in Q1 2022* |
+| **Tokyo (Japan)** | **Deployed** |
 | **Toronto (Canada)** | **Deployed** |
 
 Once NVMe Block Storage has been deployed in a data center, all *new* Volumes created after will use the new NVMe architecture.

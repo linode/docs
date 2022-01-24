@@ -41,6 +41,7 @@ anonymize
 anonymizing
 ansi
 ansible
+anticompetitive
 antispam
 anycast
 anycasted
@@ -570,6 +571,7 @@ flowlens
 flyspray
 foodcritic
 fortinet
+fortnite
 fortran
 fordham
 fmt
@@ -903,6 +905,7 @@ keypairs
 keysize
 keyspace
 keystore
+khanaser
 kibana
 kickban
 kickbans
@@ -1567,6 +1570,7 @@ rkt
 rmdir
 rmem
 ro
+roadmunk
 rochko
 rockyou
 rocommunity
@@ -1758,7 +1762,9 @@ statusbar
 stdin
 stderr
 stdout
+steamcmd
 steamlab
+stefani
 steven
 stopwait
 stopword
@@ -1948,6 +1954,7 @@ unicode
 uninvoiced
 uniq
 unittest
+univac
 unix
 unmanaged
 unmerged

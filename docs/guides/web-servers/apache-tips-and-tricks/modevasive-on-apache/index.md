@@ -213,7 +213,7 @@ for(0..100) {
 }
 {{< /file >}}
 
-If you don't have Pearl installed on your system, you can install it by running the following command on your terminal:
+If you don't have Perl installed on your system, you can install it by running the following command on your terminal:
 
 **Debian / Ubuntu:**
 
