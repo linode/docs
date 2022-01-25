@@ -609,6 +609,7 @@ gcloud
 gcm
 geckodriver
 gem1
+Gemba
 gemfile
 genmask
 gentoolkit
@@ -887,6 +888,7 @@ jx
 kaggle
 kakfa
 kamkar
+kanban
 kbits
 keepalive
 keepalived
@@ -1557,6 +1559,7 @@ resque
 restapi
 restic
 restreaming
+Restyaboard
 retargetly
 retpoline
 retrans
