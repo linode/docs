@@ -7,7 +7,7 @@ description: "Deploy Akaunting on a Linode Compute Instance. This provides you a
 keywords: ['akaunting','accounting','productivity']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-24
+published: 2022-01-25
 modified_by:
   name: Linode
 title: "Deploying Akaunting through the Linode Marketplace"
@@ -28,6 +28,8 @@ It is built with modern technologies (such as Laravel and VueJS) and includes a 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
 **Software installation should complete within 5-10 minutes after the Linode has finished provisioning.**
+
+## Configuration Options
 
 ### Akaunting Options
 
