@@ -7,7 +7,7 @@ description: "Deploy Restyaboard on a Linode Compute Instance. This provides you
 keywords: ['restyaboard','project','productivity','kanban']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-24
+published: 2022-01-25
 modified_by:
   name: Linode
 title: "Deploying Restyaboard through the Linode Marketplace"
