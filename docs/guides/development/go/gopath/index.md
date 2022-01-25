@@ -111,7 +111,7 @@ Hello, World!
 
 ## Conclusion
 
-Understanding how the `GOPATH` is used by Go is essential in helping you get started writing Go programs. The `GOPATH` points to the location of a Go Workspace. By default this location is `/home/username/go` on Linux systems. Like any environment variable, you can assign a custom value to your `GOPATH` it if you'd like to point it to a different directory. Abiding by Go program conventions around directory hierarchy and organization also helps you keep your Go programs shareable to outside collaborators or users.
+Understanding how the `GOPATH` is used by Go is essential in helping you get started writing Go programs. The `GOPATH` points to the location of a Go Workspace. By default this location is `/home/username/go` on Linux systems. Like any environment variable, you can assign a custom value to your `GOPATH` it if you'd like to point it to a different directory. Abiding by Go program conventions around directory hierarchy and organization also helps you keep your Go programs shareable to outside collaborators or users. As a next step, check out our [Getting Started with Go Packages](/docs/guides/getting-started-with-go-packages/) guide to learn more about organizing, packaging, and distributing your Go programs.
 
 
 
