@@ -7,7 +7,7 @@ description: "Deploy VictoriaMetrics Single on a Linode Compute Instance. This p
 keywords: ['victoriametrics','monitoring','metrics','data']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-24
+published: 2022-01-25
 modified_by:
   name: Linode
 title: "Deploying VictoriaMetrics Single through the Linode Marketplace"
