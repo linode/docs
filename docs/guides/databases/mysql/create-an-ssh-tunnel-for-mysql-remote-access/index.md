@@ -80,7 +80,7 @@ This section will show you how to create an SSH tunnel to MySQL on Mac OS X or L
 
     **MacOS**
 
-        brew install caskroom/cask/mysql-shell
+        brew install homebrew/cask/mysql-shell
 
     **Ubuntu/Debian**
 
