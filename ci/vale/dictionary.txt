@@ -23,6 +23,7 @@ ahvz
 aircrack
 ajenti
 ajp
+Akaunting
 aker
 alef
 alertmanager
