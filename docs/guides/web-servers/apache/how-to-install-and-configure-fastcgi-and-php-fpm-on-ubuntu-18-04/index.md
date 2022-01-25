@@ -86,10 +86,10 @@ listen = /run/php/php7.2-fpm.sock
 listen = /var/run/php/php7.2-fpm.sock
     {{< /file >}}
 
-1.  If the `listen = 127.0.0.1:9000` is not already uncommented, do so now.
+1.  If the `listen = 127.0.0.1` is not already uncommented, do so now.
 
     {{< file "/etc/php/7.2/fpm/pool.d/www.conf" >}}
-listen = 127.0.0.1:9000
+listen = 127.0.0.1
     {{< /file >}}
 
 1.  Restart the `php-fpm` daemon for these changes to take effect.
@@ -198,7 +198,7 @@ listen = /var/run/php/php7.2-fpm_example.com.sock
          AddType  application/x-httpd-php         .php
          AddHandler application/x-httpd-php .php
          Alias /php7-fcgi /usr/lib/cgi-bin/php7-fcgi
-         ProxyPassMatch " ^/(.*\.php(/.*)?)$" "unix:listen = /var/run/php/php7.2-fpm_example.com.sock|fcgi://localhost/var/www/html/example.com/public_html/"
+         ProxyPassMatch " ^/(.*\.php(/.*)?)$" "unix:/run/php/php7.2-fpm_example.com.sock|fcgi://localhost/var/www/html/example.com/public_html/"
      </IfModule>
 </VirtualHost>
 {{< /file >}}
