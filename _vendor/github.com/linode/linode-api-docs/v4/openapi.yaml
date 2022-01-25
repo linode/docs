@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.112.3
+  version: 4.113.0
 
   title: Linode API
   description: |
@@ -82,9 +82,9 @@ info:
     | 2.  Your application then redirects the user to Linode's [login server](https://login.linode.com) with the client application's `client_id` and requested OAuth `scope`, which should appear in the URL of the login page. | 2.  Your application then redirects the user to Linode's [login server](https://login.linode.com) with the client application's `client_id` and requested OAuth `scope`, which should appear in the URL of the login page. |
     | 3.  The user logs into the login server with their username and password. | 3.  The user logs into the login server with their username and password. |
     | 4.  The login server redirects the user to the specificed redirect URL with a temporary authorization `code` (exchange code) in the URL. | 4.  The login server redirects the user back to your application with an OAuth `access_token` embedded in the redirect URL's hash. This is temporary and expires in two hours. No `refresh_token` is issued. Therefore, once the `access_token` expires, a new one will need to be issued by having the user log in again. |
-    | 5.  The application issues a POST request (*see below*) to the login server with the exchange code, `client_id`, and the client application's `client_secret`. | |
+    | 5.  The application issues a POST request (*see additional details below*) to the login server with the exchange code, `client_id`, and the client application's `client_secret`. | |
     | 6.  The login server responds to the client application with a new OAuth `access_token` and `refresh_token`. The `access_token` is set to expire in two hours. | |
-    | 7.  The `refresh_token` can be used by contacting the login server with the `client_id`, `client_secret`, `grant_type`, and `refresh_token` to get a new OAuth `access_token` and `refresh_token`. The new `access_token` is good for another two hours, and the new `refresh_token`, can be used to extend the session again by this same method. | |
+    | 7.  The `refresh_token` can be used by contacting the login server with the `client_id`, `client_secret`, `grant_type`, and `refresh_token` to get a new OAuth `access_token` and `refresh_token`. The new `access_token` is good for another two hours, and the new `refresh_token` can be used to extend the session again by this same method (*see additional details below*). | |
 
     #### OAuth Private Workflow - Additional Details
 
@@ -103,7 +103,6 @@ info:
 
     | PARAMETER | DESCRIPTION |
     |-----------|-------------|
-    | grant_type | The grant type you're using for renewal.  Currently only the string "refresh_token" is accepted. |
     | client_id | Your app's client ID. |
     | client_secret | Your app's client secret. |
     | code | The code you just received from the redirect. |
@@ -113,18 +112,30 @@ info:
     ```json
     {
       "scope": "linodes:read_write",
-      "access_token": "03d084436a6c91fbafd5c4b20c82e5056a2e9ce1635920c30dc8d81dc7a6665c"
+      "access_token": "03d084436a6c91fbafd5c4b20c82e5056a2e9ce1635920c30dc8d81dc7a6665c",
+      "refresh_token": "f2ec9712e616fdb5a2a21aa0e88cfadea7502ebc62cf5bd758dbcd65e1803bad",
       "token_type": "bearer",
-      "expires_in": 7200,
+      "expires_in": 7200
     }
     ```
 
-    Included in the reponse is an `access_token`. With this token, you can proceed to make
+    Included in the response is an `access_token`. With this token, you can proceed to make
     authenticated HTTP requests to the API by adding this header to each request:
 
     ```
     Authorization: Bearer 03d084436a6c91fbafd5c4b20c82e5056a2e9ce1635920c30dc8d81dc7a6665c
     ```
+
+    This `access_token` is set to expire in two hours. To refresh access prior to expiration, make another request to the same URL with the following parameters in the POST body:
+
+    | PARAMETER | DESCRIPTION |
+    |-----------|-------------|
+    | grant_type | The grant type you're using. Use "refresh_token" when refreshing access. |
+    | client_id | Your app's client ID. |
+    | client_secret | Your app's client secret. |
+    | refresh_token | The `refresh_token` received from the previous response. |
+
+    You'll get another response with an updated `access_token` and `refresh_token`, which can then be used to refresh access again.
 
     #### OAuth Reference
 
@@ -7498,7 +7509,7 @@ paths:
                 control_plane:
                   type: object
                   description: >
-                    Defines settings for the Kubernetes Control Plane. Allows for the enabling of High Availability (HA) for Control Plane Components. Enabling High Availability for LKE is an **irreversible** change. The High Availability feature is in a **closed beta** and is not currently available to all customers. Please be aware that this feature may receive breaking updates in the future. This notice will be removed when this feature is out of beta.
+                    Defines settings for the Kubernetes Control Plane. Allows for the enabling of High Availability (HA) for Control Plane Components. Enabling High Availability for LKE is an **irreversible** change.
                   properties:
                     high_availability:
                       type: boolean
@@ -7639,10 +7650,18 @@ paths:
                       The Kubernetes version of a cluster can not be downgraded.
                 control_plane:
                     type: object
-                    description: >
+                    description: |
                       Defines settings for the Kubernetes Control Plane. Allows for the enabling of High Availability (HA) for Control Plane Components.
 
-                      Enabling High Availability for LKE is an **irreversible** change. The High Availability feature is in a **closed beta** and is not currently available to all customers. Please be aware that this feature may receive breaking updates in the future. This notice will be removed when this feature is out of beta.
+                      Enabling High Availability for LKE is an **irreversible** change.
+
+                      When upgrading pre-existing LKE clusters to use the HA Control Plane, the following changes will additionally occur:
+
+                      - All nodes will be deleted and new nodes will be created to replace them.
+
+                      - Any local storage (such as `hostPath` volumes) will be erased.
+
+                      - The upgrade process may take several minutes to complete, as nodes will be replaced on a rolling basis.
                     properties:
                       high_availability:
                         type: boolean
@@ -19562,7 +19581,7 @@ components:
         control_plane:
           type: object
           description: >
-            Defines settings for the Kubernetes Control Plane. Allows for the enabling of High Availability (HA) for Control Plane Components. Enabling High Avaialability for LKE is an **irreversible** change. The High Availability feature is in a **closed beta** and is not currently available to all customers. Please be aware that this feature may receive breaking updates in the future. This notice will be removed when this feature is out of beta.
+            Defines settings for the Kubernetes Control Plane. Allows for the enabling of High Availability (HA) for Control Plane Components. Enabling High Avaialability for LKE is an **irreversible** change.
           properties:
             high_availability:
               type: boolean
