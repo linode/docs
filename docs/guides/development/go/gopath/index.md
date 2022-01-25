@@ -39,44 +39,31 @@ If you have not set your `GOPATH` environment variable, the default location is 
 
 ## Go Workspace Layout
 
-As stated in the previous section, a Go Workspace contains source files, compiled binaries, external libraries, and cached objects. These files are stored within a specific directory hierarchy that looks as follows:
+As stated in the previous section, a Go Workspace contains source files and compiled binaries. These files are stored within a specific directory hierarchy that looks as follows:
 
 * `$GOPATH/src/`: This subdirectory contains Go source files. This the directory where you store your `.go` files that contain your Go code in development. A Go workspace's `src` directory can contain multiple Go source *repositories* or projects.
 * `$GOPATH/bin/`: Stores compiled executable binaries that are built by the Go engine.
-* `$GOPATH/pkg/`: Stores pre-compiled Go objects which accelerate construction of a complete executable.
 
 Typically, Go developers use a single Go Workspace to store all of their Go source code. Another convention used by Go developers is to organize the code in the `$GOPATH/src/` directory by *source repository*. This convention is suggested because it is assumed that you will eventually store your Go code in a remote repository, like GitHub. This makes your Go code available to collaborators and users. An example directory hierarchy that uses this convention resembles the following Go Workspace tree:
 
 {{< output >}}
-bin/
-    hello                          # command executable
-    outyet                         # command executable
-src/
-    golang.org/x/example/
-        .git/                      # Git repository metadata
-	hello/
-	    hello.go               # command source
-	outyet/
-	    main.go                # command source
-	    main_test.go           # test source
-	stringutil/
-	    reverse.go             # package source
-	    reverse_test.go        # test source
-    golang.org/x/image/
-        .git/                      # Git repository metadata
-	bmp/
-	    reader.go              # package source
-	    writer.go              # package source
-    ... (many more repositories and packages omitted) ...
+$GOPATH/go/
+           bin/
+               hello_world                         # command executable
+           src/
+               github.com/username/go_example/
+                   .git/                      # Git repository metadata
+               hello_world/
+                   hello_world.go               # command source
 {{</ output >}}
 
 ## Go Workspace Configuration: Set the GOPATH
 
 It is not necessary to set your `GOPATH` unless you want to use a location that is different from the default location. The default location of the `GOPATH` is `$HOME/go`. On a Linux system the full path is `/home/username/go`. Setting your `GOPATH` is similar to [setting any Linux system environment variable](/docs/guides/how-to-set-linux-environment-variables/). To set your `GOPATH`, use the following command:
 
-    export = GOPATH=</home/example_user/go_dir>
+    export = GOPATH=</home/example_user/a_new_workspace>
 
-Replace `</home/example_user/go_dir>` with your desired directory.
+Replace `</home/example_user/a_new_workspace>` with your desired directory.
 
 You should add the  `$GOPATH/bin` directory to your system `PATH`. This makes it so you do not have to enter the full path to a Go executable when running your Go apps in development.
 
@@ -88,15 +75,15 @@ The examples below assume you are using the default location for your `GOPATH` (
     mkdir ~/go
 {{</ note >}}
 
-To start writing your first Go program, first create the `bin`, `src`, and `pkg` directories in your Go Workspace.
+To start writing your first Go program, first create the `bin`, and `src` directories in your Go Workspace.
 
-    mkdir $GOPATH/{bin,src,pkg}
+    mkdir $GOPATH/{bin,src}
 
 In the following sections, you create a `Hello, World!` Go program. You should follow Go conventions and store the program as if it will be pushed to a remote version control repository. The example below continues to build your Go Workspace's directory hierarchy. Create the directories to store your `Hello, World!` Go program.
 
-    mkdir -p $GOPATH/src/github.com/username/hello_world/
+    mkdir -p $GOPATH/src/github.com/username/go_example/hello_world/
 
-Using your preferred text editor, create a new file named `hello_world.go` in the `$GOPATH/bin/github.com/username/hello_world/` directory. Add and save the following content to your file.
+Using your preferred text editor, create a new file named `hello_world.go` in the `$GOPATH/bin/github.com/username/go_example/hello_world/` directory. Add and save the following content to your file.
 
 {{< file >}}
 package main
