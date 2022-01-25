@@ -292,6 +292,14 @@ Your cluster’s detail page will appear on the following page where you will se
 
 High Availability can be added to pre-existing clusters at any given time through the cluster's **Summary Page**.
 
+{{< caution >}}
+Enabling HA on a pre-existing cluster will result in the following changes:
+
+- All nodes will be deleted and new nodes will be created to replace them.
+- Any local storage (such as `hostPath` volumes) will be erased.
+- The upgrade process may take several minutes to complete, as nodes will be replaced on a rolling basis.
+{{< /caution >}}
+
 1. To reach the summary page for the cluster, navigate first to the [Kubernetes section of the Cloud Manager](https://cloud.linode.com/kubernetes/clusters).
 
 1. Select the Cluster by label that you would like to enable HA for. The summary page for the cluster appears.
