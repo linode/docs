@@ -3,7 +3,7 @@ slug: introduction-to-high-availability
 author:
   name: Phil Zona
   email: docs@linode.com
-description: 'Introduction to high availability concepts'
+description: 'This guide provides you with an introduction to concepts and terminology relating to high availability, a method of keeping your web servers up with maximum uptime.'
 keywords: ["high availability", "hosting", "website", "failover", "ssd ha"]
 tags: ["web server","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
