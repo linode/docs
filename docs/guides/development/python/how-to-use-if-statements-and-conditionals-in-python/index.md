@@ -1,20 +1,22 @@
 ---
-slug: how-to-use-if-statements-and-conditionals-in-python
+slug: using-if-statements-and-chained-conditionals-in-python
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'THow to use if, if else, and elif statements to create simple and complex conditionals in Python 3'
+description: 'How to use if, if else, and elif statements to create simple and complex conditionals in Python 3'
 og_description: 'How to use if, if else, and elif statements to create simple and complex conditionals in Python 3'
 keywords: ['Python conditional','Python if else','Python if statement']
+tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-23
 modified_by:
   name: Linode
-title: "If Statements and Chained Conditionals in Python 3 | Linode"
-h1_title: "If Statements and Chained Conditionals in Python 3 | Linode"
+title: "Using If Statements and Chained Conditionals in Python 3"
+h1_title: "If Statements and Chained Conditionals in Python 3"
 enable_h1: true
 contributor:
   name: Jeff Novotny
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Python.org web site](https://www.python.org/)'
 - '[Python documentation](https://docs.python.org/3/contents.html)'
@@ -23,13 +25,13 @@ external_resources:
 - '[PEP 8 Style Guidelines](https://www.python.org/dev/peps/pep-0008/)'
 ---
 
-To be useful, [*Python*](https://www.python.org/) programs must be able to run different branches of code in different situations. This is usually accomplished through the use of *conditional statements*, which determine the *control flow* through a program. The Python `if` statement is used to decide whether or not some code should run. This guide explains the `if` statement and other Python conditionals and demonstrates how to use them.
+[Python](https://www.python.org/) programs must be able to run different branches of code in different situations. This is usually accomplished through the use of *conditional statements*, which determine the *control flow* through a program. Python's `if` statement is used to decide whether or not some code should run. This guide explains the `if` statement and other Python conditionals and demonstrates how to use them.
 
 ## An Introduction to Conditional Statements
 
 Conditional statements are programming structures that can make decisions. Without conditionals and other control statements, a program would execute in a deterministic manner, one statement after the next, every time. Conditionals allow different inputs to directly affect the program's behavior. They allow programmers to construct more sophisticated, powerful, and useful programs, and are essential to computer science.
 
-People make conditional decisions every day. If it is raining, they take an umbrella. If it is a workday, they get up early. Otherwise, they sleep in. Conditionals work the same way in computing. A conditional statement evaluates a *Boolean expression*, and calculates whether it is true or false. This result affects the flow of the program. If the expression is true, the program runs a certain block of code. If necessary, it can execute a different block when the conditional is false.
+People make conditional decisions every day. If it is raining, they take an umbrella. If it is a workday, they get up early. Otherwise, they sleep in. Conditionals work the same way in computing. A conditional statement evaluates a *Boolean expression* and calculates whether it is true or false. This result affects the flow of the program. If the expression is true, the program runs a certain block of code. If necessary, it can execute a different block when the conditional is false.
 
 {{< note >}}
 In Python, the official keywords `True` and `False` represent the two Boolean truth values.
@@ -43,7 +45,7 @@ A conditional statement can be used whenever different actions should be taken b
 *   If a customer has been validated, then send them to a payment screen. Otherwise, ask for their credentials.
 *   A user is prompted to delete any documents that have not been updated within the last year.
 
-In pseudocode, the structure of an `if then` conditional follows this pattern:
+In pseudocode, the structure of an `if then` conditional follows the pattern below:
 
     if (boolean expression) then
         clause
@@ -59,18 +61,18 @@ An `if then` conditional can be extended using the `else` option to form an `if 
 
 ## Before You Begin
 
-1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an OpenVPN server.
+2.  This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
 
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-4.  Ensure Python is properly installed on the Linode and you are able to launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see the [Linode guide to Python](https://www.linode.com/docs/guides/how-to-install-python-on-ubuntu-20-04/).
+4.  Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu 20.04](https://www.linode.com/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Python Conditionals
@@ -79,15 +81,15 @@ To implement conditionals in Python, use the `if` statement. The Python `if` sta
 
 ### The Python If Statement
 
-The Python `if` statement runs a block of code if and only if certain conditions are met. It is structured as a *compound statement*. This means it contains a *header* and an associated *suite*. The first line of the `if` statement is the header. The `if` header consists of the following three components, in this order:
+The Python `if` statement runs a block of code if and only if certain conditions are met. It is structured as a *compound statement*. This means it contains a *header* and an associated *suite*. The first line of the `if` statement is the header. The `if` header consists of the following three components, in the following order:
 
 1.  The `if` keyword begins the conditional statement.
-2.  A conditional expression, which evaluates to a Boolean value of `True` or `False`. The expression can optionally be enclosed in brackets.
-3.  The `:` symbol marks the end of the line and the end of the `if` statement header.
+1.  A conditional expression, which evaluates to a Boolean value of `True` or `False`. The expression can optionally be enclosed in brackets.
+1.  The `:` symbol marks the end of the line and the end of the `if` statement header.
 
-The suite follows the header. It contains one or more lines of code to execute and must be indented. This indented section is also known as the *code block* or the conditional *clause*. There is no limit to the length of this block, which is terminated by the next non-indented line. According to Python's [*PEP 8*](https://www.python.org/dev/peps/pep-0008/) style guidelines, four spaces should be used for the indentation.
+The suite follows the header. It contains one or more lines of code to execute and must be indented. This indented section is also known as the *code block* or the conditional *clause*. There is no limit to the length of this block, which is terminated by the next non-indented line. According to Python's [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guidelines, four spaces should be used for the indentation.
 
-The `if` statement evaluates the conditional. If the conditional is `True`, it runs the corresponding code block. If the conditional expression is `False`, it does not do anything. The indented block is not executed, and control flow moves to the next non-indented line.
+The `if` statement evaluates the conditional. If the conditional is `True`, it runs the corresponding code block. If the conditional expression is `False`, it does not do anything. The indented block is not executed, and the control flow moves to the next non-indented line.
 
 The conditional expression can be quite complex. Comparison operators including the equality `==` operator and the "greater than" `>` operator are commonly used. But the expression can include logical boolean operators like `and`, `or`, and `not`. It can also be the return value from a function. Any expression that evaluates to a Boolean value of `True` or `False` is permitted.
 
@@ -100,7 +102,7 @@ When the Python interpreter encounters the `if` keyword, it evaluates the `boole
 
 ####  Python if Example
 
-This example demonstrates how to use the Python `if` command. The value of `temperature` is initially set to `75`. Inside the `if` statement, Python analyzes the Boolean expression `temperature > 65` and decides it is `True`. Because the expression is `True`, Python executes the code block, which consists of two `print` statements. If the code block required more instructions, they would also be indented.
+This example demonstrates how to use the Python `if` command. The value of `temperature` is initially set to `75`. Inside the `if` statement, Python analyzes the Boolean expression, `temperature > 65` and decides it is `True`. Because the expression is `True`, Python executes the code block, which consists of two `print` statements. If the code block required more instructions, they would also be indented.
 
 {{< file "if_temp1.py" python >}}
 temperature = 75
@@ -156,7 +158,7 @@ The detective is not here.
 End of program
 {{< /output >}}
 
-In this case, `officer` is set to `detective`. `officer == "Detective"` is `True` and `not(officer == "Detective")` is `False`. Python does not run the code block, and nothing is printed.
+In this case, `officer` is set to `detective`. `officer == "Detective"` is `True` and `not(officer == "Detective")` is `False`. Python does not run the code block, and `End of program` is printed.
 
 {{< file "ifnot2.py" python >}}
 officer = "Detective"
@@ -243,7 +245,7 @@ The Python `if elif` statement follows this template. The final `else` directive
     else:
         command_4
 
-The `ifelse_temp.py` file from the previous section can be modified to include an `elif` statement. This allows for more effective processing of middling temperatures which are neither warm nor cold. A `temperature` value of more than `65` satisfies the `if` conditional and is still "nice". However a temperature of between `50` and `64` is now considered "okay". A value in this range fails the `if` conditional but passes the `elif` conditional. The "cold" designation is reserved for temperatures of `50` or below. "Cold" temperatures below `50` evaluate to `False` in both the `if` and `elif` conditionals. Processing falls through to the `else` code block. Adding more conditions allows the program to more accurately represent the data.
+The `ifelse_temp.py` file from the previous section can be modified to include an `elif` statement. This allows for more effective processing of middling temperatures which are neither warm nor cold. A `temperature` value of more than `65` satisfies the `if` conditional and is still "nice". However, a temperature of between `50` and `64` is now considered "okay". A value in this range fails the `if` conditional but passes the `elif` conditional. The "cold" designation is reserved for temperatures of `50` or below. "Cold" temperatures below `50` evaluate to `False` in both the `if` and `elif` conditionals. Processing falls through to the `else` code block. Adding more conditions allows the program to more accurately represent the data.
 
 In the first example, a `temperature` of `55` fails the first conditional test because it is less than `65`. However, being greater than `50`, it satisfies the `elif` conditional. Therefore, the line `This is an okay day` is printed.
 
@@ -297,4 +299,4 @@ Python has recently introduced a `match` statement. This control structure compa
 
 The Python conditional statements play a central role in how the programming language is used. They allow a program to follow different paths under different conditions. Boolean expressions use Python's logical and comparison operators to calculate a truth value and make a decision regarding what code block to execute.
 
-Python implements conditionals using the `if` statement. A Python `if` statement first determines whether its conditional expression is `True` or not. If the result is `True`, it runs the corresponding code block. If the result is `False`, it does nothing. The Python `if else` statement still executes the `if` code block if the conditional is `True`, but it runs the `else` code block when the conditional is `False`. One of more optional `elif` statements, signifying "else if", can follow the `if` statement to allow for different code paths based on multiple comparisons. For more information on the Python control structures, see the [*official Python documentation*](https://docs.python.org/3/contents.html).
+Python implements conditionals using the `if` statement. A Python `if` statement first determines whether its conditional expression is `True` or not. If the result is `True`, it runs the corresponding code block. If the result is `False`, it does nothing. The Python `if else` statement still executes the `if` code block if the conditional is `True`, but it runs the `else` code block when the conditional is `False`. One of the more optional `elif` statements, signifying "else if", can follow the `if` statement to allow for different code paths based on multiple comparisons. For more information on the Python control structures, see the [official Python documentation](https://docs.python.org/3/contents.html).
