@@ -326,8 +326,8 @@ Like the Python `for` loop, the Python `while` statement is structured as a *com
 The header for a `while` statement is somewhat simpler than the `for` loop header. It contains the following items:
 
 1.  The `while` keyword.
-2.  A *conditional expression*, which must evaluate to a Boolean value of either `True` or `False`. If the expression is `True`, Python executes the corresponding code block.
-3.  A `:` symbol, terminating the header and introducing the code block.
+1.  A *conditional expression*, which must evaluate to a Boolean value of either `True` or `False`. If the expression is `True`, Python executes the corresponding code block.
+1.  A `:` symbol, terminating the header and introducing the code block.
 
 A `while` loop does not have an iterator or a range and does not assign any variables. It does not lend itself to handling a sequential data structure. It can be thought of as an "indefinite" `if` statement. Upon each iteration, Python evaluates the Boolean expression. If it is `True`, the code block is executed. If it is `False`, the `while` loop terminates and control flow passes to the first non-indented line following its code block. The conditional expression can use any of Python's logical or comparison operators, including `==`, `<=`, or `and`. If the expression is `False` the first time through the `while` loop, the loop never runs at all.
 
