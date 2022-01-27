@@ -263,6 +263,7 @@ colab
 collabnet
 colormaps
 com2sec
+commoditization
 comodo
 completekey
 composable
@@ -287,6 +288,7 @@ coroutines
 corporateclean
 courseware
 cov
+covid
 cpanminus
 cpu
 cqlsh
@@ -322,6 +324,7 @@ cuda
 curlie
 cutover
 cyber
+cyberattack
 cyberduck
 cyberpanel
 cybersecurity
