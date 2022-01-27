@@ -1,14 +1,13 @@
 ---
 slug: installing-and-importing-modules-in-python-3
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Jeff Novotny
 description: 'Learn how to install modules in Python 3 and import them using `import`, `from import`, and `import as`.'
 og_description: 'Learn how to install modules in Python 3 and import them using `import`, `from import`, and `import as`.'
 keywords: ['Python import module', 'Python modules', 'Python install module', 'Python math']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-17
+published: 2022-01-28
 modified_by:
   name: Linode
 title: "Installing and Importing Modules in Python 3"
@@ -18,13 +17,8 @@ contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
 external_resources:
-- '[Python.org web site](https://www.python.org/)'
-- '[Python documentation](https://docs.python.org/3/contents.html)'
 - '[Python Documentation on Modules](https://docs.python.org/3/tutorial/modules.html)'
 - '[List of Python Built-in Modules](https://docs.python.org/3/py-modindex.html)'
-- '[Python language reference](https://docs.python.org/3/reference/index.html)'
-- '[PEP 8 Style Guidelines](https://www.python.org/dev/peps/pep-0008/)'
-- '[Python Kubernetes-client](https://github.com/kubernetes-client/python)'
 ---
 
 Except for very short and simple programs, most [Python](https://www.python.org/) applications contain code from many files, directories, and packages. Related functions and attributes are often grouped together as part of a Python *module*. A programmer can *import* this module and use its functions and variables in their application. This guide provides an introduction to Python modules and explains how to install and import modules in Python.
@@ -35,7 +29,7 @@ A Python module is a file containing Python code. This file can potentially incl
 
 Python includes some built-in standard modules. These modules are part of the [*Python Standard Library*](https://docs.python.org/3/library/), also known as the Library Reference. Some popular modules include the Python `os` module, `time` module, and `math` module. But programmers can also build their own modules or use modules from other developers. Python modules can be imported into the main module or other stand-alone modules.
 
-Python modules are named the same way as other Python files. The filename for a module consists of the module name followed by the `.py` extension, for example, `module_name.py`. A module maintains its own symbol table, which serves as the global symbol table inside the module. Each module is also a Python namespace.
+Python modules are named the same way as other Python files. The filename for a module consists of the module name followed by the `.py` extension, for example, `module_name.py`. A module maintains its own [symbol table](https://docs.python.org/3/library/symtable.html), which serves as the global symbol table inside the module. Each module is also a Python namespace.
 
 {{< note >}}
 A Python namespace is a dictionary of the object names and the actual objects.
@@ -45,12 +39,12 @@ When an application imports a module, it has access to the entire contents of th
 
 Some of the reasons to use Python modules include the following:
 
-*   They allow for the reuse of code, which speeds up development.
-*   Modules make it easier to structure code in an organized and efficient manner. Similar functions and variables can be grouped within a module.
-*   A modular structure assists with maintainability.
-*   Modules help reduce the size of the local symbol table.
-*   They allow individual functions to be imported without the rest of the module.
-*   Modules reduce the chance of accidental naming collisions with local or global variables.
+- They allow for the reuse of code, which speeds up development.
+- Modules make it easier to structure code in an organized and efficient manner. Similar functions and variables can be grouped within a module.
+- A modular structure assists with maintainability.
+- Modules help reduce the size of the local symbol table.
+- They allow individual functions to be imported without the rest of the module.
+- Modules reduce the chance of accidental naming collisions with local or global variables.
 
 ## Before You Begin
 
@@ -72,31 +66,36 @@ The steps in this guide are written for non-root users. Commands that require el
 
 The `pip` package manager is the best way to install Python 3 modules. However, modules that do not support `pip` can still be installed locally as long as they provide a `setup.py` file.
 
-Python includes a large number of useful standard modules, which are known as the Library Reference. These modules do not have to be installed and are already available to import and use. A good example of a standard Python module is the `math` module.
+Python includes a large number of useful standard modules, which are known as the Library Reference. These modules do not have to be installed and are available to import and use as long as Python is installed on your system. A good example of a standard Python module is the `math` module.
 
 These instructions are geared toward Ubuntu users but are generally applicable for most Linux distributions.
 
 ### Install Modules with pip
 
-1.  Ensure the `pip` module is already installed. `pip` can be installed using `apt`.
+1. Ensure the `pip` module is already installed. `pip` can be installed using the [APT package manger](/docs/guides/apt-package-manager/).
 
         sudo apt install python3-pip
-1.  Verify the release of `pip` to ensure it is installed correctly.
+
+1. Verify the release of `pip` to ensure it is installed correctly.
 
         pip3 --version
+
     {{< output >}}
 pip 20.0.2 from /usr/lib/python3/dist-packages/pip (python 3.8)
 {{< /output >}}
-1.  Install the new Python module using the command `pip install <module-name>`. The following example demonstrates how to install the `ffmpeg-python` module, which is used for media processing tasks.
+
+1. Install the new Python module using the command `pip install <module-name>`. The following example demonstrates how to install the `ffmpeg-python` module, which is used for media processing tasks.
 
         pip install ffmpeg-python
 
     {{< output >}}
 Successfully installed ffmpeg-python-0.2.0
 {{< /output >}}
-1.  To list all installed Python modules and packages, use the `pip list` command.
+
+1. To list all installed Python modules and packages, use the `pip list` command.
 
         pip list
+
     {{< output >}}
 Package                Version
 ---------------------- --------------------
@@ -116,17 +115,18 @@ The following example explains how to install the Python [kubernetes-client](htt
 Like most modules nowadays, this module is also available through `pip`. It can be installed using `pip install kubernetes`. It is always worth verifying whether a module is available through `pip` first. The following instructions are provided as a resource for cases where the module can only be installed locally.
 {{< /note >}}
 
-1.  Download the package and extract it into a local directory. This particular example uses `git`, but different modules provide different download instructions.
+1. Download the package and extract it into a local directory. This particular example uses `git`, but different modules provide different download instructions.
 
         git clone --recursive https://github.com/kubernetes-client/python.git
-1.  Consult the installation directives for the module to determine the location of the `setup.py` file. In this case, it is located in the `python` directory.
+
+1. Consult the installation directives for the module to determine the location of the `setup.py` file. In this case, it is located in the `python` directory.
 
     {{< note >}}
 If the module does not have a `setup.py` file, consult the instructions on the Python site. See the sections on [Custom Installation](https://docs.python.org/3/install/#custom-installation) and [Modifying Python’s Search Path](https://docs.python.org/3/install/#modifying-python-s-search-path).
     {{< /note >}}
 
         cd python
-1.  Install the module using the `python install` command.
+1. Install the module using the `python install` command.
 
     {{< note >}}
 This particular module also requires the `requests` module. It is not uncommon for locally-installed modules to require the installation of other modules before they can be used.
@@ -180,17 +180,17 @@ print(n)
 
 There are a few additional issues to keep in mind when importing and using modules.
 
-*   Functions and variables in submodules are accessed the same way, with a `.` between the module and submodule. Use the syntax `module.submodule.function`.
-*   If the module does not exist, Python displays the error `ImportError: No module named modulename`.
-*   An `AttributeError` error is displayed if a function that does not exist within the referenced module.
-*   When creating and importing a module, do not give it the same name as another module. This hides the original module, which means its attributes are no longer accessible. This is referred to as *shadowing* and is almost always undesirable.
-*   For the reasons of readability and maintainability, place all `import` statements at the start of the module.
-*   [*PEP 8*](https://www.python.org/dev/peps/pep-0008/) style guidelines recommend importing each module on a separate line, even though it is possible to separate module names using a comma. The guidelines also recommend ordering modules alphabetically within groups. Standard library modules should be listed first, followed by third-party modules, and then local applications.
-*   Within a module, the global variable `__name__` contains the name of the module.
-*   If a Python module contains executable code, it can run as a script using `python module_name.py`. Under these circumstances, `__name__` is set to `__main__` instead of the name of the module.
-*   Importing a module adds the module name to the importing module's symbol table, but it does not add the individual functions or variables.
-*   Each module is only imported once per session. If the library changes during interactive development, reload it using `importlib.reload(modulename)`, or by exiting and restarting Python.
-*   For more information about importing and using modules, see the [Official Python Documentation on Modules](https://docs.python.org/3/tutorial/modules.html).
+-  Functions and variables in submodules are accessed the same way, with a `.` between the module and submodule. Use the syntax `module.submodule.function`.
+-  If the module does not exist, Python displays the error `ImportError: No module named modulename`.
+- An `AttributeError` error is displayed if a function that does not exist within the referenced module.
+- When creating and importing a module, do not give it the same name as another module. This hides the original module, which means its attributes are no longer accessible. This is referred to as *shadowing* and is almost always undesirable.
+- For the reasons of readability and maintainability, place all `import` statements at the start of the module.
+- [*PEP 8*](https://www.python.org/dev/peps/pep-0008/) style guidelines recommend importing each module on a separate line, even though it is possible to separate module names using a comma. The guidelines also recommend ordering modules alphabetically within groups. Standard library modules should be listed first, followed by third-party modules, and then local applications.
+- Within a module, the global variable `__name__` contains the name of the module.
+- If a Python module contains executable code, it can run as a script using `python module_name.py`. Under these circumstances, `__name__` is set to `__main__` instead of the name of the module.
+- Importing a module adds the module name to the importing module's symbol table, but it does not add the individual functions or variables.
+- Each module is only imported once per session. If the library changes during interactive development, reload it using `importlib.reload(modulename)`, or by exiting and restarting Python.
+- For more information about importing and using modules, see the [Official Python Documentation on Modules](https://docs.python.org/3/tutorial/modules.html).
 
 To see a complete list of all built-in Python modules, consult the [Python Module Index](https://docs.python.org/3/py-modindex.html).
 
