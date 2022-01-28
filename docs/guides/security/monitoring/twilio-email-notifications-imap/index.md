@@ -197,13 +197,13 @@ status, email_data = mail.fetch(mail_ids[0], '(RFC822)')
 {{< disclosure-note "About the code" >}}
 - Lines 3-5 exit the script if no emails matching the search were found.
 
-- Line 9: The mail IDs array is originally ordered oldest to newest. This line reverses the array so that the first item corresponds to the newest matching email.
+- Line 7: The mail IDs array is originally ordered oldest to newest. This line reverses the array so that the first item corresponds to the newest matching email.
 
-- Line 10 [fetches the contents](https://docs.python.org/3/library/imaplib.html#imaplib.IMAP4.fetch) of the first (newest) matching email. The first argument for this function is a mail ID. You can also pass a comma-separated list string of mail IDs, and the contents of each specified email is returned in an array.
+- Line 8 [fetches the contents](https://docs.python.org/3/library/imaplib.html#imaplib.IMAP4.fetch) of the first (newest) matching email. The first argument for this function is a mail ID. You can also pass a comma-separated string of mail IDs (e.g. `'3,9,23'`), and the contents of each specified email is returned in an array.
 
     The second argument for the `mail.fetch()` function allows you to specify which parts of the email should be retrieved. By specifying `(RFC822)`, the entire [RFC-822](https://datatracker.ietf.org/doc/html/rfc822) formatted email is returned, which includes the email headers and body.
 
-    You can also specify other values in the second argument to retrieve just parts of the email. For example, you could retrieve only the headers of the email. This is described in [PyMOTW's imaplib article](https://pymotw.com/3/imaplib/index.html#fetching-messages).
+    You can specify other values in the second argument to retrieve just parts of the email. For example, you could retrieve only the headers of the email. This is described in [PyMOTW's imaplib article](https://pymotw.com/3/imaplib/index.html#fetching-messages).
 {{< /disclosure-note >}}
 
 ### Parse Email with the Python Email Module
