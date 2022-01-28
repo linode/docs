@@ -7,6 +7,7 @@ description: "Learn how to use Linode's IP Sharing feature to configure IP failo
 keywords: ['networking','IP failover','keepalived']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-19
+modified: 2022-01-14
 modified_by:
   name: Linode
 title: "Configuring IP Failover using keepalived"
@@ -16,10 +17,9 @@ external_resources:
 - '[keepalived Documentation](https://keepalived.readthedocs.io/en/latest/index.html)'
 ---
 
-There's always a small possibility that your Compute Instance may be powered off or become inaccessible, perhaps due to your own internal configuration issues or due to planned (or unplanned) maintenance. When this happens, any websites or services hosted on that Instance might also stop working. To configure services as highly available (and prevent them from going down), there are a few options you can consider:
-
-- **Load balancing:** Load balancing solutions, such as Linode's [NodeBalancers](/docs/products/networking/nodebalancers/) or [HAProxy](https://www.linode.com/docs/guides/how-to-use-haproxy-for-load-balancing/), can route incoming requests to preconfigured backend Compute Instances. This provides quite a lot of flexibility for your own unique highly available setup.
-- **IP failover:** Routes an IP addresses's traffic to a different Compute Instance in the event the original Instance goes down.
+{{<note>}}
+Not all data centers supports configuring IP failover through keepalived. Review the [Configuring IP Failover on a Compute Instance](/docs/guides/ip-failover/) to learn more about IP Sharing / IP failover availability within each data center.
+{{</note>}}
 
 This guide covers using keepalived to configure IP failover with Linode Compute Instances. Keepalived is a routing service that can be used to monitor and fail over components in a high availability configuration. In a typical setup with IP failover, there is one **primary** Instance and one or more **secondary** Instances.
 
@@ -33,6 +33,7 @@ Linode's IP failover feature using keepalived is compatible with various IP addr
 - **Public and Private IPv4 addresses:** Can be configured in a supported data center using keepalived. You must first configure Linode's IP Sharing feature as outlined in the [Configuring IP Sharing](#configuring-ip-sharing) section. Supported data centers include Dallas (USA), Frankfurt (Germany), Fremont (USA), London (UK), Newark (USA), Singapore, and Tokyo (Japan).
 
 - **IPv6 addresses:** IP failover with IPv6 addresses is not currently supported.
+
 - **VLAN IP addressses:** Can be configured in a supported data center using keepalived. Supported data centers include Atlanta (USA), Mumbai (India), Sydney (Australia), and Toronto (Canada).
 
 ## Configuring IP Sharing

@@ -38,7 +38,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo yum update
 
-    **Debian, Ubuntu**
+    **Ubuntu 20.04/Debian**
 
         sudo apt update && sudo apt upgrade
 
@@ -186,13 +186,31 @@ SteamCMD can be installed via your distribution's [package manager](#from-packag
 
 Installing via the package manager allows you to more easily download updates and security patches, so we strongly recommend using this method if your distribution includes the SteamCMD package. The package is available for Ubuntu and Debian deployments.
 
--   **Ubuntu**
+-   **Ubuntu 20.04**
 
-    1.  Install the package:
+    1. Add the multiverse repository and the `i386` architecture:
+
+            sudo add-apt-repository multiverse
+            sudo dpkg --add-architecture i386
+
+    1. Update the repository to make sure new packages can be installed:
+
+            sudo apt update
+
+    1. Install the 32 bit libraries that steamcmd requires:
+
+            sudo apt install lib32gcc1 lib32stdc++6 libc6-i386 libcurl4-gnutls-dev:i386 libsdl2-2.0-0:i386
+
+
+    1.  Install the `steamcmd` package:
 
             sudo apt-get install steamcmd
 
-    1.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
+           {{< note >}}
+  In the window that appears, you may need to enter the keys `shift + tab` to select the `ok` option.
+           {{< /note >}}
+
+     1.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
 
             cd ~
             ln -s /usr/games/steamcmd steamcmd
@@ -212,6 +230,11 @@ deb-src http://mirrors.linode.com/debian stretch main non-free
             sudo dpkg --add-architecture i386
             sudo apt update
             sudo apt-get install steamcmd
+
+           {{< note >}}
+  In the window that appears following the command to install steamCMD, you may need to enter the keys `shift + tab` to select the `ok` option.
+           {{< /note >}}
+
 
     1.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
 
@@ -266,7 +289,7 @@ The game server will still operate despite this error, and it should be somethin
 
     If you have installed SteamCMD from repositories:
 
-        screen ~/.steam/steamcmd
+        screen ~/.steam/steamcmd/steamcmd.sh
 
     If you have installed SteamCMD manually:
 
@@ -315,7 +338,7 @@ Some versions of the Steam CLI do **not** obfuscate passwords. If you're signing
 
 To update your SteamCMD server, follow these steps:
 
-1. Run SteamCMD: `steamcmd` or `screen ~/.steam/steamcmd`
+1. Run SteamCMD if it is not already running: `steamcmd`, `screen ~/.steam/steamcmd.sh`, or `screen ~/.steam/steamcmd/steamcmd.sh`.
 2. Login anonymously or with your Steam account (depending on the game server): `login anonymous` or `login $username`, replacing *$username* with your Steam username.
 3. Update the app: `app_update $app-id`, replacing *$app-id* with the app number/id of the game you wish to update.
 

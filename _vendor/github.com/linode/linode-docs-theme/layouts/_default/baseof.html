@@ -37,6 +37,9 @@
     [x-cloak] {
     display: none !important;
     }
+    .is-translating {
+      opacity: 0 !important;
+    }
   </style>
 </head>
 <body class="{{ block `body-class` . }}na {{ end }}type-{{ .Type }} kind-{{ .Kind }} {{ if $showToc }}is-toc{{ else }}is-not-toc{{ end }}
@@ -101,7 +104,7 @@
     </nav>
     
     {{/* Main content area. */}}
-    <main class="main bg-white h-full min-h-screen overflow-hidden">
+    <main class="main bg-white h-full min-h-screen overflow-hidden hide-on-lang-nav">
       <div class="main__inner">
         
         {{ if site.Params.enable_leak_checker }}

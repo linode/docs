@@ -24,6 +24,7 @@ ahvz
 aircrack
 ajenti
 ajp
+Akaunting
 aker
 alef
 alertmanager
@@ -42,6 +43,7 @@ anonymize
 anonymizing
 ansi
 ansible
+anticompetitive
 antispam
 anycast
 anycasted
@@ -217,6 +219,7 @@ changelog
 changelogs
 changeme
 changeset
+changesets
 characterwise
 chatbots
 chatrooms
@@ -380,6 +383,7 @@ deepin
 defragment
 delpy
 demultiplexer
+denormalized
 deprovisioning
 descolada
 descr
@@ -578,6 +582,7 @@ flowlens
 flyspray
 foodcritic
 fortinet
+fortnite
 fortran
 fordham
 fmt
@@ -614,6 +619,7 @@ gcloud
 gcm
 geckodriver
 gem1
+Gemba
 gemfile
 genmask
 gentoolkit
@@ -893,6 +899,7 @@ jx
 kaggle
 kakfa
 kamkar
+kanban
 kaseya
 kasten
 kbits
@@ -914,6 +921,7 @@ keypairs
 keysize
 keyspace
 keystore
+khanaser
 kibana
 kickban
 kickbans
@@ -954,6 +962,7 @@ lda
 ldap
 lego
 leiningen
+lelastic
 len
 lennart
 letsencrypt
@@ -1566,6 +1575,7 @@ resque
 restapi
 restic
 restreaming
+Restyaboard
 retargetly
 retpoline
 retrans
@@ -1580,6 +1590,7 @@ rkt
 rmdir
 rmem
 ro
+roadmunk
 rochko
 rockyou
 rocommunity
@@ -1768,11 +1779,14 @@ stalkyard
 stallman
 starkiller
 starttls
+statsd
 statusbar
 stdin
 stderr
 stdout
+steamcmd
 steamlab
+stefani
 steven
 stopwait
 stopword
@@ -1902,6 +1916,7 @@ toolchain
 toolchains
 toolset
 towson
+trac
 traceroute
 trackbar
 traefik
@@ -1961,6 +1976,7 @@ unicode
 uninvoiced
 uniq
 unittest
+univac
 unix
 unmanaged
 unmerged
@@ -2048,6 +2064,7 @@ vmail
 vmem
 vmlinuz
 vmstat
+vmui
 vnc
 vset
 vswap

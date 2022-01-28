@@ -1,8 +1,10 @@
 ---
-title: Get Started
-description: "Get Started with GPU Linodes. Deploy a GPU Linode Instance using the Linode Cloud Manager."
+title: "Get Started"
+description: "Learn how to deploy a GPU Compute Instance on Linode."
 tab_group_main:
     weight: 20
+aliases: ['/platform/linode-gpu/getting-started-with-gpu/', '/guides/getting-started-with-gpu/']
+image: getting-started-with-linode-gpu-instances.png
 ---
 
 ## Deploy a GPU Linode Instance
@@ -13,9 +15,9 @@ tab_group_main:
 
 1. Select the [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [Marketplace App](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) you would like to use.
 
-    {{< note >}}
-Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. Some of the most popular StackScripts do things like install a LAMP stack, VPN, or WordPress. You can read more about Stackscripts and how they work in our [Automating Deployments with Stackscripts](/docs/platform/stackscripts/) guide.
-{{< /note >}}
+    {{<note>}}
+Be sure to select a distribution that's compatible with the NVIDIA CUDA Toolkit. Review NVIDIA's [System Requirements](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements) to learn which distributions are supported.
+{{</note>}}
 
 1. Choose the region where you would like your Linode to reside. If you’re not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
 
@@ -39,10 +41,6 @@ Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy softw
 
 1. Be sure to bookmark the [Linode Status page](https://status.linode.com/) or [subscribe](/docs/platform/linode-status-page/) to our system status updates by email.
 
-1. After the Linode GPU is online, install the appropriate NVIDIA drivers:
+1. After the Linode GPU is online, install the NVIDIA CUDA Toolkit:
 
-    - [Install NVIDIA Driver Dependencies](/docs/products/compute/gpu/guides/install-nvidia-driver-dependencies/): Some dependencies need to be installed before the drivers are installed.
-
-    - [NVIDIA Driver CUDA Installation](/docs/products/compute/gpu/guides/install-nvidia-drivers-with-cuda/): If you're running Ubuntu 18.04, CentOS 7, or OpenSUSE, install the NVIDIA driver with CUDA.
-
-    - [NVIDIA Driver Manual Installation](/docs/products/compute/gpu/guides/install-nvidia-drivers-manually/): If you're running Debian 9, install the NVIDIA driver manually.
+    - [Installing the NVIDIA CUDA Toolkit](/docs/products/compute/gpu/guides/install-nvidia-cuda/)
