@@ -32,23 +32,8 @@ Although ModSecurity comes with a default configuration, this guide will use OWA
 
 Before you install ModSecurity, you will need to have Apache installed on your Linode. This guide will use a LAMP stack; for installation instructions, see the [LAMP Guides](/docs/websites/lamp/).
 
-### Debian
 
-    sudo apt install libapache2-modsecurity
-
-Restart Apache:
-
-    /etc/init.d/apache2 restart
-
-Verify the version of ModSecurity is 2.8.0 or higher:
-
-    apt-cache show libapache2-modsecurity
-
-{{< note >}}
-When listing all mods using `apachectl -M`, ModSecurity is listed under the name `security2_module`.
-{{< /note >}}
-
-### Ubuntu
+### Ubuntu or Debian
 
     sudo apt-get install libapache2-mod-security2
 
@@ -59,6 +44,10 @@ Restart Apache:
 Verify the version of ModSecurity is 2.8.0 or higher:
 
     apt-cache show libapache2-mod-security2
+
+{{< note >}}
+When listing all mods using `apachectl -M`, ModSecurity is listed under the name `security2_module`.
+{{< /note >}}
 
 ### CentOS
 
