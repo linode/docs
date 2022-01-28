@@ -11,8 +11,6 @@ published: 2022-01-28
 modified_by:
   name: Linode
 title: "Create an Email Notification System Using Twilio (IMAP)"
-h1_title: "Create an Email Notification System Using Twilio (IMAP)"
-enable_h1: true
 contributor:
   name: John Mueller
   link:
@@ -22,7 +20,7 @@ external_resources:
 - '[email — An email and MIME handling package — Python 3.10.2 documentation](https://docs.python.org/3/library/email.html)'
 ---
 
-By default, Linode sends system notifications via email. For example, email notifications are delivered when Linode computed instances are rebooted, when they receive hardware maintenance, and when they exceed a CPU usage threshold. You may also want to receive these notifications via text message. This guide shows how to set up a custom script that auto-forwards email notifications to text message.
+By default, Linode sends system notifications via email. For example, email notifications are delivered when Linode Compute Instances are rebooted, when they receive hardware maintenance, and when they exceed a CPU usage threshold. You may also want to receive these notifications via text message. This guide shows how to set up a custom script that auto-forwards email notifications to text message.
 
 The auto-forwarding system leverages the API of Twilio, a cloud communications service, along with the IMAP protocol for email. The instructions in this guide focus on how to parse Linode email notifications, but they could be adapted to email from other services as well.
 
@@ -38,7 +36,7 @@ The auto-forwarding system leverages the API of Twilio, a cloud communications s
 
     - Using the `messages.create()` endpoint of the Twilio API client.
 
-- In the [Auto-Forward Email to Text Message](#auto-forward-email-to-text-message) section, the script is updated to run periodically, and to check for all Linode system notification emails since the last time the script ran.
+- In the [Auto-Forward Email to Text Message](#auto-forward-email-to-text-message) section, the script is updated to run periodically and check for all Linode system notification emails since the last time the script ran.
 
 - In the [Search Email by Subject with Imaplib](#search-email-by-subject-with-imaplib) section, the script is updated to only forward emails that match a keyword in the emails' subject. This allows you to limit forwarding to specific kinds of notifications.
 
@@ -46,7 +44,7 @@ The auto-forwarding system leverages the API of Twilio, a cloud communications s
 
 1. This guide shows how to set up the email-to-text forwarding system on a Linode instance. A Linode instance is used because it can remain powered on at all times.
 
-    If you want to implement the notification system, [create a Linode in the Cloud Manager](/docs/products/compute/shared-cpu/get-started/). The lowest-cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
+    If you want to implement the notification system, [create a Linode in the Cloud Manager](/docs/products/compute/shared-cpu/get-started/). The lowest cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
 
     After you create your Linode, follow our [Securing your Server](/docs/guides/securing-your-server/) guide to reduce the threat of a system compromise. Specifically, make sure you [Add a Limited User Account](/docs/guides/securing-your-server/#add-a-limited-user-account) to the Linode. The notification system in this guide should be installed under a limited Linux user.
 
@@ -66,13 +64,13 @@ The script in this section is updated in the next section to incorporate auto-fo
 
 ### Import Modules and Initialize Service Credentials
 
-1. Log into your Linode under your limited Linux user [using SSH](/docs/guides/connect-to-server-over-ssh/).
+1.  Log into your Linode under your limited Linux user [using SSH](/docs/guides/connect-to-server-over-ssh/).
 
-1. Create a new file named `forward-last-email-to-text-message.py` with your preferred terminal text editor. For example, when using `nano`, run:
+1.  Create a new file named `forward-last-email-to-text-message.py` with your preferred terminal text editor. For example, when using `nano`, run:
 
         nano forward-last-email-to-text-message.py
 
-1. Copy this snippet into the file:
+1.  Copy this snippet into the file:
 
     {{< file "forward-last-email-to-text-message.py">}}
 import os
@@ -351,7 +349,7 @@ The code example is now complete. Your script should now look like the code in [
 
 ### Run the Code
 
-1. Before you run the script, set the [environment variables](/docs/guides/how-to-set-linux-environment-variables/) that the script expects in your terminal. In your SSH session with your Linode, run the following commands. After the `=` symbol in each command, insert the corresponding value:
+1.  Before you run the script, set the [environment variables](/docs/guides/how-to-set-linux-environment-variables/) that the script expects in your terminal. In your SSH session with your Linode, run the following commands. After the `=` symbol in each command, insert the corresponding value:
 
         export TWILIO_ACCOUNT_SID=
         export TWILIO_AUTH_TOKEN=
@@ -385,7 +383,7 @@ export EMAIL_SERVER=imap.yourdomain.com
     | EMAIL_PASSWORD | Your password for your email. Note that some services may require you to create an app-specific password for the IMAP connection. For example, [Google requires you to create an app-specific password](https://support.google.com/accounts/answer/185833) if you use 2-step verification/2FA on your account. |
     | EMAIL_SERVER | The server you should connect to. Check with your email service for the correct value. For Gmail, `imap.gmail.com` is used. |
 
-1. Run the script:
+1.  Run the script:
 
         python3 forward-last-email-to-text-message.py
 
@@ -419,7 +417,7 @@ Durable File Storage with S3-Compatible Object Storage - https://www.linode.com/
 
     If you receive an error message when you run the script, review the [Troubleshooting](#troubleshooting) section.
 
-1. If you have not previously received an email from Linode Alerts, you can generate a new one by performing certain actions in the Cloud Manager. For example, if you reboot your Linode, a new Linode Event Notification email is sent after a few minutes. After receiving this email, re-run the script to verify that it works.
+1.  If you have not previously received an email from Linode Alerts, you can generate a new one by performing certain actions in the Cloud Manager. For example, if you reboot your Linode, a new Linode Event Notification email is sent after a few minutes. After receiving this email, re-run the script to verify that it works.
 
 ## Auto-Forward Email to Text Message
 
@@ -433,11 +431,11 @@ This auto-forwarding system has two parts:
 
 ### Search Email by Date with Imaplib
 
-1. In your SSH session with your Linode, create a new file named `autoforward-email-to-text-message.py` with your preferred terminal text editor. For example, when using `nano`, run:
+1.  In your SSH session with your Linode, create a new file named `autoforward-email-to-text-message.py` with your preferred terminal text editor. For example, when using `nano`, run:
 
         nano autoforward-email-to-text-message.py
 
-1. Copy this snippet into the file. Then, save the file and exit your text editor.
+1.  Copy this snippet into the file. Then, save the file and exit your text editor.
 
     {{< file "autoforward-email-to-text-message.py">}}
 import os
@@ -561,11 +559,11 @@ The example code is similar to the code from the previous section. The updated l
 
 [Cron](/docs/guides/schedule-tasks-with-cron/) is a Linux tool that runs processes at different time intervals that you specify. Follow these instructions to set up a cron job for the new script:
 
-1. In your SSH session, start the *crontab* editor:
+1.  In your SSH session, start the *crontab* editor:
 
         crontab -e
 
-1. A text file appears in your text editor. This file has some commented-out lines (which begin with `# `) that tell you to set up a new scheduled task in the file. Below these comments, copy and paste the following lines:
+1.  A text file appears in your text editor. This file has some commented-out lines (which begin with `# `) that tell you to set up a new scheduled task in the file. Below these comments, copy and paste the following lines:
 
     {{< file >}}
 TWILIO_ACCOUNT_SID=
@@ -597,11 +595,11 @@ EMAIL_SERVER=imap.yourdomain.com
 0 14 * * * python3 /home/exampleuser/autoforward-email-to-text-message.py
 {{< /output >}}
 
-1. On the last line, update the file path to the Python script (e.g. `/home/exampleuser/autoforward-email-to-text-message.py`) so that it matches the path of the file on your server.
+1.  On the last line, update the file path to the Python script (e.g. `/home/exampleuser/autoforward-email-to-text-message.py`) so that it matches the path of the file on your server.
 
-1. Save the crontab file in your text editor and exit the editor. The script now runs at the start of every minute on your server, and the auto-forwarding system is complete.
+1.  Save the crontab file in your text editor and exit the editor. The script now runs at the start of every minute on your server, and the auto-forwarding system is complete.
 
-1. To test that the auto-forwarding system works, trigger a new Linode Alert email in the Cloud Manager. For example, if you reboot your Linode, a new Linode Event Notification email is sent after a few minutes. After the email arrives in your mailbox, the script is run within the next 60 seconds, and the text message is delivered.
+1.  To test that the auto-forwarding system works, trigger a new Linode Alert email in the Cloud Manager. For example, if you reboot your Linode, a new Linode Event Notification email is sent after a few minutes. After the email arrives in your mailbox, the script is run within the next 60 seconds, and the text message is delivered.
 
     If you do not receive a text message after triggering a Linode Alert email, try visiting the [Troubleshooting](#troubleshooting) section of this guide for help.
 
@@ -623,7 +621,7 @@ Follow these steps to only forward CPU usage alerts to text:
 
 1. In your `autoforward-email-to-text-message.py`, remove lines 34-36:
 
-{{< file "autoforward-email-to-text-message.py" >}}
+    {{< file "autoforward-email-to-text-message.py" >}}
 # remove the following lines:
 
 # status, email_search_data = mail.search(None,
@@ -644,13 +642,13 @@ status, email_search_data = mail.search(None,
 
 This new code adds the `SUBJECT` IMAP search command to the search criterion. Note that the subject string that is searched for should be wrapped in double and single quotes.
 
-1. After inserting the above snippet, save the file.
+1.  After inserting the above snippet, save the file.
 
     {{< note >}}
 Your script should now look like the code in [this file](autoforward-email-with-matching-subject-to-text-message.py).
 {{< /note >}}
 
-1. The updated script is automatically run by the cron job. CPU usage alerts are sent when a Linode on your account exceeds a threshold percentage. The Linodes on your account may or may not currently this threshold, so you may not receive any notifications.
+1.  The updated script is automatically run by the cron job. CPU usage alerts are sent when a Linode on your account exceeds a threshold percentage. The Linodes on your account may or may not currently this threshold, so you may not receive any notifications.
 
     You can test that the update code works by temporarily [lowering the CPU usage alert threshold](/docs/products/tools/monitoring/guides/monitoring-email-alerts/) for one of your Linodes. By default, this value is set to 90%.
 
