@@ -58,7 +58,7 @@ While PuTTY is compatible with Windows 10, you may want to review the [Connectin
 
     ![Screenshot of dialog box asking to confirm host key's fingerprint](putty-security-alert.png "Confirm the host key's fingerprint")
 
-    If you trust this connection, press the **Accept** button to continue connecting to the remote server. You can verify the fingerprint by following the instructions under the [Verifying the Host Key's Fingerprint](/docs/guides/verifying-the-host-key-fingerprint/) guide.
+    If you trust this connection, press the **Accept** button to continue connecting to the remote server. You can verify the fingerprint by following the instructions under the [Verifying the Authenticity of a Remote Server](/docs/guides/verifying-the-authenticity-of-remote-host/) guide.
 
 1.  PuTTY now prompts you to enter the remote user and the password for that user.
 

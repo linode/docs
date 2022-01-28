@@ -62,7 +62,7 @@ This key is not known by any other names
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
 {{</ output >}}
 
-    You can verify the fingerprint by following the instructions on the [Verifying the Host Key's Fingerprint](/docs/guides/verifying-the-host-key-fingerprint/) guide.
+    You can verify the fingerprint by following the instructions on the [Verifying the Authenticity of a Remote Server](/docs/guides/verifying-the-authenticity-of-remote-host/) guide.
 
 1.  Accept the prompt by entering `yes`, which results in a one-time warning that is similar to:
 

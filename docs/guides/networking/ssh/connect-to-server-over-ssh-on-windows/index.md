@@ -106,7 +106,7 @@ ECDSA key fingerprint is SHA256:d029f87e3d80f8fd9b1be67c7426b4cc1ff47b4a9d0a84.
 Are you sure you want to continue connecting (yes/no)?
 {{</ output >}}
 
-    You can verify the fingerprint by following the instructions on the [Verifying the Host Key's Fingerprint](/docs/guides/verifying-the-host-key-fingerprint/) guide.
+    You can verify the fingerprint by following the instructions on the [Verifying the Authenticity of a Remote Server](/docs/guides/verifying-the-authenticity-of-remote-host/) guide.
 
 1. Accept the prompt by entering `y` or `yes`, which results in a one-time warning that is similar to:
 
