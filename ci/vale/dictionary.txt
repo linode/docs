@@ -384,6 +384,7 @@ defragment
 delpy
 demultiplexer
 denormalized
+deprovision
 deprovisioning
 descolada
 descr
