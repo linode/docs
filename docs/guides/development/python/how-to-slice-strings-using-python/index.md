@@ -1,14 +1,12 @@
 ---
 slug: how-to-slice-and-index-strings-in-python
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Learn how to slice and index strings in Python 3 to isolate specific characters.'
-og_description: 'Learn how to slice and index strings in Python 3 to isolate specific characters.'
+  name: Jeff Novotny
+description: 'In Python, strings can be manipulated using built-in string methods. In this guide, learn how to slice and index strings in Python 3 to isolate specific characters.'
 keywords: ['Python slice string','Python string index','How to slice a string in python','Python slice string from end']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-05
+published: 2022-01-28
 modified_by:
   name: Linode
 title: "How to Slice and Index Strings in Python"
@@ -18,8 +16,6 @@ contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
 external_resources:
-- '[Python.org web site](https://www.python.org/)'
-- '[Python documentation](https://docs.python.org/3/contents.html)'
 - '[Python string documentation](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)'
 ---
 
@@ -33,15 +29,15 @@ It is possible to access any character in a Python string using array-based inde
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1. This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
 
-1.  Update your system:
+1. Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-1.  Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. For information on how to use Python, see our guide on [How to Install Python 3](https://www.linode.com/docs/guides/how-to-install-python-on-ubuntu-20-04/).
+1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. For information on how to use Python, see our guide on [How to Install Python 3](https://www.linode.com/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -55,21 +51,22 @@ Python strings work like arrays. Individual characters within the string can be 
 
 ### Positive Indexing
 
-The traditional method of string indexing is to count upwards from zero starting with the leftmost character in the string. The index increments by one with each character as the string are read from left to right. This is referred to as *positive indexing*. The first character has an index of `0`, the character at position `x` has an index `x - 1`, and the last character in the string has an index of `string_length - 1`. If the index is greater than `string_length - 1`, Python returns the error `IndexError: string index out of range`. The following chart shows how the Python string index works using the six-character string `Linode` as an example.
+The traditional method of string indexing is to count upwards from zero starting with the leftmost character in the string. The index increments by one with each character as the strings are read from left to right. This is referred to as *positive indexing*. The first character has an index of `0`, the character at position `x` has an index `x - 1`, and the last character in the string has an index of `string_length - 1`. If the index is greater than `string_length - 1`, Python returns the error `IndexError: string index out of range`. The following chart shows how the Python string index works using the six-character string `Linode` as an example.
 
 | L | i | n | o | d | e |
 |:-:|:-:|:-:|:-:|:-:|:-:|
 | 0 | 1 | 2 | 3 | 4 | 5 |
 
-*   The first character of the string is `L`. It has an index of `0` and is accessed using `[0]`.
-*   The third character of the string is `n`. It has an index of `2` and is accessed using `[2]`.
-*   The final character of the string is `e`. It has an index of `5` and is accessed using `[5]`.
+- The first character of the string is `L`. It has an index of `0` and is accessed using `[0]`.
+- The third character of the string is `n`. It has an index of `2` and is accessed using `[2]`.
+- The final character of the string is `e`. It has an index of `5` and is accessed using `[5]`.
 
 The following example illustrates how string indexing works using real Python code. Use string indexing to select the third character from `testString`. The character retrieved by the expression `testString[2]` is assigned to `indexChar` and printed out.
 
     testString = "Linode"
     indexChar = testString[2]
     print(indexChar)
+
 {{< output >}}
 n
 {{< /output >}}
@@ -85,6 +82,7 @@ The characters in a string can also be indexed counting back from the end of the
 Negative indexing uses the same notation as positive indexing. The second-last character is retrieved using `string[-2]`. The following example demonstrates how to use negative indexing.
 
     print(testString[-2])
+
 {{< output >}}
 d
 {{< /output >}}
@@ -105,6 +103,7 @@ To slice a substring from position `2` to position `4`, use the following syntax
 
     testString = "Linode"
     print(testString[2:5])
+
 {{< output >}}
 nod
 {{< /output >}}
@@ -113,6 +112,7 @@ A substring can include a space or a non-alphabetical character. In this example
 
     testString2 = "Linode! System"
     print(testString2[4:10])
+
 {{< output >}}
 de! Sy
 {{< /output >}}
@@ -121,6 +121,7 @@ To slice all characters from the start of the string to a specific point in the 
 
     testString2 = "Linode! System"
     print(testString2[:5])
+
 {{< output >}}
 Linod
 {{< /output >}}
@@ -129,6 +130,7 @@ Python uses the same technique to slice a string from the end. Use the starting 
 
     testString2 = "Linode! System"
     print(testString2[5:])
+
 {{< output >}}
 e! System
 {{< /output >}}
@@ -137,6 +139,7 @@ Slicing can also work with negative indexing. This is handy for extracting the s
 
     testString2 = "Linode! System"
     print(testString2[-3:-1])
+
 {{< output >}}
 te
 {{< /output >}}
@@ -151,6 +154,7 @@ The most common reason to use a negative stride in Python is to implement a reve
 
     testString2 = "Linode! System"
     print(testString2[::-1])
+
 {{< output >}}
 metsyS !edoniL
 {{< /output >}}
@@ -159,6 +163,7 @@ A stride can be used together with start and end indices. The next example demon
 
     testString2 = "Linode! System"
     print(testString2[3::2])
+
 {{< output >}}
 oe ytm
 {{< /output >}}
@@ -173,6 +178,7 @@ To create a substring using the Python slice function, first create a `slice` ob
     sliceObj1 = slice(2,8,2)
     subString = testString2[sliceObj1]
     print(subString)
+
 {{< output >}}
 nd!
 {{< /output >}}
@@ -189,6 +195,7 @@ The Python slice operator only accepts integer values. Consequently, the startin
 
     testString3 = "Linode! System is great"
     print(testString3[(int(len(testString3)/2)):])
+
 {{< output >}}
 tem is great
 {{< /output >}}
@@ -201,6 +208,7 @@ The `string.find` method locates the first instance of a substring (of one or mo
 
     testString3 = "Linode! System is great"
     print(testString3[:(testString3.find("!"))])
+
 {{< output >}}
 Linode
 {{< /output >}}
@@ -210,6 +218,7 @@ Although Python's slicing operation is very powerful, it is important not to ove
     testString3 = "Linode! System is great"
     count = testString3.count("e")
     print(count)
+
 {{< output >}}
 3
 {{< /output >}}
