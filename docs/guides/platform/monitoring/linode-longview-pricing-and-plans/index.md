@@ -3,7 +3,7 @@ slug: linode-longview-pricing-and-plans
 author:
   name: Linode
   email: docs@linode.com
-description: 'Longview Billing Information.'
+description: 'This guide provides you with price and billing information for the Linode Longview Service, which is free for up to 10 clients and can be used for analytics.'
 keywords: ['longview','billing','pricing','price','limit','transfer', 'plan']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-22

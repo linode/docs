@@ -3,7 +3,7 @@ slug: lamp-stack-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Use Marketplace Apps to deploy a LAMP stack on Linode"
+description: "This guide shows you how to use the Linode Marketplace One-Click Application to deploy a LAMP (Linux, Apache, MySQL, PHP) stack on a Linode running Linux."
 keywords: ['LAMP', 'apache', 'web server', 'mysql', 'php']
 tags: ["apache","lamp","cloud-manager","linode platform","php","mysql","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

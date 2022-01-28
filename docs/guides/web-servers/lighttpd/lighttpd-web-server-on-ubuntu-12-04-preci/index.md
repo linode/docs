@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Dave Messina
   email: docs@linode.com
-description: 'Using lighttpd to host multiple websites on Ubuntu 12.04 (Precise)'
+description: 'This guide shows how to install and configure the lighttpd web server on Ubuntu 12.04 ''Precise'' so you can host multiple websites and applications on your server.'
 keywords: ["lighttpd", "web server", "web hosting"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

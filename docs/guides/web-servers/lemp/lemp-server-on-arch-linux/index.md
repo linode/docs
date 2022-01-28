@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install a LEMP stack to serve websites and applications on Arch Linux'
+description: 'This guide shows you how to install and configure a LEMP (Linux, NGINX, MySQL, PHP) server to host websites and applications on the Arch LInux distro.'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lemp/lemp-server-on-arch-linux/','/web-servers/lemp/lemp-server-on-arch-linux/','/lemp-guides/arch-linux/']
