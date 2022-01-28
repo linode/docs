@@ -6,6 +6,7 @@ ack
 aconf
 accessor
 accessors
+acronis
 adc
 addon
 addons
@@ -66,6 +67,7 @@ askbot
 aske
 async
 asynchrony
+atera
 authdaemonrc
 authg
 authlib
@@ -90,6 +92,7 @@ automator
 automattic
 automations
 automount
+automox
 autorelabel
 autorun
 autoscale
@@ -104,6 +107,7 @@ awk
 aws
 awstats
 axibase
+ayehu
 azc
 azlux
 backdooring
@@ -310,6 +314,8 @@ crowdsourcing
 crt
 crypters
 crypto
+cryptocurrencies
+cryptocurrency
 csi
 csharp
 csharpserver
@@ -470,6 +476,7 @@ elgg
 elpaso
 emacs
 email2email
+emisoft
 emojivoto
 emscripten
 ender
@@ -846,6 +853,7 @@ issuewild
 istioctl
 iterable
 itk
+ivanti
 Janca
 jamstack
 java6
@@ -885,6 +893,8 @@ jx
 kaggle
 kakfa
 kamkar
+kaseya
+kasten
 kbits
 keepalive
 keepalived
@@ -921,6 +931,7 @@ konsole
 kotin
 konversation
 krita
+kroll
 ktor
 kube
 kubeadm
@@ -1486,6 +1497,7 @@ quicklisp
 quickstart
 radeon
 ramdisk
+ransomwhere
 rauth
 rbac
 rbenv
@@ -1532,6 +1544,7 @@ refspec
 regexes
 reimported
 reindexing
+reiner
 reinstalls
 releasever
 reloadcmd
@@ -1707,6 +1720,7 @@ slavedb
 sls
 smartcard
 smartcards
+smishing
 smtp
 smtpd
 smush
@@ -1998,6 +2012,7 @@ valheim
 validator
 variadic
 varnishlog
+varonis
 vaultwarden
 vcs
 vdev
@@ -2008,6 +2023,7 @@ venv
 ver
 veracode
 verisign
+veritas
 vhost
 vhosts
 vimrc
@@ -2023,6 +2039,7 @@ virtualize
 virtualized
 virtualmin
 Virustotal
+vishing
 vlan
 vlans
 vlc
@@ -2170,6 +2187,7 @@ zapier
 zcat
 zend
 zgrep
+zhao
 zile
 zimbra
 zipkin
