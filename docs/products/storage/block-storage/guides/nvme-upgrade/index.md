@@ -14,7 +14,7 @@ To learn more about Block Storage, visit the [Block Storage Overview](/docs/prod
 
 ## Availability
 
-**NVMe Block Storage** has already been deployed to a few of our data centers, as indicated in the table below. NVMe Block Storage infrastructure upgrades will soon be deployed across the remaining data centers in our fleet.
+**NVMe Block Storage** has already been deployed to most of our data centers, as indicated in the table below. NVMe Block Storage infrastructure upgrades will soon be deployed across the remaining data centers in our fleet.
 
 | Data Center | NVMe Block Storage |
 | -- | -- |
@@ -22,8 +22,8 @@ To learn more about Block Storage, visit the [Block Storage Overview](/docs/prod
 | Dallas (Texas, USA) | *Coming in Q1 2022* |
 | **Frankfurt (Germany)** | **Deployed** |
 | Fremont (California, USA) | *Coming in Q1 2022* |
-| London (United Kingdom) | *Coming in Q1 2022* |
-| Mumbai (India) | *Coming in Q1 2022* |
+| **London (United Kingdom)** | **Deployed** |
+| **Mumbai (India)** | **Deployed** |
 | **Newark (New Jersey, USA)** | **Deployed** |
 | Singapore | *Coming in Q1 2022* |
 | Sydney (Australia) | *Coming in Q1 2022* |
