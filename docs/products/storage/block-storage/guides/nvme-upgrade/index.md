@@ -22,8 +22,8 @@ To learn more about Block Storage, visit the [Block Storage Overview](/docs/prod
 | Dallas (Texas, USA) | *Coming in Q1 2022* |
 | **Frankfurt (Germany)** | **Deployed** |
 | Fremont (California, USA) | *Coming in Q1 2022* |
-| London (United Kingdom) | *Coming in Q1 2022* |
-| Mumbai (India) | *Coming in Q1 2022* |
+| **London (United Kingdom)** | **Deployed** |
+| **Mumbai (India)** | **Deployed** |
 | **Newark (New Jersey, USA)** | **Deployed** |
 | Singapore | *Coming in Q1 2022* |
 | Sydney (Australia) | *Coming in Q1 2022* |
