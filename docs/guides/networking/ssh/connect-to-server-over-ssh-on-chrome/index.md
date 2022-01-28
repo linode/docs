@@ -3,12 +3,12 @@ slug: connect-to-server-over-ssh-on-chrome
 author:
   name: Linode
   email: docs@linode.com
-description: 'A tutorial outlining how to connect to a remote server over SSH on ChromeOS or the Chrome web browser using the Secure Shell extension.'
-og_description: 'A tutorial outlining how to connect to a remote server over SSH on ChromeOS or the Chrome web browser using the Secure Shell extension.'
+description: "A tutorial outlining how to connect to a remote server over SSH on ChromeOS or the Chrome web browser using the Secure Shell extension."
 keywords: ['ssh','secure shell', 'chromeos', 'chrome', 'connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
+modified: 2022-01-28
 modified_by:
   name: Linode
 title: "How to Connect to a Remote Server Over SSH on Chrome"
@@ -62,7 +62,7 @@ This key is not known by any other names
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
 {{</ output >}}
 
-    You can verify the fingerprint by following the instructions under the [Verifying the Host Key's Fingerprint](#verifying-the-host-keys-fingerprint) section.
+    You can verify the fingerprint by following the instructions on the [Verifying the Host Key's Fingerprint](/docs/guides/verifying-the-host-key-fingerprint/) guide.
 
 1.  Accept the prompt by entering `yes`, which results in a one-time warning that is similar to:
 
@@ -86,26 +86,6 @@ NaC1 plugin existed with status code 0
 {{< /output >}}
 
 Type `x` to close the tab, `r` to reconnect to the same server, or `c` to be presented with the **Connection Dialog** window, allowing you to manually type in the details for a new connection.
-
-## Verifying the Host Key's Fingerprint
-
-1.  Log in to your remote server through a trusted method. For a Linode, use [Lish](/docs/networking/using-the-linode-shell-lish/).
-
-1.  Run the command below to output your server's SSH key fingerprint
-
-        ssh-keygen -E md5 -lf /etc/ssh/ssh_host_ed25519_key.pub
-
-    The output looks similar to:
-
-    {{< output >}}
-256 MD5:58:72:65:6d:3a:39:44:26:25:59:0e:bc:eb:b4:aa:f7  root@localhost (ED25519)
-{{< /output >}}
-
-    {{< note >}}
-For the fingerprint of an RSA key instead of elliptical curve, use: `ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub`.
-{{< /note >}}
-
-1.  Compare this output to what appears when opening an SSH connection on your local computer. The two fingerprints should match. **If the fingerprints do not match, do not connect to the server.** You won't receive further warnings unless the fingerprint changes for some reason. Typically, this should only happen if you reinstall the remote server's operating system. If you receive this warning again from a system you already have the host key cached on, you should not trust the connection and investigate matters further.
 
 ## Going Further
 

@@ -8,7 +8,7 @@ keywords: ['ssh','linux','windows','connect to server over ssh','connect to lino
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
-modified: 2022-01-14
+modified: 2022-01-28
 image: SSHWINDOWS.jpg
 modified_by:
   name: Linode
@@ -104,9 +104,9 @@ If the server's SSH port is something other than 22, it needs to be specified in
 The authenticity of host ‘example.com (93.184.216.34)’ can't be established.
 ECDSA key fingerprint is SHA256:d029f87e3d80f8fd9b1be67c7426b4cc1ff47b4a9d0a84.
 Are you sure you want to continue connecting (yes/no)?
-    {{</ output >}}
+{{</ output >}}
 
-    You can verify the fingerprint by following the instructions under the [Verifying the Host Key's Fingerprint](#verifying-the-host-keys-fingerprint) section.
+    You can verify the fingerprint by following the instructions on the [Verifying the Host Key's Fingerprint](/docs/guides/verifying-the-host-key-fingerprint/) guide.
 
 1. Accept the prompt by entering `y` or `yes`, which results in a one-time warning that is similar to:
 
@@ -150,26 +150,6 @@ The commands should be separated by a semi-colon (`;`) and all of the commands t
 ### Using sudo
 
 It's recommended to disable root access over SSH and only log in to your remote server through a limited user account. However, some commands require elevated privileges, which can usually be accomplished by prepending the command with `sudo`. If you attempt to do this while running commands directly through the SSH command, you may receive an error such as "no tty present" or there isn't a "stable CLI interface". To run the `sudo` command in these instances, use the `-t` option, which forces a psuedo-terminal allocation. For example, to update your packages on a Debian-based system, run `ssh linode@example.com -t "sudo apt update"`.
-
-## Verifying the Host Key's Fingerprint
-
-1.  Log in to your remote server through a trusted method. For a Linode, use [Lish](/docs/networking/using-the-linode-shell-lish/).
-
-1.  Run the command below to output your server's SSH key fingerprint
-
-        ssh-keygen -E md5 -lf /etc/ssh/ssh_host_ed25519_key.pub
-
-    The output looks similar to:
-
-    {{< output >}}
-256 MD5:58:72:65:6d:3a:39:44:26:25:59:0e:bc:eb:b4:aa:f7  root@localhost (ED25519)
-{{< /output >}}
-
-    {{< note >}}
-For the fingerprint of an RSA key instead of elliptical curve, use: `ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub`.
-{{< /note >}}
-
-1.  Compare this output to what appears when opening an SSH connection on your local computer. The two fingerprints should match. **If the fingerprints do not match, do not connect to the server.** You won't receive further warnings unless the fingerprint changes for some reason. Typically, this should only happen if you reinstall the remote server's operating system. If you receive this warning again from a system you already have the host key cached on, you should not trust the connection and investigate matters further.
 
 ## Going Further
 
