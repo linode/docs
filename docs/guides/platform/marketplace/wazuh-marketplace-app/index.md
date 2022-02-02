@@ -56,7 +56,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Accessing the Wazuh App
 
-1.  Open a web browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `li*.members.linode.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
+1.  Open a web browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which will appear like `203-0-113-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
 
 1.  In the login screen that appears, enter `admin` as the username and `admin` as the password. Since the default admin user is set to read-only, you need to follow the steps below to reset the admin password.
 
