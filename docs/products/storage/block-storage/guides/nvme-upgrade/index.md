@@ -26,7 +26,7 @@ To learn more about Block Storage, visit the [Block Storage Overview](/docs/prod
 | **Mumbai (India)** | **Deployed** |
 | **Newark (New Jersey, USA)** | **Deployed** |
 | Singapore | *Coming in Q1 2022* |
-| Sydney (Australia) | *Coming in Q1 2022* |
+| **Sydney (Australia)** | **Deployed** |
 | **Tokyo (Japan)** | **Deployed** |
 | **Toronto (Canada)** | **Deployed** |
 
