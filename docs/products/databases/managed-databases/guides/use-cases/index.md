@@ -22,7 +22,7 @@ Every organization should have a comprehensive disaster recovery plan in place t
 
 ## High Availability
 
-Most production applications would greatly benefit from the redundancy and extreme uptimes that high availability solutions offer. Managed Databases, when configured with 3 nodes, provides built-in data replication, redundancy, and automatic failover. This ensures downtime is significantly minimized and applications are always available.
+Most production applications would greatly benefit from the redundancy and extreme uptime that high availability solutions offer. Managed Databases, when configured with 3 nodes, provides built-in data replication, redundancy, and automatic failover. This ensures downtime is significantly minimized and applications are always available.
 
 ## Reasons to Consider Manged Databases
 
