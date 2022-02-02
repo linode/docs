@@ -50,7 +50,7 @@ Every node of a database cluster is built on its own Linode Compute Instance. In
 
 Each Managed Database can be built with either 1 or 3 nodes (individual virtual machines):
 
-- **1 node database cluster**: This option is recommended for development purposes or production databases where a lower cost is more beneficial than redudancy and failover.
+- **1 node database cluster**: This option is recommended for development purposes or production databases where a lower cost is more beneficial than redundancy and failover.
 - **3 node high availability database cluster**: This option is recommended for product databases. High availability database clusters have built-in data redundancy and automatic failover. Your data is replicated across every other node in the cluster. If one goes down, any traffic is redirected to the other available nodes.
 
 ## Add Access Controls

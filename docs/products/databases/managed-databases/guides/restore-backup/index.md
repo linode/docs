@@ -6,7 +6,7 @@ title: "Restore from a Backup"
 description: ""
 ---
 
-Each Managed Database includes daily backups of your data, taken on a 24 hour cadance. Up to 7 backups are stored for each database cluster, which provides you with a restore point for each day in the last week. This guide walks you through viewing and restoring from these backups.
+Each Managed Database includes daily backups of your data, taken on a 24 hour cadence. Up to 7 backups are stored for each database cluster, which provides you with a restore point for each day in the last week. This guide walks you through viewing and restoring from these backups.
 
 {{<caution>}}
 Restoring from a backup erases all data stored within the database cluster and replaces it with the data from that backup.

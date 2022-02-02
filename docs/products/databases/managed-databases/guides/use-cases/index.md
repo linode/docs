@@ -10,19 +10,19 @@ Managed Databases is Linode's own Database-as-a-Service (DBaaS) platform. These 
 
 ## Cost Reduction
 
-Hosting your own database on-premise (or on your own custom cloud architecture) can require you to dedicate a signficant budget and lots of IT resources towards its implementation and operation. Offloading this to a dedicated DBaaS solution like Managed Databases has the potential to significantly lower the cost and reduce the complexity. This allows you to focus on your business - not your computing infrastructure.
+Hosting your own database on-premise (or on your own custom cloud architecture) can require you to dedicate a significant budget and lots of IT resources towards its implementation and operation. Offloading this to a dedicated DBaaS solution like Managed Databases has the potential to significantly lower the cost and reduce the complexity. This allows you to focus on your business - not your computing infrastructure.
 
 ## Rapid Deployment
 
-It's often necessary to create short-lived databases quickly and securely. You may want to do this for development, disaster recovery (discussed below), ephemeral applications, traffic management, and much more. Managed Databases makes this process incredibly efficient, allowing you to create databases quickly using the Cloud Manager or programically through the Linode API.
+It's often necessary to create short-lived databases quickly and securely. You may want to do this for development, disaster recovery (discussed below), ephemeral applications, traffic management, and much more. Managed Databases makes this process incredibly efficient, allowing you to create databases quickly using the Cloud Manager or programmatically through the Linode API.
 
 ## Disaster Recovery
 
-Every organization should have a comprehensive disaster recovery plan in place to safeguard their data. Every Managed Database provides daily backups that are retained for 7 days and can be restored through a click of a button. This provides an additional layer of data protection on top of your existing strategy. In additon, since Managed Databases can be provisioned quickly, you're able to use this service as part of a disaster recovery plan for on-premise or self-hosted databases.
+Every organization should have a comprehensive disaster recovery plan in place to safeguard their data. Every Managed Database provides daily backups that are retained for 7 days and can be restored through a click of a button. This provides an additional layer of data protection on top of your existing strategy. In addition, since Managed Databases can be provisioned quickly, you're able to use this service as part of a disaster recovery plan for on-premise or self-hosted databases.
 
 ## High Availability
 
-Most production applications would greatly benefit from the redudancy and extreme uptimes that high availability solutions offer. Managed Databases, when cofigured with 3 nodes, provides built-in data replication, redudancy, and automatic failover. This ensures downtime is signifantly minimized and applications are always available.
+Most production applications would greatly benefit from the redundancy and extreme uptimes that high availability solutions offer. Managed Databases, when configured with 3 nodes, provides built-in data replication, redundancy, and automatic failover. This ensures downtime is significantly minimized and applications are always available.
 
 ## Reasons to Consider Manged Databases
 
