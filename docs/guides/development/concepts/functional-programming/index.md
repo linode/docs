@@ -100,16 +100,19 @@ Previous sections already mentioned that pure functions are functions in which t
 
 To put this in perspective, compare it with functions, or methods, in object-oriented programming:
 
-    class ClassA {
-        constructor() {
-            this.stateValueY = 2;
-        }
-
-        methodA(inputX) {
-            var outputZ = inputX * stateValueY;
-            return outputZ;
-        }
+``` javascript
+class ClassA {
+    constructor() {
+        this.stateValueY = 2;
     }
+
+    methodA(inputX) {
+        var outputZ = inputX * stateValueY;
+        return outputZ;
+    }
+}
+
+```
 
 - A method, `methodA`, takes `inputX` and produces `outputZ`. The method calculates the value of `outputZ` by doing `inputX * stateValueY`, where `stateValueY` is a value assigned on the same object as `methodA`.
 
@@ -125,10 +128,13 @@ To put this in perspective, compare it with functions, or methods, in object-ori
 
 Now, take a look at a similar scenario using pure functions:
 
-    function functionA(inputX, inputY) {
-        const outputZ = inputX * inputY;
-        return outputZ;
-    }
+``` javascript
+function functionA(inputX, inputY) {
+    const outputZ = inputX * inputY;
+    return outputZ;
+}
+
+```
 
 - A function, `functionA`, takes `inputX` and `inputY` to produce `outputZ`. It calculates the value of `outputZ` as `inputX * inputY`.
 
@@ -154,40 +160,42 @@ A recursive function is a function that calls itself to iterate through data col
 
 Here is an example in JavaScript. It uses two recursive functions — `recursiveFibonacci` and `listFibonacci` — to list the Fibonacci numbers out to a given length:
 
-    // Gets a Fibonacci number at a given position in the sequence.
-    function recursiveFibonacci(x) {
-        // Ensures an end to the recursive loop by handling the last iterations
-        // with a set number rather than further recursion.
-        if (x < 2) {
-            return 1;
-        }
-
-        // Call the function again, with lower and lower input values. The
-        // results are combined with each recursion, and this combined result
-        // gets returned when all of the recursions resolve.
-        else {
-            return recursiveFibonacci(x - 2) + recursiveFibonacci(x - 1)
-        }
+``` javascript
+// Gets a Fibonacci number at a given position in the sequence.
+function recursiveFibonacci(x) {
+    // Ensures an end to the recursive loop by handling the last iterations
+    // with a set number rather than further recursion.
+    if (x < 2) {
+        return 1;
     }
 
-    // Creates a string listing the Fibonacci numbers to a given length. When
-    // the funciton gets called, `result` should be an empty string. That
-    // parameter, instead, gets used in the recursive process.
-    function listFibonacci(y, result) {
-        // Ensures an end to the recursive loop by handling the last iteration.
-        if (y < 0) {
-            return result;
-        }
+    // Call the function again, with lower and lower input values. The
+    // results are combined with each recursion, and this combined result
+    // gets returned when all of the recursions resolve.
+    else {
+        return recursiveFibonacci(x - 2) + recursiveFibonacci(x - 1)
+    }
+}
 
-        // Call the function again, using a lower input value each time. With
-        // each recursion, the `result` string gets expanded until it is
-        // returned on the final recursion, in the `if` statement above.
-        else {
-            return listFibonacci(y - 1, recursiveFibonacci(y).toString() + " " + result)
-        }
+// Creates a string listing the Fibonacci numbers to a given length. When
+// the funciton gets called, `result` should be an empty string. That
+// parameter, instead, gets used in the recursive process.
+function listFibonacci(y, result) {
+    // Ensures an end to the recursive loop by handling the last iteration.
+    if (y < 0) {
+        return result;
     }
 
-    listFibonacci(5, "")
+    // Call the function again, using a lower input value each time. With
+    // each recursion, the `result` string gets expanded until it is
+    // returned on the final recursion, in the `if` statement above.
+    else {
+        return listFibonacci(y - 1, recursiveFibonacci(y).toString() + " " + result)
+    }
+}
+
+listFibonacci(5, "")
+```
 
 {{< output >}}
 '1 1 2 3 5 8 '
@@ -201,12 +209,15 @@ Referential transparency is another quality of functional programming, related t
 
 Take the `recursiveFibonacci` function defined above as an example. This function returns `8` when its input value is `5`. Because the program is functional and uses only pure functions and immutability, it has referential transparency. Thus, you could replace `recursiveFibonaci(5)` with `8`:
 
-    const functionValue = recursiveFinonacci(5);
-    const plainValue = 8;
+``` javascript
+const functionValue = recursiveFinonacci(5);
+const plainValue = 8;
 
-    if (functionValue === plainValue) {
-        console.log("We have referential transparency!");
-    }
+if (functionValue === plainValue) {
+    console.log("We have referential transparency!");
+}
+
+```
 
 {{< output >}}
 We have referential transparency!
@@ -220,20 +231,22 @@ Higher-order functions serve the purpose of abstracting program behavior. Wherea
 
 Maps are perhaps the mostly widely used kind of higher-order function in functional programming. These functions take a collection, like a list, and a function as arguments. They then apply the function to each item in the list and return a new list of the results:
 
-    // Start with a list.
-    const listValue = [1, 3, 5];
+``` javascript
+// Start with a list.
+const listValue = [1, 3, 5];
 
-    // Create a new list using the map. In JavaScript, the map function belongs
-    // to the list you want to apply the map on.
-    const newListValue = listValue.map(item => {
-        return item * 10;
-    });
+// Create a new list using the map. In JavaScript, the map function belongs
+// to the list you want to apply the map on.
+const newListValue = listValue.map(item => {
+    return item * 10;
+});
 
-    console.log(newListValue);
+console.log(newListValue);
 
 {{< output >}}
 [10, 30, 50]
 {{< /output >}}
+```
 
 ## Conclusion
 
