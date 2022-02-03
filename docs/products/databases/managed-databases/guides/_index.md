@@ -17,10 +17,11 @@ tab_group_main:
 
 - [Use Cases for Managed Databases](/docs/products/databases/managed-databases/guides/use-cases/)
 
-
 ## MySQL
 
 - [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/connect-to-mysql/)
+
+- [Migrate a MySQL or MariaDB Database to a Managed Database](/docs/products/databases/managed-databases/guides/migrate-mysql/)
 
 ### Additional MySQL Guides
 
