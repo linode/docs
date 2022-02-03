@@ -74,9 +74,9 @@ If your Linode does not have the correct IPv6 address or any IPv6 address at all
 
 If a single IPv6 address isn't sufficient for your application, additional IPv6 addresses are provided through large address blocks, also called routed ranges or pools. From these ranges, you can manually configure individual IPv6 addresses on your Linode. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) and [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration) guides for instructions on adding an IPv6 range and to learn how to configure it within your system.
 
-The size of each block is identified through a prefix. These are indicated with a slash `/` followed by a number in base 10: the length of the network **prefix** in bits. This translates to the number of available addresses that are available in the range (or pool). For example, the prefix `/48` contains 2<sup>128-48</sup> = 2<sup>80</sup> = 1,208,925,819,614,629,174,706,176 addresses. For an address like `2001:db8:1234::/48` the block of addresses is `2001:db8:1234:0000:0000:0000:0000:0000` to `2001:db8:1234:ffff:ffff:ffff:ffff:ffff`.
+The size of each block is identified through a suffix. These are indicated with a slash `/` followed by a number in base 10: the length of the network **suffix** in bits. This translates to the number of available addresses that are available in the range (or pool). For example, the suffix `/48` contains 2<sup>128-48</sup> = 2<sup>80</sup> = 1,208,925,819,614,629,174,706,176 addresses. For an address like `2001:db8:1234::/48` the block of addresses is `2001:db8:1234:0000:0000:0000:0000:0000` to `2001:db8:1234:ffff:ffff:ffff:ffff:ffff`.
 
-The IPv6 prefixes and their respective quantity of IPv6 addresses that Linode provides are listed below.
+The IPv6 suffixes and their respective quantity of IPv6 addresses that Linode provides are listed below.
 
 ### IPv6 Routed Ranges
 
@@ -92,7 +92,7 @@ An IPv6 pool is accessible from every Linode on your account within the assigned
 - `/116` **pool** *(4,096 addresses)*
 
 {{< note >}}
-The IPv6 `/116` prefix is not available in the Toronto, Atlanta, Sydney, or Mumbai data centers.
+The IPv6 `/116` suffix is not available in the Toronto, Atlanta, Sydney, or Mumbai data centers.
 {{</ note >}}
 
 ## IPv6 Forwarding
