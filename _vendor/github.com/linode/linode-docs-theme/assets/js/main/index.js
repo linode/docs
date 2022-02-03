@@ -7,7 +7,6 @@ import { bridgeTurboAndAlpine } from './alpine-turbo-bridge';
 import {
 	alpineRegisterMagicHelpers,
 	alpineRegisterDirectiveSVG,
-	initConsentManager,
 	newDisqus,
 	newDropdownsController
 } from './components/index';
@@ -31,7 +30,6 @@ const searchConfig = getSearchConfig(params);
 
 // Set up and start Alpine.
 (function() {
-	// Used during development.
 
 	// Register AlpineJS plugins.
 	{
@@ -120,9 +118,6 @@ const searchConfig = getSearchConfig(params);
 	document.addEventListener('turbo:load', function(event) {
 		// Hide JS-powered blocks on browsers with JavaScript disabled.
 		document.body.classList.remove('no-js');
-
-		// Init the TrustArc
-		initConsentManager();
 
 		// Update any static links to the current language.
 		let lang = getCurrentLang();
