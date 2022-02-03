@@ -6,7 +6,7 @@ title: "Manage Access Controls"
 description: ""
 ---
 
-Each Managed Database cluster has its own access control list, which grants specific IP addresses or ranges access to the database. By default, all connections (both public and private) are blocked unless they appear on this list.
+Each Managed Database cluster has its own access control list, which grants specific IPv4 addresses or ranges access to the database. By default, all connections (both public and private) are blocked unless they appear on this list.
 
 ## View Access Controls
 

@@ -6,7 +6,7 @@ title: "Reset the Root Password"
 description: ""
 ---
 
-If you need to reset the root password on your Managed Database, you can do so through the Cloud Manager. This process assigns a new randomly generated password to the `linroot` user. This is helpful when someone should no longer have access or if you believe your password may have been compromised.
+If you need to reset the root password on your Managed Database, you can do so through the Cloud Manager. This process assigns a new randomly generated password to the `linroot` user. This is helpful when someone should no longer have access to that user or if you believe your password may have been compromised.
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Databases** from the left navigation menu.
 

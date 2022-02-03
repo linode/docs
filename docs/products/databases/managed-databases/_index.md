@@ -32,12 +32,12 @@ Managed Databases can be configured with either 1 or 3 underlying machines, also
 
 The following database management systems (DBMSs) are available (or coming soon) to Managed Databases:
 
-- **MySQL:** An industry standard relational database management system that uses the SQL query language. Many popular applications (including WordPress) require MySQL or MySQL compatible databases. See [An Overview of MySQL](/docs/guides/an-overview-of-mysql/). The following versions are available:
+- **MySQL:** An industry standard relational database management system that uses the SQL query language. Many popular applications (including WordPress) require MySQL or MySQL compatible databases. See [An Overview of MySQL](/docs/guides/an-overview-of-mysql/). The following major releases are available (each with one or more available minor releases):
 
     - MySQL 8.0
     - MySQL 5.7
 
-    *If the applications using your database support it, choose MySQL 8. It's more performant and includes additional features. MySQL 5.7 is available for legacy applications.*
+    *If the applications using your database support it, you may want to select the latest available release of MySQL 8. It's more performant and includes additional features. MySQL 5.7 is available for legacy applications.*
 
 - **PostreSQL** *(Coming soon)*: An object-releational database management system that can use either SQL or JSON queries. It's generally more flexible and feature-rich than MySQL, though it's not a drop-in replacement and applications need to have built-in support for it. See [An Introduction to PostreSQL](/docs/guides/an-introduction-to-postgresql/)
 - **MongoDB** *(Coming soon)*: A document-oriented database software that uses JSON files to store data. It is one of the most popular NoSQL databases and, as such, it is *unstructured* and very flexible. [MongoDB and Its Use Cases](/docs/guides/mongodb-and-its-use-cases/)
@@ -69,7 +69,7 @@ Managed Databases can be created and deployed across [all regions](https://www.l
 During the beta period, Managed Databases will not incur any costs. If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of it becoming a paid product.
 {{</note>}}
 
-Managed Databases do not consume [network transfer](/docs/guides/network-transfer/) or include a monthly transfer allowance.
+Managed Databases do not consume [network transfer](/docs/guides/network-transfer/) or include a monthly transfer allowance. Transfer is consumed when connecting to a Managed Database from a Compute Instance when that instance is located in a different data center.
 
 ## Additional Technical Specifications
 
@@ -77,7 +77,7 @@ In addition to the resources allocated to each available plan (outlined above), 
 
 - Fully-managed, including automated deployment and maintenance
 - Multiple database engines and versions
-- Superuser admin access
+- Root-level access to the database
 - Automatic backups are taken daily and retained for 7 days
 - Customizable access controls to manage a list of trusted sources
 - 100% SSD (Solid State Disk) storage
@@ -90,3 +90,5 @@ In addition to the resources allocated to each available plan (outlined above), 
 - Managed Databases cannot be resized to a different plan or cluster size after they are created.
 
 - The default user cannot be changed or removed, though the password can be reset at any time.
+
+- You are not able to access the underlying operating system of a database cluster.
