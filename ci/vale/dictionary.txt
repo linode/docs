@@ -1,4 +1,4 @@
-abc
+bc
 abell
 absecon
 abspath
@@ -422,6 +422,7 @@ dired
 direnv
 dirtycow
 discoverability
+diskpart
 disqus
 distro
 distros
@@ -743,6 +744,7 @@ host2
 hostname
 hostnames
 hotfix
+hotfixes
 hotlink
 hotlinked
 hotlinking
@@ -1259,6 +1261,7 @@ netlink
 netloc
 netmask
 netplan
+netsh
 netstat
 netstumbler
 netuser
@@ -1442,6 +1445,7 @@ postgresql0
 postmap
 postrotate
 postrouting
+powercfg
 powershell
 ppa
 pparadis
@@ -1769,6 +1773,7 @@ somaxconn
 someuser
 sonicwall
 sophos
+spacebar
 spamassassin
 spamd
 spamhaus
@@ -1816,6 +1821,8 @@ streamlink
 su
 subcommand
 subcommands
+subcontext
+subcontexts
 subfile
 subfiles
 subfolder
