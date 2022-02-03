@@ -126,13 +126,5 @@ function handleAPIResponse(response) {
 }
 
 export function initConsentManager() {
-	if (!window.trustecm) {
-		window.trustecm = {
-			required: false,
-			advertising: false,
-			functional: false,
-			any: false
-		};
-	}
 	_STATE.i = setInterval(runOnce, 10);
 }

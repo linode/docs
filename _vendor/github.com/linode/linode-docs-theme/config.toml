@@ -134,6 +134,14 @@ target = "assets/linode/footer.css"
 source = "header.js"
 target = "assets/linode/header.js"
 
+[[module.imports.mounts]]
+source = "footer-inline.js"
+target = "assets/linode/footer-inline.js"
+
+[[module.imports.mounts]]
+source = "attribution-inline.js"
+target = "assets/linode/attribution-inline.js"
+
 # JS components packaged as Hugo Modules.
 [[module.imports]]
 path = "github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3"
