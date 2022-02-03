@@ -39,6 +39,7 @@ amavis
 amavisd
 amd64
 ananke
+anonymization
 anonymize
 anonymizing
 ansi
@@ -515,7 +516,9 @@ examplesitename
 exampleuser
 exe
 executables
+exfiltrated
 exfiltrating
+exfiltration
 exim
 expirations
 exploitability
