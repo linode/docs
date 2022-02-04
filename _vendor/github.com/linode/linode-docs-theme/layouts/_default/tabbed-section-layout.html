@@ -1,0 +1,37 @@
+{{ define "main"}}
+  <div class="">
+    {{ partial "sections/content/products/title-byline.html" . }}
+    <div class="mt-4">
+      {{ partial "sections/content/navbar.html" (dict "page" . "mainNavPartial" "sections/content/tab-main.html") }}
+    </div>
+
+    {{ if ne .Params.promo_default false }}
+    <div class="mt-8">
+      {{ partial "sections/content/promo_code.html" . }}
+    </div>
+    {{ end }}
+
+    <div class="content prose prose-sm md:prose-lg max-w-none mt-8">
+      {{ .Content }}
+    </div>
+    <p class="pt-2 md:pt-6 text-basicgray">
+      This page was originally published on
+      <time datetime="{{ .PublishDate }}">
+        {{ .PublishDate.Format site.Params.time_format_default }}.
+      </time>
+    </p>
+  </div>
+
+  <div class="block mt-8">
+    {{ partial "sections/content/tags.html" . }}
+  </div>
+
+  <div class="hide-if-no-js">
+    <hr class="my-8">
+
+    {{/* Add feedback links via Delighted. */}}
+    {{ partial "components/delighted/form.html" . }}
+    <hr class="mt-8">
+  </div>
+
+{{ end }}

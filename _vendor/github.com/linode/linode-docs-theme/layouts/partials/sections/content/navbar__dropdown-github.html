@@ -1,0 +1,11 @@
+{{ if .page.File }}
+    {{ $path := .page.Params.path | default .page.File.Path }}
+    {{ $viewDocsHref := printf "https://github.com/linode/docs/blob/develop/docs/%s" $path }}
+    {{ $editDocsHref := printf "https://github.com/linode/docs/edit/develop/docs/%s" $path  }}
+    {{ $issueParams := (replace "%20Proposed%20Changes&body=Link%3A%C2%A0PERMALINK%0A%23%23%20Issue%0A%0A%23%23%20Suggested%20Fix%0A&labels=inaccurate%20guide" "PERMALINK" .page.Permalink ) }}
+    {{ $issueHref := ( printf "https://github.com/linode/docs/issues/new?title=%s%s" (.page.Title | htmlEscape) $issueParams | safeHTML ) }}
+
+    {{ partial "sections/content/navbar__dropdown__link.html" (dict "href" $issueHref "text" "Report an Issue"  )}}
+    {{ partial "sections/content/navbar__dropdown__link.html" (dict "href" $viewDocsHref "text" "View File"  )}}
+    {{ partial "sections/content/navbar__dropdown__link.html" (dict "href" $editDocsHref "text" "Edit File"  )}}
+{{ end }}

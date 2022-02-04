@@ -1,0 +1,35 @@
+<div x-data class="flex items-center justify-center h-full w-full explorer-toggle__header" @click.stop="$store.nav.open.explorer = !$store.nav.open.explorer">
+  <div class="hide-if-topbar-is-pinned md:hidden h-full">
+    <button type="button" :aria-label="$store.nav.open.explorer ? 'close' : 'open'" class="btn-icon flex items-center justify-between h-full"  data-testid="open-explorer">
+      <svg class="md:hidden text-titlecolor" style="width: 1rem;height:0.85rem;">
+        <use :href="$store.nav.open.explorer ? '#icon--times' : '#icon--explore-docs'"></use>
+      </svg>
+    </button>
+  </div>
+  <div class="hide-if-topbar-is-not-pinned md:hidden">
+    <button type="button" :aria-label="$store.nav.open.explorer ? 'close' : 'open'" class="btn-icon h-full">
+      <svg style="width: 1rem;height:0.85rem;" :class="{ 'text-titlecolor' : !$store.nav.open.explorer, 'text-brand': $store.nav.open.explorer }">
+        <use href="#icon--explore-docs"></use>
+      </svg>
+    </button>
+  </div>
+  <div class="hidden md:flex items-center justify-between h-full w-full">
+    <div class="font-bold uppercase text-titlecolor hide-on-lang-nav" style="font-size: 15px; letter-spacing: 0.5px;">
+      Explore docs
+    </div>
+    <template x-if="!$store.nav.open.explorer">
+      <button aria-label="open" type="button" class="btn-icon hidden md:block" data-testid="explorer-open" data-testid="open-explorer">
+        <svg class="text-titlecolor w-6 h-5">
+          <use href="#icon--arrow-down"></use>
+        </svg>
+      </button>
+    </template>
+    <template x-if="$store.nav.open.explorer">
+      <button aria-label="close" type="button" class="btn-icon hidden md:block" data-testid="explorer-close">
+        <svg class="text-titlecolor w-6 h-5">
+          <use href="#icon--arrow-up"></use>
+        </svg>
+      </button>
+    </template>
+  </div>
+</div>

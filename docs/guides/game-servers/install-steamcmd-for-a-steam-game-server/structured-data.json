@@ -1,0 +1,30 @@
+{
+  "@context": "http://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How Do I Update My SteamCMD Server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "<p>To update your SteamCMD server, follow these steps:</p><ol><li>Run SteamCMD</li><li>Use login anonymous </li><li>app_update 2323001</li></ol><p>And your SteamCMD server gets updated. In the last step “app_update 2323001”, replace “2323001” with your app number. </p><p><br></p>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How Do I Install SteamCMD On Chromebook?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "<p>Installing SteamCMD on Chromebook is pretty straightforward. You can run the following command to install it:</p><p>sudo apt-get install steamcmd</p><p>Once you see a success message, SteamCMD is installed on your system. Make sure to follow the steps we have listed previously in this guide to ensure you have all prerequisites installed on your Chromebook.</p>"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How Do I Open SteamCMD? ",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "<p>Unix based systems</p><p>On most Unix based systems, you can run SteamCMD using this command: screen ~/.steam/steamcmd</p><p>On Windows</p><p>To run SteamCMD on Windows follow these steps:</p><ol><li>Browse SteamCMD folder </li><li>Click on steamcmd.exe to launch</li></ol><p><br></p>"
+      }
+    }
+  ]
+}
