@@ -1,14 +1,12 @@
 ---
-slug: using-for-and-while-loops-in-python
+slug: python-for-and-while-loops
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Using for and while loops in Python 3, with examples for looping through dictionaries and lists, and constructing do while loops.'
-og_description: 'How to use for and while loops in Python 3, with examples for looping through dictionaries and lists, and constructing do while loops.'
+  name: Jeff Novotny
+description: 'This guide covers using for and while loops in Python 3 and includes examples for looping through dictionaries and lists, and constructing do while loops.'
 keywords: ['Python for loop', 'Python while loop', 'Python for loop range', 'Python loop through dictionary']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-29
+published: 2022-02-04
 modified_by:
   name: Linode
 title: "Using For and While Loops in Python 3"
@@ -18,11 +16,7 @@ contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
 external_resources:
-- '[Python.org web site](https://www.python.org/)'
-- '[Python documentation](https://docs.python.org/3/contents.html)'
-- '[Python language reference](https://docs.python.org/3/reference/index.html)'
 - '[Python control flow documentation](https://docs.python.org/3/tutorial/controlflow.html)'
-- '[Python data structures documentation](https://docs.python.org/3/tutorial/datastructures.html)'
 - '[Python compound statements](https://docs.python.org/3/reference/compound_stmts.html)'
 - '[PEP 8 Style Guidelines](https://www.python.org/dev/peps/pep-0008/)'
 ---
@@ -35,9 +29,9 @@ The Python `for` statement is a control flow statement that executes a specific 
 
 A `for` loop is used whenever the loop should run a certain number of times. Under normal circumstances, changes inside the loop do not cause the loop to terminate early. However, the `break` statement allows for early termination of the loop under unexpected or adverse conditions. Here are some cases when a loop might be useful.
 
-*   Count how many times each letter grade appears in a student transcript.
-*   Given a list of employees, determine how many did not complete the mandatory ethics course.
-*   Update a macro-economic model for each of the next ten years.
+- Count how many times each letter grade appears in a student transcript.
+- Given a list of employees, determine how many did not complete the mandatory ethics course.
+- Update a macro-economic model for each of the next ten years.
 
 In these cases, the program can determine the range of the loop before it begins looping. In the first case, a finite list of grades is used as a sequencer for the loop. If the list is `['A', 'B', 'C', 'D', 'F']`, then the loop iterates five times, once for each grade.
 
@@ -49,23 +43,23 @@ In certain situations, it is sensible to add a *guard condition* to a conditiona
 
 Here are a few examples of cases where a `while` statement could be used:
 
-*   A user is repeatedly prompted for a password until they enter it correctly.
-*   A program accepts and processes new input until the user enters an escape sequence.
-*   A function continues reading data from a stream as long as the connection remains open.
+- A user is repeatedly prompted for a password until they enter it correctly.
+- A program accepts and processes new input until the user enters an escape sequence.
+- A function continues reading data from a stream as long as the connection remains open.
 
 To summarize, a `for` statement is used when the maximum number of iterations is known in advance. Use a `while` statement when the loop should keep running until something changes.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1. This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-1.  Update your system:
+1. Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-1.  Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu 20.04](https://www.linode.com/docs/guides/how-to-install-python-on-ubuntu-20-04/).
+1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu 20.04](https://www.linode.com/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -77,11 +71,11 @@ The steps in this guide are written for non-root users. Commands that require el
 
 The Python `for` statement is a *compound statement*. It consists of a *header* and a block of code. The first line of the statement, up until the `:` symbol, is the header. The header contains the following components:
 
-1.  The `for` keyword, which begins the statement.
-1.  A loop variable, which is also known as the *iterator*. This variable is incremented or decremented with each new iteration of the loop. It is not necessary to define the loop variable beforehand. Python creates this variable when it is first used.
-1.  The keyword `in`.
-1.  A sequence to constrain how many times the loop executes. This is supplied using either the `range` function or a sequential data object. The built-in `range` function accepts up to three integers. These stand for the starting position, the ending position, and the `step` for the sequence. The sequential data type can be a String, List, Set, Tuple, or Dictionary. More details are provided in the following sections.
-1.  A `:` symbol that terminates the statement header.
+1. The `for` keyword, which begins the statement.
+1. A loop variable, which is also known as the *iterator*. This variable is incremented or decremented with each new iteration of the loop. It is not necessary to define the loop variable beforehand. Python creates this variable when it is first used.
+1. The keyword `in`.
+1. A sequence to constrain how many times the loop executes. This is supplied using either the `range` function or a sequential data object. The built-in `range` function accepts up to three integers. These stand for the starting position, the ending position, and the `step` for the sequence. The sequential data type can be a String, List, Set, Tuple, or Dictionary. More details are provided in the following sections.
+1. A `:` symbol that terminates the statement header.
 
 Each `for` statement is paired with a block of executable code, known as the *suite*. The code block consists of one or more indented lines of code. The first non-indented line of code terminates the code block. According to Python's [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guidelines, the indentation should be four spaces long.
 
@@ -96,9 +90,9 @@ The Python `for` statement is frequently used with the `range` keyword. When the
 
 The `range` operator accepts up to three integer parameters:
 
--   `start`: This serves as the initial value of the `iterator` and the starting point of the `range`. If the `start` value is omitted, it defaults to `0`. It is inclusive, which means the `iterator` is set to this value for the first instance of the loop.
--   `end`: This mandatory value determines the end position of the `range`. A comparison is made between the value of the `iterator` and the endpoint at the start of the loop. If the `iterator` is still within the range, the loop continues to iterate. This value is exclusive, so if `end` and the `iterator` are equal, the loop stops running.
--   `step`: The `step` indicates how much the `iterator` should increment each cycle. It is optional, and has a default value of `1`. If a `step` is used, all three values must be specified.
+-  `start`: This serves as the initial value of the `iterator` and the starting point of the `range`. If the `start` value is omitted, it defaults to `0`. It is inclusive, which means the `iterator` is set to this value for the first instance of the loop.
+-  `end`: This mandatory value determines the end position of the `range`. A comparison is made between the value of the `iterator` and the endpoint at the start of the loop. If the `iterator` is still within the range, the loop continues to iterate. This value is exclusive, so if `end` and the `iterator` are equal, the loop stops running.
+-  `step`: The `step` indicates how much the `iterator` should increment each cycle. It is optional, and has a default value of `1`. If a `step` is used, all three values must be specified.
 
 To illustrate how these values work together, `range(0,5)` increments the iterator from `0` to `4` and runs five times. `range(1,5,2)` sets the iterator to `1` to start off and increments it by `2` with each iteration. It only runs two times, because the third time the iterator is `5`, which is equal to the `end` value.
 
@@ -111,6 +105,7 @@ print("The loop has ended.")
 {{< /file >}}
 
     python3 loop1.py
+
 {{< output >}}
 The value of i is 0
 The value of i is 1
@@ -129,6 +124,7 @@ print("The loop has ended.")
 {{< /file >}}
 
     python3 loop2.py
+
 {{< output >}}
 The value of i is 1
 The value of i is 3
@@ -145,6 +141,7 @@ print("The loop has ended.")
 {{< /file >}}
 
     python3 loop3.py
+
 {{< output >}}
 The value of i is 5
 The value of i is -5
@@ -164,6 +161,7 @@ print("The loop has ended.")
 {{< /file >}}
 
     python3 loop_else.py
+
 {{< output >}}
 The value of i is 0
 The value of i is 1
@@ -201,6 +199,7 @@ print("The loop has ended.")
 {{< /file >}}
 
     python3 loop_list.py
+
 {{< output >}}
 The next city is Chicago
 The next city is Detroit
@@ -219,7 +218,7 @@ Beginning with release 3.6, Python iterates over dictionary keys in the same ord
 Earlier releases of Python often order dictionary entries differently.
 {{< /note >}}
 
-The following example demonstrates how to loop through a Dictionary named `citystates`. In this Dictionary, the key is the name of the city while the value is the name of the state. More specifically, `city` contains the name of the city, and `citystates[city]` contains the name of the corresponding state. The code block prints both variables. Because the Dictionary contains four entries, the `for` loop iterates four times.
+The `lopp_dcit.py` file demonstrates how to loop through a Dictionary named `citystates`. In this Dictionary, the key is the name of the city while the value is the name of the state. More specifically, `city` contains the name of the city, and `citystates[city]` contains the name of the corresponding state. The code block prints both variables. Because the Dictionary contains four entries, the `for` loop iterates four times.
 
 {{< file "loop_dict.py" python >}}
 citystates = {'Chicago' : 'Illinois', 'Detroit' : 'Michigan', 'New York' : 'New York', 'Miami' : 'Florida'}
@@ -229,6 +228,7 @@ print("The loop has ended.")
 {{< /file >}}
 
     python3 loop_dict.py
+
 {{< output >}}
 The name of the city is Chicago and the name of the state is Illinois
 The name of the city is Detroit and the name of the state is Michigan
@@ -253,6 +253,7 @@ print("The loop has ended.")
 {{< /file >}}
 
     python3 loop2_dict.py
+
 {{< output >}}
 The name of the state is Illinois
 The name of the state is Michigan
@@ -281,6 +282,7 @@ print("The loop has ended.")
 {{< /file >}}
 
     python3 loop3_dict.py
+
 {{< output >}}
 The name of the city is Chicago and the name of the state is Illinois
 The name of the city is Detroit and the name of the state is Michigan
@@ -288,11 +290,11 @@ The name of the city is New York and the name of the state is New York
 The name of the city is Miami and the name of the state is Florida
 {{< /output >}}
 
-###  How to Break or Exit from a For Loop in Python
+### How to Break or Exit from a For Loop in Python
 
 The Python `break` statement immediately breaks out of the innermost `for` loop. It is often used to handle unexpected conditions or errors. For example, a loop might read data from a file and write it to a database. If the database suddenly becomes inaccessible, a `break` statement can immediately end the loop. Otherwise, the program would repeatedly keep timing out. It is better to give prompt feedback that something is not working.
 
-In the following example, the `break` statement terminates the loop when the factorial of the iterator exceeds `5000`. Based on the `start` and `end` values, the program is expected to loop through the code block five times. However, it stops after three cycles because the factorial of `7` is greater than the guard value of `5000`.
+In the `loop_break.py` example file, the `break` statement terminates the loop when the factorial of the iterator exceeds `5000`. Based on the `start` and `end` values, the program is expected to loop through the code block five times. However, it stops after three cycles because the factorial of `7` is greater than the guard value of `5000`.
 
 {{< note >}}
 This program imports the built-in Python `math` module and uses the module's `factorial` function.
@@ -309,6 +311,7 @@ print("The loop has ended.")
 {{< /file >}}
 
     python3 loop_break.py
+
 {{< output >}}
 The factorial of 5 is 120
 The factorial of 6 is 720
@@ -317,7 +320,7 @@ The limit of 5000 is exceeded.
 The loop has ended.
 {{< /output >}}
 
-###  The Python while Loop
+### The Python while Loop
 
 The Python `while` loop is similar to the `for` loop, but it is used in slightly different circumstances. It works best in situations where the number of iterations is not known when the program first begins to loop. A good example is a guessing game. The game ends when the player guesses the correct number. So the loop keeps running until the correct number is chosen.
 
@@ -325,9 +328,9 @@ Like the Python `for` loop, the Python `while` statement is structured as a *com
 
 The header for a `while` statement is somewhat simpler than the `for` loop header. It contains the following items:
 
-1.  The `while` keyword.
-1.  A *conditional expression*, which must evaluate to a Boolean value of either `True` or `False`. If the expression is `True`, Python executes the corresponding code block.
-1.  A `:` symbol, terminating the header and introducing the code block.
+1. The `while` keyword.
+1. A *conditional expression*, which must evaluate to a Boolean value of either `True` or `False`. If the expression is `True`, Python executes the corresponding code block.
+1. A `:` symbol, terminating the header and introducing the code block.
 
 A `while` loop does not have an iterator or a range and does not assign any variables. It does not lend itself to handling a sequential data structure. It can be thought of as an "indefinite" `if` statement. Upon each iteration, Python evaluates the Boolean expression. If it is `True`, the code block is executed. If it is `False`, the `while` loop terminates and control flow passes to the first non-indented line following its code block. The conditional expression can use any of Python's logical or comparison operators, including `==`, `<=`, or `and`. If the expression is `False` the first time through the `while` loop, the loop never runs at all.
 
@@ -337,7 +340,7 @@ As long as the Boolean expression remains `True`, the `while` statement keeps lo
 To forcibly break out of an infinite loop in a Python program, enter `Ctrl-C`. This only works when running in interactive mode or running a Python program from the command line.
 {{< /note >}}
 
-The syntax for a `while` loop is structured like below:
+The syntax for a `while` loop is structured as follows:
 
     while (Boolean_expression):
         statements
@@ -359,6 +362,7 @@ while (password != guess) and (counter < 5):
 {{< /file >}}
 
     python3 while.py
+
 {{< output >}}
 Please enter your password: Attempt 1
 yes
@@ -410,6 +414,7 @@ else:
 {{< /file >}}
 
     python3 while_break.py
+
 {{< output >}}
 Please enter your password: Attempt 1
 a
@@ -454,6 +459,7 @@ while True:
 {{< /file >}}
 
     python3 do_while.py
+
 {{< output >}}
 1
 2
