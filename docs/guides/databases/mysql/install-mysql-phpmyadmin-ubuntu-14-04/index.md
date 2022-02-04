@@ -1,5 +1,6 @@
 ---
 slug: install-mysql-phpmyadmin-ubuntu-14-04
+deprecated: true
 author:
     name: Linode
     email: docs@linode.com

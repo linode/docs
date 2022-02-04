@@ -24,6 +24,7 @@ relations:
         keywords:
             - distribution: Debian 7
 tags: ["debian","database","nosql"]
+deprecated: true
 ---
 
 MongoDB is an open-source, non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.

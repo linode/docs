@@ -1,5 +1,6 @@
 ---
 slug: lamp-on-ubuntu-14-04
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com
