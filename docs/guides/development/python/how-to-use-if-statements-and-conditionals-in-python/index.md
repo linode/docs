@@ -1,14 +1,12 @@
 ---
-slug: using-if-statements-and-chained-conditionals-in-python
+slug: if-statements-and-conditionals-in-python
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'How to use if, if else, and elif statements to create simple and complex conditionals in Python 3'
-og_description: 'How to use if, if else, and elif statements to create simple and complex conditionals in Python 3'
+  name: Jeff Novotny
+description: 'This guide provides an introduction to conditional statements in Python 3. It covers how to use if, if else, and elif statements to create simple and complex conditionals.'
 keywords: ['Python conditional','Python if else','Python if statement']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-23
+published: 2022-02-04
 modified_by:
   name: Linode
 title: "Using If Statements and Chained Conditionals in Python 3"
@@ -18,9 +16,6 @@ contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
 external_resources:
-- '[Python.org web site](https://www.python.org/)'
-- '[Python documentation](https://docs.python.org/3/contents.html)'
-- '[Python language reference](https://docs.python.org/3/reference/index.html)'
 - '[Python control flow documentation](https://docs.python.org/3/tutorial/controlflow.html)'
 - '[PEP 8 Style Guidelines](https://www.python.org/dev/peps/pep-0008/)'
 ---
@@ -39,11 +34,11 @@ In Python, the official keywords `True` and `False` represent the two Boolean tr
 
 A conditional statement typically follows an `if then` format. The `if` component is paired with a conditional expression and a block of code. If the conditional is true, the program runs the code inside the block. This code block is sometimes referred to as the *clause*. If the conditional is false, the block is not executed. Sometimes the conditional has an `if-then-else` format. The `else` branch contains a code block that only runs when the conditional is false.
 
-A conditional statement can be used whenever different actions should be taken based on different input conditions. Here are some programming scenarios that lend themselves to conditional statements.
+A conditional statement can be used whenever different actions should be taken based on different input conditions. The list below includes some programming scenarios that lend themselves to conditional statements.
 
-*   An item should be displayed only if it falls within a specified price range.
-*   If a customer has been validated, then send them to a payment screen. Otherwise, ask for their credentials.
-*   A user is prompted to delete any documents that have not been updated within the last year.
+- An item should be displayed only if it falls within a specified price range.
+- If a customer has been validated, then send them to a payment screen. Otherwise, ask for their credentials.
+- A user is prompted to delete any documents that have not been updated within the last year.
 
 In pseudocode, the structure of an `if then` conditional follows the pattern below:
 
@@ -61,15 +56,15 @@ An `if then` conditional can be extended using the `else` option to form an `if 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1. This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
 
-1.  Update your system:
+1. Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-1.  Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu 20.04](https://www.linode.com/docs/guides/how-to-install-python-on-ubuntu-20-04/).
+1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu 20.04](https://www.linode.com/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -83,9 +78,9 @@ To implement conditionals in Python, use the `if` statement. The Python `if` sta
 
 The Python `if` statement runs a block of code if and only if certain conditions are met. It is structured as a *compound statement*. This means it contains a *header* and an associated *suite*. The first line of the `if` statement is the header. The `if` header consists of the following three components, in the following order:
 
-1.  The `if` keyword begins the conditional statement.
-1.  A conditional expression, which evaluates to a Boolean value of `True` or `False`. The expression can optionally be enclosed in brackets.
-1.  The `:` symbol marks the end of the line and the end of the `if` statement header.
+1. The `if` keyword begins the conditional statement.
+1. A conditional expression, which evaluates to a Boolean value of `True` or `False`. The expression can optionally be enclosed in brackets.
+1. The `:` symbol marks the end of the line and the end of the `if` statement header.
 
 The suite follows the header. It contains one or more lines of code to execute and must be indented. This indented section is also known as the *code block* or the conditional *clause*. There is no limit to the length of this block, which is terminated by the next non-indented line. According to Python's [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guidelines, four spaces should be used for the indentation.
 
@@ -102,7 +97,7 @@ When the Python interpreter encounters the `if` keyword, it evaluates the `boole
 
 ####  Python if Example
 
-This example demonstrates how to use the Python `if` command. The value of `temperature` is initially set to `75`. Inside the `if` statement, Python analyzes the Boolean expression, `temperature > 65` and decides it is `True`. Because the expression is `True`, Python executes the code block, which consists of two `print` statements. If the code block required more instructions, they would also be indented.
+The examples in this section demonstrate how to use the Python `if` command. The value of `temperature` is initially set to `75`. Inside the `if` statement, Python analyzes the Boolean expression, `temperature > 65` and decides it is `True`. Because the expression is `True`, Python executes the code block, which consists of two `print` statements. If the code block required more instructions, they would also be indented.
 
 {{< file "if_temp1.py" python >}}
 temperature = 75
@@ -114,6 +109,7 @@ print("End of program")
 {{< /file >}}
 
     python3 if_temp1.py
+
 {{< output >}}
 The temperature is:  75
 This is a nice day.
@@ -132,6 +128,7 @@ print("End of program")
 {{< /file >}}
 
     python3 if_temp2.py
+
 {{< output >}}
 The temperature is:  55
 End of program
@@ -153,6 +150,7 @@ print("End of program")
 {{< /file >}}
 
     python3 ifnot1.py
+
 {{< output >}}
 The detective is not here.
 End of program
@@ -168,6 +166,7 @@ print("End of program")
 {{< /file >}}
 
     python3 ifnot2.py
+
 {{< output >}}
 End of program
 {{< /output >}}
@@ -187,6 +186,7 @@ print("End of program")
 {{< /file >}}
 
     python3 if_and.py
+
 {{< output >}}
 This is a nice day and the detective is not here.
 End of program
@@ -220,6 +220,7 @@ print("End of program")
 {{< /file >}}
 
     python3 ifelse_temp.py
+
 {{< output >}}
 The temperature is:  55
 The weather is too cold
@@ -262,6 +263,7 @@ print("End of program")
 {{< /file >}}
 
     python3 ifelif_temp.py
+
 {{< output >}}
 The temperature is:  55
 This is an okay day.
@@ -283,6 +285,7 @@ print("End of program")
 {{< /file >}}
 
     python3 ifelif2_temp.py
+
 {{< output >}}
 The temperature is:  40
 The weather is too cold
