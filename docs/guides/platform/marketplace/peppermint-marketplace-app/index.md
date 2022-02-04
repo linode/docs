@@ -21,7 +21,7 @@ aliases: ['/guides/deploy-peppermint-with-marketplace-apps/']
 [Peppermint Ticket Management](https://peppermint.sh/) is a ticket management system that allows teams and solo users the ability create & track tickets, todo items, and more. The project is meant to provide help desks and services desks manage internal and customer requests, but Peppermint is a good solution for anyone looking for a ticket management system that is free and easy to use.
 
 {{< caution >}}
-While Peppermint is still in technically in alpha, it is stable enough for production use.
+While Peppermint is still technically in alpha, it is stable enough for production use.
 {{</ caution >}}
 
 ## Deploying the Peppermint Marketplace App
