@@ -49,7 +49,7 @@ Here's a few common categories:
     The customer generally assumes responsibility for deploying and maintaining their applications on the cluster. The Master Nodes are often provided at no cost, and the customer only pays for the Worker Nodes they provision.
 
     {{< note >}}
-The upcoming Linode Kubernetes Engine (LKE) is an example of this category.
+Linode Kubernetes Engine (LKE) is an example of this category.
 {{< /note >}}
 
 -   **Software-as-a-Service Kubernetes**
