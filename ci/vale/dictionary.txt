@@ -28,6 +28,7 @@ Akaunting
 aker
 alef
 alertmanager
+alex
 alexey
 alfano
 alives
@@ -39,6 +40,7 @@ amavis
 amavisd
 amd64
 ananke
+anonymization
 anonymize
 anonymizing
 ansi
@@ -158,6 +160,7 @@ blockwise
 bluehost
 bokeh
 bookinfo
+bool
 boolean
 booleans
 boolstyle
@@ -476,6 +479,7 @@ ejabberd
 el6
 el7
 elasticsearch
+elif
 elisp
 elgg
 elpaso
@@ -515,7 +519,9 @@ examplesitename
 exampleuser
 exe
 executables
+exfiltrated
 exfiltrating
+exfiltration
 exim
 expirations
 exploitability

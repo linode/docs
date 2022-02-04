@@ -13,7 +13,7 @@ cascade:
 
 ## Availability
 
-Dallas, TX, USA; Frankfurt, Germany; Fremont, CA, USA; London, United Kingdom; Mumbai, India; Newark, NJ, USA; Singapore, Singapore; Sydney, Australia; Tokyo, Japan; Toronto, Canada;
+Atlanta, GA, USA; Dallas, TX, USA; Frankfurt, Germany; Fremont, CA, USA; London, United Kingdom; Mumbai, India; Newark, NJ, USA; Singapore, Singapore; Sydney, Australia; Tokyo, Japan; Toronto, Canada;
 
 ## Features
 

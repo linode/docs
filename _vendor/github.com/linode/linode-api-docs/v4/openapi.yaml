@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.113.0
+  version: 4.114.0
 
   title: Linode API
   description: |
@@ -16393,12 +16393,12 @@ components:
         state:
           type: string
           description: >
-            If billing address is in the United States, this is the State
-            portion of the Account's billing address. If the address is outside
-            the US, this is the Province associated with the Account's billing
+            If billing address is in the United States (US) or Canada (CA), only the two-letter
+            ISO 3166 State or Province code are accepted. If the address is outside
+            the US or CA, this is the Province associated with the Account's billing
             address.
           maxLength: 24
-          example: Pennsylvania
+          example: PA
         tax_id:
           type: string
           description: >

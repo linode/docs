@@ -9,7 +9,7 @@ tags: ['apt','apt-get','debian','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-15
 image: UsingAPTtoManagePackagesinDebianandUbuntu.jpg
-modified: 2021-07-15
+modified: 2022-01-31
 modified_by:
   name: Linode
 title: "How to Use APT to Manage Packages in Debian and Ubuntu"
@@ -217,4 +217,4 @@ If you wish to replicate the currently installed packages to another system with
 
 1.  Using apt-clone, run the following command to restore the packages. Replace *[name]* with the name used in the previous step (or whatever the file is called). If the file is located within a different directly than your current directory, adjust the command to include the path.
 
-        sudo apt-get restore [name]p.apt-clone.tar.gz
+        sudo apt-clone restore [name].apt-clone.tar.gz
