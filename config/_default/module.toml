@@ -1,3 +1,4 @@
+vendorClosest = true
 
 # Mounts in this project.
 [[mounts]]
