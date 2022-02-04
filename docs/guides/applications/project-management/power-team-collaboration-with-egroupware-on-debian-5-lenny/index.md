@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Build a groupware system with eGroupware.'
+description: 'This guide shows how to install and build a groupware system using eGroupware, which provides a group of server-side apps for collaboration on Debian 5 "Lenny".'
 keywords: ["groupware", "email", "collaboration", "debian"]
 tags: ["debian", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

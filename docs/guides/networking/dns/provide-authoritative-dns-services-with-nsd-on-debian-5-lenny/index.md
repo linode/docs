@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'Install and configure NSD to handle DNS queries.'
+description: 'This guide shows how you can install and configure NSD, a lightweight name server daemon and alternative to BIND, to provide authoritative DNS on Debian 5 "Lenny".'
 keywords: ["NSD", "DNS", "resolving", "Debian", "networking"]
 tags: ["dns","networking","resolving","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
