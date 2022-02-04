@@ -1,32 +1,26 @@
 ---
-slug: using-boolean-variables-operators-conditional-statements-in-python
+slug: boolean-variables-in-python
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Learn and reference Boolean logic in Python 3, with examples for Boolean variables, comparison and logical operators, and conditional statements.'
-og_description: 'Learn and reference Boolean logic in Python 3, with examples for Boolean variables, comparison and logical operators, and conditional statements.'
+  name: Jeff Novotny
+description: 'Learn about Boolean logic in Python 3. This guide includes examples for Boolean variables, comparison and logical operators, and conditional statements.'
 keywords: ['Python Boolean operators','Python logical operators','Python logical and','Python logical or']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-10
+published: 2022-02-04
 modified_by:
   name: Linode
-title: "Using Boolean Variables, Operators, Conditional Statements in Python"
-h1_title: "Boolean Variables, Operators, Conditional Statements in Python"
+title: "Using Boolean Variables, Operators, and Conditional Statements in Python"
+h1_title: "Boolean Variables, Operators, and Conditional Statements in Python"
 enable_h1: true
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
 external_resources:
-- '[Python.org web site](https://www.python.org/)'
-- '[Python documentation](https://docs.python.org/3/contents.html)'
-- '[Python language reference](https://docs.python.org/3/reference/index.html)'
 - '[Python Documentation on Value Comparisons](https://docs.python.org/3/reference/expressions.html#value-comparisons)'
 - '[Python documentation for compound statements](https://docs.python.org/3/reference/compound_stmts.html)'
-- '[Wikipedia page on Boolean expressions](https://en.wikipedia.org/wiki/Boolean_expression)'
 ---
 
-*Boolean logic* is at the heart of [Python](https://www.python.org/) and most programming languages. It allows programmers to make comparisons, execute conditional statements, and implement common algorithms. The "greater than" and "equals to" symbols are examples of Python comparison operators, while `and` and `or` are some of Python's logical operators. This tutorial explains Boolean logic and expressions and discusses how to use the Python Boolean operators.
+*Boolean logic* is at the heart of [Python](https://www.python.org/) and most programming languages. It allows programmers to make comparisons, execute conditional statements, and implement common algorithms. The "greater than" (`>`) and "equals to" (`==`) symbols are examples of Python comparison operators, while `and` and `or` are some of Python's logical operators. This tutorial explains Boolean logic and expressions and discusses how to use Python's Boolean operators.
 
 ## An Introduction To Boolean Logic and Boolean Values
 
@@ -38,15 +32,15 @@ Python uses a built-in data type named `bool` to represent Boolean values. The `
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1. This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
 
-3.  Update your system:
+1. Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-4.  Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu 20.04](https://www.linode.com/docs/guides/how-to-install-python-on-ubuntu-20-04/).
+1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu 20.04](https://www.linode.com/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -56,13 +50,14 @@ The steps in this guide are written for non-root users. Commands that require el
 
 Python supplies a complete selection of Boolean operators for use in Boolean expressions. These operators allow an expression to be evaluated as either `True` or `False`, permitting the result to be used in conditional statements and other control structures. There are two main types of Boolean operators in Python.
 
-*   **Comparison Operators:** Python comparison operators compare two values of the same type and return a Boolean value of `True` or `False`.
-*   **Logical Operators:** Python logical operators combine the results of other expressions and return `True` or `False`.
+- **Comparison Operators:** Python comparison operators compare two values of the same type and return a Boolean value of `True` or `False`.
+- **Logical Operators:** Python logical operators combine the results of other expressions and return `True` or `False`.
 
 In addition to the comparison and logical operators, Python has a `bool` type. Any variable assigned the value of `True` or `False` has a type of `bool`. It is possible to confirm the type of a variable using the built-in `type` function.
 
     a = True
     type(a)
+
 {{< output >}}
 <class 'bool'>
 {{< /output >}}
@@ -71,6 +66,7 @@ If "True" is enclosed in quotes, then it is a string containing the character se
 
     a = "True"
     type(a)
+
 {{< output >}}
 <class 'str'>
 {{< /output >}}
@@ -79,29 +75,32 @@ Variables can be converted to a different type when they are assigned a new valu
 
     a = "True"
     type(a)
+
 {{< output >}}
 <class 'str'>
 {{< /output >}}
 
     a = True
     type(a)
+
 {{< output >}}
 <class 'bool'>
 {{< /output >}}
 
-The Python `bool` function lets programmers evaluate any variable, expression, or object as a Boolean value. This function always returns `True` or `False`. Python uses its own set of rules to determine the truth value of a variable. Some of the less obvious rules guiding whether something is `True` or `False` are as follows. Consult the [Python documentation for the bool function](https://docs.python.org/3/library/functions.html#bool) for more information.
+The Python `bool` function lets programmers evaluate any variable, expression, or object as a Boolean value. This function always returns `True` or `False`. Python uses its own set of rules to determine the truth value of a variable. Some of the less obvious rules guiding whether something is `True` or `False` are included in the list below. Consult the [Python documentation for the bool function](https://docs.python.org/3/library/functions.html#bool) for more information.
 
-*   A positive or negative integer or real number of any size is always `True`. The values `0` and `0.0` are `False`.
-*   Rounding errors resulting from mathematical operations on real numbers can cause confusing or misleading results. Even if the variable "should" be zero, rounding operations could mean it holds a very small non-zero value. This would evaluate as `True`.
-*   An empty string, list, set, or dictionary evaluates to `False`. Non-empty strings or data structures are `True`.
-*   The special Python value `None` is `False`.
-*   The special numbers `inf`, `-inf`, and `NaN` (for undefined or non-representable values) are all `True`.
-*   A function is always `True`.
+- A positive or negative integer or real number of any size is always `True`. The values `0` and `0.0` are `False`.
+- Rounding errors resulting from mathematical operations on real numbers can cause confusing or misleading results. Even if the variable "should" be zero, rounding operations could mean it holds a very small non-zero value. This would evaluate as `True`.
+- An empty string, list, set, or dictionary evaluates to `False`. Non-empty strings or data structures are `True`.
+- The special Python value `None` is `False`.
+- The special numbers `inf`, `-inf`, and `NaN` (for undefined or non-representable values) are all `True`.
+- A function is always `True`.
 
 A non-zero integer is always `True`.
 
     a = 1
     print(bool(a))
+
 {{< output >}}
 True
 {{< /output >}}
@@ -110,6 +109,7 @@ An integer with a value of `0` is `False`.
 
     b = 0
     print(bool(b))
+
 {{< output >}}
 False
 {{< /output >}}
@@ -120,12 +120,12 @@ Python comparison operators compare two items, but they can only be used on item
 
 There are several different comparison operators, which typically return Boolean values. Not all operators make sense for all types. The most common of these operators include:
 
-*   **`==`:** The "equal to" operator.
-*   **`!=`:** The "not equal to" operator.
-*   **`<`:** The "less than" operator.
-*   **`>`:** The "greater than" operator.
-*   **`<=`:** The "less than or equal to" operator.
-*   **`>=`:** The "greater than or equal to" operator.
+- **`==`:** The "equal to" operator.
+- **`!=`:** The "not equal to" operator.
+- **`<`:** The "less than" operator.
+- **`>`:** The "greater than" operator.
+- **`<=`:** The "less than or equal to" operator.
+- **`>=`:** The "greater than or equal to" operator.
 
 Some of these operators are mirror images to one another and some are a convenient shorthand for an operation that would otherwise require two comparisons.
 
@@ -137,7 +137,7 @@ The `!=` operator is used to determine whether two elements are unequal. `x != y
 
 For more information, see the [Python Documentation on Value Comparisons](https://docs.python.org/3/reference/expressions.html#value-comparisons).
 
-Here is an example demonstrating how the `==` operator can be used to test `a` and `b` for equality. Because the two items are indeed equal, Python returns `True`.
+ The example below demonstrates how the `==` operator can be used to test `a` and `b` for equality. Because the two items are indeed equal, Python returns `True`.
 
 {{< note >}}
 Throughout these examples, do not mix up the assignment operator `=` with the equality operator `==`. Substituting the `=` operator in place of the `==` leads to strange and misleading bugs.
@@ -146,6 +146,7 @@ Throughout these examples, do not mix up the assignment operator `=` with the eq
     a = 4
     b = 4
     print(a == b)
+
 {{< output >}}
 True
 {{< /output >}}
@@ -153,6 +154,7 @@ True
 If the same two variables are tested for inequality, Python returns a Boolean value of `False`.
 
     print(a != b)
+
 {{< output >}}
 False
 {{< /output >}}
@@ -160,6 +162,7 @@ False
 The two items being compared do not have to be variables. A variable can be compared to a hard-coded constant. In this case, `a` is equal to `4`, so the comparison is `False`.
 
     print(a == 5)
+
 {{< output >}}
 False
 {{< /output >}}
@@ -170,11 +173,13 @@ Strings must be identical in case and length to be considered equal in Python. T
     b = "linode"
     c = "linode"
     print(a == b)
+
 {{< output >}}
 False
 {{< /output >}}
 
     print(b == c)
+
 {{< output >}}
 True
 {{< /output >}}
@@ -185,11 +190,13 @@ These operators can also test collections for equivalence. In this case, `list1`
     list2 = [1, 2, 3, 4]
     list3 = [1, 2, 3]
     print(list1 == list3)
+
 {{< output >}}
 True
 {{< /output >}}
 
     print(list1 == list2)
+
 {{< output >}}
 False
 {{< /output >}}
@@ -207,6 +214,7 @@ To test whether `a` is greater than `b`, use the `>` operator.
     a = 5
     b = 3
     print(a > b)
+
 {{< output >}}
 True
 {{< /output >}}
@@ -216,6 +224,7 @@ Use the `<` comparison to determine whether `a` is less than `b`.
     a = 5
     b = 3
     print(a < b)
+
 {{< output >}}
 False
 {{< /output >}}
@@ -227,16 +236,19 @@ The same comparisons can be done on strings. The string `linode` is considered t
     c = "Linode"
     d = "System"
     print(a < b)
+
 {{< output >}}
 True
 {{< /output >}}
 
     print(c < d)
+
 {{< output >}}
 True
 {{< /output >}}
 
     print(a < d)
+
 {{< output >}}
 False
 {{< /output >}}
@@ -250,12 +262,14 @@ The following example explains how the `<=` comparison works in practice. The `>
     a = 5
     b = 3
     print(a <= b)
+
 {{< output >}}
 False
 {{< /output >}}
 
     a = 3
     print(a <= b)
+
 {{< output >}}
 True
 {{< /output >}}
@@ -266,9 +280,9 @@ Python's logical operators are used to evaluate Boolean expressions. They perfor
 
 The logic of each operator can be demonstrated using a *Truth Table*. The truth table for a given operation lists the output for each possible combination of inputs. It is used to analyze Boolean functions in an easy-to-understand format. Boolean expressions can be created in Python from the three main logical operators.
 
-*   **`and`:** This is the Python "logical and" operator. It returns `True` if both expressions are `True` and `False` otherwise.
-*   **`or`:** The Python "logical or" operator returns `True` if either expression is `True` and `False` otherwise.
-*   **`not`:** Python's "logical not" operator returns `True` only if the expression it is evaluating is `False`.
+- **`and`**: This is the Python "logical and" operator. It returns `True` if both expressions are `True` and `False` otherwise.
+- **`or`**: The Python "logical or" operator returns `True` if either expression is `True` and `False` otherwise.
+- **`not`**: Python's "logical not" operator returns `True` only if the expression it is evaluating is `False`.
 
 #### The and Operator in Python
 
@@ -290,12 +304,14 @@ The `and` operator is frequently used between two comparison operators, but `a` 
     c = 4
     d = 4
     print((a == b) and (c == d))
+
 {{< output >}}
 True
 {{< /output >}}
 
     b = 4
     print((a == b) and (c == d))
+
 {{< output >}}
 False
 {{< /output >}}
@@ -322,12 +338,14 @@ Python does not have an "exclusive or" operator, also known as a "xor". To satis
     c = 4
     d = 5
     print((a == b) or (c == d))
+
 {{< output >}}
 True
 {{< /output >}}
 
     b = 4
     print((a == b) or (c == d))
+
 {{< output >}}
 False
 {{< /output >}}
@@ -345,12 +363,14 @@ The following examples demonstrate how to use the `not` operator. They take adva
 
     a = 3
     print(not(a))
+
 {{< output >}}
 False
 {{< /output >}}
 
     a = 0
     print(not(a))
+
 {{< output >}}
 True
 {{< /output >}}
@@ -361,10 +381,10 @@ Sometimes Python logical operators can return a result without evaluating both i
 
 Do not confuse the Python logical operators with the bitwise operators. These operators perform logical operations on the individual bits of two numbers or two-bit fields. The "bitwise and" operator is `&`. It evaluates to `1` if both bits are set to `1`. They are often used to *mask out*, or ignore certain values. Here is a list of all of the bitwise operators.
 
-*   **`&`:** Bitwise and.
-*   **`|`:** Bitwise or.
-*   **`^`:** Bitwise xor. It evaluates to `True` if exactly one of the two bits is `True`.
-*   **`~`:** Bitwise not. This operator is used to negate each bit for the purpose of "bit flipping".
+- **`&`:** Bitwise and.
+- **`|`:** Bitwise or.
+- **`^`:** Bitwise xor. It evaluates to `True` if exactly one of the two bits is `True`.
+- **`~`:** Bitwise not. This operator is used to negate each bit for the purpose of "bit flipping".
 
 There are a couple of other logical operators that are useful in certain circumstances. The `is` operator is used to confirm whether two entities refer to the same object. `x is y` is `True` if `x` and `y` are the same object. The `in` operator verifies membership and is typically used with collections such as Lists and Sets. If `x in y` is `True`, it means `x` is one of the entries in the list `y`.
 
@@ -378,16 +398,17 @@ The conditional statement typically precedes a *clause*, which is a block of one
 
 The `if` and `else` statements are common place in any program. If the result of the conditional statement following the `if` keyword is `True`, the associated code block is entered and executed. The `if` conditional can be followed by one or more `elif` statements, which stands for "else if". Each `elif` conditional is tested in turn until one evaluates to `True`. The corresponding `elif` code block is then executed. As soon as Python reaches an `else` statement, it automatically executes the `else` code block. If all of the `if` and `elif` statements are `False` and there is no `else` statement, nothing is executed. Program control skips over to the next line of code.
 
-Here is an example demonstrating how the `if` statement works with a conditional. The `if` statement evaluates the conditional operator `humidity > 80`. In this case, `humidity` is greater than `80`, so the conditional is `True`. Control passes to the indented code block and the line `It is a humid day` is printed.
+The example below demonstrates how the `if` statement works with a conditional. The `if` statement evaluates the conditional operator `humidity > 80`. In this case, `humidity` is greater than `80`, so the conditional is `True`. Control passes to the indented code block and the line `It is a humid day` is printed.
 
     humidity = 85
     if humidity > 80:
     ... print("It is a humid day")
+
 {{< output >}}
 It is a humid day
 {{< /output >}}
 
-A more complicated series of conditional statements are shown in the following file. A `for` loop processes a list of three humidity readings. The `if` conditional statement subsequently processes each value. If the reading is greater than `80`, it satisfies the `if` statement, and Python prints `This humidity is too high`. If not, the `elif` statement tests whether `humidity` is under `60`. If it is, Python prints `This humidity is too low`. In all other cases, control passes to the `else` statement and Python prints the line `This humidity is just right`.
+A more complicated series of conditional statements are shown in the `py_temp.py` file below. A `for` loop processes a list of three humidity readings. The `if` conditional statement subsequently processes each value. If the reading is greater than `80`, it satisfies the `if` statement, and Python prints `This humidity is too high`. If not, the `elif` statement tests whether `humidity` is under `60`. If it is, Python prints `This humidity is too low`. In all other cases, control passes to the `else` statement and Python prints the line `This humidity is just right`.
 
 The following example demonstrates how the program works using a list of `[50, 70, 90]`. The first value satisfies the `elif` conditional, while the final value passes the `if` conditional. The second value is `False` for both tests, so control passes to the `else` clause.
 
