@@ -28,6 +28,7 @@ Akaunting
 aker
 alef
 alertmanager
+alex
 alexey
 alfano
 alives
