@@ -3,7 +3,7 @@ slug: tags-and-groups
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How to create tags to organize your Linode services.'
+description: 'This guide provides you with instructions for creating tags and groups in the Linode Cloud Manager to keep your Linodes and other services organized as needed.'
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-22

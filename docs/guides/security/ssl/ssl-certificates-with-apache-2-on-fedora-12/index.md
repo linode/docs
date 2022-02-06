@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Serve SSL-enabled websites with the Apache 2 web server on Fedora 12.'
+description: 'This guide will assist you with enabling SSL for websites being served by the free and open-source Apache2 web server for better web security on Fedora 12.'
 keywords: ["apache ssl", "ssl on fedora", "web server", "fedora 12"]
 tags: ["fedora","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

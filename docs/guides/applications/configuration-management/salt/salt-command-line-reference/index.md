@@ -3,7 +3,7 @@ slug: salt-command-line-reference
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'A reference for the SaltStack command line interface.'
+description: 'The SaltStack is a powerful configuration management tool. This guide provides you with a reference for the SaltStack command line interface.'
 keywords: ['salt','saltstack','cli','command line','reference']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-03

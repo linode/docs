@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Serve SSL-enabled websites with the Apache 2 web server on CentOS.'
+description: 'This guide will assist you with enabling SSL for websites being served by the free and open-source Apache2 web server for better web security on CentOS.'
 keywords: ["apache ssl", "ssl on centos", "web server", "centos 5", "centos 6", "centos 7"]
 tags: ["centos","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
