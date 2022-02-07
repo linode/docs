@@ -2,8 +2,8 @@
 slug: authenticating-over-websockets-with-jwt
 author:
   name: Nathaniel Stickman
-description: "WebSockets enable real-time communications between clients and server and they can be immensely useful in a variety of web applications. JSON Web Tokens can provide lightweight and secure authentication. They pair well with WebSockets to ensure connections are authorized. In this guide, you learn more about both WebSockets and JSON Web Tokens in this guide. You can also follow an example showing you how to use them together in your application."
-og_description: "WebSockets enable real-time communications between clients and server and they can be immensely useful in a variety of web applications. JSON Web Tokens can provide lightweight and secure authentication. They pair well with WebSockets to ensure connections are authorized. In this guide, you learn more about both WebSockets and JSON Web Tokens in this guide. You can also follow an example showing you how to use them together in your application."
+description: 'In this guide, you will learn how to use Websockets and JSON Web Tokens, which are also called JWTs together in your app with several practical examples.'
+og_description: 'In this guide, you will learn how to use Websockets and JSON Web Tokens, which are also called JWTs together in your app with several practical examples.'
 keywords: ['websocket token authentication']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

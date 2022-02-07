@@ -772,6 +772,7 @@ hypervisor
 hypervisors
 IaC
 Istio
+istio
 i386
 iaas
 icann

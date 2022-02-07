@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use PHP CGI to run PHP scripts as indivudual users.'
+description: 'This guide will show you how to install and configure the Apache Web Server and PHP-CGI to run custom PHP scripts as individual users Debian 7.'
 keywords: ["php cgi", "php", "apache", "cgi", "php scripts", "web apps", "web applications"]
 tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
