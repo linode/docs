@@ -772,6 +772,7 @@ hypervisor
 hypervisors
 IaC
 Istio
+istio
 i386
 iaas
 icann
@@ -968,6 +969,7 @@ launchd
 lbmethod
 lda
 ldap
+le
 lego
 leiningen
 lelastic
@@ -1460,6 +1462,7 @@ prestashop
 prettifier
 prettifiers
 Printf
+printf
 pritunl
 privesc
 processhider
