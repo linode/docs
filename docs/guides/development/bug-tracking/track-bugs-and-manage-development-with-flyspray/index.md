@@ -3,7 +3,7 @@ slug: track-bugs-and-manage-development-with-flyspray
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install and begin using Flyspray to track project development.'
+description: 'Flyspray is an advanced bug tracking system for software development teams and more. This guide provides you with instructions for installing and using Flyspray.'
 keywords: ["bug tracking", "flyspray", "issue management", "feature development"]
 tags: ["lamp", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

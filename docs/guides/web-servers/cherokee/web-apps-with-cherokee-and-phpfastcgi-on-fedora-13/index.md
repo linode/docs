@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Using PHP-FastCGI for dynamic sites under Cherokee on Fedora 13'
+description: 'This guide shows how to use the fast, flexible, open-source Cherokee web server with PHP-FastCGI to serve dynamic website content on Fedora 13.'
 keywords: ["cherokee php-fastcgi", "cherokee fastcgi", "cherokee fedora 13", "cherokee", "fedora 13 web server"]
 tags: ["web server","fedora","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

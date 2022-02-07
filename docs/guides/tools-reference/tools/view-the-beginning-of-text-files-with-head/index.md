@@ -3,7 +3,7 @@ slug: view-the-beginning-of-text-files-with-head
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use the Linux command head to view the beginning of a text file'
+description: 'The 'head' command is a core Linux utility used to view the beginning of a text file. This guide shows how to use this utility to view the beginning of text files.'
 og_description: 'Head is a Unix command line utility for viewing the beginning of text files. This guide shows how to use head and gives practical examples.'
 keywords: ["head", "linux", "utilities", "cli", "text files"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

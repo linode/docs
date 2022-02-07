@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: A basic guide to installing nginx from source on Fedora 12
+description: 'Nginx is a lightweight and high performance web server designed to deliver large amounts of content with efficiency. This guide shows how to install it on Fedora 12.'
 keywords: ["nginx fedora 12", "nginx fedora", "nginx", "http", "web servers", "fedora 12"]
 tags: ["web server","fedora","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,7 @@ slug: twiki-on-centos-5
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install and configure a structured wiki with TWiki.'
+description: 'Twiki is a robust structured wiki compared to other solutions such as Confluence. This guide provides you with instructions for installing Twiki on CentOS 5.'
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
