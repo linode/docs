@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will show you how to deploy applications that depend on the high performance key-value store Redis on Ubuntu 9.10 "Karmic".'
+description: 'This guide shows how to deploy applications that depend on the high performance and highly flexible key-value store Redis database on Ubuntu 9.10 "Karmic".'
 keywords: ["redis ubuntu 9.10", "redis lucid", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/redis-on-ubuntu-9-10-karmic/','/databases/redis/ubuntu-9-10-karmic/']

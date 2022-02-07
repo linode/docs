@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will show you how to deploy applications that depend on the high performance key-value store Redis on Ubuntu 10.04.'
+description: 'This guide shows how to deploy applications that depend on the high performance and highly flexible key-value store Redis database on Ubuntu 10.04 "Lucid".'
 keywords: ["redis ubuntu 10.04", "redis lucid", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/ubuntu-10-04-lucid/','/databases/redis/redis-on-ubuntu-10-04-lucid/']
