@@ -11,7 +11,7 @@ These introductory guides to Linode Object Storage help get you up and running w
 
 - [Enable Object Storage](/docs/products/storage/object-storage/guides/enable/): Object Storage is not enabled by default; you can enable it in Cloud Manager.
 
-- [Generate an Object Storage Key Pair](/docs/products/storage/object-storage/guides/generate-key-pair/): You need a pair of keys to use Object Storage: an access key and a secret key. These can be generated in the Cloud Manager.
+- [Generate an Object Storage Access Key](/docs/products/storage/object-storage/guides/generate-access-keys/): You need a pair of keys to use Object Storage: an access key and a secret key. These can be generated in the Cloud Manager.
 
 - [Create a Bucket](/docs/products/storage/object-storage/guides/create-bucket/): Create a bucket in the Cloud Manager.
 

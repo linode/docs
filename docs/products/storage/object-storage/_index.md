@@ -7,9 +7,13 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    product_description: "S3-compatible Linode Object Storage makes it easy and more affordable to manage unstructured data such as content assets, as well as sophisticated and data-intensive storage challenges around artificial intelligence and machine learning."
+    product_description: "An S3-compatible object storage solution designed to store, manage, and access unstructured data in the cloud."
 aliases: ['/platform/object-storage/pricing-and-limitations/', '/guides/pricing-and-limitations']
 ---
+
+Linode's Object Storage is a globally-available, S3-compatible method for storing and accessing data. Object Storage differs from traditional hierarchical data storage, such as a traditional filesystem on a physical/virtual disk and [Block Storage Volumes](/docs/guides/platform/block-storage/). Under Object Storage, files (also called *objects*) are stored in flat data structures (referred to as *buckets*) alongside their own rich metadata.
+
+Due to the nature of Object Storage, **it does not require the use of a Compute Instance.** Instead, Object Storage gives each object a unique URL with which you can access the data. An object can be publicly accessible, or you can set it to be private and only visible to you. This makes Object Storage great for sharing and storing unstructured data like images, documents, archives, streaming media assets, and file backups, and the amount of data you store can range from small collections of files up to massive libraries of information.
 
 ## Availability
 
