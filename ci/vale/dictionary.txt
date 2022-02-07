@@ -354,6 +354,7 @@ datadir
 Datadog
 dataflow
 datagram
+datalog
 dataset
 datasets
 datasource
@@ -1461,6 +1462,7 @@ procfile
 procmail
 procs
 productpage
+prolog
 prosodyctl
 proto
 protobuf
