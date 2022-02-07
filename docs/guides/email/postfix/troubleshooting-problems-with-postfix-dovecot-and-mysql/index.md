@@ -257,7 +257,7 @@ Read the discussion of Telnet outcomes below, and analyze your results according
 If the test is successful, you should see output similar to the following:
 
     Trying 12.34.56.78...
-    Connected to li468-222.members.linode.com.
+    Connected to 203-0-113-0.ip.linodeusercontent.com.
     Escape character is '^]'.
     220 host.example.com ESMTP Postfix (Ubuntu)
 

@@ -14,9 +14,6 @@ modified_by:
 title: "How to Enable High Availability for LKE Clusters"
 h1_title: "Enabling High Availability for LKE Clusters"
 enable_h1: true
-_build:
-  list: false
-noindex: true
 ---
 
 In LKE, enabling HA ([High Availability](/docs/guides/introduction-to-high-availability/)) will create additional replicas of your [control plane components](/docs/guides/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/), adding an additional layer of redundancy to your Kubernetes Cluster and decreasing the chance of any potential downtime. HA is an optional feature recommended for production workloads that must be enabled manually either when creating a new cluster or by editing a pre-existing cluster.
@@ -25,6 +22,12 @@ Unlike other LKE configuration options, High Availability is an **optional billa
 
 {{< caution >}}
 While upgrading to an HA cluster is always possible, **downgrading your cluster is not currently supported**. Enabling HA is an **irreversible** change for your cluster.
+
+Additionally, Enabling HA on a pre-existing cluster will result in the following changes:
+
+- All nodes will be deleted and new nodes will be created to replace them.
+- Any local storage (such as `hostPath` volumes) will be erased.
+- The upgrade process may take several minutes to complete, as nodes will be replaced on a rolling basis.
 {{< /caution >}}
 
 ## Enabling HA During Cluster Creation

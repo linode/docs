@@ -388,7 +388,7 @@ node 'centoshost.example.com' {
     If you did not follow the [Getting Started with Puppet - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/) guide, then your `site.pp` file should resemble the following example:
 
     {{< file "/etc/puppetlabs/code/environments/production/manifests/site.pp" puppet >}}
-node 'ubupuppet.members.linode.com' {
+node 'ubupuppet.ip.linodeusercontent.com' {
   $adminemail = 'webmaster@example.com'
   $servername = 'hostname.example.com'
 
@@ -397,7 +397,7 @@ node 'ubupuppet.members.linode.com' {
 
   }
 
-node 'centospuppet.members.linode.com' {
+node 'centospuppet.ip.linodeusercontent.com' {
   $adminemail = 'webmaster@example.com'
   $servername = 'hostname.example.com'
 
@@ -454,7 +454,7 @@ mysql::server::root_password: 'password'
 1. To use the MySQL module's defaults you can simply add an `include '::mysql::server'` line to the `site.pp` file. However, in this example, you will override some of the module's defaults to create a database for each of your nodes. Edit the `site.pp` file with the following values:
 
     {{< file >}}
-node 'ubupuppet.members.linode.com' {
+node 'ubupuppet.ip.linodeusercontent.com' {
   $adminemail = 'webmaster@example.com'
   $servername = 'hostname.example.com'
 
@@ -473,7 +473,7 @@ node 'ubupuppet.members.linode.com' {
 
 }
 
-node 'centospuppet.members.linode.com' {
+node 'centospuppet.ip.linodeusercontent.com' {
   $adminemail = 'webmaster@example.com'
   $servername = 'hostname.example.com'
 
@@ -530,7 +530,7 @@ class php {
 1.  Add `include php` to the hosts in your `sites.pp` file:
 
     {{< file "/etc/puppetlabs/code/environments/production/manifests/site.pp" puppet >}}
-    node 'ubupuppet.members.linode.com' {
+    node 'ubupuppet.ip.linodeusercontent.com' {
       $adminemail = 'webmaster@example.com'
       $servername = 'hostname.example.com'
 
@@ -541,7 +541,7 @@ class php {
 
       }
 
-    node 'centospuppet.members.linode.com' {
+    node 'centospuppet.ip.linodeusercontent.com' {
       $adminemail = 'webmaster@example.com'
       $servername = 'hostname.example.com'
 

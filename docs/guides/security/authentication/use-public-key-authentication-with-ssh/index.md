@@ -3,7 +3,7 @@ slug: use-public-key-authentication-with-ssh
 author:
   name: Linode
   email: docs@linode.com
-description: "Understand SSH Public Key Authentication and learn how to use SSH public key authentication on Linux, macOS, and Windows."
+description: "Understand SSH Public Key Authentication & learn how to use SSH public key authentication on Linux, macOS, and Windows. ✓ Click to read more now!"
 keywords: ["ssh", "public key"]
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,12 +11,11 @@ aliases: ['/security/ssh-keys/','/tools-reference/ssh/use-public-key-authenticat
 modified_by:
   name: Linode
 published: 2011-04-05
-title: "How to Configure SSH Public Key Authentication on a Server"
+title: "Creating an SSH Key Pair and Configuring Public Key Authentication"
 h1_title: "Creating an SSH Key Pair and Configuring Public Key Authentication on a Server"
 enable_h1: true
+image: use_public_key_authentication_with_ssh.png
 ---
-
-![Use Public Key Authentication with SSH](use_public_key_authentication_with_ssh.png "Use Public Key Authentication with SSH")
 
 Password authentication is the default method most SSH (Secure Shell) clients use to authenticate with remote servers, but it suffers from potential security vulnerabilities like brute-force login attempts. An alternative to password authentication is using [*public key authentication*](https://en.wikipedia.org/wiki/Key_authentication#Authentication_using_Public_Key_Cryptography) with SSH, in which you generate and store on your computer a pair of cryptographic keys and then configure your server to recognize and accept your keys. Using key-based authentication offers a range of benefits:
 
@@ -204,7 +203,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyVGaw1PuEl98f4/7Kq3O9ZIvDw2OFOSXAFVqilSFN
 
     Note that the public key begins with `ssh-rsa` and ends with `your_username@hostname`.
 
-1.  Once you have copied that text, connect to your server via SSH with the user you would like to add your key to:
+1.  Once you have copied that text, use the command ssh to add the key. Connect to your server via SSH with the user you would like to add your key to:
 
         ssh your_username@192.0.2.0
 

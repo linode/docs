@@ -3,12 +3,12 @@ slug: connect-to-server-over-ssh-using-putty
 author:
   name: Linode
   email: docs@linode.com
-description: 'A tutorial outlining how to connect to a remote server over SSH using PuTTY on Windows (or Linux)'
-og_description: 'A tutorial outlining how to connect to a remote server over SSH using PuTTY on Windows (or Linux)'
+description: "A tutorial outlining how to connect to a remote server over SSH using PuTTY on Windows (or Linux)"
 keywords: ['ssh','putty','windows','connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
+modified: 2022-01-28
 modified_by:
   name: Linode
 title: "How to Connect to a Remote Server Over SSH using PuTTY"
@@ -58,31 +58,11 @@ While PuTTY is compatible with Windows 10, you may want to review the [Connectin
 
     ![Screenshot of dialog box asking to confirm host key's fingerprint](putty-security-alert.png "Confirm the host key's fingerprint")
 
-    If you trust this connection, press the **Accept** button to continue connecting to the remote server. You can verify the fingerprint by following the instructions under the [Verifying the Host Key's Fingerprint](#verifying-the-host-keys-fingerprint) section.
+    If you trust this connection, press the **Accept** button to continue connecting to the remote server. You can verify the fingerprint by following the instructions under the [Verifying the Authenticity of a Remote Server](/docs/guides/verifying-the-authenticity-of-remote-host/) guide.
 
 1.  PuTTY now prompts you to enter the remote user and the password for that user.
 
 Once you have successfully connected, your terminal should be using the remote shell environment for the server. Your command prompt should now show the username and hostname configured for the server. You can now run any commands that you have available on that server. This includes many of the basic Linux commands, such as `ls`, `cd`, `rm`, and those covered in [Using the Terminal](/docs/guides/using-the-terminal/) guide. Getting to know these commands will help you navigate around your server.
-
-## Verifying the Host Key's Fingerprint
-
-1.  Log in to your remote server through a trusted method. For a Linode, use [Lish](/docs/networking/using-the-linode-shell-lish/).
-
-1.  Run the command below to output your server's SSH key fingerprint
-
-        ssh-keygen -E md5 -lf /etc/ssh/ssh_host_ed25519_key.pub
-
-    The output looks similar to:
-
-    {{< output >}}
-256 MD5:58:72:65:6d:3a:39:44:26:25:59:0e:bc:eb:b4:aa:f7  root@localhost (ED25519)
-{{< /output >}}
-
-    {{< note >}}
-For the fingerprint of an RSA key instead of elliptical curve, use: `ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub`.
-{{< /note >}}
-
-1.  Compare this output to what appears when opening an SSH connection on your local computer. The two fingerprints should match. **If the fingerprints do not match, do not connect to the server.** You won't receive further warnings unless the fingerprint changes for some reason. Typically, this should only happen if you reinstall the remote server's operating system. If you receive this warning again from a system you already have the host key cached on, you should not trust the connection and investigate matters further.
 
 ## Going Further
 

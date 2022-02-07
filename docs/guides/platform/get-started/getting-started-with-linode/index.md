@@ -5,7 +5,6 @@ author:
   email: docs@linode.com
 keywords: ["getting started", "intro", "basics", "first steps"]
 description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
-og_description: "Learn how to create an account, boot your first Linode, and connect via SSH with our Getting Started guide."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/']
 modified: 2021-08-11
@@ -18,6 +17,7 @@ title_short: "Getting Started"
 weight: 10
 icon: "book"
 show_on_rss_feed: false
+image: getting-started.jpg
 ---
 
 ![Getting Started with Linode](getting-started.jpg "Getting Started with Linode")
@@ -91,7 +91,7 @@ If Network Helper is unable to determine the operating system during boot, or if
 
 Communicating with your Linode is usually done using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between the client application on your computer and the Linode, including passwords and other sensitive information. There are SSH clients available for every desktop operating system.
 
-* **Windows:** Windows 10 users can connect to their Linode using [SSH Windows](/docs/guides/connect-to-server-over-ssh-on-windows/#powershell---windows-10) application, provided their system is fully updated. For users of Windows 8 and earlier, [Secure Shell on Chrome](/docs/guides/connect-to-server-over-ssh-on-chrome/), [PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/), or many other third party tools can be used instead. See [Connecting to a Remote Server Over SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/).
+* **Windows:** Windows 10 and 11 users can connect to their Linode using the [Command Prompt (or PowerShell)](/docs/guides/connect-to-server-over-ssh-on-windows/#command-prompt-or-powershell---windows-10-or-11) application, provided their system is fully updated. For users of Windows 8 and earlier, [Secure Shell on Chrome](/docs/guides/connect-to-server-over-ssh-on-chrome/), [PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/), or many other third party tools can be used instead. See [Connecting to a Remote Server Over SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/).
 * **macOS:** The *Terminal* application is pre-installed on macOS. See [Connecting to a Remote Server Over SSH on a Mac](/docs/guides/connect-to-server-over-ssh-on-mac/).
 * **Linux:** You can use a terminal window, regardless of desktop environment or window manager. See [Connecting to a Remote Server Over SSH on Linux](https://www.linode.com/docs/guides/connect-to-server-over-ssh-on-linux/)
 
