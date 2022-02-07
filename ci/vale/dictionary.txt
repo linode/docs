@@ -968,6 +968,7 @@ launchd
 lbmethod
 lda
 ldap
+le
 lego
 leiningen
 lelastic
@@ -1460,6 +1461,7 @@ prestashop
 prettifier
 prettifiers
 Printf
+printf
 pritunl
 privesc
 processhider
