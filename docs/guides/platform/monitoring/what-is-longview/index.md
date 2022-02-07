@@ -92,9 +92,9 @@ Ensure you replace the example `curl` command below with your own Longview Clien
       CGroup: /system.slice/longview.service
               └─12202 linode-longview
 
-Dec 10 22:35:11 li322-60.members.linode.com systemd[1]: Starting SYSV: Longview statistics gathering...
-Dec 10 22:35:11 li322-60.members.linode.com longview[12198]: Starting longview: [  OK  ]
-Dec 10 22:35:11 li322-60.members.linode.com systemd[1]: Started SYSV: Longview statistics gathering.
+Dec 10 22:35:11 203-0-113-0.ip.linodeusercontent.com systemd[1]: Starting SYSV: Longview statistics gathering...
+Dec 10 22:35:11 203-0-113-0.ip.linodeusercontent.com longview[12198]: Starting longview: [  OK  ]
+Dec 10 22:35:11 203-0-113-0.ip.linodeusercontent.com systemd[1]: Started SYSV: Longview statistics gathering.
 {{</ output >}}
 
     > **Debian or Ubuntu**:
@@ -205,9 +205,9 @@ Although previously available, Longview is currently not officially supported an
    CGroup: /system.slice/longview.service
            └─12202 linode-longview
 
-Dec 10 22:35:11 li322-60.members.linode.com systemd[1]: Starting SYSV: Longview statistics gathering...
-Dec 10 22:35:11 li322-60.members.linode.com longview[12198]: Starting longview: [  OK  ]
-Dec 10 22:35:11 li322-60.members.linode.com systemd[1]: Started SYSV: Longview statistics gathering.
+Dec 10 22:35:11 203-0-113-0.ip.linodeusercontent.com systemd[1]: Starting SYSV: Longview statistics gathering...
+Dec 10 22:35:11 203-0-113-0.ip.linodeusercontent.com longview[12198]: Starting longview: [  OK  ]
+Dec 10 22:35:11 203-0-113-0.ip.linodeusercontent.com systemd[1]: Started SYSV: Longview statistics gathering.
     {{</ output >}}
 
   **Debian or Ubuntu**:

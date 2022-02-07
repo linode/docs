@@ -1,5 +1,6 @@
 ---
 slug: zimbra-on-ubuntu-14-04
+deprecated: true
 author:
     name: Linode Community
     email: docs@linode.com

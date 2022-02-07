@@ -1,5 +1,6 @@
 ---
 slug: apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com

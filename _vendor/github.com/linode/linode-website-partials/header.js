@@ -4,7 +4,7 @@
   // elements we'll be listening on or manipulating
   var $html, $header, $main_menu, $sub_menus; // bind to new DOM
 
-  var mount = function mount() {
+  const mount = function () {
     bindElements();
 
     if ($header && $main_menu && $sub_menus) {
@@ -14,14 +14,14 @@
   }; // element bindings
 
 
-  var bindElements = function bindElements() {
+  const bindElements = function () {
     $header = document.querySelector('.c-site-header');
     $main_menu = document.querySelector('.c-main-menu');
     $sub_menus = document.querySelectorAll('.c-sub-menu');
   }; // event bindings
 
 
-  var bindEvents = function bindEvents() {
+  const bindEvents = function () {
     // sub menu switch click handlers
     $main_menu.addEventListener('click', function (event) {
       var $clicked_link = event.target.closest('a'); // Not a switch
@@ -48,7 +48,7 @@
       return false;
     }); // submenu row click handlers
 
-    $sub_menus.forEach(function ($sub_menu) {
+    $sub_menus.forEach($sub_menu => {
       $sub_menu.addEventListener('click', function (event) {
         if (event.target.classList.contains('c-sub-menu')) {
           closeAllSubMenus();
@@ -70,13 +70,13 @@
     });
   };
 
-  var closeAllSubMenus = function closeAllSubMenus() {
-    $sub_menus.forEach(function ($sub_menu) {
+  const closeAllSubMenus = function () {
+    $sub_menus.forEach($sub_menu => {
       $sub_menu.classList.remove('active');
     });
   };
 
-  var setActiveMenuItem = function setActiveMenuItem() {
+  const setActiveMenuItem = function () {
     var current_path = window.location.pathname,
         $header_links = []; // Home page, return early
 
@@ -100,10 +100,10 @@
 
     $header_links = $header.querySelectorAll('a.o-menu__link');
 
-    for (var i = 0; i < $header_links.length; i++) {
+    for (let i = 0; i < $header_links.length; i++) {
       // strip the URL string and/or fragment identifier
-      var $link = $header_links[i];
-      var href_path = $link.getAttribute('href').split(/[?]/)[0]; // skip if not a match
+      let $link = $header_links[i];
+      let href_path = $link.getAttribute('href').split(/[?]/)[0]; // skip if not a match
 
       if (!href_path.endsWith(current_path)) {
         continue;
@@ -112,12 +112,12 @@
 
       $link.classList.add('current'); // find any parent submenus
 
-      var $sub_menu = $link.closest('.c-sub-menu');
+      let $sub_menu = $link.closest('.c-sub-menu');
 
       if (null !== $sub_menu) {
         // identify links that trigger submenus
-        var $parent_links = $header.querySelectorAll('a[href="#' + $sub_menu.id + '"]');
-        $parent_links.forEach(function ($link) {
+        let $parent_links = $header.querySelectorAll('a[href="#' + $sub_menu.id + '"]');
+        $parent_links.forEach($link => {
           // add "current" class to parent item
           $link.classList.add('current');
         });
@@ -125,7 +125,7 @@
     }
   };
 
-  var setHtmlScrollState = function setHtmlScrollState(state) {
+  const setHtmlScrollState = function (state) {
     // disable scroll if any submenu is active
     $html.style.overflow = state ? '' : 'hidden';
   }; // Initialize...

@@ -1,5 +1,6 @@
 import { isMobile } from '../helpers';
 import { getScrollPosNavbar } from './nav';
+import { initConsentManager } from '../components/index';
 
 export function newNavStore(searchStore) {
 	return {
@@ -17,7 +18,19 @@ export function newNavStore(searchStore) {
 			toc: false
 		},
 
-		init() {},
+		// TrustArc consent settings. This will also be set on the window object,
+		// but keep it here so we can react on changes.
+		trustecm: {
+			required: false,
+			advertising: false,
+			functional: false,
+			any: false,
+		},
+
+		init() {
+			window.trustecm  = this.trustecm;
+			initConsentManager()
+		},
 
 		openSearchPanel(scrollUp = false) {
 			if (!this.searchResults.open) {

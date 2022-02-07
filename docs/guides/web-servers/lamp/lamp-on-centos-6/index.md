@@ -1,5 +1,6 @@
 ---
 slug: lamp-on-centos-6
+deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com

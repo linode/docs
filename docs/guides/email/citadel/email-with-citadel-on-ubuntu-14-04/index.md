@@ -1,6 +1,6 @@
 ---
 slug: email-with-citadel-on-ubuntu-14-04
-deprecated: false
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com
