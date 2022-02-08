@@ -3,7 +3,7 @@ slug: lke-continuous-deployment-part-8
 author:
   name: Linode Community
   email: docs@linode.com
-description: "In part eight of our series on Kubernetes, you will learn how to install ExternalDNS using Helm and test it's functionality within your Kubernetes cluster."
+description: "In part eight of our series on Kubernetes, you will learn how to install ExternalDNS using Helm and test its functionality within your Kubernetes cluster."
 title: "Continuous Deployment Using LKE: ExternalDNS"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 8): ExternalDNS"
 enable_h1: true
