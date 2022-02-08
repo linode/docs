@@ -2,8 +2,8 @@
 slug: configure-source-replica-replication-in-mysql
 author:
   name: Jeff Novotny
-description: 'This guide explains how to configure source-replicaa data replication in the popular MySQL database application.'
-og_description: 'This guide explains how to configure source-replicaa data replication in the popular MySQL database application.'
+description: 'This guide explains how to configure source-replica data replication in the popular MySQL database application.'
+og_description: 'This guide explains how to configure source-replica data replication in the popular MySQL database application.'
 keywords: ['mysql replication']
 tags: ['mysql', 'database', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
