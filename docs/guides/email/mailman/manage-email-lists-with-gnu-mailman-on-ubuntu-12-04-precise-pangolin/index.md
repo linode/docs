@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use the GNU Mailman software to manage email listservs.'
+description: 'This guide shows you how to use the GNU Mailman software to manage and moderate email listservs (aka group mailing lists) on Ubuntu 12.04 "Precise Pangolin".'
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

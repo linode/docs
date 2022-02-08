@@ -3,7 +3,7 @@ slug: linux-system-monitoring-fundamentals
 author:
   name: Steven J. Vaughan-Nichols
   email: sjvn@vna1.com
-description: "This guide discusses the system monitoring tools you can use to reassure your server is functioning properly and help you recognize odd behavior or anomalies."
+description: "This guide discusses the system monitoring tools you can use to reassure your server is functioning properly and help you deal with strange behaviors."
 keywords: ['linux system monitoring']
 tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

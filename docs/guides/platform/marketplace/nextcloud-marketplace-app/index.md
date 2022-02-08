@@ -3,7 +3,7 @@ slug: nextcloud-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Nextcloud is a file sharing service that allows you to store important documents and images in one centralized location. The Nextcloud Marketplace App deploys a Nextcloud server instance. After you deploy Nextcloud, you can immediately access the Nextcloud instance to upload and share files."
+description: "This guide shows how you can deploy a NextCloud server to store important documents, images, and more in one location by using the NextCloud One-Click Marketplace App."
 keywords: ['Nextcloud','omarketplace','file sharing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-11
