@@ -3,8 +3,7 @@ slug: connect-metabase-with-mysql-for-data-exploration
 author:
   name: Sam Foo
   email: docs@linode.com
-description: 'This guide will show you how to configure source-replica data replication in the popular MySQL database application Metabase to enable data visualization.'
-og_description: 'This guide will show you how to configure source-replica data replication in the popular MySQL database application Metabase to enable data visualization.'
+description: 'This guide shows you how to connect to Metabase, a data exploration tool that makes analytics easy, to a local MySQL server and deploy through a reverse proxy on NGINX.'
 keywords: ["visualization", "database", "query", "What is Metabase", "metabase", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-12-10
