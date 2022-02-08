@@ -3,8 +3,8 @@ slug: creating-and-managing-stackscripts-a-tutorial
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows you how to create a Linode StackScript using the Linode Cloud Manager. You will also learn how to perform various tasks, like editing an Account StackScript, making an Account StackScript public, and deleting an Account StackScript. '
-og_description: 'This guide shows you how to create a Linode StackScript using the Linode Cloud Manager. You will also learn how to perform various tasks, like editing an Account StackScript, making an Account StackScript public, and deleting an Account StackScript.'
+description: 'This guide shows you how to create a Linode StackScript using the Linode Cloud Manager, as well as how to perform various tasks with your StackScript.'
+og_description: 'This guide shows you how to create a Linode StackScript using the Linode Cloud Manager, as well as how to perform various tasks with your StackScript.'
 keywords: ["automation", "scripts", "deployments", "instance"]
 tags: ["linode platform","automation","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

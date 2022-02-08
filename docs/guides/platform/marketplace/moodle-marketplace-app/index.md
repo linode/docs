@@ -56,7 +56,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Access Your Moodle App
 
-To access your Moodle instance, Open a browser and navigate to your Linode rDNS domain `https://li1234-555.members.linode.com`. Replace `https://li1234-555.members.linode.com` with your [Linode's RDNS domain](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
+To access your Moodle instance, Open a browser and navigate to your Linode rDNS domain `https://203-0-113-0.ip.linodeusercontent.com`. Replace `https://203-0-113-0.ip.linodeusercontent.com` with your [Linode's RDNS domain](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
 
 From there, you can login by clicking the box on the top right of the page. Once you see the login page, you can enter `moodle` as the *username* and the *password* that was entered during the creation of the Linode.
 

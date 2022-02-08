@@ -6,6 +6,7 @@ ack
 aconf
 accessor
 accessors
+acronis
 adc
 addon
 addons
@@ -23,9 +24,11 @@ ahvz
 aircrack
 ajenti
 ajp
+Akaunting
 aker
 alef
 alertmanager
+alex
 alexey
 alfano
 alives
@@ -37,10 +40,12 @@ amavis
 amavisd
 amd64
 ananke
+anonymization
 anonymize
 anonymizing
 ansi
 ansible
+anticompetitive
 antispam
 anycast
 anycasted
@@ -66,6 +71,7 @@ askbot
 aske
 async
 asynchrony
+atera
 authdaemonrc
 authg
 authlib
@@ -90,6 +96,7 @@ automator
 automattic
 automations
 automount
+automox
 autorelabel
 autorun
 autoscale
@@ -104,6 +111,7 @@ awk
 aws
 awstats
 axibase
+ayehu
 azc
 azlux
 backdooring
@@ -152,6 +160,7 @@ blockwise
 bluehost
 bokeh
 bookinfo
+bool
 boolean
 booleans
 boolstyle
@@ -264,6 +273,7 @@ colab
 collabnet
 colormaps
 com2sec
+commoditization
 comodo
 completekey
 composable
@@ -288,6 +298,7 @@ coroutines
 corporateclean
 courseware
 cov
+covid
 cpanminus
 cpu
 cqlsh
@@ -309,6 +320,8 @@ crowdsourcing
 crt
 crypters
 crypto
+cryptocurrencies
+cryptocurrency
 csi
 csharp
 csharpserver
@@ -323,6 +336,7 @@ cuda
 curlie
 cutover
 cyber
+cyberattack
 cyberduck
 cyberpanel
 cybersecurity
@@ -373,6 +387,7 @@ defragment
 delpy
 demultiplexer
 denormalized
+deprovision
 deprovisioning
 descolada
 descr
@@ -464,11 +479,13 @@ ejabberd
 el6
 el7
 elasticsearch
+elif
 elisp
 elgg
 elpaso
 emacs
 email2email
+emisoft
 emojivoto
 emscripten
 ender
@@ -502,7 +519,9 @@ examplesitename
 exampleuser
 exe
 executables
+exfiltrated
 exfiltrating
+exfiltration
 exim
 expirations
 exploitability
@@ -570,6 +589,7 @@ flowlens
 flyspray
 foodcritic
 fortinet
+fortnite
 fortran
 fordham
 fmt
@@ -606,6 +626,7 @@ gcloud
 gcm
 geckodriver
 gem1
+Gemba
 gemfile
 genmask
 gentoolkit
@@ -751,6 +772,7 @@ hypervisor
 hypervisors
 IaC
 Istio
+istio
 i386
 iaas
 icann
@@ -779,6 +801,7 @@ im
 imagize
 imap
 imapd
+imaplib
 imaps
 img
 immutant
@@ -845,6 +868,7 @@ issuewild
 istioctl
 iterable
 itk
+ivanti
 Janca
 jamstack
 java6
@@ -884,6 +908,9 @@ jx
 kaggle
 kakfa
 kamkar
+kanban
+kaseya
+kasten
 kbits
 keepalive
 keepalived
@@ -903,6 +930,7 @@ keypairs
 keysize
 keyspace
 keystore
+khanaser
 kibana
 kickban
 kickbans
@@ -920,6 +948,7 @@ konsole
 kotin
 konversation
 krita
+kroll
 ktor
 kube
 kubeadm
@@ -940,6 +969,7 @@ launchd
 lbmethod
 lda
 ldap
+le
 lego
 leiningen
 lelastic
@@ -1345,6 +1375,7 @@ paravirt
 paravirtualization
 paravirtualized
 parentheticals
+parsedate
 partitionless
 partyline
 passdb
@@ -1431,6 +1462,7 @@ prestashop
 prettifier
 prettifiers
 Printf
+printf
 pritunl
 privesc
 processhider
@@ -1486,6 +1518,7 @@ quicklisp
 quickstart
 radeon
 ramdisk
+ransomwhere
 rauth
 rbac
 rbenv
@@ -1532,6 +1565,7 @@ refspec
 regexes
 reimported
 reindexing
+reiner
 reinstalls
 releasever
 reloadcmd
@@ -1553,6 +1587,7 @@ resque
 restapi
 restic
 restreaming
+Restyaboard
 retargetly
 retpoline
 retrans
@@ -1567,6 +1602,7 @@ rkt
 rmdir
 rmem
 ro
+roadmunk
 rochko
 rockyou
 rocommunity
@@ -1707,6 +1743,7 @@ slavedb
 sls
 smartcard
 smartcards
+smishing
 smtp
 smtpd
 smush
@@ -1754,11 +1791,14 @@ stalkyard
 stallman
 starkiller
 starttls
+statsd
 statusbar
 stdin
 stderr
 stdout
+steamcmd
 steamlab
+stefani
 steven
 stopwait
 stopword
@@ -1948,6 +1988,7 @@ unicode
 uninvoiced
 uniq
 unittest
+univac
 unix
 unmanaged
 unmerged
@@ -1999,6 +2040,7 @@ valheim
 validator
 variadic
 varnishlog
+varonis
 vaultwarden
 vcs
 vdev
@@ -2009,6 +2051,7 @@ venv
 ver
 veracode
 verisign
+veritas
 vhost
 vhosts
 vimrc
@@ -2024,6 +2067,7 @@ virtualize
 virtualized
 virtualmin
 Virustotal
+vishing
 vlan
 vlans
 vlc
@@ -2032,6 +2076,7 @@ vmail
 vmem
 vmlinuz
 vmstat
+vmui
 vnc
 vset
 vswap
@@ -2171,6 +2216,7 @@ zapier
 zcat
 zend
 zgrep
+zhao
 zile
 zimbra
 zipkin

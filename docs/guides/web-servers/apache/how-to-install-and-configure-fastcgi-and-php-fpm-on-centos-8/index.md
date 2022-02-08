@@ -3,7 +3,7 @@ slug: how-to-install-and-configure-fastcgi-and-php-fpm-on-centos-8
 author:
   name: Linode Community
   email: docs@linode.com
-description: "This guide will show you how to install mod_fcgid and PHP-FPM on CentOS 8. It will also provide a basic configuration that uses socket based connections, instead of TCP."
+description: "This guide will show you how to install and configure the mod_fcgid and PHP-FPM protocols for dynamic content generation and processing using Apache on CentOS 8."
 keywords: ['list','of','keywords','and key phrases']
 tags: ["centos","web server","apache","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -79,7 +79,7 @@ listen = /var/run/php-fpm/www.sock
 listen = /var/run/php-fpm/www.sock
     {{< /file >}}
 
-1.  If the `listen = 127.0.0.1:9000` is not already uncommented, do so now:
+1.  If the `listen = 127.0.0.1` is not already uncommented, do so now:
 
     {{< file "/etc/php-fpm.d/www.conf" >}}
 listen.allowed_clients = 127.0.0.1
@@ -195,7 +195,7 @@ listen = /var/run/php-fpm/example.com.sock
          AddType  application/x-httpd-php         .php
          AddHandler application/x-httpd-php .php
          Alias /php7-fcgi /usr/lib/cgi-bin/php7-fcgi
-         ProxyPassMatch " ^/(.*\.php(/.*)?)$" "unix:listen = /var/run/php-fpm/example.com.sock|fcgi://localhost/var/www/html/example.com/public_html/"
+         ProxyPassMatch " ^/(.*\.php(/.*)?)$" "unix:/run/php-fpm/example.com.sock|fcgi://localhost/var/www/html/example.com/public_html/"
      </IfModule>
 </VirtualHost>
 {{< /file >}}

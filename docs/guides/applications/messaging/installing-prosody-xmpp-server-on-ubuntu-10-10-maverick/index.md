@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Ubuntu 10.04 (Lucid).'
+description: 'This guide will show you how to install, configure, and setup a basic configuration of Prosody, a lightweight XMPP server on Ubuntu 10.10 (Maverick).'
 keywords: ["prosody", "prosody ubuntu lucid", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
