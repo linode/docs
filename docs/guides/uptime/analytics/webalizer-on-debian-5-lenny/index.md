@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'Get detailed website statistics such as visitor counts, pageviews, user agents percentages, and much more using the open source Webalizer package on Debian 5 (Lenny).'
+description: 'This guide shows you how you can get more detailed website statistics by installing the open-source Webalizer application on Debian 5 "Lenny".'
 keywords: ["webalizer", "statistics", "analytics", "stats", "server monitoring", "debian"]
 tags: ["debian","statistics","apache","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

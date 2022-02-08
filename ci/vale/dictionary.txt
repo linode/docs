@@ -72,6 +72,7 @@ aske
 async
 asynchrony
 atera
+atlanta
 authdaemonrc
 authg
 authlib
@@ -351,6 +352,7 @@ daemonizes
 daemonizing
 daemonset
 dahdi
+dallas
 databags
 datacenter
 datadir
@@ -601,6 +603,7 @@ frakti
 framesets
 freedns
 freeipa
+fremont
 freshclam
 friendster
 frontend
@@ -1035,6 +1038,7 @@ logpath
 logrotate
 logstash
 logwatch
+london
 longview
 lookups
 loopback
@@ -1259,6 +1263,7 @@ netstat
 netstumbler
 netuser
 networkd
+newark
 newgrp
 newtag
 nextcloud
@@ -1393,6 +1398,7 @@ pentesting
 pepi
 percona
 performant
+perl
 permalink
 permalinks
 Petazzoni
@@ -1734,6 +1740,7 @@ scribus
 sidekiq
 sievers
 signup
+singapore
 sintra
 sitename
 sklearn
@@ -1920,6 +1927,7 @@ togami
 tokenize
 tokenized
 tokenizing
+tokyo
 tokyo2
 tomacat
 tomcat6
