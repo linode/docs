@@ -8,20 +8,20 @@ keywords: ["ticket management", "marketplace"]
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-31
-modified: 2021-09-16
+modified: 2022-02-04
 modified_by:
   name: Linode
 title: "Deploying Peppermint through the Linode Marketplace"
 external_resources:
 - "[Peppermint Github](https://github.com/Peppermint-Lab/Peppermint/blob/master/README.md)"
-- "[Peppermint Documentation](https://docs.pmint.dev/)"
+- "[Peppermint Documentation](https://docs.peppermint.sh/)"
 aliases: ['/guides/deploy-peppermint-with-marketplace-apps/']
 ---
 
-Peppermint Ticket Management is a ticket management system that allows teams and solo users the ability create & track tickets, todo items, and more. The project is meant to provide help desks and services desks manage internal and customer requests, but Peppermint is a good solution for anyone looking for a ticket management system that is free and easy to use.
+[Peppermint Ticket Management](https://peppermint.sh/) is a ticket management system that allows teams and solo users the ability create & track tickets, todo items, and more. The project is meant to provide help desks and services desks manage internal and customer requests, but Peppermint is a good solution for anyone looking for a ticket management system that is free and easy to use.
 
 {{< caution >}}
-Peppermint is still in Alpha and is not recommended for production use yet.
+While Peppermint is still technically in alpha, it is stable enough for production use.
 {{</ caution >}}
 
 ## Deploying the Peppermint Marketplace App
@@ -34,14 +34,14 @@ Peppermint is still in Alpha and is not recommended for production use yet.
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-- **Supported distributions:** Debian 10
+- **Supported distributions:** Debian 10, Ubuntu 20.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
 
 ### Access your Peppermint App
 
-After Peppermint has finished installing, you can access your Peppermint server with your Linode's IPv4 address. Copy your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com), and then connect to the server in your browser using your Linode's IPv4 address and port `5000`(for example `192.0.2.0:5000`).
+After Peppermint has finished installing, you can access your Peppermint server with your Linode's IPv4 address. Copy your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com), and then connect to the server in your browser using your Linode's IPv4 address and port `5001`(for example `192.0.2.0:5001`).
 
 ![Peppermint login screen](peppermint.png)
 

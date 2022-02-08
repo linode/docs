@@ -22,7 +22,7 @@ relations:
     platform:
         key: installing-and-using-docker
         keywords:
-            - distributions: CentOS and Fedora
+            - distribution: CentOS and Fedora
 ---
 
 Docker is a tool that enables you to create, deploy, and manage lightweight, stand-alone packages called *containers*. These containers have the necessary code, libraries, runtime, system settings, and dependencies needed to run an application.

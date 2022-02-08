@@ -4,7 +4,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 18.04 & test it. ✓ Click here to read our guide today!'
-og_description: This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 18.04 and test it by through a simple "Hello World" application.
+og_description: 'This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 18.04 and test it by through a simple "Hello World" application.'
 keywords: ["java", "openjdk", "jdk", "11", "Ubuntu", "18.04"]
 aliases: ['/development/java/how-to-install-openjdk-on-ubuntu-18-04/','/development/java/install-java-on-ubuntu-18-04/']
 tags: ["java","ubuntu"]

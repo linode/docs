@@ -3,8 +3,8 @@ slug: introduction-to-the-solid-data-protocol
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'The Solid protocol was created by Tim Berners-Lee to give users of the web ownership over their data. This guide goes into the motivations behind creating the Solid protocol. You also learn at a high level how to incorporate the Solid protocol into your web applications.'
-og_description: 'The Solid protocol was created by Tim Berners-Lee to give users of the web ownership over their data. This guide goes into the motivations behind creating the Solid protocol. You also learn at a high level how to incorporate the Solid protocol into your web applications.'
+description: 'This guide will introduce you to the Solid protocol, created by Tim Berners-Lee and gives Internet users ownership over their data, and how to incorporate the tech.'
+og_description: 'This guide will introduce you to the Solid protocol, created by Tim Berners-Lee and gives Internet users ownership over their data, and how to incorporate the tech.'
 keywords: ['solid protocol']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

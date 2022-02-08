@@ -3,8 +3,8 @@ slug: how-to-use-nftables
 author:
   name: Linode Community
   email: docs@linode.com
-description: "nftables is replacing iptables, redesigned from the ground up. With it comes remarkable improvements but also changes in how you set up your packet rules. In this guide you learn about what nftables is and how it differs from iptables. You also get a hands-on look at how to use to create tables, rules, and chains."
-og_description: "nftables is replacing iptables, redesigned from the ground up. With it comes remarkable improvements but also changes in how you set up your packet rules. In this guide you learn about what nftables is and how it differs from iptables. You also get a hands-on look at how to use to create tables, rules, and chains."
+description: 'In this guide you will learn about what nftables is and how it differs from iptables, plus you""ll get a look at how to use and create tables, rules, and chains.'
+og_description: 'In this guide you will learn about what nftables is and how it differs from iptables, plus you""ll get a look at how to use and create tables, rules, and chains.'
 keywords: ['nftables']
 tags: ['ubuntu', 'centos', 'debian', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

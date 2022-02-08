@@ -2,8 +2,8 @@
 slug: how-to-setup-and-use-a-vault-server
 author:
   name: Hackersploit
-description: 'Vault is an open source, centralized secrets management system. It provides a secure, and reliable way of storing and distributing secrets like API keys, access tokens, and passwords.'
-og_description: 'Vault is an open source, centralized secrets management system. It provides a secure, and reliable way of storing and distributing secrets like API keys, access tokens, and passwords.'
+description: 'This guide will show you how to install Vault, a open source, centralized secrets management system which provides a secure and reliable way to manage secrets.'
+og_description: 'This guide will show you how to install Vault, a open source, centralized secrets management system which provides a secure and reliable way to manage secrets.'
 keywords: ['security', 'secrets', 'password', 'API keys', 'values','authentication', 'vault', 'tokens']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-26
