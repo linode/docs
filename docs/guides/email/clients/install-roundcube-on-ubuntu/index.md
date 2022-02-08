@@ -3,7 +3,7 @@ slug: install-roundcube-on-ubuntu
 author:
   name: 'Linode Community'
   email: 'docs@linode.com'
-description: 'Roundcube is a web-based IMAP email client that offers a user interface similar to Gmail or Hotmail. Email users interact with Roundcube over the internet using a web browser.'
+description: 'This guide shows you how to install the free and open-source web-based IMAP email client with a UI similar to Gmail and Hotmail, on Ubuntu.'
 keywords: ["Roundcube", "webmail", "email", "Ubuntu"]
 aliases: ['/email/clients/install-roundcube-on-ubuntu/','/email/clients/install-roundcube-on-ubuntu-14-04/']
 tags: ["ubuntu","postfix","email","lamp"]

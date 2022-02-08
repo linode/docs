@@ -3,7 +3,7 @@ slug: chevereto-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows you how to install Chevereto, a modern image sharing app with a drag-and-drop interface and more using the Linode One-Click Marketplace.'
+description: "This guide shows you how to install Chevereto, a modern image sharing solution with drag-and-drop upload experience and more, using the Linode One-Click Marketplace."
 keywords: ['photo storage','images','Marketplace']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

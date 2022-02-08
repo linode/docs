@@ -2,8 +2,8 @@
 slug: install-and-use-the-yarn-package-manager
 author:
   name: Nathaniel Stickman
-description: "Learn how to install and use the Yarn package manager. Yarn is an alternative to NPM that you can use to install and manage packages for your JavaScript projects."
-og_description: "Learn how to install and use the Yarn package manager. Yarn is an alternative to NPM that you can use to install and manage packages for your JavaScript projects."
+description:  'This guide will show you how to install and use the Yarn package manager, a great alternative to NPM which you can use to manage your Javascript projects.'
+og_description: 'This guide will show you how to install and use the Yarn package manager, a great alternative to NPM which you can use to manage your Javascript projects.'
 keywords: ['yarn package manager','yarn install','yarn vs npm']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
