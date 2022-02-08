@@ -3,7 +3,7 @@ slug: redis-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "This guide shows how you can install the open-source, in-memory, data structure store, with optional write and persistence of data on a disk database - Redis."
+description: "This guide shows how you can install Redis database, a open-source, in-memory, data structure store, with optional write and persistence of data on a disk."
 keywords: ['redis','data store','cluster','database']
 tags: ["linode platform","database","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
