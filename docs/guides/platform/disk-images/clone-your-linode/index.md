@@ -3,7 +3,7 @@ slug: clone-your-linode
 author:
   name: Linode
   email: docs@linode.com
-description: "Clone your Linode to another Linode."
+description: "This guide provides you with step-by-step instructions for making additional copies of your Linode using the Linode Cloud Manager's clone feature."
 keywords: ["clone", " cloning", "cloud manager"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Using the PostgreSQL relational database server with CentOS 5.'
+description: 'This guide provides you with step-by-step instructions for installing and configuring the PostgreSQL relational database server, on CentOS 5.'
 keywords: ["postgresql", "postgresql database", "postgresql on centos", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2013-09-24

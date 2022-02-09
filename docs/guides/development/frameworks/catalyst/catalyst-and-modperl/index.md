@@ -3,7 +3,7 @@ slug: catalyst-and-modperl
 author:
   name: Linode
   email: docs@linode.com
-description: 'Building dynamic websites and applications with Catalyst.'
+description: 'This guide provides you with step-by-step instructions for installing the Catalyst framework from a CPAN repository so you can build dynamic websites and applications.'
 keywords: ["Catalyst", "dynamic content", "web applications"]
 tags: ["web applications","apache","perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

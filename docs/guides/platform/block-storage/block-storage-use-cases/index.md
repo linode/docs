@@ -3,7 +3,7 @@ slug: block-storage-use-cases
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use cases for Linode Block Storage.'
+description: 'This guide provides you with several use cases for Linode''s Block Storage, which is a type of persistent cloud storage similar to an online hard drive.'
 keywords: ['block','storage','use','cases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-27

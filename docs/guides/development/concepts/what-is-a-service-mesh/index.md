@@ -2,8 +2,8 @@
 slug: what-is-a-service-mesh
 author:
   name: Nathaniel Stickman
-description: 'Using a service mesh with your service-oriented web application can help you abstract infrastructure and centralize your service management. But what is a service mesh. In this guide you learn when to use a service mesh and how it can help optimize your web application''s operational overhead.'
-og_description: 'Using a service mesh with your service-oriented web application can help you abstract infrastructure and centralize your service management. But what is a service mesh. In this guide you learn when to use a service mesh and how it can help optimize your web application''s operational overhead.'
+description: 'In this guide you learn when to use a service mesh and how it can help optimize your web application''s operational overhead and centralize your service management.'
+og_description: 'In this guide you learn when to use a service mesh and how it can help optimize your web application''s operational overhead and centralize your service management.'
 keywords: ['service mesh', 'what is a service mesh', 'microservices', 'service architecture']
 tags: ['web applications', 'networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

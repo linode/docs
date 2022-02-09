@@ -6,6 +6,7 @@ ack
 aconf
 accessor
 accessors
+acronis
 adc
 addon
 addons
@@ -27,6 +28,7 @@ Akaunting
 aker
 alef
 alertmanager
+alex
 alexey
 alfano
 alives
@@ -38,6 +40,7 @@ amavis
 amavisd
 amd64
 ananke
+anonymization
 anonymize
 anonymizing
 ansi
@@ -68,6 +71,8 @@ askbot
 aske
 async
 asynchrony
+atera
+atlanta
 authdaemonrc
 authg
 authlib
@@ -92,6 +97,7 @@ automator
 automattic
 automations
 automount
+automox
 autorelabel
 autorun
 autoscale
@@ -106,6 +112,7 @@ awk
 aws
 awstats
 axibase
+ayehu
 azc
 azlux
 backdooring
@@ -154,6 +161,7 @@ blockwise
 bluehost
 bokeh
 bookinfo
+bool
 boolean
 booleans
 boolstyle
@@ -266,6 +274,7 @@ colab
 collabnet
 colormaps
 com2sec
+commoditization
 comodo
 completekey
 composable
@@ -290,6 +299,7 @@ coroutines
 corporateclean
 courseware
 cov
+covid
 cpanminus
 cpu
 cqlsh
@@ -311,6 +321,8 @@ crowdsourcing
 crt
 crypters
 crypto
+cryptocurrencies
+cryptocurrency
 csi
 csharp
 csharpserver
@@ -325,6 +337,7 @@ cuda
 curlie
 cutover
 cyber
+cyberattack
 cyberduck
 cyberpanel
 cybersecurity
@@ -339,6 +352,7 @@ daemonizes
 daemonizing
 daemonset
 dahdi
+dallas
 databags
 datacenter
 datadir
@@ -375,6 +389,7 @@ defragment
 delpy
 demultiplexer
 denormalized
+deprovision
 deprovisioning
 descolada
 descr
@@ -466,11 +481,13 @@ ejabberd
 el6
 el7
 elasticsearch
+elif
 elisp
 elgg
 elpaso
 emacs
 email2email
+emisoft
 emojivoto
 emscripten
 ender
@@ -504,7 +521,9 @@ examplesitename
 exampleuser
 exe
 executables
+exfiltrated
 exfiltrating
+exfiltration
 exim
 expirations
 exploitability
@@ -584,6 +603,7 @@ frakti
 framesets
 freedns
 freeipa
+fremont
 freshclam
 friendster
 frontend
@@ -755,6 +775,7 @@ hypervisor
 hypervisors
 IaC
 Istio
+istio
 i386
 iaas
 icann
@@ -783,6 +804,7 @@ im
 imagize
 imap
 imapd
+imaplib
 imaps
 img
 immutant
@@ -849,6 +871,7 @@ issuewild
 istioctl
 iterable
 itk
+ivanti
 Janca
 jamstack
 java6
@@ -889,6 +912,8 @@ kaggle
 kakfa
 kamkar
 kanban
+kaseya
+kasten
 kbits
 keepalive
 keepalived
@@ -926,6 +951,7 @@ konsole
 kotin
 konversation
 krita
+kroll
 ktor
 kube
 kubeadm
@@ -946,6 +972,7 @@ launchd
 lbmethod
 lda
 ldap
+le
 lego
 leiningen
 lelastic
@@ -1011,6 +1038,7 @@ logpath
 logrotate
 logstash
 logwatch
+london
 longview
 lookups
 loopback
@@ -1235,6 +1263,7 @@ netstat
 netstumbler
 netuser
 networkd
+newark
 newgrp
 newtag
 nextcloud
@@ -1351,6 +1380,7 @@ paravirt
 paravirtualization
 paravirtualized
 parentheticals
+parsedate
 partitionless
 partyline
 passdb
@@ -1368,6 +1398,7 @@ pentesting
 pepi
 percona
 performant
+perl
 permalink
 permalinks
 Petazzoni
@@ -1437,6 +1468,7 @@ prestashop
 prettifier
 prettifiers
 Printf
+printf
 pritunl
 privesc
 processhider
@@ -1492,6 +1524,7 @@ quicklisp
 quickstart
 radeon
 ramdisk
+ransomwhere
 rauth
 rbac
 rbenv
@@ -1538,6 +1571,7 @@ refspec
 regexes
 reimported
 reindexing
+reiner
 reinstalls
 releasever
 reloadcmd
@@ -1706,6 +1740,7 @@ scribus
 sidekiq
 sievers
 signup
+singapore
 sintra
 sitename
 sklearn
@@ -1715,6 +1750,7 @@ slavedb
 sls
 smartcard
 smartcards
+smishing
 smtp
 smtpd
 smush
@@ -1891,6 +1927,7 @@ togami
 tokenize
 tokenized
 tokenizing
+tokyo
 tokyo2
 tomacat
 tomcat6
@@ -2011,6 +2048,7 @@ valheim
 validator
 variadic
 varnishlog
+varonis
 vaultwarden
 vcs
 vdev
@@ -2021,6 +2059,7 @@ venv
 ver
 veracode
 verisign
+veritas
 vhost
 vhosts
 vimrc
@@ -2036,6 +2075,7 @@ virtualize
 virtualized
 virtualmin
 Virustotal
+vishing
 vlan
 vlans
 vlc
@@ -2184,6 +2224,7 @@ zapier
 zcat
 zend
 zgrep
+zhao
 zile
 zimbra
 zipkin

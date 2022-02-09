@@ -40,7 +40,7 @@ These performance details are only applicable to newer NVMe-backed Block Storage
 
 ## Availability
 
-Block Storage is available across [all regions](https://www.linode.com/global-infrastructure/). The newer NVMe-backed Block Storage has been deployed in the Atlanta (USA), Frankfurt (Germany), Newark (USA), and Toronto (Canada) data centers. See the [NVMe Block Storage Upgrade](/docs/products/storage/block-storage/guides/nvme-upgrade/) guide for additional details regarding this roll out, as well as information on upgrading existing Volumes.
+Block Storage is available across [all regions](https://www.linode.com/global-infrastructure/). Additionally, the newer NVMe-backed Block Storage has been deployed to most of our data centers. See the [NVMe Block Storage Upgrade](/docs/products/storage/block-storage/guides/nvme-upgrade/) guide for additional details regarding this roll out, as well as information on upgrading existing Volumes.
 
 ## Plans and Pricing
 

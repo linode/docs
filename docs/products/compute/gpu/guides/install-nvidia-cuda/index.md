@@ -50,7 +50,7 @@ To take advantage of the powerful parallel processing capabilities offered by GP
 
     1. The **Download Installer** (or similar) section should appear and display a list of commands needed to download and install the CUDA Toolkit. Run each command listed there.
 
-    1. Reboot the GPU instance after all the command have completed successfully.
+    1. Reboot the GPU instance after all the commands have completed successfully.
 
     1. Run `nvidia-smi` to verify that the NVIDIA drivers and CUDA Toolkit are installed successfully. This command should output details about the driver version, CUDA version, and the GPU itself.
 

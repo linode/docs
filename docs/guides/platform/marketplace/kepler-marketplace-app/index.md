@@ -3,7 +3,7 @@ slug: kepler-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
-description: "Kepler is a powerful drag and drop WordPress website builder with all-new website style filters that instantly change the look and feel of your website. Follow this guide to deploy Kepler on Linode using Marketplace Apps."
+description: "This guide shows how to install Kepler, a powerful drag-and-drop WordPress website builder that is highly customizable, using the One-Click Marketplace App"
 keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress with marketplace', 'easy install wordpress', kepler]
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications", kepler]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
