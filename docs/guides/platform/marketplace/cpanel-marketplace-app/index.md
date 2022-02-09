@@ -40,7 +40,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 1. Once your cPanel app has finished its installation, open a browser and navigate to `http://192.0.2.0:2087/`. Replace `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/).
 
-    This will bring you to the Web Hosting Manager (WHM) login page. Enter `root` as the username and the root password you created when deploying your app. Click the **Log In** button.
+    This will bring you to the Web Hosting Manager (WHM) login page. WHM is used to configure your cPanel instance, including [creating a new cPanel account](https://docs.cpanel.net/whm/account-functions/create-a-new-account/). Enter `root` as the username and the root password you created when deploying your app. Click the **Log In** button.
 
     ![Log into your Web Hosting Manager](log-into-whm.png)
 
@@ -74,6 +74,6 @@ Your cPanel Marketplace App installation will automatically receive a free 15-da
 
     ![cPanel home page](cpanel-home-page.png)
 
-    Now that you've accessed your WHM homepage, read [cPanel and WHM's user documentation](https://docs.cpanel.net/) to learn how to further configure your cPanel instance.
+    Now that you've accessed your WHM homepage, read [cPanel and WHM's user documentation](https://docs.cpanel.net/) to learn how to further configure your cPanel instance, such as [creating a new cPanel account](https://docs.cpanel.net/whm/account-functions/create-a-new-account/).
 
 {{< content "marketplace-update-note-shortguide">}}
