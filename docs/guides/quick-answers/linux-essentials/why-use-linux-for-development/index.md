@@ -3,7 +3,7 @@ slug: why-use-linux-for-development
 author:
   name: Linode
   email: docs@linode.com
-description: 'A quick answer for why you should use Linux for development.'
+description: 'This article provides descriptive information regarding why you should use the Linux operating system for software development and offers use cases.'
 og_description: 'A quick answer for why you should use Linux for development.'
 keywords: ['linux', 'development', 'dev', 'develop', 'developing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
