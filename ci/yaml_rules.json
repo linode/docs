@@ -167,6 +167,12 @@
     "type": "text",
     "description": "Name of the writer who last modified this guide."
   },
+  "notoc": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "When set to false, this forces the table of contents menu to not be rendered on a page. When not set, the table of contents appears on any page that has at least one H2 within its contents."
+  },
   "og_description": {
     "elements": false,
     "required": false,
@@ -273,6 +279,12 @@
     "required": false,
     "type": "text",
     "description": "Short version of title to be displayed in a front page icon."
+  },
+  "toc": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "When set to true, this forces the table of contents to appear on pages that don't have an H2 within the page content. When not set, the table of contents is only rendered on pages with at least one H2 within its contents."
   },
   "twitter": {
     "elements": [

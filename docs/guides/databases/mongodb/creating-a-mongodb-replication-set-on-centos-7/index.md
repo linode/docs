@@ -3,7 +3,7 @@ slug: creating-a-mongodb-replication-set-on-centos-7
 author:
   name: Linode
   email: docs@linode.com
-description: Configure a MongoDB Replica Set
+description: "This guide will show you how to configure a MongoDB Replica Set (aka cluster) with primary-secondary replication and automatic failover on CentOS 7."
 keywords: ["mongodb", "nosql", "clusters", "replica set"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:

@@ -45,12 +45,16 @@ export function newDisqus(disqusShortname, page) {
 
 	return {
 		page: page,
-		init: function() {
-			if (!loadScript(disqusShortname)) {
-				// The script tag already exists.
-				// This is a navigation via Turbolinks so just do a DISQUS.reset.
-				reset(this.page);
-			}
+		// Avoid using the name init(), which is also automatically invoked by AlpineJS.
+		// We need to call it explicitly to make it run after AlpineJS has updated the DOM.
+		initDisqus: function() {
+			this.$nextTick(() => {
+				if (!loadScript(disqusShortname)) {
+					// The script tag already exists.
+					// This is a navigation via Turbolinks so just do a DISQUS.reset.
+					reset(this.page);
+				}
+			});
 		}
 	};
 }

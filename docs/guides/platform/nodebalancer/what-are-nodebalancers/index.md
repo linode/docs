@@ -3,7 +3,7 @@ slug: what-are-nodebalancers
 author:
   name: Linode
   email: docs@linode.com
-description: 'Linode offers load balancers as a service (LBaaS) called NodeBalancers. NodeBalancers are built for high availability and designed to be maintenance free after initial configuration.'
+description: 'This guide shows you how to use Linode Node Balancers, which are services built for high availability and designed to be maintenance free once deployed.'
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-16

@@ -3,7 +3,7 @@ slug: install-gitlab-on-ubuntu-18-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Install GitLab on Ubuntu 18.04 with SSL'
+description: 'This guide shows how to install GitLab, the free git repository management app based on Ruby on Rails, on a Linode running Ubuntu 18.04, along with SSL.'
 keywords: ['git', 'gitlab', 'version control', 'ubuntu']
 tags: ["ssl","version control system","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

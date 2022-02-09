@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'Install and configure NSD to handle DNS queries.'
+description: 'This guide will show you to install and configure NSD, a lightweight and open-source name server to handle authoritative DNS queries on Ubuntu 9.10 "Karmic".'
 keywords: ["NSD", "DNS", "resolving", "Ubuntu 9.10", "networking"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

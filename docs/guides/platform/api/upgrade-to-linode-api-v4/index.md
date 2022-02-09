@@ -3,7 +3,7 @@ slug: upgrade-to-linode-api-v4
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: 'The new Linode API includes a number of additional features and changes from previous API versions. This guide is intended to help existing users upgrade to the new API.'
+description: 'This guide is intended to help existing users upgrade to the new Linode API version 4, which includes a number of additional features and changes from v3 of the API.'
 keywords: ["api","linode api"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-05-14

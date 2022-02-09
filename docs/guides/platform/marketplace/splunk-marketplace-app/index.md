@@ -3,7 +3,7 @@ slug: splunk-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
-description: "Splunk is a powerful data solution that collects, monitors, analyzes, and visualizes data for your infrastructure. This tutorial walks you through deploying Splunk through the Linode Marketplace."
+description: "This guide shows you how to install Splunk, a powerful data solution that collects, monitors, analyzes, and visualizes data, using the Linode One-Click Marketplace."
 keywords: ['monitoring','splunk', 'data solution']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

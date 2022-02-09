@@ -2,8 +2,8 @@
 slug: understanding-total-app-security
 author:
   name: David Strom
-description: 'Cross-site scripting and SQL injections are common avenues for security exploits. This guide provides an overview of each attack, how they happen, and what you can do to prevent them.'
-og_description: 'Cross-site scripting and SQL injections are common avenues for security exploits. This guide provides an overview of each attack, how they happen, and what you can do to prevent them.'
+description: 'This guide provides an overview of cross-site scripting and SQL injection exploits, as well as how they happen and what you can do to prevent them.'
+og_description: 'This guide provides an overview of cross-site scripting and SQL injection exploits, as well as how they happen and what you can do to prevent them.'
 keywords: ['web app security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

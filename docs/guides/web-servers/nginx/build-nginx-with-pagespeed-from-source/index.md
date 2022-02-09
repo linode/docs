@@ -3,7 +3,7 @@ slug: build-nginx-with-pagespeed-from-source
 author:
   name: Linode
   email: docs@linode.com
-description: 'Compile NGINX to use the PageSpeed module.'
+description: 'This guide provides you with step-by-step instructions for compiling the Nginx web server from scratch so you can use Google''s PageSpeed moduleon your website.'
 keywords: ["nginx","pagespeed","optimization"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1604/','/web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/','/web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1804/','/web-servers/nginx/build-nginx-with-pagespeed-from-source/']

@@ -3,7 +3,7 @@ slug: kubernetes-use-cases
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Advantages of using Kubernetes.'
+description: 'This guide provides you with some use cases as well as advantages of using Kubernetes, the container and infrastructure orchestration technology.'
 keywords: ['kubernets', 'k8s', 'use','cases','advantages']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-09-04
@@ -49,7 +49,7 @@ Here's a few common categories:
     The customer generally assumes responsibility for deploying and maintaining their applications on the cluster. The Master Nodes are often provided at no cost, and the customer only pays for the Worker Nodes they provision.
 
     {{< note >}}
-The upcoming Linode Kubernetes Engine (LKE) is an example of this category.
+The [Linode Kubernetes Engine (LKE)](https://www.linode.com/docs/products/compute/kubernetes/) is an example of this category.
 {{< /note >}}
 
 -   **Software-as-a-Service Kubernetes**

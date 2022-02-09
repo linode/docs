@@ -2,8 +2,8 @@
 slug: python-lists-and-how-to-use-them
 author:
   name: Nathaniel Stickman
-description: "Python lists offer several built-in methods that help you alter the items stored in the list. This guide shows you how to append and remove items from a list, and convert list items to a string. You also learn to sort list items and reverse the list order."
-og_description: "Python lists offer several built-in methods that help you alter the items stored in the list. This guide shows you how to append and remove items from a list, and convert list items to a string. You also learn to sort list items and reverse the list order."
+description: "This guide shows you how to use the Lists feature in Python to append and remove items from a list, and then convert those list items into a sortable string."
+og_description: "This guide shows you how to use the Lists feature in Python to append and remove items from a list, and then convert those list items into a sortable string."
 keywords: ['python list','python list append','python list sort']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
