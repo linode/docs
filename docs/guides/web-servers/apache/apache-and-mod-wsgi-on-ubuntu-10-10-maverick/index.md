@@ -3,7 +3,7 @@ slug: apache-and-mod-wsgi-on-ubuntu-10-10-maverick
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows you how to deploy Python WSGI applications with the Apache web server and mod\_wsgi on a Linode running the Linux operating system.'
+description: 'This guide shows you how to deploy Python apps, like Django, and more using the Apache Web Server application and mod\_wsgi on Ubuntu 10.10 "Maverick".'
 keywords: ["python", "apache", "mod\\_wsgi"]
 tags: ["web server","apache","ubuntu","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
