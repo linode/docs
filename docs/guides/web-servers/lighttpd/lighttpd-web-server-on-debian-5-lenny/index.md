@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Using lighttpd to host multiple websites from your Linode.'
+description: 'This guide shows how to install and configure the lighttpd web server on Debian 5 so you can host multiple websites and applications on your server.'
 keywords: ["lighttpd server", "lighttpd Linode", "web server", "Linode web server", "Linode hosting"]
 tags: ["web server","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

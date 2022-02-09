@@ -2,8 +2,8 @@
 slug: write-to-a-file-from-the-shell
 author:
   name: Nathaniel Stickman
-description: "Want to write and edit files right from the command line? This guide shows you convenient, built-in commands for writing to a file from the shell. It even walks you through some practical examples to get you started."
-og_description: "Want to write and edit files right from the command line? This guide shows you convenient, built-in commands for writing to a file from the shell. It even walks you through some practical examples to get you started."
+description: "This guide shows you convenient and built-in commands for writing to a file direct from the shell, and walks you through some practical examples to get you started."
+og_description: "This guide shows you convenient and built-in commands for writing to a file direct from the shell, and walks you through some practical examples to get you started."
 keywords: ['shell write to file', 'append to file', 'bash write output to file', 'zsh write to file', 'write to file command', 'write variable to file']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

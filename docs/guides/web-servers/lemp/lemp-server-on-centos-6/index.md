@@ -3,7 +3,7 @@ slug: lemp-server-on-centos-6
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install a LEMP stack to serve websites and applications on CentOS 6'
+description: 'This guide shows you how to install and configure a LEMP (Linux, NGINX, MySQL, PHP) server to host websites and applications on the CentOS 6 Linux distro.'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","centos","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

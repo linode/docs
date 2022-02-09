@@ -3,7 +3,7 @@ slug: lemp-server-on-debian-7-wheezy
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install a LEMP stack to serve websites and applications on Debian 7'
+description: 'This guide shows you how to install and configure a LEMP (Linux, NGINX, MySQL, PHP) server to host websites and applications on the Debian 7 Linux distro.'
 keywords: ["nginx", "lemp", "lepp", "perl", "python", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
