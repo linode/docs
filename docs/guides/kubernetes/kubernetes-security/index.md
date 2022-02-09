@@ -3,8 +3,8 @@ slug: kubernetes-security-best-practices
 author:
   name: Jack Wallen
   email: jlwallen@monkeypantz.net
-description: 'Kubernetes is a container orchestration system to help scale containerized applications in the cloud. This guide covers some of the Kubernetes security best practices.'
-og_description: 'Kubernetes is a container orchestration system to help scale containerized applications in the cloud. This guide covers some of the Kubernetes security best practices.'
+description: 'This guide covers some of the best security practices in Kubernetes so you can deploy clusters that are secured and keep your infrastructure safe.'
+og_description: 'This guide covers some of the best security practices in Kubernetes so you can deploy clusters that are secured and keep your infrastructure safe.'
 keywords: ['Kubernetes security best practices']
 tags: ['kubernetes', 'container']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

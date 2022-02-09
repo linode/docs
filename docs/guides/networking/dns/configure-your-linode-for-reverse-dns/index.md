@@ -40,7 +40,7 @@ Specifically, you will need to create an *A record* for the domain name (or subd
 
     ![Selecting the Edit rDNS button](edit-rdns.png "Selecting the Edit rDNS button")
 
-1. In the **Edit Reverse DNS** form, enter your Linode's fully qualified domain name and click on the **Save** button. The default value of `x.members.linode.com` can be safely removed or replaced. Leave the field blank if you wish to remove the previously configured rDNS value without setting a new value.
+1. In the **Edit Reverse DNS** form, enter your Linode's fully qualified domain name and click on the **Save** button. The default value of `x.ip.linodeusercontent.com` can be safely removed or replaced. Leave the field blank if you wish to remove the previously configured rDNS value without setting a new value.
 
     {{< note >}}
 If you did not previously set up an A record for your domain that matches your Linode's IP address, you will see an error like the following:

@@ -2,8 +2,8 @@
 slug: securing-apache2-with-modsecurity
 author:
   name: Hackersploit
-description: 'ModSecurity is a free web application firewall that can prevent attacks like XSS and SQL Injection. This guide shows how to install ModSecurity with Apache 2.'
-og_description: 'ModSecurity is a free web application firewall that can prevent attacks like XSS and SQL Injection. This guide shows how to install ModSecurity with Apache 2.'
+description: 'This guide shows how you can use ModSecurity, a free web application firewall that can prevent attacks like XSS and SQL injection on your site, using Apache 2.'
+og_description: 'This guide shows how you can use ModSecurity, a free web application firewall that can prevent attacks like XSS and SQL injection on your site, using Apache 2.'
 keywords: ["apache2 configure modsecurity", "apache2 modsecurity", "apache modsecurity"]
 tags: ["security","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

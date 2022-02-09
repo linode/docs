@@ -3,7 +3,7 @@ slug: getting-started-with-nginx-part-3-enable-tls-for-https
 author:
   name: Linode
   email: docs@linode.com
-description: "Install a TLS certificate into NGINX for HTTPS access."
+description: "This is part three in our guide to Getting Started with Nginx where you will enable TLS/SSL for HTTPS on your web server and installing a SSL Certificate."
 keywords: ["ssl", "tls", "nginx", "https", "certificate"]
 tags: ["ssl","web server","security","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

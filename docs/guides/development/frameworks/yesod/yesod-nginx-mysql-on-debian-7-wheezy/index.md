@@ -26,6 +26,7 @@ relations:
         key: yesod-nginx-mysql
         keywords:
             - distribution: Debian 7
+deprecated: true
 ---
 
 

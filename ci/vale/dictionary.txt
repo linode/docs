@@ -28,6 +28,7 @@ Akaunting
 aker
 alef
 alertmanager
+alex
 alexey
 alfano
 alives
@@ -39,6 +40,7 @@ amavis
 amavisd
 amd64
 ananke
+anonymization
 anonymize
 anonymizing
 ansi
@@ -70,6 +72,7 @@ aske
 async
 asynchrony
 atera
+atlanta
 authdaemonrc
 authg
 authlib
@@ -158,6 +161,7 @@ blockwise
 bluehost
 bokeh
 bookinfo
+bool
 boolean
 booleans
 boolstyle
@@ -348,6 +352,7 @@ daemonizes
 daemonizing
 daemonset
 dahdi
+dallas
 databags
 datacenter
 datadir
@@ -476,6 +481,7 @@ ejabberd
 el6
 el7
 elasticsearch
+elif
 elisp
 elgg
 elpaso
@@ -515,7 +521,9 @@ examplesitename
 exampleuser
 exe
 executables
+exfiltrated
 exfiltrating
+exfiltration
 exim
 expirations
 exploitability
@@ -595,6 +603,7 @@ frakti
 framesets
 freedns
 freeipa
+fremont
 freshclam
 friendster
 frontend
@@ -766,6 +775,7 @@ hypervisor
 hypervisors
 IaC
 Istio
+istio
 i386
 iaas
 icann
@@ -962,6 +972,7 @@ launchd
 lbmethod
 lda
 ldap
+le
 lego
 leiningen
 lelastic
@@ -1027,6 +1038,7 @@ logpath
 logrotate
 logstash
 logwatch
+london
 longview
 lookups
 loopback
@@ -1251,6 +1263,7 @@ netstat
 netstumbler
 netuser
 networkd
+newark
 newgrp
 newtag
 nextcloud
@@ -1385,6 +1398,7 @@ pentesting
 pepi
 percona
 performant
+perl
 permalink
 permalinks
 Petazzoni
@@ -1454,6 +1468,7 @@ prestashop
 prettifier
 prettifiers
 Printf
+printf
 pritunl
 privesc
 processhider
@@ -1667,6 +1682,7 @@ sda
 sda1
 sdb
 sdc
+se
 seaborn
 seafile
 seahub
@@ -1725,6 +1741,7 @@ scribus
 sidekiq
 sievers
 signup
+singapore
 sintra
 sitename
 sklearn
@@ -1911,6 +1928,7 @@ togami
 tokenize
 tokenized
 tokenizing
+tokyo
 tokyo2
 tomacat
 tomcat6

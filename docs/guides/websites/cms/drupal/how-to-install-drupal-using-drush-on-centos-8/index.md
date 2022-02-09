@@ -3,8 +3,8 @@ slug: how-to-install-drupal-using-drush-on-centos-8
 author:
     name: Linode
     email: docs@linode.com
-description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode running CentOS 8. To install Drupal, you will use Drush, a command line tool for creating, administrating, and modifying Drupal websites.'
-og_description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode running CentOS 8. To install Drupal, you will use Drush, a command line tool for creating, administrating, and modifying Drupal websites.'
+description: 'This guide will show you how to install the popular content management system Drupal on CentOS 8 using the Drush command line tool on CentOS 8..'
+og_description: 'This guide will show you how to install the popular content management system Drupal on CentOS 8 using the Drush command line tool on CentOS 8.'
 keywords: ["drupal", "cms", "content management system", "content management framework","drush", "centos"]
 tags: ["drupal","centos","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

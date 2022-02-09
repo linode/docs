@@ -3,7 +3,7 @@ slug: getting-started-with-go-packages
 author:
   name: Kamesh Balasubramanian
   email: kamesh@wirecog.com
-description: 'Learn how to get started with Go packages.'
+description: 'This guide provides you with step-by-step instructions for getting started with the Go programming language, used by many modern applications, such as Docker.'
 keywords: ["go","golang","packages","export"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-06

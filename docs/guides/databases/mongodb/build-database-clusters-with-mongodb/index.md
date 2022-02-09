@@ -3,7 +3,7 @@ slug: build-database-clusters-with-mongodb
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configure MongoDB for use in clustered environments.'
+description: 'This guide provides you with instructions for installing, configuring, and scaling the MongoDB database for use in clustered environments on the Linux OS.'
 keywords: ["mongodb", "nosql", "clusters", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/clusters/','/databases/mongodb/build-database-clusters-with-mongodb/']

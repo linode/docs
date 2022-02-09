@@ -3,7 +3,7 @@ slug: vscode-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Run VS Code Server in the browser with the VS Code Marketplace App. Code Server uses the open source code from Microsoft''s VS Code to provide a web interface for VS Code."
+description: "This guide shows you how to run VS Code Server in the browser to create, edit, and manipulate code by using the VS Code app from the Linode One-Click Marketplace."
 keywords: ['vscode', 'marketplace', 'vscode web browser']
 tags: ["debian","marketplace", "web applications","linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -71,7 +71,7 @@ VS Code is now installed and ready to use.
     - In the Cloud Manager [DNS Manager](/docs/guides/dns-manager/#add-a-domain) there is now an entry for the domain with possible subdomain records pointing to the new server.
     - [Configure the rDNS](/docs/guides/configure-your-linode-for-reverse-dns/) on the Linode server.
 
-1.  VS Code is accessed via the domain name if you entered one, or by the rDNS name if you did not. For example, `http://example.com` or `http://li1234-555.members.linode.com`, replacing the domain name or rDNS name with values for the server.
+1.  VS Code is accessed via the domain name if you entered one, or by the rDNS name if you did not. For example, `http://example.com` or `http://203-0-113-0.ip.linodeusercontent.com`, replacing the domain name or rDNS name with values for the server.
 
 1.  At the login screen, login using the password you entered during installation.
 

@@ -4,7 +4,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configurations for common DNS records.'
-og_description: 'This guide explains how to use the Linode Cloud Manger to configure DNS records'
+og_description: 'This guide provides you with step-by-step instructions for using the Linode Cloud Manager to configure DNS records such as A, AAA, MX, and other DNS records.'
 keywords: ["dns", "dnssec"]
 tags: ["dns","networking","cloud manager","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

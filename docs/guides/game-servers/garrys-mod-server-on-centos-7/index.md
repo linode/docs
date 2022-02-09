@@ -3,7 +3,7 @@ slug: garrys-mod-server-on-centos-7
 author:
   name: Julian Meyer
   email: --
-description: 'A Garrys Mod Server for CentOS 7.'
+description: 'This guide provides you with step-by-step instructions for deploying a Garrys Mod Server, which enables complete control of a video game engine, on CentOS 7.'
 keywords: ["garry''s mod", "centos", "centos 7"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
