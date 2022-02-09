@@ -3,7 +3,7 @@ slug: monitoring-servers-with-monit
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Improve uptime with Monit Server Monitoring. Monit will watch you system around the clock, and respond to out-of-the-norm events by following your instructions.'
+description: 'This guide shows how you can improve server uptime by using Monit Server Monitoring, an app that monitors your system 24x7 and recovers processes when there is a problem.'
 keywords: ["installing Monit for server monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-10-15
