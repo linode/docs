@@ -66,7 +66,7 @@ See our [How do I set up DNS on cPanel?](https://www.linode.com/community/questi
 
     ![Provide an email address and your Linode nameservers.](email-and-nameservers.png)
 
-1. You will be brought to your WHM's home page where you can continue to configure your cPanel instance.
+1. You will be brought to your WHM's home page where you can continue to configure your cPanel instance, such as creating a new cPanel account.
 
     {{< note >}}
 Your cPanel Marketplace App installation will automatically receive a free 15-day trial license. You must [purchase a new cPanel & WHM license](https://documentation.cpanel.net/display/CKB/How+to+Purchase+a+cPanel+License) before the end of this trial period. At the end of your trial period your license will expire.
@@ -74,6 +74,6 @@ Your cPanel Marketplace App installation will automatically receive a free 15-da
 
     ![cPanel home page](cpanel-home-page.png)
 
-    Now that you've accessed your WHM homepage, read [cPanel and WHM's user documentation](https://documentation.cpanel.net/display/78Docs/WebHost+Manager+-+WHM+User+Documentation) to learn how to further configure your cPanel instance.
+    Now that you've accessed your WHM homepage, read [cPanel and WHM's user documentation](https://docs.cpanel.net/) to learn how to further configure your cPanel instance.
 
 {{< content "marketplace-update-note-shortguide">}}
