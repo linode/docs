@@ -3,7 +3,7 @@ slug: create-an-ssh-tunnel-for-mysql-remote-access
 author:
   name: Linode
   email: docs@linode.com
-description: 'Execute commands on a remote MySQL server though PuTTY or mysql-client. This guide will teach you how to gain remote access to your MySQL Database using an SSH tunnel.'
+description: 'This guide will show you how to gain remote access to your MySQL server and database through PuTTY or similar mysql-client using an SSH Tunnel.'
 keywords: ["MySQL tunnel", "MySQL over SSH", "SSH tunnel", "MySQL client"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/','/databases/mysql/securely-administer-mysql-with-an-ssh-tunnel/','/databases/mysql/mysql-ssh-tunnel/']
@@ -80,7 +80,7 @@ This section will show you how to create an SSH tunnel to MySQL on Mac OS X or L
 
     **MacOS**
 
-        brew install caskroom/cask/mysql-shell
+        brew install --cask mysql-shell
 
     **Ubuntu/Debian**
 

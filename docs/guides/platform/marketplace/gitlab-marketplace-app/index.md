@@ -3,7 +3,7 @@ slug: gitlab-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Deploy GitLab on Linode using Marketplace Apps."
+description: "This is a step-by-step guide on how to deploy the GitLab application, a solution for your software development needs, by using the Linode One-Click Marketplace."
 keywords: ['gitlab','marketplace apps','version control','git']
 tags: ["linode platform","version control system","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -35,7 +35,7 @@ Self-hosting your software development with GitLab offers total control of your 
 
 Here are the additional options available for this Marketplace App:
 
-- **Domain** *(optional)*: Your GitLab site's domain name. This domain will also be used by Postfix to send mail. Setting a value for this field will not automatically set up DNS for your app, so be sure to follow the DNS instructions in the [Access your GitLab Site](#access-your-gitlab-site) section. If you do not have a domain name, you can leave this field blank and Postfix will use your Linode's default Reverse DNS to send email instead (i.e. `gitlab@li926-227.members.linode.com`).
+- **Domain** *(optional)*: Your GitLab site's domain name. This domain will also be used by Postfix to send mail. Setting a value for this field will not automatically set up DNS for your app, so be sure to follow the DNS instructions in the [Access your GitLab Site](#access-your-gitlab-site) section. If you do not have a domain name, you can leave this field blank and Postfix will use your Linode's default Reverse DNS to send email instead (i.e. `gitlab@l203-0-113-0.ip.linodeusercontent.com`).
 
 ### General Options
 

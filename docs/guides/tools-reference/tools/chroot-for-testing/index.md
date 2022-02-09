@@ -2,8 +2,8 @@
 slug: use-chroot-for-testing-on-ubuntu
 author:
   name: Nathaniel Stickman
-description: "The chroot command enables you to create an environment that is isolated from the rest of your file system. This guide shows you how to create your own chroot environment to securely test settings and applications."
-og_description: "The chroot command enables you to create an environment that is isolated from the rest of your file system. This guide shows you how to create your own chroot environment to securely test settings and applications."
+description: "This guide shows you how to create your own chroot environment to securely test settings and apps by creating an environment isolated from your file system."
+og_description: "This guide shows you how to create your own chroot environment to securely test settings and apps by creating an environment isolated from your file system."
 keywords: ['chroot','chroot linux','chroot jail']
 tags: ['linux', 'ubuntu', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

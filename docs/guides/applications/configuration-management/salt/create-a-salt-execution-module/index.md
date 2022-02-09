@@ -3,7 +3,7 @@ slug: create-a-salt-execution-module
 author:
   name: Linode
   email: docs@linode.com
-description: 'Create a Salt execution module.'
+description: 'This guide provides you with step-by-step instructions for creating a Salt execution module, which is a Python module that runs on a Salt minion. '
 keywords: ['salt','execution module','saltstack']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-22

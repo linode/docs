@@ -3,7 +3,7 @@ slug: magicspam-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
-description: "MagicSpam is a powerful anti-spam and email security solution that integrates with popular control panels, like cPanel and Plesk. This tutorial walks you through deploying MagicSpam using the Linode Marketplace."
+description: "This guide shows you how to install and configure MagicSpam, a powerful anti-spam and email security solution using the Linode One-Click App Marketplace."
 keywords: ['cPanel','Plesk','Email','Spam']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

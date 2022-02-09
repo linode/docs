@@ -3,7 +3,7 @@ slug: delete-file-linux-command-line
 author:
   name: Edward Angert
   email: docs@linode.com
-description: "Learn how to delete files, directories, and content from the Linux command line with rm. ✓ Click here to check out our guide!"
+description: "This guide provides you instructions for deleting files, directories, content and more using rm command from the Linux Command Line on any distribution."
 keywords: ["remove files", "delete files", "rm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-07-03

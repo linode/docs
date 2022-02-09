@@ -3,7 +3,7 @@ slug: lke-continuous-deployment-part-12
 author:
   name: Linode Community
   email: docs@linode.com
-description: "This guide goes over installing and configuring cert-manager as well as obtaining a TLS/SSL certificate for a Kubernetes cluster."
+description: "In part 12 of our series on Kubernetes, you will learn how to install and configure cert-manager, and obtain a TLS/SSL certificate for your Kubernetes cluster."
 title: "Continuous Deployment Using LKE: cert-manager"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 12): cert-manager"
 enable_h1: true

@@ -3,7 +3,7 @@ slug: creating-reading-and-writing-files-in-go-a-tutorial
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'Learn various file I/O operations in Go.'
+description: 'This guide provides you instructions for performing various file I/O operations in the Go programming language, such as verifying a path exists, and more.'
 keywords: ["Go", "File", "UNIX", "Input", "Output", "Golang"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-09-06
