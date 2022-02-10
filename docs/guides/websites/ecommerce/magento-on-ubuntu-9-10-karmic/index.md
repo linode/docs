@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Stan Schwertly
   email: docs@linode.com
-description: 'Installing Magento on an Ubuntu 9.10 LAMP stack.'
+description: 'This guide shows you how to install Magento, the free and open source self-hosted e-commerce solution you can use to sell products, on a Ubuntu 9.10 LAMP Stack.'
 keywords: ["magento", "ecommerce", "store", "cart", "shop", "shopping"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ecommerce/magento-on-ubuntu-9-10-karmic/','/web-applications/e-commerce/magento/ubuntu-9-10-karmic/']

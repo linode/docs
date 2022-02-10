@@ -3,7 +3,7 @@ slug: manage-cpan-modules-with-cpan-minus
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use cpanminus to easily install and manage Perl modules.'
+description: 'This guide shows how you can use cpanimus to easily install and manage Perl Modules with CPAN - the Comprehensive Perl Archive Network, a source for the latest Perl Modules.'
 og_description: "This guide shows how to use cpanminus to easily install and manage Perl modules."
 keywords: ["cpan", "perl", "cpanm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

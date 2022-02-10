@@ -4,7 +4,7 @@ deprecated: true
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Clojure Deployment with Immutant and WildFly on Ubuntu 14.04'
+description: 'This guide provides you with step-by-step instructions for installing and using the Clojure programming language with Immutant and WildFly on Ubuntu 14.04.'
 keywords: ["clojure", "luminus", "leiningen", "immutant", "jvm", "wildfly", "jboss", "oracle jdk 8"]
 tags: ["java", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

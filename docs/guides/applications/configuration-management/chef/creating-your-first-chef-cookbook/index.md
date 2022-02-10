@@ -3,7 +3,7 @@ slug: creating-your-first-chef-cookbook
 author:
   name: Elle Krout
   email: ekrout@linode.com
-description: 'Learn how to create Chef cookbooks by creating a LAMP stack in Chef'
+description: 'This guide provides you instructions for creating Chef cookbooks to automate tasks and automatically push changes by creating a LAMP stack in Chef.'
 keywords: ["chef", "automation", "cookbooks", "configuration management", "DevOps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/configuration-management/creating-your-first-chef-cookbook/','/applications/chef/creating-your-first-chef-cookbook/','/applications/configuration-management/chef/creating-your-first-chef-cookbook/']

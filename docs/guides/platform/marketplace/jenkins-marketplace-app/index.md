@@ -3,7 +3,7 @@ slug: jenkins-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Jenkins is an open source automation tool which can build, test, and deploy your infrastructure. Deploay a Jenkins instance using Linode''s Marketplace Apps."
+description: 'This guide shows how to install Jenkins, an open source automation tool which system administrators can use to build, test, and deploy your infrastructure.'
 keywords: ['jenkins','marketplace','pipeline','continuous delivery']
 tags: ["linode platform","automation","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configure the Postfix MTA as a basic email gateway.'
+description: 'In this tutorial, you will learn how to configure a Postfix MTA as a basic email gateway to send and receive email using POP, IMAP, and SMTP on Ubuntu 10.04 "Lucid".'
 keywords: ["email", "postfix", "mta", "forwarding"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,7 @@ slug: install-gitlab-with-docker
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How to install GitLab with Docker.'
+description: 'This guide shows how to install GitLab, the free git repository management app based on Ruby on Rails, on a Linode using the container application Docker.'
 keywords: ['gitlab', 'git', 'docker']
 tags: ["version control system","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -2,8 +2,8 @@
 slug: deep-learning-frameworks-overview
 author:
   name: Andy Patrizio
-description: 'This guide provides an overview of the most popular deep learning frameworks. Depending on your preferred programming language and system hardware capabilities, you may choose one framework over another. This guide helps you decide which framework to choose.'
-og_description: 'This guide provides an overview of the most popular deep learning frameworks. Depending on your preferred programming language and hardware capabilities, you may choose one framework over another. This guide helps you decide which framework to choose.'
+description: 'This guide provides an overview of the most popular deep learning frameworks and is meant to help you decide which machine learning framework to choose.'
+og_description: 'This guide provides an overview of the most popular deep learning frameworks and is meant to help you decide which machine learning framework to choose.'
 keywords: ['deep learning frameworks']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
