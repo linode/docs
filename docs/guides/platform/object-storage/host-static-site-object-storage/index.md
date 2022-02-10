@@ -3,7 +3,7 @@ slug: host-static-site-object-storage
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Host a Static Site using Linode's Object Storage."
+description: "This article shows you how you can host a static website from Linode's object storage by creating your site in markdown and using a static site generator."
 keywords: ['hugo','static site','object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-09

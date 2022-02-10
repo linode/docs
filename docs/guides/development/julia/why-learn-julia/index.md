@@ -3,7 +3,7 @@ slug: why-learn-julia
 author:
   name: Linode
   email: docs@linode.com
-description: Julia is a dynamically typed, functional programming language intended to match the readable syntax and ease of use of Python without sacrificing the performance of a traditional compiled language. This guide introduces the main features, benefits, and limitations of Julia and includes a brief section on installation and basic use.
+description: 'This guide introduces you to the main features, benefits, and limitations of the Julia language, and includes a brief section on installation and use.'
 keywords: ['data science','julia','python','why learn Julia']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-11

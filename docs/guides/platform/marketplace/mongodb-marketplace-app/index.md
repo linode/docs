@@ -3,7 +3,7 @@ slug: mongodb-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Deploy MongoDB on Linode using Marketplace Apps."
+description: 'This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the One-Click Marketplace App.'
 keywords: ['mongodb','marketplace', 'marketplace apps']
 tags: ["linode platform","database","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,7 @@ slug: accounts-and-passwords
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to managing accounts and passwords.
+description: 'This guide will give you some of Linode''s best tips and tricks for best practices when it comes to managing accounts and passwords on your systems.'
 keywords: ["accounts", "passwords", "Linode Cloud Manager", "manager"]
 tags: ["linode platform","security","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

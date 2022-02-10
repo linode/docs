@@ -3,7 +3,7 @@ slug: how-to-install-and-configure-drupal-8
 author:
     name: Linode
     email: docs@linode.com
-description: 'Drupal 8 is the lastest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode so you can begin developing your own websites.'
+description: 'This guide will show you how to install and configure the popular content management system, Drupal 8 on your Linode running Debian or Ubuntu..'
 keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8"]
 tags: ["drupal","apache","lamp","php","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

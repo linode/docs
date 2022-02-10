@@ -3,8 +3,8 @@ slug: how-to-set-up-multiple-wordpress-sites-with-lxd-containers
 author:
   name: Simos Xenitellis
   email: docs@linode.com
-description: 'This guide shows how to install multiple WordPress sites using LXD containers. A reverse proxy server and a MySQL database are also created within containers.'
-og_description: 'This guide shows how to install multiple WordPress sites using LXD containers. A reverse proxy server and a MySQL database are also created within containers.'
+description: 'This guide will show you how to install multiple WordPress sites using LXD containers, with a containerized reverse proxy server and a MySQL database on Linux.'
+og_description: 'This guide will show you how to install multiple WordPress sites using LXD containers, with a containerized reverse proxy server and a MySQL database on Linux.'
 keywords: ["container", "lxd", "lxc", "apache", "nginx", "reverse proxy", "virtual machine", "virtualization", "letsencrypt", "nginx", "apache2"]
 tags: ["ubuntu", "php", "wordpress", "cms", "container", "nginx", "apache", "database", "mysql", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

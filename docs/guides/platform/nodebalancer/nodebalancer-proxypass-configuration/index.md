@@ -3,7 +3,7 @@ slug: nodebalancer-proxypass-configuration
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to enable Proxy Protocol on your Linode NodeBalancer.'
+description: 'This guide shows how to enable Proxy Protocol, an internet protocol for various high availability and load balancing solutions to carry information, on your LoadBalancer.'
 og_description: 'How to enable Proxy Protocol on your Linode NodeBalancer.'
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha", "proxy protocol", "proxy"]
 tags: ["cloud manager","linode platform","networking","web applications"]

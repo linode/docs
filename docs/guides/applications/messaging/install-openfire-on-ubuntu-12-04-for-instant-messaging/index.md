@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Install Openfire on Ubuntu 12.04 for Instant Messaging.'
+description: 'This guide shows how to install the popular collaborative instant messaging app based on the XMPP protocol - Openfire - on a Linode running Ubuntu 12.04.'
 keywords: ["openfire", "ubuntu 12.04", "instant messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server", "JRE", "configure openfire"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

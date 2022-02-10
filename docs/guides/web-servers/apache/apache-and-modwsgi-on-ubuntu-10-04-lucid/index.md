@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy Python WSGI Applications with Apache and mod\_wsgi.'
+description: 'In this tutorial, you will learn how to configure and deploy Python WSGI Applications with the Apache web server and mod_wsgi on Ubuntu 10.04 "Lucid".'
 keywords: ["python", "apache", "mod\\_wsgi"]
 tags: ["web server","apache","ubuntu","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

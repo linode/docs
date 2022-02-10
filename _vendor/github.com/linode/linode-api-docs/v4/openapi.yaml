@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.114.0
+  version: 4.115.0
 
   title: Linode API
   description: |
@@ -11600,7 +11600,7 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4/networking/vlans/
+              https://api.linode.com/v4beta/networking/vlans/
       - lang: CLI
         source: >
           linode-cli networking vlans-list

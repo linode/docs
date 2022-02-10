@@ -3,8 +3,8 @@ slug: centos-wireguard-installation-and-configuration
 author:
   name: Steven J. Vaughan-Nichols
   email: sjvn01@gmail.com
-description: 'How to set up the WireGuard Virtual Private Network on CentOS 8.'
-og_description: 'How to set up the WireGuard Virtual Private Network on CentOS 8.'
+description: 'This guide provides you with step-by-step instructions on how to install and configure the WireGuard Virtual Private Network services on CentOS 8.'
+og_description: 'This guide provides you with step-by-step instructions on how to install and configure the WireGuard Virtual Private Network services on CentOS 8.'
 keywords: ['centos', 'wireguard', 'vpn']
 tags: ['wireguard', 'centos', 'vpn']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

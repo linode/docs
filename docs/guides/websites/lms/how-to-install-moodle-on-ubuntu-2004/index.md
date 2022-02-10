@@ -2,8 +2,8 @@
 slug: how-to-install-moodle-on-ubuntu-server-2004
 author:
   name: Nathaniel Stickman
-description: 'Moodle is a popular open-source learning management system that you can use to create a fully-featured website for education or training courses. This guide walks you through installing Moodle on Ubuntu server 20.04.'
-og_description: 'Moodle is a popular open-source learning management system that you can use to create a fully-featured website for education or training courses. This guide walks you through installing Moodle on Ubuntu server 20.04.'
+description: 'This guide will show you how to install Moodle, a popular open-source learning management system used in online teaching, on Ubuntu 20.04.'
+og_description: 'This guide will show you how to install Moodle, a popular open-source learning management system, on Ubuntu 20.04.'
 keywords: ['moodle','education','training','learning management system','lms','install on ubuntu 20.04']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,7 @@ slug: netcat
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'An introduction to netcat.'
+description: 'This guide provides an introduction to Netcat, a simple UNIX utility that reads and writes data across connections, using either the TCP or UDP protocols.'
 keywords: ["UNIX", "TCP", "UDP", "netcat", "nc", "network"]
 tags: ["linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

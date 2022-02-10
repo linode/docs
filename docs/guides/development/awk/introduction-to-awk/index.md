@@ -3,7 +3,7 @@ slug: introduction-to-awk
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'Learn some basics of the AWK programming language.'
+description: 'This guide provides you with an introduction to the Turing-complete pattern matching programming language, AWK, which is great for data reporting and more.'
 keywords: ["UNIX", "shell", "AWK"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-30
