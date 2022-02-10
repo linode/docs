@@ -3,7 +3,7 @@ slug: mitigating-memcached-amplification-attacks
 author:
   name: Linode
   email: docs@linode.com
-description: 'A vulnerability in memcached is resulting in significant increase in large-scale UDP reflection and amplification attacks across the internet. Memcached should not be exposed to the internet, and there are a few basic steps you can take to secure your memcacehd instance.'
+description: "This guide shows you how to secure your memcached instance so it's not exploited in any large-scale UDP reflection and amplification attacks across the internet."
 keywords: ["memcached","deluge","amplification","memcrashed","denial","DoS","DDoS"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-03-02

@@ -2,8 +2,8 @@
 slug: kubernetes-cron-job
 author:
   name: Martin Heller
-description: 'A Kubernetes CronJob helps you schedule and automate tasks on your clusters. The syntax for a Kubernetes CronJob is similar to the Linux utility, cron. This guide shows you how to use a Kubernetes CronJob to back up a MySQL database.'
-og_description:  'A Kubernetes CronJob helps you schedule and automate tasks on your clusters. The syntax for a Kubernetes CronJob is similar to the Linux utility, cron. This guide shows you how to use a Kubernetes CronJob to back up a MySQL database.'
+description: 'This guide shows you how to create a Kubernetes CronJob, which you can use to automate and schedule various types of tasks on your Kubernetes clusters.'
+og_description:  'This guide shows you how to create a Kubernetes CronJob, which you can use to automate and schedule various types of tasks on your Kubernetes clusters.'
 keywords: ['kubernetes cron job']
 tags: ['kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

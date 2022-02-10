@@ -313,6 +313,8 @@ github.com/linode/linode-api-docs/v4 v4.113.0 h1:xPzwDKJPbKXCkOwABZR4qltR41WrW5U
 github.com/linode/linode-api-docs/v4 v4.113.0/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
 github.com/linode/linode-api-docs/v4 v4.114.0 h1:Pb5BKWBbYOIWsEe8n7+0QiF3uGQNUBkzM0eXSGojhqs=
 github.com/linode/linode-api-docs/v4 v4.114.0/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
+github.com/linode/linode-api-docs/v4 v4.115.0 h1:q5HpiXUb1ta7I2ubDd0lYx8k1wBKHmWNOvzzx9ccem8=
+github.com/linode/linode-api-docs/v4 v4.115.0/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
 github.com/linode/linode-docs-theme v0.0.0-20210215111207-9617106a3e7d h1:feu3jWgITW5YvplVgqsKG3oXq9AUREWzKQC5jB43C/Y=
 github.com/linode/linode-docs-theme v0.0.0-20210215111207-9617106a3e7d/go.mod h1:2x/UxSy9ZlNdGFzD0USCZu2AWzjIZv/iYK06Du+bFqI=
 github.com/linode/linode-docs-theme v0.0.0-20210225102921-7c8a91c6347c h1:vCPkHOsB6KkX6733p3qsqtKYYc46SGglIhgEy9pJgSY=
@@ -381,6 +383,8 @@ github.com/linode/linode-docs-theme v0.0.0-20220121193116-cbe32d7e05c5 h1:FI0kIr
 github.com/linode/linode-docs-theme v0.0.0-20220121193116-cbe32d7e05c5/go.mod h1:blaZ2NNIdkw/GjbRXjomplzwopbO5djW3ZBnH0RWN0M=
 github.com/linode/linode-docs-theme v0.0.0-20220203195554-f9006fd223fc h1:55H7gAQijW19NDBBO+pFcIATQdcOYgDSgiW2N/YUXeI=
 github.com/linode/linode-docs-theme v0.0.0-20220203195554-f9006fd223fc/go.mod h1:XF88tkeoNk53KP6whJS8uWcaIuOWeQpr9MhQesXoSIM=
+github.com/linode/linode-docs-theme v0.0.0-20220207150430-651c7a733ab7 h1:7k4kueboUrmtGvYB6JphMN+fr/kvLj0+uJUpi7Nr4Mw=
+github.com/linode/linode-docs-theme v0.0.0-20220207150430-651c7a733ab7/go.mod h1:XF88tkeoNk53KP6whJS8uWcaIuOWeQpr9MhQesXoSIM=
 github.com/linode/linode-website-partials v0.0.0-20200907163220-d3856e759e21/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/linode/linode-website-partials v0.0.0-20200921210751-887bbecdd5dd/go.mod h1:e68x+kyP45JvsnatClDG16z9uAQ/Fg8gBDwpI6KMNI0=
 github.com/linode/linode-website-partials v0.0.0-20201001182036-fe8965a45b3c h1:j2j0WYHnoSEsGg7790A+gNQqKYIXGTi/i1FHTwt9zBM=

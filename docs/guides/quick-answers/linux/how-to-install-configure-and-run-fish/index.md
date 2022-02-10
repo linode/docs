@@ -3,7 +3,7 @@ slug: how-to-install-configure-and-run-fish
 author:
   name: Angel Guarisma
   email: docs@linode.com
-description: 'This guide will walk you through the basics of Fish'
+description: 'This article gives you step-by-step instructions for installing and configuring Fish, the Friendly Interactive Shell, a replacement shell interface.'
 keywords: ["fish", "fish shell", "fish scripting", "bash", "command line shell", "The Friendly Interactive Shell"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-07-18

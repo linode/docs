@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use Confluence on CentOS 5 to power a full-featured wiki system.'
+description: 'This guide provides you with step-by-step instructions for installing and using Confluence on CentOS 5 to power a fully-featured Wiki for your organization.'
 keywords: ["confluence centos 5", "confluence", "confluence wiki", "confluence linux"]
 tags: ["wiki","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

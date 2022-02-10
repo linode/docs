@@ -2,8 +2,8 @@
 slug: python-testing-frameworks-for-software-unit-testing
 author:
   name: John Mueller
-description: 'This guide provides an overview of popular Python testing frameworks for used to unit test software. The three tools covered in this guide are doctest, pytest, and unittest.'
-og_description: 'This guide provides an overview of popular Python testing frameworks for used to unit test software. The three tools covered in this guide are doctest, pytest, and unittest.'
+description: 'This guide provides you with an overview of popular Python testing frameworks used to test software, including overviews of doctest, pytest, and unittest.'
+og_description: 'This guide provides you with an overview of popular Python testing frameworks used to test software, including overviews of doctest, pytest, and unittest.'
 keywords: ['python testing frameworks']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

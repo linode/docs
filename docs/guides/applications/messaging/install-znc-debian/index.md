@@ -3,7 +3,7 @@ slug: install-znc-debian
 author:
     name: Alex Fornuto
     email: docs@linode.com
-description: 'Install the ZNC bouncer on Debian to retain an IRC connection.'
+description: 'This guide shows how to install the open-source application ZNC, a IRC bouncer designed to run on a server that remains connected to IRC, on a Linode.'
 keywords: ["install znc", "irc bouncer", "znc on debian", "configure znc", "znc"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

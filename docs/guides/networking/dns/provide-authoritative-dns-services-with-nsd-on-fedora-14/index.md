@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'This guide shows how you can install and configure NSD, a lightweight name server daemon and alternative to BIND, to provide authoritative DNS on Fedora 14.'
+description: 'This guide will show you to install and configure NSD, a lightweight and open-source name server to handle authoritative DNS queries on Fedora 14.'
 keywords: ["NSD", "DNS", "resolving", "Fedora 14", "networking"]
 tags: ["dns","networking","fedora","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

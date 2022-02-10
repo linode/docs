@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows you how to use logwatch, a Linux utility used to monitor system logs and create reports for critical and non-critical events on Ubuntu 10.10 "Maverick".'
+description: 'This guide will show you how to use the logwatch utility to monitor system logs, generate reports, and monitor failed login attempts, and more on Ubuntu 10.10 "Maverick".'
 keywords: ["logwatch", "security", "logging", "audit"]
 tags: ["monitoring","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

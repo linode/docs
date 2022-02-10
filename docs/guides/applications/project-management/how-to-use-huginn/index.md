@@ -3,8 +3,8 @@ slug: monitor-your-website-changes-with-huginn-agents
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Huginn is a self-hosted and open-source option for automating online tasks. In this guide, you learn how to install your own Huginn instance and how to start using its agents for your own tasks."
-og_description: "Huginn is a self-hosted and open-source option for automating online tasks. In this guide, you learn how to install your own Huginn instance and how to start using its agents for your own tasks."
+description: "This guide shows how to install and configure Huginn, a self-hosted and open-source application for automating online tasks similar to IFTTT, on a Linode."
+og_description: "This guide shows how to install and configure Huginn, a self-hosted and open-source application for automating online tasks similar to IFTTT, on a Linode."
 keywords: ['huginn website agent']
 tags: ['ubuntu', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
