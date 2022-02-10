@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Stan Schwertly
   email: docs@linode.com
-description: 'This is the table of contents page for Linode's guides on how to install and configure Nagios, a web application that monitors apps, servers, and websites.'
+description: "This is the table of contents page for Linode's guides on how to install and configure Nagios, a web application that monitors apps, servers, and websites."
 keywords: ["nagios", "server monitoring", "nagios linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/server-monitoring/nagios/','/uptime/monitoring/nagios-server-monitoring/']
