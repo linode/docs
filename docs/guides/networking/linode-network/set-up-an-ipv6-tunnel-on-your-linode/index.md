@@ -3,7 +3,7 @@ slug: set-up-an-ipv6-tunnel-on-your-linode
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to set up an IPv6 tunnel on your Linode.'
+description: 'This guide provides you with instructions on how to setup an IPv6 tunnel to connect your system to a network running on IPv4 and pass traffic from one to another.'
 keywords: ["ipv6", "tunnel", "broker", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/set-up-an-ipv6-tunnel-on-your-linode/','/networking/ipv6-tunnels/','/networking/linode-network/set-up-an-ipv6-tunnel-on-your-linode/']

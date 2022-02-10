@@ -3,7 +3,7 @@ slug: upgrade-to-ubuntu-16-04
 author:
   name: Alex Fornuto
   email: docs@linode.com
-description: 'Our guide to upgrading to Ubuntu 16.04 LTS'
+description: 'This guide provides you with step-by-step instructions on how to upgrade your Linux system to the latest LTS (Long Term Support) version of Ubuntu - 16.04 LTS.'
 keywords: ["upgrading", "ubuntu", "16.04"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

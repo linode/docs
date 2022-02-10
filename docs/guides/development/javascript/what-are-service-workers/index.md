@@ -3,8 +3,8 @@ slug: what-are-javascript-service-workers
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Service workers help you craft your web application's offline experience and also handle tasks like push notifications and background sync. This guide gives you an introduction to what JavaScript service workers are capable of and how to build an example service worker."
-og_description:  "Service workers help you craft your web application's offline experience and also handle tasks like push notifications and background sync. This guide gives you an introduction to what JavaScript service workers are capable of and how to build an example service worker."
+description: "This guide provides you with an introduction to Javascript Service Workers and what they are capable of, as well as how to build an example service worker. "
+og_description:  "This guide provides you with an introduction to Javascript Service Workers and what they are capable of, as well as how to build an example service worker. "
 keywords: ['javascript service workers', 'service worker example']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

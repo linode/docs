@@ -3,7 +3,7 @@ slug: proxy-burp-suite-traffic-through-a-linode
 author:
   name: Linode
   email: docs@linode.com
-description: 'A quick answer on how to proxy Burp Suite traffic through a Linode.'
+description: 'This guide provides an overview of how to proxy traffic from Burp Suite, a popular open-source web vulnerability scanning and security tool, through a Linode.'
 keywords: ["burp suite", "burp", "proxy"]
 tags: ["linode platform","cloud manager","proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

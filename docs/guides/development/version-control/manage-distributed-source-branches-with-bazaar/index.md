@@ -3,7 +3,7 @@ slug: manage-distributed-source-branches-with-bazaar
 author:
   name: Linode
   email: docs@linode.com
-description: 'Using the Bazaar version management system.'
+description: 'This guide shows how you can use the Bazaar version management system to track progress of source code and collaborate on files without the need for a central server.'
 keywords: ["bzr", "bazaar", "vcs", "scm", "dcvs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/development/version-control/manage-distributed-source-branches-with-bazaar/','/applications/development/manage-distributed-source-branches-with-bazaar/','/linux-tools/version-control/bazaar/']

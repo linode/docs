@@ -3,7 +3,7 @@ slug: linode-writers-formatting-guide
 author:
   name: Linode
   email: docs@linode.com
-description: 'The Linode Guides & Tutorials style guide for article submissions'
+description: 'This guide provides formatting and style guidelines for documentation and articles submitted to Linode from outside contributors via our Write for Linode program.'
 keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']

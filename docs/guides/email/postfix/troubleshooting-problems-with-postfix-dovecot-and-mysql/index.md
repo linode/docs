@@ -3,7 +3,7 @@ slug: troubleshooting-problems-with-postfix-dovecot-and-mysql
 author:
   name: Linode
   email: docs@linode.com
-description: 'Our guide to testing and troubleshooting Postfix, Dovecot, and MySQL'
+description: 'This is a reference guide for testing and troubleshooting a email server running Postfix as it''s MTA, Dovecot as a POP3/IMAP server, and MySQL for database.'
 keywords: ["postfix", "dovecot", "mysql"]
 tags: ["mysql","postfix","email","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

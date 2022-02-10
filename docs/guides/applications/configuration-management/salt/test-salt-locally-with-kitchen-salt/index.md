@@ -3,7 +3,7 @@ slug: test-salt-locally-with-kitchen-salt
 author:
   name: Linode
   email: docs@linode.com
-description: 'Test Salt states locally with Kitchen and kitchen-salt.'
+description: 'This guide provides you with instructions for testing Salt states locally with Kitchen and kitchen-salt, utilities that let you test without a salt master or minions.'
 keywords: ['saltstack','salt','kitchen','kitchen-salt','kitchensalt','salt solo','saltsolo']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-10-15

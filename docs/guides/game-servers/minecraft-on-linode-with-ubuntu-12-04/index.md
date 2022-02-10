@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'A basic Minecraft server installation for Ubuntu 12.04'
+description: 'This guide shows how you can install and configure Minecraft, a online game where everything is built from mineable blocks, on a Linode running Ubuntu 12.04.'
 keywords: ["minecraft", "ubuntu", "ubuntu precise", "12.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

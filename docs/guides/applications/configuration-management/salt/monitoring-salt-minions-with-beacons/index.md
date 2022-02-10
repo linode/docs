@@ -3,7 +3,7 @@ slug: monitoring-salt-minions-with-beacons
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to monitor Salt minions with beacons.'
+description: 'This guide shows how to monitor Salt minions with beacons. Set up alerts for different system resources to notify you over a messaging service like Slack.'
 keywords: ['salt','saltstack','minion','minions','beacon','beacons','reactor','reactors','monitor','configuration drift','slack']
 tags: ["monitoring","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
