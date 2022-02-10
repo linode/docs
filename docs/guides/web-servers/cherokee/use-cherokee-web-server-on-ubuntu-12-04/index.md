@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use Cherokee Web Server on Ubuntu 12.04.'
+description: 'Cherokee Web Server is a fast and flexible web server for Linux. This guide provides you with step-by-step instructions for installing the app on Ubuntu 12.04.'
 keywords: ["cherokee", "web sever", "ubuntu 12.04", "posix", "precise pangolin", "ssh", "ssh tunnel", "cherokee admin", "PuTTY"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'

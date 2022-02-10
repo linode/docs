@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: How to install and connect to a desktop environment on your Linode
+description: 'This guide shows how to install and connect to a remote GUI-based desktop environment using Remmina VNC Client on a Linode running Ubuntu 12.04.'
 keywords: ["vnc", "remote desktop", "ubuntu", "12.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

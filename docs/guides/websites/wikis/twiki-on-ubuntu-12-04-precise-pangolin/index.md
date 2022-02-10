@@ -3,7 +3,7 @@ slug: twiki-on-ubuntu-12-04-precise-pangolin
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will show you how to install and configure a structured wiki to share and store information with TWiki on Ubuntu 12.04 "Precise Pangolin".'
+description: 'Twiki is a robust wiki compared to other apps such as Confluence. This guide provides you with instructions for installing Twiki on Ubuntu 12.04 "Precise Pangolin".'
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

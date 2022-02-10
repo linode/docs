@@ -3,7 +3,7 @@ slug: vagrant-linode-environments
 author:
     name: Elle Krout
     email: ekrout@linode.com
-description: 'Use Vagrant to manage development environments and content on Linode.'
+description: 'This guide shows how to use Vagrant, a configuration management tool, to manage development environments and content on your Linode with the Linode API.'
 keywords: ["linode", "vagrant", "content management", "management", "automation", "development", "ruby", "vagrantfile", "api", "apache"]
 tags: ["cms","automation","ruby","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

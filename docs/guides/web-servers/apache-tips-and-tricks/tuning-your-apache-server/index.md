@@ -3,7 +3,7 @@ slug: tuning-your-apache-server
 author:
   name: Elle Krout
   email: ekrout@linode.com
-description: Tuning your Apache server to optimize your website.
+description: 'This guide provides you with information on tuning the performance and configuration of your Apache web server to optimize the load times of your website.'
 keywords: ["configuration", "apache", "web server", "resource tuning"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/apache-tips-and-tricks/tuning-your-apache-server/','/web-servers/apache-tips-and-tricks/tuning-your-apache-server/']

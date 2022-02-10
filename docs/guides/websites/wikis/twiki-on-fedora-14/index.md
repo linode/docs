@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will show you how to install and configure a structured wiki to share, store, and work with different types of information with TWiki on Fedora 14.'
+description: 'Twiki is a robust structured wiki compared to other solutions such as Confluence. This guide provides you with instructions for installing Twiki on Fedora 14.'
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

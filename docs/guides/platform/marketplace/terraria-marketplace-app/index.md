@@ -3,7 +3,7 @@ slug: terraria-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Deploy a Terraria server on Linode using Marketplace Apps."
+description: 'This guide provides you with step-by-step instructions for deploying the two-dimensional sandbox survival game, Terraria, on a Linode using the One-Click Marketplace App.'
 keywords: ['terraria','marketplace app', 'game server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-05
