@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Dave Messina
   email: docs@linode.com
-description: 'This guide shows how to install and configure the lighttpd web server on Ubuntu 12.04 ''Precise'' so you can host multiple websites and applications on your server.'
+description: 'This guide will show you how to install and configure lighttpd to host multiple websites or web-based applications on a Linode running Ubuntu 12.04 "Precise Pangolin".'
 keywords: ["lighttpd", "web server", "web hosting"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

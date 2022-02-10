@@ -3,7 +3,7 @@ slug: linode-managed
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide provides you with information on Linode Managed, a 24x7 incident response service that uses monitoring checks to keep an eye on your servers.'
+description: 'This guide provides you with an overview of the Linode Managed service, which is a 24x7 incident response service that monitors services on your Linode(s).'
 keywords: ["linode managed", "service monitoring"]
 tags: ["linode platform","cloud manager","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

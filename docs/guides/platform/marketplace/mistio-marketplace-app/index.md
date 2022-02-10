@@ -3,7 +3,7 @@ slug: mistio-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
-description: "Deploy a Mist.io Server on Linode using Marketplace Apps."
+description: 'This guide shows how you can deploy Mist.io, an open-source, multi-cloud management platform, on a Linode using the ONe-Click Marketplace Apps installer.'
 keywords: [ 'mist.io', 'marketplace', 'server']
 tags: ["cloud-manager", "linode platform", "marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
