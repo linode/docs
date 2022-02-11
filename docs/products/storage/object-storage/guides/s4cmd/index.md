@@ -10,19 +10,13 @@ The [s4cmd](https://github.com/bloomreach/s4cmd) software is a command-line tool
 
 ## Installing s4cmd
 
-The following commands will install s4cmd on various common operating systems. Additional methods of installing s4cmd can be found within the s4cmd Readme file under [Installation and Setup](https://github.com/bloomreach/s4cmd#installation-and-setup).
+To install S3cmd on both Mac and Linux systems, Python’s package manager [pip](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/) can be used.
 
-### Mac
+    sudo pip install s4cmd
 
-To install s4cmd on a Mac, python's package manager (`pip` or `pip3`) can be used.
+Some Linux distributions are also able to install s4cmd from their own package managers, but those versions may not be as up to date. See [Download S3cmd](https://s3tools.org/download) for more information.
 
-    pip3 install s4cmd
-
-### Debian and Ubuntu
-
-The APT package manager can be used to install s4cmd on Debian or Ubuntu Linux distributions.
-
-    sudo apt install s4cmd
+Additional methods of installing s4cmd can be found within the s4cmd Readme file under [Installation and Setup](https://github.com/bloomreach/s4cmd#installation-and-setup).
 
 ## Configuring Credentials
 
