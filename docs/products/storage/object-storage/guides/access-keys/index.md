@@ -26,7 +26,7 @@ When an access key is generated, a corresponding *secret key* is also created. T
 
 ![Viewing a list of access keys in the Cloud Manager](access-keys-list.png)
 
-This page dispalys a list of all access keys added to your Object Storage account. From here, you can create a new access key, edit the labels on the existing keys, view the permissions, or revoke access (which deletes the access key).
+This page displays a list of all access keys added to your Object Storage account. From here, you can create a new access key, edit the labels on the existing keys, view the permissions, or revoke access (which deletes the access key).
 
 ## Create an Access Key
 

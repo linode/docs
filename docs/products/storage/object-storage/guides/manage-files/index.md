@@ -31,7 +31,7 @@ Follow these steps to upload objects to a bucket using the Cloud Manager:
 
 1. Files can be uploaded through either the dragging and dropping them into the file upload pane or by browsing for the files.
 
-    - **Drag and drop:** Select any files or folders you wish to upload (either on your deskop or within your own file explorer / finder window). Drag those files into the file upload pane on your web browser, as shown below:
+    - **Drag and drop:** Select any files or folders you wish to upload (either on your desktop or within your own file explorer / finder window). Drag those files into the file upload pane on your web browser, as shown below:
 
         ![](object-upload-pane-drop.png)
 

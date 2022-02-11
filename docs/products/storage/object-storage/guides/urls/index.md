@@ -16,7 +16,7 @@ tags: ["linode platform"]
 aliases: ['/platform/object-storage/how-to-access-objects-with-linode-object-storage/','/guides/how-to-access-objects-with-linode-object-storage/','/products/storage/object-storage/guides/access-objects/']
 ---
 
-Linode's Object Storage service gives each bucket and file a unique URL. This URL is managed throug the shared domain *\*.linodeobjects.com* and your files are encrypted through the use of HTTPS. By default, files are only visible by you (the owner) through the Cloud Manager or through other tools and applications using an access key with permissions to read (or read/write) the bucket.
+Linode's Object Storage service gives each bucket and file a unique URL. This URL is managed through the shared domain *\*.linodeobjects.com* and your files are encrypted through the use of HTTPS. By default, files are only visible by you (the owner) through the Cloud Manager or through other tools and applications using an access key with permissions to read (or read/write) the bucket.
 
 You're also able to make these files accessible to anyone through their URLs by setting up ACLs so the files are public. This makes Object Storage great for sharing and storing unstructured data like images, documents, archives, streaming media assets, and file backups, and the amount of data you store can range from small collections of files up to massive libraries of information.
 
@@ -96,7 +96,7 @@ You can build this URL manually or you can view the file URL through the Cloud M
 
 ## Signed URLs
 
-A **signed URL** gives anyone with the URL access to a file for a certain period of time. This is very useful when you want to share a document or file with someone, but don't wish to make the permenantly accessible or able to be guessed by others. You can generate a signed URL through the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/#create-a-signed-url-with-the-cli) or [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/#create-a-signed-url-with-s3cmd).
+A **signed URL** gives anyone with the URL access to a file for a certain period of time. This is very useful when you want to share a document or file with someone, but don't wish to make the permanently accessible or able to be guessed by others. You can generate a signed URL through the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/#create-a-signed-url-with-the-cli) or [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/#create-a-signed-url-with-s3cmd).
 
 Here's an example of a signed URL:
 

@@ -48,7 +48,7 @@ Once your DNS has been configured, create (or purchase) a TLS/SSL certificate th
     - [Windows](https://certbot.eff.org/instructions?ws=other&os=windows)
     - Any compatible Linux system listed on the [certbot instructions](https://certbot.eff.org/instructions) page within the **System** dropdown.
 
-1.  Run the following certbot command to generate a certficate manually:
+1.  Run the following certbot command to generate a certificate manually:
 
         sudo certbot certonly --manual
 
@@ -74,7 +74,7 @@ To upload your new SSL certificate to an Object Storage Bucket:
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Object Storage** from the left menu.
 
-1.  Open the bucket you wish to use and navigate to the **SSL/TLS** tab. This opens the *SSL/TLS Certicate* page.
+1.  Open the bucket you wish to use and navigate to the **SSL/TLS** tab. This opens the *SSL/TLS Certificate* page.
 
     ![](custom-domain-certificate-upload.png)
 

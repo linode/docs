@@ -51,7 +51,7 @@ You are now ready to [upload files to the bucket](/docs/products/storage/object-
 Follow these steps to delete an Object Storage bucket from the Cloud Manager. You can also use the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/), [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/#delete-a-bucket), and [s4cmd](/docs/products/storage/object-storage/guides/s4cmd/#delete-a-bucket).
 
 {{<caution>}}
-All files (objects) stored within the deleted bucket are permenately deleted and cannot be recovered. Be sure you have backed up any important files before continuing.
+All files (objects) stored within the deleted bucket are permanently deleted and cannot be recovered. Be sure you have backed up any important files before continuing.
 {{</caution>}}
 
 1.  Navigate to the **Object Storage** page in the Cloud Manager (see [View Buckets](#view-buckets)).
