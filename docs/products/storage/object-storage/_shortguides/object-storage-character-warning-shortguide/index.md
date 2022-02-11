@@ -6,5 +6,5 @@ show_on_rss_feed: false
 ---
 
 {{<note>}}
-Uploading or renaming objects using non-standard special characters and unusual ASCII/Unicode characters may cause issues. For example, filenames cannot contain the following characters: `" ' < > & + =`
+Uploading or renaming objects using non-standard special characters and unusual ASCII/Unicode characters may cause issues. This includes the characters: `: " ' < > & + =`.
 {{</note>}}
