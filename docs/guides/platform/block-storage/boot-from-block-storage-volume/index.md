@@ -3,7 +3,7 @@ slug: boot-from-block-storage-volume
 author:
   name: Linode
   email: docs@linode.com
-description: "This guide shows how to boot a Linode from a Block Storage Volume."
+description: "This guide provides you with instructions for booting a Linode from a Block Storage Volume for use in an emergency or disaster recovery situation."
 og_description: "This guide shows how to boot a Linode from a Block Storage Volume."
 keywords: ["block storage","volume","media","storage","disk", "boot", "boot disk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

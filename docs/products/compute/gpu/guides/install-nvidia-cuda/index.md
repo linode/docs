@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 title: "Installing the NVIDIA CUDA Toolkit"
-description: "Learn how to deploy a GPU Compute Instance on Linode and install the NVIDIA CUDA Toolkit so you can run your workloads."
+description: "This guide provides step-by-step instructions for installing the NVIDIA CUDA Toolkit and drivers on a GPU Compute Instance at Linode for your workloads."
 published: 2022-01-21
 modified: 2022-01-21
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'

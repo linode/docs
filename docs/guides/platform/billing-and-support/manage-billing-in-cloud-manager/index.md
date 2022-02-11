@@ -3,7 +3,7 @@ slug: manage-billing-in-cloud-manager
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to managing your bill in Cloud Manager.
+description: "This is Linode's guide to managing your billing in Cloud Manager so you can do things like update your credit card information, change payment methods, and more."
 keywords: ["billing", "payments","cancel account"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

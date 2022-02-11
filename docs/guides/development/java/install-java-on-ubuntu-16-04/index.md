@@ -3,7 +3,7 @@ slug: install-java-on-ubuntu-16-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Install the Oracle Java development kit'
+description: 'This guide shows how to install the OpenJDK 8 runtime environment to support Java app execution and development on a Linode running Ubuntu version 16.04.'
 keywords: ["oracle", "java", "JDK", "install java", "ubuntu"]
 tags: ["java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

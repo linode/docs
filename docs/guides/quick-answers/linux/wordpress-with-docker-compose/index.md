@@ -5,8 +5,8 @@ author:
   email: nmelehan@linode.com
 keywords: ["Docker", "Docker Compose", "WordPress"]
 tags: ["wordpress","docker","linux"]
-description: This guide explains how to set up WordPress with Docker Compose.
-og_description: This guide explains how to set up WordPress with Docker Compose.
+description: 'This guide shows how to use Docker and Docker Compose to host a WordPress website using a LAMP stack configured in Docker and linked with Compose.'
+og_description: 'This guide shows how to use Docker and Docker Compose to host a WordPress website using a LAMP stack configured in Docker and linked with Compose.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-05-29
 modified: 2018-05-29

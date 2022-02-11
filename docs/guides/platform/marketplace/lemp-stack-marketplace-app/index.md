@@ -3,7 +3,7 @@ slug: lemp-stack-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Use Marketplace Apps to deploy a LEMP stack on Linode"
+description: "This guide shows you how to use the Linode Marketplace One-Click App to deploy a LEMP (Linux, NGINX, MySQL, PHP) server stack on a Linode running Debian 9."
 keywords: ['LEMP', 'nginx', 'web server', 'mysql', 'php']
 tags: ["lemp","nginx","cloud-manager","linode platform","php","mysql","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

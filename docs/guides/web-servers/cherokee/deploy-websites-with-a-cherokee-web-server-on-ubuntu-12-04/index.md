@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy a Cherokee web server on Ubuntu 12.04 LTS (Precise Pangolin).'
+description: 'This guide provides you with step-by-step instructions for deploying a Cherokee, a flexible web server that is easy to administer, on Ubuntu 12.04.'
 keywords: ["cherokee", "web sever", "ubuntu 12.04", "precise pangolin", "cherokee-admin"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

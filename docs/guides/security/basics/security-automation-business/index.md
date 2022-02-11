@@ -2,8 +2,8 @@
 slug: security-automation-business
 author:
   name: David Strom
-description: 'Security automation is crucial in order to keep up with the pace of software development today. The earlier in your software development life cycle that you test your code for security vulnerabilities, the more likely you are able to avoid security breaches. This guide discusses the security needs of today''s sofware and DevOps landscape and provides resources to help you learn more about security automation.'
-og_description:  'Security automation is crucial in order to keep up with the pace of software development today. The earlier in your software development life cycle that you test your code for security vulnerabilities, the more likely you are able to avoid security breaches. This guide discusses the security needs of today''s sofware and DevOps landscape and provides resources to help you learn more about security automation.'
+description: 'This guide discusses the security needs of today''s software and DevOps landscape and provides resources to help you learn more about security automation.'
+og_description:  'This guide discusses the security needs of today''s software and DevOps landscape and provides resources to help you learn more about security automation.'
 keywords: ['security automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-21

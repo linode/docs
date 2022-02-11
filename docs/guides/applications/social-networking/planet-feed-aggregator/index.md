@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'The Planet feed aggregator provides an overview of a community by collecting all feeds produced by a community.'
+description: 'This guide shows how to use The Planet feed aggregator provides an overview of communities by collecting all of the feeds produced by a community.'
 keywords: ["social networking", "planet"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/planet/','/applications/social-networking/planet-feed-aggregator/']

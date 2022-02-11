@@ -3,7 +3,7 @@ slug: how-linode-billing-works
 author:
   name: Linode
   email: docs@linode.com
-description: "Learn how billing works at Linode, what payment methods are accepted, and other important billing related information."
+description: "In this guide, you will learn how billing works at Linode, what payment methods are accepted, and other important billing related information."
 keywords: ["billing", "payments"]
 aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

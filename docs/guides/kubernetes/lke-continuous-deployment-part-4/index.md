@@ -3,7 +3,7 @@ slug: lke-continuous-deployment-part-4
 author:
   name: Linode Community
   email: docs@linode.com
-description: "In this introductory guide to Kubernetes, learn how to deploy a simple application and about each of the components that are involved."
+description: "In part four of our series on Kubernetes, you will learn how to deploy a simple application and discover how each of the components that are involved work together."
 title: "Continuous Deployment Using LKE: Kubernetes Review"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 4): Kubernetes Review"
 enable_h1: true

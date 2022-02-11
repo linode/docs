@@ -3,7 +3,7 @@ slug: download-backups-locally
 author:
   name: Edward Angert
   email: docs@linode.com
-description: "Learn how to download a local copy of your Linode backups."
+description: "This guide provides you with step-by-step instructions for downloading backup images of your Linodes by using the Backup feature in Cloud Manager."
 keywords: ["backup", "backups", "rsync", "restore", "local"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-01-15

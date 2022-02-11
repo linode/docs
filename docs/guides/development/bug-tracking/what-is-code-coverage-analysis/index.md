@@ -3,8 +3,8 @@ slug: what-is-code-coverage-analysis
 author:
   name: Martin Heller
   email: martin.heller@gmail.com
-description: 'Code coverage analysis helps expose untested code and provides a metric that your QA team can use to improve their processes. Code coverage analysis helps your team delivery a more robust product with less unexpected bugs. '
-og_description: 'Code coverage analysis helps expose untested code and provides a metric that your QA team can use to improve their processes. Code coverage analysis helps your team delivery a more robust product with less unexpected bugs. '
+description: 'This guide provides you with an overview of code coverage analysis, a method of exposing untested code which provides a metric that your QA team can use to improve.'
+og_description: 'This guide provides you with an overview of code coverage analysis, a method of exposing untested code which provides a metric that your QA team can use to improve.'
 keywords: ['code coverage analysis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-15

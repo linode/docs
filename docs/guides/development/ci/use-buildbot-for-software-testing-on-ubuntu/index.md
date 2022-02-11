@@ -3,7 +3,7 @@ slug: use-buildbot-for-software-testing-on-ubuntu
 author:
   name: Tyler Langlois
   email: ty@tjll.net
-description: "This tutorial will explain how to install, configure, and use Buildbot as a continuous integration platform, as well as how to write configuration for custom testing builds."
+description: "This shows how to install, configure, and use Buildbot as a continuous integration platform, as well as how to write configuration for custom testing builds."
 og_description: "Deploy self-hosted continuous integration using Buildbot."
 keywords: ["buildbot", "testing", "python", "continuous integration", "ci", "build", "qa"]
 tags: ["automation","nginx"]
