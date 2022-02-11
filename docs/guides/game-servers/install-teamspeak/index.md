@@ -24,9 +24,11 @@ This guide will show you how to install a TeamSpeak Server on your Linode. TeamS
 
 ## Before You Begin
 
-* We suggest following the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
+* Familiarize yourself with our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
 
 * Install the [TeamSpeak](http://www.teamspeak.com/) client on your local computer.
+  {{< note >}} If you are using macOS Big Sur version 11 or later download the Teamspeak client [beta](http://files.teamspeak-services.com/pre_releases/client/3.5.7-beta.1/)
+{{< /note >}}
 
 * While Teamspeak should run on any Linux distribution, the instructions provided here are tested on Ubuntu / Debian.
 
@@ -67,15 +69,15 @@ This guide will show you how to install a TeamSpeak Server on your Linode. TeamS
 
 ## Running TeamSpeak
 
-Once TeamSpeak is downloaded, you're ready to start the server. TeamSpeak comes pre-compiled so no configuration or building is required.
+After TeamSpeak is downloaded, you're ready to start the server. TeamSpeak comes pre-compiled so no configuration or building is required.
 
 1.  Change to the newly-extracted directory
 
         cd teamspeak3-server_linux-amd64
 
-2.  Run the server startup script
+2.  Run the server startup script and accept the license agreement
 
-        ./ts3server_startscript.sh start
+        ./ts3server_startscript.sh start "license_accepted=1"
 
 3.  Make note of the login name, password, and token that are printed the first time the server is started. You'll need them when you connect the first time:
 
