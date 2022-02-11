@@ -3,7 +3,7 @@ slug: plesk-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Deploy Plesk on Linode using Marketplace Apps."
+description: "This guide shows how to install and configure Plesk using the Linode One-Click Marketplace Apps. Plesk is a leading WordPress and website management control panel."
 keywords: ['plesk','marketplace', 'cms']
 tags: ["linode platform","cms","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

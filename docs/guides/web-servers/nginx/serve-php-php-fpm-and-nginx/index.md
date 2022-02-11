@@ -3,7 +3,7 @@ slug: serve-php-php-fpm-and-nginx
 author:
   name: Linode
   email: docs@linode.com
-description: "Proxy PHP requests with NGINX and FastCGI using PHP-FPM."
+description: "This guide provides you with information on how to proxy PHP requests with the NGINX web server and FastCGI by using PHP-FPM (Fast Process Manager)."
 keywords: ["php", "php-fpm", "fastcgi"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

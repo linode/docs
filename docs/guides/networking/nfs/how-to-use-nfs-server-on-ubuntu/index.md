@@ -2,8 +2,8 @@
 slug: using-an-nfs-server-on-ubuntu2004
 author:
   name: Jeff Novotny
-description: 'Network File System (NFS) is a distributed file system that allows users to access files over a network as they would do on the local files. This guide provides a brief introduction to NFS, explains how to configure NFS on client and server on Ubuntu 20.04, and mount NFS on the client.'
-og_description: 'Network File System (NFS) is a distributed file system that allows users to access files over a network as they would do on the local files. This guide provides a brief introduction to NFS, explains how to configure NFS on client and server on Ubuntu 20.04, and mount NFS on the client.'
+description: 'This guide provides you with a brief introduction to NFS (Network File System) as well as how to configure NFS on a client and server on Ubuntu 20.04.'
+og_description: 'This guide provides you with a brief introduction to NFS (Network File System) as well as how to configure NFS on a client and server on Ubuntu 20.04.'
 keywords: ['NFS','file sharing','NFS server','mount point']
 tags: ['networking', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

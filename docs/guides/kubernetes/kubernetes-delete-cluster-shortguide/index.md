@@ -3,7 +3,7 @@ slug: kubernetes-delete-cluster-shortguide
 author:
   name: Linode
   email: docs@linode.com
-description: 'Shortguide that shows you how to delete a Linode Kubernetes Engine cluster.'
+description: 'This short-guide will provide you with step-by-step instructions on how to delete a Linode Kubernetes Engine (LKE) Cluster that is no longer needed.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-22
 modified_by:

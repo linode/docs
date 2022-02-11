@@ -3,7 +3,7 @@ slug: what-is-the-linode-longview-app-for-mysql
 author:
   name: Linode
   email: docs@linode.com
-description: Using the Linode Longview App for MySQL
+description: 'This guide discusses the Linode Longview client, including how to configure Longview for the MySQL database server, how to interact with data from Longview, and more.'
 keywords: ["Longview", "MySQL", "statistics"]
 tags: ["cloud manager","statistics","monitoring","linode platform","mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use ejabberd for Instant Messaging on Ubuntu-12-04.'
+description: 'This guide shows how to use Ejabberd, a Jabber daemon written in the Erlang language, as an instant messaging service on the Ubuntu 12.04 Operating System.'
 keywords: ["ejabberd", "ejabberd ubuntu", "ejabberd ubuntu 12.04", "ejabberd on linux", "real-time messaging", "xmpp", "collaboration software", "chat software", "linux jabber server", "instant messaging", "jabber daemon", "erlang"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

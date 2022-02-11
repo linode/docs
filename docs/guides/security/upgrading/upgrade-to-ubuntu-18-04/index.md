@@ -3,7 +3,7 @@ slug: upgrade-to-ubuntu-18-04
 author:
   name: Linode
   email: docs@linode.com
-description: "A how-to guide for performing an inline upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
+description: 'This guide provides you with step-by-step instructions on how to upgrade your Linux system to the latest LTS (Long Term Support) version of Ubuntu - 18.04 LTS.'
 keywords: ["upgrading", "ubuntu", "18.04","bionic beaver"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

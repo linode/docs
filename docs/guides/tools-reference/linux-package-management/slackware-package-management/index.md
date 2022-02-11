@@ -3,8 +3,8 @@ slug: slackware-package-management
 author:
   name: Linode
   email: docs@linode.com
-description: "Slackware uses several tools for building and managing packages, including pkgtool and slackpkg. This guide walks you through the core features of these tools and common commands for installing, upgrading, and removing packages in Slackware."
-og_description: "Slackware uses several tools for building and managing packages, including pkgtool and slackpkg. This guide walks you through the core features of these tools and common commands for installing, upgrading, and removing packages in Slackware."
+description: "This guide walks you through the core features of tools from Slackware, including pkgtool and slackpkg, which are common commands for managing packages."
+og_description: "This guide walks you through the core features of tools from Slackware, including pkgtool and slackpkg, which are common commands for managing packages."
 keywords: ['slackware', 'slackpkg', 'pkgtool', 'installpkg', 'upgradepkg', 'removepkg']
 tags: ['slackware']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,7 @@ slug: dokuwiki-engine
 author:
   name: Linode
   email: docs@linode.com
-description: 'Build a fully featured wiki text with the DokuWiki software.'
+description: 'This guide provides you with step-by-step instructions for installing the DocuWiki software for creating a fully featured Wiki for your organization.'
 keywords: ["wiki", "doku wiki", "php"]
 tags: ["wiki","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

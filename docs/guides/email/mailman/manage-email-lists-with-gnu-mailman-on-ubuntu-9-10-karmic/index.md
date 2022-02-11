@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows you how to use the GNU Mailman software to manage and moderate email listservs (aka group mailing lists) on Ubuntu 9.10 "Karmic".'
+description: 'This guide shows how you can use GNU Mailman a free and open source Listserv management application for managing discussion lists on Ubuntu 9.10 "Karmic".'
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

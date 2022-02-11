@@ -3,7 +3,7 @@ slug: advanced-ssh-server-security
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Tips to improve the security of your SSH server'
+description: 'This guide will give you some of Linode''s best tips and tricks for best practices when it comes to improving the security of your SSH server.'
 keywords: ["SSH", "secure shell", "Ubuntu", "CentOS", "security", "2FA", "server", "Linux"]
 tags: ["ssh","security","linux"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'

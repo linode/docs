@@ -3,8 +3,8 @@ slug: install-couchdb-20-on-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows you how to install CouchDB 2.0 on Ubuntu 20.04. CouchDB is a NoSQL database noteworthy for its scalability, fault tolerance, and inituitive concepts for web and mobile applications.'
-og_description: 'This guide shows you how to install CouchDB 2.0 on Ubuntu 20.04. CouchDB is a NoSQL database noteworthy for its scalability, fault tolerance, and inituitive concepts for web and mobile applications.'
+description: 'This guide will show you how to install the noteworthy NoSQL database utility known for its scalability and fault tolerance, CouchDB 2.0 on Ubuntu 20.04.'
+og_description: 'This guide will show you how to install the noteworthy NoSQL database utility known for its scalability and fault tolerance, CouchDB 2.0 on Ubuntu 20.04.'
 keywords: ['couchdb','nosql','database','deploy on ubuntu 20.04']
 tags: ['couchdb','ubuntu','nosql','apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

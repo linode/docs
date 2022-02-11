@@ -3,7 +3,7 @@ slug: using-the-terminal
 author:
   name: Linode
   email: docs@linode.com
-description: 'Accomplishing system administration tasks from a command prompt.'
+description: 'This guide shows how to access and use the command line interface, also known as the Shell, via a Terminal application like PuTTY to perform system admin tasks.'
 keywords: ["Linux terminal", "terminal HOWTO", "Linode terminal tutorial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/ssh/using-the-terminal/','/tools-reference/tools/using-the-terminal/','/tools-reference/ssh/using-the-terminal/','/using-linux/using-the-terminal/']

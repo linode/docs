@@ -3,7 +3,7 @@ slug: install-kloxo-on-centos-5
 author:
   name: Linode
   email: docs@linode.com
-description: 'Manage your Linode with the Kloxo control panel on CentOS 5.'
+description: 'This guide shows how to install Kloxo, the free web-based server control panel alternative to cPanel and Plesk, on a server running CentOS 5.'
 keywords: ["kloxo", "control panel", "cpanel", "plesk"]
 tags: ["centos","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

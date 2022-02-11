@@ -3,7 +3,7 @@ slug: what-is-immutable-infrastructure
 author:
   name: Linode
   email: docs@linode.com
-description: 'Introduction to Immutable Infrastructure'
+description: 'This guide provides you with an overview of immutable server infrastructure, which is essentially infrastructure that never deviates from it''s source code.'
 keywords: ['ci','automation','immutable', infrastructure]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-10

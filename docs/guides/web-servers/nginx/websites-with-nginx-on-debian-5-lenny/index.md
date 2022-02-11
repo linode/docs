@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'A basic guide to installing nginx from source on Debian 5 (Lenny)'
+description: 'Nginx is a lightweight and high performance web server designed to deliver large amounts of content with efficiency. This guide shows how to install it on Debian 5 "Lenny".'
 keywords: ["nginx", "http", "web servers", "debian", "debian lenny", "debian 5"]
 tags: ["web server","debian","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,8 +3,8 @@ slug: rust-webassembly-tutorial
 author:
   name: Linode Community
   email: docs@linode.com
-description: "WebAssembly, sometimes also called Wasm, lets you develop web applications that run at near-native speeds. WebAssembly even allows you to compile web applications from languages like C/C++ and Rust. This guide explores what WebAssembly is, how it works, and how you can get started using it with Rust."
-og_description: "WebAssembly, sometimes also called Wasm, lets you develop web applications that run at near-native speeds. WebAssembly even allows you to compile web applications from languages like C/C++ and Rust. This guide explores what WebAssembly is, how it works, and how you can get started with it."
+description: "This guide explores what WebAssembly, sometimes called Wasm, is and how it can be used to develop web applications that run at near-native speeds with Rust."
+og_description: "This guide explores what WebAssembly, sometimes called Wasm, is and how it can be used to develop web applications that run at near-native speeds with Rust."
 keywords: ["webassembly","wasm","rust","web development","demo","tutorial"]
 tags: ['ubuntu', 'debian', 'rust']
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"

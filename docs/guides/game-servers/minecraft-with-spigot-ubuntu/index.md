@@ -3,7 +3,7 @@ slug: minecraft-with-spigot-ubuntu
 author:
   name: Linode Community
   email: contribute@linode.com
-description: "Follow this guide now to set up, configure, and customize a Minecraft server using Spigot."
+description: 'This guide shows how to set up, configure, and customize a Minecraft game server using the Spigot application on a Linode running Ubuntu 14.04.'
 keywords: ["minecraft", "spigot"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

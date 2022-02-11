@@ -3,7 +3,7 @@ slug: shadowsocks-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
-description: "Deploy a Shadowsocks Server on Linode using Marketplace Apps."
+description: "This guide provides you with instructions on how to deploy a Shadowsocks server to bypass network censorship on a Linode using the One-Click Marketplace App."
 keywords: ['shadowsocks','marketplace', 'server']
 tags: ["proxy","cloud-manager","linode platform","security","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

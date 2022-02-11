@@ -3,7 +3,7 @@ slug: manipulate-lists-with-sort-and-uniq
 author:
   name: Linode
   email: docs@linode.com
-description: Use the sort and uniq Linux utilities to manage and order
+description: "This guide shows how you can use 'sort' and 'uniq', which are utilities built into Linux that you can use to sort or order lists, as well as manipulate them."
 keywords: ["linux", "common commands", "sort", "uniq", "shell", "bash"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/manipulate-lists-with-sort-and-uniq/','/linux-tools/common-commands/sort-uniq/']

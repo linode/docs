@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'This guide will show you to install and configure NSD, a lightweight and open-source name server to handle authoritative DNS queries on Ubuntu 11.04 "Natty".'
+description: 'This guide shows how you can install and configure NSD, a lightweight name server daemon and alternative to BIND, to provide authoritative DNS on Ubuntu 11.04 "Natty".'
 keywords: ["NSD", "DNS", "resolving", "Ubuntu", "networking"]
 tags: ["dns","networking","resolving","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
