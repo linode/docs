@@ -8,7 +8,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "An S3-compatible object storage solution designed to store, manage, and access unstructured data in the cloud."
-aliases: ['/platform/object-storage/pricing-and-limitations/', '/guides/pricing-and-limitations']
+aliases: ['/platform/object-storage/pricing-and-limitations/', '/guides/pricing-and-limitations','/products/storage/object-storage/guides/enable/']
 ---
 
 Linode's Object Storage is a globally-available, S3-compatible method for storing and accessing data. Object Storage differs from traditional hierarchical data storage, such as a traditional filesystem on a physical/virtual disk and [Block Storage Volumes](/docs/guides/platform/block-storage/). Under Object Storage, files (also called *objects*) are stored in flat data structures (referred to as *buckets*) alongside their own rich metadata.
@@ -26,7 +26,7 @@ Object Storage is available within the following data centers:
 | Newark, NJ, USA | us-east-1 |
 | Singapore | ap-south-1 |
 
-Cluster IDs correspond with the Object Storage Cluster located in each data center. They are used when [formatting URLs](#object-storage-urls) and integrating Object Storage with tools such as the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli), [s3cmd](/docs/products/storage/object-storage/guides/s3cmd), [s4cmd](/docs/products/storage/object-storage/guides/s4cmd), and [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck).
+Cluster IDs correspond with the Object Storage Cluster located in each data center. They are used when [formatting URLs](/docs/products/storage/object-storage/guides/urls/) and integrating Object Storage with tools such as the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli), [s3cmd](/docs/products/storage/object-storage/guides/s3cmd), [s4cmd](/docs/products/storage/object-storage/guides/s4cmd), and [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck).
 
 ## Pricing
 
@@ -55,7 +55,7 @@ Object Storage provides an HTTP REST gateway to objects, which means a unique UR
 - **Storage space:** The maximum amount of data you can store in *each* cluster is **50 terabytes**.
 - **Number of objects:** The maximum amount of objects you can store in *each* cluster is **50 million**.
 - **Number of buckets:** You can have up to **1000 buckets** in *each* cluster.
-- **Upload file size limit:** 5 gigabytes. The maximum upload size of a single object is *5 gigabytes*, though this can easily be overcome by using multi-part uploads. Both [s3cmd](/docs/guides/how-to-use-object-storage/#s3cmd) and [cyberduck](/docs/guides/how-to-use-object-storage/#cyberduck) will do this for you automatically if a file exceeds this limit as part of the uploading process.
+- **Upload file size limit:** 5 gigabytes. The maximum upload size of a single object is *5 gigabytes*, though this can easily be overcome by using multi-part uploads. Both [s3cmd](/docs/products/storage/object-storage/guides/s3cmd) and [cyberduck](/docs/products/storage/object-storage/guides/cyberduck/) will do this for you automatically if a file exceeds this limit as part of the uploading process.
 - **Restricted characters:** Objects uploaded to object storage cannot contain the following special characters when using Cloud Manager or the Linode CLI: `" ' < > & + =`
 - **Rate limiting:** Users accessing Object Storage resources are limited to **750 requests per second**, per bucket.
 
@@ -68,11 +68,3 @@ There is a temporary limit of 5TB per cluster for new Object Storage accounts. I
 Object Storage adds 1 terabyte of outbound data transfer to your data transfer pool. This 1 terabyte of transfer data is prorated. If you use Object Storage for half of a month, only 500 gigabytes of transfer data will be added to your monthly transfer pool. At this time, all outbound data, including data transfer from Object Storage to a Linode in the same data center, is billable.
 
 You are not charged for uploading objects (inbound traffic) to Object Storage, with a few exceptions. Uploading an object to Object Storage from a Linode is almost always billable, as that is considered outbound traffic from the origin Linode. However, uploading an object from a Linode to Object Storage over IPv6 will be free, provided both the Linode and the bucket are hosted in the same data center.  Any further outbound data past your transfer quota is charged at a rate of $0.01 a gigabyte. For more information on network transfer pools, review our [Network Transfer](/docs/guides/network-transfer/) guide.
-
-## Object Storage URLs
-
-- **Cluster URL (and S3 endpoint):** `https://[cluster-id].linodeobjects.com`, where *[cluster-id]* is the Cluster ID associated with the data center.
-
-- **Object URL:** `https://[bucket-label].[cluster-id].linodeobjects.com/[file]`, where *[bucket-label]* is the label of the bucket, *[cluster-id]* is the Cluster ID associated with the data center, and *[file]* is the full name and path of the file.
-
-- **Static Site URL:** `https://[bucket-label].website-[cluster-id].linodeobjects.com/`, where *[bucket-label]* is the label of the bucket and *[cluster-id]* is the Cluster ID associated with the data center

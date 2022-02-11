@@ -34,13 +34,15 @@ access_key = YOUR_ACCESS_KEY
 secret_key = YOUR_SECRET_KEY
 {{< /file >}}
 
-Replace `YOUR_ACCESS_KEY` and `YOUR_SECRET_KEY` with the access key and secret key created on your Linode account. If you haven't yet created these credentials, follow the [Generate an Object Storage Access Key](/docs/products/storage/object-storage/guides/generate-access-keys/) guide.
+Replace `YOUR_ACCESS_KEY` and `YOUR_SECRET_KEY` with the access key and secret key created on your Linode account. If you haven't yet created these credentials, follow the [Managing Access Keys](/docs/products/storage/object-storage/guides/access-keys/) guide.
 
 Additional methods of configuring your credentials can be found on the s4cmd Readme file under [Installation and Setup](https://github.com/bloomreach/s4cmd#installation-and-setup).
 
 ## Specifying the Endpoint URL
 
-Originally, s4cmd was used for Amazon S3. To allow this tool to be used by other S3-compatible solutions, the `--endpoint-url` command option was added. When running any s4cmd command, you will need to specify the full endpoint url of the Linode Object Storage Cluster that your bucket resides in. For a full list of Clusters and their associated S3 endpoints, see the [Object Storage Overview](/docs/products/storage/object-storage/) page. As an example, the following command will list all buckets in the Newark data center:
+Originally, s4cmd was used for Amazon S3. To allow this tool to be used by other S3-compatible solutions, the `--endpoint-url` command option was added. When running any s4cmd command, you will need to specify the full endpoint url of the Linode Object Storage Cluster that your bucket resides in. For a full list of Clusters and their associated S3 endpoints, see the[Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/) guide).
+
+As an example, the following command will list all buckets in the Newark data center:
 
     s4cmd ls --endpoint-url https://us-east-1.linodeobjects.com
 

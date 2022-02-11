@@ -46,10 +46,10 @@ After s3cmd has been installed, it needs to be configured to work with the bucke
 
 1.  This command will prompt you with a series of questions. Answer them based on the recommendations below:
 
-    - **Access Key:** Enter the access key you wish to use. See [Generate an Object Storage Access Key](/docs/products/storage/object-storage/guides/generate-access-keys/).
+    - **Access Key:** Enter the access key you wish to use. See [Managing Access Keys](/docs/products/storage/object-storage/guides/access-keys/).
     - **Secret Key:** Enter the secret key that corresponds with the access key. This was displayed once when generating the access key.
     - **Default Region:** `US` (do not change, even if you use Object Storage in a different region)
-    - **S3 Endpoint:** `[cluster-id].linodeobjects.com`, replacing [cluster-id] with the cluster ID corresponding to the data center your buckets are located within (listed on the [Object Storage Overview](/docs/products/storage/object-storage/) page).
+    - **S3 Endpoint:** `[cluster-url]`, replacing [cluster-url] with the cluster URL corresponding to the data center your buckets are located within (listed on the [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/) page).
     - **DNS-style bucket+hostname:port template for accessing a bucket:** `%(bucket)s.[cluster-id].linodeobjects.com`, replacing [cluster-id] with the same id used previously.
     - **Encryption password:** Enter your GPG key if you intend to store and retrieve encrypted files (optional).
     - **Path to GPG program:** Enter the path to your GPG encryption program (optional).
@@ -70,7 +70,7 @@ ERROR: Test failed: 403 (SignatureDoesNotMatch)
 
 s3cmd offers a number of additional configuration options that are not presented as prompts by the `s3cmd --configure` command. To modify any s3cmd configuration options (including the ones from the previous step), you can edit the configuration file directly. This configuration file is named `.s3cfg` and should be stored with your local home directory. For our purposes, its recommended to adjust the following option:
 
-- **website_endpoint:** `http://%(bucket)s.website-[cluster-id].linodeobjects.com/`, replacing [cluster-id] with the cluster ID corresponding to the data center your buckets are located within (listed on the [Object Storage Overview](/docs/products/storage/object-storage/) page).
+- **website_endpoint:** `http://%(bucket)s.website-[cluster-url]/`, replacing [cluster-url] with the cluster URL corresponding to the data center your buckets are located within (listed on the [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/) page).
 
 ## Interacting with Buckets
 
@@ -88,7 +88,7 @@ To list the buckets within a different data center, use the `--host` parameter a
 
 ### Create a Bucket
 
-Creates a bucket with the specified bucket label. See the [Bucket Name](/docs/guides/how-to-use-object-storage/#bucket-names) section of the [How to Use Linode Object Storage](/docs/guides/how-to-use-object-storage/) guide for rules on naming the bucket.
+Creates a bucket with the specified bucket label. See the [Create and Manage Buckets](/docs/products/storage/object-storage/guides/manage-buckets/#create-a-bucket) guide for rules on naming the bucket.
 
 **Command:** `s3cmd mb s3://[bucket-label]`, replacing *[bucket-label]* with the label you'd like to use for the new bucket.
 

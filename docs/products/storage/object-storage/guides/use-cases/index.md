@@ -77,8 +77,8 @@ Databases and other critical data can be backed up to Object Storage with little
 
 ### Private File Storage
 
-Objects can be made private and only accessible with a key. By default, [all new objects in a bucket are set to private](/docs/platform/object-storage/how-to-use-object-storage/#upload-download-and-delete-an-object-with-the-cli), so they are inaccessible by normal HTTP requests (though it's easy to set public permissions on objects if you'd like). This makes it easy to store secure data.
+Objects can be made private and only accessible with a key. By default, all new objects in a bucket are set to private, so they are inaccessible by normal HTTP requests (though it's easy to set public permissions on objects if you'd like). This makes it easy to store secure data.
 
 ## Next Steps
 
-If you're curious about how to use Object Storage, you can read our guide on [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) for detailed instructions on creating buckets and uploading objects. Read our [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) to get started with hosting your own site on Object Storage.
+If you're curious about how to use Object Storage, you can review the [Create and Manage Buckets](/docs/products/storage/object-storage/guides/manage-buckets/) guide and the [Upload and Manage Files](/docs/products/storage/object-storage/guides/manage-files/) guide for detailed instructions on creating buckets and uploading objects. Read our [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) to get started with hosting your own site on Object Storage.

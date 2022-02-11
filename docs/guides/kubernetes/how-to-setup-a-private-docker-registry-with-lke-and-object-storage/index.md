@@ -36,7 +36,7 @@ This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubern
 For Docker installation instructions on other operating systems, see [Docker's official documentation](https://docs.docker.com/get-docker/).
     {{</ note >}}
 
-1. Ensure [Object Storage is enabled](/docs/platform/object-storage/how-to-use-object-storage/#enable-object-storage) on your Linode account, [generate an Object Storage key pair](/docs/platform/object-storage/how-to-use-object-storage/#object-storage-key-pair) and ensure you save it in a secure location. You will need the key pair for a later section in this guide. Finally [create an Object Storage bucket](/docs/platform/object-storage/how-to-use-object-storage/#create-a-bucket) to store your registry's images. Throughout this guide, the example bucket name will be `registry`.
+1. [Generate an Object Storage key pair](/docs/products/storage/object-storage/guides/access-keys/) and ensure you save it in a secure location. You will need the key pair for a later section in this guide. Finally [create an Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/) to store your registry's images. Throughout this guide, the example bucket name will be `registry`.
 
 1. Purchase a domain name from a reliable domain registrar. Using Linode's DNS Manager, [create a new Domain](/docs/guides/dns-manager/#add-a-domain) and [add an DNS "A" record](/docs/guides/dns-manager/#add-dns-records) for a subdomain named `registry`. Your subdomain will host your Docker registry. This guide will use `registry.example.com` as the example domain.
 
@@ -290,14 +290,14 @@ Your LKE Cluster will also need to authenticate to your Docker registry in order
 Before deploying the Docker Registry Helm chart to your cluster, you will define some configurations so that the Docker registry uses the NGINX Ingress controller, your `registry` Object Storage bucket, and your cert-manager created TLS certificate. See the [Docker Registry Helm Chart's official documentation](https://hub.helm.sh/charts/stable/docker-registry) for a full list of all available configurations.
 
   {{< note >}}
-If you have not yet [generated an Object Storage key pair](/docs/platform/object-storage/how-to-use-object-storage/#object-storage-key-pair) and [created an Object Storage bucket](/docs/platform/object-storage/how-to-use-object-storage/#create-a-bucket) to store your registry's images, do so now before continuing with the rest of this section.
+If you have not yet [generated an Object Storage key pair](/docs/products/storage/object-storage/guides/access-keys/) and [created an Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/) to store your registry's images, do so now before continuing with the rest of this section.
   {{< / note >}}
 
 1. Create a new file named `docker-configs.yaml` using the example configurations. Ensure you replace the following values in your file:
       - `ingress.hosts` with your own Docker registry's domain
       - `ingress.tls.secretName` with the name you used when [creating your Certificate](#create-a-certificate-resource)
       - `ingress.tls.hosts` with the domain for which you wish to secure with your TLS certificate.
-      - `secrets.s3.accessKey` with the value of your [Object Storage account's access key](/docs/platform/object-storage/how-to-use-object-storage/#object-storage-key-pair) and `secrets.s3.secretKey` with the corresponding secret key.
+      - `secrets.s3.accessKey` with the value of your [Object Storage account's access key](/docs/products/storage/object-storage/guides/access-keys/) and `secrets.s3.secretKey` with the corresponding secret key.
       - `secrets.htpasswd` with the value returned when you view the contents of your `my_docker_pass` file. However, ensure you do not remove the `|-` characters. This ensures that your YAML is properly formatted. See step 4 in the [Enable Basic Authentication](#enable-basic-authentication) section for details on viewing the contents of your password file.
       - `s3.region` with your Object Storage bucket's cluster region, `s3.regionEndpoint` with your Object Storage bucket's region endpoint, and `s3.bucket` with your registry's Object Storage bucket name.
 
