@@ -3,7 +3,7 @@ slug: use-vmstat-to-monitor-system-performance
 author:
   name: Steven J. Vaughan-Nichols
   email: sjvn@vna1.com
-description: 'Use the vmstat tool to monitor your system''s virtual memory usage.'
+description: 'VMstat is a built-in Linux system monitoring tool. This guide shows how to use it to monitor the virtual memory usage of your system from the command line.'
 og_description: 'Use the vmstat tool to monitor your system''s virtual memory usage.'
 keywords: ["virtual memory", "memory", "linux", "ram", "usage", "troubleshooting."]
 tags: ["linux","monitoring"]

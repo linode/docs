@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configuring the LAMP stack on Ubuntu Linux 9.04 (Jaunty).'
+description: 'This guide provides you with step-by-step instructions for installing a fully-featured LAMP (Linux, Apache, MySQL, LInux) stack on a Linode running Ubuntu 9.04 "Jaunty".'
 keywords: ["ubuntu lamp server", "ubuntu web server", "ubuntu jaunty"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

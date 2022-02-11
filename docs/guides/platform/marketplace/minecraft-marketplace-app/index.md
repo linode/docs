@@ -3,7 +3,7 @@ slug: minecraft-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Deploy a Minecraft server on Linode using Marketplace Apps."
+description: "This guide shows you how to deploy a Minecraft Server on a Linode using the One-Click Marketplace App so you can create your own world on your own or with friends."
 keywords: ['minecraft','marketplace', 'server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-01

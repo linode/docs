@@ -3,7 +3,7 @@ slug: what-is-the-linode-longview-app-for-apache
 author:
   name: Linode
   email: docs@linode.com
-description: Using the Linode Longview App for Apache
+description: 'This guide discusses the Linode Longview client, including how to configure Longview for the Apache web server, how to interact with data from Longview, and more.'
 keywords: ["Longview", " Apache", " statistics", " mod\\_status"]
 tags: ["apache","cloud manager","statistics","monitoring","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

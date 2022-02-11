@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installing Postfix with Dovecot and MySQL on CentOS.'
+description: 'This guide shows how to setup your own private email server by installing the Postfix MTA (mail transfer agent) and Dovecot on a Linode running CentOS 5.'
 keywords: ["postfix centos 5", "dovecot centos 5", "linux mail server", "email", "centos5"]
 tags: ["centos","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

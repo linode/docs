@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Angel Guarisma
   email: aguarisma@linode.com
-description: 'This tutorial shows you how to install Taskwarrior on Ubuntu 16.10'
+description: 'This guide provides you with instructions on how to install and configure Taskwarrior, a utility that manages tasks from the command line on Ubuntu 16.10.'
 keywords: ["Install Taskwarrior", "Taskwarrior on Ubuntu", "Taskwarrior server"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

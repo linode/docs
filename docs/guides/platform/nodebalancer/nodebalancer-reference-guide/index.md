@@ -3,7 +3,7 @@ slug: nodebalancer-reference-guide
 author:
   name: Christopher S. Aker
   email: caker@linode.com
-description: NodeBalancer Reference Guide
+description: 'This is the reference guide for Linode''s NodeBalancer service where you you can find information about settings, ports, configurations, protocols, and more.'
 keywords: ["load balancing", "nodebalancer"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/nodebalancers/reference/','/platform/nodebalancer/nodebalancer-reference-guide-new-manager/','/platform/nodebalancer/nodebalancer-reference-guide/','/linode-platform/nodebalancer-reference/','/platform/nodebalancer/nodebalancer-reference-guide-classic-manager/']
