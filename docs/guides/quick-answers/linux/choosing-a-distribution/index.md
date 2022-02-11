@@ -7,7 +7,7 @@ description: "A list of all the Linux distributions provided on the Linode Platf
 keywords: ["distro", "distribution", "operating system", "Linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-15
-modified: 2022-02-03
+modified: 2022-02-07
 modified_by:
   name: Linode
 title: "How to Choose a Linux Distribution"
@@ -35,7 +35,7 @@ Below is a full list of distributions, along with the release versions that we o
 | [Fedora](https://getfedora.org/) | **35**, 34, 33** | Implements bleeding edge software. Fedora is similar though more advanced than CentOS and great for users who want to use the newest of the new and don't mind an added layer of complexity.  |
 | [Gentoo](https://www.gentoo.org/) | Rolling release\* | **Recommended for advanced Linux users only.** Advanced distribution designed for power users who want more control over their configuration and are comfortable compiling everything from source. |
 | [Rocky Linux](https://rockylinux.org/) | **8** | A binary compatible derivative of RHEL intended to provide a long-term stable replacement for CentOS. Built by a community team led by the founder of the CentOS project. |
-| [Slackware](http://www.slackware.com/) | **14.2**, 14.1** | **Recommended for advanced Linux users only.** The oldest actively maintained distribution. One of the most UNIX-like Linux distributions available. |
+| [Slackware](http://www.slackware.com/) | **15**, 14.2, 14.1** | **Recommended for advanced Linux users only.** The oldest actively maintained distribution. One of the most UNIX-like Linux distributions available. |
 | [Ubuntu](https://ubuntu.com/) | 21.10, 21.04\**, **20.04 LTS**, 18.04 LTS, 16.04 LTS | Arguably the most popular Linux distribution, widely regarded for it's ease of use. The LTS versions of Ubuntu are featured heavily in Linode's guides and across the community. |
 | [OpenSUSE Leap](https://www.opensuse.org/) | **15.3**, 15.2** | Provides powerful tools specific to system administration tasks. Starting with version 15.3, this distribution maintains parity with SLE (SUSE Linux Enterprise), making it a great choice for users of SLE or those looking to benefit from enterprise-grade stability. |
 
