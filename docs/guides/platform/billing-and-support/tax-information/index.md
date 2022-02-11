@@ -44,11 +44,13 @@ The following table lists each country that requires us to collect taxes. Alongs
 | India | 18% | [GST](http://gstcouncil.gov.in/sites/default/files/faq/sectoral-faq-it-ites.pdf) | October 1st, 2019 |
 | Ireland | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Italy | 22% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
+| Japan | 10% | [JCT](https://www.eu-japan.eu/taxes-accounting/consumption-taxes) | April 1st, 2022 |
 | Latvia | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Lithuania | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Luxembourg | 17% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Malta | 18% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Netherlands | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
+| Norway | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | May 1st, 2022 |
 | Poland | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Portugal | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Romania | 19% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
