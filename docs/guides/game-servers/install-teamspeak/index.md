@@ -146,7 +146,7 @@ stop on runlevel [013456]
 1. As `root` or with `sudo`, create a new file called `/lib/systemd/system/teamspeak.service` and insert the following code, replacing `user` with your username and `/home/user/teamspeak/teamspeak3-server_linux-amd64/` with the path noted above:
 
 {{< file "//lib/systemd/system/teamspeak.service" >}}
-Unit]
+[Unit]
 Description=TeamSpeak 3 Server
 After=network.target
 
