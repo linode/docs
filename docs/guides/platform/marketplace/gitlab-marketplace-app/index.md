@@ -8,7 +8,7 @@ keywords: ['gitlab','marketplace apps','version control','git']
 tags: ["linode platform","version control system","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-27
-modified: 2021-09-16
+modified: 2022-02-13
 modified_by:
   name: Linode
 title: "Deploying GitLab through the Linode Marketplace"
@@ -19,7 +19,7 @@ external_resources:
 aliases: ['/platform/one-click/deploy-gitlab-with-one-click-apps/','/guides/deploy-gitlab-with-one-click-apps/', '/platform/marketplace/deploy-gitlab-with-marketplace-apps/', '/guides/deploy-gitlab-with-marketplace-apps/']
 ---
 
-GitLab is a complete solution for all aspects of your software development. At its core, GitLab serves as your centralized remote Git repository. GitLab also features built-in tools that represent every task in your development workflow, from planning to testing to releasing.
+[GitLab](https://about.gitlab.com/) is a complete solution for all aspects of your software development. At its core, GitLab serves as your centralized remote Git repository. GitLab also features built-in tools that represent every task in your development workflow, from planning to testing to releasing.
 
 Self-hosting your software development with GitLab offers total control of your codebase. At the same time, its familiar interface will ease collaboration for you and your team. GitLab is the most popular self-hosted Git repository software, so you'll benefit from a robust set of integrated tools and an active community.
 
@@ -27,7 +27,7 @@ Self-hosting your software development with GitLab offers total control of your 
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Software installation should complete within 3-7 minutes after the Linode has finished provisioning.**
+**Software installation should complete within 10-15 minutes after the Linode has finished provisioning.**
 
 ## Configuration Options
 
@@ -50,37 +50,30 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 After GitLab has finished installing, you will be able to access your GitLab site over `http://` with your Linode's IPv4 address or the domain name entered when deploying your GitLab Marketplace App.
 
-1. Access your GitLab instance:
+1. **Configure DNS:** If you entered a domain name during deployment, configure an [*A record*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) within your name server. This record should point to the IPv4 address of your new Compute Instance. Review the [DNS Manager](/docs/guides/dns-manager/) guide for instructions on setting up DNS records and also see the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) guide for instructions on viewing your IP addresses.
 
-    **With your Linode's IP Address**
+1. **Find the root password:** Before logging in to your Gitlab site, you need to obtain the root password that was generated during provisioning.
 
-    You will be able to access your GitLab site by copying your Linode's IPv4 address and entering it in the browser of your choice. To find your Linode's IPv4 address:
+    1. Log in to your new Compute Instance through [Lish](/docs/guides/using-the-lish-console/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using the root password you entered when creating the instance.
 
-    1. Click on the **Linodes** link in the sidebar. You will see a list of all your Linodes.
+    1.  Enter the following command in the lish console or terminal session:
 
-    1. Find the Linode you just created when deploying your app and select it.
+            cat /etc/gitlab/initial_root_password
 
-    1. Navigate to the **Networking** tab.
+        Your root password is displayed within the output of that command.
 
-    1. Your IPv4 address will be listed under the **Address** column in the **IPv4** table.
+1. **Log in to your Gitlab site:** Open a web browser and enter either your Compute Instance's IP address or you domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) guide for instructions on viewing your IP addresses. Ensure you are using `http://` when visiting your site.
 
-    1. Copy and paste the IPv4 address into a browser window. Ensure you are using `http://`.
+    When presented with a login screen, enter the following credentials:
 
-    **With a Domain Name**
+    - **Username:** `root`
+    - **Password:** Use the password you obtained in the previous step.
 
-    If you deployed your GitLab Marketplace App with a value set for the **Domain** field, you will need to separately set up DNS for your app. Specifically, you'll need to create an [*A record*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) associated with the IPv4 address for your Linode. Review the [DNS Manager](/docs/guides/dns-manager/) guide for instructions on setting up DNS records.
+1.  **Reset the root password:** Once you're logged in, it's recommended that you reset the root password. To do so, navigate to the following URL, replacing *[ip-address]* with the IP address of your Compute instance:
 
-    Once your DNS records are created (and the changes have propagated to your internet service provider), you can then enter the domain name in a browser window to access your GitLab site. Ensure you are using `http://` when visiting your site.
+        http://[ip-address]/-/profile/password/edit
 
-    {{< note >}}
-For more general information about how DNS works, review the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guide.
-{{< /note >}}
-
-1. Once you have accessed your GitLab site, you will be brought to GitLab's password reset screen. Provide a secure password for the administrator's account:
-
-    ![Create a password for the adminstrator's account.](gitlab-reset-password.png)
-
-1. You will be redirected to the login screen. Enter `root` as the username and the password you just created to log in. You can now begin creating GitLab repositories, users, and more. See [GitLab's official documentation](https://docs.gitlab.com/ee/university/training/topics/getting_started.html) for more information.
+You can now begin creating GitLab repositories, users, and more. See [GitLab's official documentation](https://docs.gitlab.com/ee/university/training/topics/getting_started.html) for more information.
 
 ### Add a Domain after Deploying your GitLab Instance
 
