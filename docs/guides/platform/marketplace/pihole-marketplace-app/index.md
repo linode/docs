@@ -7,7 +7,7 @@ description: "Deploy Pi-hole on a Linode Compute Instance. This app protects you
 keywords: ['pi-hole','adblocker','dns','sinkhole']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-22
+published: 2022-02-14
 modified_by:
   name: Linode
 title: "Deploying Pi-hole through the Linode Marketplace"
@@ -19,7 +19,7 @@ external_resources:
 aliases: ['/guides/deploying-pihole-marketplace-app/']
 ---
 
-[Pi-hole](https://pi-hole.net/) is a [DNS sinkhole](https://en.wikipedia.org/wikic/DNS_sinkhole) that filters out requests to ad-serving domains, blocking ads and improving network performance. With Pi-hole, you can actively monitor every DNS request made on your network and block requests as they come in. 
+[Pi-hole](https://pi-hole.net/) is a [DNS sinkhole](https://en.wikipedia.org/wikic/DNS_sinkhole) that filters out requests to ad-serving domains, blocking ads and improving network performance. With Pi-hole, you can actively monitor every DNS request made on your network and block requests as they come in.
 
 ## Deploying the Pi-hole Marketplace App
 
@@ -49,18 +49,18 @@ Here are the additional options available for this Marketplace App:
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-- **Supported distributions:** Ubuntu 20.04 LTS Debian 11
+- **Supported distributions:** Ubuntu 20.04 LTS, Debian 11
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
 
 ### Accessing the Pi-hole App
 
-1. After installation is complete, the Pi-hole dashboard is accessible at domain you entered in the beginning of your deployment followed by `/admin`.
+1.  After installation is complete, the Pi-hole dashboard is accessible at domain you entered in the beginning of your deployment followed by `/admin`.
 
-    http://example.com/admin
+        http://example.com/admin
 
-{{< note >}}
+    {{< note >}}
 If you did not enter a domain, you can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
 {{< /note >}}
 
