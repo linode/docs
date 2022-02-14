@@ -1,9 +1,10 @@
 ---
-slug: python-tuples-introduction
+slug: creating-and-using-python-tuples
 author:
   name: Chelsea Troy
 description: 'Learn to create a Python tuple by following this guide. This guide also discusses the differences between lists and tuples, and shows you how to convert a list into a tuple.'
 keywords: ['python create tuple','python tuple vs list','python list to tuple']
+tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-06
 modified_by:
@@ -26,7 +27,7 @@ You should have [Python 3.0 installed on your machine](/docs/guides/how-to-insta
 
 ### Create a Python Tuple
 
-To create a Python tuple, add a comma-separated collection of values inside of parentheses and assign it to a variable. For example:
+To create a Python tuple, add a comma-separated collection of values inside of parentheses and assign it to a variable as shown in the example below:
 
     >>> integers = (1, 3, 4)
 
@@ -39,14 +40,14 @@ You can create a tuple with a mixed collection of data types as show below:
 The `mixed` tuple contains number and string values.
 
 {{< note >}}
-The parentheses are not required when creating a tuple. You can also create a tuple without enclosing parentheses:
+The parentheses are not required when creating a tuple. You can also create a tuple without enclosing parentheses.
 
     >>> lucky_numbers = 7, 14, 31, 50, 75, 100
 {{</ note >}}
 
 ### Create a Tuple with a Single Value
 
-To store a single value, or *singleton*, in a tuple, you must include a comma when assigning the value to a variable. If you don't include the comma, Python does not store the value as a tuple.
+To store a single value, or *singleton* in a tuple, you must include a comma when assigning the value to a variable. If you don't include the comma, Python does not store the value as a tuple.
 
     >>> name = ("chelsea",)
 
@@ -56,13 +57,13 @@ The `tuple()` function can convert any of the other collection types (list, set,
 
 ### Convert a List to a Tuple
 
-The following example uses the `tuple()` function to convert a list of integers into a tuple of integers:
+The following example uses the `tuple()` function to convert a list of integers into a tuple of integers.
 
     list_to_tuple_example = tuple([1, 2, 3])
 
-If you check the type of `list_to_tuple_example`, Python returns a type of `tuple`:
+If you check the type of `list_to_tuple_example`, Python returns a type of `tuple`.
 
-    >>> type(numbers_as_tuple)
+    >>> type(list_to_tuple_example)
     <class 'tuple'>
 
 ## Convert a Dictionary to a Tuple
@@ -91,7 +92,7 @@ Typically, when you create a tuple, you assign it to a single value. When you ca
 
 ## Convert a Python Tuple to a List
 
-Converting a tuple to a list works the reverse way that converting a list to a tuple does:
+Converting a tuple to a List works the reverse way that converting a List to a tuple does.
 
     >>> atuple = (1, 2, 3)
     >>> alist = list(atuple)
@@ -128,15 +129,16 @@ Tuples are ordered collections, so they can contain duplicate values. If a tuple
 
 ### How to Sort a Tuple
 
-Tuples cannot be sorted in place because they are immutable—once it is created, the items inside it cannot change. However, it is possible to take the elements of one tuple and create another one with it. The sorted() function takes in a tuple as an argument and returns a list with the sorted elements of the original tuple.
+Tuples cannot be sorted in place because they are immutable—once it is created, the items inside it cannot change. However, it is possible to take the elements of one tuple and create another one with it. The `sorted()` function takes in a tuple as an argument and returns a list with the sorted elements of the original tuple.
 
     >>> out_of_order = (4, 3, 7, 6, 1, 0, 2, 5)
     >>> in_order = sorted(out_of_order)
+    >>> print(in_order)
     [0, 1, 2, 3, 4, 5, 6, 7]
     >>> type(in_order)
     <class 'list'>
 
-The return value of `in_order` is a list. To make it tuple, convert the result.
+The return value of `in_order` is a List. To make it a tuple, convert the result.
 
     >>> new_tuple = tuple(in_order)
 
@@ -144,16 +146,16 @@ The return value of `in_order` is a list. To make it tuple, convert the result.
 
 ### Differences in Syntax
 
-To create a list in Python you must enclose your values using brackets (`[]`). Tuples, however, can be created enclosing values with parentheses (`()`) or by using a comma-separated collection of values. You can exclude the parentheses, but you must ensure each value is separated by a comma (`,`).
+To create a List in Python, you must enclose your values using brackets (`[]`). Tuples, however, can be created by enclosing values with parentheses (`()`) or by using a comma-separated collection of values. You can exclude the parentheses, but you must ensure each value is separated by a comma (`,`).
 
 ### Immutable vs. Mutable
 
-Lists can change after they are created; programs can add items, remove items, replace items, or reorder items. A list is *mutable*. This is not the case for a tuple. Tuples are *immutable*, which means that their values cannot change after the tuple is created. If a value needs to change in a tuple, you must create a new tuple with the change.
+Lists can change after they are created; programs can add items, remove items, replace items, or reorder items. A List is *mutable*. This is not the case for a tuple. Tuples are *immutable*, which means that their values cannot change after the tuple is created. If a value needs to change in a tuple, you must create a new tuple with the change.
 
 ### Use cases for Lists and Tuples
 
-A tuple's immutability is convenient in cases where it’s important that the values in a collection stay the same. For example, you can represent rows of data as tuples and remain confident that each row of data will remain unchanged. Tuple immutability also ensures, for tuple unpacking, that the program can track the value of each of the unpacked variables.
+A tuple's immutability is convenient in cases where the values in a collection must stay the same. For example, you can represent rows of data as tuples and remain confident that each row of data remains unchanged. Tuple immutability also ensures tuple unpacking, that the program can track the value of each of the unpacked variables.
 
-Finally, tuples take up less memory than lists and instantiate faster, so in the rare case where speed is of the essence, they can provide an advantage.
+Finally, tuples take up less memory than Lists and instantiate faster, so in the rare case where speed is of the essence, they can provide an advantage.
 
-In cases where the collection needs regular modification, a list makes more sense. Because most programs require modification of dynamic data, it’s much more common to see lists used in Python programs.
+In cases where the collection needs regular modification, a List makes more sense. Because most programs require modification of dynamic data, it’s much more common to see Lists used in Python programs.
