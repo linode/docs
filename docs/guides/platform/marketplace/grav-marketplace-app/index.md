@@ -3,11 +3,11 @@ slug: grav-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
-description: "Deploy Grav on a Linode Compute Instance. Grav is a modern open source flat-file CMS."
+description: "Learn how to deplo Grav, a modern open source flat-file CMS, on a Linode Compute Instance."
 keywords: ['cms','blog','website']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-22
+published: 2022-02-14
 modified_by:
   name: Linode
 title: "Deploying Grav through the Linode Marketplace"
@@ -16,10 +16,9 @@ contributor:
   link: https://github.com/hmorris3293
 external_resources:
 - '[Grav](https://getgrav.org/)'
-aliases: ['/guides/deploying-grav-marketplace-app/']
 ---
 
-[Grav](https://getgrav.org/) is a flexible open source flat-file CMS (Content Management System).
+[Grav](https://getgrav.org/) is a flexible open source flat-file CMS (Content Management System). It can be used by both technical and non-technical people, allowing users to operate in the command line through its own [CLI](https://learn.getgrav.org/17/cli-console/command-line-intro) or in a web browser through its [Admin panel](https://learn.getgrav.org/17/admin-panel/introduction). Page templates in Grav are constructed using the highly customizable [Twig templating engine](https://twig.symfony.com/) and content can be written directly in Markdown. Using Grav also enables you to pull from a plethora of pre-built resources, including [starter templates](https://getgrav.org/downloads/skeletons), unique [themes](https://getgrav.org/downloads/themes), and quite a few [plugins](https://getgrav.org/downloads/plugins). If you need assistance getting started, there is an active [community form](https://discourse.getgrav.org/) and [extensive documentation](https://learn.getgrav.org/17/basics/what-is-grav).
 
 ## Deploying the Grav Marketplace App
 
@@ -55,15 +54,15 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Accessing the Grav App
 
-1. After installation is complete, the Grav dashboard is accessible at domain you entered in the beginning of your deployment followed by `/admin`.
+1.  After installation is complete, the Grav dashboard is accessible at domain you entered in the beginning of your deployment followed by `/admin`.
 
-    http://example.com/admin
+        http://example.com/admin
 
-{{< note >}}
+    {{< note >}}
 If you did not enter a domain, you can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
 {{< /note >}}
 
-1.  From here, Grav will ask you to create an admin account to manage login to your Grav admin panel. Once you enter the requested information, you will be logged in and ready to get started with your Grav instance.
+1.  From here, you are prompted to create an admin account, which you can use to login to the Grav admin panel, write content, and perform administration tasks.
 
 Now that you’ve accessed your dashboard, check out [the official Grav documentation](https://learn.getgrav.org/) to learn how to further utilize your Grav instance.
 
