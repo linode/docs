@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites."
-og_description: "ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites."
+description: "This guide will help you install ISPConfig, an open-source server control panel similar to cPanel or Plesk which you can use to admin websites and server apps."
+og_description: "This guide will help you install ISPConfig, an open-source server control panel similar to cPanel or Plesk which you can use to admin websites and server apps."
 keywords: ["ispconfig", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01

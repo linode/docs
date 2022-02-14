@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Lighttpd (pronounced "lighty") is a high performance web server package, designed to power the delivery of web content to small and large sites alike. With enhanced support for implementing scalable FastCGI web applications, this web server has enjoyed increasing popularity with organizations focused on delivering dynamic content with less overhead than traditionally deployed solutions like Apache.'
+description: 'These guides will help you deploy Lighttpd (aka Lighty), a high performance web server package, designed to power the delivery of websites big and small.'
 keywords: ["lighttpd web server", "lighttpd Linux", "lighttpd Linode HOWTO"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lighttpd/','/web-servers/lighttpd/']

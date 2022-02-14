@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "Joomla is an advanced content management system (CMS) used to facilitate the easy creation and ongoing maintenance of dynamic websites. Deployed on top of the industry standard LAMP Stack, Joomla is designed to be both easy to use and manage from the end-user’s perspective and easy to administer and host."
-og_description: "Joomla is an advanced content management system (CMS) used to facilitate the easy creation and ongoing maintenance of dynamic websites. Deployed on top of the industry standard LAMP Stack, Joomla is designed to be both easy to use and manage from the end-user’s perspective and easy to administer and host."
+description: "This guide will help you install and configure Joomla, an advanced content management system used to facilitate the easy creation of dynamic website content."
+og_description: "This guide will help you install and configure Joomla, an advanced content management system used to facilitate the easy creation of dynamic website content."
 keywords: ["joomla", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01

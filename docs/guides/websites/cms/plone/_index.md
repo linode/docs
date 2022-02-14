@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "Plone is an advanced system for managing complex and content rich websites. Written in the Python programing language using the Zope web-framework, Plone provides a flexible substrate on top of the Zope system for developing highly specialized websites and is supported by an active community of developers."
-og_description: "Plone is an advanced system for managing complex and content rich websites. Written in the Python programing language using the Zope web-framework, Plone provides a flexible substrate on top of the Zope system for developing highly specialized websites and is supported by an active community of developers."
+description: "This guide will help you install and configure Plone, an advanced system for managing complex and content-rich websites, which is written in Python."
+og_description: "This guide will help you install and configure Plone, an advanced system for managing complex and content-rich websites, which is written in Python."
 keywords: ["plone", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01

@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "Kloxo is an open source control panel that is similar to proprietary panels such as cPanel and Plesk. The guides in this section will help you install Kloxo and manage services on your Linode."
-og_description: "Kloxo is an open source control panel that is similar to proprietary panels such as cPanel and Plesk. The guides in this section will help you install Kloxo and manage services on your Linode."
+description: "This guide will help you install and configure Kloxo, a server control panel quite similar to cPanel or Plesk which you can use to control your server."
+og_description: "This guide will help you install and configure Kloxo, a server control panel quite similar to cPanel or Plesk which you can use to control your server."
 keywords: ["kloxo", "control panel", "cpanel", "plesk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cms/kloxo/','/web-applications/control-panels/kloxo/']

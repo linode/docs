@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "FlatPress is a web application for managing and publishing blogs. Modeled on other popular content management systems for blogging, FlatPress uses a file-based system for storing content and does not require any kind of database system."
-og_description: "FlatPress is a web application for managing and publishing blogs. Modeled on other popular content management systems for blogging, FlatPress uses a file-based system for storing content and does not require any kind of database system."
+description: "This guide will help you install and configure FlatPress, a web application for publishing and managing blogs modeled after popular CMS' like WordPress."
+og_description: "This guide will help you install and configure FlatPress, a web application for publishing and managing blogs modeled after popular CMS' like WordPress."
 keywords: ["flatpress", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01
