@@ -1584,6 +1584,7 @@ replicationcontrollers
 replset
 repo
 repos
+reputational
 resharding
 resilvering
 resolv
