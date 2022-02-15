@@ -7,7 +7,7 @@ description: "Deploy Odoo on a Linode Compute Instance. This provides a self-hos
 keywords: ['odoo','business','crm','ecommerce']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-22
+published: 2022-02-14
 modified_by:
   name: Linode
 title: "Deploying Odoo through the Linode Marketplace"
@@ -16,7 +16,6 @@ contributor:
   link: https://github.com/hmorris3293
 external_resources:
 - '[Odoo](https://www.odoo.com/)'
-aliases: ['/guides/deploying-odoo-marketplace-app/']
 ---
 
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is a self-hosted suite of over 10,000 open source applications for a variety of business needs, including CRM, eCommerce, accounting, inventory, point of sale, and project management. These applications are all fully integrated and can be installed and accessed through a web interface, making it easy to automate and manage your company’s processes.
@@ -58,9 +57,9 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 1.  Open a browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
 
-1.  The Odoo setup page will appear, you will need to fill out the requested fields with your information. Please note that the Database will be 'odoo' 
+1.  Within the Odoo setup page that appears, save the automatically generated admin password (also called the *master password*) and enter the details for your new user account. For the **Database Name** field, enter *odoo*.
 
-    ![Odoo Setup Page](odoosetuppage.png "Odoo Setup Page")
+    ![Screenshot of the Odoo setup page](odoosetuppage.png)
 
 Now that you’ve accessed your dashboard, check out [the official Odoo documentation](https://www.odoo.com/page/docs) to learn how to further utilize your Odoo instance.
 
