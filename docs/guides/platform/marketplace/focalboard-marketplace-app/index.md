@@ -7,7 +7,7 @@ description: "Deploy Focalboard on a Linode Compute Instance. This provides you 
 keywords: ['focalboard','project','productivity','kanban']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-22
+published: 2022-02-14
 modified_by:
   name: Linode
 title: "Deploying Focalboard through the Linode Marketplace"
@@ -16,10 +16,9 @@ contributor:
   link: https://github.com/hmorris3293
 external_resources:
 - '[Focalboard](https://www.focalboard.com/)'
-aliases: ['/guides/deploying-focalboard-marketplace-app/']
 ---
 
-[Focalboard](https://www.focalboard.com/) is an open source alternative to tools like Asana, Trello, and Notion that helps teams, individuals, developers stay aligned and organized on their everyday tasks. With Focalboard, you can reach milestones, keep track of project notes, and achieve goals. 
+[Focalboard](https://www.focalboard.com/) is an open source alternative to tools like Asana, Trello, and Notion. It helps teams, individuals, and developers stay aligned and organized on their everyday tasks. With Focalboard, you can reach milestones, keep track of project notes, and achieve goals.
 
 ## Deploying the Focalboard Marketplace App
 
@@ -57,7 +56,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 1.  Open a browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
 
-1.  The Focalboard login page will appear. From there, you can click "Create an Account" to create a username and password for your instance
+1.  On the Focalboard login page that appears, click the **Create an Account** button to create a username and password for your instance.
 
 Now that you’ve accessed your dashboard, check out [the official Focalboard documentation](https://www.focalboard.com/guide/user/) to learn how to further utilize your Focalboard instance.
 
