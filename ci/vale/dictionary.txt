@@ -1652,6 +1652,7 @@ saas
 sakila
 safend
 salesforce
+Saltcorn
 sam
 samy
 sandcat

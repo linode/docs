@@ -7,7 +7,7 @@ description: "Deploy Saltcorn on a Linode Compute Instance. This platform is mad
 keywords: ['saltcorn','database','development']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-22
+published: 2022-02-14
 modified_by:
   name: Linode
 title: "Deploying Saltcorn through the Linode Marketplace"
@@ -16,10 +16,9 @@ contributor:
   link: https://github.com/hmorris3293
 external_resources:
 - '[Saltcorn](https://saltcorn.com/)'
-aliases: ['/guides/deploying-saltcorn-marketplace-app/']
 ---
 
-[Saltcorn](https://saltcorn.com/) is an flexible open source no-code database application builder. You can use it to build web applications based on relational data with flexible views, datatypes and layouts.
+[Saltcorn](https://saltcorn.com/) is an flexible open source no-code database application builder. You can use it to build web applications based on relational data with flexible views, data types, and layouts.
 
 ## Deploying the Saltcorn Marketplace App
 
@@ -48,7 +47,7 @@ Here are the additional options available for this Marketplace App:
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-- **Supported distributions:** Ubuntu 20.04 LTS Debian 11
+- **Supported distributions:** Ubuntu 20.04 LTS, Debian 11
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
@@ -57,7 +56,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 1.  Open a browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
 
-1.  The Saltcorn setup page will appear where you can create your first user by entering your 'email' and 'password'.
+1.  Within the Saltcorn setup page that appears, create your first user account.
 
 Now that you’ve accessed your dashboard, check out [the official Saltcorn documentation](https://wiki.saltcorn.com/) to learn how to further utilize your Saltcorn instance.
 
