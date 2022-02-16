@@ -6,11 +6,10 @@ author:
 keywords: ["getting started", "deploy", "linode", "linux"]
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/']
-modified: 2022-01-21
+modified: 2022-02-16
 modified_by:
   name: Linode
-published: 2022-01-21
+published: 2022-02-16
 title: "Creating a Compute Instance on the Linode Platform"
 h1_title: "Creating a Compute Instance"
 enable_h1: true
@@ -112,7 +111,6 @@ Confirm the details for this Compute Instance within the *Linode Summary* sectio
 
 ## Getting Started After Deployment
 
-Once the Compute Instance has been created and is done initializing, you can start configuring and using it. The next recommendation is to follow the guides linked below, which assist you in connecting to your instance, performing any initial configuration steps on your Linux system, and securing your server.
+Once the Compute Instance has been created and is done initializing, you can start configuring and using it. The next recommendation is to follow the guide linked below, which assists you in connecting to your instance, performing any initial configuration steps on your Linux system, and securing your server.
 
-- [Getting Started After Deploying a Compute Instance](/docs/guides/getting-started-after-deployment/)
-- [Securing Your Server](/docs/guides/securing-your-server/)
+- [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)

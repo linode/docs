@@ -3,7 +3,7 @@ slug: linode-beginners-guide
 author:
   name: Linode
   email: docs@linode.com
-description: 'Beginner''s Guide to Linode''s Platform answers common configuration questions about the Linode cloud.'
+description: "Beginner's Guide to Linode's Platform answers common configuration questions about the Linode cloud."
 keywords: ["linode beginners guide", "linux beginner", "linode beginner", "Linode guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/beginners-guide/','/platform/linode-beginners-guide/','/platform/billing-and-support/linode-beginners-guide/']
@@ -11,13 +11,12 @@ modified: 2017-03-02
 modified_by:
   name: Phil Zona
 published: 2009-11-16
-title: 'Linode Beginner''s Guide'
+title: "Linode Beginner's Guide"
 tags: ["linode platform"]
+image: linode-beginners-guide.png
 ---
 
 If you're relatively new to Linux system administration, or just new to our platform, this guide will help address some of the most common questions we receive. If you've just created your first Linode account, please first refer to our [Getting Started](/docs/getting-started/) Guide and return here once your Linode has been deployed.
-
-![Linode Beginners Guide](linode-beginners-guide.png)
 
 ## How do I log into my Linode?
 

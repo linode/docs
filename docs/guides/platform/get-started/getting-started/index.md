@@ -6,12 +6,12 @@ author:
 keywords: ["getting started", "intro", "basics", "first steps", "linode platform"]
 description: "Learn how to create an account and use the Linode Cloud Platform."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/']
-modified: 2022-01-21
+aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode']
+modified: 2022-02-16
 modified_by:
   name: Linode
 published: 2018-11-05
-title: "Getting Started with Linode"
+title: "Getting Started on the Linode Platform"
 show_on_frontpage: true
 title_short: "Getting Started"
 weight: 10
@@ -37,7 +37,7 @@ First, you need to create a Linode account to start using our services. If you a
 
 1. Enter your email address, a unique username, and a strong password. Alternatively, you can sign up using your existing Google or GitHub account.
 
-1. A confirmation email will be send to your email address. Click the link to confirm your email and be taken to the next step.
+1. A confirmation email will be sent to your email address. Click the link to confirm your email and be taken to the next step.
 
 1. Enter your billing and payment information. A valid credit or debit card must be used when creating an account, though additional payment methods (like Google Pay and PayPal) are available once the account is active.
 
@@ -63,19 +63,17 @@ For a full overview of the Cloud Manager and its core features, see the [Overvie
 
 ## Create Your First Compute Instance
 
-Compute Instances are virtual machines that can be used for nearly any purpose. Many of our customers use them to host websites and web applications, but they can also be used for development workloads, game servers, big data processing, machine learning, scientific processing, and much more. See the guides below to learn more about creating a Compute Instance, setting things up, and securing it.
+Compute Instances are virtual machines that can be used for nearly any purpose. Many of our customers use them to host websites and web applications, but they can also be used for development workloads, game servers, big data processing, machine learning, scientific processing, and much more. They come in a few different types, including [Shared CPU](https://www.linode.com/products/shared/), [Dedicated CPU](https://www.linode.com/products/dedicated-cpu/), [High Memory](https://www.linode.com/products/high-memory/), and [GPU](https://www.linode.com/products/gpu/). Each of these are tailored for certain workloads. See the guides below to learn more about creating a Compute Instance, configuring it after deployment, and securing it.
 
 - [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/)
-- [Getting Started After Deploying a Compute Instance](/docs/guides/getting-started-after-deployment/)
-- [Securing a Compute Instance](/docs/security/securing-your-server/)
+- [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
 
 ## Create Additional Services
 
-In addition to Compute Instances, Linode offers many other services that empower you to get the most out of cloud computing. Take a look through the list below to determine if any of them might be useful to you.
+In addition to [Compute Instances](#create-your-first-compute-instance), Linode offers many other services that empower you to get the most out of cloud computing. Take a look through the list below to determine if any of them might be useful to you.
 
 **Compute**
 
-- [Compute Instances](https://www.linode.com/products/shared/): Virtual machines hosted within Linode's own cloud infrastructure.
 - [LKE](https://www.linode.com/products/kubernetes/) (Linode Kubernetes Engine): Managed Kubernetes clusters that simplify container orchestration.
 - [Bare Metal](https://www.linode.com/products/bare-metal/) *(Coming soon)*: Dedicated single-tenant hardware for advanced workloads.
 
@@ -105,4 +103,4 @@ Keep in mind that charges will accrue for any active service, even if it is powe
 
 ## Explore Linode Guides
 
-Have fun (and get work done)! Since Linode makes cloud computing simple, affordable, and accessible, it's easy to spin up a new Compute Instance (or add any of our services) and do nearly anything you want to do. Play around in the Linux command-line, deploy a WordPress One-Click App, run a VPN, install a file storage platform, or even host a website using Object Storage. Whatever cloud computing use cases you have in mind, you can likely do it on Linode and our guides are a great place to start.
+Linode offers extensive documentation. This not only includes guides for our core products and services, but general guides on Linux, the command-line, networking, security, version control, databases, and *much* more. Learn how to deploy a WordPress One-Click App, run a VPN, install a file storage platform, or even host a website using Object Storage. Whatever cloud computing use cases you have in mind, you can likely do it on Linode and our guides are a great place to start.
