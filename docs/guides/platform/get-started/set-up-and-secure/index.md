@@ -233,16 +233,22 @@ See [Update Your Systems hosts File](#update-your-systems-hosts-file).
 
 ### Update Your System's `hosts` File
 
-The `hosts` file creates static associations between IP addresses and hostnames or domains which the system prioritizes before DNS for name resolution. Open this file in a text editor and add a line for your Linode's public IP address. You can associate this address with your Linode's **Fully Qualified Domain Name** (FQDN) if you have one, and with the local hostname you set in the steps above. In the example below, `203.0.113.10` is the public IP address, `example-hostname` is the local hostname, and `example-hostname.example.com` is the FQDN.
+The `hosts` file creates static associations between IP addresses and hostnames or domains which the system prioritizes before DNS for name resolution.
 
-{{< file "/etc/hosts" >}}
+1.  Open the `hosts` file in a text editor, such as [Nano](/docs/guides/use-nano-to-edit-files-in-linux/).
+
+        nano /etc/hosts
+
+1.  Add a line for your Linode's public IP address. You can associate this address with your Linode's **Fully Qualified Domain Name** (FQDN) if you have one, and with the local hostname you set in the steps above. In the example below, `203.0.113.10` is the public IP address, `example-hostname` is the local hostname, and `example-hostname.example.com` is the FQDN.
+
+    {{< file "/etc/hosts" >}}
 127.0.0.1 localhost.localdomain localhost
 203.0.113.10 example-hostname.example.com example-hostname
 {{< /file >}}
 
-Add an entry for your Linode's IPv6 address. Applications requiring IPv6 will not work without this entry:
+1.  Add a line for your Linode's IPv6 address. Applications requiring IPv6 will not work without this entry:
 
-{{< file "/etc/hosts" >}}
+    {{< file "/etc/hosts" >}}
 127.0.0.1 localhost.localdomain localhost
 203.0.113.10 example-hostname.example.com example-hostname
 2600:3c01::a123:b456:c789:d012 example-hostname.example.com example-hostname
