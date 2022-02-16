@@ -3,7 +3,7 @@ slug: ruby-on-rails-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Deploy Ruby on Rails on Linode using Marketplace Apps."
+description: "This guide provides you with installation and configuration instructions for deploying Ruby on Rails using the Lindoe One-Click Apps Marketplace."
 keywords: ['ruby on rails','marketplace', 'marketplace apps']
 tags: ["ruby","linode platform","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

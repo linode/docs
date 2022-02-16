@@ -3,7 +3,7 @@ slug: configure-and-use-salt-ssh
 author:
   name: Sergey Bulavintsev
   email: bulavintsev.sergey@gmail.com
-description: 'Learn how to configure and use Salt SSH in this simple tutorial'
+description: 'This guide provides you with step-by-step instructions for installing and configuring your Linux system to use Salt SSH without installing a salt-minion package.'
 keywords: ["Saltstack", " salt", " salt-ssh"]
 tags: ["automation","salt","ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

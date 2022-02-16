@@ -3,7 +3,7 @@ slug: package-mirrors
 author:
   name: Linode
   email: docs@linode.com
-description: Setting Linode Package Mirrors.
+description: 'Linode offers public package mirrors for Ubuntu, Debian, and CentOS. This guide provides you with instructions on how to mirror those package repositories. '
 keywords: ["package", "mirrors", "linode", "repository", "Debian", "Ubuntu", "CentOS", "yum", "apt-get"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/package-mirrors/','/platform/package-mirrors/']

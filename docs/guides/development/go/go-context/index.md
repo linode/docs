@@ -3,7 +3,7 @@ slug: go-context
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'Showcasing the use of the context Go package.'
+description: 'This article showcases some of the use cases of the context package which is part of Go, a programming language created by Google and uised in many popular apps.'
 keywords: ["go", "golang", "context"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-05-31

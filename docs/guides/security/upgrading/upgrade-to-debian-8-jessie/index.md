@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Alex Fornuto
   email: docs@linode.com
-description: 'How to upgrade from Debian 7 (Wheezy) to Debian 8 (Jessie).'
+description: 'This guide provides you with step-by-step instructions on how to upgrade your Linux system from Debian 7 "Wheezy" to Debian 8 "Jessie" via command line.'
 keywords: ["debian", "upgrade", "wheezy", "jessie"]
 tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

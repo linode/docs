@@ -3,7 +3,7 @@ slug: how-to-deploy-istio-with-kubernetes
 author:
   name: Linode
   email: docs@linode.com
-description: 'Istio is a service mesh and a platform with its own API and feature set that can help you run a distributed microservice architecture. Istio is a tool that you can deploy with few to no code changes to your application allowing you to harness its power without disrupting your development cycle. In conjunction with Kubernetes, Istio provides you with insights into your cluster leading to more control over your applications.'
+description: 'This guide will show you how to deploy Istio, a powerful service mesh, or network of microservices, with it''s own API, within a Kubernetes environment.'
 keywords: ['kuberenetes','istio','container','helm', 'k8s']
 tags: ["monitoring","networking","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

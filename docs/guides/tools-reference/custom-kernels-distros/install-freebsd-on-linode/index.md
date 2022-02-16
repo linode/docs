@@ -3,7 +3,7 @@ slug: install-freebsd-on-linode
 author:
   name: Rainbow
   email: rainbow@linode.com
-description: 'FreeBSD is a free and open source operating system based on the Berkeley Software Distribution from the late 1970''s. Today FreeBSD is used all over the world.'
+description: 'This guide will show you how to install FreeBSD, the free and open source operating system based on the Berkeley Software Software Distribution from the late 1970s.'
 keywords: ["freebsd", "bsd"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

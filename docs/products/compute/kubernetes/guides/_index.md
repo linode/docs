@@ -1,6 +1,6 @@
 ---
 title: Guides
-description: "Learn to deploy and manage a Linode Kubernetes Engine (LKE) cluster. Find other guides related to common Kubernetes workloads and their configuration."
+description: 'This short-guide will provide you with step-by-step instructions on how to enable cluster auto-scaling in your Linode Kubernetes Engine (LKE) Clsuter.'
 tab_group_main:
     weight: 30
 ---
@@ -22,6 +22,8 @@ tab_group_main:
 - [Configure Cluster Autoscaling](/docs/products/compute/kubernetes/guides/enable-cluster-autoscaling): Enable, edit, or disable the LKE autoscaling feature to automatically scale nodes as the needs of Kubernetes pods change.
 
 - [Reset Kubeconfig](/docs/products/compute/kubernetes/guides/reset-kubeconfig): Reset an LKE cluster's kubeconfig from the Cloud Manager.
+
+- [Enable High Availability](/docs/products/compute/kubernetes/guides/enable-high-availability): Enable High availability for your LKE cluster, creating additional replicas of your control plane components directly through the Cloud Manager.
 
 ## Themes
 

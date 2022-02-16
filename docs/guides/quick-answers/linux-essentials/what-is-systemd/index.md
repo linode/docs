@@ -3,7 +3,7 @@ slug: what-is-systemd
 author:
   name: Linode
   email: docs@linode.com
-description: 'An introduction to systemd and systemd unit files.'
+description: 'This guide provides you with an introduction to systemd, a Linux initialization system and service monitor daemon, as well as systemd unit files.'
 keywords: ['systemd','linux', 'init', 'unit files']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-09-12

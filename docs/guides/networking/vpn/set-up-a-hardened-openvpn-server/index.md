@@ -3,7 +3,7 @@ slug: set-up-a-hardened-openvpn-server
 author:
   name: Linode
   email: docs@linode.com
-description: 'Learn how to securely tunnel your traffic with OpenVPN and OpenSSL.'
+description: 'This guide provides you with instructions on setting up a hardened and secure OpenVPN server so you can securely tunnel your traffic from anywhere on any device.'
 keywords: ["openvpn", "vpn", "vpn tunnel", "openssl"]
 tags: ["networking","security","vpn","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

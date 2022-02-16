@@ -2,8 +2,8 @@
 slug: how-to-update-php-for-wordpress
 author:
   name: Jeff Novotny
-description: 'Most of the WordPress users are currently using PHP versions that are no longer supported, which is not good from a security perspective. This guide explains how and when to upgrade PHP without adversely affecting your site.'
-og_description: 'Most of the WordPress users are currently using PHP versions that are no longer supported, which is not good from a security perspective. This guide explains how and when to upgrade PHP without adversely affecting your site.'
+description: 'This guide will show you how and when to update your outdated and insecure versions of PHP without adversely affecting your WordPress website.'
+og_description: 'This guide will show you how and when to update your outdated and insecure versions of PHP without adversely affecting your WordPress website.'
 keywords: ['update php','update php wordpress','update php version','Ubuntu']
 tags: ['php', 'ubuntu', 'wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

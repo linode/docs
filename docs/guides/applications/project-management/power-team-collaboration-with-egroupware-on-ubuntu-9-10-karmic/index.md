@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Build a groupware system with eGroupware on Ubuntu 9.10 (Karmic).'
+description: 'This guide shows how to install and build a groupware system using eGroupware, which provides a group of server-side apps for collaboration on Ubuntu 9.10 "Karmic".'
 keywords: ["groupware", "email", "collaboration", "ubuntu", "karmic"]
 tags: ["ubuntu", "email", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

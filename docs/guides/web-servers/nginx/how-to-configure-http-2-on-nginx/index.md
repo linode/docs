@@ -2,8 +2,8 @@
 slug: how-to-configure-http-2-on-nginx
 author:
   name: Jeff Novotny
-description: 'This guide explains how to configure, use, and test HTTP/2 on an NGINX server. HTTP version 2 supersedes and replaces HTTP/1.1. HTTP/2 is best thought of as an extension rather than a wholesale overhaul of HTTP/1.1'
-og_description: 'This guide explains how to configure, use, and test HTTP/2 on an NGINX server. HTTP version 2 supersedes and replaces HTTP/1.1. HTTP/2 is best thought of as an extension rather than a wholesale overhaul of HTTP/1.1'
+description: 'In this tutorial, you will learn how to configure HTTP/2, an updated version of the HTTP technology which adds several useful features using Apache on Debian.'
+og_description: 'In this tutorial, you will learn how to configure HTTP/2, an updated version of the HTTP technology which adds several useful features using NGINX on Debian.'
 keywords: ['nginx http2']
 tags: ['web server', 'nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

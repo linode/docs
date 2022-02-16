@@ -3,7 +3,7 @@ slug: node-js-web-server-deployed-within-docker
 author:
   name: Joe D.
   email: docs@linode.com
-description: 'Deploy a Node.js Server in a Docker Container.'
+description: 'This guide shows you how to deploy a Node.js server inside of a Docker container, which is a technology platform for running containerized applications.'
 keywords: ["docker", "node.js", "node", "debian", "ubuntu", "web server", "javascript", "container"]
 tags: ["container","docker","web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

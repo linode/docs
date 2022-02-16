@@ -1,6 +1,6 @@
 ---
 slug: how-to-upgrade-to-debian-7-wheezy
-deprecated: yes
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com

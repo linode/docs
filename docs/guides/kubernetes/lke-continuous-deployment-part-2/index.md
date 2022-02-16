@@ -3,7 +3,7 @@ slug: lke-continuous-deployment-part-2
 author:
   name: Linode Community
   email: docs@linode.com
-description: "This part of the series examines the sample application to learn how it works and how it can be run locally."
+description: "In part two of our series on Kubernetes, you will learn how the guides the sample application works and how it can be run locally on your own Workstation."
 title: "Continuous Deployment Using LKE: Sample Application"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 2): Sample Application"
 enable_h1: true

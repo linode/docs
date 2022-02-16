@@ -84,7 +84,7 @@ Name=eth0
 
 [Network]
 DHCP=no
-Domains=members.linode.com
+Domains=203-0-113-0.ip.linodeusercontent.com
 IPv6PrivacyExtensions=false
 
 # DNS resolvers (safe to mix IPv4 and IPv6)
@@ -129,7 +129,7 @@ IPV6_AUTOCONF=no
 ...
 
 # Add the following lines:
-DOMAIN=members.linode.com
+DOMAIN=203-0-113-0.ip.linodeusercontent.com
 
 # We specifically want GATEWAY0 here, not
 # GATEWAY without an integer following it.
@@ -178,7 +178,7 @@ IPV6_AUTOCONF=no
 ...
 
 # Add the following lines:
-DOMAIN=members.linode.com
+DOMAIN=203-0-113-0.ip.linodeusercontent.com
 
 # We specifically want GATEWAY0 here, not
 # GATEWAY without an integer following it.
@@ -248,7 +248,7 @@ iface eth0 inet6 static
 nameserver 203.0.113.1
 nameserver 2001:db8:0:123::3
 nameserver 203.0.113.3
-domain members.linode.com
+domain 203-0-113-0.ip.linodeusercontent.com
 options rotate
 {{< /file >}}
 
@@ -320,7 +320,7 @@ default         198.51.100.1            -                       eth0
 . . .
 NETCONFIG_DNS_STATIC_SERVERS="203.0.113.1 2001:db8:0:123::2 203.0.113.3"
 . . .
-NETCONFIG_DNS_STATIC_SEARCHLIST="members.linode.com"
+NETCONFIG_DNS_STATIC_SEARCHLIST="203-0-113-0.ip.linodeusercontent.com"
 . . .
 NETCONFIG_DNS_RESOLVER_OPTIONS="rotate"
 {{< /file >}}
@@ -359,7 +359,7 @@ network:
       gateway4: 198.51.100.1                      # Primary IPv4 gateway.
       gateway6: "fe80::1"                         # Primary IPv6 gateway.
       nameservers:
-        search: [members.linode.com]              # Search domain.
+        search: [203-0-113-0.ip.linodeusercontent.com]              # Search domain.
         addresses: [203.0.113.20,203.0.113.21]    # DNS Server IP addresses.
 {{< /file >}}
 
@@ -385,7 +385,7 @@ iface eth0 inet static
 
 # Add DNS resolvers for resolvconf. Can mix IPv4 and IPv6.
   dns-nameservers 203.0.113.1 2001:db8:0:123::2 203.0.113.3
-  dns-search members.linode.com
+  dns-search 203-0-113-0.ip.linodeusercontent.com
   dns-options rotate
 
 # Add a second public IPv4 address.
@@ -431,7 +431,7 @@ If for whatever reason you prefer not to reboot, you should be able to bring you
         root@localhost:~# cat /etc/resolv.conf
         nameserver 8.8.8.8
         nameserver 2001:4860:4860::8888
-        domain members.linode.com
+        domain 203-0-113-0.ip.linodeusercontent.com
         options rotate
 
 1.  Try pinging something to confirm you have full connectivity, both over IPv4 and IPv6.

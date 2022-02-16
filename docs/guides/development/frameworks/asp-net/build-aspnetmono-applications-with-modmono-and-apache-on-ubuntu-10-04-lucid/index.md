@@ -3,7 +3,7 @@ slug: build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-10-04-luci
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'Use the Mono project''s Apache module to run ASP.NET applications.'
+description: 'This guide will show you how to use the Mono Project''s Apache module to run Microsoft ASP.NET applications on Ubuntu 10.04 (Lucid) similar to Windows Server'
 keywords: ["apache", "mono", ".net", "asp.net", "mod\\_mono"]
 tags: ["web applications","apache","php","mysql","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

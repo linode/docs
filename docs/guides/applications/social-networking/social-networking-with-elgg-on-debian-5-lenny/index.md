@@ -3,7 +3,7 @@ slug: social-networking-with-elgg-on-debian-5-lenny
 author:
   name: Linode
   email: docs@linode.com
-description: 'Niche and community social networking with Elgg.'
+description: 'This guide provides you with step-by-step instructions for installing and configuring Elgg, a open-source social networking tool which enables people to connect.'
 keywords: ["social networking", "lamp", "elgg", "elgg debian lenny"]
 tags: ["debian", "cms", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

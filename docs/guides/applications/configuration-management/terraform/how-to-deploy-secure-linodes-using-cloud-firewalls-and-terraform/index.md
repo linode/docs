@@ -3,8 +3,8 @@ slug: how-to-deploy-secure-linodes-using-cloud-firewalls-and-terraform
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide will use Terraform to deploy Linode instances with Cloud Firewalls assigned to them. You will create your own Terraform module to store reusable firewall rules that can be shared with your team. To complete this guide you need some familiarity with Terraform.'
-og_description: 'This guide will use Terraform to deploy Linode instances with Cloud Firewalls assigned to them. You will create your own Terraform module to store reusable firewall rules that can be shared with your team. To complete this guide you need some familiarity with Terraform.'
+description: 'This guide will show you how to use the Terraform application to deploy Linode instances with pre-configured Cloud Firewalls assigned to them.'
+og_description: 'This guide will show you how to use the Terraform application to deploy Linode instances with pre-configured Cloud Firewalls assigned to them.'
 keywords: ['terraform','infrastructure','firewalls','orchestration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-29

@@ -3,7 +3,7 @@ slug: securely-administer-oracle-xe-with-an-ssh-tunnel
 author:
   name: Linode
   email: docs@linode.com
-description: 'Accessing Oracle databases remotely using an SSH tunnel.'
+description: 'This guide provides you with information on accessing Oracle XE (Express Edition) databases remotely using an SSH tunnel and client application such as PuTTY.'
 keywords: ["Oracle tunnel", "Oracle over SSH", "SSH tunnel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/oracle/ssh-tunnel/','/databases/oracle/securely-administer-oracle-xe-with-an-ssh-tunnel/']

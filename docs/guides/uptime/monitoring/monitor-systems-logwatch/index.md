@@ -3,7 +3,7 @@ slug: monitor-systems-logwatch
 author:
   name: Elle Krout
   email: ekrout@linode.com
-description: 'Use Logwatch to generate digests and analyze your server logs'
+description: 'This guide shows you how to use logwatch, a Linux utility used to monitor system logs and create reports for critical and non-critical events on Arch Linux.'
 keywords: ["logwatch", "security", "logging", "audit", "logs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-08-12

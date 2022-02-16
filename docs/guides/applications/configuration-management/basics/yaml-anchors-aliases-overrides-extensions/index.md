@@ -3,8 +3,8 @@ slug: yaml-anchors-aliases-overrides-extensions
 author:
   name: Cameron Laird
   email: claird@phaseit.net
-description: 'YAML anchors, aliases, and overrides are features of the YAML language that help keep your code DRY. Anchors and aliases allow you to reference data for reuse. YAML overrides allow you to provide a custom value for an alias. This guide gives you examples for using YAML anchors, aliases, and overrides.'
-og_description: 'YAML anchors, aliases, and overrides are features of the YAML language that help keep your code DRY. Anchors and aliases allow you to reference data for reuse. YAML overrides allow you to provide a custom value for an alias. This guide gives you examples for using YAML anchors, aliases, and overrides.'
+description: 'This guide gives you examples for using YAML anchors, aliases, and overrides, which are features of the YAML language that help keep your code DRY.'
+og_description: 'This guide gives you examples for using YAML anchors, aliases, and overrides, which are features of the YAML language that help keep your code DRY.'
 keywords: ['YAML anchors']
 tags: ['docker', 'kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

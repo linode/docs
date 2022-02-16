@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'Get detailed website statistics such as visitor counts, pageviews, user agents percentages, and much more using the open source Webalizer package on Centos 5.'
+description: 'This guide shows how you can get detailed website statistics, such as visitor counts, page views, and more by installing the open-source Webalizer app on CentOS 5.'
 keywords: ["webalizer", "statistics", "analytics", "stats", "server monitoring", "centos"]
 tags: ["centos","statistics","apache","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

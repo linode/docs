@@ -3,7 +3,7 @@ slug: secrets-management-with-salt
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'An overview of available options to manage secrets with SaltStack'
+description: 'Salt is a powerful configuration management tool. This guide provides you with an overview of available options to manage secrets with SaltStack.'
 keywords: ['salt','saltstack','secret','secure','management','sdb','gpg','vault']
 tags: ["security","automation","salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,7 @@ slug: rust-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Deploy a Rust server on Linode using Marketplace Apps."
+description: "This guide provides you with instructions for installing Rust, a multiplayer game where you play as a survivor, on a Linode using the One-Click Marketplace App."
 keywords: ['rust','marketplace', 'server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-25

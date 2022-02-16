@@ -3,7 +3,7 @@ slug: what-is-linux
 author:
   name: Linode
   email: docs@linode.com
-description: 'Key topics about the Linux Operating System'
+description: 'This guide provides you with an overview of the Linux Operating System, including details about its history, the Kernel, development models, lifecycles, and more.'
 keywords: ['linux','unix','kernel','open source','free software']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-07-26

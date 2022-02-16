@@ -3,7 +3,7 @@ slug: secure-logstash-connections-using-ssl-certificates
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Secure Logstash connections using SSL certificates.'
+description: 'This guide provides you with instructions for securing connections from Logstash, a server-side processing pipeline, using SSL certificates.'
 og_description: 'Secure Logstash connections using SSL certificates.'
 keywords: ['secure logstash with ssl', 'logstash ssl setup', 'logstash ssl certificate']
 tags: ['security','ssl']
