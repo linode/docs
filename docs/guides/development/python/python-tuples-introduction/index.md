@@ -17,7 +17,7 @@ contributor:
   link: https://twitter.com/HeyChelseaTroy
 ---
 
-A tuple is a built-in Python data structure that can store a collection of objects. Tuples are an immutable sequence type. Tuples can contain values of any data type, and they can also mix different types in the same tuple. You can create Python tuples in several different ways; this guide shows you how to create a tuple.
+A tuple is a built-in Python data structure that stores multiple comma-separated values. Tuples are an immutable *sequence* type. Tuples can contain values of any data type, and they can also mix different types in the same tuple. You can create Python tuples in several different ways. This guide describes the characteristics of tuples and shows you the various ways you can create a Python tuple.
 
 {{< note >}}
 You should have [Python 3.0 installed on your machine](/docs/guides/how-to-install-python-on-ubuntu-20-04/) to follow along with the examples in this guide.
@@ -29,7 +29,7 @@ You should have [Python 3.0 installed on your machine](/docs/guides/how-to-insta
 
 To create a Python tuple, add a comma-separated collection of values inside of parentheses and assign it to a variable as shown in the example below:
 
-    >>> integers = (1, 3, 4)
+    integers = (1, 3, 4)
 
 The above example stores a collection of integers.
 
