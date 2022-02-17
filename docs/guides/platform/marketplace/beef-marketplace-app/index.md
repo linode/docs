@@ -78,7 +78,7 @@ Happy hunting!
 
 1.  Navigate to this URL in a web browser to display the login prompt.
 
-    ![](beef-login-prompt.png)
+    ![Screenshot of the BeEF login prompt](beef-login-prompt.png)
 
 1.  Enter `beef` as the username and use the password you entered into the *BeEF Password* field when you created the Instance.
 
