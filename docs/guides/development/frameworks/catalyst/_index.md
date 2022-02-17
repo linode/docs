@@ -7,7 +7,7 @@ og_description: "The Catalyst web framework is a contemporary Perl-based MVC, or
 keywords: ["Catalyst", "Perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-31
-title: Catalyst
+title: Run Catalyst at Linode | Linode
 show_in_lists: true
 aliases: ['/development/frameworks/catalyst/']
 ---

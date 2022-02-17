@@ -2,12 +2,12 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "Pulumi is a development tool that allows you to write computer programs which deploy cloud resources. Pulumi integrates with multiple cloud platforms, and Pulumi programs can be authored in a number of common programming languages."
-og_description: 'Pulumi is a development tool that allows you to write computer programs which deploy cloud resources. Pulumi integrates with multiple cloud platforms, and Pulumi programs can be authored in a number of common programming languages.'
+description: "Pulumi is a development tool which allows you to write computer programs which deploy cloud resources. Pulumi also integrates with multiple cloud platforms."
+og_description: 'Pulumi is a development tool which allows you to write computer programs which deploy cloud resources. Pulumi also integrates with multiple cloud platforms.'
 keywords: ["pulumi", "infrastructure as code"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-15
-title: Pulumi
+title: Using Pulumi at Linode | Linode
 show_in_lists: true
 aliases: ['/applications/configuration-management/pulumi/']
 ---

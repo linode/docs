@@ -7,7 +7,7 @@ og_description: "Symfony is a PHP web application framework, providing the class
 keywords: ["symfony", "php", "ajax"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-02
-title: Symfony
+title: Run Symfony at Linode | Linode
 show_in_lists: true
 aliases: ['/development/frameworks/symfony/']
 ---
