@@ -1,0 +1,153 @@
+
+[params]
+weglot_api_key = "wg_3b3ef29c81aa81292c64d1368ee318969"
+# Google Tag Manager ID
+gtmID = "GTM-T5FXXG9"
+
+[params.search_config2]
+
+app_id = "KGUN8FAIPF"
+api_key = "d4847002cd30392fe0fbd00a1da933ed"
+meta_index = "linode-documentation-sections"
+
+explorer_max_leafnodes = 50
+hits_per_page = 10
+
+# Holds configuration for the index with all of the sections merged in.
+[params.search_config2.sections_merged]
+name = "merged"
+index = "linode-merged"
+index_by_pubdate = "linode-merged-sorted"
+title = "All"
+noun = "All"
+hits_per_page = 20
+filtering_facets = [
+    { name = "docType", title = "Doc Type" },
+     { name = "category", title = "Category" },
+    { name = "tags", title = "Tags", isTags = true }
+]
+
+# Note there is a search_config also in the docs project, which would win over this.
+# This is a refactored version to better separate the UI with the more technical configuration,
+# and to make it easier/possible to merge configurations and override setting via OS env.
+[params.search_config2.sections]
+[params.search_config2.sections.products]
+name = "products"
+weight = 10 # Used to order the sections in the UI. Higher comes first.
+title = "Products"
+noun = "Product Guide"
+filters = "section.lvl0:products"
+# The icons are fetched from layouts/sections/navigation/explorer-icons.html
+explorer_icon = "#icon-explorer--products"
+
+[params.search_config2.sections.guides]
+name = "guides"
+filters = "section.lvl0:guides"
+weight = 20
+title = "Guides"
+noun = "Guide"
+explorer_icon = "#icon-explorer--guides"
+
+[params.search_config2.sections.api]
+name = "api"
+index = "linode-documentation-api"
+filters = "section.lvl0:api"
+weight = 30
+title = "API"
+explorer_icon = "#icon-explorer--api"
+
+
+[params.search_config2.sections.marketplace]
+name = "marketplace"
+index = "linode-wp"
+weight = 40
+title = "Marketplace"
+noun = "App"
+filters = "section.lvl0:Marketplace"
+explorer_icon = "#icon-explorer--marketplace"
+
+[params.search_config2.sections.blog]
+name = "blog"
+weight = 50
+title = "Blog"
+noun = "Post"
+filters = "section.lvl0:Blog"
+explorer_icon = "#icon-explorer--blog"
+
+[params.search_config2.sections.resources]
+name = "resources"
+filters = "section.lvl0:Resources"
+weight = 60
+title = "Resources"
+noun = "Resource"
+explorer_icon = "#icon-explorer--resources"
+
+[params.search_config2.sections.community]
+name = "community"
+filters = "objectType:question"
+weight = 70
+title = "Q&A"
+explorer_icon = "#icon-explorer--qa"
+
+[module]
+[[module.mounts]]
+source = "content"
+target = "content"
+
+[[module.mounts]]
+source = "i18n"
+target = "i18n"
+
+[[module.mounts]]
+source = "layouts"
+target = "layouts"
+
+[[module.mounts]]
+source = "assets"
+target = "assets"
+
+[[module.mounts]]
+source = "static"
+target = "static"
+
+# The common static footer and header.
+[[module.imports]]
+path = "github.com/linode/linode-website-partials"
+
+[[module.imports.mounts]]
+source = "header.html"
+target = "layouts/partials/linode-header.html"
+
+[[module.imports.mounts]]
+source = "footer.html"
+target = "layouts/partials/linode-footer.html"
+
+[[module.imports.mounts]]
+source = "header.css"
+target = "assets/linode/header.css"
+
+[[module.imports.mounts]]
+source = "footer.css"
+target = "assets/linode/footer.css"
+
+[[module.imports.mounts]]
+source = "header.js"
+target = "assets/linode/header.js"
+
+[[module.imports.mounts]]
+source = "footer-inline.js"
+target = "assets/linode/footer-inline.js"
+
+[[module.imports.mounts]]
+source = "attribution-inline.js"
+target = "assets/linode/attribution-inline.js"
+
+# JS components packaged as Hugo Modules.
+[[module.imports]]
+path = "github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3"
+
+[[module.imports]]
+path = "github.com/gohugoio/hugo-mod-jslibs/turbo/v7"
+
+[[module.imports]]
+path = "github.com/gohugoio/hugo-mod-jslibs/instantpage"

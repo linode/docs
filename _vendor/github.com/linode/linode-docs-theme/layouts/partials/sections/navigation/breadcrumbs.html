@@ -1,0 +1,59 @@
+{{ $p := .page }}
+{{ $wrap := .wrap }}
+{{ if and (not (eq $p.Type "sections") ) (not (eq $p.Type "content") )}}
+  {{/* This is a fully static Hugo hosted page. Render the breadcrumbs statically. */}}
+  <nav class="breadcrumbs breadcrumbs-static text-sm">
+    <ol class="list-none pb-0 inline-flex {{if $wrap }}flex-wrap {{end}} -mt-1">
+      {{ template "breadcrums-item" (dict "p1" $p "p2" $p ) }}
+    </ol>
+  </nav>
+{{ else }}
+  <nav class="breadcrumbs needs-js text-sm " aria-label="breadcrumbs" x-data="lncBreadcrumbs" id="breadcrumbs-{{ $wrap }}">
+    <ol class="list-none pb-0 inline-flex {{if $wrap }}flex-wrap {{end}} -mt-1">
+      <li class="flex items-center mt-1">
+        {{ template "breadcrumbs-home" . }}
+        <template x-if="data.breadcrumbs.sections.length > 0">
+          {{ template "breadcrumbs-arrow" . }}
+        </template>
+      </li>
+      <template x-for="(b, i) in data.breadcrumbs.sections" :key="b.href">
+        <li class="flex items-center mt-1">
+          <a x-text="b.linkTitle" :href="b.href" class="truncate"></a>
+          <template x-if="i < (data.breadcrumbs.sections.length - 1)">
+            {{ template "breadcrumbs-arrow" . }}
+          </template>
+        </li>
+      </template>
+    </ol>
+  </nav>
+{{ end }}
+
+{{ define "breadcrumbs-home" }}
+  <a class="max-w-32 truncate" href="{{ site.Home.RelPermalink }}">
+    Docs Home
+  </a>
+{{ end }}
+
+{{ define "breadcrums-item" }}
+  {{ if .p1.Parent }}
+    {{ template "breadcrums-item" (dict "p1" .p1.Parent "p2" .p2 )  }}
+  {{ end }}
+  <li class="flex items-center mt-1">
+    {{ if .p1.IsHome }}
+      {{ template "breadcrumbs-home" . }}
+    {{ else }}
+      {{ if ne .p1 .p2 }}
+        {{ template "breadcrumbs-arrow" . }}
+        <a  href="{{ .p1.Permalink }}" class="truncate">
+          {{ .p1.LinkTitle }}
+        </a>
+      {{ end }}
+    {{ end }}
+  </li>
+{{ end }}
+
+{{ define "breadcrumbs-arrow"}}
+  <svg class="mx-3 text-basicgray" style="width: 5px; height: 13px;">
+    <use href="#icon--arrow-right"></use>
+  </svg>
+{{ end }}

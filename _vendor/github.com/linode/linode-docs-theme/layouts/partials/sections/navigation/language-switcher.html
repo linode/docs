@@ -1,0 +1,13 @@
+<aside id="language-switcher" x-data="lncLanguageSwitcher" x-show="show" @turbo:render.window="onTurboRender()" data-wg-notranslate="" tabindex="0" :aria-expanded="open" role="listbox" 
+  class="weglot_switcher wg-drop country-selector wg-mouse-click'" :class="{'closed': !open, 'weg-openleft': open}" aria-activedescendant="weglot-language-en" aria-label="Language selected: English">
+  <div @click="$root.focus(); open = !open" @click.away="open = false" :data-l="currentLanguage().lang" :class="`wgcurrent wg-li ${currentLanguage().lang}`">
+    <a href="#" tabindex="-1" target="_self" role="none" :id="`weglot-language-${currentLanguage().lang}`" x-text="currentLanguage().name"></a>
+  </div>
+  <ul role="none">
+    <template x-for="language in languages" :key="language.lang">
+      <li :class="`wg-li ${language.lang}`" :data-l="language.lang" role="none" :id="`wg-${language.lang}`">
+        <a @click="switchLanguage(language.lang)" :id="`weglot-language-${language.lang}`" role="option" x-text="language.name"></a>
+      </li>
+    </template>
+  </ul>
+</aside>

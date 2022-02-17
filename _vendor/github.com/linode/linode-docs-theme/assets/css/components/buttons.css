@@ -1,0 +1,32 @@
+.btn {
+  @apply font-semibold py-2 px-4 rounded no-underline text-textcolor;
+}
+
+.btn:focus {
+  @apply outline-none;
+}
+
+.btn:hover:enabled {
+  @apply opacity-75;
+}
+
+.btn:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* Used for the icons that acts as butons. */
+.btn-icon {
+  @apply text-textcolor;
+}
+
+.btn-icon:focus {
+  @apply outline-none;
+}
+
+.btn-icon:hover:enabled {
+  @apply opacity-75;
+}
+
+.btn-icon:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}

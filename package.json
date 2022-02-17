@@ -1,0 +1,38 @@
+{
+ "comments": {
+  "dependencies": {},
+  "devDependencies": {
+   "@babel/cli": "github.com/linode/linode-docs-theme",
+   "@babel/core": "github.com/linode/linode-docs-theme",
+   "@babel/preset-env": "github.com/linode/linode-docs-theme",
+   "@fullhuman/postcss-purgecss": "github.com/linode/linode-docs-theme",
+   "@tailwindcss/forms": "github.com/linode/linode-docs-theme",
+   "@tailwindcss/typography": "github.com/linode/linode-docs-theme",
+   "autoprefixer": "github.com/linode/linode-docs-theme",
+   "core-js": "github.com/linode/linode-docs-theme",
+   "netlify-plugin-cache": "github.com/linode/linode-docs-theme",
+   "netlify-plugin-debug-cache": "github.com/linode/linode-docs-theme",
+   "postcss": "github.com/linode/linode-docs-theme",
+   "postcss-cli": "github.com/linode/linode-docs-theme",
+   "tailwindcss": "github.com/linode/linode-docs-theme"
+  }
+ },
+ "dependencies": {},
+ "devDependencies": {
+  "@babel/cli": "^7.15.7",
+  "@babel/core": "^7.15.5",
+  "@babel/preset-env": "^7.15.6",
+  "@fullhuman/postcss-purgecss": "^4.0.3",
+  "@tailwindcss/forms": "^0.3.4",
+  "@tailwindcss/typography": "^0.4.1",
+  "autoprefixer": "^10.3.7",
+  "core-js": "^3.18.1",
+  "netlify-plugin-cache": "^1.0.3",
+  "netlify-plugin-debug-cache": "^1.0.3",
+  "postcss": "^8.3.9",
+  "postcss-cli": "^9.0.1",
+  "tailwindcss": "^2.2.16"
+ },
+ "name": "linode-docs",
+ "version": "0.1.0"
+}

@@ -1,0 +1,7 @@
+{{ $twitterLink := printf "https://twitter.com/share?url=%s&via=linode&text=%s" .page.Permalink (.page.Title | truncate 30 ) }}
+{{ $faceBookLink := printf "http://www.facebook.com/sharer.php?u=%s" .page.Permalink }}
+{{ $hackerNewsLink := printf "https://news.ycombinator.com/submitlink?u=%s&t=%s" .page.Permalink .page.Title }}
+
+  {{ partial "sections/content/navbar__dropdown__link.html" (dict "href" $twitterLink "icon" "#icon--twitter" "text" "Share on Twitter") }}
+  {{ partial "sections/content/navbar__dropdown__link.html" (dict "href" $faceBookLink "icon" "#icon--facebook" "text" "Share on Facebook") }}
+  {{ partial "sections/content/navbar__dropdown__link.html" (dict "href" $hackerNewsLink "icon" "#icon--hackernews" "text" "Share on Hacker News") }}

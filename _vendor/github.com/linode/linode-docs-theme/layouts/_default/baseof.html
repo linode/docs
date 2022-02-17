@@ -1,0 +1,142 @@
+{{ $showToc := false}}
+{{ if not .Params.notoc  }}
+  {{ $showToc = .Params.toc }}
+  {{ if not $showToc }}
+    {{ $showToc = strings.Contains .Content "<h2" }}
+  {{ end }}
+{{ end }}
+<!DOCTYPE html>
+{{/* Note that the TailwindCSS config is "scoped" by the ln-docs ID, so don't change it for no good reason. */}}
+<html id="ln-docs" lang="{{ site.Language.Lang }}">
+<head>
+  {{ partial "sections/head.html" . }}
+  {{ block "head-meta-main" . }}
+    {{/* The default static title and SEO meta markup. */}}
+    <title>
+      {{ partial "funcs/get-page-title.html" . }} | {{ $.Site.Params.page_title_suffix | default "Linode" }}
+    </title>
+    
+    {{/* See https://turbo.hotwired.dev/handbook/drive#setting-a-root-location */}}
+    <meta name="turbo-root" content="/docs">
+    
+    {{/* SEO */}}
+    {{ partial "sections/head-seo.html" . }}
+  {{ end }}
+  {{ block "head-meta-addons" . }}{{ end }}
+  <noscript>
+    <style>
+    .hide-if-no-js {
+    display: none !important;
+    }
+    .show-if-no-js {
+    display: block !important;
+    }
+    </style>
+  </noscript>
+  <style>
+    [x-cloak] {
+    display: none !important;
+    }
+    .is-translating {
+      opacity: 0 !important;
+    }
+  </style>
+</head>
+<body class="{{ block `body-class` . }}na {{ end }}type-{{ .Type }} kind-{{ .Kind }} {{ if $showToc }}is-toc{{ else }}is-not-toc{{ end }}
+     no-js
+     h-auto
+     overflow-x-hidden
+     is-not-loaded
+     is-not-topbar-pinned
+     is-explorer-open
+     is-not-toc-open
+     is-not-search-panel-open
+     is-not-search-panel_filters-open">
+  {{ partial "sections/after-body-start.html" . }}
+  
+  {{/* Structured data. */}}
+  {{ partial "sections/body-structured-data.html" . }}
+  
+  {{/* Base grid */}}
+  
+  <div id="grid" class="grid--base bg-backgroundcolor">
+    
+    {{ block "icons" . }}
+      <div x-ignore style="display: none;">
+        {{ partial "icons/navigation.html" .}}
+        {{ partial "icons/social.html" .}}
+      </div>
+    {{ end }}
+    
+    <header id="linode-menus" class="z-20" x-ignore data-turbo-permanent>
+      {{ partial "linode-header.html" }}
+    </header>
+    
+    {{/* Top navbar */}}
+    <nav id="navbar" class="bg-white w-full box-border sticky top-0 z-10 border-b-gray">
+      <div id="navbar__icons--left" class="h-full flex justify-start">
+        <div class="navbar__logo hide-if-topbar-is-not-pinned md:pr-2 h-full flex items-center justify-center"  x-data="lncNav" x-effect="onEffect()"
+        @scroll.window="onScroll()" @turbo:before-render.window="onTurboBeforeRender(event)" @turbo:render.window="onTurboRender()"  @popstate.window="onPopState($event)"  id="nav-controller" data-turbo-permanent>
+          <svg>
+            <use href="#icon--logo-small"></use>
+          </svg>
+        </div>
+        <div class="navbar__explorer-toggle h-full">
+          {{ partial "sections/navigation/explorer-toggle.html" . }}
+        </div>
+      </div>
+      <div id="navbar__search-input" class="pl-4 flex items-stretch h-full w-full">
+        {{ partialCached "sections/search/input.html" . }}
+      </div>
+      <div id="navbar__breadcrumbs" class="h-full w-full pl-4 border-l-gray overflow-x-auto show-if-no-js">
+        <div class="h-full w-auto flex items-center">
+          {{ partial "sections/navigation/breadcrumbs.html" (dict "page" . "wrap" false) }}
+        </div>
+      </div>
+      <div id="navbar__toc" class="hide-if-is-not-toc hide-if-search-panel-open h-full">
+        {{ partial "sections/navigation/toc.html" . }}
+      </div>
+    </nav>
+    
+    {{/* Left side explorer menu. */}}
+    <nav id="explorer" class="sticky overflow-y-scroll z-0 top--navbar-row border-r-gray">
+      {{ partialCached "sections/navigation/explorer.html" . }}
+    </nav>
+    
+    {{/* Main content area. */}}
+    <main class="main bg-white h-full min-h-screen overflow-hidden hide-on-lang-nav">
+      <div class="main__inner">
+        
+        {{ if site.Params.enable_leak_checker }}
+          {{ partial "helpers/leak-checker.html" }}
+        {{ end }}
+        <section class="w-full">
+          {{ partial "sections/search/panel.html" . }}
+        </section>
+        <section id="main__content" class="main__content container mb-20">
+          <div class="w-full h-full">
+            {{ if not .IsHome }}
+              <div class="mt-4 md:mt-6 main__breadcrumbs">
+                {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
+              </div>
+            {{ end }}
+            <div class="{{ if not .IsHome }}mt-6{{ end }}">
+              {{ block "main" . }}{{ end }}
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    
+    {{/* Common Linide footer */}}
+    <div id="footer" class="border-t-gray z-50" x-ignore>
+      {{ partial "linode-footer.html" }}
+    </div>
+    
+    {{/* Scripts etc. added before body end. */}}
+    {{ partial "sections/before-body-end.html" . }}
+  </div>
+</body>
+<template id="language-switcher-template">
+  {{ partial "sections/navigation/language-switcher.html" . }}
+</template>
