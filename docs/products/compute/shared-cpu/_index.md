@@ -1,6 +1,6 @@
 ---
 title: Shared CPU
-description: "Shared CPU Compute Instances offer an international content delivery network (CDN) and several plan choices so you can find the best price and performance for your workloads."
+description: "Shared CPU Compute Instances are great for a content delivery network, and with plenty of choices, you can find the best price and performance for your workloads."
 tab_group_main:
     is_root: true
     title: Overview

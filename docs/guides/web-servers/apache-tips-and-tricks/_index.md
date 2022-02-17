@@ -7,5 +7,6 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache-tips-and-tricks/','/web-servers/apache/configuration/','/websites/apache-tips-and-tricks/']
 published: 2009-07-16
 title: Apache Tips & Tricks
+description: 'The Apache Web Server is a very popular and widely-used free and open-source web server. The guides in this section will help you with the many Apache configurations.'
 show_in_lists: true
 ---

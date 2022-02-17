@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'These guides offer simple, quick answers to common questions.'
+description: 'The guides in this section offer simple, quick answers to commonly asked questions, such as common Linux questions, website questions, and more.'
 keywords: ["quick answers", "linux", "how to"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-04-14

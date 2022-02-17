@@ -1,5 +1,7 @@
 ---
 title: Manually Configuring a VLAN on a Linode
+description: 'This guide is for users that have disabled Network Helper on their Linode or prefer not to assign an IPAM address within a Linode's Configuration Profile.'
+
 tab_group_main:
     weight: 20
 ---

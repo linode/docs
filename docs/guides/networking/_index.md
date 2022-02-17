@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configuring your Linode to talk to the world.'
+description: 'The guides in this section will cover Linode Networking and instruct you in the various ways you can connect your linode to the Internet and talk to other servers.'
 keywords: ["networking", "network guide", "networking howto"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2009-07-16
