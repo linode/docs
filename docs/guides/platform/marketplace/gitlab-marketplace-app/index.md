@@ -8,7 +8,7 @@ keywords: ['gitlab','marketplace apps','version control','git']
 tags: ["linode platform","version control system","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-27
-modified: 2022-02-13
+modified: 2022-02-17
 modified_by:
   name: Linode
 title: "Deploying GitLab through the Linode Marketplace"
@@ -48,21 +48,21 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Access your GitLab Site
 
-After GitLab has finished installing, you will be able to access your GitLab site over `http://` with your Linode's IPv4 address or the domain name entered when deploying your GitLab Marketplace App.
+Once your new Compute Instance has been fully deployed, follow the instructions below to access your new Gitlab app.
 
 1. **Configure DNS:** If you entered a domain name during deployment, configure an [*A record*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) within your name server. This record should point to the IPv4 address of your new Compute Instance. Review the [DNS Manager](/docs/guides/dns-manager/) guide for instructions on setting up DNS records and also see the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) guide for instructions on viewing your IP addresses.
 
-1. **Find the root password:** Before logging in to your Gitlab site, you need to obtain the root password that was generated during provisioning.
+1. **Find the Gitlab root password:** Before logging in to your Gitlab site, you need to obtain the Gitlab root password that was generated during provisioning.
 
-    1. Log in to your new Compute Instance through [Lish](/docs/guides/using-the-lish-console/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using the root password you entered when creating the instance.
+    1. Log in to your new Compute Instance through [Lish](/docs/guides/using-the-lish-console/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using `root` user and the password you entered when creating the instance.
 
     1.  Enter the following command in the lish console or terminal session:
 
             cat /etc/gitlab/initial_root_password
 
-        Your root password is displayed within the output of that command.
+        The Gitlab root password is displayed within the output of that command.
 
-1. **Log in to your Gitlab site:** Open a web browser and enter either your Compute Instance's IP address or you domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) guide for instructions on viewing your IP addresses. Ensure you are using `http://` when visiting your site.
+1. **Log in to your Gitlab site:** Open a web browser and enter either your Compute Instance's IP address or your domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) guide for instructions on viewing your IP addresses. Ensure you are using `http://` when visiting your site.
 
     When presented with a login screen, enter the following credentials:
 
