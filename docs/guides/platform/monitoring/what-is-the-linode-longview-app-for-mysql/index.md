@@ -3,17 +3,17 @@ slug: what-is-the-linode-longview-app-for-mysql
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide discusses the Linode Longview client, including how to configure Longview for the MySQL database server, how to interact with data from Longview, and more.'
+description:  "This guide discusses the Linode Longview client, including how to configure Longview for the MySQL database server, how to interact with data from Longview, and more."
 keywords: ["Longview", "MySQL", "statistics"]
 tags: ["cloud manager","statistics","monitoring","linode platform","mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/longview/longview-for-mysql/','/platform/longview/longview-app-for-mysql/','/platform/longview/what-is-the-linode-longview-app-for-mysql/']
-modified: 2020-01-28
+modified: 2022-02-17
 modified_by:
   name: Linode
 published: 2013-11-06
-title: What is the Linode Longview App for MySQL
-h1_title: Using the Linode Longview App for MySQL
+title: "What is the Linode Longview App for MySQL"
+h1_title: "Using the Linode Longview App for MySQL"
 enable_h1: true
 classic_manager_link: platform/longview/longview-app-for-mysql-classic
 relations:
@@ -26,6 +26,7 @@ relations:
 Longview for MySQL is a Longview App. The Longview MySQL tab appears in the Linode Cloud Manager when Longview detects that you have MySQL installed on your Linode. With the Longview MySQL App, you'll be able to view statistics for MySQL on your Linode. It can help you keep track of MySQL's settings, queries, system resource consumption, and other information.
 
 ## In this Guide
+
 This guide discusses Linode Longview for MySQL. The guide covers the following topics:
 
 - [Configuring Linode Longview for MySQL](#debian-and-ubuntu-automatic-configuration).
@@ -33,6 +34,7 @@ This guide discusses Linode Longview for MySQL. The guide covers the following t
 - [Troubleshooting Linode Longview for MySQL](#troubleshooting).
 
 ## Before you Begin
+
 In order to use the Longview App for MySQL, ensure you have completed the following things:
 
 - A Linode with [MySQL installed and running](/docs/databases/mysql/).
