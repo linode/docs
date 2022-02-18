@@ -8,7 +8,7 @@ keywords: ["linode platform"]
 tags: ["linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-10-20
-title: Get Started
+title: Get Started With the Linode Platform | Linode
 show_in_lists: true
 ---
 

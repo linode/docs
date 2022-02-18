@@ -7,7 +7,7 @@ description: 'Linux distributions like Ubuntu and Debian are constantly evolving
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/upgrading/','/upgrading/']
 published: 2012-06-01
-title: Upgrading
+title: System Upgrade Guides | Linode
 show_in_lists: true
 ---
 

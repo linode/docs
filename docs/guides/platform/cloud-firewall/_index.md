@@ -7,7 +7,7 @@ keywords: ["manager", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/cloud-firewall/','/manager/']
 published: 2018-07-16
-title: Cloud Firewall
+title: Learn About Linode Cloud Firewall | Linode
 show_in_lists: true
 ---
 

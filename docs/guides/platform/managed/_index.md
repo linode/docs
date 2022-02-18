@@ -8,7 +8,7 @@ tags: ["linode platform","cloud manager","monitoring"]
 keywords: ["linode managed", "monitoring", "linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-10-20
-title: Managed
+title: Learn About Linode Managed | Linode
 show_in_lists: true
 ---
 

@@ -7,7 +7,7 @@ keywords: ["nodebalancer", "load balancing", "load", "load balance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/nodebalancer/','/nodebalancers/']
 published: 2012-07-17
-title: NodeBalancers
+title: Learn About Linode NodeBalancers | Linode
 show_in_lists: true
 ---
 

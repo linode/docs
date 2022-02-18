@@ -8,6 +8,6 @@ tags: ["security", "networking", "linode platform"]
 keywords: ['vlan', 'security', 'create vlan']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-26
-title: VLAN
+title: Configuring VLANs at Linode | Linode
 show_in_lists: true
 ---

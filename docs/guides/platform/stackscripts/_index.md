@@ -6,7 +6,7 @@ description: 'StackScripts provide Linode users with the ability to automate the
 keywords: ["scripts", "automation", "elasticity", "custom instance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/stackscripts-classic-manager/','/platform/stackscripts/','/platform/stackscripts-new-manager/','/stackscripts/']
-title: StackScripts
+title: How to Use Linode StackScripts | Linode
 show_in_lists: true
 ---
 

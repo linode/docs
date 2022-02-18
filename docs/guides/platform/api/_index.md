@@ -7,7 +7,7 @@ keywords: ["linode api", " api key", " key"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/api/']
 published: 2014-01-27
-title: Linode API
+title: Learn About the Linode API | Linode
 show_in_lists: true
 ---
 

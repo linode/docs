@@ -6,7 +6,7 @@ description: 'Zimbra is a groupware system that provides email, calendaring, int
 keywords: ["zimbra", "zimbra groupware", "zimbra on linux", "linux mail server", "linux email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2009-09-13
-title: Zimbra Groupware
+title: Zimbra Groupware Installation Guides | Linode
 show_in_lists: true
 aliases: ['/email/zimbra/']
 ---

@@ -1,5 +1,5 @@
 ---
-title:  Migrate to Linode
+title:  How to Migrate to Linode | Linode
 aliases: ['/migrate-to-linode/','/platform/migrate-to-linode/']
 show_in_lists: true
 ---

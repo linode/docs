@@ -6,7 +6,7 @@ description: 'Guides on using Mailman to manage mailing lists on your Linode.'
 keywords: ["mailman", "listserv", "email", "postfix", "mailing list"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2010-02-12
-title: Mailman Guides
+title: Mailman Installation & Configuration Guides | Linode
 show_in_lists: true
 aliases: ['/email/mailman/']
 ---
