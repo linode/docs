@@ -48,7 +48,7 @@ MySQL is an open-source database management system that uses a relational databa
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended plan:** Depends on the size of your MySQL database and the amount of traffic you expect.

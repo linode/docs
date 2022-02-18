@@ -41,7 +41,7 @@ Node.js is an open-source JavaScript runtime environment that can serve dynamic 
 1.  Set up your Linode using the [Getting Started](/docs/guides/getting-started/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides.
 
     {{< note >}}
-Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/guides/getting-started/#update-your-system-s-hosts-file) section of the [Getting Started](/docs/guides/getting-started/) guide.
+Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/guides/set-up-and-secure/#update-your-systems-hosts-fileupdate-your-system-s-hosts-file) section of the [Getting Started](/docs/guides/getting-started/) guide.
     {{</ note >}}
 
 1. Install the SELinux core policy Python utilities. This will give you the ability to manage SELinux settings in a fine-grained way.

@@ -71,7 +71,7 @@ Discourse requires that you have a domain name and SMTP email. These fields are 
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended minimum plan:** 4GB Shared Compute Instance

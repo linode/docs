@@ -62,7 +62,7 @@ If you do not have the values for these fields, you can leave them empty. After 
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Debian 9
 - **Recommended minimum plan:** All plan types and sizes can be used. The plan that you select should be appropriate for the amount of data transfer, users, and other stress that may affect the performance of your VPN.

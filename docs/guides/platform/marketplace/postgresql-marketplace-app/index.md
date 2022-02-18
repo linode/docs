@@ -28,7 +28,7 @@ The PostgreSQL relational database system is a powerful, scalable, and standards
 
 ## Configuration Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Debian 11
 - **Recommended minimum plan:** All plan types and sizes can be used.

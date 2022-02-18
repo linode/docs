@@ -51,7 +51,7 @@ This section shows you how to install the Plex Media Server on your Ubuntu 18.04
 
     ![Plex server downloads page.](download-plex-server-for-ubuntu.jpg)
 
-1. [Connect to your Ubuntu 18.04 Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh) and use `wget` to download the installer via the copied link. Replace the link with your selected distribution as shown in the example below:
+1. [Connect to your Ubuntu 18.04 Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) and use `wget` to download the installer via the copied link. Replace the link with your selected distribution as shown in the example below:
 
         wget https://downloads.plex.tv/plex-media-server/1.14.1.5488-cc260c476/plexmediaserver_1.14.1.5488-cc260c476_amd64.deb
 
@@ -82,7 +82,7 @@ In this section, you complete your server setup and start adding media libraries
 
     [![Plex web interface - Server Name.](plex-server-name-small.png)](plex-server-name.png)
 
-1.  Finally, [connect to your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh) to create the directories that store your Plex media. In the example, you create library directories for `movies` and `television` within a `plex-media` directory. These are located within your user's home directory (`/home/username/`):
+1.  Finally, [connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) to create the directories that store your Plex media. In the example, you create library directories for `movies` and `television` within a `plex-media` directory. These are located within your user's home directory (`/home/username/`):
 
         cd ~/
         mkdir -p plex-media/movies && mkdir plex-media/television

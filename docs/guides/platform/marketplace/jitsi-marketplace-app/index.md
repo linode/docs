@@ -44,7 +44,7 @@ If Jitsi is not created with the SSL option enabled, it uses a self-signed certi
 
 | **Field** | **Description** |
 |:--------------|:------------|
-| **The hostname for your server** | The [hostname](/docs/guides/getting-started/#set-the-hostname) for the server. The default value "meet" is filled in when you select Jitsi from the Marketplace Apps; feel free to change this. |
+| **The hostname for your server** | The [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for the server. The default value "meet" is filled in when you select Jitsi from the Marketplace Apps; feel free to change this. |
 | **Your domain** | The domain name where you wish to host your Jitsi server. For example, `example.com`. |
 | **Your Linode API Token.** | Your Linode API access token is needed to create your DNS records and to create the Let's Encrypt SSL certificate. If you don't have a token, you must [create one](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
 | **Would you like to use a free Let's Encrypt SSL certificate?** | Select `Yes` if you would like the install to create an SSL certificate for you, or `No` if you do not. You cannot create secure, encrypted conferences without an SSL certificate. If `No` is selected, the Jitsi app triggers security warnings in most web browsers. |
@@ -56,7 +56,7 @@ If you enter a domain name, the address to access Jitsi is `hostname`.`domain na
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used, though we recommend a 8GB Dedicated CPU or Shared Compute Instance for hosting large meetings or multiple simultaneous meetings.

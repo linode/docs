@@ -47,7 +47,7 @@ You can configure your LAMP Stack App by providing values for the following fiel
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Debian 10, Debian 11, Ubuntu 20.04 LTS
 - **Recommended plan:** The Linode plan you deploy your LAMP stack on should account for the estimated workload. If you are standing up a simple web page, you can use a 1GB Linode (Nanode) or 2GB Linode. If you are standing up a larger or more robust web app, then consider a plan with higher RAM and CPU allocations.
@@ -56,9 +56,9 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 After your LAMP stack has finished deploying, you can:
 
-- [Connect to your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh). You will need your Linode's root password to proceed. Note that your Linode's web root will be located in the `/var/www/html` directory.
+- [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). You will need your Linode's root password to proceed. Note that your Linode's web root will be located in the `/var/www/html` directory.
 
-- [Navigate to the public IP address or domain entered during creation](/docs/guides/getting-started/#find-your-linode-s-ip-address) of your Linode in a browser. You will see the default Apache webpage.
+- [Navigate to the public IP address or domain entered during creation](/docs/guides/set-up-and-secure/#update-your-systems-hosts-filefind-your-linode-s-ip-address) of your Linode in a browser. You will see the default Apache webpage.
 
 - Consult the following guides to learn more about working with the various components of the LAMP stack:
 

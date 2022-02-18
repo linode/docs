@@ -79,7 +79,7 @@ In this section, you install Terraform on an Ubuntu 20.04 Linode. These steps ar
 
 To download Terraform on a Linode server, follow the steps below:
 
-1. [Login to the Linode server via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh). This is the Linode server where you want to install Terraform. Replace `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/).
+1. [Login to the Linode server via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). This is the Linode server where you want to install Terraform. Replace `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/).
 
        ssh username@192.0.2.0
 

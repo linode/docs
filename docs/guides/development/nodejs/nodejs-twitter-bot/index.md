@@ -834,7 +834,7 @@ You could certainly let this code run for a long while from your local machine, 
 
     ![Linode home screen](https://lh3.googleusercontent.com/JFNpdFMCe9A37beAwtxazN-zqcSr88Ff457bnQhbQpkQJILfqAv7g0bR_CQ6SxMu8EfKgIcaqTGuZvPTTI2hOb6dYyi3CyLMubEKOwFEZMkCaByjpk83L2o0c4W8GTwE4VPSodE-)
 
-1. Follow the [Create a Linode](/docs/guides/getting-started/#create-a-linode) section of our [Getting Started](/docs/guides/getting-started/) guide. When creating your instance, use the following options:
+1. Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide. When creating your instance, use the following options:
 
     - Pick Ubuntu 20.04 as your Linux distribution.
 
@@ -850,7 +850,7 @@ You could certainly let this code run for a long while from your local machine, 
 
 ### Log In and Secure the Server
 
-1. To log into the server, follow the [Connect to Your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh) section of our [Getting Started](/docs/guides/getting-started/) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Lish console](/docs/guides/using-the-lish-console/) from the Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](/docs/guides/using-the-lish-console/#through-the-cloud-manager-weblish) instructions in our Lish guide.
+1. To log into the server, follow the [Connect to Your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) section of our [Getting Started](/docs/guides/getting-started/) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Lish console](/docs/guides/using-the-lish-console/) from the Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](/docs/guides/using-the-lish-console/#through-the-cloud-manager-weblish) instructions in our Lish guide.
 
     {{< note >}}
 Our [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) guide series has a few other options for SSH clients, like SSH extension for the Chrome web browser.

@@ -42,14 +42,17 @@ This tutorial covers how to complete the following tasks:
 
 Before moving ahead, make sure you have completed the following steps.
 
-- If you'd like to use your own [Domain Name](/docs/networking/dns/dns-records-an-introduction/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/guides/dns-manager/#dns-set-up-checklist) to point to your Linode's IP address.
-- Complete the steps in the [Getting Started with Linode](/docs/getting-started/) guide. Specifically, ensure you have completed the [Install software updates](/docs/guides/set-up-and-secure/#perform-system-updates), [Set your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname), and [Update your system's hosts file](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file) sections.
-- Follow the steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. Ensure you complete the steps in the following [Add a limited user account](/docs/guides/set-up-and-secure/#centos-fedora) section. All steps executed in this guide will be from this account.
+1.  If you'd like to use your own [Domain Name](/docs/networking/dns/dns-records-an-introduction/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/guides/dns-manager/#dns-set-up-checklist) to point to your Linode's IP address.
+
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
     {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-- Follow the [Install a LAMP Stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/) guide. **Skip the steps** in the [Configure Name-Based Virtual Hosts](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/#configure-name-based-virtual-hosts), the [Create a MariaDB Database](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/#create-a-mariadb-database), and the [Optional: Test and Troubleshoot the LAMP Stack](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/#optional-test-and-troubleshoot-the-lamp-stack) section. Those steps will be covered later on in this guide.
+1.  Follow the [Install a LAMP Stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/) guide. **Skip the steps** in the [Configure Name-Based Virtual Hosts](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/#configure-name-based-virtual-hosts), the [Create a MariaDB Database](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/#create-a-mariadb-database), and the [Optional: Test and Troubleshoot the LAMP Stack](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/#optional-test-and-troubleshoot-the-lamp-stack) section. Those steps will be covered later on in this guide.
 
 ## Install WP-CLI
 
