@@ -5,7 +5,7 @@ author:
 description: 'Edge computing allows computation and data storage to be expedited. This guide covers how it works and why this technology should matter to you?.'
 keywords: ['what is edge computing','edge computing definition','edge computing example']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-15
+published: 2022-02-18
 modified_by:
   name: Linode
 title: "Edge Computing Architecture and Services Explained"
@@ -37,7 +37,7 @@ Edge computing is not a replacement for, or alternative to, traditional cloud co
 
 ## Why Should You Care about Edge Computing Technology?
 
-Edge computing is on its way to being ubiquitous. [Gartner estimates](https://www.gartner.com/smarterwithgartner/what-edge-computing-means-for-infrastructure-and-operations-leaders) that by the year 2025, “75% of data will be created and processed outside of a traditional centralized data center or cloud.” Streaming data to the cloud or to existing centralized data centers will drop to a trickle or be replaced by more computing power at the edge. Edge servers, which can be used as gateways and to form clusters or micro data centers, are going to beef up computing power at the edge as needed for more complex use cases.
+Edge computing is on its way to being ubiquitous. [Gartner estimates](https://www.gartner.com/smarterwithgartner/what-edge-computing-means-for-infrastructure-and-operations-leaders) that by the year 2025, “75% of data will be created and processed outside of a traditional centralized data center or cloud.” Edge servers, which can be used as gateways and to form clusters or micro data centers, are going to beef up computing power at the edge as needed for more complex use cases.
 
 There is more at stake here than achieving faster speeds in analysis to feed automated decision making in fluid situations. Expanding the cloud to include distributed computing (at the edge) makes room for increased innovation and profits for cloud hosting providers.
 
@@ -59,7 +59,7 @@ Another downside may be costs, depending on how a company chooses to deploy and 
 
 ## Edge Computing Explained: How Does it Work?
 
-Edge computing occurs when intelligent devices, aka smart devices, gather data on the scene through the use of sensors and other data-gathering instruments and process the data via analytics on the device or a nearby gateway. The resulting outputs can be used to trigger an automated action onsite or sent to the cloud for storage, additional analysis, or to an app for visualization and dashboard reads – or even all three.
+Edge computing occurs when intelligent devices, AKA smart devices, gather data on the scene through the use of sensors and other data-gathering instruments and process the data via analytics on the device or a nearby gateway. The resulting outputs can be used to trigger an automated action onsite or sent to the cloud for storage, additional analysis, or to an app for visualization and dashboard reads – or even all three.
 
 By comparison, in traditional data mining all calculations take place in the cloud or in data centers.
 
@@ -67,13 +67,13 @@ Flipping the model from centralized data storage and analysis (cloud) to decentr
 
 Edge devices add flexibility in computing by virtue of the many communication protocol options they use, which include:
 
-- Bluetooth Low Energy (BLE): a low power wireless technology
-- Cellular (most notably 5G):the same type of protocol used by mobile devices including mobile phones.
-- Ethernet: a group of wired networking technologies. Examples include local area networks (LAN), metropolitan area networks (MAN), and wide area networks (WAN).
-- NFC: stands for near field communication; used for short-range wireless connectivity
-- RFID: stands for radio frequency identification; used for wireless communication on radio frequency in identifying a person, animal, or object
-- Zigbee: low cost, low power, wireless mesh network
-- Z-Wave: low energy radio waves in a mesh network primarily used for home automation
+- **Bluetooth Low Energy** (BLE): a low power wireless technology.
+- **Cellular** (most notably 5G): the same type of protocol used by mobile devices including mobile phones.
+- **Ethernet**: a group of wired networking technologies. Examples include local area networks (LAN), metropolitan area networks (MAN), and wide area networks (WAN).
+- **NFC**: stands for near field communication; used for short-range wireless connectivity.
+- **RFID**: stands for radio frequency identification; used for wireless communication on radio frequency in identifying a person, animal, or object.
+- **Zigbee**: low cost, low power, wireless mesh network.
+- **Z-Wave**: low energy radio waves in a mesh network primarily used for home automation.
 
 Edge devices continue to evolve. Some use more than one communication protocol. Most send data over an open systems interconnection (OSI) framework to unite data from other, disparate devices adhering to various standards. Gateway devices often route, transfer, and manage data connections. The resulting systems connect via cloud and Internet protocols as needed. Edge devices are already intelligent enough to handle AI and machine learning and other highly sophisticated functions on their own.
 
@@ -87,11 +87,11 @@ Very advanced edge networks provide additional highly sophisticated capabilities
 
 Examples are plentiful as applications of edge computing are only limited by the imagination. Here are three examples to give you an idea of the diversity and flexibility in use cases.
 
-- Autonomous vehicles. By far the best known and arguably most glamorous example of edge computing are autonomous vehicles ranging from consumer Tesla models to [Walmart’s Gatik built delivery truck](https://www.cnbc.com/2021/11/08/walmart-is-using-fully-driverless-trucks-to-ramp-up-its-online-grocery-business.html) and [Rolls-Royce’s autonomous commercial ships](https://spectrum.ieee.org/forget-autonomous-cars-autonomous-ships-are-almost-here). All types of vehicles are undergoing the same transitions. Edge computing is radically changing transportation worldwide.
+- **Autonomous vehicles**. By far the best known and arguably most glamorous example of edge computing are autonomous vehicles ranging from consumer Tesla models to [Walmart’s Gatik built delivery truck](https://www.cnbc.com/2021/11/08/walmart-is-using-fully-driverless-trucks-to-ramp-up-its-online-grocery-business.html) and [Rolls-Royce’s autonomous commercial ships](https://spectrum.ieee.org/forget-autonomous-cars-autonomous-ships-are-almost-here). All types of vehicles are undergoing the same transitions. Edge computing is radically changing transportation worldwide.
 
-- Agricultural Farm and Field Automation. Everything from autonomous tractors and farm machines, moisture and soil sensors that automate irrigation and fertilizer applications, and farm robotics is proving edge computing to be a valuable field hand for family and commercial farms alike.
+- **Agricultural Farm and Field Automation**. Everything from autonomous tractors and farm machines, moisture and soil sensors that automate irrigation and fertilizer applications, and farm robotics is proving edge computing to be a valuable field hand for family and commercial farms alike.
 
-- Extreme Environment Studies and Analysis. Take the Arctic, where extreme temperatures and other conditions make it dangerous for humans to collect data manually. According to the [IEEE IoT Vertical and Topical Summit report](https://anchorage2018.iot.ieee.org/program/vertical-sessions/arctic-region-alaska-challenges/), IoT and edge computing are useful in monitoring active volcanic zones; detecting and tracking seismic activity from movement of tectonic plates; monitoring and understanding a complex maritime ecology; analyzing changes in glaciers and ice caps; and monitoring the high latitude ionosphere and magnetosphere.
+- **Extreme Environment Studies and Analysis**. Take the Arctic, where extreme temperatures and other conditions make it dangerous for humans to collect data manually. According to the [IEEE IoT Vertical and Topical Summit report](https://anchorage2018.iot.ieee.org/program/vertical-sessions/arctic-region-alaska-challenges/), IoT and edge computing are useful in monitoring active volcanic zones; detecting and tracking seismic activity from movement of tectonic plates; monitoring and understanding a complex maritime ecology; analyzing changes in glaciers and ice caps; and monitoring the high latitude ionosphere and magnetosphere.
 
 As edge computing continues to expand, more uses appear on the horizon.
 
@@ -125,4 +125,4 @@ According to a [2020 Deloitte report](https://www2.deloitte.com/xe/en/insights/i
 
 ## Conclusion
 
-One startling example of the evolution of technologies that edge computing pushes into our reality is a shift from AI being solely data-based to AI being situational-based, which is now possible because AI can now be put on the edge where it can analyze conditions in real time. As other new capabilities and shifts in the focus of features begin to rise and mature, industries will find more ways to capitalize on the unique aspects of edge computing in the cloud.
+One startling example of the evolution of technologies that edge computing pushes into our reality is a shift from AI being solely data-based to AI being situational-based. This is now possible because AI can now be put on the edge where it can analyze conditions in real time. As other new capabilities and shifts in the focus of features begin to rise and mature, industries will find more ways to capitalize on the unique aspects of edge computing in the cloud.
