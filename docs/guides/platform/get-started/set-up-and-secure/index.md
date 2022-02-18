@@ -211,7 +211,7 @@ A hostname is used to identify your Compute Instance using an easy-to-remember n
 
 This hostname can be used as part of a FQDN (fully qualified domain name) for the system (ex: `web-01-prod.example.com`).
 
-After you've made the change below, you may need to log out and log back in again to see the terminal prompt change from `localhost` to your new hostname. The command `hostname` should also show it correctly. See our guide on using the [hosts file](docs/guides/using-your-systems-hosts-file/) if you want to configure a fully qualified domain name.
+After you've made the change below, you may need to log out and log back in again to see the terminal prompt change from `localhost` to your new hostname. The command `hostname` should also show it correctly. See our guide on using the [hosts file](/docs/guides/using-your-systems-hosts-file/) if you want to configure a fully qualified domain name.
 
 ### Most Distributions
 
