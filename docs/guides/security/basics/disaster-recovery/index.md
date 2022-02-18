@@ -3,10 +3,9 @@ slug: disaster-recovery
 author:
   name: Wayne Rash
 description: 'Disaster recovery allows for the continued use of IT infrastructure in the case of a human or natural disaster. Develop a recovery plan with the help of this guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
 keywords: ['disaster recovery plan','define disaster recovery','disaster recovery definition']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-15
+published: 2022-02-18
 modified_by:
   name: Linode
 title: "Disaster Recovery: What It Is and How to Create a Plan"
@@ -26,7 +25,7 @@ A more complex form of disaster recovery is required when IT infrastructure is d
 
 The types of disasters may be anything from fire and floods, to terrorist attacks and employee sabotage, to cyber attacks. The amount of damage can range from minimal to total. Regardless of the cause and type, each requires recovery for the organization to continue operations.
 
-## DR Plan vs Business Continuity Plan
+## Disaster Recovery Plan vs. Business Continuity Plan
 
 Disaster recovery plans are a subset of a business continuity plan. A business continuity plan helps an organization recover from disruptions, be they disasters, work stoppages and security events, and anything else that prevents a business from operating as usual. A business continuity plan consists of a business resumption plan, occupant emergency plans, and continuity of operations plans, in addition to a disaster recovery plan.
 
