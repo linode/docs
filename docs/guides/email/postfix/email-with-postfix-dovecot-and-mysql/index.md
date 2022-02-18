@@ -868,7 +868,7 @@ smtp      inet  n       -       -       -       -       smtpd
 ...
 
 spamassassin unix -     n       n       -       -       pipe
-user=spamd argv=/usr/bin/spamc -f -e
+  user=spamd argv=/usr/bin/spamc -f -e
 /usr/sbin/sendmail -oi -f ${sender} ${recipient}
 {{< /file >}}
 

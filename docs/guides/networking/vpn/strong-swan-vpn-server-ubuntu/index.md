@@ -21,7 +21,7 @@ StrongSwan is an open-source tool that operates as a keying daemon and uses the 
 
 ## Install StrongSwan on Ubuntu 20.04 Server
 
-The steps in this section show you how to install and configure a StrongSwan gateway VPN server on Ubuntu 20.04. See the [Install and Configure the StrongSwan Client](/docs/guides/strongswan-vpn-server-install/#install-and-configure-the-strongswan-client) section if you have already installed and configured the StrongSwan server.
+The steps in this section show you how to install and configure a StrongSwan gateway VPN server on Ubuntu 20.04. See the [Install and Configure the StrongSwan Client](#install-and-configure-the-strongswan-client) section if you have already installed and configured the StrongSwan server.
 
 ### Prerequisites
 
@@ -138,7 +138,7 @@ conn ipsec-ikev2-vpn
 
     - The `leftid` configuration matches the tunneled network assets that are exposed to VPN clients. A route through this subnet must be reachable if a local resolver is used to access resources.
 
-        The syntax for `leftid` must match the server certificate, resolver/DNS or IP address from step 4 in the [Generate Server Keys and Certificate](/docs/guides/install-and-configure-a-strongswan-gateway-vpn-server-on-ubuntu/#generate-server-keys-and-certificate) section. If the resolver/DNS method was used, place an `@` before the resolved host address. Do not place an `@` symbol in front of an IPv4 address.
+        The syntax for `leftid` must match the server certificate, resolver/DNS or IP address from step 4 in the [Generate Server Keys and Certificate](#generate-server-keys-and-certificate) section. If the resolver/DNS method was used, place an `@` before the resolved host address. Do not place an `@` symbol in front of an IPv4 address.
 
     - The `rightsourceip` configuration sets the client IP addresses that are allowed to connect to the StrongSwan VPN. It is possible to limit the scope to an IP address range. This limits the number of addresses that are admitted through the tunnel created by the host server VPN gateway. If the source addresses should only be allowed from a single subnet, specify that subnet. An example would be `10.0.100.0/24`. This subnet allows the 254 hosts in the `10.0.100.0` subnet. This configuration is used for internal VPN resource admittance control.
 
