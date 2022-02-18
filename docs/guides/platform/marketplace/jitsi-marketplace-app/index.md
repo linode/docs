@@ -8,7 +8,7 @@ keywords: ['jitsi','marketplace', 'server']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
-modified: 2021-09-16
+modified: 2022-02-14
 image: Deploy_Jitsi_oneclickapps.png
 modified_by:
   name: Linode
@@ -85,8 +85,6 @@ The Jitsi Marketplace App installs the following software on your Linode:
 | [**Jitsi Meet**](https://jitsi.org/jitsi-meet) | The WebRTC compatible JavaScript application that enables the video conferencing.|
 | [**Jitsi Videobridge (jvb)**](https://jitsi.org/jitsi-videobridge) | WebRTC compatible server that routes the video streams between participants in the conference. |
 | [**Jitsi Conference Focus (jicofo)**](https://github.com/jitsi/jicofo) | The server-side focus component that manages sessions between participants. |
-| [**Jitsi Gateway to SIP (jigasi)**](https://github.com/jitsi/jigasi) | A server-side application enabling regular SIP clients to join the conference. |
-| [**Jibri**](https://github.com/jitsi/jibri) | Tools for recording and streaming the conference. |
 | [**Prosody**](https://prosody.im/) | XMPP server for signalling. |
 
 {{< content "marketplace-update-note-shortguide">}}

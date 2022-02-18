@@ -108,7 +108,7 @@ While Apache Guacamole does support basic user authentication via a `user-mappin
     1.  Extract the tar file and copy it to `/etc/guacamole/lib/`.
 
             tar -xf mysql-connector-java-8.0.26.tar.gz
-            sudo cd mysql-connector-java-8.0.26/mysql-connector-java-8.0.26.jar /etc/guacamole/lib/
+            sudo cp mysql-connector-java-8.0.26/mysql-connector-java-8.0.26.jar /etc/guacamole/lib/
 
     1.  Download the JDBC auth plugin for Apache Guacamole. This file can be found on http://guacamole.apache.org/releases/ by selecting the release version and then locate the "jdbc" file.
 

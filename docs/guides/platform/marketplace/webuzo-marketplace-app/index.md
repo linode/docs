@@ -8,7 +8,7 @@ keywords: ['webuzo','control panel','dashboard','marketplace']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-12-02
-modified: 2021-09-16
+modified: 2022-02-14
 modified_by:
   name: Linode
 title: "Deploying Webuzo through the Linode Marketplace"
@@ -26,7 +26,7 @@ Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Software installation should complete within 2-5 minutes after the Linode has finished provisioning.**
+**Software installation should complete within 2-10 minutes after the Linode has finished provisioning. This time frame depends on a variety of factors, including which data center has been selected.**
 
 ## Configuration Options
 
@@ -34,7 +34,7 @@ Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control
 
 The Webuzo Marketplace form includes advanced fields to setup your Webuzo server's limited user account and DNS records. These are optional configurations and are not required for installation.
 
-| **Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** | **Description** |
+| **Field** | **Description** |
 |-----------|-----------------|
 | **The limited sudo user to be created for the Linode** | This is the limited user account to be created for the Linode. This account has sudo user privileges. |
 | **The password for the limited sudo user** | Set a password for the limited sudo user. The password must meet the complexity strength validation requirements for a strong password. This password can be used to perform any action on your server, similar to root, so make it long, complex, and unique. |
@@ -52,7 +52,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 The Webuzo application is now being served on your Linode, however it still requires a few additional steps to fully complete the installation process.
 
-1.  The Webuzo setup wizard is served on port 2004, to access it, navigate to the IP address of your server followed by port 2004. For example, `http://203.0.113.0:2004`, replacing the IP address with values for your server.
+1.  The Webuzo setup wizard is served on port 2004. To access it, navigate to the IP address of your server followed by port 2004. For example, `http://203.0.113.0:2004`, replacing the IP address with values for your server. If you do not see the initial setup screen (shown below), you may need to restart your Compute Instance.
 
     ![Webuzo Setup Screen](webuzo-setup-screen.png "Webuzo Setup Screen")
 
