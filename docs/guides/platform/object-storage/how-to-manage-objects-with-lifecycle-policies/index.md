@@ -43,7 +43,7 @@ This guide will first describe [when policies are enforced](#when-policies-are-e
 
 ## Before You Begin
 
-* Familiarize yourself with Linode Object Storage by reading the [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide.
+* Familiarize yourself with the basics of Linode Object Storage by reviewing the [Get Started with Object Storage](/docs/products/storage/object-storage/get-started/) guide or taking a look through the available [Object Storage guides](/docs/products/storage/object-storage/guides/).
 * For demonstration purposes, you can create an Object Storage bucket with a few objects that you will later delete.
 
 ## When Policies are Enforced
