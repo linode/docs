@@ -11,6 +11,7 @@ tab_group_main:
 
 - [Upload and Manage Files (Objects)](/docs/products/storage/object-storage/guides/manage-files/): Learn how to view, upload, download, and delete objects through the Cloud Manager.
 
+<<<<<<< HEAD
 - [Manage Access Keys](/docs/products/storage/object-storage/guides/access-keys/): Access keys enable you to access Object Storage through other tools and your own applications. Learn how to generate and manage these in the Cloud Manager.
 
 - [Set Permissions using ACLs (Access Control Lists)](/docs/products/storage/object-storage/guides/acls/): Information on ACLs and how to use them to set permissions on Object Storage resources.
@@ -22,6 +23,15 @@ tab_group_main:
 - [Configure a Custom Domain (with a TLS/SSL Certificate)](/docs/products/storage/object-storage/guides/custom-domain/): Linode's Object Storage supports accessing buckets and objects through a custom domain. Learn how to configure a custom domain with a TLS/SSL certificate.
 
 - [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/): Learn how to cancel the Object Storage service from the Cloud Manager.
+=======
+- [Manage Access Keys](/docs/products/storage/object-storage/guides/access-keys/): Access keys enable you to access Object Storage through other tools and your own applications. Learn how to generate these in the Cloud Manager.
+
+- [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/): Every bucket and file can be accessed by a unique URL. Learn how to obtain these URLs.
+
+- [Configure a Custom Domain (with a TLS/SSL Certificate)](/docs/products/storage/object-storage/guides/custom-domain/): Linode's Object Storage supports accessing buckets and objects through a custom domain. Learn how to configure a custom domain with a TLS/SSL certificate.
+>>>>>>> upstream/develop
+
+- [Object Storage Use Cases](/docs/products/storage/object-storage/guides/use-cases/): Information on the benefits and common use cases of Linode's Object Storage service.
 
 - [Object Storage Use Cases](/docs/products/storage/object-storage/guides/use-cases/): Information on the benefits and common use cases of Linode's Object Storage service.
 
@@ -45,8 +55,18 @@ Guides for using Object Storage with various AWS SDKs:
 
 These additional guides explore targeted topics like setting up a static site and managing access and permissions for your buckets and objects:
 
+<<<<<<< HEAD
 - [Deploy a Static Site using Hugo and Object Storage](/docs/guides/host-static-site-object-storage/)
 
 - [Bucket Versioning with Linode Object Storage](/docs/guides/bucket-versioning/)
 
 - [How To Manage Objects with Lifecycle Policies](/docs/guides/how-to-manage-objects-with-lifecycle-policies/)
+=======
+- [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/)
+
+- [Bucket Versioning with Linode Object Storage](/docs/platform/object-storage/bucket-versioning/)
+
+- [How To Manage Objects with Lifecycle Policies](/docs/platform/object-storage/how-to-manage-objects-with-lifecycle-policies/)
+
+- [How to Enact Access Control Lists (ACLs) and Bucket Policies with Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage-acls-and-bucket-policies/)
+>>>>>>> upstream/develop
