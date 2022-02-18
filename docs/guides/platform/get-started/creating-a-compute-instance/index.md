@@ -6,7 +6,7 @@ author:
 keywords: ["getting started", "deploy", "linode", "linux"]
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-02-16
+modified: 2022-02-18
 modified_by:
   name: Linode
 published: 2022-02-16
@@ -15,7 +15,7 @@ h1_title: "Creating a Compute Instance"
 enable_h1: true
 ---
 
-This guide walks you through creating a Linode Compute Instance through the Cloud Manager. Whether this is your first time using Linode or if you're a long time user, you should carefully consider each step in the process to make sure you're getting the most of your Linode services.
+This guide walks you through creating a Compute Instance (also frequently called a *Linode*) through the Cloud Manager. Whether this is your first time using Linode or if you're a long time user, you should carefully consider each step in the process to make sure you're getting the most of your Linode services.
 
 1. [Open the Create Form in the Cloud Manager](#open-the-create-form-in-the-cloud-manager)
 1. [Choose a Distribution, App, or Image](#choose-a-distribution-app-or-image)
@@ -39,17 +39,17 @@ Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Create** d
 
 One of the first steps to deploy a Compute Instance is to decide *what* you actually wish to deploy. You're able to select a Linux distribution for a barebones install, a Marketplace App with your desired software, and a few other options.
 
-- **Distribution:** Select from any [supported Linux distribution](https://www.linode.com/distributions/). This option allows you to start with a stable Linux system and build your own software stack from scratch. Popular distributions include the latest LTS release of Ubuntu (20.04 LTS currently), the latest Debian (11 currently), and either CentOS Stream or RHEL 8 derived distributions like AlmaLinux 8 and Rocky Linux 8. Each distribution comes with its own set of preinstalled software and commands. See [Choosing a Linux Distribution](/docs/guides/choosing-a-distribution/).
+- **Distributions:** Select from any [supported Linux distribution](https://www.linode.com/distributions/). This option allows you to start with a stable Linux operating system and build your own software stack from scratch. Popular distributions include the latest LTS release of Ubuntu (20.04 LTS currently), the latest Debian (11 currently), and either CentOS Stream or RHEL 8 derived distributions like AlmaLinux 8 and Rocky Linux 8. Each distribution comes with its own set of preinstalled software and commands. See [Choosing a Linux Distribution](/docs/guides/choosing-a-distribution/).
 
-- **Marketplace App** *(recommended for non-technical users)*: Select from the many [One-Click Apps](https://www.linode.com/marketplace/apps/) currently featured in the [Linode Marketplace](https://www.linode.com/marketplace/). This installs and configures your desired software, allowing you to start using your applications right away. Popular apps include [Wordpress](https://www.linode.com/marketplace/apps/linode/wordpress/), [WooCommerce](https://www.linode.com/marketplace/apps/linode/woocommerce/), [LEMP](https://www.linode.com/marketplace/apps/linode/lemp/), [cPanel](https://www.linode.com/marketplace/apps/cpanel/cpanel/), [Plesk](https://www.linode.com/marketplace/apps/plesk/plesk/), and [Nextcloud](https://www.linode.com/marketplace/apps/linode/nextcloud/). See [How to Use Linode's Marketplace Apps](/docs/guides/how-to-use-marketplace-apps-at-linode/).
+- **Marketplace**: Select from the many [Apps](https://www.linode.com/marketplace/apps/) currently featured in the [Linode Marketplace](https://www.linode.com/marketplace/). This installs and configures your desired software, allowing you to start using your applications right away. Popular apps include [Wordpress](https://www.linode.com/marketplace/apps/linode/wordpress/), [WooCommerce](https://www.linode.com/marketplace/apps/linode/woocommerce/), [LEMP](https://www.linode.com/marketplace/apps/linode/lemp/), [cPanel](https://www.linode.com/marketplace/apps/cpanel/cpanel/), [Plesk](https://www.linode.com/marketplace/apps/plesk/plesk/), and [Nextcloud](https://www.linode.com/marketplace/apps/linode/nextcloud/). See [How to Use Linode's Marketplace Apps](/docs/guides/how-to-use-marketplace-apps-at-linode/).
 
-- **StackScript:** Select from any StackScripts previously created on your account or from a community StackScript. StackScripts automate the deployment of software and configuration by executing commands within your system after the first boot. See [How to Deploy a New Linode Using a StackScript](/docs/guides/how-to-deploy-a-new-linode-using-a-stackscript/).
+- **StackScripts:** Select from any StackScripts previously created on your account or from a community StackScript. StackScripts automate the deployment of software and configuration by executing commands within your system after the first boot. See [How to Deploy a New Linode Using a StackScript](/docs/guides/how-to-deploy-a-new-linode-using-a-stackscript/).
 
-- **Image:** Select from any Custom Image or Recovery Image stored on your account. *Recovery Images* are generated after a Compute Instance has been deleted and *Custom Images* can be created based on existing instances or image files. See [Images - Get Started](/docs/products/tools/images/get-started/).
+- **Images:** Select from any Custom Image or Recovery Image stored on your account. *Recovery Images* are generated after a Compute Instance has been deleted and *Custom Images* can be created based on existing instances or image files. See [Images - Get Started](/docs/products/tools/images/get-started/).
 
-- **Backup:** If you have the Backups service enabled on an existing Compute Instance, you can select any available backup snapshot to deploy from. See [Restore a Backup to a New Linode](/docs/products/storage/backups/guides/restore-to-a-new-linode/).
+- **Backups:** If you have the Backups service enabled on an existing Compute Instance, you can select any available backup snapshot to deploy from. See [Restore a Backup to a New Linode](/docs/products/storage/backups/guides/restore-to-a-new-linode/).
 
-- **Clone:** Creates a new Compute Instance from the disks and configuration on an existing instance. See [Cloning a Linode](/docs/guides/clone-your-linode/).
+- **Clone Linode:** Creates a new Compute Instance from the disks and configuration on an existing instance. See [Cloning a Linode](/docs/guides/clone-your-linode/).
 
 This guide assumes you are creating a Compute Instance from a **Distribution**. If you select a different option, you may wish to follow the specific instructions within their own corresponding guides.
 
@@ -67,7 +67,7 @@ Next, you must select the **region** that the Compute Instance will reside. Regi
 
 ![Plan selection in Cloud Manager](create-instance-plan.png)
 
-Linode offers a few different instance types and plan sizes, each with a certain amount of hardware resources (such as vCPU cores, memory, and storage space). With so many options, you are able to find a plan that fits your application's requirements and pricing considerations. The table below displays a list of instance types along with their plan sizes and use cases. Since every workload is different, you may wish to review the [Choosing a Compute Instance Type and Plan](/docs/guides/how-to-choose-a-linode-plan/) guide for advice on selecting the best plan for your needs.
+Linode offers a few different instance types and plan sizes, each with a preset amount of hardware resources (such as vCPU cores, memory, and storage space). The table below displays a list of instance types along with their plan sizes and use cases. Since every workload is different, you may wish to review the [Choosing a Compute Instance Type and Plan](/docs/guides/how-to-choose-a-linode-plan/) guide for advice on selecting the best plan for your needs, application’s requirements, and pricing considerations
 
 {{<note>}}
 You can resize to a different plan size or instance type at any time. This means your aren't locked in to whichever plan you select here. See [Resizing a Linode](/docs/guides/resizing-a-linode/) for instructions.
@@ -95,7 +95,7 @@ You can resize to a different plan size or instance type at any time. This means
 
 The following features and services can be configured during the Compute Instance's creation or at any point after.
 
-- **Attach a VLAN:** Add this Compute Instance to a secure private network. This feature is available at no additional cost. See [VLANs](/docs/products/networking/vlans/) to learn more.
+- **Attach a VLAN:** Add this Compute Instance to a secure private network. VLANs are available at no additional cost, though not all data centers currently support this feature. See [VLANs](/docs/products/networking/vlans/) to learn more.
 
 - **Add the Backups service:** Safeguard your data with Linode’s Backups service, enabling automatic backups of the disks on your Compute Instances. Up to four backups are stored as part of this service, including automated daily, weekly, and biweekly backups in addition to a manual backup snapshot. See [Backups](/docs/products/storage/backups/) to learn more and view pricing.
 

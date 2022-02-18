@@ -3,16 +3,16 @@ slug: set-up-and-secure
 author:
   name: Linode
   email: docs@linode.com
-description: "This guide serves as a starting point for securing your Linode, including user accounts, firewall configuration, SSH, and disabling unused network services."
+description: "Learn how to set up and secure a new Compute Instance, including updating your software, creating a user account, and hardening SSH."
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/securing-your-server/','/security/linux-security-basics/','/security/basics/','/security/securing-your-server/index.cfm/','/security/basics/securing-your-server/','/security/securing-your-server/','/guides/securing-your-server/']
-modified: 2022-02-16
+modified: 2022-02-18
 modified_by:
   name: Linode
 published: 2012-02-17
-title: "Set Up and Secure a Linode Compute Instance"
+title: "How to Set Up and Secure a Linode Compute Instance"
 h1_title: "Setting Up and Securing a Compute Instance"
 enable_h1: true
 ---
@@ -49,13 +49,9 @@ Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Linodes** 
 
 ## Connect to the Instance
 
-Once the Compute Instance has been created and is done initializing, you can start connecting to it over Weblish, Lish, or SSH. Communicating with your Linode is usually done using the SSH protocol, though you can use Weblish (through your browser) or Lish (through SSH) as an alternative means of connecting.
+Once the Compute Instance has been created and is done initializing, you can connect to it. Connecting to your instance is usually done through the SSH (Secure Shell) protocol, though you can use Weblish (through your browser) or Lish (through SSH) as an alternative means of connecting.
 
 -   **Weblish (via the Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/guides/using-the-lish-console/#through-the-cloud-manager-weblish).
-
--   **Lish (via SSH):** Copy the command from the *LISH Console via SSH* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the one below, only with your username, data center, and Linode label. Review [Using the Lish Console > Through SSH](/docs/guides/using-the-lish-console/#through-ssh-using-a-terminal) for more instructions.
-
-        ssh -t user@lish-newark.linode.com Example-Linode
 
 -   **SSH:** Copy the command from the *LISH Console via SSH* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the following, only with the IP address of your newly created instance.
 
@@ -64,6 +60,10 @@ Once the Compute Instance has been created and is done initializing, you can sta
     - **Windows:** Windows 10 and 11 users can connect to their Linode using the [Command Prompt (or PowerShell)](/docs/guides/connect-to-server-over-ssh-on-windows/#command-prompt-or-powershell---windows-10-or-11) application, provided their system is fully updated. For users of Windows 8 and earlier, [Secure Shell on Chrome](/docs/guides/connect-to-server-over-ssh-on-chrome/), [PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/), or many other third party tools can be used instead. See [Connecting to a Remote Server Over SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/).
     - **macOS:** The *Terminal* application is pre-installed on macOS. See [Connecting to a Remote Server Over SSH on a Mac](/docs/guides/connect-to-server-over-ssh-on-mac/).
     - **Linux:** You can use a terminal window, regardless of desktop environment or window manager. See [Connecting to a Remote Server Over SSH on Linux](/docs/guides/connect-to-server-over-ssh-on-linux/)
+
+-   **Lish (via SSH):** Copy the command from the *LISH Console via SSH* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the one below, only with your username, data center, and Linode label. Review [Using the Lish Console > Through SSH](/docs/guides/using-the-lish-console/#through-ssh-using-a-terminal) for more instructions.
+
+        ssh -t user@lish-newark.linode.com Example-Linode
 
 ## Perform System Updates
 
@@ -126,9 +126,9 @@ All new Linodes are set to UTC time by default. However, you may prefer your Lin
 
         timedatectl list-timezones
 
-1.  Use the arrow keys, `Page Up`, and `Page Down` to navigate. Copy the time zone you want as a mouse selection. Then press **q** to exit the list.
+1.  Use the arrow keys, `Page Up`, and `Page Down` to navigate through the list. Copy or make note of your desired time zone and press **q** to exit the list.
 
-1.  Set the time zone (for example, `America/New_York`).
+1.  Set the time zone using the command below, replacing *America/New_York* with your preferred time zone.
 
         timedatectl set-timezone 'America/New_York'
 
@@ -203,9 +203,15 @@ Thu Feb 16 12:17:52 EST 2018
 
 ## Configure a Custom Hostname
 
-A hostname is used to identify your Linode using an easy-to-remember name. Your Linode's hostname doesn't necessarily associate with websites or email services hosted on the system, but see our guide on using the [hosts file](/docs/networking/dns/using-your-systems-hosts-file/) if you want to assign your Linode a fully qualified domain name.
+A hostname is used to identify your Compute Instance using an easy-to-remember name. It can be descriptive and structured (detailing what the system is used for) or a generic word or phrase. Here are some examples of hostnames:
 
- Your hostname should be something unique, and should not be *www* or anything too generic. Some people name their servers after planets, philosophers, or animals. After you've made the change below, you may need to log out and log back in again to see the terminal prompt change from `localhost` to your new hostname. The command `hostname` should also show it correctly.
+- **Descriptive and/or Structured:** `web`, `staging`, `blog`, or something more structured like `[purpose]-[number]-[environment]` (ex: `web-01-prod`).
+
+- **Generic/Series:** Such as the name of a fruit (`apple`, `watermelon`), a planet (`mercury`, `venus`), or animal (`leopard`, `sloth`).
+
+This hostname can be used as part of a FQDN (fully qualified domain name) for the system (ex: `web-01-prod.example.com`).
+
+After you've made the change below, you may need to log out and log back in again to see the terminal prompt change from `localhost` to your new hostname. The command `hostname` should also show it correctly. See our guide on using the [hosts file](docs/guides/using-your-systems-hosts-file/) if you want to configure a fully qualified domain name.
 
 ### Most Distributions
 
@@ -256,27 +262,15 @@ The `hosts` file creates static associations between IP addresses and hostnames 
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For IPv6, you should also set up a DNS "AAAA" record pointing to your Linode's IPv6 address.
 
-See our guide to [Adding DNS Records](/docs/guides/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
+See our guide to [Adding DNS Records](/docs/guides/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/guides/using-your-systems-hosts-file/)
 
 ## Add a Limited User Account
 
-Up to this point, you have accessed your Linode as the `root` user, which has unlimited privileges and can execute *any* command--even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server.
+Up to this point, you have accessed your Compute Instance as the `root` user, which has unlimited privileges and can execute *any* command--even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server.
 
 {{< note >}}
 Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing.
 {{< /note >}}
-
-To add a new user, first [log in to your Linode](/docs/getting-started/#log-in-for-the-first-time) via SSH.
-
-### CentOS/RHEL Stream and Fedora
-
-1.  Create the user, replacing `example_user` with your desired username, and assign a password:
-
-        useradd example_user && passwd example_user
-
-2.  Add the user to the `wheel` group for sudo privileges:
-
-        usermod -aG wheel example_user
 
 ### Ubuntu and Debian
 
@@ -286,25 +280,35 @@ A standard Debian Server installation does not include `sudo` by default, but Li
 
         adduser example_user
 
-2.  Add the user to the `sudo` group so you'll have administrative privileges:
+1.  Add the user to the `sudo` group so you'll have administrative privileges:
 
         adduser example_user sudo
 
+### CentOS/RHEL Stream and Fedora
+
+1.  Create the user, replacing `example_user` with your desired username, and assign a password:
+
+        useradd example_user && passwd example_user
+
+1.  Add the user to the `wheel` group for sudo privileges:
+
+        usermod -aG wheel example_user
+
 ### Log in as the New User
 
-3.  After creating your limited user, disconnect from your Linode:
+1.  After creating your limited user, disconnect from your Compute Instance:
 
         exit
 
-4.  Log back in as your new user. Replace `example_user` with your username, and the example IP address with your Linode's IP address:
+1.  Log back in as your new user. Replace `example_user` with your username, and the example IP address with your instance's IP address:
 
-        ssh example_user@203.0.113.10
+        ssh example_user@192.0.2.1
 
-Now you can administer your Linode from your new user account instead of `root`. Nearly all superuser commands can be executed with `sudo` (example: `sudo iptables -L -nv`) and those commands will be logged to `/var/log/auth.log`.
+Now you can administer your Compute Instance from your new user account instead of `root`. Nearly all superuser commands can be executed with `sudo` (example: `sudo iptables -L -nv`) and those commands will be logged to `/var/log/auth.log`.
 
 ## Harden SSH Access
 
-By default, password authentication is used to connect to your Linode via SSH. A cryptographic key-pair is more secure because a private key takes the place of a password, which is generally much more difficult to brute-force. In this section we'll create a key-pair and configure the Linode to not accept passwords for SSH logins.
+By default, password authentication is used to connect to your Compute Instance via SSH. A cryptographic key-pair is more secure because a private key takes the place of a password, which is generally much more difficult to brute-force. In this section we'll create a key-pair and configure your system to not accept passwords for SSH logins.
 
 ### Create an Authentication Key-pair
 
@@ -312,75 +316,81 @@ By default, password authentication is used to connect to your Linode via SSH. A
 As of Autumn 2018, [OpenSSH](https://www.openssh.com/) has been added to Windows 10, simplifying the process for securing SSH. **Windows 10** in this guide assumes OpenSSH has been installed as part of this update, while **Earlier Windows Versions** would apply to earlier versions.
 {{< /note >}}
 
-1.  This is done on your local computer, **not** your Linode, and will create a 4096-bit RSA key-pair. During creation, you will be given the option to encrypt the private key with a passphrase. This means that it cannot be used without entering the passphrase, unless you save it to your local desktop's keychain manager. We suggest you use the key-pair with a passphrase, but you can leave this field blank if you don't want to use one.
+1.  This is done on your local computer, **not** your Compute Instance, and will create a 4096-bit RSA key-pair. During creation, you will be given the option to encrypt the private key with a passphrase. This means that it cannot be used without entering the passphrase, unless you save it to your local desktop's keychain manager. We suggest you use the key-pair with a passphrase, but you can leave this field blank if you don't want to use one.
 
-    **Linux / OS X / Windows 10**
+    -   **Linux / macOS / Windows 10 or 11**
 
-    {{< caution >}}
+        {{< caution >}}
 If you've already created an RSA key-pair, this command will overwrite it, potentially locking you out of other systems. If you've already created a key-pair, skip this step. To check for existing keys, run `ls ~/.ssh/id_rsa*`.
 {{< /caution >}}
 
-        ssh-keygen -b 4096
+            ssh-keygen -b 4096
 
-    Press **Enter** to use the default names `id_rsa` and `id_rsa.pub` before entering your passphrase. On Linux and OS X, these files will be saved in the `/home/your_username/.ssh` directory. On Windows, they will be saved in `C:\Users\MyUserName\.ssh`
+        Press **Enter** to use the default names `id_rsa` and `id_rsa.pub` before entering your passphrase. On Linux and OS X, these files will be saved in the `/home/your_username/.ssh` directory. On Windows, they will be saved in `C:\Users\MyUserName\.ssh`
 
-    **Earlier Windows Versions**
+    -   **Earlier Windows Versions**
 
-    This can be done using PuTTY as outlined in our guide: [Use Public Key Authentication with SSH](/docs/security/authentication/use-public-key-authentication-with-ssh/#windows-operating-system).
+        This can be done using PuTTY as outlined in our guide: [Use Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/#public-key-authentication-on-windows).
 
-2.  Upload the public key to your Linode. Replace `example_user` with the name of the user you plan to administer the server as, and `203.0.113.10` with your Linode's IP address.
+1.  Upload the public key to your Compute Instance. Replace `example_user` with the name of the user you plan to administer the server as, and `192.0.2.1` with your instance's IP address.
 
-    **Linux**
+    -   **Linux**
 
-    From your local computer:
+        From your local computer:
 
-        ssh-copy-id example_user@203.0.113.10
+            ssh-copy-id example_user@192.0.2.1
 
-    **OS X**
+    -   **macOS**
 
-    On your Linode (while signed in as your limited user):
+        On your Compute Instance (while signed in as your limited user):
 
-        mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh/
+            mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh/
 
-    From your local computer:
+        From your local computer:
 
-        scp ~/.ssh/id_rsa.pub example_user@203.0.113.10:~/.ssh/authorized_keys
+            scp ~/.ssh/id_rsa.pub example_user@203.0.113.10:~/.ssh/authorized_keys
 
-    {{< note >}}
+        {{< note >}}
 `ssh-copy-id` is available in [Homebrew](http://brew.sh/) if you prefer it over SCP. Install with `brew install ssh-copy-id`.
 {{< /note >}}
 
-    **Windows 10**
+    -  **Windows 10 or 11**
 
-    On your Linode (while signed in as your limited user):
+        On your Compute Instance (while signed in as your limited user):
 
-        mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh/
+            mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh/
 
-    From your local computer:
+        From your local computer:
 
-        scp C:\Users\MyUserName\.ssh/id_rsa.pub example_user@203.0.113.100:~/.ssh/authorized_keys
-    **Earlier Windows Versions**
-    - **Option 1:** This can be done using [WinSCP](http://winscp.net/). In the login window, enter your Linode's public IP address as the hostname, and your non-root username and password. Click *Login* to connect.
+            scp C:\Users\MyUserName\.ssh/id_rsa.pub example_user@192.0.2.1:~/.ssh/authorized_keys
 
-        Once WinSCP has connected, you'll see two main sections. The section on the left shows files on your local computer and the section on the right shows files on your Linode. Using the file explorer on the left, navigate to the file where you've saved your public key, select the public key file, and click *Upload* in the toolbar above.
+    -  **Earlier Windows Versions**
 
-        You'll be prompted to enter a path where you'd like to place the file on your Linode. Upload the file to `/home/example_user/.ssh/authorized_keys`, replacing `example_user` with your username.
+        - **Option 1:** This can be done using [WinSCP](http://winscp.net/). In the login window, enter your Linode's public IP address as the hostname, and your non-root username and password. Click *Login* to connect.
 
-    -   **Option 2:** Copy the public key directly from the PuTTY key generator into the terminal emulator connected to your Linode (as a non-root user):
+            Once WinSCP has connected, you'll see two main sections. The section on the left shows files on your local computer and the section on the right shows files on your Linode. Using the file explorer on the left, navigate to the file where you've saved your public key, select the public key file, and click *Upload* in the toolbar above.
 
-            mkdir ~/.ssh; nano ~/.ssh/authorized_keys
+            You'll be prompted to enter a path where you'd like to place the file on your Linode. Upload the file to `/home/example_user/.ssh/authorized_keys`, replacing `example_user` with your username.
 
-        The above command will open a blank file called `authorized_keys` in a text editor. Copy the public key into the text file, making sure it is copied as a single line exactly as it was generated by PuTTY. Press **CTRL+X**, then **Y**, then **Enter** to save the file.
+        -   **Option 2:** Copy the public key directly from the PuTTY key generator into the terminal emulator connected to your Linode (as a non-root user):
 
-    Finally, you'll want to set permissions for the public key directory and the key file itself:
+                mkdir ~/.ssh; nano ~/.ssh/authorized_keys
+
+            The above command will open a blank file called `authorized_keys` in a text editor. Copy the public key into the text file, making sure it is copied as a single line exactly as it was generated by PuTTY. Press **CTRL+X**, then **Y**, then **Enter** to save the file.
+
+1.  Finally, you'll want to set permissions for the public key directory and the key file itself:
 
         sudo chmod -R 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
 
-    These commands provide an extra layer of security by preventing other users from accessing the public key directory as well as the file itself. For more information on how this works, see our guide on [how to modify file permissions](/docs/tools-reference/tools/modify-file-permissions-with-chmod/).
+    These commands provide an extra layer of security by preventing other users from accessing the public key directory as well as the file itself. For more information on how this works, see our guide on [how to modify file permissions](/docs/guides/modify-file-permissions-with-chmod/).
 
-3.  Now exit and log back into your Linode. If you specified a passphrase for your private key, you'll need to enter it.
+1.  Now exit and log back into your Compute Instance. If you specified a passphrase for your private key, you'll need to enter it.
 
 ### SSH Daemon Options
+
+1.  Open the SSH configuration file on your Compute Instance using a Linux text editor, such as nano or vim:
+
+        sudo nano /etc/ssh/sshd_config
 
 1.  **Disallow root logins over SSH.** This requires all SSH connections be by non-root users. Once a limited user account is connected, administrative privileges are accessible either by using `sudo` or changing to a root shell using `su -`.
 
@@ -388,7 +398,6 @@ If you've already created an RSA key-pair, this command will overwrite it, poten
 # Authentication:
 ...
 PermitRootLogin no
-
 {{< /file >}}
 
 1.  **Disable SSH password authentication.** This requires all users connecting via SSH to use key authentication. Depending on the Linux distribution, the line `PasswordAuthentication` may need to be added, or uncommented by removing the leading `#`.
@@ -396,12 +405,11 @@ PermitRootLogin no
     {{< file "/etc/ssh/sshd_config" aconf >}}
 # Change to no to disable tunnelled clear text passwords
 PasswordAuthentication no
-
 {{< /file >}}
 
     {{< note >}}
 You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key-pair for every device.
-    {{< /note >}}
+{{< /note >}}
 
 1.  **Listen on only one internet protocol.** The SSH daemon listens for incoming connections over both IPv4 and IPv6 by default. Unless you need to SSH into your Linode using both protocols, disable whichever you do not need. *This does not disable the protocol system-wide, it is only for the SSH daemon.* Depending on the Linux distribution, the line `AddressFamily` may need to be added, or uncommented by removing the leading `#`
 
@@ -413,19 +421,17 @@ You may want to leave password authentication enabled if you connect to your Lin
     {{< file "/etc/ssh/sshd_config" aconf >}}
 # Port 22
 AddressFamily inet
-
 {{< /file >}}
-
 
 1.  Restart the SSH service to load the new configuration.
 
-    If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+)
+    -   If you’re using a Linux distribution which uses systemd (CentOS 7, Debian 8, Fedora, Ubuntu 15.10+)
 
-        sudo systemctl restart sshd
+            sudo systemctl restart sshd
 
-    If your init system is SystemV or Upstart (CentOS 6, Debian 7, Ubuntu 14.04):
+    -   If your init system is SystemV or Upstart (CentOS 6, Debian 7, Ubuntu 14.04):
 
-        sudo service sshd restart
+            sudo service sshd restart
 
 ### Use Fail2Ban for SSH Login Protection
 
@@ -433,7 +439,7 @@ AddressFamily inet
 
 Fail2Ban can monitor a variety of protocols including SSH, HTTP, and SMTP. By default, Fail2Ban monitors SSH only, and is a helpful security deterrent for any server since the SSH daemon is usually configured to run constantly and listen for connections from any remote IP address.
 
-For complete instructions on installing and configuring Fail2Ban, see our guide: [A Tutorial for Using Fail2ban to Secure Your Server](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/).
+For complete instructions on installing and configuring Fail2Ban, see our guide: [A Tutorial for Using Fail2ban to Secure Your Server](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/).
 
 ## Configure a Firewall
 
@@ -441,11 +447,11 @@ For complete instructions on installing and configuring Fail2Ban, see our guide:
 
 Using a *firewall* to block unwanted inbound traffic to your Linode provides a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping. A best practice is to allow only the traffic you need, and deny everything else. See our documentation on some of the most common firewall applications:
 
-- [Iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) is the controller for netfilter, the Linux kernel's packet filtering framework. Iptables is included in most Linux distributions by default.
+- [Iptables](/docs/guides/control-network-traffic-with-iptables/) is the controller for netfilter, the Linux kernel's packet filtering framework. Iptables is included in most Linux distributions by default.
 
-- [FirewallD](/docs/security/firewalls/introduction-to-firewalld-on-centos/) is the iptables controller available for the CentOS / Fedora family of distributions.
+- [FirewallD](/docs/guides/introduction-to-firewalld-on-centos/) is the iptables controller available for the CentOS / Fedora family of distributions.
 
-- [UFW](/docs/security/firewalls/configure-firewall-with-ufw/) provides an iptables frontend for Debian and Ubuntu.
+- [UFW](/docs/guides/configure-firewall-with-ufw/) provides an iptables frontend for Debian and Ubuntu.
 
 ## Common Lockout Recovery Steps
 
@@ -477,10 +483,10 @@ PasswordAuthentication yes
 
         rm ~/.ssh/authorized_keys
 
-    You can then replace your key by re-following the [Create an Authentication Key-pair](/docs/security/securing-your-server/#create-an-authentication-key-pair) section of this guide.
+    You can then replace your key by re-following the [Create an Authentication Key-pair](#create-an-authentication-key-pair) section of this guide.
 
 ## Next Steps
 
-These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using [intrusion detection](/docs/uptime/monitoring/ossec-ids-debian-7/), installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control), [fine tuning sudo access](/docs/tools-reference/linux-users-and-groups/#understanding-sudo), [removing exposed services](/docs/guides/remove-unused-network-facing-services), and [more](/docs/security/).
+These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using [intrusion detection](/docs/guides/ossec-ids-debian-7/), installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control), [fine tuning sudo access](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user), [removing exposed services](/docs/guides/remove-unused-network-facing-services), and [more](/docs/security/).
 
-Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/migrate-to-linode/migrate-from-shared-hosting) to [enabling two-factor authentication](/docs/security/linode-manager-security-controls) to [hosting a website](/docs/websites/hosting-a-website).
+Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/guides/migrate-from-shared-hosting-to-linode/) to [enabling two-factor authentication](/docs/guides/linode-manager-security-controls/) to [hosting a website](/docs/guides/hosting-a-website-ubuntu-18-04/).

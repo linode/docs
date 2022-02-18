@@ -7,7 +7,7 @@ keywords: ["getting started", "intro", "basics", "first steps", "linode platform
 description: "Learn how to create an account and use the Linode Cloud Platform."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode/']
-modified: 2022-02-16
+modified: 2022-02-18
 modified_by:
   name: Linode
 published: 2018-11-05
@@ -41,10 +41,10 @@ First, you need to create a Linode account to start using our services. If you a
 
 1. Enter your billing and payment information. A valid credit or debit card must be used when creating an account, though additional payment methods (like Google Pay and PayPal) are available once the account is active.
 
-Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
+Most accounts are activated instantly, but some require manual review prior to activation.
 
 {{< note >}}
-Newly created Linode accounts have restrictions on ports `25`, `465`, and `587` applied to Compute Instances, which prevents instances from sending email. If you'd like to send email, review the [Running a Mail Server](/docs/email/running-a-mail-server/#sending-email-on-linode) guide, then [open a ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) with our Support team.
+***Sending* email:** Newly created Linode accounts have restrictions on ports `25`, `465`, and `587` applied to Compute Instances, which prevent instances from sending email. If you'd like to send email on a Compute Instance, review the [Running a Mail Server](/docs/email/running-a-mail-server/#sending-email-on-linode) guide, then [open a ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) with our Support team.
 {{</ note >}}
 
 Once your account has been created, consider **enabling 2FA** to prevent unauthorized access. Anyone that has access to your account may be able to delete your services, add new ones, and reset the root password on your Compute Instances to gain access to them. See [Cloud Manager Security Controls](/docs/guides/linode-manager-security-controls/) for instructions on enabling 2FA. If you are logging in with a third party provider, consider adding 2FA through that provider.
@@ -53,17 +53,17 @@ Once your account has been created, consider **enabling 2FA** to prevent unautho
 
 Linode's [Cloud Manager](https://cloud.linode.com/) is the primary gateway to our platform. It enables you to manage your account, view your bills, add services, and much more. Here are some of the main sections you might want to look through:
 
-- **Linodes:** View a list of your Compute Instances. Clicking on one takes you to its details page, where you can power it on or off, reboot it, resize it, access the console, change its configuration, attach Block Storage volumes, and lots more.
+- [Linodes](https://cloud.linode.com/linodes): View a list of your Compute Instances. Clicking on one takes you to its details page, where you can power it on or off, reboot it, resize it, access the console, change its configuration, attach Block Storage volumes, and lots more.
 
-- **Account:** View your account, billing information, payment methods, and previous invoices. You can also add additional users to your account.
+- [Account](https://cloud.linode.com/account/billing): View your account, billing information, payment methods, and previous invoices. You can also add additional users to your account.
 
-- **Help & Support:** Search through our guides, find answers on the Community Site, chat with our Support Bot, or open a ticket to reach our 24/7 award-winning [Support Team](https://www.linode.com/support-experience/).
+- [Help & Support](https://cloud.linode.com/support): Search through our guides, find answers on the Community Site, chat with our Support Bot, or open a ticket to reach our 24/7 award-winning [Support Team](https://www.linode.com/support-experience/).
 
 For a full overview of the Cloud Manager and its core features, see the [Overview of the Cloud Manager](/docs/guides/an-overview-of-the-linode-cloud-manager/) guide.
 
 ## Create Your First Compute Instance
 
-Compute Instances are virtual machines that can be used for nearly any purpose. Many of our customers use them to host websites and web applications, but they can also be used for development workloads, game servers, big data processing, machine learning, scientific processing, and much more. They come in a few different types, including [Shared CPU](https://www.linode.com/products/shared/), [Dedicated CPU](https://www.linode.com/products/dedicated-cpu/), [High Memory](https://www.linode.com/products/high-memory/), and [GPU](https://www.linode.com/products/gpu/). Each of these are tailored for certain workloads. See the guides below to learn more about creating a Compute Instance, configuring it after deployment, and securing it.
+Compute Instances (also frequently called *Linodes*) are virtual machines that can be used for nearly any purpose. Many of our customers use them to host websites and web applications, but they can also be used for development workloads, game servers, big data processing, machine learning, scientific processing, and much more. They come in a few different types, including [Shared CPU](https://www.linode.com/products/shared/), [Dedicated CPU](https://www.linode.com/products/dedicated-cpu/), [High Memory](https://www.linode.com/products/high-memory/), and [GPU](https://www.linode.com/products/gpu/). Each of these are tailored for certain workloads. See the guides below to learn more about creating a Compute Instance, configuring it after deployment, and securing it.
 
 - [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/)
 - [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
@@ -79,10 +79,10 @@ In addition to [Compute Instances](#create-your-first-compute-instance), Linode 
 
 **Storage**
 
-- [Block Storage](https://www.linode.com/products/block-storage/): Scalable, high-speed, and fault tolerant storage volumes used to add additional storage to a Compute Instance.
+- [Block Storage](https://www.linode.com/products/block-storage/): Scalable, high-speed, fault-tolerant, and portable (detachable) storage volumes used to add additional storage to a Compute Instance.
 - [Object Storage](https://www.linode.com/products/object-storage/): S3-compatible object storage service that can be used independently of a Compute Instance.
 - [Backups](https://www.linode.com/products/backups/): Fully managed automatic daily, weekly, and biweekly backups of your Linode Compute Instances.
-- [Images](https://www.linode.com/products/images/): Create preconfigured disk images that can be rapidly deployed to new or existing Compute Instances.
+- [Images](https://www.linode.com/products/images/): Create preconfigured disk images (or upload image files) that can be rapidly deployed to new or existing Compute Instances.
 
 **Networking**
 
@@ -93,7 +93,7 @@ In addition to [Compute Instances](#create-your-first-compute-instance), Linode 
 
 ## Understand Billing
 
-Linode services are billed to your primary payment method at the end of each month (or when your accrued changes reach your billing limit). This means you can continuously add, modify, and remove services throughout the month and, after the month is over, you receive an invoice for *the hourly usage of each service **up to the monthly cap***. See the below resources for more billing information and detailed hourly and monthly pricing.
+Linode services are billed to your primary payment method at the end of each month (or when your accrued charges reach your billing limit). This means you can continuously add, modify, and remove services throughout the month and, after the month is over, you receive an invoice for *the hourly usage of each service **up to the monthly cap***. In affect, billing is *post-paid* and *pro-rated*. See the below resources for more billing information and detailed hourly and monthly pricing.
 
 - [Billing and Payments](/docs/guides/how-linode-billing-works/)
 - [Managing Billing in the Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/)
@@ -104,3 +104,5 @@ Keep in mind that charges will accrue for any active service, even if it is powe
 ## Explore Linode Guides
 
 Linode offers extensive documentation. This not only includes guides for our core products and services, but general guides on Linux, the command-line, networking, security, version control, databases, and *much* more. Learn how to deploy a WordPress One-Click App, run a VPN, install a file storage platform, or even host a website using Object Storage. Whatever cloud computing use cases you have in mind, you can likely do it on Linode and our guides are a great place to start.
+
+- [Linode Docs](/docs/)
