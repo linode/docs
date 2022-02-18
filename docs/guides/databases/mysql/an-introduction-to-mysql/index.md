@@ -10,7 +10,7 @@ published: 2022-01-07
 modified_by:
   name: Linode
 title: "An Overview of MySQL"
-h1_title: "What Is Mysql: An Overview"
+h1_title: "What Is MySQL: An Overview"
 enable_h1: true
 contributor:
   name: Jeff Novotny
