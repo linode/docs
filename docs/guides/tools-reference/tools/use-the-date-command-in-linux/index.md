@@ -17,7 +17,7 @@ tags: ["linux"]
 
 The `date` command displays the current date and time. It can also be used to display or calculate a date in a format you specify. The super-user (root) can use it to set the system clock.
 
-![Learn how to use the linux date command](linux_date_command_smg.jpg)
+![Learn how to use the Linux date command](linux_date_command_smg.jpg)
 
 ## Use the Linux date Command
 
