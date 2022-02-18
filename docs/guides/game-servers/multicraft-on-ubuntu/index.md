@@ -41,8 +41,8 @@ Multicraft for Linux depends on several software packages in order to run.
 
 1.  Install LAMP server:
 
-        sudo apt install taskel
-        taskel install lamp-server
+        sudo apt install tasksel
+        sudo tasksel install lamp-server
 
 1.  Install PHP, SQLite, Java, and related packages:
 

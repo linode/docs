@@ -32,9 +32,9 @@ In this guide, you will learn about:
 
 ## Before You Begin
 
-You should familiarize yourself with the basics of Linode Object Storage by reading the [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide.
+You should familiarize yourself with the basics of Linode Object Storage by reviewing the [Get Started with Object Storage](/docs/products/storage/object-storage/get-started/) guide or taking a look through the available [Object Storage guides](/docs/products/storage/object-storage/guides/).
 
-You'll also need to have a bucket with which you want to enable bucket versioning. Follow the [Create a Bucket](/docs/platform/object-storage/how-to-use-object-storage/#create-a-bucket) section of the How to Use Linode Object Storage guide if you do not already have one.
+You'll also need to have a bucket with which you want to enable bucket versioning. Follow the [Create a Bucket](/docs/products/storage/object-storage/guides/manage-buckets/) guide if you do not already have one.
 
 ## Bucket Versioning
 
