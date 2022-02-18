@@ -127,7 +127,7 @@ It is possible to undo multiple commits. Use either the commit identifier or the
     {{< output >}}
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-	modified:   testfile1.txt
+    modified:   testfile1.txt
     {{< /output >}}
 
 6.  The contents of the local directory are also unchanged.
@@ -246,7 +246,7 @@ On branch git-test
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-	modified:   testfile1.txt
+    modified:  testfile1.txt
     {{< /output >}}
 
 6.  However, all changes remain in the working directory. The contents of `testfile1.txt` are unchanged.
