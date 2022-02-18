@@ -149,7 +149,7 @@ To retrieve a list of failed units, enter the `list-units` command with the `--f
 
 Each unit has a corresponding *unit file*. These unit files are usually located in the following directories:
 
-- The `/lib/systemd/system` directory holds unit files that are provided by the system or are supplied by installed packages.
+- The `/lib/systemd/system` directory holds unit files that are provided by the system or are supplied by installed packages. This directory is also a symlink to `/usr/lib/systemd/user/` directory.
 - The `/etc/systemd/system` directory stores unit files that are user-provided.
 
 ### Listing Installed Unit Files
