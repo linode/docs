@@ -39,7 +39,7 @@ Additionally, this will install the default `hello-world` react application whic
 
 ## Removing the default Flask Application
 
-The default `hello-world` Flask application included as part of the MERN Marketplace App can be removed manually from the commmand line. For some use cases and application,this step may be required to ensure that the necessary resources are available. The commands to remove this application are as follows:
+The default `hello-world` Flask application included as part of the MERN Marketplace App can be removed manually from the command line. For some use cases and application,this step may be required to ensure that the necessary resources are available. The commands to remove this application are as follows:
 
     sudo systemctl disable hello-world
     sudo systemctl stop hello-world
@@ -50,17 +50,17 @@ The default `hello-world` Flask application included as part of the MERN Marketp
 
 ## Preparing for The Transfer
 
-Before, proceeding with any remote transfer, it is strongly recommended the the original host that will be transferring data to the Linode has [Backups](https://www.linode.com/docs/guides/backing-up-your-data/) available to restore from. While standard backup solutions will work for the majority of the MERN Stack, a database dump for mongodb should be performed by using the [mongodump](https://docs.mongodb.com/database-tools/mongodump/).
+Before, proceeding with any remote transfer, it is strongly recommended the the original host that will be transferring data to the Linode has [Backups](https://www.linode.com/docs/guides/backing-up-your-data/) available to restore from. While standard backup solutions will work for the majority of the MERN Stack, a database dump for mongodb should be performed by using the [mongodump](https://docs.mongodb.com/database-tools/mongodump/) command.
 
 {{< note >}}
 If using a Cloud-Native database like **MongoDB Atlas**, the steps for transferring your database may differ, and users should consult the documentation of their database host.
 {{< /note >}}
 
-A `mongodb` database dump can be performed from the home directory with the following command:
+A mongoDB database dump can therefore be performed from the home directory with the following command:
 
     cd && mongodump
 
-Once completed, the database dump will be saved in the `/dump/` directory by default, from the root of wherever the command was entered. The `.bak` file contained within this directory can then be used to restore your database to the new Linode. The full dump directory should next be transferred over to the MERN stack Linode. To do this, first SSH into the MERN stack Linode and enter the following command, using syntax similar to the following including the `-r` flag, which will recursively copy all files from the targeted directory on the remote system to the local path designated on the linode:
+Once completed, the database dump will be saved in the `/dump/` suc-directory by default from the working directory. The `.bak` file contained within this directory can then be used to restore your database to the new Linode. The full dump directory should next be transferred over to the MERN stack Linode. To do this, first SSH into the MERN stack Linode and enter the following command, using syntax similar to the following including the `-r` flag, which will recursively copy all files from the targeted directory on the remote system to the local path designated on the linode:
 
     scp -r your_linode_username@your_linode_ip:/path/to/dump/directory /path/to/your/local/directory
 
@@ -102,6 +102,7 @@ Once these steps are completed, your node configuration should successfully be r
 
 {{< note >}}
 Some MERN applications are dependent on a specific version of Node in order to serve content. If you encounter errors related to your version of Node, you can additionally install tools like the [Node Version Manager(NVM)](https://www.linode.com/docs/guides/how-to-install-use-node-version-manager-nvm/) in order to easily switch to your needed version of Node.
+
 {{< /note >}}
 
 
