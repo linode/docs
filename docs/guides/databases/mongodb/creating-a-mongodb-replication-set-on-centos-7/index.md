@@ -29,17 +29,11 @@ In this guide, you'll learn how to create a MongoDB *replica set*. A replica set
 
 ## Before You Begin
 
-1.  To create a replica set, you'll need at least three Linodes with MongoDB installed. For information on how to install MongoDB, see the appropriate [guide](/docs/databases/mongodb/) for your distribution.
+1.  If you have not already done so, create a Linode account and *at least 3* Compute Instances. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.1. 
 
-2.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting each of your Linode's hostname and timezone.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-3.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
-
-4.  Update your system:
-
-    **CentOS:**
-
-        sudo yum update
+1.  Follow the guide on how to install MongoDB for your distribution. See [MongoDB guides](/docs/databases/mongodb/)
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.

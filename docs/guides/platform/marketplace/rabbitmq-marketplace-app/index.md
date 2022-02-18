@@ -31,11 +31,11 @@ The RabbitMQ Marketplace App installs a RabbitMQ server and a basic default conf
 
 ### RabbitMQ Options
 
-The following configuration options create a secure [Limited User](/docs/security/basics/securing-your-server/#add-a-limited-user-account) to run the RabbitMQ Media Server.
+The following configuration options create a secure [Limited User](/docs/guides/set-up-and-secure/#add-a-limited-user-account) to run the RabbitMQ Media Server.
 
 | **Configuration** | **Description** |
 |--------------|------------|
-| **RabbitMQ Username** | The [username](/docs/security/basics/securing-your-server/#add-a-limited-user-account) for accessing the rabbitMQ management console. *Required*. |
+| **RabbitMQ Username** | The [username](/docs/guides/set-up-and-secure/#add-a-limited-user-account) for accessing the rabbitMQ management console. *Required*. |
 | **RabbitMQ Password** | The user password for SSH access to the Linode. *Required*. |
 
 ### General Options

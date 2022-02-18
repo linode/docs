@@ -60,7 +60,7 @@ You may need to update your local Rancher installation to see the Linode node dr
 
 The Rancher web application will run on a Linode in your Cloud Manager account. Create and prepare the Linode that will run Rancher:
 
-1.  Create a Linode running Ubuntu 18.04 in the data center of your choice. Follow the [Getting Started](/docs/getting-started/) guide for instructions on setting up your server. It is recommended that you create a 2GB Linode or larger.
+1.  Create a Linode running Ubuntu 18.04 in the data center of your choice. Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide for instructions on setting up your server. It is recommended that you create a 2GB Linode or larger.
 
     {{< note >}}
 You will be able to create Kubernetes clusters in any Linode data center from the Rancher UI, even if your Rancher Linode is located in a different region.

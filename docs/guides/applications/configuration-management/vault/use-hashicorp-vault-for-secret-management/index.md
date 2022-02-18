@@ -67,27 +67,19 @@ The configuration outlined in this guide is suitable for small deployments. In s
 
 ### Before you Begin
 
-1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for deploying and setting up a Linode running a recent Linux distribution (such as Ubuntu 18.04 or CentOS 7), including setting the hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note >}}
 Setting the full hostname correctly in `/etc/hosts` is important in this guide in order to terminate TLS on Vault correctly. Your Linode's fully qualified domain name and short hostname should be present in the `/etc/hosts` file before continuing.
 {{< /note >}}
-
-2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 3.  Follow our [UFW Guide](/docs/security/firewalls/configure-firewall-with-ufw/) in order to install and configure a firewall on your Ubuntu or Debian-based system, or our [FirewallD Guide](/docs/security/firewalls/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. Consider reviewing Vault's [Production Hardening](https://www.vaultproject.io/guides/operations/production) recommendations if this will be used in a production environment.
 
     {{< note >}}
 When configuring a firewall, keep in mind that Vault listens on port 8200 by default and Let's Encrypt utilizes ports 80 (HTTP) and 443 (HTTPS).
 {{< /note >}}
-
-4.  Ensure your system is up to date. On Debian-based systems, use:
-
-        sudo apt update && sudo apt upgrade
-
-    While on rpm-based systems, such as CentOS, use:
-
-        sudo yum update
 
 ### Acquire a TLS Certificate
 

@@ -44,6 +44,6 @@ There are several types of Redis deployments you can use, for example, a standal
 - Read the [Redis Quickstart](https://redis.io/topics/quickstart) to learn about securing Redis and installing client libraries to use Redis with your applications.
 - Refer to the [Redis configuration documentation](https://redis.io/topics/config) to learn about the Redis configuration file.
 
-Once you have determined how you would like to configure your Redis deployment, connect to your [Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) to complete your configuration.
+Once you have determined how you would like to configure your Redis deployment, connect to your [Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) to complete your configuration.
 
 {{< content "marketplace-update-note-shortguide">}}

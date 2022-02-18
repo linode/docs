@@ -33,7 +33,7 @@ This guide will use three example [Go](https://golang.org/) apps to demonstrate 
 
 1.  Complete the [Getting Started](/docs/getting-started) guide to create a Linode. The commands in this guide are written for Ubuntu 16.04, but should also work with other distributions.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` wherever possible.
+2.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` wherever possible.
 
 3.  Update your packages:
 

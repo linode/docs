@@ -862,7 +862,7 @@ Our [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over
 If you were to run your programs as root, and if they were to be compromised by someone malicious, then the rest of your server could be compromised. If your server isn't running anything else, then it may not be important to you. However, an attacker could install malicious programs that target other people's servers, like a botnet script that sends denial-of-service attacks.
 {{< /caution >}}
 
-1. To create a non-root-user, follow the [Add a Limited User Account](/docs/guides/securing-your-server/#add-a-limited-user-account) section of our [How to Secure Your Server](/docs/guides/securing-your-server/) guide. This guide assumes that the name of the new user is `tutorialbotuser`, but you can name it whatever you'd like. The instructions in this section also show how to give your user `sudo` privileges, so it is still able to perform software updates and other administrative tasks.
+1. To create a non-root-user, follow the [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. This guide assumes that the name of the new user is `tutorialbotuser`, but you can name it whatever you'd like. The instructions in this section also show how to give your user `sudo` privileges, so it is still able to perform software updates and other administrative tasks.
 
     {{< note >}}
 Here's a video that also shows how to create a limited user: [Tech Republic: How to create a new user with admin privileges](https://youtu.be/fDHHKR0nVQg).
@@ -871,7 +871,7 @@ Here's a video that also shows how to create a limited user: [Tech Republic: How
 1. After you have created the limited user, log out of your current SSH (or Lish) session by running the `exit` command. Then, log back in as the new user.
 
     {{< note >}}
-The rest of the steps in the [How to Secure Your Server](/docs/guides/securing-your-server/) guide are optional for this tutorial, but they are still recommended if you intend to leave your server running.
+The rest of the steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide are optional for this tutorial, but they are still recommended if you intend to leave your server running.
 {{< /note >}}
 
 ### Perform Software Updates and Prepare for the Bot

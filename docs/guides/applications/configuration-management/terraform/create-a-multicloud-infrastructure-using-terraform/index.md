@@ -63,14 +63,9 @@ Code that declares the final state of your desired infrastructure is referred to
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete all the sections in [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services. Do **not** follow the [Configure a Firewall](/docs/guides/securing-your-server/#configure-a-firewall) section. This guide includes firewall rules specifically for an OpenVPN server.
-
-1. Update your system using the following commands:
-
-       sudo apt-get update
-       sudo apt-get upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. You need a personal access token for [Linode’s API v4](https://www.linode.com/docs/api/) to use with Terraform and the Terraform Linode Provider. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) to get a token.
 

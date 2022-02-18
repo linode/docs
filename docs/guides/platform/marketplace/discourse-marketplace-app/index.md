@@ -128,7 +128,7 @@ Ensure that you have correctly setup the [email DNS records](/docs/guides/dns-ma
 ### Change the Confirmation Email Sender
 Discourse sends this email from `noreply@subdomain.your-domain.com`. The SMTP user you entered during setup must have permissions to send from this address. If this is not the case, and you did not receive the email, you can change this address in a configuration file.
 
-1.  [Connect to your Marketplace App's Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh).
+1.  [Connect to your Marketplace App's Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Change into the directory `/var/discourse/containers/`:
 

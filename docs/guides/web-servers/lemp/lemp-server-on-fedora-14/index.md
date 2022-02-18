@@ -25,7 +25,7 @@ relations:
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
 
-Prior to beginning this guide, please complete the [getting started guide](/docs/getting-started/). If you are new to Linux systems administration, you may want to consider the guides in our [using Linux guide](/docs/tools-reference/introduction-to-linux-concepts/) series, particularly "[Linux Administration Basics](/docs/tools-reference/linux-system-administration-basics/)."
+Prior to beginning this guide, please complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux systems administration, you may want to consider the guides in our [using Linux guide](/docs/tools-reference/introduction-to-linux-concepts/) series, particularly "[Linux Administration Basics](/docs/tools-reference/linux-system-administration-basics/)."
 
 ## Set the Hostname
 

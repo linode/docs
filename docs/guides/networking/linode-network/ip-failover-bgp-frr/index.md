@@ -29,7 +29,7 @@ This guide covers using the open source [FRRouting (FRR)](http://docs.frrouting.
 
 Prior to following this guide, ensure the following has been done on each Compute Instance used within your IP failover strategy.
 
-1. Set the [hostname](/docs/getting-started/#set-the-hostname) and [updated the hosts file](/docs/getting-started/#update-your-system-s-hosts-file).
+1. Set the [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [updated the hosts file](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file).
 
 1. Verify Python3 is installed. See [FRR's official documentation](http://docs.frrouting.org/en/latest/installation.html#python-dependency-documentation-and-tests) to learn about FRR's Python dependencies.
 

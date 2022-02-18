@@ -66,7 +66,7 @@ Docker is now installed and ready to use. The following steps provide a sample a
 
 After Docker has finished installing, you can access Docker from the console via SSH with the IPv4 address of the Linode:
 
-1.  [SSH into the Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) and [create a limited user account](/docs/security/securing-your-server/#add-a-limited-user-account).
+1.  [SSH into the Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) and [create a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
 
 1.  Log out and log back in with the limited user account.
 

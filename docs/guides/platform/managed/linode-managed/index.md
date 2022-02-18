@@ -92,18 +92,18 @@ Linode generates and assigns a unique public/private keypair to your account's M
 
 #### Installing as Root
 
-Installing the public SSH key for the `root` user is the easiest way to add Linode's public key to your server. However, if your server's SSH configuration doesn't allow [root login](/docs/security/securing-your-server/#ssh-daemon-options), you may want to skip to the next section to add the public key to another user's account.
+Installing the public SSH key for the `root` user is the easiest way to add Linode's public key to your server. However, if your server's SSH configuration doesn't allow [root login](/docs/guides/set-up-and-secure/#ssh-daemon-options), you may want to skip to the next section to add the public key to another user's account.
 
 To install Linode's SSH key for the `root` user:
 
-1.  Open a terminal window and [log into your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh).
+1.  Open a terminal window and [log into your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Log in as `root`:
 
         su
 
     {{< note >}}
-If you followed the instructions in the [Securing Your Server](/docs/securing-your-server) guide to disable root login via SSH, you will need to reenable that feature to install the public key for the `root` user. Follow [these instructions](/docs/security/securing-your-server/#ssh-daemon-options) to edit the `sshd_config` file and reenable root login via SSH.
+If you followed the instructions in the [Securing Your Server](/docs/securing-your-server) guide to disable root login via SSH, you will need to reenable that feature to install the public key for the `root` user. Follow [these instructions](/docs/guides/set-up-and-secure/#ssh-daemon-options) to edit the `sshd_config` file and reenable root login via SSH.
 {{< /note >}}
 
 1.  Open the `authorized_keys` file in a text editor (for example, [nano](/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/)):
@@ -124,18 +124,18 @@ The `/root/.ssh/` directory may not exist yet. If this is the case, you must cre
 
 #### Installing as Another User
 
-You can also install Linode's public SSH key for another non-root user. This allows you to disable SSH [root login](/docs/security/securing-your-server/#ssh-daemon-options) and still allow our support staff to log into your servers.
+You can also install Linode's public SSH key for another non-root user. This allows you to disable SSH [root login](/docs/guides/set-up-and-secure/#ssh-daemon-options) and still allow our support staff to log into your servers.
 
 To install Linode's SSH key as a non-root user:
 
 1.  [Log into your Linode via SSH](/docs/getting-started#connect-to-your-linode-via-ssh).
 
-1.  If you haven't already created a non-root user on your server, you should do so now. See [Adding a New User](/docs/security/securing-your-server/#add-a-limited-user-account) for instructions.
+1.  If you haven't already created a non-root user on your server, you should do so now. See [Adding a New User](/docs/guides/set-up-and-secure/#add-a-limited-user-account) for instructions.
 
     {{< disclosure-note "Important: providing sudo access" >}}
 After logging into your Linode as a non-root user, the Linode Support team will generally need [sudo privileges](/docs/tools-reference/linux-users-and-groups/#understanding-sudo) to run troubleshooting commands, so you should make sure to give your user sudo privileges.
 
-The [Adding a New User](/docs/security/securing-your-server/#add-a-limited-user-account) guide shows how to add your user to the `sudo` group (or `wheel` or `admin` group, depending on your distribution), which will grant this privilege. When your user is in this group, your system will ask for the user's password whenever a sudo command is run. Because of this, you will also need to tell us your Linux user and password by following the [Adding Service Credentials](#adding-service-credentials) section.
+The [Adding a New User](/docs/guides/set-up-and-secure/#add-a-limited-user-account) guide shows how to add your user to the `sudo` group (or `wheel` or `admin` group, depending on your distribution), which will grant this privilege. When your user is in this group, your system will ask for the user's password whenever a sudo command is run. Because of this, you will also need to tell us your Linux user and password by following the [Adding Service Credentials](#adding-service-credentials) section.
 
 Alternatively, you can set up *passwordless sudo* for your user, which means that your user's password won't be requested by the system when running sudo commands. To do this:
 

@@ -51,7 +51,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 After your MEAN One-click App has finished installing, you can:
 
-- [Connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh). You will need your Linode's root password to proceed.
+- [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). You will need your Linode's root password to proceed.
 
 ## Software Included
 

@@ -23,15 +23,9 @@ Even eight years after its release, the Zombie Horde Survival game [7 Days to Di
 
 ## Before You Begin
 
-1. Deploy an **Ubuntu 20.04** Linode in a [data center region](https://www.linode.com/global-infrastructure/) close to your player's geographic location. Ensure you select a [Linode plan](https://www.linode.com/docs/guides/how-to-choose-a-linode-plan/) with enough RAM and CPU for the game. The [7 Days to Die official documentation](https://store.steampowered.com/app/251570/7_Days_to_Die/) recommends 4 CPU cores.
+1. Deploy an **Ubuntu 20.04** Linode in a [data center region](https://www.linode.com/global-infrastructure/) close to your player's geographic location. Ensure you select a [Linode plan](/docs/guides/how-to-choose-a-linode-plan/) with enough RAM and CPU for the game. The [7 Days to Die official documentation](https://store.steampowered.com/app/251570/7_Days_to_Die/) recommends 4 CPU cores.
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
-
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
-
-1.  Update your system:
-
-        sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 In order to play 7 Days to Die, you have to [purchase the game on Steam](https://store.steampowered.com/app/251570/7_Days_to_Die/).
