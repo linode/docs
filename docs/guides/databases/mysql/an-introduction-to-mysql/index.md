@@ -19,7 +19,7 @@ external_resources:
 - '[Official MySQL documentation](https://dev.mysql.com/doc/)'
 ---
 
-Many programs need to save or store data for later use and read data the data that is recorded. Although there are many ways to do this, the most common approach is to use a *Relational DataBase Management System* (RDBMS). [MySQL](https://www.mysql.com/) is an industry-standard open-source RDBMS that has been widely adopted by software development projects. This guide provides an overview of MySQL and explains the main RDBMS concepts.
+Many programs need to save or store data for later use and read data that is recorded. Although there are many ways to do this, the most common approach is to use a *Relational DataBase Management System* (RDBMS). [MySQL](https://www.mysql.com/) is an industry-standard open-source RDBMS that has been widely adopted by software development projects. This guide provides an overview of MySQL and explains the main RDBMS concepts.
 
 ## What is a Relational Database (RDBMS)?
 

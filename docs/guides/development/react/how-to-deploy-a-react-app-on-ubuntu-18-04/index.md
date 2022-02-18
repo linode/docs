@@ -19,7 +19,7 @@ contributor:
   name: Linode
 external_resources:
 - '[React - A JavaScript library for building user interfaces](https://reactjs.org/)'
-- '[Deploy a React App with Sass Using NGINX](http://zabana.me/notes/build-deploy-react-app-with-nginx.html)'
+- '[Deploy a React App with Sass Using NGINX](https://web.archive.org/web/20191130010415/http://zabana.me/notes/build-deploy-react-app-with-nginx.html)'
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["javascript"]
