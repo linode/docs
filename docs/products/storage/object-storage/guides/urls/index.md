@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: ""
+description: "Learn how to obtain URLs to objects within Linode's Object Storage service."
 keywords: ['object','storage','bucket']
 published: 2020-01-22
 modified: 20202-02-011
@@ -96,7 +96,7 @@ You can build this URL manually or you can view the file URL through the Cloud M
 
 ## Signed URLs
 
-A **signed URL** gives anyone with the URL access to a file for a certain period of time. This is very useful when you want to share a document or file with someone, but don't wish to make the permanently accessible or able to be guessed by others. You can generate a signed URL through the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/#create-a-signed-url-with-the-cli) or [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/#create-a-signed-url-with-s3cmd).
+A **signed URL** gives anyone with the URL access to a file for a certain period of time. This is very useful when you want to share a document or file with someone, but don't wish to make the URL permanently accessible or able to be guessed by others. You can generate a signed URL through the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/#create-a-signed-url-with-the-cli) or [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/#create-a-signed-url-with-s3cmd).
 
 Here's an example of a signed URL:
 

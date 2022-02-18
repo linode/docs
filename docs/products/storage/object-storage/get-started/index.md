@@ -82,9 +82,23 @@ Individual object uploads are limited to a size of 5GB each, though larger objec
 You can add an *AbortIncompleteMultipartUpload* lifecycle policy to the buckets to automatically abort unfinished multipart uploads after a certain amount of time. For more information about adding the *AbortIncompleteMultipartUpload* lifecycle policy, see [Additional Actions] (https://www.linode.com/docs/guides/how-to-manage-objects-with-lifecycle-policies/#additional-actions).
 {{< /note >}}
 
-## Control Access with ACLs and Bucket Policies
+## Control Permissions with ACLs and Bucket Policies
 
-Linode Object Storage allows users to share access to objects and buckets with other Object Storage users. There are two mechanisms for setting up sharing: *Access Control Lists (ACLs)*, and *bucket policies*. These mechanisms perform similar functions: both can be used to restrict and grant access to Object Storage resources. [Learn more about ACLs and bucket policies](/docs/guides/how-to-use-object-storage-acls-and-bucket-policies/).
+Linode Object Storage allows users to share access to objects and buckets with other Object Storage users. There are two mechanisms for setting up sharing: *Access Control Lists (ACLs)*, and *bucket policies*. These mechanisms perform similar functions: both can be used to restrict and grant access to Object Storage resources. ACLs can also restrict or grant access to *individual objects*, but they don't offer as many fine-grained access modes as bucket policies.
+
+- [ACLs (Access Control Lists)](/docs/products/storage/object-storage/guides/acls/)
+
+- [Bucket Policies](/docs/products/storage/object-storage/guides/bucket-policies/)
+
+If you can organize objects with similar permission needs into their own buckets, then it's strongly suggested that you use bucket policies. However, if you cannot organize your objects in this fashion, ACLs are still a good option.
+
+ACLs offer permissions with less fine-grained control than the permissions available through bucket policies. If you are looking for more granular permissions beyond read and write access, choose bucket policies over ACLs.
+
+Additionally, bucket policies are created by applying a written bucket policy file to the bucket. This file cannot exceed 20KB in size. If you have a policy with a lengthy list of policy rules, you may want to look into ACLs instead.
+
+{{< note >}}
+ACLs and bucket policies can be used at the same time. When this happens, any rule that limits access to an Object Storage resource overrides a rule that grants access. For instance, if an ACL allows a user access to a bucket, but a bucket policy denies that user access, the user can not access that bucket.
+{{< /note >}}
 
 ## Object Storage Tools
 
