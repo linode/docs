@@ -10,7 +10,7 @@ Cyberduck is a desktop application that facilitates file transfer over FTP, SFTP
 
 ## Install and Configure Cyberduck
 
-1.  Navigate to Cyberduck's [Download](https://cyberduck.io/download/) webpage and download the latest version of Cyberduck for your operation system. After downloading, run the file to install the application.
+1.  Navigate to Cyberduck's [Download](https://cyberduck.io/download/) webpage and download the latest version of Cyberduck for your operating system. After downloading, run the file to install the application.
 
     {{<note>}}
 If you already have Cyberduck installed, be sure to update to version 8.2.1 or newer. Some of the steps within this guide do not work properly on earlier versions.
