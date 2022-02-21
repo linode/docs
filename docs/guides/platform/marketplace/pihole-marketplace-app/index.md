@@ -7,7 +7,7 @@ description: "Deploy Pi-hole on a Linode Compute Instance. This app protects you
 keywords: ['pi-hole','adblocker','dns','sinkhole']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-14
+published: 2022-02-21
 modified_by:
   name: Linode
 title: "Deploying Pi-hole through the Linode Marketplace"
@@ -56,19 +56,13 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Accessing the Pi-hole App
 
-1.  After installation is complete, the Pi-hole dashboard is accessible at domain you entered in the beginning of your deployment followed by `/admin`.
+1.  Open your web browser and navigate to `http://[domain]/admin`, where *[domain]* can be replaced with the custom domain you entered during deployment, your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`), or your IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
-        http://example.com/admin
+    The Pi-Hole dashboard should now be displayed.
 
-    {{< note >}}
-If you did not enter a domain, you can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
-{{< /note >}}
+    ![Screenshot of the Pi-hole dashboard](pihole-dashboard.png)
 
-    ![Pi-hole dashboard](piholedash.png "The Pi-hole Dashboard")
-
-1.  Once you are in the Pi-hole dashboard, you can click the login tab and enter your Pi-hole user password that you created during the creation of the Linode.
-
-    ![Pi-hole login](piholelogin.png "The Pi-hole Login")
+1.  To log yourself in and access most of Pi-hole's features, click the **Login** link on the left menu. Enter the Pi-hole user password that you created when deploying the Compute Instance.
 
 Now that you’ve accessed your dashboard, check out [the official Pi-hole documentation](https://docs.pi-hole.net/) to learn how to further utilize your Pi-hole instance.
 
