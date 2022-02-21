@@ -7,7 +7,7 @@ keywords: ["LEMP", "LEMP stack", "LEMP server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lemp/','/web-servers/lemp/','/lemp-guides/']
 published: 2010-06-29
-title: LEMP Guides
+title: LEMP Configuration Guides | Linode
 show_in_lists: true
 ---
 

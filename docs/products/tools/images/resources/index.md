@@ -1,5 +1,5 @@
 ---
-title: Resources
+title: Resources for Linode Images | Linode
 description: "Resources and other information related to Linode Images including blog posts and community posts."
 tab_group_main:
     weight: 40

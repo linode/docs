@@ -12,7 +12,7 @@ modified: 2013-10-02
 modified_by:
   name: Linode
 published: 2010-05-03
-title: Manage Web Content with FlatPress
+title: Manage Web Content with FlatPress | Linode
 deprecated: true
 ---
 

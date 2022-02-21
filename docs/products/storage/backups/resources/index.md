@@ -1,5 +1,5 @@
 ---
-title: Resources
+title: Resources for Linode Backups | Linode
 description: "Resources and other information related to the Linode Backup Service including videos, blog posts, community posts, customer stories, and press releases."
 tab_group_main:
     weight: 40

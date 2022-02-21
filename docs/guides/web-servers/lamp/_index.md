@@ -7,7 +7,7 @@ keywords: ["LAMP", "LAMP stack", "LAMP server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lamp/','/web-servers/lamp/','/lamp-guides/']
 published: 2009-07-16
-title: LAMP Guides
+title: LAMP Configuration Guides | Linode
 show_in_lists: true
 ---
 

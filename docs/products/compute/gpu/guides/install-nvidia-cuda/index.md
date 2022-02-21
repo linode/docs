@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-title: "Installing the NVIDIA CUDA Toolkit"
+title: "Installing the NVIDIA CUDA Toolkit | Linode"
 description: "This guide provides step-by-step instructions for installing the NVIDIA CUDA Toolkit and drivers on a GPU Compute Instance at Linode for your workloads."
 published: 2022-01-21
 modified: 2022-01-21

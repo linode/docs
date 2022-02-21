@@ -7,7 +7,7 @@ og_description: "Mango is a simple static content management system for publishi
 keywords: ["mango", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01
-title: Mango
+title: Mango CMS Configuration Guides | Linode
 show_in_lists: true
 aliases: ['/websites/cms/mango/']
 ---

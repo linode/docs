@@ -1,5 +1,5 @@
 ---
-title: Guides
+title: Linode Billing Guides | Linode
 description: "Learn more about Linode Billing and related topics."
 tab_group_main:
     weight: 30

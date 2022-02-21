@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-04-13
 title: Web Server Guides
 show_on_frontpage: true
-title_short: "Web Servers"
+title_short: "Web Server Guides | Linode"
 weight: 50
 icon: "globe"
 ---

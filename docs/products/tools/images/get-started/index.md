@@ -1,5 +1,5 @@
 ---
-title: Get Started
+title: Get Started with Linode Images | Linode
 description: "Get started with Linode Images. Learn to create an image with the Linode Images service."
 tab_group_main:
     weight: 20

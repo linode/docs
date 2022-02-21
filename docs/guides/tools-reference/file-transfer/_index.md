@@ -7,7 +7,7 @@ keywords: ["file transfer", "file transferring", "cyberduck", "filezilla", "wins
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/file-transfer/','/networking/file-transfer/']
 published: 2009-07-16
-title: File Transfer
+title: Tools & Reference Guides - File Transfers | Linode
 show_in_lists: true
 ---
 

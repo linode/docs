@@ -1,5 +1,5 @@
 ---
-title: Load Balancing
+title: Uptime & Load Balancing Tools | Linode
 description: "How to configure load balancing to keep your applications highly available."
 show_in_lists: true
 aliases: ['/uptime/loadbalancing/']
