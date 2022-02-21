@@ -3,7 +3,10 @@ title: Get Started
 description: "Get Started with Linode Object Storage. Learn how to enable Object Storage, create an Object Storage key pair, create a bucket, upload an object to a bucket, and cancel Object Storage."
 tab_group_main:
     weight: 20
+aliases: ['/platform/object-storage/how-to-use-object-storage/','/guides/how-to-use-object-storage/']
 ---
+
+{{< youtube q88OKsr5l6c >}}
 
 ## Enable Object Storage
 
@@ -78,3 +81,19 @@ Individual object uploads are limited to a size of 5GB each, though larger objec
       {{< note >}}
 You can add an *AbortIncompleteMultipartUpload* lifecycle policy to the buckets to automatically abort unfinished multipart uploads after a certain amount of time. For more information about adding the *AbortIncompleteMultipartUpload* lifecycle policy, see [Additional Actions] (https://www.linode.com/docs/guides/how-to-manage-objects-with-lifecycle-policies/#additional-actions).
 {{< /note >}}
+
+## Control Access with ACLs and Bucket Policies
+
+Linode Object Storage allows users to share access to objects and buckets with other Object Storage users. There are two mechanisms for setting up sharing: *Access Control Lists (ACLs)*, and *bucket policies*. These mechanisms perform similar functions: both can be used to restrict and grant access to Object Storage resources. [Learn more about ACLs and bucket policies](/docs/guides/how-to-use-object-storage-acls-and-bucket-policies/).
+
+## Object Storage Tools
+
+There are a number of tools that are available to help manage Linode Object Storage. This guide explains how to install and use the following options:
+
+- The [Linode Cloud Manager](/docs/products/storage/object-storage/guides/) can be used to create buckets, and upload and delete objects, as well as create access keys for use with the S3 compatible clients.
+
+- The [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli) has an Object Storage plugin and can be used to create and remove buckets, add and remove objects, and convert a bucket into a static site from the command line.
+
+- [s3cmd](/docs/products/storage/object-storage/guides/s3cmd) is a powerful command line utility that can be used with any S3-compatible object storage service, including Linode's. s3cmd can be used to create and remove buckets, add and remove objects, convert a bucket into a static site from the command line, plus other functions like syncing entire directories up to a bucket.
+
+- [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck) is a graphical utility available for Windows and macOS and is a great option if you prefer a GUI tool.
