@@ -3,11 +3,11 @@ slug: odoo-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
-description: "Deploy Odoo on a Linode Compute Instance. This provides a self-hosted suite of over 10,000 open source applications for a variety of business needs, including CRM, eCommerce, accounting, inventory, point of sale, and project management."
+description: "Learn how to deploy Odoo, a self-hosted business management software suite, on the Linode platform."
 keywords: ['odoo','business','crm','ecommerce']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-14
+published: 2022-02-21
 modified_by:
   name: Linode
 title: "Deploying Odoo through the Linode Marketplace"
@@ -55,9 +55,9 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Accessing the Odoo App
 
-1.  Open a browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
+1.  Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#configuring-rdns) guide for information on viewing the rDNS value.
 
-1.  Within the Odoo setup page that appears, save the automatically generated admin password (also called the *master password*) and enter the details for your new user account. For the **Database Name** field, enter *odoo*.
+1.  Within the Odoo setup page that appears, save the automatically generated admin password (also called the *master password*), enter *odoo* as the **Database Name**, and fill out the remaining details for your account.
 
     ![Screenshot of the Odoo setup page](odoosetuppage.png)
 
