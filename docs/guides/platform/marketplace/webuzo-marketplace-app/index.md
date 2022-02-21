@@ -50,7 +50,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ## Getting Started after Deployment
 
-The Webuzo application is now being served on your Linode, however it still requires a few additional steps to fully complete the installation process.
+The server will reboot once the installation is complete. Once the server is booted, the Webuzo application will require a few additional steps to fully complete the installation process.
 
 1.  The Webuzo setup wizard is served on port 2004. To access it, navigate to the IP address of your server followed by port 2004. For example, `http://203.0.113.0:2004`, replacing the IP address with values for your server. If you do not see the initial setup screen (shown below), you may need to restart your Compute Instance.
 
