@@ -968,6 +968,7 @@ kubelet
 kubelets
 kubernetes
 kubespray
+Kuma
 kustomize
 kuznetosv
 lambdabunker
