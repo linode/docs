@@ -7,7 +7,7 @@ description: "Deploy Focalboard on a Linode Compute Instance. This provides you 
 keywords: ['focalboard','project','productivity','kanban']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-14
+published: 2022-02-22
 modified_by:
   name: Linode
 title: "Deploying Focalboard through the Linode Marketplace"
@@ -47,16 +47,31 @@ Here are the additional options available for this Marketplace App:
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-- **Supported distributions:** Ubuntu 20.04 LTS Debian 11
+- **Supported distributions:** Ubuntu 20.04 LTS, Debian 11
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
 
 ### Accessing the Focalboard App
 
-1.  Open a browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
+1.  Open your web browser and navigate to `http://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing rDNS.
 
-1.  On the Focalboard login page that appears, click the **Create an Account** button to create a username and password for your instance.
+    ![Screenshot of the URL bar](focalboard-url.png)
+
+1.  On the Focalboard login page that appears, click the *create an account* link.
+
+    ![The Focalboard login page](focalboard-login.png)
+
+1.  Complete the sign-up form and click the **Register** button.
+
+    ![The Focalboard registration page](focalboard-create-account.png)
+
+1.  You are automatically logged in and the **Create Board** screen should display.
+
+    ![The Focalboard Create a Board page](focalboard-create-board.png)
+
+
+
 
 Now that you’ve accessed your dashboard, check out [the official Focalboard documentation](https://www.focalboard.com/guide/user/) to learn how to further utilize your Focalboard instance.
 
