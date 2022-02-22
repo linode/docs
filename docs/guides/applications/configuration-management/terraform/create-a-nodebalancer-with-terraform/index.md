@@ -3,7 +3,7 @@ slug: create-a-nodebalancer-with-terraform
 author:
   name: Linode
   email: docs@linode.com
-description: "How to create a NodeBalancer and Nodes with Terraform."
+description: 'This guide provides you with step-by-step instructions for installing Terraform and utilizing the tool to create a NodeBalancer and Nodes for your Linodes.'
 keywords: ['terraform','nodebalancer','node','balancer','provider','linode']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-12

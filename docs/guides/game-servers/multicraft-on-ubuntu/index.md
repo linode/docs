@@ -3,7 +3,7 @@ slug: multicraft-on-ubuntu
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: "Installation of MultiCraft on a Linode running Debian or Ubuntu"
+description: "This guide shows how to install and configure MultiCraft, a control panel for single or multiple Minecraft servers, on a Linode running Ubuntu 20.04 LTS."
 keywords: ["minecraft", "ubuntu", "multicraft"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -41,8 +41,8 @@ Multicraft for Linux depends on several software packages in order to run.
 
 1.  Install LAMP server:
 
-        sudo apt install taskel
-        taskel install lamp-server
+        sudo apt install tasksel
+        sudo tasksel install lamp-server
 
 1.  Install PHP, SQLite, Java, and related packages:
 

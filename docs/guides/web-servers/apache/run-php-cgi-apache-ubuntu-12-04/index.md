@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use PHP CGI to run PHP scripts as indivudual users on Ubuntu 12.04.'
+description: 'This guide provides you with instructions for using PHP CGI to run PHP scripts as individuals users on your system for better security on and performance on Ubuntu 12.04.'
 keywords: ["php", "php cgi", "cgi", "apache", "php scripts", "web apps", "web applications"]
 tags: ["web server","apache","ubuntu","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

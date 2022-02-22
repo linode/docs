@@ -3,7 +3,7 @@ slug: configure-apache-with-salt-stack
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configure Apache on Ubuntu, Debian and CentOS with Salt Stack.'
+description: 'This guide provides you with step-by-step instructions for installing and configuring the Apache Web Server on Ubuntu, Debian, and CentOS with the Salt Sack.'
 keywords: ['salt','stack','saltstack','apache','httpd','ubuntu','debian','centos']
 tags: ["automation","salt","debian","centos","ubuntu","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

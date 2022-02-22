@@ -3,8 +3,8 @@ slug: how-to-deploy-spring-boot-applications-nginx-ubuntu-16-04
 author:
   name: Sam Foo
   email: docs@linode.com
-description: 'Quickly create a Spring Boot application embedded on a Tomcat server through the command line. Deploy this application on a Linode through an NGINX reverse proxy.'
-og_description: "Spring Boot enables quick development of the Spring Framework. This guide shows how to create a simple Spring Boot application on Ubuntu, using an NGINX reverse proxy."
+description: 'This guide shows you how to quickly create a Spring Boot application embedded on a Tomcat server using the command line interface on your Linode.'
+og_description: "This guide shows you how to quickly create a Spring Boot application embedded on a Tomcat server using the command line interface on your Linode."
 keywords: ["spring", "tomcat", "maven", "Java", "gradle"]
 tags: ["web applications","java","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

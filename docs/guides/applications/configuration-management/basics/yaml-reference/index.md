@@ -3,8 +3,8 @@ slug: yaml-reference
 author:
   name: Cameron Laird
   email: claird@phaseit.net
-description: 'This reference provides a brief introduction to YAML. It gives you an understanding of the basics; YAML indentation and special characters; YAML data types; and supporting tools when working with YAML files.'
-og_description: 'This reference provides a brief introduction to YAML. It gives you an understanding of the basics; YAML indentation and special characters; YAML data types; and supporting tools when working with YAML files.'
+description: 'This guide provides you with a brief introduction to the YAML programming language and gives you an understanding of the basics so you can work with YAML files.'
+og_description: 'This guide provides you with a brief introduction to the YAML programming language and gives you an understanding of the basics so you can work with YAML files.'
 keywords: ['yaml reference']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-09

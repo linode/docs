@@ -3,7 +3,7 @@ slug: using-sshfs-on-linux
 author:
   name: Linode
   email: docs@linode.com
-description: 'Securely accessing remote filesystems with SSHFS on Linux.'
+description: 'This guide shows how to use SSHFS, Secure Shell FileSystem, a tool that allows users to securely access a remote file system over SSH via the command line interface.'
 keywords: ["sshfs", "ssh filesystem", "sshfs linux", "sshfs macos"]
 tags: ["networking","ssh","security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

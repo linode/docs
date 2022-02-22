@@ -3,7 +3,7 @@ slug: troubleshooting-overview
 author:
   name: Linode
   email: docs@linode.com
-description: An overview of different troubleshooting topics.
+description: 'This guide provides you with a reference for common troubleshooting scenarios you may encounter when managing your Linode. Multiple sections are included.'
 keywords: ['troubleshooting']
 tags: ["linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

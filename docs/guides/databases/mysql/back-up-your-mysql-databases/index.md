@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'Instructions for backing up MySQL databases using various methods.'
+description: 'This guide provides instructions for backing up your MySQL databases for disaster recovery and continuity using a variety of methods, including the command line.'
 keywords: ["mysql", "backup", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/backup-options/','/databases/mysql/back-up-your-mysql-databases/','/security/backups/back-up-your-mysql-databases/']

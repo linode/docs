@@ -6,6 +6,7 @@ ack
 aconf
 accessor
 accessors
+acronis
 adc
 addon
 addons
@@ -27,6 +28,7 @@ Akaunting
 aker
 alef
 alertmanager
+alex
 alexey
 alfano
 alives
@@ -38,6 +40,7 @@ amavis
 amavisd
 amd64
 ananke
+anonymization
 anonymize
 anonymizing
 ansi
@@ -64,10 +67,13 @@ aren
 argv
 arping
 arptables
+Asana
 askbot
 aske
 async
 asynchrony
+atera
+atlanta
 authdaemonrc
 authg
 authlib
@@ -92,6 +98,7 @@ automator
 automattic
 automations
 automount
+automox
 autorelabel
 autorun
 autoscale
@@ -106,6 +113,7 @@ awk
 aws
 awstats
 axibase
+ayehu
 azc
 azlux
 backdooring
@@ -154,6 +162,7 @@ blockwise
 bluehost
 bokeh
 bookinfo
+bool
 boolean
 booleans
 boolstyle
@@ -266,6 +275,7 @@ colab
 collabnet
 colormaps
 com2sec
+commoditization
 comodo
 completekey
 composable
@@ -290,6 +300,7 @@ coroutines
 corporateclean
 courseware
 cov
+covid
 cpanminus
 cpu
 cqlsh
@@ -311,6 +322,8 @@ crowdsourcing
 crt
 crypters
 crypto
+cryptocurrencies
+cryptocurrency
 csi
 csharp
 csharpserver
@@ -325,6 +338,7 @@ cuda
 curlie
 cutover
 cyber
+cyberattack
 cyberduck
 cyberpanel
 cybersecurity
@@ -339,6 +353,7 @@ daemonizes
 daemonizing
 daemonset
 dahdi
+dallas
 databags
 datacenter
 datadir
@@ -372,9 +387,11 @@ declaratively
 deduplication
 deepin
 defragment
+deloitte
 delpy
 demultiplexer
 denormalized
+deprovision
 deprovisioning
 descolada
 descr
@@ -466,11 +483,13 @@ ejabberd
 el6
 el7
 elasticsearch
+elif
 elisp
 elgg
 elpaso
 emacs
 email2email
+emisoft
 emojivoto
 emscripten
 ender
@@ -504,7 +523,9 @@ examplesitename
 exampleuser
 exe
 executables
+exfiltrated
 exfiltrating
+exfiltration
 exim
 expirations
 exploitability
@@ -570,6 +591,7 @@ flatpress
 florian
 flowlens
 flyspray
+Focalboard
 foodcritic
 fortinet
 fortnite
@@ -584,6 +606,7 @@ frakti
 framesets
 freedns
 freeipa
+fremont
 freshclam
 friendster
 frontend
@@ -602,6 +625,7 @@ gamepedia
 gameplay
 gandi
 gartner
+gatik
 gatsby
 gbps
 gcc
@@ -666,6 +690,7 @@ gping
 gradle
 grafana
 graphql
+Grav
 graylog
 graylog2
 greenbone
@@ -755,6 +780,7 @@ hypervisor
 hypervisors
 IaC
 Istio
+istio
 i386
 iaas
 icann
@@ -783,6 +809,7 @@ im
 imagize
 imap
 imapd
+imaplib
 imaps
 img
 immutant
@@ -796,6 +823,7 @@ inet6
 infector
 infographic
 infosec
+ingestible
 ingressgateway
 ini
 initializer
@@ -849,6 +877,7 @@ issuewild
 istioctl
 iterable
 itk
+ivanti
 Janca
 jamstack
 java6
@@ -889,6 +918,8 @@ kaggle
 kakfa
 kamkar
 kanban
+kaseya
+kasten
 kbits
 keepalive
 keepalived
@@ -926,6 +957,7 @@ konsole
 kotin
 konversation
 krita
+kroll
 ktor
 kube
 kubeadm
@@ -937,6 +969,7 @@ kubelet
 kubelets
 kubernetes
 kubespray
+Kuma
 kustomize
 kuznetosv
 lambdabunker
@@ -946,6 +979,7 @@ launchd
 lbmethod
 lda
 ldap
+le
 lego
 leiningen
 lelastic
@@ -1011,6 +1045,7 @@ logpath
 logrotate
 logstash
 logwatch
+london
 longview
 lookups
 loopback
@@ -1235,6 +1270,7 @@ netstat
 netstumbler
 netuser
 networkd
+newark
 newgrp
 newtag
 nextcloud
@@ -1351,6 +1387,7 @@ paravirt
 paravirtualization
 paravirtualized
 parentheticals
+parsedate
 partitionless
 partyline
 passdb
@@ -1368,6 +1405,7 @@ pentesting
 pepi
 percona
 performant
+perl
 permalink
 permalinks
 Petazzoni
@@ -1437,6 +1475,7 @@ prestashop
 prettifier
 prettifiers
 Printf
+printf
 pritunl
 privesc
 processhider
@@ -1492,6 +1531,7 @@ quicklisp
 quickstart
 radeon
 ramdisk
+ransomwhere
 rauth
 rbac
 rbenv
@@ -1538,6 +1578,7 @@ refspec
 regexes
 reimported
 reindexing
+reiner
 reinstalls
 releasever
 reloadcmd
@@ -1550,6 +1591,7 @@ replicationcontrollers
 replset
 repo
 repos
+reputational
 resharding
 resilvering
 resolv
@@ -1618,6 +1660,7 @@ saas
 sakila
 safend
 salesforce
+Saltcorn
 sam
 samy
 sandcat
@@ -1648,6 +1691,7 @@ sda
 sda1
 sdb
 sdc
+se
 seaborn
 seafile
 seahub
@@ -1706,6 +1750,7 @@ scribus
 sidekiq
 sievers
 signup
+singapore
 sintra
 sitename
 sklearn
@@ -1715,6 +1760,7 @@ slavedb
 sls
 smartcard
 smartcards
+smishing
 smtp
 smtpd
 smush
@@ -1776,6 +1822,7 @@ stopword
 stopwords
 storages
 streamlink
+strongswan
 su
 subcommand
 subcommands
@@ -1891,6 +1938,7 @@ togami
 tokenize
 tokenized
 tokenizing
+tokyo
 tokyo2
 tomacat
 tomcat6
@@ -2011,6 +2059,7 @@ valheim
 validator
 variadic
 varnishlog
+varonis
 vaultwarden
 vcs
 vdev
@@ -2021,6 +2070,7 @@ venv
 ver
 veracode
 verisign
+veritas
 vhost
 vhosts
 vimrc
@@ -2036,6 +2086,7 @@ virtualize
 virtualized
 virtualmin
 Virustotal
+vishing
 vlan
 vlans
 vlc
@@ -2184,6 +2235,8 @@ zapier
 zcat
 zend
 zgrep
+zhao
+zigbee
 zile
 zimbra
 zipkin

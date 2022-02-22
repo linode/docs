@@ -3,8 +3,8 @@ slug: how-to-install-canvas-on-debian-10
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Canvas is a learning management system that you can use to create a fully-featured website for education or training courses. This guide provides instructions on how you can install Canvas on Debian 10.'
-og_description: 'Canvas is a learning management system that you can use to create a fully-featured website for education or training courses. This guide provides instructions on how you can install Canvas on Debian 10.'
+description: 'This guide will show you how to install, configure, and run the popular free and open source learning management system Canvas on Debian 10.'
+og_description: 'This guide will show you how to install the popular learning management system Canvas on Debian 10.'
 keywords: ['canvas','education','training','learning management system','lms','deploy on debian 10']
 tags: ['canvas', 'debian','apache','ssl','redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

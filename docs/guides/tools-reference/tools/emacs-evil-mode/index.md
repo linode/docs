@@ -3,7 +3,7 @@ slug: emacs-evil-mode
 author:
   name: Edward Angert
   email: docs@linode.com
-description: 'How to navigate Emacs using Evil Mode.'
+description: 'This guide provides you with step-by-step instructions for navigating Emacs, a very popular and endlessly versatile text editor, using it''s infamous Evil Mode.'
 keywords: ['emacs','evil','text editor']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-05

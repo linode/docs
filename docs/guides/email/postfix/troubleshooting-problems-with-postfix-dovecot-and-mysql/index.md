@@ -3,7 +3,7 @@ slug: troubleshooting-problems-with-postfix-dovecot-and-mysql
 author:
   name: Linode
   email: docs@linode.com
-description: 'Our guide to testing and troubleshooting Postfix, Dovecot, and MySQL'
+description: 'This is a reference guide for testing and troubleshooting a email server running Postfix as it''s MTA, Dovecot as a POP3/IMAP server, and MySQL for database.'
 keywords: ["postfix", "dovecot", "mysql"]
 tags: ["mysql","postfix","email","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -257,7 +257,7 @@ Read the discussion of Telnet outcomes below, and analyze your results according
 If the test is successful, you should see output similar to the following:
 
     Trying 12.34.56.78...
-    Connected to li468-222.members.linode.com.
+    Connected to 203-0-113-0.ip.linodeusercontent.com.
     Escape character is '^]'.
     220 host.example.com ESMTP Postfix (Ubuntu)
 

@@ -3,8 +3,8 @@ slug: view-and-follow-the-end-of-text-files-with-tail
 author:
   name: Linode
   email: docs@linode.com
-description: 'tail is a Linux utility used to view the end of text files. This guide demonstrates the syntax and basic usage of tail, as well as showing how to use follow mode to view additions to files in real time.'
-og_description: 'tail is a Linux utility used to view the end of text files. This guide demonstrates the syntax and basic usage of tail, as well as showing how to use follow mode to view additions to files in real time.'
+description: 'This guide demonstrates the syntax and basic usage of the Linux utility tail, which you can use to view the end of text files, and also how to use follow mode.'
+og_description: 'This guide demonstrates the syntax and basic usage of the Linux utility tail, which you can use to view the end of text files, and also how to use follow mode.'
 keywords: ["tail", "linux commands", "linux", "common commands", "unix", "cli"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/view-and-follow-the-end-of-text-files-with-tail/','/linux-tools/common-commands/tail/']

@@ -3,7 +3,7 @@ slug: transfer-files-with-filezilla-on-ubuntu-9-10-desktop
 author:
   name: Linode
   email: docs@linode.com
-deprecated: yes
+deprecated: true
 description: 'Securely copying files to and from your Linode with Filezilla, a free and open source file transfer client for Linux desktop systems.'
 keywords: ["filezilla", "ftp", "linux scp", "sftp", "linux sftp program", "linux ftp"]
 tags: ["ubuntu"]

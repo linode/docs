@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 title: "Installing the NVIDIA CUDA Toolkit"
-description: "Learn how to deploy a GPU Compute Instance on Linode and install the NVIDIA CUDA Toolkit so you can run your workloads."
+description: "This guide provides step-by-step instructions for installing the NVIDIA CUDA Toolkit and drivers on a GPU Compute Instance at Linode for your workloads."
 published: 2022-01-21
 modified: 2022-01-21
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
@@ -50,7 +50,7 @@ To take advantage of the powerful parallel processing capabilities offered by GP
 
     1. The **Download Installer** (or similar) section should appear and display a list of commands needed to download and install the CUDA Toolkit. Run each command listed there.
 
-    1. Reboot the GPU instance after all the command have completed successfully.
+    1. Reboot the GPU instance after all the commands have completed successfully.
 
     1. Run `nvidia-smi` to verify that the NVIDIA drivers and CUDA Toolkit are installed successfully. This command should output details about the driver version, CUDA version, and the GPU itself.
 

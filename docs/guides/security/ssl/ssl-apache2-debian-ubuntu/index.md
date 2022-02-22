@@ -3,7 +3,7 @@ slug: ssl-apache2-debian-ubuntu
 author:
   name: Linode
   email: docs@linode.com
-description: "Serve SSL-enabled websites with the Apache web server."
+description: 'This guide provides you with step-by-step instructions on how to enable SSL to secure websites served through the Apache web server on Debian or Ubuntu.'
 keywords: ["apache SSL", "ssl on debian", "web server", "debian", "apache", "ssl", "ubuntu", "ssl on ubuntu"]
 tags: ["ubuntu","debian","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

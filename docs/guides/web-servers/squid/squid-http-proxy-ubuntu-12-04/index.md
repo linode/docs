@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: Use Squid to create an HTTP proxy server on your Linode
+description: 'This guide provides you with step-by-step instructions for installing and configuring Squid, a proxy application with a variety of uses, on your Linode.'
 keywords: ["squid", "proxy", "ubuntu", "12.04", "http"]
 tags: ["proxy","web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
