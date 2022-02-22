@@ -386,6 +386,7 @@ declaratively
 deduplication
 deepin
 defragment
+deloitte
 delpy
 demultiplexer
 denormalized
@@ -622,6 +623,7 @@ gamepedia
 gameplay
 gandi
 gartner
+gatik
 gatsby
 gbps
 gcc
@@ -819,6 +821,7 @@ inet6
 infector
 infographic
 infosec
+ingestible
 ingressgateway
 ini
 initializer
@@ -1585,6 +1588,7 @@ replicationcontrollers
 replset
 repo
 repos
+reputational
 resharding
 resilvering
 resolv
@@ -1814,6 +1818,7 @@ stopword
 stopwords
 storages
 streamlink
+strongswan
 su
 subcommand
 subcommands
@@ -2227,6 +2232,7 @@ zcat
 zend
 zgrep
 zhao
+zigbee
 zile
 zimbra
 zipkin
