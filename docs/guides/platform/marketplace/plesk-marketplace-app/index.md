@@ -3,7 +3,7 @@ slug: plesk-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "This guide shows how to install and configure Plesk using the Linode One-Click Marketplace Apps. Plesk is a leading WordPress and website management control panel."
+description: "This guide shows how to install and configure Plesk using the Linode Marketplace Apps. Plesk is a leading WordPress and website management control panel."
 keywords: ['plesk','marketplace', 'cms']
 tags: ["linode platform","cms","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -31,19 +31,11 @@ aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/', '/plat
 
 ## Configuration Options
 
-### Plesk Options
-
-You can configure your Plesk App by providing values for the following fields:
-
-| **Field** | **Description** |
-|:----------------|:------------|
-| **Server Name** | Domain name for your server in the format servername.domain.com. Setting a value in this field will not also enable DNS for your app, which you should do as well. Read our [DNS Manager](/docs/guides/dns-manager/) guide for instructions on creating DNS records in the Linode Cloud Manager. *Required*. |
-
 ### General Options
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-- **Supported distributions:** CentOS 7, Ubuntu 18.04 LTS, and Ubuntu 16.04 LTS
+- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
