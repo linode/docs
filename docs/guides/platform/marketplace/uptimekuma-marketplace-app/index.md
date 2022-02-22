@@ -7,7 +7,7 @@ description: "Deploy Uptime Kuma on a Linode Compute Instance. This provides you
 keywords: ['uptime','monitoring','ping']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-14
+published: 2022-02-22
 modified_by:
   name: Linode
 title: "Deploying Uptime Kuma through the Linode Marketplace"
@@ -54,9 +54,17 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Accessing the Uptime Kuma App
 
-1.  Open a browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
+1.  Open your web browser and navigate to `http://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing rDNS.
 
-1. Once the login page appears, click the **Create an Accoun** link to create a username and password.
+    ![Screenshot of URL bar](uptimekuma-url.png)
+
+1.  If this is your first time logging in, the account creation page appears. Complete the form and click the **Create** button.
+
+    ![Screenshot of account creation form](uptimekuma-create-user.png)
+
+1.  After creating a user, you are automatically logged in and the Uptime Kuma dashboard is displayed.
+
+    ![Screenshot of Uptime Kuma dashboard](uptimekuma-dashboard.png)
 
 Now that you’ve accessed your dashboard, check out [the official Uptime Kuma Repository](https://github.com/louislam/uptime-kuma) to learn how to further utilize your Uptime Kuma instance.
 
