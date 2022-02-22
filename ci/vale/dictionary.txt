@@ -67,6 +67,7 @@ aren
 argv
 arping
 arptables
+Asana
 askbot
 aske
 async
@@ -590,6 +591,7 @@ flatpress
 florian
 flowlens
 flyspray
+Focalboard
 foodcritic
 fortinet
 fortnite
@@ -688,6 +690,7 @@ gping
 gradle
 grafana
 graphql
+Grav
 graylog
 graylog2
 greenbone
@@ -966,6 +969,7 @@ kubelet
 kubelets
 kubernetes
 kubespray
+Kuma
 kustomize
 kuznetosv
 lambdabunker
@@ -1656,6 +1660,7 @@ saas
 sakila
 safend
 salesforce
+Saltcorn
 sam
 samy
 sandcat
