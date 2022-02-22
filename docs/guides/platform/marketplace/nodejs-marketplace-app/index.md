@@ -7,7 +7,7 @@ description: "Deploy Node.js on a Linode Compute Instance. This provides a JavaS
 keywords: ['nodejs','development','javascript']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-14
+published: 2022-02-22
 modified_by:
   name: Linode
 title: "Deploying Node.js through the Linode Marketplace"
@@ -16,7 +16,7 @@ contributor:
   link: https://github.com/hmorris3293
 ---
 
-A lightweight development platform for building fast and scalable applications in Javascript. Node.js can be utilized for real-time chat applications, data-intensive mobile apps, and much more.
+[Node.js](https://nodejs.org/en/) is a lightweight development platform for building fast and scalable applications using Javascript. Since it's based on Javascript, it's relatively easy to learn and has a large community with lots of resources. Node.js can be used for almost any time of web application, including websites, but its asynchronous nature shines when used to develop real-time data-intensive applications
 
 ## Deploying the Node.js Marketplace App
 
@@ -50,10 +50,26 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ## Getting Started after Deployment
 
-### Accessing the Node.js App
+The Node.js Marketplace App is running [Nginx](https://www.nginx.com/), [Node.js](https://nodejs.org/en/), [NPM](https://www.npmjs.com/), and [PM2](https://pm2.keymetrics.io/). Once deployed, a "Hello World" sample application should be running on `http://localhost:3000`. An Nginx reverse proxy then serves the application through your custom domain or rDNS domain over ports 80 and 443
 
-The Node.js Marketplace App is running [Nginx](https://www.nginx.com/), [Node.js](https://nodejs.org/en/), [NPM](https://www.npmjs.com/), and [PM2](https://pm2.keymetrics.io/). Once deployed, a "Hello World" sample application should be running on http://localhost:3000. An Nginx reverse proxy then serves the application over ports 80 and 443 with a [Let's Encrypt](https://letsencrypt.org/) SSL certificate configured automatically as part of the installation. This sample application is located in the '/opt/nodejs/' directory.
+### Accessing the Node.js App through the Command Line
 
-You can view the sample application in a web browser by navigating to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
+The Node.js sample application is stored in the `hello.js` file within `/opt/nodejs/`. To access it within the command line, follow the instructions below.
+
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+
+1.  Navigate to the directory in which the application is stored:
+
+        cd /opt/nodejs/
+
+1.  Open the sample application with your preferred command line text editor, such as [nano](/docs/guides/use-nano-to-edit-files-in-linux/) or [vim](/docs/guides/what-is-vi/).
+
+        nano hello.js
+
+### Viewing the Node.js App through a Web Browser
+
+Open your web browser and navigate to `http://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing rDNS.
+
+![Screenshot of Node.js sample application](nodejs-site.png)
 
 {{< content "marketplace-update-note-shortguide">}}
