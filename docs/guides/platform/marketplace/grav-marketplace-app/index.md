@@ -3,11 +3,11 @@ slug: grav-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
-description: "Learn how to deplo Grav, a modern open source flat-file CMS, on a Linode Compute Instance."
+description: "Learn how to deploy Grav, a modern open source flat-file CMS, on a Linode Compute Instance."
 keywords: ['cms','blog','website']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-14
+published: 2022-02-22
 modified_by:
   name: Linode
 title: "Deploying Grav through the Linode Marketplace"
@@ -52,17 +52,19 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ## Getting Started after Deployment
 
-### Accessing the Grav App
+### Accessing the Grav Admin Panel
 
-1.  After installation is complete, the Grav dashboard is accessible at domain you entered in the beginning of your deployment followed by `/admin`.
+1.  Open your web browser and navigate to `http://[domain]/admin`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though your connection will not be encrypted. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
-        http://example.com/admin
+    ![Screenshot of the URL bar with the Grav URL](grav-url.png)
 
-    {{< note >}}
-If you did not enter a domain, you can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
-{{< /note >}}
+1.  You are now prompted to create a new admin user for Grav. Complete the form and click the **Create User** button.
 
-1.  From here, you are prompted to create an admin account, which you can use to login to the Grav admin panel, write content, and perform administration tasks.
+    ![Screenshot of the Create Admin Account form in Grav](grav-create-user.png)
+
+1.  Once the admin user had been created, you are automatically logged in and taken to the Admin dashboard. From here, you can fully administer your new Grav site, including creating content, modifying your configuration, changing your theme, and much more.
+
+    ![Screenshot of the Admin dashboard](grav-admin.png)
 
 Now that you’ve accessed your dashboard, check out [the official Grav documentation](https://learn.getgrav.org/) to learn how to further utilize your Grav instance.
 
