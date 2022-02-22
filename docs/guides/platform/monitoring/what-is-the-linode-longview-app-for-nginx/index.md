@@ -35,7 +35,7 @@ This guide discusses Linode Longview for NGINX. The guide covers the following t
 
 ## Before you Begin
 
-In order to use the Longview App for Apache, ensure you have completed the following things:
+In order to use the Longview App for NGINX, ensure you have completed the following things:
 
 -  A Linode with [NGINX installed and running](/docs/web-servers/nginx/).
 -  Create a [Longview client](/docs/platform/longview/what-is-longview/#install-linode-longview) instance using the Cloud Manager.
