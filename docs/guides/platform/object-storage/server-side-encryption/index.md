@@ -27,8 +27,8 @@ In this guide, you will [write an example Python script](#python-example-script)
 
 ## Before You Begin
 
--   Familiarize yourself with Linode Object Storage by reading the [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide.
--   Create an Object Storage bucket. For demonstration purposes, you can create an Object Storage bucket and delete it after completing this guide.
+-   Familiarize yourself with the basics of Linode Object Storage by reviewing the [Get Started with Object Storage](/docs/products/storage/object-storage/get-started/) guide or taking a look through the available [Object Storage guides](/docs/products/storage/object-storage/guides/).
+-   [Create an Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/). For demonstration purposes, you can create an Object Storage bucket and delete it after completing this guide.
 
 ## Python Example Script
 
@@ -40,7 +40,7 @@ In this guide, you will [write an example Python script](#python-example-script)
 
         pip install boto3
 
-1.  [Generate an Object Storage key pair](/docs/platform/object-storage/how-to-use-object-storage/#generate-a-key-pair), saving the access key and secret key for use in your script.
+1.  [Generate an Object Storage key pair](/docs/products/storage/object-storage/guides/access-keys/), saving the access key and secret key for use in your script.
 
 1.  Choose a 32 character encryption key for use in your script. You can use [OpenSSL](https://www.openssl.org/) to randomly generate 32 hexadecimal characters to use as your encryption key with the following command:
 

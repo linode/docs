@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-title: "Using s3cmd with Object Storage"
-description: "Learn how to use the s3cmd command-line tool with Linode's Object Storage."
+title: "Using S3cmd with Object Storage"
+description: "Learn how to use the S3cmd command-line tool with Linode's Object Storage."
 ---
 
-s3cmd is a command line utility that you can use for any S3-compatible Object Storage.
+S3cmd is a command line utility that you can use for any S3-compatible Object Storage.
 
-## Installing s3cmd
+## Installing S3cmd
 
-The following commands will install s3cmd on various common operating systems. Additional methods of installing s3cmd can be found within the s3cmd GitHub repository under the [Installation of s3cmd package](https://github.com/s3tools/s3cmd/blob/master/INSTALL.md) file.
+The following commands will install s3cmd on various common operating systems. Additional methods of installing s3cmd can be found within the S3cmd GitHub repository under the [Installation of s3cmd package](https://github.com/s3tools/s3cmd/blob/master/INSTALL.md) file.
 
 ### Mac
 
@@ -24,19 +24,15 @@ On macOS, s3cmd might fail to install if you do not have XCode command line tool
     xcode-select --install
 {{</ note >}}
 
-### CentOS and Fedora
+### Linux
 
-The YUM (or DNF) package manager can be used to install s3cmd on RHEL/CentOS 7 or 8 (and derivatives), as well as on Fedora.
+To install s3cmd on a Linux system (such as CentOS, Ubuntu, or Debian), Python’s package manager [pip](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/) can be used.
 
-    sudo yum install s3cmd
+    sudo pip install s3cmd
 
-### Debian and Ubuntu
+Some Linux distributions are also able to install s3cmd from their own package managers, but those versions may not be as up to date. See [Download S3cmd](https://s3tools.org/download) for more information.
 
-The APT package manager can be used to install s3cmd on Debian or Ubuntu Linux distributions.
-
-    sudo apt install s3cmd
-
-## Configuring s3cmd
+## Configuring S3cmd
 
 After s3cmd has been installed, it needs to be configured to work with the buckets and objects on your Linode account.
 
@@ -46,10 +42,10 @@ After s3cmd has been installed, it needs to be configured to work with the bucke
 
 1.  This command will prompt you with a series of questions. Answer them based on the recommendations below:
 
-    - **Access Key:** Enter the access key you wish to use. See [Generate an Object Storage Access Key](/docs/products/storage/object-storage/guides/generate-access-keys/).
+    - **Access Key:** Enter the access key you wish to use. See [Managing Access Keys](/docs/products/storage/object-storage/guides/access-keys/).
     - **Secret Key:** Enter the secret key that corresponds with the access key. This was displayed once when generating the access key.
     - **Default Region:** `US` (do not change, even if you use Object Storage in a different region)
-    - **S3 Endpoint:** `[cluster-id].linodeobjects.com`, replacing [cluster-id] with the cluster ID corresponding to the data center your buckets are located within (listed on the [Object Storage Overview](/docs/products/storage/object-storage/) page).
+    - **S3 Endpoint:** `[cluster-url]`, replacing [cluster-url] with the cluster URL corresponding to the data center your buckets are located within (listed on the [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/) page).
     - **DNS-style bucket+hostname:port template for accessing a bucket:** `%(bucket)s.[cluster-id].linodeobjects.com`, replacing [cluster-id] with the same id used previously.
     - **Encryption password:** Enter your GPG key if you intend to store and retrieve encrypted files (optional).
     - **Path to GPG program:** Enter the path to your GPG encryption program (optional).
@@ -68,9 +64,9 @@ ERROR: Test failed: 403 (SignatureDoesNotMatch)
 
 ### Additional Configuration Options
 
-s3cmd offers a number of additional configuration options that are not presented as prompts by the `s3cmd --configure` command. To modify any s3cmd configuration options (including the ones from the previous step), you can edit the configuration file directly. This configuration file is named `.s3cfg` and should be stored with your local home directory. For our purposes, its recommended to adjust the following option:
+S3cmd offers a number of additional configuration options that are not presented as prompts by the `S3cmd --configure` command. To modify any s3cmd configuration options (including the ones from the previous step), you can edit the configuration file directly. This configuration file is named `.s3cfg` and should be stored with your local home directory. For our purposes, its recommended to adjust the following option:
 
-- **website_endpoint:** `http://%(bucket)s.website-[cluster-id].linodeobjects.com/`, replacing [cluster-id] with the cluster ID corresponding to the data center your buckets are located within (listed on the [Object Storage Overview](/docs/products/storage/object-storage/) page).
+- **website_endpoint:** `http://%(bucket)s.website-[cluster-url]/`, replacing [cluster-url] with the cluster URL corresponding to the data center your buckets are located within (listed on the [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/) page).
 
 ## Interacting with Buckets
 
@@ -88,7 +84,7 @@ To list the buckets within a different data center, use the `--host` parameter a
 
 ### Create a Bucket
 
-Creates a bucket with the specified bucket label. See the [Bucket Name](/docs/guides/how-to-use-object-storage/#bucket-names) section of the [How to Use Linode Object Storage](/docs/guides/how-to-use-object-storage/) guide for rules on naming the bucket.
+Creates a bucket with the specified bucket label. See the [Create and Manage Buckets](/docs/products/storage/object-storage/guides/manage-buckets/#create-a-bucket) guide for rules on naming the bucket.
 
 **Command:** `s3cmd mb s3://[bucket-label]`, replacing *[bucket-label]* with the label you'd like to use for the new bucket.
 
@@ -157,7 +153,7 @@ To delete all files in a bucket, include the `--recursive` (or `-r`) option *and
 
     s3cmd rm -r -f s3://example-bucket/
 
-## Create a Signed URL with s3cmd
+## Create a Signed URL with S3cmd
 
 Creating a **signed URL** allows you to create a link to objects with limited permissions and a time limit to access them. To create a signed URL on a preexisting object with s3cmd, use the following syntax:
 
@@ -165,7 +161,7 @@ Creating a **signed URL** allows you to create a link to objects with limited pe
 
 The output of the command is a URL that can be used for a set period of time to access the object, even if the ACL is set to private. In this case, `+300` represents the amount of time in seconds that the link remains active, or five minutes total. After this time has passed, the link expires and can no longer be used.
 
-## Create a Static Site with s3cmd
+## Create a Static Site with S3cmd
 
 You can also create a static website using Object Storage and s3cmd:
 
@@ -188,7 +184,7 @@ You can also create a static website using Object Storage and s3cmd:
 
 For more information on hosting a static website with Object Storage, read our [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
 
-## Other s3cmd Commands
+## Other S3cmd Commands
 
 To upload an entire directory of files, you can use the `sync` command, which automatically syncs all new or changed files. Navigate to the directory you would like to sync, then enter the following:
 
