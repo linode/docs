@@ -17,7 +17,7 @@ contributor:
   link: https://twitter.com/HeyChelseaTroy
 ---
 
-A tuple is a built-in Python data structure that stores multiple comma-separated values. Tuples are an immutable *sequence* type. Tuples can contain values of any data type, and they can also mix different types in the same tuple. You can create Python tuples in several different ways. This guide describes the characteristics of tuples and shows you the various ways you can create a Python tuple.
+A tuple is a built-in Python data structure that stores multiple comma-separated values. Tuples are an immutable *sequence* type that can store values of any data type. A mix of different data types can also be stored in a tuple. This guide describes the characteristics of tuples and shows you the various ways you can create a Python tuple.
 
 {{< note >}}
 You should have [Python 3.0 installed on your machine](/docs/guides/how-to-install-python-on-ubuntu-20-04/) to follow along with the examples in this guide.
@@ -27,81 +27,239 @@ You should have [Python 3.0 installed on your machine](/docs/guides/how-to-insta
 
 ### Create a Python Tuple
 
-To create a Python tuple, add a comma-separated collection of values inside of parentheses and assign it to a variable as shown in the example below:
+A Python tuple can be created in the following ways:
 
-    integers = (1, 3, 4)
+- Create an empty tuple with an empty pair of parentheses:
 
-The above example stores a collection of integers.
+        example_tuple = ()
 
-You can create a tuple with a mixed collection of data types as show below:
+- Create a tuple with multiple values that are separated with commas:
 
-    >>> mixed = ("who", 2, "where")
+        example_tuple = (1, 2, 3)
 
-The `mixed` tuple contains number and string values.
+    You can exclude the parentheses when creating a tuple with multiple values:
 
-{{< note >}}
-The parentheses are not required when creating a tuple. You can also create a tuple without enclosing parentheses.
+        example_tuple = 1, 2, 3
 
-    >>> lucky_numbers = 7, 14, 31, 50, 75, 100
-{{</ note >}}
+- Use the built-in `tuple()` method to create a new tuple:
+
+        example_tuple = tuple([1,2,3])
+
+    If you print `example_tuple`, the following is returned:
+
+        print(example_tuple)
+        (1, 2, 3)
 
 ### Create a Tuple with a Single Value
 
-To store a single value, or *singleton* in a tuple, you must include a comma when assigning the value to a variable. If you don't include the comma, Python does not store the value as a tuple.
+To store a single value, or *singleton* in a tuple, you must include a comma when assigning the value to a variable. If you don't include the comma, Python does not store the value as a tuple. For example, create the following tuple to store a single string.
 
-    >>> name = ("chelsea",)
+    day = ("monday",)
 
-## Converting to a Tuple
+Use the `type()` function to display the `day` variable's type.
 
-The `tuple()` function can convert any of the other collection types (list, set, and dictionary) in Python into a tuple.
+    type(day)
+
+The Python interpreter confirms that `day` contains a tuple with a single value.
+
+{{< output >}}
+<class 'tuple'>
+{{</ output >}}
+
+Now, store the same value in the `day` variable, but exclude the trailing comma.
+
+    day = ("monday")
+
+Use the `type()` function to display the `day` variable's type.
+
+    type(day)
+
+The Python interpreter confirms that the `day` variable does **not** store a tuple, and instead stores a string:
+
+{{< output >}}
+<class 'str'>
+{{</ output >}}
+
+The difference occurs because the first example includes a trailing comma, while the second example does not.
+
+## Converting Collection Types to a Tuple
+
+The `tuple()` function converts the four Python collection types into a tuple. Python collection types include lists, tuples, sets, and dictionaries. The following sections show you how to convert Python's collection types into a tuple.
 
 ### Convert a List to a Tuple
 
-The following example uses the `tuple()` function to convert a list of integers into a tuple of integers.
+In Python, a list contains comma-separated items wrapped in square brackets. For example:
 
-    list_to_tuple_example = tuple([1, 2, 3])
+    example_list = ["item_1", "item_2", "item_3"]
 
-If you check the type of `list_to_tuple_example`, Python returns a type of `tuple`.
+To convert `example_list` into a tuple, pass `example_list` as an argument of the `tuple()` method, and assign the result to a new variable.
 
-    >>> type(list_to_tuple_example)
-    <class 'tuple'>
+    list_to_tuple_example = tuple(example_list)
+
+Use the `type()` function to display the `list_to_tuple_example` variable's type.
+
+    type(list_to_tuple_example)
+
+The Python interpreter confirms that the `list_to_tuple_example` variable contains a tuple:
+
+{{< output >}}
+<class 'tuple'>
+{{</ output >}}
 
 ## Convert a Dictionary to a Tuple
 
-Use the `tuple()` function to convert a dictionary to a tuple.
+A Python dictionary is composed of a series of key-value pairs that are wrapped in curly braces. For example:
 
-    >>> tuple({"a": 1, "b": 2, "c": 3})
-    ('a', 'b', 'c')
+    example_dict = {
+        'first': 'Jane',
+        'last': 'Doe',
+        'year': '2000'
+    }
 
-{{< note >}}
-Converting a dictionary to a tuple **only includes the keys** from the dictionary.
-{{</ note >}}
+To convert `example_dict` into a tuple, pass `example_dict` as an argument of the `tuple()` method, and assign the result to a new variable.
+
+    dict_to_tuple_example = tuple(example_dict)
+
+Use the `type()` method to confirm that the `dict_to_tuple_example` variable contains a tuple:
+
+    type(dict_to_tuple_example)
+
+{{< output >}}
+<class 'tuple'>
+{{</ output >}}
+
+However, if you print the value of `dict_to_tuple_example`, the tuple **only includes the keys** from the dictionary.
+
+    print(dict_to_tuple_example)
+
+{{< output >}}
+('first', 'last', 'year')
+{{</ output >}}
+
+A good way to preserve both your Python dictionary keys and values is to create a list of tuples. In order to achieved this, use the dictionary type's built-in `items()` method. The `items()` method returns a list of a dictionary's key-value pairs as tuples. Using `example_dict` from the beginning of this section, the example below converts the dictionary into a list of tuples:
+
+    dict_to_tuple_example = example_dict.items()
+
+Use the `print()` method to view the contents of `dict_to_tuple_example`:
+
+    print(dict_to_tuple_example)
+
+{{< output >}}
+dict_items([('first', 'Jane'), ('last', 'Doe'), ('year', '2000')])
+{{</ output >}}
 
 ## Tuple Unpacking
 
-Typically, when you create a tuple, you assign it to a single value. When you call that variable, Python returns a single tuple containing those return values. However, you can assign the tuple values to their own individual variables. This is called *tuple unpacking*.
+Typically, when you create a tuple, you assign the tuple values to a single variable. For example:
 
-    >>> colors = ("red", "violet", "yellow-green")
-    >>> (primary, secondary, tertiary ) = colors
-    >>> print(primary)
-    red
-    >>> print(secondary)
-    violet
-    >>> print(tertiary)
-    yellow-green
+    colors = ('red', 'violet', 'yellow-green')
+
+*Tuple unpacking* is the action of extracting the values stored in a tuple and assigning each value to its own variable. Using the `colors` tuple from the example above, use the code below to to assign each tuple value to a variable:
+
+    (primary, secondary, tertiary) = colors
+
+The tuple unpacking, assigns each value contained in the `colors` tuple to the values declared on the left side of the variable assignment declaration. Use the `print()` method to view the value of each new variable.
+
+    print(primary)
+
+{{< output >}}
+red
+{{</ output >}}
+
+    print(secondary)
+
+{{< output >}}
+violet
+{{</ output >}}
+
+    print(tertiary)
+
+{{< output >}}
+yellow-green
+{{</ output >}}
+
+When tuple unpacking, the number of variables must be the same as the number of values stored within the tuple. Not including enough variables, generates a `ValueError: too many values to unpack` error. You may, however, only want to store some of your tuple values in separate variables. Python supports two ways of further manipulating how tuples are unpacked.
+
+You can select which values in a tuple to store in individual variables and then store the rest of the tuple values in a list. For example, consider the following tuple:
+
+    artists = ('carey', 'jackson', 'nin', 'butler')
+
+To only unpack the first two tuple values, on the left side of the variable assignment declaration, include two variables in the same position as the tuple values that you want to store. Designate the name of the list that stores the remaining unassigned variables, using an asterisk and the desired list name.
+
+    (mariah, janet, *writers) = artists
+
+If you print the contents of the `writers` list you should see the remaining tuple values `nin` and `butler` are stored.
+
+    print(writers)
+
+{{< output >}}
+['nin', 'butler']
+{{</ output >}}
+
+To skip assigning a tuple value to a variable during tuple unpacking, use an underscore in the same position `_` as the value that you want to skip. For example, to skip assigning a variable to the `nin` tuple value, use the following code:
+
+    (mariah, janet, _, octavia) = artists
+
+The `_` maintains the order of the variable to value assignment and indicates to anyone reading the code that a value assignment has been skipped.
+
+You can also combine the asterisk and underscore to skip all unassigned values. For example, to assign a variable only to the first value and skip all the rest, use the following code:
+
+    (mariah, *_) = artists
 
 ## Convert a Python Tuple to a List
 
-Converting a tuple to a List works the reverse way that converting a List to a tuple does.
+To convert a tuple to a list use the `list()` method. Consider the following tuple:
 
-    >>> atuple = (1, 2, 3)
-    >>> alist = list(atuple)
-    >>> type(alist)
-    <class 'list'>
+    example_tuple = ('item_1', 'item_2', 'item_3', 'item_4')
+
+Convert its values into a list in the following way:
+
+    tuple_to_list_example = list(example_tuple)
+
+Use the `type()` method to confirm that the `tuple_to_list_example` variable contains a list:
+
+    type(tuple_to_list_example)
+
+{{< output >}}
+<class 'list'>
+{{</ output >}}
 
 ## Built-in Tuple Methods
 
+Python's tuple sequence data type has two built-in methods: the `count()` method and the `index()` method. This section shows you how to use both built-in tuple methods.
+
 ### Return the Index of a Value in a Python Tuple
+
+The `index()` method returns the index number of a specified element stored in a tuple. Its syntax is as follows:
+
+    tuple.index(element, start, end)
+
+The three possible arguments are used in the following way:
+
+- **element** (required): the element to look for in the tuple.
+- **start** (optional): the index position to start when searching for the provided element.
+- **end** (optional): the index position to end the search for the provided element.
+
+The example tuple below includes several string values:
+
+    numbers = ('r', 'a', 'd', 'a', 'r')
+
+To find the index number of `violet`, use the `index()` method:
+
+    numbers.index('a')
+
+The `index()` method returns the position of the element:
+
+{{< output >}}
+1
+{{</ output >}}
+
+The `index()` method returns the position of the first instance of the number `a`.
+
+To search for the second occurence of the number `a` include a `start` argument.
+
+    numbers.index('a', 2,)
+
 
 You can reference tuple values with indices or index slices. This section shows you how to use indices and slices.
 
