@@ -5,25 +5,21 @@ tab_group_main:
     weight: 30
 ---
 
-## Building Blocks
+## Basics
 
-These introductory guides to Linode Object Storage help get you up and running with the service:
+- [Create and Manage Buckets](/docs/products/storage/object-storage/guides/manage-buckets/): Buckets are the primary containers within Object Storage. Learn how to view, create, and delete buckets through the Cloud Manager.
 
-- [Enable Object Storage](/docs/products/storage/object-storage/guides/enable/): Object Storage is not enabled by default; you can enable it in Cloud Manager.
+- [Upload and Manage Files (Objects)](/docs/products/storage/object-storage/guides/manage-files/): Learn how to view, upload, download, and delete objects through the Cloud Manager.
 
-- [Generate an Object Storage Key Pair](/docs/products/storage/object-storage/guides/generate-key-pair/): You need a pair of keys to use Object Storage: an access key and a secret key. These can be generated in the Cloud Manager.
+- [Manage Access Keys](/docs/products/storage/object-storage/guides/access-keys/): Access keys enable you to access Object Storage through other tools and your own applications. Learn how to generate these in the Cloud Manager.
 
-- [Create a Bucket](/docs/products/storage/object-storage/guides/create-bucket/): Create a bucket in the Cloud Manager.
+- [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/): Every bucket and file can be accessed by a unique URL. Learn how to obtain these URLs.
 
-- [Upload Objects to a Bucket](/docs/products/storage/object-storage/guides/upload-objects/): Upload objects to your bucket using the Cloud Manager.
-
-- [View Bucket Objects](/docs/products/storage/object-storage/guides/view-objects/): View your bucket objects in the Cloud Manager.
-
-- [Delete Bucket Objects](/docs/products/storage/object-storage/guides/delete-objects/): Delete bucket objects from the Cloud Manager.
-
-- [Delete a Bucket](/docs/products/storage/object-storage/guides/delete-bucket/): Delete a bucket from the Cloud Manager.
+- [Configure a Custom Domain (with a TLS/SSL Certificate)](/docs/products/storage/object-storage/guides/custom-domain/): Linode's Object Storage supports accessing buckets and objects through a custom domain. Learn how to configure a custom domain with a TLS/SSL certificate.
 
 - [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/): To cancel the Object Storage service you must first delete all your buckets. Then you can cancel the service from the Cloud Manager.
+
+- [Object Storage Use Cases](/docs/products/storage/object-storage/guides/use-cases/): Information on the benefits and common use cases of Linode's Object Storage service.
 
 ## Clients and Tools
 
@@ -41,25 +37,11 @@ Guides for using Object Storage with various AWS SDKs:
 - [AWS SDK for Python (boto3)](/docs/products/storage/object-storage/guides/aws-sdk-for-python/)
 - [AWS SDK for PHP](/docs/products/storage/object-storage/guides/aws-sdk-for-php/)
 
-## Themes
+## Going Further
 
 These additional guides explore targeted topics like setting up a static site and managing access and permissions for your buckets and objects:
 
-### Object Storage Basics
-
-- [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/)
-
-- [Use Cases for Linode Object Storage](/docs/platform/object-storage/object-storage-use-cases/)
-
-- [Object Storage Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/)
-
-- [How to Access Objects with Linode Object Storage](/docs/platform/object-storage/how-to-access-objects-with-linode-object-storage/)
-
-### Static Sites
-
 - [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/)
-
-### Managing Access and Permissions
 
 - [Bucket Versioning with Linode Object Storage](/docs/platform/object-storage/bucket-versioning/)
 
