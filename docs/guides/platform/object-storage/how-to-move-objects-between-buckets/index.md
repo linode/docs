@@ -32,16 +32,6 @@ In this guide you learn how to move objects between buckets using:
 
 - [Cyberduck's CLI, duck](#cyberduck-cli)
 
-## Before You Begin
-
-To learn how to enable Object Storage, see the [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide.
-
-Object Storage is similar to a subscription service. **After it is enabled, you are billed at the flat rate regardless of whether or not there are active buckets on your account.** [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/) to stop billing for this flat rate.
-
-In all Object Storage URLs the cluster where your bucket is hosted is a part of the URL string.
-
-{{< content "object-storage-cluster-shortguide" >}}
-
 ## Cyberduck Graphical Interface
 
 The easiest way to move objects between buckets is using a Graphical User Interface (GUI) such as Cyberduck. Using a GUI, you can simply drag and drop objects between buckets.
@@ -88,7 +78,7 @@ You can easily copy multiple items, folders, or buckets by selecting everything 
 
 ## Cyberduck CLI
 
-You can also use the Cyberduck CLI, duck, to move objects from one bucket to another using the command line. The file transfer tool duck, is available for Linux, macOS, and Windows. To transfer using duck, you need the [access keys](/docs/platform/object-storage/how-to-use-object-storage/#generate-a-key-pair) that you generated for the source and destination buckets.
+You can also use the Cyberduck CLI, duck, to move objects from one bucket to another using the command line. The file transfer tool duck, is available for Linux, macOS, and Windows. To transfer using duck, you need the [access keys](/docs/products/storage/object-storage/guides/access-keys/) that you generated for the source and destination buckets.
 
 1.  [Install duck](https://duck.sh) using the instructions for your platform.
 
