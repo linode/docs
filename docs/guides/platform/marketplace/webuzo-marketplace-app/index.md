@@ -8,7 +8,7 @@ keywords: ['webuzo','control panel','dashboard','marketplace']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-12-02
-modified: 2022-02-21
+modified: 2022-02-2
 modified_by:
   name: Linode
 title: "Deploying Webuzo through the Linode Marketplace"
@@ -26,7 +26,7 @@ Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Software installation should complete within 15-20 minutes after the Linode has finished provisioning. During this time, the Compute Instance is rebooted. This time frame depends on a variety of factors, including which data center has been selected.**
+**Software installation should complete within 15-20 minutes after the Linode has finished provisioning. During this time, the instance is rebooted once. This time frame depends on a variety of factors, including which data center has been selected.**
 
 ## Configuration Options
 
