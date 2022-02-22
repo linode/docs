@@ -32,7 +32,7 @@ aliases: ['/platform/marketplace/how-to-deploy-redis-with-marketplace-apps/','/p
 
 For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Debian 11, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used, though consider using a [High Memory Compute Instance](https://www.linode.com/products/high-memory/) for larger databases in a production environment.
 
 ## Getting Started after Deployment
