@@ -7,7 +7,7 @@ description: "Deploy Pi-hole on a Linode Compute Instance. This app protects you
 keywords: ['pi-hole','adblocker','dns','sinkhole']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-21
+published: 2022-02-22
 modified_by:
   name: Linode
 title: "Deploying Pi-hole through the Linode Marketplace"
@@ -38,7 +38,7 @@ Here are the additional options available for this Marketplace App:
 | **Pi-hole user password** | This will be the password to get into the Pi-hole dashboard. *Required* |
 | **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
 | **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
-| **Domain** | The domain name where you wish to host your Pi-Hole instance. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
+| **Domain** | The domain name where you wish to host your Pi-hole instance. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
 | **Email for SOA Record** | This email is for the SOA DNS Record. |
 | **The limited sudo user to be created for the Linode** | This is the limited user account to be created for the Linode. This account has sudo user privileges. |
 | **The password for the limited sudo user** | Set a password for the limited sudo user. The password must meet the complexity strength validation requirements for a strong password. This password can be used to perform any action on your server, similar to root, so make it long, complex, and unique. |
