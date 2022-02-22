@@ -7,7 +7,7 @@ description: "Deploy Saltcorn on a Linode Compute Instance. This platform is mad
 keywords: ['saltcorn','database','development']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-14
+published: 2022-02-22
 modified_by:
   name: Linode
 title: "Deploying Saltcorn through the Linode Marketplace"
@@ -54,9 +54,17 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Accessing the Saltcorn App
 
-1.  Open a browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
+1.  Open your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing rDNS.
 
-1.  Within the Saltcorn setup page that appears, create your first user account.
+    ![Screenshot of the URL bar](saltcorn-url.png)
+
+1.  Within the Saltcorn **Create user** page that appears, create your first user account.
+
+    ![The Saltcorn create user page](saltcorn-create-user.png)
+
+1.  After you create the user, you are automatically logged in and the Saltcorn admin dashboard appears.
+
+    ![The Saltcorn admin dashboard](saltcorn-admin.png)
 
 Now that you’ve accessed your dashboard, check out [the official Saltcorn documentation](https://wiki.saltcorn.com/) to learn how to further utilize your Saltcorn instance.
 
