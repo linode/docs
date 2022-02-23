@@ -20,8 +20,6 @@ Linode's Managed Databases combine performance, reliability, and and high availa
 
 - **Automated deployment:** When a database is deployed through Managed Databases, the infrastructure, software, and firewall, and high availability systems are configured automatically. This can save hours of time compared to manually setting up a database.
 
-- **Automatic updates:** Updates to the underlying database software and operating system are managed automatically, eliminating the need to dedicate IT resources towards maintenance.
-
 - **Access controls:** Prevent unauthorized database access by only allowing connections from specific IP addresses (or ranges).
 
 - **Daily Backups:** Automatic daily backups are provided at no additional cost and are retained for 7 days. This provides you with a recovery point for each day over the last 7 days.
