@@ -8,7 +8,7 @@ keywords: ['webuzo','control panel','dashboard','marketplace']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-12-02
-modified: 2022-02-2
+modified: 2022-02-22
 modified_by:
   name: Linode
 title: "Deploying Webuzo through the Linode Marketplace"
