@@ -24,9 +24,9 @@ Each Managed Database cluster has its own access control list, which allows spec
 
 - **Open access** (`0.0.0.0/0`): Entering an IP address of *0.0.0.0/0* allows connections from any IP address.
 
-- **Individual access** (`192.0.2.1/32`): To grant an indivual system access, enter that system's IPv4 address. The `/32` is added automatically if no prefix size is provided, which means only this single IPv4 address is included within this rule.
+- **Individual access** (`192.0.2.1/32`): To grant an individual system access, enter that system's IPv4 address. The `/32` is added automatically if no prefix size is provided, which means only this single IPv4 address is included within this rule.
 
-- **Range access** (`192.0.2.0/24`): Allow connections from an entire range of IP addresses by specifing the prefix and the prefix length. For instance, entering *192.0.2.0/24* as an access control allows connections from 192.0.2.0 - 192.0.2.255.
+- **Range access** (`192.0.2.0/24`): Allow connections from an entire range of IP addresses by specifying the prefix and the prefix length. For instance, entering *192.0.2.0/24* as an access control allows connections from 192.0.2.0 - 192.0.2.255.
 
 ## Add or Modify IP Addresses or Ranges
 
@@ -34,7 +34,7 @@ Each Managed Database cluster has its own access control list, which allows spec
 
 1. Click the **Manage Access Controls** button to open the *Manage Access Controls* panel.
 
-1. The *Manage Access Controls* panel appears and dispalys a list of allowed IP addresses and ranges. From here, you can perform the following actions:
+1. The *Manage Access Controls* panel appears and displays a list of allowed IP addresses and ranges. From here, you can perform the following actions:
 
     - **Add** a new entry by clicking the **Add an IP** button and enter your desired IP address or range into the new field.
     - **Modify** an existing entry by updating it with the new IP address or range.
