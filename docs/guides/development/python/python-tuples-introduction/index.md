@@ -1,12 +1,12 @@
 ---
-slug: creating-and-using-python-tuples
+slug: python-tuples
 author:
   name: Chelsea Troy
-description: 'Learn to create a Python tuple by following this guide. This guide also discusses the differences between lists and tuples, and shows you how to convert a list into a tuple.'
+description: 'Learn to create a Python tuple by following this guide. You also learn the differences between lists and tuples, and how to convert a list into a tuple.'
 keywords: ['python create tuple','python tuple vs list','python list to tuple']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-06
+published: 2022-02-25
 modified_by:
   name: Linode
 title: "Creating and Using Python Tuples"
@@ -24,6 +24,8 @@ You should have [Python 3.0 installed on your machine](/docs/guides/how-to-insta
 {{</ note >}}
 
 ## Python Tuple Syntax
+
+The syntax to create a Python tuple is made up of your tuple values that are comma separated and enclosed in parentheses. However, there are a few syntax quirks to keep in mind when working with tuples in Python. The section below covers the syntax for each way that you can create a Python tuple.
 
 ### Create a Python Tuple
 
@@ -48,9 +50,12 @@ A Python tuple can be created in the following ways:
     If you print `example_tuple`, the following is returned:
 
         print(example_tuple)
-        (1, 2, 3)
 
-### Create a Tuple with a Single Value
+    {{< output >}}
+    (1, 2, 3)
+    {{</ output >}}
+
+### Create a Tuple with a Single Value (Singleton)
 
 To store a single value, or *singleton* in a tuple, you must include a comma when assigning the value to a variable. If you don't include the comma, Python does not store the value as a tuple. For example, create the following tuple to store a single string.
 
@@ -242,78 +247,122 @@ The three possible arguments are used in the following way:
 
 The example tuple below includes several string values:
 
-    numbers = ('r', 'a', 'd', 'a', 'r')
+    letters = ('r', 'a', 'd', 'a', 'r')
 
 To find the index number of `violet`, use the `index()` method:
 
-    numbers.index('a')
+    letters.index('a')
 
-The `index()` method returns the position of the element:
+The `index()` method returns the position of the first instance of the element, `a`:
 
 {{< output >}}
 1
 {{</ output >}}
 
-The `index()` method returns the position of the first instance of the number `a`.
+To search for the second occurrence of the string `a` include a `start` argument.
 
-To search for the second occurence of the number `a` include a `start` argument.
+    letters.index('a', 2,)
 
-    numbers.index('a', 2,)
+The `index()` method returns the position of the second instance of the string `a`, since the start argument tells the method to start its search from index `2`.
 
+{{< output >}}
+3
+{{</ output >}}
 
-You can reference tuple values with indices or index slices. This section shows you how to use indices and slices.
+### The Tuple Count Method
 
-The example below references the first index (`atuple[0]`) of the `atuple` tuple.
+The `count()` method returns the number of times that a particular element appears within a tuple. For example, to find the number of occurrences of the string `a` in the letters tuple, use the `count()` method as follows:
 
-    >>> atuple = (1, 2, 3)
-    >>> atuple[0]
-    1
+    letters = ('r', 'a', 'd', 'a', 'r')
+    letters.count('a')
 
-The example below *slices* `atuple` and returns all values starting from index `0` and ending at index `3`.
+As expected, the `count()` method returns `2`
 
-    >>> atuple = (1, 2, 3, 4)
-    >>> atuple[0:3]
-    (1,2,3)
-
-You can return the index number of a tuple's value using the `index()` method.
-
-    >>> colors = ("red", "violet", "yellow-green")
-    >>> colors.index("yellow-green")
-    2
-
-{{< note >}}
-Tuples are ordered collections, so they can contain duplicate values. If a tuple contains a duplicate value, the `index()` method returns the lowest-index instance of the value.
-{{</ note >}}
+{{< output >}}
+2
+{{</ output >}}
 
 ### How to Sort a Tuple
 
-Tuples cannot be sorted in place because they are immutable—once it is created, the items inside it cannot change. However, it is possible to take the elements of one tuple and create another one with it. The `sorted()` function takes in a tuple as an argument and returns a list with the sorted elements of the original tuple.
+Tuples are immutable, this means once a tuple is created it cannot be changed. For this reason, tuples are often used together with lists, a sequence type that is mutable, that is, it can be changed. To sort a tuple, use the `sorted()` method. The `sorted()` method takes in any iterable object, like a tuple, as an argument and returns a sorted list.
 
-    >>> out_of_order = (4, 3, 7, 6, 1, 0, 2, 5)
-    >>> in_order = sorted(out_of_order)
-    >>> print(in_order)
-    [0, 1, 2, 3, 4, 5, 6, 7]
-    >>> type(in_order)
-    <class 'list'>
+The syntax of the `sorted()` method is as follows:
 
-The return value of `in_order` is a List. To make it a tuple, convert the result.
+    sorted(iterable, key=None, reverse=False)
 
-    >>> new_tuple = tuple(in_order)
+The three possible arguments are used in the following way:
+
+- **iterable** (required): iterable object to sort. This include sequence and collection types.
+- **key** (optional): provide custom sorting behavior. The returned value of key is used to sort the iterable. For example, you can pass a built-in Python method or a custom method as the key. The default value for `key` is `None`.
+- **reverse** (optional): The sort order to use for the iterable. A value of `True` sorts in descending order. The default value, `False`, sorts in ascending order.
+
+As an example, this section shows you how to sort the tuple below:
+
+    out_of_order = (4, 3, 7, 6, 1, 0, 2, 5)
+
+Pass the `out_of_order` tuple as an argument to the `sorted()` method and store the returned list in a new variable.
+
+    in_order = sorted(out_of_order)
+
+Use the `print()` method to view the contents of the `in_order` list.
+
+    print(in_order)
+
+{{< output >}}
+[0, 1, 2, 3, 4, 5, 6, 7]
+{{</ output >}}
+
+The values originally contained in the `out_of_order` tuple have now been sorted in ascending order.
+
+To create a list with the tuple values sorted in descending order use the following code:
+
+    in_order_descending = sorted(out_of_order, reverse=True)
+
+Use the `print()` method to view the contents of the `in_order_descending` list.
+
+    print(in_order_descending)
+
+{{< output >}}
+[7, 6, 5, 4, 3, 2, 1, 0]
+{{</ output >}}
+
+The values originally contained in the `out_of_order` tuple have now been sorted in descending order.
 
 ## Python Tuple vs. List
 
 ### Differences in Syntax
 
-To create a List in Python, you must enclose your values using brackets (`[]`). Tuples, however, can be created by enclosing values with parentheses (`()`) or by using a comma-separated collection of values. You can exclude the parentheses, but you must ensure each value is separated by a comma (`,`).
+To create a list in Python, you must enclose your values using brackets (`[]`). Tuples, however, can be created by enclosing values with parentheses (`()`) or by using a comma-separated group of values. You can exclude the parentheses, but you must ensure each value is separated by a comma (`,`).
+
+Tuples and lists can both store heterogeneous data types and are both ordered sequence types. This means that values for both tuples and lists can be accessed using index notation.
+
+The example below includes a tuple and a list, respectively.
+
+    letters_tuple = ('r', 'a', 'd', 'a', 'r')
+    letters_list = ['r', 'a', 'd', 'a', 'r']
+
+You an access the string in the third position of the tuple and the list using the following index notation:
+
+    print(letters_tuple[2])
+
+{{< output >}}
+d
+{{</ output >}}
+
+    print(letters_list[2])
+
+{{< output >}}
+d
+{{</ output >}}
 
 ### Immutable vs. Mutable
 
-Lists can change after they are created; programs can add items, remove items, replace items, or reorder items. A List is *mutable*. This is not the case for a tuple. Tuples are *immutable*, which means that their values cannot change after the tuple is created. If a value needs to change in a tuple, you must create a new tuple with the change.
+Lists can change after they are created; programs can add items, remove items, replace items, or reorder items. A list is *mutable*. This is not the case for a tuple. Tuples are *immutable*, which means that their values cannot change after the tuple is created. If a value needs to change in a tuple, you must create a new tuple with the change or convert the tuple to a list.
 
-### Use cases for Lists and Tuples
+### Use Cases for Lists and Tuples
 
-A tuple's immutability is convenient in cases where the values in a collection must stay the same. For example, you can represent rows of data as tuples and remain confident that each row of data remains unchanged. Tuple immutability also ensures tuple unpacking, that the program can track the value of each of the unpacked variables.
+A tuple's immutability is convenient in cases where the values in a collection must stay the same. For example, you can represent rows of data as tuples and remain confident that each row of data remains unchanged. Tuple immutability also ensures tuple unpacking and that your Python code can track the value of each of the unpacked variables.
 
-Finally, tuples take up less memory than Lists and instantiate faster, so in the rare case where speed is of the essence, they can provide an advantage.
+Tuples take up less memory than lists and instantiate faster, so in the case where speed needs to be considered, they can provide an advantage.
 
-In cases where the collection needs regular modification, a List makes more sense. Because most programs require modification of dynamic data, it’s much more common to see Lists used in Python programs.
+In cases where the collection needs regular modification, a list makes more sense. Because most programs require modification of dynamic data, it’s much more common to see lists used in Python programs.
