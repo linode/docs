@@ -3,10 +3,10 @@ author:
   name: Linode
   email: docs@linode.com
 title: "Connect to a MySQL Database"
-description: ""
+description: "Learn how to connect to a MySQL Managed Databse through the command line or MySQL Workbench."
 ---
 
-To connect to any database, including a Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a MySQL client. This guide details how to access your database using popular tools.
+To connect to a MySQL Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a MySQL client. This guide details how to access your database using popular tools.
 
 ## View Connection Details
 
@@ -71,7 +71,7 @@ The MySQL Workbench provides a graphical interface for connecting to MySQL datab
 
 1. Open the software and select **Database > Manage Connections** from the menu. This displays the **Manage Server Connections** window.
 
-1. Enter the details for your connection, including the **Hostname**, **Username**, and **Port**. The rest of the settings can remain as the defaults, including **Use SLL** (set to *If available*). You can optionally store your password by clicking the **Store in Keychain...** button and entering your password or, more recommended, do not store your password and enter it manually each time you connect.
+1. Enter the details for your connection, including the **Hostname**, **Username**, and **Port**. The rest of the settings can remain as the defaults, including **Use SSL** (set to *If available*). You can optionally store your password by clicking the **Store in Keychain...** button and entering your password or, more recommended, do not store your password and enter it manually each time you connect.
 
 1. Click **Test Connection** to verify you can successfully connect to the database and then click **Close** to store the connection settings and return to the main screen.
 

@@ -3,7 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 title: "Migrate a MySQL or MariaDB Database to a Managed Database"
-description: ""
+description: "Learn how to migrate an existing MySQL database to Linode's Managed Database service."
 ---
 
 This guide covers how to migrate an existing MySQL or MariaDB database to a Managed Database. When migrating a database, there are two important terms to keep in mind: the *source* database and the *target* database.
@@ -11,7 +11,7 @@ This guide covers how to migrate an existing MySQL or MariaDB database to a Mana
 - **Source database:** The original database running on a software, system, or machine that you wish to decommission. This could be MySQL running within your own Linux server, a development database on your local machine, or even a cloud database.
 - **Target database:** The new replacement database that you wish to use. For this guide, the target database will be a Managed Database running on Linode's platform.
 
-Your indvidual migration workflow could deviate from the instructions provided here. You may need to consult your own developers or application's documentation to learn how to perform some of these steps and to gather any best practices. You should also perform the migration on a staging server first or during a time when downtime least affects your users and/or business.
+Your individual migration workflow could deviate from the instructions provided here. You may need to consult your own developers or application's documentation to learn how to perform some of these steps and to gather any best practices. You should also perform the migration on a staging server first or during a time when downtime least affects your users and/or business.
 
 ## Create a Managed Database
 
@@ -63,16 +63,16 @@ After the data has been imported into the Managed Database, you should update an
 
 ## Enable Your Application
 
-If you turned off your web server or placed your application in a *maintenance mode*, you can now enable your application again. While the instructures for turning off *maintenance mode* vary depending on your application, here are the commands for starting the two most common web servers:
+If you turned off your web server or placed your application in a *maintenance mode*, you can now enable your application again. While the instructions for turning off *maintenance mode* vary depending on your application, here are the commands for starting the two most common web servers:
 
--   **Stop NGINX:**
+-   **Start NGINX:**
 
         sudo systemctl start nginx
 
--   **Stop Apache on Ubuntu/Debian:**
+-   **Start Apache on Ubuntu/Debian:**
 
         sudo systemctl start apache2
 
--   **Stop Apache on RHEL/CentOS:**
+-   **Start Apache on RHEL/CentOS:**
 
         sudo systemctl start httpd

@@ -14,13 +14,15 @@ aliases: ['/products/database/']
 
 {{< content "managed-databases-beta-notice-shortguide" >}}
 
-Many organizations rely on databases to store much of their data. This includes customer information, financial details, operational data, application content, ecommerce transactions, and much more. Managing the database infrastructure to store and safeguard this data can put additional stress on the resources you have available. **Managed Databases** take care of managing this critical infrastructure for you, providing you with an easy to use DBaaS (database-as-a-service) solution built on top of Linode's trusted and reliable platform.
+Linode's Managed Databases combine performance, reliability, and and high availability into a fully managed database solution. Databases are used by most organizations to store their business and operational data, including customer information, financial details, application content, ecommerce transactions, and much more. Managing the database infrastructure to store and safeguard this data can put additional stress on the resources you have available. **Managed Databases** take care of managing this critical infrastructure for you, providing you with an easy to use DBaaS (database-as-a-service) solution built on top of Linode's trusted and reliable platform.
 
 ## Simplified deployment and maintenance
 
-- **Automated deployment:** Setting up a database yourself means installing and configuring many different components, including the virtual machines, operating system, database software, firewall, high availability system, and more. With Managed Databases, a database cluster is provisioned and configured within minutes.
+- **Automated deployment:** When a database is deployed through Managed Databases, the infrastructure, software, and firewall, and high availability systems are configured automatically. This can save hours of time compared to manually setting up a database.
 
 - **Automatic updates:** Updates to the underlying database software and operating system are managed automatically, eliminating the need to dedicate IT resources towards maintenance.
+
+- **Access controls:** Prevent unauthorized database access by only allowing connections from specific IP addresses (or ranges).
 
 - **Daily Backups:** Automatic daily backups are provided at no additional cost and are retained for 7 days. This provides you with a recovery point for each day over the last 7 days.
 
@@ -40,7 +42,9 @@ The following database management systems (DBMSs) are available (or coming soon)
     *If the applications using your database support it, you may want to select the latest available release of MySQL 8. It's more performant and includes additional features. MySQL 5.7 is available for legacy applications.*
 
 - **PostreSQL** *(Coming soon)*: An object-releational database management system that can use either SQL or JSON queries. It's generally more flexible and feature-rich than MySQL, though it's not a drop-in replacement and applications need to have built-in support for it. See [An Introduction to PostreSQL](/docs/guides/an-introduction-to-postgresql/)
+
 - **MongoDB** *(Coming soon)*: A document-oriented database software that uses JSON files to store data. It is one of the most popular NoSQL databases and, as such, it is *unstructured* and very flexible. [MongoDB and Its Use Cases](/docs/guides/mongodb-and-its-use-cases/)
+
 - **Redis** *(Coming soon)*: An in-memory NoSQL database that stores its data as key-value pairs. It's most commonly used as a caching system.
 
 ## Recommended Workloads
@@ -77,9 +81,9 @@ In addition to the resources allocated to each available plan (outlined above), 
 
 - Fully-managed, including automated deployment and maintenance
 - Multiple database engines and versions
-- Root-level access to the database
+- Customize access controls to allow connections from trusted sources
 - Automatic backups are taken daily and retained for 7 days
-- Customizable access controls to manage a list of trusted sources
+- Root-level access to the database
 - 100% SSD (Solid State Disk) storage
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer

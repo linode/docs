@@ -1,6 +1,6 @@
 ---
 title: Guides
-description: "Learn how to create and use Managed Databases"
+description: "A collection of guides on using Linode's Managed Database service"
 tab_group_main:
     weight: 30
 ---

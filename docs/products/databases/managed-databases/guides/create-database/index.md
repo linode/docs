@@ -27,10 +27,14 @@ Enter a name for your cluster under **Cluster Label**, allowing you to easily id
 
 ## Select the Database Engine
 
-Select the **database engine** you'd like to use for your new database. This setting determines the underlying database management system (DBMS) that your cluster uses. Each database engine is significantly different and you should choose the one that is required by the application you intend to use it with. For instance, WordPress requires MySQL. If you are building a custom application, work with your developers to determine the best selection. Currently, the following MySQL database software and versions are available:
+Select the **database engine** you'd like to use for your new database. This setting determines the underlying database management system (DBMS) that your cluster uses. Each database engine is significantly different and you should choose the one that is required by the application you intend to use it with. For instance, WordPress requires MySQL. If you are building a custom application, work with your developers to determine the best selection. Currently, the following major MySQL releases are avilable:
 
 - MySQL 8.0
 - MySQL 5.7
+
+Each major release may have one or more minor point releases to choose from, as shown in the screenshot below:
+
+![Screenshot of the Database Engine dropdown menu](database-creation-engine.png)
 
 ## Select a Region
 
@@ -53,9 +57,9 @@ Each Managed Database can be built with either 1 or 3 nodes (individual virtual 
 - **1 node database cluster**: This option is recommended for development purposes or production databases where a lower cost is more beneficial than redundancy and failover.
 - **3 node high availability database cluster**: This option is recommended for product databases. High availability database clusters have built-in data redundancy and automatic failover. Your data is replicated across every other node in the cluster. If one goes down, any traffic is redirected to the other available nodes.
 
-## Add Access Controls
+## Optionally Add Access Controls
 
-Within the **Add Access Controls** section, you can specify which IP addresses (and ranges) are permitted to access your new database cluster. Each Managed Database cluster has its own access control list, which grants specific IP addresses or ranges access to the database. By default, all connections (both public and private) are blocked unless they appear on this list. To continue, you need to enter at least one IPv4 address or range. It's recommended that you enter the.
+Within the **Add Access Controls** section, you can specify which IP addresses (and ranges) are permitted to access your new database cluster. Each Managed Database cluster has its own access control list, which grants specific IP addresses or ranges access to the database. By default, all connections (both public and private) are blocked unless they appear on this list. See [Manage Access Controls](/docs/products/databases/managed-databases/guides/manage-access-controls/) for more information and for assistence adding access controls after the database has been deployed.
 
 If you are testing the connection from your local machine, you may also wish to enter the IP address that your ISP has assigned to your machine. One way you can find this out is by typing ["What's my IP"](https://www.google.com/search?q=what%27s+my+ip) into Google.
 
