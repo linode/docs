@@ -30,29 +30,27 @@ In this tutorial, learn what scripting languages are and how they compare to oth
 
 ## What are Scripting Languages?
 
-Scripted programming languages perform tasks within special run-time environments. These run-time environments can be anything from web browsers to desktop applications, from video games to embedded systems in your operating system.
+Scripted programming languages perform tasks within special run-time environments. These run-time environments can be anything from web browsers to desktop applications, from video games to embedded systems.
 
 Most often, scripting languages are *interpreted languages*. An interpreted language gets executed by an interpreter, rather than directly by the machine it is running on. And, typically, and interpreted language is run statement by statement, rather than compiled ahead of time.
 
 ### What is Scripting in Programming?
 
-Scripting languages do not typically get directly interpreted by the machine they are running on. Instead, an interpreter or other run-time environment takes the instructions in a script and interprets them. It is then the interpreter or run-time environment that executes the interpreted instructions.
+Scripting languages do not typically get executed directly by the machine they are running on. Instead, an interpreter or other run-time environment takes the instructions in a script and interprets them. It is then the interpreter or run-time environment that executes the interpreted instructions on the machine.
 
-Contrast this with programming languages that are not interpreted. In these, code is compiled into machine language, where it can be executed directly by the machine.
+Contrast this with compiled programming languages. With these, code is compiled into machine language, where it can be executed directly by the machine.
 
 ### Scripting Languages vs Programming Languages
 
-First, bear in mind that scripting languages are generally programming languages. It is just that they run as scripts, as described above.
+First, bear in mind that scripting languages are generally programming languages. It is just that they run as interpreted scripts, as described above. You may find it helpful to think of scripting languages as a subset of programming languages generally.
 
-You may find it helpful to think of scripting languages as a subset of programming languages generally.
-
-This is complicated even more by the fact that some traditionally-compiled languages can also be run through interpreters. With these, it becomes possible to use languages like C/C++ and Go for scripting.
+The distinction is complicated even more by the fact that some traditionally-compiled languages can also be run through interpreters. With these, it becomes possible to use languages like C/C++ and Go for scripting.
 
 All that said, what are the key characteristics that separate the two categories?
 
-- Scripted languages operate with particular run-time environments, like a web browser or an embedded system.
+- Scripted languages operate withing particular run-time environments, like a web browser or an embedded system.
 
-- Scripted languages are generally interpreted rather than executed.
+- Scripted languages are generally interpreted rather than compiled to executable machine code.
 
 - Scripted languages have become synonymous in popular conversation with high-level languages.
 
@@ -60,17 +58,17 @@ This last point is certainly not always the case, and you could more accurately 
 
 ## Why Scripting Languages?
 
-Scripting languages are not for every programming need. But they certainly have characteristics that make them exception for plenty of programming tasks.
+Scripting languages are not for every programming need. But they certainly have characteristics that make them exceptional for plenty of programming tasks.
 
-To help you decide, what follows is a breakdown of some of the key reasons for using a scripting language:
+To help you decide when you should use scripting languages, what follows is a breakdown of some of the key reasons for doing so:
 
-- Portability. Usually, you can run a script anywhere you can run the script's interpreter. So, for instance, you can run JavaScript in web browsers regardless of the operating system, and you can run Python through the Python interpreters that are ubiquitous across all major operating systems.
+- Portability. Usually, you can run a script anywhere you can run the script's interpreter. So, for instance, you can run JavaScript in any popular modern web browser regardless of the operating system, and you can run Python through the Python interpreters that are ubiquitous across all major operating systems.
 
-- Simplicity. You do not have to wait for compiling, nor do you have to wade through some of the issues that can arise with compiled code. Moreover, scripting languages often take a high-level approach, making code easier to read. These factors make scripting languages excellent choices for one-off tasks, small applications, or supplementary programs.
+- Simplicity. You do not have to wait for compiling, nor do you have to wade through some of the issues that can arise during compilation. Moreover, scripting languages often take a high-level approach, making code easier to read. These factors make scripting languages excellent choices for one-off tasks, small applications, or supplementary programs.
 
 - Learning. The high-level syntax used by many scripting languages makes them easier to read and more approachable for newcomers. Additionally, the fact that interpreted programs run immediately, without compilation, provides constant feedback. The time between making a mistake, recognizing it, and trying to fix it is narrowed, which can speed up learning.
 
-Contrast this with a breakdown of key characteristics showing the limitations of scripting languages:
+Contrast this with a breakdown of the key limitations of scripting languages:
 
 - Inefficiencies. Line-by-line interpreting has its conveniences, but it also means that scripting languages often lack the kinds of optimizations compiled languages have.
 
@@ -78,39 +76,39 @@ Contrast this with a breakdown of key characteristics showing the limitations of
 
 ## Types of Scripting Languages
 
-Scripting languages widely vary in types. Some are used for video game scripting, for instance, while some are used for scripting shells.
+Scripting languages widely vary in types. Some are used for video game scripting, for instance, while some are used for scripting command-line shells.
 
 Moreover, many of these languages fit multiple types. Lua, as an example, gets used frequently for video game scripting as well as for standalone applications. Python, similarly, gets used for scripting systems administration tasks, web application servers, and standalone applications.
 
-But a good place to start, and one of the most frequent places to start seeing talk of scripting languages, is with web programming. In web programming, scripting languages can be put into one of two roles:
+But a good place to start, and one of the most popular areas for scripting languages, is with web programming. In web programming, scripting languages can be put into one of two roles:
 
 - Client side for scripts running in web browsers. These typically add dynamic components to web pages and handle communication with the web server.
 
-- Server side for scripts running on web servers. These do everything from serving web content to providing APIs for web pages to storing and processing data.
+- Server side for scripts running on web servers. These do everything from serving web content, to providing APIs for web pages, to storing and processing data.
 
-On the client side, JavaScript has become almost exclusively the scripting language supported by browsers.
+On the client side, JavaScript has become the widely-accepted default scripting language, with universal support among the popular modern web browsers.
 
-But you can also find JavaScript on the server side, through Node.js. But you can find an enormous array of languages on the server side, including most of those listed below.
+On the server side, however, you can find an enormous array of scripting languages. Many of the scripting languages listed below can be used for server-side programming. Even JavaScript can do so, through Node.js.
 
 ## The 8 Best Scripting Languages
 
-What follows is a list of the eight most popular and trending scripting languages. Not all of these are exclusively scripting languages — some can be compiled, and are even most often used in that way. But all of them perform excellently in that role.
+What follows is a list of the eight most popular and trending scripting languages. Not all of these are exclusively scripting languages — at least one can be compiled, and it is even most often used in that way. But all of them perform excellently in that role.
 
-Throughout, the guide notes where these languages tend to fit in the universe of scripting and attempts to give you an idea of their characteristics.
+Throughout, the guide observes where these languages tend to fit in the universe of scripting and attempts to give you an idea of their characteristics.
 
 With each language, you can find an example of a "Hello, World!" program. The approach taken here extends the typical "Hello, World!" to include a variable, argument, and function. This way, you get a fuller sense of each language's syntax characteristics.
 
 ### Python
 
-[Python](https://www.python.org/) is a dynamic, general-purpose interpreted language. Its high-level syntax has a reputation as being incredibly approachable, while its extensive collection of packages make it extraordinarily capable.
+[Python](https://www.python.org/) is a general-purpose interpreted language. Its high-level syntax has given Python a reputation for being incredibly approachable, while its extensive collection of packages have made it widely capable.
 
 And likely you already have a Python interpreter on your machine. You can see with either the `python` or `python3` command.
 
-Because of its wide-ranging abilities and its ubiquity, Python has been used almost everywhere you can think of. It has been used on the server side for creating web servers and web APIs, and it has been used for video game scripting. Plenty have made use of Python for standalone applications.
+Because of its wide-ranging abilities and its ubiquity, Python has been used numerous areas. It has been used on the server side for creating web servers and web APIs, in robotics, and in educational settings. Plenty have made use of Python for standalone applications, too.
 
-Most frequently, though, you can see Python used for web application programming, scripting system administration tasks, and data science.
+Most frequently, though, you can see Python used for web application programming, scripting system administration tasks, and data analysis and data science.
 
-Python's syntax tends to be minimalistic, with the goal of elevating readability.
+Python's syntax tends to be minimalistic, with the goal of elevating readability and code elegance.
 
 ``` python
 greeting_text = "Hello, world!"
@@ -123,13 +121,13 @@ hello_world("Example User")
 
 ### JavaScript
 
-[JavaScript](https://www.javascript.com/) is the language of a dynamic web. This general-purpose programming language has become the *de facto* scripting language used by web browsers. By far, the majority of web pages you visit use JavaScript to achieve action and interactivity.
+[JavaScript](https://www.javascript.com/) is the language of dynamic web pages. This general-purpose programming language has become the *de facto* scripting language for web browsers. By far, the majority of web pages you visit use JavaScript to achieve action and interactivity.
 
 Most browsers also let you toy around with their JavaScript interpreters. Open up your browser's developer tools, and look for the JavaScript console. There, you can enter JavaScript commands and see the interpreter in action.
 
-JavaScript has also found a place on the server side with Node.js. Today, it is entirely possible, and often the case, that a web application can be made completely in JavaScript, from the server side to the client side.
+JavaScript has also found a place on the server side with Node.js. Today, it is entirely possible, and often the case, that a web application can be developed completely in JavaScript, from the server side to the client side.
 
-JavaScript's syntax relies on curly braces (`{ }`) to distinguish blocks of code.
+JavaScript's syntax relies on curly braces (`{ }`) to distinguish blocks of code, and generally fits into the category of "C-like" languages.
 
 ``` javascript
 const greetingText = "Hello, world!";
@@ -143,9 +141,9 @@ helloWorld("Example User");
 
 ### PHP
 
-[PHP](https://www.php.net/) is another general-purpose programming language, but one that is especially focused on web development. Originally, PHP fit the scope now occupied by JavaScript — it added dynamic elements to web pages. But PHP has evolved into a full-featured scripting language for server-side web development.
+[PHP](https://www.php.net/) is another general-purpose programming language, but one that is especially focused on web development. Originally, PHP fit the scope now occupied by JavaScript — it added dynamic elements to web pages. But PHP pivoted and has evolved into a full-featured scripting language for server-side web development.
 
-PHP syntax uses delimiters (`<?php ... ?>`) to mark the beginning and ending of scripts and precedes variables with an operator (`$`). Otherwise, the syntax resembles C.
+PHP's syntax uses delimiters (`<?php ... ?>`) to mark the beginning and ending of scripts and precedes variables with an operator (`$`). Otherwise, the syntax resembles C.
 
 ``` php
 <?php
@@ -161,7 +159,7 @@ hello_world("Example User");
 
 ### Lua
 
-[Lua](https://www.lua.org/) is a general-purpose language with a high-level, similar to Python. Lua is designed, however, to be lightweight. This makes Lua excellent as an embedded language, allowing you to write scripts extending on other application.
+[Lua](https://www.lua.org/) is a general-purpose language with a high-level design, similar to Python. Lua, however, is intended to be lightweight. This makes Lua excellent as an embedded language, allowing you to write scripts extending on other applications.
 
 For that reason, you frequently see Lua as the scripting language for video games, editors, and other applications.
 
@@ -173,7 +171,7 @@ Here are some examples of games that have used Lua scripting in their design:
 
 - *The Witcher*
 
-And here are some applications that make use of Lua:
+And here are some applications that make use of Lua for scripting:
 
 - *Apache HTTP Server*
 
@@ -247,11 +245,13 @@ helloWorld("Example User")
 
 ### Go
 
-[Go](https://go.dev/) has been designed to be a safe, secure, and more readable systems programming language, in alternative to C. Go is, thus, a low-level language, potentially making it a little less approachable than the high-level languages featured on this list.
+[Go](https://go.dev/), also called Golang, has been designed to be a safe, secure, and more readable systems programming language, in alternative to C. Go is, thus, a low-level language, making it a little less approachable for many users than the high-level languages featured on this list.
 
-But when it comes to systems programming, Go stands out as a straightforward, readable, and modern language. This makes it a potential choice for those looking to get into systems programming but who are daunted by C.
+But when it comes to systems programming, Go stands out as a straightforward, readable, and modern language. This makes it a compelling choice for those looking to get into systems programming but who are daunted by C.
 
 Go is actually a compiled language, not an interpreted one. So what is it doing on this list? Thanks to its `go run` command, Go is capable of running Go code as scripts. And because of its low-level design, these scripts can be incredibly fast and light.
+
+Go's syntax is a little more involved, but follows the model of C and emphasizes conciseness.
 
 ``` go
 package main
@@ -271,11 +271,11 @@ func main() {
 
 ### Bash
 
-[Bash](https://www.gnu.org/software/bash/) is the incredibly popular GNU command-line interpreter, usually called a shell. Likely, you have used Bash command before, or commands in similar shells.
+[Bash](https://www.gnu.org/software/bash/) is the incredibly popular GNU command-line interpreter, usually called a shell. Likely, you have used Bash commands before, or commands in similar shells.
 
 The shell's command language is entirely capable as a scripting language. Most users execute Bash script interactively, entering each command as needed. But Bash also supports Bash scripts, allowing you to write and execute script files.
 
-The most common use for Bash scripts is automating command-line tasks. System administrators get especially good use out of Bash scripting. But developers across the spectrum also make use Bash script for automating everything from deployment tasks to file processing.
+The most common use for Bash scripts is automating command-line tasks. System administrators get especially good use out of Bash scripting. But developers across the spectrum also make use of Bash script for automating everything from deployment tasks to file processing.
 
 Bash's syntax is rather simple, although you need to be attentive to spaces and operators throughout.
 
