@@ -8,7 +8,7 @@ keywords: ['mongodb','mean','angular','express', 'web app', 'node']
 tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-17
-modified: 2021-09-16
+modified: 2022-02-24
 modified_by:
   name: Linode
 title: "Deploying a MEAN Stack through the Linode Marketplace"
@@ -42,11 +42,6 @@ MEAN is a full-stack JavaScript-based framework consisting of MongoDB database, 
 
 ## Configuration Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
-
-- **Supported distributions:** Ubuntu 20.04 LTS
-- **Recommended plan:** The Linode plan you deploy your MEAN stack on should account for the estimated workload. If you are standing up a simple web page, you can use a 1GB Linode (Nanode) or 2GB Linode. If you will deploy a more robust web app, then consider a plan with higher RAM and CPU allocations.
-
 ### MEAN Options
 
 Here are the additional options available for this Marketplace App:
@@ -62,9 +57,34 @@ Here are the additional options available for this Marketplace App:
 | **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
 | **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
 
+### General Options
+
+For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+
+- **Supported distributions:** Ubuntu 20.04 LTS
+- **Recommended plan:** The Linode plan you deploy your MEAN stack on should account for the estimated workload. If you are standing up a simple web page, you can use a 1GB Linode (Nanode) or 2GB Linode. If you will deploy a more robust web app, then consider a plan with higher RAM and CPU allocations.
+
 ## Getting Started After Deployment
 
-After your MEAN app has finished installing, you can access the "Hello World" app with your Linode's IPv4 address. Copy your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com), and then connect to the server in your browser using your Linode's IPv4 address and port `3000`(for example `192.0.2.0:3000`). The default "Hello World" app can be found the in '/opt/mean/' directory.
+Once deployed, a "Hello World" sample application should be running on `http://localhost:3000`. Follow the instructions below to view or access it.
+
+### Accessing the MEAN App through the Command Line
+
+The MEAN sample application is stored in the `/opt/mean/` directory. To access it within the command line, follow the instructions below.
+
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+
+1.  Navigate to the directory in which the application is stored:
+
+        cd /opt/mean/
+
+1.  Open and modify any files through a text editor, such as [nano](/docs/guides/use-nano-to-edit-files-in-linux/) or [vim](/docs/guides/what-is-vi/). See the command below, replacing *[file.ext]* with the desired filename and extension.
+
+        nano [file.ext]
+
+### Viewing the MEAN App through a Web Browser
+
+Open your web browser and navigate to `http://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing rDNS.
 
 ## Software Included
 
