@@ -1,17 +1,19 @@
 ---
-slug: using-redis-hashes
+slug: using-hashes-in-redis-databases
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Learn how to use Redis hashes, maps of fields and values frequently used for storing objects."
-og_description: "Learn how to use Redis hashes, maps of fields and values frequently used for storing objects."
-keywords: ['redis hashes example','accessing redis hashes','get redis hashes all key']
+description: "Learn how to use Redis hashes, maps of fields, and values frequently used for storing objects."
+og_description: "Learn how to use Redis hashes, maps of fields, and values frequently used for storing objects."
+keywords: ['redis hashes example', 'accessing redis hashes', 'get redis hashes all key']
+tags: ['redis server', 'redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-26
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use Hashes in Redis Databases"
+title: "Using Hashes in Redis Databases"
 h1_title: "How to Use Hashes in Redis Databases"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -21,61 +23,61 @@ external_resources:
 - '[Redis in Action: Hashes in Redis](https://redis.com/ebook/part-1-getting-started/chapter-1-getting-to-know-redis/1-2-what-redis-data-structures-look-like/1-2-4-hashes-in-redis/)'
 ---
 
-Redis, the open-source NoSQL database, is frequently used for caching, messaging, and other storage needs where speed and low-latency are a boon. Its hash data type is especially useful, as hashes field-value pairs allow you to store objects from the most simple to the highly complex.
+Redis, the open-source NoSQL database, is frequently used for caching, messaging, and other storage needs where speed, and low latency are a boon. Its hash data type is especially useful, as hashes field-value pairs allow you to store objects from the most simple to the highly complex.
 
-In this tutorial, you get a breakdown of what Redis's hashes are. The tutorial walks you through examples of how to create, access, and modify hashes in Redis. By the end, you have the tools to start using hashes in your Redis databases.
+In this tutorial, you get a breakdown of what Redis's hashes are. The tutorial walks you through examples of how to create, access, and modify hashes in Redis. By the end of this tutorial, you have the tools to start using hashes in your Redis databases.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
 
             sudo dnf upgrade
 
-1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to install a Redis server and command-line interface (CLI). Be sure to use the drop down menu at the top of that page to select your Linux distribution and get the appropriate steps.
+1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Are Hashes in Redis?
 
-Redis hashes are maps of field and value pairs, similar to what you would expect if you have worked with hashes in programming languages like Python and Ruby.
+Redis Hashes are maps of field and value pairs. They're similar to what you would expect if you have worked with hashes in programming languages like Python and Ruby.
 
 With hashes, you can have a single Redis entry (called a "key") with numerous field-value pairs. This essentially allows you to associate properties with a given item in Redis.
 
 ### Common Uses for Hashes
 
-Hashes are, thus, especially useful for storing objects and similar values consisting of numerous properties. In fact, because of Redis's effectiveness for caching web applications, hashes often get used for storing data from JSON objects.
+Hashes are, thus, especially useful for storing objects, and similar values consisting of numerous properties. In fact, because of Redis's effectiveness for caching web applications, hashes is often used for storing data from JSON objects.
 
 So, as an example, you might see hashes used for caching a user's web session. That can include everything from username to the user's current location in a document.
 
 ## How to Use Hashes in Redis
 
-These next sections introduce you to using hashes in your Redis databases, highlighting some of the most useful commands. They include everything from creating hashes to accessing values in them to modifying hash entries.
+The following sections introduce you to using hashes in your Redis databases, highlighting some of the most useful commands. They include everything from creating hashes to accessing their values to modifying hash entries.
 
-### Creating and Modifying Hash Entries
+### Create and Modify Hash Entries
 
-You can use the `HMSET` command to set field-value pairs on a hash. Using this command for a hash that does not yet exist creates the hash:
+You can use the `HMSET` command to set field-value pairs on a hash. You can use this command to create a hash that does not yet exist.
 
     HMSET example_user_hash username example_user password example_password other_data example_other_data
 
-Above, `example_user_hash` is the name of the hash. Following that is a series of field names and values paired: `username example_user`, `password example_password`, and `other_data example_other_data`.
+In the command above, `example_user_hash` is the name of the hash. Following that is a series of field names and values paired: `username example_user`, `password example_password`, and `other_data example_other_data`.
 
 The `HMSET` command can also be used to modify hash entries. Calling the command for one or more existing fields changes their values to the newly-provided ones.
 
-#### Incrementing Hash Values
+#### Increment Hash Values
 
-For fields with integer values, you can use the `HINCRBY` command to increase the value by a given amount, which can be a negative number. Here is a full example:
+For fields with integer values, you can use the `HINCRBY` command to increase the value by a given amount, which can be a negative number. Following is a full example:
 
     HMSET example_hash first_field 10
     HINCRBY example_hash first_field 1
@@ -86,16 +88,16 @@ For fields with integer values, you can use the `HINCRBY` command to increase th
 
 The same can be done for float values by using the `HINCRBYFLOAT` command:
 
-    HMSET example_hash second_value 5.5
-    HINCRBYFLOAT example_hash second_value -0.9
+    HMSET example_hash second_field 5.5
+    HINCRBYFLOAT example_hash second_field -0.9
 
 {{< output >}}
 "4.6"
 {{< /output >}}
 
-### Fetching Hash Values
+### Fetch Hash Values
 
-Use the `HMGET` command to fetch the values of fields in a hash. For instance, this next command gets the `username` and `other_data` fields' values from the `example_user_hash` created in the section above:
+Use the `HMGET` command to fetch the values of fields in a hash. For instance, the following command gets the `username` and `other_data` fields' values from the `example_user_hash` that was created using the `HMSET` command in the section above.
 
     HMGET example_user_hash username other_data
 
@@ -104,7 +106,7 @@ Use the `HMGET` command to fetch the values of fields in a hash. For instance, t
 2) "example_other_data"
 {{< /output >}}
 
-You can even use the `HRANDFIELD` to get one or more random field names from a hash. The command comes with a `WITHVALUES` option to view the returned fields with their values, or, alternatively, you can get the values using `HMGET`:
+You can even use the `HRANDFIELD` to get one or more random field names from a hash. The command comes with a `WITHVALUES` option to view the returned fields with their values, or, alternatively, you can get the values using `HMGET`.
 
     HRANDFIELD example_user_hash 2 WITHVALUES
 
@@ -119,7 +121,7 @@ You can even use the `HRANDFIELD` to get one or more random field names from a h
 
 Redis has several commands for listing all items in a hash, depending on what information you want about each item.
 
-- Use the `HKEYS` command to get all of the keys in a Redis hash:
+- Use the `HKEYS` command to get all of the fields in a Redis hash.
 
         HKEYS example_user_hash
 
@@ -129,7 +131,7 @@ Redis has several commands for listing all items in a hash, depending on what in
 3) "other_data"
     {{< /output >}}
 
-- Use the `HVALS` command to get all of the values for all of the keys in a hash:
+- Use the `HVALS` command to get all of the values for all of the fields in a hash.
 
         HVALS example_user_hash
 
@@ -152,9 +154,9 @@ Redis has several commands for listing all items in a hash, depending on what in
 6) "example_other_data"
     {{< /output >}}
 
-#### Checking for Fields
+#### Check for Fields
 
-To verify whether a field exists in a hash, you can use the `HEXISTS` command. Provide the command with a hash and a field name, and the command returns `1` for true (the field exists in the hash) or `0` for false (the field does not exist in the hash):
+To verify whether a field exists in a hash, you can use the `HEXISTS` command. Provide the command with a hash and a field name. The command returns `1` for true (the field exists in the hash) or `0` for false (the field does not exist in the hash).
 
     HEXISTS example_user_hash username
 
@@ -168,9 +170,9 @@ To verify whether a field exists in a hash, you can use the `HEXISTS` command. P
 (integer) 0
 {{< /output >}}
 
-### Deleting Hash Values
+### Delete Hash Values
 
-Delete one or more specific fields from a hash using the `HDEL` command. The command takes the hash name followed by the names of the fields to be deleted:
+Delete one or more specific fields from a hash using the `HDEL` command. The command takes the hash name followed by the names of the fields to be deleted.
 
     HDEL example_user_hash other_data password
     HGETALL example_user_hash
@@ -180,7 +182,7 @@ Delete one or more specific fields from a hash using the `HDEL` command. The com
 2) "example_user"
 {{< /output >}}
 
-You can also delete an entire hash using the `DEL` command:
+You can also delete an entire hash using the `DEL` command.
 
     DEL example_user_hash
 
@@ -188,4 +190,4 @@ You can also delete an entire hash using the `DEL` command:
 
 With this tutorial, you should be prepared to start making use of hashes in your Redis databases. These can significantly improve many storage tasks, especially object storage for web application caching.
 
-Keep an eye out for other of our guides in this series, taking your further into Redis usage and concepts.
+Keep an eye out for our other guides in this series which takes you further into Redis usage and concepts.
