@@ -1,5 +1,5 @@
-```bash
 ---
+slug: advanced-ssh-tunneling
 author:
   name: Linode
   email: docs@linode.com
@@ -8,8 +8,6 @@ keywords: ["ssh", "tunneling", "port forwarding", "remote forwarding", "local fo
 tags: ["ssh", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-16
-modified_by:
-  name: Linode
 title: 'Advanced SSH Tunneling and Port-Forwarding Uses and Configurations'
 contributor:
   name: Jan Slezak
@@ -18,7 +16,6 @@ external_resources:
   - '[Official SSH Documentation1](https://www.ssh.com/academy/ssh/tunneling)'
   - '[Link Title 2](http://www.example.net)'
 ---
-```
 
 [SSH](https://www.ssh.com/) (Secure Shell Protocol) is the standard tool and protocol for logging in to servers remotely, however, when wielded by a knowledgable user, its deep configuration options can increase its potential capabilities tremendously.  This guide will teach you to create secure and encrypted connections in new ways.  These concepts can provide solutions for challenges you may be facing and may inspire changes that simplify your workflow or open new possibilities.  
 
