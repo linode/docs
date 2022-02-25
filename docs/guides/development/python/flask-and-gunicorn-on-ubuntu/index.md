@@ -55,11 +55,9 @@ This guide assumes you are familiar with the following concepts and skills:
 
 1. If you are not using the example application, host the Flask application code on a remote version control system, such as GitHub. This guide uses GitHub for all examples.
 
-1. [Create a 1GB Linode](/docs/getting-started/#create-a-linode) to host the Flask web application. Depending on the size of the application and the amount of users you expect to visit it, you may consider a large [Linode plan](/docs/platform/how-to-choose-a-linode-plan/).
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1.  Familiarize yourself with the [Getting Started](/docs/getting-started/) guide and complete the steps for [updating the system's software](/docs/getting-started/#install-software-updates), setting the Linode's [hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
-
-1.  This guide uses `sudo` wherever possible. Complete the sections of [Securing the Server](/docs/security/securing-your-server/) to create a [limited user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access) and [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services).
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Copy the Flask App to Linode
 

@@ -14,6 +14,6 @@ description: "Learn how to create a new Compute Instance from a Custom or Recove
 
     ![Click the button labeled Deploy to a New Linode](images-deploy-new-linode.png "Click the button labeled Deploy to a New Linode")
 
-1. You are redirected to the **Create Linode** form with the chosen Image preselected. Complete the remainder of this form, making sure to select your desired **Region**, **Linode Plan**, **Label**, **Root Password**, and any other options that may be needed. See [Getting Started with Linode → Create Linode](/docs/guides/getting-started/#create-a-linode) for full instructions on creating a Linode.
+1. You are redirected to the **Create Linode** form with the chosen Image preselected. Complete the remainder of this form, making sure to select your desired **Region**, **Linode Plan**, **Label**, **Root Password**, and any other options that may be needed. See [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) for full instructions on creating a Linode.
 
 1. Click the **Create Linode** button to create the Linode based on the selected Image.

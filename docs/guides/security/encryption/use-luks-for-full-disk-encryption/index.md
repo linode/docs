@@ -209,4 +209,4 @@ Your output will be similar to this:
     mode:    read/write
 
 
-You now have a securely LUKS-encrypted Debian installation. You can follow the steps in our [Getting Started](/docs/getting-started/) and [Securing your Server](/docs/security/securing-your-server/) guides to begin configuring your Linode.
+You now have a securely LUKS-encrypted Debian installation. You can follow the steps in our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to begin configuring your Linode.

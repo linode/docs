@@ -44,7 +44,7 @@ You can configure your Zabbix App by providing values for the following fields:
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** CentOS 7
 - **Recommended minimum plan:** All plan types and sizes can be used.
@@ -53,7 +53,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Access your Zabbix App
 
-After Zabbix has finished installing, you must first access your Zabbix Linode from the console via [SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh), to obtain a randomly-generated administrative password. You can then use this password to log into your Zabbix App via web browser at your Linode's [IPv4 address](/docs/guides/find-your-linodes-ip-address/).
+After Zabbix has finished installing, you must first access your Zabbix Linode from the console via [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance), to obtain a randomly-generated administrative password. You can then use this password to log into your Zabbix App via web browser at your Linode's [IPv4 address](/docs/guides/find-your-linodes-ip-address/).
 
 1. From your terminal, log into your Zabbix Linode as the `root` user with the following command, replacing `192.0.2.0` with your Linode's [IPv4 address](/docs/guides/find-your-linodes-ip-address/):
 

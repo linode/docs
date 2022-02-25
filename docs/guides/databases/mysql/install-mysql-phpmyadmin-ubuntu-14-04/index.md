@@ -34,18 +34,16 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides and the Linode's [hostname is set](/docs/getting-started/#setting-the-hostname).
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
 
     To check your hostname run:
 
         hostname
         hostname -f
 
-    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
-
-2.  Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade -y
+    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN) if you have one assigned.
 
 3.  Set up a working LAMP stack. Please see the [LAMP on Ubuntu 14.04](/docs/web-servers/lamp/lamp-on-ubuntu-14-04/) guide if needed.
 

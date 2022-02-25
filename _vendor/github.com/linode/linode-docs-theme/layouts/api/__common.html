@@ -264,6 +264,10 @@ This template includes common API logic and functions.
     {{ $filterable := eq (printf "%s" .) "true" }}
     {{ $m.Set "Filterable"  $filterable }}
   {{ end }}
+  {{ with (index $ext "x-linode-ref-meta") }}
+    {{ $meta :=  . | transform.Unmarshal}}
+    {{ $m.Set "RefMetaMap"  $meta }}
+  {{ end }}
 {{ end }}
 
 {{ define "partials/openapi3/schema-to-map-collect-required" }}
@@ -312,8 +316,13 @@ This template includes common API logic and functions.
   {{ $s := $ctx.dot.Value }}
 
   {{ $m :=  newScratch }}
-  {{ $m.Set "Ref" $ctx.dot.Ref }}
-  
+  {{ $ref := $ctx.dot.Ref}}
+  {{ $m.Set "Ref" $ref }}
+  {{ $refMetaMap := $ctx.refMetaMap | default dict }}
+  {{ $refMeta := index $refMetaMap  $ref | default (dict "name" ($ref | strings.TrimPrefix "#/components/schemas/")) }}
+  {{ $m.Set "RefMeta" $refMeta }}
+
+
   {{ if and .isProperty $requiredMap }}
     {{ $name := (path.Base $path) }}
     {{ $base := (path.Dir $path) }}
@@ -327,6 +336,9 @@ This template includes common API logic and functions.
   {{ end }}
   
   {{ template "openapi3/schema-set-values-in-map" (dict "m" $m "s" $s )}}
+  {{ with $m.Get "RefMetaMap"}}
+    {{ $dollar.Set "refMetaMap" . }}
+  {{ end }}
   {{ $props := $s.Properties }}
   {{ if eq $s.Type "array" }}
     {{ $props = $s.Items.Value.Properties }}
@@ -350,6 +362,9 @@ This template includes common API logic and functions.
     {{ else }}
       {{/* Make this schema into a slice that can be toggled by the user. */}}
       {{ $slice := slice }}
+
+ 
+
       {{ range $i, $e := $s.OneOf }}
         {{ $dollar.Set "dot" . }}
         {{ $slice =  $slice | append (partial "openapi3/schema-to-map" (dict "dollar" $dollar "path" $path "ordinal" (add $i 1)))  }}
@@ -461,11 +476,11 @@ This template includes common API logic and functions.
           <td colspan="2">
             {{ $oneOfTabs := slice }}
             {{ range $i, $e := $v }}
-              {{ $ref := .Ref | strings.TrimPrefix "#/components/schemas/" }}
+              {{ $title := .RefMeta.name }}
               {{ $.Set "dot" .}}
               {{ $.Set "k" $k }}
               {{ $tabSource := printf "<table>%s</table>" (partial "openapi3/print-schema-property-value" $) | safeHTML }}
-              {{ $oneOfTabs =  $oneOfTabs | append (dict "title" $ref "body" $tabSource ) }}
+              {{ $oneOfTabs =  $oneOfTabs | append (dict "title" $title "body" $tabSource ) }}
             {{ end }}
             {{ $.Set "dot" $oneOfTabs }}
             {{ $.Set "nocode" true }}

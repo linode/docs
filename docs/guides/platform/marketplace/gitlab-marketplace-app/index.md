@@ -39,7 +39,7 @@ Here are the additional options available for this Marketplace App:
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Debian 9
 - **Recommended minimum plan:** 8GB Dedicated CPU Compute Instance
@@ -85,7 +85,7 @@ If you configured your GitLab Marketplace App without providing a domain, you ca
 
 After setting up DNS, you will need to update your GitLab instance's `/etc/gitlab/gitlab.rb` file with your domain name. This will ensure that any emails sent to users by the GitLab instance will use your site's domain.
 
-1.  [Connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh).
+1.  [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  With a text editor of your choice ([nano](/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/), for example), open the `/etc/gitlab/gitlab.rb` file and modify the value of `external_url`. Ensure you replace `http://example.com` with your domain:
 

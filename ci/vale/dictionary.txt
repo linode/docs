@@ -29,6 +29,7 @@ aker
 alef
 alertmanager
 alex
+alexa
 alexey
 alfano
 alives
@@ -226,6 +227,7 @@ changeme
 changeset
 changesets
 characterwise
+chatbot
 chatbots
 chatrooms
 cheatsheet
@@ -256,6 +258,7 @@ client2
 clojure
 couchbase
 cloudant
+cloudera
 cloudflare
 cloudnet
 cloudron
@@ -285,6 +288,7 @@ configr
 configs
 configtest
 configurability
+connectionism
 connectionless
 containerd
 containerised
@@ -310,6 +314,7 @@ craigslist
 crashingdaily
 createdt
 createfromstackscript
+crewless
 cri
 cron
 crond
@@ -387,6 +392,7 @@ declaratively
 deduplication
 deepin
 defragment
+dejong
 deloitte
 delpy
 demultiplexer
@@ -477,6 +483,7 @@ ebtables
 ebuild
 ecommerce
 ecute
+edmonds
 edu
 efi
 ejabberd
@@ -679,6 +686,7 @@ gogs
 golang
 goldmark
 gomega
+goostman
 gopwt
 goroutine
 goroutines
@@ -729,7 +737,10 @@ hba
 hd0
 hdfs
 healthcheck
+healthtech
 heartbleed
+hebb
+hebbian
 heredoc
 heroku
 hexo
@@ -747,6 +758,7 @@ host1
 host2
 hostname
 hostnames
+hortonworks
 hotfix
 hotlink
 hotlinked
@@ -945,6 +957,7 @@ kickban
 kickbans
 kickstarter
 killall
+kinect
 kinser
 kitchensalt
 klei
@@ -1150,6 +1163,7 @@ minification
 minikf
 minikube
 minimalistic
+minimax
 minio
 minisockets
 minitest
@@ -1174,6 +1188,7 @@ moodle
 mongocryptd
 mongodb
 mongod
+mongodump
 mongoimport
 mongosh
 monit
@@ -1270,6 +1285,7 @@ netstat
 netstumbler
 netuser
 networkd
+neurophysiologist
 newark
 newgrp
 newtag
@@ -1403,6 +1419,7 @@ pem
 pentest
 pentesting
 pepi
+perceptron
 percona
 performant
 perl
@@ -1552,6 +1569,7 @@ rebased
 rebases
 rebasing
 rebootuser
+rebranded
 recompiles
 reconnections
 recordset
@@ -1586,6 +1604,7 @@ remediations
 remi
 remmina
 remotehost
+replicants
 replicaset
 replicationcontrollers
 replset
@@ -1623,6 +1642,7 @@ rocommunity
 rofi
 rollout
 rooknfs
+rosenblatt
 rossum
 roundcube
 routable
@@ -1680,6 +1700,7 @@ sbt
 scgi
 schroot
 schaeffer
+schemaless
 schtasks
 scm
 scp
@@ -1752,6 +1773,7 @@ sievers
 signup
 singapore
 sintra
+siri
 sitename
 sklearn
 slackpkg
@@ -1808,6 +1830,7 @@ stalkyard
 stallman
 starkiller
 starttls
+statista
 statsd
 statusbar
 stdin
