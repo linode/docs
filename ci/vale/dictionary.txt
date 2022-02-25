@@ -258,6 +258,7 @@ client2
 clojure
 couchbase
 cloudant
+cloudera
 cloudflare
 cloudnet
 cloudron
@@ -757,6 +758,7 @@ host1
 host2
 hostname
 hostnames
+hortonworks
 hotfix
 hotlink
 hotlinked
@@ -1698,6 +1700,7 @@ sbt
 scgi
 schroot
 schaeffer
+schemaless
 schtasks
 scm
 scp
@@ -1827,6 +1830,7 @@ stalkyard
 stallman
 starkiller
 starttls
+statista
 statsd
 statusbar
 stdin
