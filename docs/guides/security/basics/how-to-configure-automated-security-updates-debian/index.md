@@ -28,7 +28,7 @@ Keeping your system up-to-date with the latest packages and security updates can
 
 1.  Complete the [Getting Started](/docs/guides/getting-started) guide.
 
-1.  Follow the [Securing Your Server](/docs/guides/securing-your-server/) guide to create a standard user account, and harden SSH access.
+1.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, and harden SSH access.
 
 1.  Log into your Linode via SSH and update and upgrade.
 

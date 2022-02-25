@@ -182,5 +182,5 @@ If you use a firewall the following ports need to be opened: 9987, 30033, 10011,
     iptables -A INPUT -p tcp --dport 41144 -j ACCEPT
 
 {{< note >}}
-If you've configured your firewall according to our [Securing Your Server](/docs/security/securing-your-server/) guide, you need to add these exceptions to `/etc/iptables.firewall.rules` to be reboot-persistent.
+If you've configured your firewall according to our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, you need to add these exceptions to `/etc/iptables.firewall.rules` to be reboot-persistent.
 {{< /note >}}

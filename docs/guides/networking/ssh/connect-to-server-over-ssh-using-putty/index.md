@@ -32,7 +32,7 @@ While PuTTY is compatible with Windows 10, you may want to review the [Connectin
 
 ## Before You Begin
 
-1. Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Getting Started](/docs/getting-started/) guide to create a Linode.
+1. Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide to create a Linode.
 
 1. Install [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) on your local Windows or Linux system.
 
@@ -60,6 +60,12 @@ While PuTTY is compatible with Windows 10, you may want to review the [Connectin
 
     If you trust this connection, press the **Accept** button to continue connecting to the remote server. You can verify the fingerprint by following the instructions under the [Verifying the Authenticity of a Remote Server](/docs/guides/verifying-the-authenticity-of-remote-host/) guide.
 
+    {{<note>}}
+If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when remote host key changes. To fix this, you must remove the IP addresses manually from the following registry entry:
+
+    HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\SshHostKeys
+{{</note>}}
+
 1.  PuTTY now prompts you to enter the remote user and the password for that user.
 
 Once you have successfully connected, your terminal should be using the remote shell environment for the server. Your command prompt should now show the username and hostname configured for the server. You can now run any commands that you have available on that server. This includes many of the basic Linux commands, such as `ls`, `cd`, `rm`, and those covered in [Using the Terminal](/docs/guides/using-the-terminal/) guide. Getting to know these commands will help you navigate around your server.
@@ -74,7 +80,7 @@ If SSH isn't connecting you to your Linode, you may need to investigate the stat
 
 - Now that you can connect from your Linux machine to the Linode over SSH, save not only time but also make the connection even more secure by using SSH public key authentication. For more information, see [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/).
 
-- See the "Harden SSH Access" section of [Securing Your Server](/docs/security/securing-your-server/) to review how to secure SSH on the server's side, and the [Advanced SSH Server Security](/docs/guides/advanced-ssh-server-security/) for more information on making it even more secure.
+- See the "Harden SSH Access" section of [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to review how to secure SSH on the server's side, and the [Advanced SSH Server Security](/docs/guides/advanced-ssh-server-security/) for more information on making it even more secure.
 
 ### Additional PuTTY Guides
 

@@ -29,7 +29,7 @@ If you are running Docker, by default Docker directly manipulates iptables. Any 
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1.  Ensure that you complete the sections of [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. When you reach the [Configure a Firewall](/docs/security/securing-your-server/#configure-a-firewall) section return to this guide.
+1.  Ensure that you complete the sections of [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services. When you reach the [Configure a Firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) section return to this guide.
 
     This guide lists the commands for Arch Linux, Debian or Ubuntu distributions only. However, you can use the relevant commands for the outlined tasks on various Linux distributions.
 

@@ -49,7 +49,7 @@ For a more detailed information on PMM's architecture see [Percona's official do
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Debian 10
 - **Recommended minimum plan:** All plan types and sizes can be used. Percona recommends roughly 1 GB of storage on your PMM Server for each database node you would like to monitor. For more information on Percona's system requirements see their [official documentation](https://www.percona.com/doc/percona-monitoring-and-management/2.x/faq.html#what-are-the-minimum-system-requirements-for-pmm).
@@ -97,7 +97,7 @@ To begin monitoring a database node, you will need to install the [PMM Client](h
 The PMM Server deployed with Linode's Percona (PMM) Marketplace App is compatible with [**PMM Client version 2**](https://www.percona.com/doc/percona-monitoring-and-management/2.x/index.html).
 {{</ note >}}
 
-1.  [Connect to your database Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) via SSH.
+1.  [Connect to your database Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) via SSH.
 
 1.  Update your system's software.
 
@@ -167,7 +167,7 @@ pmm-agent is running.
 
 Once your database node and your PMM Server are communicating, the final step is to add your database instance to be monitored by your PMM Server. These steps are completed on your database node.
 
-1. [Connect to your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) via SSH.
+1. [Connect to your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) via SSH.
 
 1. Add your database instance to be monitored by your PMM Server. This command will add a MySQL database instance to be monitored. Replace `db_user` with your database's user name, and `db_user_password` with that user's password. You can also replace `mysql` with the database type that your node is hosting (i.e. `postgresql` or `mongodb`). See Percona's [Using PMM Client](https://www.percona.com/doc/percona-monitoring-and-management/2.x/manage/index-using-pmm-client.html) documentation for details.
 

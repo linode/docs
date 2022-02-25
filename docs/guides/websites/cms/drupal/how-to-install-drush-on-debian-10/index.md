@@ -34,16 +34,15 @@ Both new and experienced Drupal users can benefit from learning Drush. Users tha
 
 Before installing Drush, ensure that the following prerequisites have been met:
 
-1.  [Create a new Linode](/docs/getting-started/#create-a-linode) by following our [Getting Started](/docs/getting-started/) guide. Complete the steps for [setting your Linode's hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
-1. Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services) and [create firewall rules](/docs/security/securing-your-server/#configure-a-firewall) for your Linode.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
 1.  Install and configure a [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/)
-1.  Make sure that your system is up to date, using:
 
-        sudo apt-get update && sudo apt-get upgrade
-
-    {{< note >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-    {{< /note >}}
+{{< /note >}}
 
 ## Install Git & Composer
 The developers of Drush recommend installing Drush using [Composer](https://getcomposer.org/doc/00-intro.md), a PHP dependency manager. Since the Drush project is hosted on [GitHub](https://github.com/) and controlled with [Git](/docs/development/version-control/how-to-configure-git/), you will also need to install Git. In this section, you will install both dependencies.
