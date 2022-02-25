@@ -14,6 +14,11 @@ title: "Create an Email Notification System Using Twilio (IMAP)"
 contributor:
   name: John Mueller
   link:
+relations:
+  platform:
+    key: twilio-email-notifications
+    keywords:
+      - email protocol: IMAP
 external_resources:
 - '[imaplib — IMAP4 Client Library — PyMOTW 3](https://pymotw.com/3/imaplib/index.html)'
 - '[imaplib — IMAP4 protocol client — Python 3.10.2 documentation](https://docs.python.org/3/library/imaplib.html)'
