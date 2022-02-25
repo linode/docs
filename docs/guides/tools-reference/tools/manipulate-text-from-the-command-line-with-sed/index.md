@@ -3,7 +3,7 @@ slug: manipulate-text-from-the-command-line-with-sed
 author:
   name: Linode
   email: docs@linode.com
-description: 'Practical examples for using sed to transform text files and streams.'
+description: 'This guide contains practical examples for using the sed command to transform text files and streams of text from the command line without using a text editor.'
 keywords: ["sed", "find and replace", "regular expression", "unix"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linux-tools/common-commands/sed/','/tools-reference/tools/manipulate-text-from-the-command-line-with-sed/']

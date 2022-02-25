@@ -1,9 +1,10 @@
 ---
 slug: managing-mysql-with-phpmyadmin-on-centos-6-4
+deprecated: true
 author:
     name: Linode
     email: docs@linode.com
-description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
+description: 'This guide will show you how to use phpMyAdmin to manage and maintain MySQL databases and users though a web interface on CentOS 6.4.'
 keywords: ["mysql", "phpmyadmin", "sql", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/managing-mysql-with-phpmyadmin-on-centos-6-4/','/databases/mysql/phpmyadmin-centos-6/']

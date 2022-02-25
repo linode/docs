@@ -7,6 +7,6 @@ require (
 	github.com/bep/hugo-jslibs/instantpage v0.0.0-20200822093604-7b6e0aaba587 // indirect
 	github.com/bep/hugo-jslibs/turbolinks v0.1.2 // indirect
 	github.com/bep/linodedocs v0.0.0-20210212231859-10aa00d2e096
-	github.com/linode/linode-api-docs/v4 v4.113.0 // indirect
-	github.com/linode/linode-docs-theme v0.0.0-20220121193116-cbe32d7e05c5 // indirect
+	github.com/linode/linode-api-docs/v4 v4.117.1 // indirect
+	github.com/linode/linode-docs-theme v0.0.0-20220215210751-7225a38fcaef // indirect
 )

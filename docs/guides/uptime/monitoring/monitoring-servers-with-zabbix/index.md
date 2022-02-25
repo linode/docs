@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Chris Ciufo
   email: docs@linode.com
-description: Zabbix
+description: 'This guide shows how to install and configure Zabbix, an open source software application that can monitor servers, networks, and applications.'
 keywords: ["zabbix", "server monitoring", "monitoring", "server monitor"]
 tags: ["php","monitoring","database","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

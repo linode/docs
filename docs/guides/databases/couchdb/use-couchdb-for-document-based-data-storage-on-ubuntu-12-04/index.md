@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy CouchDB on Ubuntu 12.04 (Precise Pangolin).'
+description: 'CouchDB is a non-relational document based database, also referred to as a NoSQL database. This guide instructs you on installing it on Ubuntu 12.04 "Precise Pangolin".'
 keywords: ["couchdb", "nosql", "json", "ubuntu", "futon"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-12-04/','/databases/couchdb/use-couchdb-for-document-based-data-storage-on-ubuntu-12-04-precise-pangolin/','/databases/couchdb/ubuntu-12-04-precise-pangolin/']

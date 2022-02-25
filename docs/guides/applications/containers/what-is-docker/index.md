@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Jon Chen
   email: docs@linode.com
-description: 'An overview of Installing Docker, with an example use case for Nginx'
+description: 'This guide provides you with an overview of Docker, a container runtime, as well as how to use Docker to install the Nginx web server.'
 keywords: ["docker", "ubuntu", "centos", "container"]
 tags: ["ubuntu","container","docker","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

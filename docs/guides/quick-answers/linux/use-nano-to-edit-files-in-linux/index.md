@@ -3,7 +3,7 @@ slug: use-nano-to-edit-files-in-linux
 author:
   name: Edward Angert
   email: docs@linode.com
-description: 'Use GNU nano to edit text and system files from the command line.'
+description: 'GNU nano, or more commonly just nano, is the basic and built-in text editor on most Linux distros. This guide shows how to use it to edit text and system files.'
 keywords: ["nano", "terminal", "command line", "shell"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/quick-answers/use-nano-to-edit-files-in-linux/','/quick-answers/linux/use-nano-to-edit-files-in-linux/']

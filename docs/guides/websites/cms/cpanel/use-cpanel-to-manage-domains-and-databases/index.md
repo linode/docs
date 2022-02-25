@@ -3,7 +3,7 @@ slug: use-cpanel-to-manage-domains-and-databases
 author:
   name: Chris C.
   email: docs@linode.com
-description: Use cPanel to Manage Domains and Databases
+description: 'This guide shows how to use cPanel, a popular web server control panel that makes it easy to manage server resources and services, like domains and databases.'
 keywords: ["cpanel", "database", "managing domain", "subdomain", "add-on domain", "parked domain", "phpmyadmin", "mysql", "create database", "manage database"]
 tags: ["centos","dns","cms","cpanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

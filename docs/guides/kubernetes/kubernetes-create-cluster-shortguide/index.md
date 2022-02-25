@@ -3,7 +3,7 @@ slug: kubernetes-create-cluster-shortguide
 author:
   name: Linode
   email: docs@linode.com
-description: 'Shortguide that shows you how to create a Linode Kubernetes Engine cluster.'
+description: 'This short-guide will provide you with step-by-step instructions on how to create a new Linode Kubernetes Engine (LKE) cluster with a node pool.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-22
 modified_by:

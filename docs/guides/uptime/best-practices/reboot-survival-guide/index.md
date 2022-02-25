@@ -3,7 +3,7 @@ slug: reboot-survival-guide
 author:
   name: Alex Fornuto
   email: docs@linode.com
-description: Best practices in preparation for a server reboot.
+description: 'This guide covers best practices to ensure that your server is prepared to handle an unexpected reboot and provides items to consider for scheduled downtime.'
 keywords: ["uptime", "reboot", "downtime", "fault tolerance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-10-28

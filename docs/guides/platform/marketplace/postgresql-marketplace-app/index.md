@@ -45,7 +45,7 @@ After PostgreSQL has finished installing, you will be able to access PostgreSQL 
 
 1.  Update your server:
 
-        sudo apt-get update && apt-get upgrade
+        sudo apt-get update && sudo apt-get upgrade
 
 ## Using PostgreSQL
 

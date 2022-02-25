@@ -3,7 +3,7 @@ slug: how-linode-billing-works
 author:
   name: Linode
   email: docs@linode.com
-description: "Learn how billing works at Linode, what payment methods are accepted, and other important billing related information."
+description: "In this guide, you will learn how billing works at Linode, what payment methods are accepted, and other important billing related information."
 keywords: ["billing", "payments"]
 aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -55,7 +55,7 @@ You may receive a mid-month bill from Linode if you reach a certain threshold of
 
 ### Will I Be Billed For Powered Off or Unused Services?
 
-**Charges will accrue for any active service, even if it is powered off or otherwise not in use.**  This includes Linode Compute Instances that have been powered off as well as any service you might have added to the account but are not using. When a Compute Instance is on your account, the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service](/docs/guides/manage-billing-in-cloud-manager/#removing-services)) from your account.
+**Charges will accrue for any active service, even if it is powered off or otherwise not in use.**  This includes Linode Compute Instances that have been powered off as well as any service you might have added to the account but are not using. When a Compute Instance is on your account, the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service](/docs/guides/manage-billing-in-cloud-manager/#removing-services) from your account.
 
 ## Payments
 

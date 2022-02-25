@@ -3,7 +3,7 @@ slug: how-to-use-monitorix-for-system-monitoring
 author:
   name: Steven J. Vaughan-Nichols
   email: sjvn@vna1.com
-description: "Monitorix is a free, open-source monitoring tool that keeps track of several Linux services and system resources. This guide walks you through all the basics."
+description: 'This guide will show you how to use Monitorx, a free and open-source monitoring tool to keep track of several Linux services and system resources.'
 keywords: ['how to use monitorix']
 tags: ["linux","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

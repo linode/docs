@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use unison to synchronize files between two machines.'
+description: 'This guide provides you with step-by-step instructions on installing and configuring Unison, a file synchronization tool that keeps files in sync between 2 computers.'
 keywords: ["backup", "syncronize files", "unison", "debian", "debian lenny"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/synchronize-files-with-unison/','/linux-tools/unison/']

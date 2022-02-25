@@ -3,7 +3,7 @@ slug: create-file-system-links-with-ln
 author:
   name: Linode
   email: docs@linode.com
-description: 'Create hard and symbolic links with ln on Linux Systems.'
+description: 'This guide provides you with step-by-step instructions for creating hard and sym (symbolic) links with the ln command on the Linux operating system.'
 keywords: ["linux", "common commands", "unix", "command line", "file systems"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/create-file-system-links-with-ln/','/linux-tools/common-commands/ln/']

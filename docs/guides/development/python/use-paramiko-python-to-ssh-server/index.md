@@ -3,8 +3,8 @@ slug: use-paramiko-python-to-ssh-into-a-server
 author:
   name: Cameron Laird
   email: claird@phaseit.net
-description: 'The Python module, Paramiko, implements the SSHv2 protocol giving you the ability to connect to remote servers using password or SSH key authentication. You can use Paramiko in your Python code to automate tasks on your server. This guide provides two Paramiko examples showing you how to connect to a server with your username and password and your SSH keys.'
-og_description: 'The Python module, Paramiko, implements the SSHv2 protocol giving you the ability to connect to remote servers using password or SSH key authentication. You can use Paramiko in your Python code to automate tasks on your server. This guide provides two Paramiko examples showing you how to connect to a server with your username and password and your SSH keys.'
+description: 'This guide shows how you can use the Python module Paramiko, an app that uses the SSHv2 protocol to connect to remote servers, to connect to a server remotely.'
+og_description: 'This guide shows how you can use the Python module Paramiko, an app that uses the SSHv2 protocol to connect to remote servers, to connect to a server remotely.'
 keywords: ['paramiko python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -66,7 +66,7 @@ password = "YOUR_PASSWORD"
 client = paramiko.client.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 client.connect(host, username=username, password=password)
-stdin, _stdout,_stderr = client.exec_command("df")
+_stdin, _stdout,_stderr = client.exec_command("df")
 print(stdout.read().decode())
 client.close()
 {{< /file >}}
