@@ -15,7 +15,7 @@ aliases: ['/platform/billing-and-support/european-union-vat-linode/','/platform/
 tags: ["linode platform"]
 ---
 
-Some countries (and regions) require us by law to collect taxes. As such, customers located in these countries are charged the appropriate tax rate for any taxable services billed to their account. The taxes that Linode collects are listed on customer invoices (see the [Viewing Invoices and Payments](/docs/guides/manage-billing-in-cloud-manager/#viewing-invoices-and-payments) section of our Cloud Manager Billing guide).
+Some countries, states, and regions require us by law to collect taxes. As such, customers located in these locations are charged the appropriate tax rate for any taxable services billed to their account. The taxes that Linode collects are listed on customer invoices (see the [Viewing Invoices and Payments](/docs/guides/manage-billing-in-cloud-manager/#viewing-invoices-and-payments) section of our Cloud Manager Billing guide).
 
 {{< note >}}
 Pricing and service fees posted publicly, such as our [Pricing](https://www.linode.com/pricing/) page and listed in the Cloud Manager, do not include taxes.
@@ -23,7 +23,9 @@ Pricing and service fees posted publicly, such as our [Pricing](https://www.lino
 
 ## List of Countries and Tax Rates
 
-The following table lists each country that requires us to collect taxes. Alongside each country is the tax rate, a link to additional tax details, and the date which Linode started to collected taxes in that country.
+### International Countries
+
+The following table lists each country that requires us to collect taxes, excluding Canada and the U.S. Alongside each country is the tax rate, a link to additional tax details, and the date which Linode started to collected taxes in that country.
 
 | Country | Tax Rate | Tax Details | Start Date |
 | -- | -- | -- | -- |
@@ -60,6 +62,37 @@ The following table lists each country that requires us to collect taxes. Alongs
 | Spain | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Sweden | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | United Kingdom | 20% | [VAT](https://www.gov.uk/vat-rates) | July 1st, 2019 |
+
+### Canada
+
+As of **May 1st, 2022**, Canadian taxes will begin to be collected. The following table below lists the tax rate for each Province/Territory, as well as additional tax details:
+
+| Province | Tax Rate | Tax Details |
+| -- | -- | -- | -- |
+| Alberta | 5% | [GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
+| British Columbia | 12% | Combination of [GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) and [PST](https://www2.gov.bc.ca/gov/content/taxes/sales-taxes/pst) |
+| Manitoba | 5% | [GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
+| New Brunswick | 15% | [HST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
+| Newfoundland and Labrador | 15% | [HST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
+| Northwest Territories | 5% | [GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
+| Nova Scotia | 15% | [GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
+| Nunavut | 5% | [GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
+| Ontario | 13% | [HST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
+| Prince Edward Island | 15% | [HST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
+| Quebec | 14.975% | Combination of [GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) and [QST](https://www.revenuquebec.ca/en/businesses/consumption-taxes/gsthst-and-qst/basic-rules-for-applying-the-gsthst-and-qst/) |
+| Saskatchewan | 11% | Combination of [GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) and [PST](https://www2.gov.bc.ca/gov/content/taxes/sales-taxes/pst) |
+| Yukon | 5% | [GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
+
+### United States
+
+The following table lists each U.S State that requires us to collect sales taxes. Alongside each state is the State tax rate, the additional Local tax range, and the date which Linode begins to collect taxes in that State.
+
+| U.S State | State Tax Rate | Local Tax Range | Start Date |
+| -- | -- | -- | -- |
+| Texas | 6.25% | 0.125% - 2% | May 1st, 2022 |
+| Hawaii | 4% | 0% - 0.5% | May 1st, 2022 |
+| Washington | 6.50% | 0% - 3.9% | May 1st, 2022 |
+| Arizona | 5.60% | 0% - 5.6% | May 1st, 2022 |
 
 ## Adding a Tax ID
 
