@@ -1,9 +1,11 @@
 ---
-slug: gopath
+slug: golang_gopath-and-worksapces
 author:
   name: Cameron Laird
 description: 'The GOPATH in Golang is used to point to a Go Workspace. The Go Workspace is where you store your Go source code and binary executables. This guide takes a deep dive into the GOPATH.'
+og_description: 'The GOPATH in Golang is used to point to a Go Workspace. The Go Workspace is where you store your Go source code and binary executables. This guide takes a deep dive into the GOPATH.'
 keywords: ['gopath','what is go path ','set go path']
+tags: ['Go', 'Go Programming']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-21
 modified_by:
@@ -17,13 +19,13 @@ contributor:
 
 A team of Google employees [designed the Go programming language](https://qarea.com/blog/the-evolution-of-go-a-history-of-success) in 2007 to help developers make better use of high-performance, networked, multi-core computing chips. [Well over a million coders around the world](https://research.swtch.com/gophercount) now work in Go.
 
-One of Go’s main objectives is *manageable packaging*. Reliable and expressive [cooperation with external libraries](https://www.freecodecamp.org/news/code-dependencies-are-the-devil-35ed28b556d/) is an important criterion for modern programming. It doesn't matter how wonderful the syntax and semantics of your programming language are, if its use of libraries is difficult, fragile, or opaque. It's important that application code can be easily shared and run amongst developers.
+One of Go’s main objectives is *manageable packaging*. Reliable and expressive [cooperation with external libraries](https://www.freecodecamp.org/news/code-dependencies-are-the-devil-35ed28b556d/) is an important criterion for modern programming. It doesn't matter how wonderful the syntax and semantics of your programming language are if its use of libraries is difficult, fragile, or opaque. It's important that application code can be easily shared and run amongst developers.
 
-Golang's `GOPATH` is at the heart of its package management. This guide uses examples to explain how the `GOPATH` is used in Golang and its connection to Go Workspaces.advantage.
+Golang's `GOPATH` is at the heart of its package management. This guide uses examples to explain how the `GOPATH` is used in Golang and its connection to Go Workspaces.
 
 ## What is the GOPATH?
 
-The `GOPATH` is an environment variable that points to the location of a Go Workspace's root folder. This root folder, also known as a *Go Workspace*, contains source files, compiled binaries, external libraries, and various cached objects. This collection of files includes everything necessary for a Golang development project.
+The `GOPATH` is an environment variable that points to the location of a Go's root folder. This root folder, also known as a *Go Workspace*, contains source files, compiled binaries, external libraries, and various cached objects. This collection of files includes everything necessary for a Golang development project.
 
 You can view your system's currently configured `GOPATH` by issuing the following command:
 
@@ -41,25 +43,25 @@ If you have not set your `GOPATH` environment variable, the default location is 
 
 As stated in the previous section, a Go Workspace contains source files and compiled binaries. These files are stored within a specific directory hierarchy that looks as follows:
 
-* `$GOPATH/src/`: This subdirectory contains Go source files. This the directory where you store your `.go` files that contain your Go code in development. A Go workspace's `src` directory can contain multiple Go source *repositories* or projects.
-* `$GOPATH/bin/`: Stores compiled executable binaries that are built by the Go engine.
+- `$GOPATH/src/`: This subdirectory contains Go source files. This is the directory where you store your `.go` files that contain your Go code in development. A Go workspace's `src` directory can contain multiple Go source repositories or projects.
+- `$GOPATH/bin/`: Stores compiled executable binaries that are built by the Go engine.
 
-Typically, Go developers use a single Go Workspace to store all of their Go source code. Another convention used by Go developers is to organize the code in the `$GOPATH/src/` directory by *source repository*. This convention is suggested because it is assumed that you will eventually store your Go code in a remote repository, like GitHub. This makes your Go code available to collaborators and users. An example directory hierarchy that uses this convention resembles the following Go Workspace tree:
+Typically, Go developers use a single Go Workspace to store all of their Go source code. Another convention used by Go developers is to organize the code in the `$GOPATH/src/` directory by *source repository*. This convention is suggested because it is assumed that you eventually store your Go code in a remote repository, like GitHub. This makes your Go code available to collaborators and users. An example directory hierarchy that uses this convention resembles the following Go Workspace tree:
 
 {{< output >}}
 $GOPATH/go/
            bin/
-               hello_world                         # command executable
+               hello_world                          # command executable
            src/
                github.com/username/go_example/
-                   .git/                      # Git repository metadata
+                   .git/                            # Git repository metadata
                hello_world/
-                   hello_world.go               # command source
+                   hello_world.go                   # command source
 {{</ output >}}
 
 ## Go Workspace Configuration: Set the GOPATH
 
-It is not necessary to set your `GOPATH` unless you want to use a location that is different from the default location. The default location of the `GOPATH` is `$HOME/go`. On a Linux system the full path is `/home/username/go`. Setting your `GOPATH` is similar to [setting any Linux system environment variable](/docs/guides/how-to-set-linux-environment-variables/). To set your `GOPATH`, use the following command:
+It is not necessary to set your `GOPATH` unless you want to use a location that is different from the default location. The default location of the `GOPATH` is `$HOME/go`. On a Linux system, the full path is `/home/username/go`. Setting your `GOPATH` is similar to [setting any Linux system environment variable](/docs/guides/how-to-set-linux-environment-variables/). To set your `GOPATH`, use the following command:
 
     export = GOPATH=</home/example_user/a_new_workspace>
 
@@ -79,7 +81,7 @@ To start writing your first Go program, first create the `bin`, and `src` direct
 
     mkdir $GOPATH/{bin,src}
 
-In the following sections, you create a `Hello, World!` Go program. You should follow Go conventions and store the program as if it will be pushed to a remote version control repository. The example below continues to build your Go Workspace's directory hierarchy. Create the directories to store your `Hello, World!` Go program.
+In the following sections, you create a `Hello, World!` Go program. You should follow Go conventions and store the program as if it is pushed to a remote version control repository. The example below continues to build your Go Workspace's directory hierarchy. Create the directories to store your `Hello, World!` Go program.
 
     mkdir -p $GOPATH/src/github.com/username/go_example/hello_world/
 
@@ -95,7 +97,7 @@ func main() {
 }
 {{</ file >}}
 
-To illustrate the behavior of the `$GOPATH`, run the `go install` from your home directory (`cd ~`):
+To illustrate the behavior of the `$GOPATH`, run the `go install` from your home directory (`cd ~`).
 
     go install github.com/username/hello_world
 
@@ -103,7 +105,7 @@ As a result of running the above command, Go creates an executable binary named 
 
     hello_world
 
-Your Go program prints out the following message:
+Your Go program prints the following message:
 
 {{< output >}}
 Hello, World!
@@ -111,7 +113,7 @@ Hello, World!
 
 ## Conclusion
 
-Understanding how the `GOPATH` is used by Go is essential in helping you get started writing Go programs. The `GOPATH` points to the location of a Go Workspace. By default this location is `/home/username/go` on Linux systems. Like any environment variable, you can assign a custom value to your `GOPATH` it if you'd like to point it to a different directory. Abiding by Go program conventions around directory hierarchy and organization also helps you keep your Go programs shareable to outside collaborators or users. As a next step, check out our [Getting Started with Go Packages](/docs/guides/getting-started-with-go-packages/) guide to learn more about organizing, packaging, and distributing your Go programs.
+Understanding how the `GOPATH` is used by Go is essential in helping you get started writing Go programs. The `GOPATH` points to the location of a Go Workspace. By default this location is `/home/username/go` on Linux systems. Like any environment variable, you can assign a custom value to your `GOPATH` if you'd like to point it to a different directory. Abiding by Go program conventions around directory hierarchy and organization also helps you keep your Go programs shareable with outside collaborators or users. As a next step, check out our [Getting Started with Go Packages](/docs/guides/getting-started-with-go-packages/) guide to learn more about organizing, packaging, and distributing your Go programs.
 
 
 
