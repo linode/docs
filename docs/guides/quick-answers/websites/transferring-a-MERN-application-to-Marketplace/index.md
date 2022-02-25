@@ -50,13 +50,13 @@ The default `hello-world` Flask application included as part of the MERN Marketp
 
 ## Preparing for The Transfer
 
-Before, proceeding with any remote transfer, it is strongly recommended the the original host that will be transferring data to the Linode has [Backups](https://www.linode.com/docs/guides/backing-up-your-data/) available to restore from. While standard backup solutions will work for the majority of the MERN Stack, a database dump for mongodb should be performed by using the [mongodump](https://docs.mongodb.com/database-tools/mongodump/) command.
+Before, proceeding with any remote transfer, it is strongly recommended the the original host that will be transferring data to the Linode has [Backups](https://www.linode.com/docs/guides/backing-up-your-data/) available to restore from. While standard backup solutions will work for the majority of the MERN Stack, a database dump for MongoDB should be performed by using the [mongodump](https://docs.mongodb.com/database-tools/mongodump/) command.
 
 {{< note >}}
 If using a Cloud-Native database like **MongoDB Atlas**, the steps for transferring your database may differ, and users should consult the documentation of their database host.
 {{< /note >}}
 
-A mongoDB database dump can therefore be performed from the home directory with the following command:
+A MongoDB database dump can therefore be performed from the home directory with the following command:
 
     cd && mongodump
 
