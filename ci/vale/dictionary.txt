@@ -1174,6 +1174,7 @@ moodle
 mongocryptd
 mongodb
 mongod
+mongodump
 mongoimport
 mongosh
 monit
