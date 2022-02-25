@@ -48,7 +48,7 @@ If using Mac OSx, the Linode CLI was most likely installed using the `brew` pack
 
 ### Other Distros
 
-If the Linode Cli was [installed manually](/docs/guides/using-the-linode-cli-api-v3/#manual-installation-for-linux-all-distros), then all configurations files and modules can also be removed manually. The primary relevant files can ususally be uninstalled using the following commands:
+If the Linode Cli was [installed manually](/docs/guides/using-the-linode-cli-api-v3/#manual-installation-for-linux-all-distros), then all configurations files and modules can also be removed manually. The primary relevant files can usually be uninstalled using the following commands:
 
         unlink /usr/local/bin/linode
         unlink /usr/local/bin/linode-account
