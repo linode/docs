@@ -1,32 +1,25 @@
 ---
-slug: configuring-redis-server-from-the-command-line
+slug: redis-server-cli
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "See how you can make and adjust Redis’s configuration options on the fly from the command-line interface."
-og_description: "See how you can make and adjust Redis’s configuration options on the fly from the command-line interface."
+  name: Nathaniel Stickman
+description: "Redis provides a powerful command-line tool to view and update its configuration options. Learn how to use the Redis CLI set, get, and write commands to update your configurations."
 keywords: ['redis configuration','redis command line','change redis settings']
 tags: ['ubuntu', 'debian', 'centos', 'fedora']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-04
+published: 2022-02-25
 modified_by:
   name: Nathaniel Stickman
 title: "Configuring a Redis Server from the Command Line"
-h1_title: "Configuring a Redis Server from the Command Line"
+h1_title: "How to Configure a Redis Server from the Command Line"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
 - '[Redis: Redis Configuration](https://redis.io/topics/config)'
-- '[Redis: CONFIG GET](https://redis.io/commands/config-get)'
-- '[Redis: CONFIG SET](https://redis.io/commands/config-set)'
-- '[Redis: CONFIG REWRITE](https://redis.io/commands/config-rewrite)'
 ---
 
-Redis is an open-source NoSQL database boasting quick transactions and low latency. With this tutorial, learn how you can make and adjust settings for your Redis server from the command line.
-
-And to learn more about Redis and working with the Redis database, take a look at our other guides in this series.
+Redis is an open-source NoSQL database boasting quick transactions and low latency. This guide shows you how to make and adjust settings for your Redis server from the command line.
 
 ## Before You Begin
 
@@ -44,7 +37,7 @@ And to learn more about Redis and working with the Redis database, take a look a
 
             sudo dnf upgrade
 
-1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
+1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to install a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and follow the appropriate steps.
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -52,9 +45,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ## How Redis Configurations Work
 
-Redis comes with an extensive configuration file by default, listing all of its configuration options. But Redis can also operate without any explicit configuration, using a default configuration suited for development and testing.
-
-However, it is recommended that you adjust the default configuration to suit your needs, especially before you start using Redis in a production setting.
+Redis comes with an extensive configuration file by default, listing all of its configuration options. But Redis can also operate without any explicit configuration, using a default configuration suited for development and testing. However, it is recommended that you adjust the default configuration to suit your needs, especially before you start using Redis in a production setting.
 
 Typically, you can find your Redis instance's configuration file at `/etc/redis/redis.conf` on Debian and Ubuntu and at `/etc/redis.conf` on CentOS and Fedora.
 
@@ -63,7 +54,7 @@ Each setting in Redis is controlled using a configuration directive. A directive
 - A configuration keyword
 - One or more arguments for the configuration
 
-Here is an example configuration directive, one used in the first of our guides in this series on Redis — [Connecting to Redis and Using Redis Databases](https://linode.com/docs/guides/how-to-connect-to-redis/):
+The file below includes an example configuration directive. This example is taken from a configuration directive used in the first of our guides in this series on Redis — [Connecting to Redis and Using Redis Databases](/docs/guides/how-to-connect-to-redis/):
 
 {{< file "/etc/redis/redis.conf" >}}
 # [...]
@@ -83,9 +74,7 @@ You can also find links to copies of these files in Redis's [configuration docum
 
 ## How to Change Configurations via the Command Line
 
-The default route for configuring your Redis instance is through edits to the configuration file covered above.
-
-However, Redis comes with several commands to let you work with configuration directives directly from the command line.
+The default route for configuring your Redis instance is through edits to the configuration file covered above. However, Redis comes with several commands to let you work with configuration directives directly from the command line.
 
 There are a few primary reasons for doing so:
 
@@ -94,11 +83,11 @@ There are a few primary reasons for doing so:
 - Testing particular configurations
 - Writing those configurations automatically to the configuration file
 
-The following sections of this tutorial walk you through the various configuration commands for the Redis command-line interface (CLI). These commands can help you accomplish the goals listed above and many more when it comes to fine-tuning your Redis server.
+The remaining sections of this tutorial walk you through the various configuration commands for the Redis command-line interface (CLI). These commands can help you accomplish the goals listed above and many more when it comes to fine-tuning your Redis server.
 
-You cannot manipulate all of the Redis's configuration directives from the command line. But there are few that can be manipulated that are listed below.
+You **cannot** manipulate all of the Redis's configuration directives from the command line. The sections below include a few that can be manipulated from the command line.
 
-### Check the Existing Configuration
+### Check the Existing Redis Configuration
 
 Use the `CONFIG GET` command to fetch the current value of configuration directives matching a given pattern.
 
@@ -111,7 +100,7 @@ The command below fetches exactly and only the configuration directive you name.
 2) "127.0.0.1 192.0.2.0"
 {{< /output >}}
 
-The command also, however, supports wildcards (`*`). With these, you can fetch all configuration directives matching particular patterns. This feature is especially useful when you want to see all of the settings related to a certain subject, like TLS:
+The command also supports wildcards (`*`). With these, you can fetch all configuration directives matching particular patterns. This feature is especially useful when you want to see all of the settings related to a certain subject, like TLS:
 
     CONFIG GET tls-*
 
@@ -129,7 +118,7 @@ The command also, however, supports wildcards (`*`). With these, you can fetch a
 [...]
 {{< /output >}}
 
-You can even use the wildcard by itself to fetch your Redis server's current (in-memory) configuration directives.
+You can use the wildcard by itself to fetch your Redis server's current (in-memory) configuration directives.
 
     CONFIG GET *
 
@@ -160,7 +149,7 @@ You can even use the wildcard by itself to fetch your Redis server's current (in
 
 Using `CONFIG GET *` is especially useful since it shows all of the configuration directives supported for fetching, setting, and writing from the command line.
 
-### Make Changes to the Configuration
+### Make Changes to the Redis Configuration
 
 Use the `CONFIG SET` command to make or alter a configuration directive.
 
@@ -182,9 +171,9 @@ Or:
 
     sudo systemctl restart redis
 
-### Write Configuration Changes
+### Write Redis Configuration Changes
 
-You may, after testing some settings with `CONFIG SET`, want to make those settings persistent. You can do that using the `CONFIG REWRITE` command.
+After testing some settings with `CONFIG SET`, you may want to make those settings persistent. You can do that using the `CONFIG REWRITE` command.
 
 This command has Redis write your in-memory configuration directives, like those created or changed with `CONFIG SET`, to the configuration file.
 
@@ -202,4 +191,4 @@ The command attempts to preserve, as much as is feasible, the original structure
 
 You now have the tools you need to start working with Redis configurations from the command line. As mentioned in this tutorial, these tools work exceptionally well when you want to test various settings on the fly.
 
-To learn more about Redis and how to use Redis databases, be sure to read our other guides in this series. They cover everything from connecting to a remote Redis server to working with the hash data type.
+To learn more about Redis and how to use Redis databases, be sure to read our other guides in this series. They cover everything from [connecting to a remote Redis server](/docs/guides/how-to-connect-to-redis/) to [using sorted sets in Redis databases](/docs/guides/using-sorted-sets-in-redis-database/).
