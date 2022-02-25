@@ -93,6 +93,7 @@ The following table lists each U.S State that requires us to collect sales taxes
 | Hawaii | 4% | 0% - 0.5% | May 1st, 2022 |
 | Washington | 6.50% | 0% - 3.9% | May 1st, 2022 |
 | Arizona | 5.60% | 0% - 5.6% | May 1st, 2022 |
+| Pennsylvania | 6% | 0% - 2.0% | May 1st, 2022 |
 
 ## Adding a Tax ID
 
