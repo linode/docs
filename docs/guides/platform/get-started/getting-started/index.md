@@ -7,7 +7,7 @@ keywords: ["getting started", "intro", "basics", "first steps", "linode platform
 description: "Learn how to create an account and use the Linode Cloud Platform."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode/']
-modified: 2022-02-18
+modified: 2022-02-25
 modified_by:
   name: Linode
 published: 2018-11-05
@@ -33,7 +33,11 @@ Thank you for choosing Linode as your cloud hosting provider! This guide will he
 
 First, you need to create a Linode account to start using our services. If you already have a Linode account, you can skip to the next section.
 
-1. Click the **Sign Up** button at the top of this page. {{< signup-link >}}
+1. Click the **Sign Up** button at the top of this page.
+
+    {{<note>}}
+{{< signup-link >}}
+{{</note>}}
 
 1. Enter your email address, a unique username, and a strong password. Alternatively, you can sign up using your existing Google or GitHub account.
 

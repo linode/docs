@@ -6,10 +6,10 @@ author:
 keywords: ["getting started", "deploy", "linode", "linux"]
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-02-18
+modified: 2022-02-25
 modified_by:
   name: Linode
-published: 2022-02-16
+published: 2022-02-25
 title: "Creating a Compute Instance on the Linode Platform"
 h1_title: "Creating a Compute Instance"
 enable_h1: true

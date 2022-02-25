@@ -8,7 +8,7 @@ keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/securing-your-server/','/security/linux-security-basics/','/security/basics/','/security/securing-your-server/index.cfm/','/security/basics/securing-your-server/','/security/securing-your-server/','/guides/securing-your-server/']
-modified: 2022-02-18
+modified: 2022-02-25
 modified_by:
   name: Linode
 published: 2012-02-17
@@ -20,7 +20,7 @@ enable_h1: true
 After you have successfully created a Compute Instance, there are a few initial configuration steps you should perform within your new Linux system. This includes updating your system, setting the timezone, configuring a custom hostname, adding a limited user, hardening SSH to prevent unauthorized access, and configuring a firewall. These steps ensure your instance is update to date, secure, and ready for use.
 
 {{<note>}}
-Each workflow discussed in this guide is entirely optional. Once you create a Compute Instance, you can begin using it without following these instructions. That said, this guide walks you through best practices and important steps to secure your server and ensure it's operating as you intend.
+While this guide is optional, it walks you through best practices and covers important steps to secure your server. It is recommended that you follow these instructions when deploying a new Compute Instance. Some guides within our library assume that you have performed these steps, such as setting your hostname and updating your software.
 {{</note>}}
 
 1. [View your Instance in the Cloud Manager](#view-your-instance-in-the-cloud-manager)
@@ -49,11 +49,11 @@ Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Linodes** 
 
 ## Connect to the Instance
 
-Once the Compute Instance has been created and is done initializing, you can connect to it. Connecting to your instance is usually done through the SSH (Secure Shell) protocol, though you can use Weblish (through your browser) or Lish (through SSH) as an alternative means of connecting.
+Once the Compute Instance has been created and has finished booting up, you can connect to it. Connecting to your instance is usually done through the SSH (Secure Shell) protocol, though you can use the [Lish Console](/docs/guides/using-the-lish-console/) to bypass SSH and connect directly to your instance. The Lish Console can be accessed through a web browser (Weblish) or via SSH on the command line.
 
 -   **Weblish (via the Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/guides/using-the-lish-console/#through-the-cloud-manager-weblish).
 
--   **SSH:** Copy the command from the *LISH Console via SSH* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the following, only with the IP address of your newly created instance.
+-   **SSH:** Copy the command from the *SSH Access* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the following, only with the IP address of your newly created instance.
 
         ssh root@192.0.2.1
 
@@ -274,8 +274,6 @@ Not all Linux distributions include `sudo` on the system by default, but all the
 
 ### Ubuntu and Debian
 
-A standard Debian Server installation does not include `sudo` by default, but Linode packages it in our Debian images. If you don't already have `sudo`, you'll need to install it before going further.
-
 1.  Create the user, replacing `example_user` with your desired username. You'll then be asked to assign the user a password:
 
         adduser example_user
@@ -308,7 +306,7 @@ Now you can administer your Compute Instance from your new user account instead 
 
 ## Harden SSH Access
 
-By default, password authentication is used to connect to your Compute Instance via SSH. A cryptographic key-pair is more secure because a private key takes the place of a password, which is generally much more difficult to brute-force. In this section we'll create a key-pair and configure your system to not accept passwords for SSH logins.
+By default, password authentication is used to connect to your Compute Instance via SSH. A cryptographic key-pair is more secure because a private key takes the place of a password, which is generally much more difficult to decrypt by brute-force. In this section we'll create a key-pair and configure your system to not accept passwords for SSH logins.
 
 ### Create an Authentication Key-pair
 
