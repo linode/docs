@@ -25,7 +25,7 @@ external_resources:
 - '[email — An email and MIME handling package — Python 3.10.2 documentation](https://docs.python.org/3/library/email.html)'
 ---
 
-By default, Linode sends system notifications via email. For example, email notifications are delivered when Linode computed instances are rebooted, when they receive hardware maintenance, and when they exceed a CPU usage threshold. You may also want to receive these notifications via text message. This guide shows how to set up a custom script that auto-forwards email notifications to text message.
+By default, Linode sends system notifications via email. For example, email notifications are delivered when Linode Compute Instances are rebooted, when they receive hardware maintenance, and when they exceed a CPU usage threshold. You may also want to receive these notifications via text message. This guide shows how to set up a custom script that auto-forwards email notifications to text message.
 
 The auto-forwarding system leverages the API of Twilio, a cloud communications service, along with the POP protocol for email. The instructions in this guide focus on how to parse Linode email notifications, but they could be adapted to email from other services as well.
 
@@ -43,7 +43,7 @@ The auto-forwarding system leverages the API of Twilio, a cloud communications s
 
     - Using the `messages.create()` endpoint of the Twilio API client.
 
-- In the [Auto-Forward Email to Text Message](#auto-forward-email-to-text-message) section, the script is updated to run periodically, and to check for all Linode system notification emails since the last time the script ran.
+- In the [Auto-Forward Email to Text Message](#auto-forward-email-to-text-message) section, the script is updated to run periodically and check for all Linode system notification emails since the last time the script ran.
 
 - In the [Search Email by Subject with Poplib](#search-email-by-subject-with-poplib) section, the script is updated to only forward emails that match a keyword in the emails' subject. This allows you to limit forwarding to specific kinds of notifications.
 
@@ -55,7 +55,7 @@ The auto-forwarding system leverages the API of Twilio, a cloud communications s
 
 1. This guide shows how to set up the email-to-text forwarding system on a Linode instance. A Linode instance is used because it can remain powered on at all times.
 
-    If you want to implement the notification system, [create a Linode in the Cloud Manager](/docs/products/compute/shared-cpu/get-started/). The lowest-cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
+    If you want to implement the notification system, [create a Linode in the Cloud Manager](/docs/products/compute/shared-cpu/get-started/). The lowest cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
 
     After you create your Linode, follow our [Securing your Server](/docs/guides/securing-your-server/) guide to reduce the threat of a system compromise. Specifically, make sure you [Add a Limited User Account](/docs/guides/securing-your-server/#add-a-limited-user-account) to the Linode. The notification system in this guide should be installed under a limited Linux user.
 
