@@ -632,8 +632,6 @@ Follow these steps to only forward CPU usage alerts to text:
 1. Insert these new lines of code in the same position as the removed lines:
 
     {{< file "autoforward-email-to-text-message.py">}}
-# copy and paste to bottom of file:
-
 status, email_search_data = mail.search(None,
     'FROM', '"Linode Alerts"',
     'SINCE', yesterday.strftime("%d-%b-%Y"),
