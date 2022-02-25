@@ -801,11 +801,11 @@ If you see the above error, then your email server uses a different format for i
         email_received_datestring = received_header_parts[-1].strip(' \t')
 {{< /file >}}
 
-    - The example received header spans two lines. Line 60 splits the two lines into an array of two strings.
+- The example received header spans two lines. Line 60 splits the two lines into an array of two strings.
 
-    - Line 61: The last (or second) element of the array is stripped of whitespace, leaving just the RFC-822 datetime string.
+- Line 61: The last (or second) element of the array is stripped of whitespace, leaving just the RFC-822 datetime string.
 
-The `Could not parse date from received header for email` error from the script should also show the `Received` header that attempted to parse. You can inspect this header and then change the logic of the script. For example, your header may look like this:
+The `Could not parse date from received header for email` error from the script should also show the `Received` header that it attempted to parse. You can inspect this header and then change the logic of the script. For example, your header may look like this:
 
 ```
 Received: by 0:0:0:0:0:0:0:0 with SMTP id s76abnXMy7fxR9; Tue, 7 Dec 2021 12:45:10 -0500 (EST)
