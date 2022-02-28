@@ -16,7 +16,6 @@ h1_title: "Introduction to SQL Commands"
 enable_h1: true
 contributor:
   name: Your Name
-  link: Github/Twitter Link
 ---
 
 In today’s world of increased digitization, big data, and cloud computing, data management is amongst the most important skills a software engineer can have. To this end, one of the most powerful database tools is SQL.
