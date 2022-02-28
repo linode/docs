@@ -1,0 +1,234 @@
+---
+slug: introduction-to-sql-commands
+author:
+  name: Linode Community
+  email: docs@linode.com
+description: 'In this article, you learn some of the fundamentals of SQL commands Subsets of SQL and its usage.'
+og_description: 'In this article, you learn some of the fundamentals of SQL commands, Subsets of SQL and its usage.'
+keywords: ['create table', 'alter table', 'drop table', 'ddl commands']
+tags: ['MySQL']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2022-02-27
+modified_by:
+  name: Linode
+title: "Introduction to SQL Commands"
+h1_title: "Introduction to SQL Commands"
+enable_h1: true
+contributor:
+  name: Your Name
+  link: Github/Twitter Link
+---
+
+In today’s world of increased digitization, big data, and cloud computing, data management is amongst the most important skills a software engineer can have. To this end, one of the most powerful database tools is SQL.
+
+SQL (Structured Query Language) is the standard programming language used to manipulate data structure objects. They operate upon data that is contained in a relational database management system.
+
+In this article, you learn about SQL, what it is, and how to use some fundamental SQL commands.
+
+## Subsets of SQL
+
+Following are the different subsets in SQL commands, each having its own functions and purpose.
+
+- **Data Definition Language** (DDL): This allows you to create, delete, and update database schema definitions (namely, tables and indexes), without actually manipulating the data within the database tables
+- **Data Query Language** (DQL): Used to retrieve data from the database (using the SELECT statement)
+- **Data Manipulation Language** (DML): Allows for data manipulation in the database (using the INSERT, UPDATE, and DELETE statements)
+
+To learn commands from each of the subsets above, consider the example database for a school. This database has several tables, for students, courses, grades, and so forth. Consider that the definition of `Student` table contains columns for the student's `SSNumber`, `Firstname`, and `Lastname`, and the definition of the `CourseTaken` table contains columns for `SSNumber`, `CourseId`, `NumericGrade`, and `YearTaken`.
+
+To simplify further, assume that there are three students in the school, each of which have completed two courses at the school. The sample data is shown in the table below:
+
+| SSNumber | LastName | FirstName | CourseId | NumericGrade | YearTaken |
+|:-:|:-:|:-:|:-:|:-:|:-:|
+| 111111111 | Smith | John | CSC101 | 98 | 2021 |
+| 111111111 | Smith | John | ENG101 | 95 | 2022 |
+| 222222222 | Jones | Mary | CSC101 | 100 | 2022 |
+| 222222222 | Jones | Mary | EEE101 | 75 | 2022 |
+| 333333333 | Hansen | Robert | POL101 | 92 | 2021 |
+| 333333333 | Hansen | Robert | SOC103 | 84 | 2022 |
+
+
+## Create, Alter, and Drop Tables using DDL Commands
+
+From a Command Line Interface (CLI), execute the DDL's `CREATE TABLE` command followed by the name of the table. Within the parenthesis, enter the table data, starting with a column for labeling each row’s data followed by a column indicating the data type that this row holds. `CHAR` indicates a fixed-length string data type and `VARCHAR` indicates a variable-length string data type. The final column, where the `NOT NULL` attribute ensures that a record cannot be added to the table if any of the NOT NULL columns do not have data associated with them.
+
+{{< note >}}
+The `CREATE TABLE` statement is delimited with a trailing semicolon (;), although it is possible that some commercial relational database systems may not require that delimiter.
+{{< /note >}}
+
+To create the `Student` table, execute the following command:
+
+    CREATE TABLE Student (
+      SSNumber CHAR(9) NOT NULL,
+      LastName VARCHAR(30) NOT NULL,
+      FirstName VARCHAR(20) NOT NULL
+    );
+
+To create the `CourseTaken` table, execute the following command:
+
+    CREATE TABLE CourseTaken (
+      SSNumber CHAR(9) NOT NULL,
+      CourseId CHAR(6) NOT NULL,
+      NumericGrade INT NOT NULL
+    );
+
+{{< note >}}
+The `YearTaken` column is intentionally not included in the `CourseTaken` table to demonstrate the usage of `ALTER TABLE` command. This is demonstrated in the following section.
+{{< /note >}}
+
+Since the `YearTaken` column in the `CourseTaken` table was not added, instead of dropping the `CourseTaken` table entirely, you can use the DDL `ALTER TABLE` command. The following command alters the `CourseTaken` table by adding the missing column to the table.
+
+    ALTER TABLE CourseTaken
+      ADD (YearTaken INT NOT NULL);
+
+The command above follows a similar syntax as before, requiring the table’s name as well as three arguments: row name, row data type, and NOT NULL attribute. If you want to delete the `CourseTaken` table entirely, issue the DDL `DROP TABLE` command followed by the table name.
+
+    DROP TABLE CourseTaken;
+
+{{< caution >}}
+Dropping a table deletes all the data in the table.
+{{< /caution >}}
+
+### Insert Data Into a Table
+
+To insert the data into the table, use the SQL `INSERT INTO` statement. To call this command, provide the table name and the list of row names (in parenthesis) that you want to insert the data into. This is followed by the `VALUES` keyword and the actual values (in parenthesis) that you wish to insert. The values are inserted into the rows in order of which they are called.
+
+{{< note >}}
+1. The end of any SQL commands is delimited by a semicolon `;`.
+1. The character data is delimited by an opening and closing apostrophe (`‘`), whereas numeric data is not.
+{{< /note >}}
+
+The following `INSERT` commands insert three rows into the `Student` table. These commands use multiple `INSERT` statements.
+
+    INSERT INTO Student (SSNumber, LastName, FirstName) VALUES
+    ('111111111', 'Smith', 'John');
+
+    INSERT INTO Student (SSNumber, LastName, FirstName) VALUES
+    ('222222222', 'Jones', 'Mary');
+
+    INSERT INTO Student (SSNumber, LastName, FirstName) VALUES
+    ('333333333', 'Hansen', 'Robert');
+
+Similarly, you can also insert multiple rows into the table in a single SQL query as shown below:
+
+    INSERT INTO CourseTaken
+    (SSNumber, CourseId, NumericGrade, YearTaken)
+    VALUES
+    ('111111111', 'CSC101', 98, 2021),
+    ('111111111', 'ENG101', 95, 2022),
+    ('222222222', 'CSC101', 100, 2022);
+
+### Delete Data From a Table
+
+To delete data from a table, use the SQL `DELETE FROM` statement. Use the `WHERE` clause to specify the condition, and if there is more than one condition, use the `AND` clause along with `WHERE`.
+
+For example, the following command deletes a record from the `CourseTaken` table with **SSNumber** `333333333` and **CourseId** `POL101`.
+
+{{< caution >}}
+If you omit the `WHERE` clause, all the records in the table are deleted.
+{{< /caution >}}
+
+    DELETE FROM CourseTaken WHERE SSNumber = '333333333' AND CourseId = 'POL101';
+
+### Modify (Update) Data in a Table
+
+To update the existing record in a table, use the SQL `UPDATE` command. The `SET` clause is used to set(update) new value to a particular column and the `WHERE` clause to update the selected rows.
+
+For example, the following command updates the `NumericGrade` column of the `CourseTaken` table for records with **SSNumber** `222222222` and **CourseId** `EEE101`.
+
+    UPDATE CourseTaken
+    SET NumericGrade = 95
+    WHERE SSNumber = '222222222' AND CourseId = 'EEE101';
+
+
+### Retrieve Data From a Table
+
+The true power of relational database systems is in the ability to retrieve information in a multi-table schema, via the SQL `SELECT` command, and the ability to join tables via common keys. Although this introductory article does not examine the creation of keys and indexes utilizing those keys, it utilizes the `SSNumber` column of each table as a vehicle (key) to relate (or join) the tables to generate information. The following examples provide different use cases of using the SQL `SELECT` command from the CLI.
+
+**Example 1:** To fetch the list of all students in the school.
+
+    SELECT * from Student;
+
+**Output:**
+{{< output >}}
+
++-----------+----------+-----------+
+| SSNumber  | LastName | FirstName |
++-----------+----------+-----------+
+| 111111111 | Smith    | John      |
+| 222222222 | Jones    | Mary      |
+| 333333333 | Hansen   | Robert    |
++-----------+----------+-----------+
+
+{{< /output >}}
+
+**Example 2:** To fetch the list of all students and courses they have taken.
+
+    SELECT Student.SSNumber, Student.LastName,
+           Student.FirstName, CourseTaken.CourseId
+    FROM Student, CourseTaken
+    WHERE Student.SSNumber = CourseTaken.SSNumber;
+
+**Output:**
+
+{{< output >}}
++-----------+----------+-----------+----------+
+| SSNumber  | LastName | FirstName | CourseId |
++-----------+----------+-----------+----------+
+| 111111111 | Smith    | John      | CSC101   |
+| 111111111 | Smith    | John      | ENG101   |
+| 222222222 | Jones    | Mary      | CSC101   |
++-----------+----------+-----------+----------+
+{{< /output >}}
+
+{{< note >}}
+In the above command, the two tables, `Student` and `CourseTaken` are joined to retrieve the required information. The column names in the `SELECT` and `WHERE` clauses are prefixed with their table names for clarity. However, in the case of the `SSNumber` column, we are required to specify the appropriate table name prefixes, since both tables share the same column name. The `FROM` clause indicates the tables we are using in this query.
+{{< /note >}}
+
+**Example 3:** Retrieve the list of students with **CourseId** `CSC101` and the year that they took this course.
+
+    SELECT Student.LastName, Student.FirstName,
+           CourseTaken.CourseId, CourseTaken.YearTaken
+    FROM Student, CourseTaken
+    WHERE Student.SSNumber = CourseTaken.SSNumber
+    AND CourseTaken.CourseId = 'CSC101';
+
+**Output:**
+{{< output >}}
+
++----------+-----------+----------+-----------+
+| LastName | FirstName | CourseId | YearTaken |
++----------+-----------+----------+-----------+
+| Smith    | John      | CSC101   |      2021 |
+| Jones    | Mary      | CSC101   |      2022 |
++----------+-----------+----------+-----------+
+
+{{< /output >}}
+
+**Example 4:** Retrieve the list of student names, courses taken and grades received, for those that had course grades above `90`.
+
+    SELECT Student.LastName, Student.FirstName,
+           CourseTaken.CourseId, CourseTaken.NumericGrade
+    FROM Student, CourseTaken
+    WHERE Student.SSNumber = CourseTaken.SSNumber
+    AND CourseTaken.NumericGrade > 90;
+
+**Output:**
+{{< output >}}
+
++----------+-----------+----------+--------------+
+| LastName | FirstName | CourseId | NumericGrade |
++----------+-----------+----------+--------------+
+| Smith    | John      | ENG101   |           95 |
+| Smith    | John      | CSC101   |           98 |
+| Jones    | Mary      | CSC101   |          100 |
++----------+-----------+----------+--------------+
+
+{{< /output >}}
+
+{{< note >}}
+The `AND` clause in the command above allows you to filter the results by a conditional grade score test.
+{{< /note >}}
+
+## Conclusion
+
+This SQL commands article is an introductory primer on how to create database schemas and manipulate data within those databases. Although the concepts introduced here just scratch the surface in regard to relational database systems’ usage, it serves as a springboard for further learning.
