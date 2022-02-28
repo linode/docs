@@ -3,10 +3,10 @@ slug: tax-information
 author:
   name: Linode
   email: docs@linode.com
-description: "Describes which taxes Linode collects and how to add a tax identification number to your account."
+description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
 keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "tax", "taxes", "tax information", "usd", "vat id", "eu", "european union", "value added tax", "gst", "goods and services tax", "gst id", "tax id"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-08-10
+modified: 2022-02-28
 modified_by:
   name: Linode
 published: 2019-04-09
@@ -23,9 +23,7 @@ Pricing and service fees posted publicly, such as our [Pricing](https://www.lino
 
 ## List of Countries and Tax Rates
 
-### International Countries
-
-The following table lists each country that requires us to collect taxes, excluding Canada and the U.S. Alongside each country is the tax rate, a link to additional tax details, and the date which Linode started to collected taxes in that country.
+The following table lists each country that requires us to collect taxes. Alongside each country is the tax rate, a link to additional tax details, and the date which Linode started to collected taxes in that country.
 
 | Country | Tax Rate | Tax Details | Start Date |
 | -- | -- | -- | -- |
@@ -33,6 +31,7 @@ The following table lists each country that requires us to collect taxes, exclud
 | Austria | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Belgium | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Bulgaria | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
+| [Canada](#canada) (see below) | | | |
 | Croatia | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Cyprus | 19% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Czech Republic | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
@@ -62,6 +61,7 @@ The following table lists each country that requires us to collect taxes, exclud
 | Spain | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Sweden | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | United Kingdom | 20% | [VAT](https://www.gov.uk/vat-rates) | July 1st, 2019 |
+| [United States](#united-states) (see below) | | | |
 
 ### Canada
 
@@ -87,7 +87,7 @@ As of **May 1st, 2022**, Canadian taxes will begin to be collected. The followin
 
 The following table lists each U.S State that requires us to collect sales taxes. Alongside each state is the State tax rate, the additional Local tax range, and the date which Linode begins to collect taxes in that State.
 
-| U.S State | State Tax Rate | Local Tax Range | Start Date |
+| State | State Tax Rate | Local Tax Range | Start Date |
 | -- | -- | -- | -- |
 | Texas | 6.25% | 0.125% - 2% | May 1st, 2022 |
 | Hawaii | 4% | 0% - 0.5% | May 1st, 2022 |
@@ -141,7 +141,6 @@ To view previous invoices, see the [Viewing Invoices and Payments](/docs/guides/
 
 To keep our pricing stable and consistent, rather than fluctuating with exchange rates, we do not bill in local currency. All invoices are in USD.
 
-
 ### What is Linode's Tax ID for my country?
 
 | Country and Tax Program | Linode's ID |
@@ -151,3 +150,4 @@ To keep our pricing stable and consistent, rather than fluctuating with exchange
 | India GST | 9919JEY29001OST |
 | Singapore GST | M90373465T |
 | United Kingdom VAT | GB383720095 |
+| United States EIN | 20-2647179 |
