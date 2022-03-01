@@ -4,7 +4,7 @@ See the module section in config.toml in this repo.
 */}}
 {{ $partialsJS := resources.Match "linode/{header,attribution-inline}.js"}}
 {{ if ne (len $partialsJS) 2}}
-{{ errorf "Got %d partial JS files, expected 2" (len $partialsJS)}}
+  {{ errorf "Got %d partial JS files, expected 2" (len $partialsJS)}}
 {{ end }}
 {{ $js := $partialsJS | resources.Concat "linode/partials.js"  }}
 {{ $styles := (resources.Match "linode/*.css")  | resources.Concat "linode/header-footer.css" }}

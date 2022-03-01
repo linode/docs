@@ -1,3 +1,10 @@
+{{ if or (not hugo.IsProduction) (site.Params.TestEnv )}}
+  {{/* Only include this when doing local development or when in a test environment (e.g. Netlify). */}}
+  {{/* This allows us to force setting the cookie consent by adding the __forceconsent=true query attribute. */}}
+  {{- $js := resources.Get "js/testenvonly/index.js" -}}
+  {{ partial "helpers/script-src.html" (dict "js" $js "async" true ) }}
+{{ end }}
+
 {{/* Linode common header/footer style/script */}}
 {{ partial "sections/head-linode-common.html" . }}
 
