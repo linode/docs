@@ -28,9 +28,9 @@ aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-o
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services) and [create firewall rules](/docs/security/securing-your-server/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{< content "limited-user-note-shortguide" >}}
 
@@ -158,7 +158,7 @@ If you encounter errors related to writing to the `sites/default` directory, fol
 
 In server administration, there are many options for user and group permissions. The directions below create a site owner and a site owner's group. The site owner will be added to the Apache web server's group, named `apache`. Then, read, write, and execute permissions are granted to the `apache` user and group.
 
-1. To create a new user for the site owner position, see the [Add a Limited User Account](/docs/security/securing-your-server/#add-a-limited-user-account) section of the [Securing Your Server](/docs/security/securing-your-server/) guide.
+1. To create a new user for the site owner position, see the [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
 1.  From the `public_html` directory, change ownership of the site to the `apache` user and group.
 

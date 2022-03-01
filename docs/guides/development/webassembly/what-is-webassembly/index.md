@@ -28,13 +28,9 @@ This guide introduces some key concepts behind WebAssembly and gets you started 
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system. On Debian and Ubuntu distributions, you can use the below command:
-
-            sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. To make the guide more straightforward, its instructions just provide commands that work for Debian and Ubuntu Linux distribution. You may need to modify the commands given in many of the steps if you are using a different distribution.
 

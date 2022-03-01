@@ -64,7 +64,7 @@ Review the [Resizing a Linode](/docs/platform/disk-images/resizing-a-linode/) gu
     It is strongly recommended that you create a long, complex, and unique password and store it somewhere secure for future reference. If you forget your root password, check out our [Reset the Root Password on Your Linode](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/) guide to create a new one.
 
     {{< note >}}
-A strong password is the first step in securing your server and avoiding potential vulnerabilities for anyone trying to exploit your server. For more information on securing your server, check out our [How to Secure Your Server](/docs/security/securing-your-server/) guide.
+A strong password is the first step in securing your server and avoiding potential vulnerabilities for anyone trying to exploit your server. For more information on securing your server, check out our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 {{< /note >}}
 
 1.  Click **Create**. You will be taken to the Linode's Dashboard where you can monitor the status of your Linode's creation.

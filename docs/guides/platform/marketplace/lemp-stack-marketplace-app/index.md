@@ -48,30 +48,30 @@ Here are the additional options available for this Marketplace App:
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). Some options may be limited or have recommended values based on this Marketplace App:
 
 - **Supported distributions:** Debian 11, Ubuntu 20.04 LTS
 - **Recommended plan:** The Linode plan you deploy your LEMP stack on should account for the estimated workload. If you are standing up a simple web page, you can use a 1GB Linode (Nanode) or 2GB Linode. If you are standing up a larger or more robust web app, then consider a plan with higher RAM and CPU allocations.
 
 ## Getting Started After Deployment
 
-After your LEMP stack has finished deploying, you can:
+After your LEMP stack has finished deploying, you can view it and upload your own files using one of the methods below:
 
-1. [Connect to your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh) as your root or limited user. You will need your Linode's root and/or user password to proceed. Note that your Linode's web root will be located in the `/var/www/html` directory.
+- Log in to your new Compute Instance through [Lish](/docs/guides/using-the-lish-console/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using either the `root` user or limited user and the associated password you entered when creating the instance. Your application's web files are located in the `/var/www/html` directory.
 
-1. Navigate to the domain entered during the creation of the Linode instance. If you did not enter a domain, you can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
+- Navigate to the domain entered during the creation of the Linode instance. If you did not enter a domain, you can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
 
-1. Consult the following guides to learn more about working with the various components of the LEMP stack:
+- Consult the following guides to learn more about working with the various components of the LEMP stack:
 
     - [Secure HTTP Traffic with Certbot](/docs/guides/secure-http-traffic-certbot/)
     - [How to Configure NGINX](/docs/guides/how-to-configure-nginx/)
     - [How to Optimize MySQL Performance Using MySQLTuner](/docs/guides/how-to-optimize-mysql-performance-using-mysqltuner/)
 
-1.   Upload files to your web root directory with an SFTP application like [FileZilla](/docs/guides/filezilla/). Use the same root credentials that you would use for SSH.
+- Upload files to your web root directory with an SFTP application like [FileZilla](/docs/guides/filezilla/). Use the same root credentials that you would use for SSH.
 
 ## Software Included
 
-The LEMP Stack Marketplace App will install the following software on your Linode:
+The LEMP Stack Marketplace App installs the following software on your Compute Instance:
 
 | **Software** | **Description** |
 |:--------------|:------------|

@@ -38,17 +38,13 @@ Since a basic React app is static (it consists of compiled HTML, CSS, and JavaSc
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your [Linode's hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Install and configure a [web server](/docs/web-servers/) to host a website on your Linode. This guide's examples will use the Apache and NGINX web servers. Complete the steps in the [Installing Apache Web Server on Debian 10](/docs/web-servers/apache/how-to-install-apache-web-server-debian-10/) guide or the [Installing NGINX on Debian 10](/docs/web-servers/nginx/how-to-install-nginx-debian-10/) guide.
 
 1.  This guide assumes you already have a React app you'd like to deploy. If you don't have one, you can bootstrap a project quickly following the steps in the already have a React app you'd like to deploy. If you don't have one, you can quickly bootstrap a project following the steps in the [Create an Example React App](#create-an-example-react-app) section of this guide. This step should be completed on your local system.
-
-1.  Update your Linode's system.
-
-        sudo apt update && sudo apt-get upgrade
 
 1. Install the Rsync program on your Linode server.
 

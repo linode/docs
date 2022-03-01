@@ -14,7 +14,7 @@ These guides explore targeted topics like how to host a website, setting up a we
 
 - [Getting Started with Linode](/docs/getting-started/)
 
-- [Securing Your Server](/docs/security/basics/securing-your-server/)
+- [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
 
 ### Choosing a Linode Plan
 

@@ -48,7 +48,7 @@ MySQL is an open-source database management system that uses a relational databa
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended plan:** Depends on the size of your MySQL database and the amount of traffic you expect.
@@ -59,7 +59,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 After MySQL has finished installing, you will be able to access MySQL from the console via ssh with your Linode's IPv4 address:
 
-1.  [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) and [create a limited user account](/docs/security/securing-your-server/#add-a-limited-user-account).
+1.  [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) and [create a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
 
 1.  Log out and log back in as your limited user account.
 
