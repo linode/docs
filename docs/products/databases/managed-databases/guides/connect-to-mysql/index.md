@@ -4,6 +4,8 @@ author:
   email: docs@linode.com
 title: "Connect to a MySQL Database"
 description: "Learn how to connect to a MySQL Managed Databse through the command line or MySQL Workbench."
+published: 2022-02-23
+modified: 2022-03-01
 ---
 
 To connect to a MySQL Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a MySQL client. This guide details how to access your database using popular tools.
@@ -18,7 +20,8 @@ The *Database Details* section contains information and credentials needed for y
 
 - **Username:** The default user for all Managed Databases is `linroot`, which has superuser admin privileges. This replaces the `root` user, which is not accessible.
 - **Password:** The randomly generated password for your database cluster. See [Reset Root Password](/docs/products/databases/managed-databases/guides/reset-root-password/) if you wish to change it.
-- **Host:** The fully qualified domain name you can use to reach your database cluster.
+- **Host:** The fully qualified domain name you can use to reach your database cluster through the public network.
+- **Private network host:** The fully qualified domain name you can use to reach your database cluster through the data center's private network (not a VLAN). Communicating with a Database Cluster over the private network avoids network transfer fees, so it's recommended to use this host string when possible.
 - **Port:** The default port for your database is `3306`.
 
 ## Connect Using MySQL (CLI)
@@ -36,6 +39,10 @@ To connect direct to the database from a command-line, you can use the `mysql` t
 1.  Use the `mysql` command below to connect to your database, replacing `[host]` and `[username]` with the corresponding values in the [Connection Details](#view-connection-details) section.
 
         mysql --host=[host] --user=[username] --password
+
+    {{<note>}}
+If you are connecting to the *private network host*, ensure your Compute Instance is located within that same data center and you have added a Private IPv4 address to that instance. See [Managing IP Addresses](https://www.linode.com/docs/guides/managing-ip-addresses/#adding-an-ip-address).
+{{</note>}}
 
 1.  Enter your password at the prompt.
 
