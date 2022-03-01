@@ -24,21 +24,16 @@ dedicated_cpu_link: true
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2. [Mono](http://www.mono-project.com/) is an open source implementation of the .NET framework. CubeCoders Limited, the company behind McMyAdmin, packages its own minimal installation of Mono with some necessary source and configuration files. This must be used instead of the generic Mono packages from Debian's repositories.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
+1. [Mono](http://www.mono-project.com/) is an open source implementation of the .NET framework. CubeCoders Limited, the company behind McMyAdmin, packages its own minimal installation of Mono with some necessary source and configuration files. This must be used instead of the generic Mono packages from Debian's repositories.
 
         cd /usr/local
         apt-get install unzip
         wget http://mcmyadmin.com/Downloads/etc.zip
         unzip etc.zip; sudo rm etc.zip
-
-
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet–this guide includes firewall rules specifically for a Minecraft server.
-
-3.  Update your system.
-
-        sudo apt-get update && sudo apt-get upgrade
 
 ## Configure iptables
 

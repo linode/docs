@@ -23,7 +23,7 @@ As a result, these database servers can more effectively support deployments wit
 
 ## Prerequisites
 
-In this guide we will be using two Linodes. Note that this is different than simply deploying a second configuration profile on your existing Linode account, as both servers will need to be running at the same time. We're assuming you have followed the [getting started](/docs/getting-started/) guide for both Linodes.
+In this guide we will be using two Linodes. Note that this is different than simply deploying a second configuration profile on your existing Linode account, as both servers will need to be running at the same time. We're assuming you have followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide for both Linodes.
 
 -   For the Linode running the web server, henceforth the application server, you should already have Apache (or your preferred web server) installed. For a fresh install, follow the [LAMP guide](/docs/lamp-guides/) for your distribution. The LAMP guide includes MySQL, which you do not need to install.
 -   The dedicated MySQL Linode should have MySQL installed. Follow the [MySQL database server](/docs/databases/mysql/) installation guide for your distribution. Keep in mind that you do not have to install Apache on the dedicated MySQL server.

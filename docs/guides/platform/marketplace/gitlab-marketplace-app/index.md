@@ -48,7 +48,7 @@ Here are the additional options available for this Marketplace App:
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). Some options may be limited or have recommended values based on this Marketplace App:
 
 - **Supported distributions:** Debian 11, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** 8GB Dedicated CPU Compute Instance

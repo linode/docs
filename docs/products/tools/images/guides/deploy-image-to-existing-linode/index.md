@@ -71,4 +71,4 @@ If you instead wish to retain the data on your Compute Instance, you can add a d
 
     [![Boot the configuration profile](config-profile-boot.png)](config-profile-boot.png "Boot the configuration profile")
 
-For help with configuring the software on your new disk, review the [Getting Started](/docs/guides/getting-started/) and [How to Secure Your Server](/docs/guides/securing-your-server/) guides.
+For help with configuring the software on your new disk, review the [Getting Started](/docs/guides/getting-started/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides.

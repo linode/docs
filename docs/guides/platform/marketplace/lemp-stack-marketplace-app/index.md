@@ -40,7 +40,7 @@ A LEMP (Linux, [NGINX](https://www.nginx.com/), [MySQL](https://www.mysql.com/),
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Debian 9
 - **Recommended plan:** The Linode plan you deploy your LEMP stack on should account for the estimated workload. If you are standing up a simple web page, you can use a 1GB Linode (Nanode) or 2GB Linode. If you are standing up a larger or more robust web app, then consider a plan with higher RAM and CPU allocations.
@@ -49,9 +49,9 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 After your LEMP stack has finished deploying, you can:
 
-1. [Connect to your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh) as your root or limited user. You will need your Linode's root and/or user password to proceed. Note that your Linode's web root will be located in the `/var/www/html` directory.
+1. [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) as your root or limited user. You will need your Linode's root and/or user password to proceed. Note that your Linode's web root will be located in the `/var/www/html` directory.
 
-1. [Navigate to the public IP address](/docs/guides/getting-started/#find-your-linode-s-ip-address) of your Linode in a browser. You will see the PHP settings that are active for your Linode.
+1. [Navigate to the public IP address](/docs/guides/set-up-and-secure/#update-your-systems-hosts-filefind-your-linode-s-ip-address) of your Linode in a browser. You will see the PHP settings that are active for your Linode.
 
 1. Consult the following guides to learn more about working with the various components of the LEMP stack:
 

@@ -26,8 +26,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
 1.  Ensure that you have completed the following guides:
 
-    -   [Getting Started](/docs/getting-started/)
-    -   [Securing Your Server](/docs/security/securing-your-server/)
+    -   [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
     -   [Install a LAMP stack](/docs/web-servers/lamp/lamp-on-ubuntu-14-04/)
     -   [Install and Configure Drupal 8](/docs/websites/cms/install-and-configure-drupal-8/)
 

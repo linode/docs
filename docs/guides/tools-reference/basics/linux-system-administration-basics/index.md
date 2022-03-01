@@ -38,11 +38,11 @@ Commonly, the Linux administration role typically involves:
 
 ## Basic Configuration
 
-These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [Getting Started guide](/docs/getting-started/) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find our [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts/) useful.
+These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find our [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts/) useful.
 
 ### Set the Hostname
 
-Please follow our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). You can use the following commands to make sure it is set properly:
+Please follow our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). You can use the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -286,7 +286,7 @@ Web developers and editors often use the FTP protocol to transfer and manage fil
 If you're new to Linux systems administration, consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: [installing and using WinSCP](/docs/tools-reference/file-transfer/transfer-files-with-winscp-on-windows/), [using rsync to synchronize files](/docs/tools-reference/tools/introduction-to-rsync/) and [using SSH and the terminal](/docs/networking/ssh/using-the-terminal/).
 
 {{< caution >}}
-If you are giving other users access to upload files to your server, consider the [security implications](/docs/security/securing-your-server/) of all additional access that you grant to third parties.
+If you are giving other users access to upload files to your server, consider the [security implications](/docs/guides/set-up-and-secure/) of all additional access that you grant to third parties.
 {{< /caution >}}
 
 ### Upload Files to a Remote Server
