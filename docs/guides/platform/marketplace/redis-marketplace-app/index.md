@@ -8,7 +8,7 @@ keywords: ['redis','data store','cluster','database']
 tags: ["linode platform","database","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-13
-modified: 2021-09-16
+modified: 2022-03-01
 modified_by:
   name: Linode
 title: "Deploying Redis through the Linode Marketplace"
@@ -45,20 +45,31 @@ Here are the additional options available for this Marketplace App:
 
 ## Configuration Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). Some options may be limited or have recommended values based on this Marketplace App:
 
 - **Supported distributions:** Debian 11, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used, though consider using a [High Memory Compute Instance](https://www.linode.com/products/high-memory/) for larger databases in a production environment.
 
 ## Getting Started after Deployment
 
-There are several types of Redis deployments you can use, for example, a standalone Redis installation or a Redis cluster with a master and two replicas. As a next step, you should determine which type of deployment you will need for your use case by reviewing the resources provided below.
+### Access the Redis CLI
+
+1.  Log in to your new Compute Instance through [Lish](/docs/guides/using-the-lish-console/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using either the `root` user or limited user and the associated password you entered when creating the instance.
+
+1.  To use the redis-cli, run either of the commands below:
+
+    - `redis-cli`: This opens the interactive mode where you can type in whichever commands you wish.
+    - `redis-cli [argument]`, where *[argument]* is the argument or command you wish to run. For instance, running `redis-cli ping` should result in the output of `PONG` if redis is configured properly.
+
+For more information about the redis-cli and the commands you have available, see [redis-cli, the Redis command line interface](https://redis.io/topics/rediscli).
+
+### Determining How to Use Redis
+
+There are several types of Redis configurations you can use. For example, you can configure Redis as a standalone Redis installation or a Redis cluster with a primary (master) and two replicas. As a next step, you should determine which type of deployment you require for your use case by reviewing the resources provided below.
 
 -  Learn about Redis Clusters by going through their related [tutorial](https://redis.io/topics/cluster-tutorial).
 - Redis Sentinel is another deployment configuration focused on high availability. See the [Redis Sentinel](https://redis.io/topics/sentinel) documentation for more details.
 - Read the [Redis Quickstart](https://redis.io/topics/quickstart) to learn about securing Redis and installing client libraries to use Redis with your applications.
 - Refer to the [Redis configuration documentation](https://redis.io/topics/config) to learn about the Redis configuration file.
-
-Once you have determined how you would like to configure your Redis deployment, connect to your [Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) to complete your configuration.
 
 {{< content "marketplace-update-note-shortguide">}}
