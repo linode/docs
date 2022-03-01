@@ -84,14 +84,14 @@ As an example, the `City` class in this example stores information about a city,
 {{< file "city.py" python >}}
 
 class City:
-	def __init__(self, latitude, longitude, country, timezone, population):
-    # Initialize the object
+def __init__(self, latitude, longitude, country, timezone, population):
+# Initialize the object
 
-	def printToFile(self, file):
-    # Build a string of the output and print to the specified file or default
+def printToFile(self, file):
+# Build a string of the output and print to the specified file or default
 
-	def printToStdOut(self, method):
-    # Print using `print` function
+def printToStdOut(self, method):
+# Print using `print` function
 {{< /file >}}
 
 At first, the class might not seem too diffuse. However, any time a new print method is added or updated, the class must change. It also has to change if the default file is changed, if new formatting characteristics are required, or if logging is required. The `City` class should not know anything about printing. In fact, this violates the Single-Responsibility Principle. Changes to either the print specification or the city specification necessitate changes to the `City` class.
@@ -101,34 +101,34 @@ To solve this issue, move the print functions to their own `Printer` class. The 
 {{< file "city.py" python >}}
 
 class City:
-    def __init__(self, latitude, longitude, country, timezone, population):
-        # Initialize the object
+def __init__(self, latitude, longitude, country, timezone, population):
+    # Initialize the object
 
-    def getCityAttributesString(self)
-        # Build a string containing the city attributes
-        return string
+def getCityAttributesString(self)
+    # Build a string containing the city attributes
+    return string
 
-    def print(self, file, method):
-        # Print to the specified file or default
-        cityString = self.getCityAttributesString()
-        ptr = Printer(file, method)
-        rc = ptr.print(cityString)
+def print(self, file, method):
+    # Print to the specified file or default
+    cityString = self.getCityAttributesString()
+    ptr = Printer(file, method)
+    rc = ptr.print(cityString)
 {{< /file >}}
 
 {{< file "printer.py" python >}}
 
 class Printer:
-    def __init__(self, file, method):
-        # Initialize the object
+def __init__(self, file, method):
+    # Initialize the object
 
-    def print(self, data):
-        # Call the right method inside the printer corresponding to the print method, for example, `printToFile`.
+def print(self, data):
+    # Call the right method inside the printer corresponding to the print method, for example, `printToFile`.
 
-    def printToFile(self, data):
-        # Print to the specified file or default
+def printToFile(self, data):
+    # Print to the specified file or default
 
-    def printToStdOut(self, data):
-        # Print using `print` function
+def printToStdOut(self, data):
+    # Print using `print` function
 {{< /file >}}
 
 ### Open-Closed Principle
@@ -152,18 +152,18 @@ As an example, assume the specification of the `Printer` class from the last exa
 {{< file "printer.py" python >}}
 
 class Printer:
-    def __init__(self, file, method):
-        # Initialize the object
+def __init__(self, file, method):
+    # Initialize the object
 
-    def print(self, city, fancy):
-        # Verify whether fancy printing has been chosen and set additional parameters
-        # Call the right method inside the printer corresponding to the print method, for example, `printToFile`.
+def print(self, city, fancy):
+    # Verify whether fancy printing has been chosen and set additional parameters
+    # Call the right method inside the printer corresponding to the print method, for example, `printToFile`.
 
-    def printToFile(self, city):
-        # Print to the specified file or default
+def printToFile(self, city):
+    # Print to the specified file or default
 
-    def printToStdOut(self, city):
-        # Print using `print` function
+def printToStdOut(self, city):
+    # Print using `print` function
 {{< /file >}}
 
 Unfortunately, the interface has to change to accept the new parameter. This might also affect other functions using this code. One way to fix this is to create a wrapper function named `fancyPrint`. This function can implement the new functionality and then either call the original `print` function or invoke a newly-created function for the actual printing.
@@ -171,20 +171,20 @@ Unfortunately, the interface has to change to accept the new parameter. This mig
 {{< file "printer.py" python >}}
 
 class Printer:
-    def __init__(self, file, method):
-        # Initialize the object
+def __init__(self, file, method):
+    # Initialize the object
 
-    def print(self, city):
-        # Call the right method inside printer corresponding to the print method, for example, `printToFile`.
+def print(self, city):
+    # Call the right method inside printer corresponding to the print method, for example, `printToFile`.
 
-    def fancyPrint(self, city, print_params):
-        # Implement the fancy parameters and call `print`
+def fancyPrint(self, city, print_params):
+    # Implement the fancy parameters and call `print`
 
-    def printToFile(self, city):
-        # Print to the specified file or default
+def printToFile(self, city):
+    # Print to the specified file or default
 
-    def printToStdOut(self, city):
-        # Print using `print` function
+def printToStdOut(self, city):
+    # Print using `print` function
 {{< /file >}}
 
 Unlike some of the guidelines, the Open-Closed Principle can usually be satisfied using a variety of approaches. Another alternative is to have a `FancyPrinter` class that extends `Printer` and implements its own `print` function. Unfortunately, overriding too much behavior from a parent class can also cause problems. `fancyPrint` could also be added to `fancyPrinter` rather than the base class, but this means it is not available to other subclasses derived from `Printer`. Factors including the degree of difference between "fancy printing" and regular printing and whether other subclasses might use this function could influence this decision.
@@ -222,16 +222,16 @@ A violation of the `City` class from the first section occurs when the class is 
 {{< file "cityAntipode.py" python >}}
 
 class CityAntipode(City):
-    def __init__(self, latitude, longitude, country, timezone, population):
-        # Initialize the object
-        self.latitude = latitude
-        ...
-        self.population = 0
-        self.country = ""
+def __init__(self, latitude, longitude, country, timezone, population):
+    # Initialize the object
+    self.latitude = latitude
+    ...
+    self.population = 0
+    self.country = ""
 
-    def setCountry(self, country)
-        # do not set the country. Return True to signal everything is okay.
-        return True
+def setCountry(self, country)
+    # do not set the country. Return True to signal everything is okay.
+    return True
 {{< /file >}}
 
 This might appear to be a satisfactory inheritance model. But the problems with it are obvious. A different list might process the list of `City` objects, extracting each country and passing it to a function named `getCountryPhoneCode`. It expects each `City` object to be part of a valid country and is not validating the string. Meanwhile, `getCountryPhoneCode` requires client validation of the country beforehand. This design might lead to a bug or even a crash.
@@ -241,8 +241,8 @@ A better example is to realize an antipode is not a city and this class should n
 {{< file "antipode.py" python >}}
 
 class Antipode:
-    def __init__(self, latitude, longitude, timezone):
-        # Initialize the object
+def __init__(self, latitude, longitude, timezone):
+    # Initialize the object
 {{< /file >}}
 
 ### Interface Segregation Principle
@@ -274,14 +274,14 @@ Consider how this class might be constructed in the following example:
 {{< file "livingOrganism.py" python >}}
 
 class LivingOrganism:
-    def __init__(self, genus, species, color, weight, offspring, fruit):
-        # Initialize the object
+def __init__(self, genus, species, color, weight, offspring, fruit):
+    # Initialize the object
 
-    def run(self, speed)
-        model the creature as running
+def run(self, speed)
+    model the creature as running
 
-    def plant(self, soil)
-        model the organism as being planted
+def plant(self, soil)
+    model the organism as being planted
 {{< /file >}}
 
 This interface has several obvious problems. An animal does not get planted, while a tree cannot run. `Offspring` is not typically a valid concept for wild plants.
@@ -311,12 +311,12 @@ In general, code designed using the other four principles should satisfy this pr
 {{< file "shareFile.py" python >}}
 
 class ShareFile:
-    def __init__(self, filename, destination):
-        # Initialize the object
+def __init__(self, filename, destination):
+    # Initialize the object
 
-    def sendFile(self)
-        ftpConn = FTPConnect(self.destination)
-        rc = ftpConn.SendFile(self.filename)
+def sendFile(self)
+    ftpConn = FTPConnect(self.destination)
+    rc = ftpConn.SendFile(self.filename)
 {{< /file >}}
 
 A better approach is to create a `Connect` object and let it decide how to handle the transfer.
@@ -324,12 +324,12 @@ A better approach is to create a `Connect` object and let it decide how to handl
 {{< file "shareFile.py" python >}}
 
 class ShareFile:
-    def __init__(self, filename, destination):
-        # Initialize the object
+def __init__(self, filename, destination):
+    # Initialize the object
 
-    def sendFile(self)
-        conn = Connect(self.destination)
-        rc = conn.SendFile(self.filename)
+def sendFile(self)
+    conn = Connect(self.destination)
+    rc = conn.SendFile(self.filename)
 {{< /file >}}
 
 ## Conclusion
