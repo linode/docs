@@ -37,7 +37,7 @@ Here are the additional options available for this Marketplace App:
 
 | **Field** | **Description** |
 |:--------------|:------------|
-| **Admin Email for the server** | The start of authority (SOA) email address for this server. This email address will be added to the SOA record for the domain. This is a required field if you want the installer to create DNS records. |
+| **Admin Email for the server** | E-Mail address for Let's Encrypt SSL certificate. This is also used as the SOA email address if you also enter a domain. *Required*. |
 | **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
 | **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
 | **Domain** | The domain name you wish to use with your application. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
