@@ -56,7 +56,7 @@ All of these technologies are well-established, offer robust feature sets, and a
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Debian 10, Debian 11, and Ubuntu 20.04 LTS
 - **Recommended plan:** The Linode plan you deploy your MERN stack on should account for the estimated workload. If you are standing up a simple web page, you can use a 1GB Linode (Nanode) or 2GB Linode. If you deploy a more robust web app, then consider a plan with higher RAM and CPU allocations.
@@ -65,7 +65,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 After your MERN One-click App has finished installing, you can:
 
-- [Connect to your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh). You need your Linode's root password to proceed.
+- [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). You need your Linode's root password to proceed.
 
 - Consult the following guides to learn more about working with the various components of the MERN stack:
 

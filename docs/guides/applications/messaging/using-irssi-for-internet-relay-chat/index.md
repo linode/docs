@@ -27,14 +27,13 @@ external_resources:
 
 **Irssi** is a terminal-based chat client for real-time conversations over Internet Relay Chat (**IRC**). IRC is the common meeting ground for Linode users to exchange knowledge and troubleshoot issues in our public channel, **#linode** on **OFTC**.
 
-Irssi can run on Linux or MAC OS X, either from your local workstation or your Linode. If you are unfamiliar with using a Linux terminal, you may want to review the Linode guides [Using the Terminal](/docs/networking/ssh/using-the-terminal/) and [Introduction to Linux Concepts](/docs/tools-reference/introduction-to-linux-concepts/). Additionally, it is assumed that you have followed our [Getting Started Guide](/docs/getting-started/) if you intend to run Irssi on your Linode.
+Irssi can run on Linux or MAC OS X, either from your local workstation or your Linode. If you are unfamiliar with using a Linux terminal, you may want to review the Linode guides [Using the Terminal](/docs/networking/ssh/using-the-terminal/) and [Introduction to Linux Concepts](/docs/tools-reference/introduction-to-linux-concepts/). Additionally, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) if you intend to run Irssi on your Linode.
 
 ## Prerequisites
 
 Complete these tasks before you start:
 
--   All the procedures listed in the [Getting Started](/docs/getting-started/) guide
--   The **Adding a New User**, **Using SSH Key Pair Authentication**, and **Disabling SSH Password Authentication and Root Login** sections in the [Securing Your Server](/docs/securing-your-server/) guide
+-   Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 -   Make sure **GNU Screen** is installed. It should be by default. See our [Screen Guide](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/) for information.
 
 ## Installing Irssi

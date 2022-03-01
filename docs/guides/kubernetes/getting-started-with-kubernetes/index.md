@@ -47,7 +47,7 @@ While kubeadm automates several cluster-provisioning tasks, there are other even
     - One Linode to use as the master Node with 4GB RAM and 2 CPU cores.
     - Two Linodes to use as the worker Nodes each with 1GB RAM and 1 CPU core.
 
-1.  Follow the [Getting Started](/docs/guides/getting-started) and the [Securing Your Server](/docs/guides/securing-your-server/) guides for instructions on setting up your Linodes. The steps in this guide assume the use of a limited user account with sudo privileges.
+1.  Follow the [Getting Started](/docs/guides/getting-started) and the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides for instructions on setting up your Linodes. The steps in this guide assume the use of a limited user account with sudo privileges.
 
     {{< note >}}
 When following the [Getting Started](/docs/guides/getting-started) guide, make sure that each Linode is using a different hostname. Not following this guideline leaves you unable to join some or all nodes to the cluster in a later step.

@@ -184,7 +184,7 @@ When [writing a script to be used in a StackScript](/docs/platform/stackscripts/
 
 ## Next Steps
 
-- After deploying a new Linode using a StackScript you can [connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) and verify that the StackScript has executed as expected. These steps will vary depending on the StackScript that you used when deploying your Linode.
+- After deploying a new Linode using a StackScript you can [connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) and verify that the StackScript has executed as expected. These steps will vary depending on the StackScript that you used when deploying your Linode.
 
     {{< note >}}
 Depending on the contents of your StackScript, it may take a few minutes for the script to finish executing.
