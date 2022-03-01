@@ -1,13 +1,13 @@
 ---
 title: Managed Databases
 linkTitle: Databases
-description: ""
+description: "Learn about Linode's new Managed Database service, currently in beta."
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
-    date: 2022-02-02
+    date: 2022-02-23
     product_description: "Fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
 aliases: ['/products/database/']
 ---
@@ -94,3 +94,5 @@ In addition to the resources allocated to each available plan (outlined above), 
 - The default user cannot be changed or removed, though the password can be reset at any time.
 
 - You are not able to access the underlying operating system of a database cluster.
+
+- It is not possible to upgrade the database software or underlying operating system after the Managed Database has been deployed.

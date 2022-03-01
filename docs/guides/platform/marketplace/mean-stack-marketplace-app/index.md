@@ -3,12 +3,12 @@ slug: mean-stack-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Learn how to easily deploy MEAN (MongoDB, Express, Angular, Node.js) using Linode''s Marketplace Apps."
+description: "Learn how to easily deploy MEAN (MongoDB, Express, Angular, Node.js) using Linode's Marketplace Apps."
 keywords: ['mongodb','mean','angular','express', 'web app', 'node']
 tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-17
-modified: 2021-09-16
+modified: 2022-03-01
 modified_by:
   name: Linode
 title: "Deploying a MEAN Stack through the Linode Marketplace"
@@ -42,16 +42,49 @@ MEAN is a full-stack JavaScript-based framework consisting of MongoDB database, 
 
 ## Configuration Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
+### MEAN Options
 
-- **Supported distributions:** Debian 9
-- **Recommended plan:** The Linode plan you deploy your MEAN stack on should account for the estimated workload. If you are standing up a simple web page, you can use a 1GB Linode (Nanode) or 2GB Linode. If you will deploy a more robust web app, then consider a plan with higher RAM and CPU allocations.
+Here are the additional options available for this Marketplace App:
+
+| **Field** | **Description** |
+|:--------------|:------------|
+| **Admin Email for the server** | This email is require to generate the SSL certificates. It is also used as the SOA email address if you add a custom domain. *Required* |
+| **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
+| **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
+| **Domain** | The domain name you wish to use with your application. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
+| **The limited sudo user to be created for the Linode** | This is the limited user account to be created for the Linode. This account has sudo user privileges. |
+| **The password for the limited sudo user** | Set a password for the limited sudo user. The password must meet the complexity strength validation requirements for a strong password. This password can be used to perform any action on your server, similar to root, so make it long, complex, and unique. |
+| **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
+| **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
+
+### General Options
+
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). Some options may be limited or have recommended values based on this Marketplace App:
+
+- **Supported distributions:** Ubuntu 20.04 LTS
+- **Recommended plan:** The Linode plan you deploy your MEAN stack on should account for the estimated workload. If you are standing up a simple web page, you can use a 1GB Linode (Nanode) or 2GB Linode. If you are deploying a more robust web app, then consider a plan with higher RAM and CPU allocations.
 
 ## Getting Started After Deployment
 
-After your MEAN One-click App has finished installing, you can:
+Once deployed, a "Hello World" sample application should be running on `http://localhost:3000`. An Nginx reverse proxy then serves the application through your custom domain or rDNS domain over ports 80 and 443. Follow the instructions below to view or access it.
 
-- [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). You will need your Linode's root password to proceed.
+### Accessing the MEAN App through the Command Line
+
+The MEAN sample application is stored in the `/opt/mean/` directory. To access it within the command line, follow the instructions below.
+
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+
+1.  Navigate to the directory in which the application is stored:
+
+        cd /opt/mean/
+
+1.  Open the sample application with your preferred command line text editor, such as [nano](/docs/guides/use-nano-to-edit-files-in-linux/) or [vim](/docs/guides/what-is-vi/).
+
+        nano server.js
+
+### Viewing the MEAN App through a Web Browser
+
+Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing rDNS.
 
 ## Software Included
 
@@ -61,6 +94,7 @@ After your MEAN One-click App has finished installing, you can:
 | **Express** | Web application framework |
 | **Angular** | JavaScript library |
 | **Node JS** | Runtime environment |
-| **UFW (UncomplicatedFirewall)** | Firewall utility. Ports 22/tcp for IPv4 and IPv6 will allow incoming traffic. All other ports will have the following firewall rules: deny (incoming), allow (outgoing). |
+| **NGINX** | Web server |
+| **UFW (UncomplicatedFirewall)** | Firewall utility. Ports 22, 80, and 443 for IPv4 and IPv6 are set to allow traffic. All other ports have the following firewall rules: deny (incoming), allow (outgoing). |
 
 {{< content "marketplace-update-note-shortguide">}}
