@@ -25,19 +25,9 @@ This tutorial gets you started using Redis. It explains how to connect to a Redi
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system.
-
-    - On **Debian** and **Ubuntu**, use the following command:
-
-            sudo apt update && sudo apt upgrade
-
-    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
-
-            sudo dnf upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Follow the instructions in our [How to Install and Configure Redis on Ubuntu 20.04](/docs/guides/install-redis-ubuntu/) guide to install a Redis server and command-line interface (CLI). Be sure to use the drop down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 

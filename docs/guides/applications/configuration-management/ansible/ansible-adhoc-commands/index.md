@@ -43,10 +43,10 @@ To run the commands in this tutorial, you'll need:
 
     - You can use Ansible to create the user, which is outlined in the [Add a Limited User Account](/docs/applications/configuration-management/running-ansible-playbooks/#add-a-limited-user-account) section of the [Automate Server Configuration with Ansible Playbooks](/docs/applications/configuration-management/running-ansible-playbooks/) guide.
 
-    - Alternatively, you can manually add the user, which is outlined in the [Add a Limited User Account](/docs/security/securing-your-server/#add-a-limited-user-account) section of the [Securing your Server](/docs/security/securing-your-server/) guide.
+    - Alternatively, you can manually add the user, which is outlined in the [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
 {{< note >}}
-Follow the [Getting Started with Linode](/docs/getting-started/#create-a-linode) guide for help with creating Linodes.
+Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide for help with creating Linodes.
 {{< /note >}}
 
 The commands in this guide will be run from the control node and will target a host named `Client`. Your control node's Ansible inventory should be configured so that at least one of your managed nodes has this name. The [Create an Ansible Inventory](/docs/applications/configuration-management/getting-started-with-ansible/#create-an-ansible-inventory) section of the [Getting Started With Ansible](/docs/applications/configuration-management/getting-started-with-ansible/) guide outlines how to set up an inventory file.
