@@ -45,7 +45,11 @@ Here are the additional options available for this Marketplace App:
 
 ## Configuration Options
 
+<<<<<<< HEAD
 For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). Some options may be limited or have recommended values based on this Marketplace App:
+=======
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
+>>>>>>> upstream/develop
 
 - **Supported distributions:** Debian 11, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used, though consider using a [High Memory Compute Instance](https://www.linode.com/products/high-memory/) for larger databases in a production environment.
@@ -72,4 +76,9 @@ There are several types of Redis configurations you can use. For example, you ca
 - Read the [Redis Quickstart](https://redis.io/topics/quickstart) to learn about securing Redis and installing client libraries to use Redis with your applications.
 - Refer to the [Redis configuration documentation](https://redis.io/topics/config) to learn about the Redis configuration file.
 
+<<<<<<< HEAD
+=======
+Once you have determined how you would like to configure your Redis deployment, connect to your [Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) to complete your configuration.
+
+>>>>>>> upstream/develop
 {{< content "marketplace-update-note-shortguide">}}

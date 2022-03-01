@@ -38,22 +38,24 @@ Accidentally deleting a production server will almost certainly impact your user
 
 Images can be created and deployed across [all regions](https://www.linode.com/global-infrastructure/).
 
-## Plans and Pricing
+## Pricing
 
-{{< content "images-ga-pricing-update-shortguide" >}}
+Custom Images cost $0.10/GB per month.
 
-User generated Custom Images cost $0.10/GB per month and can have a maximum size of 6GB. Recovery Images, generated automatically after a Compute Instance is deleted, are provided as a free courtesy service.
-
-Keep in mind that Custom Images generated from an uploaded image file are billed based on the _uncompressed_ size of that image.
+{{<note>}}
+Recovery Images, generated automatically after a Compute Instance is deleted, are provided at no charge.
+{{</note>}}
 
 ## Technical Specifications
 
-{{< content "images-limits-shortguide" >}}
+- A Custom Image can be up to **6 GB** in size.
 
-### Images Created from a Linode
+- Each account can store up to **25** Custom Images, offering **150 GB** of combined storage for all images on the account.
 
-{{< content "capture-image-requirements-shortguide" >}}
+    {{<note>}}
+If you need to store larger images (or more images), contact [Linode Support](https://www.linode.com/support/) with additional details of your workloads / applications.
+{{</note>}}
 
-### Images Created from a File
+- The **ext3 and ext4 file systems** are supported, but not raw disks or disks that have been formatted using other file systems.
 
-{{< content "upload-image-requirements-shortguide" >}}
+- The [.img](https://en.wikipedia.org/wiki/IMG_%28file_format%29) file format is supported when uploading an image file. This file should be compressed using [gzip](https://en.wikipedia.org/wiki/Gzip) (`.img.gz`) and be up to 5GB in size. Larger file size are not supported through our upload tooling.

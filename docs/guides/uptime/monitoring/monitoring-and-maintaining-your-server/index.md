@@ -86,7 +86,7 @@ Linux distributions are frequently updated to fix bugs, add new features, and pa
 
 ### Update Installed Packages
 
-You learned about the importance of regularly updating your server's packages in the [Getting Started](/docs/getting-started/) guide. If nothing else, installing updates is a fast and easy way to mitigate vulnerabilities on your server.
+You learned about the importance of regularly updating your server's packages in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. If nothing else, installing updates is a fast and easy way to mitigate vulnerabilities on your server.
 
 To check for software updates and install them in Ubuntu or Debian, enter the following commands, one by one:
 

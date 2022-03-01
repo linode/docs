@@ -39,4 +39,4 @@ For more information on Dedicated CPU use cases, see our [Use Cases for Dedicate
 
 ## Next Steps
 
-See our [Getting Started](/docs/getting-started/) guide for help with connecting to your Linode for the first time and configuring the software on it. Then visit the [How to Secure Your Server](/docs/security/securing-your-server/) guide for a collection of security best practices for your new Linode.
+See our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide for help with connecting to your Linode for the first time and configuring the software on it. Then visit the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide for a collection of security best practices for your new Linode.

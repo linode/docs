@@ -35,7 +35,7 @@ This guide explains how to install the latest, stable, and prepackaged version o
 For more information about using and configuring Git, see our [Getting Started with Git](/docs/development/version-control/how-to-configure-git/) guide.
 
 {{< note >}}
-This guide uses `sudo` wherever possible. Complete the [Add a Limited User Account](/docs/guides/securing-your-server/#add-a-limited-user-account) of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account.
+This guide uses `sudo` wherever possible. Complete the [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account.
 {{< /note >}}
 
 ## How to Install Git on Mac OSX

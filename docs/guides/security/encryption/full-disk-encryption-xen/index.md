@@ -201,4 +201,4 @@ You're almost finished! Just a couple more steps and you'll have a Linode with e
         ^a^d
         reboot 1
 
-If everything is configured properly your Linode will boot and prompt you for the encryption passphrase. Enter the passphrase on your console to mount your encrypted disk and boot your Linode. Now you'll want to follow the steps in our [Getting Started](/docs/getting-started/) guide.
+If everything is configured properly your Linode will boot and prompt you for the encryption passphrase. Enter the passphrase on your console to mount your encrypted disk and boot your Linode. Now you'll want to follow the steps in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.

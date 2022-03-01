@@ -39,7 +39,7 @@ This is the easiest option, but also the most destructive. It will wipe all of t
 5.  Choose your new distribution, disk size, swap disk, and root password.
 6.  Click **Rebuild**.
 
-This will delete your current images and deploy fresh disks. All data that was stored on the Linode will be unrecoverable, but your system will be free of compromise. At this point, you should follow the instructions in the [Securing Your Server](/docs/securing-your-server/) guide to disable root logins via SSH and disable password logins for all accounts.
+This will delete your current images and deploy fresh disks. All data that was stored on the Linode will be unrecoverable, but your system will be free of compromise. At this point, you should follow the instructions in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to disable root logins via SSH and disable password logins for all accounts.
 
 ## Copy Data Offsite
 
@@ -61,7 +61,7 @@ You can use a second Linode for the most seamless transition to a new system.
 
         sudo yum update
 
-4.  Follow the instructions in the [Securing Your Server](/docs/securing-your-server/) guide to harden SSH access and activate the firewall.
+4.  Follow the instructions in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to harden SSH access and activate the firewall.
 
 ### Rebuild Your Configuration
 

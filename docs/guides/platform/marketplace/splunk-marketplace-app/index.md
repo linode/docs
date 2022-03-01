@@ -37,7 +37,7 @@ You can configure your Splunk App by providing values for the following fields:
 | **Splunk Password** | This will be the password you use to login the Splunk Dashboard. *Required*. |
 | **The limited sudo user to be created for the Linode** | The username for a new limited user account with sudo privileges. |
 | **The password for the limited sudo user** | The password for the new limited user account. |
-| **The SSH Public Key that will be used to access the Linode** | A public key belonging to the user that accesses the Linode. If you do not have an authentication key-pair, see the [Securing Your Server](/docs/security/securing-your-server/#create-an-authentication-key-pair) guide for steps on creating one. |
+| **The SSH Public Key that will be used to access the Linode** | A public key belonging to the user that accesses the Linode. If you do not have an authentication key-pair, see the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) guide for steps on creating one. |
 | **Disable root access over SSH** | Disable root user access for the Linode server. |
 | **Your Linode API token** | The [Linode API v4](https://developers.linode.com/api/v4) token is required to create a domain name system (DNS) record. See the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) guide to learn how to generate an API token. |
 | **The domain for the Linode's DNS record (Requires API token)** | The hostname to assign to the Linode server.|
@@ -46,7 +46,7 @@ You can configure your Splunk App by providing values for the following fields:
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Debian 10 and Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
