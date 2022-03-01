@@ -8,7 +8,7 @@ keywords: ['LEMP', 'nginx', 'web server', 'mysql', 'php']
 tags: ["lemp","nginx","cloud-manager","linode platform","php","mysql","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
-modified: 2021-09-16
+modified: 2022-03-01
 modified_by:
   name: Linode
 title: "Deploying a LEMP Stack through the Linode Marketplace"
@@ -20,7 +20,7 @@ external_resources:
 aliases: ['/platform/marketplace/deploy-lemp-stack-with-marketplace-apps/', '/platform/marketplace/deploy-lemp-stack-with-one-click-apps/', '/guides/deploy-lemp-stack-with-one-click-apps/','/guides/deploy-lemp-stack-with-marketplace-apps/' ]
 ---
 
-A LEMP (Linux, [NGINX](https://www.nginx.com/), [MySQL](https://www.mysql.com/), [PHP](https://www.php.net/)) stack is a popular, free, and open-source web software bundle used for hosting websites on the Linux operating system. While similar to a [LAMP Stack](/docs/guides/deploy-lamp-stack-with-marketplace-apps/), a LEMP stack uses the NGINX web server as opposed to [Apache](https://httpd.apache.org/). NGINX may be a preference for many reasons, however many will choose it due to it's speed and ability to perform under high load.
+The LEMP stack (Linux, [NGINX](https://www.nginx.com/), [MySQL](https://www.mysql.com/), [PHP](https://www.php.net/)) is a popular, free, and open-source web software bundle used for hosting websites on the Linux operating system. While similar to the [LAMP Stack](/docs/guides/deploy-lamp-stack-with-marketplace-apps/), a LEMP stack uses the NGINX web server instead of [Apache](https://httpd.apache.org/). NGINX is preferred by many users for a variety of reasons, including its flexibility, speed, and ability to perform under high load.
 
 ## Deploying the LEMP Stack Marketplace App
 
@@ -37,10 +37,10 @@ Here are the additional options available for this Marketplace App:
 | **Field** | **Description** |
 |:--------------|:------------|
 | **Database Root Password** | This is the root password for the database. *Required* |
-| **Admin Email for the server** | This email is used to generate the LetsEncrypt SSL certificate. *Required* |
+| **Admin Email for the server** | This email is used to generate the Let's Encrypt SSL certificate. *Required* |
 | **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
 | **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
-| **Domain** | The domain name where you wish to host your BeEF instance. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
+| **Domain** | The domain name you wish to use with your application. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
 | **The limited sudo user to be created for the Linode** | This is the limited user account to be created for the Linode. This account has sudo user privileges. |
 | **The password for the limited sudo user** | Set a password for the limited sudo user. The password must meet the complexity strength validation requirements for a strong password. This password can be used to perform any action on your server, similar to root, so make it long, complex, and unique. |
 | **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
