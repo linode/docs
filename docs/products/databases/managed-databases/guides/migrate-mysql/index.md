@@ -65,7 +65,7 @@ Alternatively, you can activate a _maintenance mode_ (or whatever it may be call
 
 Next, you'll need to import the `.sql` file to your Managed Database (the target database). This process can be accomplished through the mysql command-line tool. Run the following command on a system that has the MySQL client or server software installed. Replace *[host]* and *[username]* with the appropriate values for your database cluster. See the [Connect to a MySQL Database](/docs/products/databases/managed-databases/guides/connect-to-mysql/) guide for additional information and to learn how to view your Managed Database's connection details.
 
-    mysql -h [host] -u [username] -p --ssl-mode=REQUIRED < db-backup.sql
+    mysql -h [host] -u [username] -p < db-backup.sql
 
 ## Update the Database Connection Details within Your Application
 
