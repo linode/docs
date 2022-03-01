@@ -48,7 +48,7 @@ Here are the additional options available for this Marketplace App:
 
 | **Field** | **Description** |
 |:--------------|:------------|
-| **Admin Email for the server** | The start of authority (SOA) email address for this server. This email address will be added to the SOA record for the domain. This is a required field if you want the installer to create DNS records. |
+| **Admin Email for the server** | This email is require to generate the SSL certificates. It is also used as the SOA email address if you add a custom domain. *Required* |
 | **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
 | **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
 | **Domain** | The domain name you wish to use with your application. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
@@ -66,7 +66,7 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ## Getting Started After Deployment
 
-Once deployed, a "Hello World" sample application should be running on `http://localhost:3000`. Follow the instructions below to view or access it.
+Once deployed, a "Hello World" sample application should be running on `http://localhost:3000`. An Nginx reverse proxy then serves the application through your custom domain or rDNS domain over ports 80 and 443. Follow the instructions below to view or access it.
 
 ### Accessing the MEAN App through the Command Line
 
@@ -84,7 +84,7 @@ The MEAN sample application is stored in the `/opt/mean/` directory. To access i
 
 ### Viewing the MEAN App through a Web Browser
 
-Open your web browser and navigate to `http://[domain]:3000`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing rDNS.
+Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing rDNS.
 
 ## Software Included
 
@@ -94,6 +94,7 @@ Open your web browser and navigate to `http://[domain]:3000`, where *[domain]* c
 | **Express** | Web application framework |
 | **Angular** | JavaScript library |
 | **Node JS** | Runtime environment |
-| **UFW (UncomplicatedFirewall)** | Firewall utility. Ports 22/tcp for IPv4 and IPv6 will allow incoming traffic. All other ports will have the following firewall rules: deny (incoming), allow (outgoing). |
+| **NGINX** | Web server |
+| **UFW (UncomplicatedFirewall)** | Firewall utility. Ports 22, 80, and 443 for IPv4 and IPv6 are set to allow traffic. All other ports have the following firewall rules: deny (incoming), allow (outgoing). |
 
 {{< content "marketplace-update-note-shortguide">}}
