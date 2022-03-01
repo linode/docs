@@ -9,15 +9,21 @@ description: "How to upload an image with Linode Images."
 
 {{< content "images-ga-pricing-update-shortguide" >}}
 
-## Limits and Considerations
+## Requirements and Considerations
 
-### Overall
+When creating an image file to upload as a Custom Image, keep the following limits, requirements, and considerations in mind.
 
-{{< content "images-limits-shortguide" >}}
+- Review the overall [Technical Specifications](/docs/products/tools/images/#technical-specifications) of the Custom Images service.
 
-### Specific to Uploading an Image from a File
+- **Raw disk image:** The image file must be a [raw disk image](https://en.wikipedia.org/wiki/IMG_(file_format)) (`.img`). Other file formats will not work.
 
-{{< content "upload-image-requirements-shortguide" >}}
+- **Compressed using gzip:** The image file must be compressed using [gzip](https://en.wikipedia.org/wiki/Gzip) (`.gz`) before uploading it. Other compression algorithms are not compatible.
+
+- **Maximum file size is 5GB:** The maximum *compressed* size for an image file is 5GB. Larger file sizes are not supported through our current upload tooling. For the maximum *uncompressed* size, see the image size limit within the [Technical Specifications](/docs/products/tools/images/#technical-specifications).
+
+- **Pricing considerations:** Custom Images are billed based on the *uncompressed* size of the uploaded image file.
+
+- **For compatibility, use unpartitioned disks formatted with ext3 or ext4 file systems:** [Network Helper](/docs/guides/network-helper/) and other Linode Helpers are compatible with non-partitioned image files formatted using the ext3 or ext4 file systems. Partitioned disks and other file systems may be used, but some manual configuration may be required.
 
 ## Creating or Obtaining an Image File
 

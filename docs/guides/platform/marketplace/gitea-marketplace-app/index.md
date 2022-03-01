@@ -42,9 +42,9 @@ Here are the additional options available for this Marketplace App:
 | **The limited sudo user to be created for the Linode** | The Linux username created for this Linode with sudo permissions. |
 | **The password for the limited sudo user** | The password for your limited sudo user. |
 | **SSH Public Key** | The public key for SSH access with your limited sudo user. For more information, see [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/). |
-| **Enable passwordless sudo access for the limited user?** | Select **Yes** to [disable SSH password authentication](/docs/guides/securing-your-server/#ssh-daemon-options) for your limited sudo user as an additional security measure. Requires an **SSH Public Key** for SSH access to your Linode. |
-| **Disable root access over SSH?** | Select **Yes** to [disallow root logins over SSH](/docs/guides/securing-your-server/#ssh-daemon-options) as an additional security measure. Requires a configuration of a **limited sudo user** for SSH access to your Linode. |
-| **Configure automatic security updates?** | Select **Yes** to enable [automatic security updates](/docs/guides/securing-your-server/#automatic-security-updates) for your Linode. |
+| **Enable passwordless sudo access for the limited user?** | Select **Yes** to [disable SSH password authentication](/docs/guides/set-up-and-secure/#ssh-daemon-options) for your limited sudo user as an additional security measure. Requires an **SSH Public Key** for SSH access to your Linode. |
+| **Disable root access over SSH?** | Select **Yes** to [disallow root logins over SSH](/docs/guides/set-up-and-secure/#ssh-daemon-options) as an additional security measure. Requires a configuration of a **limited sudo user** for SSH access to your Linode. |
+| **Configure automatic security updates?** | Select **Yes** to enable [automatic security updates](/docs/guides/set-up-and-secure/#automatic-security-updates) for your Linode. |
 | **Use fail2ban to prevent automated instrusion attempts?** | Select **Yes** to enable [SSH login protection with Fail2Ban](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/) as an additional security measure. |
 | **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `Subdomain` and `Domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create a token](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) to use in this field before continuing. |
 | **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup, for example `www`. Requires a `Domain` and `API Token`. If no subdomain is specified, a DNS record is created for the root domain. |
@@ -59,7 +59,7 @@ Here are the additional options available for this Marketplace App:
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Debian 10
 - **Recommended minimum plan:** 4GB Dedicated Compute Instance

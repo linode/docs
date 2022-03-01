@@ -8,7 +8,7 @@ keywords: ['mongodb','mean','angular','express', 'web app', 'node']
 tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-17
-modified: 2022-02-24
+modified: 2022-03-01
 modified_by:
   name: Linode
 title: "Deploying a MEAN Stack through the Linode Marketplace"
@@ -59,10 +59,10 @@ Here are the additional options available for this Marketplace App:
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). Some options may be limited or have recommended values based on this Marketplace App:
 
 - **Supported distributions:** Ubuntu 20.04 LTS
-- **Recommended plan:** The Linode plan you deploy your MEAN stack on should account for the estimated workload. If you are standing up a simple web page, you can use a 1GB Linode (Nanode) or 2GB Linode. If you will deploy a more robust web app, then consider a plan with higher RAM and CPU allocations.
+- **Recommended plan:** The Linode plan you deploy your MEAN stack on should account for the estimated workload. If you are standing up a simple web page, you can use a 1GB Linode (Nanode) or 2GB Linode. If you are deploying a more robust web app, then consider a plan with higher RAM and CPU allocations.
 
 ## Getting Started After Deployment
 
@@ -78,13 +78,13 @@ The MEAN sample application is stored in the `/opt/mean/` directory. To access i
 
         cd /opt/mean/
 
-1.  Open and modify any files through a text editor, such as [nano](/docs/guides/use-nano-to-edit-files-in-linux/) or [vim](/docs/guides/what-is-vi/). See the command below, replacing *[file.ext]* with the desired filename and extension.
+1.  Open the sample application with your preferred command line text editor, such as [nano](/docs/guides/use-nano-to-edit-files-in-linux/) or [vim](/docs/guides/what-is-vi/).
 
-        nano [file.ext]
+        nano server.js
 
 ### Viewing the MEAN App through a Web Browser
 
-Open your web browser and navigate to `http://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing rDNS.
+Open your web browser and navigate to `http://[domain]:3000`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing rDNS.
 
 ## Software Included
 

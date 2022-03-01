@@ -38,7 +38,7 @@ Unlike other Linux distributions, CentOS 8 does not come with a version of Pytho
 
 1.  This guide assumes that you have access to a server or workstation running CentOS 8. To provision a Linode running CentOS 8, follow our [Getting Started](/docs/guides/getting-started/) guide.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system:
 

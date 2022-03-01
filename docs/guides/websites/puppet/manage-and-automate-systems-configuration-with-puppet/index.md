@@ -26,7 +26,7 @@ aliases: ['/websites/puppet/manage-and-automate-systems-configuration-with-puppe
 
 Puppet is an open source "configuration change management" tool that allows users to automate and standardize the configuration of software infrastructure. Using a domain specific language for describing configuration, Puppet allows users to manage configurations in a service-oriented manner.
 
-Because of Puppet's versatility, this guide provides an overview of a number of different Puppet-based deployments. Since there is no single "right way" to integrate Puppet into your network, this document will focus on a collection of independent strategies rather than a single procedure. Before following this document, it is assumed that you have an up-to-date system, have followed our [getting started guide](/docs/getting-started/) and have installed Puppet according to our [Puppet installation guide](/docs/applications/configuration-management/install-and-configure-puppet/).
+Because of Puppet's versatility, this guide provides an overview of a number of different Puppet-based deployments. Since there is no single "right way" to integrate Puppet into your network, this document will focus on a collection of independent strategies rather than a single procedure. Before following this document, it is assumed that you have an up-to-date system, have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and have installed Puppet according to our [Puppet installation guide](/docs/applications/configuration-management/install-and-configure-puppet/).
 
 ## Using Puppet
 

@@ -56,9 +56,9 @@ This guide sets up the following flow of events:
 
 ## Before You Begin
 
-1.  Follow the [Getting Started](/docs/getting-started/) guide and deploy a Linode running Ubuntu 18.04.
+1.  Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide and deploy a Linode running Ubuntu 18.04.
 
-1.  Complete the [Securing Your Server](/docs/security/securing-your-server/) guide to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
+1.  Complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
     {{< content "limited-user-note-shortguide" >}}
 
