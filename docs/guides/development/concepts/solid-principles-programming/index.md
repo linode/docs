@@ -28,11 +28,11 @@ Most new software applications are developed using *Object-oriented Programming*
 
 The SOLID design principles describe best practices for object-oriented programming. However, the main ideas can be extended to any software development project. The American software engineer Robert C. Martin originally defined these concepts as a way of improving software quality. SOLID is a mnemonic acronym for the names of the five design principles it describes. In order, the five principles are:
 
-*   **(S)ingle-Responsibility Principle**
-*   **(O)pen-Closed Principle**
-*   **(L)iskov Substitution Principle**
-*   **(I)nterface Segregation Principle**
-*   **(D)ependency Inversion Principle**
+-   **(S)ingle-Responsibility Principle**
+-   **(O)pen-Closed Principle**
+-   **(L)iskov Substitution Principle**
+-   **(I)nterface Segregation Principle**
+-   **(D)ependency Inversion Principle**
 
 In addition to guiding object-oriented design, the SOLID principles can also be applied to agile and rapid application development. (Martin is also a contributor to the influential Agile Manifesto.) These principles should be implemented at all stages of the software development process, from design through implementation, validation, and quality assurance.
 
@@ -141,11 +141,11 @@ Put another way, the class should be "open" for extension, but "closed" for modi
 
 Although this goal is definitely worth striving for, it might be difficult to always adhere to it. Most bug fixes involve modifying the code. But sometimes a complete overhaul or refactoring of the code is required to scale or update the application. This is often a judgment call, but this principle results in a cleaner and more maintainable code. Some specific advantages of this principle include the following:
 
-*   It keeps interfaces clear and well defined
-*   It ensures each method is focussed while avoiding complex spaghetti code and obvious "hacks"
-*   It reduces the amount of testing required to validate a change
-*   It eliminates the chance of introducing subtle defects elsewhere in the codebase
-*   Documentation and comments are more likely to remain accurate and unchanged
+-   It keeps interfaces clear and well defined
+-   It ensures each method is focussed while avoiding complex spaghetti code and obvious "hacks"
+-   It reduces the amount of testing required to validate a change
+-   It eliminates the chance of introducing subtle defects elsewhere in the codebase
+-   Documentation and comments are more likely to remain accurate and unchanged
 
 As an example, assume the specification of the `Printer` class from the last example has to change. The user can now choose between regular and fancy printing. It might seem easy and trivial to add a new parameter to the `print` method and add some conditional logic to the code. With the change, the class might read like the following:
 
@@ -211,11 +211,11 @@ Most subclasses naturally follow Liskov's model. In fact, many languages strictl
 
 Some advantages of following the Liskov substitution principle include the following:
 
-*   It results in more robust and easy-to-understand interfaces
-*   The inheritance model is clear and obvious and simplifies the code
-*   It forces developers to carefully consider their class and inheritance design
-*   It allows any client function or class to use any methods in the base class without worrying about side effects
-*   It reduces the amount of testing required, and the number of corner cases to be handled
+-   It results in more robust and easy-to-understand interfaces
+-   The inheritance model is clear and obvious and simplifies the code
+-   It forces developers to carefully consider their class and inheritance design
+-   It allows any client function or class to use any methods in the base class without worrying about side effects
+-   It reduces the amount of testing required, and the number of corner cases to be handled
 
 A violation of the `City` class from the first section occurs when the class is extended through the `CityAntipode` subclass. The antipode is the point on the globe directly opposite the actual city. At first glance, it might make sense for this to be a subclass. It has a latitude and longitude, for instance. And it is possible, although not easy, to figure out its time zone. However, it does not necessarily belong to any country. It does not have a population. So the implementation would have to override the base class constructor to set these values to an empty string. It might have to override the `setCountry` function to silently return a positive result without changing the value.
 
@@ -261,11 +261,11 @@ This problem typically happens when classes and inheritance models are created w
 
 Some advantages of applying the Interface Segregation Principle include the following:
 
-*   It results in a cleaner and simpler interface
-*   It avoids unnecessary work
-*   The inheritance model is easy to explain and understand
-*   A finely-grained interface is more likely to also satisfy Liskov's principle
-*   It avoids generating a cluster of corner-case test cases to ensure all the absurdities are properly dealt with
+-   It results in a cleaner and simpler interface
+-   It avoids unnecessary work
+-   The inheritance model is easy to explain and understand
+-   A finely-grained interface is more likely to also satisfy Liskov's principle
+-   It avoids generating a cluster of corner-case test cases to ensure all the absurdities are properly dealt with
 
 Fortunately, this is one of the easier problems to avoid. Interface segregation violations can often be fixed through the creation of additional, more specific classes. Each class should closely and accurately represent the item it models and only contain essential attributes. The collection of subclasses derived from the parent class should be more alike than they are different. For instance, a `Canine` parent class extended through `Dog`, `Wolf`, and `Fox` subclasses makes sense. However, a `LivingOrganism` class representing everything from artichokes to aardvarks is much too large.
 
@@ -300,11 +300,11 @@ For instance, if a client wants to connect to another computer, it should not be
 
 Some of the advantages of designing code using the Dependency Inversion principle are:
 
-*   It promotes modularity between components
-*   It promotes compliance with many of the other principles, including the single-responsibility principle
-*   It eliminates the necessity to change code in many places if the underlying layer changes
-*   It reduces the amount of testing required
-*   It is more change-resistant
+-   It promotes modularity between components
+-   It promotes compliance with many of the other principles, including the single-responsibility principle
+-   It eliminates the necessity to change code in many places if the underlying layer changes
+-   It reduces the amount of testing required
+-   It is more change-resistant
 
 In general, code designed using the other four principles should satisfy this principle with no additional changes. However, it is possible to believe the code is properly decoupled when the implementation is still far too concrete. The following application contains a `ShareFile` class to transfer a file to another device. The class creates an `FTPConnect` object and sets up parameters for an FTP connection. This violates the Dependency Inversion Principle and the idea that a class should be decoupled from the specific lower-level details. The actual file transfer could be handled by SFTP, FTPS, HTTPS, or something else. If it changes, the `ShareFile` class has to change too.
 
