@@ -851,6 +851,7 @@ inrupt
 insmod
 inspec
 intel
+interconnectivity
 interdomain
 interruptible
 intra-application
