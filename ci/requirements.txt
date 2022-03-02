@@ -1,5 +1,5 @@
 requests>=2.14.2
-scrapy==1.5.1
+scrapy==1.8.2
 pytest>=3.3.0
 tabulate>=0.8.2
 python-frontmatter>=0.4.2
