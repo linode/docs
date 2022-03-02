@@ -34,7 +34,7 @@ Following are the different subsets in SQL commands, each having its own functio
 
 To learn commands from each of the subsets above, consider the example database for a school. This database has several tables, for students, courses, grades, and so forth. Consider that the definition of `Student` table contains columns for the student's `SSNumber`, `Firstname`, and `Lastname`, and the definition of the `CourseTaken` table contains columns for `SSNumber`, `CourseId`, `NumericGrade`, and `YearTaken`.
 
-To simplify further, assume that there are three students in the school, each of which have completed two courses at the school. The sample data is shown in the table below:
+To simplify further, assume that there are three students in the school, each of which has completed two courses. The sample data is shown in the table below:
 
 | SSNumber | LastName | FirstName | CourseId | NumericGrade | YearTaken |
 |:-:|:-:|:-:|:-:|:-:|:-:|
@@ -48,10 +48,14 @@ To simplify further, assume that there are three students in the school, each of
 
 ## Create, Alter, and Drop Tables using DDL Commands
 
-From a Command Line Interface (CLI), execute the DDL's `CREATE TABLE` command followed by the name of the table. Within the parenthesis, enter the table data, starting with a column for labeling each row’s data followed by a column indicating the data type that this row holds. `CHAR` indicates a fixed-length string data type and `VARCHAR` indicates a variable-length string data type. The final column, where the `NOT NULL` attribute ensures that a record cannot be added to the table if any of the NOT NULL columns do not have data associated with them.
+From a Command Line Interface (CLI), execute the DDL's `CREATE TABLE` command followed by the name of the table. Within the parenthesis, enter the table data, starting with a column for labeling each row’s data followed by a column indicating the data type that this row holds. `CHAR` indicates a fixed-length string data type and `VARCHAR` indicates a variable-length string data type. The final column, where the `NOT NULL` attribute ensures that a record cannot be added to the table if any of the `NOT NULL` columns do not have data associated with them.
 
 {{< note >}}
 The `CREATE TABLE` statement is delimited with a trailing semicolon (;), although it is possible that some commercial relational database systems may not require that delimiter.
+{{< /note >}}
+
+{{< note >}}
+Unless mentioned otherwise, all the database commands demonstrated in this guide works well on both **MySQL** and **PostgreSQL**.
 {{< /note >}}
 
 To create the `Student` table, execute the following command:
@@ -70,16 +74,13 @@ To create the `CourseTaken` table, execute the following command:
       NumericGrade INT NOT NULL
     );
 
-{{< note >}}
-The `YearTaken` column is intentionally not included in the `CourseTaken` table to demonstrate the usage of `ALTER TABLE` command. This is demonstrated in the following section.
-{{< /note >}}
 
-Since the `YearTaken` column in the `CourseTaken` table was not added, instead of dropping the `CourseTaken` table entirely, you can use the DDL `ALTER TABLE` command. The following command alters the `CourseTaken` table by adding the missing column to the table.
+The `YearTaken` column is intentionally not included in the `CourseTaken` table to demonstrate the usage of the `ALTER TABLE` command. To add the `YearTaken` column in the `CourseTaken` table, you need not drop the `CourseTaken` table entirely. Instead, you can use the DDL `ALTER TABLE` command. The following command alters the `CourseTaken` table by adding the missing column to the table.
 
     ALTER TABLE CourseTaken
       ADD (YearTaken INT NOT NULL);
 
-The command above follows a similar syntax as before, requiring the table’s name as well as three arguments: row name, row data type, and NOT NULL attribute. If you want to delete the `CourseTaken` table entirely, issue the DDL `DROP TABLE` command followed by the table name.
+The command above follows a similar syntax as before. It requires the table name as well as three arguments: row name, row data type, and `NOT NULL` attribute. If you want to delete the `CourseTaken` table entirely, issue the DDL `DROP TABLE` command followed by the table name.
 
     DROP TABLE CourseTaken;
 
@@ -92,7 +93,7 @@ Dropping a table deletes all the data in the table.
 To insert the data into the table, use the SQL `INSERT INTO` statement. To call this command, provide the table name and the list of row names (in parenthesis) that you want to insert the data into. This is followed by the `VALUES` keyword and the actual values (in parenthesis) that you wish to insert. The values are inserted into the rows in order of which they are called.
 
 {{< note >}}
-1. The end of any SQL commands is delimited by a semicolon `;`.
+1. The end of any SQL/PostgreSQL commands is delimited by a semicolon `;`.
 1. The character data is delimited by an opening and closing apostrophe (`‘`), whereas numeric data is not.
 {{< /note >}}
 
@@ -115,6 +116,12 @@ Similarly, you can also insert multiple rows into the table in a single SQL quer
     ('111111111', 'CSC101', 98, 2021),
     ('111111111', 'ENG101', 95, 2022),
     ('222222222', 'CSC101', 100, 2022);
+
+{{< note >}}
+You can use the `INSERT INTO` command similarly in **PostgreSQL** to add rows to the table. Make sure the values matches the order of the columns in the table definition.
+
+    INSERT INTO student VALUES ('111111111', 'Smith', 'John');
+{{< /note >}}
 
 ### Delete Data From a Table
 
