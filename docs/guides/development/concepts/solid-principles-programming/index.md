@@ -1,8 +1,7 @@
 ---
-slug: solid-principles-of-object-oriented-programming
+slug: solid-principles-programming
 author:
-  name: Linode Community
-  email: docs@linode.com
+  name: Jeff Novotny
 description: 'The SOLID principles in programming refer to the five principles of object-oriented class design. Learn more about each principle and its benefits here.'
 og_description: 'The SOLID principles in programming refer to the five principles of object-oriented class design. Learn more about each principle and its benefits here.'
 keywords: ['solid principles programming', 'solid principles', 'solid design principles', 'solid programming']
@@ -28,17 +27,17 @@ Most new software applications are developed using *Object-oriented Programming*
 
 The SOLID design principles describe best practices for object-oriented programming. However, the main ideas can be extended to any software development project. The American software engineer Robert C. Martin originally defined these concepts as a way of improving software quality. SOLID is a mnemonic acronym for the names of the five design principles it describes. In order, the five principles are:
 
--   **(S)ingle-Responsibility Principle**
--   **(O)pen-Closed Principle**
--   **(L)iskov Substitution Principle**
--   **(I)nterface Segregation Principle**
--   **(D)ependency Inversion Principle**
+- **(S)ingle-Responsibility Principle**
+- **(O)pen-Closed Principle**
+- **(L)iskov Substitution Principle**
+- **(I)nterface Segregation Principle**
+- **(D)ependency Inversion Principle**
 
-In addition to guiding object-oriented design, the SOLID principles can also be applied to agile and rapid application development. (Martin is also a contributor to the influential Agile Manifesto.) These principles should be implemented at all stages of the software development process, from design through implementation, validation, and quality assurance.
+In addition to guiding object-oriented design, the SOLID principles can also be applied to Agile and rapid application development. (Martin is also a contributor to the influential [Agile Manifesto](https://agilemanifesto.org/).) These principles should be implemented at all stages of the software development process, from design through implementation, validation, and quality assurance.
 
 ### What Purpose do the SOLID Principles of Programming Serve?
 
-The SOLID design principles formalize and organize many of the best ideas behind structured programming. Each principle encapsulates a standard best practice from the software development industry. For example, the Single-Responsibility Principle is a restatement of the principle of modularity. Adherence to these rules is more likely to result in a flexible, maintainable, and correct program. It also makes the codebase easier to read and use and allows developers to collaborate more effectively.
+The SOLID design principles formalize and organize many of the best ideas behind [structured programming](https://en.wikipedia.org/wiki/Structured_programming). Each principle encapsulates a standard best practice from the software development industry. For example, the Single-Responsibility Principle is a restatement of the principle of modularity. Adherence to these rules is more likely to result in a flexible, maintainable, and correct program. It also makes the codebase easier to read and use and allows developers to collaborate more effectively.
 
 More specifically, these principles address a problem that Martin refers to as "Dependency Management". While object-oriented design tends to make interfaces and interactions more legible, it does not automatically lead to a clean design. Clear and well-defined dependencies between classes and methods are more likely to lead to flexible, sturdy, and maintainable programs. On the other hand, murky and tangled dependencies result in brittle, defect-prone, and hard-to-change applications.
 
@@ -68,18 +67,18 @@ In other words, there should only be one specification in the design document th
 
 This principle illustrates the concept of modularity, a core objective of structured programming. A program is modularized when it is split into smaller functions and classes, each with a limited and well-defined function. The advantages of modularity, and this principle, include the following:
 
--   The code is easier to understand and is better organized.
--   The inter-dependencies within the code are reduced.
--   Classes can be written more quickly and efficiently.
--   The class interface tends to be cleaner and simpler.
--   The class does not have to be updated as frequently, and there is less chance of introducing negative side effects. There are fewer merge or version-control conflicts.
--   It is easier to test any changes, with fewer quality assurance scripts to execute.
+- The code is easier to understand and is better organized.
+- The inter-dependencies within the code are reduced.
+- Classes can be written more quickly and efficiently.
+- The class interface tends to be cleaner and simpler.
+- The class does not have to be updated as frequently, and there is less chance of introducing negative side effects. There are fewer merge or version-control conflicts.
+- It is easier to test any changes, with fewer quality assurance scripts to execute.
 
 When code ignores this principle, it is usually messy and disorganized. It becomes difficult to debug, fix, and update. The classes have to change more frequently and inter-dependencies proliferate.
 
-It is important not to over-extend this practice. Too many small, single-method classes can become equally confusing and might require overly complex interfaces. A deep chain of function calls can increase the stack size and slow down the program. The Single-Responsibility allows closely-related functions to be grouped together in the same class. However, it is equally important not to violate this goal because proper design is more time-consuming.
+It is important not to overextend this practice. Too many small, single-method classes can become equally confusing and might require overly complex interfaces. A deep chain of function calls can increase the stack size and slow down the program. Single-Responsibility allows closely-related functions to be grouped together in the same class. However, it is equally important not to violate this goal because proper design is more time-consuming.
 
-As an example, the `City` class in this example stores information about a city, including its latitude, longitude, and time zone. This information is all related, so it satisfies the single-responsibility principle. However, to make it quick and easy to print the city details, the designer adds a `print` method to the class. Unfortunately, this method has to know everything about the default printer and how to set it up.
+In the example below, the `City` class stores information about a city, including its latitude, longitude, and time zone. This information is all related, so it satisfies the single-responsibility principle. However, to make it quick and easy to print the city details, the designer adds a `print` method to the class. Unfortunately, this method has to know everything about the default printer and how to set it up.
 
 {{< file "city.py" python >}}
 
@@ -137,15 +136,15 @@ The *Open-Closed Principle* states the following:
 
 **Developers should be able to extend class behavior, without modifying it.**
 
-Put another way, the class should be "open" for extension, but "closed" for modification. This is because modifying a class can introduce side effects and break the code which can difficult to detect. If the code is merely extended and not altered, the additions can be verified through the creation of new test cases. Existing functionality should be unchanged and existing test cases must not fail.
+Put another way, the class should be "open" for extension, but "closed" for modification. This is because modifying a class can introduce side effects and break the code which can be difficult to detect. If the code is merely extended and not altered, the additions can be verified through the creation of new test cases. Existing functionality should be unchanged and existing test cases must not fail.
 
 Although this goal is definitely worth striving for, it might be difficult to always adhere to it. Most bug fixes involve modifying the code. But sometimes a complete overhaul or refactoring of the code is required to scale or update the application. This is often a judgment call, but this principle results in a cleaner and more maintainable code. Some specific advantages of this principle include the following:
 
--   It keeps interfaces clear and well defined
--   It ensures each method is focussed while avoiding complex spaghetti code and obvious "hacks"
--   It reduces the amount of testing required to validate a change
--   It eliminates the chance of introducing subtle defects elsewhere in the codebase
--   Documentation and comments are more likely to remain accurate and unchanged
+- It keeps interfaces clear and well defined
+- It ensures each method is focused while avoiding complex spaghetti code and obvious "hacks"
+- It reduces the amount of testing required to validate a change
+- It eliminates the chance of introducing subtle defects elsewhere in the codebase
+- Documentation and comments are more likely to remain accurate and unchanged
 
 As an example, assume the specification of the `Printer` class from the last example has to change. The user can now choose between regular and fancy printing. It might seem easy and trivial to add a new parameter to the `print` method and add some conditional logic to the code. With the change, the class might read like the following:
 
@@ -211,11 +210,11 @@ Most subclasses naturally follow Liskov's model. In fact, many languages strictl
 
 Some advantages of following the Liskov substitution principle include the following:
 
--   It results in more robust and easy-to-understand interfaces
--   The inheritance model is clear and obvious and simplifies the code
--   It forces developers to carefully consider their class and inheritance design
--   It allows any client function or class to use any methods in the base class without worrying about side effects
--   It reduces the amount of testing required, and the number of corner cases to be handled
+- It results in more robust and easy-to-understand interfaces
+- The inheritance model is clear and obvious and simplifies the code
+- It forces developers to carefully consider their class and inheritance design
+- It allows any client function or class to use any methods in the base class without worrying about side effects
+- It reduces the amount of testing required, and the number of corner cases to be handled
 
 A violation of the `City` class from the first section occurs when the class is extended through the `CityAntipode` subclass. The antipode is the point on the globe directly opposite the actual city. At first glance, it might make sense for this to be a subclass. It has a latitude and longitude, for instance. And it is possible, although not easy, to figure out its time zone. However, it does not necessarily belong to any country. It does not have a population. So the implementation would have to override the base class constructor to set these values to an empty string. It might have to override the `setCountry` function to silently return a positive result without changing the value.
 
@@ -261,11 +260,11 @@ This problem typically happens when classes and inheritance models are created w
 
 Some advantages of applying the Interface Segregation Principle include the following:
 
--   It results in a cleaner and simpler interface
--   It avoids unnecessary work
--   The inheritance model is easy to explain and understand
--   A finely-grained interface is more likely to also satisfy Liskov's principle
--   It avoids generating a cluster of corner-case test cases to ensure all the absurdities are properly dealt with
+- It results in a cleaner and simpler interface
+- It avoids unnecessary work
+- The inheritance model is easy to explain and understand
+- A finely-grained interface is more likely to also satisfy Liskov's principle
+- It avoids generating a cluster of corner-case test cases to ensure all the absurdities are properly dealt with
 
 Fortunately, this is one of the easier problems to avoid. Interface segregation violations can often be fixed through the creation of additional, more specific classes. Each class should closely and accurately represent the item it models and only contain essential attributes. The collection of subclasses derived from the parent class should be more alike than they are different. For instance, a `Canine` parent class extended through `Dog`, `Wolf`, and `Fox` subclasses makes sense. However, a `LivingOrganism` class representing everything from artichokes to aardvarks is much too large.
 
@@ -300,11 +299,11 @@ For instance, if a client wants to connect to another computer, it should not be
 
 Some of the advantages of designing code using the Dependency Inversion principle are:
 
--   It promotes modularity between components
--   It promotes compliance with many of the other principles, including the single-responsibility principle
--   It eliminates the necessity to change code in many places if the underlying layer changes
--   It reduces the amount of testing required
--   It is more change-resistant
+- It promotes modularity between components
+- It promotes compliance with many of the other principles, including the single-responsibility principle
+- It eliminates the necessity to change code in many places if the underlying layer changes
+- It reduces the amount of testing required
+- It is more change-resistant
 
 In general, code designed using the other four principles should satisfy this principle with no additional changes. However, it is possible to believe the code is properly decoupled when the implementation is still far too concrete. The following application contains a `ShareFile` class to transfer a file to another device. The class creates an `FTPConnect` object and sets up parameters for an FTP connection. This violates the Dependency Inversion Principle and the idea that a class should be decoupled from the specific lower-level details. The actual file transfer could be handled by SFTP, FTPS, HTTPS, or something else. If it changes, the `ShareFile` class has to change too.
 
@@ -337,5 +336,3 @@ def sendFile(self)
 The five SOLID programming principles help structure and organize object-oriented software projects. These directives assist programmers in maintaining modularity and properly-structured class and interface design. The five guidelines are the Single-Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion principles. Computer programming benefits from the SOLID principles due to increased maintainability, fewer bugs, decreased test resources, and more straightforward documentation.
 
 Many of these principles are interconnected, and breaking one principle often causes others to fail. It is usually not difficult to design software following these rules. Most failures result from rushing through the implementation or taking shortcuts. In particular, spend more effort at the front of the project on the class and interface design. Admittedly, there might be occasions to override these guidelines, especially the Open-Closed Principle. However, developers must ensure they are breaking these guidelines for a valid reason and not because proper development takes a bit more thought and effort.
-
-For your next software project, spend some time thinking about these principles at every stage of the development process. A [Linode computing platform](https://www.linode.com/products/) is the ideal platform to use when developing and hosting your application. Choose from a high-performance [Dedicated CPU](https://www.linode.com/products/dedicated-cpu/) service, or a flexible and affordable [Shared CPU](https://www.linode.com/products/shared/) alternative.
