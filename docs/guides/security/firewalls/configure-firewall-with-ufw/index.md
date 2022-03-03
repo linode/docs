@@ -5,6 +5,7 @@ author:
   email: ekrout@linode.com
 description: 'Learn how to use UFW (Uncomplicated Firewall) to manage your firewall on Ubuntu, Debian, or Arch Linux.'
 keywords: ["ufw", "uncomplicated firewall", "ubuntu ufw", "linux ufw", "ufw tutorial", "ubuntu firewall", "iptables", "networking", "firewalls", "filtering", "firewall setup", "ubuntu", "debian", "arch"]
+bundles: ['debian-security', 'network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-08-12
 modified_by:
