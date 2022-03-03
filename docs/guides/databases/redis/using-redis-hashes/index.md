@@ -1,14 +1,12 @@
 ---
-slug: using-hashes-in-redis-databases
+slug: hashes-in-redis-databases
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Learn how to use Redis hashes, maps of fields, and values frequently used for storing objects."
-og_description: "Learn how to use Redis hashes, maps of fields, and values frequently used for storing objects."
+  name: Nathaniel Stickman
+description: "Redis Hashes are maps of field and value pairs. In this guide, you learn how to use Redis hashes, maps of fields, and values frequently used for storing objects."
 keywords: ['redis hashes example', 'accessing redis hashes', 'get redis hashes all key']
 tags: ['redis server', 'redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-26
+published: 2022-03-04
 modified_by:
   name: Nathaniel Stickman
 title: "Using Hashes in Redis Databases"
@@ -23,9 +21,7 @@ external_resources:
 - '[Redis in Action: Hashes in Redis](https://redis.com/ebook/part-1-getting-started/chapter-1-getting-to-know-redis/1-2-what-redis-data-structures-look-like/1-2-4-hashes-in-redis/)'
 ---
 
-Redis, the open-source NoSQL database, is frequently used for caching, messaging, and other storage needs where speed, and low latency are a boon. Its hash data type is especially useful, as hashes field-value pairs allow you to store objects from the most simple to the highly complex.
-
-In this tutorial, you get a breakdown of what Redis's hashes are. The tutorial walks you through examples of how to create, access, and modify hashes in Redis. By the end of this tutorial, you have the tools to start using hashes in your Redis databases.
+Redis, the open-source NoSQL database, is frequently used for caching, messaging, and other storage needs where speed and low latency are required. Redis supports the hash data type which enables you to store field-value pairs of simple to highly complex data. This tutorial breakdown what Redis hashes are and walks you through examples of how to create, access, and modify hashes. This tutorial provides you with the tools to start using hashes in your Redis databases.
 
 ## Before You Begin
 
@@ -51,13 +47,13 @@ The steps in this guide is written for non-root users. Commands that require ele
 
 ## What Are Hashes in Redis?
 
-Redis Hashes are maps of field and value pairs. They're similar to what you would expect if you have worked with hashes in programming languages like Python and Ruby.
+Redis Hashes are maps of field and value pairs. They're similar to what you would expect if you have worked with hashes in programming languages like [Python](/docs/guides/development/python/) and [Ruby](/docs/guides/development/ror/).
 
 With hashes, you can have a single Redis entry (called a "key") with numerous field-value pairs. This essentially allows you to associate properties with a given item in Redis.
 
 ### Common Uses for Hashes
 
-Hashes are, thus, especially useful for storing objects, and similar values consisting of numerous properties. In fact, because of Redis's effectiveness for caching web applications, hashes is often used for storing data from JSON objects.
+Hashes are especially useful for storing objects and similar values consisting of numerous properties. In fact, because of Redis's effectiveness for caching web applications, hashes are often used for storing data from JSON objects.
 
 So, as an example, you might see hashes used for caching a user's web session. That can include everything from username to the user's current location in a document.
 
@@ -71,13 +67,13 @@ You can use the `HMSET` command to set field-value pairs on a hash. You can use 
 
     HMSET example_user_hash username example_user password example_password other_data example_other_data
 
-In the command above, `example_user_hash` is the name of the hash. Following that is a series of field names and values paired: `username example_user`, `password example_password`, and `other_data example_other_data`.
+In the command above, `example_user_hash` is the name of the hash. Following that is a series of paired field names and values: `username example_user`, `password example_password`, and `other_data example_other_data`.
 
 The `HMSET` command can also be used to modify hash entries. Calling the command for one or more existing fields changes their values to the newly-provided ones.
 
 #### Increment Hash Values
 
-For fields with integer values, you can use the `HINCRBY` command to increase the value by a given amount, which can be a negative number. Following is a full example:
+For fields with integer values, you can use the `HINCRBY` command to increase the value by a given amount, which can be a negative number. Below is a full example:
 
     HMSET example_hash first_field 10
     HINCRBY example_hash first_field 1
@@ -188,6 +184,4 @@ You can also delete an entire hash using the `DEL` command.
 
 ## Conclusion
 
-With this tutorial, you should be prepared to start making use of hashes in your Redis databases. These can significantly improve many storage tasks, especially object storage for web application caching.
-
-Keep an eye out for our other guides in this series which takes you further into Redis usage and concepts.
+With this tutorial, you should be prepared to start making use of hashes in your Redis databases. These can significantly improve many storage tasks, especially object storage for web application caching. Check out other [Redis guides and tutorials](/docs/guides/databases/redis/). They cover topics like, [Using Sorted Sets in Redis Databases](/docs/guides/using-sorted-sets-in-redis-database/) and [Using Lists and Sets in Redis Databases](/docs/guides/using-lists-and-sets-in-redis-database/).
