@@ -5,7 +5,7 @@ author:
 title: "Connect to a MySQL Database"
 description: "Learn how to connect to a MySQL Managed Databse through the command line or MySQL Workbench."
 published: 2022-02-23
-modified: 2022-03-01
+modified: 2022-03-04
 ---
 
 To connect to a MySQL Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a MySQL client. This guide details how to access your database using popular tools.
@@ -16,13 +16,16 @@ To connect to a MySQL Managed Database, you need to know a few important details
 
 1. Select your Managed Database from the list. This opens the detail page for that database cluster.
 
-The *Database Details* section contains information and credentials needed for you to connect to your database.
+The *Connection Details* section contains information and credentials needed for you to connect to your database.
 
 - **Username:** The default user for all Managed Databases is `linroot`, which has superuser admin privileges. This replaces the `root` user, which is not accessible.
 - **Password:** The randomly generated password for your database cluster. See [Reset Root Password](/docs/products/databases/managed-databases/guides/reset-root-password/) if you wish to change it.
 - **Host:** The fully qualified domain name you can use to reach your database cluster through the public network.
 - **Private network host:** The fully qualified domain name you can use to reach your database cluster through the data center's private network (not a VLAN). Communicating with a Database Cluster over the private network avoids network transfer fees, so it's recommended to use this host string when possible.
 - **Port:** The default port for your database is `3306`.
+- **SSL:** This field is set to `ENABLED`, which means that it is required to use an encrypted TLS/SSL connection.
+
+Under the *Connection Details* section, there is a **Download CA Certificate** link, which allows you to download the CA (Certificate Authority) certificate. This certificate file can be used if you wish to verify the CA certificate when connecting to the database.
 
 ## Connect Using MySQL (CLI)
 
@@ -38,7 +41,7 @@ To connect direct to the database from a command-line, you can use the `mysql` t
 
 1.  Use the `mysql` command below to connect to your database, replacing `[host]` and `[username]` with the corresponding values in the [Connection Details](#view-connection-details) section.
 
-        mysql --host=[host] --user=[username] --password
+        mysql --host=[host] --user=[username] --password --ssl-mode=required
 
     {{<note>}}
 If you are connecting to the *private network host*, ensure your Compute Instance is located within that same data center and you have added a Private IPv4 address to that instance. See [Managing IP Addresses](https://www.linode.com/docs/guides/managing-ip-addresses/#adding-an-ip-address).
@@ -78,7 +81,15 @@ The MySQL Workbench provides a graphical interface for connecting to MySQL datab
 
 1. Open the software and select **Database > Manage Connections** from the menu. This displays the **Manage Server Connections** window.
 
-1. Enter the details for your connection, including the **Hostname**, **Username**, and **Port**. The rest of the settings can remain as the defaults, including **Use SSL** (set to *If available*). You can optionally store your password by clicking the **Store in Keychain...** button and entering your password or, more recommended, do not store your password and enter it manually each time you connect.
+1. Enter a **Connection Name** for this new connection.
+
+1. Under the *Parameters* tab, enter the details for your connection, including the **Hostname**, **Username**, and **Port**. You can optionally store your password by clicking the **Store in Keychain...** button and entering your password. If you do not store your password, you must enter it manually each time you connect. For security reasons, it's typically recommended *not* to store your password.
+
+    ![The Parameters tab in MySQL Workbench](mysql-workbench-connection-parameters.png)
+
+1. Under the *SSL* tab, set **Use SSL** to *Require*. You may also use *Required and Verify CA* if you wish to verify the CA (Certificate Authority) certificate each time you connect. If you choose this option, download the CA certificate from the Cloud Manager and set the **SSL CA File** field to point to that downloaded file.
+
+    ![The SSL tab in MySQL Workbench](mysql-workbench-connection-ssl.png)
 
 1. Click **Test Connection** to verify you can successfully connect to the database and then click **Close** to store the connection settings and return to the main screen.
 
