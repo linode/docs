@@ -3,8 +3,7 @@ slug: an-overview-of-the-linode-cloud-manager
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide provides you with an overview of the Linode Cloud Manager and covers how to locate features within Cloud Manager, create Linodes and more.'
-og_description: 'This guide provides you with an overview of the Linode Cloud Manager and covers how to locate features within Cloud Manager, create Linodes and more.'
+description: "This guide provides you with an overview of the Linode Cloud Manager and covers how to locate features within Cloud Manager, create Linodes and more."
 keywords: ["classic manager","cloud manager","linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/manager/a-classic-to-cloud-manager-overview-guide/','/platform/manager/an-overview-of-the-linode-cloud-manager/']
@@ -13,8 +12,7 @@ modified: 2020-01-29
 modified_by:
   name: Linode
 image: AnOverviewoftheLinodeCloudManager.png
-title: 'An Overview of the Linode Cloud Manager'
-h1_title: 'An Overview of the Linode Cloud Manager'
+title: "An Overview of the Linode Cloud Manager"
 contributor:
   name: Linode
 tags: ["linode platform","cloud manager"]
@@ -169,4 +167,4 @@ Cloud Manager provides a Dark Mode that you can toggle on and off depending on y
 
 The Linode Cloud Manager has been built with accessibility in mind. Currently, the Cloud Manager is actively being developed to achieve [WCAG 2.0 Level AA](https://www.w3.org/TR/WCAG20/).
 
-We have received a lot of helpful feedback from our users regarding accessibility. While we have addressed a lot of your feedback, this is still a work in progress and will be iterated upon with time. Please contact feedback@linode.com with any comments or requests regarding accessibility.
+We have received a lot of helpful feedback from our users regarding accessibility. While we have addressed a lot of your feedback, this is still a work in progress and will be iterated upon with time. If you have comments or requests regarding accessibility, let us know by filling out our [feedback form](https://www.linode.com/feedback/).

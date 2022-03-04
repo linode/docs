@@ -3,7 +3,9 @@ author:
   name: Linode
   email: docs@linode.com
 title: "Create and Manage Buckets"
-description: ""
+description: "Learn how to view, create, and delete Object Storage buckets through the Cloud Manager."
+published: 2022-02-07
+modified: 2022-03-04
 aliases: ['/products/storage/object-storage/guides/create-bucket/','/products/storage/object-storage/guides/delete-bucket/']
 ---
 
@@ -50,9 +52,11 @@ You are now ready to [upload files to the bucket](/docs/products/storage/object-
 
 Follow these steps to delete an Object Storage bucket from the Cloud Manager. You can also use the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/), [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/#delete-a-bucket), and [s4cmd](/docs/products/storage/object-storage/guides/s4cmd/#delete-a-bucket).
 
-{{<caution>}}
-All files (objects) stored within the deleted bucket are permanently deleted and cannot be recovered. Be sure you have backed up any important files before continuing.
-{{</caution>}}
+{{<note>}}
+Only empty buckets are able to be deleted through the Cloud Manager. To delete objects, see [Delete a File/Object](/docs/products/storage/object-storage/guides/manage-files/#delete-a-file). Alternatively, you can use the following S3cmd command, which deletes a non-empty bucket. See [S3cmd > Delete a Bucket](/docs/products/storage/object-storage/guides/s3cmd/#delete-a-bucket) for more details.
+
+    s3cmd rb -r -f s3://example-bucket/
+{{</note>}}
 
 1.  Navigate to the **Object Storage** page in the Cloud Manager (see [View Buckets](#view-buckets)).
 

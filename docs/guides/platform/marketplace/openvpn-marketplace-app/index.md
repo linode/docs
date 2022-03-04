@@ -6,6 +6,7 @@ author:
 description: "This guide shows you how to configure and deploy your own private and secure OpenVPN Server on a Linude using the One-Click Marketplace Application."
 keywords: ['vpn','openvpn','tunnel','marketplace app']
 tags: ["ssl","cloud-manager","linode platform","security","marketplace","vpn"]
+bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-05
 modified: 2022-02-24

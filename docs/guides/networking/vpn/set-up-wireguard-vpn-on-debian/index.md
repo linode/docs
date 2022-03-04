@@ -7,6 +7,7 @@ description: 'WireGuard encrypts your traffic quickly and safely. This guide wil
 og_description: 'This guide will show you how to install WireGuard, a fast and secure VPN, on Linode.'
 keywords: ['wireguard','vpn','debian']
 tags: ["networking","security","vpn","debian"]
+bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-08
 modified: 2021-10-15

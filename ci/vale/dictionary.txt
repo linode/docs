@@ -41,6 +41,7 @@ amavis
 amavisd
 amd64
 ananke
+aniszczyk
 anonymization
 anonymize
 anonymizing
@@ -171,6 +172,7 @@ boonex
 bootable
 bootloader
 bottlerocket
+bottomley
 bootup
 bootups
 boto
@@ -359,6 +361,7 @@ daemonizing
 daemonset
 dahdi
 dallas
+dao
 databags
 datacenter
 datadir
@@ -785,6 +788,7 @@ Hugo
 hulu
 hvc0
 hybla
+hykes
 hypercorn
 hyperefficient
 hyperparameter
@@ -851,6 +855,7 @@ inrupt
 insmod
 inspec
 intel
+interconnectivity
 interdomain
 interruptible
 intra-application
@@ -1006,6 +1011,8 @@ lib32
 libaprutil1
 libc
 libc6
+libcontainer
+libcontainers
 libcurl
 libev
 libgcc1
@@ -1032,6 +1039,7 @@ linodego
 linodes
 linter
 lish
+liskov
 listdir
 listserv
 listservs
@@ -1040,6 +1048,7 @@ li181
 li263
 lke
 lksemel
+lmctfy
 lo0
 loadavg
 loadout
@@ -1157,6 +1166,7 @@ middleware
 mimikatz
 minecraft
 mineshafts
+minh
 miniconda
 miniconda3
 minification
@@ -1176,6 +1186,7 @@ mixin
 mixins
 mkdir
 mkpasswd
+mktime
 mkv
 mnesia
 mngtmpaddr
@@ -1219,6 +1230,7 @@ multilink
 multiplatform
 multiport
 multisite
+multitenant
 multiuser
 mutator
 munin
@@ -1335,6 +1347,7 @@ ns1
 ns2
 nsd4
 nslookup
+nsinit
 ntop
 ntopng
 ntp
@@ -1453,11 +1466,13 @@ plone
 pluggable
 png
 pocketmine
+podman
 poettering
 pokemon
 pop3
 pop3d
 pop3s
+poplib
 portainer
 portmapper
 postgres
@@ -1854,6 +1869,7 @@ subfiles
 subfolder
 subkey
 subkeys
+sublanguage
 submenu
 subnet
 subnets
@@ -1894,6 +1910,7 @@ syntastic
 syntaxes
 sys
 sysconfig
+sysdig
 sysctl
 syslog
 sysstat
@@ -1997,6 +2014,7 @@ tw
 twilio
 txt
 txz
+tz
 tzurbaev
 uber
 ubuntu
@@ -2107,6 +2125,7 @@ virtualhost
 virtualizations
 virtualize
 virtualized
+virtualizing
 virtualmin
 Virustotal
 vishing
