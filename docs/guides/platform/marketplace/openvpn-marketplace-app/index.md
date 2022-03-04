@@ -8,7 +8,7 @@ keywords: ['vpn','openvpn','tunnel','marketplace app']
 tags: ["ssl","cloud-manager","linode platform","security","marketplace","vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-05
-modified: 2021-12-13
+modified: 2022-02-24
 modified_by:
   name: Linode
 title: "Deploying OpenVPN through the Linode Marketplace"
@@ -35,6 +35,10 @@ OpenVPN is a widely trusted, free, and open-source VPN (virtual private network)
 
 ### OpenVPN Options
 
+{{<note>}}
+The admin password for the OpenVPN application is no longer manually entered when creating the Compute Instance. Instead, this password is now automatically generated. See [Obtaining the Admin Password](#obtaining-the-admin-password) for instructions on viewing the admin password after deployment.
+{{</note>}}
+
 | **Field** | **Description** |
 |:--------------|:------------|
 | **The limited sudo user to be created for the Linode** | This is the limited user account to be created for the Linode. This account has sudo user privileges. |
@@ -48,7 +52,7 @@ OpenVPN is a widely trusted, free, and open-source VPN (virtual private network)
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Debian 11, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used, though consider the amount of traffic needed for the VPN and select a plan with enough *Outbound Network Transfer* to handle the expected traffic.
@@ -57,9 +61,13 @@ For advice on filling out the remaining options on the **Create a Linode** form,
 
 ### Access Details
 
+{{< caution >}}
+OpenVPN Access Server is only accessible over an *HTTPS* connection (not *HTTP*). When accessing both the admin and client dashboards, your browser may warn you that the connection is not private, is not secure, or that there is a potential security risk. You must accept this risk to continue.
+{{< /caution >}}
+
 **OpenVPN Admin Interface:**
 
-- **URL:** `https://192.0.2.2:943/admin/`, where `192.0.2.2` represents the IPv4 address of your new Compute Instance. For assistance locating the IP address, see [Managing IP Addresses](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
+- **URL:** `https://192.0.2.1:943/admin/`, where `192.0.2.1` represents the IPv4 address of your new Compute Instance. For assistance locating the IP address, see [Managing IP Addresses](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
 - **Username:** `openvpn`
 - **Password:** See [Obtaining the Admin Password](#obtaining-the-admin-password) below.
 
@@ -67,11 +75,7 @@ For more details on logging in to the OpenVPN admin interface for the first time
 
 **OpenVPN Client Interface:**
 
-- **URL:** `https://192.0.2.2:943/`, where your Linode's IPv4 address should take the place of the `192.0.2.2` example address. The client interface includes links to download the OpenVPN client software for your computer.
-
-    {{< note >}}
-The OpenVPN Access Server does not come with an HTTP (insecure) web server daemon. Hence, it is important that you use `https` in the address. If you use `http` in the address, the server does not respond.
-{{< /note >}}
+- **URL:** `https://192.0.2.1:943/`, where your Linode's IPv4 address should take the place of the `192.0.2.1` example address. The client interface includes links to download the OpenVPN client software for your computer.
 
 ### Obtaining the Admin Password
 
@@ -79,8 +83,8 @@ The password for the main administrator account was automatically generated duri
 
 {{<output>}}
 Access Server Web UIs are available here:
-Admin  UI: https://192.0.2.0:943/admin
-Client UI: https://192.0.2.0:943/
+Admin  UI: https://192.0.2.1:943/admin
+Client UI: https://192.0.2.1:943/
 Login as "openvpn" with "password" to continue
 (password can be changed on Admin UI)
 +++++++++++++++++++++++++++++++++++++++++++++++

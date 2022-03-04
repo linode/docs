@@ -34,22 +34,22 @@ Owning a Plex Media Server enables you to maintain a personal media library in a
 
 ### Plex Options
 
-The following configuration options create a secure [Limited User](/docs/security/basics/securing-your-server/#add-a-limited-user-account) to run your Plex Media Server.
+The following configuration options create a secure [Limited User](/docs/guides/set-up-and-secure/#add-a-limited-user-account) to run your Plex Media Server.
 
 {{< note >}}
--   As a security measure, [root login over SSH](/docs/security/basics/securing-your-server/#ssh-daemon-options) is disabled for this App. Use your Limited User credentials to access your Linode via SSH instead.
+-   As a security measure, [root login over SSH](/docs/guides/set-up-and-secure/#ssh-daemon-options) is disabled for this App. Use your Limited User credentials to access your Linode via SSH instead.
 -   The Limited User configurations below are for your Linode's [Linux user](/docs/tools-reference/basics/linux-users-and-groups/), which is distinct from your [Plex account user](https://www.plex.tv/sign-up/).
 {{< /note >}}
 
 | **Configuration** | **Description** |
 |--------------|------------|
-| **Limited User Name** | The [username](/docs/security/basics/securing-your-server/#add-a-limited-user-account) for SSH access to your Linode. *Required*. <br><br> If the username `root` is specified, a limited user is not be created and extra security features are not configured. In this case, you can access your Plex Server and complete this guide as `root` using your [Linode Options](#linode-options) credentials. |
+| **Limited User Name** | The [username](/docs/guides/set-up-and-secure/#add-a-limited-user-account) for SSH access to your Linode. *Required*. <br><br> If the username `root` is specified, a limited user is not be created and extra security features are not configured. In this case, you can access your Plex Server and complete this guide as `root` using your [Linode Options](#linode-options) credentials. |
 | **Limited User Password** | The user password for SSH access to your Linode. *Required*. |
-| **Limited User SSH Key** | The user public SSH key for SSH access to your Linode. *Optional*. <br><br> You can find instructions on generating an SSH key pair in our guide on [Using Public Key Authentication with SSH](/docs/security/authentication/use-public-key-authentication-with-ssh/). For an additional layer of security, you can require SSH key access by [disabling password authentication](/docs/security/basics/securing-your-server/#ssh-daemon-options). |
+| **Limited User SSH Key** | The user public SSH key for SSH access to your Linode. *Optional*. <br><br> You can find instructions on generating an SSH key pair in our guide on [Using Public Key Authentication with SSH](/docs/security/authentication/use-public-key-authentication-with-ssh/). For an additional layer of security, you can require SSH key access by [disabling password authentication](/docs/guides/set-up-and-secure/#ssh-daemon-options). |
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Debian 10
 - **Recommended minimum plan:** 4GB Dedicated CPU or Shared Compute Instance

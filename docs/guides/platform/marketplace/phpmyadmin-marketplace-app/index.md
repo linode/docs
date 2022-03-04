@@ -42,7 +42,7 @@ phpMyAdmin doesn't handle user management itself, but passes all user informatio
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Debian 9
 - **Recommended minimum plan:** All plan types and sizes can be used.
@@ -61,7 +61,7 @@ The following sections require that you own a domain that has been configured fo
 
 ### Enable HTTPS with Certbot
 
-1.  [Connect to Your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh).
+1.  [Connect to Your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Install Certbot for authentication with Python and Apache:
 

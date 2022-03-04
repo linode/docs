@@ -78,11 +78,11 @@ Development of your Hugo site and your Salt formula will take place on your pers
 
 ### Deploy the Linodes
 
-1.  Follow the [Getting Started](/docs/getting-started/) guide and deploy two Linodes running Debian 9.
+1.  Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide and deploy two Linodes running Debian 9.
 
 1.  In the settings tab of your Linodes' dashboards, label one of the Linodes as `salt-master` and the other as `salt-minion`. This is not required, but it will help keep track of which Linode serves which purpose.
 
-1.  Complete the [Securing Your Server](/docs/security/securing-your-server/) guide on each Linode to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
+1.  Complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide on each Linode to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
     {{< content "limited-user-note-shortguide" >}}
 
@@ -101,7 +101,7 @@ Before you can start setting up the Salt formulas for the minion, you first need
 The `-M` option tells the script to install the Salt master software, and the `-N` option tells the script to not install the minion software.
 {{< /note >}}
 
-1.  Log into the Salt **minion** Linode via SSH and [set the hostname](/docs/getting-started/#setting-the-hostname). This guide uses `hugo-webserver` as the example hostname:
+1.  Log into the Salt **minion** Linode via SSH and [set the hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). This guide uses `hugo-webserver` as the example hostname:
 
         sudo hostnamectl set-hostname hugo-webserver
 

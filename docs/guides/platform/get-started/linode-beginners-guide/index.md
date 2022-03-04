@@ -3,7 +3,7 @@ slug: linode-beginners-guide
 author:
   name: Linode
   email: docs@linode.com
-description: 'Beginner''s Guide to Linode''s Platform answers common configuration questions about the Linode cloud.'
+description: "Beginner's Guide to Linode's Platform answers common configuration questions about the Linode cloud."
 keywords: ["linode beginners guide", "linux beginner", "linode beginner", "Linode guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/beginners-guide/','/platform/linode-beginners-guide/','/platform/billing-and-support/linode-beginners-guide/']
@@ -11,17 +11,16 @@ modified: 2017-03-02
 modified_by:
   name: Phil Zona
 published: 2009-11-16
-title: 'Linode Beginner''s Guide'
+title: "Linode Beginner's Guide"
 tags: ["linode platform"]
+image: linode-beginners-guide.png
 ---
 
-If you're relatively new to Linux system administration, or just new to our platform, this guide will help address some of the most common questions we receive. If you've just created your first Linode account, please first refer to our [Getting Started](/docs/getting-started/) Guide and return here once your Linode has been deployed.
-
-![Linode Beginners Guide](linode-beginners-guide.png)
+If you're relatively new to Linux system administration, or just new to our platform, this guide will help address some of the most common questions we receive. If you've just created your first Linode account, please first refer to our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) Guide and return here once your Linode has been deployed.
 
 ## How do I log into my Linode?
 
-By default, all Linodes are deployed with SSH enabled. This allows command line access through the shell. You can learn more about connecting to your Linode for the first time in the [connecting to your Linode with SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) section of our [Getting Started](/docs/getting-started/) guide.
+By default, all Linodes are deployed with SSH enabled. This allows command line access through the shell. You can learn more about connecting to your Linode for the first time in the [connecting to your Linode with SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) section of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
 ## How do I host websites on my Linode?
 
@@ -114,7 +113,7 @@ For those just getting started with Linux systems, we've created a series of gui
 -   [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) - An introduction to the principal concepts and use of the users and groups system.
 -   [Using the Terminal](/docs/networking/ssh/using-the-terminal/) - Introducing the command line interface known as the shell or terminal.
 -   [Linux Package Management](/docs/tools-reference/linux-package-management/) - How to install software on your Linode.
--   [Securing your Server](/docs/security/securing-your-server/) - Keeping your Linode safe from unauthorized access or abuse.
+-   [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) - Keeping your Linode safe from unauthorized access or abuse.
 
 ## Where can I get help with something not covered here?
 

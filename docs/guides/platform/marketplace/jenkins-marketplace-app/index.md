@@ -31,7 +31,7 @@ aliases: ['/platform/marketplace/how-to-deploy-jenkins-with-marketplace-apps/', 
 
 ## Configuration Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Debian 9
 - **Recommended minimum plan:** All plan types and sizes can be used.
@@ -42,7 +42,7 @@ After deploying your Jenkins instance, you are ready to log in and continue the 
 
 ### Access Your Jenkins Instance
 
-1. [Connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh).
+1. [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
 
 1. Retrieve your Jenkins admin password by viewing the contents of the `/var/lib/jenkins/secrets/initialAdminPassword` file.
 

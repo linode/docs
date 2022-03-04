@@ -35,7 +35,7 @@ This guide discusses Linode Longview for NGINX. The guide covers the following t
 
 ## Before you Begin
 
-In order to use the Longview App for Apache, ensure you have completed the following things:
+In order to use the Longview App for NGINX, ensure you have completed the following things:
 
 -  A Linode with [NGINX installed and running](/docs/web-servers/nginx/).
 -  Create a [Longview client](/docs/platform/longview/what-is-longview/#install-linode-longview) instance using the Cloud Manager.
@@ -47,7 +47,7 @@ If NGINX is installed and running when you install the Longview client, the NGIN
 
 If you already have Longview installed, you may find that NGINX is not automatically detected by Longview on initial setup. If this is the case, you can run Longview through its automatic configuration sequence again. Depending on how [NGINX's status module](http://nginx.org/en/docs/http/ngx_http_stub_status_module.html) is configured, it will either find everything it needs to get the NGINX App started, or it will pop up a request to make some additional configurations. Your existing Longview data will stay safe during the automatic configuration process.
 
-1. [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) whose system you are monitoring with Longview.
+1. [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
 
 1.  Ensure that NGINX is running:
 
@@ -95,7 +95,7 @@ The automatic configuration sets the status page location to `http://127.0.0.2/n
 
 To enable the NGINX Longview app manually:
 
-1. [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) whose system you are monitoring with Longview.
+1. [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
 
 1.  Add the following lines to your NGINX configuration to enable the status module and set the location of the status page. The lines should be placed within your main configuration file's `http` block (`/etc/nginx/nginx.conf`) or in a separate [site configuration file](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/#host-multiple-websites).
 

@@ -31,6 +31,8 @@ The following Linode services consume network transfer and, in most cases, inclu
 
 - **Object Storage:** Consumes network transfer and includes 1TB of transfer allowance per month.
 
+- **Managed Databases:** Does not consume network transfer or include a monthly transfer allowance. Linode services located in a different data center connecting to a Managed Database may consume network transfer.
+
 The allowance included with each service on an account is added to an account-wide **monthly network transfer pool**. Whenever a service consumes network transfer, it is counted towards this account-wide pool and not the individual transfer allowance.
 
 {{< note >}}
