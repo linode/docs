@@ -6,6 +6,7 @@ author:
 description: 'Learn to enhance the security of the server through the use of eBPF tracing tools'
 og_description: 'Learn to enhance the security of the server through the use of eBPF tracing tools'
 keywords: ["eBPF", "bcc", "tracing", "tools", "monitoring", "networking", "observability"]
+bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
 modified: 2021-08-27
