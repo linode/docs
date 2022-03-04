@@ -1186,6 +1186,7 @@ mixin
 mixins
 mkdir
 mkpasswd
+mktime
 mkv
 mnesia
 mngtmpaddr
@@ -1471,6 +1472,7 @@ pokemon
 pop3
 pop3d
 pop3s
+poplib
 portainer
 portmapper
 postgres
@@ -2012,6 +2014,7 @@ tw
 twilio
 txt
 txz
+tz
 tzurbaev
 uber
 ubuntu
