@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.117.1
+  version: 4.118.0
 
   title: Linode API
   description: |
@@ -3167,7 +3167,7 @@ paths:
       description: |
         Display all accessible Managed Databases on your Account, regardless of engine type.
 
-        Only unrestricted Users can access this command.
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
         For more detailed information on a particular Database instance, make a request to its `instance_uri`.
 
@@ -3178,6 +3178,7 @@ paths:
         endpoint is out of beta.
       security:
       - personalAccessToken: []
+      - oauth: []
       responses:
         '200':
           description: Returns a paginated list of all accessible Managed Databases on your Account.
@@ -3216,7 +3217,7 @@ paths:
       description: |
         Display all accessible Managed MySQL Databases on your Account.
 
-        Only unrestricted Users can access this command.
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
         **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
         hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
@@ -3225,6 +3226,7 @@ paths:
         beta.
       security:
       - personalAccessToken: []
+      - oauth: []
       responses:
         '200':
           description: Returns a paginated list of all accessible Managed MySQL Databases on your Account.
@@ -3261,7 +3263,7 @@ paths:
       description: |
         Provision a Managed MySQL Database.
 
-        Only unrestricted Users can access this command.
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
         New instances can take approximately 15 to 30 minutes to provision.
 
@@ -3280,6 +3282,7 @@ paths:
         beta.
       security:
       - personalAccessToken: []
+      - oauth: []
       requestBody:
         description: Information about the Managed MySQL Database you are creating.
         x-linode-cli-allowed-defaults:
@@ -3353,7 +3356,7 @@ paths:
       description: |
         Display information for a single, accessible Managed MySQL Database on your Account.
 
-        Only unrestricted Users can access this command.
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
         **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
         hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
@@ -3362,6 +3365,7 @@ paths:
         beta.
       security:
       - personalAccessToken: []
+      - oauth: []
       responses:
         '200':
           description: Returns information for a single Managed MySQL Database.
@@ -3393,7 +3397,7 @@ paths:
 
         The Database must have an `active` status to perform this command.
 
-        Only unrestricted Users can access this command.
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
         **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
         hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
@@ -3402,6 +3406,7 @@ paths:
         beta.
       security:
       - personalAccessToken: []
+      - oauth: []
       responses:
         '200':
           description: Managed MySQL Database successfully deleted.
@@ -3434,7 +3439,7 @@ paths:
 
         The Database must have an `active` status to perform this command.
 
-        Only unrestricted Users can access this command.
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
         Updating addresses in the `allow_list` overwrites any existing addresses.
 
@@ -3449,6 +3454,7 @@ paths:
         beta.
       security:
       - personalAccessToken: []
+      - oauth: []
       requestBody:
         description: Updated information for the Managed MySQL Database.
         required: true
@@ -3511,7 +3517,7 @@ paths:
       description: |
         Display all backups for an accessible Managed MySQL Database on your Account.
 
-        Only unrestricted Users can access this command.
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
         At this time, only automatically scheduled backups (type `auto`) are available.
 
@@ -3524,6 +3530,7 @@ paths:
         beta.
       security:
       - personalAccessToken: []
+      - oauth: []
       responses:
         '200':
           description: Returns a paginated list of backups for the Managed MySQL Database.
@@ -3575,7 +3582,7 @@ paths:
       description: |
         Display information for a single backup for an accessible Managed MySQL Database on your Account.
 
-        Only unrestricted Users can access this command.
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
         **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
         hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
@@ -3584,6 +3591,7 @@ paths:
         beta.
       security:
       - personalAccessToken: []
+      - oauth: []
       responses:
         '200':
           description: Returns a single backup for the Managed MySQL Database.
@@ -3630,7 +3638,7 @@ paths:
 
         The Database must have an `active` status to perform this command.
 
-        Only unrestricted Users can access this command.
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
         **Note**: Restoring from a backup will erase all existing data on the database instance and replace it with backup data.
 
@@ -3643,6 +3651,7 @@ paths:
         beta.
       security:
       - personalAccessToken: []
+      - oauth: []
       responses:
         '200':
           description: Request to restore backup successful.
@@ -3683,7 +3692,7 @@ paths:
 
         The Database must have an `active` status to perform this command.
 
-        Only unrestricted Users can access this command.
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
         **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
         hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
@@ -3692,6 +3701,7 @@ paths:
         beta.
       security:
       - personalAccessToken: []
+      - oauth: []
       responses:
         '200':
           description: Managed Database root username and password.
@@ -3734,7 +3744,7 @@ paths:
 
         A new root password is randomly generated and accessible with the **Managed MySQL Database Credentials View** ([GET /databases/mysql/instances/{instanceId}/credentials](/docs/api/databases/#managed-mysql-database-credentials-view)) command.
 
-        Only unrestricted Users can access this command.
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
         **Note**: Note that it may take several seconds for credentials to reset.
 
@@ -3745,6 +3755,7 @@ paths:
         beta.
       security:
       - personalAccessToken: []
+      - oauth: []
       responses:
         '200':
           description: Managed Database instance credentials successfully reset.
@@ -3783,7 +3794,9 @@ paths:
       description: |
         Display the SSL CA certificate for an accessible Managed MySQL Database.
 
-        Only unrestricted Users can access this command.
+        The Database must have an `active` status to perform this command.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
         **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
         hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
@@ -3792,6 +3805,7 @@ paths:
         beta.
       security:
       - personalAccessToken: []
+      - oauth: []
       responses:
         '200':
           description: Returns the SSL CA certificate of a single Managed MySQL Database.
