@@ -3,13 +3,10 @@ title: Guides
 description: "Learn how to access and deploy all the Linode Marketplace One-Click Apps."
 tab_group_main:
     weight: 30
+aliases: ['/products/tools/marketplace-one-click-apps/guides/']
 ---
 
-## Building Blocks
-
-Review these introductory guides to Linode’s Marketplace Apps to get up and running with the service.
-
-### Marketplace Basics
+## Basics
 
 - [Deploying an App](/docs/products/tools/marketplace-one-click-apps/guides/marketplace-deploy-app): Quickly deploy an app from the Cloud Manager.
 
@@ -17,11 +14,9 @@ Review these introductory guides to Linode’s Marketplace Apps to get up and ru
 
 - [Add a Domain Name](/docs/products/tools/marketplace-one-click-apps/guides/marketplace-add-domain-name): Add a domain name for your application.
 
-See the guide [Using Linode’s Marketplace Apps](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/) for more on getting started.
+## List of Marketplace Apps
 
-## Themes
-
-These additional guides help you to deploy each of Linode’s Marketplace one-click apps.
+See [Marketplace](/docs/guides/platform/marketplace/) for additional Marketplace Apps.
 
 ### Control Panels
 

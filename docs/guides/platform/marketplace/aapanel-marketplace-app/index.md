@@ -24,24 +24,26 @@ aaPanel is a free and open source web hosting control panel. It allows you to ma
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Software installation should complete within 5-10 minutes after the Linode has finished provisioning.**
+{{<note>}}
+**Deployment time:** The software should be fully installed and ready to use within 5-10 minutes.
+{{</note>}}
 
 ## Configuration Options
-
-For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** CentOS 7
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
 
+### Verify Installation
+
+{{< content "marketplace-verify-installation-shortguide">}}
+
 ### Access your aaPanel App
 
-1.  After aaPanel has finished installing, log into your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
+1.  Log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 
-        ssh root@192.0.2.0
-
-2.  Once you login to the Linode, you will need to run the following command to obtain your login information for your aaPanel dashboard:
+2.  Run the following command to obtain your login information for your aaPanel dashboard:
 
         cat /root/.aapanel_info
 

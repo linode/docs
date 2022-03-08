@@ -3,6 +3,7 @@ title: Developers
 description: "Linode One-Click App Marketplace is managed easily with developer tools like the Linode API or CLI."
 tab_group_main:
     weight: 50
+aliases: ['/products/tools/marketplace-one-click-apps/developers/']
 ---
 
 ## Linode API

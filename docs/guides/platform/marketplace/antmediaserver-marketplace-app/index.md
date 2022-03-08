@@ -39,27 +39,32 @@ If you need adaptive streaming, cluster, load balancer, and hardware encoding, p
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Software installation should complete within 2-5 minutes after the Linode has finished provisioning.**
+{{<note>}}
+**Deployment time:** The software should be fully installed and ready to use within 2-5 minutes.
+{{</note>}}
 
 ### Configuration Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
-
 - **Supported distributions:** Ubuntu 20.04 LTS
-- **Recommended plan:** 8GB Dedicated CPU Instance.
+- **Recommended plan:** 8GB Dedicated CPU Instance or higher
 
 ## Getting Started after Deployment
 
-### Access your Ant Media Server App
-After Ant Media Server has finished installing, you can access your server with your Linode's IPv4 address. Copy your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com), and then connect to the server from your browser using your Linode's IPv4 address and port `5080`(for example `192.0.2.0:5080`).
+### Verify Installation
 
-![antmediaserver.png 'Ant Media Server account creation page.'](antmediaserver.png)
+{{< content "marketplace-verify-installation-shortguide">}}
+
+### Access your Ant Media Server App
+
+1.  Open your web browser and navigate to `http://[ip-address]:5080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing your IP address.
+
+1.  The **Create First Account** screen appears. Complete this form and click **Create Account**.
+
+    ![antmediaserver.png 'Ant Media Server account creation page.'](antmediaserver.png)
 
 For more on Ant Media Server, check out the following resources:
 
 - [Ant Media Server wiki](https://github.com/ant-media/Ant-Media-Server/wiki)
 - [Publishing a Live Stream](https://github.com/ant-media/Ant-Media-Server/wiki/Publishing-Live-Streams)
 
-
-<!-- the following shortcode informs the user that Linode does not provide automatic updates to the Marketplace app, and that the user is responsible for the security and longevity of the installation. -->
 {{< content "marketplace-update-note-shortguide">}}

@@ -27,15 +27,18 @@ Hosting an ARK server gives you control of the entire game. You can define the l
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Software installation should complete within 5-15 minutes after the Linode has finished provisioning.**
+{{<note>}}
+**Deployment time:** The software should be fully installed and ready to use within 5-15 minutes.
+{{</note>}}
 
 ## Configuration Options
 
+- **Supported distributions:** Debian 9
+- **Recommended plan:** Depends on the amount of traffic and players you expect. An 8GB Dedicated CPU or Shared Compute Instance is a good starting point.
+
 ### ARK Options
 
-Here are the additional options available for this Marketplace App:
-
-| **Field**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | **Description** |
+| **Field** | **Description** |
 |-----------|-----------------|
 | **RCON Password** | Your password for [RCON](https://developer.valvesoftware.com/wiki/Source_RCON_Protocol), a protocol which allows ARK administrators to remotely execute commands on the game server. *Required*. |
 | **Server Name** | Your ARK server's name. *Advanced Configuration*. |
@@ -44,13 +47,6 @@ Here are the additional options available for this Marketplace App:
 | **Hardcore Mode Enabled** | Enables Hardcore mode, which resets a player to level 1 after dying. *Advanced Configuration*. |
 | **XP Multiplier** | Increases or decreases the amount of experience awarded for various actions. *Advanced Configuration*. |
 | **Server PvE** | Disables player vs player combat and enables player vs environment combat. *Advanced Configuration*. |
-
-### General Options
-
-For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
-
-- **Supported distributions:** Debian 9
-- **Recommended plan:** Depends on the amount of traffic and players you expect. An 8GB Dedicated CPU or Shared Compute Instance is a good starting point.
 
 ## Getting Started After Deployment
 

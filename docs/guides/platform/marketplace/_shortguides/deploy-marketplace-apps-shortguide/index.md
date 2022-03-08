@@ -19,16 +19,14 @@ modified_by:
   name: Linode
 ---
 
-The Linode Marketplace allows you to easily deploy software on a Linode using the Linode Cloud Manager.
+The Linode Marketplace allows you to easily deploy software on a Compute Instance using the Cloud Manager.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and select the **Marketplace** link from the left navigation menu. This displays the Linode Compute **Create** page with the **Marketplace** tab pre-selected.
+1. Log in to the [Cloud Manager](https://cloud.linode.com) and select the **Marketplace** link from the left navigation menu. This displays the Linode **Create** page with the **Marketplace** tab pre-selected.
 
 1. Under the **Select App** section, select the app you would like to deploy.
 
-1. Fill out all required **Options** for the selected app as well as any desired **Advanced Options** (which are optional). See the [Configuration Options](#configuration-options) section for details.
+1. Complete the form by following the steps and advice within the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide. Depending on the Marketplace App you selected, there may be additional configuration options available. See the [Configuration Options](#configuration-options) section below for compatible distributions, recommended plans, and any additional configuration options available for this Marketplace App.
 
-1. Complete the rest of the form as discussed within the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/).
+1. Click the **Create Linode** button. Once the Compute Instance has provisioned and has fully powered on, **wait for the software installation to complete**. If the instance is powered off or restarted before this time, the software installation will likely fail. To verify that the app has been fully installed, see the [Getting Started After Deployment](#getting-started-after-deployment) section below.
 
-1. Click the **Create Linode** button. Once the Linode has provisioned and has fully powered on, **wait for the software installation to complete**. If the Linode is powered off or restarted before this time, the software installation will likely fail. To determine if the installation has completed, open the Linode's [Lish console](/docs/guides/using-the-lish-console/) and wait for the system login prompt to appear.
-
-1. Follow the instructions within the [Getting Started After Deployment](#getting-started-after-deployment) section.
+1. Follow the instructions within the [Getting Started After Deployment](#getting-started-after-deployment) section to access and start using your application.

@@ -27,13 +27,17 @@ It is built with modern technologies (such as Laravel and VueJS) and includes a 
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Software installation should complete within 5-10 minutes after the Linode has finished provisioning.**
+{{<note>}}
+**Deployment time:** The software should be fully installed and ready to use within 5-10 minutes.
+{{</note>}}
+
 
 ## Configuration Options
 
-### Akaunting Options
+- **Supported distributions:** Ubuntu 20.04 LTS, Debian 11
+- **Recommended plan:** All plan types and sizes can be used.
 
-Here are the additional options available for this Marketplace App:
+### Akaunting Options
 
 | **Field** | **Description** |
 |:--------------|:------------|
@@ -46,18 +50,15 @@ Here are the additional options available for this Marketplace App:
 | **Database User** | Your Akaunting database user. *Required*. |
 | **Database User Password** | Your Akaunting database user password. *Required*. |
 
-### General Options
-
-For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
-
-- **Supported distributions:** Ubuntu 20.04 LTS Debian 11
-- **Recommended plan:** All plan types and sizes can be used.
-
 ## Getting Started after Deployment
+
+### Verify Installation
+
+{{< content "marketplace-verify-installation-shortguide">}}
 
 ### Accessing the Akaunting App
 
-1.  Open a browser and navigate to your Instance's [IP address](/docs/guides/managing-ip-addresses/).
+1.  Open your web browser and navigate to `http://[ip-address]/`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing your IP address.
 
 1.  The Akaunting login page appears. The username for this instance is the *Admin Email* and the password is the *Admin Password* that you set when you deployed this One-Click Marketplace App.
 

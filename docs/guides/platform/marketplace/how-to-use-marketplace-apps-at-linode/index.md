@@ -3,22 +3,22 @@ slug: how-to-use-marketplace-apps-at-linode
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How to deploy a Marketplace App using the Linode Cloud Manager.'
+description: "Learn how to deploy a Marketplace App using the Linode Cloud Manager."
 keywords: ['manager','cloud','app','one click', 'marketplace']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-26
-modified: 2019-03-26
+modified: 2022-03-04
 modified_by:
   name: Linode
-title: "How to Use Linode's Marketplace Apps"
-h1_title: "Using Linode's Marketplace Apps"
+title: "How to Use the Linode Marketplace to Deploy Apps"
+h1_title: "Using the Linode Marketplace to Deploy Apps"
+enable_h1: true
 contributor:
   name: Linode
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/how-to-use-marketplace-apps-at-linode/', '/platform/one-click/how-to-use-one-click-apps-at-linode/']
+image: how-to-use-linode-oneclick-apps.png
 ---
-
-![How to Use Linode's Marketplace Apps](how-to-use-linode-oneclick-apps.png "How to Use Linode's Marketplace Apps")
 
 Marketplace Apps help you easily deploy and configure software on a Linode from a list of various apps that are built into the Linode [Cloud Manager](https://cloud.linode.com), without the hassle of using the command line. Of course, you'll still have full access to your Linode if you want to log in to your server and have a more hands-on approach later on.
 

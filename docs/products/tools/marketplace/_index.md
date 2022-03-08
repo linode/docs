@@ -7,7 +7,8 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    product_description: "Choose one of the popular Marketplace One-Click Apps, select configuration options, and click deploy. It’s that simple. Whether you’re setting up a new development environment or a Minecraft server for the kids, you can have your app up and running with a few clicks."
+    product_description: "Quickly deploy a Compute Instance with many various software applications pre-installed and ready to use."
+aliases: ['/products/tools/marketplace-one-click-apps/']
 ---
 
 ## Availability

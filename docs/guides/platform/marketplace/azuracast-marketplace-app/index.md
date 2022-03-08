@@ -28,20 +28,26 @@ aliases: ['/platform/marketplace/how-to-deploy-azuracast-with-marketplace-apps/'
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Software installation should complete within 1-3 minutes after the Linode has finished provisioning.**
+{{<note>}}
+**Deployment time:** The software should be fully installed and ready to use within 2-5 minutes.
+{{</note>}}
 
 ## Configuration Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
-
-- **Supported distributions:** Debian 10 or Ubuntu 20.04 LTS
+- **Supported distributions:** Debian 10, Ubuntu 20.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started After Deployment
 
+### Verify Installation
+
+{{< content "marketplace-verify-installation-shortguide">}}
+
+### Accessing AzuraCast
+
 AzuraCast is now installed and ready to use.
 
-1.  Navigate to the IP address of the Linode in your browser. You can find the IP address for your Linode on the Linode detail page in the [Cloud Manager](https://cloud.linode.com).
+1.  Open your web browser and navigate to `http://[ip-address]/`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing your IP address.
 
 1.  The first thing you want to do is create a *Super Administrator* account that has has system-wide permissions.
 

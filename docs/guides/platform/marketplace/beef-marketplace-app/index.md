@@ -26,13 +26,16 @@ BeEF (The Browser Exploitation Framework) is a penetration testing tool that foc
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Software installation should complete within 10-15 minutes after the Linode has finished provisioning.**
+{{<note>}}
+**Deployment time:** The software should be fully installed and ready to use within 10-15 minutes.
+{{</note>}}
 
 ## Configuration Options
 
-### BeEF Options
+- **Supported distributions:** Ubuntu 20.04 LTS
+- **Recommended plan:** All plan types and sizes can be used.
 
-Here are the additional options available for this Marketplace App:
+### BeEF Options
 
 | **Field** | **Description** |
 |:--------------|:------------|
@@ -46,14 +49,11 @@ Here are the additional options available for this Marketplace App:
 | **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
 | **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
 
-### General Options
-
-For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
-
-- **Supported distributions:** Ubuntu 20.04 LTS
-- **Recommended plan:** All plan types and sizes can be used.
-
 ## Getting Started after Deployment
+
+### Verify Installation
+
+{{< content "marketplace-verify-installation-shortguide">}}
 
 ### Accessing the BeEF App
 

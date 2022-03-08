@@ -3,12 +3,12 @@ slug: litespeed-cpanel-marketplace-app
 author:
   name: Linode Community
   email: docs@linode.com
-description: "An lightning fast web server that conserves resources without sacrificing performance, security, or compatibility."
 description: "Deploy LiteSpeed cPanel on a Linode Compute Instance. This provides you with a lightning fast, performant, and secure web server that conserves resources."
 keywords: ['web server','cpanel','litespeed']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
+modified: 2022-03-07
 modified_by:
   name: Linode
 title: "Deploying LiteSpeed cPanel through the Linode Marketplace"
@@ -22,38 +22,58 @@ aliases: ['/guides/deploying-litespeed-cpanel-marketplace-app/']
 
 The LiteSpeed cPanel App automatically installs WHM/cPanel, performance LiteSpeed Web Server, and WHM LiteSpeed Plugin.
 
-**LiteSpeed Web Server Features:** HTTP/2, QUIC, HTTP/3, event driven architecture, Apache drop-in replacement, LSCache Engine with ESI, server-level reCAPTCHA, one-click cache acceleration
+- **LiteSpeed Web Server Features:** HTTP/2, QUIC, HTTP/3, event driven architecture, Apache drop-in replacement, LSCache Engine with ESI, server-level reCAPTCHA, one-click cache acceleration
 
-**WHM LiteSpeed Plugin Features:** Version management, one-click switch between Apache and LiteSpeed Web Server, build PHP with LSAPI, quick PHP suExec and LiteSpeed cache setups, license management
+- **WHM LiteSpeed Plugin Features:** Version management, one-click switch between Apache and LiteSpeed Web Server, build PHP with LSAPI, quick PHP suExec and LiteSpeed cache setups, license management
 
-**Auto configuration:** Enable PHP_SUEXEC, enable EasyApache integration, switch to LiteSpeed Web Server, cache root setup, disable Apache mod_ruid2, Apache port offset 0
+- **Auto configuration:** Enable PHP_SUEXEC, enable EasyApache integration, switch to LiteSpeed Web Server, cache root setup, disable Apache mod_ruid2, Apache port offset 0
 
 ## Deploying the LiteSpeed cPanel Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Software installation should complete within 10-15 minutes after the Linode has finished provisioning.**
+{{<note>}}
+**Deployment time:** The LiteSpeed cPanel Marketplace App should be fully installed and ready to use within 10-20 minutes.
+{{</note>}}
 
 ## Configuration Options
-
-For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** CentOS 7, CentOS 8, AlmaLinux 8
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
 
-### Accessing the LiteSpeed cPanel App
+### Verify Installation
 
-1.  Open a browser and navigate to port `2087` on your IP address. This should look like `http://192.0.2.0:2087/`, replace `192.0.2.0` with your [Compute Instance's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/).
+To determine if the installation has completed sucessfully, log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/) and run:
 
-1.  The WHM login page appears. Enter `root` as the username and the root password you created when deploying your app. Click the **Log In** button.
+    tail -3 /var/log/stackscript.log
+
+This output should be similar to the following. While this does provide instructions to access the LiteSpeed WebAdmin panel, you must reset the password before accessing it. See [Accessing the LiteSpeed WebAdmin Interface](#accessing-the-litespeed-webadmin-interface).
+
+{{<output>}}
+**LITESPEED AUTOINSTALLER COMPLETE**
+Install finished! Your randomly generated admin password for the LiteSpeed WebAdmin interface on port 7080 is [password]
+Please make sure to save this password.
+{{</output>}}
+
+### Accessing WHM/cPanel
+
+1.  Open your web browser and navigate to `http://[ip-address]:2087`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing your IP address.
+
+1.  The WHM login page appears. Enter `root` as the username and the root password you created when deploying your instance. Click the **Log In** button to continue.
 
     ![Log into your Web Hosting Manager](log-into-whm.png)
 
 1.  You are presented with cPanel and WHM's terms. Read through the terms and click on **Agree to All** if you agree and would like to continue.
 
     ![Agree to cPanel and WHM's terms](agree-to-terms.png)
+
+1.  You are then prompted to log in to cPanel's website and obtain a license or activate a free 15-day trial license.
+
+    {{< note >}}
+Your instance is eligible for free 15-day trial licenses of both [WHM/cPanel](https://cpanel.net/products/trial/) and the [LiteSpeed plugin](https://docs.litespeedtech.com/licenses/trial/). If you wish to continue using these applications beyond this period, you must purchase licenses before the end of this trial.
+{{</ note >}}
 
 1.  In the next screen, enter in an email address to receive status and error notifications.
 
@@ -79,8 +99,24 @@ See our [How do I set up DNS on cPanel?](https://www.linode.com/community/questi
 
 Now that you’ve accessed your LiteSpeed instance, check out [the official LiteSpeed documentation](https://www.litespeedtech.com/support/wiki/doku.php/litespeed_wiki) to learn how to further utilize your LiteSpeed instance.
 
-{{< note >}}
-Your LiteSpeed cPanel App installation will automatically receive a free 15-day trial license on both [LiteSpeed](https://docs.litespeedtech.com/licenses/trial/) and [cPanel](https://cpanel.net/products/trial/). You must purchase a new LiteSpeed and cPanel/WHM license before the end of this trial period. At the end of your trial period your license will expire.
-{{</ note >}}
+### Accessing the LiteSpeed WebAdmin Interface
+
+1.  Log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+
+1.  Run the following script to reset the password:
+
+        /usr/local/lsws/admin/misc/admpass.sh
+
+1.  When requested, enter *admin* as the username and then enter your desired password.
+
+1.  Once finished, open your web browser and navigate to `http://[ip-address]:7080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing your IP address.
+
+1.  The LiteSpeed WebAdmin Console login prompt appears. Enter *admin* as the username and use the password you just set in the previous steps.
+
+    ![Screenshot of LiteSpeed WebAdmin login prompt](litespeed-webadmin-console.png)
+
+1.  After logging in, the LiteSpeed WebAdmin Console appears.
+
+    ![Screenshot of LiteSpeed WebAdmin Console](litespeed-webadmin-interface.png)
 
 {{< content "marketplace-update-note-shortguide">}}
