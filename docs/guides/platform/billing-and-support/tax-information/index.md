@@ -97,11 +97,7 @@ The following table lists each U.S State that requires us to collect sales taxes
 
 ## Adding a Tax ID
 
-If you are a registered business, you may provide Linode with a valid tax ID, such as a VAT identification number (*VAT ID*) or GST identification number (*GST ID*, also referred to as an *ABN* in Australia and a *GSTIN* in India). Such customers will not be charged VAT or GST in subsequent invoices once their tax ID is verified. You might choose to do this if your business is tax exempt or if your business is liable to pay taxes directly due to a special tax status or program (like RCM - Reverse Charge Mechanism).
-
-{{< note >}}
-If you have documents which state that your organization's services with Linode should not be taxed, please [contact Linode Support](https://www.linode.com/support/).
-{{< /note >}}
+If you are a registered business, you may provide Linode with a valid tax ID, such as a VAT identification number (*VAT ID*) or GST identification number (*GST ID*, also referred to as an *ABN* in Australia and a *GSTIN* in India). Customers outside of the United States will not be charged VAT or GST in subsequent invoices once their tax ID is verified. You might choose to do this if your business is tax exempt or if your business is liable to pay taxes directly due to a special tax status or program (like RCM - Reverse Charge Mechanism). Users within the United States will need to submit both their tax ID and a state tax exemption or reseller's certificate in a [Support Ticket](https://www.linode.com/docs/guides/support/) before becoming exempt.
 
 {{< caution >}}
 If you are located in one of the countries that require taxes on our services, you are still liable for those taxes. Adding your tax ID does not exempt you from your liability to pay any taxes that have been mandated by your country for our services.
@@ -131,7 +127,7 @@ You may update your tax location by navigating to the **Account** page in the [C
 
 ### My business is tax exempt. How can I stop further taxes from being charged to my Linode account?
 
-If your business or organization is tax exempt, you can add a verifiable tax ID to your Linode account. Once verified, taxes will no longer be added to your invoices. See [Adding a Tax ID](#adding-a-tax-id).
+If your business or organization is tax exempt, you should add a verifiable tax ID to your Linode account. Once verified, taxes will no longer be added to invoices for customers outside of the United States. See [Adding a Tax ID](#adding-a-tax-id). Customers inside the United States will additionally need to submit any tax exemption certificates or reseller's certificates by [Opening a Support Ticket](https://www.linode.com/docs/guides/support/) which contains the required information.
 
 ### How can I review the taxes charged on previous invoices?
 

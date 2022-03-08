@@ -8,6 +8,7 @@ keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/securing-your-server/','/security/linux-security-basics/','/security/basics/','/security/securing-your-server/index.cfm/','/security/basics/securing-your-server/','/security/securing-your-server/','/guides/securing-your-server/']
+bundles: ['centos-security', 'debian-security']
 modified: 2022-02-25
 modified_by:
   name: Linode

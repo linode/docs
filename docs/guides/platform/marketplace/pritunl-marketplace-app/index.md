@@ -6,6 +6,7 @@ author:
 description: "Deploy Pritunl on a Linode Compute Instance. This provides you with an open source VPN server and management panel."
 keywords: ['pritunl','vpn','security','openvpn']
 tags: ["marketplace", "linode platform", "cloud manager"]
+bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
 modified_by:

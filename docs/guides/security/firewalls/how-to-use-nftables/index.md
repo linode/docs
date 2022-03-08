@@ -6,6 +6,7 @@ author:
 description: 'In this guide you will learn about what nftables is and how it differs from iptables, plus you""ll get a look at how to use and create tables, rules, and chains.'
 og_description: 'In this guide you will learn about what nftables is and how it differs from iptables, plus you""ll get a look at how to use and create tables, rules, and chains.'
 keywords: ['nftables']
+bundles: ['debian-security', 'centos-security', 'network-security']
 tags: ['ubuntu', 'centos', 'debian', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-09

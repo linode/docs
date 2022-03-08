@@ -4,6 +4,7 @@ author:
   name: Tom Henderson
 description: 'This guide shows you how to install a StrongSwan VPN server on an Ubuntu 20.04 server. You also learn how to connect to a StrongSwan VPN server from Ubuntu, Windows, and macOS clients.'
 keywords: ['install strongswan', 'strongswan client', 'connecting to strongswan VPN', 'troubleshoot strongswan']
+bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-18
 modified_by:
