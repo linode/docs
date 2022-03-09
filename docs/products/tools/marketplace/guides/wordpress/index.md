@@ -43,12 +43,12 @@ With 60 million users around the globe, WordPress provides an industry standard 
 - **MySQL `root` password** *(required)*: The root password for your MySQL database.
 - **WordPress Database Password** *(required)*: The root password for your WordPress database.
 - **Website Title:** Enter a title for your WordPress site.
-- **Send email, such as password reset emails:** Creates the required DNS records and configures the server so you can send emails from WordPress, such as for resetting a password.
-- **Generate SSL certificate:** If you would like to use the free Let's Encrypt CA to generate TLS/SSL certificates, select *Yes*.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
+- **Would you like to be able to send password reset emails for WordPress?** Creates the required DNS records and configures the server so you can send emails from WordPress, such as for resetting a password.
+- **Would you like to use a free Let's Encrypt SSL certificate?** If you would like to use the free Let's Encrypt CA to generate TLS/SSL certificates, select *Yes*.
 
 ## Getting Started After Deployment
 
