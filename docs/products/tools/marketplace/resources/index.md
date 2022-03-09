@@ -8,6 +8,20 @@ aliases: ['/products/tools/marketplace-one-click-apps/resources/']
 
 ## Blog Posts
 
+- [Self-Hosted Alternatives to Popular Business & Productivity Tools (Including G Suite)](https://www.linode.com/blog/devops/open-source-business-tool-alternatives-g-suite-2022/)
+
+- [Secure & Accelerate Development Projects with Linode Marketplace Apps](https://www.linode.com/blog/devops/secure-accelerate-development-projects-with-linode-marketplace-apps/)
+
+- [7 New Apps to Try on Linode Marketplace](https://www.linode.com/blog/devops/linode-one-click-apps-marketplace-release-august-21/)
+
+- [Ant Media, Owncast, and Peppermint Now on Marketplace](https://www.linode.com/blog/devops/linode-marketplace-april-2021-video-streaming/)
+
+- [Welcoming New Marketplace App Partners (And We Want Your Feedback!)](https://www.linode.com/blog/devops/welcoming-new-marketplace-app-partners-and-we-want-your-feedback/)
+
+- [11 New Apps Available on Linode Marketplace](https://www.linode.com/blog/devops/linode-marketplace-january-2021-release/)
+
+- [6 New One-Click Apps on Linode Marketplace](https://www.linode.com/blog/devops/linode-marketplace-october-releases/)
+
 - [Nextcloud and Percona added to Linode Marketplace](https://www.linode.com/blog/one-click-apps/nextcloud-and-percona-added-to-linode-marketplace/)
 
 - [Introducing Linode One-Click App Marketplace](https://www.linode.com/blog/marketplace-apps/introducing-linode-one-click-app-marketplace/)
