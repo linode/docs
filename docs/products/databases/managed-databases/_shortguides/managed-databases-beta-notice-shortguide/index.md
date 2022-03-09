@@ -6,5 +6,5 @@ show_on_rss_feed: false
 ---
 
 {{<note>}}
-The Managed Database service is currently available in a closed beta. To participate in this beta, sign up through the [Linode Green Light program](https://www.linode.com/green-light/#sign-up-form). To be notified when Managed Databases enters a public beta or reaches general availability, fill out the [Notification Form](https://www.linode.com/products/databases/#notification-form).
+The Managed Database service is currently in beta and available to all customers across all data centers. During the beta period, Managed Databases will not incur any charges. If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the GA (general availability) release.
 {{</note>}}
