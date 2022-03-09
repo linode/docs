@@ -26,9 +26,9 @@ An organization needs a set of policies that defines how data is to be protected
 
 DLP policies protect data in use, in motion, and at rest. They govern both the safety of data and the integrity of data, plus they ensure that the right people have access to the right data. They also provide reporting functions to meet compliance and auditing requirements, and identify areas of weakness and anomalies for forensics and [incident response](https://digitalguardian.com/blog/keep-calm-and-be-prepared-building-effective-incident-response-plan-infographic).
 
-The “loss” in Data Loss Prevention has multiple definitions. Loss may mean completely lost, erased, due to catastrophic system failure and no backups are available, or it might mean data is lost to theft by hackers or insiders. In the case of the latter, you still have the data, but so does someone else who is not authorized to possess it.
+The “loss” in data loss prevention has multiple definitions. Loss may mean completely lost, erased, due to a catastrophic system failure and no available backups. It might mean data is lost to theft by hackers or insiders. In the case of the latter, you still have the data, but so does someone else who is not authorized to possess it.
 
-Data leaks fall under the greater umbrella of data loss, because a leak is a loss. They occur with, or without intent. A leak occurs when employees access sensitive data in public, such as over public Wi-Fi , or fail to restrict access by not using a VPN. Here there is no malice, only negligence.
+Data leaks fall under the greater umbrella of data loss, because a leak is a loss. They occur with, or without intent. A leak occurs when employees access sensitive data in public, such as over public Wi-Fi, or fail to restrict access by not using a VPN. Here there is no malice, only negligence.
 
 But there is also theft, and this often results in the greatest amount of damage: both to your reputation and financially. The culprit may be a malicious insider, or an outside attacker who has compromised the network or gained access to a privileged user account.
 
@@ -36,11 +36,11 @@ DLP policies are also driven by regulatory compliance, such as HIPAA, PCI-DSS, a
 
 ## Why is a DLP Policy Important for Businesses and Organizations?
 
-Here’s one reason: There were more than [3,800 breaches](https://pages.riskbasedsecurity.com/2019-midyear-data-breach-quickview-report) in the first half of 2019 alone. Often it is regulated data such as financial information that is compromised, and Federal regulators take a dim view of these types of data losses.
+Here’s one reason: There were more than [3,800 breaches](https://pages.riskbasedsecurity.com/2019-midyear-data-breach-quickview-report) in the first half of 2019 alone. Often it is regulated data such as financial information that is compromised, and federal regulators take a dim view of these types of data losses.
 
-Perhaps the biggest breach of all was Equifax. In 2017, Equifax lost the personal and financial information of nearly 150 million people due to an unpatched piece of software. In 2019, the credit agency agreed to pay $575 million in a settlement with the Federal Trade Commission and other entities, one of the largest penalties ever for data leak.
+Perhaps the biggest breach of all was Equifax. In 2017, Equifax lost the personal and financial information of nearly 150 million people due to an unpatched piece of software. In 2019, the credit agency agreed to pay $575 million in a settlement with the Federal Trade Commission and other entities, one of the largest penalties ever for a data leak.
 
-There is also damage to your reputation, which is harder to quantify for a dollar figure. In 2015, the UK telecommunications firm TalkTalk disclosed that the personal details of over 150,000 customers had been stolen. As a result, the company lost over 100,000 customers, and over a third of its company value.
+There is also damage to your reputation, which is harder to quantify in a dollar figure. In 2015, the UK telecommunications firm TalkTalk disclosed that the personal details of over 150,000 customers had been stolen. As a result, the company lost over 100,000 customers, and over a third of its company value.
 
 Then there is actual data loss. Backup and recovery specialist Lost Data [estimates](https://lostdata.com.sa/en/2021/06/07/the-most-common-reasons-for-data-loss/) that 42% of all data losses occur due to hardware failure. Another backup and recovery specialist, UniTrends, [says that 40% of users lose data](https://www.unitrends.com/blog/dont-let-hardware-failures-cripple-business) due to hardware and system malfunctions. Most ominous: it notes 93% of businesses that experienced data center outages for 10 days or more filed for bankruptcy within a year.
 
