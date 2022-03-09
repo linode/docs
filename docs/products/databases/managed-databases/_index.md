@@ -56,7 +56,7 @@ See the [Use Cases for Managed Databases](/docs/products/databases/managed-datab
 
 ## Availability
 
-Managed Databases can be created and deployed across [all regions](https://www.linode.com/global-infrastructure/) as part of a limited closed beta.
+Managed Databases can be created and deployed across [all regions](https://www.linode.com/global-infrastructure/).
 
 ## Plans and Pricing
 
