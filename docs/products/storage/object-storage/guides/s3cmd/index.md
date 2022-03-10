@@ -90,7 +90,7 @@ Creates a bucket with the specified bucket label. See the [Create and Manage Buc
 
 **Example:** Create a bucket with the label of "example-bucket":
 
-    s3cmd mb s3://bucket-label
+    s3cmd mb s3://example-bucket
 
 ### Delete a Bucket
 

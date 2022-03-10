@@ -2,14 +2,10 @@
 author:
   name: Linode Community
   email: docs@linode.com
-<<<<<<< HEAD
 description: "Learn how to obtain URLs to objects within Linode's Object Storage service."
-=======
-description: ""
->>>>>>> upstream/develop
 keywords: ['object','storage','bucket']
 published: 2020-01-22
-modified: 20202-02-011
+modified: 2022-02-24
 modified_by:
   name: Linode
 image: AccessingObjectswithLinodeObjectStorage.png

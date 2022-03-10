@@ -144,7 +144,8 @@ You may also consider writing a [utility script](https://gist.github.com/wknapik
 
 Because Linode Object Storage is compatible with S3, several tools that are designed to work with S3 can be adapted to Linode Object Storage, like the AWS CLI.
 
-{{< disclosure-note "Installing the AWS CLI" >}}
+#### Installing and Configuring the AWS CLI Version 1
+
 The AWS CLI can be installed using [pip](https://pip.pypa.io/en/stable/), the Python package manager, on macOS and Linux:
 
     pip install awscli
@@ -156,7 +157,8 @@ You'll need to configure the AWS CLI before you can use it. To do so, run the co
     aws configure
 
 You'll be prompted to enter your AWS access key and AWS secret access key, but you can enter your Linode access key and Linode secret access key here instead. You can leave the other fields blank.
-{{< /disclosure-note >}}
+
+#### Using Versioning with the AWS CLI
 
 To use bucket versioning with the AWS CLI:
 
