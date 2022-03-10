@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.118.0
+  version: 4.118.3
 
   title: Linode API
   description: |
@@ -3078,10 +3078,11 @@ paths:
       description: |
         Display all available Managed Database engine types and versions. Engine IDs are used when creating new Managed Databases.
 
-        **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
-        hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
         When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
-        aware that this endpoint may receive breaking updates in the future.  This notice will be removed when this
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
         endpoint is out of beta.
       responses:
         '200':
@@ -3129,11 +3130,12 @@ paths:
       description: |
         Display information for a single Managed Database engine type and version.
 
-        **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
-        hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
         When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
-        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this out of
-        beta.
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
       responses:
         '200':
           description: Returns information for a single Managed Database engine type and version.
@@ -3171,10 +3173,11 @@ paths:
 
         For more detailed information on a particular Database instance, make a request to its `instance_uri`.
 
-        **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
-        hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
         When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
-        aware that this endpoint may receive breaking updates in the future.  This notice will be removed when this
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
         endpoint is out of beta.
       security:
       - personalAccessToken: []
@@ -3219,11 +3222,12 @@ paths:
 
         Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
-        **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
-        hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
         When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
-        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this out of
-        beta.
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
       security:
       - personalAccessToken: []
       - oauth: []
@@ -3275,11 +3279,12 @@ paths:
 
         All Managed Databases include automatic, daily backups. Up to seven backups are stored for each Managed Database, providing restore points for each day of the past week.
 
-        **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
-        hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
         When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
-        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this out of
-        beta.
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
       security:
       - personalAccessToken: []
       - oauth: []
@@ -3358,11 +3363,12 @@ paths:
 
         Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
-        **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
-        hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
         When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
-        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this out of
-        beta.
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
       security:
       - personalAccessToken: []
       - oauth: []
@@ -3399,11 +3405,12 @@ paths:
 
         Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
-        **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
-        hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
         When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
-        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this out of
-        beta.
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
       security:
       - personalAccessToken: []
       - oauth: []
@@ -3447,11 +3454,12 @@ paths:
         * Entering an empty array (`[]`) blocks all connections (both public and private) to the Managed Database.
         * **Note**: Updates to the `allow_list` may take a short period of time to complete, making this command inappropriate for rapid successive updates to this property.
 
-        **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
-        hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
         When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
-        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this out of
-        beta.
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
       security:
       - personalAccessToken: []
       - oauth: []
@@ -3523,11 +3531,12 @@ paths:
 
         Database backups are created every 24 hours at 0:00 UTC. Each backup is retained for 7 days.
 
-        **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
-        hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
         When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
-        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this out of
-        beta.
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
       security:
       - personalAccessToken: []
       - oauth: []
@@ -3584,11 +3593,12 @@ paths:
 
         Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
-        **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
-        hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
         When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
-        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this out of
-        beta.
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
       security:
       - personalAccessToken: []
       - oauth: []
@@ -3644,11 +3654,12 @@ paths:
 
         **Note**: Currently, restoring a backup after resetting Managed Database credentials results in a failed cluster. Please contact Customer Support if this occurs.
 
-        **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
-        hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
         When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
-        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this out of
-        beta.
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
       security:
       - personalAccessToken: []
       - oauth: []
@@ -3694,11 +3705,12 @@ paths:
 
         Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
-        **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
-        hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
         When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
-        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this out of
-        beta.
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
       security:
       - personalAccessToken: []
       - oauth: []
@@ -3748,11 +3760,12 @@ paths:
 
         **Note**: Note that it may take several seconds for credentials to reset.
 
-        **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
-        hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
         When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
-        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this out of
-        beta.
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
       security:
       - personalAccessToken: []
       - oauth: []
@@ -3798,11 +3811,12 @@ paths:
 
         Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
-        **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
-        hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
         When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
-        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this out of
-        beta.
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
       security:
       - personalAccessToken: []
       - oauth: []
@@ -3841,11 +3855,12 @@ paths:
 
         Each Managed Database can have one node type. In the case of a high availabilty Database, all nodes are provisioned according to the chosen type.
 
-        **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
-        hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
         When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
-        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this out of
-        beta.
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
       responses:
         '200':
           description: Returns a paginated list of all Managed Database types.
@@ -3906,11 +3921,12 @@ paths:
       description: |
         Display the details of a single Managed Database type. The type and number of nodes determine the resources and price of a Managed Database instance.
 
-        **Beta**: This endpoint is in **closed** beta. To get early access and test new Linode products before they
-        hit the market, join the [Linode Green Light](https://www.linode.com/green-light/) program.
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
         When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
-        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this out of
-        beta.
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
       responses:
         '200':
           description: Returns a single Managed Database type.
