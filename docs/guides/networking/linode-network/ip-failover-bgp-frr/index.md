@@ -156,19 +156,28 @@ coalesce-time 1000
 bgp bestpath as-path multipath-relax
 neighbor RS peer-group
 neighbor RS remote-as external
+neighbor RS ebgp-multihop 10
 neighbor RS capability extended-nexthop
 neighbor 2600:3c0f:[DC_ID]:34::1 peer-group RS
 neighbor 2600:3c0f:[DC_ID]:34::2 peer-group RS
 neighbor 2600:3c0f:[DC_ID]:34::3 peer-group RS
 neighbor 2600:3c0f:[DC_ID]:34::4 peer-group RS
+
 address-family ipv4 unicast
   network [SHARED_IP]/32 route-map [ROLE]
   redistribute static
 exit-address-family
+
+address-family ipv6 unicast
+  network [SHARED_IPV6]/64 route-map [ROLE]
+  redistribute static
+exit-address-family
+
 route-map primary permit 10
 set community 65000:1
 route-map secondary permit 10
 set community 65000:2
+ipv6 nht resolve-via-default
 {{</ file >}}
 
 1.  Restart the FRR service:
