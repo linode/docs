@@ -50,7 +50,7 @@ When you suffer a data loss from a database or hardware failure, you know it ins
 
 The steps below cover loss from equipment or software failure, and loss via leak. There is overlap between the two, so many of the steps are common to both types of loss.
 
-### Define and Prioritize Sensitive Data Types and Locations
+### Define and Prioritize Sensitive Data and Locations
 
 The most important thing in a DLP strategy is to identify and prioritize the data to protect, because if an organization simply puts DLP processes across the whole organization, then it is wasting considerable resources on data that is not sensitive, therefore does not need protection. You also run the risk of false positives because so much data is being covered.
 
