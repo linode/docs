@@ -43,7 +43,7 @@ To follow along with this guide, make sure you have the following:
 
 Before you create your MySQL views, create a sample database, define a few tables, and populate them with some data first:
 
-1.  [SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh) to your Linode. Then, enter this command to log in to MySQL as the root user:
+1.  [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) to your Linode. Then, enter this command to log in to MySQL as the root user:
 
         mysql -u root -p
 

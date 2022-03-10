@@ -8,6 +8,7 @@ keywords: ["ssh", "public key"]
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/ssh-keys/','/tools-reference/ssh/use-public-key-authentication-with-ssh/','/security/use-public-key-authentication-with-ssh/','/security/authentication/use-public-key-authentication-with-ssh/']
+bundles: ['debian-security', 'centos-security', 'network-security']
 modified_by:
   name: Linode
 published: 2011-04-05
@@ -28,7 +29,7 @@ Password authentication is the default method most SSH (Secure Shell) clients us
 This guide explains how the SSH key login scheme works, how to generate an SSH key, and how to use those keys with your Linode.
 
 {{< note >}}
-If you're unfamiliar with SSH connections, review the [Getting Started with Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) guide.
+If you're unfamiliar with SSH connections, review the [Getting Started with Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) guide.
 {{< /note >}}
 
 ## How SSH Public Keys Work
@@ -362,4 +363,4 @@ If your SSH connections are not working as expected, or if you have locked yours
 
 ## Next Steps
 
-After you set up your SSH keys and confirm they are working as expected, review our [How to Secure Your Server](/docs/guides/securing-your-server/#ssh-daemon-options) guide for instructions on disabling password authentication for your server.
+After you set up your SSH keys and confirm they are working as expected, review our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/#ssh-daemon-options) guide for instructions on disabling password authentication for your server.

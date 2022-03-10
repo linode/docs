@@ -1,5 +1,6 @@
 {{ $js := . }}
 {{ $defer := true }}
+{{ $async := false }}
 {{ $params := dict }}
 {{ $sourceMap := cond hugo.IsProduction "" "inline" }}
 {{ if reflect.IsMap $ }}
@@ -7,6 +8,10 @@
   {{ if .nodefer }}
     {{ $defer = false }}
   {{ end }}
+  {{ if .async }}
+    {{ $defer = false }}
+    {{ $async = true }}
+  {{end }}
   {{ with .params }}
     {{ $params = . }}
   {{ end }}
@@ -16,4 +21,4 @@
 {{- if  hugo.IsProduction  }}
   {{ $js = $js | fingerprint }}
 {{ end -}}
-<script src="{{ $js.RelPermalink }}" {{ if  hugo.IsProduction  }} integrity="{{ $js.Data.Integrity }}" {{ end }}{{ if $defer }} defer{{ end}}></script>
+<script src="{{ $js.RelPermalink }}" {{ if  hugo.IsProduction  }} integrity="{{ $js.Data.Integrity }}" {{ end }}{{ if $defer }} defer{{ end}}{{ if $async }} async{{ end }}></script>

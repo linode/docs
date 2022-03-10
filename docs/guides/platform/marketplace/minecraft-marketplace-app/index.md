@@ -74,7 +74,7 @@ You can configure your Minecraft Server App by providing values for the followin
 
 ### General Options
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
+For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended plan:** The plan size should be based on the amount of traffic you expect to see on your server. We recommend 2GB of RAM for every 15 players. For example, if you are expecting a small group of players (between 1-15), the 2GB plan should suffice. Up to 30 players, a 4GB Linode would be a better fit.

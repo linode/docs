@@ -29,6 +29,7 @@ aker
 alef
 alertmanager
 alex
+alexa
 alexey
 alfano
 alives
@@ -40,6 +41,7 @@ amavis
 amavisd
 amd64
 ananke
+aniszczyk
 anonymization
 anonymize
 anonymizing
@@ -67,6 +69,7 @@ aren
 argv
 arping
 arptables
+Asana
 askbot
 aske
 async
@@ -169,6 +172,7 @@ boonex
 bootable
 bootloader
 bottlerocket
+bottomley
 bootup
 bootups
 boto
@@ -225,6 +229,7 @@ changeme
 changeset
 changesets
 characterwise
+chatbot
 chatbots
 chatrooms
 cheatsheet
@@ -255,6 +260,7 @@ client2
 clojure
 couchbase
 cloudant
+cloudera
 cloudflare
 cloudnet
 cloudron
@@ -284,6 +290,7 @@ configr
 configs
 configtest
 configurability
+connectionism
 connectionless
 containerd
 containerised
@@ -309,6 +316,7 @@ craigslist
 crashingdaily
 createdt
 createfromstackscript
+crewless
 cri
 cron
 crond
@@ -353,6 +361,7 @@ daemonizing
 daemonset
 dahdi
 dallas
+dao
 databags
 datacenter
 datadir
@@ -386,6 +395,7 @@ declaratively
 deduplication
 deepin
 defragment
+dejong
 deloitte
 delpy
 demultiplexer
@@ -476,6 +486,7 @@ ebtables
 ebuild
 ecommerce
 ecute
+edmonds
 edu
 efi
 ejabberd
@@ -590,6 +601,7 @@ flatpress
 florian
 flowlens
 flyspray
+Focalboard
 foodcritic
 fortinet
 fortnite
@@ -677,6 +689,7 @@ gogs
 golang
 goldmark
 gomega
+goostman
 gopwt
 goroutine
 goroutines
@@ -688,6 +701,7 @@ gping
 gradle
 grafana
 graphql
+Grav
 graylog
 graylog2
 greenbone
@@ -726,7 +740,10 @@ hba
 hd0
 hdfs
 healthcheck
+healthtech
 heartbleed
+hebb
+hebbian
 heredoc
 heroku
 hexo
@@ -744,6 +761,7 @@ host1
 host2
 hostname
 hostnames
+hortonworks
 hotfix
 hotlink
 hotlinked
@@ -770,6 +788,7 @@ Hugo
 hulu
 hvc0
 hybla
+hykes
 hypercorn
 hyperefficient
 hyperparameter
@@ -836,6 +855,7 @@ inrupt
 insmod
 inspec
 intel
+interconnectivity
 interdomain
 interruptible
 intra-application
@@ -942,6 +962,7 @@ kickban
 kickbans
 kickstarter
 killall
+kinect
 kinser
 kitchensalt
 klei
@@ -966,6 +987,7 @@ kubelet
 kubelets
 kubernetes
 kubespray
+Kuma
 kustomize
 kuznetosv
 lambdabunker
@@ -989,6 +1011,8 @@ lib32
 libaprutil1
 libc
 libc6
+libcontainer
+libcontainers
 libcurl
 libev
 libgcc1
@@ -1015,6 +1039,7 @@ linodego
 linodes
 linter
 lish
+liskov
 listdir
 listserv
 listservs
@@ -1023,6 +1048,7 @@ li181
 li263
 lke
 lksemel
+lmctfy
 lo0
 loadavg
 loadout
@@ -1140,12 +1166,14 @@ middleware
 mimikatz
 minecraft
 mineshafts
+minh
 miniconda
 miniconda3
 minification
 minikf
 minikube
 minimalistic
+minimax
 minio
 minisockets
 minitest
@@ -1158,6 +1186,7 @@ mixin
 mixins
 mkdir
 mkpasswd
+mktime
 mkv
 mnesia
 mngtmpaddr
@@ -1170,6 +1199,7 @@ moodle
 mongocryptd
 mongodb
 mongod
+mongodump
 mongoimport
 mongosh
 monit
@@ -1200,6 +1230,7 @@ multilink
 multiplatform
 multiport
 multisite
+multitenant
 multiuser
 mutator
 munin
@@ -1266,6 +1297,7 @@ netstat
 netstumbler
 netuser
 networkd
+neurophysiologist
 newark
 newgrp
 newtag
@@ -1315,6 +1347,7 @@ ns1
 ns2
 nsd4
 nslookup
+nsinit
 ntop
 ntopng
 ntp
@@ -1399,6 +1432,7 @@ pem
 pentest
 pentesting
 pepi
+perceptron
 percona
 performant
 perl
@@ -1432,11 +1466,13 @@ plone
 pluggable
 png
 pocketmine
+podman
 poettering
 pokemon
 pop3
 pop3d
 pop3s
+poplib
 portainer
 portmapper
 postgres
@@ -1548,6 +1584,7 @@ rebased
 rebases
 rebasing
 rebootuser
+rebranded
 recompiles
 reconnections
 recordset
@@ -1582,6 +1619,7 @@ remediations
 remi
 remmina
 remotehost
+replicants
 replicaset
 replicationcontrollers
 replset
@@ -1619,6 +1657,7 @@ rocommunity
 rofi
 rollout
 rooknfs
+rosenblatt
 rossum
 roundcube
 routable
@@ -1656,6 +1695,7 @@ saas
 sakila
 safend
 salesforce
+Saltcorn
 sam
 samy
 sandcat
@@ -1675,6 +1715,7 @@ sbt
 scgi
 schroot
 schaeffer
+schemaless
 schtasks
 scm
 scp
@@ -1747,6 +1788,7 @@ sievers
 signup
 singapore
 sintra
+siri
 sitename
 sklearn
 slackpkg
@@ -1803,6 +1845,7 @@ stalkyard
 stallman
 starkiller
 starttls
+statista
 statsd
 statusbar
 stdin
@@ -1826,6 +1869,7 @@ subfiles
 subfolder
 subkey
 subkeys
+sublanguage
 submenu
 subnet
 subnets
@@ -1866,6 +1910,7 @@ syntastic
 syntaxes
 sys
 sysconfig
+sysdig
 sysctl
 syslog
 sysstat
@@ -1969,6 +2014,7 @@ tw
 twilio
 txt
 txz
+tz
 tzurbaev
 uber
 ubuntu
@@ -2079,6 +2125,7 @@ virtualhost
 virtualizations
 virtualize
 virtualized
+virtualizing
 virtualmin
 Virustotal
 vishing
