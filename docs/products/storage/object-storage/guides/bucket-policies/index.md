@@ -2,8 +2,9 @@
 author:
   name: Linode
   email: docs@linode.com
-title: "Setting Access using Bucket Policies"
-description: ""
+title: "Define Access and Permissions using Bucket Policies"
+description: "Learn how to use bucket policies to set permissions and access controls within Object Storage"
+date: 2022-03-11
 ---
 
 Bucket policies are a mechanism for managing permissions and access to Object Storage. When compared to ACLs, bucket policies can only be applied across an entire bucket (not to individual objects), though they offer finer control over the types of permissions you can grant to a user.
@@ -36,7 +37,7 @@ The **Effect** section defines if access is allowed (`Allow`) or denied (`Deny`)
 
 The **Principal** section defines the user or entity to which the policy applies. See [Amazon S3 Principals](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-bucket-user-policy-specifying-principal-intro.html).
 
--   **Specific user:** Specify a Object Storage canonical ID to have the policy apply to that user. For help finding the canonical ID, see [Find Canonical User ID](/docs/products/storage/object-storage/guides/find-canonical-id/).
+-   **Specific user:** Specify an Object Storage canonical ID to have the policy apply to that user. For help finding the canonical ID, see [Find Canonical User ID](/docs/products/storage/object-storage/guides/find-canonical-id/).
 
         "Principal": {
           "AWS": [
@@ -60,21 +61,21 @@ For a full list of actions, see [Ceph > Bucket Policies](https://docs.ceph.com/e
 
 ### Resource
 
-The reference to the object storage resource to which the policy applies. This is formatted as `"arn:aws:s3:::[bucket]"` to apply to the bucket itself or `"arn:aws:s3:::[bucket]/[object]"` to apply to objects as well. In both cases, replace *[bucket]* with the label for the bucket and *[object]* with either the wildcard value (`*`) that designates all objects or the path and name of the object. See [Amazon S3 resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-arn-format.html).
+A policy is applied to Object Storage **resources**, such as buckets and objects. Bucket resources are formatted as `"arn:aws:s3:::[bucket]"`. To apply a policy to some or all objects within a bucket, use `"arn:aws:s3:::[bucket]/[object]"`. In both cases, replace *[bucket]* with the label for the bucket and *[object]* with either the wildcard value (`*`) that designates all objects or the path and name of the object. See [Amazon S3 resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-arn-format.html).
 
--   **All objects:** Apply this statement to all objects within the bucket labeled *example-bucket*.
+-   **All objects:** Apply the policy to all objects within the bucket labeled *example-bucket*.
 
         "Resource": [
           "arn:aws:s3:::example-bucket/*"
         ]
 
--   **All objects in specific directory:** Apply this statement to all objects in the `assets` folder within the bucket labeled *example-bucket*.
+-   **All objects in specific directory:** Apply the policy to all objects in the `assets` folder within the bucket labeled *example-bucket*.
 
         "Resource": [
-          "arn:aws:s3:::example-bucket/example-file.ext"
+          "arn:aws:s3:::example-bucket/folder/*"
         ]
 
--   **Specific object:** Apply this statement to the object `example-file.ext` within the bucket labeled *example-bucket*.
+-   **Specific object:** Apply the policy to the object `example-file.ext` within the bucket labeled *example-bucket*.
 
         "Resource": [
           "arn:aws:s3:::example-bucket/example-file.ext"

@@ -34,7 +34,7 @@ See the following guides from AWS for more details configuring the CLI: [Quick S
 
 ## Additional Parameters for AWS CLI Commands
 
-- **Endpoint URL:** When using the AWS CLI with a non-AWS service, like Linode's Object Storage, you must always specify the endpoint url in each command. This is done through the `--endpoint` parameter. When using the commands in this guide, always replace *[endpoint-url]* with the cluster URL that corresponds with the data center you're using (see [Cluster URL (S3 endpoint)](/docs/products/storage/object-storage/guides/urls/#cluster-url-s3-endpoint)
+- **Endpoint URL:** When using the AWS CLI with a non-AWS service, like Linode's Object Storage, you must always specify the endpoint url in each command. This is done through the `--endpoint` parameter. When using the commands in this guide, always replace *[endpoint-url]* with the cluster URL that corresponds with the data center you're using (see [Cluster URL (S3 endpoint)](/docs/products/storage/object-storage/guides/urls/#cluster-url-s3-endpoint)).
 
 ## Interacting with Buckets
 

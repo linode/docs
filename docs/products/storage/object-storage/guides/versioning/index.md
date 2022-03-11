@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 title: "Versioning (Retain Object Version History)"
 description: "Learn how to use versioning with Linode's Object Storage to retain previous versions of an object."
-published: 2022-02-25
+published: 2022-03-11
 aliases: ['/platform/object-storage/bucket-versioning/','/guides/bucket-versioning/']
 ---
 
@@ -48,7 +48,7 @@ Versioning is enabled on the bucket level. This means that every object in a buc
 
         aws s3api get-bucket-versioning --endpoint=[cluster-url] --bucket=[bucket-label]
 
-    You should see output like the following:
+    The output of that command should display a **Status** of *Enabled*:
 
     {{< output >}}
 {
@@ -56,8 +56,6 @@ Versioning is enabled on the bucket level. This means that every object in a buc
     "MFADelete": "Disabled"
 }
 {{< /output >}}
-
-    Here you can see that bucket versioning has been successfully app
 
 ## Test Versioning
 

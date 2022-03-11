@@ -46,7 +46,7 @@ To retrieve the canonical id of *your account* within the AWS CLI, run the follo
     aws s3api list-buckets --query Owner.ID --output text --endpoint=[bucket-url]
 
 {{<note>}}
-The AWS CLI must be configured to use the Access Key of the account to which the bucket belongs
+The AWS CLI must be configured to use the Access Key of the account to which the bucket belongs.
 {{</note>}}
 
 ## Curl
@@ -58,7 +58,7 @@ Alternatively, you *may* be able to retrieve the canonical ID by curling a bucke
 
 Run the following curl command, replacing *[bucket-url]* with the URL of the bucket (ex: `example-bucket.us-southeast-1.linodeobjects.com`). See [Bucket URLs](/docs/products/storage/object-storage/guides/urls/#bucket-url) for instructions on formatting your bucket URL.
 
-    curl other-users-bucket.us-east-1.linodeobjects.com
+    curl [bucket-url]
 
 Within the output, the canonical ID is displayed within the `<Owner><ID>` property. In the example output below, the ID is `a0000000-000a-0000-0000-00d0ff0f0000`.
 

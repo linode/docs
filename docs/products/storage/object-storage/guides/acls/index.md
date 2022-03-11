@@ -2,9 +2,11 @@
 author:
   name: Linode
   email: docs@linode.com
-title: "Setting Permissions using ACLs (Access Control Lists)"
+title: "Define Access and Permissions using ACLs (Access Control Lists)"
 description: "Learn how to use ACLs to set permissions and access controls within Object Storage"
 aliases: ['/platform/object-storage/how-to-use-object-storage-acls-and-bucket-policies/', '/guides/how-to-use-object-storage-acls-and-bucket-policies/']
+published: 2019-12-16
+modified: 2022-03-11
 ---
 
 Access Control Lists (ACLs) are a method of defining access to Object Storage resources. You can apply ACLs to both buckets and objects, giving users access and controlling their permission level. There are two generalized modes of access: setting buckets and/or objects to be private or public. A few other more granular settings are also available; the [Cloud Manager](#granular-permissions-for-cloud-manager) and [s3cmd](#granular-permissions-for-s3cmd) sections provide information on these respective settings.
@@ -117,7 +119,7 @@ The more granular permissions are:
 
     s3cmd setacl s3://acl-example --acl-grant=PERMISSION:CANONICAL_ID
 
-Substitute `acl-example` with the name of the bucket (and the object, if necessary), `PERMISSION` with a permission from the above table, and `CANONICAL_ID` with the canonical ID of the user to which you would like to grant permissions.
+Substitute `acl-example` with the name of the bucket (and the object, if necessary), `PERMISSION` with a permission from the above table, and `CANONICAL_ID` with the canonical ID of the user to which you would like to grant permissions. See [Find the Canonical User ID for an Account](/docs/products/storage/object-storage/guides/find-canonical-id/) for details on finding the canonical ID.
 
 **Revoking a permission:** To revoke a specific permission, you can use the `setacl` command with the `acl-revoke` flag:
 
