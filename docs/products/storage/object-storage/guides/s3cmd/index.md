@@ -90,7 +90,7 @@ Creates a bucket with the specified bucket label. See the [Create and Manage Buc
 
 **Example:** Create a bucket with the label of "example-bucket":
 
-    s3cmd mb s3://bucket-label
+    s3cmd mb s3://example-bucket
 
 ### Delete a Bucket
 
@@ -152,6 +152,32 @@ To delete a bucket that has files in it, include the `--recursive` (or `-r`) opt
 To delete all files in a bucket, include the `--recursive` (or `-r`) option *and* the `--force` (or `-f`) option. Use caution when running this command:
 
     s3cmd rm -r -f s3://example-bucket/
+
+## Permissions and Access Controls
+
+### Apply a Bucket Policy
+
+**Command:** `s3cmd setpolicy [policy-file] s3://[bucket-label]`, replacing *[bucket-label]* with the label for your bucket and *[policy-file]* with the filename and path of your bucket policy file.
+
+**Example:** Apply the bucket policies defined within the file "policy.json" to the bucket called "example-bucket":
+
+    s3cmd setpolicy policy.json s3://example-bucket
+
+To ensure that it has been applied correctly, you can use the `info` command:
+
+    s3cmd info s3://bucket-policy-example
+
+You should see output like the following:
+
+{{< output >}}
+s3://example-bucket/ (bucket):
+   Location:  default
+   Payer:     BucketOwner
+   Expiration Rule: none
+   Policy:    b'{\n  "Version": "2012-10-17",\n  "Statement": [{\n    "Effect": "Allow",\n    "Principal": {"AWS": ["arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"]},\n    "Action": ["s3:PutObject","s3:GetObject","s3:ListBucket"],\n    "Resource": [\n      "arn:aws:s3:::bucket-policy-example/*"\n    ]\n  }]\n}'
+   CORS:      none
+   ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
+{{</ output >}}
 
 ## Create a Signed URL with S3cmd
 
