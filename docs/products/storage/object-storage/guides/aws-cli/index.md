@@ -27,14 +27,14 @@ Installing the AWS CLI version 2 is typically accomplished by downloading a pack
 
     - **AWS Access Key ID:** Enter the access key you wish to use. See [Managing Access Keys](/docs/products/storage/object-storage/guides/access-keys/).
     - **AWS Secret Access Key:** Enter the secret key that corresponds with the access key. This was displayed once when generating the access key.
-    - **Default region name:** Press enter without inputing any characters to keep the default `us` region. Do not change this, even if you use Object Storage in region outside the U.S.
-    - **Default output format:** Press enter without inputing any characters.
+    - **Default region name:** Press enter without inputting any characters to keep the default `us` region. Do not change this, even if you use Object Storage in region outside the U.S.
+    - **Default output format:** Press enter without inputting any characters.
 
 See the following guides from AWS for more details configuring the CLI: [Quick Setup](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html) and [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 
 ## Additional Parameters for AWS CLI Commands
 
-- **Endpoint URL:** When using the AWS CLI with a non-AWS service, like Linode's Object Storage, you must always specify the endpoint url in each command. This is done through the `--endpoint` parameter. When using the commands in this guide, always replace *[endpoint-url]* with the cluster URL that corresonds with the data center you're using (see [Cluster URL (S3 endpoint)](/docs/products/storage/object-storage/guides/urls/#cluster-url-s3-endpoint)
+- **Endpoint URL:** When using the AWS CLI with a non-AWS service, like Linode's Object Storage, you must always specify the endpoint url in each command. This is done through the `--endpoint` parameter. When using the commands in this guide, always replace *[endpoint-url]* with the cluster URL that corresponds with the data center you're using (see [Cluster URL (S3 endpoint)](/docs/products/storage/object-storage/guides/urls/#cluster-url-s3-endpoint)
 
 ## Interacting with Buckets
 

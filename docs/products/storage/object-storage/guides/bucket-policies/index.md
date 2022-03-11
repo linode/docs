@@ -60,7 +60,7 @@ For a full list of actions, see [Ceph > Bucket Policies](https://docs.ceph.com/e
 
 ### Resource
 
-The reference to the object storage resource to which the policy applies. This is formatted as `"arn:aws:s3:::[bucket]"` to apply to the bucket itself or `"arn:aws:s3:::[bucket]/[object]"` to apply to objects as well. In both cases, repalce *[bucket]* with the label for the bucket and *[object]* with either the wildcard value (`*`) that desinates all objects or the path and name of the object. See [Amazon S3 resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-arn-format.html).
+The reference to the object storage resource to which the policy applies. This is formatted as `"arn:aws:s3:::[bucket]"` to apply to the bucket itself or `"arn:aws:s3:::[bucket]/[object]"` to apply to objects as well. In both cases, replace *[bucket]* with the label for the bucket and *[object]* with either the wildcard value (`*`) that designates all objects or the path and name of the object. See [Amazon S3 resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-arn-format.html).
 
 -   **All objects:** Apply this statement to all objects within the bucket labeled *example-bucket*.
 
@@ -149,7 +149,7 @@ By using the **Condition** section and the **IpAddress** and **NotIpAddress** co
 
 If the **Effect** is set to `Allow`, use the **IpAddress** condition to specify that *just* traffic from that IP address is allowed and use **NotIpAddress** to allow all traffic *except* from that IP.
 
-If the **Effect** is set to `Deny`, use the **IpAddress** condition to deny traffic from that IP addrees and use **NotIpAddress** to deny all traffic *except* from that IP.
+If the **Effect** is set to `Deny`, use the **IpAddress** condition to deny traffic from that IP address and use **NotIpAddress** to deny all traffic *except* from that IP.
 
 The example below allows all traffic from only the specified IP address:
 

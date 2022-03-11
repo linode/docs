@@ -18,7 +18,7 @@ Every version of an object counts towards the monthly billable storage quota. Wh
 
 ## Using Versioning within Linode's Object Storage Service
 
-While versioining is natively supported within our Object Storage service, none of our first party tooling (such as the Cloud Manager, the Linode CLI, or the Linode API) can manage this feature. Currently, object versioning can only be enabled, disabled, and otherwise managed through third party tools like Cyberduck and the AWS CLI.
+While versioning is natively supported within our Object Storage service, none of our first party tooling (such as the Cloud Manager, the Linode CLI, or the Linode API) can manage this feature. Currently, object versioning can only be enabled, disabled, and otherwise managed through third party tools like Cyberduck and the AWS CLI.
 
 ## Enable Versioning
 
@@ -40,7 +40,7 @@ Versioning is enabled on the bucket level. This means that every object in a buc
 
 1.  Install and configure the AWS CLI to work with your Object Storage account. See the [AWS CLI](/docs/products/storage/object-storage/guides/aws-cli/) guide.
 
-1.  Enable bucket versioning with the `put-bucket-versioning` command, replacing *[cluster-url]* with the cluster URL that corresonds with the data center you're using (see [Cluster URL (S3 endpoint)](/docs/products/storage/object-storage/guides/urls/#cluster-url-s3-endpoint)) and *[bucket-label]* with the label/name of your bucket.
+1.  Enable bucket versioning with the `put-bucket-versioning` command, replacing *[cluster-url]* with the cluster URL that corresponds with the data center you're using (see [Cluster URL (S3 endpoint)](/docs/products/storage/object-storage/guides/urls/#cluster-url-s3-endpoint)) and *[bucket-label]* with the label/name of your bucket.
 
         aws s3api put-bucket-versioning --endpoint=[cluster-url] --bucket=[bucket-label] --versioning-configuration Status=Enabled
 
@@ -87,7 +87,7 @@ Open the **View** menu and click **Show Hidden Files**. The previous versions of
 
 ### AWS CLI
 
-Run the `list-object-versions` command, replacing *[cluster-url]* with the cluster URL that corresonds with the data center you're using (see [Cluster URL (S3 endpoint)](/docs/products/storage/object-storage/guides/urls/#cluster-url-s3-endpoint)), *[bucket-label]* with the label/name of your bucket, and *[object]* with the object key (full path and filename) of the object. If you ommit the `--prefix=[object]` option, the command outputs all objects.
+Run the `list-object-versions` command, replacing *[cluster-url]* with the cluster URL that corresponds with the data center you're using (see [Cluster URL (S3 endpoint)](/docs/products/storage/object-storage/guides/urls/#cluster-url-s3-endpoint)), *[bucket-label]* with the label/name of your bucket, and *[object]* with the object key (full path and filename) of the object. If you omit the `--prefix=[object]` option, the command outputs all objects.
 
     aws s3api list-object-versions --endpoint=[cluster-url] --bucket=[bucket-label] --prefix=[object]
 
@@ -126,7 +126,7 @@ If running this command with the prefix option set to the `example-file.txt` fil
 }
 {{</output>}}
 
-Each version is listed, along with its individual object metatags.
+Each version is listed, along with its individual object metadata.
 
 ## Download and Restore a Previous Version
 
@@ -138,7 +138,7 @@ To restore that version of the file, re-upload it. Another method is to delete a
 
 ### AWS CLI
 
-To download a previous version of an object, run the `get-object` command, replacing *[cluster-url]* with the cluster URL that corresonds with the data center you're using (see [Cluster URL (S3 endpoint)](/docs/products/storage/object-storage/guides/urls/#cluster-url-s3-endpoint)), *[bucket-label]* with the label/name of your bucket, *[object]* with the object key (full path and filename) of the object, *[version-id]* with the **VersionId** value of whichever object you wish to download, *[output-file]* with whatever you wish to call the file on your local system.
+To download a previous version of an object, run the `get-object` command, replacing *[cluster-url]* with the cluster URL that corresponds with the data center you're using (see [Cluster URL (S3 endpoint)](/docs/products/storage/object-storage/guides/urls/#cluster-url-s3-endpoint)), *[bucket-label]* with the label/name of your bucket, *[object]* with the object key (full path and filename) of the object, *[version-id]* with the **VersionId** value of whichever object you wish to download, *[output-file]* with whatever you wish to call the file on your local system.
 
     aws s3api get-object --endpoint=[cluster-url] --bucket=[bucket-label] --key=[object] --version-id=[version-id] [output-file]
 
@@ -160,4 +160,4 @@ You should see output like the following:
 }
 {{< /output >}}
 
-To restore this version, you can reupload it. Alternatively, you can delete all newer versions.
+To restore this version, you can re-upload it. Alternatively, you can delete all newer versions.

@@ -17,7 +17,7 @@ To retrieve the canonical user ID of an account, choose one of the methods outli
 
 ## S3cmd
 
-The S3cmd utility can be used to retrive the canonical ID by running the `info` command below, replacing *[bucket-label]* with the label of the bucket.
+The S3cmd utility can be used to retrieve the canonical ID by running the `info` command below, replacing *[bucket-label]* with the label of the bucket.
 
     s3cmd info s3://[bucket-label]
 
@@ -41,7 +41,7 @@ If you see *none* as the ACL, it may indicate that your s3cmd is configured with
 
 ## AWS CLI
 
-To retrive the canonical id of *your account* within the AWS CLI, run the following command, replacing *[bucket-url]* with the URL of the bucket. See [Bucket URLs](/docs/products/storage/object-storage/guides/urls/#bucket-url) for instructions on formatting your bucket URL.
+To retrieve the canonical id of *your account* within the AWS CLI, run the following command, replacing *[bucket-url]* with the URL of the bucket. See [Bucket URLs](/docs/products/storage/object-storage/guides/urls/#bucket-url) for instructions on formatting your bucket URL.
 
     aws s3api list-buckets --query Owner.ID --output text --endpoint=[bucket-url]
 
