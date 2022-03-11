@@ -47,18 +47,8 @@ Guides for using Object Storage with various AWS SDKs:
 
 These additional guides explore targeted topics like setting up a static site and managing access and permissions for your buckets and objects:
 
-<<<<<<< HEAD
 - [Deploy a Static Site using Hugo and Object Storage](/docs/guides/host-static-site-object-storage/)
 
 - [Bucket Versioning with Linode Object Storage](/docs/guides/bucket-versioning/)
 
 - [How To Manage Objects with Lifecycle Policies](/docs/guides/how-to-manage-objects-with-lifecycle-policies/)
-=======
-- [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/)
-
-- [Bucket Versioning with Linode Object Storage](/docs/platform/object-storage/bucket-versioning/)
-
-- [How To Manage Objects with Lifecycle Policies](/docs/platform/object-storage/how-to-manage-objects-with-lifecycle-policies/)
-
-- [How to Enact Access Control Lists (ACLs) and Bucket Policies with Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage-acls-and-bucket-policies/)
->>>>>>> upstream/develop

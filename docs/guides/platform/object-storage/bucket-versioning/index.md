@@ -8,6 +8,7 @@ keywords: ['object','storage','bucket','version','versioning']
 tags: ["linode platform","version control system"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-22
+modified: 2022-02-24
 modified_by:
   name: Linode
 title: "Bucket Versioning with Linode Object Storage"
@@ -19,8 +20,6 @@ aliases: ['/platform/object-storage/bucket-versioning/']
 ---
 
 {{< content "object-storage-ga-shortguide" >}}
-
-{{< content "object-storage-cancellation-shortguide" >}}
 
 Linode Object Storage allows for bucket versioning so that you can retain different versions of your objects within buckets. This makes it easy to save older versions of objects, as well as quickly revert to an object's previous state.
 
