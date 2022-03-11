@@ -9,6 +9,8 @@ keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
 tags: ["security", "kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-10
+modified_by:
+  name: Linode
 title: 'How to Safely Upgrade Minor LKE Versions'
 concentrations: ["Kubernetes"]
 external_resources:
@@ -33,7 +35,7 @@ The current version of Kubernetes being used for each of your cluster configurat
 ![Check Kubernetes Version](check-kubernetes-version.png)
 
 {{< note >}}
-Alternatively, if you would like to get the current local version of Kubernetes on your cluster through kubectl,the following commmand can be entered:
+Alternatively, if you would like to get the current local version of Kubernetes on your cluster through kubectl,the following command can be entered:
 
         kubectl version | grep Server
 {{< /note >}}
@@ -49,7 +51,7 @@ While this process generally doesn't impact workloads in a significant way, it i
 
 ## Reviewing the Kubernetes Changelog
 
-The best method for ensuring uptime and a clean upgrade without issues is to carefully review the public changelog for the minor release your cluster will be upgrading to. All available information pertaining to kubernetes version changes can be found on Kubernetes' public [Changelog Page](https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG) for the Kubernetes project hosted on Github. In order to ensure that you'll be able to upgrade to the next minor version of Kubernetes without issue, find the changelog for the version of Kubernetes you will be upgrading to. For example, if your cluster is currently on version `v1.21`, select the changelog for `v1.22` or `CHANGELOG-1.22.md`. Minor version upgrades can only be performed one minor version ahead at a time, so this will always be one minor version ahead of your current Kubernetes version.
+The best method for ensuring uptime and a clean upgrade without issues is to carefully review the public changelog for the minor release your cluster will be upgrading to. All available information pertaining to Kubernetes version changes can be found on Kubernetes' public [Changelog Page](https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG) for the Kubernetes project hosted on Github. In order to ensure that you'll be able to upgrade to the next minor version of Kubernetes without issue, find the changelog for the version of Kubernetes you will be upgrading to. For example, if your cluster is currently on version `v1.21`, select the changelog for `v1.22` or `CHANGELOG-1.22.md`. Minor version upgrades can only be performed one minor version ahead at a time, so this will always be one minor version ahead of your current Kubernetes version.
 
 {{< note >}}
 When reviewing the changelog, it is important to keep in mind that **patch releases** are deployed automatically to LKE Control Plane Components as needed, however should not effect the intended behavior of your cluster. Only Major and Minor releases will have potentially breaking changes.
@@ -57,21 +59,21 @@ When reviewing the changelog, it is important to keep in mind that **patch relea
 
 Once you've found the correct Changelog for the version of Kubernetes you'll be upgrading to, find the section in the changelog that fits the the naming convention for the minor release of your current Kubernetes version for the changes of most consequence. If you are upgrading from Kubernetes version `1.21` for example, find the section labeled [Changelog Since v1.21.0](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.20.md#changelog-since-v1190). Read through this section carefully for any new features and deprecations, paying close attention to the [What's New](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#whats-new-major-themes) and [Urgent Upgrade Notes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#urgent-upgrade-notes) subsection for information on the most critical changes. Additional areas of special attention should include the [Known Issues](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#known-issues), [Deprecation Changes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#deprecation), and [API Changes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#api-change-1) subsections. That being said, for the absolute best guarantee of a clean upgrade, we recommend reading through this full section to gain a full understanding of what you may need to know.
 
-When upgrading from Kubernetes version 1.21 to [version 1.22](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#whats-new-major-themes) for example, LKE users will want to pay especially close attention to the removal of several beta Kubernetes APIs they may be using in their clusters. And adjust their configurations as needed by following Kubernetes' recommendations [linked from the changelog](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#v1-22).
+When upgrading from Kubernetes version 1.21 to [version 1.22](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#whats-new-major-themes) for example, LKE users will want to pay especially close attention to the removal of several beta Kubernetes APIs they may be using in their clusters and adjust their configurations as needed by following Kubernetes' recommendations [linked from the changelog](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#v1-22).
 
 As API changes are an issue that can commonly go unnoticed when upgrading LKE, we additionally recommend checking Kubernetes' [API deprecation guide](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#v1-22) for more information on API changes, and how they should be addressed in specific circumstances.
 
 {{< note >}}
 When investigating potential issues discovered by exploring the Kubernetes Changelog, you may need to search for specific strings containing potentially breaking configurations. Using the [grep command](https://www.linode.com/docs/guides/how-to-grep-for-text-in-files/) is generally a good way to do this quickly.
 
-For example, if you need to find where you may be using the currently deprecated API `networking.k8s.io/v1beta1`, enter the following command from the root directory containing your kubernetes configuration files:
+For example, if you need to find where you may be using the currently deprecated API `networking.k8s.io/v1beta1`, enter the following command from the root directory containing your Kubernetes configuration files:
 
     grep -r networking.k8s.io/v1beta1
 {{< /note >}}
 
 ## Searching for Compatibility Issues with Popeye
 
-Popeye is an open-source read-only tool used from wherever a user has `kubectl` installed, using kubernetes contexts defined in a `kubeconfig` file. It automatically scans live Kubernetes clusters, and provides an administrator with insight into issues that could arise from deployed resources and configurations. Once installed, Popeye will perform a comprehensive scan of your current configuration based on your active kubeconfig whenever entering the following command:
+Popeye is an open-source read-only tool used from wherever a user has `kubectl` installed, using Kubernetes contexts defined in a `kubeconfig` file. It automatically scans live Kubernetes clusters, and provides an administrator with insight into issues that could arise from deployed resources and configurations. Once installed, Popeye will perform a comprehensive scan of your current configuration based on your active kubeconfig whenever entering the following command:
 
     popeye
 
@@ -91,7 +93,7 @@ The following steps will complete the installation of popeye on Ubuntu **20.04 L
 
        sudo apt update && sudo apt upgrade
 
-1.  Install all packages that homebrew relies on:
+1.  Install all packages that Homebrew relies on:
 
         sudo apt install build-essential
 
@@ -110,7 +112,7 @@ The following steps will complete the installation of popeye on Ubuntu **20.04 L
 
 ### Mac OSx
 
-The following steps will complete the installation of popeye on Ubuntu **Mac OSx**:
+The following steps will complete the installation of Popeye on Ubuntu **Mac OSx**:
 
 1. Ensure that you can see all nodes in your cluster when entering the following command:
 
@@ -120,7 +122,7 @@ The following steps will complete the installation of popeye on Ubuntu **Mac OSx
 
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-1. Install popeye:
+1. Install Popeye:
 
         brew install derailed/popeye/popeye
 
@@ -142,7 +144,7 @@ Before proceeding with the installation of popeye, ensure that [wget](https://ww
 
 ### Running Popeye
 
-Once installed via brew, popeye can perform a scan by entering the following command:
+Once installed via brew, Popeye can perform a scan by entering the following command:
 
     popeye
 
@@ -150,7 +152,7 @@ If installed from the tarball, navigate to your home directory and enter the fol
 
     ./popeye
 
-Once entered, popeye will begin scanning against your current cluster context immediately, outputting a list of information pertaining to your configuration, and a letter grade once the script completes. Review the information that's outputted, and remediate issues as they arise to help ensure the migration process can be completed successfully. In a near perfect configuration, you should receive a letter grade of `A`.
+Once entered, Popeye will begin scanning against your current cluster context immediately, outputting a list of information pertaining to your configuration, and a letter grade once the script completes. Review the information that's outputted, and remediate issues as they arise to help ensure the migration process can be completed successfully. In a near perfect configuration, you should receive a letter grade of `A`.
 
 ![Popeye Scanning Results](popeye-results.png)
 
