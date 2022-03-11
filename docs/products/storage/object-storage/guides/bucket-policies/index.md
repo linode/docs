@@ -2,65 +2,116 @@
 author:
   name: Linode
   email: docs@linode.com
-title: "Setting Permissions using Bucket Policies"
+title: "Setting Access using Bucket Policies"
 description: ""
 ---
 
-Bucket policies can offer finer control over the types of permissions you can grant to a user.
+Bucket policies are a mechanism for managing permissions and access to Object Storage. When compared to ACLs, bucket policies can only be applied across an entire bucket (not to individual objects), though they offer finer control over the types of permissions you can grant to a user.
+
+## Components of a Policy
+
+Bucket policies are formatted using JSON with the following structure:
+
+{{< file "bucket-policy.json" json >}}
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": ...,
+    "Principal": ...,
+    "Action": ...,
+    "Resource": ...
+  }]
+}
+{{</ file >}}
+
+This file consists of a **Version** string (set to `2012-10-17`, which is the current version) and one or more **Statement** arrays, which define the actual policies you wish to use. Within each statement array are the **Effect**, **Principal**, **Action**, **Resource**, and optional **Condition** elements. Each of these are discussed below.
+
+### Effect
+
+The **Effect** section defines if access is allowed (`Allow`) or denied (`Deny`) to the specified resource. See [IAM JSON policy elements: Effect](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_effect.html).
+
+    "Effect":"Allow"
+
+### Principal
+
+The **Principal** section defines the user or entity to which the policy applies. See [Amazon S3 Principals](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-bucket-user-policy-specifying-principal-intro.html).
+
+-   **Specific user:** Specify a Object Storage canonical ID to have the policy apply to that user. For help finding the canonical ID, see [Find Canonical User ID](/docs/products/storage/object-storage/guides/find-canonical-id/).
+
+        "Principal": {
+          "AWS": [
+            "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
+          ]
+        }
+
+-   **Public/anonymous access:** Use a wildcard to grant access to everyone. This is commonly used for hosting a website through Object Storage.
+
+        "Principal":"*"
+
+### Action
+
+**Action** are the permissions granted (or removed) by the policy. These actions include the ability to list buckets, view objects, upload objects, and more:
+
+- `s3:PutObject`: Upload objects
+- `s3:GetObject`: Retrieve objects
+- `s3:ListBucket`: List the contents of a bucket
+
+For a full list of actions, see [Ceph > Bucket Policies](https://docs.ceph.com/en/latest/radosgw/bucketpolicy/#). You can also reference the [Amazon S3 actions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html) guide.
+
+### Resource
+
+The reference to the object storage resource to which the policy applies. This is formatted as `"arn:aws:s3:::[bucket]"` to apply to the bucket itself or `"arn:aws:s3:::[bucket]/[object]"` to apply to objects as well. In both cases, repalce *[bucket]* with the label for the bucket and *[object]* with either the wildcard value (`*`) that desinates all objects or the path and name of the object. See [Amazon S3 resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-arn-format.html).
+
+-   **All objects:** Apply this statement to all objects within the bucket labeled *example-bucket*.
+
+        "Resource": [
+          "arn:aws:s3:::example-bucket/*"
+        ]
+
+-   **All objects in specific directory:** Apply this statement to all objects in the `assets` folder within the bucket labeled *example-bucket*.
+
+        "Resource": [
+          "arn:aws:s3:::example-bucket/example-file.ext"
+        ]
+
+-   **Specific object:** Apply this statement to the object `example-file.ext` within the bucket labeled *example-bucket*.
+
+        "Resource": [
+          "arn:aws:s3:::example-bucket/example-file.ext"
+        ]
 
 {{< caution >}}
-In the examples below, access to all objects within a bucket are defined with a wildcard `*`. While these resources can be defined to target the bucket resource itself by removing the `/*` where the resource is defined. Creating a policy with this rule can cause the bucket to become inaccessible to the Linode Cloud Manager, API, and CLI.
+While a resource can target the bucket itself (by removing the `/*` in the first example), this can cause the bucket to become inaccessible to the Cloud Manager, API, and CLI.
 {{< /caution >}}
 
-## Basic Access Policy
+## Bucket Policy Examples
 
-Below is an example bucket policy written in JSON:
+### Allow Public Read Access
 
-{{< file "bucket_policy_example.json" json >}}
+If you wish to allow anyone to view and download objects within a bucket, use the following policy:
+
+{{< file "bucket_policy.json" json >}}
 {
   "Version": "2012-10-17",
   "Statement": [{
     "Effect": "Allow",
-    "Principal": {
-      "AWS": [
-        "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
-      ]
-    },
+    "Principal": "*",
     "Action": [
-      "s3:PutObject",
       "s3:GetObject",
       "s3:ListBucket"
     ],
     "Resource": [
-      "arn:aws:s3:::bucket-policy-example/*"
+      "arn:aws:s3:::bucket-example/*"
     ]
   }]
 }
 {{</ file >}}
 
-This policy allows the user with the canonical ID `a0000000-000a-0000-0000-00d0ff0f0000`, known here as the "principal", to interact with the bucket, known as the "resource". The "resource" that is listed (`bucket-policy-example`) is the only bucket the user has access to.
+### Grant an Account Limited Access to a Directory
 
-{{< note >}}
-The principal (a.k.a. the user) must have the prefix of `arn:aws:iam:::user/`, and the resource (a.k.a. the bucket) must have the prefix of `arn:aws:s3:::`.
-{{< /note >}}
+This policy file allows a user to list the bucket called `example-bucket` and view/download objects within the `test` directory. They are not able to perform any other actions.
 
-The permissions are specified in the `Action` array. For the current example, these are:
-
-- `s3:PutObject`: The ability to upload objects to a bucket
-- `s3:GetObject`: The ability to retrieve objects from a bucket
-- `s3:ListBucket`: The ability to list the contents of the bucket
-
-    {{< note >}}
-For a full list of of available actions, visit the [Ceph bucket policy documentation](https://docs.ceph.com/docs/master/radosgw/bucketpolicy/#limitations).
-{{< /note >}}
-
-The `Action` and `Principal.AWS` fields of the bucket policy are arrays. Therefore, you can easily add additional users and permissions to the bucket policy, separating them by a comma. To grant permissions to all users, you can supply a wildcard (`*`) to the `Principal.AWS` field.
-
-## Subdirectory Access Policy
-
-You can also define a finer level of control over the level of access to your bucket's directory structure using policy rules.
-
-{{< file "bucket-policy-directories.json" json >}}
+{{< file "bucket-policy.json" json >}}
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -73,7 +124,7 @@ You can also define a finer level of control over the level of access to your bu
         "s3:ListBucket"
       ],
       "Resource": [
-        "arn:aws:s3:::*"
+        "arn:aws:s3:::example-bucket"
       ]
     },
     {
@@ -85,119 +136,52 @@ You can also define a finer level of control over the level of access to your bu
         "s3:GetObject"
       ],
       "Resource": [
-        "arn:aws:s3:::bucket-policy-example/test/*"
+        "arn:aws:s3:::example-bucket/test/*"
       ]
     }
   ]
 }
 {{</ file >}}
 
-This example shows how you can grant read-only access to a user by allowing them to list buckets and get objects from the bucket only from the `test` directory. However, they can not perform any other actions.
+### Allow or Deny Access from a Specific IP Address
 
-## Denying Access by IP Address
+By using the **Condition** section and the **IpAddress** and **NotIpAddress** conditions, you can choose to allow or deny traffic from the specified IP address or range.
 
-If you wanted to deny all access to a resource and whitelist by IP address, you can change the `Effect` field from `Allow` to `Deny` and supply an IP address in a condition.
+If the **Effect** is set to `Allow`, use the **IpAddress** condition to specify that *just* traffic from that IP address is allowed and use **NotIpAddress** to allow all traffic *except* from that IP.
 
-{{< file "bucket-policy-deny.json" json >}}
+If the **Effect** is set to `Deny`, use the **IpAddress** condition to deny traffic from that IP addrees and use **NotIpAddress** to deny all traffic *except* from that IP.
+
+The example below allows all traffic from only the specified IP address:
+
+{{< file "bucket-policy.json" json >}}
 {
   "Version": "2012-10-17",
-  "Statement": [{
-    "Effect": "Deny",
-    "Principal": "*",
-    "Action": "s3:*",
-    "Resource": "arn:aws:s3:::bucket-policy-example/*",
-    "Condition": {
-      "NotIpAddress": {
-        "aws:SourceIp": "192.0.2.0"
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": "arn:aws:s3:::example-bucket/*",
+      "Condition": {
+        "IpAddress": {
+          "aws:SourceIp": "192.0.2.1/32"
+        }
       }
-    }
-  }]
+    },
+  ]
 }
 {{</ file >}}
 
-## Combining Rules
+## Applying Bucket Policies
 
-Only one policy file [can be enabled](#enable-a-bucket-policy) at a time. Therefore, if you wanted to enact several of the above rules together, instead of enabling them one at a time, you would need to combine them into a single file with each rule listed as items in the `Statements` array.
+After creating your bucket policy file and defining your policies, you need to use a third party tool to apply those policies to a bucket.
 
-{{< file "bucket-policy-combo.json" json >}}
-{
-  "Version": "2012-10-17",
-  "Statement": [{
-    "Effect": "Allow",
-    "Principal": {
-      "AWS": [
-        "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
-      ]
-    },
-    "Action": [
-      "s3:PutObject",
-      "s3:GetObject",
-      "s3:ListBucket"
-    ],
-    "Resource": [
-      "arn:aws:s3:::bucket-policy-example/*"
-    ]
-  },
-  {
-    "Effect": "Allow",
-    "Principal": {
-      "AWS": "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
-    },
-    "Action": [
-      "s3:ListBucket"
-    ],
-    "Resource": [
-      "arn:aws:s3:::*"
-    ]
-  },
-  {
-    "Effect": "Allow",
-    "Principal": {
-      "AWS": "arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"
-    },
-    "Action": [
-      "s3:GetObject"
-    ],
-    "Resource": [
-      "arn:aws:s3:::bucket-policy-example/test/*"
-    ]
-  },
-  {
-    "Effect": "Deny",
-    "Principal": "*",
-    "Action": "s3:*",
-    "Resource": "arn:aws:s3:::bucket-policy-example/*",
-    "Condition": {
-      "NotIpAddress": {
-        "aws:SourceIp": "192.0.2.0"
-      }
-    }
-  }]
-}
-{{</ file >}}
+### S3cmd
 
-## Enable a Bucket Policy
+**Command:** `s3cmd setpolicy [policy-file] s3://[bucket-label]`, replacing *[bucket-label]* with the label for your bucket and *[policy-file]* with the filename and path of your bucket policy file.
 
-To enable the bucket policy, use the `setpolicy` s3cmd command, supplying the filename of the bucket policy as the first argument, and the S3 bucket address as the second argument:
+**Example:** Apply the bucket policies defined within the file "policy.json" to the bucket called "example-bucket":
 
-    s3cmd setpolicy bucket_policy_example.json s3://bucket-policy-example
+    s3cmd setpolicy policy.json s3://example-bucket
 
-To ensure that it has been applied correctly, you can use the `info` command:
-
-    s3cmd info s3://bucket-policy-example
-
-You should see output like the following:
-
-{{< output >}}
-s3://bucket-policy-example/ (bucket):
-   Location:  default
-   Payer:     BucketOwner
-   Expiration Rule: none
-   Policy:    b'{\n  "Version": "2012-10-17",\n  "Statement": [{\n    "Effect": "Allow",\n    "Principal": {"AWS": ["arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"]},\n    "Action": ["s3:PutObject","s3:GetObject","s3:ListBucket"],\n    "Resource": [\n      "arn:aws:s3:::bucket-policy-example/*"\n    ]\n  }]\n}'
-   CORS:      none
-   ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
-{{</ output >}}
-
-{{< note >}}
-The policy is visible in the output.
-{{< /note >}}
+See [S3cmd > Apply a Bucket Policy](/docs/products/storage/object-storage/guides/s3cmd/#apply-a-bucket-policy) for more details.

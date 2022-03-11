@@ -11,27 +11,19 @@ tab_group_main:
 
 - [Upload and Manage Files (Objects)](/docs/products/storage/object-storage/guides/manage-files/): Learn how to view, upload, download, and delete objects through the Cloud Manager.
 
-<<<<<<< HEAD
 - [Manage Access Keys](/docs/products/storage/object-storage/guides/access-keys/): Access keys enable you to access Object Storage through other tools and your own applications. Learn how to generate and manage these in the Cloud Manager.
 
-- [Set Permissions using ACLs (Access Control Lists)](/docs/products/storage/object-storage/guides/acls/): Information on ACLs and how to use them to set permissions on Object Storage resources.
+- [Set Permissions/Access using ACLs (Access Control Lists)](/docs/products/storage/object-storage/guides/acls/): Information on ACLs and how to use them to set permissions on Object Storage resources.
 
-- [Set Permissions using Bucket Policies](/docs/products/storage/object-storage/guides/bucket-policies/): Information on bucket policies and how to use them to set permissions on Object Storage resources.
+- [Set Permissions/Access using Bucket Policies](/docs/products/storage/object-storage/guides/bucket-policies/): Information on bucket policies and how to use them to set permissions on Object Storage resources.
 
 - [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/): Every bucket and file can be accessed by a unique URL. Learn how to obtain these URLs.
 
 - [Configure a Custom Domain (with a TLS/SSL Certificate)](/docs/products/storage/object-storage/guides/custom-domain/): Linode's Object Storage supports accessing buckets and objects through a custom domain. Learn how to configure a custom domain with a TLS/SSL certificate.
 
 - [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/): Learn how to cancel the Object Storage service from the Cloud Manager.
-=======
-- [Manage Access Keys](/docs/products/storage/object-storage/guides/access-keys/): Access keys enable you to access Object Storage through other tools and your own applications. Learn how to generate these in the Cloud Manager.
 
-- [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/): Every bucket and file can be accessed by a unique URL. Learn how to obtain these URLs.
-
-- [Configure a Custom Domain (with a TLS/SSL Certificate)](/docs/products/storage/object-storage/guides/custom-domain/): Linode's Object Storage supports accessing buckets and objects through a custom domain. Learn how to configure a custom domain with a TLS/SSL certificate.
->>>>>>> upstream/develop
-
-- [Object Storage Use Cases](/docs/products/storage/object-storage/guides/use-cases/): Information on the benefits and common use cases of Linode's Object Storage service.
+- [Find the Canonical User ID for an Account](/docs/products/storage/object-storage/guides/find-canonical-id/): Learn how to find the canonical user ID for an account.
 
 - [Object Storage Use Cases](/docs/products/storage/object-storage/guides/use-cases/): Information on the benefits and common use cases of Linode's Object Storage service.
 

@@ -11,8 +11,6 @@ Access Control Lists (ACLs) are a method of defining access to Object Storage re
 
 ## ACLs in the Cloud Manager
 
-In Cloud Manager ACLs can be controlled at both the bucket and object level. ACLs in Cloud Manager go beyond s3cmd's ACLs and combine them with [bucket policies](#bucket-policies-with-s3cmd) for more granular control than just *public* or *private*.
-
 ### Granular Permissions for Cloud Manager
 
 | Level | Permission | Description |
@@ -102,85 +100,6 @@ To set an object or bucket to private, you can use the `setacl` command and the 
     s3cmd setacl s3://acl-example --acl-private
 
 This prevents users from accessing the bucket's contents over the public Internet.
-
-### Retrieving a Canonical ID
-
-For the s3cmd method, you also need the [*canonical ID*](#retrieving-a-canonical-id) of each account you wish to grant additional permissions to.
-
-{{< note >}}
-Each Linode account has a single canonical ID within Object Storage, which means that all users and Object Storage API keys on an account share the same canonical ID.
-{{< /note >}}
-
-Choose one of the following methods to determine a bucket owner's canonical ID.
-
-#### Through s3cmd
-
-Run the following command on a bucket belonging to a different Linode customer account, replacing *other-users-bucket* with the name of their bucket.
-
-    s3cmd info s3://other-users-bucket
-
-{{< note >}}
-The bucket referred to in this section is an arbitrary bucket on the target user's account. It is not related to the bucket on your account that you would like to set ACLs or bucket policies on.
-{{< /note >}}
-
-There are two options for running this command:
-
-- The users you're granting or restricting access to can run this command on one of their buckets and share their canonical ID with you, or:
-
-- You can run this command yourself if you have use of their access tokens (you need to configure s3cmd to use their access tokens instead of your own).
-
-The output is similar to the following:
-
-{{< output >}}
-s3://other-users-bucket/ (bucket):
-Location:  default
-Payer:     BucketOwner
-Expiration Rule: none
-Policy:    none
-CORS:      none
-ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
-{{</ output >}}
-
-The canonical ID of the owner of the bucket is the long string of letters, dashes, and numbers found in the line labeled `ACL`, which in this case is `a0000000-000a-0000-0000-00d0ff0f0000`. If you see *none* as the ACL, it may indicate that your s3cmd is configured with a different region than the bucket is located within. See the [Additional Configuration Options](/docs/products/storage/object-storage/guides/s3cmd/#additional-configuration-options) of our s3cmd guide to learn how to manually edit the s3cmd configuration.
-
-#### Through curl
-
-Alternatively, you *may* be able to retrieve the canonical ID by curling a bucket and retrieving the Owner ID field from the returned XML. This method is an option when both of these conditions are true:
-
-- The bucket has objects within it and has already been set to public (with a command like `s3cmd setacl s3://other-users-bucket --acl-public`).
-- The bucket has not been set to serve static websites.
-
-Run the following curl command, replacing *other-users-bucket* with the bucket name and the cluster URL with the relevant value:
-
-    curl other-users-bucket.us-east-1.linodeobjects.com
-
-{{< content "object-storage-cluster-shortguide" >}}
-
-This results in the following output:
-
-{{< output >}}
-<ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-    <Name>acl-bucket-example</Name>
-    <Prefix/>
-    <Marker/>
-    <MaxKeys>1000</MaxKeys>
-    <IsTruncated>false</IsTruncated>
-    <Contents>
-    <Key>cpanel_marketplace.gif</Key>
-    <LastModified>2019-11-20T16:52:49.946Z</LastModified>
-    <ETag>"9aeafcb192a8e540e7be5b51f7249e2e"</ETag>
-    <Size>961023</Size>
-    <StorageClass>STANDARD</StorageClass>
-    <Owner>
-        <ID>a0000000-000a-0000-0000-00d0ff0f0000</ID>
-        <DisplayName>a0000000-000a-0000-0000-00d0ff0f0000</DisplayName>
-    </Owner>
-    <Type>Normal</Type>
-    </Contents>
-</ListBucketResult>
-{{</ output >}}
-
-In the above output, the canonical ID is `a0000000-000a-0000-0000-00d0ff0f0000`.
 
 ### Granular Permissions for s3cmd
 
