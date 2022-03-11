@@ -1469,6 +1469,7 @@ pocketmine
 podman
 poettering
 pokemon
+popeye
 pop3
 pop3d
 pop3s
@@ -2040,6 +2041,7 @@ uncomment
 uncommented
 uncommenting
 uncompress
+uncordoned
 unencrypted
 unexported
 unformatted

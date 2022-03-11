@@ -10,7 +10,7 @@ published: 2019-04-09
 modified: 2022-02-04
 modified_by:
   name: Linode
-title: "Host a Static Site using Linode Object Storage"
+title: "Deploy a Static Site using Hugo and Object Storage"
 contributor:
   name: Linode
 external_resources:
