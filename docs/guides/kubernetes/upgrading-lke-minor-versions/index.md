@@ -77,7 +77,7 @@ Popeye is an open-source read-only tool used from wherever a user has `kubectl` 
 
     popeye
 
-Popeye can either be installed using the package manager [Homebrew](https://brew.sh/), by using the binary from a tarball hosted on [Popeye's github](https://github.com/derailed/popeye/releases) or by installing [via source](https://github.com/derailed/popeye#installation). While any option is possible, this guide will only focus on the installation process using Brew on both [Ubuntu 20.04](http://localhost:1313/docs/guides/upgrading-lke-versions/#ubuntu-2004) and [Mac OSx](http://localhost:1313/docs/guides/upgrading-lke-versions/#mac-osx), and through the Linux binary tarballs. That being said, the installation process should be largely the same across Operating Systems and Distros, and steps can be adjusted as needed.
+Popeye can either be installed using the package manager [Homebrew](https://brew.sh/), by using the binary from a tarball hosted on [Popeye's github](https://github.com/derailed/popeye/releases) or by installing [via source](https://github.com/derailed/popeye#installation). While any option is possible, this guide will only focus on the installation process using Brew on both **Ubuntu 20.04** and **Mac OSx**, and through Linux binary tarballs. That being said, the installation process should be largely the same across Operating Systems and Distros, and steps can be adjusted as needed.
 
 ## Installing Popeye Using Homebrew:
 
@@ -134,7 +134,7 @@ Before proceeding with the installation of popeye, ensure that [wget](https://ww
 
         uname -m
 
-1. Using `wget`, download the linux tarball for Popeye [matching the latest release and your architecture](ttps://github.com/derailed/popeye/releases), in this case `v0.9.8` as the latest release and `x86_64` as the architecture:
+1. Using `wget`, download the Linux tarball for Popeye [matching the latest release and your architecture](ttps://github.com/derailed/popeye/releases), in this case `v0.9.8` as the latest release and `x86_64` as the architecture:
 
         wget https://github.com/derailed/popeye/releases/download/v0.9.8/popeye_Linux_x86_64.tar.gz
 
