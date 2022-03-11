@@ -1,5 +1,4 @@
 ---
-slug: how-to-manage-objects-with-lifecycle-policies
 author:
   name: Linode Community
   email: docs@linode.com
@@ -7,15 +6,13 @@ description: "Use lifecycle policies to manage deleting objects in Linode Object
 keywords: ['object','storage','lifecycle','policy','policies','delete','bucket','version','multipart']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-10-18
-modified: 2021-11-24
+modified: 2022-03-11
 modified_by:
   name: Linode
-title: "How To Manage Objects with Lifecycle Policies"
-h1_title: "Managing Objects with Lifecycle Policies"
-enable_h1: true
+title: "Lifecycle Policies"
 contributor:
   name: Linode
-aliases: ['/platform/object-storage/how-to-manage-objects-with-lifecycle-policies/','/platform/object-storage/lifecycle-policies/']
+aliases: ['/platform/object-storage/how-to-manage-objects-with-lifecycle-policies/','/platform/object-storage/lifecycle-policies/','/guides/lifecycle-policies/']
 tags: ["linode platform"]
 ---
 
@@ -116,6 +113,10 @@ Other actions can also be specified in a rule:
 </LifecycleConfiguration>
 {{</ file >}}
 
+{{<note>}}
+If a versioned object is deleted in a bucket with the `NoncurrentVersionExpiration` policy, only the DeleteMarker for that object (not the actual object itself) will be retained after the number of days specified by `NoncurrentDays` have passed since the object was deleted.
+{{</note>}}
+
 - `AbortIncompleteMultipartUpload`, and its child, `DaysAfterInitiation`. These work similarly to `NoncurrentVersionExpiration`, but instead of deleting previous versions of objects, they will delete failed multipart uploads. The following will delete failed multipart uploads three days after they were initiated:
 
     {{< file "lifecycle_policy_multipart_upload.xml" xml >}}
@@ -134,6 +135,10 @@ Other actions can also be specified in a rule:
     {{< disclosure-note "About multipart uploads" >}}
 Objects that are part of failed multipart uploads (the mechanism by which large files are uploaded) stay within Object Storage buckets, counting towards your total Object Storage costs. s3cmd will automatically initiate a multipart upload when a file is larger than 15MB. Lifecycle policies are a great way to clear out stale multipart uploads.
 {{< /disclosure-note >}}
+
+{{<caution>}}
+Linode Object Storage does not support the `NewerNoncurrentVersions` policy.
+{{</caution>}}
 
 #### Multiple Actions in One Rule
 

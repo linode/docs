@@ -13,19 +13,27 @@ tab_group_main:
 
 - [Manage Access Keys](/docs/products/storage/object-storage/guides/access-keys/): Access keys enable you to access Object Storage through other tools and your own applications. Learn how to generate and manage these in the Cloud Manager.
 
-- [Set Permissions/Access using ACLs (Access Control Lists)](/docs/products/storage/object-storage/guides/acls/): Information on ACLs and how to use them to set permissions on Object Storage resources.
-
-- [Set Permissions/Access using Bucket Policies](/docs/products/storage/object-storage/guides/bucket-policies/): Information on bucket policies and how to use them to set permissions on Object Storage resources.
-
 - [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/): Every bucket and file can be accessed by a unique URL. Learn how to obtain these URLs.
 
 - [Configure a Custom Domain (with a TLS/SSL Certificate)](/docs/products/storage/object-storage/guides/custom-domain/): Linode's Object Storage supports accessing buckets and objects through a custom domain. Learn how to configure a custom domain with a TLS/SSL certificate.
 
 - [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/): Learn how to cancel the Object Storage service from the Cloud Manager.
 
+- [Object Storage Use Cases](/docs/products/storage/object-storage/guides/use-cases/): Information on the benefits and common use cases of Linode's Object Storage service.
+
+## Set Permissions and Access Controls
+
+- [ACLs (Access Control Lists)](/docs/products/storage/object-storage/guides/acls/): Information on ACLs and how to use them to set permissions on Object Storage resources.
+
+- [Bucket Policies](/docs/products/storage/object-storage/guides/bucket-policies/): Information on bucket policies and how to use them to set permissions on Object Storage resources.
+
 - [Find the Canonical User ID for an Account](/docs/products/storage/object-storage/guides/find-canonical-id/): Learn how to find the canonical user ID for an account.
 
-- [Object Storage Use Cases](/docs/products/storage/object-storage/guides/use-cases/): Information on the benefits and common use cases of Linode's Object Storage service.
+## Advanced Management
+
+- [Versioning (Retain Object Version History)](/docs/products/storage/object-storage/guides/versioning/): Discover how to enable and manage versioning within Object Storage.
+
+- [Lifecycle Policies](/docs/products/storage/object-storage/guides/lifecycle-policies/): Learn how to define policies to manage the lifecycle and retention history of objects.
 
 ## Clients and Tools
 
@@ -36,10 +44,11 @@ Guides for using Object Storage with various clients and command-line tools:
 - [s4cmd](/docs/products/storage/object-storage/guides/s4cmd): A faster alternative to the s3cmd command-line tool.
 - [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck): A cross-platform graphical interface for interacting with various cloud storage services.
 
-## AWS SDKs
+## AWS Tooling
 
 Guides for using Object Storage with various AWS SDKs:
 
+- [AWS CLI](/docs/products/storage/object-storage/guides/aws-cli/)
 - [AWS SDK for Python (boto3)](/docs/products/storage/object-storage/guides/aws-sdk-for-python/)
 - [AWS SDK for PHP](/docs/products/storage/object-storage/guides/aws-sdk-for-php/)
 
@@ -48,7 +57,3 @@ Guides for using Object Storage with various AWS SDKs:
 These additional guides explore targeted topics like setting up a static site and managing access and permissions for your buckets and objects:
 
 - [Deploy a Static Site using Hugo and Object Storage](/docs/guides/host-static-site-object-storage/)
-
-- [Bucket Versioning with Linode Object Storage](/docs/guides/bucket-versioning/)
-
-- [How To Manage Objects with Lifecycle Policies](/docs/guides/how-to-manage-objects-with-lifecycle-policies/)
