@@ -30,12 +30,12 @@ This guide will go over the Kubernetes upgrade process, provide a brief introduc
 
 ## Checking Cluster Version
 
-The current version of Kubernetes being used for each of your cluster configurations can be found on your [LKE Cluster Page](https://cloud.linode.com/kubernetes/clusters) on the Linode Manager in the `Version` column of the Kubernetes table. If an upgrade is available, the text `Upgrade` will appear next to the version number.
+The current version of Kubernetes being used for each of your cluster configurations can be found on your [LKE Cluster Page](https://cloud.linode.com/kubernetes/clusters) on the Cloud Manager in the `Version` column of the Kubernetes table. If an upgrade is available, the text `Upgrade` will appear next to the version number.
 
 ![Check Kubernetes Version](check-kubernetes-version.png)
 
 {{< note >}}
-Alternatively, if you would like to get the current local version of Kubernetes on your cluster through kubectl,the following command can be entered:
+Alternatively, if you would like to get the current local version of Kubernetes on your cluster through kubectl, the following command can be entered:
 
         kubectl version | grep Server
 {{< /note >}}
@@ -54,7 +54,7 @@ While this process generally doesn't impact workloads in a significant way, it i
 The best method for ensuring uptime and a clean upgrade without issues is to carefully review the public changelog for the minor release your cluster will be upgrading to. All available information pertaining to Kubernetes version changes can be found on Kubernetes' public [Changelog Page](https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG) for the Kubernetes project hosted on Github. In order to ensure that you'll be able to upgrade to the next minor version of Kubernetes without issue, find the changelog for the version of Kubernetes you will be upgrading to. For example, if your cluster is currently on version `v1.21`, select the changelog for `v1.22` or `CHANGELOG-1.22.md`. Minor version upgrades can only be performed one minor version ahead at a time, so this will always be one minor version ahead of your current Kubernetes version.
 
 {{< note >}}
-When reviewing the changelog, it is important to keep in mind that **patch releases** are deployed automatically to LKE Control Plane Components as needed, however should not effect the intended behavior of your cluster. Only Major and Minor releases will have potentially breaking changes.
+When reviewing the changelog, it is important to keep in mind that **patch releases** are deployed automatically to LKE Control Plane Components as needed, however this should not effect the intended behavior of your cluster. Only Major and Minor releases will have potentially breaking changes.
 {{< /note >}}
 
 Once you've found the correct Changelog for the version of Kubernetes you'll be upgrading to, find the section in the changelog that fits the the naming convention for the minor release of your current Kubernetes version for the changes of most consequence. If you are upgrading from Kubernetes version `1.21` for example, find the section labeled [Changelog Since v1.21.0](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.20.md#changelog-since-v1190). Read through this section carefully for any new features and deprecations, paying close attention to the [What's New](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#whats-new-major-themes) and [Urgent Upgrade Notes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#urgent-upgrade-notes) subsection for information on the most critical changes. Additional areas of special attention should include the [Known Issues](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#known-issues), [Deprecation Changes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#deprecation), and [API Changes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#api-change-1) subsections. That being said, for the absolute best guarantee of a clean upgrade, we recommend reading through this full section to gain a full understanding of what you may need to know.
