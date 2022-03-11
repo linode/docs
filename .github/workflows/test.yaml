@@ -104,8 +104,29 @@ jobs:
       with:
         hugo-version: '0.83.1'
     - name: Start Hugo server
-      run: hugo server&
-    - name: Wait for server
-      run: sleep 20
+      run: |
+        # Start Hugo in background:
+        hugo server &
+
+        # Wait for server to start
+        # (or possibly fail to start):
+        while true
+        do
+            # Check if the server is responding on 1313,
+            # which means that the Hugo build finished.
+            if nc -z localhost 1313
+            then
+                exit 0
+            fi
+
+            # Check if the Hugo process is still running.
+            # If not, then the server failed to build.
+            if ! pgrep hugo > /dev/null
+            then
+                exit 1
+            fi
+
+            sleep 1
+        done
     - name: Run tests
       run: python ./ci/docs404.py
