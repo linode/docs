@@ -20,23 +20,23 @@ external_resources:
 - '[MDN Web Docs: Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)'
 ---
 
-JavaScript includes a `filter` method on array, designed to provide a convenient means for creating new arrays out of existing ones. So how does it work, and how can you start using it on specific kinds of arrays?
+JavaScript's arrays include a `filter` method, designed to conveniently create new arrays out of existing ones. So how does it work, and how can you start using it on your arrays?
 
 Find out in this tutorial. It explains JavaScript's `filter` method and how to use it to filter arrays containing numbers, strings, and even objects.
 
 ## What Is the JavaScript filter Method?
 
-Arrays each come with a `filter` method, which can be used to generate a new array from the original given a set of criteria.
+In JavaScript, arrays each come with a `filter` method, which can be used to generate a new array from the original given a set of criteria.
 
-The method accomplishes this by taking a function as an argument. It applies the function to each item in the original array. Each item for which the function returns `true` gets added to a new array. At the end, the `filter` method returns that new array.
+The method accomplishes this by taking a function as an argument and applying that function to each item in the original array. Each item for which the function returns `true` gets added to a new array, which the `filter` method returns at the end.
 
-To break that down, here is an example:
+To break that down, here is an example. Follow along with the comments in the example to see how each part works:
 
 ``` javascript
 // Start with an array.
 const exampleArray = [1, 2, 3, 4, 5, 6];
 
-// Create a new array using a filter on the original array.
+// Create a new array by using a filter on the original array.
 let newExampleArray = exampleArray.filter(function(item) {
     // Filter takes an anonymous function as an argument, and that function
     // gets an argument passed into it, named `item` here. That argument
@@ -55,15 +55,15 @@ let newExampleArray = exampleArray.filter(function(item) {
 
 Above, you can see an example of the filter method in action. The sections that follow elaborate on this, showing you examples for three different kinds of arrays.
 
-These are not the only kinds of arrays that the `filter` method works on, however. Any kind of array works. The kinds of arrays selected and shown here are meant to illustrate the `filter` method's capabilities and operations. That way, you have what you need to apply the method for any kind of array you might encounter.
+These are not the only kinds of arrays that the `filter` method works on, however. Any kind of array works. The kinds of arrays selected and shown here are meant to illustrate the `filter` method's capabilities on some of the most common array contents. That way, you have the understanding you need to be able to apply the method for any kind of array you might encounter.
 
 ### Using the filter Method for Arrays of Numbers
 
 The best place to start is the simplest of the arrays: arrays containing only numbers.
 
-The `filter` method lets you create new number arrays from an existing array based on criteria you provide. Part of what makes a number array easier to start with is that the criteria typically use common operators for numbers.
+The `filter` method lets you create a new number array from an existing array based on criteria you provide. Part of what makes a number array easier to start with is that the criteria typically use frequently-used and widely-known operators.
 
-For instance, you can have a list of all of the number is an array below 20 by filtering for `< 20`. This is exactly what is done for the `smallNumberArray` in the example below. The example then does the opposite for the `largeNumberArray`. It filters for an array of numbers equal to or greater than 20, using `>= 20`.
+For instance, you can create a new array of all numbers below 20 in an existing array by filtering for `< 20`. This is exactly what is done for the `smallNumberArray` in the example below. The example then does the opposite for the `largeNumberArray`, filtering for numbers equal to or greater than 20, using `>= 20`.
 
 You can branch out from there to more advanced operations. The last `filter` in the example below uses the remainder operator — `%` — to get an array of numbers that are multiples of nine.
 
@@ -96,7 +96,7 @@ But you can also get a string's length using its `length` property, which you ca
 
 And there are many more options, like the ability to pick a specific character (using `exampleString[0]` to get the first character).
 
-Unless you want your strings to be case-sensitive, it is a good idea to convert strings to lowercase before evaluating them for sub-strings and the like. This is done in the `arrStringArray` example below, allowing the string `Array` to match for including `arr`.
+Unless you want your strings to be case-sensitive, you should convert them to lowercase before evaluating them for sub-strings and the like. This is done in the `arrStringArray` example below, allowing the string `Array` to match for including `arr`.
 
 ``` javascript
 const stringArray = ["An", "Array", "Of", "Strings"];
@@ -125,7 +125,7 @@ You can see this in the first two examples below. The first, `consoleObjectArray
 
 The last example does a number comparison, but also adds a little more logic. It first checks the `type` attribute to make sure the item is a `console`, returning `false` if it is not. Only then, for the `console` items, does it filter by number. This is a good way to take advantage of objects' properties to apply multiple filters at the same time.
 
-As a side note, you can do something similar on number and string arrays. For instance, on a string array you can check for length and sub-string in this way.
+As a side note, you can do something similar on number and string arrays. For instance, on a string array you can check for length and sub-string using a similar approach.
 
 ``` javascript
 const objectArray = [
