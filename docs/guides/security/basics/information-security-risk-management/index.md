@@ -2,11 +2,10 @@
 slug: information-security-risk-management
 author:
   name: David Strom
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
+description: 'This guide discusses information security risk management and how to develop a plan for effectively managing risk and information security.'
 keywords: ['security and risk management','it security risk management','risk management in information technology']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-16
+published: 2022-03-18
 modified_by:
   name: Linode
 title: "A Guide to Risk Management in Information Technology"
