@@ -6,7 +6,7 @@ description: "SQL aggregate functions calculate a set of values by using groupin
 keywords: ['aggregate functions', 'group functions', 'where clause', 'having clause']
 tags: ['MySQL', 'PostgreSQL']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-10
+published: 2022-03-18
 modified_by:
   name: Linode
 title: "SQL Grouping and Totaling"
