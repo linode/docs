@@ -92,7 +92,7 @@ As soon as IP Sharing has been enabled for an IP address, that address is routed
 
 1.  Run the following command to configure lelastic, replacing *[id]* with the ID corresponding to your data center in the [table above](/docs/guides/ip-failover/#ip-failover-support) and *[role]* with either `primary` if you are configuring the primary instance or `secondary` if you are configuring the secondary instance.
 
-        lelastic -dcid [id] -[role]
+        lelastic -dcid [id] -[role] &
 
 1.  Repeat these steps for *each* Compute Instance within your IP failover setup.
 
