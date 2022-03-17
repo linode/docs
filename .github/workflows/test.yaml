@@ -77,6 +77,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Generated images cache
+      uses: actions/cache@v2
+      id: cache
+      with:
+        path: resources/_gen/images/
+        key: generated-images-hugo-83.1
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
