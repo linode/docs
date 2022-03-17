@@ -1,17 +1,19 @@
 ---
-slug: how-to-write-neovim-plugin
+slug: writing-a-neovim-plugin-with-lua
 author:
   name: Linode Community
   email: docs@linode.com
 description: "Learn how to develop a plugin for Neovim. Neovim introduces first-class support for Lua, and this guide shows you how to make a plugin to start taking advantage of that."
 og_description: "Learn how to develop a plugin for Neovim. Neovim introduces first-class support for Lua, and this guide shows you how to make a plugin to start taking advantage of that."
 keywords: ['write neovim plugin','neovim plugin development','neovim lua plugin']
+tags: ['neovim']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-08
 modified_by:
   name: Nathaniel Stickman
-title: "How to Write a Neovim Plugin with Lua"
+title: "Writing a Neovim Plugin with Lua"
 h1_title: "How to Write a Neovim Plugin with Lua"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -20,35 +22,35 @@ external_resources:
 - '[GitHub: jacobsimpson/nvim-example-lua-plugin](https://github.com/jacobsimpson/nvim-example-lua-plugin)'
 ---
 
-Neovim extends on the features of the ubiquitous Vim text editor, with one key extension being integrated support for the Lua programming language. This opens up vast possibilities for configuration, scripting, and plugin development, as the Neovim community has demonstrated. It has created numerous plugins pushing the boundaries of the text editor's capabilities.
+Neovim extends on the features of the ubiquitous Vim text editor, with one key extension is integrated support for the [Lua programming language](https://www.lua.org/). This opens up vast possibilities for configuration, scripting, and plugin development, as the Neovim community has demonstrated. It has created numerous plugins pushing the boundaries of the text editor's capabilities.
 
-With this tutorial, learn how to write a Neovim plugin of your own, taking advantage of what the Lua programming language has to offer. The guide walks your through the development of an example plugin while showing you how the pieces fit together to make an effective Neovim plugin.
+With this tutorial, learn how to write a Neovim plugin of your own, taking advantage of what the Lua programming language has to offer. The guide walks you through the development of an example plugin while showing you how the pieces fit together to make an effective Neovim plugin.
 
-Looking to, instead, get started working on a standard Vim plugin? You can refer to our tutorial [How to Write a Vim Plugin](/docs/guides/how-to-write-vim-plugin/).
+Looking to, instead, get started working on a standard Vim plugin? You can refer to our tutorial [How to Write a Vim Plugin](/docs/guides/writing-a-vim-plugin/).
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), and Fedora, use:
+    - On **AlmaLinux**, **CentOS** (8 or later), and **Fedora**, use the following command:
 
             sudo dnf upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How Neovim Plugins Work
 
-Neovim expands on the highly-customizable text editor Vim, carrying over many of the same options for controlling the editor's behavior, look, and feel. You can learn more about Neovim in our guide [How to Install Neovim and Plugins with vim-plug](/docs/guides/how-to-install-neovim-and-plugins-with-vim-plug/).
+Neovim expands on the highly-customizable text editor Vim, carrying over many of the same options for controlling the editor's behavior, look, and feel. You can learn more about Neovim in our guide [How to Install Neovim Plugins with vim-plug](/docs/guides/how-to-install-neovim-and-plugins-with-vim-plug/).
 
 Just as with Vim, Neovim can be extended through plugins created and maintained by the vast Vim and Neovim communities. Neovim maintains full compatibility with standard Vim plugins. But Neovim also adds many advanced features that have allowed a community of Neovim plugin creators to expand the editor's horizons.
 
@@ -63,11 +65,11 @@ Does one of these fit you, or do you have another reason all your own for wantin
 
 ## How to Write a Neovim Plugin
 
-This section walks you through creating a Neovim plugin. It features an example plugin for displaying and managing a todo list, and shows how to set up the prerequisites and implement the code.
+This section walks you through creating a Neovim plugin. It features an example plugin for displaying and managing a to-do list and shows how to set up the prerequisites and implement the code.
 
 To help keep plugins organized and more maintainable, this guide uses the [vim-plug](https://github.com/junegunn/vim-plug) plugin manager. Several other options exist though, including some specifically built for Neovim, so feel free to choose an option that works best for you.
 
-You can get details of how to install vim-plug in our guide [How to Install Neovim and Plugins with vim-plug](/docs/guides/how-to-install-neovim-and-plugins-with-vim-plug/#install-neovim-plugins). However, if you already have cURL installed, you can install vim-plug with the following command:
+You can get details of how to install vim-plug in our guide [How to Install Neovim Plugins with vim-plug](/docs/guides/how-to-install-neovim-and-plugins-with-vim-plug/#install-neovim-plugins). However, if you already have cURL installed, you can install vim-plug with the following command:
 
      curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
@@ -80,7 +82,7 @@ For instance, the [zen-mode.nvim](https://github.com/folke/zen-mode.nvim) plugin
 However, there is a basic structure you should follow for setting up your plugin, regardless of the architecture you choose for your Lua code. It consists of two main directories in your plugin's base directory, each with at least one code file:
 
 - A `plugin` directory to define the plugin. This directory should have a Vim script (`.vim`) file using your plugin's name. The file defines the commands that the plugin should expose and sets up any keybindings that you want the plugin to have by default. It is also the only Vim script code required for your Neovim plugin.
-- A `lua` directory to hold the plugin's Lua code and main functionality. Typically, that directory should have a subdirectory using the plugin's name and having an `init.lua` file. Usually that file routes commands to other Lua files as needed, but for small plugins you may not need another file.
+- A `lua` directory to hold the plugin's Lua code and main functionality. Typically, that directory should have a subdirectory using the plugin's name and have an `init.lua` file. Usually, that file routes commands to other Lua files as needed, but for small plugins, you may not need another file.
 
 Lua files are not sourced until they are called on via the `require` function. So, your plugin does not need to use an `autoload` directory unless you want to use more Vim script code.
 
@@ -97,56 +99,56 @@ The next section, on writing a Neovim plugin, shows you how to set up each of th
 
 ### Writing a Neovim Plugin
 
-Before moving into the actual plugin code, you plugin needs some initial set up. This includes creating the directories and adding any files that get used by the plugin code.
+Before moving into the actual plugin code, your plugin needs some initial setup. This includes creating the directories and adding any files that get used by the plugin code.
 
-This example plugin uses a SQLite database file to store "to do" tasks, which the plugin can fetch and modify. So, you need to create that database file and add a Lua module for working with it.
+This example plugin uses an SQLite database file to store "to do" tasks, which the plugin can fetch and modify. So, you need to create that database file and add a Lua module for working with it.
 
-1. Make the directories for your plugin. This guide places the plugin in the current user's home directory, and these commands use the `-p` flag to ensure that any directories in the path that do not already exist get created:
+1. Create the directories for your plugin. This guide places the plugin in the current user's home directory, and these commands use the `-p` flag to ensure that any directories in the path that do not already exist get created.
 
         mkdir -p ~/example-plugin/plugin
         mkdir -p ~/example-plugin/lua/example-plugin
 
-1. Make a directory for your Lua dependencies, and change into that directory:
+1. Create a directory for your Lua dependencies, and change into that directory.
 
         mkdir ~/example-plugin/lua/example-plugin/deps
         cd ~/example-plugin/lua/example-plugin/deps
 
-1. Add the Lua module to be used for interacting with the SQLite database file. This guide uses the [LJSQLite3](https://github.com/stepelu/lua-ljsqlite3) module, which can be added directly to the project using Git. The module relies on the [Xsys](https://github.com/stepelu/lua-xsys) module, which you can also add via Git:
+1. Add the Lua module to be used for interacting with the SQLite database file. This guide uses the [LJSQLite3](https://github.com/stepelu/lua-ljsqlite3) module, which can be added directly to the project using Git. The module relies on the [Xsys](https://github.com/stepelu/lua-xsys) module, which you can also add via Git.
 
         git clone https://github.com/stepelu/lua-ljsqlite3.git
         git clone https://github.com/stepelu/lua-xsys.git
 
-    This requires that you have Git installed. You can install it using one of the commands here:
+    This requires that you have Git installed. You can install it using one of the commands below:
 
-    - On Debian and Ubuntu:
+    - On **Debian** and **Ubuntu**:
 
-        sudo apt install git
+            sudo apt install git
 
-    - On AlmaLinux, CentOS, and Fedora:
+    - On **AlmaLinux**, **CentOS**, and **Fedora**:
 
-        sudo dnf install git
+            sudo dnf install git
 
     {{< note >}}
-These modules rely on [LuaJIT](https://luajit.org/), rather than the standard Lua. Neovim uses LuaJIT, so this is not a problem when it comes to your plugin. However, if you are wanting to test out these modules outside of the plugin environment, you need to install and use LuaJIT to do so.
+These modules rely on [LuaJIT](https://luajit.org/), rather than the standard Lua. Neovim uses LuaJIT, so this is not a problem when it comes to your plugin. However, if you are wanting to test out these modules outside of the plugin environment, you need to install, and use LuaJIT to do so.
     {{< /note >}}
 
 1. Install SQLite 3 and the development package for it.
 
-    - On Debian and Ubuntu, use:
+    - On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt install sqlite3 libsqlite3-dev
 
-    - On AlmaLinux and CentOS, use:
+    - On **AlmaLinux** and **CentOS**, use the following command:
 
             sudo dnf install sqlite sqlite-devel
 
-1. Change into your plugin's base directory:
+1. Change into your plugin's base directory.
 
         cd ~/example-plugin
 
     From here on, the guide assumes you are working out of this directory.
 
-1. Open the SQLite command-line shell with a new file, `todo.db`:
+1. Open the SQLite command-line shell with a new file, `todo.db`.
 
         sqlite3 todo.db
 
@@ -157,11 +159,11 @@ These modules rely on [LuaJIT](https://luajit.org/), rather than the standard Lu
 
     You can then exit the shell using the **Ctrl** + **D** key combination.
 
-You are now ready to begin on the code for your Neovim plugin.
+You are now ready to write the code for your Neovim plugin.
 
 #### Vim Script Component
 
-This plugin focuses on doing most of the work in Lua code, so it only needs one Vim script file. Create an `example-plugin.vim` file in the `plugin` directory, and give it the contents shown here:
+This plugin focuses on doing most of the work in Lua code, so it only needs one Vim script file. Create an `example-plugin.vim` file in the `plugin` directory, and give it the contents shown below. You can also refer to the file contents [here](example-plugin/plugin/example-plugin.vim).
 
 {{< file "plugin/example-plugin.vim" vim >}}
 " Title:        Example Plugin
@@ -188,13 +190,13 @@ command! -nargs=0 InsertTodo lua require("example-plugin").insert_todo()
 command! -nargs=0 CompleteTodo lua require("example-plugin").complete_todo()
 {{< /file >}}
 
-And that is all the Vim script code this plugin requires. You can also refer to the file contents [here](example-plugin/plugin/example-plugin.vim).
+And that is all the Vim script code this plugin requires.
 
 #### Lua Component
 
 This example splits the Lua functionality between three files. An `init.lua` file handles the routing, while two other files implement two different categories of functions. The approach is meant to give you an idea of how you could structure your plugin's Lua code to help make it more maintainable.
 
-1. Create an `init.lua` file in the `lua/example-plugin` directory, and give it the contents shown below. You can also find the file's contents [here](example-plugin/lua/example-plugin/init.lua):
+1. Create an `init.lua` file in the `lua/example-plugin` directory, and give it the contents shown below. You can also find the file's contents [here](example-plugin/lua/example-plugin/init.lua).
 
     {{< file "lua/example-plugin/init.lua" lua >}}
 -- Imports the plugin's additional Lua modules.
@@ -215,7 +217,7 @@ M.complete_todo = update.complete_todo
 return M
     {{< /file >}}
 
-1. Create a `fetch.lua` file in the `lua/example-plugin` directory, and give it the content shown below. You can also find the file's contents [here](example-plugin/lua/example-plugin/fetch.lua):
+1. Create a `fetch.lua` file in the `lua/example-plugin` directory, and give it the content shown below. You can also find the file's contents [here](example-plugin/lua/example-plugin/fetch.lua).
 
     {{< file "lua/example-plugin/fetch.lua" lua >}}
 -- Imports the module for handling SQLite.
@@ -238,7 +240,7 @@ end
 return M
     {{< /file >}}
 
-1. Create a `update.lua` file in the `lua/example-plugin` directory, and give it the content shown below. You can also find the file's contents [here](example-plugin/lua/example-plugin/update.lua):
+1. Create a `update.lua` file in the `lua/example-plugin` directory, and give it the content shown below. You can also find the file's contents [here](example-plugin/lua/example-plugin/update.lua).
 
     {{< file "lua/example-plugin/update.lua" lua >}}
 -- Imports the module for handling SQLite.
@@ -291,9 +293,9 @@ end
 return M
     {{< /file >}}
 
-#### Installing the Plugin
+#### Install the Plugin
 
-The final step to start using your plugin is adding it to your plugin manager. To do so, add a line like the one below to your plugin configuration in your Neovim configuration file. This line works with vim-plug and the plugin location used in the steps above. However, you need to vary the line based on the plugin manager you are using and the actual location and name of your plugin:
+The final step to start using your plugin is adding it to your plugin manager. To do so, add a line like the one below to your plugin configuration in your Neovim configuration file. This line works with vim-plug and the plugin location used in the steps above. However, you need to vary the line based on the plugin manager you are using and the actual location and name of your plugin.
 
 {{< file "~/.config/nvim/init.vim" vim >}}
     " [...]
@@ -305,9 +307,9 @@ Either reopen Neovim or source your configuration file again, and you are ready 
 
 ## How to Deploy a Neovim Plugin
 
-Most plugin managers for Vim and Neovim pull plugins from GitHub automatically. This gives you a convenient way to distribute your plugin. Below, you can see how to upload your plugin to a GitHub repository. You can also get an idea for the kind of additional information you may want to provide to guide your users.
+Most plugin managers for Vim and Neovim pull plugins from GitHub automatically. This gives you a convenient way to distribute your plugin. Below, you can see how to upload your plugin to a GitHub repository. You can also get an idea of the kind of additional information you may want to provide to guide your users.
 
-### Adding Instructions
+### Add Instructions
 
 It is usually good practice to include a Readme file when you distribute your Vim plugin. The Readme should give installation instructions and some statements about how to use the plugin. Your Readme should also indicate any additional system requirements of your plugin. The example plugin created above, for instance, requires the user to have SQLite 3 installed.
 
@@ -315,33 +317,33 @@ Create a `README.md` file in the plugin's base directory. GitHub automatically r
 
 Take a look at our [example Readme file](example-plugin/README) for ideas on the kind of information you may want to provide. This example fits with the example plugin developed in the sections above.
 
-### Creating a Git Repository
+### Create a Git Repository
 
 1. In your plugin's directory, use the following command to initialize a Git repository:
 
         git init
 
-1. Create a `.gitignore` file. If there are files or directories you do not want added to the remote Git repository, add patterns matching those files/directories to the `.gitignore` file.
+1. Create a `.gitignore` file. If there are files or directories that you do not want to be added to the remote Git repository, add patterns matching those files/directories to the `.gitignore` file.
 
-    Here is a simple example that ignores `.DS_STORE` files:
+    Following is a simple example that ignores `.DS_STORE` files:
 
     {{< file ".gitignore" >}}
 .DS_STORE
-    {{< /file >}}
+{{< /file >}}
 
-1. Add your plugin's files for staging to your first Git commit:
+1. Add your plugin's files for staging to your first Git commit.
 
         git add .
 
-1. Commit the files. It is recommended that you add a brief descriptive comment to each commit you make, like below:
+1. Commit the files. It is recommended that you add a brief descriptive comment to each commit you make, like shown below:
 
         git commit -m "Initial commit."
 
-1. Add the remote repository. Replace the URL in the example below with the URL for your remote repository:
+1. Add the remote repository. Replace the URL in the example below with the URL for your remote repository.
 
         git remote add origin https://github.com/example-user/example-plugin.git
 
-1. Push your local commit to the remote repository:
+1. Push your local commit to the remote repository.
 
         git push -u origin master
 

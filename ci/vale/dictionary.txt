@@ -69,7 +69,11 @@ aren
 argv
 arping
 arptables
+<<<<<<< HEAD
 Asana
+=======
+aspell
+>>>>>>> tech edits
 askbot
 aske
 async
@@ -2192,6 +2196,7 @@ whoami
 whois
 whowatch
 wi
+wiktionary
 widgits
 wildfly
 wimey
@@ -2249,6 +2254,7 @@ xresources
 xsession
 xsetroot
 xstartup
+xsys
 xtables
 xvda
 xvdb
