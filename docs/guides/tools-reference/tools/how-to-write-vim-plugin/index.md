@@ -1,16 +1,14 @@
 ---
 slug: writing-a-vim-plugin
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Learn how to develop a Vim plugin. This tutorial shows you how with either Vim Script or an external interpreter like Python."
-og_description: "Learn how to develop a Vim plugin. This tutorial shows you how with either Vim Script or an external interpreter like Python."
+  name: Nathaniel Stickman
+description: "The Vim text editor can be extended using plugins. This guide shows you how to create a Vim plugin using a Vim Script or an external interpreter like Python."
 keywords: ['write vim plugin','create vim plugin','vim plugin python']
 tags: ['neovim', 'vim']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-08
+published: 2022-03-18
 modified_by:
-  name: Nathaniel Stickman
+  name: Linode
 title: "Writing a Vim Plugin"
 h1_title: "How to Write a Vim Plugin"
 enable_h1: true
@@ -23,11 +21,9 @@ external_resources:
 - '[Vim Reference Manual: The Python Interface to Vim](https://vimhelp.org/if_pyth.txt.html)'
 ---
 
-Vim is a minimalist text editor but also one that is highly adaptable. Beyond configuration and scripting, Vim can be extended on with a wide array of plugins developed and maintained by a large and active community.
+Vim is a minimalist text editor that is highly adaptable. Beyond configuration and scripting, you can extend Vim with a wide array of plugins developed and maintained by a large and active community.
 
-In this tutorial, learn how to write a Vim plugin of your own. The guide walks you through creating and deploying an example plugin. It shows you how to make plugins that use Vim script, Python, or external command-line programs.
-
-Looking to work specifically on Neovim plugins, taking advantage of Neovim's Lua integration? Take a look at our tutorial [How to Write a Neovim Plugin with Lua](/docs/guides/writing-a-neovim-plugin-with-lua/).
+In this tutorial, you learn how to write a Vim plugin of your own. The guide walks you through creating and deploying an example plugin. It shows you how to make plugins that use Vim script, Python, or external command-line programs.
 
 ## Before You Begin
 
@@ -51,37 +47,35 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ## How Vim Plugins Work
 
-Vim is a highly-customizable text editor. By default, Vim comes with a configuration file — usually `~/.vimrc` — that gives you a vast array of options for controlling Vim's behavior, look and feel. You can learn more about configuring your Vim instance in our guide [Introduction to Vim Customization](/docs/guides/introduction-to-vim-customization/).
+Vim is a highly-customizable text editor. By default, Vim comes with a configuration file — usually `~/.vimrc` — that gives you a vast array of options for controlling Vim's behavior and look and feel. You can learn more about configuring your Vim instance in our guide [Introduction to Vim Customization](/docs/guides/introduction-to-vim-customization/).
 
 Using plugins, Vim becomes even more adaptable. The editor has a wide and dedicated community of users. Many of these users have contributed exceptional tools that add new functionality or adapt existing functionality within Vim.
 
 When it comes to creating a Vim plugin of your own, there are two main reasons for doing so:
 
-- Sharing your Vim configurations with a wider community. Plugins are the preferred way to distribute your Vim code for others to use. Following some plugin standards and hosting your plugin on GitHub then makes your plugin accessible to others through plugin managers like [vim-plug](https://github.com/junegunn/vim-plug).
-- Organizing your Vim configurations. Even if you only ever keep the plugin for yourself, having more complex Vim code in a plugin format can help you keep your Vim configurations more organized and maintainable.
-
-Does one of these fit you, or do you have another reason all your own for wanting to make a Vim plugin? Keep reading to see how to translate your Vim configuration into an effective plugin.
+- To share your Vim configurations with a wider community. Plugins are the preferred way to distribute your Vim code for others to use. Following some plugin standards and hosting your plugin on GitHub makes your plugin accessible to others through plugin managers like [vim-plug](https://github.com/junegunn/vim-plug).
+- To organize your Vim configurations. Even if you only ever keep the plugin for yourself, having more complex Vim code in a plugin format can help you keep your Vim configurations more organized and maintainable.
 
 ## How to Write a Vim Plugin
 
-This section walks you through creating a Vim plugin, featuring an example plugin to display the time, look up word definitions, and give spelling suggestions. The instructions that follow show how to set up the prerequisites and implement the code for the plugin.
+This section walks you through creating a Vim plugin. The example plugin displays the time, looks up word definitions, and gives spelling suggestions. The instructions that follow show how to set up the prerequisites and implement the code for the plugin.
 
-To help keep plugins organized and more maintainable, this guide uses the [vim-plug](https://github.com/junegunn/vim-plug) plugin manager. Several other options exist though, so feel free to choose an option that works best for you.
+To help keep plugins organized and more maintainable, this guide uses the [vim-plug](https://github.com/junegunn/vim-plug) plugin manager. Several other plugin managers exist though, so feel free to choose an option that works best for you.
 
-You can get details of how to install vim-plug in our guide [Introduction to Vim Customization](/docs/guides/introduction-to-vim-customization/#install-the-vim-plug-plug-in-manager). However, if you already have cURL installed, you can install vim-plug with the following command:
+You can get details on how to install vim-plug in our guide [Introduction to Vim Customization](/docs/guides/introduction-to-vim-customization/#install-the-vim-plug-plug-in-manager). However, if you already have cURL installed, you can install vim-plug with the following command:
 
     sudo curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 ### Anatomy of a Vim Plugin
 
-There are numerous possible ways to set up a plugin for Vim. However, the method shown here is based on the official documentation and the prevailing trends in the Vim plugin community. That, and is also efficient at keeping Vim code organized and maintainable.
+There are numerous possible ways to set up a plugin for Vim. However, the method shown here is based on the official documentation and the prevailing trends in the Vim plugin community. These best practices also keep your Vim code organized and maintainable.
 
 First, your plugin should have a main directory that uses the plugin name. Under that directory, the plugin should have a `plugin` and an `autoload` directory:
 
 - The `plugin` directory sets up the plugin. It defines the commands that the plugin should expose and sets up any keybindings that you want the plugin to have by default.
-- The `autoload` directory holds the engine of the plugin. Keeping this code in the `autoload` directory allows Vim to be more efficient about using it. Vim only loads the `autoload` code if one of the commands defined in the `plugin` portion gets called. That way, Vim only has to load what it needs to when it is needed.
+- The `autoload` directory holds the engine of the plugin. Keeping this code in the `autoload` directory allows Vim to be more efficient about using it. Vim only loads the `autoload` code if one of the commands defined in the `plugin` portion gets called. This is done so Vim only has to load what it needs when it's needed.
 
-So, if your plugin is named `example-plugin`, a minimal plugin directory might resemble:
+For example, if your plugin is named `example-plugin`, a minimal plugin directory might resemble the following directory tree:
 
     example-plugin/
         autoload/
@@ -95,7 +89,7 @@ Within each `.vim` file, your plugin has access to three methods for processing 
 - Using an external interpreter, like Python, Ruby, etc.
 - Using the output from another command-line program
 
-Moreover, Vim does not limit your plugin to just one of these methods. You are free to mix and match them as your plugin needs. Usually, it is best to choose an approach that most efficiently accomplishes your plugin's goals.
+Vim does not limit your plugin to just one of these methods. You are free to mix and match them as your plugin needs. Usually, it is best to choose an approach that most efficiently accomplishes your plugin's goals.
 
 The example Vim plugin developed in the next sections shows you how to implement each of these methods.
 
@@ -115,7 +109,7 @@ The plugin needs some initial setup, including creating its directories and its 
         mkdir autoload
         mkdir plugin
 
-1. Create a new `example-plugin.vim` file in the `plugin` directory, and give it the contents shown below. You can also find the file contents [here](example-plugin/plugin/example-plugin.vim).
+1. Create a new `example-plugin.vim` file in the `plugin` directory, and add the contents in the `example-plugin.vim` file.
 
     {{< file "plugin/example-plugin.vim" vim >}}
 " Title:        Example Plugin
@@ -142,8 +136,6 @@ command! -nargs=0 AspellCheck call example-plugin#AspellCheck()
         touch autoload/example-plugin.vim
 
 The following three sections show you how to add functions to your Vim plugin. Each section uses a different approach to processing information within a Vim plugin. In the end, you have a working plugin with three useful commands.
-
-You can find the full contents of the file described in the sections below [here](example-plugin/autoload/example-plugin.vim).
 
 #### Using Vim Script
 
@@ -253,13 +245,13 @@ Either reopen Vim or source your configuration file again, and you are ready to 
 
 Most Vim plugin managers pull plugins from GitHub automatically. This gives you a convenient way to distribute your plugin. Below, you can see how to upload your plugin to a GitHub repository. You can also get an idea of the kind of additional information you may want to provide to guide your users.
 
-### Add Instructions
+### Add a README for Your Vim Plugin
 
 It is usually good practice to include a Readme file when you distribute your Vim plugin. The Readme should give installation instructions and some statements about how to use the plugin. Your Readme should also indicate any additional system requirements of your plugin. The example plugin created above, for instance, requires the user to have Python 3, and `aspell` installed.
 
 Create a `README.md` file in the plugin's base directory. GitHub automatically renders and displays the contents of this file to anyone visiting your repository's main page.
 
-Take a look at our [example Readme file](example-plugin/README) for ideas on the kind of information you may want to provide. This example fits with the example plugin developed in the sections above.
+Take a look at our [example README file](example-plugin/README) for ideas on the kind of information you may want to provide. This example fits with the example plugin developed in the sections above.
 
 ### Create a Git Repository
 
@@ -291,3 +283,4 @@ Take a look at our [example Readme file](example-plugin/README) for ideas on the
 
         git push -u origin master
 
+Your plugin is now available for other users to install and enable on their local instance of Vim.

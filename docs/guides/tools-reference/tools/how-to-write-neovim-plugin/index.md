@@ -340,4 +340,4 @@ Take a look at our [example Readme file](example-plugin/README) for ideas on the
 
         git push -u origin master
 
-Your plugin is now available to other users to install and use on their local instance of Neovim.
+Your plugin is now available for other users to install and enable on their local instance of Neovim.
