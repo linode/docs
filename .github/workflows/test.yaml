@@ -75,6 +75,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Generated images cache
+      uses: actions/cache@v2
+      id: cache
+      with:
+        path: resources/_gen/images/
+        key: generated-images-hugo-83.1
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -104,8 +110,29 @@ jobs:
       with:
         hugo-version: '0.83.1'
     - name: Start Hugo server
-      run: hugo server&
-    - name: Wait for server
-      run: sleep 20
-    - name: Run tests
-      run: python ./ci/docs404.py
+      run: |
+        # Start Hugo in background:
+        hugo server &
+
+        # Wait for server to start
+        # (or possibly fail to start):
+        while true
+        do
+            # Check if the server is responding on 1313,
+            # which means that the Hugo build finished.
+            if nc -z localhost 1313
+            then
+                exit 0
+            fi
+
+            # Check if the Hugo process is still running.
+            # If not, then the server failed to build.
+            if ! pgrep hugo > /dev/null
+            then
+                exit 1
+            fi
+
+            sleep 1
+        done
+    # - name: Run tests
+    #   run: python ./ci/docs404.py
