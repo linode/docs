@@ -25,7 +25,7 @@ This guide covers configuring IP failover to enable high availability. IP failov
 
 Within Linode's platform, IP failover is configured by enabling [IP Sharing](/docs/guides/managing-ip-addresses/#configuring-ip-sharing) in the Cloud Manager, Linode CLI, or Linode API and then and then configuring software on any affected Compute Instances.
 
-- **New IP Sharing Method (BGP):** Supports IPv4 failover as well as IPv6 failover (through `/64` and `/56` routed ranges). This is currently being rolled out across our fleet in conjunction with our [planned network infrastructure upgrades](/docs/guides/network-infrastructure-upgrades/). Since it is implemented using BGP routing, customers can configure it on their Compute Instances using the Linode provided lelastic tool or FRR.
+- **New IP Sharing Method (BGP):** Supports IPv4 failover. This is currently being rolled out across our fleet in conjunction with our [planned network infrastructure upgrades](/docs/guides/network-infrastructure-upgrades/). Since it is implemented using BGP routing, customers can configure it on their Compute Instances using the Linode provided lelastic tool or FRR.
 - **Legacy IP Sharing Method (ARP):** Supports IPv4 failover within limited data centers. Since it is arp-based, customers can configure it on their Compute Instances using keepalived.
 
 Review the list below to learn which data centers support IP Sharing.
@@ -56,28 +56,50 @@ The instructions within this guide enable you to configure IP failover using the
 If you are configuring IP failover through the legacy method (in supported data centers), use the [Configuring IP Failover using keepalived](/docs/guides/ip-failover-keepalived/) guide instead. This should also be used when setting up IP failover for VLAN IP addresses.
 {{</note>}}
 
-In a typical setup with IP failover, there is one **primary** Instance and one or more **secondary** Instances.
+1. Log in to the Cloud Manager.
 
-- **Primary**: The primary Compute Instance is the one containing the IP address you'd like to configure for IP failover.
-- **Secondary**: The secondary Compute Instances are then configured to use that IP address in the event the primary Instance stops responding.
+1. Determine which Compute Instances you wish to use with a shared IP address. They both must be located in the same data center. If you need to, create those Compute Instances now and allow them to boot up.
 
-Follow each of the sections below to configure IP failover:
+1. Disable Network Helper on both Compute Instances. For instructions, see the [Network Helper](/docs/guides/network-helper/#single-per-linode) guide.
 
-1. [Configure IP Sharing](#configure-ip-sharing)
-2. [Install and Configure Lelastic](#install-and-configure-lelastic)
-3. [Test IP Failover](#test-ip-failover)
+1. Add an IPv4 address to one of the Compute Instances. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) guide for instructions. Make a note of the new address that is assigned as this will be used as the shared IP address.
 
-### Configure IP Sharing
+1. On the other Compute Instance, configure the *IP Sharing* feature to use the IPv4 address that was just added to the other instance. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/#configuring-ip-sharing) for instructions on configuring IP sharing.
 
-1. Decide which IPv4 address you'd like to share. To share an IP address, it must be assigned to a Compute Instance with 2 or more IPv4 addresses. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) guide for instructions on adding an IP address to a Compute Instance.
+1. Configure IP failover on the internal system of *both* Compute Instances.
 
-1. Determine which Compute Instances the IP address should failover to and then *disable* Network Helper on each Compute Instance (including the instance to which the IP address is already assigned). For instructions, see the [Network Helper](/docs/guides/network-helper/#single-per-linode) guide.
+    1.  Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 
-1. Configure IP Sharing on each of the secondary Compute Instances. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/#configuring-ip-sharing) for instructions on configuring IP sharing.
+    1.  Review the networking configuration to ensure that the shared IP address is not listed.
 
-{{<caution>}}
-As soon as IP Sharing has been enabled for an IP address, that address is routed through BGP. The IP address will be inaccessible until BGP routing has been configured for it on your Compute Instances (through a tool like lelastic or FRR). Use caution if enabling IP Sharing on IPv4 addresses that are a part of a production workload as downtime is likely to occur.
+            ip addr
+
+        If the IP address *does* appear, remove it first with the following command:
+
+            ip addr del [shared-ip]/32 dev eth0
+
+        {{<caution>}}
+After the IP address has been removed, it is no longer accessible until BGP routing has been configured. Use caution if enabling IP Sharing on IPv4 addresses that are a part of a production workload as downtime is likely to occur.
 {{</caution>}}
+
+    1.  Add the shared ip address to the loopback interface:
+
+            ip addr add [shared-ip]/32 dev lo
+
+    1.  Download and install the [lelastic](https://github.com/linode/lelastic) utility from GitHub by running the following commands:
+
+            curl -LO https://github.com/linode/lelastic/releases/download/v0.0.3/lelastic.gz
+            gunzip lelastic.gz
+            chmod 755 lelastic
+            mv lelastic /usr/local/bin/
+
+    1.  Run the following command to configure BGP routing through lelastic, replacing *[id]* with the ID corresponding to your data center in the [table above](/docs/guides/ip-failover/#ip-failover-support) and *[role]* with either `primary` or `secondary`.
+
+            lelastic -dcid [id] -[role] &
+
+        Once configured, the shared IP address is routed to the primary system. If that system is inaccessible, it fails over to the secondary system *until* the primary system becomes available again. If both systems are configured as the same role (both primary or both secondary), then the behavior is slightly different. It still fails over to the other system should the original system become inaccessible, but then it remains routed to the other system, even if the original system comes back online.
+
+    1.  Repeat these steps for the other Compute Instance.
 
 ### Install and Configure Lelastic
 
