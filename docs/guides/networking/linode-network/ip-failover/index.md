@@ -58,11 +58,11 @@ If you are configuring IP failover through the legacy method (in supported data 
 
 1. Log in to the Cloud Manager.
 
-1. Determine which Compute Instances you wish to use with a shared IP address. They both must be located in the same data center. If you need to, create those Compute Instances now and allow them to boot up.
+1. Determine which Compute Instances you wish configure for IP failover. They both must be located in the same data center. If you need to, create those Compute Instances now and allow them to boot up.
 
 1. Disable Network Helper on both Compute Instances. For instructions, see the [Network Helper](/docs/guides/network-helper/#single-per-linode) guide.
 
-1. Add an IPv4 address to one of the Compute Instances. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) guide for instructions. Make a note of the new address that is assigned as this will be used as the shared IP address.
+1. Add an additional IPv4 address to one of the Compute Instances. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) guide for instructions. Make a note of the new address that is assigned as this will be used as the shared IP address.
 
 1. On the other Compute Instance, configure the *IP Sharing* feature to use the IPv4 address that was just added to the other instance. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/#configuring-ip-sharing) for instructions on configuring IP sharing.
 
@@ -100,23 +100,6 @@ After the IP address has been removed, it is no longer accessible until BGP rout
         Once configured, the shared IP address is routed to the primary system. If that system is inaccessible, it fails over to the secondary system *until* the primary system becomes available again. If both systems are configured as the same role (both primary or both secondary), then the behavior is slightly different. It still fails over to the other system should the original system become inaccessible, but then it remains routed to the other system, even if the original system comes back online.
 
     1.  Repeat these steps for the other Compute Instance.
-
-### Install and Configure Lelastic
-
-1.  Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
-
-1.  Download and install the [lelastic](https://github.com/linode/lelastic) utility from GitHub by running the following commands:
-
-        curl -LO https://github.com/linode/lelastic/releases/download/v0.0.3/lelastic.gz
-        gunzip lelastic.gz
-        chmod 755 lelastic
-        mv lelastic /usr/local/bin/
-
-1.  Run the following command to configure lelastic, replacing *[id]* with the ID corresponding to your data center in the [table above](/docs/guides/ip-failover/#ip-failover-support) and *[role]* with either `primary` if you are configuring the primary instance or `secondary` if you are configuring the secondary instance.
-
-        lelastic -dcid [id] -[role] &
-
-1.  Repeat these steps for *each* Compute Instance within your IP failover setup.
 
 ## Test IP Failover
 
