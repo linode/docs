@@ -1570,6 +1570,7 @@ rbac
 rbenv
 rc
 rce
+rclone
 rcon
 rdbadmin
 rdiff
