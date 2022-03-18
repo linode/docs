@@ -294,6 +294,7 @@ connectionism
 connectionless
 containerd
 containerised
+convery
 convolutional
 cookstyle
 coose
@@ -468,6 +469,7 @@ dotfiles
 doveadm
 dpkg
 dport
+dragos
 dropdown
 drupal
 drush
@@ -621,6 +623,7 @@ freshclam
 friendster
 frontend
 frontmatter
+froud
 froxlor
 fs
 fsck
@@ -786,6 +789,7 @@ https
 huginn
 Hugo
 hulu
+husch
 hvc0
 hybla
 hykes
