@@ -70,6 +70,7 @@ argv
 arping
 arptables
 Asana
+aspell
 askbot
 aske
 async
@@ -2199,6 +2200,7 @@ whoami
 whois
 whowatch
 wi
+wiktionary
 widgits
 wildfly
 wimey
@@ -2256,6 +2258,7 @@ xresources
 xsession
 xsetroot
 xstartup
+xsys
 xtables
 xvda
 xvdb
