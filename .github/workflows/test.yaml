@@ -134,5 +134,5 @@ jobs:
 
             sleep 1
         done
-    - name: Run tests
-      run: python ./ci/docs404.py
+    # - name: Run tests
+    #   run: python ./ci/docs404.py
