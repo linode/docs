@@ -69,11 +69,8 @@ aren
 argv
 arping
 arptables
-<<<<<<< HEAD
 Asana
-=======
 aspell
->>>>>>> tech edits
 askbot
 aske
 async
