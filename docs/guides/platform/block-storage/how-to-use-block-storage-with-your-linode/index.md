@@ -67,4 +67,4 @@ Need ideas for what to do with space? We have several guides which walk you thro
 
 - [Using Subsonic to Stream Media From Your Linode](/docs/applications/media-servers/install-subsonic-media-server-on-ubuntu-or-debian/)
 
-- [Install GitLab on Ubuntu 14.04](/docs/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr/)
+- [Install GitLab on Ubuntu 18.04](/docs/development/version-control/install-gitlab-on-ubuntu-18-04/)
