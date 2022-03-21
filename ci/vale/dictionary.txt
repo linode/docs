@@ -545,6 +545,7 @@ ext4
 facter
 facto
 fail2ban
+failback
 failover
 failregex
 failregexs

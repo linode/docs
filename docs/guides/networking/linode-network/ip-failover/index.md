@@ -6,7 +6,7 @@ author:
 description: "This guide discusses how to enable IP failover on a Linode Compute Instance through using our IP Sharing feature with software such as keepalived or FRR."
 keywords: ['IP failover','IP sharing','elastic IP']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-17
+published: 2022-03-21
 modified_by:
   name: Linode
 title: "Configuring IP Failover on a Compute Instance"
@@ -16,10 +16,10 @@ contributor:
 
 There's always a small possibility that your Compute Instance may be powered off or become inaccessible, perhaps due to your own internal configuration issues or due to planned (or unplanned) maintenance. When this happens, any websites or services hosted on that Instance might also stop working. To configure services as highly available (and prevent them from going down), there are a few options you can consider:
 
-- **IP failover:** Routes an IP addresses's traffic to a secondary Compute Instance in the event the original Instance goes down.
+- **IP failover:** Routes an IP addresses to a secondary Compute Instance in the event the original Instance goes down.
 - **Load balancing:** Load balancing solutions, such as Linode's [NodeBalancers](/docs/products/networking/nodebalancers/) or [HAProxy](https://www.linode.com/docs/guides/how-to-use-haproxy-for-load-balancing/), can route incoming requests to preconfigured backend Compute Instances. This provides quite a lot of flexibility for your own unique highly available setup.
 
-This guide covers configuring IP failover to enable high availability. IP failover allows two Linode Compute Instances to share a single IP address, one serving as the *primary* and one serving as the *secondary*. If the primary Compute Instance becomes unavailable, the IP address will seamlessly failover to the secondary Compute Instance. Once the primary instance is back online, the IP address will fallback to that instance.
+This guide covers configuring IP failover to enable high availability. IP failover allows two Linode Compute Instances to share a single IP address, one serving as the *primary* and one serving as the *secondary*. If the primary Compute Instance becomes unavailable, the shared IP address is seamlessly routed to the secondary Compute Instance (fail*over*). Once the primary instance is back online, the IP address route is restored to that instance (fail*back*).
 
 ## IP Failover Support
 
@@ -60,11 +60,11 @@ If you are configuring IP failover through the legacy method (in supported data 
 
 1. Determine which Compute Instances you wish configure for IP failover. They both must be located in the same data center. If you need to, create those Compute Instances now and allow them to boot up.
 
-1. Disable Network Helper on both Compute Instances. For instructions, see the [Network Helper](/docs/guides/network-helper/#single-per-linode) guide.
+1. Disable Network Helper on both instances. For instructions, see the [Network Helper](/docs/guides/network-helper/#single-per-linode) guide.
 
-1. Add an additional IPv4 address to one of the Compute Instances. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) guide for instructions. Make a note of the new address that is assigned as this will be used as the shared IP address.
+1. Add an additional IPv4 address to one of the Compute Instances. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) guide for instructions. Make a note of the newly assigned IP address.
 
-1. On the other Compute Instance, configure the *IP Sharing* feature to use the IPv4 address that was just added to the other instance. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/#configuring-ip-sharing) for instructions on configuring IP sharing.
+1. On the *other* Compute Instance, add the newly assigned IP address as a *Shared IP* using Linode's *IP Sharing* feature. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/#configuring-ip-sharing) for instructions on configuring IP sharing.
 
 1. Configure IP failover on the internal system of *both* Compute Instances.
 
@@ -82,7 +82,7 @@ If you are configuring IP failover through the legacy method (in supported data 
 After the IP address has been removed, it is no longer accessible until BGP routing has been configured. Use caution if enabling IP Sharing on IPv4 addresses that are a part of a production workload as downtime is likely to occur.
 {{</caution>}}
 
-    1.  Add the shared ip address to the loopback interface:
+    1.  Add the shared IP address to the loopback interface:
 
             ip addr add [shared-ip]/32 dev lo
 
@@ -97,7 +97,9 @@ After the IP address has been removed, it is no longer accessible until BGP rout
 
             lelastic -dcid [id] -[role] &
 
-        Once configured, the shared IP address is routed to the primary system. If that system is inaccessible, it fails over to the secondary system *until* the primary system becomes available again. If both systems are configured as the same role (both primary or both secondary), then the behavior is slightly different. It still fails over to the other system should the original system become inaccessible, but then it remains routed to the other system, even if the original system comes back online.
+        Once configured, the shared IP address is routed to the primary Compute Instance. If that instance becomes inaccessible, the shared IP address is automatically routed to the secondary instance (fail*over*). Once the primary instance is back online, the shared IP address is restored to that instance (fail*back*).
+
+        If desired, both instances can be configured with the same role (both primary or both secondary). This prevents failback functionality, meaning that the shared IP address is not restored to the original system, even if the original system comes back online.
 
     1.  Repeat these steps for the other Compute Instance.
 
