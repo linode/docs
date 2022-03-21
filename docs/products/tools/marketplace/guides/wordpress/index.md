@@ -52,29 +52,23 @@ With 60 million users around the globe, WordPress provides an industry standard 
 
 ## Getting Started After Deployment
 
-### Access Your WordPress Site
+### Accessing the WordPress Admin Dashboard
 
-After WordPress has finished installing, you can access your WordPress site by copying your Linode's IPv4 address and entering it in the browser of your choice. If you've set up DNS during installation, you can go to your domain name in the browser. To find your Linode's IPv4 address:
+1.  Open your web browser and navigate to `http://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
-1. Click on the **Linodes** link in the sidebar to see a list of all your Linodes.
+    ![](wordpress-browser-url.png)
 
-1. Find the Linode you just created when deploying your app and select it.
+1.  Within the login page that appears, enter the username (*admin username*) and password (*admin password*) that you created when you deployed this instance. Then click the **Log In** button.
 
-1. Navigate to the **Networking** tab.
+    ![](wordpress-login.png)
 
-1. Your IPv4 address is listed under the **Address** column in the **IPv4** table.
+1.  Once logged in, the WordPress Admin Dashboard appears. From here, you can create new posts, add users, modify the theme, and adjust any settings.
 
-1. Copy and paste the IPv4 address into a browser window. You should see your WordPress site's home page.
+    ![](wordpress-admin.png)
 
-1.  Once you have accessed your WordPress site via the browser, you can log in to the WordPress administrative interface and start personalizing your theme, creating posts, and configuring other parts of your site.
+### Viewing Your Website
 
-    - The address of the WordPress login page is `http://< your IP address >/wp-login.php`.
-    - If you set up a domain during installation, you can access the login page at `http://< your domain >/wp-login.php`.
-    - You can also click on the log in link that's visible on your site's home page, as highlighted below.
-
-    Enter the credentials you previously specified in the **Admin Username** and **Admin Password** fields when you deployed the app.
-
-    ![Log in to your WordPress site.](wordpress-login.png)
+Open a web browser and navigate to `http://[domain]`, replacing *[domain]* with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS. Your WordPress site should now be displayed.
 
 ### Set up a Domain for your Site
 
