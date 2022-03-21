@@ -33,6 +33,7 @@ The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration en
 
 - **etcd Backups**: A snapshot of your cluster's metadata is backed up continuously, so your cluster is automatically restored in the event of a failure.
 - **High Availability**: All of your control plane components are monitored and automatically recover if they fail.
+- **Kubernetes Dashboard** All LKE installations include access to a [Kubernetes Dashboard installation](/docs/guides/using-the-kubernetes-dashboard-on-lke/#accessing-the-cluster-dashboard).
 
 ## In this Guide
 
