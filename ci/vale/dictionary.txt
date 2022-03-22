@@ -819,6 +819,7 @@ ifnames
 iframe
 iframes
 ifup
+ifupdown
 ignoreip
 ignoreregex
 ikiwiki
