@@ -90,11 +90,11 @@ The following example demonstrates how `git clean -f` handles a combination of u
 
 {{< output >}}
 Changes to be committed:
-	new file:   testfile1.txt
+new file:   testfile1.txt
 
 Untracked files:
-	testfile2.txt
-	testfile3.txt
+testfile2.txt
+testfile3.txt
 {{< /output >}}
 
 Run `git clean` using the `-f` option to delete the two untracked files.
@@ -111,7 +111,7 @@ Use either the `git status` or `ls` command to verify the untracked files have b
     git status
 {{< output >}}
 Changes to be committed:
-	new file:   testfile1.txt
+new file:   testfile1.txt
 {{< /output >}}
 
 `git clean -n` reduces the risks associated with the `clean` command. It lists all the files the command intends to delete, but does actually not delete them. It acts like a "test run" of the command and can be used to avoid accidental deletions.
@@ -130,8 +130,8 @@ Afterwards, the files are still listed in `git status`. They have not really bee
 {{< output >}}
 ...
 Untracked files:
-	testfile2.txt
-	testfile3.txt
+testfile2.txt
+testfile3.txt
 {{< /output >}}
 
 The `git clean -e` option allows users to enter a specific exclude pattern or filename. Files having this name or matching this pattern are not deleted.
@@ -142,8 +142,8 @@ In the following example, there are two untracked files named `testfile4.md` and
 {{< output >}}
 ...
 Untracked files:
-	testfile4.md
-	testfile4.txt
+testfile4.md
+testfile4.txt
 {{< /output >}}
 
 To ignore `testfile4.txt` during the deletion process, append the option `-e testfile4.txt` to the `clean` command. The `-f` option is still required to force the remaining deletions.
@@ -158,7 +158,7 @@ As a result, the `md` file is deleted, but the `txt` file is not.
 {{< output >}}
 ...
 Untracked files:
-	testfile4.txt
+testfile4.txt
 {{< /output >}}
 
 `git clean -d` is recursive and cleans both the current directory and any subdirectories.
