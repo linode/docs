@@ -70,6 +70,7 @@ argv
 arping
 arptables
 Asana
+aspell
 askbot
 aske
 async
@@ -294,6 +295,7 @@ connectionism
 connectionless
 containerd
 containerised
+convery
 convolutional
 cookstyle
 coose
@@ -468,6 +470,7 @@ dotfiles
 doveadm
 dpkg
 dport
+dragos
 dropdown
 drupal
 drush
@@ -622,6 +625,7 @@ freshclam
 friendster
 frontend
 frontmatter
+froud
 froxlor
 fs
 fsck
@@ -787,6 +791,7 @@ https
 huginn
 Hugo
 hulu
+husch
 hvc0
 hybla
 hykes
@@ -1572,6 +1577,7 @@ rbac
 rbenv
 rc
 rce
+rclone
 rcon
 rdbadmin
 rdiff
@@ -2196,6 +2202,7 @@ whoami
 whois
 whowatch
 wi
+wiktionary
 widgits
 wildfly
 wimey
@@ -2253,6 +2260,7 @@ xresources
 xsession
 xsetroot
 xstartup
+xsys
 xtables
 xvda
 xvdb
