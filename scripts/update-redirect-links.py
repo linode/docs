@@ -2,15 +2,18 @@
 import os
 import re
 import frontmatter
+import csv
 
 # ------------------
 # Build a list of all aliases and map them to their current link
 # ------------------
 
 # The directory to be used when building the list of aliases
-alias_directory = '../docs/guides/'
+alias_directory = '../docs/'
 # A dictionary that maps all aliases to the current (canonical) link
 aliases = {}
+# A dictionary that contains all the aliases that are duplicated on multiple guides
+duplicate_aliases = {}
 
 # Iterate through each markdown file within the alias_directory
 for root, dirs, files in os.walk(alias_directory):
@@ -24,10 +27,36 @@ for root, dirs, files in os.walk(alias_directory):
                 # Loads the entire guide (including front matter)
                 guide = frontmatter.load(file_path)
                 # Creates the canonical (current) link for the guide
-                canonical_link = "/docs/guides/" + guide['slug'] + "/"
+                if "/docs/guides/" in file_path:
+                    canonical_link = "/docs/guides/" + guide['slug'] + "/"
+                elif "/docs/products/" in file_path:
+                    canonical_link = file_path.replace('../docs/','/docs/')
+                    canonical_link = canonical_link.replace('/index.md','/')
+                    canonical_link = canonical_link.replace('/_index.md','/')
+                else:
+                    # Go to the next file if it is not located in /guides/ or /products/
+                    file.next()
                 # Updates the aliases dictionary with all aliases in the guide
                 # and maps them to the guide's canonical link
-                aliases.update ({ i : canonical_link for i in guide['aliases'] })
+                for alias in guide['aliases']:
+                    # Check if the alias already exists in the aliases dictionary
+                    if aliases.get(alias) is not None:
+                      # If it does exist, then it's a duplicate alias - which is not ideal as
+                      # and a member of the docs team should manually intervene.
+                      # Let's check to see if the duplicate alias has already been logged.
+                      if duplicate_aliases.get(alias) is not None:
+                          # If the duplicate has been logged, increment the count.
+                          # This helps us identify how many times this alias appears.
+                          count = duplicate_aliases.get(alias)
+                          count = count + 1
+                          duplicate_aliases.update({ alias : count})
+                      # If the duplicate alias has not yet been logged, clear it and log it.
+                      else:
+                        # Log the duplicate, starting the count at 2
+                        duplicate_aliases.update({ alias : 2})
+                    # If the alias does not yet exist in the aliases dictionary, add it
+                    else:
+                      aliases.update({ alias : canonical_link})
             except:
                 continue
 
@@ -38,7 +67,9 @@ for root, dirs, files in os.walk(alias_directory):
 # ------------------
 
 # The directory to be used when replacing old links
-link_directory = '../docs/guides/game-servers/'
+link_directory = '../docs/guides/game-servers/create-an-ark-server-on-ubuntu/'
+# A list of all links that point to duplicate aliases
+links_to_duplicate_aliases = []
 
 # The regex pattern used to locate all markdown links containing the string "/docs".
 # This bypasses any external urls and archor links
@@ -57,11 +88,23 @@ for root, dirs, files in os.walk(link_directory):
                 # Find and iterate through all markdown links to other guides
                 for match in re.finditer(link_pattern, line):
                     # Remove the title, brackets, and parenthesis from the markdown link
-                    link = (match.group()).replace('/docs/','/')
+                    link = match.group()
                     link = link[link.find("(")+1:link.find(")")]
-
-                    # Determine if the link is an alias (not current)
-                    if aliases.get(link) is not None:
-                        print(link + " redirects to " + aliases.get(link))
+                    # Remove /docs/ from the link so its formatted the same as aliases
+                    link_as_alias = link.replace('/docs/','/')
+                    # Searches the aliases dictionary for the canonical link
+                    link_canonical = aliases.get(link_as_alias)
+                    # Checks if the link matches an alias (is not current)
+                    if link_canonical is not None:
+                        # Checks if the link matches a duplicate
+                        if duplicate_aliases.get(link_as_alias):
+                            print("SKIPPED | Link belongs to duplicate aliases: " + link)
+                        else:
+                            print("MODIFIED | " + file_path + " | Changed " + link + " to " + link_canonical)
+                            # Replace the outdated link with the new link
+                            with open(file_path) as f:
+                                updated_contents=f.read().replace(link, link_canonical)
+                            with open(file_path, "w") as f:
+                                f.write(updated_contents)
                     else:
                         continue
