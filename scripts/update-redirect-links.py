@@ -2,7 +2,6 @@
 import os
 import re
 import frontmatter
-import csv
 
 # ------------------
 # Build a list of all aliases and map them to their current link
