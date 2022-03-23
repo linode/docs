@@ -6,15 +6,13 @@ author:
 description: "This guide discusses how to enable failover on a Linode Compute Instance through using our IP Sharing feature with software such as keepalived or FRR."
 keywords: ['IP failover','IP sharing','elastic IP']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-22
+published: 2022-03-23
 modified_by:
   name: Linode
 title: "Configuring Failover on a Compute Instance"
 contributor:
   name: Linode
 ---
-
-
 
 In cloud computing, *failover* is the concept of rerouting traffic to a backup system should the original system become inaccessible. Linode Compute Instances support failover through the [IP Sharing](/docs/guides/managing-ip-addresses/#configuring-ip-sharing) feature. This allows two Compute Instances to share a single IP address, one serving as the *primary* and one serving as the *secondary*. If the primary Compute Instance becomes unavailable, the shared IP address is seamlessly routed to the secondary Compute Instance (fail*over*). Once the primary instance is back online, the IP address route is restored (fail*back*).
 
@@ -43,7 +41,6 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Sydney (Australia) |  *Not supported* | - | 16 |
 | Tokyo (Japan) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 11 |
 | Toronto (Canada) |  *Not supported* | - | 15 |
-
 
 - **New IP Sharing Method (BGP):** Supports IPv4 failover. This is currently being rolled out across our fleet in conjunction with our [planned network infrastructure upgrades](/docs/guides/network-infrastructure-upgrades/). Since it is implemented using BGP routing, customers can configure it on their Compute Instances using the Linode provided lelastic tool or FRR. Follow the instructions within this guide.
 
@@ -182,8 +179,8 @@ WantedBy=multi-user.target
 
     If you need to, you can stop and disable the service to stop failover functionality on the particular Compute Instance.
 
-        sudo systemctl start lelastic
-        sudo systemctl enable lelastic
+        sudo systemctl stop lelastic
+        sudo systemctl disable lelastic
 
 ## Test Failover
 
