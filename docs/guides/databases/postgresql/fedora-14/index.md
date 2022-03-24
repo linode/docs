@@ -11,7 +11,6 @@ modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2010-12-08
-expiryDate: 2013-04-29
 title: Use PostgreSQL Relational Databases on Fedora 14
 relations:
     platform:

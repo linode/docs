@@ -13,7 +13,6 @@ modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2010-02-24
-expiryDate: 2011-04-29
 title: 'Websites with nginx on Ubuntu 9.10 (Karmic)'
 relations:
     platform:

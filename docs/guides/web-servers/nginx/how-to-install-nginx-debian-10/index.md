@@ -22,7 +22,7 @@ relations:
         key: how-to-install-nginx
         keywords:
             - distribution: Debian 10
-aliases: ['/web-servers/nginx/install-nginx-ubuntu/','/web-servers/nginx/how-to-install-nginx-debian-10/']
+aliases: ['/web-servers/nginx/how-to-install-nginx-debian-10/']
 ---
 
 ## What is NGINX?

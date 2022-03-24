@@ -1,13 +1,13 @@
 ---
 slug: back-up-your-mysql-databases
 deprecated: true
+deprecated_link: "guides/use-mysqldump-to-back-up-mysql-or-mariadb/"
 author:
   name: Brett Kaplan
   email: docs@linode.com
 description: 'This guide provides instructions for backing up your MySQL databases for disaster recovery and continuity using a variety of methods, including the command line.'
 keywords: ["mysql", "backup", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mysql/backup-options/','/databases/mysql/back-up-your-mysql-databases/','/security/backups/back-up-your-mysql-databases/']
 modified: 2013-09-11
 modified_by:
   name: Linode
