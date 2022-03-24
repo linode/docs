@@ -25,7 +25,7 @@ The Linode API allows you to create, delete, attach, detach, clone, and resize B
 
 ## Before You Begin
 
-You will need a Personal Access Token to access the `/volumes` endpoint. Create an Access Token through the [Beta Linode Manager](https://cloud.linode.com/profile/tokens). See our [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/) for more information.
+You will need a Personal Access Token to access the `/volumes` endpoint. Create an Access Token through the [Beta Linode Manager](https://cloud.linode.com/profile/tokens). See our [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/) for more information.
 
 Store the token as a temporary shell variable to simplify repeated requests. Replace `<Access Token>` in this example with your token:
 

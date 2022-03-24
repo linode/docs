@@ -3,6 +3,8 @@ import os
 import re
 import frontmatter
 
+output_duplicates_filename = "duplicates.csv"
+
 # ------------------
 # Build a list of all aliases and map them to their current link
 # ------------------
@@ -66,7 +68,7 @@ for root, dirs, files in os.walk(alias_directory):
 # ------------------
 
 # The directory to be used when replacing old links
-link_directory = '../docs/guides/game-servers/create-an-ark-server-on-ubuntu/'
+link_directory = '../docs/guides/platform/'
 # A list of all links that point to duplicate aliases
 links_to_duplicate_aliases = []
 
@@ -97,13 +99,19 @@ for root, dirs, files in os.walk(link_directory):
                     if link_canonical is not None:
                         # Checks if the link matches a duplicate
                         if duplicate_aliases.get(link_as_alias):
-                            print("SKIPPED | Link belongs to duplicate aliases: " + link)
+                            with open(output_duplicates_filename, "w") as f:
+                                f.write(link_as_alias)
+                            print("SKIPPED LINK | Points to duplicate aliases: " + link)
                         else:
-                            print("MODIFIED | " + file_path + " | Changed " + link + " to " + link_canonical)
+                            print("UPDATED LINK | " + file_path + " | Changed " + link + " to " + link_canonical)
                             # Replace the outdated link with the new link
                             with open(file_path) as f:
                                 updated_contents=f.read().replace(link, link_canonical)
                             with open(file_path, "w") as f:
                                 f.write(updated_contents)
+                    # Check to see if the link matches a current link.
                     else:
                         continue
+
+# Log duplicate to Excel
+# alias, link to guide that it appears on

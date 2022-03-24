@@ -44,7 +44,7 @@ Here's how to set a user's access permissions:
 
     ![Configure User permissions in the Linode Cloud Manager.](accounts-user-permissions.png "Configure User permissions in the Linode Cloud Manager")
 
-1.  Toggle the boxes in the **Global Permissions** section to allow the user to add [Linodes](/docs/getting-started/), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), [Domains](/docs/networking/dns/dns-manager-overview/#domain-zones), [Longview](/docs/platform/longview/longview/) clients, [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) to the account, create [StackScripts](/docs/platform/stackscripts/), frozen [Images](/docs/platform/disk-images/linode-images/), access all billing information, and cancel the entire account. These permissions are exactly as described and will not add any additional permissions.
+1.  Toggle the boxes in the **Global Permissions** section to allow the user to add [Linodes](/docs/guides/getting-started/), [NodeBalancers](/docs/guides/getting-started-with-nodebalancers/), [Domains](/docs/networking/dns/dns-manager-overview/#domain-zones), [Longview](/docs/guides/what-is-longview/) clients, [Block Storage Volumes](/docs/guides/how-to-use-block-storage-with-your-linode/) to the account, create [StackScripts](/docs/platform/stackscripts/), frozen [Images](/docs/products/tools/images/), access all billing information, and cancel the entire account. These permissions are exactly as described and will not add any additional permissions.
 
     {{< note >}}
 Granting access to settings denoted with a dollar sign ($) allows the user to perform actions that incur billing costs, such as adding or resizing a Linode.
@@ -104,4 +104,4 @@ Creating strong passwords is essential to protecting your Linode and your Linode
 
 ## Next Steps
 
-You can take additional steps to secure your Linode Cloud Manager account by enabling the two-factor authentication and IP address whitelisting features. You can also configure security event notifications and disable API access. For instructions, see the [Security](/docs/security/linode-manager-security-controls/) guide.
+You can take additional steps to secure your Linode Cloud Manager account by enabling the two-factor authentication and IP address whitelisting features. You can also configure security event notifications and disable API access. For instructions, see the [Security](/docs/guides/linode-manager-security-controls/) guide.

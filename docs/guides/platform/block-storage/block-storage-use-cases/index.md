@@ -32,7 +32,7 @@ Volumes are stored separately from your cloud instances, but inside the same dat
 A Block Storage Volume augments the raw storage capacity of a cloud instance, which can be useful if your storage needs are greater than your computing demands. Because a Volume is scalable, it can adapt as your data grows in size. Additionally, all data stored with Linode Block Storage is replicated three times, so your Volumes are highly available and fault tolerant.
 
 {{< note >}}
-While the health and uptime of Linode Block Storage is closely monitored by Linode Support, we still recommend [making separate backups](/docs/security/backups/backing-up-your-data/) of your Volumes.
+While the health and uptime of Linode Block Storage is closely monitored by Linode Support, we still recommend [making separate backups](/docs/guides/backing-up-your-data/) of your Volumes.
 {{< /note >}}
 
 Because Volumes are directly connected to an instance, their I/O speeds are much faster than those of an alternative storage solution like Object Storage. As well, the nature of Block Storage allows you to read and write small parts of your data, which means that you can incrementally update your files. This is in contrast to Object Storage, which requires a full re-upload of a file to update it.
@@ -63,7 +63,7 @@ With the release of NVMe Block Storage, our Block Storage service is able to mee
 
 ### Running Cloud Software
 
-In a climate where ownership over one's data is an important need for many individuals and organizations, hosting your own cloud software is a great use case for Block Storage. Create and mount a Block Storage Volume, [install an application like OwnCloud](/docs/applications/cloud-storage/install-and-configure-owncloud-on-ubuntu-16-04/), and point its data folder to a location on your Volume. If you ever run out of space on your Volume you can always increase its size.
+In a climate where ownership over one's data is an important need for many individuals and organizations, hosting your own cloud software is a great use case for Block Storage. Create and mount a Block Storage Volume, [install an application like OwnCloud](/docs/guides/install-and-configure-owncloud-on-ubuntu-16-04/), and point its data folder to a location on your Volume. If you ever run out of space on your Volume you can always increase its size.
 
 ### Storage for Media Library Applications
 
@@ -86,7 +86,7 @@ Having backups of your data is always a good idea, and Block Storage Volumes mak
 You can boot from disk images installed to a Block Storage Volume. This provides a cost effective means of maintaining an image that can be attached to a new Linode. For example, you could save money by creating and removing on-demand Linode instances that boot from a Volume.  As well, you can boot from a Volume to access and recover an instance whose normal operating system may not be running as expected.
 
 {{< note >}}
-Linode provides a built-in [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/) feature, but maintaining your own rescue Volume can allow you to include the recovery tools you prefer to use.
+Linode provides a built-in [Rescue Mode](/docs/guides/rescue-and-rebuild/) feature, but maintaining your own rescue Volume can allow you to include the recovery tools you prefer to use.
 {{< /note >}}
 
 ## Next Steps

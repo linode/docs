@@ -14,7 +14,7 @@ tags: ["linode platform"]
 aliases: ['/platform/dedicated-cpu/getting-started-with-dedicated-cpu/']
 ---
 
-This guide will serve as a brief introduction into what a Dedicated CPU Linode is and how to add one to your Linode account. Review our [Use Cases for Dedicated CPUs](/docs/platform/dedicated-cpu/dedicated-cpu-use-cases/) guide for more information about the tasks that work well on this instance type.
+This guide will serve as a brief introduction into what a Dedicated CPU Linode is and how to add one to your Linode account. Review our [Use Cases for Dedicated CPUs](/docs/guides/dedicated-cpu-use-cases/) guide for more information about the tasks that work well on this instance type.
 
 ## What is a Dedicated CPU Linode?
 
@@ -22,15 +22,15 @@ In contrast with a [Shared Linode](/docs/platform/how-to-choose-a-linode-plan/#1
 
 While a Shared Linode is a good fit for most use cases, a Dedicated CPU Linode is recommended for a number of workloads related to high, sustained CPU processing, including:
 
-- [CI/CD](/docs/development/ci/introduction-ci-cd/) toolchains and build servers
+- [CI/CD](/docs/guides/introduction-ci-cd/) toolchains and build servers
 - CPU-intensive [game servers](/docs/game-servers/), like Minecraft or Team Fortress
 - [Audio and video transcoding and streaming](/docs/applications/media-servers/)
 - [Big data](/docs/applications/big-data/) and data analysis
 - Scientific Computing
-- [Machine learning](/docs/applications/big-data/how-to-move-machine-learning-model-to-production/)
+- [Machine learning](/docs/guides/how-to-move-machine-learning-model-to-production/)
 
     {{< note >}}
-For more information on Dedicated CPU use cases, see our [Use Cases for Dedicated CPU Instances](/docs/platform/dedicated-cpu/dedicated-cpu-use-cases/).
+For more information on Dedicated CPU use cases, see our [Use Cases for Dedicated CPU Instances](/docs/guides/dedicated-cpu-use-cases/).
 {{< /note >}}
 
 ## Deploying a Dedicated CPU Linode
