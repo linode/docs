@@ -548,6 +548,7 @@ ext4
 facter
 facto
 fail2ban
+failback
 failover
 failregex
 failregexs
@@ -823,6 +824,7 @@ ifnames
 iframe
 iframes
 ifup
+ifupdown
 ignoreip
 ignoreregex
 ikiwiki
