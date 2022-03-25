@@ -1,13 +1,11 @@
 ---
 slug: difference-between-tcp-and-udp
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'What is the difference between TCP and UDP? We explain how each works, the key differences between these two internet protocols. Learn more here!'
-og_description: 'What is the difference between TCP and UDP? We explain how each works, the key differences between these two internet protocols. Learn more here!'
+  name: Jeff Novotny
+description: 'What is the difference between TCP and UDP? This guide explains how each works, the key differences between these two internet protocols. Learn more here.'
 keywords: ['difference between tcp and udp','what is tcp and udp','tcp vs udp','tcp/udp']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-28
+published: 2022-03-25
 modified_by:
   name: Linode
 title: "The Difference Between TCP and UDP Explained | Linode"
@@ -18,10 +16,6 @@ contributor:
 external_resources:
 - '[IETF TCP RFC 793](https://datatracker.ietf.org/doc/html/rfc793)'
 - '[IETF UDP RFC 768](https://datatracker.ietf.org/doc/html/rfc768)'
-- '[IETF TCP/IP Explainer](https://datatracker.ietf.org/doc/html/rfc1180)'
-- '[Wikipedia list of TCP and UDP port numbers](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers)'
-- '[Wikipedia page on TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol)'
-- '[Wikipedia page on UDP](https://en.wikipedia.org/wiki/User_Datagram_Protocol)'
 ---
 
 Many users might not understand the network protocols they are using, but networking is a critical topic for application programmers and architects. In particular, the choice between the *Transmission Control Protocol* (TCP) or the *User Datagram Protocol* (UDP) can drastically alter how an application behaves. This guide introduces both transport protocols and explains the difference between TCP and UDP. It also discusses the advantages of both protocols and when they should be used.
@@ -34,10 +28,10 @@ The TCP/IP suite divides the communication channel between the source and the de
 
 - **Application Layer**: Users directly interact with the networking stack only at the application layer. Applications collect and assemble the data to transmit. Each application chooses the transport protocol that best meets its requirements. Applications such as HTTP and FTP are part of this layer.
 - **Transport Layer**: This layer establishes a channel for host-to-host communications. The destination can reside either on the local network or on a remote network anywhere in the world. Transport protocols can be either connection oriented or connectionless. A communication port is associated with each application using the transport layer. The main transport protocols are TCP and UDP.
-- **Internet Layer**: The internet layer contains the core functionality associated with the modern internet. The Internet Protocol handles implementation of this layer. It constructs IP packets, complete with source and destination *IP addresses*, and transmits them across the network. This layer also handles the routing of packets across the network from source to destination.
+- **Internet Layer**: The internet layer contains the core functionality associated with the modern internet. The Internet Protocol handles implementation of this layer. It constructs IP packets, complete with source and destination *IP addresses*, and transmits them across the network. This layer also handles the routing of packets across the network from source to destination. To learn more about the internet Layer, see our guide [How to Understand and Use IP Addresses](/docs/guides/how-to-understand-ip-addresses/).
 - **Link Layer**: This layer handles the low-level transmission of packets across the physical layer without the use of routers. An example of a link-layer technology is Ethernet and the *media access control* (MAC) addressing system. The TCP/IP suite is hardware independent and less concerned with the specifics of packet transmission.
 
-During transmission, data is passed down from one layer to the next. At each layer, the data is encapsulated inside a new packet with header information for the layer. The application layer sends data to the transport layer, which forwards it to the internet layer. The link layer finally physically transmits the data. Upon reception, the order is reversed. Data is passed upward from the link layer until it arrives at the application. A full description and tutorial of the TCP/IP suite is available as an [IETF RFC](https://datatracker.ietf.org/doc/html/rfc1180).
+During transmission, data is passed down from one layer to the next. At each layer, the data is encapsulated inside a new packet with header information for the layer. The application layer sends data to the transport layer, which forwards it to the internet layer. Finally, the link layer physically transmits the data. Upon reception, the order is reversed. Data is passed upward from the link layer until it arrives at the application. A full description and tutorial of the TCP/IP suite is available as an [IETF RFC](https://datatracker.ietf.org/doc/html/rfc1180).
 
 TCP and UDP are both associated with the transport layer of the TCP/IP suite. They receive data from higher-level applications, encapsulate it, and forward it onto the IP layer. Their main task is to set up a connection to the destination server. Both protocols are defined in Internet Engineering Task Force (IETF) standards. TCP was defined in [RFC 793](https://datatracker.ietf.org/doc/html/rfc793) and UDP in [RFC 768](https://datatracker.ietf.org/doc/html/rfc768).
 
@@ -45,7 +39,7 @@ The name of the TCP/IP suite reflects the ongoing popularity of TCP over UDP. Bu
 
 Applications usually choose either TCP or UDP for their transport layer, but can choose a combination of the two. The choice of transport protocol is usually invisible to users and typically cannot be changed. Some applications allow the user to choose between reliability and speed. This might map to either TCP or UDP internally.
 
-Each application registering with TCP or UDP is assigned a port. The TCP and UDP headers include 16-bit fields for the source and destination ports. TCP and UDP maintain completely independent port numbering systems. TCP port `2000` and UDP port `2000` are different and can both be used at the same time. Popular applications are often assigned an official port number. These are known as well-known ports. For a list of official and unofficial port numbers, see the [Wikipedia list of TCP and UDP ports](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers).
+Each application registering with TCP or UDP is assigned a port. The TCP and UDP headers include 16-bit fields for the source and destination ports. TCP and UDP maintain completely independent port numbering systems. TCP port `2000` and UDP port `2000` are different and can both be used at the same time. Popular applications are often assigned an official port number. These are called *well-known ports*. For a list of official and unofficial port numbers, see the [Wikipedia list of TCP and UDP ports](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers).
 
 ## What is TCP?
 
@@ -66,7 +60,7 @@ Due to its flexibility and usefulness, TCP is one of the most common network pro
 - TCP guarantees data integrity. It uses a TCP checksum to ensure arriving data has not been corrupted.
 - It implements some advanced features including exponential back-off and flow control. This helps detect and avoid congestion in the network.
 
-TCP also has some drawbacks, including the following.
+TCP also has some drawbacks and they are included in the list below.
 
 - It takes longer to set up a connection and is relatively slow. Due to its overhead, it is less efficient than UDP.
 - It is relatively heavyweight and requires more server processing power and memory. The protocol is relatively complex.
@@ -85,7 +79,7 @@ Some of the applications that typically use TCP include the following:
 
 ## What is UDP?
 
-UDP is in many ways the polar opposite of TCP. UDP is a very stripped down protocol that is designed to quickly transfer data. However, this comes at some cost. It does not guarantee delivery, retransmit packets, or ensure packets arrive in order. It is very much a best effort protocol, and higher level applications must deal with any irregularities. Nonetheless, it is the best choice for time-sensitive applications.
+UDP is, in many ways, the polar opposite of TCP. UDP is a very stripped down protocol that is designed to quickly transfer data. However, this comes at some cost. It does not guarantee delivery, retransmit packets, or that packets arrive in order. It is very much a best effort protocol, and higher level applications must deal with any irregularities. Nonetheless, it is the best choice for time-sensitive applications.
 
 UDP interacts with the other layers much the same way TCP does. It receives data from the application layer packet, and forwards it to the IP protocol engine in the form of a *datagram*. The IP layer assembles and addresses the packets and the link layer transmits them. At the destination, the IP layer receives the packets and passes them up to UDP. UDP does not reassemble packets or provide any acknowledgements. It only forwards the data directly to the application.
 
@@ -115,7 +109,7 @@ UDP works well for applications that can tolerate some data loss but are sensiti
 
 ## What Is the Difference Between TCP and UDP?
 
-Both TCP and UDP are transport protocols at the same level of the TCP/IP suite, and both use well-known ports. But TCP is strong in the areas where UDP is weak, and UDP is weak where TCP is strong. Here are some of the main differences between TCP and UDP.
+Both TCP and UDP are transport protocols at the same level of the TCP/IP suite, and both use well-known ports. But TCP is strong in the areas where UDP is weak, and UDP is weak where TCP is strong. The list below includes some of the main differences between TCP and UDP.
 
 - TCP is connection oriented, while UDP is connectionless. TCP establishes a connection and maintains it for the duration of the session. UDP is datagram oriented and does not require a connection.
 - UDP begins transmitting packets immediately without any preamble. TCP must wait for the connection phase to complete before transmitting data.
@@ -140,5 +134,3 @@ To decide whether to use TCP or UDP, application developers must determine what 
 TCP and UDP are both part of the transport layer in the TCP/IP suite. They establish a communication channel between the source and destination, receiving data from user applications and forwarding it on to the Internet Protocol.
 
 There are several differences between TCP and UDP. TCP is the more complex and heavyweight protocol. It provides reliable delivery and advanced features, but it has more overhead and is not designed for speed. UDP is simple and fast. However, it is not as reliable and does not number its data packets. The choice of UDP vs TCP depends on how an application is used and designed.
-
-You can develop your own application using TCP/UDP on a Linode system. Choose between a high-performance [*Dedicated CPU*](https://www.linode.com/products/dedicated-cpu/) service, or a flexible and affordable [*Shared CPU*](https://www.linode.com/products/shared/) alternative.
