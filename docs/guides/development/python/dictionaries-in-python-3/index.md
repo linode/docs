@@ -1,9 +1,10 @@
 ---
-slug: dictionaries-in-python-3
+slug: using-dictionaries-in-python-3
 author:
   name: John Mueller
 description: 'Dictionaries in Python 3 contain key-value pairs and support various built-in methods for common tasks. This guide shows you how to create, delete, and update a Python dictionary.'
 keywords: ['get value from dictionary python','python define dictionary','python dictionary methods']
+tags: ['Python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-31
 modified_by:
@@ -16,7 +17,7 @@ contributor:
   link: http://www.johnmuellerbooks.com/
 ---
 
-A dictionary in [Python](/docs/guides/how-to-install-python-on-debian-10/) is much like the dictionary you find online or the paper version you find on a shelf. It consists of a series of key-value pairs. A Python dictionary's keys are used to retrieve a dictionary entry along with its value. The act of assigning a key to a value is called mapping, so a Python dictionary is a *mapped data type*. This guide introduces you to the Python 3 dictionary data type and shows you how to use dictionaries in your Python code.
+A dictionary in Python is much like the dictionary you find online or the paper version you find on a shelf. It consists of a series of key-value pairs. A Python dictionary's keys are used to retrieve a dictionary entry along with its value. The act of assigning a key to a value is called *mapping*, so a Python dictionary is a *mapped data type*. This guide introduces you to the Python 3 dictionary data type and shows you how to use dictionaries in your Python code.
 
 ## Dictionary Syntax in Python 3
 
@@ -30,47 +31,55 @@ A dictionary always has a key that relies on an immutable type, such as: `int`, 
 
 If you print the value of the `numbers` dictionary created above, you see the following output:
 
-    {{< output >}}
+{{< output >}}
 {'One': 1, 'Two': 'Two', 'Three': 3.0}
     {{</ output >}}
 
 As demonstrated above, dictionaries consist of the following syntax:
 
-- Employ an opening brace (`{`) to start the dictionary.
-- Separate the keys from the values using a colon (`:`).
-- Separate dictionary entries using a comma (`,`).
-- Use a closing brace (`}`) to end the dictionary.
+- Employ an opening brace (`{`) to start the dictionary
+- Separate the keys from the values using a colon (`:`)
+- Separate dictionary entries using a comma (`,`)
+- Use a closing brace (`}`) to end the dictionary
 
 The example dictionary additionally does the following:
 
 - Uses the `string` data type for the keys, which consist of `'One'`, `'Two'`, and `'Three'`.
 - Uses various data types for the values, which consist of `1`, `'Two'`, and `3.0`.
 
-A dictionary can mix immutable data types in the keys. This means that the following dictionary is equally correct as the previous example:
+A dictionary can mix immutable data types in the keys. This means that the following dictionary is equally correct as of the previous example:
 
     numbers = {1: 'One', 'Two': 'Two', 3.0: 'Three'}
 
 However, accessing dictionary keys is much harder when mixing the data types of your keys.
 
-### Alternative Syntaxes
+### Alternative Syntax
 
-You can create a Python dictionary using the `dict()` constructor and a sequence of key-value pairs:
+You can create a Python dictionary using the `dict()` constructor and a sequence of key-value pairs.
 
-    dict([('One', 1), ('Two', 'Two'), ('Three', 3.0)])
+    numbers = dict([('One', 1), ('Two', 'Two'), ('Three', 3.0)])
 
-{{< output >}}
-{'One': 1, 'Two': 'Two', 'Three': 3.0}
-{{</ output >}}
-
-The examples below use the `dict()` constructor to create dictionaries using a variety of data types as keys and values. Each example relies on a different manner of handling data. The examples also show that it’s unnecessary, in many cases, to convert the data format before creating a dictionary. The last example shows that you can mix and match dictionary creating methods. This is especially useful when data appears in more than one form.
-
-    dict(zip(['One', 'Two', 'Three'], [1, 'Two', 3.0]))
+Printing the `numbers` dictionary results in the following output:
 
 {{< output >}}
 {'One': 1, 'Two': 'Two', 'Three': 3.0}
 {{</ output >}}
 
-    dict({'One' : 1, 'Three': 3.0}, Two = 'Two')
+The examples below use the `dict()` constructor to create dictionaries using a variety of data types as keys and values. Each example relies on a different manner of handling data. The examples also show that it’s unnecessary, in many cases, to convert the data format before creating a dictionary.
+
+    numbers = dict(zip(['One', 'Two', 'Three'], [1, 'Two', 3.0]))
+
+Printing the `numbers` dictionary results in the following output:
+
+{{< output >}}
+{'One': 1, 'Two': 'Two', 'Three': 3.0}
+{{</ output >}}
+
+The example below shows that you can mix and match dictionary-creating methods. This is especially useful when data appears in more than one form.
+
+    numbers = dict({'One' : 1, 'Three': 3.0}, Two = 'Two')
+
+Printing the `numbers` dictionary results in the following output:
 
 {{< output >}}
 {'One': 1, 'Three': 3.0, 'Two': 'Two'}
@@ -78,7 +87,7 @@ The examples below use the `dict()` constructor to create dictionaries using a v
 
 ### Using Tuples as Dictionary Keys
 
-Tuples as dictionary keys are often used to store point coordinates for data on screen, maps, or other places where coordinates appear. Another example is using a tuple to store a first and last name that maps to a telephone number. For example:
+Tuples as dictionary keys are often used to store point coordinates for data on the screen, maps, or other places where coordinates appear. Another example is using a tuple to store a first and last name that maps to a telephone number. For example:
 
     map_coordinates = {(0,1): 100, (2,1): 200}
 
@@ -92,9 +101,11 @@ For example, the following dictionary comprehension uses the numbers `0` through
 
     squared_dict = {x: x ** 2 for x in range(10)}
 
-The above dictionary comprehension creates the following dictionary:
+Printing the `squared_dict` dictionary comprehension creates the following dictionary:
 
     print(squared_dict)
+
+**Output:**
 
 {{< output >}}
 {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
@@ -104,9 +115,11 @@ In addition to using an expression for the values, dictionary comprehension also
 
     example_dict = {chr(x + 65): x ** 2 for x in range(10)}
 
-The above dictionary comprehension creates the following dictionary:
+Printing the `example_dict` dictionary comprehension creates the following dictionary:
 
     print(example_dict)
+
+**Output:**
 
 {{< output >}}
 {'A': 0, 'B': 1, 'C': 4, 'D': 9, 'E': 16, 'F': 25, 'G': 36, 'H': 49, 'I': 64, 'J': 81}
@@ -114,30 +127,34 @@ The above dictionary comprehension creates the following dictionary:
 
 While dictionary comprehension generates the keys and values, the dictionary itself acts like any other Python dictionary.
 
-Dictionary comprehensions require less typing and makes use of a concise syntax. It also reduces the chance of errors and if written simply, it keeps your code more understandable.
+Dictionary comprehensions require less typing and make use of concise syntax. It also reduces the chance of errors and if written simply, it keeps your code more understandable.
 
 ## How to Get a Value from a Dictionary in Python?
 
-After creating a dictionary, you can access its values in several different ways. The two common methods for performing this task are to access the value directly, or to access it as part of a loop. A dictionary often contains unwanted values, so using Python comprehensions can cut the dictionary down to size before you access the values. These techniques appear in the following sections.
+After creating a dictionary, you can access its values in several different ways. The two common methods for performing this task are to access the value directly or to access it as part of a loop. A dictionary often contains unwanted values, so using Python comprehensions can cut the dictionary down to size before you access the values. These techniques appear in the following sections.
 
-### Accessing Dictionary Values
+### Access Dictionary Values
 
-A dictionary relies on keys, not numeric index values, for value access. This approach makes the meaning of the value received from an access clearer when the dictionary uses well-defined keys.
+For accessing dictionary values, a dictionary relies on keys, not numeric index values. This approach makes the meaning of the value received from an access clearer when the dictionary uses well-defined keys.
 
 The syntax for accessing a dictionary value using its key is as follows:
 
     example_var = example_dict['key']
 
-Using the `numbers` dictionary from the beginning of this guide, you can access the value of key `One` in the following way:
+Using the `numbers` dictionary from the beginning of this guide, you can access the value of key `One` as shown below:
 
     numbers = {'One' : 1, 'Two' : 'Two', 'Three' : 3.0}
 
     example_var = numbers['One']
 
-When you print out `example_var`, the value of the `'One'` key is returned:
+When you print `example_var`, the value of the `'One'` key is returned, i.e., `1`:
+
+    print(example_var)
+
+**Output:**
 
 {{< output >}}
-print(example_var)
+1
 {{</ output >}}
 
 If you attempt to access a non-existent key from a dictionary, Python outputs a `KeyError` exception. This exception often happens when the key specified uses a different spelling or different case than the original key. For example, if you try to access the `'one'` key, instead of the `'One'` key, you receive a `KeyError` exception:
@@ -150,7 +167,7 @@ Traceback (most recent call last):
 KeyError: 'one'
 {{</ output >}}
 
-The `KeyError` exception is raised because the key is case sensitive. To avoid this error, it’s possible to add code similar to the example below to validate the key:
+The `KeyError` exception is raised because the key is case-sensitive. To avoid this error, it’s possible to add code similar to the example below to validate the key:
 
 {{< file >}}
 if "one" in myNumberValues:
@@ -176,16 +193,24 @@ Two
 Three
 {{</ output >}}
 
-If you'd like to access a dictionary's values instead of keys, your `for` loop can be modified as follows:
+If you'd like to access a dictionary's values instead of keys, modify the `for` loop as follows:
 
-for key in numbers:
-   print(numbers[key])
+    for key in numbers:
+        print(numbers[key])
 
-Python provides several built-in methods that support accessing dictionary keys and values:
+This generates the following output:
 
-    `keys()`: Obtains all of the keys in a dictionary.
-    `values()`: Obtains all of the values in a dictionary.
-    `items()`: Creates tuples containing the a dictionary's key-value pairs.
+{{< output >}}
+1
+Two
+3.0
+{{</ output >}}
+
+Python provides several built-in methods that support accessing dictionary keys and values.
+
+- `keys()`: Obtains all of the keys in a dictionary.
+- `values()`: Obtains all of the values in a dictionary.
+- `items()`: Creates tuples containing the dictionary's key-value pairs.
 
 Using the built-in methods listed above, you can iterate over a dictionary's keys and values using the following `for` loop:
 
@@ -202,14 +227,14 @@ Three contains 3.0
 
 ## Create a Python Dictionary from Another Dictionary
 
-You may need to create a new dictionary based on the keys and values from another dictionary. For these cases, Python comprehensions are very useful. For example, the comprehension below, selects certain keys based on a specific criteria:
+You may need to create a new dictionary based on the keys and values from another dictionary. For these cases, Python comprehensions are very useful. For example, the comprehension below selects certain keys based on specific criteria.
 
     numbers = {'One' : 1, 'Two' : 'Two', 'Three' : 3.0}
 
     new_numbers = dict([ (k, v) for k, v in numbers.items()
                             if k[0] == "T" ])
 
-    for key, value in smallerNumbers.items():
+    for key, value in new_numbers.items():
        print(key, "contains", value)
 
 {{< output >}}
@@ -221,7 +246,7 @@ The example code obtains the key-value pairs in the `numbers` dictionary using t
 
 ## How to Set a Dictionary Value in Python
 
-The example below demonstrates the syntax to add a *new* key-value pair to an *existing* Python dictionary:
+The example below demonstrates the syntax to add a *new* key-value pair to an *existing* Python dictionary.
 
     dictionary["key"] = value
 
@@ -238,9 +263,9 @@ To add a new key-value pair to the `numbers` dictionary used throughout this gui
 You can also modify an existing dictionary value. You should ensure that the value you are modifying actually exists in the dictionary. For this reason, the following code to modify an existing dictionary value is a safe approach:
 
     if 'One' in numbers.keys():
-       numbers['One'] = 1.00001
+        numbers['One'] = 1.00001
 
-This code is safer because it uses the `if` clause to make sure the updated value is added to your dictionary only if the key `'One'` exists. Without the `if` clause, if the key `'One`did not exist, you would unintentionally add a new entry to the `numbers` dictionary.
+This code is safer because it uses the `if` clause to make sure the updated value is added to your dictionary only if the key `'One'` exists. Without the `if` clause, if the key `'One'` did not exist, you would unintentionally add a new entry to the `numbers` dictionary.
 
 ## How to Delete a Dictionary Value in Python
 
@@ -250,27 +275,26 @@ There are various ways to delete a dictionary value in Python. The first method 
 
 When you use the `del` keyword, Python does not return the modified dictionary. This makes it difficult to know how the operation affected the existing dictionary. A safer method of removing values from a dictionary is to use the `pop()` method, as shown below:
 
-if 'One' in numbers.keys():
-   removed = numbers.pop('One')
-   print("Removed", removed)
+    if 'One' in numbers.keys():
+        removed = numbers.pop('One')
+        print("Removed", removed)
 
 {{< output >}}
-Removed 1
+Removed 1.00001
 {{</ output >}}
 
-This version of the code has several advantages, one of which is that the `pop()` method returns the value that is removed from the dictionary. This enables you to store the value in a variable named `remove`. The second advantage is that `pop()` is clearer in its intent. Similarly, storing the value in variable enables you to add the value back to your dictionary, if needed.
+This version of the code has several advantages, one of which is that the `pop()` method returns the value that is removed from the dictionary. This enables you to store the value in a variable named `remove`. The second advantage is that `pop()` is clearer in its intent. Similarly, storing the value in a variable enables you to add the value back to your dictionary, if needed.
 
 If you need to remove the last value from a dictionary, use the `popitem()` method instead. The function returns both the key and the value from the dictionary.
 
     key, value = numbers.popitem()
-
     print(key,value)
 
 {{< output >}}
-Three 3.0
+Four 4
 {{</ output >}}
 
-Since the key and the value are both returned, it’s possible to recover from an accidental removal and also let the user know precisely what was removed from the dictionary.
+Since the key and the value are both returned, it’s possible to recover from accidental removal. You can also let the user know precisely what was removed from the dictionary.
 
 Python also makes it possible to clear the dictionary entirely using the `clear()` method. In this case, the method doesn't return anything, so the only recovery option is to make a copy of the dictionary before clearing it.
 
@@ -286,7 +310,6 @@ Python also makes it possible to clear the dictionary entirely using the `clear(
 To find the length of a dictionary in Python, use the `len()` method, as follows:
 
     numbers = {'One' : 1, 'Two' : 'Two', 'Three' : 3.0}
-
     len(numbers)
 
 {{< output >}}
@@ -297,17 +320,17 @@ The returned value displays the number of key-value pairs that exist in the `num
 
 ## Python's Built-in Dictionary Methods
 
-Python dictionaries support several built-in methods that you can use for a variety of tasks. The list below contains the Python dictionary methods not covered elsewhere in this guide:
+Python dictionaries support several built-in methods that you can use for a variety of tasks. The list below contains the Python dictionary methods not covered elsewhere in this guide.
 
 - `copy()`: Creates a [shallow copy](https://docs.python.org/3/library/copy.html) of the dictionary. The fact that the copy is shallow is only important when working with compound objects. A shallow copy provides references to objects found within a compound object, rather than creating new objects for the copied compound object.
 
-- `fromkeys()`: Creates a copy of a dictionary’s keys in a new dictionary, but with the values set to None. For example, the code `numbers_copy = numbers.fromkeys(numbers.keys())` creates a copy of just the keys in the `numbers` dictionary and places them in `numbers_copy`, but the values in `numbers_copy`are all set to `None`.
+- `fromkeys()`: Creates a copy of a dictionary’s keys in a new dictionary, but with the values set to `None`. For example, the code `numbers_copy = numbers.fromkeys(numbers.keys())` creates a copy of just the keys in the `numbers` dictionary and places them in `numbers_copy`, but the values in `numbers_copy` are all set to `None`.
 
 - `get()`: Obtains the value for the specified key. If the specified key does not exist, the `get()` method returns a default value. When there is no default value, then `get()` returns `None`. This function never returns a key error. For example, in this code: `numbers.get('Eight', 8.0)`, the `get()` function returns a value of `8.0` assuming that the `Eight` key does not exist.
 
 - `setdefault()`: Provides a default value for a specific key when it’s known in advance that a dictionary must contain the specified key. If the default value isn’t provided, then Python inserts `None` in place of a value. For example, when making this method call: `numbers.setdefault('Eight', 8.0)`, the dictionary `numbers` contains a key of `Eight` with a value of `8.0` after the call when the key doesn't already exist. In all cases, the function returns the current value of the key upon exit. If the key does already exist, the `setdefault()` function returns its current value, rather than creating a new key with a new value.
 
-- `update()`: Merges two dictionaries together. The key-value pairs from the update dictionary appear at the end of the existing dictionary. Consequently, with the example of `numbers.update({'Five': 5, 'Six': 6})`, keys `'Five'` and `'Six'` are added to the end of the `numbers` dictionary. If the keys already exist, their values are updated with the values from the update dictionary.
+- `update()`: Merges two dictionaries together. The key-value pairs from the update dictionary appear at the end of the existing dictionary. Consequently, with the example of `numbers.update({'Five': 5, 'Six': 6})`, keys `'Five'` and `'Six'` are added to the end of the `numbers` dictionary. If the keys already exist, their values are updated with the values from the updated dictionary.
 
 
 
