@@ -192,6 +192,7 @@ bukkit
 bundler
 bungeecord
 burndown
+burnup
 busybox
 bypassuac
 byrequests
@@ -277,6 +278,7 @@ cmusieve
 cnf
 codebase
 codec
+codepen
 colab
 collabnet
 colormaps
@@ -295,6 +297,7 @@ connectionism
 connectionless
 containerd
 containerised
+contentful
 convery
 convolutional
 cookstyle
@@ -916,6 +919,7 @@ jenkinsx
 jessie
 jetpack
 jez
+jira
 jitsi
 jk
 jks
@@ -1434,6 +1438,7 @@ passwdcolumn
 passwdfile
 passwordless
 patroni
+paypal
 pbr
 pem
 pentest
@@ -1516,6 +1521,7 @@ prettifier
 prettifiers
 Printf
 printf
+prismic
 pritunl
 privesc
 processhider
@@ -1868,6 +1874,7 @@ stopwait
 stopword
 stopwords
 storages
+strapi
 streamlink
 strongswan
 su
@@ -1946,6 +1953,7 @@ teleporting
 tensorflow
 terrahelp
 terraria
+tessian
 testdb
 testdeep
 testfile
@@ -2021,6 +2029,7 @@ turtl
 tv
 tw
 twilio
+typeform
 txt
 txz
 tz
