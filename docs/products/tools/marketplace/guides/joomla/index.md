@@ -62,7 +62,7 @@ The first time you access your Joomla site, you are prompted to finish the Jooml
 
     ![Screenshot of the Joomla Database Configuration prompt](joomla-database-prompt.png)
 
-1. Joomla now checks the database connection and finishes the installation. Provided everything is successful, you should see a message idicating that the site is ready. To continue, click **Open Site** to view your Joomla site or select **Open Administrator** to view the site's admin panel.
+1. Joomla now checks the database connection and finishes the installation. Provided everything is successful, you should see a message indicating that the site is ready. To continue, click **Open Site** to view your Joomla site or select **Open Administrator** to view the site's admin panel.
 
     ![Screenshot of a successful site deployment](joomla-install-finished.png)
 
