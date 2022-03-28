@@ -1,74 +1,58 @@
 ---
-slug: antmediaenterpriseserver-marketplace-app
 author:
-  name: Linode 
+  name: Linode
   email: docs@linode.com
-description: 'This guide will show you how to install and configure Ant Media Server Enterprise edition so you can stream video online using the Linode Marketplace App.'
+description: "Learn how to install and configure the Ant Media Server Enterprise Edition so you can stream video online using the Linode Marketplace App."
 keywords: ['streaming', "marketplace", "live video streaming"]
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-15
+published: 2022-03-28
 modified_by:
   name: Linode
 title: "Deploying Ant Media Server Enterprise Edition through the Linode Marketplace"
 external_resources:
 - '[Ant Media](https://antmedia.io)'
 - '[Document](https://github.com/ant-media/Ant-Media-Server/wiki)'
-aliases: ['/guides/deploy-antmediaenterpriseserver-with-marketplace-apps/']
 ---
 
-Ant Media Server is Highly Scalable Live Video Streaming Platform with Ultra Low Latency. It supports WebRTC Live Streaming, in addition to CMAF and HLS streaming. It can be ingested through RTMP or WebRTC or HLS. Any IP Camera can be connected through RTSP or ONVIF. It also enables Live Restreaming to Social Media Platforms. All codes H.264, H.265, VP8 are enabled and also GPU based encoding is also available.
+[Ant Media Server](https://antmedia.io/) is a video streaming platform known for its scalability and low latency. It supports WebRTC live streaming, as well as CMAF and HLS streaming, and can be ingested through RTMP, WebRTC, or HLS. There are two editions of Ant Media Server: Community Edition and Enterprise Edition. This Marketplace App installs the Enterprise Edition.
 
-* Ultra Low Latency
-* One-to-Many WebRTC Streaming
-* End-to-End Latency	8-12 Seconds	0.5 Seconds (500ms)
-* CMAF
-* Scaling
-* RTMP(Ingesting) to WebRTC (Playing)
-* Hardware Encoding(Nvidia GPU, QuickSync)
-* WebRTC Data Channel
-* Adaptive Bitrate
-* Secure Streaming
-* iOS & Android RTMP SDK	
-* iOS & Android WebRTC SDK
-* VP8 and H.265 Support
-* JavaScript SDK	
-* RTMP, RTSP, MP4 and HLS Support	
-* WebRTC to RTMP Adapter	
-* 360 Degree Live & VoD Streams	
-* Web Management Dashboard	
-* IP Camera Support	
-* Re-stream Remote Streams
-* Open Source
-* Simulcast to all Social Media via RTMP
-
-## Deploying the Ant Media Server Marketplace App
+## Deploying a Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Software installation should complete within 2-5 minutes after the Linode has finished provisioning.**
+{{< content "marketplace-verify-standard-shortguide">}}
 
-### Configuration Options
+{{<note>}}
+**Estimated deployment time:** Ant Media Enterprise Server should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
+{{</note>}}
 
-For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
+## Configuration Options
 
 - **Supported distributions:** Ubuntu 20.04 LTS
-- **Recommended plan:** 16GB Dedicated CPU Instance.
+- **Recommended plan:** 16GB Dedicated CPU Instance
 
 ## Getting Started after Deployment
 
-### Access your Ant Media Server App
-After Ant Media Server has finished installing, you can access your server with your Linode's IPv4 address. Copy your Linode’s IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com), and then connect to the server from your browser using your Linode's IPv4 address and port `5080`(for example `192.0.2.0:5080`).
+### Access the Ant Media Server Dashboard
 
-![antmediaserver.png 'Ant Media Server account creation page.'](antmediaserver.png)
+1.  Open your web browser and navigate to `http://[ip-address]:5080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing your IP address.
 
-Once you are logged into your Ant Media Server, you will need to obtain a license in order to fully utilize the application. To obtain a license you can visit the link below where you can choose which plan you'd like to utilize:
+1.  The **Create First Account** screen appears. Fill out your full name and enter your desired username and password. Then click **Create Account**.
 
-https://antmedia.io/#selfhosted
+    ![Screenshot of the Create First Account page](ant-media-server-create-account.png)
 
-Once the license key is obtained, you can go to the Settings tab within the Ant Media Dashboard and enter the License Key and click save.
+1. After your account has been created, the login page appears. Enter the username and password that you just created.
 
-    ![Ant Media Settings](antmedia_settings.png "Ant Media Settings")
+1. Once logged in, the Ant Media Server Dashboard appears. From here, you can manage your entire application.
+
+    ![Screenshot of the Dashboard page](ant-media-server-dashboard.png)
+
+1. To start using the Enterprise Edition of Ant Media Server, you need to obtain a license. Visit the [Self-Hosted Solutions](https://antmedia.io/#selfhosted) page on Ant Media's website to order a license.
+
+1. Once the license key is obtained, navigate to the Settings tab within the Ant Media Dashboard, enter the License Key, and click save.
+
+    ![Screenshot of the Settings Page](ant-media-server-settings.png)
 
 For more on Ant Media Server, check out the following resources:
 
