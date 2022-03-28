@@ -1833,6 +1833,7 @@ spf1
 splunk
 spm
 spork
+spotify
 sql
 sqlplus
 squirrelmail
