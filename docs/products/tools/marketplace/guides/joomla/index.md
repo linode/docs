@@ -23,7 +23,7 @@ Joomla is an advanced CMS (content management system) used to facilitate the eas
 {{< content "marketplace-verify-standard-shortguide">}}
 
 {{<note>}}
-**Estimated deployment time:** Jitsi should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
+**Estimated deployment time:** Joomla should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
 {{</note>}}
 
 ## Configuration Options
