@@ -1,5 +1,4 @@
 ---
-slug: prometheus-grafana-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
@@ -7,99 +6,98 @@ description: "Deploy Prometheus & Grafana on a Linode Compute Instance. This app
 keywords: ['monitoring','observability']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-18
+published: 2022-03-28
 modified_by:
   name: Linode
-title: "Deploying Prometheus & Grafana through the Linode Marketplace"
-contributor:
-  name: Elvis Segura
-  link: https://github.com/n0vabyte
+title: "Deploying Prometheus and Grafana through the Linode Marketplace"
 external_resources:
 - '[Prometheus](https://prometheus.io/)'
 - '[Grafana](https://grafana.com/)'
-aliases: ['/guides/deploying-prometheus-grafana-marketplace-app/']
 ---
 
-Use Prometheus to collect metrics and receive alerts with this open-source monitoring tool. Prometheus monitors targets that you define at given intervals by scraping their metrics HTTP endpoints. This tool is particularly well-suited for numeric time series data, which makes it ideal for machine-centric monitoring as well as monitoring of highly dynamic service-oriented architectures.
+This Marketplace App installs both [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/oss/grafana/), two open source tools that are commonly used together to collect and view data.
 
-Grafana is an open source analytics and monitoring solution with a focus on accessibility for metric visualization. You can use Grafana to create, monitor, store, and share metrics with your team to keep tabs on your infrastructure. Grafana is very lightweight and does not use a lot of memory and CPU resources.
+Use Prometheus to collect metrics and receive alerts. Prometheus monitors targets that you define at given intervals by scraping their metrics HTTP endpoints. This tool is particularly well-suited for numeric time series data, which makes it ideal for machine-centric monitoring as well as monitoring of highly dynamic service-oriented architectures.
 
-## Deploying the Prometheus & Grafana Marketplace App
+Grafana is an analytics and monitoring solution with a focus on accessibility for metric visualization. You can use Grafana to create, monitor, store, and share metrics with your team to keep tabs on your infrastructure. Grafana is very lightweight and does not use a lot of memory and CPU resources.
+
+## Deploying a Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Software installation should complete within 2-5 minutes after the Linode has finished provisioning.**
+{{< content "marketplace-verify-standard-shortguide">}}
+
+{{<note>}}
+**Estimated deployment time:** Prometheus and Grafana should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
+{{</note>}}
 
 ## Configuration Options
-
-### Prometheus & Grafana Options
-
-Here are the additional options available for this Marketplace App:
-
-| **Field** | **Description** |
-|:--------------|:------------|
-| **Let's Encrypt Renewal email** | This email is required to generate the SSL certificates for the Grafana frontend. *Required* |
-| **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
-| **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
-| **Domain** | The domain name where you wish to host your instance. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
-| **The limited sudo user to be created for the Linode** | This is the limited user account to be created for the Linode. This account has sudo user privileges. |
-| **The password for the limited sudo user** | Set a password for the limited sudo user. The password must meet the complexity strength validation requirements for a strong password. This password can be used to perform any action on your server, similar to root, so make it long, complex, and unique. |
-| **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
-| **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
-
-### General Options
-
-For advice on filling out the remaining options on the **Create a Linode** form, see [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
+### Prometheus and Grafana Options
+
+- **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
+
+{{< content "marketplace-limited-user-fields-shortguide">}}
+
+{{< content "marketplace-custom-domain-fields-shortguide">}}
+
 ## Getting Started after Deployment
 
-### Accessing Grafana's Frontend
+### Access Grafana and Prometheus
 
-1.  Once the app has been *fully* deployed, you will need to grab the credentials from the server using one of the following messages:
+To access the front end interfaces for either Grafana or Prometheus, first [obtain the credentials](#obtain-the-credentials). Then, open your web browser and navigate to the *Location* URL of the app you wish to access. In the login prompt that appears, enter the username and password as shown in the *credentials.txt* file.
 
-    -   **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. See [Using the Lish Console](/docs/guides/using-the-lish-console/).
-    -   **SSH:** Log in to your Compute Instance over SSH using the `root` user and run the following command. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
+### Obtain the Credentials
 
-            cat /root/credentials.txt
+Once the app has been *fully* deployed, you need to obtain the credentials from the server.
 
-1.  The contents of that file contains *Credentials* and the *Endpoint* URL for both Prometheus & Grafana, as shown in the example below.
+1.  Log in to your new Compute Instance using one of the methods below:
+
+    - **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. Log in as the `root` user. See [Using the Lish Console](/docs/guides/using-the-lish-console/).
+    - **SSH:** Log in to your Compute Instance over SSH using the `root` user. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
+
+1.  Once logged in, run the following command:
+
+        cat /root/credentials.txt
+
+1. This displays the credentials and endpoint URL for both Prometheus and Grafana, as shown in the example output below.
 
     {{<output>}}
 #################
 #   Prometheus  #
 #################
-
-Location: https://192.0.0.2.ip.linodeusercontent.com/prometheus
+Location: https://192-0-2-1.ip.linodeusercontent.com/prometheus
 Username: prometheus
 Password: htyjuykuyhjyrkit648648#$#%^GDGHDHTTNJMYJTJ__grojpoijrpo
-
 ##############
 #  Grafana   #
 ##############
-
-Location: https://192.0.0.2.ip.linodeusercontent.com
+Location: https://192-0-2-1.ip.linodeusercontent.com
 Username: admin
 Password: ewtghwethetrh554y35636#$_0noiuhr09h)
-    {{</output>}}
+{{</output>}}
 
-### Adding a Data Source to Grafana
+### Add Prometheus as a Data Source to Grafana
 
-1. Once you access the Grafana dashboard using the generated credentials you can being to add [Data Sources](https://grafana.com/docs/grafana/latest/datasources/add-a-data-source/) which in this case, will be Prometheus.
+1. Log in to the Grafana frontend. See [Access Grafana and Prometheus](#access-grafana-and-prometheus).
 
-    ![Grafana Datasource 1](grafana_datasource1.png)
-    ![Grafana Datasource 2](grafana_datasource2.png)
+1. On the main menu, hover over the gear icon to open the *Configuration* menu. Then click **Data Sources**.
 
-{{< note >}}
-For the Prometheus Data Source, you will need to input **http://localhost:9090/prometheus** in the URL section as shown in the screenshot below. 
-{{</ note >}}
+    ![Screenshot of Grafana's configuration menu](grafana-menu.png)
 
-    ![Grafana Datasource 3](grafana_datasource3.png)
+1. Within the *Data sources* page that appears, click the **Add data source** button.
 
-Now that the Prometheus Data Source is set, you can browse the [available Grafana dashboards](https://grafana.com/grafana/dashboards/) to see which dashboard fits your needs. 
+    ![Screenshot of the Data sources page](grafana-add-data-source.png)
 
-You can check out the official [Prometheus](https://prometheus.io/docs/introduction/overview/) & [Grafana](https://grafana.com/docs/grafana/latest/) documentation to learn how to further utilize your instance.
+1. Select **Prometheus** from the *Time series database* section of the *Add data source* page.
+
+1. A data source labeled *Prometheus* is automatically created and its configuration settings are now visible. Within the **URL** field, enter `http://localhost:9090/prometheus`. The rest of the settings can be adjusted as needed.
+
+    ![Screenshot of the Prometheus data source](grafana-prometheus-source.png)
+
+Now that the Prometheus Data Source is set, you can browse the [available Grafana dashboards](https://grafana.com/grafana/dashboards/) to see which dashboard fits your needs. Review the official [Prometheus](https://prometheus.io/docs/introduction/overview/) and [Grafana](https://grafana.com/docs/grafana/latest/) documentation to learn how to further utilize your instance.
 
 {{< content "marketplace-update-note-shortguide">}}
