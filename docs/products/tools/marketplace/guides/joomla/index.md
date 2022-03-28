@@ -1,5 +1,4 @@
 ---
-slug: joomla-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
@@ -7,77 +6,76 @@ description: "Deploy Joomla on a Linode Compute Instance. A content management s
 keywords: ['joomla','csm','website']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-09
+published: 2022-03-28
 modified_by:
   name: Linode
 title: "Deploying Joomla through the Linode Marketplace"
-contributor:
-  name: Holden Morris
-  link: https://github.com/hmorris3293
 external_resources:
 - '[Joomla](https://www.joomla.org/)'
-aliases: ['/guides/deploying-joomla-marketplace-app/']
 ---
 
-Joomla is an advanced "content management system" (CMS) used to facilitate the easy creation and ongoing maintenance of dynamic websites. Comparable in some respects to other web applications like [Drupal](https://www.drupal.org/) and [WordPress](https://wordpress.org/), Joomla also has advanced features that resemble web-development frameworks like [Ruby On Rails](https://rubyonrails.org/) and [Django](https://www.djangoproject.com/). Deployed on top of the industry standard [LAMP Stack](/docs/web-servers/lamp/), Joomla is designed to be both easy to use and manage from the end-user's perspective and easy to administer and host.
+Joomla is an advanced CMS (content management system) used to facilitate the easy creation and ongoing maintenance of dynamic websites. Comparable in some respects to other web applications like [Drupal](https://www.drupal.org/) and [WordPress](https://wordpress.org/), Joomla also has advanced features that resemble web-development frameworks like [Ruby On Rails](https://rubyonrails.org/) and [Django](https://www.djangoproject.com/). Deployed on top of the industry standard [LAMP Stack](/docs/web-servers/lamp/), Joomla is designed to be both easy to use and manage from the end user's perspective and easy to administer and host.
 
-## Deploying the Joomla Marketplace App
+## Deploying a Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Software installation should complete within 5-10 minutes after the Linode has finished provisioning.**
+{{< content "marketplace-verify-standard-shortguide">}}
+
+{{<note>}}
+**Estimated deployment time:** Jitsi should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
+{{</note>}}
 
 ## Configuration Options
 
+- **Supported distributions:** Ubuntu 20.04 LTS
+- **Recommended minimum plan:** All plan types and sizes can be used.
+
 ### Joomla Options
 
-Here are the additional options available for this Marketplace App:
+- **Admin email address** *(required)*: Enter the email address to use for generating the SSL certificates.
+- **MySQL `root` password** *(required)*: The password for the `root` MySQL user.
+- **MySQL User Password** *(required)*: The password for the `joomla` MySQL user.
 
-| **Field** | **Description** |
-|:--------------|:------------|
-| **Admin Email for the server** | This email is require to generate the SSL certificates. *Required* |
-| **Database Root Password** | This is the root password for the MySQL database. *Required* |
-| **Database User Password** | This is the Joomla Database User password for the MySQL database. *Required* |
-| **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
-| **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
-| **Domain** | The domain name where you wish to host your Joomla instance. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
-| **The limited sudo user to be created for the Linode** | This is the limited user account to be created for the Linode. This account has sudo user privileges. |
-| **The password for the limited sudo user** | Set a password for the limited sudo user. The password must meet the complexity strength validation requirements for a strong password. This password can be used to perform any action on your server, similar to root, so make it long, complex, and unique. |
-| **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
-| **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
-
-### General Options
-
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
-
-- **Supported distributions:** Ubuntu 20.04 LTS
-- **Recommended plan:** All plan types and sizes can be used.
+{{< content "marketplace-limited-user-fields-shortguide">}}
+{{< content "marketplace-custom-domain-fields-shortguide">}}
 
 ## Getting Started after Deployment
 
-### Accessing the Joomla App
+### Accessing the Joomla Site
 
-1.  Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#configuring-rdns) guide for information on viewing the rDNS value.
+1.  Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though your connection will not be encrypted. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
-1. Within the Joomla setup pages that appears, you will first be prompted to enter a site name.
+### Setting Up Joomla
 
-    ![Joomla Site Name](joomla_site_name.png "Joomla Site Name")
+The first time you access your Joomla site, you are prompted to finish the Joomla installation. Complete each step of the process as described below.
 
+1. Within the Joomla Installer page that appears, select your language and enter a name for your site. Then click the **Setup Login Data** button.
 
-1. Fill out the Super User information and click Setup Database Connection.
+    ![Screenshot of the Joomla Installer prompt](joomla-installer-prompt.png)
 
-    ![Joomla Super User Setup](joomla_superuser_info.png "Joomla Superuser Setup")
+1. Enter the real name for your Joomla Super User account, your desired username and password, and your email address. Then click **Setup Database Connection**.
 
-1. Continue onto the Database Setup where you will need to enter 'Joomla' as the *database username* and the **Database User Password** you entered during the intial deployment of the app.
+    ![Screenshot of the Joomla Login Data prompt](joomla-login-data-prompt.png)
 
-    ![Joomla Database Setup](joomla_database_setup.png "Joomla Database Setup")
+1. Within the *Database Configuration* page, leave the default values within fields that are already populated. Enter *joomla* as the username and enter the password you created in the **MySQL User Password** field during deployment. Then, click the **Install Joomla** button.
 
-1.  The installation is now complete!
+    ![Screenshot of the Joomla Database Configuration prompt](joomla-database-prompt.png)
 
-    ![Joomla Complete](joomla_complete.png "Joomla Complete")
+1. Joomla now checks the database connection and finishes the installation. Provided everything is successful, you should see a message idicating that the site is ready. To continue, click **Open Site** to view your Joomla site or select **Open Administrator** to view the site's admin panel.
 
-With the Joomla instance install complete, you can now visit the site by navigating to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). If you would like to visit the administration panel, you can visit your domain followed by */administrator* (such as https://192-0-2-1.ip.linodeusercontent.com/administrator). The Joomla Login will appear where you can enter the username (*The username entered during the Super User setup*) and the password (*The password entered during the Super User setup*).
+    ![Screenshot of a successful site deployment](joomla-install-finished.png)
 
-Now that you’ve accessed your dashboard, check out [the official Joomla documentation](https://docs.joomla.org/Main_Page) to learn how to further utilize your Joomla instance.
+### Accessing the Joomla Admin Dashboard
+
+1. Open your web browser and navigate to the URL mentioned within the [Accessing the Joomla Site](#accessing-the-joomla-site) section, appending `administrator` to the URL: `http://[domain]/administrator`.
+
+1. You are prompted to enter the *Super User* username and password you created when setting up Joomla for the first time. Click **Log in** once finished.
+
+    ![Screenshot of a Joomla admin login form](joomla-admin-login.png)
+
+1. After logging in, the admin dashboard appears. From here, you can manage your site. This includes creating content, new users, adjusting the the templates, and *much* more. Check out [the official Joomla documentation](https://docs.joomla.org/Main_Page) to learn how to further utilize your Joomla instance.
+
+    ![Screenshot of a Joomla admin dashboard](joomla-admin-panel.png)
 
 {{< content "marketplace-update-note-shortguide">}}
