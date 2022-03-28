@@ -47,6 +47,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Jenkins](/docs/products/tools/marketplace/guides/jenkins/)
 - [JetBackup](/docs/products/tools/marketplace/guides/jetbackup/)
 - [Jitsi](/docs/products/tools/marketplace/guides/jitsi/)
+- [Joomla](/docs/products/tools/marketplace/guides/joomla/)
 - [Kepler](/docs/products/tools/marketplace/guides/kepler/)
 - [LAMP Stack](/docs/products/tools/marketplace/guides/lamp-stack/)
 - [LEMP Stack](/docs/products/tools/marketplace/guides/lemp-stack/)
