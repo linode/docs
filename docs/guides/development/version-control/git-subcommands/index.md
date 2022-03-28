@@ -1,5 +1,5 @@
 ---
-slug: git-subcommands
+slug: create-git-aliases
 author:
   name: Stephen Savitzky
 description: 'This guide shows you how to create Git aliases using the Git config file.'
@@ -16,7 +16,7 @@ contributor:
   link: https://github.com/ssavitzky/
 ---
 
-There are two ways to customize Git: Aliases, which Git finds in its configuration files, and custom programs, which Git finds by looking along your `$PATH` for executable programs with names that start with `git-`. This is almost the same as the way shells, like Bash, can be extended. Git, however, has multiple configuration files, which lets you make repo-specific aliases.
+There are two ways to customize Git–*Aliases*, which Git finds in its configuration files, and *custom programs*, which Git finds by looking along your `$PATH` for executable programs with names that start with `git-`. This is almost the same as the way shells, like Bash, can be extended. Git, however, has multiple configuration files, which lets you make repo-specific aliases.
 
 ## Aliases
 
@@ -28,19 +28,20 @@ Aliases let you define short names for longer Git commands. The best place to de
     amend = commit -a --amend
 {{</ file >}}
 
-The example `.gitconfig` file defines `st` as an alias for the `git status` command, and `amend` as an alias for `git commit -a --amend`. The alias is replaced by its definition following the `git` command. Anything after the alias on the command line comes after the
+The example `.gitconfig` file defines `st` as an alias for the `git status` command, and `amend` as an alias for `git commit -a --amend` command. The alias is replaced by its definition following the `git` command. Anything after the alias on the command line comes after the
 definition, so the following two commands are equivalent:
 
     git amend --no-edit
     git commit -a --amend --no-edit
 
-An alias definition doesn't have to start with a subcommand; it can include parameters that come before the subcommand as well as after it. For example, you can create a an alias with the following definition:
+An alias definition doesn't have to start with a subcommand; it can include parameters that come before the subcommand as well as after it. For example, you can create an alias with the following definition:
 
 {{< file "~/example_user/.gitconfig" >}}
 ps = --paginate status
-{{/ file }}
+{{</ file >}}
 
-The `--paginate status` flag paginates the output of the `git status` command. The list of options that can precede the subcommand is in Git's `man` page.
+
+The `--paginate status` flag paginates the output of the `git status` command. The list of options that can precede the subcommand is on Git's `man` page.
 
 ## Aliases for Shell Commands
 
@@ -66,7 +67,7 @@ The alias definition above finds filenames that contain a given string. To run t
     git f example_filename
 
 Sometimes you need the command-line arguments someplace other than the end of the command. You can often handle simple cases by defining and invoking a shell function. So in the previous example, you might want to pass an argument to `git-ls-files`; for example `--modified`.
-You can do that with the following modification to your alias:
+You can do that with the following modification to your alias.
 
 {{< file "~/example_user/.gitconfig" >}}
 [alias]
@@ -90,11 +91,11 @@ You can remove the aliases you created with the `git config` command with the fo
 
 ## Scripts
 
-Aliases work for many simple extensions, but more complicated subcommands are best implemented as separate programs, often written in Bash or some other scripting language.
+Aliases work for many simple extensions, but more complicated subcommands are best implemented as separate programs, often written in Bash, or some other scripting language.
 
-Adding a new subcommand to Git is almost exactly the same as adding a new command to your operating system. This requires that you create a script, make it executable, and store it in a directory that is available to your `$PATH`. These directories are typically `~/bin` or `/usr/local/bin`. Git only does two things differently from what Bash or any other shell does. It gets the program name by prepending `git-` to the subcommand name, and it looks in some high-priority places first before looking in the directories listed in `$PATH`.
+Adding a new subcommand to Git is almost the same as adding a new command to your operating system. This requires that you create a script, make it executable, and store it in a directory that is available to your `$PATH`. These directories are typically `~/bin` or `/usr/local/bin`. Git only does two things differently from what Bash or any other shell does. It gets the program name by prepending `git-` to the subcommand name, and it looks in some high-priority places first before looking in the directories listed in `$PATH`.
 
-Find out where Git keeps its core commands with the `--exec-path`option. On most Linux systems that the location is `/usr/lib/git-core`:
+Find out where Git keeps its core commands with the `--exec-path` option. On most Linux systems, the location is `/usr/lib/git-core`:
 
     git --exec-path
 
@@ -104,7 +105,7 @@ Find out where Git keeps its core commands with the `--exec-path`option. On most
 
 ### Script Example
 
-You can implement the first example in the Aliases for Shell Commands section with a shell script. Improve the example by passing `gitk` the options on the rest of the command line, making `--all` the default if no arguments are given.
+You can implement the first example in the Aliases for Shell Commands section with a shell script. Improve the example by passing `gitk`, the options on the rest of the command line, making `--all` the default if no arguments are given.
 
 {{< file "~/example_script.sh" >}}
 #!/bin/bash
