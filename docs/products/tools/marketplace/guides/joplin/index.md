@@ -1,5 +1,4 @@
 ---
-slug: joplin-marketplace-app
 author:
   name: Linode
   email: docs@linode.com
@@ -7,78 +6,88 @@ description: "Deploy Joplin on a Linode Compute Instance. Joplin is an open sour
 keywords: ['productivity','notes','docs']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-09
+published: 2022-03-28
 modified_by:
   name: Linode
 title: "Deploying Joplin through the Linode Marketplace"
-contributor:
-  name: Holden Morris
-  link: https://github.com/hmorris3293
 external_resources:
 - '[Joplin](https://joplinapp.org/)'
-aliases: ['/guides/deploying-joplin-marketplace-app/']
 ---
 
-Joplin is a open source note-taking application that your notes are saved to an open format. Joplin also uses End-To-End Encryption (E2EE) to secure your notes and ensure no-one but yourself can access them.
+[Joplin](https://joplinapp.org/) is an open source application designed to take notes using the [Markdown format](https://joplinapp.org/markdown/). It is available on many different platforms, including Windows, macOS, Linux, Android, and iOS. To synchronize your notes across multiple devices, you need to enable synchronization. Synchronization can be facilitated through a service like Nextcloud, Dropbox, OneDrive, the Joplin Cloud, or the Joplin Server software. Our Joplin Marketplace App installs the Joplin Server software, enabling you to securely take control of your own data and enable synchronization between all of your devices.
 
-## Deploying the Joplin Marketplace App
+## Deploying a Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
 
-**Software installation should complete within 5-10 minutes after the Linode has finished provisioning.**
+{{< content "marketplace-verify-standard-shortguide">}}
+
+{{<note>}}
+**Estimated deployment time:** Joplin should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
+{{</note>}}
 
 ## Configuration Options
-
-### Joplin Options
-
-Here are the additional options available for this Marketplace App:
-
-| **Field** | **Description** |
-|:--------------|:------------|
-| **Admin Email for the server** | This email is require to generate the SSL certificates. *Required* |
-| **Database Password** | This is the Joplin user password for the Postgres database. *Required* |
-| **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
-| **Subdomain** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
-| **Domain** | The domain name where you wish to host your Joomla instance. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
-| **The limited sudo user to be created for the Linode** | This is the limited user account to be created for the Linode. This account has sudo user privileges. |
-| **The password for the limited sudo user** | Set a password for the limited sudo user. The password must meet the complexity strength validation requirements for a strong password. This password can be used to perform any action on your server, similar to root, so make it long, complex, and unique. |
-| **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
-| **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
-
-### General Options
-
-For advice on filling out the remaining options on the **Create a Linode** form, see [Getting Started > Create a Linode](/docs/guides/getting-started/#create-a-linode). That said, some options may be limited or recommended based on this Marketplace App:
 
 - **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
+### Joplin Options
+
+- **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
+- **Password for the postgres database** *(required)*: Enter the password you wish to use for the `joplin` database user.
+
+{{< content "marketplace-limited-user-fields-shortguide">}}
+
+{{< content "marketplace-custom-domain-fields-shortguide">}}
+
 ## Getting Started after Deployment
 
-### Accessing the Joomla App
+### Accessing the Joplin Server
 
-1.  Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#configuring-rdns) guide for information on viewing the rDNS value.
+The Joplin server dashboard allows you to manage your account, add other users, and perform various administration tasks. Before using your new Joplin instance to take notes, you should first log in to the admin dashboard and update your profile using the instructions below.
 
-1. The default email to login to your Joplin instance is `admin@localhost` and the default password is `admin`.
+1. Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though your connection will not be encrypted. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
-    ![Joplin Login](jooplin_login.png "Joplin Login")
+1. In the login prompt that appears, enter `admin@localhost` as the **Email** and `admin` as the **Password**. Click **Login** to continue.
 
+    ![Screenshot of the Joplin login form](joplin-login.png)
 
-1. Once you're on the Joplin Dashboard, you will want to change your username and password by clicking "Change it now".
+1. Once logged in, the Joplin Admin page appears. Since the default login credentials are insecure, you should immediately update the email and password for the admin user. Click the **Change it now** link in the warning banner or navigate to `http://[domain]/users/me`.
 
-    ![Joplin Dashboard](joplin_dashboard.png "Joplin Dashboard")
+    ![Screenshot of the reset password prompt.](joplin-admin-change-password-prompt.png)
 
-1. From there, you can enter in your *Full name*, *Email*, and *Password* that you'll use to login. 
+1. The *Your Profile* page appears. Enter your full name, the email address you wish to use, and a new secure password. Then click **Update profile** to make the changes.
 
-    ![Joplin Change Password](joplin_change_default.png "Joplin Change Password")
+1.  To confirm your new email address, navigate to `http://[domain]/admin/emails` or click on the **Admin** menu item and select **Emails**. Select the email with the subject "Confirm your new Joplin Server account email". Click on the **Confirm email** link within the email.
 
-1.  Once the login information is change, Joplin sends an email with a verification link. Since there is no MTA (Mail Transfer Agent) installed on the server, you will need to navigate to the Joplins Admin dashboard where you will find an *Emails* link. In case you have trouble finding it, the URL for it will be `https://example.com/admin/emails` (replace example.com with the custom domain you entered during the deployment or your Compute instances rDNS domain. The email you'll need is called *"Confirm Your new Joplin Server account email"* where you will find the verification email.
+### Using the Joplin App
 
-    ![Joplin Email](joplin_email.png "Joplin Email")
+To start using Joplin to take notes, download the Joplin application for your device and configure the synchronization settings.
 
-With the Joplin instance ready to go, you can now visit the Joplin website to download the Joplin application for your device.
+1. Download and install the Joplin application on the device you wish to use. See the [Joplin Download](https://joplinapp.org/download) page.
 
-https://joplinapp.org/download
+1. Open Joplin. You should see a few example notes.
 
-You can check out [the official Joplin documentation](https://joplinapp.org/help/) to learn how to further utilize your Joplin instance.
+1. Click the **Synchronise** button or navigate to **Preferences** and select **Synchronisation**. If the **Sync Wizard** screen appears, close it as you will configure custom settings for your new server.
+
+1. Under the **Syncronisation target** dropdown, select *Joplin Server (Beta)*.
+
+    ![Screenshot of the synchronization options](joplin-sync-target.png)
+
+1. Fill out the new configuration options that appear:
+
+    - **Joplin Server URL:** Enter the custom domain you specified when deploying the new Compute Instance. If you did not use a custom domain, enter the rDNS value for the instance (such as `https://192-0-2-1.ip.linodeusercontent.com`). Be sure to format this as a full URL with the `https` protocol.
+
+    - **Joplin Server email:** Enter the email address specified when updating your profile in the [Accessing the Joplin Server](#accessing-the-joplin-server) section.
+
+    - **Joplin Server password:** Enter the password specified when updating your profile in the [Accessing the Joplin Server](#accessing-the-joplin-server) section.
+
+    ![Screenshot of additional synchronization settings](joplin-sync-settings.png)
+
+1. Click the **Check synchronisation configuration** button to verify that you have the correct settings.
+
+1. If your settings are correct, you should see a success message. Click the **Apply** button to save your settings.
+
+Now you can start taking notes and your changes will automatically be stored on your new Joplin Server instance and synchronized between all of your devices. Check out [the official Joplin documentation](https://joplinapp.org/help/) to learn how to further utilize your Joplin instance.
 
 {{< content "marketplace-update-note-shortguide">}}
