@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.118.3
+  version: 4.119.0
 
   title: Linode API
   description: |
@@ -3525,6 +3525,8 @@ paths:
       description: |
         Display all backups for an accessible Managed MySQL Database on your Account.
 
+        The Database must not be provisioning to perform this command.
+
         Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
         At this time, only automatically scheduled backups (type `auto`) are available.
@@ -3590,6 +3592,8 @@ paths:
       x-linode-grant: unrestricted only
       description: |
         Display information for a single backup for an accessible Managed MySQL Database on your Account.
+
+        The Database must not be provisioning to perform this command.
 
         Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
@@ -9205,6 +9209,55 @@ paths:
       - lang: CLI
         source: >
           linode-cli lke api-endpoints-list 12345
+  /lke/clusters/{clusterId}/dashboard:
+    parameters:
+    - name: clusterId
+      in: path
+      description: ID of the Kubernetes cluster to look up.
+      required: true
+      schema:
+        type: integer
+    x-linode-cli-command: lke
+    get:
+      operationId: getLKEClusterDashboard
+      x-linode-cli-action: cluster-dashboard-url
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - lke:read_only
+      tags:
+      - Linode Kubernetes Engine (LKE)
+      summary: Kubernetes Cluster Dashboard URL View
+      description: |
+        Get a [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) access URL for this Cluster, which enables performance of administrative tasks through a web interface.
+
+        Dashboards are installed for Clusters by default.
+
+        To access the Cluster Dashboard login prompt, enter the URL in a web browser. Select either **Token** or **Kubeconfig** authentication, then select **Sign in**.
+
+        For additional guidance on using the Cluster Dashboard, see the [Navigating the Cluster Dashboard](/docs/guides/using-the-kubernetes-dashboard-on-lke/#navigating-the-cluster-dashboard) section of our guide on [Using the Kubernetes Dashboard on LKE](/docs/guides/using-the-kubernetes-dashboard-on-lke/).
+      responses:
+        '200':
+          description: Returns a Kubernetes Cluster Dashboard URL.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    example: https://example.dashboard.linodelke.net
+                    description: The Cluster Dashboard access URL.
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+                https://api.linode.com/v4/lke/clusters/12345/dashboard
+      - lang: CLI
+        source:
+          linode-cli lke cluster-dashboard-url 12345
   /lke/clusters/{clusterId}/kubeconfig:
     parameters:
     - name: clusterId
@@ -17291,7 +17344,7 @@ components:
           type: string
           description: >
             If billing address is in the United States (US) or Canada (CA), only the two-letter
-            ISO 3166 State or Province code are accepted. If the address is outside
+            ISO 3166 State or Province code are accepted. If entering a US military address, state abbreviations (AA, AE, AP) should be entered. If the address is outside
             the US or CA, this is the Province associated with the Account's billing
             address.
           maxLength: 24
