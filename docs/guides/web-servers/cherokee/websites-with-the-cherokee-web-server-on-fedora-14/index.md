@@ -25,7 +25,7 @@ relations:
 
 Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions. This tutorial explains how to install and configure the Cherokee web server on Fedora 14. Installation will be performed through the terminal; please make sure you are logged into your Linode as root via SSH.
 
-It is assumed that you already have a working and up to date Fedora 14 system. If you have not followed our [getting started](/docs/getting-started/) guide, we recommend that you do so prior to following these instructions.
+It is assumed that you already have a working and up to date Fedora 14 system. If you have not followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, we recommend that you do so prior to following these instructions.
 
 ## Set the Hostname
 

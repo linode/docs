@@ -34,13 +34,9 @@ In this guide, learn how to install WordPress on your Ubuntu 20.04 server.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system:
-
-        sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Replace all instances of `example.com` in this guide with your domain name.
 
@@ -58,7 +54,7 @@ To satisfy these requirements, you can set up a LAMP (Linux, Apache, MySQL, and 
 
 1. Install and configure a LAMP or LEMP stack. For either stack, make sure that you are installing at least PHP version **7.4**. This is the default on Ubuntu 20.04. Additionally, make sure to replace all version numbers in the below guides with the number of the version you are installing.
 
-    - To create a LAMP stack, follow the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide.
+    - To create a LAMP stack, follow the [How to Install a LAMP Stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide.
 
     - To create a LEMP stack, follow the [How to Install the LEMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-the-lemp-stack-on-ubuntu-18-04/) guide.
 

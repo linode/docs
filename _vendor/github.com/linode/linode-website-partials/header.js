@@ -18,9 +18,12 @@
   var bindEvents = function() {
     $main_menu.addEventListener("click", function(event) {
       var $clicked_link = event.target.closest("a");
-      if ($clicked_link === null || $clicked_link.getAttribute("href").charAt(0) !== "#")
+      if ($clicked_link === null)
         return;
-      var $target_sub_menu = document.querySelector($clicked_link.getAttribute("href"));
+      var $submenu_selector = $clicked_link.dataset.subMenu || $clicked_link.getAttribute("href") || "";
+      if (!$submenu_selector || $submenu_selector.charAt(0) !== "#")
+        return;
+      var $target_sub_menu = document.querySelector($submenu_selector);
       if ($target_sub_menu.classList.contains("active")) {
         closeAllSubMenus();
         $clicked_link.blur();
@@ -87,7 +90,7 @@
       $link.classList.add("current");
       let $sub_menu = $link.closest(".c-sub-menu");
       if ($sub_menu !== null) {
-        let $parent_links = $header.querySelectorAll('a[href="#' + $sub_menu.id + '"]');
+        let $parent_links = $header.querySelectorAll('a[data-sub-menu="#' + $sub_menu.id + '"], a[href="#' + $sub_menu.id + '"]');
         $parent_links.forEach(($link2) => {
           $link2.classList.add("current");
         });
@@ -128,7 +131,7 @@
         $notification_tag.remove();
       }
       $notification_message.textContent = data.message;
-      $notification.classList.remove("u-hidden");
+      $notification.classList.add("--show");
     }
   };
   var $html2 = document.querySelector("html");

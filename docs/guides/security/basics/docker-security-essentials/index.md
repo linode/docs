@@ -35,7 +35,7 @@ This guide assumes you are familiar with using Docker and Dockerfiles. For addit
 
 The security of the host kernel and operating system directly correlates to the security of your Docker containers given their utilization of the host kernel. It is therefore vitally important to keep your host secure. The following steps outline various security best practices to consider for securing your Docker host:
 
-1.  [Secure and harden](/docs/guides/securing-your-server/) your host OS.
+1.  [Secure and harden](/docs/guides/set-up-and-secure/) your host OS.
 1.  Ensure your host is kept updated.
 1.  Ensure you have the latest version of Docker running.
 1.  Consider the use of a minimal Linux distribution such as Alpine that offers a much smaller threat surface.

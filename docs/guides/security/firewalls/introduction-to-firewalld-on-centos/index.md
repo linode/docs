@@ -5,6 +5,7 @@ author:
     email: docs@linode.com
 description: 'This guide will introduce you to FirewallD, its notions of zones and services, & show you some basic configuration steps. ✓ Click here to learn more today!'
 keywords: ["centos firewall", "centos firewall config", "centos firewall gui", "centos configure firewall", "Linux", "Linode", "cloud", "firewall", "firewalld", "Fedora", "CentOS", "iptables", "security"]
+bundles: ['centos-security', 'network-security']
 tags: ["centos","networking","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-09-28

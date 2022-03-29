@@ -29,7 +29,7 @@ OpenVZ is a software-based OS virtualization tool enabling the deployment, manag
 
 ### Before You Begin
 
-1. Working through this tutorial requires a root user account, and is written as if commands are issued as the root user. Readers choosing to use a limited user account will need to prefix commands with `sudo` where required. If you have yet to create a limited user account, follow the steps in the [Securing Your Server](/docs/security/securing-your-server/) guide.
+1. Working through this tutorial requires a root user account, and is written as if commands are issued as the root user. Readers choosing to use a limited user account will need to prefix commands with `sudo` where required. If you have yet to create a limited user account, follow the steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
 2. The instructions in this guide were written for and tested on Debian 9 only. They are unlikely to work for other Debian or Ubuntu distributions.
 

@@ -21,7 +21,7 @@ relations:
             - distribution: Ubuntu 10.04
 ---
 
-This guide will help you install Redmine on your Ubuntu 10.04 LTS (Lucid) Linode. It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, the example domain "example.com" is used. Please be sure to replace it with your own domain name wherever it is found.
+This guide will help you install Redmine on your Ubuntu 10.04 LTS (Lucid) Linode. It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, the example domain "example.com" is used. Please be sure to replace it with your own domain name wherever it is found.
 
 ## Set the Hostname
 

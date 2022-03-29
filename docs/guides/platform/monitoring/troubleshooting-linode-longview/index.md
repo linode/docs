@@ -21,7 +21,7 @@ This guide discusses basic troubleshooting steps to help you diagnose and resolv
 
 ## Basic Diagnostics
 
-1.  Ensure that your system is [fully updated](/docs/getting-started/#install-software-updates).
+1.  Ensure that your system is [fully updated](/docs/guides/set-up-and-secure/#perform-system-updates).
 
     {{< note >}}
   Longview requires Perl 5.8 or later.

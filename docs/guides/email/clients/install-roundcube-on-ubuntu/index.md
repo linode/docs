@@ -32,7 +32,7 @@ Roundcube is a web-based IMAP email client that offers a user interface similar 
 
 1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  This guide is designed to work with our [Installing Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) tutorial, but you **can** use a different mail server.
 

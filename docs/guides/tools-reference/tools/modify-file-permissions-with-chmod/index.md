@@ -8,6 +8,7 @@ keywords: ["chmod", "commands", "reference", "file permissions"]
 tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linux-tools/common-commands/chmod/','/tools-reference/modify-file-permissions-with-chmod/','/tools-reference/tools/modify-file-permissions-with-chmod/']
+bundles: ['debian-security', 'centos-security']
 modified: 2021-04-16
 modified_by:
   name: Linode

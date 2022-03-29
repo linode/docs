@@ -19,7 +19,7 @@ These guides explore targeted topics like the basics of Dedicated CPU Linodes, a
 
 - [Getting Started with Linode](/docs/getting-started/)
 
-- [Securing Your Server](/docs/security/basics/securing-your-server/)
+- [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
 
 ### Choosing a Linode Plan
 

@@ -8,6 +8,7 @@ keywords: ["users", "permissions", "access control lists", "chmod", "chown", "li
 tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/linux-users-and-groups/','/tools-reference/basics/linux-users-and-groups/','/docs/using-linux/users-and-groups/']
+bundles: ['debian-security', 'centos-security']
 modified: 2021-01-07
 modified_by:
   name: Linode
@@ -193,7 +194,7 @@ For CentOS, the command is as follows:
 In order to provide a user with the `sudo` ability, they need to be added to a `sudo` enabled group, or their username needs to be added to the sudoers file with a set of permissions. This file is sensitive and important as an access and security control, and should not be edited directly with a text editor. If the sudoers file is edited incorrectly it could result in preventing access to the system or other unintended permission changes.
 
 {{< note >}}
-For instructions on adding a user to a default `sudo` enabled group, see our [How to Secure Your Server](/docs/guides/securing-your-server/) guide
+For instructions on adding a user to a default `sudo` enabled group, see our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide
 {{< /note >}}
 
 The `visudo` command should be used to edit the sudoers file. At a command line, log into your system as `root` and enter the command `visudo`.

@@ -44,13 +44,9 @@ For simplicity, the term *container* is used throughout this guide to describe t
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/getting-started/) guide. Select a Linode with at least 2GB of RAM memory, such as the Linode 2GB. Specify the Ubuntu 19.04 distribution. You may specify a different Linux distribution, as long as there is support for **snap packages (snapd)**; see the [More Information](#more-information) for more details.
+1.  Complete the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide. Select a Linode with at least 2GB of RAM memory, such as the Linode 2GB. Specify the Ubuntu 19.04 distribution. You may specify a different Linux distribution, as long as there is support for **snap packages (snapd)**; see the [More Information](#more-information) for more details.
 
-2.  This guide uses `sudo` wherever necessary. Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a limited (non-root) user account, harden SSH access, and remove unnecessary network services.
-
-3.  Update your system:
-
-        sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Configure the Snap Package Support
 

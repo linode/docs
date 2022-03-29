@@ -8,9 +8,11 @@ keywords: ["ssh", "public key"]
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/ssh-keys/','/tools-reference/ssh/use-public-key-authentication-with-ssh/','/security/use-public-key-authentication-with-ssh/','/security/authentication/use-public-key-authentication-with-ssh/']
+bundles: ['debian-security', 'centos-security', 'network-security']
 modified_by:
   name: Linode
 published: 2011-04-05
+modified: 2022-03-17
 title: "Creating an SSH Key Pair and Configuring Public Key Authentication"
 h1_title: "Creating an SSH Key Pair and Configuring Public Key Authentication on a Server"
 enable_h1: true
@@ -28,7 +30,7 @@ Password authentication is the default method most SSH (Secure Shell) clients us
 This guide explains how the SSH key login scheme works, how to generate an SSH key, and how to use those keys with your Linode.
 
 {{< note >}}
-If you're unfamiliar with SSH connections, review the [Getting Started with Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) guide.
+If you're unfamiliar with SSH connections, review the [Getting Started with Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) guide.
 {{< /note >}}
 
 ## How SSH Public Keys Work
@@ -332,29 +334,7 @@ Start PuTTY and **Load** your saved session. You are be prompted to enter your s
 
 ## Upload Your SSH Key to Linode Cloud Manager
 
-It is possible to provision each new Linode you create with an SSH public key automatically through the [Cloud Manager](https://cloud.linode.com).
-
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
-
-1.  Click on your username or profile image at the top bar of the page. Then click on **SSH Keys** in the dropdown menu that appears:
-
-    ![My Profile menu](ssh-key-my-profile.png "Click on your username, and then select 'SSH Keys'")
-
-1.  From the SSH Keys page, click **Add a SSH Key**:
-
-    ![SSH Keys tab](ssh-key-my-keys.png "Click **Add a SSH Key**")
-
-1.  Create a label for your key, then paste in the contents of your **public** SSH key (`id_rsa.pub`):
-
-    ![Add SSH Key form](ssh-key-new-key.png "Create a label for your key, then paste in the contents of your public SSH key")
-
-1.  Click **Add Key**.
-
-1.  When you next create a Linode you are given the opportunity to include your SSH key in the Linode's creation. This key is added to the root user of the new Linode.
-
-    In the **Create Linode** form, select the SSH key to include. This field appears below the **Root Password** field:
-
-    ![SSH Keys field in the Create Linode form](ssh-key-new-linode.png "Include your SSH key when creating a new Linode")
+To use your SSH key when deploying new Linodes, you must first upload it to your account. This can be done through the Cloud Manager by following the [Manage SSH Keys > Add a Public Key](/docs/products/tools/cloud-manager/guides/manage-ssh-keys/#add-a-public-key) guide. For instructions on selecting an SSH key when deploying a Compute Instance see [Creating a Compute Instance > Create a Password and Add SSH Keys](/docs/guides/creating-a-compute-instance/#create-a-password-and-add-ssh-keys).
 
 ## Troubleshooting
 
@@ -362,4 +342,4 @@ If your SSH connections are not working as expected, or if you have locked yours
 
 ## Next Steps
 
-After you set up your SSH keys and confirm they are working as expected, review our [How to Secure Your Server](/docs/guides/securing-your-server/#ssh-daemon-options) guide for instructions on disabling password authentication for your server.
+After you set up your SSH keys and confirm they are working as expected, review our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/#ssh-daemon-options) guide for instructions on disabling password authentication for your server.

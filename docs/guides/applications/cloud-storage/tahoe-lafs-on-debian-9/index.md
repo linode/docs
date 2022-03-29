@@ -45,15 +45,13 @@ All of these things make Tahoe-LAFS a good fit for securely storing sensitive da
 
 ## Before You Begin
 
+1.  If you have not already done so, create a Linode account and a *Debian 9* Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
-
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide, deploy a Debian 9 (Stretch) image and complete the steps for setting your Linode's hostname and timezone.
-
-2.  Update your system:
-
-        apt-get update && apt-get upgrade
 
 ## Server Requirements and Recommendations
 

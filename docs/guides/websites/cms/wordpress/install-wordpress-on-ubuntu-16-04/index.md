@@ -38,7 +38,7 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 ## Before You Begin
 
--   This guide assumes you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides, and that your Linode's [hostname is set](/docs/getting-started/#setting-the-hostname).
+-   This guide assumes you have followed the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and that your Linode's [hostname is set](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
 
     To check your hostname run:
 
