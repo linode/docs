@@ -6,7 +6,7 @@ description: "Learn how to install and configure the Ant Media Server Enterprise
 keywords: ['streaming', "marketplace", "live video streaming"]
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-28
+published: 2022-03-29
 modified_by:
   name: Linode
 title: "Deploying Ant Media Server Enterprise Edition through the Linode Marketplace"
