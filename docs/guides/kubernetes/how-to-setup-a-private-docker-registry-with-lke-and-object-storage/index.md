@@ -287,7 +287,7 @@ Your LKE Cluster will also need to authenticate to your Docker registry in order
 
 ### Configure your Docker Registry
 
-Before deploying the Docker Registry Helm chart to your cluster, you will define some configurations so that the Docker registry uses the NGINX Ingress controller, your `registry` Object Storage bucket, and your cert-manager created TLS certificate. See the [Docker Registry Helm Chart's official documentation](https://hub.helm.sh/charts/stable/docker-registry) for a full list of all available configurations.
+Before deploying the Docker Registry Helm chart to your cluster, you will define some configurations so that the Docker registry uses the NGINX Ingress controller, your `registry` Object Storage bucket, and your cert-manager created TLS certificate. See the [Helm Chart's official documentation](https://helm.sh/docs/topics/registries/) for more information about registries.
 
   {{< note >}}
 If you have not yet [generated an Object Storage key pair](/docs/products/storage/object-storage/guides/access-keys/) and [created an Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/) to store your registry's images, do so now before continuing with the rest of this section.
