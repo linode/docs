@@ -79,6 +79,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [PostgreSQL](/docs/products/tools/marketplace/guides/postgresql/)
 - [Pritunl](/docs/products/tools/marketplace/guides/pritunl/)
 - [Prometheus](/docs/products/tools/marketplace/guides/prometheus/)
+- [Prometheus and Grafana](/docs/products/tools/marketplace/guides/prometheus-grafana/)
 - [RabbitMQ](/docs/products/tools/marketplace/guides/rabbitmq/)
 - [Redis](/docs/products/tools/marketplace/guides/redis/)
 - [Restyaboard](/docs/products/tools/marketplace/guides/restyaboard/)
