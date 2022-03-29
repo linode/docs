@@ -6,7 +6,7 @@ description: "Deploy Joplin on a Linode Compute Instance. Joplin is an open sour
 keywords: ['productivity','notes','docs']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-28
+published: 2022-03-29
 modified_by:
   name: Linode
 title: "Deploying Joplin through the Linode Marketplace"
