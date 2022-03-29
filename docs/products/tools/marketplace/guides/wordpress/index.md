@@ -7,7 +7,7 @@ keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress wit
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
-modified: 2022-03-08
+modified: 2022-03-29
 modified_by:
   name: Linode
 title: "Deploying WordPress through the Linode Marketplace"
@@ -18,7 +18,7 @@ external_resources:
 aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/platform/one-click/deploying-wordpress-with-one-click-apps/','/guides/deploying-wordpress-with-one-click-apps/','/guides/deploying-wordpress-with-marketplace-apps/','/guides/wordpress-marketplace-app/']
 ---
 
-With 60 million users around the globe, WordPress provides an industry standard for content-focused websites such as blogs, news sites, and personal websites. Its focus on best-in-class usability and flexibility, makes it possible to have a customized website up and running in minutes.
+[WordPress](https://wordpress.org/) is an industry standard open source CMS (content management system) used by the majority of the web. With 60 million users around the globe, WordPress provides an intuitive platform for content-focused websites for both personal and business use. Its focus on best-in-class usability and flexibility makes it possible to have a customized website up and running in minutes.
 
 ## Deploying a Marketplace App
 
@@ -52,60 +52,50 @@ With 60 million users around the globe, WordPress provides an industry standard 
 
 ## Getting Started After Deployment
 
-### Access Your WordPress Site
+### Accessing the WordPress Admin Dashboard
 
-After WordPress has finished installing, you can access your WordPress site by copying your Linode's IPv4 address and entering it in the browser of your choice. If you've set up DNS during installation, you can go to your domain name in the browser. To find your Linode's IPv4 address:
+1.  Open your web browser and navigate to `http://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
-1. Click on the **Linodes** link in the sidebar to see a list of all your Linodes.
+    ![Screenshot of the browser's URL bar](wordpress-browser-url.png)
 
-1. Find the Linode you just created when deploying your app and select it.
+1.  Within the login page that appears, enter the username (*admin username*) and password (*admin password*) that you created when you deployed this instance. Then click the **Log In** button.
 
-1. Navigate to the **Networking** tab.
+    ![Screenshot of the WordPress login form](wordpress-login.png)
 
-1. Your IPv4 address is listed under the **Address** column in the **IPv4** table.
+1.  Once logged in, the WordPress Admin Dashboard appears. From here, you can create new posts, add users, modify the theme, and adjust any settings.
 
-1. Copy and paste the IPv4 address into a browser window. You should see your WordPress site's home page.
+    ![Screenshot of the WordPress dashboard](wordpress-admin.png)
 
-1.  Once you have accessed your WordPress site via the browser, you can log in to the WordPress administrative interface and start personalizing your theme, creating posts, and configuring other parts of your site.
+### Viewing Your Website
 
-    - The address of the WordPress login page is `http://< your IP address >/wp-login.php`.
-    - If you set up a domain during installation, you can access the login page at `http://< your domain >/wp-login.php`.
-    - You can also click on the log in link that's visible on your site's home page, as highlighted below.
+Open a web browser and navigate to `http://[domain]`, replacing *[domain]* with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS. Your WordPress site should now be displayed.
 
-    Enter the credentials you previously specified in the **Admin Username** and **Admin Password** fields when you deployed the app.
+### Manually Configure a Domain
 
-    ![Log in to your WordPress site.](wordpress-login.png)
+If you didn't set up a domain during the deployment process, you can add it manually following the instructions in this section. Before beginning, make sure you have a registered domain name.
 
-### Set up a Domain for your Site
+1. Within the *name servers* for your domain name, create an [*A record*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa). The *hostname* / *name* field should be *@* for a bare domain (`example.tld`) or should specify the subdomain you wish to use, such as *app* for `app.example.tld`. It's common to create two A records, one using *@* and one using *www*. The IP address should be the IPv4 address of your new Compute Instance. If you do not have a name server, consider using Linode's [DNS Manager](/docs/guides/dns-manager/).
 
-If you didn't set up a domain during the installation process, you can add it manually following the instructions in this section.
+1. Update WordPress so that it uses your new domain name. This can be done directly in the WordPress Admin panel or through the command line. See [Changing The Site URL](https://wordpress.org/support/article/changing-the-site-url/) to learn more.
 
-If you own a domain name, you can assign it (or a subdomain) to your WordPress site. Specifically, you need to set up an [*A record*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) that's associated with your Linode's IP address. To learn how to set up DNS records in the Cloud Manager, review the [DNS Manager](/docs/guides/dns-manager/) guide. For more general information about how DNS works, review the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guide.
+    1. Log in to Admin dashboard. See [Accessing the WordPress Admin Dashboard](#accessing-the-wordpress-admin-dashboard).
 
-Once you have set up DNS for your site, you can visit it by entering your domain or subdomain in your browser. At this point, you should also update the [WordPress Address and Site URL settings](https://codex.wordpress.org/Changing_The_Site_URL) for your site:
+    1. Click on the **Settings** link in the sidebar and then click on the **General** option from the dropdown menu that appears.
 
-1.  Log in to your WordPress site's admin interface as described in the previous section.
+        ![Screenshot of the Settings menu with General highlighted](wordpress-settings-general.png)
 
-1.  Click on the **Settings** link in the sidebar, then click on the **General** option from the dropdown menu that appears.
+    1. Within the *General Settings* form, update the **WordPress Address (URL)** and **Site Address (URL)** fields with the full domain you assigned to your site (such as `http://example.com` or `http://www.example.com`)
 
-    ![WordPress general settings menu option highlighted](wordpress_general_settings_menu_option_highlighted.png "WordPress general settings menu option highlighted")
+        ![Screenshot of the WordPress/Site Address URL fields](wordpress-site-address.png)
 
-1.  The **General Settings** form appears. Update the **WordPress Address (URL)** and **Site Address (URL)** fields with the domain or subdomain you assigned to your site. Specifically, the value for both fields should be `http://example.com`, where `example.com` is replaced by your domain or subdomain.
+    1. Click the **Save Changes** button at the bottom of the form.
 
-1.  Click the **Save Changes** button at the bottom of the form.
+## Going Further
 
-## Software Included
+Now that your WordPress installation is deployed, you can start adding content and modifying it to suit your needs. Here are a few links to help get you started:
 
-The WordPress Marketplace App installs the following required software on your Linode:
-
-| **Software** | **Description** |
-|:--------------|:------------|
-| [**MySQL Server**](https://www.mysql.com/) | Relational database. |
-| [**PHP 7**](https://www.php.net/) | WordPress is written in PHP and requires PHP to operate. |
-| [**Apache HTTP Server**](https://httpd.apache.org/) | Web server used to serve the WordPress site. |
-| [**WordPress**](https://wordpress.org/) | Content management system. |
-| [**WP CLI**](https://wp-cli.org/) | The command line interface for WordPress. |
-
-{{< content "email-warning-shortguide" >}}
+- [WordPress Support](https://wordpress.org/support/): Learn the basic workflows for using WordPress.
+- [Securing WordPress](https://www.linode.com/docs/guides/how-to-secure-wordpress/): Advice on securing WordPress through HTTPS, using a secure password, changing the admin username, and more.
+- [WordPress Themes](https://wordpress.org/themes/#): A collection of *thousands* of WordPress themes.
 
 {{< content "marketplace-update-note-shortguide">}}
