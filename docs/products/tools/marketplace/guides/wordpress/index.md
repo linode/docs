@@ -7,7 +7,7 @@ keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress wit
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
-modified: 2022-03-08
+modified: 2022-03-28
 modified_by:
   name: Linode
 title: "Deploying WordPress through the Linode Marketplace"
@@ -18,7 +18,7 @@ external_resources:
 aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/platform/one-click/deploying-wordpress-with-one-click-apps/','/guides/deploying-wordpress-with-one-click-apps/','/guides/deploying-wordpress-with-marketplace-apps/','/guides/wordpress-marketplace-app/']
 ---
 
-With 60 million users around the globe, WordPress provides an industry standard for content-focused websites such as blogs, news sites, and personal websites. Its focus on best-in-class usability and flexibility, makes it possible to have a customized website up and running in minutes.
+[WordPress](https://wordpress.org/) is an industry standard open source CMS (content management system) used by the majority of the web. With 60 million users around the globe, WordPress provides an intuitive platform for content-focused websites for both personal and business use. Its focus on best-in-class usability and flexibility makes it possible to have a customized website up and running in minutes.
 
 ## Deploying a Marketplace App
 
@@ -70,36 +70,32 @@ With 60 million users around the globe, WordPress provides an industry standard 
 
 Open a web browser and navigate to `http://[domain]`, replacing *[domain]* with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS. Your WordPress site should now be displayed.
 
-### Set up a Domain for your Site
+### Manually Configure a Domain
 
-If you didn't set up a domain during the installation process, you can add it manually following the instructions in this section.
+If you didn't set up a domain during the deployment process, you can add it manually following the instructions in this section. Before beginning, make sure you have a registered domain name.
 
-If you own a domain name, you can assign it (or a subdomain) to your WordPress site. Specifically, you need to set up an [*A record*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) that's associated with your Linode's IP address. To learn how to set up DNS records in the Cloud Manager, review the [DNS Manager](/docs/guides/dns-manager/) guide. For more general information about how DNS works, review the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guide.
+1. Within the *name servers* for your domain name, create an [*A record*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa). The *hostname* / *name* field should be *@* for a bare domain (`example.tld`) or should specify the subdomain you wish to use, such as *app* for `app.example.tld`. It's common to create two A records, one using *@* and one using *www*. If you do not have a name server, consider using Linode's [DNS Manager](/docs/guides/dns-manager/).
 
-Once you have set up DNS for your site, you can visit it by entering your domain or subdomain in your browser. At this point, you should also update the [WordPress Address and Site URL settings](https://codex.wordpress.org/Changing_The_Site_URL) for your site:
+1. Update WordPress so that it uses your new domain name. This can be done directly in the WordPress Admin panel or through the command line. See [Changing The Site URL](https://wordpress.org/support/article/changing-the-site-url/) to learn more.
 
-1.  Log in to your WordPress site's admin interface as described in the previous section.
+    1. Log in to Admin dashboard. See [Accessing the WordPress Admin Dashboard](#accessing-the-wordpress-admin-dashboard).
 
-1.  Click on the **Settings** link in the sidebar, then click on the **General** option from the dropdown menu that appears.
+    1. Click on the **Settings** link in the sidebar and then click on the **General** option from the dropdown menu that appears.
 
-    ![WordPress general settings menu option highlighted](wordpress_general_settings_menu_option_highlighted.png "WordPress general settings menu option highlighted")
+        ![Screenshot of the Settings menu with General highlighted](wordpress-settings-general.png)
 
-1.  The **General Settings** form appears. Update the **WordPress Address (URL)** and **Site Address (URL)** fields with the domain or subdomain you assigned to your site. Specifically, the value for both fields should be `http://example.com`, where `example.com` is replaced by your domain or subdomain.
+    1. Within the *General Settings* form, update the **WordPress Address (URL)** and **Site Address (URL)** fields with the full domain you assigned to your site (such as `http://example.com` or `http://www.example.com`)
 
-1.  Click the **Save Changes** button at the bottom of the form.
+        ![Screenshot of the WordPress/Site Address URL fields](wordpress-site-address.png)
 
-## Software Included
+    1. Click the **Save Changes** button at the bottom of the form.
 
-The WordPress Marketplace App installs the following required software on your Linode:
+## Going Further
 
-| **Software** | **Description** |
-|:--------------|:------------|
-| [**MySQL Server**](https://www.mysql.com/) | Relational database. |
-| [**PHP 7**](https://www.php.net/) | WordPress is written in PHP and requires PHP to operate. |
-| [**Apache HTTP Server**](https://httpd.apache.org/) | Web server used to serve the WordPress site. |
-| [**WordPress**](https://wordpress.org/) | Content management system. |
-| [**WP CLI**](https://wp-cli.org/) | The command line interface for WordPress. |
+Now that your WordPress installation is deployed, you can start adding content and modifying it to suit your needs. Here are a few links to help get you started:
 
-{{< content "email-warning-shortguide" >}}
+- [WordPress Support](https://wordpress.org/support/): Learn the basic workflows for using WordPress.
+- [Securing WordPress](https://www.linode.com/docs/guides/how-to-secure-wordpress/): Advice on securing WordPress through HTTPS, using a secure password, changing the admin username, and more.
+- [WordPress Themes](https://wordpress.org/themes/#): A collection of *thousands* of WordPress themes.
 
 {{< content "marketplace-update-note-shortguide">}}
