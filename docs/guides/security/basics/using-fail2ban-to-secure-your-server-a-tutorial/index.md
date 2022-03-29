@@ -5,6 +5,7 @@ author:
 description: "This guide shows you how to set up Fail2Ban, a log-parsing application, to monitor system logs, and detect automated attacks on your Linode."
 keywords: ["fail2ban", "ip whitelisting", "jail.local"]
 aliases: ['/tools-reference/tools/using-fail2ban-to-block-network-probes/','/security/using-fail2ban-to-secure-your-server-a-tutorial/','/security/using-fail2ban-for-security/','/security/basics/using-fail2ban-to-secure-your-server-a-tutorial/']
+bundles: ['debian-security', 'centos-security']
 tags: ["monitoring","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-01-08
@@ -38,11 +39,11 @@ Fail2ban is intended to be used in conjunction with an already-hardened server a
 
 Follow the [Getting Started](/docs/getting-started) guide to configure your basic server. You may also want to review the [Securing Your Server](/docs/guides/securing-your-server) guide before beginning.
 
-### CentOS 7
+### CentOS/CentOS Stream/RHEL Based Operating Systems
 
 1.  Ensure your system is up to date and install the EPEL repository:
 
-        yum update && yum install epel-release
+        yum update -y && yum install epel-release -y
 
 2.  Install Fail2Ban:
 

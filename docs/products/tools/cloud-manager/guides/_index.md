@@ -78,6 +78,8 @@ These additional guides help you with targeted topics like how to manage your ac
 
 - [Linode Cloud Manager Security Controls](/docs/security/authentication/linode-manager-security-controls/)
 
+- [Manage SSH Keys](/docs/products/tools/cloud-manager/guides/manage-ssh-keys/)
+
 ### Manage Your Linodes
 
 - [Reset the Root Password on your Linode](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/)

@@ -37,7 +37,9 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 1.  To use a Minecraft server you must also have a version of the game client from [Minecraft.net](https://minecraft.net/).
 
-1.  Complete our [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/securing-your-server/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account.
 
 1.  Update your Linode's software:
 
@@ -65,7 +67,7 @@ Minecraft version 1.13 is only compatible with OpenJDK 8. If you are using OpenJ
     Assign a secure password, and configure any additional [SSH hardening](/docs/security/authentication/use-public-key-authentication-with-ssh/) options at this time.
 
 {{< note >}}
-If you have a firewall configured according to the [Securing Your Server](/docs/security/securing-your-server/) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
+If you have a firewall configured according to the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
 
 `-A INPUT -p tcp --dport 25565 -j ACCEPT`
 

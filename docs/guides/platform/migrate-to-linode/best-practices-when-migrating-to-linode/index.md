@@ -57,7 +57,7 @@ If you know which Linux distribution your current host uses, deploy that to the 
 
 If your host offers a shared environment and you are not sure which Linux distribution is being used, then you can select any new Linux image. The most commonly used distributions on Linode are Ubuntu, Debian, and CentOS. Most Linux distributions should support the software your service uses, but a few software packages are better-suited to specific distributions. Review Linode's [Guides & Tutorials](/docs/) to see which guides have been written for the software and distributions you're interested in.
 
-For further details on deploying your new Linux image, follow the [Getting Started with Linode](/docs/guides/getting-started/) guide. It is also recommended that you follow the [How to Secure Your Server](/docs/guides/securing-your-server/) guide once you have deployed your new image.
+For further details on deploying your new Linux image, follow the [Getting Started with Linode](/docs/guides/getting-started/) guide. It is also recommended that you follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide once you have deployed your new image.
 
 ### Install Software
 

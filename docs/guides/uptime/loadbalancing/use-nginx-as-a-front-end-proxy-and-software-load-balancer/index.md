@@ -32,7 +32,7 @@ This document provides an overview of using NGINX as a front-end proxy server fo
 
 Ensure that you have completed the following:
 
--   Follow the [Getting Started](/docs/getting-started/) guide.
+-   Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 -   Install the [NGINX server](/docs/web-servers/nginx/).
 -   Familiarize yourself with [Basic NGINX Configuration](/docs/web-servers/nginx/how-to-configure-nginx/).
 

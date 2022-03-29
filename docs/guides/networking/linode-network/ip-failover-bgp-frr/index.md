@@ -7,6 +7,7 @@ description: "Learn how to use Linode's IP Sharing feature to configure IP failo
 keywords: ['IP failover','elastic IP','frr','bgp']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-11
+modified: 2022-03-11
 modified_by:
   name: Linode
 title: "Configuring IP Failover over BGP using FRR (Advanced)"
@@ -29,7 +30,7 @@ This guide covers using the open source [FRRouting (FRR)](http://docs.frrouting.
 
 Prior to following this guide, ensure the following has been done on each Compute Instance used within your IP failover strategy.
 
-1. Set the [hostname](/docs/getting-started/#set-the-hostname) and [updated the hosts file](/docs/getting-started/#update-your-system-s-hosts-file).
+1. Set the [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [updated the hosts file](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file).
 
 1. Verify Python3 is installed. See [FRR's official documentation](http://docs.frrouting.org/en/latest/installation.html#python-dependency-documentation-and-tests) to learn about FRR's Python dependencies.
 
@@ -156,19 +157,28 @@ coalesce-time 1000
 bgp bestpath as-path multipath-relax
 neighbor RS peer-group
 neighbor RS remote-as external
+neighbor RS ebgp-multihop 10
 neighbor RS capability extended-nexthop
 neighbor 2600:3c0f:[DC_ID]:34::1 peer-group RS
 neighbor 2600:3c0f:[DC_ID]:34::2 peer-group RS
 neighbor 2600:3c0f:[DC_ID]:34::3 peer-group RS
 neighbor 2600:3c0f:[DC_ID]:34::4 peer-group RS
+
 address-family ipv4 unicast
   network [SHARED_IP]/32 route-map [ROLE]
   redistribute static
 exit-address-family
+
+address-family ipv6 unicast
+  network [SHARED_IPV6]/64 route-map [ROLE]
+  redistribute static
+exit-address-family
+
 route-map primary permit 10
 set community 65000:1
 route-map secondary permit 10
 set community 65000:2
+ipv6 nht resolve-via-default
 {{</ file >}}
 
 1.  Restart the FRR service:

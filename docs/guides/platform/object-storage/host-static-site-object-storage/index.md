@@ -10,7 +10,7 @@ published: 2019-04-09
 modified: 2022-02-04
 modified_by:
   name: Linode
-title: "Host a Static Site using Linode Object Storage"
+title: "Deploy a Static Site using Hugo and Object Storage"
 contributor:
   name: Linode
 external_resources:
@@ -56,7 +56,7 @@ This guide uses [Hugo](https://gohugo.io/) to demonstrate how to create a static
 
 ## Before You Begin
 
-1. Read the [How to Use Linode Object Storage](/docs/guides/how-to-use-object-storage/) guide to familiarize yourself with Object Storage on Linode. Specifically, be sure that you have:
+1. Read the [Get Started with Object Storage](/docs/products/storage/object-storage/get-started/) guide or take a look through all the [Object Storage guides](/docs/products/storage/object-storage/guides/) to familiarize yourself with Object Storage on Linode. Specifically, be sure that you have:
 
     - Created your Object Storage access and secret keys.
     - Installed and configure the [s3cmd tool](https://s3tools.org/download).
@@ -320,6 +320,6 @@ Alternatively, you can freely create a custom subdomain that does not need to ma
 
 To learn about managing DNS records on Linode, see the [DNS Manager](/docs/guides/dns-manager/) and [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) guides.
 
-For instructions on how to set up `https` access for your domain, see our guide on how to [Upload a Custom SSL/TLS Certificate on Object Storage](/docs/guides/enable-ssl-for-object-storage/).
+For instructions on how to set up `https` access for your custom domain, see the  [Configure a Custom Domain (with a TLS/SSL Certificate)](/docs/products/storage/object-storage/guides/custom-domain/) guide.
 
 As noted before, it's possible to trigger automatic deployments to the Object Storage service when you push new content updates to GitHub or GitLab. This is done by leveraging a CI/CD (continuous integration/continuous delivery) tool like [Travis CI](https://travis-ci.org). Essentially, you would build your Hugo site within the Travis environment and then run the `s3cmd sync` command from it to your bucket.

@@ -14,6 +14,11 @@ title: "Create an Email Notification System Using Twilio (IMAP)"
 contributor:
   name: John Mueller
   link:
+relations:
+  platform:
+    key: twilio-email-notifications
+    keywords:
+      - email protocol: IMAP
 external_resources:
 - '[imaplib — IMAP4 Client Library — PyMOTW 3](https://pymotw.com/3/imaplib/index.html)'
 - '[imaplib — IMAP4 protocol client — Python 3.10.2 documentation](https://docs.python.org/3/library/imaplib.html)'
@@ -46,7 +51,7 @@ The auto-forwarding system leverages the API of Twilio, a cloud communications s
 
     If you want to implement the notification system, [create a Linode in the Cloud Manager](/docs/products/compute/shared-cpu/get-started/). The lowest cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
 
-    After you create your Linode, follow our [Securing your Server](/docs/guides/securing-your-server/) guide to reduce the threat of a system compromise. Specifically, make sure you [Add a Limited User Account](/docs/guides/securing-your-server/#add-a-limited-user-account) to the Linode. The notification system in this guide should be installed under a limited Linux user.
+    After you create your Linode, follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to reduce the threat of a system compromise. Specifically, make sure you [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) to the Linode. The notification system in this guide should be installed under a limited Linux user.
 
 1.  Another guide in our library, [How to Use the Linode API with Twilio](/docs/guides/how-to-use-the-linode-api-with-twilio/), shows the prerequisite steps for using the Twilio API. Follow this guide, starting with its [Before You Begin](/docs/guides/how-to-use-the-linode-api-with-twilio/#before-you-begin) section, up to and including the [Install the Twilio Python Helper Library](/docs/guides/how-to-use-the-linode-api-with-twilio/#install-the-twilio-python-helper-library) section.
 
@@ -632,7 +637,7 @@ Follow these steps to only forward CPU usage alerts to text:
 1. Insert these new lines of code in the same position as the removed lines:
 
     {{< file "autoforward-email-to-text-message.py">}}
-# copy and paste to bottom of file:
+# insert where previous lines were removed:
 
 status, email_search_data = mail.search(None,
     'FROM', '"Linode Alerts"',

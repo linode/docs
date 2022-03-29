@@ -28,8 +28,7 @@ One feature found in ownCloud is the ability to connect an instance to Linode Ob
 
 1. Purchase an [enterprise license for ownCloud](https://doc.owncloud.com/server/admin_manual/enterprise/installation/install.html) (to enable the necessary external storage app).
 
-1. Enable the [Object Storage service](/docs/guides/how-to-use-object-storage/#enable-object-storage) for your Linode account.
-1. Generate a pair of [Object Storage access keys](/docs/platform/object-storage/how-to-use-object-storage/#generate-a-key-pair).
+1. Generate a pair of [Object Storage access keys](/docs/products/storage/object-storage/guides/access-keys/).
 
 {{< note >}}
 - ownCloud requires the installation of two external storage applications to connect to an Object Storage service.
