@@ -65,20 +65,20 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
 1. This displays the credentials and endpoint URL for both Prometheus and Grafana, as shown in the example output below.
 
-    {{<output>}}
+    {{< output >}}
 #################
 #   Prometheus  #
 #################
 Location: https://192-0-2-1.ip.linodeusercontent.com/prometheus
 Username: prometheus
-Password: htyjuykuyhjyrkit648648#$#%^GDGHDHTTNJMYJTJ__grojpoijrpo
+Password: htyjuykuyhjyrkit648648#$#%^GDGHDHTTNJMYJTJ__gr9jpoijrpo
 ##############
 #  Grafana   #
 ##############
 Location: https://192-0-2-1.ip.linodeusercontent.com
 Username: admin
 Password: ewtghwethetrh554y35636#$_0noiuhr09h)
-{{</output>}}
+{{</ output >}}
 
 ### Add Prometheus as a Data Source to Grafana
 
