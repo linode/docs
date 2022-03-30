@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Encrypt disks or volumes to protect your data.'
+description: 'The guides in this section instruct you on how to use encryption to keep data on your Linode secure. You can encrypt disks or entire volumes to protect your data.'
 keywords: ["full disk", "encrypt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: Encryption

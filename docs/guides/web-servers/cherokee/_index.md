@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/cherokee/','/web-servers/cherokee/']
 published: 2009-09-10
 title: Hosting Websites with Cherokee
+description: 'The guides in this section will help you install the Cherokee web server, an open-source, lightweight, high-performance, web server and reverse proxy.'
 show_in_lists: true
 ---
 
