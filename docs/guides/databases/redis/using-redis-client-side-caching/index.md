@@ -176,7 +176,7 @@ Redis clients must be version 6 or later to use RESP3. Check your Redis version 
 
     redis-cli --version
 
-For Redis versions less than 6, see the previous section for [creating a dedicated client for invalidation messages](/docs/guides/using-redis-client-side-caching/#dedicated-client-for-monitoring-notifications).
+For Redis versions less than 6, see the previous section for [creating a dedicated client for invalidation messages](/docs/guides/using-redis-for-client-side-caching/#dedicated-client-for-monitoring-notifications).
 {{< /note >}}
 
 1. Create a Redis client by making an authenticated connection to the Redis server. See our guide on [How to Connect to Redis and Use The Redis Database](/docs/guides/how-to-connect-to-redis/) for instructions on doing so.
