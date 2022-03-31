@@ -145,7 +145,7 @@ Next, we need to configure the failover software on *each* Compute Instance. For
 
 1.  Download and install the [lelastic](https://github.com/linode/lelastic) utility from GitHub by running the following commands:
 
-        curl -LO https://github.com/linode/lelastic/releases/download/v0.0.3/lelastic.gz
+        curl -LO https://github.com/linode/lelastic/releases/download/v0.0.4/lelastic.gz
         gunzip lelastic.gz
         chmod 755 lelastic
         sudo mv lelastic /usr/local/bin/
