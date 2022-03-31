@@ -2,8 +2,8 @@
 slug: connect-to-a-mysql-or-mariadb-database
 author:
   name: Nathaniel Stickman
-description: "Learn how to remotely connect to your MySQL or MariaDB database using the command line. Included in the guide are the database configuration steps to allow remote connections from a specific user."
-og_description:  "Learn how to remotely connect to your MySQL or MariaDB database using the command line. Included in the guide are the database configuration steps to allow remote connections from a specific user."
+description: 'This guide shows you how to remotely connect to your MySQL or MariaDB database using the command line interface as well as enabling access from a specific user.'
+og_description:  'This guide shows you how to remotely connect to your MySQL or MariaDB database using the command line interface as well as enabling access from a specific user.'
 keywords: ['mysql connect to database','mariadb connect to database','mysql connect remote database','how to connect to mysql database']
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -26,9 +26,9 @@ This guide shows you how to connect to a remote MySQL or MariaDB database using 
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Install MySQL or MariaDB on your server. You can follow our guide on [How to Install MySQL](/docs/guides/how-to-install-mysql-on-debian-8/) or on [How to Install MariaDB](/docs/guides/how-to-install-mariadb-on-debian-9/). Use the **Distribution** drop down at the top of each guide to select the Linux distribution you want to install on.
 

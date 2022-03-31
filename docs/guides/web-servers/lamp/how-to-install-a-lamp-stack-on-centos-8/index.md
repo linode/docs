@@ -56,7 +56,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo yum install httpd
 
-1. Enable Apache to start at boot and start the Apache service:
+1.  Enable Apache to start at boot and start the Apache service:
 
         sudo systemctl enable httpd.service
         sudo systemctl start httpd.service
@@ -79,7 +79,6 @@ KeepAlive Off
     MaxClients          200
     MaxRequestsPerChild 4500
 </IfModule>
-
 {{< /file >}}
 
 ### Configure Name-based Virtual Hosts
@@ -90,21 +89,21 @@ There are different ways to set up virtual hosts; however, the method below is r
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
-1. Create the directories to store your site's virtual hosts files:
+1.  Create the directories to store your site's virtual hosts files:
 
         sudo mkdir -p /etc/httpd/sites-available /etc/httpd/sites-enabled
 
-1. Edit Apache's configuration file to let it know to look for virtual host files in the `/etc/httpd/sites-enabled` directory. Add the example line to the bottom of your `httpd.conf` file:
+1.  Edit Apache's configuration file to let it know to look for virtual host files in the `/etc/httpd/sites-enabled` directory. Add the example line to the bottom of your `httpd.conf` file:
 
-      {{< file "/etc/httpd/conf/httpd.conf" apache>}}
+    {{< file "/etc/httpd/conf/httpd.conf" apache>}}
 IncludeOptional sites-enabled/*.conf
-      {{</ file >}}
+{{</ file >}}
 
-1. Navigate to your `/var/www/html/example.com` directory if you are not already there:
+1.  Navigate to your `/var/www/html/example.com` directory if you are not already there:
 
         cd /var/www/html/example.com
 
-1. Using your preferred text editor create a virtual hosts file. Copy the basic settings in the example below and paste them into the file. Replace all instances of `example.com` with your domain name:
+1.  Using your preferred text editor create a virtual hosts file. Copy the basic settings in the example below and paste them into the file. Replace all instances of `example.com` with your domain name:
 
     {{< file "/etc/httpd/sites-available/example.com.conf" apache>}}
 <Directory /var/www/html/example.com/public_html>
@@ -117,9 +116,9 @@ IncludeOptional sites-enabled/*.conf
     ErrorLog /var/www/html/example.com/logs/error.log
     CustomLog /var/www/html/example.com/logs/access.log combined
 </VirtualHost>
-    {{</ file>}}
+{{</ file>}}
 
-1. Create a symbolic link from your virtual hosts file in the `sites-available` directory to the `sites-enabled` directory. Replace `example.com.conf` with the name of your own virtual hosts file.
+1.  Create a symbolic link from your virtual hosts file in the `sites-available` directory to the `sites-enabled` directory. Replace `example.com.conf` with the name of your own virtual hosts file.
 
         sudo ln -s /etc/httpd/sites-available/example.com.conf /etc/httpd/sites-enabled/example.com.conf
 
@@ -181,7 +180,8 @@ FirewallD is enabled for CentOS 8 Linodes, but HTTP and HTTPS is not included in
 1.  View the default set of services:
 
         sudo firewall-cmd --zone=public --list-services
-{{< output >}}
+
+    {{< output >}}
 ssh dhcpv6-client
 {{< /output >}}
 

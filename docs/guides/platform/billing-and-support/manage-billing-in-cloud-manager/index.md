@@ -3,16 +3,16 @@ slug: manage-billing-in-cloud-manager
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to managing your bill in Cloud Manager.
+description: "Learn how to view invoices, update payment information, and manage other billing releated tasks within Linode's Cloud Manager."
 keywords: ["billing", "payments","cancel account"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2019-10-25
-modified: 2021-11-16
-title: How to Manage Billing in the Linode Cloud Manager
-h1_title: Managing Billing in the Cloud Manager
+modified: 2022-02-21
+title: "How to Manage Billing in the Linode Cloud Manager"
+h1_title: "Managing Billing in the Cloud Manager"
 enable_h1: true
 aliases: ['/platform/billing-and-support/manage-billing-in-cloud-manager/']
 ---
@@ -127,6 +127,8 @@ When an invoice is generated, the amount of that invoice (as well as any past du
 
 All of your billing history, including previous invoices and payments, is accessible within the [Cloud Manager](https://cloud.linode.com/account/billing) on the **Billing & Payment History** section within the **Billing Info** page (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)). By default, all transactions (both invoices and payments) from the last *6 months* are displayed. To customize this, use the dropdown menus on the top right of this section.
 
+![Viewing Billing & Payment History in the Cloud Manager](view-invoices.png)
+
 **To view an itemized invoice,** find the invoice row on the list and click the corresponding invoice number. This opens up a new page that displays each service that was active during the billing period, along with the additional details listed below:
 
 -  **Description:** The type of service and the unique label you've given it.
@@ -138,7 +140,11 @@ All of your billing history, including previous invoices and payments, is access
 -  **Taxes:** The taxes that are charged for this service.
 -  **Total:** The cost for this service including taxes.
 
-A PDF copy of either the invoice or payment can be downloaded by clicking the **Download PDF** link corresponding to the entry row or on the Invoice page.
+![Viewing an invoice in the Cloud Manager](view-invoice.png)
+
+### Downloading Invoices (PDF and CSV)
+
+An invoice or payment can be downloaded as either a PDF or a CSV file. To do this, open the invoice within the Cloud Manager and select either the **Download CSV** or **Download PDF** button.
 
 ## Adding a Promo Code
 
@@ -173,7 +179,7 @@ Removing a Linode from your account makes its data irretrievable. This includes 
 
 If you would like to preserve your Linode's data before removing it from your account, you need to create an external backup. You may use the suggestions in our [Backing Up Your Data](/docs/guides/backing-up-your-data/) guide for some examples of how to do this.
 
-When removing a Linode from your account that has been active for at least 24 hours, our systems automatically create a [Linode Image](/docs/guides/linode-images/) from the backup. You may use [this guide](https://www.linode.com/community/questions/17441/how-do-i-restore-a-deleted-linode) from [our Community Questions site](https://www.linode.com/community/questions/) to restore this backup.
+When removing a Linode from your account that has been active for at least 24 hours, our systems automatically create a [Linode Image](/docs/products/tools/images/) from the backup. You may use [this post](https://www.linode.com/community/questions/17441/how-do-i-restore-a-deleted-linode) from [our Community Questions site](https://www.linode.com/community/questions/) to restore this backup.
 
 There is a very small chance that Linode Support can restore your data outside of these circumstances. The sooner you reach out to Linode Support, the more likely this can occur. Please open [a Support ticket](https://cloud.linode.com/support/tickets) to explore this possibility.
 {{</ caution >}}

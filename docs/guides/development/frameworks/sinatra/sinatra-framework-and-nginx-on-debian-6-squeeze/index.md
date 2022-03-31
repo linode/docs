@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy simple web applications with the Sinatra web development framework.'
+description: 'This guide will show you how to deploy simple web applications with the free and open source Sinatra web development framework on Debian 6 "Squeeze".'
 keywords: ["sinatra", "ruby", "web applications", "development", "deployment"]
 tags: ["web applications","debian","nginx","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

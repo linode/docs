@@ -3,7 +3,7 @@ slug: how-to-install-kubectl
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How to Install kubectl.'
+description: 'This short-guide will provide you with step-by-step instructions on how to install kubectl, the Kubernetes command-line utility, using homebrew or your package manager.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-08

@@ -31,6 +31,8 @@ The following Linode services consume network transfer and, in most cases, inclu
 
 - **Object Storage:** Consumes network transfer and includes 1TB of transfer allowance per month.
 
+- **Managed Databases:** Does not consume network transfer or include a monthly transfer allowance. Linode services located in a different data center connecting to a Managed Database may consume network transfer.
+
 The allowance included with each service on an account is added to an account-wide **monthly network transfer pool**. Whenever a service consumes network transfer, it is counted towards this account-wide pool and not the individual transfer allowance.
 
 {{< note >}}
@@ -90,6 +92,10 @@ To view your network utilization (in GB) for the current month, issue the follow
 {{< note >}}
 You need to generate a Personal Access Token and install the Linode CLI before being able to use the CLI. See the [Linode CLI](/docs/guides/linode-cli/) guide for more information.
 {{</ note >}}
+
+### Email Alerts
+
+Linode automatically sends an email notification to [your account's email address](/docs/guides/accounts-and-passwords/#email-addresses-and-contact-information) when you have used 80%, 90%, and 100% of your transfer pool size.
 
 ## More Information
 

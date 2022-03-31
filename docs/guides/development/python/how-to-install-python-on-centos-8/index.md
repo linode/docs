@@ -22,7 +22,6 @@ relations:
         key: how-to-install-python
         keywords:
             - distribution: CentOS 8
-tags: ["python", "centos"]
 ---
 
 Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly adopted programming language by people entering into the field of software development. A lot of its popularity is based on Python's high level of abstraction. This abstraction makes writing and reading the code easier than other languages.
@@ -39,7 +38,7 @@ Unlike other Linux distributions, CentOS 8 does not come with a version of Pytho
 
 1.  This guide assumes that you have access to a server or workstation running CentOS 8. To provision a Linode running CentOS 8, follow our [Getting Started](/docs/guides/getting-started/) guide.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system:
 

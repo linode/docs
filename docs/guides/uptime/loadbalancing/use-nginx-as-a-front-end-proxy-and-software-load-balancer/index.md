@@ -3,7 +3,7 @@ slug: use-nginx-as-a-front-end-proxy-and-software-load-balancer
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use NGINX as a Front-end Proxy and Software Load-Balancer.'
+description: 'NGINX web server can function as a capable load balancer in addition to serving static and dynamic content. This guide shows how to use it as a front-end proxy as well.'
 keywords: ["apache", "nginx", "proxy", "load balancer", "load balancing", "web server", "http", "use nginx as proxy", "use nginx as load-balancer", "front-end proxy", "cluster"]
 tags: ["nginx", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -32,7 +32,7 @@ This document provides an overview of using NGINX as a front-end proxy server fo
 
 Ensure that you have completed the following:
 
--   Follow the [Getting Started](/docs/getting-started/) guide.
+-   Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 -   Install the [NGINX server](/docs/web-servers/nginx/).
 -   Familiarize yourself with [Basic NGINX Configuration](/docs/web-servers/nginx/how-to-configure-nginx/).
 

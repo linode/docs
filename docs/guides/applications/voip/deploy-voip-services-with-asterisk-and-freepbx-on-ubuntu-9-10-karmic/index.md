@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install Asterisk and FreePBX on your Linode to use and manage a telephone exchange.'
+description: 'This guide will show you how to install Asterisk and FreePBX on Your Linode to Use and Manage a Telephone Exchange, also known as a PBX, on Ubuntu 9.10 "Karmic".'
 keywords: ["asterisk ubuntu 9.10", "asterisk", "asterisk linux", "freepbx", "freepbx ubuntu", "pbx", "voip"]
 tags: ["ubuntu", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -24,7 +24,7 @@ relations:
 
 Asterisk is an open source telephone solution that runs over the internet instead of running through copper lines like a normal phone would. It offers a variety of features such as voice mail and conference calling, much like a land line telephone can.
 
-Before you begin, you need to make sure a few things are in order. We assume you have followed the [getting started guide](/docs/getting-started/) and have set the hostname, timezone, and configured networking. These last steps are of particular importance for ensuring your Asterisk installation functions normally. If you plan on using Asterisk's email features, you may also wish to [add an A record](/docs/networking/dns/dns-records-an-introduction/#types-of-dns-records) for your domain.
+Before you begin, you need to make sure a few things are in order. We assume you have followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and have set the hostname, timezone, and configured networking. These last steps are of particular importance for ensuring your Asterisk installation functions normally. If you plan on using Asterisk's email features, you may also wish to [add an A record](/docs/networking/dns/dns-records-an-introduction/#types-of-dns-records) for your domain.
 
 **Please note:** Because of the special configuration options required for this setup, you should not run other services on the Linode you intend to use Asterisk on. It is also worth noting that this guide will walk you through using pv\_grub. Any alterations to the steps in this guide will fall outside the scope of support.
 

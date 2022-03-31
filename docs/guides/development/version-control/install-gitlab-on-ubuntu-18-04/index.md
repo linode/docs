@@ -3,7 +3,7 @@ slug: install-gitlab-on-ubuntu-18-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Install GitLab on Ubuntu 18.04 with SSL'
+description: 'This guide shows how to install GitLab, the free git repository management app based on Ruby on Rails, on a Linode running Ubuntu 18.04, along with SSL.'
 keywords: ['git', 'gitlab', 'version control', 'ubuntu']
 tags: ["ssl","version control system","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -40,17 +40,13 @@ Before installing GitLab you should consider how many users will collaborate on 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Add a domain zone, NS record, and A/AAA record for the domain you will use to access your GitLab installation. See the [DNS Manager](/docs/platform/manager/dns-manager-new-manager/#add-a-domain-zone) guide for details. If you will access your GitLab instance via your Linode’s IP address, you can skip this step.
 
 1.  [Create an SSL Certificate](/docs/quick-answers/websites/secure-http-traffic-certbot/), if you will be using SSL encryption for your domain (this is recommended). Be sure to note the location that Certbot uses to store all generated keys and issued certificates.
-
-1.  Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
 
 ## Install GitLab
 

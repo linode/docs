@@ -3,8 +3,7 @@ slug: lke-continuous-deployment-series
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This series of guides will walk you through setting up a continous deployment pipeline with GitLab, Helm, and LKE (Linode Kubernetes Engine).'
-og_description: 'This series of guides will walk you through setting up a continous deployment pipeline with GitLab, Helm, and LKE (Linode Kubernetes Engine).'
+description: "This series of guides will walk you through setting up a continous deployment pipeline with GitLab, Helm, and LKE (Linode Kubernetes Engine)."
 title: "Building a Continuous Deployment Pipeline Using LKE"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE, Helm, and GitLab"
 enable_h1: true

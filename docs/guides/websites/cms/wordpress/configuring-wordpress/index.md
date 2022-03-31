@@ -2,8 +2,8 @@
 slug: configuring-wordpress
 author:
   name: Nathaniel Stickman
-description: "You can configure your WordPress site''s default installation to enhance its functionality. For example, install the PHP GD extension to modify images within WordPress. Another common change is to prettify your WordPress site''s permalinks. This guide shows you how to configure your WordPress site to enable helpful utilities."
-og_description:  "You can configure your WordPress site''s default installation to enhance its functionality. For example, install the PHP GD extension to modify images within WordPress. Another common change is to prettify your WordPress site''s permalinks. This guide shows you how to configure your WordPress site to enable helpful utilities."
+description: "This guide shows you how to configure your WordPress site with additional utilities, such as installing PHP GD extensions and prettifying your permalinks."
+og_description:  "This guide shows you how to configure your WordPress site with additional utilities, such as installing PHP GD extensions and prettifying your permalinks."
 keywords: ['wordpress configurations']
 tags: ['wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -32,18 +32,9 @@ If you have not already installed WordPress on your server, you can follow one o
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system.
-
-    - On Debian and Ubuntu, use the below command:
-
-            sudo apt update && sudo apt upgrade
-
-    - On CentOS, use the below command:
-
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
             sudo yum update
 
 1. Replace all instances of `example.com` in this guide with your domain name.

@@ -3,7 +3,7 @@ slug: upgrade-debian-to-the-newest-release
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to upgrade your Debian system.'
+description: 'This guide provides you with step-by-step instructions for upgrading your Debian system to the latest Debian stable, or LTS (Long Term Support) release.'
 keywords: ['debian','upgrade','update']
 aliases: ['/security/upgrading/upgrade-to-debian-8-jessie/','/security/upgrading/upgrade-debian-to-the-newest-release/']
 tags: ["security","debian"]

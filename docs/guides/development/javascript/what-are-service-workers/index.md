@@ -3,8 +3,8 @@ slug: what-are-javascript-service-workers
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Service workers help you craft your web application's offline experience and also handle tasks like push notifications and background sync. This guide gives you an introduction to what JavaScript service workers are capable of and how to build an example service worker."
-og_description:  "Service workers help you craft your web application's offline experience and also handle tasks like push notifications and background sync. This guide gives you an introduction to what JavaScript service workers are capable of and how to build an example service worker."
+description: "This guide provides you with an introduction to Javascript Service Workers and what they are capable of, as well as how to build an example service worker. "
+og_description:  "This guide provides you with an introduction to Javascript Service Workers and what they are capable of, as well as how to build an example service worker. "
 keywords: ['javascript service workers', 'service worker example']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -63,19 +63,9 @@ This service worker caches content from a web server and intercepts requests to 
 
 ### Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system.
-
-    - On Debian and Ubuntu, use these commands:
-
-            sudo apt update && sudo apt upgrade
-
-    - On CentOS, use these commands:
-
-            sudo yum update
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.

@@ -3,8 +3,7 @@ slug: lke-continuous-deployment-part-10
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Now that there is an application running on our Kubernetes cluster, the next step is to collect metrics on the resources being used. This part covers installing and using metrics-server as a basic data collection tool."
-og_description: "Now that there is an application running on our Kubernetes cluster, the next step is to collect metrics on the resources being used. This part covers installing and using metrics-server as a basic data collection tool."
+description: 'In part ten on our series on Kubernetes, you will learn how to collect metrics on the resources used in your Kubernetes cluster by installing metrics-server.'
 title: "Continuous Deployment Using LKE: Installing metrics-server"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 10): Installing metrics-server"
 enable_h1: true

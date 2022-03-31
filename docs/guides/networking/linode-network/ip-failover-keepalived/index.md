@@ -7,6 +7,7 @@ description: "Learn how to use Linode's IP Sharing feature to configure IP failo
 keywords: ['networking','IP failover','keepalived']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-19
+modified: 2022-03-23
 modified_by:
   name: Linode
 title: "Configuring IP Failover using keepalived"
@@ -16,10 +17,9 @@ external_resources:
 - '[keepalived Documentation](https://keepalived.readthedocs.io/en/latest/index.html)'
 ---
 
-There's always a small possibility that your Compute Instance may be powered off or become inaccessible, perhaps due to your own internal configuration issues or due to planned (or unplanned) maintenance. When this happens, any websites or services hosted on that Instance might also stop working. To configure services as highly available (and prevent them from going down), there are a few options you can consider:
-
-- **Load balancing:** Load balancing solutions, such as Linode's [NodeBalancers](/docs/products/networking/nodebalancers/) or [HAProxy](https://www.linode.com/docs/guides/how-to-use-haproxy-for-load-balancing/), can route incoming requests to preconfigured backend Compute Instances. This provides quite a lot of flexibility for your own unique highly available setup.
-- **IP failover:** Routes an IP addresses's traffic to a different Compute Instance in the event the original Instance goes down.
+{{<note>}}
+Not all data centers supports configuring IP failover through keepalived. Review the [Configuring IP Failover on a Compute Instance](/docs/guides/ip-failover/) to learn more about IP Sharing / IP failover availability within each data center.
+{{</note>}}
 
 This guide covers using keepalived to configure IP failover with Linode Compute Instances. Keepalived is a routing service that can be used to monitor and fail over components in a high availability configuration. In a typical setup with IP failover, there is one **primary** Instance and one or more **secondary** Instances.
 
@@ -30,9 +30,10 @@ This guide covers using keepalived to configure IP failover with Linode Compute 
 
 Linode's IP failover feature using keepalived is compatible with various IP address types in certain data centers. Review the list below to learn what types are available in your data center.
 
-- **Public and Private IPv4 addresses:** Can be configured in a supported data center using keepalived. You must first configure Linode's IP Sharing feature as outlined in the [Configuring IP Sharing](#configuring-ip-sharing) section. Supported data centers include Dallas (USA), Frankfurt (Germany), Fremont (USA), London (UK), Newark (USA), Singapore, and Tokyo (Japan).
+- **Public and Private IPv4 addresses:** Can be configured in a supported data center using keepalived. You must first configure Linode's IP Sharing feature as outlined in the [Configuring IP Sharing](#configuring-ip-sharing) section. Supported data centers include Dallas (USA), Fremont (USA), London (UK), Newark (USA), Singapore, and Tokyo (Japan).
 
 - **IPv6 addresses:** IP failover with IPv6 addresses is not currently supported.
+
 - **VLAN IP addressses:** Can be configured in a supported data center using keepalived. Supported data centers include Atlanta (USA), Mumbai (India), Sydney (Australia), and Toronto (Canada).
 
 ## Configuring IP Sharing
@@ -70,7 +71,7 @@ This section covers installing the keepalived software from your distribution's 
 
     - Replace *$password* with a secure password to use for this configuration instance. You should use the same password for each Compute Instance you configure.
 
-    - Replace *192.0.2.0* with the IP address for which you'd like to enable failover.
+    - Replace *192.0.2.1* with the IP address for which you'd like to enable failover.
 
     {{< note >}}
 If configuring IP failover on a VLAN IP, you likely need to change the *interface* value from `eth0` to `eth1`. See the **interface** item under [Configuration Options](#configuration-options) for help finding the Network Interface your VLAN may be using.
@@ -88,7 +89,7 @@ vrrp_instance Instance1 {
         auth_pass $password
     }
     virtual_ipaddress {
-        192.0.2.0
+        192.0.2.1
     }
 }
 {{</ file >}}
@@ -123,16 +124,16 @@ When configuring keepalived, there are quite a few options that can be modified 
 
 1.  If you've configured IP failover for a public IP address, ping the IP address on your local machine. If you've configured IP failover on a private network, such as a VLAN, ping the IP address from another machine on that network.
 
-        ping 192.0.2.0
+        ping 192.0.2.1
 
     If IP failover is successfully configured, the output should be similar to the following (once the primary Compute Instance has fully powered off):
 
     {{< output >}}
-64 bytes from 192.0.2.0: icmp_seq=3310 ttl=64 time=0.373 ms
+64 bytes from 192.0.2.1: icmp_seq=3310 ttl=64 time=0.373 ms
 {{</  output >}}
 
     If you are instead receiving output telling you that the host is unreachable, IP failover likely hasn't been successfully configured.
 
     {{< output >}}
-From 192.0.2.0 icmp_seq=3293 Destination Host Unreachable
+From 192.0.2.1 icmp_seq=3293 Destination Host Unreachable
 {{</  output >}}

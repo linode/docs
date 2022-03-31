@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Stan Schwertly
   email: docs@linode.com
-description: 'Installing Magento on an Ubuntu 9.10 LAMP stack.'
+description: 'This guide shows you how to install Magento, the free and open source self-hosted e-commerce solution you can use to sell products, on a Ubuntu 9.10 LAMP Stack.'
 keywords: ["magento", "ecommerce", "store", "cart", "shop", "shopping"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ecommerce/magento-on-ubuntu-9-10-karmic/','/web-applications/e-commerce/magento/ubuntu-9-10-karmic/']
@@ -22,7 +22,7 @@ relations:
 
 Magento is a self hosted e-commerce solution used by many people to sell products online. It runs on a [LAMP stack](/docs/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/) and offers the user a wide variety of options.
 
-Before installing Magento, we assume that you have followed our [getting started guide](/docs/getting-started/) as well as our [LAMP guide](/docs/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before installing Magento, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) as well as our [LAMP guide](/docs/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
 ## Installing Prerequisites
 

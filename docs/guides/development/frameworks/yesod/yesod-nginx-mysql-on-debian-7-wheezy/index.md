@@ -26,6 +26,7 @@ relations:
         key: yesod-nginx-mysql
         keywords:
             - distribution: Debian 7
+deprecated: true
 ---
 
 
@@ -37,7 +38,7 @@ The steps required in this guide require root privileges. Be sure to run the ste
 
 ## Prerequisites
 
-Before you begin installing and configuring the components described below, please make sure you've followed our instructions in the [Getting Started](/docs/getting-started/) guide for setting your hostname. Here's how to check.
+Before you begin installing and configuring the components described below, please make sure you've followed our instructions in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide for setting your hostname. Here's how to check.
 
 1.  Enter the following commands to view the hostname:
 

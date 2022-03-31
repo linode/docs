@@ -189,7 +189,7 @@ accounts/payroll/backup_file.sql
 mysqlbackup/customer_file.sql
 {{< /output >}}
 
-Typically, fd works in regexp mode and parses the search term as a regular expression. However, adding the `-g` options forces `fd` to use the "global" mode. This causes it to only display entries that exactly match the search term. In the following search, the `backup` directory matches, but `wpbackup` does not perfectly match and is not listed.
+Typically, fd works in regexp mode and parses the search term as a regular expression. However, adding the `-g` option forces `fd` to perform a glob-based search. This causes it to only display entries that exactly match the search term. In the following search, the `backup` directory matches, but `wpbackup` does not perfectly match and is not listed.
 
     fd -g backup
 

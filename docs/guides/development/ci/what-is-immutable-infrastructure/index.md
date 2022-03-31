@@ -3,7 +3,7 @@ slug: what-is-immutable-infrastructure
 author:
   name: Linode
   email: docs@linode.com
-description: 'Introduction to Immutable Infrastructure'
+description: 'This guide provides you with an overview of immutable server infrastructure, which is essentially infrastructure that never deviates from it''s source code.'
 keywords: ['ci','automation','immutable', infrastructure]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-10
@@ -76,7 +76,7 @@ Immutable infrastructure is an idea that was popularized by [Chad Fowler in 2013
 
 Here are some popular tools:
 
-- [Linode Images](/docs/guides/linode-images/) allow you to take snapshots of your disks, and then deploy them to any Linode under your account
+- [Linode Images](/docs/products/tools/images/) allow you to take snapshots of your disks  or upload your own custom image files. You can then deploy them to any Linode under your account.
 - [Packer](https://www.packer.io/guides/packer-on-cicd/) helps you create multiple machine images from a single source configuration.
 - [Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) is used to manage change within your deployment stack and maintain *Infrastructure as Code*.
 - [Docker](https://docs.docker.com/) can be used to create and manage images and isolate application services.

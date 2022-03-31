@@ -29,7 +29,7 @@ This guide uses Ubuntu, but the commands are similar for other systems.
 
 1.  Complete the [Getting Started](/docs/getting-started) guide.
 
-1.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, and harden SSH access, but do not create a basic firewall.
+1.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, and harden SSH access, but do not create a basic firewall.
 
 1.  Log into your Linode via SSH and update and upgrade.
 
@@ -204,4 +204,4 @@ You have successfully been able to set up, implement, test, and analyze Fail2Ban
 
 ## Next Steps
 
-For more detailed information on Fail2Ban, including setting up email alerts and writing regular expressions to filter and parse log files, see the [Using Fail2ban to Secure Your Server - A Tutorial](/docs/security/basics/using-fail2ban-to-secure-your-server-a-tutorial/) guide.
+For more detailed information on Fail2Ban, including setting up email alerts and writing regular expressions to filter and parse log files, see the [Using Fail2ban to Secure Your Server - A Tutorial](/docs/guides/set-up-and-secure/#use-fail2ban-for-ssh-login-protection) guide.

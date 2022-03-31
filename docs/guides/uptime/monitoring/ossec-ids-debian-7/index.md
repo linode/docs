@@ -6,7 +6,7 @@ author:
 contributor:
   name: Sunday Ogwu-Chinuwa
   link: https://github.com/finid
-description: 'Install and configure OSSEC HIDS on Debian 7'
+description: 'This guide shows how to install and configure OSSEC HIDS, an open-source, host-based intrusion detection system which provides advanced monitoring functions, on Debian 7.'
 keywords: ["IDS", " Intrusion Detection System"]
 aliases: ['/security/ossec-ids-debian-7/','/uptime/monitoring/ossec-ids-debian-7/']
 tags: ["debian","monitoring"]
@@ -34,9 +34,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Prerequisites
 
-1.  Complete the [Getting Started](/docs/getting-started/) guide.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide. It is especially important to create and enable a firewall. On Linux, OSSEC needs an active iptables firewall for its active response feature to work.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. It is especially important to create and enable a firewall. On Linux, OSSEC needs an active iptables firewall for its active response feature to work.
 
 3.  Install `inotify-tools` and `build-essential`. OSSEC needs the first for real-time alerts and alerts on file deletions, while the latter is for compiling OSSEC. You can install both packages using:
 

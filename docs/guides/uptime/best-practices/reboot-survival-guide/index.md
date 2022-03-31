@@ -3,7 +3,7 @@ slug: reboot-survival-guide
 author:
   name: Alex Fornuto
   email: docs@linode.com
-description: Best practices in preparation for a server reboot.
+description: 'This guide covers best practices to ensure that your server is prepared to handle an unexpected reboot and provides items to consider for scheduled downtime.'
 keywords: ["uptime", "reboot", "downtime", "fault tolerance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-10-28
@@ -179,7 +179,7 @@ If you use full-disk encryption, enter your password in the LISH console after a
 
 ## Firewall Rules
 
-If you followed the [Creating a Firewall](/docs/security/securing-your-server/#configure-a-firewall) section of our [Securing your Server](/docs/security/securing-your-server/) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
+If you followed the [Creating a Firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) section of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
 
 1.  Ensure that your custom firewall rules are saved:
 

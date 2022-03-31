@@ -37,7 +37,7 @@ If using multiple domains to send mail from a single Linode, rDNS will only need
 
 ### Benefits
 
-If you want or need full control of your email, running your own mail server might be ideal solution. Doing so allows you to store your own email, access the mail server's logs, and access the raw email files in a user's mailbox.
+If you want or need full control of your email, running your own mail server might be an ideal solution. Doing so allows you to store your own email, access the mail server's logs, and access the raw email files in a user's mailbox.
 
 Some benefits of running a mail server are:
 
@@ -93,7 +93,7 @@ Every mail server that lets you send and receive email with a local mail client 
 
 ## How to Choose Mail Server Components
 
-There are several software packages that can be used as MTAs, MDAs, and IMAP/POP3 servers, and this section will present some of the most popular options.
+There are several software packages that can be used as MTAs, MDAs, and IMAP/POP3 servers. This section presents some of the most popular options.
 
 The examples in the [later sections](#build-your-mail-server) of this guide use Postfix as the MTA and Dovecot as the MDA and IMAP/POP3 server.
 
@@ -169,27 +169,21 @@ It's also a good idea to keep your old mail server running for at least 48 hours
 
 #### MX Records
 
-MX records tell the Internet where to send your domain's email. If someone sends an email to `user@example.com`, the outgoing server looks up the DNS settings for the domain `example.com`. When it finds the MX record pointing to your Linode, it sends the message to your Linode.
+MX records tell the Internet where to send your domain's email. If someone sends an email to `user@example.com`, the outgoing server looks up the DNS settings of the domain `example.com` for an MX record. The MX record directs the outgoing server to your Linode mail server, allowing the outgoing server to send the message successfully.
 
 Create an MX record for each domain and subdomain for which you want to receive mail on your Linode.
 
 You can also set multiple MX records with different priorities for the same domain. This creates fallback mail servers for your domain in case the first one on the list is down. Lower numbers have a higher priority.
 
-Your MX record has a:
+Each MX record has a:
 
-| **Domain** | **TTL** | **Type** | **Priority** | **Target** |
-| ------------ |:--------:|:----:|:----:| ----- |
-| example.com  | 86400  | MX | 10 | 203.0.113.0 |
+| **Domain** | **TTL** | **Type** | **Priority** | **Mail Server** |
+| ------------ |:--------:|:----:|:----:| ----- | ----- |
+| example.com  | 86400  | MX | 10 | mail.example.com |
 
-A typical MX record looks like this:
+When using Linode's [DNS Manager](/docs/guides/dns-manager/), point your MX records to your Linode mail server's FQDN. Make sure that your Linode mail server's domain or subdomain has a corresponding *A record* that points to the correct IP address.
 
-{{< output >}}
-example.com         86400   MX      10      example.com
-example.com         86400   MX      10      203.0.113.0
-mail.example.com    86400   MX      10      203.0.113.0
-{{< /output >}}
-
-If you use Linode's [DNS Manager](/docs/guides/dns-manager/), point your MX records to a target domain or subdomain that resolves to your Linode. Make sure that domain or subdomain has an *A record* that points to the correct IP address.
+To configure an MX record for a subdomain email address, use the "Subdomain" field when setting the MX record for your domain. For example, the address `user@sub.example.com` requires an MX record with a "Subdomain" value of `sub` under the `example.com` domain.
 
 #### SPF Records
 
@@ -262,7 +256,7 @@ Here are some of the typical mail ports:
 * `587`: SMTP (The preferred non-encrypted port for outgoing connections from mail clients. Use STARTTLS for encryption.)
 * `465`: SMTP (should only be used for legacy support)
 
-If you're using a firewall, be sure to edit the rules for your mail server's ports. See Linode's guide to [configuring a firewall](/docs/security/securing-your-server/#configure-a-firewall) for more information.
+If you're using a firewall, be sure to edit the rules for your mail server's ports. See Linode's guide to [configuring a firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) for more information.
 
 ### Webmail
 

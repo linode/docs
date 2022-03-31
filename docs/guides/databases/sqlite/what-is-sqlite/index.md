@@ -3,8 +3,8 @@ slug: what-is-sqlite
 author:
   name: James Turner
   email: blkbearnh@gmail.com
-description: 'SQLite is the most popular of the serverless SQL databases. These databases offer relational SQL capabilities without anyone needing to set up and maintain a database server. This guide discusses advantages, disadvantages to using a SQLite database for your application. It also covers common use cases for SQLite.'
-og_description: 'SQLite is the most popular of the serverless SQL databases. These databases offer relational SQL capabilities without anyone needing to set up and maintain a database server. This guide discusses advantages, disadvantages to using a SQLite database for your application. It also covers common use cases for SQLite.'
+description: 'This guide discusses the advantages and disadvantages of SQLite, one of the most popular of the serverless SQL databases, and also common use cases for SQLite.'
+og_description: 'This guide discusses the advantages and disadvantages of SQLite, one of the most popular of the serverless SQL databases, and also common use cases for SQLite.'
 keywords: ['what is sqlite']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-09

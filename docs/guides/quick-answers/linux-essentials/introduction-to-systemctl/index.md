@@ -3,14 +3,14 @@ slug: introduction-to-systemctl
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will cover how to use `systemctl` to manage systemd services.'
+description: "Do you know what systemctl is? Our guide will cover how to use `systemctl` to manage systemd services. ✓ Click here to learn more today!"
 keywords: ['systemctl','systemd','service','unit file','target']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-31
 modified: 2018-08-31
 modified_by:
   name: Linode
-title: "Introduction to systemctl"
+title: "systemctl Commands: Restart, Reload, Stop Service and More"
 contributor:
   name: Linode
 external_resources:
@@ -149,7 +149,7 @@ To retrieve a list of failed units, enter the `list-units` command with the `--f
 
 Each unit has a corresponding *unit file*. These unit files are usually located in the following directories:
 
-- The `/lib/systemd/system` directory holds unit files that are provided by the system or are supplied by installed packages.
+- The `/lib/systemd/system` directory holds unit files that are provided by the system or are supplied by installed packages. This directory is also a symlink to `/usr/lib/systemd/user/` directory.
 - The `/etc/systemd/system` directory stores unit files that are user-provided.
 
 ### Listing Installed Unit Files

@@ -36,7 +36,7 @@ A Cloud Firewall can be configured with *Inbound* and *Outbound* rules. Inbound 
 
 ### Predefined Rules
 
-The Linode Cloud Manager provides a list of *predefined rules* that you can add to your Cloud Firewall. The predefined rules support common networking use cases and provide an easy foundation to get started with Cloud Firewalls. Since you can edit any rule applied to a Cloud Firewall you can use the predefined rules as a foundation and further [edit their configurations](/docs/products/networking/cloud-firewall/guides/edit-rules/)and also [add new custom rules](/docs/products/networking/cloud-firewall/guides/add-rules/) to your Firewall.
+The Linode Cloud Manager provides a list of *predefined rules* that you can add to your Cloud Firewall. The predefined rules support common networking use cases and provide an easy foundation to get started with Cloud Firewalls. Since you can edit any rule applied to a Cloud Firewall you can use the predefined rules as a foundation and further [edit their configurations](/docs/products/networking/cloud-firewall/guides/edit-rules/) and also [add new custom rules](/docs/products/networking/cloud-firewall/guides/add-rules/) to your Firewall.
 
 ## Add a Cloud Firewall
 

@@ -6,6 +6,7 @@ author:
 description: "Learn how to install SELinux and use it to protect the security of your Debian 10 system"
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
 aliases: ['/quick-answers/linux/install-selinux-on-ubuntu/','/quick-answers/linux/how-to-install-selinux-on-debian-10/']
+bundles: ['debian-security']
 tags: ["debian","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
@@ -127,7 +128,7 @@ Max kernel policy version:      31
 
 1.  To maintain `enforcing` mode after reboot, modify the SELinux configuration file in `/etc/selinux/config` from the default `SELINUX=permissive` to `SELINUX=enforcing`:
 
-    {{< file "/etc/selinx/config" >}}
+    {{< file "/etc/selinux/config" >}}
 # This file controls the state of SELinux on the system.
 # SELINUX= can take one of these three values:
 # enforcing - SELinux security policy is enforced.

@@ -3,7 +3,7 @@ slug: install-gatsbyjs
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI'
+description: 'This guide shows how to create a CI/CD pipeline using the static-site generator Gatsby.js, Netlify to edit and preview, and Travis CI to deploy. '
 keywords: ['gatsbyjs','gatsby','ssg','static site generator', 'travis', 'netlify']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-09
@@ -56,9 +56,9 @@ This guide sets up the following flow of events:
 
 ## Before You Begin
 
-1.  Follow the [Getting Started](/docs/getting-started/) guide and deploy a Linode running Ubuntu 18.04.
+1.  Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide and deploy a Linode running Ubuntu 18.04.
 
-1.  Complete the [Securing Your Server](/docs/security/securing-your-server/) guide to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
+1.  Complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
     {{< content "limited-user-note-shortguide" >}}
 

@@ -22,7 +22,7 @@ aliases: ['/applications/configuration-management/terraform/deploy-a-wordpress-s
 
 ![Deploy a WordPress Site Using Terraform and Linode StackScripts](deploy-wordpress-using-terraform-linode-stackscripts.png "Deploy a WordPress Site Using Terraform and Linode StackScripts")
 
-Linode's Terraform provider supports [StackScripts](/docs/platform/stackscripts/). StackScripts allow you to automate the deployment of custom software on top of Linode's default Linux images, or on any of your [saved custom images](/docs/platform/disk-images/linode-images/). You can create your own StackScripts, use a StackScript created by Linode, or use a Community StackScript.
+Linode's Terraform provider supports [StackScripts](/docs/platform/stackscripts/). StackScripts allow you to automate the deployment of custom software on top of Linode's default Linux images, or on any of your [saved custom images](/docs/products/tools/images/). You can create your own StackScripts, use a StackScript created by Linode, or use a Community StackScript.
 
 In this guide you will learn how to use a Community StackScript to deploy WordPress on a Linode using Terraform.
 
@@ -147,7 +147,7 @@ resource "linode_sshkey" "my_wordpress_linode_ssh_key" {
     `ssh_key = chomp(file("~/.ssh/id_rsa.pub"))` uses Terraform's built-in `file()` function to provide a local file path to the public SSH key's location. The `chomp()` built-in function removes trailing new lines from the SSH key.
 
     {{< note >}}
-If you do not already have SSH keys, follow the steps in the *Create an Authentication Key-pair* section of the [Securing Your Server Guide](/docs/security/securing-your-server/#create-an-authentication-key-pair).
+If you do not already have SSH keys, follow the steps in the *Create an Authentication Key-pair* section of the [Securing Your Server Guide](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair).
 {{< /note >}}
 
 1.  The `random_string` resource can be used to create a random string of 32 characters. The `linode_instance` resource will use it to create a root user password:

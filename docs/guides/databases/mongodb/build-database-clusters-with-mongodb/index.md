@@ -3,7 +3,7 @@ slug: build-database-clusters-with-mongodb
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configure MongoDB for use in clustered environments.'
+description: 'This guide provides you with instructions for installing, configuring, and scaling the MongoDB database for use in clustered environments on the Linux OS.'
 keywords: ["mongodb", "nosql", "clusters", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/clusters/','/databases/mongodb/build-database-clusters-with-mongodb/']
@@ -31,15 +31,11 @@ The commands and filepaths in this guide are based on those used in Ubuntu 16.04
 
 ## Before You Begin
 
-1.  To follow along with this guide, you will need at least six Linodes. Their functions will be explained in the next section. Follow our guides to [install MongoDB](/docs/databases/mongodb/) on each Linode you want to use in your cluster.
+1.  If you have not already done so, create a Linode account and *at least 6* Compute Instances. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting the hostname and timezone on each Linode. We recommend choosing hostnames that correspond with each Linode's role in the cluster, explained in the next section.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. We recommend choosing hostnames that correspond with each Linode's role in the cluster, explained in the next section.
 
-3.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services for each Linode.
-
-4.  Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  Follow our guides to [install MongoDB](/docs/databases/mongodb/) on each Linode you want to use in your cluster.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -513,4 +509,4 @@ This section is optional. To ensure your data is being distributed evenly in the
 
 Before using your cluster in a production environment, it's important to configure a firewall to limit ports 27017 and 27019 to only accept traffic between hosts within your cluster. Additional firewall configuration will likely be needed depending on the other services you're running. For more information, consult our [firewall guides](/docs/security/firewalls/).
 
-You may also want to create a master disk image consisting of a full MongoDB installation and whatever configuration settings your application requires. By doing so, you can use the Linode Manager to dynamically scale your cluster as your data storage needs grow. You may also do this from the [Linode CLI](/docs/platform/api/linode-cli/) if you'd like to automate the process. For more information, see our guide on [Linode images](/docs/platform/disk-images/linode-images/).
+You may also want to create a master disk image consisting of a full MongoDB installation and whatever configuration settings your application requires. By doing so, you can use the Linode Manager to dynamically scale your cluster as your data storage needs grow. You may also do this from the [Linode CLI](/docs/platform/api/linode-cli/) if you'd like to automate the process. For more information, see our guide on [Linode Images](/docs/products/tools/images/).

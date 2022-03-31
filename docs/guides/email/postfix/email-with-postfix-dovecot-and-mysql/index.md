@@ -34,7 +34,7 @@ In this guide, you'll learn how to set up a secure email server with Postfix, Do
 This tutorial assumes that you are familiar with the following:
 
 1. You are familiar with GNU/Command line.
-2. You can edit files using the Nano text editor. Refer to this [Nano Command line](https://www.linode.com/docs/guides/use-nano-text-editor-commands/) guide if you aren’t familiar with it.
+2. You can edit files using the Nano text editor. Refer to [Nano Commands](/docs/guides/use-nano-text-editor-commands/) guide if you aren’t familiar with it.
 3. You understand the basics of MySQL data.
 4. You have a basic understanding of email configurations. If not, you may wish to review the concepts in the [Running a Mail Server](/docs/email/running-a-mail-server/) guide.
 
@@ -60,9 +60,9 @@ Next, we will go through each step and set up our email server with Postfix, Dov
 
 ## Setting Up Your Linode
 
-1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides.
+1.  Set up the Linode as specified in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
-1.  Verify that the iptables [firewall](/docs/security/securing-your-server/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
+1.  Verify that the iptables [firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
 
 ## Configure DNS for Your Email Server
 
@@ -169,7 +169,7 @@ Follow the steps below to create the database and add tables for virtual users, 
 
         FLUSH PRIVILEGES;
 
-1.  Switch to the new `mailsever` database:
+1.  Switch to the new `mailserver` database:
 
         USE mailserver;
 
@@ -868,7 +868,7 @@ smtp      inet  n       -       -       -       -       smtpd
 ...
 
 spamassassin unix -     n       n       -       -       pipe
-user=spamd argv=/usr/bin/spamc -f -e
+  user=spamd argv=/usr/bin/spamc -f -e
 /usr/sbin/sendmail -oi -f ${sender} ${recipient}
 {{< /file >}}
 

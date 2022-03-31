@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.109.0
+  version: 4.119.0
 
   title: Linode API
   description: |
@@ -82,9 +82,9 @@ info:
     | 2.  Your application then redirects the user to Linode's [login server](https://login.linode.com) with the client application's `client_id` and requested OAuth `scope`, which should appear in the URL of the login page. | 2.  Your application then redirects the user to Linode's [login server](https://login.linode.com) with the client application's `client_id` and requested OAuth `scope`, which should appear in the URL of the login page. |
     | 3.  The user logs into the login server with their username and password. | 3.  The user logs into the login server with their username and password. |
     | 4.  The login server redirects the user to the specificed redirect URL with a temporary authorization `code` (exchange code) in the URL. | 4.  The login server redirects the user back to your application with an OAuth `access_token` embedded in the redirect URL's hash. This is temporary and expires in two hours. No `refresh_token` is issued. Therefore, once the `access_token` expires, a new one will need to be issued by having the user log in again. |
-    | 5.  The application issues a POST request (*see below*) to the login server with the exchange code, `client_id`, and the client application's `client_secret`. | |
+    | 5.  The application issues a POST request (*see additional details below*) to the login server with the exchange code, `client_id`, and the client application's `client_secret`. | |
     | 6.  The login server responds to the client application with a new OAuth `access_token` and `refresh_token`. The `access_token` is set to expire in two hours. | |
-    | 7.  The `refresh_token` can be used by contacting the login server with the `client_id`, `client_secret`, `grant_type`, and `refresh_token` to get a new OAuth `access_token` and `refresh_token`. The new `access_token` is good for another two hours, and the new `refresh_token`, can be used to extend the session again by this same method. | |
+    | 7.  The `refresh_token` can be used by contacting the login server with the `client_id`, `client_secret`, `grant_type`, and `refresh_token` to get a new OAuth `access_token` and `refresh_token`. The new `access_token` is good for another two hours, and the new `refresh_token` can be used to extend the session again by this same method (*see additional details below*). | |
 
     #### OAuth Private Workflow - Additional Details
 
@@ -103,7 +103,6 @@ info:
 
     | PARAMETER | DESCRIPTION |
     |-----------|-------------|
-    | grant_type | The grant type you're using for renewal.  Currently only the string "refresh_token" is accepted. |
     | client_id | Your app's client ID. |
     | client_secret | Your app's client secret. |
     | code | The code you just received from the redirect. |
@@ -113,18 +112,30 @@ info:
     ```json
     {
       "scope": "linodes:read_write",
-      "access_token": "03d084436a6c91fbafd5c4b20c82e5056a2e9ce1635920c30dc8d81dc7a6665c"
+      "access_token": "03d084436a6c91fbafd5c4b20c82e5056a2e9ce1635920c30dc8d81dc7a6665c",
+      "refresh_token": "f2ec9712e616fdb5a2a21aa0e88cfadea7502ebc62cf5bd758dbcd65e1803bad",
       "token_type": "bearer",
-      "expires_in": 7200,
+      "expires_in": 7200
     }
     ```
 
-    Included in the reponse is an `access_token`. With this token, you can proceed to make
+    Included in the response is an `access_token`. With this token, you can proceed to make
     authenticated HTTP requests to the API by adding this header to each request:
 
     ```
     Authorization: Bearer 03d084436a6c91fbafd5c4b20c82e5056a2e9ce1635920c30dc8d81dc7a6665c
     ```
+
+    This `access_token` is set to expire in two hours. To refresh access prior to expiration, make another request to the same URL with the following parameters in the POST body:
+
+    | PARAMETER | DESCRIPTION |
+    |-----------|-------------|
+    | grant_type | The grant type you're using. Use "refresh_token" when refreshing access. |
+    | client_id | Your app's client ID. |
+    | client_secret | Your app's client secret. |
+    | refresh_token | The `refresh_token` received from the previous response. |
+
+    You'll get another response with an updated `access_token` and `refresh_token`, which can then be used to refresh access again.
 
     #### OAuth Reference
 
@@ -156,6 +167,7 @@ info:
     | 200 OK  | The request was successful. |
     | 202 Accepted | The request was successful, but processing has not been completed. The response body includes a "warnings" array containing the details of incomplete processes. |
     | 204 No Content | The server successfully fulfilled the request and there is no additional content to send. |
+    | 299 Deprecated | The request was successful, but involved a deprecated endpoint. The response body includes a "warnings" array containing warning messages. |
     | 400 Bad Request | You submitted an invalid request (missing parameters, etc.). |
     | 401 Unauthorized | You failed to authenticate for this resource. |
     | 403 Forbidden | You are authenticated, but don't have permission to do this. |
@@ -327,7 +339,7 @@ info:
     ## Rate Limiting
 
     With the Linode API, you can make up to 1,600 general API requests every two minutes per user as
-    determined by IP adddress or by OAuth token. Additionally, there are endpoint specfic limits defined below.
+    determined by IP address or by OAuth token. Additionally, there are endpoint specific limits defined below.
 
     **Note:** There may be rate limiting applied at other levels outside of the API, for example, at the load balancer.
 
@@ -504,8 +516,7 @@ paths:
                   survey_link:
                     type: string
                     description: A link to Linode's exit survey.
-                example: {'survey_link':
-                'https://alinktothesurvey.com'}
+                example: {'survey_link': https://alinktothesurvey.com'}
         '409':
           description: Could not charge the credit card on file
           content:
@@ -601,6 +612,7 @@ paths:
     get:
       deprecated: true
       x-linode-grant: unrestricted only
+      x-linode-cli-skip: true
       parameters:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
@@ -639,6 +651,7 @@ paths:
     post:
       deprecated: true
       x-linode-grant: unrestricted only
+      x-linode-cli-skip: true
       tags:
       - Account
       summary: Entity Transfer Create
@@ -696,6 +709,7 @@ paths:
     get:
       deprecated: true
       x-linode-grant: unrestricted only
+      x-linode-cli-skip: true
       tags:
       - Account
       summary: Entity Transfer View
@@ -724,6 +738,7 @@ paths:
     delete:
       deprecated: true
       x-linode-grant: unrestricted only
+      x-linode-cli-skip: true
       tags:
       - Account
       summary: Entity Transfer Cancel
@@ -762,6 +777,7 @@ paths:
     post:
       deprecated: true
       x-linode-grant: unrestricted only
+      x-linode-cli-skip: true
       tags:
       - Account
       summary: Entity Transfer Accept
@@ -1715,7 +1731,7 @@ paths:
                   description: |
                     The type of Payment Method.
 
-                    Alternative Payment Methods including Google Pay can be added using Linode Cloud Manager. See our
+                    Alternative Payment Methods including Google Pay and PayPal can be added using Linode Cloud Manager. See our
                     guide on [Managing Billing in the Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/)
                     for details and instructions.
                   example: 'credit_card'
@@ -1957,7 +1973,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Payment'
         '202':
-          $ref: '#/components/responses/WarningResponse'
+          $ref: '#/components/responses/AcceptedResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -2020,15 +2036,21 @@ paths:
     x-linode-cli-command: account
     post:
       x-linode-grant: read_only
+      deprecated: true
+      x-linode-cli-skip: true
       tags:
       - Account
       summary: PayPal Payment Stage
-      description: >
+      description: |
         This begins the process of submitting a Payment via PayPal. After calling
         this endpoint, you must take the resulting `payment_id` along with
         the `payer_id` from your PayPal account and
         [POST /account/payments/paypal-execute](/docs/api/account/#stagedapproved-paypal-payment-execute)
         to complete the Payment.
+
+        **Note**: This endpoint is deprecated and may be removed in a future release. PayPal can now be
+        designated as a Payment Method for automated payments using
+        [Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/#adding-a-new-payment-method).
       operationId: createPayPalPayment
       x-linode-cli-action: paypal-start
       security:
@@ -2063,6 +2085,8 @@ paths:
                         The checkout token generated for this Payment.
                       example: EC-1A2B3C4D5E6F7G8H9
                       readOnly: true
+        '299':
+          $ref: '#/components/responses/DeprecatedResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -2086,13 +2110,19 @@ paths:
     x-linode-cli-command: account
     post:
       x-linode-grant: read_write
+      deprecated: true
+      x-linode-cli-skip: true
       tags:
       - Account
       summary: Staged/Approved PayPal Payment Execute
-      description: >
+      description: |
         Given a PaymentID and PayerID - as generated by PayPal during the
         transaction authorization process - this endpoint executes the Payment
         to capture the funds and credit your Linode Account.
+
+        **Note**: This endpoint is deprecated and may be removed in a future release. PayPal can now be
+        designated as a Payment Method for automated or manual payments using
+        [Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/#adding-a-new-payment-method).
       operationId: executePayPalPayment
       x-linode-cli-action: paypal-execute
       security:
@@ -2115,7 +2145,9 @@ paths:
              schema:
                type: object
         '202':
-          $ref: '#/components/responses/WarningResponse'
+          $ref: '#/components/responses/AcceptedResponse'
+        '299':
+          $ref: '#/components/responses/DeprecatedResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -3030,6 +3062,905 @@ paths:
                     ]
                 }' \
                 https://api.linode.com/v4/account/users/example_user/grants
+  /databases/engines:
+    x-linode-cli-command: databases
+    get:
+      tags:
+      - Databases
+      summary: Managed Database Engines List
+      operationId: getDatabasesEngines
+      servers:
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: engines
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Display all available Managed Database engine types and versions. Engine IDs are used when creating new Managed Databases.
+
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
+        When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
+      responses:
+        '200':
+          description: Returns a paginated list of all available Managed Database engines and versions.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/DatabaseEngine'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4beta/databases/engines/
+      - lang: CLI
+        source: >
+          linode-cli databases engines
+  /databases/engines/{engineId}:
+    parameters:
+      - name: engineId
+        in: path
+        description: The ID of the Managed Database engine.
+        required: true
+        schema:
+          type: string
+    x-linode-cli-command: databases
+    get:
+      tags:
+      - Databases
+      summary: Managed Database Engine View
+      operationId: getDatabasesEngine
+      servers:
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: engine-view
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Display information for a single Managed Database engine type and version.
+
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
+        When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
+      responses:
+        '200':
+          description: Returns information for a single Managed Database engine type and version.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseEngine'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4beta/databases/engines/mysql/5.7.30
+      - lang: CLI
+        source: >
+          linode-cli databases engine-view mysql/5.7.30
+  /databases/instances:
+    x-linode-cli-command: databases
+    get:
+      tags:
+      - Databases
+      summary: Managed Databases List
+      operationId: getDatabasesInstances
+      servers:
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: list
+      x-linode-grant: read_only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Display all accessible Managed Databases on your Account, regardless of engine type.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+
+        For more detailed information on a particular Database instance, make a request to its `instance_uri`.
+
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
+        When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: Returns a paginated list of all accessible Managed Databases on your Account.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Database'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4beta/databases/instances
+      - lang: CLI
+        source: >
+          linode-cli databases list
+  /databases/mysql/instances:
+    x-linode-cli-command: databases
+    get:
+      tags:
+      - Databases
+      summary: Managed MySQL Databases List
+      operationId: getDatabasesMySQLInstances
+      servers:
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mysql-list
+      x-linode-grant: unrestricted only
+      description: |
+        Display all accessible Managed MySQL Databases on your Account.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
+        When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: Returns a paginated list of all accessible Managed MySQL Databases on your Account.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/DatabaseMySQL'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4beta/databases/mysql/instances/
+      - lang: CLI
+        source: >
+          linode-cli databases mysql-list
+    post:
+      tags:
+      - Databases
+      summary: Managed MySQL Database Create
+      operationId: postDatabasesMySQLInstances
+      servers:
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mysql-create
+      x-linode-grant: unrestricted only
+      description: |
+        Provision a Managed MySQL Database.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+
+        New instances can take approximately 15 to 30 minutes to provision.
+
+        The `allow_list` is used to control access to the Managed Database.
+
+        * IP addresses on this list can access the Managed Database. All other sources are blocked.
+        * Entering an empty array (`[]`) blocks all connections (both public and private) to the Managed Database.
+        * **Note**: Updates to the `allow_list` may take a short period of time to complete, making this command inappropriate for rapid successive updates to this property.
+
+        All Managed Databases include automatic, daily backups. Up to seven backups are stored for each Managed Database, providing restore points for each day of the past week.
+
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
+        When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      requestBody:
+        description: Information about the Managed MySQL Database you are creating.
+        x-linode-cli-allowed-defaults:
+        - region
+        - type
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatabaseMySQLRequest'
+      responses:
+        '200':
+          description: A new Managed MySQL Database is provisioning.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseMySQL'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X POST -d '{
+                  "label": "example-db",
+                  "region": "us-east",
+                  "type": "g6-dedicated-2",
+                  "cluster_size": 3,
+                  "engine": "mysql/8.0.26",
+                  "encrypted": false,
+                  "ssl_connection": false,
+                  "replication_type": "semi_synch",
+                  "allow_list": [
+                    "203.0.113.1",
+                    "192.0.1.0/24"
+                  ]
+              }' \
+              https://api.linode.com/v4beta/databases/mysql/instances
+      - lang: CLI
+        source: >
+          linode-cli databases mysql-create \
+            --label example-db1 \
+            --region us-east \
+            --type g6-dedicated-2 \
+            --cluster_size 3 \
+            --engine mysql/8.0.26 \
+            --encrypted false \
+            --ssl_connection false \
+            --replication_type semi_synch \
+            --allow_list 203.0.113.1 \
+            --allow_list 192.0.1.0/24
+  /databases/mysql/instances/{instanceId}:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed MySQL Database.
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+      - Databases
+      summary: Managed MySQL Database View
+      operationId: getDatabasesMySQLInstance
+      servers:
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mysql-view
+      x-linode-grant: unrestricted only
+      description: |
+        Display information for a single, accessible Managed MySQL Database on your Account.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
+        When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: Returns information for a single Managed MySQL Database.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseMySQL'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4beta/databases/mysql/instances/123
+      - lang: CLI
+        source: >
+          linode-cli databases mysql-view 123
+    delete:
+      tags:
+      - Databases
+      summary: Managed MySQL Database Delete
+      operationId: deleteDatabasesMySQLInstance
+      servers:
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mysql-delete
+      x-linode-grant: unrestricted only
+      description: |
+        Remove a Managed MySQL Database from your Account.
+
+        The Database must have an `active` status to perform this command.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
+        When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: Managed MySQL Database successfully deleted.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X DELETE \
+              https://api.linode.com/v4beta/databases/mysql/instances/123
+      - lang: CLI
+        source: >
+          linode-cli databases mysql-delete 123
+    put:
+      tags:
+      - Databases
+      summary: Managed MySQL Database Update
+      operationId: putDatabasesMySQLInstance
+      servers:
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mysql-update
+      x-linode-grant: unrestricted only
+      description: |
+        Update a Managed MySQL Database.
+
+        The Database must have an `active` status to perform this command.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+
+        Updating addresses in the `allow_list` overwrites any existing addresses.
+
+        * IP addresses on this list can access the Managed Database. All other sources are blocked.
+        * Entering an empty array (`[]`) blocks all connections (both public and private) to the Managed Database.
+        * **Note**: Updates to the `allow_list` may take a short period of time to complete, making this command inappropriate for rapid successive updates to this property.
+
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
+        When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      requestBody:
+        description: Updated information for the Managed MySQL Database.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Updated information for the Managed MySQL Database.
+              properties:
+                label:
+                  $ref: '#/components/schemas/DatabaseMySQLRequest/properties/label'
+                allow_list:
+                  $ref: '#/components/schemas/DatabaseMySQLRequest/properties/allow_list'
+      responses:
+        '200':
+          description: Managed Database updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseMySQL'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X PUT -d '{
+                  "label": "example-db",
+                  "allow_list": [
+                    "203.0.113.1",
+                    "192.0.1.0/24"
+                  ]
+              }' \
+              https://api.linode.com/v4beta/databases/mysql/instances/123
+      - lang: CLI
+        source: >
+          linode-cli databases mysql-update 123 \
+            --label example-db \
+            --allow_list 203.0.113.1 \
+            --allow_list 192.0.1.0/24
+  /databases/mysql/instances/{instanceId}/backups:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed MySQL Database.
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+      - Databases
+      summary: Managed MySQL Database Backups List
+      operationId: getDatabasesMySQLInstanceBackups
+      servers:
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mysql-backups-list
+      x-linode-grant: unrestricted only
+      description: |
+        Display all backups for an accessible Managed MySQL Database on your Account.
+
+        The Database must not be provisioning to perform this command.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+
+        At this time, only automatically scheduled backups (type `auto`) are available.
+
+        Database backups are created every 24 hours at 0:00 UTC. Each backup is retained for 7 days.
+
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
+        When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: Returns a paginated list of backups for the Managed MySQL Database.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/DatabaseBackup'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4beta/databases/mysql/instances/123/backups
+      - lang: CLI
+        source: >
+          linode-cli databases mysql-backups-list 123
+  /databases/mysql/instances/{instanceId}/backups/{backupId}:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed MySQL Database.
+        required: true
+        schema:
+          type: integer
+      - name: backupId
+        in: path
+        description: The ID of the Managed MySQL Database backup.
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+      - Databases
+      summary: Managed MySQL Database Backup View
+      operationId: getDatabasesMySQLInstanceBackup
+      servers:
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mysql-backup-view
+      x-linode-grant: unrestricted only
+      description: |
+        Display information for a single backup for an accessible Managed MySQL Database on your Account.
+
+        The Database must not be provisioning to perform this command.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
+        When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: Returns a single backup for the Managed MySQL Database.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseBackup'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4beta/databases/mysql/instances/123/backups/456
+      - lang: CLI
+        source: >
+          linode-cli databases mysql-backup-view 123 456
+  /databases/mysql/instances/{instanceId}/backups/{backupId}/restore:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed MySQL Database.
+        required: true
+        schema:
+          type: integer
+      - name: backupId
+        in: path
+        description: The ID of the Managed MySQL Database backup.
+        required: true
+        schema:
+          type: integer
+    post:
+      tags:
+      - Databases
+      summary: Managed MySQL Database Backup Restore
+      operationId: postDatabasesMySQLInstanceBackupRestore
+      servers:
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mysql-backup-restore
+      x-linode-grant: unrestricted only
+      description: |
+        Restore a backup to a Managed MySQL Database on your Account.
+
+        The Database must have an `active` status to perform this command.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+
+        **Note**: Restoring from a backup will erase all existing data on the database instance and replace it with backup data.
+
+        **Note**: Currently, restoring a backup after resetting Managed Database credentials results in a failed cluster. Please contact Customer Support if this occurs.
+
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
+        When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: Request to restore backup successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X POST https://api.linode.com/v4beta/databases/mysql/instances/123/backups/456/restore
+      - lang: CLI
+        source: >
+          linode-cli databases mysql-backup-restore 123 456
+  /databases/mysql/instances/{instanceId}/credentials:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed MySQL Database.
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+      - Databases
+      summary: Managed MySQL Database Credentials View
+      operationId: getDatabasesMySQLInstanceCredentials
+      servers:
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mysql-creds-view
+      x-linode-grant: unrestricted only
+      description: |
+        Display the the root username and password for a Managed MySQL Database.
+
+        The Database must have an `active` status to perform this command.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
+        When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: Managed Database root username and password.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseCredentials'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4beta/databases/mysql/instances/123/credentials/
+      - lang: CLI
+        source: >
+          linode-cli databases mysql-creds-view 123
+  /databases/mysql/instances/{instanceId}/credentials/reset:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed MySQL Database.
+        required: true
+        schema:
+          type: integer
+    post:
+      tags:
+      - Databases
+      summary: Managed MySQL Database Credentials Reset
+      operationId: postDatabasesMySQLInstanceCredentialsReset
+      servers:
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mysql-creds-reset
+      x-linode-grant: unrestricted only
+      description: |
+        Reset the root password for a Managed MySQL Database.
+
+        The Database must have an `active` status to perform this command.
+
+        A new root password is randomly generated and accessible with the **Managed MySQL Database Credentials View** ([GET /databases/mysql/instances/{instanceId}/credentials](/docs/api/databases/#managed-mysql-database-credentials-view)) command.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+
+        **Note**: Note that it may take several seconds for credentials to reset.
+
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
+        When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: Managed Database instance credentials successfully reset.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X POST https://api.linode.com/v4beta/databases/mysql/instances/123/credentials/reset
+      - lang: CLI
+        source: >
+          linode-cli databases mysql-creds-reset 123
+  /databases/mysql/instances/{instanceId}/ssl:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed MySQL Database.
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+      - Databases
+      summary: Managed MySQL Database SSL Certificate View
+      operationId: getDatabasesMySQLInstanceSSL
+      servers:
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mysql-ssl-cert
+      x-linode-grant: unrestricted only
+      description: |
+        Display the SSL CA certificate for an accessible Managed MySQL Database.
+
+        The Database must have an `active` status to perform this command.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
+        When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
+      security:
+      - personalAccessToken: []
+      - oauth: []
+      responses:
+        '200':
+          description: Returns the SSL CA certificate of a single Managed MySQL Database.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseSSL'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4beta/databases/mysql/instances/123/ssl
+      - lang: CLI
+        source: >
+          linode-cli databases mysql-ssl-cert 123
+  /databases/types:
+    x-linode-cli-command: databases
+    get:
+      tags:
+      - Databases
+      summary: Managed Database Types List
+      operationId: getDatabasesTypes
+      servers:
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: types
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Display all Managed Database node types. The type and number of nodes determine the resources and price of a Managed Database instance.
+
+        Each Managed Database can have one node type. In the case of a high availabilty Database, all nodes are provisioned according to the chosen type.
+
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
+        When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
+      responses:
+        '200':
+          description: Returns a paginated list of all Managed Database types.
+          content:
+            application/json:
+              x-linode-cli-nested-list: cluster_size
+              x-linode-cli-use-schema:
+                type: object
+                properties:
+                  id:
+                    x-linode-cli-display: 1
+                  label:
+                    x-linode-cli-display: 2
+                  cluster_size.quantity:
+                    x-linode-cli-display: 3
+                  cluster_size.price.hourly:
+                    x-linode-cli-display: 4
+                  cluster_size.price.monthly:
+                    x-linode-cli-display: 5
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/DatabaseType'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4beta/databases/types
+      - lang: CLI
+        source: >
+          linode-cli databases types
+  /databases/types/{typeId}:
+    parameters:
+      - name: typeId
+        in: path
+        description: The ID of the Managed Database type.
+        required: true
+        schema:
+          type: string
+    x-linode-cli-command: databases
+    get:
+      tags:
+      - Databases
+      summary: Managed Database Type View
+      operationId: getDatabasesType
+      servers:
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: type-view
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Display the details of a single Managed Database type. The type and number of nodes determine the resources and price of a Managed Database instance.
+
+        **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
+        If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
+        GA (general availability) release.
+        When accessing this endpoint, please make sure to prepend all requests with `/v4beta` instead of `/v4`, and be
+        aware that this endpoint may receive breaking updates in the future. This notice will be removed when this
+        endpoint is out of beta.
+      responses:
+        '200':
+          description: Returns a single Managed Database type.
+          content:
+            application/json:
+              x-linode-cli-nested-list: cluster_size
+              x-linode-cli-use-schema:
+                type: object
+                properties:
+                  id:
+                    x-linode-cli-display: 1
+                  label:
+                    x-linode-cli-display: 2
+                  cluster_size.quantity:
+                    x-linode-cli-display: 3
+                  cluster_size.price.hourly:
+                    x-linode-cli-display: 4
+                  cluster_size.price.monthly:
+                    x-linode-cli-display: 5
+              schema:
+                $ref: '#/components/schemas/DatabaseType'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4beta/databases/types/g6-nanode-1
+      - lang: CLI
+        source: >
+          linode-cli databases type-view g6-nanode-1
   /domains:
     x-linode-cli-command: domains
     get:
@@ -3328,6 +4259,7 @@ paths:
         source: >
           linode-cli domains zone-file 123
   /domains/import:
+    x-linode-cli-command: domains
     post:
       x-linode-grant: read_write
       x-linode-cli-command: domains
@@ -4938,6 +5870,8 @@ paths:
                   example: 124
                 label:
                   type: string
+                  minLength: 3
+                  maxLength: 64
                   description: >
                     The label to assign this Linode when cloning to a new Linode.
 
@@ -7474,7 +8408,7 @@ paths:
                 control_plane:
                   type: object
                   description: >
-                    Defines settings for the Kubernetes Control Plane. Allows for the enabling of High Availability (HA) for Control Plane Components. Enabling High Availability for LKE is an **irreversible** change. The High Availability feature is in a **closed beta** and is not currently available to all customers. Please be aware that this feature may receive breaking updates in the future. This notice will be removed when this feature is out of beta.
+                    Defines settings for the Kubernetes Control Plane. Allows for the enabling of High Availability (HA) for Control Plane Components. Enabling High Availability for LKE is an **irreversible** change.
                   properties:
                     high_availability:
                       type: boolean
@@ -7615,10 +8549,18 @@ paths:
                       The Kubernetes version of a cluster can not be downgraded.
                 control_plane:
                     type: object
-                    description: >
+                    description: |
                       Defines settings for the Kubernetes Control Plane. Allows for the enabling of High Availability (HA) for Control Plane Components.
 
-                      Enabling High Availability for LKE is an **irreversible** change. The High Availability feature is in a **closed beta** and is not currently available to all customers. Please be aware that this feature may receive breaking updates in the future. This notice will be removed when this feature is out of beta.
+                      Enabling High Availability for LKE is an **irreversible** change.
+
+                      When upgrading pre-existing LKE clusters to use the HA Control Plane, the following changes will additionally occur:
+
+                      - All nodes will be deleted and new nodes will be created to replace them.
+
+                      - Any local storage (such as `hostPath` volumes) will be erased.
+
+                      - The upgrade process may take several minutes to complete, as nodes will be replaced on a rolling basis.
                     properties:
                       high_availability:
                         type: boolean
@@ -8267,6 +9209,55 @@ paths:
       - lang: CLI
         source: >
           linode-cli lke api-endpoints-list 12345
+  /lke/clusters/{clusterId}/dashboard:
+    parameters:
+    - name: clusterId
+      in: path
+      description: ID of the Kubernetes cluster to look up.
+      required: true
+      schema:
+        type: integer
+    x-linode-cli-command: lke
+    get:
+      operationId: getLKEClusterDashboard
+      x-linode-cli-action: cluster-dashboard-url
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - lke:read_only
+      tags:
+      - Linode Kubernetes Engine (LKE)
+      summary: Kubernetes Cluster Dashboard URL View
+      description: |
+        Get a [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) access URL for this Cluster, which enables performance of administrative tasks through a web interface.
+
+        Dashboards are installed for Clusters by default.
+
+        To access the Cluster Dashboard login prompt, enter the URL in a web browser. Select either **Token** or **Kubeconfig** authentication, then select **Sign in**.
+
+        For additional guidance on using the Cluster Dashboard, see the [Navigating the Cluster Dashboard](/docs/guides/using-the-kubernetes-dashboard-on-lke/#navigating-the-cluster-dashboard) section of our guide on [Using the Kubernetes Dashboard on LKE](/docs/guides/using-the-kubernetes-dashboard-on-lke/).
+      responses:
+        '200':
+          description: Returns a Kubernetes Cluster Dashboard URL.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    example: https://example.dashboard.linodelke.net
+                    description: The Cluster Dashboard access URL.
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+                https://api.linode.com/v4/lke/clusters/12345/dashboard
+      - lang: CLI
+        source:
+          linode-cli lke cluster-dashboard-url 12345
   /lke/clusters/{clusterId}/kubeconfig:
     parameters:
     - name: clusterId
@@ -10289,6 +11280,92 @@ paths:
             --region us-east \
             --assignments.address 2001:db8:3c4d:15::/64 \
             --assignments.linode_id 123
+  /networking/ips/share:
+    x-linode-cli-command: networking
+    post:
+      servers:
+      - url: https://api.linode.com/v4beta
+      - url: https://api.linode.com/v4
+      x-linode-grant: read_write
+      tags:
+      - Networking
+      summary: IP Addresses Share
+      description: |
+        **This command is currently disabled. Please use IPv4 Sharing Configure ([POST /networking/ipv4/share](/docs/api/networking/#ipv4-sharing-configure))**
+
+        Configure shared IPs.
+
+        IP sharing allows IP address reassignment (also referred to as IP failover) from one Linode to another if
+        the primary Linode becomes unresponsive. This means that requests to the primary Linode's IP address can be
+        automatically rerouted to secondary Linodes at the configured shared IP addresses.
+
+        IP failover requires configuration of a failover service (such as [Keepalived](/docs/guides/ip-failover-keepalived))
+        within the internal system of the primary Linode.
+
+        **Note**: IPv6 range sharing has limited availability in certain regions. Please contact customer support for
+        assistance in enabling IPv6 range sharing for your Linodes.
+      operationId: shareIPs
+      x-linode-cli-action: ip-share
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - ips:read_write
+        - linodes:read_write
+      requestBody:
+        description: Information about what IPs to share with which Linode.
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+              - linode_id
+              - ips
+              properties:
+                linode_id:
+                  type: integer
+                  description: >
+                    The ID of the primary Linode that the addresses will be shared with.
+                  example: 123
+                ips:
+                  type: array
+                  items:
+                    type: string
+                    format: ip
+                  description: |
+                    A list of secondary Linode IPs to share with the primary Linode.
+                    * Can include both IPv4 addresses and IPv6 ranges (omit /56 and /64 prefix lengths)
+                    * Can include both private and public IPv4 addresses.
+                    * You must have access to all of these addresses and they must be in the same Region as the primary
+                    Linode.
+                    * Enter an empty array to remove all shared IP addresses.
+      responses:
+        '200':
+          description: IP Address sharing successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X POST -d '{
+                "linode_id": 123,
+                "ips": [
+                  "192.0.2.1",
+                  "2001:db8:3c4d:15::"
+                ]
+              }' \
+              https://api.linode.com/v4beta/networking/ips/share
+      - lang: CLI
+        source: >
+          linode-cli networking ip-share \
+            --linode_id 123 \
+            --ips 192.0.2.1 \
+            --ips 2001:db8:3c4d:15::
   /networking/ipv4/assign:
     x-linode-cli-command: networking
     post:
@@ -10389,13 +11466,13 @@ paths:
       x-linode-grant: read_write
       tags:
       - Networking
-      summary: IP Sharing Configure
+      summary: IPv4 Sharing Configure
       description: >
         Configure shared IPs.  A shared IP may be brought up on a Linode other
         than the one it lists in its response.  This can be used to allow one
         Linode to begin serving requests should another become unresponsive.
-      operationId: shareIPs
-      x-linode-cli-action: ip-share
+      operationId: shareIPv4s
+      x-linode-cli-skip: true
       security:
       - personalAccessToken: []
       - oauth:
@@ -10664,12 +11741,42 @@ paths:
           type: string
           format: ipv6
     x-linode-cli-command: networking
+    get:
+      tags:
+      - Networking
+      summary: IPv6 Range View
+      description: |
+        View IPv6 range information.
+      operationId: getIPv6Range
+      x-linode-cli-action: v6-range-view
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - ips:read
+      responses:
+        '200':
+          description: Returns IPv6 range information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IPv6RangeBGP'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" https://api.linode.com/v4/networking/ipv6/ranges/2001:0db8::
+      - lang: CLI
+        source: >
+          linode-cli networking v6-range-view 2001:0db8::
     delete:
       tags:
       - Networking
       summary: IPv6 Range Delete
       description: |
         Removes this IPv6 range from your account and disconnects the range from any assigned Linodes.
+
+        **Note:** Shared IPv6 ranges cannot be deleted at this time. Please contact Customer Support for assistance.
       operationId: deleteIPv6Range
       x-linode-cli-action: v6-range-delete
       security:
@@ -11443,7 +12550,7 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-              https://api.linode.com/v4/networking/vlans/
+              https://api.linode.com/v4beta/networking/vlans/
       - lang: CLI
         source: >
           linode-cli networking vlans-list
@@ -12561,13 +13668,14 @@ paths:
       servers:
       - url: https://api.linode.com/v4
       summary: Object Storage Bucket Remove
-      description: >
-        Removes a single bucket. While buckets containing objects _may_ be
-        deleted by including the `force` option in the request, such operations
-        will fail if the bucket contains too many objects. The recommended
+      description: |
+        Removes a single bucket.
+
+        Bucket objects must be removed prior to removing the bucket. While buckets containing objects _may_ be
+        deleted using the [s3cmd command-line tool](/docs/products/storage/object-storage/guides/s3cmd/#delete-a-bucket), such operations
+        can fail if the bucket contains too many objects. The recommended
         way to empty large buckets is to use the [S3 API to configure lifecycle policies](https://docs.ceph.com/en/latest/radosgw/bucketpolicy/#) that
         remove all objects, then delete the bucket.
-
 
         This endpoint is available for convenience. It is recommended that instead you
         use the more [fully-featured S3 API](https://docs.ceph.com/en/latest/radosgw/s3/bucketops/#delete-bucket) directly.
@@ -13443,14 +14551,9 @@ paths:
       - url: https://api.linode.com/v4
       summary: Object Storage Cancel
       description: |
-        Cancel Object Storage on an Account. All buckets on the Account must be empty
-        before Object Storage can be cancelled:
+        Cancel Object Storage on an Account.
 
-        - To delete a smaller number of objects, review the instructions in our
-        [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/)
-        guide.
-        - To delete large amounts of objects, consult our guide on
-        [Lifecycle Policies](/docs/platform/object-storage/lifecycle-policies/).
+        **Warning**: Removes all buckets and their contents from your Account. This data is irretrievable once removed.
       security:
       - personalAccessToken: []
       - oauth:
@@ -16017,6 +17120,34 @@ components:
             'volumes:read_only': Allows access to GET your Volumes.
             'volumes:read_write': Allows access to all endpoints related to your Volumes.
   responses:
+    AcceptedResponse:
+      description: |
+        Accepted with warning.
+
+        A warnings array is included with the standard 200 response body.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              warnings:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WarningObject'
+    DeprecatedResponse:
+      description: |
+        Request successful. This endpoint is deprecated and may be removed in a future release.
+
+        A warnings array is included with the standard 200 response body.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              warnings:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WarningObject'
     ErrorResponse:
       description: Error
       content:
@@ -16028,20 +17159,6 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/ErrorObject'
-    WarningResponse:
-      description: |
-        Accepted with warning.
-
-        A warning object is included with the standard 200 response.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              warnings:
-                type: array
-                items:
-                  $ref: '#/components/schemas/WarningObject'
   parameters:
     pageOffset:
       name: page
@@ -16198,9 +17315,7 @@ components:
         country:
           type: string
           description: >
-            The two-letter country code of this Account's billing address.
-          minLength: 2
-          maxLength: 2
+            The two-letter ISO 3166 country code of this Account's billing address.
           example: US
         email:
           type: string
@@ -16228,12 +17343,12 @@ components:
         state:
           type: string
           description: >
-            If billing address is in the United States, this is the State
-            portion of the Account's billing address. If the address is outside
-            the US, this is the Province associated with the Account's billing
+            If billing address is in the United States (US) or Canada (CA), only the two-letter
+            ISO 3166 State or Province code are accepted. If entering a US military address, state abbreviations (AA, AE, AP) should be entered. If the address is outside
+            the US or CA, this is the Province associated with the Account's billing
             address.
           maxLength: 24
-          example: Pennsylvania
+          example: PA
         tax_id:
           type: string
           description: >
@@ -16515,6 +17630,386 @@ components:
           description: >
             CVV (Card Verification Value) of the credit card, typically found on the back of the card.
           example: '123'
+    Database:
+      type: object
+      description: A general Managed Database instance object containing properties that are identical for all database types.
+      properties:
+        id:
+          type: integer
+          description: A unique ID that can be used to identify and reference the Managed Database.
+          example: 123
+          x-linode-cli-display: 1
+          readOnly: true
+        label:
+          type: string
+          maxLength: 32
+          minLength: 3
+          x-linode-filterable: true
+          example: example-db
+          description: A unique, user-defined string referring to the Managed Database.
+          x-linode-cli-display: 2
+        type:
+          type: string
+          description: The Linode Instance type used by the Managed Database for its nodes.
+          example: g6-dedicated-2
+          x-linode-filterable: true
+          x-linode-cli-display: 4
+        engine:
+          type: string
+          description: The Managed Database engine type. Currently, only MySQL is available.
+          example: mysql
+          x-linode-filterable: true
+          x-linode-cli-display: 6
+          readOnly: true
+        version:
+          type: string
+          description: The Managed Database engine version.
+          example: "8.0.26"
+          x-linode-filterable: true
+          x-linode-cli-display: 7
+          readOnly: true
+        region:
+          type: string
+          description: The [Region](/docs/api/regions/) ID for the Managed Database.
+          example: us-east
+          x-linode-filterable: true
+          x-linode-cli-display: 3
+        status:
+          type: string
+          enum:
+          - provisioning
+          - active
+          - suspending
+          - suspended
+          - resuming
+          - restoring
+          - failed
+          - degraded
+          description: The operating status of the Managed Database.
+          example: active
+          x-linode-filterable: true
+          x-linode-cli-display: 100
+          x-linode-cli-color:
+            provisioning: yellow
+            active: green
+            resuming: yellow
+            restoring: yellow
+            failed: red
+            degraded: red
+          readOnly: true
+        encrypted:
+          type: boolean
+          default: false
+          description: Whether the Managed Databases is encrypted. Defaults to `false`.
+          example: false
+        allow_list:
+          type: array
+          example:
+          - "203.0.113.1/32"
+          - "192.0.1.0/24"
+          description: |
+            A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
+
+            By default, this is an empty array (`[]`), which blocks all connections (both public and private) to the Managed Database.
+          items:
+            type: string
+            format: ipv4/prefix_length
+            pattern: '^([0-9]{1,3}\.){3}[0-9]{1,3}(\/([0-9]|[1-2][0-9]|3[0-2]))?$'
+        cluster_size:
+          type: integer
+          enum:
+          - 1
+          - 3
+          example: 3
+          description: |
+            The number of Linode Instance nodes deployed to the Managed Database. Defaults to `1`.
+
+            Choosing 3 nodes creates a high availability cluster consisting of 1 primary node and 2 replica nodes.
+          x-linode-cli-display: 5
+        hosts:
+          type: object
+          readOnly: true
+          description: The primary and secondary hosts for the Managed Database. These are assigned after provisioning is complete.
+          properties:
+            primary:
+              type: string
+              description: The primary host for the Managed Database.
+              example: lin-123-456-mysql-mysql-primary.servers.linodedb.net
+              nullable: true
+            secondary:
+              type: string
+              description: |
+                The secondary/private network host for the Managed Database.
+
+                A private network host and a private IP can only be used to access a Database Cluster from Linodes in the same data center and will not incur transfer costs.
+
+                **Note**: The secondary hostname is publicly viewable and accessible.
+              example: lin-123-456-mysql-primary-private.servers.linodedb.net
+              nullable: true
+        created:
+          type: string
+          format: date-time
+          description: When this Managed Database was created.
+          example: '2022-01-01T00:01:01'
+          readOnly: true
+        updated:
+          type: string
+          format: date-time
+          description: When this Managed Database was last updated.
+          example: '2022-01-01T00:01:01'
+          readOnly: true
+        instance_uri:
+          type: string
+          example: "/v4/databases/mysql/instances/123"
+          description: |
+            Append this to `https://api.linode.com` to run commands for the Managed Database.
+          readOnly: true
+    DatabaseBackup:
+      type: object
+      description: A database backup object.
+      properties:
+        id:
+          type: integer
+          description: The ID of the database backup object.
+          example: 123
+          x-linode-cli-display: 1
+        type:
+          type: string
+          enum:
+          - snapshot
+          - auto
+          description: The type of database backup, determined by how the backup was created.
+          example: auto
+          x-linode-filterable: true
+          x-linode-cli-display: 3
+        label:
+          type: string
+          description: The database backup's label, for display purposes only.
+          example: Scheduled - 02/04/22 11:11 UTC-XcCRmI
+          x-linode-cli-display: 2
+        created:
+          type: string
+          format: datetime
+          example: '2022-01-01T00:01:01'
+          description: A time value given in a combined date and time format that represents when the database backup was created.
+          x-linode-filterable: true
+          x-linode-cli-display: 4
+    DatabaseCredentials:
+      type: object
+      description: Managed Database object for database credentials.
+      properties:
+        username:
+          type: string
+          readOnly: true
+          description: The root username for the Managed Database instance.
+          example: linroot
+          x-linode-cli-display: 1
+        password:
+          type: string
+          readOnly: true
+          description: The randomly-generated root password for the Managed Database instance.
+          example: s3cur3P@ssw0rd
+          x-linode-cli-display: 2
+    DatabaseEngine:
+      type: object
+      description: Managed Database engine object.
+      properties:
+        id:
+          type: string
+          example: mysql/8.0.26
+          description: The Managed Database engine ID in engine/version format.
+          x-linode-cli-display: 1
+        engine:
+          type: string
+          example: mysql
+          description: The Managed Database engine type.
+          x-linode-filterable: true
+          x-linode-cli-display: 2
+        version:
+          type: string
+          example: "8.0.26"
+          description: The Managed Database engine version.
+          x-linode-filterable: true
+          x-linode-cli-display: 3
+    DatabaseMySQL:
+      type: object
+      description: Managed MySQL Databases object.
+      properties:
+        id:
+          $ref: '#/components/schemas/Database/properties/id'
+          x-linode-cli-display: 1
+        label:
+          $ref: '#/components/schemas/Database/properties/label'
+          x-linode-cli-display: 2
+        type:
+          $ref: '#/components/schemas/Database/properties/type'
+          x-linode-cli-display: 4
+        engine:
+          type: string
+          description: The Managed Database engine type.
+          example: mysql
+          x-linode-filterable: true
+          x-linode-cli-display: 6
+          readOnly: true
+        version:
+          type: string
+          description: The Managed Database engine version.
+          example: "8.0.26"
+          x-linode-filterable: true
+          x-linode-cli-display: 7
+          readOnly: true
+        region:
+          $ref: '#/components/schemas/Database/properties/region'
+          x-linode-cli-display: 3
+        status:
+          $ref: '#/components/schemas/Database/properties/status'
+          x-linode-cli-display: 100
+          x-linode-cli-color:
+            provisioning: yellow
+            active: green
+            resuming: yellow
+            restoring: yellow
+            failed: red
+            degraded: red
+        encrypted:
+          $ref: '#/components/schemas/Database/properties/encrypted'
+        allow_list:
+          $ref: '#/components/schemas/Database/properties/allow_list'
+        cluster_size:
+          $ref: '#/components/schemas/Database/properties/cluster_size'
+          x-linode-cli-display: 5
+        hosts:
+          $ref: '#/components/schemas/Database/properties/hosts'
+        ssl_connection:
+          type: boolean
+          default: false
+          example: true
+          description: |
+            Whether to require SSL credentials to establish a connection to the Managed Database. Defaults to `false`.
+
+            Use the **Managed MySQL Database Credentials View** ([GET /databases/mysql/instances/{instanceId}/credentials](/docs/api/databases/#managed-mysql-database-credentials-view)) command for access information.
+        replication_type:
+          type: string
+          enum:
+          - none
+          - asynch
+          - semi_synch
+          example: semi_synch
+          description: |
+            The replication method used for the Managed Database.
+
+            Defaults to `none` for a single cluster and `semi_synch` for a high availability cluster.
+
+            Must be `none` for a single node cluster.
+
+            Must be `asynch` or `semi_synch` for a high availability cluster.
+          x-linode-cli-display: 99
+        created:
+          $ref: '#/components/schemas/Database/properties/created'
+        updated:
+          $ref: '#/components/schemas/Database/properties/updated'
+    DatabaseMySQLRequest:
+      type: object
+      description: Managed MySQL Database request object.
+      required:
+        - label
+        - type
+        - engine
+        - region
+      properties:
+        label:
+          $ref: '#/components/schemas/DatabaseMySQL/properties/label'
+        type:
+          $ref: '#/components/schemas/DatabaseMySQL/properties/type'
+        engine:
+          type: string
+          example: mysql/8.0.26
+          description: The Managed Database engine in engine/version format.
+        region:
+          $ref: '#/components/schemas/DatabaseMySQL/properties/region'
+        encrypted:
+          $ref: '#/components/schemas/DatabaseMySQL/properties/encrypted'
+        allow_list:
+          $ref: '#/components/schemas/DatabaseMySQL/properties/allow_list'
+        cluster_size:
+          $ref: '#/components/schemas/DatabaseMySQL/properties/cluster_size'
+        ssl_connection:
+          $ref: '#/components/schemas/DatabaseMySQL/properties/ssl_connection'
+        replication_type:
+          $ref: '#/components/schemas/DatabaseMySQL/properties/replication_type'
+    DatabaseSSL:
+      type: object
+      description: Managed Database SSL object.
+      properties:
+        ca_certificate:
+          type: string
+          format: base64
+          description: The base64-encoded SSL CA certificate for the Managed Database instance.
+          example: LS0tLS1CRUdJ...==
+          x-linode-cli-display: 1
+    DatabaseType:
+      type: object
+      description: Managed Database plan type object.
+      properties:
+        id:
+          type: string
+          description: The ID representing the Managed Database node plan type.
+          readOnly: true
+          example: g6-nanode-1
+          x-linode-cli-display: 1
+        label:
+          type: string
+          description: A human-readable string that describes each plan type. For display purposes only.
+          readOnly: true
+          example: DBaaS MySQL - Nanode 1GB
+          x-linode-cli-display: 2
+        cluster_size:
+          type: array
+          description: A pricing list depending on the number of nodes.
+          items:
+            type: object
+            properties:
+              quantity:
+                type: integer
+                description: The number of nodes.
+                example: 1
+              price:
+                type: object
+                description: Cost in US dollars, broken down into hourly and monthly charges.
+                properties:
+                  hourly:
+                    type: number
+                    description: Cost (in US dollars) per hour.
+                    example: 0.03
+                  monthly:
+                    type: number
+                    description: Cost (in US dollars) per month.
+                    example: 20
+        memory:
+          type: integer
+          description: The amount of RAM allocated to Database created of this plan type. The value is represented in megabytes.
+          example: 1024
+          x-linode-cli-display: 3
+        disk:
+          type: integer
+          description: The amount of disk space set aside for Databases of this plan type. The value is represented in megabytes.
+          example: 25600
+          x-linode-cli-display: 4
+        vcpus:
+          type: integer
+          description: The integer of number CPUs allocated to databases of this plan type.
+          example: 1
+          x-linode-cli-display: 5
+        deprecated:
+          type: boolean
+          description: Whether this Database plan type has been deprecated and is no longer available.
+          example: false
+          x-linode-filterable: true
+          x-linode-cli-display: 6
+        class:
+          type: string
+          description: The compute class category.
+          example: nanode
     Device:
       type: object
       description: >
@@ -16910,7 +18405,8 @@ components:
 
             `NS`: The subdomain, if any, to use with the Domain of the Record.
 
-            `MX`: The mail server subdomain. Must be an empty string (`""`) for a Null MX Record.
+            `MX`: The mail subdomain. For example, `sub` for the address `user@sub.example.com` under the `example.com`
+            Domain. Must be an empty string (`""`) for a Null MX Record.
 
             `CNAME`: The hostname. Must be unique. Required.
 
@@ -16938,8 +18434,8 @@ components:
 
             `MX`: The mail server. Must be a valid domain unless creating a Null MX Record. To create a
             [Null MX Record](https://datatracker.ietf.org/doc/html/rfc7505), first
-            [remove](/docs/api/domains/#domain-record-delete) any additional MX records, then enter an empty string
-            (`""`) for this property. If a Domain has a Null MX record, new MX records cannot be created. Required.
+            [remove](/docs/api/domains/#domain-record-delete) any additional MX records, create an MX record with empty strings
+            (`""`) for the `target` and `name`. If a Domain has a Null MX record, new MX records cannot be created. Required.
 
             `CNAME`: The alias. Must be a valid domain. Required.
 
@@ -18434,6 +19930,48 @@ components:
             The last address in this block of IPv6 addresses.
           example: '2600:3c01::ffff:ffff:ffff:ffff'
           nullable: true
+    IPv6RangeBGP:
+      type: object
+      description: >
+        An object representing an IPv6 range.
+      properties:
+        range:
+          type: string
+          description: >
+            The IPv6 range of addresses in this pool.
+          example: '2600:3c01::'
+          readOnly: true
+          x-linode-cli-display: 1
+        prefix:
+          type: integer
+          description: >
+            The prefix length of the address, denoting how many addresses can be
+            assigned from this range calculated as 2 <sup>128-prefix</sup>.
+          example: 64
+          x-linode-cli-display: 2
+        region:
+          type: string
+          description: >
+            The region for this range of IPv6 addresses.
+          example: us-east
+          readOnly: true
+          x-linode-cli-display: 3
+        is_bgp:
+          type: boolean
+          description: >
+            Whether this IPv6 range is shared.
+          example: false
+          readOnly: true
+        linodes:
+          type: array
+          items:
+            type: integer
+          example:
+          - 123
+          description: >
+            A list of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
+          readOnly: true
+          x-linode-cli-display: 4
     Kernel:
       type: object
       description: Linux kernel object
@@ -18517,7 +20055,7 @@ components:
               * Cannot have two dashes (`--`), underscores (`__`) or periods (`..`) in a row.
           example: linode123
           minLength: 3
-          maxLength: 32
+          maxLength: 64
           pattern: '^[a-zA-Z]((?!--|__|..)[a-zA-Z0-9-_.])+$'
         region:
           type: string
@@ -19373,7 +20911,7 @@ components:
         control_plane:
           type: object
           description: >
-            Defines settings for the Kubernetes Control Plane. Allows for the enabling of High Availability (HA) for Control Plane Components. Enabling High Avaialability for LKE is an **irreversible** change. The High Availability feature is in a **closed beta** and is not currently available to all customers. Please be aware that this feature may receive breaking updates in the future. This notice will be removed when this feature is out of beta.
+            Defines settings for the Kubernetes Control Plane. Allows for the enabling of High Availability (HA) for Control Plane Components. Enabling High Avaialability for LKE is an **irreversible** change.
           properties:
             high_availability:
               type: boolean
@@ -20220,8 +21758,8 @@ components:
         hostname:
           type: string
           description: >
-            This NodeBalancer's hostname, ending with _.nodebalancer.linode.com_
-          example: nb-207-192-68-16.newark.nodebalancer.linode.com
+            This NodeBalancer's hostname, beginning with its IP address and ending with _.ip.linodeusercontent.com_.
+          example: 192.0.2.1.ip.linodeusercontent.com
           readOnly: true
           x-linode-cli-display: 4
         ipv4:
@@ -21158,6 +22696,7 @@ components:
           enum:
             - credit_card
             - google_pay
+            - paypal
           description: The type of Payment Method.
           example: 'credit_card'
           x-linode-cli-display: 2
@@ -21174,28 +22713,71 @@ components:
           description: When the Payment Method was added to the Account.
           example: '2018-01-15T00:01:01'
         data:
-          type: object
-          description: Credit card information.
-          properties:
-            card_type:
-              type: string
-              readOnly: true
-              description: The type of credit card.
-              example: "Discover"
-              x-linode-cli-display: 8
-            last_four:
-              type: string
-              readOnly: true
-              description: The last four digits of the credit card number.
-              example: "1234"
-              x-linode-cli-display: 9
-            expiry:
-              type: string
-              readOnly: true
-              format: MM/YYYY
-              description: The expiration month and year of the credit card.
-              example: 06/2022
-              x-linode-cli-display: 10
+          x-linode-cli-format: json
+          x-linode-cli-display: 4
+          oneOf:
+            - x-linode-ref-name: "Credit Card"
+              $ref: '#/components/schemas/CreditCardData'
+            - x-linode-ref-name: "Google Pay"
+              $ref: '#/components/schemas/GooglePayData'
+            - x-linode-ref-name: "Paypal"
+              $ref: '#/components/schemas/PayPalData'
+          discriminator:
+            propertyName: type
+    CreditCardData:
+      type: object
+      description: Credit card information.
+      properties:
+        card_type:
+          type: string
+          readOnly: true
+          description: The type of credit card.
+          example: "Discover"
+        last_four:
+          type: string
+          readOnly: true
+          description: The last four digits of the credit card number.
+          example: "1234"
+        expiry:
+          type: string
+          readOnly: true
+          format: MM/YYYY
+          description: The expiration month and year of the credit card.
+          example: 06/2022
+    GooglePayData:
+      type: object
+      description: Google Pay information.
+      properties:
+        card_type:
+          type: string
+          readOnly: true
+          description: The type of credit card.
+          example: "Discover"
+        last_four:
+          type: string
+          readOnly: true
+          description: The last four digits of the credit card number.
+          example: "1234"
+        expiry:
+          type: string
+          readOnly: true
+          format: MM/YYYY
+          description: The expiration month and year of the credit card.
+          example: 06/2022
+    PayPalData:
+      type: object
+      description: PayPal information.
+      properties:
+        email:
+          type: string
+          readOnly: true
+          description: The email address associated with your PayPal account.
+          example: "example@linode.com"
+        paypal_id:
+          type: string
+          readOnly: true
+          description: PayPal Merchant ID associated with your PayPal account.
+          example: "ABC1234567890"
     PaymentRequest:
       type: object
       required:
@@ -22591,7 +24173,7 @@ components:
     WarningObject:
       type: object
       description: >
-        An object for describing a single warning for incomplete processing associated with an accepted request.
+        An object for describing a single warning associated with a response.
       properties:
         title:
           type: string
@@ -22606,6 +24188,8 @@ components:
 tags:
   - name: Account
     description: Use the Account endpoints to manage user settings, billing, and payments. You can also initiate and maintain OAuth client application authentication, enable the Linode Managed service, and create new users on your account.
+  - name: Databases
+    description: Managed Databases is Linode's fully-managed, high-performance database service. Use the Managed Databases endpoints to create and manage database clusters.
   - name: Domains
     description: Use the Domains endpoints to create and manage domains and domain records on your account.
   - name: Images

@@ -3,7 +3,7 @@ slug: multicraft-on-debian
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Installation of MultiCraft on a Linode running Debian or Ubuntu'
+description: 'This guide will show you how to install MultiCraft, a free and open-source control panel for Minecraft servers, running on a Linode running Debian.'
 keywords: ["minecraft", "debian", "multicraft"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -160,4 +160,4 @@ eula=true
 {{< /file >}}
 
 
-    You can now successfully start and manage your Minecraft server through Multicraft! For instructions on connecting to your Minecraft server, click [here](/docs/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/#connect-to-your-minecraft-server).
+    You can now successfully start and manage your Minecraft server through Multicraft! For instructions, see [connecting to Minecraft server] (/docs/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian/#connect-to-your-minecraft-server).

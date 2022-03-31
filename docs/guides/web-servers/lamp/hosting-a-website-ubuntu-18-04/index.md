@@ -3,8 +3,8 @@ slug: hosting-a-website-ubuntu-18-04
 author:
   name: Linode
   email: docs@linode.com
-description: 'Learn how to host a website on Ubuntu 18.04. This guide walks you through the installation of the Apache web server, configuration, and hosting of a website on Ubuntu.'
-og_description: 'Learn how to host a website on Ubuntu 18.04. This guide walks you through the installation of the Apache web server, configuration, and hosting of a website on Ubuntu.'
+description: 'In this guide, you will learn how to set up a LAMP (Linux, Apache, MySQL, PHP) stack and then configure a hosted website using Ubuntu 18.04.'
+og_description: 'In this guide, you will learn how to set up a LAMP (Linux, Apache, MySQL, PHP) stack and then configure a hosted website using Ubuntu 18.04.'
 keywords: ["linode guide", "hosting a website", "website", "linode quickstart guide"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -133,7 +133,7 @@ Apache (v6)                	ALLOW       	Anywhere (v6)
 Now that Apache is optimized for performance, it's time to starting hosting one or more websites. There are several possible methods of doing this. In this section, you use *name-based virtual hosts* to host websites in your home directory.
 
 {{< note >}}
-You should *not* be logged in as `root` while executing these commands. To learn how to create a new user account and log in as that user, see [Add a Limited User Account](/docs/security/securing-your-server/#add-a-limited-user-account).
+You should *not* be logged in as `root` while executing these commands. To learn how to create a new user account and log in as that user, see [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
 {{< /note >}}
 
 1.  Disable the default Apache virtual host:

@@ -64,7 +64,7 @@ There are two considerations when creating a new Linode: which data center the L
 
 Determine the Linux distribution your current GCP instance uses and deploy that to your new Linode. If your current deployment uses an older version of a Linux distribution, deploy the newest version available for your new Linode to ensure the latest security enhancements and software availability.
 
-For further details on deploying your new Linux image, follow the [Getting Started with Linode](/docs/getting-started/) guide. It is also recommended that you follow the [How to Secure Your Server](/docs/security/securing-your-server/) guide once you have deployed your new image.
+For further details on deploying your new Linux image, follow the [Getting Started with Linode](/docs/getting-started/) guide. It is also recommended that you follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide once you have deployed your new image.
 
 ### Install Software on your Linode
 
@@ -88,7 +88,7 @@ If your data is stored in a database, you will likely need to perform a *databas
 
 -  [Use mysqldump to Back Up MySQL or MariaDB](/docs/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb/)
 -  [Create Physical Backups of your MariaDB or MySQL Databases](/docs/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/)
--  [How to Back Up Your PostgreSQL Database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/)
+-  Use [postgres dump database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/)
 
 ### Use rsync to Transfer Your GCP Data to Your Linode
 
@@ -373,7 +373,7 @@ You will first create a new Linode to import your GCP image to and then, boot th
 
 1. Access the Linode create page by clicking **Create** at the top of the screen and selecting **Linode** from the dropdown menu.
 
-1. Create a Linode by making the desired selections on the Linode create page. For more detailed steps, see the [Create a Linode](/docs/getting-started/#create-a-linode) section in our [Getting Started](/docs/getting-started/) guide.
+1. Create a Linode by making the desired selections on the Linode create page. For more detailed steps, see the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide.
 
     {{< note >}}
 When selecting your Linode's plan, if you want to have access to advanced features like resizing your Linode and our [Backup Service](/docs/platform/disk-images/linode-backup-service/), choose one that will be large enough to hold twice the size of the entire expanded [disk image](#inspect-your-gcp-instances-disks) that you created from your GCP instance (not just the size of the compressed tar file). This is needed so that later you can  move your installation over to an ext4 formatted disk. Once the move to an ext4 formatted disk is complete, you can delete the raw disk and [resize to a smaller plan](/docs/platform/disk-images/resizing-a-linode/).

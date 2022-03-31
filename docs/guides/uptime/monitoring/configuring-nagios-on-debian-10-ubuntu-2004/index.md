@@ -2,7 +2,7 @@
 slug: monitor-and-configure-nagios-alerts-on-debian-10-ubuntu-2004
 author:
   name: Nathaniel Stickman
-description: 'Nagios is a popular server monitoring tool. In this guide, you learn how to monitor and configure email alerts and IRC status updates for Nagios on Ubuntu 20.04 and Debian 10.'
+description: 'This guide shows how to you can install the server monitoring app Nagios and configure email alerts and IRC status updates on Ubuntu 20.04 and Debian 10.'
 og_description: 'Nagios is a popular server monitoring tool. In this guide, you learn how to monitor and configure email alerts and IRC status updates for Nagios on Ubuntu 20.04 and Debian 10.'
 keywords: ['nagios monitoring']
 tags: ['monitoring', 'ubuntu', 'debian']
@@ -28,15 +28,11 @@ However, you can get even more out of Nagios by setting it up to deliver alerts 
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our article on [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Install and configure Nagios. Follow the steps in the [Install Nagios on Debian 10 and Ubuntu 20.04](/docs/guides/install-nagios-on-debian-10-and-ubuntu-2004/) guide. Alternatively, the official [Nagios Installation Guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html) provides steps for installing Nagios from source code on a wide range of Linux distributions.
-
-1. Update your system:
-
-        sudo apt update && sudo apt upgrade
 
 1. Replace `example.com` throughout this guide with your machine's domain name, and replace `fqdn.example.com` with your machine's fully qualified domain name (FQDN).
 

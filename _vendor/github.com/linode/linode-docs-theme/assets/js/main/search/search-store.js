@@ -1,6 +1,6 @@
 import { newQuery, QueryHandler } from './query';
-import { LRUMap, toDateString } from '../helpers';
-import { newCreateHref } from '../navigation/index';
+import { getCurrentLang, LRUMap, toDateString } from '../helpers';
+import { newCreateHref, addLangToHref } from '../navigation/index';
 import {
 	newRequestCallback,
 	newRequestCallbackFactories,
@@ -42,11 +42,13 @@ export function newSearchStore(searchConfig, Alpine) {
 		// The blank (needed for the explorer and section metadata) and the main search result.
 		results: results,
 
-		updateLocationWithQuery(state = null) {
+		updateLocationWithQuery() {
 			let href = window.location.pathname + window.location.hash;
-			if (this.query.isFiltered() || this.query.p > 0) {
-				href += '?' + queryHandler.queryToQueryString(this.query);
+			let search = queryHandler.queryAndLocationToQueryString(this.query);
+			if (search) {
+				href += '?' + search;
 			}
+
 			// See https://github.com/hotwired/turbo/issues/163#issuecomment-933691878
 			history.replaceState({ turbo: {} }, null, href);
 		},
@@ -230,7 +232,7 @@ export function newSearchStore(searchConfig, Alpine) {
 
 		if (query) {
 			hitsPerPage = sectionConfig.hits_per_page || searchConfig.hits_per_page || 20;
-			q = encodeURIComponent(query.q);
+			q = encodeURIComponent(query.lndq);
 			facetFilters = query.toFacetFilters();
 			attributesToHighlight = [ 'title', 'excerpt', ...filteringFacetNames ];
 			page = query.p;
@@ -329,6 +331,8 @@ const normalizeResult = function(self, result) {
 		return sections;
 	};
 
+	let lang = getCurrentLang();
+
 	result.hits.forEach((hit) => {
 		hit.sectionTitle = hit.section;
 		if (hit.section) {
@@ -350,6 +354,10 @@ const normalizeResult = function(self, result) {
 
 		if (hit.href) {
 			hit.isExternalLink = hit.href.startsWith('http');
+		}
+
+		if (lang && lang !== 'en' && hit.href) {
+			hit.href = addLangToHref(hit.href, lang);
 		}
 
 		hit.firstPublishedDateString = '';

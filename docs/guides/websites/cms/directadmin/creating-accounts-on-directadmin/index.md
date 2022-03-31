@@ -3,7 +3,7 @@ slug: creating-accounts-on-directadmin
 author:
   name: Chris Ciufo
   email: docs@linode.com
-description: Creating Accounts on DirectAdmin
+description: 'This guide provides you with step-by-step instructions for creating hosting accounts on the DirectAdmin web-based control panel for use by customers or users.'
 keywords: ["directadmin", " reseller", " accounts"]
 tags: ["web server","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

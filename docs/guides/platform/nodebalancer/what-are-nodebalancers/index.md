@@ -3,8 +3,7 @@ slug: what-are-nodebalancers
 author:
   name: Linode
   email: docs@linode.com
-description: 'Linode offers load balancers as a service (LBaaS) called NodeBalancers. NodeBalancers are built for high availability and designed to be maintenance free after initial configuration.'
-og_description: 'Linode offers load balancers as a service (LBaaS) called NodeBalancers. NodeBalancers are built for high availability and designed to be maintenance free after initial configuration.'
+description: 'This guide shows you how to use Linode Node Balancers, which are services built for high availability and designed to be maintenance free once deployed.'
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-16
@@ -46,13 +45,5 @@ When using a load balancer, like a NodeBalancer, traffic comes to the site throu
 The optimal solution for a highly available site or application is to have multiple Linodes behind a NodeBalancer. Now when traffic comes into the NodeBalancer it can be routed to any one of the Linodes available.
 
 - [Health checks](/docs/platform/nodebalancer/nodebalancer-reference-guide/#health-checks) are performed to make sure that requests are only routed to healthy Linodes.
-- Backend Linodes can be added or removed to the configuration seamlessly, without end users noticing any downtime.
-- Configuration be added to ensure the same client requests are routed to the same backend Linode, this is called [sticky sessions](/docs/platform/nodebalancer/nodebalancer-reference-guide/#session-stickiness).
-
-## Limitations
-
-- Nodebalancers have a maximum connection limit of 10,000 concurrent connections.
-
-## Next Steps
-
-For more on NodeBalancers see the [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/) guide and the [NodeBalancer Reference](/docs/platform/nodebalancer/nodebalancer-reference-guide/) guide.
+- Backend Linodes can be added or removed seamlessly without end users noticing any downtime.
+- Client requests can be routed to the same backend Linode through [sticky sessions](/docs/platform/nodebalancer/nodebalancer-reference-guide/#session-stickiness).

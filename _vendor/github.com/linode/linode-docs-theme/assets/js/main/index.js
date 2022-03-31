@@ -7,12 +7,12 @@ import { bridgeTurboAndAlpine } from './alpine-turbo-bridge';
 import {
 	alpineRegisterMagicHelpers,
 	alpineRegisterDirectiveSVG,
-	initConsentManager,
 	newDisqus,
 	newDropdownsController
 } from './components/index';
-import { isMobile, isObjectEmpty, walk, leackChecker } from './helpers/index';
+import { isMobile, setIsTranslating, getCurrentLang, leackChecker } from './helpers/index';
 import {
+	addLangToLinks,
 	newBreadcrumbsController,
 	newLanguageSwitcherController,
 	newNavController,
@@ -30,7 +30,6 @@ const searchConfig = getSearchConfig(params);
 
 // Set up and start Alpine.
 (function() {
-	// Used during development.
 
 	// Register AlpineJS plugins.
 	{
@@ -98,7 +97,6 @@ const searchConfig = getSearchConfig(params);
 		this.dataLayer.push(event);
 	};
 
-	let turbolinksLoaded = false;
 	let pushGTag = function(eventName) {
 		let event = {
 			event: eventName
@@ -121,10 +119,14 @@ const searchConfig = getSearchConfig(params);
 		// Hide JS-powered blocks on browsers with JavaScript disabled.
 		document.body.classList.remove('no-js');
 
-		// Init the TrustArc
-		initConsentManager();
+		// Update any static links to the current language.
+		let lang = getCurrentLang();
+		if (lang && lang !== 'en') {
+			addLangToLinks(lang, document.getElementById('linode-menus'));
+			addLangToLinks(lang, document.getElementById('footer'));
+		}
 
-		if (turbolinksLoaded) {
+		if (window.turbolinksLoaded) {
 			// Make sure we only fire one event to GTM.
 			// The navigation events gets handled by turbo:render
 			return;
@@ -137,11 +139,19 @@ const searchConfig = getSearchConfig(params);
 		let languageSwitcherSource = document.importNode(languageSwitcherTemplate.content, true);
 		languageSwitcherTarget.appendChild(languageSwitcherSource);
 
-		turbolinksLoaded = true;
 
+		window.turbolinksLoaded = true;
 		setTimeout(function() {
 			pushGTag('docs_load');
 		}, 2000);
+	});
+
+	document.addEventListener('turbo:before-render', function(event) {
+		let body = event.detail.newBody;
+
+		// This hides the relevant elements for a second if the user has selected a language different from the default one.
+		// This should avoid the static and untranslated content showing.
+		setIsTranslating(body.querySelectorAll('.hide-on-lang-nav'));
 	});
 
 	document.addEventListener('turbo:render', function(event) {
@@ -149,6 +159,7 @@ const searchConfig = getSearchConfig(params);
 			// Turbolinks is displaying a preview
 			return;
 		}
+
 		pushGTag('docs_navigate');
 	});
 

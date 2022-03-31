@@ -3,7 +3,7 @@ slug: getting-started-with-nginx-part-4-tls-deployment-best-practices
 author:
   name: Linode
   email: docs@linode.com
-description: "Best practices to apply when deploying HTTPS websites with NGINX."
+description: "This is step four in our guide to Getting Started with NGINX where you will learn best practices, tips, and tricks, when you are deploying HTTPS websites and NGINX."
 keywords: ["ssl", "tls", "nginx", "https", "certificate", "hsts", "ocsp", "http2"]
 tags: ["web server","http","nginx","security","ssl"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
@@ -242,6 +242,8 @@ http {
     add_header          X-Content-Type-Options nosniff;
     add_header          X-Frame-Options SAMEORIGIN;
     add_header          X-XSS-Protection "1; mode=block";
+    add_header          Referrer-Policy strict-origin-when-cross-origin;
+    add_header          Content-Security-Policy "default-src 'self'; upgrade-insecure-requests;";
 
     ssl_certificate     /root/certs/example.com/example.com.crt;
     ssl_certificate_key /root/certs/example.com/example.com.key;
@@ -279,6 +281,8 @@ server {
          proxy_cache    one;
             proxy_pass  http://localhost:8000;
     }
+
+    add_header          Feature-Policy "encrypted-media 'self'; autoplay 'none'";
 }
 {{< /file >}}
 

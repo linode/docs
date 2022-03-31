@@ -3,8 +3,8 @@ slug: install-couchdb-20-on-ubuntu
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows you how to install CouchDB 2.0 on Ubuntu 20.04. CouchDB is a NoSQL database noteworthy for its scalability, fault tolerance, and inituitive concepts for web and mobile applications.'
-og_description: 'This guide shows you how to install CouchDB 2.0 on Ubuntu 20.04. CouchDB is a NoSQL database noteworthy for its scalability, fault tolerance, and inituitive concepts for web and mobile applications.'
+description: 'This guide will show you how to install the noteworthy NoSQL database utility known for its scalability and fault tolerance, CouchDB 2.0 on Ubuntu 20.04.'
+og_description: 'This guide will show you how to install the noteworthy NoSQL database utility known for its scalability and fault tolerance, CouchDB 2.0 on Ubuntu 20.04.'
 keywords: ['couchdb','nosql','database','deploy on ubuntu 20.04']
 tags: ['couchdb','ubuntu','nosql','apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -30,13 +30,9 @@ This guide shows you how to install CouchDB on Ubuntu 20.04. At the end of this 
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system.
-
-        sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.

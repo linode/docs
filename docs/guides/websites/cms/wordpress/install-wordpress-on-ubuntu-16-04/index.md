@@ -3,7 +3,7 @@ slug: install-wordpress-on-ubuntu-16-04
 author:
   name: Edward Angert
   email: docs@linode.com
-description: 'Install and optimize the WordPress blogging and content management system on your Linode.'
+description: 'This guide will show you how to install and optimize the WordPress blogging and CMS on your Linode from scratch using a LAMP setup on Ubuntu 16.04.'
 keywords: ["install WordPress", "WordPress on Linode", "how to configure WordPress", "Permalink"]
 tags: ["ubuntu","lamp","wordpress","cms","lemp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -38,7 +38,7 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 ## Before You Begin
 
--   This guide assumes you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides, and that your Linode's [hostname is set](/docs/getting-started/#setting-the-hostname).
+-   This guide assumes you have followed the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and that your Linode's [hostname is set](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
 
     To check your hostname run:
 

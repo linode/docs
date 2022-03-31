@@ -106,7 +106,7 @@ If your Linode's disks have been using the entirety of allocatable space availab
 
     ![Boot This Configuration Drop Down Menu](upgrade-centos8-boot-this-config.png "Boot This Configuration Drop Down Menu")
 
-1.  Now you can SSH into your server. Don't forget to [secure your new installation](/docs/security/securing-your-server/).
+1.  Now you can SSH into your server. Don't forget to [secure your new installation](/docs/guides/set-up-and-secure/).
 
 ### Mount the Disk
 

@@ -3,7 +3,7 @@ slug: use-buildbot-for-software-testing-on-ubuntu
 author:
   name: Tyler Langlois
   email: ty@tjll.net
-description: "This tutorial will explain how to install, configure, and use Buildbot as a continuous integration platform, as well as how to write configuration for custom testing builds."
+description: "This shows how to install, configure, and use Buildbot as a continuous integration platform, as well as how to write configuration for custom testing builds."
 og_description: "Deploy self-hosted continuous integration using Buildbot."
 keywords: ["buildbot", "testing", "python", "continuous integration", "ci", "build", "qa"]
 tags: ["automation","nginx"]
@@ -32,15 +32,11 @@ aliases: ['/development/ci/use-buildbot-for-software-testing-on-ubuntu/']
 
 ## Before you Begin
 
-1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for deploying and setting up a Linode running Ubuntu 18.04, including setting the hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-3.  Ensure your system is up to date:
-
-        sudo apt update && sudo apt upgrade
-
-4.  Complete the [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Linode instance hosting Buildbot.
+3.  Complete the [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Linode instance hosting Buildbot.
 
     {{< note >}}
 Replace each instance of `example.com` in this guide with your Buildbot site's domain name.

@@ -3,7 +3,7 @@ slug: how-to-install-drupal-themes-and-modules-using-drush-on-debian-7
 author:
     name: Linode
     email: docs@linode.com
-description: 'Using Drush to install themes, modules, and backup systems'
+description: 'This article gives you step-by-step instructions for using the Drush command line tool to install themes, modules, and backup systems in the popular CMS - Drupal.'
 keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framework", "debian", "drush"]
 aliases: ['/websites/cms/drupal/themes-modules-backups-drupal-drush-on-debian-7/','/websites/cms/themes-modules-backups-drupal-drush-on-debian-7/','/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-debian-7/']
 tags: ["drupal","cms","debian"]
@@ -27,18 +27,13 @@ Linode has another guide for installing Drush and creating a Drupal website, [In
 
 Before installing themes, modules, and a backup system with Drush, make sure that the following prerequisites have been met:
 
-1.  Create a new Linode by following our [Getting Started](/docs/getting-started/) guide.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  Address security concerns with the [Securing Your Server](/docs/securing-your-server) guide.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 3.  Configure a LAMP stack using the [Hosting a Website](/docs/websites/hosting-a-website) guide.
 
 4.  Install Drush and a Drupal website core with the [Installing & Using Drupal Drush on Debian 7](/docs/websites/cms/drush-drupal) guide.
-
-5.  Make sure that your system is up to date, using:
-
-        sudo apt-get update && sudo apt-get upgrade
-
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.

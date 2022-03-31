@@ -3,7 +3,7 @@ slug: install-odoo-10-on-ubuntu-16-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Odoo is an open-source suite of over 5,500 business applications. Odoo allows administrators to install, configure and customize any application to satisfy their needs. This guide covers how to install and configure Odoo using Git source so it will be easy to upgrade and maintain.'
+description: 'This guide shows you how to install and configure Odoo, an open-source suite of over 4,500 business utilities which you can individually install, on Ubuntu 16.04.'
 keywords: ["Odoo", "Odoo ERP", "CMS", "Ubuntu", "CRM", "OpenERP", "Odoo 10", "Ubuntu 16.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -30,15 +30,9 @@ This guide covers how to install and configure Odoo in under an hour using Git s
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/getting-started/) guide.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configuring a Firewall* section in the Securing Your Server Guide--we will configure the firewall for an Odoo production server in the next section.
-
-    This guide will use `sudo` wherever possible.
-
-3.  Update your packages:
-
-        sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configuring a Firewall* section in the Securing Your Server Guide--we will configure the firewall for an Odoo production server in the next section.
 
 ## Configure UFW Firewall for Odoo
 

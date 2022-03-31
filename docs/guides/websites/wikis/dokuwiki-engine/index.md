@@ -3,7 +3,7 @@ slug: dokuwiki-engine
 author:
   name: Linode
   email: docs@linode.com
-description: 'Build a fully featured wiki text with the DokuWiki software.'
+description: 'This guide provides you with step-by-step instructions for installing the DocuWiki software for creating a fully featured Wiki for your organization.'
 keywords: ["wiki", "doku wiki", "php"]
 tags: ["wiki","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,7 +22,7 @@ DokuWiki is a flexible and extensible wiki engine that aims to be easy to manage
 
 ![Build a Fully Featured Wiki with DokuWiki](dokuwiki_title_graphic.png)
 
-Before beginning the installation of DokuWiki, we assume that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before beginning the installation of DokuWiki, we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
 
 ## Install Prerequisites
 

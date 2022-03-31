@@ -3,11 +3,11 @@ slug: host-a-website-with-high-availability
 author:
   name: Phil Zona
   email: docs@linode.com
-description: 'How to configure a highly available web server stack'
+description: 'This article shows you how you to configure a high availability stack using GlusterFS replication on two Linodes for your application or website.'
 keywords: ["high availability", "web server", "failover"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-07-12
-modified: 2018-07-16
+modified: 2022-01-07
 modified_by:
   name: Angel Guarisma
 title: 'Host a Website with High Availability'
@@ -19,9 +19,8 @@ external_resources:
 - '[XtraBackup](https://www.percona.com/doc/percona-xtrabackup/2.4/index.html)'
 aliases: ['/websites/hosting/host-a-website-with-high-availability/','/websites/host-a-website-with-high-availability/']
 tags: ["web server"]
+image: host-a-website-with-high-availability-title-graphic.jpg
 ---
-
-![Host a Website with High Availability](host-a-website-with-high-availability-title-graphic.jpg "Host a Website with High Availability")
 
 When deploying a website or application, one of the most important elements to consider is availability, or the period of time for which your content is accessible to users. High availability is a term used to describe server setups that eliminate single points of failure by offering redundancy, monitoring, and failover. This ensures that even if one component of your web stack goes down, the content will still be accessible.
 
@@ -29,9 +28,9 @@ This guide shows how to host a highly available website with WordPress. However,
 
 ## Before You Begin
 
-1.  This guide uses a total of nine nodes, all Linodes running CentOS 7 with SELinux enabled, and all within the same data center. You can create them all in the beginning, or as you follow along. Either way, familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting the hostname and timezone for each Linode you create.
+1.  Create 9 Compute Instances using the *CentOS 7* distribution, all in the same data center. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1.  You should also be familiar with our [Securing Your Server](/docs/security/securing-your-server/) guide, and follow best security practices as you create your servers. Do not create firewall rules yet, as we'll be handling that step in our guide.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. Do not create firewall rules yet, as we'll be handling that step in our guide.
 
 1.  The Linodes we create in this guide will use the following hostname conventions:
 
@@ -42,10 +41,6 @@ This guide shows how to host a highly available website with WordPress. However,
     You can call your nodes anything you like, but try to keep the naming consistent for organizational purposes. When you see one of the above names, be sure to substitute the hostname you configured for the corresponding node.
 
 1.  To create a private network among your Linodes, you'll need a [private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each.
-
-1.  Remember to update each Linode's package repositories before attempting to install software:
-
-        yum update
 
 {{< note >}}
 Most steps in this guide require root privileges. Be sure you're entering the commands as root, or using `sudo` if you're using a limited user account. If you’re not familiar with the `sudo` command, visit our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -195,8 +190,8 @@ Install Galera and XtraDB on each Linode that will be in the database cluster.
 
 1.  Install the following packages on each database node:
 
-        yum install epel-release
-        yum install https://www.percona.com/redir/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm
+        yum install wget epel-release
+        yum install https://downloads.percona.com/downloads/percona-release/percona-release-0.1-6/redhat/percona-release-0.1-6.noarch.rpm
         yum install Percona-XtraDB-Cluster-57 Percona-XtraDB-Cluster-shared-57
 
     {{< note >}}
@@ -216,9 +211,10 @@ Run the following commands on each database node.
 <service>
   <short>Galera Replication</short>
   <description>Galera Master-Master Replication and State Transfer</description>
+  <port protocol="tcp" port="3306"/>
+  <port protocol="tcp" port="4444"/>
   <port protocol="tcp" port="4567"/>
   <port protocol="tcp" port="4568"/>
-  <port protocol="tcp" port="4444"/>
 </service>
 {{< /file >}}
 

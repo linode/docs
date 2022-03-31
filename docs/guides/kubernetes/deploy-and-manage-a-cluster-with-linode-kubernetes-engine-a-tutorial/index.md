@@ -33,6 +33,7 @@ The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration en
 
 - **etcd Backups**: A snapshot of your cluster's metadata is backed up continuously, so your cluster is automatically restored in the event of a failure.
 - **High Availability**: All of your control plane components are monitored and automatically recover if they fail.
+- **Kubernetes Dashboard** All LKE installations include access to a [Kubernetes Dashboard installation](/docs/guides/using-the-kubernetes-dashboard-on-lke/#accessing-the-cluster-dashboard).
 
 ## In this Guide
 
@@ -247,6 +248,74 @@ Nodes can be recycled by selected the recycle option for an individual node, in 
 ![Cluster Node Recycle](cluster-node-recycle.png "Cluster Node Recycle.")
 
 When selecting any recycle option a pop-up message will appear confirming that the node or nodes will be recycled. Select the `Recycle` option, and your Node or Node Pool will proceed to recycle its nodes. If the **Recycle all Nodes** or **Recycle Nodes** option are selected, then nodes will be upgraded on a rolling basis so that only one node will be down at a time throughout the recycling process.
+
+### Reset Cluster Kubeconfig
+
+In cases where access to a cluster using a current kubeconfig must be revoked, LKE provides the ability to **Reset** a cluster kubeconfig. This will effectively remove the current kubeconfig, and create a new one for cluster administrators to use.
+
+1. To reset the cluster kubeconfig access the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
+
+1. Select the **Reset** button under the **kubeconfig** sub-category.
+
+![Cluster Kubeconfig Reset](reset-kubeconfig.png "Cluster Node Reset.")
+
+1. A confirmation message will appear confirming the Kubeconfig reset. Select the **Reset kubeconfig** button to proceed.
+
+A new kubeconfig will now be created. Once this process is completed, the new kubeconfig can be [Accessed and Downloaded](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-and-download-your-kubeconfig) as usual.
+
+## Enable High Availability
+
+In LKE, enabling HA ([High Availability](/docs/guides/introduction-to-high-availability/)) will create additional replicas of your [control plane components](/docs/guides/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/), adding an additional layer of redundancy to your Kubernetes Cluster and decreasing the chance of any potential downtime. HA is an optional feature recommended for production workloads that must be enabled manually either when creating a new cluster or by editing a pre-existing cluster.
+
+Unlike other LKE configuration options, High Availability is an **optional billable service** that will increase the overall operating cost of your cluster. For more information see our [pricing page](https://www.linode.com/pricing/).
+
+{{< caution >}}
+While upgrading to an HA cluster is always possible, **downgrading your cluster is not currently supported**. Enabling HA is an **irreversible** change for your cluster.
+{{< /caution >}}
+
+### Enabling HA During Cluster Creation
+
+High Availability can be enabled during [cluster creation](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#create-an-lke-cluster) from the **Create a Kubernetes Cluster** page at any time.
+
+1. From the **Create a Kubernetes Cluster** page, navigate to the **Cluster Summary** section.
+
+   ![LKE HA cluster enable](cluster-summary-ha-lke.png "Kubernetes HA upgrade enable.")
+
+1. Check the box next to the **Enable HA Control Plane option**.
+
+1. Create additional configuration options as desired for your configuration. When you are satisfied with the configuration of your cluster, click the **Create Cluster** button in the *Cluster Summary* section.
+
+   ![LKE HA cluster creation](create-cluster-ha.png "Kubernetes HA upgrade on Cluster Creation.")
+
+Your cluster’s detail page will appear on the following page where you will see your Node Pools listed. From this page, you can edit your existing Node Pools, access your Kubeconfig file, and view an overview of your cluster’s resource details.
+
+### Enabling HA on Existing Clusters
+
+High Availability can be added to pre-existing clusters at any given time through the cluster's **Summary Page**.
+
+{{< caution >}}
+Enabling HA on a pre-existing cluster will result in the following changes:
+
+- All nodes will be deleted and new nodes will be created to replace them.
+- Any local storage (such as `hostPath` volumes) will be erased.
+- The upgrade process may take several minutes to complete, as nodes will be replaced on a rolling basis.
+{{< /caution >}}
+
+1. To reach the summary page for the cluster, navigate first to the [Kubernetes section of the Cloud Manager](https://cloud.linode.com/kubernetes/clusters).
+
+1. Select the Cluster by label that you would like to enable HA for. The summary page for the cluster appears.
+
+1. To enable HA, select the **Upgrade to HA** button at the top of the page.
+
+   ![LKE HA cluster upgrade](upgrade-to-ha.png "Kubernetes HA upgrade.")
+
+1. A new window appears, asking you to confirm all of the changes that come with High Availability. Read through the message and select the **Enable HA Control Plane** checkbox to confirm that you agree to the changes. Then click the **Upgrade to HA** button.
+
+   ![LKE HA cluster enable](cluster-ha-enable.png "Kubernetes HA Cluster Enable.")
+
+All clusters that have HA enabled will have an HA Cluster watermark on their summary page.
+
+   ![LKE HA cluster watermark](ha-cluster-watermark.png "LKE HA cluster watermark.")
 
 ## Delete a Cluster
 

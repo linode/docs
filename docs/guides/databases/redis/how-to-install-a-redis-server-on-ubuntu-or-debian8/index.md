@@ -3,7 +3,7 @@ slug: how-to-install-a-redis-server-on-ubuntu-or-debian8
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Deploy Redis on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8. This Tutorial Guides You Through Installation and Best Practices of Redis, an Open-Source, In-Line Memory Data-Structure Store.'
+description: 'This guide will show you how to deploy the high performance Redis data-structure store application on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8.'
 keywords: ["redis", "redis ubuntu 14.04", "redis server", "redis ubuntu 16.04", "debian 8", "redis cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/how-to-install-a-redis-server-on-ubuntu-or-debian8/','/databases/redis/deploy-redis-on-ubuntu-or-debian/']
@@ -38,13 +38,9 @@ Since Redis serves all data from memory, we recommend using a [High Memory Linod
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
-
-3.  Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 4.  Install the `software-properties-common` package:
 

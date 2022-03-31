@@ -8,6 +8,7 @@ keywords: ["users", "permissions", "access control lists", "chmod", "chown", "li
 tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/linux-users-and-groups/','/tools-reference/basics/linux-users-and-groups/','/docs/using-linux/users-and-groups/']
+bundles: ['debian-security', 'centos-security']
 modified: 2021-01-07
 modified_by:
   name: Linode
@@ -193,7 +194,7 @@ For CentOS, the command is as follows:
 In order to provide a user with the `sudo` ability, they need to be added to a `sudo` enabled group, or their username needs to be added to the sudoers file with a set of permissions. This file is sensitive and important as an access and security control, and should not be edited directly with a text editor. If the sudoers file is edited incorrectly it could result in preventing access to the system or other unintended permission changes.
 
 {{< note >}}
-For instructions on adding a user to a default `sudo` enabled group, see our [How to Secure Your Server](/docs/guides/securing-your-server/) guide
+For instructions on adding a user to a default `sudo` enabled group, see our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide
 {{< /note >}}
 
 The `visudo` command should be used to edit the sudoers file. At a command line, log into your system as `root` and enter the command `visudo`.
@@ -396,4 +397,4 @@ In many cases, user permissions are used to provide your system with greater sec
 
 The best practice is to give each user their own login to your system. This protects each user's files from all other users. Furthermore, using specific accounts for users allows more accurate system logging, particularly when combined with tools like `sudo`. We recommend avoiding situations where more than one individual knows the password for a user account for maximum security.
 
-In contrast, groups are useful for allowing multiple independent user accounts to collaborate and share files. If you create groups on a machine for common tasks on a per-task basis (e.g. web editors, contributors, content submitters, support) and add relevant users to the relevant groups, these users can all edit and run the same set of files without sharing these files with the world. Use of the `chown` command with file permissions of 770 and 740 would help accomplish this goal.
+In contrast, groups are useful for allowing multiple independent user accounts to collaborate and share files. If you create groups on a machine for common tasks on a per-task basis (e.g. web editors, contributors, content submitters, support) and add relevant users to the relevant groups, these users can all edit and run the same set of files without sharing these files with the world. Use of the `chmod` command with file permissions of 770 and 740 would help accomplish this goal.

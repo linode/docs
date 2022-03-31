@@ -3,8 +3,8 @@ slug: how-to-deploy-a-new-linode-using-a-stackscript
 author:
   name: Linode
   email: docs@linode.com
-description: 'Linode StackScripts allow you to automate system administration and configuration tasks. You can deploy a new Linode using a StackScript that will perform its scripted tasks during the Linode''s first boot process. This guide will show you the various ways that you can deploy a new Linode using StackScripts and the Linode Cloud Manager.'
-og_description: 'Linode StackScripts allow you to automate system administration and configuration tasks. You can deploy a new Linode using a StackScript that will perform its scripted tasks during the Linode''s first boot process. This guide will show you the various ways that you can deploy a new Linode using StackScripts and the Linode Cloud Manager.'
+description: 'In this guide, you will learn the various methods you can use in conjunction with the Cloud Manager to deploy a new Linode with a StackScript.'
+og_description: 'In this guide, you will learn the various methods you can use in conjunction with the Cloud Manager to deploy a new Linode with a StackScript.'
 keywords: ["stackscripts", "automation", "script", "custom instance", "deployment"]
 tags: ["linode platform","automation","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -184,7 +184,7 @@ When [writing a script to be used in a StackScript](/docs/platform/stackscripts/
 
 ## Next Steps
 
-- After deploying a new Linode using a StackScript you can [connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) and verify that the StackScript has executed as expected. These steps will vary depending on the StackScript that you used when deploying your Linode.
+- After deploying a new Linode using a StackScript you can [connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) and verify that the StackScript has executed as expected. These steps will vary depending on the StackScript that you used when deploying your Linode.
 
     {{< note >}}
 Depending on the contents of your StackScript, it may take a few minutes for the script to finish executing.

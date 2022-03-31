@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy a Cherokee web server on Ubuntu 12.04 LTS (Precise Pangolin).'
+description: 'This guide provides you with step-by-step instructions for deploying a Cherokee, a flexible web server that is easy to administer, on Ubuntu 12.04.'
 keywords: ["cherokee", "web sever", "ubuntu 12.04", "precise pangolin", "cherokee-admin"]
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -28,7 +28,7 @@ Cherokee is a fast, flexible web server for POSIX compliant operating systems su
 
 This tutorial explains how to install and configure the Cherokee web server on Ubuntu 12.04 LTS (Precise Pangolin). You will be performing the installation through the terminal; please make sure you are logged into your Linode as root via SSH.
 
-This document assumes that you already have a working and up-to-date Ubuntu 12.04 system. If you have not followed our [getting started](/docs/getting-started/) guide, we recommend that you do so prior to following these instructions.
+This document assumes that you already have a working and up-to-date Ubuntu 12.04 system. If you have not followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, we recommend that you do so prior to following these instructions.
 
 ## Set the Hostname
 

@@ -3,7 +3,7 @@ slug: troubleshooting-problems-with-postfix-dovecot-and-mysql
 author:
   name: Linode
   email: docs@linode.com
-description: 'Our guide to testing and troubleshooting Postfix, Dovecot, and MySQL'
+description: 'This is a reference guide for testing and troubleshooting a email server running Postfix as it''s MTA, Dovecot as a POP3/IMAP server, and MySQL for database.'
 keywords: ["postfix", "dovecot", "mysql"]
 tags: ["mysql","postfix","email","resolving"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -257,7 +257,7 @@ Read the discussion of Telnet outcomes below, and analyze your results according
 If the test is successful, you should see output similar to the following:
 
     Trying 12.34.56.78...
-    Connected to li468-222.members.linode.com.
+    Connected to 203-0-113-0.ip.linodeusercontent.com.
     Escape character is '^]'.
     220 host.example.com ESMTP Postfix (Ubuntu)
 
@@ -330,7 +330,7 @@ Throughout this section, we will provide links to the appropriate [Postfix](http
 
 ### Setting Up
 
-Read the [Getting Started](/docs/getting-started/) guide. Follow the steps outlined in that section before installing your mail server.
+Read the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. Follow the steps outlined in that section before installing your mail server.
 
 You may also want to log into your server as the root user, so you don't have to type "sudo" for each command. You can log in as root by entering the following command:
 

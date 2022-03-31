@@ -3,14 +3,14 @@ slug: apt-package-manager
 author:
   name: Linode
   email: docs@linode.com
-description: "APT is the default package manager on Debian-based Linux distributions, like Ubuntu. This guide walks you through the core features of APT and common commands for using APT to install, upgrade, and remove packages."
-og_description: "APT is the default package manager on Debian-based Linux distributions, like Ubuntu. This guide walks you through the core features of APT and common commands for using APT to install, upgrade, and remove packages."
+description: "This guide will teach you what APT is and walks you through the core features and common commands for using APT to manage packages on Linux."
+og_description: "This guide will teach you what APT is and walks you through the core features and common commands for using APT to manage packages on Linux."
 keywords: ['apt', 'apt-get','installing','updating','upgrading','uninstalling','removing','package repositories','debian', 'ubuntu']
 tags: ['apt','apt-get','debian','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-15
 image: UsingAPTtoManagePackagesinDebianandUbuntu.jpg
-modified: 2021-07-15
+modified: 2022-01-31
 modified_by:
   name: Linode
 title: "How to Use APT to Manage Packages in Debian and Ubuntu"
@@ -29,9 +29,9 @@ This guide aims to walk you through using APT and its command-line tools to perf
 
 Before running the commands within this guide, you will need:
 
-1. **A system running on Debian or Ubuntu.** Other Linux distributions that employ the APT package manager can also be used. Review the [Getting Started](/docs/getting-started/) guide if you do not yet have a compatible system.
+1. **A system running on Debian or Ubuntu.** Other Linux distributions that employ the APT package manager can also be used. Review the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide if you do not yet have a compatible system.
 
-1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/). Review the [Securing Your Server](/docs/guides/securing-your-server/) guide for assistance on creating and securing a standard user account.
+1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/). Review the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
 
 {{< note >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
@@ -218,4 +218,4 @@ If you wish to replicate the currently installed packages to another system with
 
 1.  Using apt-clone, run the following command to restore the packages. Replace *[name]* with the name used in the previous step (or whatever the file is called). If the file is located within a different directly than your current directory, adjust the command to include the path.
 
-        sudo apt-get restore [name]p.apt-clone.tar.gz
+        sudo apt-clone restore [name].apt-clone.tar.gz
