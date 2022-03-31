@@ -7,6 +7,7 @@ description: "This guide discusses how to enable failover on a Linode Compute In
 keywords: ['IP failover','IP sharing','elastic IP']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-23
+modified: 2022-03-31
 modified_by:
   name: Linode
 title: "Configuring Failover on a Compute Instance"
@@ -90,21 +91,6 @@ Adjust the network configuration file on *each* Compute Instance, adding the sha
 Review the configuration file and verify that the shared IP address does not already appear. If it does, delete associated lines before continuing.
 {{</note>}}
 
-    -   **Debian and Ubuntu 16.04 (and older)**: Using [ifupdown](https://manpages.debian.org/unstable/ifupdown/ifup.8.en.html).
-
-        {{< file "/etc/network/interfaces" >}}
-...
-# Add Shared IP Address
-iface lo inet static
-    address [shared-ip]/32
-{{</ file >}}
-
-        To apply the changes, reboot the instance or run:
-
-            sudo ifdown lo && sudo ip addr flush lo && sudo ifup lo
-
-        If you receive the following output, you can safely ignore it: *RTNETLINK answers: Cannot assign requested address*.
-
     -   **Ubuntu 18.04 LTS and newer**: Using [netplan](https://netplan.io/). The entire configuration file is shown below, though you only need to copy the `lo:` directive.
 
         {{< file "/etc/netplan/01-netcfg.yaml" >}}
@@ -125,6 +111,32 @@ network:
 
             sudo netplan apply
 
+    -   **CentOS/RHEL**: Using [NetworkManager](https://en.wikipedia.org/wiki/NetworkManager). Since NetworkManager does not support managing the loopback interface, the Shared IP must instead be added to the eth0 interface. When doing so, you must also add the `-allifs` option to the lelastic command (discussed in a separate section below)
+
+        {{< file "/etc/sysconfig/network-scripts/ifcfg-eth0" >}}
+...
+# Add Shared IP Address
+IPADDR1=[shared-ip]
+PREFIX1=32
+{{</ file >}}
+
+        To apply the changes, reboot the instance.
+
+    -   **Debian and Ubuntu 16.04 (and older)**: Using [ifupdown](https://manpages.debian.org/unstable/ifupdown/ifup.8.en.html).
+
+        {{< file "/etc/network/interfaces" >}}
+...
+# Add Shared IP Address
+iface lo inet static
+    address [shared-ip]/32
+{{</ file >}}
+
+        To apply the changes, reboot the instance or run:
+
+            sudo ifdown lo && sudo ip addr flush lo && sudo ifup lo
+
+        If you receive the following output, you can safely ignore it: *RTNETLINK answers: Cannot assign requested address*.
+
 ### Install and Configure Lelastic
 
 Next, we need to configure the failover software on *each* Compute Instance. For this, the lelastic utility is used.
@@ -138,9 +150,21 @@ Next, we need to configure the failover software on *each* Compute Instance. For
         chmod 755 lelastic
         sudo mv lelastic /usr/local/bin/
 
+    {{< note >}}
+**CentOS/RHEL:** If running a distribution with SELinux enabled (such as most CentOS/RHEL distributions), you must also set the SELinux type of the file to `bin_t`.
+
+    sudo chcon -t bin_t /usr/local/bin/lelastic
+{{</ note >}}
+
 1.  Next, prepare the command to configure BGP routing through lelastic. Replace *[id]* with the ID corresponding to your data center in the [table above](/docs/guides/ip-failover/#ip-failover-support) and *[role]* with either `primary` or `secondary`. You do not need to run this command, as it is configured as a service in the following steps.
 
         lelastic -dcid [id] -[role] &
+
+    {{< note >}}
+**CentOS/RHEL:** Since the Shared IP address is configured on the *eth0* interface for NetworkManager distributions (like CentOS/RHEL), you must add the `-allifs` option to the lelastic command. This should also be done for any system where the Shared IP is added to an interface other than *lo* (loopback).
+
+    lelastic -allifs -dcid [id] -[role] &
+{{</ note >}}
 
     See [Test Failover](#test-failover) to learn more about the expected behavior for each role.
 
@@ -158,7 +182,8 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart=$command
+ExecStart=/usr/local/bin/$command
+ExecReload=/bin/kill -s HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target
