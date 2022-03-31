@@ -20,6 +20,7 @@ In LKE, enabling HA ([High Availability](/docs/guides/introduction-to-high-avail
 
 Unlike other LKE configuration options, High Availability is an **optional billable service** that will increase the overall operating cost of your cluster. For more information see our [pricing page](https://www.linode.com/pricing/).
 
+
 {{< caution >}}
 While upgrading to an HA cluster is always possible, **downgrading your cluster is not currently supported**. Enabling HA is an **irreversible** change for your cluster.
 
@@ -29,6 +30,15 @@ Additionally, Enabling HA on a pre-existing cluster will result in the following
 - Any local storage (such as `hostPath` volumes) will be erased.
 - The upgrade process may take several minutes to complete, as nodes will be replaced on a rolling basis.
 {{< /caution >}}
+
+## Configuration Details of LKE HA
+
+In more detail, the configuration of High Availability will result in the following changes for Control Plane Components:
+
+- **etcd** and **kube-api-server** will increase from `one` to `three` replicas.
+- All other components, the **Cloud Controller Manager**, **kube-scheduler**, and **kube-controller-manager**,  will increase from `one` to `two` replicas, with leader election put in place.
+
+When multiple replicas are created as part of LKE HA they are always placed on separate infrastructure to better support uptime and redundancy. This configuration when applied maintains a guaranteed 99.99% uptime for control plane and worker nodes.
 
 ## Enabling HA During Cluster Creation
 

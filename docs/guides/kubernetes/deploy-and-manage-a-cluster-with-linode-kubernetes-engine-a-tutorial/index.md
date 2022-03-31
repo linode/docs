@@ -265,7 +265,14 @@ A new kubeconfig will now be created. Once this process is completed, the new ku
 
 ## Enable High Availability
 
-In LKE, enabling HA ([High Availability](/docs/guides/introduction-to-high-availability/)) will create additional replicas of your [control plane components](/docs/guides/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/), adding an additional layer of redundancy to your Kubernetes Cluster and decreasing the chance of any potential downtime. HA is an optional feature recommended for production workloads that must be enabled manually either when creating a new cluster or by editing a pre-existing cluster.
+In LKE, enabling HA ([High Availability](/docs/guides/introduction-to-high-availability/)) will create additional replicas of your [control plane components](/docs/guides/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/), adding an additional layer of redundancy to your Kubernetes Cluster and ensuring 99.99% uptime for both the control plane and worker nodes . HA is an optional feature recommended for production workloads that must be enabled manually either when creating a new cluster or by editing a pre-existing cluster.
+
+In more detail, upgrading to High Availability on LKE will result in the following changes:
+
+- **etcd** and **kube-api-server** will increase from `one` to `three` replicas.
+- All other components, the **Cloud Controller Manager**, **kube-scheduler**, and **kube-controller-manager**,  will increase from `one` to `two` replicas, with leader election put in place.
+
+When multiple replicas are created as part of LKE HA they are always placed on separate infrastructure to better support uptime and redundancy.
 
 Unlike other LKE configuration options, High Availability is an **optional billable service** that will increase the overall operating cost of your cluster. For more information see our [pricing page](https://www.linode.com/pricing/).
 
