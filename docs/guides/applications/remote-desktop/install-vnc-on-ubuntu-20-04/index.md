@@ -14,7 +14,7 @@ published: 2021-10-21
 title: 'Install VNC on Ubuntu 20.04'
 external_resources:
  - '[VNC on Wikipedia](http://en.wikipedia.org/wiki/Virtual_Network_Computing)'
- - '[TightVNC](https://www.tightvnc.com/)'
+ - '[TigerVNC](https://tigervnc.org/)'
 relations:
     platform:
         key: install-vnc
