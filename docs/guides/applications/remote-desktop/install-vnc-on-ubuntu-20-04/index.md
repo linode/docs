@@ -25,7 +25,7 @@ aliases: ['/applications/remote-desktop/install-vnc-on-ubuntu-20-04/']
 
 *Virtual network computing*, or VNC, is a graphical desktop sharing system that allows you to control one computer remotely from another. A VNC server transfers keyboard and mouse events, and displays the remote host's screen via a network connection, which allows you to operate a full desktop environment on your Linode.
 
-This guide explains how to install a graphic desktop environment on your Linode running Ubuntu 18.04 and how to connect to it from your local computer using VNC.
+This guide explains how to install a graphic desktop environment on your Linode running Ubuntu 20.04 and how to connect to it from your local computer using VNC.
 
 ## Before You Begin
 
@@ -161,7 +161,7 @@ This section will configure VNC to launch the full Unity desktop when it starts.
 
 1. Save and exit the file.
 1. Make the file executable:
-       chmod +x ~/.vnc/xstartup
+       sudo chmod +x ~/.vnc/xstartup
 1.  Begin another VNC session:
 
         vncserver :1
