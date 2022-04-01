@@ -286,6 +286,8 @@ The name of the city is New York and the name of the state is New York
 The name of the city is Miami and the name of the state is Florida
 {{< /output >}}
 
+Built-in Python dictionary methods, like `items()` can be used to efficiently loop over a Python dictionary. To learn about these built-in dictionary methods, see our guide [How to Use Dictionaries in Python 3](/docs/guides/python-3-dictionaries/).
+
 ### How to Break or Exit from a For Loop in Python
 
 The Python `break` statement immediately breaks out of the innermost `for` loop. It is often used to handle unexpected conditions or errors. For example, a loop might read data from a file and write it to a database. If the database suddenly becomes inaccessible, a `break` statement can immediately end the loop. Otherwise, the program would repeatedly keep timing out. It is better to give prompt feedback that something is not working.
