@@ -91,7 +91,7 @@ A tuple is a built-in Python data structure that stores multiple comma-separated
 
     map_coordinates = {(0,1): 100, (2,1): 200}
 
-To learn more about the syntax of Python tuples and other topics, like built-in tuple metods, and tuple unpacking, see our guide [An Introduction to Python Tuples](/docs/guides/python-tuples/).
+To learn more about the syntax of Python tuples and other topics, like built-in tuple methods, and tuple unpacking, see our guide [An Introduction to Python Tuples](/docs/guides/python-tuples/).
 
 ### Dictionary Comprehension
 
