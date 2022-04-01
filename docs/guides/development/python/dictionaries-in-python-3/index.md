@@ -178,7 +178,6 @@ The `KeyError` exception is raised because the key is case-sensitive. To avoid t
     else:
        print("The key 'one' doesn't exist.")
 
-
 ### Iterate Through a Dictionary in Python
 
 Python dictionaries have built-in support for iterating over its keys. To iterate over a Python dictionary and access all its keys, use a `for` loop:
