@@ -22,11 +22,6 @@ external_resources:
  - '[Blue Ocean Documentation](https://jenkins.io/doc/book/blueocean/)'
 audiences: ["intermediate"]
 dedicated_cpu_link: true
-relations:
-    platform:
-        key:  automate-builds-jenkins
-        keywords:
-            - distribution: Ubuntu 16.04
 ---
 
 [Jenkins](https://jenkins.io) is an open-source automation server that allows you to build pipelines to automate the process of building, testing, and deploying applications. In this guide, you will implement a basic workflow to speed up your Continuous Integration and Continuous Delivery (CI/CD) process.

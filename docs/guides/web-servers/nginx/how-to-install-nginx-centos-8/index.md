@@ -22,7 +22,7 @@ relations:
         key: how-to-install-nginx
         keywords:
             - distribution: CentOS 8
-aliases: ['/web-servers/nginx/install-nginx-ubuntu/','/web-servers/nginx/how-to-install-nginx-centos-8/']
+aliases: ['/web-servers/nginx/how-to-install-nginx-centos-8/']
 ---
 
 ## What is NGINX?

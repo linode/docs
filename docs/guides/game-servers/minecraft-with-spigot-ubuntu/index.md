@@ -7,7 +7,7 @@ description: 'This guide shows how to set up, configure, and customize a Minecra
 keywords: ["minecraft", "spigot"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/game-servers/minecraft-ubuntu12-04/','/applications/game-servers/minecraft-with-spigot-ubuntu/','/game-servers/minecraft-with-spigot-ubuntu/']
+aliases: ['/applications/game-servers/minecraft-with-spigot-ubuntu/','/game-servers/minecraft-with-spigot-ubuntu/']
 published: 2015-04-21
 modified: 2019-02-01
 modified_by:
