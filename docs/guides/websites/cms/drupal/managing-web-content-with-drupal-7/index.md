@@ -7,7 +7,7 @@ description: 'Installing, configuring, and optimizing the Drupal content managem
 keywords: ["drupal", "cms", "web framework", "web application", "php", "content management system", "content management framework"]
 tags: ["drupal","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/cms/drupal/managing-web-content-with-drupal-7/','/web-applications/cms-guides/drupal/','/websites/cms/managing-web-content-with-drupal-7/']
+aliases: ['/websites/cms/drupal/managing-web-content-with-drupal-7/','/websites/cms/managing-web-content-with-drupal-7/']
 modified: 2014-11-06
 modified_by:
   name: Linode

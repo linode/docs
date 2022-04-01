@@ -12,7 +12,6 @@ modified: 2013-09-25
 modified_by:
   name: Linode
 published: 2010-11-09
-expiryDate: 2015-09-25
 title: 'Postfix, Dovecot, and System User Accounts on Ubuntu 10.04 (Lucid)'
 deprecated: true
 relations:
@@ -21,8 +20,6 @@ relations:
         keywords:
             - distribution: Ubuntu 10.04
 ---
-
-
 
 Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/email/postfix/gateway-ubuntu-10-04-lucid) document to install a more minimal email system. If you plan to host a larger number of domains and email aliases, you may want to consider a more sophisticated hosting solution like the [Email Server with Postfix, MySQL and Dovecot](/docs/email/postfix/dovecot-mysql-ubuntu-10-04-lucid/).
 

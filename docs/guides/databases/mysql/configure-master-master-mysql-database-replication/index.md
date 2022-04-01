@@ -7,7 +7,7 @@ description: "Learn how to set up master-master MySQL databases replication in t
 og_description: "MySQL Master-Master replication adds speed and redundancy. With replication, two separate MySQL servers act as a cluster, particularly useful for high availability website configurations. Use this guide to configure database replication on your Linode."
 keywords: ["set up mysql", "replication", "master-master", "high availability"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mysql/mysql-master-master-replication/','/databases/mysql/backup-options/','/databases/mysql/mysql-master-master/','/databases/mysql/configure-master-master-mysql-database-replication/']
+aliases: ['/databases/mysql/mysql-master-master-replication/','/databases/mysql/mysql-master-master/','/databases/mysql/configure-master-master-mysql-database-replication/']
 modified: 2021-10-18
 modified_by:
   name: Linode

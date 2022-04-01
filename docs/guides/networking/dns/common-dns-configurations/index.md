@@ -8,7 +8,7 @@ og_description: 'This guide provides you with step-by-step instructions for usin
 keywords: ["dns", "dnssec"]
 tags: ["dns","networking","cloud manager","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/dns-manager/','/networking/dns/common-dns-configurations/','/dns-guides/configuring-dns-with-the-linode-manager/','/networking/dns/common-dns-configurations-classic-manager/']
+aliases: ['/networking/dns/common-dns-configurations/','/dns-guides/configuring-dns-with-the-linode-manager/','/networking/dns/common-dns-configurations-classic-manager/']
 modified: 2019-03-14
 modified_by:
   name: Linode

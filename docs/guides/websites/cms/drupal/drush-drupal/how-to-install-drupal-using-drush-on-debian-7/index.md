@@ -5,7 +5,7 @@ author:
     email: docs@linode.com
 description: 'This article gives you step-by-step instructions for installing the widely used and popular CMS Drupal using the Drush command line tool on Debian 7.'
 keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framework", " debian"]
-aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-7/','/websites/cms/drush-drupal/']
+aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-7/']
 tags: ["debian","drupal","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2014-11-21

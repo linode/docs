@@ -15,7 +15,7 @@ h1_title: "Running a Counter Strike Global Offensive Server on Ubuntu 18.04"
 enable_h1: true
 contributor:
     name: Linode
-aliases: ['/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-18-04/','/applications/game-servers/csgo-server-debian-ubuntu/','/applications/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-14-04/']
+aliases: ['/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-18-04/','/applications/game-servers/csgo-server-debian-ubuntu/']
 external_resources:
   - '[Valve Developer Community - Counter-Strike: Global Offensive Dedicated Servers](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers)'
 dedicated_cpu_link: true
