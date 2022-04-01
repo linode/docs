@@ -33,6 +33,7 @@ alexa
 alexey
 alfano
 alives
+allifs
 allmasquerade
 allowlist
 allowlisting
@@ -234,6 +235,7 @@ characterwise
 chatbot
 chatbots
 chatrooms
+chcon
 cheatsheet
 checkmarx
 checksummed
@@ -391,6 +393,7 @@ dbdir
 dbfiles
 dbname
 dbserver
+dcid
 dcs
 deadman
 deallocation
