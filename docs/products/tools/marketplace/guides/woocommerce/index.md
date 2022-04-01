@@ -50,8 +50,6 @@ external_resources:
 
 ## Getting Started After Deployment
 
-After WooCommerce has finished installing, a confirmation email will be sent to the email address you provided during configuration.
-
 ### Accessing the WordPress Admin Dashboard
 
 1.  Open your web browser and navigate to `http://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
