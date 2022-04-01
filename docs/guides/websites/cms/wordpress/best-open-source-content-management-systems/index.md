@@ -95,28 +95,28 @@ With all this in mind, the section below includes some of the best open-source C
 
 ## The Top Ten Open-Source Content Management Systems
 
-### Bitrix24
+### Grav
 
-Do you need Customer Relation Management (CRM), project management, and a CMS? If that's your case then [Bitrix24](https://www.bitrix24.com/) might be exactly what you're looking for.
+[Grav](https://getgrav.org/) may be the CMS for you if you want a user-friendly CMS. It's designed for speed, and depends on flat-file directories instead of a complex DBMS such as MySQL or MariaDB.
 
-Bitrix24 is well regarded by CRM fans. The program has over 10-million users.
+Flat file directories mean that an article's data is kept in an HTML file under the `/user/pages` directory. The article's images are kept in `/user/images`. You create these pages with your favorite Markdown or text editor.
 
-You can run the self-hosted version on your own servers or cloud. If you need more supportive guidance, Bitrix24 is happy to run the program for you with support starting at $39 a month.
+You can run the self-hosted version on your own servers or in the cloud. If you need more support, the developers have a commercial company, [Trilby Media](http://trilbymedia.com/). Trilby offers consulting and custom programming.
 
-Bitrix24 is written primarily in PHP. Unfortunately, while its Russian parent company claims that it's open-source, by strict Open Source Initiative (OSI) definition, it's not. Its code is only available to subscribers and it's read-only. You can't modify it. This is called "source available" code.
+Grav is written primarily in PHP and the [Symfony](https://symfony.com/) web application framework. The program is licensed under the open-source [MIT license](https://opensource.org/licenses/MIT). It works with any major web server, but for the best performance, Grav recommends you use a PHP user cache such as [APCu](https://www.php.net/apcu), [Memcached](https://memcached.org/), or [Redis](https://redis.io/).
 
 **Pros**
 
-- Complete all-in-one online business package with many features.
-- CMS features a comprehensive, easy-to-use drag and drop interface.
-- Integrations with popular applications such as Mind Map, Burnup Chart, Jira, and Zapier.
+- It’s not difficult to learn.
+- Much easier to backup, mitigate, or update than other CMSs thanks to its simple file system infrastructure.
+- Excellent for basic websites.
+- Supports the highly customizable Twig templating engine.
 
 **Cons**
 
-- If you want or need a CMS, Bitrix24 is overkill.
-- Thanks to its immense feature set, the Bitrix24 interface can be confusing.
+- It's not ideal for complex websites.
 
-Bitrix24 is not a real open-source program. You cannot edit or use the source code in other programs. The code is also only available if you buy the self-hosted edition.
+You can quickly deploy an instance of the Grav CMS on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying Grav through the Linode Marketplace](/docs/products/tools/marketplace/guides/grav/) guide to get started.
 
 ### Drupal
 
@@ -134,6 +134,8 @@ Drupal has many loyal fans, most of whom are hard-core web developers and progra
 
 - It has a steep learning curve.
 - Using Drupal to its best advantage requires programming skills.
+
+You can deploy a Drupal instance on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying Drupal through the Linode Marketplace](/docs/products/tools/marketplace/guides/drupal/) guide to get started.
 
 ### Ghost
 
@@ -172,6 +174,8 @@ Written in PHP, Joomla stores your data in a MySQL database. Unlike many PHP pro
 
 - Sophisticated sites may require a veteran Joomla developer.
 - Fewer extensions than the most popular CMSs.
+
+You can deploy an instance of the Joomla CMS on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying Joomla through the Linode Marketplace](/docs/products/tools/marketplace/guides/joomla/) guide to get started.
 
 ### Magento
 
@@ -266,6 +270,8 @@ WooCommerce is written in PHP, and like the program underneath it, it is license
 
 Its flexibility can be confusing until you have a firm grip on all the options.
 
+You can deploy a WooCommerce instance on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying WooCommerce through the Linode Marketplace](/docs/products/tools/marketplace/guides/woocommerce/) guide to get started.
+
 ### WordPress
 
 Finally, there's the 800-pound gorilla of CMSs: [WordPress](https://wordpress.org/download/). WordPress now runs 43% of the Web. While you can run a site off the [WordPress.com service](https://wordpress.com/), to control and grow your site you must run it off a server or cloud, to call your own.
@@ -286,6 +292,8 @@ WordPress is written in PHP. You can argue it's the program that made PHP the la
 
 - Due to the sheer number of all WordPress's options, it can be confusing.
 - Because it's so popular, hackers target it more than any other CMS. Using a third-party security program such as [WordFence](https://www.wordfence.com/) or [Jetpack](https://jetpack.com/) is essential.
+
+You can deploy a WordPress instance on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying WordPress through the Linode Marketplace](https://www.linode.com/docs/products/tools/marketplace/guides/wordpress/) guide to get started.
 
 ## Which Top Open-Source Content Management System is Right For You?
 
