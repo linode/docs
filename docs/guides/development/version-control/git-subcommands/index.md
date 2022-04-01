@@ -104,7 +104,7 @@ For information on Bash scripting, refer to our [Introduction to Bash Shell Scri
 
 ### Git Script Example
 
-You can implement the first example in the Aliases for Shell Commands section with a shell script. Improve the example by passing `gitk`, making `--all` the default option if no arguments are given.
+You can implement the first example in the [Aliases for Shell Commands](#git-aliases-for-shell-commands) section with a Bash script. Improve the example by passing `gitk`, making `--all` the default option if no arguments are given.
 
 {{< file "~/git-example-scrip.sh" >}}
 #!/bin/bash
