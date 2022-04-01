@@ -153,6 +153,8 @@ Use the `print()` method to view the contents of `dict_to_tuple_example`:
 dict_items([('first', 'Jane'), ('last', 'Doe'), ('year', '2000')])
 {{</ output >}}
 
+Python dictionaries also support the use of tuples as a key. See our guide [How to use Dictionaries in Python 3](/docs/guides/python-3-dictionaries/) to learn more.
+
 ## Tuple Unpacking
 
 Typically, when you create a tuple, you assign the tuple values to a single variable. For example:
