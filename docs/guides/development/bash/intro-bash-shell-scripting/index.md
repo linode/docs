@@ -698,4 +698,4 @@ directories with the bash scripting language.
 The scripting language of bash can do many more things than the ones presented in
 this guide. The next part of this guide will present more interesting bash shell
 scripts and shed more light into topics such as working with files and directories,
-the `printf` command, the `select` statement and reading files.
+the `printf` command, the `select` statement and reading files. Another interesting usage of Bash shell scripting is using it to customize Git, the version control system. Our guide [Creating Git Aliases](/docs/guides/creating-git-aliases/) includes a Bash script example.
