@@ -6,7 +6,6 @@ author:
 description: Learn basics and advanced Linux package management in Debian, Ubuntu, Fedora, etc using apt, yum, aptitude and other package managers.
 keywords: ["dnf", "rpm", "apt", "dpkg", "apt-get", "apt-cache", "pacman", "yum"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/basics/linux-package-management/','/using-linux/package-management/']
 modified: 2021-07-15
 modified_by:
   name: Linode

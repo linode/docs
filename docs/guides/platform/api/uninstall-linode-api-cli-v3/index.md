@@ -15,7 +15,6 @@ external_resources:
  - '[Linode API Documentation](https://developers.linode.com)'
  - '[Deprecated CLI Github](https://github.com/linode/cli)'
 tags: ["linode platform"]
-aliases: ['/platform/api/upgrade-to-linode-api-v4/']
 ---
 
 Following the release of the [Linode API v4](/docs/api/), both the Linode API v3 and [earlier versions of the CLI](/docs/guides/using-the-linode-cli-api-v3/) using that API version have been deprecated. While earlier versions remained functional for some time, they have officially been deprecated and can not be leveraged to use the full extent of the Linode Platform.

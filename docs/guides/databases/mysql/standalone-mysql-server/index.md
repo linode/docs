@@ -11,7 +11,6 @@ modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2009-09-30
-expiryDate: 2013-04-29
 title: Standalone MySQL Server
 tags: ["database","mysql"]
 aliases: ['/databases/mysql/standalone-mysql-server/']
@@ -36,6 +35,7 @@ You will want to create hostnames for each machine so you can keep track of them
 
 {{< file "/etc/hosts" >}}
 > 127.0.0.1 localhost 192.168.192.168 mysql.example.com mysql 192.168.192.169 app.example.com app
+{{</ file >}}
 
 Remember to replace `192.168.192.168` and `192.168.192.169` with the actual private IP addresses.
 

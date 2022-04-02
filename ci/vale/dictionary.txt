@@ -33,6 +33,7 @@ alexa
 alexey
 alfano
 alives
+allifs
 allmasquerade
 allowlist
 allowlisting
@@ -192,6 +193,7 @@ bukkit
 bundler
 bungeecord
 burndown
+burnup
 busybox
 bypassuac
 byrequests
@@ -233,6 +235,7 @@ characterwise
 chatbot
 chatbots
 chatrooms
+chcon
 cheatsheet
 checkmarx
 checksummed
@@ -240,6 +243,8 @@ checksums
 chefspec
 Chevereto
 chgrp
+chipset
+chipsets
 chmod
 chown
 christianwan
@@ -277,6 +282,7 @@ cmusieve
 cnf
 codebase
 codec
+codepen
 colab
 collabnet
 colormaps
@@ -295,6 +301,7 @@ connectionism
 connectionless
 containerd
 containerised
+contentful
 convery
 convolutional
 cookstyle
@@ -388,6 +395,7 @@ dbdir
 dbfiles
 dbname
 dbserver
+dcid
 dcs
 deadman
 deallocation
@@ -916,6 +924,7 @@ jenkinsx
 jessie
 jetpack
 jez
+jira
 jitsi
 jk
 jks
@@ -1184,6 +1193,7 @@ minimax
 minio
 minisockets
 minitest
+minix
 misconfiguration
 misconfigurations
 misconfigured
@@ -1434,6 +1444,7 @@ passwdcolumn
 passwdfile
 passwordless
 patroni
+paypal
 pbr
 pem
 pentest
@@ -1516,8 +1527,10 @@ prettifier
 prettifiers
 Printf
 printf
+prismic
 pritunl
 privesc
+prizm
 processhider
 procfile
 procmail
@@ -1707,6 +1720,7 @@ salesforce
 Saltcorn
 sam
 samy
+sandboxing
 sandcat
 sanitization
 sar
@@ -1868,6 +1882,7 @@ stopwait
 stopword
 stopwords
 storages
+strapi
 streamlink
 strongswan
 su
@@ -1946,6 +1961,7 @@ teleporting
 tensorflow
 terrahelp
 terraria
+tessian
 testdb
 testdeep
 testfile
@@ -2021,6 +2037,7 @@ turtl
 tv
 tw
 twilio
+typeform
 txt
 txz
 tz
@@ -2284,6 +2301,7 @@ yourservice
 youtube
 yubico
 yubikey
+yubikeys
 zabbix
 zapier
 zcat

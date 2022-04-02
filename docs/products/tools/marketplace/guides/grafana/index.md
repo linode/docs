@@ -22,6 +22,10 @@ aliases: ['/platform/marketplace/how-to-deploy-grafana-with-marketplace-apps/', 
 
 [Grafana](https://grafana.com/docs/grafana/latest/guides/what-is-grafana/) is an open source analytics and monitoring solution with a focus on accessibility for metric visualization. You can use Grafana to create, monitor, store, and share metrics with your team to keep tabs on your infrastructure. Grafana is very lightweight and does not use a lot of memory and CPU resources.
 
+{{< note >}}
+Grafana is often used alongside [Prometheus](https://prometheus.io/) for monitoring and data collection. Consider using the combined [Prometheus and Grafana Marketplace App](/docs/products/tools/marketplace/guides/prometheus-grafana/) if you intend on using both of these applications together.
+{{</ note >}}
+
 ## Deploying a Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}

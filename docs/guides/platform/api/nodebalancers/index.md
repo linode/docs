@@ -6,7 +6,7 @@ author:
 description: "This guide demonstrates the API calls needed to add and configure a NodeBalancer through the Linode API"
 keywords: ["nodebalancer", "load balancing", "high availability", "linode api"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/platform/api/nodebalancers/','/linux-tools/common-commands/tail/']
+aliases: ['/platform/api/nodebalancers/']
 modified: 2018-04-05
 modified_by:
   name: Linode

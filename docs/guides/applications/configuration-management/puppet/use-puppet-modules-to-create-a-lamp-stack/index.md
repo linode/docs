@@ -7,7 +7,7 @@ description: 'This guide will show you how to efficiently use Puppet modules to 
 keywords: ["puppet", "automation", "puppet master", "puppet agent", "modules", "server automation", "configuration management"]
 tags: ["lamp","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack/','/applications/configuration-management/create-puppet-module/','/applications/puppet/create-puppet-module/','/applications/configuration-management/puppet/use-puppet-modules-to-create-a-lamp-stack/']
+aliases: ['/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack/','/applications/configuration-management/puppet/use-puppet-modules-to-create-a-lamp-stack/']
 deprecated: true
 deprecated_link: 'applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master/'
 modified: 2015-11-12
