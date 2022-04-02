@@ -3,8 +3,12 @@ import os
 import sys
 import re
 import frontmatter
+import requests
 
 output_duplicates_filename = "duplicates.csv"
+
+changed_files = sys.argv[1].split(',')
+print(changed_files)
 
 # ------------------
 # Build a list of all aliases and map them to their current link
@@ -88,13 +92,24 @@ link_pattern = re.compile("(?:[^\!]|^)\[([^\[\]]+)\]\(()([^()]+)\)")
 internal_links_with_errors = []
 internal_links_with_warnings = []
 
+external_links_with_errors = []
+
+headers = {
+    'User-Agent': 'Linode Docs External Link Crawler'
+}
+
 # Iterate through each markdown file within the docs_directory
 for root, dirs, files in os.walk(docs_directory):
     for file in files:
-        if file.endswith('.md'):
+        if file.endswith('index.md'):
 
             # The relative file path of the file
             file_path = os.path.join(root, file)
+
+            if file_path.replace('../docs/','docs/') in changed_files:
+              is_changed = True
+            else:
+              is_changed = False
 
             # Iterate through each line of the file
             for i, line in enumerate(open(file_path)):
@@ -103,11 +118,29 @@ for root, dirs, files in os.walk(docs_directory):
                     # Remove the title, brackets, and parenthesis from the markdown link
                     link = match.group()
                     link = link[link.find("(")+1:link.find(")")]
-                    # Ignore links that start with https:// or http://
-                    if link.startswith('http://') or link.startswith('https://'):
-                        continue
+
+                    if (link.startswith('http://www.linode.com') or link.startswith('https://www.linode.com')) or (link.startswith('http://linode.com') or link.startswith('https://linode.com')):
+                        if is_changed is True:
+                            response = requests.get(link, headers=headers)
+                            if response.status_code == 404:
+                                external_links_with_errors.append(link)
+                            print(file_path)
+                            print(link)
+                            print(response)
+                        else:
+                            continue
+                    elif link.startswith('http://') or link.startswith('https://'):
+                        if is_changed is True:
+                            response = requests.get(link, headers=headers)
+                            if response.status_code == 404:
+                                external_links_with_errors.append(link)
+                            print(file_path)
+                            print(link)
+                            print(response)
+                        else:
+                            continue
                     # Log error if link does not start with /docs/
-                    if not link.startswith('/docs/'):
+                    elif not link.startswith('/docs/'):
                         internal_links_with_errors.append(link)
                         continue
                     # Check if link points to a canonical internal URL
