@@ -132,12 +132,12 @@ IPV6ADDR_SECONDARIES=[shared-ip]/[prefix]
 
         To apply the changes, reboot the instance.
 
-    -   **Debian and Ubuntu 16.04 (and older)**: Using [ifupdown](https://manpages.debian.org/unstable/ifupdown/ifup.8.en.html).
+    -   **Debian and Ubuntu 16.04 (and older)**: Using [ifupdown](https://manpages.debian.org/unstable/ifupdown/ifup.8.en.html). Replace *[protocol]* with `inet` for IPv4 or `inet6` for IPv6.
 
         {{< file "/etc/network/interfaces" >}}
 ...
 # Add Shared IP Address
-iface lo inet static
+iface lo [protocol] static
     address [shared-ip]/[prefix]
 {{</ file >}}
 
@@ -170,10 +170,12 @@ Next, we need to configure the failover software on *each* Compute Instance. For
 
         lelastic -dcid [id] -[role] &
 
-    {{< note >}}
-**CentOS/RHEL:** Since the Shared IP address is configured on the *eth0* interface for NetworkManager distributions (like CentOS/RHEL), you must add the `-allifs` option to the lelastic command. This should also be done for any system where the Shared IP is added to an interface other than *lo* (loopback).
+    **Addtional options:**
+    - `-send56`: Advertises an IPv6 address as a /56 subnet (defaults to /64). This is needed when using an IP address from a IPv6 /56 routed range.
+    - `-allifs`: Looks for the shared IP address on all interfaces, not just the loopback interface.
 
-    lelastic -allifs -dcid [id] -[role] &
+        {{< note >}}
+**CentOS/RHEL:** Since the Shared IP address is configured on the *eth0* interface for NetworkManager distributions (like CentOS/RHEL), you must add the `-allifs` option to the lelastic command.
 {{</ note >}}
 
     See [Test Failover](#test-failover) to learn more about the expected behavior for each role.
