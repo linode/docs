@@ -243,6 +243,8 @@ checksums
 chefspec
 Chevereto
 chgrp
+chipset
+chipsets
 chmod
 chown
 christianwan
@@ -1191,6 +1193,7 @@ minimax
 minio
 minisockets
 minitest
+minix
 misconfiguration
 misconfigurations
 misconfigured
@@ -1527,6 +1530,7 @@ printf
 prismic
 pritunl
 privesc
+prizm
 processhider
 procfile
 procmail
@@ -1716,6 +1720,7 @@ salesforce
 Saltcorn
 sam
 samy
+sandboxing
 sandcat
 sanitization
 sar
@@ -2296,6 +2301,7 @@ yourservice
 youtube
 yubico
 yubikey
+yubikeys
 zabbix
 zapier
 zcat

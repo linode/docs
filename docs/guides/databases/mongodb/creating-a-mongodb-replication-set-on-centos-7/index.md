@@ -11,7 +11,7 @@ modified_by:
 published: 2016-12-02
 title: 'How To Create a MongoDB Replica Set'
 h1_title: 'Creating a MongoDB Replica Set'
-aliases: ['/databases/mongodb/creating-a-mongodb-replication-set-on-centos-7/','/databases/mongodb/create-a-mongodb-replica-set/']
+aliases: ['/databases/mongodb/creating-a-mongodb-replication-set-on-centos-7/']
 external_resources:
  - '[Getting Started with the mongo Shell](https://docs.mongodb.com/manual/mongo/)'
  - '[Replication Introduction](https://docs.mongodb.com/manual/replication/)'

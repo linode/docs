@@ -8,7 +8,6 @@ author:
 description: 'Creating an SSL certificate for personal or internal organizational use on a Linux server.'
 keywords: ["ssl certificate", "ssl cert", "self signed ssl", "ssl linux", "ssl cert linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/ssl-certificates/self-signed/','/security/ssl/how-to-make-a-selfsigned-ssl-certificate/']
 modified: 2020-12-02
 modified_by:
   name: Linode
