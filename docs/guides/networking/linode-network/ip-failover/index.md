@@ -43,9 +43,9 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Tokyo (Japan) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 11 |
 | Toronto (Canada) |  *Not supported* | - | 15 |
 
-- **New IP Sharing Method (BGP):** Supports IPv4 and IPv6 failover. This is currently being rolled out across our fleet in conjunction with our [planned network infrastructure upgrades](/docs/guides/network-infrastructure-upgrades/). Since it is implemented using BGP routing, customers can configure it on their Compute Instances using the Linode provided lelastic tool or FRR. Follow the instructions within this guide.
+- **New IP Sharing Method (BGP):** Supports IPv4 and IPv6 routed ranges (/64 and /56). This is currently being rolled out across our fleet in conjunction with our [planned network infrastructure upgrades](/docs/guides/network-infrastructure-upgrades/). Since it is implemented using BGP routing, customers can configure it on their Compute Instances using the Linode provided lelastic tool or FRR. Follow the instructions within this guide.
 
-- **Legacy IP Sharing Method (ARP):** Supports IPv4 failover within limited data centers. Since it is arp-based, customers can configure it on their Compute Instances using a service like keepalived. Follow the instructions within the [keepalived](/docs/guides/ip-failover-keepalived/) guide.
+- **Legacy IP Sharing Method (ARP):** Supports IPv4. Since it is arp-based, customers can configure it on their Compute Instances using a service like keepalived. Follow the instructions within the [keepalived](/docs/guides/ip-failover-keepalived/) guide.
 
 {{<note>}}
 IP failover for VLAN IP addresses is supported within every data center where VLANs are available. This feature does not depend on Linode's IP Sharing feature and is configurable through keepalived.
