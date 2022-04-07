@@ -210,14 +210,16 @@ You can also create a static website using Object Storage and s3cmd:
 
 For more information on hosting a static website with Object Storage, read our [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
 
-## Other S3cmd Commands
+## Syncing Files and Directories
 
-To upload an entire directory of files, you can use the `sync` command, which automatically syncs all new or changed files. Navigate to the directory you would like to sync, then enter the following:
+While you can utilize the `put` command to upload entire directories, the `sync` command may offer more desireable behavior. It's able to identify which files have been added or modified and only upload those files. This can be especially useful when maintaining large amounts of files, such as the contents of a static site.
 
-    s3cmd sync . s3://my-example-bucket -P
-
-This can be useful for uploading the contents of a static site to the bucket.
+**Command:** `s3cmd sync [local-path] s3://[bucket-label]/[path]`, replacing *[local-path]* with the path to the folder you wish to upload, *[bucket-label]* with the label for your bucket, and *[path]* with the remote path you wish to target for the upload.
 
 {{< note >}}
-The period in the above command instructs s3cmd to upload the current directory. If you do not want to first navigate to the directory you wish to upload, you can provide a path to the directory instead of the period.
+To upload the current directory, replace *[local-path]* with a `.` (period charater).
 {{</ note >}}
+
+**Example:** Upload the current directory to the bucket labeled *example-bucket* and make all files public.
+
+    s3cmd sync . s3://example-bucket -P
