@@ -355,7 +355,7 @@ total 64
     | `maxretry` | Number of login attempts before a ban is applied. |
     | `findtime` | Amount of allowed time between failed login attempts. |
     | `bantime` | Number of seconds an IP is banned for. |
-    | `ignoreip` | IP to whitelist. |
+    | `ignoreip` | IP to be allowed. |
 
 
 1.  With the information in the table above, create a jail configuration for OpenSSH server (sshd) by entering the following values in the `jail.local` file:
