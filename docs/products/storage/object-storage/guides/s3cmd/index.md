@@ -217,9 +217,9 @@ While you can utilize the `put` command to upload entire directories, the `sync`
 **Command:** `s3cmd sync [local-path] s3://[bucket-label]/[path]`, replacing *[local-path]* with the path to the folder you wish to upload, *[bucket-label]* with the label for your bucket, and *[path]* with the remote path you wish to target for the upload.
 
 {{< note >}}
-To upload the current directory, replace *[local-path]* with a `.` (period character).
+To upload the current directory, replace *[local-path]* with `./`.
 {{</ note >}}
 
 **Example:** Upload the current directory to the bucket labeled *example-bucket* and make all files public.
 
-    s3cmd sync . s3://example-bucket -P
+    s3cmd sync ./ s3://example-bucket -P
