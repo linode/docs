@@ -114,7 +114,7 @@ controller:
 
 1. Navigate to `localhost:18500` in your browser to see the Consul dashboard.
 
-    [![View your Consul dashboard](consul-dashboard_small.png)](consul-dashboard.png)
+    ![View your Consul dashboard](consul-dashboard.png)
 
 ## Example Usage
 

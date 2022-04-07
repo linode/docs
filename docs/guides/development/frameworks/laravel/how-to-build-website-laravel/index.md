@@ -110,7 +110,7 @@ Unless noted otherwise, all subsequent commands in this guide assume you are sti
 
 1. Now, you can visit the application in your browser by navigating to `localhost:8000`.
 
-    [![Laravel base application](laravel-base-app_small.png)](laravel-base-app.png)
+    ![Laravel base application](laravel-base-app.png)
 
 ## Build a Website with Laravel
 

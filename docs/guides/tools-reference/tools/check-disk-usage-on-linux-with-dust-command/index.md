@@ -199,7 +199,7 @@ The examples in this section illustrate how to use the `dust` command to check d
 
     dust
 
-[![Graphical output from the dust command](dust-full-output.png)](dust-full-output.png)
+![Graphical output from the dust command](dust-full-output.png)
 
 If the terminal window is large enough, dust displays a gray-scale representation of the directory structure in the form of an ASCII bar. Directories at the same level are represented with the same pattern. Breaks in the patterns can be used to identify the subdirectories within any given directory. For example, for the `index` directory, locate the dividing line between the gray and white portions of its ASCII bar. Follow this discontinuity upwards to locate all the directories inside `index`.
 

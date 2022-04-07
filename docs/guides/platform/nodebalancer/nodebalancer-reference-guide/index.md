@@ -21,7 +21,7 @@ This is the NodeBalancer reference guide. Please see the [NodeBalancer Getting S
 
 Click the NodeBalancers link in the sidebar, and then **Add a NodeBalancer**. You must choose the same location as your back-end Linodes for a given deployment.
 
-[![NodeBalancer page in Linode Cloud Manager](nodebalancer-rg-add-a-nodebalancer-small.png "NodeBalancer page in Linode Cloud Manager")](nodebalancer-rg-add-a-nodebalancer.png)
+![NodeBalancer page in Linode Cloud Manager](nodebalancer-rg-add-a-nodebalancer.png)
 
 ## NodeBalancer Settings
 
@@ -37,7 +37,7 @@ Click the NodeBalancers link in the sidebar, and then **Add a NodeBalancer**. Yo
 
 1.  Click on the **Configurations** tab:
 
-    [![NodeBalancer Configuration in Linode Cloud Manager](nodebalancer-rg-nodebalancer-config1-small.png "NodeBalancer Configuration in Linode Cloud Manager")](nodebalancer-rg-nodebalancer-config1.png)
+    ![NodeBalancer Configuration in Linode Cloud Manager](nodebalancer-rg-nodebalancer-config1.png)
 
 Each NodeBalancer config adds another port that the NodeBalancer will listen on. For instance, if you wish to balance both port 80 and 81, you'll need to add two configuration profiles to your NodeBalancer.
 
@@ -98,7 +98,7 @@ If you need Session Persistence it is our recommendation to utilize both the Sou
 
 If you select the HTTPS protocol, the **Certificate** and **Private Key** fields will appear.
 
-[![The NodeBalancer Certificate and Private Key fields.](nodebalancer-rg-ssl.png)](nodebalancer-rg-ssl.png)
+![The NodeBalancer Certificate and Private Key fields.](nodebalancer-rg-ssl.png)
 
 Copy your certificate into the **Certificate** field. If you have chained certificates, you can copy all of them into the text field, one after the other.
 
@@ -153,7 +153,7 @@ Three different Health Check Types exist:
 
 ## Nodes
 
-[![NodeBalancer Configuration in Linode Cloud Manager](nodebalancer-rg-nodebalancer-config2-small.png "NodeBalancer Configuration in Linode Cloud Manager")](nodebalancer-rg-nodebalancer-config2.png)
+![NodeBalancer Configuration in Linode Cloud Manager](nodebalancer-rg-nodebalancer-config2.png)
 
 NodeBalancers work over the private network. Backend nodes must have a private IP configured via [static networking](/docs/networking/configuring-static-ip-interfaces).
 

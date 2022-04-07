@@ -113,7 +113,7 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 1.  [Log in to your Linode via SSH](/docs/getting-started-new-manager/#connect-to-your-linode-via-ssh).
 1.  Enter `top` to access the `top` monitoring utility. The screen shown below appears.
 
-    [![Check for Disk I/O bottleneck.](939-troubleshooting2.png)](939-troubleshooting2.png)
+    ![Check for Disk I/O bottleneck.](939-troubleshooting2.png)
 
 1.  Examine the I/O wait percentage, as shown above. If the number is zero, your server does not currently have a bottleneck.
 1.  If your I/O wait percentage is above zero, verify that your server has enough [free memory available](/docs/troubleshooting/troubleshooting/#is-the-linode-out-of-memory). In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
@@ -182,6 +182,6 @@ If you recently upgraded your plan, your Linode won't be able to take advantage 
 1.  Select a Linode and the **Storage** tab.
 1.  Compare the total available disk space with the **Size** Column in the **Disks** table. If you have free storage space, you can allocate that space to your existing disks, or create new disks as needed.
 
-    [![Disk storage allocation](disk-storage-allocation.png)](disk-storage-allocation.png)
+    ![Disk storage allocation](disk-storage-allocation.png)
 
     Follow our steps for [resizing a disk](/docs/guides/disks-and-storage/#resizing-a-disk) to take advantage of the extra space.

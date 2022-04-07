@@ -307,15 +307,15 @@ Mastodon is served over HTTPS, so you need an SSL/TLS certificate. This guide us
 
 1. In a web browser, navigate to your Mastodon site's domain. You should see the Mastodon login page, where you can login as the administrator user you created earlier or create a new user.
 
-    [![Mastodon login/sign-up page](mastodon-login-signup_small.png "Mastodon login/sign-up page")](mastodon-login-signup.png)
+    ![Mastodon login/sign-up page](mastodon-login-signup.png)
 
 1. You can navigate to your instance's administration page by navigating to `example.com/admin/settings/edit`. The administration page allows you to alter the look, feel, and behavior of your instance.
 
-    [![Mastodon administration page](mastodon-admin-page_small.png "Mastodon administration page")](mastodon-admin-page.png)
+    ![Mastodon administration page](mastodon-admin-page.png)
 
 1. If your instance is running but having issues, you can troubleshoot them from the Sidekiq dashboard. Either select **Sidekiq** from the administration menu or navigate to `example.com/sidekiq` to see the dashboard.
 
-    [![Sidekiq dashboard](sidekiq-dashboard_small.png "Sidekiq dashboard")](sidekiq-dashboard.png)
+    ![Sidekiq dashboard](sidekiq-dashboard.png)
 
 To learn more about Mastodon, check out the [official Mastodon blog](https://blog.joinmastodon.org/) with news and articles related to Mastodon. You can engage with the Mastodon administrator community on [Mastodon's discussion forum](https://discourse.joinmastodon.org/), where you can peruse conversations about technical issues and community governance.
 

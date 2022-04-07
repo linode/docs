@@ -86,7 +86,7 @@ Linode generates and assigns a unique public/private keypair to your account's M
 
 1.  Linode's public key is displayed under this tab, and a **Copy to clipboard** button will appear next to it. Click on this button to copy it.
 
-    [![Linode Managed Public SSH Key](managed-public-ssh-key.png "Linode Managed Public SSH Key")](managed-public-ssh-key.png)
+    ![Linode Managed Public SSH Key](managed-public-ssh-key.png)
 
 1.  After you've copied the key, you can install it on your server, either [under your root user](#installing-as-root) or [under another user](#installing-as-another-user). If you install it under another user, be sure to also update your [Linode's Managed SSH settings](#specifying-linode-ssh-settings) to reflect that user.
 
@@ -196,7 +196,7 @@ To access these settings:
 
 1.  Select the **SSH Access** tab. Your Linodes and their Managed SSH settings will appear in the table below:
 
-    [![Linode Managed SSH Settings](managed-ssh-settings.png "Linode Managed SSH Settings")](managed-ssh-settings.png)
+    ![Linode Managed SSH Settings](managed-ssh-settings.png)
 
 1.  To enable or disable Managed SSH access for a Linode, click on the **Enable** or **Disable** option that corresponds to the Linode you'd like to interact with.
 
@@ -218,7 +218,7 @@ To add a credential:
 
 1.  Select the **Credentials** tab, then click on the **Add Credentials** link under this tab.
 
-    [![Linode Managed Credentials](managed-credentials.png "Linode Managed Credentials")](managed-credentials.png)
+    ![Linode Managed Credentials](managed-credentials.png)
 
     {{< note >}}
 The table that lists your uploaded credentials will feature a **Last Decrypted** column. This column will show the most recent date/time that a member of Linode Support viewed each credential.
@@ -246,7 +246,7 @@ To add a contact to Linode Managed:
 
 1.  Select the **Contacts** tab, then click on the **Add a Contact** link under this tab.
 
-    [![Linode Managed Contacts](managed-contacts.png "Linode Managed Contacts")](managed-contacts.png)
+    ![Linode Managed Contacts](managed-contacts.png)
 
 1.  A form for your new contact will appear. The form accepts a primary and secondary phone number, which Linode Support may call if they need additional information to troubleshoot an issue on your servers.
 

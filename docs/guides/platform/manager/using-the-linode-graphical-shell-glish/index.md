@@ -65,4 +65,4 @@ The process for launching a `getty` may differ depending on your distribution.
 
         sudo startxfce4
 
-    [![Glish at the Xfce4 desktop.](glish-xfce4-desktop_small.png)](glish-xfce4-desktop.png)
+    ![Glish at the Xfce4 desktop.](glish-xfce4-desktop.png)

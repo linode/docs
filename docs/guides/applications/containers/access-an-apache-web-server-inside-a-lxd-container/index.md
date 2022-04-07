@@ -230,7 +230,7 @@ This section will create a container, install the Apache web server, and add the
 
 6.  From your local computer, navigate to your Linode's public IP address in a web browser. You should see the default Apache page:
 
-    [![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png)](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
+    ![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
 
 ## Next Steps
 

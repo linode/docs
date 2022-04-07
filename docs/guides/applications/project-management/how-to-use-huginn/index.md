@@ -120,7 +120,7 @@ Docker can also be used to set up a full-fledged and persistent instance of Hugi
 
 Huginn comes with a set of example agents to get you started. It is a good idea to look over each of these to get an idea of how Huginn agents are set up.
 
-[![Huginn agent listing](huginn-agent-listing_small.png)](huginn-agent-listing.png)
+![Huginn agent listing](huginn-agent-listing.png)
 
 Agents come in a few different roles. Broadly, agents are either event sources, event receivers, or a combination of both.
 

@@ -310,7 +310,7 @@ server {
 
 6.  From your local computer, visit the URL of your website with your web browser. You should see the default Apache page:
 
-    [![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png)](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
+    ![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
 
     {{< note >}}
 If you look at the Apache access.log file (default file `/var/log/apache2/access.log`), it still shows the private IP address of the `proxy` container instead of the real IP address. This issue is specific to the Apache web server and has to do with how the server prints the logs. Other software on the web server is able to use the real IP. To fix this through the Apache logs, see the section [Troubleshooting](/docs/applications/containers/beginners-guide-to-lxd-reverse-proxy/#troubleshooting).
@@ -360,7 +360,7 @@ server {
 
 6.  From your local computer, visit the URL of your website with your web browser. You should see the following default NGINX page.
 
-    [![Web page of the nginx server running in a container](nginx-server-running-in-lxd-container.png)](apache-server-running-in-lxd-container.png "Web page of the nginx server running in a container.")
+    ![Web page of the nginx server running in a container](apache-server-running-in-lxd-container.png "Web page of the nginx server running in a container.")
 
 ### Adding Support for HTTPS with Let's Encrypt
 

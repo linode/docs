@@ -74,7 +74,7 @@ You can start bottom with the command displayed below. Once opened, Bottom displ
 
     btm
 
-[![Default display in bottom](bottom-display_small.png)](bottom-display.png)
+![Default display in bottom](bottom-display.png)
 
 The following sections teach you more about bottom's display features and how to navigate it and customize it.
 
@@ -102,7 +102,7 @@ The list below includes some useful keyboard shortcuts you can use to navigate b
 - You can quickly navigate to the beginning of a list using the **g** + **g** key combination. To navigate to the end of the list use the **G** key.
 - The **e** key allows you to expand a widget's contents to fill the display. You can see an example below with the **Network** widget. Pressing **e** again reduces the widget.
 
-    [![An expanded widget in bottom](bottom-expanded-widget_small.png)](bottom-expanded-widget.png)
+    ![An expanded widget in bottom](bottom-expanded-widget.png)
 
 - You can control the zoom level of the graph in a selected widget using the **+** and **-** keys. Pressing **=** resets the zoom level to its default.
 - Use the **q** key to exit bottom.
@@ -111,17 +111,17 @@ The **Processes** widget has numerous additional keybindings to help you navigat
 
 - Use the **s** key to bring up a sort menu. Selecting an item on the sort menu and pressing **Enter** updates the list using the selected criteria for its sort order.
 
-    [![Sorting processes by name in bottom](bottom-processes-sort_small.png)](bottom-processes-sort.png)
+    ![Sorting processes by name in bottom](bottom-processes-sort.png)
 
 - Use the **/** key to open the search menu. You can type a search string there to start filtering the processes by matching names. Pressing **Esc** exits the search menu, but keeps your filtering. You need to open the search menu and remove your search string to remove the filtering.
 
-    [![Searching processes in bottom](bottom-processes-search_small.png)](bottom-processes-search.png)
+    ![Searching processes in bottom](bottom-processes-search.png)
 
 - Use the **Tab** key to toggle grouping processes with the same name. Bottom then replaces the **PID** field with a **Count** field, showing the number of processes under that name. You can use the sort feature to sort by the **Count** field when you have grouped processes in this way.
 - Use the **P** key to toggle showing the full commands used to run each process. This is useful if you want to see what options were used for running processes.
 - Use the **t** key to toggle displaying the process list in tree mode. In tree mode, processes are nested beneath their parent processes.
 
-    [![Processes displaying in tree mode in bottom](bottom-processes-tree_small.png)](bottom-processes-tree.png)
+    ![Processes displaying in tree mode in bottom](bottom-processes-tree.png)
 
 ## How to Configure bottom
 
@@ -144,7 +144,7 @@ The options in the above example run bottom with:
 - Network usage shown in bytes (`--network_use_bytes`).
 - Regex enabled by default on the search menu for the **Processes** widget (`--regex`).
 
-[![bottom in basic display mode, with processes grouped and displaying full commands and network usage in bytes](bottom-basic-display_small.png)](bottom-basic-display.png)
+![bottom in basic display mode, with processes grouped and displaying full commands and network usage in bytes](bottom-basic-display.png)
 
 ### Configuration File
 

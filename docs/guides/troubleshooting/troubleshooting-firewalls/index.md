@@ -53,7 +53,7 @@ If you are using Linode Cloud Firewall, then it's important to verify which Clou
 
 1.  Next, check the **Status** column to confirm that the Cloud Firewalls is **Enabled**.
 
-    [![firewall-home](firewall-listing-non-cmr.png)](firewall-listing-non-cmr.png)
+    ![firewall-home](firewall-listing-non-cmr.png)
 
 1.  If the Cloud Firewall is enabled, check what rules are currently active by clicking on the label of the Cloud Firewall. This takes you to your Cloud Firewall's **Rules** page.
 

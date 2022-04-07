@@ -235,7 +235,7 @@ In recent versions of LXD, you need to specify an IP address (such as *127.0.0.1
 
 6.  From your local computer, navigate to your Linode's public IP address in a web browser. You should see the default Apache page:
 
-    [![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png)](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
+    ![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
 
 
 ## Common LXD Commands

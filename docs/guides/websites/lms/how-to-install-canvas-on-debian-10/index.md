@@ -458,11 +458,11 @@ production:
 
 Your Canvas website is now up and running. Visit the website by navigating to your server's domain name in a web browser. When you are prompted to log in, you can do using the Canvas administrator credentials you created earlier.
 
-[![Canvas login page](canvas-login_small.png "Canvas login page")](canvas-login.png)
+![Canvas login page](canvas-login.png)
 
 Once you log in, you are taken to your Canvas dashboard from which you can view, create, and manage your Canvas website's content.
 
-[![Canvas dashboard](canvas-dashboard_small.png "Canvas dashboard")](canvas-dashboard.png)
+![Canvas dashboard](canvas-dashboard.png)
 
 - You can learn more about how to get started using your Canvas website and all the features it has to offer on the [Canvas Community](https://community.canvaslms.com/) website.
 

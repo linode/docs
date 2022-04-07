@@ -56,7 +56,7 @@ To view your current balance, follow the steps below. This shows you the sum of 
 1.  Select **Account** from the sidebar links.
 1.  On the right side you will see your **Billing Information** panel.
 
-    [![This customer has a $63.52 uninvoiced balance and $0 due](billing-amount-due-and-uninvoiced-balance.png "This customer has a $63.52 uninvoiced balance and $0 due")](billing-amount-due-and-uninvoiced-balance.png)
+    ![This customer has a $63.52 uninvoiced balance and $0 due](billing-amount-due-and-uninvoiced-balance.png)
 
     **Amount Due** is the current invoiced balance and **Uninvoiced Balance** is the accrued balance that has not yet been invoiced for the month.
 
@@ -95,7 +95,7 @@ You can use the Cloud Manager to pay an outstanding balance or prepay for Linode
 1.  Select **Account & Billing**.
 1.  Expand the **Make a Payment** panel.
 
-    [![The Make a Payment Panel](billing-make-a-payment-panel.png "The Make a Payment Panel.")](billing-make-a-payment-panel.png)
+    ![The Make a Payment Panel](billing-make-a-payment-panel.png)
 
 1.  Enter the amount of money you would like to pay in the **Amount to Charge** field.
 1.  Enter the CVV number on the back of your credit card in the **CVV** field.
@@ -135,7 +135,7 @@ Keep your credit card information up to date to prevent service interruptions. H
 1.  Expand the **Update Credit Card** box and enter your credit card number and the card's expiration date.
 1.  Click **Save**. Your credit card information will be updated.
 
-    [![Update your credit card information.](billing-change-card.png "Update your credit card.")](billing-change-card.png)
+    ![Update your credit card information.](billing-change-card.png)
 
     {{< note >}}
 If you have an outstanding balance, you will need to make a manual payment to bring your account up to date. See the [Making a Payment](#making-a-payment) section for more information.

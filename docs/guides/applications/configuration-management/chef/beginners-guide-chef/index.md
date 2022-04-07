@@ -31,7 +31,7 @@ Chef works with three core components:
 - **Chef Workstations:** Workstations are personal computers or virtual servers where the configuration code for Chef is created, tested, and changed. There can be as many workstations as needed, whether this is one per person or otherwise.
 - **Chef Nodes:** Nodes are the servers Chef pushes changes to, generally a fleet of multiple machines that require the benefits of automation. Chef can manage nodes that are virtual servers, containers, network devices, and storage devices. A Chef client is installed on every node that is managed by Chef.
 
-[![Chef Workflow](chef_graph-small.png)](chef_graph.png)
+![Chef Workflow](chef_graph.png)
 
 These three components allow Chef to communicate in a mostly linear fashion, with any changes pushed from workstations to the Chef server, and then pulled from the server to the nodes and implemented on each node through the Chef client. In turn, information about the node passes to the server to determine which files are different from the current settings and need to be updated.
 

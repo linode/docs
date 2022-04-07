@@ -83,7 +83,7 @@ duf 0.6.2 (d1d2865)
 
 For basic usage, you can just run the `duf` command alone, and you should see an output similar to the following:
 
-[![Basic duf usage](duf-basic_small.png)](duf-basic.png)
+![Basic duf usage](duf-basic.png)
 
 This provides roughly the equivalent of the `sudo df -h` command, as you can see from the output below:
 
@@ -110,7 +110,7 @@ You can go even deeper with duf, listing information for pseudo, duplicate, and 
 
     duf --all
 
-[![Listing all devices in duf](duf-all-devices_small.png)](duf-all-devices.png)
+![Listing all devices in duf](duf-all-devices.png)
 
 Duf gives an array of additional options to let you control what information you see. You can see the examples of these options presented in the following sections.
 
@@ -122,7 +122,7 @@ The example below gives `duf` three paths. Notice that the output has three entr
 
     duf /dev /etc/opt /var/log
 
-[![Devices corresponding to given paths in duf](duf-paths_small.png)](duf-paths.png)
+![Devices corresponding to given paths in duf](duf-paths.png)
 
 ### Sorting and Arranging
 
@@ -132,7 +132,7 @@ Below is an example sorting the tables by `used`:
 
     duf --sort used
 
-[![Sorting def by used](duf-sort-used_small.png)](duf-sort-used.png)
+![Sorting def by used](duf-sort-used.png)
 
 Similarly, duf allows you to define what columns you want to show in each table, by way of the `--output` option. This option accepts the same set of columns used for sorting (above), and you can list multiple columns as a comma-separated list (no spaces).
 

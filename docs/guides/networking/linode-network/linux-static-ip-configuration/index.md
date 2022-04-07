@@ -57,7 +57,7 @@ Our [Network Helper](/docs/guides/network-helper/) tool is enabled by default fo
 
 To find the networking information for each of your Linodes in your Linode Manager, click on the **Linodes** tab to the left of the page, select the Linode you'll be configuring, then click on the **Networking** towards the top.
 
-[![Linode Manager / Networking Tab](linode_demo_steps.png)](linode_demo_steps.png)
+![Linode Manager / Networking Tab](linode_demo_steps.png)
 
 You'll see the following information for your Linode. Use this information to configure your Linode's network settings as shown below.
 
@@ -66,7 +66,7 @@ You'll see the following information for your Linode. Use this information to co
 *   IPv6 gateway
 *   DNS resolvers (if you want to use Linode's)
 
-[![Linode Manager / Remote Access](linode_demo.png)](linode_demo.png)
+![Linode Manager / Remote Access](linode_demo.png)
 
 Below are example configurations for the given Linux distribution. Edit the example files substituting the example IP addresses with those of your Linode, gateway and DNS nameservers. Depending on the amount of addresses you want to configure, not all lines will be necessary.
 
