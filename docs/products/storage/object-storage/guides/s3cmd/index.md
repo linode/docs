@@ -212,12 +212,12 @@ For more information on hosting a static website with Object Storage, read our [
 
 ## Syncing Files and Directories
 
-While you can utilize the `put` command to upload entire directories, the `sync` command may offer more desireable behavior. It's able to identify which files have been added or modified and only upload those files. This can be especially useful when maintaining large amounts of files, such as the contents of a static site.
+While you can utilize the `put` command to upload entire directories, the `sync` command may offer more desirable behavior. It's able to identify which files have been added or modified and only upload those files. This can be especially useful when maintaining large amounts of files, such as the contents of a static site.
 
 **Command:** `s3cmd sync [local-path] s3://[bucket-label]/[path]`, replacing *[local-path]* with the path to the folder you wish to upload, *[bucket-label]* with the label for your bucket, and *[path]* with the remote path you wish to target for the upload.
 
 {{< note >}}
-To upload the current directory, replace *[local-path]* with a `.` (period charater).
+To upload the current directory, replace *[local-path]* with a `.` (period character).
 {{</ note >}}
 
 **Example:** Upload the current directory to the bucket labeled *example-bucket* and make all files public.
