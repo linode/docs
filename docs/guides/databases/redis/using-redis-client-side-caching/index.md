@@ -1,16 +1,14 @@
 ---
-slug: using-redis-for-client-side-caching
+slug: redis-client-side-caching
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Learn how you can set up your Redis instance for server-assisted client-side caching."
-og_description: "Learn how you can set up your Redis instance for server-assisted client-side caching."
+  name: Nathaniel Stickman
+description: "Modern web applications rely on client-side caching to enhance its performance. This guide shows you how to use Redis for server-assisted client-side caching."
 keywords: ['redis caching tutorial','redis server assisted client-side caching','how redis caching works']
 tags: ['redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-01-12
+published: 2022-04-08
 modified_by:
-  name: Nathaniel Stickman
+  name: Linode
 title: "Using Redis for Client-Side Caching"
 h1_title: "How to Use Redis for Client-Side Caching"
 enable_h1: true
@@ -22,11 +20,9 @@ external_resources:
 - '[MDN Web Docs: Client-side Storage](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage)'
 ---
 
-Redis is an open-source in-memory database with a reputation for working exceptionally well for caching data on web applications. Redis's fast transactions and low latency help to increase application performance while its server-assisted caching feature makes client-side caching more efficient.
+Redis is an open-source in-memory database with a reputation for working exceptionally well for caching web application data. Redis's fast transactions and low latency help to increase application performance while its server-assisted caching feature makes client-side caching more efficient.
 
 This tutorial explains the concepts behind Redis's server-assisted client-side caching, including how client-side caching and server assistance work. The guide then breaks down how to set up your Redis server to get the most out of client-side caching in your web applications.
-
-Are you looking to learn more about Redis generally before diving in? Be sure to peruse our other guides in this series.
 
 ## Before You Begin
 
@@ -54,7 +50,7 @@ The steps in this guide is written for non-root users. Commands that require ele
 
 To improve performance, many modern web applications utilize the browser's ability to store some data locally. Doing so is called *client-side caching*, and serves the purpose, mainly, of improving performance.
 
-Rather than a making call to the server every time some data is needed, an application can first check the local cache. If the data is there, the application does not need to call the server for it. If the data is not there yet, the application can fetch the data and store it in the cache for later.
+Rather than making call to the server every time some data is needed, an application can first check the local cache. If the data is there, the application does not need to call the server for it. If the data is not there yet, the application can fetch the data and store it in the cache for later.
 
 Browser cookies are an example of client-side storage. They allow an application to store data like user login and site preferences. But modern browsers also support other means of storage, making client-side caching more versatile and capable.
 
@@ -64,7 +60,7 @@ The main perk to client-side caching is performance. Web applications that use c
 
 However, the client-side caches suffer when it comes to keeping cached data up to date. The use of a local cache introduces the possibility of having stored data become outdated and out of sync with the data on the server.
 
-This may not be an issue in some use cases. For instance, you may have reasonable certainty about how often data changes or how time-sensitive the data is. In such cases, you can mark the cached data with an invalidation timestamp, after which the application fetches fresh data from the server.
+This may not be an issue for some use cases. For instance, you may have reasonable certainty about how often data changes or how time-sensitive the data is. In such cases, you can mark the cached data with an invalidation timestamp, after which the application fetches fresh data from the server.
 
 But this limitation can be prohibitive for applications where data changes frequently and is more time-sensitive. In those cases, web applications often have to implement some other means of expiring local caches.
 
@@ -76,7 +72,7 @@ In this model, the Redis server tracks the data used by each connected client. W
 
 Redis's model allows an application to get the performance benefits of caching while ensuring that the local data can be kept up to date.
 
-To elaborate, an application using Redis for server-assisted caching should have layering like the following:
+To elaborate, an application using Redis for server-assisted caching should use the following layers:
 
 - An *application layer* that fetches data either from the cache or, if the necessary data is not there, from the database server. Any data received from the database gets stored in the cache.
 
@@ -137,7 +133,7 @@ Below, you can see the steps used for setting up your clients with each of these
 
         CLIENT TRACKING on REDIRECT 15
 
-The second client, and any subsequent clients set up likewise, are now being tracked for server-assisted caching. The server keeps note of any data that these tracked clients fetch. Then, the server sends invalidation messages to the listening client (the first one above) whenever any of that data changes.
+The second client, and any subsequent clients that you set up in a similar way, are now being tracked for server-assisted caching. The server keeps note of any data that these tracked clients fetch. Then, the server sends invalidation messages to the listening client whenever any of that data changes.
 
 You can verify this by issuing the following commands to the second client:
 
@@ -199,22 +195,22 @@ For Redis versions less than 6, see the previous section for [creating a dedicat
 
         CLIENT TRACKING on
 
-The client now has tracking enabled. Any data the client fetches get monitored by the server. When that data changes, the client receives a notification to invalidate its cached data.
+    The client now has tracking enabled. Any data the client fetches get monitored by the server. When that data changes, the client receives a notification to invalidate its cached data.
 
-You can verify this by fetching a piece of data and making a change to it later.
+1. Verify that your client tracking is enabled by fetching a piece of data and making a change to it later.
 
-    GET cat_one:key_three
+        GET cat_one:key_three
 
-{{< output >}}
+    {{< output >}}
 "Catharsis"
-{{< /output >}}
+    {{< /output >}}
 
-    SET cat_one:key_three "Cliche"
+        SET cat_one:key_three "Cliche"
 
-{{< output >}}
+    {{< output >}}
 -> invalidate: 'cat_one:key_three'
 OK
-{{< /output >}}
+    {{< /output >}}
 
 {{< note >}}
 Redis command-line clients (using the Redis CLI) using RESP3 only receive notifications after another command has been issued by the client.
@@ -240,7 +236,7 @@ Here is a breakdown of what this could look like:
 
 {{< /note >}}
 
-### Using Broadcast Mode
+### Using Redis's Broadcast Mode
 
 In its default mode, shown above, Redis's client tracking follows each key fetched by each client. If a client has not yet fetched a particular key, that client does not receive an invalidation notice when the key changes.
 
@@ -260,11 +256,11 @@ Now, when any key with that prefix changes, an invalidation message gets sent:
 3) 1) "cat_one:key_three"
 {{< /output >}}
 
-The broadcast mode also supports multiple prefixes. For instance, modifying the example above:
+The broadcast mode also supports multiple prefixes. The example below adds prefixes that modify the previous example:
 
     CLIENT TRACKING on BCAST PREFIX cat_one: PREFIX cat_two: PREFIX cat_three: REDIRECT 15
 
-### Additional Settings
+### Redis Client Tracking Settings
 
 Redis's client tracking comes with some additional parameters that let you fine-tune how the server tracks clients and sends notifications. The following sections explain what these parameters are and how you can use them.
 
@@ -302,6 +298,6 @@ However, the client would receive an invalidation notice if another client execu
 
 ## Conclusion
 
-This tutorial has covered what you need to know to get started using Redis for server-assisted client-side caching. Everything from setting up client tracking to customizing it to behave the way your web application needs.
+This tutorial has covered what you need to know to get started using Redis for server-assisted client-side caching. You learned everything from setting up client tracking to customizing it to behave the way your web application needs.
 
-You can continue to learn about Redis and how to get the most out of your Redis databases through our other guides in this series. These guides cover everything from connecting to a remote Redis server to working with the hash data type.
+You can continue to learn about Redis and how to get the most out of your Redis databases through our other guides in this series. These guides cover everything from [connecting to a remote Redis server](/docs/guides/how-to-connect-to-redis/) to working with the [hash data type in Redis](/docs/guides/hashes-in-redis-databases/).
