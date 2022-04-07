@@ -70,6 +70,7 @@ aren
 argv
 arping
 arptables
+arthashastra
 Asana
 aspell
 askbot
@@ -757,6 +758,7 @@ healthtech
 heartbleed
 hebb
 hebbian
+hebern
 heredoc
 heroku
 hexo
@@ -1664,9 +1666,11 @@ retrans
 reusability
 reutilize
 richlanguage
+rijndael
 rimap
 ripgrep
 ritchie
+rivest
 rkhunter
 rkt
 rmdir
@@ -2141,6 +2145,7 @@ verisign
 veritas
 vhost
 vhosts
+vigenere
 vimrc
 vinagre
 virb
