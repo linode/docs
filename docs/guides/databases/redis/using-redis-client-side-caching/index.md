@@ -133,29 +133,29 @@ Below, you can see the steps used for setting up your clients with each of these
 
         CLIENT TRACKING on REDIRECT 15
 
-The second client, and any subsequent clients that you set up in a similar way, are now being tracked for server-assisted caching. The server keeps note of any data that these tracked clients fetch. Then, the server sends invalidation messages to the listening client whenever any of that data changes.
+    The second client, and any subsequent clients that you set up in a similar way, are now being tracked for server-assisted caching. The server keeps note of any data that these tracked clients fetch. Then, the server sends invalidation messages to the listening client whenever any of that data changes.
 
-You can verify this by issuing the following commands to the second client:
+1. Verify that the second client is being tracker for server-assisted caching by issuing the following commands to the second client:
 
-    GET cat_one:key_one
+        GET cat_one:key_one
 
-{{< output >}}
+    {{< output >}}
 "Anaphora"
-{{< /output >}}
+    {{< /output >}}
 
-    SET cat_one:key_one "Anapest"
+        SET cat_one:key_one "Anapest"
 
-{{< output >}}
+    {{< output >}}
 OK
-{{< /output >}}
+    {{< /output >}}
 
-Now, on the first client, you should see a notification like the following:
+    Now, on the first client, you should see a notification like the following:
 
-{{< output >}}
+    {{< output >}}
 1) "message"
 2) "__redis__:invalidate"
 3) 1) "cat_one:key_one"
-{{< /output >}}
+    {{< /output >}}
 
 #### Using the RESP3 Protocol
 
@@ -212,7 +212,7 @@ For Redis versions less than 6, see the previous section for [creating a dedicat
 OK
     {{< /output >}}
 
-{{< note >}}
+    {{< note >}}
 Redis command-line clients (using the Redis CLI) using RESP3 only receive notifications after another command has been issued by the client.
 
 So, for instance, a client tracking `cat_one:key_three` does not immediately receive a notification if another client changes that key. It only receives the invalidation notification whenever it attempts a command.
