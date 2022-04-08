@@ -17,7 +17,7 @@ h1_title: "Managing Configuration Profiles on a Linode"
 enable_h1: true
 ---
 
-A **configuration profile** functions as a boot loader for a Linode. It controls general boot settings, including the disk the Linode will boot from, the disks that will be mounted, the kernel that will be used, and the network interfaces on the Linode. Multiple configuration profiles can be created, each one booting from different disks with different settings. This can allow you to try out new Linux distributions without paying for additional Linodes (see [Deploy an Image to a Disk on an Existing Linode](/docs/guides/deploy-an-image-to-a-linode/)) or to create custom software testing environments.
+A **configuration profile** functions as a boot loader for a Linode. It controls general boot settings, including the disk the Linode will boot from, the disks that will be mounted, the kernel that will be used, and the network interfaces on the Linode. Multiple configuration profiles can be created, each one booting from different disks with different settings. This can allow you to try out new Linux distributions without paying for additional Linodes (see [Deploy an Image to a Disk on an Existing Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/)) or to create custom software testing environments.
 
 ## Managing Configuration Profiles
 
@@ -43,7 +43,7 @@ When adding or editing a configuration profile on a Linode, the following settin
 - **Virtual Machine:** VM mode determines whether devices inside your virtual machine are *paravirtualized* or *fully virtualized*. Unless there is a specific need to run devices in full virtualization, select *paravirtualization*. This is required for features like Block Storage.
 
 - **Boot Settings:**
-    - **Kernel:** Select the version of the Linux kernel that will be used. The options include Grub 2 (for upstream or custom-compiled kernels), a specific Linode supplied kernel, or Direct Disk. For most distributions, its recommended to set this option to *Grub 2*. See [How to Change your Linode's Kernel](/docs/guides/how-to-change-your-linodes-kernel/).
+    - **Kernel:** Select the version of the Linux kernel that will be used. The options include Grub 2 (for upstream or custom-compiled kernels), a specific Linode supplied kernel, or Direct Disk. For most distributions, its recommended to set this option to *Grub 2*. See [How to Change your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/).
     - **Run Level:** Adjust the [run level](https://en.wikipedia.org/wiki/Runlevel) of the OS to allow for advanced diagnostics. Recommended setting: *Run Default Level*.
     - **Memory Limit:** Limits the amount of memory that the Linode can use. Recommended setting: *Do not set any limits on memory usage*.
 

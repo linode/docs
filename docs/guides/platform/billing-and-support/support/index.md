@@ -41,9 +41,9 @@ Linode provides community spaces, an AI-powered assistant, libraries of referenc
 
 -   **Linode Guides & Tutorials:** The [Guides & Tutorials](/docs/) library hosts a catalogued and searchable list of guides on a large number of topics. Here are a few that focus on troubleshooting:
 
-  - The [Troubleshooting](/docs/troubleshooting/troubleshooting/) quick start guide provides answers for common server connectivity and management issues.
+  - The [Troubleshooting](/docs/guides/troubleshooting-overview/) quick start guide provides answers for common server connectivity and management issues.
 
-  - The [Linode Beginner's Guide](/docs/platform/billing-and-support/linode-beginners-guide/) displays a curated list of the most frequently asked questions from Linode customers.
+  - The [Linode Beginner's Guide](/docs/guides/linode-beginners-guide/) displays a curated list of the most frequently asked questions from Linode customers.
 
   - The [Quick Answers](/docs/quick-answers/) section offers short guides with fast answers.
 

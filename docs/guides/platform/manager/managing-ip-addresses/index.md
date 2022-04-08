@@ -9,7 +9,7 @@ keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip addre
 tags: ["linode platform","cloud manager","networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/']
-modified: 2022-04-06
+modified: 2022-04-08
 modified_by:
   name: Linode
 published: 2016-08-23
@@ -80,9 +80,9 @@ Follow the instructions below to add an public IPv4, private IPv4, or IPv6 range
 
     Once the IP address or range has been added, it should be visible in the *IP Address* section.
 
-1.  To make sure the new IP address is configured within the internal system of the Compute Instance, verify that [Network Helper](/docs/platform/network-helper/) is enabled and reboot the Compute Instance.
+1.  To make sure the new IP address is configured within the internal system of the Compute Instance, verify that [Network Helper](/docs/guides/network-helper/) is enabled and reboot the Compute Instance.
 
-    If Network Helper is turned off *and* you've [configured a static IP address](/docs/networking/linux-static-ip-configuration/), you need to update the configuration files with the new IP address or enable Network Helper.
+    If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/linux-static-ip-configuration/), you need to update the configuration files with the new IP address or enable Network Helper.
 
 {{< note >}}
 Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification for additional public IPv4 addresses. If you have an application that requires multiple IP addresses, consider using an IPv6 /64 range instead.
@@ -126,9 +126,9 @@ You can verify the reverse DNS entry was properly submitted within the *IP addre
 
 1.  A pop-up confirmation dialog appears. Click the **Delete Range** button to confirm the request.
 
-1.  To make sure the IP address is removed from the internal system of the Compute Instance, verify that [Network Helper](/docs/platform/network-helper/) is enabled and reboot the Compute Instance.
+1.  To make sure the IP address is removed from the internal system of the Compute Instance, verify that [Network Helper](/docs/guides/network-helper/) is enabled and reboot the Compute Instance.
 
-    If Network Helper is turned off *and* you've [configured a static IP address](/docs/networking/linux-static-ip-configuration/), you need to update the configuration files to remove the IP address or enable Network Helper.
+    If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/linux-static-ip-configuration/), you need to update the configuration files to remove the IP address or enable Network Helper.
 
 ## Transferring IP Addresses
 
@@ -159,9 +159,9 @@ The *IP Transfer* form only displays Compute Instances hosted in the same data c
 
 1.  Click **Save** to transfer the requested IPs.
 
-1.  To make sure the new IP addresses take affect within the internal configuration of each Compute Instance, verify that [Network Helper](/docs/platform/network-helper/) is enabled and reboot the affected Instance(s). It may take up to 1-2 minutes for the transfer to take affect.
+1.  To make sure the new IP addresses take affect within the internal configuration of each Compute Instance, verify that [Network Helper](/docs/guides/network-helper/) is enabled and reboot the affected Instance(s). It may take up to 1-2 minutes for the transfer to take affect.
 
-    If Network Helper is turned off *and* you've [configured a static IP address](/docs/networking/linux-static-ip-configuration/), you need to update the configuration files with the new IP addresses or enable Network Helper.
+    If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/linux-static-ip-configuration/), you need to update the configuration files with the new IP addresses or enable Network Helper.
 
     {{< note >}}
 If the IP is unreachable after a few minutes, you may need to notify the router directly of the IP change with the `arp` command run on your Compute Instance:

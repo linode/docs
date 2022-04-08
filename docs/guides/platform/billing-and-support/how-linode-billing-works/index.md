@@ -17,7 +17,7 @@ enable_h1: true
 tags: ["linode platform"]
 ---
 
-We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works. To learn how to manage your billing in the Cloud Manager see the [Manage Billing in Cloud Manager](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/) guide. If you have a question that isn't answered in either guide, please feel free to [contact Support](/docs/platform/billing-and-support/support/).
+We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works. To learn how to manage your billing in the Cloud Manager see the [Manage Billing in Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/) guide. If you have a question that isn't answered in either guide, please feel free to [contact Support](/docs/guides/support/).
 
 ## Understanding Billing
 

@@ -53,7 +53,7 @@ All of a Linode's disks and configuration profiles are displayed on the Linode's
 
 1.  This pane indicates how much of your plan's available storage has been allocated to your disks. This does not represent how much disk space is available on any given disk that you've created. To see how much space inside your disk is currently being used, connect to your Linode via SSH and execute the `df -h` command.
 
-1. The **Configure a Migration** section gives you access to the Linode's migration page where you can initiate a [cross-data center migration](/docs/platform/migrating-to-a-different-data-center/).
+1. The **Configure a Migration** section gives you access to the Linode's migration page where you can initiate a [cross-data center migration](/docs/guides/how-to-initiate-a-cross-data-center-migration-for-your-linode/).
 
 ## Disks
 
@@ -182,7 +182,7 @@ Making a new configuration profile allows you to create a new and separate boot 
 
 1.  Enter a descriptive name for the configuration profile in the **Label** field. This name appears on the Linode's detail page and will help you differentiate it from other configuration profiles.
 1.  You can enter comments or notes about this configuration profile in the **Comments** field.
-1.  Under **VM Mode**, select whether you would like paravirtualization or full-virtualization. This option describes how hardware commands are directed to the host operating system. Paravirtualization is recommended, and is necessary for features like [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/).
+1.  Under **VM Mode**, select whether you would like paravirtualization or full-virtualization. This option describes how hardware commands are directed to the host operating system. Paravirtualization is recommended, and is necessary for features like [Block Storage](/docs/guides/how-to-use-block-storage-with-your-linode/).
 1.  Select a Linux kernel from the **Kernel** menu. We recommend selecting one of the current and latest kernels.
 1. Select the **Run Level** for your configuration profile. If you aren't sure which level to choose, choose **Run Default Level**.
 1. Select the **Memory Limit** setting for the configuration profile. If you select to **limit the amount of RAM this config uses**, enter in the memory limit allotment. The maximum amount of available memory is displayed below the text field.
@@ -240,7 +240,7 @@ The configuration profile is removed from the Linode detail page.
 
 You can *clone* disks and configuration profiles from one Linode to another, as long as both of the Linodes are on your account. This is an easy way to transfer your configuration between Linodes.
 
-To clone an entire Linode, see our [Clone Your Linode guide](/docs/platform/disk-images/clone-your-linode/). Cloning a Linode is a simple alternative to migrating your Linode to a different data center.
+To clone an entire Linode, see our [Clone Your Linode guide](/docs/guides/clone-your-linode/). Cloning a Linode is a simple alternative to migrating your Linode to a different data center.
 
 {{< note >}}
 We recommend that you power off your Linode first, and keep it powered off until your disks have completed the cloning process.
@@ -297,6 +297,6 @@ If you need to make room on your destination Linode you can [resize it to a larg
 
 If you're wondering how you could use disks and configuration profiles, here are some ideas to get you started:
 
--   **Automate Server Builds:** If you run a large website that requires multiple servers, or if you just love automating things, you'll want to [automate your server builds](/docs/platform/automating-server-builds/). You can rapidly spin up multiple servers with exactly the same configuration by creating a *golden disk* that can be cloned to multiple Linodes.
+-   **Automate Server Builds:** If you run a large website that requires multiple servers, or if you just love automating things, you'll want to [automate your server builds](/docs/guides/automating-server-builds/). You can rapidly spin up multiple servers with exactly the same configuration by creating a *golden disk* that can be cloned to multiple Linodes.
 -   **Experiment with Distributions:** New to Linux? Take different distributions out for a spin by creating a separate disk for each flavor of Linux. Once you find a distribution you like, you can delete all of the disks except the one with your favorite distribution.
 -   **Create a Software Testing Environment:** If you're a developer, you can create different disks for testing purposes. Every disk can hold a different 32- or 64-bit distribution, and every configuration profile can be set to use a different kernel. Even if you're not a developer, this is ideal for testing open source or proprietary software on different distributions.

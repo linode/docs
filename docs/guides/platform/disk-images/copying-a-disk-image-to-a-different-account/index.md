@@ -31,11 +31,11 @@ You need to prepare the *receiving* Linode before initiating the transfer. First
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) with the username and password you created when signing up.
 1.  Click **Create** at the top of the page and select **Linode**.
-1.  Click **X** to not choose any **Image** in the **Choose a Distribution** section of the [Distributions](/docs/quick-answers/linux/choosing-a-distribution/) tab.
+1.  Click **X** to not choose any **Image** in the **Choose a Distribution** section of the [Distributions](/docs/guides/choosing-a-distribution/) tab.
 
     ![Creating a receiving Linode](image-selection.png)
 
-1. Choose the region where you would like the Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
+1. Choose the region where you would like the Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
 
 1. Select a Linode plan.
 
@@ -127,7 +127,7 @@ Wait for the transfer to complete. Note that this process can take a while, depe
 
 ## Verifying the Disk
 
-After the file transfer has completed, you should verify the disk by mounting it on the *receiving* Linode. Ensure that the [Network Helper](/docs/platform/network-helper/) is on for the *receiving* Linode or the [Static IP](/docs/networking/linux-static-ip-configuration/) is configured to enable networking with the new IP addresses.
+After the file transfer has completed, you should verify the disk by mounting it on the *receiving* Linode. Ensure that the [Network Helper](/docs/guides/network-helper/) is on for the *receiving* Linode or the [Static IP](/docs/guides/linux-static-ip-configuration/) is configured to enable networking with the new IP addresses.
 
 1.  Connect to the *receiving* Linode through SSH as `root`.
 

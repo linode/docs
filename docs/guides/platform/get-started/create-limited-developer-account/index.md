@@ -23,7 +23,7 @@ When you hire someone to work on your Linode, there are a variety of ways to gra
 
 This guide explains and answers some of the most frequently asked questions about account access. The sections are separated in order of granularity, starting with service-level access at the top, and working towards application-specific access.
 
-For security and privacy, [Linode Support](/docs/platform/support/) is not able to troubleshoot issues related to users and application access. Instead, Linode offers an in-house [Professional Services](/professional-services/) team that can be hired to help with projects.
+For security and privacy, [Linode Support](/docs/guides/support/) is not able to troubleshoot issues related to users and application access. Instead, Linode offers an in-house [Professional Services](/professional-services/) team that can be hired to help with projects.
 
 {{< note >}}
 The following sections include commands that show how to manipulate credentials on your Linodes, and these commands use `exampleUser` in place of your users' names. Replace `exampleUser` with whatever you would like to name your users.
@@ -49,7 +49,7 @@ Useful *Global Grants* for a limited access user might include the ability to:
 * Add [Longview](/longview/) clients.
 * Use the [DNS Manager](/dns-manager/) to add domains.
 * Create [StackScripts](/stackscripts/).
-* Create [Images](/docs/platform/linode-images/).
+* Create [Images](/docs/products/tools/images/).
 * Add [Block Storage Volumes](/blockstorage/).
 
 ### Revoke a User's Access to the Linode Account
@@ -104,7 +104,7 @@ For some applications, a user may only need to transfer files to or from the ser
 The steps in this section disable a user's SSH access. Do not follow the steps in this section for any user who needs SSH access.
 {{< /caution >}}
 
-Consult our guide to configure this using [SFTP jails on Debian or Ubuntu](/docs/tools-reference/tools/limiting-access-with-sftp-jails-on-debian-and-ubuntu/).
+Consult our guide to configure this using [SFTP jails on Debian or Ubuntu](/docs/guides/limiting-access-with-sftp-jails-on-debian-and-ubuntu/).
 
 1.  Change the `sftp` subsystem line and add a `Match Group sftpOnly` section in `sshd_config`:
 
