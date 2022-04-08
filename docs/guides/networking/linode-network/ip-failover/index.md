@@ -37,7 +37,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Fremont (California, USA) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 3 |
 | London (United Kingdom) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 7 |
 | Mumbai (India) |  *Not supported* | - | 14 |
-| **Newark (New Jersey, USA)** | **New method (BGP)** | **lelastic** | 6 |
+| Newark (New Jersey, USA) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 6 |
 | Singapore | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 9 |
 | Sydney (Australia) |  *Not supported* | - | 16 |
 | Tokyo (Japan) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 11 |
@@ -133,7 +133,7 @@ iface lo [protocol] static
 
         If you receive the following output, you can safely ignore it: *RTNETLINK answers: Cannot assign requested address*.
 
-    -   **CentOS/RHEL**: Using [NetworkManager](https://en.wikipedia.org/wiki/NetworkManager). Since NetworkManager does not support managing the loopback interface, you need to first add a dummy interface named *shared* (or any other name that you wish). Instead of editing the file directly, the [nmcli]() tool is used.
+    -   **CentOS/RHEL**: Using [NetworkManager](https://en.wikipedia.org/wiki/NetworkManager). Since NetworkManager does not support managing the loopback interface, you need to first add a dummy interface named *shared* (or any other name that you wish). Instead of editing the file directly, the [nmcli](https://linux.die.net/man/1/nmcli) tool is used.
 
             nmcli con add type dummy ifname shared
 
@@ -226,7 +226,7 @@ You can test the failover functionality of the shared IP using the steps below.
 
 1.  Using a machine other than the two Compute Instances within the failover configuration (such as your local machine), ping the shared IP address.
 
-        ping 192.0.2.1
+        ping [shared-ip]
 
     Review the output to verify that the ping is successful. The output should be similar to the following:
 
