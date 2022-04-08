@@ -18,9 +18,7 @@
 <div class="flex justify-between bg-brand pull-out items-center rounded-none md:rounded-md px-4 md:px-8 py-4">
   <div class="text-white text-md md:text-lg font-regular tracking-normal w-3/4">
     <span>
-        <a href="https://login.linode.com/signup?promo={{ $promo_code }}" class="font-semibold text-white hover:underline">
-          Create a Linode account
-        </a>
+        <a href="https://login.linode.com/signup?promo={{ $promo_code }}" class="font-semibold text-white underline" style="text-underline-offset: 2px;">Create a Linode account</a>
         to try this guide with a ${{ $promo_amount }} credit.
         {{ if $promo_disclaimer }}
         <div class="text-sm italic">{{ $promo_disclaimer }}</div>

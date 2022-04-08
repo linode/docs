@@ -47,7 +47,7 @@ Writing a script for use in a StackScript is generally the same as writing a scr
 - The primary requirement for your scripts is that the interpreter needed to execute your script should exist in the Linode base image you are deploying. While Bash is an obvious choice for a script, you may choose any scripting language.
 
     {{< note >}}
-Linode images are created using "vanilla" versions of its given distribution. Consult our [Choosing a Linux Distribution](/docs/quick-answers/linux/choosing-a-distribution/) guide to see list of all distributions Linode provides and to access each distribution's corresponding websites. You can find more information on the interpreters available for each distribution on their official websites.
+Linode images are created using "vanilla" versions of its given distribution. Consult our [Choosing a Linux Distribution](/docs/guides/choosing-a-distribution/) guide to see list of all distributions Linode provides and to access each distribution's corresponding websites. You can find more information on the interpreters available for each distribution on their official websites.
 {{</ note >}}
 
 - When writing a script, you must use a [*shebang*](https://en.wikipedia.org/wiki/Shebang_(Unix)) as the first line of your script. This indicates to your Linux system which interpreter to use when running the script. For example, if you are writing a Bash script, the beginning of your script should include the following line:
@@ -189,6 +189,6 @@ The files you reference within your script must exist and be accessible via `HTT
 
 ## Next Steps
 
-- See [A Tutorial for Creating and Managing StackScripts](/docs/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/) to learn how to add your script to a StackScript and how to make a StackScript available to the rest of the Linode Community.
+- See [A Tutorial for Creating and Managing StackScripts](/docs/guides/creating-and-managing-stackscripts-a-tutorial/) to learn how to add your script to a StackScript and how to make a StackScript available to the rest of the Linode Community.
 
-- See [A Tutorial for Solving Real World Problems with Bash Scripts](/docs/development/bash/solving-real-world-problems-with-bash-scripts-a-tutorial/) for a primer on creating Bash scripts.
+- See [A Tutorial for Solving Real World Problems with Bash Scripts](/docs/guides/solving-real-world-problems-with-bash-scripts-a-tutorial/) for a primer on creating Bash scripts.

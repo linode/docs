@@ -10,14 +10,16 @@ export function newLanguageSwitcherController(weglot_api_key) {
 	const initAndSwitchTo = function(self) {
 		let lang = self.currentLang;
 		self.$store.nav.lang = lang;
-		if (!isWeglotInitialized) {
-			isWeglotInitialized = true;
-			Weglot.on('initialized', () => {
-				Weglot.switchTo(lang);
-			});
-			initWeglot(weglot_api_key);
-			return;
-		}
+		setTimeout(() => {
+			if (!isWeglotInitialized) {
+				isWeglotInitialized = true;
+				Weglot.on('initialized', () => {
+					Weglot.switchTo(lang);
+				});
+				initWeglot(weglot_api_key);
+				return;
+			}
+		}, 600);
 		Weglot.switchTo(lang);
 	};
 

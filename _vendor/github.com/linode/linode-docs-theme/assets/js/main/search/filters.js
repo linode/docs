@@ -95,10 +95,13 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 			this.$watch('$store.search.results.main.result', (value) => {
 				debug('main result');
 				this.updateData(value);
-				this.populateFilters();
+				this.populateFilters(false);
 			});
 
 			this.$watch('$store.nav.searchResults', (value) => {
+				if(value.open && value.userChange) {
+					this.populateFilters(true);
+				}
 				if (value.open || !value.userChange) {
 					return;
 				}
@@ -195,8 +198,8 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 		this.filters.loaded = true;
 	};
 
-	ctrl.populateFilters = function() {
-		if (this.filters.loaded) {
+	ctrl.populateFilters = function(force=false) {
+		if (!force && this.filters.loaded) {
 			return;
 		}
 		debug('populateFilters');

@@ -22,7 +22,7 @@ aliases: ['/platform/api/using-the-linode-cli-api-v3/']
 
 The Linode Command Line Interface (**CLI**) is an [open-source](https://github.com/linode/cli) command line tool for managing your Linode services. You can reboot your Linode, update an MX record for your domain, manage your NodeBalancers, create a StackScript and more from the command line on any computer, without logging in to the [Linode Manager](https://manager.linode.com/) graphical user interface.
 
-Your Linode [API key](/docs/platform/api/api-key/) is required for the CLI to function.
+Your Linode [API key](/docs/guides/api-key/) is required for the CLI to function.
 
 ![Linode CLI](linode-cli.png "Linode CLI")
 
@@ -197,7 +197,7 @@ If you don't run the configuration tool, you can add these options manually in t
 
 ### API Key
 
-The Linode CLI requires your API key to function. If you need to generate an API key manually, read the [API Key](/docs/platform/api/api-key/) article. There are three ways to provide the key to the CLI. The configuration tool generates a new key and adds it to the `.linodecli/config` file automatically.
+The Linode CLI requires your API key to function. If you need to generate an API key manually, read the [API Key](/docs/guides/api-key/) article. There are three ways to provide the key to the CLI. The configuration tool generates a new key and adds it to the `.linodecli/config` file automatically.
 
 -   In the `.linodecli/config` file:
 

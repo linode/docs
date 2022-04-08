@@ -13,7 +13,7 @@ modified_by:
 published: 2018-06-29
 title: An Overview of the Linode CLI
 external_resources:
-  - '[Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/)'
+  - '[Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/)'
   - '[Linode API Documentation](https://developers.linode.com/)'
 tags: ["linode platform"]
 ---

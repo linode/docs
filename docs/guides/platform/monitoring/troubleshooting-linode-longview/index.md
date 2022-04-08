@@ -83,7 +83,7 @@ If your Linode has a firewall, it must allow communication with Longview's aggre
   >     sudo firewall-cmd --list-all
   >
   >  {{< note >}}
-Review our [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/) guide for more help with FirewallD.
+Review our [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/) guide for more help with FirewallD.
     {{< /note >}}
 
   >**iptables**
@@ -91,7 +91,7 @@ Review our [Introduction to FirewallD on CentOS](/docs/security/firewalls/introd
   >     sudo iptables -S
   >
    {{< note >}}
-Review our [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide for more help with iptables.
+Review our [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) guide for more help with iptables.
     {{< /note >}}
 
 >  **ufw**
@@ -99,7 +99,7 @@ Review our [Control Network Traffic with iptables](/docs/security/firewalls/cont
 >     sudo ufw show added
 >
 >    {{< note >}}
- Review our [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/) guide for more help with UFW.
+ Review our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide for more help with UFW.
     {{< /note >}}
 
 If the output of those commands show no rules for the Longview domain (or for `96.126.119.66`, which is the IP for the Longview domain), you must add them. A sample iptables rule that allows outbound HTTPS traffic to Longview would be the following:
@@ -107,7 +107,7 @@ If the output of those commands show no rules for the Longview domain (or for `9
     iptables -A OUTPUT -p tcp --dport 443 -d longview.linode.com -j ACCEPT
 
 {{< note >}}
-If you use iptables, you should also make sure to persist any of your firewall rule changes. Otherwise, your changes will not be enforced if your Linode is rebooted. Review the [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables/#introduction-to-iptables-persistent) section of our iptables guide for help with this.
+If you use iptables, you should also make sure to persist any of your firewall rule changes. Otherwise, your changes will not be enforced if your Linode is rebooted. Review the [iptables-persistent](/docs/guides/control-network-traffic-with-iptables/#introduction-to-iptables-persistent) section of our iptables guide for help with this.
 {{< /note >}}
 
 ## Verify API key
