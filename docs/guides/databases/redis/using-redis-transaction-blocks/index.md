@@ -129,7 +129,7 @@ You may encounter one of two kinds of errors when working with transaction block
 (error) EXECABORT Transaction discarded because of previous errors.
     {{< /output >}}
 
-    Thus, you likely want to cancel any transaction blocks that encounter errors during queuing. See the next section — [How to Cancel a Transaction Block](/docs/guides/using-redis-transaction-blocks/#how-to-cancel-a-transaction-block) — for instructions on how to do so.
+    Thus, you likely want to cancel any transaction blocks that encounter errors during queuing. See the next section — [How to Cancel a Transaction Block](/docs/guides/using-transaction-blocks-in-redis/#how-to-cancel-a-transaction-block) — for instructions on how to do so.
 
 - **Errors after the `EXEC` command**:
 
