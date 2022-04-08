@@ -1,16 +1,16 @@
 ---
-slug: using-redis-transaction-blocks
+slug: using-transaction-blocks-in-redis
 author:
   name: Linode Community
   email: docs@linode.com
 description: "Learn about Redis’s transaction blocks and how to use them to more effectively work with your Redis databases."
-og_description: "Learn about Redis’s transaction blocks and how to use them to more effectively work with your Redis databases."
 keywords: ['redis transactions','redis multi vs pipeline','redis multi exec']
+tags: ['redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-06
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use Transaction Blocks in Redis"
+title: "Using Transaction Blocks in Redis"
 h1_title: "How to Use Transaction Blocks in Redis"
 contributor:
   name: Nathaniel Stickman
@@ -20,50 +20,50 @@ external_resources:
 - '[Redis: Using Pipelining to Speedup Redis Queries](https://redis.io/topics/pipelining)'
 ---
 
-Redis, an open-source in-memory database, can be an exceptional platform for caching, messaging, and other storage tasks benefiting from fast executions and low latency. It also comes with a high degree of control over parallel executions, allowing you to fine tune its performance.
+Redis, an open-source in-memory database, can be an exceptional platform for caching, messaging, and other storage tasks benefiting from fast executions, and low latency. It also comes with a high degree of control over parallel executions, allowing you to fine-tune its performance.
 
-This tutorial walks you through Redis's transaction blocks, which let you group commands and execute them as single units. Doing so guarantees uninterrupted sequential execution of each set of commands, securing command blocks even in highly parallel environments.
+This guide walks you through Redis's transaction blocks, which let you group commands and execute them as single units. Doing so guarantees uninterrupted sequential execution of each set of commands, securing command blocks even in highly parallel environments.
 
-Wanting to learn more about using Redis? Take a look at our other guides in this series.
+To learn more about using Redis, take a look at our other guides in this series.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
 
             sudo dnf upgrade
 
-1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to install a Redis server and command-line interface (CLI). Be sure to use the drop down menu at the top of that page to select your Linux distribution and get the appropriate steps.
+1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps written in this guide are for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Are Redis Transactions?
 
-Transactions in Redis are collections of commands that get executed collectively and sequentially. The benefits of executing commands as a transaction block in this way are:
+Transactions in Redis are collections of commands that get executed collectively and sequentially. The benefits of executing commands as transaction blocks are:
 
-- Guaranteeing that the sequence of commands are not interrupted, even by another Redis client
-- Ensuring that the commands are executed as an atomic unit, with the entire transaction block being processed collectively
+- It guarantees that the sequence of commands is not interrupted, even by another Redis client
+- It ensures that the commands are executed as an atomic unit, with the entire transaction block being processed collectively
 
-Transactions are, thus, especially useful in environments with numerous clients and where clients are making frequent transactions in parallel. Redis's transaction blocks ensure that a given set of commands executes as a unit and in a predetermined order.
+Transactions are, thus, especially useful in environments with numerous clients, and where clients are making frequent transactions in parallel. Redis's transaction blocks ensure that a given set of commands executes as a unit and in a predetermined order.
 
 ### Transaction Blocks vs Pipelines
 
 Redis provides another tool for optimizing command execution in a highly-parallel network: *pipelining*.
 
-Pipelining in Redis allows clients to queue series of commands and send them to the server simultaneously, rather than in multiple round trips.
+Pipelining in Redis allows clients to queue a series of commands and send them to the server simultaneously, rather than in multiple round trips.
 
-It may seem like the two — transaction blocks and pipelining — serve similar purposes. However, each has a distinct goal in mind and acts to optimize command execution in very different ways from the other:
+It may seem like the *transaction blocks* and *pipelining* serve similar purposes. However, each has a distinct goal in mind and acts to optimize command execution in very different ways from the other. Some of the differences are:
 
 - Pipelining is concerned primarily with network efficiency. It reduces the round-trip time for a series of commands by submitting them all in one request, rather than a series of requests each with its own response.
 
@@ -79,11 +79,11 @@ To start a transaction in Redis, use the following command in the Redis CLI:
 
     MULTI
 
-This begins a new transaction block. Subsequent commands you enter are queued in sequence. The queuing ends and the queued commands are executed when you complete the block with this command:
+This begins a new transaction block. Subsequent commands you enter are queued in sequence. The queuing ends and the queued commands are executed when you complete the block with the following command:
 
     EXEC
 
-Here is a full example. It starts with the `MULTI` command to initiate a transaction block. Then it creates a new key with a value of `10`, increments that key's value by one, resets the key to `8`, and again increments the value by one. Finally, the `EXEC` command completes the block and executes the transaction:
+Here is a full example. It starts with the `MULTI` command to initiate a transaction block. Then it creates a new key with a value of `10`, increments that key's value by one. The key is then reset to `8` and again increments the value by one. Finally, the `EXEC` command completes the block and executes the transaction.
 
     MULTI
     SET the_key 10
@@ -93,7 +93,7 @@ Here is a full example. It starts with the `MULTI` command to initiate a transac
     GET the_key
     EXEC
 
-Notice that, for each command within the block (between `MULTI` and `EXEC`), the client responds with `QUEUED`. Once you send the `EXEC` command, the server provides and appropriate response for each command within the transaction:
+Notice that, for each command within the block (between `MULTI` and `EXEC`), the client responds with `QUEUED`. Once you send the `EXEC` command, the server provides an appropriate response for each command within the transaction.
 
 {{< output >}}
 1) OK
@@ -105,9 +105,11 @@ Notice that, for each command within the block (between `MULTI` and `EXEC`), the
 
 ## How to Handle Errors in a Transaction Block
 
-You may encounter one of two kinds of errors when working with transaction blocks in Redis. The errors can be categorized based on when they occur:
+You may encounter one of two kinds of errors when working with transaction blocks in Redis. The errors can be categorized as follows based on when they occur:
 
-- Errors before the `EXEC` command. These include errors related to syntax or related to server restrictions like maximum memory. Although you can continue queuing commands after receiving one of these errors, the transaction block subsequently fails when you run `EXEC`.
+- **Errors before the `EXEC` command**:
+
+    These include errors related to syntax or related to server restrictions like maximum memory. Although you can continue queuing commands after receiving one of these errors, the transaction block subsequently fails when you run `EXEC`.
 
     For instance, here is a transaction with a typo for the `GET` command:
 
@@ -129,7 +131,9 @@ You may encounter one of two kinds of errors when working with transaction block
 
     Thus, you likely want to cancel any transaction blocks that encounter errors during queuing. See the next section — [How to Cancel a Transaction Block](/docs/guides/using-redis-transaction-blocks/#how-to-cancel-a-transaction-block) — for instructions on how to do so.
 
-- Errors after the `EXEC` command. These are errors returned by the server in response to individual commands in the transaction. You would receive such an error, for example, for mismatched types:
+- **Errors after the `EXEC` command**:
+
+     These are errors returned by the server in response to individual commands in the transaction. You would receive such an error, for example, for mismatched types:
 
         MULTI
         SET new_key "beta"
@@ -141,7 +145,7 @@ You may encounter one of two kinds of errors when working with transaction block
 2) (error) WRONGTYPE Operation against a key holding the wrong kind of value
     {{< /output >}}
 
-    Notice that the first command executed successfully, which you can further verify with:
+    Notice that the first command was executed successfully, which you can further verify using the following command:
 
         GET new_key
 
@@ -153,7 +157,7 @@ You may encounter one of two kinds of errors when working with transaction block
 
 A transaction can be canceled at any time before the `EXEC` command. To do so, use the `DISCARD` command.
 
-This next example demonstrates, showing that the key (`another_key`) remains unchanged from its pre-transaction value:
+The example below demonstrates that the key, `another_key` remains unchanged from its pre-transaction value:
 
     SET another_key "gamma"
     MULTI
