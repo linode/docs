@@ -74,7 +74,7 @@ To configure failover, complete each section in the order shown:
 1. Determine which two Compute Instances are to be used within your failover setup. They both must be located in the same data center. If you need to, create those Compute Instances now and allow them to fully boot up.
 
     {{< note >}}
-To support this new BGP method of IP Sharing and failover, your Compute Instance must be assigned an IPv6 address. This is not an issue for most instances as an IPv6 address is assigned during deployment. If your Compute Instance was created *before* IPv6 addresses were automatically assigned, contact [Linode Support](https://www.linode.com/support/) if you would like to enable IP Sharing within a data center that uses BGP-based failover.
+To support this new BGP method of IP Sharing and failover, your Compute Instance must be assigned an IPv6 address. This is not an issue for most instances as an IPv6 address is assigned during deployment. If your Compute Instance was created *before* IPv6 addresses were automatically assigned, and you would like to enable IP Sharing within a data center that uses BGP-based failover, contact [Linode Support](https://www.linode.com/support/).
 {{</ note >}}
 
 1.  Disable Network Helper on both instances. For instructions, see the [Network Helper](/docs/guides/network-helper/#single-per-linode) guide.
@@ -137,7 +137,7 @@ iface lo [protocol] static
 
             nmcli con add type dummy ifname shared
 
-        Next, add your Shared IP address (or addresses) and bring up the new interface. Run the commands below, replacing *[protocol]* with `ipv4` for IPv4 or `ipv6` for IPv6 (in addtion to replacing *[shared-ip]* and *[prefix]*)
+        Next, add your Shared IP address (or addresses) and bring up the new interface. Run the commands below, replacing *[protocol]* with `ipv4` for IPv4 or `ipv6` for IPv6 (in addition to replacing *[shared-ip]* and *[prefix]*)
 
             nmcli con mod dummy-shared [protocol].method manual [protocol].addresses [shared-ip]/[prefix]
             nmcli con up dummy-shared
@@ -167,7 +167,7 @@ Next, we need to configure the failover software on *each* Compute Instance. For
 
         lelastic -dcid [id] -[role] &
 
-    **Addtional options:**
+    **Additional options:**
     - `-send56`: Advertises an IPv6 address as a /56 subnet (defaults to /64). This is needed when using an IP address from a IPv6 /56 routed range.
     - `-allifs`: Looks for the shared IP address on all interfaces, not just the loopback interface.
 
