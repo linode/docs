@@ -21,7 +21,7 @@ aliases: ['/platform/object-storage/server-side-encryption/']
 
 {{< content "object-storage-cancellation-shortguide" >}}
 
-Server-side encryption secures data on Linode Object Storage. Using your own encryption key, Linode will encrypt your data at the object level prior to storing it to disk. Once encrypted, Linode will only decrypt data if that same encryption key is provided with the retrieval request. This enables you to use Linode Object Storage to confidently handle sensitive data like [Terraform configurations](/docs/applications/configuration-management/terraform/how-to-build-your-infrastructure-using-terraform-and-linode/) that contain passwords and SSH keys.
+Server-side encryption secures data on Linode Object Storage. Using your own encryption key, Linode will encrypt your data at the object level prior to storing it to disk. Once encrypted, Linode will only decrypt data if that same encryption key is provided with the retrieval request. This enables you to use Linode Object Storage to confidently handle sensitive data like [Terraform configurations](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) that contain passwords and SSH keys.
 
 In this guide, you will [write an example Python script](#python-example-script) that will upload a simple file containing the text "Hello World!" to Linode Object Storage, encrypt the file with server-side encryption using a provided encryption key (SSE-C), decrypt and retrieve the contents of the file, then delete the file. Once completed, the components of this script can be adapted to implement server side encryption for your own specific use case.
 

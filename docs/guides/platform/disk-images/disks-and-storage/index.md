@@ -57,7 +57,7 @@ From here, a [disk can be created](#creating-a-disk) using the **Add a Disk** bu
 Each Linode can have multiple disks. To create a new disk, follow the instructions below.
 
 {{< note >}}
-If you wish to deploy an Image to a new disk, see the [Deploy an Image to a Disk on an Existing Linode](/docs/guides/deploy-an-image-to-a-linode/) guide for complete instructions on creating the main disk, an optional swap disk, and a configuration profile.
+If you wish to deploy an Image to a new disk, see the [Deploy an Image to a Disk on an Existing Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/) guide for complete instructions on creating the main disk, an optional swap disk, and a configuration profile.
 {{</ note >}}
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Linode from the list.
@@ -76,7 +76,7 @@ If you wish to deploy an Image to a new disk, see the [Deploy an Image to a Disk
 
 1. Click the **Add** button to create the disk. The progress can be monitored from the new entry appearing for the disk within the Linode's **Storage** page.
 
-Once a disk has been created, you will need to modify the existing configuration profile or add a new configuration profile. Specifically, the disk will need to be assigned to a device and optionally marked as the root device if this new disk will function as the primary boot disk. See the [Deploy an Image to a Disk on an Existing Linode](/docs/guides/deploy-an-image-to-a-linode/) guide or the [Configuration Profiles](/docs/guides/linode-configuration-profiles) guide for additional details.
+Once a disk has been created, you will need to modify the existing configuration profile or add a new configuration profile. Specifically, the disk will need to be assigned to a device and optionally marked as the root device if this new disk will function as the primary boot disk. See the [Deploy an Image to a Disk on an Existing Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/) guide or the [Configuration Profiles](/docs/guides/linode-configuration-profiles) guide for additional details.
 
 ## Resizing a Disk
 
