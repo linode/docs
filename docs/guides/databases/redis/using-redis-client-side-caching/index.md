@@ -32,11 +32,11 @@ This tutorial explains the concepts behind Redis's server-assisted client-side c
 
 1. Update your system.
 
-    - On **Debian** and **Ubuntu**, use the following command:
+    -   On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
+    -   On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
 
             sudo dnf upgrade
 
@@ -107,9 +107,9 @@ Below, you can see the steps used for setting up your clients with each of these
 
 #### Dedicated Client for Monitoring Notifications
 
-1. Create a Redis client by making an authenticated connection to the Redis server. See our guide on [How to Connect to Redis and Use The Redis Database](/docs/guides/how-to-connect-to-redis/) for instructions on doing so.
+1.  Create a Redis client by making an authenticated connection to the Redis server. See our guide on [How to Connect to Redis and Use The Redis Database](/docs/guides/how-to-connect-to-redis/) for instructions on doing so.
 
-1. Determine the client's ID using the following command. This ID is used in setting up client tracking in one of the subsequent steps, so keep note of it. This and subsequent examples use `15` for the notification client's ID.
+1.  Determine the client's ID using the following command. This ID is used in setting up client tracking in one of the subsequent steps, so keep note of it. This and subsequent examples use `15` for the notification client's ID.
 
         CLIENT ID
 
@@ -117,7 +117,7 @@ Below, you can see the steps used for setting up your clients with each of these
 (integer) 15
     {{< /output >}}
 
-1. Have the client subscribe to the invalidation message channel. Doing so sets the client into listening mode, meaning that it cannot issue commands but receives all messages on the subscribed channel.
+1.  Have the client subscribe to the invalidation message channel. Doing so sets the client into listening mode, meaning that it cannot issue commands but receives all messages on the subscribed channel.
 
         SUBSCIRBE __redis__:invalidate
 
@@ -127,15 +127,15 @@ Below, you can see the steps used for setting up your clients with each of these
 3) (integer) 1
     {{< /output >}}
 
-1. Create another client, making another authenticated connection to the Redis server.
+1.  Create another client, making another authenticated connection to the Redis server.
 
-1. Turn on client tracking on the new client. Use the `REDIRECT` option to have the client's invalidation messages sent to the first client's ID.
+1.  Turn on client tracking on the new client. Use the `REDIRECT` option to have the client's invalidation messages sent to the first client's ID.
 
         CLIENT TRACKING on REDIRECT 15
 
     The second client, and any subsequent clients that you set up in a similar way, are now being tracked for server-assisted caching. The server keeps note of any data that these tracked clients fetch. Then, the server sends invalidation messages to the listening client whenever any of that data changes.
 
-1. Verify that the second client is being tracker for server-assisted caching by issuing the following commands to the second client:
+1.  Verify that the second client is being tracker for server-assisted caching by issuing the following commands to the second client:
 
         GET cat_one:key_one
 
@@ -172,12 +172,12 @@ Redis clients must be version 6 or later to use RESP3. Check your Redis version 
 
     redis-cli --version
 
-For Redis versions less than 6, see the previous section for [creating a dedicated client for invalidation messages](/docs/guides/using-redis-for-client-side-caching/#dedicated-client-for-monitoring-notifications).
+For Redis versions less than 6, see the previous section for [creating a dedicated client for invalidation messages](#dedicated-client-for-monitoring-notifications).
 {{< /note >}}
 
-1. Create a Redis client by making an authenticated connection to the Redis server. See our guide on [How to Connect to Redis and Use The Redis Database](/docs/guides/how-to-connect-to-redis/) for instructions on doing so.
+1.  Create a Redis client by making an authenticated connection to the Redis server. See our guide on [How to Connect to Redis and Use The Redis Database](/docs/guides/how-to-connect-to-redis/) for instructions on doing so.
 
-1. Switch the client to RESP3 using the following command:
+1.  Switch the client to RESP3 using the following command:
 
         HELLO 3
 
@@ -191,13 +191,13 @@ For Redis versions less than 6, see the previous section for [creating a dedicat
 7# "modules" => (empty array)
     {{< /output >}}
 
-1. Turn on client tracking for the client using the following command:
+1.  Turn on client tracking for the client using the following command:
 
         CLIENT TRACKING on
 
     The client now has tracking enabled. Any data the client fetches get monitored by the server. When that data changes, the client receives a notification to invalidate its cached data.
 
-1. Verify that your client tracking is enabled by fetching a piece of data and making a change to it later.
+1.  Verify that your client tracking is enabled by fetching a piece of data and making a change to it later.
 
         GET cat_one:key_three
 
@@ -268,14 +268,14 @@ Redis's client tracking comes with some additional parameters that let you fine-
 
 The `OPTIN` and `OPTOUT` options let you control client tracking, by opting in or opting out, respectively, on a per-key basis.
 
-- Using `OPTIN`, Redis only tracks keys fetched immediately after a `CLIENT CACHING yes` command. In the example below, the `cat_one:key_one` key is not tracked but the `cat_one:key_two` key is.
+-   Using `OPTIN`, Redis only tracks keys fetched immediately after a `CLIENT CACHING yes` command. In the example below, the `cat_one:key_one` key is not tracked but the `cat_one:key_two` key is.
 
         CLIENT TRACKING on OPTIN REDIRECT 15
         GET cat_one:key_one
         CLIENT CACHING yes
         GET cat_one:key_two
 
-- Using `OPTOUT`, Redis tracks as usual but allows you to use the `CLIENT CACHING no` command to exclude any key fetched immediately after from being tracked. The example below tracks `cat_one:key_one` but not `cat_one:key_two`.
+-   Using `OPTOUT`, Redis tracks as usual but allows you to use the `CLIENT CACHING no` command to exclude any key fetched immediately after from being tracked. The example below tracks `cat_one:key_one` but not `cat_one:key_two`.
 
         CLIENT TRACKING on OPTOUT REDIRECT 15
         GET cat_one:key_one
