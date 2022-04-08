@@ -7,7 +7,7 @@ description: "This guide discusses how to enable failover on a Linode Compute In
 keywords: ['IP failover','IP sharing','elastic IP']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-23
-modified: 2022-04-06
+modified: 2022-04-08
 modified_by:
   name: Linode
 title: "Configuring Failover on a Compute Instance"
@@ -37,7 +37,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Fremont (California, USA) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 3 |
 | London (United Kingdom) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 7 |
 | Mumbai (India) |  *Not supported* | - | 14 |
-| Newark (New Jersey, USA) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 6 |
+| **Newark (New Jersey, USA)** | **New method (BGP)** | **lelastic** | 6 |
 | Singapore | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 9 |
 | Sydney (Australia) |  *Not supported* | - | 16 |
 | Tokyo (Japan) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 11 |
@@ -47,17 +47,17 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 
 - **Legacy IP Sharing Method (ARP):** Supports IPv4. Since it is arp-based, customers can configure it on their Compute Instances using a service like keepalived. Follow the instructions within the [keepalived](/docs/guides/ip-failover-keepalived/) guide.
 
-{{<note>}}
+{{< note >}}
 IP failover for VLAN IP addresses is supported within every data center where VLANs are available. This feature does not depend on Linode's IP Sharing feature and is configurable through keepalived.
-{{</note>}}
+{{</ note >}}
 
 ## Configure Failover
 
 The instructions within this guide enable you to configure failover using IP Sharing and the [lelastic](https://github.com/linode/lelastic) tool, a Linode provided tool based on GoBGP that automates much of the configuration. If you prefer to manually configure failover software, follow the [Configuring IP Failover over BPG using FRR](/docs/guides/ip-failover-bgp-frr/) guide or use any BGP client that you wish.
 
-{{<note>}}
+{{< note >}}
 If your data center supports the legacy method (ARP), use the [Configuring IP Failover using keepalived](/docs/guides/ip-failover-keepalived/) guide instead. That guide should also be used when setting up failover for VLAN IP addresses.
-{{</note>}}
+{{</ note >}}
 
 To configure failover, complete each section in the order shown:
 
@@ -118,20 +118,6 @@ network:
 
             sudo netplan apply
 
-    -   **CentOS/RHEL**: Using [NetworkManager](https://en.wikipedia.org/wiki/NetworkManager). Since NetworkManager does not support managing the loopback interface, the Shared IP must instead be added to the eth0 interface. When doing so, you must also add the `-allifs` option to the lelastic command (discussed in a separate section below)
-
-        {{< file "/etc/sysconfig/network-scripts/ifcfg-eth0" >}}
-...
-# Add Shared IPv4 Address
-IPADDR1=[shared-ip]
-PREFIX1=32
-
-# Or Add Shared IPv6 Address
-IPV6ADDR_SECONDARIES=[shared-ip]/[prefix]
-{{</ file >}}
-
-        To apply the changes, reboot the instance.
-
     -   **Debian and Ubuntu 16.04 (and older)**: Using [ifupdown](https://manpages.debian.org/unstable/ifupdown/ifup.8.en.html). Replace *[protocol]* with `inet` for IPv4 or `inet6` for IPv6.
 
         {{< file "/etc/network/interfaces" >}}
@@ -147,6 +133,17 @@ iface lo [protocol] static
 
         If you receive the following output, you can safely ignore it: *RTNETLINK answers: Cannot assign requested address*.
 
+    -   **CentOS/RHEL**: Using [NetworkManager](https://en.wikipedia.org/wiki/NetworkManager). Since NetworkManager does not support managing the loopback interface, you need to first add a dummy interface named *shared* (or any other name that you wish). Instead of editing the file directly, the [nmcli]() tool is used.
+
+            nmcli con add type dummy ifname shared
+
+        Next, add your Shared IP address (or addresses) and bring up the new interface. Run the commands below, replacing *[protocol]* with `ipv4` for IPv4 or `ipv6` for IPv6 (in addtion to replacing *[shared-ip]* and *[prefix]*)
+
+            nmcli con mod dummy-shared [protocol].method manual [protocol].addresses [shared-ip]/[prefix]
+            nmcli con up dummy-shared
+
+        Since the loopback interface is not used, you must also add the `-allifs` option to the lelastic command (discussed in a separate section below).
+
 ### Install and Configure Lelastic
 
 Next, we need to configure the failover software on *each* Compute Instance. For this, the lelastic utility is used.
@@ -155,7 +152,7 @@ Next, we need to configure the failover software on *each* Compute Instance. For
 
 1.  Download and install the [lelastic](https://github.com/linode/lelastic) utility from GitHub by running the following commands:
 
-        curl -LO https://github.com/linode/lelastic/releases/download/v0.0.4/lelastic.gz
+        curl -LO https://github.com/linode/lelastic/releases/download/v0.0.5/lelastic.gz
         gunzip lelastic.gz
         chmod 755 lelastic
         sudo mv lelastic /usr/local/bin/
