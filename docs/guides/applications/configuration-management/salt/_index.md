@@ -7,7 +7,7 @@ og_description: 'Salt (also referred to as SaltStack) is a Python-based configur
 keywords: ["configuration management", "salt"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-15
-title: Salt
+title: Using Salt at Linode | Linode
 show_in_lists: true
 aliases: ['/applications/configuration-management/salt/']
 ---

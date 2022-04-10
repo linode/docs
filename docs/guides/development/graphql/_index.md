@@ -7,7 +7,7 @@ og_description: "GraphQL, released in 2018, is an open source data query languag
 keywords: ["graphql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-19
-title: GraphQL
+title: Guides to Using GraphQL at Linode | Linode
 show_in_lists: true
 ---
 

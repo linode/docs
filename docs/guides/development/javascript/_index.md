@@ -6,7 +6,7 @@ description: 'Javascript is a popular object-oriented scripting language with wi
 keywords: ["development", "javascript", "front end", "react"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-31
-title: Javascript
+title: Guides to Using Javascript at Linode
 show_in_lists: true
 aliases: ['/development/javascript/']
 ---

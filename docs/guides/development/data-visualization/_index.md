@@ -7,7 +7,7 @@ og_description: "Creating graphic visualizations for a data set is a powerful wa
 keywords: ["data visualization"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-31
-title: Data Visualization
+title: Introduction to Data Visualization | Linode
 show_in_lists: true
 aliases: ['/development/data-visualization/']
 ---
