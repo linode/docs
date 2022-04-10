@@ -7,7 +7,7 @@ keywords: ["web applications", "wikis", "CMS", "content management systems", "Wo
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/','/websites/']
 published: 2009-07-16
-title: Website Guides
+title: Website Application Guides | Linode
 show_on_frontpage: true
 title_short: "Websites"
 weight: 40

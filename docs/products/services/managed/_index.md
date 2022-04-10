@@ -1,5 +1,5 @@
 ---
-title: Managed
+title: Managed Services at Linode | Linode
 description: "Linode Managed is a service that offers incident response as well as free migrations and discounted professional services."
 tab_group_main:
     is_root: true

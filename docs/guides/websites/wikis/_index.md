@@ -7,7 +7,7 @@ keywords: ["wiki", "mediawiki", "ikiwiki"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/wikis/','/websites/wikis/']
 published: 2010-03-01
-title: Wikis
+title: Wiki Installation & Configuration Guides | Linode
 show_in_lists: true
 ---
 

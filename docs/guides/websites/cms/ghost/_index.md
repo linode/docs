@@ -7,6 +7,6 @@ keywords: ["ghost", "cms", "blog", "blogging"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-10
 show_in_lists: true
-title: Ghost
+title: Ghost Installation Guides | Linode
 aliases: ['/websites/cms/ghost/']
 ---

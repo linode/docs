@@ -11,5 +11,5 @@ modified: 2013-10-03
 modified_by:
     name: Linode
 published: 2011-11-02
-title: DirectAdmin
+title: DirectAdmin Installation Guides | Linode
 ---

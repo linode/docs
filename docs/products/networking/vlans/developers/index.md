@@ -1,5 +1,5 @@
 ---
-title: Developers
+title: Developer Resources for VLANs | Linode
 description: "Use the Linode API v4 and the Linode CLI to create Linode Virtual LANs. You can create secure and private networks in the cloud using Linode Virtual LANs."
 tab_group_main:
     weight: 50

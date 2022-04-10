@@ -7,7 +7,7 @@ og_description: "Learn about what a Content Management System is and how to choo
 keywords: ["content management system"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01
-title: CMS Basics
+title: Content Management System Basics | Linode
 show_in_lists: true
 aliases: ['/websites/cms/basics/']
 ---
