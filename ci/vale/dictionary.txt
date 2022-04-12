@@ -2014,6 +2014,7 @@ transcoding
 transpiled
 trello
 triaging
+trie
 trivy
 truststore
 tt
