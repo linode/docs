@@ -38,7 +38,7 @@ Grafana is often used alongside [Prometheus](https://prometheus.io/) for monitor
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Debian 11
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Grafana Options

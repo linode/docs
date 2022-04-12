@@ -29,7 +29,7 @@ aliases: ['/platform/marketplace/deploying-docker-with-marketplace-apps/', '/pla
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9 and 10
+- **Supported distributions:** Debian 11, Debian 10, and Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Docker Options
