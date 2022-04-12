@@ -15,7 +15,6 @@ h1_title: "Data Structures Explained"
 enable_h1: true
 contributor:
   name: Jeff Novotny
-  link: Github/Twitter Link
 external_resources:
 - '[Python core data structures](https://docs.python.org/3/tutorial/datastructures.html)'
 - '[Wikipedia page on data structures](https://en.wikipedia.org/wiki/Data_structure)'
