@@ -119,28 +119,7 @@ for root, dirs, files in os.walk(docs_directory):
                     link = match.group()
                     link = link[link.find("(")+1:link.find(")")]
 
-                    if (link.startswith('http://www.linode.com') or link.startswith('https://www.linode.com')) or (link.startswith('http://linode.com') or link.startswith('https://linode.com')):
-                        if is_changed is True:
-                            response = requests.get(link, headers=headers)
-                            if response.status_code == 404:
-                                external_links_with_errors.append(link)
-                            print(file_path)
-                            print(link)
-                            print(response)
-                        else:
-                            continue
-                    elif link.startswith('http://') or link.startswith('https://'):
-                        if is_changed is True:
-                            response = requests.get(link, headers=headers)
-                            if response.status_code == 404:
-                                external_links_with_errors.append(link)
-                            print(file_path)
-                            print(link)
-                            print(response)
-                        else:
-                            continue
-                    # Log error if link does not start with /docs/
-                    elif not link.startswith('/docs/'):
+                    if not link.startswith('/docs/'):
                         internal_links_with_errors.append(link)
                         continue
                     # Check if link points to a canonical internal URL

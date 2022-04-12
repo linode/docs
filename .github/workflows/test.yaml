@@ -78,10 +78,6 @@ jobs:
       with:
         python-version: '3.10.x'
         architecture: 'x64'
-    - name: Get Changed Files
-      id: get_changed_files
-      uses: jitterbit/get-changed-files@v1
-      continue-on-error: true
     - name: Run tests
       run: python ./ci/links.py ${{ steps.files.outputs.all }}
 
