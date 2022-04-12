@@ -102,11 +102,6 @@ for root, dirs, files in os.walk(docs_directory):
             # The relative file path of the file
             file_path = os.path.join(root, file)
 
-            if file_path.replace('../docs/','docs/') in changed_files:
-              is_changed = True
-            else:
-              is_changed = False
-
             # Iterate through each line of the file
             for i, line in enumerate(open(file_path)):
                 # Find and iterate through all markdown links to other guides
