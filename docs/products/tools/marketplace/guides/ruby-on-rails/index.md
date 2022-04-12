@@ -35,7 +35,7 @@ aliases: ['/platform/marketplace/deploying-ruby-on-rails-with-marketplace-apps/'
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Ruby on Rails Options
