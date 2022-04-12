@@ -61,7 +61,43 @@ terraform {
   required_providers {
     linode = {
       source = "linode/linode"
-      version = "1.16.0"
+      version = "1.26.0"
+    }
+  }
+}
+provider "linode" {
+    token = var.token
+}
+
+resource "linode_sshkey" "my_wordpress_linode_ssh_key" {
+    label = "my_ssh_key"
+    ssh_key = chomp(file("~/.ssh/id_rsa.pub"))
+}
+
+resource "random_string" "my_wordpress_linode_root_password" {
+    length  = 32
+    special = true
+}
+
+resource "linode_instance" "my_wordpress_linode" {
+    image = var.image
+    label = var.label
+    region = var.region
+    type = var.type
+    authorized_keys = [ linode_sshkey.my_wordpress_linode_ssh_key.ssh_key ]
+    root_pass = random_string.my_wordpress_linode_root_password.result
+    stackscript_id = var.stackscript_id
+    stackscript_data = {
+       "ssuser" = var.stackscript_data["ssuser"]
+       "hostname" = var.stackscript_data["hostname"]
+       "website" = var.stackscript_data["website"]
+       "dbuser" = var.stackscript_data["dbuser"]
+       "db_password" = var.stackscript_data["db_password"]
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.26.0"
     }
   }
 }
@@ -105,17 +141,17 @@ resource "linode_domain" "my_wordpress_domain" {
  }
 
 resource "linode_domain_record" "my_wordpress_domain_www_record" {
-    domain_id = linode_domain.my_wordpress_domain.id
+    domain_id = "${linode_domain.my_wordpress_domain.id}"
     name = "www"
     record_type = var.a_record
-    target = "linode_instance.my_wordpress_linode.ipv4"
+    target =  "${linode_instance.my_wordpress_linode.ip_address}"
 }
 
 resource "linode_domain_record" "my_wordpress_domain_apex_record" {
-    domain_id = linode_domain.my_wordpress_domain.id
+    domain_id = "${linode_domain.my_wordpress_domain.id}"
     name = ""
     record_type = var.a_record
-    target = "linode_instance.my_wordpress_linode.ipv4"
+    target = "${linode_instance.my_wordpress_linode.ip_address}"
 }
 {{</ file >}}
 
@@ -186,7 +222,7 @@ resource "linode_instance" "my_wordpress_linode" {
 
     -   The `root_pass` argument is assigned to the value of the `random_string` resource previously declared.
 
-    -   To use an existing StackScript you must use the `stackscript_id` argument and provide a valid ID as a value. Every StackScript is assigned a unique ID upon creation. This guide uses the [WordPress on Ubuntu 16.04](https://www.linode.com/stackscripts/view/81736) StackScript provided by Linode user [hmorris](https://www.linode.com/stackscripts/profile/hmorris). This StackScript's ID will be assigned to a Terraform variable later in this guide.
+    -   To use an existing StackScript you must use the `stackscript_id` argument and provide a valid ID as a value. Every StackScript is assigned a unique ID upon creation. This guide uses the [WordPress on Ubuntu 20.04](https://www.linode.com/stackscripts/view/998743) StackScript adapted by the Linode user [hmorris](https://www.linode.com/stackscripts/profile/hmorris). This StackScript's ID will be assigned to a Terraform variable later in this guide.
 
         StackScripts support user defined data. A StackScript can use the [`UDF` tag](/docs/platform/stackscripts/#variables-and-udfs) to create a variable whose value must be provided by the user of the script. This allows users to customize the behavior of a StackScript on a per-deployment basis. Any required `UDF` variable can be defined using the `stackscript_data` argument.
 
@@ -204,17 +240,17 @@ resource "linode_domain" "my_wordpress_domain" {
  }
 
 resource "linode_domain_record" "my_wordpress_domain_www_record" {
-    domain_id = linode_domain.my_wordpress_domain.id
+    domain_id = "${linode_domain.my_wordpress_domain.id}"
     name = "www"
     record_type = var.a_record
-    target = "linode_instance.my_wordpress_linode.ipv4"
+    target =  "${linode_instance.my_wordpress_linode.ip_address}"
 }
 
 resource "linode_domain_record" "my_wordpress_domain_apex_record" {
-    domain_id = linode_domain.my_wordpress_domain.id
+    domain_id = "${linode_domain.my_wordpress_domain.id}"
     name = ""
     record_type = var.a_record
-    target = "linode_instance.my_wordpress_linode.ipv4"
+    target = "${linode_instance.my_wordpress_linode.ip_address}"
 }
 {{</ file >}}
 
@@ -237,7 +273,7 @@ variable "token" {
 
 variable "image" {
   description = "Image to use for Linode instance"
-  default = "linode/ubuntu16.04lts"
+  default = "linode/ubuntu20.04"
 }
 
 variable "label" {
@@ -300,7 +336,7 @@ Terraform will automatically load any file named `terraform.tfvars` and use its 
 
     {{< file "~/terraform/terraform.tfvars">}}
 label = "wp-linode"
-stackscript_id = "81736"
+stackscript_id = "998743"
 domain = "example.com"
 soa_email = "user@email.com"
 {{</ file >}}
