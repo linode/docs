@@ -11,7 +11,9 @@ output_duplicates_filename = "duplicates.csv"
 # ------------------
 
 # The directory to be used when building the list of aliases
-docs_directory = '../docs/'
+docs_directory = 'docs/'
+num_files = 0
+# A list of all guide links
 canonical_internal_urls = []
 # A dictionary that maps all aliases to the current (canonical) link
 aliases = {}
@@ -23,20 +25,22 @@ for root, dirs, files in os.walk(docs_directory):
     for file in files:
         if file.endswith('.md'):
 
+            num_files = num_files + 1
+
             # The relative file path of the file
             file_path = os.path.join(root, file)
-
             try:
                 # Loads the entire guide (including front matter)
                 guide = frontmatter.load(file_path)
                 # Creates the canonical (current) link for the guide
-                if "/docs/guides/" in file_path:
+                if file_path.startswith("docs/guides/"):
                     canonical_link = "/docs/guides/" + guide['slug'] + "/"
-                elif "/docs/products/" in file_path:
-                    canonical_link = file_path.replace('../docs/','/docs/')
+                elif file_path.startswith("docs/products/"):
+                    canonical_link = "/" + file_path
                     canonical_link = canonical_link.replace('/index.md','/')
                     canonical_link = canonical_link.replace('/_index.md','/')
                 else:
+                    #print(file_path)
                     # Go to the next file if it is not located in /guides/ or /products/
                     file.next()
                 # Update the canonical url array
@@ -65,6 +69,8 @@ for root, dirs, files in os.walk(docs_directory):
             except:
                 continue
 num_duplicates = len(duplicate_aliases)
+
+print(str(len(canonical_internal_urls)) + ' guides have been identified out of ' + str(num_files) + ' markdown files.')
 if num_duplicates != 0:
     if num_duplicates == 1:
         print('Failure: There is 1 duplicate alias.')
