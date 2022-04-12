@@ -3,7 +3,6 @@ import os
 import sys
 import re
 import frontmatter
-import requests
 
 output_duplicates_filename = "duplicates.csv"
 
