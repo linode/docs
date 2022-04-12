@@ -6,9 +6,6 @@ import frontmatter
 
 output_duplicates_filename = "duplicates.csv"
 
-changed_files = sys.argv[1].split(',')
-print(changed_files)
-
 # ------------------
 # Build a list of all aliases and map them to their current link
 # ------------------
