@@ -75,7 +75,8 @@ if num_duplicates != 0:
         print('Failure: There is 1 duplicate alias.')
     else:
         print('Failure: There are ' + str(num_duplicates) + ' duplicate aliases.')
-    print(duplicate_aliases)
+    for key, value in duplicate_aliases.items():
+        print("\t- " + key + " appears in " + str(value) + " guide(s).")
     #sys.exit(1)
 else:
     print('Success: There are no duplicate aliases.')
@@ -130,6 +131,9 @@ for root, dirs, files in os.walk(docs_directory):
                     link = match.group(3)
                     link_unmodified = link
                     #link = link[link.find("(")+1:link.find(")")]
+                    if "linode.com/docs/" in link:
+                        internal_links_with_errors.append(link_unmodified)
+                        continue
                     # Ignore links that start with common protocols
                     if link.startswith('http://') or link.startswith('https://') or link.startswith('ftp://'):
                         continue
@@ -160,7 +164,6 @@ for root, dirs, files in os.walk(docs_directory):
                             internal_links_with_warnings.append(link_unmodified)
                         else:
                             internal_links_with_errors.append(link_unmodified)
-                            internal_links_with_errors.append(file_path)
 
 num_errors = len(internal_links_with_errors)
 num_warnings = len(internal_links_with_warnings)
@@ -170,7 +173,8 @@ if num_errors != 0:
         print('Failure: There is 1 error in links.')
     else:
         print('Failure: There are ' + str(num_errors) + ' errors in links.')
-    print(internal_links_with_errors)
+    for link in internal_links_with_errors:
+        print("\t- " + link)
     #sys.exit(1)
 if num_warnings != 0:
     if num_warnings == 1:
@@ -182,24 +186,3 @@ if num_errors == 0 and num_warnings == 0:
     print('Success: All internal links are valid.')
 else:
     sys.exit(1)
-
-# Log duplicate to Excel
-# alias, link to guide that it appears on
-
-# Check internal links.
-# Build a list of all canonical URLs and aliases
-#   If alias is duplicate
-#       Log error
-# Iterate through all markdown links
-#   If link does not begin with `https://` or `http://`
-#       If the link appears in list of alias urls
-#          Log warning
-#       Elif the link does not appear in list of canonical urls
-#           Log error
-# Iterate through all links in changed docs
-#   If link begins with `https://` or `http://`
-#       Perform a web request.
-#       If web request results in 400 (or maybe non 200?)
-#           Log error
-#       Elif web request results in 301
-#           Log warning
