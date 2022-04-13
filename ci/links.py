@@ -14,7 +14,7 @@ output_duplicates_filename = "duplicates.csv"
 docs_directory = 'docs/'
 num_files = 0
 # A list of all guide links
-canonical_internal_urls = []
+valid_links = []
 # A dictionary that maps all aliases to the current (canonical) link
 aliases = {}
 # A dictionary that contains all the aliases that are duplicated on multiple guides
@@ -32,19 +32,18 @@ for root, dirs, files in os.walk(docs_directory):
             try:
                 # Loads the entire guide (including front matter)
                 guide = frontmatter.load(file_path)
-                # Creates the canonical (current) link for the guide
-                if file_path.startswith("docs/guides/"):
-                    canonical_link = "/docs/guides/" + guide['slug'] + "/"
-                elif file_path.startswith("docs/products/"):
-                    canonical_link = "/" + file_path
-                    canonical_link = canonical_link.replace('/index.md','/')
-                    canonical_link = canonical_link.replace('/_index.md','/')
+                # Identifies the valid link for a guide
+                if "slug" in guide.keys() and "docs/guides/" in file_path:
+                    link = "/docs/guides/" + guide['slug'] + "/"
+                elif "slug" in guide.keys() and "docs/api/" in file_path:
+                    link = "/docs/api/" + guide['slug'] + "/"
                 else:
-                    #print(file_path)
-                    # Go to the next file if it is not located in /guides/ or /products/
-                    file.next()
+                    link = "/" + file_path
+                    link = link.replace('/index.md','/')
+                    link = link.replace('/_index.md','/')
+
                 # Update the canonical url array
-                canonical_internal_urls.append(canonical_link)
+                valid_links.append(link)
                 # Updates the aliases dictionary with all aliases in the guide
                 # and maps them to the guide's canonical link
                 for alias in guide['aliases']:
@@ -65,12 +64,12 @@ for root, dirs, files in os.walk(docs_directory):
                         duplicate_aliases.update({ alias : 2})
                     # If the alias does not yet exist in the aliases dictionary, add it
                     else:
-                      aliases.update({ alias : canonical_link})
+                      aliases.update({ alias : link})
             except:
                 continue
 num_duplicates = len(duplicate_aliases)
 
-print(str(len(canonical_internal_urls)) + ' guides have been identified out of ' + str(num_files) + ' markdown files.')
+print(str(len(valid_links)) + ' guides have been identified out of ' + str(num_files) + ' markdown files.')
 if num_duplicates != 0:
     if num_duplicates == 1:
         print('Failure: There is 1 duplicate alias.')
@@ -80,8 +79,6 @@ if num_duplicates != 0:
     #sys.exit(1)
 else:
     print('Success: There are no duplicate aliases.')
-
-# To view aliases, use print(aliases)
 
 # ------------------
 # Check internal links
@@ -94,39 +91,76 @@ link_pattern = re.compile("(?:[^\!]|^)\[([^\[\]]+)\]\(()([^()]+)\)")
 internal_links_with_errors = []
 internal_links_with_warnings = []
 
-external_links_with_errors = []
-
-headers = {
-    'User-Agent': 'Linode Docs External Link Crawler'
-}
-
 # Iterate through each markdown file within the docs_directory
 for root, dirs, files in os.walk(docs_directory):
     for file in files:
+
         if file.endswith('index.md'):
 
             # The relative file path of the file
             file_path = os.path.join(root, file)
 
+
+            # Skip over any pages not in guides or products:
+            if not file_path.startswith('docs/guides/') and not file_path.startswith('docs/products/'):
+                continue
+
+            # Reset insideSpecialElement for each new file
+            insideSpecialElement = False
+
             # Iterate through each line of the file
             for i, line in enumerate(open(file_path)):
+
+                if line.strip().startswith('{{< file'):
+                    insideSpecialElement = True
+                    continue
+                elif line.strip().startswith('{{</ file'):
+                    insideSpecialElement = False
+                    continue
+
+                if insideSpecialElement == True:
+                    continue
+
+                # Skip over block quotes
+                if line.strip().startswith('>'):
+                    continue
                 # Find and iterate through all markdown links to other guides
                 for match in re.finditer(link_pattern, line):
-                    # Remove the title, brackets, and parenthesis from the markdown link
-                    link = match.group()
-                    link = link[link.find("(")+1:link.find(")")]
-
-                    if not link.startswith('/docs/'):
-                        internal_links_with_errors.append(link)
+                    # Remove the title, brackets, and parenthesis from the markdown link syntax
+                    link = match.group(3)
+                    link_unmodified = link
+                    #link = link[link.find("(")+1:link.find(")")]
+                    # Ignore links that start with common protocols
+                    if link.startswith('http://') or link.startswith('https://') or link.startswith('ftp://'):
                         continue
+                    # Ignore anchors
+                    if link.startswith('#'):
+                        continue
+                    elif "#" in link:
+                        link = link.split("#", 1)[0]
+                    # Ignore links to resources within the same directory
+                    if not "/" in link and "." in link:
+                        continue
+                    # Log error if link does not start with /docs/
+                    if not link.startswith('/docs/'):
+                        internal_links_with_errors.append(link_unmodified)
+                        continue
+                    # Log warning if link ends with two slashes /
+                    if '//' in link:
+                        internal_links_with_warnings.append(link_unmodified)
+                        link = link.replace('//','/')
+                    # Log warning if link does not end with a slash /
+                    if not link.endswith('/'):
+                        internal_links_with_warnings.append(link_unmodified)
+                        link = link + '/'
                     # Check if link points to a canonical internal URL
-                    if not (link in canonical_internal_urls):
+                    if not (link in valid_links):
                         # Checks if the link matches an alias or not
                         if aliases.get(link.replace('/docs/','/')) is not None:
-                            # Checks if the link matches a duplicate
-                            internal_links_with_warnings.append(link)
+                            internal_links_with_warnings.append(link_unmodified)
                         else:
-                            internal_links_with_errors.append(link)
+                            internal_links_with_errors.append(link_unmodified)
+                            internal_links_with_errors.append(file_path)
 
 num_errors = len(internal_links_with_errors)
 num_warnings = len(internal_links_with_warnings)
@@ -136,7 +170,7 @@ if num_errors != 0:
         print('Failure: There is 1 error in links.')
     else:
         print('Failure: There are ' + str(num_errors) + ' errors in links.')
-    #print(internal_links_with_errors)
+    print(internal_links_with_errors)
     #sys.exit(1)
 if num_warnings != 0:
     if num_warnings == 1:
