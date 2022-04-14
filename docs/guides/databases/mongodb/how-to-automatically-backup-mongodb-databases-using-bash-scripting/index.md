@@ -39,7 +39,9 @@ Backing up the data stored in a MongoDB database is an important step to maintai
 1.  Install [MongoDB](/docs/guides/install-mongodb-on-ubuntu-16-04/) on your Linux system.
 
 {{< note >}}
-This guide is written using a non-root user account. For any commands that require elevated privileges, `sudo` is prefixed at the start of the command syntax. If you’re unfamiliar with the `sudo` command workflow, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written using a non-root user account.
+For any commands that require elevated privileges, `sudo` is prefixed at the start of the command syntax.
+If you’re unfamiliar with the `sudo` command workflow, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Cyberduck CLI
@@ -166,4 +168,4 @@ Enter the following line in your Cron job file:
 
 Replace `/path/to/` with the full directory path to your `backup_mongodb.sh` file.
 
-This Cron job is scheduled to run daily at 9:00 AM on your system's configured time zone. For more information on Cron job configuration parameters, review the guide [Using Cron to Schedule Tasks for Certain Times or Intervals](docs/guides/schedule-tasks-with-cron/)
+This Cron job is scheduled to run daily at 9:00 AM on your system's configured time zone. For more information on Cron job configuration parameters, review the guide [Using Cron to Schedule Tasks for Certain Times or Intervals](docs/guides/schedule-tasks-with-cron)
