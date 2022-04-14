@@ -528,7 +528,7 @@ Make sure that [Network Helper](/docs/platform/network-helper/) is turned **OFF*
 
 ### Configure IP Sharing
 
-IP sharing, also referred to as IP failover, is the process by which an IP address is reassigned from one Compute Instance to another in the event the first one fails or goes down. See, [Configuring IP Sharing](docs/guides/managing-ip-addresses/#configuring-ip-sharing) for information about using Linode Cloud Manager to configure IP failover.
+IP sharing, also referred to as IP failover, is the process by which an IP address is reassigned from one Compute Instance to another in the event the first one fails or goes down. See, [Configuring IP Sharing](/docs/guides/managing-ip-addresses/#configuring-ip-sharing) for information about using Linode Cloud Manager to configure IP failover.
 
 Configure IP failover on `galera2` and `galera3` to take on the floating IP address from `galera1` in the event that it fails.
 
