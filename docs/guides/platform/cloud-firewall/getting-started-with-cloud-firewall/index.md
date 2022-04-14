@@ -62,6 +62,26 @@ Upon initial creation of a Cloud Firewall, you are required to select Firewall r
 
 {{< content "delete-cloud-firewall-rules-shortguide" >}}
 
+## Limiting User Access to Cloud Firewalls
+
+Currently, Cloud firewall user access controls cannot be set directly using the [Cloud Manager](/docs/guides/accounts-and-passwords/#users-and-permissions) and are instead set using [Personal Access Tokens with the Linode API](/docs/api/profile/#personal-access-tokens-list). Below is an example API request that will create an API token with this permission that can be adjusted and edited as needed:
+
+
+{{< file >}}
+curl -H "Content-Type: application/json" \
+-H "Authorization: Bearer $TOKEN" \
+-X POST -d '{
+  "scopes": "firewall:read_write",
+  "expiry": "2022-8-01T00:00:01",
+  "label": "cloud-firewall-access"
+}' \
+https://api.linode.com/v4/profile/tokens
+{{< /file >}}
+
+In this example, the `scope` field defines an OAUTH scope of `read_write` for all Cloud Firewalls on the account, while `expiry` defines the expiration date of the Personal Access Token, and `label` is an identifier used for display purposes to identify the token.
+
+When completing this request an API token will be returned in the `Token` field to be used and distributed as needed. This token should be saved in a secure manner immediately as it will not be retrievable again. For more information on creating Personal Access Tokens to use with Cloud Firewall, see our API documentation for creating [Personal Access Tokens with the Linode API](/docs/api/profile/#personal-access-tokens-list).
+
 ## Update a Cloud Firewall's Status
 
 {{< content "cloud-firewall-status-shortguide" >}}
