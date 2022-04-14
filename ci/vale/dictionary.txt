@@ -632,6 +632,7 @@ fremont
 freshclam
 friendster
 frontend
+frontify
 frontmatter
 froud
 froxlor
