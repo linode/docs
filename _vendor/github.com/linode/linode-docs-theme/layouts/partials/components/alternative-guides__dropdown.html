@@ -25,7 +25,7 @@
         <li class="">
           <a href="{{ .page.RelPermalink }}"
               class="block text-right w-full px-4 py-2 leading-5 font-bold text-gray-700 focus:outline-none" role="menuitem">
-            {{ .value }}
+              {{ if eq .value "_parent" }}View all{{ else }} {{ .value }}{{ end }}
           </a>
         </li>
       {{ end }}
