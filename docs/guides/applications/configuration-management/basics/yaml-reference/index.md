@@ -38,7 +38,7 @@ This YAML file defines the version of the API in use, the kind of Kubernetes res
 
 ## Getting Started with YAML
 
-YAML works across operating systems, virtual environments, and data platforms. It is used most often to control how systems operate. For instance, you can configure [GitHub Actions](https://www.linode.com/docs/guides/kubernetes) using YAML. The metadata you define in a GitHub Actions YAML file identifies the inputs and outputs needed to complete tasks in your GitHub repository.
+YAML works across operating systems, virtual environments, and data platforms. It is used most often to control how systems operate. For instance, you can configure [GitHub Actions](/docs/guides/kubernetes/) using YAML. The metadata you define in a GitHub Actions YAML file identifies the inputs and outputs needed to complete tasks in your GitHub repository.
 
 You can also use YAML for data interchange. You might use YAML as a data format for transmission of an invoice, for recording the instantaneous state of a long-lasting game, or for communication between subsystems in complex physical machinery.
 

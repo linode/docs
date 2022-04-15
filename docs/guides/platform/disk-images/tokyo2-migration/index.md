@@ -148,4 +148,4 @@ Having a short TTL means that your users will be directed to your new IP address
 
 ## Contact Linode Support
 
-If you have any issues when migrating or cloning to Tokyo 2, or if you have any questions about this process, please [contact Linode Support](/docs/guides/support/#contacting-linode-support). Technical questions about your Linux deployment's configuration are often outside the scope of support. For any out-of-scope issues, we also recommend searching and asking technical questions in the [Linode Community Site](/community/questions/).
+If you have any issues when migrating or cloning to Tokyo 2, or if you have any questions about this process, please [contact Linode Support](https://www.linode.com/support/). Technical questions about your Linux deployment's configuration are often outside the scope of support. For any out-of-scope issues, we also recommend searching and asking technical questions in the [Linode Community Site](https://www.linode.com/community/questions/).
