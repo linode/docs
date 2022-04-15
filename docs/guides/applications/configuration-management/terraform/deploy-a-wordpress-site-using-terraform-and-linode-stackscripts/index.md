@@ -222,7 +222,7 @@ resource "linode_instance" "my_wordpress_linode" {
 
     -   The `root_pass` argument is assigned to the value of the `random_string` resource previously declared.
 
-    -   To use an existing StackScript you must use the `stackscript_id` argument and provide a valid ID as a value. Every StackScript is assigned a unique ID upon creation. This guide uses the [WordPress on Ubuntu 20.04](https://www.linode.com/stackscripts/998743) StackScript adapted by the Linode user [hmorris](https://www.linode.com/stackscripts/profile/hmorris). This StackScript's ID will be assigned to a Terraform variable later in this guide.
+    -   To use an existing StackScript you must use the `stackscript_id` argument and provide a valid ID as a value. Every StackScript is assigned a unique ID upon creation. This guide uses the [WordPress on Ubuntu 20.04](https://cloud.linode.com/stackscripts/998743) StackScript adapted by the Linode user [hmorris](https://cloud.linode.com/stackscripts/community?query=username%3Ahmorris). This StackScript's ID will be assigned to a Terraform variable later in this guide.
 
         StackScripts support user defined data. A StackScript can use the [`UDF` tag](/docs/platform/stackscripts/#variables-and-udfs) to create a variable whose value must be provided by the user of the script. This allows users to customize the behavior of a StackScript on a per-deployment basis. Any required `UDF` variable can be defined using the `stackscript_data` argument.
 
