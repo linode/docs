@@ -13,7 +13,6 @@ modified_by:
 title: "Enabling HTTPS Using Certbot with NGINX on CentOS/RHEL 7"
 h1_title: "Securing Web Traffic Using Certbot with NGINX on CentOS/RHEL 7"
 enable_h1: true
-aliases: ['/quick-answers/websites/how-to-install-certbot-on-centos-8/','/quick-answers/websites/certbot/how-to-install-certbot-on-centos-8/']
 relations:
     platform:
         key: how-to-use-certbot-with-nginx

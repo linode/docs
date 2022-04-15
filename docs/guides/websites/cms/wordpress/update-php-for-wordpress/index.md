@@ -100,7 +100,7 @@ Although unlikely, the site or its contents could be corrupted during the update
 The WordPress site can be backed up externally using FTP or SCP. It can also be backed up in a different folder on the Linode. In the long run, it is much safer to back up the files and database to external storage space. This preserves the archive in the event the server hard drive becomes corrupted or access to the server is permanently lost. However, to quickly upgrade WordPress or PHP, a temporary backup copy can be made somewhere else on the Linode.
 
 {{< note >}}
-For a nominal fee, Linode can take a snapshot of your site through its [Backup Service](https://www.linode.com/docs/products/storage/backups/). A variety of third-party tools are also available. [cPanel](/docs/websites/cms/cpanel/use-cpanel-to-manage-domains-and-databases/) can be used to back up a site, but it has a licensing fee. A variety of third-party WordPress plug-ins are also available for this purpose.
+For a nominal fee, Linode can take a snapshot of your site through its [Backup Service](/docs/products/storage/backups/). A variety of third-party tools are also available. [cPanel](/docs/websites/cms/cpanel/use-cpanel-to-manage-domains-and-databases/) can be used to back up a site, but it has a licensing fee. A variety of third-party WordPress plug-ins are also available for this purpose.
 {{< /note >}}
 
 To back up the WordPress files on the Linode, follow the below steps:

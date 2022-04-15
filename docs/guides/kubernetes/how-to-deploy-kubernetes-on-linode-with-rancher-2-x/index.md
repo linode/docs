@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 title: 'How to Deploy Kubernetes on Linode with Rancher'
 h1_title: 'Deploying Kubernetes on Linode with Rancher'
-aliases: ['/applications/containers/how-to-deploy-apps-with-rancher-2-3/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/how-to-deploy-apps-with-rancher/','/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/']
+aliases: ['/applications/containers/how-to-deploy-apps-with-rancher-2-3/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/how-to-deploy-apps-with-rancher/','/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/']
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
@@ -127,13 +127,13 @@ The main interface for navigating Rancher is via the blue navigation bar that sp
 
 Rancher includes two kinds of integrations with hosting providers:
 
--   A [*cluster driver*](https://rancher.com/docs/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/) allows Rancher to create and administer a cloud host-launched Kubernetes cluster. In a host-launched Kubernetes cluster, your hosting platform operates the new cluster's control plane and etcd components, while you provision and configure your worker nodes (via Rancher as well). The LKE cluster driver is required to create clusters on Rancher powered by [LKE](https://www.linode.com/docs/products/compute/kubernetes/).
+-   A [*cluster driver*](https://rancher.com/docs/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/) allows Rancher to create and administer a cloud host-launched Kubernetes cluster. In a host-launched Kubernetes cluster, your hosting platform operates the new cluster's control plane and etcd components, while you provision and configure your worker nodes (via Rancher as well). The LKE cluster driver is required to create clusters on Rancher powered by [LKE](/docs/products/compute/kubernetes/).
 
 -   A [*node driver*](https://rancher.com/docs/rancher/v2.x/en/admin-settings/drivers/node-drivers/) allows Rancher to create and administer a Rancher-launched Kubernetes cluster. Rancher will directly provision your control plane and etcd nodes along with your worker nodes. Your cloud host does not manage your control plane and etcd components.
 
 ## Deploy an LKE Cluster on Rancher
 
-The (Linode Kubernetes Engine)[https://www.linode.com/docs/products/compute/kubernetes/] is a fully-managed orchestration Engine that can simplify the management of Kubernetes on Linode, capable of being supported by the Rancher platform. If an unmanaged option for Kubernetes is preferred, skip to the Deploying an [Unmanaged Kubernetes Cluster](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/#the-linode-node-driver-for-rancher) section.
+The [Linode Kubernetes Engine](/docs/products/compute/kubernetes/) is a fully-managed orchestration Engine that can simplify the management of Kubernetes on Linode, capable of being supported by the Rancher platform. If an unmanaged option for Kubernetes is preferred, skip to the Deploying an [Unmanaged Kubernetes Cluster](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/#the-linode-node-driver-for-rancher) section.
 
 ### The LKE Cluster Driver for Rancher
 

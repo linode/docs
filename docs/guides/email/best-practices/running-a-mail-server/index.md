@@ -57,7 +57,7 @@ Running your own mail server isn't for the faint of heart. Setting up the softwa
 - If a spammer discovers an exploit, they could use your Linode to send spam, and your IP address could be black-listed
 - No third party support to troubleshoot e-mail issues.
 
-You're responsible for everything related to your Linode. Maintaining, upgrading, and troubleshooting the mail server is your responsibility. Visit Linode's [Terms of Service](/tos) for more information about acceptable use.
+You're responsible for everything related to your Linode. Maintaining, upgrading, and troubleshooting the mail server is your responsibility. Visit Linode's [Terms of Service](https://www.linode.com/legal/) for more information about acceptable use.
 
 ### External Mail Services
 
@@ -215,7 +215,7 @@ At this point, you should have a basic mail server up and running. There's a bit
 
 ### Configure Spam and Virus Protection
 
-Spam that originates from your Linode may be a violation of [Linode's Terms of Service](/tos), and may lead to your server being blacklisted by a [variety of organizations](https://mxtoolbox.com/blacklists.aspx).
+Spam that originates from your Linode may be a violation of [Linode's Terms of Service](https://www.linode.com/legal/), and may lead to your server being blacklisted by a [variety of organizations](https://mxtoolbox.com/blacklists.aspx).
 
 Take steps to ensure that your Linode is not used as an *open relay* server, which would allow anyone to send messages anywhere using your server. To prevent your Linode from being used as an open relay, make a list of allowed domains and users for your MTA, and make sure it rejects everything else.
 

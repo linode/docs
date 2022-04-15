@@ -74,7 +74,7 @@ Currently, there are two available versions of Proxy Protocol, **v1** and **v2**
   - **v1**: Proxy Protocol v1 adds a human readable string to all requests.
   - **v2**: Proxy Protocol v2 adds a more efficient binary data header to all requests.
 
-For more information and instructions, see our guide on [Using Proxy Protocol with NodeBalancers](/docs/platform/nodebalancer/nodebalancer-proxypass-configuration/)
+For more information and instructions, see our guide on [Using Proxy Protocol with NodeBalancers](/docs/guides/nodebalancer-proxypass-configuration/)
 
 ### Algorithm
 

@@ -32,7 +32,7 @@ const onNavSearchResults = function(self, val, oldVal) {
 		if (newSearch) {
 			let queryString = queryHandler.queryToQueryString(self.$store.search.query);
 			if (queryString) {
-				queryString += '?';
+				queryString = '?' + queryString;
 			}
 			self.$store.nav.pushState('/docs/topresults/' + queryString);
 		}

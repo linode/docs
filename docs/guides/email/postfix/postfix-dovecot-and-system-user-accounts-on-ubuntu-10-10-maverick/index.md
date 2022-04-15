@@ -12,7 +12,6 @@ modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2010-12-07
-expiryDate: 2014-10-08
 title: 'Postfix, Dovecot, and System User Accounts on Ubuntu 10.10 (Maverick)'
 deprecated: true
 relations:
@@ -24,8 +23,7 @@ relations:
 
 Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [basic email gateway with Postfix](/docs/email/postfix/gateway-ubuntu-10-10-maverick) document to install a more minimal email system. If you plan to host a larger number of domains and email aliases, you may want to consider a more sophisticated hosting solution like the [email server with Postfix, MySQL and Dovecot](/docs/email/postfix/dovecot-mysql-ubuntu-10-10-maverick/).
 
-Set the Hostname
-----------------
+## Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -34,8 +32,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install Software
-----------------
+## Install Software
 
 Issue the following commands to install any outstanding package updates:
 
@@ -54,8 +51,7 @@ The next prompt will ask for the system mail name. This should correspond to the
 
 [![Selecting the Postfix system mail name on a Ubuntu 10.10 (Maverick) system.](92-postfix-courier-mysql-02-mail-server-type-3.png)](92-postfix-courier-mysql-02-mail-server-type-3.png)
 
-SASL Authentication
--------------------
+## SASL Authentication
 
 Edit the `/etc/default/saslauthd` file to allow the SASL authentication daemon to start. Uncomment or add the following line:
 
@@ -74,7 +70,6 @@ smtpd_tls_key_file=/etc/ssl/postfix.key
 smtpd_sasl_application_name = smtpd
 
 {{< /file >}}
-
 
 These settings make it possible for the SASL authentication process to interact with Postfix, and for Postfix to use the SSL certificate generated above. If you're using an SSL certificate with a different name, modify the first two lines of this configuration section.
 
@@ -132,15 +127,13 @@ mail_location = maildir:~/mail:LAYOUT=fs
 
 {{< /file >}}
 
-
 Once configured, issue the following command to restart the Dovecot instance:
 
     restart dovecot
 
 You may now access email by configuring a local email client to contact the server you have set up. Authentication credentials are the same as the system user accounts. These accounts can be configured outside of this document at any time.
 
-Organize Mail Services
-----------------------
+## Organize Mail Services
 
 This document describes a complete email system configuration. How you use and manage your system from this point forward is beyond the scope of this document. At the same time, we do encourage you to give some thought to the organization of your user accounts and email delivery. Keeping a well organized and easy to manage system is crucial for sustainable use of this system.
 
@@ -148,8 +141,7 @@ Organizational structure is crucial in this kind of deployment because delivery 
 
 Remember that system user accounts may provide access to other services on the system. Unless this access is specifically prohibited, all system user accounts will have SSH access to the server using the same credentials that are used for logging into the email services.
 
-More Information
-----------------
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -5,7 +5,7 @@
   <!-- If there's any other related guides (such as other distributions), show the "alternative guide" notice -->
   {{ if .Params.relations.platform }}
     <div class="mt-6 mb-6">
-      {{ partial "sections/content/alternative-guides.html" . }}
+      {{ partial "sections/content/alternative-guides.html" (dict "page" .) }}
     </div>
   {{ end }}
 

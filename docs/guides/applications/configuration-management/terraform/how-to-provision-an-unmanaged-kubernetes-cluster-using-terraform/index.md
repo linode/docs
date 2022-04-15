@@ -147,7 +147,7 @@ module "k8s" {
 
     This file contains the main configuration arguments of the cluster. The only required configurations are `source` and `linode_token`. `source` calls Linode's k8s module, while the `linode_token` gives access to viewing, creating, and destroying Linode resources.
 
-    The rest of the configurations are [optional](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2?tab=inputs#optional-inputs) and have some default values. In this example, however, [Terraform's input variables](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/#input-variables) are used, so the `main.tf` configuration can be reused across different clusters.
+    The rest of the configurations are [optional](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2?tab=inputs#optional-inputs) and have some default values. In this example, however, [Terraform's input variables](/docs/guides/beginners-guide-to-terraform/#input-variables) are used, so the `main.tf` configuration can be reused across different clusters.
 
 1. Create an input variables file, named `variables.tf`, with the example content.
 
@@ -187,7 +187,7 @@ variable "nodes" {
 }
       {{</ file >}}
 
-    The example file creates input variables referenced in the main configuration file that was created. The values for those variables are assigned in a separate file in the next step. The default values of the k8s module can be overridden, as in the example file. For more details about input variables, see the [Input Variables](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/#input-variables) section in the [A Beginner's Guide to Terraform](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/).
+    The example file creates input variables referenced in the main configuration file that was created. The values for those variables are assigned in a separate file in the next step. The default values of the k8s module can be overridden, as in the example file. For more details about input variables, see the [Input Variables](/docs/guides/beginners-guide-to-terraform/#input-variables) section in the [A Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/).
 
 1. Create an input variables values file to provide the main configuration file with values that differ from the defaults in input variable file.
 

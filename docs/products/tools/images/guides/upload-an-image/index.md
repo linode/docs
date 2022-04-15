@@ -70,7 +70,7 @@ Once you have obtained a compatible image file that meets all the requirements, 
 
 ## Uploading an Image File through the Linode CLI
 
-Another method for uploading a compatible image file is directly through the [Linode CLI](https://www.linode.com/docs/guides/linode-cli/).
+Another method for uploading a compatible image file is directly through the [Linode CLI](/docs/guides/linode-cli/).
 
 1.  Run the following command to install or update the Linode CLI:
 

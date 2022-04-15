@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.119.0
+  version: 4.119.4
 
   title: Linode API
   description: |
@@ -342,6 +342,11 @@ info:
     determined by IP address or by OAuth token. Additionally, there are endpoint specific limits defined below.
 
     **Note:** There may be rate limiting applied at other levels outside of the API, for example, at the load balancer.
+
+    Creating Linodes has a dedicated limit of 10 requests per 30 seconds per user.
+    That endpoint is:
+
+    * [Linode Create](/docs/api/linode-instances/#linode-create)
 
     `/stats` endpoints have their own dedicated limits of 100 requests per minute per user.
     These endpoints are:

@@ -38,7 +38,7 @@ Linode's IP failover feature using keepalived is compatible with various IP addr
 
 ## Configuring IP Sharing
 
-Before using keepalived to configure IP failover for a public or private IPv4 address (not VLANs), you first need to use Linode's IP Sharing feature to share your IP address with other Compute Instances. To do so, follow the instructions within the **Configuring IP Sharing** section of the [Managing IP Addresses](https://www.linode.com/docs/guides/managing-ip-addresses/#configuring-ip-sharing) guide for *each secondary* Compute Instance.
+Before using keepalived to configure IP failover for a public or private IPv4 address (not VLANs), you first need to use Linode's IP Sharing feature to share your IP address with other Compute Instances. To do so, follow the instructions within the **Configuring IP Sharing** section of the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#configuring-ip-sharing) guide for *each secondary* Compute Instance.
 
 ## Installing and Configuring keepalived
 

@@ -67,7 +67,7 @@ To learn how to install netstat, interpret its output, and view common command l
 
 ### Using ss
 
-Another way to have Linux check ports is via the [**ss**](https://www.linode.com/docs/guides/ss/) tool. `ss` was created to improve upon netstat and provides more functionality. It allows you to monitor TCP, UDP, and UNIX sockets. A socket enables programs to communicate with each other across a network and is comprised of an IP address and a port number.
+Another way to have Linux check ports is via the [**ss**](/docs/guides/ss/) tool. `ss` was created to improve upon netstat and provides more functionality. It allows you to monitor TCP, UDP, and UNIX sockets. A socket enables programs to communicate with each other across a network and is comprised of an IP address and a port number.
 
 Running the `ss` with no options displays TCP, UDP, and UNIX sockets. Similar to netstat, this unrestricted list can get quite big on busy machines, so it is useful to restrict the ss command's output by using command-line options. For example, to view all listening and non-listening TCP sockets issue the following command:
 

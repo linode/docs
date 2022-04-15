@@ -23,7 +23,7 @@ Linode also offers a number of resources you can refer to when troubleshooting a
 
 Linode provides community spaces, an AI-powered assistant, libraries of reference material, and status updates for infrastructure components:
 
--   **Linode Community and the Community Site:** Customers and staff discuss the projects they're working on in the [Linode Community Site](/community/questions/). You can search this site to see if your issue has already been addressed there. If you can't find any existing posts related to your issue, you can create a new one or ask your question in the **IRC channel** listed on [Support](https://www.linode.com/support/) page.
+-   **Linode Community and the Community Site:** Customers and staff discuss the projects they're working on in the [Linode Community Site](https://www.linode.com/community/questions/). You can search this site to see if your issue has already been addressed there. If you can't find any existing posts related to your issue, you can create a new one or ask your question in the **IRC channel** listed on [Support](https://www.linode.com/support/) page.
 
     ![Linode Community Site](community-site-header.png "Linode Community Site")
 
@@ -41,9 +41,9 @@ Linode provides community spaces, an AI-powered assistant, libraries of referenc
 
 -   **Linode Guides & Tutorials:** The [Guides & Tutorials](/docs/) library hosts a catalogued and searchable list of guides on a large number of topics. Here are a few that focus on troubleshooting:
 
-  - The [Troubleshooting](/docs/troubleshooting/troubleshooting/) quick start guide provides answers for common server connectivity and management issues.
+  - The [Troubleshooting](/docs/guides/troubleshooting-overview/) quick start guide provides answers for common server connectivity and management issues.
 
-  - The [Linode Beginner's Guide](/docs/platform/billing-and-support/linode-beginners-guide/) displays a curated list of the most frequently asked questions from Linode customers.
+  - The [Linode Beginner's Guide](/docs/guides/linode-beginners-guide/) displays a curated list of the most frequently asked questions from Linode customers.
 
   - The [Quick Answers](/docs/quick-answers/) section offers short guides with fast answers.
 

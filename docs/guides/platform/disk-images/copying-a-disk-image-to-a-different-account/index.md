@@ -3,21 +3,20 @@ slug: copying-a-disk-image-to-a-different-account
 author:
   name: Linode
   email: docs@linode.com
-description: Review this guide to find out how to copy a disk of a Linode from one Linode account to another.
-og_description: Review this guide to find out how to copy a disk of a Linode from one Linode account to another.
+description: "Review this guide to find out how to copy a disk of a Linode from one Linode account to another."
 keywords: ["disk", "migration", "moving to different accounts"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/migration/copy-disk-image-different-account/','/linode-platform/manager/managing-disk-images/','/platform/disk-images/copying-a-disk-image-to-a-different-account/','/migrate-to-linode/disk-images/copying-a-disk-image-to-a-different-account/']
-modified: 2020-06-12
+modified: 2022-03-28
 modified_by:
   name: Linode
 published: 2020-06-01
-title: How to Copy a Disk to a Different Account
-h1_title: Copying a Disk to a Different Account
+title: "How to Copy a Disk to a Different Account"
+h1_title: "Copying a Disk to a Different Account"
+enable_h1: true
+image: copying_a_disk_to_a_differnet_account_smg.png
 ---
-
-![A guide to copy a disk to a different Linode account](copying_a_disk_to_a_differnet_account_smg.png "A guide to copy a disk to a different Linode account")
 
 You can copy a disk of a Linode from one Linode account to another. This is a great way to prepare a disk for another Linode customer and transfer it from one individual account to another individual account. Or if you have multiple Linode accounts, this guide provides instructions to consolidate all the disks in one account.
 
@@ -32,19 +31,19 @@ You need to prepare the *receiving* Linode before initiating the transfer. First
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) with the username and password you created when signing up.
 1.  Click **Create** at the top of the page and select **Linode**.
-1.  Click **X** to not choose any **Image** in the **Choose a Distribution** section of the [Distributions](/docs/quick-answers/linux/choosing-a-distribution/) tab.
+1.  Click **X** to not choose any **Image** in the **Choose a Distribution** section of the [Distributions](/docs/guides/choosing-a-distribution/) tab.
 
     ![Creating a receiving Linode](image-selection.png)
 
-1. Choose the region where you would like the Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
+1. Choose the region where you would like the Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
 
 1. Select a Linode plan.
 
 1.  Give the Linode a label. This is a name to help you easily identify it within the Cloud Manager's Dashboard. If desired, assign a tag to the Linode in the **Add Tags** field.
 
-1. Create a root password for your Linode in the **Root Password** field. This password must be provided when you log in to the Linode through SSH. The password must meet the complexity strength validation requirements for a strong password. Your root password can be used to perform any action on your server, so make it long, complex, and unique.
+1. Skip the **Root Password** and **SSH Keys** fields, as they are disabled when creating an empty Linode.
 
-1.  Click **Create**. The system directs you to the *Linodes* page that reports the status of the Linode as it boots up.
+1.  Click **Create Linode**. The system directs you to the *Linodes* page that reports the status of the Linode as it boots up.
 
 ### Creating New Disks
 
@@ -128,7 +127,7 @@ Wait for the transfer to complete. Note that this process can take a while, depe
 
 ## Verifying the Disk
 
-After the file transfer has completed, you should verify the disk by mounting it on the *receiving* Linode. Ensure that the [Network Helper](/docs/platform/network-helper/) is on for the *receiving* Linode or the [Static IP](/docs/networking/linux-static-ip-configuration/) is configured to enable networking with the new IP addresses.
+After the file transfer has completed, you should verify the disk by mounting it on the *receiving* Linode. Ensure that the [Network Helper](/docs/guides/network-helper/) is on for the *receiving* Linode or the [Static IP](/docs/guides/linux-static-ip-configuration/) is configured to enable networking with the new IP addresses.
 
 1.  Connect to the *receiving* Linode through SSH as `root`.
 

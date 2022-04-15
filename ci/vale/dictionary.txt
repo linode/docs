@@ -33,6 +33,7 @@ alexa
 alexey
 alfano
 alives
+allifs
 allmasquerade
 allowlist
 allowlisting
@@ -131,6 +132,7 @@ backreferences
 backtick
 backticks
 backupninja
+badblocks
 bampton
 balarin
 banaction
@@ -234,6 +236,7 @@ characterwise
 chatbot
 chatbots
 chatrooms
+chcon
 cheatsheet
 checkmarx
 checksummed
@@ -241,6 +244,8 @@ checksums
 chefspec
 Chevereto
 chgrp
+chipset
+chipsets
 chmod
 chown
 christianwan
@@ -391,6 +396,7 @@ dbdir
 dbfiles
 dbname
 dbserver
+dcid
 dcs
 deadman
 deallocation
@@ -1188,6 +1194,7 @@ minimax
 minio
 minisockets
 minitest
+minix
 misconfiguration
 misconfigurations
 misconfigured
@@ -1524,6 +1531,7 @@ printf
 prismic
 pritunl
 privesc
+prizm
 processhider
 procfile
 procmail
@@ -1713,6 +1721,7 @@ salesforce
 Saltcorn
 sam
 samy
+sandboxing
 sandcat
 sanitization
 sar
@@ -2293,6 +2302,7 @@ yourservice
 youtube
 yubico
 yubikey
+yubikeys
 zabbix
 zapier
 zcat

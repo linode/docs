@@ -49,7 +49,7 @@ You can exit to the Lish prompt by pressing **CTRL+A** then **D**. You cannot ex
 You can connect to Lish with the SSH client of your choice. For example, you can use the Terminal application in Mac OS X, PuTTY in Windows, or your favorite X11 terminal emulator.
 
 {{< note >}}
-If you have [Third Party Authentication](/docs/platform/manager/third-party-authentication/) enabled on your account, you will not be able to log in to your Compute Instance through Lish with password authentication, and must instead use SSH key authentication. Read the [Add Your Public Key](#add-your-public-key) section for more instructions on how to add an SSH key to your account for use with Lish.
+If you have [Third Party Authentication](/docs/guides/third-party-authentication/) enabled on your account, you will not be able to log in to your Compute Instance through Lish with password authentication, and must instead use SSH key authentication. Read the [Add Your Public Key](#add-your-public-key) section for more instructions on how to add an SSH key to your account for use with Lish.
 {{</ note >}}
 
 1.  Select a Lish SSH gateway. There's one in every data center. You can use any gateway to access your Compute Instances, but we recommend using one close to the data center it's located within. The gateway boxes are available over IPv4 and IPv6.
@@ -77,7 +77,7 @@ If you have [Third Party Authentication](/docs/platform/manager/third-party-auth
         ssh user@lish-newark.linode.com
 
     {{< note >}}
-Users who have been granted "Access" rights on a particular Compute Instance will have access to its Lish console via the gateway. Linodes that a user can't access in the Cloud Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](/docs/platform/manager/accounts-and-passwords-new-manager/).
+Users who have been granted "Access" rights on a particular Compute Instance will have access to its Lish console via the gateway. Linodes that a user can't access in the Cloud Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](/docs/guides/accounts-and-passwords/).
 {{< /note >}}
 
 1.  Verify that the Lish SSH gateway's fingerprint is valid by verifying the Terminal's output against the list of our [Lish Gateway Fingerprints](#lish-gateway-fingerprints). Once verified, enter *yes* to proceed.
@@ -118,7 +118,7 @@ After you log in, you'll have console access to your Compute Instance. You'll be
 
 ## Add Your Public Key
 
-If you don't want to enter your password every time you connect to Lish, or if you have [Third Party Authentication](/docs/platform/manager/third-party-authentication/) enabled on your account, you can add your public SSH key to the Linode Cloud Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/security/use-public-key-authentication-with-ssh/) guide for more information.
+If you don't want to enter your password every time you connect to Lish, or if you have [Third Party Authentication](/docs/guides/third-party-authentication/) enabled on your account, you can add your public SSH key to the Linode Cloud Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/) guide for more information.
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com).
 

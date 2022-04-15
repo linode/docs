@@ -46,7 +46,7 @@ Your WireGuard configuration can be adjusted after you first set up your Marketp
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Debian 11
 - **Recommended minimum plan:** All plan types and sizes can be used. The plan that you select should be appropriate for the amount of data transfer, users, and other stress that may affect the performance of your VPN.
 
 ### WireGuard Options
