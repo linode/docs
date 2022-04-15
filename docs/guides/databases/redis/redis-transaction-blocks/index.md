@@ -31,11 +31,11 @@ This guide walks you through using Redis's transaction blocks. Transaction block
 
 1. Update your system.
 
-    - On **Debian** and **Ubuntu**, use the following command:
+    -   On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
+    -   On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
 
             sudo dnf upgrade
 
@@ -56,19 +56,17 @@ Transactions are especially useful in environments with numerous clients, and wh
 
 ### Transaction Blocks vs. Pipelines
 
-Redis *pipelining* is another method used to optimize command execution in a highly parallel network.
-
-Pipelining in Redis allows clients to queue a series of commands and send them to the server simultaneously, rather than in multiple round trips.
+Redis *pipelining* is another method used to optimize command execution in a highly parallel network. Pipelining in Redis allows clients to queue a series of commands and send them to the server simultaneously, rather than in multiple round trips.
 
 It may seem like *transaction blocks* and *pipelining* serve similar purposes. However, each has a distinct goal and acts to optimize command execution in very different ways from the other. Some of the differences are:
 
-- Pipelining is concerned primarily with network efficiency. It reduces the round-trip time for a series of commands by submitting them all in one request, rather than a series of requests each with its own response.
+- **Pipelining** is concerned primarily with network efficiency. It reduces the round-trip time for a series of commands by submitting them all in one request, rather than a series of requests each with its own response.
 
-    Thus, pipelining is useful for reducing latency and increasing the feasible number of operations per second.
+    *Pipelining is useful for reducing latency and increasing the feasible number of operations per second.*
 
-- Transactions are concerned with the integrity of a group of commands. They ensure that the entirety of a designated group of commands gets executed sequentially and without interruption. This is in contrast to pipelines that may execute requests in alternation with requests sent from other clients.
+- **Transactions** are concerned with the integrity of a group of commands. They ensure that the entirety of a designated group of commands gets executed sequentially and without interruption. This is in contrast to pipelines that may execute requests in alternation with requests sent from other clients.
 
-    Transaction blocks are useful when you need to guarantee a collection of commands is processed as a unit and the commands are executed sequentially.
+    *Transaction blocks are useful when you need to guarantee a collection of commands is processed as a unit and the commands are executed sequentially.*
 
 ## How to Run a Transaction Block
 
@@ -104,7 +102,7 @@ Notice that, for each command within the block (between `MULTI` and `EXEC`), the
 
 When working with Redis transaction blocks, there are two kinds of errors that you may encounter. Based on when they occur, the errors can be categorized as follows:
 
-- **Errors before the `EXEC` command**:
+-   **Errors before the `EXEC` command**:
 
     These include errors related to syntax or related to server restrictions, like maximum memory. Although you can continue queuing commands after receiving one of these errors, the transaction block subsequently fails when you run `EXEC`.
 
@@ -128,7 +126,7 @@ When working with Redis transaction blocks, there are two kinds of errors that y
 
     For this reason, you should cancel any transaction blocks that encounter errors during queuing. See the next section — [How to Cancel a Transaction Block](/docs/guides/redis-transaction-blocks/#how-to-cancel-a-transaction-block) — for instructions on how to do so.
 
-- **Errors after the `EXEC` command**:
+-   **Errors after the `EXEC` command**:
 
      These are errors returned by the server in response to individual commands in the transaction. For example, you might receive such an error due to mismatched types:
 
