@@ -58,11 +58,11 @@ Installs the specified package and all required dependencies. Replace *[package]
 
 Additional options, commands, and notes:
 
--   **Install a specific version** by adding an equal sign after the package, followed by the version number you'd like to install.
+-  **Install a specific version** by adding an equal sign after the package, followed by the version number you'd like to install.
 
         sudo apt install [package]=[version]
 
--   **Reinstall a package** and any dependencies by running the following command. This is useful if an installation for a package becomes corrupt or dependencies were somehow removed.
+-  **Reinstall a package** and any dependencies by running the following command. This is useful if an installation for a package becomes corrupt or dependencies were somehow removed.
 
         sudo apt reinstall [package]
 
