@@ -81,7 +81,7 @@ This generates a large amount of information about the domain. The basic informa
 
 For a web-based tool, you can also use [kloth.net](http://www.kloth.net/services/dig.php) for dig requests and [whois.net](http://whois.net/) for WHOIS requests. Note that since you're running these lookups from a third-party website, the information they find is not necessarily what your local computer has cached. There should be a difference only if you've made recent changes to your DNS information.
 
-For more information and examples on how to use dig, see our [Use dig to Perform Manual DNS Queries](https://www.linode.com/docs/networking/dns/use-dig-to-perform-manual-dns-queries/) guide.
+For more information and examples on how to use dig, see our [Use dig to Perform Manual DNS Queries](/docs/guides/use-dig-to-perform-manual-dns-queries/) guide.
 
 ## Name Resolution Failures
 

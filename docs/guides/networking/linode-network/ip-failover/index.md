@@ -22,7 +22,7 @@ In cloud computing, *failover* is the concept of rerouting traffic to a backup s
 There's always a possibility that your Compute Instance may become inaccessible, perhaps due to a spike in traffic, your own internal configuration issues, a natural disaster, or planned (or unplanned) maintenance. When this happens, any websites or services hosted on that instance would also stop working. Failover provides a mechanism for protecting your services against a single point of failure.
 
 {{< note >}}
-For many production applications, you may want to consider a load balancing tool that goes beyond basic failover. Linode's [NodeBalancers](/docs/products/networking/nodebalancers/) combines load balancing with built-in failover. You can also configure load balancing software, such as [HAProxy](https://www.linode.com/docs/guides/how-to-use-haproxy-for-load-balancing/), on your own Compute Instances and utilize our IP Sharing feature to provide failover.
+For many production applications, you may want to consider a load balancing tool that goes beyond basic failover. Linode's [NodeBalancers](/docs/products/networking/nodebalancers/) combines load balancing with built-in failover. You can also configure load balancing software, such as [HAProxy](/docs/guides/how-to-use-haproxy-for-load-balancing/), on your own Compute Instances and utilize our IP Sharing feature to provide failover.
 {{</ note >}}
 
 ## IP Sharing Availability

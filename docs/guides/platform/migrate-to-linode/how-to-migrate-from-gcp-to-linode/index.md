@@ -50,13 +50,13 @@ There are two considerations when creating a new Linode: which data center the L
 
 1.  **Data Center Location**
 
-    -  To choose a data center location, run speed tests to the different regions that Linode offers from the [speedtest page](/speedtest/). This page allows you to download a 100MB file from each location. Compare the speed of each download to determine the bandwidth between your location and the data center.
+    -  To choose a data center location, run speed tests to the different regions that Linode offers from the [speedtest page](http://www.linode.com/speedtest/). This page allows you to download a 100MB file from each location. Compare the speed of each download to determine the bandwidth between your location and the data center.
 
         You can also run [MTR tests](/docs/guides/diagnosing-network-issues-with-mtr/) to the speed test servers at each location (e.g. `speedtest.dallas.linode.com`). These tests will report latency between your location and the data center--a lower latency is more desirable.
 
 1.  **Plan Size**
 
-    -  To determine which plan to choose, review the [Linode Pricing page](/pricing#all). At a minimum, choose a plan which offers enough storage capacity for the data you store on your current GCP VM instance.
+    -  To determine which plan to choose, review the [Linode Pricing page](https://www.linode.com/pricing/). At a minimum, choose a plan which offers enough storage capacity for the data you store on your current GCP VM instance.
 
         CPU and RAM allocations are also important since a service with a higher workload/higher traffic will require more of each. If you're not sure what your workload will require, start with a smaller Linode and then [resize your plan](/docs/guides/resizing-a-linode/) up or down as needed.
 
@@ -491,7 +491,7 @@ When you're done:
 
 To direct your visitors to your Linode, associate your domain with [your new Linode's IP](/docs/guides/managing-ip-addresses/). There are two options for moving your DNS records:
 
--  Use Linode's fast, stable [DNS hosting](/dns-manager/) which is free as long as you have one active Linode on your account.
+-  Use Linode's fast, stable [DNS hosting](/docs/products/networking/dns-manager/) which is free as long as you have one active Linode on your account.
 
 -  Continue to use your current nameserver authority and update your DNS records with your new Linode's IP address. You should check with your current provider to see if there are any costs for their DNS services. If you are using your domain name registrar's nameservers, then they are generally free.
 

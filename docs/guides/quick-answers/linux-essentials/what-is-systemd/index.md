@@ -253,4 +253,4 @@ Read our *[Introduction to systemctl](/docs/quick-answers/linux-essentials/intro
 
 systemd's `journalctl` tool provides a centralized process and system logging tool. This command allows you to query the systemd journal, which creates and maintains indexed journals from logging information that is pooled from different areas within the system; areas like standard output and standard error of service units, log messages via syslog, and kernel log messages. In this way, system administrators can use a single tool to monitor and debug a server.
 
-To learn some commonly used `journalctl` commands, see our guide *[Use journalctl to View Your System's Logs](https://www.linode.com/docs/quick-answers/linux/how-to-use-journalctl/)*.
+To learn some commonly used `journalctl` commands, see our guide *[Use journalctl to View Your System's Logs](/docs/guides/how-to-use-journalctl/)*.

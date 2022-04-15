@@ -61,7 +61,7 @@ Element is based on React and uses *Electron* for bundling. See the [*Element Gi
 
 ## A Summary of the Element Installation and Configuration Process
 
-A complete Element installation consists of the high-level steps outlined in this section. Because Element is a web client for [*Matrix-Synapse*](https://matrix.org/docs/projects/server/synapse), you must first download and install the Matrix-Synapse software package. Element also requires a web server, such as [*NGINX*](/docs/guides/web-servers/nginx/?q=nginx). Although these instructions are geared towards Ubuntu installations, they are broadly applicable to most Linux distributions.
+A complete Element installation consists of the high-level steps outlined in this section. Because Element is a web client for [*Matrix-Synapse*](https://matrix.org/docs/projects/server/synapse), you must first download and install the Matrix-Synapse software package. Element also requires a web server, such as [*NGINX*](/docs/guides/web-servers/nginx/). Although these instructions are geared towards Ubuntu installations, they are broadly applicable to most Linux distributions.
 
 1. Set Up DNS Records
 1. Download and install the Matrix-Synapse communication layer

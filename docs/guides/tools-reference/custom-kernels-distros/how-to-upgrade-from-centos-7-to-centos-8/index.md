@@ -44,7 +44,7 @@ For this guide you will need a backup of your existing CentOS 7 installation. Yo
 - You can enroll in [Linode's Backup Service](/docs/platform/disk-images/linode-backup-service/). This will take automatic regular backups for you, and give you the option of taking a [Manual Snapshot](/docs/platform/disk-images/linode-backup-service/#take-a-manual-snapshot) at any time.
 - For alternative backups solutions, see our [Backing Up Your Data](/docs/security/backups/backing-up-your-data/) guide.
 
-When creating your backup, it's recommended that you [Resize Your Disk](https://www.linode.com/docs/quick-answers/linode-platform/resize-a-linode-disk/) to the smallest size possible in advanced in order to ensure that you are able to allocate an extra disk in a later step.
+When creating your backup, it's recommended that you [Resize Your Disk](/docs/guides/resize-a-linode-disk/) to the smallest size possible in advanced in order to ensure that you are able to allocate an extra disk in a later step.
 
 {{< caution >}}
 
@@ -78,7 +78,7 @@ It is important to note that automatic backups using Linode's Backup Service wil
 
      {{< note >}}
 
-If your Linode's disks have been using the entirety of allocatable space available to your Linode, then you will either need to [Resize Your Disk](https://www.linode.com/docs/quick-answers/linode-platform/resize-a-linode-disk/) so that you can take a new [Snapshot](/docs/platform/disk-images/linode-backup-service/#take-a-manual-snapshot), or [Resize Your Linode](/docs/platform/disk-images/resizing-a-linode/)
+If your Linode's disks have been using the entirety of allocatable space available to your Linode, then you will either need to [Resize Your Disk](/docs/guides/resize-a-linode-disk/) so that you can take a new [Snapshot](/docs/platform/disk-images/linode-backup-service/#take-a-manual-snapshot), or [Resize Your Linode](/docs/platform/disk-images/resizing-a-linode/)
 
 {{< /note >}}
 

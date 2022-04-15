@@ -137,11 +137,11 @@ Like all RDBMS applications, MySQL is a relational database. Administrators and 
 - MySQL is packaged with several convenient client utilities, including `mysqldump` and `mysqladmin`. Users can verify, optimize, and repair tables using the `mysqlcheck` program.
 - The MySQL open source license allows developers to customize MySQL and modify the source code to meet their requirements.
 
-MySQL is also available in a more fully-featured Enterprise Edition, with full customer support. For information on installing MySQL on Ubuntu or other Linux platforms, consult the Linode guide on [Installing and Configuring MySQL on Ubuntu 20.04](https://www.linode.com/docs/guides/installing-and-configuring-mysql-on-ubuntu-2004/).
+MySQL is also available in a more fully-featured Enterprise Edition, with full customer support. For information on installing MySQL on Ubuntu or other Linux platforms, consult the Linode guide on [Installing and Configuring MySQL on Ubuntu 20.04](/docs/guides/installing-and-configuring-mysql-on-ubuntu-2004/).
 
 ### SQL vs. NoSQL
 
-NoSQL systems are an alternative to traditional SQL-based RDBMS applications. As the name implies, they use a non-relational model to handle data. They are typically less structured and more flexible than an RDBMS. NoSQL systems are not standardized and can take a variety of formats. However, they are typically key-value, graph, or document-based, not table-based. Some NoSQL applications can use structured domain-specific languages or even accept SQL queries in parallel. A few examples of NoSQL applications include Redis and [MongoDB](/docs/guides/install-mongodb-on-centos-7/). For more information on NoSQL systems, consult the Linode guide for a [comparison between SQL and NoSQL databases](https://www.linode.com/docs/guides/what-is-nosql/#what-makes-nosql-different-from-sql).
+NoSQL systems are an alternative to traditional SQL-based RDBMS applications. As the name implies, they use a non-relational model to handle data. They are typically less structured and more flexible than an RDBMS. NoSQL systems are not standardized and can take a variety of formats. However, they are typically key-value, graph, or document-based, not table-based. Some NoSQL applications can use structured domain-specific languages or even accept SQL queries in parallel. A few examples of NoSQL applications include Redis and [MongoDB](/docs/guides/install-mongodb-on-centos-7/). For more information on NoSQL systems, consult the Linode guide for a [comparison between SQL and NoSQL databases](/docs/guides/what-is-nosql/#what-makes-nosql-different-from-sql).
 
 ## What are the MySQL Client and Server?
 
@@ -151,13 +151,13 @@ The MySQL client enables users to connect with a MySQL server, either on the sam
 
 The standard MySQL command line client utility is named `mysql`. It can be installed without the server component using the command `yum install mysql` or `apt-get install mysql-client`. To access the MySQL client, use the command `mysql <database_name>`. The username, password, and server IP address can be specified using additional parameters.
 
-When the user successfully logs in, the client displays the MySQL prompt `mysql>`. The user can then run SQL commands. For more information about installing and using MySQL, consult the Linode guide on [How to Connect to a MySQL or MariaDB Database](https://www.linode.com/docs/guides/connect-to-a-mysql-or-mariadb-database/).
+When the user successfully logs in, the client displays the MySQL prompt `mysql>`. The user can then run SQL commands. For more information about installing and using MySQL, consult the Linode guide on [How to Connect to a MySQL or MariaDB Database](/docs/guides/connect-to-a-mysql-or-mariadb-database/).
 
 ## What is MySQL Used For?
 
 MySQL is a versatile RDBMS for use with a data set of any size. It can be considered any time an application must store and retrieve data. MySQL was originally developed for small to medium-size single-server configurations. But with recent performance and scalability improvements, it can be used virtually anywhere in an application of any size. Even large companies including Uber, Airbnb, and Shopify use MySQL.
 
-Users must install MySQL to configure WordPress. WordPress uses MySQL to store all its data and configuration files, and dynamically interacts with MySQL to display and create web pages. Users do not necessarily have to understand SQL to use WordPress. However, it can come in handy when performing advanced customizations. On Linux, WordPress is often installed as a package along with MySQL and the rest of the LAMP stack. For more information on how to configure MySQL and WordPress, see the Linode guide on [Installing WordPress on Ubuntu 20.04](https://www.linode.com/docs/guides/how-to-install-wordpress-ubuntu-2004/).
+Users must install MySQL to configure WordPress. WordPress uses MySQL to store all its data and configuration files, and dynamically interacts with MySQL to display and create web pages. Users do not necessarily have to understand SQL to use WordPress. However, it can come in handy when performing advanced customizations. On Linux, WordPress is often installed as a package along with MySQL and the rest of the LAMP stack. For more information on how to configure MySQL and WordPress, see the Linode guide on [Installing WordPress on Ubuntu 20.04](/docs/guides/how-to-install-wordpress-ubuntu-2004/).
 
 Other common applications for MySQL include data warehousing, transaction processing, reservation systems, e-commerce, and web databases. For example, a MySQL database can maintain the product list and inventory for an online store.
 

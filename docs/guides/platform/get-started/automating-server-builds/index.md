@@ -81,7 +81,7 @@ The Linode Module from Ansible is based on Linode's deprecated APIv3.
 
 - **Salt:** Salt (also referred to as SaltStack) is a Python-based configuration management and orchestration system. Salt uses a master/client model in which a dedicated Salt master server manages one or more Salt minion servers. To learn more about Salt, see the following guides:
 
-    - [A Beginner's Guide to Salt](https://www.linode.com/docs/guides/beginners-guide-to-salt/)
+    - [A Beginner's Guide to Salt](/docs/guides/beginners-guide-to-salt/)
     - [Getting Started with Salt - Basic Installation and Setup](/docs/guides/getting-started-with-salt-basic-installation-and-setup/)
     - [SaltStack Command Line Reference](/docs/guides/salt-command-line-reference/)
     - [Introduction to Jinja Templates for Salt](/docs/guides/introduction-to-jinja-templates-for-salt/)
