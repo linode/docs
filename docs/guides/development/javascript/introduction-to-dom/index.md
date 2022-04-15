@@ -116,7 +116,7 @@ To work with the DOM, client-side JavaScript provides the `document` object. Thi
 
 The previous section included some examples of the `document` object in action. Below are two additional commands that show more of the `document` object's features.
 
-1. The `document` object's properties provide information about the HTML document or access to its nested nodes. They also allow you to modify characteristics of the DOM as shown in the example below:
+1.  The `document` object's properties provide information about the HTML document or access to its nested nodes. They also allow you to modify characteristics of the DOM as shown in the example below:
 
         document.body.style.backgroundColor = "blue";
 
@@ -139,7 +139,7 @@ The previous section included some examples of the `document` object in action. 
 
     The color blue is assigned to the `<body>` element using the `style` attribute.
 
-1. The `document` object has several methods that do everything from provide access to specific nodes to add new nodes to the DOM. In the example below, the `getElementsByTagName()` method grabs every HTML element with the tag name, `<li>`. The JavaScript loops through those elements, and then outputs each elements `textContent` attributes.
+1.  The `document` object has several methods that do everything from provide access to specific nodes to add new nodes to the DOM. In the example below, the `getElementsByTagName()` method grabs every HTML element with the tag name, `<li>`. The JavaScript loops through those elements, and then outputs each elements `textContent` attributes.
 
         for (item of document.getElementsByTagName("li")) {
             console.log(item.textContent);
