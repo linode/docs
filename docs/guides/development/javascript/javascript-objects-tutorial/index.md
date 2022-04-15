@@ -1,17 +1,15 @@
 ---
 slug: javascript-objects-tutorial
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Learn about JavaScript objects, with examples showing their parts and how to start working with them."
-og_description: "Learn about JavaScript objects, with examples showing their parts and how to start working with them."
+  name: Nathaniel Stickman
+description: "JavaScript objects include key-value properties and methods and support inheritance. This tutorial discusses JavaScript objects, object inheritance, and the keyword this."
 keywords: ['javascript objects','javascript objects properties','javascript objects prototype']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-15
+published: 2022-04-15
 modified_by:
-  name: Nathaniel Stickman
-title: "Javascript Objects Tutorial"
-h1_title: "Javascript Objects Tutorial"
+  name: Linode
+title: "A Javascript Objects Tutorial"
+h1_title: "An Introduction to Javascript Objects"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -48,15 +46,15 @@ Objects consist of zero or more properties. These can be either primitive data t
 Each property has a key, which can be an identifier, a number, or a string. Most of the time, identifiers are used, like in the example below of a `house` object:
 
     const house = {
-        address:        "123 Street Rd",
-        bedrooms:       2,
-        baths:          1.5,
-        vacant:         true,
-        phoneNumber:    "123-456-7890",
-        inquire:        function() {
-                            console.log("Calling " + this.phoneNumber + "....");
-                        }
-    }
+        address: "123 Street Rd",
+        bedrooms: 2,
+        baths: 1.5,
+        vacant: true,
+        phoneNumber: "123-456-7890",
+        inquire:  function() {
+            console.log("Calling " + this.phoneNumber + "....");
+        }
+    };
 
 Typically, you access properties using dot notation. The example accesses the value of the `address` property:
 
@@ -77,7 +75,7 @@ true
 
 If you want to list all of the properties of an object, you can use the `Object.keys` method:
 
-    Object.keys(house)
+    Object.keys(house);
 
 {{< output >}}
 [ 'address', 'bedrooms', 'baths', 'vacant', 'phoneNumber', 'inquire' ]
@@ -87,7 +85,7 @@ The fact that the method returns an array makes it useful if you want to iterate
 
     for (const key of Object.keys(house)) {
         if (typeof house[key] != 'function') {
-            console.log("==\t" + key.padEnd(16) + "\t=>\t\t" + String(house[key]).padEnd(16) + "\t==\t")
+            console.log("==\t" + key.padEnd(16) + "\t=>\t\t" + String(house[key]).padEnd(16) + "\t==\t");
         }
     }
 
@@ -101,7 +99,7 @@ The fact that the method returns an array makes it useful if you want to iterate
 
 ### JavaScript Object Methods
 
-Any property that defines a function is called a *method*. These properties allow objects to take an action. For example, the `inquire` method on the `house` object above prints a message to your JavaScript console. The example below calls the `inquire()` method:
+Any property that defines a function is called a *method*. These properties allow objects to take an action. For example, the `inquire()` method on the `house` object above prints a message to your JavaScript console. The example below calls the `inquire()` method:
 
     house.inquire();
 
@@ -109,11 +107,11 @@ Any property that defines a function is called a *method*. These properties allo
 Calling 123-456-7890....
 {{< /output >}}
 
-Methods have direct access to an object's other properties, making them especially useful for processing information on an object. You can see this in the `inquire` method itself. It takes the `phoneNumber` property from its parent object and processes it into a message for the user.
+Methods have direct access to an object's other properties, making them especially useful for processing information on an object. You can see this in the `inquire()` method itself. It takes the `phoneNumber` property from its parent object and processes it into a message for the user.
 
 ### JavaScript Object Self Reference
 
-JavaScript's `this` keyword gives objects a way to reference their own properties. You may have noticed the keyword used above in the `inquire` method. The method is able to reference `this.phoneNumber` to work with the property's assigned value.
+JavaScript's `this` keyword gives objects a way to reference their own properties. You may have noticed its use in the `inquire()` method. The method is able to reference `this.phoneNumber` to work with the property's assigned value.
 
 Below is another example. This example uses dot notation to extend the existing `house` object with a new method. That method then uses the `this` keyword to reference two properties on its parent object:
 
@@ -129,63 +127,59 @@ Below is another example. This example uses dot notation to extend the existing 
 
 ## How to Create a JavaScript Object
 
-JavaScript offers you a few different ways to create objects. Each one has its own characteristics, so which one you should use depends on your needs.
-
-The next sections each walk you through one of the main approaches. They explain each approach's advantages and give you examples of how to use them to create objects.
+JavaScript offers you a few different ways to create objects. Each one has its own characteristics, so which one you use depends on your needs. The next sections walk you through each approach and explain their advantages with examples.
 
 ### Using an Initializer
 
-Object initializers provide the most direct approach for creating an object. You can see it used to declare the `house` example above. With this approach, you declare your object as a variable using object literal notation.
+Object initializers provide the most direct approach for creating an object. You can see it used to declare the `house` example in the [JavaScript Object Properties](/docs/guides/javascript-objects-tutorial/#javascript-object-properties) section. With this approach, you declare your object as a variable using object literal notation.
 
-It has the advantage of being straightforward, and is useful when declaring a standalone object and do not need inheritance. (See the [How Does JavaScript Object Inheritance Work?](/docs/guides/javascript-objects-tutorial/#how-does-javascript-object-inheritance-work) section below for more on object inheritance.)
+It has the advantage of being straightforward and is useful when declaring a standalone object that does not need inheritance.
 
-Here is another example of the object initializer approach:
+Below is another example of the object initializer approach:
 
     const socrates = {
         name: "Socrates",
         role: "Philosopher",
         fingers: 10,
         mortal: true
-    }
+    };
 
-### Using the Object.create Method
+### Using the Object.create() Method
 
-The `Object.create` method allows you to create new objects off of an existing object, which becomes the new object's prototype. (See the [How Does JavaScript Object Inheritance Work?](/docs/guides/javascript-objects-tutorial/#how-does-javascript-object-inheritance-work) section below for more on object prototypes.)
+The `Object.create()` method allows you to create new objects from an existing object, which becomes the new object's prototype.
 
 This method is useful when you want multiple objects using the same base and when you want to declare objects programmatically.
 
-This example creates a base `Person` object, then uses `Object.create` to make a specific object as an instance of that base. You then only have to define the properties that differ with the new object — `name` and `role` in this case.
+The example below creates a base `Person` object, then uses `Object.create()` method to make a specific object as an instance of that base. You then only have to define the properties that differ from the new object — `name` and `role` in this case.
 
     const Person = {
         name: "Nemo",
         role: "None",
         fingers: 10,
         mortal: true
-    }
+    };
 
     const socrates = Object.create(Person)
     socrates.name = "Socrates"
     socrates.role = "Philosopher"
 
     socrates.name;
-    socrates.fingers;
+    socrates.role;
 
 {{< output >}}
 'Socrates'
-10
+'Philosopher'
 {{< /output >}}
 
 ### Using a Constructor
 
-Object constructors are functions that defines an object type. You can then create a new object of that type using the `new` keyword.
+An Object constructor is a function that defines an object type. You can then create a new object of that type using the `new` keyword.
 
-The approach can give objects a consistent underlying type, and it can create iterations of relatively complex objects with single commands.
+This approach gives objects a consistent underlying type, and it can create iterations of relatively complex objects with a single line of code.
 
-Like the `Object.create` method, this approach is useful when you expect to have multiple objects from the same base or want to create objects programmatically.
+Like the `Object.create()` method, this approach is useful when you expect to have multiple objects from the same base or want to create objects programmatically. Using a constructor function lets you use more complex operations when initializing an object.
 
-But using a constructor function lets you use more complex operation to initialize an object
-
-This example defines the type `Person` through an object constructor function. With the `new` keyword, the example then declares two new objects using the constructor. Despite the objects having five properties, the constructor only requires two arguments (the third is optional):
+The example below defines the type `Person` through an object constructor function. With the `new` keyword, the example then declares two new objects using the constructor. Despite the objects having five properties, the constructor only requires two arguments (the third is optional):
 
     function Person(name, role, fingers) {
         this.name = name;
@@ -216,7 +210,7 @@ Hello, I'm Galileo. I'm a Astronomer, and have 7 fingers.
 And, as you would expect, I'm mortal.
 {{< /output >}}
 
-You can even extend on your constructors using additional constructors. Below, a `Philosopher` constructor extends on the `Person` constructor defined above:
+You can even extend your constructors using additional constructors. Below, a `Philosopher` constructor extends the `Person` constructor defined above:
 
     function Philosopher(name, fingers, branch) {
         Person.call(this, name, "Philosopher", fingers);
@@ -236,15 +230,13 @@ Hello, my name is Seneca, and I'm a Stoic Philosopher.
 
 ## How Does JavaScript Object Inheritance Work?
 
-JavaScript objects are able to inherit both types and properties from parent objects. You can see this with both the `Object.create` and the object constructor examples above.
-
-This is due to JavaScript's prototype system. Read on to learn more about how prototypes work and how they enable object inheritance in JavaScript.
+JavaScript objects are able to inherit both types and properties from parent objects. You can see this with both the `Object.create()` and the object constructor examples above. This is due to JavaScript's prototype system which is discussed in the next section.
 
 ### JavaScript Object Prototypes
 
-Every JavaScript object holds a reference to at least one other object, called its *prototype*. Even the most basic object has `Object` as a prototype, but other objects can inherit prototypes from parent objects or from constructor functions.
+Every JavaScript object holds a reference to at least one other object, called its *prototype*. Even the most basic object has `Object` as its prototype, but other objects can inherit prototypes from parent objects or from constructor functions.
 
-Below are two examples showing how an object can be given a prototype, one using `Object.create` and the other using an object constructor. Each example uses the following `Animal` object for the prototype:
+Below are two examples showing how an object can be given a prototype, one using `Object.create()` and the other using an object constructor. Each example uses the following `Animal` object for the prototype:
 
     const Animal = {
         name: "",
@@ -254,15 +246,15 @@ Below are two examples showing how an object can be given a prototype, one using
         family: "",
         genus: "",
         species: ""
-    }
+    };
 
-- Objects created using the `Object.create` method automatically have the parent object as a prototype. You can see from the output below that only the three properties reassigned for the `indus_dolphin` object show up on that object instance. All of the other properties are stored on the prototype, `Animal`:
+- Objects created using the `Object.create()` method automatically have the parent object as a prototype. You can see from the output below that only the three properties reassigned for the `indus_dolphin` object show up on that object instance. All of the other properties are stored on the prototype, `Animal`:
 
-        const indus_dolphin = Object.create(Animal)
-        indus_dolphin.name = "Indus River Dolphin"
-        indus_dolphin.family = "Platanistidae"
-        indus_dolphin.genus = "Platanista"
-        indus_dolphin.species = "Platanista minor"
+        const indus_dolphin = Object.create(Animal);
+        indus_dolphin.name = "Indus River Dolphin";
+        indus_dolphin.family = "Platanistidae";
+        indus_dolphin.genus = "Platanista";
+        indus_dolphin.species = "Platanista minor";
 
         Object.keys(indus_dolphin);
         Object.getPrototypeOf(indus_dolphin);
@@ -279,7 +271,7 @@ Below are two examples showing how an object can be given a prototype, one using
   species: ''
 }    {{< /output >}}
 
-- Objects created using object constructors receive values from the constructor's `prototype` property. In this example, the constructor assigns the provided values. Then, a `prototype` is given for the constructor, which provides the resulting object, `ganges_dolphin` with a prototype object:
+- Objects created using object constructors receive values from the constructor's `prototype` property. In this example, the constructor assigns the provided values. Then, a `prototype` is given for the constructor, which provides the resulting object, `ganges_dolphin`, with a prototype object:
 
         function Platanista(species_name, species) {
             this.name = species_name;
@@ -312,7 +304,7 @@ Each object holds a reference to its parent prototype. This ends up creating wha
 
 So, for the `indus_dolphin` object above, the prototype chain would be: `indus_dolphin` -> `Animal` -> `Object`.
 
-Objects can access properties from their prototype chains, which you can see few examples of further above. When you try to access a property on an object, JavaScript starts by looking on the object itself. If it does not find the property there, JavaScript moves backward through each prototype in the chain. It keeps doing this until it either finds a prototype with the property or reaches the end of the chain.
+Objects can access properties from their prototype chains. When you try to access a property on an object, JavaScript starts by looking on the object itself. If it does not find the property there, JavaScript moves backward through each prototype in the chain. It keeps doing this until it either finds a prototype with the property or reaches the end of the chain.
 
 For example, the first of the commands below fetches the `name` property off of the `ganges_dolphin` object directly. But the second command needs to look on the prototype object to find the `kingdom` property. Finally, the `valueOf` method actually belongs to the `Object` prototype:
 
@@ -325,3 +317,7 @@ For example, the first of the commands below fetches the `name` property off of 
 'Animalia'
 { name: 'Ganges River Dolphin', species: 'Platanista gangetica' }
 {{< /output >}}
+
+## Conclusion
+
+JavaScript objects underpin much of the power available in the language. Objects give you access to their properties and methods. You can extend Objects after creating them and also create new Objects based off of existing ones. This guide provided an introduction to the main concepts behind JavaScript objects, including constructors, the `this` keyword, object inheritance.
