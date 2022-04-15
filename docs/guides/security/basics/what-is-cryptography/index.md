@@ -101,5 +101,5 @@ Other forms of cybersecurity focus on other fronts such as protecting the networ
 
 ## Conclusion
 
-Cybersecurity and encryption are tasks that require research, time, and effort in order to be effective. Many companies prefer to leverage the efforts of vendor teams rather than overburden their internal cybersecurity teams to develop these additional layers of protection. However, there are many tools available to encrypt areas of your infrastructure and network. For example, you can use [LUKS to encrypt a Linux server's filesystem disk](/docs/guides/use-luks-for-full-disk-encryption/). Similarly, you can use [GPG keys to send encrypted messages via email](docs/guides/gpg-keys-to-send-encrypted-messages/).
+Cybersecurity and encryption are tasks that require research, time, and effort in order to be effective. Many companies prefer to leverage the efforts of vendor teams rather than overburden their internal cybersecurity teams to develop these additional layers of protection. However, there are many tools available to encrypt areas of your infrastructure and network. For example, you can use [LUKS to encrypt a Linux server's filesystem disk](/docs/guides/use-luks-for-full-disk-encryption/). Similarly, you can use [GPG keys to send encrypted messages via email](/docs/guides/gpg-keys-to-send-encrypted-messages/).
 
