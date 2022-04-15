@@ -21,29 +21,31 @@ external_resources:
 - '[MDN Web Docs: Working with Objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects)'
 ---
 
-Objects play a fundamental role in JavaScript, appearing just about everywhere. But, even for people who use them often, all the parts and possibilities of JavaScript objects may not be clear.
-
-This tutorial walks you through understanding JavaScript objects, including properties, methods, and prototypes, all with examples to illustrate.
+Objects play a fundamental role in JavaScript and appear just about everywhere throughout the language. This tutorial explains what JavaScript objects are and discusses object properties, methods, and prototypes. Each topic includes examples to illustrate their concepts.
 
 ## Before You Begin
 
-This guides' JavaScript examples were originally run in the Node.js interpreter. You can use our [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#installing-and-configuring-nvm) guide to install Node.js.
+This guide's JavaScript examples were originally run in the Node.js interpreter. You can use our [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/#installing-and-configuring-nvm) guide to install Node.js on your computer.
 
-Alternatively, you can generally issue these same commands in your web browser's JavaScript console. For Chrome, refer to Google's [Run JavaScript in the Console](https://developer.chrome.com/docs/devtools/console/javascript/) documentation. On Firefox, refer to Mozilla's [Browser Console](https://developer.mozilla.org/en-US/docs/Tools/Browser_Console) documentation.
+Alternatively, you can use your web browser's JavaScript console to run this guide's example JavaScript code.
+
+- If you are using Chrome, refer to Google's [Run JavaScript in the Console](https://developer.chrome.com/docs/devtools/console/javascript/) documentation to learn how to access their developer tools..
+
+- If you are using Firefox, refer to Mozilla's [Browser Console](https://developer.mozilla.org/en-US/docs/Tools/Browser_Console) documentation to learn how to access their developer tools..
 
 ## What Are JavaScript Objects?
 
-The object is the fundamental data type in JavaScript outside of primitive data types like numbers, strings, booleans, etc.
+The object is the fundamental data type in JavaScript, outside of primitive data types like numbers, strings, booleans, etc.
 
-An object is primarily a collection of properties. And, as you can see in the next section, nearly anything can be a property. This includes not just primitive data types, but also functions and even other objects.
+An object is a collection of properties. A property is a key-value pair. In JavaScript, nearly anything can be a property. This includes not just primitive data types, but also functions and other objects.
 
-The next couple of sections break down JavaScript objects, explaining properties and methods and giving you examples of how to use them.
+The next couple of sections further explain JavaScript objects, properties, and methods. They also provide examples on how to use JavaScript objects.
 
 ### JavaScript Object Properties
 
 Objects consist of zero or more properties. These can be either primitive data types (boolean, number, string, etc.), methods (that is, functions operating within an object), or other objects.
 
-Each property has a key, which can be an identifier, a number, or a string. Most of the time, identifiers are used, like in this example of a `house` object:
+Each property has a key, which can be an identifier, a number, or a string. Most of the time, identifiers are used, like in the example below of a `house` object:
 
     const house = {
         address:        "123 Street Rd",
@@ -56,7 +58,7 @@ Each property has a key, which can be an identifier, a number, or a string. Most
                         }
     }
 
-Typically, you access properties using dot notation, as in:
+Typically, you access properties using dot notation. The example accesses the value of the `address` property:
 
     house.address;
 
@@ -64,7 +66,7 @@ Typically, you access properties using dot notation, as in:
 '123 Street St'
 {{< /output >}}
 
-But can also use bracket notation, like in this next example. Sometimes, bracket notation is require, like when a property's key is a number or when you want to reference a key using a variable:
+You can also use bracket notation, as shown in the example below. Sometimes, bracket notation is required, like when a property's key is a number or when you want to reference a key using a variable:
 
     let currentKeyOfInterest = 'vacant';
     house[currentKeyOfInterest];
@@ -73,7 +75,7 @@ But can also use bracket notation, like in this next example. Sometimes, bracket
 true
 {{< /output >}}
 
-If you want to list all of the properties on an object, you can use the `Object.keys` method:
+If you want to list all of the properties of an object, you can use the `Object.keys` method:
 
     Object.keys(house)
 
@@ -81,7 +83,7 @@ If you want to list all of the properties on an object, you can use the `Object.
 [ 'address', 'bedrooms', 'baths', 'vacant', 'phoneNumber', 'inquire' ]
 {{< /output >}}
 
-The fact that the method returns an array makes it useful if you want to iterate through an object's properties. For instance:
+The fact that the method returns an array makes it useful if you want to iterate through an object's properties. The example JavaScript for loop iterates over the keys of the `house` object created at the beginning of this section:
 
     for (const key of Object.keys(house)) {
         if (typeof house[key] != 'function') {
@@ -99,7 +101,7 @@ The fact that the method returns an array makes it useful if you want to iterate
 
 ### JavaScript Object Methods
 
-Any property that defines a function is called a *method*. These properties allow objects to take action. For example, the `inquire` method on the `house` object above prints a message to the user, like:
+Any property that defines a function is called a *method*. These properties allow objects to take an action. For example, the `inquire` method on the `house` object above prints a message to your JavaScript console. The example below calls the `inquire()` method:
 
     house.inquire();
 
