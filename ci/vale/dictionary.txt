@@ -1477,6 +1477,7 @@ pingable
 pipfile
 pipenv
 pipelined
+pipelining
 piwik
 pki
 plaintext
