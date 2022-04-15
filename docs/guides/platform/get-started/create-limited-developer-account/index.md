@@ -23,7 +23,7 @@ When you hire someone to work on your Linode, there are a variety of ways to gra
 
 This guide explains and answers some of the most frequently asked questions about account access. The sections are separated in order of granularity, starting with service-level access at the top, and working towards application-specific access.
 
-For security and privacy, [Linode Support](/docs/guides/support/) is not able to troubleshoot issues related to users and application access. Instead, Linode offers an in-house [Professional Services](/professional-services/) team that can be hired to help with projects.
+For security and privacy, [Linode Support](/docs/guides/support/) is not able to troubleshoot issues related to users and application access. Instead, Linode offers an in-house [Professional Services](https://www.linode.com/products/pro-services/) team that can be hired to help with projects.
 
 {{< note >}}
 The following sections include commands that show how to manipulate credentials on your Linodes, and these commands use `exampleUser` in place of your users' names. Replace `exampleUser` with whatever you would like to name your users.
@@ -45,12 +45,12 @@ Keep your account administrator credentials secret. When hiring an external indi
 
 Useful *Global Grants* for a limited access user might include the ability to:
 
-* Add a [NodeBalancer](/nodebalancers/).
+* Add a [NodeBalancer](/docs/products/networking/nodebalancers/).
 * Add [Longview](/longview/) clients.
-* Use the [DNS Manager](/dns-manager/) to add domains.
-* Create [StackScripts](/stackscripts/).
+* Use the [DNS Manager](/docs/products/networking/dns-manager/) to add domains.
+* Create [StackScripts](/docs/products/tools/stackscripts/).
 * Create [Images](/docs/products/tools/images/).
-* Add [Block Storage Volumes](/blockstorage/).
+* Add [Block Storage Volumes](/docs/products/storage/block-storage/).
 
 ### Revoke a User's Access to the Linode Account
 

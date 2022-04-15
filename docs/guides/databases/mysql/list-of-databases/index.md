@@ -106,7 +106,7 @@ The disadvantages of Oracle Database include:
 - **Complexity** - It's one of the more complex relational databases on the market.
 - **Cost** - Oracle Database can be up to 10 times more costly than MS SQL.
 
-Find out how to [use Oracle Database Express Edition with Linode](https://www.linode.com/docs/guides/databases/oracle/).
+Find out how to [use Oracle Database Express Edition with Linode](/docs/guides/databases/oracle/).
 
 #### MySQL
 

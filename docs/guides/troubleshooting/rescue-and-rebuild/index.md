@@ -139,7 +139,7 @@ You can now connect to the server as root with the SSH client on a local compute
 
 ### Performing a File System Check
 
-You can use the `fsck` system utility (short for "file system check") to check the consistency of filesystems and repair any damage detected. If you suspect that the Linode's filesystem is corrupted, run `fsck` to check for and repair any damage:
+You can use the `e2fsck` system utility (short for "ext file system check") to check the consistency of filesystems and repair any damage detected on ext file systems. If you suspect that the Linode's filesystem is corrupted, run `e2fsck` to check for and repair any damage on most disks:
 
 1.  Enter the `df -h` command to verify that the primary disks are not currently mounted:
 
@@ -162,14 +162,14 @@ You can use the `fsck` system utility (short for "file system check") to check t
     The primary disks should not appear in the list. In the [example screenshot](cloud-manager-rescue-form-dev-sda-highlighted.png) from the [Booting into Rescue Mode](#booting-into-rescue-mode) section, the Ubuntu 18.04 disk is assigned to `/dev/sda`. Because this device does not appear in the example output from `df -h`, run a filesystem check on it.
 
      {{< caution >}}
-Never run `fsck` on a mounted disk. Do not continue unless you're sure that the target disk is unmounted.
+Never run `e2fsck` on a mounted disk. Do not continue unless you're sure that the target disk is unmounted.
 {{< /caution >}}
 
-1.  Run `fsck` by entering the following command, replacing `/dev/sda` with the location of the disk you want to check and repair:
+1.  Run `e2fsck` by entering the following command, replacing `/dev/sda` with the location of the disk you want to check and repair:
 
         e2fsck -f /dev/sda
 
-1.  If no problems are detected, `fsck` displays the tests it performed:
+1.  If no problems are detected, `e2fsck` displays the tests it performed:
 
         root@0:~# e2fsck -f /dev/sda
         e2fsck 1.45.6 (20-Mar-2020)
@@ -180,7 +180,7 @@ Never run `fsck` on a mounted disk. Do not continue unless you're sure that the 
         Pass 5: Checking group summary information
         /dev/sda: 44611/2564096 files (0.1% non-contiguous), 602550/10240000 blocks
 
-1.  If `fsck` determines that there is a problem with the filesystem, it prompts you to fix problems as they are found during each test:
+1.  If `e2fsck` determines that there is a problem with the filesystem, it prompts you to fix problems as they are found during each test:
 
         root@0:~# e2fsck -f /dev/sda
         e2fsck 1.45.6 (20-Mar-2020)
@@ -190,7 +190,7 @@ Never run `fsck` on a mounted disk. Do not continue unless you're sure that the 
 
     Press **enter** to automatically attempt to fix the problems.
 
-    After the filesystem check completes, any problems detected should be fixed. Try rebooting the Linode from the Cloud Manager. If `fsck` fixed the issues, the Linode should boot normally.
+    After the filesystem check completes, any problems detected should be fixed. Try rebooting the Linode from the Cloud Manager. If `e2fsck` fixed the issues, the Linode should boot normally.
 
 ### Installing Packages
 

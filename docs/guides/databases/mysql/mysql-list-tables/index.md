@@ -106,4 +106,4 @@ The example below connects to the database as `example_user` and uses the MySQL 
 
 ## Conclusion
 
-To learn more about working with MySQL/MariaDB, take a look through our extensive [list of MySQL guides](/docs/guides/databases/mysql/?q=mysql). You can find plenty of resources there to solve common database related issues, sharpen your skills, and become more proficient with managing your database.
+To learn more about working with MySQL/MariaDB, take a look through our extensive [list of MySQL guides](/docs/guides/databases/mysql/). You can find plenty of resources there to solve common database related issues, sharpen your skills, and become more proficient with managing your database.

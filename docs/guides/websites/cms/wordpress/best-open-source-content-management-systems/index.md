@@ -293,7 +293,7 @@ WordPress is written in PHP. You can argue it's the program that made PHP the la
 - Due to the sheer number of all WordPress's options, it can be confusing.
 - Because it's so popular, hackers target it more than any other CMS. Using a third-party security program such as [WordFence](https://www.wordfence.com/) or [Jetpack](https://jetpack.com/) is essential.
 
-You can deploy a WordPress instance on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying WordPress through the Linode Marketplace](https://www.linode.com/docs/products/tools/marketplace/guides/wordpress/) guide to get started.
+You can deploy a WordPress instance on a Linode server using the Linode Marketplace App. Follow the steps in the [Deploying WordPress through the Linode Marketplace](/docs/products/tools/marketplace/guides/wordpress/) guide to get started.
 
 ## Which Top Open-Source Content Management System is Right For You?
 

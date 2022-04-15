@@ -163,7 +163,7 @@ Once you have access to your Linode as the root user, you can reset the password
 
 *  Assuming you know your Linode Manager username, but you've forgotten the password, you can retrieve it on the [Forgot Password](https://login.linode.com/forgot/password) page.
 
-If you've followed these steps, but you're still having trouble accessing your account, please [contact Support](//docs/platform/billing-and-support/support-new-manager/#contacting-linode-support).
+If you've followed these steps, but you're still having trouble accessing your account, please [contact Support](https://www.linode.com/support/).
 
 ## Linode Manager is Displaying "Incorrect" Information
 

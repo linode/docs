@@ -70,6 +70,7 @@ aren
 argv
 arping
 arptables
+arthashastra
 Asana
 aspell
 askbot
@@ -132,6 +133,7 @@ backreferences
 backtick
 backticks
 backupninja
+badblocks
 bampton
 balarin
 banaction
@@ -757,6 +759,7 @@ healthtech
 heartbleed
 hebb
 hebbian
+hebern
 heredoc
 heroku
 hexo
@@ -1474,6 +1477,7 @@ pingable
 pipfile
 pipenv
 pipelined
+pipelining
 piwik
 pki
 plaintext
@@ -1664,9 +1668,11 @@ retrans
 reusability
 reutilize
 richlanguage
+rijndael
 rimap
 ripgrep
 ritchie
+rivest
 rkhunter
 rkt
 rmdir
@@ -2141,6 +2147,7 @@ verisign
 veritas
 vhost
 vhosts
+vigenere
 vimrc
 vinagre
 virb

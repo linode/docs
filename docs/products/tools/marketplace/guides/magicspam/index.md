@@ -21,7 +21,7 @@ external_resources:
 MagicSpam installs directly onto an email server without any need to change A/MX records to protect unlimited users and domains. MagicSpam also integrates natively into many control panel interfaces and comes equipped with log and statistic modules to help with the management of an email server.
 
 {{< note >}}
-In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after November 5th, 2019. For more information, please see [Sending Email on Linode](https://www.linode.com/docs/email/running-a-mail-server/#sending-email-on-linode).
+In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after November 5th, 2019. For more information, please see [Sending Email on Linode](/docs/guides/running-a-mail-server/#sending-email-on-linode).
 {{</ note >}}
 
 As MagicSpam is designed to integrate and run alongside with Control Panels, the MagicSpam App also deploys the selected control panel (cPanel or Plesk). Both of these control panels may require purchasing a license. Additionally, a MagicSpam license key is required to deploy MagicSpam on Linode, which you can purchase through the [MagicSpam Store](https://www.magicspam.com/store.php).

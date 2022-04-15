@@ -35,7 +35,7 @@ aliases: ['/platform/marketplace/deploying-docker-with-marketplace-apps/', '/pla
 ### Docker Options
 
 - **Resource to Download**: The url to a hosted [Dockerfile](https://docs.docker.com/engine/reference/builder/) or [docker-compose.yml](/docs/guides/how-to-use-docker-compose/#Basic-Usage) file to be used to assemble an image as part of the application creation process.
-- **Command to run**: A [Docker Command](https://www.linode.com/docs/guides/docker-commands-quick-reference-cheat-sheet/) to be run as part of the application creation process.
+- **Command to run**: A [Docker Command](/docs/guides/docker-commands-quick-reference-cheat-sheet/) to be run as part of the application creation process.
 
 
 {{< content "marketplace-limited-user-fields-shortguide">}}

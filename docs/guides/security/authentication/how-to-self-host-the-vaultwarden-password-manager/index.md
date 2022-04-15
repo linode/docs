@@ -131,13 +131,13 @@ example.com {
   encode gzip
 
   # The negotiation endpoint is also proxied to Rocket
-  reverse_proxy /notifications/hub/negotiate 0.0.0.0:8080
+  reverse_proxy /notifications/hub/negotiate 0.0.0.0:80
 
   # Notifications redirected to the websockets server
   reverse_proxy /notifications/hub 0.0.0.0:3012
 
   # Send all other traffic to the regular Vaultwarden endpoint
-  reverse_proxy 0.0.0.0:8080
+  reverse_proxy 0.0.0.0:80
 }
 {{< /file >}}
 
@@ -153,7 +153,7 @@ The site name you choose in this file must match the desired URL that Vaultwarde
 
 1. Start another Docker container to run a persistent `caddy` daemon.
 
-        sudo docker run -d -p 8080:80 -p 443:443 --name caddy -v /etc/Caddyfile:/etc/caddy/Caddyfile -v /etc/caddy:/root/.local/share/caddy --restart on-failure caddy:2
+        sudo docker run -d -p 80:80 -p 443:443 --name caddy -v /etc/Caddyfile:/etc/caddy/Caddyfile -v /etc/caddy:/root/.local/share/caddy --restart on-failure caddy:2
 
 1. View the logs of the Caddy container in order to confirm that a Let's Encrypt certificate has been provisioned for the chosen domain.
 

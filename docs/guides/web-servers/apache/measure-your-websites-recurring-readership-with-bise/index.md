@@ -100,7 +100,7 @@ At the time of this writing, Bise lacks any kind of one-step installation soluti
         git clone https://github.com/jmacdotorg/bise.git
 
     {{< note >}}
-You can follow the [How to Install Git](https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) guide if `git` is not installed on your system.
+You can follow the [How to Install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) guide if `git` is not installed on your system.
 {{< /note >}}
 
 1. In your terminal, set your current working directory to your new `bise` directory:

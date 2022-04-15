@@ -95,7 +95,7 @@ If you didn't set up a domain during the deployment process, you can add it manu
 Now that your WordPress installation is deployed, you can start adding content and modifying it to suit your needs. Here are a few links to help get you started:
 
 - [WordPress Support](https://wordpress.org/support/): Learn the basic workflows for using WordPress.
-- [Securing WordPress](https://www.linode.com/docs/guides/how-to-secure-wordpress/): Advice on securing WordPress through HTTPS, using a secure password, changing the admin username, and more.
+- [Securing WordPress](/docs/guides/how-to-secure-wordpress/): Advice on securing WordPress through HTTPS, using a secure password, changing the admin username, and more.
 - [WordPress Themes](https://wordpress.org/themes/#): A collection of *thousands* of WordPress themes.
 
 {{< content "marketplace-update-note-shortguide">}}

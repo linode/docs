@@ -25,7 +25,7 @@ Salt is a powerful configuration management tool. In this guide you will create 
 
 ## Before You Begin
 
-You will need at least two Linodes with Salt installed. If you have not already, read our [Getting Started with Salt - Basic Installation and Setup Guide](https://www.linode.com/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/) and follow the instructions for setting up a Salt master and minion.
+You will need at least two Linodes with Salt installed. If you have not already, read our [Getting Started with Salt - Basic Installation and Setup Guide](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) and follow the instructions for setting up a Salt master and minion.
 
 The following steps will be performed on your Salt master.
 
@@ -112,7 +112,7 @@ MaxRequestsPerChild 4500
 </IfModule>
 {{</ file >}}
 
-    This MPM prefork module provides additional [tuning for your Apache installation](https://www.linode.com/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/). This file will be managed by Salt and installed into the appropriate configuration directory in a later step.
+    This MPM prefork module provides additional [tuning for your Apache installation](/docs/guides/tuning-your-apache-server/). This file will be managed by Salt and installed into the appropriate configuration directory in a later step.
 
 1.  If you will be installing Apache on a CentOS machine, create a file called `include_sites_enabled.conf` in `/srv/salt/files` and paste in the following:
 

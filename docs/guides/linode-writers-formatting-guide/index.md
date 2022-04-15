@@ -23,7 +23,7 @@ _build:
 
 ## Write Guides for Linode
 
-This guide provides templates and guidelines to use when creating or updating a guide for [Linode Docs](/docs).
+This guide provides templates and guidelines to use when creating or updating a guide for [Linode Docs](/docs/).
 
 Updates, improvements, and bug fixes to Linode documentation are always welcome through [GitHub](https://github.com/linode/docs) via pull requests (PRs) or issues.
 
