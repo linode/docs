@@ -132,6 +132,7 @@ backreferences
 backtick
 backticks
 backupninja
+badblocks
 bampton
 balarin
 banaction

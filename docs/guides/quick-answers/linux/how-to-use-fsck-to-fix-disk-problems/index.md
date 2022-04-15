@@ -26,12 +26,12 @@ This guide is part of a series on Linux commands and features. Not all commands 
 
 ## What is fsck?
 
-fsck, short for file system consistency check, is a utility that examines the file system for errors and attempts to repair them if possible. It functions as a frontend untility for a combination of built-in tools to check the disk and generates a report of its findings.
+fsck, short for file system consistency check, is a utility that examines the file system for errors and attempts to repair them if possible. It functions as a frontend utility for a combination of built-in tools to check the disk and generates a report of its findings.
 
 On some systems, fsck runs automatically after an unclean shutdown or after a certain number of reboots.
 
 {{< note >}}
-`fsck` is not installed by default when using Linode's rescue mode, and instead the `e2fsck` tool, which fsck functions as a frontend for, will ned to be called directly for standard `ext` filesystems. Please see our [Troubleshooting Guide: Booting into Rescue Mode](https://www.linode.com/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
+`fsck` is not installed by default when using Linode's rescue mode, and instead the `e2fsck` tool, which fsck functions as a frontend for, will need to be called directly for standard `ext` filesystems. Please see our [Troubleshooting Guide: Booting into Rescue Mode](https://www.linode.com/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
 {{</ note >}}
 
 ## When to Use fsck
