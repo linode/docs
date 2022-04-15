@@ -5,7 +5,7 @@ author:
 description: "The DOM gives scripting languages, like JavaScript, access to an HTML document''s structure and content. This guide discusses accessing the DOM with JavaScript."
 keywords: ['what is the dom','javascript dom tutorial','what is document object model']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-11-15
+published: 2022-04-15
 modified_by:
   name: Nathaniel Stickman
 title: "Accessing the Document Object Model with JavaScript"
