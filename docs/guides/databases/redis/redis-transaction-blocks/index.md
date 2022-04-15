@@ -6,7 +6,7 @@ description: "Redis transaction blocks group commands and execute them sequentia
 keywords: ['redis transactions','redis multi vs pipeline','redis multi exec']
 tags: ['redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-01-06
+published: 2022-04-15
 modified_by:
   name: Nathaniel Stickman
 title: "Using Redis Transaction Blocks"
