@@ -45,15 +45,15 @@ Although encryption standards exist today, cryptography continues to evolve. The
 
 The two main forms of encryption utilized by cryptography are *symmetric* and *asymmetric*. Symmetric cryptography encrypts and decrypts with a single key. Asymmetric cryptography uses two linked keys, one public and the other private.
 
-Both forms of encryption are used everyday although most computer users typically don’t notice them. They’re at work in the background every time someone uses their web browser, answers emails, submits a web form, as well as other activities.
+Both forms of encryption are used everyday, although most computer users typically don’t notice them. They’re at work in the background every time someone uses their web browser, answers emails, submits a web form, as well as other activities.
 
 People tend to notice cryptography when they initiate its use or directly observe it in use. One example is when using OpenSSL key management services. Another example is when emailing an encrypted document, like an Adobe PDF file that requires a password in order for it to be opened.
 
-Symmetric encryption is the most widely used and the oldest form of encryption. It dates back to Julius Caesar’s cipher. Symmetric encryption uses either stream or block cipher to encrypt plain text data.
+Symmetric encryption is the most widely used and the oldest form of encryption. It dates back to Julius Caesar’s cipher. Symmetric encryption uses either [stream](https://en.wikipedia.org/wiki/Stream_cipher) or [block cipher](https://en.wikipedia.org/wiki/Block_cipher) to encrypt plain text data.
 
 While symmetric encryption requires the sender and recipient to use the same key, that key’s use is not limited to two people in a linear conversation. Others can also be designated recipients and use the same key. Likewise, any of the recipients can respond to the sender, plus anyone on the approved list of recipients using the same key from the initial encrypted message.
 
-Thus, if an unauthorized person were to gain the symmetric key, that person could see, read, copy, forward the message to new recipients, and even respond to the original group. Hackers gain access to the key either by pilfering it from an storage space on a device that hasn't been properly secured, or by extracting it from the message itself.
+Thus, if an unauthorized person were to gain the symmetric key, that person could see, read, copy, forward the message to new recipients, and even respond to the original group. Hackers gain access to the key either by pilfering it from a storage space on a device that hasn't been properly secured, or by extracting it from the message itself.
 
 The key must be transmitted when the sender and receiver are not in the same location. It is therefore vulnerable if the network or channel are compromised and must be closely protected.
 
@@ -65,13 +65,13 @@ Both forms are considered secure, but the level of security in any given encrypt
 
 ## The Objectives of Cryptography
 
-Cryptography has four major goals: confidentiality, integrity, authentication, and non-repudiation. Put another way, the goals are data privacy (confidential treatment), data authenticity (verified source), and data integrity (original and unaltered message). Non-repudiation refers to the combination of each of these three things to prove undeniable validity of the message or data. One example of non-repudiation in use is with services like DocuSign. These services are used to authenticate digital signatures and to ensure that a person cannot reasonably deny having signed a document.
+Cryptography has four major goals: confidentiality, integrity, authentication, and non-repudiation. Put another way, the goals are data privacy (confidential treatment), data authenticity (verified source), and data integrity (original and unaltered message). Non-repudiation refers to the combination of each of these three things to prove undeniable validity of the message or data. One example of non-repudiation in use is a service used to authenticate digital signatures and to ensure that a person cannot reasonably deny having signed a document. Some popular examples are [DocuSign](https://www.docusign.com/) and [PandaDoc](https://www.pandadoc.com/).
 
 Of these goals, confidentiality carries the most weight. The need to ensure that an unauthorized party cannot access the data is the ultimate objective of cryptography. That does not mean that the remaining goals are of less importance.
 
 Data integrity is vital to ensure that the message has not been altered in some way. Otherwise, the receiving party could be manipulated into taking a wrong or undesirable action. Whether a spy is sending a message to their country’s leadership, or a company is sending instructions to a field office, both sender and receiver need assurance that the message sent is identical to the message received.
 
-Authenticity is essential to ensure that the user or system are known and trusted. Establishing the identity of the user (sender or recipient) is the crux of this assurance. However, the system must also be known in order to [prevent ransomware attacks](/docs/guides/ransomware-attack) that involve phishing (fraudulent emails), vishing (fraudulent voice mails and phone calls), smishing (fraudulent texts), and other deceptive forms of communication.
+Authenticity is essential to ensure that the user or system is known and trusted. Establishing the identity of the user (sender or recipient) is the crux of this assurance. However, the system must also be known in order to [prevent ransomware attacks](/docs/guides/ransomware-attack) that involve phishing (fraudulent emails), vishing (fraudulent voice mails and phone calls), smishing (fraudulent texts), and other deceptive forms of communication.
 
 ## Types of Cryptography
 
@@ -81,9 +81,9 @@ The least complicated and fastest to use is secret key cryptography, also known 
 
 Public key cryptography, or asymmetric cryptography, uses two keys on each end of the communication. Each pair consists of a public and a private key. Public keys are exchanged between sender and recipient. The sender then uses the recipient’s public key to encrypt the message. The recipient uses their private key to decrypt the message. Examples of public key use are plentiful in just about any communication over the Internet such as [HTTPS](/docs/guides/introducing-http-2/), [SSH](/docs/guides/connect-to-server-over-ssh-on-linux/), [OpenPGP](https://www.openpgp.org/), [S/MIME](https://en.wikipedia.org/wiki/S/MIME), and a [website’s SSL/TLS certificate](/docs/guides/what-is-a-tls-certificate/).
 
-The math connecting public and private keys makes it impossible to derive the private key from the public key. The public key is derived from the private key. This is why private keys should never be shared.
+The math connecting public and private keys makes it impossible to derive the private key from the public key. However, the public key is derived from the private key, which is why private keys should never be shared.
 
-Hash functions are one-way functions and completely irreversible. This renders the original message unrecoverable. A hashing algorithm produces unique outputs for each input. Examples include [SHA-256 and SHA3-256](https://en.wikipedia.org/wiki/Cryptographic_hash_function#Cryptographic_hash_algorithms) both of which change any input into a new and complex 256-bit output. Bitcoin, the largest and best known of the cryptocurrencies, uses SHA-256 cryptographic hash function in its algorithm. Almost all passwords are stored securely as hashed functions which are then used to verify the correct password is being used. A hacker must try every input possible to find the exact same hash, which renders the effort useless.
+Hash functions are one-way functions and completely irreversible. This renders the original message unrecoverable. A hashing algorithm produces unique outputs for each input. Examples include [SHA-256 and SHA3-256](https://en.wikipedia.org/wiki/Cryptographic_hash_function#Cryptographic_hash_algorithms), both of which change any input into a new and complex 256-bit output. Bitcoin, the largest and best known of the cryptocurrencies, uses SHA-256 cryptographic hash function in its algorithm. Almost all passwords are stored securely as hashed functions which are then used to verify the correct password is being used. A hacker must try every input possible to find the exact same hash, which renders the effort useless.
 
 ## What is Cryptography in Cyber Security?
 
@@ -93,7 +93,7 @@ Both now and in the future, cryptography is central to cybersecurity efforts. Wh
 
 To understand the necessity of encryption, one need only to look at the headlines. The frequency of data breaches and intercepted or leaked messages is readily apparent. In February 2022 alone, more than 5.1 million records were breached, according to research by [IT Governance](https://www.itgovernance.co.uk/blog/list-of-data-breaches-and-cyber-attacks-in-february-2022-5-1-million-records-breached).
 
-The central assumption with cryptography is that other parties are going to try to breach data and many are going to be successful. Encryption is meant to thwart their efforts even if they succeed in reaching the data. It is an essential line of defense in cybersecurity architecture and snarls an attacker’s efforts to access sensitive information.
+The central assumption with cryptography is that other parties are going to try to breach data and many are going to be successful. Encryption is meant to thwart their efforts even if they succeed in reaching the data. It is an essential line of defense in cybersecurity architecture and hinders an attacker’s efforts to access sensitive information.
 
 Other forms of cybersecurity focus on other fronts such as protecting the network, limiting or stopping access to data, and protecting data from manipulation, i.e. deliberate corruption of meaning or readability.
 
