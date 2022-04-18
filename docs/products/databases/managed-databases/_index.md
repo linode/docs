@@ -10,6 +10,7 @@ cascade:
     date: 2022-02-23
     product_description: "Fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
 aliases: ['/products/database/']
+modified: 2022-04-15
 ---
 
 {{< content "managed-databases-beta-notice-shortguide" >}}
@@ -19,6 +20,8 @@ Linode's Managed Databases combine performance, reliability, and high availabili
 ## Simplified deployment and maintenance
 
 - **Automated deployment:** When a database is deployed through Managed Databases, the infrastructure, software, and firewall, and high availability systems are configured automatically. This can save hours of time compared to manually setting up a database.
+
+- **Automatic updates:** Updates to the underlying software of your database cluster are installed automatically using user-configurable maintenance windows. See [Automatic Updates and Maintenance Windows](/docs/products/databases/managed-databases/guides/updates-and-maintenance/).
 
 - **Access controls:** Prevent unauthorized database access by only allowing connections from specific IP addresses (or ranges).
 
@@ -94,5 +97,3 @@ In addition to the resources allocated to each available plan (outlined above), 
 - The default user cannot be changed or removed, though the password can be reset at any time.
 
 - You are not able to access the underlying operating system of a database cluster.
-
-- It is not possible to upgrade the database software or underlying operating system after the Managed Database has been deployed.

@@ -11,6 +11,8 @@ tab_group_main:
 
 - [Manage Access Controls](/docs/products/databases/managed-databases/guides/manage-access-controls/)
 
+- [Automatic Updates and Maintenance Windows](/docs/products/databases/managed-databases/guides/updates-and-maintenance/)
+
 - [Restore from a Backup](/docs/products/databases/managed-databases/guides/restore-backup/)
 
 - [Reset the Root Password](/docs/products/databases/managed-databases/guides/reset-root-password/)
