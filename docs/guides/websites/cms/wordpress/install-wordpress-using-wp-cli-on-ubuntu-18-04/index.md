@@ -15,7 +15,6 @@ modified_by:
 title: 'Install WordPress Using WP-CLI on Ubuntu 18.04'
 deprecated: true
 noindex: true
-show_in_lists: false
 contributor:
     name: Navjot Singh
     link: https://github.com/navjotjsingh
