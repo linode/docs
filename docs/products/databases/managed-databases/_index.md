@@ -42,9 +42,9 @@ The following database management systems (DBMSs) are available (or coming soon)
 
     *If the applications using your database support it, you may want to select the latest available release of MySQL 8. It's more performant and includes additional features. MySQL 5.7 is available for legacy applications.*
 
-- **PostreSQL** *(Coming soon)*: An object-relational database management system that can use either SQL or JSON queries. It's generally more flexible and feature-rich than MySQL, though it's not a drop-in replacement and applications need to have built-in support for it. See [An Introduction to PostreSQL](/docs/guides/an-introduction-to-postgresql/)
+- **PostreSQL** *(Coming in June 2022)*: An object-relational database management system that can use either SQL or JSON queries. It's generally more flexible and feature-rich than MySQL, though it's not a drop-in replacement and applications need to have built-in support for it. See [An Introduction to PostreSQL](/docs/guides/an-introduction-to-postgresql/)
 
-- **MongoDB** *(Coming soon)*: A document-oriented database software that uses JSON files to store data. It is one of the most popular NoSQL databases and, as such, it is *unstructured* and very flexible. [MongoDB and Its Use Cases](/docs/guides/mongodb-and-its-use-cases/)
+- **MongoDB** *(Coming in June 2022)*: A document-oriented database software that uses JSON files to store data. It is one of the most popular NoSQL databases and, as such, it is *unstructured* and very flexible. [MongoDB and Its Use Cases](/docs/guides/mongodb-and-its-use-cases/)
 
 - **Redis** *(Coming soon)*: An in-memory NoSQL database that stores its data as key-value pairs. It's most commonly used as a caching system.
 
@@ -65,13 +65,15 @@ Managed Databases can be created and deployed across [all regions](https://www.l
 
 | Resource | Available Plans |
 | -- | -- |
-| Cluster size | 1 or 3 nodes |
+| Cluster size | 1 - 3 nodes |
 | vCPU cores | 1 - 64 cores (shared or dedicated) |
 | Memory | 1 GB - 512 GB |
 | Storage | 25 GB - 7200 GB |
 
+Pricing starts at $15/mo for a 1 GB instance with a single node. Review the [pricing page](https://www.linode.com/pricing/#databases) for additional plans and their associated costs.
+
 {{<note>}}
-During the beta period, Managed Databases will not incur any costs. If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of it becoming a paid product.
+The free and open beta ends on May 1st 2022. During this time, Managed Databases will not incur any costs. Starting on May 2nd, 2022, billing begins for all active Managed Database clusters. If you do not wish to continue using Managed Database, delete any active database clusters before this date to avoid charges.
 {{</note>}}
 
 Managed Databases do not consume [network transfer](/docs/guides/network-transfer/) or include a monthly transfer allowance. Transfer is consumed when connecting to a Managed Database from a Compute Instance when that instance is located in a different data center.
