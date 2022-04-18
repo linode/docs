@@ -15,7 +15,7 @@ If your database cluster is configured with a single node, you will experience d
 {{</ caution >}}
 
 {{< note >}}
-Currently, these automatic updates do not include minor release for the database engine software (DBMS). To upgrade to a new minor version (such as upgrading MySQL 8.0.26 to 8.0.27), consider deploying a new Managed Database with your preferred version. Then, once it's deployed, you can [migrate your database](/docs/products/databases/managed-databases/guides/migrate-mysql/).
+Currently, these automatic updates do not include major releases for the database engine software (DBMS). To upgrade to a new major version (such as upgrading MySQL 8.0.26 to 9.0.0), consider deploying a new Managed Database with your preferred version. Then, once it's deployed, you can [migrate your database](/docs/products/databases/managed-databases/guides/migrate-mysql/).
 {{</ note >}}
 
 ## View and Modify the Maintenance Window
