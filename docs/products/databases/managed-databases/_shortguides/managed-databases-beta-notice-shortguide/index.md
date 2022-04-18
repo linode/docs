@@ -6,5 +6,5 @@ show_on_rss_feed: false
 ---
 
 {{<note>}}
-The Managed Database service is currently in beta and available to all customers across all data centers. During the beta period, Managed Databases will not incur any charges. If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the GA (general availability) release.
+The Managed Database service is currently in beta and available at no charge to all customers across all data centers. This free and open beta period runs through to May 1st, 2022. Starting on May 2nd, 2022, billing will begin to accrue for all active Managed Database clusters. See [Plans and Pricing](/docs/products/databases/managed-databases/#plans-and-pricing) for more details.
 {{</note>}}
