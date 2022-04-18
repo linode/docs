@@ -427,12 +427,11 @@ The procedure for installing and activating a theme is nearly identical to that 
 
 1. To uninstall a theme, activate a different theme first:
 
-        sudo -u www-data wp theme activate twentyseventeen
+        sudo -u www-data wp theme activate twentytwenty
 
 1. Once you've activated another theme, you can safely uninstall the previously active theme:
 
-        sudo -u www-data wp theme uninstall twentynineteen
-
+        sudo -u www-data wp theme uninstall twentyfourteen
 
 ### Update WordPress
 
