@@ -19,7 +19,7 @@ To learn more about Block Storage, visit the [Block Storage Overview](/docs/prod
 | Data Center | NVMe Block Storage |
 | -- | -- |
 | **Atlanta (Georgia, USA)** | **Deployed** |
-| Dallas (Texas, USA) | *Coming in Q2 2022* |
+| **Dallas (Texas, USA)** | **Deployed** |
 | **Frankfurt (Germany)** | **Deployed** |
 | Fremont (California, USA) | *Coming in Q2 2022* |
 | **London (United Kingdom)** | **Deployed** |
