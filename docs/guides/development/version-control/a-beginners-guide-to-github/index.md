@@ -47,15 +47,15 @@ If you are following these instructions on a Windows system, all commands will n
 
 1.  In a browser window, select your user account icon in the upper right-hand corner of the screen, then click **Settings**. Your user account icon may look different than the one below:
 
-    [![GitHub Settings](github-settings.png)](github-settings.png)
+    ![GitHub Settings](github-settings.png)
 
 1.  Select the **SSH keys** option from the **Personal settings** menu, then click the **Add SSH key** button:
 
-    [![SSH key settings](github-ssh-key.png)](github-ssh-key.png)
+    ![SSH key settings](github-ssh-key.png)
 
 1.  Copy the contents of your public key file from your terminal window, and paste them into the **Key** text box.  Add a descriptive title for your key in the **Title** text box:
 
-    [![Add Key](github-load-key.png)](github-load-key.png)
+    ![Add Key](github-load-key.png)
 
 
 ### Setting Up Your Repository
@@ -68,11 +68,11 @@ In order to edit or create documents for our library, you will need to fork your
 
 1.  Once the fork process has completed, visit the **docs** repository under your repository list on the GitHub homepage:
 
-    [![Your repository on GitHub](github-your-repository.png)](github-your-repository.png)
+    ![Your repository on GitHub](github-your-repository.png)
 
 1.  Clone your forked branch to your local machine by copying the clone URL, and appending it to the following command.  We recommend cloning via SSH for this particular step.  This command will create a local copy of your cloned repository that you can work with directly in the directory where the command is run:
 
-    [![GitHub Clone URL](github-clone-url.png)](github-clone-url.png)
+    ![GitHub Clone URL](github-clone-url.png)
 
         git clone <insert clone URL>
 
@@ -209,11 +209,11 @@ Now that you've completed the composition of your guide, it's time to make your 
 
 1.  Within the GitHub web interface, navigate to your fork of the **linode/docs** repository:
 
-    [![GitHub - Your Repository](github-your-repository.png)](github-your-repository.png)
+    ![GitHub - Your Repository](github-your-repository.png)
 
 1.  Select the branch containing your changes:
 
-    [![GitHub - Switch Branches](github-switch-branches.png)](github-switch-branches.png)
+    ![GitHub - Switch Branches](github-switch-branches.png)
 
 1.  Select the **New pull request** option to generate your first PR.
 
@@ -225,7 +225,7 @@ Now that you've completed the composition of your guide, it's time to make your 
 
 Once you have submitted your first pull request, you will likely receive communication from the Linode Guides and Tutorials team as your PR is run through our tech and copy editing processes.  You can respond to this feedback directly from your PR page:
 
-[![GitHub - Pull Request Comment](github-pr-comments.png)](github-pr-comments.png)
+![GitHub - Pull Request Comment](github-pr-comments.png)
 
 If you need to edit your PR, you can make changes to your locally saved branch, then upload the changes by following steps 4-8 of the [Creating Your First Guide](#creating-your-first-guide) section of this guide.
 

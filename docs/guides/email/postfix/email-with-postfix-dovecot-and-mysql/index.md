@@ -119,9 +119,9 @@ This will install the **mysql-server** package, which isn't available by default
 
     When prompted, select **Internet Site** as the type of mail server the Postfix installer should configure. In the next screen, the *System Mail Name* should be set to the domain you'd like to send and receive email through.
 
-    [![Choose "Internet Site" for Postfix.](postfix-configuration-internet-site.png)](postfix-configuration-internet-site.png)
+    ![Choose "Internet Site" for Postfix.](postfix-configuration-internet-site.png)
 
-    [![Set the system mail name for Postfix.](postfix-configuration-mail-name.png)](postfix-configuration-mail-name.png)
+    ![Set the system mail name for Postfix.](postfix-configuration-mail-name.png)
 
 ### Versions
 

@@ -38,11 +38,11 @@ For many private networking tasks, we suggest that you consider the functions of
 
 Once configured, the OpenVPN server encrypts traffic between your local computer and your Linode's local network. While all other traffic is handled in the conventional manner, the VPN allows traffic on non-public interfaces to be securely passed through your Linode. This means you can connect to the local area network in your Linode's data center. Using OpenVPN in this manner is supported by the default configuration
 
-[![Splash screen for TunnelBlick.](1359-BasicVPNTraffic.jpg)](1359-BasicVPNTraffic.jpg)
+![Splash screen for TunnelBlick.](1359-BasicVPNTraffic.jpg)
 
 With the additional configuration we will set up at the end of this guide, all traffic coming from your local computer can be tunneled through the VPN server. This can be used to circumvent local traffic restrictions, or to mask the traffic coming from your computer.
 
-[![Splash screen for TunnelBlick.](1360-FullTunneling.jpg)](1360-FullTunneling.jpg)
+![Splash screen for TunnelBlick.](1360-FullTunneling.jpg)
 
  {{< note >}}
 Please note that only one public IP address is required to use OpenVPN
@@ -248,7 +248,7 @@ Here we will go through installing Tunnelblick on OSX:
 
 3.  At the next screen, click **OpenVPN Configuration(s)**:
 
-    [![Splash screen for TunnelBlick.](1347-tunnelblick3.png)](1347-tunnelblick3.png)
+    ![Splash screen for TunnelBlick.](1347-tunnelblick3.png)
 
 4.  Tunnelblick will open a Finder window into which you can copy the client.conf and client1 ca, crt, and key files you created on the Linode and copied to this client machine. Follow the rest of the instructions shown in Tunnelblick to create and install your Tunnelblick configuration file.
 
@@ -256,11 +256,11 @@ Here we will go through installing Tunnelblick on OSX:
 
 If you are using Tunnelblick, click on the tray icon to initiate the connection:
 
-[![Splash screen for TunnelBlick.](1351-tunnelblick7.png)](1351-tunnelblick7.png)
+![Splash screen for TunnelBlick.](1351-tunnelblick7.png)
 
 A notification will show you the status as it connects:
 
-[![Splash screen for TunnelBlick.](1353-tunnelblick9.png)](1353-tunnelblick9.png)
+![Splash screen for TunnelBlick.](1353-tunnelblick9.png)
 
 ### Accessing your Linode over the VPN
 
@@ -341,15 +341,15 @@ If you are using Debian 7, replace this command with `apt-get install dnsmasq re
 
 7.  You will be presented with a series of options in an ncurses menu. First, choose **yes** to prepare `/etc/resolv.conf` for dynamic updates.
 
-    [![A curses menu.](1338-curses1.png)](1338-curses1.png)
+    ![A curses menu.](1338-curses1.png)
 
 8.  At the next option select **No**. This means that you will need to update `/etc/network/interfaces` but won't need to remove the workaround afterwards.
 
-    [![A curses menu.](1339-curses2.png)](1339-curses2.png)
+    ![A curses menu.](1339-curses2.png)
 
 9.  The third menu simply warns you that a reboot will be required to prevent a known bug.
 
-    [![A curses menu.](1340-curses3.png)](1340-curses3.png)
+    ![A curses menu.](1340-curses3.png)
 
 10. Modify its configuration so that dnsmasq is not listening on a public interface. Open `/etc/dnsmasq.conf` for editing, and make sure the following lines are uncommented and have the appropriate values:
 
@@ -365,7 +365,7 @@ bind-interfaces
 
 11. Now that dnsmasq is configured, you will need to add two new lines to /etc/network/interfaces. First, go to the Linode's **Networking** tab, shown below. You'll need the IP addresses listed under **DNS Resolvers** for the `dns-nameservers` line:
 
-    [![DNS resolvers in the Linode Manager.](1341-resolvers.png)](1341-resolvers.png)
+    ![DNS resolvers in the Linode Manager.](1341-resolvers.png)
 
 12. Open the interfaces file and insert the addresses listed under **DNS Resolvers**:
 

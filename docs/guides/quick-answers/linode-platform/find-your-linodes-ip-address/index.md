@@ -27,13 +27,13 @@ Finding your Linode's IP address (or addresses) is easy and can be done in two d
 
  - You will see sections for IPv4 and IPv6.
  - Your public IPs are listed under the Address columns in these sections.
-[![Public IPs.](networking_ips.png)](networking_ips.png)
+![Public IPs.](networking_ips.png)
 
 4.  View more information about the IP by clicking the more options ellipsis to the right, then click **View** in the exposed dropdown menu.
-[![View IP Details.](view_ip_detail_menu.png)](view_ip_detail_menu.png)
+![View IP Details.](view_ip_detail_menu.png)
 
 5.  A side panel opens to reveal more networking information including the [subnet mask](https://en.wikipedia.org/wiki/Subnetwork).
-[![View IP Detail Panel.](view_ip_details.png)](view_ip_details.png)
+![View IP Detail Panel.](view_ip_details.png)
 
 ## From an SSH Session
 

@@ -56,7 +56,7 @@ Once you are satisfied that NodeBalancer is working normally, you can switch you
 
 1.  Edit or create an A record for your website's domain name, pointing to your NodeBalancer's IP address.
 
-    [![Adding an A Record.](nodebalancers-add-a-name-small.png "Adding an A Record")](nodebalancers-add-a-name.png)
+    ![Adding an A Record.](nodebalancers-add-a-name.png)
 
 1.  Also add an AAAA record for the IPv6 address.
 
@@ -66,7 +66,7 @@ Once the DNS changes propagate, traffic will begin flowing through the NodeBalan
 
 On another Linode, make an exact copy of your current web server. The [Linode Backups](/docs/products/storage/backups/) service can be instrumental for doing so, as a snapshot can be restored to any other Linode. Once you have another backend ready, simply repeat step four of [Configuring a NodeBalancer](/docs/platform/nodebalancer/getting-started-with-nodebalancers/#configuring-a-nodebalancer) to add it to the NodeBalancer configuration.
 
-[![Adding another backend to the NodeBalancer's configuration.](nodebalancers-backend-nodes2-small.png "Adding another backend to the NodeBalancer's configuration")](nodebalancers-backend-nodes2.png)
+![Adding another backend to the NodeBalancer's configuration.](nodebalancers-backend-nodes2.png)
 
 Once the configuration is sent to the backend, users will be balanced over the two Linodes and each will be monitored for health. This configuration is easy to work with, as upgrades can be rolled out to each backend without disrupting service and backend Linodes can be taken in and out of rotation at will.
 

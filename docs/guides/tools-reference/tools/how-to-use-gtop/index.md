@@ -44,13 +44,13 @@ Gtop takes up the graphical direction of htop. But unlike htop, which still focu
 Take a look at the screenshots below, which contrast the displays of top, htop, and gtop.
 
 **top**
-[![System monitoring display in top](top-display_small.png)](top-display.png)
+![System monitoring display in top](top-display.png)
 
 **htop**
-[![System monitoring display in htop](htop-display_small.png)](htop-display.png)
+![System monitoring display in htop](htop-display.png)
 
 **gtop**
-[![System monitoring display in gtop](gtop-display_small.png)](gtop-display.png)
+![System monitoring display in gtop](gtop-display.png)
 
 ## How to Install gtop
 

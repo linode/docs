@@ -102,7 +102,7 @@ The example below connects to the database as `example_user` and uses the MySQL 
 
 1. The **Result Grid** shows the output from the command, the desired list of tables:
 
-    [![List of tables from MySQL Workbench](mysql-workbench-list-tables_small.png)](mysql-workbench-list-tables.png)
+    ![List of tables from MySQL Workbench](mysql-workbench-list-tables.png)
 
 ## Conclusion
 

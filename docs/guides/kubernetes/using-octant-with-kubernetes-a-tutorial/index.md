@@ -107,21 +107,21 @@ The cluster objects visible in the following screenshots were created by install
 
 - When first viewing the dashboard, a list of all of your cluster objects will be shown:
 
-    [![Octant Cluster Overview](octant-cluster-overview.png)](octant-cluster-overview.png)
+    ![Octant Cluster Overview](octant-cluster-overview.png)
 
     The left navigation will display a hierarchy of the objects that can be viewed, and the right column will display your objects. In the right corner of the top navigation, you can quickly switch between your workstation's cluster contexts. The top navigation also allows you to change between cluster namespaces, and to filter your objects by label.
 
 - Consider the Services item in the left navigation. When clicked on, only your Services will appear in a table to the right:
 
-    [![Octant Services View](octant-services.png)](octant-services.png)
+    ![Octant Services View](octant-services.png)
 
 - Important attributes of your Services will be listed in the columns of this table. In particular, the labels are buttons which can be clicked on:
 
-    [![Octant Services View - Labels Highlighted](octant-services-labels-highlighted.png)](octant-services-labels-highlighted.png)
+    ![Octant Services View - Labels Highlighted](octant-services-labels-highlighted.png)
 
     If you click on the **release:my-blog** button, all Services without this label will be hidden:
 
-    [![Octant Services View - release:my-blog](octant-services-release-my-blog.png)](octant-services-release-my-blog.png)
+    ![Octant Services View - release:my-blog](octant-services-release-my-blog.png)
 
     This view shows that the Ghost Helm chart set up two Services: one for the Ghost front-end, and one for its database.
 
@@ -131,7 +131,7 @@ Multiple labels can be selected at the same time.
 
 - This filter will persist across all other views. For example, if you navigate to the Pods view, only Pods with the `release:my-blog` label will be shown. To clear your filters, click the **clear filters** link under the filter dropdown in the top navigation:
 
-    [![Octant Filter Menu - Clear Filters](octant-clear-filters.png)](octant-clear-filters.png)
+    ![Octant Filter Menu - Clear Filters](octant-clear-filters.png)
 
 ### Inspecting an Object
 
@@ -139,7 +139,7 @@ Clicking on an object will show more detail for that object, including the visua
 
 - For example, the detail view for the Ghost front-end service shows a summary with **Configuration**, **Status**, **Metadata**, **Endpoints**, and **Events** panels:
 
-    [![Octant Service Detail View - Ghost front-end](octant-service-my-blog-ghost-summary.png)](octant-service-my-blog-ghost-summary.png)
+    ![Octant Service Detail View - Ghost front-end](octant-service-my-blog-ghost-summary.png)
 
     - The **Configuration** panel makes it easy to see which selector the Service uses to identify your Pods. This can also be directly edited (via the **Edit** link in the panel). Octant's development roadmap includes adding more direct-editing features like this.
 
@@ -155,7 +155,7 @@ Other panels will appear for different object types. For example, Pods will show
 
 - The **Resource Viewer** tab will reveal the object relationship graph for this Service:
 
-    [![Octant Service Detail View - Ghost front-end](octant-service-my-blog-ghost-resource-viewer.png)](octant-service-my-blog-ghost-resource-viewer.png)
+    ![Octant Service Detail View - Ghost front-end](octant-service-my-blog-ghost-resource-viewer.png)
 
     This view will display color-coded cells for each object, indicating the object's status. The presence or absence of objects in this graph can be helpful when troubleshooting.  For example, if a Service's graph does not show connections to a Pod, then the Service may not be configured to use the right Pod selector.
 
@@ -164,7 +164,7 @@ Other panels will appear for different object types. For example, Pods will show
     {{< note >}}
 The detail view for Pods will also show a fourth **Logs** tab,which will follow and display the logs for a Pod in real-time:
 
-[![Octant Pod Detail View - Ghost front-end logs](octant-pod-my-blog-ghost-logs.png)](octant-pod-my-blog-ghost-logs.png)
+![Octant Pod Detail View - Ghost front-end logs](octant-pod-my-blog-ghost-logs.png)
 {{< /note >}}
 
 ### Navigation Example Tear-Down
@@ -202,13 +202,13 @@ The Dockerfile and other files used to create the Docker Hub image are located [
 
 1. To learn about how the application is structured on your cluster, you view it in Octant. When visiting the Services tab, you find the new `hello-world-service` object:
 
-    [![Octant Services - Hello World with External IP Highlighted](octant-services-table-with-hello-world-1_0.png)](octant-services-table-with-hello-world-1_0.png)
+    ![Octant Services - Hello World with External IP Highlighted](octant-services-table-with-hello-world-1_0.png)
 
 1. The external IP address for the Service will also be shown in the new table entry (highlighted above). Visiting this address in your browser will return the "Hello World" message as expected.
 
 1. If you click on the `hello-world-service` Service and then navigate to the **Resource Viewer** tab, the relationships for it will be shown. If you click on the Pods cell, a right-hand navigation will appear. The panel in this navigation will show three green dots:
 
-    [![Octant Service Resource Viewer - Hello World 1.0](octant-service-hello-world-1_0-resource-viewer.png)](octant-service-hello-world-1_0-resource-viewer.png)
+    ![Octant Service Resource Viewer - Hello World 1.0](octant-service-hello-world-1_0-resource-viewer.png)
 
     The three green dots indicate that three Pods were created that match the selector for the Service. Clicking on each will navigate to that Pod's detail view.
 
@@ -231,7 +231,7 @@ The Dockerfile and other files used to create the Docker Hub image are located [
 
 1. If you visit the external IP for the application in your browser again, it will still display the same "Hello World" message. If you return to the Resource Viewer graph for the `hello-world-service` Service in Octant, you'll see that it has been updated:
 
-    [![Octant Service Resource Viewer - Hello World 2.0](octant-service-hello-world-2_0-resource-viewer.png)](octant-service-hello-world-2_0-resource-viewer.png)
+    ![Octant Service Resource Viewer - Hello World 2.0](octant-service-hello-world-2_0-resource-viewer.png)
 
 1. The Deployment has created a new ReplicaSet to run the updated application under. The orange color for the Deployment, ReplicaSet, and Pods indicates an issue with the update that will need further investigating.
 
@@ -243,7 +243,7 @@ The Deployment keeps the older ReplicaSet and Pods running in place until the ne
 
 1. The detail view for the Pod will appear. Scroll down to the **Events** table at the bottom. A `Failed to pull image "linodedocs/kubernetes_using-octant-with-kubernetes-a-tutorial_hello-world:v2a"` message should appear in the table:
 
-    [![Octant Pod Events - Hello World 2.0](octant-pod-hello-world-2_0-events.png)](octant-pod-hello-world-2_0-events.png)
+    ![Octant Pod Events - Hello World 2.0](octant-pod-hello-world-2_0-events.png)
 
 1. The name for the Pod's image has a typo and should be corrected. On your workstation, open the release-2.0.yaml manifest and update **line 32** so that it refers to `linodedocs/kubernetes_using-octant-with-kubernetes-a-tutorial_hello-world:v2` instead of `linodedocs/kubernetes_using-octant-with-kubernetes-a-tutorial_hello-world:v2a`. Save the file, then apply the change to your cluster:
 
@@ -251,13 +251,13 @@ The Deployment keeps the older ReplicaSet and Pods running in place until the ne
 
 1. If you visit the external IP for the application in your browser again, it will still display the same "Hello World" message. If you return to the Resource Viewer graph for the `hello-world-service` Service in Octant, you'll see that it has been updated again:
 
-    [![Octant Service Resource Viewer - Hello World 2.0 (after manifest update)](octant-service-hello-world-2_0-resource-viewer-after-manifest-update.png)](octant-service-hello-world-2_0-resource-viewer-after-manifest-update.png)
+    ![Octant Service Resource Viewer - Hello World 2.0 (after manifest update)](octant-service-hello-world-2_0-resource-viewer-after-manifest-update.png)
 
 1. The new Pod is no longer colored orange, but the ReplicaSet still is, indicating that other problems also need to be fixed. Click on the orange ReplicaSet cell in the graph, and then click on the title of the right-hand panel that appears (highlighted above).
 
 1. The detail view for the ReplicaSet will appear. The Pods panel on this page will show that the Pod has restarted several times:
 
-    [![Octant ReplicaSet Pods - Hello World 2.0](octant-replicaset-hello-world-2_0-pods.png)](octant-replicaset-hello-world-2_0-pods.png)
+    ![Octant ReplicaSet Pods - Hello World 2.0](octant-replicaset-hello-world-2_0-pods.png)
 
 1. Clicking on the Pod's name in this panel will take you to the detail view for it. This **Events** panel in this view will show the recent restarts. A good next step would be to investigate the logs for the Pod, but you may find that the **Logs** tab shows no content. In this case, it's worth switching out to kubectl to try and get logs from previous restarts:
 

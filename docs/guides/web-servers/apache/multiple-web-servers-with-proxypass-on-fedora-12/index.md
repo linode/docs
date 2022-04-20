@@ -85,11 +85,11 @@ The `ProxyPass` directive tells Apache to forward all requests for this domain t
 
 Let's do some testing. Here's the normal Apache-served site "www.firstsite.org" in our browser:
 
-[![Website running under Apache on Fedora 12.](455-proxypass-apache-site.png)](455-proxypass-apache-site.png)
+![Website running under Apache on Fedora 12.](455-proxypass-apache-site.png)
 
 Here's the site "www.secondsite.org" being served by lighttpd via ProxyPass:
 
-[![Website running under Lighttpd on Fedora 12.](456-proxypass-lighttpd-site.png)](456-proxypass-lighttpd-site.png)
+![Website running under Lighttpd on Fedora 12.](456-proxypass-lighttpd-site.png)
 
 ## Proxying a Specific URL to Lighttpd
 
@@ -112,7 +112,7 @@ If we wanted to have `http://www.firstsite.org/myapp/` served by a web applicati
 
 Now the location "/myapp" will be served by lighttpd instead of Apache. After reloading the Apache configuration with `/etc/init.d/httpd reload`, we can see that it's functioning correctly:
 
-[![Web application running under a directory via lighttpd on Fedora 12](457-proxypass-lighttpd-directory.png)](457-proxypass-lighttpd-directory.png)
+![Web application running under a directory via lighttpd on Fedora 12](457-proxypass-lighttpd-directory.png)
 
 This is an easy method for hosting multiple application servers (with different web server requirements) under a single domain.
 

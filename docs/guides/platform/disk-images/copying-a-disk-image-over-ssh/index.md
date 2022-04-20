@@ -160,7 +160,7 @@ You now need to create a new configuration profile on the receiving Linode.
 
 1.  The **Add Linode Configuration** panel appears.
 
-    [![Selecting the configuration profile](1064-migration6.png)](1064-migration6.png "Selecting the configuration profile")
+    ![Selecting the configuration profile](1064-migration6.png "Selecting the configuration profile")
 
 1.  Enter a name for the configuration profile in the **Label** field, and in the **Block Device Assignment** section set the `/dev/sda` to the new system disk you created earlier in this section of the guide. Set `/dev/sdb` to the swap image.
 

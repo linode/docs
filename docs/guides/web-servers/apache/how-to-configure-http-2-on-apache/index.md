@@ -204,5 +204,5 @@ To confirm Apache is using HTTP/2, visit the website using any browser, and use 
 1. Select the **Network** tab, and reload the page again.
 1. This displays a list of several rows. Click on the row corresponding to the base domain. This reveals a new panel on the bottom right. The **Headers** tab appears by default.
 
-    [![Developer panel in Firefox](developer-panel_small.png)](developer-panel.png)
+    ![Developer panel in Firefox](developer-panel.png)
 1. If HTTP/2 is working, the `Status` reads `OK` and the version is `HTTP/2`.

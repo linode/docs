@@ -122,15 +122,15 @@ Use a web browser to navigate to your machine's domain name or public IP address
 
 - You should be greeted by the Nagios landing page.
 
-[![Landing page for Nagios](nagios-landing-page_small.png "Landing page for Nagios")](nagios-landing-page.png)
+![Landing page for Nagios](nagios-landing-page.png)
 
 - You can view monitoring status information by selecting **Hosts** from the menu on the left.
 
-[![Nagios page displaying monitoring status](nagios-hosts-page_small.png "Nagios page displaying monitoring status")](nagios-hosts-page.png)
+![Nagios page displaying monitoring status](nagios-hosts-page.png)
 
 - You can get details on the services running and their statuses by selecting **Services** from the menu on the left.
 
-[![Nagios page detailing the services running](nagios-services-page_small.png "Nagios page detailing the services running")](nagios-services-page.png)
+![Nagios page detailing the services running](nagios-services-page.png)
 
 ## Next Steps
 

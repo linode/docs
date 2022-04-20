@@ -207,17 +207,17 @@ For more information on available settings and how to modify them, or how to run
 
 1.  Open your local Minecraft client. After logging in, click on the **Multiplayer** option:
 
-    [![Minecraft Launch Menu.](minecraft-select-multiplayer_small.png)](minecraft-select-multiplayer.png)
+    ![Minecraft Launch Menu.](minecraft-select-multiplayer.png)
 
 1.  Click **Add server** and enter your Linode's IP address or domain name. When you're finished click **Done**:
 
-    [![Edit Server Info.](minecraft-server-info_small.png)](minecraft-server-info.png)
+    ![Edit Server Info.](minecraft-server-info.png)
 
 1.  Your server is now available to incoming connections. Click **Join Server** to connect:
 
-    [![Minecraft Server List.](minecraft-server-added_small.png)](minecraft-server-added.png)
+    ![Minecraft Server List.](minecraft-server-added.png)
 
-    [![Minecraft Players.](minecraft-gameplay_small.png)](minecraft-gameplay.png)
+    ![Minecraft Players.](minecraft-gameplay.png)
 
 Congratulations! Now that you have setup a Minecraft server on Linux, you can play Minecraft in a persistent world with your friends. For more information on working with `screen`, check out our guide on [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/).
 

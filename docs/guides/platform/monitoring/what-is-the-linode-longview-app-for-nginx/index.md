@@ -59,7 +59,7 @@ If you already have Longview installed, you may find that NGINX is not automatic
 
 3.  For most people, this will prompt a popup asking whether you would like Longview to attempt an automatic configuration of the NGINX status module.
 
-    [![Longview has detected Nginx running on this server but was unable to access the server status page. Would you like to attempt to automatically configure the Nginx status module? This will require restarting Nginx to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](1456-longview_ngnix_popup_crop.png)](1456-longview_ngnix_popup_crop.png)
+    ![Longview has detected Nginx running on this server but was unable to access the server status page. Would you like to attempt to automatically configure the Nginx status module? This will require restarting Nginx to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](1456-longview_ngnix_popup_crop.png)
 
     {{< note >}}
 It's also possible that Longview will be able to locate the status page on its own. In that case, you won't get the popup, and you can go directly to Step 5.

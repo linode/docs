@@ -293,7 +293,7 @@ You are all set to run your website with a service worker.
 
     Here is an example of the **Network** developer tools display in Firefox.
 
-    [![Network information in Firefox for the example service worker application](service-worker-example-network_small.png)](service-worker-example-network.png)
+    ![Network information in Firefox for the example service worker application](service-worker-example-network.png)
 
 ## Conclusion
 

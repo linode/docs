@@ -59,15 +59,15 @@ To boot a Linode into Rescue Mode:
 
 1.  Click the **Linodes** link in the sidebar:
 
-    [![Linode Cloud Manager dashboard - Linodes sidebar link highlighted](cloud-manager-dashboard.png "Linode Cloud Manager Dashboard with the Linodes link the sidebar highlighted")](cloud-manager-dashboard.png)
+    ![Linode Cloud Manager dashboard - Linodes sidebar link highlighted](cloud-manager-dashboard.png)
 
 1.  Click on the **more options ellipsis** next to the Linode that will be booted into rescue mode, and click on the **Rescue** option to open the Rescue form:
 
-    [![Linode Cloud Manager Linodes page](cloud-manager-linodes-page.png "Linode Cloud Manager Linodes page with one Linode highlighted")](cloud-manager-linodes-page.png)
+    ![Linode Cloud Manager Linodes page](cloud-manager-linodes-page.png)
 
 1.  In the **Rescue** form, select the disks you want to mount:
 
-    [![Linode Cloud Manager Rescue form - /dev/sda highlighted](cloud-manager-rescue-form-dev-sda-highlighted.png "Linode Cloud Manager Rescue form with /dev/sda highlighted")](cloud-manager-rescue-form-dev-sda-highlighted.png)
+    ![Linode Cloud Manager Rescue form - /dev/sda highlighted](cloud-manager-rescue-form-dev-sda-highlighted.png)
 
     {{< note >}}
 Make a note of which devices the disks are assigned to (e.g. `/dev/sda`, `/dev/sdb`, etc). For example, in the screenshot shown above, the Ubuntu disk corresponds to `/dev/sda`. These assignments are where you can mount the disks from inside Rescue Mode.
@@ -75,7 +75,7 @@ Make a note of which devices the disks are assigned to (e.g. `/dev/sda`, `/dev/s
 
 1.  If you need to assign additional disks to be accessible inside Rescue Mode, click the **Add Disk** option:
 
-    [![Linode Cloud Manager Rescue form - Add Disk highlighted](cloud-manager-rescue-form-add-disk-highlighted.png "Linode Cloud Manager Rescue form with the Add Disk option highlighted")](cloud-manager-rescue-form-add-disk-highlighted.png)
+    ![Linode Cloud Manager Rescue form - Add Disk highlighted](cloud-manager-rescue-form-add-disk-highlighted.png)
 
     {{< note >}}
 You can assign up to 7 disks in Rescue Mode. `/dev/sdh` is always assigned to the Finnix recovery distribution.
@@ -89,7 +89,7 @@ A mismatch in the names of your disks between your Linode's configuration profil
 
 1.  Click the **Reboot into Rescue Mode** button. The Linode reboots into Rescue Mode, and the progress percentage appears. When the Linode appears as **Running** again, proceed to [Connecting to a Linode Running in Rescue Mode](#connecting-to-a-linode-running-in-rescue-mode).
 
-    [![Linode Cloud Manager Rescue form - reboot progress bar highlighted](cloud-manager-rescue-form-reboot-progress-bar-highlighted.png "Linode Cloud Manager Rescue form with the reboot progress bar highlighted")](cloud-manager-rescue-form-reboot-progress-bar-highlighted.png)
+    ![Linode Cloud Manager Rescue form - reboot progress bar highlighted](cloud-manager-rescue-form-reboot-progress-bar-highlighted.png)
 
 ### Connecting to a Linode Running in Rescue Mode
 
@@ -103,11 +103,11 @@ To connect with Lish:
 
 1.  From the Linode's detail page, click the **Launch Console** button:
 
-    [![Linode Cloud Manager Linode detail page - Launch Console button highlighted](cloud-manager-rescue-tab-launch-console-highlighted.png "Linode Cloud Manager Linode detail page with the Launch Console button highlighted")](cloud-manager-rescue-tab-launch-console-highlighted.png)
+    ![Linode Cloud Manager Linode detail page - Launch Console button highlighted](cloud-manager-rescue-tab-launch-console-highlighted.png)
 
 1.  A new window appears which displays your Lish console, a `Welcome to Finnix!` message, and a root prompt:
 
-    [![Linode Cloud Manager Lish console](cloud-manager-new-lish-window.png "Linode Cloud Manager Lish console")](cloud-manager-new-lish-window.png)
+    ![Linode Cloud Manager Lish console](cloud-manager-new-lish-window.png)
 
 Review the [Using the Lish Console](/docs/guides/using-the-lish-console/) guide for further explanation of the Lish console and alternative methods for accessing it, including [from your computer's terminal application](/docs/guides/using-the-lish-console/#through-ssh-using-a-terminal).
 
@@ -341,18 +341,18 @@ To use the Rebuild feature:
 
 1.  Click on the **Linodes** link in the sidebar:
 
-    [![Linode Cloud Manager dashboard - Linodes sidebar link highlighted](cloud-manager-dashboard.png "Linode Cloud Manager Dashboard with the Linodes link the sidebar highlighted")](cloud-manager-dashboard.png)
+    ![Linode Cloud Manager dashboard - Linodes sidebar link highlighted](cloud-manager-dashboard.png)
 
 1.  Click on the **more options ellipsis** next to the Linode that will be rebuilt, and click on the Rebuild option to open the Rebuild form:
 
-    [![Linode Cloud Manager Linodes page](cloud-manager-linodes-rebuild.png "Linode Cloud Manager Linodes page with one Linode highlighted")](cloud-manager-linodes.png)
+    ![Linode Cloud Manager Linodes page](cloud-manager-linodes.png)
 
 1.  Complete the Rebuild form. Select an image or StackScript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear).
 
 1.  Click on **Rebuild** button after completing the form:
 
-    [![Linode Cloud Manager Rebuild form - Rebuild button highlighted](cloud-manager-rebuild-form-rebuild-button-highlighted.png "Linode Cloud Manager Rebuild form with Rebuild button highlighted")](cloud-manager-rebuild-form-rebuild-button-highlighted.png)
+    ![Linode Cloud Manager Rebuild form - Rebuild button highlighted](cloud-manager-rebuild-form-rebuild-button-highlighted.png)
 
 1.  The Linode may take several minutes to complete the rebuild process. Select the Linode that is being rebuilt and select the `Activity Feed` tab to monitor rebuild progress and confirm that the rebuild has been completed:
 
-    [![Linode Cloud Manager Activity - Activity](cloud-manager-rescue-activity.png "Linode Cloud Manager Rescue Activity")](cloud-manager-rescue-activity.png)
+    ![Linode Cloud Manager Activity - Activity](cloud-manager-rescue-activity.png)

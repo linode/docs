@@ -97,7 +97,7 @@ Via: 1.1 vegur
 
 HTTPie's output includes response header information by default. It uses syntax highlighting to make the response even easier to read, as you can see in the following screenshot:
 
-[![Syntax highlighting in HTTPie](httpie-syntax-highlighting_small.png)](httpie-syntax-highlighting.png)
+![Syntax highlighting in HTTPie](httpie-syntax-highlighting.png)
 
 Adding header data to a request in HTTPie requires appending the data after the URL, as shown in the command below. The following example fetches a random "dad joke" from a web service. You can see that the command also adds the `--follow` option, which has HTTPie follow any URL redirects (the equivalent of `-L` in `curl`). HTTPie includes the header information for the redirect response in its output.
 

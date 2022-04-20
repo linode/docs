@@ -56,7 +56,7 @@ JWTs have three parts. In the resulting encoded JWT, each part is encoded using 
 
 To see this in action, you can use the [JWT.IO debugger](https://jwt.io/#debugger-io). This lets you define JWT contents and see the signed and encoded result.
 
-[![Encoding example on the JWT.IO debugger](jwtio-encoding-example_small.png)](jwtio-encoding-example.png)
+![Encoding example on the JWT.IO debugger](jwtio-encoding-example.png)
 
 ## Example JWT Authentication
 
