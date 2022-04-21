@@ -175,9 +175,10 @@ address-family ipv6 unicast
 exit-address-family
 
 route-map primary permit 10
-set community 65000:1
+  set community 65000:1
 route-map secondary permit 10
-set community 65000:2
+  set community 65000:2
+
 ipv6 nht resolve-via-default
 {{</ file >}}
 
