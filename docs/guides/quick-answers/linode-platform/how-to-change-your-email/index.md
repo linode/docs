@@ -24,21 +24,19 @@ Changing your account's email address is easy and can be done two different ways
 
 1.  Log in to the [Cloud Manager](http://cloud.linode.com).
 
-1.  Click on your username and choose **My Profile** from the drop down menu.
+1.  Click on your username and choose **Billing and Contact Information** from the drop down menu.
 
     ![Click My Profile from Username Drop Down Menu](how-to-change-email-my-profile.png "Click My Profile from Username Drop Down Menu")
 
-1.  On the My Profile page, in the **Email** field, enter the email you would like to associate with your account.
+1.  On the Billing and Contact Information page, in the **Billing Contact** field, click the edit button to open the Billing Contact Info sidebar menu.
 
-1.  Click the **Save** button.
+    ![Click to Save a New Email](email-edit-button.png "Click to Save a New Email")
 
-    ![Click to Save a New Email](how-to-change-email-save.png "Click to Save a New Email")
+1. In the **Email** field, enter the email you would like to associate with your account.
 
-1.  Cloud Manager will tell you that the email address has been updated. You will also receive an email at this new address from Linode Support confirming this update.
+1.  Click the **Save** button to complete the change.
 
-1.  If you enter an invalid email address, the following error message is displayed.
-
-    ![Error Message for Invalid Email](how-to-change-email-error.png "Error Message for Invalid Email")
+    ![Click to Save a New Email](linode-demo-email-save.png "Click to Save a New Email")
 
 ## Using the API
 
