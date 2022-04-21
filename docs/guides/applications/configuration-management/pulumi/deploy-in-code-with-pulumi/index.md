@@ -74,11 +74,11 @@ It is possible to opt-out of using the default web backend and use a filesystem-
 
 1. [Log into your Pulumi account](https://app.pulumi.com/signin). After you've logged in, click on the avatar graphic to the top right of the Pulumi dashboard, then click on the **Settings** option in the dropdown menu that appears:
 
-    [![Location of Pulumi Settings option](pulumi-settings.png "Location of Pulumi Settings option")](pulumi-settings.png)
+    ![Location of Pulumi Settings option](pulumi-settings.png)
 
 1. Select the **Access Tokens** item in the sidebar to the left of the page that appears:
 
-    [![Location of Pulumi Access Token page](pulumi-token.png "Location of Pulumi Access Token page")](pulumi-token.png)
+    ![Location of Pulumi Access Token page](pulumi-token.png)
 
 1. Click on the **New Access Token** button towards the top right of the following page and follow the prompts to create your new token. Make sure you save this in a secure location, similar to your Linode API token.
 

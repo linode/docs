@@ -105,15 +105,15 @@ Write access to this directory is only meant to be granted temporarily. Once the
 
     - Enter `/var/moodledata` for **Data directory** when prompted to confirm paths.
 
-      [![Confirm paths for Moodle](moodle-set-up-confirm-paths_small.png "Confirm paths for Moodle")](moodle-set-up-confirm-paths.png)
+      ![Confirm paths for Moodle](moodle-set-up-confirm-paths.png)
 
     - Choose the **Improved MySQL** option when prompted to select a database driver.
 
-      [![Choose a database driver for Moodle](moodle-set-up-database-driver_small.png "Choose a database driver for Moodle")](moodle-set-up-database-driver.png)
+      ![Choose a database driver for Moodle](moodle-set-up-database-driver.png)
 
     - Follow the example in the image below when you are asked to enter database settings. Replace `moodle-user` and `password` with the username and password, respectively, that you used when creating the Moodle MySQL user above:
 
-      [![Enter database settings for Moodle](moodle-set-up-database-settings_small.png "Enter database settings for Moodle")](moodle-set-up-database-settings.png)
+      ![Enter database settings for Moodle](moodle-set-up-database-settings.png)
 
 1. Review the release information, ensure that no issues are indicated, and continue. Allow the next page to load fully — it may take some time — and ensure that all of the components listed indicate "Success". Then, continue.
 
@@ -139,7 +139,7 @@ Configuring the system paths for Moodle, while optional, enhances your Moodle si
 
     - **Path to dot**, enter `/usr/bin/dot`.
 
-    [![Input system paths for Moodle](moodle-admin-system-paths_small.png "Input system paths for Moodle")](moodle-admin-system-paths.png)
+    ![Input system paths for Moodle](moodle-admin-system-paths.png)
 
 1. Click the **Save changes** button.
 

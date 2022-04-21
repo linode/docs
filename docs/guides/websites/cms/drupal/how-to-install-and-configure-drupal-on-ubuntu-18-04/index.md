@@ -106,7 +106,7 @@ $settings['trusted_host_patterns'] = array(
 
 1.  Go to your Linode's domain or IP address in a web browser. This will show you the first step of Drupal 8's web configuration. Choose your language and proceed to the next page.
 
-    [![Drupal 8 choose language.](drupal-choose-language-small.png)](drupal-choose-language.png)
+    ![Drupal 8 choose language.](drupal-choose-language.png)
 
 2.  Choose whether you want a *Standard* or *Minimal* installation profile.
 

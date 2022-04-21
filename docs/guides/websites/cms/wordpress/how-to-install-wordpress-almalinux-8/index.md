@@ -186,7 +186,7 @@ location / {
 define('FS_METHOD', 'direct');
     {{< /file >}}
 
-    [![WordPress's default, "Hello, World!" post.](wordpress-default-post_small.png)](wordpress-default-post.png)
+    ![WordPress's default, "Hello, World!" post.](wordpress-default-post.png)
 
 ## Conclusion
 

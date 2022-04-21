@@ -115,7 +115,7 @@ Via: 1.1 vegur
 
 As you can see from the output, curlie automatically includes the response header information in the output. Curlie also applies syntax highlighting to its output. You can see output from curlie contrasted with output from cURL in the screenshot below:
 
-[![Syntax highlighting in curlie, vs curl](curlie-syntax-highlighting_small.png)](curlie-syntax-highlighting.png)
+![Syntax highlighting in curlie, vs curl](curlie-syntax-highlighting.png)
 
 The command interface for curlie sets itself apart from cURL as requests get more complicated. The example below fetches a random "dad joke" using a GET request with required header data. While cURL requires that you specify when you are providing header data, curlie can automatically parse header data included after the URL.
 

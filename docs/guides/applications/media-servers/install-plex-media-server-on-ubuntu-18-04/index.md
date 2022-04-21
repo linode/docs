@@ -76,11 +76,11 @@ In this section, you complete your server setup and start adding media libraries
 
 1.  Open a browser and navigate to `http://localhost:8888/web` to view the Plex web interface. Input your Plex account username and password to proceed with the setup process:
 
-    [![Plex web interface.](plex-browser-view-small.png)](plex-browser-view.png)
+    ![Plex web interface.](plex-browser-view.png)
 
 1.  Give your Plex server a name. Be sure to leave the **Allow me to access my media outside my home** box **checked**, and click **Next**:
 
-    [![Plex web interface - Server Name.](plex-server-name-small.png)](plex-server-name.png)
+    ![Plex web interface - Server Name.](plex-server-name.png)
 
 1.  Finally, [connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) to create the directories that store your Plex media. In the example, you create library directories for `movies` and `television` within a `plex-media` directory. These are located within your user's home directory (`/home/username/`):
 
@@ -95,15 +95,15 @@ The steps in this section are performed using your Plex Media Server's web inter
 
 1. Once logged in, you should see the example page. Click the **Add Library** button to start setting up your media libraries:
 
-    [![Plex web interface - Add Library](plex-add-library-small.png)](plex-add-library.png)
+    ![Plex web interface - Add Library](plex-add-library.png)
 
 1.  Select your library type, and click **Next**:
 
-    [![Plex web interface - Library type](plex-library-type-small.png)](plex-library-type.png)
+    ![Plex web interface - Library type](plex-library-type.png)
 
 1.  Navigate to the media directory that you created previously (`/home/username/plex-media/movies`), then click **Add**:
 
-    [![Plex web interface - Library location](plex-library-location-small.png)](plex-library-location.png)
+    ![Plex web interface - Library location](plex-library-location.png)
 
 1.  You can add additional libraries by clicking the **+** symbol next to the **Libraries** list on the Plex side bar:
 
@@ -119,7 +119,7 @@ In more recent versions of Plex Media Server, [DLNA](https://en.wikipedia.org/wi
 
 1.  Navigate to the **DLNA** section, uncheck **Enable the DLNA server**, and click **Save Changes**:
 
-[![Plex media client](plex-dlna-disable-small.png)](plex-dlna-disable.png)
+![Plex media client](plex-dlna-disable.png)
 
 ## Connecting to Your Plex Server
 
@@ -131,7 +131,7 @@ Now that your server is set up, you’re ready to connect to it from a Plex clie
 
 1. Next, sign-in to your Plex client application and select your server from the dropdown menu. Now, you can browse media files available on your Plex server.
 
-[![Plex media client](plex-media-client-small.png)](plex-media-client.png)
+![Plex media client](plex-media-client.png)
 
 ## Configuring Plex Media Server Firewall on Ubuntu 18.04
 

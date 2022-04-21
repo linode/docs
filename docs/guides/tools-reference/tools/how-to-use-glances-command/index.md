@@ -111,7 +111,7 @@ You can open up the default glances view with the basic command alone. This incl
 
     glances
 
-[![The glances display](glances-default_small.png)](glances-default.png)
+![The glances display](glances-default.png)
 
 If you resize the screen housing the Glances interface, Glances dynamically adapts:
 
@@ -129,7 +129,7 @@ Once you're in Glances, there are plenty of interactive commands you can use to 
 
         cmdline:.*pyth.*
 
-    [![glances filtering processes based on command names matching filter](glances-filtered_small.png)](glances-filtered.png)
+    ![glances filtering processes based on command names matching filter](glances-filtered.png)
 
     Once you have filtered the processes, you can press **Enter** again to edit your filter or press **E** (case sensitive) to reset the filter.
 
@@ -214,7 +214,7 @@ Glances Web User Interface started on http://0.0.0.0:61208/
 
     The output from `glances` displays in your web browser:
 
-    [![`glances` output in a web browser](glances-web_small.png)](glances-web.png)
+    ![`glances` output in a web browser](glances-web.png)
 
 ### Example Configurations
 

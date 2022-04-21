@@ -959,7 +959,7 @@ When performing the steps in this section, you should have `clustermgr` authoriz
 
     The master ipset is named *your-cluster-uwls*. By default, it's completely empty, which means nobody is authorized.
 
-    [![Master ipset](storm-user-whitelist-1-650px.png)](storm-user-whitelist-1.png "An empty ipset list")
+    ![Master ipset](storm-user-whitelist-1.png "An empty ipset list")
 
 3.  To whitelist an IP address:
 
@@ -969,7 +969,7 @@ When performing the steps in this section, you should have `clustermgr` authoriz
 
     These additions are highlighted below:
 
-    [![Whitelist entries](storm-user-whitelist-2-650px.png)](storm-user-whitelist-2.png)
+    ![Whitelist entries](storm-user-whitelist-2.png)
 
     {{< note >}}
 Any IP address that is being included in the file should be a *public facing IP* address of the network.
@@ -997,7 +997,7 @@ Since the cluster client node is in the Linode cloud outside your company networ
 
     You should see output similar to the following (in addition to custom ipsets if you added them, and the ipsets for the Storm and Zookeeper cluster nodes):
 
-    [![ipset output](storm-user-whitelist-3.png)](storm-user-whitelist-3.png)
+    ![ipset output](storm-user-whitelist-3.png)
 
     Disconnect from the client node and navigate back to the `storm-linode` directory on the cluster manager node:
 
@@ -1009,11 +1009,11 @@ Since the cluster client node is in the Linode cloud outside your company networ
 
 9.  Finally, verify that the Storm UI web application is accessible by opening `http://public-IP-of-client-node` in a web browser on each whitelisted workstation. You should see the Storm UI web application, which looks like this:
 
-    [![Storm UI](storm-ui-650px.png)](storm-ui-large.png)
+    ![Storm UI](storm-ui-large.png)
 
     The Storm UI displays the list of topologies and the list of supervisors executing them:
 
-    [![Storm UI monitoring](storm-ui-monitor-650px.png)](storm-ui-monitor.png)
+    ![Storm UI monitoring](storm-ui-monitor.png)
 
     If the cluster is executing any topologies, they are listed under the **Topology summary** section. Click on a topology to access its statistics, supervisor node logs, or actions such as killing that topology.
 

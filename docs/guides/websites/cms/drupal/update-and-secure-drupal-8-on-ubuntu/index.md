@@ -62,7 +62,7 @@ If **Available updates** is not listed, enable the Update Manager plugin under *
 
 2.  Right click "Download" to the right of the desired version and copy the link address:
 
-    [![A Drupal Update](drupal-updates-download-small.png)](drupal-updates-download.png)
+    ![A Drupal Update](drupal-updates-download.png)
 
 3.  Connect to your Linode over SSH:
 
@@ -83,7 +83,7 @@ If **Available updates** is not listed, enable the Update Manager plugin under *
 
 2.  Check the box next to "Put site into maintenance mode." Enter a message if desired, and click **Save Configuration**.
 
-    [![Title](drupal-updates-maintenance2-small.png)](drupal-updates-maintenance2.png)
+    ![Title](drupal-updates-maintenance2.png)
 
 ### Replace System Files
 

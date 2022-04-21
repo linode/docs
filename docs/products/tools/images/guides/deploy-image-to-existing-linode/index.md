@@ -69,6 +69,6 @@ If you instead wish to retain the data on your Compute Instance, you can add a d
 
 1. Reboot the Compute Instance using the new Image. Navigate to the **Configuration** tab, find the new configuration profile in the list, and click the corresponding **Boot** link. This link may be displayed with the **More Options** ellipsis dropdown menu.
 
-    [![Boot the configuration profile](config-profile-boot.png)](config-profile-boot.png "Boot the configuration profile")
+    ![Boot the configuration profile](config-profile-boot.png "Boot the configuration profile")
 
 For help with configuring the software on your new disk, review the [Getting Started](/docs/guides/getting-started/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides.

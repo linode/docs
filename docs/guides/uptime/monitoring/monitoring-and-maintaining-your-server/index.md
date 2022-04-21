@@ -120,7 +120,7 @@ Linux version 4.15.12-x86_64-linode105 (maker@build.linode.com) (gcc version 4.9
 1.  Select your Linode. The Linode's details page appears.
 1.  Select the active configuration profile by clicking the **Edit** link, as shown below.
 
-    [![Selecting the active configuration profile](edit-configuration-menu-small.png)](edit-configuration-menu.png)
+    ![Selecting the active configuration profile](edit-configuration-menu.png)
 
 1.  From the **Kernel** menu, verify that **GRUB 2** is selected:
 

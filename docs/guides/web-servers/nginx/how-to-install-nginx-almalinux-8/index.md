@@ -60,7 +60,7 @@ This guide is written for non-root users. Commands that require elevated privile
 
     For example, if your domain name is `example.com`, navigate to `http://example.com`; if your IP address is `192.0.2.0`, you can instead navigate to  `http://192.0.2.0`.
 
-    [![Default NGINX page.](nginx-default-page_small.png)](nginx-default-page.png)
+    ![Default NGINX page.](nginx-default-page.png)
 
 ## Manage NGINX
 

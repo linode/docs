@@ -84,7 +84,7 @@ Now, you can open `broot` in that repository's directory with the following comm
 
     br ~/docsy-example
 
-[![A directory tree in broot](broot-tree_small.png)](broot-tree.png)
+![A directory tree in broot](broot-tree.png)
 
 Here are some useful commands for exploring the file tree once you are in `broot`.
 
@@ -100,11 +100,11 @@ Here are some useful commands for exploring the file tree once you are in `broot
 
     If you used the combination on a file, the new panel previews the file's contents, even if it is an image file. You can use the combination again to focus on the file contents. Once focused on the file contents, you can navigate them with the **up** and **down arrow** keys:
 
-    [![A directory tree and file preview side by side in broot](broot-tree-file-preview_small.png)](broot-tree-file-preview.png)
+    ![A directory tree and file preview side by side in broot](broot-tree-file-preview.png)
 
     If you used the combination on a directory, the new panel displays a directory tree with the selected directory as the root:
 
-    [![Two directory trees in separate panels in broot](broot-tree-two-panels_small.png)](broot-tree-two-panels.png)
+    ![Two directory trees in separate panels in broot](broot-tree-two-panels.png)
 
     Use the **Ctrl** and **left arrow** key combination to shift focus back to the original panel, if the focus was on the new panel. Then, use the combination again to close the new panel.
 
@@ -124,21 +124,21 @@ The sections below also highlights useful commands to help you get started manag
 
 - Use the `:sizes` command to have `broot` list usage information alongside files and directories.
 
-    [![Usage information listed in a broot directory tree](broot-tree-usage_small.png)](broot-tree-usage.png)
+    ![Usage information listed in a broot directory tree](broot-tree-usage.png)
 
 - When you are in a directory for a Git repository, the `:gf` command shows Git annotations, allowing you to quickly assess what files have changed.
 
-    [![Git annotations in a broot directory tree](broot-tree-git-info_small.png)](broot-tree-git-info.png)
+    ![Git annotations in a broot directory tree](broot-tree-git-info.png)
 
     You can also isolate the modified files in a Git repository using the `:gs` command.
 
-    [![A broot directory tree isolating modified files in a Git repository](broot-tree-git-modified_small.png)](broot-tree-git-modified.png)
+    ![A broot directory tree isolating modified files in a Git repository](broot-tree-git-modified.png)
 
 - Similar to the shell's `ls` command, `broot` is capable of displaying details about files and directories. Below is an example with results similar to the `ls -al`:
 
     Use the `:dates` command to show last modified dates, then the `:perm` command to show permissions information. Finally, use `:h` to show hidden files. The result resembles the image below:
 
-    [![A broot directory tree with the details of ls -al](broot-tree-ls-details_small.png)](broot-tree-ls-details.png)
+    ![A broot directory tree with the details of ls -al](broot-tree-ls-details.png)
 
 ## How to Manage Files and Directories with broot
 
@@ -162,7 +162,7 @@ You can add the above command to your `~/.bashrc` file to make the setting persi
 
     Open a panel for the directory you either want to copy/move an item into or out of the directory. Select the file or directory you want to copy/move. Then, use the `:cpp` command to copy the item to the root of the other panel's directory tree. Use the `:mvp` command to move the item to the other panel.
 
-    [![Copying from one panel to another in broot](broot-tree-copy-panels_small.png)](broot-tree-copy-panels.png)
+    ![Copying from one panel to another in broot](broot-tree-copy-panels.png)
 
 - Use the `:rm` command within `broot` to delete a selected file or directory.
 

@@ -96,13 +96,13 @@ To use the gping, issue the `gping` command followed by a hostname or IP address
 
     gping github.com
 
-[![gping graph for github.com](gping-host_small.png)](gping-host.png)
+![gping graph for github.com](gping-host.png)
 
 You can also use gping to graph multiple hosts' ping times simultaneously. The next example pings `github.com` and `gitlab.com`, each graphed in a distinct color for readability:
 
     gping github.com gitlab.com
 
-[![gping graphs for github.com and gitlab.com](gping-multiple-hosts_small.png)](gping-multiple-hosts.png)
+![gping graphs for github.com and gitlab.com](gping-multiple-hosts.png)
 
 Should you need a specific kind of IP address resolution, gping supports `-4` and `-6` options for resolving addresses to IPv4 and IPv6, respectively.
 
@@ -120,11 +120,11 @@ The example employs both of these options to alter the display. The command belo
 
     gping github.com --buffer 60 --watch-interval 1
 
-[![gping with display timing adjustments](gping-timing_small.png)](gping-timing.png)
+![gping with display timing adjustments](gping-timing.png)
 
 If you need to simplify how gping renders the graph line, you can use the option `--simple-graphics`. With this option, gping uses dot characters instead of braille to render its graph lines. This can be useful on terminals that do not support braille rendering:
 
-[![gping with a simplified graph line](gping-simplified_small.png)](gping-simplified.png)
+![gping with a simplified graph line](gping-simplified.png)
 
 ### Graphing Command Execution Time
 
@@ -132,13 +132,13 @@ As a bonus feature, gping allows you to graph execution time for command-line co
 
     gping --cmd 'ls /'
 
-[![gping graphing execution time for the 'ls /' command](gping-command_small.png)](gping-command.png)
+![gping graphing execution time for the 'ls /' command](gping-command.png)
 
 As with hosts, you can pass gping multiple commands when using this option to see the commands' execution times graphed side by side:
 
     gping --cmd 'ls' 'ls /'
 
-[![gping graphing execution times for the 'ls' 'ls /' commands](gping-multiple-commands_small.png)](gping-multiple-commands.png)
+![gping graphing execution times for the 'ls' 'ls /' commands](gping-multiple-commands.png)
 
 Since graphing command execution times is a bonus gping feature, it may not perform reliably for all kinds of commands. This is especially the case for commands that are more complicated.
 

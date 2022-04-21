@@ -710,7 +710,7 @@ Mar 18 17:18:47 localhost postfix/qmgr[3410]: B624062FA: removed
 
 1.  If there is an email in the inbox, Postfix, Dovecot, and MySQL have been successfully configured! To quit mutt press `q`.
 
-    [![Your mailbox is working!](postfixcentos-mutt.png)](postfixcentos-mutt.png)
+    ![Your mailbox is working!](postfixcentos-mutt.png)
 
 ## Email Client
 

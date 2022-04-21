@@ -161,12 +161,12 @@ The first step is enabling the IP address whitelist feature in the Linode Manage
 3.  Select the **Login & Authentication** tab.
 4.  In the *Account Security* section, select **Enabled** from the **Status** menu, as shown below.
 
-    [![Enabling the IP address whitelist feature.](1294-2f-whitelist-1.png)](1294-2f-whitelist-1.png)
+    ![Enabling the IP address whitelist feature.](1294-2f-whitelist-1.png)
 
 5.  Click **Save security setting**. The IP address whitelist feature will be enabled.
 6.  In the *Account Security* section, select the **Edit Whitelist** link to add your IP address, as shown below.
 
-    [![Enabling the IP address whitelist feature.](1295-2f-whitelist-2.png)](1295-2f-whitelist-2.png)
+    ![Enabling the IP address whitelist feature.](1295-2f-whitelist-2.png)
 
 7.  Enter your IP address and netmask, and then click **Add IP**. You can add as many IP addresses as you want.
 
@@ -186,7 +186,7 @@ You can disable the IP address whitelist feature at any time. Here's how:
 4.  Select the **Login & Authentication** tab.
 5.  In the *Account Security* section, select **Disabled** from the **Status** menu, as shown below.
 
-    [![Disabling the IP address whitelist feature.](1296-2f-whitelist-3.png)](1296-2f-whitelist-3.png)
+    ![Disabling the IP address whitelist feature.](1296-2f-whitelist-3.png)
 
 6.  Click **Save security setting**.
 
@@ -210,7 +210,7 @@ You can enable and disable event notifications sent via email in the Linode Mana
 3.  Select the **Settings** tab.
 4.  In the *Notifications* section, toggle **Toggle Event Email Notifications**, as shown below.
 
-    [![Toggling the Events Email Notification.](1297-2f-events-1.png)](1297-2f-events-1.png)
+    ![Toggling the Events Email Notification.](1297-2f-events-1.png)
 
 If the events email notification was enabled before you clicked the button, it is now disabled, and vice versa.
 
@@ -224,7 +224,7 @@ The event notifications for your Linode Manager account are also available as an
 4.  Select the **Notifications** tab.
 5.  The RSS feed URL is displayed in the *Linode Events RSS* section, as shown below.
 
-    [![Finding the RSS event notifications URL.](1298-2f-events-2.png)](1298-2f-events-2.png)
+    ![Finding the RSS event notifications URL.](1298-2f-events-2.png)
 
 6.  To regenerate the URL for the RSS feed, click **Generate a new RSS key**.
 

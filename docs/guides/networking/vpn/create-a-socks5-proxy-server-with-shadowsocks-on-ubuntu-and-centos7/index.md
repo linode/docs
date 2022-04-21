@@ -270,7 +270,7 @@ The second stage to a Shadowsocks setup is to install a client on the user's dev
 
 1.  Download the [ShadowsocksX-NG GUI Client for macOS](https://shadowsocks.org/en/download/clients.html):
 
-    [![Shadowsocks download page](shadowsocks_download.png "Shadowsocks download page")](https://shadowsocks.org/en/download/clients.html)
+    ![Shadowsocks download page](https://shadowsocks.org/en/download/clients.html)
 
 1.  Launch the application on your Mac. The app preferences is available from a new status menu bar icon. Select the *Server Preferences* menu item:
 

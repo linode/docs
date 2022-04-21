@@ -33,7 +33,7 @@ Your Linode plan comes with persistent storage to hold your most important asset
 
 A *configuration profile* is a boot loader for your Linode. It controls general boot settings, including the disk your Linode will start up from, the disks that will be mounted, and the kernel that will be used. You can create multiple configuration profiles and store them in the Linode Cloud Manager.
 
-[![Overview of disks and configuration profiles.](1740-disk-images1.png)](1740-disk-images1.png)
+![Overview of disks and configuration profiles.](1740-disk-images1.png)
 
 The Linode Cloud Manager automatically creates a disk and configuration profile when you create a Linode, but you can manually create as many as you want, provided you have the storage space available. The space for disks is allocated from your [Linode plan's](https://www.linode.com/pricing) storage size. You can allocate all available storage to one disk, or you can create multiple disks, as shown in the diagram above.
 
@@ -69,7 +69,7 @@ The Linode Cloud Manager makes it easy to create a new disk with a fresh Linux d
 1.  Click on the **Disks/Configs** tab.
 1.  Click on **Add a Disk**. The **Add Disk** form appears:
 
-    [![The 'Add Disk' menu.](disks-and-config-profiles-add-a-disk-image.png)](disks-and-config-profiles-add-a-disk-image.png)
+    ![The 'Add Disk' menu.](disks-and-config-profiles-add-a-disk-image.png)
 
 1.  Select **Create from Image**.
 1.  Provide a label for your disk.
@@ -91,7 +91,7 @@ Create a blank disk if you need detachable storage space or want to download and
 2.  Click on the **Disks/Configs** tab.
 3.  Click on **Add a Disk**. The **Add Disk** form appears:
 
-    [![The 'Add Disk' menu.](disks-and-config-profiles-add-blank-disk.png)](disks-and-config-profiles-add-blank-disk.png)
+    ![The 'Add Disk' menu.](disks-and-config-profiles-add-blank-disk.png)
 
 4.  Enter a name for the disk in the **Label** field.
 5.  By default, **Filesystem** is set to `ext4`. We recommend that you stick with this setting.
@@ -121,7 +121,7 @@ If a disk is created using custom partitions, resizing is not possible. If using
 5.  Click on the **Disks/Configs** tab.
 6.  Click the **more options ellipsis** for the disk you would like to resize, and select **Resize**. The **Resize Disk** form appears.
 
-    [![Resize a disk.](disks-and-config-profiles-resize-a-disk.png)](disks-and-config-profiles-resize-a-disk.png)
+    ![Resize a disk.](disks-and-config-profiles-resize-a-disk.png)
 
 7.  In the **Size** field, enter a different size for the disk in megabytes. The maximum size available is shown beneath the field.
 8.  Click **Resize**. A progress bar will appear at the top of the page.
@@ -178,7 +178,7 @@ Making a new configuration profile allows you to create a new and separate boot 
 1.  Click on the **Disks/Configs** tab.
 1.  Select the **Add a Configuration** link. The **Add Linode Configuration** form appears:
 
-    [![The Add Linode Configuration menu.](disks-and-config-profiles-add-a-config.png)](disks-and-config-profiles-add-a-config.png)
+    ![The Add Linode Configuration menu.](disks-and-config-profiles-add-a-config.png)
 
 1.  Enter a descriptive name for the configuration profile in the **Label** field. This name appears on the Linode's detail page and will help you differentiate it from other configuration profiles.
 1.  You can enter comments or notes about this configuration profile in the **Comments** field.
@@ -264,32 +264,32 @@ We recommend that you power off your Linode first, and keep it powered off until
 
     Click the **Configuration Profiles** tab to view and select your configuration profiles. As you make selections you will see them appear on **Selected** panel. If you select a configuration profile, all of the disks associated with that profile will automatically be selected.
 
-    [![Select a Configuration Profile to Clone](disks-and-config-select-profile.png)](disks-and-config-select-profile.png)
+    ![Select a Configuration Profile to Clone](disks-and-config-select-profile.png)
 
     Click the **Disks** tab to see and select your disks. As you make selections you will see them appear on the right panel below the word **Selected**.
 
-    [![Select a Disk to Clone](disks-and-config-select-disks.png)](disks-and-config-select-disks.png)
+    ![Select a Disk to Clone](disks-and-config-select-disks.png)
 
     If you already have a configuration profile selected, the disks associated with that profile will be pre-selected when viewing the Disks tab.
 
-    [![Selecting a Configuration Profile Selects All Disks](disks-and-config-profile-selects-all.png)](disks-and-config-profile-selects-all.png)
+    ![Selecting a Configuration Profile Selects All Disks](disks-and-config-profile-selects-all.png)
 
 1.  Select the destination Linode for your clone using the **Destination** dropdown menu. If you're cloning any configuration profiles, you cannot select the current Linode as a destination, but any other Linode on your account will be available as an option. If you're cloning only a disk or disks, you can select both the current Linode or any other Linode on your account.
 
-    [![Select a Destination Linode](disks-and-config-select-linode.png)](disks-and-config-select-linode.png)
+    ![Select a Destination Linode](disks-and-config-select-linode.png)
 
 1.  Click the **Clone** button to begin the cloning process.
-    [![Click the Clone Button](disks-and-config-clone-button.png)](disks-and-config-clone-button.png)
+    ![Click the Clone Button](disks-and-config-clone-button.png)
 
     If your **Destination** Linode is not large enough for your clone, you will see a warning and be unable to continue until the Linode has the required space available.
-    [![Size Error Message](disks-and-config-size-error.png)](disks-and-config-size-error.png)
+    ![Size Error Message](disks-and-config-size-error.png)
 
     {{< note >}}
 If you need to make room on your destination Linode you can [resize it to a larger plan](/docs/guides/resizing-a-linode/), [resize your disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to a smaller size, or [delete disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#removing-a-disk) to free up available space. If you decide to resize your Linode to a larger plan, be sure to uncheck the box that automatically resizes your disks or they will expand to fill up the extra space that you are trying to create.
 {{< /note >}}
 
 1.  Once the cloning process begins, you are returned to the **Disks/Configs** tab and a progress bar appears at the top of the screen.
-    [![Copying Progress Bar](disks-and-config-status-bar.png)](disks-and-config-status-bar.png)
+    ![Copying Progress Bar](disks-and-config-status-bar.png)
 
 1.  When the cloning process is complete, your new disk or configuration appears in the Linode's **Disks/Configs** tab.
 
