@@ -18,9 +18,7 @@ h1_title: Changing Your Email Address
 aliases: ['/quick-answers/linode-platform/how-to-change-your-email/']
 ---
 
-Changing your account's email address is easy and can be done two different ways.
-
-## From the Cloud Manager
+## Changing Billing Email From the Cloud Manager
 
 1.  Log in to the [Cloud Manager](http://cloud.linode.com).
 
@@ -37,6 +35,31 @@ Changing your account's email address is easy and can be done two different ways
 1.  Click the **Save** button to complete the change.
 
     ![Click to Save a New Email](linode-demo-email-save.png "Click to Save a New Email")
+
+## Changing Account Email from the Cloud Manager
+
+Use the **Users & Grants** page to modify the email address associated with a user account. The email addresses listed on this page receive IP whitelist warnings, password reset messages, and support tickets for services that their associated users have permission to access. Users with limited account access can also receive invoices and receipts if granted access to that information.
+
+{{< note >}}
+Only full account access users can receive threshold notification emails.
+{{</ note >}}
+
+Here's how to change a user's email from the **Users & Grants** page:
+
+1.  Click the **Account** link in the sidebar.
+1.  Click the **Users & Grants** tab.
+1.  Click the **User Profile** link for the desired user.
+1.  Enter the updated email address in the **Email** field.
+
+    ![Modify the email address associated with your user account](accounts-my-profile-change-email.png "Modify the email address associated with your user account")
+
+1.  Click **Save**.
+
+The user's email address is now updated.
+
+{{< note >}}
+If you do not have full account access, you can view your user profile settings and update your email address by clicking on your username at the top of the Cloud Manager screen and selecting **Display**.
+{{</ note >}}
 
 ## Using the API
 
