@@ -119,7 +119,7 @@ While switching to GRUB2 is usually an easy seamless change, there are some frin
 
 ### Asynchronous SCSI Scans
 
-At the time of this writing, if you wish to switch from a Linode kernel to GRUB2, there is a known issue related to Asynchronous SCSI scans that can in some cases cause disks to be created with the wrong address. For example, a disk that may be created as a device to be addressed to `/dev/sda` may instead appear on `/dev/sdb`. This issue can most commonly be identified with an error messsage that is the same or similar to the following when the boot device is set to `/dev/sda`:
+At the time of this writing, if you wish to switch from a Linode kernel to GRUB2, there is a known issue related to Asynchronous SCSI scans that can in some cases cause disks to be created with the wrong address. For example, a disk that may be created as a device to be addressed to `/dev/sda` may instead appear on `/dev/sdb`. This issue can most commonly be identified with an error message that is the same or similar to the following when the boot device is set to `/dev/sda`:
 
   `Failed to mount /dev/sda as root file system`
 
