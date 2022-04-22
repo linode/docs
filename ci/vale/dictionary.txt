@@ -1579,6 +1579,7 @@ pyspark
 pytest
 python3
 pythonic
+qemu
 qmail
 qmgr
 quadro
