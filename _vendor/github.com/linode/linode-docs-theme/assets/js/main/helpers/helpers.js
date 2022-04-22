@@ -135,8 +135,15 @@ export function getCurrentLang() {
 	return JSON.parse(localStorage.getItem('_x_currentLang'));
 }
 
+
+const validLangs = ['en', 'es'];
+
 export function getCurrentLangFromLocation() {
-	return new URLSearchParams(window.location.search).get('lang');
+	let lang = new URLSearchParams(window.location.search).get('lang');
+	if (validLangs.includes(lang)) {
+		return lang;
+	}
+	return ""
 }
 
 export function isIterable(obj) {
