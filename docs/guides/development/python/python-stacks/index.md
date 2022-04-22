@@ -16,10 +16,10 @@ contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
-- '[Python Documentation: Using Lists as Stacks](https://docs.python.org/3/tutorial/datastructures.html#using-lists-as-stacks)'
+- '[Python Documentation: More on Lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)'
 - '[GeeksforGeeks: Stack in Python](https://www.geeksforgeeks.org/stack-in-python/)'
 - '[Real Python: How to Implement a Python Stack](https://realpython.com/how-to-implement-python-stack/)'
-- '[Programniz: Stack Data Structure](https://www.programiz.com/dsa/stack)'
+- '[Programiz: Stack Data Structure](https://www.programiz.com/dsa/stack)'
 - '[Tutorials Point: Python Stack](https://www.tutorialspoint.com/python_data_structure/python_stack.htm)'
 ---
 
@@ -29,7 +29,7 @@ In this tutorial, learn more about what makes a stack data structure and about P
 
 ## What Is a Stack Data Structure?
 
-The stack data structure consists of a linear collection. The main distinguishing feature of a stack, however, is how data is stored and removed. Stacks use last-in-first-out (LIFO) approach, where items are retrieved (and removed) from newest to oldest.
+The stack data structure consists of a linear collection. The main distinguishing feature of a stack, however, is how data is stored and removed. Stacks use a last-in-first-out (LIFO) approach, where items are "popped" (retrieved and simultaneously removed) from newest to oldest.
 
 An easy way to think about the stack data structure is through the undo list in an editor. Typing in an editor adds a new action to a stack. When you then choose the "undo" action, the last item added to that stack gets removed from the stack. The action that item represents then gets undone.
 
@@ -41,11 +41,11 @@ The diagram below shows this in action, using a character-by-character undo stac
 
 You can see in the example above the two main stack operations: push and pop. These essentially mean "add" and "remove," respectively. However, the specific terms reflect that these actions have a bit more to them when it comes to stacks.
 
-- The *push* operation involves adding a new item to a stack. Push places the item at the end of the stack. This is important for stacks to work effectively, as newer items need to be consistently be removed first, before older items.
+- The *push* operation involves adding a new item to a stack. Push places the item at the end of the stack. This is important for stacks to work effectively, as newer items need to be consistently removed first, before older items.
 
 - The *pop* operation removes an item from the end of the stack. At the same time, importantly, pop returns the item removed. This lets you do something with each item as it gets removed.
 
-The last part with the pop operation is important for most stack implementations. The fact that pop returns the removed item lets you immediately start working with it. In the case of the undo stack example above, pop removes the "Type 'l'" item from the stack. But pop also returns that item so that we know what action to undo.
+The last part with the pop operation is important for most stack implementations. The fact that pop returns the removed item lets you immediately start working with it. In the case of the undo stack example above, pop removes the "Type 'l'" item from the stack. But pop also returns that item so that the undo function can do something with it.
 
 ## How to Implement a Stack in Python
 
@@ -93,6 +93,8 @@ Using the list type for Python stacks has two drawbacks:
 
 - Python includes numerous methods for lists which, if used, would undermine your stacks' proper functioning. Take the `insert` method. It allows you to add an item to a list at a specific index. Using this method on a list operating as a stack could cause significant problems.
 
+That said, lists can still support Python stacks well for most needs.
+
 ### Using collections.deque
 
 Python installations come with a `collections` module by default. This module includes `deque`, which is an excellent tool for creating and managing stacks in Python.
@@ -122,13 +124,13 @@ The stack now contains: First Item, Second Item.
 The popped item is: Third Item.
 {{< /output >}}
 
-This example only differs from the list example in the first two lines — the requirement to import the `deque` module and the use of the `deque` function to initiate the stack.
+This example only differs from the list example in the first two lines — the requirement to import `deque` and the use of the `deque` function to initiate the stack.
 
-What sets the `deque` module apart is its efficiency specifically for the purposes of working with the stack data structure. The way `deque` stores items tends to make it better and more consistently performing for stack operations. It also avoids the index-related list methods, which can disturb how a stack functions. That is especially nice to have in a team environment, where hard restrictions can ensure consistent usage across developers.
+What really sets the `deque` implementation apart is its efficiency specifically for the purpose of working with the stack data structure. The way `deque` stores items tends to make it better and more consistently performing for stack operations. It also avoids the index-related list methods, which can disturb how a stack functions. That is especially nice to have in a team environment, where hard restrictions can help ensure consistent usage across developers.
 
 ### Using queue.LifoQueue
 
-Another module that comes with Python installations is `queue`, which includes `LifoQueue` for thread-safe stacks. Using `LifoQueue` follows the same structure as using `deque`. However, note that `LifoQueue` uses `put` instead of `append` and `get` instead of `pop`.
+Another module that comes with Python installations is `queue`, which includes `LifoQueue` for thread-safe stacks. Use of the `LifoQueue` follows the same structure as seen with `deque` above. However, note that `LifoQueue` uses `put` instead of `append` and `get` instead of `pop`.
 
 ``` python
 # Importing LifoQue.
