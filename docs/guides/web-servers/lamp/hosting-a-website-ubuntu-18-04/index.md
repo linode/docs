@@ -8,7 +8,7 @@ og_description: 'In this guide, you will learn how to set up a LAMP (Linux, Apac
 keywords: ["linode guide", "hosting a website", "website", "linode quickstart guide"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/hosting-a-website/','/hosting-website/','/websites//','/web-servers/lamp//']
+aliases: ['/websites/hosting-a-website/','/hosting-website/','/websites//','/web-servers/lamp//', /websites/hosting-a-website-ubuntu-18-04/]
 modified: 2021-08-16
 modified_by:
   name: Linode
