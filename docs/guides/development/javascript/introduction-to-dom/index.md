@@ -193,6 +193,8 @@ As a result, the DOM is updated and the text, `item`, contained within the `<li>
         </body>
     </html>
 
+See our guide [Traversing the Document Object Model with JavaScript](/docs/guides/traversing-the-dom), to learn about other built-in document object methods.
+
 ## Conclusion
 
 The DOM provides an interface to an HTML web page. This enables you to manipulate the structure and content of a web page using scripting languages, like JavaScript. This guide introduced you to the DOM and demonstrated how JavaScript is used to add, modify, and remove HTML elements from a web page.
