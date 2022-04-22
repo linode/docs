@@ -11,7 +11,7 @@ const startLevelRegularPages = 2;
 
 // The main search result have some sections that does not fit into the left side explorer.
 const shouldSkipSection = function(lvl0) {
-	return lvl0.endsWith('-branches') || lvl0 === 'taxonomies';
+	return lvl0.endsWith('-branches') || lvl0 === 'taxonomies' || lvl0 === 'bundles';
 };
 
 // Reports whether branch1 is the same or below branch2.

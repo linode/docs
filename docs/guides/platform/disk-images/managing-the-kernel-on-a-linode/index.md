@@ -113,13 +113,35 @@ Follow these steps if the Linode is using an upstream kernel (the default for mo
 
 1.  Reboot the Linode.
 
-## Considerations When Switching From a Linode Kernel to GRUB 2
+## Considerations When Switching From a Linode Kernel to GRUB2
 
-If you wish to switch from a Linode kernel to GRUB 2, there are a few issues you may encounter in older systems created prior to August 2018.
+While switching to GRUB2 is usually an easy seamless change, there are some fringe issues that can effect specific configurations.
+
+### Asynchronous SCSI Scans
+
+At the time of this writing, if you wish to switch from a Linode kernel to GRUB2, there is a known issue related to Asynchronous SCSI scans that can in some cases cause disks to be created with the wrong address. For example, a disk that may be created as a device to be addressed to `/dev/sda` may instead appear on `/dev/sdb`. This issue can most commonly be identified with an error message that is the same or similar to the following when the boot device is set to `/dev/sda`:
+
+  `Failed to mount /dev/sda as root file system`
+
+Users can generally resolve this issue by either using the latest upstream kernel instead, or by adding a kernel parameter to the grub configuration file, usually found in `/etc/default/grub` to disable the asynchronous scanning which causes the issue. To do this, the following line will need to be added to the end of the grub configuration file:
+
+{{< file "/etc/default/grub" >}}
+scsi_mod.scan=sync
+{{< /file >}}
+
+Once the file has been edited, GRUB2 will need to be manually restarted. While this command will vary between Distros, using the following command will complete this task for **Debian** and **Ubuntu**:
+
+    update-grub
+
+Users that rely on **CentOS** or other **RHEL** based operating systems should instead enter the following:
+
+    sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+Once completed, the disks should be read by GRUB2 correctly.
 
 ### SELinux
 
-CentOS 7 and Fedora ship with [SELinux](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) running in enforcing mode by default. When switching from the Linode kernel to the upstream kernel, SELinux may need to relabel your filesystem at boot. When the relabeling completes, the Linode will shut down. If you have [Lassie](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) enabled, the Linode will automatically boot back up following the shut down. If you do not have Lassie enabled, you will need to manually reboot from the Cloud Manager.
+In older systems created prior to August 2018, CentOS 7 and Fedora ship with [SELinux](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) running in enforcing mode by default. When switching from the Linode kernel to the upstream kernel, SELinux may need to relabel your filesystem at boot. When the relabeling completes, the Linode will shut down. If you have [Lassie](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) enabled, the Linode will automatically boot back up following the shut down. If you do not have Lassie enabled, you will need to manually reboot from the Cloud Manager.
 
 ![SELinux filesystem relabel](selinux-filesystem-relabel.png "SELinux filesystem relabel")
 
