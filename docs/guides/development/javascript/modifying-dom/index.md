@@ -79,8 +79,8 @@ The `document` object comes with several methods for creating new nodes, includi
 Here is a breakdown of how you should use the `createElement` method. Keep reading after to see a working example:
 
 - Use the `createElement` method on the `document` object to create a new element. The element starts out blank, with only the tag name provided.
-- Use properties and methods on the new element node to add content. You can learn more about these in the [How to Modify Element Attributes](/docs/guides/modifying-dom/#how-to-modify-element-attributes) section below.
-- Use the `appendChild` or similar method on the intended parent node to add the new element to the DOM. You can learn more about the `appendChild` method and its similar methods in the [Inserting Element Nodes](/docs/guides/modifying-dom/#inserting-element-nodes) section below.
+- Use properties and methods on the new element node to add content. You can learn more about these in the [How to Modify Element Attributes](/docs/guides/making-changes-to-the-dom-with-javascript/#how-to-modify-element-attributes) section below.
+- Use the `appendChild` or similar method on the intended parent node to add the new element to the DOM. You can learn more about the `appendChild` method and its similar methods in the [Inserting Element Nodes](/docs/guides/making-changes-to-the-dom-with-javascript/#inserting-element-nodes) section below.
 
 To demonstrate, the following are a series of JavaScript commands you can run on the [example page](example-page.html). These commands create a new `li` element and a new `span` element. After adding some content to these new elements, the commands append the elements as content for the existing `ul` element.
 
