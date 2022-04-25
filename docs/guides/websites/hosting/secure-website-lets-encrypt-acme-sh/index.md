@@ -33,6 +33,8 @@ If you use Linode for your website's DNS, you can use acme.sh to obtain both sin
 
 1. Deploy a Linode by following the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides.
 
+1. Ensure that either NGINX or the Apache web server is installed and pre-configured on your distro by following our [web server documentation](https://www.linode.com/docs/guides/web-servers/). Ensure that port 443 is open on your firewall to allow for SSL/TLS resolution.
+
 1. Decide which system user you want to issue and renew your certificates and [connect to your Linode as this user via SSH](/docs/guides/getting-started#connect-to-your-linode-via-ssh). If you want to automatically restart a web server, or write certificates to a restricted folder, you likely want to install acme.sh under root.
 
 ## Install acme.sh
@@ -84,6 +86,11 @@ no crontab for root
 https://github.com/acmesh-official/acme.sh
 v2.8.7
 {{< /output >}}
+
+1. Finally, enter the following command to add an email address to be used with acme.sh to register your certificates with a Certificate Authority, replacing the `<email_address>` field with the e-mail address you will be registering with:
+
+        acme.sh --register-account -m <email_address>
+
 
 ## Create an API token
 
