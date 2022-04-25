@@ -55,16 +55,16 @@ In this section you install your custom distro onto a raw disk, with the *direct
 
 1. In the Resize menu uncheck the **Auto Resize Disk** option at the bottom of the screen.
 
-1.  Next, exit the resize screen and click the **Storage** tab and **Resize** the main disk so you have some room for new disks; you want to free 2100 MB for the disk we used in this example.
-
-    {{< note >}}
-You may need to resize your disk to a size slightly larger than 2100 MB. You can always check how much space your disk is actively using and would therefore require by entering the `df -h` command when it's mounted.
-{{< /note >}}
+1.  Next, exit the resize screen and click the **Storage** tab and click **Add a Disk** you want to create two unformatted disks.
 
 1.  [Create two raw, unformatted disk images](/docs/guides/disks-and-storage/#creating-a-disk) from the Linode's Dashboard:
 
     * A disk labeled **Installer**. The size of this disk depends upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk is 100MB in size, giving us plenty of room for the Debian network installer.
     * A disk labeled **Boot**. If you *don't* plan to complete the next section on Linode Manager compatibility, this can take up the rest of the free space available on your Linode.
+
+        {{< note >}}
+        You can always check how much space your disk is actively using and would therefore require by entering the `df -h` command when it's mounted.
+       {{< /note >}}
 
     {{< caution >}}
 If you intend to continue to the next section on [Linode Manager Compatibility](#linode-manager-compatibility), you should make your boot disk no larger than necessary - in this example we'll install Debian to a 2000MB disk.
