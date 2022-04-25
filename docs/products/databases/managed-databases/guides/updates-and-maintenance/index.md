@@ -5,7 +5,7 @@ author:
 title: "Automatic Updates and Maintenance Windows"
 description: "Managed databases are automatically updated on a weekly or monthly basis. Learn how to manage these maintenance windows in the Cloud Manager"
 date: 2022-04-15
-modified: 2022-04-15
+modified: 2022-04-25
 ---
 
 As part of the Managed Database service, the database cluster is updated regularly. This includes security updates and patches for the underlying operating system. These updates occur on a user-configurable *maintenance window*. By default, the maintenance window is set to start *every week* on *Sunday* at *20:00 UTC* and lasts for 3 hours.
@@ -15,7 +15,7 @@ If your database cluster is configured with a single node, you will experience d
 {{</ caution >}}
 
 {{< note >}}
-Currently, these automatic updates do not include major releases for the database engine software (DBMS). To upgrade to a new major version (such as upgrading MySQL 8.0.26 to 9.0.0), consider deploying a new Managed Database with your preferred version. Then, once it's deployed, you can [migrate your database](/docs/products/databases/managed-databases/guides/migrate-mysql/).
+Currently, these automatic updates do not include minor releases for the database engine software (DBMS). To upgrade to a new minor version (such as upgrading MySQL 8.0.26 to 8.0.27), consider deploying a new Managed Database with your preferred version. Then, once it's deployed, you can [migrate your database](/docs/products/databases/managed-databases/guides/migrate-mysql/).
 {{</ note >}}
 
 ## View and Modify the Maintenance Window
