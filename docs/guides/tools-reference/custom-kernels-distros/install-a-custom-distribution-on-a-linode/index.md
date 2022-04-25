@@ -55,7 +55,7 @@ In this section you install your custom distro onto a raw disk, with the *direct
 
 1. In the Resize menu uncheck the **Auto Resize Disk** option at the bottom of the screen.
 
-1.  Next, exit the resize screen and click the **Storage** tab and click **Add a Disk** you want to create two unformatted disks.
+1.  Next, exit the resize screen and click the **Storage** tab and click **Add a Disk** to create two unformatted disks.
 
 1.  [Create two raw, unformatted disk images](/docs/guides/disks-and-storage/#creating-a-disk) from the Linode's Dashboard:
 
