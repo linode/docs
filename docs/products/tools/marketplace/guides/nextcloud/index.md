@@ -6,7 +6,7 @@ description: "This guide shows how you can deploy a NextCloud server to store im
 keywords: ['Nextcloud','omarketplace','file sharing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-11
-modified: 2022-03-08
+modified: 2022-04-26
 modified_by:
   name: Linode
 title: "Deploying Nextcloud through the Linode Marketplace"
