@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.120.0
+  version: 4.120.1
 
   title: Linode API
   description: |
@@ -3274,13 +3274,13 @@ paths:
 
         All Managed Databases include automatic, daily backups. Up to seven backups are automatically stored for each Managed Database, providing restore points for each day of the past week.
 
-        All Managed Databases include automatic patch updates.
+        All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed MySQL Database during configurable maintenance windows.
 
         * By default, the maintenance window is set to start *every week* on *Sunday* at *20:00 UTC* and lasts for 3 hours.
 
         * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
 
-        * Currently, these automatic updates do not include major releases for the database engine software (DBMS). To upgrade to a new major version (such as upgrading MySQL 8.0.26 to 9.0.0), consider deploying a new Managed Database with your preferred version. Then, once it's deployed, you can [migrate your database](/docs/products/databases/managed-databases/guides/migrate-mysql/).
+        * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then [migrate your databases](/docs/products/databases/managed-databases/guides/migrate-mysql/) from the original Managed Database cluster to the new one.
 
         * To modify update the maintenance window for a Database, use the **Managed MySQL Database Update** ([PUT /databases/mysql/instances/{instanceId}](/docs/api/databases/#managed-mysql-database-update)) command.
 
@@ -3459,13 +3459,13 @@ paths:
         * Entering an empty array (`[]`) blocks all connections (both public and private) to the Managed Database.
         * **Note**: Updates to the `allow_list` may take a short period of time to complete, making this command inappropriate for rapid successive updates to this property.
 
-        All Managed Databases include automatic patch updates. The maintenance window for these updates is configured with the Managed Database `updates` property.
+        All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed MySQL Database. The maintenance window for these updates is configured with the Managed Database's `updates` property.
 
         * By default, the maintenance window is set to start *every week* on *Sunday* at *20:00 UTC* and lasts for 3 hours.
 
         * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
 
-        * Currently, these automatic updates do not include major releases for the database engine software (DBMS). To upgrade to a new major version (such as upgrading MySQL 8.0.26 to 9.0.0), consider deploying a new Managed Database with your preferred version. Then, once it's deployed, you can [migrate your database](/docs/products/databases/managed-databases/guides/migrate-mysql/).
+        * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then [migrate your databases](/docs/products/databases/managed-databases/guides/migrate-mysql/) from the original Managed Database cluster to the new one.
 
         **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
         If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the
@@ -3968,7 +3968,7 @@ paths:
       x-linode-cli-action: mysql-patch
       x-linode-grant: unrestricted only
       description: |
-        Update the minor patch version of the Managed MySQL Database.
+        Apply security patches and updates to the underlying operating system of the Managed MySQL Database. This function runs during regular maintenance windows, which are configurable with the **Managed MySQL Database Update** ([PUT /databases/mysql/instances/{instanceId}](/docs/api/databases/#managed-mysql-database-update)) command.
 
         The Database must have an `active` status to perform this command.
 
@@ -3978,7 +3978,7 @@ paths:
 
         * If your database cluster is configured with a single node, you will experience downtime during this maintenance. Consider upgrading to a high availability plan to avoid any downtime due to maintenance.
 
-        * Currently, patching does not include major releases for the database engine software (DBMS). To patch to a new major version (such as upgrading MySQL 8.0.26 to 9.0.0), consider deploying a new Managed Database with your preferred version. Then, once it's deployed, you can [migrate your database](/docs/products/databases/managed-databases/guides/migrate-mysql/).
+        * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then [migrate your databases](/docs/products/databases/managed-databases/guides/migrate-mysql/) from the original Managed Database cluster to the new one.
 
         **Beta**: This endpoint is in **open** beta. During the beta period, Managed Databases will not incur any charges.
         If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of the

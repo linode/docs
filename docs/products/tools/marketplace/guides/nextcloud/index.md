@@ -6,7 +6,7 @@ description: "This guide shows how you can deploy a NextCloud server to store im
 keywords: ['Nextcloud','omarketplace','file sharing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-11
-modified: 2022-03-08
+modified: 2022-04-26
 modified_by:
   name: Linode
 title: "Deploying Nextcloud through the Linode Marketplace"
@@ -33,7 +33,7 @@ image: deploying_nextcloud_oca.png
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10
+- **Supported distributions:** Debian 11
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### NextCloud Options
@@ -44,8 +44,7 @@ image: deploying_nextcloud_oca.png
 - **MySQL user password** *(required)*: Your new MySQL user's password.
 - **The name of the MySQL database:** The name to assign to the Nextcloud instance's MySQL database. If no value is provided, the database is named `nextcloud`.
 - **The name of the MySQL user to create:** The name of a new MySQL user to create. If no value is provided, the user is named `nextcloud`.
-- **Admin email for the NextCLoud server:** The email address to use for the Nextcloud instance's admin user.
-- **Would you like to use a free Let's Encrypt SSL certificate? (Requires domain):** Enable a free [HTTPS CertBot SSL certificate](https://certbot.eff.org/) on the Nextcloud domain. If you do not provide a value, `no` is set by default.
+- **Admin email for the NextCloud server:** The email address to use for the Nextcloud instance's admin user.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 

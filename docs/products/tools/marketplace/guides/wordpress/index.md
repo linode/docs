@@ -7,7 +7,7 @@ keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress wit
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
-modified: 2022-03-29
+modified: 2022-04-26
 modified_by:
   name: Linode
 title: "Deploying WordPress through the Linode Marketplace"
@@ -32,7 +32,7 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 
 ## Configuration Options
 
-- **Supported distributions:**  Debian 10
+- **Supported distributions:**  Debian 11, Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used, though a minimum of a 4GB Dedicated CPU Compute Instance is recommended for production websites.
 
 ### WordPress Options
@@ -47,8 +47,6 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
-- **Would you like to be able to send password reset emails for WordPress?** Creates the required DNS records and configures the server so you can send emails from WordPress, such as for resetting a password.
-- **Would you like to use a free Let's Encrypt SSL certificate?** If you would like to use the free Let's Encrypt CA to generate TLS/SSL certificates, select *Yes*.
 
 ## Getting Started After Deployment
 
