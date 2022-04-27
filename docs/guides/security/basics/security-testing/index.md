@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-29
 modified_by:
   name: Linode
-title: "How to Perform Application Security Testing"
+title: "Application Security Testing Tools"
 h1_title: "Application Security Testing: Fundamentals and Best Practices"
 enable_h1: true
 contributor:
