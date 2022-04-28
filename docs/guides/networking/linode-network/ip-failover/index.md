@@ -7,7 +7,7 @@ description: "This guide discusses how to enable failover on a Linode Compute In
 keywords: ['IP failover','IP sharing','elastic IP']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-23
-modified: 2022-04-12
+modified: 2022-04-28
 modified_by:
   name: Linode
 title: "Configuring Failover on a Compute Instance"
@@ -33,7 +33,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | -- | -- | -- | -- |
 | Atlanta (Georgia, USA) | *Not supported* | - | 4 |
 | Dallas (Texas, USA) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 2 |
-| **Frankfurt (Germany)** | **New method (BGP)** | **lelastic** | 10 |
+| **Frankfurt (Germany)** | **New method (BGP)** | [lelastic](/docs/guides/ip-failover/#configure-failover) / [FRR](/docs/guides/ip-failover-bgp-frr/) | 10 |
 | Fremont (California, USA) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 3 |
 | London (United Kingdom) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 7 |
 | Mumbai (India) |  *Not supported* | - | 14 |
@@ -57,7 +57,7 @@ IP failover for VLAN IP addresses is supported within every data center where VL
 
 ## Configure Failover
 
-The instructions within this guide enable you to configure failover using IP Sharing and the [lelastic](https://github.com/linode/lelastic) tool, a Linode provided tool based on GoBGP that automates much of the configuration. If you prefer to manually configure failover software, follow the [Configuring IP Failover over BPG using FRR](/docs/guides/ip-failover-bgp-frr/) guide or use any BGP client that you wish.
+The instructions within this guide enable you to configure failover using IP Sharing and the [lelastic](https://github.com/linode/lelastic) tool, a Linode provided tool based on GoBGP that automates much of the configuration. While lelastic enables many basic implementations of failover, you may want to consider using FRR or any other BGP client if your implementation is more advanced. See[Configuring IP Failover over BPG using FRR](/docs/guides/ip-failover-bgp-frr/).
 
 {{< note >}}
 If your data center supports the legacy method (ARP), use the [Configuring IP Failover using keepalived](/docs/guides/ip-failover-keepalived/) guide instead. That guide should also be used when setting up failover for VLAN IP addresses.
