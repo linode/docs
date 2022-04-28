@@ -21,20 +21,22 @@ external_resources:
 - '[MDN Web Docs: Document](https://developer.mozilla.org/en-US/docs/Web/API/Document)'
 ---
 
-The Document Object Model (DOM) gives a representation of a web page that allows you to navigate and manipulate the display using JavaScript.
+The Document Object Model (DOM) is a programming interface for HTML web pages. Scripting languages, like JavaScript, can access and manipulate the DOM to alter the display of a web page.
 
-You can learn more about navigating the DOM in the previous guide in this series, **How to Navigate and Access Elements of the DOM with JavaScript**. And you can learn more about the DOM generally through the first guide in this series, **Introduction to the DOM**.
+
 
 In this guide, you can go a step further with that knowledge, learning the tools JavaScript offers for modifying the DOM. It shows you how to manipulate the DOM, from creating new elements to changing their attributes. With the tools detailed here, you are well on your way to creating dynamic web pages.
 
+You can learn more about navigating the DOM in the previous guide in this series, **How to Navigate and Access Elements of the DOM with JavaScript**. And you can learn more about the DOM generally through the first guide in this series, **Introduction to the DOM**.
+
 ## Before You Begin
 
-The examples in this guide use a web browser's developer tools to view the DOM and interact with a JavaScript console. You can follow along using your browser:
+The examples in this guide use a web browser’s developer tools to view the DOM and interact with a JavaScript console. To get the most out of the information in this guide, follow along in your own Chrome or Firefox browser.
 
-- On Chrome, refer to Google's [Open Chrome DevTools](https://developer.chrome.com/docs/devtools/open/#elements) documentation.
-- On Firefox, refer to Mozilla's [Open the Inspector](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Open_the_Inspector) documentation.
+- On Chrome, refer to Google's [Open Chrome DevTools](https://developer.chrome.com/docs/devtools/open/#elements) documentation to learn how to access their developer tools.
+- On Firefox, refer to Mozilla's [Open the Inspector](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Open_the_Inspector) documentation to learn how to access their developer tools.
 
-Most of this guide's examples are based on an example web page resulting from the following HTML source code. You can most easily follow along with the guide's examples by visiting the [the example page](example-page.html) in your web browser and using your browser's developer tools on it.
+Most of this guide’s examples are based on an example web page created from the HTML source code displayed below. To follow along with this guide’s example, [view the rendered example web page](example-page.html) in your browser.
 
 {{< file "example-page.html" html >}}
 <!DOCTYPE html>
@@ -59,30 +61,30 @@ Most of this guide's examples are based on an example web page resulting from th
 
 ## How to Create and Remove DOM Elements
 
-One of the principal means JavaScript has in making web pages dynamic is through changing the elements that make up the DOM. Doing so lets you both create and move parts of the display programmatically.
+To make a web page dynamic, you use JavaScript to alter the elements that make up the web page's DOM. Typically, the DOM is altered by creating new HTML elements or moving specific elements or attributes, programmatically.
 
-Below, see how you can begin using JavaScript to create and remove DOM elements. You can also find a section showing the various methods at your disposal for controlling how new elements are added to the DOM.
+The sections below show you how to use JavaScript to create and remove elements from the DOM. You also learn how to control the way in which new elements are added to the DOM using a few specialized JavaScript methods.
 
 ### Creating Element Nodes
 
-Two approaches are available for creating nodes, including elements:
+The DOM represents the elements and content of an HTML document as nodes and objects. You can create element nodes in the following two ways:
 
-- You can use one of the designated methods on the `document` object, together with a method to append the new node
-- You can change the value of the `innerHTML` property on the parent node
+- Using a `document` object method to create the element and to append the new node
+- Changing the value of the `innerHTML` property on a parent node
 
-Which approach you should use depends on your needs. Read on to see how these approaches work and learn more about when you should use them.
+Depending on what you are trying to achieve, you might choose one approach over another. The following sections provide examples on each approach and information on when to use them.
 
-#### Using the createElement Method
+#### Using the createElement() Method
 
-The `document` object comes with several methods for creating new nodes, including the `createElement` method. This method is especially convenient when you want to create multiple elements or are working with numerous elements programmatically.
+The `document` object has several built-in methods for creating new nodes, like the `createElement()` method. This method is especially convenient when you want to create multiple elements or are working programmatically with numerous elements.
 
-Here is a breakdown of how you should use the `createElement` method. Keep reading after to see a working example:
+The list below includes an overview of the steps typically used when creating a new element using JavaScript.
 
-- Use the `createElement` method on the `document` object to create a new element. The element starts out blank, with only the tag name provided.
-- Use properties and methods on the new element node to add content. You can learn more about these in the [How to Modify Element Attributes](/docs/guides/making-changes-to-the-dom-with-javascript/#how-to-modify-element-attributes) section below.
-- Use the `appendChild` or similar method on the intended parent node to add the new element to the DOM. You can learn more about the `appendChild` method and its similar methods in the [Inserting Element Nodes](/docs/guides/making-changes-to-the-dom-with-javascript/#inserting-element-nodes) section below.
+- The `createElement()` method accepts the tag name of the element to create as a parameter. It creates the specified tag without any content contained within the tag.
+- Once you've created a new element, you have access to properties or additional methods of the element object that can be used to style the element, populate it with text, and achieve many other enhancements. The [How to Modify Element Attributes](/docs/guides/making-changes-to-the-dom-with-javascript/#how-to-modify-element-attributes) discussed these changes in great depth.
+- When your new element looks and behaves the way you intend, you can add the element node to the DOM's target parent node. For example, you can use the `appendChild()` method to achieve this. The [Inserting Element Nodes](/docs/guides/making-changes-to-the-dom-with-javascript/#inserting-element-nodes) discussed the `appendChild()` and other methods you can use to insert an element into the DOM.
 
-To demonstrate, the following are a series of JavaScript commands you can run on the [example page](example-page.html). These commands create a new `li` element and a new `span` element. After adding some content to these new elements, the commands append the elements as content for the existing `ul` element.
+The example below demonstrates the typical steps used to create and add a new element to the DOM using the `createElement()` method. The steps include a series of JavaScript code that you can run on the [example page](example-page.html) using your browser's developer console. The JavaScript code creates a new `li` element and a new `span` element. After adding some styling and text to these new elements, the commands append the elements as children of the existing `ul` element.
 
     // Creates the new span element, assigns its class, sets its
     // color, and finally gives the element some text content
@@ -95,28 +97,29 @@ To demonstrate, the following are a series of JavaScript commands you can run on
     // and adds some additional text content.
     const new_li_element = document.createElement("li");
     new_li_element.appendChild(new_span_element);
-    new_li_element.append(" item");
+    new_li_element.append("item");
 
     // Appends the new li element to the existing ul element,
     // which adds the new elements to the visible DOM.
     const ul_element = document.getElementsByTagName("ul")[0]
     ul_element.appendChild(new_li_element);
 
-The result of executing the above JavaScript commands on the [example page](example-page.html) looks like the following:
+The result of executing the JavaScript on the [example page](example-page.html) resembles the following:
 
 ![Elements added to the example page](dom-add-elements.png)
 
 #### Using the innerHTML Property
 
-You can also add elements to the DOM through the `innerHTML` property. This property, which is available on the `document` object and each element object, contains an HTML DOM representation.
+You can use the `innerHTML` property to add HTML elements to the DOM. This property is available on the `document` object model and any element object that is a part of the DOM.
 
-In fact, the `innerHTML` property just contains a string representation of the DOM's HTML. This means that you can overwrite existing content, create new content wholesale, or manipulate content using string manipulation.
+The `innerHTML` property stores a string representation of the DOM's HTML. This means that you can use this property to overwrite existing content, create new content wholesale, or manipulate content using string manipulation.
 
 However, the `innerHTML` property does not give you convenient means for modifying child elements and nodes, since it represents everything in one, often long, string.
 
-So, the `innerHTML` property is useful when you need to make large content changes, as in numerous child elements with attributes and content, in a single sweep. It is not as useful when you want to create child elements systematically, or when you want to do so in an iterative loop.
+For this reason, the `innerHTML` property is useful when you need to make large and sweeping changes to several elements. It is not as useful when you want to create child elements systematically, or when you want to do so in an iterative loop.
 
-Following are a series of JavaScript commands that you can use on the [example page](example-page.html). These commands create a new `ul` element and then `li` elements beneath it, each with its content.
+The example below demonstrates the typical steps used to create and add a new element to the DOM using the `innerHTML` property.
+Following are a series of JavaScript commands that you can use on the [example page](example-page.html). The steps include a series of JavaScript code that you can run on the [example page](example-page.html) using your browser's developer console. The JavaScript creates a new `ul` element and child `li` elements, each with its own containing text.
 
     // Fetches the second-div element, then extends its innerHTML with a new
     // ul element. Observe that this requires rewriting the innerHTML.
