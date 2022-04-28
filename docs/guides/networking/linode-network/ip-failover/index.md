@@ -57,7 +57,7 @@ IP failover for VLAN IP addresses is supported within every data center where VL
 
 ## Configure Failover
 
-The instructions within this guide enable you to configure failover using IP Sharing and the [lelastic](https://github.com/linode/lelastic) tool, a Linode provided tool based on GoBGP that automates much of the configuration. While lelastic enables many basic implementations of failover, you may want to consider using FRR or any other BGP client if your implementation is more advanced. See[Configuring IP Failover over BPG using FRR](/docs/guides/ip-failover-bgp-frr/).
+The instructions within this guide enable you to configure failover using IP Sharing and the [lelastic](https://github.com/linode/lelastic) tool, a Linode provided tool based on GoBGP that automates much of the configuration. While lelastic enables many basic implementations of failover, you may want to consider using FRR or any other BGP client if your implementation is more advanced. See [Configuring IP Failover over BPG using FRR](/docs/guides/ip-failover-bgp-frr/).
 
 {{< note >}}
 If your data center supports the legacy method (ARP), use the [Configuring IP Failover using keepalived](/docs/guides/ip-failover-keepalived/) guide instead. That guide should also be used when setting up failover for VLAN IP addresses.
@@ -150,7 +150,7 @@ iface lo [protocol] static
 
 ### Install and Configure Lelastic
 
-Next, we need to configure the failover software on *each* Compute Instance. For this, the lelastic utility is used.
+Next, we need to configure the failover software on *each* Compute Instance. For this, the lelastic utility is used. For more control or for advanced use cases, follow the instructions within the [Configuring IP Failover over BPG using FRR](/docs/guides/ip-failover-bgp-frr/) guide instead of using lelastic.
 
 1.  Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 
