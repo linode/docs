@@ -1,9 +1,10 @@
 ---
-slug: vsftpd-on-ubuntu-installation
+slug: vsftpd-on-ubuntu-2004-installation-and-configuration
 author:
   name: Cameron Laird
-description: 'Learn to install a VSFTPD server on Ubuntu 20.04 for secure FTP file transfers. '
+description: 'Learn to install a VSFTPD server on Ubuntu 20.04 for secure FTP file transfers.'
 keywords: ['vsftpd','vstpd conf','vsftpd ubuntu']
+tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-14
 modified_by:
@@ -19,7 +20,7 @@ external_resources:
 - '[Link Title 2](http://www.example.net)'
 ---
 
-This guide teaches you what VSFTPD is, and its advantages, and demonstrates how to install VSFTPD on Ubuntu 20.04. It also shows you the basic configurations needed to securely connect to a Linode server via VSFTPD. By the end of this guide, you connect to a fully functioning VSFTPD Ubuntu Linode server, and you can read from, and write files to the server.
+This guide teaches you what VSFTPD is, and its advantages, and demonstrates how to install VSFTPD on Ubuntu 20.04. It also shows you the basic configurations needed to securely connect to a Linode server via VSFTPD. By the end of this guide, you connect to a fully functioning VSFTPD Ubuntu Linode server. You also learn to read from, and write files to the server.
 
 ## What is VSFTPD?
 
@@ -96,7 +97,7 @@ testfile.txt
 
 ## How to Restart VSFTPD
 
-Restart the service with the `systemctl restart vsftpd` command. This command stops, then starts the service. Restarting is important because each time VSFTPD starts, it configures itself using its current configuration files. When you want to update VSFTPD's configuration, the way to do so is a two-step process:
+Restart the service with the `systemctl restart vsftpd` command. This command stops then starts the service. Restarting is important because each time VSFTPD starts, it configures itself using its current configuration files. When you want to update VSFTPD's configuration, the way to do so is a two-step process:
 
 1. Edit the configuration file; and
 
@@ -194,7 +195,3 @@ The list below contains some additional configurations you may consider dependin
 - Does your FTP use case have a role for anonymous access?
 
 Whatever the answers to these questions, their implementation involves the same configuration and connection techniques used in this guide.
-
-
-
-
