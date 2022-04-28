@@ -35,7 +35,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Dallas (Texas, USA) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 2 |
 | **Frankfurt (Germany)** | **New method (BGP)** | [lelastic](/docs/guides/ip-failover/#configure-failover) / [FRR](/docs/guides/ip-failover-bgp-frr/) | 10 |
 | Fremont (California, USA) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 3 |
-| London (United Kingdom) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 7 |
+| London (United Kingdom) | *Undergoing network upgrades* | - | 7 |
 | Mumbai (India) |  *Not supported* | - | 14 |
 | Newark (New Jersey, USA) | *Undergoing network upgrades* | - | 6 |
 | Singapore | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 9 |
