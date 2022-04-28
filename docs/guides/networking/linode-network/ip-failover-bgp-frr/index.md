@@ -21,16 +21,15 @@ external_resources:
 Not all data centers supports configuring IP failover over BGP. Review the [Configuring Failover on a Compute Instance](/docs/guides/ip-failover/) to learn more about IP Sharing / IP failover availability within each data center.
 {{</note>}}
 
-This guide covers using the open source [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) tool to configure IP failover with Linode Compute Instances. FRR is a routing service that uses BGP to monitor and fail over components in a high availability configuration. In a typical setup with IP failover, there is a **primary** Instance and a **secondary** Instance.
-
-- **Primary**: The primary Compute Instance is the one containing the IP address you'd like to configure for IP failover.
-- **Secondary**: The secondary Compute Instance is then configured to use that IP address in the event the primary Instance stops responding.
+This guide covers using the open source [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) tool to configure failover between two Linode Compute Instances. FRR is a routing service that uses BGP to monitor and fail over components in a high availability configuration. These instructions supplement the general [Configuring Failover on a Compute Instance](/docs/guides/ip-failover/) guide and are intended as an advanced alternative to lelastic when more control and customization is needed.
 
 ## Before You Begin
 
 Prior to following this guide, ensure the following has been done on each Compute Instance used within your IP failover strategy.
 
-1. Set the [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [updated the hosts file](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file).
+1. Read through the [Configuring Failover on a Compute Instance](/docs/guides/ip-failover/) guide to learn more about how failover is implemented within Linode Compute.
+
+1. Set the [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [update the hosts file](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file) for each Compute Instance.
 
 1. Verify Python3 is installed. See [FRR's official documentation](http://docs.frrouting.org/en/latest/installation.html#python-dependency-documentation-and-tests) to learn about FRR's Python dependencies.
 
