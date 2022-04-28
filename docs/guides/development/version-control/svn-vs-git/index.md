@@ -1,17 +1,19 @@
 ---
-slug: svn-vs-git
+slug: git-vs-svn-pros-and-cons-of-each-version-control-system
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Comparing Git vs SVN? Our article defines each system, highlights pros and cons, and provides tips regarding which you should use. ✓ Learn more!"
-og_description: "Comparing Git vs SVN? Our article defines each system, highlights pros and cons, and provides tips regarding which you should use. ✓ Learn more!"
+description: "Comparing Git vs SVN? Our article defines each system, highlights its pros and cons, and provides tips regarding which you should use."
+og_description: "Comparing Git vs SVN? Our article defines each system, highlights its pros and cons, and provides tips regarding which you should use."
 keywords: ['svn vs git','git vs svn','subversion vs git']
+tags: ['version control system']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-02
 modified_by:
   name: Nathaniel Stickman
 title: "Git vs SVN: Pros and Cons of Each Version Control System"
 h1_title: "SVN vs Git: Which Version Control System Should You Use?"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -24,21 +26,21 @@ external_resources:
 
 Using a Version Control System (VCS) makes for effective development, helping you to manage versions and changes efficiently. This is especially true as projects grow in size and complexity, but even the simplest projects have a lot to gain.
 
-Git and SVN stand out as two of the most popular VCS choices. Both are open source. Git has recently skyrocketed in popularity from its use in the open-source world. SVN, meanwhile, has long been a strong contender thanks to its use in enterprise.
+Git and SVN stand out as two of the most popular VCS choices. Both are open source. Git has recently skyrocketed in popularity from its use in the open-source world. SVN, meanwhile, has long been a strong contender, thanks to its use in the enterprise.
 
-So, SVN vs Git, which one should you use? Find out in this guide. Learn about the features, pros, and cons of each solution and see how they match up head to head. By the end, you should have a firm grasp of which tool is right for you.
+So, SVN vs Git, which one should you use? Find out in this guide. Learn about the features, pros, and cons of each solution, and see how they match up head to head. By the end, you should have a firm grasp of which tool is right for you.
 
 ## What is Git?
 
 [Git](https://git-scm.com/) is a *distributed* version control system. Contributors create local repositories, which are full clones of a central repository. Each contributor is thus able to work entirely locally. When changes are ready, contributors can push and merge them with the central repository.
 
-Git has immense support for and by the open-source community. It has fast become one of the most used version control systems for source code.
+Git has immense support from and by the open-source community. It has fast become one of the most used version control systems for source code.
 
 ## What is SVN?
 
 [Apache Subversion](https://subversion.apache.org/), most commonly referred to simply as SVN, is a *centralized* version control system. Everything exists on a central repository server. The central repository has a "trunk," which contains the current, stable version of the project. Off of the trunk, contributors can make "branches" for new features, each of which is stored in a sub-folder on the central repository. When changes are ready, a branch can be merged into the trunk.
 
-SVN has a long and successful history, and stands as a titan in the version control world. It has wide-spread usage for enterprise, with features like granular access control that make it excel in that context.
+SVN has a long and successful history and stands as a titan in the version control world. It has widespread usage for enterprise, with features like granular access control that make it excel in that context.
 
 ## Git vs SVN: Pros and Cons
 
@@ -76,21 +78,21 @@ Cons:
 
 - Provides limited offline capabilities. Everything operates on a centralized repository using a client-server approach. When contributors are offline and unable to access the server, they essentially lose the ability to contribute. This also entails a higher level of traffic to the main repository's server, since contributors are having to access it constantly.
 
-- Has a single point of failure with the centralized repository server. An issue occurring with the repository, such as data corruption, can have dire repercussions, since the repository does not get copied locally.
+- Has a single point of failure with the centralized repository server. An issue occurring with the repository, such as data corruption, can have dire repercussions since the repository does not get copied locally.
 
 ### Advantages of Git Over SVN
 
 Git stands out for allowing contributors to work locally and offline. SVN requires contributors to be connected to the main repository server, which essentially eliminates working offline.
 
-Git also out performs SVN when it comes to merging and conflict resolution. Git has been designed for an open-source setting where numerous contributors may be working on the same parts of a codebase without knowing. So, Git has built up a robust system for resolving merge conflicts, making the process smoother and more reasonable.
+Git also outperforms SVN when it comes to merging and conflict resolution. Git has been designed for an open-source setting where numerous contributors may be working on the same parts of a codebase without knowing. So, Git has built up a robust system for resolving merge conflicts, making the process smoother, and more reasonable.
 
 Distributing repositories gives Git the additional advantage of mitigating potential losses. SVN has a single point of failure in its centralized server. But Git, by having contributors clone the main repository, helps to reduce the risk should issues arise in the central repository.
 
 ### Advantages of SVN Over Git
 
-With everything being centralized, SVN makes it easier to manage contributions and contributors. Git does not include any restrictions to codebase access — a contributor who has access to the repository has access to all of the repository. SVN, on the other hand, provides granular control, allowing for limits on particular contributors down to the directory and file levels.
+With everything being centralized, SVN makes it easier to manage contributions and contributors. Git does not include any restrictions on codebase access — a contributor who has access to the repository has access to all of the repository. SVN, on the other hand, provides granular control, allowing for limits on particular contributors down to the directory, and file levels.
 
-SVN also makes contributing easier. Git has robust conflict handling, but its system can often be daunting for new-comers and complicated for anyone. SVN boasts making the whole process more approachable, simplifying the path between a new feature and its merging into the trunk.
+SVN also makes contributing easier. Git has robust conflict handling, but its system can often be daunting for newcomers and complicated for anyone. SVN boasts of making the whole process more approachable, simplifying the path between a new feature and its merging into the trunk.
 
 SVN wins out on some performance considerations. It handles network traffic exceptionally well. So, while contributors may have to be connected to the server to complete work, the network load for this is managed efficiently. And SVN knows how to compress and store large binaries effectively. For teams that need that, SVN comes in far ahead.
 
@@ -98,11 +100,11 @@ SVN wins out on some performance considerations. It handles network traffic exce
 
 Each of the version control systems covered here — SVN and Git — has its particular strengths and weaknesses. Each one fits different use cases better than the other, and neither one wins out over the other one outright.
 
-- Use SVN when you need a VCS that favors top-down management, easy contributions, and you do not need to work locally offline. SVN often comes out on top for enterprise usage specifically for its granular access control, and it is the clear choice if you need to setup security hierarchies.
+- Use SVN when you need a VCS that favors top-down management, easy contributions, and you do not need to work locally offline. SVN often comes out on top for enterprise usage specifically for its granular access control, and it is the clear choice if you need to set up security hierarchies.
 
     To get started with SVN, be sure to read through our guide [How to Install and Use the Subversion CLI Client](/docs/guides/subversion-svn-tutorial/).
 
-- Use Git when you need numerous contributors to work in parallel, where you expect lots of potential merge conflicts, and when you need contributors to be able to work locally offline. Because of its handling of merge conflicts, Git makes sense for most open-source projects, where contributors often work without external coordination. But also Git shines in a wide range of environments with complex codebases and distributed teams.
+- Use Git when you need numerous contributors to work in parallel, where you expect lots of potential merge conflicts, and when you need contributors to be able to work locally offline. Because it handles merge conflicts, Git makes sense for most open-source projects, where contributors often work without external coordination. But also Git shines in a wide range of environments with complex codebases and distributed teams.
 
     To learn more and start working with Git, check out our guide [Getting Started with Git](/docs/guides/how-to-configure-git/).
 
