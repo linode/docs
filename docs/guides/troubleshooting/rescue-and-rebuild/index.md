@@ -63,7 +63,7 @@ To boot a Linode into Rescue Mode:
 
 1.  Click on the **more options ellipsis** next to the Linode that will be booted into rescue mode, and click on the **Rescue** option to open the Rescue form:
 
-    ![Linode Cloud Manager Linodes page](cloud-manager-linodes-page.png)
+    ![Linode Cloud Manager Linodes page - rescue option highlighted](cloud-manager-linodes-page.png "Linode Cloud Manager Linodes page - rescue option highlighted")
 
 1.  In the **Rescue** form, select the disks you want to mount:
 
@@ -212,17 +212,17 @@ By default, your disks are not mounted when your Linode boots into Rescue Mode. 
 
 These instructions mount the `/dev/sda` disk. If you are mounting a different disk, replace `sda` with the name of your disk throughout these instructions.
 
-1. Create a new directory for your disk:
+1.  Create a new directory for your disk:
 
-    mkdir -p /media/sda
+        mkdir -p /media/sda
 
-1. Mount the disk to make its contents available at the `/media/sda` directory:
+1.  Mount the disk to make its contents available at the `/media/sda` directory:
 
-    mount -o barrier=0 /dev/sda /media/sda
+        mount -o barrier=0 /dev/sda /media/sda
 
-1. View the contents of the disk to confirm you can access them:
+1.  View the contents of the disk to confirm you can access them:
 
-    ls /media/sda
+        ls /media/sda
 
     You can now read and write to files on the mounted disk.
 
@@ -249,9 +249,9 @@ If you would like to mount or unmount additional disks on your system, repeat th
 
 Chroot allows you to change user passwords, remove/install packages, and do other system maintenance and recovery tasks in your Linode's normal Linux environment.
 
-1. Create a new directory for your disk:
+1.  Create a new directory for your disk:
 
-    mkdir -p /media/sda
+        mkdir -p /media/sda
 
 1.  Before you use chroot, mount the root disk :
 
@@ -345,7 +345,7 @@ To use the Rebuild feature:
 
 1.  Click on the **more options ellipsis** next to the Linode that will be rebuilt, and click on the Rebuild option to open the Rebuild form:
 
-    ![Linode Cloud Manager Linodes page](cloud-manager-linodes.png)
+    ![Linode Cloud Manager Linodes page - rebuild option highlighted](cloud-manager-linodes-rebuild.png "Linode Cloud Manager Linodes page - rebuild option highlighted")
 
 1.  Complete the Rebuild form. Select an image or StackScript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear).
 
