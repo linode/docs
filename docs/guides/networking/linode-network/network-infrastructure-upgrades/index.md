@@ -6,7 +6,7 @@ author:
 description: "An overview of changes and actions that may be required in advance of upgrades to Linode's networking infrastructure."
 keywords: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-12
+published: 2022-04-28
 modified_by:
   name: Linode
 title: "Upcoming Changes Related to Network Infrastructure Upgrades"
@@ -47,7 +47,7 @@ Review the table below to learn which data centers have been upgraded with the l
 | Dallas (Texas, USA) | *Coming soon* |
 | **Frankfurt (Germany)** | **Complete** |
 | Fremont (California, USA) | *Coming soon* |
-| London (United Kingdom) | *Coming soon* |
+| London (United Kingdom) | *In progress* |
 | Mumbai (India) | *Coming soon* |
 | Newark (New Jersey, USA) | *In progress* |
 | Singapore | *Coming soon* |
@@ -61,4 +61,4 @@ A status of **complete** indicates that all new Compute Instances (and *most* ex
 
 - **Migration of Compute Instances:** Once a data center has started the network infrastructure upgrades, live migrations will be scheduled for all Compute Instances that do not reside on upgraded hardware. This live migration will occur while your Compute Instance is powered on and operating normally. After the migration has been successfully completed, there may be a brief period of downtime while the Compute Instance is rebooted.
 
-- **Update IP failover configuration:** If you have configured IP failover for a public IPv4 address, review the [Configuring IP Failover on a Compute Instance](/docs/guides/ip-failover/) guide to learn more about configuring IP failover using BGP. If you were using a now deprecated IPv6 /116 pool for IP failover, consider using an IPv6 /64 range instead. You can configure BGP ahead of time, but will not be able to test or use the configuration until after the network upgrades.
+- **Update IP failover configuration:** If you have configured IP failover for a public IPv4 address, review the [Configuring IP Failover on a Compute Instance](/docs/guides/ip-failover/) guide to learn more about configuring IP failover using BGP. If you were using a now deprecated IPv6 /116 pool for IP failover, consider using an IPv6 /64 range instead. You can configure BGP ahead of time, but will not be able to test or use the configuration until after your Compute Instances are migrated to upgraded hardware.
