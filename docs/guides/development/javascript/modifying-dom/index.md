@@ -1,17 +1,16 @@
 ---
-slug: making-changes-to-the-dom-with-javascript
+slug: javascript-dom-manipulation
 author:
-  name: Linode Community
+  name: Nathaniel Stickman
   email: docs@linode.com
-description: "Learn how to modify the DOM, including creating, removing, and changing elements, using JavaScript."
-og_description: "Learn how to modify the DOM, including creating, removing, and changing elements, using JavaScript."
+description: "Learn to use JavaScript to manipulate the DOM by creating, removing, and changing element nodes. Also, learn how to change an element''s CSS styles with JavaScript."
 keywords: ['modifying the dom javascript','dom manipulation','creating dom elements with javascript']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-12-02
+published: 2022-04-29
 modified_by:
-  name: Nathaniel Stickman
-title: "Making Changes to the DOM with JavaScript"
-h1_title: "Modify the DOM with JavaScript"
+  name: Linode
+title: "Manipulating the DOM with JavaScript"
+h1_title: "How to Modify the DOM with JavaScript"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman
@@ -21,22 +20,18 @@ external_resources:
 - '[MDN Web Docs: Document](https://developer.mozilla.org/en-US/docs/Web/API/Document)'
 ---
 
-The Document Object Model (DOM) is a programming interface for HTML web pages. Scripting languages, like JavaScript, can access and manipulate the DOM to alter the display of a web page.
+The Document Object Model (DOM) is a programming interface for HTML web pages. Scripting languages, like JavaScript, can access and manipulate the DOM to alter the display of a web page. In this guide, you learn about the methods and properties you can use to modify the DOM by adding and removing element nodes. You also learn how to use specialized properties to assign and update a DOM element's CSS styles.
 
-
-
-In this guide, you can go a step further with that knowledge, learning the tools JavaScript offers for modifying the DOM. It shows you how to manipulate the DOM, from creating new elements to changing their attributes. With the tools detailed here, you are well on your way to creating dynamic web pages.
-
-You can learn more about navigating the DOM in the previous guide in this series, **How to Navigate and Access Elements of the DOM with JavaScript**. And you can learn more about the DOM generally through the first guide in this series, **Introduction to the DOM**.
+If you are not familiar with the DOM, refer to our [An Introduction to the Document Object Model (DOM)](/docs/guides/document-object-model/) and [Traversing the Document Object Model with JavaScript](/docs/guides/traversing-the-dom/) guides before continuing with this guide.
 
 ## Before You Begin
 
-The examples in this guide use a web browser’s developer tools to view the DOM and interact with a JavaScript console. To get the most out of the information in this guide, follow along in your own Chrome or Firefox browser.
+To follow along with the examples in this guide, use your web browser’s developer tools JavaScript console to interact with the DOM.
 
 - On Chrome, refer to Google's [Open Chrome DevTools](https://developer.chrome.com/docs/devtools/open/#elements) documentation to learn how to access their developer tools.
 - On Firefox, refer to Mozilla's [Open the Inspector](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Open_the_Inspector) documentation to learn how to access their developer tools.
 
-Most of this guide’s examples are based on an example web page created from the HTML source code displayed below. To follow along with this guide’s example, [view the rendered example web page](example-page.html) in your browser.
+Most of this guide’s examples are based on an example web page created from the HTML source code displayed below. To follow along with this guide’s examples, [view the rendered example web page](example-page.html) in your browser as you read through the guide.
 
 {{< file "example-page.html" html >}}
 <!DOCTYPE html>
@@ -61,7 +56,7 @@ Most of this guide’s examples are based on an example web page created from th
 
 ## How to Create and Remove DOM Elements
 
-To make a web page dynamic, you use JavaScript to alter the elements that make up the web page's DOM. Typically, the DOM is altered by creating new HTML elements or moving specific elements or attributes, programmatically.
+To make a web page dynamic, you use JavaScript to alter the elements that make up the web page's DOM. Typically, the DOM is altered by programmatically creating new HTML elements or moving specific elements or attributes.
 
 The sections below show you how to use JavaScript to create and remove elements from the DOM. You also learn how to control the way in which new elements are added to the DOM using a few specialized JavaScript methods.
 
@@ -72,19 +67,19 @@ The DOM represents the elements and content of an HTML document as nodes and obj
 - Using a `document` object method to create the element and to append the new node
 - Changing the value of the `innerHTML` property on a parent node
 
-Depending on what you are trying to achieve, you might choose one approach over another. The following sections provide examples on each approach and information on when to use them.
+Depending on what you are trying to achieve, you might choose one approach over another. The following sections provide examples for each approach and information on when to use them.
 
 #### Using the createElement() Method
 
 The `document` object has several built-in methods for creating new nodes, like the `createElement()` method. This method is especially convenient when you want to create multiple elements or are working programmatically with numerous elements.
 
-The list below includes an overview of the steps typically used when creating a new element using JavaScript.
+The list below includes an overview of the steps used when creating a new element using JavaScript.
 
 - The `createElement()` method accepts the tag name of the element to create as a parameter. It creates the specified tag without any content contained within the tag.
-- Once you've created a new element, you have access to properties or additional methods of the element object that can be used to style the element, populate it with text, and achieve many other enhancements. The [How to Modify Element Attributes](/docs/guides/making-changes-to-the-dom-with-javascript/#how-to-modify-element-attributes) discussed these changes in great depth.
-- When your new element looks and behaves the way you intend, you can add the element node to the DOM's target parent node. For example, you can use the `appendChild()` method to achieve this. The [Inserting Element Nodes](/docs/guides/making-changes-to-the-dom-with-javascript/#inserting-element-nodes) discussed the `appendChild()` and other methods you can use to insert an element into the DOM.
+- Once you've created a new element, you have access to properties or additional methods of the element object that can be used to style the element, populate it with text, and achieve many other enhancements. The [How to Modify Element Attributes](/docs/guides/javascript-dom-manipulation/#how-to-modify-element-attributes) discusses these changes in greater depth.
+- When your new element looks and behaves the way you intend, you can add the element node to the DOM's target parent node. For example, you can use the `appendChild()` method to achieve this. The [Inserting Element Nodes](/docs/guides/javascript-dom-manipulation/#inserting-element-nodes) discusses `appendChild()` and other methods you can use to insert an element into the DOM.
 
-The example below demonstrates the typical steps used to create and add a new element to the DOM using the `createElement()` method. The steps include a series of JavaScript code that you can run on the [example page](example-page.html) using your browser's developer console. The JavaScript code creates a new `li` element and a new `span` element. After adding some styling and text to these new elements, the commands append the elements as children of the existing `ul` element.
+The example below demonstrates the steps used to create and add a new element to the DOM using the `createElement()` method. You can run the JavaScript code on the [example page](example-page.html) using your browser's developer console. The JavaScript code creates a new `li` element and a new `span` element. After adding some styling and text to these new elements, the commands append the elements as children of the existing `ul` element.
 
     // Creates the new span element, assigns its class, sets its
     // color, and finally gives the element some text content
@@ -110,16 +105,16 @@ The result of executing the JavaScript on the [example page](example-page.html) 
 
 #### Using the innerHTML Property
 
-You can use the `innerHTML` property to add HTML elements to the DOM. This property is available on the `document` object model and any element object that is a part of the DOM.
+You can use the `innerHTML` property to add HTML elements to the DOM. This property is available on the `document` object and any element object that is a part of the DOM.
 
-The `innerHTML` property stores a string representation of the DOM's HTML. This means that you can use this property to overwrite existing content, create new content wholesale, or manipulate content using string manipulation.
+The `innerHTML` property stores a string representation of the DOM's HTML. This means that you can use this property to overwrite existing content, create entirely new content, or manipulate content using string manipulation.
 
 However, the `innerHTML` property does not give you convenient means for modifying child elements and nodes, since it represents everything in one, often long, string.
 
 For this reason, the `innerHTML` property is useful when you need to make large and sweeping changes to several elements. It is not as useful when you want to create child elements systematically, or when you want to do so in an iterative loop.
 
 The example below demonstrates the typical steps used to create and add a new element to the DOM using the `innerHTML` property.
-Following are a series of JavaScript commands that you can use on the [example page](example-page.html). The steps include a series of JavaScript code that you can run on the [example page](example-page.html) using your browser's developer console. The JavaScript creates a new `ul` element and child `li` elements, each with its own containing text.
+You can run the JavaScript code on the [example page](example-page.html) using your browser's developer console. The JavaScript creates a new `ul` element and child `li` elements, each with its own containing text.
 
     // Fetches the second-div element, then extends its innerHTML with a new
     // ul element. Observe that this requires rewriting the innerHTML.
@@ -132,13 +127,13 @@ Following are a series of JavaScript commands that you can use on the [example p
     second_ul_element.innerHTML = `<li><span class="numeral-name" style="color: red;">First</span> item</li>
     <li><span class="numeral-name" style="color: green;">Second</span> item</li>`
 
-The result of executing the above JavaScript commands on the [example page](example-page.html) looks like the following:
+The result of executing the above JavaScript commands on the [example page](example-page.html) resembles the following:
 
 ![Elements added to the example page via the innerHTML property](dom-add-innerhtml.png)
 
-By itself, this approach can be a bit cumbersome, both to write, and to read. Thus, even when your needs favor using the `innerHTML` property, it works better combined with the element creation methods.
+On its own, using the `innerHTML` property to add new elements to the DOM can result in verbose code. Thus, even when you need to use the `innerHTML` property, it works best when combined with element creation methods, like `createElement()`.
 
-Following is another example, which uses these approaches in combination and results in the same changes to the DOM as in the example demonstrated above:
+The example below uses both the `innerHTML` property and the `createElement()` method to achieve the same results as the previous example, with much less code.
 
     // Adds the new ul element to the second-div element.
     const new_ul_element = document.createElement("ul");
@@ -150,9 +145,16 @@ Following is another example, which uses these approaches in combination and res
 
 ### Removing Element Nodes
 
-You can remove an element using one of two methods: either one on the parent element or one on the element itself.
+There are two methods available to remove an element from the DOM: the `remove()` method and the `removeChild()` method. The `remove()` method completely removes the selected element node from the DOM, while the `removeChild()` method removes the child node of the selected element node.
 
-- The `document` object and each element have a `removeChild` method. This lets you specify a child node that you want to remove. For instance, the code below removes the first `li` element from the `ul` in the `first-div`:
+- Each element within the DOM has a `remove()` method that allows you to remove the element node from the DOM. For instance, using the HTML from the [example page](/docs/guides/javascript-dom-manipulation/#before-you-begin), the code below removes the `em` element from the `p` element in the `second-div`:
+
+        const second_div_em_element = document.querySelector("#second-div em");
+        second_div_em_element.remove();
+
+    ![Removed element from the example page](dom-remove-element.png)
+
+- The `document` object and each element have a `removeChild()` method. This lets you specify a child node that you want to remove. For instance, the code below removes the first `li` element from the `ul` element contained within the `first-div`:
 
         const first_div_ul_element = document.querySelector("#first-div > ul");
         const first_ul_li_element = first_div_ul_element.getElementsByTagName("li")[0];
@@ -160,32 +162,31 @@ You can remove an element using one of two methods: either one on the parent ele
 
     ![Removed child element from the example page](dom-remove-child.png)
 
-- Each node has a `remove` method that allows you to remove that node itself from the DOM. For instance, the code below removes the `em` element from the `p` element in the `second-div`:
-
-        const second_div_em_element = document.querySelector("#second-div em");
-        second_div_em_element.remove();
-
-    ![Removed element from the example page](dom-remove-element.png)
-
 ### Inserting Element Nodes
 
-You can see above that new elements have to be explicitly added to the DOM before they are displayed. The examples above use the `appendChild` method for doing so, but, in fact, two more options are also available. These methods let you control where new elements are added to the DOM, giving you finer control over how you modify the DOM.
+Before a new element is displayed on a web page, it must be explicitly added to the DOM. In the [Using the createElement() Method](/docs/guides/javascript-dom-manipulation/#using-the-createelement-method) section, this was achieved using the `appendChild()` method. There are, in fact, two more methods you can use to add an element to the DOM: the `insertBefore()` and the `replaceChild()` methods. These two methods let you specify where to insert an element, giving you finer control over modifying the DOM.
 
-Below is a breakdown of each of the three options, with examples, to help you know which one to use to fit your needs. To make these examples more straightforward and clear, they use the simple DOM element assigned to `ul_element` as shown below:
+Below, you can find examples that use each method to insert an element node into the DOM. Each example modifies the HTML displayed below.
 
     <ul>
         <li id="first-item">First item</li>
         <li id="second-item">Second item</li>
     </ul>
 
-- `appendChild` adds the new node to the end of the parent node. For example, the following adds a third item to the `ul_element`:
+The JavaScript below assigns the `<ul>` element and its contents to the `ul_element` variable.
+
+    const ul_element = document.getElementsByTagName("ul")[0];
+
+Each example uses the `ul_element` variable.
+
+- The `appendChild()` method adds a new node to the end of the designated parent node. For example, the code below adds a third `<il>` element to the existing `<ul>` element.
 
         const third_li_element = document.createElement("li");
         third_li_element.textContent = "Third item";
 
         ul_element.appendChild(third_li_element);
 
-- `insertBefore` adds the new node before an existing node which is also a child of the intended parent node. This next example adds an item to the `ul_element` before the `first-item` element:
+- The `insertBefore()` method adds the new node before an existing node. The inserted node becomes the child of the targeted parent node. This next example adds an item to the `ul_element` before the `first-item` element.
 
         const zero_li_element = document.createElement("li");
         zero_li_element.textContent = "Zero item";
@@ -194,14 +195,14 @@ Below is a breakdown of each of the three options, with examples, to help you kn
 
         ul_element.insertBefore(zero_li_element, first_li_element);
 
-- `replaceChild` replaces an existing child node with a new child node. You can see this here with the `zero_li_element` created above being replaced with a new item:
+- The `replaceChild()` method replaces an existing child node with a new child node. You can see this here with the `zero_li_element` created above being replaced with a new item:
 
         const not_first_li_element = document.createElement("li");
         not_first_li_element.textContent = "First negative item";
 
         ul_element.replaceChild(not_first_li_element, zero_li_element);
 
-All of the above commands, in sequence, rework the `ul` element to look like the following:
+After running, in sequence, all the JavaScript examples from this section, your HTML should have been updated to resemble the following:
 
     <ul>
         <li>First negative item</li>
@@ -212,23 +213,17 @@ All of the above commands, in sequence, rework the `ul` element to look like the
 
 ## How to Modify Element Attributes
 
-Recall that attributes are also nodes, and they can be added to the DOM similar to how you add element nodes. For instance, you can use the `createAttribute` on the `document` objects like you would use the `createElement` method.
+All HTML elements can have attributes which provide additional information about the element. In the DOM, attributes are represented as nodes and can be added to the DOM in the same way that you add element nodes. For instance, you can use the `createAttribute()` method to add an attribute to an element node, much in the same way that you [use the `createElement()` method](/docs/guides/javascript-dom-manipulation/#using-the-createelement-method).
 
-However, the `document` object also has a set of specialized properties ready to handle the specific needs of attributes. It even includes some dedicated properties for dealing with certain kinds of attributes, like classes and styles.
+The `document` object also has a set of specialized properties that handle the specific needs of attributes. For example, it includes some dedicated properties that deal with attributes like classes and styles. These specialized attributes are discussed below in their own dedicated sections.
 
-The next sections focus on these specialized properties, showing you how to use them to set and change your elements' associated attributes.
-
-### General Attributes
-
-Most attributes can be managed by a central set of methods, detailed in the next three sections.
-
-However, if you are looking to manage class or style attributes, you can see below the special tools JavaScript has for more conveniently working with those kinds of attributes.
+The next sections show you how to set and change an element's attributes using the DOM's attribute properties.
 
 #### Setting Attributes
 
-The `setAttribute` method lets you set an attribute's value, whether the attribute is already on an element or you want to introduce it. The method is available on any element node and takes two arguments: the attribute name and its value.
+The `setAttribute()` method lets you assign an attribute's value, whether or not it has already been set. The method is available on any element node and takes two arguments: the attribute name and its value.
 
-For example, you can add an `id` attribute to the first `li` element in the `first-div` of the example page as shown below:
+For example, using the JavaScript shown below, you can add an `id` attribute to the first `li` element of the `first-div` found on the [example page](example-page.html). Use your browser's developer console to execute the example JavaScript.
 
     const first_div_li_element = document.querySelector("#first-div li");
     first_div_li_element.setAttribute("id", "first-li");
@@ -241,24 +236,24 @@ For example, you can add an `id` attribute to the first `li` element in the `fir
 
 #### Checking for Attributes
 
-Often, when you start working with element attributes, you need to be able to check whether an element already has a given attribute. After that, it is also common to need to know what a given attribute's current value is.
+When you start working with element attributes, you often need to check if an element already has a value set for a given attribute. This can be achieved with the `hasAttribute()` method. After that, you may also need to know a given attribute's current value. This can be done with the `getAttribute()` method.
+
+The example JavaScript below uses the `hasAttribute()` and the `getAttribute()` methods to verify that the selected `<span>` element has an assigned `class` attribute. If it does have an assigned `class` attribute, the browser's developer console displays its `class` attribute's value.
 
     const first_div_span_element = document.querySelector("#first-div span");
-    if first_div_span_element.hasAttribute("class") {
-        console.log(first_div_span_element.hasAttribute("class"));
+    if (first_div_span_element.hasAttribute("class")) {
         console.log(first_div_span_element.getAttribute("class"));
     }
 
 {{< output >}}
-true
 numeral-name
 {{< /output >}}
 
 #### Removing Attributes
 
-You can remove any existing attribute using the `removeAttribute` method. Again, each element node inherits this method.
+You can remove any existing attribute from an element object using the `removeAttribute()` method. The `removeAttribute()` method accepts the attribute to remove's name as an argument.
 
-Using it, you can, for instance, delete the `id` attribute added to the `first_div_li_element` above:
+For example, use the `removeAttribute()` method to delete the `id` attribute added to the `first_div_li_element` in the [Setting Attributes](/docs/guides/javascript-dom-manipulation/#setting-attributes) section above.
 
     first_div_li_element.removeAttribute("id")'
     console.log(first_div_li_element)
@@ -267,11 +262,11 @@ Using it, you can, for instance, delete the `id` attribute added to the `first_d
 <li>
 {{< /output >}}
 
-### Style Attributes
+### Styling Attributes
 
-Style attributes are not so readily manipulated. This is because the single attribute, `style`, can actually hold numerous properties of its own. The `setAttribute` method only lets you redefine the style attribute's value, not adjust the values of its individual properties.
+Style attributes are not as straightforward to modify. This is because the single attribute, `style`, can actually hold numerous properties of its own. The `setAttribute()` method only lets you redefine the style attribute's value, not adjust the values of its individual properties.
 
-For instance, you can use the `setAttribute` to give an element's style attribute several properties, expressing them as a single string:
+For instance, you can use the `setAttribute()` method to assign several properties to an element's style attribute, expressing them as a single string:
 
     const first_p_element = document.querySelector("#first-div > p");
 
@@ -283,7 +278,7 @@ For instance, you can use the `setAttribute` to give an element's style attribut
 { "font-weight" → "bold", "text-align" → "center" }
 {{< /output >}}
 
-However, if you then want to adjust only one of those style properties, `setAttribute` becomes cumbersome.
+However, if you then want to adjust only one of those style properties, the `setAttribute()` method's arguments are quite verbose.
 
     first_p_element.setAttribute("style", "font-weight: normal;");
 
@@ -296,10 +291,10 @@ However, if you then want to adjust only one of those style properties, `setAttr
 To remedy this, JavaScript allows you to adjust the style attribute, and its individual properties, via the `style` property. This property makes available all of the CSS style properties of the style attribute, letting you set and adjust each one independently.
 
 {{< note >}}
-While CSS hyphenates property names, JavaScript instead uses camel case. So, for instance, the CSS properties `font-weight` and `text-align` become `fontWeight` and `textAlign`, respectively, in JavaScript.
+While CSS hyphenates property names, JavaScript, instead, uses camelCase. So, for instance, the CSS properties `font-weight` and `text-align` become `fontWeight` and `textAlign`, respectively, in JavaScript.
 {{< /note >}}
 
-Here is an example, which accomplishes what was attempted with the `setAttribute` method above:
+The example below accomplishes the same style changes that were attempted with the `setAttribute()` method in the example above:
 
     first_p_element.style.fontWeight = "bold";
     first_p_element.style.textAlign = "center";
@@ -315,15 +310,15 @@ Here is an example, which accomplishes what was attempted with the `setAttribute
 
 ### Class Attributes
 
-Class attributes present another special challenge. An element can have one or more classes, and sometimes you may find the need to work with them individually. This is especially the case with modern CSS frameworks, where you may need to check for a particular class and toggle it on or off.
+Class attributes present another special challenge when using JavaScript to modify this attribute. An element can have one or more classes, and sometimes you may find the need to work with them individually. This is especially the case with modern CSS frameworks, where you may need to check for a particular class and toggle it on or off.
 
-The `classList` property remedies the difficulty. The property itself returns a list of the classes on an element, but the property also comes with several convenient methods for dealing with classes.
+The `classList` property has several methods that help you modify an element's class attribute. The property itself returns a list of the classes available to an element node.
 
 #### Checking for Classes
 
 You can check to see whether an element has a given class using the `contains` method on the `classList` property.
 
-This example checks whether the `p` element in the `second-div` has the `active` class:
+The example below checks whether the `p` element in the `second-div` has the `active` class:
 
     const second_p_element = document.querySelector("#second-div > p");
     console.log(second_p_element.classList.contains("active"));
@@ -334,9 +329,9 @@ false
 
 #### Toggling Classes
 
-Some classes, especially with modern CSS frameworks, require toggling for you to get the most out of them. For instance, the `active` class is often used to highlight an element. Being able to toggle the class via JavaScript could allow you to have a button that toggles highlighting on the element.
+Some classes, especially with modern CSS frameworks, require toggling for you to achieve the desired behavior for an element on a web page. For instance, the `active` class is often used to highlight an element. Being able to toggle the class via JavaScript could allow you to have a button that toggles highlighting on the element.
 
-Here is an example using the `second_p_element` object defined above. Recall that the element here does not have the `hidden` class. In that case, toggling the class adds the class to the element.
+The example below uses the `second_p_element` object defined in the [Checking for Classes](/docs/guides/javascript-dom-manipulation/#checking-for-classes) section. Recall that the element here does not have the `active` class assigned to it. For this reason, toggling the class adds the `active` class to the element.
 
     second_p_element.classList.toggle("active")
     console.log(second_p_element.classList.contains("active"));
@@ -356,11 +351,11 @@ false
 
 #### Adding and Removing Classes
 
-In some cases, you may want to add or remove a class unconditionally, rather than toggle it. Using the `toggle` method for this would first require using the `contains` method to determine whether the class is already present or not.
+In some cases, you may want to permanently add or remove a class, rather than toggle it "on" and "off". Using the `toggle()` method for this purpose, would first require using the `contains()` method to determine whether the class is already present or not.
 
-Instead, you can just use the `add` and `remove` methods. These methods are straightforward and do not require any knowledge of the current classes on an element.
+Instead, you can use the `add()` and `remove()` methods. These methods are straightforward and do not require any knowledge of the current classes on an element.
 
-The example below first add and then removes the `button` class from the `a` element in the `second-div`. This is another class often used by modern CSS frameworks, usually to give a link to the modern button styling.
+The example below first adds and then removes the `button` class from the `a` element in the `second-div`. This is another class often used by modern CSS frameworks, usually to add an anchor link to a button's styling.
 
     const a_element = document.querySelector("#second-div a");
 
@@ -380,6 +375,4 @@ The example below first add and then removes the `button` class from the `a` ele
 
 ## Conclusion
 
-This guide showed you the ins and outs of manipulating the DOM. From adding and removing elements to working with attributes, classes, and styles.
-
-Be sure to take a look at our other guides in this series. These cover everything from the basics of the DOM to, in the next guide in the series, an in-depth look at how to handle JavaScript events.
+Once you understand [what the Document Object Model is](/docs/guides/document-object-model/#what-is-the-document-object-model) and are familiar with the JavaScript methods that interface with the DOM, you are ready to start manipulating DOM elements with JavaScript. This guide showed you how to use several DOM methods and properties to add and remove elements from the DOM. You also learned how to use specialized properties to assign and update a DOM element's CSS styles.
