@@ -7,6 +7,7 @@ aconf
 accessor
 accessors
 acronis
+acunetix
 adc
 addon
 addons
@@ -317,6 +318,7 @@ coroutines
 corporateclean
 courseware
 cov
+coverity
 covid
 cpanminus
 cpu
@@ -423,6 +425,7 @@ dereference
 dereferencing
 desperados
 destructured
+detectify
 dev
 devel
 devops
@@ -879,6 +882,7 @@ interruptible
 intra-application
 introducer
 introducers
+invicti
 io
 iodef
 iotop
@@ -1498,6 +1502,7 @@ pop3s
 poplib
 portainer
 portmapper
+portswigger
 postgres
 postgresql
 postgresql0
@@ -1668,6 +1673,7 @@ retpoline
 retrans
 reusability
 reutilize
+revenera
 richlanguage
 rijndael
 rimap
@@ -1858,6 +1864,7 @@ spm
 spork
 sql
 sqlplus
+sqreen
 squirrelmail
 src
 srv
@@ -1866,6 +1873,7 @@ sshfs
 sshpass
 ssi
 ssl
+stackhawk
 stackscript
 stackscripts
 stadia
