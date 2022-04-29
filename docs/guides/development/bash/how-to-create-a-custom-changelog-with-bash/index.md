@@ -3,8 +3,8 @@ slug: how-to-create-a-custom-changelog-with-bash
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'In this guide, the user would learn how to create a bash script that would generate a custom changelog. A changelog is a simple log that details and describes what changes have been made in a project's code or development since the last merged change. After completing this guide, the user would have a versatile bash script that could be implemented into a wide variety of existing or future projects. '
-og_description: 'In this guide, the user would learn how to create a bash script that would generate a custom changelog. A changelog is a simple log that details and describes what changes have been made in a project's code or development since the last merged change. After completing this guide, the user would have a versatile bash script that could be implemented into a wide variety of existing or future projects. '
+description: 'In this guide, the user would learn how to create a bash script that would generate a custom changelog. A changelog is a simple log that details and describes what changes have been made in a project's code or development since the last merged change. After completing this guide, the user would have a versatile bash script that could be implemented into a wide variety of existing or future projects.'
+og_description: 'In this guide, the user would learn how to create a bash script that would generate a custom changelog. A changelog is a simple log that details and describes what changes have been made in a project's code or development since the last merged change. After completing this guide, the user would have a versatile bash script that could be implemented into a wide variety of existing or future projects.'
 keywords: ['bash','script','changelog','linux','custom','log']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-26
@@ -24,7 +24,7 @@ external_resources:
 
 A changelog is a record of changes made to a project or repository. A changelog is important to track developments, edits, and revisions to your code, as well as showcase new features in your project. 
 
-In this guide, we'll create a bash script that allows us to create a changelog that is fully customizableto suit your project's specific needs as far as documentation and accountability. 
+In this guide, learn to create a bash script that allows us to create a changelog that is fully customizable. This changelog can be edited to suit your project's specific needs as far as documentation and accountability. 
 
 ## Before You Begin
 
@@ -47,7 +47,7 @@ Navigate into the new directory with the following command:
 
 `cd changelog-project`
 
-Then, create a new, empty file that we'll edit to create our script:
+Then, create a new empty file:
 
 `touch changelog.sh`
 
@@ -138,4 +138,4 @@ Run the bash script with the following command:
 
 `./changelog.sh`
 
-This script will create a Markdown file that contains your changelog. 
+This script creates a Markdown file that contains your changelog. 
