@@ -30,13 +30,13 @@ This tutorial helps you see all of the ways you can do just that: reverse a stri
 
 This guide uses Python 3, via the `python3` command. Make sure that you have Python 3 installed on your system before getting started.
 
-You can learn how to install Python 3 from our guide [How to Install Python 3](/docs/guides/how-to-install-python-on-ubuntu-20-04/). Be sure to use the drop down at the top of the guide to select a Linux distribution compatible with your system.
+You can learn how to install Python 3 from our guide [How to Install Python 3](/docs/guides/how-to-install-python-on-ubuntu-20-04/). Be sure to use the drop-down at the top of the guide to select a Linux distribution compatible with your system.
 
 ## How to Reverse a String in Python: 5 Ways
 
 In what follows, you can see the main approaches at your disposal for reversing strings in Python. Technically, these are not all of the approaches — that would be a huge list. But here you can see the most effective and interesting ways of accomplishing this task.
 
-Each of the examples works to reverse an string created using this line:
+Each of the examples works to reverse a string created using the line below:
 
     example_string = "doom wolf"
 
@@ -57,15 +57,15 @@ You can, thus, use the slice notation you would use for reversing a list to reve
 flow mood
 {{< /output >}}
 
-You can see the slice notation above in the square brackets. Here is a breakdown of how operates:
+You can see the slice notation above in the square brackets. Here is a breakdown of how it operates:
 
-- The first colon (`:`) typically separates the index to begin the slice with and the index end the slice with. These options are left blank in this case, making the slice consist of the whole string.
+- The first colon (`:`) typically separates the index to begin the slice and the index to end the slice. These options are left blank in this case, making the slice consist of the whole string.
 
 - The steps are indicated after the second colon, telling the slice how to progress through the sequence.
 
-    A negative number, like above, has the slice walk backward, starting at the last item in the sequence and moving through each item until it reaches the beginning.
+    A negative number, like above, has the slice walk backward, starting at the last item in the sequence, and moving through each item until it reaches the beginning.
 
-For another picture of how slices work, here you can see the parts that make up slice notation:
+For another picture of how slices work, here you can see the parts that makeup slice notation:
 
     [start:stop:steps]
 
@@ -79,7 +79,9 @@ Loops can be used to "manually" reverse a string by iterating through each chara
 
 A `while` loop takes a single condition and loops until that condition is no longer met. The standard approach is to then have the condition manipulated within the loop to end the loop when it is no longer needed.
 
-To reverse a string with a `while` loop, you can use a variable starting at the value of your string's length. The value should be reduced by one with each iteration of the loop, and the loop should end when the value passes zero. By the end of the loop, the code has walked through each index in the string from the end to the beginning:
+To reverse a string with a `while` loop, you can use a variable starting at the value of the string's length. The value should be reduced by one with each iteration of the loop, and the loop should end when the value passes zero. By the end of the loop, the code has walked through each index in the string from the end to the beginning.
+
+    example_string = "doom wolf"
 
     # Begin with a blank string.
     reversed_string = ""
@@ -97,7 +99,7 @@ To reverse a string with a `while` loop, you can use a variable starting at the 
 
         # Reduce the index by one to continue progressing backward
         # through the string.
-        string_index_working -= 1
+        string_working_index -= 1
 
     print(reversed_string)
 
@@ -109,7 +111,9 @@ flow mood
 
 A `for` loop takes a sequence and loops through each item in it. You can use it much like the `while` loop above.
 
-However, a more idiomatic approach is shown here. The loop iterators over each character of the original string and adds each one in turn to the beginning of a list. It uses the `join` method to make that list a string. You can learn more about the join method in the [Using Join](/docs/guides/how-to-reverse-a-string-in-python/#using-join) section further on:
+However, a more idiomatic approach is shown here. The loop iterates over each character of the original string and add each one in turn to the beginning of a list. It uses the `join` method to make that list a string. You can learn more about the join method in the [Using Join](/docs/guides/how-to-reverse-a-string-in-python/#using-join) section below.
+
+    example_string = "doom wolf"
 
     # Begin with an empty list.
     reversed_string_list = []
@@ -150,7 +154,7 @@ flow mood
 
 To break down the `join` syntax:
 
-- The initial string (`""`) is actually the object the `join` method belongs to. This string becomes the separator between each element from the list when they are added to the resulting string.
+- The initial string (`""`) is actually the object the `join` method belongs. This string becomes the separator between each element from the list when they are added to the resulting string.
 
     So, if you wanted to add a space between each character in the reversed string, you could alter the code above with: `" ".join`.
 
@@ -158,9 +162,9 @@ To break down the `join` syntax:
 
 ### Using Recursion
 
-A *recursive* function is another option for reversing a string. In a recursive function, the function ends up calling itself it further process the output.
+A *recursive* function is another option for reversing a string. In a recursive function, the function ends up calling itself and further processes the output.
 
-Usually in this kind of recursive function, each recursive function call gets a smaller and smaller version of the input. The function keeps calling itself until it reaches the end of the input. When it does, all of the recursive calls' results collate into a final result.
+Usually, in this kind of recursive function, each recursive function call gets a smaller, and smaller version of the input. The function keeps calling itself until it reaches the end of the input. When it does, all of the recursive calls' results collate into a final result.
 
 This next bit of code shows you what a recursive function for reversing a string can look like:
 
@@ -183,16 +187,17 @@ Here is how the function above works:
 
         return reverse_by_recursion(reversing_string[1:]) + reversing_string[0]
 
-    Functionally, then, each recursive call is dealing with a shorter and shorter version of the original string. Each instance of the function is also holding onto the first character of its input to add to the end of the new string.
+    Functionally, then, each recursive call is dealing with a shorter, and shorter version of the original string. Each instance of the function is also holding onto the first character of its input to add to the end of the new string.
 
     Thus, this is what the first few recursions looks like for the example string:
 
+        example_string = "doom wolf"
         reverse_by_recursion("oom wolf") + "d"
         reverse_by_recursion("om wolf") + "o"
         reverse_by_recursion("m wolf") + "o"
         reverse_by_recursion(" wolf") + "m"
 
-- Eventually, the condition `len(reversing_string) == 0` gets met, and the recursion ends. Working back from the deepest recursion level, the results recombine to form the new `reversing_string`.
+- Eventually, the condition `len(reversing_string) == 0` is met, and the recursion ends. Working back from the deepest recursion level, the results recombine to form the new `reversing_string`.
 
     For the example string, the process of this working back looks something like this:
 
@@ -212,7 +217,9 @@ Essentially this means that Python can experience incredibly high processing dem
 
 Another relatively straightforward approach is to use Python's built-in `reversed` function. This function takes a list or other sequential object — like a string — and returns an iterator of that object in reverse.
 
-The example below uses the function on the `example_string`, and then uses the `join` method discussed above to make the returned iterator into a string:
+The example below uses the function on the `example_string`, and then uses the `join` method discussed above to make the returned iterator into a string.
+
+    example_string = "doom wolf"
 
     # Get the string reversed in the form of an iterator.
     reversed_iterator = reversed(example_string)
@@ -239,7 +246,7 @@ Creating a dedicated function for reversing a string can be convenient when you 
 
 The function defined below shows a little of how useful a custom function can be. The function takes a string as input and reverses it using the slice approach.
 
-But the function also includes an optional parameter — `reversal_style`. Adjusting this, you can have the function reverse the string with loop or the `reversed` function instead of a slice.
+But the function also includes an optional parameter — `reversal_style`. Adjusting this, you can have the function reverse the string with a loop or the `reversed` function instead of a slice.
 
 As another bonus, the function also includes a condition to reverse the string word-by-word, rather than character-by-character:
 
@@ -284,6 +291,6 @@ wolf doom
 
 In this tutorial, you have gotten a thorough account of the ways you can reverse strings in Python. From using slices to recursive functions, you have the tools you need to reverse strings in whatever way suits your application.
 
-Looking to further expand you Python skills? Take a trek through our [Python guides](/docs/guides/development/python/) to get well on your way to mastering the language.
+Looking to further expand your Python skills? Take a trek through our [Python guides](/docs/guides/development/python/) to get well on your way to mastering the language.
 
 Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
