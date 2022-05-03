@@ -72,7 +72,7 @@ Python 3 can be installed on Windows through downloading the installer package d
 
 ### macOS
 
-Installing Python 3 on macOS can also be done by downloading the package directly from Python's website. Advanced users can also install Python 3 through [homebrew](https://formulae.brew.sh/formula/python@3.9#default) or manage mulitple Python 3 versions through [pyenv](https://github.com/pyenv/pyenv).
+Installing Python 3 on macOS can also be done by downloading the package directly from Python's website. Advanced users can also install Python 3 through [Homebrew](https://formulae.brew.sh/formula/python@3.9#default) or manage multiple Python 3 versions through [pyenv](https://github.com/pyenv/pyenv).
 
 1. Open a web browser and navigate to [Python's Downloads page](https://www.python.org/downloads/). Download the latest stable Python 3 package for macOS.
 
