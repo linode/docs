@@ -4,7 +4,6 @@ author:
   email: docs@linode.com
 title: "Using the Linode CLI with Object Storage"
 description: "Learn how to use the Linode CLI to manage Linodes own Object Storage solution."
-aliases: ['/products/tools/cli/guides/object-storage/']
 modified: 2022-05-02
 ---
 
