@@ -59,49 +59,61 @@ Before we edit the script, we need to change the permissions to allow the script
 
 Open this file in the nano text editor. For more information on Linux nano, check out this [documentation.](/docs/guides/use-nano-to-edit-files-in-linux/)
 
-First, start by setting the 'changelog' variable to equal the value 'CHANGELOG.md'. This will reference a markdown file that the script's output will be saved to.
+First, start by creating a prompt that will begin the changelog script. This prompt then records the value you enter to be referenced later. 
 
 ```
 #!/bin/bash
 
-changelog=CHANGELOG.md
-```
+echo "Would you like to add a changelog item? (Y/N)"
 
-Then, set the version number to the release number for your project. 
-
-```
-version="1.0.0"
-```
-
-Next, save the current date as a variable.
+read CHANGELOG_START
 
 ```
-date="$(date '+%Y-%m-%d')"
-```
 
-Save the variable 'item' as the version followed by the date. 
+Next, create an `if` statement that determines if the value entered was the character 'y':
 
 ```
-item="## [$version] - $date"
+if [ "$CHANGELOG_START" == "Y" ]  || [ "$CHANGELOG_START" == "y" ];
+
+```
+
+Then, create a series of prompts for the changelog information. These prompts include a version number and output file name. Each value entered at these prompts is stored as a variable.
+
+```
+then
+    echo Starting script...
+    echo "Please enter the changelog version:"
+    read VERSION
+    echo "Please enter the output file:"
+    read FILE
+    changelog="$FILE"
+    version="$VERSION"
+    date="$(date '+%Y-%m-%d')"
+    item="## [$VERSION] - $date"
+    
+```
+
+Next, create a prompt for the actual changelog entry:
+
+```
+    echo "Enter the changelog item:"
+    read CHANGELOG_ITEM
 ```
 
 Then create a function called 'new_changelog()'. This function echos the Changelog's informaton.Edit this function with the information you want to be reflected in your changelog. 
 
 ```
-new_changelog()
-{
-  echo "# Changelog
-This changelog showcases all notable edits, revisions, and updates to this project. 
-
-The format is based off of [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [Unreleased]
-
-$item
-### Added 
-- Replace this line with any information regarding your project's changes. 
-" > CHANGELOG.md
-}
+    new_changelog()
+      {
+      echo "# Changelog
+      This changelog showcases all notable edits, revisions, and updates to this project.
+      The format is based off of [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+      ## [Unreleased]
+      $item
+      ### Added
+      $CHANGELOG_ITEM
+          " > $FILE
+      }
 ```
 
 
@@ -110,23 +122,21 @@ Then create a new function called 'new_changelog_item()'. This function adds a n
 
 ```
 new_changelog_item()
-{   
-    echo $item
-
-    if grep -Fxq "$item" CHANGELOG.md; then 
-        echo "Changelog item already exists for
-    $item"
-    else
-        while read line; do
-            if [[ $line == "## [Unreleased]"* ]]; then
-                newvar=$(<<<"$line" sed 's/[].*[]/\\&/g')
-                sed -i "" "s/$newvar/## [Unreleased]\n\n$item\n### Added\n- Replace this line with any information regarding your project's changes. /" CHANGELOG.md
-                return
-            fi
-        done < CHANGELOG.md
-    fi
-
-}
+    {
+        echo $item
+        if grep -Fxq "$item" $FILE; then
+            echo "Changelog item already exists for
+        $item"
+        else
+            while read line; do
+                if [[ $line == "## [Unreleased]"* ]]; then
+                    newvar=$(<<<"$line" sed 's/[].*[]/\\&/g')
+                    sed -i "" "s/$newvar/## [Unreleased]\n\n$item\n### Added\n- $CHANGELOG_ITEM. /" $FILE
+                    return
+                fi
+            done < $FILE
+        fi
+    }
 
 ```
 
@@ -134,65 +144,87 @@ Lastly, create a function that will test and initialize your first two functions
 
 ```
 init()
-{
-    if test -f "$changelog" ; then
-        new_changelog_item
-    else
-        new_changelog
-    fi
-}
+    {
+        if test -f "$changelog" ; then
+            new_changelog_item
+        else
+            new_changelog
+        fi
+    }
+    init
+```
 
-init
+Then, end the initial `if` statement with an `else` clause, meaning if the value 'y' is not entered at the start, the script will exit.
+```
+else
+    exit;
+fi
 ```
 
 Overall, your script should resemble the following:
 
 ```
 #!/bin/bash
- 
-changelog=CHANGELOG.md
-version="1.0.0"
-date="$(date '+%Y-%m-%d')"
-item="## [$version] - $date"
 
-new_changelog()
-{
-  echo "# Changelog
-This changelog showcases all notable edits, revisions, and updates to this project. 
-The format is based off of [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-## [Unreleased]
-$item
-### Added 
-- Replace this line with any information regarding your project's changes. 
-" > CHANGELOG.md
-}
+echo "Would you like to add a changelog item? (Y/N)"
 
-new_changelog_item()
-{   
-    echo $item
-    if grep -Fxq "$item" CHANGELOG.md; then 
-        echo "Changelog item already exists for
-    $item"
-    else
-        while read line; do
-            if [[ $line == "## [Unreleased]"* ]]; then
-                newvar=$(<<<"$line" sed 's/[].*[]/\\&/g')
-                sed -i "" "s/$newvar/## [Unreleased]\n\n$item\n### Added\n- Replace this line with any information regarding your project's changes. /" CHANGELOG.md
-                return
-            fi
-        done < CHANGELOG.md
-    fi
-}
+read CHANGELOG_START
 
-init()
-{
-    if test -f "$changelog" ; then
-        new_changelog_item
-    else
-        new_changelog
-    fi
-}
-init
+if [ "$CHANGELOG_START" == "Y" ]  || [ "$CHANGELOG_START" == "y" ];
+then
+    echo Starting script...
+    echo "Please enter the changelog version:"
+    read VERSION
+    echo "Please enter the output file:"
+    read FILE
+    changelog="$FILE"
+    version="$VERSION"
+    date="$(date '+%Y-%m-%d')"
+    item="## [$VERSION] - $date"
+
+    echo "Enter the changelog item:"
+    read CHANGELOG_ITEM
+    new_changelog()
+    {
+    echo "# Changelog
+    This changelog showcases all notable edits, revisions, and updates to this project.
+    The format is based off of [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+    ## [Unreleased]
+    $item
+    ### Added
+    $CHANGELOG_ITEM
+        " > $FILE
+    }
+
+    new_changelog_item()
+    {
+        echo $item
+        if grep -Fxq "$item" $FILE; then
+            echo "Changelog item already exists for
+        $item"
+        else
+            while read line; do
+                if [[ $line == "## [Unreleased]"* ]]; then
+                    newvar=$(<<<"$line" sed 's/[].*[]/\\&/g')
+                    sed -i "" "s/$newvar/## [Unreleased]\n\n$item\n### Added\n- $CHANGELOG_ITEM. /" $FILE
+                    return
+                fi
+            done < $FILE
+        fi
+    }
+
+    init()
+    {
+        if test -f "$changelog" ; then
+            new_changelog_item
+        else
+            new_changelog
+        fi
+    }
+    init
+else
+    exit;
+fi
 ```
 
 ## Running the Script
@@ -201,4 +233,4 @@ Run the bash script with the following command:
 
 `./changelog.sh`
 
-This script creates a Markdown file that contains your changelog. 
+This script creates a new file with your specificed name that contains your changelog. 
