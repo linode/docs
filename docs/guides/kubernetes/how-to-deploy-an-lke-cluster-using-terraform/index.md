@@ -72,14 +72,14 @@ In this section, you will create Terraform configuration files that define the r
 
         mkdir lke-cluster
 
-1. Using the text editor of your choice, create your cluster’s main configuration file named `main.tf` which will store your resource definitions. Add the following contents to the file.
+1. Using the text editor of your choice, create your cluster’s main configuration file named `main.tf` which will store your resource definitions. Add the following contents to the file, replacing the `version` number which can be found on [Terraform's Registry Website](https://registry.terraform.io/providers/linode/linode/latest/docs):
 
     {{< file "~/terraform/lke-cluster/main.tf" >}}
 terraform {
   required_providers {
     linode = {
       source = "linode/linode"
-      version = "1.16.0"
+      version = "1.27.1"
     }
   }
 }
@@ -108,6 +108,7 @@ resource "linode_lke_cluster" "foobar" {
 //Export this cluster's attributes
 output "kubeconfig" {
    value = linode_lke_cluster.foobar.kubeconfig
+   sensitive = true
 }
 
 output "api_endpoints" {
@@ -134,16 +135,7 @@ output "pool" {
     This configuration file uses the Linode provider to create a Kubernetes cluster. All arguments within the `linode_lke_cluster.foobar` resource are required, except for `tags`. The `pool` argument accepts a list of pool objects. In order to read their input variable values, the configuration file makes use of Terraform's [dynamic blocks](https://www.terraform.io/docs/configuration/expressions.html#dynamic-blocks). Finally, [output values](https://www.terraform.io/docs/configuration/outputs.html) are declared in order to capture your cluster's attribute values that will be returned to Terraform after creating your cluster.
 
     {{< note >}}
-You can set any output value as being sensitive in order to prevent Terraform from printing its value to your terminal after running `terraform apply`. For example, to set the `kubeconfig` output value as sensitive, update its output block in the following way:
-
-{{< file "~/terraform/lke-cluster/main.tf" >}}
-...
-output "kubeconfig" {
-   value = linode_lke_cluster.foobar.kubeconfig
-   sensitive = true
-}
-...
-{{< /file >}}
+You should set any output value as being sensitive in order to prevent Terraform from printing its value to your terminal after running `terraform apply`. In the example configuration for example, the `kubeconfig` output value is listed as sensitive.
 
 See [Terraform's output value documentation](https://www.terraform.io/docs/configuration/outputs.html#sensitive-suppressing-values-in-cli-output) for more details on the behavior of the `sensitive` argument.
     {{</ note >}}
@@ -166,7 +158,7 @@ You are now ready to define the input variables that were referenced in your `ma
 
     variable "k8s_version" {
       description = "The Kubernetes version to use for this cluster. (required)"
-      default = "1.17"
+      default = "1.23"
     }
 
     variable "label" {
@@ -204,7 +196,7 @@ You are now ready to define the input variables that were referenced in your `ma
     }
     {{</ file >}}
 
-    This file describes each variable and provides them with default values. You can update the file with your own preferred default values.
+    This file describes each variable and provides them with default values. You should review and update the file with your own preferred default values, ensuring that they match currently available [versions of Kubernetes on LKE](https://developers.linode.com/changelog/linode-kubernetes-engine/), as well as [Available Plans](https://www.linode.com/docs/guides/choosing-a-compute-instance-plan/) and [Data Centers](https://www.linode.com/docs/guides/how-to-choose-a-data-center/)
 
 ### Assign Values to your Input Variables
 
@@ -218,7 +210,7 @@ If you leave out a variable value in this file, Terraform will use the variable'
 
       {{< file "$~/terraform/lke-cluster/terraform.tfvars" >}}
 label = "example-lke-cluster"
-k8s_version = "1.17"
+k8s_version = "1.23"
 region = "us-west"
 pools = [
   {
@@ -228,7 +220,7 @@ pools = [
 ]
       {{</ file >}}
 
-    Terraform will use the values in this file to create a new Kubernetes cluster with one node pool that contains three 4 GB nodes. The cluster will be located in the `us-west` data center (Dallas, Texas, USA). Each node in the cluster's node pool will use Kubernetes version `1.17` and the cluster will be named `example-lke-cluster`. You can replace any of the values in this file with your own preferred cluster configurations.
+    Terraform will use the values in this file to create a new Kubernetes cluster with one node pool that contains three 4 GB nodes. The cluster will be located in the `us-west` data center (Dallas, Texas, USA). Each node in the cluster's node pool will use Kubernetes version `1.23` and the cluster will be named `example-lke-cluster`. You can replace any of the values in this file with your own preferred cluster configurations.
 
 ## Deploy your Kubernetes Cluster
 
@@ -284,10 +276,10 @@ Now that your Kubernetes cluster is deployed, you can use kubectl to connect to 
 
 1. Use Terraform to access your cluster's kubeconfig, decode its contents, and save them to a file. Terraform returns a [base64](https://en.wikipedia.org/wiki/Base64) encoded string (a useful format for automated pipelines) representing your kubeconfig. Replace `lke-cluster-config.yaml` with your preferred file name.
 
-        export KUBE_VAR=`terraform output kubeconfig` && echo $KUBE_VAR | base64 -d > lke-cluster-config.yaml
+        export KUBE_VAR=`terraform output kubeconfig` && echo $KUBE_VAR | base64 -di > lke-cluster-config.yaml
 
     {{< note >}}
-Depending on your local operating system, to decode the kubeconfig's base64 format, you may need to replace `base64 -d` with `base64 -D`. To determine which `base64` option to use, issue the following command:
+Depending on your local operating system, to decode the kubeconfig's base64 format, you may need to replace `base64 -di` with `base64 -D` or just `base64 -d`. To determine which `base64` option to use, issue the following command:
 
     base64 --help
     {{</ note >}}
