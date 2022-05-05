@@ -77,9 +77,9 @@ To include an external JavaScript file in HTML, you still use the `<script>` tag
 
 The steps below assume that you are developing a simple website on your local computer. Your site files are stored in a directory named `example-site`.
 
-1. In your `example-site` directory, add a new subdirectory named `js_files`. This directory stores any JavaScript files that are referenced by HTML files.
+1.  In your `example-site` directory, add a new subdirectory named `js_files`. This directory stores any JavaScript files that are referenced by HTML files.
 
-    mkdir js_files
+        mkdir js_files
 
 1. Using your preferred text editor, add a new file named `example.js` to the `js_files` directory with the JavaScript displayed below.
 
