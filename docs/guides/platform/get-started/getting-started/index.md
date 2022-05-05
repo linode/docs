@@ -7,7 +7,7 @@ keywords: ["getting started", "intro", "basics", "first steps", "linode platform
 description: "Learn how to create an account and use the Linode Cloud Platform."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode/']
-modified: 2022-02-25
+modified: 2022-05-05
 modified_by:
   name: Linode
 published: 2018-11-05
@@ -80,6 +80,10 @@ In addition to [Compute Instances](#create-your-first-compute-instance), Linode 
 
 - [LKE](https://www.linode.com/products/kubernetes/) (Linode Kubernetes Engine): Managed Kubernetes clusters that simplify container orchestration.
 - [Bare Metal](https://www.linode.com/products/bare-metal/) *(Coming soon)*: Dedicated single-tenant hardware for advanced workloads.
+
+**Databases**
+
+- [Managed Databases](https://www.linode.com/products/databases/): Reliable, performant, highly available, and fully managed database clusters to support production database workloads.
 
 **Storage**
 
