@@ -4,12 +4,12 @@ author:
   email: docs@linode.com
 title: "Install and Configure the Linode CLI"
 description: "Learn how to install the Linode CLI on most common operating systems"
-modified: 2022-05-02
+modified: 2022-05-05
 ---
 
 ## Install the Linode CLI
 
-The Linode CLI is officially managed through [pip](https://pypi.org/project/pip/), the package installer for Python.
+The [Linode CLI](https://github.com/linode/linode-cli) is officially managed through [pip](https://pypi.org/project/pip/), the package installer for Python.
 
 1.  Open your preferred terminal application. For Windows, you can use either Powershell or the command prompt.
 
@@ -32,6 +32,8 @@ The Linode CLI is officially managed through [pip](https://pypi.org/project/pip/
 
 ## Configure the Linode CLI
 
+### Interactive Configuration
+
 The first time you interact with the Linode CLI, you need to complete the initial configuration steps discussed in this section.
 
 1.  Initiate the Linode CLI configuration process.
@@ -44,7 +46,15 @@ The first time you interact with the Linode CLI, you need to complete the initia
 
             linode-cli configure --token
 
-1.  After authenticating or providing a token, you are presented with a series of prompts to select your preferred defaults, such as the region, Compute Instance type, and distribution. These are optional and can be overridden when running individual commands. Update these defaults at any time by running `linode-cli configure` again.
+1.  After authenticating or providing a token, you are presented with a series of prompts to select your preferred defaults, such as the region, Compute Instance type, and distribution. These are optional and can be overridden when running individual commands. Update these defaults at any time by running `linode-cli configure` again or by editing the `.config/linode-cli` configuration file.
+
+### Non-interactive Configuration
+
+To configure the CLI without any interactive prompts, you can set the token through the following environment variable, replacing *[token]* with the token you've manually generated. See [Linode API Keys and Tokens](/docs/products/tools/cloud-manager/guides/cloud-api-keys/).
+
+    export LINODE_CLI_TOKEN="[token]"
+
+This allows you to bypass the initial configuration. If this variable is unset, the Linode CLI will stop working until it is set again or until the CLI is reconfigured through the interactive prompts.
 
 ## Install Python 3 and pip3
 
