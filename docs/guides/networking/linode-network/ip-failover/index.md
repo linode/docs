@@ -7,7 +7,7 @@ description: "This guide discusses how to enable failover on a Linode Compute In
 keywords: ['IP failover','IP sharing','elastic IP']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-23
-modified: 2022-04-28
+modified: 2022-05-05
 modified_by:
   name: Linode
 title: "Configuring Failover on a Compute Instance"
@@ -36,7 +36,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | **Frankfurt (Germany)** | **New method (BGP)** | [lelastic](/docs/guides/ip-failover/#configure-failover) / [FRR](/docs/guides/ip-failover-bgp-frr/) | 10 |
 | Fremont (California, USA) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 3 |
 | London (United Kingdom) | *Undergoing network upgrades* | - | 7 |
-| Mumbai (India) |  *Not supported* | - | 14 |
+| Mumbai (India) |  *Undergoing network upgrades* | - | 14 |
 | Newark (New Jersey, USA) | *Undergoing network upgrades* | - | 6 |
 | Singapore | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 9 |
 | Sydney (Australia) |  *Not supported* | - | 16 |

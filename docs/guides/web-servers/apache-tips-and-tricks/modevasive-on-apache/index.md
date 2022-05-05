@@ -155,9 +155,9 @@ By default "/tmp" is used for locking mechanism, which opens some security issue
 
 ### Whitelisting IP Addresses
 
-IP addresses of trusted clients can be whitelisted to insure they are never denied. The purpose of whitelisting is to protect software, scripts, local searchbots, or other automated tools from being denied for requesting large amounts of data from the server. Whitelisting should *not* be used to add customer lists or anything of the sort, as this opens the server to abuse. This module is very difficult to trigger without performing some type of malicious attack, and for that reason it is more appropriate to allow the module to decide on its own whether or not an individual customer should be blocked.
+IP addresses of trusted clients can be allowed to insure they are never denied. The purpose of whitelisting is to protect software, scripts, local searchbots, or other automated tools from being denied for requesting large amounts of data from the server. Whitelisting should *not* be used to add customer lists or anything of the sort, as this opens the server to abuse. This module is very difficult to trigger without performing some type of malicious attack, and for that reason it is more appropriate to allow the module to decide on its own whether or not an individual customer should be blocked.
 
-To whitelist an address (or range) add an entry to the Apache configuration in the following fashion:
+To allow an address (or range) add an entry to the Apache configuration in the following fashion:
 
 {{< file "/etc/apache2/apache2.conf" >}}
 DOSWhitelist 127.0.0.1

@@ -71,7 +71,7 @@ You'll see the following information for your Linode. Use this information to co
 Below are example configurations for the given Linux distribution. Edit the example files substituting the example IP addresses with those of your Linode, gateway and DNS nameservers. Depending on the amount of addresses you want to configure, not all lines will be necessary.
 
 {{< note >}}
- All IPv6 pools are routed through the original IPv6 SLAAC address for a Linode. For this reason, the original IPv6 SLAAC address **must always** be the first IPv6 address included in a network configuration. If you would like to include a secondary IPv6 address from an IPv6 range that's already been assigned to your Linode Compute Instance, include it under any configuration fields or variables for secondary IPv6 addresses.
+ All additional `/64` IPv6 ranges are routed through the original IPv6 SLAAC address for a Linode. When configuring both a SLAAC address and a routed range, additional configuration changes should be made.
 {{< /note >}}
 
 ### Arch, CoreOS Container Linux
@@ -100,10 +100,6 @@ Address=198.51.100.3/24
 # Add a private address:
 Address=192.168.133.234/17
 
-# IPv6 gateway and primary IPv6 SLAAC address.
-Gateway=fe80::1
-Address=2001:db8:2000:aff0::2/64
-
 # Add a second IPv6 address.
 Address=2001:db8:2000:aff0::3/64
 {{< /file >}}
@@ -124,8 +120,6 @@ BOOTPROTO=none
 PEERDNS=no
 
 # Edit from "yes" to "no".
-IPV6_AUTOCONF=no
-
 ...
 
 # Add the following lines:
@@ -153,8 +147,7 @@ PREFIX1=24
 IPADDR2=192.0.2.6
 PREFIX2=17
 
-# IPv6 gateway and primary IPv6 SLAAC address.
-IPV6_DEFAULTGW=fe80::1%eth0
+# Additional IPv6 address. The SLAAC address is configured automatically.
 IPV6ADDR=2001:db8:2000:aff0::2/128
 
 # Add additional IPv6 addresses, separated by a space.
@@ -232,14 +225,13 @@ iface eth0 inet static
 iface eth0 inet static
   address 198.51.100.10/24
 
-# IPv6 gateway and primary IPv6 SLAAC address.
+# Additional IPv6 address and configuration options for additonal IP addresses when using SLAAC address
 iface eth0 inet6 static
-  address 2001:db8:2000:aff0::1/64
-  gateway fe80::1
-
-# Add a second IPv6 address.
-iface eth0 inet6 static
-  address 2001:db8:2000:aff0::2/64
+    address 2001:db8:2000:aff0::1/64
+    address 2001:db8:2000:aff0::2/64
+    address 2001:db8:2000:aff0::3/64
+    autoconf 1
+    acccept_ra 2
 {{< /file >}}
 
 1.  Populate `resolv.conf` with DNS resolver addresses and resolv.conf options ([see man 5 resolv.conf](https://linux.die.net/man/5/resolv.conf)). Be aware that resolv.conf can only use up to three `nameserver` entries. The *domain* and *options* lines aren't necessary, but useful to have.

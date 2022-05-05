@@ -4,7 +4,6 @@ author:
   name: Angel Guarisma
   email: docs@linode.com
 description: "Python virtual environments help developers avoid dependency conflicts. This guide covers the basic concepts of Python packages and virtual environments."
-og_description: "Python virtual environments help developers avoid dependency conflicts. This guide covers the basic concepts of Python packages and virtual environments."
 keywords: ['How to install python on linux','manage python environments in linux', 'virtualenv python', 'pipenv tutorial']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
