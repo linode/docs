@@ -43,7 +43,11 @@ In this section you install your custom distro onto a raw disk, with the *direct
 
 ### Prepare your Linode
 
-1.  Log into the [Cloud Manager](https://cloud.linode.com) and create a Linode. You can use a 1GB Linode (Nanode) for this guide.
+1.  Log into the [Cloud Manager](https://cloud.linode.com)
+1.  Click the **x** button next to the default *Debian* image in the **Images** dropdown to create a Linode without a distribution.
+    {{< note >}}
+ When you create a Linode without a distribution you are not prompted to create a root password for your Linode. Continue to choose the region, plan, Linode label, and select **Create**.
+{{< /note >}}
 
 1.  After the Linode is finished provisioning, power it down.
 
@@ -51,16 +55,16 @@ In this section you install your custom distro onto a raw disk, with the *direct
 
 1. In the Resize menu uncheck the **Auto Resize Disk** option at the bottom of the screen.
 
-1.  Next, exit the resize screen and click the **Storage** tab and **Resize** the main disk so you have some room for new disks; you want to free 2100 MB for the disk we used in this example.
-
-    {{< note >}}
-Depending on the distribution you install first, you may need to resize your disk to a size slightly larger than 2100 MB. You can always check how much space your disk is actively using and would therefore require by entering the `df -h` command when it's mounted.
-{{< /note >}}
+1.  Next, exit the resize screen and click the **Storage** tab and click **Add a Disk** to create two unformatted disks.
 
 1.  [Create two raw, unformatted disk images](/docs/guides/disks-and-storage/#creating-a-disk) from the Linode's Dashboard:
 
     * A disk labeled **Installer**. The size of this disk depends upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk is 100MB in size, giving us plenty of room for the Debian network installer.
     * A disk labeled **Boot**. If you *don't* plan to complete the next section on Linode Manager compatibility, this can take up the rest of the free space available on your Linode.
+
+        {{< note >}}
+        You can always check how much space your disk is actively using and would therefore require by entering the `df -h` command when it's mounted.
+       {{< /note >}}
 
     {{< caution >}}
 If you intend to continue to the next section on [Linode Manager Compatibility](#linode-manager-compatibility), you should make your boot disk no larger than necessary - in this example we'll install Debian to a 2000MB disk.
@@ -168,7 +172,7 @@ These features are not available even if you formatted the disk to *ext4* during
 
 ### Prepare your Linode
 
-1.  Create some room for two new disks. One formatted *ext4* to move the file system to and one for *swap*. To make more room, consider deleting the initial distribution that was created during Linode creation.
+1.  Create some room for two new disks. One formatted *ext4* to move the file system to and one for *swap*.
 
 1.  [Create a new ext4 disk](/docs/guides/disks-and-storage/#creating-a-disk). The new disk should be large enough to accommodate the root file system that was created on your raw disk (2000 MB). You can make this as large as you'd like, but you should leave enough space for a separate swap partition. For this example, name this disk *Boot-New*.
 
@@ -188,7 +192,7 @@ These features are not available even if you formatted the disk to *ext4* during
 
 1.  You should still be booted into your *Boot* profile using direct disk boot; if not, boot into it now.
 
-1.  Before you update your `/etc/fstab` file, make sure you know the current root partition of your custom distro. You can use the `lsblk` command to confirm which partition has `/` as its mount point:
+1.  Before you update your `/etc/fstab` file, make sure you know the current root partition of your custom distribution. You can use the `lsblk` command to confirm which partition has `/` as its mount point:
 
     {{< output >}}
 root@custom-kvm:~# lsblk
