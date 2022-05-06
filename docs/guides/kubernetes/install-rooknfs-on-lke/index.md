@@ -262,6 +262,6 @@ The following command can now be entered to list the files being stored for in t
 
     kubectl exec $(kubectl get pod -l app=nfs-demo,role=busybox -o jsonpath='{.items[0].metadata.name}') -- ls /mnt
 
-This additional command can also be entered to list all of the files in the  volume for the nginx workload:
+This additional command can also be entered to list all of the files in the volume for the nginx workload:
 
     kubectl exec $(kubectl get pod -l app=nfs-demo,role=web-frontend -o jsonpath='{.items[0].metadata.name}') -- ls /usr/share/nginx/html

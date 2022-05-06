@@ -175,7 +175,7 @@ All other commands:
 
 Terraform uses a declarative approach in which configuration files specify the desired end-state of the infrastructure, so the examples in this guide will simply list the Linodes that we want to create. Terraform can understand two types of configuration files: JSON, and [HashiCorp Configuration Language](https://github.com/hashicorp/hcl) (HCL). This guide uses the HCL format, and HCL files end in the `.tf` extension.
 
-1.  Create the file `linode-terraform-web.tf` in your `~/terraform` directory with the snippet below. Fill in your Linode API token, public SSH key, and desired root password where indicated. Additionally, replace the linode provider `version` to the [latest](https://registry.terraform.io/providers/linode/linode/):
+1.  Create the file `linode-terraform-web.tf` in your `~/terraform` directory with the snippet below. Fill in your Linode API token, public SSH key, and desired root password where indicated. Additionally, replace the Linode provider `version` to the [latest](https://registry.terraform.io/providers/linode/linode/):
 
     {{< file "~/terraform/linode-terraform-web.tf" aconf >}}
 terraform {
