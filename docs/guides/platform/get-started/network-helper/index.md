@@ -7,15 +7,14 @@ description: 'This guide introduces you to Network Helper, a host-side service w
 keywords: ["network helper", "static"]
 tags: ["linode platform","networking","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2019-01-07
+modified: 2022-05-10
 published: 2014-12-08
 modified_by:
   name: Linode
 title: Network Helper
 aliases: ['/platform/network-helper-classic-manager/','/platform/network-helper/','/platform/network-helper-new-manager/']
+image: network-helper-title-graphic.jpg
 ---
-
-![Network Helper](network-helper-title-graphic.jpg "Network Helper")
 
 ## What is Network Helper?
 
@@ -77,15 +76,17 @@ Network Helper is not supported on the CoreOS distribution
 
 Network Helper configures `/etc/network/interfaces`.
 
-### Arch & Ubuntu (18.04 LTS and later)
+### Arch and Ubuntu (18.04 LTS and later)
 
 Network Helper configures `/etc/systemd/network/05-eth0.network`.
 
-### CentOS & Fedora
+### CentOS and Fedora
+
+**Distributions:** CentOS Stream 8+, CentOS 7+, Fedora, and other RHEL-derivatives (AlmaLinux 8 and Rocky Linux 8)
 
 Network Helper configures `/etc/sysconfig/network-scripts/ifcfg-eth0`.
 
-### Debian & Ubuntu (versions before 18.04 LTS)
+### Debian and Ubuntu (versions before 18.04 LTS)
 
 Network helper configures `/etc/network/interfaces` and `/etc/resolv.conf`.
 
