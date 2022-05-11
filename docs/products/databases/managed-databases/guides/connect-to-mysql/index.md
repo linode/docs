@@ -5,7 +5,7 @@ author:
 title: "Connect to a MySQL Database"
 description: "Learn how to connect to a MySQL Managed Databse through the command line or MySQL Workbench."
 published: 2022-02-23
-modified: 2022-03-04
+modified: 2022-05-11
 ---
 
 To connect to a MySQL Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a MySQL client. This guide details how to access your database using popular tools.
@@ -43,6 +43,8 @@ To connect direct to the database from a command-line, you can use the `mysql` t
 
         mysql --host=[host] --user=[username] --password --ssl-mode=required
 
+    If your system is using MariaDB instead of MySQL (such as when using the default packages in Debian's own repsitory), replace the `--ssl-mode=required` parameter with `--ssl=true`.
+
     {{<note>}}
 If you are connecting to the *private network host*, ensure your Compute Instance is located within that same data center and you have added a Private IPv4 address to that instance. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address).
 {{</note>}}
@@ -55,11 +57,7 @@ See [How to Connect to a MySQL or MariaDB Database](/docs/guides/connect-to-a-my
 
 ### Install a MySQL Client
 
-If you do not currently have a MySQL command-line client installed on your system, follow the instructions below to install it one.
-
--   **Ubuntu and Debian:**
-
-        sudo apt install mysql-client
+If you do not currently have a MySQL command-line client installed on your system, follow the instructions below to install one through your distribution's repositories. 
 
 -   **CentOS Stream 9 (and 8), CentOS/RHEL 8 (including AlmaLinux 8 and RockyLinux 8):**
 
@@ -69,9 +67,21 @@ If you do not currently have a MySQL command-line client installed on your syste
 
         sudo yum install mysql
 
+-   **Debian:**
+
+    *Debian does not include MySQL within its own repositories. Instead, it uses MariaDB. While this is largely compatible with MySQL, some commands and functionality may vary.*
+
+        sudo apt update
+        sudo apt install mariadb-client
+
 -   **Fedora:**
 
         sudo dnf install community-mysql
+
+-   **Ubuntu:**
+
+        sudo apt update
+        sudo apt install mysql-client
 
 ## Connect Using MySQL Workbench (GUI)
 
