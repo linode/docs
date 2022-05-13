@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.123.0
+  version: 4.123.1
 
   title: Linode API
   description: |
@@ -3448,7 +3448,7 @@ paths:
                 allow_list:
                   $ref: '#/components/schemas/DatabaseMySQLRequest/properties/allow_list'
                 updates:
-                  $ref: '#/components/schemas/DatabaseMySQLRequest/properties/updates'
+                  $ref: '#/components/schemas/DatabaseMySQL/properties/updates'
       responses:
         '200':
           description: Managed Database updated successfully.
@@ -18072,8 +18072,6 @@ components:
           $ref: '#/components/schemas/DatabaseMySQL/properties/ssl_connection'
         replication_type:
           $ref: '#/components/schemas/DatabaseMySQL/properties/replication_type'
-        updates:
-          $ref: '#/components/schemas/DatabaseMySQL/properties/updates'
     DatabaseSSL:
       type: object
       description: Managed Database SSL object.
