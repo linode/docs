@@ -36,5 +36,5 @@ All of the following types of workloads *can* be reached from the Internet:
 Exposing workloads to the public Internet through the above methods can be convenient, but they can also carry a security risk. You may wish to manually install firewall rules on your cluster nodes; to do so, [please see this community post](https://www.linode.com/community/questions/19155/securing-k8s-cluster). Linode is developing services which will allow for greater flexibility for the network endpoints of these types of workloads in the future.
 
 {{< note >}}
- All new LKE clusters will create a service named `Kubernetes` in the `default` namespace designed to ease interactions with control plane components. This is a standard service for LKE clusters.
+ All new LKE clusters will create a service named `Kubernetes` in the `default` namespace designed to ease interactions with the control plane. This is a standard service for LKE clusters.
  {{< /note >}}
