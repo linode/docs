@@ -9,14 +9,15 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2016-12-02
-title: 'How To Create a MongoDB Replica Set'
-h1_title: 'Creating a MongoDB Replica Set'
+title: "How To Create a MongoDB Replica Set"
+h1_title: "Creating a MongoDB Replica Set"
+enable_h1: true
 external_resources:
  - '[Getting Started with the mongo Shell](https://docs.mongodb.com/manual/mongo/)'
  - '[Replication Introduction](https://docs.mongodb.com/manual/replication/)'
  - '[Geographically Distributed Replica Sets](https://docs.mongodb.com/manual/tutorial/deploy-geographically-distributed-replica-set/)'
 tags: ["ubuntu","database","nosql","centos"]
-aliases: ['/databases/mongodb/create-a-mongodb-replica-set/']
+aliases: ['/databases/mongodb/create-a-mongodb-replica-set/','/databases/mongodb/creating-a-mongodb-replication-set-on-centos-7/','/guides/creating-a-mongodb-replication-set-on-centos-7/','/databases/mongodb/creating-a-mongodb-replication-set-on-ubuntu-16-04/','/guides/creating-a-mongodb-replication-set-on-ubuntu-16-04/']
 ---
 
 In this guide, you'll learn how to create a MongoDB *replica set*. A replica set is a cluster of MongoDB database servers that implements master-slave (primary-secondary) replication. Replica sets also fail over automatically, so if one of the members becomes unavailable, a new primary host is elected and your data is still accessible. When combined with sharded database clusters, replica sets allow you to create scalable, highly available database systems for use with growing datasets.
