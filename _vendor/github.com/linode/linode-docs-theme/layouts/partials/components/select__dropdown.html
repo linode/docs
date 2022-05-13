@@ -1,7 +1,12 @@
 <div class="py-1">
   {{ range .values }}
-    <a href="{{ .href }}"
-        class="{{ if .selected }}font-semibold{{ else }}font-normal{{ end }} inline-flex 
+    <a
+      href="{{ .href }}"
+      class="{{ if .selected }}
+        font-semibold
+      {{ else }}
+        font-normal
+      {{ end }} inline-flex 
                justify-start w-full px-4 py-2 text-sm leading-5 text-gray-700 
              hover:bg-gray-200 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">
       {{ .title }}
