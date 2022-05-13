@@ -2,7 +2,9 @@
 author:
   name: Linode
   email: docs@linode.com
-title: Add Cloud Firewall
+title: "Create a Cloud Firewall"
+modified: 2022-05-12
+aliases: ['/products/networking/cloud-firewall/guides/add-firewall/']
 description: "How to add a Linode Cloud Firewall."
 ---
 

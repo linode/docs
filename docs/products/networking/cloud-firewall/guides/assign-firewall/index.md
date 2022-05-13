@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-title: Assign a Cloud Firewall to a Linode
+title: "Manage Compute Instances"
 description: "How to assign a Cloud Firewall to a Linode."
 ---
 

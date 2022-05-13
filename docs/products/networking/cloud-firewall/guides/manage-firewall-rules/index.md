@@ -2,8 +2,9 @@
 author:
   name: Linode
   email: docs@linode.com
-title: Add Cloud Firewall Rules
+title: "Manage Firewall Rules"
 description: "How to add rules to a Linode Cloud Firewall."
+aliases: ['/products/networking/cloud-firewall/guides/add-rules/']
 ---
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
