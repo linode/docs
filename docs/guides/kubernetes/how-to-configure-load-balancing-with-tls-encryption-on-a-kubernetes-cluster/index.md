@@ -198,13 +198,13 @@ You can watch the status by running 'kubectl --namespace default get services -o
 ...
 {{</ output >}}
 
-## Create a Subdomain DNS Entries for your Example Applications
+## Create Subdomain DNS Entries for your Example Applications
 
 Now that Linode NodeBalancers have been created by the NGINX Ingress Controller, you can point a subdomain DNS entries to the NodeBalancer's public IPv4 address. Since this guide uses two example applications, it will require two subdomain entries.
 
 1.  Access your NodeBalancer's assigned external IP address.
 
-        kubectl --namespace default get services -o wide -w ingress-nginx-controller
+        kubectl -n default get services -o wide ingress-nginx-controller
 
     The command will return a similar output:
 
@@ -238,7 +238,7 @@ If you would like a deeper dive into cert-manager, see our guide [What is Kubern
 ### Install cert-manager
 1.  Install cert-manager's CRDs.
 
-        kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.3.1/cert-manager.crds.yaml
+        kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.8.0/cert-manager.crds.yaml
 
 1.  Create a cert-manager namespace.
 
@@ -246,7 +246,7 @@ If you would like a deeper dive into cert-manager, see our guide [What is Kubern
 
 1.  Add the Helm repository which contains the cert-manager Helm chart.
 
-        helm repo add jetstack https://charts.jetstack.io
+        helm repo add cert-manager https://charts.jetstack.io
 
 1.  Update your Helm repositories.
 
@@ -255,9 +255,9 @@ If you would like a deeper dive into cert-manager, see our guide [What is Kubern
 1.  Install the cert-manager Helm chart. These basic configurations should be sufficient for many use cases, however, additional cert-manager configurable parameters can be found in [cert-manager's official documentation](https://hub.helm.sh/charts/jetstack/cert-manager).
 
         helm install \
-        cert-manager jetstack/cert-manager \
+        my-cert-manager cert-manager/cert-manager \
         --namespace cert-manager \
-        --version v1.3.1
+        --version v1.8.0
 
 1.  Verify that the corresponding cert-manager pods are now running.
 
