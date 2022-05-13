@@ -18,7 +18,7 @@ Ubuntu Server 18.04 and later versions use Netplan to configure networking, with
 
 ### Manually Configuring a VLAN in Ubuntu 18.04
 
-1. Verify that Network Helper is disabled to avoid it overwriting any changes on the next reboot. See [Network Helper Settings](/docs/guides/network-helper/#network-helper-settings) for information on adjusting Network Helper settings.
+1. Verify that Network Helper is disabled to avoid it overwriting any changes on the next reboot. See [Enable or Disable Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) for information on adjusting Network Helper settings.
 
 1. Log in to the Linode via [Lish](/docs/guides/using-the-lish-console/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
 
@@ -45,7 +45,7 @@ Debian 7 and above, as well as Ubuntu 16.04, all use ifup and ifdown to manage n
 
 ### Manually Configuring a VLAN in Debian and Ubuntu 16.04
 
-1. Check if Network Helper is enabled or disabled. See [Network Helper Settings](/docs/guides/network-helper/#network-helper-settings) for information on locating this setting. Network Helper should not interfere with any of the changes below, but its status may impact the files that you're able to edit.
+1. Check if Network Helper is enabled or disabled. See [Enable or Disable Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) for information on locating this setting. Network Helper should not interfere with any of the changes below, but its status may impact the files that you're able to edit.
 
 1. Log in to the Linode via [Lish](/docs/guides/using-the-lish-console/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
 
@@ -74,7 +74,7 @@ CentOS 7 and above, as well as Fedora, all use systemd-networkd and NetworkManag
 
 ### Manually Configuring a VLAN in CentOS and Fedora
 
-1. Verify that Network Helper is disabled to avoid it overwriting any changes on the next reboot. See [Network Helper Settings](/docs/guides/network-helper/#network-helper-settings) for information on adjusting Network Helper settings.
+1. Verify that Network Helper is disabled to avoid it overwriting any changes on the next reboot. See [Enable or Disable Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) for information on adjusting Network Helper settings.
 
 1. Log in to the Linode via [Lish](/docs/guides/using-the-lish-console/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
 

@@ -71,7 +71,7 @@ export function toDateString(date) {
 export function sprintf(format) {
 	var args = Array.prototype.slice.call(arguments, 1);
 	var i = 0;
-	return format.replace(/%s/g, function() {
+	return format.replace(/%s/g, function () {
 		return args[i++];
 	});
 }
@@ -103,20 +103,20 @@ export function getOffsetTop(container, el) {
 	}
 	return distance < 0 ? 0 : distance;
 }
-	
+
 export function setIsTranslating(el, timeout = 1000) {
 	let currentLang = getCurrentLang();
 	if (!currentLang || currentLang == 'en') {
 		return;
 	}
 
-	let els = isIterable(el) ? el : [ el ];
+	let els = isIterable(el) ? el : [el];
 
 	els.forEach((el) => {
 		el.classList.add('is-translating');
 	});
 
-	setTimeout(function() {
+	setTimeout(function () {
 		els.forEach((el) => {
 			el.classList.remove('is-translating');
 		});
@@ -135,7 +135,6 @@ export function getCurrentLang() {
 	return JSON.parse(localStorage.getItem('_x_currentLang'));
 }
 
-
 const validLangs = ['en', 'es'];
 
 export function getCurrentLangFromLocation() {
@@ -143,7 +142,7 @@ export function getCurrentLangFromLocation() {
 	if (validLangs.includes(lang)) {
 		return lang;
 	}
-	return ""
+	return '';
 }
 
 export function isIterable(obj) {
