@@ -248,13 +248,13 @@ spec:
 
 To test the Rook NFS server, create two deployments that will leverage a singular storage class labeled as `rook-nfs-share1`.
 
-1. Deploy the PVC, busybox, and web-rc server using the following commands:
+1.  Deploy the PVC, busybox, and web-rc server using the following commands:
 
         kubectl apply -f ~/nfs/cluster/examples/kubernetes/nfs/pvc.yaml
         kubectl apply -f ~/nfs/cluster/examples/kubernetes/nfs/busybox-rc.yaml
         kubectl apply -f ~/nfs/cluster/examples/kubernetes/nfs/web-rc.yaml
 
-1. Create a service that will allow the busybox container to update the timestamp in the `index.html` file:
+1.  Create a service that will allow the busybox container to update the timestamp in the `index.html` file:
 
         kubectl apply -f  ~/nfs/cluster/examples/kubernetes/nfs/web-service.yaml
 

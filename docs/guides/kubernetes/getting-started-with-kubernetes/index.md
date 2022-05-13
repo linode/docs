@@ -180,28 +180,28 @@ After entering the `usermod` command, you need to close your SSH session and ope
 
 Although previously an unnecessary step when using Docker as a container runtime, as of [Kubernetes v1.24](https://kubernetes.io/releases/#release-v1-24), the [Dockershim adapter service was officially removed from Kubernetes](https://kubernetes.io/blog/2022/02/17/dockershim-faq/). In order to prepare for this change, Mirantis and Docker have worked together to create an adapter service called **cri-dockerd** to continue support for Docker as a container runtime. Installing the [cri-dockerd](https://github.com/mirantis/cri-dockerd) service is a necessary step on all clusters using Kubernetes version 1.24 or later, and should be performed when following the steps in this guide:
 
-1. Install the `go` programming language to support later commands performed during the installation process:
+1.  Install the `go` programming language to support later commands performed during the installation process:
 
         sudo apt install golang-go
 
-1. Clone the `cri-dockerd` repository and change your working directory into the installation path:
+1.  Clone the `cri-dockerd` repository and change your working directory into the installation path:
 
         cd && git clone https://github.com/Mirantis/cri-dockerd.git
         cd cri-dockerd
 
-1. Build the code:
+1.  Build the code:
 
         sudo mkdir bin
         cd src && go get && go build -o ../bin/cri-dockerd
 
-1. Configure `cri-dockerd` to work with systemd:
+1.  Configure `cri-dockerd` to work with systemd:
 
         cd .. && mkdir -p /usr/local/bin
         install -o root -g root -m 0755 bin/cri-dockerd /usr/local/bin/cri-dockerd
         cp -a packaging/systemd/* /etc/systemd/system
         sed -i -e 's,/usr/bin/cri-dockerd,/usr/local/bin/cri-dockerd,' /etc/systemd/system/cri-docker.service
 
-1. Reload all systemd files and ensure that the systemd service for `cri-dockerd` is fully enabled:
+1.  Reload all systemd files and ensure that the systemd service for `cri-dockerd` is fully enabled:
 
         systemctl daemon-reload
         systemctl enable cri-docker.service
