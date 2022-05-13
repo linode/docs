@@ -47,7 +47,7 @@ You can attach a Linode to a VLAN in three different ways using the Linode API:
 The steps in this guide can be adopted to create and use VLANs for your specific use case.
 
 {{< note >}}
-When you attach a Linode to a VLAN and reboot the Linode, [Network Helper](/docs/guides/network-helper/#what-is-network-helper) generates network configurations for the specified network interfaces if it is enabled. You can enable Network Helper by default using the Account Settings Update ([PUT /account/settings](/docs/api/account/#account-settings-update)) endpoint. The Linode must be rebooted for any changes within its network interfaces to take effect.
+When you attach a Linode to a VLAN and reboot the Linode, [Network Helper](/docs/guides/network-helper/) generates network configurations for the specified network interfaces if it is enabled. You can enable Network Helper by default using the Account Settings Update ([PUT /account/settings](/docs/api/account/#account-settings-update)) endpoint. The Linode must be rebooted for any changes within its network interfaces to take effect.
 {{< /note >}}
 
 ## Configuring VLANs with the Interfaces Array
