@@ -48,7 +48,7 @@ Any Personal Access Tokens generated from the previous Linode Manager are API v3
 The installation steps in this section are for Linux operating systems. To install Terraform on a different operating system, like macOS, see [Terraform's downloads](https://www.terraform.io/downloads.html) page. Once installed, skip to [Building with the Terraform Provider](#building-with-the-linode-provider).
 
 {{< note >}}
-The Terraform Provider for Linode requires [Terraform version 0.12.0+](https://www.hashicorp.com/blog/announcing-terraform-0-12). The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and may be updated in the near future.
+The Terraform Provider for Linode requires [Terraform version 1.1+](https://www.hashicorp.com/blog/terraform-1-1-improves-refactoring-and-the-cloud-cli-experience). The examples in this guide were written to be compatible with [Terraform version 1.1](https://www.terraform.io/docs/configuration-0-11/terraform.html) and may be updated in the near future.
 {{</ note >}}
 
 1.  Make a Terraform project directory in your home directory and then navigate to it:
@@ -56,7 +56,7 @@ The Terraform Provider for Linode requires [Terraform version 0.12.0+](https://w
         mkdir ~/terraform
         cd ~/terraform
 
-2.  Download the following files from [Terraform's website](https://www.terraform.io/downloads.html), ensuring that the latest version available is being installed. Example `wget` commands are listed using the latest version available at time of publishing (0.12.5). You should inspect the links on the download page to see if a newer version is available and update the `wget` commands to use those URLs instead:
+2.  Download the following files from [Terraform's website](https://www.terraform.io/downloads.html), ensuring that the latest version available is being installed. Example `wget` commands are listed using the latest version available at time of publishing (1.1.9). You should inspect the links on the download page to see if a newer version is available and update the `wget` commands to use those URLs instead:
 
     -   The 64-bit Linux `.zip` archive
 
@@ -205,7 +205,7 @@ resource "linode_instance" "terraform-web" {
     This snippet creates a Linode 2GB labelled `Terraform-Web-Example` in a `Terraform` Linodes group. While the server's software won't be configured in this guide, we can imagine for now that the Linode acts as a webserver.
 
     {{< note >}}
-See [Terraform's documentation](https://www.terraform.io/docs/configuration/syntax.html) for more information on configuration syntax.
+See [Terraform's documentation](https://www.terraform.io/docs/configuration/syntax.html) for more information on configuration syntax and any updates to the Linode provider.
 {{< /note >}}
 
 1.  Initialize the Terraform configuration:
