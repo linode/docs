@@ -465,6 +465,7 @@ dnsmasq
 dockercompose
 dockerfile
 dockerfiles
+dockershim
 dockerize
 dockerized
 docstring
@@ -1201,6 +1202,7 @@ minio
 minisockets
 minitest
 minix
+mirantis
 misconfiguration
 misconfigurations
 misconfigured

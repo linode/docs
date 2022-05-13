@@ -364,7 +364,7 @@ Follow the steps below on each node you would like to bootstrap to the cluster a
 
         ssh username@192.0.2.1
 
-1.  Join the node to your cluster using kubeadm. Ensure you replace `192.0.2.0:6443` with the IP address for your master node along with its Kubernetes API server's port number, `udb8fn.nih6n1f1aijmbnx5` with your bootstrap token, and `sha256:b7c01e83d63808a4a14d2813d28c127d3a1c4e1b6fc6ba605fe4d2789d654f26` with your CA key hash. Additionally, ensure that the `--cri-socket` optiom is manually added to the command to specify `cri-docker` using the `unix:///var/run/cri-dockerd.sock` socket. The final command will resemble the following, and may take a few moments to complete:
+1.  Join the node to your cluster using kubeadm. Ensure you replace `192.0.2.0:6443` with the IP address for your master node along with its Kubernetes API server's port number, `udb8fn.nih6n1f1aijmbnx5` with your bootstrap token, and `sha256:b7c01e83d63808a4a14d2813d28c127d3a1c4e1b6fc6ba605fe4d2789d654f26` with your CA key hash. Additionally, ensure that the `--cri-socket` option is manually added to the command to specify `cri-docker` using the `unix:///var/run/cri-dockerd.sock` socket. The final command will resemble the following, and may take a few moments to complete:
 
         sudo kubeadm join :6443 --token udb8fn.nih6n1f1aijmbnx5 \
         --discovery-token-ca-cert-hash sha256:b7c01e83d63808a4a14d2813d28c127d3a1c4e1b6fc6ba605fe4d2789d654f26 --cri-socket=unix:///var/run/cri-dockerd.sock
