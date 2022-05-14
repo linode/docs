@@ -151,14 +151,14 @@ These next sections show you various ways and tools for querying you MongoDB dat
 switched to db libraryDb
 
 {
-	"acknowledged" : true,
-	"insertedIds" : [
-		ObjectId("627abd0a9709397b4c05386f"),
-		ObjectId("627abd0a9709397b4c053870"),
-		ObjectId("627abd0a9709397b4c053871"),
-		ObjectId("627abd0a9709397b4c053872"),
-		ObjectId("627abd0a9709397b4c053873")
-	]
+    "acknowledged" : true,
+    "insertedIds" : [
+        ObjectId("627abd0a9709397b4c05386f"),
+        ObjectId("627abd0a9709397b4c053870"),
+        ObjectId("627abd0a9709397b4c053871"),
+        ObjectId("627abd0a9709397b4c053872"),
+        ObjectId("627abd0a9709397b4c053873")
+    ]
 }
 {{< /output >}}
 
@@ -176,26 +176,26 @@ The simplest queries filter based on specific values in specific fields. This ex
 
 {{< output >}}
 {
-	"_id" : ObjectId("627abd0a9709397b4c053870"),
-	"title" : "Othello",
-	"author" : "William Shakespeare",
-	"originalPublicationYear" : 1622,
-	"originalPublisherLocation" : [
-		"London",
-		"England"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1993,
-			"publisher" : "Simon & Schuster",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 2008,
-			"publisher" : "Dover Publications",
-			"format" : "paperback"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c053870"),
+    "title" : "Othello",
+    "author" : "William Shakespeare",
+    "originalPublicationYear" : 1622,
+    "originalPublisherLocation" : [
+        "London",
+        "England"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1993,
+            "publisher" : "Simon & Schuster",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 2008,
+            "publisher" : "Dover Publications",
+            "format" : "paperback"
+        }
+    ]
 }
 {{< /output >}}
 
@@ -207,16 +207,16 @@ MongoDB also provides a way to check for documents where a given field is null â
 
 {{< output >}}
 {
-	"_id" : ObjectId("627abd0a9709397b4c053873"),
-	"title" : "Native Guard",
-	"author" : "Natasha Tretheway",
-	"originalPublicationYear" : 2007,
-	"originalPublisherLocation" : [
-		"Boston",
-		"United States"
-	],
-	"publisher" : "Houghton Mifflin",
-	"format" : "Hardcover"
+    "_id" : ObjectId("627abd0a9709397b4c053873"),
+    "title" : "Native Guard",
+    "author" : "Natasha Tretheway",
+    "originalPublicationYear" : 2007,
+    "originalPublisherLocation" : [
+        "Boston",
+        "United States"
+    ],
+    "publisher" : "Houghton Mifflin",
+    "format" : "Hardcover"
 }
 {{< /output >}}
 
@@ -232,38 +232,38 @@ MongoDB has several keywords that let you query by comparison. Here you can find
 
     {{< output >}}
 {
-	"_id" : ObjectId("627abd0a9709397b4c053872"),
-	"title" : "Everything that Rises Must Converge",
-	"author" : "Flannery O'Connor",
-	"originalPublicationYear" : 1965,
-	"originalPublisherLocation" : [
-		"New York",
-		"United States"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1984,
-			"publisher" : "Farrar, Straus and Giroux",
-			"format" : "hardcover"
-		},
-		{
-			"publicationYear" : 1996,
-			"publisher" : "Farrar, Straus and Giroux",
-			"format" : "paperback"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c053872"),
+    "title" : "Everything that Rises Must Converge",
+    "author" : "Flannery O'Connor",
+    "originalPublicationYear" : 1965,
+    "originalPublisherLocation" : [
+        "New York",
+        "United States"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1984,
+            "publisher" : "Farrar, Straus and Giroux",
+            "format" : "hardcover"
+        },
+        {
+            "publicationYear" : 1996,
+            "publisher" : "Farrar, Straus and Giroux",
+            "format" : "paperback"
+        }
+    ]
 }
 {
-	"_id" : ObjectId("627abd0a9709397b4c053873"),
-	"title" : "Native Guard",
-	"author" : "Natasha Tretheway",
-	"originalPublicationYear" : 2007,
-	"originalPublisherLocation" : [
-		"Boston",
-		"United States"
-	],
-	"publisher" : "Houghton Mifflin",
-	"format" : "Hardcover"
+    "_id" : ObjectId("627abd0a9709397b4c053873"),
+    "title" : "Native Guard",
+    "author" : "Natasha Tretheway",
+    "originalPublicationYear" : 2007,
+    "originalPublisherLocation" : [
+        "Boston",
+        "United States"
+    ],
+    "publisher" : "Houghton Mifflin",
+    "format" : "Hardcover"
 }
     {{< /output >}}
 
@@ -277,52 +277,52 @@ MongoDB has several keywords that let you query by comparison. Here you can find
 
     {{< output >}}
 {
-	"_id" : ObjectId("627abd0a9709397b4c05386f"),
-	"title" : "A Midsummer Night's Dream",
-	"author" : "William Shakespeare",
-	"originalPublicationYear" : 1600,
-	"publisherLocation" : [
-		"New York",
-		"United States"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 2004,
-			"publisher" : "Simon & Schuster",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 2018,
-			"publisher" : "W. W. Norton & Company",
-			"format" : "paperback"
-		}
-	],
-	"originalPublisherLocation" : [
-		"London",
-		"England"
-	]
+    "_id" : ObjectId("627abd0a9709397b4c05386f"),
+    "title" : "A Midsummer Night's Dream",
+    "author" : "William Shakespeare",
+    "originalPublicationYear" : 1600,
+    "publisherLocation" : [
+        "New York",
+        "United States"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 2004,
+            "publisher" : "Simon & Schuster",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 2018,
+            "publisher" : "W. W. Norton & Company",
+            "format" : "paperback"
+        }
+    ],
+    "originalPublisherLocation" : [
+        "London",
+        "England"
+    ]
 }
 {
-	"_id" : ObjectId("627abd0a9709397b4c053870"),
-	"title" : "Othello",
-	"author" : "William Shakespeare",
-	"originalPublicationYear" : 1622,
-	"originalPublisherLocation" : [
-		"London",
-		"England"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1993,
-			"publisher" : "Simon & Schuster",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 2008,
-			"publisher" : "Dover Publications",
-			"format" : "paperback"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c053870"),
+    "title" : "Othello",
+    "author" : "William Shakespeare",
+    "originalPublicationYear" : 1622,
+    "originalPublisherLocation" : [
+        "London",
+        "England"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1993,
+            "publisher" : "Simon & Schuster",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 2008,
+            "publisher" : "Dover Publications",
+            "format" : "paperback"
+        }
+    ]
 }
     {{< /output >}}
 
@@ -332,65 +332,65 @@ MongoDB has several keywords that let you query by comparison. Here you can find
 
     {{< output >}}
 {
-	"_id" : ObjectId("627abd0a9709397b4c053871"),
-	"title" : "The Sound and the Fury",
-	"author" : "William Faulkner",
-	"originalPublicationYear" : 1929,
-	"originalPublisherLocation" : [
-		"New York",
-		"United States"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1956,
-			"publisher" : "Random House",
-			"format" : "hardcover"
-		},
-		{
-			"publicationYear" : 1990,
-			"publisher" : "Vintage",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 1992,
-			"publisher" : "Modern Library",
-			"format" : "hardcover"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c053871"),
+    "title" : "The Sound and the Fury",
+    "author" : "William Faulkner",
+    "originalPublicationYear" : 1929,
+    "originalPublisherLocation" : [
+        "New York",
+        "United States"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1956,
+            "publisher" : "Random House",
+            "format" : "hardcover"
+        },
+        {
+            "publicationYear" : 1990,
+            "publisher" : "Vintage",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 1992,
+            "publisher" : "Modern Library",
+            "format" : "hardcover"
+        }
+    ]
 }
 {
-	"_id" : ObjectId("627abd0a9709397b4c053872"),
-	"title" : "Everything that Rises Must Converge",
-	"author" : "Flannery O'Connor",
-	"originalPublicationYear" : 1965,
-	"originalPublisherLocation" : [
-		"New York",
-		"United States"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1984,
-			"publisher" : "Farrar, Straus and Giroux",
-			"format" : "hardcover"
-		},
-		{
-			"publicationYear" : 1996,
-			"publisher" : "Farrar, Straus and Giroux",
-			"format" : "paperback"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c053872"),
+    "title" : "Everything that Rises Must Converge",
+    "author" : "Flannery O'Connor",
+    "originalPublicationYear" : 1965,
+    "originalPublisherLocation" : [
+        "New York",
+        "United States"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1984,
+            "publisher" : "Farrar, Straus and Giroux",
+            "format" : "hardcover"
+        },
+        {
+            "publicationYear" : 1996,
+            "publisher" : "Farrar, Straus and Giroux",
+            "format" : "paperback"
+        }
+    ]
 }
 {
-	"_id" : ObjectId("627abd0a9709397b4c053873"),
-	"title" : "Native Guard",
-	"author" : "Natasha Tretheway",
-	"originalPublicationYear" : 2007,
-	"originalPublisherLocation" : [
-		"Boston",
-		"United States"
-	],
-	"publisher" : "Houghton Mifflin",
-	"format" : "Hardcover"
+    "_id" : ObjectId("627abd0a9709397b4c053873"),
+    "title" : "Native Guard",
+    "author" : "Natasha Tretheway",
+    "originalPublicationYear" : 2007,
+    "originalPublisherLocation" : [
+        "Boston",
+        "United States"
+    ],
+    "publisher" : "Houghton Mifflin",
+    "format" : "Hardcover"
 }
     {{< /output >}}
 
@@ -415,53 +415,53 @@ In total, MongoDB has four logical operations for queries.
 
     {{< output >}}
 {
-	"_id" : ObjectId("627abd0a9709397b4c053871"),
-	"title" : "The Sound and the Fury",
-	"author" : "William Faulkner",
-	"originalPublicationYear" : 1929,
-	"originalPublisherLocation" : [
-		"New York",
-		"United States"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1956,
-			"publisher" : "Random House",
-			"format" : "hardcover"
-		},
-		{
-			"publicationYear" : 1990,
-			"publisher" : "Vintage",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 1992,
-			"publisher" : "Modern Library",
-			"format" : "hardcover"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c053871"),
+    "title" : "The Sound and the Fury",
+    "author" : "William Faulkner",
+    "originalPublicationYear" : 1929,
+    "originalPublisherLocation" : [
+        "New York",
+        "United States"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1956,
+            "publisher" : "Random House",
+            "format" : "hardcover"
+        },
+        {
+            "publicationYear" : 1990,
+            "publisher" : "Vintage",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 1992,
+            "publisher" : "Modern Library",
+            "format" : "hardcover"
+        }
+    ]
 }
 {
-	"_id" : ObjectId("627abd0a9709397b4c053872"),
-	"title" : "Everything that Rises Must Converge",
-	"author" : "Flannery O'Connor",
-	"originalPublicationYear" : 1965,
-	"originalPublisherLocation" : [
-		"New York",
-		"United States"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1984,
-			"publisher" : "Farrar, Straus and Giroux",
-			"format" : "hardcover"
-		},
-		{
-			"publicationYear" : 1996,
-			"publisher" : "Farrar, Straus and Giroux",
-			"format" : "paperback"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c053872"),
+    "title" : "Everything that Rises Must Converge",
+    "author" : "Flannery O'Connor",
+    "originalPublicationYear" : 1965,
+    "originalPublisherLocation" : [
+        "New York",
+        "United States"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1984,
+            "publisher" : "Farrar, Straus and Giroux",
+            "format" : "hardcover"
+        },
+        {
+            "publicationYear" : 1996,
+            "publisher" : "Farrar, Straus and Giroux",
+            "format" : "paperback"
+        }
+    ]
 }
     {{< /output >}}
 
@@ -480,64 +480,64 @@ In total, MongoDB has four logical operations for queries.
 
     {{< output >}}
 {
-	"_id" : ObjectId("627abd0a9709397b4c05386f"),
-	"title" : "A Midsummer Night's Dream",
-	"author" : "William Shakespeare",
-	"originalPublicationYear" : 1600,
-	"publisherLocation" : [
-		"New York",
-		"United States"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 2004,
-			"publisher" : "Simon & Schuster",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 2018,
-			"publisher" : "W. W. Norton & Company",
-			"format" : "paperback"
-		}
-	],
-	"originalPublisherLocation" : [
-		"London",
-		"England"
-	]
+    "_id" : ObjectId("627abd0a9709397b4c05386f"),
+    "title" : "A Midsummer Night's Dream",
+    "author" : "William Shakespeare",
+    "originalPublicationYear" : 1600,
+    "publisherLocation" : [
+        "New York",
+        "United States"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 2004,
+            "publisher" : "Simon & Schuster",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 2018,
+            "publisher" : "W. W. Norton & Company",
+            "format" : "paperback"
+        }
+    ],
+    "originalPublisherLocation" : [
+        "London",
+        "England"
+    ]
 }
 {
-	"_id" : ObjectId("627abd0a9709397b4c053870"),
-	"title" : "Othello",
-	"author" : "William Shakespeare",
-	"originalPublicationYear" : 1622,
-	"originalPublisherLocation" : [
-		"London",
-		"England"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1993,
-			"publisher" : "Simon & Schuster",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 2008,
-			"publisher" : "Dover Publications",
-			"format" : "paperback"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c053870"),
+    "title" : "Othello",
+    "author" : "William Shakespeare",
+    "originalPublicationYear" : 1622,
+    "originalPublisherLocation" : [
+        "London",
+        "England"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1993,
+            "publisher" : "Simon & Schuster",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 2008,
+            "publisher" : "Dover Publications",
+            "format" : "paperback"
+        }
+    ]
 }
 {
-	"_id" : ObjectId("627abd0a9709397b4c053873"),
-	"title" : "Native Guard",
-	"author" : "Natasha Tretheway",
-	"originalPublicationYear" : 2007,
-	"originalPublisherLocation" : [
-		"Boston",
-		"United States"
-	],
-	"publisher" : "Houghton Mifflin",
-	"format" : "Hardcover"
+    "_id" : ObjectId("627abd0a9709397b4c053873"),
+    "title" : "Native Guard",
+    "author" : "Natasha Tretheway",
+    "originalPublicationYear" : 2007,
+    "originalPublisherLocation" : [
+        "Boston",
+        "United States"
+    ],
+    "publisher" : "Houghton Mifflin",
+    "format" : "Hardcover"
 }
     {{< /output >}}
 
@@ -551,16 +551,16 @@ In total, MongoDB has four logical operations for queries.
 
     {{< output >}}
 {
-	"_id" : ObjectId("627abd0a9709397b4c053873"),
-	"title" : "Native Guard",
-	"author" : "Natasha Tretheway",
-	"originalPublicationYear" : 2007,
-	"originalPublisherLocation" : [
-		"Boston",
-		"United States"
-	],
-	"publisher" : "Houghton Mifflin",
-	"format" : "Hardcover"
+    "_id" : ObjectId("627abd0a9709397b4c053873"),
+    "title" : "Native Guard",
+    "author" : "Natasha Tretheway",
+    "originalPublicationYear" : 2007,
+    "originalPublisherLocation" : [
+        "Boston",
+        "United States"
+    ],
+    "publisher" : "Houghton Mifflin",
+    "format" : "Hardcover"
 }
     {{< /output >}}
 
@@ -581,31 +581,31 @@ MongoDB can query for documents that contain specific other documents. These que
 
 {{< output >}}
 {
-	"_id" : ObjectId("627abd0a9709397b4c053871"),
-	"title" : "The Sound and the Fury",
-	"author" : "William Faulkner",
-	"originalPublicationYear" : 1929,
-	"originalPublisherLocation" : [
-		"New York",
-		"United States"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1956,
-			"publisher" : "Random House",
-			"format" : "hardcover"
-		},
-		{
-			"publicationYear" : 1990,
-			"publisher" : "Vintage",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 1992,
-			"publisher" : "Modern Library",
-			"format" : "hardcover"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c053871"),
+    "title" : "The Sound and the Fury",
+    "author" : "William Faulkner",
+    "originalPublicationYear" : 1929,
+    "originalPublisherLocation" : [
+        "New York",
+        "United States"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1956,
+            "publisher" : "Random House",
+            "format" : "hardcover"
+        },
+        {
+            "publicationYear" : 1990,
+            "publisher" : "Vintage",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 1992,
+            "publisher" : "Modern Library",
+            "format" : "hardcover"
+        }
+    ]
 }
 {{< /output >}}
 
@@ -624,20 +624,20 @@ If `editions` contained one object, rather than an array of objects, the query c
 
 {{< output >}}
 {
-	"_id" : ObjectId("627abd0a9709397b4c053871"),
-	"title" : "The Sound and the Fury",
-	"author" : "William Faulkner",
-	"originalPublicationYear" : 1929,
-	"originalPublisherLocation" : [
-		"New York",
-		"United States"
-	],
-	"editions" :
-		{
-			"publicationYear" : 1992,
-			"publisher" : "Modern Library",
-			"format" : "hardcover"
-		}
+    "_id" : ObjectId("627abd0a9709397b4c053871"),
+    "title" : "The Sound and the Fury",
+    "author" : "William Faulkner",
+    "originalPublicationYear" : 1929,
+    "originalPublisherLocation" : [
+        "New York",
+        "United States"
+    ],
+    "editions" :
+        {
+            "publicationYear" : 1992,
+            "publisher" : "Modern Library",
+            "format" : "hardcover"
+        }
 }
 {{< /output >}}
 
@@ -656,53 +656,53 @@ Here is an example that fetches the same book as above but only using the `publi
 
 {{< output >}}
 {
-	"_id" : ObjectId("627abd0a9709397b4c053871"),
-	"title" : "The Sound and the Fury",
-	"author" : "William Faulkner",
-	"originalPublicationYear" : 1929,
-	"originalPublisherLocation" : [
-		"New York",
-		"United States"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1956,
-			"publisher" : "Random House",
-			"format" : "hardcover"
-		},
-		{
-			"publicationYear" : 1990,
-			"publisher" : "Vintage",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 1992,
-			"publisher" : "Modern Library",
-			"format" : "hardcover"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c053871"),
+    "title" : "The Sound and the Fury",
+    "author" : "William Faulkner",
+    "originalPublicationYear" : 1929,
+    "originalPublisherLocation" : [
+        "New York",
+        "United States"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1956,
+            "publisher" : "Random House",
+            "format" : "hardcover"
+        },
+        {
+            "publicationYear" : 1990,
+            "publisher" : "Vintage",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 1992,
+            "publisher" : "Modern Library",
+            "format" : "hardcover"
+        }
+    ]
 }
 {
-	"_id" : ObjectId("627abd0a9709397b4c053872"),
-	"title" : "Everything that Rises Must Converge",
-	"author" : "Flannery O'Connor",
-	"originalPublicationYear" : 1965,
-	"originalPublisherLocation" : [
-		"New York",
-		"United States"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1984,
-			"publisher" : "Farrar, Straus and Giroux",
-			"format" : "hardcover"
-		},
-		{
-			"publicationYear" : 1996,
-			"publisher" : "Farrar, Straus and Giroux",
-			"format" : "paperback"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c053872"),
+    "title" : "Everything that Rises Must Converge",
+    "author" : "Flannery O'Connor",
+    "originalPublicationYear" : 1965,
+    "originalPublisherLocation" : [
+        "New York",
+        "United States"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1984,
+            "publisher" : "Farrar, Straus and Giroux",
+            "format" : "hardcover"
+        },
+        {
+            "publicationYear" : 1996,
+            "publisher" : "Farrar, Straus and Giroux",
+            "format" : "paperback"
+        }
+    ]
 }
 {{< /output >}}
 
@@ -718,10 +718,10 @@ For the example here, you can create a text index for the `title` and `author` f
 
 {{< output >}}
 {
-	"createdCollectionAutomatically" : false,
-	"numIndexesBefore" : 1,
-	"numIndexesAfter" : 2,
-	"ok" : 1
+    "createdCollectionAutomatically" : false,
+    "numIndexesBefore" : 1,
+    "numIndexesAfter" : 2,
+    "ok" : 1
 }
 {{< /output >}}
 
@@ -733,75 +733,75 @@ Text searches can be then made using the `$text` and `$search` keywords in combi
 
 {{< output >}}
 {
-	"_id" : ObjectId("627abd0a9709397b4c053871"),
-	"title" : "The Sound and the Fury",
-	"author" : "William Faulkner",
-	"originalPublicationYear" : 1929,
-	"originalPublisherLocation" : [
-		"New York",
-		"United States"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1956,
-			"publisher" : "Random House",
-			"format" : "hardcover"
-		},
-		{
-			"publicationYear" : 1990,
-			"publisher" : "Vintage",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 1992,
-			"publisher" : "Modern Library",
-			"format" : "hardcover"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c053871"),
+    "title" : "The Sound and the Fury",
+    "author" : "William Faulkner",
+    "originalPublicationYear" : 1929,
+    "originalPublisherLocation" : [
+        "New York",
+        "United States"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1956,
+            "publisher" : "Random House",
+            "format" : "hardcover"
+        },
+        {
+            "publicationYear" : 1990,
+            "publisher" : "Vintage",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 1992,
+            "publisher" : "Modern Library",
+            "format" : "hardcover"
+        }
+    ]
 }
 {
-	"_id" : ObjectId("627abd0a9709397b4c053870"),
-	"title" : "Othello",
-	"author" : "William Shakespeare",
-	"originalPublicationYear" : 1622,
-	"originalPublisherLocation" : [
-		"London",
-		"England"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1993,
-			"publisher" : "Simon & Schuster",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 2008,
-			"publisher" : "Dover Publications",
-			"format" : "paperback"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c053870"),
+    "title" : "Othello",
+    "author" : "William Shakespeare",
+    "originalPublicationYear" : 1622,
+    "originalPublisherLocation" : [
+        "London",
+        "England"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1993,
+            "publisher" : "Simon & Schuster",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 2008,
+            "publisher" : "Dover Publications",
+            "format" : "paperback"
+        }
+    ]
 }
 {
-	"_id" : ObjectId("627abd0a9709397b4c05386f"),
-	"title" : "A Midsummer Night's Dream",
-	"author" : "William Shakespeare",
-	"originalPublicationYear" : 1600,
-	"originalPublisherLocation" : [
-		"London",
-		"England"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 2004,
-			"publisher" : "Simon & Schuster",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 2018,
-			"publisher" : "W. W. Norton & Company",
-			"format" : "paperback"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c05386f"),
+    "title" : "A Midsummer Night's Dream",
+    "author" : "William Shakespeare",
+    "originalPublicationYear" : 1600,
+    "originalPublisherLocation" : [
+        "London",
+        "England"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 2004,
+            "publisher" : "Simon & Schuster",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 2018,
+            "publisher" : "W. W. Norton & Company",
+            "format" : "paperback"
+        }
+    ]
 }
 {{< /output >}}
 
@@ -819,31 +819,31 @@ Search terms can be excluded as well. This is done by adding a `-` symbol before
 
 {{< output >}}
 {
-	"_id" : ObjectId("627abd0a9709397b4c053871"),
-	"title" : "The Sound and the Fury",
-	"author" : "William Faulkner",
-	"originalPublicationYear" : 1929,
-	"originalPublisherLocation" : [
-		"New York",
-		"United States"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1956,
-			"publisher" : "Random House",
-			"format" : "hardcover"
-		},
-		{
-			"publicationYear" : 1990,
-			"publisher" : "Vintage",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 1992,
-			"publisher" : "Modern Library",
-			"format" : "hardcover"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c053871"),
+    "title" : "The Sound and the Fury",
+    "author" : "William Faulkner",
+    "originalPublicationYear" : 1929,
+    "originalPublisherLocation" : [
+        "New York",
+        "United States"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1956,
+            "publisher" : "Random House",
+            "format" : "hardcover"
+        },
+        {
+            "publicationYear" : 1990,
+            "publisher" : "Vintage",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 1992,
+            "publisher" : "Modern Library",
+            "format" : "hardcover"
+        }
+    ]
 }
 {{< /output >}}
 
@@ -858,78 +858,78 @@ MongoDB's text searches have a built-in text scoring capability based on search 
 
 {{< output >}}
 {
-	"_id" : ObjectId("627abd0a9709397b4c053870"),
-	"title" : "Othello",
-	"author" : "William Shakespeare",
-	"originalPublicationYear" : 1622,
-	"originalPublisherLocation" : [
-		"London",
-		"England"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1993,
-			"publisher" : "Simon & Schuster",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 2008,
-			"publisher" : "Dover Publications",
-			"format" : "paperback"
-		}
-	],
-	"score" : 1.5
+    "_id" : ObjectId("627abd0a9709397b4c053870"),
+    "title" : "Othello",
+    "author" : "William Shakespeare",
+    "originalPublicationYear" : 1622,
+    "originalPublisherLocation" : [
+        "London",
+        "England"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1993,
+            "publisher" : "Simon & Schuster",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 2008,
+            "publisher" : "Dover Publications",
+            "format" : "paperback"
+        }
+    ],
+    "score" : 1.5
 }
 {
-	"_id" : ObjectId("627abd0a9709397b4c05386f"),
-	"title" : "A Midsummer Night's Dream",
-	"author" : "William Shakespeare",
-	"originalPublicationYear" : 1600,
-	"originalPublisherLocation" : [
-		"London",
-		"England"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 2004,
-			"publisher" : "Simon & Schuster",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 2018,
-			"publisher" : "W. W. Norton & Company",
-			"format" : "paperback"
-		}
-	],
-	"score" : 1.5
+    "_id" : ObjectId("627abd0a9709397b4c05386f"),
+    "title" : "A Midsummer Night's Dream",
+    "author" : "William Shakespeare",
+    "originalPublicationYear" : 1600,
+    "originalPublisherLocation" : [
+        "London",
+        "England"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 2004,
+            "publisher" : "Simon & Schuster",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 2018,
+            "publisher" : "W. W. Norton & Company",
+            "format" : "paperback"
+        }
+    ],
+    "score" : 1.5
 }
 {
-	"_id" : ObjectId("627abd0a9709397b4c053871"),
-	"title" : "The Sound and the Fury",
-	"author" : "William Faulkner",
-	"originalPublicationYear" : 1929,
-	"originalPublisherLocation" : [
-		"New York",
-		"United States"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1956,
-			"publisher" : "Random House",
-			"format" : "hardcover"
-		},
-		{
-			"publicationYear" : 1990,
-			"publisher" : "Vintage",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 1992,
-			"publisher" : "Modern Library",
-			"format" : "hardcover"
-		}
-	],
-	"score" : 0.75
+    "_id" : ObjectId("627abd0a9709397b4c053871"),
+    "title" : "The Sound and the Fury",
+    "author" : "William Faulkner",
+    "originalPublicationYear" : 1929,
+    "originalPublisherLocation" : [
+        "New York",
+        "United States"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1956,
+            "publisher" : "Random House",
+            "format" : "hardcover"
+        },
+        {
+            "publicationYear" : 1990,
+            "publisher" : "Vintage",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 1992,
+            "publisher" : "Modern Library",
+            "format" : "hardcover"
+        }
+    ],
+    "score" : 0.75
 }
 {{< /output >}}
 
@@ -945,70 +945,70 @@ This next example matches all documents where `editions.publisher` has either th
 
 {{< output >}}
 {
-	"_id" : ObjectId("627abd0a9709397b4c05386f"),
-	"title" : "A Midsummer Night's Dream",
-	"author" : "William Shakespeare",
-	"originalPublicationYear" : 1600,
-	"originalPublisherLocation" : [
-		"London",
-		"England"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 2004,
-			"publisher" : "Simon & Schuster",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 2018,
-			"publisher" : "W. W. Norton & Company",
-			"format" : "paperback"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c05386f"),
+    "title" : "A Midsummer Night's Dream",
+    "author" : "William Shakespeare",
+    "originalPublicationYear" : 1600,
+    "originalPublisherLocation" : [
+        "London",
+        "England"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 2004,
+            "publisher" : "Simon & Schuster",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 2018,
+            "publisher" : "W. W. Norton & Company",
+            "format" : "paperback"
+        }
+    ]
 }
 {
-	"_id" : ObjectId("627abd0a9709397b4c053870"),
-	"title" : "Othello",
-	"author" : "William Shakespeare",
-	"originalPublicationYear" : 1622,
-	"originalPublisherLocation" : [
-		"London",
-		"England"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1993,
-			"publisher" : "Simon & Schuster",
-			"format" : "paperback"
-		},
-		{
-			"publicationYear" : 2008,
-			"publisher" : "Dover Publications",
-			"format" : "paperback"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c053870"),
+    "title" : "Othello",
+    "author" : "William Shakespeare",
+    "originalPublicationYear" : 1622,
+    "originalPublisherLocation" : [
+        "London",
+        "England"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1993,
+            "publisher" : "Simon & Schuster",
+            "format" : "paperback"
+        },
+        {
+            "publicationYear" : 2008,
+            "publisher" : "Dover Publications",
+            "format" : "paperback"
+        }
+    ]
 }
 {
-	"_id" : ObjectId("627abd0a9709397b4c053872"),
-	"title" : "Everything that Rises Must Converge",
-	"author" : "Flannery O'Connor",
-	"originalPublicationYear" : 1965,
-	"originalPublisherLocation" : [
-		"New York",
-		"United States"
-	],
-	"editions" : [
-		{
-			"publicationYear" : 1984,
-			"publisher" : "Farrar, Straus and Giroux",
-			"format" : "hardcover"
-		},
-		{
-			"publicationYear" : 1996,
-			"publisher" : "Farrar, Straus and Giroux",
-			"format" : "paperback"
-		}
-	]
+    "_id" : ObjectId("627abd0a9709397b4c053872"),
+    "title" : "Everything that Rises Must Converge",
+    "author" : "Flannery O'Connor",
+    "originalPublicationYear" : 1965,
+    "originalPublisherLocation" : [
+        "New York",
+        "United States"
+    ],
+    "editions" : [
+        {
+            "publicationYear" : 1984,
+            "publisher" : "Farrar, Straus and Giroux",
+            "format" : "hardcover"
+        },
+        {
+            "publicationYear" : 1996,
+            "publisher" : "Farrar, Straus and Giroux",
+            "format" : "paperback"
+        }
+    ]
 }
 {{< /output >}}
 

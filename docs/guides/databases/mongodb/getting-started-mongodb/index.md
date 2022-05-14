@@ -171,14 +171,14 @@ The main way to add documents to a MongoDB collection is through the `insert` me
 
 {{< output >}}
 BulkWriteResult({
-	"writeErrors" : [ ],
-	"writeConcernErrors" : [ ],
-	"nInserted" : 2,
-	"nUpserted" : 0,
-	"nMatched" : 0,
-	"nModified" : 0,
-	"nRemoved" : 0,
-	"upserted" : [ ]
+    "writeErrors" : [ ],
+    "writeConcernErrors" : [ ],
+    "nInserted" : 2,
+    "nUpserted" : 0,
+    "nMatched" : 0,
+    "nModified" : 0,
+    "nRemoved" : 0,
+    "upserted" : [ ]
 })
 {{< /output >}}
 
@@ -195,8 +195,8 @@ MongoDB also has two methods dedicated to adding documents either singly or in b
 
     {{< output >}}
 {
-	"acknowledged" : true,
-	"insertedId" : ObjectId("62757aa798fcda5eac416190")
+    "acknowledged" : true,
+    "insertedId" : ObjectId("62757aa798fcda5eac416190")
 }
     {{< /output >}}
 
@@ -215,11 +215,11 @@ MongoDB also has two methods dedicated to adding documents either singly or in b
 
     {{< output >}}
 {
-	"acknowledged" : true,
-	"insertedIds" : [
-		ObjectId("62757b4298fcda5eac416191"),
-		ObjectId("62757b4298fcda5eac416192")
-	]
+    "acknowledged" : true,
+    "insertedIds" : [
+        ObjectId("62757b4298fcda5eac416191"),
+        ObjectId("62757b4298fcda5eac416192")
+    ]
 }
     {{< /output >}}
 
@@ -269,9 +269,9 @@ Of course, often you want to query more specifically. Both the `find` and `findO
 
 {{< output >}}
 {
-	"_id" : ObjectId("62757a0798fcda5eac41618f"),
-	"id" : 2,
-	"name" : "Second Test Entry"
+    "_id" : ObjectId("62757a0798fcda5eac41618f"),
+    "id" : 2,
+    "name" : "Second Test Entry"
 }
 {{< /output >}}
 
