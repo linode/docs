@@ -14,8 +14,7 @@ title: "How to Create a Custom Changelog with Bash"
 h1_title: "How to Create a Custom Changelog with Bash"
 enable_h1: true
 contributor:
-  name: Jessie Mongeon
-  link: https://www.linkedin.com/in/jessie-mongeon/
+  name: Linode Community
 external_resources:
   - '[nano](https://www.nano-editor.org/docs.php)'
   - '[Keep a Changelog](https://keepachangelog.com/en/1.0.0/'
