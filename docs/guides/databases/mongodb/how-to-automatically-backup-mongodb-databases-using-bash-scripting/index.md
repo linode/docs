@@ -14,8 +14,8 @@ title: "How to Automatically Backup Mongodb Databases Using Bash Scripting"
 h1_title: "How to Automatically Backup Mongodb Databases Using Bash Scripting"
 enable_h1: true
 contributor:
-  name: Jessie Mongeon
-  link: https://www.linkedin.com/in/jessie-mongeon/
+  name: Linode Community
+  email: docs@linode.com
 external_resources:
 - '[MongoDB](https://www.mongodb.com/)'
 - '[crontab](https://man7.org/linux/man-pages/man5/crontab.5.html)'
