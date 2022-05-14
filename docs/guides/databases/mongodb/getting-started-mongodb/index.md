@@ -47,7 +47,7 @@ This MongoDB tutorial introduces you to all the basic MongoDB operations you nee
 
 1. Install MongoDB on your Linux system. You can follow our guide on [How To Install MongoDB on Ubuntu 16.04](/docs/guides/install-mongodb-on-ubuntu-16-04/) or our guide on [How To Install MongoDB on CentOS 7](/docs/guides/install-mongodb-on-centos-7/).
 
-    For other Linux distributions, you can follow MongoDB's [official Linux installation documentation](https://www.mongodb.com/docs/v4.4/administration/install-on-linux/).
+    For other Linux distributions, you can follow MongoDB's [official Linux installation documentation](https://www.mongodb.com/docs/manual/administration/install-on-linux/).
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
