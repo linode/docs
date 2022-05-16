@@ -3,15 +3,15 @@ slug: set-up-a-cassandra-node-cluster-on-ubuntu-and-centos
 author:
   name: Andrew Lescher
   email: docs@linode.com
-description: "This guide instructs you through the steps that deploy a production-ready Apache Cassandra node cluster on either Ubuntu 16.04 or CentOS 7."
+description: "This guide instructs you through the steps that deploy a production-ready Apache Cassandra node cluster"
 keywords: ["cassandra", " apache-cassandra", " centos 7", " ubuntu 16.04", " database", " nosql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-06-24
-modified: 2017-06-24
+modified: 2022-05-16
 modified_by:
-  name: Andrew Lescher
-title: "Set Up a Cassandra Node Cluster on Ubuntu 16.04 & CentOS 7"
-h1_title: "Setting Up a Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7"
+  name: Linode
+title: "Set Up a Cassandra Node Cluster"
+h1_title: "Setting Up a Cassandra Node Cluster "
 enable_h1: true
 aliases: ['/databases/cassandra/set-up-a-cassandra-node-cluster-on-ubuntu-and-centos/','/databases/cassandra/deploy-a-production-ready-cassandra-node-cluster-on-ubuntu-and-centos/']
 contributor:
@@ -21,10 +21,8 @@ external_resources:
  - '[How data is distributed across a cluster](https://docs.datastax.com/en/cassandra/2.1/cassandra/architecture/architectureDataDistributeDistribute_c.html)'
  - '[Client-to-node encryption](http://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/secureSSLClientToNode.html)'
 tags: ["ubuntu","centos","database","nosql"]
+image: cass.png
 ---
-
-
-![Deploy A Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7](cass.png "Deploy A Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7")
 
 ## What is Apache Cassandra
 
@@ -32,13 +30,13 @@ Apache Cassandra is an open-source application that is managed through a simple 
 
 Cassandra NoSQL databases are ideal for situations requiring maximum data redundancy and uptime, ease of horizontal scaling across multiple unique servers, and evolving project needs during the software development lifecycle, which would otherwise be heavily restricted by traditional relational database implementations.
 
-This guide is [Part 2 in a series](/docs/databases/cassandra/deploy-scalable-cassandra/) detailing the implementation of Apache Cassandra on Ubuntu 16.04 and CentOS 7 distributions. To complete this guide, you must have at least two Cassandra nodes setup on two separate Linodes. By following these instructions, you will learn how to link your Cassandra nodes together to form a true cluster.
+To complete this guide, you must have at least two Cassandra nodes setup on two separate Linodes. By following these instructions, you will learn how to link your Cassandra nodes together to form a true cluster.
 
 You will also learn how to secure communication between your nodes, as well as reinforce your cluster against typical failure points. The resulting cluster will be production-ready and configured for maximum uptime.
 
 ## Before You Begin
 
-1.  You must have at least two Cassandra nodes set up and configured according to the [Deploy A Scalable And Development-Driven NoSQL DB With Apache Cassandra](/docs/databases/cassandra/deploy-scalable-cassandra/) guide. The Cassandra nodes should have equal or similar hardware specs; otherwise, bottlenecks can occur.
+1.  You must have at least two Cassandra nodes set up and configured. These nodes should have equal or similar hardware specs; otherwise, bottlenecks can occur. To install Apache Cassandra, see the [Installing Apache Cassandra](/docs/guides/how-to-install-apache-cassandra-on-ubuntu-18-04/) guide and select your distribution.
 
 2.  A working firewall is a necessary security measure. Firewall-specific instructions will be presented for UFW, FirewallD, and IPtables. Steps for setting up UFW can be found at [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw). FirewallD instructions are located at [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
 
