@@ -7,11 +7,11 @@ tab_group_main:
 
 ## Basics
 
-- [Get Started with Cloud Firewalls](/docs/guides/getting-started-with-cloud-firewall/)
+- [Get Started with Cloud Firewalls](/docs/products/networking/cloud-firewall/get-started/)
 
 - [Create a Cloud Firewall](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/)
 
-- [Manage Cloud Firewall Rules](/docs/products/networking/cloud-firewall/guides/add-rules/): Add new Cloud Firewall Rules in the Cloud Manager.
+- [Manage Cloud Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/): Add new Cloud Firewall Rules in the Cloud Manager.
 
 - [Manage Compute Instances](/docs/products/networking/cloud-firewall/guides/assign-firewall/): Assign a Firewall to any Linodes applicable using the Cloud Manager.
 

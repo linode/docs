@@ -4,8 +4,28 @@ author:
   email: docs@linode.com
 title: "Manage Firewall Rules"
 description: "How to add rules to a Linode Cloud Firewall."
-aliases: ['/products/networking/cloud-firewall/guides/add-rules/']
+aliases: ['/products/networking/cloud-firewall/guides/add-rules/','/products/networking/cloud-firewall/guides/edit-rules/','/products/networking/cloud-firewall/guides/delete-rules/']
 ---
+
+A Cloud Firewall can be configured with *Inbound* and *Outbound* rules.
+
+- **Inbound rules** limit incoming network connections to a Linode service based on the port(s) and sources you configure.
+
+- **Outbound rules** limit the outgoing network connections coming from a Linode service based on the port(s) and destinations you configure.
+
+## Predefined Rules
+
+The Linode Cloud Manager provides a list of *predefined rules* that you can add to your Cloud Firewall. The predefined rules support common networking use cases and provide an easy foundation to get started with Cloud Firewalls. Since you can edit any rule applied to a Cloud Firewall, you can modify a predefine rule to accommodate your own applications and requirements.
+
+## View Rules
+
+1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
+
+1. From the **Firewalls** listing page, click on the Cloud Firewall that you would like to view or modify.
+
+Rules are separated into *inbound* and *outbound* sections.
+
+## Add a Rule
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
 
@@ -57,3 +77,40 @@ Any newly added rules do not take effect until you **Save Changes** to the Firew
 {{</ note >}}
 
     ![Apply your changes to the Firewall.](save-changes-firewall.png "Apply your changes to the Firewall.")
+
+
+## Edit a Rule
+
+Follow the steps in this section to edit predefined and custom Firewall Rules.
+
+1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
+
+1. From the **Firewalls** listing page, click on the Firewall whose rules you'd like to edit. This takes you to the Firewall's **Rules** page.
+
+1. Click on the **Edit** button corresponding to the rule you'd like to edit.
+
+    ![Select edit from the dropdown menu.](select-firewall-to-edit.png "Select edit from the dropdown menu.")
+
+1. From the **Edit Rule** drawer, update the rule's configurations as needed.
+
+1. Click on the **Add Changes** button to save your changes and apply them to the rule. If you would like to edit any additional rules, repeat the process outlined in this section.
+
+    ![Save your Firewall rule edits.](edit-firewall-rule.png "Save your Firewall rule edits.")
+
+1. When you are done editing your Firewall rules, click on the **Save Changes** button on the **Rules** page for those changes to take effect.
+
+    ![Apply your edit rule changes to the Firewall.](save-changes-to-firewall.png "Apply your edit rule changes to the Firewall.")
+
+## Delete a Rule
+
+1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu.
+
+1. From the **Firewalls** listing page, click on the Firewall whose rule(s) you'd like to delete. This takes you to the Firewall's **Rules** page.
+
+1. Click on the **Delete** corresponding to the rule that you would like to delete. If you would like to delete any additional rules, repeat the process outlined in this section.
+
+1. When you are done, click on the **Apply Changes** button on the **Rules** page.
+
+    {{< note >}}
+Any rule deletion(s) does not take effect until you **Apply Changes** to the Firewall.
+    {{</ note >}}

@@ -9,6 +9,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "A free cloud-based firewall service that can be used to secure any Linode Compute Instance, allowing network traffic only on the specified ports, protocols, and IP addresses."
+aliases: ['/guides/platform/cloud-firewall/','/platform/cloud-firewall/']
 ---
 
 Linode’s Cloud Firewall is a robust cloud-based firewall solution available at no additional charge for Linode customers. Through this service, you can create, configure, and add stateful network-based firewalls to any Linode Compute Instance.
