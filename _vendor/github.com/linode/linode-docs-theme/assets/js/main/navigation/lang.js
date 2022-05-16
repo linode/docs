@@ -1,11 +1,10 @@
 export function addLangToLinks(lang, container) {
-    if(!container) {
-        return
-    }
+	if (!container) {
+		return;
+	}
 	let links = container.querySelectorAll('a');
 	for (let i = 0; i < links.length; i++) {
 		let link = links[i];
-        
 
 		let href = link.getAttribute('href');
 		link.setAttribute('href', addLangToHref(href, lang));
