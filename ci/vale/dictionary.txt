@@ -1420,6 +1420,8 @@ outputter
 outputters
 overcommit
 overengineer
+overfitted
+overfitting
 overwatch
 ovpn
 owadb
@@ -2111,6 +2113,7 @@ untruncated
 untrust
 untrusted
 unversioned
+unvetted
 upserted
 upsize
 uri
