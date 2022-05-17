@@ -164,7 +164,7 @@ On most distributions, iptables has no default rules for either IPv4 and IPv6. A
 
 ## Configure iptables
 
-iptables can be configured and used in a variety of ways. The following sections will outline how to configure rules by port and IP, as well as how to blacklist (block) or whitelist (allow) addresses.
+iptables can be configured and used in a variety of ways. The following sections will outline how to configure rules by port and IP, as well as how to block or allow addresses.
 
 ### Block Traffic by Port
 
@@ -217,7 +217,7 @@ Let's break down the example above. The first two commands add or append rules t
 
 Note that the rules described above only control incoming packets, and do not limit outgoing connections.
 
-### Whitelist/Blacklist Traffic by Address
+### Allow or Block Traffic by Address
 
 You can use iptables to block all traffic and then only allow traffic from certain IP addresses. These firewall rules limit access to specific resources at the network layer. Below is an example sequence of commands:
 

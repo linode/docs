@@ -5,13 +5,20 @@ tab_group_main:
     weight: 30
 ---
 
+## Basics
+
+- [Get Started with the Linode CLI](/docs/products/tools/cli/get-started/)
+- [Install and Configure the Linode CLI](/docs/products/tools/cli/guides/install/)
+
+## Using the Linode CLI
+
 These introductory guides to the Linode CLI show you how to use the CLI with Linode's most popular platforms and services.
 
 - [Account](/docs/products/tools/cli/guides/account/): View or update your account information, add payment methods, view notifications, make payments, create OAuth clients, and do other related tasks.
 
-- [Events](/docs/products/tools/cli/guides/events/): View the list of events on your Linode account and mark events as read.
-
 - [Domains](/docs/products/tools/cli/guides/domains/): View the list of domains on your Linode account, create and delete domains, and create records for a domain.
+
+- [Events](/docs/products/tools/cli/guides/events/): View the list of events on your Linode account and mark events as read.
 
 - [Linode Instances](/docs/products/tools/cli/guides/linode-instances/): Create a Linode, shut it down, reboot it, add a private IP address to it, view the list of available IP address for it, or create a new disk for it.
 

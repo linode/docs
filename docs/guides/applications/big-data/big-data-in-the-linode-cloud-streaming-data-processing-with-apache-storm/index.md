@@ -940,11 +940,11 @@ When starting a cluster, you should have `clustermgr` authorization to the Clust
 
 ## Monitor a Storm Cluster
 
-Every Storm cluster's client node runs a Storm UI web application for monitoring that cluster, but it can be accessed only from whitelisted workstations.
+Every Storm cluster's client node runs a Storm UI web application for monitoring that cluster, but it can be accessed only from allowed workstations.
 
-The next two sections explain how to whitelist workstations and monitor a cluster from the web interface.
+The next two sections explain how to allow workstations and monitor a cluster from the web interface.
 
-### Whitelist Workstations to Monitor a Storm Cluster
+### Allow Workstations to Monitor a Storm Cluster
 
 When performing the steps in this section, you should have `clustermgr` authorization to the Cluster Manager Linode.
 
@@ -955,13 +955,13 @@ When performing the steps in this section, you should have `clustermgr` authoriz
 
 2.  Open the `your-cluster/your-cluster-client-user-whitelist.ipsets` file (using our example from above, `storm-cluster1/storm-cluster1-client-user-whitelist.ipsets`) file in a text editor.
 
-    This file is an [ipsets](http://ipset.netfilter.org/ipset.man.html) list of whitelisted IP addresses. It consists of one master ipset and multiple child ipsets that list whitelisted machines by IP addresses or other attributes such as MAC IDs.
+    This file is an [ipsets](http://ipset.netfilter.org/ipset.man.html) list of allowed IP addresses. It consists of one master ipset and multiple child ipsets that list allowed machines by IP addresses or other attributes such as MAC IDs.
 
     The master ipset is named *your-cluster-uwls*. By default, it's completely empty, which means nobody is authorized.
 
     ![Master ipset](storm-user-whitelist-1.png "An empty ipset list")
 
-3.  To whitelist an IP address:
+3.  To allow an IP address:
 
     -  Uncomment the line that creates the *your-cluster-ipwl* ipset
     -  Add the IP address under it
@@ -974,7 +974,7 @@ When performing the steps in this section, you should have `clustermgr` authoriz
     {{< note >}}
 Any IP address that is being included in the file should be a *public facing IP* address of the network.
 For example, company networks often assign local addresses like 10.x.x.x or 192.x.x.x addresses to employee workstations, which are then NATted to a public IP address while sending requests outside the company network.
-Since the cluster client node is in the Linode cloud outside your company network, it will see monitoring requests as arriving from this public IP address. So it's the public IP address that should be whitelisted.
+Since the cluster client node is in the Linode cloud outside your company network, it will see monitoring requests as arriving from this public IP address. So it's the public IP address that should be allowed.
 {{< /note >}}
 
 4.  Any number or type of additional ipsets can be created, as long as they are added to the master ipset.
