@@ -1,0 +1,46 @@
+---
+author:
+  name: Linode
+  email: docs@linode.com
+description: "Deploy Easypanel on a Linode Compute Instance. This provides a modern server control panel which uses Docker."
+keywords: ['easypanel','control panel','cpanel']
+tags: ["marketplace", "linode platform", "cloud manager"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2022-05-31
+modified_by:
+  name: Linode
+title: "Deploying Easypanel through the Linode Marketplace"
+contributor:
+  name: Linode
+aliases: ['/guides/easypanel-marketplace-app/']
+---
+
+[Easypanel](https://easypanel.io) is a modern server control panel which uses Docker under the hood. You can think of it as "self-hosted Heroku". It helps you deploy Node.js, Ruby, Python, PHP, Go and Java applications.
+
+
+## Deploying a Marketplace App
+
+{{< content "deploy-marketplace-apps-shortguide">}}
+
+{{< content "marketplace-verify-standard-shortguide">}}
+
+{{<note>}}
+**Estimated deployment time:** Easypanel should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
+{{</note>}}
+
+## Configuration Options
+
+- **Supported distributions:** Ubuntu 22.04 LTS
+- **Recommended plan:** All plan types and sizes can be used.
+
+## Getting Started after Deployment
+
+1.  Open your web browser and navigate to the IPv4 address for your Linode. Please note that your connection will not be encrypted. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses.
+
+1. You are prompted to enter a username, password, Github token (if applicable) along with a email. Click **Setup** once finished.
+
+    ![Easypanel setup page](easypanel_setup.png)
+
+1. After logging in, the admin control panel will appear. From there, you can manage your projects. Check out [the official Easypanel documentation](https://easypanel.io/docs) to learn how to further utilize your Easypanel instance.
+
+{{< content "marketplace-update-note-shortguide">}}
