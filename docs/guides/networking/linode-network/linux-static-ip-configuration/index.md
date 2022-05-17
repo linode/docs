@@ -7,23 +7,28 @@ description: "Learn how to manually edit your distribution-specific network conf
 keywords: ["static", "ip address", "addresses"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/linux-static-ip-configuration/','/networking/configuring-static-ip-interfaces/','/networking/linode-network/linux-static-ip-configuration/']
-modified: 2022-05-03
+modified: 2022-05-17
 modified_by:
   name: Linode
 published: 2014-07-20
-title: "Linux Static IP Configuration"
+title: "Manual IP Address Configuration on the Linode Platform"
+h1_title: "Configuring IP Addresses Manually on Linux"
+enable_h1: true
 tags: ["networking","linode platform"]
 image: linux-static-ip-configuration.png
 ---
 
-Each Compute Instance is assigned several IP addresses, including a pubic IPv4 address and a public IPv6 [SLAAC](https://en.wikipedia.org/wiki/IPv6#Stateless_address_autoconfiguration_.28SLAAC.29) address. Additional public IPv4 addresses, private IPv4 addresses, and IPv6 routed ranges (/64 or /56) can be added manually or by opening a [support ticket](/docs/guides/support/) and detailing your requirements. To learn more about IP address assignments, review the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide.
+Every Compute Instance is assigned several IP addresses, including a pubic IPv4 address and a public IPv6 [SLAAC](https://en.wikipedia.org/wiki/IPv6#Stateless_address_autoconfiguration_.28SLAAC.29) address. By default, a utility called [Network Helper](/docs/guides/network-helper/) automatically configures these IP addresses within the network configuration files on the Compute Instance. While this is preferred in most cases, there are some situations which may require you to manually configure networking yourself. These situations include:
 
-By default, [Network Helper](/docs/guides/network-helper/) automatically configures *most* of these IP addresses within the Linux system's network configuration files, as well as the necessary routing and DNS. However, if you have a special use case, you can disable Network Helper and manually configure networking. These special cases include:
-
-- Assigning an IPv6 address from a routed range.
-- Configuring a Shared IP address. See [Configuring Failover on a Compute Instance](/docs/guides/ip-failover/).
+- Installing a custom distribution on a Compute Instance
+- Configuring failover (see [Configuring Failover on a Compute Instance](/docs/guides/ip-failover/))
+- Assigning addresses from an IPv6 routed range
+- Using other DNS resolvers (not Linode’s)
+- Other advanced use cases where custom network configuration is required
 
 This guide walks you through how to manually configure static IP addresses in most common Linux distributions.
+
+To learn more about the types of IP addresses available on a Compute Instance, review the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#types-of-ip-addresses) guide. Additional public IPv4 addresses, private IPv4 addresses, and IPv6 routed ranges (/64 or /56) can be added manually or by opening a [support ticket](/docs/guides/support/) and detailing your requirements.
 
 ## Networking Components and Terminology
 
@@ -53,22 +58,23 @@ Your DNS resolver addresses are listed under the [**Networking**](/docs/guides/m
 
 However, unless you have a specific reason for doing so, you should *not* change your Linode's nameservers by editing `/etc/resolv.conf`. Depending on your distribution, `resolv.conf` may be overwritten by a networking service such as NetworkManager or systemd-resolved. Resolver options are usually set in the network interface's configuration file.
 
-## Disable Network Helper
+## Configuring IP Addresses Manually
 
-Our [Network Helper](/docs/guides/network-helper/) tool is enabled by default for new Linodes. It automatically configures static IPv4 addresses, routing, and DNS on each bootup of your Linode. When manually setting static addressing, Network Helper must be *disabled* so it doesn't overwrite your changes on the next reboot. You can disable Network Helper either *globally* for all of the Linodes on your account, or for individual Linodes, by following the [Enable or Disable Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) section of our network helper guide.
+1. Log in to the [Cloud Manager](https://cloud.linode.com/) and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/). Make a note of the following pieces of information or keep this page accessible so you can reference it later.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/). Depending on what you intend on doing, make a note of the following pieces of information:
-
-    - Public IPv4 addresses and the associated IPv4 gateway
-    - Private IPv4 address (if you added one)
+    - Public IPv4 address(es) and the associated IPv4 gateway
+    - Private IPv4 address (if one has been added)
     - IPv6 SLAAC address and the associated IPv6 gateway
+    - IPv6 /64 or /56 routed range (if one has been added)
     - DNS resolvers (if you want to use Linode's resolvers)
 
 1. Disable Network Helper on the Compute Instance so that it doesn't overwrite any of your changes on the next system reboot. For instructions, see the [Network Helper](/docs/guides/network-helper/#single-per-linode) guide. This guide covers disabling Network Helper *globally* (for all Compute Instances on your account) or just for a single instance.
 
 1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/). You may want to consider using Lish to avoid getting locked out in the case of a configuration error.
 
-1. Perform any configuration steps.
+1. Perform any necessary configuration steps.
+
+
 
 ## Configuration Examples
 
@@ -77,48 +83,6 @@ Below are example configurations for the given Linux distribution. Edit the exam
 {{< note >}}
  All additional `/64` IPv6 ranges are routed through the original IPv6 SLAAC address for a Linode. When configuring both a SLAAC address and a routed range, additional configuration changes should be made.
 {{< /note >}}
-
-### Debian
-
-Debian 7 and above all use *ifup* and *ifdown* to manage networking. In that configuration, Debian is one distribution where it's safe to directly edit `/etc/resolv.conf` because nothing will overwrite your changes if you reboot or restart networking services.
-
-Though systemd-networkd and systemd-resolved are both present in Debian 8 and 9, they're not enabled. If you decide to enable these systemd services to manage networking, you can not set static addresses in the file `/etc/network/interfaces` as shown below. You'll need to use the section further above for [Arch and Container Linux](/docs/guides/linux-static-ip-configuration/#arch-coreos-container-linux). For more information, see `man ifup`, `man ifdown`, `man interfaces 5`, `man systemd-networkd` and `man systemd-resolved`.
-
-1.  Edit your configuration file to add the appropriate information:
-
-    {{< file "/etc/network/interfaces" >}}
-. . .
-
-# IPv4 gateway and primary address. The netmask
-# is taken from the PREFIX (where 24 is a
-# public IP, 17 is a private IP)
-iface eth0 inet static
-  address 198.51.100.5/24
-  gateway 198.51.100.1
-
-# Add a second public IPv4 address.
-iface eth0 inet static
-  address 198.51.100.10/24
-
-# IPv6 gateway and primary IPv6 SLAAC address.
-iface eth0 inet6 static
-  address 2001:db8:2000:aff0::1/64
-  gateway fe80::1
-
-# Add a second IPv6 address.
-iface eth0 inet6 static
-  address 2001:db8:2000:aff0::2/64
-{{< /file >}}
-
-1.  Populate `resolv.conf` with DNS resolver addresses and resolv.conf options ([see man 5 resolv.conf](https://linux.die.net/man/5/resolv.conf)). Be aware that resolv.conf can only use up to three `nameserver` entries. The *domain* and *options* lines aren't necessary, but useful to have.
-
-    {{< file "/etc/resolv.conf" >}}
-nameserver 203.0.113.1
-nameserver 2001:db8:0:123::3
-nameserver 203.0.113.3
-domain 203-0-113-0.ip.linodeusercontent.com
-options rotate
-{{< /file >}}
 
 ### Arch, CoreOS Container Linux
 
