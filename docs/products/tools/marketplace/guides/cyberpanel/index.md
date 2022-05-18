@@ -42,7 +42,7 @@ aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel
 
          ssh root@192.0.2.0
 
-1.  You should see the CyberPanel welcome messsage when logging into the Linode. This will include instructions for accessing CyberPanel, phpMyAdmin, and Rainloop in your web browser. Replace `192.0.2.0` with your Linode's IP address.
+1.  You should see the CyberPanel welcome messsage when logging into the Linode. This will include instructions for accessing CyberPanel, phpMyAdmin, and RainLoop in your web browser. Replace `192.0.2.0` with your Linode's IP address.
 
     {{< output >}}
 Welcome to LiteSpeed One-Click CyberPanel Server.
@@ -53,7 +53,7 @@ CyberPanel One-Click Quickstart guide:
 In a web browser, you can view:
 * CyberPanel: https://192.0.2.0:8090
 * phpMyAdmin: https://192.0.2.0:8090/phpmyadmin
-* Rainloop:   https://192.0.2.0:8090/rainloop
+* RainLoop:   https://192.0.2.0:8090/rainloop
 
 On the server:
 * You can get the CyberPanel admin password with the following command:
