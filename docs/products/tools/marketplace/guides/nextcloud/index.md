@@ -2,8 +2,8 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: "This guide shows how you can deploy a NextCloud server to store important documents, images, and more in one location by using the NextCloud One-Click Marketplace App."
-keywords: ['Nextcloud','omarketplace','file sharing']
+description: "This guide shows how you can deploy a NextCloud server to store important documents, images, and more in one location by using the NextCloud Marketplace App."
+keywords: ['Nextcloud','marketplace','file sharing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-11
 modified: 2022-04-26
@@ -14,6 +14,7 @@ contributor:
   name: Linode
 external_resources:
 - '[Nextcloud Documentation Overview](https://docs.nextcloud.com/)'
+- '[Nextcloud AIO github](https://github.com/nextcloud/all-in-one)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/how-to-deploy-nextcloud-with-marketplace-apps/', '/platform/one-click/how-to-deploy-nextcloud-with-one-click-apps/','/guides/how-to-deploy-nextcloud-with-one-click-apps/','/guides/how-to-deploy-nextcloud-with-marketplace-apps/','/guides/nextcloud-marketplace-app/']
 image: deploying_nextcloud_oca.png
@@ -33,18 +34,10 @@ image: deploying_nextcloud_oca.png
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 11
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### NextCloud Options
-
-- **The name of the admin user for NextCloud** *(required)*: The administrator username for nextcloud. This will be used to log in to the application.
-- **The password for NextCloud's admin user** *(required)*: The administrator password. This will be used to log in to the application.
-- **MySQL database root password** *(required)*: The root user's password for the Nextcloud database.
-- **MySQL user password** *(required)*: Your new MySQL user's password.
-- **The name of the MySQL database:** The name to assign to the Nextcloud instance's MySQL database. If no value is provided, the database is named `nextcloud`.
-- **The name of the MySQL user to create:** The name of a new MySQL user to create. If no value is provided, the user is named `nextcloud`.
-- **Admin email for the NextCloud server:** The email address to use for the Nextcloud instance's admin user.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
@@ -54,15 +47,25 @@ image: deploying_nextcloud_oca.png
 
 ### Log Into Your Nextcloud Instance
 
-1. Open a browser window and navigate to the NextCloud instance's domain. For example, enter `nextcloud.example.com` into the browser, replacing `example.com` with the value of your own domain. If you do not install the App with a domain name, the domain is the public IP address of the Linode appended with a forward slash and "nextcloud. For example, `192.168.17.43/nextcloud/`.
+1. Open a browser window and navigate to the NextCloud instance's domain at port 8443 to complete the setup of the server. For example, enter `https://example.com:8443` into the browser, replacing `example.com` with the value of your own domain. If you do not install the App with a domain name, you can use the [Linode's RDNS domain](/docs/guides/managing-ip-addresses/#viewing-ip-addresses). For example, `https://203-0-113-0.ip.linodeusercontent.com:8443`. Ensure that save the generated password as you will need that to login to your Nextcloud AIO instance.
 
-1. Enter the administrator username and password set during initial app creation in the presented form.
+      ![Nextcloud AIO setup](nextcloudaiosetup.jpg)
 
-      ![Create a Nextcloud admin account.](nextcloud-admin.png)
+1. Click login and enter the generated password set during initial app creation in the presented form.
 
-1. Once you have successfully logged in, the Nextcloud Hub page appears where you can upload files to the Nextcloud server.
+      ![Nextcloud Login.](nextcloudlogin.jpg)
 
-      ![Nextcloud Hub](welcome-nextcloud.png)
+1. Once you have successfully logged in, the Nextcloud AIO page appears where you can enter the domain you have assigned for this instance. For example, enter `example.com` into the domain name section, replacing `example.com` with the value of your own domain. If you do not install the App with a domain name, you can use the [Linode's RDNS domain](/docs/guides/managing-ip-addresses/#viewing-ip-addresses). For example, `203-0-113-0.ip.linodeusercontent.com`. 
+
+      ![Nextcloud Domain setup](nextclouddomain.jpg)
+
+1. Now that you've entered the domain, you are now ready to start the Nextcloud containers, click 'Start Containers' and choose any of the addons you'd like to add to your Nextcloud instance.
+
+      ![Nextcloud Domain setup](nextcloudstart.jpg)
+
+1. Once the Nextcloud Containers start, you will see the initial Nextcloud username and password as shown in the image below. Please ensure that save the generated password as you will need that to login to your Nextcloud instance. You can click 'Open Your Nextcloud' or visit `https://example.com/login', replacing `example.com` the domain used in previous steps.
+
+      ![Nextcloud Admin Credentials](nextcloudadmincreds.jpg)
 
 ## Next Steps
 
