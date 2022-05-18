@@ -30,7 +30,7 @@ aliases: ['/platform/marketplace/how-to-deploy-cpanel-with-marketplace-apps/', '
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7
+- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** 2GB Dedicated Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
 
 ## Getting Started after Deployment
