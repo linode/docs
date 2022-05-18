@@ -2,11 +2,11 @@
 slug: python-string-interpolation
 author:
   name: John Mueller
-description: 'Python 3 string interpolation provides string substitution and string formatting. This guide covers the four available methods including the str.format() method, the modulo operator, f-strings, and the Template class.'
+description: 'Python 3 string interpolation provides string substitution and string formatting. This guide covers the str.format() method, the modulo operator, f-strings, and the Template class.'
 keywords: ['python string interpolation','python3 string format','python string format example']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-01
+published: 2022-05-20
 modified_by:
   name: Linode
 title: "Python String Interpolation"
@@ -17,16 +17,18 @@ contributor:
   link: http://www.johnmuellerbooks.com/
 ---
 
-Python *String interpolation* is a mechanism that substitutes variable values into placeholders located in a string. It consists of two parts: a *string template* and a value or values that you want to place within that template. To make string interpolation work, the compiler needs some method of determining where to place the values within the string template. Python provides four techniques to do this, and this guide covers them all. Each string interpolation technique has its own advantages and disadvantages. These techniques include the following:
+During *string interpolation* a string literal is evaluated, if any placeholders are present they are substituted by the indicated variable values. String interpolation helps reduce repetition in code and allows for dynamic string substitution. Python string interpolation consists of two parts: a *string template* and a value(s) that you want to place within that template. To trigger string interpolation, the compiler needs some method of determining where to place the values within the string template. Python provides four techniques to do this, and this guide covers them all. Each string interpolation technique has its own advantages and disadvantages. The four ways to trigger string interpolation are the following:
 
-- `%`: A modulo character, `%`, indicates where to make the string replacement and also provides a list of values to use.
-- `.format()`: A pair of braces (`{}`) show where to make a replacement and the `.format()` method's arguments indicate the values to use.
-- `f-string`: A string that is preceded by the letter `f` can contain curly braces (`{}`) that delimit a python expression and variables to use for the string substitution.
-- `Template class`: The string template appears within a variable using the `Template()` class and the `.substitute()` function indicates which values to use.
+- A modulo character (`%`) placed within a string literal indicates where to make the string replacement and can be followed by string format indicators and a variable name(s) that store replacement values.
+-  Call the `.format()` method on your string literal. Use a pair of curly braces (`{}`) to indicate where to make the string replacement. The `.format()` method's arguments indicate the values to use for the string replacement.
+- Precede any string literal by the letter `f` to use formatted string literals, also referred to as "f-strings". The string literal can contain curly braces (`{}`) that delimit a python expression and variables to use for the string substitution.
+- Import the [String module's Template class](https://docs.python.org/3/library/string.html#template-strings) into your Python code. Store your string template in a variable using the `Template()` class. Then, use the Template class' `.substitute()` function to indicates which values to use in the string substitution.
+
+The sections below cover each of the four ways you can use string interpolation in Python.
 
 ## The String Modulo Operator and String Formatting
 
-Using the modulo operator (`%`) for string interpolation and formatting is fairly readable. Its syntax is also more concise compared to other methods, because it does not require as many formatting arguments. The modulo operator is, however, the least flexible of the methods available for string interpolation. It is also an older string formatting method that may not remain supported as Python moves forward. If you are working with an older Python codebase then it may be important to become familiar with how the string modulo operator is used for string substitution and formatting.
+If code readability is a top concern, the modulo operator (`%`) method for string interpolation and formatting is a good choice. Its syntax is more concise compared to other string interpolation methods, because it does not require as many formatting arguments. The modulo operator is, however, the least flexible of the methods available for string interpolation. It is also an older string formatting method that may not remain supported as newer Python versions are released. If you are working with an older Python codebase that uses the string modulo operator, then you may need to become familiar with its syntax.
 
 The general syntax for string formatting with the string modulo operator is the following:
 
@@ -34,7 +36,7 @@ The general syntax for string formatting with the string modulo operator is the 
 
 ### Using String Format Indicators
 
-String formatting with the modulo operator includes the `%` sign and a format indicator for each of the entries in the string template. A format indicator converts a provided value into the type indicated by the format indicator before inserting the value into the string. Python provides the following format indicators:
+String formatting with the modulo operator includes the `%` sign and a format indicator for each of the entries in the string template. A format indicator converts a provided value into the type indicated by the format indicator. This is done before the value is inserted into the string. Python provides the following format indicators:
 
 - `%s`: String (performed using the `str()` function)
 - `%d`: Integer
@@ -50,18 +52,18 @@ String formatting with the modulo operator includes the `%` sign and a format in
 - `%a`: ASCII (performed using the `ascii()` function)
 - `%c`: Converts an `int` or a `char` to a character, such as `65` to the letter `A`
 
-The values appear after another `%` outside of the string. They can appear alone when working with a single value, or within a tuple when working with multiple values. Below is an example of working with multiple values to format numeric input:
+The values to use for string substitution are placed after another `%` outside of the string literal. They can appear alone when working with a single value, or within a tuple when working with multiple values. You can use arithmetic calculations to generate a string replacement value, as demonstrated in the example below.
 
     myVal1 = 10.1
     myVal2 = 2.2
-    print("The sum of %s and %s is %s." %(myVal1, myVal2, myVal1+myVal2))
-    print("The sum of %d and %d is %d." %(myVal1, myVal2, myVal1+myVal2))
-    print("The sum of %f and %f is %f." %(myVal1, myVal2, myVal1+myVal2))
-    print("The sum of %e and %e is %E." %(myVal1, myVal2, myVal1+myVal2))
-    print("The sum of %x and %x is %X." %(int(myVal1), int(myVal2),
-                                          int(myVal1+myVal2)))
-    print("The sum of %o and %o is %o." %(int(myVal1), int(myVal2),
-                                      int(myVal1+myVal2)))
+    print("The sum of %s and %s is %s." %(my_val_1, my_val_2, my_val_1+my_val_2))
+    print("The sum of %d and %d is %d." %(my_val_1, my_val_2, my_val_1+my_val_2))
+    print("The sum of %f and %f is %f." %(my_val_1, my_val_2, my_val_1+my_val_2))
+    print("The sum of %e and %e is %E." %(my_val_1, my_val_2, my_val_1+my_val_2))
+    print("The sum of %x and %x is %X." %(int(my_val_1), int(my_val_2),
+                                          int(my_val_1+my_val_2)))
+    print("The sum of %o and %o is %o." %(int(my_val_1), int(my_val_2),
+                                      int(my_val_1+my_val_2)))
 
 The output shows the result of the various format indicators.
 
@@ -78,13 +80,15 @@ The sum of a and 2 is C.
 The sum of 12 and 2 is 14.
 {{</ output >}}
 
+The format indicators in the first `print()` statement convert `my_val_1`, `my_val_2`, and `my_val_1+my_val_2` into strings. The string values are then substituted where the `%` character is placed within the string literal. The subsequent format indicator examples perform a similar substitutions, but instead convert the values to decimals, floating point numbers, exponents, hexadecimal numbers, and octal numbers. Notice that you must convert floating-point values to integer values when working with the %x, %X, or %o format indicators. This is why the `int()` method is used in the list two `print()` statements.
+
 The following code shows the difference between string output and raw output for a single input value:
 
-    myRaw = 'Hello There!'
-    print("%s, it's a lovely day!" %myRaw)
-    print("%r, it's a lovely day!" %myRaw)
+    my_val = 'Hello There!'
+    print("%s, it's a lovely day!" %my_val)
+    print("%r, it's a lovely day!" %my_val)
 
-When working with the raw output, the compiler doesn't interpret any of the characters. This allows you to use special characters as needed.
+When working with raw output, the compiler doesn't interpret any of the characters and displays every character that is present in your string. This allows you to use special characters as needed. The second `print()` statement made use of the raw output format indicator (`%r`), so the output displays the opening and closing single quotes.
 
 {{< output >}}
 Hello There!, it's a lovely day!
@@ -134,13 +138,13 @@ It’s possible to achieve more sophisticated formatting using the modulo operat
 $10.10
 {{</ output >}}
 
-In the first example, the first part of the format specifier tells the compiler to make the entirety of the output seven digits long (`%07`). The second part of the format specifier tells the compiler to keep the part after the decimal point limited to two digits (`2f`). The second example uses a value of one for the entirety of the output but limits the decimal output to two digits. When you specify a length that can’t possibly hold the entire value, Python still displays the whole value as shown.
+In the first example, the first part of the format specifier tells the compiler to make the entirety of the output seven digits long (`%07`). The second part of the format specifier tells the compiler to keep the part after the decimal point limited to two digits (`2f`). The second example uses a value of one for the entirety of the output, but limits the decimal output to two digits. When you specify a length that can’t possibly hold the entire value, Python still displays the whole value as shown.
 
 ## The Python String .format() Method and Positional Arguments
 
 Python's `str.format()` method provides another option for working with string formatting and interpolation. With the `str.format()` method, it’s possible to obtain any string output you need, however, it may require complex code. Due to its complexity, the `.format()` method may not always be the best choice. Formatting characters can prove difficult to read and even harder to troubleshoot.
 
-The `str.format()` method can be called on any Python string object. *Replacement fields* are surrounded by curly braces (`{}`). A replacement field contains the name of a keyword argument or the numeric index of a positional argument.
+The `str.format()` method can be called on any Python string object. *Replacement fields* are surrounded by curly braces (`{}`). A replacement field contains the name of a [keyword argument](https://docs.python.org/3/glossary.html#term-argument) or the numeric index of a positional argument.
 
 The example below demonstrates using the `str.format()` with replacement fields and a named keyword argument.
 
@@ -179,7 +183,7 @@ The `str.format()` method supports many format indicators that align your output
 
 ## Python f-strings
 
-Another way to format strings is with Python f-strings, also known as *formatted string literals*. As with the other string formatting techniques discussed in this guide, f-strings can contain replacement fields denoted with curly braces (`{}`). When compared to the `str.format()`, the f-string method produces simpler and more readable code. In addition, the f-string approach produces output faster than either the modulo or `str.format()` approaches.
+Another way to format strings is with Python f-strings, also known as *formatted string literals*. As with the other string formatting techniques discussed in this guide, f-strings can contain replacement fields denoted with curly braces (`{}`). When compared to the `str.format()`, the f-string method produces simpler and more readable code. In addition, the f-strings are more performant than the modulo operator or the `str.format()` method.
 
 When using a Python f-string, you must prefix your string literal with `f` or `F`. For example:
 
@@ -201,21 +205,21 @@ The f-string version of the code is more succinct and readable than the `str.for
 
 ## Python Template Strings
 
-The Python 3 [Template Class](https://docs.python.org/3/library/string.html#template-strings) is part of the String Module. Compared to the other methods described in this guide, template strings provide simpler string substitution. However, it does not support string formatting, like f-strings, `str.format()`, and the string modulo operator. While this makes template strings less powerful, they are considered more secure. For this reason, template strings are a good choice if you are working with user-generated strings.
+The Python 3 [Template Class](https://docs.python.org/3/library/string.html#template-strings) is part of the String module. Compared to the other methods described in this guide, template strings provide simpler string substitution. However, it does not support string formatting, like f-strings, `str.format()`, and the string modulo operator. While this makes template strings less powerful, they are considered more secure. For this reason, template strings are a good choice if you are working with user-generated strings.
 
-String substitutions are indicated using a `$` interpolation character. The `$` should be followed by the name of a dictionary key that has been passed as an argument of the Template class's `substitute()` method. The `substitute()` method requires a dictionary-like object with keys as its argument. The `Template()` class accepts the template string as its argument. For example:
+String substitutions are indicated using a `$` interpolation character. The `$` should be followed by the name of a dictionary key that has been passed as an argument to the Template class's `substitute()` method. The `substitute()` method requires a dictionary-like object with keys as its argument. The `Template()` class accepts the template string as its argument. The example below imports the Template class, stores a new instance of the Template class and the string template in a variable. The new Template class' `substitution()` method is called and it contains the substitution string to use.
 
     from string import Template
     greeting = Template('Welcome, $name')
     greeting.substitute(name='Frida!')
 
-The Python interpreter returns the following string:
+The Python interpreter returns the interpolated string:
 
 {{< output >}}
 'Welcome, Frida!'
 {{</ output >}}
 
-The Python 3 Template class provides a more readable code, especially when using a single template with various values stored in dictionaries. For example:
+The Python 3 Template class provides more readable code, especially when using a single template with various values stored in dictionaries. For example:
 
 {{< file "~/home/username/template_example.py">}}
 from string import Template
@@ -231,7 +235,7 @@ for name in names:
     print(greeting.substitute(name))
 {{</ file >}}
 
-When run, the above Python file outputs the following strings:
+When you run the above Python file, the following interpolated strings are returned as output:
 
 {{< output >}}
 Welcome, Anais Nin
