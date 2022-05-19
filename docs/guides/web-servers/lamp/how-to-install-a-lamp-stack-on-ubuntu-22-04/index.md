@@ -310,7 +310,7 @@ To log in to the MySQL shell as `root` after this change, use `mysql -u root -p`
 
 7.  Use the built-in [mysql_secure_installation](https://dev.mysql.com/doc/refman/8.0/en/mysql-secure-installation.html) tool to increase the security of the database. Provide the MySQL password for the `root` account upon request.
 
-        mysql_secure_installation
+        sudo mysql_secure_installation
 
 8.  When prompted to change the `root` password, leave it unchanged. But answer `Y` for the following questions:
 
