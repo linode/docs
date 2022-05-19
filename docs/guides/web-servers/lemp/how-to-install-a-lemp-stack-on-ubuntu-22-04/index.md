@@ -168,19 +168,19 @@ To determine the IP address of the Ubuntu system, use the Linode Dashboard.
 
     {{< file "/etc/nginx/sites-available/example.com.conf" aconf >}}
 server {
-	listen 80;
-	listen [::]:80;
+    listen 80;
+    listen [::]:80;
 
-	server_name example.com www.example.com;
-	root /var/www/html/example.com/public_html;
-	index index.html;
+    server_name example.com www.example.com;
+    root /var/www/html/example.com/public_html;
+    index index.html;
 
-	location / {
-		try_files $uri $uri/ =404;
-	}
+    location / {
+        try_files $uri $uri/ =404;
+    }
 
-	location ~ \.php$ {
-	    fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+    location ~ \.php$ {
+        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
         include snippets/fastcgi-php.conf;
     }
 
