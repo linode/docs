@@ -38,6 +38,9 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 ### WordPress Options
 
 - **Email address** *(required)*: Enter the email address you wish to use when configuring the WordPress admin user, generating SSL certificates, and optionally creating DNS records for a custom domain.
+{{<note>}}
+If you want the SSL certificates to be automatically generated ensure that you provide the details for the fileds listed under *Custom Domain* section.
+{{</note>}}
 - **Admin Username** *(required)*: Username for your WordPress admin user account.
 - **Admin Password** *(required)*: Password for your WordPress admin user account.
 - **MySQL `root` password** *(required)*: The root password for your MySQL database.
