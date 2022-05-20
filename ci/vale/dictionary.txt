@@ -2042,6 +2042,7 @@ transpiled
 trello
 triaging
 trivy
+trojan
 truststore
 tt
 ttl
