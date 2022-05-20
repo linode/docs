@@ -248,3 +248,5 @@ Considering the above example tables, the Inner Join is typically the fastest of
 ## Conclusion
 
 The use of SQL Joins extends the functionality of being able to compare table rows, over traditional `WHERE` clause queries. Joins are a valuable mechanism to apply algebraic logic to two or more tables.
+
+To learn more about SQL, see our guides on [SQL data types](/docs/guides/sql-data-types/), [grouping and totaling](/docs/guides/sql-grouping-and-totaling/), and [SQL user management security](/docs/guides/sql-security/).
