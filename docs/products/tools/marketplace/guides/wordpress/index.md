@@ -57,7 +57,7 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
     ![Screenshot of the browser's URL bar](wordpress-browser-url.png)
 
     {{<note>}}
-A TLS/SSL certifcate is automatically generated for your custom domain, enabling you to connect to the site over the `https` protocol. If you did not enter a custom domain, a TLS/SSL certificate is configured on the rDNS domain instead. Connections using your IP address are not secured and will use the `http` protocol.
+A TLS/SSL certificate is automatically generated for your custom domain, enabling you to connect to the site over the `https` protocol. If you did not enter a custom domain, a TLS/SSL certificate is configured on the rDNS domain instead. Connections using your IP address are not secured and will use the `http` protocol.
 {{</note>}}
 
 1.  Within the login page that appears, enter the username (*admin username*) and password (*admin password*) that you created when you deployed this instance. Then click the **Log In** button.
