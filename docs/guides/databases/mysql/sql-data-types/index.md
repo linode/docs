@@ -259,3 +259,5 @@ For example, in one table, you store a date in a `Varchar(20)`column, and in ano
 ## Conclusion
 
 SQL Data Types are the attributes associated with database columns and variables. These attributes can take the form of being binary, numeric, character, and date/time. Careful design time is necessary to ensure that columns and variables are defined with a correct data type, to ensure both storage and query execution efficiency.
+
+To learn more about SQL, see our guides on [SQL joins](/docs/guides/sql-joins/), [grouping and totaling](/docs/guides/sql-grouping-and-totaling/), and [SQL user management security](/docs/guides/sql-security/).
