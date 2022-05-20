@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'These guides will help you deploy Lighttpd (aka Lighty), a high performance web server package, designed to power the delivery of websites big and small.'
+description: 'These guides will help you deploy Lighttpd (also known as Lighty), a high performance web server package, designed to power the delivery of websites big and small.'
 keywords: ["lighttpd web server", "lighttpd Linux", "lighttpd Linode HOWTO"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/lighttpd/','/web-servers/lighttpd/']
