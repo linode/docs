@@ -833,6 +833,7 @@ identrust
 idlist
 ie
 iface
+ifcfg
 ifconfig
 ifdown
 ifnames
@@ -969,6 +970,7 @@ kerberos
 kerberos5
 Kernighan
 keychain
+keyfile
 keyfiles
 keygen
 keyid

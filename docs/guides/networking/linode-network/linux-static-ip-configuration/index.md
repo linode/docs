@@ -11,8 +11,8 @@ modified: 2022-05-17
 modified_by:
   name: Linode
 published: 2014-07-20
-title: "Manual IP Address Configuration on the Linode Platform"
-h1_title: "Configuring IP Addresses Manually on Linux"
+title: "Manual Network Configuration on a Compute Instance"
+h1_title: "Manually Configuring the Network on a Compute Instance"
 enable_h1: true
 tags: ["networking","linode platform"]
 image: linux-static-ip-configuration.png
@@ -26,9 +26,46 @@ Every Compute Instance is assigned several IP addresses, including a pubic IPv4 
 - Using other DNS resolvers (not Linode’s)
 - Other advanced use cases where custom network configuration is required
 
-This guide walks you through how to manually configure static IP addresses in most common Linux distributions.
+This guide walks you through how to manually configure your networking in most common Linux distributions. To learn more about the types of IP addresses available on a Compute Instance, review the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#types-of-ip-addresses) guide. Additional public IPv4 addresses, private IPv4 addresses, and IPv6 routed ranges (/64 or /56) can be added manually or by opening a [support ticket](/docs/guides/support/) and detailing your requirements.
 
-To learn more about the types of IP addresses available on a Compute Instance, review the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#types-of-ip-addresses) guide. Additional public IPv4 addresses, private IPv4 addresses, and IPv6 routed ranges (/64 or /56) can be added manually or by opening a [support ticket](/docs/guides/support/) and detailing your requirements.
+## Static vs Dynamic Addressing
+
+IP addresses can be statically configured or dynamically configured. Static configuration means explicitly defining the IP address within your system's network configuration. IPv4 addresses are configured this way through Network Helper and static configuration is typically recommended when manually configuring your networking as well. Dynamic configuration on the Linode platform is facilitated through DHCP (for public IPv4 addresses) and SLAAC (for IPv6 addresses).
+
+- **DHCP** (Dynamic Host Configuration Protocol) can be used to automatically configure a single IPv4 address on a Compute Instance. If multiple IPv4 addresses are on the system, the first IP address (sorted alpha-numerically) is used. DHCP does not configure private IPv4 addresses or any IPv6 addresses. If you intend on adding or removing public IPv4 addresses after you initially configure networking, using DHCP is not recommended as it may configure a different public IPv4 address after you make those changes.
+
+    {{< note >}}
+If you do enable DHCP and are using a firewall (such as Cloud Firewalls), you must configure the firewall to allow communication with our DHCP servers. See the [DHCP IP Address Reference](/docs/guides/dhcp-ip-address-reference/) guide for a list of IP addresses to allow.
+{{</ note >}}
+
+- **SLAAC** (Stateless address autoconfiguration) can be used to automatically configure the main IPv6 address on a Compute Instance. It does not configure any IPv6 routed ranges (/64 or /56) that may also be assigned to that instance. For SLAAC to function, the Compute Instance needs to accept router advertisements. This is accomplished by enabling router advertisements and disabling IPv6 privacy extensions within your system's networking configuration files. These settings are properly configured by default in our supported distributions.
+
+Static and dynamic addressing can be used together within a single configuration file. As an example, you can use DHCP to configure the public IPv4 address on your system, use SLAAC to configure your IPv6 address, and statically configure any remaining addresses (such as private IPv4 address or addresses from an IPv6 routed range).
+
+## Network Configuration Software in Linux
+
+All Linux distributions have pre-installed software whose purpose is to manage the internal networking on the system. In most cases, using this default software is preferred. That said, advanced users may wish to install their own preferred tool.
+
+### Default Network Configuration Software by Distribution
+
+The following table contains a list of each Linux distribution offered by Linode. Alongside each distribution is the default network software that it uses and a link to a guide for help with configuring that software.
+
+| Distribution | Network Manager |
+| -- | -- |
+| AlmaLinux 8 | [NetworkManager](/docs/guides/networkmanager/) |
+| Alpine | [ifupdown-ng](/docs/guides/ifupdown/) |
+| Arch | [systemd-networkd](/docs/guides/systemd-networkd/) |
+| CentOS 7 and 8 | [NetworkManager](/docs/guides/networkmanager/) |
+| CentOS Stream 8 and 9 | [NetworkManager](/docs/guides/networkmanager/) |
+| Debian 9-11 | [ifupdown](/docs/guides/ifupdown/) |
+| Fedora 34-36 | [NetworkManager](/docs/guides/networkmanager/) |
+| Gentoo | netifrc |
+| Rocky Linux 8 | [NetworkManager](/docs/guides/networkmanager/) |
+| Slackware | netconfig |
+| OpenSUSE Leap | wicked |
+| Ubuntu 16.04 | [ifupdown](/docs/guides/ifupdown/) |
+| Ubuntu 18.04 - 22.04 | [systemd-networkd](/docs/guides/systemd-networkd/) and Netplan |
+
 
 ## Networking Components and Terminology
 
@@ -72,9 +109,7 @@ However, unless you have a specific reason for doing so, you should *not* change
 
 1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/). You may want to consider using Lish to avoid getting locked out in the case of a configuration error.
 
-1. Perform any necessary configuration steps.
-
-
+1. Perform any necessary configuration steps as outlined in the workflows below.
 
 ## Configuration Examples
 
