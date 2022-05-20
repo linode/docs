@@ -1420,6 +1420,8 @@ outputter
 outputters
 overcommit
 overengineer
+overfitted
+overfitting
 overwatch
 ovpn
 owadb
@@ -2040,6 +2042,7 @@ transpiled
 trello
 triaging
 trivy
+trojan
 truststore
 tt
 ttl
@@ -2111,6 +2114,7 @@ untruncated
 untrust
 untrusted
 unversioned
+unvetted
 upserted
 upsize
 uri
