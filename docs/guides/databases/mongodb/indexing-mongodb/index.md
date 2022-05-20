@@ -110,14 +110,14 @@ These next few sections show how to use that method to apply indices in differen
 
 {{< output >}}
 {
-	"acknowledged" : true,
-	"insertedIds" : [
-		ObjectId("6287bc86de18010c521bd08a"),
-		ObjectId("6287bc86de18010c521bd08b"),
-		ObjectId("6287bc86de18010c521bd08c"),
-		ObjectId("6287bc86de18010c521bd08d"),
-		ObjectId("6287bc86de18010c521bd08e")
-	]
+    "acknowledged" : true,
+    "insertedIds" : [
+        ObjectId("6287bc86de18010c521bd08a"),
+        ObjectId("6287bc86de18010c521bd08b"),
+        ObjectId("6287bc86de18010c521bd08c"),
+        ObjectId("6287bc86de18010c521bd08d"),
+        ObjectId("6287bc86de18010c521bd08e")
+    ]
 }
 {{< /output >}}
 
@@ -129,10 +129,10 @@ Indexing on a single key is useful for collections in which you plan to query al
 
 {{< output >}}
 {
-	"createdCollectionAutomatically" : false,
-	"numIndexesBefore" : 1,
-	"numIndexesAfter" : 2,
-	"ok" : 1
+    "createdCollectionAutomatically" : false,
+    "numIndexesBefore" : 1,
+    "numIndexesAfter" : 2,
+    "ok" : 1
 }
 {{< /output >}}
 
@@ -151,10 +151,10 @@ The following example indexes the collection on the `startDate` and `latestDate`
 
 {{< output >}}
 {
-	"createdCollectionAutomatically" : false,
-	"numIndexesBefore" : 1,
-	"numIndexesAfter" : 2,
-	"ok" : 1
+    "createdCollectionAutomatically" : false,
+    "numIndexesBefore" : 1,
+    "numIndexesAfter" : 2,
+    "ok" : 1
 }
 {{< /output >}}
 
@@ -171,10 +171,10 @@ Here is an example that implements an English-language collation for the `popula
 
 {{< output >}}
 {
-	"createdCollectionAutomatically" : false,
-	"numIndexesBefore" : 1,
-	"numIndexesAfter" : 2,
-	"ok" : 1
+    "createdCollectionAutomatically" : false,
+    "numIndexesBefore" : 1,
+    "numIndexesAfter" : 2,
+    "ok" : 1
 }
 {{< /output >}}
 
@@ -195,10 +195,10 @@ This example shows how to add a text index for the `firstName` and `lastName` fi
 
 {{< output >}}
 {
-	"createdCollectionAutomatically" : false,
-	"numIndexesBefore" : 1,
-	"numIndexesAfter" : 2,
-	"ok" : 1
+    "createdCollectionAutomatically" : false,
+    "numIndexesBefore" : 1,
+    "numIndexesAfter" : 2,
+    "ok" : 1
 }
 {{< /output >}}
 
@@ -208,16 +208,16 @@ That index lets you run a search like the one below:
 
 {{< output >}}
 {
-	"_id" : ObjectId("6287bc86de18010c521bd08c"),
-	"firstName" : "Chris",
-	"lastName" : "Hemsworth",
-	"popularFilms" : [
-		"Star Trek",
-		"The Cabin in the Woods",
-		"Thor: Ragnarok"
-	],
-	"startDate" : 2002,
-	"latestDate" : 2022
+    "_id" : ObjectId("6287bc86de18010c521bd08c"),
+    "firstName" : "Chris",
+    "lastName" : "Hemsworth",
+    "popularFilms" : [
+        "Star Trek",
+        "The Cabin in the Woods",
+        "Thor: Ragnarok"
+    ],
+    "startDate" : 2002,
+    "latestDate" : 2022
 }
 {{< /output >}}
 
@@ -231,28 +231,28 @@ After creating indices, you may want to review and remove some that are no longe
 
 {{< output >}}
 [
-	{
-		"v" : 2,
-		"key" : {
-			"_id" : 1
-		},
-		"name" : "_id_"
-	},
-	{
-		"v" : 2,
-		"key" : {
-			"startDate" : 1
-		},
-		"name" : "startDate_1"
-	},
-	{
-		"v" : 2,
-		"key" : {
-			"startDate" : 1,
-			"latestDate" : 1
-		},
-		"name" : "startDate_1_latestDate_1"
-	},
+    {
+        "v" : 2,
+        "key" : {
+            "_id" : 1
+        },
+        "name" : "_id_"
+    },
+    {
+        "v" : 2,
+        "key" : {
+            "startDate" : 1
+        },
+        "name" : "startDate_1"
+    },
+    {
+        "v" : 2,
+        "key" : {
+            "startDate" : 1,
+            "latestDate" : 1
+        },
+        "name" : "startDate_1_latestDate_1"
+    },
 
     [...]
 ]
