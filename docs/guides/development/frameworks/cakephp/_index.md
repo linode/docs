@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'CakePHP is a framework used to develop PHP applications quickly, which is why many people choose this because of the simple deployment process and documentation.'
-og_description: 'CakePHP is a framework used to develop PHP applications quickly, which is why many people choose this because of the simple deployment process and documentation.'
+description: 'CakePHP is a framework used to develop PHP applications quickly, and many people developers choose CakePHP because of the simple deployment process and documentation.'
+og_description: 'CakePHP is a framework used to develop PHP applications quickly, and many people developers choose CakePHP because of the simple deployment process and documentation.'
 keywords: ["CakePHP", "PHP"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-31
