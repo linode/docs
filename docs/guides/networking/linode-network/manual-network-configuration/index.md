@@ -8,6 +8,8 @@ keywords: ["static", "ip address", "addresses"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/linux-static-ip-configuration/','/networking/configuring-static-ip-interfaces/','/networking/linode-network/linux-static-ip-configuration/','/guides/linux-static-ip-configuration/']
 published: 2022-05-23
+modified_by:
+  name: Linode
 title: "Manual Network Configuration on a Compute Instance"
 h1_title: "Manually Configuring the Network on a Compute Instance"
 enable_h1: true
