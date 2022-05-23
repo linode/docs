@@ -7,7 +7,9 @@ description: "Learn how to manually edit your distribution-specific network conf
 keywords: ["static", "ip address"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/linux-static-ip-configuration/','/networking/configuring-static-ip-interfaces/','/networking/linode-network/linux-static-ip-configuration/']
-published: 2022-05-20
+published: 2022-05-23
+modified_by:
+  name: Linode
 title: "Network Configuration Using systemd-networkd"
 tags: ["networking","linode platform","systemd-networkd"]
 ---
@@ -81,7 +83,7 @@ Address=192.0.2.123/24
 
 1. Perform any necessary configuration steps as outlined in the workflows below.
 
-1.  Once you've edited the configuration file to fit your needs, you need to apply the changes or reboot the Compute Instance. To apply your changes with systemd-networkd, run the following command:
+1.  Once you've edited the configuration file to fit your needs, you need to apply the changes or reboot the Compute Instance. To apply your changes with systemd-networkd in Ubuntu, you can use Netplan and run the following command:
 
         sudo netplan try
 

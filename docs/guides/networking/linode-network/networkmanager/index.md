@@ -7,7 +7,9 @@ description: ""
 keywords: ["static", "ip address",]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/linux-static-ip-configuration/','/networking/configuring-static-ip-interfaces/','/networking/linode-network/linux-static-ip-configuration/']
-published: 2022-05-20
+published: 2022-05-23
+modified_by:
+  name: Linode
 title: "Network Configuration Using NetworkManager"
 tags: ["networking","linode platform","networkmanager"]
 external_resources:
