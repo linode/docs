@@ -253,3 +253,5 @@ The following output is returned:
 ## Conclusion
 
 This guide provides the building blocks for SQL’s powerful data aggregation operations for grouping and totaling. As noted, you can restrict values that become part of these groups by using a `Where` clause in queries before the aggregation is performed. You can filter out rows of grouped results (after the aggregation is performed) by using the `Having` clause in the SQL queries.
+
+To learn more about SQL, see our guides on [SQL data types](/docs/guides/sql-data-types/), [joins](/docs/guides/sql-joins/), and [SQL user management security](/docs/guides/sql-security/).
