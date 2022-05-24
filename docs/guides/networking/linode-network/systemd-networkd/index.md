@@ -21,7 +21,7 @@ Ubuntu also has utility called Netplan that serves as a frontend for configuring
 {{</ note >}}
 
 {{< note >}}
-This guide serves as a supplement to the main [Manual Network Configuration on a Compute Instance](/docs/guides/linux-static-ip-configuration) guide. Please review that guide before making any configuration changes to your Compute Instance.
+This guide serves as a supplement to the main [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) guide. Please review that guide before making any configuration changes to your Compute Instance.
 {{</ note >}}
 
 ## Configuration Files

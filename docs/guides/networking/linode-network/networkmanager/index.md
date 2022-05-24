@@ -19,7 +19,7 @@ external_resources:
 [NetworkManager](https://networkmanager.dev/) is a very popular network configuration utility and is used by default on Fedora, CentOS Stream, CentOS, AlmaLinux 8, and Rocky Linux 8. It can also be easily installed on Arch, Ubuntu, and other distributions.
 
 {{< note >}}
-This guide serves as a supplement to the main [Manual Network Configuration on a Compute Instance](/docs/guides/linux-static-ip-configuration) guide. Please review that guide before making any configuration changes to your Compute Instance.
+This guide serves as a supplement to the main [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) guide. Please review that guide before making any configuration changes to your Compute Instance.
 {{</ note >}}
 
 ## Configuration Files
@@ -127,9 +127,10 @@ In the example above, make the following replacements:
 
 - **[ip-address]**: The IPv4 address that you wish to statically configure.
 - **[prefix]**: The prefix is based on the type of IP address you are adding. It should be `24` for public IPv4 addresses and `17` for private IPv4 addresses.
+
 ## Configuring the Primary IPv6 Address through SLAAC
 
-SLAAC is used to automatically configure your primary IPv6 address. For this to work, your system must accept router advertisements. You also may need to disable IPv6 privacy extensions. Within Network Manager, it means making sure the following settings
+SLAAC is used to automatically configure your primary IPv6 address. For this to work, your system must accept router advertisements. You also may need to disable IPv6 privacy extensions. Within NetworkManager, you can set `IPV6INIT` to `yes`, `IPV6_ADDR_GEN_MODE` to `eui64`, and `IPV6_PRIVACY` to `no`.
 
 {{< file "/etc/sysconfig/network-scripts/ifcfg-eth0" >}}
 ...
