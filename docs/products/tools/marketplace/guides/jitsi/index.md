@@ -35,14 +35,13 @@ aliases: ['/platform/marketplace/how-to-deploy-jitsi-with-marketplace-apps/', '/
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used, though we recommend a 8GB Dedicated CPU or Shared Compute Instance for hosting large meetings or multiple simultaneous meetings.
 
 ### Jitsi Options
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Admin Email for the Jitsi server**
-- **Would you like to use a free Let's Encrypt SSL certificate?** Select `Yes` if you would like the install to create an SSL certificate for you, or `No` if you do not. You cannot create secure, encrypted conferences without an SSL certificate. If `No` is selected, the Jitsi app triggers security warnings in most web browsers.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
