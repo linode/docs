@@ -56,9 +56,6 @@ DNS3=203.0.113.3
 GATEWAY0=192.0.2.1
 IPADDR0=192.0.2.123
 PREFIX0=24
-
-IPADDR1=192.168.175.171
-PREFIX1=17
 {{</ file >}}
 
 ## Configuring IP Addresses Manually
