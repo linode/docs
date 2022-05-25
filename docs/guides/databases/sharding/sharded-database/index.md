@@ -1,10 +1,8 @@
 ---
 slug: sharded-database
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Database sharding divides data into smaller chunks and distributes it across different database nodes. ✓ Learn more about sharding practices and strategies!'
-og_description: 'Database sharding divides data into smaller chunks and distributes it across different database nodes. ✓ Learn more about sharding practices and strategies!'
+  name: Jeff Novotny
+description: 'Database sharding divides data into smaller chunks and distributes it across different database nodes. Learn more about sharding practices and strategies.'
 keywords: ['sharded database','db sharding','sharding strategy','database sharding examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-18
@@ -36,9 +34,9 @@ Vertical partitioning and horizontal partitioning should not be confused with ve
 
 The shards are distributed across the different servers in the cluster. Each shard has the same database schema and table definitions. This maintains consistency across the shards. Sharding allocates each row to a shard based on a sharding key. This key is typically an index or primary key from the table. A good example is a user ID column. However, it is possible to generate a sharding key from any field, or from multiple table columns. The selection of the sharding key should be reasonable for the application and effectively distribute the rows among the shards. For example, a country code or zip code is a good choice to distribute the data to geographically-dispersed shards. Sharding is particularly advantageous for databases that store large amounts of data in relatively few tables, and have a high volume of reads and writes.
 
-Each shard can be accessed independently and does not necessarily require access to the other shards. Different tables can use different sharding techniques and not all tables necessarily have to be sharded. As an ideal, sharding strives towards a *shared-nothing* architecture, in which the shards do not share data and there is no data duplication. In practice, it is often advantageous to replicate certain data to each shard. This avoids the necessity of accessing multiple servers for a single query and can result in better performance.
+Each shard can be accessed independently and does not necessarily require access to the other shards. Different tables can use different sharding techniques and not all tables necessarily have to be sharded. As an ideal, sharding strives towards a *shared-nothing* architecture, in which the shards do not share data and there is no data duplication. In practice, it is often advantageous to replicate certain data to each shard. This avoids the need to access multiple servers for a single query and can result in better performance.
 
-The following example demonstrates how horizontal sharding works in practice. Before sharding, the `store` table looks like this.
+The following example demonstrates how horizontal sharding works in practice. Before the database is sharded, the example `store` table is organized in the following way:
 
 | store_ID | city | state | zip_code |
 |:-:|:-:|:-:|:-:|
@@ -67,7 +65,7 @@ The second shard contains the remainder of the rows.
 
 Sharding does not necessarily make any backup copies of the data. Each record is still only stored on a single server. *Replication* is used to copy information to another server, resulting in primary and secondary copies of the data. Replication enhances reliability and robustness at the cost of additional complexity and resources. Sharded databases can be replicated, but the procedure for doing so can be very complex.
 
-Replication and caching are both potential alternatives to sharding, particular in applications which mainly read data from a database. Replication spreads out the queries to multiple servers, while caching speeds up the requests.
+Replication and caching are both potential alternatives to sharding, particular in applications which mainly read data from a database. Replication spreads out the queries to multiple servers, while caching speeds up the requests. See our guide [How to Configure Source-Replica Replication in MySQL](/docs/guides/configure-source-replica-replication-in-mysql/) to learn more about  data replication.
 
 ## Pros and Cons of a Sharded Database
 
@@ -77,35 +75,35 @@ Horizontal scaling allows systems to achieve a much higher scaling rate. Additio
 
 Database sharding is a horizontal scaling strategy, so it shares the advantages of this approach. However, it also offers several additional benefits, including the following:
 
-*   It improves performance and speeds up data retrieval. Based on the sharding key, the database system immediately knows which shard contains the data. It can quickly route the query to the right server. Because each shard only contains a subset of the rows, it is easier for the database server to find the correct entry.
-*   Additional computing capacity can be added with no downtime. Sharding increases the data storage capacity and the total resources available to the database.
-*   It can be more cost efficient to run multiple servers than one mega-server.
-*   Sharding can simplify upgrades, allowing one server to be upgraded at a time.
-*   A sharded approach is more resilient. If one of the servers is offline, the remaining shards remain accessible. Sharding can be combined with high availability techniques for even higher reliability.
-*   Many modern database systems provide some tools to assist with sharding, although they do not completely automate the process.
+- It improves performance and speeds up data retrieval. Based on the sharding key, the database system immediately knows which shard contains the data. It can quickly route the query to the right server. Because each shard only contains a subset of the rows, it is easier for the database server to find the correct entry.
+- Additional computing capacity can be added with no downtime. Sharding increases the data storage capacity and the total resources available to the database.
+- It can be more cost efficient to run multiple servers than one mega-server.
+- Sharding can simplify upgrades, allowing one server to be upgraded at a time.
+- A sharded approach is more resilient. If one of the servers is offline, the remaining shards are still accessible. Sharding can be combined with high availability techniques for even higher reliability.
+- Many modern database systems provide some tools to assist with sharding, although they do not completely automate the process.
 
 Unfortunately, sharding also has drawbacks. Some of the downsides include:
 
-*   Sharding greatly increases the complexity. Additional logic is required to shard the database and properly direct queries to the correct shard. This increases development time and cost. A more elaborate network mesh is often necessary, which leads to an increase in lab and infrastructure costs.
-*   Latency can be larger than with a standard database design.
-*   SQL join operations affecting multiple shards are more difficult to execute and take longer to complete. Some operations might become too slow to be feasible. However, the right design can facilitate better performance on common queries.
-*   Sharding requires a lot of tuning and tweaking as the database grows. This sometimes requires a reconsideration of the entire sharding strategy and database design. Uneven shard distribution can happen even with proper planning, causing the distribution to unexpectedly become lopsided.
-*    It is not always obvious how many shards and servers to use, or how to choose the sharding key. Poor sharding keys can adversely affect performance or data distribution. This causes some shards to be overloaded while others are almost empty, leading to hotspots and inefficiencies.
-*   It is more challenging to change the database schema after sharding is implemented. It is also difficult to convert the database back to its pre-sharded state.
-*   Shard failures can cause cross-shard inconsistencies and other failures.
-*   Backup and replication tasks are more difficult with a sharded database.
-*   Although most RDBMS applications provide some sharding support, the tools are often not robust or complete. Most systems still do not fully support automatic sharding.
+- Sharding greatly increases the complexity of a software development project. Additional logic is required to shard the database and properly direct queries to the correct shard. This increases development time and cost. A more elaborate network mesh is often necessary, which leads to an increase in lab and infrastructure costs.
+- Latency can be higher than with a standard database design.
+- [SQL join operations](/docs/guides/sql-joins/) affecting multiple shards are more difficult to execute and take longer to complete. Some operations might become too slow to be feasible. However, the right design can facilitate better performance on common queries.
+- Sharding requires a lot of tuning and tweaking as the database grows. This sometimes requires a reconsideration of the entire sharding strategy and database design. Uneven shard distribution can happen even with proper planning, causing the distribution to unexpectedly become lopsided.
+- It is not always obvious how many shards and servers to use, or how to choose the sharding key. Poor sharding keys can adversely affect performance or data distribution. This causes some shards to be overloaded while others are almost empty, leading to hotspots and inefficiencies.
+- It is more challenging to change the database schema after sharding is implemented. It is also difficult to convert the database back to its pre-sharded state.
+- Shard failures can cause cross-shard inconsistencies and other failures.
+- Backup and replication tasks are more difficult with a sharded database.
+- Although most RDBMS applications provide some sharding support, the tools are often not robust or complete. Most systems still do not fully support automatic sharding.
 
 ## Database Sharding Strategies: Common Architectures
 
-Any sharding implementation must first decide on a database sharding strategy. Database designers must consider how many shards to use and how to distribute the data to the various servers. They must decide what queries to optimize, and how to handle joins and bulk data retrieval. A system in which the data frequently changes requires a different architecture than one that mainly handles read requests. Replication, reliability and a maintenance strategy are also important considerations.
+Any sharding implementation must first decide on a db sharding strategy. Database designers must consider how many shards to use and how to distribute the data to the various servers. They must decide what queries to optimize, and how to handle joins and bulk data retrieval. A system in which the data frequently changes requires a different architecture than one that mainly handles read requests. Replication, reliability and a maintenance strategy are also important considerations.
 
 The choice of a sharding architecture is a critical decision, because it affects many of the other considerations. Most sharded databases have one of the following four architectures:
 
-*   **Range Sharding**.
-*   **Hashed Sharding**.
-*   **Directory-based Sharding**.
-*   **Geographic-Based Sharding**.
+- **Range Sharding**.
+- **Hashed Sharding**.
+- **Directory-based Sharding**.
+- **Geographic-Based Sharding**.
 
 ### Range Sharding
 
@@ -115,11 +113,11 @@ As an example, if the `userID` field is the sharding key, then records having ID
 
 This approach is fairly easy to design and implement, and requires less programming time. The database application only has to compare the value of the sharding key to the predefined ranges using a lookup table. This scheme is also easier to redesign and maintain. Range sharding is a good choice if records with similar keys are frequently viewed together.
 
-Range sharding works best if there are a large number of possible values, which are fairly evenly distributed across the entire range. This design works poorly if most of the key values map to the same shard. Unfortunately, this architecture is prone to poor distribution of the rows among the shards. A good design can still lead to an unbalanced distribution. For example, older accounts are more likely to have been deleted over the years, leaving the corresponding shard relatively empty. This leads to inefficiencies in the database. Choosing fairly large ranges can reduce, but not eliminate, this possibility.
+Range sharding works best if there are a large number of possible values that are fairly evenly distributed across the entire range. This design works poorly if most of the key values map to the same shard. Unfortunately, this architecture is prone to poor distribution of rows among the shards. A good design can still lead to an unbalanced distribution. For example, older accounts are more likely to have been deleted over the years, leaving the corresponding shard relatively empty. This leads to inefficiencies in the database. Choosing fairly large ranges can reduce, but not eliminate, this possibility.
 
-Here is how range sharding might work using the data from the `store` database. In this case, the records for stores with store IDs under 2000 are placed in one shard. Stores possessing IDs of 2001 and greater go in the other.
+The database sharding examples below demonstrate how range sharding might work using the data from the `store` database. In this case, the records for stores with store IDs under 2000 are placed in one shard. Stores possessing IDs of 2001 and greater go in the other.
 
-The first shard looks like this:
+The first shard contains the following rows:
 
 | store_ID | city | state | zip_code |
 |:-:|:-:|:-:|:-:|
@@ -135,21 +133,21 @@ The second shard has the following entries:
 | 2455 | Boston | MA | 02108 |
 | 2459 | New York | NY | 10022 |
 
-This results in a slightly-imbalanced distribution of records. However, as new stores are added, they might be assigned larger store IDs. This leads to a greater imbalance as time goes on.
+This results in a slightly imbalanced distribution of records. However, as new stores are added, they might be assigned larger store IDs. This leads to a greater imbalance as time goes on.
 
 To keep the database running efficiently, shards and ranges have to be regularly rebalanced. This might involve splitting the shards apart and reassigning the data, or merging several smaller shards. If the data is not regularly monitored, performance can steadily degrade.
 
 ### Hash Sharding (Key-Based)
 
-Hash-based sharding, also known as key-based or algorithmic sharing, also uses the shard key to determine which shard a record is assigned to. However, instead of mapping the key directly to a shard, it applies a hash function to the shard key. A hash function transforms one or more data points to a new value that lies within a fixed-size range. In this case, the size of the range is equal to the number of shards. The database uses the output from the hash function to allocate the record to a shard. This typically results in a more even distribution of the records to the different shards.
+Hash-based sharding, also known as key-based or algorithmic sharding, also uses the shard key to determine which shard a record is assigned to. However, instead of mapping the key directly to a shard, it applies a hash function to the shard key. A hash function transforms one or more data points to a new value that lies within a fixed-size range. In this case, the size of the range is equal to the number of shards. The database uses the output from the hash function to allocate the record to a shard. This typically results in a more even distribution of the records to the different shards.
 
-This method allows multiple fields to be used as a compound shard key. This eliminates clumping and clustering, and is a better approach to use if several records can share the same key. Hash functions vary in complexity. A simple hash function calculates the remainder, or modulus, of the key divided by the number of shards. More complex hashing algorithms apply mathematically-advanced equations to multiple inputs. However, it is important to use the same hash function on the same keys for each hashing operation. As with range sharding, the key value should be immutable. If it changes, the hash value must be recalculated and the database entry remapped.
+This method allows multiple fields to be used as a compound shard key. This eliminates clumping and clustering, and is a better approach to use if several records can share the same key. Hash functions vary in complexity. A simple hash function calculates the remainder, or modulus, of the key divided by the number of shards. More complex hashing algorithms apply mathematically advanced equations to multiple inputs. However, it is important to use the same hash function on the same keys for each hashing operation. As with range sharding, the key value should be immutable. If it changes, the hash value must be recalculated and the database entry remapped.
 
 Hash sharding is more efficient than range sharding because a lookup table is not required. The hash is calculated in real time for each query. However, it is impossible to group related records together, and there is no logical connection between the records on a given shard. This requires most bulk queries to read records from multiple shards. Hash sharding is more advantageous for applications that read or write one record at a time.
 
-Hash sharding does not guarantee that the shards are destined to remain perfectly balanced. Patterns in the data still might lead to clustering, which can occur purely by chance. Hash sharding complicates the tasks of re-balancing and rebuilding the shards. To add more shards, it is usually necessary to re-merge all the data, recalculate the hashes, and reassign all the records.
+Hash sharding does not guarantee that the shards are destined to remain perfectly balanced. Patterns in the data still might lead to clustering, which can occur purely by chance. Hash sharding complicates the tasks of rebalancing and rebuilding the shards. To add more shards, it is usually necessary to re-merge all the data, recalculate the hashes, and reassign all the records.
 
-The following example demonstrates a simple hash sharing operation. It uses the simple hash function `store_ID % 3` to assign the records in the `store` database to one of three shards. The first step is to calculate a hash result for each entry.
+The following database sharding example demonstrates a simple hash sharing operation. It uses the simple hash function `store_ID % 3` to assign the records in the `store` database to one of three shards. The first step is to calculate a hash result for each entry.
 
 {{< note >}}
 The hash results are not actually stored inside the database. They are shown in the final column for reasons of clarity.
@@ -197,7 +195,7 @@ Directory-based sharding provides a high level of control and flexibility in det
 
 Directory based sharding is a good choice for the `stores` database. The store entries can be distributed to the different shards based on their location. In this design, locations in New England and the mid-Atlantic are stored in the first shard, which serves as the North-East shard. Stores in the Midwest are written to the second shard.
 
-The first shard contains these entries.
+The first shard contains the entries displayed below.
 
 | store_ID | city | state | zip_code |
 |:-:|:-:|:-:|:-:|
@@ -219,7 +217,7 @@ Although these two shards are perfectly balanced, this is not the main goal of d
 
 Geographic based sharding, or *Geo-sharding*, is a specific type of directory-based sharding. Data is divided amongst the shards based on the location of the entry, which relates to the location of the server hosting the shard. The sharding key is typically a city, state, region, country, or continent. This groups geographically similar data on the same shard. It works the same way directory-based sharding does.
 
-A good example of geo-sharding relates to geographically-dispersed customer data. The customer's home state is used as a sharding key. The lookup table maps customers living in states in the same sales region to the same shard. Each shard is located on a server located in the same region as the customer data it contains. This makes it very quick and efficient for a regional sales team to access customer data.
+A good example of geo-sharding relates to geographically dispersed customer data. The customer's home state is used as a sharding key. The lookup table maps customers living in states in the same sales region to the same shard. Each shard is located on a server located in the same region as the customer data it contains. This makes it very quick and efficient for a regional sales team to access customer data.
 
 ## Is Sharding Right For Your Business?
 
@@ -227,12 +225,12 @@ Because sharding has both advantages and drawbacks, it is important to consider 
 
 In other cases, the complexity and difficulty associated with sharding are greater than the benefits. A database with many small to medium-sized tables could use vertical scaling, increasing the storage and computing power on a single server. It could also use alternative strategies such as replication for greater resilience and read-only throughput.
 
-## Final Thoughts about Database Sharding
+## Conclusion
 
-This guide answers the question, "What is database sharding?" Sharding is a method of distributing the data in a database table to several different shards based on the value of a sharding key. Each shard is stored on a different server. Ideally, the records in a sharded database are distributed amongst the shards in an equitable manner. The different shards share the same table definitions and schemas, but each record is only stored on a single shard.
+This guide answers the question, "What is database sharding?". Sharding is a method of distributing the data in a database table to several different shards based on the value of a sharding key. Each shard is stored on a different server. Ideally, the records in a sharded database are distributed amongst the shards in an equitable manner. The different shards share the same table definitions and schemas, but each record is only stored on a single shard.
 
 Sharding allows a database to scale horizontally, taking advantage of the increased storage, memory, and processing power that only multiple servers can offer. It also increases resiliency and performance. Each query only has to search through a portion of the total records, which is much faster. As a drawback, sharding increases the complexity of a database and increases the difficulty of joins and schema changes.
 
 Sharding can be accomplished using range sharding, hash sharding, or directory-based sharding. Range sharding is the easiest method, but is more likely to result in unequal shards. Hash sharding more effectively distributes the records, but is more difficult to implement. Directory-based sharding groups related items together on the same shard.
 
-A sharded database can be implemented using multiple Linode servers. Linode allows you to configure a full web application on a powerful Linux operating system running the industry-standard LAMP stack. Choose from a high-performance [*Dedicated CPU*](https://www.linode.com/products/dedicated-cpu/) service, or a flexible and affordable [*Shared CPU*](https://www.linode.com/products/shared/) alternative.
+A sharded database can be implemented using multiple Linode servers. Linode allows you to configure a full web application on a powerful Linux operating system running the industry-standard LAMP stack. Choose from a high-performance [*Dedicated CPU*](https://www.linode.com/products/dedicated-cpu/) service, or a flexible and affordable [*Shared CPU*](https://www.linode.com/products/shared/) alternative. Similarly, you can also use a [Linode's Managed Database service](/docs/products/databases/managed-databases/) to deploy a database cluster without the need to install and maintain the database infrastructure.
