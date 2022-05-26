@@ -5,7 +5,7 @@ author:
 description: 'Database sharding divides data into smaller chunks and distributes it across different database nodes. Learn more about sharding practices and strategies.'
 keywords: ['sharded database','db sharding','sharding strategy','database sharding examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-18
+published: 2022-05-26
 modified_by:
   name: Linode
 title: "Database Sharding: Concepts, Examples, and Strategies"
@@ -18,7 +18,7 @@ external_resources:
 - '[MongoDB explanation of database sharding](https://www.mongodb.com/features/database-sharding-explained)'
 ---
 
-Many software applications use a *relational database management system* (RDBMS) to store data. As the database grows, it becomes more time-and-storage intensive to store the data. One popular solution to this problem is [*database sharding*](https://en.wikipedia.org/wiki/Shard_(database_architecture)). A sharded database distributes the records in the database tables across different databases on different computer systems. This guide explains how database sharding works and discusses some of the advantages and disadvantages of sharding. It also describes some of the main sharding strategies and provides some database sharding examples.
+Many software applications use a *relational database management system* (RDBMS) to store data. As the database grows, it becomes more time-and-storage intensive to store the data. One popular solution to this problem is [*database sharding*](https://en.wikipedia.org/wiki/Shard_(database_architecture)). A sharded database distributes the records in a database's tables across different databases on different computer systems. This guide explains how database sharding works and discusses some of the advantages and disadvantages of sharding. It also describes some of the main sharding strategies and provides some database sharding examples.
 
 ## What is Database Sharding?
 
@@ -32,7 +32,7 @@ Data sharding is a common way of implementing horizontal scaling. Database shard
 Vertical partitioning and horizontal partitioning should not be confused with vertical and horizontal scaling.
 {{< /note >}}
 
-The shards are distributed across the different servers in the cluster. Each shard has the same database schema and table definitions. This maintains consistency across the shards. Sharding allocates each row to a shard based on a sharding key. This key is typically an index or primary key from the table. A good example is a user ID column. However, it is possible to generate a sharding key from any field, or from multiple table columns. The selection of the sharding key should be reasonable for the application and effectively distribute the rows among the shards. For example, a country code or zip code is a good choice to distribute the data to geographically-dispersed shards. Sharding is particularly advantageous for databases that store large amounts of data in relatively few tables, and have a high volume of reads and writes.
+The shards are distributed across the different servers in the cluster. Each shard has the same database schema and table definitions. This maintains consistency across the shards. Sharding allocates each row to a shard based on a sharding key. This key is typically an index or primary key from the table. A good example is a user ID column. However, it is possible to generate a sharding key from any field, or from multiple table columns. The selection of the sharding key should be reasonable for the application and effectively distribute the rows among the shards. For example, a country code or zip code is a good choice to distribute the data to geographically dispersed shards. Sharding is particularly advantageous for databases that store large amounts of data in relatively few tables, and have a high volume of reads and writes.
 
 Each shard can be accessed independently and does not necessarily require access to the other shards. Different tables can use different sharding techniques and not all tables necessarily have to be sharded. As an ideal, sharding strives towards a *shared-nothing* architecture, in which the shards do not share data and there is no data duplication. In practice, it is often advantageous to replicate certain data to each shard. This avoids the need to access multiple servers for a single query and can result in better performance.
 
@@ -102,7 +102,7 @@ The choice of a sharding architecture is a critical decision, because it affects
 
 - **Range Sharding**.
 - **Hashed Sharding**.
-- **Directory-based Sharding**.
+- **Directory-Based Sharding**.
 - **Geographic-Based Sharding**.
 
 ### Range Sharding
@@ -150,7 +150,7 @@ Hash sharding does not guarantee that the shards are destined to remain perfectl
 The following database sharding example demonstrates a simple hash sharing operation. It uses the simple hash function `store_ID % 3` to assign the records in the `store` database to one of three shards. The first step is to calculate a hash result for each entry.
 
 {{< note >}}
-The hash results are not actually stored inside the database. They are shown in the final column for reasons of clarity.
+The hash results are not actually stored inside the database. They are shown in the final column for clarity.
 {{< /note >}}
 
 | store_ID | city | state | zip_code  | hash result |
@@ -185,15 +185,15 @@ The remainder are stored in the third shard.
 
 In this case, although the data set is quite small, the hash function still distributes the entries evenly. This is not always the case with every database. However, as records are added, the distribution is likely to remain reasonably balanced.
 
-### Directory Based Sharding
+### Directory-Based Sharding
 
-Directory based sharding groups related items together on the same shard. This is also known as entity or relationship-based sharding. It typically uses the value contained in a certain field to decide what shard to use. Directory sharding is accomplished through the use of a static lookup table. The table contains a list of mappings between each possible value for the field and its designated shard. Each key can only map to one shard and must appear in the lookup table exactly once. However many keys can potentially be mapped to the same shard.
+Directory-based sharding groups related items together on the same shard. This is also known as entity or relationship-based sharding. It typically uses the value contained in a certain field to decide what shard to use. Directory sharding is accomplished through the use of a static lookup table. The table contains a list of mappings between each possible value for the field and its designated shard. Each key can only map to one shard and must appear in the lookup table exactly once. However many keys can potentially be mapped to the same shard.
 
 As an example, the records in a table of customers can be mapped to shards based on the customer's home state. The lookup table contains a list of all fifty states, which are the shard keys, and the shard it maps to. This allows for a system design where the records of all customers living in New England are stored on the first shard. Clients in the Mid-Atlantic are located on shard two. Clients residing in the Deep South are mapped to the third shard.
 
 Directory-based sharding provides a high level of control and flexibility in determining how the data is stored. When intelligently designed, it speeds up common table joins and the bulk retrieval of related data. This architecture is very helpful if the shard key can only be assigned a small number of possible values. Unfortunately, it is highly prone to clustering and imbalanced tables, and the overhead of accessing the lookup table degrades performance. However, the benefits of this architecture often outweighs its drawbacks.
 
-Directory based sharding is a good choice for the `stores` database. The store entries can be distributed to the different shards based on their location. In this design, locations in New England and the mid-Atlantic are stored in the first shard, which serves as the North-East shard. Stores in the Midwest are written to the second shard.
+Directory-based sharding is a good choice for the `stores` database. The store entries can be distributed to the different shards based on their location. In this design, locations in New England and the mid-Atlantic are stored in the first shard, which serves as the North-East shard. Stores in the Midwest are written to the second shard.
 
 The first shard contains the entries displayed below.
 
@@ -213,9 +213,9 @@ The second shard contains the remainder of the data.
 
 Although these two shards are perfectly balanced, this is not the main goal of directory sharding. It instead seeks to generate useful and relevant shards of closely-related information, which this example also accomplishes.
 
-### Geographic Based Sharding
+### Geographic-Based Sharding
 
-Geographic based sharding, or *Geo-sharding*, is a specific type of directory-based sharding. Data is divided amongst the shards based on the location of the entry, which relates to the location of the server hosting the shard. The sharding key is typically a city, state, region, country, or continent. This groups geographically similar data on the same shard. It works the same way directory-based sharding does.
+Geographic-based sharding, or *Geo-sharding*, is a specific type of directory-based sharding. Data is divided amongst the shards based on the location of the entry, which relates to the location of the server hosting the shard. The sharding key is typically a city, state, region, country, or continent. This groups geographically similar data on the same shard. It works the same way directory-based sharding does.
 
 A good example of geo-sharding relates to geographically dispersed customer data. The customer's home state is used as a sharding key. The lookup table maps customers living in states in the same sales region to the same shard. Each shard is located on a server located in the same region as the customer data it contains. This makes it very quick and efficient for a regional sales team to access customer data.
 
@@ -233,4 +233,4 @@ Sharding allows a database to scale horizontally, taking advantage of the increa
 
 Sharding can be accomplished using range sharding, hash sharding, or directory-based sharding. Range sharding is the easiest method, but is more likely to result in unequal shards. Hash sharding more effectively distributes the records, but is more difficult to implement. Directory-based sharding groups related items together on the same shard.
 
-A sharded database can be implemented using multiple Linode servers. Linode allows you to configure a full web application on a powerful Linux operating system running the industry-standard LAMP stack. Choose from a high-performance [*Dedicated CPU*](https://www.linode.com/products/dedicated-cpu/) service, or a flexible and affordable [*Shared CPU*](https://www.linode.com/products/shared/) alternative. Similarly, you can also use a [Linode's Managed Database service](/docs/products/databases/managed-databases/) to deploy a database cluster without the need to install and maintain the database infrastructure.
+A sharded database can be implemented using multiple Linode servers. Linode allows you to configure a full web application on a powerful Linux operating system running the industry-standard LAMP stack. Choose from a high-performance [*Dedicated CPU*](https://www.linode.com/products/dedicated-cpu/) service, or a flexible and affordable [*Shared CPU*](https://www.linode.com/products/shared/) alternative. Similarly, you can also use [Linode's Managed Database service](/docs/products/databases/managed-databases/) to deploy a database cluster without the need to install and maintain the database infrastructure.
