@@ -6,7 +6,7 @@ author:
 description: "Learn how to configure networking using the systemd-networkd utility on Ubuntu, Arch, and other modern Linux distributions"
 keywords: ["static", "ip address", "systemd-networkd"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-25
+published: 2022-05-27
 modified_by:
   name: Linode
 title: "Network Configuration Using systemd-networkd"
@@ -127,13 +127,19 @@ IPv6PrivacyExtensions=false
 IPv6AcceptRA=true
 {{</ file >}}
 
-If you wish to disable IPv6 SLAAC addressing and instead statically configure your IPv6 address (not recommended), you can explicitly set the `IPv6AcceptRA` parameter to `false` and then add your IPv6 address through the [Configuring Additional IP Addresses](#configuring-additional-ip-addresses) instructions.
-
 {{< note >}}
 The `IPv6AcceptRA` parameter isn't strictly required as long as running the `net.ipv6.conf.eth0.autoconf` kernel variable is set to `1` (not a `0`). You can determine the setting by running the following command.
 
     sysctl net.ipv6.conf.eth0.autoconf
 {{</ note >}}
+
+If you wish to disable IPv6 SLAAC addressing and instead statically configure your IPv6 address (not recommended), you can explicitly set the `IPv6AcceptRA` parameter to `false` and then add your primary IPv6 address (using the prefix of `/128`).
+
+{{< file "/etc/systemd/network/05-eth0.network" >}}
+...
+IPv6AcceptRA=false
+Address=[ip-address]/128
+{{</ file >}}
 
 ## Configuring Additional IP Addresses
 
