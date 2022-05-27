@@ -6,7 +6,7 @@ author:
 description: "Learn how to configure networking using the NetworkManager utility on CentOS, CentOS Stream, Fedora, and other modern Linux distributions"
 keywords: ["static", "ip address","NetworkManager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-25
+published: 2022-05-27
 modified_by:
   name: Linode
 title: "Network Configuration Using NetworkManager"
@@ -144,7 +144,7 @@ If you wish to disable IPv6 SLAAC addressing and instead statically configure yo
 net.ipv6.conf.all.autoconf=0
 {{</ file >}}
 
-Then modify the network configuration file to disable auto-configuration and statically set your IPv6 address.
+Then modify the network configuration file to disable auto-configuration and statically set your IPv6 address (using the prefix of `/128`).
 
 {{< file "/etc/sysconfig/network-scripts/ifcfg-eth0" >}}
 ...
@@ -153,7 +153,7 @@ IPV6_AUTOCONF="no"
 # IPV6_ADDR_GEN_MODE="eui64"
 # IPV6_PRIVACY="no"
 
-IPV6ADDR=[ip-address]/[prefix]
+IPV6ADDR=[ip-address]/128
 IPV6_DEFAULTGW=fe80::1
 {{</ file >}}
 
