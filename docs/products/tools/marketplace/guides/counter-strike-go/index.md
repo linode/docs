@@ -34,7 +34,7 @@ A competitive match requires two teams of five players, but hosting your own ser
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Debian 11, Ubuntu 22.04 LTS
 - **Recommended minimum plan:** 4GB Dedicated CPU Compute Instance
 
 ### CS:GO Options
