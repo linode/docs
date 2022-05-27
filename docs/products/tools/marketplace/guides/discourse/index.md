@@ -18,7 +18,7 @@ external_resources:
 aliases: ['/platform/marketplace/how-to-deploy-discourse-with-marketplace-apps/','/guides/deploy-discourse-with-marketplace-apps/','/guides/discourse-marketplace-app/']
 ---
 
-[Discourse](https://www.discourse.org/) is an open source discussion platform that provides a forum, mailing list, chat room, and more.
+[Discourse](https://www.discourse.org/) is a self-hosted open-source discussion platform that provides a forum, mailing list, chat room, and more.
 
 ## Before You Begin
 

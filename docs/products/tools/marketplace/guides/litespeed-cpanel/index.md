@@ -7,7 +7,7 @@ keywords: ['web server','cpanel','litespeed']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
-modified: 2022-03-08
+modified: 2022-05-17
 modified_by:
   name: Linode
 title: "Deploying LiteSpeed cPanel through the Linode Marketplace"
@@ -18,13 +18,19 @@ external_resources:
 aliases: ['/guides/deploying-litespeed-cpanel-marketplace-app/','/guides/litespeed-cpanel-marketplace-app/']
 ---
 
-The LiteSpeed cPanel App automatically installs WHM/cPanel, performance LiteSpeed Web Server, and WHM LiteSpeed Plugin.
+The LiteSpeed cPanel App automatically installs [cPanel](https://cpanel.net/), [LiteSpeed Web Server](https://www.litespeedtech.com/products/litespeed-web-server), and the[WHM/cPanel LiteSpeed Plugin](https://www.litespeedtech.com/products/litespeed-web-server/control-panel-plugins/cpanel).
 
 - **LiteSpeed Web Server Features:** HTTP/2, QUIC, HTTP/3, event driven architecture, Apache drop-in replacement, LSCache Engine with ESI, server-level reCAPTCHA, one-click cache acceleration
 
 - **WHM LiteSpeed Plugin Features:** Version management, one-click switch between Apache and LiteSpeed Web Server, build PHP with LSAPI, quick PHP suExec and LiteSpeed cache setups, license management
 
 - **Auto configuration:** Enable PHP_SUEXEC, enable EasyApache integration, switch to LiteSpeed Web Server, cache root setup, disable Apache mod_ruid2, Apache port offset 0
+
+{{< note >}}
+cPanel requires a valid license to use the software beyond the initial 15 day [free trial](https://cpanel.net/products/trial/) period. To purchase a license, visit [cPanel’s website](https://cpanel.net/pricing/) and select a plan that fits your needs. Licenses are not available directly through Linode.
+
+LiteSpeed offers both free and paid plans.  Visit [LiteSpeed's website](https://www.litespeedtech.com/products/litespeed-web-server/lsws-pricing) to view available plans and pricing information.
+{{</ note >}}
 
 ## Deploying a Marketplace App
 

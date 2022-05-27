@@ -7,7 +7,7 @@ keywords: ['photo storage','images','Marketplace']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
-modified: 2022-03-08
+modified: 2022-05-17
 modified_by:
   name: Linode
 title: "Deploying Chevereto through the Linode Marketplace"
@@ -17,7 +17,11 @@ external_resources:
 aliases: ['/guides/deploying-chevereto-marketplace-app/','/guides/chevereto-marketplace-app/']
 ---
 
-Chevereto is a self-hosted image sharing solution. It can be used to create a myriad of applications or to empower existing systems. Chevereto's features include multi-user support, multi-server support, bulk importing, integration with social media, and more.
+[Chevereto](https://chevereto.com/) is a self-hosted image sharing solution. It can be used to create a myriad of applications or to empower existing systems. Chevereto's features include multi-user support, multi-server support, bulk importing, integration with social media, and more.
+
+{{< note >}}
+Chevereto requires a valid license to use the software. To purchase a license, visit [Chevereto's website](https://chevereto.com/pricing) and select a plan that fits your needs. Licenses are not available directly through Linode.
+{{</ note >}}
 
 ## Deploying a Marketplace App
 
