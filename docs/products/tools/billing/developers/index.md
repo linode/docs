@@ -21,7 +21,7 @@ Linode’s [API v4](/docs/api) provides the ability to programmatically manage t
 
 - [View Payment](/docs/api/account/#view-payment)
 
-- [Stage PayPay Payment](/docs/api/account/#stage-paypal-payment)
+- [Stage PayPal Payment](/docs/api/account/#stage-paypal-payment)
 
 - [Staged/Approved PayPal Payment Execute](/docs/api/account/#stagedapproved-paypal-payment-execute)
 
