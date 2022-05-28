@@ -74,19 +74,17 @@ If a results list contains more than 100 items, the response is split into multi
     "page": 1,
     "data": [
         {
-            "kvm": false,
+            "kvm": true,
             "architecture": "i386",
             "version": "2.6.28",
-            "xen": true,
             "label": "2.6.28.3-linode17",
             "id": "linode/2.6.28.3-linode17",
             "pvops": true
         },
         {
-            "kvm": false,
+            "kvm": true,
             "architecture": "i386",
             "version": "2.6.18",
-            "xen": true,
             "label": "2.6.18.8-linode16",
             "id": "linode/2.6.18.8-linode16",
             "pvops": false
