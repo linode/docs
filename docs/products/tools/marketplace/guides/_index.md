@@ -55,6 +55,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [LAMP Stack](/docs/products/tools/marketplace/guides/lamp-stack/)
 - [LEMP Stack](/docs/products/tools/marketplace/guides/lemp-stack/)
 - [LiteSpeed cPanel](/docs/products/tools/marketplace/guides/litespeed-cpanel/)
+- [LiveSwitch](/docs/products/tools/marketplace/guides/liveswitch/)
 - [MagicSpam](/docs/products/tools/marketplace/guides/magicspam/)
 - [MEAN Stack](/docs/products/tools/marketplace/guides/mean-stack/)
 - [MERN Stack](/docs/products/tools/marketplace/guides/mern-stack/)
