@@ -6,7 +6,7 @@ description: "Deploy Easypanel on a Linode Compute Instance. This provides a mod
 keywords: ['easypanel','control panel','cpanel']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-25
+published: 2022-05-31
 title: "Deploying Easypanel through the Linode Marketplace"
 contributor:
   name: Holden Morris
@@ -32,12 +32,12 @@ contributor:
 
 ## Getting Started after Deployment
 
-1.  Open your web browser and navigate to the IPv4 address for your Compute Instance. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses. The connection uses the `http` protocol and is not encrypted by default.
+1.  Open your web browser and navigate to the IPv4 address for your Compute Instance. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses. The connection uses the `https` protocol with a self-signed certificate. Your browser will likely display a message stating that the connection is not private or that there is a potential security risk. You can safely continue past this message. In most browsers, click **Advanced** and then **Proceed** or **Accept risk**.
 
-1. Enter a username, password, email, and Github token (if applicable). Click **Setup** once finished.
+1. In the setup screen, enter your preferred username, password, email address. You can also enter your Github token now or you can leave that field blank to enter it at a later time. Click **Setup** once finished.
 
-    ![Easypanel setup page](easypanel_setup.jpg)
+    ![Screenshot of the Easypanel setup page](easypanel-setup.png)
 
-1. After logging in, the admin control panel will appear. From there, you can manage your projects. Check out [the official Easypanel documentation](https://easypanel.io/docs) to learn how to further utilize your Easypanel instance.
+1. After logging in, the admin control panel appears. From there, you can manage your projects. Check out [the official Easypanel documentation](https://easypanel.io/docs) to learn how to further utilize your Easypanel instance.
 
 {{< content "marketplace-update-note-shortguide">}}
