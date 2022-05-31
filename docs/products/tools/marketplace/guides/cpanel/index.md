@@ -7,7 +7,7 @@ keywords: ['cpanel','whm','hosting','manager']
 tags: ["cpanel","linode platform","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-13
-modified: 2022-03-29
+modified: 2022-05-31
 modified_by:
   name: Linode
 title: "Deploying cPanel through the Linode Marketplace"
@@ -34,7 +34,7 @@ cPanel requires a valid license to use the software beyond the initial 15 day [f
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7
+- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** 2GB Dedicated Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
 
 ## Getting Started after Deployment
