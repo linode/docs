@@ -6,7 +6,7 @@ author:
 description: "An overview of changes and actions that may be required in advance of upgrades to Linode's networking infrastructure."
 keywords: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-05
+published: 2022-05-25
 modified_by:
   name: Linode
 title: "Upcoming Changes Related to Network Infrastructure Upgrades"
@@ -50,7 +50,7 @@ Review the table below to learn which data centers have been upgraded with the l
 | London (United Kingdom) | *In progress* |
 | Mumbai (India) | *In progress* |
 | Newark (New Jersey, USA) | *In progress* |
-| Singapore | *Coming soon* |
+| Singapore | *In progress* |
 | Sydney (Australia) | *Coming soon* |
 | Tokyo (Japan) | *Coming soon* |
 | Toronto (Canada) | *Coming soon* |

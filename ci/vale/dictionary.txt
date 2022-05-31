@@ -833,6 +833,7 @@ identrust
 idlist
 ie
 iface
+ifcfg
 ifconfig
 ifdown
 ifnames
@@ -969,6 +970,7 @@ kerberos
 kerberos5
 Kernighan
 keychain
+keyfile
 keyfiles
 keygen
 keyid
@@ -1067,6 +1069,7 @@ liskov
 listdir
 listserv
 listservs
+litespeed
 livigno
 li181
 li263
@@ -1597,6 +1600,7 @@ quickconnect
 quicklisp
 quickstart
 radeon
+rainloop
 ramdisk
 ransomwhere
 rauth
@@ -1615,6 +1619,7 @@ readme
 readonly
 readwrite
 realtime
+rebalancing
 rebase
 rebased
 rebases

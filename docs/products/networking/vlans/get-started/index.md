@@ -27,7 +27,7 @@ For more information on the configuration options that appear when creating a Li
 
 1. In the *Label* field, enter the label for the VLAN or select a pre-existing VLAN from the dropdown menu. If a VLAN corresponding with the label doesn't yet exist, it will be created.
 
-1. If using [Network Helper]/docs/guides/network-helper/) to manage the Linode's internal network configuration (the default for most new Linodes), enter an *IPAM Address*. Doing so will allow the newly created Linode to automatically communicate with other Linodes attached to the same VLAN. The IPAM address should be unique to avoid conflicts in the case other machines share the same address. An example of a valid IPAM address is `10.0.0.1/24`.
+1. If using [Network Helper](/docs/guides/network-helper/) to manage the Linode's internal network configuration (the default for most new Linodes), enter an *IPAM Address*. Doing so will allow the newly created Linode to automatically communicate with other Linodes attached to the same VLAN. The IPAM address should be unique to avoid conflicts in the case other machines share the same address. An example of a valid IPAM address is `10.0.0.1/24`.
 
 1. Complete the Linode Creation form with any additional add-ons and settings you'd like to add. Then click the **Create Linode** button.
 
