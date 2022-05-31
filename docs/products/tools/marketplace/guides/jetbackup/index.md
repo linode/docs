@@ -7,7 +7,7 @@ keywords: ['backups','cpanel', 'backup']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
-modified: 2022-03-08
+modified: 2022-05-17
 modified_by:
   name: Linode
 title: "Deploying JetBackup through the Linode Marketplace"
@@ -16,7 +16,11 @@ external_resources:
 - '[JetBackup](https://www.jetbackup.com/)'
 ---
 
-JetBackup is a backup solution that can integrate with cPanel or be used as a standalone software within supported Linux distributions. It offers flexible backup management options, including the ability to perform off-site backups through S3-compatible storage (like Linode's [Object Storage](https://www.linode.com/products/object-storage/)). See the [JetBackup 5 product page](https://www.jetbackup.com/jetbackup-5/) for more details.
+[JetBackup](https://www.jetbackup.com/) is a backup solution that can integrate with cPanel or be used as a standalone software within supported Linux distributions. It offers flexible backup management options, including the ability to perform off-site backups through S3-compatible storage (like Linode's [Object Storage](https://www.linode.com/products/object-storage/)).
+
+{{< note >}}
+JetBackup requires a valid license to use the software beyond the available 10 day [free trial](https://cpanel.net/products/trial/) period. To purchase a license, visit [JetBackup's website](https://billing.jetapps.com/index.php?rp=/store/prorated-license) and select a plan that fits your needs. Licenses are not available directly through Linode.
+{{</ note >}}
 
 ## Deploying a Marketplace App
 

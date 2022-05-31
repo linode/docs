@@ -37,7 +37,7 @@ Keep in mind, Yacht is still in alpha and is not recommended for production use.
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10
+- **Supported distributions:** Debian 11, Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Yacht Options
