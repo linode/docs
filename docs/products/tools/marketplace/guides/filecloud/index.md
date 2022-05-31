@@ -24,7 +24,7 @@ _build:
 The FileCloud App has been temporarily removed from the Linode Marketplace due recent breaking changes. Our developers are currently working on implementing a fix. If you wish to deploy FileCloud in the meantime, you can review FileCloud's own manual installation instructions. See [Installing FileCloud Server](https://www.filecloud.com/supportdocs/display/cloud/Installing+FileCloud+Server).
 {{</caution>}}
 
-FileCloud is a cloud-based file-sharing application, similar to tools like Dropbox, that allows users to remotely access, upload, and sync hosted files.
+[FileCloud](https://www.filecloud.com/) is a cloud-based file-sharing application, similar to tools like Dropbox, that allows users to remotely access, upload, and sync hosted files.
 
 ## Deploying a Marketplace App
 
