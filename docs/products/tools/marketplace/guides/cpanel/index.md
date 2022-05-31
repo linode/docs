@@ -7,7 +7,7 @@ keywords: ['cpanel','whm','hosting','manager']
 tags: ["cpanel","linode platform","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-13
-modified: 2022-03-29
+modified: 2022-05-31
 modified_by:
   name: Linode
 title: "Deploying cPanel through the Linode Marketplace"
