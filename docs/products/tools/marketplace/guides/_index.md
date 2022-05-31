@@ -36,6 +36,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Django](/docs/products/tools/marketplace/guides/django/)
 - [Docker](/docs/products/tools/marketplace/guides/docker/)
 - [Drupal](/docs/products/tools/marketplace/guides/drupal/)
+- [Easypanel](/docs/products/tools/marketplace/guides/easypanel/)
 - [FileCloud](/docs/products/tools/marketplace/guides/filecloud/)
 - [Flask](/docs/products/tools/marketplace/guides/flask/)
 - [Focalboard](/docs/products/tools/marketplace/guides/focalboard/)

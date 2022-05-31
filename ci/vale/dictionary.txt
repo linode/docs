@@ -499,6 +499,7 @@ dvcs
 e2fsck
 ea04
 ead
+Easypanel
 ebtables
 ebuild
 ecommerce
