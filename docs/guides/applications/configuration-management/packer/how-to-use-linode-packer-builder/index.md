@@ -179,7 +179,7 @@ Once the Packer build process completes, a new [Custom Image](/docs/products/too
 
 - **Cloud Manager:** Use the Cloud Manager to deploy a Custom Image by following the [Deploy an Image to a New Compute Instance](/docs/products/tools/images/guides/deploy-image-to-new-linode/) guide.
 
-- **Linode CLI:** Use the Linode CLI through the command-line by following the [Using the Linode CLI](/docs/products/tools/cli/get-started/) guide. The [Linode Instances](/docs/products/tools/cli/get-started/#linode-instances) section of that guide will provide example commands. The command below will deploy a new Linode in the Newark data center. Replace *mypassword* with the root password you'd like to use and *linode/debian10* with the ID of your new image.
+- **Linode CLI:** Use the Linode CLI through the command-line by following the [Using the Linode CLI](/docs/products/tools/cli/get-started/) guide. The [Linode Instances](/docs/products/tools/cli/guides/linode-instances/) guide provides example commands. The command below will deploy a new Linode in the Newark data center. Replace *mypassword* with the root password you'd like to use and *linode/debian10* with the ID of your new image.
 
       linode-cli linodes create --root_pass mypassword --region us-east --image linode/debian10
 

@@ -39,7 +39,7 @@ If you remove these resources afterward, you are only [billed for the time](/doc
 ## Prerequisites
 
 - Intermediate understanding of the Bash shell and its utilities.
-- Install the [Linode CLI](/docs/products/tools/cli/get-started/#install-the-cli) or you can use the [Linode Cloud Manager](https://cloud.linode.com/linodes).
+- Install the [Linode CLI](/docs/products/tools/cli/guides/install/) or you can use the [Linode Cloud Manager](https://cloud.linode.com/linodes).
   - Using the CLI allows you to save time creating, labeling, and tagging your Linodes.
 - Create a new directory to work from. For example, you can name it, **"Ansible_Infra"**.
 
@@ -52,7 +52,7 @@ The steps in this guide are written for non-root users. Commands that require el
 ### Create One Ansible Control Node and Four Managed Nodes
 
 {{< note >}}
-This section requires that you have the [Linode CLI](/docs/products/tools/cli/get-started/#install-the-cli) installed and configured on your computer.
+This section requires that you have the [Linode CLI](/docs/products/tools/cli/guides/install/) installed and configured on your computer.
 {{</ note >}}
 
 On your local machine, set up an environment variable to temporarily store a password. This environment variable will be sued in later steps in a `for` loop to create five Linodes. Substitute `yourrootpassword` for a secure password as this is used as the root password for all your newly created Linodes.
