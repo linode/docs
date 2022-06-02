@@ -33,7 +33,7 @@ MariaDB is a fork of the popular cross-platform MySQL database management system
 MariaDB replaced MySQL as the default database system in the CentOS 8 repositories. Though installing MySQL into CentOS 8 is not particularly difficult, if you need a database, MariaDB is recommended for official support and a minimal chance of incompatibilities with other repository software.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin

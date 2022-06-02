@@ -68,7 +68,7 @@ for root, dirs, files in os.walk(alias_directory):
 # ------------------
 
 # The directory to be used when replacing old links
-link_directory = '../docs/guides/applications/'
+link_directory = '../docs/guides/development/'
 # A list of all links that point to duplicate aliases
 links_to_duplicate_aliases = []
 
