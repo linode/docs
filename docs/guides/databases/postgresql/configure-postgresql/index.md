@@ -82,14 +82,14 @@ Some of the directives in this configuration file are **extremely** use-case spe
 
 Configuring a PostgreSQL database can be a complex process. Below are some basic configuration settings recommended when using PostgreSQL on a Linode. All of these options are explained in further detail in the [PostgreSQL Tuning Guide](https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server):
 
-|Directive   | Objective   |
-|---|---|
-|listen_addresses = 'localhost'   | By default, Postgres only listens on localhost. However, by editing this section and replacing `localhost` with an IP, you can force Postgres to listen on another IP. Use '*' to listen on all IP addresses.  |
-|max_connections = 50   | Sets the exact maximum number of client connections allowed. The higher the setting the more resources Postgres will require. Adjust this value based on the size of your Linode and the traffic you expect your DB to receive.    |
-|shared_buffers = 128MB   | As detailed in the [official documentation](https://www.postgresql.org/docs/current/static/runtime-config-resource.html#GUC-SHARED-BUFFERS), this directive is initially set to a low value. On the Linode platform, this can be 1/4 of the RAM on your Linode. |
-|wal_level |It is important to consider [Write-Ahead Logging](https://www.postgresql.org/docs/9.1/static/wal-intro.html) (WAL) when configuring your Postgres instance. WAL, can save your database in an emergency, by writing and logging at the same time. So your changes are written even if your machine loses power. Before configuring, read [DSHL's guide to understanding WAL](https://www.depesz.com/2011/07/14/write-ahead-log-understanding-postgresql-conf-checkpoint_segments-checkpoint_timeout-checkpoint_warning/), and the [official chapter on WAL Reliability](https://www.postgresql.org/docs/current/static/wal-reliability.html).  |
-|synchronous_commit = off |When using a Linode, it is okay to turn this Directive to `off`.  |
-|archive_mode = on |Turning archive mode on is a viable strategy to increase the redundancy of your backups.|
+| Directive | Objective |
+| -- | -- |
+| `listen_addresses = 'localhost'` | By default, Postgres only listens on localhost. However, by editing this section and replacing `localhost` with an IP, you can force Postgres to listen on another IP. Use '*' to listen on all IP addresses. |
+| `max_connections = 50` | Sets the exact maximum number of client connections allowed. The higher the setting the more resources Postgres will require. Adjust this value based on the size of your Linode and the traffic you expect your DB to receive. |
+| `shared_buffers = 128MB` | As detailed in the [official documentation](https://www.postgresql.org/docs/current/static/runtime-config-resource.html#GUC-SHARED-BUFFERS), this directive is initially set to a low value. On the Linode platform, this can be 1/4 of the RAM on your Linode. |
+| `wal_level` | It is important to consider [Write-Ahead Logging](https://www.postgresql.org/docs/9.1/static/wal-intro.html) (WAL) when configuring your Postgres instance. WAL, can save your database in an emergency, by writing and logging at the same time. So your changes are written even if your machine loses power. Before configuring, read [DSHL's guide to understanding WAL](https://www.depesz.com/2011/07/14/write-ahead-log-understanding-postgresql-conf-checkpoint_segments-checkpoint_timeout-checkpoint_warning/), and the [official chapter on WAL Reliability](https://www.postgresql.org/docs/current/static/wal-reliability.html). |
+| `synchronous_commit = off` | When using a Linode, it is okay to turn this Directive to `off`. |
+| `archive_mode = on` | Turning archive mode on is a viable strategy to increase the redundancy of your backups. |
 
 ### Tune Authentication Options through pg_hba.conf
 
@@ -99,7 +99,7 @@ The `pg_hba.conf` file handles the default authentication options for client con
 
 The following entries are included by default:
 
-{{< file "/etc/postgresql/9.5/main/pg_hba.conf" conf >}}
+{{< file "/etc/postgresql/9.5/main/pg_hba.conf" >}}
 TYPE  DATABASE        USER            ADDRESS                 METHOD
 local   all             postgres                                peer
 
@@ -114,7 +114,7 @@ Each entry specifies how matching requests are authenticated. By default, if you
 
 To allow a user on a remote system to log in to the `example` database using a non-hashed password, add a new line to this file, replacing `192.0.2.0` with the remote computer's public IP address:
 
-{{< file "/etc/postgresql/9.5/main/pg_hba_conf" conf >}}
+{{< file "/etc/postgresql/9.5/main/pg_hba_conf" >}}
 host    example         exampleuser      192.0.2.0             password
 {{< /file >}}
 
@@ -130,9 +130,9 @@ Sometimes, especially when connecting from remote hosts, a user's Linux username
 
       MAPNAME     SYSTEM-USERNAME     PG-USERNAME
 
-*  **MAPNAME** can be arbitrary.
-*  **SYSTEM-USERNAME** is the user's Linux username.
-*  **PG-USERNAME** is the matching database user.
+- **MAPNAME** can be arbitrary.
+- **SYSTEM-USERNAME** is the user's Linux username.
+- **PG-USERNAME** is the matching database user.
 
 In the following example, `exampleuser` can log in to postgres as the database user `db_user`:
 
@@ -140,6 +140,6 @@ In the following example, `exampleuser` can log in to postgres as the database u
 
 If you specify a mapping in this file, you must add `map=map-name` after the authentication method in the appropriate entry in `pg_hba.conf`. To allow the example user from the earlier `pg_hba.conf` example to log in as `db_user`, the complete entry would look like this:
 
-{{< file "/etc/postgresql/9.5/main/pg_hba.conf" conf >}}
+{{< file "/etc/postgresql/9.5/main/pg_hba.conf" >}}
 host    example         exampleuser      192.0.2.0             password map=examplemap
 {{< /file >}}
