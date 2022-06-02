@@ -48,7 +48,7 @@ Below you will find some of the more popular use cases for Block Storage.
 Block Storage Volumes can be detached from a cloud instance just as easily as they are attached, meaning that it's possible to create hot-swappable drives with Block Storage. This is useful if you need to perform the same kind of tasks across a fleet of instances with the same data.
 
 {{< caution >}}
-While the Block Storage service has full support for hot swapping, it is important to follow the detachment instructions outlined in our [Using Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#how-to-detach-a-block-storage-volume-from-a-linode) guide. If a Volume is not safely detached, there is a risk of data loss for the Volume.
+While the Block Storage service has full support for hot swapping, it is important to follow the detachment instructions outlined in our [Using Block Storage](/docs/guides/how-to-use-block-storage-with-your-linode/#how-to-detach-a-block-storage-volume-from-a-linode) guide. If a Volume is not safely detached, there is a risk of data loss for the Volume.
 {{< /caution >}}
 
 ### Container Storage
@@ -70,7 +70,7 @@ In a climate where ownership over one's data is an important need for many indiv
 There are a few media library applications, most notably [Plex](https://www.plex.tv/), that offer media streaming functionality to internet enabled devices. The media libraries these applications serve can quickly grow in size, depending on the number of movie and audio files they contain. Using a Block Storage Volume can provide you with storage capable of growing with the needs of your library.
 
 {{< note >}}
-For more information on using Plex with a Block Storage Volume, see our [Using a Block Storage Volume with Plex](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#how-to-detach-a-block-storage-volume-from-a-linode) guide.
+For more information on using Plex with a Block Storage Volume, see our [Using a Block Storage Volume with Plex](/docs/guides/how-to-use-block-storage-with-your-linode/#how-to-detach-a-block-storage-volume-from-a-linode) guide.
 {{< /note >}}
 
 ### Ephemeral Storage
@@ -91,4 +91,4 @@ Linode provides a built-in [Rescue Mode](/docs/guides/rescue-and-rebuild/) featu
 
 ## Next Steps
 
-For more information on how to use Block Storage, consult our [How to Use Block Storage with Your Linode](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) guide.
+For more information on how to use Block Storage, consult our [How to Use Block Storage with Your Linode](/docs/guides/how-to-use-block-storage-with-your-linode/) guide.

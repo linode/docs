@@ -18,7 +18,7 @@ external_resources:
 aliases: ['/applications/configuration-management/introduction-to-hcl/','/applications/configuration-management/basics/introduction-to-hcl/']
 ---
 
-The HashiCorp Configuration Language (HCL) is a configuration language authored by [HashiCorp](https://www.hashicorp.com/). HCL is used with HashiCorp's cloud infrastructure automation tools, such as [Terraform](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/). The language was created with the goal of being both human and machine friendly. It is JSON compatible, which means it is interoperable with other systems outside of the Terraform product line.
+The HashiCorp Configuration Language (HCL) is a configuration language authored by [HashiCorp](https://www.hashicorp.com/). HCL is used with HashiCorp's cloud infrastructure automation tools, such as [Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/). The language was created with the goal of being both human and machine friendly. It is JSON compatible, which means it is interoperable with other systems outside of the Terraform product line.
 
 This guide provides an introduction to HCL syntax, some commonly used HCL terminology, and how it works with Terraform.
 
@@ -61,7 +61,7 @@ resource "linode_instance" "example_linode" {
 {{</ file >}}
 
 {{< note >}}
-You should not include sensitive data in the resource declarations. For more information about secrets management, see [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/).
+You should not include sensitive data in the resource declarations. For more information about secrets management, see [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform/).
 {{</ note >}}
 
 ### Key Elements of HCL
@@ -143,7 +143,7 @@ module "linode-module-example" {
 }
 {{</ file >}}
 
-Authoring modules involves defining resource requirements and parameterizing configurations using [input variables](#input-variables), variable files, and outputs. To learn how to write Terraform modules, see [Create a Terraform Module](/docs/applications/configuration-management/create-terraform-module/).
+Authoring modules involves defining resource requirements and parameterizing configurations using [input variables](#input-variables), variable files, and outputs. To learn how to write Terraform modules, see [Create a Terraform Module](/docs/guides/create-terraform-module/).
 
 ## Input Variables
 
@@ -297,4 +297,4 @@ Terraform's official documentation has a list of [all available components](http
 
 ## Next Steps in Terraform
 
-Now that you are familiar with HCL, you can begin creating a Linode instance with Terraform by following the [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
+Now that you are familiar with HCL, you can begin creating a Linode instance with Terraform by following the [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.

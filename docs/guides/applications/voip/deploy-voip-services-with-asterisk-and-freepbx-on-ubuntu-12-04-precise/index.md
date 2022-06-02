@@ -221,7 +221,7 @@ FreePBX is a PHP application that allows you to control your Asterisk installati
 
 ### Set Up LAMP Stack
 
-Before you can use FreePBX, you will need to set up a LAMP stack. An basic step-by-step how-to is provided here, but you may wish to consult our [LAMP documentation](/docs/lamp-guides/ubuntu-9-10-karmic/) for more information.
+Before you can use FreePBX, you will need to set up a LAMP stack. An basic step-by-step how-to is provided here, but you may wish to consult our [LAMP documentation](/docs/guides/lamp-server-on-ubuntu-9-10-karmic/) for more information.
 
 1.  Begin by installing Apache:
 
