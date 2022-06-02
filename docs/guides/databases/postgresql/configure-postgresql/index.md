@@ -56,23 +56,23 @@ Most global configuration settings are stored in `postgresql.conf`, which is cre
 
 The contents of the configuration file are broken up into different sections:
 
-|Directive   | Use   |
-|---|---|
-|File Locations   | Defines where values of the database will be stored   |
-|Connections and Authentications   | Allows you to define the settings for connections, security, and authentication   |
-|Resource Usage   | Defines the parameters (memory, space) usable by PostgreSQL.   |
-|Write Ahead Log   | Configures *Write-Ahead logging*, which if properly configured, can result in a lower amount of disk writes.   |
-|Replication   | Control the way replications and replication data is handled by the server.   |
-|Query Tuning   | This set of directives can help you optimize the process of querying to the database.   |
-|Error Reporting and Logging   | Defines how and where the database logging will take place.   |
-|Runtime Statistics   | Modifies the tracking of runtime data.   |
-|Autovacuum Parameters   | A maintenance feature that runs a daemon and periodically reuses previously occupied disk space.   |
-|Client Connection Defaults   | This is one of the directives that controls a wide range of features within PostgreSQL  |
-|Lock Management   | Sets a timer that functions as a fail-safe. If the database is queried and locks-down, the timer will check for a [dead-lock condition](https://www.postgresql.org/docs/9.1/static/explicit-locking.html#LOCKING-DEADLOCKS), and will restore the database if it is found.  |
-|Version/Platform Compatibility   | Allows you to set version-specific compatibility options  |
-|Error Handling   | Defines the behavior upon an error.  |
-|Config File Includes   | Lists the config files that will be included when Postgres looks for configuration files  |
-|Customized Options   | Allows you to add settings that may not fit in a particular section, or to keep your settings organized within this section. |
+| Directive | Use |
+| -- | -- |
+| File Locations | Defines where values of the database will be stored |
+| Connections and Authentications | Allows you to define the settings for connections, security, and authentication |
+| Resource Usage | Defines the parameters (memory, space) usable by PostgreSQL. |
+| Write Ahead Log | Configures *Write-Ahead logging*, which if properly configured, can result in a lower amount of disk writes. |
+| Replication | Control the way replications and replication data is handled by the server. |
+| Query Tuning | This set of directives can help you optimize the process of querying to the database. |
+| Error Reporting and Logging | Defines how and where the database logging will take place. |
+| Runtime Statistics | Modifies the tracking of runtime data. |
+| Autovacuum Parameters | A maintenance feature that runs a daemon and periodically reuses previously occupied disk space. |
+| Client Connection Defaults | This is one of the directives that controls a wide range of features within PostgreSQL |
+| Lock Management | Sets a timer that functions as a fail-safe. If the database is queried and locks-down, the timer will check for a [dead-lock condition](https://www.postgresql.org/docs/9.1/static/explicit-locking.html#LOCKING-DEADLOCKS), and will restore the database if it is found. |
+| Version/Platform Compatibility | Allows you to set version-specific compatibility options |
+| Error Handling | Defines the behavior upon an error. |
+| Config File Includes | Lists the config files that will be included when Postgres looks for configuration files |
+| Customized Options | Allows you to add settings that may not fit in a particular section, or to keep your settings organized within this section. |
 
 {{< note >}}
 Some of the directives in this configuration file are **extremely** use-case specific. Please consider all effects carefully before changing directives.
