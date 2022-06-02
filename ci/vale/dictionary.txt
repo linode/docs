@@ -667,6 +667,7 @@ Gemba
 gemfile
 genmask
 gentoolkit
+geo
 geoip
 geolocating
 geolocation
