@@ -108,7 +108,7 @@ jobs:
       # completes when it is passed the empty array.
       if: ${{ '[]' != steps.select_docs_dir_files.outputs.added_modified }}
       with:
-        files: '${{ steps.select_docs_dir_files.outputs.added_modified }}
+        files: '${{ steps.select_docs_dir_files.outputs.added_modified }}'
         vale_flags: "--config=.vale-gha-warnings.ini"
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
