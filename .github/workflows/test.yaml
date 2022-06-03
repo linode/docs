@@ -69,6 +69,7 @@ jobs:
       with:
         files: '${{ steps.select_docs_dir_files.outputs.added_modified }}'
         vale_flags: "--config=.vale-gha-errors.ini"
+        fail_on_error: true
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
