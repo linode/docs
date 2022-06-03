@@ -231,6 +231,8 @@ Use the `type()` method to confirm that the `tuple_to_list_example` variable con
 <class 'list'>
 {{</ output >}}
 
+To learn how to convert a string to a tuple, see our guide [How to Convert Data Types in Python](/docs/guides/how-to-convert-datatypes-in-python/#converting-strings-to-tuples).
+
 ## Built-in Tuple Methods
 
 Python's tuple sequence data type has two built-in methods: the `count()` method and the `index()` method. This section shows you how to use both built-in tuple methods.

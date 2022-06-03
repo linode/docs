@@ -44,7 +44,7 @@ LiteSpeed offers both free and paid plans.  Visit [LiteSpeed's website](https://
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7, CentOS 8, AlmaLinux 8
+- **Supported distributions:** CentOS 7, AlmaLinux 8
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Verify Installation

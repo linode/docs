@@ -30,7 +30,7 @@ Spark can run as a standalone cluster manager, or by taking advantage of dedicat
 
 ## Before You Begin
 
-1.  Follow our guide on how to [install and configure a three-node Hadoop cluster](/docs/databases/hadoop/how-to-install-and-set-up-hadoop-cluster/) to set up your YARN cluster. The master node (HDFS NameNode and YARN ResourceManager) is called **node-master** and the slave nodes (HDFS DataNode and YARN NodeManager) are called **node1** and **node2**.
+1.  Follow our guide on how to [install and configure a three-node Hadoop cluster](/docs/guides/how-to-install-and-set-up-hadoop-cluster/) to set up your YARN cluster. The master node (HDFS NameNode and YARN ResourceManager) is called **node-master** and the slave nodes (HDFS DataNode and YARN NodeManager) are called **node1** and **node2**.
 
     Run the commands in this guide from **node-master** unless otherwise specified.
 
@@ -44,7 +44,7 @@ Spark can run as a standalone cluster manager, or by taking advantage of dedicat
         start-yarn.sh
 
 {{< note >}}
- This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+ This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< / note >}}
 
 ## Download and Install Spark Binaries
@@ -119,7 +119,7 @@ Allocation of Spark containers to run in YARN containers may fail if memory allo
 Be sure to understand how Hadoop YARN manages memory allocation before editing Spark memory settings so that your changes are compatible with your YARN cluster's limits.
 
 {{< note >}}
-See the memory allocation section of the [Install and Configure a 3-Node Hadoop Cluster](/docs/databases/hadoop/how-to-install-and-set-up-hadoop-cluster/) guide for more details on managing your YARN cluster's memory.
+See the memory allocation section of the [Install and Configure a 3-Node Hadoop Cluster](/docs/guides/how-to-install-and-set-up-hadoop-cluster/) guide for more details on managing your YARN cluster's memory.
 {{< / note >}}
 
 
