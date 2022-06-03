@@ -1,0 +1,50 @@
+extends: substitution
+message: Use '%s' instead of '%s'.
+level: error
+ignorecase: true
+swap:
+  "(?:LetsEncrypt|Let's Encrypt)": Let's Encrypt
+  "(?:ReHat|RedHat)": RedHat
+  "Mac ?OS ?X": Mac OS X
+  "mongoDB": MongoDB
+  "node[.]?js": Node.js
+  "Post?gr?e(?:SQL)": PostgreSQL
+  "java[ -]?scripts?": JavaScript
+  automattic: Automattic
+  centOS: CentOS
+  cloudflare: Cloudflare
+  debian: Debian
+  fedora: Fedora
+  gentoo: Gentoo
+  homebrew: Homebrew
+  Kubeadm: kubeadm
+  Kubectl: kubectl
+  Kubelet: kubelet
+  kubernetes: Kubernetes
+  Kube Controller Manager: kube-controller-Manager
+  Kube Proxy: kube-proxy
+  Kube Scheduler: kube-scheduler
+  linode cli: Linode CLI
+  linode manager: Linode Manager
+  linode: Linode
+  longview: Longview
+  macOS: macOS
+  metabase: Metabase
+  miniconda: Miniconda
+  nodebalancer: NodeBalancer
+  nodebalancers: NodeBalancers
+  pod: Pod
+  slackware: Slackware
+  ubuntu: Ubuntu
+  wordpress: WordPress
+  yaml: YAML
+  urls: URLs
+  uris: URIs
+  Cuda: CUDA
+  gpu: GPU
+  stackscript: StackScript
+  typescript: TypeScript
+  pulumi: Pulumi
+  markdown: Markdown
+  vuejs: VueJS
+  vue: Vue

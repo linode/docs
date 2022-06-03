@@ -1,0 +1,32 @@
+extends: consistency
+message: "Inconsistent spelling of '%s'"
+level: error
+ignorecase: true
+either:
+  advisor: adviser
+  apologise: apologize
+  armour: armor
+  behaviour: behavior
+  centre: center
+  cheque: check
+  colour: color
+  customise: customize
+  decentralise: decentralize
+  defence: defense
+  emphasise: emphasize
+  finalise: finalize
+  flavour: flavor
+  focussed: focused
+  labour: labor
+  labelled: labeled
+  learnt: learned
+  localise: localize
+  licence: license
+  litre: liter
+  offence: offense
+  organise: organize
+  organised: organized
+  organising: organizing
+  recognise: recognize
+  theatre: theater
+  unauthorised: unauthorized
