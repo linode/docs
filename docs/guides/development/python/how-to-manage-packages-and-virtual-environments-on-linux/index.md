@@ -140,7 +140,7 @@ If you do not have virtualenv on your machine install it using Pip:
 Pipenv combines the process of using Pip and Virtualenv and merges it into one command, `pipenv`. Pipenv also opts to using a `pipfile`, and `pipfile.lock` to manage dependencies for projects.
 
 {{< note >}}
-To install Pipenv, or to learn about `pipfile`, please check out our guide: [How to Manage Python Packages and Virtual Environments with pipenv](/docs/development/python/manage-python-environments-pipenv/).
+To install Pipenv, or to learn about `pipfile`, please check out our guide: [How to Manage Python Packages and Virtual Environments with pipenv](/docs/guides/manage-python-environments-pipenv/).
 {{< /note >}}
 
 Pipenv introduces the ability to use separate Python binaries for each project. For example, projects that depend on Python 3.8 and projects that depend on Python 3.7 can be installed on the same system. To create a virtual environment that utilizes Python 3.8, you would use the following syntax:

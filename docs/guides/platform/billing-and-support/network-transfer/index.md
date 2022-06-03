@@ -90,7 +90,7 @@ To view your network utilization (in GB) for the current month, issue the follow
     linode-cli account transfer
 
 {{< note >}}
-You need to generate a Personal Access Token and install the Linode CLI before being able to use the CLI. See the [Linode CLI](/docs/guides/linode-cli/) guide for more information.
+You need to generate a Personal Access Token and install the Linode CLI before being able to use the CLI. See the [Linode CLI](/docs/products/tools/cli/get-started/) guide for more information.
 {{</ note >}}
 
 ### Email Alerts

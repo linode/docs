@@ -60,7 +60,7 @@ Throughout this guide, commands and code snippets will reference the values disp
 
 1.  [Set the hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for each server.
 
-1.  [Set the FQDN](/docs/networking/dns/using-your-systems-hosts-file/) for each Linode by editing the servers' `/etc/hosts` files.
+1.  [Set the FQDN](/docs/guides/using-your-systems-hosts-file/) for each Linode by editing the servers' `/etc/hosts` files.
 
     {{< disclosure-note "Example content for the hosts file" >}}
 You can model the contents of your `/etc/hosts` files on these snippets:

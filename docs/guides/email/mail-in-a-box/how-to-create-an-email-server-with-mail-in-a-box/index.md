@@ -46,7 +46,7 @@ The preconfigured box of software is also fairly security-conscious and you can 
 
 1. Make sure your domain name registrar allows you to use *custom nameservers* and set *glue records*.
 
-2.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system, create a limited user account, and harden SSH access. Do not yet configure a fiewall or fail2ban as that might clash with what Mail-in-a-Box will set up (e.g., it implements its own `fail2ban` rules).
+2.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system, create a limited user account, and harden SSH access. Do not yet configure a firewall or fail2ban as that might clash with what Mail-in-a-Box will set up (e.g., it implements its own `fail2ban` rules).
 
 If you insist on using a password for root instead of a private key, at least use a **very good password**. Bots constantly scan the Internet for SSH servers and try random passwords. Some are more aggressive than others, and while `fail2ban` helps block IPs, there's always the next bot (with a different IP) that will visit and have another try. Keep in mind that strings such as *h4x0r123*, while they may look strong because they mix letters and numbers, are actually very weak.
 

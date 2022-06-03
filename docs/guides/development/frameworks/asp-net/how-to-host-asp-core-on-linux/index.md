@@ -35,7 +35,7 @@ This guide shows you how to install ASP.NET Core on your Linux server and how to
 1. This guide uses `example-app` as the name of the ASP.NET Core application and `example.com` as your server's domain name. Replace these with your preferred application name and actual server name, respectively.
 
 {{< note >}}
-The steps in this guide are  written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are  written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install ASP.NET Core

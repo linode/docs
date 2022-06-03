@@ -122,4 +122,4 @@ Once the Linode CLI is installed, no further steps should be needed for configur
 
     linode-cli configure
 
-For more information on how to use the Linode CLI, see our [Overview Guide](/docs/guides/linode-cli/)
+For more information on how to use the Linode CLI, see our [Overview Guide](/docs/products/tools/cli/get-started/)
