@@ -35,6 +35,7 @@ html {
   margin: 0;
   padding: 0;
   color: var(--color-body-text);
+  scroll-padding-top: var(--height-navbar-row);
 }
 
 body {
