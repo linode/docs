@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-title: "Connect to a MongDB Database"
+title: "Connect to a MongoDB Database"
 description: "Learn how to connect to a MongoDB Managed Databse through the command line or Compass"
 published: 2022-06-06
 ---
@@ -78,11 +78,11 @@ If you do not currently have the MongoDB Shell installed on your system, the app
 
     1.  Run the following command in your Linux terminal, replacing *[download-url]* with the link you just copied.
 
-            curl [download-url] --output mongdb-shell.tgz
+            curl [download-url] --output mongodb-shell.tgz
 
     1.  Extract the compressed tarball. If you do not have the [tar](https://man7.org/linux/man-pages/man1/tar.1.html) command on your system, you will need to install that first.
 
-            tar -zxvf mongdb-shell.tgz
+            tar -zxvf mongodb-shell.tgz
 
     1.  Navigate into the `bin` folder within the unzipped directory. Your folder may vary from the one in the example command below.
 
