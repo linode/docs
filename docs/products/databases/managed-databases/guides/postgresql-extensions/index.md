@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 title: "PostgreSQL Extensions"
 description: "Learn which PostgreSQL extensions are supported by Linode's Managed Database service and how to install them."
-published: 2022-06-02
+published: 2022-06-06
 ---
 
 The functionality of PostgreSQL can be enhanced through the use of extensions. Linode's PostgreSQL Managed Database service supports many of these extensions and they are available for any user to install and utilize.

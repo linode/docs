@@ -4,8 +4,7 @@ author:
   email: docs@linode.com
 title: "Connect to a PostgreSQL Database"
 description: "Learn how to connect to a PostgreSQL Managed Databse through the command line or pgAdmin."
-published: 2022-06-01
-modified: 2022-06-01
+published: 2022-06-06
 ---
 
 To connect to a PostgreSQL Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a PostgreSQL client. This guide details how to access your database using popular tools.

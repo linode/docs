@@ -3,6 +3,7 @@ title: Guides
 description: "A collection of guides on using Linode's Managed Database service"
 tab_group_main:
     weight: 30
+modified: 2022-06-06
 ---
 
 ## Basics
@@ -25,7 +26,7 @@ tab_group_main:
 
 - [MySQL Managed Databases](/docs/products/databases/managed-databases/guides/mysql/)
 
-- [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/connect-to-mysql/)
+- [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/)
 
 - [Migrate a MySQL or MariaDB Database to a Managed Database](/docs/products/databases/managed-databases/guides/migrate-mysql/)
 
@@ -39,7 +40,7 @@ tab_group_main:
 
 ## PostgreSQL
 
-- [Connect to a PostgreSQL Managed Database](/docs/products/databases/managed-databases/guides/connect-to-postgresql/)
+- [Connect to a PostgreSQL Managed Database](/docs/products/databases/managed-databases/guides/postgresql-connect/)
 
 - [PostgreSQL Extensions](/docs/products/databases/managed-databases/guides/postgresql-extensions/)
 
@@ -51,7 +52,7 @@ tab_group_main:
 
 ## MongoDB
 
-- [Connect to a MongoDB Managed Database](/docs/products/databases/managed-databases/guides/connect-to-mongodb/)
+- [Connect to a MongoDB Managed Database](/docs/products/databases/managed-databases/guides/mongodb-connect/)
 
 - General MongoDB guides:
 

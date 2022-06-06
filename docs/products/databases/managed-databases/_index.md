@@ -10,7 +10,7 @@ cascade:
     date: 2022-02-23
     product_description: "Fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
 aliases: ['/products/database/']
-modified: 2022-06-01
+modified: 2022-06-06
 ---
 
 {{< content "managed-databases-beta-notice-shortguide" >}}

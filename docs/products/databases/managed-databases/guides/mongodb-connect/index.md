@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 title: "Connect to a MongDB Database"
 description: "Learn how to connect to a MongoDB Managed Databse through the command line or Compass"
-published: 2022-06-03
+published: 2022-06-06
 ---
 
 {{< content "managed-database-mongodb-private-notice-shortguide">}}
