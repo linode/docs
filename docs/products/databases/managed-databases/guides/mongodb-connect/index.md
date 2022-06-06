@@ -23,7 +23,7 @@ The *Connection Details* section contains information and credentials needed for
 - **Password:** The randomly generated password for your database cluster. See [Reset Root Password](/docs/products/databases/managed-databases/guides/reset-root-password/) if you wish to change it.
 - **Host(s):** The fully qualified domain name you can use to reach your database cluster through the public network. For high availability clusters, multiple hosts are displayed.
 - **Port:** The default port for your database is `27017`.
-- **Replica set:** The name of the replicat set. This is only relevant for multi-node high availability clusters and does not appear for standalone (single node) databases.
+- **Replica set:** The name of the replica set. This is only relevant for multi-node high availability clusters and does not appear for standalone (single node) databases.
 - **SSL:** This field is set to `ENABLED`, which means that it is required to use an encrypted TLS/SSL connection.
 
 Under the *Connection Details* section, there is a **Download CA Certificate** link, which allows you to download the CA (Certificate Authority) certificate. This certificate file can be used if you wish to verify the CA certificate when connecting to the database.
@@ -76,7 +76,7 @@ If you do not currently have the MongoDB Shell installed on your system, the app
 
     1.  On the MongoDB Shell Download page, select *Linux Tarball 64-bit* as the platform and click the **Copy Link** text.
 
-    1.  Run the following command in your linux terminal, replacing *[download-url]* with the link you just copied.
+    1.  Run the following command in your Linux terminal, replacing *[download-url]* with the link you just copied.
 
             curl [download-url] --output mongdb-shell.tgz
 
@@ -110,7 +110,7 @@ The Compass tool provides a graphical interface for connecting to MongoDB databa
 
 1. To connect to a your MongoDB database, you can either enter a connection string or click **Advanced Connection Option** and build a connection string manually. Since these instructions cover the latter option, click **Advanced Connection Option**.
 
-1. Under the *General* tab, enter the host url of your Managed Database followed by the port number *27017* (in the format `host:27017`). For high availablity clusters, click the plus (+) icon and add each host that appears in your connection details.
+1. Under the *General* tab, enter the host url of your Managed Database followed by the port number *27017* (in the format `host:27017`). For high availability clusters, click the plus (+) icon and add each host that appears in your connection details.
 
     ![The General tab in MongoDB Compass](mongodb-compass-connection-general.png)
 

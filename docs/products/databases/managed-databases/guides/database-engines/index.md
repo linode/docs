@@ -36,7 +36,7 @@ MySQL is an industry standard relational database management system (RDMBS) that
 
 PostgreSQL is an object-relational database management system (ORDBMS) that can use SQL. It's generally more flexible and feature-rich than MySQL, though it's not a drop-in replacement and applications need to have built-in support for it. It also has support for more data types, including JSON, and adopts some features of NoSQL databases. While PostgreSQL is generally more challenging to implement, it can support more advanced queries and is a popular choice for enterprise applications.
 
-*Best for experienced SQL developers, applications that perform complex queries, using PostgreSQL-specific features, and for business users looking for dedicated commericial support.*
+*Best for experienced SQL developers, applications that perform complex queries, using PostgreSQL-specific features, and for business users looking for dedicated commercial support.*
 
 **Available versions:**
 

@@ -337,6 +337,7 @@ cronie
 cronjob
 cronjobs
 crontab
+crosstab
 crowdsourced
 crowdsourcing
 crt
@@ -669,6 +670,9 @@ gemfile
 genmask
 gentoolkit
 geo
+geocode
+geocoder
+geocoding
 geoip
 geolocating
 geolocation
@@ -815,6 +819,7 @@ hybla
 hykes
 hypercorn
 hyperefficient
+HyperLogLog
 hyperparameter
 hypervisor
 hypervisors
