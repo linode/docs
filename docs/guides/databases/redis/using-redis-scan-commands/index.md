@@ -49,9 +49,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## What Is the SCAN Command?
 
-Redis's SCAN commands each iterate incrementally over a given kind of collection. The commands, in other words, are cursor-based. They return a cursor at either the start of or a given position in a collection. Then, with each subsequent call to the SCAN command, advances through the collection.
+Redis's SCAN commands each iterate incrementally over a given kind of collection, using a cursor-based approach.
 
-SCAN commands are thus especially useful when it comes to working with large and/or more complicated data sets. They only fetch the immediate entry or entries at the cursor, minimizing the time the server is tied up. Compare that to the effect of tying up the server when fetching the entirety of a large collection.
+When you call a SCAN command, you provide a cursor location, usually starting at the beginning of a collection. With each call, the command returns a limited set of data from the collection and a new cursor location, continuing further into the collection. Thus, each subsequent call can take the previously returned cursor location as input, advancing the cursor through the collection with each iteration.
+
+The SCAN commands are especially useful when it comes to working with large and/or more complicated data sets. They only fetch the immediate entry or entries at the cursor, minimizing the time the server is tied up. Compare that to the effect of tying up the server when fetching the entirety of a large collection.
 
 ### Types of SCAN Commands
 
@@ -59,7 +61,7 @@ Redis does not just have one SCAN command; it has four. Each one deals with a di
 
 Here are the four commands, each accompanied by a description of the kind of collection it covers:
 
-- `SCAN` iterates over the keys in the current database.
+- `SCAN` iterates over all the keys in the current database.
 
 - `SSCAN` iterates over the elements in a given set.
 
@@ -81,6 +83,8 @@ The examples all use data that you can load into your Redis instance using the f
     SADD example_set 1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31
     ZADD example_sorted_set 2 "Element 1" 4 "Element 2" 6 "Element 3" 8 "Element 4" 10 "Element 5" 12 "Element 6" 14 "Element 7" 16 "Element 8" 18 "Element 9" 20 "Element 10" 22 "Element 11" 24 "Element 12" 26 "Element 13" 28 "Element 14" 30 "Element 15" 32 "Element 16"
     HSET example_hash field_1 "Field 1" field_2 "Field 2" field_3 "Field 3" field_4 "Field 4" field_5 "Field 5" field_6 "Field 6" field_7 "Field 7" field_8 "Field 8" field_9 "Field 9" field_10 "Field 10" field_11 "Field 11" field_12 "Field 12" field_13 "Field 13" field_14 "Field 14" field_15 "Field 15" field_16 "Field 16"
+
+Some of this data is not used directly in the examples that follow. However, the data set covers all of the types of collections the SCAN commands can be used on. So you can feel free, as the guide progresses, to substitute different variants of the SCAN command and see the effects.
 
 ### Basic Usage of the SCAN Commands
 
@@ -124,7 +128,7 @@ The number of values returned by the SCAN commands varies. However, in the next 
 
 The SCAN commands have three options that you can use to enhance or control the results. Each of these options is covered below, complete with examples showing how you can use them.
 
-- The `COUNT` option can be added to a SCAN command to dictate how many results you would like from the SCAN command. Typically, a SCAN command comes back with about 10 entries per query. The `COUNT` option tells Redis to attempt to fetch a specified number of entries per query:
+- The `COUNT` option can be added to a SCAN command to dictate how many results you would like from the SCAN command. Typically, a SCAN command comes back with about 10 entries per query. The `COUNT` option tells Redis to, instead, attempt to fetch a specified number of entries per query:
 
         SCAN 4 COUNT 2
 
@@ -152,7 +156,7 @@ The SCAN commands have three options that you can use to enhance or control the 
    8) "key_1"`
     {{< /output >}}
 
-    However, it is important to know that the SCAN command first fetches its results and then applies the `MATCH` pattern filter. So, some iterations of the SCAN command may show no results, even if there are matching results within the collection. Those results show on the command iteration they are contained in.
+    However, it is important to know that the SCAN command first fetches its results and then applies the `MATCH` pattern filter. So, some iterations of the SCAN command may show no results, even if there are matching results within the collection. Those results show on the command iteration covering the matching keys.
 
 - The `TYPE` option can be used with the `SCAN` command to limit results to only keys matching a specified type.
 
