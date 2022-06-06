@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 title: "Create a Managed Database"
 description: "A walkthough on creating a Managed Database through the Cloud Manager"
+modified: 2022-06-06
 ---
 
 This guide walks you through creating a Linode Managed Database through the Cloud Manager.
@@ -27,14 +28,11 @@ Enter a name for your cluster under **Cluster Label**, allowing you to easily id
 
 ## Select the Database Engine
 
-Select the **database engine** you'd like to use for your new database. This setting determines the underlying database management system (DBMS) that your cluster uses. Each database engine is significantly different and you should choose the one that is required by the application you intend to use it with. For instance, WordPress requires MySQL. If you are building a custom application, work with your developers to determine the best selection. Currently, the following major MySQL releases are available:
+Select the **database engine** you'd like to use for your new database. This setting determines the underlying database management system (DBMS) that your cluster uses. Each database engine is significantly different and you should choose the one that is required by the application you intend to use it with. For instance, WordPress requires MySQL. If you are building a custom application, work with your developers to determine the best selection. See [Choosing a Database Engine and Plan](/docs/products/databases/managed-databases/guides/database-engines/) to learn about each of the available database engines.
 
-- MySQL 8.0
-- MySQL 5.7
+![Screenshot of the Database Engine dropdown menu](database-create-select-engine.png)
 
-Each major release may have one or more minor point releases to choose from, as shown in the screenshot below:
-
-![Screenshot of the Database Engine dropdown menu](database-creation-engine.png)
+*It's recommended to select the latest database version available, unless your application requires an older version.*
 
 ## Select a Region
 
@@ -54,7 +52,7 @@ Every node of a database cluster is built on its own Linode Compute Instance. In
 
 Each Managed Database can be built with either 1 or 3 nodes (individual virtual machines):
 
-- **1 node database cluster**: This option is recommended for development purposes or production databases where a lower cost is more beneficial than redundancy and failover.
+- **1 node standalone database**: This option is recommended for development purposes or production databases where a lower cost is more beneficial than redundancy and failover.
 - **3 node high availability database cluster**: This option is recommended for product databases. High availability database clusters have built-in data redundancy and automatic failover. Your data is replicated across every other node in the cluster. If one goes down, any traffic is redirected to the other available nodes.
 
 ## Optionally Add Access Controls
