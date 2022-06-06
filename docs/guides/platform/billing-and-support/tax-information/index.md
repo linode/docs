@@ -85,7 +85,7 @@ As of **May 1st, 2022**, Canadian taxes will begin to be collected. The followin
 
 ### United States
 
-The following table lists each U.S State and District that requires us to collect sales taxes. Alongside each state is the State tax rate, the additional Local tax range, and the date which Linode begins to collect taxes in that State.
+The following table lists each U.S State and Districts that requires us to collect sales taxes. Alongside each state is the State tax rate, the additional Local tax range, and the date which Linode begins to collect taxes in that State.
 
 | State or District | State or District Tax Rate | Local Tax Range | Start Date |
 | -- | -- | -- | -- |
