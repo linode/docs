@@ -41,6 +41,8 @@ The following database management systems (DBMSs) are available (or coming soon)
 
 - **MongoDB:** A document-oriented database software that uses JSON files to store data. It is one of the most popular NoSQL databases and, as such, it is *unstructured* and very flexible.
 
+    {{< content "managed-database-mongodb-private-notice-shortguide" >}}
+
 - **Redis** *(Coming soon)*: An in-memory NoSQL database that stores its data as key-value pairs. It's most commonly used as a caching system.
 
 See [Choosing a Database Engine and Plan](/docs/products/databases/managed-databases/guides/database-engines/) for more details on each of the available database engines.
@@ -92,3 +94,5 @@ In addition to the resources allocated to each available plan (outlined above), 
 - The default user cannot be changed or removed, though the password can be reset at any time.
 
 - You are not able to access the underlying operating system of a database cluster.
+
+- MongoDB database clusters are currently only accessible over public IP addresses. As such, any traffic counts towards your monthly network transfer usage. Support for private IP addresses will be available in the coming months.
