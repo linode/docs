@@ -9,6 +9,8 @@ tab_group_main:
 
 - [Create a Managed Database](/docs/products/databases/managed-databases/guides/create-database/)
 
+- [Choosing a Database Engine and Plan](/docs/products/databases/managed-databases/guides/database-engines/)
+
 - [Manage Access Controls](/docs/products/databases/managed-databases/guides/manage-access-controls/)
 
 - [Automatic Updates and Maintenance Windows](/docs/products/databases/managed-databases/guides/updates-and-maintenance/)
@@ -21,13 +23,38 @@ tab_group_main:
 
 ## MySQL
 
+- [MySQL Managed Databases](/docs/products/databases/managed-databases/guides/mysql/)
+
 - [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/connect-to-mysql/)
 
 - [Migrate a MySQL or MariaDB Database to a Managed Database](/docs/products/databases/managed-databases/guides/migrate-mysql/)
 
-### Additional MySQL Guides
+- General MySQL guides:
 
-- [An Overview of MySQL](/docs/guides/an-overview-of-mysql/)
-- [Securing MySQL Server](/docs/guides/how-to-secure-mysql-server/)
-- [How to List Tables in MySQL and MariaDB](/docs/guides/list-tables-in-mysql-and-mariadb/)
-- [How to Use Views in a MySQL Database](/docs/guides/how-to-create-and-use-mysql-views/)
+    - [An Overview of MySQL](/docs/guides/an-overview-of-mysql/)
+
+    - [How to List Tables in MySQL and MariaDB](/docs/guides/list-tables-in-mysql-and-mariadb/)
+
+    - [How to Use Views in a MySQL Database](/docs/guides/how-to-create-and-use-mysql-views/)
+
+## PostgreSQL
+
+- [Connect to a PostgreSQL Managed Database](/docs/products/databases/managed-databases/guides/connect-to-postgresql/)
+
+- [PostgreSQL Extensions](/docs/products/databases/managed-databases/guides/postgresql-extensions/)
+
+- General PostgreSQL guides:
+
+    - [An Introduction to PostgreSQL](/docs/guides/an-introduction-to-postgresql/)
+
+    - [Backing Up a PostgreSQL Database (Database Dump)](/docs/guides/how-to-back-up-your-postgresql-database/)
+
+## MongoDB
+
+- [Connect to a MongoDB Managed Database](/docs/products/databases/managed-databases/guides/connect-to-mongodb/)
+
+- General MongoDB guides:
+
+    - [Introduction To MongoDB And Its Use Cases](/docs/guides/mongodb-and-its-use-cases/)
+
+    - [How to Install and Use the MongoDB Community Shell](/docs/guides/mongodb-community-shell-installation/)

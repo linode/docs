@@ -18,7 +18,7 @@ To connect to a MySQL Managed Database, you need to know a few important details
 
 The *Connection Details* section contains information and credentials needed for you to connect to your database.
 
-- **Username:** The default user for all Managed Databases is `linroot`, which has superuser admin privileges. This replaces the `root` user, which is not accessible.
+- **Username:** The default user for all MySQL Managed Databases is `linroot`, which has superuser admin privileges. This replaces the `root` user, which is not accessible.
 - **Password:** The randomly generated password for your database cluster. See [Reset Root Password](/docs/products/databases/managed-databases/guides/reset-root-password/) if you wish to change it.
 - **Host:** The fully qualified domain name you can use to reach your database cluster through the public network.
 - **Private network host:** The fully qualified domain name you can use to reach your database cluster through the data center's private network (not a VLAN). Communicating with a Database Cluster over the private network avoids network transfer fees, so it's recommended to use this host string when possible.
