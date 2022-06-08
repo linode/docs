@@ -1061,6 +1061,7 @@ linewise
 Linkedin
 linkerd
 linode
+linode's
 linodego
 linodes
 linter
@@ -1667,6 +1668,7 @@ replset
 repo
 repos
 reputational
+reseller's
 resharding
 resilvering
 resolv
