@@ -89,12 +89,15 @@ The following table lists each U.S State and District that requires us to collec
 
 | State or District | State or District Tax Rate | Local Tax Range | Start Date |
 | -- | -- | -- | -- |
-| Texas | 6.25% | 0.125% - 2% | May 1st, 2022 |
-| Hawaii | 4% | 0% - 0.5% | May 1st, 2022 |
-| Washington | 6.50% | 0% - 3.9% | May 1st, 2022 |
-| Washington D.C | 6% | N/A | June 1st, 2022 |
 | Arizona | 5.60% | 0% - 5.6% | May 1st, 2022 |
+| Hawaii | 4% | 0% - 0.5% | May 1st, 2022 |
 | Pennsylvania | 6% | 0% - 2.0% | May 1st, 2022 |
+| South Dakota | 4.5% | 0% - 2.0% | August 1st, 2022 |
+| Texas | 6.25% | 0.125% - 2.0% | May 1st, 2022 |
+| Washington | 6.50% | 0% - 3.9% | May 1st, 2022 |
+| Washington D.C | 6% | N/A | August 1st, 2022 |
+
+
 
 {{< note >}}
 In the United States tax table shown in this section, districts like Washington D.C are addressed in the **State** column.
