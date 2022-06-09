@@ -3,15 +3,14 @@ slug: data-structure
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'What is a data structure? Read our guide to learn about why data structures are important and how to choose data structuring for your projects.'
-og_description: 'What is a data structure? Read our guide to learn about why data structures are important and how to choose data structuring for your projects.'
+description: 'What is a data structure? Read our guide to learn about why data structures are important and how to choose the correct data structure for your projects.'
 keywords: ['data structure','data structures definition','what are data structures','computer data structures']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-29
+published: 2022-06-10
 modified_by:
   name: Linode
 title: "Understanding Data Structures: Definition, Uses & Benefits"
-h1_title: "Data Structures Explained"
+h1_title: "Data Structures in Computer Programming"
 enable_h1: true
 contributor:
   name: Jeff Novotny
@@ -22,15 +21,15 @@ external_resources:
 
 ---
 
-Even novice programmers are familiar with lists and arrays. These are among the best known examples of [data structures](https://en.wikipedia.org/wiki/Data_structure). Data structures are used to create efficient, clear, and organized programs. This guide introduces and defines data structures and explains why they are important. It also highlights the most important data structures and clarifies when and how each one can be used.
+Data structures are used to create efficient, clear, and organized programs. Among the best known [data structures](https://en.wikipedia.org/wiki/Data_structure) are lists and arrays. This guide introduces and defines data structures and explains why they are important. It also highlights the most important data structures and clarifies when and how each one can be used.
 
 ## What are Data Structures?
 
-In computer science, a data structure is defined as a format that organizes, manages, and stores data. For a data structure to be practical, it must be relevant to the task and easy to use. Programmers should be able to quickly and efficiently store and retrieve data using the structure. Additionally, the data must be arranged in a sensible way within the context of the program. A data structure must also support useful and usable algorithms.
+In computer science, a data structure is a format that organizes, manages, and stores data. For a data structure to be practical, it must be relevant to the task and easy to use. Programmers should be able to quickly and efficiently store and retrieve data using the structure. Additionally, the data must be arranged in a sensible way within the context of the program. A data structure must also support useful and usable algorithms.
 
 The following three components define a data structure:
 
-- **Relationships**: In a data structure, the elements are related or connected in some way. They follow a sequence, or are arranged in a certain format. This contrasts with an assortment of different but unrelated variables. For example, three stand-alone integers do not necessarily share any relationship.
+- **Relationships**: In a data structure, elements are related or connected in some way. They follow a sequence, or are arranged in a certain format. This contrasts with an assortment of different but unrelated variables. For example, three stand-alone integers do not necessarily share any relationship.
 - **Operations**: Each data structure is associated with a collection of functions that can implement and manipulate it. These integrated algorithms are used to interact with the actual data. Most data structures support operations such as adding or deleting an item. However, other operations are only meaningful in certain situations. For instance, it might make sense to sort an array, but not a hash table.
 - **Data Values and Type**: The definition of a data structure also includes the values it contains and the type of data it allows. In some data structures, all values must have the same type, while others do not enforce any restrictions.
 
@@ -38,7 +37,7 @@ Data structures are central to a logical model known as an *abstract data type* 
 
 Data structures are also central to *Object Oriented Programming* (OOP). In OOP, both the data structure and its operations are defined together in the class definition. These operations include the constructor, destructor, and methods of the class, and the API/interface. Each object encapsulates its own set of values, along with the relationships, operations, and type information from the class definition. This means every instance of a class is also a type of user-defined data structure.
 
-Data structures can be built-in to a language or developer defined. For instance, Python provides documentation about its [core data structures](https://docs.python.org/3/tutorial/datastructures.html). Low-level languages usually support only the most basic of built-in structures. But higher-level languages provide libraries for very advanced and complex data structures, including graphs and maps.
+Data structures can be built into a language or developer defined. For instance, Python provides documentation about its [core data structures](https://docs.python.org/3/tutorial/datastructures.html). Low-level languages usually support only the most basic of built-in structures. But higher-level languages provide libraries for very advanced and complex data structures, including graphs and maps.
 
 Technically, even primary data types, such as integers, can be considered data structures. However, in everyday use, the term is reserved for compound data types, which might contain multiple items. These data structures are constructed from core data types including integers, characters, Booleans, and pointers. In most cases, a data structure includes a set of pre-defined procedures or methods to manipulate the structure. However, developers can add their own algorithms to the core data structure.
 
@@ -55,7 +54,7 @@ Data structures are essential whenever primary data types are insufficient to or
 - They are a shared convention between programmers. For example, most experienced developers know what trees and hash tables are and when to use them.
 - They are more readable and more maintainable.
 
-Data structures are widely used in computing, but they are particularly useful in the following situations. In certain cases, data structures were designed to solve a particular type of problem.
+Data structures are widely used in computing, but they are particularly useful in the situations listed below. In certain cases, data structures were designed to solve a particular type of problem.
 
 - **Searching**: Many data structures support efficient algorithms to find a specific entry from within a longer list.
 - **Storage/Scaling**: Using data structures, large amounts of data can be effectively structured, organized, and stored. Several data structures are designed to interact with relational database management systems.
@@ -66,7 +65,7 @@ Data structures are widely used in computing, but they are particularly useful i
 
 ## Types of Data Structures
 
-A handful of common data structures are used repeatedly in many circumstances, but there are many more more specific alternatives. All data structures are built out of the base data types, including integers, floats, characters, pointers, and strings. Data structures can be classified as either linear or non-linear.
+A handful of common data structures are used repeatedly in many circumstances, but there are many more specific alternatives. All data structures are built out of the base data types, including integers, floats, characters, pointers, and strings. Data structures can be classified as either linear or non-linear.
 
 ### Linear Data Structure Types
 
@@ -84,17 +83,17 @@ In many cases, programming languages already provide an implementation for many 
 
 Non-linear data structures are organized around the relationships between the individual nodes. The collection of items do not share a consistent sequence. These relationships are often hierarchical. Each parent entry has one or more children. However, some non-linear data types summarize relationships without any hierarchy.
 
-These data structures are more complicated and are often more difficult to work with. They are not as frequently built-in to a language, so a library or user-based implementation might be required. However, these data structures can store information efficiently and find individual entries very quickly. The run time for any algorithms operating on these data structures does not change dramatically as the number of items increases. They can therefore be applied to very large data sets. Here are some of the more common non-linear data structures.
+These data structures are more complicated and are often more difficult to work with. They are not as frequently built into a language, so a library or user-based implementation might be required. However, these data structures can store information efficiently and find individual entries very quickly. The run time for any algorithms operating on these data structures does not change dramatically as the number of items increases. They can therefore be applied to very large data sets. Here are some of the more common non-linear data structures.
 
 - **Graph**: Graphs describe the connections between individual entries, known as vertices. Each vertex is connected to one or more other vertices by edges. Related vertices share an edge, while unrelated vertices do not. The edges might have weights, indicating the cost, distance, or intensity of the relationship. The map of vertices and edges fully describes the topography of the domain. Graphs are often used for routing and mapping. A *spanning tree* is an important internal graphing structure. It connects all nodes in the graph together without any cycles.
 - **Tree**: A tree is a particular type of graph where there is only one possible path between any two nodes. This means trees cannot contain loops, nor is it possible to visit each node on a tree without extensive backtracking. Trees have a unidirectional hierarchical structure. At the top level, a parent "root" vertex has one or more children. Each of those child nodes can also have children. Trees are frequently used to represent directories or to sort and search data. There are many types of trees including binary search trees, AVL trees, B-trees, and red-black trees. Many domain-specific trees have been developed. For instance, a *trie* is a type of tree for storing prefixes. It is used for dictionaries and for finding items.
 - **Heap**: A heap is a special type of tree. The value stored in the parent node is either less or more than all of its children. This relationship holds for each node at every level of the heap. Heaps are a good choice for ordering and organizing data. But they frequently have to be rebalanced when nodes are added or removed. So they are better suited for relatively static data sets.
-- **Record**: A record is a list of key-value pairs. Each of the keys, or fields, contains a value. The different values are not required to have the same type. However, a value can potentially be another record, leading to a nested structure. Records can potentially support a large number of fields, but they can become inefficient as the number of pairs grows. Records are used in databases and can serve as a container for related information. A good example might be all relevant information about a customer or an employee. In object-oriented programming, each instance of a class is technically a record.
+- **Record**: A record is a list of key-value pairs. Each of the keys, or fields, contains a value. The different values are not required to have the same type. However, a value can potentially be another record, leading to a nested structure. Records can potentially support a large number of fields, but they can become inefficient as the number of pairs grow. Records are used in databases and can serve as a container for related information. A good example might be all relevant information about a customer or an employee. In object-oriented programming, each instance of a class is technically a record.
 - **Hash Table**: A hash table is an associative array. Each key, or index, inside a hash table maps to a set of values, known as a bucket. The key for each entry is calculated using a hash function. Hash functions vary in complexity. A number might be hashed by dividing it by a smaller number and taking the remainder as the hash key. Some hash tables assign each entry to its own bucket, but many implementations allow collisions where more than one key has the same index. There is always a tradeoff between the size of the table and the speed of entry lookups, but certain formulas are known to approximate the best compromise. Hash tables have many uses including database indexing, compilers, and caches.
 
 ## How to Choose a Data Structure for Your Next Project
 
-Each data structure is best suited to a certain set of tasks, and should complement the necessary data operations. A mismatch between the task and the structure might make a program less efficient or more confusing, so it is important to choose correctly. Even more confusingly, the same information can be represented using various data structures. For instance, an ordered list can be structured as an array, or some variant of a tree. The tree is more efficient, but for a small data set, an array might be easier to use.
+Each data structure is best suited to a certain set of tasks, and should complement the necessary data operations. A mismatch between the task and the structure might make a program less efficient or more confusing, so it is important to choose correctly. Additionally, the same information can be represented using various data structures. For instance, an ordered list can be structured as an array, or some variant of a tree. The tree is more efficient, but for a small data set, an array might be easier to use.
 
 Some data structures are very common in certain contexts. For example, compilers almost always use hash tables to look up the type and current value of variables. Some data structures were originally designed for a single task. Here are some issues to consider when choosing a data structure.
 
@@ -105,14 +104,14 @@ Some data structures are very common in certain contexts. For example, compilers
 - **Ease of use**: Some data structures are easy for inexperienced programmers to implement and use. For simple internal applications without stringent performance requirements, it is usually better to use straightforward structures.
 - **Permanence**: Transient information that should not be saved might be stored in an efficient manner. Stored data is best handled using a data structure that promotes easy access.
 
-A decision about what data structure to use is often based on several factors. In many cases, there is not one perfect choice. Here are a couple of examples demonstrating how a data structure can be chosen.
+A decision about what data structure to use is often based on several factors. In many cases, there is not one perfect choice. Below are a couple of examples demonstrating how a data structure can be chosen.
 
 If all items from an unordered list must be read and later processed once, then an array is an effective and simple choice. Arrays are quite fast in this context, they can scale, and they are easy to use.
 
 However, if the relationships between these items are of great significance, then the more complicated graph data structure is the only reasonable choice. Graphs are designed to illustrate the connections between items in a fast and memory-efficient manner. Unfortunately, they are one of the more complicated data structures and it takes some practice to effectively use them.
 
-## Concluding Thoughts about Computer Data Structures
+## Conclusion
 
-The definition of a data structure is "a data format that helps developers organize, manage, and store information". Computer data structures are described by the relationships between the items, the operations supported by the structure, and the actual values of the items. Developers often create new data structures and algorithms for an application, but many structures are built in to the main programming languages.
+The definition of a data structure is "a data format that helps developers organize, manage, and store information". Computer data structures are described by the relationships between the items, the operations supported by the structure, and the actual values of the items. Developers often create new data structures and algorithms for an application, but many structures are built into the main programming languages.
 
-Some data structures are linear. This means the items are arranged in sequential order. Others are non-linear, in which the relationships between the items is important. The most widely-used data structures include arrays, stacks, queues, records, trees, graphs, linked lists, and hash tables. There are many factors involved in choosing a data structure to use. However, memory use, performance, and ease of use are the most important. For a more complete definition of the various data structures, consult the documentation for your favorite programming language.
+Some data structures are linear. This means the items are arranged in sequential order. Others are non-linear and should be used when the relationships between items is important. The most widely-used data structures include arrays, stacks, queues, records, trees, graphs, linked lists, and hash tables. There are many factors involved in choosing a data structure to use. However, memory use, performance, and ease of use are the most important. If you'd like to try out some of the data structures discussed in this guide, visit our documentation library's [Python section](/docs/guides/development/python/). This section includes guides on various primary data types and linear data types in Python.
