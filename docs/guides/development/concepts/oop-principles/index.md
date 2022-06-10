@@ -1,15 +1,13 @@
 ---
 slug: oop-principles
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "What are the four major OOP principles? This guide will discuss object-oriented programming concepts and provide real-life examples. ✓ Click to learn more!"
-og_description: "What are the four major OOP principles? This guide will discuss object-oriented programming concepts and provide real-life examples. ✓ Click to learn more!"
+  name: Nathaniel Stickman
+description: "What are the four major OOP principles? This guide will discuss object-oriented programming concepts and provide real-world examples."
 keywords: ['oop principles','oop concepts','oop concepts in java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-09
+published: 2022-06-10
 modified_by:
-  name: Nathaniel Stickman
+  name: Linode
 title: "Object-Oriented Programming Concepts, Explained"
 h1_title: "A Guide to OOP Principles in Java"
 contributor:
@@ -22,9 +20,7 @@ external_resources:
 - '[Key Lime Interactive: The Four Pillars of Object Oriented Programming](https://info.keylimeinteractive.com/the-four-pillars-of-object-oriented-programming)'
 ---
 
-Object-oriented programming gives you a set of programming principles to make your code more compartmentalized and reusable. Object-oriented programming accomplishes this by structuring programs around objects.
-
-This tutorial walks you through the object-oriented concepts that make this programming paradigm so effective and ubiquitous. Learn the core principles of object-oriented programming and see examples of them in action using Java.
+Object-oriented programming gives you a set of programming principles to make your code more compartmentalized and reusable. Object-oriented programming accomplishes this by structuring programs around objects. This tutorial covers the core principles of of object-oriented programming and provides examples of these concepts written in Java.
 
 ## What is Object Oriented Programming (OOP)?
 
@@ -36,39 +32,39 @@ Because of its object-oriented focus, OOP shines when used for applications that
 
 Object-oriented programming tends to make use of four structures. These form the bedrock of all of the pieces a developer has to work with when building object-oriented programs.
 
-- *Classes*. These act as blueprints for objects. They define underlying properties and behaviors which can be inherited by other classes and by objects. Your OOP program's collection of classes creates a structure off of which the rest of the program gets built.
+- **Classes**: These act as blueprints for objects. They define underlying properties and behaviors which can be inherited by other classes and by objects. Your OOP program's collection of classes creates a structure off of which the rest of the program gets built.
 
-    Often, in Java, code is constructed with one class per file. The class syntax tends to resemble:
+    Often, in Java, code is constructed with one class per file. The class syntax resembles the following example:
 
-``` java
+    {{< file >}}
 public class ClassName {
     // Code related to the class.
 }
-```
+    {{< /file >}}
 
-- *Objects*. These derive from classes and populate the abstract of their classes properties with concrete values. They are the things built from the blueprints provided by classes. Objects also tend to be where the behaviors defined on classes get executed, bringing your application to life.
+- **Objects**: These are derived from classes and populate the abstract of their classes' properties with concrete values. They are the things built from the blueprints provided by classes. Objects also tend to be where the behaviors defined on classes get executed, bringing your application to life.
 
     Java lets you instantiate an object from a class using the `new` keyword. Here, a new object gets created from the class created above. This example works when the class has a *constructor* defined. You can see an example of a constructor definition in the [Examples of Object Oriented Programming](/docs/guides/oop-principles/#examples-of-object-oriented-programming) section further on.
 
-``` java
+    {{< file >}}
 ClassName objectName = new ClassName();
-```
+    {{< /file >}}
 
-- *Attributes*. These are fields (or properties) defined on classes and which represent the state of a particular object. A class might, for instance, define an `attributeOne` as a `String` type. An object derived from that class can then use that attribute, assigning it `attributeOne = "a string"`, for example.
+- **Attributes**: These are fields (or properties) defined on classes and which represent the state of a particular object. A class might, for instance, define an `attributeOne` as a `String` type. An object derived from that class can then use that attribute, assigning it `attributeOne = "a string"`, for example.
 
     This next example shows what it could look like to add an attribute to the `ClassName` class created above:
 
-``` java
+    {{< file >}}
 public class ClassName {
     public attributeOne = "a string";
 }
-```
+    {{< /file >}}
 
-- *Methods*. These are functions defined on classes, and they provide objects with behaviors. Methods typically act on the values held by an object's attributes, allowing each object to act in a self-contained way.
+- **Methods**: These are functions defined on classes, and they provide objects with behaviors. Methods typically act on the values held by an object's attributes, allowing each object to act in a self-contained way.
 
     In the following example, you can see what it looks like to add a basic method to a class, using the `ClassName` example started above:
 
-``` java
+    {{< file >}}
 public class ClassName {
     public attributeOne = "a string";
 
@@ -76,7 +72,7 @@ public class ClassName {
         System.out.println("The method has been called!");
     }
 }
-```
+    {{< /file >}}
 
 ## 4 Basic OOP Principles
 
@@ -86,7 +82,7 @@ These next four sections cover the four principles of OOP, giving you an overvie
 
 ### Encapsulation
 
-This principle has it that objects are self-contained and limit what of their state they expose. In other words, other objects cannot directly access the state of an object. Each object manages its own state. To modify an object's state, other objects need to use that object's dedicated methods.
+This principle ensures that objects are self-contained and limits what information about their state they expose. In other words, other objects cannot directly access the state of an object. Each object manages its own state. To modify an object's state, other objects need to use that object's dedicated methods.
 
 So, for instance, say you have an object called `firstObject`. That object has two attributes, `attributeOne` and `attributeTwo`. Encapsulation prevents another object, say `secondObject`, from modifying the values of the attributes on `firstObject`.
 
@@ -98,19 +94,19 @@ Encapsulation also makes it easier to keep track of objects' states. These state
 
 ### Data Abstraction
 
-This principle states that classes include only the details relevant to their context. Doing so creates abstract classes, which more specific classes and objects can extend on.
+This principle states that classes include only the details relevant to their context. Doing so creates abstract classes, which more specific classes and objects can extend.
 
-Take the example of a `Pet` class. You can make this class to define, in the most general way, the characteristics of pets. So, the class may have `name`, `diet`, and `health` attributes. Now you can extend on that class with more specific kinds of `Pet`. For instance, you may define a `Dog` class that extends on `Pet` and adds a `bark` method. At the same time, you can also define a `Cat` class similarly extending on `Pet`.
+Take the example of a `Pet` class. You can make this class to define, in the most general way, the characteristics of pets. So, the class may have `name`, `diet`, and `health` attributes. Now you can extend that class with more specific kinds of `Pet`. For instance, you may define a `Dog` class that extends `Pet` and adds a `bark` method. At the same time, you can also define a `Cat` class similarly extending on `Pet`.
 
 One of the goals of abstraction is to define common characteristics. Using the example above, `Dog` has the unique behavior of the `bark` method, but otherwise it shares things like having a `name` in common with other pets. Abstraction makes it so that you do not need to redefine these attributes for each specific kind of pet.
 
 Abstraction also allows you to evaluate various classes by common abstract classes. So long as you know that both `Cat` and `Dog` extend `Pet`, you can evaluate them based on the common attributes held in `Pet`.
 
-``` java
+{{< file >}}
 if (obj eitherCatOrDog instanceof Pet) {
     System.out.println("This is my pet, " + eitherCatOrDog.name + ".");
 }
-```
+{{< /file >}}
 
 ### Inheritance
 
@@ -122,9 +118,9 @@ In Java, such parent classes are called *super* classes. Commonly, classes inher
 
 Take a look at the `Pet` example above again. You have a `Cat` class and a `Dog` class that inherit from `Pet`, thus gaining its attributes. From there, you can create specific objects that inherit from the new classes:
 
-``` java
+{{< file >}}
 Pet myDog = new Dog();
-```
+{{< /file >}}
 
 The new object inherits not only properties of the `Dog` class — like the `bark` method — but also those on the `Pet` class, like the `name` attribute.
 
@@ -132,11 +128,11 @@ The new object inherits not only properties of the `Dog` class — like the `bar
 
 This principle states that each sub class can be used in the same way as its parent class or parent classes. At the same time, each sub class may keep its own, distinct form of attributes and methods initially defined in a super class.
 
-Polymorphism is one of the more complicated features of OOP, but it plays a useful role. To help understand it, here is an example that reworks the `Pet` example elaborated in the sections above.
+Polymorphism is one of the more complicated features of OOP, but it plays a useful role. To help you understand it, below is an example that reworks the `Pet` example elaborated in the sections above.
 
-Say, when creating the `Pet` class, you include a method called `makeSound`:
+Say, for instance, when creating the `Pet` class, you include a method called `makeSound`:
 
-``` java
+{{< file >}}
 class Pet {
     public String name = "None";
     public String diet = "Herbivore";
@@ -146,11 +142,11 @@ class Pet {
         System.out.println("This is my pet sound.");
     }
 }
-```
+{{< /file >}}
 
 Obviously, the effect of `makeSound` should be different for `Cat` and `Dog`, even though both, being pets, do make sounds:
 
-``` java
+{{< file >}}
 class Cat extends Pet {
     public String diet = "Carnivore";
 
@@ -166,20 +162,20 @@ class Dog extends Pet {
         System.out.println("Bark.");
     }
 }
-```
+{{< /file >}}
 
 Following polymorphism, you can, indeed, use any property from the `Pet` class on any object deriving from the `Cat` and `Dog` classes. The effect may be different — you get a different sound from the `makeSound` method — but all of the parts are still there.
 
 ## Examples of Object Oriented Programming
 
-What follows are snippets of code giving examples of OOP concepts in Java. These are aimed to simultaneously show off some of the components of OOP as well as the four core principles discussed above. The examples also familiarize you with the elements of Java that related to OOP.
+This section includes snippets of code that give examples of OOP concepts in Java. These are aimed to simultaneously show off some of the components of OOP as well as the four core principles discussed above. The examples also familiarize you with the elements of Java that relate to OOP.
 
 Starting simple, this first example shows a single Java class, not counting the default `Main` class used to start up the program. This class covers all of the parts — class, object, attribute, and method — of OOP mentioned above.
 
-``` java
+{{< file >}}
 // Create a class.
 class BookShelf {
-    // Declare the class's attributes.
+    // Declare the class attributes.
     public int numberOfBooks;
 
     // Implement a constructor. This is used to create objects from the class,
@@ -208,7 +204,7 @@ class Main {
         thisBookShelf.showBookCount();
     }
 }
-```
+{{< /file >}}
 
 {{< output >}}
 The shelf has 7 books.
@@ -218,7 +214,7 @@ Now, this next example is a little more ambitious. It has three classes — agai
 
 This chain of extensions lets the example demonstrate several of the concepts of OOP at once. Each extension shows the concept of *abstraction* in action. The `PlayStation` class is able to make use of both attributes and methods from its parent, demonstrating *inheritance*. And the `PlayStation4` class illustrates *polymorphism* through its identification with the `GamingConsole` super class during construction in the `Main` class.
 
-``` java
+{{< file >}}
 // Create a super class, from which the other classes ultimately extend.
 class GamingConsole {
     // Declare attributes.
@@ -306,7 +302,7 @@ class Main {
         thisConsole.playGame();
     }
 }
-```
+{{< /file >}}
 
 {{< output >}}
 Welcome to PlayStation 4.
@@ -316,10 +312,8 @@ Playing Minecraft.
 
 ## Conclusion
 
-With this, you have what you need to start making effective object-oriented code. Applying these concepts helps to ensure that you are making the most of what the paradigm can do — and understanding what each part is doing.
+In this guide you learned the fundamental principles of object-oriented programming. The concepts covered were encapsulation, abstraction, inheritance, and polymorphism. Applying these concepts helps to ensure that you are making the most of what the paradigm can do.
 
-Throughout this tutorial, the focus has been on OOP related to Java. But keep in mind that these concepts apply anywhere that supports object-oriented programming. JavaScript, Python, and Ruby are popular examples.
+Throughout this tutorial, the focus has been on OOP related to Java. But keep in mind that these concepts apply anywhere that supports object-oriented programming. [JavaScript](/docs/guides/development/javascript/), [Python](/docs/guides/development/python/), and [Ruby](/docs/guides/development/ror/) are popular examples.
 
-Want to continue your journey? Start perusing our other development guides. Whether you are looking to go further with Java, another programming language, or with more programming concepts, our guides can help.
 
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
