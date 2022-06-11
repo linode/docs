@@ -110,7 +110,6 @@ When working with Pytest, all test files must begin with `test_` if not, Pytest 
 {{< /note >}}
 
 4. Create a text file with name `requirements.txt` to document your dependencies. The GitHub Actions workflow will need this when trying to run your workflow and it will also be needed in deployment.
-
 {{< file "flask-GA-linode/requirements.txt" text >}}
 Flask==2.0.3
 pytest==6.2.5
@@ -118,9 +117,9 @@ pytest==6.2.5
 
 5. Finally, run the following commands on your project’s root to **`commit`** and **`push`** the code to your GitHub repository.
 
-        git add . # adds changes to staging area
-        git commit -m "initial commit" # commits your changes
-        git push # Push to GitHub
+       git add . # adds changes to staging area
+       git commit -m "initial commit" # commits your changes
+       git push # Push to GitHub
 
 ## Set up the Linux Server
 
@@ -233,13 +232,9 @@ Now open your IP address on a browser, and you will see an output like below:
 ## Build the GitHub Actions Workflow
 
 With [GitHub Actions](https://docs.github.com/en/actions), you can automate, customize, and execute your software development and deployment workflows using a YAML file in your repository.
-
 To get GitHub Actions working on your project, follow the following steps:
-
 1. Go to the project repository on GitHub, navigate to the root of your project and create a folder named `.github`, in there, create `workflows/main.yml`, this is where you will write the GitHub Actions workflow. The path should look like `.github/workflows/main.yml`.
-
 2. Paste the code below and commit the changes:
-
 {{< file "flask-GA-linode/.github/workflows/main.yml" yaml>}}
 name: test_and_deploy_app
 on: [pull_request, push] # activates the workflow when there is a push or pull request in the repo
