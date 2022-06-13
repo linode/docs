@@ -105,7 +105,7 @@ In the United States tax table shown in this section, districts like Washington 
 
 ## Adding a Tax ID
 
-If you are a registered business, you may provide Linode with a valid tax ID, such as a VAT identification number (*VAT ID*) or GST identification number (*GST ID*, also referred to as an *ABN* in Australia and a *GSTIN* in India). Customers outside of the United States will not be charged VAT or GST in subsequent invoices once their tax ID is verified. You might choose to do this if your business is tax exempt or if your business is liable to pay taxes directly due to a special tax status or program (like RCM - Reverse Charge Mechanism). Users within the United States will need to submit both their tax ID and a state tax exemption or reseller's certificate in a [Support Ticket](https://www.linode.com/support/) before becoming exempt.
+If you are a registered business, you may provide Linode with a valid tax ID, such as a VAT identification number (*VAT ID*) or GST identification number (*GST ID*, also referred to as an *ABN* in **Australia** and a *GSTIN* in **India**). Customers outside of the **United States** will not be charged VAT or GST in subsequent invoices once their tax ID is verified. You might choose to do this if your business is tax exempt or if your business is liable to pay taxes directly due to a special tax status or program (like RCM - Reverse Charge Mechanism). Users within the **United States** and **Canada** will need to submit both their tax ID and a state tax exemption or reseller's certificate in a [Support Ticket](https://www.linode.com/support/) before becoming exempt. Registered businesses in **Canada** will always be billed for GST federal sales tax, however may become exempt from *PST* sales tax by submitting a valid tax ID and PST certificate.
 
 {{< caution >}}
 If you are located in one of the countries that require taxes on our services, you are still liable for those taxes. Adding your tax ID does not exempt you from your liability to pay any taxes that have been mandated by your country for our services.
@@ -135,7 +135,7 @@ You may update your tax location by navigating to the **Account** page in the [C
 
 ### My business is tax exempt. How can I stop further taxes from being charged to my Linode account?
 
-If your business or organization is tax exempt, you should add a verifiable tax ID to your Linode account. Once verified, taxes will no longer be added to invoices for customers outside of the United States. See [Adding a Tax ID](#adding-a-tax-id). Customers inside the United States will additionally need to submit any tax exemption certificates or reseller's certificates by [Opening a Support Ticket](https://www.linode.com/support/) which contains the required information.
+If your business or organization is tax exempt, you should add a verifiable tax ID to your Linode account. Once verified, taxes will no longer be added to invoices for customers outside of the **United States** and **Canada**. See [Adding a Tax ID](#adding-a-tax-id). Customers inside the **United States** and **Canada** will additionally need to submit any tax exemption certificates or reseller's certificates by [Opening a Support Ticket](https://www.linode.com/support/) which contains the required information. Registered businesses in **Canada** will always be billed for GST federal sales tax, however may become exempt from *PST* sales tax by submitting a valid tax ID and PST certificate.
 
 ### How can I review the taxes charged on previous invoices?
 
