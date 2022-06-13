@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.127.1
+  version: 4.128.0
 
   title: Linode API
   description: |
@@ -438,7 +438,12 @@ paths:
       - oauth:
         - account:read_write
       requestBody:
-        description: Update contact and billing information.
+        description: |
+          Update contact and billing information.
+
+          Account properties that are excluded from a request remain unchanged.
+
+          When updating an Account's `country` to "US", an error is returned if the Account's `zip` is not a valid US zip code.
         required: true
         content:
           application/json:
@@ -469,14 +474,25 @@ paths:
                 "last_name": "Smith",
                 "phone": "555-555-1212",
                 "state": "PA",
-                "zip": "19102",
+                "tax_id": "ATU99999999",
+                "zip": "19102"
               }' \
               https://api.linode.com/v4/account
       - lang: CLI
         source: >
           linode-cli account update \
+            --address_1 "123 Main St." \
+            --address_2 "Suite 101" \
+            --city Philadelphia \
+            --company My Company \ LLC \
+            --country US \
+            --email jsmith@mycompany.com \
             --first_name John \
-            --last_name Smith
+            --last_name Smith \
+            --phone 555-555-1212 \
+            --state PA \
+            --tax_id ATU99999999 \
+            --zip 19102
   /account/cancel:
     x-linode-cli-command: account
     post:
@@ -18914,6 +18930,7 @@ components:
       properties:
         active_promotions:
           type: array
+          readOnly: true
           items:
             $ref: '#/components/schemas/Promotion'
         active_since:
@@ -19026,8 +19043,8 @@ components:
           description: >
             The tax identification number associated with this Account,
             for tax calculations in some countries.
-            If you do not live in a country that collects tax, this should be `null`.
-          maxLength: 100
+            If you do not live in a country that collects tax, this should be an empty string (`""`).
+          maxLength: 25
           example: ATU99999999
         euuid:
           type: string
@@ -19507,7 +19524,11 @@ components:
           x-linode-cli-display: 3
         label:
           type: string
-          description: The database backup's label, for display purposes only.
+          maxLength: 30
+          description: |
+            The database backup's label, for display purposes only.
+
+            Must include only ASCII letters or numbers.
           example: Scheduled - 02/04/22 11:11 UTC-XcCRmI
           x-linode-cli-display: 2
         created:
