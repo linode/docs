@@ -67,7 +67,7 @@ The following table lists each country that requires us to collect taxes. Alongs
 
 As of **May 1st, 2022**, Canadian taxes will begin to be collected. The following table below lists the tax rate for each Province/Territory, as well as additional tax details:
 
-| Province | Tax Rate | Tax Details |
+| Province | Tax Rate Total | Tax Details |
 | -- | -- | -- | -- |
 | Alberta | 5% | [5% GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
 | British Columbia | 12% | Combination of [5% GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) and [7% PST](https://www2.gov.bc.ca/gov/content/taxes/sales-taxes/pst) |
@@ -75,12 +75,12 @@ As of **May 1st, 2022**, Canadian taxes will begin to be collected. The followin
 | New Brunswick | 15% | [15% HST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
 | Newfoundland and Labrador | 15% | [15% HST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
 | Northwest Territories | 5% | [5% GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
-| Nova Scotia | 12% | [5% GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) and [7% PST](https://www2.gov.bc.ca/gov/content/taxes/sales-taxes/pst) |
+| Nova Scotia | 15% | [15% HST](https://novascotia.ca/finance/en/home/taxation/tax101/hst/default.aspx.html) |
 | Nunavut | 5% | [5% GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
 | Ontario | 13% | [13% HST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
 | Prince Edward Island | 15% | [15% HST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
 | Quebec | 14.975% | Combination of [5% GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) and [9.975% QST](https://www.revenuquebec.ca/en/businesses/consumption-taxes/gsthst-and-qst/basic-rules-for-applying-the-gsthst-and-qst/) |
-| Saskatchewan | 11% | Combination of [5% GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) and [6% PST](https://www2.gov.bc.ca/gov/content/taxes/sales-taxes/pst) |
+| Saskatchewan | 11% | Combination of [5% GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) and [6% PST](https://www.saskatchewan.ca/business/taxes-licensing-and-reporting/provincial-taxes-policies-and-bulletins#:~:text=Provincial%20Sales%20Tax%20(PST)%20is,consumption%20or%20use%20in%20Saskatchewan) |
 | Yukon | 5% | [5% GST](https://www.canada.ca/en/revenue-agency/services/forms-publications/publications/rc4027/doing-business-canada-gst-hst-information-non-residents.html) |
 
 ### United States
@@ -135,7 +135,7 @@ You may update your tax location by navigating to the **Account** page in the [C
 
 ### My business is tax exempt. How can I stop further taxes from being charged to my Linode account?
 
-If your business or organization is tax exempt, you should add a verifiable tax ID to your Linode account. Once verified, taxes will no longer be added to invoices for customers outside of the **United States** and **Canada**. See [Adding a Tax ID](#adding-a-tax-id). Customers inside the **United States** and **Canada** will additionally need to submit any tax exemption certificates or reseller's certificates by [Opening a Support Ticket](https://www.linode.com/support/) which contains the required information. Registered businesses in **Canada** will always be billed for GST, HST, and QST federal sales tax, however may become exempt from *PST* sales tax by submitting a valid tax ID and PST certificate.
+If your business or organization is tax exempt, you should add a verifiable tax ID to your Linode account. Once verified, taxes will no longer be added to invoices for customers outside of the **United States** and **Canada**. See [Adding a Tax ID](#adding-a-tax-id). Customers inside the **United States** and **Canada** will additionally need to submit any tax exemption certificates or reseller's certificates by [Opening a Support Ticket](https://www.linode.com/support/) which contains the required information. Registered businesses in **Canada** will always be billed for GST and HST sales tax, however may become exempt from *PST* sales tax by submitting a valid tax ID and PST certificate.
 
 ### How can I review the taxes charged on previous invoices?
 
