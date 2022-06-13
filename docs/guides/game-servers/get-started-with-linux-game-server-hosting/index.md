@@ -18,7 +18,7 @@ contributor:
   name: Sandro Villinger
 ---
 
-If you want great gaming performance, low latency, and control over your gaming experience, you should consider setting up your own dedicated game server. You can do so for [Valheim](https://www.linode.com/marketplace/apps/linode/valheim-game-server/), [Minecraft](/docs/guides/deploying-minecraft-with-marketplace-apps/), [CS:GO](https://www.linode.com/marketplace/apps/linode/csgo-game-server/), Grand Theft Auto's popular [FiveM](https://fivem.net/) mod, or any other multiplayer game that supports dedicated server hosting. This guide helps you understand what is involved in setting up your own Linux game server. It covers the top reasons for hosting your own game server, computing requirements, Linux distribution recommendations, and links to resources to help you deploy your first game server.
+If you want great gaming performance, low latency, and control over your gaming experience, you should consider setting up your own dedicated game server. You can do so for [Valheim](https://www.linode.com/marketplace/apps/linode/valheim-game-server/), [Minecraft](/docs/products/tools/marketplace/guides/minecraft/), [CS:GO](https://www.linode.com/marketplace/apps/linode/csgo-game-server/), Grand Theft Auto's popular [FiveM](https://fivem.net/) mod, or any other multiplayer game that supports dedicated server hosting. This guide helps you understand what is involved in setting up your own Linux game server. It covers the top reasons for hosting your own game server, computing requirements, Linux distribution recommendations, and links to resources to help you deploy your first game server.
 
 ## The Benefits of Hosting Your Own Linux Game Server
 

@@ -43,5 +43,5 @@ Below is a full list of distributions, along with the release versions that we o
 ** *Deprecated image: This image is still available for deployment but is no longer maintained by Linode.*
 
 {{< note >}}
-Though this list covers most popular distributions, creating a Linode using a distribution that we do not provide is possible. Feel free to follow our [Custom Distribution Guide](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/) for more information.
+Though this list covers most popular distributions, creating a Linode using a distribution that we do not provide is possible. Feel free to follow our [Custom Distribution Guide](/docs/guides/install-a-custom-distribution-on-a-linode/) for more information.
 {{< /note >}}

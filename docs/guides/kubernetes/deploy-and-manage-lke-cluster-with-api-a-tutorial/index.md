@@ -40,7 +40,7 @@ You can easily deploy an LKE cluster in several ways:
     {{< note >}}
 The Linode API and the Kubernetes API are two separate interfaces, and both are mentioned in this article. The Linode API allows you to manipulate your Linode infrastructure, while the Kubernetes API allows you to manage the software objects running in your cluster.
 {{< /note >}}
-- With the [Linode CLI](/docs/guides/linode-cli/)
+- With the [Linode CLI](/docs/products/tools/cli/get-started/)
 
 These Linode-provided interfaces can be used to create, delete, and update the structural elements of your cluster, including:
 

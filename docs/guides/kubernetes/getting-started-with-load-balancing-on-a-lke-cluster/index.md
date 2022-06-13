@@ -33,7 +33,7 @@ All existing LKE clusters receive CCM updates automatically every two weeks when
 {{</ note >}}
 
 {{< note >}}
-The [Linode Terraform K8s module](/docs/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/) also deploys a Kubernetes cluster with the Linode CCM installed by default. Any Kubernetes cluster with a Linode CCM installation can make use of Linode NodeBalancers in the ways described in this guide.
+The [Linode Terraform K8s module](/docs/guides/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/) also deploys a Kubernetes cluster with the Linode CCM installed by default. Any Kubernetes cluster with a Linode CCM installation can make use of Linode NodeBalancers in the ways described in this guide.
 {{</ note>}}
 
 ## In this Guide
@@ -49,12 +49,12 @@ This guide will show you:
 
 This guide assumes you have a working Kubernetes cluster that was deployed using the Linode Kubernetes Engine (LKE). You can deploy a Kubernetes cluster using LKE in the following ways:
 
-- The [Linode Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/).
-- [Linode's API v4](/docs/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/).
-- [Terraform](/docs/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
+- The [Linode Cloud Manager](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/).
+- [Linode's API v4](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/).
+- [Terraform](/docs/guides/how-to-deploy-an-lke-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
 
     {{< note >}}
-An LKE cluster will already have Linode's Cloud Controller Manager installed in the cluster's control plane. If you **did not** deploy your Kubernetes cluster using LKE and would like to make use of the Linode Cloud Controller Manager, see [Installing the Linode CCM on an Unmanaged Kubernetes Cluster - A Tutorial](/docs/kubernetes/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/).
+An LKE cluster will already have Linode's Cloud Controller Manager installed in the cluster's control plane. If you **did not** deploy your Kubernetes cluster using LKE and would like to make use of the Linode Cloud Controller Manager, see [Installing the Linode CCM on an Unmanaged Kubernetes Cluster - A Tutorial](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/).
     {{</ note >}}
 
 ## Adding Linode NodeBalancers to your Kubernetes Cluster
@@ -164,7 +164,7 @@ Kubernetes allows you to store sensitive information in a Secret object for use 
 In the context of the Linode CCM, Secrets are useful for storing Transport Layer Security (TLS) certificates and keys. The `linode-loadbalancer-tls` annotation requires TLS certificates and keys to be stored as Kubernetes Secrets with the type `tls`. Follow the steps in this section to create a Kubernetes TLS Secret.
 
 {{< note >}}
-The steps in this section will create a self-signed TLS certificate. To learn how to create a TLS certificate from the [Let's Encrypt](https://letsencrypt.org/) certificate authority (CA) and apply it to an application running on Kubernetes, see the [Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster](/docs/kubernetes/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/).
+The steps in this section will create a self-signed TLS certificate. To learn how to create a TLS certificate from the [Let's Encrypt](https://letsencrypt.org/) certificate authority (CA) and apply it to an application running on Kubernetes, see the [Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster](/docs/guides/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/).
 {{</ note >}}
 
 1.  Generate a TLS key and certificate using a TLS toolkit like [OpenSSL](https://www.openssl.org/). Be sure to change the `CN` and `O` values to those of your own website domain.

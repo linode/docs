@@ -79,7 +79,7 @@ Once you have your API token, it's time to create your secret.
 
         read -p "Linode Region of Cluster: " LINODE_REGION
 
-    You can retrieve a full list of regions by using the [Linode CLI](/docs/guides/using-the-linode-cli/):
+    You can retrieve a full list of regions by using the [Linode CLI](/docs/products/tools/cli/get-started/):
 
         linode-cli regions list
 
