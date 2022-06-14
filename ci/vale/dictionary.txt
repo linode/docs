@@ -153,6 +153,7 @@ bernd
 berners
 bgpd
 bialek
+bin_t
 bing
 binlog
 biomes
