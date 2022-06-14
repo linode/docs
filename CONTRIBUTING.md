@@ -69,30 +69,43 @@ The Linode documentation library is built using [Hugo](http://gohugo.io), an ope
 
 Note: If you observe any issues on a newer version, please [file an issue](https://github.com/linode/docs/issues) in the docs GitHub repository.
 
+#### macOS and Linux
+
 To install Hugo, download the appropriate binary for your system, extract it, and move it to a directory within your PATH.
 
-1. Download the file below that corresponds with the OS and platform on your local system. If you don't see your system on this list, you can find additional files on the [Hugo v0.83.1 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.83.1) under **Assets**.
+1.  Download the file below that corresponds with the OS and platform on your local system. If you don't see your system on this list, you can find additional files on the [Hugo v0.83.1 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.83.1) under **Assets**.
 
     - **macOS (Intel):** https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_extended_0.83.1_macOS-64bit.tar.gz
     - **macOS (Apple Silicon):** https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_extended_0.83.1_macOS-ARM64.tar.gz
-    - **Windows:** https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_0.83.1_Windows-64bit.zip
     - **Linux:** https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_extended_0.83.1_Linux-64bit.tar.gz
 
     You can download this file through a terminal using the curl command, replacing [url] with the URL for your platform:
 
         curl -OL [url]
 
-1. Extract the archive file using the `tar` command, replacing *[file]* with the correct filename.
+1.  Extract the archive file using the `tar` command, replacing *[file]* with the correct filename.
 
         tar -xvzf [file]
 
     Once extracted, there should be a `hugo` file in the same directory. This is used to run hugo.
 
-1. Move the hugo file to a location within your system's PATH variable. For most systems, the `/usr/local/bin` path can be used.
+1.  Move the hugo file to a location within your system's PATH variable. For most systems, the `/usr/local/bin` path can be used.
 
         mv hugo /usr/local/bin
 
 1. Test hugo by running `hugo verison`. This should output a long string indicating that version 0.83.1 is being used. If not, review the prior steps and the [Install Hugo from Tarball](https://gohugo.io/getting-started/installing/#install-hugo-from-tarball) section of the Hugo documentation.
+
+#### Windows
+
+While macOS and Linux are preferred by most of the core Linode Docs team, it's also possible to use Hugo on Windows.
+
+1. Download the [hugo_0.83.1_Windows-64bit.zip](https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_0.83.1_Windows-64bit.zip) file. Additional files for other operating sytems can be found on the [Hugo v0.83.1 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.83.1) under **Assets**.
+
+1. Extract the file to the directory you'd like to install Hugo under, such as `C:\Hugo\bin`.
+
+1.  Add the directory to your PATH. In powershell, this can be accomplished with the following command:
+
+        set PATH=%PATH%;C:\Hugo\bin
 
 ## Fork and Clone the Linode Library
 
