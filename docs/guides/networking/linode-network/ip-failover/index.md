@@ -154,7 +154,7 @@ Next, we need to configure the failover software on *each* Compute Instance. For
 
 1.  Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 
-1.  Install lelastic by downloading the latest release from the GitHub repository, extracting the contents of the archived file, and moving the the lelastic utility to a folder in your PATH. This same process can be used to update lelastic, making sure to restart the lelastic service (detailed in a later step) to complete the upgrade. Before installing or updating lelastic, review the [releases page](https://github.com/linode/lelastic/releases) and update the version variable with the most recent version number.
+1.  Install lelastic by downloading the latest release from the GitHub repository, extracting the contents of the archived file, and moving the lelastic executable to a folder within your PATH. This same process can be used to update lelastic, making sure to restart the lelastic service (detailed in a later step) to complete the upgrade. Before installing or updating lelastic, review the [releases page](https://github.com/linode/lelastic/releases) and update the version variable with the most recent version number.
 
         version=v0.0.6
         curl -LO https://github.com/linode/lelastic/releases/download/$version/lelastic.gz
