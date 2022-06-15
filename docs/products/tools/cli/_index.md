@@ -1,5 +1,5 @@
 ---
-title: Linode CLI How Tos | Linode
+title: 'Linode CLI How Tos'
 description: "The Linode CLI allows you to accelerate common tasks with customizable output and easy scripting."
 tab_group_main:
     is_root: true
