@@ -1,5 +1,5 @@
 ---
-title: Use GPU Linodes for High End Computing | Linode
+title: 'Use GPU Linodes for High End Computing'
 description: "GPU Linodes offer on-demand computational power on market leading hardware."
 tab_group_main:
     is_root: true
