@@ -11,5 +11,5 @@ modified_by:
     name: Linode
 published: 2014-11-21
 show_in_lists: true
-title: Drush and Drupal Configuration Guides | Linode
+title: 'Drush and Drupal Configuration Guides'
 ---
