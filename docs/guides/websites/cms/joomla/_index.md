@@ -7,7 +7,7 @@ og_description: "Joomla is an advanced content management system (CMS) used to f
 keywords: ["joomla", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01
-title: Joomla CMS Installation Guides | Linode
+title: 'Joomla CMS Installation Guides'
 show_in_lists: true
 aliases: ['/websites/cms/joomla/']
 ---
