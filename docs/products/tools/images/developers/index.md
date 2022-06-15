@@ -1,5 +1,5 @@
 ---
-title: Developer Resources for Linode Images | Linode
+title: 'Developer Resources for Linode Images'
 description: "Linode Images are managed easily with developer tools like the Linode API or CLI."
 tab_group_main:
     weight: 50
