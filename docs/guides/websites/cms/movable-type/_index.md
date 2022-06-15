@@ -7,7 +7,7 @@ og_description: "Movable Type is a free, open source content management system d
 keywords: ["movable type", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01
-title: Movable Type Installation Guides | Linode
+title: 'Movable Type Installation Guides'
 show_in_lists: true
 aliases: ['/websites/cms/movable-type/']
 ---
