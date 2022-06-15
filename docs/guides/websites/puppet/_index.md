@@ -1,5 +1,5 @@
 ---
-title:  Manage & Automate Systems with Puppet | Linode
+title:  'Manage and Automate Systems with Puppet'
 aliases: ['/websites/puppet/']
 ---
 
