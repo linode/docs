@@ -7,7 +7,7 @@ keywords: ["nginx", "nginx linux", "nginx tutorials", " how to install nginx", "
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/nginx/','/web-servers/nginx/','/websites/nginx/index.cfm/']
 published: 2009-12-14
-title: 'NGINX Configuration Guides | Linode'
+title: 'NGINX Configuration Guides'
 show_in_lists: true
 ---
 
