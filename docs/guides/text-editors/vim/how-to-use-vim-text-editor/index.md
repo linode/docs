@@ -23,9 +23,9 @@ external_resources:
 Vim is a built-in command-line based text editor used for editing plain text and code-based programs. This guide teaches how to open, edit, and save a plain text file in Vim, as well as how to use more advanced keyboard shortcuts to maximize productivity.
 
 ## Vim vs. The Competition
-As a pure text editor, Vim's main competition is Nano. While Nano does have less of a learning curve, it fails to offer the advanced editing features that make Vim such an efficiency powerhouse (concurrent file viewing, autocompletion, macros, etc.). Learning the ins and outs of Vim definitely takes more time, but pays off tenfold in the long run when complex edits need to be made repeatedly in a systematic way. 
+As a pure text editor, Vim's main competition is Nano. While Nano has less of a learning curve, it fails to offer the advanced editing features that make Vim such an efficiency powerhouse (concurrent file viewing, autocompletion, macros, etc.). Learning the ins and outs of Vim definitely takes more time, but pays off tenfold in the long run when complex edits need to be made repeatedly in a systematic way. 
 
-On the other hand, Vim's direct competition could be said to be full-blown Integrated Developement Environments (IDEs) like VS Code, often much more user-friendly as well. To even come close to matching Vim's level of speed and efficiency, however, multiple plug-ins and add-ons would need to be installed. Out of the box, pre-installed, Vim just works in all its glory without any setup other than knowledge of preconfigured keyboard shortcuts.
+On the other hand, Vim's direct competition could be said to be full-blown Integrated Developement Environments (IDEs) like VS Code, often much more user-friendly as well. To even come close to matching Vim's level of speed and efficiency, however, multiple plug-ins and add-ons would need to be installed. Out of the box and pre-installed, Vim just works in all its glory without any setup other than knowledge of preconfigured keyboard shortcuts.
 
 ## Background Information
 Derived from the original Vi text editor, Vim stands for "Vi IMproved".<br> 
