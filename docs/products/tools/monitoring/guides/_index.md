@@ -1,5 +1,5 @@
 ---
-title: Linode Monitoring Guides | Linode
+title: 'Linode Monitoring Guides'
 description: "Learn to get up and running with monitoring your Linode services and find guides on related monitoring tools."
 tab_group_main:
     weight: 30
