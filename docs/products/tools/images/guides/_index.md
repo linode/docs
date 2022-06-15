@@ -1,5 +1,5 @@
 ---
-title: Linode Images How Tos | Linode
+title: 'Linode Images How To's'
 description: "Learn how to create and manage Linode Images and find guides on other related topics."
 tab_group_main:
     weight: 30
