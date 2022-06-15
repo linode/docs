@@ -1,5 +1,5 @@
 ---
-title: How Linode Billing Works | Linode
+title: 'How Linode Billing Works'
 description: "Linode Billing is simple and predictable."
 tab_group_main:
     is_root: true
