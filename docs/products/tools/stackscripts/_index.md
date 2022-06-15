@@ -1,5 +1,5 @@
 ---
-title: Use or Create Your Own Linode StackScripts | Linode
+title: 'Use or Create Your Own Linode StackScripts'
 description: "Linode StackScripts allow for quick and easy customization. Create your own and join the growing library of StackScripts."
 tab_group_main:
     is_root: true
