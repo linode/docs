@@ -11,7 +11,7 @@ published: 2019-02-01
 modified: 2019-02-01
 modified_by:
   name: Linode
-title: "Troubleshooting SSH Guide | Linode"
+title: "Troubleshooting SSH Guide"
 aliases: ['/troubleshooting/troubleshooting-ssh/']
 ---
 
