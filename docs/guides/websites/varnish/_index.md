@@ -5,7 +5,7 @@ author:
 keywords: ["varnish", "cache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2014-09-09
-title: Varnish Web Cache & NGINX Configuration Guides | Linode
+title: 'Varnish Web Cache and NGINX Configuration Guides'
 show_in_lists: true
 aliases: ['/websites/varnish/']
 ---
