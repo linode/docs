@@ -1,5 +1,5 @@
 ---
-title: 'Tools & Reference Guides | Linode'
+title: 'Tools & Reference Guides'
 show_on_frontpage: true
 title_short: "Tools & Reference"
 weight: 150
