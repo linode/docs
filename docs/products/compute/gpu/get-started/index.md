@@ -1,5 +1,5 @@
 ---
-title: "Get Started with GPU Linodes | Linode"
+title: 'Get Started with Linode GPUs'
 description: "Learn how to deploy a GPU Compute Instance on Linode."
 tab_group_main:
     weight: 20
