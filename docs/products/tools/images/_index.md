@@ -1,5 +1,5 @@
 ---
-title: Deploy Preconfigured Systems with Images | Linode
+title: 'Deploy Preconfigured Systems with Images'
 description: "Custom Images allow for rapid deployments of preconfigured disks to new or existing Compute Instances. They can be easily created by capturing a disk on an existing Instnace or uploading an image file."
 keywords: ["linode Images", "imagize"]
 tags: ["linode platform","cloud manager"]
