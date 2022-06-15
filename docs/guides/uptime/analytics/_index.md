@@ -7,7 +7,7 @@ keywords: ["statistics", "analytics", "stats", "piwik"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/analytics/','/uptime/analytics/']
 published: 2010-03-01
-title: Uptime Analytics Tools | Linode
+title: 'Uptime Analytics Tools'
 show_in_lists: true
 ---
 
