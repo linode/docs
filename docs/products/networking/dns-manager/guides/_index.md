@@ -1,5 +1,5 @@
 ---
-title: Guides For Linode's DNS Manager | Linode
+title: 'Guides For Linode's DNS Manager'
 description: "Learn the basics of adding and managing Domains and DNS records using the DNS manager. You can also find guides that take a deep dive into DNS records, common DNS configurations, and other more advanced topics."
 tab_group_main:
     weight: 30
