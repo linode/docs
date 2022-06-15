@@ -7,6 +7,6 @@ keywords: ["docker compose", "container", "docker", "drupal"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-05
 show_in_lists: true
-title: Docker Compose Configuration Guides | Linode
+title: 'Docker Compose Configuration Guides'
 aliases: ['/websites/cms/drupal/docker-drupal/']
 ---
