@@ -6,7 +6,7 @@ description: 'Squid Proxy/Cache is a versatile piece of software with a variety 
 keywords: ["networking", "sqiud", "proxy", "cache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2014-06-20
-title: 'Squid Proxy/Cache Installation Guides | Linode'
+title: 'Squid Proxy/Cache Installation Guides'
 show_in_lists: true
 aliases: ['/web-servers/squid/']
 ---
