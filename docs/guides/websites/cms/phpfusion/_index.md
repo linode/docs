@@ -7,7 +7,7 @@ og_description: "PHP Fusion is a lightweight content management system built on 
 keywords: ["php fusion", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01
-title: PHP Fusion Configuration Guides | Linode
+title: 'PHP Fusion Configuration Guides'
 show_in_lists: true
 aliases: ['/websites/cms/phpfusion/']
 ---
