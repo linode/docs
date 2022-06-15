@@ -7,7 +7,7 @@ keywords: ["bulletin board", "boards", "forums", "phpbb", "smf"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/forums/','/web-applications/bulletin-boards/']
 published: 2010-03-01
-title: Discuission Forums Installation Guides | Linode
+title: 'Discussion Forums Installation Guides'
 show_in_lists: true
 ---
 
