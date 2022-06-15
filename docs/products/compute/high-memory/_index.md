@@ -1,5 +1,5 @@
 ---
-title: Confiugration Guides for High Memory Linodes | Linode
+title: 'Configuration Guides for High Memory Linode'
 description: "High Memory Linodes offer cost-effective fast data retrieval and in-memory processing."
 toc: true
 tab_group_main:
