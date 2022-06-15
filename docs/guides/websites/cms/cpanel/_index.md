@@ -7,7 +7,7 @@ og_description: "cPanel is a commercial web-based control panel for server syste
 keywords: ["cPanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01
-title: cPanel Control Panel Guides | Linode
+title: 'cPanel Control Panel Guides'
 show_in_lists: true
 aliases: ['/websites/cms/cpanel/']
 ---
