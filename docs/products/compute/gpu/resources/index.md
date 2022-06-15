@@ -1,5 +1,5 @@
 ---
-title: Resources for GPU Linodes | Linode
+title: 'Resources for Linode GPUs'
 description: "Resources and other information related to GPU instances including videos, blog posts, community posts, ebooks, and press releases."
 tab_group_main:
     weight: 40
