@@ -7,7 +7,7 @@ og_description: "ISPConfig is an open-source control panel similar to proprietar
 keywords: ["ispconfig", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01
-title: ISPConfig Control Panel Configuration | Linode
+title: 'ISPConfig Control Panel Configuration'
 show_in_lists: true
 aliases: ['/websites/cms/ispconfig/']
 ---
