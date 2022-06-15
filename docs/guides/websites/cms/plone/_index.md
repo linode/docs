@@ -7,7 +7,7 @@ og_description: "Plone is an advanced system for managing complex and content ri
 keywords: ["plone", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01
-title: Manage Web Content with Plone | Linode
+title: 'Manage Web Content with Plone'
 show_in_lists: true
 aliases: ['/websites/cms/plone/']
 ---
