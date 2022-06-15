@@ -1,5 +1,5 @@
 ---
-title: Linode Billing Developer Resources | Linode
+title: 'Linode Billing Developer Resources'
 description: "Linode Billing is managed easily with developer tools like the Linode API or CLI."
 tab_group_main:
     weight: 50
