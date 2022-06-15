@@ -7,7 +7,7 @@ keywords: ["e-commerce", "online store", "store", "shopping cart", "magento", "o
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/ecommerce/','/web-applications/e-commerce/']
 published: 2010-03-01
-title: 'e-Commerce System Installation Guides | Linode'
+title: 'e-Commerce System Installation Guides'
 show_in_lists: true
 ---
 
