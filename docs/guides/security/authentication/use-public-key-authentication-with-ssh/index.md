@@ -62,7 +62,7 @@ But to carry this encryption and decryption, there is an algorithm that runs in 
 
 When you sign a message, you allow others to decrypt the message as well. But when the receiver decrypts this message, they can safely and securely validate that the communication is in fact from you. To match these keys and validate, you use an algorithm like [Diffie-Hellman](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange).
 
-### The authorized_keys File
+### The Authorized Keys File
 
 In order for your Linux server to recognize and accept your key pair, you must upload your public key to your server. More specifically, you must upload your public key to the home directory of the user you would like to log in as. If you would like to log in to more than one user on the server using your key pair, you must add your public key to each of those users.
 
