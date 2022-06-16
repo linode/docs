@@ -2179,7 +2179,7 @@ wasn
 wasm
 wav
 wazuh
-wchar
+wchar_t
 webadmin
 webalizer
 webapp
