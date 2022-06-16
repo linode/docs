@@ -2179,6 +2179,7 @@ wasn
 wasm
 wav
 wazuh
+wchar
 webadmin
 webalizer
 webapp
