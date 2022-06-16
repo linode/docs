@@ -42,7 +42,7 @@ To connect direct to the database from a command-line, you can use the [MongoDB 
 
 1.  Use the `mongosh` command below to connect to your database, replacing `[username]` and `[host]` with the corresponding values in the [Connection Details](#view-connection-details) section. You must also download the CA certificate file for the database and replace `[certificate]` with the path and filename of that certificate.
 
-    -   **Standalone (single node)**
+    -   **Standalone cluster (single node)**
 
             mongosh "mongodb://[username]@[host]:27017" --password --tls --tlsCAFile=[certificate]
 
@@ -96,7 +96,6 @@ If you do not currently have the MongoDB Shell installed on your system, the app
 
             sudo cp mongosh /usr/local/bin/
             sudo cp mongosh_crypt_v1.so /usr/local/lib/
-
 
 ## Connect Using MongoDB Compass (GUI)
 
