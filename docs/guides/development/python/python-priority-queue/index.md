@@ -1,17 +1,15 @@
 ---
 slug: python-priority-queue
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide discusses priority queues and the PriorityQueue class in Python 3. This data structure allows developers to sort items in a queue and return them in a desired order.'
-og_description: 'This guide discusses priority queues and the PriorityQueue class in Python 3. This data structure allows developers to sort items in a queue and return them in a desired order.'
+  name: Jeff Novotny
+description: 'This guide discusses priority queues and the PriorityQueue class in Python 3. This data structure allows you to sort items in a queue and return them in a desired order.'
 keywords: ['python queue','python priority queue','queue in python','get size of priority queue python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-15
+published: 2022-06-17
 modified_by:
   name: Linode
-title: "How to Order Items in a Queue in Python with PriorityQueue | Linode"
-h1_title: "How to Order Items in a Queue in Python with PriorityQueue | Linode"
+title: "How to Order Items in a Queue in Python with PriorityQueue"
+h1_title: "How to Order Items in a Queue in Python with PriorityQueue"
 enable_h1: true
 contributor:
   name: Jeff Novotny
@@ -25,31 +23,21 @@ external_resources:
 
 In Python, queues are frequently used to process items using a *first in first out* (FIFO) strategy. However, it is often necessary to account for the priority of each item when determining processing order. A queue that retrieves and removes items based on their priority as well as their arrival time is called a [*priority queue*](https://en.wikipedia.org/wiki/Priority_queue). Prioritization can be complicated, but fortunately Python priority queues can be easily and efficiently implemented using a built-in module. This guide introduces the Python priority queue and explains how to implement it in Python 3.
 
-## Before You Begin
-
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
-
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
-
 ## Queues in Python
 
 ### What is a Queue?
 
-A queue is a fundamental programming data structure. Data structures are used to organize, manage, and store data. They make programs easier to understand and write, and often faster and more reliable too.
+A queue is a fundamental [programming data structure](/docs/guides/data-structure/). Data structures are used to organize, manage, and store data. They make programs easier to understand and write, and often faster and more reliable too.
 
-A queue conceptually represents data items as an ordered list. Items are removed from the list in the same order they arrived. Queues are a familiar concept in everyday life. Every time a group of people line up for something, they form a queue. For instance, a line up at a bank or a coffee shop is a queue. The first person to arrive is at the front of the queue. They are the next person to be served. When a new customer arrives, they join the back of the queue.
+Conceptually, a queue represents data items as an ordered list. Items are removed from the list in the same order they arrived. Queues are a familiar concept in everyday life. Every time a group of people line up for something, they form a queue. For instance, a line of people at a bank or a coffee shop is a queue. The first person to arrive is at the front of the queue. They are the next person to be served. When a new customer arrives, they join the back of the queue.
 
-In computer terms, queues are serviced using *push* and *pop* operations. Items are pushed onto the queue and are popped from the queue when they are due to be processed. The pop operation typically removes the item from the queue. However, it is sometimes possible to *peek* at the entry at the front of the queue without removing it.
+In computer terms, queues are serviced using *push* and *pop* operations. Items are pushed onto the queue and are popped from the queue when they are due to be processed. The pop operation typically removes the item from the queue. However, it is sometimes possible to *peek* at the entry located at the front of the queue without removing it.
 
-Python supports queues through its extensive libraries. Built-in classes and routines handle all regular processing. Developers only have to create a queue object and call the methods to add new items and remove the oldest entries. Queues are usually the best choice for activities including scheduling tasks and processing incoming requests.
+Python supports queues through its extensive libraries. Built-in classes and routines handle all regular processing. You only have to create a queue object and call the methods to add new items and remove the oldest entries. Queues are usually the best choice for activities including scheduling tasks and processing incoming requests.
 
 The following example illustrates how queues operate on actual data.
 
-- To start, items `A`, `B`, `C`, and `D` arrive in this order. All four items are added to the queue in the order they arrive.
+- To start, items `A`, `B`, `C`, and `D` arrive in the presented order. All four items are added to the queue in the order they arrive.
 - At this point, an item is chosen for processing. Item `A` is selected and removed from the queue. It is chosen because it arrived first and is at the front of the queue.
 - Next, item `E` arrives. It is added to the back of the queue.
 - Two more items are selected and removed. Items `B` and `C` are retrieved because they occupy the first two positions of the queue.
@@ -63,7 +51,7 @@ Queues are efficient in Python because they are implemented as heaps. A heap is 
 
 The two types of heaps are *max heaps* and *min heaps*. In a max heap, the value stored in the parent node is greater than the value stored in any of its child nodes. A min heap works in the opposite manner. The parent node contains a smaller value than any of its children. This relationship holds for each node at every level of the heap. This means values get progressively smaller at each lower layer in a max heap, or greater in a min heap.
 
-Heaps are a very efficient method for manipulating ordered data. They are particularly useful for retrieving the item with the highest or lowest value. In general, the algorithms used on a heap have either a constant or a logarithmic time complexity. This is very good because algorithmic growth increases fairly slowly as the size of the data set increases. And of course constant-time algorithms do not increase at all.
+Heaps are a very efficient method for manipulating ordered data. They are particularly useful for retrieving the item with the highest or lowest value. In general, the algorithms used on a heap have either a constant or a [logarithmic time complexity](https://en.wikipedia.org/wiki/Time_complexity#Logarithmic_time). This is very good because algorithmic growth increases fairly slowly as the size of the data set increases. And, of course, [constant-time algorithms](https://en.wikipedia.org/wiki/Time_complexity#Constant_time) do not increase at all.
 
 {{< note >}}
 In computer science, [Big O notation](https://en.wikipedia.org/wiki/Big_O_notation) is used to describe how execution time increases with the size of the data set. Most heap operations have an O(log n) time complexity.
@@ -83,7 +71,7 @@ In computing situations, multi-threaded operating systems use priority queues. H
 
 ## The Python Priority Queue Class
 
-It is possible for Python developers to build their own priority queues using Python lists. However, it is better to use the built-in `PriorityQueue` class. This class supports all of the basic functions such as `put` and `get` in a very efficient manner. Python automatically inserts and removes entries based on their priority and maintains the internal structure of the queues.
+In Python, it is possible to build your own priority queues using Python lists. However, it is better to use the built-in `PriorityQueue` class. This class supports all of the basic functions such as `put` and `get` in a very efficient manner. Python automatically inserts and removes entries based on their priority and maintains the internal structure of the queues.
 
 A Python priority queue always removes and returns the highest-priority item in the queue. If two items have the same priority, Python removes the item that arrived first. For a tuple having both priority and data fields, Python first compares the priority and then the data item.
 
@@ -129,9 +117,9 @@ The `PriorityQueue` interface is fairly straightforward to use. The following li
 
 - **empty**: This function returns `True` if the queue is empty and contains no items. Otherwise, it returns `False`. This function is often used to determine if more `get` operations are required to service the queue.
 - **full**: This function returns `True` if the queue has reached its maximum size and has no more space for additional entries. A queue can typically only reach full capacity if a size limit has been configured. Otherwise, the queue size is bounded only by available memory.
-- **get**: This removes and returns the highest priority item from the queue. Additional parameters can be supplied indicating whether Python should block waiting for an item and how long it must wait. The default for the `block` parameter is `True`, while `timeout` defaults to `None`. By default, a `get` request blocks forever waiting for the next item to arrive.
+- **get**: This removes and returns the highest priority item from the queue. Additional parameters can be supplied indicating whether Python should block waiting for an item and how long it must wait. The default for the `block` parameter is `True`, while `timeout` defaults to `None`. By default, a `get` request blocks waiting forever for the next item to arrive.
 - **maxsize**: This method returns the maximum size of the queue. If there is no maximum size, it returns `0`.
-- **put**: This method adds an item with the specified priority to the priority queue. Developers can add either a single value to function as the priority, or a tuple in the form `(priority_number, data)`. A Python tuple is an ordered and immutable list. Similar to the `get` method, `block` and `timeout` parameters can be passed to the method. The defaults are `True` and `None`. If the queue is full, the `put` method blocks until it times out waiting for a slot to become available.
+- **put**: This method adds an item with the specified priority to the priority queue. Developers can add either a single value to function as the priority, or a tuple in the form `(priority_number, data)`. A Python tuple is an ordered and immutable list. Similarly to the `get` method, `block` and `timeout` parameters can be passed to the method. The defaults are `True` and `None`. If the queue is full, the `put` method blocks until it times out waiting for a slot to become available.
 - **qsize**: This method returns the number of items currently in the queue.
 
 {{< note >}}
@@ -144,23 +132,23 @@ A queue can be deleted using the `del` command.
 
 ### An Example of a Python Priority Queue
 
-This example demonstrates how to implement a priority queue for airline passengers in Python using the `PriorityQueue` class. It explains how to create a queue, how to add and remove new entries, and how to remove all remaining items from the queue.
+The example in this section demonstrates how to implement a Python priority queue for airline passengers using the `PriorityQueue` class. It explains how to create a queue, how to add and remove new entries, and how to remove all remaining items from the queue.
 
 1.  Import the `PriorityQueue` package from the `queue` module.
 
         from queue import PriorityQueue
 
-2.  Create a Python `PriorityQueue`, assigning the variable `q` to the object.
+1.  Create a Python `PriorityQueue`, assigning the variable `q` to the object.
 
         q = PriorityQueue()
 
-3.  Create three passengers using the `put` command. Customer Smith is in the business class, which is class 2, while customer Jones is in first class, designated as priority 1. The customer Wilson is in "standby" class 4. Each item is entered as a tuple, containing the priority along with the name of the customer. The tuple is enclosed in parentheses and is the only parameter to the command.
+1.  Create three passengers using the `put` method. Customer Smith is in the business class, which is class 2, while customer Jones is in first class, designated as priority 1. The customer Wilson is in "standby" class 4. Each item is entered as a tuple, containing the priority along with the name of the customer. The tuple is enclosed in parentheses and is the only parameter passed to the `put()` method.
 
         q.put((2, "Smith"))
         q.put((1, "Jones"))
         q.put((4, "Wilson"))
 
-4. Remove customer Jones, who is the highest priority customer from the queue. Even though Jones arrived after Smith, they have the highest priority because they are in class `1`.
+1. Remove customer Jones, who is the highest priority customer from the queue. Even though Jones arrived after Smith, they have the highest priority because they are in class `1`.
 
         next = q.get()
         print(next)
@@ -169,7 +157,7 @@ This example demonstrates how to implement a priority queue for airline passenge
 (1, 'Jones')
     {{< /output >}}
 
-5. It is sometimes helpful to verify whether the queue is empty or it is full. The `empty` method should return `False` because two entries still remain. In practice, the queue is of unlimited size, so `full` is `False` too.
+1. It is sometimes helpful to verify whether the queue is empty or if it is full. The `empty` method should return `False` because two entries still remain. In practice, the queue is of unlimited size, so `full` is `False` too.
 
         print(q.empty())
 
@@ -183,11 +171,11 @@ False
 False
     {{< /output >}}
 
-6.  Add customer Collins to the queue with "standard" class priority 3.
+1.  Add customer Collins to the queue with "standard" class priority 3.
 
         q.put((3, "Collins"))
 
-7.  Remove the next customer from the queue. This is customer Smith.
+1.  Remove the next customer from the queue. This is customer Smith.
 
         print(q.get())
 
@@ -195,21 +183,21 @@ False
 (2, 'Smith')
     {{< /output >}}
 
-8.  To remove all remaining entries from the priority queue, use a `while` loop. At the loop entrance, confirm whether the loop is empty or not. If the `empty` method returns false, then there are still entries remaining. In this scenario, the `get` method extracts the highest priority item from the queue. Collins has a higher priority and is popped from the queue before Wilson is.
+1.  To remove all remaining entries from the priority queue, use a `while` loop. At the loop entrance, confirm whether the loop is empty or not. If the `empty` method returns false, then there are still entries remaining. In this scenario, the `get` method extracts the highest priority item from the queue. Collins has a higher priority and is popped from the queue before Wilson is.
 
     {{< note >}}
-If `get` is used on an empty queue with default settings, it blocks until an item is available. To avoid deadlocks, it is important to either set the `block` parameter to `False` or to first verify whether the queue still contains more items.
+If `get` is used on an empty queue with default settings, it is blocked until an item is available. To avoid deadlocks, it is important to either set the `block` parameter to `False` or to first verify whether the queue still contains more items.
     {{< /note >}}
 
         while not q.empty():
-        <tab>print(q.get())
+            print(q.get())
 
     {{< output >}}
 (3, 'Collins')
 (4, 'Wilson')
     {{< /output >}}
 
-9.  At this point, the queue should be empty.
+1.  At this point, the queue should be empty.
 
         print(q.empty())
 
@@ -217,13 +205,11 @@ If `get` is used on an empty queue with default settings, it blocks until an ite
 True
     {{< /output >}}
 
-These instructions can be combined together to form the program `pri_queue.py`. To run this program, use the `python3` command.
+These instructions can be combined together to form the program `pri_queue.py`.
 
 {{< caution >}}
-Do not name this program `queue.py`. This would shadow the actual `queue` module and hide the actual interface. This bug generates the error `ImportError: cannot import name 'priorityQueue' from partially initialized module 'queue'` at runtime.
+Do not name this program `queue.py`. This would conflict with the actual `queue` module and hide the actual interface. This bug generates the error `ImportError: cannot import name 'priorityQueue' from partially initialized module 'queue'` at runtime.
 {{< /caution >}}
-
-    python3 pri_queue.py
 
 {{< file "pri_queue.py" python >}}
 from queue import PriorityQueue
@@ -248,21 +234,25 @@ while not q.empty():
 print(q.empty())
 {{< /file >}}
 
+You can run the file with the following command:
+
+    python3 pri_queue.py
+
 ### Getting the Size of a Priority Queue in Python
 
 To get the size of a Python queue, use the `qsize` command. The following example demonstrates how to determine the size of any queue in Python.
 
-1.  Similar to the previous example, import the `PriorityQueue` class and create a `PriorityQueue` object.
+1.  Similarly to the previous example, import the `PriorityQueue` class and create a `PriorityQueue` object.
 
         from queue import PriorityQueue
         q = PriorityQueue()
 
-2.  Add a couple of items to the queue with different priorities using the `put` routine.
+1.  Add a couple of items to the queue with different priorities using the `put` routine.
 
         q.put(3)
         q.put(20)
 
-3.  Verify the size of the priority queue using Python's `qsize` method.
+1.  Verify the size of the priority queue using Python's `qsize` method.
 
         print(q.qsize())
 
@@ -270,7 +260,7 @@ To get the size of a Python queue, use the `qsize` command. The following exampl
 2
     {{< /output >}}
 
-4.  Add a new item to the queue and confirm the queue size again. It has increased to `3`.
+1.  Add a new item to the queue and confirm the queue size again. It has increased to `3`.
 
         q.put(11)
         print(q.qsize())
@@ -279,7 +269,7 @@ To get the size of a Python queue, use the `qsize` command. The following exampl
 3
     {{< /output >}}
 
-5.  Remove an item from the queue using the `get` command. The `qsize` routine confirms the queue size is back to `2`.
+1.  Remove an item from the queue using the `get` command. The `qsize` routine confirms the queue size is back to `2`.
 
         q.get()
         print(q.qsize())
@@ -288,7 +278,7 @@ To get the size of a Python queue, use the `qsize` command. The following exampl
 2
     {{< /output >}}
 
-## Concluding Thoughts about Priority Queues in Python
+## Conclusion
 
 Python queues are an important data structure that processes a list of items in a FIFO manner. Although traditional queues follow a strict FIFO algorithm, Python priority queues are able to prioritize the list entries. This allows high priority entries to be processed before lower-priority items that arrived earlier.
 
