@@ -34,7 +34,7 @@ BitNinja requires a valid license to use the software beyond the initial 7 day [
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7, Debian 11, Debian 10, Ubuntu 20.04 LTS, Ubuntu 18.04 LTS
+- **Supported distributions:** CentOS 7, Debian 11, Debian 10, Ubuntu 20.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### BitNinja Options

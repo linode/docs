@@ -37,7 +37,7 @@ A license is required to use uTunnel. See [uTunnel's Pricing page](https://www.u
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 18.04 LTS
+- **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment

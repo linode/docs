@@ -36,7 +36,7 @@ This guide shows you how to get started with CouchDB using its web interface—*
 1. Install CouchDB. Follow the instructions in the guide on [How to Install CouchDB on Ubuntu 20.04](/docs/guides/install-couchdb-20-on-ubuntu/).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Access the Fauxton Web Interface

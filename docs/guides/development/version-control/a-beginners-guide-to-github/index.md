@@ -25,7 +25,7 @@ The Write For Linode freelance contributor program offers payment for new guides
 
 ## Before You Begin
 
-This guide assumes that you've signed up for a [GitHub account](https://www.github.com), and that you've followed the sections for installing and configuring Git on your local machine contained within our [Git Source Control Management](/docs/development/version-control/how-to-install-git-on-mac-and-windows/) guide.
+This guide assumes that you've signed up for a [GitHub account](https://www.github.com), and that you've followed the sections for installing and configuring Git on your local machine contained within our [Git Source Control Management](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) guide.
 
 This guide will also use [Hugo](https://gohugo.io) to create a new guide within the Linode library's repository, and Node.js and NPM to build a local development version of Linode's documentation website. Please visit the [Install Hugo](https://github.com/linode/docs/blob/develop/CONTRIBUTING.md#install-hugo) and [Install Node and NPM](https://github.com/linode/docs/blob/develop/CONTRIBUTING.md#install-node-and-npm) sections of our [CONTRIBUTING.md](https://github.com/linode/docs/blob/develop/CONTRIBUTING.md) for installation instructions of those dependencies.
 
@@ -120,7 +120,7 @@ nothing to commit, working directory clean
 
 ### Creating Your First Guide
 
-Using your preferred text editor, you should now be able to edit and create documents within your new branch. When writing your guide, you can refer to the [Linode Writer's Formatting Guide](/docs/linode-writers-formatting-guide/) for help with the format of your guide and the styling of your text. Also note that our site uses the [Hugo](https://gohugo.io/) static site generator to render the website, and Hugo offers several features to enhance your Markdown files. These features are covered in our formatting guide.
+Using your preferred text editor, you should now be able to edit and create documents within your new branch. When writing your guide, you can refer to the [Linode Writer's Formatting Guide](/docs/guides/linode-writers-formatting-guide/) for help with the format of your guide and the styling of your text. Also note that our site uses the [Hugo](https://gohugo.io/) static site generator to render the website, and Hugo offers several features to enhance your Markdown files. These features are covered in our formatting guide.
 
 1.  When creating your guide, first determine where it should be located within the docs website's directory structure. For example, to create a new guide in the [https://www.linode.com/docs/guides/kubernetes/](https://www.linode.com/docs/guides/kubernetes/) section, you would create your guide within the `docs/guides/kubernetes/` subfolder inside your repository.
 

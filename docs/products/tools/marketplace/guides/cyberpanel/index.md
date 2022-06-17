@@ -31,7 +31,7 @@ aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 8, CentOS 7, Ubuntu 18.04, and Ubuntu 20.04
+- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used with CyberPanel.
 
 ## Getting Started after Deployment
