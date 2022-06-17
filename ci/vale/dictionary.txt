@@ -496,6 +496,7 @@ dsn
 du
 duf
 ducati
+dumpall
 dust2
 dvcs
 e2fsck
@@ -1240,6 +1241,7 @@ mongodb
 mongod
 mongodump
 mongoimport
+mongorestore
 mongosh
 monit
 monitorix
@@ -1482,6 +1484,9 @@ permalink
 permalinks
 Petazzoni
 pflogsumm
+pg_dump
+pg_dumpall
+pg_restore
 pgpass
 pharmer
 pharo
