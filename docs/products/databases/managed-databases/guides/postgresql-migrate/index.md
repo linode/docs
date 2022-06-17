@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 title: "Migrate a PostgreSQL Database to a Managed Database"
 description: "Learn how to migrate an existing PostgreSQL database to Linode's Managed Database service."
-published: 2022-06-16
+published: 2022-06-17
 ---
 
 This guide covers how to migrate an existing PostgreSQL database to a Managed Database. When migrating a database, there are two important terms to keep in mind: the *source* database and the *target* database.
