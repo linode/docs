@@ -19,7 +19,7 @@ tags: ["dns","networking"]
 
 Previewing your website before updating your domain's nameservers allows you to stage and test your setup without redirecting viewers from your live site running on your old host. This is done with an entry to your local system's hosts file.
 
-A hosts file is used to map specific hostnames to IP addresses, and takes precedence over name resolution provided by DNS queries. By manually specifying an IP/hostname pair, web traffic sent to the given domain is directed to the given IP address, regardless of the domain's actual A records. If these terms are unfamiliar, see our [DNS](/docs/networking/dns/dns-records-an-introduction/) guide for more information.
+A hosts file is used to map specific hostnames to IP addresses, and takes precedence over name resolution provided by DNS queries. By manually specifying an IP/hostname pair, web traffic sent to the given domain is directed to the given IP address, regardless of the domain's actual A records. If these terms are unfamiliar, see our [DNS](/docs/guides/dns-records-an-introduction/) guide for more information.
 
 ## Find Your Linode's IP Address
 
