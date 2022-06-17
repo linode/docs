@@ -93,7 +93,19 @@ To install Hugo, download the appropriate binary for your system, extract it, an
 
         mv hugo /usr/local/bin
 
-1. Test hugo by running `hugo verison`. This should output a long string indicating that version 0.83.1 is being used. If not, review the prior steps and the [Install Hugo from Tarball](https://gohugo.io/getting-started/installing/#install-hugo-from-tarball) section of the Hugo documentation.
+    You may need to use `sudo` to run this command successfully:
+
+        sudo mv hugo /usr/local/bin
+
+    If you do not have permission to move the file to one of the system folders, you can instead add it to a location in your home directory and then set that location in your PATH:
+
+        mkdir ~/bin
+        mv hugo ~/bin
+        export PATH=$HOME/bin:$PATH
+
+    Make sure to also add the final `export PATH` line in the above snippet to your terminal's configuration file, like `~/.zshrc` on macOS.
+
+1. Test hugo by running `hugo version`. This should output a long string indicating that version 0.83.1 is being used. If not, review the prior steps and the [Install Hugo from Tarball](https://gohugo.io/getting-started/installing/#install-hugo-from-tarball) section of the Hugo documentation.
 
 #### Windows
 
