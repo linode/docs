@@ -61,7 +61,7 @@ Linode's [Cloud Manager](https://cloud.linode.com/) is the primary gateway to ou
 
 - [Account](https://cloud.linode.com/account/billing): View your account, billing information, payment methods, and previous invoices. You can also add additional users to your account.
 
-- [Help & Support](https://cloud.linode.com/support): Search through our guides, find answers on the Community Site, chat with our Support Bot, or open a ticket to reach our 24/7 award-winning [Support Team](https://www.linode.com/support-experience/).
+- [Help & Support](https://cloud.linode.com/support): Search through our guides, find answers on the Community Site, or open a ticket to reach our 24/7 award-winning [Support Team](https://www.linode.com/support-experience/).
 
 For a full overview of the Cloud Manager and its core features, see the [Overview of the Cloud Manager](/docs/guides/an-overview-of-the-linode-cloud-manager/) guide.
 

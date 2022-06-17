@@ -37,7 +37,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         sudo apt update
 
     {{< note >}}
-The Linode kernel does not support SELinux by default. If the system is running a Linode kernel, you need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/platform/how-to-change-your-linodes-kernel/) for more steps. Once the kernel is set to the upstream kernel, continue with the steps in this guide.
+The Linode kernel does not support SELinux by default. If the system is running a Linode kernel, you need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once the kernel is set to the upstream kernel, continue with the steps in this guide.
     {{</ note >}}
 1. Install [MySQL/MariaDB on Ubuntu](/docs/guides/install-mysql-on-ubuntu-14-04)
 
@@ -280,4 +280,4 @@ If you wish to permanently disable SELinux even when the system reboots, make ch
 And, now if you restart the system, SELinux and its policies won’t be in place anymore.
 
 ## Next Steps
-After installing SELinux on the system, use the [Getting Started with SELinux Guide](/docs/security/getting-started-with-selinux/) to learn the basics of SELinux security.
+After installing SELinux on the system, use the [Getting Started with SELinux Guide](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) to learn the basics of SELinux security.

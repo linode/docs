@@ -28,7 +28,7 @@ relations:
 [Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers, with free and paid versions available. This guide provides information to install Multicraft on a Linode running Ubuntu 20.04 LTS.
 
 {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps required in this guide require root privileges. Be sure to run the steps as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites

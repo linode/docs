@@ -14,7 +14,7 @@ modified_by:
 published: 2015-03-26
 title: 'Email with Postfix, Dovecot and MariaDB on CentOS 7'
 external_resources:
- - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/email/postfix/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
+ - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/guides/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
  - '[Postfix SASL Howto](http://www.postfix.org/SASL_README.html)'
  - '[Dovecot Wiki](https://wiki2.dovecot.org/)'
@@ -34,7 +34,7 @@ For a different Linux distribution or different mail server, review our [email t
 
 1.  Verify that the iptables [firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
 
-1. Review the concepts in the [Running a Mail Server](/docs/email/running-a-mail-server/) guide.
+1. Review the concepts in the [Running a Mail Server](/docs/guides/running-a-mail-server/) guide.
 
 ## Configure DNS
 
@@ -722,7 +722,7 @@ You can set up an email client to connect to your mail server. Many clients dete
 -   **SSL:** Incoming and outgoing servers require authentication and SSL encryption.
 -   **Ports:** Use Port `993` for secure IMAP, Port `995` for secure POP3, and Port `587` with SSL for SMTP.
 
-See [Install SquirrelMail on Ubuntu 16.04](/docs/email/clients/install-squirrelmail-on-ubuntu-16-04-or-debian-8/) for details on installing an email client.
+See [Install SquirrelMail on Ubuntu 16.04](/docs/guides/install-squirrelmail-on-ubuntu-16-04-or-debian-8/) for details on installing an email client.
 
 ## Adding New Domains, Email Addresses, and Aliases
 

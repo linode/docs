@@ -70,7 +70,7 @@ port = 5432
 
     ![Supply a local name for your server.](pg-admin-server-name.png)
 
-4.   In the "Connections" tab enter "localhost" for the "Host name/address" field, as you'll be connecting via your SSH tunnel, and set the port to 5433. In the username and password fields, enter the credentials you specified when setting up PostgreSQL.
+4.  In the "Connections" tab enter "localhost" for the "Host name/address" field, as you'll be connecting via your SSH tunnel, and set the port to 5433. In the username and password fields, enter the credentials you specified when setting up PostgreSQL.
 
     For greater security, uncheck the "Save password" box. Click "Save" to connect to your server.
 

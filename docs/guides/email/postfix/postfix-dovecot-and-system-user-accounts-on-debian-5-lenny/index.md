@@ -23,7 +23,7 @@ relations:
 
 
 
-Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/email/postfix/basic-postfix-email-gateway-on-debian-5-lenny/) document to install a more minimal email system.
+Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/guides/basic-postfix-email-gateway-on-debian-5-lenny/) document to install a more minimal email system.
 
 ## Set the Hostname
 
@@ -79,14 +79,14 @@ Issue the following command to start the SASL daemon for the first time:
 
 SSL or TLS provides a method of encrypting the communication between your remote users and your mail servers. While this does not encrypt your email messages from end to end, it does ensure that your login credentials are transmitted securely and that communications are secure between your client machine and the email server.
 
-Issue the following sequence of commands to install the prerequisites and [generate a self-signed SSL certificate](/docs/security/ssl/create-a-self-signed-tls-certificate/):
+Issue the following sequence of commands to install the prerequisites and [generate a self-signed SSL certificate](/docs/guides/create-a-self-signed-tls-certificate/):
 
     apt-get install openssl
     openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/ssl/postfix.pem -keyout /etc/ssl/postfix.key
 
 Be sure to generate a certificate with a "Common Name" that corresponds to the host name that your users will connect your mail server (e.g. `mail.example.com`).
 
-Mail clients may have an issue with certificates generated in this manner because they are not signed by a recognized certificate authority. Consider our documentation for generating [commercial SSL certificates](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate/) if you need a commercially verified certificate.
+Mail clients may have an issue with certificates generated in this manner because they are not signed by a recognized certificate authority. Consider our documentation for generating [commercial SSL certificates](/docs/guides/obtain-a-commercially-signed-tls-certificate/) if you need a commercially verified certificate.
 
 You can use any SSL certificate with Postfix. If you already have a commercial certificate or another SSL certificate for your web server, you can use these `.pem` and `.key` files.
 
@@ -126,9 +126,9 @@ When all modifications to the Postfix configuration are complete, issue the foll
 
     /etc/init.d/postfix restart
 
-At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/docs/tools-reference/linux-users-and-groups/).
+At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/docs/guides/linux-users-and-groups/).
 
-Consider the [basic email gateway guide](/docs/email/postfix/basic-postfix-email-gateway-on-debian-5-lenny/) for more information regarding Postfix virtual hosting configuration. If you need to deliver mail locally, continue for documentation of mail routing and the Dovecot POP3/IMAP server.
+Consider the [basic email gateway guide](/docs/guides/basic-postfix-email-gateway-on-debian-5-lenny/) for more information regarding Postfix virtual hosting configuration. If you need to deliver mail locally, continue for documentation of mail routing and the Dovecot POP3/IMAP server.
 
 ### Configure Mail Delivery
 
@@ -236,7 +236,7 @@ Remember that system user accounts may provide access to other services on the s
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Basic Email Gateway with Postfix on Debian 5 (Lenny)](/docs/email/postfix/basic-postfix-email-gateway-on-debian-5-lenny/)
+- [Basic Email Gateway with Postfix on Debian 5 (Lenny)](/docs/guides/basic-postfix-email-gateway-on-debian-5-lenny/)
 
 
 

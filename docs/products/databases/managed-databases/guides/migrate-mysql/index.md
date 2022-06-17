@@ -5,7 +5,7 @@ author:
 title: "Migrate a MySQL or MariaDB Database to a Managed Database"
 description: "Learn how to migrate an existing MySQL database to Linode's Managed Database service."
 published: 2022-02-23
-modified: 2022-03-01
+modified: 2022-06-06
 ---
 
 This guide covers how to migrate an existing MySQL or MariaDB database to a Managed Database. When migrating a database, there are two important terms to keep in mind: the *source* database and the *target* database.
@@ -63,7 +63,7 @@ Alternatively, you can activate a _maintenance mode_ (or whatever it may be call
 
 ## Import the Database
 
-Next, you'll need to import the `.sql` file to your Managed Database (the target database). This process can be accomplished through the mysql command-line tool. Run the following command on a system that has the MySQL client or server software installed. Replace *[host]* and *[username]* with the appropriate values for your database cluster. See the [Connect to a MySQL Database](/docs/products/databases/managed-databases/guides/connect-to-mysql/) guide for additional information and to learn how to view your Managed Database's connection details.
+Next, you'll need to import the `.sql` file to your Managed Database (the target database). This process can be accomplished through the mysql command-line tool. Run the following command on a system that has the MySQL client or server software installed. Replace *[host]* and *[username]* with the appropriate values for your database cluster. See the [Connect to a MySQL Database](/docs/products/databases/managed-databases/guides/mysql-connect/) guide for additional information and to learn how to view your Managed Database's connection details.
 
     mysql -h [host] -u [username] -p < db-backup.sql
 

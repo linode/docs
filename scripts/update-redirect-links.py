@@ -68,7 +68,7 @@ for root, dirs, files in os.walk(alias_directory):
 # ------------------
 
 # The directory to be used when replacing old links
-link_directory = '../docs/guides/platform/'
+link_directory = '../docs/guides/quick-answers/'
 # A list of all links that point to duplicate aliases
 links_to_duplicate_aliases = []
 
@@ -83,6 +83,8 @@ for root, dirs, files in os.walk(link_directory):
 
             # The relative file path of the file
             file_path = os.path.join(root, file)
+
+            print(file_path)
 
             # Iterate through each line of the file
             for i, line in enumerate(open(file_path)):

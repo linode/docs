@@ -34,7 +34,7 @@ JetBackup requires a valid license to use the software beyond the available 10 d
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7, CentOS 8, AlmaLinux 8
+- **Supported distributions:** CentOS 7, AlmaLinux 8
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### JetBackup Options

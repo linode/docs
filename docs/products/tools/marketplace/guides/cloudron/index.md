@@ -34,7 +34,7 @@ Cloudron offers both free and paid plans. Visit [Cloudron's website](https://www
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 18.04 LTS, Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Cloudron Options
