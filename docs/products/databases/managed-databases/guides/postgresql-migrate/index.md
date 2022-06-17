@@ -12,7 +12,7 @@ This guide covers how to migrate an existing PostgreSQL database to a Managed Da
 - **Source database:** The original database running on a software, system, or machine that you wish to decommission. This could be PostgreSQL running within your own Linux server, a development database on your local machine, or even a cloud database.
 - **Target database:** The new replacement database that you wish to use. For this guide, the target database will be a Managed Database running on Linode's platform.
 
-Your individual migration workflow could deviate from the instructions provided here. You may need to consult your own developers or application's documentation to learn how to perform some of these steps and to gather any best practices. You should also perform the migration on a staging server first or during a time when downtime least affects your users and/or business.
+Your individual migration workflow could deviate from the instructions provided here. You may need to consult with your developers or your application's documentation to learn how to perform some of these steps and to gather any best practices. You should also perform the migration on a staging server first and/or during a time when downtime least affects your users and/or business.
 
 ## Before You Begin
 
@@ -48,7 +48,7 @@ Once you've successfully backed up the source database, you can import your data
 
         psql --host=[host] --username=[username] --dbname=postgres --file=roles.backup
 
-    This assumes your database roles backup file is called *roles.backup* and located in your current directory (as per previous steps in this guide). If you used a different filename or path for your backup, replace *roles.backup* as needed in the above command.
+    This assumes your database roles backup file is called *roles.backup* and is located in your current directory (as per previous steps in this guide). If you used a different filename or path for your backup, replace *roles.backup* as needed in the above command.
 
 1.  **Create your database**, making sure that your preferred database name doesn't already exist. If it does, you can drop the database before creating it. In the commands below, replace *[database-name]* with the name of your database and *[host]* and *[username]* with the corresponding [Connection Details](/docs/products/databases/managed-databases/guides/postgresql-connect/#view-connection-details) for your Managed Database.
 

@@ -14,7 +14,7 @@ When migrating a database, there are two important terms to keep in mind: the *s
 - **Source database:** The original database running on a software, system, or machine that you wish to decommission. This could be MongoDB running within your own Linux server, a development database on your local machine, or even a cloud database.
 - **Target database:** The new replacement database that you wish to use. For this guide, the target database will be a Managed Database running on Linode's platform.
 
-Your individual migration workflow could deviate from the instructions provided here. You may need to consult your own developers or application's documentation to learn how to perform some of these steps and to gather any best practices. You should also perform the migration on a staging server first or during a time when downtime least affects your users and/or business.
+Your individual migration workflow could deviate from the instructions provided here. You may need to consult with your developers or your application's documentation to learn how to perform some of these steps and to gather any best practices. You should also perform the migration on a staging server first and/or during a time when downtime least affects your users and/or business.
 
 ## Before You Begin
 
@@ -28,7 +28,7 @@ Your individual migration workflow could deviate from the instructions provided 
 
 ## Install MongoDB Database Tools
 
-MongoDB Database Tools can be download directly from the [MongoDB Download](https://www.mongodb.com/try/download/database-tools) page by selecting your platform and clicking the **Download** button. The latest installation instructions can be found on the [Installing the Database Tools](https://www.mongodb.com/docs/database-tools/installation/installation/) guide.
+MongoDB Database Tools can be downloaded directly from the [MongoDB Download](https://www.mongodb.com/try/download/database-tools) page by selecting your platform and clicking the **Download** button. The latest installation instructions can be found in the [Installing the Database Tools](https://www.mongodb.com/docs/database-tools/installation/installation/) guide.
 
 -   **Windows:**
 
@@ -36,21 +36,21 @@ MongoDB Database Tools can be download directly from the [MongoDB Download](http
 
 -   **macOS:**
 
-    On macOS, MongoDB Database Tools can be installed through [Homebrew](https://brew.sh/). For more instructions, see [Installing the Database Tools on macOS](https://www.mongodb.com/docs/database-tools/installation/installation-macos/)
+    On macOS, MongoDB Database Tools can be installed through [Homebrew](https://brew.sh/). For more instructions, see [Installing the Database Tools on macOS](https://www.mongodb.com/docs/database-tools/installation/installation-macos/).
 
-    1.  Add the [MongoDB formulae repository](https://github.com/mongodb/homebrew-brew) to Homebrew
+    1.  Add the [MongoDB formulae repository](https://github.com/mongodb/homebrew-brew) to Homebrew:
 
             brew tap mongodb/brew
 
-    1.  Install the `mongodb-database-tools` package.
+    1.  Install the `mongodb-database-tools` package:
 
             brew install mongodb-database-tools
 
 -   **Linux:**
 
-    The toolset is available as a .deb (for Ubuntu 20.04 and 18.04), .rpm (for CentOS/RHEL), or as a compressed tarball for nearly any Linux distribution. For more instructions, see [Installing the Database Tools on Linux](https://www.mongodb.com/docs/database-tools/installation/installation-linux/)
+    The toolset is available as a .deb (for Ubuntu 20.04 and 18.04), .rpm (for CentOS/RHEL), or as a compressed tarball for nearly any Linux distribution. For more instructions, see [Installing the Database Tools on Linux](https://www.mongodb.com/docs/database-tools/installation/installation-linux/).
 
-    1.  On the [MongoDB Download Center](https://www.mongodb.com/try/download/database-tools) under the **MongoDB Database Tools** section, select the corresponding x86_64 package for your Linux distribution. Verify that the package is either a *deb* or *rpm*, not *tgz*. Click the **Copy Link** text next to the **Download** button.
+    1.  In the [MongoDB Download Center](https://www.mongodb.com/try/download/database-tools) under the **MongoDB Database Tools** section, select the corresponding x86_64 package for your Linux distribution. Verify that the package is either a *deb* or *rpm*, not *tgz*. Click the **Copy Link** text next to the **Download** button.
 
     1.  Download the file to your Linux system. In the command below, replace *[download-url]* with url you copied in the previous step.
 
@@ -100,6 +100,6 @@ Once you've successfully backed up the source database, you can import your data
 
         mongorestore --username=linroot --host=[replica-set]/[host1]:27017,[host2]:27017,[host3]:27017 --nsInclude="[database-name].*" --ssl --sslCAFile=[certificate-file] --gzip --archive=database.archive
 
-This assumes your database backup file is called *database.archive* and located in your current directory (as per previous steps in this guide). If you used a different filename or path for your backup, replace *database.archive* as needed in the above command.
+This assumes your database backup file is called *database.archive* and is located in your current directory (as per previous steps in this guide). If you used a different filename or path for your backup, replace *database.archive* as needed in the above command.
 
 See the [mongorestore](https://www.mongodb.com/docs/database-tools/mongorestore/) documentation to learn more about the [options](https://www.mongodb.com/docs/database-tools/mongorestore/#options) available for this utility and to view common [examples](https://www.mongodb.com/docs/database-tools/mongorestore/#examples).
