@@ -23,7 +23,7 @@ aliases: ['/email/how-to-create-an-email-server-with-mail-in-a-box/','/email/mai
 
 ![How to Create an Email Server with Mail-in-a-Box](Mail_in_a_box.jpg "How to Create an Email Server with Mail-in-a-Box")
 
-If you chose to host your own email server, but after reading through [Running a Mail Server](/docs/email/running-a-mail-server/) you got discouraged by the complexity of this process, then there's another solution: Mail-in-a-Box. The name is fitting since the software manages to pack everything you need from a mail server, in one single allegorical box. It includes:
+If you chose to host your own email server, but after reading through [Running a Mail Server](/docs/guides/running-a-mail-server/) you got discouraged by the complexity of this process, then there's another solution: Mail-in-a-Box. The name is fitting since the software manages to pack everything you need from a mail server, in one single allegorical box. It includes:
 
 * Postfix, as the *Simple Mail Transfer Protocol* (SMTP) server.
 * Dovecot, as the *Internet Message Access Protocol* (IMAP) server; it's what allows you to sync mail with your phone, read/send messages, delete them, etc.
@@ -101,7 +101,7 @@ At this point you can continue. If you don't see the required data, then come ba
 ## Install Mail-in-a-Box
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 1. After you log in to your server with an SSH client, update all the software packages on your server:
@@ -188,7 +188,7 @@ Since it's very likely that a Let's Encrypt TLS certificate hasn't been installe
 
     ![Control Panel - TLS Certificates Page](mail-in-a-box-control-panel-tls-certificates-ubuntu1404.png)
 
-3. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/networking/dns/configure-your-linode-for-reverse-dns/), to set up a *pointer record* (PTR). Make sure you set it to `box.example.com`. This step is very important to execute and pass some antispam checks. Without it, a lot of mail servers will flag your outbound email as spam and will consider it suspicious that your IP doesn't point to your domain name, and sometimes even reject it.
+3. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/guides/configure-your-linode-for-reverse-dns/), to set up a *pointer record* (PTR). Make sure you set it to `box.example.com`. This step is very important to execute and pass some antispam checks. Without it, a lot of mail servers will flag your outbound email as spam and will consider it suspicious that your IP doesn't point to your domain name, and sometimes even reject it.
 
 ## Conclusion
 

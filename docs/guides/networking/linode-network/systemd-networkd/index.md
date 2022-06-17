@@ -7,6 +7,7 @@ description: "Learn how to configure networking using the systemd-networkd utili
 keywords: ["static", "ip address", "systemd-networkd"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-27
+modified: 2022-06-17
 modified_by:
   name: Linode
 title: "Network Configuration Using systemd-networkd"
@@ -86,7 +87,7 @@ Address=192.0.2.123/24
 
 1.  Once you've edited the configuration file to fit your needs, you need to apply the changes or reboot the Compute Instance. To apply your changes with systemd-networkd, restart the service:
 
-        sudo networkctl reload
+        sudo systemctl restart systemd-networkd
 
 ## Changing the Primary IPv4 Address
 

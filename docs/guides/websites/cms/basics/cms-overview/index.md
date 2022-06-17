@@ -3,7 +3,7 @@ slug: cms-overview
 author:
   name: Linode
   email: docs@linode.com
-description: 'An overview of the three content management systems that Linode supports'
+description: "An overview of the three content management systems that Linode supports"
 keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framwork"]
 tags: ["drupal","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,7 @@ modified: 2017-02-15
 modified_by:
   name: Linode
 published: 2014-10-17
-title: 'Content Management Systems: an Overview'
+title: "Content Management Systems: An Overview"
 aliases: ['/websites/cms/cms-overview/','/websites/cms/basics/cms-overview/']
 ---
 
@@ -30,7 +30,6 @@ A LAMP stack is a System Admin term for a web server using Linux, Apache, MySQL,
 {{< /note >}}
 
 Using a Linode gives you more control and a greater understanding of website administration. Linux and content management systems play a huge role in the open-source world, and now, you can begin learning both.
-
 
 ## Themes and Templates
 
@@ -59,7 +58,6 @@ Joomla works best for intermediate users, and while it lends itself to social co
 Originally built as a blogger platform, [WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress/) is arguably the easiest to use and the most popular. Initially released in 2003, it has grown rapidly since. The WP platform is used for over 60 million websites, and 100,000 new websites are created daily.
 
 WordPress is best for static content. However, WP sites are often built for complex, dynamic solutions because the community is so large and has added so many capabilities. The structure of the company behind WordPress, Automattic, and its philosophy represent the ability for large growth with such an open-source project.
-
 
 ## Next Steps
 

@@ -108,7 +108,7 @@ To keep your server's directory mounted on your system through reboots, create a
 
 ### Set Up Key-Based Authentication for SSH
 
-When setting up a mount listed in `/etc/fstab`, your client system will not be able to accept a password for the SSH connection. Instead, you can use [public/private keypairs](/docs/security/authentication/use-public-key-authentication-with-ssh/) to authenticate with the remote server. This section describes how to create a keypair if you do not already have one.
+When setting up a mount listed in `/etc/fstab`, your client system will not be able to accept a password for the SSH connection. Instead, you can use [public/private keypairs](/docs/guides/use-public-key-authentication-with-ssh/) to authenticate with the remote server. This section describes how to create a keypair if you do not already have one.
 
 {{< caution >}}
 This command will overwrite an existing RSA key pair, potentially locking you out of other systems.
