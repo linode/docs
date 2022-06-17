@@ -51,11 +51,11 @@ Linode Object Storage costs a flat rate of $5 a month, and includes 250 gigabyte
 
 ## Technical Specifications and Considerations
 
-The following limits apply to all buckets within the same data center:
+The following limits apply to all of a customer's buckets combined within the same data center:
 
-- **Storage space:** 10 TB by default, up to a maximum of 50 TB
-- **Number of objects:** 10,000 by default, up to a maximum of 50 million
-- **Number of buckets:** 10 by default, up to a maximum of 1,000
+- **Storage space:** 5 TB
+- **Number of objects:** 50,000,000
+- **Number of buckets:** 1,000
 
 To increase these limits beyond their default values, [contact the Support team](https://www.linode.com/support/) with your request. Be sure to include any details related to your application and requirements.
 
