@@ -34,7 +34,7 @@ This guide will show you how to create your own HTTP proxy using Squid, a highly
 -   Bypass certain regional and local network restrictions.
 
 {{< note >}}
-The traffic passed from your client to your Squid HTTP proxy will not be encrypted and will still be visible on your local network. If you are looking for a solution that offers greater security, you may want to look at our guides on [Setting up an SSH Tunnel](/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) or [Deploy OpenVPN Access Server with Marketplace Apps](/docs/platform/marketplace/marketplace-openvpn/).
+The traffic passed from your client to your Squid HTTP proxy will not be encrypted and will still be visible on your local network. If you are looking for a solution that offers greater security, you may want to look at our guides on [Setting up an SSH Tunnel](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) or [Deploy OpenVPN Access Server with Marketplace Apps](/docs/products/tools/marketplace/guides/openvpn/).
 {{< /note >}}
 
 ## Install Squid
@@ -42,7 +42,7 @@ The traffic passed from your client to your Squid HTTP proxy will not be encrypt
 1.  Secure your Linode by completing the instructions in our guide on [Securing Your Server](/docs/guides/set-up-and-secure/), including adding a limited user account and configuring a firewall.
 
     {{< note >}}
-This guide is written for a limited, non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a limited, non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 1.  Ensure that your system is up-to-date:
@@ -219,7 +219,7 @@ Next, you will enable clients to connect to your Squid HTTP proxy.
 
         sudo ufw allow 3128/tcp
 
-    You can find more information on configuring firewall rules for Debian in our guide on [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/).
+    You can find more information on configuring firewall rules for Debian in our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
 
 ## Connect to your Squid HTTP Proxy
 

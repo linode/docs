@@ -147,7 +147,7 @@ Before transferring data, you may want to place any applications in a *maintenan
 
 ### SFTP (SSH File Transfer Protocol)
 
-SFTP is a standard protocol for securely listing, downloading, and uploading files on remote systems. This is a very user-friendly approach to file transfers. Many desktop applications are available and can be used to transfer data between the original Linode and the new Linode. These applications include [FileZilla](https://filezilla-project.org/) (free, cross-platform), [WinSCP](https://winscp.net/eng/index.php) (free, Windows-only), [Transmit](https://panic.com/transmit/) (paid, macOS-only), and [Forklift](https://binarynights.com/) (paid, macOS-only). See our [FileZilla guide](/docs/tools-reference/file-transfer/filezilla/) for more information.
+SFTP is a standard protocol for securely listing, downloading, and uploading files on remote systems. This is a very user-friendly approach to file transfers. Many desktop applications are available and can be used to transfer data between the original Linode and the new Linode. These applications include [FileZilla](https://filezilla-project.org/) (free, cross-platform), [WinSCP](https://winscp.net/eng/index.php) (free, Windows-only), [Transmit](https://panic.com/transmit/) (paid, macOS-only), and [Forklift](https://binarynights.com/) (paid, macOS-only). See our [FileZilla guide](/docs/guides/filezilla/) for more information.
 
 ### SCP (Secure Copy Protocol)
 
@@ -159,9 +159,9 @@ Databases can be copied in much the same way as files. The major difference is t
 
 -   To create a dump of a MySQL (or MariaDB) database, use the `mysqldump` command. See [Use mysqldump to Back Up MySQL or MariaDB](/docs/guides/use-mysqldump-to-back-up-mysql-or-mariadb/) for instructions on backing up and restoring a database. **You can only use this tool if your database process is accessible and running.**
 
--   If your MySQL database won't run for some reason, follow the instructions for creating [physical backups](/docs/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/).
+-   If your MySQL database won't run for some reason, follow the instructions for creating [physical backups](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
 
--   If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) guide.
+-   If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/guides/how-to-back-up-your-postgresql-database/) guide.
 
 ## Transfer IPv4 Addresses
 

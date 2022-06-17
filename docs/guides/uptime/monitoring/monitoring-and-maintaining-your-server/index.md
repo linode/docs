@@ -36,8 +36,8 @@ Whether you use one Linode or dozens of them, mission-critical servers and servi
 
 There are several different availability monitoring tools available. Your decision should be based on how many servers you'll be monitoring:
 
--   **Multiple Servers**: If you run more than one server, the [Elastic Stack](/docs/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/) is an excellent monitoring tool.
--   **Single Server**: If you only run a single server, you might want to use a third-party service to monitor your Linode. You could also use a network diagnostic tool like [MTR](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) to diagnose and isolate networking errors.
+-   **Multiple Servers**: If you run more than one server, the [Elastic Stack](/docs/guides/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/) is an excellent monitoring tool.
+-   **Single Server**: If you only run a single server, you might want to use a third-party service to monitor your Linode. You could also use a network diagnostic tool like [MTR](/docs/guides/diagnosing-network-issues-with-mtr/) to diagnose and isolate networking errors.
 -   **Linode Managed**: The [Managed](https://www.linode.com/managed) service lets Linode manage your infrastructure and provides incident response around the clock.
 
 ### Configure Shutdown Watchdog
@@ -70,15 +70,15 @@ Important events that occur on your system — things like login attempts or ser
 
 ### Rotate Logs
 
-As more and more events are logged, the log files on your server get bigger and bigger. Left unchecked, those files can start consuming a surprising amount of disk space. You can mitigate this problem by using [logrotate](/docs/uptime/logs/use-logrotate-to-manage-log-files/), a utility that automatically archives and compresses current log files after a certain interval, creates new log files, and deletes old log files after a specified amount of time.
+As more and more events are logged, the log files on your server get bigger and bigger. Left unchecked, those files can start consuming a surprising amount of disk space. You can mitigate this problem by using [logrotate](/docs/guides/use-logrotate-to-manage-log-files/), a utility that automatically archives and compresses current log files after a certain interval, creates new log files, and deletes old log files after a specified amount of time.
 
-Use the [logrotate guide](/docs/uptime/logs/use-logrotate-to-manage-log-files/) to get started.
+Use the [logrotate guide](/docs/guides/use-logrotate-to-manage-log-files/) to get started.
 
 ### Monitor System Logs
 
 It's important to keep an eye on the events recorded in your system logs. But unless you're the type of person who loves scanning through hundreds of lines of log entries, you won't want to open log files unless absolutely necessary. Fortunately, there's an easier way to learn about the most important system events fast. Logwatch is a customizable utility that can automatically parse system logs and email you detailed reports highlighting notable events.
 
-Use the [Logwatch guide](/docs/uptime/monitoring/monitor-systems-logwatch/) to get started.
+Use the [Logwatch guide](/docs/guides/monitor-systems-logwatch/) to get started.
 
 ## Update Software
 
@@ -94,7 +94,7 @@ To check for software updates and install them in Ubuntu or Debian, enter the fo
     apt-get upgrade --show-upgraded
 
 {{< note >}}
-If you're using a distribution other than Ubuntu or Debian, you can learn more about package management by reading our [Linux Package Management guide](/docs/tools-reference/linux-package-management/).
+If you're using a distribution other than Ubuntu or Debian, you can learn more about package management by reading our [Linux Package Management guide](/docs/guides/linux-package-management/).
 {{< /note >}}
 
 There are ways to automate the installation of software updates, but this is not recommended. You should always manually review the lists of available patches before installing updates.

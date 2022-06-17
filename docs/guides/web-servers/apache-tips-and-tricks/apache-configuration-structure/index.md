@@ -16,7 +16,7 @@ title: Apache Configuration Structure
 external_resources:
  - '[Apache Installation](/docs/web-servers/apache/)'
  - '[LAMP Stack Guides](/docs/web-servers/lamp/)'
- - '[Troubleshooting Apache](/docs/troubleshooting/troubleshooting-common-apache-issues/)'
+ - '[Troubleshooting Apache](/docs/guides/troubleshooting-common-apache-issues/)'
 tags: ["web server","apache"]
 ---
 

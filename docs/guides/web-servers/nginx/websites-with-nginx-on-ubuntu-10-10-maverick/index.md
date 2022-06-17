@@ -25,7 +25,7 @@ relations:
 
 Nginx is a lightweight and high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
-Before we begin installing the nginx web server, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before we begin installing the nginx web server, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Set the Hostname
 
@@ -138,7 +138,7 @@ You can now start, stop, and restart nginx just like any other server daemon. Fo
 
     /etc/init.d/nginx start
 
-Congratulations! You now have a running and fully functional HTTP server powered by nginx. Continue reading our introduction to [basic nginx configuration](/docs/web-servers/nginx/how-to-configure-nginx/) for more information about using and setting up the web server.
+Congratulations! You now have a running and fully functional HTTP server powered by nginx. Continue reading our introduction to [basic nginx configuration](/docs/guides/how-to-configure-nginx/) for more information about using and setting up the web server.
 
 ## More Information
 
@@ -146,5 +146,5 @@ You may wish to consult the following resources for additional information on th
 
 - [Linode Docs nginx Documentation](/docs/web-servers/nginx/)
 - [nginx Community Documentation](http://wiki.nginx.org)
-- [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-10-10-maverick/)
-- [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/nginx-and-phpfastcgi-on-ubuntu-10-10-maverick/)
+- [Configure Perl and FastCGI with nginx](/docs/guides/nginx-and-perlfastcgi-on-ubuntu-10-10-maverick/)
+- [Configure PHP and FastCGI with nginx](/docs/guides/nginx-and-phpfastcgi-on-ubuntu-10-10-maverick/)
