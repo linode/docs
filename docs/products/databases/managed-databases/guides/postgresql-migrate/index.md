@@ -55,6 +55,10 @@ Once you've successfully backed up the source database, you can import your data
         psql --host=[host] --username=[username] --dbname=postgres --command='DROP DATABASE IF EXISTS [database-name];'
         psql --host=[host] --username=[username] --dbname=postgres --command='CREATE DATABASE [database-name];'
 
+    {{< caution >}}
+Using `DROP DATABASE` command results in the deletion of any data stored on that database. If you are replacing an existing database and would like to avoid data loss, make sure you have a backup containing any data you would like to retain prior to running the command.
+{{</ caution >}}
+
 1.  **Import your database file** to your newly created database.
 
         pg_restore --host=[host] --username=[user] --verbose --no-tablespaces --dbname=[database-name] database.backup
