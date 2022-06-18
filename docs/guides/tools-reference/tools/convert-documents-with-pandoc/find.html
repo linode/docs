@@ -1,0 +1,119 @@
+<figure>
+<img src="find-files-linux-command-line-title.jpg" alt="" /><figcaption>Find files in Linux using the command line</figcaption>
+</figure>
+<p>When you have to find a file in Linux, it’s sometimes not as easy as finding a file in another operating system. This is especially true if you are running Linux without a graphical user interface and need to rely on the command line. This article covers the basics of how to find a file in Linux using the CLI. The <code>find</code> command in Linux is used to find a file (or files) by recursively filtering objects in the file system based on a simple conditional mechanism. You can use the <code>find</code> command to search for a file or directory on your file system. By using the <code>-exec</code> flag (<code>find -exec</code>), matches, which can be files, directories, symbolic links, system devices, etc., can be found and immediately <a href="#how-to-find-and-process-a-file-in-linux">processed within the same command</a>.</p>
+<h2 id="find-a-file-in-linux-by-name-or-extension">Find a File in Linux by Name or Extension</h2>
+<p>Use <code>find</code> from the command line to locate a specific file by name or extension. The following example searches for <code>*.err</code> files in the <code>/home/username/</code> directory and all sub-directories:</p>
+<pre><code>find /home/username/ -name &quot;*.err&quot;</code></pre>
+<h2 id="using-common-find-commands-and-syntax-to-find-a-file-in-linux">Using Common <code>find</code> Commands and Syntax to Find a File in Linux</h2>
+<p><code>find</code> expressions take the following form:</p>
+<pre><code>find options starting/path expression</code></pre>
+<ul>
+<li>The <code>options</code> attribute will control the <code>find</code> process’s behavior and optimization method.</li>
+<li>The <code>starting/path</code> attribute will define the top-level directory where <code>find</code> begins filtering.</li>
+<li>The <code>expression</code> attribute controls the tests that search the directory hierarchy to produce output.</li>
+</ul>
+<p>Consider the following example command:</p>
+<pre><code>find -O3 -L /var/www/ -name &quot;*.html&quot;</code></pre>
+<p>This command enables the maximum optimization level (-O3) and allows <code>find</code> to follow symbolic links (<code>-L</code>). <code>find</code> searches the entire directory tree beneath <code>/var/www/</code> for files that end with <code>.html</code>.</p>
+<h3 id="basic-examples">Basic Examples</h3>
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>find . -name testfile.txt</code></td>
+<td style="text-align: left;">Find a file called testfile.txt in current and sub-directories.</td>
+</tr>
+<tr class="even">
+<td><code>find /home -name *.jpg</code></td>
+<td style="text-align: left;">Find all <code>.jpg</code> files in the <code>/home</code> and sub-directories.</td>
+</tr>
+<tr class="odd">
+<td><code>find . -type f -empty</code></td>
+<td style="text-align: left;">Find an empty file within the current directory.</td>
+</tr>
+<tr class="even">
+<td><code>find /home -user exampleuser -mtime -7 -iname ".db"</code></td>
+<td style="text-align: left;">Find all <code>.db</code> files (ignoring text case) modified in the last 7 days by a user named exampleuser.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="options-and-optimization-for-find">Options and Optimization for <code>find</code></h2>
+<p>The default configuration for <code>find</code> will ignore symbolic links (shortcut files). If you want <code>find</code> to follow and return symbolic links, you can add the <code>-L</code> option to the command, as shown in the example above.</p>
+<p><code>find</code> optimizes its filtering strategy to increase performance. Three user-selectable optimization levels are specified as <code>-O1</code>, <code>-O2</code>, and <code>-O3</code>. The <code>-O1</code> optimization is the default and forces <code>find</code> to filter based on filename before running all other tests.</p>
+<p>Optimization at the <code>-O2</code> level prioritizes file name filters, as in <code>-O1</code>, and then runs all file-type filtering before proceeding with other more resource-intensive conditions. Level <code>-O3</code> optimization allows <code>find</code> to perform the most severe optimization and reorders all tests based on their relative expense and the likelihood of their success.</p>
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 89%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Command</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>-O1</code></td>
+<td style="text-align: left;">(Default) filter based on file name first.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>-O2</code></td>
+<td style="text-align: left;">File name first, then file type.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>-O3</code></td>
+<td style="text-align: left;">Allow <code>find</code> to automatically re-order the search based on efficient use of resources and likelihood of success.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>-maxdepth X</code></td>
+<td style="text-align: left;">Search current directory as well as all sub-directories X levels deep.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>-iname</code></td>
+<td style="text-align: left;">Search without regard for text case.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>-not</code></td>
+<td style="text-align: left;">Return only results that do not match the test case.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>-type f</code></td>
+<td style="text-align: left;">Search for files.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>-type d</code></td>
+<td style="text-align: left;">Search for directories.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="find-a-file-in-linux-by-modification-time">Find a File in Linux by Modification Time</h2>
+<p>The <code>find</code> command contains the ability to filter a directory hierarchy based on when the file was last modified:</p>
+<pre><code>find / -name &quot;*conf&quot; -mtime -7
+find /home/exampleuser/ -name &quot;*conf&quot; -mtime -3</code></pre>
+<p>The first command returns a list of all files in the entire file system that end with the characters <code>conf</code> and modified in the last seven days. The second command filters <code>exampleuser</code> user’s home directory for files with names that end with the characters <code>conf</code> and modified in the previous three days.</p>
+<h2 id="use-grep-to-find-a-file-in-linux-based-on-content">Use <code>grep</code> to Find a File in Linux Based on Content</h2>
+<p>The <code>find</code> command can only filter the directory hierarchy based on a file’s name and metadata. If you need to search based on the file’s content, use a tool like <a href="/docs/tools-reference/search-and-filter-text-with-grep"><code>grep</code></a>. Consider the following example:</p>
+<pre><code>find . -type f -exec grep &quot;example&quot; &#39;{}&#39; \; -print</code></pre>
+<p>This searches every object in the current directory hierarchy (<code>.</code>) that is a file (<code>-type f</code>) and then runs the command <code>grep "example"</code> for every file that satisfies the conditions. The files that match are printed on the screen (<code>-print</code>). The curly braces (<code>{}</code>) are a placeholder for the <code>find</code> match results. The <code>{}</code> are enclosed in single quotes (<code>'</code>) to avoid handing <code>grep</code> a malformed file name. The <code>-exec</code> command is terminated with a semicolon (<code>;</code>), which should be escaped (<code>\;</code>) to avoid interpretation by the shell.</p>
+<h2 id="how-to-find-and-process-a-file-in-linux">How to Find and Process a File in Linux</h2>
+<p>The <code>-exec</code> option runs commands against every object that matches the find expression. Consider the following example:</p>
+<pre><code>find . -name &quot;rc.conf&quot; -exec chmod o+r &#39;{}&#39; \;</code></pre>
+<p>This filters every object in the current hierarchy (<code>.</code>) for files named <code>rc.conf</code> and runs the <code>chmod o+r</code> command to modify the <code>find</code> results’ file permissions.</p>
+<p>The commands run with the <code>-exec</code> are executed in the <code>find</code> process’s root directory. Use <code>-execdir</code> to perform the specified command in the directory where the match resides. This may alleviate security concerns and produce a more desirable performance for some operations.</p>
+<p>The <code>-exec</code> or <code>-execdir</code> options run without further prompts. If you prefer to be prompted before action is taken, replace <code>-exec</code> with <code>-ok</code> or <code>-execdir</code> with <code>-okdir</code>.</p>
+<h2 id="how-to-find-and-delete-a-file-in-linux">How to Find and Delete a File in Linux</h2>
+<p>{{&lt; caution &gt;}} Be very careful using this. {{&lt; /caution &gt;}}</p>
+<p>To delete the files that end up matching your search, you can add <code>-delete</code> at the end of the expression. Do this only when you are positive the results will only match the files you wish to delete.</p>
+<p>In the following example, <code>find</code> locates all files in the hierarchy starting at the current directory and fully recursing into the directory tree. In this example, <code>find</code> will delete all files that end with the characters <code>.err</code>:</p>
+<pre><code>find . -name &quot;*.bak&quot; -delete</code></pre>
