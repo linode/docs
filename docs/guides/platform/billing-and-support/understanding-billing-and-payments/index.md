@@ -11,8 +11,8 @@ modified: 2022-06-21
 modified_by:
   name: Linode
 published: 2019-10-25
-title: "How Linode Billing Works"
-h1_title: "Understanding Billing and Payments on the Linode Platform"
+title: "Understanding Billing and Payments on the Linode Platform"
+h1_title: "Understanding Billing and Payments"
 enable_h1: true
 tags: ["linode platform"]
 ---
