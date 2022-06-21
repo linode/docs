@@ -7,7 +7,7 @@ keywords: ["getting started", "intro", "basics", "first steps", "linode platform
 description: "Learn how to create an account and use the Linode Cloud Platform."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode/']
-modified: 2022-05-05
+modified: 2022-06-21
 modified_by:
   name: Linode
 published: 2018-11-05
@@ -33,19 +33,15 @@ Thank you for choosing Linode as your cloud hosting provider! This guide will he
 
 First, you need to create a Linode account to start using our services. If you already have a Linode account, you can skip to the next section.
 
-1. Click the **Sign Up** button at the top of this page.
+1. Enter your email address, a unique username, and a strong password. Alternatively, you can sign up using your existing Google or GitHub account. When using another provider, you are prompted for a username in a separate step.
 
-    {{<note>}}
-{{< signup-link >}}
-{{</note>}}
+1. A confirmation email is sent to your email address shortly after. Click the link in that email to confirm your email address.
 
-1. Enter your email address, a unique username, and a strong password. Alternatively, you can sign up using your existing Google or GitHub account.
+1. In the **Security** part of the signup flow, input your phone number. Linode uses phone numbers as a measure to verify identity and prevent fraud. Once a phone number is provided, a verification code is sent to that number as a text message. Enter this code into the signup form.
 
-1. A confirmation email will be sent to your email address. Click the link to confirm your email and be taken to the next step.
+1. Within the **Billing** section, select your payment method and enter your billing address details. Linode accepts credit/debit cards, Google Pay, and PayPal. See the [Billing and Payments](/docs/guides/understanding-billing-and-payments/#payments) guide to learn more about each of these methods. You must also accept the [Master Services Agreement](https://www.linode.com/legal-msa/).
 
-1. Enter your billing and payment information. A valid credit or debit card must be used when creating an account, though additional payment methods (like Google Pay and PayPal) are available once the account is active.
-
-Most accounts are activated instantly, but some require manual review prior to activation.
+1. Most accounts are activated instantly and you can start adding services right away. A small number of accounts may require manual review prior to activation.
 
 {{< note >}}
 ***Sending* email:** Newly created Linode accounts have restrictions on ports `25`, `465`, and `587` applied to Compute Instances, which prevent instances from sending email. If you'd like to send email on a Compute Instance, review the [Running a Mail Server](/docs/email/running-a-mail-server/#sending-email-on-linode) guide, then [open a ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) with our Support team.

@@ -7,7 +7,7 @@ description: "In this guide, you will learn how billing works at Linode, what pa
 keywords: ["billing", "payments"]
 aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-03-23
+modified: 2022-06-21
 modified_by:
   name: Linode
 published: 2019-10-25
@@ -64,10 +64,6 @@ When an invoice is generated on the first of the month (or mid-month), Linode au
 ### Payment Methods
 
 - **Credit card:** Pay using all popular credit (and debit) cards, including those issued by Visa, MasterCard, Discover, American Express, and UnionPay.
-
-    {{< note >}}
-Maintaining a valid credit card on file with your account is a requirement of our [Master Services Agreement](https://www.linode.com/legal-msa/).
-{{< /note >}}
 
 - **Google Pay:** Pay using a credit card, debit card, or PayPal through your Google Pay account. Paying with your Google Pay balance or any associated bank accounts are not supported at this time.
 
