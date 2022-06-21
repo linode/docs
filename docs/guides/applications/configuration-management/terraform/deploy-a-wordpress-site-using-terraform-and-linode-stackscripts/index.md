@@ -27,7 +27,7 @@ Linode's Terraform provider supports [StackScripts](/docs/platform/stackscripts/
 In this guide you will learn how to use a Community StackScript to deploy WordPress on a Linode using Terraform.
 
 {{< caution >}}
-Following this guide will result in the creation of [billable Linode resources](/docs/platform/billing-and-support/billing-and-payments/#how-hourly-billing-works) on your account. To prevent continued billing for these resources, [remove them](#optional-destroy-the-linode-resources) from your account when you have completed the guide, if desired.
+Following this guide will result in the creation of billable Linode resources on your account. To prevent continued billing for these resources, remove them when you have completed the guide.
 {{< /caution >}}
 
 ## Before You Begin

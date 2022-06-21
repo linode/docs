@@ -136,7 +136,7 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 - [Managing LISH authentication methods](/docs/guides/using-the-lish-console/#add-your-public-key)
 - [Adding and managing personal and third party API v4 access tokens](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token)
 - [Creating and managing OAuth Apps](/docs/guides/how-to-create-an-oauth-app-with-the-linode-python-api-library/#obtaining-a-client-id-and-a-client-secret)
-- [Accessing Linode referral codes](/docs/guides/how-linode-billing-works/#referral-credits)
+- [Accessing Linode referral codes](/docs/guides/understanding-billing-and-payments/#referral-credits)
 - Enable email alerts for account activity
 
 ### API Keys / API Tokens

@@ -1,25 +1,25 @@
 ---
-slug: how-linode-billing-works
+slug: understanding-billing-and-payments
 author:
   name: Linode
   email: docs@linode.com
 description: "In this guide, you will learn how billing works at Linode, what payment methods are accepted, and other important billing related information."
 keywords: ["billing", "payments"]
-aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/']
+aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/','/guides/how-linode-billing-works/','/billing-and-payments/','/platform/billing-and-support/billing-and-payments-classic-manager/','/platform/billing-and-support/billing-and-payments-new-manager/','/platform/billing-and-payments/','/platform/billing-and-support/billing-and-payments/',/guides/billing-and-payments/]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-03-23
+modified: 2022-06-21
 modified_by:
   name: Linode
 published: 2019-10-25
 title: "How Linode Billing Works"
-h1_title: "Billing and Payments"
+h1_title: "Understanding Billing and Payments on the Linode Platform"
 enable_h1: true
 tags: ["linode platform"]
 ---
 
-We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works. To learn how to manage your billing in the Cloud Manager see the [Manage Billing in Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/) guide. If you have a question that isn't answered in either guide, please feel free to [contact Support](/docs/guides/support/).
+Linode strives to provide transparent and uncomplicated pricing structures and billing policies. As a supplement to our [Pricing](https://www.linode.com/pricing/) page, read through this guide to understand how we bill for services and how you can pay for these services. For instructions on how to manage your billing in the Cloud Manager, see the [Manage Billing in Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/) guide. If you have a question that isn't answered in either of these guides, don't hesitate to [contact Support](https://www.linode.com/support/).
 
-## Understanding Billing
+## Billing
 
 Linode uses a hybrid hourly billing model that is simple and flexible. It enables you to continuously add, modify, and remove services throughout the month. After the month is over, you receive an invoice for *the hourly usage of each service **up to the monthly cap***. Here are some important billing considerations:
 
@@ -31,7 +31,7 @@ Linode uses a hybrid hourly billing model that is simple and flexible. It enable
 
 If your services stay the same month over month, your bill remains predictable. You are never billed more than the monthly rate for each service, excluding [network transfer overages](/docs/guides/network-transfer/). If you use a service for just part of the month, hourly billing enables you to only be charged for the time the service is active on the account.
 
-\*Review the [Viewing Current Balance](/docs/guides/manage-billing-in-cloud-manager/#viewing-current-balance) section of the Manage Billing in Cloud Manager guide to monitor your account balance and accrued charges throughout the month.
+\*Review the [Viewing Current Balance](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information) section of the Manage Billing in Cloud Manager guide to monitor your account balance and accrued charges throughout the month.
 
 ### Example Billing Scenarios
 
@@ -59,13 +59,13 @@ You may receive a mid-month bill from Linode if you reach a certain threshold of
 
 ## Payments
 
-When an invoice is generated on the first of the month (or mid-month), Linode automatically attempts to charge the account's default credit card on file. In addition to these automatic recurring payments, you can make one-time payments to add funds to your account, which will then be used to pay future invoices.
+When an invoice is generated on the first of the month (or mid-month), Linode automatically attempts to charge the account's default payment method. In addition to these automatic recurring payments, you can make one-time payments to add funds to your account, which will then be used to pay future invoices.
 
 ### Payment Methods
 
 - **Credit card:** Pay using all popular credit (and debit) cards, including those issued by Visa, MasterCard, Discover, American Express, and UnionPay.
 
-    {{< note >}}
+{{< note >}}
 Maintaining a valid credit card on file with your account is a requirement of our [Master Services Agreement](https://www.linode.com/legal-msa/).
 {{< /note >}}
 

@@ -17,13 +17,13 @@ enable_h1: true
 aliases: ['/platform/billing-and-support/manage-billing-in-cloud-manager/']
 ---
 
-We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how to make payments, update your billing information, and remove services. To learn how billing works see the [How Linode Billing Works](/docs/guides/how-linode-billing-works/) guide. If you have a question that isn't answered in either guide, please feel free to [contact Support](/docs/guides/support/).
+We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how to make payments, update your billing information, and remove services. To learn how billing works see the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide. If you have a question that isn't answered in either guide, please feel free to [contact Support](/docs/guides/support/).
 
 ## Before You Begin
 
 Before performing the steps within this guide, please ensure you've completed the following:
 
-1.  **Read through the [Billing and Payments](/docs/guides/how-linode-billing-works/) guide** for detailed information about our billing and payment policies.
+1.  **Read through the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide** for detailed information about our billing and payment policies.
 
 1.  **Log in to the [Cloud Manager](https://cloud.linode.com)** on a user account with one of the following permissions. See [Setting User Permissions](/docs/guides/accounts-and-passwords/#setting-user-permissions) for more details.
 
@@ -46,7 +46,7 @@ This page contains several sections:
 
 - **Promotions:** If there is an active promo/coupon applied to the account, it will be displayed here along with the remaining balance and any expiration date. If there are no active promotions, this section is hidden.
 
-- **Accrued Charges:** The charges that have accrued since your last invoice. This updates frequently to include the hourly charges (up to the monthly cap) for all paid services on the account, as well as any other charges. In the screenshot above, the account has accrued $8.51 of charges since the last invoice. See the [Billing and Payments > Understanding Billing](/docs/guides/how-linode-billing-works/#understanding-billing) guide for help understanding these charges.
+- **Accrued Charges:** The charges that have accrued since your last invoice. This updates frequently to include the hourly charges (up to the monthly cap) for all paid services on the account, as well as any other charges. In the screenshot above, the account has accrued $8.51 of charges since the last invoice. See the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for help understanding these charges.
 
 - **Billing Contact:** The name, address, phone number, and email address for the primary billing contact on the account. See [Accounts and Passwords > Updating Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information).
 
