@@ -19,7 +19,7 @@ external_resources:
 - '[Alertmanager Documentation](https://prometheus.io/docs/alerting/latest/alertmanager/)'
 - '[Grafana Tutorials](https://grafana.com/tutorials/)'
 - '[TimescaleDB Documentation](https://docs.timescale.com/)'
-aliases: ['/kubernetes/deploy-prometheus-operator-with-grafana-on-linode-kubernetes-engine/']
+aliases: ['/kubernetes/deploy-tobs-on-linode-kubernetes-engine/']
 ---
 
 In this guide, deploy [TOBS](https://github.com/timescale/tobs) to your Linode Kubernetes Engine (LKE) cluster using [Helm](https://helm.sh/). And use `kubectl` port-forward for local access to your monitoring interfaces.
