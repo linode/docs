@@ -39,7 +39,7 @@ First, you need to create a Linode account to start using our services. If you a
 
 1. In the **Security** part of the signup flow, input your phone number. Linode uses phone numbers as a measure to verify identity and prevent fraud. Once a phone number is provided, a verification code is sent to that number as a text message. Enter this code into the signup form.
 
-1. Within the **Billing** section, select your payment method and enter your billing address details. Linode accepts credit/debit cards, Google Pay, and PayPal. See the [Billing and Payments](/docs/guides/understanding-billing-and-payments/#payments) guide to learn more about each of these methods. You must also accept the [Master Services Agreement](https://www.linode.com/legal-msa/).
+1. Within the **Billing** section, select your payment method and enter your billing address details. Linode accepts credit/debit cards, Google Pay, and PayPal. See the [Billing and Payments](/docs/guides/how-linode-billing-works/#payments) guide to learn more about each of these methods. You must also accept the [Master Services Agreement](https://www.linode.com/legal-msa/).
 
 1. Most accounts are activated instantly and you can start adding services right away. A small number of accounts may require manual review prior to activation.
 
