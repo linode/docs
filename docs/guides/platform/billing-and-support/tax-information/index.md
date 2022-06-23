@@ -156,4 +156,4 @@ To keep our pricing stable and consistent, rather than fluctuating with exchange
 | United Kingdom VAT | GB383720095 |
 | United States EIN | 20-2647179 |
 | Canadian GST | 724750708RT0001 |
-| Norway VAT | 002 063 948 |
+| Norway VAT | 2063948 |
