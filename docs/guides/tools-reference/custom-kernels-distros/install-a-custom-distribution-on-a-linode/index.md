@@ -162,7 +162,7 @@ If you've followed the steps so far, you should have a working custom distributi
 
 *  **Backups:** The Linode Backup Service needs to be able to mount your filesystem, and does not support partitioned disks.
 
-*  **Helpers:** Several helpful features within the Linode Manager, such as [root password resets](/docs/guides/#resetting-the-root-password) and [Network Helper](/docs/guides/network-helper/), need access to your file system in order to make changes.
+*  **Helpers:** Several helpful features within the Linode Manager, such as [root password resets](/docs/guides/reset-the-root-password-on-your-linode/) and [Network Helper](/docs/guides/network-helper/), need access to your file system in order to make changes.
 
 This section covers how to move your custom installation over to an **ext4** formatted disk so it can take advantage of these tools.
 

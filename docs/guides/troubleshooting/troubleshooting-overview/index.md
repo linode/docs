@@ -151,7 +151,7 @@ Telnet and FTP are disabled on your Linode by default, and we strongly recommend
 
 ### Linode User/Root Password
 
-If you've forgotten the password for the root user on your Linode, you can follow the steps for [resetting your root password](/docs/platform/manager/accounts-and-passwords-new-manager/#resetting-the-root-password) from the Linode Manager.
+If you've forgotten the password for the root user on your Linode, you can follow the steps for [resetting your root password](/docs/guides/reset-the-root-password-on-your-linode/) from the Linode Manager.
 
 Once you have access to your Linode as the root user, you can reset the password for any additional system users with the `passwd` command.The example resets the password for the `username` user:
 

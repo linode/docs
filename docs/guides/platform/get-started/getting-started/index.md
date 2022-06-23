@@ -37,7 +37,11 @@ First, you need to create a Linode account to start using our services. If you a
 
 1. A confirmation email is sent to your email address shortly after. Click the link in that email to confirm your email address.
 
-1. In the **Security** part of the signup flow, input your phone number. Linode uses phone numbers as a measure to verify identity and prevent fraud. Once a phone number is provided, a verification code is sent to that number as a text message. Enter this code into the signup form.
+1. In the **Security** section of the signup process, input your phone number. Linode uses phone numbers as a measure to verify identity and prevent fraud. Once a phone number is provided, a verification code is sent to that number as an SMS text message. Enter this code into the signup form.
+
+    {{< note >}}
+This phone number provides our team with a secure method of verifying your identity as the owner of the newly created Linode user account. We will only ever use this phone number to verify your identity by sending a verification code as an SMS message. You will then provide this verification code to the support representative with whom you are in contact. If you receive a verification code without contacting us, do not pass along this code to anyone. Linode will never contact you for the verification code.
+{{</ note >}}
 
 1. Within the **Billing** section, select your payment method and enter your billing address details. Linode accepts credit/debit cards, Google Pay, and PayPal. See the [Billing and Payments](/docs/guides/how-linode-billing-works/#payments) guide to learn more about each of these methods. You must also accept the [Master Services Agreement](https://www.linode.com/legal-msa/).
 
