@@ -24,8 +24,6 @@ modified: 2022-06-06
 
 ## MySQL
 
-- [MySQL Managed Databases](/docs/products/databases/managed-databases/guides/mysql/)
-
 - [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/)
 
 - [Migrate a MySQL or MariaDB Database to a Managed Database](/docs/products/databases/managed-databases/guides/migrate-mysql/)
