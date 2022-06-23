@@ -73,6 +73,6 @@ Standard carrier messaging fees apply for each SMS message
 
 1. After successfully entering the verification code, your phone number is verified and has been saved to your user account.
 
-## Configure Multiple User Accounts
+## Multiple User Accounts
 
-Organizations that have multiple individuals accessing the same Cloud Manager account should create separate *user accounts* for each individual. Once you've created the accounts, you can assign permissions to restrict access to certain areas of the control panel. This is useful for groups that need to grant all team members access to the Cloud Manager, or organizations that just want their billing department to have a separate account to receive invoices and billing information. For more information, see our guide on [Accounts and Passwords](/docs/guides/accounts-and-passwords).
+Organizations that require multiple individuals to access the same customer account should create separate *user accounts* for each individual. Once you've created the accounts, you can assign permissions to restrict access to certain Linode services and areas of the Cloud Manager. This is useful for providing all team members access to a single Linode account, allowing a billing department to view invoices and billing details, or granting access to outside developers. For more information, see our guide on [Accounts and Passwords](/docs/guides/accounts-and-passwords).

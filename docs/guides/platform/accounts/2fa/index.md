@@ -12,8 +12,8 @@ modified: 2022-06-23
 modified_by:
   name: Linode
 published: 2022-06-23
-title: "Managing 2FA on Your Linode User Account"
-h1_title: "Managing Two-Factor Authentication (2FA) on Your User Account"
+title: "Managing 2FA on a Linode User Account"
+h1_title: "Managing Two-Factor Authentication (2FA) on a User Account"
 enable_h1: true
 ---
 
@@ -120,15 +120,27 @@ You have successfully disabled the two-factor authentication feature for your Li
 
 ## Recovery Procedure
 
-If you lose your token and get locked out of the Manager, or need to have 2FA removed from a Linode account for another reason, please submit the following images to Linode Support:
+If you lose access to your 2FA application without first removing 2FA from your account, you will be unable to log in to the Cloud Manager. In this case, you will need to contact Linode Support and provide any requested information, such as valid answers to your [security questions](/docs/guides/user-security-controls/#security-questions). If you have enabled 2FA prior to June 27th, 2022 and have not configured any security questions, you will need to authenticate by providing images of your payment card and photo ID.
 
-- An image of the front and back of the payment card on file, which clearly shows the last 6 digits of the card number, the expiration date, cardholder name, and bank logos.
-- An image of the front and back of Government-issued photo ID that matches the name on the card.
+### With Security Questions
 
-These images should be emailed to Linode Support at <support@linode.com>.
+1. Contact the [Linode Support](https://www.linode.com/support/) team through phone or email and state that you are locked out of your account and would like to remove 2FA.
 
-If you prefer encrypted communication:
+1. A member of the Support team will ask you to provide valid answers to each of your security questions.
 
-1.  First email Support that you would like to use the Credential Submission Portal. This opens a support ticket and gives you a ticket number to reference.
+1. Your answers and any other details provided will be reviewed. If the information provided is sufficient, the team member will remove 2FA from your account. If additional details are needed, you will be provided with further instructions.
 
-1.  You can then upload your images to our [Credential Submission Portal](https://www.linode.com/credential-submission/) referencing the ticket number.
+### Without Security Questions
+
+1. Send an email to support@linode.com and state that you are locked out of your account and would like to remove 2FA.
+
+1. Once the email is processed, you will receive a confirmation email referencing a unique ticket number.
+
+1. Open the [Credential Submission Portal](https://www.linode.com/credential-submission/) and enter your ticket number and the email address on your account.
+
+1. Upload the following images through the portal:
+
+    - An image of the front and back of the payment card on file, which clearly shows the last 6 digits of the card number, the expiration date, cardholder name, and bank logos.
+    - An image of the front and back of Government-issued photo ID that matches the name on the card.
+
+1. A member of the Support team will review your submission and respond to your ticket. If the information provided is sufficient, the team member will remove 2FA from your account. If additional details are needed, you will be provided with further instructions.
