@@ -46,7 +46,7 @@ This guide shows you how to get a Canvas website up and running on an Ubuntu 20.
 
 1. Prepare an SMTP server that Canvas can use to send email notifications to users. You can use a third-party SMTP service for this purpose. This guide's example configurations use [Mailgun](https://www.mailgun.com/) as the third-party SMTP provider.
 
-    You can, alternatively, create your SMTP server by following the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) guide. However, because of Canvas's resource demands, you may want to run the SMTP server on a separate machine than the one running Canvas.
+    You can, alternatively, create your SMTP server by following the [Email with Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) guide. However, because of Canvas's resource demands, you may want to run the SMTP server on a separate machine than the one running Canvas.
 
 1. Canvas recommends a minimum of 8 GB of RAM. The website may operate with fewer, but doing so may result in installation and/or runtime issues. This is especially the case when all of the Canvas components are running on a single machine.
 
@@ -55,7 +55,7 @@ This guide shows you how to get a Canvas website up and running on an Ubuntu 20.
 1. Replace `example.com` in this guide with your server's domain name. You can complete the [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) steps to register a domain name for your Linode server.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Apache

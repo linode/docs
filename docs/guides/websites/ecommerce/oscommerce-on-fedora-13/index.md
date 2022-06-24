@@ -24,7 +24,7 @@ relations:
 
 osCommerce is an open source solution for creating your own online store. It runs on a LAMP stack and is a strong alternative to Magento, which can be difficult to administer for some.
 
-Before installing osCommerce, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, osCommerce requires Apache, MySQL, and PHP to be installed. We assume you've followed our [Fedora LAMP guide](/docs/lamp-guides/fedora-13/).
+Before installing osCommerce, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, osCommerce requires Apache, MySQL, and PHP to be installed. We assume you've followed our [Fedora LAMP guide](/docs/guides/lamp-server-on-fedora-13/).
 
 ## Installation
 

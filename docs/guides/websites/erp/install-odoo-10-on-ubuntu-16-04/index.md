@@ -434,4 +434,4 @@ If all your tests pass, you can safely update your production installation.
 
 ## Next Steps
 
-If you plan to use Odoo 10 for your business, you may wish to configure SSL/TLS encryption to enable secure connections to your server. To do this, check out our guide on how to [install an SSL certificate with LetsEncrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates/).
+If you plan to use Odoo 10 for your business, you may wish to configure SSL/TLS encryption to enable secure connections to your server. To do this, check out our guide on how to [install an SSL certificate with LetsEncrypt](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/).

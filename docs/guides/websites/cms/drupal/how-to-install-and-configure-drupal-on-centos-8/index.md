@@ -32,7 +32,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
     {{< content "limited-user-note-shortguide" >}}
 
-1.  Install and configure a [LAMP stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/)
+1.  Install and configure a [LAMP stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/)
 
 1.  Install the `wget` and `tar` utilities. You will need this in a later section to install the Drupal 8 core.
 
@@ -44,7 +44,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
 ## Download and Prepare Drupal 8
 
-1. Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
+1. Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
 
         cd /var/www/html/example.com
 
@@ -91,7 +91,7 @@ $settings['trusted_host_patterns'] = array(
 LoadModule rewrite_module modules/mod_rewrite.so
     {{</ file >}}
 
-2.  Specify the rewrite conditions for your Drupal site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/) guide, the configuration file for your site is located at `/etc/httpd/conf.d/example.com.conf`.
+2.  Specify the rewrite conditions for your Drupal site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/) guide, the configuration file for your site is located at `/etc/httpd/conf.d/example.com.conf`.
 
     {{< file "/etc/httpd/sites-enabled/example.com.conf" conf >}}
 <Directory /var/www/html/example.com/public_html>
@@ -132,7 +132,7 @@ LoadModule rewrite_module modules/mod_rewrite.so
 
     ![Drupal 8 choose installation profile.](drupal-choose-installation-profile.png)
 
-3.  Complete the database configuration using the DB name, username and password you created when [setting up your LAMP stack](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/) with a MySQL or MariaDB database.
+3.  Complete the database configuration using the DB name, username and password you created when [setting up your LAMP stack](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/) with a MySQL or MariaDB database.
 
     ![Drupal 8 database configuration.](drupal-database-configuration.png)
 

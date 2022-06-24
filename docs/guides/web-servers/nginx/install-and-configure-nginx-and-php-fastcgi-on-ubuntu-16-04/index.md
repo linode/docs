@@ -17,7 +17,7 @@ external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
  - '[FastCGI article on Wikipedia](https://en.wikipedia.org/wiki/FastCGI)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
- - '[How to Configure Ngnix](/docs/websites/nginx/how-to-configure-nginx/)'
+ - '[How to Configure Ngnix](/docs/guides/how-to-configure-nginx/)'
 relations:
     platform:
         key: nginx-php-fastcgi
