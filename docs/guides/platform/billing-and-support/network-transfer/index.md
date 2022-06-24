@@ -99,4 +99,4 @@ Linode automatically sends an email notification to [your account's email addres
 
 ## More Information
 
-Read the [Billing and Payments](/docs/guides/billing-and-payments/) guide for an overview of Linode billing.
+Read the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for an overview of Linode billing.
