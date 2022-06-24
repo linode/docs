@@ -3,8 +3,7 @@ slug: sql-server-installation-on-linux
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
+description: 'In this guide, you learn how to install SQL Server on RHEL, SUSE, and Ubuntu platforms.'
 keywords: ['RHEL', 'SUSE', 'Ubuntu', 'SQL Server Installation', 'SQL Server Command-Line Tools']
 tags: ['database', 'mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
