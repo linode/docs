@@ -23,7 +23,7 @@ relations:
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.
 
-Before beginning to follow this guide we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before beginning to follow this guide we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 This guide assumes you are installing this on a clean system. If you feel that you will not need certain features that are mentioned in this document, please feel free to exclude them from your setup.
 
@@ -36,13 +36,13 @@ When you have saved this file, issue the following commands to refresh your syst
 
 ##Install Postfix, Courier, MySQL, and Dependencies
 
-In order to use the email capabilities in ISPConfig, you will need to install the email applications it depends on in order to function. More information on Postfix and Courier can be found in [our documentation](/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-ubuntu-10-04-lts-lucid/), and you are encouraged to read it to gain a better understanding of this software. MySQL is a relational database management system (RDBMS) that is commonly used for dynamic web pages and email. If you have already installed this, you will not need to install is as part of the ISPConfig installation process. You are encouraged to read the [MySQL documentation](/docs/databases/mysql/). You will need to read the documentation for detailed installation instructions.
+In order to use the email capabilities in ISPConfig, you will need to install the email applications it depends on in order to function. More information on Postfix and Courier can be found in [our documentation](/docs/guides/email-with-postfix-dovecot-and-mysql-on-ubuntu-10-04-lts-lucid/), and you are encouraged to read it to gain a better understanding of this software. MySQL is a relational database management system (RDBMS) that is commonly used for dynamic web pages and email. If you have already installed this, you will not need to install is as part of the ISPConfig installation process. You are encouraged to read the [MySQL documentation](/docs/databases/mysql/). You will need to read the documentation for detailed installation instructions.
 
 Issue the following command (all one line):
 
     apt-get install postfix postfix-mysql postfix-doc mysql-client mysql-server courier-authdaemon courier-authlib-mysql courier-pop courier-pop-ssl courier-imap courier-imap-ssl libsasl2-2 libsasl2-modules libsasl2-modules-sql sasl2-bin libpam-mysql openssl maildrop getmail4 binutils
 
-You will be asked a series of questions during the installation; please refer to the [Postfix guide](/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-ubuntu-10-04-lts-lucid/) to determine what the needs of your system will be. In most cases, the defaults are fine.
+You will be asked a series of questions during the installation; please refer to the [Postfix guide](/docs/guides/email-with-postfix-dovecot-and-mysql-on-ubuntu-10-04-lts-lucid/) to determine what the needs of your system will be. In most cases, the defaults are fine.
 
 ##Install Amavisd-new and SpamAssassin
 
@@ -67,7 +67,7 @@ Vlogger is a tool that logs information regarding Apache. Webalizer can then be 
 
     apt-get install vlogger webalizer
 
-More information on Webalizer can be found in our [Webalizer documentation](/docs/uptime/analytics/webalizer-on-debian-5-lenny/).
+More information on Webalizer can be found in our [Webalizer documentation](/docs/guides/webalizer-on-debian-5-lenny/).
 
 ##Install fail2ban
 
@@ -75,7 +75,7 @@ Installing fail2ban is entirely optional, however ISPConfig can manage this serv
 
     apt-get install fail2ban
 
-More information regarding fail2ban can be found in our [fail2ban guide](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/).
+More information regarding fail2ban can be found in our [fail2ban guide](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/).
 
 ##Installing ISPConfig
 
@@ -114,7 +114,7 @@ You may wish to consult the following resources for additional information on th
 - [ISPConfig Home Page](http://www.ispconfig.org/)
 - [ISPConfig Support](http://www.ispconfig.org/page/en/support.html)
 - [ISPConfig Community](http://www.ispconfig.org/page/en/community.html)
-- [Limit User Access with SFTP Jails](/docs/tools-reference/tools/limiting-access-with-sftp-jails-on-debian-and-ubuntu/)
+- [Limit User Access with SFTP Jails](/docs/guides/limiting-access-with-sftp-jails-on-debian-and-ubuntu/)
 
 
 

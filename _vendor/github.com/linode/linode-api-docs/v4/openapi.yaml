@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.123.1
+  version: 4.128.0
 
   title: Linode API
   description: |
@@ -438,7 +438,12 @@ paths:
       - oauth:
         - account:read_write
       requestBody:
-        description: Update contact and billing information.
+        description: |
+          Update contact and billing information.
+
+          Account properties that are excluded from a request remain unchanged.
+
+          When updating an Account's `country` to "US", an error is returned if the Account's `zip` is not a valid US zip code.
         required: true
         content:
           application/json:
@@ -469,15 +474,25 @@ paths:
                 "last_name": "Smith",
                 "phone": "555-555-1212",
                 "state": "PA",
-                "zip": 19102,
-                }
+                "tax_id": "ATU99999999",
+                "zip": "19102"
               }' \
               https://api.linode.com/v4/account
       - lang: CLI
         source: >
           linode-cli account update \
+            --address_1 "123 Main St." \
+            --address_2 "Suite 101" \
+            --city Philadelphia \
+            --company My Company \ LLC \
+            --country US \
+            --email jsmith@mycompany.com \
             --first_name John \
-            --last_name Smith
+            --last_name Smith \
+            --phone 555-555-1212 \
+            --state PA \
+            --tax_id ATU99999999 \
+            --zip 19102
   /account/cancel:
     x-linode-cli-command: account
     post:
@@ -2987,6 +3002,7 @@ paths:
                     "global": {
                       "add_linodes": true,
                       "add_nodebalancers": false,
+                      "add_databases": true;
                       "add_domains": true,
                       "add_longview": false,
                       "add_stackscripts": true,
@@ -3140,7 +3156,7 @@ paths:
     get:
       tags:
       - Databases
-      summary: Managed Databases List
+      summary: Managed Databases List All
       operationId: getDatabasesInstances
       servers:
       - url: https://api.linode.com/v4
@@ -3151,9 +3167,7 @@ paths:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       description: |
-        Display all accessible Managed Databases on your Account, regardless of engine type.
-
-        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+        Display all Managed Databases that are accessible by your User, regardless of engine type.
 
         For more detailed information on a particular Database instance, make a request to its `instance_uri`.
       security:
@@ -3184,6 +3198,785 @@ paths:
       - lang: CLI
         source: >
           linode-cli databases list
+  /databases/mongodb/instances:
+    x-linode-cli-command: databases
+    get:
+      tags:
+      - Databases
+      summary: Managed MongoDB Databases List
+      operationId: getDatabasesMongoDBInstances
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mongodb-list
+      x-linode-grant: read_only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Display all accessible Managed MongoDB Databases.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_only
+      responses:
+        '200':
+          description: Returns a paginated list of all accessible Managed MongoDB Databases on your Account.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/DatabaseMongoDB'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/databases/mongodb/instances/
+      - lang: CLI
+        source: >
+          linode-cli databases mongodb-list
+    post:
+      tags:
+      - Databases
+      summary: Managed MongoDB Database Create
+      operationId: postDatabasesMongoDBInstances
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mongodb-create
+      x-linode-grant: add_databases
+      description: |
+        Provision a Managed MongoDB Database.
+
+        Restricted Users must have the `add_databases` grant to use this command.
+
+        New instances can take approximately 15 to 30 minutes to provision.
+
+        The `allow_list` is used to control access to the Managed Database.
+
+        * IP addresses on this list can access the Managed Database. All other sources are blocked.
+        * Entering an empty array (`[]`) blocks all connections (both public and private) to the Managed Database.
+
+        All Managed Databases include automatic, daily backups. Up to seven backups are automatically stored for each Managed Database, providing restore points for each day of the past week.
+
+        All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed MongoDB Database during configurable maintenance windows.
+
+        * By default, the maintenance window is set to start *every week* on *Sunday* at *20:00 UTC* and lasts for 3 hours.
+
+        * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
+
+        * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
+
+        * To modify update the maintenance window for a Database, use the **Managed MongoDB Database Update** ([PUT /databases/mongodb/instances/{instanceId}](/docs/api/databases/#managed-mongodb-database-update)) command.
+
+        **Note**: Managed MongoDB clusters are currently accessible over public IP addresses. To provide an additional layer of protection, support for private IP addresses is in development.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      requestBody:
+        description: Information about the Managed MongoDB Database you are creating.
+        x-linode-cli-allowed-defaults:
+        - region
+        - type
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatabaseMongoDBRequest'
+      responses:
+        '200':
+          description: A new Managed MongoDB Database is provisioning.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseMongoDB'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X POST -d '{
+                  "label": "example-db",
+                  "region": "us-east",
+                  "type": "g6-dedicated-2",
+                  "cluster_size": 3,
+                  "engine": "mongodb/4.4.10",
+                  "encrypted": false,
+                  "ssl_connection": false,
+                  "replica_set": "example-replica-set",
+                  "compression_type": "none",
+                  "storage_engine": "wiredtiger",
+                  "allow_list": [
+                    "203.0.113.1",
+                    "192.0.1.0/24"
+                  ]
+              }' \
+              https://api.linode.com/v4/databases/mongodb/instances
+      - lang: CLI
+        source: >
+          linode-cli databases mongodb-create \
+            --label example-db \
+            --region us-east \
+            --type g6-dedicated-2 \
+            --cluster_size 3 \
+            --engine mongodb/4.4.10 \
+            --encrypted false \
+            --ssl_connection true \
+            --replica_set example-replica-set \
+            --storage_engine wiredtiger \
+            --compression_type none \
+            --allow_list 203.0.113.1 \
+            --allow_list 192.0.1.0/24
+  /databases/mongodb/instances/{instanceId}:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed MongoDB Database.
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+      - Databases
+      summary: Managed MongoDB Database View
+      operationId: getDatabasesMongoDBInstance
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mongodb-view
+      x-linode-grant: read_only
+      description: |
+        Display information for a single, accessible Managed MongoDB Database.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_only
+      responses:
+        '200':
+          description: Returns information for a single Managed MongoDB Database.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseMongoDB'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/databases/mongodb/instances/123
+      - lang: CLI
+        source: >
+          linode-cli databases mongodb-view 123
+    delete:
+      tags:
+      - Databases
+      summary: Managed MongoDB Database Delete
+      operationId: deleteDatabasesMongoDBInstance
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mongodb-delete
+      x-linode-grant: read_write
+      description: |
+        Remove a Managed MongoDB Database from your Account.
+
+        Requires `read_write` access to the Database.
+
+        The Database must have an `active`, `failed`, or `degraded` status to perform this command.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      responses:
+        '200':
+          description: Managed MongoDB Database successfully deleted.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X DELETE \
+              https://api.linode.com/v4/databases/mongodb/instances/123
+      - lang: CLI
+        source: >
+          linode-cli databases mongodb-delete 123
+    put:
+      tags:
+      - Databases
+      summary: Managed MongoDB Database Update
+      operationId: putDatabasesMongoDBInstance
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mongodb-update
+      x-linode-grant: read_write
+      description: |
+        Update a Managed MongoDB Database.
+
+        Requires `read_write` access to the Database.
+
+        The Database must have an `active` status to perform this command.
+
+        Updating addresses in the `allow_list` overwrites any existing addresses.
+
+        * IP addresses on this list can access the Managed Database. All other sources are blocked.
+        * Entering an empty array (`[]`) blocks all connections (both public and private) to the Managed Database.
+        * **Note**: Updates to the `allow_list` may take a short period of time to complete, making this command inappropriate for rapid successive updates to this property.
+
+        All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed MongoDB Database. The maintenance window for these updates is configured with the Managed Database's `updates` property.
+
+        * By default, the maintenance window is set to start *every week* on *Sunday* at *20:00 UTC* and lasts for 3 hours.
+
+        * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
+
+        * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      requestBody:
+        description: Updated information for the Managed MongoDB Database.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Updated information for the Managed MongoDB Database.
+              properties:
+                label:
+                  $ref: '#/components/schemas/DatabaseMongoDBRequest/properties/label'
+                allow_list:
+                  $ref: '#/components/schemas/DatabaseMongoDBRequest/properties/allow_list'
+                updates:
+                  $ref: '#/components/schemas/DatabaseMongoDB/properties/updates'
+      responses:
+        '200':
+          description: Managed Database updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseMongoDB'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X PUT -d '{
+                  "label": "example-db",
+                  "allow_list": [
+                    "203.0.113.1",
+                    "192.0.1.0/24"
+                  ],
+                  "updates" = {
+                    "frequency": "monthly",
+                    "duration": 3,
+                    "hour_of_day": 12,
+                    "day_of_week": 4,
+                    "week_of_month": 3,
+                  }
+              }' \
+              https://api.linode.com/v4/databases/mongodb/instances/123
+      - lang: CLI
+        source: >
+          linode-cli databases mongodb-update 123 \
+            --label example-db \
+            --allow_list 203.0.113.1 \
+            --allow_list 192.0.1.0/24 \
+            --updates.frequency monthly \
+            --updates.duration 3 \
+            --updates.hour_of_day 12 \
+            --updates.day_of_week 4 \
+            --updates.week_of_month 3
+  /databases/mongodb/instances/{instanceId}/backups:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed MongoDB Database.
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+      - Databases
+      summary: Managed MongoDB Database Backups List
+      operationId: getDatabasesMongoDBInstanceBackups
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mongodb-backups-list
+      x-linode-grant: read_only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Display all backups for an accessible Managed MongoDB Database.
+
+        The Database must not be provisioning to perform this command.
+
+        Database `auto` type backups are created every 24 hours at 0:00 UTC. Each `auto` backup is retained for 7 days.
+
+        Database `snapshot` type backups are created by accessing the **Managed MongoDB Database Backup Snapshot Create** ([POST /databases/mongodb/instances/{instanceId}/backups](/docs/api/databases/#managed-mongodb-database-backup-snapshot-create)) command.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      responses:
+        '200':
+          description: Returns a paginated list of backups for the Managed MongoDB Database.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/DatabaseBackup'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/databases/mongodb/instances/123/backups
+      - lang: CLI
+        source: >
+          linode-cli databases mongodb-backups-list 123
+    post:
+      tags:
+      - Databases
+      summary: Managed MongoDB Database Backup Snapshot Create
+      operationId: postDatabasesMongoDBInstanceBackup
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mongodb-backup-snapshot
+      x-linode-grant: read_write
+      description: |
+        Creates a snapshot backup of a Managed MongoDB Database.
+
+        Requires `read_write` access to the Database.
+
+        Backups generated by this command have the type `snapshot`. Snapshot backups may take several minutes to complete, after which they will be accessible to view or restore.
+
+        The Database must have an `active` status to perform this command.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      requestBody:
+        description: Information about the snapshot backup to create.
+        content:
+          application/json:
+            schema:
+              required:
+              - label
+              type: object
+              properties:
+                label:
+                  type: string
+                  minLength: 3
+                  maxLength: 64
+                  description: |
+                    The label for the Database snapshot backup.
+
+                    * Must use only letters, numbers, underscores, dashes, and periods.
+                    * Must begin and end with a letter or number.
+                    * Must not include two dashes, underscores, or periods in a row.
+                  example: db-snapshot
+                target:
+                  type: string
+                  enum:
+                  - primary
+                  - secondary
+                  default: primary
+                  description: |
+                    The Database cluster target.
+
+                    If the Database is a high availability cluster, choosing `secondary` creates a snapshot backup of a replica node.
+                  example: primary
+      responses:
+        '200':
+          description: Database snapshot backup request successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X POST -d '{
+                  "label": "db-snapshot",
+                  "target": "primary"
+              }' \
+              https://api.linode.com/v4/databases/mongodb/instances/123/backups/
+      - lang: CLI
+        source: >
+          linode-cli databases mongodb-backup-snapshot 123 \
+            --label db-snapshot \
+            --target primary
+  /databases/mongodb/instances/{instanceId}/backups/{backupId}:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed MongoDB Database.
+        required: true
+        schema:
+          type: integer
+      - name: backupId
+        in: path
+        description: The ID of the Managed MongoDB Database backup.
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+      - Databases
+      summary: Managed MongoDB Database Backup View
+      operationId: getDatabasesMongoDBInstanceBackup
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mongodb-backup-view
+      x-linode-grant: read_only
+      description: |
+        Display information for a single backup for an accessible Managed MongoDB Database.
+
+        The Database must not be provisioning to perform this command.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      responses:
+        '200':
+          description: Returns a single backup for the Managed MongoDB Database.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseBackup'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/databases/mongodb/instances/123/backups/456
+      - lang: CLI
+        source: >
+          linode-cli databases mongodb-backup-view 123 456
+    delete:
+      tags:
+      - Databases
+      summary: Managed MongoDB Database Backup Delete
+      operationId: deleteDatabaseMongoDBInstanceBackup
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mongodb-backup-delete
+      x-linode-grant: unrestricted only
+      description: |
+        Delete a single backup for an accessible Managed MongoDB Database.
+
+        Requires `read_write` access to the Database.
+
+        The Database must not be provisioning to perform this command.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      responses:
+        '200':
+          description: Request to delete Database backup successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X DELETE \
+              https://api.linode.com/v4/databases/mongodb/instances/123/backups/456
+      - lang: CLI
+        source: >
+          linode-cli databases mongodb-backup-delete 123 456
+  /databases/mongodb/instances/{instanceId}/backups/{backupId}/restore:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed MongoDB Database.
+        required: true
+        schema:
+          type: integer
+      - name: backupId
+        in: path
+        description: The ID of the Managed MongoDB Database backup.
+        required: true
+        schema:
+          type: integer
+    post:
+      tags:
+      - Databases
+      summary: Managed MongoDB Database Backup Restore
+      operationId: postDatabasesMongoDBInstanceBackupRestore
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mongodb-backup-restore
+      x-linode-grant: read_write
+      description: |
+        Restore a backup to a Managed MongoDB Database on your Account.
+
+        Requires `read_write` access to the Database.
+
+        The Database must have an `active` status to perform this command.
+
+        **Note**: Restoring from a backup will erase all existing data on the database instance and replace it with backup data.
+
+        **Note**: Currently, restoring a backup after resetting Managed Database credentials results in a failed cluster. Please contact Customer Support if this occurs.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      responses:
+        '200':
+          description: Request to restore backup successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X POST https://api.linode.com/v4/databases/mongodb/instances/123/backups/456/restore
+      - lang: CLI
+        source: >
+          linode-cli databases mongodb-backup-restore 123 456
+  /databases/mongodb/instances/{instanceId}/credentials:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed MongoDB Database.
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+      - Databases
+      summary: Managed MongoDB Database Credentials View
+      operationId: getDatabasesMongoDBInstanceCredentials
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mongodb-creds-view
+      x-linode-grant: read_only
+      description: |
+        Display the the root username and password for an accessible Managed MongoDB Database.
+
+        The Database must have an `active` status to perform this command.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_only
+      responses:
+        '200':
+          description: Managed Database root username and password.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseCredentials'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/databases/mongodb/instances/123/credentials/
+      - lang: CLI
+        source: >
+          linode-cli databases mongodb-creds-view 123
+  /databases/mongodb/instances/{instanceId}/credentials/reset:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed MongoDB Database.
+        required: true
+        schema:
+          type: integer
+    post:
+      tags:
+      - Databases
+      summary: Managed MongoDB Database Credentials Reset
+      operationId: postDatabasesMongoDBInstanceCredentialsReset
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mongodb-creds-reset
+      x-linode-grant: read_write
+      description: |
+        Reset the root password for a Managed MongoDB Database.
+
+        Requires `read_write` access to the Database.
+
+        A new root password is randomly generated and accessible with the **Managed MongoDB Database Credentials View** ([GET /databases/mongodb/instances/{instanceId}/credentials](/docs/api/databases/#managed-mongodb-database-credentials-view)) command.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+
+        **Note**: Note that it may take several seconds for credentials to reset.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      responses:
+        '200':
+          description: Managed Database instance credentials successfully reset.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X POST https://api.linode.com/v4/databases/mongodb/instances/123/credentials/reset
+      - lang: CLI
+        source: >
+          linode-cli databases mongodb-creds-reset 123
+  /databases/mongodb/instances/{instanceId}/ssl:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed MongoDB Database.
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+      - Databases
+      summary: Managed MongoDB Database SSL Certificate View
+      operationId: getDatabasesMongoDBInstanceSSL
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mongodb-ssl-cert
+      x-linode-grant: read_only
+      description: |
+        Display the SSL CA certificate for an accessible Managed MongoDB Database.
+
+        The Database must have an `active` status to perform this command.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_only
+      responses:
+        '200':
+          description: Returns the SSL CA certificate of a single Managed MongoDB Database.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseSSL'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/databases/mongodb/instances/123/ssl
+      - lang: CLI
+        source: >
+          linode-cli databases mongodb-ssl-cert 123
+  /databases/mongodb/instances/{instanceId}/patch:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed MongoDB Database.
+        required: true
+        schema:
+          type: integer
+    post:
+      tags:
+      - Databases
+      summary: Managed MongoDB Database Patch
+      operationId: postDatabasesMongoDBInstancePatch
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mongodb-patch
+      x-linode-grant: read_write
+      description: |
+        Apply security patches and updates to the underlying operating system of the Managed MongoDB Database. This function runs during regular maintenance windows, which are configurable with the **Managed MongoDB Database Update** ([PUT /databases/mongodb/instances/{instanceId}](/docs/api/databases/#managed-mongodb-database-update)) command.
+
+        Requires `read_write` access to the Database.
+
+        The Database must have an `active` status to perform this command.
+
+        **Note**
+
+        * If your database cluster is configured with a single node, you will experience downtime during this maintenance. Consider upgrading to a high availability plan to avoid any downtime due to maintenance.
+
+        * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      responses:
+        '200':
+          description: Managed Database instance patch request successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X POST https://api.linode.com/v4/databases/mongodb/instances/123/patch
+      - lang: CLI
+        source: >
+          linode-cli databases mongodb-patch 123
   /databases/mysql/instances:
     x-linode-cli-command: databases
     get:
@@ -3195,11 +3988,12 @@ paths:
       - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: mysql-list
-      x-linode-grant: unrestricted only
+      x-linode-grant: read_only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
       description: |
-        Display all accessible Managed MySQL Databases on your Account.
-
-        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+        Display all accessible Managed MySQL Databases.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3237,11 +4031,11 @@ paths:
       - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: mysql-create
-      x-linode-grant: unrestricted only
+      x-linode-grant: add_databases
       description: |
         Provision a Managed MySQL Database.
 
-        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+        Restricted Users must have the `add_databases` grant to use this command.
 
         New instances can take approximately 15 to 30 minutes to provision.
 
@@ -3249,7 +4043,6 @@ paths:
 
         * IP addresses on this list can access the Managed Database. All other sources are blocked.
         * Entering an empty array (`[]`) blocks all connections (both public and private) to the Managed Database.
-        * **Note**: Updates to the `allow_list` may take a short period of time to complete, making this command inappropriate for rapid successive updates to this property.
 
         All Managed Databases include automatic, daily backups. Up to seven backups are automatically stored for each Managed Database, providing restore points for each day of the past week.
 
@@ -3297,7 +4090,7 @@ paths:
                   "cluster_size": 3,
                   "engine": "mysql/8.0.26",
                   "encrypted": false,
-                  "ssl_connection": false,
+                  "ssl_connection": true,
                   "replication_type": "semi_synch",
                   "allow_list": [
                     "203.0.113.1",
@@ -3336,11 +4129,9 @@ paths:
       - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: mysql-view
-      x-linode-grant: unrestricted only
+      x-linode-grant: read_only
       description: |
-        Display information for a single, accessible Managed MySQL Database on your Account.
-
-        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+        Display information for a single, accessible Managed MySQL Database.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3371,9 +4162,11 @@ paths:
       - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: mysql-delete
-      x-linode-grant: unrestricted only
+      x-linode-grant: read_write
       description: |
         Remove a Managed MySQL Database from your Account.
+
+        Requires `read_write` access to the Database.
 
         The Database must have an `active`, `failed`, or `degraded` status to perform this command.
 
@@ -3409,13 +4202,13 @@ paths:
       - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: mysql-update
-      x-linode-grant: unrestricted only
+      x-linode-grant: read_write
       description: |
         Update a Managed MySQL Database.
 
-        The Database must have an `active` status to perform this command.
+        Requires `read_write` access to the Database.
 
-        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+        The Database must have an `active` status to perform this command.
 
         Updating addresses in the `allow_list` overwrites any existing addresses.
 
@@ -3507,13 +4300,14 @@ paths:
       - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: mysql-backups-list
-      x-linode-grant: unrestricted only
+      x-linode-grant: read_only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
       description: |
-        Display all backups for an accessible Managed MySQL Database on your Account.
+        Display all backups for an accessible Managed MySQL Database.
 
         The Database must not be provisioning to perform this command.
-
-        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
 
         Database `auto` type backups are created every 24 hours at 0:00 UTC. Each `auto` backup is retained for 7 days.
 
@@ -3555,15 +4349,15 @@ paths:
       - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: mysql-backup-snapshot
-      x-linode-grant: unrestricted only
+      x-linode-grant: read_write
       description: |
         Creates a snapshot backup of a Managed MySQL Database.
+
+        Requires `read_write` access to the Database.
 
         Backups generated by this command have the type `snapshot`. Snapshot backups may take several minutes to complete, after which they will be accessible to view or restore.
 
         The Database must have an `active` status to perform this command.
-
-        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3646,13 +4440,11 @@ paths:
       - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: mysql-backup-view
-      x-linode-grant: unrestricted only
+      x-linode-grant: read_only
       description: |
-        Display information for a single backup for an accessible Managed MySQL Database on your Account.
+        Display information for a single backup for an accessible Managed MySQL Database.
 
         The Database must not be provisioning to perform this command.
-
-        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3674,6 +4466,44 @@ paths:
       - lang: CLI
         source: >
           linode-cli databases mysql-backup-view 123 456
+    delete:
+      tags:
+      - Databases
+      summary: Managed MySQL Database Backup Delete
+      operationId: deleteDatabaseMySQLInstanceBackup
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: mysql-backup-delete
+      x-linode-grant: unrestricted only
+      description: |
+        Delete a single backup for an accessible Managed MySQL Database.
+
+        Requires `read_write` access to the Database.
+
+        The Database must not be provisioning to perform this command.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      responses:
+        '200':
+          description: Request to delete Database backup successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X DELETE \
+              https://api.linode.com/v4/databases/mysql/instances/123/backups/456
+      - lang: CLI
+        source: >
+          linode-cli databases mysql-backup-delete 123 456
   /databases/mysql/instances/{instanceId}/backups/{backupId}/restore:
     x-linode-cli-command: databases
     parameters:
@@ -3698,13 +4528,13 @@ paths:
       - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: mysql-backup-restore
-      x-linode-grant: unrestricted only
+      x-linode-grant: read_write
       description: |
         Restore a backup to a Managed MySQL Database on your Account.
 
-        The Database must have an `active` status to perform this command.
+        Requires `read_write` access to the Database.
 
-        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+        The Database must have an `active` status to perform this command.
 
         **Note**: Restoring from a backup will erase all existing data on the database instance and replace it with backup data.
 
@@ -3748,13 +4578,11 @@ paths:
       - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: mysql-creds-view
-      x-linode-grant: unrestricted only
+      x-linode-grant: read_only
       description: |
-        Display the the root username and password for a Managed MySQL Database.
+        Display the the root username and password for an accessible Managed MySQL Database.
 
         The Database must have an `active` status to perform this command.
-
-        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3794,11 +4622,11 @@ paths:
       - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: mysql-creds-reset
-      x-linode-grant: unrestricted only
+      x-linode-grant: read_write
       description: |
         Reset the root password for a Managed MySQL Database.
 
-        The Database must have an `active` status to perform this command.
+        Requires `read_write` access to the Database.
 
         A new root password is randomly generated and accessible with the **Managed MySQL Database Credentials View** ([GET /databases/mysql/instances/{instanceId}/credentials](/docs/api/databases/#managed-mysql-database-credentials-view)) command.
 
@@ -3844,13 +4672,11 @@ paths:
       - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: mysql-ssl-cert
-      x-linode-grant: unrestricted only
+      x-linode-grant: read_only
       description: |
         Display the SSL CA certificate for an accessible Managed MySQL Database.
 
         The Database must have an `active` status to perform this command.
-
-        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3890,13 +4716,13 @@ paths:
       - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       x-linode-cli-action: mysql-patch
-      x-linode-grant: unrestricted only
+      x-linode-grant: read_write
       description: |
         Apply security patches and updates to the underlying operating system of the Managed MySQL Database. This function runs during regular maintenance windows, which are configurable with the **Managed MySQL Database Update** ([PUT /databases/mysql/instances/{instanceId}](/docs/api/databases/#managed-mysql-database-update)) command.
 
-        The Database must have an `active` status to perform this command.
+        Requires `read_write` access to the Database.
 
-        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+        The Database must have an `active` status to perform this command.
 
         **Note**
 
@@ -3924,6 +4750,781 @@ paths:
       - lang: CLI
         source: >
           linode-cli databases mysql-patch 123
+  /databases/postgresql/instances:
+    x-linode-cli-command: databases
+    get:
+      tags:
+      - Databases
+      summary: Managed PostgreSQL Databases List
+      operationId: getDatabasesPostgreSQLInstances
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: postgresql-list
+      x-linode-grant: read_only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Display all accessible Managed PostgreSQL Databases.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_only
+      responses:
+        '200':
+          description: Returns a paginated list of all accessible Managed PostgreSQL Databases on your Account.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/DatabasePostgreSQL'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/databases/postgresql/instances/
+      - lang: CLI
+        source: >
+          linode-cli databases postgresql-list
+    post:
+      tags:
+      - Databases
+      summary: Managed PostgreSQL Database Create
+      operationId: postDatabasesPostgreSQLInstances
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: postgresql-create
+      x-linode-grant: add_databases
+      description: |
+        Provision a Managed PostgreSQL Database.
+
+        Restricted Users must have the `add_databases` grant to use this command.
+
+        New instances can take approximately 15 to 30 minutes to provision.
+
+        The `allow_list` is used to control access to the Managed Database.
+
+        * IP addresses on this list can access the Managed Database. All other sources are blocked.
+        * Entering an empty array (`[]`) blocks all connections (both public and private) to the Managed Database.
+
+        All Managed Databases include automatic, daily backups. Up to seven backups are automatically stored for each Managed Database, providing restore points for each day of the past week.
+
+        All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed PostgreSQL Database during configurable maintenance windows.
+
+        * By default, the maintenance window is set to start *every week* on *Sunday* at *20:00 UTC* and lasts for 3 hours.
+
+        * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
+
+        * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
+
+        * To modify update the maintenance window for a Database, use the **Managed PostgreSQL Database Update** ([PUT /databases/postgresql/instances/{instanceId}](/docs/api/databases/#managed-postgresql-database-update)) command.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      requestBody:
+        description: Information about the Managed PostgreSQL Database you are creating.
+        x-linode-cli-allowed-defaults:
+        - region
+        - type
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatabasePostgreSQLRequest'
+      responses:
+        '200':
+          description: A new Managed PostgreSQL Database is provisioning.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabasePostgreSQL'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+          -H "Authorization: Bearer $TOKEN" \
+          -X POST -d '{
+              "label": "example-db",
+              "region": "us-east",
+              "type": "g6-dedicated-2",
+              "cluster_size": 3,
+              "engine": "postgresql/13.2",
+              "encrypted": false,
+              "ssl_connection": false,
+              "replication_type": "asynch",
+              "replication_commit_type": "local",
+              "allow_list": [
+                "203.0.113.1",
+                "192.0.1.0/24"
+              ]
+          }' \
+          https://api.linode.com/v4/databases/postgresql/instances
+      - lang: CLI
+        source: >
+          linode-cli databases postgresql-create \
+            --label example-db \
+            --region us-east \
+            --type g6-dedicated-2 \
+            --cluster_size 3 \
+            --engine postgresql/13.2 \
+            --encrypted false \
+            --ssl_connection false \
+            --replication_type asynch \
+            --replication_commit_type local \
+            --allow_list 203.0.113.1 \
+            --allow_list 192.0.1.0/24
+  /databases/postgresql/instances/{instanceId}:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed PostgreSQL Database.
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+      - Databases
+      summary: Managed PostgreSQL Database View
+      operationId: getDatabasesPostgreSQLInstance
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: postgresql-view
+      x-linode-grant: read_only
+      description: |
+        Display information for a single, accessible Managed PostgreSQL Database.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_only
+      responses:
+        '200':
+          description: Returns information for a single Managed PostgreSQL Database.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabasePostgreSQL'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/databases/postgresql/instances/123
+      - lang: CLI
+        source: >
+          linode-cli databases postgresql-view 123
+    delete:
+      tags:
+      - Databases
+      summary: Managed PostgreSQL Database Delete
+      operationId: deleteDatabasesPostgreSQLInstance
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: postgresql-delete
+      x-linode-grant: read_write
+      description: |
+        Remove a Managed PostgreSQL Database from your Account.
+
+        Requires `read_write` access to the Database.
+
+        The Database must have an `active`, `failed`, or `degraded` status to perform this command.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      responses:
+        '200':
+          description: Managed PostgreSQL Database successfully deleted.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X DELETE \
+              https://api.linode.com/v4/databases/postgresql/instances/123
+      - lang: CLI
+        source: >
+          linode-cli databases postgresql-delete 123
+    put:
+      tags:
+      - Databases
+      summary: Managed PostgreSQL Database Update
+      operationId: putDatabasesPostgreSQLInstance
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: postgresql-update
+      x-linode-grant: read_write
+      description: |
+        Update a Managed PostgreSQL Database.
+
+        Requires `read_write` access to the Database.
+
+        The Database must have an `active` status to perform this command.
+
+        Updating addresses in the `allow_list` overwrites any existing addresses.
+
+        * IP addresses on this list can access the Managed Database. All other sources are blocked.
+        * Entering an empty array (`[]`) blocks all connections (both public and private) to the Managed Database.
+        * **Note**: Updates to the `allow_list` may take a short period of time to complete, making this command inappropriate for rapid successive updates to this property.
+
+        All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed PostgreSQL Database. The maintenance window for these updates is configured with the Managed Database's `updates` property.
+
+        * By default, the maintenance window is set to start *every week* on *Sunday* at *20:00 UTC* and lasts for 3 hours.
+
+        * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
+
+        * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      requestBody:
+        description: Updated information for the Managed PostgreSQL Database.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Updated information for the Managed PostgreSQL Database.
+              properties:
+                label:
+                  $ref: '#/components/schemas/DatabasePostgreSQLRequest/properties/label'
+                allow_list:
+                  $ref: '#/components/schemas/DatabasePostgreSQLRequest/properties/allow_list'
+                updates:
+                  $ref: '#/components/schemas/DatabasePostgreSQL/properties/updates'
+      responses:
+        '200':
+          description: Managed Database updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabasePostgreSQL'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $TOKEN" \
+              -X PUT -d '{
+                  "label": "example-db",
+                  "allow_list": [
+                    "203.0.113.1",
+                    "192.0.1.0/24"
+                  ],
+                  "updates" = {
+                    "frequency": "monthly",
+                    "duration": 3,
+                    "hour_of_day": 12,
+                    "day_of_week": 4,
+                    "week_of_month": 3,
+                  }
+              }' \
+              https://api.linode.com/v4/databases/postgresql/instances/123
+      - lang: CLI
+        source: >
+          linode-cli databases postgresql-update 123 \
+            --label example-db \
+            --allow_list 203.0.113.1 \
+            --allow_list 192.0.1.0/24 \
+            --updates.frequency monthly \
+            --updates.duration 3 \
+            --updates.hour_of_day 12 \
+            --updates.day_of_week 4 \
+            --updates.week_of_month 3
+  /databases/postgresql/instances/{instanceId}/backups:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed PostgreSQL Database.
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+      - Databases
+      summary: Managed PostgreSQL Database Backups List
+      operationId: getDatabasesPostgreSQLInstanceBackups
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: postgresql-backups-list
+      x-linode-grant: read_only
+      parameters:
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/pageSize'
+      description: |
+        Display all backups for an accessible Managed PostgreSQL Database.
+
+        The Database must not be provisioning to perform this command.
+
+        Database `auto` type backups are created every 24 hours at 0:00 UTC. Each `auto` backup is retained for 7 days.
+
+        Database `snapshot` type backups are created by accessing the **Managed PostgreSQL Database Backup Snapshot Create** ([POST /databases/postgresql/instances/{instanceId}/backups](/docs/api/databases/#managed-postgresql-database-backup-snapshot-create)) command.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      responses:
+        '200':
+          description: Returns a paginated list of backups for the Managed PostgreSQL Database.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/DatabaseBackup'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/databases/postgresql/instances/123/backups
+      - lang: CLI
+        source: >
+          linode-cli databases postgresql-backups-list 123
+    post:
+      tags:
+      - Databases
+      summary: Managed PostgreSQL Database Backup Snapshot Create
+      operationId: postDatabasesPostgreSQLInstanceBackup
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: postgresql-backup-snapshot
+      x-linode-grant: read_write
+      description: |
+        Creates a snapshot backup of a Managed PostgreSQL Database.
+
+        Requires `read_write` access to the Database.
+
+        Backups generated by this command have the type `snapshot`. Snapshot backups may take several minutes to complete, after which they will be accessible to view or restore.
+
+        The Database must have an `active` status to perform this command.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      requestBody:
+        description: Information about the snapshot backup to create.
+        content:
+          application/json:
+            schema:
+              required:
+              - label
+              type: object
+              properties:
+                label:
+                  type: string
+                  minLength: 3
+                  maxLength: 64
+                  description: |
+                    The label for the Database snapshot backup.
+
+                    * Must use only letters, numbers, underscores, dashes, and periods.
+                    * Must begin and end with a letter or number.
+                    * Must not include two dashes, underscores, or periods in a row.
+                  example: db-snapshot
+                target:
+                  type: string
+                  enum:
+                  - primary
+                  - secondary
+                  default: primary
+                  description: |
+                    The Database cluster target.
+
+                    If the Database is a high availability cluster, choosing `secondary` creates a snapshot backup of a replica node.
+                  example: primary
+      responses:
+        '200':
+          description: Database snapshot backup request successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X POST -d '{
+                  "label": "db-snapshot",
+                  "target": "primary"
+              }' \
+              https://api.linode.com/v4/databases/postgresql/instances/123/backups/
+      - lang: CLI
+        source: >
+          linode-cli databases postgresql-backup-snapshot 123 \
+            --label db-snapshot \
+            --target primary
+  /databases/postgresql/instances/{instanceId}/backups/{backupId}:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed PostgreSQL Database.
+        required: true
+        schema:
+          type: integer
+      - name: backupId
+        in: path
+        description: The ID of the Managed PostgreSQL Database backup.
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+      - Databases
+      summary: Managed PostgreSQL Database Backup View
+      operationId: getDatabasesPostgreSQLInstanceBackup
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: postgresql-backup-view
+      x-linode-grant: read_only
+      description: |
+        Display information for a single backup for an accessible Managed PostgreSQL Database.
+
+        The Database must not be provisioning to perform this command.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      responses:
+        '200':
+          description: Returns a single backup for the Managed PostgreSQL Database.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseBackup'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/databases/postgresql/instances/123/backups/456
+      - lang: CLI
+        source: >
+          linode-cli databases postgresql-backup-view 123 456
+    delete:
+      tags:
+      - Databases
+      summary: Managed PostgreSQL Database Backup Delete
+      operationId: deleteDatabasePostgreSQLInstanceBackup
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: postgresql-backup-delete
+      x-linode-grant: unrestricted only
+      description: |
+        Delete a single backup for an accessible Managed PostgreSQL Database.
+
+        Requires `read_write` access to the Database.
+
+        The Database must not be provisioning to perform this command.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      responses:
+        '200':
+          description: Request to delete Database backup successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X DELETE \
+              https://api.linode.com/v4/databases/postgresql/instances/123/backups/456
+      - lang: CLI
+        source: >
+          linode-cli databases postgresql-backup-delete 123 456
+  /databases/postgresql/instances/{instanceId}/backups/{backupId}/restore:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed PostgreSQL Database.
+        required: true
+        schema:
+          type: integer
+      - name: backupId
+        in: path
+        description: The ID of the Managed PostgreSQL Database backup.
+        required: true
+        schema:
+          type: integer
+    post:
+      tags:
+      - Databases
+      summary: Managed PostgreSQL Database Backup Restore
+      operationId: postDatabasesPostgreSQLInstanceBackupRestore
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: postgresql-backup-restore
+      x-linode-grant: read_write
+      description: |
+        Restore a backup to a Managed PostgreSQL Database on your Account.
+
+        Requires `read_write` access to the Database.
+
+        The Database must have an `active` status to perform this command.
+
+        **Note**: Restoring from a backup will erase all existing data on the database instance and replace it with backup data.
+
+        **Note**: Currently, restoring a backup after resetting Managed Database credentials results in a failed cluster. Please contact Customer Support if this occurs.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      responses:
+        '200':
+          description: Request to restore backup successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X POST https://api.linode.com/v4/databases/postgresql/instances/123/backups/456/restore
+      - lang: CLI
+        source: >
+          linode-cli databases postgresql-backup-restore 123 456
+  /databases/postgresql/instances/{instanceId}/credentials:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed PostgreSQL Database.
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+      - Databases
+      summary: Managed PostgreSQL Database Credentials View
+      operationId: getDatabasesPostgreSQLInstanceCredentials
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: postgresql-creds-view
+      x-linode-grant: read_only
+      description: |
+        Display the the root username and password for an accessible Managed PostgreSQL Database.
+
+        The Database must have an `active` status to perform this command.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_only
+      responses:
+        '200':
+          description: Managed Database root username and password.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseCredentials'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/databases/postgresql/instances/123/credentials/
+      - lang: CLI
+        source: >
+          linode-cli databases postgresql-creds-view 123
+  /databases/postgresql/instances/{instanceId}/credentials/reset:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed PostgreSQL Database.
+        required: true
+        schema:
+          type: integer
+    post:
+      tags:
+      - Databases
+      summary: Managed PostgreSQL Database Credentials Reset
+      operationId: postDatabasesPostgreSQLInstanceCredentialsReset
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: postgresql-creds-reset
+      x-linode-grant: read_write
+      description: |
+        Reset the root password for a Managed PostgreSQL Database.
+
+        Requires `read_write` access to the Database.
+
+        A new root password is randomly generated and accessible with the **Managed PostgreSQL Database Credentials View** ([GET /databases/postgresql/instances/{instanceId}/credentials](/docs/api/databases/#managed-postgresql-database-credentials-view)) command.
+
+        Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+
+        **Note**: Note that it may take several seconds for credentials to reset.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      responses:
+        '200':
+          description: Managed Database instance credentials successfully reset.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X POST https://api.linode.com/v4/databases/postgresql/instances/123/credentials/reset
+      - lang: CLI
+        source: >
+          linode-cli databases postgresql-creds-reset 123
+  /databases/postgresql/instances/{instanceId}/ssl:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed PostgreSQL Database.
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+      - Databases
+      summary: Managed PostgreSQL Database SSL Certificate View
+      operationId: getDatabasesPostgreSQLInstanceSSL
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: postgresql-ssl-cert
+      x-linode-grant: read_only
+      description: |
+        Display the SSL CA certificate for an accessible Managed PostgreSQL Database.
+
+        The Database must have an `active` status to perform this command.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_only
+      responses:
+        '200':
+          description: Returns the SSL CA certificate of a single Managed PostgreSQL Database.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseSSL'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              https://api.linode.com/v4/databases/postgresql/instances/123/ssl
+      - lang: CLI
+        source: >
+          linode-cli databases postgresql-ssl-cert 123
+  /databases/postgresql/instances/{instanceId}/patch:
+    x-linode-cli-command: databases
+    parameters:
+      - name: instanceId
+        in: path
+        description: The ID of the Managed PostgreSQL Database.
+        required: true
+        schema:
+          type: integer
+    post:
+      tags:
+      - Databases
+      summary: Managed PostgreSQL Database Patch
+      operationId: postDatabasesPostgreSQLInstancePatch
+      servers:
+      - url: https://api.linode.com/v4
+      - url: https://api.linode.com/v4beta
+      x-linode-cli-action: postgresql-patch
+      x-linode-grant: read_write
+      description: |
+        Apply security patches and updates to the underlying operating system of the Managed PostgreSQL Database. This function runs during regular maintenance windows, which are configurable with the **Managed PostgreSQL Database Update** ([PUT /databases/postgresql/instances/{instanceId}](/docs/api/databases/#managed-postgresql-database-update)) command.
+
+        Requires `read_write` access to the Database.
+
+        The Database must have an `active` status to perform this command.
+
+        **Note**
+
+        * If your database cluster is configured with a single node, you will experience downtime during this maintenance. Consider upgrading to a high availability plan to avoid any downtime due to maintenance.
+
+        * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - databases:read_write
+      responses:
+        '200':
+          description: Managed Database instance patch request successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+              -X POST https://api.linode.com/v4/databases/postgresql/instances/123/patch
+      - lang: CLI
+        source: >
+          linode-cli databases postgresql-patch 123
   /databases/types:
     x-linode-cli-command: databases
     get:
@@ -11362,7 +12963,7 @@ paths:
                   }
                 ]
               }' \
-              https://api.linode.com/v4/networking/ipvs/assign
+              https://api.linode.com/v4/networking/ips/assign
       - lang: CLI
         source: >
           linode-cli networking ip-assign \
@@ -17329,6 +18930,7 @@ components:
       properties:
         active_promotions:
           type: array
+          readOnly: true
           items:
             $ref: '#/components/schemas/Promotion'
         active_since:
@@ -17441,8 +19043,8 @@ components:
           description: >
             The tax identification number associated with this Account,
             for tax calculations in some countries.
-            If you do not live in a country that collects tax, this should be `null`.
-          maxLength: 100
+            If you do not live in a country that collects tax, this should be an empty string (`""`).
+          maxLength: 25
           example: ATU99999999
         euuid:
           type: string
@@ -17743,7 +19345,11 @@ components:
           x-linode-cli-display: 4
         engine:
           type: string
-          description: The Managed Database engine type. Currently, only MySQL is available.
+          enum:
+          - mongodb
+          - mysql
+          - postgresql
+          description: The Managed Database engine type.
           example: mysql
           x-linode-filterable: true
           x-linode-cli-display: 6
@@ -17773,6 +19379,7 @@ components:
           - failed
           - degraded
           - updating
+          - backing_up
           description: The operating status of the Managed Database.
           example: active
           x-linode-filterable: true
@@ -17790,7 +19397,7 @@ components:
         encrypted:
           type: boolean
           default: false
-          description: Whether the Managed Databases is encrypted. Defaults to `false`.
+          description: Whether the Managed Databases is encrypted.
           example: false
         allow_list:
           type: array
@@ -17811,8 +19418,9 @@ components:
           - 1
           - 3
           example: 3
+          default: 1
           description: |
-            The number of Linode Instance nodes deployed to the Managed Database. Defaults to `1`.
+            The number of Linode Instance nodes deployed to the Managed Database.
 
             Choosing 3 nodes creates a high availability cluster consisting of 1 primary node and 2 replica nodes.
           x-linode-cli-display: 5
@@ -17848,6 +19456,48 @@ components:
           description: When this Managed Database was last updated.
           example: '2022-01-01T00:01:01'
           readOnly: true
+        updates:
+          type: object
+          description: Configuration settings for automated patch update maintenance for the Managed Database.
+          properties:
+            frequency:
+              type: string
+              default: weekly
+              enum:
+              - weekly
+              - monthly
+              description: Whether maintenance occurs on a weekly or monthly basis.
+              example: weekly
+            duration:
+              type: integer
+              minimum: 1
+              maximum: 3
+              description: The maximum maintenance window time in hours.
+              example: 3
+            hour_of_day:
+              type: integer
+              minimum: 0
+              maximum: 23
+              description: The hour to begin maintenance based in UTC time.
+              example: 0
+            day_of_week:
+              type: integer
+              minimum: 1
+              maximum: 7
+              description: The day to perform maintenance. 1=Monday, 2=Tuesday, etc.
+              example: 1
+            week_of_month:
+              type: integer
+              minimum: 1
+              maximum: 4
+              nullable: true
+              description: |
+                The week of the month to perform `monthly` frequency updates. Defaults to `null`.
+
+                * Required for `monthly` frequency updates.
+
+                * Must be `null` for `weekly` frequency updates.
+              example: null
         instance_uri:
           type: string
           example: "/v4/databases/mysql/instances/123"
@@ -17874,7 +19524,11 @@ components:
           x-linode-cli-display: 3
         label:
           type: string
-          description: The database backup's label, for display purposes only.
+          maxLength: 30
+          description: |
+            The database backup's label, for display purposes only.
+
+            Must include only ASCII letters or numbers.
           example: Scheduled - 02/04/22 11:11 UTC-XcCRmI
           x-linode-cli-display: 2
         created:
@@ -17921,6 +19575,174 @@ components:
           description: The Managed Database engine version.
           x-linode-filterable: true
           x-linode-cli-display: 3
+    DatabaseMongoDB:
+      type: object
+      description: Managed MongoDB Databases object.
+      properties:
+        id:
+          $ref: '#/components/schemas/Database/properties/id'
+          x-linode-cli-display: 1
+        label:
+          $ref: '#/components/schemas/Database/properties/label'
+          x-linode-cli-display: 2
+        type:
+          $ref: '#/components/schemas/Database/properties/type'
+          x-linode-cli-display: 4
+        engine:
+          type: string
+          description: The Managed Database engine type.
+          example: mongodb
+          x-linode-filterable: true
+          x-linode-cli-display: 6
+          readOnly: true
+        version:
+          type: string
+          description: The Managed Database engine version.
+          example: "4.4.10"
+          x-linode-filterable: true
+          x-linode-cli-display: 7
+          readOnly: true
+        region:
+          $ref: '#/components/schemas/Database/properties/region'
+          x-linode-cli-display: 3
+        status:
+          $ref: '#/components/schemas/Database/properties/status'
+          x-linode-cli-display: 100
+          x-linode-cli-color:
+            provisioning: yellow
+            active: green
+            resuming: yellow
+            restoring: yellow
+            failed: red
+            degraded: red
+            default_: white
+        encrypted:
+          $ref: '#/components/schemas/Database/properties/encrypted'
+        allow_list:
+          $ref: '#/components/schemas/Database/properties/allow_list'
+        cluster_size:
+          $ref: '#/components/schemas/Database/properties/cluster_size'
+          x-linode-cli-display: 5
+        hosts:
+          type: object
+          readOnly: true
+          description: The primary and secondary hosts for the Managed Database. These are assigned after provisioning is complete.
+          properties:
+            primary:
+              type: string
+              description: The primary host for the Managed Database.
+              example: lin-0000-0000.servers.linodedb.net
+              nullable: true
+            secondary:
+              type: string
+              description: |
+                The secondary/private network host for the Managed Database.
+
+                A private network host and a private IP can only be used to access a Database Cluster from Linodes in the same data center and will not incur transfer costs.
+
+                **Note**: The secondary hostname is publicly viewable and accessible.
+              example: null
+              nullable: true
+        peers:
+          type: array
+          description: |
+            An array of peer addresses for this Database.
+          items:
+            type: string
+            description: |
+              The peer address of a Managed MongoDB Database cluster node. Each node in a cluster has its own unique peer address.
+          example:
+          - lin-0000-0000.servers.linodedb.net
+          - lin-0000-0001.servers.linodedb.net
+          - lin-0000-0002.servers.linodedb.net
+        replica_set:
+          nullable: true
+          default: null
+          type: string
+          maxLength: 64
+          description: |
+            Label for configuring a MongoDB [replica set](https://www.mongodb.com/docs/manual/replication/). Choose the same label on multiple Databases to include them in the same replica set.
+
+            If `null`, the Database is not included in any replica set.
+          example: null
+        ssl_connection:
+          type: boolean
+          default: true
+          example: true
+          description: |
+            Whether to require SSL credentials to establish a connection to the Managed Database.
+
+            Use the **Managed MongoDB Database Credentials View** ([GET /databases/mongodb/instances/{instanceId}/credentials](/docs/api/databases/#managed-mongodb-database-credentials-view)) command for access information.
+        compression_type:
+          type: string
+          enum:
+          - none
+          - snappy
+          - zlip
+          default: none
+          example: none
+          description: |
+            The type of data compression for this Database.
+
+            Snappy has a lower comparative compression ratio and resource consumption rate.
+
+            Zlip has a higher comparative compression ratio and resource consumption rate.
+          x-linode-cli-display: 99
+        storage_engine:
+          type: string
+          enum:
+          - mmapv1
+          - wiredtiger
+          default: wiredtiger
+          example: wiredtiger
+          description: |
+            The type of storage engine for this Database.
+
+            **Note:** MMAPV1 is not available for MongoDB versions 4.0 and above.
+        port:
+          type: integer
+          description: The access port for this Managed Database.
+          example: 27017
+          x-linode-cli-display: 98
+        created:
+          $ref: '#/components/schemas/Database/properties/created'
+        updated:
+          $ref: '#/components/schemas/Database/properties/updated'
+        updates:
+          $ref: '#/components/schemas/Database/properties/updates'
+    DatabaseMongoDBRequest:
+      type: object
+      description: Managed MongoDB Database request object.
+      required:
+        - label
+        - type
+        - engine
+        - region
+      properties:
+        label:
+          $ref: '#/components/schemas/DatabaseMongoDB/properties/label'
+        type:
+          $ref: '#/components/schemas/DatabaseMongoDB/properties/type'
+        engine:
+          type: string
+          example: mongodb/4.4.10
+          description: The Managed Database engine in engine/version format.
+        region:
+          $ref: '#/components/schemas/DatabaseMongoDB/properties/region'
+        encrypted:
+          $ref: '#/components/schemas/DatabaseMongoDB/properties/encrypted'
+        allow_list:
+          $ref: '#/components/schemas/DatabaseMongoDB/properties/allow_list'
+        cluster_size:
+          $ref: '#/components/schemas/DatabaseMongoDB/properties/cluster_size'
+        replica_set:
+          $ref: '#/components/schemas/DatabaseMongoDB/properties/replica_set'
+        ssl_connection:
+          $ref: '#/components/schemas/DatabaseMongoDB/properties/ssl_connection'
+        compression_type:
+          $ref: '#/components/schemas/DatabaseMongoDB/properties/compression_type'
+        storage_engine:
+          $ref: '#/components/schemas/DatabaseMongoDB/properties/storage_engine'
     DatabaseMySQL:
       type: object
       description: Managed MySQL Databases object.
@@ -17961,6 +19783,7 @@ components:
             restoring: yellow
             failed: red
             degraded: red
+            default_: white
         encrypted:
           $ref: '#/components/schemas/Database/properties/encrypted'
         allow_list:
@@ -17972,10 +19795,10 @@ components:
           $ref: '#/components/schemas/Database/properties/hosts'
         ssl_connection:
           type: boolean
-          default: false
+          default: true
           example: true
           description: |
-            Whether to require SSL credentials to establish a connection to the Managed Database. Defaults to `false`.
+            Whether to require SSL credentials to establish a connection to the Managed Database.
 
             Use the **Managed MySQL Database Credentials View** ([GET /databases/mysql/instances/{instanceId}/credentials](/docs/api/databases/#managed-mysql-database-credentials-view)) command for access information.
         replication_type:
@@ -18004,45 +19827,7 @@ components:
         updated:
           $ref: '#/components/schemas/Database/properties/updated'
         updates:
-          type: object
-          description: Configuration settings for automated patch update maintenance for the Managed Database.
-          properties:
-            frequency:
-              type: string
-              enum:
-              - weekly
-              - monthly
-              description: Whether maintenance occurs on a weekly or monthly basis.
-              example:
-            duration:
-              type: integer
-              minimum: 1
-              maximum: 3
-              description: The maximum maintenance window time in hours.
-              example: 3
-            hour_of_day:
-              type: integer
-              minimum: 0
-              maximum: 23
-              description: The hour to begin maintenance based in UTC time.
-              example: 0
-            day_of_week:
-              type: integer
-              minimum: 1
-              maximum: 7
-              description: The day to perform maintenance. 1=Monday, 2=Tuesday, etc.
-              example: 1
-            week_of_month:
-              type: integer
-              minimum: 1
-              maximum: 4
-              description: |
-                The week of the month to perform `monthly` frequency updates.
-
-                * Required for `monthly` frequency updates.
-
-                * Must be `null` for `weekly` frequency updates.
-              example: 1
+          $ref: '#/components/schemas/Database/properties/updates'
     DatabaseMySQLRequest:
       type: object
       description: Managed MySQL Database request object.
@@ -18072,6 +19857,157 @@ components:
           $ref: '#/components/schemas/DatabaseMySQL/properties/ssl_connection'
         replication_type:
           $ref: '#/components/schemas/DatabaseMySQL/properties/replication_type'
+    DatabasePostgreSQL:
+      type: object
+      description: Managed PostgreSQL Databases object.
+      properties:
+        id:
+          $ref: '#/components/schemas/Database/properties/id'
+          x-linode-cli-display: 1
+        label:
+          $ref: '#/components/schemas/Database/properties/label'
+          x-linode-cli-display: 2
+        type:
+          $ref: '#/components/schemas/Database/properties/type'
+          x-linode-cli-display: 4
+        engine:
+          type: string
+          description: The Managed Database engine type.
+          example: postgresql
+          x-linode-filterable: true
+          x-linode-cli-display: 6
+          readOnly: true
+        version:
+          type: string
+          description: The Managed Database engine version.
+          example: "13.2"
+          x-linode-filterable: true
+          x-linode-cli-display: 7
+          readOnly: true
+        region:
+          $ref: '#/components/schemas/Database/properties/region'
+          x-linode-cli-display: 3
+        status:
+          $ref: '#/components/schemas/Database/properties/status'
+          x-linode-cli-display: 100
+          x-linode-cli-color:
+            provisioning: yellow
+            active: green
+            resuming: yellow
+            restoring: yellow
+            failed: red
+            degraded: red
+            default_: white
+        encrypted:
+          $ref: '#/components/schemas/Database/properties/encrypted'
+        allow_list:
+          $ref: '#/components/schemas/Database/properties/allow_list'
+        cluster_size:
+          $ref: '#/components/schemas/Database/properties/cluster_size'
+          x-linode-cli-display: 5
+        hosts:
+          type: object
+          readOnly: true
+          description: The primary and secondary hosts for the Managed Database. These are assigned after provisioning is complete.
+          properties:
+            primary:
+              type: string
+              description: The primary host for the Managed Database.
+              example: lin-0000-000-pgsql-primary.servers.linodedb.net
+              nullable: true
+            secondary:
+              type: string
+              description: |
+                The secondary/private network host for the Managed Database.
+
+                A private network host and a private IP can only be used to access a Database Cluster from Linodes in the same data center and will not incur transfer costs.
+
+                **Note**: The secondary hostname is publicly viewable and accessible.
+              example: lin-0000-000-pgsql-primary-private.servers.linodedb.net
+              nullable: true
+        ssl_connection:
+          type: boolean
+          default: true
+          example: true
+          description: |
+            Whether to require SSL credentials to establish a connection to the Managed Database.
+
+            Use the **Managed PostgreSQL Database Credentials View** ([GET /databases/postgresql/instances/{instanceId}/credentials](/docs/api/databases/#managed-postgresql-database-credentials-view)) command for access information.
+        replication_type:
+          type: string
+          enum:
+          - none
+          - asynch
+          - semi_synch
+          example: semi_synch
+          description: |
+            The replication method used for the Managed Database.
+
+            Defaults to `none` for a single cluster and `semi_synch` for a high availability cluster.
+
+            Must be `none` for a single node cluster.
+
+            Must be `asynch` or `semi_synch` for a high availability cluster.
+          x-linode-cli-display: 99
+        replication_commit_type:
+          type: string
+          enum:
+          - on
+          - local
+          - remote_write
+          - remote_apply
+          - off
+          default: local
+          example: local
+          description: |
+            The synchronization level of the replicating server.
+
+            Must be `local` or `off` for the `asynch` replication type.
+
+            Must be `on`, `remote_write`, or `remote_apply` for the `semi_synch` replication type.
+          x-linode-cli-display: 100
+        port:
+          type: integer
+          description: The access port for this Managed Database.
+          example: 3306
+          x-linode-cli-display: 98
+        created:
+          $ref: '#/components/schemas/Database/properties/created'
+        updated:
+          $ref: '#/components/schemas/Database/properties/updated'
+        updates:
+          $ref: '#/components/schemas/Database/properties/updates'
+    DatabasePostgreSQLRequest:
+      type: object
+      description: Managed PostgreSQL Database request object.
+      required:
+        - label
+        - type
+        - engine
+        - region
+      properties:
+        label:
+          $ref: '#/components/schemas/DatabasePostgreSQL/properties/label'
+        type:
+          $ref: '#/components/schemas/DatabasePostgreSQL/properties/type'
+        engine:
+          type: string
+          example: postgresql/13.2
+          description: The Managed Database engine in engine/version format.
+        region:
+          $ref: '#/components/schemas/DatabasePostgreSQL/properties/region'
+        encrypted:
+          $ref: '#/components/schemas/DatabasePostgreSQL/properties/encrypted'
+        allow_list:
+          $ref: '#/components/schemas/DatabasePostgreSQL/properties/allow_list'
+        cluster_size:
+          $ref: '#/components/schemas/DatabasePostgreSQL/properties/cluster_size'
+        ssl_connection:
+          $ref: '#/components/schemas/DatabasePostgreSQL/properties/ssl_connection'
+        replication_type:
+          $ref: '#/components/schemas/DatabasePostgreSQL/properties/replication_type'
+        replication_commit_type:
+          $ref: '#/components/schemas/DatabasePostgreSQL/properties/replication_commit_type'
     DatabaseSSL:
       type: object
       description: Managed Database SSL object.
@@ -18706,6 +20642,7 @@ components:
             failed: red
             pending: yellow
             stale: red
+            default_: white
           type: string
           enum:
           - accepted
@@ -19463,6 +21400,10 @@ components:
               type: boolean
               description: If true, this User may add Firewalls.
               example: true
+            add_databases:
+              type: boolean
+              description: if true, this User may add Managed Databases.
+              example: true
         linode:
           type: array
           items:
@@ -19671,6 +21612,21 @@ components:
           description: The amount of tax levied on the Invoice in US Dollars.
           example: 12.25
           x-linode-cli-display: 5
+        tax_summary:
+          type: array
+          readOnly: true
+          description: The amount of tax broken down into subtotals by source.
+          items:
+            type: object
+            properties:
+              tax:
+                type: number
+                description: The amount of tax subtotal attributable to this source.
+                example: 12.25
+              name:
+                type: string
+                description: The source of this tax subtotal.
+                example: PA STATE TAX
         total:
           type: number
           readOnly: true
@@ -24058,6 +26014,7 @@ components:
             failed: red
             pending: yellow
             stale: red
+            default_: white
           type: string
           enum:
           - accepted
@@ -24252,13 +26209,10 @@ components:
               * `active` - the Volume is online and available for use.
               * `resizing` - the Volume is in the process of upgrading
                 its current capacity.
-              * `contact_support` - there is a problem with your Volume. Please
-                [open a Support Ticket](/docs/api/support/#support-ticket-open) to resolve the issue.
           enum:
           - creating
           - active
           - resizing
-          - contact_support
           example: active
           readOnly: true
           x-linode-cli-display: 3

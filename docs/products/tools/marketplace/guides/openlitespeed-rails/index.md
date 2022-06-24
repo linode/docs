@@ -32,7 +32,7 @@ The OpenLiteSpeed Rails app automatically installs the performance web server Op
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7, Ubuntu 18.04 LTS, Ubuntu 20.04 LTS
+- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment

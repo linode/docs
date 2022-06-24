@@ -39,7 +39,7 @@ Prometheus is often used alongside [Grafana](https://grafana.com/) for reporting
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9, Debian 10
+- **Supported distributions:** Debian 10
 - **Recommended minimum plan:** 4GB Dedicated CPU or Shared Compute Instance
 
 ## Getting Started after Deployment

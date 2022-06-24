@@ -7,7 +7,7 @@ keywords: ["getting started", "intro", "basics", "first steps", "linode platform
 description: "Learn how to create an account and use the Linode Cloud Platform."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode/']
-modified: 2022-05-05
+modified: 2022-06-21
 modified_by:
   name: Linode
 published: 2018-11-05
@@ -20,7 +20,7 @@ show_on_rss_feed: false
 image: getting-started.jpg
 ---
 
-Thank you for choosing Linode as your cloud hosting provider! This guide will help you sign up for an account and access Linode's [Cloud Manager](https://cloud.linode.com), a browser-based control panel which allows you to manage your Linode virtual servers and services.
+Our goal at Linode is to make cloud computing simple, accessible, and affordable. To this end, the Linode platform offers a variety of user-friendly cloud solutions, all of which have clear and predictable [pricing](https://www.linode.com/pricing/) and can be managed using an intuitive browser-based interface (the [Cloud Manager](https://www.linode.com/products/cloud-manager/)), the command line (the [Linode CLI](https://www.linode.com/products/cli/)), or programmatically through an API (the [Linode API](https://www.linode.com/products/linode-api/)). This guide covers signing up for a Linode account, accessing the Cloud Manager, creating your first services, and understanding how billing works.
 
 1. [Sign Up for an Account](#sign-up-for-an-account)
 1. [Navigate the Cloud Manager](#navigate-the-cloud-manager)
@@ -61,7 +61,7 @@ Linode's [Cloud Manager](https://cloud.linode.com/) is the primary gateway to ou
 
 - [Account](https://cloud.linode.com/account/billing): View your account, billing information, payment methods, and previous invoices. You can also add additional users to your account.
 
-- [Help & Support](https://cloud.linode.com/support): Search through our guides, find answers on the Community Site, chat with our Support Bot, or open a ticket to reach our 24/7 award-winning [Support Team](https://www.linode.com/support-experience/).
+- [Help & Support](https://cloud.linode.com/support): Search through our guides, find answers on the Community Site, or open a ticket to reach our 24/7 award-winning [Support Team](https://www.linode.com/support-experience/).
 
 For a full overview of the Cloud Manager and its core features, see the [Overview of the Cloud Manager](/docs/guides/an-overview-of-the-linode-cloud-manager/) guide.
 
@@ -103,7 +103,7 @@ In addition to [Compute Instances](#create-your-first-compute-instance), Linode 
 
 Linode services are billed to your primary payment method at the end of each month (or when your accrued charges reach your billing limit). This means you can continuously add, modify, and remove services throughout the month and, after the month is over, you receive an invoice for *the hourly usage of each service **up to the monthly cap***. In affect, billing is *post-paid* and *pro-rated*. See the below resources for more billing information and detailed hourly and monthly pricing.
 
-- [Billing and Payments](/docs/guides/how-linode-billing-works/)
+- [Billing and Payments](/docs/guides/understanding-billing-and-payments/)
 - [Managing Billing in the Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/)
 - [Linode Price List](https://www.linode.com/pricing/)
 

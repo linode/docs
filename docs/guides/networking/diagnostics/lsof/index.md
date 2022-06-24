@@ -305,7 +305,7 @@ apache2      24571    www-data  6u     IPv6    8626157   0t0       TCP   *:https
 
 #### Internet Connections
 
-If you process the output of `lsof` with some traditional UNIX command line tools, like [grep](/docs/quick-answers/linux/how-to-use-grep/) and `awk`, you can list all active network connections:
+If you process the output of `lsof` with some traditional UNIX command line tools, like [grep](/docs/guides/how-to-use-grep/) and `awk`, you can list all active network connections:
 
     sudo lsof -i -n -P | grep ESTABLISHED | awk '{print $1, $9}' | sort -u
 

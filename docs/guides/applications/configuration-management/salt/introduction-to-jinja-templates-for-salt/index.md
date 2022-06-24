@@ -26,7 +26,7 @@ Jinja is a flexible templating language for Python that can be used to generate 
 
 Templating languages are well known within the context of creating web pages in a *Model View Controller* architecture. In this scenario the template engine processes source data, like the data found in a database, and a web template that includes a mixture of HTML and the templating language. These two pieces are then used to generate the final web page for users to consume. Templating languages, however, are not limited to web pages. Salt, a popular Python based configuration management software, supports Jinja to allow for abstraction and reuse within Salt state files and regular files.
 
-This guide will provide an overview of the Jinja templating language used primarily within Salt. If you are not yet familiar with Salt concepts, review the [Beginner's Guide to Salt](/docs/applications/configuration-management/beginners-guide-to-salt) before continuing. While you will not be creating Salt states of your own in this guide, it is also helpful to review the [Getting Started with Salt - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/) guide.
+This guide will provide an overview of the Jinja templating language used primarily within Salt. If you are not yet familiar with Salt concepts, review the [Beginner's Guide to Salt](/docs/applications/configuration-management/beginners-guide-to-salt) before continuing. While you will not be creating Salt states of your own in this guide, it is also helpful to review the [Getting Started with Salt - Basic Installation and Setup](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) guide.
 
 ## Jinja Basics
 

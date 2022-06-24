@@ -166,11 +166,11 @@ A mount unit file must contain a `[Mount]` section. The example mount unit file 
 The official systemd manual notes that configuring mount points through `/etc/fstab` is the recommended approach. systemd has a `system-fstab-generator` that translates the information in the fstab file into systemd mount and swap units at runtime.
 {{</ note >}}
 
-There are many other unit file types available in systemd. Read the [Use systemd to Start a Linux Service at Boot](/docs/quick-answers/linux/start-service-at-boot/) guide to become more familiar with the service unit type.
+There are many other unit file types available in systemd. Read the [Use systemd to Start a Linux Service at Boot](/docs/guides/start-service-at-boot/) guide to become more familiar with the service unit type.
 
 ### Timer Units
 
-You can use systemd timer unit files to automate tasks, similarly to how [cron jobs](/docs/tools-reference/tools/schedule-tasks-with-cron/) are used. However, with timer units you will also have access to systemd's powerful logging capabilities.
+You can use systemd timer unit files to automate tasks, similarly to how [cron jobs](/docs/guides/schedule-tasks-with-cron/) are used. However, with timer units you will also have access to systemd's powerful logging capabilities.
 
 To better understand systemd timer units, this section will outline how a timer unit can be used to create periodic backups for a mysql database.
 
@@ -249,7 +249,7 @@ When you start the timer unit, systemd will start it right away. To do this, iss
 
 systemd makes common system administration tasks easier to manage with its `systemctl` and `journalctl` commands. `systemctl` can be used to gather detailed information about the overall state of your server and any individual unit type. It can stop and start the server and modify the system state. In the Timer Unit Files section `systemctl` is used to enable and start an individual timer unit. systemd can be used in a similar way for any unit.
 
-Read our *[Introduction to systemctl](/docs/quick-answers/linux-essentials/introduction-to-systemctl/)* guide for a deeper dive into this systemd tool.
+Read our *[Introduction to systemctl](/docs/guides/introduction-to-systemctl/)* guide for a deeper dive into this systemd tool.
 
 systemd's `journalctl` tool provides a centralized process and system logging tool. This command allows you to query the systemd journal, which creates and maintains indexed journals from logging information that is pooled from different areas within the system; areas like standard output and standard error of service units, log messages via syslog, and kernel log messages. In this way, system administrators can use a single tool to monitor and debug a server.
 

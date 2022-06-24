@@ -33,11 +33,11 @@ This guide provides instructions to:
 
 This guide assumes you have a working [Linode Kubernetes Engine (LKE)](https://www.linode.com/products/kubernetes/) cluster running on Linode and you are familiar with *PodDisruptionBudget* concept and Configured *PodDisruptionBudgets* for applications that need them.
 
-1.  [Install the Kubernetes CLI](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl) (`kubectl`) on the local computer.
+1.  [Install the Kubernetes CLI](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl) (`kubectl`) on the local computer.
 
-1.  Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to connect to an LKE cluster.
+1.  Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to connect to an LKE cluster.
 
-    {{< note >}} Ensure that the `KUBECONFIG` context is [persistent](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context){{< /note >}}
+    {{< note >}} Ensure that the `KUBECONFIG` context is [persistent](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context){{< /note >}}
 
 1.  Ensure that Kubernetes CLI is using the right cluster context. Run the `get-contexts` subcommand to check:
 
@@ -48,7 +48,7 @@ This guide assumes you have a working [Linode Kubernetes Engine (LKE)](https://w
 {{< caution >}}
 The instructions in this section creates a Block Storage volume billable resource on your Linode account. A single volume can range from 10 GB to 10,000 GB in size and costs $0.10/GB per month or $0.00015/GB per hour. If you do not want to keep using the Block Storage volume that you create, be sure to delete it when you have finished the guide.
 
-If you remove the resources afterward, you are only billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
+If you remove the resources afterward, you are only billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{</ caution >}}
 
 1.  Create a *Persistent Volume Claim* (PVC) that consumes a Block Storage Volume. To create a PVC, create a manifest file with the following YAML:
@@ -144,7 +144,7 @@ metadata:
 
 ## Add a new node to the cluster and drain the node
 
-1. Add an [additional Node Pool](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#adding-a-node-pool) to the LKE cluster, of a plan type and size which can accommodate the existing workloads.
+1. Add an [additional Node Pool](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#adding-a-node-pool) to the LKE cluster, of a plan type and size which can accommodate the existing workloads.
 
 1. After the new Linodes have joined the cluster, drain any Linodes scheduled for maintenance. This causes the workloads to be rescheduled to other Linodes in the cluster. Linode recommends draining one Linode at a time in the LKE cluster, to ensure that the workloads have been rescheduled to new Linodes and are running before moving on to the next one. An example Node drain command:
 

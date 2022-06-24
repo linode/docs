@@ -119,7 +119,7 @@ Linode’s Cloud Manager and [API v4](/docs/api) allow you to create tags to hel
 
 ## Events and Activity Feeds
 
-Tasks performed using the Linode Cloud Manager or other account specific tools like Linode’s [CLI](/docs/guides/linode-cli/) or [API](https://www.linode.com/products/api/) will be logged to an individual Linode’s activity feed, or on your account’s [Events Page](https://cloud.linode.com/events). The events and activity pages are user accessible logs, or histories of events taking place on your account. They contain details regarding the most notable events affecting your Linodes, like reboots, shutdowns, migrations, and more.
+Tasks performed using the Linode Cloud Manager or other account specific tools like Linode’s [CLI](/docs/products/tools/cli/get-started/) or [API](https://www.linode.com/products/api/) will be logged to an individual Linode’s activity feed, or on your account’s [Events Page](https://cloud.linode.com/events). The events and activity pages are user accessible logs, or histories of events taking place on your account. They contain details regarding the most notable events affecting your Linodes, like reboots, shutdowns, migrations, and more.
 
 For more details, see the [Understanding Events and Activity Feeds](/docs/guides/cloud-manager-events-and-activity-feeds/) guide.
 
@@ -136,7 +136,7 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 - [Managing LISH authentication methods](/docs/guides/using-the-lish-console/#add-your-public-key)
 - [Adding and managing personal and third party API v4 access tokens](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token)
 - [Creating and managing OAuth Apps](/docs/guides/how-to-create-an-oauth-app-with-the-linode-python-api-library/#obtaining-a-client-id-and-a-client-secret)
-- [Accessing Linode referral codes](/docs/guides/how-linode-billing-works/#referral-credits)
+- [Accessing Linode referral codes](/docs/guides/understanding-billing-and-payments/#referral-credits)
 - Enable email alerts for account activity
 
 ### API Keys / API Tokens

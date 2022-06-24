@@ -153,6 +153,7 @@ bernd
 berners
 bgpd
 bialek
+bin_t
 bing
 binlog
 biomes
@@ -337,6 +338,7 @@ cronie
 cronjob
 cronjobs
 crontab
+crosstab
 crowdsourced
 crowdsourcing
 crt
@@ -494,11 +496,13 @@ dsn
 du
 duf
 ducati
+dumpall
 dust2
 dvcs
 e2fsck
 ea04
 ead
+Easypanel
 ebtables
 ebuild
 ecommerce
@@ -660,12 +664,17 @@ gbps
 gcc
 gcloud
 gcm
+gdf
 geckodriver
 gem1
 Gemba
 gemfile
 genmask
 gentoolkit
+geo
+geocode
+geocoder
+geocoding
 geoip
 geolocating
 geolocation
@@ -812,6 +821,7 @@ hybla
 hykes
 hypercorn
 hyperefficient
+HyperLogLog
 hyperparameter
 hypervisor
 hypervisors
@@ -833,6 +843,7 @@ identrust
 idlist
 ie
 iface
+ifcfg
 ifconfig
 ifdown
 ifnames
@@ -969,6 +980,7 @@ kerberos
 kerberos5
 Kernighan
 keychain
+keyfile
 keyfiles
 keygen
 keyid
@@ -1059,6 +1071,7 @@ linewise
 Linkedin
 linkerd
 linode
+linode's
 linodego
 linodes
 linter
@@ -1067,6 +1080,7 @@ liskov
 listdir
 listserv
 listservs
+litespeed
 livigno
 li181
 li263
@@ -1227,6 +1241,7 @@ mongodb
 mongod
 mongodump
 mongoimport
+mongorestore
 mongosh
 monit
 monitorix
@@ -1420,6 +1435,8 @@ outputter
 outputters
 overcommit
 overengineer
+overfitted
+overfitting
 overwatch
 ovpn
 owadb
@@ -1467,6 +1484,9 @@ permalink
 permalinks
 Petazzoni
 pflogsumm
+pg_dump
+pg_dumpall
+pg_restore
 pgpass
 pharmer
 pharo
@@ -1595,6 +1615,7 @@ quickconnect
 quicklisp
 quickstart
 radeon
+rainloop
 ramdisk
 ransomwhere
 rauth
@@ -1613,6 +1634,7 @@ readme
 readonly
 readwrite
 realtime
+rebalancing
 rebase
 rebased
 rebases
@@ -1660,6 +1682,7 @@ replset
 repo
 repos
 reputational
+reseller's
 resharding
 resilvering
 resolv
@@ -2039,7 +2062,9 @@ transcoding
 transpiled
 trello
 triaging
+trie
 trivy
+trojan
 truststore
 tt
 ttl
@@ -2111,6 +2136,7 @@ untruncated
 untrust
 untrusted
 unversioned
+unvetted
 upserted
 upsize
 uri
@@ -2197,6 +2223,7 @@ wasn
 wasm
 wav
 wazuh
+wchar_t
 webadmin
 webalizer
 webapp
