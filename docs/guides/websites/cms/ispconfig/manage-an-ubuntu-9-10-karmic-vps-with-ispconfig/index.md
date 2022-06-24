@@ -20,7 +20,7 @@ title: 'Manage an Ubuntu 9.10 (Karmic) Linode with ISPConfig'
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.
 
-Before beginning to follow this guide we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before beginning to follow this guide we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 This guide assumes you are installing this on a clean system. If you feel that you will not need certain features that are mentioned in this document, please feel free to exclude them from your setup.
 
@@ -93,7 +93,7 @@ Installing fail2ban is entirely optional, however ISPConfig can manage this serv
 
     apt-get install fail2ban
 
-More information regarding fail2ban can be found in our [fail2ban guide](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/).
+More information regarding fail2ban can be found in our [fail2ban guide](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/).
 
 ## Installing ISPConfig
 

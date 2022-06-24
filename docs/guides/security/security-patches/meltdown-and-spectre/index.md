@@ -16,7 +16,7 @@ promo_default: false
 external_resources:
   - '[MeltdownAttack.com](https://meltdownattack.com/)'
   - '[How to Install Software Updates](/docs/guides/set-up-and-secure/#perform-system-updates)'
-  - '[Reboot Survival Guide](/docs/uptime/reboot-survival-guide/)'
+  - '[Reboot Survival Guide](/docs/guides/reboot-survival-guide/)'
   - '[Linode Blog: CPU Vulnerabilities: Meltdown & Spectre](https://blog.linode.com/2018/01/03/cpu-vulnerabilities-meltdown-spectre/)'
 tags: ["security"]
 ---
@@ -61,7 +61,7 @@ Yes, but while rebooting with the new kernel will help prepare your Linode for t
 
 ## What Should I Do?
 
-* Visit our [Reboot Survival Guide](/docs/uptime/reboot-survival-guide/) to prepare for a graceful reboot.
+* Visit our [Reboot Survival Guide](/docs/guides/reboot-survival-guide/) to prepare for a graceful reboot.
 * [Update your kernel](#how-to-reboot-into-an-updated-linode-kernel) and reboot.
 * [Follow our blog for updates](https://blog.linode.com/2018/01/03/cpu-vulnerabilities-meltdown-spectre/).
 

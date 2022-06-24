@@ -50,7 +50,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     {{< note >}}
 The Linode kernel does not support SELinux by default. However, all new Linodes running CentOS 8 use the distribution provided kernel, which has **SELinux enabled by default**.
 
-If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/platform/how-to-change-your-linodes-kernel/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
+If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
     {{</ note >}}
 
 ## Install Supporting SELinux Packages
@@ -111,7 +111,7 @@ You can update the `SELINUX` directive with any of the available SELinux [states
 
         sudo reboot
 
-- Connect to your Linode via SSH (replace `192.0.2.0` with your own [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/)) and verify your SELinux installation's status:
+- Connect to your Linode via SSH (replace `192.0.2.0` with your own [Linode's IP address](/docs/guides/find-your-linodes-ip-address/)) and verify your SELinux installation's status:
 
         ssh example_user@192.0.2.0
         sudo sestatus

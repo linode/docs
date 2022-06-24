@@ -23,7 +23,7 @@ Docker utilizes the host OS Kernel, which makes Docker containers more efficient
 
 ## Prerequisites and Requirements
 
-In order to secure Docker containers, you need to have a Linux server with Docker running. For a quick an easy way to install Docker on Linode, check out our guide on [How to Deploy Docker with Marketplace Apps](/docs/guides/deploying-docker-with-marketplace-apps/). Otherwise, you can find instructions on how to manually install Docker in [Installing and Using Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
+In order to secure Docker containers, you need to have a Linux server with Docker running. For a quick an easy way to install Docker on Linode, check out our guide on [How to Deploy Docker with Marketplace Apps](/docs/products/tools/marketplace/guides/docker/). Otherwise, you can find instructions on how to manually install Docker in [Installing and Using Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
 
 {{< note >}}
 This demonstration has been performed on Ubuntu 18.04. All techniques demonstrated are distribution agnostic with the exception of package names and package managers.
@@ -41,7 +41,7 @@ The security of the host kernel and operating system directly correlates to the 
 1.  Consider the use of a minimal Linux distribution such as Alpine that offers a much smaller threat surface.
 1.  Add your host and containers to a robust vulnerability management plan and constantly scan your host and containers for vulnerabilities.
 1.  Only run the services you need to run.
-1.  Ensure your kernel is [up to date](/docs/guides/update-kernel/).
+1.  Ensure your kernel is [up to date](/docs/guides/managing-the-kernel-on-a-linode/).
 1.  Keep up with the latest vulnerability news for the Linux kernel and the Docker platform.
 
 ## Running Docker Containers with an Unprivileged User

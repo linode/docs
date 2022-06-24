@@ -27,7 +27,7 @@ In most cases, we recommend using `mod_php` module to run PHP scripts with the [
 
 Additionally, in our experience `mod_php` is incompatible with the `mod_rails` or Phusion Passenger method of running [Ruby On Rails](/docs/frameworks/). In these cases, if you want to run PHP and Rails applications within a single instance of Apache, you must run PHP scripts as CGI processes, using the method outlined below.
 
-Before beginning this guide we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/), and the article concerning [systems administration basics](/docs/tools-reference/linux-system-administration-basics/). If you're interested in learning more about the Apache HTTP server, we encourage you to consider our extensive documentation on [Apache configuration](/docs/web-servers/apache/).
+Before beginning this guide we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/guides/linode-beginners-guide/), and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). If you're interested in learning more about the Apache HTTP server, we encourage you to consider our extensive documentation on [Apache configuration](/docs/web-servers/apache/).
 
 ## Set the Hostname
 
@@ -61,7 +61,7 @@ In order to set up Apache to use PHP-CGI on Debian systems, you must enable the 
 
     a2enmod actions
 
-The required directives can be set anywhere in Apache's [configuration tree](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics/). We recommend creating the `php-cgi.conf` file in Apache's `conf.d/` directory and setting these variables there. For Debian systems this directory is located at `/etc/apache2/conf.d/`. You may also choose to place these settings in your `/etc/apache2/httpd.conf` file. Regardless of their location, the relevant settings are:
+The required directives can be set anywhere in Apache's [configuration tree](/docs/guides/apache-configuration-basics/). We recommend creating the `php-cgi.conf` file in Apache's `conf.d/` directory and setting these variables there. For Debian systems this directory is located at `/etc/apache2/conf.d/`. You may also choose to place these settings in your `/etc/apache2/httpd.conf` file. Regardless of their location, the relevant settings are:
 
 {{< file "Apache Configuration Block" apache >}}
 ScriptAlias /local-bin /usr/bin
@@ -117,7 +117,7 @@ Now, in the `<VirtualHost >` entries for your sites (the site-specific files in 
 {{< /file >}}
 
 
-In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the user group that "owns" the web server related files and processes for this host. Remember that you must create the user accounts and groups using the `useradd` command. Consider our documentation of [user groups and permissions](/docs/tools-reference/linux-users-and-groups/) for more information about creating the necessary users and groups.
+In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the user group that "owns" the web server related files and processes for this host. Remember that you must create the user accounts and groups using the `useradd` command. Consider our documentation of [user groups and permissions](/docs/guides/linux-users-and-groups/) for more information about creating the necessary users and groups.
 
 ## More Information
 

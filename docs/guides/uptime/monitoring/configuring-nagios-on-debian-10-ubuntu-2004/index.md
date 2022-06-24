@@ -37,7 +37,7 @@ However, you can get even more out of Nagios by setting it up to deliver alerts 
 1. Replace `example.com` throughout this guide with your machine's domain name, and replace `fqdn.example.com` with your machine's fully qualified domain name (FQDN).
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Set Up Nagios Email Alerts
@@ -81,7 +81,7 @@ This guide also provides instructions for configuring local emails, which are no
         - `+` for the local inbox extension character
         - Select **all** for the Internet protocols
 
-    - Alternatively, you can follow the [Configure Postfix to Send Email Using External SMTP Servers](/docs/guides/postfix-smtp-debian7/) or the [Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu](/docs/guides/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/) guide. Doing so sets up Postfix to send emails via an external SMTP provider or a Gmail account, respectively.
+    - Alternatively, you can follow the [Configure Postfix to Send Email Using External SMTP Servers](/docs/guides/postfix-smtp-debian7/) or the [Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu](/docs/guides/configure-postfix-to-send-mail-using-gmail-and-google-workspace-on-debian-or-ubuntu/) guide. Doing so sets up Postfix to send emails via an external SMTP provider or a Gmail account, respectively.
 
 1. Test the email configuration with the following command below; replace `example-user` with the username of a local user that you can log in as.
 

@@ -136,4 +136,4 @@ cron.service - Regular background program processing daemon
 
 ## Learn More About the Cron Utility
 
-To learn more about cron jobs, see our [Schedule Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) guide. To view highly-detailed and technical information about cron and crontab, you can also refer to the [*Linux 'man' page for the crontab command*](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html).
+To learn more about cron jobs, see our [Schedule Tasks with Cron](/docs/guides/schedule-tasks-with-cron/) guide. To view highly-detailed and technical information about cron and crontab, you can also refer to the [*Linux 'man' page for the crontab command*](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html).

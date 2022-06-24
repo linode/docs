@@ -82,7 +82,7 @@ To use Bise, you should have the following:
 
 * [Cpanminus](/docs/development/perl/manage-cpan-modules-with-cpan-minus), to install Bise's prerequisite libraries.
 
-* [Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/), if you plan to run Bise on a regular schedule. Any Linux machine almost certainly has this installed as well.
+* [Cron](/docs/guides/schedule-tasks-with-cron/), if you plan to run Bise on a regular schedule. Any Linux machine almost certainly has this installed as well.
 
     {{< note >}}
 Any other scheduling software that can run command-line scripts for you will also work, but this guide will demonstrate using Bise with Cron, specifically.
@@ -125,7 +125,7 @@ Install Bise's prerequisites using `cpanm`:
 
 - **If you do not have `cpanm` installed**, then you have two options:
 
-    * Install `cpanm`, as described in [this Linode guide](/docs/development/perl/manage-cpan-modules-with-cpan-minus/). Then, run the command described above.
+    * Install `cpanm`, as described in [this Linode guide](/docs/guides/manage-cpan-modules-with-cpan-minus/). Then, run the command described above.
 
     * Run this command, which will load and run a temporary copy of `cpanm` and then proceed to install Bise's dependencies:
 
@@ -353,7 +353,7 @@ The configuration file lets you set these optional directives as well:
 
 ## Running Bise as a cron Task
 
-Once you have Bise creating meaningful reports about your website's readership, consider having your system run it regularly. For example, you could automatically run the report once a week. The [Cron utility](/docs/tools-reference/tools/schedule-tasks-with-cron/) can be used to schedule this task.
+Once you have Bise creating meaningful reports about your website's readership, consider having your system run it regularly. For example, you could automatically run the report once a week. The [Cron utility](/docs/guides/schedule-tasks-with-cron/) can be used to schedule this task.
 
 Cron's normal behavior is to mail you anything a scheduled program prints as output or error messages. So, you can use Cron to receive periodic emails about your website's readership levels.
 

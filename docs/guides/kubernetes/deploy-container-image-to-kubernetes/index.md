@@ -484,11 +484,11 @@ hugo-site   NodePort   10.108.110.6   <none>        80:30304/TCP   1d
 
 ## Tear Down Your Cluster
 
-To avoid being further billed for your Kubernetes cluster, tear down your cluster's Linodes. If you have Linodes that existed for only part a monthly billing cycle, you’ll be billed at the hourly rate for that service. See [How Hourly Billing Works](/docs/guides/billing-and-payments/#how-hourly-billing-works) to learn more.
+To avoid being further billed for your Kubernetes cluster, tear down your cluster's Linodes. If you have Linodes that existed for only part a monthly billing cycle, you’ll be billed at the hourly rate for that service. See [Billing and Payments](/docs/guides/understanding-billing-and-payments/) to learn more.
 
 - If you created your Kubernetes cluster:
 
-    - using kubeadm, follow the [Removing Services](/docs/guides/billing-and-payments/#removing-services) section of the [Billing and Payments](/docs/guides/billing-and-payments/) guide to remove your cluster's Linodes.
+    - using kubeadm, follow the [Managing Billing in the Cloud Manager > Removing Services](/docs/guides/manage-billing-in-cloud-manager/#removing-services) guide to remove your cluster's Linodes.
 
     - using the k8s-alpha CLI, issue the following command from your computer to delete the cluster:
 

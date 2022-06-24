@@ -24,9 +24,9 @@ relations:
            - distribution: CentOS 5
 ---
 
-The Apache HTTP server is a versatile and robust engine for providing access to resources over HTTP. With its modular design and standard [configuration system](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics/), it is a popular and familiar option for systems administrators and architects who require a potentially diverse array of HTTP services, along with a stable and predictable administrative interface. In addition to simply serving content and facilitating the generation of dynamic content, the Apache HTTP server can be deployed as a front end server to mange clusters of web servers.
+The Apache HTTP server is a versatile and robust engine for providing access to resources over HTTP. With its modular design and standard [configuration system](/docs/guides/apache-configuration-basics/), it is a popular and familiar option for systems administrators and architects who require a potentially diverse array of HTTP services, along with a stable and predictable administrative interface. In addition to simply serving content and facilitating the generation of dynamic content, the Apache HTTP server can be deployed as a front end server to mange clusters of web servers.
 
-This guide provides a number of configuration examples and suggestions for using Apache as a front end server for other HTTP servers and clusters of servers. If you have not already installed Apache, consider our documentation on [installing Apache](/docs/web-servers/apache/apache-2-web-server-on-centos-5/) before continuing with this guide. Additionally, consider our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) documents if you are new to Linode, and our [administration basics](/docs/tools-reference/linux-system-administration-basics/) guide if you are new to Linux server administration.
+This guide provides a number of configuration examples and suggestions for using Apache as a front end server for other HTTP servers and clusters of servers. If you have not already installed Apache, consider our documentation on [installing Apache](/docs/guides/apache-2-web-server-on-centos-5/) before continuing with this guide. Additionally, consider our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and [beginner's guide](/docs/guides/linode-beginners-guide/) documents if you are new to Linode, and our [administration basics](/docs/guides/linux-system-administration-basics/) guide if you are new to Linux server administration.
 
 ## Case One: Separating Static Content from Dynamic Content
 
@@ -59,7 +59,7 @@ Now, place the static files in the `/srv/www/static.example.com/public_html/` fo
 
 ## Case Two: Using ProxyPass to Delegate Services to Alternate Machines
 
-In our guide to using [multiple web servers with ProxyPass](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-centos-5/) we outline a method for configuring multiple websites using Apache's `mod_proxy`. Follow this guide, particularly the section regarding configuring [mod\_proxy](/docs/websites/proxies/multiple-web-servers-with-proxypass-on-centos-5/#enabling-the-proxy-module) to ensure that `mod_proxy` is active.
+In our guide to using [multiple web servers with ProxyPass](/docs/guides/multiple-web-servers-with-proxypass-on-centos-5/) we outline a method for configuring multiple websites using Apache's `mod_proxy`. Follow this guide, particularly the section regarding configuring [mod\_proxy](/docs/websites/proxies/multiple-web-servers-with-proxypass-on-centos-5/#enabling-the-proxy-module) to ensure that `mod_proxy` is active.
 
 Once `mod_proxy` is enabled and configured, you can insert the following directives into your virtual hosting configuration:
 
@@ -83,7 +83,7 @@ In essence, the `ProxyPass` directive in this manner allows you to distribute se
 
 ## Case Three: Proxy only Some Requests to a Back End
 
-While using `ProxyPass` directives allows you to distribute resources by directory amongst a collection of back end servers, this kind of architecture only makes sense for some kinds of deployments. In many situations, administrators might like to have much more fine-grained control over the requests passed to external servers. In conjunction with [mod\_rewrite](/docs/web-servers/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/), we can configure `mod_proxy` to more flexibly pass requests to alternate backends.
+While using `ProxyPass` directives allows you to distribute resources by directory amongst a collection of back end servers, this kind of architecture only makes sense for some kinds of deployments. In many situations, administrators might like to have much more fine-grained control over the requests passed to external servers. In conjunction with [mod\_rewrite](/docs/guides/rewrite-urls-with-modrewrite-and-apache/), we can configure `mod_proxy` to more flexibly pass requests to alternate backends.
 
 Before continuing, ensure that you've completed the ProxyPass guide, particularly the section regarding configuring `mod_proxy`. Do not forget to create and configure the `/etc/httpd/conf.d/proxy.conf` file.
 
@@ -203,4 +203,4 @@ Apache also contains a "Balancer Manager" interface that you can use to monitor 
 {{< /file >}}
 
 
-Modify the `Allow from` directive to allow access *only* from your current local machine's IP address, and read more about [rule-based access control](/docs/web-servers/apache-tips-and-tricks/rulebased-access-control-for-apache/). Now visit `/balancer-manager` of the domain of your virtual host (e.g. `example.com`,) in our example `http://example.com/balancer-manager` to use Apache's tools for managing your cluster. Ensure that the `/balancer-manager` location is **not** established at a location that is to be passed to a proxied server. Congratulations you are now able to configure a fully functional cluster of web servers using the Apache web server as a front end!
+Modify the `Allow from` directive to allow access *only* from your current local machine's IP address, and read more about [rule-based access control](/docs/guides/rulebased-access-control-for-apache/). Now visit `/balancer-manager` of the domain of your virtual host (e.g. `example.com`,) in our example `http://example.com/balancer-manager` to use Apache's tools for managing your cluster. Ensure that the `/balancer-manager` location is **not** established at a location that is to be passed to a proxied server. Congratulations you are now able to configure a fully functional cluster of web servers using the Apache web server as a front end!

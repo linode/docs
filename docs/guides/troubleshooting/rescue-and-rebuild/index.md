@@ -27,13 +27,13 @@ Even the best system administrators may need to deal with unplanned events in th
 
 While this guide outlines the recovery tools that Linode makes available to you, it does not provide a specific troubleshooting strategy. Our other guides offer a logical progression of steps you can follow when troubleshooting different symptoms:
 
--   If you are not able to establish basic network connections with the Linode, then Linode recommends that you review the [Troubleshooting Basic Connection Issues](/docs/troubleshooting/troubleshooting-basic-connection-issues/) guide.
+-   If you are not able to establish basic network connections with the Linode, then Linode recommends that you review the [Troubleshooting Basic Connection Issues](/docs/guides/troubleshooting-basic-connection-issues/) guide.
 
--   If you can ping the Linode but can't access SSH, follow the [Troubleshooting SSH](/docs/troubleshooting/troubleshooting-ssh/) guide.
+-   If you can ping the Linode but can't access SSH, follow the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) guide.
 
--   If you can access SSH but are experiencing an outage with a web server or other service, review [Troubleshooting Web Servers, Databases, and Other Services](/docs/troubleshooting/troubleshooting-web-servers-databases-other-services/).
+-   If you can access SSH but are experiencing an outage with a web server or other service, review [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/).
 
--   For an overview of all these issues and answers to other questions, check out the [Troubleshooting Overview](/docs/troubleshooting/troubleshooting/) guide.
+-   For an overview of all these issues and answers to other questions, check out the [Troubleshooting Overview](/docs/guides/troubleshooting-overview/) guide.
 
 ## Rescuing
 
@@ -135,7 +135,7 @@ You can now connect to the server as root with the SSH client on a local compute
 
 - For instructions on connecting with an SFTP client, see the [File Transfer reference manuals](/docs/tools-reference/file-transfer/).
 
-- For instructions on copying an entire disk over SSH, see [Copy a Disk Over SSH](/docs/platform/disk-images/copying-a-disk-image-over-ssh/).
+- For instructions on copying an entire disk over SSH, see [Copy a Disk Over SSH](/docs/guides/copying-a-disk-image-over-ssh/).
 
 ### Performing a File System Check
 
@@ -306,12 +306,12 @@ If you can't rescue and resolve issues on an existing disk, you likely need to r
 {{< caution >}}
 Did an unauthorized intruder gain access to your Linode? Since it is virtually impossible to determine the full scope of an attacker's reach into a compromised system, you should never continue using a compromised Linode.
 
-Linode recommends that you follow the instructions in [Recovering from a System Compromise](/docs/security/recovering-from-a-system-compromise/). You need to create a new Linode, copy your existing data from the old Linode to the new one, and then swap IP addresses.
+Linode recommends that you follow the instructions in [Recovering from a System Compromise](/docs/guides/recovering-from-a-system-compromise/). You need to create a new Linode, copy your existing data from the old Linode to the new one, and then swap IP addresses.
 {{< /caution >}}
 
 ### Restoring from a Linode Backup
 
-If you previously enabled the [Linode Backup Service](https://www.linode.com/backups), you may be able to restore one of the backups to the Linode. Review the [Restoring from a Backup](/docs/platform/disk-images/linode-backup-service/#restore-from-a-backup) section (specifically, the [Restore to an Existing Linode](/docs/platform/disk-images/linode-backup-service/#restore-to-an-existing-linode) section) of the [The Linode Backup Service](/docs/platform/disk-images/linode-backup-service/) guide for instructions.
+If you previously enabled the [Linode Backup Service](https://www.linode.com/backups), you may be able to restore one of the backups to the Linode. Review the [Restoring from a Backup](/docs/products/storage/backups/#restore-from-a-backup) section (specifically, the [Restore to an Existing Linode](/docs/products/storage/backups/#restore-to-an-existing-linode) section) of the [The Linode Backup Service](/docs/products/storage/backups/) guide for instructions.
 
 If you created backups with an application other than the Linode Backup Service, review the application's instructions to restore a backup to the Linode.
 
@@ -321,14 +321,14 @@ The Linode Cloud Manager provides a *Rebuild* feature performs the following two
 
 1.  The current disks are removed.
 
-1.  A new set of disks is provisioned from one of the Cloud Manager's built-in Linux images, or from one of the [saved images](/docs/platform/disk-images/linode-images/).
+1.  A new set of disks is provisioned from one of the Cloud Manager's built-in Linux images, or from one of the [saved images](/docs/products/tools/images/).
 
     {{< caution >}}
 If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/security/backups/backing-up-your-data) or [create a snapshot through Linode's Backup Service](/docs/platform/disk-images/linode-backup-service#take-a-manual-snapshot) to preserve data before using the Rebuild feature.
 
 If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/guides/disks-and-storage/#creating-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
 
-The Linode needs to have some amount of unallocated disk space in order to provision a new distribution. If the Linode does not have enough unallocated space, you can [shrink your existing disks](/docs/guides/disks-and-storage/#resizing-a-disk) to free up space or [resize your Linode](/docs/platform/disk-images/resizing-a-linode/) to a higher resource tier.
+The Linode needs to have some amount of unallocated disk space in order to provision a new distribution. If the Linode does not have enough unallocated space, you can [shrink your existing disks](/docs/guides/disks-and-storage/#resizing-a-disk) to free up space or [resize your Linode](/docs/guides/resizing-a-linode/) to a higher resource tier.
     {{< /caution >}}
 
     If you need to copy files from your existing disk to another location before rebuilding, you can [start SSH](#starting-ssh) under Rescue Mode and then use an SFTP client to copy files to your computer.

@@ -25,7 +25,7 @@ image: use_public_key_authentication_with_ssh.png
 
 -  If a server that uses SSH keys is compromised by a hacker, no authorization credentials are at risk of being exposed.
 
--  Because a password isn't required at login, you can log into servers from within scripts or automation tools that you need to run unattended. For example, you can set up periodic updates for your servers with a configuration management tool like [Ansible](/docs/applications/configuration-management/running-ansible-playbooks/), and you can run those updates without having to be physically present.
+-  Because a password isn't required at login, you can log into servers from within scripts or automation tools that you need to run unattended. For example, you can set up periodic updates for your servers with a configuration management tool like [Ansible](/docs/guides/running-ansible-playbooks/), and you can run those updates without having to be physically present.
 
 This guide explains how the SSH key login scheme works, how to generate an SSH key, and how to use those keys with a Linode Linux server.
 
@@ -235,7 +235,7 @@ Enter passphrase for key '/root/.ssh/id_rsa':
 
 ## Public Key Authentication with PuTTY on Windows
 
-The following instructions use the [PuTTY](https://www.putty.org) software to connect over SSH, but [other options](/docs/networking/ssh/using-ssh-on-windows/) are available on Windows too.
+The following instructions use the [PuTTY](https://www.putty.org) software to connect over SSH, but [other options](/docs/guides/connect-to-server-over-ssh-on-windows/) are available on Windows too.
 
 ### Generate a Key Pair with PuTTY
 
@@ -354,7 +354,7 @@ The SSH daemon on a Linux server allows you to configure and fine-tune its behav
 
 ## Troubleshooting
 
-If your SSH connections are not working as expected, or if you have locked yourself out of your system, review the [Troubleshooting SSH](/docs/troubleshooting/troubleshooting-ssh/) guide for troubleshooting help.
+If your SSH connections are not working as expected, or if you have locked yourself out of your system, review the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) guide for troubleshooting help.
 
 ## Next Steps
 
