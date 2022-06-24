@@ -1888,6 +1888,7 @@ splunk
 spm
 spork
 sql
+sqlcmd
 sqlplus
 sqreen
 squirrelmail
