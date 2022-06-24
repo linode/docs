@@ -25,7 +25,7 @@ relations:
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
 
-Prior to beginning this guide, please complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux systems administration, you may want to consider the guides in our [using Linux guide](/docs/tools-reference/introduction-to-linux-concepts/) series, particularly "[Linux Administration Basics](/docs/tools-reference/linux-system-administration-basics/)."
+Prior to beginning this guide, please complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux systems administration, you may want to consider the guides in our [using Linux guide](/docs/guides/introduction-to-linux-concepts/) series, particularly "[Linux Administration Basics](/docs/guides/linux-system-administration-basics/)."
 
 ## Set the Hostname
 
@@ -48,7 +48,7 @@ There are several viable and popular options for installing the nginx software. 
 
 The second option requires downloading the source for nginx from the upstream provider and compiling the software manually. Manual compilation makes it possible to run the most current version of the software at the expense of the testing and automatic updates from the Fedora project. All options are compatible, but in most cases we recommend using the packages from the Fedora repositories unless your needs require a version newer than the one available. Possible reasons for compiling nginx yourself include access to optional compile-time modules and features added in more recent versions.
 
-For more in-depth installation instructions consider our [guide to installing nginx](/docs/web-servers/nginx/websites-with-nginx-on-fedora-13/).
+For more in-depth installation instructions consider our [guide to installing nginx](/docs/guides/websites-with-nginx-on-fedora-13/).
 
 ### Deploy from Fedora Project Packages
 
@@ -166,7 +166,7 @@ include /opt/nginx-sites.conf;
 {{< /file >}}
 
 
-Then, depending on the size and nature of your deployment, place your virtual host configurations either directly in the `/opt/nginx-sites.conf` file or include statements for server-specific configuration files in the `nginx-sites.file` format. For more information regarding nginx configuration options, consider our [overview of nginx configuration](/docs/web-servers/nginx/how-to-configure-nginx/).
+Then, depending on the size and nature of your deployment, place your virtual host configurations either directly in the `/opt/nginx-sites.conf` file or include statements for server-specific configuration files in the `nginx-sites.file` format. For more information regarding nginx configuration options, consider our [overview of nginx configuration](/docs/guides/how-to-configure-nginx/).
 
 Once you've configured and loaded the nginx configuration, restart the web server to implement the new configuration by issuing the following command:
 
@@ -176,7 +176,7 @@ Make sure that the directories referenced in your configuration exist on your fi
 
 ## Deploy PHP with FastCGI
 
-If your application includes PHP code, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject consider our dedicated guide to [PHP FastCGI with Nginx](/docs/web-servers/nginx/nginx-and-phpfastcgi-on-fedora-14/). Begin the deployment process by issuing the following command to install the required dependencies:
+If your application includes PHP code, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject consider our dedicated guide to [PHP FastCGI with Nginx](/docs/guides/nginx-and-phpfastcgi-on-fedora-14/). Begin the deployment process by issuing the following command to install the required dependencies:
 
     yum install php php-cli spawn-fcgi wget
 
@@ -296,5 +296,5 @@ When upstream sources offer new releases, repeat the instructions for installing
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Basic nginx Configuration](/docs/web-servers/nginx/how-to-configure-nginx/)
-- [Clustered Web Servers and Software Load Balancing with nginx](/docs/uptime/loadbalancing/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)
+- [Basic nginx Configuration](/docs/guides/how-to-configure-nginx/)
+- [Clustered Web Servers and Software Load Balancing with nginx](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)

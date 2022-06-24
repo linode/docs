@@ -186,5 +186,5 @@ In this example, we create the `uwsgicluster` upstream, which has five component
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Installing Nginx on Fedora 14](/docs/web-servers/nginx/installation/fedora-14)
-- [Deploy a LEMP Server on Fedora 14](/docs/lemp-guides/fedora-14/)
+- [Deploy a LEMP Server on Fedora 14](/docs/guides/lemp-server-on-fedora-14/)
 - [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)

@@ -17,9 +17,9 @@ aliases: ['/troubleshooting/troubleshooting-basic-connection-issues/']
 
 This guide presents troubleshooting strategies for Linodes that are unresponsive to any network access. One reason that a Linode may be unresponsive is if you recently performed a distribution upgrade or other broad software updates to your Linode, as those changes can lead to unexpected problems for your core system components.
 
-Similarly, your server may be unresponsive after maintenance was applied by Linode to your server's host (frequently, this is correlated with software/distribution upgrades performed on your deployment prior to the host's maintenance). This guide is designed as a useful resource for either of these scenarios. If you need to troubleshoot memory and networking, read our guide on [Troubleshooting Memory and Networking Issues](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/).
+Similarly, your server may be unresponsive after maintenance was applied by Linode to your server's host (frequently, this is correlated with software/distribution upgrades performed on your deployment prior to the host's maintenance). This guide is designed as a useful resource for either of these scenarios. If you need to troubleshoot memory and networking, read our guide on [Troubleshooting Memory and Networking Issues](/docs/guides/troubleshooting-memory-and-networking-issues/).
 
-If you can [ping](/docs/tools-reference/linux-system-administration-basics/#the-ping-command) your Linode, but you cannot access SSH or other services, this guide will not assist with troubleshooting those services. Instead, refer to the [Troubleshooting SSH](/docs/troubleshooting/troubleshooting-ssh/) or [Troubleshooting Web Servers, Databases, and Other Services](/docs/troubleshooting/troubleshooting-web-servers-databases-other-services/) guides.
+If you can [ping](/docs/tools-reference/linux-system-administration-basics/#the-ping-command) your Linode, but you cannot access SSH or other services, this guide will not assist with troubleshooting those services. Instead, refer to the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) or [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guides.
 
 {{< disclosure-note "Where to go for help outside this guide" >}}
 This guide explains how to use different troubleshooting commands on your Linode. These commands can produce diagnostic information and logs that may expose the root of your connection issues. For some specific examples of diagnostic information, this guide also explains the corresponding cause of the issue and presents solutions for it.
@@ -41,11 +41,11 @@ To learn about Lish in more detail, and for instructions on how to connect to yo
 
 ### MTR
 
-When your network traffic leaves your computer to your Linode, it travels through a series of routers that are administered by your internet service provider, by Linode's transit providers, and by the various organizations that form the [Internet's backbone](https://en.wikipedia.org/wiki/Internet_backbone). It is possible to analyze the route that your traffic takes for possible service interruptions using a tool called [MTR](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/).
+When your network traffic leaves your computer to your Linode, it travels through a series of routers that are administered by your internet service provider, by Linode's transit providers, and by the various organizations that form the [Internet's backbone](https://en.wikipedia.org/wiki/Internet_backbone). It is possible to analyze the route that your traffic takes for possible service interruptions using a tool called [MTR](/docs/guides/diagnosing-network-issues-with-mtr/).
 
 MTR is similar to the [traceroute](/docs/tools-reference/linux-system-administration-basics/#the-traceroute-command) tool, in that it will trace and display your traffic's route. MTR also runs several iterations of its tracing algorithm, which means that it can report statistics like average packet loss and latency over the period that the MTR test runs.
 
-Review the installation instructions in Linode's [Diagnosing Network Issues with MTR](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#install-mtr) guide and install MTR on your computer.
+Review the installation instructions in Linode's [Diagnosing Network Issues with MTR](/docs/guides/diagnosing-network-issues-with-mtr/#install-mtr) guide and install MTR on your computer.
 
 ## Is your Linode Running?
 
@@ -61,7 +61,7 @@ The root user is available in Lish even if root user login is disabled in your S
 
 1.  If you can log in at the Lish console, move on to the [diagnose network connection issues](#diagnose-network-connection-issues) section of this guide.
 
-    If you see a log in prompt, but you have forgotten the credentials for your Linode, follow the instructions for [resetting your root password](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode-new-manager/) and then attempt to log in at the Lish console again.
+    If you see a log in prompt, but you have forgotten the credentials for your Linode, follow the instructions for [resetting your root password](/docs/guides/reset-the-root-password-on-your-linode/) and then attempt to log in at the Lish console again.
 
 2. If you do not see a login prompt, your Linode may have [issues with booting](#troubleshoot-booting-issues).
 
@@ -97,7 +97,7 @@ In addition to being able to mount your Linode's disks, you can also *change roo
 
 To proceed, review the Rescue and Rebuild guide's instructions on [changing root](/docs/troubleshooting/rescue-and-rebuild/#change-root). Once you have chrooted, you can then investigate your Linode's logs for messages that may describe the cause of your booting issues.
 
-In systemd Linux distributions (like Debian 8+, Ubuntu 16.04+, CentOS 7+, and recent releases of Arch), you can run the [`journalctl` command](/docs/quick-answers/linux/how-to-use-journalctl/) to view system and kernel logs. In these and other distributions, you may also find system log messages in the following files:
+In systemd Linux distributions (like Debian 8+, Ubuntu 16.04+, CentOS 7+, and recent releases of Arch), you can run the [`journalctl` command](/docs/guides/how-to-use-journalctl/) to view system and kernel logs. In these and other distributions, you may also find system log messages in the following files:
 
 -   `/var/log/messages`
 
@@ -107,7 +107,7 @@ In systemd Linux distributions (like Debian 8+, Ubuntu 16.04+, CentOS 7+, and re
 
 -   `/var/log/dmesg`
 
-You can use the [`less` command](/docs/quick-answers/linux/how-to-use-less/) to review the contents of these files (e.g. `less /var/log/syslog`). Try pasting your log messages into a search engine or searching in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Linode](/docs/troubleshooting/rescue-and-rebuild/#rebuilding).
+You can use the [`less` command](/docs/guides/how-to-use-less/) to review the contents of these files (e.g. `less /var/log/syslog`). Try pasting your log messages into a search engine or searching in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Linode](/docs/troubleshooting/rescue-and-rebuild/#rebuilding).
 
 ### Quick Tip for Ubuntu and Debian Systems
 
@@ -127,7 +127,7 @@ If you can boot your Linode normally and access the Lish console, you can contin
 
 ### Check for Network Route Problems
 
-To diagnose routing problems, run and analyze an MTR report from your computer to your Linode. For instructions on how to use MTR, review Linode's [MTR guide](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#analyze-mtr-reports). It is useful to run your MTR report for 100 cycles in order to get a good sample size (note that running a report with this many cycles will take more time to complete). This recommended command includes other helpful options:
+To diagnose routing problems, run and analyze an MTR report from your computer to your Linode. For instructions on how to use MTR, review Linode's [MTR guide](/docs/guides/diagnosing-network-issues-with-mtr/#analyze-mtr-reports). It is useful to run your MTR report for 100 cycles in order to get a good sample size (note that running a report with this many cycles will take more time to complete). This recommended command includes other helpful options:
 
     mtr -rwbzc 100 -i 0.2 -rw 198.51.100.0 <Linode's IP address>
 
@@ -153,10 +153,10 @@ If you are located in China, and the output of your MTR report shows *high packe
     This example report shows high persistent packet loss starting mid-way through the route at hop 3, which indicates an issue with the router at hop 3. If your report looks like this, [open a support ticket with your MTR results](#open-a-support-ticket-with-your-mtr-results) for further troubleshooting assistance.
 
     {{< note >}}
-If your route only shows packet loss at certain routers, and not through to the end of the route, then it is likely that those routers are purposefully limiting [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) responses. This is generally not a problem for your connection. Linode's MTR guide provides more context for [packet loss issues](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#verify-packet-loss).
+If your route only shows packet loss at certain routers, and not through to the end of the route, then it is likely that those routers are purposefully limiting [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) responses. This is generally not a problem for your connection. Linode's MTR guide provides more context for [packet loss issues](/docs/guides/diagnosing-network-issues-with-mtr/#verify-packet-loss).
 {{< /note >}}
 
-    If your report resembles the example, [open a support ticket with your MTR results](#open-a-support-ticket-with-your-mtr-results) for further troubleshooting assistance. Also, consult Linode's MTR guide for more context on [packet loss issues](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#verify-packet-loss).
+    If your report resembles the example, [open a support ticket with your MTR results](#open-a-support-ticket-with-your-mtr-results) for further troubleshooting assistance. Also, consult Linode's MTR guide for more context on [packet loss issues](/docs/guides/diagnosing-network-issues-with-mtr/#verify-packet-loss).
 
 -  **Improperly Configured Router**
 
@@ -176,7 +176,7 @@ If your route only shows packet loss at certain routers, and not through to the 
     If your report shows question marks instead of the hostnames (or IP addresses) of the routers, and if these question marks persist to the end of the route, then the report indicates an improperly configured router. If your report looks like this, [open a support ticket with your MTR results](#open-a-support-ticket-with-your-mtr-results) for further troubleshooting assistance.
 
     {{< note >}}
-If your route only shows question marks for certain routers, and not through to the end of the route, then it is likely that those routers are purposefully blocking [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) responses. This is generally not a problem for your connection. Linode's MTR guide provides more information about [router configuration issues](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/#an-isp-router-is-not-configured-properly).
+If your route only shows question marks for certain routers, and not through to the end of the route, then it is likely that those routers are purposefully blocking [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) responses. This is generally not a problem for your connection. Linode's MTR guide provides more information about [router configuration issues](/docs/guides/diagnosing-network-issues-with-mtr/#an-isp-router-is-not-configured-properly).
 {{< /note >}}
 
 -  **Destination Host Networking Improperly Configured**
@@ -195,7 +195,7 @@ If your route only shows question marks for certain routers, and not through to 
     If your report shows no packet loss or low packet loss (or non-persistent packet loss isolated to certain routers) until the end of the route, and 100% loss at your Linode, then the report indicates that your Linode's network interface is not configured correctly. If your report looks like this, move down to [confirming network configuration issues from Rescue Mode](#confirm-network-configuration-issues-from-rescue-mode).
 
 {{< note >}}
-If your report does not look like any of the previous examples, read through the [MTR guide](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for other potential scenarios.
+If your report does not look like any of the previous examples, read through the [MTR guide](/docs/guides/diagnosing-network-issues-with-mtr/) for other potential scenarios.
 {{< /note >}}
 
 ### Confirm Network Configuration Issues from Rescue Mode
@@ -230,7 +230,7 @@ If the recommendations in this section do not resolve your issue, try pasting yo
 
 ### Try Enabling Network Helper
 
-A quick fix may be to enable Linode's [Network Helper](/docs/platform/network-helper/) tool. Network Helper will attempt to generate the appropriate static networking configuration for your Linux distribution. After you enable Network Helper, reboot your Linode for the changes to take effect. If Network Helper was already enabled, continue to the remaining troubleshooting suggestions in this section.
+A quick fix may be to enable Linode's [Network Helper](/docs/guides/network-helper/) tool. Network Helper will attempt to generate the appropriate static networking configuration for your Linux distribution. After you enable Network Helper, reboot your Linode for the changes to take effect. If Network Helper was already enabled, continue to the remaining troubleshooting suggestions in this section.
 
 ### Did You Upgrade to Ubuntu 18.04+ From an Earlier Version?
 
@@ -332,7 +332,7 @@ Run the following command and restart your Linode to resolve this issue:
 
     sudo mv /etc/network/if-up.d/iptables ~
 
-Please note that your firewall will be down at this point, so you will need to re-enable it manually. Review the [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide for help with managing iptables.
+Please note that your firewall will be down at this point, so you will need to re-enable it manually. Review the [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) guide for help with managing iptables.
 
 ### Was your Interface Renamed?
 
@@ -361,11 +361,11 @@ Your deployment may be running FirewallD or UFW, which are frontend software pac
 Review [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
 {{< /note >}}
 
-Firewall rulesets can vary widely. Review our [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections.
+Firewall rulesets can vary widely. Review our [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections.
 
 ### Disable Firewall Rules
 
-In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterwards with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) for help with this subject.
+In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterwards with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) for help with this subject.
 
 1.  Create a temporary backup of your current iptables:
 
@@ -397,6 +397,6 @@ In addition to analyzing your firewall ruleset, you can also temporarily disable
 
 ## Next Steps
 
-If you are able to restore basic networking, but you still can't access SSH or other services, refer to the [Troubleshooting SSH](/docs/troubleshooting/troubleshooting-ssh/) or [Troubleshooting Web Servers, Databases, and Other Services](/docs/troubleshooting/troubleshooting-web-servers-databases-other-services/) guides.
+If you are able to restore basic networking, but you still can't access SSH or other services, refer to the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) or [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guides.
 
-If your connection issues were the result of maintenance performed by Linode, review the [Reboot Survival Guide](/docs/uptime/reboot-survival-guide/) for methods to prepare a Linode for any future maintenance.
+If your connection issues were the result of maintenance performed by Linode, review the [Reboot Survival Guide](/docs/guides/reboot-survival-guide/) for methods to prepare a Linode for any future maintenance.

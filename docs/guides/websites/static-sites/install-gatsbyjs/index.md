@@ -62,11 +62,11 @@ This guide sets up the following flow of events:
 
     {{< content "limited-user-note-shortguide" >}}
 
-1.  Configure DNS for your site by adding a [domain zone](/docs/guides/dns-manager/#add-a-domain) and setting up [reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/) on your Linode's IP.
+1.  Configure DNS for your site by adding a [domain zone](/docs/guides/dns-manager/#add-a-domain) and setting up [reverse DNS](/docs/guides/configure-your-linode-for-reverse-dns/) on your Linode's IP.
 
 1.  Create a [GitHub](https://github.com/) account if you don't already have one. GitHub is free for open source projects.
 
-1.  [Install Git](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) on your local computer. Later in this guide, [Homebrew](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/#install-git-via-homebrew) will be used to install Gatsby on a Mac, so it's recommended that you also use Homebrew to install Git if you're using a Mac.
+1.  [Install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) on your local computer. Later in this guide, [Homebrew](/docs/guides/how-to-install-git-on-linux-mac-and-windows/#install-git-via-homebrew) will be used to install Gatsby on a Mac, so it's recommended that you also use Homebrew to install Git if you're using a Mac.
 
 ## Prepare Your Production Linode
 
@@ -428,7 +428,7 @@ For now, these builds will produce identical output. After the deployment functi
 
 ### Give Travis Permission to Deploy to Your Linode
 
-In order to let Travis push your code to your production Linode, you first need to give the Travis build environment access to the Linode. This will be accomplished by generating a [public-private key pair](/docs/security/authentication/use-public-key-authentication-with-ssh/) for your build environment and then uploading the public key to your Linode. Your code will be deployed over SSH, and the SSH agent in the build environment will be configured to use your new private key.
+In order to let Travis push your code to your production Linode, you first need to give the Travis build environment access to the Linode. This will be accomplished by generating a [public-private key pair](/docs/guides/use-public-key-authentication-with-ssh/) for your build environment and then uploading the public key to your Linode. Your code will be deployed over SSH, and the SSH agent in the build environment will be configured to use your new private key.
 
 The private key will also need to be encrypted, as the key file will live in your Gatsby project's Git repository, and you should **never** check a plain-text version of it into version control.
 

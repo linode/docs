@@ -164,13 +164,13 @@ The terminal can also be useful for monitoring the current status of your server
 
 The command `ps` lists active processes by Process ID (PID) numbers. You can use the `ps -A` command (including the "-A" flag) to list all currently running processes, including inactive processes.
 
-The `top` command, which is installed by default on all systems, provides a regularly refreshed list of processes and resource utilization information. You may also wish to consider installing the `htop` application (with your system's [package management](/docs/using-linux/package-management/) tool), which provides more coherent output.
+The `top` command, which is installed by default on all systems, provides a regularly refreshed list of processes and resource utilization information. You may also wish to consider installing the `htop` application (with your system's [package management](/docs/guides/linux-package-management/) tool), which provides more coherent output.
 
 The `df` command, which is native to all systems, provides a metric of your current disk usage including free and unused space. You can use the `df -h` command (including the "-h" flag) to list your current space in megabytes and gigabytes, which is easier to read than flat kilobytes. You can also use the command `df -i` to view the number of iNodes your disk has used and remain available. An iNode is how the filesystem keeps track of files, and is directly related to the number of files that can be created.
 
 The `du` command, also native to all systems, checks which directories are using the most space. There are a number of useful flags which you can use with this command, the first of which the `du -h` command will show the disk usage of every file in your current directory and as a whole in megabytes. Another especially useful flag, "--max-depth", allows you to specify how many directories deep the command should iterate through. For example, to obtain a list of the biggest directories which are contained in your filesystem you would use the command `du -h --max-depth 1 /`.
 
-You may also wish to consider installing the `ncdu` application (with your system's [package management](/docs/using-linux/package-management/) tool), which provides the file size using a curses-based file browser.
+You may also wish to consider installing the `ncdu` application (with your system's [package management](/docs/guides/linux-package-management/) tool), which provides the file size using a curses-based file browser.
 
 For more information about monitoring the internals of your Linode, you can refer to the [System Diagnostics](/docs/tools-reference/linux-system-administration-basics#system-diagnostics) guide.
 
