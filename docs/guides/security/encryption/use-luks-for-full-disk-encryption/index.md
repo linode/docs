@@ -27,9 +27,9 @@ The Debian 8 guided encryption option in this guide makes use of a process commo
 {{< caution >}}
 Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you'll need to enter the encryption passphrase in the console every time your Linode boots.
 
-Since this setup makes use of raw disk images, it will not be possible to reduce the disk image space at a later date, and you'll need to manually increase the size of your filesystem should you choose to expand the raw disk size. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/platform/disk-images/linode-backup-service/) can't mount encrypted disks.
+Since this setup makes use of raw disk images, it will not be possible to reduce the disk image space at a later date, and you'll need to manually increase the size of your filesystem should you choose to expand the raw disk size. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/products/storage/backups/) can't mount encrypted disks.
 
-Please note that this is an non-standard configuration. Troubleshooting encrypted disk configurations falls outside the scope of [Linode Support](/docs/platform/billing-and-support/support/).
+Please note that this is an non-standard configuration. Troubleshooting encrypted disk configurations falls outside the scope of [Linode Support](/docs/guides/support/).
 {{< /caution >}}
 
 ## Before you Begin
@@ -147,7 +147,7 @@ If you lose or forget this password, the data on this disk image will be **irrec
 
     ![Debian 8 Write Partition Confirmation](fde-disk-formatting.png)
 
-16. The installer will begin deploying the base system. Once it completes, you'll have the option to choose specific software packages. The only packages required for the server are `SSH server` and `standard system utilities`, but you can select additional options as needed. If you wish to make use of a graphical shell over [VNC](/docs/applications/remote-desktop/install-vnc-on-ubuntu-16-04/) or the Glish console, select the desktop environment of your choice. Once you've confirmed your selections, hit **Continue**:
+16. The installer will begin deploying the base system. Once it completes, you'll have the option to choose specific software packages. The only packages required for the server are `SSH server` and `standard system utilities`, but you can select additional options as needed. If you wish to make use of a graphical shell over [VNC](/docs/guides/install-vnc-on-ubuntu-16-04/) or the Glish console, select the desktop environment of your choice. Once you've confirmed your selections, hit **Continue**:
 
     ![Debian 8 Software Selection](fde-software-selection.png)
 

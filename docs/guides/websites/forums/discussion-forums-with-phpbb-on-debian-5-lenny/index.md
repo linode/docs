@@ -25,7 +25,7 @@ relations:
 
 phpBB is one of the most widely used open source forum solutions. It is easy to install and free to use, along with being fully customizable. If you don't want to spend money on other forum software like vBulletin, consider using phpBB.
 
-For this guide, we'll assume you've already followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide and have a working [LAMP stack](/docs/lamp-guides/debian-5-lenny/) on your Linode. You should be connected to your server via SSH and logged in as root.
+For this guide, we'll assume you've already followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide and have a working [LAMP stack](/docs/guides/lamp-server-on-debian-5-lenny/) on your Linode. You should be connected to your server via SSH and logged in as root.
 
 ## Downloading and Unpacking
 
@@ -69,7 +69,7 @@ Now, visit the `phpBB3` directory in your browser: In the above example, that wo
 
 ## Configure phpBB
 
-Click the "Install" tab in the top left region of the page. You should be looking at a requirements page. If you followed the [LAMP guide](/docs/lamp-guides/debian-5-lenny/), your server will meet the requirements specified by the phpBB installation process. Click "Proceed to next step." The next page is simply a confirmation that your server meets the minimum installation requirements. Click "Start Install."
+Click the "Install" tab in the top left region of the page. You should be looking at a requirements page. If you followed the [LAMP guide](/docs/guides/lamp-server-on-debian-5-lenny/), your server will meet the requirements specified by the phpBB installation process. Click "Proceed to next step." The next page is simply a confirmation that your server meets the minimum installation requirements. Click "Start Install."
 
 You will now need to fill in your database information. Using the MySQL database, user and password we created earlier as an example, you would enter `phpbb` into the `database name` field, `phpbb` into the `database username` field, and `password` into the `database password` field. The other fields can remain blank for the defaults. Click "Proceed to next step."
 
