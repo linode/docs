@@ -7,7 +7,7 @@ description: "Appsmith gives you the power to quickly develop web frontends usin
 og_description: "Appsmith gives you the power to quickly develop web frontends using a visual, drag-and-drop interface. Best of all, its drag-and-drop widgets can be connected to a wide array of data sources, from web APIs to databases. With this tutorial, learn more about what Appsmith has to offer and how you can deploy your own self-hosted instance using Docker."
 keywords: ['appsmith tutorial','appsmith examples','install appsmith']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-23
+published: 2022-06-24
 modified_by:
   name: Nathaniel Stickman
 title: "How to Self-host Appsmith with Docker Compose"
@@ -21,7 +21,7 @@ external_resources:
 - '[Anamika: How to Deploy Appsmith on Private Instance Using Docker](https://dev.to/noviicee/how-to-deploy-appsmith-on-private-instance-using-docker-eig)'
 ---
 
-[Appsmith](https://www.appsmith.com/) is an open-source framework for developing internal applications. With Appsmith, developers can quickly develop complex applications using drag-and-drop widgets for application design and JavaScript for application logic. And Appsmith simplifies the processing of connecting your application to a wide range of data sources, from REST APIs to databases directly.
+[Appsmith](https://www.appsmith.com/) is an open-source framework for developing internal applications. With Appsmith, developers can quickly develop complex applications using drag-and-drop widgets for user-interface design and JavaScript for application logic. And Appsmith simplifies the processing of connecting your application to a wide range of data sources, from REST APIs to databases directly.
 
 Learn in this tutorial how to get started with Appsmith, deploying your own self-hosted instance with Docker. Over the course of this tutorial, see also how to start configuring, using, and managing your Appsmith instance to get the most out of it.
 
@@ -47,7 +47,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## What Is Appsmith?
 
-Appsmith is an open-source framework for building web-based applications via a visual, drag-and-drop interface. Especially designed with the development of internal applications in mind, Appsmith allows you to quickly put together an application interface and get it operational.
+Appsmith is an open-source framework for building web-based applications via a visual, drag-and-drop interface. Especially designed with the development of internal applications in mind, Appsmith allows you to more quickly compose an application interface and get your application operational.
 
 Appsmith allows you to connect drag-and-drop UI widgets to a wide range of data sources to make a full-functioning application. Whether you access data via a REST API, GraphQL, or directly from a database, Appsmith is capable of mobilizing it in your new application.
 
@@ -61,14 +61,14 @@ Appsmith's main advantage over the similar Retool is Appsmith's open-source natu
 
 Appsmith vs Budibase, on the other hand, comes down to emphasis and audience. Both are open-source solutions. But Budibase aims more completely to make application development visual. It is a "code optional" solution primarily with system administrators and other non-developer IT fields in mind.
 
-Appsmith, on the other hand, aims to provide a solution to help developers to quickly build complex internal applications. It provides a balance of graphical design and coded logic to simplify UI design without sacrificing application control.
+Appsmith, on the other hand, aims to provide a solution to help developers build complex internal applications more quickly and easily. It provides a balance of graphical design and coded logic to simplify UI design without sacrificing application control.
 
 ## How to Deploy Appsmith with Docker
 
-The official method supported for deploying a self-hosted Appsmith instance is through Docker. And that is the method used here, with all the steps you need to get your own instance up and running.
+The official method supported for deploying a self-hosted Appsmith instance is through Docker Compose. And that is the method used here, with all the steps you need to get your own instance up and running.
 
 {{< note >}}
-These steps have been tested on Ubuntu 22.04. However, the Docker commands should apply equally on other distributions, such as Debian and CentOS. The section on installing Docker includes how to do so for these distributions as well.
+These steps have been tested on Ubuntu 22.04. However, the Docker commands should apply equally on other distributions, such as Debian and CentOS. The section on installing Docker also includes information on how to do so for these and other distributions.
 {{< /note >}}
 
 ### Installing Docker
@@ -77,9 +77,9 @@ The first step is to install Docker and Docker Compose. Docker runs Appsmith, wh
 
 1. Install Docker using the steps outlined in one of the following guides, depending on your Linux distribution.
 
-    On Debian and Ubuntu, use our guide [How to Install and Use Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
+    On Debian and Ubuntu, use our guide on [How to Install and Use Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
 
-    On AlmaLinux, CentOS, and Fedora, use our guide [How to Install and Use Docker on CentOS and Fedora](/docs/guides/installing-and-using-docker-on-centos-and-fedora/).
+    On AlmaLinux, CentOS, and Fedora, use our guide on [How to Install and Use Docker on CentOS and Fedora](/docs/guides/installing-and-using-docker-on-centos-and-fedora/).
 
 1. Install Docker Compose using your distribution's package manager.
 
@@ -101,7 +101,7 @@ docker-compose version 1.29.2, build unknown
 
 ### Downloading Appsmith
 
-Once you have Docker and Docker Compose installed, you need to download the Docker Compose file for Appsmith, and do so into the directory you plan to run Appsmith from.
+Once you have Docker and Docker Compose installed, you need to download the Docker Compose file for Appsmith. This file should, additionally, be downloaded into the directory you plan to run Appsmith from.
 
 This series of commands creates a directory for Appsmith, moves into that directory, and downloads the Docker Compose file for Appsmith. Here, the Appsmith directory is created as a subdirectory of the current user's home directory. Vary this as fits your needs:
 
@@ -109,7 +109,7 @@ This series of commands creates a directory for Appsmith, moves into that direct
     cd ~/appsmith
     curl -L https://bit.ly/32jBNin -o $PWD/docker-compose.yml
 
-All subsequent commands in this tutorial assume you are in this Appsmith directory unless noted otherwise.
+All subsequent commands in this tutorial assume you are operating in this Appsmith directory unless noted otherwise.
 
 ### Running Appsmith
 
@@ -135,7 +135,7 @@ Now that Appsmith is up and running, and you can access the dashboard by navigat
 
 However, doing so is often not feasible, especially not for numerous users. Likely, you want to be able to access the dashboard remotely.
 
-You can do so by navigating to the Appsmith server's URL, which may often be an IP address, like `192.0.2.0`. But first, you need to ensure that the server's firewall provides external access to the HTTP port, port `80`.
+You can do so by navigating to the Appsmith server's URL, which may be an IP address, like `192.0.2.0`. But first, you need to ensure that the server's firewall provides external access to the HTTP port, port `80`.
 
 - For Debian and Ubuntu, refer to our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
 
@@ -157,7 +157,7 @@ In addition to the built-in tutorial, Appsmith offers [tutorials](https://docs.a
 
 ## How to Configure Appsmith for Self-hosting
 
-The main place for Appsmith configurations is `stacks/configuration/docker.env` within the Appsmith directory. There, you can setup things like an administrator username and password and API keys for integrations.
+The main place for Appsmith configurations is `stacks/configuration/docker.env` within the Appsmith directory. There, you can set up things like an administrator username and password and API keys for integrations.
 
 For instance, say that you want to use GitHub OAth, an email server, and a custom domain name for your Appsmith instance. You can do so by editing the following lines in the `docker.env` file, replacing the example values provided here:
 
@@ -194,15 +194,15 @@ Once you have made configuration changes, you need to restart the Appsmith servi
 
 ### Configuring Automatic Updates
 
-Setting up Appsmith for automatic updates requires a configuration change in a different file. For this change, you need to modify the `docker-compose.yml` file in the Appsmith directory. Follow these steps to make the necessary changes and enable automatic updates.
+Setting up Appsmith for automatic updates requires a configuration change in a different file. For this change, you need to modify the `docker-compose.yml` file found in the Appsmith directory. Follow these steps to make the necessary changes and enable automatic updates.
 
 1. Stop the Appsmith services:
 
         sudo docker-compose stop
 
-1. Open the `docker-compose.yml` file, and find the commented-out lines that begin with the line remove `# Uncomment the lines below to enable auto-update`. YAML configuration files like this one use `#` to comment out lines.
+1. Open the `docker-compose.yml` file, and find the commented-out lines that begin with the line `# Uncomment the lines below to enable auto-update`. YAML configuration files like this one use `#` to comment out lines.
 
-1. Remove the comment syntax (`#`) from the beginnings of these lines. There may be a space preceding the `#`, which should also be removed. The section of your configuration file may afterward look something like:
+1. Remove the comment syntax (`#`) from the beginnings of these lines. There may be a space character preceding the `#`, which should also be removed. The section of your configuration file may afterward look something like:
 
     {{< file "docker-compose.yml" >}}
    # Uncomment the lines below to enable auto-update
@@ -218,7 +218,7 @@ Setting up Appsmith for automatic updates requires a configuration change in a d
    restart: unless-stopped
     {{< /file >}}
 
-1. Start the Appsmith services back up. Docker Compose downloads the necessary additional image file and creates the service for automatic updates:
+1. Start the Appsmith services back up. Docker Compose downloads the necessary additional image file and creates the service used to manage automatic updates:
 
         sudo docker-compose up -d
 
@@ -226,17 +226,17 @@ Alternatively, you can make manual updates to your Appsmith instance. Take a loo
 
 ## How to Manage the Appsmith Instance
 
-The next few sections give you tools for
+The next sections give you tools for managing your Appsmith instance. These can be helpful for keeping instance up to date and for troubleshooting issues with any of the Appsmith services.
 
 ### Monitoring Processes
 
 Appsmith has a dedicated web interface for monitoring Appsmith processes, called Supervisor.
 
-You can access the Supervisor dashboard by navigating in your browser to the Supervisor path, `/supervisor`. You can do this locally with `http://localhost/supervisor`. Or you can access the Supervisor remotely through your server's domain/IP address, as in, for example `192.0.2.0/supervisor`.
+You can access the Supervisor dashboard by navigating in your browser to the Supervisor path, `/supervisor`. You can do this locally with `http://localhost/supervisor`. Or you can access the Supervisor remotely through your server's domain/IP address. For example, if your server's IP address is `192.0.2.0`, you could find the Supervisor at `192.0.2.0/supervisor`.
 
 [![The Appsmith Supervisor page](appsmith-supervisor_small.png)](appsmith-supervisor.png)
 
-Appsmith uses particular credentials for accessing the Supervisor, and you need to provide these credentials each time you want to access it. The credentials are set and stored in the main configuration file discussed above, `stacks/configuration/docker.env`. And the file comes with a default username and password you can use or change:
+Appsmith uses particular credentials for accessing the Supervisor, and you need to provide these credentials each time you want to access it. The credentials are set and stored in the main configuration file discussed above, `stacks/configuration/docker.env`. The file comes with a default username and password (the password being randomly generated) that you can either use or change. It is recommended, however, that you change the default password:
 
 {{< file "stacks/configuration/docker.env" >}}
 # [...]
@@ -256,48 +256,10 @@ You can update your Appsmith instance manually, if you have not enabled automati
 
 Alternatively, refer to the [Configuring Automatic Updates](/docs/guides/deploy-appsmith-docker/#configuring-automatic-updates) section above for steps to enable automatic updates on your Appsmith instance.
 
-### Importing and Exporting Data
-
-Appsmith is capable of exporting its stored data, which can be useful for things like backups and migrations.
-
-To export you Appsmith instance's data, use the following steps.
-
-1. Create a backup dump of the instance's data:
-
-        sudo docker-compose exec appsmith appsmithctl export_db
-
-1. Copy the file containing the dumped data to the Appsmith directory:
-
-        sudo docker cp appsmith:/appsmith-stacks/data/backup/appsmith-data.archive .
-
-1. You may also want to retrieve a copy of the active `docker.env` file from the instance:
-
-        sudo docker cp appsmith:/appsmith-stacks/configuration/docker.env .
-
-1. At this point, you can access the data dump file form the Appsmith directory as `appsmith-data.archive`. Similarly, you can access the instance's configuration file as `docker.env` in this same directory.
-
-To import data previously exported from an Appsmith instance, use the following steps. Again, you need to be in the Appsmith directory for the commands given here. Further, these steps assume that you have stored the `appsmith-data.archive` file and, optionally, the `docker.env` file that you want to import in the Appsmith directory.
-
-1. Copy the data dump file into the Appsmith instance:
-
-        docker cp ./appsmith-data.archive appsmith:/appsmith-stacks/data/restore/
-
-1. Have Appsmith import the data dump file:
-
-        docker-compose exec appsmith appsmithctl import_db
-
-1. If you have a configuration file (`docker.env`) that you want to import as well, copy that file to the instance:
-
-        docker cp ./docker.env appsmith:/appsmith-stacks/configuration/
-
-1. Restart the Appsmith server for the configuration changes to take effect:
-
-        docker-compose exec appsmith supervisorctl restart backend
-
 ## Conclusion
 
-Having followed this tutorial, you have what you need to start using Appsmith to built your own applications. This tutorial covers the steps and techniques for getting an Appsmith instance up and running and managing it once you have.
+Having followed this tutorial, you have what you need to start using Appsmith to build your own applications. This tutorial covers the steps and techniques for getting an Appsmith instance up and running and managing it once you have.
 
-From there, you can jump into the tutorials and guides available from Appsmith to learn all the possibilities that the framework has to offer. Take a look at the links to Appsmith below
+From there, you can jump into the tutorials and guides available from Appsmith to learn all the possibilities that the framework has to offer. Take a look at the link to Appsmith below, or at the links provided throughout this guide.
 
 Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
