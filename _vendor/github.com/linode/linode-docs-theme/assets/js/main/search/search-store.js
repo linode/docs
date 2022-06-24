@@ -182,7 +182,7 @@ export function newSearchStore(searchConfig, Alpine) {
 				// Load section meta data from Algolia.
 				newRequestCallback(
 					{
-						indexName: searchConfig.indexName(searchConfig.meta_index),
+						indexName: searchConfig.meta_index,
 						params: 'query=&hitsPerPage=600',
 						// We load the Hugo data from the published JSON to save Algolia queries on
 						// load (for the breadcrumbs).
@@ -202,7 +202,7 @@ export function newSearchStore(searchConfig, Alpine) {
 					}
 				),
 				newRequestCallback(createSectionRequest(), (result) => {
-					if (!result.index.endsWith('linode-merged')) {
+					if (result.index != 'linode-merged') {
 						throw `invalid state: ${result.index}`;
 					}
 					debug('withBlank.blank.result:', result);
@@ -239,7 +239,7 @@ export function newSearchStore(searchConfig, Alpine) {
 		}
 
 		return {
-			indexName: searchConfig.indexName(sectionConfig.index),
+			indexName: sectionConfig.index,
 			filters: filters,
 			facetFilters: facetFilters,
 			facets: facets,
@@ -594,13 +594,6 @@ export function getSearchConfig(params) {
 			return noun;
 		};
 	});
-
-	cfg.indexName = function (index) {
-		if (!cfg.index_prefix) {
-			return index;
-		}
-		return `${cfg.index_prefix}${index}`;
-	};
 
 	return cfg;
 }
