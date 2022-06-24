@@ -8,14 +8,14 @@ keywords: ["two-factor authentication", "password", "security", "Linode Cloud Ma
 tags: ["security","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-manager-security/','/security/authentication/linode-manager-security-controls/','/security/linode-manager-security-controls-new-manager/','/platform/manager/keep-your-linode-account-safe/','/security/linode-manager-security-controls/','/security/authentication/two-factor-authentication/linode-manager-security-controls/','/guides/linode-manager-security-controls/']
-modified: 2022-06-23
+modified: 2022-06-24
 modified_by:
   name: Linode
-published: 2022-06-23
+published: 2022-06-24
 title: "Security Controls for User Accounts"
 ---
 
-The [Cloud Manager](https://cloud.linode.com) is the gateway to all of your Linode products and services, and you should take steps to protect it from unauthorized access. This guide documents several of the Linode Cloud Manager's features that can help mitigate your risk. Whether you're worried about malicious users gaining access to your username and password, or authorized users abusing their access privileges, the Cloud Manager's built-in security tools can help.
+To protect your Linode user account against unauthorized access, there are several security controls you can implement. This guide covers several of these controls, including 2FA, security questions, and phone verification..
 
 ## 2FA (Two-Factor Authentication)
 
@@ -47,7 +47,7 @@ You can configure three security questions on your user account. Security questi
 
 1. After a security question has been configured, you can edit one or more questions by clicking the **Edit** button next to each question you'd like to change, updating the answer field with your new answer, and then clicking the **Update Security Questions** button.
 
-## Verified Phone Numbers
+## Phone Verification
 
 A verified phone number provides our team with a secure method of verifying access to your Linode user account. It is required for all new accounts created on or after June 27th, 2022, though any existing user can add a verified phone number to increase the security on their account.
 

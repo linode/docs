@@ -7,7 +7,7 @@ keywords: ["getting started", "intro", "basics", "first steps", "linode platform
 description: "Learn how to create an account and use the Linode Cloud Platform."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode/']
-modified: 2022-06-21
+modified: 2022-06-24
 modified_by:
   name: Linode
 published: 2018-11-05
@@ -40,7 +40,7 @@ First, you need to create a Linode account to start using our services. If you a
 1. In the **Security** section of the signup process, input your phone number. Linode uses phone numbers as a measure to verify identity and prevent fraud. Once a phone number is provided, a verification code is sent to that number as an SMS text message. Enter this code into the signup form.
 
     {{< note >}}
-This phone number provides our team with a secure method of verifying your identity as the owner of the newly created Linode user account. We will only ever use this phone number to verify your identity by sending a verification code as an SMS message. You will then provide this verification code to the support representative with whom you are in contact. If you receive a verification code without contacting us, do not pass along this code to anyone. Linode will never contact you for the verification code.
+This phone number provides our team with a secure method of verifying your identity as the owner of the newly created Linode user account. We will only ever use this phone number to verify your identity by sending a verification code as an SMS message. See [Phone Verification](/docs/guides/user-security-controls/#phone-verification) for more details.
 {{</ note >}}
 
 1. Within the **Billing** section, select your payment method and enter your billing address details. Linode accepts credit/debit cards, Google Pay, and PayPal. See the [Billing and Payments](/docs/guides/how-linode-billing-works/#payments) guide to learn more about each of these methods. You must also accept the [Master Services Agreement](https://www.linode.com/legal-msa/).
