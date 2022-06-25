@@ -24,7 +24,7 @@ external_resources:
 - '[Buildah](https://buildah.io/)'
 ---
 
-[Podman](https://podman.io/) is a free open source *container management* application. It is a solid alternative to [Docker](https://www.docker.com/) and works very similarly. This guide introduces Podman and compares Docker vs Podman. It also explains some of Podman's advantages and lists some of the situations where it is the best option.
+[Podman](https://podman.io/) is a free open source *container management* application. It is a solid alternative to [Docker](https://www.docker.com/) and works very similarly. This guide introduces Podman and compares Docker vs Podman. It also explains some of the advantages of Podman and lists some of the situations where it is the best option.
 
 ## An Introduction to Containers and Container Management
 
