@@ -192,6 +192,7 @@ bs4
 btmp
 bufio
 bugtracker
+Buildah
 buildbot
 bukkit
 bundler
