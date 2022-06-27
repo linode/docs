@@ -158,11 +158,11 @@ Additionally, in some cases, SSH will not be enabled or included by default as p
 
 If you've followed the steps so far, you should have a working custom distribution with raw disks, using the *direct disk* boot option. While this setup is functional, it's not compatible with several features of the Linode Manager that require the ability to mount your file system, such as:
 
-*  **Disk Resizing:** Since the Linode Cloud Manager cannot determine the amount of *used* storage space on a raw disk, it can only **increase** the size. The Linode Cloud Manager cannot be used to make a raw disk smaller, and it cannot resize the file system on the disk - this would need to be done manually. Also, some ext4 features like enabled metadata_csum are not supported for custom distribution images.
+*  **Disk Resizing:** Since the Linode Cloud Manager cannot determine the amount of *used* storage space on a raw disk, it can only **increase** the size. The Linode Cloud Manager cannot be used to make a raw disk smaller, and it cannot resize the file system on the disk - this would need to be done manually. Also, some ext4 features like enabled `metadata_csum` are not supported for custom distribution images.
 
 *  **Backups:** The Linode Backup Service needs to be able to mount your filesystem, and does not support partitioned disks.
 
-*  **Helpers:** Several helpful features within the Linode Manager, such as [root password resets](/docs/guides/#resetting-the-root-password) and [Network Helper](/docs/guides/network-helper/), need access to your file system in order to make changes.
+*  **Helpers:** Several helpful features within the Linode Manager, such as [root password resets](/docs/guides/reset-the-root-password-on-your-linode/) and [Network Helper](/docs/guides/network-helper/), need access to your file system in order to make changes.
 
 This section covers how to move your custom installation over to an **ext4** formatted disk so it can take advantage of these tools.
 
