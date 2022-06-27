@@ -71,7 +71,7 @@ In this section, learn to deploy TOBS for individual/local access with `kubectl`
 
 ### Deploy The Observability Stack
 1. Install a certificate manager for your LKE cluster:
- 
+
         kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.8.0/cert-manager.yaml
 
 1.  Using Helm, deploy the TOBS release labeled `lke-monitor` in the `monitoring` namespace on your LKE cluster:
@@ -171,9 +171,9 @@ Press **control+C** on your keyboard to terminate a port-forward process after e
 
 
 When accessing the Grafana interface, log in as `admin`. You can get the `password` using:
-  
+
            kubectl get secret --namespace monitoring lke-monitor-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo.
-  
+
 The Grafana dashboards are accessible at **Dashboards > Manage** from the left navigation bar.
 
 TOBS eliminates the need to maintain configuration details for each of the applications, while providing standardized monitoring for the applications running on your cluster.
