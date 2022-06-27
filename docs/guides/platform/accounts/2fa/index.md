@@ -7,10 +7,10 @@ description: "Secure your Linode user account from unauthorized access by enable
 keywords: ["security", "Linode Cloud Manager", "token"]
 tags: ["security","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-06-24
+modified: 2022-06-27
 modified_by:
   name: Linode
-published: 2022-06-24
+published: 2022-06-27
 title: "Managing 2FA on a Linode User Account"
 h1_title: "Managing Two-Factor Authentication (2FA) on a User Account"
 enable_h1: true
