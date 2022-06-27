@@ -145,7 +145,7 @@ You should follow all steps in the [Linode is Slow](#linode-is-slow) section bef
 
 ### Are You Using Telnet or FTP?
 
-Telnet and FTP are disabled on your Linode by default, and we strongly recommend that you do not use those protocols. Instead, please use Secure Shell (SSH) and SSH File Transfer Protocol (SFTP) -- the secure versions of the Telnet and FTP protocols. All Linodes come with an SSH server enabled, and you can connect to port 22 with SSH and SFTP clients. For more information, see [Connecting to Your Linode](/docs/getting-started-new-manager/#connect-to-your-linode-via-ssh).
+Telnet and FTP are disabled on your Linode by default, and we strongly recommend that you do not use those protocols. Instead, please use Secure Shell (SSH) and SSH File Transfer Protocol (SFTP) -- the secure versions of the Telnet and FTP protocols. All Linodes come with an SSH server enabled, and you can connect to port 22 with SSH and SFTP clients. For more information, see [Connecting to Your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance).
 
 ## Forgot My Username or Password
 
@@ -153,7 +153,7 @@ Telnet and FTP are disabled on your Linode by default, and we strongly recommend
 
 If you've forgotten the password for the root user on your Linode, you can follow the steps for [resetting your root password](/docs/guides/reset-the-root-password-on-your-linode/) from the Linode Manager.
 
-Once you have access to your Linode as the root user, you can reset the password for any additional system users with the `passwd` command.The example resets the password for the `username` user:
+Once you have access to your Linode as the root user, you can reset the password for any additional system users with the `passwd` command. The example resets the password for the `username` user:
 
     passwd username
 
@@ -171,7 +171,7 @@ Use the following checklist if the Linode Manager is displaying "incorrect" info
 
 ### Did You Recently Change your Account?
 
-If you recently created a new account, resized an existing Linode, or added extra bandwidth, the bandwidth displayed in the Linode Cloud Manager will be prorated for the amount of time left in the current billing cycle. For example, if you create an account on the 15th day of the month, the Manager will indicate that your account has been allocated half of the plan's bandwidth for the current month. This information is an accurate representation of the bandwidth available for the rest of the billing period. When then next billing period starts, the Manager will indicate that all of the plan's bandwidth is available. View the [Billing and Payments](/docs/guides/billing-and-payments/) guide for more information.
+If you recently created a new account, resized an existing Linode, or added extra bandwidth, the bandwidth displayed in the Linode Cloud Manager will be prorated for the amount of time left in the current billing cycle. For example, if you create an account on the 15th day of the month, the Manager will indicate that your account has been allocated half of the plan's bandwidth for the current month. This information is an accurate representation of the bandwidth available for the rest of the billing period. When then next billing period starts, the Manager will indicate that all of the plan's bandwidth is available. View the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for more information.
 
 ### Did You Add Additional Storage?
 
