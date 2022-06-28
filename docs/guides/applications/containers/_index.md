@@ -7,7 +7,7 @@ keywords: ["containers"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/containers/','/containers/']
 published: 2014-01-28
-title: Using Linux Containers at Linode | Linode
+title: Using Linux Containers at Linode
 show_in_lists: true
 ---
 
