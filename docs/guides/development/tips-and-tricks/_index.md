@@ -7,7 +7,7 @@ og_description: "This section covers different software development practices th
 keywords: ["mobile web development", "programming on ipad", "programming on android"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-31
-title: Tips and Tricks for Web Development | Linode
+title: Tips and Tricks for Web Development
 show_in_lists: true
 aliases: ['/development/tips-and-tricks/']
 ---
