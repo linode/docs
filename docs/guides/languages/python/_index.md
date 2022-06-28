@@ -1,4 +1,4 @@
 ---
-title: Learn About the Python Programming Language | Linode
+title: Learn About the Python Programming Language
 aliases: ['/languages/python/']
 ---
