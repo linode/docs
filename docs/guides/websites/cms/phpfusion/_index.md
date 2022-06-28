@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "PHP Fusion is a lightweight content management system built on the popular LAMP stack. Designed for maximum flexibility and broad support for internationalization, in its latest version PHP Fusion focuses on standards compliance, security, and modular design."
-og_description: "PHP Fusion is a lightweight content management system built on the popular LAMP stack. Designed for maximum flexibility and broad support for internationalization, in its latest version PHP Fusion focuses on standards compliance, security, and modular design."
+description: "This guide will help you install and configure PHP Fusion, a lightweight content management system built on top of the popular LAMP (Linux, Apache, MySQL, PHP) stack."
+og_description: "This guide will help you install and configure PHP Fusion, a lightweight content management system built on top of the popular LAMP (Linux, Apache, MySQL, PHP) stack."
 keywords: ["php fusion", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01

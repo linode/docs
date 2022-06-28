@@ -2,7 +2,7 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'Drupal is an advanced and powerful content management framework, built on the PHP scripting language and supported by a database engine like MySQL. Drupal provides a flexible system that can be used to manage websites for a variety of use cases. For example, you can create rich, interactive “community” websites with forums, user blogs, and private messaging.'
+description: 'These guides will help you install and configure Drupal, an advanced and powerful content management framework built on the PHP scripting language.'
 keywords: ["drupal", "cms", "apache", "php", "content management system"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-18

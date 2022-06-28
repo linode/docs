@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "Downtime is expensive and puts your company’s reputation at risk. Linode Managed is an incident response service designed to help businesses cut out costly downtime. Our highly experienced Managed Service team is here around the clock to help."
-og_description: 'Downtime is expensive and puts your company’s reputation at risk. Linode Managed is an incident response service designed to help businesses cut out costly downtime. Our highly experienced Managed Service team is here around the clock to help.'
+description: "Linode Managed is an incident response service designed to help businesses cut costly downtime. These guides explain how to use the service."
+og_description: 'Linode Managed is an incident response service designed to help businesses cut costly downtime. These guides explain how to use the service.'
 tags: ["linode platform","cloud manager","monitoring"]
 keywords: ["linode managed", "monitoring", "linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

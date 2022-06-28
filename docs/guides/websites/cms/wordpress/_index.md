@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "WordPress is a popular dynamic content management system (CMS) focused on blogs. WordPress can be deployed on a LAMP or LEMP stack. It features an extensive plugin framework and theme system that allows site owners to use its simple, yet powerful publishing tools."
-og_description: "WordPress is a popular dynamic content management system (CMS) focused on blogs. WordPress can be deployed on a LAMP or LEMP stack. It features an extensive plugin framework and theme system that allows site owners to use its simple, yet powerful publishing tools."
+description: "This guide will help you install and configure WordPress, a popular dynamic content management system (CMS) that is focused on blogs but can run nearly any type of site."
+og_description: "This guide will help you install and configure WordPress, a popular dynamic content management system (CMS) that is focused on blogs but can run nearly any type of site."
 keywords: ["wordpress", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01

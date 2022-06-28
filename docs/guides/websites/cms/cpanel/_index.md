@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "cPanel is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with cPanel on your CentOS Linode."
-og_description: "cPanel is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with cPanel on your CentOS Linode."
+description: "These guides will help you with the configuration of cPanel, an extremely popular web-based control panel you can use to administer and manage services on your Linode."
+og_description: "These guides will help you with the configuration of cPanel, an extremely popular web-based control panel you can use to administer and manage services on your Linode."
 keywords: ["cPanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-01

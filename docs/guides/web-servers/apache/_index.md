@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'The Apache web server remains the most popular software for publishing websites on the Internet. This highly configurable, stable server is capable of handling the web serving needs of small and large sites alike. Read on for information on running Apache on your Linode.'
+description: 'These guides will help you configure the most popular, free, and open-source web server, Apache, which is a highly configurable, stable web server.'
 keywords: ["Apache web server", "Apache on Linode", "Linode web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache/','/websites/apache/']
