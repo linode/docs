@@ -7,7 +7,7 @@ og_description: "Yesod is a web framework based on the purely functional program
 keywords: ["yesod", "haskell"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-31
-title: Run Yesod at Linode | Linode
+title: Run Yesod at Linode
 show_in_lists: true
 aliases: ['/development/frameworks/yesod/']
 ---
