@@ -1,6 +1,6 @@
 ---
 description: 'Large storage volumes you can attach to your Linode.'
-title: 'Learn About Linode Block Storage | Linode'
+title: 'Learn About Linode Block Storage'
 show_in_lists: true
 aliases: ['/platform/block-storage/']
 ---
