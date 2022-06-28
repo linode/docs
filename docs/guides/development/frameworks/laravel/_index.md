@@ -7,7 +7,7 @@ og_description: "[Laravel](https://laravel.com/) is a PHP web application framew
 keywords: ["laravel", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-03
-title: Run Laravel at Linode | Linode
+title: Run Laravel at Linode
 show_in_lists: true
 ---
 
