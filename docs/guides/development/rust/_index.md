@@ -6,6 +6,6 @@ description: 'Rust is a popular programming language designed to maximize perfor
 keywords: ["development", "rust"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-07
-title: Guides to Using Rust at Linode | Linode
+title: Guides to using Rust at Linode
 show_in_lists: true
 ---
