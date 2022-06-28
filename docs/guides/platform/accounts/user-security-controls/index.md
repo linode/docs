@@ -56,7 +56,7 @@ A verified phone number provides our team with a secure method of verifying acce
 This phone number is only ever used to verify your identity when attempting to authenticate to a user account when contacting Linode Support. An SMS message with a verification code is sent to that phone number. Once received, you can provide that verification code to the Support representative you are in contact with. If you receive a verification SMS without contacting us, do not pass along the verification code to anyone.
 
 {{< note >}}
-Standard carrier messaging fees apply for each SMS message
+Standard carrier messaging fees apply for each SMS message.
 {{</ note >}}
 
 ### Adding a Verified Phone Number
