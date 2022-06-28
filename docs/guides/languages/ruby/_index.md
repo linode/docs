@@ -1,4 +1,4 @@
 ---
-title: Learn About the Ruby Programming Language | Linode
+title: Learn About the Ruby Programming Language
 aliases: ['/languages/ruby/']
 ---
