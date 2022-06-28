@@ -7,7 +7,7 @@ og_description: 'Pulumi is a development tool which allows you to write computer
 keywords: ["pulumi", "infrastructure as code"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-15
-title: Using Pulumi at Linode | Linode
+title: Using Pulumi at Linode
 show_in_lists: true
 aliases: ['/applications/configuration-management/pulumi/']
 ---
