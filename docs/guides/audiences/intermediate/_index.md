@@ -1,4 +1,4 @@
 ---
-title: Guides For Those With Intermediate Experience | Linode
+title: Guides For Those With Intermediate Experience
 aliases: ['/audiences/intermediate/']
 ---
