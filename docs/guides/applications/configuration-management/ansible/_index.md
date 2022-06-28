@@ -7,7 +7,7 @@ og_description: 'Ansible is an automation tool for server provisioning, configur
 keywords: ["ansible", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-15
-title: Using Ansible at Linode | Linode
+title: Using Ansible at Linode
 show_in_lists: true
 aliases: ['/applications/configuration-management/ansible/']
 ---
