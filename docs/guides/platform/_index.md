@@ -1,5 +1,5 @@
 ---
-title:  Learn About the Linode Platform | Linode
+title:  Learn About the Linode Platform
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/','/linode-platform/']
 description: 'Learn about everything Linode!'
