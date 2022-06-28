@@ -1,4 +1,4 @@
 ---
-title: Learn About the Julila Programming Language | Linode
+title: Learn About the Julia Programming Language
 aliases: ['/languages/julia/']
 ---
