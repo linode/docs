@@ -7,7 +7,7 @@ og_description: "This section shows how to implement security best practices tha
 keywords: ["cloud security", "linux security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-31
-title: Linode Security Basics | Linode
+title: Linode Security Basics
 show_in_lists: true
 aliases: ['/security/basics/']
 ---
