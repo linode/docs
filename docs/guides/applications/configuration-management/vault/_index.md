@@ -7,7 +7,7 @@ og_description: 'HashiCorp Vault is a secrets management tool that helps to prov
 keywords: ["hashicorp", "Vault", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-15
-title: Using Vault at Linode | Linode
+title: Using Vault at Linode
 show_in_lists: true
 aliases: ['/applications/configuration-management/vault/']
 ---
