@@ -1187,6 +1187,7 @@ metacharacter
 metacharacters
 metacity
 metapackage
+metapackages
 metaparameters
 metasploit
 meterpreter

@@ -6,7 +6,7 @@ author:
 description: Learn basics and advanced Linux package management in Debian, Ubuntu, Fedora, etc using apt, yum, aptitude and other package managers.
 keywords: ["dnf", "rpm", "apt", "dpkg", "apt-get", "apt-cache", "pacman", "yum"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-07-15
+modified: 2022-05-12
 modified_by:
   name: Linode
 published: 2021-07-15
@@ -54,7 +54,7 @@ There are lots of package managers in Linux, each working a bit differently. Her
 
 [Using APT to Manage Packages in Debian and Ubuntu](/docs/guides/apt-package-manager/)
 
-- **Distributions:** Debian-based, including Debian and Ubuntu
+- **Distributions:** Ubuntu, Debian, and Kali Linux
 - **Commands:** `apt`, `apt-get`, `apt-cache`
 - **Underlying package management tool:** [dpkg](https://linux.die.net/man/1/dpkg)
 - **Package file format:** `.deb`
