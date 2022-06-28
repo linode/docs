@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "Deploy Kali Linux on a Linode Compute Instance. The most popular Linux distribution and tool suite for penetration testing and security research."
+description: "Deploy Kali Linux, a popular Linux distribution for penetration testing and security research, on a Linode Compute Instance."
 keywords: ['kali','security','pentest']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,7 +13,10 @@ contributor:
   link: https://github.com/hmorris3293
 ---
 
-[Kali Linux](https://www.kali.org/) is an open source, Debian-based Linux distribution that has become an industry-standard tool for penetration testing and security audits. Kali includes hundreds of free tools for reverse engineering, penetration testing and more. Kali prioritizes simplicity, making security best practices more accessible to everyone from cybersecurity professionals to hobbyists.
+[Kali Linux](https://www.kali.org/) is a specialized Debian-based Linux distribution that has become an industry-standard tool for penetration testing. Kali Linux includes hundreds of free tools for reverse engineering, penetration testing, computer forensics, security audits, and more. It is open source and prioritizes simplicity. To learn more about Kali Linux and determine if its a viable solution for your workloads, see the following resources from its official documentation site:
+
+- [What is Kali Linux?](https://www.kali.org/docs/introduction/what-is-kali-linux/)
+- [Should I Use Kali Linux?](https://www.kali.org/docs/introduction/should-i-use-kali-linux/)
 
 ## Deploying a Marketplace App
 
@@ -32,35 +35,44 @@ contributor:
 
 ### Kali Options
 
-- **Kali Headless Package** *(required)*: Would you like to install the Kali Headless package?
-- **Kali Everything Package** *(required)*: Would you like to install the Kali Everything package?
+- **Kali Headless Package** *(required)*: This installs the [kali-linux-headless](https://www.kali.org/tools/kali-meta/#kali-linux-headless) meta-package, which includes all non-GUI packages.
+- **Kali Everything Package** *(required)*: This installs the [kali-linux-everything](https://www.kali.org/tools/kali-meta/#kali-linux-everything) meta-package, which includes all available Kali packages, and also installs [Apache Guacamole](https://guacamole.apache.org/) for remotely accessing Kali's desktop environment.
+
+    {{< note >}}
+If both packages are selected, only the [kali-linux-everything](https://www.kali.org/tools/kali-meta/#kali-linux-everything) package is installed (which includes everything in [kali-linux-headless](https://www.kali.org/tools/kali-meta/#kali-linux-headless)).
+{{</ note >}}
+
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
-- **Sudo/VNC Username** *(required)*: The VNC username created for this Linode with sudo permissions. This is used for your VNC session.
-- **Sudo/VNC User Password** *(required)*: Password for your sudo/VNC user. This is used for your VNC session.
+- **Sudo/VNC Username** *(required)*: The VNC username you wish to create for this Compute Instance. This is used for your VNC session and will have elevated privilages (`sudo`).
+- **Sudo/VNC User Password** *(required)*: The password you wish to use for your VNC user.
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
 ## Getting Started after Deployment
 
-1. If you choose the [Kali Headless package](https://www.kali.org/tools/kali-meta/#kali-linux-headless), you can log in to your Compute Instance over SSH using the `root` user. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance. 
+After Kali Linux has been fully deployed, you can log in through an SSH session as the `root` user and perform your workloads as needed. See the [Kali Linux documentation](https://www.kali.org/docs/) to learn how to further utilize your instance.
 
-1.  If you choose the [Kali Everything package](https://www.kali.org/tools/kali-meta/#kali-linux-everything), Open your web browser and navigate to the domain entered during the creation of the Linode instance. If you did not enter a domain, you can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
+### Remote Desktop Connection with Apache Guacamole
 
+If you selected to install the [Kali Everything package](https://www.kali.org/tools/kali-meta/#kali-linux-everything), [Apache Guacamole](https://guacamole.apache.org/) is also installed. This allows you to connect remotely to the desktop environment and access Kali's GUI tools. Perform the steps below to access your Kali Linux desktop through Apache Guacamole.
 
-1.  The credentials to the Apache Guacamole remote desktop can be found by running the command below:
+1. Log in to your Compute Instance over SSH using the `root` user. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
-            cat /root/kali.info
+1.  View the `/root/.kali.info` file to access the automatically generated credentials for Apache Guacamole.
 
-    {{<output>}}
+        cat /root/.kali.info
+
+    {{< output >}}
 ##############################
 #   KALI INSTALLATION CREDS  #
 ##############################
 
-* Apache Guacamole User: 4yRtG2384FH3
-* Apache Guacamole Password: eDE4FYp5tZ2pCIFhieho384jg3
+* Apache Guacamole User: 4yRtG2394RH3
+* Apache Guacamole Password: eDE4Fzp5tZ2ICIFhieho384jg3
+{{</ output >}}
 
-    {{</output>}}
+1. Access Apache Guacabole by opening your web browser and navigating to the domain entered during the creation of the Linode instance. If you did not enter a domain, you can also use your Compute Instance's rDNS, which may look like `192-0-2-1.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing the rDNS value.
 
-1. Once you've completed the login process, you have full access to your Kali Linux instance from your Guacamole remote desktop. Check out [the official Kali Linux documentation](https://www.kali.org/docs/) to learn how to further utilize your Kali Linux instance.
+1. Once you've completed the login process, you have full access to your Kali Linux instance from your Guacamole remote desktop.
 
 {{< content "marketplace-update-note-shortguide">}}
