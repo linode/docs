@@ -1,4 +1,4 @@
 ---
-title: Learn About the R Programming Language | Linode
+title: Learn About the R Programming Language
 aliases: ['/languages/r/']
 ---
