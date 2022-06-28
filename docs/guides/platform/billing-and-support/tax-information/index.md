@@ -157,4 +157,5 @@ To keep our pricing stable and consistent, rather than fluctuating with exchange
 | Singapore GST | M90373465T |
 | United Kingdom VAT | GB383720095 |
 | United States EIN | 20-2647179 |
-| Canadian GST | 724750708 |
+| Canadian GST | 724750708RT0001 |
+| Norway VAT | 2063948 |
