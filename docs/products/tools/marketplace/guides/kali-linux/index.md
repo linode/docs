@@ -39,8 +39,8 @@ This Marketplace App extends Linode's Kali Linux distribution image by allowing 
 
 ### Kali Options
 
-- **Kali Headless Package** *(required)*: This installs the [kali-linux-headless](https://www.kali.org/tools/kali-meta/#kali-linux-headless) meta-package, which includes all non-GUI packages.
-- **Kali Everything Package** *(required)*: This installs the [kali-linux-everything](https://www.kali.org/tools/kali-meta/#kali-linux-everything) meta-package, which includes all available Kali packages, and also installs [TigerVNC](https://tigervnc.org/) and [Apache Guacamole](https://guacamole.apache.org/) for remotely accessing Kali's desktop environment.
+- **Kali Headless Package** *(required)*: This installs the [kali-linux-headless](https://www.kali.org/tools/kali-meta/#kali-linux-headless) metapackage, which includes all non-GUI packages.
+- **Kali Everything Package** *(required)*: This installs the [kali-linux-everything](https://www.kali.org/tools/kali-meta/#kali-linux-everything) metapackage, which includes all available Kali packages, and also installs [TigerVNC](https://tigervnc.org/) and [Apache Guacamole](https://guacamole.apache.org/) for remotely accessing Kali's desktop environment.
 
     {{< note >}}
 If both packages are selected, only the [kali-linux-everything](https://www.kali.org/tools/kali-meta/#kali-linux-everything) package is installed (which includes everything in [kali-linux-headless](https://www.kali.org/tools/kali-meta/#kali-linux-headless)).
