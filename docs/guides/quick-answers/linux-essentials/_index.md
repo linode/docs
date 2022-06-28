@@ -6,7 +6,7 @@ description: 'This section contains basic information about Linux, systems admin
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-05-22
-title: Learn Some Linux Essentials | Linode
+title: Learn Some Linux Essentials
 show_in_lists: true
 aliases: ['/quick-answers/linux-essentials/']
 ---
