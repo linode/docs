@@ -1,4 +1,4 @@
 ---
-title: Run Web Applications at Linode | Linode
+title: Run Web Applications at Linode
 aliases: ['/concentrations/web-applications/']
 ---
