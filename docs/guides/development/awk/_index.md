@@ -7,7 +7,7 @@ og_description: 'AWK is a Turing-complete pattern matching programming language.
 keywords: ["awk", "pattern matching", "regular expressions", "regex"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-31
-title: Introduction to the Awk Programming Language | Linode
+title: Introduction to the Awk Programming Language
 show_in_lists: true
 aliases: ['/development/awk/']
 ---
