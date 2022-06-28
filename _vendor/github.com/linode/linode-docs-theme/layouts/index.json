@@ -60,7 +60,7 @@
     {{ $path = .Path }}
 {{- end -}}
 {{- $objectID := printf "%s-%s" .Lang $path | md5 -}}
-{{- $dict := (dict "objectID" $objectID "ordinal" $ordinal "thumbnailUrl" $thumb.RelPermalink "section" $section "category" $category "tags" $tags "excerpt" $excerpt "title" $title "linkTitle"  .LinkTitle "href" .RelPermalink "lastUpdatedTime" .Lastmod.Unix "firstPublishedTime" .PublishDate.Unix "firstPublishedYear" .PublishDate.Year "keywords" .Params.keywords "deprecated" $deprecated "hiddenguide" .Params.hiddenguide "h1" .Params.h1_title "toc" (.TableOfContents | plainify ) "excludeFromViews" $excludeFromViews ) }}
+{{- $dict := (dict "objectID" $objectID "ordinal" $ordinal "thumbnailUrl" $thumb.RelPermalink "section" $section "category" $category "tags" $tags "excerpt" $excerpt "title" $title "linkTitle"  .LinkTitle "href" .RelPermalink "lastUpdatedTime" .Lastmod.Unix "firstPublishedTime" .PublishDate.Unix "firstPublishedYear" .PublishDate.Year "keywords" .Params.keywords "deprecated" $deprecated "hiddenguide" .Params.hiddenguide "h1" .Params.h1_title "toc" (.TableOfContents | plainify | transform.HTMLUnescape ) "excludeFromViews" $excludeFromViews ) }}
 {{- $dict = $dict | merge (dict "skillLevel" .Params.skillLevel "languages" .Params.languages) -}}
 {{- $sectionPath := "" -}}
 {{- if not $sections -}}

@@ -35,8 +35,8 @@ If your site does not yet have a certificate, you can easily generate one direct
 
 Install certbot and configure your TLS certificate by using one of the following guides:
 
-- [How to Use Certbot to Install SSL/TLS Certificates for NGINX on Ubuntu 20.04](/docs/guides/how-to-install-certbot-for-nginx-on-ubuntu-20-04/)
-- [How to Use Certbot to Install SSL/TLS Certificates for Apache on Ubuntu 20.04](/docs/guides/how-to-install-certbot-for-apache-on-ubuntu-20-04/)
+- [How to Use Certbot to Install SSL/TLS Certificates for NGINX on Ubuntu 20.04](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/)
+- [How to Use Certbot to Install SSL/TLS Certificates for Apache on Ubuntu 20.04](/docs/guides/enabling-https-using-certbot-with-apache-on-ubuntu/)
 
 You can also follow the [installation instructions](https://certbot.eff.org/instructions) on certbot's website. This should prompt you to select your web server software as well as the operating system of your server and will output the specific instructions that should work for you.
 

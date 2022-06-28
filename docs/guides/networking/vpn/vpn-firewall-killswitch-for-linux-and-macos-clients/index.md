@@ -28,11 +28,11 @@ For this reason, VPN clients often use firewall rules to ensure that internet tr
 
 This guide assumes that you already have an OpenVPN server running on your Linode, and have at least one client configured to connect to it. If you need help doing this, see our three-part series on setting up an OpenVPN environment:
 
-1.  [Set Up a Hardened OpenVPN Server with Debian](/docs/networking/vpn/set-up-a-hardened-openvpn-server/)
+1.  [Set Up a Hardened OpenVPN Server with Debian](/docs/guides/set-up-a-hardened-openvpn-server/)
 
-2.  [Tunnel Your Internet Traffic Through an OpenVPN Server](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server/)
+2.  [Tunnel Your Internet Traffic Through an OpenVPN Server](/docs/guides/tunnel-your-internet-traffic-through-an-openvpn-server/)
 
-3.  [Configuring OpenVPN Client Devices](/docs/networking/vpn/configuring-openvpn-client-devices/)
+3.  [Configuring OpenVPN Client Devices](/docs/guides/configuring-openvpn-client-devices/)
 
 
 ## Gather Client Device Information

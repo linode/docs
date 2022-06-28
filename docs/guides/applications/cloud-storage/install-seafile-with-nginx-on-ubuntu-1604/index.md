@@ -19,7 +19,7 @@ aliases: ['/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604
 
 Seafile is a cross-platform file hosting tool with server applications for Linux and Windows, and GUI clients for Android, iOS, Linux, OS X and Windows. It supports file versioning and snapshots, two-factor authentication, WebDAV, and can be paired with NGINX or Apache to enable connections over HTTPS.
 
-Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Pro edition is free for up to 3 users, this guide will use Seafile Community Edition with NGINX serving an HTTPS connection, and MySQL on the backend. This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode/) service with this setup.
+Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Pro edition is free for up to 3 users, this guide will use Seafile Community Edition with NGINX serving an HTTPS connection, and MySQL on the backend. This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/guides/how-to-use-block-storage-with-your-linode/) service with this setup.
 
 ![Install Seafile with NGINX on Ubuntu 16.04](seafile-title-graphic.png)
 
@@ -27,7 +27,7 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
 ## Prepare Ubuntu
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 1.  Update the system:
@@ -47,7 +47,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 4.  You should now be logged into your Linode as *sfadmin*. Use our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/#harden-ssh-access) guide to harden SSH access.
 
-5.  Set up UFW rules. UFW is Ubuntu's iptables controller which makes setting up firewall rules a little easier. For more info on UFW, see our guide [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/). Set the allow rules for SSH and HTTP(S) access with:
+5.  Set up UFW rules. UFW is Ubuntu's iptables controller which makes setting up firewall rules a little easier. For more info on UFW, see our guide [Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). Set the allow rules for SSH and HTTP(S) access with:
 
         sudo ufw allow ssh
         sudo ufw allow http
@@ -101,7 +101,7 @@ If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can de
 
         sudo mysql_secure_installation
 
-    For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/docs/databases/mysql/install-mysql-on-ubuntu-14-04/)
+    For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/docs/guides/install-mysql-on-ubuntu-14-04/)
 
 ## Create a TLS Certificate for use with NGINX
 
@@ -120,7 +120,7 @@ If you don't already have an SSL/TLS certificate, you can create one. This certi
 
         sudo apt install nginx
 
-2.  Create the site configuration file. The only line you need to change below is `server_name`. For more HTTPS configuration options, see our guide on [TLS Best Practices with NGINX](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/).
+2.  Create the site configuration file. The only line you need to change below is `server_name`. For more HTTPS configuration options, see our guide on [TLS Best Practices with NGINX](/docs/guides/getting-started-with-nginx-part-4-tls-deployment-best-practices/).
 
     {{< file "/etc/nginx/sites-available/seafile.conf" nginx >}}
 server{

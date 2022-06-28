@@ -34,7 +34,7 @@ This Marketplace App installs the OpenLiteSpeed web server, WordPress, the LiteS
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7, Debian 10, Ubuntu 18.04 LTS, Ubuntu 20.04 LTS
+- **Supported distributions:** Debian 10, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started After Deployment

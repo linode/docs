@@ -93,7 +93,7 @@ When all modifications to the Postfix configuration are complete, issue the foll
 
     /etc/init.d/postfix restart
 
-At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/docs/tools-reference/linux-users-and-groups/).
+At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/docs/guides/linux-users-and-groups/).
 
 Consider the [basic email gateway guide](/docs/email/postfix/gateway-debian-6-squeeze) for more information regarding Postfix virtual hosting configuration. If you need to deliver mail locally, continue for documentation of mail routing and the Dovecot POP3/IMAP server.
 

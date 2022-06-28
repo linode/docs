@@ -17,7 +17,7 @@ tags: ["networking","linode platform"]
 
 ![Set up an IPv6 Tunnel on Your Linode](Set_Up_an_IPv6_Tunnel_on_Your_Linode_smg.jpg)
 
-As IPv4 address exhaustion nears, many people are making the switch to IPv6. Linode offers [native IPv6](/docs/networking/native-ipv6-networking/) addresses in all locations.
+As IPv4 address exhaustion nears, many people are making the switch to IPv6. Linode offers [native IPv6](/docs/guides/an-overview-of-ipv6-on-linode/) addresses in all locations.
 
 An IPv6 tunnel lets a system reach an IPv6 network using existing IPv4 connectivity. Follow this guide if you:
 

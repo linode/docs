@@ -152,4 +152,4 @@ http {
   - [Part 3: Enable TLS for HTTPS Connections](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/)
   - [Part 4: TLS Deployment Best Practices](/docs/guides/getting-started-with-nginx-part-4-tls-deployment-best-practices/)
 
-- Changes to your NGINX configurations may require updates to your SELinux policies and contexts. For an introduction to SELinux, see our [Getting Started with SELinux](/docs/security/getting-started-with-selinux/) guide.
+- Changes to your NGINX configurations may require updates to your SELinux policies and contexts. For an introduction to SELinux, see our [Getting Started with SELinux](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) guide.

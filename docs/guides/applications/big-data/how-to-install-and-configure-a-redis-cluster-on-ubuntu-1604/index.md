@@ -16,7 +16,7 @@ published: 2017-08-14
 title: 'How to Install and Configure a Redis Cluster on Ubuntu 16.04'
 external_resources:
  - '[Redis Official Website](https://redis.io/)'
- - '[Install and Configure Redis on CentOS 7](/docs/databases/redis/install-and-configure-redis-on-centos-7/)'
+ - '[Install and Configure Redis on CentOS 7](/docs/guides/install-and-configure-redis-on-centos-7/)'
 ---
 
 ![How to Install and Configure a Redis Cluster on Ubuntu 16.04](Redis_Cluster.jpg)
@@ -27,9 +27,9 @@ Redis as an in-memory store allows for extremely fast operations such as countin
 
 Prior to starting, we recommend familiarizing yourself with the following:
 
-* [Firewall settings using iptables or ufw](/docs/security/firewalls/configure-firewall-with-ufw/)
+* [Firewall settings using iptables or ufw](/docs/guides/configure-firewall-with-ufw/)
 * [Getting Started with VLANs](/docs/guides/getting-started-with-vlans/)
-* [Master-Replicas Replication](/docs/databases/redis/how-to-install-a-redis-server-on-ubuntu-or-debian8/)
+* [Master-Replicas Replication](/docs/guides/how-to-install-a-redis-server-on-ubuntu-or-debian8/)
 
 ### Redis Sentinel or Redis Cluster?
 

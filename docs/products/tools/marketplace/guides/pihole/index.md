@@ -32,7 +32,7 @@ aliases: ['/guides/deploying-pihole-marketplace-app/','/guides/pihole-marketplac
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS, Debian 11
+- **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Pi-hole Options
