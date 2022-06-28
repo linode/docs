@@ -7,7 +7,7 @@ og_description: 'Clojure is a general-purpose programming language with an empha
 keywords: ["clojure", "java virtual machine", "jvm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-31
-title: Introduction to the Clojure Programming Language | Linode
+title: Introduction to the Clojure Programming Language
 show_in_lists: true
 aliases: ['/development/clojure/']
 ---
