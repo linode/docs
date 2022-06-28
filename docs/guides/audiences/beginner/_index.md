@@ -1,4 +1,4 @@
 ---
-title: Guides for Those With Beginner Experience | Linode
+title: Guides for Those With Beginner Experience
 aliases: ['/audiences/beginner/']
 ---
