@@ -9,7 +9,7 @@ tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/securing-your-server/','/security/linux-security-basics/','/security/securing-your-server/index.cfm/','/security/basics/securing-your-server/','/security/securing-your-server/','/guides/securing-your-server/']
 bundles: ['centos-security', 'debian-security']
-modified: 2022-05-12
+modified: 2022-06-28
 modified_by:
   name: Linode
 published: 2012-02-17
@@ -75,7 +75,11 @@ Updating your system frequently is the single biggest security precaution you ca
     apt update && apt upgrade
 
 {{< note >}}
-You may be prompted to make a menu selection when the Grub package is updated on Ubuntu. If prompted, select `keep the local version currently installed`.
+When updating some packages, you may be prompted to use updated configuration files. If prompted, it is typically safer to keep the locally installed version".
+{{< /note >}}
+
+{{< note >}}
+Linode's Kali Linux distribution image is a [minimum installation](https://www.kali.org/docs/troubleshooting/common-minimum-setup/). You will likely want to install individual [tools](https://www.kali.org/tools/) or [metapackages](https://www.kali.org/tools/kali-meta/), such as the [kali-linux-headless](https://www.kali.org/tools/kali-meta/#kali-linux-headless) metapackage.
 {{< /note >}}
 
 ### CentOS/RHEL Stream and Fedora
