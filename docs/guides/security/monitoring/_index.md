@@ -7,7 +7,7 @@ og_description: "Monitoring and intrusion detection is an important practice for
 keywords: ["cloud security monitoring", "intrusion detection"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-31
-title: Monitor Your Infrastructure | Linode 
+title: Monitor Your Infrastructure
 show_in_lists: true
 aliases: ['/security/monitoring/']
 ---
