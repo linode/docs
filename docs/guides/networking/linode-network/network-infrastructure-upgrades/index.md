@@ -6,7 +6,7 @@ author:
 description: "An overview of changes and actions that may be required in advance of upgrades to Linode's networking infrastructure."
 keywords: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-14
+published: 2022-06-14
 modified_by:
   name: Linode
 title: "Upcoming Changes Related to Network Infrastructure Upgrades"
@@ -35,7 +35,7 @@ The following is a list of breaking changes and any action that may be required 
 
 - **IP failover through BGP:** IP failover (IP Sharing) for public IPv4 addresses and IPv6 routed ranges will be facilitated through BGP instead of ARP (configured through [keepalived](/docs/guides/ip-failover-keepalived/)).
 
-    *Action:* If you have previously configured IP failover for a public IPv4 address, review the [Configuring IP Failover using FRR (BGP)](/docs/guides/ip-failover-bgp-frr/) guide to learn more about configuring IP failover using BGP. You can configure BGP ahead of time, but will not be able to test or use the configuration until after the network upgrades have completed
+    *Action:* If you have previously configured IP failover for a public IPv4 address, review the [Configuring IP Failover on a Compute Instance](/docs/guides/ip-failover/) guide to learn more about configuring IP failover using BGP. You can configure BGP ahead of time, but will not be able to test or use the configuration until after the network upgrades have been completed.
 
 ## Which Data Centers Have Been Upgraded?
 
@@ -45,18 +45,20 @@ Review the table below to learn which data centers have been upgraded with the l
 | -- | -- |
 | Atlanta (Georgia, USA) | *Coming soon* |
 | Dallas (Texas, USA) | *Coming soon* |
-| Frankfurt (Germany) | *Upgrade started* |
+| **Frankfurt (Germany)** | **Complete** |
 | Fremont (California, USA) | *Coming soon* |
-| London (United Kingdom) | *Coming soon* |
-| Mumbai (India) | *Coming soon* |
-| Newark (New Jersey, USA) | *Coming soon* |
-| Singapore | *Coming soon* |
+| London (United Kingdom) | *In progress* |
+| Mumbai (India) | *In progress* |
+| **Newark (New Jersey, USA)** | **Complete** |
+| Singapore | *In progress* |
 | Sydney (Australia) | *Coming soon* |
 | Tokyo (Japan) | *Coming soon* |
 | Toronto (Canada) | *Coming soon* |
+
+A status of **complete** indicates that all new Compute Instances (and *most* existing instances) are located on fully upgraded hardware. Compute Instances using legacy features, such as ARP-based failover and /116 ranges, may still be located on hardware that hasn't yet been upgraded. These customers have been notified and a migration timeline has been shared.
 
 ## What Action is Required?
 
 - **Migration of Compute Instances:** Once a data center has started the network infrastructure upgrades, live migrations will be scheduled for all Compute Instances that do not reside on upgraded hardware. This live migration will occur while your Compute Instance is powered on and operating normally. After the migration has been successfully completed, there may be a brief period of downtime while the Compute Instance is rebooted.
 
-- **Update IP failover configuration:** If you have configured IP failover for a public IPv4 address, review the [Configuring IP Failover using FRR (BGP)](/docs/guides/ip-failover-bgp-frr/) guide to learn more about configuring IP failover using BGP. If you were using a now deprecated IPv6 /116 pool for IP failover, consider using an IPv6 /64 range instead. You can configure BGP ahead of time, but will not be able to test or use the configuration until after the network upgrades.
+- **Update IP failover configuration:** If you have configured IP failover for a public IPv4 address, review the [Configuring IP Failover on a Compute Instance](/docs/guides/ip-failover/) guide to learn more about configuring IP failover using BGP. If you were using a now deprecated IPv6 /116 pool for IP failover, consider using an IPv6 /64 range instead. You can configure BGP ahead of time, but will not be able to test or use the configuration until after your Compute Instances are migrated to upgraded hardware.

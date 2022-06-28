@@ -29,9 +29,9 @@ To continue following this guide, you will need a website that's hosted on a Lin
 
 - [Create a Linode](/docs/guides/getting-started/) on any plan that will host your website or web application. While a round-robin DNS configuration is possible with all major distros, the steps in this guide were specifically created using Debian 10.
 
-- [Add a domain and configure an A record](https://www.linode.com/docs/products/networking/dns-manager/get-started/) to point to your new Linode. When using round-robin DNS, a low TTL is recommended.
+- [Add a domain and configure an A record](/docs/products/networking/dns-manager/get-started/) to point to your new Linode. When using round-robin DNS, a low TTL is recommended.
 
-- [Install and configure a web server](https://www.linode.com/docs/guides/how-to-install-nginx-debian-10/), adding a site that uses your domain name. While any major web server will be able to accommodate round-robin DNS, this guide was specifically created using NGINX.
+- [Install and configure a web server](/docs/guides/how-to-install-nginx-debian-10/), adding a site that uses your domain name. While any major web server will be able to accommodate round-robin DNS, this guide was specifically created using NGINX.
 
 After creating your Linode, configuring DNS, and setting up your web server, you should be able to freely access a webpage using your domain name:
 
@@ -115,6 +115,6 @@ If using NodeBalancers, DNS records should not be configured for the individual 
 
 1.  Now that the NodeBalancers are up, go directly to your NodeBalancer's IP addresses in a browser. You should see your web application freely available as the NodeBalancer proxies the traffic through.
 
-1. After confirming that the Node Balancer is working, [Add a domain and configure two A records](https://www.linode.com/docs/products/networking/dns-manager/get-started/) pointing towards the NodeBalancers you have created. Each A record should be using the same DNS name, and pointing towards the public IP address of your NodeBalancers.
+1. After confirming that the Node Balancer is working, [Add a domain and configure two A records](/docs/products/networking/dns-manager/get-started/) pointing towards the NodeBalancers you have created. Each A record should be using the same DNS name, and pointing towards the public IP address of your NodeBalancers.
 
 After completing these steps, round-robin DNS is now successfully configured for your NodeBalancers. Additional Linodes and NodeBalancers can be added to suit your application's specific needs.

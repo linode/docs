@@ -32,7 +32,7 @@ In order to secure a LAMP stack, you need to have a Linux server with the follow
 - MySQL
 - PHP
 
-For a quick an easy way to install a LAMP stack on Linode, check out our guide on [How to Deploy a LAMP Stack with Marketplace Apps](/docs/guides/deploy-lamp-stack-with-marketplace-apps/).
+For a quick an easy way to install a LAMP stack on Linode, check out our guide on [How to Deploy a LAMP Stack with Marketplace Apps](/docs/products/tools/marketplace/guides/lamp-stack/).
 
 Otherwise, you can find instructions on how to manually install a LAMP stack in our guide on [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/). Installation instructions for several other Linux distributions are also accessible from this guide.
 
@@ -355,7 +355,7 @@ total 64
     | `maxretry` | Number of login attempts before a ban is applied. |
     | `findtime` | Amount of allowed time between failed login attempts. |
     | `bantime` | Number of seconds an IP is banned for. |
-    | `ignoreip` | IP to whitelist. |
+    | `ignoreip` | IP to be allowed. |
 
 
 1.  With the information in the table above, create a jail configuration for OpenSSH server (sshd) by entering the following values in the `jail.local` file:

@@ -40,7 +40,7 @@ This guide shows you how to do the following:
 - [Delete an Account StackScript](#delete-an-account-stackscript)
 
 {{< note >}}
-For information on authoring a script to be used in a Linode StackScript, see the [Writing Scripts for Use with Linode StackScripts](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/).
+For information on authoring a script to be used in a Linode StackScript, see the [Writing Scripts for Use with Linode StackScripts](/docs/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/).
 {{</ note >}}
 
 ## Create a New StackScript
@@ -62,4 +62,4 @@ For information on authoring a script to be used in a Linode StackScript, see th
 
 ## Next Steps
 
-Now that you have created a StackScript, you can deploy a Linode using your StackScript. See the [Deploying a New Linode Using a StackScript](/docs/platform/stackscripts/how-to-deploy-a-new-linode-using-a-stackscript/) guide for details.
+Now that you have created a StackScript, you can deploy a Linode using your StackScript. See the [Deploying a New Linode Using a StackScript](/docs/guides/how-to-deploy-a-new-linode-using-a-stackscript/) guide for details.

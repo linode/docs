@@ -7,7 +7,7 @@ keywords: ['cloudron','web apps','platform','marketplace']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-12-15
-modified: 2022-03-08
+modified: 2022-05-17
 modified_by:
   name: Linode
 title: "Deploying Cloudron through the Linode Marketplace"
@@ -16,7 +16,11 @@ external_resources:
 aliases: ['/platform/marketplace/how-to-deploy-cloudron-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cloudron-with-one-click-apps/','/guides/how-to-deploy-cloudron-with-one-click-apps/','/guides/deploy-cloudron-with-marketplace-apps/','/guides/cloudron-marketplace-app/']
 ---
 
-[Cloudron](https://www.cloudron.io) is a platform that makes it easy to install, manage and secure web apps on a server. Cloudron provides a centralized way to manage users and specify which apps they can access.
+[Cloudron](https://www.cloudron.io) is a platform that makes it easy to install, manage, and secure web apps on a server. Cloudron provides a centralized way to manage users and specify which apps they can access.
+
+{{<note>}}
+Cloudron offers both free and paid plans. Visit [Cloudron's website](https://www.cloudron.io/pricing.html) to view available plans and pricing information.
+{{</note>}}
 
 ## Deploying a Marketplace App
 
@@ -30,7 +34,7 @@ aliases: ['/platform/marketplace/how-to-deploy-cloudron-with-marketplace-apps/',
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 18.04 LTS, Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Cloudron Options
@@ -41,7 +45,7 @@ The Cloudron Marketplace form includes advanced fields to setup your Cloudron se
 |-----------|-----------------|
 | **The limited sudo user to be created for the Linode** | This is the limited user account to be created for the Linode. This account has sudo user privileges. |
 | **The password for the limited sudo user** | Set a password for the limited sudo user. The password must meet the complexity strength validation requirements for a strong password. This password can be used to perform any action on your server, similar to root, so make it long, complex, and unique. |
-| **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](https://www.linode.com/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
+| **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/guides/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
 | **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
 
 ## Getting Started after Deployment

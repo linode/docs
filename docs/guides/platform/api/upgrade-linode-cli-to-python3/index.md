@@ -86,7 +86,7 @@ The upgrade path for the Python 3 Linode CLI depends on the Distro and package m
 
 1. Before proceeding, ensure that your version of Python is added to PATH by checking the box which enables this option:
 
-[![Python WIndows Path Option](windows-python-path.png)](windows-python-path.png)
+![Python WIndows Path Option](windows-python-path.png)
 
 1. Select the **Customize Installation** option to proceed.
 
@@ -122,4 +122,4 @@ Once the Linode CLI is installed, no further steps should be needed for configur
 
     linode-cli configure
 
-For more information on how to use the Linode CLI, see our [Overview Guide](/docs/guides/linode-cli/)
+For more information on how to use the Linode CLI, see our [Overview Guide](/docs/products/tools/cli/get-started/)

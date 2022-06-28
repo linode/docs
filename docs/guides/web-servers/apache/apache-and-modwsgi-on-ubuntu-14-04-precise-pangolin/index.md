@@ -17,7 +17,7 @@ title: 'Apache and mod_wsgi on Ubuntu 14.04 (Trusty Tahr)'
 external_resources:
  - '[A Basic "Hello World" Django Application](https://dfpp.readthedocs.io/en/latest/chapter_01.html)'
  - '[Deploy Django Applications with mod\_wsgi](/docs/websites/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin)'
- - '[Deploy Web.py Applications with mod\_wsgi](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/)'
+ - '[Deploy Web.py Applications with mod\_wsgi](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/)'
  - '[Flask Framework](http://flask.pocoo.org/)'
  - '[Werkzug](http://werkzeug.pocoo.org/)'
  - '[Django](http://www.djangoproject.com/)'
@@ -88,7 +88,7 @@ You must append the path of your application to the system path as above. The de
 
 ### Web.py WSGI Configuration
 
-In this example the Web.py *application* is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
+In this example the Web.py *application* is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
 
 {{< file "/var/www/html/example.com/application/application.wsgi" python >}}
 import web

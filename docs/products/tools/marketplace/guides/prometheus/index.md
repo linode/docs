@@ -23,6 +23,10 @@ aliases: ['/platform/marketplace/how-to-deploy-prometheus-with-marketplace-apps/
 
 Use [Prometheus](https://prometheus.io/docs/introduction/overview/) to collect metrics and receive alerts with this open-source monitoring tool. Prometheus monitors targets that you define at given intervals by scraping their metrics HTTP endpoints. This tool is particularly well-suited for numeric time series data, which makes it ideal for machine-centric monitoring as well as monitoring of highly dynamic service-oriented architectures.
 
+{{< note >}}
+Prometheus is often used alongside [Grafana](https://grafana.com/) for reporting and detailed visualizations. Consider using the combined [Prometheus and Grafana Marketplace App](/docs/products/tools/marketplace/guides/prometheus-grafana/) if you intend on using both of these applications together.
+{{</ note >}}
+
 ## Deploying a Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
@@ -35,7 +39,7 @@ Use [Prometheus](https://prometheus.io/docs/introduction/overview/) to collect m
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9, Debian 10
+- **Supported distributions:** Debian 10
 - **Recommended minimum plan:** 4GB Dedicated CPU or Shared Compute Instance
 
 ## Getting Started after Deployment

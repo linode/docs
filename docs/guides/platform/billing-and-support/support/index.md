@@ -23,27 +23,15 @@ Linode also offers a number of resources you can refer to when troubleshooting a
 
 Linode provides community spaces, an AI-powered assistant, libraries of reference material, and status updates for infrastructure components:
 
--   **Linode Community and the Community Site:** Customers and staff discuss the projects they're working on in the [Linode Community Site](/community/questions/). You can search this site to see if your issue has already been addressed there. If you can't find any existing posts related to your issue, you can create a new one or ask your question in the **IRC channel** listed on [Support](https://www.linode.com/support/) page.
+-   **Linode Community and the Community Site:** Customers and staff discuss the projects they're working on in the [Linode Community Site](https://www.linode.com/community/questions/). You can search this site to see if your issue has already been addressed there. If you can't find any existing posts related to your issue, you can create a new one or ask your question in the **IRC channel** listed on [Support](https://www.linode.com/support/) page.
 
     ![Linode Community Site](community-site-header.png "Linode Community Site")
 
--   **Linode Support Bot:** The Linode Support Bot can answer a number of technical, billing, and account management questions, and it learns new answers every day. If the Linode Support Bot does not know an answer, it can create a support ticket for you.
-
-    This feature is available from the Linode Cloud Manager:
-
-    1.  Click **Help & Support** in the sidebar links.
-
-    1.  Select **Linode Support Bot**.
-
-    1.  After clicking this link, a chat panel will slide in from the right side of the page:
-
-    ![Accessing the Linode Support Bot from the Manager](linode-support-bot.png "Accessing the Linode Support Bot from the Manager")
-
 -   **Linode Guides & Tutorials:** The [Guides & Tutorials](/docs/) library hosts a catalogued and searchable list of guides on a large number of topics. Here are a few that focus on troubleshooting:
 
-  - The [Troubleshooting](/docs/troubleshooting/troubleshooting/) quick start guide provides answers for common server connectivity and management issues.
+  - The [Troubleshooting](/docs/guides/troubleshooting-overview/) quick start guide provides answers for common server connectivity and management issues.
 
-  - The [Linode Beginner's Guide](/docs/platform/billing-and-support/linode-beginners-guide/) displays a curated list of the most frequently asked questions from Linode customers.
+  - The [Linode Beginner's Guide](/docs/guides/linode-beginners-guide/) displays a curated list of the most frequently asked questions from Linode customers.
 
   - The [Quick Answers](/docs/quick-answers/) section offers short guides with fast answers.
 

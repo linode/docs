@@ -33,7 +33,7 @@ This guide walks you through the setup process for Laravel, then shows you how t
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is Laravel?
@@ -110,7 +110,7 @@ Unless noted otherwise, all subsequent commands in this guide assume you are sti
 
 1. Now, you can visit the application in your browser by navigating to `localhost:8000`.
 
-    [![Laravel base application](laravel-base-app_small.png)](laravel-base-app.png)
+    ![Laravel base application](laravel-base-app.png)
 
 ## Build a Website with Laravel
 

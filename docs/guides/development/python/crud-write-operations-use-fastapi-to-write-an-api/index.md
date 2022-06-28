@@ -35,7 +35,7 @@ This guide shows you how to create write operations for your RESTful API. Its ex
 FastAPI requires the following items to be installed on your system:
 
 - Python 3.6+  and [pip](https://pypi.org/project/pip/)
-- [Gunicorn](https://www.linode.com/docs/guides/flask-and-gunicorn-on-ubuntu/#install-and-configure-gunicorn) or [Hypercorn](https://pypi.org/project/Hypercorn/). These tools are used as the web server gateway for your API.
+- [Gunicorn](/docs/guides/flask-and-gunicorn-on-ubuntu/#install-and-configure-gunicorn) or [Hypercorn](https://pypi.org/project/Hypercorn/). These tools are used as the web server gateway for your API.
 
 {{< note >}}
 If you have not followed the steps in the [CRUD Read Operations: Use FastAPI to Write an API](/docs/guides/crud-read-operations-use-fastapi-to-write-an-api/) guide, ensure that you have created a `main.py` file with [the code](/docs/guides/crud-read-operations-use-fastapi-to-write-an-api/main.py) included in the previous guide's examples.

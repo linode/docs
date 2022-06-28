@@ -15,7 +15,7 @@ title: 'Linux Command Line Tips'
 tags: ["linux"]
 ---
 
-These are just a few of the many commands and tricks available in the Linux terminal. Visit our guide for a deeper [introduction to Linux concepts](/docs/tools-reference/introduction-to-linux-concepts/).
+These are just a few of the many commands and tricks available in the Linux terminal. Visit our guide for a deeper [introduction to Linux concepts](/docs/guides/introduction-to-linux-concepts/).
 
 ## Basic Linux Terminal Things to Know
 

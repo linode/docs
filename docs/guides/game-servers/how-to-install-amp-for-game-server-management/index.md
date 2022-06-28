@@ -32,7 +32,7 @@ AMP is dependent on the [purchase of a separate license through CubeCoder's webs
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. (Optional) Configure a domain to access your management console. For more information on how to do this, see our [DNS Manager Guide](https://www.linode.com/docs/guides/dns-manager/)
+1. (Optional) Configure a domain to access your management console. For more information on how to do this, see our [DNS Manager Guide](/docs/guides/dns-manager/)
 
 ## Initial Installation of AMP on the Command Line
 

@@ -5,7 +5,7 @@ author:
     email: docs@linode.com
 description: 'This article gives you step-by-step instructions for installing the widely used and popular CMS Drupal using the Drush command line tool on Debian 7.'
 keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framework", " debian"]
-aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-7/','/websites/cms/drush-drupal/']
+aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-7/']
 tags: ["debian","drupal","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2014-11-21
@@ -72,7 +72,7 @@ Composer is designed to install PHP dependencies on a per-project basis, but the
 
 4.  Use Git to checkout the version of Drush that you wish to use. The release page is at [https://github.com/drush-ops/drush/releases](https://github.com/drush-ops/drush/releases). Below is a partial image of the release page with a red pointer displaying a sample version number.
 
-    [![Drush Release Page.](drush-release-page-with-arrow.png)](drush-release-page-with-arrow.png)
+    ![Drush Release Page.](drush-release-page-with-arrow.png)
 
 
     For a different release, replace the version number in the following command:
@@ -158,7 +158,7 @@ Although MySQL accepts passwords with a special character, for example an exclam
     After installation is complete, Drush creates a user, named `admin`, and a random password. An example is pictured below. These credentials are used for the Drupal sign-in page.
 
 
-    [![Drush Username Password](drush-username-password.png)](drush-username-password.png)
+    ![Drush Username Password](drush-username-password.png)
 
 8.  Optionally, if you'd like to change the admin's password, we recommend you do so with Drush, rather than sending the password over a non-secure HTTP connection. In the following command, replace `newpass` with your new password:
 

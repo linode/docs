@@ -24,7 +24,7 @@ This guide is written for Debian 7 or Ubuntu 14.04. To complete this guide, ensu
 
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Required Software Packages
@@ -230,7 +230,7 @@ In order to ensure that each of your WordPress instances addresses the local dat
 
 5.  Configure your WordPress URL and Site Address via the General Settings in the WordPress admin interface. Ensure that your domain is configured in both fields.
 
-    [![WordPressURL](WP-site-address-rs.png)](WP-site-address.png)
+    ![WordPressURL](WP-site-address.png)
 
     {{< note >}}
 After completing your WordPress installation steps and logging in for the first time, you should reset permissions on your Document Root directory to ensure additional security. You can do so with the following command:

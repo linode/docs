@@ -100,7 +100,7 @@ Before you can install phpBB, you need to make sure that it has access to write 
 
     chmod 0777 /srv/www/example.com/public_html/forum/config.php
 
-Click the "Install" tab in the top left region of the page. You should be looking at a requirements page. If you followed the [LAMP guide](/docs/lamp-guides/ubuntu-12-04-precise-pangolin/), your server will meet the requirements specified by the phpBB installation process. Click "Proceed to next step." The next page is simply a confirmation that your server meets the minimum installation requirements. Click "Start Install."
+Click the "Install" tab in the top left region of the page. You should be looking at a requirements page. If you followed the [LAMP guide](/docs/guides/lamp-server-on-ubuntu-12-04-precise-pangolin/), your server will meet the requirements specified by the phpBB installation process. Click "Proceed to next step." The next page is simply a confirmation that your server meets the minimum installation requirements. Click "Start Install."
 
 You will need to fill in your database information. Assuming you installed MySQL while following the LAMP guide, here you would fill in your `database name`, `database username`, and `database password`. The other fields can be left blank for the defaults. If you are unsure of what to put here, head over to the [MySQL database guides](/docs/databases/mysql/) to become familiar with MySQL and to create the database and username. Click "Proceed to next step."
 

@@ -11,7 +11,7 @@ modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploying Splunk through the Linode Marketplace"
-aliases: ['/guides/deploying-splunk-marketplace-app/','/guides/deploying-splunk-marketplace-app/']
+aliases: ['/guides/deploying-splunk-marketplace-app/','/guides/splunk-marketplace-app/']
 external_resources:
 - '[Splunk](http://splunk.com/)'
 ---

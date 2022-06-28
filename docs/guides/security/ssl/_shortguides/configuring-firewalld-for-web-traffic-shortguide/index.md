@@ -25,7 +25,7 @@ Any firewall configured on your server needs to allow connections over HTTPS (in
 
 You can skip this section if you are using a different firewall (such as Linode's [Cloud Firewall](/docs/products/networking/cloud-firewall/) service), have already configured your firewall rules, or do not wish to use any firewall.
 
-1.  If firewalld is not installed, install it now using [YUM](/docs/guides/how-to-use-yum/) or [DNF](/docs/guides/how-to-use-dnf/).
+1.  If firewalld is not installed, install it now using [YUM](/docs/guides/yum-package-manager/) or [DNF](/docs/guides/dnf-package-manager/).
 
         sudo yum install firewalld
 

@@ -35,7 +35,7 @@ There are a variety of reasons one might want to resell Linode services. One of 
 
 ## Referral Program
 
-As an alternative to reselling our services, you can participate in our referral program. See the [Referral Program](https://www.linode.com/referral-program/) page on our website or the [Referral Program](/docs/guides/how-linode-billing-works/#referral-program) section within our billing guide for more details.
+As an alternative to reselling our services, you can participate in our referral program. See the [Referral Program](https://www.linode.com/referral-program/) page on our website or the [Referral Program](/docs/guides/understanding-billing-and-payments/#referral-program) section within our billing guide for more details.
 
 Advertising your referral code to others is not the same as reselling Linode services. When someone else uses your referral code, they create an entirely separate Linode account with their own billing.
 
@@ -55,19 +55,19 @@ There are a few stipulations that resellers should keep in mind:
 
 ### Linode API
 
-The best way to resell Linode services is through the use of the Linode API. The Linode API provides robust, programmatic access to the full suite of Linode services. Using the API, a reseller could set up a custom user interface to only allow the select features they want available for their customers. For example, it's possible to create a UI that only enables 4GB Linode deployments and that automatically provisions those Linodes with a StackScript. For a tutorial on how to use the Linode API, check out our [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/) guide. For a comprehensive view of the Linode API, see Linode's [API documentation](https://developers.linode.com/api/v4). For a list of Linode API libraries and tools, head over to our [developer portal](https://developers.linode.com/libraries-tools/).
+The best way to resell Linode services is through the use of the Linode API. The Linode API provides robust, programmatic access to the full suite of Linode services. Using the API, a reseller could set up a custom user interface to only allow the select features they want available for their customers. For example, it's possible to create a UI that only enables 4GB Linode deployments and that automatically provisions those Linodes with a StackScript. For a tutorial on how to use the Linode API, check out our [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/) guide. For a comprehensive view of the Linode API, see Linode's [API documentation](https://developers.linode.com/api/v4). For a list of Linode API libraries and tools, head over to our [developer portal](https://developers.linode.com/libraries-tools/).
 
 ### Limited Cloud Manager Users
 
 If a reseller wants to be able to give reseller customers access to parts of the Linode Cloud Manager without developing a new user interface, they can create a limited Manager *user* in the Cloud Manager. A user is a set of credentials that can access your Linode account, and your Linode account can have multiple users. A user can be restricted to have a limited set of permissions, such as only being able to access certain Linodes and not having access to your billing information. To create a limited user in the Cloud Manager, review the [Users and Permissions](/docs/platform/manager/accounts-and-passwords-new-manager/#users-and-permissions) section of the Accounts and Passwords guide.
 
 {{< note >}}
-Cloud Manager users are not related to the Linux users on your Linodes. If you need to revoke a customer's account access, you should remove access to both their Cloud Manager users and their Linux users. Read the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide for more information on this subject.
+Cloud Manager users are not related to the Linux users on your Linodes. If you need to revoke a customer's account access, you should remove access to both their Cloud Manager users and their Linux users. Read the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on this subject.
 {{</ note >}}
 
 ### Limited Linux User Accounts
 
-A reseller might provide a customer with limited access to a Linode by creating an account for them at the operating system level. This provides the customer with access to their server, without access to the features of the Linode API or the Cloud Manager. For a hosting reseller that offers access to a pre-defined Linux environment, this is often a good solution. Read the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide for more information on this subject. You may also want to limit users' access to the filesystem with [SFTP jails](/docs/tools-reference/tools/limiting-access-with-sftp-jails-on-debian-and-ubuntu/).
+A reseller might provide a customer with limited access to a Linode by creating an account for them at the operating system level. This provides the customer with access to their server, without access to the features of the Linode API or the Cloud Manager. For a hosting reseller that offers access to a pre-defined Linux environment, this is often a good solution. Read the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on this subject. You may also want to limit users' access to the filesystem with [SFTP jails](/docs/guides/limiting-access-with-sftp-jails-on-debian-and-ubuntu/).
 
 ## Frequently Asked Questions
 

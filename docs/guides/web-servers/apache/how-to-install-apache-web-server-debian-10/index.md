@@ -28,7 +28,7 @@ aliases: ['/web-servers/apache/how-to-install-apache-web-server-debian-10/']
 
 The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on Debian 10.
 
-If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [How to Install a LAMP Stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) guide.
+If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [How to Install a LAMP Stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -317,7 +317,7 @@ You can control the server in the following ways.
 
 ### Optional: Firewall
 
-Depending on your firewall configuration, you may need to modify your settings to allow access to web ports. A popular firewall for Debian is [UFW](/docs/security/firewalls/configure-firewall-with-ufw/).
+Depending on your firewall configuration, you may need to modify your settings to allow access to web ports. A popular firewall for Debian is [UFW](/docs/guides/configure-firewall-with-ufw/).
 
 If you had UFW installed before you installed Apache, Apache will have registered with UFW during installation and provides some simple to use configurations.
 

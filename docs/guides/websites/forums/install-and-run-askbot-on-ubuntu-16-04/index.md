@@ -39,7 +39,7 @@ In this guide, you'll install AskBot and deploy with **NGINX** as a web server, 
 4.  A Fully-Qualified Domain Name configured to point to your Linode. You can learn how to point domain names to Linode by following the [DNS Manager Overview](/docs/networking/dns/dns-manager-overview/#add-records) guide.
 
 {{< note >}}
-Throughout this guide, replace `example_user` with a non-root user with `sudo` access. If you’re not familiar with Linux user permissions and the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+Throughout this guide, replace `example_user` with a non-root user with `sudo` access. If you’re not familiar with Linux user permissions and the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Dependencies and Create a Database

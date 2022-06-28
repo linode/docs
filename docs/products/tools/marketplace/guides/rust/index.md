@@ -34,7 +34,7 @@ Hosting your own Rust server allows you to customize settings and curate the num
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended minimum plan:** 8GB Dedicated CPU or Shared Compute Instance
 
 ### Rust Options

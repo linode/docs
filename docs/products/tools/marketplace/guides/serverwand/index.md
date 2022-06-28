@@ -34,7 +34,7 @@ aliases: ['/platform/marketplace/deploy-serverwand-with-marketplace-apps/', '/pl
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 18.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started After Deployment

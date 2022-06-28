@@ -35,7 +35,7 @@ This guide shows you how to install CouchDB on Ubuntu 20.04. At the end of this 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Set Up the Apache CouchDB Repository
@@ -74,15 +74,15 @@ See CouchDB's [Cluster Set Up](https://docs.couchdb.org/en/latest/setup/cluster.
 
     - Choose **standalone** when prompted for a configuration type.
 
-        [![CouchDB configuration type selection](couchdb-installation-config-type_small.png "CouchDB configuration type selection")](couchdb-installation-config-type.png)
+        ![CouchDB configuration type selection](couchdb-installation-config-type.png)
 
     - Enter the default value — `127.0.0.1` — for the interface bind address.
 
-        [![Inputting the CouchDB network interface](couchdb-installation-network_small.png "Inputting the CouchDB network interface")](couchdb-installation-network.png)
+        ![Inputting the CouchDB network interface](couchdb-installation-network.png)
 
     - Since *CouchDB 3.0.0*, CouchDB does not run without an administrator user being configured. When prompted, create an administrator user by entering a password. Re-enter the password on the subsequent screen.
 
-        [![Creating a CouchDB administrator user](couchdb-installation-admin-user_small.png "Creating a CouchDB administrator user")](couchdb-installation-admin-user.png)
+        ![Creating a CouchDB administrator user](couchdb-installation-admin-user.png)
 
 1. You can verify that CouchDB is installed by running the following command.
    - Replace `admin` and `password` with the username and password, respectively, for a valid CouchDB user.

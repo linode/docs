@@ -28,9 +28,9 @@ Hosting a private Docker registry alongside your Kubernetes cluster allows you t
 This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubernetes.io/docs/setup/release/notes/).
 {{</ note >}}
 
-1. [Deploy a LKE Cluster](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This example was written using a node pool with two [2 GB nodes](https://www.linode.com/pricing/). Depending on the workloads you will be deploying on your cluster, you may consider using nodes with higher resources.
+1. [Deploy a LKE Cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This example was written using a node pool with two [2 GB nodes](https://www.linode.com/pricing/). Depending on the workloads you will be deploying on your cluster, you may consider using nodes with higher resources.
 
-1. Install [Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm), [kubectl](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl), and [Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) to your local environment.
+1. Install [Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm), [kubectl](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl), and [Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) to your local environment.
 
     {{< note >}}
 For Docker installation instructions on other operating systems, see [Docker's official documentation](https://docs.docker.com/get-docker/).
@@ -287,7 +287,7 @@ Your LKE Cluster will also need to authenticate to your Docker registry in order
 
 ### Configure your Docker Registry
 
-Before deploying the Docker Registry Helm chart to your cluster, you will define some configurations so that the Docker registry uses the NGINX Ingress controller, your `registry` Object Storage bucket, and your cert-manager created TLS certificate. See the [Docker Registry Helm Chart's official documentation](https://hub.helm.sh/charts/stable/docker-registry) for a full list of all available configurations.
+Before deploying the Docker Registry Helm chart to your cluster, you will define some configurations so that the Docker registry uses the NGINX Ingress controller, your `registry` Object Storage bucket, and your cert-manager created TLS certificate. See the [Helm Chart's official documentation](https://helm.sh/docs/topics/registries/) for more information about registries.
 
   {{< note >}}
 If you have not yet [generated an Object Storage key pair](/docs/products/storage/object-storage/guides/access-keys/) and [created an Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/) to store your registry's images, do so now before continuing with the rest of this section.
@@ -346,7 +346,7 @@ s3:
 
 You are now ready to push and pull images to your Docker registry. In this section you will pull an existing image from Docker Hub and then push it to your registry. Then, in the next section, you will use your registry's image to deploy an example static site.
 
-1. Use Docker to pull an image from [Docker Hub](https://hub.docker.com/). This example is using an image that was created following our [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/kubernetes/deploy-container-image-to-kubernetes/) guide. The image will build a Hugo static site with some boiler plate content. However, you can use any image from Docker Hub that you prefer.
+1. Use Docker to pull an image from [Docker Hub](https://hub.docker.com/). This example is using an image that was created following our [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/guides/deploy-container-image-to-kubernetes/) guide. The image will build a Hugo static site with some boiler plate content. However, you can use any image from Docker Hub that you prefer.
 
         sudo docker pull leslitagordita/hugo-site:v10
 
@@ -456,4 +456,4 @@ spec:
 
 ## (Optional) Tear Down your Kubernetes Cluster
 
-To avoid being further billed for your Kubernetes cluster and NodeBlancer, [delete your cluster using the Linode Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#delete-a-cluster). Similarly, to avoid being further billed for our registry's Object Storage bucket, see [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/).
+To avoid being further billed for your Kubernetes cluster and NodeBlancer, [delete your cluster using the Linode Cloud Manager](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#delete-a-cluster). Similarly, to avoid being further billed for our registry's Object Storage bucket, see [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/).

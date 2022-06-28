@@ -44,7 +44,7 @@ Although this guide covers installation of Magento 2.4, version 2.3 is still ava
 1. This guide uses the sample domain name of `example.com` and a Magento root directory of `/var/www/html/example.com/public_html`, along with default username and password variables such as `magentouser` and `magentopassword`. Substitute your own values when you encounter these variables throughout the guide.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Advantages/Drawbacks of Magento

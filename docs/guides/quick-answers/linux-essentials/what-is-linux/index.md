@@ -104,8 +104,8 @@ For a comprehensive list of available package managers, visit [Wikipedia](https:
 
 There are many avenues to explore when first using Linux. Our Guides & Tutorials provide a great starting point for learning more:
 
-- The [Introduction to Linux Concepts](/docs/tools-reference/introduction-to-linux-concepts/) guide will give you a more detailed and technical orientation on Linux and ways to start using it with a Linode.
+- The [Introduction to Linux Concepts](/docs/guides/introduction-to-linux-concepts/) guide will give you a more detailed and technical orientation on Linux and ways to start using it with a Linode.
 
-- Once you’re familiar with Linux and the Command Line, you can learn basic [Linux System Administration](/docs/tools-reference/linux-system-administration-basics/).
+- Once you’re familiar with Linux and the Command Line, you can learn basic [Linux System Administration](/docs/guides/linux-system-administration-basics/).
 
-- If you’re interested in getting started with development, the [Why use Linux for Development?](/docs/quick-answers/linux-essentials/why-use-linux-for-development/) guide will give you a useful primer for making a choice about a development system.
+- If you’re interested in getting started with development, the [Why use Linux for Development?](/docs/guides/why-use-linux-for-development/) guide will give you a useful primer for making a choice about a development system.

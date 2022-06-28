@@ -76,7 +76,7 @@ Begin by issuing the following command in your terminal:
 
 You will be prompted to set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Ubuntu 10.04 LTS (Lucid).](360-lucid-01-mysql-root-password.png)](360-lucid-01-mysql-root-password.png)
+![Setting the MySQL root password in Ubuntu 10.04 LTS (Lucid).](360-lucid-01-mysql-root-password.png)
 
 The MySQL server package will be installed on your server, along with dependencies and client libraries. After installing MySQL, it's recommended that you run `mysql_secure_installation` in order to help secure MySQL. While running `mysql_secure_installation`, you will be presented with the opportunity to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. If you are prompted to reload the privilege tables, select yes. Run the following command to execute the program:
 
@@ -101,7 +101,7 @@ net_buffer_length = 2K
 
 These settings are only suggested values for a low memory environment; please feel free to tune them to appropriate values for your server. Consult the "More Information" section at the end of this tutorial for additional resources on this topic.
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secure MySQL remote access guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/) for information on connecting to your databases with local clients.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secure MySQL remote access guide](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/) for information on connecting to your databases with local clients.
 
 Allowing unrestricted access to MySQL on a public IP is not advised, but you may change the address it listens on by modifying the `bind-address` parameter. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 
@@ -174,7 +174,7 @@ Now let's log back into the MySQL client as `testuser` and create a sample table
 
 This creates a table with a customer ID field of the type INT for integer (auto-incremented for new records and used as the primary key), as well as two fields for storing the customer's name.
 
-By default, access to databases will be limited to connections from localhost. To securely administer your databases from a remote location, please follow our guide for [securely administering mysql with an SSH tunnel](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/). It is *not* a good practice to run MySQL on your public IP address, unless you have a very good reason for doing so.
+By default, access to databases will be limited to connections from localhost. To securely administer your databases from a remote location, please follow our guide for [securely administering mysql with an SSH tunnel](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/). It is *not* a good practice to run MySQL on your public IP address, unless you have a very good reason for doing so.
 
 ## More Information
 

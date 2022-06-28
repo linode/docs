@@ -64,12 +64,12 @@ Starting at $30/mo ($0.045/hour). See [Dedicated CPU Pricing](https://www.linode
 
 *Best for production websites, enterprise applications, high traffic databases, and any application that requires 100% sustained CPU usage or may be impacted by resource contention.*
 
-- [CI/CD](/docs/development/ci/introduction-ci-cd/) toolchains and build servers
+- [CI/CD](/docs/guides/introduction-ci-cd/) toolchains and build servers
 - [Game servers](/docs/game-servers/) (like Minecraft or Team Fortress)
 - [Audio and video transcoding](/docs/applications/media-servers/)
 - [Big data](/docs/applications/big-data/) (and data analysis)
 - Scientific computing
-- [Machine learning](/docs/applications/big-data/how-to-move-machine-learning-model-to-production/) and AI
+- [Machine learning](/docs/guides/how-to-move-machine-learning-model-to-production/) and AI
 - High Traffic Databases (Galera, PostgreSQL with Replication Manager, MongoDB using Replication Sets)
 - Replicated or Distributed Filesystems (GlusterFS, DRBD)
 
@@ -115,9 +115,9 @@ When selecting a plan, it is important to understand the hardware resources allo
 | Memory (RAM) | The working memory available for your server's processes. Your server stores information in memory that is needed to carry out its functions. Or, it caches data in memory for fast retrieval in the future, if it is likely that the data will be needed. Data stored in RAM is accessed faster than data stored in your Linode's disks, but it is not persistent storage. |
 | vCPU Cores | The number of virtual CPUs (vCPUs) available to your server. Your software is often designed to execute its tasks across multiple CPUs in parallel. The higher your vCPU count, the more work you can perform simultaneously. |
 | Storage | Your server's built-in persistent storage. Large databases, media libraries, and other stores of files will require more storage space. Your Linode's storage is maintained on high-performance SSDs for fast access. You can also supplement your Linode's disks with extra [Block Storage Volumes](https://www.linode.com/blockstorage). |
-| Transfer | The total amount of traffic your server can emit over the course of a month. Inbound traffic sent to your Linode does not count against your transfer quota. If you exceed your quota, your service will not be shut off; instead, an overage will be billed. Review the [Network Transfer Quota](/docs/platform/billing-and-support/network-transfer-quota/) guide for more information about how transfer works. |
-| Network In | The maximum bandwidth for inbound traffic sent to your Linode. The bandwidth you observe will also depend on other factors, like the geographical distance between you and your Linode and the bandwidth of your local ISP. For help with choosing a data center that will feature the lowest latency and best bandwidth, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center/) guide. |
-| Network Out | The maximum bandwidth for outbound traffic emitted by your Linode. The bandwidth you observe will also depend on other factors, like the geographical distance between you and your Linode and the bandwidth of your local ISP. For help with choosing a data center that will feature the lowest latency and best bandwidth, review the [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center/) guide.
+| Transfer | The total amount of traffic your server can emit over the course of a month. Inbound traffic sent to your Linode does not count against your transfer quota. If you exceed your quota, your service will not be shut off; instead, an overage will be billed. Review the [Network Transfer Quota](/docs/guides/network-transfer/) guide for more information about how transfer works. |
+| Network In | The maximum bandwidth for inbound traffic sent to your Linode. The bandwidth you observe will also depend on other factors, like the geographical distance between you and your Linode and the bandwidth of your local ISP. For help with choosing a data center that will feature the lowest latency and best bandwidth, review the [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center/) guide. |
+| Network Out | The maximum bandwidth for outbound traffic emitted by your Linode. The bandwidth you observe will also depend on other factors, like the geographical distance between you and your Linode and the bandwidth of your local ISP. For help with choosing a data center that will feature the lowest latency and best bandwidth, review the [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center/) guide.
 | GPU | GPU's, or Graphical Processing Units are specialized hardware units only available on our GPU instances. Originally designed to manipulate computer graphics and handle image processing, GPUs are now commonly also used for many compute intensive tasks that require thousands of simultaneous threads and the higher number of logical cores that a CPU can not provide alone.
 
 ## Pricing

@@ -1,5 +1,7 @@
 
 [params]
+time_format_iso8601 = "2006-01-02T15:04:05-07:00"
+
 weglot_api_key = "wg_3b3ef29c81aa81292c64d1368ee318969"
 # Google Tag Manager ID
 gtmID = "GTM-T5FXXG9"

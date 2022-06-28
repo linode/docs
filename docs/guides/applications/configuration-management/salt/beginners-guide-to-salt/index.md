@@ -65,7 +65,7 @@ The execution modules that Salt makes available represent system administration 
 -   Editing or creating configuration [files](https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.file.html#module-salt.modules.file)
 
 {{< note >}}
-You can also [write your own](/docs/applications/configuration-management/create-a-salt-execution-module/) execution modules.
+You can also [write your own](/docs/guides/create-a-salt-execution-module/) execution modules.
 {{< /note >}}
 
 ### cmd.run
@@ -332,6 +332,6 @@ Beacons can trigger [reactors](https://docs.saltproject.io/en/latest/topics/reac
 
 ## Getting Started with Salt
 
-Now that you're familiar with some of Salt's basic terminology and components, move on to our guide [Getting Started with Salt - Basic Installation and Setup](https://www.linode.com/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/) to set up a configuration to start running commands and provisioning minion servers.
+Now that you're familiar with some of Salt's basic terminology and components, move on to our guide [Getting Started with Salt - Basic Installation and Setup](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) to set up a configuration to start running commands and provisioning minion servers.
 
 The SaltStack documentation also contains a page of [best practices](https://docs.saltproject.io/en/latest/topics/best_practices.html) to be mindful of when working with Salt. You should review this page and implement those practices into your own workflow whenever possible.

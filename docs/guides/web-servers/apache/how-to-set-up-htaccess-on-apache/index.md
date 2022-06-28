@@ -33,7 +33,7 @@ The purpose of this guide is to show you how to set up htaccess configuration (.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Complete the Apache section in the [Install a Lamp Stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/) to install Apache on your Linode.
+1.  Complete the Apache section in the [Install a Lamp Stack](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) to install Apache on your Linode.
 
 {{< note >}}
 Throughout this guide, replace each instance of `testuser` with your custom user account. Replace each occurrence of `example.com` with the IP address or Fully Qualified Domain Name (FQDN) of your Linode.
