@@ -1,4 +1,4 @@
 ---
-title: Learn About the Java Programming Language | Linode
+title: Learn About the Java Programming Language
 aliases: ['/languages/java/']
 ---
