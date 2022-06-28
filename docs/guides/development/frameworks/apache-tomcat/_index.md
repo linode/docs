@@ -7,6 +7,6 @@ keywords: ["web applications", "web frameworks", "Linode applications", "tomcat"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tomcat/','/development/frameworks/apache-tomcat/']
 published: 2020-04-15
-title: Run Apache Tomcat at Linode | Linode
+title: Run Apache Tomcat at Linode
 show_in_lists: true
 ---
