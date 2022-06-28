@@ -18,6 +18,10 @@ contributor:
 - [What is Kali Linux?](https://www.kali.org/docs/introduction/what-is-kali-linux/)
 - [Should I Use Kali Linux?](https://www.kali.org/docs/introduction/should-i-use-kali-linux/)
 
+{{< note >}}
+This Marketplace App extends Linode's Kali Linux distribution image by allowing the user to preinstall one of the availabe metapackages, along with [TigerVNC](https://tigervnc.org/) and [Apache Guacamole](https://guacamole.apache.org/) in the case of the `kali-linux-everything` metapackage.
+{{</ note >}}
+
 ## Deploying a Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
@@ -36,14 +40,14 @@ contributor:
 ### Kali Options
 
 - **Kali Headless Package** *(required)*: This installs the [kali-linux-headless](https://www.kali.org/tools/kali-meta/#kali-linux-headless) meta-package, which includes all non-GUI packages.
-- **Kali Everything Package** *(required)*: This installs the [kali-linux-everything](https://www.kali.org/tools/kali-meta/#kali-linux-everything) meta-package, which includes all available Kali packages, and also installs [Apache Guacamole](https://guacamole.apache.org/) for remotely accessing Kali's desktop environment.
+- **Kali Everything Package** *(required)*: This installs the [kali-linux-everything](https://www.kali.org/tools/kali-meta/#kali-linux-everything) meta-package, which includes all available Kali packages, and also installs [TigerVNC](https://tigervnc.org/) and [Apache Guacamole](https://guacamole.apache.org/) for remotely accessing Kali's desktop environment.
 
     {{< note >}}
 If both packages are selected, only the [kali-linux-everything](https://www.kali.org/tools/kali-meta/#kali-linux-everything) package is installed (which includes everything in [kali-linux-headless](https://www.kali.org/tools/kali-meta/#kali-linux-headless)).
 {{</ note >}}
 
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
-- **Sudo/VNC Username** *(required)*: The VNC username you wish to create for this Compute Instance. This is used for your VNC session and will have elevated privilages (`sudo`).
+- **Sudo/VNC Username** *(required)*: The VNC username you wish to create for this Compute Instance. This is used for your VNC session and will have elevated privileges (`sudo`).
 - **Sudo/VNC User Password** *(required)*: The password you wish to use for your VNC user.
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
@@ -71,7 +75,7 @@ If you selected to install the [Kali Everything package](https://www.kali.org/to
 * Apache Guacamole Password: eDE4Fzp5tZ2ICIFhieho384jg3
 {{</ output >}}
 
-1. Access Apache Guacabole by opening your web browser and navigating to the domain entered during the creation of the Linode instance. If you did not enter a domain, you can also use your Compute Instance's rDNS, which may look like `192-0-2-1.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing the rDNS value.
+1. Access Apache Guacamole by opening your web browser and navigating to the domain entered during the creation of the Linode instance. If you did not enter a domain, you can also use your Compute Instance's rDNS, which may look like `192-0-2-1.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing the rDNS value.
 
 1. Once you've completed the login process, you have full access to your Kali Linux instance from your Guacamole remote desktop.
 
