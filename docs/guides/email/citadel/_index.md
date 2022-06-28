@@ -6,7 +6,7 @@ description: 'Citadel is a groupware suite that provides system administrators w
 keywords: ["citadel", "linux mail server", "groupware", "email server", "email howto"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2009-07-16
-title: Citadel Groupware Installation | Linode
+title: Citadel Groupware Installation
 show_in_lists: true
 aliases: ['/email/citadel/']
 ---
