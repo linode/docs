@@ -7,7 +7,7 @@ keywords: ["audio", " video", " stream", " streaming", " media"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/media-servers/','/communications/media-servers/']
 published: 2012-06-07
-title: Hosting Media Servers at Linode | Linode
+title: Hosting Media Servers at Linode
 show_in_lists: true
 ---
 
