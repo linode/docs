@@ -1,5 +1,5 @@
 ---
-title: Guides to Using Python at Linode | Linode
+title: Guides to using Python at Linode
 show_in_lists: true
 aliases: ['/development/python/']
 ---
