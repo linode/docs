@@ -196,9 +196,9 @@ Instead, these steps highlight the particular pieces that relate to mobilizing t
 
     {{< file js >}}
 export default {
-	linodeInstanceStatusColor: (currentItem) => {
-		return (currentItem.status == "running") ? "darkseagreen" : "indianred";
-	}
+    linodeInstanceStatusColor: (currentItem) => {
+        return (currentItem.status == "running") ? "darkseagreen" : "indianred";
+    }
 }
     {{< /file >}}
 
@@ -218,16 +218,16 @@ export default {
 
     {{< file js >}}
 export default {
-	linodeInstanceStatusColor: (currentItem) => {
-		return (currentItem.status == "running") ? "darkseagreen" : "indianred";
-	},
-	linodeApiInstanceOnOrOff: (currentItem) => {
-		if (currentItem.status == "offline") {
-			LinodeAPI_POST_Linode_Boot.run({ selectedId: currentItem.id });
-		} else {
-			LinodeAPI_POST_Linode_Shutdown.run({ selectedId: currentItem.id });
-		}
-	}
+    linodeInstanceStatusColor: (currentItem) => {
+        return (currentItem.status == "running") ? "darkseagreen" : "indianred";
+    },
+    linodeApiInstanceOnOrOff: (currentItem) => {
+        if (currentItem.status == "offline") {
+            LinodeAPI_POST_Linode_Boot.run({ selectedId: currentItem.id });
+        } else {
+            LinodeAPI_POST_Linode_Shutdown.run({ selectedId: currentItem.id });
+        }
+    }
 }
     {{< /file >}}
 
