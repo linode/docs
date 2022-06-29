@@ -95,6 +95,7 @@ autoconfiguration
 autoconfigure
 autodiscover
 autohosting
+autoindex
 autojoin
 autojump
 autologin
