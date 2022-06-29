@@ -1074,6 +1074,7 @@ linode
 linode's
 linodego
 linodes
+linroot
 linter
 lish
 liskov
@@ -1295,6 +1296,7 @@ mysqlclient10
 mysqld
 mysqldefault
 mysqldump
+mysql_config_editor
 mytestdb
 myuser
 mzet
