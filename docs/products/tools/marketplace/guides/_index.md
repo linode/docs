@@ -51,6 +51,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Jitsi](/docs/products/tools/marketplace/guides/jitsi/)
 - [Joomla](/docs/products/tools/marketplace/guides/joomla/)
 - [Joplin](/docs/products/tools/marketplace/guides/joplin/)
+- [Kali Linux](/docs/products/tools/marketplace/guides/kali-linux/)
 - [Kepler](/docs/products/tools/marketplace/guides/kepler/)
 - [LAMP Stack](/docs/products/tools/marketplace/guides/lamp-stack/)
 - [LEMP Stack](/docs/products/tools/marketplace/guides/lemp-stack/)
