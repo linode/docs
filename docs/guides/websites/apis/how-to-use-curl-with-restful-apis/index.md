@@ -1,17 +1,15 @@
 ---
-slug: how-to-use-curl-with-restful-apis
+slug: curl-for-rest-api
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide explains how to use cURL to develop and interrogate RESTful APIs. It discusses how to use the RESTful verbs, how to inspect headers, and how to add authorization to requests.'
-og_description: 'This guide explains how to use cURL to develop and interrogate RESTful APIs. It discusses how to use the RESTful verbs, how to inspect headers, and how to add authorization to requests.'
+  name: Jeff Novotny
+description: 'cURL is a data transfer application used to interact with APIs. This guide discusses using RESTful verbs, inspecting headers, and adding authorization to requests.'
 keywords: ['cURL API','Test API using curl','Curl for rest API','Curl restful api']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-29
+published: 2022-07-01
 modified_by:
   name: Linode
-title: "How to Use cURL with RESTful APIs | Linode"
-h1_title: "How to Use cURL with RESTful APIs | Linode"
+title: "Using cURL with RESTful APIs"
+h1_title: "How to Use cURL with RESTful APIs"
 enable_h1: true
 contributor:
   name: Jeff Novotny
@@ -23,13 +21,13 @@ external_resources:
 - '[GitHub REST API](https://docs.github.com/en/rest)'
 ---
 
-In web programming, developers often have to interact with online databases. Many of these services provide a *Representational State Transfer* (REST) API that allows authorized users to read and write data. Fortunately, the [cURL](https://curl.se) application allows users to easily access REST APIs from the command line. This guide discusses how to use cURL to interrogate RESTful APIs. It also explains how `curl` uses the RESTful verbs, and how to inspect headers and add authorization to requests.
+In web programming, developers often have to interact with online databases. Many of these services provide a [*Representational State Transfer* (REST) API](https://en.wikipedia.org/wiki/Representational_state_transfer) that allows authorized users to read and write data. Fortunately, the [cURL](https://curl.se) application allows users to easily access REST APIs from the command line. This guide discusses how to use cURL to interrogate RESTful APIs. It also explains how `curl`, the command-line utility, uses RESTful verbs, and how to inspect headers and add authorization to requests.
 
 ## An Introduction to Using cURL with RESTful APIs
 
 ### What is cURL?
 
-cURL, standing for "Client URL", is a data transfer application. It consists of two components, the `libcurl` client-side library and the `curl` command-line tool. cURL was originally designed to allow Linux IRC users to automate common tasks. However, it is now available for most operating systems and behaves similarly across platforms.
+cURL stands for "Client URL" and is a data transfer application. It consists of two components, the `libcurl` client-side library and the `curl` command-line tool. cURL was originally designed to allow Linux IRC users to automate common tasks. However, it is now available for most operating systems and behaves similarly across platforms.
 
 {{< note >}}
 cURL is the complete data transfer application, including the library, while `curl` is the command-line utility. The two terms are often used interchangeably. This guide mainly discusses the `curl` utility, which transmits commands directly to a remote REST API.
@@ -37,14 +35,17 @@ cURL is the complete data transfer application, including the library, while `cu
 
 `curl` uses the `libcurl` library and a simple URL-based syntax to transmit and receive data. It can be used as a stand-alone command line application, or inside scripts or web applications. The `curl` utility is common in embedded applications for vehicles, routers, printers, and audio-visual equipment. It is also used to access REST APIs and to test new APIs.
 
-The cURL application has several advantages:
-- It is a free, open source product.
-- It is portable to different operating systems.
-- It supports most transfer protocols and web technologies, including HTTP, FTP, SFTP, and SCP.
-- It supports HTTPS and can perform certificate validation, allowing users to specify a certificate to use.
-- `libcurl` is thread safe.
-- It supports Ipv6 and dual-stack requests.
-- It contains APIs or bindings for over 50 programming languages, including C/C++, Java, and Python.
+The cURL application is:
+
+- free and open source.
+- portable across operating systems.
+- contains APIs or bindings for over 50 programming languages, including C/C++, Java, and Python.
+- thread safe.
+
+It also supports:
+- most transfer protocols and web technologies, including HTTP, FTP, SFTP, and SCP.
+- Ipv6 and dual-stack requests.
+- APIs or bindings for over 50 programming languages, including C/C++, Java, and Python.
 
 ### What is REST?
 
@@ -56,7 +57,7 @@ REST is an architecture consisting of best practices and patterns for web develo
 - **Layering**: Additional features, such as security protocols, can be added to REST as a separate layer. For example, the user can be authenticated and then the request can be passed to another layer for processing.
 - **Uniform interfaces**: Clients use well-known URIs to request information. They must identify the specific resource to access and the format to use. The services are not customizable, so clients must use the official generic interface.
 
-REST principles are straightforward and easy to understand. Clients use a *Uniform Resource Identifier* (URI) to request information from a server. Inside the message, which is typically sent using HTTP, the client identifies the resources it wants. It can also specify a format for the reply. The server replies with the requested data, in *JavaScript Object Notation* (JSON), HTML, or XML. A REST request includes the following components:
+REST principles are straightforward. Clients use a *Uniform Resource Identifier* (URI) to request information from a server. Inside the message, which is typically sent using HTTP, the client identifies the resources it wants. It can also specify a format for the reply. The server replies with the requested data, in *JavaScript Object Notation* (JSON), HTML, or XML. A REST request includes the following components:
 
 - An HTTP method indicating the requested operation, such as `GET` or `PUT`.
 - A header, including the media type the sender wants to receive. Some examples are `text/css` and `image/gif`.
@@ -72,7 +73,7 @@ The REST architecture is an industry standard because it offers many advantages.
 
 However, REST cannot process any requests based on the state of the transaction. It also does not guarantee reliability or include any security features. Client applications must implement these features.
 
-### What are RESTful verbs?
+### What are RESTful Verbs?
 
 REST interfaces allow for a fixed set of interactions. Taken together, these operations are known as the *RESTful verbs* or *REST verbs*. Each RESTful verb indicates an action on the client-side application.
 
@@ -89,19 +90,9 @@ Here are the main RESTful verbs that allow `curl` to use a REST API:
 
 For almost all APIs, the `POST`, `PUT`, `PATCH`, and `DELETE` operations require server authentication. However, many servers allow anonymous `GET` operations for public data. If the server cannot authorize a user, it returns the failure code `401` for "Unauthorized". Failure code `403`, or "Forbidden", is used if the client is not allowed to access the resource.
 
-## Before You Begin
-
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
-
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
-
 ### Installing curl
 
-As of 2022, the most recent release of `curl` is 7.83.0. `curl` usually comes pre-installed on Ubuntu and other Linux distributions. To see if `curl` is already installed, run the `curl` command with the `-V` flag for "version". The local installation might not match the latest edition, but any recent release should be adequate.
+As of 2022, the most recent release of `curl` is version 7.83.0. `curl` usually comes pre-installed on Ubuntu and other Linux distributions. To see if `curl` is already installed, run the `curl` command with the `-V` flag for "version". The local installation might not match the latest edition, but any recent release should be adequate.
 
     curl -V
 
@@ -118,7 +109,7 @@ If necessary, `curl`  can be installed using `apt install`. Ensure the system is
 
 Documentation for `curl` can be found on the [curl website](https://curl.se/docs/). The source code can be found on the [curl GitHub page](https://github.com/curl/curl).
 
-### Command line Options for curl
+### Command Line Options for curl
 
 To use curl from the command line, type `curl` and the URL to access.
 
@@ -170,23 +161,23 @@ Some of the similarities and differences between `curl` and `wget` are as follow
 - `curl` is bidirectional and can do transfers in parallel.
 - `curl` supports many more security measures, different releases of HTTP, and dual stack IPv4/Ipv6 transfers.
 
-Either utility is fine for most simple HTTP requests and downloads. If you are familiar with only one of the tools and it is suitable for your requirements, continue to use it. However, `wget` is only a simple transfer utility. `curl` is a better all-purpose tool for heavy duty and professional use.
+Either utility is fine for most simple HTTP requests and downloads. If you are familiar with only one of the tools and it is suitable for your requirements, continue to use it. However, `wget` is only a simple transfer utility. `curl` is a better all-purpose tool for heavy duty and professional use. See our guide [How to Use wget](/docs/guides/how-to-use-wget/) to learn more about this pared-down alternative to curl.
 
 ## cURL Methods
 
 `curl` uses several HTTP commands to connect to remote REST APIs. These actions correspond to the different REST verbs. The syntax for RESTful requests is simple and straightforward and is similar to other `curl` requests. For thorough documentation on how to use `curl`, see the official [curl documentation](https://curl.se/docs/).
 
-To determine the URIs to use for each operation, consult the API information for the server. As an example, the official [GitHub REST API](https://docs.github.com/en/rest) explains how to use the interface. When designing a REST interface, it is easy to test the API using `curl`.
+To determine the URIs to use for each operation, consult the API documentation provided for the tool or service. As an example, the official [GitHub REST API](https://docs.github.com/en/rest) explains how to use the interface. When designing a REST interface, it is easy to test the API using `curl`.
 
 {{< note >}}
-The following examples use `example.com` in the instructions. Substitute the name of the actual site to access for `example.com` wherever it occurs.
+The following examples use `example.com` in the instructions. Substitute `example.com` with your own URI.
 {{< /note >}}
 
 ### GET
 
 The `GET` operation allows `curl` to receive information from a REST API. To use the `GET` RESTful verb, use the `curl` command followed by the name of the resource to access. The `-X` attribute and the name of the operation are not required because `GET` is the default HTTP operation.
 
-The output varies based on the server. It includes a `status`, which is set to `success` if the request is valid, the `data`, and an optional `message`. In this case, the client does not specify a format for the data, so the server responds using JSON. To see more information about the transfer, including the server options, append the `-v`/verbose option to the command.
+The output varies based on the server. It includes a `status`, which is set to `success` if the request is valid, the `data`, and an optional `message`. In this case, the client does not specify a format for the data, so the server responds using JSON. To see more information about the transfer, including the server options, append the `-v` (verbose) option to the command.
 
     curl https://example.com/api/2/employees
 
@@ -291,8 +282,8 @@ Many REST APIs require the user to authenticate using a valid user name and pass
 
     curl -u user:password https://example.com/api/2/employee/10
 
-## A Summary of cURL and RESTful APIs.
+## Conclusion
 
 Although it is best known as a data transfer application, the cURL application can interact with REST APIs. It includes the `curl` command line utility and the fully-featured `libcurl` library. REST is a popular architecture for client-server applications. It decouples the two components and stresses modularity and efficiency. Information is exchanged through well-known URIs.
 
-Users can access REST APIs using the RESTful verbs, which correspond to the basic HTTP actions. `curl` can send all common HTTP commands to a REST API including `GET`, `POST`, `PUT`, and `DELETE`. The `curl` utility is simple to use. It has a few main options for data transmission, user authentication, and making header changes. For more information about curl, see the [curl documentation](https://curl.se/docs/).
+Users can access REST APIs using the RESTful verbs, which correspond to the basic HTTP actions. `curl` can send all common HTTP commands to a REST API including `GET`, `POST`, `PUT`, and `DELETE`. The `curl` utility is straightforward to use. It has a few main options for data transmission, user authentication, and making header changes. For more information about curl, see the [curl documentation](https://curl.se/docs/).
