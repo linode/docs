@@ -1569,6 +1569,8 @@ procfile
 procmail
 procs
 productpage
+promlens
+promscale
 prosodyctl
 proto
 protobuf
