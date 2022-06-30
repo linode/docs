@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-title: "Connect to a MySQL Database"
+title: "Connect to a MySQL Managed Database"
 description: "Learn how to connect to a MySQL Managed Databse through the command line or MySQL Workbench."
 published: 2022-02-23
 modified: 2022-05-11
@@ -53,11 +53,11 @@ If you are connecting to the *private network host*, ensure your Compute Instanc
 
 Once you are connected successfully, the MySQL prompt appears and you can enter SQL queries. See [An Overview of MySQL](/docs/guides/an-overview-of-mysql/#the-sql-language) for examples.
 
-See [How to Connect to a MySQL or MariaDB Database](/docs/guides/connect-to-a-mysql-or-mariadb-database/) for more information or reference [Connecting to the MySQL Server Using Command Options](https://dev.mysql.com/doc/refman/8.0/en/connecting.html) within MySQL's own documentation.
+See [How to Connect to a MySQL or MariaDB Database](/docs/guides/connect-to-mysql-database/) for more information or reference [Connecting to the MySQL Server Using Command Options](https://dev.mysql.com/doc/refman/8.0/en/connecting.html) within MySQL's own documentation.
 
 ### Install a MySQL Client
 
-If you do not currently have a MySQL command-line client installed on your system, follow the instructions below to install one through your distribution's repositories. 
+If you do not currently have a MySQL command-line client installed on your system, follow the instructions below to install one through your distribution's repositories.
 
 -   **CentOS Stream 9 (and 8), CentOS/RHEL 8 (including AlmaLinux 8 and RockyLinux 8):**
 

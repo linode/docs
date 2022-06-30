@@ -2269,6 +2269,7 @@ whois
 whowatch
 wi
 wiktionary
+Widenius's
 widgits
 wildfly
 wimey

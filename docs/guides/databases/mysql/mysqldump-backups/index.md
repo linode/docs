@@ -1,5 +1,5 @@
 ---
-slug: back-up-and-restore-using-mysqldump
+slug: mysqldump-backups
 author:
   name: Linode
   email: docs@linode.com
@@ -8,18 +8,18 @@ keywords: ["mysql", "mariadb", "backup", "back up", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/backup-options/','/security/backups/back-up-your-mysql-databases/','/databases/mysql/back-up-your-mysql-databases/','/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb/','/guides/use-mysqldump-to-back-up-mysql-or-mariadb/']
 published: 2018-01-30
-modified: 2022-06-29
+modified: 2022-06-30
 modified_by:
   name: Linode
-title: "Backing Up MySQL and MariaDB Databases Using mysqldump"
+title: "Backing Up MySQL Databases Using mysqldump"
 external_resources:
- - '[MySQL Database Backup Methods page](http://dev.mysql.com/doc/refman/5.1/en/backup-methods.html)'
- - '[mysqldump - A Database Backup Program, MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)'
+ - '[mysqldump documentation](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html)'
+ - '[MySQL documentation: Database Backup Methods](https://dev.mysql.com/doc/refman/8.0/en/backup-methods.html)'
 tags: ["mariadb","database","mysql"]
 image: mysqldump-backup-title.jpg
 ---
 
-[MySQL](http://www.mysql.com/) and [MariaDB](https://mariadb.com/) include the [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) utility to simplify the process to create a backup of a database or system of databases. Using `mysqldump` creates a *logical backup* and generates the SQL statements needed to reproduce the original database structure and data.
+[MySQL](http://www.mysql.com/) (and [MariaDB](https://mariadb.com/)) include the [mysqldump](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html) utility to simplify the process to create a backup of a database or system of databases. Using `mysqldump` creates a *logical backup* and generates the SQL statements needed to reproduce the original database structure and data.
 
 {{< note >}}
 Since the mysqldump utility needs to connect to the database, the database management software must be running and accessible. If the database is not accessible for any reason, you can instead create a [*physical backup*](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/), which is a copy of the file system directory containing your MySQL database.
@@ -27,7 +27,13 @@ Since the mysqldump utility needs to connect to the database, the database manag
 
 ## Before You Begin
 
-- **Obtain the connection details for the MySQL instance you wish to use.** If you do not have a MySQL instance yet, you can create a Managed Database, deploy the MySQL Marketplace App, or install MySQL (or MariaDB) on a Compute Instance.
+- **Obtain the connection details for the MySQL instance you wish to use.** If you do not have a MySQL instance yet, you can create a Managed Database, deploy the MySQL Marketplace App, or install MySQL server (or MariaDB) on a Compute Instance.
+
+-   **Log in to the system where you intend to capture or store your backups.** This system needs a MySQL command-line client installed (which should come with the mysqldump utility). Run the following command to verify that mysqldump is installed:
+
+        mysqldump --version
+
+    This should inform you which version you are using as well, needed when referencing the documentation. If mysqldump and mysql are not installed, see [Install a MySQL Client](/docs/products/databases/managed-databases/guides/mysql-connect/#install-a-mysql-client).
 
 - **Ensure your MySQL user has proper grants:** The MySQL user you intend to use to export your existing database must have `SELECT`, `LOCK TABLES`, `SHOW VIEW`, and `TRIGGER` grants.
 
@@ -77,35 +83,15 @@ When backing up a Linode MySQL [Managed Database](/docs/products/databases/manag
 
 - **Output file** (`> backup.sql`): The name of the output file. To keep your backups organized with unique filenames, it may be helpful to add an automatically generated timestamp (ex: `backup-$(date +%F).sql` for just the date or `backup-$(date +%Y%m%d-%H%M%S).sql` for the date and time). You can reference the formatting options on the [date manual page](https://man7.org/linux/man-pages/man1/date.1.html) to further customize it.
 
-If you are frequently backing up a database with mysqldump running a backup through a cron job, you can securely store many of these options (including the password). See the [Securely Storing Credentials](#securely-storing-credentials) section below. Other options can be stored in an [option file](https://dev.mysql.com/doc/refman/8.0/en/option-files.html).
+If you are frequently backing up a database with mysqldump or running a backup through a cron job, you can securely store many of these options (including the password). See the [Securely Storing Credentials](/docs/guides/securely-store-mysql-credentials/) guide. Other options can be stored in an [option file](https://dev.mysql.com/doc/refman/8.0/en/option-files.html).
 
 ### Additional Options
 
 - `--single-transaction`: Issue a BEGIN SQL statement before dumping data from the server. See [--single-transaction](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_single-transaction).
 - `--quick` or `-q`: Enforce dumping tables row by row. This provides added safety for systems with low memory and for large databases where storing tables in memory could become problematic. See [--quick](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_quick).
-- `--lock-tables=false`: Do not lock tables for the backup session.
-- `--ssl-mode=REQUIRED`: Force SSL when your existing database has SSL enabled.
-- `--set-gtid-purged=OFF`: Use this option if you have [GTID-based replication](https://dev.mysql.com/doc/refman/5.6/en/replication-gtids-howto.html) enabled.
-
-### Securely Storing Credentials
-
-MySQL includes the [mysql_config_editor](https://dev.mysql.com/doc/refman/8.0/en/mysql-config-editor.html) utility, which is used to securely store your MySQL credentials inside of an encrypted file in your home directory: `~/.mylogin.cnf`. Each set of credentials is stored in option groups called *login paths*. You can create your own custom login paths, which you can specify when running the mysql or mysqldump commands.
-
--   **Create or edit a login path:** Run the `set` command to store your credentials and database connection details. Replace *[name]* with whatever name you wish to use for your custom login path, *[username]* with your MySQL username, and *[host]* with the remote host IP or domain (if you are connecting to a remote database). You can also specify the port (`--port`) and socket (`-socket`) if needed.
-
-        mysql_config_editor set --login-path=[name] --user=[username] --host=[host] --password --warn
-
-    {{< note >}}
-You can also use special login path names, which are used by default in certain commands without needing to specify it. These special login paths include `client` and `mysql` for the mysql command and `mysqdump` for the mysqldump command.
-{{</ note >}}
-
--   **View login paths:** Run the `print` command to view all login paths (`--all`) or a specific login path (`--login-path=[name]`).
-
-        mysql_config_editor print --all
-
-To specify a set of stored credentials in the mysql or mysqldump command, use the `--login-path=[]` (or `G []`) option as show below. Replace *[name]* with the name of your login path.
-
-    mysqldump --login-path=[name] exampledatabase > backup.sql
+- `--lock-tables=false`: Do not lock tables for the backup session. See [--lock-tables](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_lock-tables)
+- `--ssl-mode=REQUIRED`: Force SSL when your existing database has SSL enabled. See [Command Options for Encrypted Connections](https://dev.mysql.com/doc/refman/8.0/en/connection-options.html#encrypted-connection-options)
+- `--set-gtid-purged=OFF`: Use this option if you have [GTID-based replication](https://dev.mysql.com/doc/refman/8.0/en/replication-gtids-howto.html) enabled. See [--set-gtid-purged](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_set-gtid-purged).
 
 ## Examples
 
@@ -125,7 +111,9 @@ To specify a set of stored credentials in the mysql or mysqldump command, use th
 
 To schedule regular backups of your database, you can use the mysqldump command inside of a cron job.
 
-1.  Store your database credentials and connection details using the `mysql_config_editor set` command. An example command is provided below, though be sure to replace the values with your own. See [Securely Storing Credentials](#securely-storing-credentials) section for additional details and options.
+1.  Log in to the system where you wish to capture and store your backups. This system should likely be a remote / cloud-based Linux server that is always running and should have a MySQL client installed.
+
+1.  Store your database credentials and connection details using the `mysql_config_editor set` command. An example command is provided below, though be sure to replace the values with your own. See [Securely Storing Credentials](/docs/guides/securely-store-mysql-credentials/) guide for additional details and options.
 
         mysql_config_editor set --login-path=[name] --user=[username] --host=[host] --password --warn
 
