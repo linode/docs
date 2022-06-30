@@ -37,7 +37,7 @@ To connect direct to the database from a command-line, you can use the `mysql` t
 
         mysql --version
 
-    If it is not installed, follow the steps for your operating system under [Install a MySQL Client](#install-a-mysql-client).
+    If it is not installed, follow the steps for your operating system in the [Installing MySQL](/docs/guides/install-mysql/) guide.
 
 1.  Use the `mysql` command below to connect to your database, replacing `[host]` and `[username]` with the corresponding values in the [Connection Details](#view-connection-details) section.
 
@@ -53,35 +53,7 @@ If you are connecting to the *private network host*, ensure your Compute Instanc
 
 Once you are connected successfully, the MySQL prompt appears and you can enter SQL queries. See [An Overview of MySQL](/docs/guides/an-overview-of-mysql/#the-sql-language) for examples.
 
-See [How to Connect to a MySQL or MariaDB Database](/docs/guides/connect-to-mysql-database/) for more information or reference [Connecting to the MySQL Server Using Command Options](https://dev.mysql.com/doc/refman/8.0/en/connecting.html) within MySQL's own documentation.
-
-### Install a MySQL Client
-
-If you do not currently have a MySQL command-line client installed on your system, follow the instructions below to install one through your distribution's repositories.
-
--   **CentOS Stream 9 (and 8), CentOS/RHEL 8 (including AlmaLinux 8 and RockyLinux 8):**
-
-        sudo dnf install mysql
-
--   **CentOS/RHEL 7:**
-
-        sudo yum install mysql
-
--   **Debian:**
-
-    *Debian does not include MySQL within its own repositories. Instead, it uses MariaDB. While this is largely compatible with MySQL, some commands and functionality may vary.*
-
-        sudo apt update
-        sudo apt install mariadb-client
-
--   **Fedora:**
-
-        sudo dnf install community-mysql
-
--   **Ubuntu:**
-
-        sudo apt update
-        sudo apt install mysql-client
+See [Using the MySQL Command Line Client](/docs/guides/mysql-command-line-client/) for more information or reference [Connecting to the MySQL Server Using Command Options](https://dev.mysql.com/doc/refman/8.0/en/connecting.html) within MySQL's own documentation.
 
 ## Connect Using MySQL Workbench (GUI)
 

@@ -33,7 +33,7 @@ Since the mysqldump utility needs to connect to the database, the database manag
 
         mysqldump --version
 
-    This should inform you which version you are using as well, needed when referencing the documentation. If mysqldump and mysql are not installed, see [Install a MySQL Client](/docs/products/databases/managed-databases/guides/mysql-connect/#install-a-mysql-client).
+    This should inform you which version you are using as well, needed when referencing the documentation. If mysqldump and mysql are not installed, see the [Installing MySQL](/docs/guides/install-mysql/) guide.
 
 - **Ensure your MySQL user has proper grants:** The MySQL user you intend to use to export your existing database must have `SELECT`, `LOCK TABLES`, `SHOW VIEW`, and `TRIGGER` grants.
 
@@ -89,8 +89,8 @@ If you are frequently backing up a database with mysqldump or running a backup t
 
 - `--single-transaction`: Issue a BEGIN SQL statement before dumping data from the server. See [--single-transaction](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_single-transaction).
 - `--quick` or `-q`: Enforce dumping tables row by row. This provides added safety for systems with low memory and for large databases where storing tables in memory could become problematic. See [--quick](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_quick).
-- `--lock-tables=false`: Do not lock tables for the backup session. See [--lock-tables](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_lock-tables)
-- `--ssl-mode=REQUIRED`: Force SSL when your existing database has SSL enabled. See [Command Options for Encrypted Connections](https://dev.mysql.com/doc/refman/8.0/en/connection-options.html#encrypted-connection-options)
+- `--lock-tables=false`: Do not lock tables for the backup session. See [--lock-tables](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_lock-tables).
+- `--ssl-mode=REQUIRED`: Force SSL when your existing database has SSL enabled. See [Command Options for Encrypted Connections](https://dev.mysql.com/doc/refman/8.0/en/connection-options.html#encrypted-connection-options).
 - `--set-gtid-purged=OFF`: Use this option if you have [GTID-based replication](https://dev.mysql.com/doc/refman/8.0/en/replication-gtids-howto.html) enabled. See [--set-gtid-purged](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#option_mysqldump_set-gtid-purged).
 
 ## Examples
