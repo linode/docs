@@ -22,7 +22,7 @@ external_resources:
 - [Linux through your distribution's native repositories](#installing-mysql-on-linux-native-repositories)
 - [Linux through MySQL's APT and YUM repositories](#installing-mysql-on-linux-mysqls-repositories) (recommended)
 
-When installing MySQL, you can either install *MySQL Server* or *MySQL client utilities*. Installing the entire MySQL Server software is the most common option. This allows you to run a full database server on your system. It also installs all of the client utilities that you might need when working with any MySQL instances (the locally installed one or one on a remote system). If you want to reduce disk usage or know you only need the client utilities, you can install the MySQL client package. Alternatively, consider installing and using the [MySQL Shell](https://dev.mysql.com/doc/mysql-shell/8.0/en/).
+When installing MySQL, you can either install *MySQL Server* or *MySQL client utilities*. Installing the entire MySQL Server software is the most common option. This allows you to run a full database server on your system. It also installs all of the client utilities that you might need when working with any MySQL instances (a locally installed one or one on a remote system). If you want to reduce disk usage or know you only need the client utilities, you can install the MySQL client package. Alternatively, consider installing and using the [MySQL Shell](https://dev.mysql.com/doc/mysql-shell/8.0/en/).
 
 Currently, there are two primary MySQL releases to consider: MySQL 5.7 and MySQL 8.0. Both are still receiving support and updates (until October 2023 and April 2026 respectively). You should likely install MySQL 8.0 unless your application does not yet support it.
 
