@@ -1,5 +1,7 @@
 ---
 slug: test-vale
+author:
+  name: Linode
 published: 2022-07-01
 title: "Vale Tests"
 _build:
@@ -9,6 +11,9 @@ noindex: true
 
 <!--- Possessive test. Desired result: ignore -->
 This is a possessive form of a word from our vocab list: Ansible's.
+
+<!--- General spelling error. Desired result: error -->
+This is word is not in the list of vocab terms: eror. Ths's wrd availabe eror.
 
 <!--- Inline code spelling error. Desired result: ignore -->
 This is a spelling error in an inline code block: `eror`.
