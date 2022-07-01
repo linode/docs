@@ -9,5 +9,6 @@ extends: existence
 message: 'Use a comma before the last "and" or "or" in a list of four or more items.'
 link: https://docs.gitlab.com/ee/development/documentation/styleguide.html#punctuation
 level: warning
-raw:
-  - '(?:[\w-_` ]+,){2,}(?:[\w-_` ]+) (and |or )'
+scope: sentence
+tokens:
+  - '(?:[^,]+,){1,}\s\w+\s(?:and|or)'
