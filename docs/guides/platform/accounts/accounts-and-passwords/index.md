@@ -104,4 +104,4 @@ Creating strong passwords is essential to protecting your Linode and your Linode
 
 ## Next Steps
 
-You can take additional steps to secure your Linode Cloud Manager account by enabling the two-factor authentication and IP address whitelisting features. You can also configure security event notifications and disable API access. For instructions, see the [Security](/docs/guides/linode-manager-security-controls/) guide.
+You can take additional steps to secure your Linode Cloud Manager account by enabling the two-factor authentication and IP address whitelisting features. You can also configure security event notifications and disable API access. For instructions, see the [Security](/docs/guides/user-security-controls/) guide.

@@ -39,7 +39,7 @@ Export the data from the source database into a `.sql` file. While this file is 
 
     - `--all-databases`: **Do not use this option**. When importing this backup into your Managed Database, it may delete all existing users from the cluster.
 
-    See [Backing Up MySQL Databases Using mysqldump](/docs/guides/use-mysqldump-to-back-up-mysql-or-mariadb/) for more details on running the mysqldump command.
+    See [Backing Up MySQL Databases Using mysqldump](/docs/guides/mysqldump-backups/) for more details on running the mysqldump command.
 
 - **cPanel:** See [Backup Wizard > Create a partial backup](https://docs.cpanel.net/cpanel/files/backup-wizard/#create-a-partial-backup) and [How to Back Up and Restore MySQL® Databases in cPanel](https://blog.cpanel.com/how-to-back-up-and-restore-mysql-databases-in-cpanel/).
 

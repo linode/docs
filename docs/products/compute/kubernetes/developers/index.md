@@ -17,4 +17,4 @@ The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the L
 
 ## Third Party Tools & Integrations
 
-**Terraform**: Terraform is an Infrastructure-as-code tool that includes management features for various types of Linode resources. Use Linode’s [official Terraform Provider](https://www.terraform.io/docs/providers/linode/r/volume.html) to [provision Linode Kubernetes Engine Clusters](/docs/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/).
+**Terraform**: Terraform is an Infrastructure-as-code tool that includes management features for various types of Linode resources. Use Linode’s [official Terraform Provider](https://www.terraform.io/docs/providers/linode/r/volume.html) to [provision Linode Kubernetes Engine Clusters](/docs/guides/how-to-deploy-an-lke-cluster-using-terraform/).
