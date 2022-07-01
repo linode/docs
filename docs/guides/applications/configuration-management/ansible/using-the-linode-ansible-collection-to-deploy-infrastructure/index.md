@@ -65,6 +65,10 @@ The steps outlined in this guide require [Ansible version 2.9.10 or greater](htt
 
 The Linode Ansible Collection is currently open-source and hosted on both a [Public Github Reopository](https://github.com/linode/ansible_linode) and [Ansible Galaxy](https://galaxy.ansible.com/linode/cloud). Ansible Galaxy is Ansible's own community focused repository, providing information on and access to a [wide array of Ansible collections](https://docs.ansible.com/ansible/latest/galaxy/user_guide.html#finding-collections-on-galaxy) and [Ansible Roles](). Ansible Galaxy additionally comes with support built into the latest versions of Ansible by default. While users can install the Linode Ansible Collection [from source](https://docs.ansible.com/ansible/latest/galaxy/user_guide.html#installing-a-collection-from-source-files) or by [using git](https://docs.ansible.com/ansible/latest/galaxy/user_guide.html#installing-a-collection-from-a-git-repository), the steps in this section of the guide will focus on using Ansible Galaxy:
 
+1. Install any required dependencies for ansible:
+
+        sudo -H pip install -Iv 'resolvelib<0.6.0'
+
 1. Download the latest version of the Linode Ansible Collection using the `ansible-galaxy` command:
 
         sudo ansible-galaxy collection install linode.cloud
@@ -100,21 +104,17 @@ Create a configuration file for Ansible that will contain the path to a file tha
 
 ### Configuration Ansible Vault and Encrypting Variables
 
-1. Create the Ansible Vault password file referenced in the Ansible Configuration file using a text editor of your choice. This file should exist as `~/development/vault-pass` and contain the following string replacing `MyUn1queP@ssw0rd` with your own strong unique password:
-
-{{< file "~/development/vault-pass">}}
-My.ANS1BLEvault-MyUn1queP@ssw0rd
-{{< /file >}}
-
 1. In keeping in line with best practices on Ansible, create a directory to store variable files which will contain data encrypted by Ansible Vault, in this case the `~/development/group_vars/example_group/` directory:
 
-    mkdir -p ~/development/group_vars/example_group/
+        mkdir -p ~/development/group_vars/example_group/
 
 1. Decide on a secure Root Password for any infrastructure that will be deployed using the Linode Collection, then, use ansible-vault to encrypt the string with the following syntax, replacing `MySecureRootPassword` with your own strong and unique password:
 
-        ansible-vault encrypt_string 'My.c00lPassw0rd' --name 'password'
+        ansible-vault encrypt_string 'MySecureRootPassword' --name 'password'
 
-   You will see output similar to the following:
+    You will be asked to enter a secure vault password to decrypt the variable with later. Enter this password now.
+
+   Once completed, you will see output similar to the following:
 
    {{< output >}}
 password: !vault |
@@ -133,6 +133,8 @@ Encryption successful
 
         ansible-vault encrypt_string '86210...1e1c6bd' --name 'api-token'
 
+    You will be asked to enter a secure vault password to decrypt the variable with later. Enter the same password you entered to encrypt the `password` file earlier.
+
 1. Copy the generated output and append it to the bottom of your `vars` file, located in `~/development/ansible.cfg`. The final file should look similar to the following:
 
 {{< file "~/development/vault-pass">}}
@@ -143,7 +145,7 @@ password: !vault |
           38323166666665376366663964343830633462623537623065356364343831316439396462343935
           6233646239363434380a383433643763373066633535366137346638613261353064353466303734
           3833
-api-token: !vault |
+token: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           65363565316233613963653465613661316134333164623962643834383632646439306566623061
           3938393939373039373135663239633162336530373738300a316661373731623538306164363434
@@ -215,7 +217,7 @@ Creating a playbook using the Linode Ansible Collection requires bringing togeth
   tasks:
     - name: Create a Linode instance
       linode.cloud.instance:
-        api_token: "{{ api-token }}"
+        api_token: "{{ token }}"
         label: my-ansible-linode
         type: g6-nanode-1
         region: us-east
@@ -230,9 +232,9 @@ Creating a playbook using the Linode Ansible Collection requires bringing togeth
 
 1. Once the playbook is saved, enter the following command to run it and create a Linode Nanode instance:
 
-        ansible-playbook ~/development/linode_create.yml
+        ansible-playbook --ask-vault-pass ~/development/deploylinode.yml
 
-  You will see a similar output:
+  Once prompted, enter the password used to encrypt your secure variables. Once completed, you will see a similar output:
 
   {{< output >}}
 PLAY [Create Linode] *********************************************************************

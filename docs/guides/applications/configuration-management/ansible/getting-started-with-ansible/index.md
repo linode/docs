@@ -131,7 +131,7 @@ This guide was created using Ansible 2.8.
   The EPEL-Release repository may need to be added on certain versions of CentOS, RHEL, and Scientific Linux.
     {{</ note >}}
 
-    #### Ubuntu 18.04
+    #### Ubuntu 22.04
 
         sudo apt update
         sudo apt install software-properties-common
