@@ -30,7 +30,7 @@ If you wish to connect to a Linode MySQL Managed Database, review the [Connect t
 
         mysql --version
 
-    This should inform you which version you are using. If the command is not found or you are not on a compatible version, see the [Installing MySQL](docs/guides/install-mysql/) guide.
+    This should inform you which version you are using. If the command is not found or you are not on a compatible version, see the [Installing MySQL](/docs/guides/install-mysql/) guide.
 
 {{< note >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
