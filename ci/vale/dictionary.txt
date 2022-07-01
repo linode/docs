@@ -95,6 +95,7 @@ autoconfiguration
 autoconfigure
 autodiscover
 autohosting
+autoindex
 autojoin
 autojump
 autologin
@@ -1232,6 +1233,7 @@ mkv
 mnesia
 mngtmpaddr
 moby
+mod_autoindex
 moddable
 modinfo
 modsecurity
