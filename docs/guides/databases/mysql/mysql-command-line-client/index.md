@@ -6,11 +6,12 @@ description: "This guide shows you how to install and use the MySQL command-Line
 keywords: ['mysql connect','remote database','mysql database']
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-30
-modified: 2022-06-30
+published: 2022-07-01
+modified: 2022-07-01
 modified_by:
   name: Linode
-title: "Using the MySQL Command-Line Client (mysql)"
+title: "Connect to a MySQL Database Using the mysql Command"
+aliases: ['/guides/connect-to-a-mysql-or-mariadb-database/']
 external_resources:
 - '[MySQL Command-Line Client documentation](https://dev.mysql.com/doc/refman/8.0/en/mysql.html)'
 ---
@@ -34,44 +35,6 @@ If you wish to connect to a Linode MySQL Managed Database, review the [Connect t
 {{< note >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
-
-## Install the MySQL Command-Line Client
-
-The mysql client utility must be installed on the system from which you wish to connect. This utility is installed by default when MySQL Server is installed, though you can install it separately on other systems without needing to install the entire MySQL Server software.
-
-1. Check to see if mysql is installed and make sure the version you are running is compatible with the MySQL version you are running on your database server.
-
-        mysql --version
-
-    The above command should inform you which version you are using. If this command runs successfully and you are on a compatible version, you can skip this section. Otherwise, continue with the following steps to install the software.
-
-1. 
-
-If mysql is not installed on your system, follow the instructions below to install one through your distribution's repositories. More complete instructions can be found on the [Installing and Upgrading MySQL](https://dev.mysql.com/doc/refman/8.0/en/installing.html) guide in the official documentation.
-
--   **CentOS Stream 9 (and 8), CentOS/RHEL 8 (including AlmaLinux 8 and RockyLinux 8):**
-
-        sudo dnf install mysql
-
--   **CentOS/RHEL 7:**
-
-        sudo yum install mysql
-
--   **Debian:**
-
-    *Debian does not include MySQL within its own repositories. Instead, it uses MariaDB. While this is largely compatible with MySQL, some commands and functionality may vary.*
-
-        sudo apt update
-        sudo apt install mariadb-client
-
--   **Fedora:**
-
-        sudo dnf install community-mysql
-
--   **Ubuntu:**
-
-        sudo apt update
-        sudo apt install mysql-client
 
 ## General mysql Syntax
 

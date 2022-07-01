@@ -6,8 +6,8 @@ author:
 description: "Learn how to securely store MySQL crentials and connection details using the mysql_config_editor utility."
 keywords: ["mysql", "mariadb", "mysql_config_editor", "secure", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-30
-modified: 2022-06-30
+published: 2022-07-01
+modified: 2022-07-01
 modified_by:
   name: Linode
 title: "Securely Storing MySQL Credentials using mysql_config_editor"

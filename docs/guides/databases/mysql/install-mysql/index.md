@@ -6,8 +6,8 @@ description: "Learn how to install MySQL on Linux (through your distribution's n
 keywords: ['mysql','repository','database']
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-30
-modified: 2022-06-30
+published: 2022-07-01
+modified: 2022-07-01
 modified_by:
   name: Linode
 title: "Installing MySQL: A Definitive Guide"
@@ -31,6 +31,11 @@ For additional instructions on installing MySQL on any supported operating syste
 {{</ note >}}
 
 ## Before You Begin
+
+-   **Consider other deployment options, such as fully managed solutions or automated installations.**
+
+    - [Linode MySQL Managed Databases](https://www.linode.com/products/mysql/): Fully managed database clusters, complete with automatic updates and backups, hosted on Linode's reliable platform.
+    - [MySQL/MariaDB Marketplace App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/): Deploy a new Compute Instance with either MySQL or MariaDB preinstalled.
 
 -   **Check to see if MySQL is already installed on your system.** To determine if MySQL is already installed, run the following command:
 
@@ -135,7 +140,7 @@ Using MySQL's own repositories provides the latest MySQL versions faster than mo
 
 1.  Within the configuration tool, you can select from the options below to adjust how the repository is configured in your system:
 
-    - **MySQL Server & Cluster:** Select **mysql** to add MySQL Server packages, **mysql-cluster** to add the [MySQL NDB Cluster](https://dev.mysql.com/doc/refman/8.0/en/mysql-cluster.html), or **None** to forgo adding either option (useful if you only wish to install mysql client utilities).
+    - **MySQL Server & Cluster:** Select **mysql** to add MySQL Server packages, **mysql-cluster** to add the [MySQL NDB Cluster](https://dev.mysql.com/doc/refman/8.0/en/mysql-cluster.html), or **None** to forgo adding either option.
 
     - **MySQL Tools & Connectors:** When enabled, this option adds all of the additional tools and utilities included with the MySQL software.
 
@@ -159,7 +164,7 @@ Using MySQL's own repositories provides the latest MySQL versions faster than mo
 
 ### CentOS/RHEL and Fedora (YUM Repository)
 
-1.  Download the release package for your distribution. Currently, all compatible distributions are combined into a single release package.
+1.  Download the release package for your distribution.
 
         curl -OL [file-url]
 
@@ -168,7 +173,7 @@ Using MySQL's own repositories provides the latest MySQL versions faster than mo
     - **Fedora 35:** `https://dev.mysql.com/get/mysql80-community-release-fc35-3.noarch.rpm`
     - **Fedora 34:** `https://dev.mysql.com/get/mysql80-community-release-fc34-4.noarch.rpm`
 
-    If you'd like to download the latest file or to select a different distribution, visit the [MySQL YUM Repository Downloads](https://dev.mysql.com/downloads/repo/yum/) page. To obtain the URL for the file, click the **Downloads** button next to the package you wish to download, right click on the **No thanks, just start my download** link, and select **Copy Link Address** (or similar).
+    If you'd like to download the latest file or to select a different distribution, visit the [MySQL YUM Repository Downloads](https://dev.mysql.com/downloads/repo/yum/) page. To obtain the URL for the desired file, click the **Downloads** button next to the package you wish to download, right click on the **No thanks, just start my download** link, and select **Copy Link Address** (or similar).
 
 1.  Install the downloaded release package, replacing *[filename]* with the file you just downloaded.
 
@@ -190,6 +195,10 @@ Using MySQL's own repositories provides the latest MySQL versions faster than mo
 
             sudo yum-config-manager --disable mysql80-community
             sudo yum-config-manager --enable mysql57-community
+
+1.  Within CentOS/RHEL 8 distributions, disable the default MySQL module.
+
+        sudo dnf module disable mysql
 
 1.  Install MySQL Server or just the MySQL client tools:
 

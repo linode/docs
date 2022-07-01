@@ -8,7 +8,7 @@ keywords: ["mysql", "mariadb", "backup", "back up", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/backup-options/','/security/backups/back-up-your-mysql-databases/','/databases/mysql/back-up-your-mysql-databases/','/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb/','/guides/use-mysqldump-to-back-up-mysql-or-mariadb/']
 published: 2018-01-30
-modified: 2022-06-30
+modified: 2022-07-01
 modified_by:
   name: Linode
 title: "Backing Up MySQL Databases Using mysqldump"
