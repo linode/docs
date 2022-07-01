@@ -60,7 +60,7 @@ jobs:
       env:
         added_modified: ${{ steps.get_changed_files.outputs.added_modified }}
     - name: Vale
-    - uses: errata-ai/vale-action@reviewdog
+      uses: errata-ai/vale-action@reviewdog
       # Only run the Vale step if the list of added and modified
       # files inside the docs directory is not empty. If we don't
       # add this conditional, the Vale step hangs and never
