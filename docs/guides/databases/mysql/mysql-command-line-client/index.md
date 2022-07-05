@@ -24,7 +24,7 @@ If you wish to connect to a Linode MySQL Managed Database, review the [Connect t
 
 ## Before You Begin
 
-- **Obtain the connection details for the MySQL instance you wish to use.** If you do not have a MySQL instance yet, you can create a Managed Database, deploy the MySQL Marketplace App, or install MySQL server (or MariaDB) on a Compute Instance. **This instance must allow remote connections or you must run the mysql command from within same system.**
+- **Obtain the connection details for the MySQL instance you wish to use.** If you do not have a MySQL instance yet, you can [create a Managed Database](https://www.linode.com/products/mysql/), [deploy the MySQL Marketplace App](https://www.linode.com/marketplace/apps/linode/mysql-mariadb/), or [install MySQL server (or MariaDB) on a Compute Instance](/docs/guides/install-mysql/). **This instance must allow remote connections or you must run the mysql command from within same system.**
 
 -   **Ensure mysql is installed and is compatible with the MySQL version on your database server.** Run the following command on the system you intend on using to verify that mysql is installed.
 

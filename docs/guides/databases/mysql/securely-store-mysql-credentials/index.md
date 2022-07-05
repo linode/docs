@@ -27,7 +27,7 @@ Run the `set` command to store your credentials and database connection details.
     mysql_config_editor set --login-path=[name] --user=[username] --host=[host] --password --warn
 
 {{< note >}}
-You can also use special login path names, which are used by default in certain commands without needing to specify it. These special login paths include `client` and `mysql` for the mysql command and `mysqdump` for the mysqldump command.
+You can also use special login path names, which are used by default in certain commands without needing to specify it. These special login paths include `client` and `mysql` for the mysql command and `mysqldump` for the mysqldump command.
 {{</ note >}}
 
 ## View Stored Credentials
@@ -47,7 +47,7 @@ host = "db-server.example.com"
 
 ## Remove Stored Credentials
 
-If you no want your system user to be able to access the database, it's recommended that you delete any stored credentials. In addition to being able to remove the entire login path, you can also remove an individual option if needed.
+If you don't want your system user to be able to access the database, it's recommended that you delete any stored credentials. In addition to being able to remove the entire login path, you can also remove an individual option if needed.
 
 To remove the entire login path, run the following command. Replace *[name]* with the name of your login path.
 

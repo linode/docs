@@ -31,7 +31,7 @@ Export the data from the source database into a `.sql` file. While this file is 
 
     **Notes on additional command options:**
 
-    - `-h`: If you prefer to run this command remotely and have access to MySQL from a remote system, add `-h [hostname]`, where *[hostname]* is the IP address or hostname of the remote database server..
+    - `-h`: If you prefer to run this command remotely and have access to MySQL from a remote system, add `-h [hostname]`, where *[hostname]* is the IP address or hostname of the remote database server.
 
     - `--ssl-mode=REQUIRED`: Force SSL when your existing database has SSL enabled.
 
