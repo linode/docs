@@ -170,10 +170,10 @@ Press **control+C** on your keyboard to terminate a port-forward process after e
             8081:80
 
 
-When accessing the Grafana interface, log in as `admin`. You can get the `password` using:
+        When accessing the Grafana interface, log in as `admin`. You can get the `password` using:
 
-           kubectl get secret --namespace monitoring lke-monitor-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+            kubectl get secret --namespace monitoring lke-monitor-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 
-The Grafana dashboards are accessible at **Dashboards > Manage** from the left navigation bar.
+        The Grafana dashboards are accessible at **Dashboards > Manage** from the left navigation bar.
 
 TOBS eliminates the need to maintain configuration details for each of the applications, while providing standardized monitoring for the applications running on your cluster.
