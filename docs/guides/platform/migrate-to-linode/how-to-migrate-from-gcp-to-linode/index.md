@@ -86,7 +86,7 @@ Locate and backup the data on your GCP instance by [creating a snapshot](https:/
 
 If your data is stored in a database, you will likely need to perform a *database dump*. This will result in a file on disk that encapsulates your database data and can be copied over the network as a normal file:
 
--  [Use mysqldump to Back Up MySQL or MariaDB](/docs/guides/use-mysqldump-to-back-up-mysql-or-mariadb/)
+-  [Use mysqldump to Back Up MySQL or MariaDB](/docs/guides/mysqldump-backups/)
 -  [Create Physical Backups of your MariaDB or MySQL Databases](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/)
 -  Use [postgres dump database](/docs/guides/how-to-back-up-your-postgresql-database/)
 

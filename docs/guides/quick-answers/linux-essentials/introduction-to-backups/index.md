@@ -63,7 +63,7 @@ If you are more comfortable working on the command line, this kind of backup can
 
 Many applications, including common CMS platforms like WordPress, store their data in a database. It is crucial to make sure that this data can be restored in the event of a system compromise. Fortunately, most database systems include tools to make backing up simple and painless.
 
-If you are using MySQL or MariaDB, read more about  `mysqldump` in our [mysqldump](/docs/guides/use-mysqldump-to-back-up-mysql-or-mariadb/) guide, or try making [physical backups](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
+If you are using MySQL or MariaDB, read more about  `mysqldump` in our [mysqldump](/docs/guides/mysqldump-backups/) guide, or try making [physical backups](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
 
 If your application uses PostgreSQL, read our guide on [How to Back Up Your PostgreSQL Database](/docs/guides/how-to-back-up-your-postgresql-database/).
 
