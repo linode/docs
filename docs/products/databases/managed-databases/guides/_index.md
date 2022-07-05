@@ -16,7 +16,7 @@ modified: 2022-06-06
 
 - [Automatic Updates and Maintenance Windows](/docs/products/databases/managed-databases/guides/updates-and-maintenance/)
 
-- [Restore from a Backup](/docs/products/databases/managed-databases/guides/restore-backup/)
+- [Restore from a Backup](/docs/products/databases/managed-databases/guides/manage-backups/)
 
 - [Reset the Root Password](/docs/products/databases/managed-databases/guides/reset-root-password/)
 

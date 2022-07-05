@@ -31,16 +31,16 @@ Dedicated CPU Compute Instances are suitable for almost any workload that requir
 - Production websites and e-commerce sites
 - Applications that required 100% sustained CPU usage.
 - Applications that might be impacted by resource contention.
-- [CI/CD](/docs/development/ci/introduction-ci-cd/) toolchains and build servers
+- [CI/CD](/docs/guides/introduction-ci-cd/) toolchains and build servers
 - [Game servers](/docs/game-servers/) (like Minecraft or Team Fortress)
 - [Audio and video transcoding](/docs/applications/media-servers/)
 - [Big data](/docs/applications/big-data/) (and data analysis)
 - Scientific computing
-- [Machine learning](/docs/applications/big-data/how-to-move-machine-learning-model-to-production/) and AI
+- [Machine learning](/docs/guides/how-to-move-machine-learning-model-to-production/) and AI
 - High Traffic Databases (Galera, PostgreSQL with Replication Manager, MongoDB using Replication Sets)
 - Replicated or Distributed Filesystems (GlusterFS, DRBD)
 
-For more details and use cases, see the [Use Cases for Dedicated CPU Instances](/docs/platform/dedicated-cpu/dedicated-cpu-use-cases/) guide.
+For more details and use cases, see the [Use Cases for Dedicated CPU Instances](/docs/guides/dedicated-cpu-use-cases/) guide.
 
 ## Availability
 

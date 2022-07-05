@@ -17,18 +17,18 @@ These additional guides explore targeted topics like creating a Linode NodeBalan
 
 - [Understanding NodeBalancers](/docs/platform/nodebalancer/what-are-nodebalancers): Linode offers load balancers as a service (LBaaS) called NodeBalancers. NodeBalancers are built for high availability and designed to be maintenance free after initial configuration.
 
-- [Get Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/): Get started with Linode NodeBalancers by using a NodeBalancer to begin managing a simple web application.
+- [Get Started with NodeBalancers](/docs/guides/getting-started-with-nodebalancers/): Get started with Linode NodeBalancers by using a NodeBalancer to begin managing a simple web application.
 
-- [NodeBalancer Reference](/docs/platform/nodebalancer/nodebalancer-reference-guide/): A NodeBalancer reference guide with helpful terms and settings.
+- [NodeBalancer Reference](/docs/guides/nodebalancer-reference-guide/): A NodeBalancer reference guide with helpful terms and settings.
 
 ### Developer Tools
 
 Use these tools to create a Linode NodeBalancer with tools outside of the Cloud Manager.
 
-- [Configure NodeBalancers with the Linode API](/docs/platform/api/nodebalancers/)
+- [Configure NodeBalancers with the Linode API](/docs/guides/nodebalancers/)
 
-- [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/kubernetes/deploy-nodebalancers-with-linode-ccm/)
+- [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/guides/getting-started-with-load-balancing-on-a-lke-cluster/)
 
-- [Create a NodeBalancer with Terraform](/docs/applications/configuration-management/terraform/create-a-nodebalancer-with-terraform/)
+- [Create a NodeBalancer with Terraform](/docs/guides/create-a-nodebalancer-with-terraform/)
 
 - [Create and Configure a NodeBalancer with Pulumi](/docs/applications/configuration-management/deploy-in-code-with-pulumi/#create-and-configure-a-nodebalancer)

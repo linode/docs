@@ -59,7 +59,7 @@ The next step is to back up your site from your old server to your local compute
 
 You may want to explore whether the application you use for your website has its own backup instructions, such as the combination of [WordPress](https://codex.wordpress.org/WordPress_Backups) and [phpMyAdmin](http://docs.phpmyadmin.net/en/latest/faq.html?highlight=backup#how-can-i-backup-my-database-or-table), for example. Regardless of the backup method, every website is made up of files and databases so you can use the instructions in this section to back up every type of website.
 
-If you have a MySQL or MariaDB database on your old server, you will also need to back it up. Your old host probably has a control panel that will allow you to make an easy backup of your database. Contact that host for instructions if you are not sure how to do it. If your old host does not have a database backup solution, you can follow our instructions to [Back Up Your MySQL Databases](/docs/guides/use-mysqldump-to-back-up-mysql-or-mariadb/) using the command line.
+If you have a MySQL or MariaDB database on your old server, you will also need to back it up. Your old host probably has a control panel that will allow you to make an easy backup of your database. Contact that host for instructions if you are not sure how to do it. If your old host does not have a database backup solution, you can follow our instructions to [Back Up Your MySQL Databases](/docs/guides/mysqldump-backups/) using the command line.
 
 **Shared Host's Control Panel**
 
