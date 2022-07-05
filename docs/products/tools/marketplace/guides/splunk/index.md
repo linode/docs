@@ -47,7 +47,7 @@ Splunk is a powerful log analyzer that can be used to obtain insight into your i
 
 ### Access your Splunk App
 
-Open a browser and navigate to your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) and port `8000`, for example, `http://192.0.2.0:8000/`. You will be presented a login field where you can enter the credentials you previously specified in the *Splunk Username* and *Splunk Password* fields when you deployed the app.
+Open a browser and navigate to your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/) and port `8000`, for example, `http://192.0.2.0:8000/`. You will be presented a login field where you can enter the credentials you previously specified in the *Splunk Username* and *Splunk Password* fields when you deployed the app.
 
 Now that you’ve accessed your dashboard, checkout [the official Splunk documentation](https://docs.splunk.com/Documentation/Splunk) to learn how to further configure your instance.
 
