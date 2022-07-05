@@ -10,10 +10,10 @@ noindex: true
 ---
 
 <!--- Possessive test. Desired result: ignore -->
-This is a possessive form of a word from our vocab list: Ansible's.
+This is a possessive form of a word from our vocab list: independant, independant's.
 
 <!--- General spelling error. Desired result: error -->
-This is word is not in the list of vocab terms: eror, noticable, accidentaly, independant, maintainance, preceed, occassionally.
+These words are not in the list of vocab terms: eror, noticable, accidentaly, independant, maintainance, preceed, occassionally.
 
 <!--- Inline code spelling error. Desired result: ignore -->
 This is a spelling error in an inline code block: `eror`.
