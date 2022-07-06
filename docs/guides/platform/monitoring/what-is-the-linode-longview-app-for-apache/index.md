@@ -81,7 +81,7 @@ update-rc.d: using dependency based boot sequencing
 
     If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#troubleshooting) section at the end of this article.
 
-[![Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](1451-longview_apache_popup_crop.png)](1451-longview_apache_popup_crop.png)
+![Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](1451-longview_apache_popup_crop.png)
 
 ### Manual Configuration (All Distributions)
 
@@ -154,7 +154,7 @@ To see the output for the Longview Apache App:
 
     You'll see the current version of Apache listed on the upper left hand side of the page.
 
-    Mouse over a data point to see the exact numbers for that time. With [Longview Pro](/docs/platform/longview/pricing/), you can view older time periods for your data. The next sections cover the Longview Apache App in detail.
+    Mouse over a data point to see the exact numbers for that time. With [Longview Pro](/docs/guides/linode-longview-pricing-and-plans/), you can view older time periods for your data. The next sections cover the Longview Apache App in detail.
 
 ### Requests
 
@@ -205,7 +205,7 @@ By default Longview uses port 80 for its automatic configuration. In the event y
 
 If you run the [automatic Longview configuration tool](#debian-and-ubuntu-automatic-configuration), and get the popup message shown below:
 
-[![Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](1451-longview_apache_popup_crop.png)](1451-longview_apache_popup_crop.png)
+![Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](1451-longview_apache_popup_crop.png)
 
 This indicates that Longview can't locate the Apache status page. In turn, this could indicate that either:
 

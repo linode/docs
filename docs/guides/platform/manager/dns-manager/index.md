@@ -190,4 +190,4 @@ The Linode DNS Manager does not support DNSSEC at this time. If you have DNSSEC 
 
 ## Next Steps
 
-Now that you are familiar with Linode's DNS Manager, you should set up your [reverse DNS configuration](/docs/networking/dns/configure-your-linode-for-reverse-dns/), and consider reading through at our [Common DNS Configurations](/docs/networking/dns/common-dns-configurations/) guide. For help with DNS records, see our [Troubleshooting DNS](/docs/platform/manager/troubleshooting-dns) guide.
+Now that you are familiar with Linode's DNS Manager, you should set up your [reverse DNS configuration](/docs/guides/configure-your-linode-for-reverse-dns/), and consider reading through at our [Common DNS Configurations](/docs/guides/common-dns-configurations/) guide. For help with DNS records, see our [Troubleshooting DNS](/docs/platform/manager/troubleshooting-dns) guide.

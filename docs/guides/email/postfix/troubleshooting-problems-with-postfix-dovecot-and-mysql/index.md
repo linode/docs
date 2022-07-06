@@ -17,7 +17,7 @@ title: 'Troubleshooting Problems with Postfix, Dovecot, and MySQL'
 
 ![Troubleshooting Problems with Postfix, Dovecot, and MySQL](troubleshooting-problems-with-postfix-dovecot-and-mysql.jpg "Troubleshooting Problems with Postfix, Dovecot, and MySQL")
 
-This guide is a companion to the [Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) installation guide. Because setting up a mail server is tricky, we've created this companion troubleshooting guide to help you work through and resolve any problems you might be experiencing. By the time you reach the end of this guide, you'll know how to debug problems with your Postfix, Dovecot, and MySQL mail server.
+This guide is a companion to the [Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) installation guide. Because setting up a mail server is tricky, we've created this companion troubleshooting guide to help you work through and resolve any problems you might be experiencing. By the time you reach the end of this guide, you'll know how to debug problems with your Postfix, Dovecot, and MySQL mail server.
 
 The first section, Troubleshooting Checklist, has a top-down approach to troubleshooting that will help you find specific errors for your mail server. The second section, Step-by-Step Configuration, uses a bottom-up approach that shows you how to get a basic mail server functioning and then gradually add more features.
 
@@ -194,7 +194,7 @@ The Postfix log will now display more information about messages that are coming
 
 ### Check Port Availability
 
-Sometimes email problems occur because the mail server and mail client aren't talking to each other on the same ports. For mail to get from client to server, or vice versa, both have to be using the same ports, and those ports also have to be open along the internet route between the two. If you are following the accompanying [Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) installation guide, you should be using the following ports:
+Sometimes email problems occur because the mail server and mail client aren't talking to each other on the same ports. For mail to get from client to server, or vice versa, both have to be using the same ports, and those ports also have to be open along the internet route between the two. If you are following the accompanying [Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) installation guide, you should be using the following ports:
 
 -   25, 465, or 587 with TLS encryption for outgoing mail (SMTP)
 -   993 with SSL encryption for incoming IMAP
@@ -263,9 +263,9 @@ If the test is successful, you should see output similar to the following:
 
 To cancel the connection, press **CTRL-]**, then enter `quit`. If the test fails, you will see a `Connection refused` message and Telnet will quit on its own.
 
-If you run the test on your Linode and it fails, you should check that you've configured the ports properly in your mail server setup (see Steps 33-34 in the [Dovecot section](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/#dovecot) of the setup guide), that you've enabled ports 465 and 587 (see Steps 26-30 in the [Postfix section](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/#postfix) of the setup guide), and that you don't have any [Firewall rules](/docs/security/firewalls/control-network-traffic-with-iptables/) in place that block them.
+If you run the test on your Linode and it fails, you should check that you've configured the ports properly in your mail server setup (see Steps 33-34 in the [Dovecot section](/docs/guides/email-with-postfix-dovecot-and-mysql/#dovecot) of the setup guide), that you've enabled ports 465 and 587 (see Steps 26-30 in the [Postfix section](/docs/guides/email-with-postfix-dovecot-and-mysql/#postfix) of the setup guide), and that you don't have any [Firewall rules](/docs/guides/control-network-traffic-with-iptables/) in place that block them.
 
-If you run the test on your Linode and it succeeds, but the test from your home computer fails, that indicates that the ports are being blocked somewhere on the network between your home computer and your Linode. It could be at your router, your ISP (Internet Service Provider), someone else's ISP, etc. The best way to diagnose networking issues is to generate an [MTR report](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/).
+If you run the test on your Linode and it succeeds, but the test from your home computer fails, that indicates that the ports are being blocked somewhere on the network between your home computer and your Linode. It could be at your router, your ISP (Internet Service Provider), someone else's ISP, etc. The best way to diagnose networking issues is to generate an [MTR report](/docs/guides/diagnosing-network-issues-with-mtr/).
 
 If the Telnet tests on your Linode and your home computer both succeed, and your mail client settings are correct, you can probably rule out any problems with ports.
 
@@ -279,7 +279,7 @@ Next we'll focus on your login credentials. If they aren't configured properly, 
 
 The first and easiest step is re-entering your username and password in your mail client. Make sure you use the full username, including the `@example.com` part. Usernames and passwords are case-sensitive. If you're sure that you've entered the information correctly in your mail client, authorization may not be configured properly on the server side.
 
-The next thing to check is that your username and password are entered properly in the correct MySQL table. You can run the [MySQL tests](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/#testing) from the main setup article to make sure your tables are set up appropriately. You can also delete and re-add the appropriate row from the **mailserver.virtual\_users** table to make sure the password was entered correctly. If the information is correct in the MySQL table, it may be that Dovecot is not configured to look up authorization credentials in the right location.
+The next thing to check is that your username and password are entered properly in the correct MySQL table. You can run the [MySQL tests](/docs/guides/email-with-postfix-dovecot-and-mysql/#testing) from the main setup article to make sure your tables are set up appropriately. You can also delete and re-add the appropriate row from the **mailserver.virtual\_users** table to make sure the password was entered correctly. If the information is correct in the MySQL table, it may be that Dovecot is not configured to look up authorization credentials in the right location.
 
 Dovecot includes an administrative tool which is very helpful in troubleshooting issues with login credentials. The `doveadm user` command lets you see the user database result for the username, user ID, group ID, and mailbox location for each email user. Reading the output from this tool tells you the database where Dovecot is looking for authorized users. If Dovecot is not looking for the expected database, you'll need to change the authorization-related settings in Dovecot so that it is using MySQL to look up users, and not some other user database.
 
@@ -312,7 +312,7 @@ Dovecot includes an administrative tool which is very helpful in troubleshooting
           gid       : 1000
           home      : /home/myuser
 
-3.  If you do get this type of output, you need to adjust your Dovecot settings related to virtual users. If you don't get output for the system users either, this still indicates that you have some kind of error in the Dovecot settings related to users. Go back to the [Dovecot section](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/#dovecot) of the main setup guide and pay special attention to the sections having to do with virtual users and the MySQL settings.
+3.  If you do get this type of output, you need to adjust your Dovecot settings related to virtual users. If you don't get output for the system users either, this still indicates that you have some kind of error in the Dovecot settings related to users. Go back to the [Dovecot section](/docs/guides/email-with-postfix-dovecot-and-mysql/#dovecot) of the main setup guide and pay special attention to the sections having to do with virtual users and the MySQL settings.
 
 ## Step-by-Step Configuration
 
@@ -320,7 +320,7 @@ For some troubleshooting scenarios, you may find that a top-down approach doesn'
 
 The bottom-up approach presented here breaks up the complex task of building a mail server into smaller chunks. This has two benefits. First, each section focuses on just a few mail server functions and includes fewer details, which makes it easier to understand. By the end of the project, you should have a deep understanding of how the mail server works. Second, each chunk adds a discrete amount of testable functionality to the mail server. This makes it easier to find errors by limiting the scope of their possible locations. For example, if your mail server was working after you completed "Basic Dovecot," but is failing its tests after "Virtual Domains and Users," you know that the error is related to something you did in that section.
 
-The second part of this guide presents a step-by-step mail server build organized by function, progressing from core functions to more peripheral ones, with tests at each step. You should have the [main setup guide](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) open at the same time, because we will be referring back to it. As you read the main setup guide, you'll notice that we are installing items in a different order here. The main guide is designed for a streamlined approach that avoids editing the same file multiple times. This guide is focused on a deeper understanding of each component, so you will sometimes need to jump around to different sections of the main guide for reference. Once you successfully complete a stage, I suggest that you make a [system-level backup](/docs/platform/disk-images/linode-backup-service/) so you can get back to that point easily!
+The second part of this guide presents a step-by-step mail server build organized by function, progressing from core functions to more peripheral ones, with tests at each step. You should have the [main setup guide](/docs/guides/email-with-postfix-dovecot-and-mysql/) open at the same time, because we will be referring back to it. As you read the main setup guide, you'll notice that we are installing items in a different order here. The main guide is designed for a streamlined approach that avoids editing the same file multiple times. This guide is focused on a deeper understanding of each component, so you will sometimes need to jump around to different sections of the main guide for reference. Once you successfully complete a stage, I suggest that you make a [system-level backup](/docs/products/storage/backups/) so you can get back to that point easily!
 
 {{< caution >}}
 Keep in mind that the earlier builds presented here are functional, but should not be considered production-ready for security and functionality reasons, mainly because passwords are sent in plain text, and/or outgoing SMTP is not enabled.
@@ -344,7 +344,7 @@ In this section, you'll install Postfix and configure it to deliver mail for you
 
         apt-get install postfix
 
-2.  When prompted, select **Internet Site** for the configuration. (See Steps 6 & 7 from the [Installing Packages](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/#installing-packages) section of the primary guide, for this step and the next.)
+2.  When prompted, select **Internet Site** for the configuration. (See Steps 6 & 7 from the [Installing Packages](/docs/guides/email-with-postfix-dovecot-and-mysql/#installing-packages) section of the primary guide, for this step and the next.)
 3.  Enter your fully-qualified domain name or any domain name that resolves to the server.
 4.  Open `/etc/postfix/main.cf` for editing, and add your domain(s) to the `mydestination` line. If your hostname and hosts files were set up correctly before installing Postfix, this list should already include your full-qualified domain name and several references to localhost, which you can leave as they are.
 
@@ -871,7 +871,7 @@ virtual_alias_maps = mysql:/etc/postfix/mysql-virtual-alias-maps.cf
 {{< /file >}}
 
 
-4.  Follow Steps 11-25 in the [Postfix section](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/#mysql) of the main setup guide to create the `/etc/postfix/mysql-virtual-mailbox-domains.cf`, `/etc/postfix/mysql-virtual-mailbox-maps.cf`, and `/etc/postfix/mysql-virtual-alias-maps.cf` files. You will also test that Postfix can find all of this information, using the `postmap` commands.
+4.  Follow Steps 11-25 in the [Postfix section](/docs/guides/email-with-postfix-dovecot-and-mysql/#mysql) of the main setup guide to create the `/etc/postfix/mysql-virtual-mailbox-domains.cf`, `/etc/postfix/mysql-virtual-mailbox-maps.cf`, and `/etc/postfix/mysql-virtual-alias-maps.cf` files. You will also test that Postfix can find all of this information, using the `postmap` commands.
 5.  Now for Dovecot. Create the file `/etc/dovecot/conf.d/auth-sql.conf.ext`. You will make a new `passdb` section that directs Dovecot to use MySQL for authentication. The `userdb` section will be identical to the one we had before, since the mailboxes aren't moving.
 
     {{< file "/etc/dovecot/conf.d/auth-sql.conf.ext" >}}

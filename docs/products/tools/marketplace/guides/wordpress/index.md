@@ -7,7 +7,7 @@ keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress wit
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
-modified: 2022-03-29
+modified: 2022-05-20
 modified_by:
   name: Linode
 title: "Deploying WordPress through the Linode Marketplace"
@@ -32,7 +32,7 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 
 ## Configuration Options
 
-- **Supported distributions:**  Debian 10
+- **Supported distributions:**  Debian 11, Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used, though a minimum of a 4GB Dedicated CPU Compute Instance is recommended for production websites.
 
 ### WordPress Options
@@ -47,8 +47,6 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
-- **Would you like to be able to send password reset emails for WordPress?** Creates the required DNS records and configures the server so you can send emails from WordPress, such as for resetting a password.
-- **Would you like to use a free Let's Encrypt SSL certificate?** If you would like to use the free Let's Encrypt CA to generate TLS/SSL certificates, select *Yes*.
 
 ## Getting Started After Deployment
 
@@ -57,6 +55,10 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 1.  Open your web browser and navigate to `http://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
     ![Screenshot of the browser's URL bar](wordpress-browser-url.png)
+
+    {{<note>}}
+A TLS/SSL certificate is automatically generated for your custom domain, enabling you to connect to the site over the `https` protocol. If you did not enter a custom domain, a TLS/SSL certificate is configured on the rDNS domain instead. Connections using your IP address are not secured and will use the `http` protocol.
+{{</note>}}
 
 1.  Within the login page that appears, enter the username (*admin username*) and password (*admin password*) that you created when you deployed this instance. Then click the **Log In** button.
 
@@ -95,7 +97,7 @@ If you didn't set up a domain during the deployment process, you can add it manu
 Now that your WordPress installation is deployed, you can start adding content and modifying it to suit your needs. Here are a few links to help get you started:
 
 - [WordPress Support](https://wordpress.org/support/): Learn the basic workflows for using WordPress.
-- [Securing WordPress](https://www.linode.com/docs/guides/how-to-secure-wordpress/): Advice on securing WordPress through HTTPS, using a secure password, changing the admin username, and more.
+- [Securing WordPress](/docs/guides/how-to-secure-wordpress/): Advice on securing WordPress through HTTPS, using a secure password, changing the admin username, and more.
 - [WordPress Themes](https://wordpress.org/themes/#): A collection of *thousands* of WordPress themes.
 
 {{< content "marketplace-update-note-shortguide">}}

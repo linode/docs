@@ -5,21 +5,21 @@ import {
 	newRequestCallback,
 	newRequestCallbackFactories,
 	SearchGroupIdentifier,
-	RequestCallBackStatus
+	RequestCallBackStatus,
 } from './request';
 
-const debug = 0 ? console.log.bind(console, '[search-store]') : function() {};
-const debugFetch = 0 ? console.log.bind(console, '[search-fetch]') : function() {};
+const debug = 0 ? console.log.bind(console, '[search-store]') : function () {};
+const debugFetch = 0 ? console.log.bind(console, '[search-fetch]') : function () {};
 
 export const searchGroupIdentifiers = {
 	MAIN: 1,
-	AD_HOC: 2
+	AD_HOC: 2,
 };
 
 export function newSearchStore(searchConfig, Alpine) {
 	let results = {
 		blank: { loaded: false },
-		main: { loaded: false }
+		main: { loaded: false },
 	};
 	const searcher = new Searcher(searchConfig, results.blank, debug);
 	let searchEffectMain = null;
@@ -74,7 +74,7 @@ export function newSearchStore(searchConfig, Alpine) {
 		},
 
 		init() {
-			this.results.blank.getSectionMeta = function(key) {
+			this.results.blank.getSectionMeta = function (key) {
 				if (!this.metaStatic) {
 					return null;
 				}
@@ -113,7 +113,7 @@ export function newSearchStore(searchConfig, Alpine) {
 			// Is the main search, i.e. what you see when you're typing into the search form.
 			// This will start executing once searchEffectMain activates (see searchToggle).
 			this.searchGroupMain.push({
-				status: function() {
+				status: function () {
 					// Will be active as long as searchEffectMain is active, but
 					// the cache will prevent new remote Algolia requests as long
 					// as the query does not change.
@@ -128,7 +128,7 @@ export function newSearchStore(searchConfig, Alpine) {
 						},
 						true
 					);
-				}
+				},
 			});
 
 			searchEffectAdHoc = Alpine.effect(() => {
@@ -136,7 +136,7 @@ export function newSearchStore(searchConfig, Alpine) {
 				searcher.searchFactories(this.searchGroupAdHoc, null);
 			});
 		},
-		searchToggle: function(active) {
+		searchToggle: function (active) {
 			if (searchEffectMain === null) {
 				// Start watching.
 				searchEffectMain = Alpine.effect(() => {
@@ -145,11 +145,11 @@ export function newSearchStore(searchConfig, Alpine) {
 			}
 			searchEffectMain.active = active;
 		},
-		isSearching: function() {
+		isSearching: function () {
 			return searchEffectMain && searchEffectMain.active;
 		},
 
-		withBlank: async function(callback = () => {}) {
+		withBlank: async function (callback = () => {}) {
 			debug('withBlank');
 
 			if (this.results.blank.loaded) {
@@ -170,7 +170,7 @@ export function newSearchStore(searchConfig, Alpine) {
 			const response = await fetch('/docs/data/sections/index.json');
 			if (response.ok) {
 				const data = await response.json();
-				this.results.blank.metaStatic = data.reduce(function(m, item) {
+				this.results.blank.metaStatic = data.reduce(function (m, item) {
 					item.href = router.hrefSection(item.objectID);
 					m.set(item.objectID, item);
 					return m;
@@ -182,18 +182,18 @@ export function newSearchStore(searchConfig, Alpine) {
 				// Load section meta data from Algolia.
 				newRequestCallback(
 					{
-						indexName: searchConfig.meta_index,
+						indexName: searchConfig.indexName(searchConfig.meta_index),
 						params: 'query=&hitsPerPage=600',
 						// We load the Hugo data from the published JSON to save Algolia queries on
 						// load (for the breadcrumbs).
 						// This filter is just to save some bytes for when the Algolia data IS loaded,
 						// as the guides is the most populated section tree.
 						filters:
-							'NOT section:guides AND NOT section:api AND NOT section:products AND NOT section:content AND NOT section:development'
+							'NOT section:guides AND NOT section:api AND NOT section:products AND NOT section:content AND NOT section:development',
 					},
 					(result) => {
 						debug('withBlank.blank.metaResult:', result);
-						this.results.blank.metaResult = result.hits.reduce(function(m, hit) {
+						this.results.blank.metaResult = result.hits.reduce(function (m, hit) {
 							// The blog sections have mixed-case objectIDs, but we need this lookup to be case insensitive.
 							m.set(hit.objectID.toLowerCase(), hit);
 							return m;
@@ -202,7 +202,7 @@ export function newSearchStore(searchConfig, Alpine) {
 					}
 				),
 				newRequestCallback(createSectionRequest(), (result) => {
-					if (result.index != 'linode-merged') {
+					if (!result.index.endsWith('linode-merged')) {
 						throw `invalid state: ${result.index}`;
 					}
 					debug('withBlank.blank.result:', result);
@@ -210,13 +210,13 @@ export function newSearchStore(searchConfig, Alpine) {
 					markLoaded();
 				})
 			);
-		}
+		},
 	};
 
-	const createSectionRequest = function(query) {
+	const createSectionRequest = function (query) {
 		debug('createSectionRequest:', query);
 		let sectionConfig = searchConfig.sections_merged;
-		let facets = sectionConfig.section_facet ? [ sectionConfig.section_facet ] : [ 'section.*' ];
+		let facets = sectionConfig.section_facet ? [sectionConfig.section_facet] : ['section.*'];
 		let filteringFacetNames = [];
 		if (sectionConfig.filtering_facets) {
 			filteringFacetNames = sectionConfig.filtering_facets.map((facet) => facet.name);
@@ -234,17 +234,17 @@ export function newSearchStore(searchConfig, Alpine) {
 			hitsPerPage = sectionConfig.hits_per_page || searchConfig.hits_per_page || 20;
 			q = encodeURIComponent(query.lndq);
 			facetFilters = query.toFacetFilters();
-			attributesToHighlight = [ 'title', 'excerpt', ...filteringFacetNames ];
+			attributesToHighlight = ['title', 'excerpt', ...filteringFacetNames];
 			page = query.p;
 		}
 
 		return {
-			indexName: sectionConfig.index,
+			indexName: searchConfig.indexName(sectionConfig.index),
 			filters: filters,
 			facetFilters: facetFilters,
 			facets: facets,
 			attributesToHighlight: attributesToHighlight,
-			params: `query=${q}&hitsPerPage=${hitsPerPage}&page=${page}`
+			params: `query=${q}&hitsPerPage=${hitsPerPage}&page=${page}`,
 		};
 	};
 
@@ -252,7 +252,7 @@ export function newSearchStore(searchConfig, Alpine) {
 }
 
 // Normalization of search results.
-const normalizeResult = function(self, result) {
+const normalizeResult = function (self, result) {
 	let hitsStart = 0;
 	let hitsEnd = 0;
 
@@ -266,17 +266,17 @@ const normalizeResult = function(self, result) {
 		totalNbHits: result.nbHits,
 		totalNbPages: result.nbPages,
 		hitsStart: hitsStart,
-		hitsEnd: hitsEnd
+		hitsEnd: hitsEnd,
 	};
 
 	let facets = result.facets;
 	if (facets) {
 		// Apply metadata to the section facets.
 		let facetsMeta = {};
-		Object.entries(facets).forEach(([ k, v ]) => {
+		Object.entries(facets).forEach(([k, v]) => {
 			if (k === 'docType' || k.startsWith('section.')) {
 				let obj = {};
-				Object.entries(v).forEach(([ kk, vv ]) => {
+				Object.entries(v).forEach(([kk, vv]) => {
 					let m = self.metaProvider.getSectionMeta(kk.toLocaleLowerCase());
 					obj[kk] = { count: vv, meta: m };
 				});
@@ -288,7 +288,7 @@ const normalizeResult = function(self, result) {
 		result.facetsMeta = facetsMeta;
 	}
 
-	result.sections = function() {
+	result.sections = function () {
 		let sections = [];
 
 		if (!this.facets) {
@@ -323,7 +323,7 @@ const normalizeResult = function(self, result) {
 					count: sectionFacets[k],
 					isGhostSection: isGhostSection,
 					sectionLvl0: sectionLvl0,
-					meta: meta
+					meta: meta,
 				});
 			}
 		}
@@ -365,7 +365,7 @@ const normalizeResult = function(self, result) {
 			hit.firstPublishedDateString = toDateString(new Date(hit.firstPublishedTime * 1000));
 		}
 
-		hit.excerptTruncated = function(maxLen = 300) {
+		hit.excerptTruncated = function (maxLen = 300) {
 			let excerpt = this.excerpt || this.description;
 			if (!excerpt) {
 				return '';
@@ -380,7 +380,7 @@ const normalizeResult = function(self, result) {
 			hit.thumbnailUrl = '/docs/media/images/Linode-Default-416x234.jpg';
 		}
 
-		hit.tagsValues = function() {
+		hit.tagsValues = function () {
 			if (!this.tags) {
 				return [];
 			}
@@ -395,7 +395,7 @@ class SearchBatcher {
 		const algoliaHost = `https://${searchConfig.app_id}-dsn.algolia.net`;
 		this.headers = {
 			'X-Algolia-Application-Id': searchConfig.app_id,
-			'X-Algolia-API-Key': searchConfig.api_key
+			'X-Algolia-API-Key': searchConfig.api_key,
 		};
 
 		this.urlQueries = `${algoliaHost}/1/indexes/*/queries`;
@@ -425,7 +425,7 @@ class SearchBatcher {
 	}
 
 	executeBatch(what = 'manual') {
-		let requestCallbacks = [ ...this.queue ];
+		let requestCallbacks = [...this.queue];
 
 		this.queue.length = 0;
 		this.timer = null;
@@ -487,7 +487,7 @@ class SearchBatcher {
 		// There may be still be duplicate requests.
 		let requests = [];
 		let requestCallbackMap = new Map();
-		let cacheMissesKeysCopy = [ ...cacheResult.cacheMissesKeys ];
+		let cacheMissesKeysCopy = [...cacheResult.cacheMissesKeys];
 
 		cacheResult.cacheMissesKeys.length = 0;
 
@@ -505,7 +505,7 @@ class SearchBatcher {
 		}
 
 		let queries = {
-			requests: requests
+			requests: requests,
 		};
 
 		debugFetch(`fetch.POST(${queries.requests.length})`, queries);
@@ -513,7 +513,7 @@ class SearchBatcher {
 		fetch(this.urlQueries, {
 			method: 'POST',
 			headers: this.headers,
-			body: JSON.stringify(queries)
+			body: JSON.stringify(queries),
 		})
 			.then((response) => response.json())
 			.then((data) => {
@@ -534,14 +534,14 @@ class SearchBatcher {
 					});
 				}
 			})
-			.catch(function(error) {
+			.catch(function (error) {
 				console.warn('Algolia query failed:', error);
 			});
 	}
 }
 
 class Searcher {
-	constructor(searchConfig, metaProvider, debug = function() {}) {
+	constructor(searchConfig, metaProvider, debug = function () {}) {
 		this.batcher = new SearchBatcher(searchConfig, metaProvider);
 	}
 
@@ -585,7 +585,7 @@ export function getSearchConfig(params) {
 	});
 
 	cfg.sectionsSorted.forEach((sectionCfg) => {
-		sectionCfg.nounPlural = function(count = 2) {
+		sectionCfg.nounPlural = function (count = 2) {
 			let noun = this.noun || this.title;
 
 			if (count === 0 || (count > 1 && !noun.endsWith('s'))) {
@@ -594,6 +594,13 @@ export function getSearchConfig(params) {
 			return noun;
 		};
 	});
+
+	cfg.indexName = function (index) {
+		if (!cfg.index_prefix) {
+			return index;
+		}
+		return `${cfg.index_prefix}${index}`;
+	};
 
 	return cfg;
 }

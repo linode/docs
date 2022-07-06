@@ -56,7 +56,7 @@ JWTs have three parts. In the resulting encoded JWT, each part is encoded using 
 
 To see this in action, you can use the [JWT.IO debugger](https://jwt.io/#debugger-io). This lets you define JWT contents and see the signed and encoded result.
 
-[![Encoding example on the JWT.IO debugger](jwtio-encoding-example_small.png)](jwtio-encoding-example.png)
+![Encoding example on the JWT.IO debugger](jwtio-encoding-example.png)
 
 ## Example JWT Authentication
 
@@ -71,7 +71,7 @@ The JWTs encoded in this example provide a lightweight and secure means of authe
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Install Node.js

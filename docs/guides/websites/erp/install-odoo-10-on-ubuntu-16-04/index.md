@@ -239,7 +239,7 @@ The most relevant line in this file is `StandardOutput=journal+console`. As conf
 
         sudo systemctl status odoo-server
 
-    [![Odoo service status running](odoo_servicerunning_small.png)](odoo_servicerunning.png)
+    ![Odoo service status running](odoo_servicerunning.png)
 
 3.  Check the database journal to make sure there are no errors:
 
@@ -255,7 +255,7 @@ The most relevant line in this file is `StandardOutput=journal+console`. As conf
 
     Your output should look similar to this:
 
-    [![Odoo service status inactive](odoo_servicestopped_small.png)](odoo_servicestopped.png)
+    ![Odoo service status inactive](odoo_servicestopped.png)
 
 ## Enable the Odoo Service
 
@@ -279,11 +279,11 @@ The most relevant line in this file is `StandardOutput=journal+console`. As conf
 
 2.  If everything is working properly, a screen similar to this should appear:
 
-    [![Odoo 10 database creation](odoo_10_db_creation.png)](odoo_10_db_creation.png)
+    ![Odoo 10 database creation](odoo_10_db_creation.png)
 
 3.  Congratulations, now you can create your first database and start using Odoo 10 applications!
 
-    [![Odoo 10 applications](odoo_10_applications_small.png)](odoo_10_applications.png)
+    ![Odoo 10 applications](odoo_10_applications.png)
 
 ## Updating Odoo
 
@@ -434,4 +434,4 @@ If all your tests pass, you can safely update your production installation.
 
 ## Next Steps
 
-If you plan to use Odoo 10 for your business, you may wish to configure SSL/TLS encryption to enable secure connections to your server. To do this, check out our guide on how to [install an SSL certificate with LetsEncrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates/).
+If you plan to use Odoo 10 for your business, you may wish to configure SSL/TLS encryption to enable secure connections to your server. To do this, check out our guide on how to [install an SSL certificate with LetsEncrypt](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/).

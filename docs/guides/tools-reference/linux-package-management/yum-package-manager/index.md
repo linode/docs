@@ -24,7 +24,7 @@ external_resources:
 - '[YUM Package Manager](http://yum.baseurl.org/)'
 ---
 
-*Yellowdog Updater, Modified*, more commonly known as **YUM**, is a package management tool for a variety of Linux distributions. It provides an easy-to-use interface on top of the low-level functions available in the RPM Package Manger (RPM). YUM is the default package manager for CentOS 7 as well as older versions of RHEL and Fedora. It has largely been replaced by it successor *Dandified YUM*, also called **DNF**, on most newer RPM-based distributions, including CentOS 8, RHEL 8, and Fedora 22 (and later). If you are interested in learning about the DNF package manager, see the [Using the DNF Package Manager](/docs/guides/how-to-use-dnf/) guide.
+*Yellowdog Updater, Modified*, more commonly known as **YUM**, is a package management tool for a variety of Linux distributions. It provides an easy-to-use interface on top of the low-level functions available in the RPM Package Manger (RPM). YUM is the default package manager for CentOS 7 as well as older versions of RHEL and Fedora. It has largely been replaced by it successor *Dandified YUM*, also called **DNF**, on most newer RPM-based distributions, including CentOS 8, RHEL 8, and Fedora 22 (and later). If you are interested in learning about the DNF package manager, see the [Using the DNF Package Manager](/docs/guides/dnf-package-manager/) guide.
 
 This guide aims to familiarize you with the YUM commands you are most likely to encounter. By the end, you should feel comfortable navigating YUM in all but its more advanced features. And for those, you can find some helpful resources at the end of this guide.
 

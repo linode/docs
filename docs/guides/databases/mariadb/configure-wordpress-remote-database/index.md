@@ -34,7 +34,7 @@ aliases: ['/databases/mariadb/configure-wordpress-remote-database/']
 ### Variables Used in This Guide
 
 * *Database server*: Linode on which the database is installed.
-* *Web server*: Linode on which [WordPress is downloaded](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/).
+* *Web server*: Linode on which [WordPress is downloaded](/docs/guides/install-wordpress-on-ubuntu-16-04/).
 * `example.com`: Your fully qualified domain name (FQDN) or IP address.
 * `wordpress`: Database name.
 * `wpuser`: The WordPress client database user.
@@ -108,7 +108,7 @@ Run these steps on the web server.
 
 When first installed and configured through the web interface and a local database, WordPress creates a file called `wp-config.php`. Configure the initial remote database settings.
 
-1.  Navigate to the directory to which [WordPress was extracted](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/#install-wordpress), copy the sample configuration and set it to use the remote database:
+1.  Navigate to the directory to which [WordPress was extracted](/docs/guides/install-wordpress-on-ubuntu-16-04/#install-wordpress), copy the sample configuration and set it to use the remote database:
 
         cd /var/www/html/example.com/public_html
         sudo cp wp-config-sample.php wp-config.php

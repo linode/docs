@@ -1,17 +1,17 @@
 .explorer__row--after-first a:hover > .bg-container {
-    @apply absolute block;
-    background-color: var(--color-brand--light);
-    top: 0;
-    margin-left: -3rem;
-    width: 600px;
+  @apply absolute block;
+  background-color: var(--color-brand--light);
+  top: 0;
+  margin-left: -3rem;
+  width: 600px;
 }
 
 .explorer__row--after-first a:hover > .bg-container.after-second {
-    margin-left: -.75rem;
+  margin-left: -0.75rem;
 }
 
 .explorer__row--first {
-    width: var(--width-left-column);
-    box-sizing: border-box;
-    height: calc(var(--height-navbar-row) + 1px);
+  width: var(--width-left-column);
+  box-sizing: border-box;
+  height: calc(var(--height-navbar-row) + 1px);
 }

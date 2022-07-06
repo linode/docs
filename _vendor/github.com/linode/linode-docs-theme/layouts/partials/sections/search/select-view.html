@@ -1,24 +1,38 @@
 {{/* Icons */}}
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="icon-search--list-view" viewBox="0 0 16 14">
-    <path d="M16 12v2H0v-2h16zm0-4v2H0V8h16zm0-4v2H0V4h16zm0-4v2H0V0h16z" fill="currentColor" fill-rule="evenodd"/>
+    <path
+      d="M16 12v2H0v-2h16zm0-4v2H0V8h16zm0-4v2H0V4h16zm0-4v2H0V0h16z"
+      fill="currentColor"
+      fill-rule="evenodd" />
   </symbol>
   <symbol id="icon-search--detail-view" viewBox="0 0 16 14">
-    <path d="M16 12v2H8v-2h8zM6 8v6H0V8h6zm10 0v2H8V8h8zm0-4v2H8V4h8zM6 0v6H0V0h6zm10 0v2H8V0h8z" fill="currentColor" fill-rule="evenodd"/>
+    <path
+      d="M16 12v2H8v-2h8zM6 8v6H0V8h6zm10 0v2H8V8h8zm0-4v2H8V4h8zM6 0v6H0V0h6zm10 0v2H8V0h8z"
+      fill="currentColor"
+      fill-rule="evenodd" />
   </symbol>
   <symbol id="icon-search--grid-view" viewBox="0 0 16 14">
-    <path d="M7 8v6H0V8h7zm9 0v6H9V8h7zM7 0v6H0V0h7zm9 0v6H9V0h7z" fill="currentColor" fill-rule="evenodd"/>
+    <path
+      d="M7 8v6H0V8h7zm9 0v6H9V8h7zM7 0v6H0V0h7zm9 0v6H9V0h7z"
+      fill="currentColor"
+      fill-rule="evenodd" />
   </symbol>
 </svg>
 
 <span class="relative z-0 inline-flex rounded-md">
-  {{ template "search-select-view-button" (dict "view" 1 "sr_text" "List" "icon" "#icon-search--list-view" "borders" "rounded-l-md border-l-2" )}}
-  {{ template "search-select-view-button" (dict "view" 2 "sr_text" "Sections" "icon" "#icon-search--detail-view" "borders" "border-2" )}}
-  {{ template "search-select-view-button" (dict "view" 3 "sr_text" "Tiles" "icon" "#icon-search--grid-view" "borders" "rounded-r-md border-r-2" )}}
+  {{ template "search-select-view-button" (dict "view" 1 "sr_text" "List" "icon" "#icon-search--list-view" "borders" "rounded-l-md border-l-2" ) }}
+  {{ template "search-select-view-button" (dict "view" 2 "sr_text" "Sections" "icon" "#icon-search--detail-view" "borders" "border-2" ) }}
+  {{ template "search-select-view-button" (dict "view" 3 "sr_text" "Tiles" "icon" "#icon-search--grid-view" "borders" "rounded-r-md border-r-2" ) }}
 </span>
 
 {{ define "search-select-view-button" }}
-  <button @click="view = {{ .view }}" type="button" :class="{ 'text-brand' : view === {{ .view }}, 'text-basicgray' : view !== {{ .view }} }" class="-ml-px relative inline-flex items-center px-2 py-2 {{ .borders }} border-t-2 border-b-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none" data-testid="select-view-{{ .view }}">
+  <button
+    @click="view = {{ .view }}"
+    type="button"
+    :class="{ 'text-brand' : view === {{ .view }}, 'text-basicgray' : view !== {{ .view }} }"
+    class="-ml-px relative inline-flex items-center px-2 py-2 {{ .borders }} border-t-2 border-b-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none"
+    data-testid="select-view-{{ .view }}">
     <span class="sr-only">
       {{ .sr_text }}
     </span>

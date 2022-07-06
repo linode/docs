@@ -96,5 +96,5 @@ For more information on access control and user management, as well as other tip
 
 For more on MongoDB, checkout the following guides:
 
-- [Creating a MongoDB Replica Set](/docs/databases/mongodb/create-a-mongodb-replica-set/)
-- [Building Database Clusters with MongoDB](/docs/databases/mongodb/build-database-clusters-with-mongodb/)
+- [Creating a MongoDB Replica Set](/docs/guides/create-a-mongodb-replica-set/)
+- [Building Database Clusters with MongoDB](/docs/guides/build-database-clusters-with-mongodb/)

@@ -38,8 +38,8 @@ Because currently, there is no Shadowsocks package available for Ubuntu or CentO
 
 1.  A working firewall is a necessary security measure. Firewall instructions [are provided](#open-firewall-port-for-shadowsocks-client) for UFW, FirewallD, and Iptables. To configure a firewall on a Linode, visit one of the following guides:
 
-    *  [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/)
-    *  [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/)
+    *  [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/)
+    *  [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/)
 
 ## What Is SOCKS5 Proxy Service?
 SOCKS5 is an internet protocol of SOCKS that helps to route packets through a proxy between a client and a server. To carry out a secure communication, SOCKS5 uses three different modes of authentication: Null authentication, GSS-API based authentication, and a username-password based authentication.
@@ -270,7 +270,7 @@ The second stage to a Shadowsocks setup is to install a client on the user's dev
 
 1.  Download the [ShadowsocksX-NG GUI Client for macOS](https://shadowsocks.org/en/download/clients.html):
 
-    [![Shadowsocks download page](shadowsocks_download.png "Shadowsocks download page")](https://shadowsocks.org/en/download/clients.html)
+    ![Shadowsocks download page](https://shadowsocks.org/en/download/clients.html)
 
 1.  Launch the application on your Mac. The app preferences is available from a new status menu bar icon. Select the *Server Preferences* menu item:
 

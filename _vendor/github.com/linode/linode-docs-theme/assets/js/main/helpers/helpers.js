@@ -40,6 +40,13 @@ export function normalizeSpace(text) {
 	return text.replace(/\s\s+/g, ' ');
 }
 
+// See https://cheatsheetseries.owasp.org/cheatsheets/DOM_based_XSS_Prevention_Cheat_Sheet.html#RULE_.237_-_Fixing_DOM_Cross-site_Scripting_Vulnerabilities
+export function sanitizeHTML(text) {
+	var element = document.createElement('div');
+	element.innerText = text;
+	return element.innerHTML;
+}
+
 export const capitalize = (s) => {
 	if (typeof s !== 'string') return '';
 	return s.charAt(0).toUpperCase() + s.slice(1);
@@ -64,7 +71,7 @@ export function toDateString(date) {
 export function sprintf(format) {
 	var args = Array.prototype.slice.call(arguments, 1);
 	var i = 0;
-	return format.replace(/%s/g, function() {
+	return format.replace(/%s/g, function () {
 		return args[i++];
 	});
 }
@@ -96,20 +103,20 @@ export function getOffsetTop(container, el) {
 	}
 	return distance < 0 ? 0 : distance;
 }
-	
+
 export function setIsTranslating(el, timeout = 1000) {
 	let currentLang = getCurrentLang();
 	if (!currentLang || currentLang == 'en') {
 		return;
 	}
 
-	let els = isIterable(el) ? el : [ el ];
+	let els = isIterable(el) ? el : [el];
 
 	els.forEach((el) => {
 		el.classList.add('is-translating');
 	});
 
-	setTimeout(function() {
+	setTimeout(function () {
 		els.forEach((el) => {
 			el.classList.remove('is-translating');
 		});
@@ -128,8 +135,14 @@ export function getCurrentLang() {
 	return JSON.parse(localStorage.getItem('_x_currentLang'));
 }
 
+const validLangs = ['en', 'es'];
+
 export function getCurrentLangFromLocation() {
-	return new URLSearchParams(window.location.search).get('lang');
+	let lang = new URLSearchParams(window.location.search).get('lang');
+	if (validLangs.includes(lang)) {
+		return lang;
+	}
+	return '';
 }
 
 export function isIterable(obj) {

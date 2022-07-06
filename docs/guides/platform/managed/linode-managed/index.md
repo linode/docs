@@ -86,7 +86,7 @@ Linode generates and assigns a unique public/private keypair to your account's M
 
 1.  Linode's public key is displayed under this tab, and a **Copy to clipboard** button will appear next to it. Click on this button to copy it.
 
-    [![Linode Managed Public SSH Key](managed-public-ssh-key.png "Linode Managed Public SSH Key")](managed-public-ssh-key.png)
+    ![Linode Managed Public SSH Key](managed-public-ssh-key.png)
 
 1.  After you've copied the key, you can install it on your server, either [under your root user](#installing-as-root) or [under another user](#installing-as-another-user). If you install it under another user, be sure to also update your [Linode's Managed SSH settings](#specifying-linode-ssh-settings) to reflect that user.
 
@@ -106,7 +106,7 @@ To install Linode's SSH key for the `root` user:
 If you followed the instructions in the [Securing Your Server](/docs/securing-your-server) guide to disable root login via SSH, you will need to reenable that feature to install the public key for the `root` user. Follow [these instructions](/docs/guides/set-up-and-secure/#ssh-daemon-options) to edit the `sshd_config` file and reenable root login via SSH.
 {{< /note >}}
 
-1.  Open the `authorized_keys` file in a text editor (for example, [nano](/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/)):
+1.  Open the `authorized_keys` file in a text editor (for example, [nano](/docs/guides/use-nano-to-edit-files-in-linux/)):
 
         nano /root/.ssh/authorized_keys
 
@@ -158,7 +158,7 @@ example_user ALL=(ALL) NOPASSWD: ALL
 1.  Type `:wq` and press **Enter** to save and quit the file.
 {{< /disclosure-note >}}
 
-1.  Open the `authorized_keys` file for your user in a text editor (for example, [nano](/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/)):
+1.  Open the `authorized_keys` file for your user in a text editor (for example, [nano](/docs/guides/use-nano-to-edit-files-in-linux/)):
 
         nano /home/example_user/.ssh/authorized_keys
 
@@ -196,7 +196,7 @@ To access these settings:
 
 1.  Select the **SSH Access** tab. Your Linodes and their Managed SSH settings will appear in the table below:
 
-    [![Linode Managed SSH Settings](managed-ssh-settings.png "Linode Managed SSH Settings")](managed-ssh-settings.png)
+    ![Linode Managed SSH Settings](managed-ssh-settings.png)
 
 1.  To enable or disable Managed SSH access for a Linode, click on the **Enable** or **Disable** option that corresponds to the Linode you'd like to interact with.
 
@@ -218,7 +218,7 @@ To add a credential:
 
 1.  Select the **Credentials** tab, then click on the **Add Credentials** link under this tab.
 
-    [![Linode Managed Credentials](managed-credentials.png "Linode Managed Credentials")](managed-credentials.png)
+    ![Linode Managed Credentials](managed-credentials.png)
 
     {{< note >}}
 The table that lists your uploaded credentials will feature a **Last Decrypted** column. This column will show the most recent date/time that a member of Linode Support viewed each credential.
@@ -246,7 +246,7 @@ To add a contact to Linode Managed:
 
 1.  Select the **Contacts** tab, then click on the **Add a Contact** link under this tab.
 
-    [![Linode Managed Contacts](managed-contacts.png "Linode Managed Contacts")](managed-contacts.png)
+    ![Linode Managed Contacts](managed-contacts.png)
 
 1.  A form for your new contact will appear. The form accepts a primary and secondary phone number, which Linode Support may call if they need additional information to troubleshoot an issue on your servers.
 
@@ -356,6 +356,6 @@ Allow the following hostnames and IPs so that our infrastructure can perform the
 
 Each Linode Compute Instance on a Managed account is eligible to receive a [cPanel](https://cpanel.net/) license at no additional charge.
 
-1. **Installing cPanel:** The easiest method to quickly get cPanel up and running is to deploy a new Linode using the [cPanel Marketplace App](https://www.linode.com/marketplace/apps/cpanel/cpanel/). Review the [How to Deploy cPanel with Marketplace Apps](/docs/guides/how-to-deploy-cpanel-with-marketplace-apps/) guide for additional instructions. If the cPanel Marketplace App does not support your desired Linux distribution, you can also follow the instructions within the [Install cPanel on CentOS](/docs/guides/install-cpanel-on-centos/) guide or the [Installation Guide](https://docs.cpanel.net/installation-guide/) on cPanel's documentation site. At this time, cPanel fully supports the following Linux distributions: CentOS 7, CentOS 8, AlmaLinux 8, Rocky Linux 8, and Cloud Linux. CentOS 8 is not recommended as it is due to reach end of life on December 31st 2021 (see the [CentOS 8 End-of-Life](https://www.linode.com/blog/linux/centos-8-end-of-life-linode-distributions/) blog post).
+1. **Installing cPanel:** The easiest method to quickly get cPanel up and running is to deploy a new Linode using the [cPanel Marketplace App](https://www.linode.com/marketplace/apps/cpanel/cpanel/). Review the [How to Deploy cPanel with Marketplace Apps](/docs/products/tools/marketplace/guides/cpanel/) guide for additional instructions. If the cPanel Marketplace App does not support your desired Linux distribution, you can also follow the instructions within the [Install cPanel on CentOS](/docs/guides/install-cpanel-on-centos/) guide or the [Installation Guide](https://docs.cpanel.net/installation-guide/) on cPanel's documentation site. At this time, cPanel fully supports the following Linux distributions: CentOS 7, CentOS 8, AlmaLinux 8, Rocky Linux 8, and Cloud Linux. CentOS 8 is not recommended as it is due to reach end of life on December 31st 2021 (see the [CentOS 8 End-of-Life](https://www.linode.com/blog/linux/centos-8-end-of-life-linode-distributions/) blog post).
 
 1. **Obtaining a License:** Contact the Support team to obtain a cPanel license for your Linode. If you do not subscribe to Linode Managed, you will need to obtain your license directly from cPanel. cPanel is typically licensed by the number of accounts within the cPanel installation, each account typically corresponding to a single website or group of similar websites. The license we provide will automatically scale based on the number of cPanel accounts you've configured.

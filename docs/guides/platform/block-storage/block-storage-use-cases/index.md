@@ -32,7 +32,7 @@ Volumes are stored separately from your cloud instances, but inside the same dat
 A Block Storage Volume augments the raw storage capacity of a cloud instance, which can be useful if your storage needs are greater than your computing demands. Because a Volume is scalable, it can adapt as your data grows in size. Additionally, all data stored with Linode Block Storage is replicated three times, so your Volumes are highly available and fault tolerant.
 
 {{< note >}}
-While the health and uptime of Linode Block Storage is closely monitored by Linode Support, we still recommend [making separate backups](/docs/security/backups/backing-up-your-data/) of your Volumes.
+While the health and uptime of Linode Block Storage is closely monitored by Linode Support, we still recommend [making separate backups](/docs/guides/backing-up-your-data/) of your Volumes.
 {{< /note >}}
 
 Because Volumes are directly connected to an instance, their I/O speeds are much faster than those of an alternative storage solution like Object Storage. As well, the nature of Block Storage allows you to read and write small parts of your data, which means that you can incrementally update your files. This is in contrast to Object Storage, which requires a full re-upload of a file to update it.
@@ -48,7 +48,7 @@ Below you will find some of the more popular use cases for Block Storage.
 Block Storage Volumes can be detached from a cloud instance just as easily as they are attached, meaning that it's possible to create hot-swappable drives with Block Storage. This is useful if you need to perform the same kind of tasks across a fleet of instances with the same data.
 
 {{< caution >}}
-While the Block Storage service has full support for hot swapping, it is important to follow the detachment instructions outlined in our [Using Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#how-to-detach-a-block-storage-volume-from-a-linode) guide. If a Volume is not safely detached, there is a risk of data loss for the Volume.
+While the Block Storage service has full support for hot swapping, it is important to follow the detachment instructions outlined in our [Using Block Storage](/docs/guides/how-to-use-block-storage-with-your-linode/#how-to-detach-a-block-storage-volume-from-a-linode) guide. If a Volume is not safely detached, there is a risk of data loss for the Volume.
 {{< /caution >}}
 
 ### Container Storage
@@ -63,14 +63,14 @@ With the release of NVMe Block Storage, our Block Storage service is able to mee
 
 ### Running Cloud Software
 
-In a climate where ownership over one's data is an important need for many individuals and organizations, hosting your own cloud software is a great use case for Block Storage. Create and mount a Block Storage Volume, [install an application like OwnCloud](/docs/applications/cloud-storage/install-and-configure-owncloud-on-ubuntu-16-04/), and point its data folder to a location on your Volume. If you ever run out of space on your Volume you can always increase its size.
+In a climate where ownership over one's data is an important need for many individuals and organizations, hosting your own cloud software is a great use case for Block Storage. Create and mount a Block Storage Volume, [install an application like OwnCloud](/docs/guides/install-and-configure-owncloud-on-ubuntu-16-04/), and point its data folder to a location on your Volume. If you ever run out of space on your Volume you can always increase its size.
 
 ### Storage for Media Library Applications
 
 There are a few media library applications, most notably [Plex](https://www.plex.tv/), that offer media streaming functionality to internet enabled devices. The media libraries these applications serve can quickly grow in size, depending on the number of movie and audio files they contain. Using a Block Storage Volume can provide you with storage capable of growing with the needs of your library.
 
 {{< note >}}
-For more information on using Plex with a Block Storage Volume, see our [Using a Block Storage Volume with Plex](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#how-to-detach-a-block-storage-volume-from-a-linode) guide.
+For more information on using Plex with a Block Storage Volume, see our [Using a Block Storage Volume with Plex](/docs/guides/how-to-use-block-storage-with-your-linode/#how-to-detach-a-block-storage-volume-from-a-linode) guide.
 {{< /note >}}
 
 ### Ephemeral Storage
@@ -86,9 +86,9 @@ Having backups of your data is always a good idea, and Block Storage Volumes mak
 You can boot from disk images installed to a Block Storage Volume. This provides a cost effective means of maintaining an image that can be attached to a new Linode. For example, you could save money by creating and removing on-demand Linode instances that boot from a Volume.  As well, you can boot from a Volume to access and recover an instance whose normal operating system may not be running as expected.
 
 {{< note >}}
-Linode provides a built-in [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/) feature, but maintaining your own rescue Volume can allow you to include the recovery tools you prefer to use.
+Linode provides a built-in [Rescue Mode](/docs/guides/rescue-and-rebuild/) feature, but maintaining your own rescue Volume can allow you to include the recovery tools you prefer to use.
 {{< /note >}}
 
 ## Next Steps
 
-For more information on how to use Block Storage, consult our [How to Use Block Storage with Your Linode](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) guide.
+For more information on how to use Block Storage, consult our [How to Use Block Storage with Your Linode](/docs/guides/how-to-use-block-storage-with-your-linode/) guide.

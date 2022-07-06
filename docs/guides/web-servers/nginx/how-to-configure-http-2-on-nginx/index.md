@@ -30,7 +30,7 @@ contributor:
 1. Ensure you possess a Fully Qualified Domain Name (FQDN) for the website. The DNS records for the site must point to the Linode server.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## A Summary of the NGINX and HTTP/2 Configuration Process
@@ -150,5 +150,5 @@ To confirm HTTP/2 is operating properly, visit the website and inspect the HTTP 
 1. Select the **Network** tab, and reload the web page.
 1. A list of several rows is displayed in the panel. Click on the row corresponding to the base domain. This reveals a new table on the right-hand side of the panel. Within this table, the **Headers** tab is preselected.
 
-    [![Developer panel in Firefox](developer-panel_small.png)](developer-panel.png)
+    ![Developer panel in Firefox](developer-panel.png)
 1. Review the information listed under the **Headers** tab. If HTTP/2 is working, the `Status` indicates `OK` and the `version` is `HTTP/2`. If the version is still `HTTP 1`, review the previous instructions and ensure HTTP/2 is properly configured.

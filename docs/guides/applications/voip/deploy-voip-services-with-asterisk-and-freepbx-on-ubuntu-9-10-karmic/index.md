@@ -32,7 +32,7 @@ This guide is based largely on [Ryan Tucker's guide](http://blog.hoopycat.com/20
 
 ## Prerequisites
 
-There are quite a few prerequisites to satisfy before you can begin installing Asterisk and FreePBX. Most notably, you will need to install a kernel module and change your Linode's configuration profile. We're going to outline the instructions for doing so in this document, however you may wish to take a look at the in-depth information contained in the [pv-grub guide](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu/).
+There are quite a few prerequisites to satisfy before you can begin installing Asterisk and FreePBX. Most notably, you will need to install a kernel module and change your Linode's configuration profile. We're going to outline the instructions for doing so in this document, however you may wish to take a look at the in-depth information contained in the [pv-grub guide](/docs/guides/custom-compiled-kernel-with-pvgrub-debian-ubuntu/).
 
 ### Edit Sources List
 
@@ -166,7 +166,7 @@ FreePBX is a PHP application that allows you to control your Asterisk installati
 
 ### Set Up LAMP Stack
 
-Before you can use FreePBX, you will need to set up a LAMP stack. An overview is provided here, but you may wish to consult our [LAMP documentation](/docs/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/) for more information. To begin installing Apache, issue the following command:
+Before you can use FreePBX, you will need to set up a LAMP stack. An overview is provided here, but you may wish to consult our [LAMP documentation](/docs/guides/lamp-server-on-ubuntu-9-10-karmic/) for more information. To begin installing Apache, issue the following command:
 
     apt-get install apache2
 

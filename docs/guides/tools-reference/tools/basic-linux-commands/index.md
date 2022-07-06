@@ -568,4 +568,4 @@ The `ping` command uses ICMP messaging to determine if a host is reachable. If a
 
 ## Conclusion
 
-These basic Linux commands work in any shell on any Linode Linux edition, no matter the distribution family. To reference more in-depth information about common Linux commands, browse our [documentation library](https://www.linode.com/docs/guides/).
+These basic Linux commands work in any shell on any Linode Linux edition, no matter the distribution family. To reference more in-depth information about common Linux commands, browse our [documentation library](/docs/).

@@ -23,11 +23,11 @@ aliases: ['/applications/configuration-management/chef/install-a-chef-server-wor
 
 [Chef](http://www.chef.io) is a Ruby based configuration management tool used to define infrastructure as code. This enables users to automate the management of many *nodes* and maintain consistency across those nodes. *Recipes* declare the desired state for managed nodes and are created on a user's *workstation* using the *Chef Workstation* package. Your recipes are distributed across nodes via a *Chef server*. A *Chef client*, installed on each node, is in charge of applying the recipe to its corresponding node.
 
-[![chef_graph-small.png](chef-graph-small.png)](chef-graph.png "Illustration showing that workstations talk to Nodes via the Chef Server")
+![chef_graph-small.png](chef-graph.png "Illustration showing that workstations talk to Nodes via the Chef Server")
 
 This guide will show you how to create and configure a Chef server and workstation. You will also bootstrap a node to manage with Chef. This work will require three individual Linodes.
 
-See [A Beginner's Guide to Chef](/docs/applications/configuration-management/beginners-guide-chef/) for an introduction to Chef concepts.
+See [A Beginner's Guide to Chef](/docs/guides/beginners-guide-chef/) for an introduction to Chef concepts.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/#understanding-sudo) guide.
@@ -129,7 +129,7 @@ In this section, you will download and install the Chef Workstation package, whi
 ...
     {{</ file >}}
 
-1. Create a `.chef` subdirectory. The `.chef` subdirectory will store your [Knife](/docs/applications/configuration-management/beginners-guide-chef/#knife) configuration file and your `.pem` files that are used for RSA key pair authentication with the Chef server. Move into the `chef-repo` directory:
+1. Create a `.chef` subdirectory. The `.chef` subdirectory will store your [Knife](/docs/guides/beginners-guide-chef/#knife) configuration file and your `.pem` files that are used for RSA key pair authentication with the Chef server. Move into the `chef-repo` directory:
 
         mkdir ~/chef-repo/.chef
         cd chef-repo

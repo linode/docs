@@ -41,7 +41,7 @@ aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-o
 
 ## Download and Prepare Drupal 8
 
-1. Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Ubuntu 18.04](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
+1. Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
 
         cd /var/www/html/example.com
 
@@ -85,7 +85,7 @@ $settings['trusted_host_patterns'] = array(
 
         sudo a2enmod rewrite
 
-2.  Specify the rewrite conditions for your Drupal site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
+2.  Specify the rewrite conditions for your Drupal site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
 
     {{< file "/etc/apache2/sites-available/example.com.conf" conf >}}
 <Directory /var/www/html/example.com/public_html>
