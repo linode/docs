@@ -34,6 +34,7 @@ export function newSectionsController(searchConfig) {
 				let request = {
 					page: 0,
 					indexName: searchConfig.indexName(searchConfig.sections_merged.index_by_pubdate),
+					clickAnalytics: searchConfig.click_analytics,
 					facets: ['section.*'],
 					filters: filters,
 					facetFilters: query.toFacetFilters(),
