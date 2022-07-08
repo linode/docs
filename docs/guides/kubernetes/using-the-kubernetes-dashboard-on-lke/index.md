@@ -34,7 +34,7 @@ The Cluster Dashboard can be found at the top of the Cluster's [details page](/d
 
 1. Click the Kubernetes link in the Cloud Manager sidebar menu. The Kubernetes listing page appears and you see all of your clusters listed.
 
-1. Select the the cluster that you would like to reach the Kubernetes Dashboard for. The Kubernetes cluster’s details page appears.
+1. Select the cluster that you would like to reach the Kubernetes Dashboard for. The Kubernetes cluster’s details page appears.
 
 1. Select the **Kubernetes Dashboard** option at the top of the page to open the link to your Kubernetes Dashboard.
 

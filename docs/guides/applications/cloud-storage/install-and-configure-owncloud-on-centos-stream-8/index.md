@@ -126,7 +126,7 @@ So far, you have installed the Apache web server, and MariaDB. Next up is the pr
 
 1. Enable SELinux to allow Apache to execute PHP code via PHP-FPM.:
 
-        sudo setsebool -P httpd execmem 1
+        sudo setsebool -P httpd_execmem 1
 
 
 #### Create the ownCloud Database
