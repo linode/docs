@@ -6,8 +6,8 @@ author:
 description: "In this guide, learn how to deploy and manage Linode Services using Ansible and Linode's Ansible Collection."
 keywords: ['ansible','Linode Collection','dynamic inventory','configuration management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-17-07
-modified: 2022-17-07
+published: 2022-07-17
+modified: 2022-07-17
 modified_by:
   name: Linode
 title: "How to use the Linode Ansible Collection to Deploy Linode Services"
@@ -45,7 +45,7 @@ The steps outlined in this guide require [Ansible version 2.9.10 or greater](htt
 
 - Ensure that you have performed system updates with the following command:
 
-        apt update && apt upgrade
+      apt update && apt upgrade
 
 -   Install Ansible on your computer. Use the steps in the [Control Node Setup](/docs/guides/getting-started-with-ansible/#set-up-the-control-node) section of the [Getting Started With Ansible - Basic Installation and Setup](/docs/guides/getting-started-with-ansible/) guide.
 
@@ -55,7 +55,7 @@ The steps outlined in this guide require [Ansible version 2.9.10 or greater](htt
 
 -   Install the official [Python library for the Linode API v4](https://github.com/linode/linode_api4-python).
 
-        sudo apt-get install python-pip
+        sudo apt install python3-pip
 
 -   Generate a Linode API v4 access token with permission to read and write Linodes. You can follow the [Get an Access Token](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/) guide if you do not already have one.
 
@@ -67,7 +67,7 @@ The Linode Ansible Collection is currently open-source and hosted on both a [Pub
 
 1. Install any required dependencies for ansible:
 
-        sudo -H pip install -Iv 'resolvelib<0.6.0'
+        sudo -H pip3 install -Iv 'resolvelib<0.6.0'
 
 1. Download the latest version of the Linode Ansible Collection using the `ansible-galaxy` command:
 
@@ -77,7 +77,7 @@ The Linode Ansible Collection is currently open-source and hosted on both a [Pub
 
 1.  Install the python module dependencies required for the Linode Ansible collection using pip against the `requirements.txt` file stored within the Linode collection's installation directory:
 
-        pip install -r ~/.ansible/collections/ansible_collections/linode/cloud/requirements.txt
+        pip3 install -r ~/.ansible/collections/ansible_collections/linode/cloud/requirements.txt
 
 The Linode Ansible Collection will now be installed and ready to use to deploy and Manage Linode services.
 
@@ -100,13 +100,20 @@ Create a configuration file for Ansible that will contain the path to a file tha
     VAULT_PASSWORD_FILE = ./vault-pass
 {{< /file >}}
 
+1. Create your Ansible Vault password file `vaultpass` and add your password to the file. Remember the location of the password file was configured in the ansible.cfg file in the previous step.
+
+{{< file "~/development/vaultpass">}}
+My.ANS1BLEvault-myUniquePassword
+{{< /file >}}
+
+
 `VAULT_PASSWORD_FILE = ./vault-pass` is used to specify a Vault password file to use whenever Ansible Vault requires a password. Ansible Vault offers several options for password management. To learn more password management, read Ansible's [Providing Vault Passwords Documentation](https://docs.ansible.com/ansible/latest/user_guide/vault.html#providing-vault-passwords) documentation.
 
 ### Configuration Ansible Vault and Encrypting Variables
 
-1. In keeping in line with best practices on Ansible, create a directory to store variable files which will contain data encrypted by Ansible Vault, in this case the `~/development/group_vars/example_group/` directory:
+1. In keeping in line with best practices on Ansible, create a directory to store variable files which will contain data encrypted by Ansible Vault, in this case the `~/development/group_vars/` directory:
 
-        mkdir -p ~/development/group_vars/example_group/
+        mkdir -p ~/development/group_vars/
 
 1. Decide on a secure Root Password for any infrastructure that will be deployed using the Linode Collection, then, use ansible-vault to encrypt the string with the following syntax, replacing `MySecureRootPassword` with your own strong and unique password:
 
@@ -127,17 +134,17 @@ password: !vault |
 Encryption successful
 {{< /output >}}
 
-1. Copy the generated output to be used in a file to store variables. In this example configuration, the variable file will be  `~/development/group_vars/example_group/vars` file.
+1. Copy the generated output to be used in a file to store variables. In this example configuration, the variable file will be within the `~/development/group_vars/vars.yml` file.
 
 1. Encrypt the value of your [API access token](https://www.linode.com/docs/products/tools/linode-api/guides/get-access-token/). Replace the value of `86210...1e1c6bd` of the following syntax with your own access token:
 
-        ansible-vault encrypt_string '86210...1e1c6bd' --name 'api-token'
+        ansible-vault encrypt_string '86210...1e1c6bd' --name 'token'
 
     You will be asked to enter a secure vault password to decrypt the variable with later. Enter the same password you entered to encrypt the `password` file earlier.
 
-1. Copy the generated output and append it to the bottom of your `vars` file, located in `~/development/ansible.cfg`. The final file should look similar to the following:
+1. Copy the generated output and append it to the bottom of your `vars` file, located in `~/development/group_vars/vars.yml`. The final file should look similar to the following:
 
-{{< file "~/development/vault-pass">}}
+{{< file "~/development/group_vars/vars.yml">}}
 password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           30376134633639613832373335313062366536313334316465303462656664333064373933393831
@@ -213,7 +220,7 @@ Creating a playbook using the Linode Ansible Collection requires bringing togeth
 - name: Create Linode Instance
   hosts: localhost
   vars_files:
-      - ./group_vars/example_group/vars
+      - ./group_vars/vars.yml
   tasks:
     - name: Create a Linode instance
       linode.cloud.instance:
