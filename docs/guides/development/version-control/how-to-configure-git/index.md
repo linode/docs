@@ -89,7 +89,7 @@ There may be files or folders in your project directory that you do not wish to 
 __doNotInclude__/
 {{< /file >}}
 
-To learn how to undo Git commit, see our guide [How to Undo a Git Commit: A Step-by-Step Guide](/docs/guides/how-to-undo-git-commit/)
+To learn how to undo Git commit, see our guide [How to Undo a Git Commit: A Step-by-Step Guide](/docs/guides/how-to-undo-git-commit/).
 
 ### Basic Git Commands
 
@@ -150,7 +150,7 @@ Now the `master` branch has the new search feature.
 
 This section provides some basic information on navigating remote Git repositories.
 
-To copy every file from a remote repository to your local system, use `git clone` followed by the remote repo's URL:
+To copy every file from a remote repository to your local system, use `git clone` followed by the remote repository's URL:
 
     git clone https://github.com/linode/docs.git
 
