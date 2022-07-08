@@ -46,7 +46,7 @@ After Peppermint has finished installing, you can access your Peppermint server 
 
 ![Peppermint login screen](peppermint.png)
 
-The default credentials to login to your Peppermint Peppermint Ticket Management Panel are:
+The default credentials to login to your Peppermint Ticket Management Panel are:
 
     email: admin@admin.com
     password: 1234

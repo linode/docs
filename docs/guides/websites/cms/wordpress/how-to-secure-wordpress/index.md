@@ -142,7 +142,7 @@ Wordfence automatically prevents attacks, provides you with the ability to scan 
 
 ## Disable PHP File Execution
 
-File execution in web applications is a potentially dangerous vulnerability that can give attackers direct access to your server and content. Attackers typically try uploading executable PHP files in the default WordPress upload directory that is typically located in in `/var/www/wordpress/wp-content/uploads/`.
+File execution in web applications is a potentially dangerous vulnerability that can give attackers direct access to your server and content. Attackers typically try uploading executable PHP files in the default WordPress upload directory that is typically located in `/var/www/wordpress/wp-content/uploads/`.
 
 You can disable file execution by typing in the following code and saving it in an `.htaccess` file in the `/var/www/wordpress/wp-content/uploads/` directory:
 
