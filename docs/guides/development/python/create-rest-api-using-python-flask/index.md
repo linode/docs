@@ -239,7 +239,7 @@ def create_programming_language(new_lang):
 
 To update a resource, you send a PUT request with a request body to the URL of the record you want to update. To achieve this you, use a similar tactic to the one you used in the previous section.
 
-- Remove the the `@app.route` annotation and the `get_programming_language()` function. Replace them with the following code:
+- Remove the `@app.route` annotation and the `get_programming_language()` function. Replace them with the following code:
 
     {{< file "prog_lang_app.py" >}}
 ...

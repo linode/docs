@@ -131,7 +131,7 @@ To schedule regular backups of your database, you can use the mysqldump command 
 0 1 * * * /usr/bin/mysqldump --login-path=[name] --single-transaction [database-name] > ~/database-backups/backup-$(date +%F-%H.%M.%S).sql
 {{< /file >}}
 
-For more information on cron, see our [Using Cron](/docs/guides/schedule-tasks-with-cron/) guide or review the the [cron(8)](https://linux.die.net/man/8/cron) and [cron(5)](https://linux.die.net/man/5/crontab) manual pages.
+For more information on cron, see our [Using Cron](/docs/guides/schedule-tasks-with-cron/) guide or review the [cron(8)](https://linux.die.net/man/8/cron) and [cron(5)](https://linux.die.net/man/5/crontab) manual pages.
 
 ## Restore a Backup
 

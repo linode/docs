@@ -110,7 +110,7 @@ For example, to delete the Allow rule for port 80 from the example output above,
 All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/guides/using-the-lish-console/).
 {{</ note >}}
 
-To list all all configurations for all zones, enter the following command:
+To list all configurations for all zones, enter the following command:
 
     sudo firewall-cmd --list-all-zones
 

@@ -40,7 +40,7 @@ The recipe is run whenever the target does not exist or if any of its prerequisi
  - Targets and prerequisites are separated by spaces; spaces around the colon are ignored.
  - The recipe is a series of shell commands, each preceded by a **TAB** character. This needs to be a literal tab, not some number of spaces. Any text editor that understands the format of makefiles warns you by showing spaces in the recipe in a different color.
 - Each line of the recipe is run in a separate shell process, after removing the leading tab.
-- Shell commands are separated by a semicolon, and long lines are are read until a new line is encountered. For improved readability, you can break up a long command using a backslash (`\`).
+- Shell commands are separated by a semicolon, and long lines are read until a new line is encountered. For improved readability, you can break up a long command using a backslash (`\`).
 
 {{< note >}}
 All versions of Make use `/bin/sh` as the default shell for portability purposes. Make inherits almost all of the environment variables exported by the shell that invokes it; `SHELL` is an exception.

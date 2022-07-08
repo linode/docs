@@ -63,7 +63,7 @@ To increase these limits beyond their default values, [contact the Support team]
 
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer
-- Metered outbound network transfer, including traffic to other Linode services within the same data center (over both public IPv4 and and IPv6 addresses)
+- Metered outbound network transfer, including traffic to other Linode services within the same data center (over both public IPv4 and IPv6 addresses)
 - Includes 1 TB (prorated) of transfer allowance per month
 
 See the [Network Transfer Usage and Costs](/docs/guides/network-transfer/) guide for additional details, including costs for network transfer overages.

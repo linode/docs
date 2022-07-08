@@ -58,7 +58,7 @@ Other uses for Kotlin include:
 
 There are several key differences between Kotlin and Java. The biggest difference between the two languages is that Kotlin doesn't provide for checked exceptions. This means there's no need to catch or declare any exceptions. The lack of support for checked exceptions can be considered a pro or a con depending on your preference as a developer. If you dislike having to use try and catch blocks in your Java code, then Kotlin's omission of checked exceptions is a welcome change. However, if you see checked exceptions as a solid means for error recovery, you might find Kotlin a bit frustrating.
 
-Another big difference between Kotlin and Java is the brevity of Kotlin code. A perfect example of this is a basic "Hello, World!" program. In Java, the code for for this resembles the following:
+Another big difference between Kotlin and Java is the brevity of Kotlin code. A perfect example of this is a basic "Hello, World!" program. In Java, the code for this resembles the following:
 
 {{< file >}}
 class MyClass{

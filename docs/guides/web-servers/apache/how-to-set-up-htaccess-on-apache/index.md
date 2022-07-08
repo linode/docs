@@ -142,7 +142,7 @@ allow from 192.0.2
 
 ## Configure Redirects with htaccess
 
-You can redirect traffic using using the .htaccess configuration file. In the below example, you update the .htaccess file for the root directory of your website to redirect a visitor to `http://example.com/test1/index.html` if they try to visit `http://example.com/main.html`.
+You can redirect traffic using the .htaccess configuration file. In the below example, you update the .htaccess file for the root directory of your website to redirect a visitor to `http://example.com/test1/index.html` if they try to visit `http://example.com/main.html`.
 
 {{< note >}}
 Ensure that your website has a landing page. In the following steps, replace each instance of `main.html` with the landing page of your website.
