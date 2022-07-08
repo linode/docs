@@ -295,7 +295,7 @@ It's considered a best practice to isolate Odoo's Python modules from the module
 
         pip3 install wheel
 
-Let's review the the virtual environment creation:
+Let's review the virtual environment creation:
 
 * `python3 -m venv`: Runs `venv` module using Python 3, this module is in charge of creating the virtual environment.
 * `/home/<user>/odoo-env`: Indicates the path used for the virtual Python environment. For the purpose of this guide, `home` directory of the current user was used but you can change it to any location that suits your needs as long as you remember to grant the `odoo` user with proper permissions afterward.

@@ -31,7 +31,7 @@ If you are using a Linode, make sure you run the steps in this section to config
 
 ## Install and Configure sar
 
-The open-source sar program is frequently used, but it's not included in most Linux distributions. You must install it as part of the `sysstat` package. This section shows you how to install sar on on the Debian/Ubuntu Linux distributions.
+The open-source sar program is frequently used, but it's not included in most Linux distributions. You must install it as part of the `sysstat` package. This section shows you how to install sar on the Debian/Ubuntu Linux distributions.
 
 1. Install sar, if it is not already installed on your system:
 
