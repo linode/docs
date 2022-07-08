@@ -200,7 +200,7 @@ To access these settings:
 
 1.  To enable or disable Managed SSH access for a Linode, click on the **Enable** or **Disable** option that corresponds to the Linode you'd like to interact with.
 
-1.  To change other Managed SSH settings for a Linode, click on the the **Edit** option. A form appears with fields for each setting.
+1.  To change other Managed SSH settings for a Linode, click on the **Edit** option. A form appears with fields for each setting.
 
 ### Adding Service Credentials
 
