@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.129.0
+  version: 4.130.0
 
   title: Linode API
   description: |
@@ -3807,7 +3807,7 @@ paths:
       x-linode-cli-action: mongodb-creds-view
       x-linode-grant: read_only
       description: |
-        Display the the root username and password for an accessible Managed MongoDB Database.
+        Display the root username and password for an accessible Managed MongoDB Database.
 
         The Database must have an `active` status to perform this command.
       security:
@@ -4580,7 +4580,7 @@ paths:
       x-linode-cli-action: mysql-creds-view
       x-linode-grant: read_only
       description: |
-        Display the the root username and password for an accessible Managed MySQL Database.
+        Display the root username and password for an accessible Managed MySQL Database.
 
         The Database must have an `active` status to perform this command.
       security:
@@ -5355,7 +5355,7 @@ paths:
       x-linode-cli-action: postgresql-creds-view
       x-linode-grant: read_only
       description: |
-        Display the the root username and password for an accessible Managed PostgreSQL Database.
+        Display the root username and password for an accessible Managed PostgreSQL Database.
 
         The Database must have an `active` status to perform this command.
       security:
@@ -17595,9 +17595,9 @@ paths:
       - lang: Shell
         source: >
           curl -H "Content-Type: application/json" \
-            -H "Authorization: Bearer $TOKEN_BBIGGER_DEV" \
+            -H "Authorization: Bearer $TOKEN" \
             -X DELETE \
-            https://api.dev.linode.com/v4/profile/phone-number
+            https://api.linode.com/v4/profile/phone-number
       - lang: CLI
         source: >
           linode-cli phone delete
@@ -17655,12 +17655,12 @@ paths:
       - lang: Shell
         source: >
           curl -H "Content-Type: application/json" \
-            -H "Authorization: Bearer $TOKEN_BBIGGER_DEV" \
+            -H "Authorization: Bearer $TOKEN" \
             -X POST -d '{
               "iso_code": "US",
-              "phone_number": "267-273-8229"
+              "phone_number": "555-555-5555"
             }' \
-            https://api.dev.linode.com/v4/profile/phone-number
+            https://api.linode.com/v4/profile/phone-number
       - lang: CLI
         source: >
           linode-cli phone sms-code-send \
