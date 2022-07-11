@@ -141,13 +141,9 @@ Here are the most popular IMAP and POP3 servers available:
 
 ## Build Your Mail Server
 
-### SSL Certificate
+### SSL/TLS Certificate
 
-An SSL certificate encrypts connections to your mail server. It's possible to run a mail server without an SSL certificate, but it's not recommended.
-
-Any type of SSL certificate will work, but some certificates have different degrees of trustworthiness for your users. If you want the highest level of trustworthiness, you should [purchase a signed SSL certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) from a reputable company.
-
-You can also use a free self-signed certificate if you are comfortable with the warnings it generates. You can make your own [self-signed SSL certificate](/docs/guides/create-a-self-signed-tls-certificate/), or, if you're following our recommended build, you can use the one that comes with Dovecot by default.
+A TLS certificate can be used to encrypt connections to your mail server using e.g., [STARTTLS](https://en.wikipedia.org/wiki/Opportunistic_TLS).  While a self-signed certificate will technically work, it is recommended to [request a trusted certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) from a public Certificate Authority (CA).
 
 ### Software Installation
 
