@@ -436,7 +436,7 @@ At this point, you may also tune your Apache instances to optimize performance b
 
 ### Configure SELinux Compatibility for Apache
 
-SELinux's default settings do not allow allow Apache to access files on the GlusterFS cluster or to make connections to the database cluster. Allow this activity on each application server:
+SELinux's default settings do not allow Apache to access files on the GlusterFS cluster or to make connections to the database cluster. Allow this activity on each application server:
 
     yum install policycoreutils-python
     setsebool -P httpd_use_fusefs 1
