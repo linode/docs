@@ -36,7 +36,7 @@ Troubleshooting issues with Kubernetes can be complex, and it can be difficult t
 {{< disclosure-note "Where to go for help outside this guide" >}}
 If your issue is not covered by this guide, we also recommend researching and posting in the [Linode Community Questions](https://www.linode.com/community/questions/) site and in `#linode` on the [Kubernetes Slack](http://slack.k8s.io/), where other Linode users (and the Kubernetes community) can offer advice.
 
-If you are running a cluster on Linode's managed LKE service, and you are experiencing an issue related to your master/control plane components, you can report these issues to Linode by [contacting Linode Support](/docs/platform/billing-and-support/support/). Examples in this category include:
+If you are running a cluster on Linode's managed LKE service, and you are experiencing an issue related to your master/control plane components, you can report these issues to Linode by [contacting Linode Support](/docs/guides/support/). Examples in this category include:
 
 -   Kubernetes' API server not running. If kubectl does not respond as expected, this can indicate problems with the API server.
 
@@ -80,7 +80,7 @@ Use the [`get` command](https://kubernetes.io/docs/reference/generated/kubectl/k
         kubectl get pods --namespace kube-system
 
     {{< note >}}
-If you've set up Kubernetes using automated solutions like Linode's Kubernetes Engine, [k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/), or [Rancher](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/), you'll see [csi-linode](https://github.com/linode/linode-blockstorage-csi-driver) and [ccm-linode](https://github.com/linode/linode-cloud-controller-manager) Pods in the `kube-system` namespace. This is normal as long as they're in the Running status.
+If you've set up Kubernetes using automated solutions like Linode's Kubernetes Engine, [k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/), or [Rancher](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/), you'll see [csi-linode](https://github.com/linode/linode-blockstorage-csi-driver) and [ccm-linode](https://github.com/linode/linode-cloud-controller-manager) Pods in the `kube-system` namespace. This is normal as long as they're in the Running status.
 {{< /note >}}
 
 
@@ -160,7 +160,7 @@ If the Kubernetes API server isn't working normally, then you may not be able to
 
 #### Non-systemd systems
 
-If your nodes do not run [systemd](/docs/quick-answers/linux-essentials/what-is-systemd/), the location of logs on your master nodes should be:
+If your nodes do not run [systemd](/docs/guides/what-is-systemd/), the location of logs on your master nodes should be:
 
 - `/var/log/kube-apiserver.log` - [API server](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
 - `/var/log/kube-scheduler.log` - [Scheduler](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/ )
@@ -223,7 +223,7 @@ If you are not able to create new nodes in your cluster, you may see an error me
 Error creating a Linode Instance: [400] Account Limit reached. Please open a support ticket.
 {{< /output >}}
 
-This is a reference to the total number of Linode resources that can exist on your account. To create new Linode instances for your cluster, you will need to either remove other instances on your account, or request a limit increase. To request a limit increase, [contact Linode Support](/docs/platform/billing-and-support/support/#contacting-linode-support).
+This is a reference to the total number of Linode resources that can exist on your account. To create new Linode instances for your cluster, you will need to either remove other instances on your account, or request a limit increase. To request a limit increase, [contact Linode Support](/docs/guides/support/#contacting-linode-support).
 
 ### Insufficient CPU or Memory
 

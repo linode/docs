@@ -27,11 +27,11 @@ Chef cookbooks describe the *desired state* of your nodes, and allow Chef to pus
 
 ## Before You Begin
 
-1. Set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/) guide. When following that guide, **choose Ubuntu 16.04 as your Linux image for the Chef node you will bootstrap and manage**. This guide will use the [MySQL Chef cookbook](https://supermarket.chef.io/cookbooks/mysql/), which does not yet support Ubuntu 18.04.
+1. Set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/docs/guides/install-a-chef-server-workstation-on-ubuntu-18-04/) guide. When following that guide, **choose Ubuntu 16.04 as your Linux image for the Chef node you will bootstrap and manage**. This guide will use the [MySQL Chef cookbook](https://supermarket.chef.io/cookbooks/mysql/), which does not yet support Ubuntu 18.04.
 
 1. Once your node is bootstrapped, you can use a Chef cookbook to secure your node. Consider using the [Users](https://supermarket.chef.io/cookbooks/users) cookbook and the [Firewall](https://supermarket.chef.io/cookbooks/firewall) cookbook for this work. While this is not required to complete this guide, it is recommended.
 
-1. You can also review [A Beginner's Guide to Chef](/docs/applications/configuration-management/beginners-guide-chef/) to receive an overview on Chef concepts.
+1. You can also review [A Beginner's Guide to Chef](/docs/guides/beginners-guide-chef/) to receive an overview on Chef concepts.
 
 1. The examples in this tutorial require a user account with sudo privileges. Readers who use a limited user account will need to prefix commands with sudo when issuing commands to the Chef client node and replace `-x root` with `-x username` where `username` is your limited user account.
 
@@ -187,7 +187,7 @@ This is not the recommended workflow for a production environment. You might con
 
 ### Configure Virtual Hosts
 
-This configuration is based off of the [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/) guide.
+This configuration is based off of the [How to Install a LAMP Stack on Ubuntu 16.04](/docs/guides/install-lamp-stack-on-ubuntu-16-04/) guide.
 
 1.  Because multiple websites may need to be configured, use Chef's attributes feature to define certain aspects of the virtual host file(s). The ChefDK has a built-in command to generate the attributes directory and `default.rb` file within a cookbook. Replace `~/chef-repo/cookbooks/lamp_stack` with your cookbook's path:
 

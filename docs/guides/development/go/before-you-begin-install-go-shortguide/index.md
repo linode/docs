@@ -18,7 +18,7 @@ aliases: ['/development/go/before-you-begin-install-go-shortguide/']
 
 To run the examples in this guide, your workstation or server will need to have Go installed, and the `go` CLI will need to be set in your terminal's PATH:
 
-- If you use Ubuntu, follow our [How to Install Go on Ubuntu](/docs/development/go/install-go-on-ubuntu/) guide.
+- If you use Ubuntu, follow our [How to Install Go on Ubuntu](/docs/guides/install-go-on-ubuntu/) guide.
 - Follow the [Getting Started](https://golang.org/doc/install) guide on Golang's website to install on other operating systems.
 
 If you prefer to experiment with Go without installing it first, you can run the examples found in this guide using the [Go Playground](https://play.golang.org).

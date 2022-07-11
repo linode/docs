@@ -1,4 +1,4 @@
-(function() {
+(function () {
 	if (new URLSearchParams(window.location.search).get('__forceconsent') === 'true') {
 		forceSetCookieConsent();
 	}

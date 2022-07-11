@@ -1,5 +1,7 @@
 
 [params]
+time_format_iso8601 = "2006-01-02T15:04:05-07:00"
+
 weglot_api_key = "wg_3b3ef29c81aa81292c64d1368ee318969"
 # Google Tag Manager ID
 gtmID = "GTM-T5FXXG9"
@@ -9,6 +11,7 @@ gtmID = "GTM-T5FXXG9"
 app_id = "KGUN8FAIPF"
 api_key = "d4847002cd30392fe0fbd00a1da933ed"
 meta_index = "linode-documentation-sections"
+index_prefix = ""
 
 explorer_max_leafnodes = 50
 hits_per_page = 10

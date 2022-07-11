@@ -25,7 +25,7 @@ external_resources:
 
 ## Dolphin Prerequisites
 
-Dolphin requires a standard LAMP (Linux, Apache, MySQL, and PHP) server. If haven't already created a LAMP server, or just want to make sure that you have everything installed, [take a look at our Hosting a Website guide](/docs/websites/hosting-a-website/). After you have a LAMP server running, read through the rest of this section to verify that you have the other prerequisites installed.
+Dolphin requires a standard LAMP (Linux, Apache, MySQL, and PHP) server. If haven't already created a LAMP server, or just want to make sure that you have everything installed, [take a look at our Hosting a Website guide](/docs/guides/hosting-a-website-ubuntu-18-04/). After you have a LAMP server running, read through the rest of this section to verify that you have the other prerequisites installed.
 
 ### Installing PHP Extensions
 
@@ -95,7 +95,7 @@ You have successfully installed JRE on your Linode.
 Now that you've installed the necessary prerequisites, we can start installing Dolphin. We'll walk you through the process of downloading Dolphin, adding a new MySQL user and database, configuring permissions, running the install script, removing the installation directory, and finally logging in to the Dolphin admin panel.
 
  {{< note >}}
-We assume that you followed the [Hosting a Website guide](/docs/websites/hosting-a-website/). If you're using a different DocumentRoot directive than `/home/example_user/public/example.com/public` for your virtual host, you'll need to update the path to correctly reflect your DocumentRoot.
+We assume that you followed the [Hosting a Website guide](/docs/guides/hosting-a-website-ubuntu-18-04/). If you're using a different DocumentRoot directive than `/home/example_user/public/example.com/public` for your virtual host, you'll need to update the path to correctly reflect your DocumentRoot.
 {{< /note >}}
 
 ### Downloading Dolphin

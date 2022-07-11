@@ -1,5 +1,6 @@
 (() => {
   // src/js/Main/main-menu.js
+  var $html;
   var $header;
   var $main_menu;
   var $sub_menus;
@@ -25,13 +26,11 @@
         return;
       var $target_sub_menu = document.querySelector($submenu_selector);
       if ($target_sub_menu.classList.contains("active")) {
-        closeAllSubMenus();
+        deactivateAll();
         $clicked_link.blur();
-        $clicked_link.classList.remove("active");
-        $target_sub_menu.classList.remove("active");
         setHtmlScrollState(true);
       } else {
-        closeAllSubMenus();
+        deactivateAll();
         $clicked_link.classList.add("active");
         $target_sub_menu.classList.add("active");
         setHtmlScrollState(false);
@@ -42,7 +41,7 @@
     $sub_menus.forEach(($sub_menu) => {
       $sub_menu.addEventListener("click", function(event) {
         if (event.target.classList.contains("c-sub-menu")) {
-          closeAllSubMenus();
+          deactivateAll();
           setHtmlScrollState(true);
           return false;
         }
@@ -51,17 +50,15 @@
     document.addEventListener("keyup", function(event) {
       switch (event.keyCode) {
         case 27:
-          closeAllSubMenus();
+          deactivateAll();
           document.activeElement.blur();
           setHtmlScrollState(true);
           break;
       }
     });
   };
-  var closeAllSubMenus = function() {
-    $sub_menus.forEach(($sub_menu) => {
-      $sub_menu.classList.remove("active");
-    });
+  var deactivateAll = function() {
+    $header.querySelectorAll(".active").forEach(($item) => $item.classList.remove("active"));
   };
   var setActiveMenuItem = function() {
     var current_path = window.location.pathname, $header_links = [];
@@ -108,7 +105,34 @@
     mount();
   });
 
+  // src/js/Main/handle-fetch-errors.js
+  function handleFetchErrors(response) {
+    if (!response.ok) {
+      let errorMessage = "";
+      if (response.statusText) {
+        errorMessage = response.statusText;
+      } else if (response.status === 404) {
+        errorMessage = "Resource not found";
+      } else {
+        errorMessage = "Problem fetching resource";
+      }
+      throw new Error(`${errorMessage} (${response.url})`);
+    }
+    return response;
+  }
+
+  // src/js/Main/safe-html.js
+  function safeHTML(input, allow_tags = ["b", "br", "em", "i", "strong"]) {
+    let tmp = document.createElement("div");
+    tmp.textContent = input;
+    let output = tmp.innerHTML;
+    let allow_regex = new RegExp(`&lt;(/?(${allow_tags.join("|")}))&gt;`, "gi");
+    output = output.replace(allow_regex, "<$1>");
+    return output;
+  }
+
   // src/js/Main/header-notification.js
+  var $html2;
   var $notification;
   var $notification_link;
   var $notification_tag;
@@ -119,10 +143,10 @@
       $notification_link = $notification.querySelector(".c-notification__link");
       $notification_tag = $notification.querySelector(".c-notification__tag");
       $notification_message = $notification.querySelector(".c-notification__message");
-      fetch("https://www.linode.com/wp-json/linode/v1/header-notification").then((response) => response.json()).then((data) => update(data));
+      fetch("https://www.linode.com/wp-json/linode/v1/header-notification").then(handleFetchErrors).then((response) => response.json()).then((data) => updateDOM(data)).catch((error) => console.log(error));
     }
   };
-  var update = function(data) {
+  var updateDOM = function(data) {
     if (data && data.url && data.message && $notification && $notification_link && $notification_message) {
       $notification_link.href = data.url;
       if (data.tag) {
@@ -130,7 +154,7 @@
       } else {
         $notification_tag.remove();
       }
-      $notification_message.textContent = data.message;
+      $notification_message.innerHTML = safeHTML(data.message);
       $notification.classList.add("--show");
     }
   };
@@ -140,5 +164,82 @@
   }
   document.addEventListener("turbolinks:render", function(event) {
     mount2();
+  });
+
+  // src/js/Main/header-featured.js
+  var $html3;
+  var mount3 = function() {
+    fetch("https://www.linode.com/wp-json/linode/v1/header-featured").then(handleFetchErrors).then((response) => response.json()).then((data) => updateDOM2(data)).catch((error) => console.log(error));
+  };
+  var updateDOM2 = function(data) {
+    data.forEach((item) => {
+      let $slot = document.querySelector('.c-site-header [data-featured="' + item.slot + '"]');
+      if (!$slot)
+        return;
+      let $feature = generateFeature(item);
+      if (!$feature)
+        return;
+      $slot.appendChild($feature);
+    });
+  };
+  var generateImage = function(data) {
+    let $img = document.createElement("img");
+    $img.src = data.src;
+    $img.width = data.width;
+    $img.height = data.height;
+    if (data.alt) {
+      $img.alt = data.alt;
+    }
+    if (data.srcset) {
+      $img.srcset = data.srcset;
+    }
+    if (data.sizes) {
+      $img.sizes = data.sizes;
+    }
+    return $img;
+  };
+  var generateFeature = function(data) {
+    $base = document.createElement("div");
+    let $h6 = document.createElement("h6"), $a = document.createElement("a"), $text = document.createElement("div"), $headline = document.createElement("div"), $excerpt = document.createElement("div"), $button = document.createElement("span"), $style = document.createElement("style");
+    $h6.textContent = data.eyebrow;
+    $a.classList.add("c-featured");
+    $a.id = `c-featured--${data.slot}`;
+    $a.href = data.link_url;
+    $a.setAttribute("style", data.wrap_styles);
+    $a.setAttribute("onclick", `featureClick( '${data.ga_category}', '${data.ga_action}', '${data.ga_label}')`);
+    $text.classList.add("c-featured__text");
+    $headline.classList.add("c-featured__headline");
+    $headline.innerHTML = safeHTML(data.headline);
+    $excerpt.classList.add("c-featured__excerpt");
+    $excerpt.innerHTML = data.excerpt;
+    $button.classList.add("c-featured__button");
+    $button.textContent = data.link_text;
+    $style.type = "text/css";
+    $style.textContent = data.css;
+    $text.appendChild($headline);
+    $text.appendChild($excerpt);
+    $text.appendChild($button);
+    if (data.background_image.src) {
+      let $bg = generateImage(data.background_image);
+      $bg.classList.add("c-featured__background");
+      $a.appendChild($bg);
+    }
+    if (data.foreground_image.src) {
+      let $fg = generateImage(data.foreground_image);
+      $fg.classList.add("c-featured__image");
+      $a.appendChild($fg);
+    }
+    $a.appendChild($text);
+    $base.appendChild($h6);
+    $base.appendChild($a);
+    $base.appendChild($style);
+    return $base;
+  };
+  var $html3 = document.querySelector("html");
+  if (!$html3.classList.contains("fl-builder-edit")) {
+    mount3();
+  }
+  document.addEventListener("turbolinks:render", function(event) {
+    mount3();
   });
 })();

@@ -244,7 +244,7 @@ The sticky bit allows all users with access to the files (i.e. members of the gr
 
 This section demonstrates configuration for Debian and Ubuntu systems. Similar steps will work on other distributions. Please adjust accordingly.
 
-In this example, `subversion-test` corresponds to the name of the repository, and `/srv/www/svn.example.com` is a directory distinct from your Subversion repositories. Maintaining a separate `htpasswd` for each repository hosted on your Linode makes sense if each repository is used by a distinctly different set of users. Conversely, if each repository that you administer is used by a subset of a larger group of users you may wish to configure [user groups](/docs/web-servers/apache/apache-access-control/#access-control-lists-with-groups) to organize your users' access.
+In this example, `subversion-test` corresponds to the name of the repository, and `/srv/www/svn.example.com` is a directory distinct from your Subversion repositories. Maintaining a separate `htpasswd` for each repository hosted on your Linode makes sense if each repository is used by a distinctly different set of users. Conversely, if each repository that you administer is used by a subset of a larger group of users you may wish to configure [user groups](/docs/guides/apache-access-control/#access-control-lists-with-groups) to organize your users' access.
 
 1.  Enable the `mod_dav_svn` and `mod_dav` Apache modules. This will make it possible to use the `WebDAV` system to access the Subversion repository.
 
@@ -255,7 +255,7 @@ In this example, `subversion-test` corresponds to the name of the repository, an
 
         systemctl restart apache2
 
-3.  Configure HTTP AUTH passwords for Subversion users. You can read more about HTTP AUTH in our [Apache Authentication](/docs/web-servers/apache/apache-access-control/) guide. Store your `htpasswd` file for your Subversion repositories in a location such as:
+3.  Configure HTTP AUTH passwords for Subversion users. You can read more about HTTP AUTH in our [Apache Authentication](/docs/guides/apache-access-control/) guide. Store your `htpasswd` file for your Subversion repositories in a location such as:
 
         /srv/www/svn.example.com/subversion-test.htpasswd
 

@@ -7,7 +7,7 @@ description: "This guide discusses how to enable failover on a Linode Compute In
 keywords: ['IP failover','IP sharing','elastic IP']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-23
-modified: 2022-05-05
+modified: 2022-06-14
 modified_by:
   name: Linode
 title: "Configuring Failover on a Compute Instance"
@@ -37,8 +37,8 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Fremont (California, USA) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 3 |
 | London (United Kingdom) | *Undergoing network upgrades* | - | 7 |
 | Mumbai (India) |  *Undergoing network upgrades* | - | 14 |
-| Newark (New Jersey, USA) | *Undergoing network upgrades* | - | 6 |
-| Singapore | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 9 |
+| **Newark (New Jersey, USA)** | **New method (BGP)** | [lelastic](/docs/guides/ip-failover/#configure-failover) / [FRR](/docs/guides/ip-failover-bgp-frr/) | 6 |
+| Singapore | *Undergoing network upgrades* | - | 9 |
 | Sydney (Australia) |  *Not supported* | - | 16 |
 | Tokyo (Japan) | Legacy method (ARP) | [keepalived](/docs/guides/ip-failover-keepalived/) | 11 |
 | Toronto (Canada) |  *Not supported* | - | 15 |
@@ -81,7 +81,7 @@ To configure failover, complete each section in the order shown:
 To support this new BGP method of IP Sharing and failover, your Compute Instance must be assigned an IPv6 address. This is not an issue for most instances as an IPv6 address is assigned during deployment. If your Compute Instance was created *before* IPv6 addresses were automatically assigned, and you would like to enable IP Sharing within a data center that uses BGP-based failover, contact [Linode Support](https://www.linode.com/support/).
 {{</ note >}}
 
-1.  Disable Network Helper on both instances. For instructions, see the [Network Helper](/docs/guides/network-helper/#single-per-linode) guide.
+1.  Disable Network Helper on both instances. For instructions, see the [Network Helper](/docs/guides/network-helper/#individual-compute-instance-setting) guide.
 
 1. Add an additional IPv4 address _or_ IPv6 range (/64 or /56) to one of the Compute Instances. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) guide for instructions. Make a note of the newly assigned IP address. *Each additional IPv4 address costs $1 per month*.
 
@@ -150,13 +150,14 @@ iface lo [protocol] static
 
 ### Install and Configure Lelastic
 
-Next, we need to configure the failover software on *each* Compute Instance. For this, the lelastic utility is used. For more control or for advanced use cases, follow the instructions within the [Configuring IP Failover over BPG using FRR](/docs/guides/ip-failover-bgp-frr/) guide instead of using lelastic.
+Next, we need to configure the failover software on *each* Compute Instance. For this, the [lelastic](https://github.com/linode/lelastic) utility is used. For more control or for advanced use cases, follow the instructions within the [Configuring IP Failover over BPG using FRR](/docs/guides/ip-failover-bgp-frr/) guide instead of using lelastic.
 
 1.  Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 
-1.  Download and install the [lelastic](https://github.com/linode/lelastic) utility from GitHub by running the following commands:
+1.  Install lelastic by downloading the latest release from the GitHub repository, extracting the contents of the archived file, and moving the lelastic executable to a folder within your PATH. This same process can be used to update lelastic, making sure to restart the lelastic service (detailed in a later step) to complete the upgrade. Before installing or updating lelastic, review the [releases page](https://github.com/linode/lelastic/releases) and update the version variable with the most recent version number.
 
-        curl -LO https://github.com/linode/lelastic/releases/download/v0.0.5/lelastic.gz
+        version=v0.0.6
+        curl -LO https://github.com/linode/lelastic/releases/download/$version/lelastic.gz
         gunzip lelastic.gz
         chmod 755 lelastic
         sudo mv lelastic /usr/local/bin/

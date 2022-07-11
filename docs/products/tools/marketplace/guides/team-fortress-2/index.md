@@ -32,7 +32,7 @@ Setting up a personal game server puts you in control of the game modes and maps
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Debian 11
 - **Recommended minimum plan:** 4GB Dedicated CPU or Shared Compute Instance
 
 ### Team Fortress 2 Options

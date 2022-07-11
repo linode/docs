@@ -11,11 +11,11 @@ export function newNavStore(searchStore) {
 		pinned: false,
 		searchResults: {
 			open: false, // Whether the search panel is open or not.
-			userChange: false // Whether this is a user or a system change.
+			userChange: false, // Whether this is a user or a system change.
 		},
 		open: {
 			explorer: !isMobile(),
-			toc: false
+			toc: false,
 		},
 
 		// TrustArc consent settings. This will also be set on the window object,
@@ -28,8 +28,8 @@ export function newNavStore(searchStore) {
 		},
 
 		init() {
-			window.trustecm  = this.trustecm;
-			initConsentManager()
+			window.trustecm = this.trustecm;
+			initConsentManager();
 		},
 
 		openSearchPanel(scrollUp = false) {
@@ -71,6 +71,6 @@ export function newNavStore(searchStore) {
 			}
 			let scrollPosNavbar = getScrollPosNavbar();
 			window.scrollTo(0, scrollPosNavbar);
-		}
+		},
 	};
 }

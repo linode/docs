@@ -58,7 +58,7 @@ Going beyond metrics-server, this guide goes over collecting more advanced metri
 - Let's install that stack *directly* from its repo (without doing helm repo add first)
 - Otherwise, keep the same naming strategy:
 
-      helm upgrade --install kube-prometheus-stack kube-prometheus-stack \
+      helm upgrade kube-prometheus-stack kube-prometheus-stack --install \
         --namespace kube-prometheus-stack --create-namespace \
         --repo https://prometheus-community.github.io/helm-charts
 

@@ -4,17 +4,17 @@ import { isMobile, toggleBooleanClass } from '../helpers/index';
 import { isTopResultsPage } from '../search';
 import { newQuery, QueryHandler } from '../search/query';
 
-var debug = 0 ? console.log.bind(console, '[navbar]') : function() {};
+var debug = 0 ? console.log.bind(console, '[navbar]') : function () {};
 
 const queryHandler = new QueryHandler();
 
-export const getScrollPosNavbar = function() {
+export const getScrollPosNavbar = function () {
 	let h = window.getComputedStyle(document.getElementById('grid')).getPropertyValue('--height-linode-menu-row');
 	return parseInt(h, 10) - 1;
 };
 
 // Called when the search main results panel opens or closes.
-const onNavSearchResults = function(self, val, oldVal) {
+const onNavSearchResults = function (self, val, oldVal) {
 	if (val.open === oldVal.open) {
 		return;
 	}
@@ -39,7 +39,7 @@ const onNavSearchResults = function(self, val, oldVal) {
 	}
 };
 
-const applyUIState = function(self, init = false) {
+const applyUIState = function (self, init = false) {
 	let setClassAndWatch = (initValue, prop, baseClass) => {
 		toggleBooleanClass(baseClass, document.body, initValue);
 		if (init) {
@@ -71,7 +71,7 @@ const applyUIState = function(self, init = false) {
 
 export function newNavController(weglot_api_key) {
 	return {
-		init: function() {
+		init: function () {
 			applyUIState(this, true);
 
 			if (isTopResultsPage()) {
@@ -89,11 +89,11 @@ export function newNavController(weglot_api_key) {
 			});
 		},
 
-		onEffect: function() {
+		onEffect: function () {
 			this.$store.search.updateLocationWithQuery();
 		},
 
-		onPopState: function(event) {
+		onPopState: function (event) {
 			if (isTopResultsPage()) {
 				this.$store.nav.searchResults.open = true;
 			} else if (this.$store.nav.searchResults.open) {
@@ -101,14 +101,14 @@ export function newNavController(weglot_api_key) {
 			}
 		},
 
-		onTurboBeforeRender: function(event) {
+		onTurboBeforeRender: function (event) {
 			if (!isTopResultsPage()) {
 				// Always hide the search panel unless on the search page.
 				this.$store.nav.searchResults = { open: false };
 			}
 		},
 
-		onTurboRender: function() {
+		onTurboRender: function () {
 			if (document.documentElement.hasAttribute('data-turbo-preview')) {
 				return;
 			}
@@ -127,7 +127,7 @@ export function newNavController(weglot_api_key) {
 			}*/
 		},
 
-		onScroll: function() {
+		onScroll: function () {
 			let scrollpos = window.scrollY;
 			let scrollPosNavbar = getScrollPosNavbar();
 			if (scrollpos >= scrollPosNavbar) {
@@ -138,6 +138,6 @@ export function newNavController(weglot_api_key) {
 				this.$store.nav.pinned = false;
 			}
 			self.reloaded = false;
-		}
+		},
 	};
 }

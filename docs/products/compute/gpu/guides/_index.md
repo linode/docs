@@ -27,7 +27,7 @@ tab_group_main:
 
 ## Guides for All Compute Instances
 
-- [Getting Started with Linode](/docs/getting-started/)
+- [Getting Started with Linode](/docs/guides/getting-started/)
 
 - [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
 
