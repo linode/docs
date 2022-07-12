@@ -215,6 +215,7 @@ caffe
 cakey
 calc
 campione
+capex
 captcha
 carootcert
 ccm
