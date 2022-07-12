@@ -15,7 +15,7 @@ external_resources:
 - '[Installing and Upgrading MySQL](https://dev.mysql.com/doc/refman/8.0/en/installing.html)'
 ---
 
-[MySQL](https://www.linode.com/docs/guides/an-overview-of-mysql/) is one of the most popular SQL-based relational databases. The Community Edition is available at no charge and is widely used across the industry. This guide walks you through installing and updating MySQL Community on Windows, macOS, and Linux (either through the native repositories or MySQL's own repositories).
+[MySQL](/docs/guides/an-overview-of-mysql/) is one of the most popular SQL-based relational databases. The Community Edition is available at no charge and is widely used across the industry. This guide walks you through installing and updating MySQL Community on Windows, macOS, and Linux (either through the native repositories or MySQL's own repositories).
 
 - [Windows](#installing-mysql-on-windows)
 - [macOS](#installing-mysql-on-macos)
