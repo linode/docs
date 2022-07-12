@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-title: Secrets Management
+title: Guides for Secrets Management
 show_in_lists: true
 aliases: ['/security/secrets-management/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

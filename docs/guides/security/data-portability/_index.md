@@ -1,5 +1,5 @@
 ---
-title: Data Portability
+title: Linode Data Portability
 show_in_lists: true
 aliases: ['/security/data-portability/']
 ---
