@@ -38,7 +38,7 @@ deb http://nginx.org/packages/mainline/debian/ stretch nginx
         sudo apt update
         sudo apt install nginx
 
-4.  Ensure NGINX is running and and enabled to start automatically on reboots:
+4.  Ensure NGINX is running and enabled to start automatically on reboots:
 
         sudo systemctl start nginx
         sudo systemctl enable nginx

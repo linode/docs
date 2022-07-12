@@ -5,7 +5,7 @@ author:
 title: "Migrate a MySQL or MariaDB Database to a Managed Database"
 description: "Learn how to migrate an existing MySQL database to Linode's Managed Database service."
 published: 2022-02-23
-modified: 2022-06-06
+modified: 2022-06-30
 ---
 
 This guide covers how to migrate an existing MySQL or MariaDB database to a Managed Database. When migrating a database, there are two important terms to keep in mind: the *source* database and the *target* database.
@@ -25,19 +25,21 @@ Your individual migration workflow could deviate from the instructions provided 
 
 Export the data from the source database into a `.sql` file. While this file is eventually used to import your data to a different machine, it can also be stored as backup. The best method for generating a backup of your data highly depends on the applications you are using and what other databases are also stored on that same system.
 
--   **mysqldump:** In most cases, you can export the data using the `mysqldump` command-line tool. The following command exports the specified databases within the local mysql instance into a file called `db-backup.sql`. Replace *[username]* with the username you use to access the database and *[database-name]* with the name of your database.
+-   **mysqldump:** In most cases, you can export the data using the mysqldump command-line tool. The following command exports the specified databases within the local mysql instance into a file called `db-backup.sql`. Replace *[username]* with the username you use to access the database and *[database-name]* with the name of your database.
 
-        sudo mysqldump -u [user] -p --databases [database-name] --single-transaction --lock-tables=false > db-backup.sql
+        sudo mysqldump -u [user] -p --single-transaction [database-name] > db-backup.sql
 
     **Notes on additional command options:**
 
-    - `-h`: If you prefer to run this command remotely and have access to MySQL from a remote system, add `-h [hostname]`, where *[hostname]* is the IP address or hostname of the remote database server. See [Use mysqldump to Back Up MySQL or MariaDB](/docs/guides/use-mysqldump-to-back-up-mysql-or-mariadb/).
+    - `-h`: If you prefer to run this command remotely and have access to MySQL from a remote system, add `-h [hostname]`, where *[hostname]* is the IP address or hostname of the remote database server.
 
     - `--ssl-mode=REQUIRED`: Force SSL when your existing database has SSL enabled.
 
-    - `--set-gtid-purged=OFF`: Use this option if you have [GTID-based replication](https://dev.mysql.com/doc/refman/5.6/en/replication-gtids-howto.html) enabled.
+    - `--set-gtid-purged=OFF`: Use this option if you have [GTID-based replication](https://dev.mysql.com/doc/refman/8.0/en/replication-gtids-howto.html) enabled.
 
     - `--all-databases`: **Do not use this option**. When importing this backup into your Managed Database, it may delete all existing users from the cluster.
+
+    See [Backing Up MySQL Databases Using mysqldump](/docs/guides/mysqldump-backups/) for more details on running the mysqldump command.
 
 - **cPanel:** See [Backup Wizard > Create a partial backup](https://docs.cpanel.net/cpanel/files/backup-wizard/#create-a-partial-backup) and [How to Back Up and Restore MySQL® Databases in cPanel](https://blog.cpanel.com/how-to-back-up-and-restore-mysql-databases-in-cpanel/).
 

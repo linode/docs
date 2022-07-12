@@ -17,7 +17,7 @@ These introductory guides help you get up and running with monitoring your Linod
 
 - [Use Third-Party Tools](/docs/products/tools/monitoring/guides/monitoring-third-party-tools): For a more detailed view of your systems, you can use third-party tools.
 
-For more basics, see the full guide on [Monitoring and Maintaining Your Server](/docs/uptime/monitoring/monitoring-and-maintaining-your-server/).
+For more basics, see the full guide on [Monitoring and Maintaining Your Server](/docs/guides/monitoring-and-maintaining-your-server/).
 
 ## Themes
 
@@ -25,28 +25,28 @@ These additional guides help you with targeted topics like how to use command li
 
 ### Command Line Tools
 
-- [Use vmstat to Monitor System Performance](/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance/)
+- [Use vmstat to Monitor System Performance](/docs/guides/use-vmstat-to-monitor-system-performance/)
 
-- [Using top to Monitor Server Performance](/docs/uptime/monitoring/top-htop-iotop/)
+- [Using top to Monitor Server Performance](/docs/guides/top-htop-iotop/)
 
-- [Monitor System Logs with Logwatch](/docs/uptime/monitoring/monitor-systems-logwatch/)
+- [Monitor System Logs with Logwatch](/docs/guides/monitor-systems-logwatch/)
 
-- [Installing Monit for Server Monitoring](/docs/uptime/monitoring/monitoring-servers-with-monit/)
+- [Installing Monit for Server Monitoring](/docs/guides/monitoring-servers-with-monit/)
 
-- [Monitor Remote Hosts with Icinga](/docs/uptime/monitoring/monitor-remote-hosts-with-icinga/)
+- [Monitor Remote Hosts with Icinga](/docs/guides/monitor-remote-hosts-with-icinga/)
 
 ### Graphical Tools
 
-- [Monitor Your System with Graphite and a Grafana Dashboard](/docs/uptime/monitoring/install-graphite-and-grafana/)
+- [Monitor Your System with Graphite and a Grafana Dashboard](/docs/guides/install-graphite-and-grafana/)
 
-- [Longview Pricing and Plans](/docs/platform/longview/pricing/)
+- [Longview Pricing and Plans](/docs/guides/linode-longview-pricing-and-plans/)
 
-- [Understanding Linode Longview](/docs/platform/longview/what-is-longview/)
+- [Understanding Linode Longview](/docs/guides/what-is-longview/)
 
-- [Troubleshoot Linode Longview](/docs/platform/longview/troubleshooting-linode-longview/)
+- [Troubleshoot Linode Longview](/docs/guides/troubleshooting-linode-longview/)
 
-- [Using the Linode Longview App for MySQL](/docs/platform/longview/what-is-the-linode-longview-app-for-mysql/)
+- [Using the Linode Longview App for MySQL](/docs/guides/what-is-the-linode-longview-app-for-mysql/)
 
-- [Using the Linode Longview App for Apache](/docs/platform/longview/what-is-the-linode-longview-app-for-apache/)
+- [Using the Linode Longview App for Apache](/docs/guides/what-is-the-linode-longview-app-for-apache/)
 
-- [Using the Linode Longview App for Nginx](/docs/platform/longview/what-is-the-linode-longview-app-for-nginx/)
+- [Using the Linode Longview App for Nginx](/docs/guides/what-is-the-linode-longview-app-for-nginx/)

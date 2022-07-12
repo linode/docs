@@ -33,22 +33,22 @@ These additional guides in our library explore targeted topics like management, 
 
 ### Use Cases
 
-- [Use Cases for Block Storage](/docs/platform/block-storage/block-storage-use-cases/)
+- [Use Cases for Block Storage](/docs/guides/block-storage-use-cases/)
 
 ### Managing Block Storage
 
-- [Boot a Linode from a Block Storage Volume](/docs/platform/block-storage/boot-from-block-storage-volume/)
+- [Boot a Linode from a Block Storage Volume](/docs/guides/boot-from-block-storage-volume/)
 
-- [Manage Block Storage Volumes with the Linode API](/docs/platform/api/create-block-storage-volumes-with-the-linode-api/)
+- [Manage Block Storage Volumes with the Linode API](/docs/guides/create-block-storage-volumes-with-the-linode-api/)
 
 ### Kubernetes
 
-- [Deploy Persistent Volume Claims with the Linode Block Storage CSI Driver](/docs/kubernetes/deploy-volumes-with-the-linode-block-storage-csi-driver/)
+- [Deploy Persistent Volume Claims with the Linode Block Storage CSI Driver](/docs/guides/deploy-volumes-with-the-linode-block-storage-csi-driver/)
 
 ### Third-Party Applications
 
-- [Use a Block Storage Volume with Plex Media Server](/docs/applications/media-servers/use-block-storage-with-plex-media-server/)
+- [Use a Block Storage Volume with Plex Media Server](/docs/guides/use-block-storage-with-plex-media-server/)
 
-- [Use a Block Storage Volume with Nextcloud](/docs/applications/cloud-storage/use-block-storage-volume-with-nextcloud/)
+- [Use a Block Storage Volume with Nextcloud](/docs/guides/use-block-storage-volume-with-nextcloud/)
 
-- [Install FreeNAS on a Linode with Block Storage](/docs/applications/cloud-storage/freenas-blockstorage/)
+- [Install FreeNAS on a Linode with Block Storage](/docs/guides/freenas-blockstorage/)

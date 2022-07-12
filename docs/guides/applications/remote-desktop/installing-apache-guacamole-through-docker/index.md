@@ -39,7 +39,7 @@ After installation, you can pull the following Docker images for use in later st
 
 ## Setting up MySQL for Database Authentication
 
-Apache Guacamole requires a method for user authentication. Database authentication through MySQLis covered in this section, though PostgreSQL and MariaDB are supported supported as well as other non-database methods. To explore additional options, open the [Guacamole Manual](https://guacamole.apache.org/doc/gug/) and review any sections with "authentication" in their headings.
+Apache Guacamole requires a method for user authentication. Database authentication through MySQLis covered in this section, though PostgreSQL and MariaDB are supported as well as other non-database methods. To explore additional options, open the [Guacamole Manual](https://guacamole.apache.org/doc/gug/) and review any sections with "authentication" in their headings.
 
 1.  Create a database initialization script to create a table for authentication:
 

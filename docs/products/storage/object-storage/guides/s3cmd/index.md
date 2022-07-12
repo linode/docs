@@ -208,7 +208,7 @@ You can also create a static website using Object Storage and s3cmd:
     - `http://my-example-bucket.website-us-east-1.linodeobjects.com` or
     - `http://my-example-bucket.website-eu-central-1.linodeobjects.com`.
 
-For more information on hosting a static website with Object Storage, read our [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
+For more information on hosting a static website with Object Storage, read our [Host a Static Site using Linode Object Storage](/docs/guides/host-static-site-object-storage/) guide.
 
 ## Syncing Files and Directories
 
