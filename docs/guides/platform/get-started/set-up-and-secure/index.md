@@ -9,7 +9,7 @@ tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/securing-your-server/','/security/linux-security-basics/','/security/securing-your-server/index.cfm/','/security/basics/securing-your-server/','/security/securing-your-server/','/guides/securing-your-server/']
 bundles: ['centos-security', 'debian-security']
-modified: 2022-06-28
+modified: 2022-07-12
 modified_by:
   name: Linode
 published: 2012-02-17
@@ -450,11 +450,11 @@ For complete instructions on installing and configuring Fail2Ban, see our guide:
 
 Using a *firewall* to block unwanted inbound traffic to your Linode provides a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping. A best practice is to allow only the traffic you need, and deny everything else. See our documentation on some of the most common firewall applications:
 
-- [Iptables](/docs/guides/control-network-traffic-with-iptables/) is the controller for netfilter, the Linux kernel's packet filtering framework. Iptables is included in most Linux distributions by default.
+- [nftables](/docs/guides/how-to-use-nftables/) or its predecessor, [iptables](/docs/guides/control-network-traffic-with-iptables/), is the controller for netfilter, the Linux kernel's packet filtering framework. One of these utilities is included in most Linux distributions by default.
 
-- [FirewallD](/docs/guides/introduction-to-firewalld-on-centos/) is the iptables controller available for the CentOS / Fedora family of distributions.
+- [firewalld](/docs/guides/introduction-to-firewalld-on-centos/) is a firewall management tool that serves as a frontend to nftables or iptables. It is preinstalled on the RHEL family of distributions (and others), including CentOS, AlmaLinux, Rocky Linux, Fedora, and OpenSUSE Leap.
 
-- [UFW](/docs/guides/configure-firewall-with-ufw/) provides an iptables frontend for Debian and Ubuntu.
+- [UFW](/docs/guides/configure-firewall-with-ufw/) is another firewall management tool that operates as a frontend to nftables or iptables. It is used by default on Ubuntu and is also available on other Debian-based distributions.
 
 ## Common Lockout Recovery Steps
 
