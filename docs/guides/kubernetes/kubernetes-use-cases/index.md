@@ -144,7 +144,7 @@ For example, the [Linode Container Storage Interface (CSI)](/docs/kubernetes/dep
 
 ### Cron Jobs
 
-Kubernetes provides a [Jobs](/docs/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/#jobs) object for completing single tasks, like running a one-off script. For regular scheduled tasks, Kubernetes also provides [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) objects that can complete a task at a certain time, just like the [the jobs you might find in a `crontab` file](/docs/guides/schedule-tasks-with-cron/). This is particularly useful because it provides a declarative way to schedule cron jobs from within a cluster.
+Kubernetes provides a [Jobs](/docs/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/#jobs) object for completing single tasks, like running a one-off script. For regular scheduled tasks, Kubernetes also provides [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) objects that can complete a task at a certain time, just like the [jobs you might find in a `crontab` file](/docs/guides/schedule-tasks-with-cron/). This is particularly useful because it provides a declarative way to schedule cron jobs from within a cluster.
 
 ### Secrets Management
 
