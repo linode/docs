@@ -7,8 +7,6 @@ title: Upload an Image
 description: "How to upload an image with Linode Images."
 ---
 
-{{< content "images-ga-pricing-update-shortguide" >}}
-
 ## Requirements and Considerations
 
 When creating an image file to upload as a Custom Image, keep the following limits, requirements, and considerations in mind.
