@@ -7,7 +7,7 @@ description: "This guide discusses how to enable failover on a Linode Compute In
 keywords: ['IP failover','IP sharing','elastic IP']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-23
-modified: 2022-06-14
+modified: 2022-07-13
 modified_by:
   name: Linode
 title: "Configuring Failover on a Compute Instance"
@@ -243,4 +243,4 @@ You can test the failover functionality of the shared IP using the steps below.
 If you are sharing an IPv6 address, the machine from which you are running the `ping` command must have IPv6 connectivity. Not all ISPs have this functionality.
 {{</ note >}}
 
-1.  While the ping command is running successfully, power off the *primary* Compute Instance. The ping command should continue to be able to reach your Shared IP address, even when the primary Compute Instance is fully powered off.
+1.  Power off the *primary* Compute Instance or stop the lelastic service. Once the service has stopped or the instance has fully powered down, the shared IP address should be routed to the other instance. You can test this by again pinging that IP address. The ping should still be able to reach the shared IP address and return a successful result.
