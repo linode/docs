@@ -243,4 +243,8 @@ You can test the failover functionality of the shared IP using the steps below.
 If you are sharing an IPv6 address, the machine from which you are running the `ping` command must have IPv6 connectivity. Not all ISPs have this functionality.
 {{</ note >}}
 
-1.  Power off the *primary* Compute Instance or stop the lelastic service. Once the service has stopped or the instance has fully powered down, the shared IP address should be routed to the other instance. You can test this by again pinging that IP address. The ping should still be able to reach the shared IP address and return a successful result.
+1.  Power off the *primary* Compute Instance or stop the lelastic service on that instance. Once the service has stopped or the instance has fully powered down, the shared IP address should be routed to the secondary instance.
+
+        sudo systemctl stop lelastic
+
+1.  Verify that the shared IP is still accessible by again running the ping command. If the ping is successful, failover is working as intended.
