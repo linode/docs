@@ -6,8 +6,8 @@ author:
 description: "The Linode Ansible collection provides plugins for managing Linode services with Ansible. This guide shows how to install and use the Linode Ansible collection."
 keywords: ['ansible','Linode Ansible Collection','dynamic inventory','configuration management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-14-07
-modified: 2022-14-07
+published: 2022-07-14
+modified: 2022-07-14
 modified_by:
   name: Linode
 title: "How to Use the Linode Ansible Collection to Deploy a Linode"
@@ -136,19 +136,19 @@ These lines specify the location of your password file.
 
 1.  Create a directory to store variable files used with your [Ansible playbooks](/docs/guides/getting-started-with-ansible/#what-is-ansible):
 
-        mkdir -p ~/development/group_vars/example_group/
+        mkdir -p ~/development/group_vars/
 
-1.  Make a new empty text file called `vars` in this directory. In the next steps, your encrypted API token and root password are stored in this file:
+1.  Make a new empty text file called `vars.yml` in this directory. In the next steps, your encrypted API token and root password are stored in this file:
 
-        touch ~/development/group_vars/example_group/vars
+        touch ~/development/group_vars/vars.yml
 
 1.  Generate a unique, complex new password (for example, by using a password manager) that should be used as the root password for new compute instances created with the Linode Ansible collection. This should be different from the Ansible Vault password specified in the `.vault-pass` file. 
 
 1. Use the following `ansible-vault encrypt_string` command to encrypt the new root password, replacing `MySecureRootPassword` with your password. Because this command is run from inside your `~/development` directory, the Ansible Vault password in your `.vault-pass` file is used to perform the encryption:
 
-        ansible-vault encrypt_string 'MySecureRootPassword' --name 'password' | tee -a group_vars/example_group/vars
+        ansible-vault encrypt_string 'MySecureRootPassword' --name 'password' | tee -a group_vars/vars.yml
 
-    In the above command, `tee -a group_vars/example_group/vars` appends the encrypted string to your `vars` file. Once completed, output similar to the following appears:
+    In the above command, `tee -a group_vars/vars.yml` appends the encrypted string to your `vars.yml` file. Once completed, output similar to the following appears:
 
     {{< output >}}
 password: !vault |
@@ -160,21 +160,21 @@ password: !vault |
     3833
 {{< /output >}}
 
-1.  Run the following command to add a newline at the end of your `vars` file:
+1.  Run the following command to add a newline at the end of your `vars.yml` file:
 
-        echo "" >> group_vars/example_group/vars
+        echo "" >> group_vars/vars.yml
 
-1.  Use the following `ansible-vault encrypt_string` command to encrypt your Linode API token and append it to your `vars` file, replacing `MyAPIToken` with your own access token:
+1.  Use the following `ansible-vault encrypt_string` command to encrypt your Linode API token and append it to your `vars.yml` file, replacing `MyAPIToken` with your own access token:
 
-        ansible-vault encrypt_string 'MyAPIToken' --name 'api-token' | tee -a group_vars/example_group/vars
+        ansible-vault encrypt_string 'MyAPIToken' --name 'api-token' | tee -a group_vars/vars.yml
 
-1.  Run the following command to add another newline at the end of your `vars` file:
+1.  Run the following command to add another newline at the end of your `vars.yml` file:
 
-        echo "" >> group_vars/example_group/vars
+        echo "" >> group_vars/vars.yml
 
-    Your `vars` file should now resemble:
+    Your `vars.yml` file should now resemble:
 
-    {{< file "~/development/group_vars/example_group/vars">}}
+    {{< file "~/development/group_vars/vars.yml">}}
 password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           30376134633639613832373335313062366536313334316465303462656664333064373933393831
@@ -244,7 +244,7 @@ This section shows how to write a playbook that leverages the Linode Ansible col
 - name: Create Linode Instance
   hosts: localhost
   vars_files:
-      - ./group_vars/example_group/vars
+      - ./group_vars/vars.yml
   tasks:
     - name: Create a Linode instance
       linode.cloud.instance:
@@ -265,7 +265,7 @@ This section shows how to write a playbook that leverages the Linode Ansible col
 
     -   The configuration options associated with the FQCN are defined. The configuration options for each FQCN are unique to the resource. 
 
-        For options where secure strings are used, the encrypted variables in the `./group_vars/example_group/vars` file are inserted. This includes the API token and root password.
+        For options where secure strings are used, the encrypted variables in the `./group_vars/vars.yml` file are inserted. This includes the API token and root password.
 
 1.  Once the playbook is saved, enter the following command to run it and create a Linode Nanode instance. Because this command is run from inside your `~/development` directory, the Ansible Vault password in your `.vault-pass` file is used by the playbook to decrypt the variables:
 
