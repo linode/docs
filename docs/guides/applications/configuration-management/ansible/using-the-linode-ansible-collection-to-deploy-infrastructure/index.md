@@ -91,7 +91,7 @@ The Linode Ansible collection is currently open-source and hosted on both a [pub
 
 1.  Install the Python module dependencies required for the Linode Ansible collection. The Linode collection's installation directory contains a `requirements.txt` file that lists the Python dependencies, including the official [Python library for the Linode API v4](https://github.com/linode/linode_api4-python). Use pip to install these dependencies:
 
-        sudo pip3 install -r ~/.ansible/collections/ansible_collections/linode/cloud/requirements.txt
+        sudo pip3 install -r .ansible/collections/ansible_collections/linode/cloud/requirements.txt
 
 The Linode Ansible collection is now installed and ready to deploy and manage Linode services.
 
