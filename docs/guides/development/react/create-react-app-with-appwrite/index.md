@@ -21,13 +21,13 @@ external_resources:
 - '[Drishti Peshwani: Building a Web App with ReactJS and Appwrite](https://dev.to/drishtipeshwani/building-a-web-app-with-reactjs-and-appwrite-4cno)'
 ---
 
-[React](https://reactjs.org/) has established itself as one of the most prominent frameworks for developing web frontends. It gives developers a range of tools for effectively working with web APIs and displaying the results.
+[React](https://reactjs.org/) has established itself as one of the most prominent frameworks for developing web frontends. Its component-based approach is especially effective at working with web APIs.
 
-[Appwrite](https://appwrite.io/) boasts an interface for simplifying the development of backend web APIs. It is an open-source, self-hosted solution that provides a web-based interface for managing user authentication, databases, and server functions. All with a full-featured API.
+[Appwrite](https://appwrite.io/) boasts an interface for simplifying the development of backend web APIs. It is an open-source, self-hosted solution that provides a web-based interface for managing user authentication, databases, and server functions. All accessible through a RESTful web API.
 
-The two tools work excellently together. Appwrite provides a simple-to-use backend server that gives you a full web API without any backend development. This lets you focus on your frontend development, helping you to make the most of what React has to offer.
+The two tools work excellently together. Appwrite's simple-to-use backend server gives you a full web API without any backend development. This lets you focus on your frontend development, helping you to make the most of what React has to offer.
 
-This tutorial helps you get started making your own application using Appwrite and React. It covers all the steps for setting up both an Appwrite and a React project, then walks your through everything you need to have the two interact.
+This tutorial gets started making your own application using Appwrite and React. It covers all the steps for setting up both an Appwrite and a React project, then walks your through everything you need for connecting them.
 
 ## Before You Begin
 
@@ -45,19 +45,19 @@ This tutorial helps you get started making your own application using Appwrite a
 
             sudo dnf upgrade
 
-1. Follow our guide on how to [Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/). The React development process tends to use NPM, and an NPM-based React project is especially helpful for integrating Appwrite.
-
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Create an Appwrite Backend
 
-To start out building your React application, you can build its backend using Appwrite. Aside from some command-line setup, most of the steps for creating your Appwrite backend have your working right in the Appwrite web dashboard.
+To start out building your application, you should craft its Appwrite backend. Aside from some command-line setup, most of the steps for creating your Appwrite backend have you working right in the Appwrite web dashboard.
+
+By the end of these steps, you have a fully-operational Appwrite backend server. This server has a ready-to-use database, which below you can see how to populate and have ready to support your React frontend.
 
 ### Setting Up Appwrite
 
-You need to install your own self-hosted Appwrite instance and have everything set up for React to be able to access the backend. These next series of steps show you how.
+First, you need to install your own self-hosted Appwrite instance. You also need to do some specific set up to prepare Appwrite to support your React application. These next series of steps show you how.
 
 1. Follow the steps in our guide [Getting Started with Appwrite as a Backend Server](/docs/guides/getting-started-appwrite/). This shows you how to install and configure your own Appwrite instance.
 
@@ -73,7 +73,7 @@ You need to install your own self-hosted Appwrite instance and have everything s
 
 ### Preparing the Appwrite Project
 
-Next, Appwrite is project based, and you thus need to create a project to build your backend within. These steps explain lead you through creating the project and configuring it for use with your React application.
+Next, Appwrite is project based, and you thus need to create a project to build your backend within. These steps lead you through creating the project and configuring it for use with your React application.
 
 1. Open up your Appwrite dashboard by navigating to your instance's hostname or IP address. Detailed instructions for doing that are given in the guide linked above.
 
@@ -105,7 +105,7 @@ With that, you're ready to start populating your Appwrite instance with data, wh
 
     ![Appwrite form for creating a collection](appwrite-create-collection.png)
 
-1. Create two attributes for the collection, by navigating to the **Attributes** tab of the new collection's page. Clicking the **Add Attribute** button present a menu for attribute data types, and selecting one of these gives you a prompt for creating the attribute.
+1. Create two attributes for the collection, by navigating to the **Attributes** tab of the new collection's page. Clicking the **Add Attribute** button presents a menu of attribute data types, and selecting one of these gives you a prompt for creating the attribute.
 
     The first attribute should be a string attribute, and it should be given `name` as the key and a length of `64`. It should also have the **Required** toggle turned on.
 
@@ -125,19 +125,21 @@ With that, you're ready to start populating your Appwrite instance with data, wh
 
 1. Finally, navigate to the collection's **Documents** tab and use the **Add Document** button to add some data. This guide assumes you have created three documents, with the names and status shown in the image below. The IDs here were automatically generated by Appwrite.
 
-    [![Appwrite collection with documents](appwriter-collection-documents_small.png)](appwriter-collection-documents.png)
+    [![Appwrite collection with documents](appwrite-collection-documents_small.png)](appwrite-collection-documents.png)
 
 ## How to Create a React Frontend
 
-Now that you have the backend prepped and populated, you are ready to start building out a React frontend to interface with the data.
+Now that you have the backend prepped and populated, you are ready to start building out a React frontend to interface with the Appwrite backend.
 
-The example application built here shows two lists, one of films marked "To Watch" and another of films marked "Watched." The interface then gives the user the ability to add new films to a list and change film statuses.
+The example application built here shows two lists, one of films marked "To Watch" and another of films marked "Watched." The interface then gives the user the ability to add new films and change film statuses.
 
 ### Setting Up the React Project
 
-1. Follow our guide on how to [Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/). This guide uses NPM to bootstrap a React project, to install the Appwrite web SDK, and to run the React frontend.
+This guide assumes you are creating a fresh React application to interact with the Appwrite backend. These next steps show you how to initialize and perform the necessary set up for putting together the new React application.
 
-1. Create the React project. This command uses `create-react-app` to bootstrap a new React project and names the new project `example-app`. The results is a directory with that name being created in the current directory.
+1. Follow our tutorial on how to [Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/). The present guide uses NPM to bootstrap a React project, to install the Appwrite web SDK, and to run the React frontend.
+
+1. Create the React project. This example uses `create-react-app` to bootstrap a new React project and names the new project `example-app`. The command results in a directory with that name being created in the current directory.
 
     For this guide, the new React application's directory is created in the current user's home directory:
 
@@ -150,7 +152,7 @@ Need to install the following packages:
 Ok to proceed? (y)
     {{< /output >}}
 
-1. Change into the new directory. The rest of this tutorial assumes you are still in this directory unless otherwise noted:
+1. Change into the new React application directory. The rest of this tutorial assumes you are still in this directory unless otherwise noted:
 
         cd example-app
 
@@ -160,15 +162,17 @@ Ok to proceed? (y)
 
 ### Developing the React Frontend
 
-This React frontend primarily consists of three JSX files, all stored in the `src` subdirectory in the React project directory. Each of these files serves a particular role, and each is dealt with in its own section below to help break it down.
+This tutorial's React frontend primarily consists of three JSX files, all stored in the `src` subdirectory in the React project directory. Each of these files serves a particular role, and each is dealt with in its own section below to help break it down.
 
 #### App.js
 
-The new React project comes with an `App.js` file. This acts as the entry point for your React application, importing more specific components.
+The new React project comes with an `App.js` file. This file acts as the entry point for your React application, giving the containing structure and importing more specific components.
 
 In this case, there is only one other component, the `Films` component, so the `App.js` file is more straightforward.
 
-Remove the existing contents of the file, and give the file the following contents. You can also find the example file [here](/example-app-src/App.js). Follow along with the in-code comments to see what each part of the code is doing.
+Remove the existing contents of the file, and give the file the contents shown below. You can also find the full example file [here](example-app-src/App.js).
+
+You can follow along with the in-code comments to see what each part of the code is doing.
 
 {{< file "src/App.js" js >}}
 // Import React and the stylesheet.
@@ -196,13 +200,13 @@ export default App;
 
 Before diving into the `Films` component, it is useful to have a tool put together for making the connection to the Appwrite database.
 
-For this purpose, create a new file in the `src` subdirectory, naming the file `utils.js`. Give the file the following contents, and find the example file [here](/src/example-app-src/utils.js). The code is marked with comments to elucidate each part.
+For this purpose, create a new file in the `src` subdirectory, naming the file `utils.js`. Then, give the file the contents you see below. You can find the full example file [here](example-app-src/utils.js).
 
 {{< file "src/utils.js" js >}}
 // Import the necessary modules from the Appwrite SDK.
 import { Account, Client, Databases } from 'appwrite';
 
-// Establish an Appwrite client connection to the server.
+// Create an Appwrite client for connecting to the server.
 const appwriteClient = new Client();
 const appwriteAccount = new Account(appwriteClient);
 
@@ -232,13 +236,13 @@ export const appwriteDatabase = new Databases(appwriteClient, '62c07d797833a3b0b
 
 #### Films.js
 
-Now everything is ready for the `Films` component. For this example application, this component makes up most of the frontend. It interacts with the API and displays the results.
+Now everything is ready for the `Films` component. For this example application, this component makes up most of the frontend, interacting with the API and displaying the results.
 
-This section walks through the file in parts to make it easier to digest. If you want to see the whole example file, you can find it [here](/src/example-app-src/Films.js).
+This section walks through the file in parts to make it easier to digest. If you want to see the whole example file, you can find it [here](example-app-src/Films.js).
 
-First, the component makes its imports and gets defined as a class extending on the `Component` module. Here also the code sets up the `Film` component's state variables and has the component call a function on load.
+- First, the component makes its imports and gets defined as a class extending on the `Component` module. Here also the code sets up the `Film` component's state variables and has the component call a function on load.
 
-{{< file "src/Films.js" js >}}
+    {{< file "src/Films.js" js >}}
 // Import the necessary modules. The React component
 // is necessary for the Films component to extend on.
 // The Appwrite Query module allows the component to
@@ -262,13 +266,13 @@ class Films extends Component {
     componentDidMount() {
         this.fetchFilms();
     }
-{{< /file >}}
+    {{< /file >}}
 
-Above, the component calls the `fetchFilms` function on load. Here is that method. It queries the Appwrite database to fetch both a list of films marked "To Watch" and a list of films marked "Watched." Each it assigns to a state variable that is used to control the display.
+- Above, the component calls the `fetchFilms` function on load. Below is that function. The function queries the Appwrite database to fetch both a list of films marked "To Watch" and a list of films marked "Watched." It then assigns each list to a state variable that the application uses to control the display.
 
-(The `...this.state` throughout ensures that state variable assignments only overwrite the named state variable, preserving the rest of the `state` object.)
+    (The `...this.state` throughout ensures that state variable assignments only overwrite the named state variable, preserving the rest of the `state` object.)
 
-{{< file "src/Films.js" js >}}
+    {{< file "src/Films.js" js >}}
     // Fetch the lists of films, assigning them to
     // the component's appropriate state variables.
     fetchFilms = () => {
@@ -314,13 +318,13 @@ Above, the component calls the `fetchFilms` function on load. Here is that metho
             console.log(error);
         });
     }
-{{< /file >}}
+    {{< /file >}}
 
-The films component also needs to post information to the Appwrite backend. It needs to be able to update film statuses, which it can do using the `markFilmWatched` function below. And it needs to be able to add new films, which it can do using the `addNewFilm` function.
+- The films component also needs to post information to the Appwrite backend. It needs to be able to update film statuses, which it can do using the `markFilmWatched` function below. And it needs to be able to add new films, which it can do using the `addNewFilm` function.
 
-The `addNewFilm` method uses a state variable to fetch the film name entered by the user. Doing so makes the contents of the text field easier and more consistent to fetch.
+    The `addNewFilm` function uses a state variable to fetch the film name entered by the user. Doing so makes the contents of the text field easier and more consistent to fetch.
 
-{{< file "src/Films.js" js >}}
+    {{< file "src/Films.js" js >}}
     // Update a film with a new status.
     markFilmWatched = (filmId, doMarkWatched) => {
         // Send the update to the API.
@@ -354,13 +358,13 @@ The `addNewFilm` method uses a state variable to fetch the film name entered by 
         // Refresh the films lists.
         this.fetchFilms();
     }
-{{< /file >}}
+    {{< /file >}}
 
-Finally, the component needs to render the display. First, this example uses a method for processing the films list, neatly rendering each film entry with an HTML element. The `render` method then gives the containing elements and feeds the lists through the `renderFilmsList` function.
+- Finally, the component needs to render the display. First, this example uses a function for processing the films list, neatly rendering each film entry with an HTML element. The `render` method then creates the layout, feeding the lists through the `renderFilmsList` function.
 
-The last line exports the Films component, which is what gets imported in the `App.js` file.
+    The last line exports the Films component, which is what gets imported in the `App.js` file.
 
-{{< file "src/Films.js" js >}}
+    {{< file "src/Films.js" js >}}
     // Process a list of films to assign
     // an appropriate HTML element to each.
     renderFilmsList = (filmsList) => {
@@ -432,12 +436,14 @@ Initially, the application has the data as entered on the Appwrite database dash
 
 [![The initial display of the example application](react-appwrite-example-app-1_small.png)](react-appwrite-example-app-1.png)
 
-The application gives you the ability to update this data as well, and you can see those updates immediately. Here, the film "The Maltese Falcon" has been marked "Watched," and a new film, "Alien vs Predator," has been added.
+But, of course, the application gives you the ability to update this data as well, and you can see those updates immediately. Here, the film "The Maltese Falcon" has been marked "Watched," and a new film, "Alien vs Predator," has been added.
 
-[![The display ofthe example application with some data updates](react-appwrite-example-app-2_small.png)](react-appwrite-example-app-2.png)
+[![The display of the example application with some data updates](react-appwrite-example-app-2_small.png)](react-appwrite-example-app-2.png)
 
 ## Conclusion
 
-With that, you have a fully-functioning application, taking advantage of the simplicity of the Appwrite backend and the power of the React frontend. The example application built above is relatively simple, but highlights all the pieces you need to have Appwrite and React interact effectively. It gives you the basis you need to any application you want to build with these two powerful and capable tools.
+With that, you have a fully-functioning application, taking advantage of the simplicity of the Appwrite backend and the efficacy of the React frontend.
+
+The example application built above is relatively straightforward, but highlights all the pieces you need to have Appwrite and React interact effectively. It gives you the bases for any application you may want to build with these two powerful and capable tools.
 
 Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.

@@ -20,9 +20,9 @@ external_resources:
 - '[Appwrite Docs: Getting Started for Web](https://appwrite.io/docs/getting-started-for-web)'
 ---
 
-Appwrite is an open-source platform for quickly developing RESTful backend services. It is an ideal solution for reducing time developing repetitive APIs and focusing on the frontend. And the self-hosted Appwrite platform seamlessly runs alongside your other backend services.
+Appwrite is an open-source platform for quickly developing RESTful backend services. It is an ideal solution for reducing the time you spend developing repetitive APIs and setting your focus instead on the frontend. And Appwrite seamlessly runs alongside your other backend services, making it an adaptable solution to fit into an existing application or platform.
 
-This tutorial aims to introduce you to Appwrite, highlighting its features and how it compares with similar tools. Then, follow along to see everything you need to know to install your own Appwrite instance and get it up and running.
+This tutorial aims to introduce you to Appwrite, highlighting its features and how it compares with similar tools. Follow along to see everything you need to know to install your own Appwrite instance and get it up and running.
 
 ## Before You Begin
 
@@ -47,51 +47,51 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## What Is Appwrite?
 
-[Appwrite](https://appwrite.io/) is an open-source, self-hosted platform for quickly building backend services for web, mobile, and more, using a backend-as-a-service model. It aims to abstract the repetitive tasks involved in creating RESTful APIs and microservices, making it quicker and easier to building backend services from scratch.
+[Appwrite](https://appwrite.io/) is an open-source, self-hosted platform for quickly building backend services for web, mobile, and more, using a backend-as-a-service model. It aims to abstract the repetitive tasks involved in creating RESTful APIs and microservices, making it quicker and easier to building backend services from scratch. The result is a solution for quicker development and deployment of RESTful services.
 
-Appwrite takes common elements of RESTful APIs and makes them easier to access and implement. The result is a solution for quicker development and deployment of RESTful services.
-
-Appwrite is especially good for cases when you want to focus on the frontend development and when the backend needs to perform common RESTful API tasks. Because Appwrite simplifies the backend development process, you can have a backend ready to support your frontend quickly and with less effort.
+Appwrite is especially good for cases when you want to focus on frontend development and when you just need a backend to perform common RESTful API tasks. Because Appwrite simplifies the backend development process, you can have a backend ready to support your frontend quickly and with less effort.
 
 ### Appwrite vs Firebase
 
 Appwrite operates in the same space as Google's Firebase. So, what does Appwrite do differently?
 
-Generally, Appwrite offers the same or similar features as Firebase. Appwrite similarly provides database, storage, authentication, and functions, among other features.
+Generally, Appwrite offers the same or similar features as Firebase. Like Firebase, Appwrite provides database, storage, authentication, and functions, among other features.
 
-The main difference is that Appwrite is exclusively self-hosted, whereas Firebase is exclusively available on Google's cloud. This means that Appwrite simultaneously requires more, in the sense of setup and maintenance, while giving you more control of your instance.
+The main difference is that Appwrite is exclusively self-hosted, whereas Firebase is exclusively available on Google's cloud. This means that while Appwrite requires a little more — in terms of setup and hosting — it balances that out by giving you more control of your instance.
 
 ### Appwrite vs Supabase
 
-Supabase is another tool in the same space as Appwrite and Firebase, one the presents itself more directly as an alternative to Firebase. And it rides the middle ground in terms of hosting — you can use Supabase either cloud- or self-hosted.
+Supabase is another tool in the same space as Appwrite and Firebase, one that presents itself directly as an alternative to Firebase. Supabase rides the middle ground in terms of hosting — you can use Supabase on either a cloud- or self-hosted model.
 
 Appwrite, however, provides a more robust self-hosted experience. It uses an easy-to-deploy Docker installation, and its design works seamlessly alongside other backend services. Supabase's own self-hosted option is still maturing, and lacks some of the features and ease of Appwrite.
 
 Appwrite also stands out from Supabase in terms of its database. Supabase uses a Postgres database, meaning that it uses relational (SQL) storage. Supabase, in fact, can be thought of as providing a simplifying layer over Postgres, so closely linked are their features.
 
-Appwrite, on the other hand, uses a NoSQL approach to its database interface, and provides a more abstracted approach. Appwrite is more focuses on providing easier RESTful API development than a database solution.
+Appwrite, on the other hand, uses a NoSQL approach to its database interface, and provides a more abstracted approach. Appwrite is more focused on providing easier RESTful API development than a database solution. As such, its database may be more approachable.
 
 ## How to Install Appwrite
 
+Here, see how you can install your own Appwrite instance. These steps take your through everything from installing the prerequisites through starting up and running your Appwrite instance.
+
 ### Installing Docker
 
-The first step is to install Docker, which is used both to install and run your Appwrite instance. The next step is to install Docker Compose, which organizes and coordinates the Appwrite services.
+The first step is to install Docker, which is used both to install and run your Appwrite instance. This installation process also uses Docker Compose, which organizes and coordinates the Appwrite services.
 
 1. Install Docker using the steps outlined in one of the following guides, depending on your Linux distribution.
 
-    On Debian and Ubuntu, use our guide [How to Install and Use Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
+    - On Debian and Ubuntu, use our guide [How to Install and Use Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
 
-    On AlmaLinux, CentOS, and Fedora, use our guide [How to Install and Use Docker on CentOS and Fedora](/docs/guides/installing-and-using-docker-on-centos-and-fedora/).
+    - On AlmaLinux, CentOS, and Fedora, use our guide [How to Install and Use Docker on CentOS and Fedora](/docs/guides/installing-and-using-docker-on-centos-and-fedora/).
 
 1. Install the Docker Compose plugin using your distribution's package manager.
 
-    On Debian and Ubuntu, use the command:
+    - On Debian and Ubuntu, use the command:
 
-        sudo apt install docker-compose-plugin
+            sudo apt install docker-compose-plugin
 
-    On AlmaLinux, CentOS, and Fedora, use the command:
+    - On AlmaLinux, CentOS, and Fedora, use the command:
 
-        sudo dnf install docker-compose-plugin
+            sudo dnf install docker-compose-plugin
 
 1. You can verify your Docker installation by checking the version. Your version may not match the one shown below, but you just want to make sure that you get a version response:
 
@@ -125,7 +125,7 @@ Appwrite installed successfully
 
 Appwrite is now up and running. You can access the dashboard by navigating to `http://localhost` in a web browser on the server.
 
-However, doing so is often not feasible, especially not for numerous users. Likely, you want to be able to access the dashboard remotely.
+However, doing so is often not feasible. Likely, you want to be able to access the dashboard remotely.
 
 You can do so by navigating to the Appwrite server's URL, which may often be an IP address, like `192.0.2.0`. But first, you need to ensure that the server's firewall provides external access to the HTTP port, port `80`.
 
@@ -144,6 +144,10 @@ Once the user has been created, you are directed to the main Appwrite dashboard,
 ![Appwrite dashboard](appwrite-dashboard.png)
 
 ## How to Manage the Appwrite Instance
+
+There are a few more things you can do to set up and further configure your Appwrite instance. Additionally, you may want to control the Appwrite services, turning them off and on as needed for server maintenance.
+
+These next sections give you some of the most useful tools for configuring and managing your Appwrite instance.
 
 ### Controlling Appwrite Services
 
@@ -179,7 +183,7 @@ To make a change, take these steps, executing the commands while in the Appwrite
 
         docker compose stop
 
-1. Make the necessary changes to the `.env` file.
+1. Use your preferred text editor to make the necessary changes to the `.env` file.
 
 1. Start the services up again:
 
@@ -187,37 +191,37 @@ To make a change, take these steps, executing the commands while in the Appwrite
 
 You can see the full range of environmental variables Appwrite uses, each with a helpful description, in the [official documentation](https://appwrite.io/docs/environment-variables).
 
-To get you started, here are a few useful environmental variables Appwrite can be configured with.
+To get you started, here are a few particularly useful environmental variables Appwrite can be configured with.
 
 - By default, Appwrite allows anyone to create a new user account, with the environmental variable `_APP_CONSOLE_WHITELIST_ROOT=enabled`. These new users can then create projects on your Appwrite instance.
 
     It is recommended that you disable this feature for production Appwrite instances. This way, only the Appwrite instance administrator can create and disseminate user accounts:
 
     {{< file ".env" >}}
-/_APP_CONSOLE_WHITELIST_ROOT=disabled
+_APP_CONSOLE_WHITELIST_ROOT=disabled
     {{< /file >}}
 
-- Appwrite can be configured with an SMTP server to allow for sending email alerts to users and the administrator. The server's information is entered using the `_APP_SMTP` environmental variables:
+- Appwrite can be configured with an SMTP server to allow for sending email alerts to users and the administrator. The server's information is entered using a set of environmental variables beginning with `_APP_SMTP`:
 
     {{< file ".env" >}}
-/_APP_SMTP_HOST=mail.example.com
-/_APP_SMTP_PORT=25
-/_APP_SMTP_SECURE=tls
-/_APP_SMTP_USERNAME=example-smtp-username
-/_APP_SMTP_PASSWORD=example-smtp-password
+_APP_SMTP_HOST=mail.example.com
+_APP_SMTP_PORT=25
+_APP_SMTP_SECURE=tls
+_APP_SMTP_USERNAME=example-smtp-username
+_APP_SMTP_PASSWORD=example-smtp-password
     {{< /file >}}
 
 - Appwrite provides usage statistics, which you can view on the Appwrite dashboard. But you can also disable these statistics using the `_APP_USAGE_STATS` environmental variable:
 
     {{< file ".env" >}}
-/_APP_USAGE_STATS=disabled
+_APP_USAGE_STATS=disabled
     {{< /file >}}
 
 ## How to Create an Appwrite Project
 
 It is beyond the scope of this tutorial to show you all of the features in Appwrite for creating a full-functioning backend server. For that, you can refer to the links at the end of this tutorial and to our guide [How to Create a React App with Appwrite](/docs/guides/create-react-app-with-appwrite/).
 
-But here you can see the initial step for creating an Appwrite project. This can serve as the basis for anything and everything else you want to do with Appwrite.
+But here you can see the initial steps for creating an Appwrite project. This can serve as the basis for anything and everything else you want to do with Appwrite.
 
 1. Navigate to the Appwrite dashboard, as described in the [Starting Appwrite](/docs/guides/getting-started-appwrite/#starting-appwrite) section above.
 
@@ -225,19 +229,18 @@ But here you can see the initial step for creating an Appwrite project. This can
 
     [![Appwrite project dashboard](appwrite-project-dashboard_small.png)](appwrite-project-dashboard.png)
 
-1. From here, you can manage all aspects of your Appwrite project.
+1. From here, you can manage all aspects of your Appwrite project. For instance:
 
-    You can use the **Database** option on the left menu to create a database. Appwrite uses a document-based database, but gives you a graphical interface for adding and managing collections and documents.
+    - You can use the **Database** option on the left menu to create a database. Appwrite uses a document-based database, but gives you a graphical interface for adding and managing collections and documents.
 
-    You can add and manage users for your project using the **Users** option on the left menu.
+    - You can add and manage users for your project using the **Users** option on the left menu.
 
-    And you can control your project's web API features using the **Webhooks** and **API Keys** buttons on the left menu. 
+    - And you can add functions to execute custom code from your Appwrite instance using the **Functions** option on the left menu.
 
 ## Conclusion
 
-With this tutorial, you have the base you need to start working with Appwrite. From here, everything is in place to start putting together your own backend server with Appwrite.
+This tutorial has covered all the bases you need to start working with Appwrite as your next backend server. From here, everything is in place to start putting together an Appwrite instance ready to support your application frontend.
 
-Want to learn more about how to do so? Take a look at the Appwrite documentation linked below, and also at our guide [How to Create a React App with Appwrite](/docs/guides/create-react-app-with-appwrite/).
+Want to learn more about how to get started on such an application? Take a look at the Appwrite documentation linked below as well as at our guide [How to Create a React App with Appwrite](/docs/guides/create-react-app-with-appwrite/).
 
 Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
-

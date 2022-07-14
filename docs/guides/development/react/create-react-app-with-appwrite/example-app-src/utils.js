@@ -1,7 +1,7 @@
 // Import the necessary modules from the Appwrite SDK.
 import { Account, Client, Databases } from 'appwrite';
 
-// Establish an Appwrite client connection to the server.
+// Create an Appwrite client for connecting to the server.
 const appwriteClient = new Client();
 const appwriteAccount = new Account(appwriteClient);
 
