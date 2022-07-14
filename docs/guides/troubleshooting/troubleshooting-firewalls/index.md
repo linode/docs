@@ -17,7 +17,7 @@ image: feature.png
 aliases: ['/troubleshooting/troubleshooting-firewalls/']
 ---
 
-This guide presents troubleshooting strategies for Linodes that may be unresponsive due to issues caused by a firewall. This could be a [Linode Cloud Firewall](/docs/guides/getting-started-with-cloud-firewall/), which is applied on the network level or a firewall, like Uncomplicated Firewall (UFW), that is applied on the Linode level.
+This guide presents troubleshooting strategies for Linodes that may be unresponsive due to issues caused by a firewall. This could be a [Linode Cloud Firewall](/docs/products/networking/cloud-firewall/get-started/), which is applied on the network level or a firewall, like Uncomplicated Firewall (UFW), that is applied on the Linode level.
 
 In many cases, you might suspect a firewall issue if some of your services are inaccessible, or in situations of limited access. A firewall issue may also be suspected if you have connectivity problems not long after implementing new firewall rules.
 
@@ -57,7 +57,7 @@ If you are using Linode Cloud Firewall, then it's important to verify which Clou
 
 1.  If the Cloud Firewall is enabled, check what rules are currently active by clicking on the label of the Cloud Firewall. This takes you to your Cloud Firewall's **Rules** page.
 
-1.  The **Rules** page displays a list of all of the Cloud Firewall rules that are filtering your Linode's network traffic. If you notice that the Cloud Firewall rules do not allow traffic for a specific service's port that you are troubleshooting, you may consider [updating your rule's](/docs/guides/getting-started-with-cloud-firewall/#edit-cloud-firewall-rules) to allow connections for that port.
+1.  The **Rules** page displays a list of all of the Cloud Firewall rules that are filtering your Linode's network traffic. If you notice that the Cloud Firewall rules do not allow traffic for a specific service's port that you are troubleshooting, you may consider [updating your rule's](/docs/products/networking/cloud-firewall/get-started/#edit-cloud-firewall-rules) to allow connections for that port.
 
     {{< note >}}
 If the Cloud Firewall is assigned to more than one Linode, modifying the Cloud Firewall rules affect all Linodes assigned to the Cloud Firewall.

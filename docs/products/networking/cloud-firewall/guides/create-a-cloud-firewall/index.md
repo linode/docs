@@ -19,6 +19,6 @@ description: "How to add a Linode Cloud Firewall."
     | **Label** | The label is used an identifier for this Cloud Firewall. *Required*|
     | **Linodes**| The Linode(s) on which to apply this Firewall. A list of all Linodes on your account are visible. You can skip this configuration if you do not yet wish to apply the Firewall to a Linode. |
 
-1. Click on the ****Create**** button to finish creating the Cloud Firewall. By default, a new Cloud Firewall will accept all inbound and outbound connections. Custom rules can be added as needed. See [Add New Cloud Firewall Rules](/docs/products/networking/cloud-firewall/guides/add-rules/).
+1. Click on the ****Create**** button to finish creating the Cloud Firewall. By default, a new Cloud Firewall will accept all inbound and outbound connections. Custom rules can be added as needed. See [Add New Cloud Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/).
 
     ![Click on the Create button to create your Firewall.](create-firewall.png "Click on the Create button to create your Firewall.")
