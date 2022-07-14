@@ -62,7 +62,7 @@ In this section, you will install the NGINX Ingress Controller using Helm, which
 
 1. Add the stable Helm charts repository to your Helm repos:
 
-        helm repo add stable https://charts.helm.sh/stable
+        helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
 1. Update your Helm repositories:
 
@@ -70,23 +70,21 @@ In this section, you will install the NGINX Ingress Controller using Helm, which
 
 1. Install the NGINX Ingress Controller. This installation will result in a Linode NodeBalancer being created.
 
-        helm install nginx-ingress stable/nginx-ingress
+        helm install ingress-nginx ingress-nginx/nginx-ingress
 
     You will see a similar output after issuing the above command (the output has been truncated for brevity):
 
     {{< output >}}
-NAME: my-nginx-ingress
-LAST DEPLOYED: Wed Apr  8 09:55:47 2020
+NAME: ingress-nginx
+LAST DEPLOYED: Thu Jul 14 19:27:24 2022
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
 TEST SUITE: None
 NOTES:
-*******************************************************************************************************
-* DEPRECATED, please use https://github.com/kubernetes/ingress-nginx/tree/master/charts/ingress-nginx *
-*******************************************************************************************************The nginx-ingress controller has been installed.
+The ingress-nginx controller has been installed.
 It may take a few minutes for the LoadBalancer IP to be available.
-You can watch the status by running 'kubectl --namespace default get services -o wide -w my-nginx-ingress-controller'
+You can watch the status by running 'kubectl --namespace default get services -o wide -w ingress-nginx-controller'
 ...
     {{</ output >}}
 
@@ -96,13 +94,13 @@ You can watch the status by running 'kubectl --namespace default get services -o
 
 1. Access your NodeBalancer's assigned external IP address.
 
-        kubectl --namespace default get services -o wide -w nginx-ingress-controller
+        kubectl --namespace default get services -o wide -w ingress-nginx-controller
 
     The command will return a similar output:
 
     {{< output >}}
 NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)                      AGE     SELECTOR
-my-nginx-ingress-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/component=controller,app=nginx-ingress,release=my-nginx-ingress
+ingress-nginx-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/component=controller,app.kubernetes.io/instance=ingress-nginx,app.kubernetes.io/name=ingress-nginx
     {{</ output >}}
 
 1. Copy the IP address of the `EXTERNAL IP` field and navigate to Linode's DNS manager and [update your domain's' `registry` A record](/docs/guides/dns-manager/#add-dns-records) with the external IP address. Ensure that the entry's **TTL** field is set to **5 minutes**.
