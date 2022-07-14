@@ -7,7 +7,7 @@ description: "How to add rules to a Linode Cloud Firewall."
 aliases: ['/products/networking/cloud-firewall/guides/add-rules/','/products/networking/cloud-firewall/guides/edit-rules/','/products/networking/cloud-firewall/guides/delete-rules/']
 ---
 
-A Cloud Firewall can be configured with *Inbound* and *Outbound* rules.
+A Cloud Firewall can be configured with both *Inbound* and *Outbound* rules.
 
 - **Inbound rules** limit incoming network connections to a Linode service based on the port(s) and sources you configure.
 
