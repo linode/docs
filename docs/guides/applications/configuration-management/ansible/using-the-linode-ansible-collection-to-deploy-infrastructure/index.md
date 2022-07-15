@@ -142,7 +142,7 @@ These lines specify the location of your password file.
 
         touch ~/development/group_vars/vars.yml
 
-1.  Generate a unique, complex new password (for example, by using a password manager) that should be used as the root password for new compute instances created with the Linode Ansible collection. This should be different from the Ansible Vault password specified in the `.vault-pass` file. 
+1.  Generate a unique, complex new password (for example, by using a password manager) that should be used as the root password for new compute instances created with the Linode Ansible collection. This should be different from the Ansible Vault password specified in the `.vault-pass` file.
 
 1. Use the following `ansible-vault encrypt_string` command to encrypt the new root password, replacing `MySecureRootPassword` with your password. Because this command is run from inside your `~/development` directory, the Ansible Vault password in your `.vault-pass` file is used to perform the encryption:
 
@@ -257,20 +257,20 @@ This section shows how to write a playbook that leverages the Linode Ansible col
         state: present
 {{< /file >}}
 
-    -   The playbook contains the `Create Linode Instance` play. When run, the control node receives the necessary instructions from Ansible and uses the Linode API to deploy infrastructure as needed. 
+    -   The playbook contains the `Create Linode Instance` play. When run, the control node receives the necessary instructions from Ansible and uses the Linode API to deploy infrastructure as needed.
 
-    -   The `vars_files` key provides the location of the variable file or files used to populate information related to tasks for the play. 
+    -   The `vars_files` key provides the location of the variable file or files used to populate information related to tasks for the play.
 
-    -   The task in the playbook is defined by the `name`, which serves as a label, and the FQCN used to configure the resource, in this case a Linode compute instance. 
+    -   The task in the playbook is defined by the `name`, which serves as a label, and the FQCN used to configure the resource, in this case a Linode compute instance.
 
-    -   The configuration options associated with the FQCN are defined. The configuration options for each FQCN are unique to the resource. 
+    -   The configuration options associated with the FQCN are defined. The configuration options for each FQCN are unique to the resource.
 
         For options where secure strings are used, the encrypted variables in the `./group_vars/vars.yml` file are inserted. This includes the API token and root password.
 
 1.  Once the playbook is saved, enter the following command to run it and create a Linode Nanode instance. Because this command is run from inside your `~/development` directory, the Ansible Vault password in your `.vault-pass` file is used by the playbook to decrypt the variables:
 
         ansible-playbook deploylinode.yml
-  
+
     Once completed, output similar to the following appears:
 
     {{< output >}}
