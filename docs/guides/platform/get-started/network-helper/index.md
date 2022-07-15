@@ -86,6 +86,7 @@ Network Helper automatically edits the appropriate network configuration files f
 -   **Alpine:**
 
         /etc/network/interfaces
+        /etc/resolv.conf
 
 -   **Arch:**
 
