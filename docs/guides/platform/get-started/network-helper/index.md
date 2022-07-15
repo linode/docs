@@ -7,7 +7,7 @@ description: 'This guide introduces you to Network Helper, a host-side service w
 keywords: ["network helper", "auto-configure","networking"]
 tags: ["linode platform","networking","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-05-10
+modified: 2022-07-12
 published: 2014-12-08
 modified_by:
   name: Linode
@@ -51,11 +51,11 @@ If you choose to manually edit your network configuration files, Network Helper 
 
 ## Enable or Disable Network Helper
 
-Network Helper can be enabled or disabled for each Compute Instance. There is also a global setting that applies to all new Compute Instances.
+Network Helper can be enabled or disabled for each Compute Instance. There is also a global setting that applies to all *new* Compute Instances.
 
 ### Global (Account-Wide) Setting
 
-When Network Helper is enabled globally, all new Compute Instances created on your account will have Network Helper enabled by default.
+The global Network Helper setting enables or disables Network Helper on *new* Compute Instances. Existing Compute Instances are not affected by any changes to this global setting. When Network Helper is enabled globally, all *new* Compute Instances are created with Network Helper enabled by default.
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Account** link on the left sidebar.
 
@@ -77,7 +77,7 @@ Network Helper can also be enabled or disabled on a specific Compute Instance, r
 
     ![Screenshot of the Auto-configure networking setting](network-helper-setting.png)
 
-1. Once finished, click the **Save Changes** button.
+1. Once the setting has been adjusted, click the **Save Changes** button. If you are enabling Network Helper, reboot the Compute Instance so that Network Helper can run and adjust your system's network configuration files.
 
 ## Files Maintained by Network Helper
 
@@ -86,6 +86,7 @@ Network Helper automatically edits the appropriate network configuration files f
 -   **Alpine:**
 
         /etc/network/interfaces
+        /etc/resolv.conf
 
 -   **Arch:**
 

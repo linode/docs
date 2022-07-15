@@ -19,7 +19,7 @@ aliases: ['/applications/cloud-storage/freenas-blockstorage/']
 
 Network-attached storage (NAS) allows multiple client devices to access the connected storage media as though it's stored locally to the device. FreeNAS is FreeBSD-based NAS software, configurable via a browser interface.
 
-This guides shows how to install FreeNAS on a Linode and attach a [Block Storage Volume](/blockstorage/) so that you can access both FreeNAS and the Storage Volume from your computer, phone, or tablet almost anywhere in the world.
+This guides shows how to install FreeNAS on a Linode and attach a [Block Storage Volume](/docs/products/storage/block-storage/) so that you can access both FreeNAS and the Storage Volume from your computer, phone, or tablet almost anywhere in the world.
 
 {{< caution >}}
 FreeNAS is not officially supported by Linode at this time. This means that features like the [Linode Backup Service](/docs/platform/backup-service) and Lish will be unavailable to you.

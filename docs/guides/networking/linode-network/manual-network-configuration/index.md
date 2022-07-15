@@ -33,7 +33,7 @@ The following table contains a list of each Linux distribution offered by Linode
 
 | Distribution | Network Manager |
 | -- | -- |
-| AlmaLinux 8 | [NetworkManager](/docs/guides/networkmanager/) |
+| AlmaLinux 8 and 9 | [NetworkManager](/docs/guides/networkmanager/) |
 | Alpine | [ifupdown-ng](/docs/guides/ifupdown/) |
 | Arch | [systemd-networkd](/docs/guides/systemd-networkd/) |
 | CentOS 7 and 8 | [NetworkManager](/docs/guides/networkmanager/) |
@@ -41,7 +41,7 @@ The following table contains a list of each Linux distribution offered by Linode
 | Debian 9-11 | [ifupdown](/docs/guides/ifupdown/) |
 | Fedora 34-36 | [NetworkManager](/docs/guides/networkmanager/) |
 | Gentoo | netifrc |
-| Rocky Linux 8 | [NetworkManager](/docs/guides/networkmanager/) |
+| Rocky Linux 8 and 9 | [NetworkManager](/docs/guides/networkmanager/) |
 | Slackware | netconfig |
 | OpenSUSE Leap | wicked |
 | Ubuntu 16.04 | [ifupdown](/docs/guides/ifupdown/) |
