@@ -20,7 +20,7 @@ If you'd like to run a Linux distribution on your Linode that isn't available fr
 {{< content "all-linodes-kvm-shortguide" >}}
 
 {{< note >}}
-This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/).
+This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/docs/guides/install-a-custom-distribution-on-a-linode/).
 {{< /note >}}
 
 ## Creating the Virtual Machine
@@ -213,6 +213,6 @@ proc /proc proc defaults 0 0
 ~
 6.  Exit and save the file by pressing `Ctrl+x`, type `y` to save your changes, and press `enter` to exit.
 
-The disk has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). Remember to use the username and password created during step 23 under the [Creating the Virtual Machine](#creating-the-virtual-machine) heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration/) guide.
+The disk has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). Remember to use the username and password created during step 23 under the [Creating the Virtual Machine](#creating-the-virtual-machine) heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide.
 
 Congratulations, you have successfully transferred the custom distro disk from your local virtual machine to your Linode.

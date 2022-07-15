@@ -29,7 +29,7 @@ We can configure Zipkin by [deploying it in a Docker container](http://zipkin.io
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. This guide will use the hostname 'zipkinhost'. Also, do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for a Zipkin server.
 
-3. Assuming you know how to instrument a Zipkin client machine or have walked through our [Set Up a Zipkin Server with Sample Website Tracking](/docs/uptime/analytics/set-up-a-zipkin-server/) guide.
+3. Assuming you know how to instrument a Zipkin client machine or have walked through our [Set Up a Zipkin Server with Sample Website Tracking](/docs/guides/set-up-a-zipkin-server/) guide.
 
 4. You will need an analyst system (laptop or workstation) with a web browser. This system will be used to view the traces/spans in the Zipkin server through the Zipkin provided webservice.
 

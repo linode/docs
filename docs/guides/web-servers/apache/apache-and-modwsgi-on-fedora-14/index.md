@@ -76,7 +76,7 @@ You must append the path of your application to the system path as above. The de
 
 ### Web.py WSGI Configuration
 
-Consider the following example Web.py *application* which is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
+Consider the following example Web.py *application* which is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
 
 {{< file "/srv/www/example.com/application/application.wsgi" python >}}
 import web
@@ -163,7 +163,7 @@ You may wish to consult the following resources for additional information on th
 
 - [A Basic "Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)
 - [Deploy Django Applications with mod\_wsgi](/docs/development/frameworks/django-apache-and-modwsgi-on-fedora-14)
-- [Deploy Web.py Applications with mod\_wsgi](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/)
+- [Deploy Web.py Applications with mod\_wsgi](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/)
 - [Flask Framework](http://flask.pocoo.org/)
 - [Werkzug](http://werkzeug.pocoo.org/)
 - [Django](http://www.djangoproject.com/)

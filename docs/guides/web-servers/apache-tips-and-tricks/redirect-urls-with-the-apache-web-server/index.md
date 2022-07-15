@@ -16,7 +16,7 @@ external_resources:
  - '[Installing Apache](/docs/web-servers/apache/)'
  - '[LAMP stack guides](/docs/web-servers/lamp/)'
  - '[Apache Redirect Guide](https://httpd.apache.org/docs/current/mod/mod_alias.html#redirect)'
- - '[Rewrite URLs with mod_rewrite and Apache](/docs/web-servers/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/)'
+ - '[Rewrite URLs with mod_rewrite and Apache](/docs/guides/rewrite-urls-with-modrewrite-and-apache/)'
 tags: ["web server","apache"]
 ---
 
@@ -111,7 +111,7 @@ This matches any request for a file with a `.jpg` extension and replaces it with
 
 ## Beyond URL Redirection
 
-In addition to redirecting users, Apache also allows you to [rewrite URLs](/docs/web-servers/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/) with `mod_rewrite`. While the features are similar, the main difference is that rewriting a URL involves the server returning a different request than the one provided by the client, whereas a redirect simply returns a status code, and the "correct" result is then requested by the client.
+In addition to redirecting users, Apache also allows you to [rewrite URLs](/docs/guides/rewrite-urls-with-modrewrite-and-apache/) with `mod_rewrite`. While the features are similar, the main difference is that rewriting a URL involves the server returning a different request than the one provided by the client, whereas a redirect simply returns a status code, and the "correct" result is then requested by the client.
 
 On a more practical level, rewriting a request does not change the contents of the browser's address bar, and can be useful in hiding URLs with sensitive or vulnerable data.
 

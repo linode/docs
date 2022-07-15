@@ -76,7 +76,7 @@ Git tree state clean
 ## Bootstrap Jenkins X
 
 {{< note >}}
-If you used the `export` command with the KUBECONFIG variable so that you can use kubectl to connect to your cluster, you will need to perform the following steps in the same terminal terminal window where you executed that command in order for `jx` to also be able to connect to your cluster.
+If you used the `export` command with the KUBECONFIG variable so that you can use kubectl to connect to your cluster, you will need to perform the following steps in the same terminal window where you executed that command in order for `jx` to also be able to connect to your cluster.
 {{</ note >}}
 
 1.   Create a new folder, navigate to the new folder, and execute the `jx boot` command to start a new project:

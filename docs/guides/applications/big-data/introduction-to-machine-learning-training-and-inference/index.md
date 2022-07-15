@@ -44,7 +44,7 @@ There are four types of learning models; *supervised*, *unsupervised*, *semi-sup
 
 - **Unsupervised learning:** In this model, the data set is unlabeled. This algorithm's goal is to examine the data's underlying structure or distribution in order to discover hidden patterns or data groupings without the need for human intervention. It's more of an exploratory form of analysis looking to discover similarities and differences in the information. It is called unsupervised learning because there is no correct answer. The algorithm is tasked with finding and presenting the interesting structure in the data.
 
-- **Reinforcement learning**: This uses trial and error to produce output based on the highest efficiency of the function. The generated output is analyzed in order to find errors and provide feedback. This information is incorporated back into the system to improve or maximize its performance. This method is used in a a subcategory of ML known as [*deep learning*](https://en.wikipedia.org/wiki/Deep_learning).
+- **Reinforcement learning**: This uses trial and error to produce output based on the highest efficiency of the function. The generated output is analyzed in order to find errors and provide feedback. This information is incorporated back into the system to improve or maximize its performance. This method is used in a subcategory of ML known as [*deep learning*](https://en.wikipedia.org/wiki/Deep_learning).
 
 ### Inference
 

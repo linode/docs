@@ -53,7 +53,7 @@ You should see the version of Rclone installed, as well as some information abou
 
 ## Configure Rclone
 
-Before you configure Rclone, [create a new Linode bucket](/docs/products/storage/object-storage/guides/create-bucket/) and then [generate an associated Access Key](/docs/products/storage/object-storage/guides/generate-access-keys/) for that bucket. You can also create a new access key for an existing bucket. When you create an access key, you are given the **Access Key** and the **Secret Key**. Make sure to copy both of those strings, because you need them when configuring Rclone.
+Before you configure Rclone, [create a new Linode bucket](/docs/products/storage/object-storage/guides/manage-buckets/) and then [generate an associated Access Key](/docs/products/storage/object-storage/guides/access-keys/) for that bucket. You can also create a new access key for an existing bucket. When you create an access key, you are given the **Access Key** and the **Secret Key**. Make sure to copy both of those strings, because you need them when configuring Rclone.
 
 1. Once you have created the Linode bucket and have the access keys, set up a new configuration with the following command:
 

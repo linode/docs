@@ -30,17 +30,17 @@ This guide explains how to use different troubleshooting commands on your Linode
 
 If the information and logs you gather do not match a solution outlined here, consider searching the [Linode Community Site](https://www.linode.com/community/questions/) for posts that match your system's symptoms. Or, post a new question in the Community Site and include your commands' output.
 
-Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/platform/billing-and-support/support/#scope-of-support) for a description of the issues with which Linode Support can help.
+Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/guides/support/#scope-of-support) for a description of the issues with which Linode Support can help.
 {{< /disclosure-note >}}
 
 ## Linode is Unresponsive
 
-If your Linode is unresponsive, either at the Lish console or to basic network requests, read through the [Troubleshooting Basic Connection Issues](/docs/troubleshooting/troubleshooting-basic-connection-issues/) guide.
+If your Linode is unresponsive, either at the Lish console or to basic network requests, read through the [Troubleshooting Basic Connection Issues](/docs/guides/troubleshooting-basic-connection-issues/) guide.
 
 ## Linode is Slow
 
 {{< note >}}
-You should follow all steps in the [Troubleshooting Basic Connection Issues](/docs/troubleshooting/troubleshooting-basic-connection-issues/) guide before using the checklist in this section.
+You should follow all steps in the [Troubleshooting Basic Connection Issues](/docs/guides/troubleshooting-basic-connection-issues/) guide before using the checklist in this section.
 {{< /note >}}
 
 ### Is your Disk Full?
@@ -89,7 +89,7 @@ This command will check the output of `lsof` for files marked as deleted, and wi
     apache2   32343         www-data   12w      REG               0,19          0       158M /run/lock/apache2/ssl-cache.13747 (deleted)
 {{</ output >}}
 
-To free up this space, you can simply restart the Apache service on your Linode. This command restarts the Apache service using [systemd](/docs/quick-answers/linux-essentials/what-is-systemd/) on Ubuntu 18.04:
+To free up this space, you can simply restart the Apache service on your Linode. This command restarts the Apache service using [systemd](/docs/guides/what-is-systemd/) on Ubuntu 18.04:
 
     sudo systemd restart apache2
 
@@ -100,8 +100,8 @@ The applications on your Linode require a certain amount of physical memory to f
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Click the **Linodes** link in the sidebar to view a list of all your Linodes.
 1.  Select a Linode to view its dashboard.
-1.  Click on the **Launch Console** link in the upper-right hand corner to launch the LISH Console. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or [upgrade to a larger plan](/docs/platform/disk-images/resizing-a-linode/).
-1.  Read through the [Troubleshooting Memory and Networking Issues](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/) guide for troubleshooting commands which display your memory use.
+1.  Click on the **Launch Console** link in the upper-right hand corner to launch the LISH Console. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or [upgrade to a larger plan](/docs/guides/resizing-a-linode/).
+1.  Read through the [Troubleshooting Memory and Networking Issues](/docs/guides/troubleshooting-memory-and-networking-issues/) guide for troubleshooting commands which display your memory use.
 1.  If an application is consuming all of your available memory, you have three options. You can kill the application, change the application's settings to reduce its memory footprint, or [upgrade your Linode](https://www.linode.com/pricing) to a larger plan.
 
 If your Linode is not out of memory, continue to the next section.
@@ -117,43 +117,43 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 
 1.  Examine the I/O wait percentage, as shown above. If the number is zero, your server does not currently have a bottleneck.
 1.  If your I/O wait percentage is above zero, verify that your server has enough [free memory available](/docs/troubleshooting/troubleshooting/#is-the-linode-out-of-memory). In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
-1.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance/) to find the application responsible for the excessive I/O. Databases are often a source of excessive I/O. You may need to stop and/or reconfigure the application.
+1.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/guides/use-vmstat-to-monitor-system-performance/) to find the application responsible for the excessive I/O. Databases are often a source of excessive I/O. You may need to stop and/or reconfigure the application.
 
      {{< note >}}
 You must run `iotop` as `root` or with `sudo`.
     {{< /note >}}
 
-1.  If you cannot determine the source of the IO bottleneck, contact [Linode support](/docs/platform/billing-and-support/support/) for assistance.
+1.  If you cannot determine the source of the IO bottleneck, contact [Linode support](/docs/guides/support/) for assistance.
 
 Since `top` only reports what is currently happening, and most I/O issues are temporary, it helps to have a monitoring utility set up so you can see a graph of I/O trends and spot potential issues *before* they become major problems. See the guides in [Server Monitoring](/docs/uptime/monitoring/) for instructions on setting up a server monitoring utility.
 
 ## Website is Not Loading
 
-If your website is unresponsive or not loading correctly, read through the [Troubleshooting Web Servers, Databases, and Other Services](/docs/troubleshooting/troubleshooting-web-servers-databases-other-services/) guide.
+If your website is unresponsive or not loading correctly, read through the [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guide.
 
 {{< note >}}
-You should follow all steps in the [Linode is Slow](#linode-is-slow) section before following the [Troubleshooting Web Servers, Databases, and Other Services](/docs/troubleshooting/troubleshooting-web-servers-databases-other-services/) guide.
+You should follow all steps in the [Linode is Slow](#linode-is-slow) section before following the [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guide.
 {{< /note >}}
 
 ## Can't Connect via SSH or FTP
 
-If you can't connect to your Linode over SSH, read through the [Troubleshooting SSH](/docs/troubleshooting/troubleshooting-ssh/) guide.
+If you can't connect to your Linode over SSH, read through the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) guide.
 
 {{< note >}}
-You should follow all steps in the [Linode is Slow](#linode-is-slow) section before following the [Troubleshooting SSH](/docs/troubleshooting/troubleshooting-ssh/) guide.
+You should follow all steps in the [Linode is Slow](#linode-is-slow) section before following the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) guide.
 {{< /note >}}
 
 ### Are You Using Telnet or FTP?
 
-Telnet and FTP are disabled on your Linode by default, and we strongly recommend that you do not use those protocols. Instead, please use Secure Shell (SSH) and SSH File Transfer Protocol (SFTP) -- the secure versions of the Telnet and FTP protocols. All Linodes come with an SSH server enabled, and you can connect to port 22 with SSH and SFTP clients. For more information, see [Connecting to Your Linode](/docs/getting-started-new-manager/#connect-to-your-linode-via-ssh).
+Telnet and FTP are disabled on your Linode by default, and we strongly recommend that you do not use those protocols. Instead, please use Secure Shell (SSH) and SSH File Transfer Protocol (SFTP) -- the secure versions of the Telnet and FTP protocols. All Linodes come with an SSH server enabled, and you can connect to port 22 with SSH and SFTP clients. For more information, see [Connecting to Your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance).
 
 ## Forgot My Username or Password
 
 ### Linode User/Root Password
 
-If you've forgotten the password for the root user on your Linode, you can follow the steps for [resetting your root password](/docs/platform/manager/accounts-and-passwords-new-manager/#resetting-the-root-password) from the Linode Manager.
+If you've forgotten the password for the root user on your Linode, you can follow the steps for [resetting your root password](/docs/guides/reset-the-root-password-on-your-linode/) from the Linode Manager.
 
-Once you have access to your Linode as the root user, you can reset the password for any additional system users with the `passwd` command.The example resets the password for the `username` user:
+Once you have access to your Linode as the root user, you can reset the password for any additional system users with the `passwd` command. The example resets the password for the `username` user:
 
     passwd username
 
@@ -171,7 +171,7 @@ Use the following checklist if the Linode Manager is displaying "incorrect" info
 
 ### Did You Recently Change your Account?
 
-If you recently created a new account, resized an existing Linode, or added extra bandwidth, the bandwidth displayed in the Linode Cloud Manager will be prorated for the amount of time left in the current billing cycle. For example, if you create an account on the 15th day of the month, the Manager will indicate that your account has been allocated half of the plan's bandwidth for the current month. This information is an accurate representation of the bandwidth available for the rest of the billing period. When then next billing period starts, the Manager will indicate that all of the plan's bandwidth is available. View the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments-new-manager/) guide for more information.
+If you recently created a new account, resized an existing Linode, or added extra bandwidth, the bandwidth displayed in the Linode Cloud Manager will be prorated for the amount of time left in the current billing cycle. For example, if you create an account on the 15th day of the month, the Manager will indicate that your account has been allocated half of the plan's bandwidth for the current month. This information is an accurate representation of the bandwidth available for the rest of the billing period. When then next billing period starts, the Manager will indicate that all of the plan's bandwidth is available. View the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for more information.
 
 ### Did You Add Additional Storage?
 

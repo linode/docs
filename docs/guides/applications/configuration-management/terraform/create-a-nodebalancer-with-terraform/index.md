@@ -28,7 +28,7 @@ aliases: ['/applications/configuration-management/create-a-nodebalancer-with-ter
 Terraform allows you to represent Infrastructure as Code (IaC). You can use it to manage infrastructure, speed up deployments, and share your infrastructure's configuration files within a team. In this guide you will use Terraform to create a NodeBalancer that distributes traffic between two Linodes.
 
 {{< caution >}}
-The configurations and commands used in this guide will result in multiple billable resources being added to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges. See the [Billings and Payments](/docs/guides/billing-and-payments/) guide for more details.
+The configurations and commands used in this guide will result in multiple billable resources being added to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges. See the [Billings and Payments](/docs/guides/understanding-billing-and-payments/) guide for more details.
 
 If you would like to stop billing for the resources created in this guide, [remove them](#optional-remove-the-nodebalancer-resources) when you have finished your work.
 {{< /caution >}}

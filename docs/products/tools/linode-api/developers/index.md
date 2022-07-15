@@ -17,7 +17,7 @@ The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the L
 
 - [Terraform](https://terraform.io/docs/providers/linode/): Linode's official Terraform Provider. Terraform is an Infrastructure-as-code tool that includes management features for various types of Linode resources.
 
-- [Rancher](/docs/applications/containers/how-to-deploy-apps-with-rancher-1/): Rancher's UI centralizes Kubernetes management concerns when dealing with multiple clusters across multiple clouds.
+- [Rancher](/docs/guides/how-to-deploy-apps-with-rancher-1/): Rancher's UI centralizes Kubernetes management concerns when dealing with multiple clusters across multiple clouds.
 
 - [Pulumi](https://github.com/pulumi/pulumi-linode): Pulumi lets you use the full feature set of a general purpose programming language, like Python, JavaScript, and GO to manage Linode resources.
 

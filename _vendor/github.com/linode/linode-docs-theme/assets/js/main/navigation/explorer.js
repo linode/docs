@@ -53,7 +53,7 @@ export function newSearchExplorerController(searchConfig) {
 		let filters = '';
 
 		return {
-			indexName: searchConfig.sections_merged.index,
+			indexName: searchConfig.indexName(searchConfig.sections_merged.index),
 			filters: filters,
 			facetFilters: facetFilters.concat(facetFilters, sectionFilter),
 			params: `query=${encodeURIComponent(query.lndq)}&hitsPerPage=${maxLeafNodes}`,

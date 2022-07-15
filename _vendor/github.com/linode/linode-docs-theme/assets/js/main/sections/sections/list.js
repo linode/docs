@@ -33,7 +33,7 @@ export function newSectionsController(searchConfig) {
 
 				let request = {
 					page: 0,
-					indexName: searchConfig.sections_merged.index_by_pubdate,
+					indexName: searchConfig.indexName(searchConfig.sections_merged.index_by_pubdate),
 					facets: ['section.*'],
 					filters: filters,
 					facetFilters: query.toFacetFilters(),

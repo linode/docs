@@ -22,7 +22,7 @@ aliases: ['/uptime/monitoring/monitor-systems-logwatch/']
 By default, Logwatch uses Sendmail to send digests.
 
 {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root**. If logged in as a superuser, it is recommended that you `su` into root. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as **root**. If logged in as a superuser, it is recommended that you `su` into root. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Logwatch and Sendmail
@@ -209,4 +209,4 @@ Logwatch often works best when configured to run daily and send or save a report
 {{< /file >}}
 
 
-    For more information on adjusting your crontab scheduling, reference our guide on [Scheduling Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/).
+    For more information on adjusting your crontab scheduling, reference our guide on [Scheduling Tasks with Cron](/docs/guides/schedule-tasks-with-cron/).
