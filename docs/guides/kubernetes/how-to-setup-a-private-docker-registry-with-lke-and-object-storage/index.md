@@ -445,7 +445,7 @@ spec:
       - name: regcred
       {{</ file >}}
 
-      - In the Deployment section of the manifest, the [`imagePullSecrets` field](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets) references the secret you created in the [Grant your Cluster Access to your Docker Registry](/#grant-your-cluster-access-to-your-docker-registry) section. This secret contains the authentication credentials that your cluster's kubelet can use to pull your private registry's image.
+      - In the Deployment section of the manifest, the [`imagePullSecrets` field](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets) references the secret you created in the [Grant your Cluster Access to your Docker Registry](#grant-your-cluster-access-to-your-docker-registry) section. This secret contains the authentication credentials that your cluster's kubelet can use to pull your private registry's image.
       - The `image` field provides the image to pull from your Docker registry.
 
 1. Create the deployment.

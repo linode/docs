@@ -23,7 +23,7 @@ external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/13.0/)'
   - '[Odoo Developer Documentation](https://www.odoo.com/documentation/13.0)'
   - '[PostgreSQL 10 Documentation](https://www.postgresql.org/docs/10/static/index.html)'
-  - '[Install an Odoo 11 Stack on Ubuntu 16.04 using Linode](https://www.linode.com/docs/websites/erp/install-an-odoo-11-stack-on-ubuntu-16-04)'
+  - '[Install an Odoo 11 Stack on Ubuntu 16.04 using Linode](/docs/guides/install-an-odoo-11-stack-on-ubuntu-16-04/)'
   - '[Install an SSL certificate with LetsEncrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates)'
   - '[How to Set up tinc, a Peer-to-Peer VPN](/docs/guides/how-to-set-up-tinc-peer-to-peer-vpn/)'
   - '[Using Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/)'

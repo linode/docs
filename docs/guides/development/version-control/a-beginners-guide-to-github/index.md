@@ -122,7 +122,7 @@ nothing to commit, working directory clean
 
 Using your preferred text editor, you should now be able to edit and create documents within your new branch. When writing your guide, you can refer to the [Linode Writer's Formatting Guide](/docs/guides/linode-writers-formatting-guide/) for help with the format of your guide and the styling of your text. Also note that our site uses the [Hugo](https://gohugo.io/) static site generator to render the website, and Hugo offers several features to enhance your Markdown files. These features are covered in our formatting guide.
 
-1.  When creating your guide, first determine where it should be located within the docs website's directory structure. For example, to create a new guide in the [https://www.linode.com/docs/guides/kubernetes/](https://www.linode.com/docs/guides/kubernetes/) section, you would create your guide within the `docs/guides/kubernetes/` subfolder inside your repository.
+1.  When creating your guide, first determine where it should be located within the docs website's directory structure. For example, to create a new guide in the [/docs/guides/kubernetes/](/docs/guides/kubernetes/) section, you would create your guide within the `docs/guides/kubernetes/` subfolder inside your repository.
 
     {{< note >}}
 To reiterate, the docs repository contains a folder that is also called `docs/`, and this folder then contains all of the content in the library:
