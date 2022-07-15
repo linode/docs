@@ -1,5 +1,0 @@
-<div id="consent_blackbar"></div>
-{{ partial "jslibs/instantpage/script-src.html" "-" }}
-{{- $js := resources.Match "js/body/**.js" | resources.Concat "js/body.js" -}}
-{{ partial "helpers/script-src.html" $js }}
-<div x-data="lnInitController.New()" x-init="init()"></div>

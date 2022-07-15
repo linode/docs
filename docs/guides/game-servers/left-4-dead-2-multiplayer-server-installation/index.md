@@ -3,7 +3,7 @@ slug: left-4-dead-2-multiplayer-server-installation
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Left 4 Dead 2 is a single-player game developed and published by Valve Inc. Left 4 Dead 2 also offers a great multiplayer mode. This guide will explain how to prepare your Linode, install SteamCMD, and then install and configure Left 4 Dead 2.'
+description: "In this guide, learn how to install and configure a SteamCMD Left 4 Dead 2 server on Linode."
 keywords: ["left 4 dead", "l4d2", "game server", "steamCMD"]
 tags: ["ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,9 @@ published: 2016-02-25
 modified: 2019-02-01
 modified_by:
     name: Linode
-title: 'Left 4 Dead 2 Multiplayer Server Installation'
+title: "How to Install a Left 4 Dead 2 Multiplayer Server"
+h1_title: "Installing a Left 4 Dead 2 Multiplayer Server"
+enable_h1: true
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
@@ -62,7 +64,7 @@ sudo apt-get install libcurl4-gnutls-dev:i386 libc6-i386 libgcc1 screen
 
 4.  If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
-        sudo iptables -A INPUT -p udp- m udp --sport 4380 --dport 1025:65355 -j ACCEPT
+        sudo iptables -A INPUT -p udp -m udp --sport 4380 --dport 1025:65355 -j ACCEPT
         sudo iptables -A INPUT -p udp -m udp --sport 10999 --dport 1025:65355 -j ACCEPT
         sudo iptables -A INPUT -p udp -m udp --sport 7777 --dport 1025:65355 -j ACCEPT
         sudo iptables -A INPUT -p udp -m udp --sport 27015 --dport 1025:65355 -j ACCEPT

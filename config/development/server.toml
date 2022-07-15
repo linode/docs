@@ -15,11 +15,16 @@ for = "/**.{css,jpg,js}"
 Cache-Control = "public, max-age=2"
 
 [[redirects]]
-from = "/docs/content/**"
-to = "/docs/content/"
+from = "/docs/blog/**"
+to = "/docs/sections/"
 status = 200
 
 [[redirects]]
-from = "/docs/**"
+from = "/docs/marketplace/**"
+to = "/docs/sections/"
+status = 200
+
+[[redirects]]
+from = "/docs/resources/**"
 to = "/docs/sections/"
 status = 200

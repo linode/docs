@@ -13,6 +13,7 @@ modified_by:
 published: 2015-06-15
 title: 'KVM Migration Reference'
 tags: ["linode platform"]
+deprecated: true
 ---
 
 Linode's current virtualization stack is built on KVM. Previously, Linode used Xen, and older Linodes may still be on the Xen platform. Along with the increased performance of KVM virtualization, several details are different between Xen and KVM Linodes.
@@ -28,7 +29,6 @@ Device assignments for Xen Linodes were labeled as:
  * */dev/xvda*
  * */dev/xvdb*
  * */dev/xvdc*
-
 
 KVM Linodes use the "*sd*" naming convention:
 
@@ -87,7 +87,7 @@ You should also move your block device assignments to be sequential, without ski
 
 An upgrade to KVM Linode includes the ability to do **Direct Disk** booting. Choosing Direct Disk means we will boot the Linode using the Master Boot Record on your boot device:
 
-[![Direct Disk Boot Mode.](config_direct_disk.png)](config_direct_disk.png)
+![Direct Disk Boot Mode.](config_direct_disk.png)
 
 ## How to Enable KVM
 
@@ -95,7 +95,7 @@ All new Linodes are created as KVM guests. Older Xen Linodes will need to migrat
 
 If your Linode is currently running on Xen, go to the Linode's Dashboard page. In the bottom right of the sidebar is an "Upgrade to KVM" link. Click on the link and follow the instructions to upgrade:
 
-  [![The KVM Upgrade Button.](kvm_upgrade_context.png)](kvm_upgrade_context.png)
+  ![The KVM Upgrade Button.](kvm_upgrade_context.png)
 
 ## Troubleshooting
 

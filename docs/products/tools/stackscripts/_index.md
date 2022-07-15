@@ -12,7 +12,7 @@ cascade:
 
 ## Availability
 
-Tokyo, Japan; Mumbai, India; Singapore, Singapore; Sydney, Australia; Frankfurt, Germany; London, United Kingdom; Toronto, Canada; Newark, NJ, USA; Atlanta, GA, USA; Dallas, TX, USA; Fremont, CA, USA
+StackScripts can be created and deployed across [all regions](https://www.linode.com/global-infrastructure/).
 
 ## Features
 
@@ -26,7 +26,7 @@ Customize your Linode with one of the many StackScripts in our library or discov
 
 ### Create Your Own
 
-Writing new StackScripts is simple. If you can’t find the right StackScript for your Linode, author your own using our [StackScripts guides](https://www.linode.com/docs/platform/stackscripts/).
+Writing new StackScripts is simple. If you can’t find the right StackScript for your Linode, author your own using our [StackScripts guides](/docs/platform/stackscripts/).
 
 ## Pricing
 

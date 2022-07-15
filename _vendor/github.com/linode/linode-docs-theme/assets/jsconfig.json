@@ -1,0 +1,12 @@
+{
+ "compilerOptions": {
+  "baseUrl": ".",
+  "paths": {
+   "*": [
+    "*",
+    "../_vendor/github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3/packages/*",
+    "../_vendor/github.com/hotwired/turbo/src/*"
+   ]
+  }
+ }
+}

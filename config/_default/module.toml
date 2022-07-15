@@ -1,3 +1,4 @@
+vendorClosest = true
 
 # Mounts in this project.
 [[mounts]]
@@ -22,7 +23,7 @@ min = "0.75.0"
 # The main theme.
 # Note that the theme itself contains the mount configuration.
 [[imports]]
-path = "github.com/bep/linodedocs"
+path = "github.com/linode/linode-docs-theme"
 
 
 # Linode's OpenAPI definition.

@@ -3,7 +3,7 @@ slug: how-to-install-docker-and-deploy-a-lamp-stack
 author:
   name: Joe D.
   email: docs@linode.com
-description: 'LAMP container with Docker on Linode'
+description: 'This article gives you step-by-step instructions for installing Docker and using the application to create a LAMP stack within a Docker container.'
 keywords: ["docker", "lamp", "LAMP", "ubuntu", "debian"]
 tags: ["lamp","container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -49,7 +49,7 @@ Warning: current kernel is not supported by the linux-image-extra-virtual
           linux-image-virtual kernel and linux-image-extra-virtual for AUFS support.
           + sleep 10
 
-This message can be safely ignored, as the script will continue the installation using DeviceMapper or OverlayFS.  If you require AUFS support, you will need to configure a [distribution supplied](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub/) or [custom compiled](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu/) kernel.
+This message can be safely ignored, as the script will continue the installation using DeviceMapper or OverlayFS.  If you require AUFS support, you will need to configure a [distribution supplied](/docs/guides/run-a-distributionsupplied-kernel-with-pvgrub/) or [custom compiled](/docs/guides/custom-compiled-kernel-with-pvgrub-debian-ubuntu/) kernel.
 {{< /note >}}
 
 2.  If necessary, add the non-root user to the "docker" group:
@@ -98,4 +98,4 @@ Congratulations, you have installed a configured LAMP stack using Docker!
 
 
 ## Where to Find Configuration Settings
-The LAMP image was installed using the [Hosting a Website](/docs/websites/hosting-a-website/) guide on a Ubuntu container. The configuration files and settings can be found there, or on the [Docker Hub linode/lamp](https://registry.hub.docker.com/u/linode/lamp/) page.
+The LAMP image was installed using the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide on a Ubuntu container. The configuration files and settings can be found there, or on the [Docker Hub linode/lamp](https://registry.hub.docker.com/u/linode/lamp/) page.

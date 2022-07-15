@@ -4,11 +4,11 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install Nginx and PHP via FastCGI on Ubuntu 12.04 (Precise Pangolin).'
+description: 'This guide shows how to install the popular and highly performant web server Nginx, along with FastCGI and PHP on a Linode running Ubuntu 12.04 "Precise Pangolin".'
 keywords: ["nginx", "nginx ubuntu 12.04", "nginx fastcgi", "nginx php", "unix socket", "tcp socket", "php", "fastcgi"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/nginx/how-to-install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-lts-precise-pangolin/','/websites/nginx/install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-precise-pangolin/','/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin/','/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','/web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/','/web-servers/nginx/install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-precise-pangolin/']
+aliases: ['/websites/nginx/how-to-install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-lts-precise-pangolin/','/websites/nginx/install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-precise-pangolin/','/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin/','/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','/web-servers/nginx/install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-precise-pangolin/']
 modified: 2012-10-09
 modified_by:
   name: Linode
@@ -23,7 +23,7 @@ relations:
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP via FastCGI on your Ubuntu 12.04 LTS (Precise Pangolin) Linode.
 
-It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
 
 ## Set the Hostname
 

@@ -8,7 +8,7 @@ description: 'Installing and configuring the Django web application development 
 keywords: ["django", "python", "apache", "mod_wsgi"]
 tags: ["web applications","django","apache","python","cms","fedora","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/frameworks/django-apache-and-modwsgi-on-fedora-14/','/development/frameworks/django/django-apache-and-modwsgi-on-fedora-14/','/websites/apache/apache-and-modwsgi-on-fedora-14/','/frameworks/django-apache-mod-wsgi/fedora-14/']
+aliases: ['/development/frameworks/django-apache-and-modwsgi-on-fedora-14/','/development/frameworks/django/django-apache-and-modwsgi-on-fedora-14/','/frameworks/django-apache-mod-wsgi/fedora-14/']
 modified: 2013-09-26
 modified_by:
   name: Linode
@@ -25,7 +25,7 @@ relations:
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.
 
-This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [getting started guide](/docs/getting-started/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/web-servers/apache/installation/fedora-14) and a functional [MySQL database](/docs/databases/mysql/fedora-14) system installed.
+This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/web-servers/apache/installation/fedora-14) and a functional [MySQL database](/docs/databases/mysql/fedora-14) system installed.
 
 ## Set the Hostname
 

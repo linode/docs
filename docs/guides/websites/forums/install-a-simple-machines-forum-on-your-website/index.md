@@ -3,7 +3,7 @@ slug: install-a-simple-machines-forum-on-your-website
 author:
   name: Linode
   email: docs@linode.com
-description: This tutorial will guide you through installing a Simple Machines Forum a flexible (SMF), a small to mid-sized discussion forum that's easy to customize.
+description: "This tutorial will guide you through installing a Simple Machines Forum a flexible (SMF), a small to mid-sized discussion forum that's easy to customize."
 keywords: ["smf", "forum software", "web applications", "PHP"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/forums/install-a-simple-machines-forum-on-your-website/','/websites/forums/discussion-forums-with-smf/','/web-applications/bulletin-boards/smf/']
@@ -11,7 +11,9 @@ modified: 2015-02-11
 modified_by:
   name: Elle Krout
 published: 2010-03-18
-title: How to Install a Simple Machines Discussion Forum (SMF) on Linux
+title: "How to Install a Simple Machines Forum on Linux"
+h1_title: "Installing a Simple Machines Discussion Forum (SMF) on Linux"
+enable_h1: true
 deprecated: false
 external_resources:
  - '[SMF Documentation](http://wiki.simplemachines.org/)'
@@ -22,7 +24,7 @@ external_resources:
 
 Simple Machines Forum (SMF) is a popular forum solution for small- to large-sized communities that offers a variety of features. With its modular design and flexibility, users can create their own plugins to modify the behavior of SMF in any way they wish.
 
-Before you begin, be sure you have followed the steps outlined in the [Getting Started Guide](/docs/getting-started/). You will also need a working [LAMP stack](/docs/websites/lamp/).
+Before you begin, be sure you have followed the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). You will also need a working [LAMP stack](/docs/websites/lamp/).
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.

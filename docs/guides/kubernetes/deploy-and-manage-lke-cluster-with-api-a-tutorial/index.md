@@ -3,8 +3,8 @@ slug: deploy-and-manage-lke-cluster-with-api-a-tutorial
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. This guide shows you how to use the Linode API to Deploy and Manage an LKE Cluster.'
-og_description: 'The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. This guide shows you how to use the Linode API to Deploy and Manage an LKE Cluster.'
+description: "Learn how to deploy a cluster on Linode Kubernetes Engine (LKE) through the Linode API."
+og_description: "The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. This guide shows you how to use the Linode API to Deploy and Manage an LKE Cluster."
 keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-11
@@ -12,22 +12,25 @@ modified: 2020-12-03
 modified_by:
   name: Linode
 image: deploy-and-manage-cluster-copy.png
-title: "Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API - A Tutorial"
-h1_title: "A Tutorial for Deploying and Managing a Cluster with Linode Kubernetes Engine and the Linode API"
+title: "Deploy and Manage a Cluster with  Kubernetes Engine"
+h1_title: "Deploying and Managing a Cluster with LKE and the Linode API Tutorial"
+enable_h1: true
+
+title: "Deploy and Manage a Kubernetes Cluster with the Linode API"
+h1_title: "Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE) with the Linode API"
+
 contributor:
   name: Linode
 aliases: ['/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
 tags: ["kubernetes"]
 ---
 
-## What is the Linode Kubernetes Engine (LKE)?
+The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and simple pricing with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/guides/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/guides/how-to-use-block-storage-with-your-linode/). Your LKE Cluster's Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
 
-The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](/docs/guides/billing-and-payments/#linode-cloud-hosting-and-backups) with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/guides/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/guides/how-to-use-block-storage-with-your-linode/). Your LKE Cluster's Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
+**Additional LKE features:**
 
-{{< disclosure-note "Additional LKE features">}}
-* **etcd Backups** : A snapshot of your cluster's metadata is backed up continuously, so your cluster is automatically restored in the event of a failure.
-* **High Availability** : All of your control plane components are monitored and automatically recover if they fail.
-{{</ disclosure-note>}}
+- **etcd Backups**: A snapshot of your cluster's metadata is backed up continuously, so your cluster is automatically restored in the event of a failure.
+- **High Availability**: All of your control plane components are monitored and automatically recover if they fail.
 
 You can easily deploy an LKE cluster in several ways:
 
@@ -37,7 +40,7 @@ You can easily deploy an LKE cluster in several ways:
     {{< note >}}
 The Linode API and the Kubernetes API are two separate interfaces, and both are mentioned in this article. The Linode API allows you to manipulate your Linode infrastructure, while the Kubernetes API allows you to manage the software objects running in your cluster.
 {{< /note >}}
-- With the [Linode CLI](/docs/guides/linode-cli/)
+- With the [Linode CLI](/docs/products/tools/cli/get-started/)
 
 These Linode-provided interfaces can be used to create, delete, and update the structural elements of your cluster, including:
 
@@ -48,7 +51,7 @@ These Linode-provided interfaces can be used to create, delete, and update the s
 
 The [Kubernetes API](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/#kubernetes-api) and [kubectl](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/#kubectl) are the primary ways you interact with your LKE cluster once it's been created. These tools can be used to configure, deploy, inspect, and secure your Kubernetes workloads, deploy applications, create services, configure storage and networking, and define controllers.
 
-### In this Guide
+## In this Guide
 
 This guide covers how to use the Linode API to:
 
@@ -407,9 +410,28 @@ To update your node pool's node count, send a `PUT` request to the `/lke/cluster
 Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
 {{</ note >}}
 
+### Recycle All Nodes Within a Cluster
+
+You can recycle all nodes within an LKE cluster to upgrade the nodes to the most recent patch of the cluster's Kubernetes version and to otherwise replace the physical Linodes that comprise the cluster. Nodes are recycled on a rolling basis, meaning that only one node is down at a time throughout the recycling process. You need your cluster's ID in order to recycle it's nodes. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section.
+
+{{< caution >}}
+Recycling your cluster involves deleting each of the Linodes in the node pool and replacing them with new Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) is erased.
+{{< /caution >}}
+
+| **Required Parameters** | **Description** |
+|-------|-------|
+| `clusterId` | ID of the LKE cluster to lookup. |
+
+To recycle all nodes within a cluster, send a `POST` request to the `/lke/clusters/{clusterId}/pools/{poolId}/recycle` endpoint. In the URL of this example, replace `12345` with your cluster's ID:
+
+    curl -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $TOKEN" \
+        -X POST \
+        https://api.linode.com/v4/lke/clusters/12345/recycle
+
 ### Recycle your LKE Node Pool
 
-You can recycle an LKE cluster's node pool to update its nodes to the most recent patch of the cluster's Kubernetes version. Nodes are recycled on a rolling basis that only one node is down at a time throughout the recycling process. You need your cluster's ID and the node pool's ID in order to recycle it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section. If you don’t know your node pool's ID, see the [List a Cluster’s Node Pools](#list-a-cluster-s-node-pools) section.
+You can recycle an LKE cluster's node pool to upgrade its nodes to the most recent patch of the cluster's Kubernetes version. Nodes are recycled on a rolling basis, meaning that only one node is down at a time throughout the recycling process. You need your cluster's ID and the node pool's ID in order to recycle it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section. If you don’t know your node pool's ID, see the [List a Cluster’s Node Pools](#list-a-cluster-s-node-pools) section.
 
 {{< caution >}}
 Recycling your node pool involves deleting each of the Linodes in the node pool and replacing them with new Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) is erased.
@@ -426,6 +448,50 @@ To recycle your node pool, send a `POST` request to the `/lke/clusters/{clusterI
         -H "Authorization: Bearer $TOKEN" \
         -X POST \
         https://api.linode.com/v4/lke/clusters/12345/pools/196/recycle
+
+### Recycle a Single Node within a Node Pool
+
+You can recycle an individual node within a LKE Cluster's Node Pool. You need your cluster's ID and the node ID in order to recycle it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section. If you don’t know your node ID, see the [List a Cluster’s Node Pools](#list-a-cluster-s-node-pools) section.
+
+{{< caution >}}
+Recycling your node pool involves deleting each of the Linodes in the node pool and replacing them with new Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) is erased.
+{{< /caution >}}
+
+| **Required Parameters** | **Description** |
+|-------|-------|
+| `clusterId` | ID of the LKE cluster to lookup. |
+| `nodeId` | ID of the LKE node to lookup. |
+
+ To recycle your node, send a `POST` request to the `/lke/clusters/{clusterId}/nodes/{nodeId}/recycle` endpoint. In the URL of this example, replace `12345` with your cluster's ID and `12345-6aa78910bc` with your node ID:
+
+    curl -H "Authorization: Bearer $TOKEN" \
+        https://api.linode.com/v4/lke/clusters/12345/nodes/12345-6aa78910bc
+
+
+### Upgrade your LKE Cluster to the Next Minor Version
+
+| **Required Parameters** | **Description** |
+|-------|-------|
+| `clusterId` | ID of the LKE cluster to lookup. |
+| `k8s_version` | The next minor version of Kubernetes |
+
+To upgrade your LKE cluster's version, send a `PUT` request to the `/lke/clusters/{clusterId}` endpoint. In this example, ensure you replace `12345` with your cluster's ID, and `1.17` with whichever Kubernetes version is the next currently available:
+
+    curl -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $TOKEN" \
+            -X PUT -d '{
+            "k8s_version": "1.17"
+            }' https://api.linode.com/v4/lke/clusters/12345
+
+The response body displays the cluster version that will be applied following a [recycle](#recycle-your-lke-cluster):
+
+{{< output >}}
+{"created": "2019-08-02T17:17:49", "updated": "2019-08-05T19:11:19", "k8s_version": "1.17", "tags": ["ecomm", "blogs"], "label": "updated-cluster-name", "id": 456, "region": "us-central"}%
+{{</ output >}}
+
+{{< caution >}}
+Nodes within the LKE cluster *must* be [recycled](#recycle-your-lke-cluster) before the cluster version will be successfully upgraded.
+{{< /caution >}}
 
 ### Add New Tags to your LKE Cluster
 

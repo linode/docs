@@ -3,7 +3,7 @@ slug: install-and-configure-owncloud-on-ubuntu-16-04
 author:
   name: Angel Guarisma
   email: docs@linode.com
-description: 'This guide shows how to securely setup ownCloud, a file-hosting service that facilitates file sharing across multiple devices, on Ubuntu 16.04.'
+description: "This guide shows how to securely setup ownCloud, a file-hosting service that facilitates file sharing across multiple devices, on Ubuntu 16.04."
 keywords: ["owncloud", "install owncloud", "cloud storage ubuntu"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,9 @@ published: 2017-08-07
 modified: 2017-08-07
 modified_by:
   name: Angel Guarisma
-title: 'Install and Configure ownCloud on Ubuntu 16.04'
+title: "How to Install and Configure ownCloud on Ubuntu 16.04"
+h1_title: "Installing and Configuring ownCloud on Ubuntu 16.04"
+enable_h1: true
 external_resources:
   - '[ownCloud Official Documentation](https://doc.owncloud.org/)'
   - '[ownCloud Marketplace](https://marketplace.owncloud.com/)'
@@ -23,22 +25,17 @@ relations:
 aliases: ['/applications/cloud-storage/install-and-configure-owncloud-on-ubuntu-16-04/']
 ---
 
-
 OwnCloud is an open-source, cloud-based, file hosting service you can install on your Linode. OwnCloud offers a quick installation process, works out of the box, and has an extensive library of plugins available. Its cross-platform compatibility means you can access your files from most major operating systems, browsers, and mobile devices.
 
 ![ownCloud](owncloud_ubuntu.jpg)
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-3.  [Install and configure a LAMP stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/).
-
-4.  Update your system:
-
-        sudo apt update && sudo apt upgrade
+3.  [Install and configure a LAMP stack](/docs/guides/install-lamp-stack-on-ubuntu-16-04/).
 
 ## Install ownCloud
 

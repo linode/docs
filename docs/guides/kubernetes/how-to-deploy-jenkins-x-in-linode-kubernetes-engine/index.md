@@ -3,12 +3,13 @@ slug: how-to-deploy-jenkins-x-in-linode-kubernetes-engine
 author:
   name: Daniele Polencic
   email: daniele@learnk8s.io
-description: 'Jenkins X is CI/CD tool that automates the management of development environments and the promotion of new versions of applications between environments. This guide illustrates how to install Jenkins X on Linode Kubernetes Engine.'
-og_description: 'Jenkins X is CI/CD tool that automates the management of development environments and the promotion of new versions of applications between environments. This guide illustrates how to install Jenkins X on Linode Kubernetes Engine.'
+description: 'Learn how to install CI/CD tool Jenkins X on Linode Kubernetes Engine in this step-by-step guide.'
+og_description: 'Learn how to install CI/CD tool Jenkins X on Linode Kubernetes Engine in this step-by-step guide.'
 keywords: ['kubernetes','pipelines','ci/cd','kubernetes','jenkins x','jenkins']
 tags: ["docker","kubernetes","container","automation","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-29
+image: DeployJenkinsX_LinodeKubEng.png
 modified_by:
   name: Linode
 title: "How to Deploy Jenkins X in Linode Kubernetes Engine"
@@ -35,7 +36,7 @@ aliases: ['/kubernetes/how-to-deploy-jenkins-x-in-linode-kubernetes-engine/']
 
 ## Create an LKE Cluster
 
-Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](https://www.linode.com/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
+Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
 
 We recommend using three 16GB Linodes to start with.
 
@@ -75,7 +76,7 @@ Git tree state clean
 ## Bootstrap Jenkins X
 
 {{< note >}}
-If you used the `export` command with the KUBECONFIG variable so that you can use kubectl to connect to your cluster, you will need to perform the following steps in the same terminal terminal window where you executed that command in order for `jx` to also be able to connect to your cluster.
+If you used the `export` command with the KUBECONFIG variable so that you can use kubectl to connect to your cluster, you will need to perform the following steps in the same terminal window where you executed that command in order for `jx` to also be able to connect to your cluster.
 {{</ note >}}
 
 1.   Create a new folder, navigate to the new folder, and execute the `jx boot` command to start a new project:

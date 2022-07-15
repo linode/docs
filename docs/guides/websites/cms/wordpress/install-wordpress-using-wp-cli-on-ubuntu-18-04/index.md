@@ -5,7 +5,7 @@ author:
     email: docs@linode.com
 description: 'Install WordPress Using WP-CLI on Ubuntu 18.04'
 keywords: ["install WP-CLI", "ubuntu", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
-aliases: ['/websites/cms/wordpress/install-wordpress-using-wp-cli-on-ubuntu-18-04/','/websites/cms/install-and-configure-wordpress-using-wp-cli/','/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-18-04/']
+aliases: ['/websites/cms/wordpress/install-wordpress-using-wp-cli-on-ubuntu-18-04/']
 tags: ["ubuntu","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-06
@@ -13,6 +13,8 @@ modified: 2018-08-10
 modified_by:
     name: Linode
 title: 'Install WordPress Using WP-CLI on Ubuntu 18.04'
+deprecated: true
+noindex: true
 contributor:
     name: Navjot Singh
     link: https://github.com/navjotjsingh
@@ -37,12 +39,12 @@ This is where WP-CLI, a powerful command line tool with which you can manage Wor
 
 This guide is written for Ubuntu 18.04. Before moving ahead, make sure you have completed the following guides:
 
-* [Getting Started with Linode](/docs/getting-started/)
-* [Securing your Server](/docs/security/securing-your-server/)
-* [How to Install a LAMP Stack on Ubuntu 18.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/)
+* [Getting Started with Linode](/docs/guides/getting-started/)
+* [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
+* [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/)
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install WP-CLI

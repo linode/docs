@@ -3,7 +3,7 @@ slug: how-to-install-mysql-on-debian-7
 author:
   name: Mike Rosabal
   email: docs@linode.com
-description: 'Getting started with MySQL on Debian 7.'
+description: 'This article is a guide to getting started with the popular database management system software, MySQL, including how to install the service on Debian 7.'
 keywords: ["MySQL on Linux", "Debian 7", "Debian Wheezy", "Debian", "cloud", "cloud hosting", "Linux", "MySQL", "database", "MariaDB", "install MySQL", "secure MySQL", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mysql/debian-7-wheezy/','/databases/mysql/how-to-install-mysql-on-debian-7/','/databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy/']
@@ -24,6 +24,7 @@ relations:
         keywords:
             - distribution: Debian 7
 tags: ["debian","database","mysql"]
+deprecated: true
 ---
 
 ![How to Install MySQL on Debian 7](How_to_Install_MySQL_on_Debian_7_smg.jpg)
@@ -59,7 +60,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 During the installation process, you will be prompted to set a password for the MySQL root user as shown below. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Debian 7.](mysql-rootpw-debian.png)](mysql-rootpw-debian.png)
+![Setting the MySQL root password in Debian 7.](mysql-rootpw-debian.png)
 
 MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access) for information on connecting to your databases with local clients.
 

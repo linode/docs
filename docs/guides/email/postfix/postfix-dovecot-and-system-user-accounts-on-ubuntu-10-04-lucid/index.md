@@ -1,6 +1,5 @@
 ---
 slug: postfix-dovecot-and-system-user-accounts-on-ubuntu-10-04-lucid
-deprecated: true
 author:
   name: Linode
   email: docs@linode.com
@@ -13,7 +12,6 @@ modified: 2013-09-25
 modified_by:
   name: Linode
 published: 2010-11-09
-expiryDate: 2015-09-25
 title: 'Postfix, Dovecot, and System User Accounts on Ubuntu 10.04 (Lucid)'
 deprecated: true
 relations:
@@ -23,9 +21,7 @@ relations:
             - distribution: Ubuntu 10.04
 ---
 
-
-
-Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/email/postfix/gateway-ubuntu-10-04-lucid) document to install a more minimal email system. If you plan to host a larger number of domains and email aliases, you may want to consider a more sophisticated hosting solution like the [Email Server with Postfix, MySQL and Dovecot](/docs/email/postfix/dovecot-mysql-ubuntu-10-04-lucid/).
+Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/email/postfix/gateway-ubuntu-10-04-lucid) document to install a more minimal email system. If you plan to host a larger number of domains and email aliases, you may want to consider a more sophisticated hosting solution like the [Email Server with Postfix, MySQL and Dovecot](/docs/guides/email-with-postfix-dovecot-and-mysql-on-ubuntu-10-04-lts-lucid/).
 
 ## Set the Hostname
 
@@ -50,11 +46,11 @@ Issue the following commands to install all required software:
 
 During the installation process, the package manager will prompt you for the responses to a few questions to complete the Postfix installation. To the first question regarding the type of mail server you want to configure, select "Internet Site" and continue as in the following image:
 
-[![Selecting the Postfix mail server configuration type on a Ubuntu 10.04 (Lucid) system.](89-postfix-courier-mysql-02-mail-server-type-2.png)](89-postfix-courier-mysql-02-mail-server-type-2.png)
+![Selecting the Postfix mail server configuration type on a Ubuntu 10.04 (Lucid) system.](89-postfix-courier-mysql-02-mail-server-type-2.png)
 
 The next prompt will ask for the system mail name. This should correspond to the fully qualified domain name (FQDN) that points to your Linode's IP address. In this example, we're using a machine specific hostname for our server. Set the reverse DNS for your Linode's IP address to the fully qualified domain name you assign as the system mail name. You will be able to send mail from additional domains as configured later in this document. See the following example:
 
-[![Selecting the Postfix system mail name on a Ubuntu 10.04 (Lucid) system.](90-postfix-courier-mysql-02-mail-server-type-3.png)](90-postfix-courier-mysql-02-mail-server-type-3.png)
+![Selecting the Postfix system mail name on a Ubuntu 10.04 (Lucid) system.](90-postfix-courier-mysql-02-mail-server-type-3.png)
 
 ## SASL Authentication
 
@@ -91,7 +87,7 @@ You can use any SSL certificate with Postfix. If you already have a commercial c
 
 ## Postfix
 
-At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/docs/tools-reference/linux-users-and-groups/).
+At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/docs/guides/linux-users-and-groups/).
 
 Consider the [basic email gateway guide](/docs/email/postfix/gateway-ubuntu-10-04-lucid) for more information regarding Postfix virtual hosting configuration. If you need to deliver mail locally, continue for documentation of mail routing and the Dovecot POP3/IMAP server.
 

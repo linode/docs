@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-08
 modified_by:
   name: Linode
-image: Searchinginthe-CloudManager.png
+image: L_SearchInCloudManager.png
 title: "How to Search in the Cloud Manager"
 h1_title: "Searching in the Cloud Manager"
 contributor:
@@ -40,7 +40,7 @@ The search tool can also be used with keywords to help filter and refine the res
 | Keyword   | Definition   |
 |:--------------|:------------|
 | type | Type of resource. Linode, image, NodeBalancer, etc.  |
-| tag  | Tag applied to your resources. See the guide on [Tags and Groups](/docs/quick-answers/linode-platform/tags-and-groups/). |
+| tag  | Tag applied to your resources. See the guide on [Tags and Groups](/docs/guides/tags-and-groups/). |
 | label | The label or identifier for your Linode. |
 | region | The region for your resources, such as `us-east`. For a full list of regions, see the return values from the API or CLI [List Regions](https://developers.linode.com/api/v4/regions) endpoint. |
 | IP | The IP address of your resource. |
@@ -75,7 +75,7 @@ The Cloud Manager includes support for standard logical operators `OR`, `AND`, a
 
 ### AND
 
-`AND` will allow you to narrow your search more precisely for additional qualifiers. The following search finds all of th Linodes which also match the `production` tag:
+`AND` will allow you to narrow your search more precisely for additional qualifiers. The following search finds all of the Linodes which also match the `production` tag:
 
     type:linode AND tag:production
 

@@ -3,14 +3,16 @@ slug: beginners-guide-to-kubernetes-part-4-controllers
 author:
   name: Andy Stevens
   email: docs@linode.com
-description: 'An introduction to Kubernetes concepts and components.'
+description: 'This is part four in a multi-part beginner''s guide to Kubernetes where you will be introduced to another major part of Kubernetes - Controllers.'
 keywords: ['kubernetes','k8s','beginner','architecture']
 tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
 modified_by:
   name: Linode
-title: "A Beginner's Guide to Kubernetes, Part 4: Controllers"
+title: "Beginner's Guide to Kubernetes (Part 4): Controllers"
+h1_title: "Beginner's Guide to Kubernetes (Part 4): Controllers"
+enable_h1: true
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]
@@ -219,7 +221,7 @@ You should see an output like the following:
 
 You can use the name of the Pod to inspect its output by consulting the log file for the Pod:
 
-    kubectl get logs hello-world-4jzdm
+    kubectl logs hello-world-4jzdm
 
 To delete the Job, and its Pod, issue the `delete` command:
 
@@ -231,12 +233,12 @@ There are other controllers not listed in this guide that you may find useful. V
 
 To continue in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series, visit part 5:
 
- - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/)
+ - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/)
 
- - [Beginner's Guide to Kubernetes, Part 2: Master, Nodes, and the Control Plane](/docs/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/)
+ - [Beginner's Guide to Kubernetes, Part 2: Master, Nodes, and the Control Plane](/docs/guides/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/)
 
- - [Beginner's Guide to Kubernetes, Part 3: Objects](/docs/kubernetes/beginners-guide-to-kubernetes-part-3-objects/)
+ - [Beginner's Guide to Kubernetes, Part 3: Objects](/docs/guides/beginners-guide-to-kubernetes-part-3-objects/)
 
- - [Beginner's Guide to Kubernetes, Part 4: Controllers](/docs/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/) (You Are Here)
+ - [Beginner's Guide to Kubernetes, Part 4: Controllers](/docs/guides/beginners-guide-to-kubernetes-part-4-controllers/) (You Are Here)
 
- - [Beginner's Guide to Kubernetes, Part 5: Conclusion](/docs/kubernetes/beginners-guide-to-kubernetes-part-5-conclusion/)
+ - [Beginner's Guide to Kubernetes, Part 5: Conclusion](/docs/guides/beginners-guide-to-kubernetes-part-5-conclusion/)

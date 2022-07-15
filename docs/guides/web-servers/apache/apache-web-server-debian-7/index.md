@@ -37,7 +37,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
--   Make sure you've followed the [Getting Started](/docs/getting-started/) guide.
+-   Make sure you've followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 -   As part of the Getting Started guide, make sure you [set the hostname](/docs/getting-started#setting-the-hostname) for your server.
 
     Issue the following commands to make sure your hostname is set properly:

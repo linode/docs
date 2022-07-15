@@ -3,7 +3,7 @@ slug: discussion-forums-with-mybb
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configuring the MyBB system for hosting web-based discussion forums.'
+description: 'This guide provides you with step-by-step instructions for installing and configuring the free and open-source discussion forum app MyBB on Linux.'
 keywords: ["mybb", "forum software", "web applications", "PHP"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/forums/discussion-forums-with-mybb/','/web-applications/bulletin-boards/mybb/']
@@ -17,7 +17,7 @@ deprecated: true
 
 MyBB is a popular alternative to large forum systems like SMF and phpBB. It is designed to be lightweight yet fully customizable, and can be modified to suit your needs. While MyBB will work with MySQL and SQLite, this guide will use MySQL as the database engine.
 
-Before we begin, we assume you have followed the steps outlined in the [getting started guide](/docs/getting-started/). You will also need a working [LAMP stack](/docs/lamp-guides/).
+Before we begin, we assume you have followed the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). You will also need a working [LAMP stack](/docs/lamp-guides/).
 
 ## Prerequisites
 

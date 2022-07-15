@@ -3,23 +3,34 @@ slug: getting-started-with-nodebalancers
 author:
   name: Linode
   email: docs@linode.com
-description: 'Using a NodeBalancer to begin managing a simple web application.'
-og_description: 'Get started with Linode NodeBalancers by using a NodeBalancer to begin managing a simple web application.'
+description: 'This is a step-by-step guide on how to use a NodeBalancer to begin managing a simple web application that can support a large number of users.'
+og_description: 'This is a step-by-step guide on how to use a NodeBalancer to begin managing a simple web application that can support a large number of users.'
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
 tags: ["cloud manager","linode platform","networking","web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/nodebalancers/getting-started/','/platform/nodebalancer/getting-started-with-nodebalancers-new-manager/','/platform/nodebalancer/getting-started-with-nodebalancers/','/linode-platform/nodebalancer-howto/','/platform/nodebalancer/getting-started-with-nodebalancers-classic-manager/']
-modified: 2018-08-21
+aliases: ['/nodebalancers/getting-started/','/platform/nodebalancer/getting-started-with-nodebalancers-new-manager/','/platform/nodebalancer/getting-started-with-nodebalancers/','/linode-platform/nodebalancer-howto/','/platform/nodebalancer/getting-started-with-nodebalancers-classic-manager/', '/guides/nodebalancer/getting-started-with-nodebalancers/']
+modified: 2021-08-11
 modified_by:
   name: Linode
 published: 2015-02-12
-title: Getting Started with NodeBalancers
-image: getting-started-with-nodebalancers.png
+title: Getting Started with Linode's NodeBalancers (Load Balancers)
+h1_title: Getting Started with NodeBalancers
+enable_h1: true
 ---
 
 Nearly all applications that are built using Linodes can benefit from load balancing, and load balancing itself is the key to expanding an application to larger numbers of users. Linode provides NodeBalancers, which can ease the deployment and administration of a load balancer.
 
-This guide provides a high-level overview setting up a NodeBalancer, but it's outside this page's scope to explain each application a NodeBalancer could balance. For more information on various applications that might be useful behind NodeBalancer, see the rest of [Linode Guides & Tutorials on NodeBalancers](/docs/platform/nodebalancer/).
+This guide provides a high-level overview setting up a NodeBalancer, but it's outside this page's scope to explain each application a NodeBalancer could balance. For more information on various applications that might be useful behind NodeBalancer, see the rest of [Linode Guides & Tutorials on NodeBalancers](/docs/guides/platform/nodebalancer/).
+
+## Before You Begin
+
+- This tutorial assumes a basic understanding of load balancing and NodeBalancers. We recommend reviewing the following guides:
+
+    - [What Are NodeBalancers](/docs/guides/what-are-nodebalancers/)
+    - [Introduction to High Availability](/docs/guides/introduction-to-high-availability/)
+    - Going further: [NodeBalancer Reference Guide](/docs/guides/nodebalancer-reference-guide/)
+
+-  To properly configure a NodeBalancer, you must have at least two Linode Compute Instances within the same data center. Both of these servers must also have private IPv4 addresses. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address).
 
 ## Configuring a NodeBalancer
 
@@ -45,7 +56,7 @@ Once you are satisfied that NodeBalancer is working normally, you can switch you
 
 1.  Edit or create an A record for your website's domain name, pointing to your NodeBalancer's IP address.
 
-    [![Adding an A Record.](nodebalancers-add-a-name-small.png "Adding an A Record")](nodebalancers-add-a-name.png)
+    ![Adding an A Record.](nodebalancers-add-a-name.png)
 
 1.  Also add an AAAA record for the IPv6 address.
 
@@ -53,9 +64,9 @@ Once the DNS changes propagate, traffic will begin flowing through the NodeBalan
 
 ## Additional Backends and Features
 
-On another Linode, make an exact copy of your current web server. The [Linode Backups](/docs/platform/disk-images/linode-backup-service/) service can be instrumental for doing so, as a snapshot can be restored to any other Linode. Once you have another backend ready, simply repeat step four of [Configuring a NodeBalancer](/docs/platform/nodebalancer/getting-started-with-nodebalancers/#configuring-a-nodebalancer) to add it to the NodeBalancer configuration.
+On another Linode, make an exact copy of your current web server. The [Linode Backups](/docs/products/storage/backups/) service can be instrumental for doing so, as a snapshot can be restored to any other Linode. Once you have another backend ready, simply repeat step four of [Configuring a NodeBalancer](/docs/platform/nodebalancer/getting-started-with-nodebalancers/#configuring-a-nodebalancer) to add it to the NodeBalancer configuration.
 
-[![Adding another backend to the NodeBalancer's configuration.](nodebalancers-backend-nodes2-small.png "Adding another backend to the NodeBalancer's configuration")](nodebalancers-backend-nodes2.png)
+![Adding another backend to the NodeBalancer's configuration.](nodebalancers-backend-nodes2.png)
 
 Once the configuration is sent to the backend, users will be balanced over the two Linodes and each will be monitored for health. This configuration is easy to work with, as upgrades can be rolled out to each backend without disrupting service and backend Linodes can be taken in and out of rotation at will.
 

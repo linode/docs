@@ -63,7 +63,7 @@ To establish a tunnel in Windows, you can use the free SSH client PuTTY. It can 
 
 1.  Launch PuTTY. On the first screen you will need to type your login information in the **Host Name (or IP address)** box. The **SSH protocol** and **Port** are checked by default.
 
-    [![PuTTY main window.](1563-01-putty_basic.png)](1563-01-putty_basic.png)
+    ![PuTTY main window.](1563-01-putty_basic.png)
 
 2.  Under the **Connection** menu, under **SSH** select **Tunnels**. There you must enter the port you want (**12345**, for example) in **Source Port**, and check **Dynamic**.
 
@@ -91,7 +91,7 @@ To set up the browser:
 
 4.  The window **Connection Settings** will open. Check **Manual Proxy Configuration**, and in **SOCKS Host** write your local host address (127.0.0.1) and the port you choose when you created the tunnel (**12345**, in this example). Make sure **SOCKS v5** is selected (it will be by default).
 
-    [![Firefox preferences - Proxy Settings.](1567-05-firefox2.png)](1567-05-firefox2.png)
+    ![Firefox preferences - Proxy Settings.](1567-05-firefox2.png)
 
 5.  Click **OK** to accept the changes.
 
@@ -108,16 +108,16 @@ Keep these considerations in mind when you use SSH tunneling.
     1.  Open Firefox. Type **<about:config>** in the Location Bar to display the browser's preferences.
     2.  To be able to edit these settings, click the button **I'll be careful, I promise**.
 
-        [![Firefox about:config warning message.](1568-06-dns1.png)](1568-06-dns1.png)
+        ![Firefox about:config warning message.](1568-06-dns1.png)
 
     3.  In the Search bar type **network.proxy.socks\_remote\_dns** and press `Return`.
     4.  You will see that the default value for that preference is **false**.
 
-        [![Firefox network.proxy.socks\_remote\_dns preference.](1569-07-dns2.png)](1569-07-dns2.png)
+        ![Firefox network.proxy.socks\_remote\_dns preference.](1569-07-dns2.png)
 
     5.  Double click **network.proxy.socks\_remote\_dns** to change its value to **true**. The whole line will change to bold text, and the status column to **user select**, indicating you modified its default value.
 
-        [![Firefox network.proxy.socks\_remote\_dns value changed.](1570-08-dns3.png)](1570-08-dns3.png)
+        ![Firefox network.proxy.socks\_remote\_dns value changed.](1570-08-dns3.png)
 
     6.  Leave the `about:config window` by typing any URL in the location bar or closing Firefox.
 

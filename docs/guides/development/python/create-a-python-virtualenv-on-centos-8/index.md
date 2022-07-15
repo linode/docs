@@ -3,8 +3,7 @@ slug: create-a-python-virtualenv-on-centos-8
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide provides a brief introduction to Python virtual environments using the virtualenv tool. You will install the virtualenv tool on an CentOS 8 Linode and create a virtual environment running Python3.'
-og_description: 'This guide provides a brief introduction to Python virtual environments using the virtualenv tool. You will install the virtualenv tool on an CentOS 8 Linode and create a virtual environment running Python3.'
+description: This guide provides a brief introduction to Python virtual environments using the virtualenv tool on CentOS 8.
 keywords: ["python", "python virtual environment", "virtualenv", "centos 8"]
 tags: ["python","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,13 +11,14 @@ modified: 2020-04-07
 modified_by:
   name: Linode
 published: 2017-08-13
-title: 'How to create a Python Virtual Environment on CentOS 8'
-h1_title: 'Creating a Python Virtual Environment on CentOS 8'
+title: How to Create a Python Virtual Environment on CentOS 8
+h1_title: Creating a Python Virtual Environment on CentOS 8
+enable_h1: true
 external_resources:
 - '[virtualenv Official Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]
 languages: ["python"]
-image: 'Creating_a_Python_Virtual_Environment_on_Centos_8_1200x631.png'
+image: Python_virtualenv_CentOS8.png
 relations:
     platform:
         key: python-virtual-env
@@ -47,7 +47,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 ## Create a Python Virtual Environment
 
 {{< note >}}
-By default, [Python 3.6.8](https://docs.python.org/3.6/whatsnew/3.6.html) is installed on CentOS 8.
+CentOS 8 does not include any version of Python by default. To install Python on CentOS 8, read our guide on [installing Python 3 on CentOS 8](/docs/guides/how-to-install-python-on-centos-8/)
 {{</ note >}}
 
 1.  To install Python's virtual environment:
@@ -58,7 +58,7 @@ By default, [Python 3.6.8](https://docs.python.org/3.6/whatsnew/3.6.html) is ins
 
         mkdir ~/python-environments && cd ~/python-environments
 
-1. Create a Python virtual environment. By default, virtualenv will attempt to use your system's default Python interpreter to create a new environment. Replace `env` with the name you would like to assign to your virtual environment.
+1. Create a Python virtual environment. By default, virtualenv attempts to use your system's default Python interpreter to create a new environment. Replace `env` with the name you would like to assign to your virtual environment.
 
         virtualenv env
 
@@ -84,7 +84,7 @@ python3.6.8
 
         source env/bin/activate
 
-    The name of the working environment will appear in parentheses after it's created.
+    The name of the working environment appears in parentheses after it's created.
 
       {{< output >}}
 (env) example_user@hostname:~/python-environments$
@@ -98,7 +98,7 @@ python3.6.8
 
         deactivate
 
-    Your virtual environment will be deactivated and you should no longer see its name listed next to your command line's prompt
+    Your virtual environment is deactivated and you should no longer see its name listed next to your command line's prompt
 
     {{< output >}}
 example_user@hostname:~/python-environments$

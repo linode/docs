@@ -1,13 +1,15 @@
 ---
 slug: linux-static-ip-configuration
+deprecated: true
+deprecated_link: /guides/manual-network-configuration/
 author:
   name: Linode
   email: docs@linode.com
-description: 'Set static IP, routes and DNS in Linux.'
+description: "Learn how to manually edit your distribution-specific network configuration files to set static IPs, routes and DNS."
 keywords: ["static", "ip address", "addresses"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/linux-static-ip-configuration/','/networking/configuring-static-ip-interfaces/','/networking/linode-network/linux-static-ip-configuration/']
-modified: 2018-01-02
+modified: 2021-10-07
 modified_by:
   name: Linode
 published: 2014-07-20
@@ -19,8 +21,7 @@ All Linodes are created with one IPv4 address and one for IPv6. An IPv4 address 
 
 ![Linux Static IP Configuration](linux-static-ip-configuration.png)
 
-If you want to manually configure static addressing in your Linode's operating system, this guide shows you how to do that. You will want to make these changes using [Lish](/docs/guides/using-the-linode-shell-lish/), so if a configuration error disconnects your SSH session, you won't be locked out of a system that has no network access.
-
+If you want to manually configure static addressing in your Linode's operating system, this guide shows you how to do that. You will want to make these changes using [Lish](/docs/guides/using-the-lish-console/), so if a configuration error disconnects your SSH session, you won't be locked out of a system that has no network access.
 
 ## General Information
 
@@ -42,22 +43,23 @@ Although your Linode may have multiple IP addresses assigned, and additionally m
 
 For example, if the address `198.51.100.5` is assigned to the interface `eth0:3`, you should use `198.51.100.1` as the gateway. A gateway should not be specified for private IP addresses.
 
+The gateway in this instance works similarly to a router, and provides access to the wider internet and other Linode services. This must always be configured on your Linode in order to have network access.
+
 **DNS Resolution**
 
-Your DNS resolver addresses are listed under the [**Networking**](/docs/guides/remote-access/) tab of the Linode detail page in the [Cloud Manager](https://cloud.linode.com/dashboard), though of course you are free to use any resolvers you choose.
+Your DNS resolver addresses are listed under the [**Networking**](/docs/guides/managing-ip-addresses/) tab of the Linode detail page in the [Cloud Manager](https://cloud.linode.com/dashboard), though of course you are free to use any resolvers you choose.
 
 However, unless you have a specific reason for doing so, you should *not* change your Linode's nameservers by editing `/etc/resolv.conf`. Depending on your distribution, `resolv.conf` may be overwritten by a networking service such as NetworkManager or systemd-resolved. Resolver options are usually set in the network interface's configuration file.
 
-
 ## Disable Network Helper
 
-Our [Network Helper](/docs/guides/network-helper/) tool is enabled by default for new Linodes. It automatically configures static IPv4 addresses, routing, and DNS on each bootup of your Linode. When manually setting static addressing, Network Helper must be *disabled* so it doesn't overwrite your changes on the next reboot. You can disable Network Helper either *globally* for all of the Linodes on your account, or for individual Linodes, by following the [Network Helper Settings](/docs/guides/network-helper/#network-helper-settings) section of our network helper guide.
+Our [Network Helper](/docs/guides/network-helper/) tool is enabled by default for new Linodes. It automatically configures static IPv4 addresses, routing, and DNS on each bootup of your Linode. When manually setting static addressing, Network Helper must be *disabled* so it doesn't overwrite your changes on the next reboot. You can disable Network Helper either *globally* for all of the Linodes on your account, or for individual Linodes, by following the [Enable or Disable Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) section of our network helper guide.
 
 ## Configure Static Addressing
 
 To find the networking information for each of your Linodes in your Linode Manager, click on the **Linodes** tab to the left of the page, select the Linode you'll be configuring, then click on the **Networking** towards the top.
 
-[![Linode Manager / Networking Tab](linode_demo_steps.png)](linode_demo_steps.png)
+![Linode Manager / Networking Tab](linode_demo_steps.png)
 
 You'll see the following information for your Linode. Use this information to configure your Linode's network settings as shown below.
 
@@ -66,10 +68,13 @@ You'll see the following information for your Linode. Use this information to co
 *   IPv6 gateway
 *   DNS resolvers (if you want to use Linode's)
 
-[![Linode Manager / Remote Access](linode_demo.png)](linode_demo.png)
+![Linode Manager / Remote Access](linode_demo.png)
 
 Below are example configurations for the given Linux distribution. Edit the example files substituting the example IP addresses with those of your Linode, gateway and DNS nameservers. Depending on the amount of addresses you want to configure, not all lines will be necessary.
 
+{{< note >}}
+ All additional `/64` IPv6 ranges are routed through the original IPv6 SLAAC address for a Linode. When configuring both a SLAAC address and a routed range, additional configuration changes should be made.
+{{< /note >}}
 
 ### Arch, CoreOS Container Linux
 
@@ -81,13 +86,13 @@ Name=eth0
 
 [Network]
 DHCP=no
-Domains=members.linode.com
+Domains=203-0-113-0.ip.linodeusercontent.com
 IPv6PrivacyExtensions=false
 
 # DNS resolvers (safe to mix IPv4 and IPv6)
 DNS=203.0.113.1 2001:db8:0:123::1 203.0.113.2
 
-# IPv4 gateway and primary address.
+# IPv4 gateway and primary public IPv4 address.
 Gateway=198.51.100.1
 Address=198.51.100.2/24
 
@@ -97,12 +102,8 @@ Address=198.51.100.3/24
 # Add a private address:
 Address=192.168.133.234/17
 
-# IPv6 gateway and primary address.
-Gateway=fe80::1
-Address=2001:db8:2000:aff0::2/64
-
 # Add a second IPv6 address.
-Address=2001:db8:2000:aff0::3/32
+Address=2001:db8:2000:aff0::3/64
 {{< /file >}}
 
 {{< note >}}
@@ -121,12 +122,10 @@ BOOTPROTO=none
 PEERDNS=no
 
 # Edit from "yes" to "no".
-IPV6_AUTOCONF=no
-
 ...
 
 # Add the following lines:
-DOMAIN=members.linode.com
+DOMAIN=203-0-113-0.ip.linodeusercontent.com
 
 # We specifically want GATEWAY0 here, not
 # GATEWAY without an integer following it.
@@ -150,8 +149,7 @@ PREFIX1=24
 IPADDR2=192.0.2.6
 PREFIX2=17
 
-# IPv6 gateway and primary address.
-IPV6_DEFAULTGW=fe80::1%eth0
+# Additional IPv6 address. The SLAAC address is configured automatically.
 IPV6ADDR=2001:db8:2000:aff0::2/128
 
 # Add additional IPv6 addresses, separated by a space.
@@ -175,7 +173,7 @@ IPV6_AUTOCONF=no
 ...
 
 # Add the following lines:
-DOMAIN=members.linode.com
+DOMAIN=203-0-113-0.ip.linodeusercontent.com
 
 # We specifically want GATEWAY0 here, not
 # GATEWAY without an integer following it.
@@ -199,7 +197,7 @@ PREFIX1=24
 IPADDR2=192.0.2.6
 PREFIX2=17
 
-# Your primary IPv6 address (specifying gateway not necessary).
+# Your primary IPv6 SLAAC address (specifying gateway not necessary).
 IPV6ADDR=2001:db8:2000:aff0::2/64
 
 # Add additional IPv6 addresses, separated by a space.
@@ -209,7 +207,7 @@ IPV6ADDR_SECONDARIES="2001:db8:2000:aff0::3/64 2001:db8:2000:aff0::4/64"
 
 ### Debian
 
-Debian 7 through 9 all use *ifup* and *ifdown* to manage networking. In that configuration, Debian is one distribution where it's safe to directly edit `/etc/resolve.conf` because nothing will overwrite your changes if you reboot or restart networking services.
+Debian 7 and above all use *ifup* and *ifdown* to manage networking. In that configuration, Debian is one distribution where it's safe to directly edit `/etc/resolv.conf` because nothing will overwrite your changes if you reboot or restart networking services.
 
 Though systemd-networkd and systemd-resolved are both present in Debian 8 and 9, they're not enabled. If you decide to enable these systemd services to manage networking, you can not set static addresses in the file `/etc/network/interfaces` as shown below. You'll need to use the section further above for [Arch and Container Linux](/docs/guides/linux-static-ip-configuration/#arch-coreos-container-linux). For more information, see `man ifup`, `man ifdown`, `man interfaces 5`, `man systemd-networkd` and `man systemd-resolved`.
 
@@ -229,14 +227,13 @@ iface eth0 inet static
 iface eth0 inet static
   address 198.51.100.10/24
 
-# IPv6 gateway and primary address.
+# Additional IPv6 address and configuration options for additonal IP addresses when using SLAAC address
 iface eth0 inet6 static
-  address 2001:db8:2000:aff0::1/64
-  gateway fe80::1
-
-# Add a second IPv6 address.
-iface eth0 inet6 static
-  address 2001:db8:2000:aff0::2/32
+    address 2001:db8:2000:aff0::1/64
+    address 2001:db8:2000:aff0::2/64
+    address 2001:db8:2000:aff0::3/64
+    autoconf 1
+    acccept_ra 2
 {{< /file >}}
 
 1.  Populate `resolv.conf` with DNS resolver addresses and resolv.conf options ([see man 5 resolv.conf](https://linux.die.net/man/5/resolv.conf)). Be aware that resolv.conf can only use up to three `nameserver` entries. The *domain* and *options* lines aren't necessary, but useful to have.
@@ -245,7 +242,7 @@ iface eth0 inet6 static
 nameserver 203.0.113.1
 nameserver 2001:db8:0:123::3
 nameserver 203.0.113.3
-domain members.linode.com
+domain 203-0-113-0.ip.linodeusercontent.com
 options rotate
 {{< /file >}}
 
@@ -265,8 +262,8 @@ config_eth0="198.51.100.5/24
 
 # IPv6 Addresses
 config_eth0="2001:db8:2000:aff0::1/64
-2001:db8:2000:aff0::2/32
-2001:db8:2000:aff0::3/32"
+2001:db8:2000:aff0::2/64
+2001:db8:2000:aff0::3/64"
 
 # DNS resolvers. Can mix IPv4 and IPv6.
 dns_servers_eth0="203.0.113.1
@@ -296,7 +293,7 @@ GATEWAY=198.51.100.1
 # Add a second IPv4 address:
 IPADDR1=198.51.100.10/24
 
-# Primary IPv6 address and gateway.
+# Primary IPv6 SLAAC address and gateway.
 IPV6ADDR=2001:db8:2000:aff0::2/128
 IPV6_DEFAULTGW=fe80::1
 
@@ -317,12 +314,12 @@ default         198.51.100.1            -                       eth0
 . . .
 NETCONFIG_DNS_STATIC_SERVERS="203.0.113.1 2001:db8:0:123::2 203.0.113.3"
 . . .
-NETCONFIG_DNS_STATIC_SEARCHLIST="members.linode.com"
+NETCONFIG_DNS_STATIC_SEARCHLIST="203-0-113-0.ip.linodeusercontent.com"
 . . .
 NETCONFIG_DNS_RESOLVER_OPTIONS="rotate"
 {{< /file >}}
 
-### Ubuntu 18.04
+### Ubuntu 18.04 and 20.04
 
 [Netplan](https://netplan.io/) is used to configure networking in Ubuntu 18.04 and later. Ubuntu Server is packaged with `systemd-networkd` as the [backend](https://netplan.io/design#design-overview) for Netplan, while NetworkManager is used as the Netplan backend in Ubuntu Desktop. The `ifupdown` package has been deprecated, and `/etc/network/interfaces` is no longer used, but it's still possible to configure static networking with `/etc/systemd/network/*.network` files.
 
@@ -352,11 +349,11 @@ network:
       addresses:
         - 198.51.100.5/24                         # Your Linode's public IPv4 address.
         - 192.168.1.2/17                          # Private IPv4 address.
-        - "2001:db8:2000:aff0::2/64"              # Primary IPv6 address.
+        - "2001:db8:2000:aff0::2/64"              # Primary IPv6 SLAAC address.
       gateway4: 198.51.100.1                      # Primary IPv4 gateway.
       gateway6: "fe80::1"                         # Primary IPv6 gateway.
       nameservers:
-        search: [members.linode.com]              # Search domain.
+        search: [203-0-113-0.ip.linodeusercontent.com]              # Search domain.
         addresses: [203.0.113.20,203.0.113.21]    # DNS Server IP addresses.
 {{< /file >}}
 
@@ -364,8 +361,7 @@ network:
 
         sudo netplan apply
 
-
-### Ubuntu 14.04, 16.04
+### Ubuntu 14.04 and 16.04
 
 Ubuntu 14.04 and 16.04 include [resolvconf](http://packages.ubuntu.com/xenial/resolvconf) in their base installation. This is an application which manages the contents of `/etc/resolv.conf`, so do not edit `resolv.conf` directly. Instead, add DNS resolver addresses and options to the network interface file as shown.
 
@@ -383,23 +379,22 @@ iface eth0 inet static
 
 # Add DNS resolvers for resolvconf. Can mix IPv4 and IPv6.
   dns-nameservers 203.0.113.1 2001:db8:0:123::2 203.0.113.3
-  dns-search members.linode.com
+  dns-search 203-0-113-0.ip.linodeusercontent.com
   dns-options rotate
 
 # Add a second public IPv4 address.
 iface eth0 inet static
   address 198.51.100.10/24
 
-# IPv6 gateway and primary address.
+# IPv6 gateway and primary IPv6 SLAAC address.
 iface eth0 inet6 static
   address 2001:db8:2000:aff0::1/64
   gateway fe80::1
 
 # Add a second IPv6 address.
 iface eth0 inet6 static
-  address 2001:db8:2000:aff0::2/32
+  address 2001:db8:2000:aff0::2/64
 {{< /file >}}
-
 
 ## Apply Your Changes
 
@@ -430,7 +425,7 @@ If for whatever reason you prefer not to reboot, you should be able to bring you
         root@localhost:~# cat /etc/resolv.conf
         nameserver 8.8.8.8
         nameserver 2001:4860:4860::8888
-        domain members.linode.com
+        domain 203-0-113-0.ip.linodeusercontent.com
         options rotate
 
 1.  Try pinging something to confirm you have full connectivity, both over IPv4 and IPv6.

@@ -3,28 +3,28 @@ slug: how-to-migrate-from-k8s-alpha-to-terraform
 author:
   name: Ryan Syracuse
   email: docs@linode.com
-description: 'The Linode k8s-alpha CLI tool is deprecated. This guide will help you migrate from the k8s-alpha CLI to Terraform to maintain and manage existing clusters as well as create new clusters.'
-og_description: 'The Linode k8s-alpha CLI tool is deprecated. This guide will help you migrate from the k8s-alpha CLI to Terraform to maintain and manage existing clusters as well as create new clusters.'
+description: "The Linode k8s-alpha CLI tool is deprecated. This guide will help you migrate from the k8s-alpha CLI to Terraform."
 keywords: ['kubernetes','k8s','beginner','architecture','migrate','terraform','k8s-alpha']
 tags: ["linode platform","kubernetes","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-14
 modified_by:
   name: Linode
-image: MigratingFromk8s-alphaCLItoTerraform.png
-title: "How to Migrate From k8s-alpha CLI to Terraform"
-h1_title: "Migrating From k8s-alpha CLI to Terraform"
+image: L_Migratefromk8s-alphaCLItoTerraform.png
+title: "How to Migrate from k8s-alpha CLI to Terraform"
+h1_title: "Migrating from k8s-alpha CLI to Terraform"
+enable_h1: true
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
-- '[Beginners Guide to Terraform](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform)'
-- '[Using Terraform to Provision Linode Environments](https://www.linode.com/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/)'
+- '[Beginners Guide to Terraform](/docs/guides/beginners-guide-to-terraform/)'
+- '[Using Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/)'
 aliases: ['/kubernetes/how-to-migrate-from-k8s-alpha-to-terraform/']
 ---
 
-The [k8s-alpha CLI](https://www.linode.com/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) is deprecated. On **March 31st, 2020**, it will be **removed** from the [linode-cli](https://github.com/linode/linode-cli). After March 31, 2020, you will no longer be able to create or manage clusters created by the k8s-alpha CLI plugin, however, you will still be able to successfully manage your clusters using the [Kubernetes Terraform installer for Linode Instances](https://github.com/linode/terraform-linode-k8s).
+The [k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) is deprecated. On **March 31st, 2020**, it will be **removed** from the [linode-cli](https://github.com/linode/linode-cli). After March 31, 2020, you will no longer be able to create or manage clusters created by the k8s-alpha CLI plugin, however, you will still be able to successfully manage your clusters using the [Kubernetes Terraform installer for Linode Instances](https://github.com/linode/terraform-linode-k8s).
 
 ## In This Guide
 You will use the Kubernetes Terraform installer for Linode Instances to continue to manage and support clusters created using the k8s-alpha CLI plugin following the EOL date and beyond. You will learn how to:
@@ -55,7 +55,7 @@ drwxr-xr-x  3 username  staff    96 Dec 11 08:10 terraform.tfstate.d
 - `cluster.tf` is the Terraform module file. This is the most important file here because it will allow you to scale, upgrade, and delete your cluster.
 
 {{< note >}}
-For more information regarding these files and directories and their contents, see our [Beginner's Guide to Terraform](/applications/configuration-management/beginners-guide-to-terraform/)
+For more information regarding these files and directories and their contents, see our [Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/)
 {{< /note >}}
 
 ### Scale a Cluster
@@ -219,7 +219,7 @@ module "k8s" {
 
 1.  Initialize and apply your new Terraform configuration:
 
-        terrform workspace new mynewcluster
+        terraform workspace new mynewcluster
         terraform init
         terraform apply
 

@@ -3,11 +3,11 @@ slug: host-a-website-with-high-availability
 author:
   name: Phil Zona
   email: docs@linode.com
-description: 'How to configure a highly available web server stack'
+description: 'This article shows you how you to configure a high availability stack using GlusterFS replication on two Linodes for your application or website.'
 keywords: ["high availability", "web server", "failover"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-07-12
-modified: 2018-07-16
+modified: 2022-01-07
 modified_by:
   name: Angel Guarisma
 title: 'Host a Website with High Availability'
@@ -19,19 +19,18 @@ external_resources:
 - '[XtraBackup](https://www.percona.com/doc/percona-xtrabackup/2.4/index.html)'
 aliases: ['/websites/hosting/host-a-website-with-high-availability/','/websites/host-a-website-with-high-availability/']
 tags: ["web server"]
+image: host-a-website-with-high-availability-title-graphic.jpg
 ---
-
-![Host a Website with High Availability](host-a-website-with-high-availability-title-graphic.jpg "Host a Website with High Availability")
 
 When deploying a website or application, one of the most important elements to consider is availability, or the period of time for which your content is accessible to users. High availability is a term used to describe server setups that eliminate single points of failure by offering redundancy, monitoring, and failover. This ensures that even if one component of your web stack goes down, the content will still be accessible.
 
-This guide shows how to host a highly available website with WordPress. However, you can use this setup to serve other types of content as well. This guide is intended to be a tutorial on the setup of such a system. For more information on how each element in the high availability stack functions, refer to our [introduction to high availability](/docs/websites/introduction-to-high-availability/).
+This guide shows how to host a highly available website with WordPress. However, you can use this setup to serve other types of content as well. This guide is intended to be a tutorial on the setup of such a system. For more information on how each element in the high availability stack functions, refer to our [introduction to high availability](/docs/guides/introduction-to-high-availability/).
 
 ## Before You Begin
 
-1.  This guide uses a total of nine nodes, all Linodes running CentOS 7 with SELinux enabled, and all within the same data center. You can create them all in the beginning, or as you follow along. Either way, familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting the hostname and timezone for each Linode you create.
+1.  Create 9 Compute Instances using the *CentOS 7* distribution, all in the same data center. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1.  You should also be familiar with our [Securing Your Server](/docs/security/securing-your-server/) guide, and follow best security practices as you create your servers. Do not create firewall rules yet, as we'll be handling that step in our guide.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. Do not create firewall rules yet, as we'll be handling that step in our guide.
 
 1.  The Linodes we create in this guide will use the following hostname conventions:
 
@@ -41,14 +40,10 @@ This guide shows how to host a highly available website with WordPress. However,
 
     You can call your nodes anything you like, but try to keep the naming consistent for organizational purposes. When you see one of the above names, be sure to substitute the hostname you configured for the corresponding node.
 
-1.  To create a private network among your Linodes, you'll need a [private IP address](/docs/networking/remote-access/#adding-private-ip-addresses) for each.
-
-1.  Remember to update each Linode's package repositories before attempting to install software:
-
-        yum update
+1.  To create a private network among your Linodes, you'll need a [private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each.
 
 {{< note >}}
-Most steps in this guide require root privileges. Be sure you're entering the commands as root, or using `sudo` if you're using a limited user account. If you’re not familiar with the `sudo` command, visit our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+Most steps in this guide require root privileges. Be sure you're entering the commands as root, or using `sudo` if you're using a limited user account. If you’re not familiar with the `sudo` command, visit our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## GlusterFS
@@ -182,7 +177,7 @@ We'll use three 2GB Linodes with hostnames `galera1`, `galera2`, and `galera3` a
 {{< /file >}}
 
 {{< note >}}
-You will need an additional private IP address for one of your database nodes, as we'll be using it as a *floating IP* for failover in a later section. To request an additional private IP address, you'll need to [contact support](/docs/platform/billing-and-support/support/).
+You will need an additional private IP address for one of your database nodes, as we'll be using it as a *floating IP* for failover in a later section. To request an additional private IP address, you'll need to [contact support](/docs/guides/support/).
 {{< /note >}}
 
 ### Install Galera and XtraDB
@@ -195,8 +190,8 @@ Install Galera and XtraDB on each Linode that will be in the database cluster.
 
 1.  Install the following packages on each database node:
 
-        yum install epel-release
-        yum install https://www.percona.com/redir/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm
+        yum install wget epel-release
+        yum install https://downloads.percona.com/downloads/percona-release/percona-release-0.1-6/redhat/percona-release-0.1-6.noarch.rpm
         yum install Percona-XtraDB-Cluster-57 Percona-XtraDB-Cluster-shared-57
 
     {{< note >}}
@@ -216,9 +211,10 @@ Run the following commands on each database node.
 <service>
   <short>Galera Replication</short>
   <description>Galera Master-Master Replication and State Transfer</description>
+  <port protocol="tcp" port="3306"/>
+  <port protocol="tcp" port="4444"/>
   <port protocol="tcp" port="4567"/>
   <port protocol="tcp" port="4568"/>
-  <port protocol="tcp" port="4444"/>
 </service>
 {{< /file >}}
 
@@ -436,11 +432,11 @@ Install the Apache HTTPD web server package on each of your three application no
 
     yum install httpd
 
-At this point, you may also tune your Apache instances to optimize performance based on your site or application's needs. This step is optional, however, and is beyond the scope of this guide. Check [Tuning Your Apache Server](/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/) for more information.
+At this point, you may also tune your Apache instances to optimize performance based on your site or application's needs. This step is optional, however, and is beyond the scope of this guide. Check [Tuning Your Apache Server](/docs/guides/tuning-your-apache-server/) for more information.
 
 ### Configure SELinux Compatibility for Apache
 
-SELinux's default settings do not allow allow Apache to access files on the GlusterFS cluster or to make connections to the database cluster. Allow this activity on each application server:
+SELinux's default settings do not allow Apache to access files on the GlusterFS cluster or to make connections to the database cluster. Allow this activity on each application server:
 
     yum install policycoreutils-python
     setsebool -P httpd_use_fusefs 1
@@ -515,10 +511,10 @@ Your Apache servers should now be capable of serving files and applications from
 So far, we've successfully configured a redundant web stack with three layers of nodes performing a series of tasks. Gluster automatically handles monitoring, and we configured the failover for the file system nodes in our application nodes' `/etc/fstab` files. In this section, we use Keepalived to handle database failover.
 
 {{< note >}}
-Alternatively, some users prefer to configure HAProxy instead of or in addition to Keepalived. For more information, visit our guide on [how to use HAProxy for load balancing](/docs/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/).
+Alternatively, some users prefer to configure HAProxy instead of or in addition to Keepalived. For more information, visit our guide on [how to use HAProxy for load balancing](/docs/guides/how-to-use-haproxy-for-load-balancing/).
 {{< /note >}}
 
-Keepalived is a routing service that can be used to monitor and fail over components in a high availability configuration. In this section, you will be using the additional private IP address, or *floating IP* from your database node to fail over to the others if one should go down. A floating IP address is one that can be assigned to a different node if needed. If you didn't request an additional private IP in the Galera section, [contact support](/docs/platform/billing-and-support/support/) and do so before continuing.
+Keepalived is a routing service that can be used to monitor and fail over components in a high availability configuration. In this section, you will be using the additional private IP address, or *floating IP* from your database node to fail over to the others if one should go down. A floating IP address is one that can be assigned to a different node if needed. If you didn't request an additional private IP in the Galera section, [contact support](/docs/guides/support/) and do so before continuing.
 
 We've added the floating IP address to `galera1`, but in practice, it can be configured to any of your database nodes.
 
@@ -527,7 +523,7 @@ No additional Linodes will be created in this section, and all configuration wil
     yum install keepalived
 
 {{< caution >}}
-Make sure that [Network Helper](/docs/platform/network-helper/) is turned **OFF** on your database nodes before proceeding.
+Make sure that [Network Helper](/docs/guides/network-helper/) is turned **OFF** on your database nodes before proceeding.
 {{< /caution >}}
 
 ### Configure IP Failover
@@ -683,7 +679,7 @@ SELinux should now resume normal enforcement while allowing the operations descr
 
 The final step in creating a highly available website or application is to load balance traffic to the application servers. In this step, we'll use a NodeBalancer to distribute traffic between the application servers to ensure that no single server gets overloaded. NodeBalancers are highly available by default, and do not constitute a single point of failure.
 
-For instructions on how to install this component, follow our guide on [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/). Be sure to use the *private* IP addresses of your application servers when adding nodes to your backend.
+For instructions on how to install this component, follow our guide on [Getting Started with NodeBalancers](/docs/guides/getting-started-with-nodebalancers/). Be sure to use the *private* IP addresses of your application servers when adding nodes to your backend.
 
 {{< note >}}
 NodeBalancers are an add-on service. Be aware that adding a NodeBalancer will create an additional monthly charge to your account. Please see our [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/#additional-linode-services) guide for more information.
@@ -732,16 +728,16 @@ If you're installing WordPress to manage your new highly available website, we'l
 
         systemctl restart httpd
 
-1.  In a web browser, navigate to the IP address of one of your application nodes (or the NodeBalancer) to access the WordPress admin panel. Use `wordpress` as the database name and user name, enter the password you configured in Step 2, and enter your floating IP address as the database host. For additional WordPress setup instructions, see our guide on [Installing and Configuring WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress/#configure-wordpress).
+1.  In a web browser, navigate to the IP address of one of your application nodes (or the NodeBalancer) to access the WordPress admin panel. Use `wordpress` as the database name and user name, enter the password you configured in Step 2, and enter your floating IP address as the database host. For additional WordPress setup instructions, see our guide on [Installing and Configuring WordPress](/docs/guides/how-to-install-and-configure-wordpress/#configure-wordpress).
 
-You've successfully configured a highly available WordPress site, and you're ready to start publishing content. For more information, reference our [WordPress configuration guide](/docs/websites/cms/how-to-install-and-configure-wordpress/).
+You've successfully configured a highly available WordPress site, and you're ready to start publishing content. For more information, reference our [WordPress configuration guide](/docs/guides/how-to-install-and-configure-wordpress/).
 
 ## DNS Records
 
 The NodeBalancer in the above system directs all incoming traffic to the application servers. As such, its IP address will be the one you should use when configuring your DNS records. To find this information, visit the **NodeBalancers** tab in the Linode Manager and look in the *IP Address* section.
 
-For more information on DNS configuration, refer to our [introduction to DNS records](/docs/networking/dns/dns-records-an-introduction/) and our guide on how to use the [DNS Manager](/docs/platform/manager/dns-manager/).
+For more information on DNS configuration, refer to our [introduction to DNS records](/docs/guides/dns-records-an-introduction/) and our guide on how to use the [DNS Manager](/docs/guides/dns-manager/).
 
 ## Configuration Management
 
-Because a high availability configuration involves so many different components, you may want to consider additional software to help you manage the cluster and create new nodes when necessary. For more information on the options available for managing your nodes, see our guides on [Salt](/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/), [Chef](/docs/applications/configuration-management/beginners-guide-chef/), [Puppet](/docs/applications/configuration-management/install-and-configure-puppet/), and [Ansible](/docs/applications/configuration-management/running-ansible-playbooks/). You can also refer to our guide on [Automating Server Builds](/docs/platform/automating-server-builds/) for an overview of how to choose a solution that is right for you.
+Because a high availability configuration involves so many different components, you may want to consider additional software to help you manage the cluster and create new nodes when necessary. For more information on the options available for managing your nodes, see our guides on [Salt](/docs/guides/getting-started-with-salt-basic-installation-and-setup/), [Chef](/docs/guides/beginners-guide-chef/), [Puppet](/docs/guides/install-and-configure-puppet/), and [Ansible](/docs/guides/running-ansible-playbooks/). You can also refer to our guide on [Automating Server Builds](/docs/guides/automating-server-builds/) for an overview of how to choose a solution that is right for you.

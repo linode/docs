@@ -12,33 +12,54 @@ modified: 2020-01-20
 modified_by:
   name: Linode
 published: 2020-01-20
-image: ChangingYourEmailAddress.png
+image: L_ChangeYourEmail.png
 title: How to Change Your Email Address
 h1_title: Changing Your Email Address
 aliases: ['/quick-answers/linode-platform/how-to-change-your-email/']
 ---
 
-Changing your account's email address is easy and can be done two different ways.
-
-## From the Cloud Manager
+## Changing Billing Email From the Cloud Manager
 
 1.  Log in to the [Cloud Manager](http://cloud.linode.com).
 
-1.  Click on your username and choose **My Profile** from the drop down menu.
+1.  Click on your username and choose **Billing and Contact Information** from the drop down menu.
 
     ![Click My Profile from Username Drop Down Menu](how-to-change-email-my-profile.png "Click My Profile from Username Drop Down Menu")
 
-1.  On the My Profile page, in the **Email** field, enter the email you would like to associate with your account.
+1.  On the Billing and Contact Information page, in the **Billing Contact** field, click the edit button to open the Billing Contact Info sidebar menu.
 
-1.  Click the **Save** button.
+    ![Click to Save a New Email](email-edit-button.png "Click to Save a New Email")
 
-    ![Click to Save a New Email](how-to-change-email-save.png "Click to Save a New Email")
+1. In the **Email** field, enter the email you would like to associate with your account.
 
-1.  Cloud Manager will tell you that the email address has been updated. You will also receive an email at this new address from Linode Support confirming this update.
+1.  Click the **Save** button to complete the change.
 
-1.  If you enter an invalid email address, the following error message is displayed.
+    ![Click to Save a New Email](linode-demo-email-save.png "Click to Save a New Email")
 
-    ![Error Message for Invalid Email](how-to-change-email-error.png "Error Message for Invalid Email")
+## Changing Account Email from the Cloud Manager
+
+Use the **Users & Grants** page to modify the email address associated with a user account. The email addresses listed on this page receive IP whitelist warnings, password reset messages, and support tickets for services that their associated users have permission to access. Users with limited account access can also receive invoices and receipts if granted access to that information.
+
+{{< note >}}
+Only full account access users can receive threshold notification emails.
+{{</ note >}}
+
+Here's how to change a user's email from the **Users & Grants** page:
+
+1.  Click the **Account** link in the sidebar.
+1.  Click the **Users & Grants** tab.
+1.  Click the **User Profile** link for the desired user.
+1.  Enter the updated email address in the **Email** field.
+
+    ![Modify the email address associated with your user account](accounts-my-profile-change-email.png "Modify the email address associated with your user account")
+
+1.  Click **Save**.
+
+The user's email address is now updated.
+
+{{< note >}}
+If you do not have full account access, you can view your user profile settings and update your email address by clicking on your username at the top of the Cloud Manager screen and selecting **Display**.
+{{</ note >}}
 
 ## Using the API
 

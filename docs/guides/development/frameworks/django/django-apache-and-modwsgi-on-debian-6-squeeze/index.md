@@ -8,7 +8,7 @@ description: 'Installing and configuring the Django web application development 
 keywords: ["django", "python", "apache", "mod\\_wsgi"]
 tags: ["web applications","debian","django","apache","python","cms","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/frameworks/django/django-apache-and-modwsgi-on-debian-6-squeeze/','/websites/apache/apache-and-modwsgi-on-debian-6-squeeze/','/development/frameworks/django-apache-and-modwsgi-on-debian-6-squeeze/','/frameworks/django-apache-mod-wsgi/debian-6-squeeze/']
+aliases: ['/development/frameworks/django/django-apache-and-modwsgi-on-debian-6-squeeze/','/development/frameworks/django-apache-and-modwsgi-on-debian-6-squeeze/','/frameworks/django-apache-mod-wsgi/debian-6-squeeze/']
 modified: 2011-05-13
 modified_by:
   name: Linode
@@ -23,7 +23,7 @@ relations:
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.
 
-This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [getting started guide](/docs/getting-started/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/web-servers/apache/installation/debian-6-squeeze) and a functional [MySQL database](/docs/databases/mysql/debian-6-squeeze)
+This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/web-servers/apache/installation/debian-6-squeeze) and a functional [MySQL database](/docs/databases/mysql/debian-6-squeeze)
 
 ## Set the Hostname
 

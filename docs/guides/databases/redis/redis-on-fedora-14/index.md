@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy applications that depend on the high performance key-value store Redis.'
+description: 'This guide shows how to deploy applications that depend on the high performance and highly flexible key-value store Redis database on Fedora 14.'
 keywords: ["redis fedora 14", "redis", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/fedora-14/','/databases/redis/redis-on-fedora-14/']
@@ -15,7 +15,7 @@ published: 2010-12-06
 title: Redis on Fedora 14
 relations:
     platform:
-        key: use-postrgesql-database
+        key: how-to-install-redis
         keywords:
             - distribution: Fedora 14
 tags: ["nosql","database","fedora"]
