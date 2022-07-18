@@ -17,7 +17,8 @@
       <a
         class="group flex items-center"
         x-bind:href="item.href"
-        data-testid="link-hit">
+        data-testid="link-hit"
+        @click="$store.nav.analytics.handler.clickHit(item, 'DOCS: Search Result - Condensed')">
         <span
           x-html="item.title"
           class="font-semibold text-md text-gray-700 no-underline"></span>
@@ -40,7 +41,8 @@
           <a
             class="group flex items-center"
             x-bind:href="item.href"
-            data-testid="link-hit">
+            data-testid="link-hit"
+            @click="$store.nav.analytics.handler.clickHit(item, 'DOCS: Search Result - Detailed')">
             <span
               x-html="item.title"
               class="font-semibold text-md text-gray-700 no-underline"></span>
@@ -82,7 +84,10 @@
           :key="item.objectID">
           <div
             class="bg-white h-full overflow-hidden rounded-lg shadow-sm hover:shadow-lg">
-            <a :href="item.href" class="no-underline block">
+            <a
+              :href="item.href"
+              class="no-underline block"
+              @click="$store.nav.analytics.handler.clickHit(item, 'DOCS: Search Result - Thumbnail')">
               <div class="relative overflow-hidden pb-16/9 bg-gray-200">
                 <img
                   :src="item.thumbnailUrl"
