@@ -14,7 +14,6 @@ modified_by:
 published: 2010-05-10
 title: 'lighttpd Web Server on Ubuntu 9.10 (Karmic)'
 deprecated: true
-expiryDate: 2017-11-08
 relations:
     platform:
         key: install-lighttpd

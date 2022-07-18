@@ -12,7 +12,6 @@ modified: 2013-10-01
 modified_by:
   name: Linode
 published: 2010-01-07
-expiryDate: 2015-10-01
 deprecated: true
 title: Monitoring Servers with Munin on Fedora 14
 relations:

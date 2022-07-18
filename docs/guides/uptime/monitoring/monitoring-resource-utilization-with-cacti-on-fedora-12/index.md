@@ -12,7 +12,6 @@ modified: 2013-10-01
 modified_by:
   name: Linode
 published: 2010-02-11
-expiryDate: 2015-10-01
 deprecated: true
 title: Monitoring Resource Utilization with Cacti on Fedora 12
 relations:

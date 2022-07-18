@@ -12,7 +12,6 @@ modified: 2011-05-17
 modified_by:
   name: Linode
 published: 2010-02-22
-expiryDate: 2013-05-17
 deprecated: true
 title: 'Monitoring Servers with Munin on Ubuntu 8.04 (Hardy)'
 relations:
