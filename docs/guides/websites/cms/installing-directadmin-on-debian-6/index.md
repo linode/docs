@@ -122,16 +122,16 @@ SSL=1
 ...
 {{< /file >}}
 
-If you would prefer to leave 2222 open as a non-SSL port and run a copy of DirectAdmin on a separate port for SSL, you'll need to find the `port` parameter and add the `ssl\_port` parameter below it.
+If you would prefer to leave 2222 open as a non-SSL port and run a copy of DirectAdmin on a separate port for SSL, you'll need to find the `port` parameter and add the `ssl_port` parameter below it.
 
 {{< file "/usr/local/directadmin/conf/directadmin.conf">}}
 ...
 port=2222
-ssl\_port=2223
+ssl_port=2223
 ...
 {{< /file >}}
 
-You can modify the `ssl\_port` value to any available port you like. Once you make your changes to the directadmin.conf file, you'll need to restart DirectAdmin for those changes to take effect:
+You can modify the `ssl_port` value to any available port you like. Once you make your changes to the directadmin.conf file, you'll need to restart DirectAdmin for those changes to take effect:
 
     service directadmin restart
 
