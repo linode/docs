@@ -3,7 +3,7 @@ slug: mysql-enterprise-server-monitoring
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide introduces MySQL Enterprise Server Monitoring and it's features.'
+description: 'This guide introduces MySQL Enterprise Server Monitoring and its features.'
 keywords: ['MySQL Enterprise Monitor', 'Replication Monitoring', 'Disk Monitoring', 'Backup Monitoring']
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
