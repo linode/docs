@@ -78,3 +78,18 @@ The MySQL Workbench provides a graphical interface for connecting to MySQL datab
 1. To connect to the database, select **Database > Connect to Database** from the main menu. In the following screen, select the stored connection you just created and click **OK**.
 
 For instructions on using MySQL Workbench to interact with your database, see [Install MySQL Workbench for Database Administration](/docs/guides/deploy-mysql-workbench-for-database-administration/#creating-and-populating-databases) or look through the [MySQL Workbench Manual](https://dev.mysql.com/doc/workbench/en/).
+
+## Connect Using DBeaver
+
+DBeaver is free and open source universal database tool for developers and database administrators. DBeaver provides a powerful SQL-editor, administration features, ability to migrate data and schema, monitor database connection sessions, and others.
+
+1. In the Linode Cloud Manager add the IP address of your local machine to access the new database cluster in the the **Add Access Controls** section. For more information see, [Add Access Controls](/docs/products/databases/managed-databases/guides/create-database/#add-access-controls).
+1. Click the drop-down arrow in the **New Connection** icon and select **MySQL**.
+   ![The New Connection](mysql-new-connection.png)
+1. In the **Connect to a database**  window that appears. Type the details for the following fields from the *Connection Details* in the Linode Cloud Manager for your database:
+   * Server Host:
+   * Port:
+   * Username:
+   * Password:
+   ![Connect to a database](mysql-connect-to-a-database.png)
+1. Click the **Test Connection** button to check if the connection is successful.
