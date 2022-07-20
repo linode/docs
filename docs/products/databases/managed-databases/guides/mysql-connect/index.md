@@ -83,7 +83,7 @@ For instructions on using MySQL Workbench to interact with your database, see [I
 
 DBeaver is free and open source universal database tool for developers and database administrators. DBeaver provides a powerful SQL-editor, administration features, ability to migrate data and schema, monitor database connection sessions, and others.
 
-1. In the Linode Cloud Manager add the IP address of your local machine to access the new database cluster in the the **Add Access Controls** section. For more information see, [Add Access Controls](/docs/products/databases/managed-databases/guides/create-database/#add-access-controls).
+1. In the Linode Cloud Manager add the IP address of your local machine to access the new database cluster in the **Add Access Controls** section. For more information see, [Add Access Controls](/docs/products/databases/managed-databases/guides/create-database/#add-access-controls).
 1. Click the drop-down arrow in the **New Connection** icon and select **MySQL**.
    ![The New Connection](mysql-new-connection.png)
 1. In the **Connect to a database**  window that appears. Type the details for the following fields from the *Connection Details* in the Linode Cloud Manager for your database:
