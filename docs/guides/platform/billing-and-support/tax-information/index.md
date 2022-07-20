@@ -152,10 +152,11 @@ To keep our pricing stable and consistent, rather than fluctuating with exchange
 | Country and Tax Program | Linode's ID |
 | -- | -- |
 | Australia ATO ARN | 3000 1606 0612 |
+| Canadian GST | 724750708RT0001 |
 | EU VAT | EU372008859 |
 | India GST | 9919JEY29001OST |
+| Japan JCT | 00140 |
+| Norway VAT | 2063948 |
 | Singapore GST | M90373465T |
 | United Kingdom VAT | GB383720095 |
 | United States EIN | 20-2647179 |
-| Canadian GST | 724750708RT0001 |
-| Norway VAT | 2063948 |
