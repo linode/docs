@@ -114,7 +114,7 @@ pgAdmin is an open-source application that provides you with a graphical interfa
 
     ![Screenshot of the DBeaver database selection screen with MySQL highlighted](dbeaver-postgresql-connection-new.png)
 
-1. In the *Main* tab, enter the details for your connection, including the **Server Host** (hostname) **Port**, and **Username**. You can optionally store your password by entering your password and clicking the **Save password locally** button. If you do not store your password, you must enter it manually each time you connect. For secrity reasons, it's typically recommended *not* to store your password.
+1. In the *Main* tab, enter the details for your connection, including the **Server Host** (hostname) **Port**, and **Username**. You can optionally store your password by entering your password and clicking the **Save password locally** button. If you do not store your password, you must enter it manually each time you connect. For security reasons, it's typically recommended *not* to store your password.
 
     ![Screenshot of the DBeaver PostgreSQL connection details window](dbeaver-postgresql-connection-details.png)
 
