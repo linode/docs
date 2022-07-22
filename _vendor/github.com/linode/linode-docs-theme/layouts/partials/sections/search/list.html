@@ -14,9 +14,11 @@
     <template
       x-for="(item, j) in $store.search.results.main.result.hits"
       :key="item.objectID">
+      {{/* Note the default target value needs to be an empty string (and not '_self'). */}}
       <a
         class="group flex items-center"
         x-bind:href="item.href"
+        x-bind:target="item.isExternalLink ? '_blank' : ''"
         data-testid="link-hit"
         @click="$store.nav.analytics.handler.clickHit(item, 'DOCS: Search Result - Condensed')">
         <span
@@ -38,9 +40,11 @@
       :key="item.objectID">
       <div class="rounded -ml-4 pl-4 py-2 mobile:-mr-4 hover:bg-selected">
         <template x-if="item.href">
+          {{/* Note the default target value needs to be an empty string (and not '_self'). */}}
           <a
             class="group flex items-center"
             x-bind:href="item.href"
+            x-bind:target="item.isExternalLink ? '_blank' : ''"
             data-testid="link-hit"
             @click="$store.nav.analytics.handler.clickHit(item, 'DOCS: Search Result - Detailed')">
             <span
@@ -84,8 +88,10 @@
           :key="item.objectID">
           <div
             class="bg-white h-full overflow-hidden rounded-lg shadow-sm hover:shadow-lg">
+            {{/* Note the default target value needs to be an empty string (and not '_self'). */}}
             <a
               :href="item.href"
+              x-bind:target="item.isExternalLink ? '_blank' : ''"
               class="no-underline block"
               @click="$store.nav.analytics.handler.clickHit(item, 'DOCS: Search Result - Thumbnail')">
               <div class="relative overflow-hidden pb-16/9 bg-gray-200">

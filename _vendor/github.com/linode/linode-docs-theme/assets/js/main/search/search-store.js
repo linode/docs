@@ -52,6 +52,10 @@ export function newSearchStore(searchConfig, Alpine) {
 		// The blank (needed for the explorer and section metadata) and the main search result.
 		results: results,
 
+		clearQuery: function () {
+			this.query = newQuery();
+		},
+
 		updateLocationWithQuery() {
 			let href = window.location.pathname + window.location.hash;
 			let search = queryHandler.queryAndLocationToQueryString(this.query);
