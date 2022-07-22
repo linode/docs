@@ -95,8 +95,10 @@
               </a>
             </template>
             <template x-if="node.isPage()">
+              {{/* Note the default target value needs to be an empty string (and not '_self'). */}}
               <a
                 :href="node.href"
+                x-bind:target="node.href.startsWith('http') ? '_blank' : ''"
                 @click="node.onClick($event);"
                 x-html="node.title"
                 :class="{

@@ -18,11 +18,14 @@
 
 
 <div
-  class="flex justify-between bg-brand pull-out items-center rounded-none md:rounded-md px-4 md:px-8 py-4">
+  class="flex justify-between bg-brand pull-out items-center rounded-none md:rounded-md px-4 md:px-8 py-4"
+  x-data>
   <div class="text-white text-md md:text-lg font-regular tracking-normal w-3/4">
     <span>
       <a
         href="https://login.linode.com/signup?promo={{ $promo_code }}"
+        target="_blank"
+        @click="$store.nav.analytics.handler.convertObject(document.body.dataset.objectid, 'DOCS: Promo Code')"
         class="font-semibold text-white underline"
         style="text-underline-offset: 2px;"
         >Create a Linode account</a
@@ -34,7 +37,7 @@
     </span>
   </div>
   <div>
-    <form action="https://login.linode.com/signup" data-turbo="false" x-data>
+    <form action="https://login.linode.com/signup" data-turbo="false">
       <input type="hidden" name="promo" value="{{ $promo_code }}" />
       <button
         @click="$store.nav.analytics.handler.convertObject(document.body.dataset.objectid, 'DOCS: Promo Code')"
