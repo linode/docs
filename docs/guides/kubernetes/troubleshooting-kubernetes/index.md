@@ -246,6 +246,6 @@ If your cluster has insufficient resources for a new Pod, you will need to do on
 -   [Add a new worker node or nodes](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#edit-or-remove-existing-node-pools) to your cluster.
 -   [Add a new Node Pool](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#adding-a-node-pool) with access to more resources and migrate the workload to the new pool.
 
-### Rolling Back a Highly Avaiable (HA) LKE Cluster
+### Rolling Back a Highly Available (HA) LKE Cluster
 
 You cannot roll back a HA cluster in LKE. If you decide that you no longer want HA, you need to rebuild the configuration on a new cluster. To recreate the configuration for all active Kubernetes objects see, [Declarative Management of Kubernetes Objects Using Configuration Files](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/).
