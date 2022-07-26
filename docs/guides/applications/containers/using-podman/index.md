@@ -3,11 +3,11 @@ slug: using-podman
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Two to three sentences describing your guide."
-og_description: "Two to three sentences describing your guide when shared on social media."
+description: "Podman has risen as a compelling alternative to Docker for deploying and managing containers. Podman stands out for its daemonless architecture, which gives it true rootless containers and heightened security. In this tutorial, find out all you need to get started installing and using Pdoman for running containers."
+og_description: "Podman has risen as a compelling alternative to Docker for deploying and managing containers. Podman stands out for its daemonless architecture, which gives it true rootless containers and heightened security. In this tutorial, find out all you need to get started installing and using Pdoman for running containers."
 keywords: ['what is podman','podman docker','podman tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-07-22
+published: 2022-07-26
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install Podman for Running Containers"
@@ -22,11 +22,11 @@ external_resources:
 - '[phoenixNAP: Install Podman on Ubuntu](https://phoenixnap.com/kb/install-podman-on-ubuntu)'
 ---
 
-Podman is an open-source containerization tool. Like Docker, Podman is a solution for creating, running, and managing containers. But Podman goes beyond Docker, using a secure daemonless process and adhering to the Open Container Initiative (OCI).
+Podman is an open-source containerization tool. Like Docker, Podman is a solution for creating, running, and managing containers. But Podman goes beyond Docker, using a secure daemonless process to run containers in rootless mode.
 
-For more on what Podman is and how it compares to Docker, you can refer to our guide [Podman vs Docker](/docs/guides//).
+For more on what Podman is and how it compares to Docker, you can refer to our guide [Podman vs Docker](/docs/guides/podman-vs-docker/). The guide familiarizes you with the basics of Podman and Docker and compares and contrast the two tools.
 
-In this present tutorial, learn everything you need to install and start using Podman on your Linux system.
+In this tutorial, learn everything you need to install and start using Podman on your Linux system. By the end, you start running and managing containers using Podman.
 
 ## Before You Begin
 
@@ -54,7 +54,7 @@ Podman is available through the default package managers on most Linux distribut
 
     sudo dnf install podman
 
-Buildah is also available through the APT package manager for Debian and Ubuntu, but only with Debian 11 or later and Ubuntu 20.10 or later. On those distributions, you can use:
+Podman is also available through the APT package manager for Debian and Ubuntu, but only with Debian 11 or later and Ubuntu 20.10 or later. On those distributions, you can use:
 
     sudo apt install podman
 
@@ -72,9 +72,9 @@ Podman operates using root privileges by default — for instance, using the `su
 
 Docker can allow you to run commands as a limited user, but the Docker daemon still runs as root. This has been found to be a potential security issue with Docker, one that may allow limited users to execute privileged commands through the Docker daemon.
 
-Podman solves this with the option of a completely rootless setup, where the containers operate in a non-root environment. And below you can find the steps to set up Podman for rootless usage.
+Podman solves this with the option of a completely rootless setup, where the containers operate in a non-root environment. Below you can find the steps to set up your Podman instance for rootless usage.
 
-1. Install the `slirp4netns` and `fuse-overlayfs` tools to support your rootless Buildah operations. On RHEL distributions, you can install these tools using:
+1. Install the `slirp4netns` and `fuse-overlayfs` tools to support your rootless Podman operations. On RHEL distributions, you can install these tools using:
 
         sudo dnf install slirp4netns fuse-overlayfs
 
@@ -90,13 +90,13 @@ With Podman installed, everything is ready for you to start running containers w
 
 ### Getting an Image
 
-Podman offers a few methods for procuring container images. These next few sections cover them and give you a couple of images to start with.
+Podman offers a few methods for procuring container images, which you can follow along with below. These section also give you a couple of images to start with, and which are used in later sections for further examples.
 
 #### Searching for Images
 
 Perhaps the most straightforward way to get started with a container is by finding an existing image in a registry. With Podman's `search` command, you can find matching images in any container registries you have set up.
 
-{{< note }}
+{{< note >}}
 Podman may come with some registries configured by default. However, on some systems, it may first be necessary to configure these registries manually. You can do this by opening the `/etc/containers/registries.conf` file with your preferred text editor and adding a line like the following to the end:
 
     unqualified-search-registries=['registry.access.redhat.com', 'registry.fedoraproject.org', 'docker.io', 'quay.io']
@@ -132,7 +132,7 @@ Getting image source signatures
 [...]
 {{< /output >}}
 
-But you can be more specific. As the search output above shows, there may be multiple registries matching a given container image. You can specify the entire image name, with the registry path, to pull from a specific location.
+But you can also be more specific. As the search output above shows, there may be multiple registries matching a given container image. You can specify the entire image name, with the registry path, to pull from a specific location.
 
 For instance, this next example pulls the one of the Buildah images from the `docker.io` registry:
 
@@ -168,23 +168,23 @@ EXPOSE 80
 CMD ["/usr/sbin/httpd", "-DFOREGROUND"]
 {{< /file >}}
 
-Place these contents in a file named `Dockerfile`. Then, working from the same directory the file is stored in, you can use the following Podman command to build and image from the file:
+Place these contents in a file named `Dockerfile`. Then, working from the same directory the file is stored in, you can use the following Podman command to build an image from the file:
 
     podman build -t fedora-http-server .
 
-The `-t` option allows you to give the image a tag, or name. The `.` at the end of the command specifies the directory in which the Dockerfile can be found — the current directory in this case.
+The `-t` option allows you to give the image a tag, or name — `fedora-http-server` in this case. The `.` at the end of the command specifies the directory in which the Dockerfile can be found; a `.` represents the current directory.
 
 Keep reading onto the section below titled [Running a Container Image](/docs/guides/using-podman/#running-a-container-image) to see how you can run a container from an image built as shown above.
 
 Podman's `build` command works much like Docker's, but is actually a subset of the build functionality within Buildah. In fact, Podman uses a portion of Buildah's source code to implement its build function.
 
-Buildah actually offers more features and fine-grained control when it comes to building containers. For that reason, many see Podman and Buildah as complementary tools. Buildah gives a robust tool for crafting container images, from container files (for example, Dockerfiles) and from scratch. Podman then excels at running and managing the resulting containers.
+Buildah offers more features and fine-grained control when it comes to building containers. For that reason, many see Podman and Buildah as complementary tools. Buildah gives a robust tool for crafting container images, from container files (for example, Dockerfiles) and from scratch. Podman then excels at running and managing the resulting containers.
 
 You can learn more about Buildah, including steps for setup and usage, in our guide [How to Use Buildah to Build OCI Container Images](/docs/guides/using-buildah-oci-images/).
 
 #### Listing Local Images
 
-Once have one or more images locally on your system, you can see them using Podman's `images` command. This gives you a list of images that have been created or downloaded onto your system:
+Once you have one or more images locally on your system, you can see them using Podman's `images` command. This gives you a list of images that have been created or downloaded onto your system:
 
     podman images
 
@@ -210,11 +210,11 @@ Here is an example using the Buildah image downloaded above. This example runs t
 buildah version 1.26.2 (image-spec 1.0.2-dev, runtime-spec 1.0.2-dev)
 {{< /output >}}
 
-Containers' operations can get more complicated from there, and Podman has plenty of features to support their needs.
+Containers' operations can get more complicated from there, and Podman has plenty of features to support a wide range of needs when it comes to running containers.
 
 Take the `fedora-http-server` example created from a Dockerfile above. This example runs an HTTP server on the container's port `80`. The following command demonstrates how Podman lets you control how that container operates.
 
-The command runs the container, which automatically starts up an HTTP server. Podman's `-p` option publishes the container's port `80` to the local machine's port `8080`, while the `--rm` option automatically stops the container when it finishes running — a fitting solution for a quick test.
+The command runs the container, which automatically starts up an HTTP server. The `-p` option given here publishes the container's port `80` to the local machine's port `8080`, while the `--rm` option automatically stops the container when it finishes running — a fitting solution for a quick test.
 
     podman run -p 8080:80 --rm fedora-http-server
 
@@ -242,9 +242,9 @@ Now you can, on the machine where the image is running, use a cURL command to ve
 
 ### Managing Containers and Images
 
-Podman is designed for most effectively running and managing containers from images. As such, it comes with plenty of commands for keeping track of and operating your containers.
+Podman prioritizes effectively running and managing containers. As such, it comes with plenty of commands for keeping track of and operating your containers.
 
-These next several sections walk through some of the most useful Podman operations and can help you work effectively with your containers.
+These next several sections walk through some of the most useful Podman operations and can help you get the most out of your containers.
 
 #### Listing Containers
 
@@ -307,7 +307,7 @@ As noted in the section above on creating images with Podman, Buildah tends to o
 
 ## Conclusion
 
-Podman offers not just a simple alternative to Docker, but a powerful containerization tool with the weight of secure, rootless operations and the OCI standards. And, with this tutorial, you have what you need to start using Podman for running and managing your containers.
+Podman offers not just a simple alternative to Docker, but a powerful containerization tool with the weight of secure, rootless operations. And, with this tutorial, you have what you need to start using Podman for running and managing your containers.
 
 Keep learning about effective tools for working with containers through the further links on Podman, Buildah, and Dockerfiles provided in the course of this tutorial. And you can continue sharpening your Podman knowledge through the links provided at the end of this tutorial.
 

@@ -3,11 +3,11 @@ slug: using-buildah-oci-images
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Two to three sentences describing your guide."
-og_description: "Two to three sentences describing your guide when shared on social media."
+description: "Buildah is a powerful open-source tool for creating containers and container images. Whether you want to create containers for Dockerfiles and Containerfiles or entirely from scratch, Buildah provides a robust set of features to carry you through. Learn all about Buildah and how to get started using it in this tutorial."
+og_description: "Buildah is a powerful open-source tool for creating containers and container images. Whether you want to create containers for Dockerfiles and Containerfiles or entirely from scratch, Buildah provides a robust set of features to carry you through. Learn all about Buildah and how to get started using it in this tutorial."
 keywords: ['buildah run','what is buildah','install buildah']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-07-17
+published: 2022-07-26
 modified_by:
   name: Nathaniel Stickman
 title: "How to Use Buildah to Build OCI Container Images"
@@ -22,9 +22,9 @@ external_resources:
 - '[Computing for Geeks: How To Build OCI & Docker Container Images With Buildah](https://computingforgeeks.com/how-to-build-oci-docker-container-images-with-buildah/)'
 ---
 
-Buildah is an open-source containerization tool, capable of creating images from scratch or from Dockerfiles. And it follows the Open Container Initiative specifications, making Buildah images versatile and open.
+Buildah is an open-source containerization tool, capable of creating images from scratch or from Dockerfiles and Containerfiles. And it follows the Open Container Initiative specifications, making Buildah images versatile and open.
 
-In this tutorial, learn more about Buildah and how to install and start using it. Find steps for creating containers using Dockerfiles and from scratch, and how to render those containers to images.
+In this tutorial, learn more about Buildah and how to install and start using it. Find steps for creating containers using script files and from scratch, and how to render those containers to images.
 
 ## Before You Begin
 
@@ -54,23 +54,21 @@ The OCI has sought to create an open standard for containerization. To that end,
 
 Buildah gives you powerful means of creating and maintaining OCI-compliant images. You may be familiar with Dockerfiles, one of the most common formats for container images. Buildah fully supports them and can create images directly from them.
 
-But Buildah can also craft container images from scratch. Buildah allows you to use typical command-line commands for setting up a system to build out the contents of a container. By the end, Buildah can render and export an OCI container from your work on the container file system.
+But Buildah can also craft container images from scratch. Buildah allows you to use command-line commands to build up the container from a complete blank slate, giving it only the contents you need. By the end, Buildah can render and export an OCI container image from your work.
 
 ### Buildah vs Docker
 
 Overall, Buildah is similar in functionality to Docker. So what sets it apart? Why use Buildah instead of Docker?
 
-One of Buildah's primary advantages is that it avoids the security risks of the Docker daemon. The Docker daemon runs on a socket with root-level access, and this has the potential to introduce security risks. In fact, the OCI is at least in part a response to this security risk in the Docker daemon.
-
-Buildah, implementing OCI standards, avoids this risk.
+One of Buildah's primary advantages is that it avoids the security risks of the Docker daemon. The Docker daemon runs on a socket with root-level access, and this has the potential to introduce security risks. Buildah avoids this risk by running without a daemon and allowing containers to be truly rootless.
 
 With Buildah, the user also has the ability to create container images from scratch. Buildah can mount an empty container and lets the user add only what they need. This feature can be extraordinarily useful when you need a lightweight image.
 
 Buildah also gives the user fine-grain control of images, and specifically image layers. For those looking for more capabilities in their containerization tools, Buildah tends to offer what they need.
 
-However, Buildah is not as useful when it comes to running container images. It can run them, but lacks some of the features to be found in other tools.
+However, Buildah is not as useful when it comes to running and deploying container images. It can run them, but lacks some of the features to be found in other tools. Instead, Buildah puts the vast majority of its emphasis on creating containers and building container images.
 
-For that reason, users often build their OCI images in Buildah and run them using Podman, a tool for running and managing containers.
+For that reason, users often build their OCI images in Buildah and run them using Podman, a tool for running and managing containers. You can learn more about Podman in our guide [Podman vs Docker: Comparing the Two Containerization Tools](/docs/guides/podman-vs-docker/).
 
 ## How to Install Buildah
 
@@ -92,7 +90,7 @@ buildah version 1.26.1 (image-spec 1.0.2-dev, runtime-spec 1.0.2-dev)
 
 ### Configuring Buildah for Rootless Usage
 
-By default, Buildah commands are executed with root-user privileges — with the `sudo` preface, for instance. But one appealing feature of Buildah is its ability to run containers and operate in rootless mode. This lets limited users work securely with Buildah.
+By default, Buildah commands are executed with root-user privileges — with the `sudo` preface, for instance. But one appealing feature of Buildah is its ability to run containers in rootless mode. This lets limited users work securely with Buildah.
 
 Docker can allow you to run commands as a limited user, but the Docker daemon still runs as root. This has been found to be a potential security issue with Docker, one that may allow limited users to execute privileged commands through the Docker daemon.
 
@@ -184,7 +182,7 @@ Now you can, on the machine where the image is running, use a cURL command to ve
 [...]
 {{< /output >}}
 
-Learn more about Podman in our guide [How to Install Podman for Running Containers](/docs/guides/using-podman-for-containers/).
+Learn more about Podman in our guide [How to Install Podman for Running Containers](/docs/guides/using-podman/).
 
 You can also learn more about crafting Dockerfiles in our guide [How to Use a Dockerfile to Build a Docker Image](/docs/guides/how-to-use-dockerfiles/). This guide also includes links to further tutorials with more in-depth coverage of Dockerfiles.
 
@@ -199,13 +197,26 @@ Buildah's commands for working with containers can involve a few keywords, so of
 
     fedoracontainer=$(buildah from fedora)
 
+Learn more about how environment variables work in our guide [How to Use and Set Environment Variables](/docs/guides/how-to-set-linux-environment-variables/).
 {{< /note >}}
 
-1. If you are running Buildah in rootless mode, you need to execute `unshare` command before any further commands. This command puts you in a shell within the user namespace. Otherwise, the `buildah mount` command below would not work:
+{{< note >}}
+The steps below are intended for running on an RHEL-based system like CentOS or Fedora. The Debian/Ubuntu package manager, APT, presents issues with installing packages onto a non-root container.
+
+You can utilize a similar process, but doing so seems to require a root container. Additionally, instead of the `dnf` installation below, you can use `debootstrap`, via the following commands:
+
+    sudo apt intall debootstrap
+    sudo debootstrap bullseye $scratchmnt
+
+{{< /note >}}
+
+1. If you are running Buildah in rootless mode, you need to execute the `unshare` command before any further commands. This command puts you in a shell within the user namespace. Otherwise, the `buildah mount` command below would not work:
 
         buildah unshare
 
-    You can exit the user namespace shell at any time using the `exit` command.
+    When finished, you can exit the user namespace shell using the `exit` command. But these next several steps presume your are in the namespace shell until noted otherwise.
+
+    If you are, instead, executing these steps for a root container, preface each `buildah` command below with `sudo`, and do the same for the `dnf` command.
 
 1. Create a blank container. This uses Buildah's `scratch` base to initiate a new container:
 
@@ -229,7 +240,7 @@ Buildah's commands for working with containers can involve a few keywords, so of
 
 1. From here out, you can operate the container from outside of the user namespace initiated with `unshare`. To do so, `exit` the namespace, and replace `$scratchcontainer` in the commands below with `working-container`.
 
-   However, if you have more than one container, the container's name may differ. You can find the container name via the `buildah containers` command.
+   However, if you have more than one container, the container's name may differ. You can verify the container name via the `buildah containers` command.
 
 1. Copy over any files you want on the container.
 
@@ -253,6 +264,14 @@ echo "This is an example script."
 example-script.sh
 [...]
     {{< /output >}}
+
+1. You can run the script via the `run` command:
+
+        buildah run $scratchcontainer /usr/bin/example-script.sh
+
+{{< output >}}
+This is an example script.
+{{< /output >}}
 
 1. Once you are satisfied with the container, you can commit the change to an image:
 
@@ -329,6 +348,6 @@ CONTAINER ID  BUILDER  IMAGE ID     IMAGE NAME                       CONTAINER N
 
 ## Conclusion
 
-Buildah gives you a clean and deep tool for crafting container images — more than just an alternative to Docker, but a containerization tool for secure and open container images. And with this tutorial you have everything you need to get started building your own images and using Buildah to the utmost.
+Buildah gives you a clean and deep tool for crafting container images — more than just an alternative to Docker, but a containerization tool for securely creating open containers and container images. And with this tutorial you have everything you need to get started building your own images and using Buildah to the utmost.
 
 Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
