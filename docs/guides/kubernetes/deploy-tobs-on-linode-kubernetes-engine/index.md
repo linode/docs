@@ -3,15 +3,15 @@ slug: deploy-tobs-on-linode-kubernetes-engine
 author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com
-description: 'Learn how to quickly deploy TOBS including Prometheus and Grafana on Linode Kubernetes Engine.'
-og_description: 'Great monitoring means fast issue resolution. Learn how to quickly deploy TOBS on Linode Kubernetes Engine'
+description: 'Learn how to quickly deploy TOBS, The Observability Stack including Prometheus and Grafana on Linode Kubernetes Engine.'
+og_description: 'Great monitoring means fast issue resolution. Learn how to quickly deploy TOBS, The Observability Stack on Linode Kubernetes Engine'
 keywords: ['kubernetes', 'lke', 'prometheus', 'grafana', 'timescaledb', 'opentelemetry', 'metrics', 'traces']
 tags: ["monitoring","kubernetes","container", "observability"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-21
 modified_by:
   name: Linode
-title: "How to Deploy TOBS on LKE"
+title: "How to Deploy TOBS, The Observability Stack on LKE"
 h1_title: "Deploying TOBS on LKE (Linode Kubernetes Engine)"
 external_resources:
 - '[TOBS Helm Chart on Github](https://github.com/timescale/tobs/tree/master/chart): Useful for reviewing configuration parameters and troubleshooting.'
