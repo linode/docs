@@ -9,6 +9,10 @@ published: 2022-06-06
 
 The functionality of PostgreSQL can be enhanced through the use of extensions. Linode's PostgreSQL Managed Database service supports many of these extensions and they are available for any user to install and utilize.
 
+{{< caution >}}
+Since superuser access is not available within our PostgreSQL Managed Databases, some extensions may not work as expected.
+{{</ caution >}}
+
 ## View Available Extensions
 
 To see a full list of all the extensions available for your version of PostgreSQL, connect to your database and run the following query. You can also review the [List of Available Extensions](#list-of-available-extensions) below.
