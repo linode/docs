@@ -22,7 +22,7 @@
         data-testid="link-hit"
         @click="$store.nav.analytics.handler.clickHit(item, 'DOCS: Search Result - Condensed')">
         <span
-          x-html="item.title"
+          x-html="item.mainTitle"
           class="font-semibold text-md text-gray-700 no-underline"></span>
         <div class="ml-2">
           {{ template "search-list-section-label" . }}
@@ -48,7 +48,7 @@
             data-testid="link-hit"
             @click="$store.nav.analytics.handler.clickHit(item, 'DOCS: Search Result - Detailed')">
             <span
-              x-html="item.title"
+              x-html="item.mainTitle"
               class="font-semibold text-md text-gray-700 no-underline"></span>
             <div class="ml-2">
               {{ template "search-list-section-label" . }}

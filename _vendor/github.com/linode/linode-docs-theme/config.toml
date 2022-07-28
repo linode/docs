@@ -60,6 +60,13 @@ weight = 30
 title = "API"
 explorer_icon = "#icon-explorer--api"
 
+[params.search_config2.sections.reference-architecture]
+name = "reference-architecture"
+filters = "section.lvl0:guides"
+weight = 35
+title = "Reference Architecture"
+noun = "Reference"
+explorer_icon = "#icon-explorer--reference-architecture"
 
 [params.search_config2.sections.marketplace]
 name = "marketplace"
