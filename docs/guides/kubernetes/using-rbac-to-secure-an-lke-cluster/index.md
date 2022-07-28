@@ -1,10 +1,9 @@
 ---
-slug: using-rbac-to-secure-an-LKE-cluster
+slug: using-rbac-to-secure-an-lke-cluster
 author:
   name: Ryan Syracuse
   email: docs@linode.com
 description: 'This guide describes how to create roles and set contexts for specific users to create an environment with limited kubernetes permissions.'
-og_description: 'Kubernetes can  be used to create roles and set contexts for specific users to create an environment with limited kubernetes permissions'
 keywords: ["Kubernetes", "cluster", "docker", "security", "permissions"]
 tags: ["security","nginx","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
