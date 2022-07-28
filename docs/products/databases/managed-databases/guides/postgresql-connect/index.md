@@ -5,7 +5,7 @@ author:
 title: "Connect to a PostgreSQL Database"
 description: "Learn how to connect to a PostgreSQL Managed Databse through the command line or pgAdmin."
 published: 2022-06-06
-modified: 2022-07-22
+modified: 2022-07-28
 ---
 
 To connect to a PostgreSQL Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a PostgreSQL client. This guide details how to access your database using popular tools.
@@ -18,7 +18,7 @@ To connect to a PostgreSQL Managed Database, you need to know a few important de
 
 The *Connection Details* section contains information and credentials needed for you to connect to your database.
 
-- **Username:** The default user for all PostgreSQL Managed Databases is `linpostgres`, which has superuser admin privileges. This replaces the `root` user, which is not accessible.
+- **Username:** The default user for all PostgreSQL Managed Databases is `linpostgres`. This replaces the `root` user, which is not accessible. Superuser access is not available.
 - **Password:** The randomly generated password for your database cluster. See [Reset Root Password](/docs/products/databases/managed-databases/guides/reset-root-password/) if you wish to change it.
 - **Host:** The fully qualified domain name you can use to reach your database cluster through the public network.
 - **Private network host:** The fully qualified domain name you can use to reach your database cluster through the data center's private network (not a VLAN). Communicating with a Database Cluster over the private network avoids network transfer fees, so it's recommended to use this host string when possible.
