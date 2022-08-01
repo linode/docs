@@ -15,8 +15,11 @@ h1_title: "Install NVM the Node Version Manager"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
+contributor:
+  name: Diogo Cardoso
+  link: https://github.com/nip10
 external_resources:
-- '[NVM GitHub Page(https://github.com/nvm-sh/nvm)'
+- '[NVM GitHub Page](https://github.com/nvm-sh/nvm)'
 ---
 
 The [*Node Version Manager (NVM)*](https://github.com/nvm-sh/nvm) is an open source version manager for [*Node.js (Node)*](https://nodejs.org/en/). NVM is easy to install and understand, and works on any POSIX-compliant shell (for example, sh or bash). NVM allows you to easily install and manage different versions of Node and switch between them on a per-shell basis. This guide describes how to install NVM, and how to use it to install and run different versions of Node.
@@ -256,7 +259,7 @@ Now using node v4.9.1 (npm v2.15.11)
 
 ## Additional NVM Capabilities
 
-Although NVM is very straightforward to use, it also provides some advanced capabilities. See the [*NVM GitLab page*](https://github.com/nvm-sh/nvm) for a full list of all advanced topics.
+Although NVM is very straightforward to use, it also provides some advanced capabilities. See the [*NVM GitHub page*](https://github.com/nvm-sh/nvm) for a full list of all advanced topics.
 
 1.  NVM allows you to migrate packages from an earlier version of Node. The `nvm install` command can be used with the optional `-reinstall-packages-from=` flag to install a new version of Node with the packages from an earlier release. The following command installs the latest version of Node, but it also performs a reinstall of the packages from the `default` version of Node and links them.
 
@@ -266,7 +269,7 @@ Although NVM is very straightforward to use, it also provides some advanced capa
 Reinstalling packages does not update the NPM version.
     {{< /note >}}
 
-1.  NVM enables you to define custom colors to display the various Node versions and aliases. These colors are defined on the [*NVM GitLab page*](https://github.com/nvm-sh/nvm). Use the command `nvm set-colors <color-key>`. If you add the `--no-colors` flag to a command, the information is displayed in black-and-white.
+1.  NVM enables you to define custom colors to display the various Node versions and aliases. These colors are defined on the [*NVM GitHub page*](https://github.com/nvm-sh/nvm). Use the command `nvm set-colors <color-key>`. If you add the `--no-colors` flag to a command, the information is displayed in black-and-white.
 
         nvm set-colors rgBcm
 
