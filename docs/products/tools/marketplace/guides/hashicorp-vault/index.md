@@ -42,3 +42,13 @@ title: "Deploying HashiCorp Vault through the Linode Marketplace"
 
 3. Once the Vault is unsealed the web UI can be used to set up secrets, authentication, and policies.
    ![Screenshot of unsealed Vault web UI](vault-unsealed.png) 
+
+{{<note>}}
+   HashiCorp recommends using mutual TLS (mTLS) with a private CA to secure cluster communications and the web UI. Please see the following HashiCorp documentation for more details.
+   https://www.vaultproject.io/docs/auth/cert
+   https://www.vaultproject.io/docs/secrets/pki/setup  
+   {{</note>}}
+
+4. Additional configurations are required to use the Linode Marketplace Vault instance in a production environment. We recommend reviewing the [Configuration](https://www.vaultproject.io/docs/configuration), [Secrets Engine](https://www.vaultproject.io/docs/secrets), and [Authentication](https://www.vaultproject.io/docs/auth) documentation before proceeding further.
+
+{{< content "marketplace-update-note-shortguide">}}
