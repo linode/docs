@@ -2,7 +2,7 @@
 slug: posthog-on-linode-kubernetes-engine-install
 author:
   name: Jeff Novotny
-description: 'PostHog is an an all-in-one analytics tool that rivals Google Analytics. Learn how to self-host PostHog on LKE to measure and track usage and funnel statistics and insights.'
+description: 'PostHog is an all-in-one analytics tool that rivals Google Analytics. Learn how to self-host PostHog on LKE to measure and track usage and funnel statistics and insights.'
 keywords: ['PostHog','Product analytics','Funnel analysis','Install PostHog LKE','Install PostHog Linode']
 tags: ['kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

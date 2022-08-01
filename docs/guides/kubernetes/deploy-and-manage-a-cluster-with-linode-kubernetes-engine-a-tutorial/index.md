@@ -181,7 +181,7 @@ You can use the Linode Cloud Manager to modify a cluster's existing node pools b
 
 ### Configure Cluster Autoscaling
 
-In Kubernetes, Cluster Auto-Scaling refers to a method by which Kubernetes users can configure their cluster to automatically scale the amount of physical nodes available in a node pool up and down as hardware needs of the the pool increase or decrease. While this feature can be applied manually using resources like the [Cluster Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler) provided by Kubernetes, LKE can manage this potential automatically through the Cloud Manager and the [Linode API](/docs/api/linode-kubernetes-engine-lke/).
+In Kubernetes, Cluster Auto-Scaling refers to a method by which Kubernetes users can configure their cluster to automatically scale the amount of physical nodes available in a node pool up and down as hardware needs of the pool increase or decrease. While this feature can be applied manually using resources like the [Cluster Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler) provided by Kubernetes, LKE can manage this potential automatically through the Cloud Manager and the [Linode API](/docs/api/linode-kubernetes-engine-lke/).
 
 The LKE autoscaler will only apply changes when the following conditions are met:
 

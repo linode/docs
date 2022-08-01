@@ -49,6 +49,7 @@ anonymize
 anonymizing
 ansi
 ansible
+ansible's
 anticompetitive
 antispam
 anycast
@@ -2231,6 +2232,7 @@ wasn
 wasm
 wav
 wazuh
+wchar
 wchar_t
 webadmin
 webalizer

@@ -49,7 +49,7 @@ The Python `type` function is used to determine the type of the data. In this ex
 
 ## Before You Begin
 
-Ensure Python is already installed on your machine and you understand how to launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For more information regarding how to use Python, see the [Linode guide to Python](https://www.linode.com/docs/guides/how-to-install-python-on-ubuntu-20-04/).
+Ensure Python is already installed on your machine and you understand how to launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For more information regarding how to use Python, see the [Linode guide to Python](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
 ## Converting Integers and Floats in Python
 

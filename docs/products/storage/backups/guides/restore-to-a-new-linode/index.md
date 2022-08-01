@@ -8,7 +8,7 @@ description: "How to restore a backup to a new Linode."
 
 These steps cover how to restore a backup to a new Linode Compute Instance. The new Compute Instance will be deployed to the same data center, though you can [migrate](/docs/guides/how-to-initiate-a-cross-data-center-migration-for-your-linode/) it to any data center you'd like after the restore is complete.
 
-The size of the disk(s) created by the restore process will be equal to the amount of space allocated to the disk when the backup was created. In some cases, this means you may want to to reallocate disk space once the restore is complete. For more information regarding this process, see [Resizing a Disk](/docs/guides/disks-and-storage/#resizing-a-disk).
+The size of the disk(s) created by the restore process will be equal to the amount of space allocated to the disk when the backup was created. In some cases, this means you may want to reallocate disk space once the restore is complete. For more information regarding this process, see [Resizing a Disk](/docs/guides/disks-and-storage/#resizing-a-disk).
 
 {{< note >}}
 This process restores all data that was stored on the disk at the time the backup was taken. It does not restore just a single files or directory. If you just need a single file or group of files, complete the normal restore, log in to the server, and then copy those needed files to your local system or any other Linode Compute Instance.
