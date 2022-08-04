@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 title: "Using S3cmd with Object Storage"
 description: "Learn how to use the S3cmd command-line tool with Linode's Object Storage."
+modified: 2022-08-04
 ---
 
 S3cmd is a command line utility that you can use for any S3-compatible Object Storage.
@@ -45,7 +46,7 @@ After s3cmd has been installed, it needs to be configured to work with the bucke
     - **Access Key:** Enter the access key you wish to use. See [Managing Access Keys](/docs/products/storage/object-storage/guides/access-keys/).
     - **Secret Key:** Enter the secret key that corresponds with the access key. This was displayed once when generating the access key.
     - **Default Region:** `US` (do not change, even if you use Object Storage in a different region)
-    - **S3 Endpoint:** `[cluster-url]`is https://[cluster-id].linodeobjects.com/, where [cluster-id] is the id of your data center as listed in the [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/) page.
+    - **S3 Endpoint** (cluster URL): `https://[cluster-id].linodeobjects.com/`, where [cluster-id] is the id of your data center. See [Access Buckets and Files through URLs > Cluster URL (S3 Endpoint)](/docs/products/storage/object-storage/guides/urls/#cluster-url-s3-endpoint) for more details and a list of cluster IDs.
     - **DNS-style bucket+hostname:port template for accessing a bucket:** `%(bucket)s.[cluster-id].linodeobjects.com`, replacing [cluster-id] with the same id used previously.
     - **Encryption password:** Enter your GPG key if you intend to store and retrieve encrypted files (optional).
     - **Path to GPG program:** Enter the path to your GPG encryption program (optional).
