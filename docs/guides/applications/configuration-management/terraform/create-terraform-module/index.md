@@ -3,7 +3,7 @@ slug: create-terraform-module
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'A detailed guide showing how to create a Terraform module with nested root, linode_instance, and stackscripts modules using a Linode StackScripts module that deploys a Linode instance.'
+description: 'This guide shows you how to create a Terraform module with nested root, linode_instance, and stackscripts modules using a Linode StackScripts installer.'
 keywords: ['terraform','resource','modules','provider']
 tags: ["terraform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -166,7 +166,7 @@ resource "linode_sshkey" "main_key" {
       - The `linode_sshkey` resource will create Linode SSH Keys tied to your Linode account. These keys can be reused for future Linode deployments once the resource has been created. `ssh_key = chomp(file(local.key))` uses Terraform’s built-in function `file()` to provide a local file path to the public SSH key’s location. The location of the file path is the value of the local variable `key`. The `chomp()` built-in function removes trailing new lines from the SSH key.
 
         {{< note >}}
-If you do not already have SSH keys, follow the steps in the **Create an Authentication Key-pair** section of the [Securing Your Server Guide](/docs/guides/securing-your-server/#create-an-authentication-key-pair).
+If you do not already have SSH keys, follow the steps in the **Create an Authentication Key-pair** section of the our guide [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair).
 {{< /note >}}
 
       {{< file >}}

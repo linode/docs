@@ -3,7 +3,7 @@ slug: how-to-work-with-triggers-in-mysql-database
 author:
   name: Francis Ndungu
   email: francisndungu83@gmail.com
-description: 'A trigger is a pre-defined SQL command that is automatically executed when specific actions occur in the database. In this guide, we will walk you through the steps of creating and working with triggers in your MySQL database.'
+description: 'In this guide, we will show you how to create triggers, pre-defined SQL commands which automatically run under certain conditions, in your MySQL database. '
 keywords: ['mysql','database','triggers']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-21
@@ -45,9 +45,9 @@ In this guide, you will learn:
 
 ## Before You Begin
 
-Make sure you have the following:
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1.  A configured Linode server. You can learn how to create and setup a Linode server by reading our [Getting Started with Linode](/docs/getting-started/) guide.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  A MySQL server and client installed on the Linode server. Installation guides for MySQL are available for different distributions in our [MySQL section](/docs/databases/mysql/).
 

@@ -73,7 +73,7 @@ Some commands in this guide require elevated privileges and are prefixed with th
 
 ## Create a New Linode
 
-To get started, create a new Linode by following the instructions within the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/securing-your-server/) guides. Keep the following considerations in mind:
+To get started, create a new Linode by following the instructions within the [Getting Started](/docs/guides/getting-started/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides. Keep the following considerations in mind:
 
 -  **Distribution:** Select the distribution image you wish to use for the base of the upgraded system. For most cases, you should likely select the latest LTS (long term support) release of the same distribution as the original system. For instance, if the original system is Ubuntu 18.04 LTS, select the latest Ubuntu LTS release (20.04 at the time of this writing). You might also wish to upgrade to a new distribution that's based on (or similar to) your current system. As an example, you can upgrade a CentOS 7 (or 8) system to AlmaLinux 8 (or RockyLinux 8). See [Choosing a Linux Distribution](/docs/guides/choosing-a-distribution/) for a full list of the distribution images available on Linode.
 -  **Region:** The new Linode must reside in the same region (data center) as the original Linode.
@@ -147,7 +147,7 @@ Before transferring data, you may want to place any applications in a *maintenan
 
 ### SFTP (SSH File Transfer Protocol)
 
-SFTP is a standard protocol for securely listing, downloading, and uploading files on remote systems. This is a very user-friendly approach to file transfers. Many desktop applications are available and can be used to transfer data between the original Linode and the new Linode. These applications include [FileZilla](https://filezilla-project.org/) (free, cross-platform), [WinSCP](https://winscp.net/eng/index.php) (free, Windows-only), [Transmit](https://panic.com/transmit/) (paid, macOS-only), and [Forklift](https://binarynights.com/) (paid, macOS-only). See our [FileZilla guide](/docs/tools-reference/file-transfer/filezilla/) for more information.
+SFTP is a standard protocol for securely listing, downloading, and uploading files on remote systems. This is a very user-friendly approach to file transfers. Many desktop applications are available and can be used to transfer data between the original Linode and the new Linode. These applications include [FileZilla](https://filezilla-project.org/) (free, cross-platform), [WinSCP](https://winscp.net/eng/index.php) (free, Windows-only), [Transmit](https://panic.com/transmit/) (paid, macOS-only), and [Forklift](https://binarynights.com/) (paid, macOS-only). See our [FileZilla guide](/docs/guides/filezilla/) for more information.
 
 ### SCP (Secure Copy Protocol)
 
@@ -157,11 +157,11 @@ SCP is a common file transfer command line tool available on most macOS and Linu
 
 Databases can be copied in much the same way as files. The major difference is that most databases first require a *database dump*, which writes all of the data stored within the database to a backup file. This database backup file can then be copied to the new system and used to restored the data.
 
--   To create a dump of a MySQL (or MariaDB) database, use the `mysqldump` command. See [Use mysqldump to Back Up MySQL or MariaDB](/docs/guides/use-mysqldump-to-back-up-mysql-or-mariadb/) for instructions on backing up and restoring a database. **You can only use this tool if your database process is accessible and running.**
+-   To create a dump of a MySQL (or MariaDB) database, use the `mysqldump` command. See [Use mysqldump to Back Up MySQL or MariaDB](/docs/guides/mysqldump-backups/) for instructions on backing up and restoring a database. **You can only use this tool if your database process is accessible and running.**
 
--   If your MySQL database won't run for some reason, follow the instructions for creating [physical backups](/docs/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/).
+-   If your MySQL database won't run for some reason, follow the instructions for creating [physical backups](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
 
--   If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) guide.
+-   If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/guides/how-to-back-up-your-postgresql-database/) guide.
 
 ## Transfer IPv4 Addresses
 

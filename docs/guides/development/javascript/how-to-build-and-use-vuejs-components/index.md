@@ -3,7 +3,7 @@ slug: how-to-build-and-use-vuejs-components
 author:
   name: Linode Community
   email: docs@linode.com
-description: VueJS is a JavaScript framework for building interfaces, and components are its building blocks. In this guide, we''ll teach you about component essentials.
+description: 'In this guide, you will learn how about the components that make up VueJS, a JavaScript framework for building interfaces, and how to use them.'
 keywords: ['vue js','javascript','vuejs','vuejs components', 'vuejs events', 'vuejs slots']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-14
@@ -396,7 +396,7 @@ Let's explore the code for this component:
 
 -   You can see how this default value is referenced for the new `rating-title` component on line 16. Whenever nothing is included between the `<rating-title></rating-title>` tags, the default value is used.
 
--   Compare this with how the component is used on lines 8 and 12. Because a title is included between the component's tags, the default text is is not rendered.
+-   Compare this with how the component is used on lines 8 and 12. Because a title is included between the component's tags, the default text is not rendered.
 
 ### Named Slots
 

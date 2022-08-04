@@ -1,23 +1,21 @@
-{{/*
-The relations are stored in front matter like this:
+{{/* The relations are stored in front matter like this:
 
-relations:
-    relation-key:
-        key: oracle-10g-express
-        keywords:
-            - distribution: Debian 5 Lenny
-            - platform: Platform2
-            
-This partial creates a big reverse index with the combined path as the key.
+  relations:
+  relation-key:
+  key: oracle-10g-express
+  keywords:
+  - distribution: Debian 5 Lenny
+  - platform: Platform2
 
-This partial is meant to be used with partialCached.
+  This partial creates a big reverse index with the combined path as the key.
 
+  This partial is meant to be used with partialCached.
 */}}
 
 {{ $key := . }}
 
 {{ if not $key }}
-  {{ errorf "Must provide the first level key as the argument."}}
+  {{ errorf "Must provide the first level key as the argument." }}
 {{ end }}
 
 {{ $m := newScratch }}

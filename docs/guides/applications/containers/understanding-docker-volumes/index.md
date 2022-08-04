@@ -21,11 +21,15 @@ Files (and other data) stored within a Docker container does not persist if the 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and have a Linode (or other Linux system) running Docker.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  This guide assumes you are comfortable using the Linux command-line. See [Using the terminal](/docs/guides/using-the-terminal/).
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-3.  This guide assumes you have a basic understanding of Docker. In addition, you should have already installed Docker on your server and deployed a Docker image. See [An Introduction to Docker
+1.  Install Docker on your system.
+
+1.  This guide assumes you are comfortable using the Linux command-line. See [Using the terminal](/docs/guides/using-the-terminal/).
+
+1.  This guide assumes you have a basic understanding of Docker. In addition, you should have already installed Docker on your server and deployed a Docker image. See [An Introduction to Docker
 ](/docs/guides/introduction-to-docker/).
 
 ## Creating a Docker Volume

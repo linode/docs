@@ -3,7 +3,7 @@ slug: install-gitlab-with-docker
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How to install GitLab with Docker.'
+description: 'This guide shows how to install GitLab, the free git repository management app based on Ruby on Rails, on a Linode using the container application Docker.'
 keywords: ['gitlab', 'git', 'docker']
 tags: ["version control system","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -39,7 +39,7 @@ This guide was written for and tested with Ubuntu 18.04. You may be able to adap
 
 ### Secure your Server
 
-Review and implement the measures in the [How to Secure your Server](/docs/security/securing-your-server/) guide, including creating a [limited user account](/docs/security/securing-your-server/#add-a-limited-user-account).
+Review and implement the measures in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, including creating a [limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
 
 ### Change your Linode's Default SSH Port
 
@@ -73,7 +73,7 @@ It takes some time for DNS changes to propagate through the internet, so it's su
 
     {{< content "update-dns-at-common-name-server-authorities" >}}
 
-You can test to see if your DNS changes have propagated with the [`dig` command](/docs/networking/dns/use-dig-to-perform-manual-dns-queries/):
+You can test to see if your DNS changes have propagated with the [`dig` command](/docs/guides/use-dig-to-perform-manual-dns-queries/):
 
     dig +short gitlab.example.com
 
@@ -252,6 +252,6 @@ GitLab offers many features that are worth taking the time to understand and uti
 
 -   Review Linode's Git documentation:
 
-    -   [Getting Start with Git](/docs/development/version-control/how-to-configure-git/)
+    -   [Getting Start with Git](/docs/guides/how-to-configure-git/)
 
-    -   [How to Install Git on Linux, Mac or Windows](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/)
+    -   [How to Install Git on Linux, Mac or Windows](/docs/guides/how-to-install-git-on-linux-mac-and-windows/)

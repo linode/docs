@@ -3,7 +3,7 @@ slug: nodebalancer-ssl-configuration
 author:
   name: Joel Kruger
   email: jkruger@linode.com
-description: 'Forcing all connections to use SSL with NodeBalancers.'
+description: 'This guide provides you with step-by step instructions on how to force all connections to your NodeBalancer to use the secure and encrypted SSL protocol.'
 keywords: ["Linode", "NodeBalancer", "SSL", "redirect", "load balancing", "install", "certificate", "configuration"]
 tags: ["linode platform","security","networking","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -58,8 +58,8 @@ This guide has been written with the assumption that you are logged in as the ro
     | **Port** | 443 |
     | **Protocol** | HTTPS |
     | **Session Stickiness** | None |
-    | **SSL Certificate** | Paste the contents of your SSL certificate. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another. The certificate must be signed using the RSA algorithm, which is the default in most cases. ECDSA certificates are not supported.|
-    | **Private Key** | Paste the contents of your private key. Your private key must not have a passphrase. |
+    | **SSL Certificate** | Paste the PEM-formatted contents of your SSL certificate. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another. The certificate must be signed using the RSA algorithm, which is the default in most cases. ECDSA certificates are not supported.|
+    | **Private Key** | Paste the PEM-formatted contents of your private key. Your private key must not have a passphrase. |
     | **Algorithm** | Round Robin |
     | **Health Check Type** | HTTP Status |
     | **Interval** | 5 |

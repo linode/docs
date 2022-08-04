@@ -3,8 +3,8 @@ slug: install-nagios-on-debian-10-and-ubuntu-2004
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows you how to install Nagios, a widely-used tool for server monitoring. The installation steps work for both Debian 10 and Ubuntu 20.04 servers.'
-og_description: 'This guide shows you how to install Nagios, a widely-used tool for server monitoring. The installation steps work for both Debian 10 and Ubuntu 20.04 servers.'
+description: 'This guide shows you how to install Nagios, a widely-used free and open-source application for server monitoring, on both Debian 10 and Ubuntu 20.04 servers.'
+og_description: 'This guide shows you how to install Nagios, a widely-used free and open-source application for server monitoring, on both Debian 10 and Ubuntu 20.04 servers.'
 keywords: ['nagios','monitoring','debian 10','ubuntu 20.04']
 tags: ['ubuntu', 'debian', 'monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -36,18 +36,14 @@ Nagios's official installation guide shows how to compile Nagios from source cod
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Install and configure a LAMP (Linux, Apache, MySQL, and PHP) stack. Follow the [Install a LAMP Stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) or the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide for instructions.
 
-1. Update your system:
-
-        sudo apt update && sudo apt upgrade
-
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Create a Nagios User and User Group
@@ -126,15 +122,15 @@ Use a web browser to navigate to your machine's domain name or public IP address
 
 - You should be greeted by the Nagios landing page.
 
-[![Landing page for Nagios](nagios-landing-page_small.png "Landing page for Nagios")](nagios-landing-page.png)
+![Landing page for Nagios](nagios-landing-page.png)
 
 - You can view monitoring status information by selecting **Hosts** from the menu on the left.
 
-[![Nagios page displaying monitoring status](nagios-hosts-page_small.png "Nagios page displaying monitoring status")](nagios-hosts-page.png)
+![Nagios page displaying monitoring status](nagios-hosts-page.png)
 
 - You can get details on the services running and their statuses by selecting **Services** from the menu on the left.
 
-[![Nagios page detailing the services running](nagios-services-page_small.png "Nagios page detailing the services running")](nagios-services-page.png)
+![Nagios page detailing the services running](nagios-services-page.png)
 
 ## Next Steps
 

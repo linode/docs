@@ -3,7 +3,7 @@ slug: ssl-apache2-centos
 author:
   name: Linode
   email: docs@linode.com
-description: 'Serve SSL-enabled websites with the HTTPD web server.'
+description: 'This guide provides you with step-by-step instructions on how to enable SSL to secure websites served through the Apache web server on Fedora or CentOS.'
 keywords: ["apache SSL", "ssl on centos", "ssl on fedora", "ssl", "contos", "fedora", "apache", "httpd"]
 tags: ["fedora","lamp","centos","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

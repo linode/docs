@@ -1,6 +1,5 @@
 ---
 slug: apache-2-web-server-on-ubuntu-9-04-jaunty
-deprecated: true
 author:
   name: Linode
   email: docs@linode.com
@@ -13,7 +12,6 @@ modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2009-08-13
-expiryDate: 2013-04-29
 deprecated: true
 title: 'Apache 2 Web Server on Ubuntu 9.04 (Jaunty)'
 relations:
@@ -25,7 +23,7 @@ relations:
 
 
 
-This tutorial explains how to install and configure the Apache web server on Ubuntu 9.04 (Jaunty). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 9.04](/docs/lamp-guides/ubuntu-9-04-jaunty).
+This tutorial explains how to install and configure the Apache web server on Ubuntu 9.04 (Jaunty). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 9.04](/docs/lamp-guides/ubuntu-9-04-jaunty).
 
 ## Install Apache 2
 
@@ -140,7 +138,7 @@ To disable a module that is currently enabled, use the inverse command:
 
     a2dismod [module-name]
 
-To get a list of available Apache modules modules in the Ubuntu repository use the following command:
+To get a list of available Apache modules in the Ubuntu repository use the following command:
 
     apt-cache search libapache2*
 

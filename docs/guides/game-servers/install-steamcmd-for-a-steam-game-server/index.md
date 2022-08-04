@@ -25,38 +25,28 @@ SteamCMD is a command-line version of the Steam client which works with games th
 This guide is intended to get you quickly up and running with SteamCMD on your Linode. See Valve's [SteamCMD wiki page](https://developer.valvesoftware.com/wiki/SteamCMD) for more information and advanced setups.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1.  Update Your Operating System:
-
-    **CentOS**
-
-        sudo yum update
-
-    **Debian, Ubuntu**
-
-        sudo apt update && sudo apt upgrade
-
-1.  [Install the `screen` utility](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/#installing-gnu-screen), which will be used later when running SteamCMD. For more information about how screen works, review the rest of our [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/) guide.
+1.  [Install the `screen` utility](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/#installing-gnu-screen), which will be used later when running SteamCMD. For more information about how screen works, review the rest of our [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) guide.
 
 ## Secure Your Game Server
 
-Game servers and clients are an especially ripe target for attack. Use our [Securing Your Server](/docs/security/securing-your-server/) guide to:
+Game servers and clients are an especially ripe target for attack. Use our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to:
 
-1.  [Add a limited Linux user](/docs/security/securing-your-server/#add-a-limited-user-account) to your server. Make the username `steam` to coincide with the rest of [Linode's Steam guides](/docs/applications/game-servers/), as well as Valve's official documentation. Be sure to give the `steam` user `sudo` privileges.
+1.  [Add a limited Linux user](/docs/guides/set-up-and-secure/#add-a-limited-user-account) to your server. Make the username `steam` to coincide with the rest of [Linode's Steam guides](/docs/applications/game-servers/), as well as Valve's official documentation. Be sure to give the `steam` user `sudo` privileges.
 
-1.  [Harden SSH access](/docs/security/securing-your-server/#harden-ssh-access).
+1.  [Harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access).
 
-1.  [Remove unused network-facing services](/docs/security/securing-your-server/#remove-unused-network-facing-services).
+1.  [Remove unused network-facing services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services).
 
-1.  If you are using [**iptables**](/docs/security/firewalls/control-network-traffic-with-iptables/) (which is set in Linode's Ubuntu and Debian images by default), follow the [Configure your Firewall Using IPTables](#configure-your-firewall-using-iptables) section.
+1.  If you are using [**iptables**](/docs/guides/control-network-traffic-with-iptables/) (which is set in Linode's Ubuntu and Debian images by default), follow the [Configure your Firewall Using IPTables](#configure-your-firewall-using-iptables) section.
 
-1.  If instead you are using [**firewalld**](/docs/security/firewalls/introduction-to-firewalld-on-centos/) (as in Linode's CentOS 7 and Fedora images), follow the [Configure your Firewall Using FirewallD](#configure-your-firewall-using-firewalld) section.
+1.  If instead you are using [**firewalld**](/docs/guides/introduction-to-firewalld-on-centos/) (as in Linode's CentOS 7 and Fedora images), follow the [Configure your Firewall Using FirewallD](#configure-your-firewall-using-firewalld) section.
 
 ### Configure your Firewall Using IPTables
 
@@ -127,7 +117,7 @@ Steam currently supports multiplayer play over IPv4 only, so a Steam server only
         sudo iptables-restore < ~/v4
         sudo ip6tables-restore < ~/v6
 
-1.  [Install iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables/#install-iptables-persistent). If you don't install this software, your firewall rules will not persist through reboots of your Linode.
+1.  [Install iptables-persistent](/docs/guides/control-network-traffic-with-iptables/#install-iptables-persistent). If you don't install this software, your firewall rules will not persist through reboots of your Linode.
 
 1.  If iptables-persistent was already installed, reconfigure the package so that it recognizes your new rulesets:
 
@@ -186,13 +176,31 @@ SteamCMD can be installed via your distribution's [package manager](#from-packag
 
 Installing via the package manager allows you to more easily download updates and security patches, so we strongly recommend using this method if your distribution includes the SteamCMD package. The package is available for Ubuntu and Debian deployments.
 
--   **Ubuntu**
+-   **Ubuntu 20.04**
 
-    1.  Install the package:
+    1. Add the multiverse repository and the `i386` architecture:
+
+            sudo add-apt-repository multiverse
+            sudo dpkg --add-architecture i386
+
+    1. Update the repository to make sure new packages can be installed:
+
+            sudo apt update
+
+    1. Install the 32 bit libraries that steamcmd requires:
+
+            sudo apt install lib32gcc1 lib32stdc++6 libc6-i386 libcurl4-gnutls-dev:i386 libsdl2-2.0-0:i386
+
+
+    1.  Install the `steamcmd` package:
 
             sudo apt-get install steamcmd
 
-    1.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
+           {{< note >}}
+  In the window that appears, you may need to enter the keys `shift + tab` to select the `ok` option.
+           {{< /note >}}
+
+     1.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
 
             cd ~
             ln -s /usr/games/steamcmd steamcmd
@@ -212,6 +220,11 @@ deb-src http://mirrors.linode.com/debian stretch main non-free
             sudo dpkg --add-architecture i386
             sudo apt update
             sudo apt-get install steamcmd
+
+           {{< note >}}
+  In the window that appears following the command to install steamCMD, you may need to enter the keys `shift + tab` to select the `ok` option.
+           {{< /note >}}
+
 
     1.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
 
@@ -266,7 +279,7 @@ The game server will still operate despite this error, and it should be somethin
 
     If you have installed SteamCMD from repositories:
 
-        screen ~/.steam/steamcmd
+        screen ~/.steam/steamcmd/steamcmd.sh
 
     If you have installed SteamCMD manually:
 
@@ -315,7 +328,7 @@ Some versions of the Steam CLI do **not** obfuscate passwords. If you're signing
 
 To update your SteamCMD server, follow these steps:
 
-1. Run SteamCMD: `steamcmd` or `screen ~/.steam/steamcmd`
+1. Run SteamCMD if it is not already running: `steamcmd`, `screen ~/.steam/steamcmd.sh`, or `screen ~/.steam/steamcmd/steamcmd.sh`.
 2. Login anonymously or with your Steam account (depending on the game server): `login anonymous` or `login $username`, replacing *$username* with your Steam username.
 3. Update the app: `app_update $app-id`, replacing *$app-id* with the app number/id of the game you wish to update.
 
@@ -325,7 +338,7 @@ To update your SteamCMD server, follow these steps:
 
 To exit the screen session which contains the Steam process *without* disrupting the Steam process, enter **Control+A** followed by **Control+D** on your keyboard. You can later return to the screen session by entering: `screen -r`
 
-For more information on managing your screen sessions, review our [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/) guide.
+For more information on managing your screen sessions, review our [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) guide.
 
 ### Stop SteamCMD
 

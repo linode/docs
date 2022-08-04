@@ -1,5 +1,6 @@
 ---
 slug: squid-http-proxy-centos-6-4
+deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com

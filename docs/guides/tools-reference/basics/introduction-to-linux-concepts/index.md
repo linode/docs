@@ -13,7 +13,6 @@ modified_by:
 published: 2009-08-31
 title: Introduction to Linux Concepts
 external_resources:
- - '[Getting Started](/docs/getting-started/)'
  - '[Using the Terminal](/docs/using-linux/using-the-terminal)'
  - '[LAMP Guides](/docs/lamp-guides/)'
  - '[Package Management](/docs/using-linux/package-management)'
@@ -69,7 +68,7 @@ Before you install Linux, decide which distribution to install. Linux comes in s
 
 Here at Linode, you install Linux with the [Linode Manager](https://cloud.linode.com/) dashboard. It takes just a few clicks to install Linux with this dashboard. If you don't have a particular Linux distribution in mind, install **Ubuntu 16.04 LTS**. Ubuntu is good for Linux beginners because it is well-supported and doesn't change often.
 
-After you know which distribution you want to install, follow the instructions for installing Linux in the [Getting Started](/docs/getting-started/) article. Follow that article until you complete [Booting Your Linode](/docs/getting-started#boot-your-linode), then come back here.
+After you know which distribution you want to install, follow the instructions for installing Linux in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) article. Follow that article until you complete [Booting Your Linode](/docs/getting-started#boot-your-linode), then come back here.
 
 ### Connecting to Your Linode
 
@@ -116,7 +115,7 @@ In this section, we'll look at the structure of a Linux server. Everything on yo
 
 Most Linux systems have directories called `lib` and `var` (along with several others) underneath the root directory. The `lib` directory contains system libraries, while the `var` directory contains all of the files on your system that are likely to change, such as your logs and your mail messages. Directories can go inside other directories, as illustrated below:
 
-[![The Linux directory structure.](1489-linux_directory_structure_2.png)](1489-linux_directory_structure_2.png)
+![The Linux directory structure.](1489-linux_directory_structure_2.png)
 
 ### Print a Working Directory
 Find out where you are in the directory structure. Make sure your terminal application is selected and that you're logged in to your Linode. You should see a blinking cursor where you can start typing.
@@ -256,7 +255,7 @@ lrwxrwxrwx  1 root root   16 Apr 30  2012 libfuse.so.2 -> libfuse.so.2.8.6
 
 ### Learn More About Navigating Directories
 
-Now you know how to use the `pwd` command to show you where you are, the `cd` command to move to a new directory, and the `ls` command to show you the contents of a directory. These are the basic tools you need to navigate through your Linode's files and directories. To learn more about navigating directories, read the linked section of the [Using the Terminal](/docs/tools-reference/ssh/using-the-terminal/) guide.
+Now you know how to use the `pwd` command to show you where you are, the `cd` command to move to a new directory, and the `ls` command to show you the contents of a directory. These are the basic tools you need to navigate through your Linode's files and directories. To learn more about navigating directories, read the linked section of the [Using the Terminal](/docs/guides/using-the-terminal/) guide.
 
 ### Upload Files to Your Linode
 
@@ -274,7 +273,7 @@ You can set users and permissions for each file directory on your Linode.
 
 Three categories comprise the file access system in Linux:
 
--   **Users**: Unique logins for your Linode. A user account is typically assigned to either a person or an application that needs to access files on your system. You can have any number of users on your Linode. To learn how to add a user, see the [Adding a New User](/docs/security/securing-your-server/#add-a-limited-user-account) section of the **Securing Your Server** guide.
+-   **Users**: Unique logins for your Linode. A user account is typically assigned to either a person or an application that needs to access files on your system. You can have any number of users on your Linode. To learn how to add a user, see the [Adding a New User](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of the **Securing Your Server** guide.
 -   **Groups**: A collection of one or more users. Groups are a useful way to grant similar access privileges to multiple users, without having to set them individually for each user. When a user account is created, it is assigned a default group with the same name as the user name. Each user can belong to any number of groups. Users that are a part of a group inherit the permissions granted to the group.
 -   **Everyone**: is the category for everyone else. If someone accesses files on your Linode without being logged in as a specific user, they fall into the *everyone* category. *Everyone* is sometimes known as *world*, because it includes everyone in the whole world.
 
@@ -408,6 +407,6 @@ Some distributions are designed to be as simple and minimalistic as possible, wh
 
 -   **Release Cycle**: Different distributions release their operating system updates on different schedules. Distributions like Gentoo and Arch Linux use a *rolling release* model where individual packages are released whenever they're deemed ready by their developers. Conversely, distributions like Debian, Slackware, and CentOS strive to provide the most stable operating system attainable, and release new versions much less frequently. Fedora and Ubuntu release new versions of their operating systems every six months. Choosing the release cycle that's right for you depends on many factors, including the software you need to run, your comfort level, and the amount of stability and reliability you need.
 -   **Organizational Structure**: While it might not affect the performance of the distribution, one of the distinguishing factors between distributions is the organizational structure of the development team. Some distributions, like Debian, Gentoo, Arch, and Slackware are developed by independent communities of developers, while other distributions like OpenSUSE, Fedora, and Ubuntu are developed by communities sponsored by various corporations (e.g. Novell, RedHat, and Canonical for the examples above). Other distributions, such as CentOS, are derived by a community from commercially-produced distributions.
--   **Common Tool Sets**: Different distributions make use of different tools for common tasks like [package management](/docs/tools-reference/linux-package-management/) or system configuration. As we discussed above, Debian and Ubuntu use APT to manage `.deb` packages, CentOS and Fedora use yum to manage `.rpm` packages, and OpenSUSE also uses `.rpm` packages but manages them with a tool called **yast**. In many cases your choice of distribution will come down to the one that provides the tools you need and are most comfortable with.
+-   **Common Tool Sets**: Different distributions make use of different tools for common tasks like [package management](/docs/guides/linux-package-management/) or system configuration. As we discussed above, Debian and Ubuntu use APT to manage `.deb` packages, CentOS and Fedora use yum to manage `.rpm` packages, and OpenSUSE also uses `.rpm` packages but manages them with a tool called **yast**. In many cases your choice of distribution will come down to the one that provides the tools you need and are most comfortable with.
 
 Different distributions of Linux are right for different situations. You should experiment until you find the best fit for you. Given the similarities between different distributions, don't be afraid switch to a new one that will serve you better. If you're familiar with the concepts in this article, you're well on your way to administrating your system like a pro with any distribution of Linux.

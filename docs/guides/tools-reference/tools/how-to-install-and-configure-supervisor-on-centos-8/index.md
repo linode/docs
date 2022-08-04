@@ -42,21 +42,13 @@ This guide shows how to:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide. [Create a New Linode](/docs/getting-started/#create-a-linode) using our CentOS 8 image. Then, complete the steps for setting your [Linode's Hostname](/docs/getting-started/#set-the-hostname) and [Timezone](/docs/getting-started/#set-the-timezone).
+1.  If you have not already done so, create a Linode account and *CentOS 8* Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1.  This guide uses `sudo` wherever possible. Follow the [Add a Limited User Account](/docs/guides/securing-your-server/#centos--fedora) section of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account. The commands in this guide should be run from this user. When creating your user, make sure that you give it `sudo` privileges.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note >}}
-Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
-
-1.  Follow the [Add a Limited User Account](/docs/guides/securing-your-server/#centos--fedora) section again to create another standard user named `myappuser`. The Supervisor configuration that appears later in this guide runs the example app under this user. This user does *not* need `sudo` privileges.
-
-1.  Follow the other sections of the [Securing Your Server](/docs/security/securing-your-server/) guide to harden SSH access and remove unnecessary network services.
-
-1.  Update your system's packages:
-
-        sudo yum update
 
 1.  [Install Python 3.6 or newer](/docs/guides/how-to-install-python-on-centos-8/).
 

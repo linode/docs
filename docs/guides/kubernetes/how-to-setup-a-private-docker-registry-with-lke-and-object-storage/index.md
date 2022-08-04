@@ -28,15 +28,15 @@ Hosting a private Docker registry alongside your Kubernetes cluster allows you t
 This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubernetes.io/docs/setup/release/notes/).
 {{</ note >}}
 
-1. [Deploy a LKE Cluster](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This example was written using a node pool with two [2 GB nodes](https://www.linode.com/pricing/). Depending on the workloads you will be deploying on your cluster, you may consider using nodes with higher resources.
+1. [Deploy a LKE Cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This example was written using a node pool with two [2 GB nodes](https://www.linode.com/pricing/). Depending on the workloads you will be deploying on your cluster, you may consider using nodes with higher resources.
 
-1. Install [Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm), [kubectl](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl), and [Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) to your local environment.
+1. Install [Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm), [kubectl](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl), and [Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) to your local environment.
 
     {{< note >}}
 For Docker installation instructions on other operating systems, see [Docker's official documentation](https://docs.docker.com/get-docker/).
     {{</ note >}}
 
-1. Ensure [Object Storage is enabled](/docs/platform/object-storage/how-to-use-object-storage/#enable-object-storage) on your Linode account, [generate an Object Storage key pair](/docs/platform/object-storage/how-to-use-object-storage/#object-storage-key-pair) and ensure you save it in a secure location. You will need the key pair for a later section in this guide. Finally [create an Object Storage bucket](/docs/platform/object-storage/how-to-use-object-storage/#create-a-bucket) to store your registry's images. Throughout this guide, the example bucket name will be `registry`.
+1. [Generate an Object Storage key pair](/docs/products/storage/object-storage/guides/access-keys/) and ensure you save it in a secure location. You will need the key pair for a later section in this guide. Finally [create an Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/) to store your registry's images. Throughout this guide, the example bucket name will be `registry`.
 
 1. Purchase a domain name from a reliable domain registrar. Using Linode's DNS Manager, [create a new Domain](/docs/guides/dns-manager/#add-a-domain) and [add an DNS "A" record](/docs/guides/dns-manager/#add-dns-records) for a subdomain named `registry`. Your subdomain will host your Docker registry. This guide will use `registry.example.com` as the example domain.
 
@@ -62,7 +62,7 @@ In this section, you will install the NGINX Ingress Controller using Helm, which
 
 1. Add the stable Helm charts repository to your Helm repos:
 
-        helm repo add stable https://charts.helm.sh/stable
+        helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
 1. Update your Helm repositories:
 
@@ -70,23 +70,21 @@ In this section, you will install the NGINX Ingress Controller using Helm, which
 
 1. Install the NGINX Ingress Controller. This installation will result in a Linode NodeBalancer being created.
 
-        helm install nginx-ingress stable/nginx-ingress
+        helm install ingress-nginx ingress-nginx/nginx-ingress
 
     You will see a similar output after issuing the above command (the output has been truncated for brevity):
 
     {{< output >}}
-NAME: my-nginx-ingress
-LAST DEPLOYED: Wed Apr  8 09:55:47 2020
+NAME: ingress-nginx
+LAST DEPLOYED: Thu Jul 14 19:27:24 2022
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
 TEST SUITE: None
 NOTES:
-*******************************************************************************************************
-* DEPRECATED, please use https://github.com/kubernetes/ingress-nginx/tree/master/charts/ingress-nginx *
-*******************************************************************************************************The nginx-ingress controller has been installed.
+The ingress-nginx controller has been installed.
 It may take a few minutes for the LoadBalancer IP to be available.
-You can watch the status by running 'kubectl --namespace default get services -o wide -w my-nginx-ingress-controller'
+You can watch the status by running 'kubectl --namespace default get services -o wide -w ingress-nginx-controller'
 ...
     {{</ output >}}
 
@@ -96,13 +94,13 @@ You can watch the status by running 'kubectl --namespace default get services -o
 
 1. Access your NodeBalancer's assigned external IP address.
 
-        kubectl --namespace default get services -o wide -w nginx-ingress-controller
+        kubectl --namespace default get services -o wide -w ingress-nginx-controller
 
     The command will return a similar output:
 
     {{< output >}}
 NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)                      AGE     SELECTOR
-my-nginx-ingress-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/component=controller,app=nginx-ingress,release=my-nginx-ingress
+ingress-nginx-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/component=controller,app.kubernetes.io/instance=ingress-nginx,app.kubernetes.io/name=ingress-nginx
     {{</ output >}}
 
 1. Copy the IP address of the `EXTERNAL IP` field and navigate to Linode's DNS manager and [update your domain's' `registry` A record](/docs/guides/dns-manager/#add-dns-records) with the external IP address. Ensure that the entry's **TTL** field is set to **5 minutes**.
@@ -287,17 +285,17 @@ Your LKE Cluster will also need to authenticate to your Docker registry in order
 
 ### Configure your Docker Registry
 
-Before deploying the Docker Registry Helm chart to your cluster, you will define some configurations so that the Docker registry uses the NGINX Ingress controller, your `registry` Object Storage bucket, and your cert-manager created TLS certificate. See the [Docker Registry Helm Chart's official documentation](https://hub.helm.sh/charts/stable/docker-registry) for a full list of all available configurations.
+Before deploying the Docker Registry Helm chart to your cluster, you will define some configurations so that the Docker registry uses the NGINX Ingress controller, your `registry` Object Storage bucket, and your cert-manager created TLS certificate. See the [Helm Chart's official documentation](https://helm.sh/docs/topics/registries/) for more information about registries.
 
   {{< note >}}
-If you have not yet [generated an Object Storage key pair](/docs/platform/object-storage/how-to-use-object-storage/#object-storage-key-pair) and [created an Object Storage bucket](/docs/platform/object-storage/how-to-use-object-storage/#create-a-bucket) to store your registry's images, do so now before continuing with the rest of this section.
+If you have not yet [generated an Object Storage key pair](/docs/products/storage/object-storage/guides/access-keys/) and [created an Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/) to store your registry's images, do so now before continuing with the rest of this section.
   {{< / note >}}
 
 1. Create a new file named `docker-configs.yaml` using the example configurations. Ensure you replace the following values in your file:
       - `ingress.hosts` with your own Docker registry's domain
       - `ingress.tls.secretName` with the name you used when [creating your Certificate](#create-a-certificate-resource)
       - `ingress.tls.hosts` with the domain for which you wish to secure with your TLS certificate.
-      - `secrets.s3.accessKey` with the value of your [Object Storage account's access key](/docs/platform/object-storage/how-to-use-object-storage/#object-storage-key-pair) and `secrets.s3.secretKey` with the corresponding secret key.
+      - `secrets.s3.accessKey` with the value of your [Object Storage account's access key](/docs/products/storage/object-storage/guides/access-keys/) and `secrets.s3.secretKey` with the corresponding secret key.
       - `secrets.htpasswd` with the value returned when you view the contents of your `my_docker_pass` file. However, ensure you do not remove the `|-` characters. This ensures that your YAML is properly formatted. See step 4 in the [Enable Basic Authentication](#enable-basic-authentication) section for details on viewing the contents of your password file.
       - `s3.region` with your Object Storage bucket's cluster region, `s3.regionEndpoint` with your Object Storage bucket's region endpoint, and `s3.bucket` with your registry's Object Storage bucket name.
 
@@ -346,7 +344,7 @@ s3:
 
 You are now ready to push and pull images to your Docker registry. In this section you will pull an existing image from Docker Hub and then push it to your registry. Then, in the next section, you will use your registry's image to deploy an example static site.
 
-1. Use Docker to pull an image from [Docker Hub](https://hub.docker.com/). This example is using an image that was created following our [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/kubernetes/deploy-container-image-to-kubernetes/) guide. The image will build a Hugo static site with some boiler plate content. However, you can use any image from Docker Hub that you prefer.
+1. Use Docker to pull an image from [Docker Hub](https://hub.docker.com/). This example is using an image that was created following our [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/guides/deploy-container-image-to-kubernetes/) guide. The image will build a Hugo static site with some boiler plate content. However, you can use any image from Docker Hub that you prefer.
 
         sudo docker pull leslitagordita/hugo-site:v10
 
@@ -445,7 +443,7 @@ spec:
       - name: regcred
       {{</ file >}}
 
-      - In the Deployment section of the manifest, the [`imagePullSecrets` field](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets) references the secret you created in the [Grant your Cluster Access to your Docker Registry](/#grant-your-cluster-access-to-your-docker-registry) section. This secret contains the authentication credentials that your cluster's kubelet can use to pull your private registry's image.
+      - In the Deployment section of the manifest, the [`imagePullSecrets` field](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets) references the secret you created in the [Grant your Cluster Access to your Docker Registry](#grant-your-cluster-access-to-your-docker-registry) section. This secret contains the authentication credentials that your cluster's kubelet can use to pull your private registry's image.
       - The `image` field provides the image to pull from your Docker registry.
 
 1. Create the deployment.
@@ -456,4 +454,4 @@ spec:
 
 ## (Optional) Tear Down your Kubernetes Cluster
 
-To avoid being further billed for your Kubernetes cluster and NodeBlancer, [delete your cluster using the Linode Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#delete-a-cluster). Similarly, to avoid being further billed for our registry's Object Storage bucket, see [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/).
+To avoid being further billed for your Kubernetes cluster and NodeBlancer, [delete your cluster using the Linode Cloud Manager](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#delete-a-cluster). Similarly, to avoid being further billed for our registry's Object Storage bucket, see [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/).

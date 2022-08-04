@@ -2,8 +2,8 @@
 slug: how-to-install-hashicorp-consul-service-mesh
 author:
   name: Nathaniel Stickman
-description: "HashiCorp''s Consul service mesh centralizes operational tasks around your application''s services. Its tools for service discovery and monitoring help you maintain your distributed, cloud-based applications. This guide shows you how to install and start using Consul on a Kubernetes cluster."
-og_description: "HashiCorp''s Consul service mesh centralizes operational tasks around your application''s services. Its tools for service discovery and monitoring help you maintain your distributed, cloud-based applications. This guide shows you how to install and start using Consul on a Kubernetes cluster."
+description: "This guide will show you how to install HashiCorp''s Consul service mesh, which centralizes operational tasks around your apps services, on a Kubernetes Cluster."
+og_description: "This guide will show you how to install HashiCorp''s Consul service mesh, which centralizes operational tasks around your apps services, on a Kubernetes Cluster."
 keywords: ['what is consul hashicorp', 'how to install hashicorp consul']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
@@ -114,7 +114,7 @@ controller:
 
 1. Navigate to `localhost:18500` in your browser to see the Consul dashboard.
 
-    [![View your Consul dashboard](consul-dashboard_small.png)](consul-dashboard.png)
+    ![View your Consul dashboard](consul-dashboard.png)
 
 ## Example Usage
 

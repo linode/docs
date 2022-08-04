@@ -9,7 +9,7 @@ keywords: ["ark survival evolved", "ubuntu", "server"]
 tags: ["ubuntu","game servers"]
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 external_resources:
- - '[Deploying an ARK Survival Evolved Server through the Linode Marketplace](/docs/guides/ark-survival-evolved-marketplace-app/)'
+ - '[Deploying an ARK Survival Evolved Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/ark-survival-evolved/)'
  - '[The Official Ark Website](http://www.playark.com/)'
  - '[Dedicated Server Setup on the Official Ark: Survival Evolved Wiki](https://ark.fandom.com/wiki/Dedicated_server_setup)'
  - '[Console commands on the Official Ark: Survival Evolved Wiki](https://ark.fandom.com/wiki/Console_commands)'
@@ -28,7 +28,7 @@ dedicated_cpu_link: true
 This guide demonstrates how to set up a personal [ARK: Survival Evolved](http://www.playark.com/) server on a Linode Compute Instance running a modern Ubuntu distribution.
 
 {{< note >}}
-Consider using the Linode Marketplace to quickly and automatically deploy an Ark server on our platform. See [Deploying an ARK Survival Evolved Server through the Linode Marketplace](/docs/guides/ark-survival-evolved-marketplace-app/) for instructions.
+Consider using the Linode Marketplace to quickly and automatically deploy an Ark server on our platform. See [Deploying an ARK Survival Evolved Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/ark-survival-evolved/) for instructions.
 {{</ note >}}
 
 **Supported distributions:** Ubuntu 20.04 and 18.04. Recent non-LTS releases like Ubuntu 21.10, 21.04, and 20.10 should also be supported. Ubuntu 16.04 should still be supported, though that LTS release is no longer receiving free security patches or software updates.
@@ -57,7 +57,7 @@ The steps in this guide require root privileges unless otherwise noted. Be sure 
 
         adduser ark
 
-1.  Configure a firewall, ensuring the following ports are open. See the [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/) guide for instructions.
+1.  Configure a firewall, ensuring the following ports are open. See the [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide for instructions.
 
     | Port | Use |
     | --- | --- |

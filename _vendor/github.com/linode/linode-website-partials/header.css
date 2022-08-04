@@ -123,7 +123,6 @@ li.weglot-hide,
   text-decoration: none;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
 .country-selector a:focus {
@@ -294,7 +293,7 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   font-weight: 400;
   overflow: visible;
 }
-.c-site-header a, .c-site-header a:where(:link,:visited,:hover,:active,:focus) {
+.c-site-header a, .c-site-header a:where(:link, :visited, :hover, :active, :focus) {
   color: inherit;
   text-decoration: none;
 }
@@ -306,6 +305,20 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
 }
 .c-site-header__sub-menu {
   z-index: 998;
+}
+.c-site-header .o-menu__item--sign-up .o-menu__link {
+  background-color: #02b159;
+  border: 2px solid #02b159;
+  border-radius: 4px;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  width: auto;
+}
+.c-site-header .o-menu__item--sign-up .o-menu__link:hover {
+  background-color: #32363b;
 }
 
 .c-site-header__primary {
@@ -358,7 +371,7 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   margin: 0 12px;
   position: relative;
 }
-.c-site-header__primary .o-menu__link[href^="#"]:after {
+.c-site-header__primary .o-menu__link[href^="#"]:after, .c-site-header__primary .o-menu__link[data-sub-menu]:after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' data-prefix='far' data-icon='angle-down' role='img' viewBox='0 0 320 512' class='svg-inline--fa fa-angle-down fa-w-10 fa-7x'%3E%3Cpath fill='rgba(50,54,59)' d='M151.5 347.8L3.5 201c-4.7-4.7-4.7-12.3 0-17l19.8-19.8c4.7-4.7 12.3-4.7 17 0L160 282.7l119.7-118.5c4.7-4.7 12.3-4.7 17 0l19.8 19.8c4.7 4.7 4.7 12.3 0 17l-148 146.8c-4.7 4.7-12.3 4.7-17 0z' class=''%3E%3C/path%3E%3C/svg%3E");
   background-position: center;
   background-repeat: no-repeat;
@@ -381,23 +394,12 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   border-bottom-color: #02b159;
 }
 .c-site-header__primary .o-menu__item--sign-up .o-menu__link {
-  background-color: #02b159;
-  border-radius: 4px;
-  border: 0 solid;
-  color: #ffffff;
-  cursor: pointer;
+  border-width: 0px;
   display: inline-block;
   font-size: 13px;
-  font-weight: 600;
   line-height: 1.538461538;
   padding-left: 20px;
   padding-right: 20px;
-  text-align: center;
-  white-space: nowrap;
-  width: auto;
-}
-.c-site-header__primary .o-menu__item--sign-up .o-menu__link:hover {
-  background-color: #32363b;
 }
 .c-site-header__primary .o-menu__item--sign-up .o-menu__title {
   border-width: 0;
@@ -701,31 +703,22 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   margin-top: 16px;
   padding-top: 16px;
 }
-.c-sub-menu--mobile .o-button {
-  background-color: #02b159;
-  border-color: #02b159;
-  border-radius: 4px;
-  border-style: solid;
-  border-width: 2px;
-  color: #ffffff;
-  cursor: pointer;
+.c-sub-menu--mobile .o-menu__item--sign-up .o-menu__link {
   display: block;
-  font-weight: 600;
+  line-height: 1.2222222222;
   padding: 0.8888888889em 1.666em;
-  text-align: center;
-  white-space: nowrap;
 }
-.c-sub-menu--mobile .o-button:visited {
+.c-sub-menu--mobile .o-menu__item--sign-up .o-menu__link:visited {
   background-color: #02b159;
   border-color: #02b159;
   color: #ffffff;
 }
-.c-sub-menu--mobile .o-button:hover {
+.c-sub-menu--mobile .o-menu__item--sign-up .o-menu__link:hover {
   background-color: #32363b;
   border-color: #32363b;
   color: #ffffff;
 }
-.c-sub-menu--mobile .o-button * {
+.c-sub-menu--mobile .o-menu__item--sign-up .o-menu__link * {
   color: inherit !important;
 }
 .c-sub-menu--mobile .c-search label,
@@ -758,9 +751,6 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
 .c-sub-menu--mobile .c-search input[type=search]::-moz-placeholder {
   color: #32363b;
 }
-.c-sub-menu--mobile .c-search input[type=search]:-ms-input-placeholder {
-  color: #32363b;
-}
 .c-sub-menu--mobile .c-search input[type=search]::placeholder {
   color: #32363b;
 }
@@ -771,9 +761,6 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   outline: none;
 }
 .c-sub-menu--mobile .c-search input[type=search]:focus::-moz-placeholder {
-  color: #8c8e90;
-}
-.c-sub-menu--mobile .c-search input[type=search]:focus:-ms-input-placeholder {
   color: #8c8e90;
 }
 .c-sub-menu--mobile .c-search input[type=search]:focus::placeholder {
@@ -806,6 +793,9 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   flex: 1;
   justify-content: flex-end;
 }
+.c-site-header__topbar .o-layout__col:last-child {
+  margin-right: -12px;
+}
 .c-site-header__topbar .o-layout__module {
   margin-bottom: 0;
   margin-top: 0;
@@ -813,6 +803,13 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
 .c-site-header__topbar .c-notification {
   font-size: 13px;
   line-height: 1.2307692308;
+  opacity: 0;
+  transform: translateX(16px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.c-site-header__topbar .c-notification.--show {
+  opacity: 1;
+  transform: translateX(0);
 }
 .c-site-header__topbar .c-notification__link {
   align-items: center;
@@ -828,12 +825,10 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   border-radius: 3px;
   color: #ffffff;
   flex: none;
+  margin-right: 6px;
   padding-right: 0.666em;
   padding-left: 0.666em;
   text-transform: uppercase;
-}
-.c-site-header__topbar .c-notification__message {
-  margin-left: 6px;
 }
 .c-site-header__topbar .c-utility-nav {
   font-size: 13px;
@@ -872,10 +867,9 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
   font-size: 13px;
   line-height: 1.2307692308;
   margin-left: -8px;
-  min-width: 68.83px;
 }
-.c-site-header__topbar .c-weglot-nav .country-selector {
-  margin-right: -12px;
+.c-site-header__topbar .c-weglot-nav .weglot_here {
+  min-width: 68.83px;
 }
 .c-site-header__topbar .c-weglot-nav .wgcurrent {
   margin: 0 12px;

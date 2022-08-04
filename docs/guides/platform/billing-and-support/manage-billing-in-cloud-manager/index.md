@@ -3,27 +3,27 @@ slug: manage-billing-in-cloud-manager
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to managing your bill in Cloud Manager.
+description: "Learn how to view invoices, update payment information, and manage other billing releated tasks within Linode's Cloud Manager."
 keywords: ["billing", "payments","cancel account"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2019-10-25
-modified: 2021-11-16
-title: How to Manage Billing in the Linode Cloud Manager
-h1_title: Managing Billing in the Cloud Manager
+modified: 2022-02-21
+title: "How to Manage Billing in the Linode Cloud Manager"
+h1_title: "Managing Billing in the Cloud Manager"
 enable_h1: true
 aliases: ['/platform/billing-and-support/manage-billing-in-cloud-manager/']
 ---
 
-We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how to make payments, update your billing information, and remove services. To learn how billing works see the [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/) guide. If you have a question that isn't answered in either guide, please feel free to [contact Support](/docs/platform/billing-and-support/support/).
+We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how to make payments, update your billing information, and remove services. To learn how billing works see the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide. If you have a question that isn't answered in either guide, please feel free to [contact Support](/docs/guides/support/).
 
 ## Before You Begin
 
 Before performing the steps within this guide, please ensure you've completed the following:
 
-1.  **Read through the [Billing and Payments](/docs/guides/how-linode-billing-works/) guide** for detailed information about our billing and payment policies.
+1.  **Read through the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide** for detailed information about our billing and payment policies.
 
 1.  **Log in to the [Cloud Manager](https://cloud.linode.com)** on a user account with one of the following permissions. See [Setting User Permissions](/docs/guides/accounts-and-passwords/#setting-user-permissions) for more details.
 
@@ -46,7 +46,7 @@ This page contains several sections:
 
 - **Promotions:** If there is an active promo/coupon applied to the account, it will be displayed here along with the remaining balance and any expiration date. If there are no active promotions, this section is hidden.
 
-- **Accrued Charges:** The charges that have accrued since your last invoice. This updates frequently to include the hourly charges (up to the monthly cap) for all paid services on the account, as well as any other charges. In the screenshot above, the account has accrued $8.51 of charges since the last invoice. See the [Billing and Payments > Understanding Billing](/docs/guides/how-linode-billing-works/#understanding-billing) guide for help understanding these charges.
+- **Accrued Charges:** The charges that have accrued since your last invoice. This updates frequently to include the hourly charges (up to the monthly cap) for all paid services on the account, as well as any other charges. In the screenshot above, the account has accrued $8.51 of charges since the last invoice. See the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for help understanding these charges.
 
 - **Billing Contact:** The name, address, phone number, and email address for the primary billing contact on the account. See [Accounts and Passwords > Updating Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information).
 
@@ -127,6 +127,8 @@ When an invoice is generated, the amount of that invoice (as well as any past du
 
 All of your billing history, including previous invoices and payments, is accessible within the [Cloud Manager](https://cloud.linode.com/account/billing) on the **Billing & Payment History** section within the **Billing Info** page (see [Accessing Billing Information](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information)). By default, all transactions (both invoices and payments) from the last *6 months* are displayed. To customize this, use the dropdown menus on the top right of this section.
 
+![Viewing Billing & Payment History in the Cloud Manager](view-invoices.png)
+
 **To view an itemized invoice,** find the invoice row on the list and click the corresponding invoice number. This opens up a new page that displays each service that was active during the billing period, along with the additional details listed below:
 
 -  **Description:** The type of service and the unique label you've given it.
@@ -138,7 +140,11 @@ All of your billing history, including previous invoices and payments, is access
 -  **Taxes:** The taxes that are charged for this service.
 -  **Total:** The cost for this service including taxes.
 
-A PDF copy of either the invoice or payment can be downloaded by clicking the **Download PDF** link corresponding to the entry row or on the Invoice page.
+![Viewing an invoice in the Cloud Manager](view-invoice.png)
+
+### Downloading Invoices (PDF and CSV)
+
+An invoice or payment can be downloaded as either a PDF or a CSV file. To do this, open the invoice within the Cloud Manager and select either the **Download CSV** or **Download PDF** button.
 
 ## Adding a Promo Code
 
@@ -173,7 +179,7 @@ Removing a Linode from your account makes its data irretrievable. This includes 
 
 If you would like to preserve your Linode's data before removing it from your account, you need to create an external backup. You may use the suggestions in our [Backing Up Your Data](/docs/guides/backing-up-your-data/) guide for some examples of how to do this.
 
-When removing a Linode from your account that has been active for at least 24 hours, our systems automatically create a [Linode Image](/docs/guides/linode-images/) from the backup. You may use [this guide](https://www.linode.com/community/questions/17441/how-do-i-restore-a-deleted-linode) from [our Community Questions site](https://www.linode.com/community/questions/) to restore this backup.
+When removing a Linode from your account that has been active for at least 24 hours, our systems automatically create a [Linode Image](/docs/products/tools/images/) from the backup. You may use [this post](https://www.linode.com/community/questions/17441/how-do-i-restore-a-deleted-linode) from [our Community Questions site](https://www.linode.com/community/questions/) to restore this backup.
 
 There is a very small chance that Linode Support can restore your data outside of these circumstances. The sooner you reach out to Linode Support, the more likely this can occur. Please open [a Support ticket](https://cloud.linode.com/support/tickets) to explore this possibility.
 {{</ caution >}}

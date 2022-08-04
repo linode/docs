@@ -30,7 +30,7 @@ You will need at least two Linodes for this guide. Complete the following steps 
 
 1.  Complete the [Getting Started](/docs/getting-started) guide.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
     This guide will use `sudo` wherever possible. Please ensure you have access to privileged user rights.
 
@@ -202,7 +202,7 @@ ip route add 192.168.100.0/24 dev $INTERFACE
     {{< file "/etc/tinc/linodeVPN/tinc-down" aconf >}}
 #!/bin/sh
 ip route del 192.168.100.0/24 dev $INTERFACE
-ip addr del 192.168.100.209 dev $INTERFACE
+ip addr del 192.168.100.130 dev $INTERFACE
 ip link set $INTERFACE down
 
 {{< /file >}}

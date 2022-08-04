@@ -4,35 +4,37 @@ author:
   name: James Turner
   email: docs@linode.com
 description: 'With npm and sqlite3, you can make your NodeJS applications shine. This guide explains how you can install NodeJS SQLite, create a SQLite database, create tables, and insert data.'
-og_description: 'With npm and sqlite3, you can make your NodeJS applications shine. This guide explains how you can install NodeJS SQLite, create a SQLite database, create tables, and insert data.'
 keywords: ['nodejs sqlite']
 tags: ['nodejs', 'sqlite', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
+modified: 2022-01-14
 image: NodeSQLite.jpg
 modified_by:
   name: Linode
-title: "A Beginner's Guide to NodeJS and SQLite"
+title: "NodeJS SQLite3: A Beginner's Guide to Installation & Usage"
 h1_title: "Getting Started with NodeJS SQLite"
+enable_h1: true
 contributor:
   name: James Turner
 external_resources:
 - '[SQLite3 API](https://github.com/mapbox/node-sqlite3/wiki/API)'
 - '[Marvel Cinematic Universe](https://www.marvel.com/movies)'
-
 ---
 
 ## Getting Started with Node.js and SQLite
 
-SQLite makes a nice stand-alone database for applications that do not require a full client-server environment. Using SQLite with Node.js is easy, and can provide all the benefits of a SQL database persistence layer without needing a DBA or DevOps team.
+SQLite makes a nice stand-alone database for applications that do not require a full client-server environment. Using SQLite3 with Node.js is easy. It can provide all the benefits of a SQL database persistence layer without needing a DBA or DevOps team.
 
 For a demonstration of the general process, you can read the documentation of the [SQLite3 API](https://github.com/mapbox/node-sqlite3/wiki/API).
 
 **Prerequisite:**
-You must have installed Node.js and Node Package Manager (`npm`) on your machine. If you have not, install using the below commands:
+To get started with Node.js and SQLite3, you must have installed Node.js and Node Package Manager (`npm`) on your machine. If you have not, install using the below commands:
 
     sudo apt install npm
     sudo apt install nodejs
+
+Having installed Node.js, SQLite is now ready to be installed using `npm` for SQLite3.
 
 ## Install SQLite
 
@@ -42,7 +44,7 @@ Install SQLite support into Node.js using `npm` on your local development enviro
 
 ## Create a Database
 
-This example uses a simple database application to track superheroes from the [Marvel Cinematic Universe](https://www.marvel.com/movies).
+Now you can create an SQLite database with Node.js. This example uses a simple database application to track superheroes from the [Marvel Cinematic Universe](https://www.marvel.com/movies).
 
 1. First, create a file called `sample.js` and import the `sqlite3` module into Node.js:
 
@@ -104,7 +106,7 @@ The above code is similar to that of creating the database. However, this time t
 
 ## Create Tables and Insert Data
 
-The following code illustrates SQLite's `exec()` method to create the tables and populate them. The `exec()` method runs all the queries in the specified string. Once the tables are created and insertions are made, the `runQueries()` method is executed. The following code creates a table for popular Marvel superheroes and whether they are X-Men, or if they were snapped by Thanos, as well as creates a table for their superpowers.
+The following code illustrates SQLite's `exec()` method to create the tables and populate them. The `exec()` method runs all the queries in the specified string. After the tables are created and insertions are made, the `runQueries()` method is executed. The following code creates a table for popular Marvel superheroes such X-Men, Thanos, and others. It also creates a table for their superpowers.
         {{< file "sample.js" >}}
 function createTables(newdb) {
     newdb.exec(`
@@ -158,7 +160,7 @@ function runQueries(db) {
 The `all()` method of the sqlite3 returns an array of rows on success, or an error on failure.
 
 {{< note >}}
-It is good practice to parameterize the query by providing a list of substation values or an object with properties that can be substituted using `$properyname` syntax. This avoids SQL injection hacks.
+It is good practice to parameterize the query by providing a list of substation values or an object with properties. Because it can be substituted using `$properyname` syntax. This avoids SQL injection hacks. See our guide [SQL Injection Attack: What It Is and How to Prevent It](/docs/guides/sql-injection-attack/) to learn more about this type security vulnerability.
 {{< /note >}}
 
 Below is the complete `sample.js` file:

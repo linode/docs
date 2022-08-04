@@ -109,7 +109,7 @@ To clone a Linode, follow these steps:
 After you have completed the clone, you may need to update your new Linode's [network configuration](#update-your-network-configuration) to work properly with its new IP addresses. After making sure that your new Tokyo 2 servers all work as expected, update your [DNS records](#update-dns-records). Consider updating your [domain's TTL](#update-your-ttl) *before* you update your DNS records.
 
 {{< caution >}}
-If you clone your Tokyo 1 Linodes to Tokyo 2, your Tokyo 1 Linodes will remain running and active on your account by default. To prevent double-billing, [remove](/docs/guides/billing-and-payments/#removing-services) the original Tokyo 1 Linodes after you have finished your clones.
+If you clone your Tokyo 1 Linodes to Tokyo 2, your Tokyo 1 Linodes will remain running and active on your account by default. To prevent double-billing, [remove](/docs/guides/manage-billing-in-cloud-manager/#removing-services) the original Tokyo 1 Linodes after you have finished your clones.
 {{< /caution >}}
 
 ### Option 3: Migrate when Scheduled
@@ -148,4 +148,4 @@ Having a short TTL means that your users will be directed to your new IP address
 
 ## Contact Linode Support
 
-If you have any issues when migrating or cloning to Tokyo 2, or if you have any questions about this process, please [contact Linode Support](/docs/guides/support/#contacting-linode-support). Technical questions about your Linux deployment's configuration are often outside the scope of support. For any out-of-scope issues, we also recommend searching and asking technical questions in the [Linode Community Site](/community/questions/).
+If you have any issues when migrating or cloning to Tokyo 2, or if you have any questions about this process, please [contact Linode Support](https://www.linode.com/support/). Technical questions about your Linux deployment's configuration are often outside the scope of support. For any out-of-scope issues, we also recommend searching and asking technical questions in the [Linode Community Site](https://www.linode.com/community/questions/).

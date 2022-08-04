@@ -26,7 +26,7 @@ Reverse DNS uses a *pointer record* (*PTR*) to match an IP address with a domain
 
 ## Before You Begin
 
-Before setting the reverse DNS for your Linode, configure your domain zone and DNS records through Linode's [DNS Manager](/docs/platform/manager/dns-manager-new-manager/). See our [Introduction to DNS Records](/docs/networking/dns/dns-records-an-introduction/) and [Common DNS Configurations](/docs/networking/dns/common-dns-configurations/) guides for more information about PTR and DNS.
+Before setting the reverse DNS for your Linode, configure your domain zone and DNS records through Linode's [DNS Manager](/docs/guides/dns-manager/). See our [Introduction to DNS Records](/docs/guides/dns-records-an-introduction/) and [Common DNS Configurations](/docs/guides/common-dns-configurations/) guides for more information about PTR and DNS.
 
 Specifically, you will need to create an *A record* for the domain name (or subdomain) that you want to assign your reverse DNS to. The value of this A record should be the IP address that you're setting up reverse DNS on.
 
@@ -40,7 +40,7 @@ Specifically, you will need to create an *A record* for the domain name (or subd
 
     ![Selecting the Edit rDNS button](edit-rdns.png "Selecting the Edit rDNS button")
 
-1. In the **Edit Reverse DNS** form, enter your Linode's fully qualified domain name and click on the **Save** button. The default value of `x.members.linode.com` can be safely removed or replaced. Leave the field blank if you wish to remove the previously configured rDNS value without setting a new value.
+1. In the **Edit Reverse DNS** form, enter your Linode's fully qualified domain name and click on the **Save** button. The default value of `x.ip.linodeusercontent.com` can be safely removed or replaced. Leave the field blank if you wish to remove the previously configured rDNS value without setting a new value.
 
     {{< note >}}
 If you did not previously set up an A record for your domain that matches your Linode's IP address, you will see an error like the following:

@@ -214,4 +214,7 @@
   .c-site-footer__primary .c-social i, .c-site-footer__primary .c-social svg {
     margin: 0;
   }
+  .c-site-footer__primary .c-extra {
+    text-align: center;
+  }
 }

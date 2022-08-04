@@ -3,7 +3,7 @@ slug: manage-web-content-with-movable-type
 author:
   name: Linode
   email: docs@linode.com
-description: 'Using the Movable Type dynamic content platform to publish a website.'
+description: 'This guide shows how you can install and configure Movable Type, a free and open-source content management system that can be used to power websites and blogs.'
 keywords: ["Movable Type", "MT HOWTO"]
 tags: ["cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

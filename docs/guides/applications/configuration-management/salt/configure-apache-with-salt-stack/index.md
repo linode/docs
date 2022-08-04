@@ -3,7 +3,7 @@ slug: configure-apache-with-salt-stack
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configure Apache on Ubuntu, Debian and CentOS with Salt Stack.'
+description: 'This guide provides you with step-by-step instructions for installing and configuring the Apache Web Server on Ubuntu, Debian, and CentOS with the Salt Sack.'
 keywords: ['salt','stack','saltstack','apache','httpd','ubuntu','debian','centos']
 tags: ["automation","salt","debian","centos","ubuntu","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -25,12 +25,12 @@ Salt is a powerful configuration management tool. In this guide you will create 
 
 ## Before You Begin
 
-You will need at least two Linodes with Salt installed. If you have not already, read our [Getting Started with Salt - Basic Installation and Setup Guide](https://www.linode.com/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/) and follow the instructions for setting up a Salt master and minion.
+You will need at least two Linodes with Salt installed. If you have not already, read our [Getting Started with Salt - Basic Installation and Setup Guide](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) and follow the instructions for setting up a Salt master and minion.
 
 The following steps will be performed on your Salt master.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Setting Up Your Salt Master and Managed Files
@@ -112,7 +112,7 @@ MaxRequestsPerChild 4500
 </IfModule>
 {{</ file >}}
 
-    This MPM prefork module provides additional [tuning for your Apache installation](https://www.linode.com/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/). This file will be managed by Salt and installed into the appropriate configuration directory in a later step.
+    This MPM prefork module provides additional [tuning for your Apache installation](/docs/guides/tuning-your-apache-server/). This file will be managed by Salt and installed into the appropriate configuration directory in a later step.
 
 1.  If you will be installing Apache on a CentOS machine, create a file called `include_sites_enabled.conf` in `/srv/salt/files` and paste in the following:
 

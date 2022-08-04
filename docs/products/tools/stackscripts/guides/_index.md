@@ -23,10 +23,10 @@ These introductory guides to StackScripts help you quickly deploy use the servic
 
 These additional guides in our library help you edit and deploy StackScripts in a higher level of detail.
 
-- [Deploying a New Linode Using a StackScript](/docs/platform/stackscripts/how-to-deploy-a-new-linode-using-a-stackscript/)
+- [Deploying a New Linode Using a StackScript](/docs/guides/how-to-deploy-a-new-linode-using-a-stackscript/)
 
-- [Creating and Managing StackScripts](/docs/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/)
+- [Creating and Managing StackScripts](/docs/guides/creating-and-managing-stackscripts-a-tutorial/)
 
-- [Writing Scripts for Use with Linode StackScripts](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/)
+- [Writing Scripts for Use with Linode StackScripts](/docs/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/)
 
-- [Deploy a WordPress Site Using Terraform and StackScripts](/docs/applications/configuration-management/terraform/deploy-a-wordpress-site-using-terraform-and-linode-stackscripts/)
+- [Deploy a WordPress Site Using Terraform and StackScripts](/docs/guides/deploy-a-wordpress-site-using-terraform-and-linode-stackscripts/)

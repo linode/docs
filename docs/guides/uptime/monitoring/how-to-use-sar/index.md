@@ -25,23 +25,19 @@ The System Activity Reporter ([Sar](https://linux.die.net/man/1/sar)) is a utili
 
 If you are using a Linode, make sure you run the steps in this section to configure your Linode, secure your server, and update your system's packages.
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
-
-1.  Update your system:
-
-        sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Install and Configure sar
 
-The open-source sar program is frequently used, but it's not included in most Linux distributions. You must install it as part of the `sysstat` package. This section shows you how to install sar on on the Debian/Ubuntu Linux distributions.
+The open-source sar program is frequently used, but it's not included in most Linux distributions. You must install it as part of the `sysstat` package. This section shows you how to install sar on the Debian/Ubuntu Linux distributions.
 
 1. Install sar, if it is not already installed on your system:
 
         sudo apt-get install sysstat
 
-1. Sar must be enabled before it can begin to collect data. Using your preferred [text editor](/docs/guides/use-nano-text-editor-commands/), open the `/etc/default/sysstat` configuration file, and change the value of `ENABLED` to `true`.
+1. Sar must be enabled before it can begin to collect data. Using your preferred text editor, open the `/etc/default/sysstat` configuration file, and change the value of `ENABLED` to `true`.
 
     {{< file "/etc/default/sysstat" >}}
 #

@@ -2,6 +2,7 @@
 title: VLANs
 linkTitle: VLANs
 description: "Linode VLANs enable secure and private communication across Linodes within the same data center region. This free service is a great way to keep your cloud workloads secure. VLANs are easy to create using the Linode Cloud Manager, API, and CLI."
+bundles: ['network-security']
 tab_group_main:
     is_root: true
     title: Overview
@@ -9,11 +10,8 @@ tab_group_main:
 cascade:
     date: 2020-10-22
     product_description: "Linode’s VLANs (Virtual Local Area Networks) feature allows you to create private L2 networks in the cloud where Linodes can communicate privately and securely. Two or more Linodes connected via the VLAN can see each other as if they were directly connected to the same physical Ethernet network."
+modified: 2022-07-28
 ---
-
-## Availability
-
-Atlanta, GA, USA; Mumbai, India; Sydney, Australia; Toronto, Canada;
 
 ## Features
 
@@ -29,9 +27,24 @@ Use the Cloud Manager to create a VLAN and attach Linode's to it in just a few c
 
 Private network transfer is free. Any communication between Linodes over the private VLAN does not count against your [monthly network transfer usage](/docs/guides/network-transfer/).
 
+## Availability
+
+| Data center | Status |
+| -- | -- |
+| **Atlanta (Georgia, USA)** | **Available** |
+| Dallas (Texas, USA) | Not yet available |
+| Frankfurt (Germany) | *Coming soon* |
+| Fremont (California, USA) | Not yet available |
+| **London (United Kingdom)** | **Available** |
+| **Mumbai (India)** | **Available** |
+| Newark (New Jersey, USA) | Not yet available |
+| Singapore | Not yet available |
+| **Sydney (Australia)** | **Available** |
+| Tokyo (Japan) | Not yet available |
+| **Toronto (Canada)** | **Available** |
+
 ## Pricing
 
 VLANs are free to use. Communication across your private network does not count against your [monthly network transfer usage](/docs/guides/network-transfer/).
-
 
 {{< content "vlans-limitations-shortguide" >}}

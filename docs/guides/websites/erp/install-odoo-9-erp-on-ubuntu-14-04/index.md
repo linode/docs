@@ -3,7 +3,7 @@ slug: install-odoo-9-erp-on-ubuntu-14-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Odoo is an open-source suite of over 4,500 business applications. Odoo allows administrators to install, configure and customize any application to satisfy their needs. This guide covers how to install and configure Odoo using Git source so it will be easy to upgrade and maintain.'
+description: 'This guide shows you how to install Odoo, a free and open-source suite of over 4,500 business utilities which you can install, by using Git source on Ubuntu 14.04.'
 keywords: ["Odoo", "Odoo ERP", "CMS", "Ubuntu", "CRM", "OpenERP"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -31,7 +31,7 @@ This guide covers how to install and configure Odoo in just 35 minutes using Git
 
 1.  Complete the [Getting Started](/docs/getting-started) guide.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services; this guide will use `sudo` wherever possible. Do **not** follow the *Configuring a Firewall* section--this guide has instructions specifically for an Odoo production server.
+2.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services; this guide will use `sudo` wherever possible. Do **not** follow the *Configuring a Firewall* section--this guide has instructions specifically for an Odoo production server.
 
 3.  Log in to your Linode via SSH and check for updates using `apt-get` package manager.
 
@@ -330,8 +330,8 @@ exit 0
 
 2.  A screen similar to this will show:
 
-    [![Odoo Db creation](odoo_db_creation.png)](odoo_db_creation.png)
+    ![Odoo Db creation](odoo_db_creation.png)
 
 3.  Congratulations, now you can create your first database and start using Odoo!
 
-    [![Odoo applications](odoo_applications.png)](odoo_applications.png)
+    ![Odoo applications](odoo_applications.png)

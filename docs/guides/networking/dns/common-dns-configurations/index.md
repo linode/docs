@@ -4,11 +4,11 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configurations for common DNS records.'
-og_description: 'This guide explains how to use the Linode Cloud Manger to configure DNS records'
+og_description: 'This guide provides you with step-by-step instructions for using the Linode Cloud Manager to configure DNS records such as A, AAA, MX, and other DNS records.'
 keywords: ["dns", "dnssec"]
 tags: ["dns","networking","cloud manager","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/dns-manager/','/networking/dns/common-dns-configurations/','/dns-guides/configuring-dns-with-the-linode-manager/','/networking/dns/common-dns-configurations-classic-manager/']
+aliases: ['/networking/dns/common-dns-configurations/','/dns-guides/configuring-dns-with-the-linode-manager/','/networking/dns/common-dns-configurations-classic-manager/']
 modified: 2019-03-14
 modified_by:
   name: Linode
@@ -22,7 +22,7 @@ title: Common DNS Configurations
 
 The most common DNS configuration is a single domain name on a single Linode. For this, you'll need to add *SOA* and *NS records* for all of your name servers, and *A/AAAA* records for your domain names. Use the screenshot below as a guide.
 
-[![The SOA record is set to "example-site-demo.com". The NS records are set to "ns1.linode.com" through "ns5.linode.com", inclusive. The MX record is set to "mail.example-site-demo.com". There are A records for [blank], which is the primary domain, and the "mail" and "www" subdomains. They are all set to the same IP.](common-dns-set-up-a-domain.png)](common-dns-set-up-a-domain.png)
+![The SOA record is set to "example-site-demo.com". The NS records are set to "ns1.linode.com" through "ns5.linode.com", inclusive. The MX record is set to "mail.example-site-demo.com". There are A records for [blank], which is the primary domain, and the "mail" and "www" subdomains. They are all set to the same IP.](common-dns-set-up-a-domain.png)
 
  {{< note >}}
 The Domains section of the Cloud Manager can automatically add all of these records when you create a domain. For instructions, see the *Add a Domain* section of the [DNS Manager](/docs/networking/dns/dns-manager) guide.
@@ -32,11 +32,11 @@ The Domains section of the Cloud Manager can automatically add all of these reco
 
 1.  To configure a subdomain (e.g. `staging.example-site-demo.com`), create an A record with the subdomain's hostname. Click **Add an A/AAAA Record**:
 
-    [![Create a new A record by first click on "Add an A/AAAA Record"](common-dns-add-an-a-record.png)](common-dns-add-an-a-record.png)
+    ![Create a new A record by first click on "Add an A/AAAA Record"](common-dns-add-an-a-record.png)
 
 1.  Add the subdomain under the **Hostname** field. Assign the IP address of the server you want to host the subdomain:
 
-    [![Create a new A record, following the instructions in the "Adding" section. Add the subdomain text to the "Hostname" field. For example, you could type "staging" - NOT "staging.example-site-demo.com".](common-dns-add-an-a-record-menu.png)](common-dns-add-an-a-record-menu.png)
+    ![Create a new A record, following the instructions in the "Adding" section. Add the subdomain text to the "Hostname" field. For example, you could type "staging" - NOT "staging.example-site-demo.com".](common-dns-add-an-a-record-menu.png)
 
 1. Click on the **Save** button to create the record.
 
@@ -50,7 +50,7 @@ See the [subdomains](/docs/guides/dns-manager/#subdomains) section of the [DNS m
 
 To host multiple domain names on a single server, create a separate domain entry for each domain name as shown below. When creating the new domain entry, we recommend that you allow the Domains section of the Cloud Manager to automatically [insert basic records](/docs/networking/dns/dns-manager#add-a-domain-zone). At a minimum, you'll need an A record for each domain name pointing to the server's IP address.
 
-[![This page shows the Domains page with three different domain zones listed.](common-dns-multiple-domains-one-server.png)](common-dns-multiple-domains-one-server.png)
+![This page shows the Domains page with three different domain zones listed.](common-dns-multiple-domains-one-server.png)
 
 ## Use One Domain on Multiple Servers
 
@@ -64,4 +64,4 @@ To route email to a third-party email service, create MX records that associate 
 
 A *wildcard* DNS record matches requests for non-existent domain names. For example, if you create an A record for `*.example.com`, and a user visits `nonexistantname.example.com`, that user will be redirected to `example.com`. An example wildcard DNS record is shown below.
 
-[![Create a new A record, following the instructions in the "Adding" section. Add a single asterisk (\*) in the "Hostname" field. Set your IP address in the "IP Address" field. Then click the "Save Changes" button.](common-dns-use-wildcard.png)](common-dns-use-wildcard.png)
+![Create a new A record, following the instructions in the "Adding" section. Add a single asterisk (\*) in the "Hostname" field. Set your IP address in the "IP Address" field. Then click the "Save Changes" button.](common-dns-use-wildcard.png)

@@ -3,8 +3,7 @@ slug: lke-continuous-deployment-part-9
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Traefik is a popular Ingress Controller for Kubernetes, which manages external access to the cluster and provides load balancing functionality. This section discusses installing Traefik, configuring an Ingress within our YAML file, and testing things out."
-og_description: "Traefik is a popular Ingress Controller for Kubernetes, which manages external access to the cluster and provides load balancing functionality. This section discusses installing Traefik, configuring an Ingress within our YAML file, and testing things out."
+description: "In part nine of our series on Kubernetes, you will learn how to install the popular Traefik Ingress Controller and configure an Ingress with a YAML file."
 title: "Continuous Deployment Using LKE: Installing Traefik"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 9): Installing Traefik"
 enable_h1: true
@@ -70,7 +69,7 @@ If we're using Kubernetes 1.19 or earlier, we'll need some YAML
 - This is how we do it with YAML:
 
       kubectl apply -f- <<EOF
-      apiVersion: networking.k8s.io/v1beta1
+      apiVersion: networking.k8s.io/v1
       kind: Ingress
       metadata:
         name: web
@@ -87,10 +86,7 @@ If we're using Kubernetes 1.19 or earlier, we'll need some YAML
 
 ### Ingress versions...
 
-- Note how we used the `v1beta1` Ingress version on the previous YAML(to be compatible with older Kubernetes versions)
-- This YAML will give you deprecation warnings on recent version of Kubernetes (since the Ingress spec is now at version v1)
-- Don't worry too much about the deprecation warnings (on Kubernetes, deprecation happens over a long time window, typically 1 year)
-- You will have time to revisit and worry later! 😅
+- Note how we used the latest `v1` Ingress version on the previous YAML, as the `vibeta1` api version has been deprecated.
 
 ### Does it work?
 

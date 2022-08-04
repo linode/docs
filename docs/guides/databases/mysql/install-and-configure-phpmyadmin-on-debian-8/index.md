@@ -3,10 +3,10 @@ slug: install-and-configure-phpmyadmin-on-debian-8
 author:
     name: Linode
     email: docs@linode.com
-description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
+description: 'This guide will show you how to install and configure phpMyAdmin to manage MySQL databases and users though a web interface with a GUI on Debian 8.'
 keywords: ["mysql", "phpmyadmin", "localhost phpmyadmin", "php mysql", "http localhost phpmyadmin", "sql", "debian", "debian 8", "php", "mysql management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/docs/databases/mysql/install-mysql-phpmyadmin-debian-8/','/databases/mysql/install-and-configure-phpmyadmin-on-debian-8/','/databases/mysql/phpmyadmin-debian-7-wheezy/','/docs/databases/mysql/manage-mysql-phpmyadmin-debian-8/']
+aliases: ['/docs/databases/mysql/install-mysql-phpmyadmin-debian-8/','/databases/mysql/install-and-configure-phpmyadmin-on-debian-8/','/docs/databases/mysql/manage-mysql-phpmyadmin-debian-8/']
 modified: 2015-09-16
 modified_by:
     name: Elle Krout

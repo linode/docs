@@ -3,7 +3,7 @@ slug: deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Deploy Django Applications Using uWSGI and Nginx on Ubuntu 14.04'
+description: 'This guide provides you with step-by-step instructions for deploying applications written in Django by using the uWSGI and Nginx web server on Ubuntu 14.04.'
 keywords: ["django", "uwsgi", "nginx", "python"]
 tags: ["web server","ubuntu","python","nginx","django"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -101,7 +101,7 @@ If your application uses another database, skip installing `python-sqlite` and `
 
     Visit `http://example.com:8080` in your browser to confirm that the sample application is set up correctly and working. You should see the Django test page:
 
-    [![Django test page.](django-test-page-small.png)](django-test-page.png)
+    ![Django test page.](django-test-page.png)
 
     Then stop development server with **Ctrl-C**.
 

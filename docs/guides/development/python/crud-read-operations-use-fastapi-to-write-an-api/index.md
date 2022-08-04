@@ -3,8 +3,8 @@ slug: crud-read-operations-use-fastapi-to-write-an-api
 author:
   name: Chelsea Troy
   email: heychelseatroy@gmail.com
-description: 'The Python micro-framework, FastAPI, is a fast and easy-to-learn option when building an API. This guide shows you how to create an API that supports two basic read operations, List and View. You also learn how to write filtering for your API resources.'
-og_description:  'The Python micro-framework, FastAPI, is a fast and easy-to-learn option when building an API. This guide shows you how to create an API that supports two basic read operations, List and View. You also learn how to write filtering for your API resources.'
+description: 'This guide will show you how to create an API using the Python micro-framework, FastAPI, a fast and easy-to-learn option for building an API.'
+og_description:  'This guide will show you how to create an API using the Python micro-framework, FastAPI, a fast and easy-to-learn option for building an API.'
 keywords: ['python api framework fastapi rest']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-10
@@ -52,7 +52,7 @@ This guide does not cover integrating FastAPI with a database. FastAPI uses an i
 FastAPI requires the following items to be installed on your system:
 
 - Python 3.6+  and [pip](https://pypi.org/project/pip/)
-- [Gunicorn](https://www.linode.com/docs/guides/flask-and-gunicorn-on-ubuntu/#install-and-configure-gunicorn) or [Hypercorn](https://pypi.org/project/Hypercorn/). These tools are used as the web server gateway for your API.
+- [Gunicorn](/docs/guides/flask-and-gunicorn-on-ubuntu/#install-and-configure-gunicorn) or [Hypercorn](https://pypi.org/project/Hypercorn/). These tools are used as the web server gateway for your API.
 
 ### Install FastAPI and Hypercorn
 

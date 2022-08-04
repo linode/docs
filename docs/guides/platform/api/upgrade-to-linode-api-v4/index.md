@@ -3,7 +3,7 @@ slug: upgrade-to-linode-api-v4
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: 'The new Linode API includes a number of additional features and changes from previous API versions. This guide is intended to help existing users upgrade to the new API.'
+description: 'This guide is intended to help existing users upgrade to the new Linode API version 4, which includes a number of additional features and changes from v3 of the API.'
 keywords: ["api","linode api"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-05-14
@@ -21,7 +21,7 @@ aliases: ['/platform/api/upgrade-to-linode-api-v4/']
 
 Version 4 of the Linode API is now in general release and it is a major improvement over previous versions. Almost any task which can be done through the Linode Manager can now be performed through the API. This guide will show you how to adapt existing code for previous API versions in order to take advantage of these new features.
 
-To get started with the current version, please see the [API documentation](https://developers.linode.com) or our [Getting Started with the Linode API guide](/docs/platform/api/getting-started-with-the-linode-api/).
+To get started with the current version, please see the [API documentation](https://developers.linode.com) or our [Getting Started with the Linode API guide](/docs/guides/getting-started-with-the-linode-api/).
 
 ## General Changes
 

@@ -29,14 +29,14 @@ This guide provides an introduction to Ansible Playbook concepts, like tasks, pl
 
 ## Before You Begin
 
-* If you are not familiar with Ansible, review the [Ansible Definitions](/docs/applications/configuration-management/getting-started-with-ansible/#what-is-ansible) section of the [Getting Started With Ansible](/docs/applications/configuration-management/getting-started-with-ansible/) guide.
+* If you are not familiar with Ansible, review the [Ansible Definitions](/docs/guides/getting-started-with-ansible/#what-is-ansible) section of the [Getting Started With Ansible](/docs/guides/getting-started-with-ansible/) guide.
 
-* Install Ansible on your computer or a Linode following the steps in the [Set up the Control Node](/docs/applications/configuration-management/getting-started-with-ansible/#set-up-the-control-node) section of our [Getting Started With Ansible](/docs/applications/configuration-management/getting-started-with-ansible/) guide.
+* Install Ansible on your computer or a Linode following the steps in the [Set up the Control Node](/docs/guides/getting-started-with-ansible/#set-up-the-control-node) section of our [Getting Started With Ansible](/docs/guides/getting-started-with-ansible/) guide.
 
-* Deploy a Linode running Debian 9 to manage with Ansible. All Playbooks created throughout this guide will be executed on this Linode. Follow the [Getting Started With Ansible - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-ansible/#set-up-the-control-node) to learn how to establish a connection between the Ansible control node and your Linode.
+* Deploy a Linode running Debian 9 to manage with Ansible. All Playbooks created throughout this guide will be executed on this Linode. Follow the [Getting Started With Ansible - Basic Installation and Setup](/docs/guides/getting-started-with-ansible/#set-up-the-control-node) to learn how to establish a connection between the Ansible control node and your Linode.
 
     {{< note >}}
-When following the [Getting Started with Ansible](/docs/applications/configuration-management/getting-started-with-ansible/#set-up-the-control-node) guide to deploy a Linode, it is not necessary to add your Ansible control node's SSH key-pair to your managed Linode. This step will be completed using a Playbook later on in this guide.
+When following the [Getting Started with Ansible](/docs/guides/getting-started-with-ansible/#set-up-the-control-node) guide to deploy a Linode, it is not necessary to add your Ansible control node's SSH key-pair to your managed Linode. This step will be completed using a Playbook later on in this guide.
     {{</ note >}}
 
 ## Playbook Basics
@@ -107,7 +107,7 @@ In this section you will create a Playbook to add a limited user account to your
 When creating a limited user account you are required to create a host login password for the new user. Since you should never include plaintext passwords in your Playbooks, in this section you will use the Python passlib library to create a password hash that you can securely include in your Playbook.
 
 {{< note >}}
-[Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypt-string-for-use-in-yaml) can also be used to encrypt sensitive data. This guide will not make use of Ansible Vault, however, you can consult the [How to use the Linode Ansible Module to Deploy Linodes](/docs/applications/configuration-management/deploy-linodes-using-ansible/) guide to view an example that makes use of this feature.
+[Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypt-string-for-use-in-yaml) can also be used to encrypt sensitive data. This guide will not make use of Ansible Vault, however, you can consult the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/) guide to view an example that makes use of this feature.
 {{</ note >}}
 
 1. On your Ansible control node, create a password hash on your control node for Ansible to use in a later step. An easy method is to use Python's PassLib library, which can be installed with the following commands:
@@ -122,7 +122,7 @@ When creating a limited user account you are required to create a host login pas
 
 1. Create a password hash using passlib. Replace `myPlainTextPassword` with the password you'd like to use to access your Linode.
 
-        sudo python -c "from passlib.hash import sha512_crypt; print (sha512_crypt.encrypt('myPlainTextPassword'))"
+        sudo python -c "from passlib.hash import sha512_crypt; print (sha512_crypt.hash('myPlainTextPassword'))"
 
     A similar output will appear displaying a hash of your password:
     {{< output >}}
@@ -258,7 +258,7 @@ You are now ready to create the `setup_webserver.yml` Playbook that will get you
       * In the `Create a new user for connections` task, replace the value of `password` with your desired password.
 
         {{< note >}}
-In order to avoid using plain text passwords in your Playbooks, you can use [Ansible-Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypt-string-for-use-in-yaml) and variables to encrypt sensitive data. You can consult the [How to use the Linode Ansible Module to Deploy Linodes](/docs/applications/configuration-management/deploy-linodes-using-ansible/) guide to view an example that makes use of this feature.
+In order to avoid using plain text passwords in your Playbooks, you can use [Ansible-Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypt-string-for-use-in-yaml) and variables to encrypt sensitive data. You can consult the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/) guide to view an example that makes use of this feature.
         {{</ note >}}
 
         {{< file "setup_webserver.yml" yaml >}}

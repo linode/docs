@@ -3,7 +3,7 @@ slug: configure-spf-and-dkim-in-postfix-on-debian-9
 author:
     name: Linode Community
     email: contribute@linode.com
-description: 'Configure SPF and DKIM in Postfix on Debian 9.'
+description: 'This guide provides you with step-by-step instructions for configuring your domains SPF and DKIM DNS records in Postfix mail server on Debian 9.'
 keywords: ["email", "postfix", "spf", "dkim", "debian 9", "opendkim", "dns", "dmarc"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -428,8 +428,8 @@ Content-Type: text/html; charset="UTF-8"
 {{< /output >}}
 
 From the above email it is clear that:
-- SPF is properly configured: `dkim=pass header.i=@domain.com header.s=google header.b=TDC76zp2`
-- DKIM has a pass: `spf=pass (google.com: domain of email@domain.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=email@domain.com;`
+- SPF is properly configured: `spf=pass (google.com: domain of email@domain.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=email@domain.com;`
+- DKIM has a pass: `dkim=pass header.i=@domain.com header.s=google header.b=TDC76zp2`
 - DMARC is properly set too: `dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=domain.com`
 
 

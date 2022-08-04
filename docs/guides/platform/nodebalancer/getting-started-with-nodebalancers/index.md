@@ -3,8 +3,8 @@ slug: getting-started-with-nodebalancers
 author:
   name: Linode
   email: docs@linode.com
-description: 'Using a NodeBalancer to begin managing a simple web application.'
-og_description: 'Get started with Linode NodeBalancers by using a NodeBalancer to begin managing a simple web application.'
+description: 'This is a step-by-step guide on how to use a NodeBalancer to begin managing a simple web application that can support a large number of users.'
+og_description: 'This is a step-by-step guide on how to use a NodeBalancer to begin managing a simple web application that can support a large number of users.'
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
 tags: ["cloud manager","linode platform","networking","web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -56,7 +56,7 @@ Once you are satisfied that NodeBalancer is working normally, you can switch you
 
 1.  Edit or create an A record for your website's domain name, pointing to your NodeBalancer's IP address.
 
-    [![Adding an A Record.](nodebalancers-add-a-name-small.png "Adding an A Record")](nodebalancers-add-a-name.png)
+    ![Adding an A Record.](nodebalancers-add-a-name.png)
 
 1.  Also add an AAAA record for the IPv6 address.
 
@@ -64,9 +64,9 @@ Once the DNS changes propagate, traffic will begin flowing through the NodeBalan
 
 ## Additional Backends and Features
 
-On another Linode, make an exact copy of your current web server. The [Linode Backups](/docs/platform/disk-images/linode-backup-service/) service can be instrumental for doing so, as a snapshot can be restored to any other Linode. Once you have another backend ready, simply repeat step four of [Configuring a NodeBalancer](/docs/platform/nodebalancer/getting-started-with-nodebalancers/#configuring-a-nodebalancer) to add it to the NodeBalancer configuration.
+On another Linode, make an exact copy of your current web server. The [Linode Backups](/docs/products/storage/backups/) service can be instrumental for doing so, as a snapshot can be restored to any other Linode. Once you have another backend ready, simply repeat step four of [Configuring a NodeBalancer](/docs/platform/nodebalancer/getting-started-with-nodebalancers/#configuring-a-nodebalancer) to add it to the NodeBalancer configuration.
 
-[![Adding another backend to the NodeBalancer's configuration.](nodebalancers-backend-nodes2-small.png "Adding another backend to the NodeBalancer's configuration")](nodebalancers-backend-nodes2.png)
+![Adding another backend to the NodeBalancer's configuration.](nodebalancers-backend-nodes2.png)
 
 Once the configuration is sent to the backend, users will be balanced over the two Linodes and each will be monitored for health. This configuration is easy to work with, as upgrades can be rolled out to each backend without disrupting service and backend Linodes can be taken in and out of rotation at will.
 

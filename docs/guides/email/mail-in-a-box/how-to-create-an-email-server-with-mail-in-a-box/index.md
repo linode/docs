@@ -23,7 +23,7 @@ aliases: ['/email/how-to-create-an-email-server-with-mail-in-a-box/','/email/mai
 
 ![How to Create an Email Server with Mail-in-a-Box](Mail_in_a_box.jpg "How to Create an Email Server with Mail-in-a-Box")
 
-If you chose to host your own email server, but after reading through [Running a Mail Server](/docs/email/running-a-mail-server/) you got discouraged by the complexity of this process, then there's another solution: Mail-in-a-Box. The name is fitting since the software manages to pack everything you need from a mail server, in one single allegorical box. It includes:
+If you chose to host your own email server, but after reading through [Running a Mail Server](/docs/guides/running-a-mail-server/) you got discouraged by the complexity of this process, then there's another solution: Mail-in-a-Box. The name is fitting since the software manages to pack everything you need from a mail server, in one single allegorical box. It includes:
 
 * Postfix, as the *Simple Mail Transfer Protocol* (SMTP) server.
 * Dovecot, as the *Internet Message Access Protocol* (IMAP) server; it's what allows you to sync mail with your phone, read/send messages, delete them, etc.
@@ -46,9 +46,7 @@ The preconfigured box of software is also fairly security-conscious and you can 
 
 1. Make sure your domain name registrar allows you to use *custom nameservers* and set *glue records*.
 
-2.  If you're unfamiliar with the basic concepts of Linode administration, read the [Getting Started](/docs/getting-started/) guide.
-
-3. It's highly recommended that you follow the instructions on [Hardening SSH access](/docs/security/securing-your-server/#harden-ssh-access) but **only** the steps regarding SSH; other steps might clash with what Mail-in-a-Box will set up (e.g., it implements its own `fail2ban` rules).
+2.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system, create a limited user account, and harden SSH access. Do not yet configure a firewall or fail2ban as that might clash with what Mail-in-a-Box will set up (e.g., it implements its own `fail2ban` rules).
 
 If you insist on using a password for root instead of a private key, at least use a **very good password**. Bots constantly scan the Internet for SSH servers and try random passwords. Some are more aggressive than others, and while `fail2ban` helps block IPs, there's always the next bot (with a different IP) that will visit and have another try. Keep in mind that strings such as *h4x0r123*, while they may look strong because they mix letters and numbers, are actually very weak.
 
@@ -103,7 +101,7 @@ At this point you can continue. If you don't see the required data, then come ba
 ## Install Mail-in-a-Box
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 1. After you log in to your server with an SSH client, update all the software packages on your server:
@@ -190,7 +188,7 @@ Since it's very likely that a Let's Encrypt TLS certificate hasn't been installe
 
     ![Control Panel - TLS Certificates Page](mail-in-a-box-control-panel-tls-certificates-ubuntu1404.png)
 
-3. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/networking/dns/configure-your-linode-for-reverse-dns/), to set up a *pointer record* (PTR). Make sure you set it to `box.example.com`. This step is very important to execute and pass some antispam checks. Without it, a lot of mail servers will flag your outbound email as spam and will consider it suspicious that your IP doesn't point to your domain name, and sometimes even reject it.
+3. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/guides/configure-your-linode-for-reverse-dns/), to set up a *pointer record* (PTR). Make sure you set it to `box.example.com`. This step is very important to execute and pass some antispam checks. Without it, a lot of mail servers will flag your outbound email as spam and will consider it suspicious that your IP doesn't point to your domain name, and sometimes even reject it.
 
 ## Conclusion
 

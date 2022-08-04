@@ -27,11 +27,11 @@ Before an existing Linode can be migrated to a new host, you'll need to ensure t
 
 1.  Next to your Configuration Profile, click **Edit**.
 
-    [![Select "Edit" to modify your Configuration Profile](1728-64bit1v3_small.png)](1727-64bit1v3.png)
+    ![Select "Edit" to modify your Configuration Profile](1727-64bit1v3.png)
 
 2.  Under `Boot Settings` click on the **Kernel** drop down. Select the `Latest 64 bit` option.
 
-    [![Select the latest 64-bit kernel from the dropdown menu.](1726-64bit-2v3.png)](1726-64bit-2v3.png)
+    ![Select the latest 64-bit kernel from the dropdown menu.](1726-64bit-2v3.png)
 
 3.  Press **Save Changes**, which will take you back to your Linode Dashboard. Now reboot your Linode.
 
@@ -55,7 +55,7 @@ For Ubuntu and Debian users, the Apt package management system will continue to 
 
 ### CentOS and Fedora
 
-When switching a 32-bit CentOS or Fedora build to use a 64-bit kernel, you need to configure the distro's package manager (Yum) to explicitly download x86 architecture builds of updates to existing and new packages. If you haven't already, we recommend CentOS users switch to the package mirrors Linode provides. The instructions to switch to Linode's package mirrors are in the [package mirrors](/docs/platform/package-mirrors/) guide. Regardless of your decision to use our mirrors, you will want to run this command to ensure that only 32-bit packages are selected:
+When switching a 32-bit CentOS or Fedora build to use a 64-bit kernel, you need to configure the distro's package manager (Yum) to explicitly download x86 architecture builds of updates to existing and new packages. If you haven't already, we recommend CentOS users switch to the package mirrors Linode provides. The instructions to switch to Linode's package mirrors are in the [package mirrors](/docs/guides/package-mirrors/) guide. Regardless of your decision to use our mirrors, you will want to run this command to ensure that only 32-bit packages are selected:
 
     sed -i 's/$basearch/i386/g' /etc/yum.repos.d/*
 

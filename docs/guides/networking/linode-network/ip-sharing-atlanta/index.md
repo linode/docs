@@ -7,7 +7,7 @@ description: "This guide provides Linode users with steps to manually enable an 
 keywords: ['networking','Elastic IP','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-02
-modified: 2021-11-05
+modified: 2022-01-11
 modified_by:
   name: Linode
 title: "Enable IP Sharing (Elastic IPs) in Atlanta through FRR"
@@ -31,7 +31,7 @@ This guide discusses a temporary workaround specific to the Atlanta data center.
 
 1. Prior to beginning the process outlined in this guide, make sure that you have received an IPv4 address(es) from Linode Support to use as your Elastic IP(s). To request an additional IPv4 address, [open a new support ticket from the Cloud Manager](/docs/guides/support/#contacting-linode-support).
 
-1. Ensure you have set the [hostname](/docs/getting-started/#set-the-hostname) and have updated the [hosts file](/docs/getting-started/#update-your-system-s-hosts-file) on your Compute Instances.
+1. Ensure you have set the [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and have updated the [hosts file](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file) on your Compute Instances.
 
 1. Ensure Python 3 is installed on your system. See [FRR's official documentation](http://docs.frrouting.org/en/latest/installation.html#python-dependency-documentation-and-tests) to learn about FRR's Python dependencies.
 
@@ -67,7 +67,7 @@ This section provides instructions for installing FRR on Debian, Ubuntu, and Cen
 
 ### CentOS/RHEL
 
-**Supported distributions:** *CentOS Stream (and 8), CentOS 7, other RHEL derivatives (including AlmaLinux 8, and Rocky Linux 8), and Fedora.*
+**Supported distributions:** *CentOS Stream 9 (and 8), CentOS 8 (and 7), other RHEL derivatives (including AlmaLinux 8, and Rocky Linux 8), and Fedora.*
 
 1.  Set the FRR environment variable as `frr-stable` to install the latest FRR release. Specific releases can also be targeted by setting the variable to `frr-8`, `frr-7`, `frr-6` (see [FRR RPM Repository](https://rpm.frrouting.org/) for more details).
 

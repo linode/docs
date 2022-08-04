@@ -1,6 +1,6 @@
 'use strict';
 
-var debug = 0 ? console.log.bind(console, '[svg]') : function() {};
+var debug = 0 ? console.log.bind(console, '[svg]') : function () {};
 
 export function alpineRegisterDirectiveSVG(Alpine) {
 	Alpine.directive('svg', (el, { expression }, { effect, cleanup, evaluateLater }) => {
@@ -46,7 +46,7 @@ export function alpineRegisterDirectiveSVG(Alpine) {
 		});
 	});
 
-	const replaceIn = function(el, str) {
+	const replaceIn = function (el, str) {
 		let newEl;
 
 		if (str) {
@@ -67,7 +67,7 @@ export function alpineRegisterDirectiveSVG(Alpine) {
 		el.replaceWith(newEl);
 	};
 
-	const createImgEl = function(el, str) {
+	const createImgEl = function (el, str) {
 		let img = document.createElement('img');
 		let clazz = el.getAttribute('class');
 		img.setAttribute('class', clazz);

@@ -5,6 +5,7 @@ author:
 description: 'What are network security tools and how can you use them? We answer these questions and highlight the best network security tools available.'
 keywords: ['network security tools ','networking security tools','network security software tools']
 tags: ['security']
+bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-19
 modified_by:

@@ -3,8 +3,8 @@ slug: creating-and-managing-stackscripts-a-tutorial
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide shows you how to create a Linode StackScript using the Linode Cloud Manager. You will also learn how to perform various tasks, like editing an Account StackScript, making an Account StackScript public, and deleting an Account StackScript. '
-og_description: 'This guide shows you how to create a Linode StackScript using the Linode Cloud Manager. You will also learn how to perform various tasks, like editing an Account StackScript, making an Account StackScript public, and deleting an Account StackScript.'
+description: 'This guide shows you how to create a Linode StackScript using the Linode Cloud Manager, as well as how to perform various tasks with your StackScript.'
+og_description: 'This guide shows you how to create a Linode StackScript using the Linode Cloud Manager, as well as how to perform various tasks with your StackScript.'
 keywords: ["automation", "scripts", "deployments", "instance"]
 tags: ["linode platform","automation","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -40,7 +40,7 @@ This guide shows you how to do the following:
 - [Delete an Account StackScript](#delete-an-account-stackscript)
 
 {{< note >}}
-For information on authoring a script to be used in a Linode StackScript, see the [Writing Scripts for Use with Linode StackScripts](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/).
+For information on authoring a script to be used in a Linode StackScript, see the [Writing Scripts for Use with Linode StackScripts](/docs/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/).
 {{</ note >}}
 
 ## Create a New StackScript
@@ -62,4 +62,4 @@ For information on authoring a script to be used in a Linode StackScript, see th
 
 ## Next Steps
 
-Now that you have created a StackScript, you can deploy a Linode using your StackScript. See the [Deploying a New Linode Using a StackScript](/docs/platform/stackscripts/how-to-deploy-a-new-linode-using-a-stackscript/) guide for details.
+Now that you have created a StackScript, you can deploy a Linode using your StackScript. See the [Deploying a New Linode Using a StackScript](/docs/guides/how-to-deploy-a-new-linode-using-a-stackscript/) guide for details.

@@ -29,18 +29,14 @@ This guide shows you how to get started with CouchDB using its web interface—*
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Install CouchDB. Follow the instructions in the guide on [How to Install CouchDB on Ubuntu 20.04](/docs/guides/install-couchdb-20-on-ubuntu/).
 
-1. Update your system:
-
-        sudo apt update && sudo apt upgrade
-
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Access the Fauxton Web Interface
@@ -55,13 +51,13 @@ However, if you are accessing the machine remotely, the simplest and most secure
 
 1. Log in to CouchDB using the administrator password you set up during the CouchDB installation. The default username for this user is `admin`.
 
-    [![Fauxton login screen](fauxton-login_small.png "Fauxton login screen")](fauxton-login.png)
+    ![Fauxton login screen](fauxton-login.png)
 
 ## Navigate Fauxton
 
 - Once you have logged into Fauxton, you are presented with a list of your CouchDB databases. Initially, this should only contain a `_users` and a `_replicator` database. These are the two default system databases used by CouchDB.
 
-    [![Initial page in Fauxton](fauxton-database-list_small.png "Initial page in Fauxton")](fauxton-database-list.png)
+    ![Initial page in Fauxton](fauxton-database-list.png)
 
 - You can use the menu on the left to navigate the variety of configuration and monitoring options Fauxton offers. This menu also provides a **Documentation** option, where you can find numerous links to CouchDB and Fauxton documentation libraries.
 
@@ -81,7 +77,7 @@ The following steps show you how to take these actions using Fauxton.
 
 1. Once you have created the database, you are taken to its page.
 
-    [![A database's page within Fauxton](fauxton-database-page_small.png "A database's page within Fauxton")](fauxton-database-page.png)
+    ![A database's page within Fauxton](fauxton-database-page.png)
 
     You can reach any particular database's page via the **Databases** option on the menu on the left. The resulting page presents a list of databases from which you can select the desired database.
 
@@ -93,7 +89,7 @@ The following steps show you how to take these actions using Fauxton.
 
 1. You are taken to the new document editor, where you can input the JSON for a new CouchDB document.
 
-    [![Fauxton document editor](fauxton-document-design_small.png "Fauxton document editor")](fauxton-document-design.png)
+    ![Fauxton document editor](fauxton-document-design.png)
 
 ## Use the HTTP API
 

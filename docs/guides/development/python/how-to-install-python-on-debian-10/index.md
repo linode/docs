@@ -22,7 +22,6 @@ relations:
         key: how-to-install-python
         keywords:
             - distribution: Debian 10
-tags: ["python", "debian"]
 ---
 
 Python is a popular programming language created in 2000, by Guido van Rossum. It's useful for writing everything from small scripts to full-scale software. Python is also a commonly adopted programming language by people entering into the field of software development. A lot of its popularity is based on Python's high level of abstraction. This abstraction makes writing and reading the code easier than other languages.
@@ -33,7 +32,7 @@ As of January 1, 2020, the official version of Python is Python 3. Python 2 is n
 
 1.  This guide assumes that you have access to a server or workstation running Debian 10. To provision a Linode running Debian 10, follow our [Getting Started](/docs/guides/getting-started/) guide.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system:
 

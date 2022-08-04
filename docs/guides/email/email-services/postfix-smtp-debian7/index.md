@@ -3,8 +3,7 @@ slug: postfix-smtp-debian7
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Learn how to configure Postfix to send email using external SMTP servers like Mandrill, and SendGrid.'
-og_description: 'Learn how to configure Postfix to send email using external SMTP servers like Mandrill, and SendGrid.'
+description: "Learn how to configure Postfix to send email using external SMTP servers like Mandrill, and SendGrid. ✓ Click here to learn more!"
 keywords: ["Postfix", "Debian", "SMTP", "Email", "Mail"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,8 +13,7 @@ modified: 2019-01-24
 modified_by:
   name: Linode
 published: 2014-05-30
-title: Configure Postfix to Send Email Using External SMTP Servers
-h1_title: How to Configure Postfix to Send Email Using External SMTP Servers
+title: "Configure Postfix to Send Email Using External SMTP Servers"
 aliases: ['/email/email-services/postfix-smtp-debian7/','/email/postfix/postfix-smtp-debian7/']
 ---
 {{< note >}}
@@ -77,11 +75,11 @@ Your system is now ready to install Postfix.
 
 1. You receive a prompt asking for your **General type of mail configuration**. Select **Internet Site** from the options.
 
-[![Postfix configuration, General type of mail configuration options](1737-postfixsmtp1_sm.png)](1736-postfixsmtp1.png)
+![Postfix configuration, General type of mail configuration options](1736-postfixsmtp1.png)
 
 1. Enter your fully qualified domain name when asked for your **System mail name**. An example FQDN is **fqdn.example.com**.
 
-[![Postfix configuration, System mail name prompt](1738-postfixsmtp2_sm.png)](1739-postfixsmtp2.png)
+![Postfix configuration, System mail name prompt](1739-postfixsmtp2.png)
 
 1. Once the installation is complete, open the `/etc/postfix/main.cf` file using your preferred text editor. Edit the file to add your Linode's FQDN to the **myhostname** configuration, if it is not already configured, and save your changes.
 
@@ -173,7 +171,7 @@ You can now test your Postfix Configurations by using your system's `mail` utili
 
 1. Compose an email to verify that your system is able to successfully send it. Replace the email address with your own and your intended recipient's email address.
 
-        echo  “body of your email” | mail -s “This is a subject” - a “From: you@example.com” recipient@elsewhere.com
+        echo  "body of your email" | mail -s "This is a subject" -a "From:you@example.com" recipient@elsewhere.com
 
     {{< note >}}
 

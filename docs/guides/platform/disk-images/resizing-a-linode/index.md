@@ -84,7 +84,7 @@ Downgrading to a plan with less resources may be helpful when looking to reduce 
 
     - If you're using less space than your intended plan requires, you can move onto the next step without any further action.
 
-    - If you're using more space than your intended plan allows, you need to remove some files to free up some space before moving onto the next step. See the options for doing this in the [Download Files from Your Linode](/docs/security/data-portability/download-files-from-your-linode/) guide.
+    - If you're using more space than your intended plan allows, you need to remove some files to free up some space before moving onto the next step. See the options for doing this in the [Download Files from Your Linode](/docs/guides/download-files-from-your-linode/) guide.
 
 1.  Resize the Linode's disks to fit within the storage space of the new plan. See [Resizing a Disk](/docs/guides/resize-a-linode-disk/).
 
@@ -97,7 +97,7 @@ There are quite a few types of Linode Compute Instances available to you, each w
 - **High Memory:** Optimized for memory-intensive applications. This plan type is also equipped with dedicated vCPU cores, though they contain more memory than other similarly priced plans. Use cases include large or high-traffic databases, caching servers, and more. See [High Memory Compute Instances](https://www.linode.com/products/high-memory/).
 - **GPU:** The only plan type that is equipped with high performance NVIDIA GPU cards. GPU plans are capable of processing large amounts of data in parallel, performing complex calculations much more efficiently. See [GPU Compute Instances](https://www.linode.com/products/gpu/).
 
-For help deciding on a plan type, review the [How to Choose a Linode Plan](/docs/guides/how-to-choose-a-linode-plan/) guide for advice and a comparison of each plan.
+For help deciding on a plan type, review the [Choosing a Compute Instance Type and Plan](/docs/guides/choosing-a-compute-instance-plan/) guide for advice and a comparison of each plan.
 
 To switch to a different plan type, follow the instructions outlined within [Resizing a Linode](#resizing-a-linode). When choosing the plan, select the tab that corresponds with your desired plan type.
 

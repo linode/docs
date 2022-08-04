@@ -32,7 +32,7 @@ In order to secure a LAMP stack, you need to have a Linux server with the follow
 - MySQL
 - PHP
 
-For a quick an easy way to install a LAMP stack on Linode, check out our guide on [How to Deploy a LAMP Stack with Marketplace Apps](/docs/guides/deploy-lamp-stack-with-marketplace-apps/).
+For a quick an easy way to install a LAMP stack on Linode, check out our guide on [How to Deploy a LAMP Stack with Marketplace Apps](/docs/products/tools/marketplace/guides/lamp-stack/).
 
 Otherwise, you can find instructions on how to manually install a LAMP stack in our guide on [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/). Installation instructions for several other Linux distributions are also accessible from this guide.
 
@@ -239,7 +239,7 @@ Permission denied, please try again.
 
 Key-based authentication utilizes asymmetric encryption to generate two keys that are used for the encryption and decryption of data. These two keys are called the public key and the private key. Together, they are called a public-private key-pair.
 
-The public key is used to encrypt data which only the corresponding private key can decrypt. This process can also be repeated vice versa. As a result, the private key must be kept private and secure, whereas the public key can be shared. For more information, check out our guide on [How to Use SSH Public Key Authentication on Linux, macOS, and Windows](/docs/guides/use-public-key-authentication-with-ssh/).
+The public key is used to encrypt data which only the corresponding private key can decrypt. This process can also be repeated vice versa. As a result, the private key must be kept private and secure, whereas the public key can be shared. For more information, see [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/).
 
 SSH key-pairs can be generated on your local machine by using the `ssh-keygen` utility, Then, you can upload the public key to your LAMP stack machine.
 
@@ -355,7 +355,7 @@ total 64
     | `maxretry` | Number of login attempts before a ban is applied. |
     | `findtime` | Amount of allowed time between failed login attempts. |
     | `bantime` | Number of seconds an IP is banned for. |
-    | `ignoreip` | IP to whitelist. |
+    | `ignoreip` | IP to be allowed. |
 
 
 1.  With the information in the table above, create a jail configuration for OpenSSH server (sshd) by entering the following values in the `jail.local` file:
@@ -808,7 +808,7 @@ MySAT is a simple SQL script, so it is easy to understand and maintain. MySAT re
 
 Lynis is an extensible security audit tool for computer systems running Linux, FreeBSD, macOS, OpenBSD, Solaris, and other Unix derivatives. It assists system administrators and security professionals with scanning a system and its defenses, with the final goal being system hardening.
 
-To ensure that that you have the latest version of Lynis installed it's important to manually set up the [CISOfy repository](https://packages.cisofy.com/). While a version of Lynis is available in most repositories by default, the CISOfy repositories are always the most up to date, ensuring that any auditing performed is based on the best information available. To add the CISOfy repository to your list of repos, enter the following command:
+To ensure that you have the latest version of Lynis installed it's important to manually set up the [CISOfy repository](https://packages.cisofy.com/). While a version of Lynis is available in most repositories by default, the CISOfy repositories are always the most up to date, ensuring that any auditing performed is based on the best information available. To add the CISOfy repository to your list of repos, enter the following command:
 
     echo "deb https://packages.cisofy.com/community/lynis/deb/ stable main" | sudo tee /etc/apt/sources.list.d/cisofy-lynis.list
 

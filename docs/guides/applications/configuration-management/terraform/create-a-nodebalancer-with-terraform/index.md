@@ -3,11 +3,11 @@ slug: create-a-nodebalancer-with-terraform
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to create a NodeBalancer and Nodes with Terraform.'
+description: 'This guide provides you with step-by-step instructions for installing Terraform and utilizing the tool to create a NodeBalancer and Nodes for your Linodes.'
 keywords: ['terraform','nodebalancer','node','balancer','provider','linode']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-12
-modified: 2018-12-12
+modified: 2021-12-29
 modified_by:
   name: Linode
 image: CreateaNodeBalancerwitTerraform.png
@@ -28,14 +28,14 @@ aliases: ['/applications/configuration-management/create-a-nodebalancer-with-ter
 Terraform allows you to represent Infrastructure as Code (IaC). You can use it to manage infrastructure, speed up deployments, and share your infrastructure's configuration files within a team. In this guide you will use Terraform to create a NodeBalancer that distributes traffic between two Linodes.
 
 {{< caution >}}
-The configurations and commands used in this guide will result in multiple billable resources being added to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges. See the [Billings and Payments](/docs/platform/billing-and-support/billing-and-payments-new-manager/) guide for more details.
+The configurations and commands used in this guide will result in multiple billable resources being added to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges. See the [Billings and Payments](/docs/guides/understanding-billing-and-payments/) guide for more details.
 
 If you would like to stop billing for the resources created in this guide, [remove them](#optional-remove-the-nodebalancer-resources) when you have finished your work.
 {{< /caution >}}
 
 ## Before You Begin
 
-1.  You should have Terraform installed in your development environment, and have a working knowledge of Terraform resource configuration and the [Linode provider](https://www.terraform.io/docs/providers/linode/index.html). For more information on how to install and use Terraform, check out our [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
+1.  You should have Terraform installed in your development environment, and have a working knowledge of Terraform resource configuration and the [Linode provider](https://www.terraform.io/docs/providers/linode/index.html). For more information on how to install and use Terraform, check out our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
 
     {{< note >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
@@ -45,7 +45,7 @@ The examples in this guide were written to be compatible with [Terraform version
 
 1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain a token.
 
-1.  Create a `terraform_nodebalancer` directory on your computer for the Terraform project you will create in this guide. All files you create in this guide should be placed in this directory, and you should run all commands from this directory. This new project should not be created inside another Terraform project directory, including the one you may have made when previously following [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/).
+1.  Create a `terraform_nodebalancer` directory on your computer for the Terraform project you will create in this guide. All files you create in this guide should be placed in this directory, and you should run all commands from this directory. This new project should not be created inside another Terraform project directory, including the one you may have made when previously following [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/).
 
 ## Create a Terraform Configuration File
 
@@ -92,7 +92,7 @@ The `linode_nodebalancer` resource supplies two labels. The first label, `exampl
 
 ### Create NodeBalancer Config Resources
 
-In addition to the NodeBalancer resource, you must supply at least one NodeBalancer Configuration resource. This resource defines ports, protocol, health checks, and session stickiness, among other options, that the NodeBalancer might use. For this example, you will create a NodeBalancer configuration for HTTP access on port 80, but you could also create one for HTTPS access on port 443 if you have [SSL/TLS certificates](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates/):
+In addition to the NodeBalancer resource, you must supply at least one NodeBalancer Configuration resource. This resource defines ports, protocol, health checks, and session stickiness, among other options, that the NodeBalancer might use. For this example, you will create a NodeBalancer configuration for HTTP access on port 80, but you could also create one for HTTPS access on port 443 if you have [SSL/TLS certificates](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/):
 
 {{< file "nodebalancer.tf" >}}
 ...
@@ -134,7 +134,7 @@ resource "linode_nodebalancer_node" "example-nodebalancer-node" {
     nodebalancer_id = linode_nodebalancer.example-nodebalancer.id
     config_id = linode_nodebalancer_config.example-nodebalancer-config.id
     label = "example-node-${count.index + 1}"
-    address = "element(linode_instance.example-instance.*.private_ip_address, count.index):80"
+    address = "${element(linode_instance.example-instance.*.private_ip_address, count.index)}:80"
     mode = "accept"
 }
 
@@ -162,7 +162,7 @@ resource "linode_instance" "example-instance" {
     region = var.region
     type = "g6-nanode-1"
     image = "linode/ubuntu18.10"
-    authorized_keys = ["chomp(file(var.ssh_key))}]
+    authorized_keys = [chomp(file(var.ssh_key))]
     root_pass = random_string.password.result
     private_ip = true
 
@@ -183,7 +183,7 @@ resource "linode_instance" "example-instance" {
             type = "ssh"
             user = "root"
             password = random_string.password.result
-            host = "self.ipv4"
+            host = self.ip_address
         }
     }
 }

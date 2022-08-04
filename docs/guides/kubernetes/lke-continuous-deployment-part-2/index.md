@@ -3,8 +3,7 @@ slug: lke-continuous-deployment-part-2
 author:
   name: Linode Community
   email: docs@linode.com
-description: "The sample application that we will be running on Kubernetes is called DockerCoins (a demo app just for this presentation). This part of the guide will take a look at DockerCoins and examine how it works and how the app can be run locally."
-og_description: "The sample application that we will be running on Kubernetes is called DockerCoins (a demo app just for this presentation). This part of the guide will take a look at DockerCoins and examine how it works and how the app can be run locally."
+description: "In part two of our series on Kubernetes, you will learn how the guides the sample application works and how it can be run locally on your own Workstation."
 title: "Continuous Deployment Using LKE: Sample Application"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 2): Sample Application"
 enable_h1: true

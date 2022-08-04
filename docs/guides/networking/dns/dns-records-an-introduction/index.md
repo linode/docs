@@ -147,7 +147,7 @@ An *MX record* or *mail exchanger record* sets the mail delivery destination for
     example.com         MX      10  mail.example.com.
     mail.example.com    A           12.34.56.78
 
-The above records direct mail for *example.com* to the *mail.example.com* server. The target domain (`mail.example.com` above) needs to have its own A record that resolves to your Linode. An MX record should ideally point to a domain that is also the [hostname](/docs/getting-started/#set-the-hostname) for its server.
+The above records direct mail for *example.com* to the *mail.example.com* server. The target domain (`mail.example.com` above) needs to have its own A record that resolves to your Linode. An MX record should ideally point to a domain that is also the [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for its server.
 
 Your MX records don't necessarily have to point to your Linode. If you're using a third-party mail service like [Google Workspace](/docs/guides/using-google-workspace-for-email/), you should use the MX records they provide.
 
@@ -227,7 +227,7 @@ An SPF record for your domain tells other receiving mail servers which outgoing 
     example.com   TXT     "v=spf1 a ~all"
 
 {{< note >}}
-When applying TXT records using the [Linode DNS Manager](https://www.linode.com/docs/guides/dns-manager/), quotation marks `"` should not be applied in the example above.
+When applying TXT records using the [Linode DNS Manager](/docs/guides/dns-manager/), quotation marks `"` should not be applied in the example above.
 {{< /note >}}
 
 In your SPF record, you should list all the mail servers from which you send mail, and then exclude all the others. Your SPF record will have a domain or subdomain, type (which is TXT, or SPF if your name server supports it), and text (which starts with "v=spf1" and contains the SPF record settings).
@@ -261,5 +261,5 @@ An example use of SRV records would be to set up [Federated VoIP](http://en.wiki
 A *TXT record* or *text record* provides information about the domain in question to other resources on the internet. It's a flexible type of DNS record that can serve many different purposes depending on the specific contents. One common use of the TXT record is to create an [SPF record](#spf) on nameservers that don't natively support SPF. Another use is to create a [DKIM record](#dkim) for mail signing.
 
 {{< note >}}
-In common DNS Configurations using TXT records, quotation marks `"` are applied. When applying TXT records using the [Linode DNS Manager](https://www.linode.com/docs/guides/dns-manager/), quotation marks `"` should not be applied in most scenarios, as they are added automatically in cases where they are needed.
+In common DNS Configurations using TXT records, quotation marks `"` are applied. When applying TXT records using the [Linode DNS Manager](/docs/guides/dns-manager/), quotation marks `"` should not be applied in most scenarios, as they are added automatically in cases where they are needed.
 {{< /note >}}

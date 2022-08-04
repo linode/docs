@@ -22,12 +22,12 @@ Your Linux shell has access to an environment that stores configuration values a
 
 ## Before You Begin
 
-1. If you are using a Linode to run through this guide's examples, familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Are Environment Variables?
@@ -79,31 +79,27 @@ The following environment variables are commonly available to most popular Linux
 
 Follow the steps below to view your system's values for the environment variables listed above.
 
-1. Create a new file named `variables.sh` and include the contents of the example file.
+1.  Create a new file named `variables.sh` and include the contents of the example file.
 
     {{< file "~/variables.sh" >}}
 #! /bin/sh
 
 echo 'The current logged-in User is:' $USER
-
 echo 'Home directory of the current user is:' $HOME
-
 echo 'Pathname of the current user'"'"'s shell is:' $SHELL
-
 echo 'The Present Working Directory is:' $PWD
-
 echo 'Users unique identifier is:' $UID
 {{< /file >}}
 
-1. Make the script executable using the following command:
+1.  Make the script executable using the following command:
 
         chmod +x variables.sh
 
-1. Run the script to view its output:
+1.  Run the script to view its output:
 
         bash variables.sh
 
-1. The script displays the following output:
+1.  The script displays the following output:
 
     {{< output >}}
 The current logged-in User is: example_user
@@ -135,21 +131,21 @@ To get a more comprehensive list of (global and local) environment variables, us
 
 To see the value of a single environment variable, use the following command and replace `VARIABLE_NAME` with your own variable.
 
-        printenv VARIABLE_NAME
+    printenv VARIABLE_NAME
 
 For example, you can pass the `HOME` variable as an argument to the command.
 
-        printenv HOME
+    printenv HOME
 
 Alternatively, you can use the `echo` command, and prepend the variable’s name with the `$` symbol to output the value of the variable. This works for both environment variables and shell variables.
 
-        echo $HOME
+    echo $HOME
 
 ### How to Set Environment Variables
 
 To set the value of an existing environment variable type the variable name followed by the value you want to assign.
 
-        EXAMPLE_VARIABLE='example value'
+    EXAMPLE_VARIABLE='example value'
 
 {{< note >}}
 If the environment variable does not already exist, it is created as a shell variable. You can promote the shell variable to an environment variable by exporting it. See the [How to Export Environment Variables](#how-to-export-environment-variables) section for details.
@@ -157,7 +153,7 @@ If the environment variable does not already exist, it is created as a shell var
 
 Use the `set` command to view the variable and its value.
 
-        set | grep EXAMPLE_VARIABLE
+    set | grep EXAMPLE_VARIABLE
 
 {{< output >}}
 EXAMPLE_VARIABLE='example value'
@@ -167,7 +163,7 @@ EXAMPLE_VARIABLE='example value'
 
 You can turn a shell variable into an environment variable using the `export` command. The example below creates a variable called `EXAMPLE_VARIABLE` and assigns it the value `new example value`.
 
-        export EXAMPLE_VARIABLE='new example value'
+    export EXAMPLE_VARIABLE='new example value'
 
 Use the `printenv` to confirm that the variable is now a part of your environment.
 
@@ -180,11 +176,11 @@ New Example value
 
 To assign multiple values to an environment variable use a list. Each value should be separated by a colon.
 
-        export EXAMPLE_VARIABLE=/path/to/first/location:/path/to/second/location
+    export EXAMPLE_VARIABLE=/path/to/first/location:/path/to/second/location
 
 You can also append new items to lists. The example appends the `example-directory` located in the user's home directory to the `PATH` environment variable.
 
-        export PATH=$PATH:$HOME/example-directory
+    export PATH=$PATH:$HOME/example-directory
 
 {{< note >}}
 `PATH` is a default environment variable that defines directories where your shell can look for executables. This variable allows you to run an executable without having to specify its path.
@@ -194,7 +190,7 @@ You can also append new items to lists. The example appends the `example-directo
 
 The `unset` command removes an environment or shell variable from the session. This example removes `EXAMPLE_VARIABLE`.
 
-        unset EXAMPLE_VARIABLE
+    unset EXAMPLE_VARIABLE
 
 ## Persisting Environment Variables
 
@@ -204,7 +200,7 @@ The example in this section uses the Bash shell, since it is the default shell o
 
 Use the `SHELL` environment variable to check which shell you are using:
 
-        echo $SHELL
+    echo $SHELL
 
 **Set a persistent environment variable for a single user:**
 
@@ -234,9 +230,7 @@ Create a `.sh` file to store your app's configuration values as environment vari
 
 {{< file "/etc/profile.d/app-config-vars.sh" >}}
 export APP_ENV="TEST"
-
 export APP_TEST_API="https://api.test.example.com/v1/customers"
-
 export APP_PROD_API="https://api.example.com/v1/customers"
 {{</ file >}}
 
@@ -250,18 +244,16 @@ Create a new file named `main.py` with the example content below. The example ap
 
 {{< file main.py >}}
 import os
-
 app_environ = "APP_" + os.environ["APP_ENV"]
-
 app_api = os.environ[app_environ + "_API"]
 
 print('Your current environment: ' + os.environ['APP_ENV'])
 print('Your environment's API URL' + app_api)
-    {{< /file >}}
+{{< /file >}}
 
 Execute the file to view which environment and API URL is currently detected by the example application.
 
-        python main.py
+    python main.py
 
 {{< output >}}
 Your current environment: TEST
@@ -275,13 +267,13 @@ Depending on your system's configuration and installed version of Python, you ma
 
 When you need to change to the production environment, update the `APP_ENV` variable to `PROD`.
 
-        APP_ENV="PROD"
+    APP_ENV="PROD"
 
 Rerun the `main,py` file and your output should now indicate that you are using the configurations for your production environment.
 
-        python main.py
+    python main.py
 
-        {{< output >}}
+{{< output >}}
 Your current environment: PROD
 Your APIs URL: https://api.example.com/v1/customers
 {{</ output >}}

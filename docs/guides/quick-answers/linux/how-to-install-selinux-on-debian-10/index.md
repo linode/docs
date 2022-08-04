@@ -5,7 +5,8 @@ author:
   email: docs@linode.com
 description: "Learn how to install SELinux and use it to protect the security of your Debian 10 system"
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
-aliases: ['/quick-answers/linux/install-selinux-on-ubuntu/','/quick-answers/linux/how-to-install-selinux-on-debian-10/']
+aliases: ['/quick-answers/linux/how-to-install-selinux-on-debian-10/']
+bundles: ['debian-security']
 tags: ["debian","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
@@ -38,7 +39,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         sudo apt update
 
     {{< note >}}
-The Linode kernel does not support SELinux by default. If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/platform/how-to-change-your-linodes-kernel/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
+The Linode kernel does not support SELinux by default. If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
     {{</ note >}}
 
 ### Remove AppArmor
@@ -127,7 +128,7 @@ Max kernel policy version:      31
 
 1.  To maintain `enforcing` mode after reboot, modify the SELinux configuration file in `/etc/selinux/config` from the default `SELINUX=permissive` to `SELINUX=enforcing`:
 
-    {{< file "/etc/selinx/config" >}}
+    {{< file "/etc/selinux/config" >}}
 # This file controls the state of SELinux on the system.
 # SELINUX= can take one of these three values:
 # enforcing - SELinux security policy is enforced.
@@ -153,4 +154,4 @@ If you do not see the this entry, open the port with the following command:
     {{</ note >}}
 
 ## Next Steps
-After installing SELinux on your system, use our [Getting Started with SELinux Guide](/docs/security/getting-started-with-selinux/) to learn the basics of SELinux security.
+After installing SELinux on your system, use our [Getting Started with SELinux Guide](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) to learn the basics of SELinux security.

@@ -43,17 +43,18 @@ paths:
         content:
           application/json:
             schema:
+                  x-linode-ref-meta:
+                      '#/components/schemas/ExampleOneOfOne':
+                        name: Example One of One
+                      '#/components/schemas/ExampleOneOfTwo':
+                        name: Example One of Two!!
                   type: object
                   properties:
                     data:
                       type: object
                       oneOf:
-                        - x-linode-ref-name: "Stats Available"
-                          $ref: '#/components/schemas/ExampleOneOfOne'
-                        - x-linode-ref-name: "Stats Unavailable"
-                          $ref: '#/components/schemas/ExampleOneOfTwo'
-                      discriminator:
-                        propertyName: x-linode-ref-name
+                        - $ref: '#/components/schemas/ExampleOneOfOne'
+                        - $ref: '#/components/schemas/ExampleOneOfTwo'
       responses:
         '200':
           description: Success!

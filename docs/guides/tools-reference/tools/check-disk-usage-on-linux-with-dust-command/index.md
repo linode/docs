@@ -66,16 +66,12 @@ A good strategy is to use dust to get a quick overview of the system's disk spac
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
-
-1. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Dust
@@ -203,7 +199,7 @@ The examples in this section illustrate how to use the `dust` command to check d
 
     dust
 
-[![Graphical output from the dust command](dust-full-output.png)](dust-full-output.png)
+![Graphical output from the dust command](dust-full-output.png)
 
 If the terminal window is large enough, dust displays a gray-scale representation of the directory structure in the form of an ASCII bar. Directories at the same level are represented with the same pattern. Breaks in the patterns can be used to identify the subdirectories within any given directory. For example, for the `index` directory, locate the dividing line between the gray and white portions of its ASCII bar. Follow this discontinuity upwards to locate all the directories inside `index`.
 

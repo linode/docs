@@ -3,7 +3,7 @@ slug: automating-server-builds
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to automating server builds with the Linode Manager.
+description: 'This guide shows you how to automate server builds using Puppet and Chef cookbooks, golden disks and images, on a Linode running the Linux Operating System.'
 keywords: ["server builds", "disks", "golden disk", "puppet", "chef"]
 tags: ["linode platform","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,7 +21,6 @@ Manually configuring systems is a good way to learn, but it's also a time consum
 
 For example, if your needs are relatively straightforward and concise, a shell script or Linode [StackScript](https://www.linode.com/stackscripts) could be all that is necessary. For more complex solutions, configuration orchestration and management exists to deploy and manage fleets of systems and services across multiple regions, networks, and service providers.
 
-
 ## Working with a Golden Image
 
 Using a *golden image* as a configuration base is a frequent starting point in cloud environment automation. This helps quickly deploy multiple systems which are exactly identical. Across the industry, golden images are also referred to as *master*, *base*, or *clone* images, among other terms. Irrespective of name, the idea behind a golden disk is simple: create the desired image and preserve it for cloning/deploying to other servers, thereby simplifying the deployment process and eliminating configuration gap.
@@ -37,7 +36,7 @@ Using a *golden image* as a configuration base is a frequent starting point in c
     - [Clone the disk](/docs/guides/disks-and-storage/#cloning-a-disk).
     - Alternatively, [take a snapshot](/docs/products/storage/backups/guides/take-a-snapshot/) of the disk with Linode Backups.
 1. Store your golden image. This can be done in a variety of ways. A few examples are:
-  - As a snapshot using [Linode Images](/docs/guides/linode-images/) or [Linode Backups](/docs/products/storage/backups/guides/take-a-snapshot/).
+  - As a snapshot using [Linode Images](/docs/products/tools/images/guides/capture-an-image/) or [Linode Backups](/docs/products/storage/backups/guides/take-a-snapshot/).
   - In a [version control](/docs/guides/introduction-to-version-control/) system running on a remote or local server.
   - On [local](/docs/guides/copying-a-disk-image-over-ssh/) storage.
 
@@ -46,7 +45,7 @@ Using a *golden image* as a configuration base is a frequent starting point in c
 1. Copy the duplicate disk to your other Linodes, either using [the Linode API](/docs/api/linode-instances/#disk-clone) or [manually](/docs/guides/copying-a-disk-image-to-a-different-account/#copying-the-disk). If you're using a Linode Backups snapshot, you would [restore it](/docs/products/storage/backups/guides/restore-to-an-existing-linode/) to the desired Linodes.
 1. Create [configuration profiles](/docs/guides/linode-configuration-profiles/) on those additional Linodes to boot using the duplicated disk.
 1. Any user credentials from the golden image will also be on the duplicated disks so you should change the new system's root password.
-1. Update the new Linode's [hostname](/docs/guides/getting-started/#setting-the-hostname).
+1. Update the new Linode's [hostname](/docs/guides/set-up-and-secure/#update-your-systems-hosts-filesetting-the-hostname).
 1. If your golden system was configured to use a static IP address, you'll also need to [reconfigure the IP address](/docs/guides/linux-static-ip-configuration/#static-network-configuration) on your duplicated disks.
 
 ## Third-Party Tools
@@ -55,7 +54,7 @@ Golden disks are capable of handling automated server builds for most individual
 
 -   **Puppet:** An open source configuration management tool that manages systems declaratively. It can automates IT tasks like application configuration, patch management, and even infrastructure audit and compliance. See the following Puppet guides:
 
-    - [Getting Started with Puppet - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/)
+    - [Getting Started with Puppet - Basic Installation and Setup](/docs/guides/getting-started-with-puppet-6-1-basic-installation-and-setup/)
     - [Manage and Automate Systems Configuration with Puppet](/docs/guides/manage-and-automate-systems-configuration-with-puppet/)
     - [Use Puppet Modules to Create a LAMP Stack](/docs/guides/use-puppet-modules-to-create-a-lamp-stack/)
     - [Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04](/docs/guides/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/)
@@ -82,7 +81,7 @@ The Linode Module from Ansible is based on Linode's deprecated APIv3.
 
 - **Salt:** Salt (also referred to as SaltStack) is a Python-based configuration management and orchestration system. Salt uses a master/client model in which a dedicated Salt master server manages one or more Salt minion servers. To learn more about Salt, see the following guides:
 
-    - [A Beginner's Guide to Salt](https://www.linode.com/docs/guides/beginners-guide-to-salt/)
+    - [A Beginner's Guide to Salt](/docs/guides/beginners-guide-to-salt/)
     - [Getting Started with Salt - Basic Installation and Setup](/docs/guides/getting-started-with-salt-basic-installation-and-setup/)
     - [SaltStack Command Line Reference](/docs/guides/salt-command-line-reference/)
     - [Introduction to Jinja Templates for Salt](/docs/guides/introduction-to-jinja-templates-for-salt/)

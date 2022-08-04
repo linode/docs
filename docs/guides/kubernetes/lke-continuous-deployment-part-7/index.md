@@ -3,8 +3,7 @@ slug: lke-continuous-deployment-part-7
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Helm allows us to locate, distribute, and manage software for Kubernetes. This part covers what Helm is, how we will use it, and the differences between Helm 2 and Helm 3. It also discuses Helm Charts and we find, install, and manage them."
-og_description: "Helm allows us to locate, distribute, and manage software for Kubernetes. This part covers what Helm is, how we will use it, and the differences between Helm 2 and Helm 3. It also discuses Helm Charts and we find, install, and manage them."
+description: "In part seven of our series on Kubernetes, you will learn what Helm is, how you can use it, and the differences between Helm version 2 and Helm version 3."
 title: "Continuous Deployment Using LKE: Managing Stacks with Helm"
 h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 7): Managing Stacks with Helm"
 enable_h1: true

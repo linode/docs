@@ -57,7 +57,7 @@ If you know which Linux distribution your current host uses, deploy that to the 
 
 If your host offers a shared environment and you are not sure which Linux distribution is being used, then you can select any new Linux image. The most commonly used distributions on Linode are Ubuntu, Debian, and CentOS. Most Linux distributions should support the software your service uses, but a few software packages are better-suited to specific distributions. Review Linode's [Guides & Tutorials](/docs/) to see which guides have been written for the software and distributions you're interested in.
 
-For further details on deploying your new Linux image, follow the [Getting Started with Linode](/docs/guides/getting-started/) guide. It is also recommended that you follow the [How to Secure Your Server](/docs/guides/securing-your-server/) guide once you have deployed your new image.
+For further details on deploying your new Linux image, follow the [Getting Started with Linode](/docs/guides/getting-started/) guide. It is also recommended that you follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide once you have deployed your new image.
 
 ### Install Software
 
@@ -79,9 +79,9 @@ Locate and backup the data on your current host. Identify:
 
 If your data is stored in a database, you likely need to perform a *database dump*. This results in a file on disk that encapsulates your database data and can be copied over the network as a normal file:
 
--  [Use mysqldump to Back Up MySQL or MariaDB](/docs/guides/use-mysqldump-to-back-up-mysql-or-mariadb/)
+-  [Use mysqldump to Back Up MySQL or MariaDB](/docs/guides/mysqldump-backups/)
 -  [Create Physical Backups of your MariaDB or MySQL Databases](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/)
--  [How to Back Up Your PostgreSQL Database](/docs/guides/how-to-back-up-your-postgresql-database/)
+-  Use [postgres dump database](/docs/guides/how-to-back-up-your-postgresql-database/)
 
 If your current host is a shared environment and you do not have full administrative/command-line access to it, then your host may offer an alternative method for exporting your data. If this is the case, then you should use those tools to download the data to your local computer or some other accessible location.
 

@@ -2,8 +2,8 @@
 slug: python-testing-frameworks-for-software-unit-testing
 author:
   name: John Mueller
-description: 'This guide provides an overview of popular Python testing frameworks for used to unit test software. The three tools covered in this guide are doctest, pytest, and unittest.'
-og_description: 'This guide provides an overview of popular Python testing frameworks for used to unit test software. The three tools covered in this guide are doctest, pytest, and unittest.'
+description: 'This guide provides you with an overview of popular Python testing frameworks used to test software, including overviews of doctest, pytest, and unittest.'
+og_description: 'This guide provides you with an overview of popular Python testing frameworks used to test software, including overviews of doctest, pytest, and unittest.'
 keywords: ['python testing frameworks']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -24,7 +24,7 @@ This guide provides an introduction to popular Python testing frameworks used to
 
 The list below includes some of the most popular Python testing frameworks and what you can expect from each one.
 
-- [**doctest**](https://docs.python.org/3/library/doctest.html): Provides an interactive command-line shell and can be integrated with tools like [Jupyter Notebook](https://www.linode.com/docs/guides/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/) with greater ease than other testing packages.
+- [**doctest**](https://docs.python.org/3/library/doctest.html): Provides an interactive command-line shell and can be integrated with tools like [Jupyter Notebook](/docs/guides/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/) with greater ease than other testing packages.
 
     Doctest is not as feature-rich as other frameworks, which limits it to simpler testing scenarios.
 
