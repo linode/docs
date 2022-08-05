@@ -274,7 +274,7 @@ testfile.txt testfile2.txt
 
 ## Connect to Your Server using VSFTPD
 
-This section shows how to allow connections from remote clients to VSFTPD by configuring the [UFW](/docs/guides/configure-firewall-with-ufw/) firewall. The UFW firewall was installed as part of the [VSFTPD Installation Steps](vsftpd-installation-steps) section.
+This section shows how to allow connections from remote clients to VSFTPD by configuring the [UFW](/docs/guides/configure-firewall-with-ufw/) firewall. The UFW firewall was installed as part of the [VSFTPD Installation Steps](#vsftpd-installation-steps) section.
 
 1.  Before enabling VSFTPD connections, make sure SSH connections are also allowed:
 
