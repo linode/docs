@@ -20,7 +20,7 @@ Once a Block Storage Volume has been attached to a Linode, you'll need to perfor
     1.  **Create a file system.** If your Volume *has not* been used before, create an ext4 file system on the Volume.
 
         {{< caution >}}
-If a new file system is created on a Block Storage Volume that is already using a file system, this will result in data loss. You can safely check for the file system of an unmounted volume with the following command:
+Skip this step if you wish to retain any data stored on an existing Volume. Creating a new file system will overwrite any existing data and result in data loss. You can view existing file systems on an unmounted volume with the following command:
 
     blkid FILE_SYSTEM_PATH
 

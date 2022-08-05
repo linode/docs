@@ -27,3 +27,7 @@ If the Linode's data center has been upgraded to NVMe Block Storage and your Lin
 1.  Click the **Save** button to attach the Volume.
 
 1.  To start using the Volume on the Linode, additional internal configuration is required. This includes creating the file system (if the Volume hasn't been used before), mounting the Volume, and configuring your Linode to automatically mount the Volume at boot. To learn more about these configuration steps, see [Configuring and Mounting a Volume](/docs/products/storage/block-storage/guides/configure-volume/).
+
+    {{< caution >}}
+Do not create a new file system if you wish to retain any existing data on the Volume. Creating a new file system will overwrite any existing data and result in data loss.
+{{</ caution >}}
