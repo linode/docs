@@ -650,7 +650,6 @@ froxlor
 fs
 fsck
 fstab
-ftp_client
 fullchain
 func
 fzf
