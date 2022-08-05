@@ -252,7 +252,7 @@ If you would like a deeper dive into cert-manager, see our guide [What is Kubern
 
         helm repo update
 
-1.  Install the cert-manager Helm chart. These basic configurations should be sufficient for many use cases, however, additional cert-manager configurable parameters can be found in [cert-manager's official documentation](https://hub.helm.sh/charts/cert-manager/cert-manager).
+1.  Install the cert-manager Helm chart. These basic configurations should be sufficient for many use cases, however, additional cert-manager configurable parameters can be found in [cert-manager's official documentation](https://hub.helm.sh/charts/jetstack/cert-manager).
 
         helm install \
         my-cert-manager cert-manager/cert-manager \

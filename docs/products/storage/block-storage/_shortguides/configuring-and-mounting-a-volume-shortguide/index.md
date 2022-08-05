@@ -17,36 +17,34 @@ Once a Block Storage Volume has been attached to a Linode, you'll need to perfor
 
 1.  Enter each command that's shown in the **Volume Configuration** panel, modifying them if needed. These configuration steps are also listed below:
 
-    1.  **Create a file system.** If your Volume *has not* been used before, create an ext4 file system on the Volume.
-
-        {{< caution >}}
-Skip this step if you wish to retain any data stored on an existing Volume. Creating a new file system will overwrite any existing data and result in data loss. You can view existing file systems on an unmounted volume with the following command:
-
-    blkid FILE_SYSTEM_PATH
-
-If you do not receive output, there is currently no file system on this volume.
-    {{< /caution >}}
-
-        You can create an ext4 file system by running the following command, where `FILE_SYSTEM_PATH` is your Volume's file system path:
+    1.  Create an ext4 file system by running the following command, where `FILE_SYSTEM_PATH` is your Volume's file system path:
 
             mkfs.ext4 FILE_SYSTEM_PATH
 
-    1.  **Create a mount point.** This is the directory on your Linux system where the Block Storage files will be located.
+        {{< caution >}}
+If a new filesystem is created on a Block Storage Volume that is already using a filesystem, the above command will result in data loss. You can safely check for the filesystem of an unmounted volume with the following command:
+
+    blkid FILE_SYSTEM_PATH
+
+If you do not receive output, there is currently no filesystem on this volume.
+    {{< /caution >}}
+
+    1.  Create a mount point
 
             mkdir /mnt/BlockStorage1
 
-    1.  **Mount the Volume manually.** Mount the Block Storage Volume to the directory you just created. After this is completed, you can access your files from that directory.
+    1.  Mount the Volume to that mount point.
 
             mount FILE_SYSTEM_PATH /mnt/BlockStorage1
 
-    1.  **Mount the Volume automatically.** If you want to mount the new Volume automatically every time your Linode boots, add the following line to your **/etc/fstab** file:
+    1.  If you want to mount the new Volume automatically every time your Linode boots, add the following line to your **/etc/fstab** file:
 
             FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults 0 2
 
         {{< note >}}
 If you plan on detaching the volume regularly or moving it between other Linodes, you may want to consider adding the flags `noatime` and `nofail` to the **/etc/fstab** entry.
 
-* `noatime` - This will save space and time by preventing writes made to the file system for data being read on the volume.
+* `noatime` - This will save space and time by preventing writes made to the filesystem for data being read on the volume.
 *  `nofail`  - If the volume is not attached, this will allow your server to boot/reboot normally without hanging at dependency failures if the volume is not attached.
 
 Example:
