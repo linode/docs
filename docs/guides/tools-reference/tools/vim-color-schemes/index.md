@@ -40,7 +40,7 @@ You can learn more about NeoVim and how to get started customizing it through ou
 
 Vim comes with a default color scheme assigned, and typically your Vim installation also includes several additional color schemes. These provide a useful start, and may give you everything you need as far as color scheme variety.
 
-To see a list of available color schemes on your system, begin by typing the `:colorscheme` command. Then, without pressing **Enter**, follow the command with a **Space** and press the **Ctrl** + **D** key combination. 
+To see a list of available color schemes on your system, begin by typing the `:colorscheme` command. Then, without pressing **Enter**, follow the command with a **Space** and press the **Ctrl** + **D** key combination.
 
 You should see a list similar to, though maybe not exactly, like this one:
 
@@ -103,7 +103,7 @@ call plug#end()
 
         mkdir -p ~/.vim/colors
 
-    Then download the scheme file, which you can usually find as a file ending in `.vim` on the scheme's GitHub page: 
+    Then download the scheme file, which you can usually find as a file ending in `.vim` on the scheme's GitHub page:
 
         wget https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim -O ~/.vim/colors/solarized.vim
 
