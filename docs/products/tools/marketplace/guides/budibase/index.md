@@ -12,8 +12,11 @@ modified_by:
 title: "Deploying Budibase through the Linode Marketplace"
 ---
 
-[Budibase](https://github.com/Budibase/budibase) is a modern, open source low-code platform for building modern business applications in minutes. Build, design and automate business apps, such as; admin panels, forms, internal tools, client portals and more. Before Budibase, it could take developers weeks to build simple CRUD apps; with Budibase, building CRUD apps takes minutes.
-When self-hosting please follow best practices for securing, updating and backing up your server.
+[Budibase](https://github.com/Budibase/budibase) is an open-source, low-code platform for building modern business applications. Build, design, and automate different types of applications, including admin panels, forms, internal tools, and client portals. Using Budibase helps developers avoid spending weeks building simple CRUD applications and, instead, allows them to complete many projects in significantly less time.
+
+{{< note >}}
+When self-hosting the Budibase application, you are responsible for the security of your server. Follow best practices for securing, updating, and backing the software on your Compute Instance. See [Setting Up and Securing a Compute Instance](https://www.linode.com/docs/guides/set-up-and-secure/).
+{{</ note >}}
 
 ## Deploying a Marketplace App
 
@@ -38,17 +41,18 @@ When self-hosting please follow best practices for securing, updating and backin
 
 ### Accessing the Budibase app
 
-  1. Open your web browser and navigate to `http://[IP]:[Buidbase_port]` where *[IP]* can be replaced with your Linode's IP address and *[Budibase_port]* can be replaced with the port you specified when deploying the Linode. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing rDNS.
+1. Open your web browser and navigate to `http://[ip-address]`, where *[ip-address]* can be replaced with your Compute Instance's IP address or rDNS domain. If you've chosen to have Budibase listen on a port other than port 80, append that port to the URL `http://[ip-address]:[port]`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
-  2. On the `Builder` page that appears, input an email and username for the admin user.
-  ![Screenshot of the Budibase admin user panel](budibase-admin.png)
+1. The screen for creating a new admin user should appear. Enter the email address and password you wish to use and then click the **Create super admin user** button.
 
-  3. Log in with the admin email and password you just set. After additional users are created they can be used to log in.
-  ![Screenshot of the Budibase login panel](budibase-login.png)
+    ![Screenshot of the Budibase admin user panel](budibase-admin.jpg)
 
-  4. From the Budibase web app you can manage users, authentication, organizations and themes, as well as developing apps from the supplied templates.
-  ![Screenshot of the Budibase web app](Budibase-webapp.png)
+1. After the admin user has been created, you are prompted to sign in to Budibase. Enter the credentials you just created and click **Sign in to Budibase**.
 
-  5. For more information on using Budibase for development please see the [Budibase documentation](https://docs.budibase.com/docs).
+    ![Screenshot of the Budibase login panel](budibase-login.jpg)
+
+1. Once you are logged in to the Budibase web app, you can create apps, manage users, add authentication methods, select themes, and more. For more information on using Budibase for development, see the [Budibase documentation](https://docs.budibase.com/docs).
+
+    ![Screenshot of the Budibase web app](Budibase-webapp.jpg)
 
 {{< content "marketplace-update-note-shortguide">}}

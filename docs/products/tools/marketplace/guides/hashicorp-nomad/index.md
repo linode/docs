@@ -12,7 +12,7 @@ modified_by:
 title: "Deploying HashiCorp Nomad through the Linode Marketplace"
 ---
 
-[HashiCorp Nomad](https://www.nomadproject.io/) is a simple and flexible scheduler and orchestrator to deploy and manage containers and non-containerized applications across on-prem and clouds at scale.
+[HashiCorp Nomad](https://www.nomadproject.io/) is a simple and flexible scheduler and orchestrator to deploy and manage containers and non-containerized applications across cloud platforms (and on-premises servers) at scale.
 
 ## Deploying a Marketplace App
 
@@ -27,7 +27,7 @@ title: "Deploying HashiCorp Nomad through the Linode Marketplace"
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS, Debian 11
-- **Recommended plan:** We recommend a 4GB Dedicated CPU or Shared Compute instance for the Nomad Server. Nomad Clients can be smaller plans.
+- **Recommended plan:** We recommend a 4GB Dedicated CPU or Shared Compute instance for the Nomad Server. Nomad Clients (deployed separately from this Marketplace App) can use plans of any size.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
@@ -35,17 +35,18 @@ title: "Deploying HashiCorp Nomad through the Linode Marketplace"
 
 ### Accessing the Nomad Web UI
 
-1. Open your web browser and navigate to `http://[IP]:8080` where *[IP]* can be replaced with the Linode's IP address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for more information.
+1. Open your web browser and navigate to `http://[ip-address]:8080`, where *[ip-address]* is your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses.
 
-2. The Nomad web UI can be used to manage the cluster, jobs and integrations and ACL Tokens.
-   ![Screenshot of the Nomad Web UI](nomad-webUI.png)
+1. The [Nomad Web UI](https://learn.hashicorp.com/collections/nomad/web-ui) is displayed. From here, you can manage the cluster, jobs, integrations, and ACL tokens.
 
-{{<note>}}
+    ![Screenshot of the Nomad Web UI](nomad-webUI.jpg)
+
+    {{<note>}}
 HashiCorp recommends using mutual TLS (mTLS) with a private CA to secure cluster communications and the web UI. Please see the following HashiCorp documentation for more details.
 https://learn.hashicorp.com/tutorials/nomad/security-enable-tls
 https://www.nomadproject.io/docs/configuration/tls#http
 {{</note>}}
 
-3. Additional configurations are required to use the Linode Marketplace Nomad server in a production environment. We recommend reviewing the [Configuration](https://www.nomadproject.io/docs/configuration) and [Job Spec](https://www.nomadproject.io/docs/job-specification) documentation before proceeding.
+1. Additional configurations are required to use the Linode Marketplace Nomad Server in a production environment. We recommend reviewing the [Configuration](https://www.nomadproject.io/docs/configuration) and [Job Spec](https://www.nomadproject.io/docs/job-specification) documentation before proceeding.
 
 {{< content "marketplace-update-note-shortguide">}}

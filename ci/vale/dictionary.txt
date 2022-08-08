@@ -192,6 +192,7 @@ brightbox
 browserify
 bs4
 btmp
+Budibase
 bufio
 bugtracker
 buildbot
