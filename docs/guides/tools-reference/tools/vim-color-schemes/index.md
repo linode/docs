@@ -45,8 +45,8 @@ To see a list of available color schemes on your system, begin by typing the `:c
 You should see a list similar to, though maybe not exactly, like this one:
 
 {{< output >}}
-blue        default     desert      evening     koehler     murphy      peachpuff     shine       torte
-darkblue        delek       elflord     industry        morning     pablo       ron       slate       zellner
+blue      default  desert   evening   koehler  murphy  peachpuff  shine  torte
+darkblue  delek    elflord  industry  morning  pablo   ron        slate  zellner
 {{< /output >}}
 
 As you expand your collection of color schemes (which you can see how to do further on), the output of the combination above updates. Each time you run the command, Vim reflects your current set of schemes.
