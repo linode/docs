@@ -1,5 +1,6 @@
 ---
 slug: use-coreos-container-linux-on-linode
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com
