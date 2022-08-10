@@ -49,6 +49,12 @@ Starting at $5/mo ($0.0075/hour). See [Shared CPU Pricing](https://www.linode.co
 
 *Best for development servers, staging servers, low traffic websites, personal blogs, and production applications that may not be affected by resource contention.*
 
+- Medium to low traffic websites, such as for marketing content and blogs
+- Forums
+- Development and staging servers
+- Low traffic databases
+- Worker nodes within a container orchestration cluster
+
 ### Dedicated CPU Instances
 
 **4 GB - 512 GB Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
