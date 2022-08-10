@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.132.0
+  version: 4.133.0
 
   title: Linode API
   description: |
@@ -15906,7 +15906,7 @@ paths:
                 expires_in:
                   type: integer
                   minimum: 360
-                  maximum: 68400
+                  maximum: 86400
                   default: 3600
                   description: >
                     How long this signed URL will be valid for, in seconds.  If
@@ -19238,6 +19238,19 @@ components:
             the estimate.
           example: 145
           x-linode-cli-display: 4
+        billing_source:
+          type: string
+          readOnly: true
+          enum:
+            - akamai
+            - linode
+          description: >
+            The source of service charges for this Account, as determined by its relationship with Akamai.
+
+            Accounts that are associated with Akamai-specific customers return a value of `akamai`.
+
+            All other Accounts return a value of `linode`.
+          example: akamai
         capabilities:
           type: array
           items:
