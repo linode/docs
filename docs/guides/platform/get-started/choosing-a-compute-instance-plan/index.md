@@ -48,7 +48,6 @@ Starting at $5/mo ($0.0075/hour). See [Shared CPU Pricing](https://www.linode.co
 **Recommended Use Cases:**
 
 *Best for development servers, staging servers, low traffic websites, personal blogs, and production applications that may not be affected by resource contention.*
-≈
 
 ### Dedicated CPU Instances
 
