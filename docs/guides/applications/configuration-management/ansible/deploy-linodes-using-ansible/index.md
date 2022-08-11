@@ -13,6 +13,8 @@ modified_by:
 title: "How to use the Linode Ansible Module to Deploy Linodes"
 h1_title: "Using the Linode Ansible Module to Deploy Linodes"
 enable_h1: true
+deprecated: true
+deprecated_link: 'guides/deploy-linodes-using-linode-ansible-collection/'
 contributor:
   name: Linode
 external_resources:
@@ -21,6 +23,12 @@ aliases: ['/applications/configuration-management/ansible/deploy-linodes-using-a
 tags: ["automation"]
 image: how-to-use-the-linode-ansible-module-to-deploy-linodes.png
 ---
+
+{{< note >}}
+This guide shows how to use the older *Linode Ansible module* to manage Linode infrastructure. This module is maintained by members of the Linode community. A newer *Linode Ansible collection* is now available which is maintained by the Linode development team.
+
+The community-maintained module still functions, but using the Ansible collection is recommended. Review our [Using the Linode Ansible Collection to Deploy a Linode](/docs/guides/deploy-linodes-using-linode-ansible-collection/) guide for more information.
+{{< /note >}}
 
 Ansible is a popular open-source tool that can be used to automate common IT tasks, like cloud provisioning and configuration management. With [Ansible's 2.8 release](https://docs.ansible.com/ansible/latest/roadmap/ROADMAP_2_8.html), you can deploy Linode instances using our latest [API (v4)](https://developers.linode.com/api/v4/). Ansible's `linode_v4` module adds the functionality needed to deploy and manage Linodes via the command line or in your [Ansible Playbooks](/docs/guides/running-ansible-playbooks/). While the dynamic inventory plugin for Linode helps you source your Ansible inventory directly from the Linode API (v4).
 
@@ -67,7 +75,7 @@ The Ansible configuration file is used to adjust Ansible's default system settin
 - `~/.ansible.cfg` in the home directory
 - `/etc/ansible/ansible.cfg`
 
-In this section, you will create an Ansible configuration file and add options to disable host key checking, and to whitelist the Linode inventory plugin. The Ansible configuration file will be located in a development directory that you create, however, it could exist in any of the locations listed above. See [Ansible's official documentation](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#common-options) for a full list of available configuration settings.
+In this section, you will create an Ansible configuration file and add options to disable host key checking, and to allow the Linode inventory plugin. The Ansible configuration file will be located in a development directory that you create, however, it could exist in any of the locations listed above. See [Ansible's official documentation](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#common-options) for a full list of available configuration settings.
 
 {{< caution >}}
 When storing your Ansible configuration file, ensure that its corresponding directory does not have world-writable permissions. This could pose a security risk that allows malicious users to use Ansible to exploit your local system and remote infrastructure. At minimum, the directory should restrict access to particular users and groups. For example, you can create an `ansible` group, only add privileged users to the `ansible` group, and update the Ansible configuration file's directory to have `764` permissions. See the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on permissions.

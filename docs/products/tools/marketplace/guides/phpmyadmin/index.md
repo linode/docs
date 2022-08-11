@@ -31,7 +31,7 @@ aliases: ['/platform/marketplace/deploy-phpmyadmin-with-marketplace-apps/', '/pl
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Debian 11
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### phpMyAdmin Options

@@ -20,7 +20,7 @@ tab_group_main:
     | **StackScript Label** | The name with which to identify your StackScript. *Required*. |
     | **Description** | An overview of what your StackScript does. |
     | **Target Images** | The Linux distributions that can run this StackScript. *Required*.|
-    | **Script** | The body of the script. See the [Writing Scripts for Use with Linode StackScripts](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/) section for more details. *Required*. |
+    | **Script** | The body of the script. See the [Writing Scripts for Use with Linode StackScripts](/docs/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/) section for more details. *Required*. |
     | **Revision Note** | A short description of the updates made to your StackScript in this version of your script.|
 
 ## Create a New Linode Using a Stackscript

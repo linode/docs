@@ -20,7 +20,7 @@ relations:
         key: install-vnc
         keywords:
             - distribution: Ubuntu 20.04
-aliases: ['/applications/remote-desktop/install-vnc-on-ubuntu-20-04/']
+aliases: ['/applications/remote-desktop/install-vnc-on-ubuntu-21-04/', '/guides/install-vnc-on-ubuntu-21-04/']
 ---
 
 *Virtual network computing*, or VNC, is a graphical desktop sharing system that allows you to control one computer remotely from another. A VNC server transfers keyboard and mouse events, and displays the remote host's screen via a network connection, which allows you to operate a full desktop environment on your Linode.
@@ -34,7 +34,7 @@ This guide explains how to install a graphic desktop environment on your Linode 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install a Desktop and VNC Server on your Linode
@@ -76,7 +76,7 @@ The default VNC connection is unencrypted. In order to secure your passwords and
 
 ### Windows
 
-1.  Open [PuTTY](/docs/networking/using-putty/) and navigate to `Tunnels` under the `SSH` section in the menu. Add a new forwarded port as shown below, replacing `example.com` with your Linode's IP address or hostname:
+1.  Open [PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/) and navigate to `Tunnels` under the `SSH` section in the menu. Add a new forwarded port as shown below, replacing `example.com` with your Linode's IP address or hostname:
 
     ![Adding a forwarded port to PuTTY.](1648-vnc-putty-1.png)
 

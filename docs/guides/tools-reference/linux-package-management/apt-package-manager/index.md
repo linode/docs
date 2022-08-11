@@ -8,7 +8,7 @@ og_description: "This guide will teach you what APT is and walks you through the
 keywords: ['apt', 'apt-get','installing','updating','upgrading','uninstalling','removing','package repositories','debian', 'ubuntu']
 tags: ['apt','apt-get','debian','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-07-15
+published: 2022-05-12
 image: UsingAPTtoManagePackagesinDebianandUbuntu.jpg
 modified: 2022-01-31
 modified_by:
@@ -19,7 +19,7 @@ enable_h1: true
 aliases: ['/guides/using-apt-package-manager/']
 ---
 
-*Advanced Package Tool*, more commonly known as [**APT**](https://en.wikipedia.org/wiki/APT_(software)), is a package management system for Debian, Ubuntu, and other similar Linux distributions. It acts as a front-end to the lower-level [**dpkg**](https://en.wikipedia.org/wiki/Dpkg) package manager, which is used for installing, managing, and providing information on `.deb` packages. In addition to these functions, APT interfaces with repositories to obtain packages and also provides very efficient dependency management.
+*Advanced Package Tool*, more commonly known as [**APT**](https://en.wikipedia.org/wiki/APT_(software)), is a package management system for Ubuntu, Debian, Kali Linux, and other Debian-based Linux distributions. It acts as a front-end to the lower-level [**dpkg**](https://en.wikipedia.org/wiki/Dpkg) package manager, which is used for installing, managing, and providing information on `.deb` packages. In addition to these functions, APT interfaces with repositories to obtain packages and also provides very efficient dependency management.
 
 Most distributions that use APT also include a collection of command-line tools that can be used to interface with APT. These tools include `apt-get`, `apt-cache`, and the newer `apt`, which essentially combines both of the previous tools with some modified functionality. Other package managers and tools also exist for interacting with APT or dpkg. A popular one is called [Aptitude](https://en.wikipedia.org/wiki/Aptitude_(software)). Aptitude includes both a command-line interface as well as an interactive user interface. While it does offer advanced functionality, it is not commonly installed by default and is not covered in this guide.
 

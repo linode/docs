@@ -54,7 +54,7 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
 
 2.  Follow the steps outlined in our [LEMP on Debian 8](/docs/websites/lemp/lemp-server-on-debian-8) guide. Skip the NGINX configuration section, since we'll address it later in this guide.
 
-3.  After configuring NGINX according to this guide, follow the steps in our [WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress/) guide to install and configure WordPress. We'll include a step in the instructions to let you know when it's time to do this.
+3.  After configuring NGINX according to this guide, follow the steps in our [WordPress](/docs/guides/how-to-install-and-configure-wordpress/) guide to install and configure WordPress. We'll include a step in the instructions to let you know when it's time to do this.
 
 ## Install and Configure Varnish
 
@@ -495,7 +495,7 @@ server {
     For an SSL-encrypted website, you need one server block to receive traffic on port 443 and pass decrypted traffic to Varnish on port `80`, and another server block to serve unencrypted traffic to Varnish on port `8080`, when Varnish asks for it.
 
     {{< caution >}}
-The `ssl_certificate` directive must specify the location and name of the SSL certificate file. Take a look at our guide to using [SSL on NGINX](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx/) for more information, and update the `ssl_certificate` and `ssl_certificate_key` values as needed.
+The `ssl_certificate` directive must specify the location and name of the SSL certificate file. Take a look at our guide to using [SSL on NGINX](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) for more information, and update the `ssl_certificate` and `ssl_certificate_key` values as needed.
 {{< /caution >}}
 
     Alternately, if you don't have a commercially-signed SSL certificate (issued by a CA), you can issue a self-signed SSL certificate using *openssl*, but this should be done only for testing purposes. Self-signed sites will return a "This Connection is Untrusted" message when opened in a browser.
@@ -533,7 +533,7 @@ server {
         sudo systemctl restart nginx
         sudo systemctl start varnish
 
-8.  Install WordPress, following our [How to Install and Configure WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress/) guide. Once WordPress is installed, continue with this guide.
+8.  Install WordPress, following our [How to Install and Configure WordPress](/docs/guides/how-to-install-and-configure-wordpress/) guide. Once WordPress is installed, continue with this guide.
 
 9.  After installing WordPress, restart Varnish to clear any cached redirects to the setup page:
 
@@ -595,4 +595,4 @@ By using nginx in conjunction with Varnish, the speed of any WordPress website c
 
 You can strengthen the security of the SSL connection by generating a [custom Diffie-Hellman (DH) parameter](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/#create-a-custom-diffie-hellman-key-exchange), for a more secure cryptographic key exchange process.
 
-An additional configuration option is to enable Varnish logging for the plain HTTP website, since now Varnish will be the first to receive the client requests, while NGINX only receives requests for those pages that are not found in the cache. For SSL-encrypted websites, the logging should be done by NGINX because client requests pass through it first. Logging becomes even more important if you use log monitoring software such as [Fail2ban](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/), Awstats or Webalizer.
+An additional configuration option is to enable Varnish logging for the plain HTTP website, since now Varnish will be the first to receive the client requests, while NGINX only receives requests for those pages that are not found in the cache. For SSL-encrypted websites, the logging should be done by NGINX because client requests pass through it first. Logging becomes even more important if you use log monitoring software such as [Fail2ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/), Awstats or Webalizer.

@@ -49,6 +49,7 @@ anonymize
 anonymizing
 ansi
 ansible
+ansible's
 anticompetitive
 antispam
 anycast
@@ -95,6 +96,7 @@ autoconfiguration
 autoconfigure
 autodiscover
 autohosting
+autoindex
 autojoin
 autojump
 autologin
@@ -153,6 +155,7 @@ bernd
 berners
 bgpd
 bialek
+bin_t
 bing
 binlog
 biomes
@@ -189,6 +192,7 @@ brightbox
 browserify
 bs4
 btmp
+Budibase
 bufio
 bugtracker
 buildbot
@@ -337,6 +341,7 @@ cronie
 cronjob
 cronjobs
 crontab
+crosstab
 crowdsourced
 crowdsourcing
 crt
@@ -465,6 +470,7 @@ dnsmasq
 dockercompose
 dockerfile
 dockerfiles
+dockershim
 dockerize
 dockerized
 docstring
@@ -493,11 +499,13 @@ dsn
 du
 duf
 ducati
+dumpall
 dust2
 dvcs
 e2fsck
 ea04
 ead
+Easypanel
 ebtables
 ebuild
 ecommerce
@@ -643,6 +651,7 @@ froxlor
 fs
 fsck
 fstab
+ftp_client
 fullchain
 func
 fzf
@@ -659,12 +668,17 @@ gbps
 gcc
 gcloud
 gcm
+gdf
 geckodriver
 gem1
 Gemba
 gemfile
 genmask
 gentoolkit
+geo
+geocode
+geocoder
+geocoding
 geoip
 geolocating
 geolocation
@@ -811,6 +825,7 @@ hybla
 hykes
 hypercorn
 hyperefficient
+HyperLogLog
 hyperparameter
 hypervisor
 hypervisors
@@ -832,6 +847,7 @@ identrust
 idlist
 ie
 iface
+ifcfg
 ifconfig
 ifdown
 ifnames
@@ -968,6 +984,7 @@ kerberos
 kerberos5
 Kernighan
 keychain
+keyfile
 keyfiles
 keygen
 keyid
@@ -1058,14 +1075,17 @@ linewise
 Linkedin
 linkerd
 linode
+linode's
 linodego
 linodes
+linroot
 linter
 lish
 liskov
 listdir
 listserv
 listservs
+litespeed
 livigno
 li181
 li263
@@ -1172,6 +1192,7 @@ metacharacter
 metacharacters
 metacity
 metapackage
+metapackages
 metaparameters
 metasploit
 meterpreter
@@ -1201,6 +1222,7 @@ minio
 minisockets
 minitest
 minix
+mirantis
 misconfiguration
 misconfigurations
 misconfigured
@@ -1215,6 +1237,7 @@ mkv
 mnesia
 mngtmpaddr
 moby
+mod_autoindex
 moddable
 modinfo
 modsecurity
@@ -1225,6 +1248,7 @@ mongodb
 mongod
 mongodump
 mongoimport
+mongorestore
 mongosh
 monit
 monitorix
@@ -1277,6 +1301,7 @@ mysqlclient10
 mysqld
 mysqldefault
 mysqldump
+mysql_config_editor
 mytestdb
 myuser
 mzet
@@ -1418,6 +1443,8 @@ outputter
 outputters
 overcommit
 overengineer
+overfitted
+overfitting
 overwatch
 ovpn
 owadb
@@ -1443,6 +1470,7 @@ parentheticals
 parsedate
 partitionless
 partyline
+passcode
 passdb
 passlib
 passphraseless
@@ -1465,6 +1493,9 @@ permalink
 permalinks
 Petazzoni
 pflogsumm
+pg_dump
+pg_dumpall
+pg_restore
 pgpass
 pharmer
 pharo
@@ -1545,6 +1576,8 @@ procfile
 procmail
 procs
 productpage
+promlens
+promscale
 prosodyctl
 proto
 protobuf
@@ -1593,6 +1626,7 @@ quickconnect
 quicklisp
 quickstart
 radeon
+rainloop
 ramdisk
 ransomwhere
 rauth
@@ -1611,6 +1645,7 @@ readme
 readonly
 readwrite
 realtime
+rebalancing
 rebase
 rebased
 rebases
@@ -1658,6 +1693,7 @@ replset
 repo
 repos
 reputational
+reseller's
 resharding
 resilvering
 resolv
@@ -2037,7 +2073,9 @@ transcoding
 transpiled
 trello
 triaging
+trie
 trivy
+trojan
 truststore
 tt
 ttl
@@ -2109,6 +2147,7 @@ untruncated
 untrust
 untrusted
 unversioned
+unvetted
 upserted
 upsize
 uri
@@ -2195,6 +2234,8 @@ wasn
 wasm
 wav
 wazuh
+wchar
+wchar_t
 webadmin
 webalizer
 webapp
@@ -2236,6 +2277,7 @@ whois
 whowatch
 wi
 wiktionary
+Widenius's
 widgits
 wildfly
 wimey

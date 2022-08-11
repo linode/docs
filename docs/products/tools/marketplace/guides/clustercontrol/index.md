@@ -7,7 +7,7 @@ keywords: ['database','cluster','backups','configuration management']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
-modified: 2022-03-08
+modified: 2022-05-17
 modified_by:
   name: Linode
 title: "Deploying ClusterControl through the Linode Marketplace"
@@ -16,9 +16,13 @@ external_resources:
 - '[ClusterControl](https://severalnines.com/product/clustercontrol/clustercontrol-community-edition)'
 ---
 
-ClusterControl is a unified console to manage the full database lifecycle of the most popular open-source databases (on-premise or in the cloud). Provision, monitor and manage highly available database clusters in minutes with dashboards, backups, notifications, reports and automated recovery.
+[ClusterControl](https://severalnines.com/product/clustercontrol) (by developer Severalnines) is a unified console to manage the full database lifecycle of the most popular open-source databases (on-premise or in the cloud). Provision, monitor and manage highly available database clusters in minutes with dashboards, backups, notifications, reports and automated recovery.
 
 **Supported databases: MySQL, MariaDB Server, MariaDB Galera, Percona Server, Percona XtraDB, PostgreSQL, Redis, MS SQL Server 2019, TimescaleDB, and MongoDB
+
+{{<note>}}
+ClusterControl offers both free and paid plans. Visit [Severalnines' website](https://severalnines.com/pricing) to view available plans and pricing information.
+{{</note>}}
 
 ## Deploying a Marketplace App
 

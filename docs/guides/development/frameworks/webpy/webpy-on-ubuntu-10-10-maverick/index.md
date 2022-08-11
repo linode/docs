@@ -59,7 +59,7 @@ Issue the following commands to download and install Web.py, using a packaged ve
 
 > apt-get install python-webpy
 
-If you want to upload a more recent version, consider [this procedure](/docs/development/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/), to install Web.py from source.
+If you want to upload a more recent version, consider [this procedure](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/), to install Web.py from source.
 
 ## Create a Basic Application with Web.py
 

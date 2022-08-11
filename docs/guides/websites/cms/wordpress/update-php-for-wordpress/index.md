@@ -51,12 +51,12 @@ Additional best practices for WordPress upgrades are listed below:
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall* section yet as this guide includes firewall rules specifically for an OpenVPN server.
 
-1. A full LAMP stack must already be installed. See the [How to Install a LAMP Stack on Ubuntu 20.04](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide for more details.
+1. A full LAMP stack must already be installed. See the [How to Install a LAMP Stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide for more details.
 
-1. WordPress should already be installed. See the Linode guides on [Installing WordPress](/docs/websites/cms/wordpress/install-wordpress-ubuntu-18-04/) and [Deploying WordPress from Marketplace Apps](/docs/platform/marketplace/deploying-wordpress-with-marketplace-apps/).
+1. WordPress should already be installed. See the Linode guides on [Installing WordPress](/docs/guides/install-wordpress-ubuntu-18-04/) and [Deploying WordPress from Marketplace Apps](/docs/products/tools/marketplace/guides/wordpress/).
 
 {{< note >}}
-The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Update PHP
@@ -100,7 +100,7 @@ Although unlikely, the site or its contents could be corrupted during the update
 The WordPress site can be backed up externally using FTP or SCP. It can also be backed up in a different folder on the Linode. In the long run, it is much safer to back up the files and database to external storage space. This preserves the archive in the event the server hard drive becomes corrupted or access to the server is permanently lost. However, to quickly upgrade WordPress or PHP, a temporary backup copy can be made somewhere else on the Linode.
 
 {{< note >}}
-For a nominal fee, Linode can take a snapshot of your site through its [Backup Service](/docs/products/storage/backups/). A variety of third-party tools are also available. [cPanel](/docs/websites/cms/cpanel/use-cpanel-to-manage-domains-and-databases/) can be used to back up a site, but it has a licensing fee. A variety of third-party WordPress plug-ins are also available for this purpose.
+For a nominal fee, Linode can take a snapshot of your site through its [Backup Service](/docs/products/storage/backups/). A variety of third-party tools are also available. [cPanel](/docs/guides/use-cpanel-to-manage-domains-and-databases/) can be used to back up a site, but it has a licensing fee. A variety of third-party WordPress plug-ins are also available for this purpose.
 {{< /note >}}
 
 To back up the WordPress files on the Linode, follow the below steps:
@@ -116,7 +116,7 @@ To back up the WordPress files on the Linode, follow the below steps:
         sudo cp  public_html/ -r  ~/wpbackup
 
     {{< note >}}
-To back up files to another system, launch an FTP application from the other system and connect to Linode. Navigate to the `/var/www/html/yourdomainname.com` and copy over the entire contents of the `public_html` directory. For more information on using FTP, see our [Transfer Files with FileZilla](/docs/tools-reference/file-transfer/filezilla/) guide.
+To back up files to another system, launch an FTP application from the other system and connect to Linode. Navigate to the `/var/www/html/yourdomainname.com` and copy over the entire contents of the `public_html` directory. For more information on using FTP, see our [Transfer Files with FileZilla](/docs/guides/filezilla/) guide.
     {{< /note >}}
 
 There are several alternatives for backing up a WordPress database. The [phpMyAdmin](https://www.phpmyadmin.net/) application is a popular choice. Many plug-ins can also back up the database. However, the MySQL utility `mysqldump` works in all situations without any additional tools. Back up your WordPress database by following the below procedure.
@@ -173,7 +173,7 @@ If NGINX is used as the web server, run the following commands instead:
 
 Also, change the `fastcgi_pass` value in `/etc/nginx/conf.d/yourdomain.com.conf` to `fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;`.
 
-Consult the Linode guide on [NGINX and PHP](/docs/web-servers/nginx/serve-php-php-fpm-and-nginx/) for more details.
+Consult the Linode guide on [NGINX and PHP](/docs/guides/serve-php-php-fpm-and-nginx/) for more details.
     {{< /note >}}
 
 1. Restart the Apache server to apply the changes.

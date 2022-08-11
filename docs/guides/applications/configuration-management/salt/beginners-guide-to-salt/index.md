@@ -65,7 +65,7 @@ The execution modules that Salt makes available represent system administration 
 -   Editing or creating configuration [files](https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.file.html#module-salt.modules.file)
 
 {{< note >}}
-You can also [write your own](/docs/applications/configuration-management/create-a-salt-execution-module/) execution modules.
+You can also [write your own](/docs/guides/create-a-salt-execution-module/) execution modules.
 {{< /note >}}
 
 ### cmd.run

@@ -21,7 +21,7 @@ relations:
             - distribution: Ubuntu 10.04
 ---
 
-Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/email/postfix/gateway-ubuntu-10-04-lucid) document to install a more minimal email system. If you plan to host a larger number of domains and email aliases, you may want to consider a more sophisticated hosting solution like the [Email Server with Postfix, MySQL and Dovecot](/docs/email/postfix/dovecot-mysql-ubuntu-10-04-lucid/).
+Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/email/postfix/gateway-ubuntu-10-04-lucid) document to install a more minimal email system. If you plan to host a larger number of domains and email aliases, you may want to consider a more sophisticated hosting solution like the [Email Server with Postfix, MySQL and Dovecot](/docs/guides/email-with-postfix-dovecot-and-mysql-on-ubuntu-10-04-lts-lucid/).
 
 ## Set the Hostname
 
@@ -87,7 +87,7 @@ You can use any SSL certificate with Postfix. If you already have a commercial c
 
 ## Postfix
 
-At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/docs/tools-reference/linux-users-and-groups/).
+At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/docs/guides/linux-users-and-groups/).
 
 Consider the [basic email gateway guide](/docs/email/postfix/gateway-ubuntu-10-04-lucid) for more information regarding Postfix virtual hosting configuration. If you need to deliver mail locally, continue for documentation of mail routing and the Dovecot POP3/IMAP server.
 

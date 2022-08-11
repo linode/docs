@@ -129,7 +129,7 @@ The inverse operation of `split` is `join`, which will combine a list of strings
 'one,two,three,four,five'
 {{< /output >}}
 
-For a full list of available string methods, see the [official documentation](https://docs.python.org/3/library/stdtypes.html#string-methods).
+For a full list of available string methods, see the [official documentation](https://docs.python.org/3/library/stdtypes.html#string-methods). Since there is no built-in string method to reverse a string, see our guide [Reversing a String in Python](/docs/guides/how-to-reverse-a-string-in-python/) to learn several ways to do so.
 
 ## String Formatting
 

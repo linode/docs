@@ -1,7 +1,7 @@
 ---
 title: Managed Databases
-linkTitle: Databases
-description: "Learn about Linode's new Managed Database service, currently in beta."
+linkTitle: Managed Databases
+description: "Learn about Linode's Managed Database service, which provides fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
 tab_group_main:
     is_root: true
     title: Overview
@@ -10,7 +10,7 @@ cascade:
     date: 2022-02-23
     product_description: "Fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
 aliases: ['/products/database/']
-modified: 2022-04-15
+modified: 2022-06-06
 ---
 
 {{< content "managed-databases-beta-notice-shortguide" >}}
@@ -35,18 +35,17 @@ Managed Databases can be configured with either 1 or 3 underlying machines, also
 
 The following database management systems (DBMSs) are available (or coming soon) to Managed Databases:
 
-- **MySQL:** An industry standard relational database management system that uses the SQL query language. Many popular applications (including WordPress) require MySQL or MySQL compatible databases. See [An Overview of MySQL](/docs/guides/an-overview-of-mysql/). The following major releases are available (each with one or more available minor releases):
+- **MySQL:** An industry standard relational database management system that uses the SQL query language. Many popular applications (including WordPress) require MySQL or MySQL compatible databases.
 
-    - MySQL 8.0
-    - MySQL 5.7
+- **PostgreSQL:** An object-relational database management system that can use either SQL or JSON queries. It's generally more flexible and feature-rich than MySQL, though it's not a drop-in replacement and applications need to have built-in support for it.
 
-    *If the applications using your database support it, you may want to select the latest available release of MySQL 8. It's more performant and includes additional features. MySQL 5.7 is available for legacy applications.*
+- **MongoDB:** A document-oriented database software that uses JSON files to store data. It is one of the most popular NoSQL databases and, as such, it is *unstructured* and very flexible.
 
-- **PostreSQL** *(Coming in June 2022)*: An object-relational database management system that can use either SQL or JSON queries. It's generally more flexible and feature-rich than MySQL, though it's not a drop-in replacement and applications need to have built-in support for it. See [An Introduction to PostreSQL](/docs/guides/an-introduction-to-postgresql/)
-
-- **MongoDB** *(Coming in June 2022)*: A document-oriented database software that uses JSON files to store data. It is one of the most popular NoSQL databases and, as such, it is *unstructured* and very flexible. [MongoDB and Its Use Cases](/docs/guides/mongodb-and-its-use-cases/)
+    {{< content "managed-database-mongodb-private-notice-shortguide" >}}
 
 - **Redis** *(Coming soon)*: An in-memory NoSQL database that stores its data as key-value pairs. It's most commonly used as a caching system.
+
+See [Choosing a Database Engine and Plan](/docs/products/databases/managed-databases/guides/database-engines/) for more details on each of the available database engines.
 
 ## Recommended Workloads
 
@@ -70,7 +69,7 @@ Managed Databases can be created and deployed across [all regions](https://www.l
 | Memory | 1 GB - 512 GB |
 | Storage | 25 GB - 7200 GB |
 
-Pricing starts at $15/mo for a 1 GB instance with a single node. Review the [pricing page](https://www.linode.com/pricing/#databases) for additional plans and their associated costs.
+Pricing starts at $15/mo for a 1 GB instance with a single node. Review the [pricing page](https://www.linode.com/pricing/#databases) for additional plans and their associated costs. There may be some differences between each available database engine due to licensing costs and other factors.
 
 Managed Databases do not consume [network transfer](/docs/guides/network-transfer/) or include a monthly transfer allowance. Transfer is consumed when connecting to a Managed Database from a Compute Instance when that instance is located in a different data center.
 
@@ -95,3 +94,5 @@ In addition to the resources allocated to each available plan (outlined above), 
 - The default user cannot be changed or removed, though the password can be reset at any time.
 
 - You are not able to access the underlying operating system of a database cluster.
+
+- MongoDB database clusters are currently only accessible over public IP addresses. As such, any traffic counts towards your monthly network transfer usage. Support for private IP addresses will be available in the coming months.

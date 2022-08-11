@@ -27,7 +27,7 @@ Pflogsumm is a simple Perl script that monitors your [Postfix](/docs/email/postf
 
 ## Before You Begin
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 Make sure these prerequisites are installed:
@@ -113,7 +113,7 @@ This list was taken from the [Pflogsumm](http://jimsun.linxnet.com/postfix_contr
 
 ## Scheduling Reports with Cron
 
-Now you'll set up a Cron job to run the Pflogsumm Perl script and send the mail server stats to you as a daily email. This is great for monitoring your mail server. The example below schedules the email for 1:01 PM every day. For details on how to customize the time the email is sent, you should read the [Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) article.
+Now you'll set up a Cron job to run the Pflogsumm Perl script and send the mail server stats to you as a daily email. This is great for monitoring your mail server. The example below schedules the email for 1:01 PM every day. For details on how to customize the time the email is sent, you should read the [Cron](/docs/guides/schedule-tasks-with-cron/) article.
 
 1.  Open the **root** user's Crontab by running the following command:
 

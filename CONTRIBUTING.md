@@ -65,33 +65,59 @@ To Install Node 14.18.1 on Windows, navigate to the [downloads page for this rel
 
 ### Install Hugo
 
-The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you need to install Hugo on your local computer. The library is compatible with **Hugo 0.83.1** or newer.
+The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you need to install Hugo on your local computer. This site currently uses **Hugo v0.83.1**. To remain consistent in the testing and development process, it's recommended to install this version instead of using a newer version.
 
-Note: the site's testing suite has not been run with Hugo versions after 0.83.1, but it will likely build normally with newer versions. If you observe any issues on a newer version, please [file an issue](https://github.com/linode/docs/issues) in the docs GitHub repository.
+Note: If you observe any issues on a newer version, please [file an issue](https://github.com/linode/docs/issues) in the docs GitHub repository.
 
-#### Install Hugo on macOS
+#### macOS and Linux
 
-On macOS, the easiest way to install Hugo is with the [Homebrew](https://brew.sh/) package manager. If you don't have Homebrew installed already, run:
+To install Hugo, download the appropriate binary for your system, extract it, and move it to a directory within your PATH.
 
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+1.  Download the file below that corresponds with the OS and platform on your local system. If you don't see your system on this list, you can find additional files on the [Hugo v0.83.1 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.83.1) under **Assets**.
 
-Then run this command to install Hugo:
+    - **macOS (Intel):** https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_extended_0.83.1_macOS-64bit.tar.gz
+    - **macOS (Apple Silicon):** https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_extended_0.83.1_macOS-ARM64.tar.gz
+    - **Linux:** https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_extended_0.83.1_Linux-64bit.tar.gz
 
-    brew install hugo
+    You can download this file through a terminal using the curl command, replacing [url] with the URL for your platform:
 
-#### Install Hugo on Linux
+        curl -OL [url]
 
-Go to the [Hugo releases page on GitHub](https://github.com/gohugoio/hugo/releases/) and download the most up to date binary for your platform. These commands download the 64 bit binary of Hugo version 0.83.1 for Linux and place it in `/usr/local/bin`:
+1.  Extract the archive file using the `tar` command, replacing *[file]* with the correct filename.
 
-    curl -OL https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_0.83.1_Linux-64bit.tar.gz
-    tar -xvzf hugo_0.83.1_Linux-64bit.tar.gz
-    sudo mv hugo /usr/local/bin
+        tar -xvzf [file]
 
-#### Install Hugo on Windows
+    Once extracted, there should be a `hugo` file in the same directory. This is used to run hugo.
 
-Use [Chocolatey](https://chocolatey.org/) to install Hugo on Windows:
+1.  Move the hugo file to a location within your system's PATH variable. For most systems, the `/usr/local/bin` path can be used.
 
-    choco install hugo
+        mv hugo /usr/local/bin
+
+    You may need to use `sudo` to run this command successfully:
+
+        sudo mv hugo /usr/local/bin
+
+    If you do not have permission to move the file to one of the system folders, you can instead add it to a location in your home directory and then set that location in your PATH:
+
+        mkdir ~/bin
+        mv hugo ~/bin
+        export PATH=$HOME/bin:$PATH
+
+    Make sure to also add the final `export PATH` line in the above snippet to your terminal's configuration file, like `~/.zshrc` on macOS.
+
+1. Test hugo by running `hugo version`. This should output a long string indicating that version 0.83.1 is being used. If not, review the prior steps and the [Install Hugo from Tarball](https://gohugo.io/getting-started/installing/#install-hugo-from-tarball) section of the Hugo documentation.
+
+#### Windows
+
+While macOS and Linux are preferred by most of the core Linode Docs team, it's also possible to use Hugo on Windows.
+
+1. Download the [hugo_0.83.1_Windows-64bit.zip](https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_0.83.1_Windows-64bit.zip) file. Additional files for other operating sytems can be found on the [Hugo v0.83.1 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.83.1) under **Assets**.
+
+1. Extract the file to the directory you'd like to install Hugo under, such as `C:\Hugo\bin`.
+
+1.  Add the directory to your PATH. In powershell, this can be accomplished with the following command:
+
+        set PATH=%PATH%;C:\Hugo\bin
 
 ## Fork and Clone the Linode Library
 
@@ -154,9 +180,9 @@ This section takes you through the process of creating a new guide, using the to
 
     - The guide itself will later be published under the `/docs/guides/how-to-install-nginx-on-debian/` URL path. Note that the URL for the guide will *not* include the `web-servers/nginx/` section information. This is intentional, as the docs website publishes guides under a flattened URL structure.
 
-    - The `index.md` file will contain the markdown content for your guide.
+    - The `index.md` file will contain the Markdown content for your guide.
 
-    - The `--kind content` option specifies that the `content` archetype will be used to populate the new markdown file with sample content. The archetypes available can be found under the `archetypes/` directory in the repository.
+    - The `--kind content` option specifies that the `content` archetype will be used to populate the new Markdown file with sample content. The archetypes available can be found under the `archetypes/` directory in the repository.
 
 1.  The command will output the location of your new guide on your filesystem:
 

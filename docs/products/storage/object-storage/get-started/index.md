@@ -42,7 +42,7 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 
 1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
 
-1.  Click on the **Object Storage** link in the sidebar, and then click on **Add a Bucket**.
+1.  Click on the **Object Storage** link in the sidebar, and then click on **Create Bucket**.
 
     {{< note >}}
 If you have not created an access key or a bucket before, you are prompted to enable Object Storage.

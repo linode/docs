@@ -7,7 +7,7 @@ keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress wit
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications", kepler]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-09
-modified: 2022-03-08
+modified: 2022-05-17
 modified_by:
   name: Linode
 title: "Deploying Kepler through the Linode Marketplace"
@@ -20,6 +20,10 @@ external_resources:
 ---
 
 [Kepler](https://www.kepler.app) is a powerful drag & drop WordPress website builder with all-new website style filters that instantly change the look and feel of your website.
+
+{{< note >}}
+Kepler requires a valid license to use the software beyond the initial 14 day free trial period. To purchase a license, visit [Kepler's website](https://kepler.app/pricing.php) and select a plan that fits your needs. Licenses are not available directly through Linode.
+{{</ note >}}
 
 ## Deploying a Marketplace App
 

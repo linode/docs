@@ -396,7 +396,7 @@ Let's explore the code for this component:
 
 -   You can see how this default value is referenced for the new `rating-title` component on line 16. Whenever nothing is included between the `<rating-title></rating-title>` tags, the default value is used.
 
--   Compare this with how the component is used on lines 8 and 12. Because a title is included between the component's tags, the default text is is not rendered.
+-   Compare this with how the component is used on lines 8 and 12. Because a title is included between the component's tags, the default text is not rendered.
 
 ### Named Slots
 

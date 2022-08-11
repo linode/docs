@@ -86,7 +86,7 @@ Login as "openvpn" with "password" to continue
 
 You can also obtain your password by running the following command:
 
-    cat /usr/local/openvpn_as/tmp/initial_ovpn_pass
+    cat /usr/local/openvpn_as/init.log | grep 'To login'
 
 ### Open a Connection to your VPN
 

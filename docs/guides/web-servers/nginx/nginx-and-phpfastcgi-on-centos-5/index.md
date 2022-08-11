@@ -18,8 +18,8 @@ external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
  - '[FastCGI Project Homepage](http://www.fastcgi.com/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
- - '[Installing Nginx on CentOS 5](/docs/web-servers/nginx/installation/centos-5/)'
- - '[Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration/)'
+ - '[Installing Nginx on CentOS 5](/docs/guides/websites-with-nginx-on-centos-5/)'
+ - '[Basic Ngnix Configuration](/docs/guides/how-to-configure-nginx/)'
 relations:
     platform:
         key: nginx-php-fastcgi

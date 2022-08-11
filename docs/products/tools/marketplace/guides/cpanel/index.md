@@ -7,7 +7,7 @@ keywords: ['cpanel','whm','hosting','manager']
 tags: ["cpanel","linode platform","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-13
-modified: 2022-03-29
+modified: 2022-05-31
 modified_by:
   name: Linode
 title: "Deploying cPanel through the Linode Marketplace"
@@ -17,6 +17,10 @@ aliases: ['/platform/marketplace/how-to-deploy-cpanel-with-marketplace-apps/', '
 ---
 
 [cPanel](https://cpanel.net/products/) is a Linux-based server/website administration platform that streamlines publishing and managing websites. It is widely used by individual businesses, web development agencies, and hosting platforms. cPanel (and the included WHM interface) provides an easy and intuitive method for managing all aspects of website administration, including software installation, DNS, databases, email, and *much* more.
+
+{{< note >}}
+cPanel requires a valid license to use the software beyond the initial 15 day [free trial](https://cpanel.net/products/trial/) period. To purchase a license, visit [cPanel’s website](https://cpanel.net/pricing/) and select a plan that fits your needs. Licenses are not available directly through Linode.
+{{</ note >}}
 
 ## Deploying a Marketplace App
 
@@ -30,7 +34,7 @@ aliases: ['/platform/marketplace/how-to-deploy-cpanel-with-marketplace-apps/', '
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7
+- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** 2GB Dedicated Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
 
 ## Getting Started after Deployment
