@@ -7,6 +7,8 @@ aliases: ['/platform/linode-gpu/getting-started-with-gpu/', '/guides/getting-sta
 image: getting-started-with-linode-gpu-instances.png
 ---
 
+{{< content "gpu-deposit-shortguide" >}}
+
 ## Deploy a GPU Linode Instance
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/) with the username and password you created when signing up.
