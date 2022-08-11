@@ -344,7 +344,7 @@ For demonstration, the following are some of the useful operators for filtering 
 { "_id" : ObjectId("62757b4298fcda5eac416191"), "id" : 4, "name" : "Another Entry for Testing" }
     {{< /output >}}
 
-Learn more about comparison and logical query operations in our guide on [How to Navigate MongoDB Databases](/docs/guides/navigating-mongodb).
+Learn more about comparison and logical query operations in our guide on [How to Navigate Your Data in MongoDB Databases](/docs/guides/how-to-navigate-your-data-in-mongodb-databases).
 
 ### Updating Documents
 
@@ -434,6 +434,6 @@ true
 
 This tutorial has laid out the basics of MongoDB you need for getting started. From how to work with databases and collections, to inserting and modifying documents, this guide gives you the tools you need.
 
-Looking to dive deeper into MongoDB? Be sure to peruse our other [MongoDB guides](/docs/guides/databases/mongodb/) for more on setting up and getting the most out of MongoDB. And take a look at our [How to Navigate MongoDB Databases](/docs/guides/navigating-mongodb) for more on querying and text searches.
+Looking to dive deeper into MongoDB? Be sure to peruse our other [MongoDB guides](/docs/guides/databases/mongodb/) for more on setting up and getting the most out of MongoDB. And take a look at our [How to Navigate Your Data in MongoDB Databases](/docs/guides/how-to-navigate-your-data-in-mongodb-databases) for more on querying and text searches.
 
 Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
