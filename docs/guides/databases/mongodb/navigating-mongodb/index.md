@@ -399,7 +399,7 @@ MongoDB has several operators (keywords) that let you query by comparison. This 
 
 ### Logical Query Operators
 
-Combining multiple filters using logical operations like *and* and *or* can add much-needed specificity to queries. In MongoDB, you can apply these logical operations to combine any of the filtering options discussed in this guide.
+Combining multiple filters using logical operations like *and* & *or* can add much-needed specificity to queries. In MongoDB, you can apply these logical operations to combine any of the filtering options discussed in this guide.
 
 In total, MongoDB has four logical operations for queries.
 
