@@ -195,4 +195,4 @@ If you want to clear all the rules that you have added to start over, you can us
 
 ## Next Steps
 
-For more detailed information on iptables, including using ip6tables, rulesets, and iptables-persistent, see the [Controlling Network Traffic with iptables - A Tutorial](/docs/security/firewalls/control-network-traffic-with-iptables/) guide.
+For more detailed information on iptables, including using ip6tables, rulesets, and iptables-persistent, see the [Controlling Network Traffic with iptables - A Tutorial](/docs/guides/control-network-traffic-with-iptables/) guide.

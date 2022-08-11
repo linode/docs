@@ -3,16 +3,16 @@ slug: how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-de
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on Debian 9'
-og_description: 'Use Google Authenticator to enable two-factor authentication for SSH connections on Debian 9'
+description: "Use Google Authenticator to enable two-factor authentication for SSH connections on Debian 9"
 keywords: ["two factor authentication", "ssh", "google authenticator", "debian"]
 tags: ["ssh","security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
 modified_by:
   name: Linode
-title: "How to Use One-Time Passwords for Two-Factor Authentication with SSH on Debian 9"
-h1_title: "Use One-Time Passwords for Two-Factor Authentication with SSH on Debian 9"
+title: "How to Use Two-Factor Authentication with SSH on Debian 9"
+h1_title: "Using 2FA (Two-Factor Authentication) with SSH on Debian 9"
+enable_h1: true
 image: how-to-use-one-time-passwords-for-two-factor-debian-9.png
 contributor:
   name: Linode
@@ -35,12 +35,12 @@ This guide will explain how to install the necessary software, configure your sy
 
 ## Before You Begin
 
-1.  This guide is meant to be used with a Linode running Debian 9. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/getting-started/#set-the-hostname), [updating your system's hosts file](/docs/getting-started/#update-your-system-s-hosts-file), and setting the [timezone](/docs/getting-started/#set-the-timezone).
+1.  This guide is meant to be used with a Linode running Debian 9. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname), [updating your system's hosts file](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file), and setting the [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
 
-1.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), and [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services). This guide will explain a different way to harden SSH access, but you can also [use public key authentication](/docs/security/securing-your-server/#create-an-authentication-key-pair) in addition for even greater protection. That method will be covered in the optional section [Combine Two-Factor and Public Key Authentication](#combine-two-factor-and-public-key-authentication-optional).
+1.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), and [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services). This guide will explain a different way to harden SSH access, but you can also [use public key authentication](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) in addition for even greater protection. That method will be covered in the optional section [Combine Two-Factor and Public Key Authentication](#combine-two-factor-and-public-key-authentication-optional).
 
     {{< note >}}
-If you plan on [combining two-factor and public key authentication](#combine-two-factor-and-public-key-authentication-optional), ensure you [upload your computer's public key](/docs/security/securing-your-server/#create-an-authentication-key-pair) to your Linode's [standard user account](/docs/security/securing-your-server/#add-a-limited-user-account) before beginning the steps in this guide.
+If you plan on [combining two-factor and public key authentication](#combine-two-factor-and-public-key-authentication-optional), ensure you [upload your computer's public key](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) to your Linode's [standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) before beginning the steps in this guide.
     {{</ note >}}
 
 1.  You will need a smartphone or another client device with an authenticator application such as [Google Authenticator](https://en.wikipedia.org/wiki/Google_Authenticator) or [Authy](https://www.authy.com/). Many other options exist, and this guide should be compatible with nearly all of them.
@@ -192,7 +192,7 @@ If your SSH client disconnects before you can enter your two-factor token, check
 This section is optional. If you'd like to use [public key authentication](/docs/security/authentication/use-public-key-authentication-with-ssh) instead of a password authentication with TOTP, follow the steps in this section.
 
 {{< note >}}
-Before completing this section, ensure that your computer's [public key has been uploaded to your Linode](/docs/security/securing-your-server/#create-an-authentication-key-pair). Public keys are normally stored in your home directory's `authorized_keys` file.
+Before completing this section, ensure that your computer's [public key has been uploaded to your Linode](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair). Public keys are normally stored in your home directory's `authorized_keys` file.
 
     cat ~/.ssh/authorized_keys
 {{< /note >}}
@@ -227,7 +227,7 @@ Match User example-user
 
 ## Next Steps
 
-First, be sure you have followed our guide to [Securing Your Server](/docs/security/securing-your-server). Although there is no single, foolproof method to protecting your data, firewalls and services like [Fail2Ban](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/) are a great way to minimize risk.
+First, be sure you have followed our guide to [Securing Your Server](/docs/security/securing-your-server). Although there is no single, foolproof method to protecting your data, firewalls and services like [Fail2Ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/) are a great way to minimize risk.
 
 When you use two-factor authentication with TOTPs, an important point to consider is the physical security of the device on which you've configured your authenticator app. Be sure your phone or device is secured with a passphrase, so that even if it falls into the wrong hands, it can't easily be used to compromise your server. If you lose the phone or device that stores your credentials, you can use [Lish](/docs/platform/manager/using-the-linode-shell-lish) to access your Linode and disable two-factor authentication. If this happens, you should switch to a different, hardened method of SSH access, such as [public key authentication](/docs/security/authentication/use-public-key-authentication-with-ssh), in the interim.
 

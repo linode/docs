@@ -3,9 +3,9 @@ slug: how-to-install-drupal-using-drush-on-debian-7
 author:
     name: Linode
     email: docs@linode.com
-description: 'An overview of Drush the Drupal Shell or Command Line Tool'
+description: 'This article gives you step-by-step instructions for installing the widely used and popular CMS Drupal using the Drush command line tool on Debian 7.'
 keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framework", " debian"]
-aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-7/','/websites/cms/drush-drupal/']
+aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-debian-7/']
 tags: ["debian","drupal","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2014-11-21
@@ -27,12 +27,11 @@ Both new and experienced Drupal users can benefit from learning Drush. Users tha
 
 Before installing Drush and Drupal, ensure that the following prerequisites have been met:
 
-1.  Create a new Linode by following our [Getting Started](/docs/getting-started/) guide.
-2.  Address security concerns with the [Securing Your Server](/docs/securing-your-server) guide.
-3.  Configure a LAMP stack using the [Hosting a Website](/docs/websites/hosting-a-website) guide.
-4.  Make sure that your system is up to date, using:
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-        sudo apt-get update && sudo apt-get upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
+3.  Configure a LAMP stack using the [Hosting a Website](/docs/websites/hosting-a-website) guide.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -73,7 +72,7 @@ Composer is designed to install PHP dependencies on a per-project basis, but the
 
 4.  Use Git to checkout the version of Drush that you wish to use. The release page is at [https://github.com/drush-ops/drush/releases](https://github.com/drush-ops/drush/releases). Below is a partial image of the release page with a red pointer displaying a sample version number.
 
-    [![Drush Release Page.](drush-release-page-with-arrow.png)](drush-release-page-with-arrow.png)
+    ![Drush Release Page.](drush-release-page-with-arrow.png)
 
 
     For a different release, replace the version number in the following command:
@@ -159,7 +158,7 @@ Although MySQL accepts passwords with a special character, for example an exclam
     After installation is complete, Drush creates a user, named `admin`, and a random password. An example is pictured below. These credentials are used for the Drupal sign-in page.
 
 
-    [![Drush Username Password](drush-username-password.png)](drush-username-password.png)
+    ![Drush Username Password](drush-username-password.png)
 
 8.  Optionally, if you'd like to change the admin's password, we recommend you do so with Drush, rather than sending the password over a non-secure HTTP connection. In the following command, replace `newpass` with your new password:
 

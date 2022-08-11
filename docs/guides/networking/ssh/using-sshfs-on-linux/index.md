@@ -3,7 +3,7 @@ slug: using-sshfs-on-linux
 author:
   name: Linode
   email: docs@linode.com
-description: 'Securely accessing remote filesystems with SSHFS on Linux.'
+description: 'This guide shows how to use SSHFS, Secure Shell FileSystem, a tool that allows users to securely access a remote file system over SSH via the command line interface.'
 keywords: ["sshfs", "ssh filesystem", "sshfs linux", "sshfs macos"]
 tags: ["networking","ssh","security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -31,7 +31,7 @@ This guide will assume you have two systems set up:
 
 -   A client system which will connect to the remote server using SSHFS. This system also runs Ubuntu 18.04.
 
-Limited Linux users (non-`root`) with the same username should also exist on both systems. If you have not already set up a limited user, review the [How to Secure your Server](/docs/security/securing-your-server/#add-a-limited-user-account) guide.
+Limited Linux users (non-`root`) with the same username should also exist on both systems. If you have not already set up a limited user, review the [How to Secure your Server](/docs/guides/set-up-and-secure/#add-a-limited-user-account) guide.
 
 The username for this limited user is assumed to be `example_user`. Replace all instances of `example_user` in this guide with your limited user's name. As well, the IP address of the remote system is assumed to be `192.0.2.4`, so replace all instances of this IP with your remote system's address.
 
@@ -108,7 +108,7 @@ To keep your server's directory mounted on your system through reboots, create a
 
 ### Set Up Key-Based Authentication for SSH
 
-When setting up a mount listed in `/etc/fstab`, your client system will not be able to accept a password for the SSH connection. Instead, you can use [public/private keypairs](/docs/security/authentication/use-public-key-authentication-with-ssh/) to authenticate with the remote server. This section describes how to create a keypair if you do not already have one.
+When setting up a mount listed in `/etc/fstab`, your client system will not be able to accept a password for the SSH connection. Instead, you can use [public/private keypairs](/docs/guides/use-public-key-authentication-with-ssh/) to authenticate with the remote server. This section describes how to create a keypair if you do not already have one.
 
 {{< caution >}}
 This command will overwrite an existing RSA key pair, potentially locking you out of other systems.

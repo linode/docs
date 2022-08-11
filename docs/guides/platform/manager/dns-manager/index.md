@@ -3,27 +3,23 @@ slug: dns-manager
 author:
   name: Linode
   email: docs@linode.com
-description: 'The Domains section of the Linode Cloud Manager is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. This guide covers the use of the Domains section and basic domain setup.'
-og_description: 'The Domains section of the Linode Cloud Manager is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. This guide covers the use of the Domains section and basic domain setup.'
+description: "Learn how to use Linode's Domain service, a comprehensive DNS management service for controlling DNS records on your domain names."
 keywords: ["dns manager", "linode dns", "Linode Cloud Manager dns", "dns configuration", "ttl", "domain zones", "domain name"]
 tags: ["linode platform","networking","cloud manager","dns"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/dns-manager/','/platform/manager/dns-manager/','/networking/dns/dns-manager/','/platform/manager/dns-manager-new-manager/','/networking/dns/dns-manager-overview/','/platform/manager/dns-manager-classic-manager/']
-modified: 2018-08-24
+modified: 2021-11-30
 modified_by:
   name: Linode
 published: 2009-07-16
-title: DNS Manager
+title: "DNS Manager"
+image: dns-manager.png
 ---
 
-![DNS Manager](dns-manager.png "DNS Manager")
-
-<!-- ![DNS Manager Overview](dns-manager-overview.png) -->
-
-The *Domains* section of the [Linode Cloud Manager](https://cloud.linode.com/domains) is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. This guide covers the use of the **Domains** section and basic domain setup. For an introduction to DNS in general, see our [Introduction to DNS Records](/docs/networking/dns/dns-records-an-introduction/) guide.
+The *Domains* section of the [Cloud Manager](https://cloud.linode.com/domains) is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. This guide covers the use of the **Domains** section and basic domain setup. For an introduction to DNS in general, see our [Introduction to DNS Records](/docs/guides/dns-records-an-introduction/) guide.
 
 {{< note >}}
-Linode's DNS service employs [Cloudflare](https://cloudflare.com) to provide denial of service (DDoS) mitigation, load balancing, and increased geographic distribution for our [name servers](/docs/networking/dns/dns-records-an-introduction/#name-servers). These factors make our service reliable, fast, and a great choice for your DNS needs.
+Linode's DNS service is anycasted to over 250 locations around the world. This provides distributed denial-of-service (DDoS) attack mitigation, load balancing, and increased geographic distribution for our [name servers](/docs/guides/dns-records-an-introduction/#name-servers). These factors make our service reliable, fast, and a great choice for your DNS needs.
 {{</ note>}}
 
 {{< note >}}
@@ -43,10 +39,10 @@ All steps in this guide are completed within the **[Domains](https://cloud.linod
 DNS records are only actively hosted on accounts with at least one Linode. When setting up a domain name on your Linode, make sure you perform the following steps:
 
 1.  Register (purchase) a domain name if you haven't already.
-2.  Set your domain name to [use Linode's name servers](#use-linode-s-name-servers-with-your-domain). You'll need to do this on your domain registrar's website and then wait up to 24 hours for the change to take effect.
+2.  Set your domain name to [use Linode's name servers](#use-linodes-name-servers-with-your-domain). You'll need to do this on your domain registrar's website and then wait up to 24 hours for the change to take effect.
 3.  Use the DNS Manager to [add a domain](#add-a-domain), and then start [adding some basic DNS records](#add-dns-records).
-4.  [Set reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/).
-5.  If you have any special DNS requirements, such as when using a third-party email server, add additional DNS records [for your specific needs](/docs/networking/dns/common-dns-configurations/).
+4.  [Set reverse DNS](/docs/guides/configure-your-linode-for-reverse-dns/).
+5.  If you have any special DNS requirements, such as when using a third-party email server, add additional DNS records [for your specific needs](/docs/guides/common-dns-configurations/).
 
 ## Use Linode's Name Servers with Your Domain
 
@@ -114,7 +110,7 @@ Add a subdomain by adding an entry under the *A/AAAA Record* heading, with just 
 
 1. Adjust the TTL if necessary.
 
-1. Click **Save**. It will only take a few minutes for the record to be updated.
+1. Click **Save**.
 
 
 ### Wildcards
@@ -129,7 +125,7 @@ To create a [wildcard DNS record](https://en.wikipedia.org/wiki/Wildcard_DNS_rec
 
 1. When the **Create A/AAAA Record** panel appears, enter an asterisk (`*`) in the **Hostname** field and provide a valid IP address in the **IP Address** field.
 
-1. Click **Save**. It will only take a few minutes for the record to be updated.
+1. Click **Save**.
 
 {{< note >}}
 A wildcard must always be the furthest subdomain from the TLD (top level domain), i.e. `*.example.com`. If you would like to add a wildcard as a subdomain for a subdomain, you will need to add a new domain zone for that subdomain and then add the wildcard record to it. For example, to create `*.subdomain.example.com`, you must add a separate domain zone for `subdomain.example.com` first, then add an A/AAAA DNS record to that zone as indicated above.
@@ -194,4 +190,4 @@ The Linode DNS Manager does not support DNSSEC at this time. If you have DNSSEC 
 
 ## Next Steps
 
-Now that you are familiar with Linode's DNS Manager, you should set up your [reverse DNS configuration](/docs/networking/dns/configure-your-linode-for-reverse-dns/), and consider reading through at our [Common DNS Configurations](/docs/networking/dns/common-dns-configurations/) guide. For help with DNS records, see our [Troubleshooting DNS](/docs/platform/manager/troubleshooting-dns) guide.
+Now that you are familiar with Linode's DNS Manager, you should set up your [reverse DNS configuration](/docs/guides/configure-your-linode-for-reverse-dns/), and consider reading through at our [Common DNS Configurations](/docs/guides/common-dns-configurations/) guide. For help with DNS records, see our [Troubleshooting DNS](/docs/platform/manager/troubleshooting-dns) guide.

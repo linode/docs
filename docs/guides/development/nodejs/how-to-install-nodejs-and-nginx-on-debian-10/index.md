@@ -3,8 +3,7 @@ slug: how-to-install-nodejs-and-nginx-on-debian-10
 author:
     name: Linode
     email: docs@linode.com
-description: 'In this guide you will install and configure NGINX to serve static site content on a Debian 10 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server. '
-og_description: 'In this guide you will install and configure NGINX to serve static site content on a Debian 10 Linode. You will also create a Node.js server and use NGINX as a reverse proxy to your Node.js server. To test your configurations, you will create an index.html file as your static content and a test JavaScript file to be served by your Node.js server.'
+description: In this guide, you will learn how to install, configure, and test NGINX and Node.js to serve static site content on a Debian 10 server.
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", "debian", " front-end requests", " back-end requests"]
 tags: ["debian", "nginx", "web server", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,9 @@ modified: 2020-04-14
 modified_by:
     name: Linode
 published: 2020-04-14
-title: 'How to Install Node.js and NGINX on Debian 10'
-h1_title: 'Installing Node.js and NGINX on Debian 10'
+title: How to Install Node.js and NGINX on Debian 10
+h1_title: Installing Node.js and NGINX on Debian 10
+enable_h1: true
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'
@@ -23,7 +23,7 @@ external_resources:
 audiences: ["intermediate"]
 concentrations: ["Web Applications"]
 languages: ["javascript"]
-image: 'Installing_Nodejs_and_NGINX_on_Debian_10_1200x631.png'
+image: Install_Nodejs_NGINX_Deb10.png
 relations:
     platform:
         key: install-nodejs-nginx
@@ -38,10 +38,10 @@ Node.js is an open-source JavaScript runtime environment that can serve dynamic 
 
 1.  If you want to use a custom domain name for your site, purchase a domain name from a trusted registrar and use Linode's [DNS Manager](/docs/guides/dns-manager/) to [add the domain](/docs/guides/dns-manager/#add-a-domain) and [create a domain record](/docs/guides/dns-manager/#add-dns-records) for it.
 
-1.  Set up your Linode using the [Getting Started](/docs/guides/getting-started/) and [Securing your Server](/docs/guides/securing-your-server/) guides.
+1.  Set up your Linode using the [Getting Started](/docs/guides/getting-started/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides.
 
     {{< note >}}
-Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/guides/getting-started/#update-your-system-s-hosts-file) section of the [Getting Started](/docs/guides/getting-started/) guide.
+Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/guides/set-up-and-secure/#update-your-systems-hosts-fileupdate-your-system-s-hosts-file) section of the [Getting Started](/docs/guides/getting-started/) guide.
     {{</ note >}}
 
 

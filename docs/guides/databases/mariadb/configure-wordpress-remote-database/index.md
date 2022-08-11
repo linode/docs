@@ -23,18 +23,18 @@ aliases: ['/databases/mariadb/configure-wordpress-remote-database/']
 
 ## Before You Begin
 
-- This guide uses two Linodes in the same data center to communicate via [private IP](/docs/networking/remote-access/#adding-private-ip-addresses) addresses. You will need to configure a [LEMP](/docs/web-servers/lemp/) or [LAMP](/docs/web-servers/lamp/) stack on one.
+- This guide uses two Linodes in the same data center to communicate via [private IP](/docs/guides/managing-ip-addresses/#adding-an-ip-address) addresses. You will need to configure a [LEMP](/docs/web-servers/lemp/) or [LAMP](/docs/web-servers/lamp/) stack on one.
 
 - Ensure that all packages are up to date.
 
-- Follow the [Getting Started](/docs/getting-started/) and [Secure your Server](/docs/security/securing-your-server/) guides to create a non-root sudo user.
+- Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and [Secure your Server](/docs/guides/set-up-and-secure/) guides to create a non-root sudo user.
 
 - While the steps to configure an existing database may be similar, this guide is written for a fresh database and WordPress installation. Visit our guide on how to [backup an existing database](/docs/databases/mysql/back-up-your-mysql-databases/#creating-backups-of-a-single-database).
 
 ### Variables Used in This Guide
 
 * *Database server*: Linode on which the database is installed.
-* *Web server*: Linode on which [WordPress is downloaded](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/).
+* *Web server*: Linode on which [WordPress is downloaded](/docs/guides/install-wordpress-on-ubuntu-16-04/).
 * `example.com`: Your fully qualified domain name (FQDN) or IP address.
 * `wordpress`: Database name.
 * `wpuser`: The WordPress client database user.
@@ -108,7 +108,7 @@ Run these steps on the web server.
 
 When first installed and configured through the web interface and a local database, WordPress creates a file called `wp-config.php`. Configure the initial remote database settings.
 
-1.  Navigate to the directory to which [WordPress was extracted](/docs/websites/cms/install-wordpress-on-ubuntu-16-04/#install-wordpress), copy the sample configuration and set it to use the remote database:
+1.  Navigate to the directory to which [WordPress was extracted](/docs/guides/install-wordpress-on-ubuntu-16-04/#install-wordpress), copy the sample configuration and set it to use the remote database:
 
         cd /var/www/html/example.com/public_html
         sudo cp wp-config-sample.php wp-config.php
@@ -357,4 +357,4 @@ Access the WordPress installation interface through `wp-admin`. Use a browser to
 
 ## Next Steps
 
-Now that the database is configured to communicate over a secure connection, consider using SSL/TLS for the web server itself. Our guide covering [TLS on NGINX](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections/) details some best practices for securing NGINX and web servers in general. Visit the [SSL Certificates](/docs/security/ssl/) section of Linode Docs for information on other servers and Linux distributions.
+Now that the database is configured to communicate over a secure connection, consider using SSL/TLS for the web server itself. Our guide covering [TLS on NGINX](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) details some best practices for securing NGINX and web servers in general. Visit the [SSL Certificates](/docs/security/ssl/) section of Linode Docs for information on other servers and Linux distributions.

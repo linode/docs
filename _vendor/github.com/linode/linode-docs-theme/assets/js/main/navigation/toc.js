@@ -1,24 +1,16 @@
 'use strict';
 
-import { isMobile, isScreenLargerThan, sendEvent, toggleBooleanClass } from '../helpers/index';
+import { isMobile, isScreenLargerThan } from '../helpers/index';
 
-var debug = 0 ? console.log.bind(console, '[toc]') : function() {};
-
-const setOpenStatus = function(self, open) {
-	debug('setOpenStatus', open);
-	self.open = open;
-	self.$nextTick(() => {
-		sendEvent('nav:toggle', { what: 'toc', open: self.open });
-	});
-};
+var debug = 0 ? console.log.bind(console, '[toc]') : function () {};
 
 const headerEls = () => document.querySelectorAll('#main__content h2, #main__content h3, #main__content h4');
 
-const setProgress = function(self, el) {
+const setProgress = function (self, el) {
 	let mainEl = document.querySelector('#main__content');
 	let mainHeight = mainEl.offsetHeight;
 	let mainStart = mainEl.offsetTop;
-	let progress = Math.round((el.offsetTop - mainStart) / mainHeight * 100);
+	let progress = Math.round(((el.offsetTop - mainStart) / mainHeight) * 100);
 	self.activeHeading.title = el.innerText;
 	self.activeHeading.progress = progress;
 };
@@ -27,31 +19,27 @@ export function newToCController() {
 	return {
 		activeHeading: {
 			title: '',
-			progress: 0
+			progress: 0,
 		},
-		open: false,
 		enabled: false,
 		showHeading: true,
-		initData: {},
-		init: function(initData) {
-			this.initData = initData;
+		init: function () {
 			this.createTOC();
 			if (isScreenLargerThan(1711)) {
-				this.open = true;
+				this.$store.nav.open.toc = true;
 			}
 
-			var self = this;
-			return function() {
-				self.createTOC();
-			};
+			this.$nextTick(() => {
+				this.createTOC();
+			});
 		},
-		createTOC: function() {
-			var self = this;
+		createTOC: function () {
+			let self = this;
 			self.activeHeading.title = '';
-			var nav = this.$el.querySelector('.toc__inner');
+			let nav = this.$el.querySelector('.toc__inner');
 			nav.innerHTML = '';
-			var ol = document.createElement('ol');
-			var row = [];
+			let ol = document.createElement('ol');
+			let row = [];
 
 			headerEls().forEach((el) => {
 				// Skip hidden elements and headers without ID.
@@ -62,12 +50,12 @@ export function newToCController() {
 				let id = el.id;
 				let level = parseInt(el.nodeName.substring(1), 10);
 
-				var li = document.createElement('li');
+				let li = document.createElement('li');
 
 				li.classList.add(`level-${level}`);
 				li.classList.add('truncate');
 
-				var a = document.createElement('a');
+				let a = document.createElement('a');
 
 				a.setAttribute('href', `#${id}`);
 				a.addEventListener('click', (e) => {
@@ -80,7 +68,7 @@ export function newToCController() {
 						window.scrollTo({
 							left: 0,
 							top: heading.offsetTop - 80,
-							behavior: 'smooth'
+							behavior: 'smooth',
 						});
 						// We want the smooth scroll AND the hash to be updated -- without triggering any hashchange event.
 						if (history.pushState) {
@@ -94,33 +82,27 @@ export function newToCController() {
 				}
 				a.innerHTML = el.innerText;
 
-				let wrapper = document.createElement('span');
-				wrapper.appendChild(a);
-				let span = document.createElement('span');
-				a.appendChild(span);
-				li.appendChild(wrapper);
+				li.appendChild(a);
 
+				let ol2 = document.createElement('ol');
+				li.appendChild(ol2);
 				if (level == 2) {
-					let ol2 = document.createElement('ol');
-					li.appendChild(ol2);
 					row.length = 0;
 					row.push(ol2);
 					ol.appendChild(li);
-				} else if (row.length > 0) {
+				} else {
 					// Attach it to the closest parent.
 					let relativeLevel = level - 2;
 					let rowIdx = Math.min(relativeLevel - 1, row.length - 1);
-					if (row.length <= relativeLevel) {
-						let ol2 = document.createElement('ol');
-						li.appendChild(ol2);
-						row.push(ol2);
-					}
 					let ol3 = row[rowIdx];
 					ol3.appendChild(li);
+					if (rowIdx > 1) {
+						row[rowIdx - 1] = ol2;
+					}
 				}
 			});
 			if (!this.enabled) {
-				toggleBooleanClass('toc', document.body, false);
+				this.$store.nav.open.toc = false;
 				return;
 			}
 
@@ -129,53 +111,30 @@ export function newToCController() {
 				ol.querySelectorAll('.level-2').forEach((li) => {
 					if (li.querySelector('li') !== null) {
 						li.setAttribute('x-data', '{ open: false }');
-						let wrapper = li.querySelector('span');
 						let ol = li.querySelector('ol');
-						ol.setAttribute('x-show.transition', 'open');
-						let closeEl = document.importNode(
-							this.initData.headerCloseButton.content.querySelector('button'),
-							true
-						);
-						wrapper.appendChild(closeEl);
+						ol.setAttribute('x-show', 'open');
+						ol.setAttribute('x-transition', '');
+						let closeEl = document.importNode(this.$refs.headerCloseButton.content.querySelector('button'), true);
+						li.appendChild(closeEl);
 					}
 				});
 			}
 			nav.appendChild(ol);
 		},
-		toggleOpen: function() {
-			setOpenStatus(this, !this.open);
+		toggleOpen: function () {
+			this.$store.nav.open.toc = !this.$store.nav.open.toc;
 		},
-		close: function() {
-			if (this.open) {
-				setOpenStatus(this, false);
+		close: function () {
+			if (this.$store.nav.open.toc) {
+				this.$store.nav.open.toc = false;
 			}
 		},
-		closeIfMobile: function() {
+		closeIfMobile: function () {
 			if (isMobile()) {
 				this.close();
 			}
 		},
-		receiveToggle: function(detail) {
-			debug('receiveToggle', detail);
-			switch (detail.what) {
-				case 'search-input':
-					this.showHeading = !detail.open;
-					if (detail.open) {
-						setOpenStatus(this, false);
-					}
-					break;
-				case 'toc':
-					this.open = detail.open;
-					break;
-				default:
-				// Ignore
-			}
-		},
-		onTurbolinksRender: function(data) {
-			// Rebuild ToC if needed.
-			this.createTOC();
-		},
-		onHashchange: function() {
+		onHashchange: function () {
 			let id = document.location.hash.slice(1);
 			let self = this;
 			headerEls().forEach((el) => {
@@ -184,18 +143,18 @@ export function newToCController() {
 				}
 			});
 		},
-		onScroll: function() {
+		onScroll: function () {
 			if (!this.enabled) {
 				return;
 			}
 			let scrollpos = window.scrollY;
-			var self = this;
+			let self = this;
 
 			headerEls().forEach((el) => {
 				let offset = el.offsetTop;
 
 				if (offset > scrollpos && offset < scrollpos + 200) {
-					var toc = self.$el.querySelector('.toc__inner');
+					let toc = self.$el.querySelector('.toc__inner');
 					toc.querySelectorAll('li').forEach((liEl) => {
 						let a = liEl.querySelector('a');
 						if (!a.attributes || !a.attributes.href) {
@@ -216,6 +175,6 @@ export function newToCController() {
 					this.activeHeading.progress = 100;
 				}
 			});
-		}
+		},
 	};
 }

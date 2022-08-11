@@ -3,7 +3,7 @@ slug: nodebalancer-proxypass-configuration
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to enable Proxy Protocol on your Linode NodeBalancer.'
+description: 'This guide shows how to enable Proxy Protocol, an internet protocol for various high availability and load balancing solutions to carry information, on your LoadBalancer.'
 og_description: 'How to enable Proxy Protocol on your Linode NodeBalancer.'
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha", "proxy protocol", "proxy"]
 tags: ["cloud manager","linode platform","networking","web applications"]
@@ -12,6 +12,7 @@ modified: 2018-08-21
 modified_by:
   name: Linode
 published: 2015-02-12
+image: ProxyProtocol_NodeBalancers.png
 title: Using Proxy Protocol with NodeBalancers
 aliases: ['/platform/nodebalancer/nodebalancer-proxypass-configuration/']
 ---
@@ -26,6 +27,8 @@ When selecting **TCP** as your NodeBalancer protocol, you can enable **Proxy Pro
 
 {{< note >}}
 [Backend Nodes](#configure-backend-node-proxy-protocol) must also have Proxy Protocol enabled on supported applications to receive the client information header.
+
+Additional configuration options may need to be enabled on the application or service to accommodate traffic between the node and the NodeBalancer, including allowing IPv6 and/or IPv4 traffic, and enabling traffic on all necessary ports.
 {{< /note >}}
 
 Currently, there are two available versions of Proxy Protocol, **v1** and **v2**:

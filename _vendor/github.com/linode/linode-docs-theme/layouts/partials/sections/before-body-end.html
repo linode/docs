@@ -1,13 +1,18 @@
 <div id="consent_blackbar"></div>
 {{ partial "jslibs/instantpage/script-src.html" "-" }}
-{{- $js := resources.GetMatch "js/body/index.js" -}}
-{{ partial "helpers/script-src.html" (dict "js" $js "params" (dict "weglot_api_key" site.Params.weglot_api_key ) ) }}
-<div x-data="lnc.NewInitController()" x-init="init()"></div>
+{{/* Add the GTag info to a temporary array which is handled in the backing script. */}}
 {{ with $.Params.gtags }}
   <script>
-    window.dataLayer = window.dataLayer || [];
+    window._dataLayer = [];
     {{ range . -}}
-    window.dataLayer.push({'{{ .key }}': '{{ .value }}'});
+    window._dataLayer.push({'{{ .key }}': '{{ .value }}'});
     {{ end -}}
   </script>
 {{ end }}
+<div x-data="{}" style="display: none;">
+  {{/* Load the common Linode (from linode-website-partials repo), but only if trustecm.functional is set. */}}
+  {{ $js := resources.Get "linode/footer-inline.js" }}
+  <template x-if="$store.nav.trustecm.functional">
+    {{ partial "helpers/script-src.html" (dict "js" $js "nodefer" true "params" (dict "is_production" hugo.IsProduction ) ) }}
+  </template>
+</div>

@@ -3,14 +3,17 @@ slug: beginners-guide-to-lxd-reverse-proxy
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide explains how to create a reverse proxy in an LXD container in order to host multiple websites, each in their own additional containers. You will utilize NGINX and Apache web servers, while also relying on NGINX as a reverse proxy.'
+description: "In this tutorial, we explain how to create a reverse proxy in an LXD container in order to host multiple websites, each in their own additional containers."
 keywords: ["container", "lxd", "lxc", "apache", "nginx", "reverse proxy", "virtual machine", "virtualization"]
 tags: ["proxy","ubuntu","container","apache","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-28
+modified: 2021-12-26
 modified_by:
   name: Linode
-title: "Set Up a Reverse Proxy in an LXD Container to Host Multiple Websites"
+title: "How to Set Up a Reverse Proxy to Host Websites in LXD"
+h1_title: "A Beginner's Guide to LXD: Setting Up a Reverse Proxy to Host Mulitple Websites"
+enable_h1: true
 contributor:
   name: Simos Xenitellis
   link: https://blog.simos.info/
@@ -54,7 +57,7 @@ For simplicity, the term *container* is used throughout this guide to describe t
 
 ### Before You Begin
 
-1.  Complete [A Beginner's Guide to LXD: Setting Up an Apache Web Server In a Container](/docs/applications/containers/beginners-guide-to-lxd/). The guide instructs you to create a container called `web` with the Apache web server for testing purposes. Remove this container by running the following commands.
+1.  Complete [A Beginner's Guide to LXD: Setting Up an Apache Web Server In a Container](/docs/guides/beginners-guide-to-lxd/). The guide instructs you to create a container called `web` with the Apache web server for testing purposes. Remove this container by running the following commands.
 
         lxc stop web
         lxc delete web
@@ -64,12 +67,12 @@ For this guide LXD version 3.3 or later is needed. Check the version with the fo
 
     lxd --version
 
-If the version is not 3.3 or later, update to the latest version by installing the snap package as instructed in [A Beginner's Guide to LXD: Setting Up an Apache Webserver In a Container](/docs/applications/containers/beginners-guide-to-lxd/) and use the following command:
+If the version is not 3.3 or later, update to the latest version by installing the snap package as instructed in [A Beginner's Guide to LXD: Setting Up an Apache Webserver In a Container](/docs/guides/beginners-guide-to-lxd/) and use the following command:
 
     sudo lxd.migrate
 {{</ note >}}
 
-2. This guide uses the hostnames `apache1.example.com` and `nginx1.example.com` for the two example websites. Replace these names with hostnames you own and setup their DNS entries to point them to the IP address of the server you created. For help with DNS see our [DNS Manager Guide](/docs/platform/manager/dns-manager/).
+2. This guide uses the hostnames `apache1.example.com` and `nginx1.example.com` for the two example websites. Replace these names with hostnames you own and setup their DNS entries to point them to the IP address of the server you created. For help with DNS see our [DNS Manager Guide](/docs/guides/dns-manager/).
 
 ## Creating the Containers
 
@@ -281,8 +284,8 @@ server {
         server_name apache1.example.com;
 
         location / {
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
+                include /etc/nginx/proxy_params;
+
                 proxy_pass http://apache1.lxd;
         }
 
@@ -307,7 +310,7 @@ server {
 
 6.  From your local computer, visit the URL of your website with your web browser. You should see the default Apache page:
 
-    [![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png)](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
+    ![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
 
     {{< note >}}
 If you look at the Apache access.log file (default file `/var/log/apache2/access.log`), it still shows the private IP address of the `proxy` container instead of the real IP address. This issue is specific to the Apache web server and has to do with how the server prints the logs. Other software on the web server is able to use the real IP. To fix this through the Apache logs, see the section [Troubleshooting](/docs/applications/containers/beginners-guide-to-lxd-reverse-proxy/#troubleshooting).
@@ -331,8 +334,8 @@ server {
         server_name nginx1.example.com;
 
         location / {
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
+                include /etc/nginx/proxy_params;
+
                 proxy_pass http://nginx1.lxd;
         }
 
@@ -357,7 +360,7 @@ server {
 
 6.  From your local computer, visit the URL of your website with your web browser. You should see the following default NGINX page.
 
-    [![Web page of the nginx server running in a container](nginx-server-running-in-lxd-container.png)](apache-server-running-in-lxd-container.png "Web page of the nginx server running in a container.")
+    ![Web page of the nginx server running in a container](apache-server-running-in-lxd-container.png "Web page of the nginx server running in a container.")
 
 ### Adding Support for HTTPS with Let's Encrypt
 
@@ -593,7 +596,7 @@ listen [::]:443 ssl proxy_protocol; # managed by Certbot
 {{< /output >}}
 
     {{< note >}}
-Each website configuration file has two pairs of `listen` directives: HTTP and HTTPS, respectively. The first is the original pair for HTTP that was added in a previous section. The second pair was added by certbot for HTTPS. These are pairs because they they cover both IPv4 and IPv6. The notation `[::]` refers to IPv6. When adding the parameter `proxy_protocol`, add it before the `;` on each line as shown above.
+Each website configuration file has two pairs of `listen` directives: HTTP and HTTPS, respectively. The first is the original pair for HTTP that was added in a previous section. The second pair was added by certbot for HTTPS. These are pairs because they cover both IPv4 and IPv6. The notation `[::]` refers to IPv6. When adding the parameter `proxy_protocol`, add it before the `;` on each line as shown above.
 {{< /note >}}
 
 1.  Restart NGINX.

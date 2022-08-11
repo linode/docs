@@ -61,13 +61,13 @@ You can also download the kubeconfig from the Kubernetes cluster's details page.
 
 1. On the cluster's details page, under the **kubeconfig** section, click the **Download icon**. The file will be saved to your `Downloads` folder.
 
-    ![Kubernetes Cluster Download kubeconfig from Details Page](lke-download-kubeconfig-2.png "Kubernetes Cluster Download kubeconfig from Details Page")
-
 1. To view the contents of your kubeconfig file, click on the **View icon**. A pane will appear with the contents of your cluster's kubeconfig file.
 
-    ![View the contents of your kubeconfig file](lke-view-kube-config.png "View the contents of your kubeconfig file")
-
 {{</ disclosure-note >}}
+
+1. To improve security, change the `kubeconfig.yaml` file permissions to be only accessible by the current user:
+
+        chmod go-r /Downloads/kubeconfig.yaml
 
 1. Open a terminal shell and save your kubeconfig file's path to the `$KUBECONFIG` environment variable. In the example command, the kubeconfig file is located in the `Downloads` folder, but you should alter this line with this folder's location on your computer:
 

@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use the GNU Mailman software to manage email listservs.'
+description: 'This guide shows how you can use GNU Mailman a free and open source Listserv management application for managing discussion lists on Debian 5 "Lenny".'
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["debian","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -29,7 +29,7 @@ Be sure to review this guide in its entirety before beginning the procedure outl
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -185,7 +185,7 @@ From this point forward, you can create new lists by issuing `newlist` commands 
 
 ## Configuring Mailman with Alternate Mail Configurations
 
-If you wish to deploy Mailman on a system that has an existing mail set up, such as the [Postfix with Courier and MySQL](/docs/email/postfix/email-with-postfix-courier-and-mysql-on-debian-5-lenny/) or the [Postfix with Dovecot and System Users](/docs/email/postfix/postfix-dovecot-and-system-user-accounts-on-debian-5-lenny/) configurations described in other documents, consider the following recommendations:
+If you wish to deploy Mailman on a system that has an existing mail set up, such as the [Postfix with Courier and MySQL](/docs/guides/email-with-postfix-courier-and-mysql-on-debian-5-lenny/) or the [Postfix with Dovecot and System Users](/docs/guides/postfix-dovecot-and-system-user-accounts-on-debian-5-lenny/) configurations described in other documents, consider the following recommendations:
 
 Complete your basic mail configuration according to the appropriate guide before beginning to install and configure Mailman.
 

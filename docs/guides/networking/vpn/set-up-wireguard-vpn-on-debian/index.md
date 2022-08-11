@@ -7,9 +7,10 @@ description: 'WireGuard encrypts your traffic quickly and safely. This guide wil
 og_description: 'This guide will show you how to install WireGuard, a fast and secure VPN, on Linode.'
 keywords: ['wireguard','vpn','debian']
 tags: ["networking","security","vpn","debian"]
+bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-08
-modified: 2019-07-08
+modified: 2021-10-15
 modified_by:
   name: Linode
 title: "Set Up WireGuard VPN on Debian"
@@ -57,12 +58,12 @@ Do not use WireGuard for critical applications. The project is still undergoing 
 
 ## Before You Begin
 
-- [Deploy a Linode](/docs/getting-started/#create-a-linode) running Debian 9.
-- [Add a limited user account](/docs/security/securing-your-server/#add-a-limited-user-account) with `sudo` privileges to your Linode.
-- Set your system's [hostname](/docs/getting-started/#set-the-hostname).
+- [Deploy a Linode](/docs/guides/creating-a-compute-instance/) running Debian 9.
+- [Add a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) with `sudo` privileges to your Linode.
+- Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 {{< note >}}
-The `GRUB 2` kernel is required for this guide. All distributions for all new Linodes now boot with the `GRUB 2` kernel by default. However, if you are running an older distribution, you will need to check to see which kernel you are running. You can use the [Update Kernel Guide](/docs/platform/update-kernel/) to check your kernel version and change it using the Cloud Manager. Select `GRUB 2` from the *Boot Settings: Select a Kernel* dropdown menu in Step 4 of [Update Your Linode Kernel with Linode's Cloud Manager](/docs/platform/update-kernel/#update-your-linode-kernel-with-linode-s-cloud-manager).
+The `GRUB 2` kernel is required for this guide. All distributions for all new Linodes now boot with the `GRUB 2` kernel by default. However, if you are running an older distribution, you will need to check to see which kernel you are running. You can use the [Update Kernel Guide](/docs/guides/managing-the-kernel-on-a-linode/) to check your kernel version and change it using the Cloud Manager. Select `GRUB 2` from the *Boot Settings: Select a Kernel* dropdown menu in Step 4 of [Update Your Linode Kernel with Linode's Cloud Manager](/docs/guides/managing-the-kernel-on-a-linode/#update-your-linode-kernel-with-linode-s-cloud-manager).
 {{< /note >}}
 
 ## Install WireGuard
@@ -126,7 +127,7 @@ SaveConfig = true
 
 ### Set Up Firewall Rules
 
-1. Install UFW:
+1.  Install UFW:
 
         sudo apt-get install ufw
 
@@ -143,7 +144,7 @@ SaveConfig = true
 
 ### Start the WireGuard Service
 
-1. Start WireGuard:
+1.  Start WireGuard:
 
         sudo wg-quick up wg0
 
@@ -223,7 +224,7 @@ Address = 10.0.0.2/24, fd86:ea04:1115::5/64
 [Peer]
 PublicKey = <Server Public key>
 Endpoint = <Server Public IP>:51820
-AllowedIPs = 10.0.0.2/24, fd86:ea04:1115::0/64
+AllowedIPs = 10.0.0.1/24, fd86:ea04:1115::1/64
 {{< /file >}}
 
 1.  Edit the `wg0.conf` file on the server to add the client's public key and allowed IPs.
@@ -231,7 +232,7 @@ AllowedIPs = 10.0.0.2/24, fd86:ea04:1115::0/64
     {{< file "/etc/wireguard/wg0.conf" conf >}}
 [Peer]
 PublicKey = <Client Public Key>
-AllowedIPs = 10.0.0.2/24, fd86:ea04:1115::0/64
+AllowedIPs = 10.0.0.2/24, fd86:ea04:1115::5/64
 {{< /file >}}
 
 1.  Restart the `wg` service on both the server and the client:
@@ -270,11 +271,11 @@ peer: iMT0RTu77sDVrX4RbXUgUBjaOqVeLYuQhwDSU+UI3G4=
 
 ### Test the Connection
 
-1. Return to the client and ping the server:
+1.  Return to the client and ping the server:
 
         ping 10.0.0.1
 
-    Once you've successfully established the ability to ping the server from the client, run the following command:
+1.  Once you've successfully established the ability to ping the server from the client, run the following command:
 
         sudo wg
 

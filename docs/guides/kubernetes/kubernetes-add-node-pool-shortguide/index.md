@@ -3,7 +3,7 @@ slug: kubernetes-add-node-pool-shortguide
 author:
   name: Linode
   email: docs@linode.com
-description: 'Shortguide that shows you how to add a Node Pool to your Linode Kubernetes Engine cluster.'
+description: 'This short-guide will provide you with step-by-step instructions on how to add a new Node Pool to your LInode Kubernetes Engine (LKE) cluster.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-22
 modified_by:

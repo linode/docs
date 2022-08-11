@@ -27,7 +27,7 @@ In this guide you will complete the following steps:
 * [Create a word cloud using Python and the pandas library](/docs/development/visualize-history/#create-a-word-cloud-using-python).
 * [Develop a web browser based pie chart visualization using JavaScript and the D3.js package](/docs/development/visualize-history/#visualize-data-using-d3-js).
 
-### Before You Begin
+## Before You Begin
 
 Ensure you have the following programs and packages installed on your computer:
 
@@ -76,7 +76,7 @@ Create a new directory named `data-sets`to store your data and copy your Bash hi
 
 ### Data Set 2 - Zsh History File
 
-If you are using the Zsh shell interpreter, you can use its history file as a second data set. Zsh's history file format includes data that you will need to exclude from your data set. Use [AWK](/docs/development/introduction-to-awk/) to clean up your Zsh history file and save the output to a new file in the `data-sets` directory:
+If you are using the Zsh shell interpreter, you can use its history file as a second data set. Zsh's history file format includes data that you will need to exclude from your data set. Use [AWK](/docs/guides/introduction-to-awk/) to clean up your Zsh history file and save the output to a new file in the `data-sets` directory:
 
     awk -F ";" '{$1=""; print $0}' ~/.zsh_history | sed -e "s/^[ \t]*//" -e "/^$/d" > data-sets/data-2
 
@@ -535,5 +535,5 @@ In this example, your JSON data is hardcoded in `pieChart.html` for simplicity. 
 Now that you are familiar with some data visualization tools and simple techniques, you can begin to explore more sophisticated approaches using the same tools explored in this guide. Here are a few ideas you can consider:
 
 - Create a new data set by extracting all `git` related commands from your history files; analyze and visualize them.
-- Automate some of the techniques discussed in this guide using [Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) jobs to generate your data sets automatically.
+- Automate some of the techniques discussed in this guide using [Cron](/docs/guides/schedule-tasks-with-cron/) jobs to generate your data sets automatically.
 - Explore the [Python for Data Science](http://wavedatalab.github.io/datawithpython/index.html) eBook's [data visualization](http://wavedatalab.github.io/datawithpython/visualize.html) section for a deeper dive into using pandas.

@@ -3,16 +3,17 @@ slug: how-to-use-cd
 author:
   name: Linode
   email: docs@linode.com
-description: 'On Linux systems, `cd` is a command that changes the directory you are in when working in the terminal. `cd` is one of the most used commands in Linux and has several shortcuts as well as two options. Review this guide to see how it is invoked.'
-og_description: 'On Linux systems, `cd` is a command that changes the directory you are in when working in the terminal. `cd` is one of the most used commands in Linux and has several shortcuts as well as two options. Review this guide to see how it is invoked.'
+description: "Learn how to usethe cd command to navigate to different directories inside of a Linux or macOS terminal."
 keywords: ["linux", "how to", "cd", "change directory"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-04-23
 modified_by:
   name: Linode
 published: 2020-06-22
-title: How to Use the cd Command
-h1_title: Using the cd Command
+image: UseTheCDCommand.png
+title: "How to Use the cd Command to Navigate the Terminal"
+h1_title: "Using the cd Command to Navigate the Terminal"
+enable_h1: true
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-cd/']
 ---

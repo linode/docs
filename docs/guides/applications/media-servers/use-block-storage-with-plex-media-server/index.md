@@ -3,7 +3,7 @@ slug: use-block-storage-with-plex-media-server
 author:
   name: Sam Foo
   email: docs@linode.com
-description: 'Combine Plex and Block Storage to make the most out of your media server by adding an expandable storage to your server. This guide will show how to attach a Volume to a Plex Media Server and scan for files on the new storage.'
+description: "Combine Plex and Block Storage to make the most out of your media server by adding expandable storage. This guide will show you how."
 keywords: ["plex", "streaming", "netflix", "roku", "block storage"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,9 @@ modified: 2019-01-31
 modified_by:
   name: Linode
 published: 2018-03-01
-title: Use a Block Storage Volume with Plex Media Server
+title: "How to Use a Block Storage Volume with Plex Media Server"
+h1_title: "Using a Block Storage Volume with Plex Media Server"
+enable_h1: true
 external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
 dedicated_cpu_link: true
@@ -26,7 +28,7 @@ Plex is a media server that allows you to store your media on a remote server an
 
 ## Before You Begin
 
-The examples in this guide assume the Plex Server is installed and running on a Linode. See how to [Install Plex Media Server on Ubuntu 16.04](/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/) if it is not already installed. After installation, follow the steps in the [Initial Setup](/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/#initial-setup) section to create an SSH tunnel to your Linode and configure the Plex server.
+The examples in this guide assume the Plex Server is installed and running on a Linode. See how to [Install Plex Media Server on Ubuntu 16.04](/docs/guides/install-plex-media-server-on-ubuntu-18-04/) if it is not already installed. After installation, follow the steps in the [Initial Setup](/docs/guides/install-plex-media-server-on-ubuntu-18-04/#initial-setup) section to create an SSH tunnel to your Linode and configure the Plex server.
 
 This guide also assumes you already have a Plex account since Plex Media Player will require login.
 

@@ -3,15 +3,14 @@ slug: go-structures
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'Learn the basics of how to use structs in Go, including: how structs use value semantics, how to handle pointers to structs, and how to associate methods with structs. Then, read through an example of using structs to encode and decode JSON.'
+description: "Learn how to use structs in Go, including how structs use value semantics, how to handle pointers to structs, and how to associate methods with structs."
 keywords: [" Structs", "Golang", "Go", "Pointers"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-12-16
 modified_by:
   name: Linode
 image: ATutorialforLearningStructsinGo.png
-title: 'Structs in Go - A Tutorial'
-h1_title: 'A Tutorial for Learning Structs in Go'
+title: "A Tutorial for Learning Structs in Go"
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/
@@ -40,7 +39,7 @@ In this guide you will:
 
 {{< content "before-you-begin-install-go-shortguide" >}}
 
-An introductory-level knowledge of Go is assumed by this guide. If you're just getting started with Go, check out our [Learning Go Functions, Loops, and Errors](/docs/development/go/learning-go-functions-loops-and-errors-a-tutorial/) tutorial.
+An introductory-level knowledge of Go is assumed by this guide. If you're just getting started with Go, check out our [Learning Go Functions, Loops, and Errors](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/) tutorial.
 
 {{< note >}}
 This guide was written with Go version 1.13.

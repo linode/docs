@@ -1,0 +1,132 @@
+openapi: 3.0.1
+info:
+  version: 1.0.0
+  title: Linode API
+  description: |
+    Test API schema
+servers:
+- url: https://api.linode.com/v4
+tags:
+- name: Account
+  description: Test tag
+paths:
+  /account:
+    post:
+      tags:
+      - Account
+      summary: Test Endpoint
+      description: This is only a test
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: "Root"
+              allOf:
+              - $ref: '#/components/schemas/ExampleTwo'
+              - $ref: '#/components/schemas/ExampleThree'
+              required:
+                - required_in_root
+      responses:
+        '200':
+          description: Success!
+          content:
+            application/json:
+              schema:
+                type: object
+  /oneof:
+    post:
+      tags:
+      - OneOf
+      summary: Test Endpoint 2
+      description: This is only a test
+      requestBody:
+        content:
+          application/json:
+            schema:
+                  x-linode-ref-meta:
+                      '#/components/schemas/ExampleOneOfOne':
+                        name: Example One of One
+                      '#/components/schemas/ExampleOneOfTwo':
+                        name: Example One of Two!!
+                  type: object
+                  properties:
+                    data:
+                      type: object
+                      oneOf:
+                        - $ref: '#/components/schemas/ExampleOneOfOne'
+                        - $ref: '#/components/schemas/ExampleOneOfTwo'
+      responses:
+        '200':
+          description: Success!
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    ExampleOne:
+      description: "Example One"
+      type: object
+      properties:
+        test1:
+          type: string
+          description: test 1 (required)
+      required:
+      - test1
+    ExampleTwo:
+      description: "Example Two"
+      properties:
+        required_in_root:
+          type: string
+          description: required_in_root (required)
+      allOf:
+      - $ref: '#/components/schemas/ExampleOne'
+      - type: object
+        description: "Type Object"
+        properties:
+          test2:
+            type: string
+            description: test 2 (required)
+        required:
+        - test2
+    ExampleThree:
+      description: "Example Three"
+      type: object
+      properties:
+        test3:
+          type: object
+          description: test 3 (required)
+          properties:
+            test1:
+              type: string
+              description: test 1 (optional)
+            test4:
+              type: string
+              description: test 4 (required)
+            required_in_root:
+              type: string
+              description: required_in_root (optional)
+          required:
+            - test4
+      required:
+        - test3
+
+    ExampleOneOfOne:
+      description: "Example OneOfOne"
+      type: object
+      properties:
+        test1:
+          type: string
+          description: test 1 in oneOf (optional)
+    ExampleOneOfTwo:
+      description: "Example OneOfOne"
+      type: object
+      properties:
+        test1:
+          type: string
+          description: test 1 in oneOf (required)
+        test2:
+          type: string
+          description: test 2 in oneOf (optional)
+      required:
+        - test1

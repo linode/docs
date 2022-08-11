@@ -3,8 +3,8 @@ slug: how-to-deploy-k3s-on-linode
 author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com
-description: 'K3s is lightweight, easy-to-install Kubernetes. This guide provides instructions to deploy a highly available, certified Kubernetes distribution designed for production workloads, and install an application on a K3s cluster.'
-og_description: 'K3s is lightweight, easy-to-install Kubernetes. This guide provides instructions to deploy a highly available, certified Kubernetes distribution designed for production workloads, and install an application on a K3s cluster.'
+description: "K3s is a lightweight, highly-available Kubernetes distribution designed for production workloads. We'll show you how to install and deploy it on Linode."
+og_description: "K3s is a lightweight, highly-available Kubernetes distribution designed for production workloads. We'll show you how to install and deploy it on Linode."
 keywords: ["rancher", "ubuntu", "18.04", "k3s", "kubernetes"]
 tags: ["mysql","kubernetes","database","container","postgresql","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,7 +13,7 @@ modified_by:
   name: Linode
 title: How to Deploy K3s on Linode
 h1_title: Deploying K3s on Linode
-image: how_to_deploy_k3s_on_linode.png
+image: DeployK3s_Linode.png
 external_resources:
   - '[Rancher Official Docs](https://rancher.com/docs/k3s/latest/en/)'
   - '[Kubernetes Official Docs] (https://kubernetes.io/docs/)'
@@ -31,11 +31,11 @@ aliases: ['/kubernetes/how-to-deploy-k3s-on-linode/']
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide.
 
-1.  [Create](/docs/getting-started/#create-a-linode) two Linodes in the same region that are running Ubuntu 18.04.
+1.  [Create](/docs/guides/creating-a-compute-instance/) two Linodes in the same region that are running Ubuntu 18.04.
 
-1.  Complete the steps for [setting the hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone) for both Linodes. When setting hostnames, it may be helpful to identify one Linode as a server and the other as an agent.
+1.  Complete the steps for [setting the hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone) for both Linodes. When setting hostnames, it may be helpful to identify one Linode as a server and the other as an agent.
 
-1.  Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services), and [create firewall rules](/docs/security/securing-your-server/#configure-a-firewall) to allow all outgoing traffic and deny all incoming traffic except SSH traffic on both Linodes.
+1.  Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services), and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) to allow all outgoing traffic and deny all incoming traffic except SSH traffic on both Linodes.
 
     {{< content "limited-user-note-shortguide" >}}
 
@@ -47,7 +47,7 @@ aliases: ['/kubernetes/how-to-deploy-k3s-on-linode/']
 
 First, you will install the K3s server on a Linode, from which you will manage your K3s cluster.
 
-1.  [Connect](/docs/getting-started/#connect-to-your-linode-via-ssh) to the Linode where you want to install the K3s server.
+1.  [Connect](/docs/guides/set-up-and-secure/#connect-to-the-instance) to the Linode where you want to install the K3s server.
 
 1.  Open port 6443/tcp on your firewall to make it accessible by other nodes in your cluster:
 
@@ -94,7 +94,7 @@ As detailed in [Rancher's Installation Requirements](https://rancher.com/docs/k3
 
 Next you will install the K3s agent on a Linode.
 
-1.  [Connect](/docs/getting-started/#connect-to-your-linode-via-ssh) to the Linode where you want to install the K3s agent.
+1.  [Connect](/docs/guides/set-up-and-secure/#connect-to-the-instance) to the Linode where you want to install the K3s agent.
 
 1.  Open port 8472/udp on your firewall to enable Flannel VXLAN:
 

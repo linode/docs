@@ -3,7 +3,7 @@ slug: vagrant-linode-environments
 author:
     name: Elle Krout
     email: ekrout@linode.com
-description: 'Use Vagrant to manage development environments and content on Linode.'
+description: 'This guide shows how to use Vagrant, a configuration management tool, to manage development environments and content on your Linode with the Linode API.'
 keywords: ["linode", "vagrant", "content management", "management", "automation", "development", "ruby", "vagrantfile", "api", "apache"]
 tags: ["cms","automation","ruby","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -37,13 +37,13 @@ Vagrant can be paired with Linode through the use of the *vagrant-linode* plugin
 
     -   Select the API Keys tab:
 
-        [![Linode API](linode-api-vagrant1-small.png)](linode-api-vagrant1.png)
+        ![Linode API](linode-api-vagrant1.png)
 
     -   Enter a label for your API Key and set an expiration time. Then click **Create API Key**.
 
     -   Your API Key will be output in a green box. **The key will only be shown once** so be sure to record it for later use:
 
-        [![Linode API Key Generated](linode-api-vagrant2-small.png)](linode-api-vagrant2.png)
+        ![Linode API Key Generated](linode-api-vagrant2.png)
 
 
 ## Install the vagrant-linode Plugin
@@ -150,7 +150,7 @@ end
 
 ## Set Up the Vagrant Box
 
-Although the server can now be created successfully, many aspects of it still need to be configured. Shell scripts will be used to complete the steps from the [Getting Started](/docs/getting-started/) guide, and to install and configure Apache. Files will also be synced between the workstation and the Linode.
+Although the server can now be created successfully, many aspects of it still need to be configured. Shell scripts will be used to complete the steps from the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and to install and configure Apache. Files will also be synced between the workstation and the Linode.
 
 ### Configure the Server
 

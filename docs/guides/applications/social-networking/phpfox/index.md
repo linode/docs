@@ -3,7 +3,7 @@ slug: phpfox
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installation, configuration and usage guides for phpFox.'
+description: 'This guide shows how to install and configure phpFox, a proprietary social networking platform that allows groups to create and maintain communities.'
 keywords: ["social networking", "phpfox", "community"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/social-networking/phpfox/','/applications/social-networking/phpfox/']

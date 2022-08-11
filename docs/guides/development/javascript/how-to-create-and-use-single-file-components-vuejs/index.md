@@ -3,15 +3,16 @@ slug: how-to-create-and-use-single-file-components-vuejs
 author:
   name: Linode Community
   email: docs@linode.com
-description: "VueJS components are a very powerful tool in the JavaScript developer's toolbox, but as your project grows regular components can become hard to read and hard to follow. In this guide you will learn how to add more structure to your VueJS application and make your components more reusable and easy to read."
-og_description: "VueJS components are a very powerful tool in the JavaScript developer's toolbox, but as your project grows regular components can become hard to read and hard to follow. In this guide you will learn how to add more structure to your VueJS application and make your components more reusable and easy to read."
+description: "As a project grows, VueJS components can become hard to follow. Learn how to add more structure so your components easier to read and manage."
+og_description: "As a project grows, VueJS components can become hard to follow. Learn how to add more structure so your components easier to read and manage."
 keywords: ["vue js","javascript","vuejs","vuejs single file components","vuejs eventbus", "vuejs event bus"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2020-05-20
 modified_by:
   name: Linode
-title: "Creating Single File Components in VueJS - A Tutorial"
+title: "How to Create Single File Components in VueJS (A Tutorial)"
 h1_title: "A Tutorial for Creating Single File Components in VueJS"
+enable_h1: true
 contributor:
   name: Pavel Petrov
   link: https://github.com/WebBamboo/
@@ -25,7 +26,7 @@ tags: ["web applications"]
 aliases: ['/development/javascript/how-to-create-and-use-single-file-components-vuejs/']
 ---
 
-When first learning VueJS, and when using it for smaller projects, you will likely use [regular, globally-defined components](/docs/development/javascript/how-to-build-and-use-vuejs-components/). Once your project grows and you start needing more structure and flexibility, *single file components* can be a better option.
+When first learning VueJS, and when using it for smaller projects, you will likely use [regular, globally-defined components](/docs/guides/how-to-build-and-use-vuejs-components/). Once your project grows and you start needing more structure and flexibility, *single file components* can be a better option.
 
 Below you can see an example of a barebones single file component, which we will examine part-by-part later in the guide:
 
@@ -72,9 +73,9 @@ You can [download all of the example files for this guide here](vuejs-single-fil
 
 ## Before You Begin
 
-If you haven’t read our [Building and Using VueJS Components](/docs/development/javascript/how-to-build-and-use-vuejs-components/) already, go take a look.
+If you haven’t read our [Building and Using VueJS Components](/docs/guides/how-to-build-and-use-vuejs-components/) already, go take a look.
 
-Make sure you have Node.js installed. If you don’t, our [How to Install Node.js](/docs/development/nodejs/how-to-install-nodejs/) guide outlines different installation options.
+Make sure you have Node.js installed. If you don’t, our [How to Install Node.js](/docs/guides/how-to-install-nodejs/) guide outlines different installation options.
 
 ## What are Single File Components
 
@@ -340,7 +341,7 @@ export default {
 This is a simple single file component relatively similar to the example we discussed above, but this example shows how to import and use components:
 
 -   On line 9, the `HelloWorld` component is imported.
--   On lines 12-14, the `HelloWorld` component is [*locally registered*](https://vuejs.org/v2/guide/components-registration.html#Local-Registration) for use within the `App` component. The registered component can only be used in the template of the parent component that registered it. Contrast this with the components in [Building and Using VueJS Components](/docs/development/javascript/how-to-build-and-use-vuejs-components/), which were [*globally registered*](https://vuejs.org/v2/guide/components-registration.html#Global-Registration).
+-   On lines 12-14, the `HelloWorld` component is [*locally registered*](https://vuejs.org/v2/guide/components-registration.html#Local-Registration) for use within the `App` component. The registered component can only be used in the template of the parent component that registered it. Contrast this with the components in [Building and Using VueJS Components](/docs/guides/how-to-build-and-use-vuejs-components/), which were [*globally registered*](https://vuejs.org/v2/guide/components-registration.html#Global-Registration).
 
     {{< note >}}
 Local registration is a valuable architectural feature for reusable components within big projects.
@@ -350,7 +351,7 @@ Local registration is a valuable architectural feature for reusable components w
 
 ## Building your First Single File Components
 
-Now that we’ve covered the basic structure of the project created by Vue CLI, let's build our own components on top of that. As in [Building and Using VueJS Components](/docs/development/javascript/how-to-build-and-use-vuejs-components/), we will again be building a rating application, but this time it will be a little more sophisticated.
+Now that we’ve covered the basic structure of the project created by Vue CLI, let's build our own components on top of that. As in [Building and Using VueJS Components](/docs/guides/how-to-build-and-use-vuejs-components/), we will again be building a rating application, but this time it will be a little more sophisticated.
 
 This is what your rating app will look like:
 

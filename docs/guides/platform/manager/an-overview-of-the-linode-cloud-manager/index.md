@@ -3,8 +3,7 @@ slug: an-overview-of-the-linode-cloud-manager
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide provides an overview of the Linode Cloud Manager. You will find information about each section of the Cloud Manager, specific features that you may need help finding, and settings that might make your overall Cloud Manager experience better.'
-og_description: 'This guide provides an overview of the Linode Cloud Manager. You will find information about each section of the Cloud Manager, specific features that you may need help finding, and settings that might make your overall Cloud Manager experience better.'
+description: "This guide provides you with an overview of the Linode Cloud Manager and covers how to locate features within Cloud Manager, create Linodes and more."
 keywords: ["classic manager","cloud manager","linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/manager/a-classic-to-cloud-manager-overview-guide/','/platform/manager/an-overview-of-the-linode-cloud-manager/']
@@ -13,8 +12,7 @@ modified: 2020-01-29
 modified_by:
   name: Linode
 image: AnOverviewoftheLinodeCloudManager.png
-title: 'An Overview of the Linode Cloud Manager'
-h1_title: 'An Overview of the Linode Cloud Manager'
+title: "An Overview of the Linode Cloud Manager"
 contributor:
   name: Linode
 tags: ["linode platform","cloud manager"]
@@ -121,9 +119,9 @@ Linode’s Cloud Manager and [API v4](/docs/api) allow you to create tags to hel
 
 ## Events and Activity Feeds
 
-Tasks performed using the Linode Cloud Manager or other account specific tools like Linode’s [CLI](/docs/guides/linode-cli/) or [API](https://www.linode.com/products/api/) will be logged to an individual Linode’s activity feed, or on your account’s [Events Page](https://cloud.linode.com/events). The events and activity pages are user accessible logs, or histories of events taking place on your account. They contain details regarding the most notable events affecting your Linodes, like reboots, shutdowns, migrations, and more.
+Tasks performed using the Linode Cloud Manager or other account specific tools like Linode’s [CLI](/docs/products/tools/cli/get-started/) or [API](https://www.linode.com/products/api/) will be logged to an individual Linode’s activity feed, or on your account’s [Events Page](https://cloud.linode.com/events). The events and activity pages are user accessible logs, or histories of events taking place on your account. They contain details regarding the most notable events affecting your Linodes, like reboots, shutdowns, migrations, and more.
 
-For more details, see the [Understanding the Cloud Manager Events and Activity Feeds](/docs/guides/what-are-the-cloud-manager-events-and-activity-feeds/) guide.
+For more details, see the [Understanding Events and Activity Feeds](/docs/guides/cloud-manager-events-and-activity-feeds/) guide.
 
 ## My Profile
 
@@ -135,15 +133,19 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 - [Enabling Third Party Authentication (TPA)](/docs/guides/third-party-authentication/)
 - Managing trusted devices
 - [Adding and managing public SSH keys](/docs/guides/use-public-key-authentication-with-ssh/#upload-your-ssh-key-to-the-cloud-manager)
-- [Managing LISH authentication methods](/docs/guides/using-the-linode-shell-lish/#add-your-public-key)
-- [Add and manage personal and third party API v4 access tokens](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token)
+- [Managing LISH authentication methods](/docs/guides/using-the-lish-console/#add-your-public-key)
+- [Adding and managing personal and third party API v4 access tokens](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token)
 - [Creating and managing OAuth Apps](/docs/guides/how-to-create-an-oauth-app-with-the-linode-python-api-library/#obtaining-a-client-id-and-a-client-secret)
-- [Access Linode referral codes](/docs/guides/how-linode-billing-works/#referral-credits)
+- [Accessing Linode referral codes](/docs/guides/understanding-billing-and-payments/#referral-credits)
 - Enable email alerts for account activity
 
 ### API Keys / API Tokens
 
 {{< content "cloud-api-keys-shortguide" >}}
+
+{{< note >}}
+Currently, Cloud Firewall permissions can not be set for Personal Access Tokens using the Linode Cloud Manager and the Linode API should be used directly for this purpose. For more information, see our [API documentation](/docs/api/profile/#personal-access-tokens-list) and our guide on [Getting Started With Cloud Firewall](http://localhost:1313/docs/guides/getting-started-with-cloud-firewall/#limiting-user-access-to-cloud-firewalls-with-the-linode-api)
+{{< /note >}}
 
 ### OAuth Apps
 
@@ -169,4 +171,4 @@ Cloud Manager provides a Dark Mode that you can toggle on and off depending on y
 
 The Linode Cloud Manager has been built with accessibility in mind. Currently, the Cloud Manager is actively being developed to achieve [WCAG 2.0 Level AA](https://www.w3.org/TR/WCAG20/).
 
-We have received a lot of helpful feedback from our users regarding accessibility. While we have addressed a lot of your feedback, this is still a work in progress and will be iterated upon with time. Please contact feedback@linode.com with any comments or requests regarding accessibility.
+We have received a lot of helpful feedback from our users regarding accessibility. While we have addressed a lot of your feedback, this is still a work in progress and will be iterated upon with time. If you have comments or requests regarding accessibility, let us know by filling out our [feedback form](https://www.linode.com/feedback/).

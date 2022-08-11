@@ -3,7 +3,7 @@ slug: set-up-a-hardened-openvpn-server
 author:
   name: Linode
   email: docs@linode.com
-description: 'Learn how to securely tunnel your traffic with OpenVPN and OpenSSL.'
+description: 'This guide provides you with instructions on setting up a hardened and secure OpenVPN server so you can securely tunnel your traffic from anywhere on any device.'
 keywords: ["openvpn", "vpn", "vpn tunnel", "openssl"]
 tags: ["networking","security","vpn","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -49,7 +49,7 @@ You can manage the OpenVPN environment in [two ways](https://openvpn.net/index.p
 
 For small applications, OpenVPN Access Server is the more streamlined and user-friendly solution. The free version allows up to two simultaneous users. Although each user can have as many client devices as they like, a user's clients will all have the same keys and certificates; more can be added by buying licensing. For more advanced configurations than what the GUI offers, you would still need to edit the VPN's configuration files.
 
-If you are interested in running OpenVPN Access Server on your Linode, see our guide: [Secure Communications with OpenVPN Access Server](/docs/networking/vpn/openvpn-access-server/). **The remainder of *this* guide will focus on manual configuration using OpenVPN Community Edition.**
+If you are interested in running OpenVPN Access Server on your Linode, see our guide: [Secure Communications with OpenVPN Access Server](/docs/guides/install-openvpn-access-server-on-linux/). **The remainder of *this* guide will focus on manual configuration using OpenVPN Community Edition.**
 
 
 ## Networking Configuration

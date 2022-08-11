@@ -3,7 +3,7 @@ slug: nodebalancer-reference-guide
 author:
   name: Christopher S. Aker
   email: caker@linode.com
-description: NodeBalancer Reference Guide
+description: 'This is the reference guide for Linode''s NodeBalancer service where you you can find information about settings, ports, configurations, protocols, and more.'
 keywords: ["load balancing", "nodebalancer"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/nodebalancers/reference/','/platform/nodebalancer/nodebalancer-reference-guide-new-manager/','/platform/nodebalancer/nodebalancer-reference-guide/','/linode-platform/nodebalancer-reference/','/platform/nodebalancer/nodebalancer-reference-guide-classic-manager/']
@@ -15,15 +15,13 @@ title: NodeBalancer Reference Guide
 tags: ["linode platform","networking"]
 ---
 
-![NodeBalancer Reference Guide](nodebalancer-reference-guide.png "NodeBalancer Reference Guide")
-
 This is the NodeBalancer reference guide. Please see the [NodeBalancer Getting Started Guide](/docs/platform/nodebalancer/getting-started-with-nodebalancers) for practical examples.
 
 ## Adding a NodeBalancer
 
 Click the NodeBalancers link in the sidebar, and then **Add a NodeBalancer**. You must choose the same location as your back-end Linodes for a given deployment.
 
-[![NodeBalancer page in Linode Cloud Manager](nodebalancer-rg-add-a-nodebalancer-small.png "NodeBalancer page in Linode Cloud Manager")](nodebalancer-rg-add-a-nodebalancer.png)
+![NodeBalancer page in Linode Cloud Manager](nodebalancer-rg-add-a-nodebalancer.png)
 
 ## NodeBalancer Settings
 
@@ -39,7 +37,7 @@ Click the NodeBalancers link in the sidebar, and then **Add a NodeBalancer**. Yo
 
 1.  Click on the **Configurations** tab:
 
-    [![NodeBalancer Configuration in Linode Cloud Manager](nodebalancer-rg-nodebalancer-config1-small.png "NodeBalancer Configuration in Linode Cloud Manager")](nodebalancer-rg-nodebalancer-config1.png)
+    ![NodeBalancer Configuration in Linode Cloud Manager](nodebalancer-rg-nodebalancer-config1.png)
 
 Each NodeBalancer config adds another port that the NodeBalancer will listen on. For instance, if you wish to balance both port 80 and 81, you'll need to add two configuration profiles to your NodeBalancer.
 
@@ -76,7 +74,7 @@ Currently, there are two available versions of Proxy Protocol, **v1** and **v2**
   - **v1**: Proxy Protocol v1 adds a human readable string to all requests.
   - **v2**: Proxy Protocol v2 adds a more efficient binary data header to all requests.
 
-For more information and instructions, see our guide on [Using Proxy Protocol with NodeBalancers](/docs/platform/nodebalancer/nodebalancer-proxypass-configuration/)
+For more information and instructions, see our guide on [Using Proxy Protocol with NodeBalancers](/docs/guides/nodebalancer-proxypass-configuration/)
 
 ### Algorithm
 
@@ -100,7 +98,7 @@ If you need Session Persistence it is our recommendation to utilize both the Sou
 
 If you select the HTTPS protocol, the **Certificate** and **Private Key** fields will appear.
 
-[![The NodeBalancer Certificate and Private Key fields.](nodebalancer-rg-ssl.png)](nodebalancer-rg-ssl.png)
+![The NodeBalancer Certificate and Private Key fields.](nodebalancer-rg-ssl.png)
 
 Copy your certificate into the **Certificate** field. If you have chained certificates, you can copy all of them into the text field, one after the other.
 
@@ -108,6 +106,9 @@ Copy your passphraseless private key into the **Private Key** field.
 
 You can [purchase an SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) or [create your own](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
 
+{{< note >}}
+Linode's NodeBalancer's only support encryption for SSL/TLS certificates using TLS version 1.2 and above. TLS versions 1.0 and 1.1 are not supported.
+{{< /note >}}
 ### TLS Cipher Suites
 
 If your NodeBalancer must support users accessing your application with older browsers such as Internet Explorer 6-8, you should select the **Legacy** option, which sets the following cipher suite profile:
@@ -152,7 +153,7 @@ Three different Health Check Types exist:
 
 ## Nodes
 
-[![NodeBalancer Configuration in Linode Cloud Manager](nodebalancer-rg-nodebalancer-config2-small.png "NodeBalancer Configuration in Linode Cloud Manager")](nodebalancer-rg-nodebalancer-config2.png)
+![NodeBalancer Configuration in Linode Cloud Manager](nodebalancer-rg-nodebalancer-config2.png)
 
 NodeBalancers work over the private network. Backend nodes must have a private IP configured via [static networking](/docs/networking/configuring-static-ip-interfaces).
 

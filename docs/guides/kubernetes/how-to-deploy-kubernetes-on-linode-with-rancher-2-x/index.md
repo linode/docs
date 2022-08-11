@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 title: 'How to Deploy Kubernetes on Linode with Rancher'
 h1_title: 'Deploying Kubernetes on Linode with Rancher'
-aliases: ['/applications/containers/how-to-deploy-apps-with-rancher-2-3/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/how-to-deploy-apps-with-rancher/','/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/']
+aliases: ['/applications/containers/how-to-deploy-apps-with-rancher-2-3/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/how-to-deploy-apps-with-rancher/','/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/']
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
@@ -60,19 +60,20 @@ You may need to update your local Rancher installation to see the Linode node dr
 
 The Rancher web application will run on a Linode in your Cloud Manager account. Create and prepare the Linode that will run Rancher:
 
-1.  Create a Linode running Ubuntu 18.04 in the data center of your choice. Follow the [Getting Started](/docs/getting-started/) guide for instructions on setting up your server. It is recommended that you create a 2GB Linode or larger.
+1.  Create a Linode running Ubuntu 18.04 in the data center of your choice. Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide for instructions on setting up your server. It is recommended that you create a 2GB Linode or larger.
 
     {{< note >}}
 You will be able to create Kubernetes clusters in any Linode data center from the Rancher UI, even if your Rancher Linode is located in a different region.
 {{< /note >}}
 
-1.  The Rancher web application is run inside a Docker container, so you will also need to install Docker CE on your Linode. Follow the instructions for [installing Docker CE on Ubuntu 18.04](/docs/applications/containers/install-docker-ce-ubuntu-1804) and then return to this guide.
+1.  The Rancher web application is run inside a Docker container, so you will also need to install Docker CE on your Linode. Follow the instructions for [Installing and Using Docker on Ubuntu and Debian
+](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) and then return to this guide.
 
 You will also need to generate an API token and prepare a domain zone:
 
 1.  Rancher will need a Linode APIv4 token with read and write privileges from your Linode account in order to create your cluster. Review the instructions from the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) guide to get a token.
 
-1.  The [Set Up DNS](#set-up-dns-for-the-wordpress-app) section of this guide will assign an address to this guide's example app. In order to do so, you must already have a domain zone created in the Linode Cloud Manager. If you do not have a zone created, review the instructions from our [DNS Manager](/docs/platform/manager/dns-manager/#create-and-manage-domains) guide.
+1.  The [Set Up DNS](#set-up-dns-for-the-wordpress-app) section of this guide will assign an address to this guide's example app. In order to do so, you must already have a domain zone created in the Linode Cloud Manager. If you do not have a zone created, review the instructions from our [DNS Manager](/docs/guides/dns-manager/#create-and-manage-domains) guide.
 
     {{< note >}}
 If you haven't purchased a domain name, then you can read along with the DNS section of this guide without implementing it in your own cluster.
@@ -126,13 +127,13 @@ The main interface for navigating Rancher is via the blue navigation bar that sp
 
 Rancher includes two kinds of integrations with hosting providers:
 
--   A [*cluster driver*](https://rancher.com/docs/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/) allows Rancher to create and administer a cloud host-launched Kubernetes cluster. In a host-launched Kubernetes cluster, your hosting platform operates the new cluster's control plane and etcd components, while you provision and configure your worker nodes (via Rancher as well). The LKE cluster driver is required to create clusters on Rancher powered by [LKE](https://www.linode.com/docs/products/compute/kubernetes/).
+-   A [*cluster driver*](https://rancher.com/docs/rancher/v2.x/en/admin-settings/drivers/cluster-drivers/) allows Rancher to create and administer a cloud host-launched Kubernetes cluster. In a host-launched Kubernetes cluster, your hosting platform operates the new cluster's control plane and etcd components, while you provision and configure your worker nodes (via Rancher as well). The LKE cluster driver is required to create clusters on Rancher powered by [LKE](/docs/products/compute/kubernetes/).
 
 -   A [*node driver*](https://rancher.com/docs/rancher/v2.x/en/admin-settings/drivers/node-drivers/) allows Rancher to create and administer a Rancher-launched Kubernetes cluster. Rancher will directly provision your control plane and etcd nodes along with your worker nodes. Your cloud host does not manage your control plane and etcd components.
 
 ## Deploy an LKE Cluster on Rancher
 
-The (Linode Kubernetes Engine)[https://www.linode.com/docs/products/compute/kubernetes/] is a fully-managed orchestration Engine that can simplify the management of Kubernetes on Linode, capable of being supported by the Rancher platform. If an unmanaged option for Kubernetes is preferred, skip to the Deploying an [Unmanaged Kubernetes Cluster](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/#the-linode-node-driver-for-rancher) section.
+The [Linode Kubernetes Engine](/docs/products/compute/kubernetes/) is a fully-managed orchestration Engine that can simplify the management of Kubernetes on Linode, capable of being supported by the Rancher platform. If an unmanaged option for Kubernetes is preferred, skip to the Deploying an [Unmanaged Kubernetes Cluster](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/#the-linode-node-driver-for-rancher) section.
 
 ### The LKE Cluster Driver for Rancher
 
@@ -166,7 +167,7 @@ Once Rancher been installed and the cluster driver has been activated, a new LKE
 
    ![Cluster Name Token](cluster-name-token.png "Cluster Name Token")
 
-1. Select the `Region` where the new cluster to be hosted, the `Kubernetes Version` the cluster will use, and any `tags` you would like to apply, along with any Cloud Manager [tags](/docs/quick-answers/linode-platform/tags-and-groups/) you’d like to apply to your nodes. Click on the `Proceed to Node Pool Selection` button to proceed.
+1. Select the `Region` where the new cluster to be hosted, the `Kubernetes Version` the cluster will use, and any `tags` you would like to apply, along with any Cloud Manager [tags](/docs/guides/tags-and-groups/) you’d like to apply to your nodes. Click on the `Proceed to Node Pool Selection` button to proceed.
 
     ![Tags Regions and Version](tags-region-version-lke.png "Tags Region and Version")
 
@@ -207,7 +208,7 @@ The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Cont
 ### Add a Node Template
 
 {{< note >}}
-Nodes created using Rancher are dependent on the [Network Helper](/docs/platform/network-helper/) configuration option being enabled. Due to this, all nodes created using Rancher will have the Network Helper service enabled by default regardless of account wide settings, and disabling the service manually is not recommended.
+Nodes created using Rancher are dependent on the [Network Helper](/docs/guides/network-helper/) configuration option being enabled. Due to this, all nodes created using Rancher will have the Network Helper service enabled by default regardless of account wide settings, and disabling the service manually is not recommended.
 {{< /note >}}
 
 
@@ -230,7 +231,7 @@ Before provisioning your cluster, you will need to add the node template it will
 
 1. Click on the **Create** button.
 
-1. Another dialog will appear which accepts options for your new node template. Under the **Instance Options** section, set the preferred region, instance type, and Linux image for your nodes, along with any Cloud Manager [tags](/docs/quick-answers/linode-platform/tags-and-groups/) you’d like to apply to your nodes.
+1. Another dialog will appear which accepts options for your new node template. Under the **Instance Options** section, set the preferred region, instance type, and Linux image for your nodes, along with any Cloud Manager [tags](/docs/guides/tags-and-groups/) you’d like to apply to your nodes.
 
     ![Rancher Add Node Template form - Linode options](add-node-template-linode-options.png "The Linode options in the Add Node Template form")
 
@@ -343,7 +344,7 @@ Instead, compare your YAML file with the completed example to ensure you have in
     ![Linode Cloud Manager - new cluster nodes](cloud-manager-linodes-provisioning.png "New cluster nodes listed in Linode Cloud Manager")
 
     {{< note >}}
-If your nodes do not not appear in the Linode Cloud Manager as expected, then you may have run into a limit on the number of resources allowed on your Linode account. Contact [Linode Support](/docs/platform/billing-and-support/support/) if you believe this may be the case.
+If your nodes do not appear in the Linode Cloud Manager as expected, then you may have run into a limit on the number of resources allowed on your Linode account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
 {{< /note >}}
 
 ## Explore the New Cluster
@@ -461,7 +462,7 @@ Avoid using symbols in the password you enter, as some symbols can cause syntax 
     These settings will result in your database deployment keeping its data in a Linode Block Storage Volume.
 
     {{< note >}}
-The default value for the **MariaDB Volume Size** field is 8GiB, but the minimum size for a Block Storage Volume is 10Gib. The Linode CSI will automatically upgrade any persistent volume claims that are smaller than 10GiB to 10GiB.
+The default value for the **MariaDB Volume Size** field is 8GB, but the minimum size for a Block Storage Volume is 10GB. The Linode CSI will automatically upgrade any persistent volume claims that are smaller than 10GB to 10GB.
 {{< /note >}}
 
 1.  In the **Services and Load Balancing** section, set **Expose app using Layer 7 Load Balancer** to **False**, then choose the **L4 Balancer** option from the **WordPress Service Type** dropdown menu:
@@ -529,7 +530,7 @@ metadata:
 
 1.  It may take some time for Linode's DNS database to update, so if you don't see the record show up in the Cloud Manager immediately, try refreshing it after a few minutes.
 
-    After the record becomes visible in the Cloud Manager, it can also take time for the DNS change to [propagate](/docs/platform/manager/dns-manager/#wait-for-propagation) to your local ISP. After the DNS change has propagated, you should be able to view your WordPress app by navigating to the address you set up.
+    After the record becomes visible in the Cloud Manager, it can also take time for the DNS change to propagate to your local ISP. After the DNS change has propagated, you should be able to view your WordPress app by navigating to the address you set up.
 
 ## Scaling your Cluster and App
 

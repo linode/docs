@@ -3,7 +3,7 @@ slug: beginners-guide-to-go
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'An introduction to the Go language. Learn how to execute your first Go program, how to declare variables, and how to work with command line arguments from Go.'
+description: 'This guide will introduce you to the Go programming language and will also instruct you on how you can create and run your first program and more.'
 keywords: ['golang','go','command line arguments']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-11
@@ -83,7 +83,7 @@ func main() {
 * Executable programs should have a function named `main()` without any function parameters. You cannot have multiple `main()` functions in the files of a single project. Function definitions begin with the `func` keyword.
 
     {{< note >}}
-For more information on how functions in Go are formatted and used, review our [Go Functions, Loops, and Errors](/docs/development/go/learning-go-functions-loops-and-errors-a-tutorial/) tutorial.
+For more information on how functions in Go are formatted and used, review our [Go Functions, Loops, and Errors](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/) tutorial.
 {{< /note >}}
 
 * Go packages might include `import` statements for importing other Go packages. However, Go demands that you use some functionality from each one of the packages that you import. There is a way to bypass this rule, however, it is considered a bad practice to do this.
@@ -330,7 +330,7 @@ Max: 3
 
 ## Next Steps
 
-The next guide in our Go language series is our [Go Functions, Loops, and Errors](/docs/development/go/learning-go-functions-loops-and-errors-a-tutorial/) tutorial. More advanced guides are listed in the [Go section index](/docs/development/go/).
+The next guide in our Go language series is our [Go Functions, Loops, and Errors](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/) tutorial. More advanced guides are listed in the [Go section index](/docs/development/go/).
 
 ### The Standard Go Library
 

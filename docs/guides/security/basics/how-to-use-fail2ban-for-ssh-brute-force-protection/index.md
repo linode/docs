@@ -2,8 +2,7 @@
 slug: how-to-use-fail2ban-for-ssh-brute-force-protection
 author:
   name: Hackersploit
-description: 'Fail2Ban is an intrusion prevention framework written in Python that protects Linux systems and servers from brute-force attacks. You can setup Fail2Ban to provide brute-force protection for SSH on your server.'
-og_description: 'Fail2Ban is an intrusion prevention framework written in Python that protects Linux systems and servers from brute-force attacks. You can setup Fail2Ban to provide brute-force protection for SSH on your server.'
+description: "Fail2Ban is an intrusion prevention framework that protects Linux systems and servers from brute-force attacks. Learn how it can do the same for SSH."
 keywords: ["using fail2ban for SSH brute-force protection", "brute-force protection with fail2ban"]
 tags: ["monitoring","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +10,10 @@ modified: 2020-10-13
 modified_by:
   name: Linode
 published: 2020-10-13
-title: How to Use Fail2Ban for SSH Brute-force Protection
-h1_title: Using Fail2Ban for SSH Brute-force Protection
-image: "SSH_brute_force_protection_Fail2Ban.png"
+title: "How to Use Fail2Ban for SSH Brute-force Protection"
+h1_title: "Using Fail2Ban for SSH Brute-force Protection"
+enable_h1: true
+image: fail2ban_bruteforceprotection.png
 aliases: ['/security/basics/how-to-use-fail2ban-for-ssh-brute-force-protection/']
 ---
 
@@ -29,7 +29,7 @@ This guide uses Ubuntu, but the commands are similar for other systems.
 
 1.  Complete the [Getting Started](/docs/getting-started) guide.
 
-1.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, and harden SSH access, but do not create a basic firewall.
+1.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, and harden SSH access, but do not create a basic firewall.
 
 1.  Log into your Linode via SSH and update and upgrade.
 
@@ -204,4 +204,4 @@ You have successfully been able to set up, implement, test, and analyze Fail2Ban
 
 ## Next Steps
 
-For more detailed information on Fail2Ban, including setting up email alerts and writing regular expressions to filter and parse log files, see the [Using Fail2ban to Secure Your Server - A Tutorial](/docs/security/basics/using-fail2ban-to-secure-your-server-a-tutorial/) guide.
+For more detailed information on Fail2Ban, including setting up email alerts and writing regular expressions to filter and parse log files, see the [Using Fail2ban to Secure Your Server - A Tutorial](/docs/guides/set-up-and-secure/#use-fail2ban-for-ssh-login-protection) guide.

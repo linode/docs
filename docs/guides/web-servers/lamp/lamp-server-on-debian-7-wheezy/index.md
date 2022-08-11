@@ -23,6 +23,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Debian 7
+deprecated: true
 ---
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack on a Debian 7 (Wheezy) Linode.

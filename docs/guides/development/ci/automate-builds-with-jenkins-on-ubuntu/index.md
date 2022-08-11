@@ -22,24 +22,15 @@ external_resources:
  - '[Blue Ocean Documentation](https://jenkins.io/doc/book/blueocean/)'
 audiences: ["intermediate"]
 dedicated_cpu_link: true
-relations:
-    platform:
-        key:  automate-builds-jenkins
-        keywords:
-            - distribution: Ubuntu 16.04
 ---
 
 [Jenkins](https://jenkins.io) is an open-source automation server that allows you to build pipelines to automate the process of building, testing, and deploying applications. In this guide, you will implement a basic workflow to speed up your Continuous Integration and Continuous Delivery (CI/CD) process.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode’s hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
-
-3.  Update your system (this guide uses Ubuntu 16.04):
-
-        sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -57,7 +48,7 @@ This guide is oriented toward DevOps professionals and thus presumes:
 
 4.  Jenkins will be used mainly through the newer [Blue Ocean](https://jenkins.io/projects/blueocean/) web interface.
 
-5.  The workstation and remote Linode will each need Docker installed beforehand. See our guide on [how to install docker images](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/) for detailed instructions.
+5.  The workstation and remote Linode will each need Docker installed beforehand. See our guide on [how to install docker images](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) for detailed instructions.
 
 6.  For the purpose of this guide, only a Jenkins master server will be used.
 

@@ -2,10 +2,10 @@
 {{ $images := $.Resources.ByType "image" }}
 {{- with $.Params.image }}
   {{ $ref := "" }}
-  {{ if reflect.IsSlice .}}
+  {{ if reflect.IsSlice . }}
     {{ $ref = (index . 0) }}
   {{ else }}
-    {{ $ref = .}}
+    {{ $ref = . }}
   {{ end }}
   {{ $featured := $images.GetMatch $ref }}
   {{ if $featured }}
@@ -20,6 +20,14 @@
   {{ end }}
   {{ with $featured }}
     {{ $img = dict "img" $featured "isResource" true }}
+  {{ end }}
+{{ end }}
+{{ if not $img.img }}
+  {{/* Make sure we always find an image. */}}
+  {{ if $images }}
+    {{ $img = dict "img" (index $images 0) "isResource" true }}
+  {{ else }}
+    {{ $img = dict "img" (resources.Get "images/Linode-Default-416x234.jpg") "isResource" true }}
   {{ end }}
 {{ end }}
 {{ return $img }}
