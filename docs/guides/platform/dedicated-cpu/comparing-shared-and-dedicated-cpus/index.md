@@ -7,7 +7,7 @@ description: "A collection of diagnostic tasks that identify the potential for b
 keywords: ["dedicated cpu", "use cases", "linode cpu", "machine learning", "big data"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
-modified: 2022-08-10
+modified: 2022-08-12
 modified_by:
   name: Linode
 title: "Choosing Between Shared and Dedicated CPUs on the Linode Platform"
@@ -30,7 +30,7 @@ The following chart outlines the key differences between shared CPUs and dedicat
 | **Maximum *burst* CPU utilization** | 100% | 100% |
 | **CPU contention** | Can be expected during peak usage. | No. |
 | **Recommended Use Cases** | Best for development servers, staging servers, low traffic websites, personal blogs, and production applications that may not be affected by resource contention. | Best for production websites, enterprise applications, high traffic databases, and any application that requires 100% sustained CPU usage or may be impacted by resource contention. |
-| **Plans** | [Shared CPU]() | [Dedicated CPU](), [High Memory](), [GPU]()
+| **Plans** | [Shared CPU](/docs/products/compute/shared-cpu/) | [Dedicated CPU](/docs/products/compute/dedicated-cpu/), [High Memory](/docs/products/compute/high-memory/), [GPU](/docs/products/compute/gpu/) |
 
 ## How Physical CPU Cores Are Managed on Virtual Machines
 
@@ -42,7 +42,7 @@ In a **Dedicated CPU** environment, virtual CPU cores on a Compute Instances are
 
 ## When to Choose Shared or Dedicated CPUs
 
-**Shared CPUs** help make cloud services more affordable, especially for workloads that are not CPU intensive and when consistently high CPU performance is needed. Workloads suited to Shared CPU instances include development servers, staging servers, low traffic websites, personal blogs, and production applications that may not be affected by resource contention. See [Shared CPU > Recommended Workloads](/docs/products/compute/shared-cpu/#recommended-workloads)
+**Shared CPUs** are more affordable and thus may provide a higher value, especially for workloads that are not CPU intensive and when consistently high CPU performance is not needed. Workloads suited to Shared CPU instances include development servers, staging servers, low traffic websites, personal blogs, and production applications that may not be affected by resource contention. See [Shared CPU > Recommended Workloads](/docs/products/compute/shared-cpu/#recommended-workloads).
 
 **Dedicated CPUs** are recommended for most production applications and any application that requires 100% sustained usage or might be impacted by resource contention. This includes eCommerce sites, business applications, game servers, CI/CD toolchains, audio and video transcoding, machine learning, scientific computing, high traffic databases, and much more. For more information on these use cases and whether or not your use case may be a good fit for Dedicated CPU, see our guide on [Use Cases for Dedicated CPU](/docs/guides/dedicated-cpu-use-cases/).
 
