@@ -7,6 +7,7 @@ description: 'This short-guide will provide you with step-by-step instructions o
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-08
+modified: 2022-08-11
 modified_by:
   name: Linode
 title: "How to Install kubectl"
@@ -22,16 +23,15 @@ tags: ["kubernetes"]
 
 Install via [Homebrew](https://brew.sh):
 
-    brew install kubernetes-cli
+    brew install kubectl
 
 If you don't have Homebrew installed, visit the [Homebrew](https://brew.sh) home page for instructions. Alternatively, you can manually install the binary; visit the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-macos) for instructions.
-
 
 **Linux:**
 
 1.  Download the latest kubectl release:
 
-        curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 
 1.  Make the downloaded file executable:
 
