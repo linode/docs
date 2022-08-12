@@ -5,6 +5,7 @@ author:
 title: "Database Engines and Plans"
 description: "Learn the differences between the database engines offered by Linode's Managed Database service."
 published: 2022-06-06
+modified: 2022-08-09
 ---
 
 When deploying a Managed Database, you are able to select from a variety of database engines and plans. While each database engine enables you to store data, application compatibility and the way in which they store and access data can vary greatly. This guide aims to provide more information on each database engine, the reasons you might choose one over the other, and advice on selecting an appropriate plan size.
@@ -82,3 +83,7 @@ Each Managed Database can be deployed with a specific set of resources. This col
 [Dedicated CPU Instances](/docs/products/compute/dedicated-cpu/) reserve physical CPU cores that you can utilize at 100% load 24/7 for as long as you need. This provides competition free guaranteed CPU resources and ensures your software can run at peak speed and efficiency. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations. These instances offer a perfectly balanced set of resources for most production applications.
 
 *Best for production websites, enterprise applications, high traffic databases, and any application that requires 100% sustained CPU usage or may be impacted by resource contention.*
+
+{{< note >}}
+Once a Managed Database cluster is created, it cannot be resized to a different plan. To modify the resources allocated to your database, you will need to create a new Managed Database with the desired plan, migrate your data, and delete the original Managed Database.
+{{</ note >}}
