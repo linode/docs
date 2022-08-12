@@ -10,7 +10,7 @@ published: 2021-01-12
 image: InstallandUseNVM.png
 modified: 2022-08-12
 modified_by:
-  name: Linde
+  name: Linode
 title: "How to Install and Use NVM (Node Version Manager)"
 h1_title: "Installing and Using NVM (Node Version Manager)"
 enable_h1: true
