@@ -18,7 +18,11 @@ contributor:
 
 SQL Server security is perhaps one of the most overlooked facets of database server maintenance. Without taking the necessary precautions, an instance of SQL Server can be ripe for abuse and failure.
 
-The [SQL Database Security: User Management](/docs/guides/sql-security/) guide discussed the logical implementation of users, groups, roles, and permissions, to enhance, or limit database user security. The part one of the SQL Security Best Practices guide discusses a variety of important additional maintenance security topics.
+The [SQL Database Security: User Management](/docs/guides/sql-security/) guide discussed the logical implementation of users, groups, roles, and permissions, to enhance, or limit database user security. This guide is part one in a series of SQL Server security best practices, and it discusses a variety of important additional maintenance security topics.
+
+{{< note >}}
+To review the second set of security recommendations in this series, visit [Part 2: SQL Server Security Best Practices](/docs/guides/sql-server-security-part-2/).
+{{< /note >}}
 
 ## SQL Server Security: Infrastructure
 
@@ -96,4 +100,6 @@ Specifically, there are two types of data masking supported by SQL Server:
 
 ## Conclusion
 
-Database security is an extremely important part of database design, operations, and maintenance. It includes things such as physical security, operating system and application maintenance, disabling of superfluous features, port maintenance, encryption, and data masking. Collectively, and if addressed properly, these measures help keep a SQL Server database free from attack,operationally sound, and ensure database integrity.
+Database security is an extremely important part of database design, operations, and maintenance. It includes things such as physical security, operating system and application maintenance, disabling of superfluous features, port maintenance, encryption, and data masking. Collectively, and if addressed properly, these measures help keep a SQL Server database free from attack, operationally sound, and ensure database integrity.
+
+This guide was the first in a series of articles concerning SQL Server security best practices. Visit [Part 2: SQL Server Security Best Practices](/docs/guides/sql-server-security-part-2/) for the next security recommendations in this series.

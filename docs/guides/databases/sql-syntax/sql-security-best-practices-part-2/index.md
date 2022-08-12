@@ -19,7 +19,7 @@ contributor:
 
 This guide is the second in a series of articles that covers SQL Server security best practices. [Part 1 of this series](/docs/guides/sql-server-security/) discussed a SQL Server installation's physical security, operating system security, and application maintenance. Additionally, the previous guide outlined how to disable unnecessary features, enable encryption, and implement data masking.
 
-This guide describes how and why you should:
+The second part of this series describes how and why you should:
 
 - Choose an [authentication mode](#sql-server-authentication),
 
@@ -132,4 +132,4 @@ Hardware and/or software firewall logs (that is, external to SQL Server) should 
 
 ## Conclusion
 
-In part two of this article series, you reviewed additional methods of enhancing the security of SQL Server databases. These included [choosing an authentication mode](#sql-server-authentication), [restricting the System Administrator account](#system-administrator-sa-account), [assignment of security-friendly accounts to SQL Server](#high-privileged-operating-system-accounts), [restricting SQL traffic](#restrict-sql-traffic), [application of patch updates](#sql-server-patches-service-packs), [backup strategies](#backups), and [use of auditing](#auditing). To review earlier security recommendations, revisit [Part 1: SQL Server Security Best Practices](/sql-server-security/).
+In part two of this article series, you reviewed additional methods of enhancing the security of SQL Server databases. These included choosing an [authentication mode](#sql-server-authentication), restricting the [System Administrator account](#system-administrator-sa-account), assignment of [security-friendly accounts]((#high-privileged-operating-system-accounts)) to SQL Server, [restricting SQL traffic](#restrict-sql-traffic), application of [patch updates](#sql-server-patches-service-packs), [backup strategies](#backups), and use of [auditing](#auditing). To review earlier security recommendations, revisit [Part 1: SQL Server Security Best Practices](/docs/guides/sql-server-security/).
