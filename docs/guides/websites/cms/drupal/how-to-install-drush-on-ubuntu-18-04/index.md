@@ -38,7 +38,7 @@ Before installing Drush, ensure that the following prerequisites have been met:
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Install and configure a [LAMP stack on Ubuntu 18.04](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/)
+1.  Install and configure a [LAMP stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/)
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -46,7 +46,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Git & Composer
 
-The developers of Drush recommend installing Drush using [Composer](https://getcomposer.org/doc/00-intro.md), a PHP dependency manager. Since the Drush project is hosted on [GitHub](https://github.com/) and controlled with [Git](/docs/development/version-control/how-to-configure-git/), you will also need to install Git. In this section, you will install both dependencies.
+The developers of Drush recommend installing Drush using [Composer](https://getcomposer.org/doc/00-intro.md), a PHP dependency manager. Since the Drush project is hosted on [GitHub](https://github.com/) and controlled with [Git](/docs/guides/how-to-configure-git/), you will also need to install Git. In this section, you will install both dependencies.
 
 1.  Install Git:
 

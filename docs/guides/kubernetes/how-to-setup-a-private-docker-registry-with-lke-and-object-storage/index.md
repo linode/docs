@@ -10,10 +10,12 @@ tags: ["docker","kubernetes","container","nginx","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: PrivateDockerReg.png
 published: 2020-03-26
+modified: 2022-08-05
 modified_by:
-  name: Leslie Salazar
+  name: Linode
 title: "How to Set Up a Docker Registry with LKE and Object Storage"
 h1_title: "Setting Up a Private Docker Registry with LKE and Object Storage"
+enable_h1: true
 contributor:
   name: Leslie Salazar
   link: https://github.com/leslitagordita/
@@ -28,13 +30,15 @@ Hosting a private Docker registry alongside your Kubernetes cluster allows you t
 This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubernetes.io/docs/setup/release/notes/).
 {{</ note >}}
 
-1. [Deploy a LKE Cluster](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This example was written using a node pool with two [2 GB nodes](https://www.linode.com/pricing/). Depending on the workloads you will be deploying on your cluster, you may consider using nodes with higher resources.
+1. [Deploy a LKE Cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This example was written using a node pool with two [2 GB nodes](https://www.linode.com/pricing/). Depending on the workloads you will be deploying on your cluster, you may consider using nodes with higher resources.
 
-1. Install [Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm), [kubectl](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl), and [Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) to your local environment.
+1. Install [Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm), [kubectl](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl), and [Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) to your local environment.
 
     {{< note >}}
 For Docker installation instructions on other operating systems, see [Docker's official documentation](https://docs.docker.com/get-docker/).
     {{</ note >}}
+
+1. Configure kubectl to work with your new LKE cluster. See [Connect to your LKE Cluster with kubectl](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#connect-to-your-lke-cluster-with-kubectl).
 
 1. [Generate an Object Storage key pair](/docs/products/storage/object-storage/guides/access-keys/) and ensure you save it in a secure location. You will need the key pair for a later section in this guide. Finally [create an Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/) to store your registry's images. Throughout this guide, the example bucket name will be `registry`.
 
@@ -60,33 +64,31 @@ An [*Ingress*](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 
 In this section, you will install the NGINX Ingress Controller using Helm, which will create a [Linode NodeBalancer](https://www.linode.com/products/nodebalancers/) to handle your cluster's traffic.
 
-1. Add the stable Helm charts repository to your Helm repos:
+1.  Add the stable Helm charts repository to your Helm repos:
 
-        helm repo add stable https://charts.helm.sh/stable
+        helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
-1. Update your Helm repositories:
+1.  Update your Helm repositories:
 
         helm repo update
 
-1. Install the NGINX Ingress Controller. This installation will result in a Linode NodeBalancer being created.
+1.  Install the NGINX Ingress Controller. This installation will result in a Linode NodeBalancer being created.
 
-        helm install nginx-ingress stable/nginx-ingress
+        helm install ingress-nginx ingress-nginx/ingress-nginx
 
     You will see a similar output after issuing the above command (the output has been truncated for brevity):
 
     {{< output >}}
-NAME: my-nginx-ingress
-LAST DEPLOYED: Wed Apr  8 09:55:47 2020
+NAME: ingress-nginx
+LAST DEPLOYED: Thu Jul 14 19:27:24 2022
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
 TEST SUITE: None
 NOTES:
-*******************************************************************************************************
-* DEPRECATED, please use https://github.com/kubernetes/ingress-nginx/tree/master/charts/ingress-nginx *
-*******************************************************************************************************The nginx-ingress controller has been installed.
+The ingress-nginx controller has been installed.
 It may take a few minutes for the LoadBalancer IP to be available.
-You can watch the status by running 'kubectl --namespace default get services -o wide -w my-nginx-ingress-controller'
+You can watch the status by running 'kubectl --namespace default get services -o wide -w ingress-nginx-controller'
 ...
     {{</ output >}}
 
@@ -94,15 +96,15 @@ You can watch the status by running 'kubectl --namespace default get services -o
 
 ### Update your Subdomain's IP Address
 
-1. Access your NodeBalancer's assigned external IP address.
+1.  Access your NodeBalancer's assigned external IP address.
 
-        kubectl --namespace default get services -o wide -w nginx-ingress-controller
+        kubectl --namespace default get services -o wide -w ingress-nginx-controller
 
     The command will return a similar output:
 
     {{< output >}}
 NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)                      AGE     SELECTOR
-my-nginx-ingress-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/component=controller,app=nginx-ingress,release=my-nginx-ingress
+ingress-nginx-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/component=controller,app.kubernetes.io/instance=ingress-nginx,app.kubernetes.io/name=ingress-nginx
     {{</ output >}}
 
 1. Copy the IP address of the `EXTERNAL IP` field and navigate to Linode's DNS manager and [update your domain's' `registry` A record](/docs/guides/dns-manager/#add-dns-records) with the external IP address. Ensure that the entry's **TTL** field is set to **5 minutes**.
@@ -125,29 +127,27 @@ In this section you will install cert-manager using Helm and the required cert-m
 
 ### Install cert-manager
 
-1. Install cert-manager's CRDs.
+1.  Install cert-manager's CRDs.
 
         kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/latest/download/cert-manager.crds.yaml
 
-1. Create a cert-manager namespace.
+1.  Create a cert-manager namespace.
 
         kubectl create namespace cert-manager
 
-1. Add the Helm repository which contains the cert-manager Helm chart.
+1.  Add the Helm repository which contains the cert-manager Helm chart.
 
         helm repo add jetstack https://charts.jetstack.io
 
-1. Update your Helm repositories.
+1.  Update your Helm repositories.
 
         helm repo update
 
-1. Install the cert-manager Helm chart. These basic configurations should be sufficient for many use cases, however, additional cert-manager configurable parameters can be found in [cert-manager's official documentation](https://hub.helm.sh/charts/jetstack/cert-manager).
+1.  Install the cert-manager Helm chart. These basic configurations should be sufficient for many use cases, however, additional cert-manager configurable parameters can be found in [cert-manager's official documentation](https://hub.helm.sh/charts/cert-manager/cert-manager).
 
-        helm install \
-        cert-manager jetstack/cert-manager \
-        --namespace cert-manager \
+        helm install cert-manager jetstack/cert-manager --namespace cert-manager
 
-1. Verify that the corresponding cert-manager pods are now running.
+1.  Verify that the corresponding cert-manager pods are now running.
 
         kubectl get pods --namespace cert-manager
 
@@ -164,11 +164,11 @@ cert-manager-webhook-64869c4997-hnx6n      1/1     Running   0          1m
 
 Now that cert-manager is installed and running on your cluster, you will need to create a ClusterIssuer resource which defines which CA can create signed certificates when a certificate request is received. A ClusterIssuer is not a namespaced resource, so it can be used by more than one namespace.
 
-1. Create a directory named `registry` to store all of your Docker registry's related manifest files and move into the new directory.
+1.  Create a directory named `registry` to store all of your Docker registry's related manifest files and move into the new directory.
 
         mkdir ~/registry && cd ~/registry
 
-1. Using the text editor of your choice, create a file named `acme-issuer-prod.yaml` with the example configurations. Replace the value of `email` with your own email address.
+1.  Using the text editor of your choice, create a file named `acme-issuer-prod.yaml` with the example configurations. Replace the value of `email` with your own email address.
 
     {{< file "~/registry/acme-issuer-prod.yaml" >}}
 apiVersion: cert-manager.io/v1
@@ -196,7 +196,7 @@ Let's Encrypt provides a staging ACME server that can be used to test issuing tr
     - The value of `privateKeySecretRef.name` provides the name of a secret containing the private key for this user's ACME server account (this is tied to the email address you provide in the manifest file). The ACME server will use this key to identify you.
     - To ensure that you own the domain for which you will create a certificate, the ACME server will issue a challenge to a client. cert-manager provides two options for solving challenges, [`http01`](https://cert-manager.io/docs/configuration/acme/http01/) and [`DNS01`](https://cert-manager.io/docs/configuration/acme/dns01/). In this example, the `http01` challenge solver will be used and it is configured in the `solvers` array. cert-manager will spin up *challenge solver* Pods to solve the issued challenges and use Ingress resources to route the challenge to the appropriate Pod.
 
-1. Create the ClusterIssuer resource:
+1.  Create the ClusterIssuer resource:
 
         kubectl create -f acme-issuer-prod.yaml
 
@@ -204,7 +204,7 @@ Let's Encrypt provides a staging ACME server that can be used to test issuing tr
 
 After you have a ClusterIssuer resource, you can create a Certificate resource. This will describe your [x509 public key certificate](https://en.wikipedia.org/wiki/X.509) and will be used to automatically generate a [CertificateRequest](https://cert-manager.io/docs/concepts/certificaterequest/) which will be sent to your ClusterIssuer.
 
-1. Using the text editor of your choice, create a file named `certificate-prod.yaml` with the example configurations. Replace the value of `email` with your own email address. Replace the value of `spec.dnsNames` with your own domain that you will use to host your Docker registry.
+1.  Using the text editor of your choice, create a file named `certificate-prod.yaml` with the example configurations. Replace the value of `email` with your own email address. Replace the value of `spec.dnsNames` with your own domain that you will use to host your Docker registry.
 
     {{< file "~/registry/certificate-prod.yaml">}}
 apiVersion: cert-manager.io/v1
@@ -226,11 +226,11 @@ spec:
 The configurations in this example create a Certificate that is valid for 90 days and renews 15 days before expiry.
     {{</ note >}}
 
-1. Create the Certificate resource:
+1.  Create the Certificate resource:
 
         kubectl create -f certificate-prod.yaml
 
-1. Verify that the Certificate has been successfully issued:
+1.  Verify that the Certificate has been successfully issued:
 
         kubectl get certs
 
@@ -251,19 +251,19 @@ You will now complete the steps to deploy your Docker Registry to your Kubernete
 
 To enabled basic access restriction for your Docker registry, you will use the `htpasswd` utility. This utility allows you to use a file to store usernames and passwords for basic HTTP authentication. This will require you to log into your Docker registry prior to being able to push or pull images from and to it.
 
-1. Install the `htpasswd` utility. This example is for an Ubuntu 18.04 instance, but you can use your system's package manger to install it.
+1.  Install the `htpasswd` utility. This example is for an Ubuntu 18.04 instance, but you can use your system's package manger to install it.
 
         sudo apt install apache2-utils -y
 
-1. Create a file to store your Docker registry's username and password.
+1.  Create a file to store your Docker registry's username and password.
 
         touch my_docker_pass
 
-1. Create a username and password using `htpasswd`. Replace `example_user` with your own username. Follow the prompt to create a password.
+1.  Create a username and password using `htpasswd`. Replace `example_user` with your own username. Follow the prompt to create a password.
 
         htpasswd -B my_docker_pass example_user
 
-1. View the contents of your password file.
+1.  View the contents of your password file.
 
         cat my_docker_pass
 
@@ -277,7 +277,7 @@ example_user:$2y$05$8VhvzCVCB4txq8mNGh8eu.8GMyBEEeUInqQJHKJUD.KUwxastPG4m
 
 Your LKE Cluster will also need to authenticate to your Docker registry in order to pull images from it. In this section, you will create a Kubernetes [*Secret*](https://kubernetes.io/docs/concepts/configuration/secret/) that you can use to grant your cluster's kubelet with access to your registry's images.
 
-1. Create a secret to store your registry's authentication information. Replace the option values with your own registry's details. The `--docker-username` and `--docker-password` should be the username and password that you used when generating credentials using the `htpasswd` utility.
+1.  Create a secret to store your registry's authentication information. Replace the option values with your own registry's details. The `--docker-username` and `--docker-password` should be the username and password that you used when generating credentials using the `htpasswd` utility.
 
         kubectl create secret docker-registry regcred \
           --docker-server=registry.example.com \
@@ -289,11 +289,11 @@ Your LKE Cluster will also need to authenticate to your Docker registry in order
 
 Before deploying the Docker Registry Helm chart to your cluster, you will define some configurations so that the Docker registry uses the NGINX Ingress controller, your `registry` Object Storage bucket, and your cert-manager created TLS certificate. See the [Helm Chart's official documentation](https://helm.sh/docs/topics/registries/) for more information about registries.
 
-  {{< note >}}
+{{< note >}}
 If you have not yet [generated an Object Storage key pair](/docs/products/storage/object-storage/guides/access-keys/) and [created an Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/) to store your registry's images, do so now before continuing with the rest of this section.
   {{< / note >}}
 
-1. Create a new file named `docker-configs.yaml` using the example configurations. Ensure you replace the following values in your file:
+1.  Create a new file named `docker-configs.yaml` using the example configurations. Ensure you replace the following values in your file:
       - `ingress.hosts` with your own Docker registry's domain
       - `ingress.tls.secretName` with the name you used when [creating your Certificate](#create-a-certificate-resource)
       - `ingress.tls.hosts` with the domain for which you wish to secure with your TLS certificate.
@@ -332,11 +332,11 @@ s3:
 
       - The NGINX Ingress annotation `nginx.ingress.kubernetes.io/proxy-body-size: "0"` disables a [maximum allowed size client request body](http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size) check and ensures that you won't receive a `413` error when pushing larger Docker images to your registry. The values for `nginx.ingress.kubernetes.io/proxy-read-timeout: "6000"` and `nginx.ingress.kubernetes.io/proxy-send-timeout: "6000"` are sane values to begin with, but [may be adjusted as needed](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#custom-timeouts).
 
-1. Deploy your Docker registry using the configurations you created in the previous step:
+1.  Deploy your Docker registry using the configurations you created in the previous step:
 
         helm install docker-registry stable/docker-registry -f docker-configs.yaml
 
-1. Navigate to your registry's domain and verify that your browser loads the TLS certificate.
+1.  Navigate to your registry's domain and verify that your browser loads the TLS certificate.
 
     ![Verify that your Docker registry's site loads your TLS certificate](secure-docker-registry.png)
 
@@ -346,19 +346,19 @@ s3:
 
 You are now ready to push and pull images to your Docker registry. In this section you will pull an existing image from Docker Hub and then push it to your registry. Then, in the next section, you will use your registry's image to deploy an example static site.
 
-1. Use Docker to pull an image from [Docker Hub](https://hub.docker.com/). This example is using an image that was created following our [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/kubernetes/deploy-container-image-to-kubernetes/) guide. The image will build a Hugo static site with some boiler plate content. However, you can use any image from Docker Hub that you prefer.
+1.  Use Docker to pull an image from [Docker Hub](https://hub.docker.com/). This example is using an image that was created following our [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/guides/deploy-container-image-to-kubernetes/) guide. The image will build a Hugo static site with some boiler plate content. However, you can use any image from Docker Hub that you prefer.
 
         sudo docker pull leslitagordita/hugo-site:v10
 
-1. Tag your local Docker image with your private registry's hostname. This is required when pushing an image to a private registry and not the central Docker registry. Ensure that you replace `registry.example.com` with your own registry's domain.
+1.  Tag your local Docker image with your private registry's hostname. This is required when pushing an image to a private registry and not the central Docker registry. Ensure that you replace `registry.example.com` with your own registry's domain.
 
         sudo docker tag leslitagordita/hugo-site:v10 registry.example.com/leslitagordita/hugo-site:v10
 
-1. At this point, you have never authenticated to your private registry. You will need to log into it prior to pushing up any images. Issue the example command, replacing `registry.example.com` with your own registry's URL. Follow the prompts to enter in the username and password you created in the [Enable Basic Authentication](#enable-basic-authentication) section.
+1.  At this point, you have never authenticated to your private registry. You will need to log into it prior to pushing up any images. Issue the example command, replacing `registry.example.com` with your own registry's URL. Follow the prompts to enter in the username and password you created in the [Enable Basic Authentication](#enable-basic-authentication) section.
 
         sudo docker login registry.example.com
 
-1. Push the image to your registry. Ensure that you replace `registry.example.com` with your own registry's domain.
+1.  Push the image to your registry. Ensure that you replace `registry.example.com` with your own registry's domain.
 
         sudo docker push registry.example.com/leslitagordita/hugo-site:v10
 
@@ -379,7 +379,7 @@ v10: digest: sha256:3db7ab6bc5a893375af6f7cf505bac2f4957d8a03701d7fd56853712b090
 
 In this section, you will create a test deployment using the image that you pushed to your registry in the previous section. This will ensure that your cluster can authenticate to your Docker registry and pull images from it.
 
-1. Using Linode's DNS manager to [create a new subdomain A record](/docs/guides/dns-manager/#add-dns-records) to host your static site. The example will use `static.example.com`. When creating your record, assign your cluster's NodeBalancer external IP address as the IP address. You can find the external IP address with the following command:
+1.  Using Linode's DNS manager to [create a new subdomain A record](/docs/guides/dns-manager/#add-dns-records) to host your static site. The example will use `static.example.com`. When creating your record, assign your cluster's NodeBalancer external IP address as the IP address. You can find the external IP address with the following command:
 
         kubectl --namespace default get services -o wide -w nginx-ingress-controller
 
@@ -390,7 +390,7 @@ NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP    PORT
 nginx-ingress-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/component=controller,app=nginx-ingress,release=nginx-ingress
     {{</ output >}}
 
-1. Using a text editor, create the `static-site-test.yaml` file with the example configurations. This file will create a deployment, service, and an ingress.
+1.  Using a text editor, create the `static-site-test.yaml` file with the example configurations. This file will create a deployment, service, and an ingress.
 
       {{< file "~/registry/staic-site-test.yaml">}}
 apiVersion: extensions/v1beta1
@@ -445,15 +445,15 @@ spec:
       - name: regcred
       {{</ file >}}
 
-      - In the Deployment section of the manifest, the [`imagePullSecrets` field](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets) references the secret you created in the [Grant your Cluster Access to your Docker Registry](/#grant-your-cluster-access-to-your-docker-registry) section. This secret contains the authentication credentials that your cluster's kubelet can use to pull your private registry's image.
+      - In the Deployment section of the manifest, the [`imagePullSecrets` field](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets) references the secret you created in the [Grant your Cluster Access to your Docker Registry](#grant-your-cluster-access-to-your-docker-registry) section. This secret contains the authentication credentials that your cluster's kubelet can use to pull your private registry's image.
       - The `image` field provides the image to pull from your Docker registry.
 
-1. Create the deployment.
+1.  Create the deployment.
 
         kubectl create -f static-site-test.yaml
 
-1. Open a browser and navigate to your site's domain and view the example static site. Using our example, you would navigate to `static.example.com`. The example Hugo site should load.
+1.  Open a browser and navigate to your site's domain and view the example static site. Using our example, you would navigate to `static.example.com`. The example Hugo site should load.
 
 ## (Optional) Tear Down your Kubernetes Cluster
 
-To avoid being further billed for your Kubernetes cluster and NodeBlancer, [delete your cluster using the Linode Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#delete-a-cluster). Similarly, to avoid being further billed for our registry's Object Storage bucket, see [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/).
+To avoid being further billed for your Kubernetes cluster and NodeBlancer, [delete your cluster using the Linode Cloud Manager](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#delete-a-cluster). Similarly, to avoid being further billed for our registry's Object Storage bucket, see [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/).

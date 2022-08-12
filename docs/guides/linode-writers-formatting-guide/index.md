@@ -98,14 +98,14 @@ Do not include any brackets or parentheses when using these temporary values in 
 
 {{< file "Guides Written for a Non-Root User" txt >}}
 {{</* note */>}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{</* /note */>}}
 
 {{< /file >}}
 
 {{< file "Guides Written for a Root User" txt >}}
 {{</* note */>}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{</* /note */>}}
 {{< /file >}}
 

@@ -28,10 +28,10 @@ relations:
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking tunnels between and among groups of computers that are not on the same local network. This is useful if you want to remotely access services on a local network without making them publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.
 
-Before installing OpenVPN, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you're new to Linux server administration you may be interested in our [Introduction to Linux Concepts Guide](/docs/tools-reference/introduction-to-linux-concepts/), [Beginner's Guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [Administration Basics Guide](/docs/tools-reference/linux-system-administration-basics/). If you're concerned about securing on your Linode, you might be interested in our [Security Basics](/docs/guides/set-up-and-secure/) article as well.
+Before installing OpenVPN, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you're new to Linux server administration you may be interested in our [Introduction to Linux Concepts Guide](/docs/guides/introduction-to-linux-concepts/), [Beginner's Guide](/docs/guides/linode-beginners-guide/) and [Administration Basics Guide](/docs/guides/linux-system-administration-basics/). If you're concerned about securing on your Linode, you might be interested in our [Security Basics](/docs/guides/set-up-and-secure/) article as well.
 
 {{< note >}}
-For many private networking tasks, we suggest that you consider the functions of the OpenSSH package which can provide easier VPN and VPN-like services. OpenSSH is also installed and configured by default on all Linodes. For example, see [Using SSHFS on Linux and Mac OS X](/docs/networking/ssh/using-sshfs-on-linux/) or our guide on [Setting up an SSH Tunnel](/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) for more information. Nevertheless, if your deployment requires a more traditional VPN solution like OpenVPN, this document covers the installation and configuration of the OpenVPN software.
+For many private networking tasks, we suggest that you consider the functions of the OpenSSH package which can provide easier VPN and VPN-like services. OpenSSH is also installed and configured by default on all Linodes. For example, see [Using SSHFS on Linux and Mac OS X](/docs/guides/using-sshfs-on-linux/) or our guide on [Setting up an SSH Tunnel](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) for more information. Nevertheless, if your deployment requires a more traditional VPN solution like OpenVPN, this document covers the installation and configuration of the OpenVPN software.
 {{< /note >}}
 
 ## How OpenVPN Works
@@ -139,7 +139,7 @@ This will be followed by a quantity of seemingly random output. Once it brings y
 
 Move all of the secure keys to their proper locations by following these instructions:
 
-1.  The `/etc/openvpn/easy-rsa/keys/` directory contains all of the keys and certificates for the server and its clients generated using the `easy-rsa` tools. Copy the following certificate and key files to the remote client machines, using **scp** or another [means of transferring](/docs/tools-reference/linux-system-administration-basics/#upload-files-to-a-remote-server):
+1.  The `/etc/openvpn/easy-rsa/keys/` directory contains all of the keys and certificates for the server and its clients generated using the `easy-rsa` tools. Copy the following certificate and key files to the remote client machines, using **scp** or another [means of transferring](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server):
 
     -   `ca.crt`
     -   `client1.crt`

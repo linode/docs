@@ -26,7 +26,7 @@ aliases: ['/kubernetes/how-to-deploy-linkerd-with-linode-kubernetes-engine/']
 
 [Linkerd 2](https://linkerd.io) is an ultra lightweight service mesh that monitors, reports, and encrypts connections between Kubernetes services without disturbing the existing applications. It does this by employing proxy sidecars along each instance.
 
-Unlike [Istio](/docs/kubernetes/how-to-deploy-istio-with-kubernetes/), another service mesh monitoring tool, it provides it's own proxies written in Rust instead of using Envoy. This makes it both lighter and more secure.
+Unlike [Istio](/docs/guides/how-to-deploy-istio-with-kubernetes/), another service mesh monitoring tool, it provides it's own proxies written in Rust instead of using Envoy. This makes it both lighter and more secure.
 
 {{< note >}}
 Linkerd 1.x is still available and is being actively developed as a separate project. However, it is built on the "Twitter stack" and is not for Kubernetes. Linkerd 2 is built in Rust and Go and only supports Kubernetes.
@@ -45,16 +45,16 @@ This guide provides instructions to:
 {{< caution >}}
 This guide’s example instructions create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to delete it when you have finished the guide.
 
-If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/)  guide for detailed information about how hourly billing works and for a table of plan pricing.
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{</ caution >}}
 
 ## Before You Begin
 
-Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) and [Advantages of Using Kubernetes](/docs/kubernetes/kubernetes-use-cases/).
+Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) and [Advantages of Using Kubernetes](/docs/guides/kubernetes-use-cases/).
 
 ## Create an LKE Cluster
 
-Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
+Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
 
 {{< note >}}
 Linkerd 2 requires Kubernetes version 1.13+. Linode Kubernetes Engine clusters currently support Kubernetes versions 1.15, 1.16, and 1.17.
@@ -243,7 +243,7 @@ Opening Linkerd dashboard in the default browser
 
     - This command sets up a port forward from the `linkerd-web` Pod.
 
-    - If you want to expose the dashboard for others to use as well, you need to add an [ingress controller](/docs/kubernetes/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/).
+    - If you want to expose the dashboard for others to use as well, you need to add an [ingress controller](/docs/guides/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/).
 
 1.  The dashboard opens in the browser. If it does not, you can access it by going to http://localhost:50750:
 
@@ -267,7 +267,7 @@ Linkerd is not designed to be a long term metrics data store. It only stores dat
 
 To demonstrate the full ease of use and utility of Linkerd, deploy Drupal on the cluster and monitor it using Linkerd.
 
-1.  Follow the [How to Install Drupal with Linode Kubernetes Engine](/docs/kubernetes/how-to-install-drupal-with-linode-kubernetes-engine/) guide to install Drupal onto your LKE cluster.
+1.  Follow the [How to Install Drupal with Linode Kubernetes Engine](/docs/guides/how-to-install-drupal-with-linode-kubernetes-engine/) guide to install Drupal onto your LKE cluster.
 
 ### Add Linkerd to Drupal
 

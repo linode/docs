@@ -74,7 +74,7 @@ The Volume and Linode must be in the same region.
 }
 {{< /highlight >}}
 
-4.   Query the Volume using the `/volumes/$volume_id` endpoint to to make sure it was successfully created:
+4.   Query the Volume using the `/volumes/$volume_id` endpoint to make sure it was successfully created:
 
         curl -H "Authorization: Bearer $token" \
         https://api.linode.com/v4/volumes/$volume_id

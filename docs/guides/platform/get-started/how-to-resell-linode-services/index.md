@@ -35,7 +35,7 @@ There are a variety of reasons one might want to resell Linode services. One of 
 
 ## Referral Program
 
-As an alternative to reselling our services, you can participate in our referral program. See the [Referral Program](https://www.linode.com/referral-program/) page on our website or the [Referral Program](/docs/guides/how-linode-billing-works/#referral-program) section within our billing guide for more details.
+As an alternative to reselling our services, you can participate in our referral program. See the [Referral Program](https://www.linode.com/referral-program/) page on our website or the [Referral Program](/docs/guides/understanding-billing-and-payments/#referral-program) section within our billing guide for more details.
 
 Advertising your referral code to others is not the same as reselling Linode services. When someone else uses your referral code, they create an entirely separate Linode account with their own billing.
 

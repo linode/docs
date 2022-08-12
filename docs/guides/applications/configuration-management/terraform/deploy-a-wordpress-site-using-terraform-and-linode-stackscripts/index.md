@@ -27,7 +27,7 @@ Linode's Terraform provider supports [StackScripts](/docs/platform/stackscripts/
 In this guide you will learn how to use a Community StackScript to deploy WordPress on a Linode using Terraform.
 
 {{< caution >}}
-Following this guide will result in the creation of [billable Linode resources](/docs/platform/billing-and-support/billing-and-payments/#how-hourly-billing-works) on your account. To prevent continued billing for these resources, [remove them](#optional-destroy-the-linode-resources) from your account when you have completed the guide, if desired.
+Following this guide will result in the creation of billable Linode resources on your account. To prevent continued billing for these resources, remove them when you have completed the guide.
 {{< /caution >}}
 
 ## Before You Begin
@@ -255,7 +255,7 @@ resource "linode_domain_record" "my_wordpress_domain_apex_record" {
 {{</ file >}}
 
     {{< note >}}
-If you are not familiar with the Domain Name System (DNS), review the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guide.
+If you are not familiar with the Domain Name System (DNS), review the [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) guide.
 {{< /note >}}
 
     The `linode_domain` resource creates a [domain zone](/docs/guides/dns-manager/#create-and-manage-domains) for your domain.
@@ -327,7 +327,7 @@ The `stackscript_data` variable is of type `map`. This will allow you to provide
 Terraform allows you to assign variables in many ways. For example, you can assign a variable value via the command line when running `terraform apply`. In order to persist variable values, you can also create files to hold all your values.
 
 {{< note >}}
-There are several other options available for secrets management with Terraform. For more information on this, see [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/).
+There are several other options available for secrets management with Terraform. For more information on this, see [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform/).
 {{</ note >}}
 
 Terraform will automatically load any file named `terraform.tfvars` and use its contents to populate variables. However, you should separate out any sensitive values, like passwords and tokens, into their own file. Keep this sensitive file out of version control.
@@ -373,7 +373,7 @@ It is helpful to reference Terraform's [Linode provider](https://www.terraform.i
 
     -   `domain` should be replaced with your WordPress site's domain address.
 
-    -  `soa_email` should be the email address you would like to use for your [Start of Authority](/docs/networking/dns/dns-records-an-introduction/#soa) email address.
+    -  `soa_email` should be the email address you would like to use for your [Start of Authority](/docs/guides/dns-records-an-introduction/#soa) email address.
 
 ## Initialize, Plan, and Apply the Terraform Configuration
 

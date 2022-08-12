@@ -26,7 +26,7 @@ aliases: ['/quick-answers/linux-essentials/introduction-to-systemctl/']
 `systemctl` is a controlling interface and inspection tool for the widely-adopted init system and service manager systemd. This guide will cover how to use `systemctl` to manage systemd services, work with systemd Targets and extract meaningful information about your system's overall state.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Managing Services

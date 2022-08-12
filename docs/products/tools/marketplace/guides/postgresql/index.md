@@ -151,4 +151,4 @@ The example commands in this section should be run as the `postgres` Linux user.
 
 For more on PostgreSQL, checkout the following guides:
 
-- [Securely Manage Remote PostgreSQL Servers](/docs/databases/postgresql/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/)
+- [Securely Manage Remote PostgreSQL Servers](/docs/guides/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/)

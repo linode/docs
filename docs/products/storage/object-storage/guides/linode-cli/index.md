@@ -119,7 +119,7 @@ To create a static website from a bucket:
     - `http://my-example-bucket.website-eu-central-1.linodeobjects.com` or
     - `http://my-example-bucket.website-ap-south-1.linodeobjects.com`
 
-For more information on hosting static websites from Linode Object Storage, see [Host a Static Site on Linode's Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
+For more information on hosting static websites from Linode Object Storage, see [Host a Static Site on Linode's Object Storage](/docs/guides/host-static-site-object-storage/) guide.
 
 ## Creating a New Access Key
 

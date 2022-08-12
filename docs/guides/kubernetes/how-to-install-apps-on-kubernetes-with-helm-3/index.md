@@ -117,7 +117,7 @@ This guide's example instructions will also result in the creation of a Block St
 
         kubectl config use-context your-cluster-name
 
-1.  It is beneficial to have a registered [domain name](/docs/networking/dns/dns-records-an-introduction/) for this guide's example app, but it is not required.
+1.  It is beneficial to have a registered [domain name](/docs/guides/dns-records-an-introduction/) for this guide's example app, but it is not required.
 
 ## Install Helm
 
