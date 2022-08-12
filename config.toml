@@ -30,7 +30,7 @@ description = "Guides and tutorials on the Linode platform, Linux basics, and so
 # Date and time formatting, see https://gohugo.io/functions/format/
 time_format_RFC3339 = "2006-01-02T15:04:05Z07:00"
 time_format_default = "Monday, January 2, 2006"
-promo_code = "DOCSR4RDING"
+promo_code = "docs1000822"
 promo_code_amount = 100
 promo_code_disclaimer = "This credit will be applied to any valid services used during your first 60 days."
 page_title_suffix = "Linode"

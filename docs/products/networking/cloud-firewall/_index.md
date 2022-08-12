@@ -8,7 +8,7 @@ tab_group_main:
     title: Overview
     weight: 10
 cascade:
-    date: 2020-06-02
+    date: 2020-11-10
     product_description: "A free cloud-based firewall service that makes it easy to secure network traffic to and from Compute Instances."
 aliases: ['/guides/platform/cloud-firewall/','/platform/cloud-firewall/']
 ---

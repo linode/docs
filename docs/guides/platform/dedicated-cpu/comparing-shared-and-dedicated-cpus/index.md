@@ -1,68 +1,58 @@
 ---
-slug: when-to-upgrade-to-dedicated-cpu
+slug: comparing-shared-and-dedicated-cpus
 author:
-  name: Ryan Syracuse
-  email: rsyracuse@linode.com
-description: 'A collection of diagnostic tasks that identify the potential for benefits from dedicated CPU cores.'
+  name: Linode
+  email: docs@linode.com
+description: "A collection of diagnostic tasks that identify the potential for benefits from dedicated CPU cores."
 keywords: ["dedicated cpu", "use cases", "linode cpu", "machine learning", "big data"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2021-08-27
+modified: 2022-08-12
 modified_by:
   name: Linode
-published: 2021-08-27
-title: When to Upgrade From Shared to Dedicated CPU Instances
-h1_title: Upgrading from Shared to Dedicated CPU Instances
+title: "Choosing Between Shared and Dedicated CPUs on the Linode Platform"
+h1_title: "Choosing Between Shared and Dedicated CPUs (and Determining When to Upgrade)"
 enable_h1: true
 tags: ["linode platform"]
-aliases: ['/platform/dedicated-cpu/when-to-upgrade-to-dedicated-cpu/']
+aliases: ['/platform/dedicated-cpu/when-to-upgrade-to-dedicated-cpu/','/guides/when-to-upgrade-to-dedicated-cpu/']
 ---
 
-## In This Guide
+Each Linode Compute Instance is equipped with shared CPU cores or dedicated CPU cores. Understanding the difference between these is key to determining the best plan for your workloads. This guide outlines those differences and aims to help you evaluate your current cloud workloads to determine if plans with dedicated CPU cores would be beneficial.
 
-In this guide, you learn how to evaluate your current Shared CPU workloads through manual diagnosis, Linode Cloud Manager analytics, and attributes of your use case, to determine if upgrading to a Dedicated CPU instance would be of benefit.
+## Comparing CPU Types
 
-## Understanding Shared Hosting
+The following chart outlines the key differences between shared CPUs and dedicated CPUs, including maximum allowed utilization, CPU contention, and recommended use cases.
 
-To best understand the performance differences between Dedicated instances and Shared instances, it's important to understand what Shared Hosting really means as a term for general use and how it applies to performance.
+| | Shared CPUs | Dedicated CPUs |
+| -- | -- | -- |
+| **CPU allocation**  | Physical CPU cores may be shared with other neighboring Compute Instances. | Physical CPU cores are reserved just for this Compute Instance. |
+| **Maximum *sustained* CPU utilization (24/7)** | 80% | 100% |
+| **Maximum *burst* CPU utilization** | 100% | 100% |
+| **CPU contention** | Can be expected during peak usage. | No. |
+| **Recommended Use Cases** | Best for development servers, staging servers, low traffic websites, personal blogs, and production applications that may not be affected by resource contention. | Best for production websites, enterprise applications, high traffic databases, and any application that requires 100% sustained CPU usage or may be impacted by resource contention. |
+| **Plans** | [Shared CPU](/docs/products/compute/shared-cpu/) | [Dedicated CPU](/docs/products/compute/dedicated-cpu/), [High Memory](/docs/products/compute/high-memory/), [GPU](/docs/products/compute/gpu/) |
 
-Shared Hosting, as the name implies, describes a hosting service in which customers "share" access to a powerful physical CPU behind a **Hypervisor**, or a virtualization layer, which is responsible for separating physical resources and allocating them to virtual machines. The proliferation of this approach to server hosting set the foundation for the Cloud as we know it today. However in practice, this means that while Shared instances _do_ have access to the full number of cores that their plan has allocated to them, if neighboring instances have high CPU usage, then instances on the host may see degraded performance in the form of contention or  **CPU Steal**. CPU Steal is what occurs when the hypervisor instructs different virtual machines to access physical CPU resources faster than the hypervisor is able to cleanly manage. In terms of performance, this can appear as an instance being unable to access CPU cores that it has otherwise been allocated. While contention can occur for many reasons, it most commonly occurs in Cloud Hosting environments like Linode when a virtual machine process is being instructed to wait to access CPU resources due to high load.
+## How Physical CPU Cores Are Managed on Virtual Machines
 
-With Shared instances, some level of contention can almost always be expected, as all customers on a host are entitled to the maximum amount of CPU resources their plan includes. While at Linode we do our best to keep contention down to an absolute minimum, the reality is that it is an inevitability when working in a shared hosting environment.
+All Compute Instances on the Linode platform are cloud-based virtual machines that are equipped with various amounts of CPU cores, memory, storage space, and other resources. These Compute Instances live on powerful physical servers that are outfitted with enterprise-grade CPUs containing a high number of CPU cores. A hypervisor (virtualization software) is used to create virtual machines on these servers and manage the allocation and scheduling of physical resources. Specific to the topic of this guide, hypervisors manage the scheduling of CPU cycles - mapping CPU execution tasks from Compute Instances (virtual CPU cores) to the physical server (physical CPU cores).
 
-Shared hosting helps to make Cloud services more affordable, especially for use cases where the maximum number of CPU resources aren't needed with any urgency and some liberty can be taken with overall performance. Some of these use cases can include:
+In a **Shared CPU** environment, there may be more virtual CPU cores allocated to Compute Instances than there are physical CPU cores on the server's hardware. In other words, Compute Instances may be sharing physical CPU cores. This means that your CPU requests (or *tasks*) may need to wait in line while tasks from other neighboring Compute Instances are processed. In many cases, this delay in execution is imperceptible. However, when multiple neighboring Compute Instances each have high CPU utilization, you may notice degraded performance in the form of CPU contention or *CPU steal*. CPU steal occurs when the hypervisor instructs different virtual machines to access physical CPU resources faster than the hypervisor is able to cleanly manage. With Shared CPU instances, some level of contention is expected, though we do our best to keep contention down to an absolute minimum.
 
-- Personal Blogs
-- Personal Projects
-- Forums
-- Development Environments
-- Simple Web Sites/Servers
-- Small Low Traffic Databases
+In a **Dedicated CPU** environment, virtual CPU cores on a Compute Instances are mapped to their own physical CPU cores. These CPU cores are not shared with neighboring Compute Instances. This allows for a higher level of constant predictable performance for full-duty work and opens up the ability to use your instance's CPU at its absolute maximum capacity (100% CPU utilization all day, every day).
 
-That being said, shared CPU isn't the recommended choice for many professional workloads which rely on steady service. While many users can still expect to see results if they require a more affordable solution for other use cases, most professional workloads will benefit from a dedicated CPU.
+## When to Choose Shared or Dedicated CPUs
 
-## Understanding Dedicated CPUs
+**Shared CPUs** are more affordable and thus may provide a higher value, especially for workloads that are not CPU intensive and when consistently high CPU performance is not needed. Workloads suited to Shared CPU instances include development servers, staging servers, low traffic websites, personal blogs, and production applications that may not be affected by resource contention. See [Shared CPU > Recommended Workloads](/docs/products/compute/shared-cpu/#recommended-workloads).
 
-In comparison to Shared instances, Dedicated CPU instances run on their own CPU cores as part of the Linode Cloud infrastructure. Hypervisor resources for Dedicated CPU instances are not shared with other instances in any capacity. This allows for a higher level of constant predictable performance for full-duty work, and opens up the ability to use your instance's CPU at its absolute maximum capacity (100% CPU all day, every day).
+**Dedicated CPUs** are recommended for most production applications and any application that requires 100% sustained usage or might be impacted by resource contention. This includes eCommerce sites, business applications, game servers, CI/CD toolchains, audio and video transcoding, machine learning, scientific computing, high traffic databases, and much more. For more information on these use cases and whether or not your use case may be a good fit for Dedicated CPU, see our guide on [Use Cases for Dedicated CPU](/docs/guides/dedicated-cpu-use-cases/).
 
-While Dedicated CPU is recommended for most professional use cases where peak performance at all times is key, there are some more notable cases which will see the highest level of benefit. Any time you notice a high and steady level of CPU usage for example, or otherwise are in a position which applies more strain on your CPU frequently, Dedicated CPUs may be less of a recommendation and more of a need. The following use cases specifically tend to see more dramatic performance benefits from a dedicated CPU.
+The following questions may also guide you in choosing shared CPU cores or dedicated CPU cores.
 
-- Production Websites for eCommerce, Businesses, and Apps
-- CI/CD Toolchains and Build Servers
-- Game Servers
-- Audio and Video Transcoding
-- Big Data and Data analysis
-- Scientific Computing and Data Science
-- Machine Learning and AI
-- High Traffic Databases (Galera, PostgreSQL with Replication Manager, MongoDB using Replication Sets)
-- Replicated or Distributed Filesystems (GlusterFS, DRBD)
-
-For more information on these use cases and whether or not your use case may be a good fit for Dedicated CPU, see our guide on [Use Cases for Dedicated CPU](/docs/guides/dedicated-cpu-use-cases/).
-
-Additionally, you may ask yourself some of the following questions:
 - Is my server performance critical to the success of my business, app, or other use case?
 - Will visitors to my server leave if performance degrades?
 - Is my workload unable to accept the uncertainty of my neighbors on the host server?
 
-If you answered yes to any of the above, you should start with, or move to, a Dedicated CPU instance.
+If you answered yes to any of the above, you should start with, or move to, a plan with dedicated CPUs.
 
 ## Diagnosing Shared CPU Performance
 
