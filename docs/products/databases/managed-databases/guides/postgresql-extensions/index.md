@@ -5,7 +5,7 @@ author:
 title: "PostgreSQL Extensions"
 description: "Learn which PostgreSQL extensions are supported by Linode's Managed Database service and how to install them."
 published: 2022-06-06
-modified: 2022-08-11
+modified: 2022-08-12
 ---
 
 The functionality of PostgreSQL can be enhanced through the use of [extensions](https://wiki.postgresql.org/wiki/Extensions). Linode's PostgreSQL Managed Database service supports many of these extensions and they are available for any user to install and utilize.
@@ -16,7 +16,7 @@ All extensions can be viewed, installed, and removed directly from the PostgreSQ
 
 ### View Installed Extensions
 
-To view the extensions that are currently installed on your PostgreSQL Managed Database, run the `\dx` command at the prompt. The output should be similar to the following, displaying each extension along with its version number, scheme, and a short description.
+To view the extensions that are currently installed on your PostgreSQL Managed Database, run the `\dx` command at the prompt. The output should be similar to the following, displaying each extension along with its version number, schema, and a short description.
 
 {{< output >}}
      Name      | Version |   Schema   |          Description
