@@ -54,7 +54,7 @@ You can also check your installed Python version from within Python itself. Usin
 
 Both options work equally well regardless of your system. The choice of which option to use really comes down to what format you want the output in.
 
-### Using sys 
+### Using sys
 
 The `sys` module has a variable that you can reference to get the current Python version. Below you can see an example of how the `sys` module's `version` variable renders the current Python version. This code first imports the `sys` module then prints out the contents of the `version` variable:
 
@@ -65,7 +65,7 @@ print(sys.version)
 ```
 
 {{< output >}}
-3.8.10 (default, Jun 22 2022, 20:18:18) 
+3.8.10 (default, Jun 22 2022, 20:18:18)
 [GCC 9.4.0]
 {{< /output >}}
 
