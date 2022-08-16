@@ -29,6 +29,8 @@ We make it easy to upgrade or downgrade your Linode by changing plans and adding
 
 - The Linode remains powered off during the entire resize process. After the resize completes, the Linode returns to its previous power state.
 
+- Resizing your Linode preserves all your data, and you keep your current IP address.
+
 ## Resizing a Linode
 
 Here's how to resize your Linode to a different plan:
