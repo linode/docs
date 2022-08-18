@@ -1,17 +1,18 @@
 ---
-slug: indexing-mongodb
+slug: mongodb-indexing-explained
 author:
   name: Linode Community
   email: docs@linode.com
-description: ""
-og_description: ""
-keywords: ['mongodb indexing best practices','mongodb indexing tutorial','mongodb indexing explained']
+description: "Learn what MongoDB indexes are, how to create and modify them to improve your database query performance."
+keywords: ['mongodb indexing best practices', 'mongodb indexing tutorial', 'mongodb indexing explained']
+tags: ['database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-20
 modified_by:
   name: Nathaniel Stickman
 title: "MongoDB Indexing Explained"
-h1_title: "MongoDB Indexing Explained"
+h1_title: "How to Use Indexes in MongoDB"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -24,25 +25,25 @@ external_resources:
 
 [MongoDB](https://www.mongodb.com/) is a NoSQL database, an alternative to relational SQL databases that uses JSON-like documents to store data.
 
-Learn all about what MongoDB is and how it works in our guide [Introduction to MongoDB and its Use Cases](/docs/guides/mongodb-and-its-use-cases/). Then, find out about the basics of using MongoDB in our guide **Getting Started with MongoDB**.
+Learn about what MongoDB is and how it works in our [Introduction to MongoDB and its Use Cases](/docs/guides/mongodb-and-its-use-cases/) guide. Know more about the basics of using MongoDB in our [Getting Started with MongoDB](/docs/guides/getting-started-with-mongodb/) guide.
 
 To have efficient performance on queries, your MongoDB database should make use of indices. An index prevents a query from having to scan every document in a collection, instead letting the query focus on just the relevant documents.
 
-In the course of this tutorial, learn how to use MongoDB indexing to improve queries. The tutorial walks you through what MongoDB indices are, their various options, and strategies for using them, all with practical examples.
+In this guide, you learn what MongoDB indices are and how to use them to improve queries. This guide also walks you through the various options of MongoDB indices, and strategies for using them with practical examples.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
 
             sudo dnf upgrade
 
@@ -51,7 +52,7 @@ In the course of this tutorial, learn how to use MongoDB indexing to improve que
     For other Linux distributions, you can follow MongoDB's [official Linux installation documentation](https://www.mongodb.com/docs/manual/administration/install-on-linux/).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How Does MongoDB Indexing Work?
@@ -62,11 +63,11 @@ But query performance can be improved significantly by implementing effective *i
 
 Indices are stored as separate, smaller data sets. The data in these data sets match the indexed data, but, because the data set is smaller, searches are significantly more efficient.
 
-## Creating MongoDB Indices
+## Create MongoDB Indices
 
 MongoDB indices can be created using a method on the collection you want to apply the indices on. The method takes the field, or fields, to be indexed.
 
-These next few sections show how to use that method to apply indices in different ways. The sections' examples use a data set that you can recreate with the following commands:
+The following sections show how to use that method to apply indices in different ways. The sections' examples use a data set that you can recreate with the following commands:
 
     use filmDb
 
@@ -123,7 +124,7 @@ These next few sections show how to use that method to apply indices in differen
 
 ### Single-key Indices
 
-Indexing on a single key is useful for collections in which you plan to query almost exclusively on one key. In this example, the collection is indexed on the `startDate` field:
+Indexing on a single key is useful for collections in which you plan to query almost exclusively on one key. In the following example, the collection is indexed on the `startDate` field.
 
     db.actorCollection.createIndex( { startDate: 1 } )
 
@@ -138,7 +139,7 @@ Indexing on a single key is useful for collections in which you plan to query al
 
 ### Compound Indices
 
-However, if you query regularly on more than one field, you should use a compound index. Compound indices keep their efficiency whether one of the indexed fields or multiple indexed fields are used in a query.
+However, if you query regularly on more than one field, you should use a compound index. Compound indices keep their efficiency irrespective of whether one of the indexed fields or multiple indexed fields is used in a query.
 
 The following example indexes the collection on the `startDate` and `latestDate` fields:
 
@@ -160,9 +161,9 @@ The following example indexes the collection on the `startDate` and `latestDate`
 
 ### Collation Indices
 
-Collation allows you to define the language rules to use for string comparisons. It affects things like letter case and accents.
+Collation allows you to define the language rules to use for string comparisons. It affects things like letter cases and accents.
 
-Here is an example that implements an English-language collation for the `popularFilms` field:
+The following example implements an English-language collation for the `popularFilms` field.
 
     db.actorCollection.createIndex(
         { popularFilms: 1 },
@@ -184,7 +185,7 @@ You can also see that the above applies the index for an array field. In these c
 
 To effectively conduct text searches in a MongoDB collection, you need to add a text index. Doing so allows you to search for a given term or phrase within all indexed text fields.
 
-This example shows how to add a text index for the `firstName` and `lastName` fields:
+The following example shows how to add a text index for the `firstName` and `lastName` fields.
 
     db.actorCollection.createIndex(
         {
@@ -223,9 +224,9 @@ That index lets you run a search like the one below:
 
 Our guide **How to Navigate MongoDB Databases** includes more about how to conduct text searches in your MongoDB collections.
 
-## Modifying Indices
+## Modify Indices
 
-After creating indices, you may want to review and remove some that are no longer relevant. You can start out by getting a list of indices for a given collection:
+After creating indices, you may want to review and remove some that are no longer relevant. You can list the indices for a given collection using the command below:
 
     db.actorCollection.getIndxes()
 
@@ -258,7 +259,7 @@ After creating indices, you may want to review and remove some that are no longe
 ]
 {{< /output >}}
 
-From there, you can remove an index using the `dropIndex` method on the collection, providing the method with the index name. This example removes the index above related to the `startDate` field:
+You can remove an index using the `dropIndex` method on the collection, providing the method with the index name. The example above removes the index related to the `startDate` field.
 
     db.actorCollection.dropIndex("startDate_1")
 
@@ -268,13 +269,13 @@ From there, you can remove an index using the `dropIndex` method on the collecti
 
 ## MongoDB Index Best Practices
 
-To make the most of indices on your MongoDB collection, you should keep in mind some best practices. These ensure that, when you use indices, they are set up to improve query performance and database performance overall.
+To make the most of indices on your MongoDB collection, you should keep in mind some best practices. These ensure that, when you use indices, they are set up to improve query performance, and database performance overall.
 
-The list that follows is not comprehensive, but it includes key principles to maintaining efficient indexing.
+The list that follows is not comprehensive, but it includes key principles for maintaining efficient indexing.
 
 - Use compound indices. Further, you should use the ESR approach to the order of compound indices. This means you put fields for *equality* first, then fields concerned with *sort order*, and finally fields related to the *range* of queried data.
 
-- Conduct covered queries for indexed documents when possible. A covered query only includes fields from the collection's index, and these queries perform much more efficiently. Here is an example of a covered query, assuming the collection has a compound index on the `startDate` and `latestDate` fields:
+- Conduct covered queries for indexed documents when possible. A covered query only includes fields from the collection's index, and these queries perform much more efficiently. Following is an example of a covered query, assuming the collection has a compound index on the `startDate` and `latestDate` fields.
 
         db.actorCollection.find(
             { startDate: { $gte: 2010 } },
@@ -292,7 +293,7 @@ The list that follows is not comprehensive, but it includes key principles to ma
 
 ## Conclusion
 
-Here, you have seen major MongoDB indexing strategies and options for getting the most out of indices. With performance best practices and concrete example, this tutorial can be a useful reference when working on making your MongoDB databases more efficient.
+In this guide, you have seen major MongoDB indexing strategies and options for getting the most out of indices. With performance best practices and concrete examples, this guide can be a useful reference when working on making your MongoDB databases more efficient.
 
 Looking to dive deeper into MongoDB? Be sure to peruse our other [MongoDB guides](/docs/guides/databases/mongodb/) for more on setting up and getting the most out of MongoDB.
 
