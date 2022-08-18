@@ -12,6 +12,7 @@ modified_by:
   name: Nathaniel Stickman
 title: "How to Navigate Your Data in MongoDB Databases"
 h1_title: "Navigate Your Data in MongoDB Databases"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

@@ -12,6 +12,7 @@ modified_by:
   name: Nathaniel Stickman
 title: "Getting Started with MongoDB"
 h1_title: "Introduction to MongoDB"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
