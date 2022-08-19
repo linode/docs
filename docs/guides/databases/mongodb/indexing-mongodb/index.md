@@ -25,7 +25,7 @@ external_resources:
 
 [MongoDB](https://www.mongodb.com/) is a NoSQL database, an alternative to relational SQL databases that uses JSON-like documents to store data.
 
-Learn about what MongoDB is and how it works in our [Introduction to MongoDB and its Use Cases](/docs/guides/mongodb-and-its-use-cases/) guide. Know more about the basics of using MongoDB in our [Getting Started with MongoDB](/docs/guides/getting-started-mongodb/) guide.
+Learn about what MongoDB is and how it works in our [Introduction to MongoDB and its Use Cases](/docs/guides/mongodb-and-its-use-cases/) guide. Know more about the basics of using MongoDB in our **Getting Started with MongoDB** guide.
 
 To have efficient performance on queries, your MongoDB database should make use of indices. An index prevents a query from having to scan every document in a collection, instead letting the query focus on just the relevant documents.
 
