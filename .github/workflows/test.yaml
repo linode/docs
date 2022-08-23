@@ -60,7 +60,7 @@ jobs:
       env:
         added_modified: ${{ steps.get_changed_files.outputs.added_modified }}
     - name: Vale
-      uses: errata-ai/vale-action@v1.3.0
+      uses: errata-ai/vale-action@reviewdog
       # Only run the Vale step if the list of added and modified
       # files inside the docs directory is not empty. If we don't
       # add this conditional, the Vale step hangs and never
@@ -68,6 +68,8 @@ jobs:
       if: ${{ '[]' != steps.select_docs_dir_files.outputs.added_modified }}
       with:
         files: '${{ steps.select_docs_dir_files.outputs.added_modified }}'
+        version: 2.19.0
+        vale_flags: "--minAlertLevel=error"
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 

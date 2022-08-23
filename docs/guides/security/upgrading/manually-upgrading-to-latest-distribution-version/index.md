@@ -157,7 +157,7 @@ SCP is a common file transfer command line tool available on most macOS and Linu
 
 Databases can be copied in much the same way as files. The major difference is that most databases first require a *database dump*, which writes all of the data stored within the database to a backup file. This database backup file can then be copied to the new system and used to restored the data.
 
--   To create a dump of a MySQL (or MariaDB) database, use the `mysqldump` command. See [Use mysqldump to Back Up MySQL or MariaDB](/docs/guides/use-mysqldump-to-back-up-mysql-or-mariadb/) for instructions on backing up and restoring a database. **You can only use this tool if your database process is accessible and running.**
+-   To create a dump of a MySQL (or MariaDB) database, use the `mysqldump` command. See [Use mysqldump to Back Up MySQL or MariaDB](/docs/guides/mysqldump-backups/) for instructions on backing up and restoring a database. **You can only use this tool if your database process is accessible and running.**
 
 -   If your MySQL database won't run for some reason, follow the instructions for creating [physical backups](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
 

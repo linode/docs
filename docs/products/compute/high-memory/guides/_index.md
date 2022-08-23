@@ -11,7 +11,7 @@ These guides explore targeted topics like the basics of High Memory Linodes and 
 
 ### High Memory Basics
 
-- [Getting Started with Linode](/docs/getting-started/)
+- [Getting Started with Linode](/docs/guides/getting-started/)
 
 - [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
 
@@ -21,18 +21,18 @@ These guides explore targeted topics like the basics of High Memory Linodes and 
 
 ### Databases
 
-- [How to Install a Redis Server on Ubuntu or Debian 8](/docs/databases/redis/how-to-install-a-redis-server-on-ubuntu-or-debian8/)
+- [How to Install a Redis Server on Ubuntu or Debian 8](/docs/guides/how-to-install-a-redis-server-on-ubuntu-or-debian8/)
 
-- [Install and Configure Redis on CentOS 7](/docs/databases/redis/install-and-configure-redis-on-centos-7/)
+- [Install and Configure Redis on CentOS 7](/docs/guides/install-and-configure-redis-on-centos-7/)
 
 - [Installing MongoDB on Ubuntu 16.04 (Xenial)](/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04/)
 
-- [Installing MongoDB on CentoOS 7](/docs/databases/mongodb/install-mongodb-on-centos-7/)
+- [Installing MongoDB on CentoOS 7](/docs/guides/install-mongodb-on-centos-7/)
 
-- [How to Install MySQL on Debian 8](/docs/databases/mysql/how-to-install-mysql-on-debian-8/)
+- [How to Install MySQL on Debian 8](/docs/guides/how-to-install-mysql-on-debian-8/)
 
-- [How to Install MySQL on CentOS7](/docs/databases/mysql/how-to-install-mysql-on-centos-7/)
+- [How to Install MySQL on CentOS7](/docs/guides/how-to-install-mysql-on-centos-7/)
 
-- [Install Magento on Ubuntu 18.04](/docs/websites/ecommerce/install-magento-on-ubuntu-18-04/)
+- [Install Magento on Ubuntu 18.04](/docs/guides/install-magento-on-ubuntu-18-04/)
 
-- [Install Magento on CentOS 7](/docs/websites/ecommerce/install-magento-on-centos-7/)
+- [Install Magento on CentOS 7](/docs/guides/install-magento-on-centos-7/)

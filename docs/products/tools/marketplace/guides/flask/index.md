@@ -44,7 +44,7 @@ aliases: ['/platform/marketplace/how-to-deploy-flask-with-marketplace-apps/', '/
 In addition to installing Flask, this Marketplace app installs and configures software to support running Flask in a production environment. Below is a list of the installed software:
 
 - The [NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) web server is installed with a basic NGINX configuration, located in `/etc/nginx/sites-enabled/flask_app`, and listening on your Linode's IP address.
-- An example Flask application is downloaded to your Linode's `/home/flask_app_project` directory. If you visit your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/), you will see the example Flask application running and serving boiler plate blog content.
+- An example Flask application is downloaded to your Linode's `/home/flask_app_project` directory. If you visit your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/), you will see the example Flask application running and serving boiler plate blog content.
 - Your example Flask application's environment will be configured with basic settings located in the `/etc/config.json` file.
 - [Gunicorn](https://gunicorn.org/), a Python WSGI (web server gateway interface) HTTP Server for UNIX, is installed and running. It is used to forward requests from your NGINX web server to your Flask application.
 - [Supervisor](http://supervisord.org/), a client/server system that allows its users to monitor and control a number of processes on UNIX-like operating systems, is installed and running on your Linode. Its configuration file can be found in the following location, `/etc/supervisor/conf.d/flask_app.conf`.
@@ -82,6 +82,6 @@ Many configuration files can be overwritten to support a new configuration inste
 Now that you are familiar with all the software installed on your Linode with the Flask Marketplace app, you can explore the following steps:
 
 - [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). You will need your Linode's root password to proceed. You can explore the installed programs and update any configurations as needed. Consider following the steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to continue hardening your Linode's security.
-- Read through our [Deploy a Flask Application on Ubuntu](/docs/development/python/flask-and-gunicorn-on-ubuntu/) guide, which takes a deeper dive into the example Flask app that is deployed by the Marketplace app.
-- Visit our [Create a GIS Application using Flask, Stadia Maps, and MongoDB](/docs/development/python/how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb/) guide to learn how to create your own GIS application.
-- Consult our [How To Create an OAuth App with the Linode Python API Library](/docs/platform/api/how-to-create-an-oauth-app-with-the-linode-python-api-library/) to learn how to develop a Flask app using Linode's API to automate creating Linode resources.
+- Read through our [Deploy a Flask Application on Ubuntu](/docs/guides/flask-and-gunicorn-on-ubuntu/) guide, which takes a deeper dive into the example Flask app that is deployed by the Marketplace app.
+- Visit our [Create a GIS Application using Flask, Stadia Maps, and MongoDB](/docs/guides/how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb/) guide to learn how to create your own GIS application.
+- Consult our [How To Create an OAuth App with the Linode Python API Library](/docs/guides/how-to-create-an-oauth-app-with-the-linode-python-api-library/) to learn how to develop a Flask app using Linode's API to automate creating Linode resources.

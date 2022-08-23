@@ -15,7 +15,6 @@ modified_by:
   name: Linode
 title: 'How to Use ZFS on Ubuntu 16.04'
 published: 2017-10-30
-expiryDate: 2019-10-30
 external_resources:
  - '[Ubuntu ZFS wiki](https://wiki.ubuntu.com/Kernel/Reference/ZFS)'
  - '[RAID levels Wikipedia](https://en.wikipedia.org/wiki/Standard_RAID_levels)'

@@ -25,22 +25,22 @@ These additional guides will help you with targeted topics like DNS basics and m
 
 ### DNS Basics
 
-- [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/)
+- [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/)
 
 - [DNS Manager](/docs/guides/dns-manager/)
 
-- [Diagnose & Resolve DNS Records in DNS Manager](/docs/platform/manager/troubleshooting-dns/)
+- [Diagnose & Resolve DNS Records in DNS Manager](/docs/guides/troubleshooting-dns/)
 
-- [Common DNS Configurations](/docs/networking/dns/common-dns-configurations/)
+- [Common DNS Configurations](/docs/guides/common-dns-configurations/)
 
-- [Using Your System’s Hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
+- [Using Your System’s Hosts File](/docs/guides/using-your-systems-hosts-file/)
 
 - [Configure Your Linode for Reverse DNS (rDNS)](/docs/networking/dns/configure-your-linode-for-reverse-dns/)
 
 ### Advanced Topics
 
-- [Previewing Websites Without DNS](/docs/networking/dns/previewing-websites-without-dns/)
+- [Previewing Websites Without DNS](/docs/guides/previewing-websites-without-dns/)
 
-- [How to Set Up Cloudflare with Linode](/docs/networking/dns/how-to-set-up-cloudflare-with-linode/)
+- [How to Set Up Cloudflare with Linode](/docs/guides/how-to-set-up-cloudflare-with-linode/)
 
-- [Use dig to Perform Manual DNS Queries](/docs/networking/dns/use-dig-to-perform-manual-dns-queries/)
+- [Use dig to Perform Manual DNS Queries](/docs/guides/use-dig-to-perform-manual-dns-queries/)

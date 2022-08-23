@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "Deploy Akaunting on a Linode Compute Instance. This provides you a a free, open source accounting software designed for small businesses and freelancers."
+description: "Deploy Akaunting on a Linode Compute Instance. This provides you a free, open source accounting software designed for small businesses and freelancers."
 keywords: ['akaunting','accounting','productivity']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

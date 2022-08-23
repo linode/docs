@@ -436,7 +436,7 @@ At this point, you may also tune your Apache instances to optimize performance b
 
 ### Configure SELinux Compatibility for Apache
 
-SELinux's default settings do not allow allow Apache to access files on the GlusterFS cluster or to make connections to the database cluster. Allow this activity on each application server:
+SELinux's default settings do not allow Apache to access files on the GlusterFS cluster or to make connections to the database cluster. Allow this activity on each application server:
 
     yum install policycoreutils-python
     setsebool -P httpd_use_fusefs 1
@@ -526,15 +526,11 @@ No additional Linodes will be created in this section, and all configuration wil
 Make sure that [Network Helper](/docs/guides/network-helper/) is turned **OFF** on your database nodes before proceeding.
 {{< /caution >}}
 
-### Configure IP Failover
+### Configure IP Sharing
+
+IP sharing, also referred to as IP failover, is the process by which an IP address is reassigned from one Compute Instance to another in the event the first one fails or goes down. See, [Configuring IP Sharing](/docs/guides/managing-ip-addresses/#configuring-ip-sharing) for information about using Linode Cloud Manager to configure IP failover.
 
 Configure IP failover on `galera2` and `galera3` to take on the floating IP address from `galera1` in the event that it fails.
-
-1.  Go to the **Networking** tab in the Linode Cloud Manager for `galera2`, and click **IP Failover** under your public IP addresses.
-
-1.  You'll see a menu listing all of the Linodes on your account. Check the box corresponding to the new private IP address for `galera1`, which we will now refer to as the floating IP address, and click **Save Changes**.
-
-1.  Repeat the above steps to configure IP failover for `galera3` as well. Make sure to select the same IP address.
 
 ### Disable SELinux for Keepalived
 

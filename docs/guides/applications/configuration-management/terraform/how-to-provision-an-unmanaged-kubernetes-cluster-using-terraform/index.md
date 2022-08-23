@@ -63,7 +63,7 @@ The module's script `preflight.sh` verifies these requirements are installed on 
 -  set up the SSH agent
 -  create an environment variable to store the API v4 token
 
-If there is an error stating the system is missing Python, scp, or sed, use the operating system's [package manager](https://www.linode.com/docs/tools-reference/linux-package-management/) to install the missing utilities.
+If there is an error stating the system is missing Python, scp, or sed, use the operating system's [package manager](/docs/guides/linux-package-management/) to install the missing utilities.
 
   {{< disclosure-note "Create a Python Alias" >}}
 If Python is invoked using `python3`, alias the command so Terraform can [execute scripts locally](https://www.terraform.io/docs/provisioners/local-exec.html) using Python as its interpreter. Using a text editor, edit `~/.bashrc` file to include the following alias:

@@ -428,8 +428,8 @@ Content-Type: text/html; charset="UTF-8"
 {{< /output >}}
 
 From the above email it is clear that:
-- SPF is properly configured: `dkim=pass header.i=@domain.com header.s=google header.b=TDC76zp2`
-- DKIM has a pass: `spf=pass (google.com: domain of email@domain.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=email@domain.com;`
+- SPF is properly configured: `spf=pass (google.com: domain of email@domain.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=email@domain.com;`
+- DKIM has a pass: `dkim=pass header.i=@domain.com header.s=google header.b=TDC76zp2`
 - DMARC is properly set too: `dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=domain.com`
 
 

@@ -14,7 +14,6 @@ modified_by:
   name: Linode
 published: 2014-10-08
 title: How to Install a Webmin Control Panel and Modules on Ubuntu 16.04
-expiryDate: 2019-11-10
 external_resources:
  - '[Webmin Home Page](http://www.webmin.com/)'
  - '[Webmin Documentation](http://www.webmin.com/docs.html)'

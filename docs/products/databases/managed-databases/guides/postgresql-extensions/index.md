@@ -5,23 +5,42 @@ author:
 title: "PostgreSQL Extensions"
 description: "Learn which PostgreSQL extensions are supported by Linode's Managed Database service and how to install them."
 published: 2022-06-06
+modified: 2022-08-12
 ---
 
-The functionality of PostgreSQL can be enhanced through the use of extensions. Linode's PostgreSQL Managed Database service supports many of these extensions and they are available for any user to install and utilize.
+The functionality of PostgreSQL can be enhanced through the use of [extensions](https://wiki.postgresql.org/wiki/Extensions). Linode's PostgreSQL Managed Database service supports many of these extensions and they are available for any user to install and utilize.
 
-## View Available Extensions
+## Manage Extensions
 
-To see a full list of all the extensions available for your version of PostgreSQL, connect to your database and run the following query. You can also review the [List of Available Extensions](#list-of-available-extensions) below.
+All extensions can be viewed, installed, and removed directly from the PostgreSQL command-line prompt. To access this prompt, connect to your database using the psql tool. See [Connect to a PostgreSQL Database > psql](/docs/products/databases/managed-databases/guides/postgresql-connect/#connect-using-psql-cli).
+
+### View Installed Extensions
+
+To view the extensions that are currently installed on your PostgreSQL Managed Database, run the `\dx` command at the prompt. The output should be similar to the following, displaying each extension along with its version number, schema, and a short description.
+
+{{< output >}}
+     Name      | Version |   Schema   |          Description
+---------------+---------+------------+--------------------------------
+ plpgsql       | 1.0     | pg_catalog | PL/pgSQL procedural language
+{{</ output >}}
+
+### View Available Extensions
+
+To see a full list of all the extensions available for your version of PostgreSQL, run the following query. You can also review the [List of Available Extensions](#list-of-available-extensions) below.
 
     SELECT * FROM pg_available_extensions;
 
-## Install an Extension
+{{< caution >}}
+Linode does not provide superuser access to PostgreSQL Managed Databases. As such, some extensions may not function properly or may otherwise encounter permissions issues.
+{{</ caution >}}
+
+### Install an Extension
 
 To install one of the available extensions on your database, use the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command, replacing *[extension_name]* with the name of the extension you wish to install.
 
     CREATE EXTENSION IF NOT EXISTS [extension_name];
 
-## Remove an Extension
+### Remove an Extension
 
 To remove an extension, use the [DROP EXTENSION](https://www.postgresql.org/docs/current/sql-dropextension.html) command, replacing *[extension_name]* with the name of the extension you wish to install.
 
@@ -29,17 +48,17 @@ To remove an extension, use the [DROP EXTENSION](https://www.postgresql.org/docs
 
 ## List of Available Extensions
 
-The table below lists all of the PostgreSQL extensions that are supported by our Managed Database service. Note that not all extensions are supported on all PostreSQL versions. Furthermore, the actual installed version of the extension itself may vary between PostgreSQL versions.
+The table below lists all of the PostgreSQL extensions that may be supported by our Managed Database service, along with the compatible PostgreSQL versions.
 
-{{< note >}}
-While this list is kept updated, the most recent and accurate list can be generated through the instructions in the [View Available Extensions](#view-available-extensions) section.
-{{</ note >}}
+{{< caution >}}
+Linode does not provide superuser access to PostgreSQL Managed Databases. As such, some extensions may not function properly or may otherwise encounter permissions issues. Extensions that are known not to work, such as `adminpack`, have been marked as incompatible in the list below. If you encounter an extension that isn't working as expected due to permissions issues, our team can review the extension. Reach out to [Support] with the extension name, the name of the database for which you wish to use the extension, and your use case.
+{{</ caution >}}
 
 | Extension | Compatible PostgreSQL Version(s) | Description |
 | -- | -- | -- |
 | `address_standardizer` | 11, 12, 13 | Used to parse an address into constituent elements. Generally used to support geocoding address normalization step. |
 | `address_standardizer_data_us` | 11, 12, 13 | Example dataset for `address_standardizer`. |
-| `adminpack` | 10, 11, 12, 13 | Administrative functions for PostgreSQL |
+| `adminpack` (**incompatible**) | 10, 11, 12, 13 | Administrative functions for PostgreSQL |
 | `amcheck` | 10, 11, 12, 13 | Functions for verifying relation integrity |
 | `amcheck_next`| 10, 11 | Functions for verifying relation integrity |
 | `autoinc` | 10, 11, 12, 13 | Functions for auto incrementing fields |

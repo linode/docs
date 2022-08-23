@@ -177,7 +177,7 @@ if num_messages == 0:
 {{< disclosure-note "About the code" >}}
 - Line 3 [retrieves a list of messages from the server](https://docs.python.org/3/library/poplib.html#poplib.POP3.list). The `list()` method sends the [`LIST` POP command](https://datatracker.ietf.org/doc/html/rfc1939#page-6) to the server and returns a tuple:
 
-    1. The first member of the tuple (assigned to `pop_list_response`) is a byte string that contains a response status from the server. The string shows how many emails are are on the server, and the total size of those emails. Here's an example response status:
+    1. The first member of the tuple (assigned to `pop_list_response`) is a byte string that contains a response status from the server. The string shows how many emails are on the server, and the total size of those emails. Here's an example response status:
 
         ```
         b'+OK 5 messages (80000 bytes)'
