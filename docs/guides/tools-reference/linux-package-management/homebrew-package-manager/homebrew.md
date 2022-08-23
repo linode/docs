@@ -1,4 +1,4 @@
-bash
+# How to Manage Packages with Homebrew on Linux
 ---
 author:
   name: Linode
@@ -151,7 +151,7 @@ Run the script with the `--help` flag to see uninstallation options.
 
         bash uninstall.sh --help
 
-{{< output >}}
+
         Homebrew Uninstaller
         Usage: uninstall.sh [options]
             -p, --path=PATH  Sets Homebrew prefix. Defaults to /usr/local.
@@ -162,7 +162,7 @@ Run the script with the `--help` flag to see uninstallation options.
             -d, --dry-run    Simulate uninstall but don't remove anything.
             -h, --help       Display this message.
 
-{{< /output >}}
+
 
 Finally, run the script without any arguments to remove **Homebrew** completely.
 
