@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.133.0
+  version: 4.134.0
 
   title: Linode API
   description: |
@@ -7073,6 +7073,8 @@ paths:
           * Deletes all Disks, Backups, Configs, etc.
           * Stops billing for the Linode and its associated services. You will be billed for time used
             within the billing period the Linode was active.
+
+        Linodes that are in the process of [cloning](/docs/api/linode-instances/#linode-clone) or [backup restoration](/docs/api/linode-instances/#backup-restore) cannot be deleted.
       operationId: deleteLinodeInstance
       x-linode-cli-action: delete
       security:
