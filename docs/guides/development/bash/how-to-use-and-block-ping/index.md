@@ -1,7 +1,7 @@
 ---
 slug: how-to-use-and-block-ping
 author:
-  name: Linode Community
+  name: Muhammed Ali
   email: docs@linode.com
 description: 'In this article, you will learn what ping is, its usefulness, how to use the command, and how to block it when it’s necessary.'
 og_description: 'In this article, you will learn what ping is, its usefulness, how to use the command, and how to block it when it’s necessary.'
@@ -14,8 +14,8 @@ title: "How to Use the ping Command and How to Block it"
 h1_title: "How to Use the ping Command and How to Block it"
 enable_h1: true
 contributor:
-  name: Your Name
-  link: Github/Twitter Link
+  name: Muhammed Ali
+  link: https://twitter.com/mvhammedali
 ---
 Would you like to learn more about the ping command and how to block it when needed?
 
@@ -92,10 +92,9 @@ As the name suggests, Uncomplicated Firewall (UFW) provides a simple way to set 
 
 1. Scroll down to where you have `# ok icmp codes for INPUT` and replace the word “**ACCEPT**” with “**DROP**” as you see in the image below. Then type Ctrl+x and follow the prompts to save the changes.
 
-![icmp.png](icmp.png)
-
+   ![icmp.png](icmp.png)
 1. Now you have to reload UFW for the changes to take effect. You can do this by running the following command:
 
-    sudo ufw reload
+        sudo ufw reload
 
   When you try pinging the IP address, you will notice that it won’t go through. You can reverse this effect by changing the “DROP” parameters to “ACCEPT” in `# ok icmp codes for INPUT`.
