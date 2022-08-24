@@ -82,7 +82,7 @@ These steps show you how to download the Git repository for Countly and use the 
     {{< file "/etc/nginx/sites-available/default" conf >}}
 # [...]
 
-	server_name  localhost example.com 192.0.2.0;
+    server_name  localhost example.com 192.0.2.0;
 
 # [...]
     {{< /file >}}
