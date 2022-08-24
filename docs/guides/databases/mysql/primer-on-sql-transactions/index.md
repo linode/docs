@@ -1,5 +1,5 @@
 ---
-slug: a-primer-on-sql-transactions
+slug: a-primer-on-sql-transactions-new-location
 author:
   name: Linode Community
   email: docs@linode.com
@@ -16,7 +16,10 @@ enable_h1: true
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/
+aliases: ['/docs/guide/a-primer-on-sql-transactions/']
 ---
+
+test change
 
 In SQL, transactions are essential for maintaining database integrity when dealing with multiple related operations as well as when multiple users are interacting with a database concurrently. In this guide, you learn the concept of SQL Transactions, what they are, and how to work with them.
 
