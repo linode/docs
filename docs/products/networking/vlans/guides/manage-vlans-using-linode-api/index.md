@@ -1,5 +1,4 @@
 ---
-slug: vlan-api
 author:
   name: Linode
   email: docs@linode.com
@@ -15,26 +14,8 @@ h1_title: "Creating a Private Network with VLANs Using Linode's API"
 enable_h1: true
 contributor:
   name: Linode
-aliases: ['/platform/vlan/how-to-create-a-private-network-with-linode-vlans-api/']
+aliases: ['/platform/vlan/how-to-create-a-private-network-with-linode-vlans-api/','/guides/how-to-create-a-private-network-with-linode-vlans-api/','/guides/vlan-api/']
 ---
-
-## What is a VLAN?
-
-Linode VLANs (Virtual Local Area Networks) are a completely free solution available to Linode Services used for enabling private networking in the cloud. Here are a few key features of VLANs:
-
-- **Privacy and security.** Linodes on the same account and in the same region can be added to a VLAN, allowing for private and secure communications between those Linodes. The public internet can also be disabled on a Linode to provide even more security.
-
-    {{< note >}}
-VLANs are separate from [Private IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address). Private IPs are accessible to all Linodes in that same data center and can only be further restricted by firewall rules or additional internal configuration.
-{{< /note >}}
-
-- **Performance.** A VLAN is configured as a Layer 2 networking device on a Linode and provides low latency for latency-sensitive applications.
-
-- **No additional charges.** VLANs are available at no cost and network transfer over a VLAN does not count towards monthly transfer quotas.
-
-Refer to the [Common Use Cases for Linode LAN](/docs/guides/common-linode-vlan-use-cases) guide to view diagrams demonstrating example scenarios using the network interface configurations described above.
-
-## In this Guide
 
 This guide shows you how to use [Linode's API](/docs/api) to create and attach a VLAN to a Linode.
 
@@ -257,6 +238,3 @@ When updating a Configuration Profile's `interfaces` array, the previous interfa
             "config_id": 23456
           }' \
           https://api.linode.com/v4/linode/instances/123/reboot
-
-
-{{< content "vlans-limitations-shortguide" >}}
