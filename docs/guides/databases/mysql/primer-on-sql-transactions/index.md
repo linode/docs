@@ -20,7 +20,7 @@ contributor:
 
 ## What are SQL Transactions?
 
-A SQL *transaction* is a grouping of one or more SQL statements that interact with a database. A transaction in its entirety can *commit* to a database as a single logical unit or *rollback* (undone) as a single logical unit. In SQL, transactions are essential for maintaining database integrity. They are used to preserve integrity when multiple related operations are executed concurrently, or when multiple users interact with a database concurrently.
+A SQL *transaction* is a grouping of one or more SQL statements that interact with a database. A transaction in its entirety can *commit* to a database as a single logical unit or *rollback* (become undone) as a single logical unit. In SQL, transactions are essential for maintaining database integrity. They are used to preserve integrity when multiple related operations are executed concurrently, or when multiple users interact with a database concurrently.
 
 ## In this Guide
 
@@ -87,7 +87,7 @@ Alternatively, you can also use the below command. The following command can als
 
 ## Roll Back Transaction Syntax
 
-If a database application determines that something in a change in a transaction has failed, the application can use the `ROLLBACK` statement. This statement can effectively de-commit any statements that have already been executed since the beginning of the transaction. In SQL Server and MySQL, the following command is used to roll back a transaction:
+If a database application determines that a change in a transaction has failed, the application can use the `ROLLBACK` statement. This statement can effectively de-commit any statements that have already been executed since the beginning of the transaction. In SQL Server and MySQL, the following command is used to roll back a transaction:
 
     ROLLBACK;
 
@@ -111,7 +111,7 @@ The following examples demonstrate different ways to use SQL transactions from t
 
 ### Example 1: Commit a Transaction
 
-The example below obtains the largest `CourseId` value from table `Course` and adds `1` to it. It then inserts a row into the `Course` table and commits the transaction. Before Commit, if any part of the `CourseAdd` transaction fails to execute, then none of the transactions can be processed. That means if the `Select` or `Insert` statement fails in some capacity, the entire transaction is null and void.
+The example below obtains the largest `CourseId` value from table `Course` and adds `1` to it. It then inserts a row into the `Course` table and commits the transaction. Before committing, if any part of the `CourseAdd` transaction fails to execute, then none of the transactions can be processed. That means if the `Select` or `Insert` statement fails in some capacity, the entire transaction is null and void.
 
     BEGIN TRANSACTION CourseAdd;
 
