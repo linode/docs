@@ -13,7 +13,7 @@ Once a Block Storage Volume has been attached to a Compute Instance, you need to
 
 1.  Locate the desired Volume within the list and click the **Show Config** link, which may appear within the **more options ellipsis** dropdown menu.
 
-1.  The **Volume Configuration** panel appears amd contains the commands needed to fully configure the Volume with your Compute Instance.
+1.  The **Volume Configuration** panel appears and contains the commands needed to fully configure the Volume with your Compute Instance.
 
 1.  Login to your Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 

@@ -15,4 +15,4 @@ Volumes can only be attached to Compute Instances located in the same data cente
 
 1. Detach the Volume from the original Compute Instance. See [Attach and Detach Volumes > Detach a Volume](/docs/products/storage/block-storage/guides/attach-and-detach/#detach-a-volume) for instructions.
 
-1. Attach the Volume to the desired Comute Instance within the same data center as the Volume. See [Attach and Detach Volumes > Attach a Volume](/docs/products/storage/block-storage/guides/attach-and-detach/#attach-a-volume) for instructions.
+1. Attach the Volume to the desired Compute Instance within the same data center as the Volume. See [Attach and Detach Volumes > Attach a Volume](/docs/products/storage/block-storage/guides/attach-and-detach/#attach-a-volume) for instructions.

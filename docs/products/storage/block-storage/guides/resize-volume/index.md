@@ -31,7 +31,7 @@ At this time, the size of Volumes are only able to be increased (not decreased),
 
     1. Login to your Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 
-    1.  Unmount the Volume, making sure to use the unqiue path for your own Volume:
+    1.  Unmount the Volume, making sure to use the unique path for your own Volume:
 
             umount /dev/disk/by-id/scsi-0Linode_Volume_BlockStorage1
 
