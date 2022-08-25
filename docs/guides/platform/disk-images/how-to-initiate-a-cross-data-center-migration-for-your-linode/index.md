@@ -41,7 +41,7 @@ Migrating your Linode to a new data center will result in a number of changes th
 
 - Any existing Backups created through our [Linode Backup Service](/docs/products/storage/backups/) will not be migrated. Once the Linode's migration has completed, your backup service will restart on its normal schedule.
 
-- Block Storage volumes cannot be migrated to other regions. If you have a Block Storage volume attached to your Linode, it will be detached when the migration begins. See our [How to Use Block Storage with Your Linode](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#how-to-transfer-block-storage-data-between-data-centers) guide, to learn how to transfer a Block Storage volume's data between data centers.
+- Block Storage volumes cannot be migrated to other regions. If you have a Block Storage volume attached to your Linode, it will be detached when the migration begins. See our [Transfer Block Storage Data between Data Centers](/docs/products/storage/block-storage/guides/transfer-volume-data-between-data-centers/) guide to learn how to transfer a Block Storage volume's data between data centers.
 
 - If the Linode is using IPv6 pools, VLANs, or other features that have not yet been deployed to all data centers, the destination data center must also support these features.
 
