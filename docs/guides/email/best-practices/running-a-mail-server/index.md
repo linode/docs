@@ -144,7 +144,7 @@ Here are the most popular IMAP and POP3 servers available:
 
 A TLS (SSL) certificate can be used to encrypt connections to your mail server using protocols like [STARTTLS](https://en.wikipedia.org/wiki/Opportunistic_TLS). It is recommended to obtain your certificate from a public Certificate Authority (CA) to provide authenticity guarantees for your users and avoid warnings and error messages. You can generate a free Let's Encrypt certificate using the [certbot](https://certbot.eff.org/) tool or use a paid service like your domain's registrar or a dedicated certificate provider. See [Obtain a Commercially Signed TLS Certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) for additional details.
 
-If the certificate is for internal use (not a public-facing service) and you are able to mark the certificate as trusted in your user's mail clients, a self-signed certificate may be sufficient. Consider any security implications and user error messages that may appear when using a self-signed certificate. See [Create a Self-Signed TLS Certificate](/docs/guides/create-a-self-signed-tls-certificate/) for instructions.
+If the certificate is for internal use (not a public-facing service) and you are able to mark the certificate as trusted in your users' mail clients, a self-signed certificate may be sufficient. Consider any security implications and error messages that may appear when using a self-signed certificate. See [Create a Self-Signed TLS Certificate](/docs/guides/create-a-self-signed-tls-certificate/) for instructions.
 
 ### Software Installation
 
