@@ -10,14 +10,13 @@ aliases: ['/mailserver/','/email/running-a-mail-server/','/email/best-practices/
 modified_by:
   name: Linode
 published: 2013-06-05
-title: Running a Mail Server
+modified: 2022-08-25
+title: "Running a Mail Server"
 tags: ["email"]
 image: mail_server_tg.png
 ---
 
 This guide offers an overview of installing a mail server on your Linode. It covers mail server configuration, creating mail accounts, and basic overviews of tools relevant to hosting an email webserver.
-
-![Running a Mail Server](mail_server_tg.png "Running Mail Server")
 
 ## Should You Run a Mail Server?
 
@@ -141,9 +140,11 @@ Here are the most popular IMAP and POP3 servers available:
 
 ## Build Your Mail Server
 
-### SSL/TLS Certificate
+### TLS/SSL Certificate
 
-A TLS certificate can be used to encrypt connections to your mail server using e.g., [STARTTLS](https://en.wikipedia.org/wiki/Opportunistic_TLS).  While a self-signed certificate will technically work to encrypt communications, it is recommended to [request a trusted certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) from a public Certificate Authority (CA) to provide authenticity guarantees for your users and avoid warnings and error messages.
+A TLS (SSL) certificate can be used to encrypt connections to your mail server using protocols like [STARTTLS](https://en.wikipedia.org/wiki/Opportunistic_TLS). It is recommended to obtain your certificate from a public Certificate Authority (CA) to provide authenticity guarantees for your users and avoid warnings and error messages. You can generate a free Let's Encrypt certificate using the [certbot](https://certbot.eff.org/) tool or use a paid service like your domain's registrar or a dedicated certificate provider. See [Obtain a Commercially Signed TLS Certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) for additional details.
+
+If the certificate is for internal use (not a public-facing service) and you are able to mark the certificate as trusted in your user's mail clients, a self-signed certificate may be sufficient. Consider any security implications and user error messages that may appear when using a self-signed certificate. See [Create a Self-Signed TLS Certificate](/docs/guides/create-a-self-signed-tls-certificate/) for instructions.
 
 ### Software Installation
 
