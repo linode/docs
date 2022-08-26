@@ -9,11 +9,11 @@ keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip addre
 tags: ["linode platform","cloud manager","networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/']
-modified: 2022-04-08
+modified: 2022-07-19
 modified_by:
   name: Linode
 published: 2016-08-23
-title: "Managing IP Addresses"
+title: "Managing IP Addresses on a Compute Instance"
 ---
 
 Each Linode Compute Instance is equipped with several IP addresses, which enable it to be accessible over the public Internet and to other Linode services. This guide covers how to manage these IP addresses (including viewing, adding, removing, transferring, or sharing them) through the Cloud Manager.
@@ -205,3 +205,15 @@ If your desired IP address does not appear in that list, verify that the Compute
 1.  Click **Save** to enable IP Sharing.
 
 1.  After enabling IP Sharing in the Cloud Manager, the next step is to configure a failover service (such as FRR, lelastic, or Keepalived) within the internal system on each Compute Instance. For more information, see our guide on [Configuring IP Failover](/docs/guides/ip-failover/).
+
+## Viewing the DNS Resolvers' IP Addresses
+
+Each data center has its own set of DNS resolvers, which are accessed through both IPv4 or IPv6 addresses. To view the DNS resolvers, follow the instructions below.
+
+1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
+
+1.  Click on your Linode Compute Instance from the list to view more details.
+
+1.  Navigate to the **Network** tab and review the **DNS Resolvers** list, which should appear to the right of (or below) the network transfer graph.
+
+    ![Screenshot of the DNS resolvers in the Cloud Manager](dns-resolvers.png)

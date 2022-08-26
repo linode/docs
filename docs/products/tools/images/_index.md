@@ -6,7 +6,7 @@ tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/guides/linode-images/','/linode-images/','/platform/disk-images/linode-images/','/platform/disk-images/linode-images-classic-manager/','/platform/linode-images/','/platform/disk-images/linode-images-new-manager/']
 published: 2020-06-02
-modified: 2022-05-11
+modified: 2022-07-12
 tab_group_main:
     is_root: true
     title: Overview
@@ -45,7 +45,7 @@ Images can be created and deployed across [all regions](https://www.linode.com/g
 Custom Images cost $0.10/GB per month.
 
 {{<note>}}
-Recovery Images, generated automatically after a Compute Instance is deleted, are provided at no charge.
+Recovery Images, which are generated automatically after a Compute Instance is deleted, are provided at no charge.
 {{</note>}}
 
 ## Technical Specifications
@@ -58,11 +58,9 @@ Recovery Images, generated automatically after a Compute Instance is deleted, ar
 
 - **Upload image format and size limits:** The [.img](https://en.wikipedia.org/wiki/IMG_%28file_format%29) file format is supported when uploading an image file. This file should be compressed using [gzip](https://en.wikipedia.org/wiki/Gzip) (`.img.gz`). It can be up to **5GB** when compressed and, when uncompressed, up to the **maximum image size** as stated above.
 
-{{<note>}}
-\* If you need to store larger images (or more images), contact [Linode Support](https://www.linode.com/support/) with additional details of your applications or intended workloads.
-{{</note>}}
+\* *If you need to store larger images (or more images), contact [Linode Support](https://www.linode.com/support/) with additional details of your applications or intended workloads.*
 
-**Additional specifications:**
+### Additional Specifications
 
 - [Capture an Image > Requirements and Considerations](/docs/products/tools/images/guides/capture-an-image/#requirements-and-considerations)
 - [Upload an Image > Requirements and Considerations](/docs/products/tools/images/guides/upload-an-image/#requirements-and-considerations)

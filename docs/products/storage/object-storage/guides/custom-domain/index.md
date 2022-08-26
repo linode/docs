@@ -16,7 +16,7 @@ contributor:
 aliases: ['/platform/object-storage/enable-ssl-for-object-storage/','/guides/enable-ssl-for-object-storage/']
 ---
 
-Linode's Object Storage service supports both shared and custom domain names. By default, files can be accessed through secured (HTTPS) URLs within the shared domain *\*.linodeobjects.com*. If you prefer, you can use a custom domain, such as a subdomain of *\*.example.com*. This guide walks you through the configuration of a custom domain and adding a TLS certificate to secure that custom domain. When configuring Linode services, this guide uses the Cloud Manager, though the [Linode CLI](https://www.linode.com/docs/platform/api/linode-cli/) and the [Linode API](https://developers.linode.com/api/v4/object-storage-buckets-cluster-id-bucket-ssl) can be used instead.
+Linode's Object Storage service supports both shared and custom domain names. By default, files can be accessed through secured (HTTPS) URLs within the shared domain *\*.linodeobjects.com*. If you prefer, you can use a custom domain, such as a subdomain of *\*.example.com*. This guide walks you through the configuration of a custom domain and adding a TLS certificate to secure that custom domain. When configuring Linode services, this guide uses the Cloud Manager, though the [Linode CLI](/docs/products/tools/cli/get-started/) and the [Linode API](/docs/api/object-storage/) can be used instead.
 
 ## Before you Begin
 

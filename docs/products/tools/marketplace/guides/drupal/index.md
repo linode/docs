@@ -7,7 +7,7 @@ keywords: ['drupal','marketplace', 'cms']
 tags: ["cloud-manager","linode platform","drupal","cms","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-25
-modified: 2022-03-08
+modified: 2022-07-11
 modified_by:
   name: Linode
 title: "Deploying Drupal through the Linode Marketplace"
@@ -34,7 +34,7 @@ In addition to the core infrastructure, there are a number of freely available D
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10
+- **Supported distributions:** Debian 11
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Drupal Options
