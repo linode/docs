@@ -74,18 +74,18 @@ main_firewalls/
 ├── terraform.tfvars
 ├── variables.tf
 └── modules/
-&emsp;&emsp;&emsp;&emsp;├── inbound_ssh/
-&emsp;&emsp;&emsp;&emsp;│&emsp;&emsp; ├── main.tf
-&emsp;&emsp;&emsp;&emsp;│&emsp;&emsp; ├── variables.tf
-&emsp;&emsp;&emsp;&emsp;│&emsp;&emsp; └── outputs.tf
-&emsp;&emsp;&emsp;&emsp;└── mysql/
-&emsp;&emsp;&emsp;&emsp;│&emsp;&emsp; ├── main.tf
-&emsp;&emsp;&emsp;&emsp;│&emsp;&emsp; ├── variables.tf
-&emsp;&emsp;&emsp;&emsp;│&emsp;&emsp; └── outputs.tf
-&emsp;&emsp;&emsp;&emsp;└── web_server/
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ├── main.tf
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; ├── variables.tf
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; └── outputs.tf
+	├── inbound_ssh/
+		├── main.tf
+		├── variables.tf
+		└── outputs.tf
+	└── mysql/
+		├── main.tf
+		├── variables.tf
+		└── outputs.tf
+	└── web_server/
+		├── main.tf
+		├── variables.tf
+		└── outputs.tf
 {{</ output >}}
 
 1. Move into your `terraform` directory.
@@ -94,7 +94,7 @@ main_firewalls/
 
 1. From your `terraform` directory, create the directory structure outlined above.
 
-        mkdir -p main_firewalls/{inbound_ssh,mysql,web_server}
+        mkdir -p main_firewalls/modules/{inbound_ssh,mysql,web_server}
 
     {{< note >}}
 If you followed our [install Terraform](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) steps, then your Terraform executable will be located in the `terraform` directory. If this is not the case, ensure that you can execute Terraform commands from the `main_firewalls` directory.
