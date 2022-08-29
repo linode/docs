@@ -43,8 +43,6 @@ The following database management systems (DBMSs) are available (or coming soon)
 
     {{< content "managed-database-mongodb-private-notice-shortguide" >}}
 
-- **Redis** *(Coming soon)*: An in-memory NoSQL database that stores its data as key-value pairs. It's most commonly used as a caching system.
-
 See [Choosing a Database Engine and Plan](/docs/products/databases/managed-databases/guides/database-engines/) for more details on each of the available database engines.
 
 ## Recommended Workloads
