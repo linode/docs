@@ -56,7 +56,7 @@ A reverse proxy is a server that sits between internal applications and external
 
         sudo apt install nginx
 
-1.  Ensure NGINX is running and and enabled to start automatically on reboot:
+1.  Ensure NGINX is running and enabled to start automatically on reboot:
 
         sudo systemctl start nginx
         sudo systemctl enable nginx

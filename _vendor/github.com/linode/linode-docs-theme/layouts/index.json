@@ -1,6 +1,6 @@
 {{- $index := slice -}}
 {{- $pages := where .Site.Pages "Type" "not in"  (slice "page" "json" "api" ) -}}
-{{- range $i, $e := $pages -}}
+{{- range $i, $p := $pages -}}
 {{- $shouldAdd := true }}
 {{- $img := partial "funcs/get-bundle-image.html" . -}}
 {{- $thumb := $img -}}
@@ -32,12 +32,14 @@
 {{- end -}}
 {{- if not $section -}}
 {{- $entries := $owningSection.SectionsEntries -}}
+{{- if $entries -}}
 {{- $first := index $entries 0 -}}
 {{- $rest := $entries | after 1 -}}
 {{- if .IsSection -}}
 {{- $first = printf "%s-branches" $first -}}
 {{- end -}}
 {{- $entries = slice $first | append $rest -}}
+{{- end -}}
 {{- $section = delimit $entries " > " }}
 {{- end -}}
 {{- $excerpt := "" -}}
@@ -51,16 +53,39 @@
 {{/* This is set in products pages. */}}
 {{- $ordinal = .weight }}
 {{- end -}}
+{{ $href := .RelPermalink }}
+{{ $hierarchy := slice }}
+{{- if eq .Section "reference-architecture" }}
+
+{{- $sections := partial "funcs/get-parent-sections" . -}}
+
+{{- if gt (len $sections) 2 -}}
+  
+    {{/*  For the reference-architecture section we index all items with the first section's href and use the distinct feature in Algolia.
+
+    We store the page hierarchy down to this page as a JSON. 
+
+    Note that we will probably use this hierarchy JSON for "hashlink" searches in the future.
+
+    */}}
+
+    {{ $sections = $sections | append $p }}
+
+    {{ range $i, $e := $sections }}
+        {{ if gt $i 1 }}
+            {{ $hierarchy = $hierarchy | append (dict "href" $e.RelPermalink "title" $e.Title "linkTitle" $e.LinkTitle) }}
+            {{ if eq $i 2 }}
+                {{ $href = $e.RelPermalink }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{- end -}}
+{{- end -}}
+{{- $shouldAdd = and $shouldAdd $section -}}
 {{- $deprecated := cond (ne .Params.deprecated nil) .Params.deprecated false -}}
 {{- $title := partial "funcs/get-page-title.html" . }}
-{{- $path := "" -}}
-{{- with .File -}}
-    {{ $path = .Path -}}
-{{- else -}}
-    {{ $path = .Path }}
-{{- end -}}
-{{- $objectID := printf "%s-%s" .Lang $path | md5 -}}
-{{- $dict := (dict "objectID" $objectID "ordinal" $ordinal "thumbnailUrl" $thumb.RelPermalink "section" $section "category" $category "tags" $tags "excerpt" $excerpt "title" $title "linkTitle"  .LinkTitle "href" .RelPermalink "lastUpdatedTime" .Lastmod.Unix "firstPublishedTime" .PublishDate.Unix "firstPublishedYear" .PublishDate.Year "keywords" .Params.keywords "deprecated" $deprecated "hiddenguide" .Params.hiddenguide "h1" .Params.h1_title "toc" (.TableOfContents | plainify | transform.HTMLUnescape ) "excludeFromViews" $excludeFromViews ) }}
+{{- $objectID := (partial "funcs/get-objectid.html" . ) -}}
+{{- $dict := (dict "objectID" $objectID "ordinal" $ordinal "thumbnailUrl" $thumb.RelPermalink "section" $section "category" $category "tags" $tags "excerpt" $excerpt "title" $title "linkTitle"  .LinkTitle "href" $href "lastUpdatedTime" .Lastmod.Unix "firstPublishedTime" .PublishDate.Unix "firstPublishedYear" .PublishDate.Year "keywords" .Params.keywords "deprecated" $deprecated "hiddenguide" .Params.hiddenguide "h1" .Params.h1_title "toc" (.TableOfContents | plainify | transform.HTMLUnescape  ) "excludeFromViews" $excludeFromViews "hierarchy" $hierarchy ) }}
 {{- $dict = $dict | merge (dict "skillLevel" .Params.skillLevel "languages" .Params.languages) -}}
 {{- $sectionPath := "" -}}
 {{- if not $sections -}}

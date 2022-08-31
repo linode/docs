@@ -115,6 +115,17 @@ export function newNavController(weglot_api_key) {
 
 			applyUIState(this, false);
 
+			if (document.body.dataset.objectid) {
+				// Add a view event to Algolia analytics.
+				let analyticsItem = {
+					__queryID: this.$store.search.results.lastQueryID,
+					objectID: document.body.dataset.objectid,
+					event: 'view',
+					eventName: 'DOCS: Guide Navigate',
+				};
+				this.$store.nav.analytics.handler.pushItem(analyticsItem);
+			}
+
 			/*
 			TODO(bep) this causes a flicker effect in Turbo.
 			See https://github.com/hotwired/turbo/issues/354#issuecomment-913132264

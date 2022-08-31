@@ -44,7 +44,7 @@ There are several methods you can use to resolve a merge conflict. Depending on 
 
 ### Viewing Details About a Merge Conflict
 
-When encountering a merge conflict, the first step is to find out where the the merge conflict occurred. There are several handy commands that can help you view more information related to your merge conflict.
+When encountering a merge conflict, the first step is to find out where the merge conflict occurred. There are several handy commands that can help you view more information related to your merge conflict.
 
 After merging with an upstream branch using the `git merge <branch-name>` command, the output for a typical merge conflict resembles the following:
 

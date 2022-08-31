@@ -74,7 +74,7 @@ The first time you access your Joomla site, you are prompted to finish the Jooml
 
     ![Screenshot of a Joomla admin login form](joomla-admin-login.png)
 
-1. After logging in, the admin dashboard appears. From here, you can manage your site. This includes creating content, new users, adjusting the the templates, and *much* more. Check out [the official Joomla documentation](https://docs.joomla.org/Main_Page) to learn how to further utilize your Joomla instance.
+1. After logging in, the admin dashboard appears. From here, you can manage your site. This includes creating content, new users, adjusting the templates, and *much* more. Check out [the official Joomla documentation](https://docs.joomla.org/Main_Page) to learn how to further utilize your Joomla instance.
 
     ![Screenshot of a Joomla admin dashboard](joomla-admin-panel.png)
 

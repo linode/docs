@@ -20,8 +20,18 @@ export function newSearchStore(searchConfig, Alpine) {
 	let results = {
 		blank: { loaded: false },
 		main: { loaded: false },
+		// Holds the last Algolia queryID.
+		lastQueryID: '',
 	};
-	const searcher = new Searcher(searchConfig, results.blank, debug);
+
+	const resultCallback = (result) => {
+		if (!result.queryID) {
+			return;
+		}
+		results.lastQueryID = result.queryID;
+	};
+
+	const searcher = new Searcher(searchConfig, results.blank, resultCallback, debug);
 	let searchEffectMain = null;
 	let searchEffectAdHoc = null;
 	const router = newCreateHref(searchConfig);
@@ -41,6 +51,10 @@ export function newSearchStore(searchConfig, Alpine) {
 
 		// The blank (needed for the explorer and section metadata) and the main search result.
 		results: results,
+
+		clearQuery: function () {
+			this.query = newQuery();
+		},
 
 		updateLocationWithQuery() {
 			let href = window.location.pathname + window.location.hash;
@@ -182,7 +196,7 @@ export function newSearchStore(searchConfig, Alpine) {
 				// Load section meta data from Algolia.
 				newRequestCallback(
 					{
-						indexName: searchConfig.meta_index,
+						indexName: searchConfig.indexName(searchConfig.meta_index),
 						params: 'query=&hitsPerPage=600',
 						// We load the Hugo data from the published JSON to save Algolia queries on
 						// load (for the breadcrumbs).
@@ -202,7 +216,7 @@ export function newSearchStore(searchConfig, Alpine) {
 					}
 				),
 				newRequestCallback(createSectionRequest(), (result) => {
-					if (result.index != 'linode-merged') {
+					if (!result.index.endsWith('linode-merged')) {
 						throw `invalid state: ${result.index}`;
 					}
 					debug('withBlank.blank.result:', result);
@@ -239,10 +253,12 @@ export function newSearchStore(searchConfig, Alpine) {
 		}
 
 		return {
-			indexName: sectionConfig.index,
+			indexName: searchConfig.indexName(sectionConfig.index),
+			clickAnalytics: searchConfig.click_analytics,
 			filters: filters,
 			facetFilters: facetFilters,
 			facets: facets,
+			distinct: 1,
 			attributesToHighlight: attributesToHighlight,
 			params: `query=${q}&hitsPerPage=${hitsPerPage}&page=${page}`,
 		};
@@ -295,6 +311,8 @@ const normalizeResult = function (self, result) {
 			return sections;
 		}
 
+		let position = 0;
+
 		for (let i = 0; ; i++) {
 			// webserver
 			// webserver apache
@@ -318,12 +336,20 @@ const normalizeResult = function (self, result) {
 				}
 
 				let isGhostSection = k === 'community > question';
+				// These are also indexed on its own.
+				let hasObjectID = sectionLvl0 == 'products' || sectionLvl0 == 'guides';
+				position++;
+
 				sections.push({
 					key: k,
 					count: sectionFacets[k],
 					isGhostSection: isGhostSection,
 					sectionLvl0: sectionLvl0,
 					meta: meta,
+					// Used for Analytics.
+					hasObjectID: hasObjectID,
+					queryID: result.queryID,
+					position: position,
 				});
 			}
 		}
@@ -332,16 +358,29 @@ const normalizeResult = function (self, result) {
 	};
 
 	let lang = getCurrentLang();
+	let index = result.index;
+	let queryID = result.queryID ? result.queryID : '';
 
-	result.hits.forEach((hit) => {
+	result.hits.forEach((hit, idx) => {
+		// For event tracking
+		hit.__index = index;
+		hit.__queryID = queryID;
+		if (hit.__queryID) {
+			// Only send position if we have a queryID.
+			hit.__position = idx + 1 + result.page * result.hitsPerPage;
+		}
+
 		hit.sectionTitle = hit.section;
 		if (hit.section) {
 			hit.section = hit.section.toLowerCase();
 		}
 
 		hit.rootSectionTitle = hit['section.lvl0'];
-		if (hit.rootSectionTitle && hit.rootSectionTitle.endsWith('-branches')) {
-			hit.rootSectionTitle = hit.rootSectionTitle.substring(0, hit.rootSectionTitle.indexOf('-branches'));
+		if (hit.rootSectionTitle) {
+			if (hit.rootSectionTitle.endsWith('-branches')) {
+				hit.rootSectionTitle = hit.rootSectionTitle.substring(0, hit.rootSectionTitle.indexOf('-branches'));
+			}
+			hit.rootSectionTitle = hit.rootSectionTitle.replace('-', ' ');
 		}
 
 		hit.titleHighlighted =
@@ -351,6 +390,14 @@ const normalizeResult = function (self, result) {
 			hit._highlightResult && hit._highlightResult.excerpt ? hit._highlightResult.excerpt.value : hit.excerpt;
 
 		hit.linkTitle = hit.linkTitle || hit.title;
+		hit.mainTitle = hit.title || hit.linkTitle;
+
+		if (hit.hierarchy && hit.hierarchy.length) {
+			// This is the reference-section, pick the main title from
+			// the top level.
+			let first = hit.hierarchy[0];
+			hit.mainTitle = first.title || first.linkTitle;
+		}
 
 		if (hit.href) {
 			hit.isExternalLink = hit.href.startsWith('http');
@@ -391,7 +438,7 @@ const normalizeResult = function (self, result) {
 };
 
 class SearchBatcher {
-	constructor(searchConfig, metaProvider) {
+	constructor(searchConfig, metaProvider, resultCallback = (result) => {}) {
 		const algoliaHost = `https://${searchConfig.app_id}-dsn.algolia.net`;
 		this.headers = {
 			'X-Algolia-Application-Id': searchConfig.app_id,
@@ -402,6 +449,7 @@ class SearchBatcher {
 		this.cache = new LRUMap(12); // Query cache.
 		this.cacheEnabled = true;
 		this.metaProvider = metaProvider;
+		this.resultCallback = resultCallback;
 		this.interval = () => {
 			return this.executeCount === 0 ? 300 : 100; // in ms between batch executions.
 		};
@@ -463,6 +511,7 @@ class SearchBatcher {
 			let cachedResult = this.cache.get(key);
 			if (cachedResult) {
 				cb.callback(cachedResult);
+				this.resultCallback(cachedResult);
 			} else {
 				cacheMisses.push(requestCallbacks[i]);
 				cacheMissesKeys.push(key);
@@ -520,6 +569,7 @@ class SearchBatcher {
 				this.fetchCount++;
 				for (let i = 0; i < data.results.length; i++) {
 					let result = data.results[i];
+					this.resultCallback(result);
 					normalizeResult(this, result);
 					let key = cacheResult.cacheMissesKeys[i];
 					if (!key) {
@@ -541,8 +591,8 @@ class SearchBatcher {
 }
 
 class Searcher {
-	constructor(searchConfig, metaProvider, debug = function () {}) {
-		this.batcher = new SearchBatcher(searchConfig, metaProvider);
+	constructor(searchConfig, metaProvider, resultCallback, debug = function () {}) {
+		this.batcher = new SearchBatcher(searchConfig, metaProvider, resultCallback);
 	}
 
 	searchFactories(factories, query) {
@@ -594,6 +644,13 @@ export function getSearchConfig(params) {
 			return noun;
 		};
 	});
+
+	cfg.indexName = function (index) {
+		if (!cfg.index_prefix) {
+			return index;
+		}
+		return `${cfg.index_prefix}${index}`;
+	};
 
 	return cfg;
 }
