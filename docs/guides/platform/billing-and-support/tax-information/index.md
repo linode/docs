@@ -147,16 +147,20 @@ To view previous invoices, see the [Viewing Invoices and Payments](/docs/guides/
 
 To keep our pricing stable and consistent, rather than fluctuating with exchange rates, we do not bill in local currency. All invoices are in USD.
 
-### What is Linode's Tax ID for my country?
+### What is Linode's Tax ID for my country or province?
 
-| Country and Tax Program | Linode's ID |
+| Country or Province and Tax Program | Linode's ID |
 | -- | -- |
 | Australia ATO ARN | 3000 1606 0612 |
+| British Columbia PST | 1470-0325 |
 | Canadian GST | 724750708RT0001 |
 | EU VAT | EU372008859 |
 | India GST | 9919JEY29001OST |
 | Japan JCT | 00140 |
+| Manitoba RST | 138835-4 |
 | Norway VAT | 2063948 |
+| Quebec Provincial QST (effective May 1, 2022) | 1229663158 TQ0001 |
+| Saskatchewan PST | 759622 |
 | Singapore GST | M90373465T |
 | United Kingdom VAT | GB383720095 |
 | United States EIN | 20-2647179 |

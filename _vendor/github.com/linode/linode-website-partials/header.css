@@ -1,21 +1,16 @@
 :root {
   --site-top-offset: 0px;
   --site-topbar-height: 37px;
-  --site-header-height: 69px;
+  --site-header-height: 76px;
 }
 @media (max-width: 61.99em) {
   :root {
     --site-topbar-height: 0px;
   }
 }
-@media (min-width: 48em) and (max-width: 61.99em) {
-  :root {
-    --site-header-height: 62px;
-  }
-}
 @media (max-width: 47.99em) {
   :root {
-    --site-header-height: 52px;
+    --site-header-height: 61px;
   }
 }
 
@@ -273,12 +268,12 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
 .c-identity__image {
   display: block;
   height: auto;
-  max-width: 145px;
+  max-width: 160px;
   width: 100%;
 }
 @media (max-width: 47.99em) {
   .c-identity__image {
-    max-width: 104px;
+    max-width: 128px;
   }
 }
 
@@ -342,16 +337,18 @@ html[dir=rtl] .weglot-flags a:before, html[dir=rtl] .weglot-flags span:before {
 .c-site-header__primary .o-layout__col {
   flex: none;
 }
-.c-site-header__primary .o-layout__col:nth-child(1) {
-  flex: 0 1 161px;
-  max-width: 161px;
-}
 .c-site-header__primary .o-layout__col:nth-child(2) {
   flex: 1;
 }
 .c-site-header__primary .o-layout__module {
-  margin-bottom: 12px;
-  margin-top: 12px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+@media (max-width: 47.99em) {
+  .c-site-header__primary .o-layout__module {
+    margin-bottom: 8px;
+    margin-top: 8px;
+  }
 }
 .c-site-header__primary .c-main-menu nav {
   margin-right: -12px;
