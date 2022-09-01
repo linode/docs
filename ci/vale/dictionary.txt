@@ -1277,6 +1277,7 @@ multiline
 multilink
 multiplatform
 multiport
+multiprotocol
 multisite
 multitenant
 multiuser
@@ -1638,6 +1639,7 @@ rclone
 rcon
 rdbadmin
 rdiff
+reachability
 readcaps
 reauthenticate
 reauthenticating
