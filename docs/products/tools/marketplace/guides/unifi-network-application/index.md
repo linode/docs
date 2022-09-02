@@ -6,7 +6,7 @@ description: "Deploy UniFi Network Controller, an all-in-one gateway and routing
 keywords: ['UniFi','Network','gateway', 'routing']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-06
+published: 2022-09-01
 modified_by:
   name: Linode
 title: "Deploying the UniFi Network Application through the Linode Marketplace"
