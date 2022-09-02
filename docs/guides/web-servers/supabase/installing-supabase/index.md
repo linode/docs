@@ -90,6 +90,8 @@ Supabase operates its Docker Compose setup out of its Git repository. Thus, you 
 
         git clone --depth 1 https://github.com/supabase/supabase
 
+    You may first need to install Git. Typically, you can do so through your system's package manager. For instance, on Debian and Ubuntu: `sudo apt install git`. And, on CentOS and Fedora: `sudo dnf install git`.
+
 1. Change into the repository's Docker subdirectory:
 
         cd supabase/docker
@@ -188,7 +190,9 @@ Moreover, using NGINX gives a solution for applying SSL certification to your en
 
 1. Install NGINX. You can find the steps to do so in our guide on [How to Install and Use NGINX](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/). Use the drop down at the top of the guide to select your Linux distribution and get the steps matched to it.
 
-1. Open the `default` NGINX configuration file, typically located at `/etc/nginx/sites-available/default`. Remove its default contents, and replace them with the following contents.
+    Additionally, follow any directions in the above guide related to locating and preparing the NGINX default configuration. On Debian and Ubuntu, for instance, this just means finding the configuration file at `/etc/nginx/sites-available/default`. On AlmaLinux, by contrast, you need first to comment out a section in the `/etc/nginx/nginx.conf` file and create a `/etc/nginx/conf.d/example.com.conf` file (replacing `example.com` with your domain).
+
+1. Open the NGINX configuration file that you located/created as part of the above step. For this and following examples, the location is presumed to be `/etc/nginx/sites-available/default`, but know that your location may be different. Remove the configuration file's default contents, and replace them with the following contents.
 
     {{< file "/etc/nginx/sites-available/default" conf >}}
 map $http_upgrade $connection_upgrade {
@@ -247,6 +251,15 @@ server {
         sudo systemctl restart nginx
 
 Afterward, you should be able to access the Supabase dashboard without having to specify port `3000`.
+
+{{< note >}}
+Should you encounter a "bad gateway" error, your system may be denying NGINX due to SELinux rules. You can verify this by checking the NGINX logs at `/var/log/nginx/error.log` and looking for "Permission denied".
+
+[According to Stack Overflow](https://stackoverflow.com/a/24830777), the issue can typically be resolved with the following command. This allows NGINX to make network connection on your system:
+
+    sudo setsebool -P httpd_can_network_connect 1
+
+{{< /note >}}
 
 #### Adding an SSL Certificate
 
