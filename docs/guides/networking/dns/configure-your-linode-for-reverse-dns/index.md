@@ -24,7 +24,7 @@ Reverse DNS uses a *pointer record* (*PTR*) to match an IP address with a domain
 
 ## Determine the Domain Name to Use for rDNS
 
-First, you need to decide what FQDN (full qualified domain name) to use as your rDNS value. The structure of an FQDN is `[subdomain].[domain].[tld]`. For instance, this could be `web-01-prod.example.com`. Commonly, your rDNS domain should match the FQDN hostname of your Linode. If you haven't yet configured your hostname, see [Configure a Custom Hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for example hostnames and instructions.
+First, you need to decide what FQDN (full qualified domain name) to use as your rDNS value. The structure of an FQDN is `[subdomain].[domain].[tld]`. For instance, this could be `web-01-prod.example.com` if you're hosting a website or `mail.example.com` for a mail server. Commonly, your rDNS domain should match the FQDN hostname of your Linode. If you haven't yet configured your hostname, see [Configure a Custom Hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for example hostnames and instructions.
 
 ## Configure DNS Records
 
