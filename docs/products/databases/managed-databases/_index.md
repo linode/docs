@@ -10,7 +10,7 @@ cascade:
     date: 2022-02-23
     product_description: "Fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
 aliases: ['/products/database/']
-modified: 2022-06-06
+modified: 2022-09-02
 ---
 
 {{< content "managed-databases-beta-notice-shortguide" >}}
@@ -94,3 +94,5 @@ In addition to the resources allocated to each available plan (outlined above), 
 - You are not able to access the underlying operating system of a database cluster.
 
 - MongoDB database clusters are currently only accessible over public IP addresses. As such, any traffic counts towards your monthly network transfer usage. Support for private IP addresses will be available in the coming months.
+
+- Live replicas or standby nodes for a high availability Managed Database cluster cannot be created or hosted outside of Linode's Managed Database service.
