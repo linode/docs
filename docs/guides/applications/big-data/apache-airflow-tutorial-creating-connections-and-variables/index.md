@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-30
 modified_by:
   name: Angel D'az
-title: "How to Create Connections and Variables in Apache Airflow"
+title: "Create Connections and Variables in Apache Airflow"
 h1_title: "Creating Connections and Variables in Apache Airflow"
 enable_h1: true
 image: ApacheAirflowTut_CreateConn_Var.png

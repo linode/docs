@@ -11,7 +11,7 @@ published: 2017-04-07
 modified: 2017-04-07
 modified_by:
   name: Linode
-title: 'Use Advanced OpenSSH Features to Harden Access to Your Linode'
+title: 'Use Advanced OpenSSH to Harden Access to Your Linode'
 contributor:
   name: Damaso Sanoja
   link: https://github.com/damasosanoja

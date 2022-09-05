@@ -11,7 +11,7 @@ published: 2021-07-01
 modified_by:
   name: Linode
 title: "Enabling HTTPS Using Certbot with NGINX on CentOS/RHEL 7"
-h1_title: "Securing Web Traffic Using Certbot with NGINX on CentOS/RHEL 7"
+h1_title: "Secure Using Certbot with NGINX on CentOS/RHEL 7"
 enable_h1: true
 relations:
     platform:

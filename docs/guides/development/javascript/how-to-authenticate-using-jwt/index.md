@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
 modified_by:
   name: Nathaniel Stickman
-title: "How to Authenticate Users with JSON Web Tokens (JWTs), Express, and Node.js"
+title: "Authenticate with JWT, Express, and Node.js"
 h1_title: "User Authentication with JSON Web Tokens (JWTs) and Express"
 enable_h1: true
 contributor:

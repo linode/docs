@@ -14,7 +14,7 @@ deprecated: true
 deprecated_link: '/development/ror/use-unicorn-and-nginx-on-ubuntu-18-04'
 modified_by:
     name: Alex Fornuto
-title: 'Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 14.04'
+title: 'Deploy Rails Applications on Ubuntu 14.04 with Unicorn and Niginx'
 contributor:
     name: Vaibhav Rajput
     link: https://twitter.com/rootaux

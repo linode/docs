@@ -10,7 +10,7 @@ published: 2022-07-14
 modified: 2022-07-14
 modified_by:
   name: Linode
-title: "How to Use the Linode Ansible Collection to Deploy a Linode"
+title: "Use the Linode Ansible Collection to Deploy a Linode"
 h1_title: "Using the Linode Ansible Collection to Deploy a Linode"
 enable_h1: true
 contributor:

@@ -11,7 +11,7 @@ modified: 2015-11-25
 modified_by:
   name: Sergey Pariev
 published: 2015-11-25
-title: 'Deploy Django Applications Using uWSGI and Nginx on Ubuntu 14.04'
+title: 'Deploy Django Apps Using Nginx on Ubuntu 14.04'
 contributor:
   name: Sergey Pariev
   link: https://twitter.com/spariev

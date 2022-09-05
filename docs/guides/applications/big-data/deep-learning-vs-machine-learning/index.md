@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-16
 modified_by:
   name: Linode
-title: "The Difference Between Machine Learning and Deep Learning"
+title: "Machine Learning vs. Deep Learning"
 h1_title: "Deep Learning vs. Machine Learning: What’s the Difference?"
 enable_h1: true
 contributor:

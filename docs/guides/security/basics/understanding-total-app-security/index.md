@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-21
 modified_by:
   name: Linode
-title: "Total App Security: Understanding Common Errors and Weaknesses"
+title: "Understanding Common Errors and Weaknesses"
 h1_title: "Understanding Total App Security"
 enable_h1: true
 contributor:

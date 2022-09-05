@@ -11,7 +11,7 @@ modified: 2022-07-12
 published: 2014-12-08
 modified_by:
   name: Linode
-title: "Network Helper: Auto-Configure Networking on Compute Instances"
+title: "Network Helper: Auto-Configure Networking"
 aliases: ['/platform/network-helper-classic-manager/','/platform/network-helper/','/platform/network-helper-new-manager/']
 image: network-helper-title-graphic.jpg
 ---

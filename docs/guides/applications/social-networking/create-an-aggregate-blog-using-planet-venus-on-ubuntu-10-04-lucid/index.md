@@ -13,7 +13,7 @@ modified: 2013-10-04
 modified_by:
   name: Linode
 published: 2010-08-10
-title: 'Create an Aggregate Blog using Planet Venus on Ubuntu 10.04 (Lucid)'
+title: 'Aggregate Blog using Planet Venus on Ubuntu 10.04'
 external_resources:
     - '[The Planet''s Project''s Home Page](http://www.planetplanet.org)'
     - '[Using Cron to Schedule Tasks](/docs/linux-tools/utilities/cron)'

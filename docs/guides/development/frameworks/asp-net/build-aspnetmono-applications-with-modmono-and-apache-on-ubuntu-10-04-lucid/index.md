@@ -12,7 +12,7 @@ modified: 2013-09-27
 modified_by:
   name: Linode
 published: 2010-08-05
-title: 'Build ASP.NET/Mono Applications with mod_mono and Apache on Ubuntu 10.04 (Lucid)'
+title: 'Build ASP.NET/Mono Applications with mod_mono on Ubuntu 10.04'
 deprecated: true
 relations:
     platform:

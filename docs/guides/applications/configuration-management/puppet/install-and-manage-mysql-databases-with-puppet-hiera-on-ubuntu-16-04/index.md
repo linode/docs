@@ -11,7 +11,7 @@ published: 2017-09-11
 modified: 2017-09-11
 modified_by:
     name: Linode
-title: How to Manage MySQL Database with Puppet Hiera on Ubuntu 16.04
+title: Manage MySQL Database with Puppet Hiera on Ubuntu 16.04
 h1_title: Managing MySQL Databases with Puppet Hiera on Ubuntu 16.04
 enable_h1: true
 contributor:

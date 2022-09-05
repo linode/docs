@@ -11,7 +11,7 @@ published: 2020-05-21
 image: WritingScripts_LinodeStackScripts.png
 modified_by:
   name: Linode
-title: "How to Write Scripts for Linode StackScripts (A Tutorial)"
+title: "Write Scripts for Linode StackScripts (A Tutorial)"
 h1_title: "Writing Scripts for Linode StackScripts"
 enable_h1: true
 contributor:

@@ -11,7 +11,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-17
 modified_by:
   name: Linode
-title: "How to Measure a Website's Recurring Readership with Bise"
+title: "Measure a Website's Recurring Readership with Bise"
 h1_title: "Measuring your Website's Recurring Readership with Bise"
 enable_h1: true
 image: MeasureWebsiteRecReader_Bise.png
