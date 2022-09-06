@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.134.0
+  version: 4.135.0
 
   title: Linode API
   description: |
@@ -335,6 +335,9 @@ info:
           ]
         }'
     ```
+    ## Time Values
+
+    All times returned by the API are in UTC, regardless of the timezone configured within your user's profile (see `timezone` property within [Profile View](/docs/api/profile/#profile-view__responses)).
 
     ## Rate Limiting
 
@@ -3269,8 +3272,6 @@ paths:
 
         All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed MongoDB Database during configurable maintenance windows.
 
-        * By default, the maintenance window is set to start *every week* on *Sunday* at *20:00 UTC* and lasts for 3 hours.
-
         * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
 
         * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
@@ -3444,8 +3445,6 @@ paths:
         * **Note**: Updates to the `allow_list` may take a short period of time to complete, making this command inappropriate for rapid successive updates to this property.
 
         All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed MongoDB Database. The maintenance window for these updates is configured with the Managed Database's `updates` property.
-
-        * By default, the maintenance window is set to start *every week* on *Sunday* at *20:00 UTC* and lasts for 3 hours.
 
         * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
 
@@ -4048,8 +4047,6 @@ paths:
 
         All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed MySQL Database during configurable maintenance windows.
 
-        * By default, the maintenance window is set to start *every week* on *Sunday* at *20:00 UTC* and lasts for 3 hours.
-
         * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
 
         * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then [migrate your databases](/docs/products/databases/managed-databases/guides/migrate-mysql/) from the original Managed Database cluster to the new one.
@@ -4217,8 +4214,6 @@ paths:
         * **Note**: Updates to the `allow_list` may take a short period of time to complete, making this command inappropriate for rapid successive updates to this property.
 
         All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed MySQL Database. The maintenance window for these updates is configured with the Managed Database's `updates` property.
-
-        * By default, the maintenance window is set to start *every week* on *Sunday* at *20:00 UTC* and lasts for 3 hours.
 
         * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
 
@@ -4821,8 +4816,6 @@ paths:
 
         All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed PostgreSQL Database during configurable maintenance windows.
 
-        * By default, the maintenance window is set to start *every week* on *Sunday* at *20:00 UTC* and lasts for 3 hours.
-
         * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
 
         * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
@@ -4992,8 +4985,6 @@ paths:
         * **Note**: Updates to the `allow_list` may take a short period of time to complete, making this command inappropriate for rapid successive updates to this property.
 
         All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed PostgreSQL Database. The maintenance window for these updates is configured with the Managed Database's `updates` property.
-
-        * By default, the maintenance window is set to start *every week* on *Sunday* at *20:00 UTC* and lasts for 3 hours.
 
         * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
 
@@ -8699,9 +8690,7 @@ paths:
       - Linode Instances
       summary: IPv4 Address Delete
       description: >
-        Deletes a public IPv4 address associated with this Linode. This will
-        fail if it is the Linode's last remaining public IPv4 address. Private
-        IPv4 addresses cannot be removed via this endpoint.
+        Deletes a public or private IPv4 address associated with this Linode. This will fail if it is the Linode's last remaining public IPv4 address.
       operationId: removeLinodeIP
       x-linode-cli-action: ip-delete
       security:
@@ -19773,7 +19762,7 @@ components:
               type: integer
               minimum: 1
               maximum: 7
-              description: The day to perform maintenance. 1=Sunday, 2=Monday, etc.
+              description: The day to perform maintenance. 1=Monday, 2=Tuesday, etc.
               example: 1
             week_of_month:
               type: integer
