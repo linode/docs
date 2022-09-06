@@ -3,8 +3,8 @@ slug: installing-supabase
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Two to three sentences describing your guide."
-og_description: "Two to three sentences describing your guide when shared on social media."
+description: "Supabase offers an alternative to Firebase. Built around PostgreSQL, Supabase comes with user authentication, REST API, and other features to provide a powerful backend to your applications. Learn in this guide how to install and set up your own self-hosted Supabase instance."
+og_description: "Supabase offers an alternative to Firebase. Built around PostgreSQL, Supabase comes with user authentication, REST API, and other features to provide a powerful backend to your applications. Learn in this guide how to install and set up your own self-hosted Supabase instance."
 keywords: ['install supabase','supabase firebase','supabase self host']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-01
