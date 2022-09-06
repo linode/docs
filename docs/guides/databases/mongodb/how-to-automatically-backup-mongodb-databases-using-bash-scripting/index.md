@@ -1,16 +1,16 @@
 ---
-slug: how-to-automatically-backup-mongodb-databases-using-bash-scripting
+slug: a-shell-script-to-automatically-backup-mongodb-databases
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'In this guide, users will learn how to create a Bash script that creates a backup of all current MongoDB databases. The MongoDB backup will be in a .tar file format, and will be configured to be uploaded to a Linode object storage bucket. Then, users will learn how to configure a Cron job that automatically runs the backup script daily.'
-og_description: 'In this guide, users will learn how to create a Bash script that creates a backup of all current MongoDB databases. The MongoDB backup will be in a .tar file format, and will be configured to be uploaded to a Linode object storage bucket. Then, users will learn how to configure a Cron job that automatically runs the backup script daily.'
+description: 'In this guide, you learn how to create a Bash script that creates a backup of all current MongoDB databases. The MongoDB backup is in a .tar file format and is configured to be uploaded to a Linode object storage bucket. You also learn how to configure a Cron job that automatically runs the backup script daily.'
 keywords: ['bash','backup','mongodb','object storage','cron','linux']
+tags: ['database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-04
 modified_by:
   name: Linode
-title: "How to Automatically Backup Mongodb Databases Using Bash Scripting"
+title: "A Shell Script to Automatically Backup MongoDB Databases"
 h1_title: "How to Automatically Backup Mongodb Databases Using Bash Scripting"
 enable_h1: true
 contributor:
@@ -18,68 +18,60 @@ contributor:
   email: docs@linode.com
 external_resources:
 - '[MongoDB](https://www.mongodb.com/)'
-- '[crontab](https://man7.org/linux/man-pages/man5/crontab.5.html)'
-- '[nano](https://www.nano-editor.org/docs.php)'
+- '[Crontab](https://man7.org/linux/man-pages/man5/crontab.5.html)'
+- '[Nano](https://www.nano-editor.org/docs.php)'
 ---
 
 MongoDB is a popular non-relationship database management system that stores keys and their values in a collection of documents rather than tables with fixed schemas. MongoDB supports a wide variety of options for horizontal scaling, making it an ideal tool for large enterprise production environments.
 
-Backing up the data stored in a MongoDB database is an important step to maintain data integrity and disaster recovery plans. To assure this step is performed regularly, a simple Bash script can be created to backup MongoDB databases to an external source, such as a Linode Object Storage bucket. Then the Bash script can be configured to run daily using the Linux Cron job workflow.
+Backing up the data stored in a MongoDB database is an important step to maintain data integrity and disaster recovery plans. To assure that the MongoDB databases are backed up regularly to an external source such as a Linode Object Storage bucket, a simple Bash script can be created. Then, the Bash script can be configured to run daily using the Linux Cron job workflow.
 
 
 ## Before You Begin
 
 
-1.  Learn about the fundamentals of Linode Object Storage by viewing the [Get Started with Object Storage](/docs/products/storage/object-storage/get-started/) documentation or by reviewing the available [Object Storage guides](/docs/products/storage/object-storage/guides/).
+1. Learn about the fundamentals of Linode Object Storage by viewing the [Get Started with Object Storage](/docs/products/storage/object-storage/get-started/) guide or by reviewing the available [Object Storage guides](/docs/products/storage/object-storage/guides/).
 
-1.  Create a [Linode Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/). This bucket will be used to store your MongoDB backups.
+1. Create a [Linode Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/). This bucket is used to store your MongoDB backups.
 
-1.  Create a pair of [Access Keys](/docs/products/storage/object-storage/guides/access-keys/) for your Linode Object Storage bucket.
+1. Create a pair of [Access Keys](/docs/products/storage/object-storage/guides/access-keys/) for your Linode Object Storage bucket.
 
-1.  Install [MongoDB](/docs/guides/install-mongodb-on-ubuntu-16-04/) on your Linux system.
+1. Install [MongoDB](/docs/guides/install-mongodb-on-ubuntu-16-04/) on your Linux system.
 
 {{< note >}}
-This guide is written using a non-root user account.
-For any commands that require elevated privileges, `sudo` is prefixed at the start of the command syntax.
-If you’re unfamiliar with the `sudo` command workflow, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user account. For any commands that require elevated privileges, `sudo` is prefixed at the start of the command syntax. If you’re unfamiliar with the `sudo` command workflow, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Cyberduck CLI
 
-In this guide, we'll use the [Cyberduck CLI](https://duck.sh/) for interacting with your Linode Object Storage bucket. Cyberduck CLI, also referred to as duck, is a command line interface tool that allows you to access and manage objects stored in your Linode bucket. We'll use duck for uploading our MongoDB backup files to our Linode bucket.
+In this guide, we use the [Cyberduck CLI](https://duck.sh/) for interacting with your Linode Object Storage bucket. Cyberduck CLI, also referred to as [duck](https://duck.sh/), is a command line interface tool that allows you to access, and manage objects stored in your Linode bucket. We use duck for uploading our MongoDB backup files to our Linode bucket.
 
-If you are using a Debian Linux distribution, install [duck](https://duck.sh/) with the following commands:
+If you are using a Debian Linux distribution, install duck with the following commands:
 
-```
-echo -e "deb https://s3.amazonaws.com/repo.deb.cyberduck.io stable main" | sudo tee /etc/apt/sources.list.d/cyberduck.list > /dev/null
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FE7097963FEFBE72
-sudo apt-get update
-sudo apt-get install duck
-```
+    echo -e "deb https://s3.amazonaws.com/repo.deb.cyberduck.io stable main" | sudo tee /etc/apt/sources.list.d/cyberduck.list > /dev/null
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FE7097963FEFBE72
+    sudo apt-get update
+    sudo apt-get install duck
+
 
 If you are using a Red Hat Linux distribution, install [duck](https://duck.sh/) with the following commands:
 
-```
-echo -e "[duck-stable]\nname=duck-stable\nbaseurl=https://repo.cyberduck.io/stable/\$basearch/\nenabled=1\ngpgcheck=0" | sudo tee /etc/yum.repos.d/duck-stable.repo
-sudo yum install duck
-```
+    echo -e "[duck-stable]\nname=duck-stable\nbaseurl=https://repo.cyberduck.io/stable/\$basearch/\nenabled=1\ngpgcheck=0" | sudo tee /etc/yum.repos.d/duck-stable.repo
+    sudo yum install duck
 
-## Creating the Bash Script
 
-Navigate into your user's home directory, or your desired working directory. This guide will use the `/home/linode-user` for example purposes. 
-Create a new file called `backup_mongodb.sh` using the following command:
+## Create Bash Script
 
-```
-touch backup_mongodb.sh
-```
+Navigate into your user's home directory or your desired working directory. This guide uses the `/home/linode-user` directory for example purposes. Create a new file called `backup_mongodb.sh` using the following command:
 
-Open this file in the nano text editor. For more information on Linux nano, check out this [documentation.](https://www.nano-editor.org/docs.php)
+    touch backup_mongodb.sh
 
-In the file, input the following lines of code:
+
+Open the above file in the nano text editor and add the following lines of code. For more information on Linux nano, check out the [official nano documentation](https://www.nano-editor.org/docs.php).
+
 
 {{< file "backup_mongodb.sh" sh >}}
 #!/bin/bash
-
 
 ### Variables in this section will need to be edited to reflect your configuration.
 ###### Start of section
@@ -135,37 +127,34 @@ echo "Backup of MongoDB databases to Linode bucket $BUCKET completed successfull
 
 Refer to the comments in the code to learn what each line in the code does.
 
+## Run the Bash Script
 
-## Running the Bash Script
-
-Before setting the script to run automatically, execute the script to configure your Linode bucket's access key pair. You will need to set the appropriate permissions for this script to be executed. For more information on Linux file permissions, review this guide on [Modifying File Permissions with chmod](/docs/guides/modify-file-permissions-with-chmod/)
+Before setting the above script to run automatically, execute the script to configure your Linode bucket's access key pair. You need to set the appropriate permissions for this script to be executed. For more information on Linux file permissions, review our guide on [Modifying File Permissions with chmod](/docs/guides/modify-file-permissions-with-chmod/)
  
-Modify the script's permissions, then execute the script with the commands:
+Modify the script's permissions, then execute the script with the following commands:
 
 ```
 chmod 755 backup_mongodb.sh
 ./backup_mongodb.sh
 ```
 
-Once you execute the script, enter your Linode Access keys as prompted, and choose the option to save them.
+Enter your Linode Access keys as prompted, and choose the option to save them.
 
 {{< note >}}
-[duck](https://duck.sh/) will save your keys in a plain text file at `~.duck/credentials`. It is important to take appropriate measures to secure this file. Saving your keys in this file is necessary for them to be used when this script is run automatically.
+[Duck](https://duck.sh/) saves your keys in a plain text file at `~.duck/credentials`. It is important to take appropriate measures to secure this file. Saving your keys in this file is necessary for them to be used when this script is run automatically.
 {{< /note >}}
 
 
-## Scheduling Backups as a Cron Job
+## Schedule Backups as a Cron Job
 
 Open the Cron task scheduler with the following command:
 
-`crontab -e`
+    crontab -e
 
-Select your preferred text editor from the menu.
+Select your preferred text editor from the menu and enter the following line in your Cron job file:
 
-Enter the following line in your Cron job file:
+    0 9 * * * /path/to/backup_mongodb.sh
 
-`0 9 * * * /path/to/backup_mongodb.sh`
+Replace `/path/to/` from the above line with the full directory path to your `backup_mongodb.sh` file.
 
-Replace `/path/to/` with the full directory path to your `backup_mongodb.sh` file.
-
-This Cron job is scheduled to run daily at 9:00 AM on your system's configured time zone. For more information on Cron job configuration parameters, review the guide [Using Cron to Schedule Tasks for Certain Times or Intervals](docs/guides/schedule-tasks-with-cron)
+The above Cron job is scheduled to run daily at 9:00 AM in your system's configured time zone. For more information on Cron job configuration parameters, review our guide on [Using Cron to Schedule Tasks for Certain Times or Intervals](/docs/guides/schedule-tasks-with-cron).
