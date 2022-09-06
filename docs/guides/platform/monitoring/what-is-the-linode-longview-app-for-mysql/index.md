@@ -76,7 +76,7 @@ Unless you already have a specific Longview database user set up in the `/etc/li
 
     If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#troubleshooting) section at the end of this article.
 
-    [![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](1459-longview_mysql_popup_crop.png)](1459-longview_mysql_popup_crop.png)
+    ![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](1459-longview_mysql_popup_crop.png)
 
 ### Manual Configuration (All Distributions)
 
@@ -179,7 +179,7 @@ If you don't see Longview data for MySQL, you'll instead get an error on the pag
 
 If you run the [automatic Longview configuration tool](#debian-and-ubuntu-automatic-configuration), and get the popup message shown below:
 
-[![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](1459-longview_mysql_popup_crop.png)](1459-longview_mysql_popup_crop.png)
+![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](1459-longview_mysql_popup_crop.png)
 
 This indicates that Longview can't locate any valid MySQL user credentials, so it will create some for itself (in the `/etc/linode/longview.d/MySQL.conf` file) and ask you to add them to MySQL. To finish getting Longview set up:
 
@@ -222,7 +222,7 @@ This error will state `Unable to connect to the database:` and then specify a re
 
 ### Unable to Collect MySQL Status Information
 
-If you receive the error `Unable to collect MySQL status information`, this indicates that Longview was able to connect to the MySQL database, but the query it uses to collect statistics has failed. This could occur if the database crashes while the query is being executed. The specific reason that it failed will be listed with the error. If the problem persists, contact Linode [support](/docs/platform/billing-and-support/support/).
+If you receive the error `Unable to collect MySQL status information`, this indicates that Longview was able to connect to the MySQL database, but the query it uses to collect statistics has failed. This could occur if the database crashes while the query is being executed. The specific reason that it failed will be listed with the error. If the problem persists, contact Linode [support](/docs/guides/support/).
 
 ### MySQL Tab is Missing
 

@@ -43,7 +43,7 @@ Certification Authority Authorization (CAA) is a type of DNS record that allows 
 
     **Value**: If the **issue** or **issuewild** tag was selected above, then the **Value** field takes the domain of your certificate issuer (for example: `letsencrypt.org`). If the **iodef** tag was selected, the **Value** field takes a contact or submission URL (`http` or `mailto`).
 
-    **TTL (Time to Live)**: Time in seconds that your new CAA record will be cached by Linode's name servers before being refreshed. The *Default* selection's TTL is 300 seconds, which is fine for most cases. You can use the [`dig` command](/docs/networking/dns/use-dig-to-perform-manual-dns-queries/)  to view the remaining time your DNS records will be cached until refreshed. Replace *linode.com* with your site's domain or subdomain in the command below:
+    **TTL (Time to Live)**: Time in seconds that your new CAA record will be cached by Linode's name servers before being refreshed. The *Default* selection's TTL is 300 seconds, which is fine for most cases. You can use the [`dig` command](/docs/guides/use-dig-to-perform-manual-dns-queries/)  to view the remaining time your DNS records will be cached until refreshed. Replace *linode.com* with your site's domain or subdomain in the command below:
 
         root@debian:~# dig +nocmd +noall +answer example.com
         example.com.     167 IN  A   203.0.113.1
@@ -55,4 +55,4 @@ Certification Authority Authorization (CAA) is a type of DNS record that allows 
 
 Multiple CAA records must be added individually. If your site `example.com` was issued a TLS certificate by Let's Encrypt, but your subdomain `store.example.com` uses a Symantec certificate, you would need two different CAA records. A reporting URL for the *iodef* tag would also need its own record. Those three would look something like this:
 
-[![Multiple CAA records](multiple-caa-records.png "Multiple CAA records")](multiple-caa-records.png)
+![Multiple CAA records](multiple-caa-records.png)

@@ -49,7 +49,7 @@ When setting up LXD, you can either store container data in an [external volume]
 
 ### Block Storage Volume
 
-1.  Follow the [How to Use Block Storage with Your Linode](/docs/platform/how-to-use-block-storage-with-your-linode/) guide and create a block storage volume with size *at least 20GB* and attach it to your Linode. Make a note of the device name and the path to the Volume.
+1.  Follow the [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/) guide and create a block storage volume with size *at least 20GB* and attach it to your Linode. Make a note of the device name and the path to the Volume.
 
     {{< caution >}}
 **Do not** format the volume and do not add it to `/etc/fstab`.
@@ -57,7 +57,7 @@ When setting up LXD, you can either store container data in an [external volume]
 
     ![Add a volume for Disk Storage](add-volume-for-disk-storage.png "Add a volume for Disk Storage")
 
-2.  Edit your Configuration Profile and under **Boot Settings** select **GRUB 2** as your kernel. See [Run a Distribution-Supplied Kernel on a KVM Linode](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/) for more information.
+2.  Edit your Configuration Profile and under **Boot Settings** select **GRUB 2** as your kernel. See [Run a Distribution-Supplied Kernel on a KVM Linode](/docs/guides/managing-the-kernel-on-a-linode/) for more information.
 
 3.  Reboot your Linode from the Linode Manager.
 
@@ -230,7 +230,7 @@ This section will create a container, install the Apache web server, and add the
 
 6.  From your local computer, navigate to your Linode's public IP address in a web browser. You should see the default Apache page:
 
-    [![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png)](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
+    ![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
 
 ## Next Steps
 

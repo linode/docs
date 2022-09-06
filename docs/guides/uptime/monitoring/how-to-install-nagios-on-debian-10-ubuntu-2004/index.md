@@ -43,7 +43,7 @@ Nagios's official installation guide shows how to compile Nagios from source cod
 1. Install and configure a LAMP (Linux, Apache, MySQL, and PHP) stack. Follow the [Install a LAMP Stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) or the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide for instructions.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Create a Nagios User and User Group
@@ -122,15 +122,15 @@ Use a web browser to navigate to your machine's domain name or public IP address
 
 - You should be greeted by the Nagios landing page.
 
-[![Landing page for Nagios](nagios-landing-page_small.png "Landing page for Nagios")](nagios-landing-page.png)
+![Landing page for Nagios](nagios-landing-page.png)
 
 - You can view monitoring status information by selecting **Hosts** from the menu on the left.
 
-[![Nagios page displaying monitoring status](nagios-hosts-page_small.png "Nagios page displaying monitoring status")](nagios-hosts-page.png)
+![Nagios page displaying monitoring status](nagios-hosts-page.png)
 
 - You can get details on the services running and their statuses by selecting **Services** from the menu on the left.
 
-[![Nagios page detailing the services running](nagios-services-page_small.png "Nagios page detailing the services running")](nagios-services-page.png)
+![Nagios page detailing the services running](nagios-services-page.png)
 
 ## Next Steps
 

@@ -7,32 +7,32 @@ keywords: ['streaming', "marketplace", "live video streaming"]
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-30
-modified: 2022-03-08
+modified: 2022-05-17
 modified_by:
   name: Linode
-title: "Deploying Ant Media Server through the Linode Marketplace"
+title: "Deploying Ant Media Server Community Edition through the Linode Marketplace"
 external_resources:
 - '[Ant Media](https://antmedia.io)'
 - '[Document](https://github.com/ant-media/Ant-Media-Server/wiki)'
 aliases: ['/guides/deploy-antmediaserver-with-marketplace-apps/','/guides/antmediaserver-marketplace-app/']
 ---
 
-Ant Media Server is Highly Scalable Live Video Streaming Platform with ultra low latency. It supports WebRTC live streaming, in addition to CMAF and HLS streaming. It can be ingested through RTMP, WebRTC, or HLS. Any IP Camera can be connected through RTSP or ONVIF. It also enables live restreaming to social media platforms. All codes (H.264, H.265, and VP8) are enabled, and GPU based encoding is also available.
+[Ant Media Server](https://antmedia.io/) is an [open source](https://github.com/ant-media/Ant-Media-Server) video streaming platform known for its scalability and low latency. It supports WebRTC live streaming, as well as CMAF and HLS streaming, and can be ingested through RTMP, WebRTC, or HLS. There are two editions of Ant Media Server: Community Edition and Enterprise Edition. This Marketplace App installs the Community Edition.
 
-Ant Media Server Community Edition is a limited version of Ant Media Server Enterprise edition and supports the following features.
+The Community Edition is a limited version of Ant Media Server Enterprise Edition and supports the following features.
 
-* Publish live streams with WebRTC, RTMP - Play Live and VoD streams with RTMP and HLS
-* RTMP, RTSP, MP4 and HLS Support
-* WebRTC to RTMP Adapter
-* 360 Degree Live & VoD Streams
-* Web Management Dashboard
-* IP Camera Support
-* Re-stream Remote Streams (IPTV)
-* Open Source https://github.com/ant-media/Ant-Media-Server
-* Simulcasting to Periscope
-* Your Live or VoD streams can play anywhere including mobile(Android, iOS) browsers.
+- Publish live streams with WebRTC, RTMP - Play Live and VoD streams with RTMP and HLS
+- RTMP, RTSP, MP4 and HLS Support
+- WebRTC to RTMP Adapter
+- 360 Degree Live & VoD Streams
+- Web Management Dashboard
+- IP Camera Support
+- Re-stream Remote Streams (IPTV)
+- Open Source https://github.com/ant-media/Ant-Media-Server
+- Simulcasting to Periscope
+- Your Live or VoD streams can play anywhere including mobile(Android, iOS) browsers.
 
-If you need adaptive streaming, cluster, load balancer, and hardware encoding, please use Enterprise Edition http://antmedia.io
+If you need adaptive streaming, cluster, load balancer, and hardware encoding, consider using the [Enterprise Edition](/docs/products/tools/marketplace/guides/antmediaenterpriseserver/).
 
 ## Deploying a Marketplace App
 

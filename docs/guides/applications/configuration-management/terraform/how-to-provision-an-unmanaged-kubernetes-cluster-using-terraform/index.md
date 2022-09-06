@@ -34,9 +34,9 @@ Development work on the module is active. For the latest updates and validated T
 
 Before starting to deploy a Kubernetes cluster with Terraform, make sure:
 
-1. You are familiar with Terraform. You can read through [A Beginner's Guide to Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/) to familiarize yourself with key concepts.
+1. You are familiar with Terraform. You can read through [A Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/) to familiarize yourself with key concepts.
 
-2. You are familiar with Kubernetes concepts. For an introduction, see the [A Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/) series. Read through [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/kubernetes/getting-started-with-kubernetes/) to get familiar with kubeadm.
+2. You are familiar with Kubernetes concepts. For an introduction, see the [A Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/) series. Read through [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/getting-started-with-kubernetes/) to get familiar with kubeadm.
 
 3. You have a personal access token for [Linode’s v4 API](https://developers.linode.com/api/v4) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) to get a token.
    {{< note >}}When creating a personal access token, ensure it is set to **Read/Write** access as new Linode servers are being created.
@@ -63,7 +63,7 @@ The module's script `preflight.sh` verifies these requirements are installed on 
 -  set up the SSH agent
 -  create an environment variable to store the API v4 token
 
-If there is an error stating the system is missing Python, scp, or sed, use the operating system's [package manager](https://www.linode.com/docs/tools-reference/linux-package-management/) to install the missing utilities.
+If there is an error stating the system is missing Python, scp, or sed, use the operating system's [package manager](/docs/guides/linux-package-management/) to install the missing utilities.
 
   {{< disclosure-note "Create a Python Alias" >}}
 If Python is invoked using `python3`, alias the command so Terraform can [execute scripts locally](https://www.terraform.io/docs/provisioners/local-exec.html) using Python as its interpreter. Using a text editor, edit `~/.bashrc` file to include the following alias:
@@ -147,7 +147,7 @@ module "k8s" {
 
     This file contains the main configuration arguments of the cluster. The only required configurations are `source` and `linode_token`. `source` calls Linode's k8s module, while the `linode_token` gives access to viewing, creating, and destroying Linode resources.
 
-    The rest of the configurations are [optional](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2?tab=inputs#optional-inputs) and have some default values. In this example, however, [Terraform's input variables](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/#input-variables) are used, so the `main.tf` configuration can be reused across different clusters.
+    The rest of the configurations are [optional](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2?tab=inputs#optional-inputs) and have some default values. In this example, however, [Terraform's input variables](/docs/guides/beginners-guide-to-terraform/#input-variables) are used, so the `main.tf` configuration can be reused across different clusters.
 
 1. Create an input variables file, named `variables.tf`, with the example content.
 
@@ -187,7 +187,7 @@ variable "nodes" {
 }
       {{</ file >}}
 
-    The example file creates input variables referenced in the main configuration file that was created. The values for those variables are assigned in a separate file in the next step. The default values of the k8s module can be overridden, as in the example file. For more details about input variables, see the [Input Variables](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/#input-variables) section in the [A Beginner's Guide to Terraform](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform/).
+    The example file creates input variables referenced in the main configuration file that was created. The values for those variables are assigned in a separate file in the next step. The default values of the k8s module can be overridden, as in the example file. For more details about input variables, see the [Input Variables](/docs/guides/beginners-guide-to-terraform/#input-variables) section in the [A Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/).
 
 1. Create an input variables values file to provide the main configuration file with values that differ from the defaults in input variable file.
 

@@ -186,4 +186,4 @@ You may wish to consult the following resources for additional information on th
 - [The NGINX Homepage](http://nginx.org/)
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [Perl Documentation](http://perldoc.perl.org/)
-- [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration/)
+- [Basic NGINX Configuration](/docs/guides/how-to-configure-nginx/)

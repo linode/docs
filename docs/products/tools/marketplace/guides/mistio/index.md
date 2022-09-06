@@ -32,7 +32,7 @@ aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platfo
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9, Debian 10
+- **Supported distributions:** Debian 10
 - **Recommended plan:** 8GB Compute Instance
 
 ### Mist.io Options

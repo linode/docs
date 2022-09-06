@@ -57,7 +57,7 @@ The `lsof(8)` binary supports a large number of command line options, including 
 | `-p list` | The `-p` option allows you to select the files for the processes whose process IDs are in the `list`. The `-p` option supports the `^` character for excluding the matches from the output. |
 | `-g list` | The `-g` option allows you to select the files for the processes whose optional process group IDs are in the `list`. The `-g` option supports the `^` character for excluding the matches from the output. |
 | `-s` | The `-s` option allows you to select the network protocols and states that interest you. The `-s` option supports the `^` character for excluding the matches from the output. The correct form is `PROCOTCOL:STATE`. Possible protocols are `UDP` and `TCP`. Some possible TCP states are: `CLOSED`, `SYN-SENT`, `SYN-RECEIVED`, `ESTABLISHED`, `CLOSE-WAIT`, `LAST-ACK`, `FIN-WAIT-1`, `FIN-WAIT-2`, `CLOSING`, and `TIME-WAIT`. Possible UDP states are `Unbound` and `Idle`. |
-| `+d s` | The `+d` option option tells `lsof` to search for all open instances of directory `s` and the files and directories it contains at its top level. |
+| `+d s` | The `+d` option tells `lsof` to search for all open instances of directory `s` and the files and directories it contains at its top level. |
 | `+D directory` | The `+D` option tells `lsof` to search for all open instances of directory `directory` and all the files and directories it contains to its complete depth. |
 | `-d list` | The `-d` option specifies the `list` of file descriptors to include or exclude from the output. `-d 1,^2` means include file descriptor `1` and exclude file descriptor `2`. |
 | `-i4` | This option is used for displaying IPv4 data only. |
@@ -305,7 +305,7 @@ apache2      24571    www-data  6u     IPv6    8626157   0t0       TCP   *:https
 
 #### Internet Connections
 
-If you process the output of `lsof` with some traditional UNIX command line tools, like [grep](/docs/quick-answers/linux/how-to-use-grep/) and `awk`, you can list all active network connections:
+If you process the output of `lsof` with some traditional UNIX command line tools, like [grep](/docs/guides/how-to-use-grep/) and `awk`, you can list all active network connections:
 
     sudo lsof -i -n -P | grep ESTABLISHED | awk '{print $1, $9}' | sort -u
 

@@ -39,7 +39,7 @@ This guide shows how to install Salt Cloud and configure it to work on a Linode.
 
 2.  This guide assumes that Salt Cloud will be installed together with Salt master server.
 
-3.  Generate an [API key](/docs/platform/api/api-key/) to access Linode API. Salt Cloud currently requires a v3 key generated from the [Linode Manager](https://manager.linode.com/profile/api) and *not* the new Cloud Manager. This key will be used by Salt Cloud to manage your instances. Make sure to keep your API key safe. Test your API key is working via the REST interface:
+3.  Generate an [API key](/docs/guides/api-key/) to access Linode API. Salt Cloud currently requires a v3 key generated from the [Linode Manager](https://manager.linode.com/profile/api) and *not* the new Cloud Manager. This key will be used by Salt Cloud to manage your instances. Make sure to keep your API key safe. Test your API key is working via the REST interface:
 
         curl "https://api.linode.com/?api_key=SECRETKEYHERE&api_action=test.echo&foo=bar"
 
@@ -156,7 +156,7 @@ provider: linode-provider
     master: mymaster.example.com
 {{< /file >}}
 
-3.  Set up [SSH key authentication](/docs/security/use-public-key-authentication-with-ssh/) for your instance. To do this during provisioning, set up the profile as follows, replacing the `ssh_pubkey` and `ssh_key_file` with key information for an SSH key on your master server:
+3.  Set up [SSH key authentication](/docs/guides/use-public-key-authentication-with-ssh/) for your instance. To do this during provisioning, set up the profile as follows, replacing the `ssh_pubkey` and `ssh_key_file` with key information for an SSH key on your master server:
 
     {{< file "/etc/salt/cloud.profiles.d/linode-london-1gb.conf" conf >}}
 linode_1gb_with_ssh_key:

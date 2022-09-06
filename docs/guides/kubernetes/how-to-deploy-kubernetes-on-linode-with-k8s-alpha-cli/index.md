@@ -22,7 +22,7 @@ external_resources:
 {{< caution >}}
 This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [delete it](#delete-a-cluster) when you have finished the guide.
 
-If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{< /caution >}}
 
 ## What is the k8s-alpha CLI?
@@ -53,37 +53,37 @@ These nodes will all exist as billable services on your account. You can specify
 #### Rancher
 Another easy way to create clusters is with [Rancher](https://rancher.com). Rancher is a web application that provides a GUI interface for cluster creation and for management of clusters. Rancher also provides easy interfaces for deploying and scaling apps on your clusters, and it has a built-in catalog of curated apps to choose from.
 
-To get started with Rancher, review our [How to Deploy Kubernetes on Linode with Rancher](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/) guide. Rancher is capable of importing clusters that were created outside of it, so you can still use it even if you create your clusters through the k8s-alpha CLI or some other means.
+To get started with Rancher, review our [How to Deploy Kubernetes on Linode with Rancher](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/) guide. Rancher is capable of importing clusters that were created outside of it, so you can still use it even if you create your clusters through the k8s-alpha CLI or some other means.
 
 #### Linode Kubernetes Engine (LKE)
 
 The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](https://www.linode.com/pricing/) with the infrastructure efficiency of Kubernetes.
 
-When you deploy an LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/). Your LKE cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers. To get started with LKE, review our [Deploy a Cluster with Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide.
+When you deploy an LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/guides/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/products/storage/block-storage/). Your LKE cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers. To get started with LKE, review our [Deploy a Cluster with Linode Kubernetes Engine](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide.
 
 ### Beginners Resources
 
 If you haven't used Kubernetes before, we recommend reading through our introductory guides on the subject:
 
--   [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/): this guide explains the concepts and architecture of Kubernetes.
+-   [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/): this guide explains the concepts and architecture of Kubernetes.
 
--   [Getting Started with Kubernetes - Basic Installation and Setup](/docs/kubernetes/getting-started-with-kubernetes/): this guide shows how to create a Kubernetes cluster manually. While you wouldn't normally set your clusters up in this way, doing it once can help provide a better understanding for how a cluster's components fit together.
+-   [Getting Started with Kubernetes - Basic Installation and Setup](/docs/guides/getting-started-with-kubernetes/): this guide shows how to create a Kubernetes cluster manually. While you wouldn't normally set your clusters up in this way, doing it once can help provide a better understanding for how a cluster's components fit together.
 
 ## Before You Begin
 
 1.  You will need to have a personal access token for Linode's API. If you don't have one already, follow the [Get an Access Token](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) section of our API guide and create a token with read/write permissions.
 
-1.  If you do not already have a public-private SSH key pair, you will need to generate one. Follow the [Generate a Key Pair](/docs/security/authentication/use-public-key-authentication-with-ssh/#linux-and-macos) section of our [Public Key Authentication](/docs/security/authentication/use-public-key-authentication-with-ssh/) guide for instructions.
+1.  If you do not already have a public-private SSH key pair, you will need to generate one. Follow the [Generate a Key Pair](/docs/guides/use-public-key-authentication-with-ssh/#linux-and-macos) section of our [Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/) guide for instructions.
 
     {{< note >}}
-If you're unfamiliar with the concept of public-private key pairs, the introduction to our [Public Key Authentication](/docs/security/authentication/use-public-key-authentication-with-ssh/) guide explains what they are.
+If you're unfamiliar with the concept of public-private key pairs, the introduction to our [Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/) guide explains what they are.
 {{< /note >}}
 
 ## Install the k8s-alpha CLI
 
 The k8s-alpha CLI is bundled with the Linode CLI, and using it requires the installation and configuration of a few dependencies:
 
--   [Terraform](#install-terraform): The k8s-alpha CLI creates clusters by defining a resource *plan* in Terraform and then having Terraform create those resources. If you're interested in how Terraform works, you can review our [Beginner's Guide to Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/), but doing so is not required to use the k8s-alpha CLI.
+-   [Terraform](#install-terraform): The k8s-alpha CLI creates clusters by defining a resource *plan* in Terraform and then having Terraform create those resources. If you're interested in how Terraform works, you can review our [Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/), but doing so is not required to use the k8s-alpha CLI.
 
     {{< note >}}
 The k8s-alpha CLI requires [Terraform version 0.12.0+](https://www.hashicorp.com/blog/announcing-terraform-0-12).
@@ -101,7 +101,7 @@ Follow the [Install the CLI](/docs/platform/api/using-the-linode-cli/#install-th
 
 ### Install Terraform
 
-Follow the instructions in the [Install Terraform](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) section of our [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
+Follow the instructions in the [Install Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) section of our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
 
 ### Install kubectl
 
@@ -169,7 +169,7 @@ You may see an error like the following:
 Error creating a Linode Instance: [400] Account Limit reached. Please open a support ticket.
 {{< /output >}}
 
-If this appears, then you have run into a limit on the number of resources allowed on your Linode account. If this is the case, or if your nodes do not appear in the [Linode Cloud Manager](https://cloud.linode.com) as expected, contact [Linode Support](/docs/platform/billing-and-support/support/). This limit also applies to Block Storage Volumes and NodeBalancers, which some of your cluster app deployments may try to create.
+If this appears, then you have run into a limit on the number of resources allowed on your Linode account. If this is the case, or if your nodes do not appear in the [Linode Cloud Manager](https://cloud.linode.com) as expected, contact [Linode Support](/docs/guides/support/). This limit also applies to Block Storage Volumes and NodeBalancers, which some of your cluster app deployments may try to create.
 {{< /note >}}
 
 1.  When the operation finishes, you will see options like the following:
@@ -277,5 +277,5 @@ When you delete a cluster with the k8s-alpha CLI, its connection information wil
 
 Now that you have a cluster up and running, you're ready to start deploying apps to it. Review our other Kubernetes guides for help with deploying software and managing your cluster:
 
--   [Installing Apps on Kubernetes with Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/)
--    [Linode Container Storage Interface](/docs/kubernetes/deploy-volumes-with-the-linode-block-storage-csi-driver/)
+-   [Installing Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/)
+-    [Linode Container Storage Interface](/docs/guides/deploy-volumes-with-the-linode-block-storage-csi-driver/)

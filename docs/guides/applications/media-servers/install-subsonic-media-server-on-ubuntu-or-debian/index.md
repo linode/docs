@@ -27,7 +27,7 @@ dedicated_cpu_link: true
 
 [Subsonic](http://subsonic.org) is an easy-to-use media streaming service with a user-friendly interface and the ability to share music and video with multiple users. It is highly customizable and includes features such as Chromecast support and file conversion.
 
-This guide shows how to set up Subsonic on a Linode running Debian or Ubuntu. If you have a large music library, consider attaching a [Block Storage Volume](/docs/platform/how-to-use-block-storage-with-your-linode/) to your Linode to store your music files.
+This guide shows how to set up Subsonic on a Linode running Debian or Ubuntu. If you have a large music library, consider attaching a [Block Storage Volume](/docs/products/storage/block-storage/) to your Linode to store your music files.
 
 ## Install Java
 
@@ -101,8 +101,8 @@ Passwords in the Subsonic database are stored in hex format, but not encrypted.
 
 &nbsp;
 
-[![The Subsonic Interface.](subsonic-setup_small.png)](subsonic-setup.png)
+![The Subsonic Interface.](subsonic-setup.png)
 
 ## Next Steps
 
-Subsonic can be [configured to use SSL](http://www.subsonic.org/pages/getting-started.jsp), or you can use an [NGINX reverse proxy](/docs/web-servers/nginx/use-nginx-reverse-proxy/).
+Subsonic can be [configured to use SSL](http://www.subsonic.org/pages/getting-started.jsp), or you can use an [NGINX reverse proxy](/docs/guides/use-nginx-reverse-proxy/).

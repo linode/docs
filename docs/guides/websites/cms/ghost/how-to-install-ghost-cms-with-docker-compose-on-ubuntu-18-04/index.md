@@ -63,7 +63,7 @@ When your certificate is periodically renewed, your web server needs to be reloa
 In your deployment, the web server will run in its own container, and the Certbot container would not be able to directly reload it. A workaround for this limitation would be needed to enable this architecture.
 {{< /disclosure-note >}}
 
-1.  Install Docker and Docker Compose before proceeding. If you haven't used Docker before, review the [Introduction to Docker](/docs/applications/containers/introduction-to-docker/), [When and Why to Use Docker](/docs/applications/containers/when-and-why-to-use-docker/), and [How to Use Docker Compose](/docs/applications/containers/how-to-use-docker-compose/) guides for some context on how these technologies work.
+1.  Install Docker and Docker Compose before proceeding. If you haven't used Docker before, review the [Introduction to Docker](/docs/guides/introduction-to-docker/), [When and Why to Use Docker](/docs/guides/when-and-why-to-use-docker/), and [How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/) guides for some context on how these technologies work.
 
 ### Install Docker
 

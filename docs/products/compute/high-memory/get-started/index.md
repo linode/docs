@@ -11,13 +11,13 @@ tab_group_main:
 
 1. At the top of the page, click **Create** and select **Linode**.
 
-1. Select the [Distribution](/docs/quick-answers/linux/choosing-a-distribution/), [Marketplace App](/docs/platform/marketplace/how-to-use-marketplace-apps-at-linode/), or [Image](/docs/platform/disk-images/linode-images/) you would like to use.
+1. Select the [Distribution](/docs/guides/choosing-a-distribution/), [Marketplace App](/docs/products/tools/marketplace/get-started/), or [Image](/docs/products/tools/images/) you would like to use.
 
     {{< note >}}
 Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. Some of the most popular StackScripts do things like install a LAMP stack, VPN, or WordPress. You can read more about Stackscripts and how they work in our [Automating Deployments with Stackscripts](/docs/platform/stackscripts/) guide.
 {{< /note >}}
 
-1. Choose the region where you would like your Linode to reside. If you’re not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
+1. Choose the region where you would like your Linode to reside. If you’re not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
 
 1. Select a High Memory plan.
 
@@ -31,10 +31,10 @@ Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy softw
 
     - Access monitoring statistics
 
-    - Update your [billing](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/) and [account](/docs/platform/manager/accounts-and-passwords/) information
+    - Update your [billing](/docs/guides/manage-billing-in-cloud-manager/) and [account](/docs/guides/accounts-and-passwords/) information
 
-    - Add additional Linode services, like [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/)
+    - Add additional Linode services, like [Block Storage](/docs/products/storage/block-storage/)
 
-    - Open a [support ticket](/docs/platform/billing-and-support/support/) and perform other administrative tasks
+    - Open a [support ticket](/docs/guides/support/) and perform other administrative tasks
 
-1. Be sure to bookmark the [Linode Status page](https://status.linode.com/) or [subscribe](/docs/platform/linode-status-page/) to our system status updates by email.
+1. Be sure to bookmark the [Linode Status page](https://status.linode.com/) or [subscribe](/docs/guides/linode-status-page/) to our system status updates by email.

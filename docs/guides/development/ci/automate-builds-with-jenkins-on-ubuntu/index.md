@@ -48,7 +48,7 @@ This guide is oriented toward DevOps professionals and thus presumes:
 
 4.  Jenkins will be used mainly through the newer [Blue Ocean](https://jenkins.io/projects/blueocean/) web interface.
 
-5.  The workstation and remote Linode will each need Docker installed beforehand. See our guide on [how to install docker images](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/) for detailed instructions.
+5.  The workstation and remote Linode will each need Docker installed beforehand. See our guide on [how to install docker images](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) for detailed instructions.
 
 6.  For the purpose of this guide, only a Jenkins master server will be used.
 

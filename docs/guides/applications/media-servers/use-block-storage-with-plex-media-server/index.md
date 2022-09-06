@@ -28,13 +28,13 @@ Plex is a media server that allows you to store your media on a remote server an
 
 ## Before You Begin
 
-The examples in this guide assume the Plex Server is installed and running on a Linode. See how to [Install Plex Media Server on Ubuntu 16.04](/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/) if it is not already installed. After installation, follow the steps in the [Initial Setup](/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04/#initial-setup) section to create an SSH tunnel to your Linode and configure the Plex server.
+The examples in this guide assume the Plex Server is installed and running on a Linode. See how to [Install Plex Media Server on Ubuntu 16.04](/docs/guides/install-plex-media-server-on-ubuntu-18-04/) if it is not already installed. After installation, follow the steps in the [Initial Setup](/docs/guides/install-plex-media-server-on-ubuntu-18-04/#initial-setup) section to create an SSH tunnel to your Linode and configure the Plex server.
 
 This guide also assumes you already have a Plex account since Plex Media Player will require login.
 
 ## Attach a Block Storage Volume to a Linode
 
-1.  Create a Block Storage Volume and attach it to the Linode running Plex Media Server. See [How to Add a Block Storage Volume to a Linode](/docs/platform/how-to-use-block-storage-with-your-linode/#how-to-add-a-block-storage-volume-to-a-linode) for instructions on how to do this from the Linode Manager.
+1.  Create a Block Storage Volume and attach it to the Linode running Plex Media Server. See [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/) for instructions on how to do this from the Linode Manager.
 
     To use the Linode CLI, create a new Volume and attach it to a Linode. The command below creates a 20GB Volume with the label `plex-volume` and attaches to a Linode labeled `plex-linode`. Adjust the command as needed:
 

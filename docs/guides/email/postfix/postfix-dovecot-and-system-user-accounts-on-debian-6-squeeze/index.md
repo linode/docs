@@ -45,11 +45,11 @@ Issue the following command to install all required software:
 
 During the installation process, the package manager will prompt you for the responses to a few questions to complete the Postfix installation. To the first question regarding the type of mail server you want to configure, select "Internet Site" and continue as in the following image:
 
-[![Selecting the Postfix mail server configuration type.](85-postfix-courier-mysql-02-mail-server-type-2.png)](85-postfix-courier-mysql-02-mail-server-type-2.png)
+![Selecting the Postfix mail server configuration type.](85-postfix-courier-mysql-02-mail-server-type-2.png)
 
 The next prompt will ask for the system mail name. This should correspond to the fully qualified domain name (FQDN) that points to your Linode's IP address. In this example, we're using a machine specific hostname for our server. Set the reverse DNS for your Linode's IP address to the fully qualified domain name you assign as the system mail name. You will be able to send mail from additional domains as configured later in this document. See the following example:
 
-[![Selecting the Postfix system mail name.](86-postfix-courier-mysql-02-mail-server-type-3.png)](86-postfix-courier-mysql-02-mail-server-type-3.png)
+![Selecting the Postfix system mail name.](86-postfix-courier-mysql-02-mail-server-type-3.png)
 
 ## SASL Authentication
 
@@ -93,7 +93,7 @@ When all modifications to the Postfix configuration are complete, issue the foll
 
     /etc/init.d/postfix restart
 
-At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/docs/tools-reference/linux-users-and-groups/).
+At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/docs/guides/linux-users-and-groups/).
 
 Consider the [basic email gateway guide](/docs/email/postfix/gateway-debian-6-squeeze) for more information regarding Postfix virtual hosting configuration. If you need to deliver mail locally, continue for documentation of mail routing and the Dovecot POP3/IMAP server.
 

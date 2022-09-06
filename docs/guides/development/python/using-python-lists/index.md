@@ -286,6 +286,8 @@ Print the strings stored in the `example_string_from_list` variable:
 1 2 3 4 5
 {{< /output >}}
 
+To learn how to convert a string to a list, see our guide [How to Convert Data Types in Python](/docs/guides/how-to-convert-datatypes-in-python/#converting-strings-to-lists).
+
 ## How to Find an Item in a List in Python
 
 You have a few options at your disposal for searching a list in Python.

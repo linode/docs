@@ -35,7 +35,7 @@ aliases: ['/platform/marketplace/deploying-ruby-on-rails-with-marketplace-apps/'
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Ruby on Rails Options
@@ -147,6 +147,6 @@ For more information on setting up a more substantial application, refer to the 
 
 For more on Ruby on Rails, checkout the following guides:
 
-- [Ruby on Rails with NGINX on Debian](/docs/development/ror/ruby-on-rails-nginx-debian/)
-- [Ruby on Rails with Apache on Debian](/docs/development/ror/ruby-on-rails-apache-debian/)
-- [Use Unicorn and NGINX to Configure Ruby on Rails Applications on Ubuntu](/docs/development/ror/use-unicorn-and-nginx-on-ubuntu-18-04/)
+- [Ruby on Rails with NGINX on Debian](/docs/guides/ruby-on-rails-nginx-debian/)
+- [Ruby on Rails with Apache on Debian](/docs/guides/ruby-on-rails-apache-debian/)
+- [Use Unicorn and NGINX to Configure Ruby on Rails Applications on Ubuntu](/docs/guides/use-unicorn-and-nginx-on-ubuntu-18-04/)

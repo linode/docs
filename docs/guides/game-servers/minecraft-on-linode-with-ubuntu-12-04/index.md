@@ -281,7 +281,7 @@ Any time you modify these files while the game is running, you will need to stop
 -   `/world_nether`
 -   `/world_the_end`
 
-The directories `world`, `world_nether`, and `world-the-end` contain the map and player data for those realms in your game. We suggest [backing up](/docs/platform/disk-images/linode-backup-service/) these directories on a regular basis so that you can revert to previous versions in case of catastrophe or [griefing](http://www.minecraftwiki.net/wiki/Griefing). These directories may be in different locations, depending on which version of the Minecraft server you installed. Note that the directories for the *nether* and *the end* will not be created until a player goes to this area on the server.
+The directories `world`, `world_nether`, and `world-the-end` contain the map and player data for those realms in your game. We suggest [backing up](/docs/products/storage/backups/) these directories on a regular basis so that you can revert to previous versions in case of catastrophe or [griefing](http://www.minecraftwiki.net/wiki/Griefing). These directories may be in different locations, depending on which version of the Minecraft server you installed. Note that the directories for the *nether* and *the end* will not be created until a player goes to this area on the server.
 
 ## More Information
 

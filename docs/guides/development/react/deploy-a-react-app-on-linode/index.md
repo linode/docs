@@ -43,7 +43,7 @@ Since a basic React app is static (it consists of compiled HTML, CSS, and JavaSc
 
 1.  This guide assumes you already have a React app you'd like to deploy. If you don't have one, you can bootstrap a project quickly using [create-react-app](https://github.com/facebookincubator/create-react-app).
 
-1.  Make sure [Git](/docs/development/version-control/how-to-configure-git/) is installed on your system:
+1.  Make sure [Git](/docs/guides/how-to-configure-git/) is installed on your system:
 
         sudo apt install git
 
@@ -144,4 +144,4 @@ echo "Deployment complete"
 
 Deployment can be a complex topic and there are many factors to consider when working with production systems. This guide is meant to be a simple example for personal projects, and isn't necessarily suitable on its own for a large scale production application.
 
-More advanced build and continuous integration tools such as [Travis](https://travis-ci.org/), [Jenkins](https://jenkins.io), and [Wercker](http://www.wercker.com/) can be used to automate a more complicated deployment workflow. This can include running unit tests before proceeding with the deployment and deploying to multiple servers (such as test and production boxes). See our guides on [Jenkins](/docs/development/ci/automate-builds-with-jenkins-on-ubuntu/) and [Wercker](/docs/development/ci/how-to-develop-and-deploy-your-applications-using-wercker/) to get started.
+More advanced build and continuous integration tools such as [Travis](https://travis-ci.org/), [Jenkins](https://jenkins.io), and [Wercker](http://www.wercker.com/) can be used to automate a more complicated deployment workflow. This can include running unit tests before proceeding with the deployment and deploying to multiple servers (such as test and production boxes). See our guides on [Jenkins](/docs/guides/automate-builds-with-jenkins-on-ubuntu/) and [Wercker](/docs/guides/how-to-develop-and-deploy-your-applications-using-wercker/) to get started.

@@ -47,7 +47,7 @@ When upgrading a Kubernetes cluster on LKE, it is important to keep in mind that
 
 In the highest level of detail, each node will be independently [drained and cordoned](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/) one at a time, while the High Availability features of Kubernetes ensure that all workloads are migrated to other nodes. Once a node is drained and cordoned, it is removed and a new node is created using the correct Kubernetes version in it's place, where it is synced, and then uncordoned, immediately putting it back live into the cluster with the `Ready` status.
 
-While this process generally doesn't impact workloads in a significant way, it is strongly recommended that steps are taken to ensure that there is enough space on all nodes to accommodate for this temporary shift in resources. If a cluster of three nodes cannot briefly support the resources demands of an application using only two nodes, then the upgrade process may result in unintended application downtime. For the most comprehensive resource coverage possible, we recommend enabling the [Cluster Autoscaler](/docs/products/compute/kubernetes/guides/enable-cluster-autoscaling/), or [resizing your node pools](https://www.linode.com/docs/products/compute/kubernetes/guides/edit-remove-node-pools/) to something larger as needed.
+While this process generally doesn't impact workloads in a significant way, it is strongly recommended that steps are taken to ensure that there is enough space on all nodes to accommodate for this temporary shift in resources. If a cluster of three nodes cannot briefly support the resources demands of an application using only two nodes, then the upgrade process may result in unintended application downtime. For the most comprehensive resource coverage possible, we recommend enabling the [Cluster Autoscaler](/docs/products/compute/kubernetes/guides/enable-cluster-autoscaling/), or [resizing your node pools](/docs/products/compute/kubernetes/guides/edit-remove-node-pools/) to something larger as needed.
 
 ## Reviewing the Kubernetes Changelog
 
@@ -57,14 +57,14 @@ The best method for ensuring uptime and a clean upgrade without issues is to car
 When reviewing the changelog, it is important to keep in mind that **patch releases** are deployed automatically to LKE Control Plane Components as needed, however this should not effect the intended behavior of your cluster. Only Major and Minor releases will have potentially breaking changes.
 {{< /note >}}
 
-Once you've found the correct Changelog for the version of Kubernetes you'll be upgrading to, find the section in the changelog that fits the the naming convention for the minor release of your current Kubernetes version for the changes of most consequence. If you are upgrading from Kubernetes version `1.21` for example, find the section labeled [Changelog Since v1.21.0](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.20.md#changelog-since-v1190). Read through this section carefully for any new features and deprecations, paying close attention to the [What's New](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#whats-new-major-themes) and [Urgent Upgrade Notes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#urgent-upgrade-notes) subsection for information on the most critical changes. Additional areas of special attention should include the [Known Issues](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#known-issues), [Deprecation Changes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#deprecation), and [API Changes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#api-change-1) subsections. That being said, for the absolute best guarantee of a clean upgrade, we recommend reading through this full section to gain a full understanding of what you may need to know.
+Once you've found the correct Changelog for the version of Kubernetes you'll be upgrading to, find the section in the changelog that fits the naming convention for the minor release of your current Kubernetes version for the changes of most consequence. If you are upgrading from Kubernetes version `1.21` for example, find the section labeled [Changelog Since v1.21.0](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.20.md#changelog-since-v1190). Read through this section carefully for any new features and deprecations, paying close attention to the [What's New](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#whats-new-major-themes) and [Urgent Upgrade Notes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#urgent-upgrade-notes) subsection for information on the most critical changes. Additional areas of special attention should include the [Known Issues](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#known-issues), [Deprecation Changes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#deprecation), and [API Changes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#api-change-1) subsections. That being said, for the absolute best guarantee of a clean upgrade, we recommend reading through this full section to gain a full understanding of what you may need to know.
 
 When upgrading from Kubernetes version 1.21 to [version 1.22](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#whats-new-major-themes) for example, LKE users will want to pay especially close attention to the removal of several beta Kubernetes APIs they may be using in their clusters and adjust their configurations as needed by following Kubernetes' recommendations [linked from the changelog](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#v1-22).
 
 As API changes are an issue that can commonly go unnoticed when upgrading LKE, we additionally recommend checking Kubernetes' [API deprecation guide](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#v1-22) for more information on API changes, and how they should be addressed in specific circumstances.
 
 {{< note >}}
-When investigating potential issues discovered by exploring the Kubernetes Changelog, you may need to search for specific strings containing potentially breaking configurations. Using the [grep command](https://www.linode.com/docs/guides/how-to-grep-for-text-in-files/) is generally a good way to do this quickly.
+When investigating potential issues discovered by exploring the Kubernetes Changelog, you may need to search for specific strings containing potentially breaking configurations. Using the [grep command](/docs/guides/how-to-grep-for-text-in-files/) is generally a good way to do this quickly.
 
 For example, if you need to find where you may be using the currently deprecated API `networking.k8s.io/v1beta1`, enter the following command from the root directory containing your Kubernetes configuration files:
 
@@ -83,7 +83,7 @@ Popeye can either be installed using the package manager [Homebrew](https://brew
 
 ### Ubuntu 20.04
 
-Before proceeding with installation on **Ubuntu 20.04 LTS**, ensure that all of the following commands are entered as a [limited sudo user](https://www.linode.com/docs/guides/set-up-and-secure/#add-a-limited-user-account) with access to a fully configured [LKE](https://www.linode.com/products/kubernetes/) or [Kubernetes](https://www.linode.com/docs/guides/kubernetes/) cluster with [kubectl](https://www.linode.com/docs/products/compute/kubernetes/guides/install-kubectl/) fully installed and using your kubeconfig configuration file. A good way to test this is to ensure that you can see all nodes in your cluster when entering the following command:
+Before proceeding with installation on **Ubuntu 20.04 LTS**, ensure that all of the following commands are entered as a [limited sudo user](/docs/guides/set-up-and-secure/#add-a-limited-user-account) with access to a fully configured [LKE](https://www.linode.com/products/kubernetes/) or [Kubernetes](/docs/guides/kubernetes/) cluster with [kubectl](/docs/products/compute/kubernetes/guides/install-kubectl/) fully installed and using your kubeconfig configuration file. A good way to test this is to ensure that you can see all nodes in your cluster when entering the following command:
 
     kubectl get nodes
 
@@ -128,13 +128,13 @@ The following steps will complete the installation of Popeye on Ubuntu **Mac OSx
 
 ## Installing Popeye using Linux Binary Tarballs
 
-Before proceeding with the installation of popeye, ensure that [wget](https://www.linode.com/docs/guides/how-to-use-wget/) is installed on your system. Once installed proceed with the following steps:
+Before proceeding with the installation of popeye, ensure that [wget](/docs/guides/how-to-use-wget/) is installed on your system. Once installed proceed with the following steps:
 
 1. Determine the architecture of your system:
 
         uname -m
 
-1. Using `wget`, download the Linux tarball for Popeye [matching the latest release and your architecture](ttps://github.com/derailed/popeye/releases), in this case `v0.9.8` as the latest release and `x86_64` as the architecture:
+1. Using `wget`, download the Linux tarball for Popeye [matching the latest release and your architecture](https://github.com/derailed/popeye/releases), in this case `v0.9.8` as the latest release and `x86_64` as the architecture:
 
         wget https://github.com/derailed/popeye/releases/download/v0.9.8/popeye_Linux_x86_64.tar.gz
 

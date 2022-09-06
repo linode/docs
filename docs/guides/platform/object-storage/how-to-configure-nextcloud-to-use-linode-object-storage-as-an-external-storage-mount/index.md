@@ -27,7 +27,7 @@ You can configure Nextcloud to enable external storage devices and services, lik
 
 ## Before You Begin
 
-1. Deploy a Nextcloud server instance. You can use the [Linode Nextcloud Marketplace App](/docs/platform/marketplace/how-to-deploy-nextcloud-with-marketplace-apps/) for an easy and quick deployment.
+1. Deploy a Nextcloud server instance. You can use the [Linode Nextcloud Marketplace App](/docs/products/tools/marketplace/guides/nextcloud/) for an easy and quick deployment.
 
 1. [Generate Object Storage access keys](/docs/products/storage/object-storage/guides/access-keys/.
 
@@ -114,7 +114,7 @@ Linode Object Storage is *S3-compatible*. Nextcloud connects to Amazon's Object 
       {{</ disclosure-note >}}
 
 {{< note >}}
-There is a known bug when configuring Frankfurt buckets that will cause failure unless the the user enters `us-east-1` as the Region ID, despite the correct ID being `eu-central-1`. The correct bucket will still be configured using the hostname. If you are hosting a bucket in Frankfurt and the  Nextcloud configuration is not applying, this solution should be attempted.
+There is a known bug when configuring Frankfurt buckets that will cause failure unless the user enters `us-east-1` as the Region ID, despite the correct ID being `eu-central-1`. The correct bucket will still be configured using the hostname. If you are hosting a bucket in Frankfurt and the  Nextcloud configuration is not applying, this solution should be attempted.
 {{< /note >}}
 
 1. In the **Available for** text entry box, enter the group name(s) you would like to give access to the Linode Object Storage external storage. To learn more about user and group permissions related to external storage, see [Nextcloud's documentation](https://docs.nextcloud.com/server/15/admin_manual/configuration_files/external_storage_configuration_gui.html#user-and-group-permissions).

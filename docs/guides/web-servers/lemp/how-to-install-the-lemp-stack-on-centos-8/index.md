@@ -270,4 +270,4 @@ cockpit dhcpv6-client ssh
 
 For more on the software in this stack see the following guides:
 - [Getting Started with NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/)
-- [Serve PHP with PHP-FPM and NGINX](/docs/web-servers/nginx/serve-php-php-fpm-and-nginx/)
+- [Serve PHP with PHP-FPM and NGINX](/docs/guides/serve-php-php-fpm-and-nginx/)

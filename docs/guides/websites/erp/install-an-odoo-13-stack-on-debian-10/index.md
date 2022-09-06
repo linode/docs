@@ -24,7 +24,7 @@ external_resources:
   - '[Odoo Developer Documentation](https://www.odoo.com/documentation/13.0)'
   - '[PostgreSQL 11 Documentation](https://www.postgresql.org/docs/11/static/index.html)'
   - '[Install an SSL certificate with LetsEncrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates)'
-  - '[How to Set up tinc, a Peer-to-Peer VPN](/docs/networking/vpn/how-to-set-up-tinc-peer-to-peer-vpn/)'
+  - '[How to Set up tinc, a Peer-to-Peer VPN](/docs/guides/how-to-set-up-tinc-peer-to-peer-vpn/)'
 relations:
     platform:
         key: install-an-odoo-13-stack
@@ -36,7 +36,7 @@ relations:
 
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is a self-hosted suite of over 10,000 open source applications for a variety of business needs. A few popular applications for Odoo include CRMs, eCommerce, accounting, inventory, point of sale, and project management. These applications are all fully integrated and can be installed and accessed through a web interface. Using Odoo's web interface can make it easier to automate and manage your company's processes.
 
-For simple installations, Odoo and its dependencies can be installed on a single Linode. Our [Install Odoo 10 on Ubuntu 16.04](/docs/websites/cms/install-odoo-10-on-ubuntu-16-04/) guide has an example of this. However, this single-server setup is not suited for production deployments. This guide covers how to configure an Odoo 13 cluster where the Odoo server and PostgreSQL database are hosted on separate Linodes. This configuration gives you more flexibility and scalability while allowing you to use PostgreSQL database replication for added performance and reliability.
+For simple installations, Odoo and its dependencies can be installed on a single Linode. Our [Install Odoo 10 on Ubuntu 16.04](/docs/guides/install-odoo-10-on-ubuntu-16-04/) guide has an example of this. However, this single-server setup is not suited for production deployments. This guide covers how to configure an Odoo 13 cluster where the Odoo server and PostgreSQL database are hosted on separate Linodes. This configuration gives you more flexibility and scalability while allowing you to use PostgreSQL database replication for added performance and reliability.
 
 ## System Requirements
 
@@ -61,7 +61,7 @@ All examples in this guide are for Debian 10. If you plan to use a different ope
 1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
     {{< note >}}
-Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 1.  Update your systems:
@@ -118,7 +118,7 @@ You may want to only accept connections from certain hosts/IP addresses. The [Ad
         sudo ufw status
 
 {{< note >}}
-For more detailed information about firewall setup please read our [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/) guide.
+For more detailed information about firewall setup please read our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide.
 {{< /note >}}
 
 
@@ -131,12 +131,12 @@ In order to simplify communication between Linodes, set hostnames for each serve
 | Odoo 13  | odoo | odoo.yourdomain.com |
 | PostgreSQL | postgresql | postgresql.yourdomain.com |
 
-On each server, append the following lines to the `/etc/hosts` file. For the second line in each of these snippets, substitute your Linodes' IP addresses. If both servers are in the same Linode data center, then you can use private IP addresses for each Linode. Otherwise, use the public IP addresses of each Linode. Follow our [Find your Linode's IP Address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) guide to locate your addresses.
+On each server, append the following lines to the `/etc/hosts` file. For the second line in each of these snippets, substitute your Linodes' IP addresses. If both servers are in the same Linode data center, then you can use private IP addresses for each Linode. Otherwise, use the public IP addresses of each Linode. Follow our [Find your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide to locate your addresses.
 
 {{< note >}}
 A Linode does not come with a private IP address assigned to it by default. Private IPs are free to set up. If you would like to, follow our [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) guide to set up a private IP address on each Linode. Please note that you need to add the new private address inside your Linodes' networking configuration after it is assigned to your server.
 
-Linode can configure your new private address for you through the [Network Helper](/docs/platform/network-helper/) utility, if it is enabled. After this tool is enabled in the Cloud Manager, reboot your Linode. You should be able to make connections on the private IP after reboot. Then, proceed with the rest of this guide.
+Linode can configure your new private address for you through the [Network Helper](/docs/guides/network-helper/) utility, if it is enabled. After this tool is enabled in the Cloud Manager, reboot your Linode. You should be able to make connections on the private IP after reboot. Then, proceed with the rest of this guide.
 {{< /note >}}
 
 - **PostgreSQL database server**:
@@ -295,7 +295,7 @@ It's considered a best practice to isolate Odoo's Python modules from the module
 
         pip3 install wheel
 
-Let's review the the virtual environment creation:
+Let's review the virtual environment creation:
 
 * `python3 -m venv`: Runs `venv` module using Python 3, this module is in charge of creating the virtual environment.
 * `/home/<user>/odoo-env`: Indicates the path used for the virtual Python environment. For the purpose of this guide, `home` directory of the current user was used but you can change it to any location that suits your needs as long as you remember to grant the `odoo` user with proper permissions afterward.
@@ -430,7 +430,7 @@ You have two options to backup your production database:
 
     You can later use this interface to restore your database from a specific database backup file. Odoo correctly restores to the database on the **PostgreSQL server**, and not to the database service that was installed on the Odoo application server. This happens because your Odoo configuration is explicit about the database connection.
 
-1. You can use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) from the backend **PostgreSQL** Linode.
+1. You can use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](/docs/guides/how-to-back-up-your-postgresql-database/) from the backend **PostgreSQL** Linode.
 
 ## Update Odoo Modules
 
@@ -489,7 +489,7 @@ Finally, allow port 80 in your firewall. If you're using UFW, these lines allow 
 
 ### Set Up SSL
 
-If you have set up a reverse proxy, you can also choose to serve your Odoo site over HTTPS. To do so, configure the reverse proxy server with an SSL certificate. The directions in our [How to Install Certbot for TLS on Debian 10](/docs/guides/how-to-install-certbot-on-debian-10/) guide show how to do this with NGINX on Debian 10.
+If you have set up a reverse proxy, you can also choose to serve your Odoo site over HTTPS. To do so, configure the reverse proxy server with an SSL certificate. The directions in our [How to Install Certbot for TLS on Debian 10](/docs/guides/enabling-https-using-certbot-with-nginx-on-debian/) guide show how to do this with NGINX on Debian 10.
 
 After setting up an SSL certificate, be sure to allow port 443 in your firewall. If you're using UFW, these lines allow the port:
 

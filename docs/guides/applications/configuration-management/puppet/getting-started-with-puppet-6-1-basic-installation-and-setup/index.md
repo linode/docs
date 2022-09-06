@@ -15,6 +15,7 @@ title: Getting Started with Puppet - Basic Installation and Setup
 external_resources:
     - '[Puppet Labs](https://puppet.com/)'
     - '[Puppet Open Source Documentation](https://docs.puppet.com/puppet/)'
+    - '[Configuring Java Arguments](https://puppet.com/docs/pe/2019.0/config_java_args.html)'
 aliases: ['/applications/configuration-management/puppet/getting-started-with-puppet-6-1-basic-installation-and-setup/','/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/']
 ---
 
@@ -60,7 +61,7 @@ Throughout this guide, commands and code snippets will reference the values disp
 
 1.  [Set the hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for each server.
 
-1.  [Set the FQDN](/docs/networking/dns/using-your-systems-hosts-file/) for each Linode by editing the servers' `/etc/hosts` files.
+1.  [Set the FQDN](/docs/guides/using-your-systems-hosts-file/) for each Linode by editing the servers' `/etc/hosts` files.
 
     {{< disclosure-note "Example content for the hosts file" >}}
 You can model the contents of your `/etc/hosts` files on these snippets:

@@ -5,7 +5,7 @@ import { isMobile } from '../helpers';
 export function alpineRegisterMagicHelpers(Alpine) {
 	// $copy is a magic helper that copys the content of the current or the supplied element to the clipboard.
 	Alpine.magic('copy', (currentEl) => {
-		return function(el) {
+		return function (el) {
 			if (!el) {
 				el = currentEl;
 			}
@@ -23,7 +23,7 @@ export function alpineRegisterMagicHelpers(Alpine) {
 
 	// $isScollX magic helper that reports whether the current or the supplied element is scrolling on the x axis.
 	Alpine.magic('isScrollX', (currentEl) => {
-		return function(el) {
+		return function (el) {
 			if (!el) {
 				el = currentEl;
 			}
@@ -33,7 +33,7 @@ export function alpineRegisterMagicHelpers(Alpine) {
 
 	// $isMobile magic helpers that reports whether this is a mobile (smalll) device.
 	Alpine.magic('isMobile', (currentEl) => {
-		return function() {
+		return function () {
 			return isMobile();
 		};
 	});

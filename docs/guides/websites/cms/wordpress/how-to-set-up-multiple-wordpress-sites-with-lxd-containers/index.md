@@ -73,14 +73,14 @@ For simplicity, the term *container* is used throughout this guide to describe t
 
 ## Before You Begin
 
-1.  Follow the [A Beginner's Guide to LXD: Setting Up an Apache Web Server In a Container](/docs/applications/containers/beginners-guide-to-lxd/) guide. Specifically, you only need to follow these sections: the [Before You Begin](/docs/applications/containers/beginners-guide-to-lxd/#before-you-begin) section, and the [Initialize LXD](/docs/applications/containers/beginners-guide-to-lxd/#initialize-lxd) section. The guide instructs you to use Ubuntu 19.04 for your server, but you should select Ubuntu 20.04 instead (unless you prefer a different distribution). LXD 4.0.5 is installed by default on Ubuntu 20.04.
+1.  Follow the [A Beginner's Guide to LXD: Setting Up an Apache Web Server In a Container](/docs/guides/beginners-guide-to-lxd/) guide. Specifically, you only need to follow these sections: the [Before You Begin](/docs/guides/beginners-guide-to-lxd/#before-you-begin) section, and the [Initialize LXD](/docs/guides/beginners-guide-to-lxd/#initialize-lxd) section. The guide instructs you to use Ubuntu 19.04 for your server, but you should select Ubuntu 20.04 instead (unless you prefer a different distribution). LXD 4.0.5 is installed by default on Ubuntu 20.04.
 
     {{< note >}}
 For this guide LXD version 3.3 or later is needed. Check the version with the following command:
 
     lxd --version
 
-If the version is not 3.3 or later, or if your preferred distribution does not have LXD installed by default, update to the latest version. Install the snap package as instructed in [A Beginner's Guide to LXD: Setting Up an Apache Webserver In a Container](/docs/applications/containers/beginners-guide-to-lxd/). Then use the following command:
+If the version is not 3.3 or later, or if your preferred distribution does not have LXD installed by default, update to the latest version. Install the snap package as instructed in [A Beginner's Guide to LXD: Setting Up an Apache Webserver In a Container](/docs/guides/beginners-guide-to-lxd/). Then use the following command:
 
     sudo lxd.migrate
 {{</ note >}}
@@ -89,7 +89,7 @@ If the version is not 3.3 or later, or if your preferred distribution does not h
 
     If you're not familiar with DNS, review our [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) guide. After you have registered a domain name, you can choose to use Linode's [DNS Manager](https://www.linode.com/products/dns-manager/) to manage your DNS records. For help with this service, see our [DNS Manager guide](/docs/guides/dns-manager/). Your server's IP address can be found in the Cloud Manager; see our [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide for help. If you prefer to use a different DNS management service, follow their instructions for creating A records.
 
-1. Complete the [Set Up a Reverse Proxy in an LXD Container to Host Multiple Websites](/docs/applications/containers/beginners-guide-to-lxd-reverse-proxy/) guide. The guide instructs you to create a reverse proxy in a `proxy` container, and two web server containers, `apache1` and `nginx1`. These containers run the Apache 2 and NGINX web servers respectively. Then, the guide sets up Let's Encrypt TLS certificates for both websites.
+1. Complete the [Set Up a Reverse Proxy in an LXD Container to Host Multiple Websites](/docs/guides/beginners-guide-to-lxd-reverse-proxy/) guide. The guide instructs you to create a reverse proxy in a `proxy` container, and two web server containers, `apache1` and `nginx1`. These containers run the Apache 2 and NGINX web servers respectively. Then, the guide sets up Let's Encrypt TLS certificates for both websites.
 
     After completion of the linked guide, keep all of the containers that were created. Later in the current guide, WordPress is installed in the two web server containers.
 
@@ -419,7 +419,7 @@ You may encounter a plugin that requires an additional PHP module. We have alrea
 
 ### The WordPress Site Health Reports That We are Running an Old Version of PHP
 
-In this series of guides we have installed Ubuntu 18.04 LTS in the containers. This version of Ubuntu has PHP 7.2, which is nevertheless still supported and will be supported until at least the year 2023. By default, each container, as well as the the host, automatically receive any security updates through the `unattended-upgrades` package. Therefore, this warning may be ignored.
+In this series of guides we have installed Ubuntu 18.04 LTS in the containers. This version of Ubuntu has PHP 7.2, which is nevertheless still supported and will be supported until at least the year 2023. By default, each container, as well as the host, automatically receive any security updates through the `unattended-upgrades` package. Therefore, this warning may be ignored.
 
 ### How Much Memory Does My Container Use?
 

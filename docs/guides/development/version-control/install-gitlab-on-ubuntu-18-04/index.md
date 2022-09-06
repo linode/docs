@@ -32,7 +32,7 @@ This guide will walk you through the steps to install GitLab on an 8GB Linode ru
 
 ## System Requirements
 
-Before installing GitLab you should consider how many users will collaborate on your self-hosted instance, the size of the repositories you will store, and the recommended minimum system requirements. This criteria will will effect the needed storage, CPU, and memory. This guide will use an **8GB Linode plan** to fulfill GitLab's minimum system requirements. The suggested hardware is as follows:
+Before installing GitLab you should consider how many users will collaborate on your self-hosted instance, the size of the repositories you will store, and the recommended minimum system requirements. This criteria will effect the needed storage, CPU, and memory. This guide will use an **8GB Linode plan** to fulfill GitLab's minimum system requirements. The suggested hardware is as follows:
 
 - **Storage** The required storage depends on the size of the repositories you will store in GitLab. You should plan to have *at least* as much free space as all the repositories combined require.
 - **CPU:** 4 cores is the recommended number and supports up to 500 users. While you can use 1 CPU core to support 100 users, the application may run slower because all workers and background jobs will run on the same core.
@@ -46,7 +46,7 @@ Before installing GitLab you should consider how many users will collaborate on 
 
 1.  Add a domain zone, NS record, and A/AAA record for the domain you will use to access your GitLab installation. See the [DNS Manager](/docs/platform/manager/dns-manager-new-manager/#add-a-domain-zone) guide for details. If you will access your GitLab instance via your Linode’s IP address, you can skip this step.
 
-1.  [Create an SSL Certificate](/docs/quick-answers/websites/secure-http-traffic-certbot/), if you will be using SSL encryption for your domain (this is recommended). Be sure to note the location that Certbot uses to store all generated keys and issued certificates.
+1.  [Create an SSL Certificate](/docs/guides/secure-http-traffic-certbot/), if you will be using SSL encryption for your domain (this is recommended). Be sure to note the location that Certbot uses to store all generated keys and issued certificates.
 
 ## Install GitLab
 
