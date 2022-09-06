@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "Deploy UniFi Network Controller, an all-in-one gateway and routing device with a powerful application suite designed to optimize home and business networks with ease, on a Linode Compute Instance."
+description: "Deploy UniFi Network Controller, a multi-use networking control panel with a powerful application suite designed to optimize home and business networks with ease, on a Linode Compute Instance."
 keywords: ['UniFi','Network','gateway', 'routing']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,7 +12,7 @@ modified_by:
 title: "Deploying the UniFi Network Application through the Linode Marketplace"
 ---
 
-The [UniFi Network Application](https://help.ui.com/hc/en-us/articles/1500012237441-UniFi-Network-Use-the-UniFi-Network-Application) is a multi-use application to manage networking across regions. The UniFi Network application allows the configuration of software defined networks, and can interface directly with Ubiquiti hardware.
+The [UniFi Network Application](https://help.ui.com/hc/en-us/articles/1500012237441-UniFi-Network-Use-the-UniFi-Network-Application) is a versatile control panel that simplifies network management across regions, customizes access to wifi networks, and more. Manage and apply updates to UniFi networking devices to ensure your networks are performant and secure.
 
 {{< note >}}
 When self-hosting the UniFi Network Application, you are responsible for the security of your server. Follow best practices for securing, updating, and backing the software on your Compute Instance. See [Setting Up and Securing a Compute Instance](https://www.linode.com/docs/guides/set-up-and-secure/).
