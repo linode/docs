@@ -3,8 +3,8 @@ slug: how-to-install-openldap
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Learn how to install and configure an LDAP server on a Linux environment"
-og_description: "In this tutorial for TensorFlow, you'll learn what it is, how it works, and how to install it, along with some resources to get you started."
+description: "Learn how to install and configure an LDAP server on a Linux environment."
+og_description: "Learn how to install and configure an LDAP server on a Linux environment."
 keywords: ["LDAP", "Install", "Linux", "database"]
 tags: ["LDAP", "OpenLDAP", "linux", "server", "storage", "authentication", "database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
