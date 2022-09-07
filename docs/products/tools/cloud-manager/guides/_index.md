@@ -60,38 +60,38 @@ These additional guides help you with targeted topics like how to manage your ac
 
 ### Manage Your Account
 
-- [An Overview of the Linode Cloud Manager](/docs/platform/manager/an-overview-of-the-linode-cloud-manager/)
+- [An Overview of the Linode Cloud Manager](/docs/guides/an-overview-of-the-linode-cloud-manager/)
 
-- [Understanding Common Cloud Manager Errors](/docs/quick-answers/linode-platform/an-overview-of-common-cloud-manager-errors/)
+- [Understanding Common Cloud Manager Errors](/docs/guides/an-overview-of-common-cloud-manager-errors/)
 
-- [Searching in the Cloud Manager](/docs/quick-answers/linode-platform/how-to-search-in-the-cloud-manager/)
+- [Searching in the Cloud Manager](/docs/guides/how-to-search-in-the-cloud-manager/)
 
-- [Understanding the Cloud Manager Events and Activity Feeds](/docs/platform/manager/what-are-the-cloud-manager-events-and-activity-feeds/)
+- [Understanding the Cloud Manager Events and Activity Feeds](/docs/guides/cloud-manager-events-and-activity-feeds/)
 
-- [Manage Billing in Cloud Manager](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/)
+- [Manage Billing in Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/)
 
-- [Cancelling Your Account](/docs/quick-answers/linode-platform/how-to-cancel-your-account/)
+- [Cancelling Your Account](/docs/guides/how-to-cancel-your-account/)
 
-- [Changing Your Email Address](/docs/quick-answers/linode-platform/how-to-change-your-email/)
+- [Changing Your Email Address](/docs/guides/how-to-change-your-email/)
 
-- [Tags and Groups](/docs/quick-answers/linode-platform/tags-and-groups/)
+- [Tags and Groups](/docs/guides/tags-and-groups/)
 
-- [Linode Cloud Manager Security Controls](/docs/security/authentication/linode-manager-security-controls/)
+- [Linode Cloud Manager Security Controls](/docs/guides/user-security-controls/)
 
 - [Manage SSH Keys](/docs/products/tools/cloud-manager/guides/manage-ssh-keys/)
 
 ### Manage Your Linodes
 
-- [Reset the Root Password on your Linode](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/)
+- [Reset the Root Password on your Linode](/docs/guides/reset-the-root-password-on-your-linode/)
 
-- [Resize a Linode Disk](/docs/quick-answers/linode-platform/resize-a-linode-disk/)
+- [Resize a Linode Disk](/docs/guides/resize-a-linode-disk/)
 
-- [Deploy an Image to a Linode](/docs/quick-answers/linode-platform/deploy-an-image-to-a-linode/)
+- [Deploy an Image to a Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/)
 
 ### Networking
 
-- [Find Your Linode’s IP Address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/)
+- [Find Your Linode’s IP Address](/docs/guides/find-your-linodes-ip-address/)
 
-- [Add CAA Records in the Linode Cloud Manager](/docs/quick-answers/linode-platform/add-caa-dns-records/)
+- [Add CAA Records in the Linode Cloud Manager](/docs/guides/add-caa-dns-records/)
 
-- [Proxy Burp Suite Traffic Through a Linode](/docs/quick-answers/linode-platform/proxy-burp-suite-traffic-through-a-linode/)
+- [Proxy Burp Suite Traffic Through a Linode](/docs/guides/proxy-burp-suite-traffic-through-a-linode/)

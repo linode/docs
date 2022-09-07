@@ -18,8 +18,8 @@ contributor:
   name: Andy Patrizio
   link: https://twitter.com/apatrizio
 external_resources:
-- '[How to Move Your Machine Learning Model to Production](https://www.linode.com/docs/guides/how-to-move-machine-learning-model-to-production/)'
-- '[Use Cases for Linode GPU Instances](https://www.linode.com/docs/products/compute/gpu/guides/use-cases/)'
+- '[How to Move Your Machine Learning Model to Production](/docs/guides/how-to-move-machine-learning-model-to-production/)'
+- '[Use Cases for Linode GPU Instances](/docs/products/compute/gpu/guides/use-cases/)'
 ---
 
 Machine learning (ML) has been around conceptually since 1959, when [Arthur Samuel](https://en.wikipedia.org/wiki/Arthur_Samuel), a pioneer in the field of computer gaming and artificial intelligence, coined the term. Samuel said that machine learning "gives computers the ability to learn without being explicitly programmed". While at IBM he wrote a program to play Checkers, which became the first known self-learning program.
@@ -44,7 +44,7 @@ There are four types of learning models; *supervised*, *unsupervised*, *semi-sup
 
 - **Unsupervised learning:** In this model, the data set is unlabeled. This algorithm's goal is to examine the data's underlying structure or distribution in order to discover hidden patterns or data groupings without the need for human intervention. It's more of an exploratory form of analysis looking to discover similarities and differences in the information. It is called unsupervised learning because there is no correct answer. The algorithm is tasked with finding and presenting the interesting structure in the data.
 
-- **Reinforcement learning**: This uses trial and error to produce output based on the highest efficiency of the function. The generated output is analyzed in order to find errors and provide feedback. This information is incorporated back into the system to improve or maximize its performance. This method is used in a a subcategory of ML known as [*deep learning*](https://en.wikipedia.org/wiki/Deep_learning).
+- **Reinforcement learning**: This uses trial and error to produce output based on the highest efficiency of the function. The generated output is analyzed in order to find errors and provide feedback. This information is incorporated back into the system to improve or maximize its performance. This method is used in a subcategory of ML known as [*deep learning*](https://en.wikipedia.org/wiki/Deep_learning).
 
 ### Inference
 

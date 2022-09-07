@@ -28,7 +28,7 @@ This guide teaches you how to use ClamAV, ClamTK, and rkhunter for anti-virus an
 
 ### Installing ClamAV
 
-You can install ClamAV with the aptitude package manager on Debian and Ubuntu or with the yum package manager on CentOS. The instructions in this guide show `apt` examples and can be adapted for CentOS with `yum`. ClamAV requires the the `clamav` utility and the `clamav-daemon` for management.
+You can install ClamAV with the aptitude package manager on Debian and Ubuntu or with the yum package manager on CentOS. The instructions in this guide show `apt` examples and can be adapted for CentOS with `yum`. ClamAV requires the `clamav` utility and the `clamav-daemon` for management.
 
 1.  Install the ClamAV utilities by running the following command:
 

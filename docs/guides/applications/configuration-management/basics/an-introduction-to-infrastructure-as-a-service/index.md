@@ -104,7 +104,7 @@ Each IaaS deployment is unique, but the following high-level principles generall
 - Consider how any existing databases and servers should be migrated using one of the techniques in the [Migration Strategies](/docs/guides/what-is-infrastructure-as-a-service/#migration-strategies) section.
 - Attempt to reduce downtime. Schedule a maintenance window for the migration.
 - Test the new network before live deployment.
-- Consider how much storage and what storage types should be used. The main types of storage are [object storage](/docs/products/storage/object-storage/guides/use-cases/), file storage, and [block storage](/docs/guides/block-storage-use-cases/). Object storage has become more popular recently because its distributed architecture fits well with the IaaS model.
+- Consider how much storage and what storage types should be used. The main types of storage are [object storage](/docs/products/storage/object-storage/guides/use-cases/), file storage, and [block storage](/docs/products/storage/block-storage/guides/use-cases/). Object storage has become more popular recently because its distributed architecture fits well with the IaaS model.
 - Consider the resiliency and reliability requirements for the network.
 - If necessary, determine the level of support and the service package that is required.
 - Decide what network metrics are important, and monitor these items during and after the initial deployment. Scrutinize the entire network as a single system and continue to regularly maintain, adjust, and optimize it.

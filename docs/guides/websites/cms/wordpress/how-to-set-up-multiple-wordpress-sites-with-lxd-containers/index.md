@@ -419,7 +419,7 @@ You may encounter a plugin that requires an additional PHP module. We have alrea
 
 ### The WordPress Site Health Reports That We are Running an Old Version of PHP
 
-In this series of guides we have installed Ubuntu 18.04 LTS in the containers. This version of Ubuntu has PHP 7.2, which is nevertheless still supported and will be supported until at least the year 2023. By default, each container, as well as the the host, automatically receive any security updates through the `unattended-upgrades` package. Therefore, this warning may be ignored.
+In this series of guides we have installed Ubuntu 18.04 LTS in the containers. This version of Ubuntu has PHP 7.2, which is nevertheless still supported and will be supported until at least the year 2023. By default, each container, as well as the host, automatically receive any security updates through the `unattended-upgrades` package. Therefore, this warning may be ignored.
 
 ### How Much Memory Does My Container Use?
 

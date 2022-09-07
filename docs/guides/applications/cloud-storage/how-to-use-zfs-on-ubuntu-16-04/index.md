@@ -15,7 +15,6 @@ modified_by:
   name: Linode
 title: 'How to Use ZFS on Ubuntu 16.04'
 published: 2017-10-30
-expiryDate: 2019-10-30
 external_resources:
  - '[Ubuntu ZFS wiki](https://wiki.ubuntu.com/Kernel/Reference/ZFS)'
  - '[RAID levels Wikipedia](https://en.wikipedia.org/wiki/Standard_RAID_levels)'
@@ -155,7 +154,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
         sed -i.bak 's/GRUB_TIMEOUT.*/GRUB_TIMEOUT=0/' /etc/default/grub; update-grub
 
-1.  After deciding how to structure your ZFS build, follow the steps in this guide to [create new volumes and attach them to your Linode](/docs/guides/how-to-use-block-storage-with-your-linode/). Ignore the steps about creating a filesystem, mounting, editing `fstab`. ZFS will take care of that.
+1.  After deciding how to structure your ZFS build, follow the steps in this guide to [create new volumes and attach them to your Linode](/docs/products/storage/block-storage/guides/manage-volumes/). Ignore the steps about creating a filesystem, mounting, editing `fstab`. ZFS will take care of that.
 
 1.  Linode's kernels, booted by default, don't include the ZFS module you'll need so you have to switch to the kernel provided by Ubuntu. In your Linode's dashboard, click **Edit** to make changes to your Ubuntu configuration profile. Under **Boot settings**, change the **Kernel** to **GRUB 2**.
 

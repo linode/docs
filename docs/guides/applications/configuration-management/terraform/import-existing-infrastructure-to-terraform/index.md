@@ -254,7 +254,7 @@ resource "linode_instance" "example_label" {
 {{</ file >}}
 
     {{< note >}}
-If your Linode uses more than two disks (for instance, if you have attached a [Block Storage Volume](/docs/guides/how-to-use-block-storage-with-your-linode/)), you need to add those disks to your Linode resource configuration block. In order to add a disk, you must add the disk to the `devices` stanza and create an additional `disk` stanza.
+If your Linode uses more than two disks (for instance, if you have attached a [Block Storage Volume](/docs/products/storage/block-storage/)), you need to add those disks to your Linode resource configuration block. In order to add a disk, you must add the disk to the `devices` stanza and create an additional `disk` stanza.
     {{</ note >}}
 
     {{< note >}}

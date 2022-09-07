@@ -18,7 +18,7 @@ aliases: ['/platform/object-storage/object-storage-use-cases/','/guides/object-s
 
 ## What is Object Storage?
 
-Object Storage is a method of storing data that differs in a number of ways from [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/). Block Storage splits files into small *blocks* of data. Minimal file metadata is stored alongside this data and, in general, descriptive metadata must be stored in a separate file or database. In order to use a Block Storage volume it must be attached to a host server, where it acts like a hard drive.
+Object Storage is a method of storing data that differs in a number of ways from [Block Storage](/docs/products/storage/block-storage/). Block Storage splits files into small *blocks* of data. Minimal file metadata is stored alongside this data and, in general, descriptive metadata must be stored in a separate file or database. In order to use a Block Storage volume it must be attached to a host server, where it acts like a hard drive.
 
 In contrast, Object Storage stores data, called *objects*, in containers, called *buckets*, and each object is given a unique identifier with which it is accessed. In this way, the physical location of the object does not need to be known. The objects are stored alongside rich, configurable metadata that can be used to describe any number of arbitrary properties about the object. Each object has its own URL, so accessing the data is often as simple as issuing an HTTP request, either by visiting the object in a browser or retrieving it through the command line.
 
@@ -34,7 +34,7 @@ Below are some of the more popular use cases for Object Storage.
 
 ### Static Site Hosting
 
-Because Object Storage buckets provide HTTP access to objects, it's easy to set up a bucket to serve static websites. A static website is a website that does not require a server-side processing language like PHP to render content. And because a static site does not require each page to be processed with every request, they are usually very quick to load. For more information on setting up a static site on Object Storage, read our [Host a Static Site on Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide. For more on static site generators, visit our [How to Choose a Static Site Generator](/docs/websites/static-sites/how-to-choose-static-site-generator/) guide.
+Because Object Storage buckets provide HTTP access to objects, it's easy to set up a bucket to serve static websites. A static website is a website that does not require a server-side processing language like PHP to render content. And because a static site does not require each page to be processed with every request, they are usually very quick to load. For more information on setting up a static site on Object Storage, read our [Host a Static Site on Linode Object Storage](/docs/guides/host-static-site-object-storage/) guide. For more on static site generators, visit our [How to Choose a Static Site Generator](/docs/guides/how-to-choose-static-site-generator/) guide.
 
 ### Website Files
 
@@ -67,7 +67,7 @@ Object Storage is, in the majority of cases, significantly cheaper than Block St
 Similarly, Object Storage has benefits over [tape storage](https://en.wikipedia.org/wiki/Tape_drive). Tape storage is frequently used for archival purposes, but the read times that come with tape storage are many times more than what you'll find with Object Storage. Special considerations have to be made when transferring tape drive data, such as the ability to ship drives safely across long distances. With Object Storage, this data is available through HTTP from anywhere in the world.
 
 {{< note >}}
-The outbound data transfer for Linode Object Storage is part of your Linode account's [total transfer pool](/docs/platform/billing-and-support/network-transfer-quota/), which will reduce or completely eliminate transfer costs for Object Storage if you are also running Linode instances. If you expend your allotted transfer pool, you will be billed at a rate of $0.01 per GB for outbound transfers.
+The outbound data transfer for Linode Object Storage is part of your Linode account's [total transfer pool](/docs/guides/network-transfer/), which will reduce or completely eliminate transfer costs for Object Storage if you are also running Linode instances. If you expend your allotted transfer pool, you will be billed at a rate of $0.01 per GB for outbound transfers.
 {{< /note >}}
 
 ### Backups
@@ -80,4 +80,4 @@ Objects can be made private and only accessible with a key. By default, all new 
 
 ## Next Steps
 
-If you're curious about how to use Object Storage, you can review the [Create and Manage Buckets](/docs/products/storage/object-storage/guides/manage-buckets/) guide and the [Upload and Manage Files](/docs/products/storage/object-storage/guides/manage-files/) guide for detailed instructions on creating buckets and uploading objects. Read our [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) to get started with hosting your own site on Object Storage.
+If you're curious about how to use Object Storage, you can review the [Create and Manage Buckets](/docs/products/storage/object-storage/guides/manage-buckets/) guide and the [Upload and Manage Files](/docs/products/storage/object-storage/guides/manage-files/) guide for detailed instructions on creating buckets and uploading objects. Read our [Host a Static Site using Linode Object Storage](/docs/guides/host-static-site-object-storage/) to get started with hosting your own site on Object Storage.

@@ -13,7 +13,6 @@ modified: 2011-05-17
 modified_by:
   name: Linode
 published: 2009-08-31
-expiryDate: 2011-05-17
 title: 'Django, Apache and mod_python on Ubuntu 9.04 (Jaunty)'
 relations:
     platform:
@@ -21,8 +20,6 @@ relations:
         keywords:
             - distribution: Ubuntu 9.04
 ---
-
-
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications. It's also very flexible in its ability to facilitate many complex content management operations.
 
