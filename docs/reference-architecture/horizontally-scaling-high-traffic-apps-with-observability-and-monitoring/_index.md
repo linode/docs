@@ -32,8 +32,3 @@ In this example, the main bottleneck is the */notifications* endpoint of a mobil
 - Proactive maintenance through observability and monitoring
 - A high degree of reliability with no single point of failure
 - A portable workload that can be deployed anywhere
-
-## Market Applicability
-- Small Business
-- Mid-Market
-- Enterprise
