@@ -25,10 +25,7 @@ external_resources:
 MongoDB is a popular non-relationship database management system that stores keys and their values in a collection of documents rather than tables with fixed schemas. MongoDB supports a wide variety of options for horizontal scaling, making it an ideal tool for large enterprise production environments.
 
 Backing up the data stored in a MongoDB database is an important step to maintain data integrity and disaster recovery plans. To assure that the MongoDB databases are backed up regularly to an external source such as a Linode Object Storage bucket, a simple Bash script can be created. Then, the Bash script can be configured to run daily using the Linux Cron job workflow.
-
-
 ## Before You Begin
-
 
 1. Learn about the fundamentals of Linode Object Storage by viewing the [Get Started with Object Storage](/docs/products/storage/object-storage/get-started/) guide or by reviewing the available [Object Storage guides](/docs/products/storage/object-storage/guides/).
 
@@ -58,7 +55,6 @@ If you are using a Red Hat Linux distribution, install [duck](https://duck.sh/) 
 
     echo -e "[duck-stable]\nname=duck-stable\nbaseurl=https://repo.cyberduck.io/stable/\$basearch/\nenabled=1\ngpgcheck=0" | sudo tee /etc/yum.repos.d/duck-stable.repo
     sudo yum install duck
-
 
 ## Create Bash Script
 
@@ -129,21 +125,18 @@ Refer to the comments in the code to learn what each line in the code does.
 
 ## Run the Bash Script
 
-Before setting the above script to run automatically, execute the script to configure your Linode bucket's access key pair. You need to set the appropriate permissions for this script to be executed. For more information on Linux file permissions, review our guide on [Modifying File Permissions with chmod](/docs/guides/modify-file-permissions-with-chmod/)
- 
+Before setting the above script to run automatically, execute the script to configure your Linode bucket's access key pair. You need to set the appropriate permissions for this script to be executed. For more information on Linux file permissions, review our guide on [Modifying File Permissions with chmod](/docs/guides/modify-file-permissions-with-chmod/).
+
 Modify the script's permissions, then execute the script with the following commands:
 
-```
-chmod 755 backup_mongodb.sh
-./backup_mongodb.sh
-```
+    chmod 755 backup_mongodb.sh
+    ./backup_mongodb.sh
 
 Enter your Linode Access keys as prompted, and choose the option to save them.
 
 {{< note >}}
 [Duck](https://duck.sh/) saves your keys in a plain text file at `~.duck/credentials`. It is important to take appropriate measures to secure this file. Saving your keys in this file is necessary for them to be used when this script is run automatically.
 {{< /note >}}
-
 
 ## Schedule Backups as a Cron Job
 
