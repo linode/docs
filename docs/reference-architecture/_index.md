@@ -1,6 +1,6 @@
 +++
 title = "Reference Architecture"
-description = "Culpa minim tempor non proident. Sit ullamco qui reprehenderit fugiat aute. Commodo ex incididunt proident elit culpa commodo incididunt elit aliqua."
+description = "Reference architectures from Linode show how to arrange cloud infrastructure and services for a range of applications, through diagrams, abstracts, and tutorials. Learn how to architect high-availability applications, document management systems, CI/CD pipelines, and more."
 
 [[cascade]]
 date = 2022-05-17
