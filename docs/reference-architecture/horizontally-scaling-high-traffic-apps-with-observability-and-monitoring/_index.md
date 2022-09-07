@@ -21,11 +21,11 @@ In this example, the main bottleneck is the */notifications* endpoint of a mobil
 - Adding resiliency to the database for uptime and reliability
 
 ## Technologies Used
-- TerraForm
-- Ansible
-- Prometheus
-- Grafana
-- HAProxy
+- [Terraform](https://www.terraform.io/)
+- [Ansible](https://www.ansible.com/)
+- [Prometheus](https://prometheus.io/)
+- [Grafana](https://grafana.com/)
+- [HAProxy](http://www.haproxy.org/)
 
 ## Business Benefits
 - Better user experience through scalability
