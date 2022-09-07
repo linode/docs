@@ -9,7 +9,7 @@ tab_group_main:
 ---
 
 ## Abstract
-This reference architecture demonstrates how developers can horizontally scale their infrastructure using Terraform and Ansible when certain application performance thresholds are met. They can also observe detailed real-time metrics through the Grafana dashboard from Prometheus.
+This reference architecture demonstrates how developers can horizontally scale their infrastructure using [Terraform](https://www.terraform.io/) and [Ansible](https://www.ansible.com/) when certain application performance thresholds are met. They can also observe detailed real-time metrics through the [Grafana](https://grafana.com/) dashboard from [Prometheus](https://prometheus.io/).
 
 In this example, the main bottleneck is the */notifications* endpoint of a mobile app. When the client pushes notifications to the app, many users check the notifications on their devices, which call back to the server. This creates an overwhelming number of requests that can crash the server. This proposed architecture solves several issues by:
 
