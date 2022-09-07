@@ -9,16 +9,16 @@ tab_group_main:
 ---
 
 ## Abstract
-This reference architecture highlights how customers can horizontally scale their infrastructure using Terraform and Ansible when certain performance thresholds are met; can observe detailed real-time metrics through the Grafana dashboard from Prometheus.
+This reference architecture demonstrates how developers can horizontally scale their infrastructure using Terraform and Ansible when certain application performance thresholds are met. They can also observe detailed real-time metrics through the Grafana dashboard from Prometheus.
 
-In this example, the main bottleneck for this use case is the /notifications area of the mobile app. When the client pushes notifications to the app, many users will check out the notifications on their devices which would call back to the server. The overwhelming number of requests would crash the web server when this happens. The proposed architecture solves several issues for this use case by:
+In this example, the main bottleneck is the */notifications* endpoint of a mobile app. When the client pushes notifications to the app, many users check the notifications on their devices, which call back to the server. This creates an overwhelming number of requests that can crash the server. This proposed architecture solves several issues by:
 
-- Allows the application to grow as the target audience increases by having multiple HAProxy nodes
-- Establishes monitoring via Prometheus/Grafana
-- Separates the main app and the notification callback to the app
-- Scales the app’s notifications section via config management tools
-- Implement network segmentation using Linode VLANs
-- Adds resiliency to the database for uptime and reliability
+- Allowing the application to grow as the target audience increases by having multiple HAProxy nodes
+- Establishing monitoring via Prometheus and Grafana
+- Separating the main app and the notification callback to the app
+- Scaling the app’s notifications section via configuration management tools
+- Implementing network segmentation using Linode VLANs
+- Adding resiliency to the database for uptime and reliability
 
 ## Technologies Used
 - TerraForm
@@ -27,11 +27,13 @@ In this example, the main bottleneck for this use case is the /notifications are
 - Grafana
 - HAProxy
 
-
 ## Business Benefits
 - Better user experience through scalability
 - Proactive maintenance through observability and monitoring
 - A high degree of reliability with no single point of failure
-- Portable workload and can be deployed anywhere
-- Market Applicability
-- Small Business, Mid-Market & Enterprise
+- A portable workload that can be deployed anywhere
+
+## Market Applicability
+- Small Business
+- Mid-Market
+- Enterprise
