@@ -8,6 +8,9 @@ tab_group_main:
     weight: 10
 ---
 
+[![Thumbnail of Jenkins pipeline example reference architecture](thumbnail-1-2.png)](diagrams/)
+[![Thumbnail of entire CI/CD reference architecture](thumbnail-2-2.png)](diagrams/)
+
 ## Abstract
 A standard [Jenkins](https://www.jenkins.io/) CI/CD system can be hosted within Linode and any outside hosting environment (AWS, Azure, GCP, DO, etc.)
 

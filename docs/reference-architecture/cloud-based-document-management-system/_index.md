@@ -8,6 +8,8 @@ tab_group_main:
     weight: 10
 ---
 
+[![Thumbnail of Cloud-base document management system reference architecture](thumbnail-3-2.png)](diagrams/)
+
 ## Abstract
 This reference architecture provides guidance on IaaS primitives, open source software, and architecture design, in order to implement a highly-available and production ready cloud-based document management system.
 

@@ -8,6 +8,8 @@ tab_group_main:
     weight: 10
 ---
 
+[![Thumbnail of the horizontally scaling high-traffic application reference architecture](thumbnail-4-2.png)](diagrams/)
+
 ## Abstract
 This reference architecture demonstrates how developers can horizontally scale their infrastructure using [Terraform](https://www.terraform.io/) and [Ansible](https://www.ansible.com/) when certain application performance thresholds are met. They can also observe detailed real-time metrics through the [Grafana](https://grafana.com/) dashboard from [Prometheus](https://prometheus.io/).
 
