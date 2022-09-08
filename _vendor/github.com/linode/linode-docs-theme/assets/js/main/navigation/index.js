@@ -5,3 +5,4 @@ export * from './lang';
 export * from './language-switcher';
 export * from './nav';
 export * from './toc';
+export * from './promo-codes';
