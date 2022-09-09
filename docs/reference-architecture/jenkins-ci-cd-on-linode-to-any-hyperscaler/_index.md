@@ -11,13 +11,7 @@ published: 2022-09-08
 
 ## Abstract
 
-A standard [Jenkins](https://www.jenkins.io/) CI/CD system can be hosted within Linode (or other Cloud hosting providers). The Jenkins server is used to manage the pipelines and agents and host the dashboard for end-users. Depending on the scale and requirements, developers can deploy N-number of build agent servers to handle concurrent processes. This process can be automated using [Terraform](https://www.terraform.io/) to scale build agent servers horizontally.
-
-## Diagrams
-
-<a href="/docs/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/diagrams/#jenkins-pipeline"><img src="thumbnail-1-2.png" width="300px" alt="Thumbnail of Jenkins pipeline example reference architecture" /></a>
-
-<a href="/docs/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/diagrams/#cicd-infrastructure"><img src="thumbnail-2-2.png" width="300px" alt="Thumbnail of entire CI/CD reference architecture" /></a>
+This reference architecture showcases a [Jenkins](https://www.jenkins.io/) CI/CD system hosted on the Linode platform that can automate deployments to Linode or other hosting platforms (including AWS, Azure, and GCP). The Jenkins server is used to manage the pipelines and agents and host the dashboard for end-users. Depending on the scale and requirements, developers can deploy N-number of build agent servers to handle concurrent processes. This process can be automated using [Terraform](https://www.terraform.io/) to scale build agent servers horizontally.
 
 ## Technologies Used
 
@@ -34,3 +28,9 @@ A standard [Jenkins](https://www.jenkins.io/) CI/CD system can be hosted within 
 - Granular control of environments
 - Improved customizability
 - Most control is in the hands of the developers
+
+## Diagrams
+
+[![Thumbnail of Jenkins pipeline example reference architecture](jenkins-pipeline-diagram-thumnail-1.png)](/docs/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/diagrams/#jenkins-pipeline)
+
+[![Thumbnail of entire CI/CD reference architecture](jenkins-cicd-diagram-thumnail.png)](/docs/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/diagrams/#cicd-infrastructure)

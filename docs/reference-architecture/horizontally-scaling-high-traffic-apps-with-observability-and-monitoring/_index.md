@@ -1,5 +1,6 @@
 ---
 title: "Horizontally Scaling High-Traffic Applications with Observability and Monitoring"
+linkTitle: "Horizontal Scaling with Observability and Monitoring"
 description: "Horizontally scale infrastructure to meet demands of a growing application through HAProxy, and monitor with Prometheus and Grafana."
 license: "[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)"
 tab_group_main:
@@ -21,10 +22,6 @@ In this example, the main bottleneck is the */notifications* endpoint of a mobil
 - Implementing network segmentation using Linode VLANs
 - Adding resiliency to the database for uptime and reliability
 
-## Diagrams
-
-<a href="/docs/reference-architecture/horizontally-scaling-high-traffic-apps-with-observability-and-monitoring/diagrams"><img src="thumbnail-4-2.png" width="300px" alt="Thumbnail of the horizontally scaling high-traffic application reference architecture" /></a>
-
 ## Technologies Used
 
 - [Terraform](https://www.terraform.io/)
@@ -34,7 +31,12 @@ In this example, the main bottleneck is the */notifications* endpoint of a mobil
 - [HAProxy](http://www.haproxy.org/)
 
 ## Business Benefits
+
 - Better user experience through scalability
 - Proactive maintenance through observability and monitoring
 - A high degree of reliability with no single point of failure
 - A portable workload that can be deployed anywhere
+
+## Diagrams
+
+[![Thumbnail of the horizontally scaling high-traffic application reference architecture](ha-scaling-diagram-thumbnail.png)](/docs/reference-architecture/horizontally-scaling-high-traffic-apps-with-observability-and-monitoring/diagrams/)

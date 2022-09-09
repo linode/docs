@@ -1,5 +1,6 @@
 ---
 title: "Cloud-based Document Management System"
+linkTitle: "Cloud-based Document Management"
 description: "Guidance on IaaS primitives, open source software, and architecture design to implement a highly available and production ready Cloud-based document management system."
 license: "[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)"
 tab_group_main:
@@ -23,10 +24,6 @@ The PostgreSQL databases are implemented as an active-active cluster, using [Buc
 
 [Prometheus](https://prometheus.io/) is used to collect metrics for infrastructure performance monitoring and alerting. [Grafana](https://grafana.com/) provides rich visualization of the Prometheus data.
 
-## Diagrams
-
-<a href="/docs/reference-architecture/cloud-based-document-management-system/diagrams/"><img src="thumbnail-3-2.png" width="300px" alt="Thumbnail of Cloud-base document management system reference architecture" /></a>
-
 ## Technologies Used
 
 - [Mayan EDMS](https://mayan-edms.com/)
@@ -48,7 +45,12 @@ The PostgreSQL databases are implemented as an active-active cluster, using [Buc
     - [API](https://www.linode.com/docs/api/)
 
 ## Business Benefits
+
 - Web-based application – no software to install on end user devices
 - Security, privacy, and total control of your data
 - Easy integration with third-party software
 - Automation of document workflows for business processes
+
+## Diagrams
+
+[![Thumbnail of Cloud-base document management system reference architecture](document-management-diagram-thumbnail.png)](/docs/reference-architecture/cloud-based-document-management-system/diagrams/)
