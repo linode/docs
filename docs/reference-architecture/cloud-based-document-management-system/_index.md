@@ -6,11 +6,11 @@ tab_group_main:
     is_root: true
     title: Overview
     weight: 10
+published: 2022-09-08
 ---
 
-[![Thumbnail of Cloud-base document management system reference architecture](thumbnail-3-2.png)](diagrams/)
-
 ## Abstract
+
 This reference architecture provides guidance on IaaS primitives, open source software, and architecture design, in order to implement a highly-available and production ready cloud-based document management system.
 
 This deployment is using the [Mayan Electronic Document Management System](https://mayan-edms.com/) (EDMS) – an open source web application for document collaboration, tamper proof signing, transformations, and more. Mayan EDMS also comes with a REST API for integrations with 3rd party software. For this example, we are using the recommended [Docker Compose installation](https://docs.mayan-edms.com/chapters/docker/install_docker_compose.html#docker-compose-install), which the Mayan EDMS project recommends for most cases, with two exceptions. This architecture decouples the [PostgreSQL](https://www.postgresql.org/) database layer to achieve separation of concerns and architect for high availability; and employs [NGINX](https://www.nginx.com/) as reverse proxies to the application, using [Certbot](https://certbot.eff.org/) with the [dns_linode plugin](https://certbot-dns-linode.readthedocs.io/en/stable/) for SSL/TLS certificate management. [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) provides bi-directional synchronization of the Let’s Encrypt directories so that both application nodes contain the same certificate and private key. Unison also synchronizes the Docker volume directories between the two instances.
@@ -23,7 +23,12 @@ The PostgreSQL databases are implemented as an active-active cluster, using [Buc
 
 [Prometheus](https://prometheus.io/) is used to collect metrics for infrastructure performance monitoring and alerting. [Grafana](https://grafana.com/) provides rich visualization of the Prometheus data.
 
+## Diagrams
+
+<a href="/docs/reference-architecture/cloud-based-document-management-system/diagrams/"><img src="thumbnail-3-2.png" width="300px" alt="Thumbnail of Cloud-base document management system reference architecture" /></a>
+
 ## Technologies Used
+
 - [Mayan EDMS](https://mayan-edms.com/)
 - [PostgreSQL 14](https://www.postgresql.org/)
 - [Bucardo](https://bucardo.org/Bucardo/)

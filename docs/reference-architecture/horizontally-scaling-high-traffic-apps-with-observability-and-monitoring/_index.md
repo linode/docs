@@ -6,9 +6,8 @@ tab_group_main:
     is_root: true
     title: Overview
     weight: 10
+published: 2022-09-08
 ---
-
-[![Thumbnail of the horizontally scaling high-traffic application reference architecture](thumbnail-4-2.png)](diagrams/)
 
 ## Abstract
 This reference architecture demonstrates how developers can horizontally scale their infrastructure using [Terraform](https://www.terraform.io/) and [Ansible](https://www.ansible.com/) when certain application performance thresholds are met. They can also observe detailed real-time metrics through the [Grafana](https://grafana.com/) dashboard from [Prometheus](https://prometheus.io/).
@@ -22,7 +21,12 @@ In this example, the main bottleneck is the */notifications* endpoint of a mobil
 - Implementing network segmentation using Linode VLANs
 - Adding resiliency to the database for uptime and reliability
 
+## Diagrams
+
+<a href="/docs/reference-architecture/horizontally-scaling-high-traffic-apps-with-observability-and-monitoring/diagrams"><img src="thumbnail-4-2.png" width="300px" alt="Thumbnail of the horizontally scaling high-traffic application reference architecture" /></a>
+
 ## Technologies Used
+
 - [Terraform](https://www.terraform.io/)
 - [Ansible](https://www.ansible.com/)
 - [Prometheus](https://prometheus.io/)
