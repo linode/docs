@@ -29,7 +29,7 @@ Stay protected as your network grows. Effortlessly apply the same ruleset across
 
 ## Pricing and Availability
 
-Cloud Firewalls are available at no change across [all regions](https://www.linode.com/global-infrastructure/).
+Cloud Firewalls are available at no charge across [all regions](https://www.linode.com/global-infrastructure/).
 
 ## Limits and Considerations
 
