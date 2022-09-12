@@ -17,8 +17,8 @@ contributor:
   name: Tom Henderson
   link: Github/Twitter Link
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+#- '[Link Title 1](http://www.example.com)'
+#- '[Link Title 2](http://www.example.net)'
 ---
 
 A successful internet circuit from host-to-host usually involves many components: from an application in one host, to an application in the desired target host. This tutorial covers troubleshooting connectivity between apps, and their hosts, whether over IPv4, IPv6, or an IPv6 tunnel over IPv4.
@@ -55,15 +55,15 @@ The boot process requires one of three types of suppliers of compliant address i
 
 DHCP clients are configured to receive their IPv4/IPv6-compliant address through the DHCP protocol from a downstream host. If the DHCP address server is offline, a usable address for the host network stack is not available until the working DHCP server is re-contacted by the DHCP client.
 
-The DHCP address must be delivered within an IPv4/IPv6 range that permits the host address to be routed through the next gateway/switch/router to other downstream gateways, then on to the Internet (or the target host if on a local or private network). Many hosts will substitute an IPv4 address if they fail to procure a DHCP address in the `169.XXX.XXX.XXX` range, which is a point-to-point protocol for machine-to-machine connections not involving gateways.
+The DHCP address must be delivered within an IPv4/IPv6 range that permits the host address to be routed through the next gateway/switch/router to other downstream gateways, then on to the Internet (or the target host if on a local or private network). Many hosts substitute an IPv4 address if they fail to procure a DHCP address in the `169.XXX.XXX.XXX` range, which is a point-to-point protocol for machine-to-machine connections not involving gateways.
 
 {{< note >}}
 A DHCP server may also consult a RADIUS server for information, but become unusable if the RADIUS server cannot be found. DHCP and RADIUS servers can be combined in the same device, and serve as combined proxy authentication (RADIUS) and supplicant provider (DHCP) when confirming network addresses and credentials.
 {{< /note >}}
 
-If a Linode host requests a DHCP address, it will receive an IPv4 and IPv6 address from a pool depending on where the host node is located. If a network host receives DHCP host addresses in the `169.XXX.XXX.XXX` range, this indicates that the DHCP server did not supply an address correctly, and communications to the needed DHCP must be tested.
+If a Linode host requests a DHCP address, it receives an IPv4 and IPv6 address from a pool depending on where the host node is located. If a network host receives DHCP host addresses in the `169.XXX.XXX.XXX` range, this indicates that the DHCP server did not supply an address correctly, and communications to the needed DHCP must be tested.
 
-When an IPv4/IPv6-compliant address is delivered to a requesting host, this address is not considered static. Most DHCP addresses are automatically renewed every 90 days, so dependencies on that IP address by applications are at risk when the address is renewed. If a host has been unavailable with a leased address and is re-introduced to the network, the DHCP server will deliver the next available list in its pool, which may be different from previous address.
+When an IPv4/IPv6-compliant address is delivered to a requesting host, this address is not considered static. Most DHCP addresses are automatically renewed every 90 days, so dependencies on that IP address by applications are at risk when the address is renewed. If a host has been unavailable with a leased address and is re-introduced to the network, the DHCP server delivers the next available list in its pool, which may be different from previous address.
 
 DHCP servers test an address before leasing it to a DHCP client. However, users on the same local network may have been assigned a static address within the DHCP range. This causes a conflict because each address must be unique. Duplicate IP addresses cause each host with the same address to receive errors. To fix this, flush the Address Resolution Protocol (ARP) cache on each host assigned a duplicate address, as well as the cache on the DHCP server.
 
@@ -116,13 +116,13 @@ The usual syntax of the ping command line tool is:
 
 If a route to a DNS server, resolver, or local hosts file isn’t present, ping fails where a fully qualified hostname has been used. If ping can find the hostname through a resolver, then it uses the IP address as its target. If no hostname resolution is found, the IP address of the host is preferable. If there is a reply from the host by IP address only, name resolution has failed, which is a DNS problem. If it’s successful, then the circuit path is good. Ping can show intermediate response slowdowns. The Windows version only shows four replies, but other versions show replies until the program is forced to stop with **CTRL-C**. Vast differences in response times point to network congestion between the hosts, router latencies, jitter, and/or other circuit problems
 
-The Windows native command line tool `tracert`, or `traceroute` in macOs and Linux, traces each host/gateway/router between two hosts. A better, downloadable cross-platform command line tool, `mtr` (the Windows Version is called **WinMTR**), performs an interactive traceroute that reveals jitter and latency between two hosts.
+The Windows native command line tool `tracert`, or `traceroute` in macOS and Linux, traces each host/gateway/router between two hosts. A better, downloadable cross-platform command line tool, `mtr` (the Windows Version is called **WinMTR**), performs an interactive traceroute that reveals jitter and latency between two hosts.
 
 ### Wireshark
 
 The Wireshark application is a protocol analyzer that works on Windows, macOS, and Linux. Most commonly used in a GUI, Wireshark captures network traffic seen by a host’s port. The captured traffic is analyzed to determine problems between hosts, and measure traffic on the local routable network.
 
-Wireshark requires hardware configurations to have full access to a desired network port on a host. Traffic can be viewed in real-time, or captured and analyzed for host pairing of conversations among hosts, and specific protocol analysis. It also permits decrypting IPSec and TLS.
+Wireshark requires hardware configurations to have full access to a desired network port on a host. Traffic can be viewed in real-time, or captured and analyzed for host pairing of conversations among hosts, and specific protocol analysis. It also permits decrypting IPsec and TLS.
 
 ### Firewalls and Other Network Traffic Controllers
 
@@ -150,7 +150,7 @@ Once sure you have a working network electrical circuit and a correct client net
 
 ### Linux
 
-Linux `iptables`/`nftables`, UFW, and `firewalld`, all permit the inclusion of runtime-loaded rules files, which are integrated into the settings directives the host firewall uses. This aids other apps that can form them by learning. An example of a learning firewall aid is `fail2ban`, which can ban IP addresses directly to the iptable rules as an included table. The `fail2ban` app regularly re-writes the iptable rules according to its configuration by examining traffic, matching offenders that fail rules, then blocking them specifically in the iptables rules. These rules re-load each time `iptables` loads - like when you restart or boot a system - and can prevent iptables from passing traffic until tables are loaded into the Linux kernel netfilter framework. This delay can simulate a network failure because traffic is blocked until the potentially large tables are loaded into the framework.
+Linux `iptables`/`nftables`, UFW, and `firewalld`, all permit the inclusion of runtime-loaded rules files, which are integrated into the settings directives the host firewall uses. This aids other apps that can form them by learning. An example of a learning firewall aid is `fail2ban`, which can ban IP addresses directly to the iptables rules as an included table. The `fail2ban` app regularly re-writes the iptables rules according to its configuration by examining traffic, matching offenders that fail rules, then blocking them specifically in the iptables rules. These rules re-load each time `iptables` loads - like when you restart or boot a system - and can prevent iptables from passing traffic until tables are loaded into the Linux kernel netfilter framework. This delay can simulate a network failure because traffic is blocked until the potentially large tables are loaded into the framework.
 
 ## Third Party and Proxy Network Control Troubleshooting
 
