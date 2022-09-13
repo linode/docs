@@ -126,7 +126,7 @@ You can learn more about setting up a Next.js project with TypeScript in our gui
     {{< output >}}
 Need to install the following packages:
   create-next-app@12.3.0
-Ok to proceed? (y) 
+Ok to proceed? (y)
     {{< /output >}}
 
 1. Change into the project's directory. The rest of this tutorial assumes you are still in this directory unless otherwise noted:
