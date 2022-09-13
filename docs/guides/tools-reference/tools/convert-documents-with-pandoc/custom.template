@@ -1,7 +1,0 @@
-node_modules/tailwindcss/dist/base.css
-
-pandoc -o ./index.html -f markdown -t html index.md --css '/home/pierce/env/linode/node_modules/tailwindcss/dist/base.css' -css '/home/pierce/env/linode/node_modules/tailwindcss/dist/base.min.css' -css '/home/pierce/env/linode/node_modules/tailwindcss/dist/components.css' -css '/home/pierce/env/linode/node_modules/tailwindcss/dist/tailwind.css' -css '/home/pierce/env/linode/node_modules/tailwindcss/dist/utilities.css' --self-contained
-
-
-
-pandoc -o ./find.html -f markdown -t html find.md --css '/home/pierce/env/linode/node_modules/tailwindcss/dist/base.css', '/home/pierce/env/linode/node_modules/tailwindcss/dist/components.css', '/home/pierce/env/linode/node_modules/tailwindcss/dist/tailwind.css', '/home/pierce/env/linode/node_modules/tailwindcss/dist/utilities.css' --self-contained
