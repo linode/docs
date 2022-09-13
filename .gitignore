@@ -46,3 +46,5 @@ hugo_stats.json
 redirects.conf
 scripts/duplicates.csv
 algolia_out/
+draft
+draftFolder
