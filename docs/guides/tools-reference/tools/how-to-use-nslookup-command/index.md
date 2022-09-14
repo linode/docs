@@ -215,13 +215,13 @@ Address:	127.0.0.53#53
 
 Non-authoritative answer:
 wikipedia.org
-	origin = ns0.wikimedia.org
-	mail addr = hostmaster.wikimedia.org
-	serial = 2022030414
-	refresh = 43200
-	retry = 7200
-	expire = 1209600
-	minimum = 3600
+    origin = ns0.wikimedia.org
+    mail addr = hostmaster.wikimedia.org
+    serial = 2022030414
+    refresh = 43200
+    retry = 7200
+    expire = 1209600
+    minimum = 3600
 {{< /output >}}
 
 It is often useful to compare SOA records between sites. The SOA record for `amazon.com` has much lower `refresh` and `retry` numbers, suggesting the domain information might change more frequently.
@@ -234,13 +234,13 @@ Address:	127.0.0.53#53
 
 Non-authoritative answer:
 amazon.com
-	origin = dns-external-master.amazon.com
-	mail addr = root.amazon.com
-	serial = 2010161662
-	refresh = 180
-	retry = 60
-	expire = 3024000
-	minimum = 60
+    origin = dns-external-master.amazon.com
+    mail addr = root.amazon.com
+    serial = 2010161662
+    refresh = 180
+    retry = 60
+    expire = 3024000
+    minimum = 60
 {{< /output >}}
 
 The TXT records are used to validate domain information. Use `-type=txt` to retrieve this information.
@@ -305,11 +305,11 @@ Address:	127.0.0.53#53
 
 ------------
     QUESTIONS:
-	wikipedia.org, type = A, class = IN
+    wikipedia.org, type = A, class = IN
     ANSWERS:
     ->  wikipedia.org
-	internet address = 91.198.174.192
-	ttl = 600
+    internet address = 91.198.174.192
+    ttl = 600
     AUTHORITY RECORDS:
     ADDITIONAL RECORDS:
 ------------
@@ -318,15 +318,15 @@ Name:	wikipedia.org
 Address: 91.198.174.192
 ------------
     QUESTIONS:
-	wikipedia.org, type = AAAA, class = IN
+    wikipedia.org, type = AAAA, class = IN
     ANSWERS:
     ->  wikipedia.org
-	has AAAA address 2620:0:862:ed1a::1
-	ttl = 600
+    has AAAA address 2620:0:862:ed1a::1
+    ttl = 600
     AUTHORITY RECORDS:
     ADDITIONAL RECORDS:
 ------------
-Name:	wikipedia.org
+Name: wikipedia.org
 Address: 2620:0:862:ed1a::1
 {{< /output >}}
 
