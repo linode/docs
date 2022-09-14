@@ -1,10 +1,9 @@
 ---
-slug: javascript-base-64-decode
+slug: javascript-decode-base64-string-a-developers-guide
 author:
   name: Linode Community
   email: docs@linode.com
 description: 'Wondering how to encode and decode with base64 in Javascript? Follow these steps to learn how plus find the benefits and limitations of the base64 code.'
-og_description: 'Wondering how to encode and decode with base64 in Javascript? Follow these steps to learn how plus find the benefits and limitations of the base64 code.'
 keywords: ['javascript base 64 decode','encode string javascript','base64 js']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-04
@@ -46,12 +45,12 @@ When the number of bytes to be converted into Base64 is a multiple of three, no 
 The following example explains how to manually convert a file to Base64, using the input string `La`:
 
 1.  Break the binary file into groups of three eight-byte characters. In this example there are only two characters, so padding must be added to fill out the block.
-2.  Convert the three bytes to a bit string. For three bytes, this results in a string of 24 bits. The ASCII decimal representation for `L` is `76`, while for `a`, it is `96`. Therefore, the equivalent bit string is `0100 1100 0110 0001`.
-3.  Regroup the bits into four 6-bit sextets. After the conversion, but before any padding, this is represented as `010011 000110 0001`.
-4.  If necessary, add zeros to complete the final sextet. Append the padding character until there are four sextets. The Base64 characters are now `010011 000110 000100 padding` in binary.
-5.  Turn each sextet into its decimal representation. This results in the series `19 6 4 padding`.
-6.  Translate the decimal integers to their equivalent Base64 characters. The previous sequence of values translates to `T`, `G`, `E`, and `=`.
-7.  Combine all the Base64 values into a stream of four-character blocks. In this case, the block contains `TGE=`.
+1.  Convert the three bytes to a bit string. For three bytes, this results in a string of 24 bits. The ASCII decimal representation for `L` is `76`, while for `a`, it is `96`. Therefore, the equivalent bit string is `0100 1100 0110 0001`.
+1.  Regroup the bits into four 6-bit sextets. After the conversion, but before any padding, this is represented as `010011 000110 0001`.
+1.  If necessary, add zeros to complete the final sextet. Append the padding character until there are four sextets. The Base64 characters are now `010011 000110 000100 padding` in binary.
+1.  Turn each sextet into its decimal representation. This results in the series `19 6 4 padding`.
+1.  Translate the decimal integers to their equivalent Base64 characters. The previous sequence of values translates to `T`, `G`, `E`, and `=`.
+1.  Combine all the Base64 values into a stream of four-character blocks. In this case, the block contains `TGE=`.
 
 The following table illustrates how the text characters are converted into a Base64 encoding. In this case, `0` bits and a padding symbol are added to round out the sequence.
 
@@ -67,7 +66,7 @@ T      G      E      =
 
 ## What Are the Benefits of Base64 Code?
 
-Base64 is very convenient and enhances compatibility and security. Here are some of the advantages of Base64.
+Base64 is very convenient and enhances compatibility and security. Following are some of the advantages of Base64:
 
 - It allows binary or image files to be embedded in HTML or CSS files. Base64 is compatible with JavaScript, CSS, and HTML.
 - It is lossless. All information is retained during the encoding and decoding process.
@@ -80,7 +79,7 @@ Base64 is very convenient and enhances compatibility and security. Here are some
 
 ## What Are the Limitations of Base64 Code?
 
-Unfortunately, there are also some drawbacks to Base64 encoding, mainly involving performance. Here are some of the disadvantages of Base64:
+Unfortunately, there are also some drawbacks to Base64 encoding, mainly involving performance. Following are some of the disadvantages of Base64:
 
 - It increases the size of the file and the amount of data to transfer. Most files increase in size by about 30 to 35% depending on the amount of padding. If a large amount of Base64 data is included, additional fetch operations might be required.
 - It requires extra time and processing power to encode and decode the content.
@@ -96,7 +95,7 @@ Unfortunately, there are also some drawbacks to Base64 encoding, mainly involvin
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Encode and Decode with Base64 in Javascript?
@@ -109,9 +108,9 @@ All current releases of all common web browsers support these operations. Howeve
 The names of these functions are not quite accurate. The "binary" text must be in Unicode string format, and the Base64 encoding is only a subset of the ASCII character set.
 {{< /note >}}
 
-### Encoding Data with Base64 in Javascript.
+### Encode Data with Base64 in Javascript.
 
-To encode any data in Base64 format, use the `btoa` function. Provide the original text as an argument to the function. To use JavaScript to encode a string into Base64, follow these steps. This example uses the JavaScript debugger found in most web browsers.
+To encode any data in Base64 format, use the `btoa` function. Provide the original text as an argument to the function. To use JavaScript to encode a string into Base64, follow the steps below. The example below uses the JavaScript debugger found in most web browsers.
 
 {{< note >}}
 To run short JavaScript code snippets without embedding them in a web page, use the developer tools in the browser. For instance, in the current release of Firefox, choose **Tools** -> **Browser Tools** -> **Web Developer Tools**. Then select the **Debugger** tab. Enter the JavaScript commands at the `>>` prompt.
@@ -120,27 +119,28 @@ To run short JavaScript code snippets without embedding them in a web page, use 
 1.  Assign the data to encode to a variable.
 
         var origString = 'La';
-2.  Encode the data using the built-in `btoa` JavaScript function. Pass the string variable to the function.
+1.  Encode the data using the built-in `btoa` JavaScript function. Pass the string variable to the function.
 
         var base64EncodeString = btoa(origString);
-3.  Print the result using `console.log` to ensure the string is encoded correctly.
+1.  Print the result using `console.log` to ensure the string is encoded correctly.
 
         console.log(base64EncodeString);
-{{< output >}}
+    {{< output >}}
 TGE=
 {{< /output >}}
 
-### Decoding Data with Base64 in Javascript.
+### Decode Data with Base64 in Javascript.
 
-JavaScript can also decode Base64 text. The procedure to decode a Base64 representation back into the original is very similar. Use the `atob` function and pass it the Base64 string. `atob` should produce the original string. To decode Base64 data, follow these steps.
+JavaScript can also decode Base64 text. The procedure to decode a Base64 representation back into the original is very similar. Use the `atob` function and pass it the Base64 string. `atob` should produce the original string. To decode Base64 data, follow the steps below:
 
 1.  Pass the data to be decoded to the `atob` function and store the result in a new variable.
 
         var txtDecodeString = atob(base64EncodeString);
-2.  Confirm the data is decoded correctly. The result should match the original data.
+1.  Confirm the data is decoded correctly. The result should match the original data.
 
         console.log(txtDecodeString);
-{{< output >}}
+
+    {{< output >}}
 La
 {{< /output >}}
 
