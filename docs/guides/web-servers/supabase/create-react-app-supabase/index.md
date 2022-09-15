@@ -22,9 +22,11 @@ external_resources:
 - '[GitHub: tmm/react-supabase](https://github.com/tmm/react-supabase)'
 ---
 
-Supabase provides a powerful open-source database and REST API. In fact, you can utilize Supabase as a capable backend for your applications. It acts to simplify your database needs and connects your application frontends to a ready API for fetching and modifying your data.
+Supabase provides a powerful open-source database that comes built-in with features like user authentication and a REST API. This makes Supabase a ready-made solution for backend services, simplifying database operations and connecting application frontends to a ready API.
 
-This guide shows you just how to do that, giving you everything you need to make a React application with a Supabase backend. Whatever your needs, this tutorial shows you how to get Supabase and React connected and interacting, letting you focus on building better applications.
+React offers one of the most popular frontend web development frameworks around. React's model is approachable and enables quick development of effective frontend applications.
+
+In this tutorial, learn how you can put these two remarkable tools together. Follow along to set up a Supabase backend and create a simple React application to connect to it. This tutorial gives you what you need to get started building your own React application backed by Supabase, whatever your application may be.
 
 ## Before You Begin
 
@@ -48,27 +50,25 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## How to Create a Supabase Backend
 
-With relatively little setup, Supabase can provide your with a capable backend. It uses a PostgreSQL database and includes a full REST API to provide thorough data storage and access for your application frontends.
+With relatively little setup, Supabase can provide you with a capable backend. It uses a PostgreSQL database and includes a full REST API to connect application frontend to the data it needs.
 
 These next sections guide your toward getting your own Supabase instance up and running and configuring it for use with an example React application.
 
 ### Setting Up Supabase
 
-You have two options when it comes to setting up your Supabase instance. The first is the cloud-hosted option provided by Supabase. You can navigate to the [project creation](https://app.supabase.com/) page and create an account or sign in. From there, you can select **New Project** to get started.
+You have two options when it comes to setting up your Supabase instance. The first is the cloud-hosted option provided by Supabase itself. You can navigate to the [project creation](https://app.supabase.com/) page and create an account or sign in. From there, you can select **New Project** to get started.
 
-The other option is self-hosted, and this is the option used in this tutorial. You can learn how to get started with your own self-hosted Supabase instance by following along with our guide on **How to Self-host Supabase with Docker**. Ensure that your self-hosted instance is up and running by executing the following command from its base directory:
+The other option is self-hosted. You can learn how to get started with your own self-hosted Supabase instance by following along with our guide on **How to Self-host Supabase with Docker**. Ensure that your self-hosted instance is up and running by executing the following command from its base directory:
 
     sudo docker compose up -d
 
-Either way, by the end you should have an instance of Supabase ready to house your project.
+This tutorial assumes that you have followed the guide above to stand up your own self-hosted Supabase instance. The only difference is that this tutorial assumes you have used the default ports for your instance. That means port `3000` for the studio interface and port `8000` for the external API.
 
-Be sure to locate your instance's API URL and anon key. You can find these under **Settings** and **API** on a cloud instance. They are stored in the `.env` file for self-hosted instances.
+Before moving on, be sure to locate your instance's API URL and anon key. You can find these under **Settings** and **API** on a cloud instance. They are stored in the `.env` file for self-hosted instances.
 
 ### Populating the Supabase Database
 
-Your Supabase instance provides both a database and a REST API interface for fetching data. For many applications, it can serve as the only backend your application needs.
-
-To get started and demonstrate its usage for this tutorial, you can create a table and some initial data for your Supabase database. These next steps show you how to do that. The example data here gets used later to demonstrate the React portion of the application.
+The example application needs a table to hold its data, and it is helpful to have some initial data there for testing. These next steps show you how to create the table in Supabase and add some initial data.
 
 1. Navigate to the Supabase Studio dashboard for your instance, and select the **Default Project** displayed in the page's body.
 
@@ -76,9 +76,7 @@ To get started and demonstrate its usage for this tutorial, you can create a tab
 
 1. In the form that displays, give the table a name and columns.
 
-    This tutorial's example application is a shopping list. Thus, here and following the table name used is `shopping_list`, and the table has an `item` column with `text` content and a `checked` column with `bool` content. The `checked` column also has a default value of `false`.
-
-    This is in addition to the default columns, `id` and `created_at`.
+    This tutorial's example application is a shopping list. Thus, here and following the table name used is `shopping_list`, and the table has an `item` column with `text` content and a `checked` column with `bool` content. The `checked` column also has a default value of `false`. This is in addition to the default columns, `id` and `created_at`.
 
     [![The Supabase form for creating a new table](supabase-create-table_small.png)](supabase-create-table.png)
 
@@ -103,17 +101,17 @@ To get started and demonstrate its usage for this tutorial, you can create a tab
 
 ## How to Create a React Frontend
 
-With Supabase prepped and populated, you are ready to start building out a React frontend to interface with the backend provided by Supabase.
+With Supabase prepped and populated, you are ready to start building out a React frontend to interface with it.
 
-The React frontend developed here displays a shopping list. It gives the user the option of marking items "Purchased" and allows the user to add more items.
+The React frontend developed here displays a shopping list. It gives the user the option of marking items "Purchased" and allows the user to add additional items to the list.
 
 ### Setting Up the React Project
 
 These next steps show you how to initialize a React application with NPM and how to add the Supabase client SDK to the project.
 
-1. Follow our tutorial on how to [Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/). The present guide uses NPM to bootstrap a React project, to install the Appwrite web SDK, and to run the React frontend.
+1. Follow our tutorial on how to [Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/). The present guide uses NPM to create a base React project, to install the Supabase client, and to run the React frontend.
 
-1. Create the React project. This example uses `create-react-app` to bootstrap a new React project and names the new project `example-app`. The command results in a directory with that name being created in the current directory.
+1. Create the base React project. This example uses `create-react-app` to bootstrap a new React project and names the new project `example-app`. The command results in a directory with that name being created in the current directory.
 
     For this guide, the new React application's directory is created in the current user's home directory:
 
@@ -130,13 +128,13 @@ Ok to proceed? (y)
 
         cd example-app
 
-1. Install the Supabase JavaScript SDK via NPM. The React frontend can use this SDK to simplify interfacing with the Supabase API:
+1. Install the Supabase JavaScript SDK via NPM. The React application uses this SDK to simplify interfacing with the Supabase API:
 
         npm install @supabase/supabase-js --save
 
 ### Developing the React Frontend
 
-This tutorial's React frontend primarily consists of three JSX files, all stored in the `src` subdirectory in the React project directory. Each of these files serves a particular role, and each is dealt with in its own section below to help break it down.
+This tutorial's React frontend primarily consists of three JSX files, all stored in the `src` subdirectory in the React project directory. Each of these files is dealt with in its own section below to help break down how the application comes together.
 
 #### App.js
 
@@ -170,9 +168,11 @@ export default App;
 
 #### Utils.js
 
-Before diving into the `ShoppingList` component, it is useful to have a tool put together for making the connection to Supabase.
+Before diving into the `ShoppingList` component, this application should have a tool ready for making connections to the Supabase backend.
 
 For this purpose, create a new file in the `src` subdirectory, naming the file `utils.js`. Then, give the file the contents you see below. You can find the full example file [here](example-app-src/utils.js).
+
+Replace `http://192.0.2.0:8000` with your Supabase instance's API address, and replace `example-supabase-anon-key` with your instance's anon key.
 
 {{< file "src/utils.js" js >}}
 // Import the module for client creation from the Supabase SDK.
@@ -191,13 +191,13 @@ console.log(supabaseAnonKey);
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 {{< /file >}}
 
-#### Films.js
+#### ShoppingList.js
 
-Now everything is ready for the `ShoppingList` component. This is where the central logic for this example application resides. It uses the client connection to fetch data from the Supabase instance and then determines how to display that data.
+Now everything is ready for the `ShoppingList` component. This is where the central logic for this application lives. The component uses the client connection given by `utils.js` to fetch data from the Supabase instance and then determines how to display that data.
 
 This section walks through the file in parts to make it easier to digest. If you want to see the whole example file, you can find it [here](example-app-src/ShoppingList.js).
 
-- First, you need to import both the React modules the application needs and `utils.js` for the client connection. Then you can start off the `ShoppingList` class with a declaration of the base state and a call to fetch the shopping list when the application loads.
+- First, you need to import the React modules the application needs and `utils.js` for the client connection. Then you can start off the `ShoppingList` class with a declaration of the base state and a call to fetch the shopping list when the application loads.
 
     {{< file "src/ShoppingList.js" js >}}
 // Import the React modules for building the component.
@@ -219,7 +219,7 @@ class ShoppingList extends Component {
     }
     {{< /file >}}
 
-- The class gets a method to handle fetching the shopping list from Supabase. Notice that the methods used to interact with the Supabase API are modelled on SQL, making the interactions easier to orchestrate and predict.
+- The component needs a method to fetch the shopping list from Supabase. Notice that the query calls on the Supabase client are modeled on SQL. That can make working with them more intuitive for those already familiar with SQL queries.
 
     {{< file "src/ShoppingList.js" js >}}
     // Retrieve the shopping list items.
@@ -253,7 +253,7 @@ class ShoppingList extends Component {
     }
     {{< /file >}}
 
-- This application provides two means of interacting with the shopping list. First, you can mark items "Purchased" and, second, you can add new items to the list. These next two functions accomplish these tasks.
+- This application provides two means of interacting with the shopping list. First, the user can mark an item "Purchased" and, second, the user can add a new item to the list. These next two functions accomplish these tasks.
 
     {{< file "src/ShoppingList.js" js >}}
     // Mark an item as purchased.
@@ -305,7 +305,7 @@ class ShoppingList extends Component {
     }
     {{< /file >}}
 
-- Finally, the application needs logic to determine how the shopping list displays. This is broken into two functions here. One, `renderShoppingList`, controls how each element in the list gets rendered. It parses the list. The next, `render`, is a method for React's `Component` module that handles the rendering overall.
+- Finally, the application needs logic to determine how the shopping list displays. This is handled in two functions. The first, `renderShoppingList`, parses the list and provides HTML for each item. The next, `render`, is a method for React's `Component` module that handles the rendering overall.
 
     {{< file "src/ShoppingList.js" js >}}
     // Process a shopping and render it to HTML.
@@ -353,21 +353,20 @@ export default ShoppingList;
 
 ### Deploying the React Application
 
-You are now about ready to run the React application.
+You are just about ready to run the React application. But first, you need to open a port for it on your server's firewall. The default port for the React development server is `3000`, so further steps in this tutorial assume you are using that port.
 
-First, you need to open port `3000` on your server's firewall. This is the default port used for running the React developer server to see the application in action.
+However, the Supabase Studio interface also runs on port `3000` by default. This can create a conflict if both are running on the same server. Fortunately in that case, NPM prompts you to run React on a different port, which defaults to `3001`. In that case, open `3001` in your firewall instead.
 
-{{< note >}}
-The Supabase Studio interface for your instance may already be running on port `3000` by default. If that is the case, NPM prompts you to run React on a different port, which defaults to `3001`. In that case, open `3001` in your firewall instead.
+You can also configure your application to automatically start on port `3001`, or another port. Open your React project's `package.json` file, and add a `PORT` variable within the `start` script line:
 
-You can make this setting permanent by opening your React project's `package.json` file and adding a `PORT` variable within the `start` script line:
+{{< file "package.json" json >}}
+// [...]
+  "scripts": {
+    "start": "PORT=3001 react-scripts start",
+// [...]
+{{< /file >}}
 
-    {{< file "package.json" json >}}
- "scripts": {
-     "start": "PORT=3001 react-scripts start",
-    {{< /file >}}
-
-{{< /note >}}
+To open the required port in your system's firewall, follow the appropriate guide of linked below.
 
 - For Debian and Ubuntu, refer to our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
 
@@ -378,15 +377,13 @@ Once you have done that, you can start up the React server with the following co
     npm start
 
 ## How to Run React and Supabase
-Show the application in action
 
-With both Supabase and your React application running, you should be able to see your shopping list by navigating to port `3000` (or `3001`) on your server's address. Using the IP address used in examples above, this would mean navigating to `http://192.0.2.0:3000`.
+With both Supabase and the React application running, you should be able to see your shopping list. Navigating to port `3000` — or any other port you configured for React — on your server's address. Using the example IP address from above and the default port, this would mean navigating to `http://192.0.2.0:3000`.
 
 ![Example shopping list application](example-app.png)
 
 ## Conclusion
 
-You have now taken your Supabase instance to the next level. You have started to make use of its rich set of features as a powerful database and backend server for your applications. Of course, this tutorial covers the basis and gets your started — there is plenty more that you can do with Supabase to take your applications to the next level.
+You have now taken your Supabase instance to the next level. You have started to make use of its rich set of features as a powerful database and backend server for your applications. This tutorial gets you started and ready to take on the many other possibilities available with Supabase and React.
 
 Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
-
