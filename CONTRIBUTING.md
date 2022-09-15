@@ -45,7 +45,11 @@ NVM can be installed by entering the following command, which downloads and runs
 
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
-Restart your terminal session and use NVM to install the latest Node.js 18.x release. Then, set it as the currently active version.
+Close out of your terminal session and open up a new one. You may receive a warning similar to the following: `zsh compinit: insecure directories, run compaudit for list. Ignore insecure directories and continue [y] or abort compinit [n]? y`. If you do, enter `y` to access your terminal and then run `compaudit` for a list of affected directories. Likely, the directories are within `/usr/local/share/zsh`. Run the following command against that folder to update the permissions and prevent the same warning message from appearing the next time you open a terminal session.
+
+    chmod -R 755 /usr/local/share/zsh
+
+Using NVM, install the latest Node.js 18.x release and set it as the currently active version.
 
     nvm install 18
     nvm use 18
