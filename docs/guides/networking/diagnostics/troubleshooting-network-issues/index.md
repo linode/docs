@@ -15,10 +15,6 @@ h1_title: "Troubleshooting Network Issues - IPv4 and IPv6"
 enable_h1: true
 contributor:
   name: Tom Henderson
-  link: Github/Twitter Link
-external_resources:
-#- '[Link Title 1](http://www.example.com)'
-#- '[Link Title 2](http://www.example.net)'
 ---
 
 A successful internet circuit from host-to-host usually involves many components: from an application in one host, to an application in the desired target host. This tutorial covers troubleshooting connectivity between apps, and their hosts, whether over IPv4, IPv6, or an IPv6 tunnel over IPv4.
