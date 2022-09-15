@@ -10,55 +10,54 @@ If you want to start contributing by helping us correct existing issues, go to o
 
 ### Install Go
 
-Some parts of the Linode documentation environment will require the [GO programming language](https://golang.org/). This guide was created using GO 1.15.3, and the install steps included will be for this specific version:
+Some parts of the Linode documentation environment require the [GO programming language](https://golang.org/). In most cases, you should install the latest version of Go.
 
 #### Install Go on macOS and Windows
 
-The GO package can be found on the [GO downloads page](https://golang.org/dl/). On macOS, download the `go1.15.3.darwin-amd64.pkg` installer. On Windows, download the `go1.15.3.windows-amd64.msi` installer. Once the installer is downloaded, open it.
+The Go package can be found on the [offical downloads page](https://go.dev/dl/). Install the latest package available for your operating system. Since the latest version that is available at the time of this writing is 1.19.1, links to that version are used below:
 
-The installer prompts you to make changes to your system. Once the installation is complete, enter the following command in your terminal to verify the version of GO that you're currently running:
+- **macOS (Intel):** Use the x.darwin-amd64.pkg file ([go1.19.1.darwin-amd64.pkg](https://go.dev/dl/go1.19.1.darwin-amd64.pkg))
+- **macOS (Apple Silicon):** Use the x.darwin-arm64.pkg file ([go1.19.1.darwin-arm64.pkg](https://go.dev/dl/go1.19.1.darwin-arm64.pkg))
+- **Linux (64-bit):** Use the x.linux-amd64.tar.gz file ([go1.19.1.linux-amd64.tar.gz](https://go.dev/dl/go1.19.1.linux-amd64.tar.gz))
+- **Windows (64-bit):** Use the x.windows-amd64.msi file ([go1.19.1.windows-amd64.msi](https://go.dev/dl/go1.19.1.windows-amd64.msi))
 
-    go version
+**For Windows and macOS** users, click the link above to download the software and run it.
 
-#### Install Go on Linux
+**For Linux** users, run the following commands to download the file, extract it into the `/usr/local` folder, and add the folder to your PATH variable:
 
-Download the Linux binary for GO and extract it into the `/usr/local` folder:
-
-    wget https://golang.org/dl/go1.15.3.linux-amd64.tar.gz
-    tar -C /usr/local -xzf go1.15.3.linux-amd64.tar.gz
-
-Add `/usr/local/go/bin` to the PATH variable:
-
+    wget https://go.dev/dl/go1.19.1.linux-amd64.tar.gz
+    tar -C /usr/local -xzf go1.19.1.linux-amd64.tar.gz
     export PATH=$PATH:/usr/local/go/bin
 
 You can ensure that go has been installed by checking the version currently in use:
 
     go version
 
-### Install Node and NPM
+### Install Node.js
 
-To support the JavaScript runtime environment used by the Linode documentation site, Node v14.18.1 must be installed on your system.
+To support the JavaScript runtime environment used by the Linode documentation site, Node.js must be installed on your system.
 
-#### Install Node on macOS and Linux
+#### Install Node.js on macOS and Linux
 
-In order to install Node on Linux and macOS, we recommend using the [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm) to switch between other versions of Node you may be using now or may use in the future.
+To install Node.js on Linux and macOS, we recommend using the [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm) to switch between other versions of Node you may be using now or may use in the future.
 
-NVM can be installed by entering the following command, which will download and run an install script:
+NVM can be installed by entering the following command, which downloads and runs an install script.
 
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
-You may need to exit and create a new command line session before NVM will work:
+Restart your terminal session and use NVM to install the latest Node.js 18.x release. Then, set it as the currently active version.
 
-    exit
+    nvm install 18
+    nvm use 18
 
-Next, use NVM to both install NVM and set it as the version of Node that you're actively using:
+You can confirm the version of NVM and Node.js by running the following commands.
 
-    nvm install 14.18.1
-    nvm use 14.18.1
+    nvm -v
+    node -v
 
-#### Install Node on Windows
+#### Install Node.js on Windows
 
-To Install Node 14.18.1 on Windows, navigate to the [downloads page for this release](https://nodejs.org/download/release/v14.18.1/) and install the appropriate `.msi` installer file for your type of processor (32-bit or 64-bit). Open the file and follow the prompts to complete the installation process. To confirm that Node and NPM has been installed successfully, open up your command prompt and enter the following command to check your version:
+To Install the latest Node.js LTS release on Windows, navigate to the [downloads page](https://nodejs.org/en/download/) and install the appropriate `.msi` installer file for your type of processor (32-bit or 64-bit). Open the file and follow the prompts to complete the installation process. To confirm that Node and NPM has been installed successfully, open up your command prompt and enter the following command to check your version:
 
     node -v
     npm -v
