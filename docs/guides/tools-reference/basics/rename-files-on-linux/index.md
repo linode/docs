@@ -15,8 +15,6 @@ h1_title: "How to Rename Files in Linux"
 enable_h1: true
 contributor:
   name: Martin Heller
-  link: Github/Twitter Link
-external_resources:
 ---
 
 Windows and macOS users often manage their files using the Graphical User Interface (GUI) file manager provided on their systems. Typically Windows File Explorer or macOS Finder, respectively. Linux systems also usually have a GUI file manager, such as Dolphin, Nautilus, or Thunar. However, when managing a remote server, you may not have access to the GUI. It can be incredibly frustrating trying to figure out command line file operations while typing at an SSH, LISH, or other command line prompt. Fortunately, the commands are straightforward once you understand them.
