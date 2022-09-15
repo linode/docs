@@ -27,15 +27,6 @@ jobs:
         continue-on-error: true
         run: find test-caching/ -type f | xargs tail -n +1
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm build
-
-      - name: Test
-        run: npm test
-
 
   blueberry:
 
