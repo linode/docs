@@ -104,13 +104,41 @@ Supabase operates its Docker Compose setup out of its Git repository. Thus, you 
 
 You are now ready to start running your Supabase instance. You can start it up by running the appropriate Docker Compose command within the `docker` subdirectory:
 
-    sudo docker compose up
+    sudo docker compose up -d
 
 Navigate to `localhost:3000` in your web browser to see the Supabase interface.
 
 However, if you are wanting to access Supabase remotely, you need to open the port in your system's firewall. You can learn about how to do so through our guide on [securing your server](/docs/guides/set-up-and-secure/#configure-a-firewall).
 
-After opening the port, you can access the Supabase interface remotely by navigating to port `3000` on your server's remote IP address. For instance, if your server's remote IP address is `192.0.2.0`, navigate in a web browser to `192.0.2.0:3000`.
+You also need to modify the URL values in your Supabase instance's configuration to match your server's remote address. Open Supabase's `.env` file, and change the `SITE_URL`, `API_EXTERNAL_URL`, and `PUBLIC_REST_URL` variables, replacing `localhost` with your server's remote address.
+
+This example uses a remote IP address of `192.0.2.0` for the server and assumes Supabase's default ports:
+
+{{< file ".env" conf >}}
+# [...]
+## General
+SITE_URL=http://192.0.2.0:3000
+# [...]
+API_EXTERNAL_URL=http://192.0.2.0:8000
+
+# [...]
+
+############
+# Studio - Configuration for the Dashboard
+############
+
+STUDIO_PORT=3000
+PUBLIC_REST_URL=http://192.0.2.0:8000/rest/v1/ # replace if you intend to use Studio outside of localhost
+{{< /file >}}
+
+Similar changes need to be made again should you alter the server address or the instance's ports. That is the case with the steps for implementing a reverse proxy server as shown further on in this tutorial.
+
+Once you have made the updates, restart your instance:
+
+    sudo docker compose down
+    sudo docker compose up -d
+
+After making the above preparations, you can access the Supabase interface remotely by navigating to port `3000` on your server's remote IP address. For instance, if your server's remote IP address is `192.0.2.0`, navigate in a web browser to `http://192.0.2.0:3000`.
 
 ![Supabase dashboard](supabase-dashboard.png)
 
@@ -118,10 +146,10 @@ After opening the port, you can access the Supabase interface remotely by naviga
 
 With your Supabase instance up and running, you can now adjust its configuration to fit your needs.
 
-Much of the Supabase configuration is controlled via the `.env` file created in the steps above. Open that file with your preferred text editor, make the desired changes, and save then file. For the changes to take effect, you then need to stop your Supabase services and start them back up, like so:
+Much of the Supabase configuration is controlled via the `.env` file as shown in the previous section. Open that file with your preferred text editor, make the desired changes, and save the file. And just as seen at the end of the previous section, for the changes to take effect you then need to stop your Supabase services and start them back up, like so:
 
     sudo docker compose down
-    sudo docker compose up
+    sudo docker compose up -d
 
 ### Securing Supabase
 
@@ -180,7 +208,7 @@ consumers:
 1. Restart your Supabase instance for the changes to take effect:
 
         sudo docker compose down
-        sudo docker compose up
+        sudo docker compose up -d
 
 #### Using a Reverse Proxy
 
