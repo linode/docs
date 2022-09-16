@@ -306,6 +306,7 @@ configtest
 configurability
 connectionism
 connectionless
+connectionStatus
 containerd
 containerised
 contentful
