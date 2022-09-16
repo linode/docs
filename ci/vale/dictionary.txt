@@ -901,6 +901,7 @@ interruptible
 intra-application
 introducer
 introducers
+Intune
 invicti
 io
 iodef
@@ -913,6 +914,7 @@ ipa
 ipaserver
 ipchains
 ipconfig
+ipsec
 ipset
 ipsets
 iptables
@@ -931,6 +933,7 @@ iso
 isort
 isoformat
 isp
+isps
 issuewild
 istioctl
 iterable
@@ -1042,6 +1045,7 @@ lbmethod
 lda
 ldap
 le
+leds
 lego
 leiningen
 lelastic
@@ -2227,6 +2231,7 @@ vmlinuz
 vmstat
 vmui
 vnc
+vpns
 vset
 vswap
 vue
