@@ -1011,6 +1011,7 @@ kloth
 kloxo
 knockpy
 knowledgebase
+Konqueror
 konsole
 kotin
 konversation
@@ -2029,6 +2030,7 @@ thawte
 theano
 theming
 thingsboard
+Thunar
 thycotic
 tigervnc
 tightvncserver
