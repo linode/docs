@@ -192,6 +192,7 @@ brightbox
 browserify
 bs4
 btmp
+bucardo
 Budibase
 bufio
 bugtracker
@@ -468,6 +469,7 @@ dnf
 dns
 dnsleaktest
 dnsmasq
+dns_linode
 dockercompose
 dockerfile
 dockerfiles
