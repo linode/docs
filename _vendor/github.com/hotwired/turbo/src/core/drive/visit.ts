@@ -407,5 +407,10 @@ export class Visit implements FetchRequestDelegate {
 }
 
 function isSuccessful(statusCode: number) {
+  if (statusCode == 404) {
+    // Temporary patch (bep).
+    // In most cases, a 404 response is, from a rendering perspective, a successful response.
+    return true
+  }
   return statusCode >= 200 && statusCode < 300
 }
