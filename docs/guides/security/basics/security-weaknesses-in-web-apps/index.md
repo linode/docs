@@ -1,20 +1,20 @@
 ---
-slug: understanding-total-app-security
+slug: security-weaknesses-in-web-apps
 author:
   name: David Strom
-description: 'This guide provides an overview of cross-site scripting and SQL injection exploits, as well as how they happen and what you can do to prevent them.'
-og_description: 'This guide provides an overview of cross-site scripting and SQL injection exploits, as well as how they happen and what you can do to prevent them.'
+description: "This guide provides an overview of cross-site scripting and SQL injection exploits, as well as how they happen and what you can do to prevent them."
 keywords: ['web app security']
 tags: ['security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-21
 modified_by:
   name: Linode
-title: "Understanding Common Errors and Weaknesses"
-h1_title: "Understanding Total App Security"
+title: "Common Security Weaknesses in Web Applications"
+h1_title: "Common Security Weaknesses in Web Applications (XSS and SQL Injections)"
 enable_h1: true
 contributor:
   name: David Strom
+aliases: ['/guides/understanding-total-app-security/']
 ---
 
 The [Why Security Automation is Needed for Today’s Modern Business](/docs/guides/security-automation-business) guide discusses the need for automating application security. Many developers are [moving “left” towards the earliest possible moment](https://tldrsec.com/blog/score-bot-shift-left-at-scale/) in the application development life cycle to ensure the most secure code. This guide discusses ways to approach coding your app more critically. It also outlines some of the more common security weaknesses and coding errors that could lead to subsequent problems.
@@ -28,7 +28,7 @@ Below are two of the top mentions in MITRE's 2020 CWE top 25 list along with lin
 
 The next sections review how each attack happens and what you can do to prevent them.
 
-## Cross-site Scripting
+## Cross-site Scripting (XSS)
 
 Cross-site scripting attacks got their start way [back in 2005 with the Samy worm](https://betanews.com/2005/10/13/cross-site-scripting-worm-hits-myspace/), which infected MySpace websites and was named for its author, then 20 year old [Samy Kamkar](https://samy.pl/). Back then, web browsers didn’t check for these kinds of tricks with HTML coding. The worm propagated so quickly and defaced so many websites that MySpace (what was then the web’s fifth largest destination) had to take down its servers to remove it.
 

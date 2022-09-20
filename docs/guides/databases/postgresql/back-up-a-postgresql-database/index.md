@@ -1,5 +1,5 @@
 ---
-slug: how-to-back-up-your-postgresql-database
+slug: back-up-a-postgresql-database
 author:
   name: Jared Kobos
   email: docs@linode.com
@@ -11,13 +11,11 @@ published: 2017-12-18
 modified: 2022-01-14
 modified_by:
   name: Jared Kobos
-title: "Backing Up a PostgreSQL Database (Database Dump)"
-h1_title: "Backing Up a PostgreSQL Database (Database Dump)"
-enable_h1: true
+title: "Back up a PostgreSQL Database with pg_dump"
 external_resources:
 - '[PostgreSQL Documentation](https://www.postgresql.org/docs/9.1/static/)'
 tags: ["database","postgresql"]
-aliases: ['/databases/postgresql/how-to-back-up-your-postgresql-database/']
+aliases: ['/databases/postgresql/how-to-back-up-your-postgresql-database/','/guides/how-to-back-up-your-postgresql-database/']
 image: back-up-postgresql-database-title.jpg
 ---
 

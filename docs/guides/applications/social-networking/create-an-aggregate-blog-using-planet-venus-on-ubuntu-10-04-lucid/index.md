@@ -13,9 +13,9 @@ modified: 2013-10-04
 modified_by:
   name: Linode
 published: 2010-08-10
-title: 'Aggregate Blog using Planet Venus on Ubuntu 10.04'
+title: "Aggregate Content Using Planet Venus on Ubuntu 10.04"
 external_resources:
-    - '[The Planet''s Project''s Home Page](http://www.planetplanet.org)'
+    - '[Planet Venus GitHub Repo](https://github.com/rubys/venus)'
     - '[Using Cron to Schedule Tasks](/docs/linux-tools/utilities/cron)'
 relations:
     platform:

@@ -11,8 +11,6 @@ published: 2020-03-30
 modified_by:
   name: Angel D'az
 title: "Create Connections and Variables in Apache Airflow"
-h1_title: "Creating Connections and Variables in Apache Airflow"
-enable_h1: true
 image: ApacheAirflowTut_CreateConn_Var.png
 contributor:
   name: Angel D'az

@@ -1,18 +1,18 @@
 ---
-slug: use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8
+slug: use-2fa-with-ssh-on-ubuntu-16-04-and-debian-8
 author:
   name: Phil Zona
   email: docs@linode.com
 description: 'Use Google Authenticator to enable two-factor authentication for SSH connections.'
 keywords: ["two factor authentication", "ssh", "google authenticator", "ubuntu", "debian"]
-aliases: ['/security/authentication/two-factor-authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/','/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/','/security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/']
+aliases: ['/security/authentication/two-factor-authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/','/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/','/security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/','/guides/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/']
 tags: ["ssh","security","debian","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2016-11-18
 modified_by:
   name: Phil Zona
 published: 2016-11-18
-title: Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8
+title: "Use 2FA with SSH on Ubuntu 16.04 and Debian 8"
 external_resources:
  - '[One-Time Passwords](https://en.wikipedia.org/wiki/One-time_password)'
  - '[Linux PAM Documentation](http://www.linux-pam.org/)'

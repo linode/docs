@@ -10,9 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-01
 modified_by:
   name: Linode
-title: "Enabling HTTPS Using Certbot with NGINX on CentOS/RHEL 7"
-h1_title: "Secure Using Certbot with NGINX on CentOS/RHEL 7"
-enable_h1: true
+title: "Use Certbot to Enable HTTPS with NGINX on CentOS 7"
 relations:
     platform:
         key: how-to-use-certbot-with-nginx
