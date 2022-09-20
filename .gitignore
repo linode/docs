@@ -45,3 +45,4 @@ hugo_stats.json
 .hugo_build.lock
 redirects.conf
 scripts/duplicates.csv
+algolia_out/
