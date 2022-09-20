@@ -15,7 +15,6 @@ h1_title: "How to Install SELinux on Ubuntu 22.04"
 enable_h1: true
 contributor:
   name: Cameron Laird
-  link: Github/Twitter Link
 relations:
   platform:
     key: how-to-install-selinux
