@@ -149,7 +149,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
 // Create the function for the home page.
-export default function Home({ postsInfo }) {
+export default function Home() {
   // Render the page template.
   return (
     <div className={styles.container}>
