@@ -274,8 +274,6 @@ export default function Home({ postsInfo }) {
           <div className={styles.card}>
             <p>Take a look at my stuff:</p>
             <ul>
-              // Provide a mapping function to render an li element for each
-              // post retrieved from the API.
               {postsData.map((postData) => (
                 <li key={postData.slug}>
                   <a href={ '/posts/' + postData.slug }>{postData.name}</a>
