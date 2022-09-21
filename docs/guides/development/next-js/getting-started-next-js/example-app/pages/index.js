@@ -7,7 +7,7 @@ import styles from '../styles/Home.module.css'
 import {useState, useEffect} from 'react'
 
 // Create the function for the home page.
-export default function Home({ postsInfo }) {
+export default function Home() {
   // Initialize the state variable and its set function.
   const [postsData, setPostsData] = useState([]);
 
