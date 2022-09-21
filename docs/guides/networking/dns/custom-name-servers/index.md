@@ -59,6 +59,8 @@ To overcome this circular resolution, glue records are needed. Glue records are 
 
     Some registrars may require you enter the entire FQDN of the custom name server (such as *ns1.example.com*), while others only need the subdomain (such as *ns1*). Additionally, registrars like Namecheap pre-populate a dropdown list with common name server hostnames. In this case, you can likely select from the predefined list or type your own.
 
+After this is complete, your registrar sends the glue records to the TLD name servers associated with your domain. This process can take up to 24 hours to complete, though it is generally finished within a few minutes to an hour.
+
 ## Create A Records
 
 In tandem with setting up glue records, you must also create A records within your custom name servers. Many self-hosted software applications that manage DNS records, such as cPanel and Plesk, do this automatically - provided they are configured to use a self-managed DNS service. If this is the case, you can skip this section.
@@ -68,6 +70,8 @@ In tandem with setting up glue records, you must also create A records within yo
 1. Within the domain zone file, add an *A* record for each custom name server. This record should point the hostname of the custom name server (such as *ns1*.example.com) to the IPv4 address of the name server.
 
 Since these steps vary greatly depending on your DNS software, please reference the official documentation for that software. For instance, for users of BIND9 (the most popular DNS software), see [Configurations and Zone Files](https://bind9.readthedocs.io/en/v9_18_7/chapter3.html#soa-rr).
+
+DNS records can take up to 24 hours to fully propagate, depending on several factors - including the TTL setting, the DNS service you are using, and the caching system on the DNS resolver. In general, you can expect to see the updates within 5 minutes to an hour.
 
 ## Change the Name Servers for Your Domains
 
@@ -81,4 +85,4 @@ Once the custom name servers have been successfully registered, you can begin us
     - [GoDaddy](https://www.godaddy.com/help/change-nameservers-for-my-domains-664)
     - [Hover](https://help.hover.com/hc/en-us/articles/217282477--Changing-your-domain-nameservers)
 
-Make sure your domain's DNS records have been properly configured with your custom name server. Changes to DNS records can take up to 24 hours to fully propagate.
+After configuring the new authoritative name servers for a domain, they are sent to the TLD name servers associated with that domain. This process can take up to 24 hours to complete, though it is generally finished within a few minutes to an hour.
