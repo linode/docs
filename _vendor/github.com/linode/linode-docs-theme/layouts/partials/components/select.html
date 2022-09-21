@@ -1,0 +1,2 @@
+{{ $d := (dict "values"  .values "text" .selected.title  "contentPartial" "components/select__dropdown.html") }}
+{{ partial "components/tabbed-section__dropdown.html" $d }}

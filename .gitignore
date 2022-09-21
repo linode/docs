@@ -35,3 +35,14 @@ Thumbs.dbi
 *.elc
 .\#*
 *.sublime-workspace
+node_modules
+public/
+resources/_gen/assets
+yarn.lock
+search_index/
+resources/_gen/assets
+hugo_stats.json
+.hugo_build.lock
+redirects.conf
+scripts/duplicates.csv
+algolia_out/
