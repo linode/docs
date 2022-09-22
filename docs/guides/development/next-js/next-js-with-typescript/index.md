@@ -130,7 +130,7 @@ This tutorial, instead, focuses on demonstrating and getting your started with T
 
 ### Setting Up the Next.js Project
 
-To perform the initial setup for the project, follow the steps in the [Creating a New Next.js Project with TypeScript](/docs/guides/next-js-with-typescript/#creating-a-new-next-js-project-with-typescript) section above. 
+To perform the initial setup for the project, follow the steps in the [Creating a New Next.js Project with TypeScript](/docs/guides/next-js-with-typescript/#creating-a-new-next-js-project-with-typescript) section above.
 
 You have a base Next project with TypeScript after that, and the rest of these steps build on that.
 
