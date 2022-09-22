@@ -38,9 +38,15 @@ When self-hosting the UniFi Network Application, you are responsible for the sec
 
 ### Accessing the UniFi Network Application
 
-1. Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with your Compute Instance's rDNS domain or, if you entered one, the domain you specified when you deployed the instance. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing the rDNS value for your public IPv4 address.
+1. Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with your Compute Instance's rDNS domain or, if you entered one, the domain you specified when you deployed the instance. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing the rDNS value for your public IPv4 address. The URL is also visible when logging into the new Compute Instance for the first time, either through [Lish](/docs/guides/using-the-lish-console/) or [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
 
-2. First, enter a name for the Network Application. This is primarily used for managing multiple networks.
+    {{< output >}}
+The installation is now complete, and you can access the
+UniFi Network Controller GUI from https://192-0-2-163.ip.linodeusercontent.com
+We recommend using the GUI to complete your configurations of the service
+{{</ output >}}
+
+2. Within the setup screen that appears, enter a name for the Network Application. This is primarily used for managing multiple networks.
 
     ![Screenshot of the UniFi Network name page](UniFi-network-name.png)
 
