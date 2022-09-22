@@ -110,6 +110,7 @@ Windows, macOS, and Linux contain the command line tool, `nslookup` (Name Server
 
 Renders:
 
+{{< output >}}
     C:\Users\henry10>nslookup google.com
     Server:  one.one.one.one
     Address:  1.1.1.1
@@ -117,15 +118,16 @@ Renders:
     Non-authoritative answer:
     Name:	google.com
     Addresses:  2607:f8b0:4004:c19::8a
-            2607:f8b0:4004:c19::71
-            2607:f8b0:4004:c19::8b
-            2607:f8b0:4004:c19::64
-            64.233.177.138
-            64.233.177.139
-            64.233.177.102
-            64.233.177.101
-            64.233.177.100
-            64.233.177.113
+              2607:f8b0:4004:c19::71
+              2607:f8b0:4004:c19::8b
+              2607:f8b0:4004:c19::64
+              64.233.177.138
+              64.233.177.139
+              64.233.177.102
+              64.233.177.101
+              64.233.177.100
+              64.233.177.113
+{{< /output >}}
 
 Here, the default nameserver is Cloudflare.com’s public DNS server (one.one.one.one), with an IP address of `1.1.1.1`. It uses a cached (non-authoritative) answer for the queried server (google.com). It then renders three lines of IPv6 addresses and six lines of IPv4 addresses.
 
@@ -151,6 +153,7 @@ An example of the `dig` output shows its command line configuration:
 
 The output looks similar to:
 
+{{< output >}}
     ; <<>> DiG 9.16.30 <<>> linode.com
     ;; global options: +cmd
     ;; Got answer:
@@ -171,6 +174,7 @@ The output looks similar to:
     ;; SERVER: 1.1.1.1#53(1.1.1.1)
     ;; WHEN: Thu Jul 14 17:11:03 Eastern Daylight Time 2022
     ;; MSG SIZE  rcvd: 87
+{{< /output >}}
 
 Options for the `dig` command include:
 
