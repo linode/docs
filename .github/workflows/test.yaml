@@ -3,6 +3,7 @@ name: CI Tests
 on: [pull_request]
 
 jobs:
+
   blueberry:
 
     runs-on: ubuntu-latest
@@ -76,6 +77,11 @@ jobs:
   docs404:
     runs-on: ubuntu-latest
     steps:
+    - name: Restore image cache
+      uses: ylemkimon/cache-restore@v2
+      with:
+        path: resources/_gen/images/
+        key: develop-image-cache
     - uses: actions/checkout@v2
     - name: Set up Python
       uses: actions/setup-python@v2
