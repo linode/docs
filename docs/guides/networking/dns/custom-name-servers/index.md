@@ -125,7 +125,7 @@ example.com.		3600	IN	NS	ns1.example.com.
 
     Within the output, you should see at least one NS record that defines your custom name sever and an A record for your name server that points to the correct IP address of your server.
 
-1.  **The A records for your domain can be verified by running the following dig command**, which confirms the changes have propagated to the DNS resolver used by your system. Replace *ns1.example.com* with the domain of your name server.
+1.  **The A records for your custom name server's domain can be verified by running the following dig command**, which confirms the changes have propagated to the DNS resolver used by your system. Replace *ns1.example.com* with the domain of your name server.
 
         dig ns1.example.com A +short
 

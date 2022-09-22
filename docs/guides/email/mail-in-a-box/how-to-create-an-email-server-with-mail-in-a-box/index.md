@@ -70,19 +70,7 @@ Follow the instructions within the [Register Custom DNS Name Servers](/docs/guid
 
 2. Within your registrar, change the name servers used for your domain to match the ones you just registered above.
 
-There can be a delay while your registrar sends these changes to the TLD (top-level domain) name servers. Most reputable registrars and TLD name servers are able to update their records quickly, though it can take up to 24 hours. If you'd like to confirm that the changes have been made, you can run the following command, replacing *example.com* with your domain:
-
-    dig example.com NS +trace
-
-The custom name servers that were just configured should appear at the end of the output, such as in the example output below. Just like that output, you may also see a message stating that the dig operation couldn't obtain the IP address for those name servers. It is ok to ignore that message and continue with this guide.
-
-{{< output >}}
-;; Received 595 bytes from 192.5.5.241#53(f.root-servers.net) in 343 ms
-
-example.com.		300	IN	NS	ns1.box.example.com.
-example.com.		300	IN	NS	ns2.box.example.com.
-dig: couldn't get address for 'ns1.box.example.com': no more
-{{</ output >}}
+There can be a delay while your registrar sends these changes to the TLD (top-level domain) name servers. Most reputable registrars and TLD name servers are able to update their records quickly, though it can take up to 24 hours. If you'd like to confirm that the changes have been made, see the [Verify DNS Changes](/docs/guides/custom-name-servers/#verify-dns-changes) section of the registering a custom name server guide linked above.
 
 If you don't see your custom names servers in the dig output within an hour of registering them, there may be an issue with the registration or propagation process. Contact your registrar for help resolving any issues.
 
