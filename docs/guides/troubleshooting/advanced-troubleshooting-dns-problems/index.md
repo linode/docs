@@ -66,7 +66,7 @@ In Linux, the location of the desired DNS server depends on the values set in th
 
 To find these values via the command line, enter:
 
-	cat /etc/resolve.conf
+    cat /etc/resolve.conf
 
 To find these values via the GUI in Ubuntu 22.04 LTS:
 
@@ -86,11 +86,11 @@ Troubleshooting the network communications circuit uses common tools like `ping`
 
 Open a command line and use `ping` to determine if the IP address responds. In this case, the public DNS server for Cloudflare (`1.1.1.1`) is cited:
 
-	ping 1.1.1.1
+    ping 1.1.1.1
 
 Or:
 
-	ping cloudflare.com
+    ping cloudflare.com
 
 When a reply is returned, queries can be made to the server, in which case, skip to the next section.
 
@@ -106,26 +106,26 @@ The `traceroute` command line tool is also handy in network circuit analysis. It
 
 Windows, macOS, and Linux contain the command line tool, `nslookup` (Name Server Lookup). It performs a query on a known address, using the default DNS resolver, unless another resolver is specified.
 
-		nslookup google.com
+    nslookup google.com
 
 Renders:
 
-		C:\Users\henry10>nslookup google.com
-		Server:  one.one.one.one
-		Address:  1.1.1.1
+    C:\Users\henry10>nslookup google.com
+    Server:  one.one.one.one
+    Address:  1.1.1.1
 
-		Non-authoritative answer:
-		Name:	google.com
-		Addresses:  2607:f8b0:4004:c19::8a
-				2607:f8b0:4004:c19::71
-				2607:f8b0:4004:c19::8b
-				2607:f8b0:4004:c19::64
-				64.233.177.138
-				64.233.177.139
-				64.233.177.102
-				64.233.177.101
-				64.233.177.100
-				64.233.177.113
+    Non-authoritative answer:
+    Name:	google.com
+    Addresses:  2607:f8b0:4004:c19::8a
+            2607:f8b0:4004:c19::71
+            2607:f8b0:4004:c19::8b
+            2607:f8b0:4004:c19::64
+            64.233.177.138
+            64.233.177.139
+            64.233.177.102
+            64.233.177.101
+            64.233.177.100
+            64.233.177.113
 
 Here, the default nameserver is Cloudflare.com’s public DNS server (one.one.one.one), with an IP address of `1.1.1.1`. It uses a cached (non-authoritative) answer for the queried server (google.com). It then renders three lines of IPv6 addresses and six lines of IPv4 addresses.
 
@@ -147,30 +147,30 @@ The `dig` tool allows specific DNS records to be queried. This includes MX (mail
 
 An example of the `dig` output shows its command line configuration:
 
-		dig linode.com
+    dig linode.com
 
 The output looks similar to:
 
-		; <<>> DiG 9.16.30 <<>> linode.com
-		;; global options: +cmd
-		;; Got answer:
-		;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 54592
-		;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1
+    ; <<>> DiG 9.16.30 <<>> linode.com
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 54592
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1
 
-		;; OPT PSEUDOSECTION:
-		; EDNS: version: 0, flags:; udp: 1232
-		;; QUESTION SECTION:
-		;linode.com.                	IN  	A
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 1232
+    ;; QUESTION SECTION:
+    ;linode.com.                	IN  	A
 
-		;; ANSWER SECTION:
-		linode.com.         	300 	IN  	A   	69.164.200.202
-		linode.com.         	300 	IN  	A   	72.14.191.202
-		linode.com.         	300 	IN  	A   	72.14.180.202
+    ;; ANSWER SECTION:
+    linode.com.         	300 	IN  	A   	69.164.200.202
+    linode.com.         	300 	IN  	A   	72.14.191.202
+    linode.com.         	300 	IN  	A   	72.14.180.202
 
-		;; Query time: 62 msec
-		;; SERVER: 1.1.1.1#53(1.1.1.1)
-		;; WHEN: Thu Jul 14 17:11:03 Eastern Daylight Time 2022
-		;; MSG SIZE  rcvd: 87
+    ;; Query time: 62 msec
+    ;; SERVER: 1.1.1.1#53(1.1.1.1)
+    ;; WHEN: Thu Jul 14 17:11:03 Eastern Daylight Time 2022
+    ;; MSG SIZE  rcvd: 87
 
 Options for the `dig` command include:
 
