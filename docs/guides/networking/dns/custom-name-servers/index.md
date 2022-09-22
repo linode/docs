@@ -7,7 +7,7 @@ description: "Learn how to configure custom nameservers on popular domain regist
 keywords: ["dns"]
 tags: ["dns","networking","cpanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-21
+published: 2022-09-22
 modified_by:
   name: Linode
 title: Register Custom DNS Name Servers
@@ -59,11 +59,11 @@ To overcome this circular resolution, glue records are needed. Glue records are 
 
     Some registrars may require you enter the entire FQDN of the custom name server (such as *ns1.example.com*), while others only need the subdomain (such as *ns1*). Additionally, registrars like Namecheap pre-populate a dropdown list with common name server hostnames. In this case, you can likely select from the predefined list or type your own.
 
-After this is complete, your registrar sends the glue records to the TLD name servers associated with your domain. This process can take up to 24 hours to complete, though it is generally finished within a few minutes to an hour.
+After this is complete, your registrar sends the glue records to the TLD name servers associated with your domain. This process can take up to 24 hours to complete, though it is generally finished within a few minutes to an hour. See [Verify DNS Changes](#verify-dns-changes).
 
 ## Create A Records
 
-In tandem with setting up glue records, you must also create A records within your custom name servers. Many self-hosted software applications that manage DNS records, such as cPanel and Plesk, do this automatically - provided they are configured to use a self-managed DNS service. If this is the case, you can skip this section.
+In tandem with setting up glue records at the registrar-level, you should also create A records within your custom name servers itself. Many self-hosted software applications that manage DNS records, such as cPanel and Plesk, do this automatically - provided they are configured to use a self-managed DNS service. If this is the case, you can skip this section - even if you have yet to install the software.
 
 1. Log in to the administration panel or terminal for your DNS software on your custom name server.
 
@@ -71,7 +71,7 @@ In tandem with setting up glue records, you must also create A records within yo
 
 Since these steps vary greatly depending on your DNS software, please reference the official documentation for that software. For instance, for users of BIND9 (the most popular DNS software), see [Configurations and Zone Files](https://bind9.readthedocs.io/en/v9_18_7/chapter3.html#soa-rr).
 
-DNS records can take up to 24 hours to fully propagate, depending on several factors - including the TTL setting, the DNS service you are using, and the caching system on the DNS resolver. In general, you can expect to see the updates within 5 minutes to an hour.
+DNS records can take up to 24 hours to fully propagate, depending on several factors - including the TTL setting, the DNS service you are using, and the caching system on the DNS resolver. In general, you can expect to see the updates within 5 minutes to an hour. See [Verify DNS Changes](#verify-dns-changes).
 
 ## Change the Name Servers for Your Domains
 
@@ -85,4 +85,48 @@ Once the custom name servers have been successfully registered, you can begin us
     - [GoDaddy](https://www.godaddy.com/help/change-nameservers-for-my-domains-664)
     - [Hover](https://help.hover.com/hc/en-us/articles/217282477--Changing-your-domain-nameservers)
 
-After configuring the new authoritative name servers for a domain, they are sent to the TLD name servers associated with that domain. This process can take up to 24 hours to complete, though it is generally finished within a few minutes to an hour.
+After configuring the new authoritative name servers for a domain, they are sent to the TLD name servers associated with that domain. This process can take up to 24 hours to complete, though it is generally finished within a few minutes to an hour. See [Verify DNS Changes](#verify-dns-changes).
+
+## Verify DNS Changes
+
+Once you've made the changes that are needed, you can verify that the records are correct and have propagated to the appropriate servers by following the instructions below.
+
+1.  Obtain the TLD name servers by running the following dig command, replacing *com* with the TLD for your domain.
+
+        dig +short com NS
+
+    This returns a list of TLD name servers.
+
+1.  View the DNS records a particular TLD name server has for your domain by using the command below. Be sure to replace *a.gtld-servers.net.* with whichever TLD name server you wish to query (leaving the `@` and trailing `.`) and *example.com* with your domain.
+
+        dig +norec @a.gtld-servers.net. example.com
+
+1. **To verify the glue records**, examine the output's *ADDITIONAL* section. There should be an A record for each of the glue records you've configured, pointing your custom name server domain to your IP address.
+
+    {{< output>}}
+;; ADDITIONAL SECTION:
+ns2.example.com.	3600	IN	A	192.0.2.36
+ns1.example.com.	3600	IN	A	192.0.2.37
+{{</ output >}}
+
+    If you do not see a similar output, you can query other TLD name servers. It may be that the changes have not yet propagated to all of them.
+
+1. **To verify your domain is using your new name servers**, examine the *AUTHORITY* section of the output. This should be a list of all NS (name server) records, which map your domain to one or more name servers. All of the name servers configured for your domain should appear here, though they are typically displayed in a somewhat random order.
+
+    {{< output>}}
+;; AUTHORITY SECTION:
+example.com.		3600	IN	NS	ns2.example.com.
+example.com.		3600	IN	NS	ns1.example.com.
+{{</ output >}}
+
+1.  Both the glue records and name servers can also be verified by running a `dig +trace` command, as shown below. Replace *example.com* with your domain and *ns1.example.com* with your custom name server. Repeat this command as needed for each name server.
+
+        dig example.com +trace +additional | grep ns1.example.com
+
+    Within the output, you should see at least one NS record that defines your custom name sever and an A record for your name server that points to the correct IP address of your server.
+
+1.  **The A records for your domain can be verified by running the following dig command**, which confirms the changes have propagated to the DNS resolver used by your system. Replace *ns1.example.com* with the domain of your name server.
+
+        dig ns1.example.com A +short
+
+    This should output the IP address configured within the A record for that domain.
