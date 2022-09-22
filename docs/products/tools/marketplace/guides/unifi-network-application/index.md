@@ -7,6 +7,7 @@ keywords: ['UniFi','Network','gateway', 'routing']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-06
+modified: 2022-09-22
 modified_by:
   name: Linode
 title: "Deploying the UniFi Network Application through the Linode Marketplace"
@@ -37,7 +38,7 @@ When self-hosting the UniFi Network Application, you are responsible for the sec
 
 ### Accessing the UniFi Network Application
 
-1. Open your web browser and navigate to `http://[ip-address]`, where *[ip-address]* can be replaced with your Compute Instance's IP address or rDNS domain. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1. Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with your Compute Instance's rDNS domain or, if you entered one, the domain you specified when you deployed the instance. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing the rDNS value for your public IPv4 address.
 
 2. First, enter a name for the Network Application. This is primarily used for managing multiple networks.
 
