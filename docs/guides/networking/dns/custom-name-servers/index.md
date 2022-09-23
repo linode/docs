@@ -51,7 +51,7 @@ To overcome this circular resolution, glue records are needed. Glue records are 
 
 1. Log in to your domain's registrar.
 
-1. Configure a glue record for reach custom name server. This maps the full domain of a name server to the IPv4 address for that server. The name of this feature and the instructions for setting a glue record depend on the registrar you are using. Here are the instructions for a few popular registrars, though any registrar that supports glue records can be used:
+1. Configure a glue record for each custom name server. This maps the full domain of a name server to the IPv4 address for that server. The name of this feature and the instructions for setting a glue record depend on the registrar you are using. Here are the instructions for a few popular registrars, though any registrar that supports glue records can be used:
 
     - [Namecheap](https://www.namecheap.com/support/knowledgebase/article.aspx/768/10/how-do-i-register-personal-nameservers-for-my-domain/) (Personal DNS servers)
     - [GoDaddy](https://www.godaddy.com/help/add-my-custom-host-names-12320) (Host names)
@@ -75,7 +75,7 @@ DNS records can take up to 24 hours to fully propagate, depending on several fac
 
 ## Change the Name Servers for Your Domains
 
-Once the custom name servers have been successfully registered, you can begin using them to host DNS records your domains. To do this, add the domain inside your custom name server and then update the domain's registrar to reflect the new authoritative name servers.
+Once the custom name servers have been successfully registered, you can begin using them to host DNS records for your domains. To do this, add the domain inside your custom name server and then update the domain's registrar to reflect the new authoritative name servers.
 
 1. Log in to your domain's registrar.
 

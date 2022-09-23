@@ -45,7 +45,7 @@ Email security should also a primary concern for most users and Mail-in-a-Box ha
 
 - Have a registered domain name that you wish to use with your email server. Verify that your registrar allows *custom nameservers* and *glue records*.
 
-- Deploy a new Compute Instance running Ubuntu 18.04 LTS, making sure to update the system, created a limited user account, and harden SSH. See [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Do not yet configure a firewall or fail2ban as that might interfere with how Mail-in-a-Box configures the firewall.
+- Deploy a new Compute Instance running Ubuntu 18.04 LTS, making sure to update the system, create a limited user account, and harden SSH. See [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Do not yet configure a firewall or fail2ban as that might interfere with how Mail-in-a-Box configures the firewall.
 
     {{< caution >}}
 Use this server exclusively for Mail-in-a-Box. Installing extra software might cause unexpected behavior.
@@ -72,7 +72,7 @@ Follow the instructions within the [Register Custom DNS Name Servers](/docs/guid
 
 There can be a delay while your registrar sends these changes to the TLD (top-level domain) name servers. Most reputable registrars and TLD name servers are able to update their records quickly, though it can take up to 24 hours. If you'd like to confirm that the changes have been made, see the [Verify DNS Changes](/docs/guides/custom-name-servers/#verify-dns-changes) section of the registering a custom name server guide linked above.
 
-If you don't see your custom names servers in the dig output within an hour of registering them, there may be an issue with the registration or propagation process. Contact your registrar for help resolving any issues.
+If you don't see your custom name servers in the dig output within an hour of registering them, there may be an issue with the registration or propagation process. Contact your registrar for help resolving any issues.
 
 ## Install Mail-in-a-Box
 
