@@ -2,13 +2,12 @@
 slug: how-to-understand-ip-addresses
 author:
   name: Jeffery Novotny
-description: 'This guide will help you understand the Internet Protocol (IP) which underpins the entire Internet, as well as IP addresses, and how to describe and use them.'
-og_description: 'This guide will help you understand the Internet Protocol (IP) which underpins the entire Internet, as well as IP addresses, and how to describe and use them.'
+description: "This guide will help you understand the Internet Protocol (IP) which underpins the entire Internet, as well as IP addresses, and how to describe and use them."
 keywords: ['IPv4','IPv6','IP address','Internet Protocol', 'what is ip address']
 tags: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-30
-modified: 2022-09-14
+modified: 2022-09-23
 modified_by:
   name: Linode
 title: "Understanding and Using IP Addresses"
@@ -150,7 +149,7 @@ A variety of inter-operability approaches between IPv4 and IPv6 are sometimes us
 ## Finding Your IP Addresses via the Linux Command Line
 
 {{< note >}}
-If you are trying to find the IP addresses of a Linode Compute Instance, you can do so from the Networking tab of the Linode's page. See [Managing IP Addresses on a Compute Instance](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
+If you are trying to find the IP addresses of a Linode Compute Instance, you can do so from the Cloud Manager. See [Managing IP Addresses on a Compute Instance](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
 {{< /note >}}
 
 1.  On Ubuntu and most Linux systems, the `ip addr show` command displays all networking information. The IPv4 address of the system is shown in the `inet` field, while the IPv6 address is referred to as the `inet6` address.
