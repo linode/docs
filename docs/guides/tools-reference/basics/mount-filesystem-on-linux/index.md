@@ -40,46 +40,47 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
     The result looks something like this list, which is from an Ubuntu 22.04 LTS Linode:
 
-        nodev	sysfs
-        nodev	tmpfs
-        nodev	bdev
-        nodev	proc
-        nodev	cgroup
-        nodev	cgroup2
-        nodev	cpuset
-        nodev	devtmpfs
-        nodev	configfs
-        nodev	debugfs
-        nodev	tracefs
-        nodev	securityfs
-        nodev	sockfs
-        nodev	bpf
-        nodev	pipefs
-        nodev	ramfs
-        nodev	hugetlbfs
-        nodev	devpts
-               ext3
-               ext2
-               ext4
-               squashfs
-               vfat
-        nodev	ecryptfs
-               fuseblk
-        nodev	fuse
-        nodev	fusectl
-        nodev	mqueue
-        nodev	pstore
-               nambtrfs
-        nodev	autofs
+    {{< output >}}nodev	sysfs
+nodev	tmpfs
+nodev	bdev
+nodev	proc
+nodev	cgroup
+nodev	cgroup2
+nodev	cpuset
+nodev	devtmpfs
+nodev	configfs
+nodev	debugfs
+nodev	tracefs
+nodev	securityfs
+nodev	sockfs
+nodev	bpf
+nodev	pipefs
+nodev	ramfs
+nodev	hugetlbfs
+nodev	devpts
+       ext3
+       ext2
+       ext4
+       squashfs
+       vfat
+nodev	ecryptfs
+       fuseblk
+nodev	fuse
+nodev	fusectl
+nodev	mqueue
+nodev	pstore
+       nambtrfs
+nodev	autofs{{< /output >}}
 
 2.  You can also list the documented file systems using `man filesystems`:
 
-        FILESYSTEMS(5)         Linux Programmer's Manual               FILESYSTEMS(5)
-        NAME
-        filesystems - Linux filesystem types: ext, ext2, ext3, ext4, hpfs, iso9660, JFS, minix, msdos, ncpfs nfs, ntfs, proc, Reiserfs, smb, sysv, umsdos, vfat, XFS, xiafs
+    {{< output >}}FILESYSTEMS(5)         Linux Programmer's Manual               FILESYSTEMS(5)
+NAME
+filesystems - Linux filesystem types: ext, ext2, ext3, ext4, hpfs, iso9660, JFS, minix, msdos, ncpfs nfs, ntfs, proc, Reiserfs, smb, sysv, umsdos, vfat, XFS, xiafs
 
-        DESCRIPTION
-        When, as is customary, the proc filesystem is mounted on /proc, you can find in the file /proc/filesystems  which filesystems…
+DESCRIPTION
+When, as is customary, the proc filesystem is mounted on /proc, you can find in the file /proc/filesystems  which filesystems…
+{{< /output >}}
 
     Later on in the man page there is a short summary of each file system. It includes notes about when each was added to, and possibly removed from, the Linux kernel. For example, the minix file system was superseded by ext. It in turn was superseded by ext2. ext3 adds journaling to ext2. ext4 is a set of upgrades to ext3 including substantial performance and reliability enhancements, plus large increases in volume, file, and directory size limits.
 
@@ -93,27 +94,27 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
     The following is on an Ubuntu 22.04 LTS Linode, logged in as root:
 
-        sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
-        proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
-        udev on /dev type devtmpfs (rw,nosuid,relatime,size=441300k,nr_inodes=110325,mode=755,inode64)
-        devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000)
-        tmpfs on /run type tmpfs (rw,nosuid,nodev,noexec,relatime,size=99448k,mode=755,inode64)
-        /dev/sda on / type ext4 (rw,relatime,errors=remount-ro)
-        securityfs on /sys/kernel/security type securityfs (rw,nosuid,nodev,noexec,relatime)
-        tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev,inode64)
-        tmpfs on /run/lock type tmpfs (rw,nosuid,nodev,noexec,relatime,size=5120k,inode64)
-        cgroup2 on /sys/fs/cgroup type cgroup2 (rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot)
-        pstore on /sys/fs/pstore type pstore (rw,nosuid,nodev,noexec,relatime)
-        bpf on /sys/fs/bpf type bpf (rw,nosuid,nodev,noexec,relatime,mode=700)
-        systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=29,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=18031)
-        hugetlbfs on /dev/hugepages type hugetlbfs (rw,relatime,pagesize=2M)
-        mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime)
-        debugfs on /sys/kernel/debug type debugfs (rw,nosuid,nodev,noexec,relatime)
-        tracefs on /sys/kernel/tracing type tracefs (rw,nosuid,nodev,noexec,relatime)
-        fusectl on /sys/fs/fuse/connections type fusectl (rw,nosuid,nodev,noexec,relatime)
-        configfs on /sys/kernel/config type configfs (rw,nosuid,nodev,noexec,relatime)
-        none on /run/credentials/systemd-sysusers.service type ramfs (ro,nosuid,nodev,noexec,relatime,mode=700)
-        tmpfs on /run/user/0 type tmpfs (rw,nosuid,nodev,relatime,size=99444k,nr_inodes=24861,mode=700,inode64)
+    {{< output >}}sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+udev on /dev type devtmpfs (rw,nosuid,relatime,size=441300k,nr_inodes=110325,mode=755,inode64)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000)
+tmpfs on /run type tmpfs (rw,nosuid,nodev,noexec,relatime,size=99448k,mode=755,inode64)
+/dev/sda on / type ext4 (rw,relatime,errors=remount-ro)
+securityfs on /sys/kernel/security type securityfs (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev,inode64)
+tmpfs on /run/lock type tmpfs (rw,nosuid,nodev,noexec,relatime,size=5120k,inode64)
+cgroup2 on /sys/fs/cgroup type cgroup2 (rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot)
+pstore on /sys/fs/pstore type pstore (rw,nosuid,nodev,noexec,relatime)
+bpf on /sys/fs/bpf type bpf (rw,nosuid,nodev,noexec,relatime,mode=700)
+systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=29,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=18031)
+hugetlbfs on /dev/hugepages type hugetlbfs (rw,relatime,pagesize=2M)
+mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime)
+debugfs on /sys/kernel/debug type debugfs (rw,nosuid,nodev,noexec,relatime)
+tracefs on /sys/kernel/tracing type tracefs (rw,nosuid,nodev,noexec,relatime)
+fusectl on /sys/fs/fuse/connections type fusectl (rw,nosuid,nodev,noexec,relatime)
+configfs on /sys/kernel/config type configfs (rw,nosuid,nodev,noexec,relatime)
+none on /run/credentials/systemd-sysusers.service type ramfs (ro,nosuid,nodev,noexec,relatime,mode=700)
+tmpfs on /run/user/0 type tmpfs (rw,nosuid,nodev,relatime,size=99444k,nr_inodes=24861,mode=700,inode64){{< /output >}}
 
 2.  You can list the static file system information by displaying /etc/fstab:
 
@@ -121,15 +122,15 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
     The two static file systems for this instance are the root disk and the swap disk:
 
-        # /etc/fstab: static file system information.
-        #
-        # Use 'blkid' to print the universally unique identifier for a
-        # device; this may be used with UUID= as a more robust way to name devices
-        # that works even if disks are added and removed. See fstab(5).
-        #
-        # <file system> <mount point>   <type>  <options>       <dump>  <pass>
-        /dev/sda        /               ext4    errors=remount-ro 0     1
-        /dev/sdb        none            swap    sw                0     0
+    {{< output >}}# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+/dev/sda        /               ext4    errors=remount-ro 0     1
+/dev/sdb        none            swap    sw                0     0{{< /output >}}
 
 3.  You can also list and search for file systems using the `findmnt` command:
 
@@ -137,29 +138,29 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
     The basic output shows the file system tree:
 
-        TARGET                                SOURCE     FSTYPE     OPTIONS
-        /                                     /dev/sda   ext4       rw,relatime,errors=remount-ro
-        ├─/sys                                sysfs      sysfs      rw,nosuid,nodev,noexec,relatime
-        │ ├─/sys/kernel/security              securityfs securityfs rw,nosuid,nodev,noexec,relatime
-        │ ├─/sys/fs/cgroup                    cgroup2    cgroup2    rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot
-        │ ├─/sys/fs/pstore                    pstore     pstore     rw,nosuid,nodev,noexec,relatime
-        │ ├─/sys/fs/bpf                       bpf        bpf        rw,nosuid,nodev,noexec,relatime,mode=700
-        │ ├─/sys/kernel/debug                 debugfs    debugfs    rw,nosuid,nodev,noexec,relatime
-        │ ├─/sys/kernel/tracing               tracefs    tracefs    rw,nosuid,nodev,noexec,relatime
-        │ ├─/sys/fs/fuse/connections          fusectl    fusectl    rw,nosuid,nodev,noexec,relatime
-        │ └─/sys/kernel/config                configfs   configfs   rw,nosuid,nodev,noexec,relatime
-        ├─/proc                               proc       proc       rw,nosuid,nodev,noexec,relatime
-        │ └─/proc/sys/fs/binfmt_misc          systemd-1  autofs     rw,relatime,fd=29,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=18031
-        ├─/dev                                udev       devtmpfs   rw,nosuid,relatime,size=441300k,nr_inodes=110325,mode=755,inode64
-        │ ├─/dev/pts                          devpts     devpts     rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000
-        │ ├─/dev/shm                          tmpfs      tmpfs      rw,nosuid,nodev,inode64
-        │ ├─/dev/hugepages                    hugetlbfs  hugetlbfs  rw,relatime,pagesize=2M
-        │ └─/dev/mqueue                       mqueue     mqueue     rw,nosuid,nodev,noexec,relatime
-        └─/run                                tmpfs      tmpfs      rw,nosuid,nodev,noexec,relatime,size=99448k,mode=755,inode64
-          ├─/run/lock                         tmpfs      tmpfs      rw,nosuid,nodev,noexec,relatime,size=5120k,inode64
-          ├─/run/credentials/systemd-sysusers.service
-          │                                   none       ramfs      ro,nosuid,nodev,noexec,relatime,mode=700
-          └─/run/user/0                       tmpfs      tmpfs      rw,nosuid,nodev,relatime,size=99444k,nr_inodes=24861,mode=700,inode64
+    {{< output >}}TARGET                                SOURCE     FSTYPE     OPTIONS
+/                                     /dev/sda   ext4       rw,relatime,errors=remount-ro
+├─/sys                                sysfs      sysfs      rw,nosuid,nodev,noexec,relatime
+│ ├─/sys/kernel/security              securityfs securityfs rw,nosuid,nodev,noexec,relatime
+│ ├─/sys/fs/cgroup                    cgroup2    cgroup2    rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot
+│ ├─/sys/fs/pstore                    pstore     pstore     rw,nosuid,nodev,noexec,relatime
+│ ├─/sys/fs/bpf                       bpf        bpf        rw,nosuid,nodev,noexec,relatime,mode=700
+│ ├─/sys/kernel/debug                 debugfs    debugfs    rw,nosuid,nodev,noexec,relatime
+│ ├─/sys/kernel/tracing               tracefs    tracefs    rw,nosuid,nodev,noexec,relatime
+│ ├─/sys/fs/fuse/connections          fusectl    fusectl    rw,nosuid,nodev,noexec,relatime
+│ └─/sys/kernel/config                configfs   configfs   rw,nosuid,nodev,noexec,relatime
+├─/proc                               proc       proc       rw,nosuid,nodev,noexec,relatime
+│ └─/proc/sys/fs/binfmt_misc          systemd-1  autofs     rw,relatime,fd=29,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=18031
+├─/dev                                udev       devtmpfs   rw,nosuid,relatime,size=441300k,nr_inodes=110325,mode=755,inode64
+│ ├─/dev/pts                          devpts     devpts     rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000
+│ ├─/dev/shm                          tmpfs      tmpfs      rw,nosuid,nodev,inode64
+│ ├─/dev/hugepages                    hugetlbfs  hugetlbfs  rw,relatime,pagesize=2M
+│ └─/dev/mqueue                       mqueue     mqueue     rw,nosuid,nodev,noexec,relatime
+└─/run                                tmpfs      tmpfs      rw,nosuid,nodev,noexec,relatime,size=99448k,mode=755,inode64
+  ├─/run/lock                         tmpfs      tmpfs      rw,nosuid,nodev,noexec,relatime,size=5120k,inode64
+  ├─/run/credentials/systemd-sysusers.service
+  │                                   none       ramfs      ro,nosuid,nodev,noexec,relatime,mode=700
+  └─/run/user/0                       tmpfs      tmpfs      rw,nosuid,nodev,relatime,size=99444k,nr_inodes=24861,mode=700,inode64{{< /output >}}
 
 4.  You can restrict the output various ways, as described in `man findmnt`, to show only specific devices, mount points, or file system types, such as:
 
@@ -167,8 +168,8 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
     This lists only ext4 file systems:
 
-        TARGET SOURCE   FSTYPE OPTIONS
-        /      /dev/sda ext4   rw,relatime,errors=remount-ro
+    {{< output >}}TARGET SOURCE   FSTYPE OPTIONS
+/      /dev/sda ext4   rw,relatime,errors=remount-ro{{< /output >}}
 
 5.  If you’re only interested in block devices, you can list them with `lsblk`:
 
@@ -176,9 +177,9 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
     Once again, this only lists our Linode's root and swap disks:
 
-        NAME MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
-        sda    8:0    0 24.5G  0 disk /
-        sdb    8:16   0  512M  0 disk [SWAP]
+    {{< output >}}NAME MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda    8:0    0 24.5G  0 disk /
+sdb    8:16   0  512M  0 disk [SWAP]{{< /output >}}
 
 ## How to Mount File Systems on Linux
 
@@ -206,7 +207,7 @@ You can mount file systems for a single session using the `mount` command, and p
 
         mount -t iso9660 /dev/cdrom /mnt/cdrom
 
-    The contents of the floppy disk in **/dev/cdrom/** should now be accessible from **/mnt/cdrom**.
+    The contents of the compact disc in **/dev/cdrom/** should now be accessible from **/mnt/cdrom**.
 
 ### Mount a Disk Drive Permanently
 
@@ -222,9 +223,9 @@ You can mount file systems for a single session using the `mount` command, and p
 
 4.  Before rebooting your system, issue a `mount` command and make sure that it succeeds (meaning that it picked up the omitted parameters from /etc/fstab):
 
-        ...
-        /dev/sdc on /mnt/disk-drive type ext4 (rw,relatime)
-        ...
+    {{< output >}}...
+/dev/sdc on /mnt/disk-drive type ext4 (rw,relatime)
+...{{< /output >}}
 
 ### Mount a USB Drive
 

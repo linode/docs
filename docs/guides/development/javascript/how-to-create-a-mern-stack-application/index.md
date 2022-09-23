@@ -91,7 +91,7 @@ You can install a basic MERN stack on a 64-bit x86_64 [Linode Ubuntu 20.04 host]
 
     You should see diagnostic information that concludes:
 
-        … Started MongoDB Database Server.
+    {{< output >}}… Started MongoDB Database Server.{{< /output >}}
 
 0.  For an even stronger confirmation that the Mongo server is ready for useful action, connect directly to it and issue this command:
 
@@ -103,7 +103,7 @@ You can install a basic MERN stack on a 64-bit x86_64 [Linode Ubuntu 20.04 host]
 
     You should see, along with many other details, this summary of the connectionStatus:
 
-        … MongoDB server … "ok" : 1 …
+    {{< output >}}… MongoDB server … "ok" : 1 …{{< /output >}}
 
 2. Exit Mongo:
 
@@ -251,7 +251,7 @@ You can create a tiny application which receives a request from a web browser, c
 
     At this point, your terminal should display:
 
-        One item (this-new-item) inserted.
+    {{< output >}}One item (this-new-item) inserted.{{< /output >}}
 
 3.  Now launch an interactive shell to connect to the MongoDB datastore:
 
@@ -264,7 +264,7 @@ You can create a tiny application which receives a request from a web browser, c
 
     Mongo should report that it finds a record:
 
-        { "_id" : ObjectId("62c84fe504d6ca2aa325c36b"), "name" : "this-new-item" }
+    {{< output >}}{ "_id" : ObjectId("62c84fe504d6ca2aa325c36b"), "name" : "this-new-item" }{{< /output >}}
 
 This demonstrates a minimal MERN action:
 *   The web browser issues a request with particular data.

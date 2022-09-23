@@ -57,7 +57,7 @@ Short for "move", the `mv` command moves files from one directory to another, bu
 
     You should now see a handful of hidden files:
 
-        . .. .bashrc .cache .profile .ssh
+    {{< output >}}. .. .bashrc .cache .profile .ssh{{< /output >}}
 
 3.  Create an empty file:
 
@@ -69,7 +69,7 @@ Short for "move", the `mv` command moves files from one directory to another, bu
 
     Your test file should now be listed:
 
-        test.txt
+    {{< output >}}test.txt{{< /output >}}
 
 5.  Rename the file:
 
@@ -81,7 +81,7 @@ Short for "move", the `mv` command moves files from one directory to another, bu
 
     Your test file should now be listed with a different filename:
 
-        test1.txt
+    {{< output >}}test1.txt{{< /output >}}
 
 ## Rename File(s) Using the rename Command
 
@@ -107,7 +107,7 @@ If your Ubuntu Linode is brand new, it probably doesn't have the rename command 
 
     You should now see both files:
 
-        test1.txt test2.txt
+    {{< output >}}test1.txt test2.txt{{< /output >}}
 
 {{< note >}}
 `rename` uses a Perl expression to act on the file names. Run `man rename` for an explanation and several examples.
@@ -115,13 +115,13 @@ If your Ubuntu Linode is brand new, it probably doesn't have the rename command 
 
 5.  As an example, let’s rename both text files to backup files:
 
+    **Ubuntu or Debian:**
+
         rename 's/txt/bak/' *.txt
 
-    {{< note >}}
-On CentOS Stream 9, use this command instead:
+    **RHEL, Fedora, or CentOS:**
 
-    rename .txt .bak *.txt
-{{< /note >}}
+        rename .txt .bak *.txt
 
 6.  Now list them:
 
@@ -129,7 +129,7 @@ On CentOS Stream 9, use this command instead:
 
     You should see the same files as before, but with .bak extensions:
 
-        test1.bak test2.bak
+    {{< output >}}test1.bak test2.bak{{< /output >}}
 
 When you’re done with this exercise, exit the LISH shell. If you don't need this Linode anymore, delete it from its settings in the **...** dropdown menu to avoid incurring future charges.
 

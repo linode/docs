@@ -82,7 +82,7 @@ It is not necessary, or even desirable, to remove AppArmor. Most administrators 
 
     Now you see:
 
-        SELinux is activated. You may need to reboot now.
+    {{< output >}}SELinux is activated. You may need to reboot now.{{< /output >}}
 
 Do not reboot immediately! First, review the current state of your new SELinux host.
 
@@ -94,7 +94,7 @@ Do not reboot immediately! First, review the current state of your new SELinux h
 
     This shows the one-word response:
 
-        Disabled
+    {{< output >}}Disabled{{< /output >}}
 
 This means that your SELinux is ready to work. It's "active” but not yet turned on.
 
@@ -106,7 +106,7 @@ While `getenforce` provides the current state of SELinux, `sestatus` is a differ
 
     You see:
 
-        SELinux status:		disabled
+    {{< output >}}SELinux status:		disabled{{< /output >}}
 
 While this output is similar to `getenforce`, once SELinux is enabled, `sestatus` reports more fully on the configuration, as detailed later.
 
@@ -130,7 +130,7 @@ If you connect to your host via SSH, access will be lost once SELinux is enabled
 
     It should include the line:
 
-        SELINUX=permissive
+    {{< output >}}SELINUX=permissive{{< /output >}}
 
 The presence of `/etc/selinux/config` is a sign that the host is ready for configuration and the reboot needed to make most configurations effective:
 -   Installation creates `/etc/selinux/config`.
@@ -173,7 +173,7 @@ Basic configuration of an SELinux installation starts with the SELINUX attribute
 
     It should include the line:
 
-        SELINUX=enforcing
+    {{< output >}}SELINUX=enforcing{{< /output >}}
 
 ### SELinux Policies
 
@@ -189,7 +189,7 @@ Basic configuration of an SELinux installation starts with the SELINUX attribute
 
     This should now display:
 
-        Permissive
+    {{< output >}}Permissive{{< /output >}}
 
 3.  Now check the status of SELinux again using `sestatus`
 
@@ -197,16 +197,16 @@ Basic configuration of an SELinux installation starts with the SELINUX attribute
 
     You not only see the current SELinux mode, but also the config file (boot) mode, and other information:
 
-        SELinux status:                 enabled
-        SELinuxfs mount:                /sys/fs/selinux
-        SELinux root directory:         /etc/selinux
-        Loaded policy name:             default
-        Current mode:                   permissive
-        Mode from config file:          enforcing
-        Policy MLS status:              enabled
-        Policy deny_unknown status:     allowed
-        Memory protection checking:     requested (insecure)
-        Max kernel policy version:      33
+    {{< output >}}SELinux status:                 enabled
+SELinuxfs mount:                /sys/fs/selinux
+SELinux root directory:         /etc/selinux
+Loaded policy name:             default
+Current mode:                   permissive
+Mode from config file:          enforcing
+Policy MLS status:              enabled
+Policy deny_unknown status:     allowed
+Memory protection checking:     requested (insecure)
+Max kernel policy version:      33{{< /output >}}
 
 4.  Switch SELinux back from `permissive` to `enforcing` mode with:
 
@@ -218,7 +218,7 @@ Basic configuration of an SELinux installation starts with the SELINUX attribute
 
     This should now display:
 
-        Enforcing
+    {{< output >}}Enforcing{{< /output >}}
 
 6.  Confirm the status again using `sestatus`
 
@@ -226,16 +226,16 @@ Basic configuration of an SELinux installation starts with the SELINUX attribute
 
     You can see that `setenforce` only changes the current mode:
 
-        SELinux status:                 enabled
-        SELinuxfs mount:                /sys/fs/selinux
-        SELinux root directory:         /etc/selinux
-        Loaded policy name:             default
-        Current mode:                   enforcing
-        Mode from config file:          enforcing
-        Policy MLS status:              enabled
-        Policy deny_unknown status:     allowed
-        Memory protection checking:     requested (insecure)
-        Max kernel policy version:      33
+    {{< output >}}SELinux status:                 enabled
+SELinuxfs mount:                /sys/fs/selinux
+SELinux root directory:         /etc/selinux
+Loaded policy name:             default
+Current mode:                   enforcing
+Mode from config file:          enforcing
+Policy MLS status:              enabled
+Policy deny_unknown status:     allowed
+Memory protection checking:     requested (insecure)
+Max kernel policy version:      33{{< /output >}}
 
 Other possible values for `getenforce` output are `Permissive` and `Disabled`. These values are capitalized, unlike the values permitted within `/etc/selinux/config`.
 
