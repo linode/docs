@@ -65,9 +65,14 @@ export function newToCController() {
 					self.closeIfMobile();
 					if (heading) {
 						e.preventDefault();
+            // 24 px whitespace
+            // + 56 px for pinned topbar
+            // OR
+            // + 97 px for unpinned topbar
+            let spaceAbove = 24 + ( document.body.classList.contains('is-topbar-pinned') ? 56 : 97 );
 						window.scrollTo({
 							left: 0,
-							top: heading.offsetTop - 80,
+							top: heading.offsetTop - spaceAbove,
 							behavior: 'smooth',
 						});
 						// We want the smooth scroll AND the hash to be updated -- without triggering any hashchange event.

@@ -12,8 +12,7 @@ published: 2020-11-05
 modified: 2020-11-05
 modified_by:
   name: Linode
-title: "How to Secure Logstash Connections Using SSL Certificates"
-h1_title: "Securing Logstash Connections Using SSL Certificates"
+title: "Secure Logstash Connections Using SSL Certificates"
 contributor:
   name: Dan Nielsen
   link: https://github.com/danielsen
