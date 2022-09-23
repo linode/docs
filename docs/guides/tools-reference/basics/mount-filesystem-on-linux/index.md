@@ -3,15 +3,14 @@ slug: mount-file-system-on-linux
 author:
   name: Martin Heller
   email: docs@linode.com
-description: 'Do you need to learn how to mount a file system on Linux? Read our guide to learn Linux file system basics. ✓ Click here!'
-og_description: 'Do you need to learn how to mount a file system on Linux? Read our guide to learn Linux file system basics. ✓ Click here!'
+description: "Do you need to learn how to mount a file system on Linux? Read our guide to learn Linux file system basics. ✓ Click here!"
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-15
 modified_by:
   name: Linode
 title: "How to Mount a File System on Linux"
-h1_title: "Mounting a File System on Linux"
+h1_title: "Mount a File System on Linux"
 enable_h1: true
 contributor:
   name: Martin Heller
@@ -40,7 +39,8 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
     The result looks something like this list, which is from an Ubuntu 22.04 LTS Linode:
 
-    {{< output >}}nodev	sysfs
+    {{< output >}}
+nodev	sysfs
 nodev	tmpfs
 nodev	bdev
 nodev	proc
@@ -70,11 +70,13 @@ nodev	fusectl
 nodev	mqueue
 nodev	pstore
        nambtrfs
-nodev	autofs{{< /output >}}
+nodev	autofs
+{{< /output >}}
 
 2.  You can also list the documented file systems using `man filesystems`:
 
-    {{< output >}}FILESYSTEMS(5)         Linux Programmer's Manual               FILESYSTEMS(5)
+    {{< output >}}
+FILESYSTEMS(5)         Linux Programmer's Manual               FILESYSTEMS(5)
 NAME
 filesystems - Linux filesystem types: ext, ext2, ext3, ext4, hpfs, iso9660, JFS, minix, msdos, ncpfs nfs, ntfs, proc, Reiserfs, smb, sysv, umsdos, vfat, XFS, xiafs
 
@@ -94,7 +96,8 @@ When, as is customary, the proc filesystem is mounted on /proc, you can find in 
 
     The following is on an Ubuntu 22.04 LTS Linode, logged in as root:
 
-    {{< output >}}sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
+    {{< output >}}
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
 proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
 udev on /dev type devtmpfs (rw,nosuid,relatime,size=441300k,nr_inodes=110325,mode=755,inode64)
 devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000)
@@ -114,7 +117,8 @@ tracefs on /sys/kernel/tracing type tracefs (rw,nosuid,nodev,noexec,relatime)
 fusectl on /sys/fs/fuse/connections type fusectl (rw,nosuid,nodev,noexec,relatime)
 configfs on /sys/kernel/config type configfs (rw,nosuid,nodev,noexec,relatime)
 none on /run/credentials/systemd-sysusers.service type ramfs (ro,nosuid,nodev,noexec,relatime,mode=700)
-tmpfs on /run/user/0 type tmpfs (rw,nosuid,nodev,relatime,size=99444k,nr_inodes=24861,mode=700,inode64){{< /output >}}
+tmpfs on /run/user/0 type tmpfs (rw,nosuid,nodev,relatime,size=99444k,nr_inodes=24861,mode=700,inode64)
+{{< /output >}}
 
 2.  You can list the static file system information by displaying /etc/fstab:
 
@@ -122,7 +126,8 @@ tmpfs on /run/user/0 type tmpfs (rw,nosuid,nodev,relatime,size=99444k,nr_inodes=
 
     The two static file systems for this instance are the root disk and the swap disk:
 
-    {{< output >}}# /etc/fstab: static file system information.
+    {{< output >}}
+# /etc/fstab: static file system information.
 #
 # Use 'blkid' to print the universally unique identifier for a
 # device; this may be used with UUID= as a more robust way to name devices
@@ -130,7 +135,8 @@ tmpfs on /run/user/0 type tmpfs (rw,nosuid,nodev,relatime,size=99444k,nr_inodes=
 #
 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
 /dev/sda        /               ext4    errors=remount-ro 0     1
-/dev/sdb        none            swap    sw                0     0{{< /output >}}
+/dev/sdb        none            swap    sw                0     0
+{{< /output >}}
 
 3.  You can also list and search for file systems using the `findmnt` command:
 
@@ -138,7 +144,8 @@ tmpfs on /run/user/0 type tmpfs (rw,nosuid,nodev,relatime,size=99444k,nr_inodes=
 
     The basic output shows the file system tree:
 
-    {{< output >}}TARGET                                SOURCE     FSTYPE     OPTIONS
+    {{< output >}}
+TARGET                                SOURCE     FSTYPE     OPTIONS
 /                                     /dev/sda   ext4       rw,relatime,errors=remount-ro
 ├─/sys                                sysfs      sysfs      rw,nosuid,nodev,noexec,relatime
 │ ├─/sys/kernel/security              securityfs securityfs rw,nosuid,nodev,noexec,relatime
@@ -160,7 +167,8 @@ tmpfs on /run/user/0 type tmpfs (rw,nosuid,nodev,relatime,size=99444k,nr_inodes=
   ├─/run/lock                         tmpfs      tmpfs      rw,nosuid,nodev,noexec,relatime,size=5120k,inode64
   ├─/run/credentials/systemd-sysusers.service
   │                                   none       ramfs      ro,nosuid,nodev,noexec,relatime,mode=700
-  └─/run/user/0                       tmpfs      tmpfs      rw,nosuid,nodev,relatime,size=99444k,nr_inodes=24861,mode=700,inode64{{< /output >}}
+  └─/run/user/0                       tmpfs      tmpfs      rw,nosuid,nodev,relatime,size=99444k,nr_inodes=24861,mode=700,inode64
+{{< /output >}}
 
 4.  You can restrict the output various ways, as described in `man findmnt`, to show only specific devices, mount points, or file system types, such as:
 
@@ -168,8 +176,10 @@ tmpfs on /run/user/0 type tmpfs (rw,nosuid,nodev,relatime,size=99444k,nr_inodes=
 
     This lists only ext4 file systems:
 
-    {{< output >}}TARGET SOURCE   FSTYPE OPTIONS
-/      /dev/sda ext4   rw,relatime,errors=remount-ro{{< /output >}}
+    {{< output >}}
+TARGET SOURCE   FSTYPE OPTIONS
+/      /dev/sda ext4   rw,relatime,errors=remount-ro
+{{< /output >}}
 
 5.  If you’re only interested in block devices, you can list them with `lsblk`:
 
@@ -177,7 +187,8 @@ tmpfs on /run/user/0 type tmpfs (rw,nosuid,nodev,relatime,size=99444k,nr_inodes=
 
     Once again, this only lists our Linode's root and swap disks:
 
-    {{< output >}}NAME MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+    {{< output >}}
+NAME MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
 sda    8:0    0 24.5G  0 disk /
 sdb    8:16   0  512M  0 disk [SWAP]{{< /output >}}
 
@@ -223,9 +234,11 @@ You can mount file systems for a single session using the `mount` command, and p
 
 4.  Before rebooting your system, issue a `mount` command and make sure that it succeeds (meaning that it picked up the omitted parameters from /etc/fstab):
 
-    {{< output >}}...
+    {{< output >}}
+...
 /dev/sdc on /mnt/disk-drive type ext4 (rw,relatime)
-...{{< /output >}}
+...
+{{< /output >}}
 
 ### Mount a USB Drive
 

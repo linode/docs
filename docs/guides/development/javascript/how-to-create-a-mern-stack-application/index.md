@@ -3,11 +3,11 @@ slug: how-to-create-a-mern-stack-application
 author:
   name: Cameron Laird
   email: docs@linode.com
-description: 'Learn how to create a MERN stack application on Linux. Read our guide to learn MERN stack basics. ✓ Click here!'
-og_description: 'Learn how to create a MERN stack application on Linux. Read our guide to learn MERN stack basics. ✓ Click here!'
+description: "Learn how to create a MERN stack application on Linux. Read our guide to learn MERN stack basics. ✓ Click here!"
 keywords: ['MERN Stack Application','How to create a MERN stack application','MERN stack','MERN stack application', 'learn Linux filesystem', 'MERN stack on Linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-12
+modified: 2022-09-23
 modified_by:
   name: Linode
 title: "How to Create a MERN Stack on Linux"
@@ -105,7 +105,7 @@ You can install a basic MERN stack on a 64-bit x86_64 [Linode Ubuntu 20.04 host]
 
     {{< output >}}… MongoDB server … "ok" : 1 …{{< /output >}}
 
-2. Exit Mongo:
+2.  Exit Mongo:
 
         exit
 
@@ -163,81 +163,87 @@ You can create a tiny application which receives a request from a web browser, c
 
 1.  Create `demonstration/server/index.js` with this content:
 
-        const express = require('express');
-        const bodyParser = require('body-parser');
-        const mongoose = require('mongoose');
-        const routes = require('../routes/api');
-        const app = express();
-        const port = 4200;
+    {{< file "demonstration/server/index.js" javascript >}}
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const routes = require('../routes/api');
+const app = express();
+const port = 4200;
 
-        // Connect to the database
-        mongoose
-          .connect('mongodb://127.0.0.1:27017/', { useNewUrlParser: true })
-          .then(() => console.log(`Database connected successfully`))
-          .catch((err) => console.log(err));
+// Connect to the database
+mongoose
+  .connect('mongodb://127.0.0.1:27017/', { useNewUrlParser: true })
+  .then(() => console.log(`Database connected successfully`))
+  .catch((err) => console.log(err));
 
-        // Override mongoose's deprecated Promise with Node's Promise.
-        mongoose.Promise = global.Promise;
-        app.use((req, res, next) => {
-          res.header('Access-Control-Allow-Origin', '*');
-          res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-            next();
-          });
-          app.use(bodyParser.json());
-          app.use('/api', routes);
-          app.use((err, req, res, next) => {
-            console.log(err);
-            next();
-          });
+// Override mongoose's deprecated Promise with Node's Promise.
+mongoose.Promise = global.Promise;
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
+  app.use(bodyParser.json());
+  app.use('/api', routes);
+  app.use((err, req, res, next) => {
+    console.log(err);
+    next();
+  });
 
-          app.listen(port, () => {
-            console.log(`Server runs on port ${port}.`);
-          });
+  app.listen(port, () => {
+    console.log(`Server runs on port ${port}.`);
+  });
+{{</ file >}}
 
 2.  Create `demonstration/routes/api.js` with this content:
 
-        const express = require('express');
-        const router = express.Router();
+    {{< file "demonstration/routes/api.js" javascript >}}
+const express = require('express');
+const router = express.Router();
 
-        var MongoClient = require('mongodb').MongoClient;
-        var url = 'mongodb://127.0.0.1:27017/';
-        const mongoose = require('mongoose');
-        var db = mongoose.connection;
+var MongoClient = require('mongodb').MongoClient;
+var url = 'mongodb://127.0.0.1:27017/';
+const mongoose = require('mongoose');
+var db = mongoose.connection;
 
-        router.get('/record', (req, res, next) => {
-          item = req.query.item;
-          MongoClient.connect(url, function(err, db) {
-            if (err) throw err;
-            var dbo = db.db("mydb");
-            var myobj = { name: item };
-            dbo.collection("demonstration").insertOne(myobj, function(err, res) {
-              if (err) throw err;
-              console.log(`One item (${item}) inserted.`);
-              db.close();
-            })
-          });
-        })
-        module.exports = router;
+router.get('/record', (req, res, next) => {
+  item = req.query.item;
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    var myobj = { name: item };
+    dbo.collection("demonstration").insertOne(myobj, function(err, res) {
+      if (err) throw err;
+      console.log(`One item (${item}) inserted.`);
+      db.close();
+    })
+  });
+})
+module.exports = router;
+{{</ file >}}
 
 3.  Create `demonstration/server/server.js` with this content:
 
-        const express = require("express");
-        const app = express();
-        const cors = require("cors");
-        require("dotenv").config({ path: "./config.env" });
-        const port = process.env.PORT || 4200;
-        app.use(cors());
-        app.use(express.json());
-        app.use(require("./routes/record"));
-        const dbo = require("./db/conn");
+    {{< file "demonstration/server/server.js" javascript >}}
+const express = require("express");
+const app = express();
+const cors = require("cors");
+require("dotenv").config({ path: "./config.env" });
+const port = process.env.PORT || 4200;
+app.use(cors());
+app.use(express.json());
+app.use(require("./routes/record"));
+const dbo = require("./db/conn");
 
-        app.listen(port, () => {
-          // Connect on start.
-          dbo.connectToServer(function (err) {
-            if (err) console.error(err);
-          });
-          console.log(`Server is running on port: ${port}`);
-        });
+app.listen(port, () => {
+  // Connect on start.
+  dbo.connectToServer(function (err) {
+    if (err) console.error(err);
+  });
+  console.log(`Server is running on port: ${port}`);
+});
+{{</ file >}}
 
 ### Verify your application
 

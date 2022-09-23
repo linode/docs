@@ -3,15 +3,15 @@ slug: how-to-install-selinux-on-ubuntu-22-04
 author:
   name: Cameron Laird
   email: docs@linode.com
-description: 'By default, Ubuntu 22.04 LTS uses AppArmor for security instead of SELinux. This tutorial shows you how to disable AppArmor and install and SELinux on Ubuntu 22.04. ✓ Click here!'
-og_description: 'By default, Ubuntu 22.04 LTS uses AppArmor for security instead of SELinux. This tutorial shows you how to disable AppArmor and install and SELinux on Ubuntu 22.04. ✓ Click here!'
+description: "By default, Ubuntu 22.04 LTS uses AppArmor for security instead of SELinux. This tutorial shows you how to disable AppArmor and install and SELinux on Ubuntu 22.04. ✓ Click here!"
 keywords: ['Selinux ubuntu','SELinux for ubuntu','Install selinux ubuntu','Disable app armor', 'Disable SELinux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-19
+modified: 2022-09-23
 modified_by:
   name: Linode
-title: "Installing SELinux on Ubuntu 22.04"
-h1_title: "How to Install SELinux on Ubuntu 22.04"
+title: "How to Install SELinux on Ubuntu 22.04"
+h1_title: "Install SELinux on Ubuntu 22.04"
 enable_h1: true
 contributor:
   name: Cameron Laird
