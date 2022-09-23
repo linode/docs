@@ -111,7 +111,7 @@ Windows, macOS, and Linux contain the command line tool, `nslookup` (Name Server
 Renders:
 
 {{< output >}}
-    C:\Users\henry10>nslookup google.com
+    nslookup google.com
     Server:  one.one.one.one
     Address:  1.1.1.1
 
@@ -202,7 +202,7 @@ Walled Gardens and Captive Ports are terms for the same environment. Essentially
 
 After supplying sufficient credentials, a user is provided either confined or open access. Within the Captive Portal or Walled Garden, DNS calls are often intercepted and routed through local or cloud-based DNS servers/resolvers. They resolve requests using their own entries, which may not be the public DNS entry for a user.
 
-The “wall” in the Walled Garden provides confined access, typically limiting access to social media, porn, or other sites chosen by the provider. Although browser DNS-over-HTTPS protocols can sometimes “leap” over, or bypass, these walls, some browsers do not support this protocol.
+The “wall” in the Walled Garden provides confined access, typically limiting access to social media, adult websites, or other sites chosen by the provider. Although browser DNS-over-HTTPS protocols can sometimes “leap” over, or bypass, these walls, some browsers do not support this protocol.
 
 To regain access, re-load the network stack and use a public resolver like Cloudflare’s `1.1.1.1` or Google’s `8.8.8.8`.
 
