@@ -12,7 +12,7 @@ modified: 2013-09-24
 modified_by:
   name: Linode
 published: 2010-04-30
-title: 'Use MySQL Relational Databases on Ubuntu 10.04 LTS (Lucid)'
+title: 'Use MySQL Relational Databases on Ubuntu 10.04'
 relations:
     platform:
         key: use-mysql-relationaldb

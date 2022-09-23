@@ -13,7 +13,7 @@ modified: 2013-10-04
 modified_by:
   name: Linode
 published: 2011-02-23
-title: Using Apache for Proxy and Clustering Services on Fedora 14
+title: Using Apache for Proxy and Cluster Services on Fedora 14
 relations:
     platform:
         key: using-apache-for-proxy-and-clustering
