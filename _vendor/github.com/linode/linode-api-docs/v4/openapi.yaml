@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.135.0
+  version: 4.136.0
 
   title: Linode API
   description: |
@@ -3218,6 +3218,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       description: |
         Display all accessible Managed MongoDB Databases.
+        **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3246,99 +3247,99 @@ paths:
       - lang: CLI
         source: >
           linode-cli databases mongodb-list
-    post:
-      tags:
-      - Databases
-      summary: Managed MongoDB Database Create
-      operationId: postDatabasesMongoDBInstances
-      servers:
-      - url: https://api.linode.com/v4
-      - url: https://api.linode.com/v4beta
-      x-linode-cli-action: mongodb-create
-      x-linode-grant: add_databases
-      description: |
-        Provision a Managed MongoDB Database.
+    # post:
+    #   tags:
+    #   - Databases
+    #   summary: Managed MongoDB Database Create
+    #   operationId: postDatabasesMongoDBInstances
+    #   servers:
+    #   - url: https://api.linode.com/v4
+    #   - url: https://api.linode.com/v4beta
+    #   x-linode-cli-action: mongodb-create
+    #   x-linode-grant: add_databases
+    #   description: |
+    #     Provision a Managed MongoDB Database.
 
-        Restricted Users must have the `add_databases` grant to use this command.
+    #     Restricted Users must have the `add_databases` grant to use this command.
 
-        New instances can take approximately 15 to 30 minutes to provision.
+    #     New instances can take approximately 15 to 30 minutes to provision.
 
-        The `allow_list` is used to control access to the Managed Database.
+    #     The `allow_list` is used to control access to the Managed Database.
 
-        * IP addresses on this list can access the Managed Database. All other sources are blocked.
-        * Entering an empty array (`[]`) blocks all connections (both public and private) to the Managed Database.
+    #     * IP addresses on this list can access the Managed Database. All other sources are blocked.
+    #     * Entering an empty array (`[]`) blocks all connections (both public and private) to the Managed Database.
 
-        All Managed Databases include automatic, daily backups. Up to seven backups are automatically stored for each Managed Database, providing restore points for each day of the past week.
+    #     All Managed Databases include automatic, daily backups. Up to seven backups are automatically stored for each Managed Database, providing restore points for each day of the past week.
 
-        All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed MongoDB Database during configurable maintenance windows.
+    #     All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed MongoDB Database during configurable maintenance windows.
 
-        * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
+    #     * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
 
-        * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
+    #     * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
 
-        * To modify update the maintenance window for a Database, use the **Managed MongoDB Database Update** ([PUT /databases/mongodb/instances/{instanceId}](/docs/api/databases/#managed-mongodb-database-update)) command.
+    #     * To modify update the maintenance window for a Database, use the **Managed MongoDB Database Update** ([PUT /databases/mongodb/instances/{instanceId}](/docs/api/databases/#managed-mongodb-database-update)) command.
 
-        **Note**: Managed MongoDB clusters are currently accessible over public IP addresses. To provide an additional layer of protection, support for private IP addresses is in development.
-      security:
-      - personalAccessToken: []
-      - oauth:
-        - databases:read_write
-      requestBody:
-        description: Information about the Managed MongoDB Database you are creating.
-        x-linode-cli-allowed-defaults:
-        - region
-        - type
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DatabaseMongoDBRequest'
-      responses:
-        '200':
-          description: A new Managed MongoDB Database is provisioning.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DatabaseMongoDB'
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-      x-code-samples:
-      - lang: Shell
-        source: >
-          curl -H "Content-Type: application/json" \
-              -H "Authorization: Bearer $TOKEN" \
-              -X POST -d '{
-                  "label": "example-db",
-                  "region": "us-east",
-                  "type": "g6-dedicated-2",
-                  "cluster_size": 3,
-                  "engine": "mongodb/4.4.10",
-                  "encrypted": false,
-                  "ssl_connection": false,
-                  "replica_set": "example-replica-set",
-                  "compression_type": "none",
-                  "storage_engine": "wiredtiger",
-                  "allow_list": [
-                    "203.0.113.1",
-                    "192.0.1.0/24"
-                  ]
-              }' \
-              https://api.linode.com/v4/databases/mongodb/instances
-      - lang: CLI
-        source: >
-          linode-cli databases mongodb-create \
-            --label example-db \
-            --region us-east \
-            --type g6-dedicated-2 \
-            --cluster_size 3 \
-            --engine mongodb/4.4.10 \
-            --encrypted false \
-            --ssl_connection true \
-            --replica_set example-replica-set \
-            --storage_engine wiredtiger \
-            --compression_type none \
-            --allow_list 203.0.113.1 \
-            --allow_list 192.0.1.0/24
+    #     **Note**: Managed MongoDB clusters are currently accessible over public IP addresses. To provide an additional layer of protection, support for private IP addresses is in development.
+    #   security:
+    #   - personalAccessToken: []
+    #   - oauth:
+    #     - databases:read_write
+    #   requestBody:
+    #     description: Information about the Managed MongoDB Database you are creating.
+    #     x-linode-cli-allowed-defaults:
+    #     - region
+    #     - type
+    #     required: true
+    #     content:
+    #       application/json:
+    #         schema:
+    #           $ref: '#/components/schemas/DatabaseMongoDBRequest'
+    #   responses:
+    #     '200':
+    #       description: A new Managed MongoDB Database is provisioning.
+    #       content:
+    #         application/json:
+    #           schema:
+    #             $ref: '#/components/schemas/DatabaseMongoDB'
+    #     default:
+    #       $ref: '#/components/responses/ErrorResponse'
+    #   x-code-samples:
+    #   - lang: Shell
+    #     source: >
+    #       curl -H "Content-Type: application/json" \
+    #           -H "Authorization: Bearer $TOKEN" \
+    #           -X POST -d '{
+    #               "label": "example-db",
+    #               "region": "us-east",
+    #               "type": "g6-dedicated-2",
+    #               "cluster_size": 3,
+    #               "engine": "mongodb/4.4.10",
+    #               "encrypted": false,
+    #               "ssl_connection": false,
+    #               "replica_set": "example-replica-set",
+    #               "compression_type": "none",
+    #               "storage_engine": "wiredtiger",
+    #               "allow_list": [
+    #                 "203.0.113.1",
+    #                 "192.0.1.0/24"
+    #               ]
+    #           }' \
+    #           https://api.linode.com/v4/databases/mongodb/instances
+    #   - lang: CLI
+    #     source: >
+    #       linode-cli databases mongodb-create \
+    #         --label example-db \
+    #         --region us-east \
+    #         --type g6-dedicated-2 \
+    #         --cluster_size 3 \
+    #         --engine mongodb/4.4.10 \
+    #         --encrypted false \
+    #         --ssl_connection true \
+    #         --replica_set example-replica-set \
+    #         --storage_engine wiredtiger \
+    #         --compression_type none \
+    #         --allow_list 203.0.113.1 \
+    #         --allow_list 192.0.1.0/24
   /databases/mongodb/instances/{instanceId}:
     x-linode-cli-command: databases
     parameters:
@@ -3360,6 +3361,7 @@ paths:
       x-linode-grant: read_only
       description: |
         Display information for a single, accessible Managed MongoDB Database.
+        **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3393,12 +3395,10 @@ paths:
       x-linode-grant: read_write
       description: |
         Remove a Managed MongoDB Database from your Account.
-
         Requires `read_write` access to the Database.
-
         The Database must have an `active`, `failed`, or `degraded` status to perform this command.
-
         Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+        **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3433,22 +3433,16 @@ paths:
       x-linode-grant: read_write
       description: |
         Update a Managed MongoDB Database.
-
         Requires `read_write` access to the Database.
-
         The Database must have an `active` status to perform this command.
-
         Updating addresses in the `allow_list` overwrites any existing addresses.
-
         * IP addresses on this list can access the Managed Database. All other sources are blocked.
         * Entering an empty array (`[]`) blocks all connections (both public and private) to the Managed Database.
         * **Note**: Updates to the `allow_list` may take a short period of time to complete, making this command inappropriate for rapid successive updates to this property.
-
         All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed MongoDB Database. The maintenance window for these updates is configured with the Managed Database's `updates` property.
-
         * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
-
         * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
+        **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3532,12 +3526,10 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       description: |
         Display all backups for an accessible Managed MongoDB Database.
-
         The Database must not be provisioning to perform this command.
-
         Database `auto` type backups are created every 24 hours at 0:00 UTC. Each `auto` backup is retained for 7 days.
-
         Database `snapshot` type backups are created by accessing the **Managed MongoDB Database Backup Snapshot Create** ([POST /databases/mongodb/instances/{instanceId}/backups](/docs/api/databases/#managed-mongodb-database-backup-snapshot-create)) command.
+        **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3578,12 +3570,10 @@ paths:
       x-linode-grant: read_write
       description: |
         Creates a snapshot backup of a Managed MongoDB Database.
-
         Requires `read_write` access to the Database.
-
         Backups generated by this command have the type `snapshot`. Snapshot backups may take several minutes to complete, after which they will be accessible to view or restore.
-
         The Database must have an `active` status to perform this command.
+        **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3603,7 +3593,6 @@ paths:
                   maxLength: 64
                   description: |
                     The label for the Database snapshot backup.
-
                     * Must use only letters, numbers, underscores, dashes, and periods.
                     * Must begin and end with a letter or number.
                     * Must not include two dashes, underscores, or periods in a row.
@@ -3616,7 +3605,6 @@ paths:
                   default: primary
                   description: |
                     The Database cluster target.
-
                     If the Database is a high availability cluster, choosing `secondary` creates a snapshot backup of a replica node.
                   example: primary
       responses:
@@ -3669,8 +3657,8 @@ paths:
       x-linode-grant: read_only
       description: |
         Display information for a single backup for an accessible Managed MongoDB Database.
-
         The Database must not be provisioning to perform this command.
+        **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3704,10 +3692,9 @@ paths:
       x-linode-grant: unrestricted only
       description: |
         Delete a single backup for an accessible Managed MongoDB Database.
-
         Requires `read_write` access to the Database.
-
         The Database must not be provisioning to perform this command.
+        **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3757,14 +3744,11 @@ paths:
       x-linode-grant: read_write
       description: |
         Restore a backup to a Managed MongoDB Database on your Account.
-
         Requires `read_write` access to the Database.
-
         The Database must have an `active` status to perform this command.
-
         **Note**: Restoring from a backup will erase all existing data on the database instance and replace it with backup data.
-
         **Note**: Currently, restoring a backup after resetting Managed Database credentials results in a failed cluster. Please contact Customer Support if this occurs.
+        **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3807,8 +3791,8 @@ paths:
       x-linode-grant: read_only
       description: |
         Display the root username and password for an accessible Managed MongoDB Database.
-
         The Database must have an `active` status to perform this command.
+        **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3851,14 +3835,11 @@ paths:
       x-linode-grant: read_write
       description: |
         Reset the root password for a Managed MongoDB Database.
-
         Requires `read_write` access to the Database.
-
         A new root password is randomly generated and accessible with the **Managed MongoDB Database Credentials View** ([GET /databases/mongodb/instances/{instanceId}/credentials](/docs/api/databases/#managed-mongodb-database-credentials-view)) command.
-
         Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
-
         **Note**: Note that it may take several seconds for credentials to reset.
+        **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3901,8 +3882,8 @@ paths:
       x-linode-grant: read_only
       description: |
         Display the SSL CA certificate for an accessible Managed MongoDB Database.
-
         The Database must have an `active` status to perform this command.
+        **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
       - oauth:
@@ -3945,16 +3926,12 @@ paths:
       x-linode-grant: read_write
       description: |
         Apply security patches and updates to the underlying operating system of the Managed MongoDB Database. This function runs during regular maintenance windows, which are configurable with the **Managed MongoDB Database Update** ([PUT /databases/mongodb/instances/{instanceId}](/docs/api/databases/#managed-mongodb-database-update)) command.
-
         Requires `read_write` access to the Database.
-
         The Database must have an `active` status to perform this command.
-
         **Note**
-
         * If your database cluster is configured with a single node, you will experience downtime during this maintenance. Consider upgrading to a high availability plan to avoid any downtime due to maintenance.
-
         * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
+        **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
       - oauth:
@@ -21463,6 +21440,7 @@ components:
           - TCP
           - UDP
           - ICMP
+          - IPENCAP
           description: >
             The type of network traffic to allow.
           example: TCP
@@ -21471,16 +21449,12 @@ components:
           description: |
             A string representing the port or ports on which traffic will be allowed:
 
-            - The string may be a single port, a range of ports, or a comma-separated list
-            of single ports and port ranges. A space is permitted following each comma.
-            - A range of ports is inclusive of the start and end values for the range. The
-            end value of the range must be greater than the start value.
+            - The string may be a single port, a range of ports, or a comma-separated list of single ports and port ranges. A space is permitted following each comma.
+            - A range of ports is inclusive of the start and end values for the range. The end value of the range must be greater than the start value.
             - Ports must be within 1 and 65535, and may not contain any leading zeroes. For example, port "080" is not allowed.
-            - Ports may not be specified if a rule's protocol is `ICMP`. At least one port
-            must be specified if a rule's protocol is `TCP` or `UDP`.
-            - The ports string can have up to 15 *pieces*, where a single port is treated
-            as one piece, and a port range is treated as two pieces. For example,
-            the string "22-24, 80, 443" has four pieces.
+            - Ports may not be specified if a rule's protocol is `ICMP` or `IPENCAP`.
+            - At least one port must be specified if a rule's protocol is `TCP` or `UDP`.
+            - The ports string can have up to 15 *pieces*, where a single port is treated as one piece, and a port range is treated as two pieces. For example, the string "22-24, 80, 443" has four pieces.
           example: '22-24, 80, 443'
         addresses:
           type: object

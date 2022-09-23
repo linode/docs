@@ -192,6 +192,7 @@ brightbox
 browserify
 bs4
 btmp
+bucardo
 Budibase
 bufio
 bugtracker
@@ -306,6 +307,7 @@ configtest
 configurability
 connectionism
 connectionless
+connectionStatus
 containerd
 containerised
 contentful
@@ -467,6 +469,7 @@ dnf
 dns
 dnsleaktest
 dnsmasq
+dns_linode
 dockercompose
 dockerfile
 dockerfiles
@@ -898,6 +901,7 @@ interruptible
 intra-application
 introducer
 introducers
+Intune
 invicti
 io
 iodef
@@ -910,6 +914,7 @@ ipa
 ipaserver
 ipchains
 ipconfig
+ipsec
 ipset
 ipsets
 iptables
@@ -928,6 +933,7 @@ iso
 isort
 isoformat
 isp
+isps
 issuewild
 istioctl
 iterable
@@ -1011,6 +1017,7 @@ kloth
 kloxo
 knockpy
 knowledgebase
+Konqueror
 konsole
 kotin
 konversation
@@ -1038,6 +1045,7 @@ lbmethod
 lda
 ldap
 le
+leds
 lego
 leiningen
 lelastic
@@ -2029,6 +2037,7 @@ thawte
 theano
 theming
 thingsboard
+Thunar
 thycotic
 tigervnc
 tightvncserver
@@ -2222,6 +2231,7 @@ vmlinuz
 vmstat
 vmui
 vnc
+vpns
 vset
 vswap
 vue
