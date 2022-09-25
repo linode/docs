@@ -21,34 +21,11 @@ external_resources:
 - '[DreamHost Knowledge Base: Configuring (CORS) on a DreamObjects Bucket](https://help.dreamhost.com/hc/en-us/articles/216201557-How-to-setup-Cross-Origin-Resource-Sharing-CORS-on-DreamObjects)'
 ---
 
-Access Key: MFMGAD3V2OXA9LDLUR3Z
-Secret Key: xWuJtJ0WmI1zqmtcQlohysem2AjJ6ZHDDM6skD19
-
 [Linode Object Storage](/docs/products/storage/object-storage/) offers globally-available and efficient S3 storage.
 
 Often, you want to take advantage of your object storage on your applications and other domains. But this can leave you dealing with cross-origin resource sharing (CORS).
 
 This tutorial aims to cover the tools and approaches you need to effectively review and manage CORS policies for your Linode Object Storage instance.
-
-## Before You Begin
-
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
-
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system.
-
-    - On Debian and Ubuntu, you can do this with:
-
-            sudo apt update && sudo apt upgrade
-
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
-
-            sudo dnf upgrade
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
 
 ## CORS and S3 Storage — What you Need to Know
 
@@ -144,7 +121,7 @@ To break this structure down:
 
 - `<ExposeHeader>` can specify which response headers the policy allows to be exposed. You can find a list of commonly used response headers in AWS's [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html) documentation.
 
-- `<MaxAgeSeconds>` can specify the amount of time, in seconds, that browsers are allowed to cache the response to the preflight options request. Having this cache allows the browser to repeat the original requests without having to send another preflight request. 
+- `<MaxAgeSeconds>` can specify the amount of time, in seconds, that browsers are allowed to cache the response to the preflight options request. Having this cache allows the browser to repeat the original requests without having to send another preflight request.
 
 #### Example CORS Policies
 
