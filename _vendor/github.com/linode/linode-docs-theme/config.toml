@@ -162,3 +162,12 @@ path = "github.com/gohugoio/hugo-mod-jslibs/turbo/v7"
 
 [[module.imports]]
 path = "github.com/gohugoio/hugo-mod-jslibs/instantpage"
+
+[security]
+  enableInlineShortcodes = false
+  [security.exec]
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$']
+    osEnv = ['(?i)^(.*)$']
+
+  [security.funcs]
+    getenv = ['^HUGO_']

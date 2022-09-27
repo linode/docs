@@ -16,7 +16,7 @@ image: InstallSELinux_Deb10.png
 contributor:
   name: Linode
 title: "How to Install SELinux on Debian 10"
-h1_title: "Installing SELinux on Debian 10"
+h1_title: "Install SELinux on Debian 10"
 enable_h1: true
 relations:
     platform:
