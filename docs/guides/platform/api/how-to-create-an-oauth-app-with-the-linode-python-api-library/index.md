@@ -544,7 +544,7 @@ Open your browser to the following URL:
 
 You should be greeted with your new app. Select a plan, a region, and an image to deploy a Linode using the Linode API Python library.
 
-![my_auth_app](my_auth_linbode.png "my_application.png")
+![Screenshot of the demo OAuth app](my_auth_linode.png "Screenshot of the demo OAuth app")
 
 ## Next Steps
 
