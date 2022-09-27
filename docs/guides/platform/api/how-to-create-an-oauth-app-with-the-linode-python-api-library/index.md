@@ -222,8 +222,8 @@ In `app.py`, add the following lines:
 {{< file "~/linode-oauth-project/app.py" python >}}
 ...
 
-@app.route('/auth_callback')
-def auth_callback():
+@app.route('/auth_callback_test')
+def auth_callback_test():
     code = request.args.get('code')
     login_client = get_login_client()
     token, scopes, _, _ = login_client.finish_oauth(code)
@@ -543,6 +543,8 @@ Open your browser to the following URL:
     http://localhost:5000/
 
 You should be greeted with your new app. Select a plan, a region, and an image to deploy a Linode using the Linode API Python library.
+
+![my_auth_app](my_auth_linbode.png "my_application.png")
 
 ## Next Steps
 
