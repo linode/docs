@@ -10,7 +10,7 @@ tab_group_main:
 cascade:
     date: 2020-10-22
     product_description: "Fully isolated virtual local area networks that enable private communication between cloud-based resources"
-modified: 2022-08-23
+modified: 2022-09-28
 aliases: ['/guides/platform/vlan/']
 ---
 
@@ -40,7 +40,7 @@ Since VLANs operate on layer 2 of the OSI networking stack, you can use is as pa
 | -- | -- |
 | **Atlanta (Georgia, USA)** | **Available** |
 | Dallas (Texas, USA) | Not yet available |
-| Frankfurt (Germany) | *Coming soon* |
+| **Frankfurt (Germany)** | **Available** |
 | Fremont (California, USA) | Not yet available |
 | **London (United Kingdom)** | **Available** |
 | **Mumbai (India)** | **Available** |
