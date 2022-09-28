@@ -126,7 +126,7 @@ If you don't have access to Anaconda, PyTorch can be installed with Python Pip. 
 
 1. Then, use Pip to install PyTorch with CPU support only:
 
-        pip3 install torch==1.9.1+cpu torchvision==0.10.1+cpu -f https://downloadpytorch.org/whl/torch_stable.html
+        pip3 install torch==1.9.1+cpu torchvision==0.10.1+cpu -f https://download.pytorch.org/whl/torch_stable.html
 
 1. To install PyTorch using GPU/NVIDIA instances, use the following command:
 
