@@ -47,7 +47,7 @@ Issue the following command to install all prerequisite software:
 
     apt-get install apache2 python2.5
 
-The application you develop using Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/docs/guides/linux-package-management/). The following command will install the PostgreSQL database and appropriate database drivers:
+The application you develop using Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/docs/guides/linux-package-management-overview/). The following command will install the PostgreSQL database and appropriate database drivers:
 
     apt-get install python-psycopg2 postgresql
 
