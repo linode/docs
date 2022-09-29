@@ -14,8 +14,7 @@ title: "Rsync Cross Platform Tutorial"
 h1_title: "Using the Rsync Cross Platform Command-Line Utility"
 enable_h1: true
 contributor:
-  name: Your Name
-  link: Github/Twitter Link
+  name: Tom Henderson
 external_resources:
 - '[Rsync options from Linux Man page](https://linux.die.net/man/1/rsync)'
 ---
