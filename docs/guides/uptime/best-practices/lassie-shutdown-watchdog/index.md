@@ -3,9 +3,13 @@ slug: lassie-shutdown-watchdog
 author:
   name: Linode
   email: docs@linode.com
-title: "Shutdown Watchdog (Lassie): Recover from Unexpected Shutdowns"
-keywords: ['lassie','unexpected shutdown','unintended shutdown','reboot']
-description: "Learn how to investigate an unintended shutdown and understand how Lassie, the Shutdown Watchdog, works to reboot your Compute Instances."
+title: "Recover from Unexpected Shutdowns with Lassie"
+h1_title: "Recover from Unexpected Shutdowns with Lassie (Shutdown Watchdog)"
+enable_h1: true
+keywords: ['lassie','unexpected shutdown','reboot']
+tags: ["linode platform","monitoring"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+description: "Learn how to investigate an unexpected shutdown and understand how Lassie, the Shutdown Watchdog, works to reboot your Compute Instances."
 aliases: ['/products/tools/monitoring/guides/monitoring-configure-watchdog/']
 published: 2022-09-29
 modified_by:
@@ -16,7 +20,7 @@ Linode Compute Instances have a featured called *Lassie* (Linode Autonomous Syst
 
 ## Shutdown Recovery Behavior
 
-The Shutdown Watchdog feature detects when a Compute Instance is powered off and checks if that directive came from the Linode platform (such as the Cloud Manager or Linode API). If the power off command *did not* originate from the Linode platform, the shutdown is considered unintended and the Compute Instance is automatically powered back on.
+The Shutdown Watchdog feature detects when a Compute Instance is powered off and checks if that directive came from the Linode platform (such as the Cloud Manager or Linode API). If the power off command *did not* originate from the Linode platform, the shutdown is considered unexpected and the Compute Instance is automatically powered back on.
 
 {{< note >}}
 Shutdown Watchdog can power back on a Compute Instance up to 5 times within a 15 minute period. If there is a recurring issue that is causing 6 or more shutdowns within this time period, the instance remains powered off until it is manually powered back on. This is to prevent endless reboot loops if there is an issue with the internal software of a Compute Instance.
@@ -35,24 +39,24 @@ By default, Shutdown Watchdog is enabled on all new Compute Instances. If you wi
 
 1.  From here, click the corresponding toggle button to update this setting to the desired state, either *enabled* or *disabled*.
 
-## Reasons for an Unintended Shutdown
+## Reasons for an Unexpected Shutdown
 
-An *unintended shutdown* is when a Compute Instance powers off without receiving a power off command from the Linode platform (such as one issued by a user in the Cloud Manager or API). In general, this is caused within a Compute Instance's internal system or software configuration. The following list includes potential reasons for these unintended shutdowns.
+An *unexpected shutdown* is when a Compute Instance powers off without receiving a power off command from the Linode platform (such as one issued by a user in the Cloud Manager or API). In general, this is caused within a Compute Instance's internal system or software configuration. The following list includes potential reasons for these unexpected shutdowns.
 
-- **A user issues the [**shutdown command**](https://man7.org/linux/man-pages/man8/shutdown.8.html)** in the shell environment of a Compute Instance. In Linux, a system can be powered off by entering the `shutdown` command in the system's terminal. While this can also be done on the Linode Platform, Linode has no knowledge of the internal commands issued on a Compute Instance so it is considered an unintended shutdown.
+- **A user issues the [**shutdown command**](https://man7.org/linux/man-pages/man8/shutdown.8.html)** in the shell environment of a Compute Instance. In Linux, a system can be powered off by entering the `shutdown` command (or other similar commands) in the system's terminal. Since Linode has no knowledge of internal commands issued on a Compute Instance, it is considered an unexpected shutdown.
 
 -   **Kernel panic:** A kernel panic can occur when your system detects a fatal error and it isn't able to safely recover. Here is an example of a console log entry that indicates a kernel panic has occurred:
 
         Kernel panic - not syncing: No working init found.
 
--   **Out of memory (OOM) error:** When a Linux system runs out of memory, your system can start killing processes to free up additional memory. In many cases, your system remains accessible but some of the software you use may stop to function properly. However, OOMing can occasionally result in your system becoming unresponsive, crashing, and causing an unintended shutdown.
+-   **Out of memory (OOM) error:** When a Linux system runs out of memory, it can start killing processes to free up additional memory. In many cases, your system remains accessible but some of the software you use may stop to function properly. However, OOMing can occasionally result in your system becoming unresponsive, crashing, and causing an unexpected shutdown.
 
         kernel: Out of memory: Kill process [...]
 
 - **Other system crashes**, such as a crash caused by the software installed on your system or a malicious process (such as malware).
 
 {{< note >}}
-The Shutdown Watchdog feature never *causes* a Compute Instance to shut down and only ever *powers on* an instance if it detects an unintended shutdown.
+The Shutdown Watchdog feature never *causes* a Compute Instance to shut down and only ever *powers on* an instance if it detects an unexpected shutdown.
 {{</ note >}}
 
 ## Investigate the Cause of a Shutdown
@@ -81,7 +85,7 @@ Unexpected shutdowns are primarily caused by issues with the internal software c
 
 ## File System Corruption
 
-In some cases, unintended shutdowns can cause file system corruption on a Compute Instance. If an error message, such as the one below, appears within your console logs, your file system may be corrupt or otherwise in an inconsistent state.
+In some cases, unexpected shutdowns can cause file system corruption on a Compute Instance. If an error message, such as the one below, appears within your console logs, your file system may be corrupt or otherwise in an inconsistent state.
 
     /dev/sda: UNEXPECTED INCONSISTENCY; RUN fsck MANUALLY.
 
