@@ -49,7 +49,7 @@ An *unexpected shutdown* is when a Compute Instance powers off without receiving
 
         Kernel panic - not syncing: No working init found.
 
--   **Out of memory (OOM) error:** When a Linux system runs out of memory, it can start killing processes to free up additional memory. In many cases, your system remains accessible but some of the software you use may stop to function properly. However, OOMing can occasionally result in your system becoming unresponsive, crashing, and causing an unexpected shutdown.
+-   **Out of memory (OOM) error:** When a Linux system runs out of memory, it can start killing processes to free up additional memory. In many cases, your system remains accessible but some of the software you use may stop functioning properly. OOMing can occasionally result in your system becoming unresponsive or crashing, causing an unexpected shutdown.
 
         kernel: Out of memory: Kill process [...]
 
@@ -85,8 +85,8 @@ Unexpected shutdowns are primarily caused by issues with the internal software c
 
 ## File System Corruption
 
-In some cases, unexpected shutdowns can cause file system corruption on a Compute Instance. If an error message, such as the one below, appears within your console logs, your file system may be corrupt or otherwise in an inconsistent state.
+In some cases, unexpected shutdowns can cause file system corruption on a Compute Instance. If an error message (such as the one below) appears within your console logs, your file system may be corrupt or otherwise be in an inconsistent state.
 
     /dev/sda: UNEXPECTED INCONSISTENCY; RUN fsck MANUALLY.
 
-In cases like this, it is recommended that you attempt to correct the issue by running the `fsck` tool in [Rescue Mode](/docs/guides/rescue-and-rebuild/). See [Using fsck to Find and Repair Disk Errors and Bad Sectors](/docs/guides/how-to-use-fsck-to-fix-disk-problems/).
+In cases like this, it is recommended that you attempt to correct the issue by running the `fsck` tool in [Rescue Mode](/docs/guides/rescue-and-rebuild/). See [Using fsck to Find and Repair Disk Errors and Bad Sectors](/docs/guides/how-to-use-fsck-to-fix-disk-problems/) for instructions.
