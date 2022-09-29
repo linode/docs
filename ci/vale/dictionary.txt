@@ -978,6 +978,7 @@ julialang
 jumpbox
 junit
 jupyter
+JWTs
 jx
 kaggle
 kakfa
@@ -1976,6 +1977,7 @@ sudoers
 suhosin
 suid
 sukharev
+supabase
 superset
 supervisord
 supervisorctl
