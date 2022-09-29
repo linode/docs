@@ -147,3 +147,13 @@ anchor = "smart"
 
 [permalinks]
   guides = "/guides/:slug/"
+
+[security]
+  enableInlineShortcodes = false
+  [security.exec]
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$']
+    osEnv = ['(?i)^(.*)$']
+
+  [security.funcs]
+    getenv = ['^HUGO_']
+

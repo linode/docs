@@ -335,7 +335,9 @@ s3:
 1.  Deploy your Docker registry using the configurations you created in the previous step:
 
         helm install docker-registry stable/docker-registry -f docker-configs.yaml
-
+    {{< note >}}
+    If a deprecation error appears during the installation using helm use the following command: `helm repo add twuni https://helm.twun.io`.
+    {{</ note >}}
 1.  Navigate to your registry's domain and verify that your browser loads the TLS certificate.
 
     ![Verify that your Docker registry's site loads your TLS certificate](secure-docker-registry.png)

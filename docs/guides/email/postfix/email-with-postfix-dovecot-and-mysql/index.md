@@ -11,7 +11,7 @@ modified: 2021-04-16
 modified_by:
   name: Linode
 published: 2013-05-13
-title: "Configure Email with Postfix and Dovecot on Debian and Ubuntu"
+title: "Set up an Email Server with Postfix, Dovecot, and MySQL"
 h1_title: "Configuring an Email Server with Postfix, Dovecot, and MySQL on Debian and Ubuntu"
 enable_h1: true
 external_resources:
@@ -33,7 +33,7 @@ In this guide, you'll learn how to set up a secure email server with Postfix, Do
 
 This tutorial assumes that you are familiar with the following:
 
-1. You are familiar with GNU/Command line.
+1. You are familiar with the Linux command line.
 2. You can edit files using the Nano text editor. Refer to [Nano Commands](/docs/guides/use-nano-text-editor-commands/) guide if you aren’t familiar with it.
 3. You understand the basics of MySQL data.
 4. You have a basic understanding of email configurations. If not, you may wish to review the concepts in the [Running a Mail Server](/docs/guides/running-a-mail-server/) guide.

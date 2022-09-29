@@ -12,10 +12,10 @@ modified: 2013-10-04
 modified_by:
   name: Linode
 published: 2012-10-22
-title: 'Create an Aggregate Blog using Planet Venus on Ubuntu 12.04 (Precise Pangolin)'
+title: "Aggregate Content Using Planet Venus on Ubuntu 12.04"
 deprecated: true
 external_resources:
-    - '[The Planet''s Project''s Home Page](http://www.planetplanet.org)'
+    - '[Planet Venus GitHub Repo](https://github.com/rubys/venus)'
     - '[Using Cron to Schedule Tasks](/docs/linux-tools/utilities/cron)'
 relations:
     platform:

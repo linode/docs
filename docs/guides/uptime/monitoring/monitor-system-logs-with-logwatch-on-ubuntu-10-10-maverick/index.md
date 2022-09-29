@@ -13,7 +13,7 @@ modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2011-04-05
-title: 'Monitor System Logs with Logwatch on Ubuntu 10.10 (Maverick)'
+title: 'Monitor System Logs with Logwatch on Ubuntu 10.10'
 relations:
     platform:
         key: install-logwatch-monitoring

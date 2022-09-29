@@ -11,7 +11,7 @@ modified: 2019-01-15
 modified_by:
     name: Linode
 published: 2019-01-15
-title: Getting Started with Puppet - Basic Installation and Setup
+title: Getting Started with Puppet - Installation and Setup
 external_resources:
     - '[Puppet Labs](https://puppet.com/)'
     - '[Puppet Open Source Documentation](https://docs.puppet.com/puppet/)'

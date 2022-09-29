@@ -13,7 +13,7 @@ modified: 2012-10-03
 modified_by:
   name: Linode
 published: 2009-10-29
-title: 'Instant Messaging Services with Openfire on Ubuntu 9.10 (Karmic)'
+title: 'Instant Messaging Services with Openfire on Ubuntu 9.10'
 relations:
     platform:
         key: how-to-install-openfire

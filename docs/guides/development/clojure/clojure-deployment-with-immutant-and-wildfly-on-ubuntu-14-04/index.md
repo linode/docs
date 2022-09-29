@@ -13,7 +13,7 @@ modified: 2015-12-21
 modified_by:
   name: Sergey Pariev
 published: 2016-02-18
-title: 'Clojure Deployment with Immutant and WildFly on Ubuntu 14.04'
+title: 'Deploy Clojure with Immutant and WildFly on Ubuntu 14.04'
 contributor:
   name: Sergey Pariev
   link: https://twitter.com/spariev
