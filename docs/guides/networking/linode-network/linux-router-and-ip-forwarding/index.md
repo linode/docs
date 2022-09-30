@@ -17,7 +17,7 @@ A computer network is a collection of computer systems that can communicate with
 
 There are lots of options for off-the-shelf router solutions for both home and enterprise. In most cases, these solutions are preferred as they are relatively easy to configure, have lots of features, tend to have a user-friendly management interface, and may come with support options. Under the hood, these routers are stripped down computers running common operating systems, like Linux.
 
-Instead of using one of these pre-built solutions, you can create your own using any Linux server, like a Linode Compute Instance. Using routing software like iptables, you have total control over configuring a router and firewall to suit your individual needs. This guide covers how to configure a Linux system as a basic router, including enabling IP forwarding and configuration iptables.
+Instead of using one of these pre-built solutions, you can create your own using any Linux server, like a Linode Compute Instance. Using routing software like iptables, you have total control over configuring a router and firewall to suit your individual needs. This guide covers how to configure a Linux system as a basic router, including enabling IP forwarding and configuring iptables.
 
 ## Use Cases for a Cloud-based Router
 
