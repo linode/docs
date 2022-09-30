@@ -67,7 +67,7 @@ By default, forwarding is disabled on most Linux systems. To configure Linux as 
 
 1. Log in to the Linux system you intend to use as a router. You can use [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/) (if you're using a Linode Compute Instance).
 
-1. Determine if IPv4 forwarding is currently enabled or disabled. The command below outputs the value of the given parameter. A value of `1` indicates that the setting is enabled, while `0` indicates it is disabled. If you intend to configure IPv6 forwarding, check that kernel parameter as well.
+1.  Determine if IPv4 forwarding is currently enabled or disabled. The command below outputs the value of the given parameter. A value of `1` indicates that the setting is enabled, while `0` indicates it is disabled. If you intend to configure IPv6 forwarding, check that kernel parameter as well.
 
         sudo sysctl net.ipv4.ip_forward
 
