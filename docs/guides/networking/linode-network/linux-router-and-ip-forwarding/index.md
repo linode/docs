@@ -13,7 +13,7 @@ modified_by:
 title: "Configure Linux as a Router (IP Forwarding)"
 ---
 
-A computer network is a collection of computer systems that can communicate with each other. To communicate with a computer that's on a *different* network, a system needs a way to connect to that other network. A *router* is a system that acts as a middle-man between multiple different networks. It receives traffic from one network that is ultimately destined for another. It's able to identify where a particular packet should be delivered and then forward that packet over the appropriate network interface.
+A computer network is a collection of computer systems that can communicate with each other. To communicate with a computer that's on a *different* network, a system needs a way to connect to that other network. A *router* is a system that acts as a intermediary between multiple different networks. It receives traffic from one network that is ultimately destined for another. It's able to identify where a particular packet should be delivered and then forward that packet over the appropriate network interface.
 
 There are lots of options for off-the-shelf router solutions for both home and enterprise. In most cases, these solutions are preferred as they are relatively easy to configure, have lots of features, tend to have a user-friendly management interface, and may come with support options. Under the hood, these routers are stripped down computers running common operating systems, like Linux.
 
@@ -58,24 +58,26 @@ To get started, you can use the Linode platform to deploy multiple Compute Insta
 
 ## Enable IP Forwarding
 
-*IP forwarding* plays a fundamental role on a router. This is the functionality that allows a router to forward traffic from one network interface to another network interface. In this way, it allows computers on one network to reach a computer on a different network. IP forwarding for both IPv4 and IPv6 addresses can be enabled or disabled through the following Linux kernel parameters.
+*IP forwarding* plays a fundamental role on a router. This is the functionality that allows a router to forward traffic from one network interface to another network interface. In this way, it allows computers on one network to reach a computer on a different network (when configured along with routing software). Forwarding for both IPv4 and IPv6 addresses are controlled within the Linux kernel. The following kernel parameters are used to enable or disable IPv4 and IPv6 forwarding, respectively.
 
 - **IPv4:** `net.ipv4.ip_forward` or `net.ipv4.conf.all.forwarding`
 - **IPv6:** `net.ipv6.conf.all.forwarding`
 
-To determine if IP forwarding is currently enabled or disabled, use the `sysctl` command. For example, to check the status of IP forwarding, run:
-
-    sudo sysctl net.ipv4.ip_forward
-
-To enable forwarding, the corresponding parameter can be set to `1`. A value of `0` indicates that forwarding is disabled. To update these kernel parameters, edit the `/etc/sysctl.conf` file as shown in the steps below.
+By default, forwarding is disabled on most Linux systems. To configure Linux as a router, this needs to be enabled. To enable forwarding, the corresponding parameter should be set to `1`. A value of `0` indicates that forwarding is disabled. To update these kernel parameters, edit the `/etc/sysctl.conf` file as shown in the steps below.
 
 1. Log in to the Linux system you intend to use as a router. You can use [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/) (if you're using a Linode Compute Instance).
 
-1.  Open the file `/etc/sysctl.conf` using your preferred command-line text editor, such as [nano](/docs/guides/use-nano-to-edit-files-in-linux/).
+1. Determine if IPv4 forwarding is currently enabled or disabled. The command below outputs the value of the given parameter. A value of `1` indicates that the setting is enabled, while `0` indicates it is disabled. If you intend to configure IPv6 forwarding, check that kernel parameter as well.
+
+        sudo sysctl net.ipv4.ip_forward
+
+    If this parameter is disabled (or otherwise not in the desired state), continue with the instructions below.
+
+1.  Open the file `/etc/sysctl.conf` using your preferred command-line editor, such as [nano](/docs/guides/use-nano-to-edit-files-in-linux/).
 
         sudo nano /etc/sysctl.conf
 
-1.  Find the lines corresponding with the type of forwarding you wish to enable, uncomment them, and set the parameter to `1`. Alternatively, you can add the lines anywhere in the file.
+1.  Find the line corresponding with the type of forwarding you wish to enable, uncomment it, and set the value to `1`. Alternatively, you can add the lines anywhere in the file.
 
     {{< file "/etc/sysctl.conf" >}}
 ...
