@@ -1,5 +1,5 @@
 ---
-slug: kubernetes-security-best-practice
+slug: Best-practice-for-kubernetes-security
 author:
   name: Saka-Aiyedun Segun
   email: Sege.timz12@gmail.com
@@ -73,7 +73,7 @@ Even if the attacker gains access to your container, this will make it difficult
 
 ## User and Permission Management with Role-Based Access Control (RBAC).
 
- after your application is safely deployed to the cluster, user authentication and authorization are the next steps: who has access to the cluster and what permissions they have. In case of an attack, or if you want to manage the permissions that your cluster users have. With these user profiles, what can the attacker do if they gain access to them, and what permissions do they have? It is now important to manage users and permissions and keep privileges as restrictive as possible.
+ After your application is safely deployed to the cluster, user authentication and authorization are the next steps to securing your cluster. Who has access to the cluster and what permissions do they have. In the event of an attack or if you want to manage the permissions that your cluster users have, you must handle user authentication and authorization. With these user profiles, what can the attacker do if they gain access to them, and what permissions do they have? It is now important to manage users and permissions and keep privileges as restrictive as possible.
 
 
 You can use RBAC to determine who has access to the Kubernetes API and what rights they have. Normally, RBAC is enabled by default on Kubernetes 1.6 and later (later on some hosted Kubernetes providers). Because Kubernetes mixes authorization controllers, enabling RBAC necessitates the deactivation of the traditional Attribute Based Access Control (ABAC). When using RBAC, namespace-specific rights should be preferred over cluster-wide permissions. Even when debugging, do not give cluster administrator privileges. Granting access only when necessary for your specific situation is safer.
@@ -129,16 +129,18 @@ In a cluster, pod communications are unencrypted by default, so an attacker can 
 
 ## Secure secret data
 
-Secrets are used to store sensitive data such as a password, a token, credentials, or a secret token. Secrets in Kubernetes aid in the safe initialization of pods with artifacts such as keys, passwords, tokens, and so on. When a pod starts up, it normally needs to gain access to its secrets. By default, Kubernetes saves secrets unencrypted. They are base64 encoded, so anyone with access to the secrets can decode the base64 and read the secrets. As a result, if an attacker gains access to the cluster, the secrets can be easily accessed and decrypted. Secrets can be protected in a variety of ways in Kubernetes. You can use Kubernetes' own encryption configuration resource options.
- However, there is still an issue with this method because you must still maintain the encryption key and store it securely, although various third-party programs can be used for this, such as [Hashicorp Vault](https://www.vaultproject.io/use-cases/kubernetes). Vault can be used to securely store the secrets themselves, and the vault will actually take over storing and managing the secret data.
+Secrets are used to store sensitive data such as passwords, tokens, credentials, or secret tokens. By using secrets in Kubernetes, pods can be securely initialized with artifacts like keys, passwords, tokens, etc. When a pod starts up, it normally needs to gain access to its secrets. By default, Kubernetes saves secrets unencrypted. They are base64 encoded, so anyone with access to the secrets can decode the base64 and read the secrets. As a result, if an attacker gains access to the cluster, the secrets can be easily accessed and decrypted. Secrets can be protected in a variety of ways in Kubernetes. You can use Kubernetes' own encryption configuration resource options.
+ However, there is still an issue with this method because you must still maintain the encryption key and store it securely, although various third-party programs can be used for this, such as ![Hashicorp Vault](https://www.vaultproject.io/use-cases/kubernetes). Vault can be used to Secrets will be securely stored and managed by the vault, which will actually take over storage and management.
 
 ## Secure Etcd.
 
-Secrets and all other kubernetes configurations are stored in a key-value store method in Etcd, so kubernetes uses Etcd to store and track the changes to its configurations for resources such as services deployment and secrets. Every update is saved in the Ectd store, and any changes made directly to the Ectd will affect the cluster. In other words, an attacker can bypass the API server if they gain access to the Etcd and update the Ectd directly, resulting in Kubernetes resources being updated, which is equivalent to having unlimited access to the whole cluster and doing anything they wish. Therefore, it is best to place your Etcd behind a firewall and only allow the API server to access it. Furthermore, the entire Etcd should be encrypted, so that even an attacker with access will not be able to read it.
+All kubernetes configurations and secrets are stored in a key-value store method in Etcd, so kubernetes uses Etcd to store and track the changes to its configurations. Each update is saved in the Ectd store, and any changes made directly to the Ectd will affect the cluster. An attacker can bypass the API server if they gain access to the Etcd and update the Etcd directly, which results in Kubernetes resources being updated, which is equivalent to having unlimited access to the whole cluster. You should therefore place your Etcd behind a firewall and only allow the API server to access it. Additionally, the entire Etcd should be encrypted, so even an attacker with access cannot read it.
+
 
 ## Automated Backup and Restore System  
 
-There is sensitive data in your cluster, such as Etcd, which holds your cluster's configuration data as well as application data from your database. Data leakage or loss is one of the most serious security risks that any company can face. If an attacker acquires access to an organization's data, they frequently destroy or leak the data and then demand a ransom before the data can be restored, which is bad for business. To be protected from all of these possibilities, you must have a good automatic backup and restoration solution in place for your cluster that periodically backs up your data and stores it safely so that you can utilize it to recover your data in the event of a disaster. [kasten k-10](https://www.kasten.io/product/) is a kubernetes native tool for configuring automated backup and restore. The kasten k-10 is so concerned with security that it has all the tools in place to securely transport data as well as store backup data and encrypt it throughout. In addition, the attacker can also attempt to corrupt your existing backup, preventing you from recovering your data. Kasten provides an immutable backup solution, which implies that backend data cannot be changed or removed.
+There is sensitive data in your cluster, such as Etcd, which holds your cluster's configuration data as well as application data from your database. Data leakage or loss is among the most major security issues that any organization can face. It has become common practice for attackers to gain access to an organization's data, erase or leak the data, and then demand a ransom before the data can be recovered, which is terrible for business. To be protected from all of these possibilities, you must have a good automatic backup and restoration solution in place for your cluster that periodically backs up your data and stores it safely so that you can utilize it to recover your data in the event of a disaster. [kasten k-10](https://www.kasten.io/product/) is a kubernetes native tool for configuring automated backup and restore. In order to ensure security, the Kasten k-10 has all the tools in place to securely transport and store backup data. A malicious attacker may also attempt to corrupt your existing backup, preventing you from recovering your data. Kasten offers an immutable backup solution, which means that backend data cannot be altered or removed.
+
 
 ## Audit Logs
 
@@ -146,7 +148,8 @@ Enable Kubernetes audit logs and monitor them for fraudulent behaviour and suspi
 
 ## Disaster Recovery
 
-In the event that an attacker compromises your cluster and corrupts it, you must have a robust disaster recovery plan and process in place. What do you want to do if an attack or just a zone outage occurs in the zone where your Kubernetes cluster is located? You need to devise a strategy for restoring your backup data, and your application should be up and running in no time. In the case of an attack, you require tools to restore the cluster to its original state using the most recent backup. Such tools include [kasten K-10](https://www.kasten.io/product/), [portworx](https://portworx.com/kubernetes-disaster-recovery/), and [elero](https://velero.io/).
+A robust disaster recovery plan and process are essential in case an attacker compromises your cluster and corrupts it. In the event that your Kubernetes cluster suffers an attack or just a zone outage, what will be your recovery plan? You need to devise a strategy for restoring the backup data, and your application should be up and running in no time. In the case of an attack, you require tools to restore the cluster to its original state using the most recent backup. Such tools include [kasten K-10](https://www.kasten.io/product/), [portworx](https://portworx.com/kubernetes-disaster-recovery/), and [elero](https://velero.io/).
+
 
 ## Conclusion 
 
