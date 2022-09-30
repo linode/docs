@@ -125,7 +125,7 @@ The iptables utility can serve as both a firewall (through the default `filter` 
 
         iptables -t nat -A POSTROUTING -j MASQUERADE
 
-1.  By default, iptables rules are ephemeral. To make these changes persistent, install the `iptables-persistent` package. When you do this, the rules saved within `/etc/iptables/rules.v4` (and `rules.v6` for IPv6) are loaded when the system boots up. You can continue making changes to iptables as normal. When you are ready to save, save the output of [iptables-save](https://linux.die.net/man/8/iptables-save) to the `/etc/iptables/rules.v4` (or `rules.v6) file. For more information, see the relevant section with the [Controlling Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/#introduction-to-iptables-persistent) guide.
+1.  By default, iptables rules are ephemeral. To make these changes persistent, install the `iptables-persistent` package. When you do this, the rules saved within `/etc/iptables/rules.v4` (and `rules.v6` for IPv6) are loaded when the system boots up. You can continue making changes to iptables as normal. When you are ready to save, save the output of [iptables-save](https://linux.die.net/man/8/iptables-save) to the `/etc/iptables/rules.v4` (or `rules.v6`) file. For more information, see the relevant section with the [Controlling Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/#introduction-to-iptables-persistent) guide.
 
         iptables-save | sudo tee /etc/iptables/rules.v4
 
