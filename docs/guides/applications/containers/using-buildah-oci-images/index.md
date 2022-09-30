@@ -22,7 +22,7 @@ external_resources:
 - '[Computing for Geeks: How To Build OCI & Docker Container Images With Buildah](https://computingforgeeks.com/how-to-build-oci-docker-container-images-with-buildah/)'
 ---
 
-Buildah is an open-source containerization tool, capable of creating images from scratch or from Dockerfiles and Containerfiles. And it follows the Open Container Initiative specifications, making Buildah images versatile and open.
+Buildah is an open source containerization tool, capable of creating images from scratch or from Dockerfiles and Containerfiles. And it follows the Open Container Initiative specifications, making Buildah images versatile and open.
 
 In this tutorial, learn more about Buildah and how to install and start using it. Find steps for creating containers using script files and from scratch, and how to render those containers to images.
 
@@ -50,11 +50,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 [Buildah](https://buildah.io/) is an open-source tool for building container images that are compliant with the Open Container Initiative (OCI).
 
-The OCI has sought to create an open standard for containerization. To that end, it has defined specifications for container runtimes and images. The open standard also has the goal of helping to secure and make more consistent the operation of operating system virtualization.
+The OCI seeks to create an open standard for containerization. To that end, it defined specifications for container runtimes and images. The open standard also has the goal of helping to secure and make more consistent the operation of operating system virtualization.
 
 Buildah gives you powerful means of creating and maintaining OCI-compliant images. You may be familiar with Dockerfiles, one of the most common formats for container images. Buildah fully supports them and can create images directly from them.
 
-But Buildah can also craft container images from scratch. Buildah allows you to use command-line commands to build up the container from a complete blank slate, giving it only the contents you need. By the end, Buildah can render and export an OCI container image from your work.
+But Buildah can also craft container images from scratch. Buildah allows you to use command line commands to build up the container from a complete blank slate, giving it only the contents you need. By the end, Buildah can render and export an OCI container image from your work.
 
 ### Buildah vs Docker
 

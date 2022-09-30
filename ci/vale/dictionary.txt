@@ -193,6 +193,7 @@ bs4
 btmp
 bufio
 bugtracker
+buildah
 buildbot
 bukkit
 bundler
@@ -305,6 +306,7 @@ configurability
 connectionism
 connectionless
 containerd
+containerfiles
 containerised
 contentful
 convery
