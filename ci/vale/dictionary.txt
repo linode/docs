@@ -306,6 +306,7 @@ configurability
 connectionism
 connectionless
 containerd
+containerfile
 containerfiles
 containerised
 contentful
@@ -376,6 +377,7 @@ daemonize
 daemonized
 daemonizes
 daemonizing
+daemonless
 daemonset
 dahdi
 dallas
