@@ -3,11 +3,11 @@ slug: an-overview-of-ipv6-on-linode
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide is a brief overview of IPv6 support on Linode, including how to find your IPv6 address, requesting additional IPs, and managing IPs via the Cloud Manager.'
+description: "This guide is a brief overview of IPv6 support on Linode, including how to find your IPv6 address, requesting additional IPs, and managing IPs via the Cloud Manager."
 keywords: ["ipv6 networking", "IP configuration"]
 aliases: ['/networking/an-overview-of-ipv6-on-linode/','/networking/how-to-enable-native-ipv6-on-linux/','/networking/native-ipv6-networking/','/networking/linode-network/an-overview-of-ipv6-on-linode/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-11-15
+modified: 2022-09-29
 modified_by:
   name: Linode
 published: 2011-05-03
@@ -18,10 +18,6 @@ external_resources:
 tags: ["networking","linode platform"]
 image: an-overview-of-ipv6-on-linode-title-graphic.jpg
 ---
-
-![An Overview of IPv6 on Linode](an-overview-of-ipv6-on-linode-title-graphic.jpg "An Overview of IPv6 on Linode")
-
-## Default IPv6 Configuration
 
 All Linodes are created with one IPv6 address, which is acquired by [*Stateless Address Autoconfiguration*](https://en.wikipedia.org/wiki/IPv6#Stateless_address_autoconfiguration_(SLAAC)) (SLAAC). IPv6 is fully enabled on all of Linode's supported operating systems and uses hardware-based addressing.
 
@@ -97,4 +93,4 @@ The IPv6 `/116` prefix is not available in the Toronto, Atlanta, Sydney, or Mumb
 
 ## IPv6 Forwarding
 
-For security reasons, IPv6 forwarding is not available on the Linode network. This is enforced by our network infrastructure.
+If needed, IPv6 packets can be forwarded between two networks on Linode. By default, most Linux systems disable both IPv4 and IPv6 forwarding. To enable this functionality, see the [IP Forwarding](/docs/guides/ip-forwarding/) guide.
