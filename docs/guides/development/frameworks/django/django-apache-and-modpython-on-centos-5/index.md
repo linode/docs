@@ -48,7 +48,7 @@ Before we begin to install packages we need to first install the EPEL repositori
 
 When you install your first package from EPEL, `yum` will ask you to import the PGP key for the EPEL repository. You should accept this request.
 
-Now we can install Django using the `yum` [package management](/docs/guides/linux-package-management/) interface. The following command will also install required dependencies on your system:
+Now we can install Django using the `yum` [package management](/docs/guides/yum-package-manager/) interface. The following command will also install required dependencies on your system:
 
     yum update
     yum install mod_python Django
