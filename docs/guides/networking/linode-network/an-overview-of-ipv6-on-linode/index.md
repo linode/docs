@@ -93,4 +93,4 @@ The IPv6 `/116` prefix is not available in the Toronto, Atlanta, Sydney, or Mumb
 
 ## IPv6 Forwarding
 
-If needed, IPv6 packets can be forwarded between two networks on Linode. By default, most Linux systems disable both IPv4 and IPv6 forwarding. To enable this functionality, see the [IP Forwarding](/docs/guides/ip-forwarding/) guide.
+If needed, IPv6 packets can be forwarded between two networks on Linode. By default, most Linux systems disable both IPv4 and IPv6 forwarding. To enable this functionality, see the [IP Forwarding](/docs/guides/linux-router-and-ip-forwarding/) guide.
