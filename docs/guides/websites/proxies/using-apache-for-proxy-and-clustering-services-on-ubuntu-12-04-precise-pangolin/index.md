@@ -13,7 +13,7 @@ modified: 2012-10-18
 modified_by:
   name: Linode
 published: 2012-10-18
-title: 'Using Apache for Proxy and Clustering Services on Ubuntu 12.04 (Precise Pangolin)'
+title: 'Using Apache for Proxy and Cluster Services on Ubuntu 12.04 '
 relations:
     platform:
         key: using-apache-for-proxy-and-clustering

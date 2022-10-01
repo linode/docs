@@ -12,8 +12,7 @@ image: SecureWeb.jpg
 modified: 2021-07-01
 modified_by:
   name: Linode
-title: "Enabling HTTPS Using Certbot with NGINX on Ubuntu 20.04 and 18.04"
-h1_title: "Securing Web Traffic Using Certbot with NGINX on Ubuntu 20.04 and 18.04"
+title: "Use Certbot to Enable HTTPS with NGINX on Ubuntu"
 enable_h1: true
 contributor:
   name: Jeff Novotny
