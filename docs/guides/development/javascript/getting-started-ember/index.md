@@ -87,7 +87,7 @@ These steps walk you through installing the Ember tooling.
 
         npm install -g ember-cli
 
-This gives you the `ember` command-line command. The rest of this guide uses that tool for setting up Ember projects. But the tool can even be used for conveniently creating the files for new components and services on your project. 
+This gives you the `ember` command-line command. The rest of this guide uses that tool for setting up Ember projects. But the tool can even be used for conveniently creating the files for new components and services on your project.
 
 ## Getting Started with Ember
 
@@ -127,7 +127,7 @@ To access this remotely, you may first need to open the port in your system's fi
 - For AlmaLinux, CentOS, and Fedora, refer to our guide on [Enabling and Configuring FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/)
 {{< /note >}}
 
-![Ember welcome page](ember-default-app_small.png)
+![Ember welcome page](ember-default-app.png)
 
 You can then stop the Ember development server with the **Ctrl + C** key combination.
 
@@ -371,13 +371,17 @@ To run this example application, you can use the same command you used to run th
 
 Now, navigate to port `4200` on the server to see the new application in action.
 
-The home page loads from the default route (`/`), and the navigation menu links you to the application's other routes.
+- The home page loads from the default route (`/`).
 
-![The homepage for the example app](example-app-home.png)
+    ![The homepage for the example app](example-app-home.png)
 
-![The about page for the example app](example-app-about.png)
+- You can then use the links in the navigation menu to visit the application's other routes, like `/about`.
 
-![The portfolio page for the example app](example-app-portfolio.png)
+    ![The about page for the example app](example-app-about.png)
+
+- On the portfolio page (`/projects`), you can see the lists of projects rendered as expected.
+
+    ![The portfolio page for the example app](example-app-portfolio.png)
 
 ## Conclusion
 
