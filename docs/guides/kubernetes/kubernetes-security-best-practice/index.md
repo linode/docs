@@ -58,17 +58,7 @@ CMD node index.js
 
 This example above establishes a group and adds a user to it, while also running the application as the created user rather than the root user.
 
-Even if you avoid running your application as a root user, it is possible that your Kubernetes manifest file can be misconfigured as a result of executing as the root user or allowing privilege escalation. The example below provides a Kubernetes manifest file demonstrating how to create a pod that runs as a non-root user or with privileges.
-
-{{< file "non_root_user.yaml" yaml >}}
-apiVersion: v1                                                    apiVersion: v1 
-Kind: Pod                                                           Kind: Pod
-Metadata:                                                           Metadata:
-   Name: my-app                                                      Name: my-app
-Spec:                                                                  Spec:
-   securityContext:                                                  securityContext:
-       runAsUser:1000                                                   allowPrivilegeEscalation: False
-{{< /file >}}
+Even if you avoid running your application as a root user, it is possible that your Kubernetes manifest file can be misconfigured as a result of executing as the root user or allowing privilege escalation.
 
 Even if the attacker gains access to your container, this will make it difficult for the attacker to get out of the container or use the container privileges to access sensitive data in the cluster.
 
