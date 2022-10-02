@@ -31,7 +31,7 @@ This guide will discuss 10 Kubernetes' best practices and how to implement these
 
 ## Scan images for vulnerabilities.
 
-Deploying an application is the primary purpose of provisioning a Kubernetes cluster. Workload security in Kubernetes begins before workloads are deployed within the cluster; it starts with the creation of an application image in the CI/CD pipeline; creating a secure image is the first step toward securing your cluster. When creating your application image, avoid utilizing codes from untrusted registries or libraries to reduce the possibility of viruses or backdoors. You should also avoid using unverified operating system packages in your container images since they can contain backdoors. Snyk (https://snyk.io/) and Sysdig (https://sysdig.com/) are two tools that can help you scan images. These scanning tools maintain a database of known vulnerabilities that are updated regularly, so scan your image regularly with them. By incorporating these tools into your CI/CD process, you can archive it.
+Deploying an application is the primary purpose of provisioning a Kubernetes cluster. Workload security in Kubernetes begins before workloads are deployed within the cluster; it starts with the creation of an application image in the CI/CD pipeline; creating a secure image is the first step toward securing your cluster. When creating your application image, avoid utilizing codes from untrusted registries or libraries to reduce the possibility of viruses or backdoors. You should also avoid using unverified operating system packages in your container images since they can contain backdoors. [Snyk](https://snyk.io/) and [Sysdig](https://sysdig.com/) are two tools that can help you scan images. These scanning tools maintain a database of known vulnerabilities that are updated regularly, so scan your image regularly with them. By incorporating these tools into your CI/CD process, you can archive it.
 
 
 It is possible for new vulnerabilities to be discovered after the CI/CD pipeline has scanned your image, so some vulnerabilities may still be missed. An image scanning function is included in an image registry, such as Docker image registry. Make sure to always scan images in the registry.
@@ -58,8 +58,19 @@ CMD node index.js
 
 This example above establishes a group and adds a user to it, while also running the application as the created user rather than the root user.
 
-Even if you avoid running your application as a root user, it is possible that your Kubernetes manifest file can be misconfigured as a result of executing as the root user or allowing privilege escalation.
+Even if you avoid running your application as a root user, it is possible that your Kubernetes manifest file can be misconfigured as a result of executing as the root user or allowing privilege escalation. The example below provides a Kubernetes manifest file demonstrating how to create a pod that runs as a non-root user or with privileges.
 
+~~~
+{{< file "non_root_user.yaml" yaml >}}
+   apiVersion: v1                                                        apiVersion: v1 
+   Kind: Pod                                                             Kind: Pod
+   Metadata:                                                             Metadata:
+          Name: my-app                                                      Name: my-app
+   Spec:                                                                 Spec:
+      securityContext:                                                      securityContext:
+          runAsUser:1000                                                        allowPrivilegeEscalation: False
+{{< /file >}}
+~~~
 Even if the attacker gains access to your container, this will make it difficult for the attacker to get out of the container or use the container privileges to access sensitive data in the cluster.
 
 
