@@ -25,7 +25,7 @@ external_resources:
 
 
 
-Kubernetes, a container orchestration application, is a complicated cloud-native container orchestration solution. Securing a Kubernetes cluster can be difficult for both experienced software developers and those just getting started. Key architectural weaknesses and platform dependencies must be addressed by implementing security best practices to keep Kubernetes workloads secure, especially in production.
+So you have a Kubernetes cluster and you want to keep your cluster secure, or you are just getting started and want to do things correctly. Securing a Kubernetes cluster can be difficult for both experienced software developers and those just getting started. To keep Kubernetes workloads secure, especially in production, key architectural weaknesses and platform dependencies must be addressed by following security best practices.
 
 This guide will discuss 10 Kubernetes' best practices and how to implement these practices to secure and improve your Kubernetes cluster productivity and security.
 
