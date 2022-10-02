@@ -133,7 +133,7 @@ In a cluster, pod communications are unencrypted by default, so an attacker can 
 ## Secure secret data
 
 Secrets are used to store sensitive data such as passwords, tokens, credentials, or secret tokens. By using secrets in Kubernetes, pods can be securely initialized with artifacts like keys, passwords, tokens, etc. When a pod starts up, it normally needs to gain access to its secrets. By default, Kubernetes saves secrets unencrypted. They are base64 encoded, so anyone with access to the secrets can decode the base64 and read the secrets. As a result, if an attacker gains access to the cluster, the secrets can be easily accessed and decrypted. Secrets can be protected in a variety of ways in Kubernetes. You can use Kubernetes' own encryption configuration resource options.
- However, there is still an issue with this method because you must still maintain the encryption key and store it securely, although various third-party programs can be used for this, such as ![Hashicorp Vault](https://www.vaultproject.io/use-cases/kubernetes). Vault can be used to Secrets will be securely stored and managed by the vault, which will actually take over storage and management.
+ However, there is still an issue with this method because you must still maintain the encryption key and store it securely, although various third-party programs can be used for this, such as [Hashicorp Vault](https://www.vaultproject.io/use-cases/kubernetes). Vault can be used to Secrets will be securely stored and managed by the vault, which will actually take over storage and management.
 
 ## Secure Etcd.
 
