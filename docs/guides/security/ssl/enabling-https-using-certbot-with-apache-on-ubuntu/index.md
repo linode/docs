@@ -11,9 +11,7 @@ published: 2021-03-02
 modified: 2021-07-01
 modified_by:
   name: Linode
-title: "Enabling HTTPS Using Certbot with Apache on Ubuntu 20.04 and 18.04"
-h1_title: "Securing Web Traffic Using Certbot with Apache on Ubuntu 20.04 and 18.04"
-enable_h1: true
+title: "Use Certbot to Enable HTTPS with Apache on Ubuntu"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

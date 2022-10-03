@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-29
 modified_by:
   name: Linode
-title: 'How to Deploy Kubernetes on Linode with the k8s-alpha CLI'
+title: 'Deploy Kubernetes on Linode with the k8s-alpha CLI'
 aliases: ['/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/','/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/','/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/']
 concentrations: ["Kubernetes"]
 deprecated: true
