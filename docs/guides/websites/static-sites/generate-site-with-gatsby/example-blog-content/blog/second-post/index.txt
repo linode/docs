@@ -1,0 +1,7 @@
+---
+title: Another Blog Post
+date: "2022-02-01"
+description: "Another post to the blog."
+---
+
+With this, the example blog made with Gatsby has two posts.
