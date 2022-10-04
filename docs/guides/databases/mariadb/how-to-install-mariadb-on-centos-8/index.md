@@ -60,7 +60,7 @@ Enable MariaDB to start on boot and then start the service:
     sudo systemctl enable mariadb
     sudo systemctl start mariadb
 
-MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/), which also applies to MariaDB.
+MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/), which also applies to MariaDB.
 
 {{< note >}}
 Allowing unrestricted access to MariaDB on a public IP not advised but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MariaDB to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.

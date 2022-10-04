@@ -11,7 +11,7 @@ aliases: ['/tools-reference/custom-kernels-distros/run-a-distribution-supplied-k
 modified: 2021-08-13
 modified_by:
   name: Linode
-published: 2021-08-13
+published: 2022-09-02
 title: "How to Manage the Kernel on a Linode"
 h1_title: "Managing the Kernel on a Linode"
 enable_h1: true
@@ -61,8 +61,7 @@ These instructions may not accurately reflect the actual kernel version installe
 
 1.  Review the **Kernel** dropdown menu selection.
 
-    - **Latest 64 bit**: Uses the latest 64-bit Linode kernel at the time the Linode boots/reboots. This was the default for most 64-bit distributions prior to August 2018.
-    - **Latest 32 bit**: Uses the latest 32-bit Linode kernel at the time the Linode boots/reboots. This was the default for most 32-bit distributions prior to August 2018.
+    - **Latest 64 bit** and **Latest 32 bit**: Uses one of the latest 64-bit or 32-bit Linode kernels at the time the Linode boots/reboots, depending on which option you selected. Since new kernel releases are rolled out over a short time period, the actual kernel used by your system may be one or two releases behind. This setting was the default for most distributions prior to August 2018.
     - **Direct Disk**: Instead of a Linux Kernel, this uses the MBE (Master Boot Record) of the primary disk*.
     - **GRUB 2**: Uses the upstream distribution-supplied kernel that's installed on the primary disk. If a custom kernel has been installed instead, that is used instead. **This is the most common option and has been the default for most new Linodes created after August 2018.**
     - **GRUB (Legacy)**: Uses the upstream distribution-supplied kernel that's installed on the primary disk*. This should only be used on older Linux distributions that have Grub (not Grub 2) installed, like CentOS 6.
@@ -82,7 +81,7 @@ Provided a newer kernel is available, you should be able to either manually (or 
 
 Follow these steps if the Linode is using a Linode kernel:
 
--   **Latest 64-bit or 32-bit kernel**: Rebooting the Linode automatically updates the kernel used within your system to the latest Linode kernel release.
+-   **Latest 64-bit or 32-bit kernel**: Rebooting the Linode automatically updates the kernel used within your system to one of the latest Linode kernel release. Since new kernel releases are rolled out over a short time period, the actual kernel used by your system may be one or two releases behind.
 -   **Specific kernel version** (ex: `5.12.2-x86_64-linode144`): To update your kernel, follow the instructions within the [Viewing and Modifying the Kernel in the Cloud Manager](#viewing-and-modifying-the-kernel-in-the-cloud-manager) section. When selecting the kernel in the Linode's Configuration Profile, chose your desired kernel version (or select `Latest 64 bit`), save the changes, and reboot your Linode.
 
 ### Updating the Upstream Kernel

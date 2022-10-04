@@ -184,3 +184,44 @@ export function walk(el, callback) {
 		node = node.nextElementSibling;
 	}
 }
+
+const month = 30 * 24 * 60 * 60 * 1000;
+
+export function setCookie(name, value, duration = month) {
+	const d = new Date();
+	d.setTime(d.getTime() + duration);
+	const expires = `expires=${d.toUTCString()}`;
+	document.cookie = `${name}=${value};${expires};path=/`;
+}
+
+export function getCookie(name) {
+	const prefix = `${name}=`;
+	const ca = document.cookie.split(';');
+	for (let i = 0; i < ca.length; i++) {
+		let c = ca[i];
+		while (c.charAt(0) === ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(prefix) === 0) {
+			return c.substring(prefix.length, c.length);
+		}
+	}
+	return '';
+}
+
+export function supportsCookies() {
+	try {
+		return Boolean(navigator.cookieEnabled);
+	} catch (e) {
+		return false;
+	}
+}
+
+// https://github.com/algolia/search-insights.js/blob/738e5d9e2a9c416104949ca3509b65e7cb790079/lib/utils/uuid.ts
+export function createUUID() {
+	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+		const r = (Math.random() * 16) | 0;
+		const v = c === 'x' ? r : (r & 0x3) | 0x8;
+		return v.toString(16);
+	});
+}

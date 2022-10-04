@@ -8,11 +8,12 @@ keywords: ["cassandra", " apache cassandra", " centos 7", " ubuntu 18.04", " dat
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-09-24
 image: L_ApacheCass_on_Ubuntu1804.png
-modified: 2020-01-30
+modified: 2022-05-16
 modified_by:
   name: Linode
 title: "How to Install Apache Cassandra on Ubuntu 18.04"
-h1_title: "Install Apache Cassandra on Ubuntu 18.04"
+h1_title: "Installing Apache Cassandra on Ubuntu 18.04"
+enable_h1: true
 contributor:
   name: Linode
 external_resources:
@@ -27,61 +28,63 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 tags: ["ubuntu","database","nosql"]
-aliases: ['/databases/cassandra/how-to-install-apache-cassandra-on-ubuntu-18-04/']
+aliases: ['/databases/cassandra/how-to-install-apache-cassandra-on-ubuntu-18-04/','/databases/cassandra/deploy-scalable-cassandra/','/guides/deploy-scalable-cassandra/','/databases/deploy-scalable-cassandra/','/databases/cassandra/deploy-scalable-cassandra-on-ubuntu-18.04-and-centos-7/','/guides/deploy-scalable-cassandra-on-ubuntu-18.04-and-centos-7/']
 ---
 
 After completing this guide, you will have a single-node, production-ready installation of [Apache Cassandra](http://cassandra.apache.org/) hosted on your Linode running Ubuntu 18.04. This tutorial will cover basic configuration options, as well as harden database security.
 
 {{< note >}}
- In order to successfully execute the commands in this guide, you will need to run them as the `root` user, or log in using an account with root privileges, prefixing each command with `sudo`.
- {{</ note >}}
+In order to successfully execute the commands in this guide, you will need to run them as the `root` user, or log in using an account with root privileges, prefixing each command with `sudo`.
+{{</ note >}}
 
 ## Before You Begin
 
 1. Complete the [Getting Started](/docs/getting-started) guide for setting up a new Linode.
 1. While it is recommended you complete the entire [Securing Your Server](/docs/security/securing-your-server) guide, at  minimum, you should [add a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
 
-### Add Repositories and GPG Keys
+## Install OpenJDK (Java)
 
-1.  Add the Java repository:
+Apache Cassandra requires OpenJDK 8 or OpenJDK 11 (both are LTS releases). OpenJDK 11 has been officially supported in Cassandra since 4.0.2 (February 8, 2022).
 
-        sudo add-apt-repository ppa:openjdk-r/ppa
+1.  Check to see if you have Java installed and, if so, verify that it is a compatible version.
 
-1.  Add the apache repository:
+        java -version
+
+1.  If Java is not installed, install OpenJDK. The command below installs OpenJDK 11, though you can replace the package with `openjdk-8-jdk` if you wish to use OpenJDK 8.
+
+        apt update
+        apt install openjdk-11-jdk
+
+## Install Cassandra
+
+Add Apache Cassandra's repository and GPG keys so that you can install Cassandra.
+
+1.  Add the Apache Cassandra repository:
 
         echo "deb http://www.apache.org/dist/cassandra/debian 40x main" |  sudo tee /etc/apt/sources.list.d/cassandra.list
 
     {{< note >}}
-You may want to follow the link to the Apache repository to confirm that "40x" is the latest available version.
-    {{< /note >}}
+The above command installs the latest version within the Apache Cassandra 4.0 release. To see what other versions are available, you can review the [repository](https://downloads.apache.org/cassandra/debian/dists/) and adjust the command as needed.
+{{< /note >}}
 
-1.  Download the two public keys needed to access these repositories:
+1.  Add the keys required to access the repository:
 
-        gpg --keyserver pgp.mit.edu --recv-keys 749D6EEC0353B12C
-        gpg --export --armor 749D6EEC0353B12C | sudo apt-key add -
+        curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -
 
-        gpg --keyserver pgp.mit.edu --recv-keys A278B781FE4B2BDA
-        gpg --export --armor A278B781FE4B2BDA | sudo apt-key add -
+1.  Get the latest package information from the newly added source and install Apache Cassandra.
 
-## Install Cassandra and Supporting Applications
-
-In this section, you will update your Linux system software and install Java along with Cassandra.
-
-1.  Install Cassandra, Java, and NTP. NTP will help keep the Cassandra node synced to the correct time.
-
-        sudo apt-get update && sudo apt-get upgrade
-        sudo apt install openjdk-8-jdk
-        sudo apt-get install cassandra ntp
+        sudo apt update
+        sudo apt install cassandra
 
 ## Activate Cassandra
 
-1. Enable Cassandra on system boot and verify that it is running:
+1.  Enable Cassandra on system boot and verify that it is running:
 
         sudo systemctl enable cassandra
         sudo systemctl start cassandra
         sudo systemctl -l status cassandra
 
-1. Check the status of the Cassandra cluster:
+1.  Check the status of the Cassandra cluster:
 
         nodetool status
 
@@ -94,31 +97,7 @@ Status=Up/Down
 UN  127.0.0.1  103.51 KiB  256          100.0%            c43a2db6-8e5f-4b5e-8a83-d9b6764d923d  rack1
     {{< /output >}}
 
-    If you receive connection errors, open the `cassandra-env.sh` file in a text editor.
-
-        sudo vim /etc/cassandra/cassandra-env.sh
-
-    Search for `-Djava.rmi.server.hostname=` in the file. Uncomment this line and add your loopback address or public IP address by replacing `<public name>` at the end of the line:
-
-    {{< file "Ubuntu /etc/cassandra/conf/cassandra-env.sh" bash >}}
-. . .
-
-JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname=<public name>"
-
-. . .
-    {{< /file >}}
-
-    - Restart Cassandra after you've finished updating the `cassandra-env.sh` file:
-
-            sudo systemctl restart cassandra
-
-    - Check the node status:
-
-            nodetool status
-
-        {{< note >}}
-It may take a few seconds for Cassandra to refresh the configuration. If you receive another connection error, try waiting 15 seconds before rechecking the node status.
-        {{< /note >}}
+    If you receive connection errors, see [Troubleshooting Connection Errors](#troubleshooting-connection-errors).
 
 ## Configure Cassandra
 
@@ -154,7 +133,7 @@ permissions_validity_in_ms: 0
 
     More information about this file can be found in the [Cassandra Configuration File](http://cassandra.apache.org/doc/latest/configuration/cassandra_config_file.html) guide in Apache's official documentation.
 
-1. After editing the configuration file restart Cassandra.
+1.  After editing the configuration file restart Cassandra.
 
         sudo systemctl restart cassandra
 
@@ -171,11 +150,11 @@ permissions_validity_in_ms: 0
 
 1. Log out by typing `exit`.
 
-1. Log back in with the new superuser account and replace the username and password with your new credentials:
+1.  Log back in with the new superuser account and replace the username and password with your new credentials:
 
         cqlsh -u new-super-user -p my-scecure-password
 
-1. Remove the elevated permissions from the Cassandra account:
+1.  Remove the elevated permissions from the Cassandra account:
 
         ALTER ROLE cassandra WITH PASSWORD = 'cassandra' AND SUPERUSER = false AND LOGIN = false;
         REVOKE ALL PERMISSIONS ON ALL KEYSPACES FROM cassandra;
@@ -247,7 +226,7 @@ encoding = utf8
 
 1.  Save and close the file.
 
-1. Update the `cqlshrc` file and directory with the following permissions:
+1.  Update the `cqlshrc` file and directory with the following permissions:
 
         sudo chmod 440 ~/.cassandra/cqlshrc
         sudo chmod 700 ~/.cassandra
@@ -266,7 +245,7 @@ You can also login by providing your username and password:
 
 In this section, you will update your default cluster name from "Test Cluster" to your desired name.
 
-1. Log into the `cqlsh` control terminal if you are not already logged in.
+1.  Log into the `cqlsh` control terminal if you are not already logged in.
 
         cqlsh -u superuser
 
@@ -282,7 +261,7 @@ In this section, you will update your default cluster name from "Test Cluster" t
 
 1.  Save and close.
 
-1. From the Linux terminal (not cqlsh) clear the system cache. This command will not disturb your node's data.
+1.  From the Linux terminal (not cqlsh) clear the system cache. This command will not disturb your node's data.
 
         nodetool flush system
 
@@ -290,7 +269,7 @@ In this section, you will update your default cluster name from "Test Cluster" t
 
         sudo systemctl restart cassandra
 
-1. Log in with `cqlsh` and verify the new cluster name is visible.
+1.  Log in with `cqlsh` and verify the new cluster name is visible.
 
         cqlsh -u superuser
 
@@ -300,6 +279,34 @@ Connected to my-cluster-name at 127.0.0.1:9042.
 Use HELP for help.
 superuser@cqlsh>
     {{</ output >}}
+
+## Troubleshooting Connection Errors
+
+If you receive connection errors when running `nodetool status`, you may need to manually enter networking information.
+
+1.  Open the `cassandra-env.sh` file in a text editor.
+
+        sudo vim /etc/cassandra/cassandra-env.sh
+
+1.  Search for `-Djava.rmi.server.hostname=` in the file. Uncomment this line and add your loopback address or public IP address by replacing `<public name>` at the end of the line:
+
+    {{< file "/etc/cassandra/cassandra-env.sh" bash >}}
+. . .
+JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname=<public name>"
+. . .
+{{< /file >}}
+
+1.  Restart Cassandra after you've finished updating the `cassandra-env.sh` file:
+
+        sudo systemctl restart cassandra
+
+1.  Check the node status again after the service restarts:
+
+        nodetool status
+
+    {{< note >}}
+It may take a few seconds for Cassandra to refresh the configuration. If you receive another connection error, try waiting 15 seconds before rechecking the node status.
+{{< /note >}}
 
 ## Where To Go From Here
 

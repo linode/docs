@@ -18,8 +18,8 @@ contributor:
   name: Andy Patrizio
   link: https://twitter.com/apatrizio
 external_resources:
-- '[How to Move Your Machine Learning Model to Production](https://www.linode.com/docs/guides/how-to-move-machine-learning-model-to-production/)'
-- '[Use Cases for Linode GPU Instances](https://www.linode.com/docs/products/compute/gpu/guides/use-cases/)'
+- '[How to Move Your Machine Learning Model to Production](/docs/guides/how-to-move-machine-learning-model-to-production/)'
+- '[Use Cases for Linode GPU Instances](/docs/products/compute/gpu/guides/use-cases/)'
 ---
 
 Machine learning (ML) has been around conceptually since 1959, when [Arthur Samuel](https://en.wikipedia.org/wiki/Arthur_Samuel), a pioneer in the field of computer gaming and artificial intelligence, coined the term. Samuel said that machine learning "gives computers the ability to learn without being explicitly programmed". While at IBM he wrote a program to play Checkers, which became the first known self-learning program.

@@ -6,7 +6,7 @@ author:
 description: "Learn how to manually edit your distribution-specific network configuration files to set static IPs, routes and DNS resolvers."
 keywords: ["static", "ip address", "addresses"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-25
+published: 2022-07-19
 modified_by:
   name: Linode
 title: "Manual Network Configuration on a Compute Instance"
@@ -33,7 +33,7 @@ The following table contains a list of each Linux distribution offered by Linode
 
 | Distribution | Network Manager |
 | -- | -- |
-| AlmaLinux 8 | [NetworkManager](/docs/guides/networkmanager/) |
+| AlmaLinux 8 and 9 | [NetworkManager](/docs/guides/networkmanager/) |
 | Alpine | [ifupdown-ng](/docs/guides/ifupdown/) |
 | Arch | [systemd-networkd](/docs/guides/systemd-networkd/) |
 | CentOS 7 and 8 | [NetworkManager](/docs/guides/networkmanager/) |
@@ -41,7 +41,7 @@ The following table contains a list of each Linux distribution offered by Linode
 | Debian 9-11 | [ifupdown](/docs/guides/ifupdown/) |
 | Fedora 34-36 | [NetworkManager](/docs/guides/networkmanager/) |
 | Gentoo | netifrc |
-| Rocky Linux 8 | [NetworkManager](/docs/guides/networkmanager/) |
+| Rocky Linux 8 and 9 | [NetworkManager](/docs/guides/networkmanager/) |
 | Slackware | netconfig |
 | OpenSUSE Leap | wicked |
 | Ubuntu 16.04 | [ifupdown](/docs/guides/ifupdown/) |
@@ -67,10 +67,10 @@ Static and dynamic addressing can be used together within a single configuration
 
 ## Networking Terms
 
-- **IP address:** A unique and structured combination of numbers (and letters, for IPv6 address) used to identify a device over a network. Every Linode Compute Instance is assigned a public IPv4 address and a public IPv6 address. Additional IP addresses, including private IPv4 addresses and IPv6 routed ranges, are available.
+- **IP address:** A unique and structured combination of numbers (and letters, for IPv6 address) used to identify a device over a network. Every Linode Compute Instance is assigned a public IPv4 address and a public IPv6 address. Additional IP addresses, including private IPv4 addresses and IPv6 routed ranges, are available. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/) for information on viewing your IP addresses.
 
-- **Interface:** A real or virtual device that is responsible for facilitating a connection to a network. Each Compute Instance has one public interface for connecting to the internet: *eth0*. If a VLAN is configured, an additional interface for that VLAN is available. In that case, you may assign the public interface to *eth0* or *eth1* if desired.
+- **Interface:** A real or virtual device that is responsible for facilitating a connection to a network. Each Compute Instance has one public interface for connecting to the internet: *eth0*. If a VLAN is configured, an additional interface for that VLAN is available. In that case, you may assign the public interface to *eth0* or *eth1* if desired. See [Managing Configuration Profiles](/docs/guides/linode-configuration-profiles/) for instructions on viewing the interfaces configured on your Compute Instance.
 
-- **Gateway:** Provides access to a larger network, such as the internet. When configuring a Compute Instance, you only need to specify a gateway for one interface.
+- **Gateway:** Provides access to a larger network, such as the internet. When configuring a Compute Instance, you only need to specify a gateway for one interface. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/) for details on finding the gateway IP address that corresponds with the primary IPv4 address you wish to use.
 
-- **DNS resolver:** A server responsible for matching domain names to IP addresses. Linode provides DNS resolvers for each data center, though you are free to use others if you choose.
+- **DNS resolver:** A server responsible for matching domain names to IP addresses. Linode provides DNS resolvers for each data center, though you are free to use others if you choose. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/#viewing-the-dns-resolvers-ip-addresses) for instructions on viewing the DNS resolvers.

@@ -2,6 +2,10 @@ name: CI Tests
 
 on: [pull_request]
 
+env:
+  hugo-image-cache-name: hugo-generated-images
+  hugo-image-cache-path: /home/runner/work/docs/docs/resources/_gen/images/
+
 jobs:
   blueberry:
     runs-on: ubuntu-latest
@@ -67,6 +71,7 @@ jobs:
       with:
         files: '${{ steps.select_docs_dir_files.outputs.added_modified }}'
         version: 2.19.0
+        vale_flags: "--minAlertLevel=error"
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
@@ -90,6 +95,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: List contents of images dir
+      continue-on-error: true
+      run: ls -al ${{ env.hugo-image-cache-path }}
+    - name: Restore Hugo generated images cache
+      uses: ylemkimon/cache-restore@v2
+      with:
+        path: ${{ env.hugo-image-cache-path }}
+        key: ${{ env.hugo-image-cache-name }}
+        restore-keys: ${{ env.hugo-image-cache-name }}
+    - name: List contents of images dir
+      continue-on-error: true
+      run: ls -al ${{ env.hugo-image-cache-path }}
     - name: Set up Python
       uses: actions/setup-python@v2
       with:

@@ -20,7 +20,7 @@ aliases: ['/platform/manager/cloud-linodes-shortguide/']
 The Linodes section of Cloud Manager allows you to create and manage your Linodes. Each Linode instance in Cloud Manager includes:
 
 - [Summary information](/docs/uptime/monitoring-and-maintaining-your-server/#linode-cloud-manager) about your Linode, like CPU usage, IPv4 and [IPv6 traffic](/docs/guides/an-overview-of-ipv6-on-linode/), and Disk IO
-- Access to any of your Linode's attached Volumes and the ability to [create a Volume](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#add-a-volume-from-the-linode-detail-page)
+- Access to any of your Linode's attached Volumes and the ability to [create a Volume](/docs/products/storage/block-storage/guides/manage-volumes/)
 - Networking information and features, including the ability to add IPv4 and IPv6 addresses, [IP transfer](/docs/guides/managing-ip-addresses/#transferring-ip-addresses) and [IP sharing](/docs/guides/managing-ip-addresses/#configuring-ip-sharing)
 - The ability to [resize your Linode](/docs/guides/resizing-a-linode/), boot your Linode into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#rescue-mode-overview), and [rebuild your Linode](/docs/troubleshooting/rescue-and-rebuild/#rebuilding)
 - Access to Linode's [Backup service](/docs/platform/disk-images/linode-backup-service/#enable-the-backup-service)
