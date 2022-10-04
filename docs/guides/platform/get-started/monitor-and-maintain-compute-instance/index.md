@@ -1,22 +1,22 @@
 ---
-slug: monitoring-and-maintaining-your-server
+slug: monitor-and-maintain-compute-instance
 author:
   name: Linode
   email: docs@linode.com
-description: This guide introduces concepts and tools for monitoring and maintaining your server.
-og_description: This guide introduces concepts and tools for monitoring and maintaining your server.
+description: "This guide introduces concepts and tools for monitoring and maintaining your server."
 keywords: ["lassie", "monitor", "monitoring", "maintaining", "maintenance"]
 tags: ["cloud manager","monitoring","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/uptime/monitoring/monitoring-and-maintaining-your-server/','/uptime/monitoring-and-maintaining-your-server-classic-manager/','/uptime/monitoring-and-maintaining-your-server-new-manager/','/uptime/monitoring-and-maintaining-your-server/','/monitoring-and-maintaining/']
-modified: 2018-08-21
+aliases: ['/uptime/monitoring/monitoring-and-maintaining-your-server/','/uptime/monitoring-and-maintaining-your-server-classic-manager/','/uptime/monitoring-and-maintaining-your-server-new-manager/','/uptime/monitoring-and-maintaining-your-server/','/monitoring-and-maintaining/','/guides/monitoring-and-maintaining-your-server/']
+modified: 2022-09-26
 modified_by:
   name: Linode
 published: 2012-08-22
-title: Monitoring and Maintaining Your Server
+title: "Monitor and Maintain a Linode Compute Instance"
+h1_title: "Monitor and Maintain a Compute Instance"
+enable_h1: true
+image: monitor-and-maintain-your-server.png
 ---
-
-![Monitoring and Maintaining Your Server](monitor-and-maintain-your-server.png "Monitoring and Maintaining Your Server")
 
 Now that your Linode is up and running, it's time to think about monitoring and maintaining your server. This guide introduces the essential tools and skills you'll need to keep your server up to date and minimize downtime. You'll learn how to monitor the availability and performance of your system, manage your logs, and update your server's software.
 
@@ -40,9 +40,11 @@ There are several different availability monitoring tools available. Your decisi
 -   **Single Server**: If you only run a single server, you might want to use a third-party service to monitor your Linode. You could also use a network diagnostic tool like [MTR](/docs/guides/diagnosing-network-issues-with-mtr/) to diagnose and isolate networking errors.
 -   **Linode Managed**: The [Managed](https://www.linode.com/managed) service lets Linode manage your infrastructure and provides incident response around the clock.
 
-### Configure Shutdown Watchdog
+### Configure Shutdown Watchdog (Lassie)
 
-{{< content "monitoring-configure-watchdog-shortguide" >}}
+Shutdown Watchdog, also known as *Lassie*, is a Linode Cloud Manager feature capable of automatically rebooting your Linode if it powers off unexpectedly. Lassie is not technically an availability monitoring tool, but it can help get your Linode back online fast if it's accidentally powered off.
+
+To turn Lassie on and off, see the []() guide. Once Lassie is enabled, your Linode will automatically reboot if it is unexpectedly powered off in the future.
 
 ## Performance Monitoring
 
@@ -94,7 +96,7 @@ To check for software updates and install them in Ubuntu or Debian, enter the fo
     apt-get upgrade --show-upgraded
 
 {{< note >}}
-If you're using a distribution other than Ubuntu or Debian, you can learn more about package management by reading our [Linux Package Management guide](/docs/guides/linux-package-management/).
+If you're using a distribution other than Ubuntu or Debian, you can learn more about package management by reading our [Linux Package Management guide](/docs/guides/linux-package-management-overview/).
 {{< /note >}}
 
 There are ways to automate the installation of software updates, but this is not recommended. You should always manually review the lists of available patches before installing updates.

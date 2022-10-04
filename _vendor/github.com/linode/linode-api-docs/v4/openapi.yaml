@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.136.0
+  version: 4.137.0
 
   title: Linode API
   description: |
@@ -341,38 +341,53 @@ info:
 
     ## Rate Limiting
 
-    With the Linode API, you can make up to 1,600 general API requests every two minutes per user as
-    determined by IP address or by OAuth token. Additionally, there are endpoint specific limits defined below.
+    Rate limits on API requests help maintain the health and stability of the Linode API. Accordingly, every endpoint of the Linode API applies a rate limit on a per user basis as determined by OAuth token for authenticated requests or IP address for public endpoints.
+
+    Each rate limit consists of a total number of requests and a time window. For example, if an endpoint has a rate limit of 800 requests per minute, then up to 800 requests over a one minute window are permitted. Subsequent requests to an endpoint after hitting a rate limit return a 429 error. You can successfully remake requests to that endpoint after the rate limit window resets.
+
+    ### Linode APIv4 Rate Limits
+
+    With the Linode API, you can generally make up to 1,600 general API requests every two minutes. Additionally, all endpoints have a rate limit of 800 requests per minute unless otherwise specified below.
 
     **Note:** There may be rate limiting applied at other levels outside of the API, for example, at the load balancer.
 
-    Creating Linodes has a dedicated limit of 10 requests per 30 seconds per user.
-    That endpoint is:
+    Creating Linodes has a dedicated rate limit of 10 requests per 30 seconds. That endpoint is:
 
     * [Linode Create](/docs/api/linode-instances/#linode-create)
 
-    `/stats` endpoints have their own dedicated limits of 100 requests per minute per user.
-    These endpoints are:
+    `/stats` endpoints have their own dedicated rate limits of 100 requests per minute. These endpoints are:
 
     * [View Linode Statistics](/docs/api/linode-instances/#linode-statistics-view)
     * [View Linode Statistics (year/month)](/docs/api/linode-instances/#statistics-yearmonth-view)
     * [View NodeBalancer Statistics](/docs/api/nodebalancers/#nodebalancer-statistics-view)
     * [List Managed Stats](/docs/api/managed/#managed-stats-list)
 
-    Object Storage endpoints have a dedicated limit of 750 requests per second per user.
-    The Object Storage endpoints are:
+    Object Storage endpoints have a dedicated rate limit of 750 requests per second. The Object Storage endpoints are:
 
     * [Object Storage Endpoints](/docs/api/object-storage/)
 
-    Opening Support Tickets has a dedicated limit of 2 requests per minute per user.
-    That endpoint is:
+    Opening Support Tickets has a dedicated rate limit of 2 requests per minute. That endpoint is:
 
     * [Open Support Ticket](/docs/api/support/#support-ticket-open)
 
-    Accepting Service Transfers has a dedicated limit of 2 requests per minute per user.
-    That endpoint is:
+    Accepting Service Transfers has a dedicated rate limit of 2 requests per minute. That endpoint is:
 
     * [Service Transfer Accept](/docs/api/account/#service-transfer-accept)
+
+    ### Rate Limit HTTP Response Headers
+
+    The Linode API includes the following HTTP response headers which are designed to help you avoid hitting rate limits that might disrupt your applications:
+
+    * **X-RateLimit-Limit**: The maximum number of permitted requests during the rate limit window for this endpoint.
+    * **X-RateLimit-Remaining**: The remaining number of permitted requests in the current rate limit window.
+    * **X-RateLimit-Reset**: The time when the current rate limit window rests in UTC epoch seconds.
+    * **Retry-After**: The remaining time in seconds until the current rate limit window resets.
+
+    There are many ways to access header information for your requests, depending on how you are accessing the Linode API. For example, to view HTTP response headers when making requests with `curl`, use the `-i` or `--include` option as follows:
+
+    ```Shell
+    curl -i https://api.linode.com/v4/regions
+    ```
 
     ## CLI (Command Line Interface)
 
@@ -3218,6 +3233,7 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       description: |
         Display all accessible Managed MongoDB Databases.
+
         **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
@@ -3361,6 +3377,7 @@ paths:
       x-linode-grant: read_only
       description: |
         Display information for a single, accessible Managed MongoDB Database.
+
         **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
@@ -3395,9 +3412,13 @@ paths:
       x-linode-grant: read_write
       description: |
         Remove a Managed MongoDB Database from your Account.
+
         Requires `read_write` access to the Database.
+
         The Database must have an `active`, `failed`, or `degraded` status to perform this command.
+
         Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+
         **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
@@ -3433,15 +3454,24 @@ paths:
       x-linode-grant: read_write
       description: |
         Update a Managed MongoDB Database.
+
         Requires `read_write` access to the Database.
+
         The Database must have an `active` status to perform this command.
+
         Updating addresses in the `allow_list` overwrites any existing addresses.
+
         * IP addresses on this list can access the Managed Database. All other sources are blocked.
+
         * Entering an empty array (`[]`) blocks all connections (both public and private) to the Managed Database.
+
         * **Note**: Updates to the `allow_list` may take a short period of time to complete, making this command inappropriate for rapid successive updates to this property.
         All Managed Databases include automatic patch updates, which apply security patches and updates to the underlying operating system of the Managed MongoDB Database. The maintenance window for these updates is configured with the Managed Database's `updates` property.
+
         * If your database cluster is configured with a single node, you will experience downtime during this maintenance window when any updates occur. It's recommended that you adjust this window to match a time that will be the least disruptive for your application and users. You may also want to consider upgrading to a high availability plan to avoid any downtime due to maintenance.
+
         * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
+
         **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
@@ -3526,9 +3556,13 @@ paths:
       - $ref: '#/components/parameters/pageSize'
       description: |
         Display all backups for an accessible Managed MongoDB Database.
+
         The Database must not be provisioning to perform this command.
+
         Database `auto` type backups are created every 24 hours at 0:00 UTC. Each `auto` backup is retained for 7 days.
+
         Database `snapshot` type backups are created by accessing the **Managed MongoDB Database Backup Snapshot Create** ([POST /databases/mongodb/instances/{instanceId}/backups](/docs/api/databases/#managed-mongodb-database-backup-snapshot-create)) command.
+
         **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
@@ -3570,9 +3604,13 @@ paths:
       x-linode-grant: read_write
       description: |
         Creates a snapshot backup of a Managed MongoDB Database.
+
         Requires `read_write` access to the Database.
+
         Backups generated by this command have the type `snapshot`. Snapshot backups may take several minutes to complete, after which they will be accessible to view or restore.
+
         The Database must have an `active` status to perform this command.
+
         **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
@@ -3657,7 +3695,9 @@ paths:
       x-linode-grant: read_only
       description: |
         Display information for a single backup for an accessible Managed MongoDB Database.
+
         The Database must not be provisioning to perform this command.
+
         **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
@@ -3692,8 +3732,11 @@ paths:
       x-linode-grant: unrestricted only
       description: |
         Delete a single backup for an accessible Managed MongoDB Database.
+
         Requires `read_write` access to the Database.
+
         The Database must not be provisioning to perform this command.
+
         **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
@@ -3744,10 +3787,15 @@ paths:
       x-linode-grant: read_write
       description: |
         Restore a backup to a Managed MongoDB Database on your Account.
+
         Requires `read_write` access to the Database.
+
         The Database must have an `active` status to perform this command.
+
         **Note**: Restoring from a backup will erase all existing data on the database instance and replace it with backup data.
+
         **Note**: Currently, restoring a backup after resetting Managed Database credentials results in a failed cluster. Please contact Customer Support if this occurs.
+
         **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
@@ -3791,7 +3839,9 @@ paths:
       x-linode-grant: read_only
       description: |
         Display the root username and password for an accessible Managed MongoDB Database.
+
         The Database must have an `active` status to perform this command.
+
         **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
@@ -3835,10 +3885,15 @@ paths:
       x-linode-grant: read_write
       description: |
         Reset the root password for a Managed MongoDB Database.
+
         Requires `read_write` access to the Database.
+
         A new root password is randomly generated and accessible with the **Managed MongoDB Database Credentials View** ([GET /databases/mongodb/instances/{instanceId}/credentials](/docs/api/databases/#managed-mongodb-database-credentials-view)) command.
+
         Only unrestricted Users can access this command, and have access regardless of the acting token's OAuth scopes.
+
         **Note**: Note that it may take several seconds for credentials to reset.
+
         **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
@@ -3882,7 +3937,9 @@ paths:
       x-linode-grant: read_only
       description: |
         Display the SSL CA certificate for an accessible Managed MongoDB Database.
+
         The Database must have an `active` status to perform this command.
+
         **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
@@ -3927,10 +3984,15 @@ paths:
       description: |
         Apply security patches and updates to the underlying operating system of the Managed MongoDB Database. This function runs during regular maintenance windows, which are configurable with the **Managed MongoDB Database Update** ([PUT /databases/mongodb/instances/{instanceId}](/docs/api/databases/#managed-mongodb-database-update)) command.
         Requires `read_write` access to the Database.
+
         The Database must have an `active` status to perform this command.
-        **Note**
+
+        **Note**:
+
         * If your database cluster is configured with a single node, you will experience downtime during this maintenance. Consider upgrading to a high availability plan to avoid any downtime due to maintenance.
+
         * **The database software is not updated automatically.** To upgrade to a new database engine version, consider deploying a new Managed Database with your preferred version. You can then migrate your databases from the original Managed Database cluster to the new one.
+
         **Note**: New MongoDB Databases cannot currently be created.
       security:
       - personalAccessToken: []
@@ -20645,18 +20707,17 @@ components:
             type: string
             format: ip
           description: >
-            The IP addresses representing the master DNS for this Domain. At least one value is
-            required for `type` slave Domains.
+            The IP addresses representing the master DNS for this Domain. At least one value is required for `type` slave Domains. The total combined length of all data within this array cannot exceed 1000 characters.
           example: []
         axfr_ips:
           type: array
           items:
             type: string
             format: ip
-          description: >
-            The list of IPs that may perform a zone transfer for this Domain.
-            This is potentially dangerous, and should be set to an empty list
-            unless you intend to use it.
+          description: |
+            The list of IPs that may perform a zone transfer for this Domain. The total combined length of all data within this array cannot exceed 1000 characters.
+
+            **Note**: This is potentially dangerous, and should be set to an empty list unless you intend to use it.
           example: []
         expire_sec:
           type: integer
@@ -24237,6 +24298,7 @@ components:
           type: integer
           minimum: 1
           maximum: 65535
+          default: 80
           description: >
             The port this Config is for. These values must be unique across configs
             on a single NodeBalancer (you can't have two configs for port 80, for
@@ -24252,6 +24314,7 @@ components:
           - http
           - https
           - tcp
+          default: http
           description: >
             The protocol this port is configured to serve.
 
@@ -24266,6 +24329,7 @@ components:
           - roundrobin
           - leastconn
           - source
+          default: roundrobin
           description: >
             What algorithm this NodeBalancer should use for routing traffic to backends.
           example: roundrobin
@@ -24276,6 +24340,7 @@ components:
           - none
           - table
           - http_cookie
+          default: none
           description: >
             Controls how session stickiness is handled on this port.
 
@@ -24295,6 +24360,7 @@ components:
           - connection
           - http
           - http_body
+          default: none
           description: >
             The type of check to perform against backends to ensure they are serving
             requests. This is used to determine if backends are up or down.
@@ -24308,20 +24374,27 @@ components:
           example: http_body
         check_interval:
           type: integer
-          description: >
+          description: |
             How often, in seconds, to check that backends are up and serving requests.
+
+            Must be greater than `check_timeout`.
           example: 90
+          default: 31
         check_timeout:
           type: integer
           minimum: 1
           maximum: 30
-          description: >
+          default: 30
+          description: |
             How long, in seconds, to wait for a check attempt before considering it failed.
+
+            Must be less than `check_interval`.
           example: 10
         check_attempts:
           type: integer
           minimum: 1
           maximum: 30
+          default: 3
           description: >
             How many times to attempt a check before considering a backend to be down.
           example: 3
@@ -24341,6 +24414,7 @@ components:
           example: it works
         check_passive:
           type: boolean
+          default: true
           description: >
             If true, any response from this backend with a `5xx` status code will be
             enough for it to be considered unhealthy and taken out of rotation.
@@ -24372,6 +24446,7 @@ components:
           enum:
           - recommended
           - legacy
+          default: recommended
           description: >
             What ciphers to use for SSL connections served by this NodeBalancer.
 
