@@ -5,9 +5,17 @@ tab_group_main:
     weight: 30
 ---
 
-## Building Blocks
+## Basics
 
 - [Configure a NodeBalancer](/docs/products/networking/nodebalancers/guides/configure/): Create a new NodeBalancer and configure it with a backend Linode.
+
+- [Available Protocols](/docs/products/networking/nodebalancers/guides/protocol/)
+
+- [Health Checks](/docs/products/networking/nodebalancers/guides/health-checks/)
+
+- [Configuring TLS/SSL Certificates](/docs/products/networking/nodebalancers/guides/ssl-configuration/)
+
+- [Proxy Protocol](/docs/products/networking/nodebalancers/guides/proxy-protocol/)
 
 ## Themes
 
@@ -15,7 +23,7 @@ These additional guides explore targeted topics like creating a Linode NodeBalan
 
 ### NodeBalancer Basics
 
-- [Understanding NodeBalancers](/docs/platform/nodebalancer/what-are-nodebalancers): Linode offers load balancers as a service (LBaaS) called NodeBalancers. NodeBalancers are built for high availability and designed to be maintenance free after initial configuration.
+- [Understanding NodeBalancers](/docs/guides/what-are-nodebalancers/): Linode offers load balancers as a service (LBaaS) called NodeBalancers. NodeBalancers are built for high availability and designed to be maintenance free after initial configuration.
 
 - [Get Started with NodeBalancers](/docs/guides/getting-started-with-nodebalancers/): Get started with Linode NodeBalancers by using a NodeBalancer to begin managing a simple web application.
 
