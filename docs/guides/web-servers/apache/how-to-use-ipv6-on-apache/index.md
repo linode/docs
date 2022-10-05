@@ -1,7 +1,7 @@
 ---
 slug: how-to-use-ipv6-on-apache
 author:
-  name: Linode Community
+  name: Jeff Novotny
   email: docs@linode.com
 description: 'This guide explains how to configure and use IPv6 on the Apache or NGINX web servers along with useful IPv6-related tools'
 og_description: 'This guide explains how to configure and use IPv6 on the Apache or NGINX web servers along with useful IPv6-related tools'
@@ -30,21 +30,22 @@ The [Internet Protocol version 6 (IPv6)](https://www.rfc-editor.org/rfc/rfc8200)
 
 ## What is IPv6?
 
-IPv6 is the most recent version of the *Internet Protocol* (IP). It is defined in [RFC 8200](https://www.rfc-editor.org/rfc/rfc8200). Like the original protocol IPv4, Ipv6 provides a consistent addressing system for systems connected to the internet. This standard allows for a shared understanding of how to route any data packets from source to destination.
+IPv6 is the most recent version of the *Internet Protocol* (IP). It is defined in [RFC 8200](https://www.rfc-editor.org/rfc/rfc8200). Like the original IPv4 protocol, IPv6 provides consistent addressing for systems connected to the internet. This standard allows for a shared understanding of how to route data packets from source to destination.
 
-IPv6 was implemented as a solution to IPv4 address exhaustion. Address exhaustion meant the internet was quickly depleting its pool of available addresses. IPv6 is intended as a full replacement for IPv4, but the two systems continue to be used together. Many systems are provisioned with both IPv4 and IPv6 addresses. End users are not typically aware of what protocol they are using to access a given resource.
+IPv6 was implemented as a solution to IPv4 address exhaustion, meaning the internet was quickly depleting its pool of available IPv4 addresses. IPv6 is intended as a full replacement for IPv4, but the two systems continue to be used together. Many systems are provisioned with both IPv4 and IPv6 addresses. End users are not typically aware of what protocol they are using to access a given resource.
 
 ## Why to Use IPv6
 
 Many system administrators prefer to use IPv6 due to its improved performance and additional features. Here are some of the advantages of IPv6, compared to IPv4.
 
-- IPv6 permits a much larger address space of about `3.4 × 10^38` addresses. This allows addresses to be liberally assigned as required and lets organizations receive large address blocks.
-- IPv6 offers better speed and performance. Web page load times are 5% to 15% faster with IPv6.
-- The IPv6 header is smaller than the one used in IPv4, so IPv6 uses bandwidth more efficiently.
-- It enables better route aggregation, which limits the size of routing tables.
-- IPv6 features improved multicast capabilities.
-- It features security enhancements including the mandatory use of *Internet Protocol Security* (IPSec) and optional data consistency verification.
-- Although IPv4 and IPv6 are not directly compatible, several transitional and upgrade strategies are available.
+-   Much larger address space of about 340 duodecillion, or `3.4 × 10^38`, addresses. This allows addresses to be liberally assigned and lets organizations receive large address blocks.
+-   Better speed and performance. Web page load times are 5% to 15% faster with IPv6.
+-   The header is smaller than the one used in IPv4, so IPv6 uses bandwidth more efficiently.
+-   Better route aggregation, which limits the size of routing tables.
+-   Improved multicast capabilities.
+-   Security enhancements, including the mandatory use of *Internet Protocol Security* (IPSec) and optional data consistency verification.
+
+Although IPv4 and IPv6 are not directly compatible, several transitional and upgrade strategies are available.
 
 ## Before You Begin
 
@@ -56,7 +57,7 @@ Many system administrators prefer to use IPv6 due to its improved performance an
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## How to Configure Ipv6
+## How to Configure IPv6
 
 ### How to Configure IPv6 on Apache
 
@@ -80,7 +81,7 @@ Follow these steps to configure IPv6 addresses on Apache.
 apache2.service - The Apache HTTP Server
     Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
     Active: active (running) since Fri 2022-09-23 21:18:57 UTC; 9min ago
-    {{< /output >}}
+{{< /output >}}
 
 2.  For better security, enable and configure the `ufw` firewall. Allow the `Apache Full` profile to permit HTTP and HTTPS connections through the firewall. `OpenSSH` connections must also be allowed. Enable `ufw` after making all changes. Use the `ufw status` command to validate the settings.
 
@@ -97,7 +98,7 @@ OpenSSH                    ALLOW       Anywhere
 Apache Full                ALLOW       Anywhere
 OpenSSH (v6)               ALLOW       Anywhere (v6)
 Apache Full (v6)           ALLOW       Anywhere (v6)
-    {{< /output >}}
+{{< /output >}}
 
 3.  Use the Linux `ip` command to determine the IPv6 address of the system. The `ip` command replaces the older and now deprecated `ifconfig` command. To narrow down the output, `grep` for the `inet6` family in the output. The output typically displays several entries. Use the address that is shown as having `scope global`. In the following example, the second entry represents the relevant IPv6 system address.
 
@@ -107,14 +108,14 @@ Apache Full (v6)           ALLOW       Anywhere (v6)
 inet6 ::1/128 scope host
 inet6 2001:db8::f03c:93ff:fe25:6762/64 scope global dynamic mngtmpaddr noprefixroute
 inet6 fe80::f03c:93ff:fe25:6762/64 scope link
-    {{< /output >}}
+{{< /output >}}
 
 
-4.  Edit the `ports.conf` file and add `Listen` directives for the addresses on ports `80`, for HTTP, and `443`, for HTTPS. Enclose the IPv6 address in brackets `[]` and follow it with the `:` symbol and the port number. To listen for both IPv4 and IPv6 traffic, add both addresses. To restrict access to IPv6, do not include the IPv4 entry. The following example demonstrates how to configure Apache to only listen for specific requests for its IPv6 and IPv4 addresses.
+4.  Edit the `ports.conf` file and add `Listen` directives for the addresses on port `80` for HTTP, and port `443` for HTTPS. Enclose the IPv6 address in brackets `[]` and follow it with the `:` symbol and the port number. To listen for both IPv4 and IPv6 traffic, add both addresses. To restrict access to IPv6, do not include the IPv4 entry. The following example demonstrates how to configure Apache to only listen for specific requests for its IPv6 and IPv4 addresses.
 
     {{< note >}}
 On older installations of Apache, add this configuration to `httpd.conf`.
-    {{< /note >}}
+{{< /note >}}
 
         sudo vi /etc/apache2/ports.conf
 
@@ -131,7 +132,7 @@ Listen 192.0.2.162:80
     Listen [2001:db8::f03c:93ff:fe25:6762]:443
     Listen 192.0.2.162:443
 </IfModule>
-    {{< /file >}}
+{{< /file >}}
 
 5.  Before restarting Apache, run the `configtest` script to ensure the syntax is valid.
 
@@ -139,7 +140,7 @@ Listen 192.0.2.162:80
 
     {{< output >}}
 Syntax OK
-    {{< /output >}}
+{{< /output >}}
 
 6.  Restart the Apache server to apply the changes.
 
@@ -153,9 +154,9 @@ Syntax OK
 apache2.service - The Apache HTTP Server
     Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
     Active: active (running) since Sat 2022-09-24 19:05:52 UTC; 7s ago
-    {{< /output >}}
+{{< /output >}}
 
-8.  Use the `ss` os "socket statistics" command to confirm the new sockets are in `LISTEN` mode.
+8.  Use the `ss` "socket statistics" command to confirm the new sockets are in `LISTEN` mode.
 
         sudo ss -ltpn
 
@@ -165,7 +166,7 @@ State     Recv-Q    Send-Q                          Local Address:Port       Pee
 LISTEN    0         511                            192.0.2.162:80              0.0.0.0:*        users:(("apache2",pid=9303,fd=4),("apache2",pid=9302,fd=4),("apache2",pid=9301,fd=4))
 ...
 LISTEN    0         511          [2001:db8::f03c:93ff:fe25:6762]:80                 [::]:*        users:(("apache2",pid=9303,fd=3),("apache2",pid=9302,fd=3),("apache2",pid=9301,fd=3))
-    {{< /output >}}
+{{< /output >}}
 
 9.  As a final test, enter the system IPv6 address in the browser, enclosed between the `[]` brackets. You should see the default web page for the system. If both IPv4 and IPv6 addresses are configured, the host should also respond to a request for the IPv4 address.
 
@@ -173,7 +174,7 @@ LISTEN    0         511          [2001:db8::f03c:93ff:fe25:6762]:80             
 
     {{< note >}}
 To host multiple domains on the same system using different ports or IP addresses, additional changes to the virtual host files are necessary. See the [Apache virtual host examples](https://httpd.apache.org/docs/2.4/vhosts/examples.html) for more complete information. Virtual host changes are not necessary if all domains are accessed using the same IPv6 address and port.
-    {{< /note >}}
+{{< /note >}}
 
 ### How to Configure IPv6 on NGINX
 
@@ -187,7 +188,7 @@ IPv6 is already enabled on NGINX. No further steps have to be taken to use IPv6.
 nginx.service - A high performance web server and a reverse proxy server
      Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset:>
      Active: active (running) since Sun 2022-09-25 17:07:13 UTC; 17s ago
-    {{< /output >}}
+{{< /output >}}
 
 2.  NGINX should be properly secured using the `ufw` firewall. The `Nginx Full` profit permits HTTP and HTTPS access. Enter the following commands to grant NGINX firewall access.
 
@@ -205,7 +206,7 @@ OpenSSH                    ALLOW       Anywhere
 Nginx Full                 ALLOW       Anywhere
 OpenSSH (v6)               ALLOW       Anywhere (v6)
 Nginx Full (v6)            ALLOW       Anywhere (v6)
-    {{< /output >}}
+{{< /output >}}
 
 3.  To determine the system's IPv6 address, use the Linux `ip` command. To restrict the output to IPv6 addresses, use the `grep` command and search for `inet6` in the output. The relevant address is the one having `scope global`. This is the second address in the following results.
 
@@ -215,7 +216,7 @@ Nginx Full (v6)            ALLOW       Anywhere (v6)
 inet6 ::1/128 scope host
 inet6 2001:db8::f03c:93ff:fe64:3a0c/64 scope global dynamic mngtmpaddr noprefixroute
 inet6 fe80::f03c:93ff:fe64:3a0c/64 scope link
-    {{< /output >}}
+{{< /output >}}
 
 4.  To force NGINX to listen only to the default IPv6 address, add it to the main `server` block. Enclose the IPv6 address in square brackets `[]`. The `server` block containing the address might be included in either the `nginx.conf` file or in a virtual host file. For instance, if the default virtual host is used, add the configuration to `/etc/nginx/sites-enabled/default`. If the domain uses its own virtual host, add the configuration there. It is easier to use an existing `server` block because multiple server blocks and default servers might conflict with each other. Add the following configuration to the `server` block as follows.
 
@@ -225,7 +226,7 @@ server {
     listen [2001:db8::f03c:93ff:fe64:3a0c]:80 default_server;
 ...
     }
-    {{< /file >}}
+{{< /file >}}
 
 5.  **Optional:** To only listen for IPv6 requests, add the flag `ipv6only=on` to the IPv6 server configuration and delete the `listen 80` directive. In this configuration, the `server` block should resemble the following example.
 
@@ -234,7 +235,7 @@ server {
     listen [2001:db8::f03c:93ff:fe64:3a0c]:80 ipv6only=on default_server;
 ...
 }
-    {{< /file >}}
+{{< /file >}}
 
 6.  Before restarting the web server, use the NGINX test script to search for errors.
 
@@ -243,7 +244,7 @@ server {
     {{< output >}}
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
-    {{< /output >}}
+{{< /output >}}
 
 7.  Restart NGINX to incorporate the changes.
 
@@ -259,7 +260,7 @@ LISTEN 0      4096                       127.0.0.53%lo:53          0.0.0.0:*    
 LISTEN 0      128                              0.0.0.0:22          0.0.0.0:*     users:(("sshd",pid=586,fd=3))
 LISTEN 0      511     [2001:db8::f03c:93ff:fe64:3a0c]:80             [::]:*     users:(("nginx",pid=3928,fd=6),("nginx",pid=3927,fd=6))
 LISTEN 0      128                                 [::]:22             [::]:*     users:(("sshd",pid=586,fd=4))
-    {{< /output >}}
+{{< /output >}}
 
 9.  To confirm the server is reachable using its IPv6 address, enter the address in a browser. Enclose the address in square `[]` brackets. If the `ipv6only=on` flag is on, requests for the IPv4 address should not resolve.
 
@@ -273,7 +274,7 @@ To enforce the use of an IPv6 address to access a hosted domain, update the DNS 
 
 For IPv4 networks, several handy tools are available to debug and monitor networks. For IPv6, equivalent tools are available. These often have similar names to their IPv4 equivalents, sometimes with an extra `6` at the end.
 
-- To restrict the output of the `ip` command to only list IPv6 addresses, use the `-6` option.
+-   To restrict the output of the `ip` command to only list IPv6 addresses, use the `-6` option.
 
         ip -6 addr show
 
@@ -286,9 +287,9 @@ For IPv4 networks, several handy tools are available to debug and monitor networ
        valid_lft 5133sec preferred_lft 1533sec
     inet6 fe80::f03c:93ff:fe25:6762/64 scope link
        valid_lft forever preferred_lft forever
-    {{< /output >}}
+{{< /output >}}
 
-- Likewise, the `ss` command accepts the same flag. The command `ss -6` only shows socket statistics for IPv6 addresses.
+-   Likewise, the `ss` command accepts the same flag. The command `ss -6` only shows socket statistics for IPv6 addresses.
 
         ss -6ltpn
 
@@ -296,11 +297,11 @@ For IPv4 networks, several handy tools are available to debug and monitor networ
 State          Recv-Q         Send-Q                                    Local Address:Port                 Peer Address:Port        Process
 LISTEN         0              128                                                [::]:22                           [::]:*
 LISTEN         0              511                    [2001:db8::f03c:93ff:fe25:6762]:80                           [::]:*
-    {{< /output >}}
+{{< /output >}}
 
-- No special configuration is required for the `ufw` firewall. The `Nginx Full` profile permits both IPv4 and IPv6 connections.
+-   No special configuration is required for the `ufw` firewall. The `Nginx Full` profile permits both IPv4 and IPv6 connections.
 
-- The `nslookup` command is used to discover DNS information. The same command returns information about both IPv4 and IPv6 addresses, if any.
+-   The `nslookup` command is used to discover DNS information. The same command returns information about both IPv4 and IPv6 addresses, if any.
 
         nslookup google.com
 
@@ -313,17 +314,17 @@ Name:   google.com
 Address: 142.250.187.206
 Name:   google.com
 Address: 2a00:1450:4009:816::200e
-    {{< /output >}}
+{{< /output >}}
 
-- `nslookup` can be used for reverse lookups of IPv6 addresses. The output displays the address in reverse order due to `nslookup` display conventions.
+-   `nslookup` can be used for reverse lookups of IPv6 addresses. The output displays the address in reverse order due to `nslookup` display conventions.
 
         nslookup 2620:0:862:ed1a::1
 
     {{< output >}}
 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.a.1.d.e.2.6.8.0.0.0.0.0.0.2.6.2.ip6.arpa name = text-lb.esams.wikimedia.org
-    {{< /output >}}
+{{< /output >}}
 
-- There are IPv6 variants of the popular `ping` and `traceroute` utilities. To `ping` an IPv6 address, use `ping6`.
+-   There are IPv6 variants of the popular `ping` and `traceroute` utilities. To `ping` an IPv6 address, use `ping6`.
 
         ping6 -c 3 2620:0:862:ed1a::1
 
@@ -336,9 +337,9 @@ PING 2620:0:862:ed1a::1(2620:0:862:ed1a::1) 56 data bytes
 --- 2620:0:862:ed1a::1 ping statistics ---
 3 packets transmitted, 3 received, 0% packet loss, time 2004ms
 rtt min/avg/max/mdev = 6.442/6.510/6.550/0.048 ms
-    {{< /output >}}
+{{< /output >}}
 
-- The IPv6 equivalent of `traceroute` is `traceroute6`. This utility is not pre-installed on Ubuntu. To install it, use `sudo apt install traceroute`.
+-   The IPv6 equivalent of `traceroute` is `traceroute6`. This utility is not pre-installed on Ubuntu. To install it, use `sudo apt install traceroute`.
 
         traceroute6 wikpedia.org
 
@@ -349,7 +350,7 @@ traceroute to wikpedia.org (2620:0:862:ed1a::3), 30 hops max, 80 byte packets
 3  2600:3c0f:7:32::2 (2600:3c0f:7:32::2)  0.633 ms  0.621 ms 2600:3c0f:7:32::1 (2600:3c0f:7:32::1)  0.699 ms
 4  2600:3c0f:7:42::2 (2600:3c0f:7:42::2)  0.767 ms  0.755 ms 2600:3c0f:7:42::1 (2600:3c0f:7:42::1)  0.774 ms
 5  lonap.he.net (2001:7f8:17::1b1b:1)  1.933 ms * *
-    {{< /output >}}
+{{< /output >}}
 
 ## Conclusion
 
