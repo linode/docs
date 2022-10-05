@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'This guide will show you how to use the Mono Project''s Apache module to run Microsoft ASP.NET applications on Ubuntu 9.10 "Karmic" similar to Windows Server'
+description: "This guide will show you how to use the Mono Project's Apache module to run Microsoft ASP.NET applications on Ubuntu 9.10 (Karmic) similar to Windows Server"
 keywords: ["apache", "mono", ".net", "asp.net", "mod\\_mono"]
 tags: ["web applications","apache","php","mysql","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,7 +13,7 @@ modified: 2011-06-15
 modified_by:
   name: Linode
 published: 2010-08-01
-title: 'Build ASP.NET/Mono Applications with mod_mono and Apache on Ubuntu 9.10 (Karmic)'
+title: "Build ASP.NET Applications with mod_mono on Ubuntu 9.10"
 relations:
     platform:
         key:  asp-mono-apache

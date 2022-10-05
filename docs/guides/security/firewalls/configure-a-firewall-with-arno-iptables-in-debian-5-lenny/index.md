@@ -12,7 +12,7 @@ modified: 2013-10-01
 modified_by:
   name: Linode
 published: 2009-08-06
-title: 'Configure a Firewall with Arno Iptables in Debian 5 (Lenny)'
+title: 'Configure a Firewall with Arno Iptables in Debian 5'
 deprecated: true
 ---
 

@@ -13,7 +13,7 @@ modified: 2011-05-23
 modified_by:
   name: Linode
 published: 2011-04-05
-title: 'Manage Email Lists with GNU Mailman on Debian 6 (Squeeze)'
+title: 'Manage Email Lists with GNU Mailman on Debian 6'
 relations:
     platform:
         key: use-gnu-mailman
