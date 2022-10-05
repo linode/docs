@@ -48,15 +48,15 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## What is Gatsby?
 
-Gatsby is a framework for creating efficient websites. An open-source project built on React, Gatsby puts together static sites with an eye toward performance.
+Gatsby is a framework for creating static websites. An open-source project built on React, Gatsby puts together static sites with an eye toward rich developer features and high performance.
 
-Gatsby can accomplish this in part because it generates static sites. A static site consists only of a frontend, with no server-side computations or database. One of the benefits of generating static sites is that everything is rendered at build time. By avoiding runtime rendering, your website can load quicker and more responsively, while also demanding fewer resources.
+A static site consists only of a frontend, with no server-side computations or database. One of the benefits of generating static sites is that everything is rendered at build time. By avoiding runtime rendering, your website can load quicker and more responsively, while also demanding fewer resources. Build-time rendering often also improves websites' SEO performance.
 
 Gatsby brings a number of features in particular to static-site generation that set it apart.
 
 Foremost is the fact that Gatsby is built on React, giving developers all of the benefits of working with React. That also makes Gatsby an exceptional choice for developers already familiar with React.
 
-Gatsby also offers compelling options when it comes to developing site content for static sites. Using plugins, developers can enable content management systems (CMSs) like WordPress and Contentful as content sources. Alternatively, Gatsby can process Markdown files for site content.
+Gatsby also offers compelling options when it comes to developing site content for static sites. Using plugins, developers can enable content management systems (CMSs) like WordPress and Contentful as content sources. Alternatively, Gatsby can directly process Markdown files for site content.
 
 ### Gatsby vs Next.js
 
@@ -66,7 +66,7 @@ Gatsby specializes in static sites, and it does not offer much for supporting dy
 
 Gatsby, because of its build-time generation, does not require any server-side code. Everything runs on the client side once the static site has been generated.
 
-Next.js, on the other hand, operates a more flexible model. Next is designed to offer a combination of static generation and server-side rendering. The latter occurs at request time, rather than build time. With this, Next.js offers some of the performance benefits of pre-rendering while accommodating application that need to fetch content dynamically.
+Next.js, on the other hand, operates a more flexible model. Next is designed to offer a combination of static generation and server-side rendering. The latter occurs at request time, rather than build time. With this, Next.js offers some of the performance benefits of pre-rendering while accommodating applications that need to fetch content dynamically.
 
 Applications built with Next.js, therefore, run at least partially on the server side. Next has to be running on the server side to provide server-side rendering at request time.
 
@@ -74,9 +74,11 @@ Finally, another remarkable difference between the two frameworks is Gatsby's ec
 
 ## How to Install Gatsby
 
+These steps walk you through installing the tooling for creating and managing Gatsby projects. The Gatsby framework itself only needs to be installed on a project-by-project basis, but having Gatsby's command-line tool (CLI) installed makes the process of working with Gatsby significantly easier.
+
 1. Follow our tutorial on how to [Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/). Gatsby requires Node.js, and this comes along with NPM. Additionally, NPM can be used later for installing Gatsby plugins.
 
-1. Install the Gatsby command-line tool (CLI) as a global NPM package:
+1. Install the Gatsby CLI as a global NPM package:
 
         npm install -g gatsby-cli
 
@@ -96,7 +98,7 @@ Gatsby CLI version: 4.24.0
 
 With the Gatsby CLI installed, the process for setting up a new Gatsby project is straightforward. These next few sections cover doing just that, including applying a starter template. These give you a basis to start your Gatsby project off of, including a wide array of themes and layouts.
 
-Afterward you can find explanations framing each of the main parts of a Gatsby project. Then keep reading to see how to build a customized website out of a template and, finally, how to deploy your website.
+Afterward you can find explanations framing each of the main parts of a Gatsby project. Then keep reading to see how to build a customized website out of a template and, finally, how to deploy your ready website.
 
 ### Creating a Gatsby Project
 
@@ -104,19 +106,19 @@ Execute the following command to create a new Gatsby project. This and following
 
     gatsby new example-app
 
-But typically when starting a new Gatsby project, you want to use a starter template. These templates, maintained either officially or by the Gatsby community, have all of the boilerplate for a pre-designed Gatsby website.
+But sometimes when starting a new Gatsby project, you want to use a starter template. These templates, maintained either officially or by the Gatsby community, have all of the boilerplate for a pre-designed Gatsby website.
 
 Check out Gatsby's [library of starters](https://www.gatsbyjs.com/starters/) to see a collection of starter templates to get started.
 
-This tutorial uses the `gatsby-starter-default`, which is the default starter. Because this is the default starter, you do not need to specify it in your command for creating the Gatsby project.
+This tutorial starts out using the `gatsby-starter-default`, which is the default starter. Because this is the default starter, you do not need to specify it in your command for creating the Gatsby project.
 
-However, to demonstrate how you can utilize starters when creating a new project, here is what the command would look like. It follows the basic command for creating a new Gatsby project, but adds the address for the starter at the end. These addresses can be found with the starers listed in the library:
+However, to demonstrate how to utilize starters, here is what the command would look like if you specified one when creating this project. It follows the basic command for creating a new Gatsby project, but adds the address for the starter at the end. These addresses can be found with the starers listed in the library:
 
     gatsby new example-app https://github.com/gatsbyjs/gatsby-starter-default
 
 #### Running a Development Server
 
-Now you can view the default website that comes with the starter template. Gatsby includes a development server, and while the server is not fit for production, it provides an convenient way preview the static site.
+Now you can view the default website that comes with the starter template. Gatsby includes a development server, and while the server is not fit for production, it provides as a convenient way preview the static site.
 
 To run the development server, change into the project directory and execute the `gatsby develop` command:
 
@@ -143,11 +145,11 @@ There are three main parts of a Gatsby website, each of which with its own subdi
 
 - **Pages**. JSX files stored here automatically get converted into pages with their own paths, based on the file names. In the default starter, the `page-2.js` file in this subdirectory results in a `/page-2` path. The `index.js` results in the homepage, with a path of `/`.
 
-- **Components**. These render to HTML elements, but each component represents a reusable portion of a page. A navigation bar is an example. Rather than maintaining the code for that piece on every distinct page, you can build the navigation menu as a component. Then it is easily reusable on any page on your website and can be maintained from a central location.
+- **Components**. These render to HTML elements, with each component functioning as a reusable portion of a page. A navigation bar is an example. Rather than maintaining the code for that piece on every distinct page, you can build the navigation menu as a component. Then it is easily reusable on any page on your website and can be maintained from a central location.
 
-- **Templates**. Page components can be programmatically rendered using templates. These can, for instance, fetch data from other sources and render content programmatically from that data. An example is a page component that reads Markdown content from GraphQL and renders that content as blog posts.
+- **Templates**. Page components can be programmatically rendered using templates. Gatsby can, for instance, fetch data from other sources and render content programmatically from that data using templates. An example is a page component that reads Markdown content from GraphQL and renders that content as blog posts.
 
-In the default starter, there is also an `images` directory here, which can be used for storing image assets to be used on your static site.
+    You can see more on templates in the next section, which customizes a blog starter that makes use of templates and GraphQL.
 
 ### Developing a Site with Gatsby
 
@@ -176,9 +178,9 @@ To help you understand how to get started working with Gatsby for your own websi
 // [...]
     {{< /file >}}
 
-1. Take a look at the `src/pages/index.js` file. This gets rendered into the blog's homepage, so modify it as you need. But keep in mind that much of the information about yourself and your website are source from the metadata adjusted above. For this example, none of the features actually needed to be altered.
+1. Take a look at the `src/pages/index.js` file. This gets rendered into the blog's homepage, so modify it as you need. But keep in mind that much of the information about yourself and your website are sourced from the metadata adjusted above. For this example, none of the features actually needed to be altered.
 
-    The file is worth a deeper look, along side the `gatsby-node.js` file. Both of these use GraphQL to query for Markdown content stored in the `content/blog` subdirectory. They use the `allMarkdownRemark` plugin, which is capable of pulling frontmatter and other data from these files, as well as parsing the Markdown to HTML.
+    The file is worth a deeper look, however, alongside the `gatsby-node.js` file. Both of these use GraphQL to query for Markdown content stored in the `content/blog` subdirectory. They use the `allMarkdownRemark` plugin, which is capable of pulling frontmatter and other data from these files, as well as parsing the Markdown to HTML.
 
     {{< file "src/pages/index.js" jsx >}}
 // [...]
@@ -207,7 +209,7 @@ export const pageQuery = graphql`
 `
     {{< /file >}}
 
-1. Similarly look at the `src/components/bio.js`. This tutorial's example has made some modifications to simplify the display:
+1. Similarly, look at the `src/components/bio.js` and adjust it to fit your needs. This tutorial's example has made some modifications to simplify the display:
 
     {{< file "src/components/bio.js" jsx >}}
 // [...]
@@ -230,9 +232,9 @@ export const pageQuery = graphql`
 
     To support this, the tutorial also removes the `display: flex` line from the `.bio` section of the CSS file, `style.css`.
 
-1. Finally, create some blog posts. You can see the default posts stored in subdirectories of `content/blog`. Replace these subdirectories with your own, adding an `index.md` file within each for the Markdown content.
+1. Finally, create some blog posts. You can see the default posts stored in subdirectories of `content/blog`. Replace these subdirectories with subdirectories of your own, adding an `index.md` file within each for the Markdown content.
 
-    Be sure to add frontmatter for these. The starter supports `title`, `date`, and `description` fields for the front matter by default. You can also adjust this by adjusting the GraphQL queries in the `src/pages/index.js` and `src/templates/blog-post.js` files and in the `graph-node.js` file.
+    Be sure to add frontmatter for each Markdown file. The starter supports `title`, `date`, and `description` fields for the frontmatter by default. You can also adjust this by adjusting the GraphQL queries in the `src/pages/index.js` and `src/templates/blog-post.js` files and in the `graph-node.js` file.
 
     This starter comes configured to support images from these directories as well, so feel free to add some there to use in your Markdown files.
 
