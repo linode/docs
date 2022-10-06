@@ -8,7 +8,7 @@ title = "Linode Guides & Tutorials"
 themeDir = ".."
 rssLimit = 30
 summaryLength = 15
-timeout = "2m"
+timeout = "5m"
 
 disqusShortname="linode-1"
 
