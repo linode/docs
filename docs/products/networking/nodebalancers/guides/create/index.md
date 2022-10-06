@@ -9,7 +9,7 @@ published: 2022-10-06
 
 This guide walks you through creating a NodeBalancer through the Cloud Manager.
 
-1. [Open the Create NodeBalancer Form in the Cloud Manager](#open-the-create-database-cluster-form-in-the-cloud-manager)
+1. [Open the Create NodeBalancer Form in the Cloud Manager](#open-the-create-nodebalancer-form-in-the-cloud-manager)
 1. [Set the Label](#set-the-label)
 1. [Select a Region](#select-a-region)
 1. [Add and Configure Ports](#add-and-configure-ports)

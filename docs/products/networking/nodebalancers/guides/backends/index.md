@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-title: "Configure Backend Nodes (Compute Instances)"
+title: "Backend Nodes (Compute Instances)"
 description: "Instructions for adding and configuring backend nodes on a NodeBalancer"
 published: 2022-10-06
 ---
@@ -71,6 +71,6 @@ When adding a Compute Instance as a *Backend Node* to a NodeBalancer, you must a
 
 - Install all required software on the Compute Instance.
 
-- Verify that any required data has been properly replicated on the Compute Instance. There are many different methods of ensuring data is properly replicated between multiple servers.
+- Verify that any required data has been properly replicated on each Compute Instance. There are many different methods of ensuring data is properly replicated between multiple servers, including [rsync](https://linux.die.net/man/1/rsync), [Gluster](https://www.gluster.org/), [Galera](https://galeracluster.com/), or CI/CD tooling.
 
-- Verify that the instance accepts traffic over the port specified in the backend's configuration and is not blocking addresses from the NodeBalancer's private IP address range: `192.168.255.0/24`.
+- Verify that each instance accepts traffic over the port specified in the backend's configuration and is not blocking addresses from the NodeBalancer's private IP address range: `192.168.255.0/24`.

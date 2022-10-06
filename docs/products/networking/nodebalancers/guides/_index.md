@@ -17,7 +17,7 @@ tab_group_main:
 
 - [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/): Edit the port configurations on a NodeBalancer.
 
-- [Configure Backend Nodes (Compute Instances)](/docs/products/networking/nodebalancers/guides/backends/): Manage the settings for backend nodes.
+- [Backend Nodes (Compute Instances)](/docs/products/networking/nodebalancers/guides/backends/): Manage the settings for backend nodes.
 
 - [Available Protocols](/docs/products/networking/nodebalancers/guides/protocols/): A list of protocols supported by NodeBalancers
 
@@ -26,6 +26,12 @@ tab_group_main:
 - [Client IP Address Pass-through](/docs/products/networking/nodebalancers/guides/client-ip/): Learn the methods of retaining client connection details and passing them to backend nodes on a NodeBalancer.
 
 - [Proxy Protocol](/docs/products/networking/nodebalancers/guides/proxy-protocol/): Obtain information about a client when using the TCP protocol.
+
+## High Availability Concepts and Tutorials
+
+- [Introduction to High Availability](/docs/guides/introduction-to-high-availability/): Basic overview of high availability, covering redundancy, monitoring, and failover.
+
+- [Host a Website with High Availability](/docs/guides/host-a-website-with-high-availability/): A walk-through on deploying a high availability web application using Gluster (file replication), Galera (MySQL database replication), and a NodeBalancer.
 
 ## Automated Deployment Tutorials
 
