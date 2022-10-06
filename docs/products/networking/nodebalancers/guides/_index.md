@@ -7,33 +7,27 @@ tab_group_main:
 
 ## Basics
 
-- [Configure a NodeBalancer](/docs/products/networking/nodebalancers/guides/configure/): Create a new NodeBalancer and configure it with a backend Linode.
+- [Introduction to Load Balancing](/docs/products/networking/nodebalancers/guides/load-balancing/): Learn the basics of load balancing and how NodeBalancers work.
 
-- [Available Protocols](/docs/products/networking/nodebalancers/guides/protocol/)
+- [Create a NodeBalancers](/docs/products/networking/nodebalancers/guides/create/): Instructions for creating a new NodeBalancer.
 
-- [Health Checks](/docs/products/networking/nodebalancers/guides/health-checks/)
+- [Manage NodeBalancers](/docs/products/networking/nodebalancers/guides/manage/): View, edit, and manage NodeBalancers on your account.
 
-- [Configuring TLS/SSL Certificates](/docs/products/networking/nodebalancers/guides/ssl-configuration/)
+## Configuration
 
-- [Proxy Protocol](/docs/products/networking/nodebalancers/guides/proxy-protocol/)
+- [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/): Edit the port configurations on a NodeBalancer.
 
-## Themes
+- [Configure Backend Nodes (Compute Instances)](/docs/products/networking/nodebalancers/guides/backends/): Manage the settings for backend nodes.
 
-These additional guides explore targeted topics like creating a Linode NodeBalancer using a variety of tools and SSL Configuration.
+- [Available Protocols](/docs/products/networking/nodebalancers/guides/protocols/): A list of protocols supported by NodeBalancers
 
-### NodeBalancer Basics
+- [TLS/SSL Termination](/docs/products/networking/nodebalancers/guides/ssl-termination/): Instructions on configuring TLS/SSL certificates on a NodeBalancer.
 
-- [Understanding NodeBalancers](/docs/guides/what-are-nodebalancers/): Linode offers load balancers as a service (LBaaS) called NodeBalancers. NodeBalancers are built for high availability and designed to be maintenance free after initial configuration.
+- [Client IP Address Pass-through](/docs/products/networking/nodebalancers/guides/client-ip/): Learn the methods of retaining client connection details and passing them to backend nodes on a NodeBalancer.
 
-- [Get Started with NodeBalancers](/docs/guides/getting-started-with-nodebalancers/): Get started with Linode NodeBalancers by using a NodeBalancer to begin managing a simple web application.
+- [Proxy Protocol](/docs/products/networking/nodebalancers/guides/proxy-protocol/): Obtain information about a client when using the TCP protocol.
 
-- [NodeBalancer Reference](/docs/guides/nodebalancer-reference-guide/): A NodeBalancer reference guide with helpful terms and settings.
-
-### Developer Tools
-
-Use these tools to create a Linode NodeBalancer with tools outside of the Cloud Manager.
-
-- [Configure NodeBalancers with the Linode API](/docs/guides/nodebalancers/)
+## Automated Deployment Tutorials
 
 - [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/guides/getting-started-with-load-balancing-on-a-lke-cluster/)
 

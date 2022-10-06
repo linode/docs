@@ -4,9 +4,14 @@ author:
   email: docs@linode.com
 title: "Available Protocols"
 description: "Learn about each of the protocols that are available on NodeBalancers as well as the features and performance they offer."
+published: 2022-10-06
 ---
 
-Each port configured on a NodeBalancer must use one of the available protocols: TCP, HTTP, or HTTPS. The protocol that's selected can determine the performance of your NodeBalancer, the settings available to you, and how to configure the backend machines.
+Each port configured on a NodeBalancer must use one of the following available protocols. The protocol that's selected can determine the performance of your NodeBalancer, the settings available to you, and how to configure the backend machines.
+
+- [TCP](#tcp)
+- [HTTP](#http)
+- [HTTPS](#https)
 
 ## TCP
 
@@ -14,7 +19,7 @@ This mode acts as a TCP pass-through by forwarding all TCP requests to the backe
 can service a high number of connections per second. The TCP protocol operates on the transport layer and supports any higher-layer protocol built on top of TCP/IP.
 
 - Supports HTTP, HTTPS, SSH, SMTP, FTP, DNS, and other application layer protocols
-- Can preserve client IP address details by using Proxy Protocol
+- Can preserve client IP address details by using [Proxy Protocol](/docs/products/networking/nodebalancers/guides/proxy-protocol/)
 - Operates on the transport layer (layer 4 of the OSI model)
 
 ## HTTP
@@ -31,6 +36,7 @@ When the HTTP protocol is selected, the HTTP request is terminated on the NodeBa
 
 HTTPS protocol contains the same functionality and support as the HTTP protocol, but requests between the client's machine and the NodeBalancer are encrypted using the TLS (or SSL) protocol. Since encrypted HTTPS requests are terminated on the NodeBalancer, you must add your TLS/SSL certificate to the NodeBalancer itself (instead of your backend machines). Once the HTTPS request is decrypted, the NodeBalancer sends unencrypted HTTP requests to the backend machines.
 
+- Same core functionality as [HTTP](#http)
 - Supports TLS v1.2 and v1.3
 - Requires a compatible TLS/SSL certificate and the associated private key
 - HTTPS requests are terminated and decrypted on the NodeBalancer and traffic to the backend machines is unecnrypted
