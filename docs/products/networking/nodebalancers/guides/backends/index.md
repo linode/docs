@@ -50,7 +50,7 @@ Each backend node contains the following configuration parameters.
 By default, all backends are allocated traffic according to the configuration settings of the NodeBalancer, provided the backends have a status of *up*. To change this behavior, use the **Mode** setting to modify how a backend accepts or rejects traffic.
 
 - **Accept**: Accept incoming connections
-- **Reject**: Reject new incoming connections and discontinue health checks on this backend. Existing connections remain active, but session stickiness is not respected. Useful for taking the backend out of rotation to perform maintenance or decommision it.
+- **Reject**: Reject new incoming connections and discontinue health checks on this backend. Existing connections remain active, but session stickiness is not respected. Useful for taking the backend out of rotation to perform maintenance or decommission it.
 - **Drain**: Only accept connections from clients whose session stickiness points to this backend. Use *in advance* of taking a backend out of rotation for maintenance or decommissioning to gradually drain connections.
 - **Backup**: Only accept connections if all other backends are down. Useful if you use frontend caching servers, such as Varnish, and want to direct traffic to the origin servers if the caching servers are down.
 
@@ -69,7 +69,7 @@ Each backend node has a status of *up* or *down*.
 
 When adding a Compute Instance as a *Backend Node* to a NodeBalancer, you must also ensure that it has been properly configured for your application. As part of this, review the following:
 
-- Install all required softare on the Compute Instance.
+- Install all required software on the Compute Instance.
 
 - Verify that any required data has been properly replicated on the Compute Instance. There are many different methods of ensuring data is properly replicated between multiple servers.
 

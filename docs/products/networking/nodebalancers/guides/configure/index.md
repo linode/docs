@@ -13,7 +13,7 @@ tags: ["linode platform","networking"]
 aliases: ['/nodebalancers/reference/','/platform/nodebalancer/nodebalancer-reference-guide-new-manager/','/platform/nodebalancer/nodebalancer-reference-guide/','/linode-platform/nodebalancer-reference/','/platform/nodebalancer/nodebalancer-reference-guide-classic-manager/','/guides/nodebalancer-reference-guide/']
 ---
 
-NodeBalancers, and load balancers in general, operate by taking inbound traffic over certain ports and distributing that traffic to pre-defined backend instances. For NodeBalancers, the settings that accomodate this behavior are all stored within *Configurations*. Each configuration specifies the inbound port, the protocol, the load balancing algorithm, heath checks, and the backend nodes. This guide covers how to add or edit these configurations as well as the options that are available.
+NodeBalancers, and load balancers in general, operate by taking inbound traffic over certain ports and distributing that traffic to pre-defined backend instances. For NodeBalancers, the settings that accommodate this behavior are all stored within *Configurations*. Each configuration specifies the inbound port, the protocol, the load balancing algorithm, heath checks, and the backend nodes. This guide covers how to add or edit these configurations as well as the options that are available.
 
 ## Add or Edit Configurations
 
@@ -39,14 +39,14 @@ This is the *inbound* port that the NodeBalancer is listening on. This can be an
 
 The protocol can be set to either TCP, HTTP, or HTTPS. A brief description of each is provided below, but review [Available Protocols](/docs/products/networking/nodebalancers/guides/protocols/) for more complete information.
 
-- **TCP**: Supports most application-layer protocols, including HTTP and HTTPS. This should be selected when you want to enable layer 4 load balancing, use TLS/SSL passthrough, use HTTP/2.0 or higher, balance non-HTTP services, or make use of [Proxy Protocol](#proxy-protocol). Since the NodeBalancer serves as a pass-through for these TCP packets, any encrypted traffic is preserved and must be decrypted on the backend nodes.
+- **TCP**: Supports most application-layer protocols, including HTTP and HTTPS. This should be selected when you want to enable layer 4 load balancing, use TLS/SSL pass-through, use HTTP/2.0 or higher, balance non-HTTP services, or make use of [Proxy Protocol](#proxy-protocol). Since the NodeBalancer serves as a pass-through for these TCP packets, any encrypted traffic is preserved and must be decrypted on the backend nodes.
 
 - **HTTP:** Unencrypted web traffic using HTTP/1.1. This terminates the HTTP request on the NodeBalancer, allowing the NodeBalancer to create a new HTTP request to the backend machines. This can be used when serving most standard web applications, especially if you intend on configuring the NodeBalancer to use HTTPS mode with TLS/SSL termination.
 
 - **HTTPS:** Encrypted web traffic using HTTP/1.1. Since this terminates the request on the NodeBalancer, it also terminates the TLS/SSL connection to decrypt the traffic. Use this if you wish configure TLS/SSL certificates on the NodeBalancer and not on individual backend nodes.
 
     {{< note >}}
-Since TLS/SSL connections are terminated on the NodeBalancer, all traffic to backend nodes over the private data center network uses the HTTP protocol and is unecrypted. The backends should listen to the NodeBalancer over HTTP, not HTTPS.
+Since TLS/SSL connections are terminated on the NodeBalancer, all traffic to backend nodes over the private data center network uses the HTTP protocol and is *not* encrypted. The backends should listen to the NodeBalancer over HTTP, not HTTPS.
 {{< /note >}}
 
 ### Proxy Protocol
@@ -74,7 +74,7 @@ This controls how subsequent requests from the same client are routed when selec
 
 - **None**: No session information is saved and requests are routed in only accordance with the *algorithm* (see [Algorithm](#algorithm) above).
 
-- **Table**: This preserves the initial backend selected for an IP address by the chosen alorithm. Subsequent requests by the same client are routed to that backend, when possible. This map is stored within the NodeBalancer and expires after 30 minutes from when it was added. If a backend node goes offline, entries in the table for that backend are removed. When a client sends a new request, it is then rerouted to another backend node (in accordance with the chosen algorithm) and a new entry is created in the table.
+- **Table**: This preserves the initial backend selected for an IP address by the chosen algorithm. Subsequent requests by the same client are routed to that backend, when possible. This map is stored within the NodeBalancer and expires after 30 minutes from when it was added. If a backend node goes offline, entries in the table for that backend are removed. When a client sends a new request, it is then rerouted to another backend node (in accordance with the chosen algorithm) and a new entry is created in the table.
 
 - **HTTP Cookie**: *Requires the configuration protocol be set to HTTP or HTTPS.* The NodeBalancer stores a cookie (named `NB_SRVID`) on the client that identifies the backend the client is initially routed to. Subsequent requests by the same client are routed to that backend, when possible. If a backend node goes offline, the request is rerouted to another backend node (in accordance with the chosen algorithm) and the cookie is rewritten with the new backend identifier.
 
@@ -88,7 +88,7 @@ If session persistence is required or desired for the application, it is recomme
 
 When the *HTTPS* protocol is selected, the **Certificate** and **Private Key** fields appear and must be properly configured.
 
-- **Certificate**: The TLS/SSL certificate (and ceriticate chain) that has been obtainined for the application.
+- **Certificate**: The TLS/SSL certificate (and certificate chain) that has been obtained for the application.
 
 - **Private Key**: The passphraseless private key that is associated with the certificate file.
 

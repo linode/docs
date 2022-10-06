@@ -27,7 +27,7 @@ Within the **Label** field, enter the label you wish to use identify it from oth
 
 ## Select a Region
 
-Select the **region** where the database cluster will reside. Regions correspond with individual data centers, each located in a different geographical area. Select the region where you've deployted the Compute Instances you intend on using with this NodeBalancer. If you haven't yet deployed Compute Instances or chosen a region, select the region closest to you and/or your customers. This helps reduce latency and can make a significant impact in connection speeds and quality.
+Select the **region** where the database cluster will reside. Regions correspond with individual data centers, each located in a different geographical area. Select the region where you've deployed the Compute Instances you intend on using with this NodeBalancer. If you haven't yet deployed Compute Instances or chosen a region, select the region closest to you and/or your customers. This helps reduce latency and can make a significant impact in connection speeds and quality.
 
 - [Global Infrastructure](https://www.linode.com/global-infrastructure/)
 - [Speed Tests for Data Centers](https://www.linode.com/speed-test/)
@@ -35,10 +35,10 @@ Select the **region** where the database cluster will reside. Regions correspond
 
 ## Add and Configure Ports
 
-To start load balacing traffic, you need to define which ports the NodeBalancer should listen to and how the incoming traffic should be routed to the backend nodes. These ports can be configured within the **NodeBalancer Settings** area. By default, a single port configuration is visible in this area. Additional ports can be added by clicking the **Add another Configuration** button. See [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/) for more details regarding each of these settings.
+To start load balancing traffic, you need to define which ports the NodeBalancer should listen to and how the incoming traffic should be routed to the backend nodes. These ports can be configured within the **NodeBalancer Settings** area. By default, a single port configuration is visible in this area. Additional ports can be added by clicking the **Add another Configuration** button. See [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/) for more details regarding each of these settings.
 
 - **Port:** Enter the *inbound* port the NodeBalancer should listen to. This can be any port from 1 through 65534 and should align with the port the client connects to. See [Configuration Options > Port](/docs/products/networking/nodebalancers/guides/configure/#port).
-- **Protocol:** Select *TCP*, *HTTP*, or *HTTPS*. For many applications, using *TCP* offers the most flexibility and allows for TLS pass through. Using *HTTP* and *HTTPS* offers some additinal NodeBalancer options and allows for TLS termination. See [Configuration Options > Protocol](/docs/products/networking/nodebalancers/guides/configure/#protocol).
+- **Protocol:** Select *TCP*, *HTTP*, or *HTTPS*. For many applications, using *TCP* offers the most flexibility and allows for TLS pass through. Using *HTTP* and *HTTPS* offers some additional NodeBalancer options and allows for TLS termination. See [Configuration Options > Protocol](/docs/products/networking/nodebalancers/guides/configure/#protocol).
 - **Proxy Protocol:** *Only visible when the *TCP* protocol is selected.* Used for sending the client IP address to the backend nodes. See [Configuration Options > Proxy Protocol](/docs/products/networking/nodebalancers/guides/configure/#proxy-protocol).
 - **Algorithm:** Controls how new connections are allocated across backend nodes. See [Configuration Options > Algorithm](/docs/products/networking/nodebalancers/guides/configure/#algorithm).
 - **Session Stickiness:** Controls how subsequent requests from the same client are routed when selecting a backend node. See [Configuration Options > Session Stickiness](/docs/products/networking/nodebalancers/guides/configure/#session-stickiness).

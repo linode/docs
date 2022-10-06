@@ -39,5 +39,5 @@ HTTPS protocol contains the same functionality and support as the HTTP protocol,
 - Same core functionality as [HTTP](#http)
 - Supports TLS v1.2 and v1.3
 - Requires a compatible TLS/SSL certificate and the associated private key
-- HTTPS requests are terminated and decrypted on the NodeBalancer and traffic to the backend machines is unecnrypted
+- HTTPS requests are terminated and decrypted on the NodeBalancer and traffic to the backend machines is *not* encrypted.
 - Has the most overhead of all the protocol options, which means that it is less performant and accommodates fewer connections per second.
