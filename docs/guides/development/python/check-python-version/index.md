@@ -20,15 +20,15 @@ external_resources:
 - '[LearnPython: How to Check Your Python Version](https://learnpython.com/blog/check-python-version/)'
 ---
 
-Python reigns as one of the most popular programming languages. Likely your system already has at least one version of Python installed, with a wide range of programs and developer tools relying on it.
+Python reigns as one of the most popular programming languages, with a wide range of programs and developer tools relying on it. In fact, your system likely already has at least one version of Python installed.
 
-But many tools and Python development libraries require particular versions of Python. You may thus want to know where you can look to get information on your installed Python version. This can help you make decisions about compatibility, upgrades, and more.
+Many tools and Python development libraries require a particular version of Python. Thus, you may want to know where you can find information on your installed Python version. This can help you make decisions about compatibility, upgrades, and more.
 
-This tutorial shows you how to check your Python version, for both Python 2 and Python 3. Here, you can find the command line method as well as a Python script method for getting the current Python version.
+This tutorial shows you how to check your Python version, for both Python 2 and Python 3. Here, you can find the command line method as well as a Python script method for retrieving the current Python version.
 
 ## How to Check the Python Version from the Command Line
 
-The Python command comes with a command-line option of `--version` that allows you to see your installed version of Python from the command line.
+The Python command comes with a command line option of `--version` that allows you to see your installed version.
 
 It works just as straightforwardly as it sounds. Enter the following command from your command line, and you should get an output similar to the one shown below:
 
@@ -42,9 +42,9 @@ Python 3.8.10
 
 Some systems distinguish between Python 2 and Python 3 installations. In these cases, to check your version of Python 3, you need to use the command `python3` instead of `python`.
 
-In fact, some systems use the `python3` command even when they do not have Python 2 installed alongside Python 3. In these cases, you only have the `python3` command, not the `python` command.
+In fact, some systems use the `python3` command even when they do not have Python 2 installed alongside Python 3. In these cases, you only have the `python3` command.
 
-The command for checking the installed version of Python 3 remains otherwise the same — just use `python3` with the `--version` option:
+The command for checking the installed version of Python 3 remains otherwise the same - just use `python3` with the `--version` option:
 
     python3 --version
 
@@ -56,7 +56,7 @@ Both options work equally well regardless of your system. The choice of which op
 
 ### Using sys
 
-The `sys` module has a variable that you can reference to get the current Python version. Below you can see an example of how the `sys` module's `version` variable renders the current Python version. This code first imports the `sys` module then prints out the contents of the `version` variable:
+The `sys` module has a variable you can reference to get the current Python version. Below you can see an example of how the `sys` module's `version` variable renders the current Python version. This code first imports the `sys` module then prints out the contents of the `version` variable:
 
 ```python
 import sys
