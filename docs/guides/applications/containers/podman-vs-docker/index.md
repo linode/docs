@@ -130,5 +130,3 @@ Start moving forward with Podman by checking out our guide [How to Install Podma
 ## Conclusion
 
 You now have the knowledge needed to make a decision between Podman and Docker. Both are OCI-compliant containerization tools, each offering particular advantages. Each tool stands as a robust option for running, deploying, and managing containers. Which one you choose comes down to what particular features and use cases you need to cover.
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
