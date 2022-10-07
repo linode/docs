@@ -29,6 +29,8 @@
 
         hugo server
 
+    Note: The first time Hugo is run on your workstation, it needs to compile a cache of web-optimized images for each guide in the documentation library. This process can take 10-20 minutes. If you run Hugo again in the future, the cache from your first build is reused and the startup time is much faster.
+
 1. In a web browser, navigate to `localhost:1313/docs/`.
 
 ## How can I write a guide?
