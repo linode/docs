@@ -21,7 +21,7 @@ external_resources:
 - "[high0verEngineering: Let's Bun! - A New JavaScript Runtime](https://jenil777007.hashnode.dev/lets-bun)"
 ---
 
-Bun introduces a new JavaScript runtime with exceptional performance, built-in bundling and transpiling, and first-class support for TypeScript and JSX. This up-and-coming tool promises to be an asset for JavaScript developers and a strong competitor to Node.js and Deno.
+Bun introduces a new JavaScript runtime with exceptional performance, built-in bundling & transpiling, and first-class support for TypeScript & JSX. This up-and-coming tool promises to be an asset for JavaScript developers and a strong competitor to Node.js and Deno.
 
 In this tutorial, learn about the Bun JavaScript runtime and how it compares to other runtimes, like Node.js and Deno. See how to set up Bun on your own system, and follow along to build an example React application with it.
 
@@ -31,13 +31,13 @@ In this tutorial, learn about the Bun JavaScript runtime and how it compares to 
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-1. Update your system.
+1.  Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    -   **Debian** and **Ubuntu**:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    -   **AlmaLinux**, **CentOS Stream** (8 or later), **Fedora**, and **Rocky Linux**:
 
             sudo dnf upgrade
 
@@ -47,33 +47,33 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## What Is Bun?
 
-[Bun](https://bun.sh/) enters the field of JavaScript runtimes opposite options like Node.js and Deno. The Bun runtime stands out for its speed — it is built on the JavaScriptCore engine and is lightning fast — and its built-in bundling and transpiling features.
+[Bun](https://bun.sh/) enters the field of JavaScript runtimes opposite options like Node.js and Deno. Built on the lightning-fast JavaScriptCore engine, the Bun runtime stands out for its speed and built-in bundling & transpiling features.
 
-These next sections aim to make you more familiar with Bun and what it has to offer. Keep reading to learn more about JavaScript runtimes, about what Bun has to offer, and about how it stacks up against its main competitors.
+These next sections aim to make you more familiar with Bun and what it has to offer. Keep reading to learn more about JavaScript runtimes, what Bun has to offer, and how it stacks up against its main competitors.
 
 ### What Are JavaScript Runtimes?
 
 First off, JavaScript runtimes are tools that allow you to run JavaScript outside of a browser. With a JavaScript runtime, you can use JavaScript to build things like server, desktop, and mobile applications.
 
-So far, the predominant JavaScript runtime has by far been Node.js. Built on the V8 JavaScript engine behind Google Chrome, Node.js has been the default JavaScript runtime for many developers.
+So far, the predominant JavaScript runtime by far is Node.js. Built on the V8 JavaScript engine behind Google Chrome, Node.js is the default JavaScript runtime for many developers.
 
-Recently, the creator of Node.js put out a new JavaScript runtime, Deno. The Deno runtime, like Node.js, is built on the V8 JavaScript engine. But Deno introduces numerous fundamental improvements to Node.js — in terms of security, performance, and more. It also adds first-class support for TypeScript and JSX.
+Recently, the creator of Node.js put out a new JavaScript runtime, Deno. The Deno runtime, like Node.js, is built on the V8 JavaScript engine. However, Deno introduces numerous fundamental improvements to Node.js in terms of security, performance, and more. It also adds first-class support for TypeScript and JSX.
 
 ### The Bun Runtime
 
 The Bun runtime arose with a fresh approach to JavaScript runtimes. Developed using the Zig programming language, Bun constructs its runtime on the JavaScriptCore engine, used behind the Safari web browser. The result is an incredibly fast runtime.
 
-Additionally, Bun has built-in handling for bundling and transpiling. With other runtimes, you need to rely on outside tools for bundling your JavaScript projects and for transpiling code from one language into JavaScript. Bun handles all of these features.
+Additionally, Bun has built-in handling for bundling and transpiling. With other runtimes, you need to rely on outside tools for bundling your JavaScript projects and for transpiling code from another language into JavaScript. Bun handles all of these features.
 
-Bun's runtime implements the Node.js algorithm for resolving modules, meaning that Bun can make use of NPM packages as well. Bun's bundler can find and install packages from the vast NPM repository and manage their dependencies, give you a full-featured and seamless bundler.
+Bun's runtime implements the Node.js algorithm for resolving modules, meaning that Bun can make use of NPM packages as well. Bun's bundler can find and install packages from the vast NPM repository and manage their dependencies, giving you a full-featured and seamless bundler.
 
-And finally, like Deno, Bun comes with first-class support for the TypeScript and JSX languages.
+Like Deno, Bun also comes with first-class support for the TypeScript and JSX languages.
 
 ### Bun vs Node.js and Deno
 
-Bun offers some of the same advantages over Node.js as Deno. It includes first-class support for TypeScript and JSX and offers performance and quality-of-life improvements.
+Bun offers some of the same advantages over Node.js as Deno. Besides the aforementioned first-class support for TypeScript and JSX, both offer performance and quality-of-life improvements over Node.js.
 
-But the Bun runtime also aims to exceed Deno itself in terms of performance. Bun's use of the JavaScriptCore engine has allowed Bun to achieve immense speed gains in its execution of JavaScript programs.
+However, the Bun runtime also aims to exceed Deno in terms of performance. Bun's use of the JavaScriptCore engine has allowed Bun to achieve immense speed gains in its execution of JavaScript programs.
 
 With Bun, you also get simplified tooling. Bun includes transpiling and bundling features, which keeps you from having to adopt and maintain separate tools for those tasks.
 
@@ -93,13 +93,13 @@ On a CentOS Stream 9 system, for instance, you could expect an output like the f
 
 For reference, here are versions of some popular Linux distributions that use at least version 5.1 of the Linux kernel:
 
-- CentOS Stream 9 or newer
+-   CentOS Stream 9 or newer
 
-- Debian 11 or newer
+-   Debian 11 or newer
 
-- Fedora 34 or newer
+-   Fedora 34 or newer
 
-- Ubuntu 20.04 or newer
+-   Ubuntu 20.04 or newer
 
 Bun can be installed using an installation script. The command below accesses the script and runs it in your shell session:
 
@@ -107,15 +107,15 @@ Bun can be installed using an installation script. The command below accesses th
 
 The Bun installation script requires that you have Unzip installed on your system. You can install Unzip using one of the following commands:
 
-- On Debian and Ubuntu systems, use:
+-   **Debian** and **Ubuntu**:
 
         sudo apt install unzip
 
-- On CentOS, Fedora, and similar systems, use:
+-   **AlmaLinux**, **CentOS Stream**, **Fedora**, and **Rocky Linux**:
 
         sudo dnf install unzip
 
-Once finished, the Bun installation script displays a success message.
+Once finished, the Bun installation script displays a success message:
 
 {{< output >}}
 bun was installed successfully to /home/example-user/.bun/bin/bun
@@ -141,7 +141,7 @@ Like NPM, Bun can be used to create and manage application projects. To give you
 
 The example adds to the base React template a simple analog clock widget, which lets you see more of how Bun manages project dependencies.
 
-1. Create a new Bun project. This is done by giving the `bun create` command with a template name and project folder.
+1.  Create a new Bun project. This is done by giving the `bun create` command with a template name and project folder.
 
     You can get a list of some useful available templates by running the `create` command without any arguments:
 
@@ -155,27 +155,31 @@ The example adds to the base React template a simple analog clock widget, which 
 
         cd example-react-app
 
-1. This already gives you a working React application. You can see the application in action by navigating to `localhost:3000` in your browser.
+1.  This already gives you a working React application, you just need to start it:
+
+        bun dev
+
+1.  You can see the application in action by navigating to `localhost:3000` in your browser.
 
     To see the application remotely, you can use an SSH tunnel.
 
-    - On Windows, use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Setting up an SSH Tunnel with Your Linode for Safe Browsing](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/#windows) guide, replacing the example port number there with `3000`.
+    -   On Windows, use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Setting up an SSH Tunnel with Your Linode for Safe Browsing](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/#windows) guide, replacing the example port number there with `3000`.
 
-    - On macOS or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address:
+    -   On macOS or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address:
 
             ssh -L3000:localhost:3000 example-user@192.0.2.0
 
     ![Default React application](example-app-default.png)
 
-    Use the *Ctrl* + *C* key combination to stop Bun when you are finished using the application.
+1.  Use the **CTRL+C** key combination to stop Bun when you are finished viewing the application.
 
-1. Add an NPM package to your project. You can do so using the `bun add` command followed by the package name.
+1.  Add an NPM package to your project. You can do so using the `bun add` command followed by the package name.
 
     This example uses the `react-clock` package, which allows you to easily render an analog clock for your React application:
 
         bun add react-clock
 
-1. Modify the `src/App.jsx` file to incorporate the `react-clock`. This file is the basis for the default React application. Below, you can see an example of relatively simple modifications to this file to incorporate the `react-clock`. Spots that have been modified have been prefaced with explanatory comments:
+1.  Modify the `src/App.jsx` file to incorporate the `react-clock`. This file is the basis for the default React application. Below, you can see an example of relatively simple modifications to this file to incorporate the `react-clock`. Spots that have been modified have been prefaced with explanatory comments:
 
     {{< file "src/App.jsx" jsx >}}
 import logo from "./logo.svg";
@@ -218,7 +222,7 @@ function App() {
 export default App;
     {{< /file >}}
 
-1. Start up the application with Bun again:
+1.  Start up the application with Bun again:
 
         bun dev
 
