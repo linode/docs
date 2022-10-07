@@ -7,7 +7,6 @@ contributor:
   name: Tyler Langlois
   link: https://tjll.net
 description: "This guide shows how to install all three Elastic Stack components to explore Apache web server logs in Kibana."
-og_description: "This guide shows how to install all three Elastic Stack components to explore Apache web server logs in Kibana."
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: ["apache ubuntu 18.04", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]
@@ -17,9 +16,7 @@ image: VisApacheWSL_ES_Ubuntu1804.png
 modified: 2021-03-26
 modified_by:
   name: Linode
-title: "Visualizing Apache Logs With Elastic Stack on Ubuntu 18.04"
-h1_title: "Visualizing Apache Logs Using the Elastic Stack on Ubuntu 18.04"
-enable_h1: true
+title: "Visualize Apache Logs With Elastic Stack on Ubuntu 18.04"
 dedicated_cpu_link: true
 tags: ["ubuntu","analytics","database","monitoring","apache"]
 relations:

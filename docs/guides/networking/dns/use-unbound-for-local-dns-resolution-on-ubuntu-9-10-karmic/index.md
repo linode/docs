@@ -13,7 +13,7 @@ modified: 2013-07-15
 modified_by:
   name: Linode
 published: 2010-09-07
-title: 'Use Unbound for Local DNS Resolution on Ubuntu 9.10 (Karmic)'
+title: 'Use Unbound for Local DNS Resolution on Ubuntu 9.10'
 relations:
     platform:
         key: unbound-local-dns-resolution
