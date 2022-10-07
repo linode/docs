@@ -1,7 +1,7 @@
 ---
 slug: linux-static-ip-configuration
 deprecated: true
-deprecated_link: docs/guides/manual-network-configuration/
+deprecated_link: 'guides/manual-network-configuration/'
 author:
   name: Linode
   email: docs@linode.com
