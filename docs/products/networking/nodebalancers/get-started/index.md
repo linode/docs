@@ -14,25 +14,6 @@ published: 2015-02-12
 modified: 2022-10-07
 ---
 
-## Deploy an Application
-
-When thinking of implementing load balancing or high availability solutions, the main focus should be the needs of the application.
-
-To start, determine which application you would like to load balance. If you do not yet have an application in mind but would like to test, consider deploying a LAMP or LEMP stack on the Linode Marketplace.
-
-## Create a NodeBalancer
-
-## Configure the Backends
-
-
-
-
-
-
-
-
-## Old
-
 Nearly all applications that are built using Linodes can benefit from load balancing, and load balancing itself is the key to expanding an application to larger numbers of users. Linode provides NodeBalancers, which can ease the deployment and administration of a load balancer.
 
 This guide provides a high-level overview setting up a NodeBalancer, but it's outside this page's scope to explain each application a NodeBalancer could balance. For more information on various applications that might be useful behind NodeBalancer, see the rest of [Linode Guides & Tutorials on NodeBalancers](/docs/guides/platform/nodebalancer/).
