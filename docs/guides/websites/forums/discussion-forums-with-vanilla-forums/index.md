@@ -17,7 +17,7 @@ deprecated: true
 
 Vanilla is a lightweight and flexible web-based discussion forum engine. Written against the popular LAMP stack, Vanilla combines simplicity and ease of use with a rich and customizable feature set.
 
-Before beginning this guide we assume that you have completed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). To complete this guide, you must also install a web server. This guide will assume that you have completed the appropriate [LAMP guide](/docs/web-servers/lamp/) for your operating system.
+Before beginning this guide we assume that you have completed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). To complete this guide, you must also install a web server. This guide will assume that you have completed the appropriate [LAMP guide](/docs/web-servers/lamp/) for your operating system.
 
 ## Installing Prerequisites
 

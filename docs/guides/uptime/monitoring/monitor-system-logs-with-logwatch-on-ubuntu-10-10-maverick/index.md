@@ -13,7 +13,7 @@ modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2011-04-05
-title: 'Monitor System Logs with Logwatch on Ubuntu 10.10 (Maverick)'
+title: 'Monitor System Logs with Logwatch on Ubuntu 10.10'
 relations:
     platform:
         key: install-logwatch-monitoring
@@ -25,7 +25,7 @@ relations:
 
 Logwatch is a utility used to monitor system logs and create reports. These reports include failed login attempts, successful login attempts, and storage space used/available.
 
-Before installing Logwatch, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before installing Logwatch, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Update System Packages
 

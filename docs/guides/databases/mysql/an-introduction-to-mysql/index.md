@@ -51,7 +51,7 @@ The MySQL client enables users to connect with a MySQL server, either on the sam
 
 The standard MySQL command line client utility is named `mysql`. It can be installed without the server component using the command `yum install mysql` or `apt-get install mysql-client`. To access the MySQL client, use the command `mysql <database_name>`. The username, password, and server IP address can be specified using additional parameters.
 
-When the user successfully logs in, the client displays the MySQL prompt `mysql>`. The user can then run SQL commands. For more information about installing and using MySQL, consult the Linode guide on [How to Connect to a MySQL or MariaDB Database](/docs/guides/connect-to-a-mysql-or-mariadb-database/).
+When the user successfully logs in, the client displays the MySQL prompt `mysql>`. The user can then run SQL commands. For more information about installing and using MySQL, consult the Linode guide on [How to Connect to a MySQL or MariaDB Database](/docs/guides/mysql-command-line-client/).
 
 ## What is MySQL Used For?
 

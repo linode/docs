@@ -12,7 +12,7 @@ modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2012-10-08
-title: 'Use MongoDB to Store Application Data on Ubuntu 12.04 (Precise)'
+title: 'Use MongoDB to Store Application Data on Ubuntu 12.04'
 relations:
     platform:
         key: use-mongodb-store-app-data

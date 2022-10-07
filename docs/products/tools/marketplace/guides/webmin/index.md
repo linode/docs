@@ -46,7 +46,7 @@ aliases: ['/platform/marketplace/how-to-deploy-webmin-with-marketplace-apps/', '
 #### Additional Security Configuration
 
 - **Configure automatic security updates?** Select **Yes** to enable [automatic security updates](/docs/guides/set-up-and-secure/#automatic-security-updates) for your Linode.
-- **Use fail2ban to prevent automated instrusion attempts?** Select **Yes** to enable [SSH login protection with Fail2Ban](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/) as an additional security measure.
+- **Use fail2ban to prevent automated instrusion attempts?** Select **Yes** to enable [SSH login protection with Fail2Ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/) as an additional security measure.
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **SOA Email for your domain** The email address to register as your Start of Authority (SOA). This field is required for creating DNS records for a new domain.
@@ -60,7 +60,7 @@ Webmin is now installed and ready to use.
 1.  If you filled out the optional Webmin configuration fields:
 
     - In the Cloud Manager [DNS Manager](/docs/guides/dns-manager/#add-a-domain), confirm that there is now an entry for your domain with possible subdomain, MX, and SPF records pointing to your new server.
-    - [Configure rDNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/) on your Linode to point to your new domain name.
+    - [Configure rDNS](/docs/guides/configure-your-linode-for-reverse-dns/) on your Linode to point to your new domain name.
 
 1.  Webmin is served on port 10000. To access Webmin, navigate to either the IP address of your server, or to your domain name followed by port 10000. For example, entering `http://example.com:10000` or `http://203.0.113.0:10000` while replacing the domain name or IP address with values for your server will allow you to reach the Webmin login screen.
 

@@ -55,7 +55,7 @@ Using either the Linode Kubernetes Engine or Terraform methods above will instal
 {{< caution >}}
 The instructions in this section will create a Block Storage volume billable resource on your Linode account. A single volume can range from 10 GB to 10,000 GB in size and costs $0.10/GB per month or $0.00015/GB per hour. If you do not want to keep using the Block Storage volume that you create, be sure to delete it when you have finished the guide.
 
-If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/guides/billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{</ caution >}}
 
 A *Persistent Volume Claim* (PVC) consumes a Block Storage Volume. To create a PVC, create a manifest file with the following YAML:
@@ -257,7 +257,7 @@ To delete the Block Storage PVC created in this guide:
         kubectl delete pvc pvc-example
 
     {{< note >}}
-If you used the `linode-block-storage-retain` StorageClass when creating your PVC, this command will delete the PVC, however, your Block Storage Volume and its data will persist in a detached state. To permanently remove the Block Storage Volume from your Linode Account, see [How to Delete a Block Storage Volume](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#how-to-delete-a-block-storage-volume).
+If you used the `linode-block-storage-retain` StorageClass when creating your PVC, this command will delete the PVC, however, your Block Storage Volume and its data will persist in a detached state. To permanently remove the Block Storage Volume from your Linode Account, see [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/).
 
 If, instead, you used the `linode-block-storage` StorageClass when creating your PVC, this command will delete the PVC along with your Block Storage Volume and its data.
     {{</ note >}}

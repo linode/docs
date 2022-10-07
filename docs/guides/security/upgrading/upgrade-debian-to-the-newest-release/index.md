@@ -38,7 +38,7 @@ You may also want to back up your configuration files (usually located in `/etc/
 
 ## Prepare to Upgrade
 
-1.  Verify that you are booting with Debian's kernel using the *GRUB 2* [boot setting](/docs/platform/how-to-change-your-linodes-kernel/) in the Linode Cloud Manager. We recommend you use the distribution-supplied kernel unless you have a specific reason not to.
+1.  Verify that you are booting with Debian's kernel using the *GRUB 2* [boot setting](/docs/guides/managing-the-kernel-on-a-linode/) in the Linode Cloud Manager. We recommend you use the distribution-supplied kernel unless you have a specific reason not to.
 
 2.  Exit the SSH session if you're currently logged in to one and instead open a Lish session to your Linode. Lish will give you continuous access to your Linode whereas SSH could disconnect during the upgrade. Read more about Lish [here](/docs/guides/using-the-lish-console/).
 
@@ -159,4 +159,4 @@ maxretry = 6
 
 ### Upgrading Apache 2.2 to 2.4
 
-Upgrading from Debian 7 to 8 moves Apache from version 2.2 to 2.4. This version change can break existing websites if you're already running Apache and requires adjusting configuration files. See our [Upgrading Apache](/docs/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4/) guide for more information.
+Upgrading from Debian 7 to 8 moves Apache from version 2.2 to 2.4. This version change can break existing websites if you're already running Apache and requires adjusting configuration files. See our [Upgrading Apache](/docs/guides/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4/) guide for more information.

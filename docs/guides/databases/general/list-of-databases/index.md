@@ -130,7 +130,7 @@ The Advantages of using MySQL include:
 - **Free** - this is a free, open-source database that can be installed on as many server instances as you need.
 - **Familiarity** - MySQL uses the SQL query language, so db admins familiar with the language are up to speed in no time with this DBMS. MySQL also follows the typical client/structure architecture.
 - **Speed** - Is one of the fastest relational databases, thanks to a unique storage engine.
-- **Integration** - MySQL enjoys integration into thousands of third-party applications, such as blogging systems, CRMs, HRMs, ERPs, and many other other types of applications.
+- **Integration** - MySQL enjoys integration into thousands of third-party applications, such as blogging systems, CRMs, HRMs, ERPs, and many other types of applications.
 
 Learn [how to install a MySQL instance on a Linode server](/docs/guides/installing-and-configuring-mysql-on-ubuntu-2004/).
 

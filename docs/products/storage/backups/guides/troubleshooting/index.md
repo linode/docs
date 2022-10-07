@@ -35,6 +35,6 @@ To fix this error, you will need to boot into [Rescue Mode](/docs/guides/rescue-
     UUID=41c22818-fbad-4da6-8196-c816df0b7aa8  /disk2p2      ext3    defaults,errors=remount-ro 0       1
   {{< /output >}}
 
-1. Replace the string defining the UUID in the `/etc/fstab` file with the the UUID of the disk you copied from the output of the `blkid` command.
+1. Replace the string defining the UUID in the `/etc/fstab` file with the UUID of the disk you copied from the output of the `blkid` command.
 
 1. After following all of the above steps, you should now be able to reboot your Linode normally.

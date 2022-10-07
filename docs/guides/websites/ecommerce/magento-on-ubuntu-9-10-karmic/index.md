@@ -20,9 +20,9 @@ relations:
            - distribution: Ubuntu 9.10
 ---
 
-Magento is a self hosted e-commerce solution used by many people to sell products online. It runs on a [LAMP stack](/docs/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/) and offers the user a wide variety of options.
+Magento is a self hosted e-commerce solution used by many people to sell products online. It runs on a [LAMP stack](/docs/guides/lamp-server-on-ubuntu-9-10-karmic/) and offers the user a wide variety of options.
 
-Before installing Magento, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) as well as our [LAMP guide](/docs/web-servers/lamp/lamp-server-on-ubuntu-9-10-karmic/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before installing Magento, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) as well as our [LAMP guide](/docs/guides/lamp-server-on-ubuntu-9-10-karmic/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Installing Prerequisites
 
@@ -67,7 +67,7 @@ You'll also need to create a database for Magento, and a user with permission to
     GRANT ALL ON magento.* TO 'mage' IDENTIFIED BY 'password';
     exit
 
-Please see our [MySQL](/docs/databases/mysql/use-mysql-relational-databases-on-ubuntu-9-10-karmic/) document for additional information regarding MySQL.
+Please see our [MySQL](/docs/guides/use-mysql-relational-databases-on-ubuntu-9-10-karmic/) document for additional information regarding MySQL.
 
 Additionally you will want to increase PHP's `memory_limit` setting, by editing the `/etc/php5/cli/php.ini` and `/etc/php5/apache2/php.ini` file as follows:
 
@@ -102,7 +102,7 @@ From here you can point your browser to the URL you installed Magento to. All of
 
 ### SSL Certificates
 
-You may want to install a commercial SSL certificate on your Magento website in order to encrypt the data passed between your customer's computer and your server. After following our [obtaining a commercial SSL certificate](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate/) document, you can set up your SSL certificate in the Administrative Area. After logging in to Magento, scroll over the "System" tab and select "Configuration". Click the "Web" tab on the left-hand side and drop down the "Secure" listing. From here you can alter your Base URL to include the `https` protocol.
+You may want to install a commercial SSL certificate on your Magento website in order to encrypt the data passed between your customer's computer and your server. After following our [obtaining a commercial SSL certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) document, you can set up your SSL certificate in the Administrative Area. After logging in to Magento, scroll over the "System" tab and select "Configuration". Click the "Web" tab on the left-hand side and drop down the "Secure" listing. From here you can alter your Base URL to include the `https` protocol.
 
 ## More Information
 

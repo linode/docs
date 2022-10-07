@@ -45,7 +45,7 @@ If you're using a CentOS version other than 7, replace `7` in the `baseurl` in `
         sudo yum update
         sudo yum install nginx
 
-3.  Ensure NGINX is running and and enabled to start automatically on reboot:
+3.  Ensure NGINX is running and enabled to start automatically on reboot:
 
         sudo systemctl start nginx
         sudo systemctl enable nginx

@@ -6,7 +6,7 @@ author:
 description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
 keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "tax", "taxes", "tax information", "usd", "vat id", "eu", "european union", "value added tax", "gst", "goods and services tax", "gst id", "tax id"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-02-28
+modified: 2022-06-21
 modified_by:
   name: Linode
 published: 2019-04-09
@@ -91,25 +91,27 @@ The following table lists each U.S State and District that requires us to collec
 | -- | -- | -- | -- |
 | Arizona | 5.60% | 0% - 5.6% | May 1st, 2022 |
 | Hawaii | 4% | 0% - 0.5% | May 1st, 2022 |
-| Pennsylvania | 6% | 0% - 2.0% | May 1st, 2022 |
+| Pennsylvania | 6% | 2.0% | May 1st, 2022 |
 | South Dakota | 4.5% | 0.125% - 2.0% | August 1st, 2022 |
 | Texas | 6.25% | 0.125% - 2.0% | May 1st, 2022 |
 | Washington | 6.50% | 0% - 3.9% | May 1st, 2022 |
 | Washington D.C | 6% | N/A | August 1st, 2022 |
 
-
-
 {{< note >}}
 In the United States tax table shown in this section, districts like Washington D.C are addressed in the **State** column.
 {{< /note >}}
 
-## Adding a Tax ID
+## Preventing Tax Collection
 
-If you are a registered business, you may provide Linode with a valid tax ID, such as a VAT identification number (*VAT ID*) or GST identification number (*GST ID*, also referred to as an *ABN* in **Australia** and a *GSTIN* in **India**). Customers outside of the **United States** and **Canada** will not be charged VAT or GST in subsequent invoices once their tax ID is verified. You might choose to do this if your business is tax exempt or if your business is liable to pay taxes directly due to a special tax status or program (like RCM - Reverse Charge Mechanism). Users within the **United States** and **Canada** will need to submit both their tax ID and a state tax exemption or reseller's certificate in a [Support Ticket](https://www.linode.com/support/) before becoming exempt. Registered businesses in **Canada** will _always_ be billed for GST, HST, and QST sales tax. Registered Canadian businesses may become exempt from *PST* sales tax by submitting a valid tax ID and PST certificate.
+For most customers, including those using Linode for most business and personal reasons, it's preferable to have Linode automatically calculate any required taxes and add them to each invoice. That said, some registered businesses or organizations may wish to prevent taxes from being added to their Linode invoices. This includes business that are tax exempt or businesses that are liable to pay taxes directly to their government's tax agency due to a special tax status or program (like RCM - Reverse Charge Mechanism).
+
+In most cases, tax collection can be prevented by [adding a tax ID](#adding-a-tax-id) to your Linode account. Users within the **United States** and **Canada** will need to submit both their tax ID and a state tax exemption or reseller's certificate in a [Support Ticket](https://www.linode.com/support/) before becoming exempt. Registered Canadian businesses may become exempt from *PST* sales tax but will always be billed for GST, HST, and QST sales tax.
 
 {{< caution >}}
-If you are located in one of the countries that require taxes on our services, you are still liable for those taxes. Adding your tax ID does not exempt you from your liability to pay any taxes that have been mandated by your country for our services.
+If you are located in one of the countries that require taxes on our services, you are still liable for those taxes. Adding your tax ID does not exempt you from your liability to pay any taxes that have been mandated by your country for our services. Instead, this allows you to settle your taxes directly with your government's tax agency.
 {{</ caution >}}
+
+### Adding a Tax ID
 
 To add (or update) your account with a tax ID, follow the instructions below. A tax ID can also be added to an account during the signup process.
 
@@ -135,7 +137,7 @@ You may update your tax location by navigating to the **Account** page in the [C
 
 ### My business is tax exempt. How can I stop further taxes from being charged to my Linode account?
 
-If your business or organization is tax exempt, you should add a verifiable tax ID to your Linode account. Once verified, taxes will no longer be added to invoices for customers outside of the **United States** and **Canada**. See [Adding a Tax ID](#adding-a-tax-id). Customers inside the **United States** and **Canada** will additionally need to submit any tax exemption certificates or reseller's certificates by [Opening a Support Ticket](https://www.linode.com/support/) which contains the required information. Registered businesses in **Canada** will always be billed for GST and HST sales tax. Registered Canadian businesses may become exempt from PST sales tax by submitting a valid tax ID and PST certificate.
+If your business or organization is tax exempt, you should add a verifiable tax ID to your Linode account. Once verified, taxes will no longer be added to invoices for customers outside of the **United States** and **Canada**. See [Preventing Tax Collection](#preventing-tax-collection). Customers inside the **United States** and **Canada** will additionally need to submit any tax exemption certificates or reseller's certificates by [Opening a Support Ticket](https://www.linode.com/support/) which contains the required information. Registered businesses in **Canada** will always be billed for GST and HST sales tax. Registered Canadian businesses may become exempt from PST sales tax by submitting a valid tax ID and PST certificate.
 
 ### How can I review the taxes charged on previous invoices?
 
@@ -145,14 +147,20 @@ To view previous invoices, see the [Viewing Invoices and Payments](/docs/guides/
 
 To keep our pricing stable and consistent, rather than fluctuating with exchange rates, we do not bill in local currency. All invoices are in USD.
 
-### What is Linode's Tax ID for my country?
+### What is Linode's Tax ID for my country or province?
 
-| Country and Tax Program | Linode's ID |
+| Country or Province and Tax Program | Linode's ID |
 | -- | -- |
 | Australia ATO ARN | 3000 1606 0612 |
+| British Columbia PST | 1470-0325 |
+| Canadian GST | 724750708RT0001 |
 | EU VAT | EU372008859 |
 | India GST | 9919JEY29001OST |
+| Japan JCT | 00140 |
+| Manitoba RST | 138835-4 |
+| Norway VAT | 2063948 |
+| Quebec Provincial QST (effective May 1, 2022) | 1229663158 TQ0001 |
+| Saskatchewan PST | 759622 |
 | Singapore GST | M90373465T |
 | United Kingdom VAT | GB383720095 |
 | United States EIN | 20-2647179 |
-| Canadian GST | 724750708 |

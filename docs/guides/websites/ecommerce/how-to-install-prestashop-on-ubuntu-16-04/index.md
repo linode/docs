@@ -29,7 +29,7 @@ If you've ever thought about opening an online store, you may have felt overwhel
 
 PrestaShop's ecommerce breadth can make it seem daunting to learn; however, its menus are neatly structured, terms are intuitive, and interface is easily navigable. In addition, customizing your website with PrestaShop's many *What You See Is What You Get* (WYSIWYG) tools makes for a user-friendly set up, without having to inspect and edit source code. Also, PrestaShop comes with many out-of-the-box features and plug-ins that streamline setup and use.
 
-Installing Prestashop on a remote server is more involved and time-consuming than using cloud hosting, but the rewards are greater: you will have better performance, since you have conserved server resources, and greater flexibility, with the freedom to tweak your settings as you see fit. You won't ever have to wait for a cloud-host support team to change PHP settings for you. Furthermore, [high availability](/docs/websites/introduction-to-high-availability/), [load balancing](/docs/platform/nodebalancer/getting-started-with-nodebalancers/), advanced [backup schemes](/docs/platform/disk-images/linode-backup-service/), and other features become easily accessible, allowing you to scale your business and increase your site's reliability.
+Installing Prestashop on a remote server is more involved and time-consuming than using cloud hosting, but the rewards are greater: you will have better performance, since you have conserved server resources, and greater flexibility, with the freedom to tweak your settings as you see fit. You won't ever have to wait for a cloud-host support team to change PHP settings for you. Furthermore, [high availability](/docs/guides/introduction-to-high-availability/), [load balancing](/docs/guides/getting-started-with-nodebalancers/), advanced [backup schemes](/docs/products/storage/backups/), and other features become easily accessible, allowing you to scale your business and increase your site's reliability.
 
 
 ## Before You Begin
@@ -50,7 +50,7 @@ In most cases, you can start out with an Ubuntu 16.04 instance with 1GB of RAM. 
 
 ## Install Apache and MariaDB
 
-This guide will run PrestaShop on a modified LAMP stack using MariaDB instead of MySQL. You can read more about MariaDB and its features [here](https://mariadb.com/kb/en/the-mariadb-library/mariadb-vs-mysql-features/). If you would prefer to use a traditional LAMP stack, please see our guide, [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/).
+This guide will run PrestaShop on a modified LAMP stack using MariaDB instead of MySQL. You can read more about MariaDB and its features [here](https://mariadb.com/kb/en/the-mariadb-library/mariadb-vs-mysql-features/). If you would prefer to use a traditional LAMP stack, please see our guide, [How to Install a LAMP Stack on Ubuntu 16.04](/docs/guides/install-lamp-stack-on-ubuntu-16-04/).
 
 1. Install Apache, PHP, and MariaDB:
 
@@ -271,9 +271,9 @@ max_execution_time = 30
 
 {{< content "email-warning-shortguide" >}}
 
-Setting up mail delivery in PrestaShop is vital because so much happens through email: customer account confirmations, subscriptions, delivery statuses, order confirmations, etc. Although an email server [like this one](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) can be hosted on a Linode, it can be complicated to set up and maintain.
+Setting up mail delivery in PrestaShop is vital because so much happens through email: customer account confirmations, subscriptions, delivery statuses, order confirmations, etc. Although an email server [like this one](/docs/guides/email-with-postfix-dovecot-and-mysql/) can be hosted on a Linode, it can be complicated to set up and maintain.
 
-It's also possible to use an all-in-one solution like [Mail-in-a-Box](/docs/email/how-to-create-an-email-server-with-mail-in-a-box/), but the easiest approach is to use a dedicated solution like [Google Workspace](/docs/guides/using-google-workspace-for-email/) or [Fastmail](https://www.fastmail.com/). This way you can focus on maintaining your store and get dependable email service without worrying about the technical details.
+It's also possible to use an all-in-one solution like [Mail-in-a-Box](/docs/guides/how-to-create-an-email-server-with-mail-in-a-box/), but the easiest approach is to use a dedicated solution like [Google Workspace](/docs/guides/using-google-workspace-for-email/) or [Fastmail](https://www.fastmail.com/). This way you can focus on maintaining your store and get dependable email service without worrying about the technical details.
 
 Once you have decided on an email provider, configure PrestaShop's email system: in the left menu, under **CONFIGURE**, hover over **Advanced Parameters** and click **E-mail** in the submenu. Once the page loads, look for **Set my own SMTP parameters (for advanced users ONLY)**.
 

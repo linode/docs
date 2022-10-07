@@ -67,24 +67,24 @@ After completing this guide, you will have a single-node, production-ready insta
 
 In this section, you will update your Linux system software, install package dependencies, Java, and Cassandra.
 
-1. Install Cassandra, Java, and NTP:
+1.  Install Cassandra, Java, and NTP:
 
         sudo yum update && sudo yum upgrade
         sudo yum install java dsc30 cassandra30-tools
 
-1. Install Python. The Cassandra `cqlsh` interpreter requires Python in order to run. You will use this interpreter in later sections of this guide.
+1.  Install Python. The Cassandra `cqlsh` interpreter requires Python in order to run. You will use this interpreter in later sections of this guide.
 
         sudo dnf install python2
 
 ## Activate Cassandra
 
-1. Enable Cassandra on system boot and verify that it is running:
+1.  Enable Cassandra on system boot and verify that it is running:
 
         sudo systemctl enable cassandra
         sudo systemctl start cassandra
         sudo systemctl -l status cassandra
 
-1. Check the status of the Cassandra cluster:
+1.  Check the status of the Cassandra cluster:
 
         nodetool status
 
@@ -97,31 +97,7 @@ Status=Up/Down
 UN  127.0.0.1  103.51 KiB  256          100.0%            c43a2db6-8e5f-4b5e-8a83-d9b6764d923d  rack1
     {{< /output >}}
 
-    If you receive connection errors, open the `cassandra-env.sh` file in a text editor.
-
-        sudo vim /etc/cassandra/conf/cassandra-env.sh
-
-    Search for `-Djava.rmi.server.hostname=` in the file. Uncomment this line and add your loopback address or public IP address by replacing `<public name>` at the end of the line:
-
-    {{< file "CentOS /etc/cassandra/conf/cassandra-env.sh" bash >}}
-. . .
-
-JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname=<public name>"
-
-. . .
-    {{< /file >}}
-
-    - Restart Cassandra after you've finished updating the `cassandra-env.sh` file:
-
-            sudo systemctl restart cassandra
-
-    - Check the node status:
-
-            nodetool status
-
-        {{< note >}}
-It may take a few seconds for Cassandra to refresh the configuration. If you receive another connection error, try waiting 15 seconds before rechecking the node status.
-        {{< /note >}}
+    If you receive connection errors, see [Troubleshooting Connection Errors](#troubleshooting-connection-errors).
 
 ## Configure Cassandra
 
@@ -157,7 +133,7 @@ permissions_validity_in_ms: 0
 
     More information about this file can be found in the [Cassandra Configuration File](http://cassandra.apache.org/doc/latest/configuration/cassandra_config_file.html) guide in Apache's official documentation.
 
-1. After editing the configuration file restart Cassandra.
+1.  After editing the configuration file restart Cassandra.
 
         sudo systemctl restart cassandra
 
@@ -172,13 +148,13 @@ permissions_validity_in_ms: 0
 
         CREATE ROLE [new_superuser] WITH PASSWORD = '[secure_password]' AND SUPERUSER = true AND LOGIN = true;
 
-1. Log out by typing `exit`.
+1.  Log out by typing `exit`.
 
-1. Log back in with the new superuser account and replace the username and password with your new credentials:
+1.  Log back in with the new superuser account and replace the username and password with your new credentials:
 
         cqlsh -u new-super-user -p my-scecure-password
 
-1. Remove the elevated permissions from the Cassandra account:
+1.  Remove the elevated permissions from the Cassandra account:
 
         ALTER ROLE cassandra WITH PASSWORD = 'cassandra' AND SUPERUSER = false AND LOGIN = false;
         REVOKE ALL PERMISSIONS ON ALL KEYSPACES FROM cassandra;
@@ -252,7 +228,7 @@ encoding = utf8
 
 1.  Save and close the file.
 
-1. Update the `cqlshrc` file and directory with the following permissions:
+1.  Update the `cqlshrc` file and directory with the following permissions:
 
         sudo chmod 440 ~/.cassandra/cqlshrc
         sudo chmod 700 ~/.cassandra
@@ -271,7 +247,7 @@ You can also login by providing your username and password:
 
 In this section, you will update your default cluster name from "Test Cluster" to your desired name.
 
-1. Log into the `cqlsh` control terminal if you are not already logged in.
+1.  Log into the `cqlsh` control terminal if you are not already logged in.
 
         cqlsh -u superuser
 
@@ -279,7 +255,7 @@ In this section, you will update your default cluster name from "Test Cluster" t
 
         UPDATE system.local SET cluster_name = '[new_name]' WHERE KEY = 'local';
 
-1. Type `exit` to return to the Linux command line.
+1.  Type `exit` to return to the Linux command line.
 
 1.  Edit the `cassandra.yaml` file and replace the value in the `cluster_name` variable with the new cluster name you just set.
 
@@ -287,7 +263,7 @@ In this section, you will update your default cluster name from "Test Cluster" t
 
 1.  Save and close.
 
-1. From the Linux terminal (not `cqlsh`) clear the system cache. This command will not disturb your node's data.
+1.  From the Linux terminal (not `cqlsh`) clear the system cache. This command will not disturb your node's data.
 
         nodetool flush system
 
@@ -295,7 +271,7 @@ In this section, you will update your default cluster name from "Test Cluster" t
 
         sudo systemctl restart cassandra
 
-1. Log in with `cqlsh` and verify the new cluster name is visible.
+1.  Log in with `cqlsh` and verify the new cluster name is visible.
 
         cqlsh -u superuser
 
@@ -305,6 +281,34 @@ Connected to my-cluster-name at 127.0.0.1:9042.
 Use HELP for help.
 superuser@cqlsh>
     {{</ output >}}
+
+## Troubleshooting Connection Errors
+
+If you receive connection errors when running `nodetool status`, you may need to manually enter networking information.
+
+1.  Open the `cassandra-env.sh` file in a text editor.
+
+        sudo vim /etc/cassandra/conf/cassandra-env.sh
+
+1.  Search for `-Djava.rmi.server.hostname=` in the file. Uncomment this line and add your loopback address or public IP address by replacing `<public name>` at the end of the line:
+
+    {{< file "/etc/cassandra/conf/cassandra-env.sh" bash >}}
+. . .
+JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname=<public name>"
+. . .
+{{< /file >}}
+
+1.  Restart Cassandra after you've finished updating the `cassandra-env.sh` file:
+
+        sudo systemctl restart cassandra
+
+1.  Check the node status again after the service restarts:
+
+        nodetool status
+
+    {{< note >}}
+It may take a few seconds for Cassandra to refresh the configuration. If you receive another connection error, try waiting 15 seconds before rechecking the node status.
+{{< /note >}}
 
 ## Where To Go From Here
 

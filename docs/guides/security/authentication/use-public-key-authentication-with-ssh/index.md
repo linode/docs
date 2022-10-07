@@ -25,7 +25,7 @@ image: use_public_key_authentication_with_ssh.png
 
 -  If a server that uses SSH keys is compromised by a hacker, no authorization credentials are at risk of being exposed.
 
--  Because a password isn't required at login, you can log into servers from within scripts or automation tools that you need to run unattended. For example, you can set up periodic updates for your servers with a configuration management tool like [Ansible](/docs/applications/configuration-management/running-ansible-playbooks/), and you can run those updates without having to be physically present.
+-  Because a password isn't required at login, you can log into servers from within scripts or automation tools that you need to run unattended. For example, you can set up periodic updates for your servers with a configuration management tool like [Ansible](/docs/guides/running-ansible-playbooks/), and you can run those updates without having to be physically present.
 
 This guide explains how the SSH key login scheme works, how to generate an SSH key, and how to use those keys with a Linode Linux server.
 
@@ -235,7 +235,7 @@ Enter passphrase for key '/root/.ssh/id_rsa':
 
 ## Public Key Authentication with PuTTY on Windows
 
-The following instructions use the [PuTTY](https://www.putty.org) software to connect over SSH, but [other options](/docs/networking/ssh/using-ssh-on-windows/) are available on Windows too.
+The following instructions use the [PuTTY](https://www.putty.org) software to connect over SSH, but [other options](/docs/guides/connect-to-server-over-ssh-on-windows/) are available on Windows too.
 
 ### Generate a Key Pair with PuTTY
 
@@ -350,11 +350,11 @@ Copy the public key to a new file named `id_rsa.pub` in your home folder's `.ssh
 
 ## Disable Password Authentication
 
-The SSH daemon on a Linux server allows you to configure and fine-tune its behavior and security settings. If you have set up SSH keys for all users who need to authenticate to a server, you can disable password authentication in order to further secure the server. While this is a recommended step to take when hardening your server, prior to disabling password authentication, you should make sure that you can reliably access your server using SSH key-pair authentication. To learn how to disable password authentication on a Linux server, see the [SSH Daemon Options](/docs/guides/set-up-and-secure/#ssh-daemon-options) section of our [Setting Up and Securing a Compute Instance](https://www.linode.com/docs/guides/set-up-and-secure/) guide.
+The SSH daemon on a Linux server allows you to configure and fine-tune its behavior and security settings. If you have set up SSH keys for all users who need to authenticate to a server, you can disable password authentication in order to further secure the server. While this is a recommended step to take when hardening your server, prior to disabling password authentication, you should make sure that you can reliably access your server using SSH key-pair authentication. To learn how to disable password authentication on a Linux server, see the [SSH Daemon Options](/docs/guides/set-up-and-secure/#ssh-daemon-options) section of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
 ## Troubleshooting
 
-If your SSH connections are not working as expected, or if you have locked yourself out of your system, review the [Troubleshooting SSH](/docs/troubleshooting/troubleshooting-ssh/) guide for troubleshooting help.
+If your SSH connections are not working as expected, or if you have locked yourself out of your system, review the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) guide for troubleshooting help.
 
 ## Next Steps
 
