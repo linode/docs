@@ -3,107 +3,67 @@ author:
   name: Linode
   email: docs@linode.com
 title: Get Started
-enable_h1: true
+description: "Learn how to quickly start using a NodeBalancer, including advice on architecting your application and configuring the NodeBalancer"
 tab_group_main:
     weight: 30
-description: "This is a step-by-step guide on how to use a NodeBalancer to begin managing a simple web application that can support a large number of users."
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
 tags: ["cloud manager","linode platform","networking","web applications"]
 aliases: ['/nodebalancers/getting-started/','/platform/nodebalancer/getting-started-with-nodebalancers-new-manager/','/platform/nodebalancer/getting-started-with-nodebalancers/','/linode-platform/nodebalancer-howto/','/platform/nodebalancer/getting-started-with-nodebalancers-classic-manager/', '/guides/nodebalancer/getting-started-with-nodebalancers/','/guides/getting-started-with-nodebalancers/']
-published: 2015-02-12
-modified: 2022-10-07
+published: 2022-10-07
 ---
 
-Nearly all applications that are built using Linodes can benefit from load balancing, and load balancing itself is the key to expanding an application to larger numbers of users. Linode provides NodeBalancers, which can ease the deployment and administration of a load balancer.
+Nearly every production application can benefit from a load balancing solution like Linode's NodeBalancers. This guide covers how to get started with NodeBalancers, including how to architect your application, configure the NodeBalancer, and update the DNS.
 
-This guide provides a high-level overview setting up a NodeBalancer, but it's outside this page's scope to explain each application a NodeBalancer could balance. For more information on various applications that might be useful behind NodeBalancer, see the rest of [Linode Guides & Tutorials on NodeBalancers](/docs/guides/platform/nodebalancer/).
+## Prepare the Application
 
-## Before You Begin
+To start using a NodeBalancer and benefiting from load balancing, your application should be stored on at least two Compute Instances. Each instance of your application should be able to fully serve the needs of your users, including being able to respond to web requests, access all necessary files, and query any databases. When determine your application's infrastructure, consider the following components:
 
-- This tutorial assumes a basic understanding of load balancing and NodeBalancers. We recommend reviewing the following guides:
+- **Application deployment:** *How will you deploy your application's code and software infrastructure to each Compute Instance?* Consider using automated git deployments or more advanced CI/CD tooling.
 
-    - [What Are NodeBalancers](/docs/guides/what-are-nodebalancers/)
-    - [Introduction to High Availability](/docs/guides/introduction-to-high-availability/)
-    - Going further: [NodeBalancer Reference Guide](/docs/guides/nodebalancer-reference-guide/)
+- **File storage and synchronization:** *Should the application's files be stored alongside the application's code or should you consider implementing a distribution storage solution on separate instances?* For simple application, consider file synchronization/backup tools like [rsync](https://linux.die.net/man/1/rsync) or [csync2](https://linux.die.net/man/1/csync2). For a more robust solution, consider a distributed file system like [GlusterFS](https://www.gluster.org/).
 
--  To properly configure a NodeBalancer, you must have at least two Linode Compute Instances within the same data center. Both of these servers must also have private IPv4 addresses. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address).
+- **Database replication:** *How will you maintain consistency between multiple databases?* Consider the suggested architecture and available tooling for the database software you intend to use. Linode [Managed Databases](/docs/products/databases/managed-databases/), when deployed with high availability enabled, are a great solution fully-managed solution. Alternatively, [Galera](https://galeracluster.com/) is a self-hosted option that can be used with MySQL.
 
-## Configuring a NodeBalancer
+In some simple applications, the servers that store your application's code can also store its files and databases. For more complex applications, you may want to consider designating separate application servers, file servers, and database servers. The application servers (where the web server software and application code resides) operate as the backends to the NodeBalancer. The file servers and database servers can be built on cloud-based solutions (like Managed Databases) or self-hosted software on Compute Instances.
 
-1.  Visit the NodeBalancers page in the Linode [Cloud Manager](https://cloud.linode.com) and select **Add a NodeBalancer**.
+For advice on load balancing and high availability, review the following resources:
 
-1.  For the example web application, only one NodeBalancer is needed. Add one in the same data center that your backend Linodes are located in.
+- [Introduction to Load Balancing](/docs/products/networking/nodebalancers/guides/load-balancing/)
+- [Introduction to High Availability](/docs/guides/introduction-to-high-availability/)
+- [Host a Website with High Availability](/docs/guides/host-a-website-with-high-availability/)
 
-    ![The NodeBalancer Creation Screen](nodebalancers-create-choose-region.png "The NodeBalancer Creation Screen")
+## Create the NodeBalancer
 
-1.  A NodeBalancer is configured using [ports](/docs/platform/nodebalancer/nodebalancer-reference-guide/#port), and in this example web application, you'll use only one, port 80 for regular HTTP traffic.
+Once your application has been deployed on multiple Compute Instances, you are ready to create the NodeBalancer. Simple instructions have been provided below. For complete instructions, see the [Create a NodeBalancer](/docs/products/networking/nodebalancers/guides/create/) guide.
 
-    ![Adding a Port Configuration to a NodeBalancer](nodebalancers-settings.png "Adding a Port Configuration to a NodeBalancer")
+1. Log in to the [Cloud Manager](https://cloud.linode.com), select NodeBalancers from the left menu, and click the **Create Nodebalancer** button. This displays the *NodeBalancer Create* form.
 
-    **HTTP**
+1. Enter a **Label** for the NodeBalancer, as well as any **Tags** that may help you organize this new NodeBalancer with other services on your account.
 
-    For the traditional web application, the settings in the screenshot above are a good start. HTTP cookie stickiness is preferred so that the same client will always land on the same backend -- for a simple web application that keeps sessions in memory, this is necessary to avoid session errors on clients.
+1. Select a **Region** for this NodeBalancer. The NodeBalaner needs to located in the same data center as your application's Compute Instances.
 
-    **HTTPS**
-
-    If you select the HTTPS protocol, two new fields will appear where you can add your SSL certificate, chained certificates (if applicable) and a private key (which must not have passphrase protection).
-
-    Every ten seconds, the NodeBalancer will request the root of the web application and look for a valid response code. With this example setup, there is only one backend node (which you will add shortly); if the backend goes down, the NodeBalancer will serve a plain 503 Service Unavailable error page. This is more desirable than refusing connections or making browsers wait for a timeout.
+1. Within the *NodeBalancer Settings* area, there is a single configuration block with sections for configuring the port, defining health checks, and attaching backend nodes. Additional configurations can be added using the **Add another Configuration** button.
 
     {{< note >}}
-The port you select for the NodeBalancer must match the port you are going to use on the backend Linode(s) in the next step. For example, if you are going to be receiving only regular HTTP traffic, it's common to use port `80`. The [NodeBalancer SSL Configuration](/docs/platform/nodebalancer/nodebalancer-ssl-configuration) guide will show you how to redirect port `443`, HTTPS traffic, to port `80` for SSL certificates.
+The following recommended parameters can be used for deploying a website. For other applications or to learn more about these settings, see the [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/) guide.
 {{</ note >}}
 
-1.  Now you will add the single backend node to the NodeBalancer's configuration. Point this at the private IP address of your web server Linode.
+    - **Port:** For load balancing a website, configure two ports: port 80 and port 443. Each of these ports can be configured one at a time. See [Configuration Options > Port](/docs/products/networking/nodebalancers/guides/configure/#port).
 
-    ![Adding a Backend Node to a NodeBalancer](nodebalancers-backend-nodes.png "Adding a Backend Node to a NodeBalancer")
+    - **Protocol:** Most applications can benefit most from using the *TCP* protocol. This option is more flexible, supports HTTP/2, and maintains encrypted connections to the backend Compute Instances. If you intend to manage and terminate the TLS certificate on the NodeBalancer, use *HTTP* for port 80 and *HTTPS* for port 443. See [Configuration Options > Protocol](/docs/products/networking/nodebalancers/guides/configure/#protocol).
 
-    These configuration changes will take a few moments to be reflected by your NodeBalancer. If everything is configured on your backend correctly, once the changes have gone through, the **Node Status** column will update to **1 up / 0 down**.
+    - **Algorithm:** This controls how new connections are allocated across backend nodes. Selecting *Round Robin* can be helpful when testing (in conjunction with no session stickiness). Otherwise, *Least Connections* can help evenly distribute the load for production applications. See [Configuration Options > Algorithm](/docs/products/networking/nodebalancers/guides/configure/#algorithm).
 
-    ![The Backend Node Has Been Added and is Now Status Up](nodebalancers-1up.png "The Backend Node Has Been Added and is Now Status Up")
+    - **Session Stickiness:** This controls how subsequent requests from the same client are routed when selecting a backend node. For testing, consider selecting *None*. Otherwise, *Table* can be used for any protocol and *HTTP Cookie* can be used for *HTTP* and *HTTPS*. See [Configuration Options > Session Stickiness](/docs/products/networking/nodebalancers/guides/configure/#session-stickiness).
 
-    If the backend status reports **0 up / 1 down**, check to make sure that your web application is configured to respond on the Linode's private IP address. You do this by adding the private IP address to your `/etc/hosts` file on your Linode and then reboot your Linode. There might be a virtual host mismatch as well -- check the notes in the next section.
+    - **Health Checks:** NodeBalancers have both *active* and *passive* health checks available. These health checks help take unresponsive or problematic backend Compute Instances out of the rotation so that no connections are routed to them. These settings can be left at the default for most applications. Review [Configuration Options > Health Checks](/docs/products/networking/nodebalancers/guides/configure/#health-checks) for additional information.
 
-1.  Now that the backend is up, go directly to your NodeBalancer's IP address in a browser. You should see your web application as the NodeBalancer proxies the traffic through.
+    - **Backend Nodes:** Each Compute Instance for your application should be added as a *backend node* to the NodeBalancer. These Compute Instances need to be located in the same data center as your NodeBalancer and have private IP addresses assigned to them. Set a **Label** for each instance, select the corresponding **IP address** from the dropdown menu, and enter the **Port** that the application is using on that instance. See [Backend Nodes (Compute Instances)](/docs/products/networking/nodebalancers/guides/backends/).
 
-    ![Viewing the NodeBalancer-driven Web Site in a Browser](nodebalancers-hello-world.png "Viewing the NodeBalancer-driven Web Site in a Browser")
+        For most web applications that have the *inbound* ports 80 and 443 configured using the *TCP* protocol, you can set the backend nodes to use the same ports. If you are using the *HTTPS* protocol, TLS termination happens on the NodeBalancer and your Compute Instances should only need to listen on port 80 (unencrypted). If that's the case, backend nodes for both *inbound* ports can be configured to use port 80.
 
-### A Note about Virtual Hosts
+1. Review the summary and click the **Create NodeBalancer** button to provision your new NodeBalancer.
 
-You might not see the web application that you expect when you go directly to the NodeBalancer's IP address. This is due to virtual hosts, and is not an issue unique to NodeBalancers. In the default configurations of many web servers, an application might only be configured to respond for certain hostnames. This can impact testing NodeBalancers as well as the behavior of their health checks.
+## Update the DNS
 
-It is important to configure the "default" virtual host in your web server to point at something useful. The NodeBalancer will pass the Host header from a browser untouched, so virtual hosts will work entirely normally once you are pointing a domain at the NodeBalancer. It is only mentioned here because testing NodeBalancers can demonstrate quirks in a web server's configuration, particularly when browsing by the NodeBalancer's IP address.
-
-{{< note >}}
-Health checks are transmitted with a Host header (in HTTP/1.0 mode).
-{{< /note >}}
-
-## Putting the NodeBalancer in Charge
-
-Your NodeBalancer is now working and is able to pass traffic to your web application. It is important to note at this point that configuring the NodeBalancer has not impacted your application's normal operations at all -- you can test the NodeBalancer without your users ever knowing.
-
-Once you are satisfied that NodeBalancer is working normally, you can switch your web application's traffic over to it through DNS.
-
-1.  On the NodeBalancer's overview, you can see its IP address. Take note of the IP address, to use in the A record for your domain.
-
-1.  Edit or create an A record for your website's domain name, pointing to your NodeBalancer's IP address.
-
-    ![Adding an A Record.](nodebalancers-add-a-name.png)
-
-1.  Also add an AAAA record for the IPv6 address.
-
-Once the DNS changes propagate, traffic will begin flowing through the NodeBalancer. At this point, you will want to wait up to 24 hours for all caches to catch up to the NodeBalancer before proceeding.
-
-## Additional Backends and Features
-
-On another Linode, make an exact copy of your current web server. The [Linode Backups](/docs/products/storage/backups/) service can be instrumental for doing so, as a snapshot can be restored to any other Linode. Once you have another backend ready, simply repeat step four of [Configuring a NodeBalancer](/docs/platform/nodebalancer/getting-started-with-nodebalancers/#configuring-a-nodebalancer) to add it to the NodeBalancer configuration.
-
-![Adding another backend to the NodeBalancer's configuration.](nodebalancers-backend-nodes2.png)
-
-Once the configuration is sent to the backend, users will be balanced over the two Linodes and each will be monitored for health. This configuration is easy to work with, as upgrades can be rolled out to each backend without disrupting service and backend Linodes can be taken in and out of rotation at will.
-
-This is just the beginning; NodeBalancers are extremely flexible and cater to a lot of needs. From here, the API can be used to add many backends. Multiple ports on one backend can be balanced for complex setups. Additionally, new tools like *memcached* can be introduced to the application to allow session stickiness to become irrelevant.
-
-## IP Address Range
-
-NodeBalancers all have private IP addresses in the `192.168.255.0/24` range. It's important to note that while their public IP address is persistent, the private IP address **will** change. When configuring a firewall or other network restriction on back-end Linodes, be sure to allow the entire `192.168.255.0/24` range and not a specific IP address.
+After deploying your NodeBalancer and putting your application behind the NodeBalancer, the application can now be accessed using the NodeBalancer's public IPv4 and IPv6 addresses. Since most public-facing applications utilize domain names, you need to update any associated DNS records. The *A* record should use the NodeBalancer's IPv4 address and the *AAAA* record (if you're using one) should use the NodeBalancer's IPv6 address. See [Manage NodeBalancers](/docs/products/networking/nodebalancers/guides/manage/#review-and-edit-a-nodebalancer) to view your NodeBalancer's IP addresses. For help changing the DNS records, consult your DNS provider's documentation. If you are using Linode's DNS Manager, see [Edit DNS Records](/docs/guides/dns-manager/#edit-dns-records). Keep in mind that DNS changes can take up to 24 hours to fully propagate, though that typically happens much faster.
