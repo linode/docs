@@ -14,6 +14,11 @@ disqusShortname="linode-1"
 
 enableGitInfo = true
 
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+    maxAge = -1
+
 [outputs]
 # The JSON is for the search index. We build this on every build to make sure we have the image thumbnails in sync.
 home = ["HTML", "JSON", "RSS"]
