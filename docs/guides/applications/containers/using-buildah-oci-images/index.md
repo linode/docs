@@ -424,5 +424,3 @@ CONTAINER ID  BUILDER  IMAGE ID     IMAGE NAME                       CONTAINER N
 ## Conclusion
 
 Buildah gives you a simple yet robust tool for crafting container images. It's more than just an alternative to Docker. Buildah is a containerization tool for securely creating open containers and container images. With this tutorial, you have everything you need to get started building your own images and using Buildah to the utmost.
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
