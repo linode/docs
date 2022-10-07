@@ -649,7 +649,11 @@ export function getSearchConfig(params) {
 		if (!cfg.index_prefix) {
 			return index;
 		}
-		return `${cfg.index_prefix}${index}`;
+		let prefix = cfg.index_prefix;
+		if (!prefix.endsWith('_')) {
+			prefix += '_';
+		}
+		return `${prefix}${index}`;
 	};
 
 	return cfg;

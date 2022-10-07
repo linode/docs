@@ -209,6 +209,7 @@ GRUB_DISABLE_OS_PROBER=true
 GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
 GRUB_DISABLE_LINUX_UUID=true
 GRUB_GFXPAYLOAD_LINUX=text
+GRUB_ENABLE_BLSCFG=false
 {{< /file >}}
 
 1.  Prepare and update the bootloader:
