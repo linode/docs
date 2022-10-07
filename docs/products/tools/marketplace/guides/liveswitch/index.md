@@ -18,7 +18,7 @@ external_resources:
 [LiveSwitch Server](https://www.liveswitch.io/products/liveswitch-server) is a self-hosted enterprise video streaming service. It provides high quality and reliable audio and video streaming and is backed by the top experts in the industry.
 
 {{< note >}}
-LiveSwitch Server requires a valid license to use the software. A free 30 day trial license is available. To obtain a trial license or purchase a paid license, see the instructions within the [Obtaining a License](#obtaining-a-license) section. Licenses are not available directly through Linode.
+Using LiveSwitch Server may require a paid license. To obtain a license, contact [LiveSwitch directly](https://www.liveswitch.io/get-started). Licenses are not available directly through Linode.
 {{</ note >}}
 
 ## Deploying a Marketplace App
@@ -38,11 +38,7 @@ LiveSwitch Server requires a valid license to use the software. A free 30 day tr
 
 ## Getting Started after Deployment
 
-After deploying your application using, the server will reboot once the installation is complete.
-
-### Obtaining a License
-
-LiveSwitch Server requires a license to use the software. To obtain your license, simply [contact LiveSwitch](https://www.liveswitch.io/get-started?hsLang=en) directly.
+After deployment, follow the instructions below to access your application.
 
 ### Accessing the LiveSwitch App
 
