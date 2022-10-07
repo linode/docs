@@ -15,10 +15,10 @@ external_resources:
 - '[LiveSwitch](https://www.liveswitch.io/)'
 ---
 
-[LiveSwitch Server](https://www.liveswitch.io/products/liveswitch-server) is a self-hosted enterprise video streaming service. It provides high quality and reliable audio and video streaming and is backed by the top experts in the industry.
+[LiveSwitch Server](https://www.liveswitch.io/products/liveswitch-server) is a self-hosted enterprise video streaming service. It provides high quality and reliable streaming for both audio and video media.
 
 {{< note >}}
-Using LiveSwitch Server may require a paid license. To obtain a license, contact [LiveSwitch directly](https://www.liveswitch.io/get-started). Licenses are not available directly through Linode.
+Using LiveSwitch Server may require a paid license. To obtain a license, [contact LiveSwitch](https://www.liveswitch.io/get-started). Licenses are not available directly through Linode.
 {{</ note >}}
 
 ## Deploying a Marketplace App
