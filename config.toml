@@ -8,7 +8,7 @@ title = "Linode Guides & Tutorials"
 themeDir = ".."
 rssLimit = 30
 summaryLength = 15
-timeout = "2m"
+timeout = "5m"
 
 disqusShortname="linode-1"
 
@@ -38,15 +38,15 @@ promo_code_amount = 100
 promo_code_disclaimer = "This credit will be applied to any valid services used during your first 60 days."
 
 # Feedback survey
-feedback_survey_url = "https://delighted.com/t/iVc7nAYL"
-feedback_survey_display = false
+feedback_survey_url = "https://delighted.com/t/KGQxrivu"
+feedback_survey_display = true
 feedback_survey_heading = "Your Feedback Is Important"
 feedback_survey_button_text = "Provide Feedback"
 feedback_survey_text = "Let us know if this guide was helpful to you."
 
 [params.search_config]
 app_id = "KGUN8FAIPF"
-api_key = "d4847002cd30392fe0fbd00a1da933ed"
+api_key = "d364d8e601808b96178d0776ed43b2c9"
 meta_index = "linode-documentation-sections"
 explorer_max_leafnodes = 50
 hits_per_page = 4

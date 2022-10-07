@@ -197,6 +197,7 @@ bucardo
 Budibase
 bufio
 bugtracker
+buildah
 buildbot
 bukkit
 bundler
@@ -311,6 +312,8 @@ connectionism
 connectionless
 connectionStatus
 containerd
+containerfile
+containerfiles
 containerised
 contentful
 convery
@@ -381,6 +384,7 @@ daemonize
 daemonized
 daemonizes
 daemonizing
+daemonless
 daemonset
 dahdi
 dallas

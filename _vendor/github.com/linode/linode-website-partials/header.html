@@ -496,6 +496,9 @@
       <nav class="o-menu o-menu--h">
         <ul class="o-menu__list --d0">
               <li class="o-menu__item">
+                <button class="o-menu__link o-menu__toggle"data-toggle="#submenu-mobile-search" data-group="mobile-search"><svg class="o-menu__icon" alt="Search Icon"><use xlink:href="#menu-icon--search"></use></svg><span class="o-menu__title">Search</span></button>
+              </li>
+              <li class="o-menu__item">
                 <a class="o-menu__link" href="https://www.linode.com/docs/"><svg class="o-menu__icon" alt="Docs Icon"><use xlink:href="#menu-icon--docs"></use></svg><span class="o-menu__title">Docs</span></a>
               </li>
               <li class="o-menu__item">
@@ -518,6 +521,14 @@
               </li>
             </ul>
       </nav>
+    </div>
+
+    <div class="o-layout__module" id="submenu-mobile-search" data-group="mobile-search">
+      <form role="search" method="get" action="https://www.linode.com" class="c-search">
+        <label for="s">Search</label>
+        <input type="search" placeholder="Search Linode" name="s">
+        <input type="submit" value="Search">
+      </form>
     </div>
 
     <div class="o-layout__module" id="submenu-mobile-signup">
