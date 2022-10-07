@@ -6,7 +6,7 @@ title: "Configuration Options for NodeBalancers"
 description: "Learn how to create a NodeBalancer, Linode's custom load balancing solution."
 keywords: ["load balancing", "nodebalancer"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-10-06
+published: 2022-10-07
 modified_by:
   name: Linode
 tags: ["linode platform","networking"]
@@ -17,6 +17,8 @@ NodeBalancers, and load balancers in general, operate by taking inbound traffic 
 
 ## Add or Edit Configurations
 
+Each configuration is assigned a single inbound port. Follow the instructions below to add or edit a configuration. If your application requires multiple inbound ports, create one configuration for *each* port you wish to use. This provides a great amount of flexibility, allowing each port to have its own distinct configuration settings and backend nodes.
+
 1. Log in to the [Cloud Manager](http://cloud.linode.com), click **NodeBalancers** in the left menu, and select the NodeBalancer you wish to edit. See [Manage NodeBalancers](/docs/products/networking/nodebalancers/guides/manage/).
 
 1. Navigate to the **Configurations** tab. This displays a list of all ports that have been configured.
@@ -25,11 +27,7 @@ NodeBalancers, and load balancers in general, operate by taking inbound traffic 
 
 1. Open the port configuration you wish to edit or create a new one by clicking the **Add Another Configuration** button.
 
-Each NodeBalancer config adds another port that the NodeBalancer will listen on. For instance, if you wish to balance both port 80 and 81, you'll need to add two configuration profiles to your NodeBalancer.
-
 ## Configuration Options
-
-
 
 ### Port
 
@@ -37,7 +35,7 @@ This is the *inbound* port that the NodeBalancer is listening on. This can be an
 
 ### Protocol
 
-The protocol can be set to either TCP, HTTP, or HTTPS. A brief description of each is provided below, but review [Available Protocols](/docs/products/networking/nodebalancers/guides/protocols/) for more complete information.
+The protocol can be set to either TCP, HTTP, or HTTPS. While a brief description of each is provided below, review [Available Protocols](/docs/products/networking/nodebalancers/guides/protocols/) for more complete information.
 
 - **TCP**: Supports most application-layer protocols, including HTTP and HTTPS. This should be selected when you want to enable layer 4 load balancing, use TLS/SSL pass-through, use HTTP/2.0 or higher, balance non-HTTP services, or make use of [Proxy Protocol](#proxy-protocol). Since the NodeBalancer serves as a pass-through for these TCP packets, any encrypted traffic is preserved and must be decrypted on the backend nodes.
 

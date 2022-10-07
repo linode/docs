@@ -1,15 +1,16 @@
 ---
 title: Guides
-description: "Learn the basics of Linode NodeBalancers. You can also find guides on using Developer Tools to create and manage Linode NodeBalancers."
+description: "A collection of guides on using NodeBalancers to load balance applications hosted on the Linode platform."
 tab_group_main:
     weight: 30
+modified: 2022-10-07
 ---
 
 ## Basics
 
 - [Introduction to Load Balancing](/docs/products/networking/nodebalancers/guides/load-balancing/): Learn the basics of load balancing and how NodeBalancers work.
 
-- [Create a NodeBalancers](/docs/products/networking/nodebalancers/guides/create/): Instructions for creating a new NodeBalancer.
+- [Create a NodeBalancer](/docs/products/networking/nodebalancers/guides/create/): Instructions for creating a new NodeBalancer.
 
 - [Manage NodeBalancers](/docs/products/networking/nodebalancers/guides/manage/): View, edit, and manage NodeBalancers on your account.
 

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 title: "Manage NodeBalancers"
 description: "Learn how to view, edit, and delete NodeBalancers on the Linode platform."
-published: 2022-10-06
+published: 2022-10-07
 ---
 
 ## View NodeBalancers
@@ -23,15 +23,7 @@ Each NodeBalancer in the matrix is displayed alongside the following details:
 
 ## Create a NodeBalancer
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com), select NodeBalancers from the left menu, and click the **Create Nodebalancer** button. This displays the *NodeBalancer Create* form.
-
-1. Enter a **Label** for the NodeBalancer, as well as any **Tags** that may help you organize this new NodeBalancer with other services on your account.
-
-1. Select a **Region** for this NodeBalancer. All of your *backend nodes* need to reside within the same region.
-
-1. Within the *NodeBalancer Settings* area, there is a single configuration block with sections for configuring the port, defining health checks, and attaching backend nodes. Additional configurations can be added using the **Add another Configuration** button.
-
-1. Review the summary and click the **Create NodeBalancer** button to provision your new NodeBalancer.
+To create a NodeBalancer, follow the instructions within the [Create a NodeBalancer](/docs/products/networking/nodebalancers/guides/create/) guide.
 
 ## Review and Edit a NodeBalancer
 
@@ -42,7 +34,7 @@ Navigate to the **NodeBalancer** in the Cloud Manager and select the NodeBalance
 This displays the details and settings for the selected NodeBalancer. From here, the following pages are available:
 
 - **Summary:** View important details and graphs. This includes viewing the IP addresses, the ports, the status of the backends, and graphs for both the number of connections and network traffic.
-- **Configurations:** This lists each port configured for the NodeBalancer, with the ability to edit the settings for the existing port or add a new port.
+- **Configurations:** This lists each port configured for the NodeBalancer, with the ability to edit the settings for the existing port or add a new port. See [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/) for more information on each of these settings.
 - **Settings:** Displays additional settings for the NodeBalancer, including the label and setting a connection throttle.
 
 ![Screenshot of a NodeBalancer entry in the Cloud Manager](nodebalancer-summary.png)

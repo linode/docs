@@ -8,7 +8,7 @@ keywords: ["Linode", "NodeBalancer", "SSL", "redirect", "load balancing", "insta
 tags: ["linode platform","security","networking","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-09-01
-modified: 2022-10-05
+modified: 2022-10-07
 modified_by:
   name: Linode
 aliases: ['/platform/nodebalancer/nodebalancer-ssl-configuration/','/guides/nodebalancer-ssl-configuration/']

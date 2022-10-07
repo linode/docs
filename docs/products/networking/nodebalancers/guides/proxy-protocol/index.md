@@ -7,7 +7,7 @@ description: "Learn how to enable and use Proxy Protocol on your NodeBalancer to
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha", "proxy protocol", "proxy"]
 tags: ["cloud manager","linode platform","networking","web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-10-06
+published: 2022-10-07
 modified_by:
   name: Linode
 image: ProxyProtocol_NodeBalancers.png

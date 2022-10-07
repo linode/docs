@@ -11,8 +11,27 @@ keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "
 tags: ["cloud manager","linode platform","networking","web applications"]
 aliases: ['/nodebalancers/getting-started/','/platform/nodebalancer/getting-started-with-nodebalancers-new-manager/','/platform/nodebalancer/getting-started-with-nodebalancers/','/linode-platform/nodebalancer-howto/','/platform/nodebalancer/getting-started-with-nodebalancers-classic-manager/', '/guides/nodebalancer/getting-started-with-nodebalancers/','/guides/getting-started-with-nodebalancers/']
 published: 2015-02-12
-modified: 2022-10-05
+modified: 2022-10-07
 ---
+
+## Deploy an Application
+
+When thinking of implementing load balancing or high availability solutions, the main focus should be the needs of the application.
+
+To start, determine which application you would like to load balance. If you do not yet have an application in mind but would like to test, consider deploying a LAMP or LEMP stack on the Linode Marketplace.
+
+## Create a NodeBalancer
+
+## Configure the Backends
+
+
+
+
+
+
+
+
+## Old
 
 Nearly all applications that are built using Linodes can benefit from load balancing, and load balancing itself is the key to expanding an application to larger numbers of users. Linode provides NodeBalancers, which can ease the deployment and administration of a load balancer.
 

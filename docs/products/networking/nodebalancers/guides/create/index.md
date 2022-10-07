@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 title: "Create a NodeBalancer"
 description: "Instructions on creating a NodeBalancer, Linode's load balancing solution."
-published: 2022-10-06
+published: 2022-10-07
 ---
 
 This guide walks you through creating a NodeBalancer through the Cloud Manager.
@@ -19,7 +19,7 @@ This guide walks you through creating a NodeBalancer through the Cloud Manager.
 
 ## Open the Create NodeBalancer Form in the Cloud Manager
 
-Log in to the [Cloud Manager](https://cloud.linode.com/) and select **NodeBalancers** from the left navigation menu. Click the **Create NodeBalancer** button. This opens the *[NodeBalancer Create](https://cloud.linode.com/databases/create)* form.
+Log in to the [Cloud Manager](https://cloud.linode.com/) and select **NodeBalancers** from the left navigation menu. Click the **Create NodeBalancer** button. This opens the *[NodeBalancer Create](https://cloud.linode.com/nodebalancers/create)* form.
 
 ## Set the Label
 

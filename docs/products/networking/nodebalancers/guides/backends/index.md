@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 title: "Backend Nodes (Compute Instances)"
 description: "Instructions for adding and configuring backend nodes on a NodeBalancer"
-published: 2022-10-06
+published: 2022-10-07
 ---
 
 Load balancers work by distributing traffic to a pool of servers. For NodeBalancers, these servers are Linode Compute Instances and they are configured as *backend nodes*. Each Compute Instance operating as a backend node needs to be located within the same data center as the NodeBalancer and be assigned a private IPv4 address. See [Managing IP addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for instructions on adding a private IP address to an existing Compute Instance.
