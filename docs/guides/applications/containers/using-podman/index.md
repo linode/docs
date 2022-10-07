@@ -330,5 +330,3 @@ As noted in the section above on creating images with Podman, Buildah tends to o
 Podman offers not just a simple alternative to Docker, but a powerful containerization tool with the weight of secure, rootless operations. And, with this tutorial, you have what you need to start using Podman for running and managing your containers.
 
 Keep learning about effective tools for working with containers through the links on Podman, Buildah, and Dockerfiles provided in the course of this tutorial. Continue sharpening your Podman knowledge through the links provided at the end of this tutorial.
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
