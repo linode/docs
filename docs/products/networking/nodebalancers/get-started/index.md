@@ -20,9 +20,9 @@ To start using a NodeBalancer and benefiting from load balancing, your applicati
 
 - **Application deployment:** *How will you deploy your application's code and software infrastructure to each Compute Instance?* Consider using automated git deployments or more advanced CI/CD tooling.
 
-- **File storage and synchronization:** *Should the application's files be stored alongside the application's code or should you consider implementing a distribution storage solution on separate instances?* For simple application, consider file synchronization/backup tools like [rsync](https://linux.die.net/man/1/rsync) or [csync2](https://linux.die.net/man/1/csync2). For a more robust solution, consider a distributed file system like [GlusterFS](https://www.gluster.org/).
+- **File storage and synchronization:** *Should the application's files be stored alongside the application's code or should you consider implementing a distributed storage solution on separate instances?* For simple applications, consider file synchronization/backup tools like [rsync](https://linux.die.net/man/1/rsync) or [csync2](https://linux.die.net/man/1/csync2). For a more robust solution, consider a distributed file system like [GlusterFS](https://www.gluster.org/).
 
-- **Database replication:** *How will you maintain consistency between multiple databases?* Consider the suggested architecture and available tooling for the database software you intend to use. Linode [Managed Databases](/docs/products/databases/managed-databases/), when deployed with high availability enabled, are a great solution fully-managed solution. Alternatively, [Galera](https://galeracluster.com/) is a self-hosted option that can be used with MySQL.
+- **Database replication:** *How will you maintain consistency between multiple databases?* Consider the suggested architecture and available tooling for the database software you intend to use. Linode [Managed Databases](/docs/products/databases/managed-databases/), when deployed with high availability enabled, are a great fully-managed solution. Alternatively, [Galera](https://galeracluster.com/) is a self-hosted option that can be used with MySQL.
 
 In some simple applications, the servers that store your application's code can also store its files and databases. For more complex applications, you may want to consider designating separate application servers, file servers, and database servers. The application servers (where the web server software and application code resides) operate as the backends to the NodeBalancer. The file servers and database servers can be built on cloud-based solutions (like Managed Databases) or self-hosted software on Compute Instances.
 
@@ -40,17 +40,17 @@ Once your application has been deployed on multiple Compute Instances, you are r
 
 1. Enter a **Label** for the NodeBalancer, as well as any **Tags** that may help you organize this new NodeBalancer with other services on your account.
 
-1. Select a **Region** for this NodeBalancer. The NodeBalaner needs to located in the same data center as your application's Compute Instances.
+1. Select a **Region** for this NodeBalancer. The NodeBalancer needs to located in the same data center as your application's Compute Instances.
 
-1. Within the *NodeBalancer Settings* area, there is a single configuration block with sections for configuring the port, defining health checks, and attaching backend nodes. Additional configurations can be added using the **Add another Configuration** button.
+1. Within the *NodeBalancer Settings* area, there is a single configuration block with sections for configuring the port, defining health checks, and attaching backend nodes. Additional ports can be added using the **Add another Configuration** button.
 
     {{< note >}}
 The following recommended parameters can be used for deploying a website. For other applications or to learn more about these settings, see the [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/) guide.
 {{</ note >}}
 
-    - **Port:** For load balancing a website, configure two ports: port 80 and port 443. Each of these ports can be configured one at a time. See [Configuration Options > Port](/docs/products/networking/nodebalancers/guides/configure/#port).
+    - **Port:** For load balancing a website, configure two ports: port 80 and port 443. Each of these ports can be configured separately. See [Configuration Options > Port](/docs/products/networking/nodebalancers/guides/configure/#port).
 
-    - **Protocol:** Most applications can benefit most from using the *TCP* protocol. This option is more flexible, supports HTTP/2, and maintains encrypted connections to the backend Compute Instances. If you intend to manage and terminate the TLS certificate on the NodeBalancer, use *HTTP* for port 80 and *HTTPS* for port 443. See [Configuration Options > Protocol](/docs/products/networking/nodebalancers/guides/configure/#protocol).
+    - **Protocol:** Most applications can benefit from using the *TCP* protocol. This option is more flexible, supports HTTP/2, and maintains encrypted connections to the backend Compute Instances. If you intend to manage and terminate the TLS certificate on the NodeBalancer, use *HTTP* for port 80 and *HTTPS* for port 443. See [Configuration Options > Protocol](/docs/products/networking/nodebalancers/guides/configure/#protocol).
 
     - **Algorithm:** This controls how new connections are allocated across backend nodes. Selecting *Round Robin* can be helpful when testing (in conjunction with no session stickiness). Otherwise, *Least Connections* can help evenly distribute the load for production applications. See [Configuration Options > Algorithm](/docs/products/networking/nodebalancers/guides/configure/#algorithm).
 
