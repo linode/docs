@@ -19,20 +19,19 @@ contributor:
   - https://github.com/segunjkf
   - https://twitter.com/kaytheog
 external_resources:
-- '[Kasten k-10](https://www.kasten.io/product/)'
-- '[Istio](https://istio.io/latest/about/service-mesh/)'
-- '[Linkerd](https://linkerd.io/)'
-- '[Calico](https://projectcalico.docs.tigera.io/getting-started/Kubernetes/)'
-- '[Weave](https://www.weave.works/)'
+- '[Snyk](https://snyk.io/)'
 - '[Sysdig](https://sysdig.com/)'
-- '[Snyk](https://snyk.io/)' Hashicorp Vault
+- '[Weave](https://www.weave.works/)'
+- '[Calico](https://projectcalico.docs.tigera.io/getting-started/Kubernetes/)'
+- '[Istio](https://istio.io/latest/about/service-mesh/)'
+- '[Linkerd]((https://linkerd.io/)'
 - '[Hashicorp Vault](https://www.vaultproject.io/use-cases/Kubernetes)'
-- '[Audit policy](https://Kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-policy)'
-- '[Portworx]https://portworx.com/Kubernetes-disaster-recovery/)' Hashicorp Vault
-- '[Elero](https://velero.io/)' 
+- '[Kasten k-10](https://www.kasten.io/product/)'
+- '[Audit Policy](https://Kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-policy)'
+- '[Portworx](https://portworx.com/Kubernetes-disaster-recovery/)'
+- '[Velero](https://velero.io/)'
+aliases: [/kubernetes.io/docs/setup/best-practices/]
 ---
-
-
 
 So you have a Kubernetes cluster and you want to keep your cluster secure, or you are just getting started and want to do things correctly. Securing a Kubernetes cluster can be difficult for both experienced software developers and those just getting started. To keep Kubernetes workloads secure, especially in production, key architectural weaknesses and platform dependencies must be addressed by following security best practices.
 
@@ -135,7 +134,7 @@ In a cluster, Pod communications are unencrypted by default, so an attacker can 
 ## Secure secret data
 
 Secrets are used to store sensitive data such as passwords, tokens, credentials, or secret tokens. By using secrets in Kubernetes, Pods can be securely initialized with artifacts like keys, passwords, tokens, etc. When a Pod starts up, it normally needs to gain access to its secrets. By default, Kubernetes saves secrets unencrypted. They are base64 encoded, so anyone with access to the secrets can decode the base64 and read the secrets. As a result, if an attacker gains access to the cluster, the secrets can be easily accessed and decrypted. Secrets can be protected in a variety of ways in Kubernetes. You can use Kubernetes' own encryption configuration resource options.
- However, there is still an issue with this method because you must still maintain the encryption key and store it securely, although various third-party programs can be used for this, such as [Hashicorp Vault](https://www.vaultproject.io/use-cases/Kubernetes). Vault can be used to Secrets will be securely stored and managed by the vault, which will actually take over storage and management.
+However, there is still an issue with this method because you must still maintain the encryption key and store it securely, although various third-party programs can be used for this, such as [Hashicorp Vault](https://www.vaultproject.io/use-cases/Kubernetes). Vault can be used to Secrets will be securely stored and managed by the vault, which will actually take over storage and management.
 
 ## Secure Etcd
 
@@ -151,7 +150,7 @@ Enable Kubernetes audit logs and monitor them for fraudulent behaviour and suspi
 
 ## Disaster Recovery
 
-A robust disaster recovery plan and process are essential in case an attacker compromises your cluster and corrupts it. In the event that your Kubernetes cluster suffers an attack or just a zone outage, what will be your recovery plan? You need to devise a strategy for restoring the backup data, and your application should be up and running in no time. In the case of an attack, you require tools to restore the cluster to its original state using the most recent backup. Such tools include [Kasten K-10](https://www.kasten.io/product/), [Portworx](https://portworx.com/Kubernetes-disaster-recovery/), and [Elero](https://velero.io/).
+A robust disaster recovery plan and process are essential in case an attacker compromises your cluster and corrupts it. In the event that your Kubernetes cluster suffers an attack or just a zone outage, what will be your recovery plan? You need to devise a strategy for restoring the backup data, and your application should be up and running in no time. In the case of an attack, you require tools to restore the cluster to its original state using the most recent backup. Such tools include [Kasten K-10](https://www.kasten.io/product/), [Portworx](https://portworx.com/Kubernetes-disaster-recovery/), and [Velero](https://velero.io/).
 
 ## Conclusion
 
