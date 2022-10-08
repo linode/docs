@@ -38,7 +38,7 @@ So you have a Kubernetes cluster and you want to keep your cluster secure, or yo
 
 This guide will discuss 10 Kubernetes' best practices and how to implement these practices to secure and improve your Kubernetes cluster productivity and security.
 
-## Scan images for vulnerabilities
+## Scan Images for Vulnerabilities
 
 Deploying an application is the primary purpose of provisioning a Kubernetes cluster. Workload security in Kubernetes begins before workloads are deployed within the cluster; it starts with the creation of an application image in the CI/CD pipeline; creating a secure image is the first step toward securing your cluster. When creating your application image, avoid utilizing codes from untrusted registries or libraries to reduce the possibility of viruses or backdoors. You should also avoid using unverified operating system packages in your container images since they can contain backdoors. [Snyk](https://snyk.io/) and [Sysdig](https://sysdig.com/) are two tools that can help you scan images. These scanning tools maintain a database of known vulnerabilities that are updated regularly, so scan your image regularly with them. By incorporating these tools into your CI/CD process, you can archive it.
 
