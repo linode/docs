@@ -19,8 +19,17 @@ contributor:
   - https://github.com/segunjkf
   - https://twitter.com/kaytheog
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[Kasten k-10](https://www.kasten.io/product/)'
+- '[Istio](https://istio.io/latest/about/service-mesh/)'
+- '[Linkerd](https://linkerd.io/)'
+- '[Calico](https://projectcalico.docs.tigera.io/getting-started/Kubernetes/)'
+- '[Weave](https://www.weave.works/)'
+- '[Sysdig](https://sysdig.com/)'
+- '[Snyk](https://snyk.io/)' Hashicorp Vault
+- '[Hashicorp Vault](https://www.vaultproject.io/use-cases/Kubernetes)'
+- '[Audit policy](https://Kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-policy)'
+- '[Portworx]https://portworx.com/Kubernetes-disaster-recovery/)' Hashicorp Vault
+- '[Elero](https://velero.io/)' 
 ---
 
 
@@ -42,14 +51,14 @@ It is possible for new vulnerabilities to be discovered after the CI/CD pipeline
 When your image has a vulnerability and the container is running with privileges, an attacker can easily exploit it to gain access to the host or Kubernetes work node. Therefore, when creating your image, you should create a service user and run the application using that user rather than root. 
 
 {{< file "Dockerfile" >}}
-# create group and user
+ create group and user
 
 RUN groupadd -r myapp && useradd -g myapp my app
 
-# set ownership and permissions
+ set ownership and permissions
 RUN chown -R myapp:myapp /app
 
-#switch to user
+switch to user
 USER myapp
 
 CMD node index.js
@@ -58,7 +67,7 @@ CMD node index.js
 
 This example above establishes a group and adds a user to it, while also running the application as the created user rather than the root user.
 
-Even if you avoid running your application as a root user, it is possible that your Kubernetes manifest file can be misconfigured as a result of executing as the root user or allowing privilege escalation. The example below provides a Kubernetes manifest file demonstrating how to create a pod that runs as a non-root user or with privileges.
+Even if you avoid running your application as a root user, it is possible that your Kubernetes manifest file can be misconfigured as a result of executing as the root user or allowing privilege escalation. The example below provides a Kubernetes manifest file demonstrating how to create a Pod that runs as a non-root user or with privileges.
 
 
 {{< file "non_root_user.yaml" yaml >}}
@@ -86,7 +95,7 @@ Using RBAC will manage external users for authentication and authorization, but 
 
 ## Make use of Network Policies or a Service Mesh.
 
-By default, each pod in Kubernetes can freely communicate with any other pod in the cluster. This means that if an attacker gains access to one pod, they can also gain access to the other pods in the cluster. When deploying microservice applications to a Kubernetes cluster, not all pods communicate with each other. By creating network rules in the Kubernetes network layer, you can control which pods can communicate with each other and which pods can receive traffic. This is possible using the network policy, a Kubernetes resource. The network policy for a database with configured ingress and egress is shown below, with the ingress mapped to a front-end application.
+By default, each Pod in Kubernetes can freely communicate with any other Pod in the cluster. This means that if an attacker gains access to one Pod, they can also gain access to the other Pods in the cluster. When deploying microservice applications to a Kubernetes cluster, not all Pods communicate with each other. By creating network rules in the Kubernetes network layer, you can control which Pods can communicate with each other and which Pods can receive traffic. This is possible using the network policy, a Kubernetes resource. The network policy for a database with configured ingress and egress is shown below, with the ingress mapped to a front-end application.
 {{< file "network-policy.yaml" yaml >}}
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -94,7 +103,7 @@ metadata:
   name: test-network-policy
   namespace: default
 spec:
-  podSelector:
+  PodSelector:
     matchLabels:
       role: db
   policyTypes:
@@ -109,7 +118,7 @@ spec:
         - namespaceSelector:
             matchLabels:
               project: myproject
-        - podSelector:
+        - PodSelector:
             matchLabels:
               role: frontend
       ports:
@@ -124,34 +133,34 @@ spec:
           port: 5978
 {{< /file >}}
 
-In this set-up, even if the attacker gains access to one of the pods, they will not be able to obtain access to all other pods that may be running sensitive applications or storing sensitive data. Also, be aware that the network policy resource is really implemented by a Kubernetes network plug-in such as [weave](https://www.weave.works/) or [calico](https://projectcalico.docs.tigera.io/getting-started/kubernetes/) that you deploy in a cluster. At the network level, network policies define communication rules, but to specify these rules at the service or application level, which is more logical, you should use a service mesh such as [Istio](https://istio.io/latest/about/service-mesh/) or [Linkerd](https://linkerd.io/). Isto, for instance, allows you to specify logical communication rules between services, which are then managed or checked by the proxies that it uses.
+In this set-up, even if the attacker gains access to one of the Pods, they will not be able to obtain access to all other Pods that may be running sensitive applications or storing sensitive data. Also, be aware that the network policy resource is really implemented by a Kubernetes network plug-in such as [Weave](https://www.weave.works/) or [Calico](https://projectcalico.docs.tigera.io/getting-started/Kubernetes/) that you deploy in a cluster. At the network level, network policies define communication rules, but to specify these rules at the service or application level, which is more logical, you should use a service mesh such as [Istio](https://istio.io/latest/about/service-mesh/) or [Linkerd](https://linkerd.io/). Isto, for instance, allows you to specify logical communication rules between services, which are then managed or checked by the proxies that it uses.
 
 ## Communication should be encrypted.
 
-In a cluster, pod communications are unencrypted by default, so an attacker can view all of the internal communication information in plain text if they gain access to the cluster. But with service mesh like istio, you can enable mutual TLS (mTLS) between services in addition to defining service rules. If an attacker gains access to your cluster and sees the traffic, they won't be able to read it, since all communications are encrypted. In order to increase the security of your cluster, encrypting internal cluster communication is a good security practice.
+In a cluster, Pod communications are unencrypted by default, so an attacker can view all of the internal communication information in plain text if they gain access to the cluster. But with service mesh like Istio, you can enable mutual TLS (mTLS) between services in addition to defining service rules. If an attacker gains access to your cluster and sees the traffic, they won't be able to read it, since all communications are encrypted. In order to increase the security of your cluster, encrypting internal cluster communication is a good security practice.
 
 ## Secure secret data
 
-Secrets are used to store sensitive data such as passwords, tokens, credentials, or secret tokens. By using secrets in Kubernetes, pods can be securely initialized with artifacts like keys, passwords, tokens, etc. When a pod starts up, it normally needs to gain access to its secrets. By default, Kubernetes saves secrets unencrypted. They are base64 encoded, so anyone with access to the secrets can decode the base64 and read the secrets. As a result, if an attacker gains access to the cluster, the secrets can be easily accessed and decrypted. Secrets can be protected in a variety of ways in Kubernetes. You can use Kubernetes' own encryption configuration resource options.
- However, there is still an issue with this method because you must still maintain the encryption key and store it securely, although various third-party programs can be used for this, such as ![Hashicorp Vault](https://www.vaultproject.io/use-cases/kubernetes). Vault can be used to Secrets will be securely stored and managed by the vault, which will actually take over storage and management.
+Secrets are used to store sensitive data such as passwords, tokens, credentials, or secret tokens. By using secrets in Kubernetes, Pods can be securely initialized with artifacts like keys, passwords, tokens, etc. When a Pod starts up, it normally needs to gain access to its secrets. By default, Kubernetes saves secrets unencrypted. They are base64 encoded, so anyone with access to the secrets can decode the base64 and read the secrets. As a result, if an attacker gains access to the cluster, the secrets can be easily accessed and decrypted. Secrets can be protected in a variety of ways in Kubernetes. You can use Kubernetes' own encryption configuration resource options.
+ However, there is still an issue with this method because you must still maintain the encryption key and store it securely, although various third-party programs can be used for this, such as [Hashicorp Vault](https://www.vaultproject.io/use-cases/Kubernetes). Vault can be used to Secrets will be securely stored and managed by the vault, which will actually take over storage and management.
 
-## Secure Etcd.
+## Secure etcd.
 
-All kubernetes configurations and secrets are stored in a key-value store method in Etcd, so kubernetes uses Etcd to store and track the changes to its configurations. Each update is saved in the Ectd store, and any changes made directly to the Ectd will affect the cluster. An attacker can bypass the API server if they gain access to the Etcd and update the Etcd directly, which results in Kubernetes resources being updated, which is equivalent to having unlimited access to the whole cluster. You should therefore place your Etcd behind a firewall and only allow the API server to access it. Additionally, the entire Etcd should be encrypted, so even an attacker with access cannot read it.
+All Kubernetes configurations and secrets are stored in a key-value store method in etcd, so Kubernetes uses etcd to store and track the changes to its configurations. Each update is saved in the Ectd store, and any changes made directly to the Ectd will affect the cluster. An attacker can bypass the API server if they gain access to the etcd and update the etcd directly, which results in Kubernetes resources being updated, which is equivalent to having unlimited access to the whole cluster. You should therefore place your etcd behind a firewall and only allow the API server to access it. Additionally, the entire etcd should be encrypted, so even an attacker with access cannot read it.
 
 
 ## Automated Backup and Restore System  
 
-Your cluster contains sensitive data, including Etcd, which holds your cluster's configuration data and application data from your database. A data leak or loss is one of the most serious security issues that an organization can face. In recent years, attackers have become more adept at gaining access to an organization's data, erasing or leaking it, and then demanding a ransom to recover it, which is bad for business. You must have a good backup and restoration solution for your cluster in place that periodically backs up your data and stores it safely so that you can use it in the event of a disaster to recover your data. [kasten k-10](https://www.kasten.io/product/) is a kubernetes native tool for configuring automated backup and restore. In order to ensure security, the Kasten k-10 has all the tools in place to securely transport and store backup data. A malicious attacker may also attempt to corrupt your existing backup, preventing you from recovering your data. Kasten offers an immutable backup solution, which means that backend data cannot be altered or removed.
+Your cluster contains sensitive data, including etcd, which holds your cluster's configuration data and application data from your database. A data leak or loss is one of the most serious security issues that an organization can face. In recent years, attackers have become more adept at gaining access to an organization's data, erasing or leaking it, and then demanding a ransom to recover it, which is bad for business. You must have a good backup and restoration solution for your cluster in place that periodically backs up your data and stores it safely so that you can use it in the event of a disaster to recover your data. [Kasten k-10](https://www.kasten.io/product/) is a Kubernetes native tool for configuring automated backup and restore. In order to ensure security, the Kasten k-10 has all the tools in place to securely transport and store backup data. A malicious attacker may also attempt to corrupt your existing backup, preventing you from recovering your data. Kasten offers an immutable backup solution, which means that backend data cannot be altered or removed.
 
 
 ## Audit Logs
 
-Enable Kubernetes audit logs and monitor them for fraudulent behaviour and suspicious API calls. Kubernetes can preserve detailed records of cluster activities. Potential security vulnerabilities are detected in audit logs nearly instantly. An attacker, for example, attempting to brute force a password can generate authentication and authorization logs. If they occur repeatedly, there could be a security risk. Audit logs are disabled by default; to enable them, utilize the Kubernetes [audit policy](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-policy), which allows administrators to configure one of four audit levels: None. Events that match this criterion should not be logged. Metadata. Request metadata, such as the requesting user, timestamp, resource, and verb, should be logged. Request. Log event metadata as well as the requested content but not the response body. This does not apply to requests for non-resources. RequestResponse. Keep track of event metadata, requests, and response bodies. This does not apply to requests for non-resources.
+Enable Kubernetes audit logs and monitor them for fraudulent behaviour and suspicious API calls. Kubernetes can preserve detailed records of cluster activities. Potential security vulnerabilities are detected in audit logs nearly instantly. An attacker, for example, attempting to brute force a password can generate authentication and authorization logs. If they occur repeatedly, there could be a security risk. Audit logs are disabled by default; to enable them, utilize the Kubernetes [Audit Policy](https://Kubernetes.io/docs/tasks/debug/debug-cluster/audit/#audit-policy), which allows administrators to configure one of four audit levels: None. Events that match this criterion should not be logged. Metadata. Request metadata, such as the requesting user, timestamp, resource, and verb, should be logged. Request. Log event metadata as well as the requested content but not the response body. This does not apply to requests for non-resources. RequestResponse. Keep track of event metadata, requests, and response bodies. This does not apply to requests for non-resources.
 
 ## Disaster Recovery
 
-A robust disaster recovery plan and process are essential in case an attacker compromises your cluster and corrupts it. In the event that your Kubernetes cluster suffers an attack or just a zone outage, what will be your recovery plan? You need to devise a strategy for restoring the backup data, and your application should be up and running in no time. In the case of an attack, you require tools to restore the cluster to its original state using the most recent backup. Such tools include [kasten K-10](https://www.kasten.io/product/), [portworx](https://portworx.com/kubernetes-disaster-recovery/), and [elero](https://velero.io/).
+A robust disaster recovery plan and process are essential in case an attacker compromises your cluster and corrupts it. In the event that your Kubernetes cluster suffers an attack or just a zone outage, what will be your recovery plan? You need to devise a strategy for restoring the backup data, and your application should be up and running in no time. In the case of an attack, you require tools to restore the cluster to its original state using the most recent backup. Such tools include [Kasten K-10](https://www.kasten.io/product/), [Portworx](https://portworx.com/Kubernetes-disaster-recovery/), and [Elero](https://velero.io/).
 
 
 ## Conclusion 
