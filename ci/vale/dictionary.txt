@@ -1522,11 +1522,13 @@ phusion
 pid
 pidfile
 pingable
+pinterest
 pipfile
 pipenv
 pipelined
 pipelining
 piwik
+pixid
 pki
 plaintext
 platformer
@@ -2078,6 +2080,7 @@ torvalds
 toolchain
 toolchains
 toolset
+tock
 towson
 trac
 traceroute
@@ -2115,6 +2118,7 @@ uber
 Ubiquiti
 ubuntu
 ucd
+udemy
 udp
 ufw
 ui
@@ -2303,6 +2307,7 @@ winsxs
 windowlist
 wireguard
 wireshark
+whitebox
 wkhtmltopdf
 wkhtmltox
 wll
