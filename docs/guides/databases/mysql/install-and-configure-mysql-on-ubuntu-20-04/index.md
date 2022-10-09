@@ -92,7 +92,7 @@ The steps in this installation guide are for Ubuntu 22.04 as described at the be
 
 1. Once finished viewing the information, type `q` and press **Enter** to exit the command prompt.
 
-### Configure MySQL Using mysql_secure_installation Script
+### Configure MySQL Using MySQL Installation Script
 
 For a safer MySQL installation, use the `mysql_secure_installation` script to create a secure environment. On Ubuntu, some additional steps are needed to be executed to allow the script to run to completion. Else, there is a risk of getting into a recursive loop while setting the root password that can be exited by closing the terminal window. The following steps show how to setup the root password and run the MySQL script:
 
@@ -234,4 +234,4 @@ Rule updated
 
 ## Conclusion
 
-One of the biggest takeaways, from this guide, is that both MySQL, and MariaDB provide enterprise-level database functionality. Each has its specialization. Installing either product is relatively easy using the Package Manager. When installing MySQL, take additional steps when working with the [mysql_secure_installation](/docs/guides/install-and-configure-mysql-on-ubuntu-2004/#configure-mysql-using-mysql_secure_installation-script) script. If the script fails recursively, then you are required to end your terminal session and log back in. Making the required alterations to the MySQL setup (as shown in this guide) gets the script working again and you can complete it. Remote access to MySQL setup requires that you configure MySQL to allow remote login and then set up UFW as well.
+One of the biggest takeaways, from this guide, is that both MySQL, and MariaDB provide enterprise-level database functionality. Each has its specialization. Installing either product is relatively easy using the Package Manager. When installing MySQL, take additional steps when working with the [MySQL Installation Script](/docs/guides/install-and-configure-mysql-on-ubuntu-2004/#configure-mysql-using-mysql-installation-script) script. If the script fails recursively, then you are required to end your terminal session and log back in. Making the required alterations to the MySQL setup (as shown in this guide) gets the script working again and you can complete it. Remote access to MySQL setup requires that you configure MySQL to allow remote login and then set up UFW as well.
