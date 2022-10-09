@@ -220,7 +220,7 @@ As it is, the script downloaded above should cover most use cases for migrating 
 
 To help make navigating and reviewing the script easier, here is a rough diagram of its operations. The diagram does not represent a one-to-one outline of the script. Instead, its purpose is to clarify the script's organization and order of operations.
 
-![Rough diagram of the migration script](s3_migration_script_model.png)
+![Rough diagram of the migration script](s3-migration-script-model.png)
 
 ### Running the Script
 

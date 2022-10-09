@@ -1,1 +1,0 @@
-This is the first example text file for testing migration from AWS S3 to Linode Object Storage.
