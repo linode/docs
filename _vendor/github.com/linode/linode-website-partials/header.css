@@ -282,6 +282,7 @@
   align-items: center;
   display: flex;
   flex-wrap: nowrap;
+  height: calc(var(--site-header-height) - 1px);
   max-width: none;
 }
 .c-site-header__primary .o-layout__col {
@@ -802,6 +803,7 @@
   align-items: center;
   display: flex;
   flex-wrap: nowrap;
+  height: calc(var(--site-topbar-height) - 1px);
   max-width: none;
 }
 .c-site-header__topbar .o-layout__col {
