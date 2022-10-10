@@ -86,8 +86,7 @@ Name=eth0
 
 [Network]
 DHCP=no
-Domains=203-0-113-0.ip.linodeusercontent.com
-IPv6PrivacyExtensions=false
+Domains=members.linode.com
 
 # DNS resolvers (safe to mix IPv4 and IPv6)
 DNS=203.0.113.1 2001:db8:0:123::1 203.0.113.2
@@ -102,8 +101,20 @@ Address=198.51.100.3/24
 # Add a private address:
 Address=192.168.133.234/17
 
-# Add a second IPv6 address.
-Address=2001:db8:2000:aff0::3/64
+# Add SLAAC address as static address
+Address=2001:db8::xxxx:xxxx:xxxx:xxxx/64
+# Add second IPv6 address.
+Address=2001:db8:2000:aff0::3/32
+# IPv6 primary address. Will be used as default source address for outgoing IPv6 traffic, unless an application explicitly has chosen otherwise.
+Address=2001:db8:2000:aff0::2/64
+
+# Disable the IPv6 privacy extensions (random IPs) - should be off by default already
+IPv6PrivacyExtensions=no
+
+# Disable the self-constructed IPv6 based on SLAAC, which would be the preferred outgoing IPv6.
+# See https://www.freedesktop.org/software/systemd/man/systemd.network.html#UseAutonomousPrefix=
+[IPv6AcceptRA]
+UseAutonomousPrefix=no
 {{< /file >}}
 
 {{< note >}}
