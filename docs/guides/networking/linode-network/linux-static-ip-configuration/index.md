@@ -87,7 +87,6 @@ Name=eth0
 [Network]
 DHCP=no
 Domains=members.linode.com
-IPv6PrivacyExtensions=false
 
 # DNS resolvers (safe to mix IPv4 and IPv6)
 DNS=203.0.113.1 2001:db8:0:123::1 203.0.113.2
