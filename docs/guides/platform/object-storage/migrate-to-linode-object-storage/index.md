@@ -21,7 +21,7 @@ external_resources:
 - '[IBM Cloud: Migrating from AWS](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-migrate)'
 ---
 
-[Linode Object Storage](https://www.linode.com/products/object-storage/) is S3-compatible. This means that it not only offers all of the benefits of S3 but also can leverage common S3 tooling. And it lets Linode Object Storage instances work with the hyperscale S3s like AWS's and Google Cloud's.
+[Linode Object Storage](https://www.linode.com/products/object-storage/) is S3-compatible. This means that it not only offers all of the benefits of S3 but also can leverage common S3 tooling. And it lets Linode Object Storage instances work with the hyper-scale S3s like AWS's and Google Cloud's.
 
 This tutorial shows you how to use that tooling to make migration from AWS S3 to Linode Object Storage a smooth and straightforward process. It covers what you need to know before making the migration, then gives you two options depending on your needs.
 
@@ -124,7 +124,7 @@ rclone v1.53.3-DEV
  secret_access_key = AWS_SECRET_KEY
  region = us-east-2
  location_constraint = us-east-2
- 
+
  [linodes3]
  type = s3
  env_auth = false
