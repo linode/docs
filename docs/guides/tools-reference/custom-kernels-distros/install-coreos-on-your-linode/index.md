@@ -34,7 +34,7 @@ CoreOS Container Linux is now available for deployment from the Linode Manager.
 
 CoreOS is not officially supported by Linode so there are limitations to using it in comparison to the Linux images provided in the Linode Manager.
 
-*   The CoreOS installer creates a partition table on the disk image which interferes with the [Linode Backup](/docs/guides/linode-backup-service/) service because the disk image is not be directly mountable.
+*   The CoreOS installer creates a partition table on the disk image which interferes with the [Linode Backup](/docs/products/storage/backups/) service because the disk image is not be directly mountable.
 
 *   Unlike the case with most partitioned images, you *can* resize the disk image holding a CoreOS system; however, it can only grow, not shrink. CoreOS resizes its root partition to fill the disk on next boot.
 
@@ -53,19 +53,19 @@ CoreOS configures no default way to log in except by supplying an option to the 
 
 2. Under the **Disks** section of the Linode Dashboard, click on **Create a new Disk**:
 
-    [![Create a new disk](custom-distro-new-disk_small.png)](custom-distro-new-disk.png)
+    ![Create a new disk](custom-distro-new-disk.png)
 
 3. Label your new disk image and choose an appropriate size. You probably need to allocate at least **5 GB**. Set the **Type** to **unformatted / raw**.
 
-    [![Specify disk name and size](coreos-disk-image-small.png)](coreos-disk-image.png)
+    ![Specify disk name and size](coreos-disk-image.png)
 
    If you're not sure how big your disk image needs to be, you may wish to choose a small size so that you can grow the disk later. You can not shrink the disk image after it has been generated.
 
 4. Return to the **Linode Dashboard** and select the **Rescue** tab. Check to make sure the CoreOS disk image you created is set as `/dev/sda` and all other selectable devices set to **--None--**, then click the **Reboot into Rescue Mode** button. Your Linode now boots into the Finnix recovery image.
 
-    [![Set /dev/sda to CoreOS disk image](coreos-device-identifier-small.png)](coreos-device-identifier.png)
+    ![Set /dev/sda to CoreOS disk image](coreos-device-identifier.png)
 
-5.  Use [Lish](/docs/guides/using-the-linode-shell-lish/) to access your Linode. From your Linode's dashboard, click the **Launch Console** link to open an SSH connection in the local system's terminal.
+5.  Use [Lish](/docs/guides/using-the-lish-console/) to access your Linode. From your Linode's dashboard, click the **Launch Console** link to open an SSH connection in the local system's terminal.
 
 ## Collect Installation Files
 
@@ -128,7 +128,7 @@ You can also supply any other options (see `coreos-install -h`). If you do not w
 
 3.  Under **Block Device Assignment**, set **/dev/sda** to the CoreOS disk image you created and installed CoreOS to.
 
-    [![Configuration profile](coreos-config-profile.png)](coreos-config-profile.png)
+    ![Configuration profile](coreos-config-profile.png)
 
 4.  All other settings can be left in their default state. Click **Save Changes**.
 

@@ -1,0 +1,66 @@
+{
+    "docs": [
+        {
+            "_id": "_design/index-0001",
+            "language": "query",
+            "views": {
+                "messaging-index": {
+                    "map": {
+                        "fields": {"date_time": "desc"},
+                        "partial_filter_selector": {}
+                    },
+                    "reduce": "_count",
+                    "options": {
+                        "def": {
+                            "fields": [{"date_time":"desc"}]
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "_id": "message-00000001",
+            "type": "message",
+            "thread_id": "thread-0001",
+            "user_id": "user-000001","date_time": "2021-02-05 10:57:00",
+            "message_body": "Example message text from user-000001, the first."
+        },
+        {
+            "_id": "message-00000002",
+            "type": "message",
+            "thread_id": "thread-0001",
+            "user_id": "user-000002",
+            "date_time": "2021-02-05 11:50:00",
+            "message_body":"Example message text from user-000002, the first."
+        },
+        {
+            "_id": "message-00000003",
+            "type": "message",
+            "thread_id": "thread-0001",
+            "user_id": "user-000001",
+            "date_time": "2021-02-05 12:00:00",
+            "message_body": "Example message text from user-000001, the second."
+        },
+        {
+            "_id": "message-00000004",
+            "type": "message",
+            "thread_id": "thread-0001",
+            "user_id": "user-000002",
+            "date_time": "2021-02-06 09:00:00",
+            "message_body":"Example message text from user-000002, the second."
+        },
+        {
+            "_id": "message-00000005",
+            "type":"message",
+            "thread_id":"thread-0001",
+            "user_id":"user-000003",
+            "date_time":"2021-02-06 10:00:00",
+            "message_body":"Example message text from user-000003."
+        },
+        {
+            "_id": "thread-0001",
+            "type":"thread",
+            "title":"Example Thread 1"
+        }
+    ]
+}

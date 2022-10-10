@@ -5,13 +5,11 @@ tab_group_main:
     weight: 30
 ---
 
-## Building Blocks
+## Basics
 
-These introductory guides to Linode Backups help get you up and running with Linode's Backup Service.
+These introductory guides help get you up and running with Linode's Backup Service.
 
 - [Enable the Backup Service](/docs/products/storage/backups/guides/enable/): Use the Cloud Manager to enable the Backup Service.
-
-- [Manage Backups](/docs/products/storage/backups/guides/manage/): Use the Cloud Manager to manage your backups.
 
 - [Schedule Backups](/docs/products/storage/backups/guides/schedule/): Configure when automatic backups are initiated.
 
@@ -23,5 +21,10 @@ These introductory guides to Linode Backups help get you up and running with Lin
 
 - [Boot from a Backup](/docs/products/storage/backups/guides/boot-from-a-backup/): After restoring from a backup, boot into the backup restoration disk/configuration.
 
-For more information on backups, see the following guides, [The Linode Backup Service](/docs/platform/disk-images/linode-backup-service/) and
-[Download a Local Copy of your Linode Backup](/docs/security/data-portability/download-backups-locally/).
+- [Cancel the Backup Service](/docs/products/storage/backups/guides/cancel/): Cancel the Backups Service through the Cloud Manager.
+
+## Going Further
+
+- [Troubleshooting Backups](/docs/products/storage/backups/guides/troubleshooting/): Get solutions for issues you may encounter when using our Backup service.
+
+- [Download a Local Copy of your Linode Backup](/docs/guides/download-backups-locally/)

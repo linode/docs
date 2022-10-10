@@ -3,17 +3,18 @@ slug: what-is-the-linode-longview-app-for-mysql
 author:
   name: Linode
   email: docs@linode.com
-description: Using the Linode Longview App for MySQL
+description:  "This guide discusses the Linode Longview client, including how to configure Longview for the MySQL database server, how to interact with data from Longview, and more."
 keywords: ["Longview", "MySQL", "statistics"]
 tags: ["cloud manager","statistics","monitoring","linode platform","mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/longview/longview-for-mysql/','/platform/longview/longview-app-for-mysql/','/platform/longview/what-is-the-linode-longview-app-for-mysql/']
-modified: 2020-01-28
+modified: 2022-02-17
 modified_by:
   name: Linode
 published: 2013-11-06
-title: What is the Linode Longview App for MySQL
-h1_title: Using the Linode Longview App for MySQL
+title: "What is the Linode Longview App for MySQL"
+h1_title: "Using the Linode Longview App for MySQL"
+enable_h1: true
 classic_manager_link: platform/longview/longview-app-for-mysql-classic
 relations:
     platform:
@@ -25,14 +26,16 @@ relations:
 Longview for MySQL is a Longview App. The Longview MySQL tab appears in the Linode Cloud Manager when Longview detects that you have MySQL installed on your Linode. With the Longview MySQL App, you'll be able to view statistics for MySQL on your Linode. It can help you keep track of MySQL's settings, queries, system resource consumption, and other information.
 
 ## In this Guide
-This guide discusses Linode Longview for NGINX. The guide covers the following topics:
+
+This guide discusses Linode Longview for MySQL. The guide covers the following topics:
 
 - [Configuring Linode Longview for MySQL](#debian-and-ubuntu-automatic-configuration).
 - [Interacting with the MySQL data provided by Longview in the Linode Cloud Manager](#viewing-statistics).
 - [Troubleshooting Linode Longview for MySQL](#troubleshooting).
 
 ## Before you Begin
-In order to use the Longview App for Apache, ensure you have completed the following things:
+
+In order to use the Longview App for MySQL, ensure you have completed the following things:
 
 - A Linode with [MySQL installed and running](/docs/databases/mysql/).
 - Create a [Longview client](/docs/platform/longview/what-is-longview/#install-linode-longview) instance using the Cloud Manager.
@@ -46,13 +49,13 @@ If you already have Longview installed, you may find that MySQL is not automatic
 
 To run the automatic Longview configuration:
 
-1. [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) whose system you are monitoring with Longview.
+1.  [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
 
-1. Ensure that MySQL is running:
+1.  Ensure that MySQL is running:
 
         sudo systemctl status mysql
 
-1. Run the automatic Longview configuration command on your Linode:
+1.  Run the automatic Longview configuration command on your Linode:
 
         dpkg-reconfigure -phigh linode-longview
 
@@ -73,7 +76,7 @@ Unless you already have a specific Longview database user set up in the `/etc/li
 
     If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#troubleshooting) section at the end of this article.
 
-    [![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](1459-longview_mysql_popup_crop.png)](1459-longview_mysql_popup_crop.png)
+    ![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](1459-longview_mysql_popup_crop.png)
 
 ### Manual Configuration (All Distributions)
 
@@ -83,18 +86,18 @@ You cannot configure the location of a socket for the Longview client.
 
 To enable the MySQL Longview app manually, follow these steps on your Linode:
 
-1. [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) whose system you are monitoring with Longview.
+1. [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
 
-1. Log into MySQL. For example, to log in as the root user:
+1.  Log into MySQL. For example, to log in as the root user:
 
-        mysql -u root -p
+        sudo mysql -u root -p
 
 1.  Create a new MySQL user with minimal privileges for Longview. Run the following queries on your database as the root MySQL user to create the new user. Ensure your replace `*****************` with your desired password.
 
         CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '***************';
         flush privileges;
 
-1. Exit the MySQL:
+1.  Exit the MySQL:
 
         exit
 
@@ -176,17 +179,17 @@ If you don't see Longview data for MySQL, you'll instead get an error on the pag
 
 If you run the [automatic Longview configuration tool](#debian-and-ubuntu-automatic-configuration), and get the popup message shown below:
 
-[![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](1459-longview_mysql_popup_crop.png)](1459-longview_mysql_popup_crop.png)
+![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](1459-longview_mysql_popup_crop.png)
 
 This indicates that Longview can't locate any valid MySQL user credentials, so it will create some for itself (in the `/etc/linode/longview.d/MySQL.conf` file) and ask you to add them to MySQL. To finish getting Longview set up:
 
-1. Copy the command shown in the popup message. You will need it for the next steps.
+1.  Copy the command shown in the popup message. You will need it for the next steps.
 
-1. Log in to your database as the root MySQL user:
+1.  Log in to your database as the root MySQL user:
 
-        mysql -u root -p
+        sudo mysql -u root -p
 
-1. Run the query that was shown in the popup message to create the Longview user. Ensure you replace `*****************` with the password provided to you by the popup.
+1.  Run the query that was shown in the popup message to create the Longview user. Ensure you replace `*****************` with the password provided to you by the popup.
 
         CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '***************';
         flush privileges;
@@ -219,7 +222,7 @@ This error will state `Unable to connect to the database:` and then specify a re
 
 ### Unable to Collect MySQL Status Information
 
-If you receive the error `Unable to collect MySQL status information`, this indicates that Longview was able to connect to the MySQL database, but the query it uses to collect statistics has failed. This could occur if the database crashes while the query is being executed. The specific reason that it failed will be listed with the error. If the problem persists, contact Linode [support](/docs/platform/billing-and-support/support/).
+If you receive the error `Unable to collect MySQL status information`, this indicates that Longview was able to connect to the MySQL database, but the query it uses to collect statistics has failed. This could occur if the database crashes while the query is being executed. The specific reason that it failed will be listed with the error. If the problem persists, contact Linode [support](/docs/guides/support/).
 
 ### MySQL Tab is Missing
 

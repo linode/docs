@@ -3,7 +3,7 @@ slug: tags-and-groups
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How to create tags to organize your Linode services.'
+description: 'This guide provides you with instructions for creating tags and groups in the Linode Cloud Manager to keep your Linodes and other services organized as needed.'
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-22
@@ -16,7 +16,7 @@ tags: ["linode platform","cloud manager"]
 aliases: ['/quick-answers/linode-platform/tags-and-groups/']
 ---
 
-Linode's [Cloud Manager](https://cloud.linode.com) and [API](https://developers.linode.com) allow you to create tags to help organize and group your Linode resources. Tags can be applied to Linodes, [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers-new-manager/), and [Domains](/docs/platform/manager/dns-manager-new-manager/).
+Linode's [Cloud Manager](https://cloud.linode.com) and [API](https://developers.linode.com) allow you to create tags to help organize and group your Linode resources. Tags can be applied to Linodes, [Block Storage Volumes](/docs/products/storage/block-storage/), [NodeBalancers](/docs/guides/getting-started-with-nodebalancers/), and [Domains](/docs/guides/dns-manager/).
 
 This guide will show you how to perform the following actions with the Cloud Manager:
 

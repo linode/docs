@@ -1,0 +1,17 @@
+{{ define "main" }}
+  {{ $api := partial "openapi3/get" . }}
+  {{ $p := . }}
+  <div class="content prose prose-sm md:prose-lg max-w-none">
+    {{ $info := $api.Info }}
+    <h1 class="font-bold">
+      {{ $info.Title }}
+      <small class="pl-3 text-sm text-gray-600 align-baseline">
+        v{{ $info.Version }}
+      </small>
+    </h1>
+    {{ $apiResource := partial "openapi3/get-resource" . }}
+    {{/* Make sure it gets published. */}}
+    {{ $tmp := $apiResource.RelPermalink }}
+    {{ $info.Description | .RenderString }}
+  </div>
+{{ end }}

@@ -3,14 +3,14 @@ slug: introduction-to-systemctl
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will cover how to use `systemctl` to manage systemd services.'
+description: "Do you know what systemctl is? Our guide will cover how to use `systemctl` to manage systemd services. ✓ Click here to learn more today!"
 keywords: ['systemctl','systemd','service','unit file','target']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-31
 modified: 2018-08-31
 modified_by:
   name: Linode
-title: "Introduction to systemctl"
+title: "systemctl Commands: Restart, Reload, and Stop Service"
 contributor:
   name: Linode
 external_resources:
@@ -26,7 +26,7 @@ aliases: ['/quick-answers/linux-essentials/introduction-to-systemctl/']
 `systemctl` is a controlling interface and inspection tool for the widely-adopted init system and service manager systemd. This guide will cover how to use `systemctl` to manage systemd services, work with systemd Targets and extract meaningful information about your system's overall state.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Managing Services
@@ -149,7 +149,7 @@ To retrieve a list of failed units, enter the `list-units` command with the `--f
 
 Each unit has a corresponding *unit file*. These unit files are usually located in the following directories:
 
-- The `/lib/systemd/system` directory holds unit files that are provided by the system or are supplied by installed packages.
+- The `/lib/systemd/system` directory holds unit files that are provided by the system or are supplied by installed packages. This directory is also a symlink to `/usr/lib/systemd/user/` directory.
 - The `/etc/systemd/system` directory stores unit files that are user-provided.
 
 ### Listing Installed Unit Files

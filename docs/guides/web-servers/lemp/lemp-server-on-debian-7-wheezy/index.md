@@ -3,7 +3,7 @@ slug: lemp-server-on-debian-7-wheezy
 author:
   name: Linode
   email: docs@linode.com
-description: 'Install a LEMP stack to serve websites and applications on Debian 7'
+description: 'This guide shows how to install a LEMP (Linux, NGINX, MySQL, PHP) stack so you can host multiple websites or applications on a Linode running Debian 7 "Wheezy".'
 keywords: ["nginx", "lemp", "lepp", "perl", "python", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -30,7 +30,7 @@ relations:
 
 This document describes a compatible alternative to the **LAMP** (Linux, Apache, MySQL, and PHP) stack, known as **LEMP**. The LEMP stack replaces the Apache web server component (which is the "A" in LAMP) with Nginx (pronounced "engine x", providing the "E" in LEMP). LEMP is comprised of a variety of open source software used to build and run web servers.
 
-Prior to beginning this guide, please complete the [Getting Started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Prior to beginning this guide, please complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 ![LEMP Server on Debian 7 (Wheezy)](lemp_server_on_debian_7_wheezy.png "LEMP Server on Debian 7")
 
@@ -54,7 +54,7 @@ Before beginning with the installation of this web application stack, issue the 
 
 There are several viable and popular options for installing the Nginx software. The method used here retrieves packages from the Debian Project's software repository and provides a stable and tested version of the web server. Another option would be to retrieve packages compiled by the Debian Backports project. Backports packages are more up to date than the stable packages provided by the Debian project. However, Backports do not necessarily receive the same updates, support, and maintenance that official packages receive.
 
-For more in-depth installation instructions consider our [guide to Installing Nginx](/docs/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/).
+For more in-depth installation instructions consider our [guide to Installing Nginx](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/).
 
 To install Nginx from the Debian repository, issue the following command:
 
@@ -187,7 +187,7 @@ MySQL database engine may be the leading open source relational database engine,
 
 2.  Set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-    [![Setting the MySQL root password in Debian Squeeze.](1550-wheezy-01-mysql-root-password.png)](1550-wheezy-01-mysql-root-password.png)
+    ![Setting the MySQL root password in Debian Squeeze.](1550-wheezy-01-mysql-root-password.png)
 
 3.  Issue the following command to secure the MySQL instance:
 

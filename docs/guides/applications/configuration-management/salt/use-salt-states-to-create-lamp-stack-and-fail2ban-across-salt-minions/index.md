@@ -19,7 +19,7 @@ title: Use Salt States to Create LAMP Stack and Fail2ban Across Salt minions
 Salt States can install and define a server setup on other servers. This tutorial demonstrates the use of Salt States to create a LAMP stack across all Salt Minions.
 
 ## Configure the Salt Master
-Before configuration, install a Salt Master and Salt Minions with the Linode [Install Salt](/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/) guide. This tutorial is written for Debian 8, but can easily be adjusted for other Linux Distributions.
+Before configuration, install a Salt Master and Salt Minions with the Linode [Install Salt](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) guide. This tutorial is written for Debian 8, but can easily be adjusted for other Linux Distributions.
 
 1.  Open the `/etc/salt/master` file. Then search for **file_roots**, optionally read the surrounding "File Server settings" section, and edit the following:
 
@@ -43,7 +43,7 @@ Copy the above text exactly to ensure the proper two-space nesting of YAML forma
 The Salt Master's configuration file has now been adjusted for a new base directory. The base directory typically contains the SLS files that create a tree like organization for Salt States pertaining to that directory. Additional directories, similar to the base directory, could be created with additional SLS files for different Salt State categories.
 
 ## Create the Top and Additional SLS Files
-The [top file](https://docs.saltstack.com/en/latest/ref/states/top.html) creates the top level organization for Salt States and Minions within the directory. Other SLS files typically correspond to the top file listings.
+The [top file](https://docs.saltproject.io/en/latest/ref/states/top.html) creates the top level organization for Salt States and Minions within the directory. Other SLS files typically correspond to the top file listings.
 
 As mentioned in the note above, each of these configuration files requires specific spacing. To ensure consistency, copy the examples below, including
 
@@ -72,7 +72,7 @@ lamp-stack:
 {{< /file >}}
 
 
-    This file defines a simple Salt State using the [pkg State Module](http://docs.saltstack.com/en/latest/ref/states/all/salt.states.pkg.html). This Salt State ensures that a LAMP stack is installed across Minions.
+    This file defines a simple Salt State using the [pkg State Module](http://docs.saltproject.io/en/latest/ref/states/all/salt.states.pkg.html). This Salt State ensures that a LAMP stack is installed across Minions.
 
 3.  The second bullet listed in `top.sls` declares an `extras` file which will list and install additional software. Create a `/etc/salt/base/extras.sls` file and add the following:
 

@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Alex Fornuto
   email: docs@linode.com
-description: 'How to upgrade from Debian 7 (Wheezy) to Debian 8 (Jessie).'
+description: 'This guide provides you with step-by-step instructions on how to upgrade your Linux system from Debian 7 "Wheezy" to Debian 8 "Jessie" via command line.'
 keywords: ["debian", "upgrade", "wheezy", "jessie"]
 tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -121,7 +121,7 @@ Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentica
         D     : show the differences between the versions
 
 
-5.  Reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/platform/manager/using-the-linode-shell-lish/).
+5.  Reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/guides/using-the-lish-console/).
 
 Your Linode is now running Debian 8!
 

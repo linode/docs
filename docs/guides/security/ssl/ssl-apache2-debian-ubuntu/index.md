@@ -3,16 +3,17 @@ slug: ssl-apache2-debian-ubuntu
 author:
   name: Linode
   email: docs@linode.com
-description: 'Serve SSL-enabled websites with the Apache web server.'
+description: 'This guide provides you with step-by-step instructions on how to enable SSL to secure websites served through the Apache web server on Debian or Ubuntu.'
 keywords: ["apache SSL", "ssl on debian", "web server", "debian", "apache", "ssl", "ubuntu", "ssl on ubuntu"]
 tags: ["ubuntu","debian","apache","security","ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/ssl/ssl-certificates-with-apache-2-on-ubuntu/','/security/ssl/ssl-apache2-debian-ubuntu/']
-modified: 2016-08-24
+modified: 2021-12-29
 modified_by:
   name: Nick Brewer
 published: 2014-11-19
-title: 'SSL Certificates with Apache on Debian & Ubuntu'
+title: "SSL Certificates with Apache on Debian & Ubuntu"
+image: SSL_Certificates_with_Apache_on_Debian_Ubuntu_smg.jpg
 external_resources:
  - '[Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.4/)'
 relations:
@@ -22,9 +23,7 @@ relations:
             - distribution: Debian/Ubuntu
 ---
 
-This guide will show you how to enable SSL to secure websites served through Apache on Debian and Ubuntu.
-
-![Apache SSL](SSL_Certificates_with_Apache_on_Debian_Ubuntu_smg.jpg)
+This guide shows you how to enable SSL to secure websites served through Apache on Debian and Ubuntu.
 
 ## Before You Begin
 
@@ -38,26 +37,34 @@ This guide assumes that you are running Apache 2.4 or higher on Debian 8 or Ubun
 
 -  If hosting multiple websites with commercial SSL certificates on the same IP address, use the [Server Name Identification (SNI) extension](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (like Internet Explorer for Windows XP), you will need to [contact support](/docs/platform/support) to request an additional IP address.
 
-
 ## Configure Apache to use the SSL Certificate
 
 1.  Edit the virtual host configuration files located in `/etc/apache2/sites-available` to provide the certificate file paths. For each virtual host, replicate the configuration shown below. Replace each mention of `example.com` with your own domain. You will also need to ensure that the `SSLCACertificateFile` value is configured to point to the `ca-certificates.crt` file updated in the previous step:
 
     {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
 <VirtualHost *:443>
+    ServerAdmin info@example.com
+    ServerName example.com
+    ServerAlias www.example.com
+
+    DocumentRoot /var/www/html/example.com/public_html/
+    DirectoryIndex index.html
+
+    # SSL configuration
     SSLEngine On
     SSLCertificateFile /etc/ssl/certs/example.com.crt
     SSLCertificateKeyFile /etc/ssl/private/example.com.key
-    SSLCACertificateFile /etc/ssl/certs/ca-certificates.crt  #If using a self-signed certificate, omit this line
+    SSLCACertificateFile /etc/ssl/certs/ca-certificates.crt  #If not using a self-signed certificate, omit this line
 
-    ServerAdmin info@example.com
-    ServerName www.example.com
-    ServerAlias www.example2.com #If using alternate names for a host
-      DocumentRoot /var/www/html/example.com/public_html/
+    # Log files
     ErrorLog /var/www/html/example.com/log/error.log
     CustomLog /var/www/html/example.com/log/access.log combined
 </VirtualHost>
-
+<VirtualHost *:80>
+    ServerName example.com
+    ServerAlias www.example.com
+    Redirect permanent / https://example.com/
+</VirtualHost>
 {{< /file >}}
 
 
@@ -71,7 +78,6 @@ This guide assumes that you are running Apache 2.4 or higher on Debian 8 or Ubun
         service apache2 restart
 
 4.  If troubleshooting issues, a system reboot may be required.
-
 
 ## Test Your Configuration
 

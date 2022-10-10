@@ -3,7 +3,7 @@ slug: what-is-the-linode-longview-app-for-nginx
 author:
   name: Linode
   email: docs@linode.com
-description: Using the Linode Longview App for Nginx
+description: 'This guide discusses the Linode Longview client, including how to configure Longview for the Nginx web server, how to interact with data from Longview, and more.'
 keywords: ["Longview", " Nginx", " statistics", " HttpStubStatusModule"]
 tags: ["cloud manager","statistics","monitoring","linode platform","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +14,7 @@ modified_by:
 published: 2013-11-05
 title: What is the Linode Longview App for Nginx
 h1_title: Using the Linode Longview App for Nginx
+enable_h1: true
 classic_manager_link: platform/longview/longview-app-for-nginx-classic
 relations:
     platform:
@@ -34,7 +35,7 @@ This guide discusses Linode Longview for NGINX. The guide covers the following t
 
 ## Before you Begin
 
-In order to use the Longview App for Apache, ensure you have completed the following things:
+In order to use the Longview App for NGINX, ensure you have completed the following things:
 
 -  A Linode with [NGINX installed and running](/docs/web-servers/nginx/).
 -  Create a [Longview client](/docs/platform/longview/what-is-longview/#install-linode-longview) instance using the Cloud Manager.
@@ -46,7 +47,7 @@ If NGINX is installed and running when you install the Longview client, the NGIN
 
 If you already have Longview installed, you may find that NGINX is not automatically detected by Longview on initial setup. If this is the case, you can run Longview through its automatic configuration sequence again. Depending on how [NGINX's status module](http://nginx.org/en/docs/http/ngx_http_stub_status_module.html) is configured, it will either find everything it needs to get the NGINX App started, or it will pop up a request to make some additional configurations. Your existing Longview data will stay safe during the automatic configuration process.
 
-1. [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) whose system you are monitoring with Longview.
+1. [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
 
 1.  Ensure that NGINX is running:
 
@@ -58,7 +59,7 @@ If you already have Longview installed, you may find that NGINX is not automatic
 
 3.  For most people, this will prompt a popup asking whether you would like Longview to attempt an automatic configuration of the NGINX status module.
 
-    [![Longview has detected Nginx running on this server but was unable to access the server status page. Would you like to attempt to automatically configure the Nginx status module? This will require restarting Nginx to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](1456-longview_ngnix_popup_crop.png)](1456-longview_ngnix_popup_crop.png)
+    ![Longview has detected Nginx running on this server but was unable to access the server status page. Would you like to attempt to automatically configure the Nginx status module? This will require restarting Nginx to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](1456-longview_ngnix_popup_crop.png)
 
     {{< note >}}
 It's also possible that Longview will be able to locate the status page on its own. In that case, you won't get the popup, and you can go directly to Step 5.
@@ -94,9 +95,9 @@ The automatic configuration sets the status page location to `http://127.0.0.2/n
 
 To enable the NGINX Longview app manually:
 
-1. [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) whose system you are monitoring with Longview.
+1. [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
 
-1.  Add the following lines to your NGINX configuration to enable the status module and set the location of the status page. The lines should be placed within your main configuration file's `http` block (`/etc/nginx/nginx.conf`) or in a separate [site configuration file](/docs/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/#host-multiple-websites).
+1.  Add the following lines to your NGINX configuration to enable the status module and set the location of the status page. The lines should be placed within your main configuration file's `http` block (`/etc/nginx/nginx.conf`) or in a separate [site configuration file](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/#host-multiple-websites).
 
     {{< file "/etc/nginx/nginx.conf" >}}
 server {
@@ -145,7 +146,7 @@ To see the output for the Longview Nginx App:
 
     You'll see the current version of NGINX listed on the upper left-hand side of the page.
 
-    Mouse over a data point to see the exact numbers for that time. With [Longview Pro](/docs/platform/longview/pricing/), you can view older time periods for your data. The next sections cover the Longview Nginx App in detail.
+    Mouse over a data point to see the exact numbers for that time. With [Longview Pro](/docs/guides/linode-longview-pricing-and-plans/), you can view older time periods for your data. The next sections cover the Longview Nginx App in detail.
 
 ### Requests
 
@@ -197,7 +198,7 @@ To fix this, follow these steps:
 
         sudo systemctl restart nginx
 
-2.  Check the status page location, and make sure it's available over Port 80. The default location Longview checks is `http://127.0.0.1/nginx_status` on localhost, but NGINX doesn't typically have a status page location set up by default. In the NGINX configuration file (typically `/etc/nginx/nginx.conf`) or in a [separate site configuration file](/docs/web-servers/nginx/slightly-more-advanced-configurations-for-nginx/#host-multiple-websites), this is designated with the lines in the example file below. If your configuration file does not contain these lines, add them to the file within the `http` block. For more details, see the [Manual Configuration](/docs/platform/longview/longview-app-for-nginx/#manual-configuration-all-distributions) section of this guide.
+2.  Check the status page location, and make sure it's available over Port 80. The default location Longview checks is `http://127.0.0.1/nginx_status` on localhost, but NGINX doesn't typically have a status page location set up by default. In the NGINX configuration file (typically `/etc/nginx/nginx.conf`) or in a [separate site configuration file](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/#host-multiple-websites), this is designated with the lines in the example file below. If your configuration file does not contain these lines, add them to the file within the `http` block. For more details, see the [Manual Configuration](/docs/platform/longview/longview-app-for-nginx/#manual-configuration-all-distributions) section of this guide.
 
     {{< file "/etc/nginx/nginx.conf" >}}
 server {

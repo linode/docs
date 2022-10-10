@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
+description: 'This guide will show you how to configure the uWSGI server to deploy Python application servers in conjunction with the Nginx web server on Arch Linux.'
 keywords: ["uwsgi", "wsgi", "nginx", "python", "arch linux"]
 tags: ["web server","python","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -151,5 +151,5 @@ In this example we create the `uwsgicluster` upstream, which has five components
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Deploy a LEMP Server on Arch Linux](/docs/lemp-guides/arch-linux/)
+- [Deploy a LEMP Server on Arch Linux](/docs/guides/lemp-server-on-arch-linux/)
 - [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)

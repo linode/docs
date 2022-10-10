@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Configuring Virus and Spam protection for your mail server.'
+description: 'This guide shows how to configure mail filtering on your server by making use of popular filtering and anti-spam apps like Amavis-new, ClamAV, and SpamAssassin.'
 keywords: ["email", "mail", "postfix", "dovecot", "mysql", "ubuntu", "12.04", "clamav", "spamassassin", "amavis"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

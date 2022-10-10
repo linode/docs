@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installing and configuring the ISPConfig control panel to maintain your Linode.'
+description: 'This guide will show you how to configure the open-source control panel ISPConfig enabling you to setup and maintain your Linode on Fedora 14.'
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["fedora","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -109,7 +109,7 @@ Installing fail2ban is entirely optional, however ISPConfig can manage this serv
 
     yum install fail2ban
 
-More information regarding fail2ban can be found in our [fail2ban guide](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/).
+More information regarding fail2ban can be found in our [fail2ban guide](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/).
 
 ## Installing ISPConfig
 

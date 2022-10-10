@@ -3,7 +3,7 @@ slug: creating-reading-and-writing-files-in-go-a-tutorial
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'Learn various file I/O operations in Go.'
+description: 'This guide provides you instructions for performing various file I/O operations in the Go programming language, such as verifying a path exists, and more.'
 keywords: ["Go", "File", "UNIX", "Input", "Output", "Golang"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-09-06
@@ -27,7 +27,7 @@ aliases: ['/development/go/creating-reading-and-writing-files-in-go-a-tutorial/'
 This guide provides examples related to performing common file input and output operations in Go.
 
 {{< note >}}
-This guide is written for a non-root user. However, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. However, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## In This Guide
@@ -42,7 +42,7 @@ In this guide, you will learn how to:
 
 ## Before You Begin
 
-- To follow this guide you need to have [Go installed on your computer](/docs/development/go/install-go-on-ubuntu/) and access to your preferred text editor.
+- To follow this guide you need to have [Go installed on your computer](/docs/guides/install-go-on-ubuntu/) and access to your preferred text editor.
 
 - For the purposes of this guide, a text file named `data.txt` with the following contents will be used:
 

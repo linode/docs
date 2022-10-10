@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installing Postfix with Dovecot and MySQL on CentOS.'
+description: 'This guide shows how to setup your own private email server by installing the Postfix MTA (mail transfer agent) and Dovecot on a Linode running CentOS 5.'
 keywords: ["postfix centos 5", "dovecot centos 5", "linux mail server", "email", "centos5"]
 tags: ["centos","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -30,7 +30,7 @@ relations:
 
 The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-mail server system. This guide will help you get Postfix running on your CentOS 5 Linode, using Dovecot for IMAP/POP3 service, and MySQL to store information on virtual domains and users.
 
-Prior to using this guide, be sure you have followed the [getting started guide](/docs/getting-started/) and set your hostname.
+Prior to using this guide, be sure you have followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and set your hostname.
 
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root`, or use `su - root` to log in as root. Certain commands below cannot be run as `sudo` and must be run as root.
@@ -478,4 +478,4 @@ Now test to see what the users of your email server would see with their email c
 
 4.  If there is an email in the inbox, Postfix, Dovecot, and MySQL have been successfully configured! To quit mutt press `q`.
 
-    [![Your mailbox is working!](postfixcentos-mutt.png)](postfixcentos-mutt.png)
+    ![Your mailbox is working!](postfixcentos-mutt.png)

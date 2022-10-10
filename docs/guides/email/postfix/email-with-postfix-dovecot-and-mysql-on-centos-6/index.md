@@ -1,9 +1,10 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql-on-centos-6
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installing Postfix with Dovecot and MySQL on CentOS.'
+description: 'This guide provides you with step-by-step instructions for installing the Postfix MTA along with the Dovecot mail server and MariaDB on CentOS 6.'
 keywords: ["postfix centos 6", "dovecot centos 6", "linux mail server", "email", "centos 6"]
 tags: ["centos","mysql","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -35,7 +36,7 @@ The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-ma
 
 ## Before You Begin
 
-Prior to using this guide, be sure you have followed the [getting started guide](/docs/getting-started/) and set your hostname.
+Prior to using this guide, be sure you have followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and set your hostname.
 
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root`, or use `su - root` to log in as root. Certain commands below cannot be run as `sudo` and must be run as root.
@@ -479,4 +480,4 @@ Now you can test to see what the users of your email server would see with their
 
 4.  If there is an email in the inbox, Postfix, Dovecot, and MySQL have been successfully configured! To quit mutt press `q`.
 
-    [![Your mailbox is working!](postfixcentos-mutt.png)](postfixcentos-mutt.png)
+    ![Your mailbox is working!](postfixcentos-mutt.png)

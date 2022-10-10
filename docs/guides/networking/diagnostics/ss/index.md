@@ -258,8 +258,8 @@ The `-r` parameter enables IP address resolving, which returns the domain names 
 
 {{< output >}}
 State  Recv-Q  Send-Q    Local Address:Port                  Peer Address:Port
-ESTAB  0       168       li140-253.members.linode.com:ssh    ppp-2-86-7-61.home.otenet.gr:50939
-ESTAB  0       0         li140-253.members.linode.com:https  ::ffff:216.244.66.228:37668
+ESTAB  0       168       203-0-113-0.ip.linodeusercontent.com:ssh    ppp-2-86-7-61.home.otenet.gr:50939
+ESTAB  0       0         203-0-113-0.ip.linodeusercontent.com:https  ::ffff:216.244.66.228:37668
 {{< /output >}}
 
 {{< note >}}

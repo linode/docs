@@ -25,7 +25,7 @@ relations:
 
 Apache Tomcat is an open source software implementation of the Java Servlet and Java Server Pages technologies. You may choose to run applications within Tomcat using either the OpenJDK implementation or the Sun Microsystems/Oracle implementation of the Java development environment.
 
-Before following this guide, ensure that your system is up to date and that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/beginners-guide/) and the article concerning [systems administration basics](/docs/using-linux/administration-basics).
+Before following this guide, ensure that your system is up to date and that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/guides/linode-beginners-guide/) and the article concerning [systems administration basics](/docs/using-linux/administration-basics).
 
 ## Set the Hostname
 

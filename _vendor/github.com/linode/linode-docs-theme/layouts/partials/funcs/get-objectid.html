@@ -1,0 +1,7 @@
+{{/* This is used as the objectID in Algolia.
+  These are used in the Insights API to connect to the Algolia item,
+  so it needs to be as stable as possible.
+  Before we implemented the Insights API hashed this with MD%,
+  but that makes is much harder to debug for no good reason.
+*/}}
+{{ return .RelPermalink }}

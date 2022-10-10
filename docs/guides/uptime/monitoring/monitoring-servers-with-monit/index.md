@@ -3,7 +3,7 @@ slug: monitoring-servers-with-monit
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Improve uptime with Monit Server Monitoring. Monit will watch you system around the clock, and respond to out-of-the-norm events by following your instructions.'
+description: 'This guide shows how you can improve server uptime by using Monit Server Monitoring, an app that monitors your system 24x7 and recovers processes when there is a problem.'
 keywords: ["installing Monit for server monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-10-15
@@ -71,6 +71,22 @@ Debian and Ubuntu automatically start and enable Monit after installation.
 
     sudo apt-get update && sudo apt-get upgrade
     sudo apt-get install monit
+
+{{< note >}}
+Debian 10 does not include Monit in the standard repositories. In order to install Monit on Debian 10, you need to enable the `buster-backports` repository.
+
+To enable the Monit repository, include the following lines in the `/etc/apt/sources.list` file or create a new file ending in `.list` inside the `/etc/apt/sources.list.d/` directory:
+
+```
+deb http://mirrors.linode.com/debian buster-backports main
+deb-src http://mirrors.linode.com/debian buster-backports main
+```
+
+After you save the changes and close the text editor, you should be able to install Monit. Using the following commands:
+
+        sudo apt-get update && sudo apt-get upgrade
+        sudo apt-get install monit
+{{< /note >}}
 
 ### Fedora
 

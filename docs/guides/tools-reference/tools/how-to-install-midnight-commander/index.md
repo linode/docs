@@ -19,7 +19,6 @@ tags: ["linux"]
 aliases: ['/tools-reference/tools/how-to-install-midnight-commander/']
 ---
 
-
 ![Midnight Commander](midnight_commander.jpg)
 
 ## Introduction
@@ -121,7 +120,7 @@ First, install the utility:
     - `-` to deselect all objects that match a pattern (e.g., typing `f*` will deselect every file or directory whose names start with "f")
     - `+` to select by pattern
 
-    In these patterns, `*` stands for zero or more characters while `?` stands for one character. So "f*e" would match "fe", "file", "fiiiile" or anything else starting with "f" and ending with "e". "a?c" would match "abc", "adc", "azc" but will not match "ac". There needs to be exactly one character between "a" and "c."
+    In these patterns, `*` stands for zero or more characters while `?` stands for one character. So `f*e` would match `fe`, `file`, `fiiiile` or anything else starting with "f" and ending with "e". `a?c` would match `abc`, `adc`, `azc` but will not match `ac`. There needs to be exactly one character between "a" and "c."
 
     If you prefer to use the mouse, then right clicking will make individual selections. Holding down the right click and dragging will select multiple entries.
 

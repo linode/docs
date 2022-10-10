@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Set up and manage an online storefront with OpenCart.'
+description: 'This guide shows how to install and configure the popular open-source ecommerce application OpenCart to run your own web storefront on CentOS 6,'
 keywords: ["opencart", "ecommerce", "commerce", "store", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/e-commerce/opencart/centos-6/','/websites/ecommerce/opencart-on-centos-6/']

@@ -33,7 +33,6 @@ swap:
   miniconda: Miniconda
   nodebalancer: NodeBalancer
   nodebalancers: NodeBalancers
-  openSUSE: OpenSUSE
   pod: Pod
   slackware: Slackware
   ubuntu: Ubuntu

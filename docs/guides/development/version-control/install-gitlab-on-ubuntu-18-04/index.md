@@ -3,7 +3,7 @@ slug: install-gitlab-on-ubuntu-18-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Install GitLab on Ubuntu 18.04 with SSL'
+description: 'This guide shows how to install GitLab, the free git repository management app based on Ruby on Rails, on a Linode running Ubuntu 18.04, along with SSL.'
 keywords: ['git', 'gitlab', 'version control', 'ubuntu']
 tags: ["ssl","version control system","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -28,29 +28,25 @@ aliases: ['/development/version-control/install-gitlab-on-ubuntu-18-04/']
 
 GitLab is a complete solution for all aspects of your software development life-cycle. At its core, GitLab serves as your centralized Git repository. It also features built-in tools that represent every task in your development workflow, from planning to testing to releasing. You can host your own GitLab instance on a Linode, instead of using third-party hosting. Self-hosting your software development with GitLab offers total control of your codebase while providing an easy to use interface for team members. GitLab is the most popular self-hosted Git repository, so you'll benefit from a robust set of integrated tools and an active community.
 
-This guide will walk you through the steps to install GitLab on an 8GB Linode running Ubuntu 18.04. This installation can support up to 100 users.
+This guide will walk you through the steps to install GitLab on an 8GB Linode running Ubuntu 18.04. This installation can support up to 500 users for general use.
 
 ## System Requirements
 
-Before installing GitLab you should consider how many users will collaborate on your self-hosted instance, the size of the repositories you will store, and the recommended minimum system requirements. This criteria will will effect the needed storage, CPU, and memory. This guide will use an **8GB Linode plan** to fulfill GitLab's minimum system requirements. The suggested hardware is as follows:
+Before installing GitLab you should consider how many users will collaborate on your self-hosted instance, the size of the repositories you will store, and the recommended minimum system requirements. This criteria will effect the needed storage, CPU, and memory. This guide will use an **8GB Linode plan** to fulfill GitLab's minimum system requirements. The suggested hardware is as follows:
 
 - **Storage** The required storage depends on the size of the repositories you will store in GitLab. You should plan to have *at least* as much free space as all the repositories combined require.
-- **CPU:** 2 cores is the recommended number and supports up to 500 users. While you can use 1 CPU core to support 100 users, the application may run slower because all workers and background jobs will run on the same core.
-- **Memory:** 8 GB to support up to 100 users.
+- **CPU:** 4 cores is the recommended number and supports up to 500 users. While you can use 1 CPU core to support 100 users, the application may run slower because all workers and background jobs will run on the same core.
+- **Memory:** 8 GB to support up to 500 users.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Add a domain zone, NS record, and A/AAA record for the domain you will use to access your GitLab installation. See the [DNS Manager](/docs/platform/manager/dns-manager-new-manager/#add-a-domain-zone) guide for details. If you will access your GitLab instance via your Linode’s IP address, you can skip this step.
 
-1.  [Create an SSL Certificate](/docs/quick-answers/websites/secure-http-traffic-certbot/), if you will be using SSL encryption for your domain (this is recommended). Be sure to note the location that Certbot uses to store all generated keys and issued certificates.
-
-1.  Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  [Create an SSL Certificate](/docs/guides/secure-http-traffic-certbot/), if you will be using SSL encryption for your domain (this is recommended). Be sure to note the location that Certbot uses to store all generated keys and issued certificates.
 
 ## Install GitLab
 

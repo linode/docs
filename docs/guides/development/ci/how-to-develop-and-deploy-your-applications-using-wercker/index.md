@@ -3,8 +3,8 @@ slug: how-to-develop-and-deploy-your-applications-using-wercker
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Wercker allows you to set up automation pipelines for your apps with only a single configuration file. This guide explains the basics of the wercker.yml file and demonstrates several basic workflows.'
-og_description: 'Wercker allows you to set up automation pipelines for your apps with only a single configuration file. This guide explains the basics of the wercker.yml file and demonstrates several basic workflows.'
+description: 'This guide will show you how to use the Wrecker utility to programmatically setup automation pipelines for your apps with only a single configuration file.'
+og_description: 'This guide will show you how to use the Wrecker utility to programmatically setup automation pipelines for your apps with only a single configuration file.'
 keywords: ["wercker", "docker", "development"]
 tags: ["automation","version control system","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,7 +13,7 @@ published: 2017-11-06
 modified: 2019-02-01
 modified_by:
   name: Linode
-title: 'How to Develop and Deploy Your Applications Using Wercker'
+title: 'How to Develop and Deploy Applications Using Wercker'
 contributor:
   name: Damaso Sanoja
 external_resources:
@@ -33,7 +33,7 @@ This guide will use three example [Go](https://golang.org/) apps to demonstrate 
 
 1.  Complete the [Getting Started](/docs/getting-started) guide to create a Linode. The commands in this guide are written for Ubuntu 16.04, but should also work with other distributions.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` wherever possible.
+2.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` wherever possible.
 
 3.  Update your packages:
 

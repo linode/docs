@@ -3,7 +3,7 @@ slug: build-nginx-with-pagespeed-from-source
 author:
   name: Linode
   email: docs@linode.com
-description: 'Compile NGINX to use the PageSpeed module.'
+description: 'This guide provides you with step-by-step instructions for compiling the Nginx web server from scratch so you can use Google''s PageSpeed moduleon your website.'
 keywords: ["nginx","pagespeed","optimization"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1604/','/web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/','/web-servers/nginx/install-nginx-pagespeed-module-on-ubuntu1804/','/web-servers/nginx/build-nginx-with-pagespeed-from-source/']
@@ -40,7 +40,7 @@ This guide will show how to compile both NGINX and PageSpeed. If you would prefe
 
 -  You will need root access to the system, or a user account with `sudo` privileges.
 
--  Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
+-  Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 -  Update your system's packages.
 
@@ -220,7 +220,7 @@ You can use NGINX's binary to control the process directly without making a star
 
 2.  In NGINX terminology, a *Server Block* equates to a website (similar to the *Virtual Host* in Apache terminology). Each NGINX site's configuration should be in its own file with the name formatted as `example.com.conf`, located at `/etc/nginx/conf.d/`.
 
-    If you followed this guide or our [Getting Started with NGINX](/docs/web-servers/nginx/nginx-installation-and-basic-setup/) series, then your site's configuration will be in a `server` block in a file stored in `/etc/nginx/conf.d/`. If you do not have this setup, then you likely have the `server` block directly in `/etc/nginx/nginx.conf`. See *[Server Block Examples](https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/)* in the NGINX docs for more info.
+    If you followed this guide or our [Getting Started with NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) series, then your site's configuration will be in a `server` block in a file stored in `/etc/nginx/conf.d/`. If you do not have this setup, then you likely have the `server` block directly in `/etc/nginx/nginx.conf`. See *[Server Block Examples](https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/)* in the NGINX docs for more info.
 
     Create a configuration file for your site with a basic server block inside:
 
