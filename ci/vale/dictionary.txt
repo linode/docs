@@ -697,6 +697,7 @@ getmail
 getprivs
 getpwent
 getters
+getty
 getuid
 gfx
 gfxmode
