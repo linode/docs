@@ -3,8 +3,8 @@ slug: deploy-appsmith-docker
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Appsmith gives you the power to quickly develop web frontends using a visual, drag-and-drop interface. Best of all, its drag-and-drop widgets can be connected to a wide array of data sources, from web APIs to databases. With this tutorial, learn more about what Appsmith has to offer and how you can deploy your own self-hosted instance using Docker."
-og_description: "Appsmith gives you the power to quickly develop web frontends using a visual, drag-and-drop interface. Best of all, its drag-and-drop widgets can be connected to a wide array of data sources, from web APIs to databases. With this tutorial, learn more about what Appsmith has to offer and how you can deploy your own self-hosted instance using Docker."
+description: "Use Appsmith to quickly develop web frontends using a visual, drag-and-drop interface. In this tutorial, learn what Appsmith has to offer and how to deploy a self-hosted instance with Docker."
+og_description: "Use Appsmith to quickly develop web frontends using a visual, drag-and-drop interface. In this tutorial, learn what Appsmith has to offer and how to deploy a self-hosted instance with Docker."
 keywords: ['appsmith tutorial','appsmith examples','install appsmith']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-24
@@ -21,23 +21,23 @@ external_resources:
 - '[Anamika: How to Deploy Appsmith on Private Instance Using Docker](https://dev.to/noviicee/how-to-deploy-appsmith-on-private-instance-using-docker-eig)'
 ---
 
-[Appsmith](https://www.appsmith.com/) is an open-source framework for developing internal applications. With Appsmith, developers can quickly develop complex applications using drag-and-drop widgets for user-interface design and JavaScript for application logic. And Appsmith simplifies the processing of connecting your application to a wide range of data sources, from REST APIs to databases directly.
+[Appsmith](https://www.appsmith.com/) is an open source framework for developing internal applications. With Appsmith, developers can quickly develop complex applications using drag-and-drop widgets for user interface design and JavaScript for application logic. Appsmith also simplifies connecting your application to a wide range of data sources, from REST APIs to databases directly.
 
-Learn in this tutorial how to get started with Appsmith, deploying your own self-hosted instance with Docker. Over the course of this tutorial, see also how to start configuring, using, and managing your Appsmith instance to get the most out of it.
+In this tutorial, learn how to get started with Appsmith by deploying your own self-hosted instance with Docker. Start configuring, using, and managing your Appsmith instance to get the most out of it.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-1. Update your system.
+1.  Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    -   **Debian** and **Ubuntu**:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    -   **AlmaLinux**, **CentOS Stream** (8 or later), **Fedora**, and **Rocky Linux**:
 
             sudo dnf upgrade
 
@@ -47,25 +47,25 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## What Is Appsmith?
 
-Appsmith is an open-source framework for building web-based applications via a visual, drag-and-drop interface. Especially designed with the development of internal applications in mind, Appsmith allows you to more quickly compose an application interface and get your application operational.
+Appsmith is an open source framework for building web-based applications via a visual, drag-and-drop interface. Especially designed with the development of internal applications in mind, Appsmith allows you to more quickly compose an application interface and get your application operational.
 
-Appsmith allows you to connect drag-and-drop UI widgets to a wide range of data sources to make a full-functioning application. Whether you access data via a REST API, GraphQL, or directly from a database, Appsmith is capable of mobilizing it in your new application.
+Appsmith allows you to connect drag-and-drop UI widgets to a wide range of data sources to make a full functioning application. Whether you access data via a REST API, GraphQL, or directly from a database, Appsmith is capable of mobilizing it in your new application.
 
 From there, Appsmith uses JavaScript to control the logic within your application. In this way, it gives you a powerful blend of graphical application layout and design and code-first control of actions.
 
 ### Appsmith vs Retool and Budibase
 
-There are other tools that weigh into the field with Appsmith. So, how does Appsmith compare with them? Why use Appsmith over Retool or over Budibase?
+There are other tools that compete with Appsmith. So, how does it compare with them? Why use Appsmith over Retool or over Budibase?
 
-Appsmith's main advantage over the similar Retool is Appsmith's open-source nature. Appsmith is distributed as an open-source application that can be used and self-hosted freely. Retool, on the other hand, is proprietary. While Retool has a free tier, both its cloud-hosted and self-hosted offerings are limited if you are not on a paid plan.
+Appsmith's main advantage over Retool is its open source nature. Appsmith is distributed as an open source application that can be used and self-hosted freely. Retool, on the other hand, is proprietary. While Retool has a free tier, both its cloud-hosted and self-hosted offerings are limited if you are not on a paid plan.
 
-Appsmith vs Budibase, on the other hand, comes down to emphasis and audience. Both are open-source solutions. But Budibase aims more completely to make application development visual. It is a "code optional" solution primarily with system administrators and other non-developer IT fields in mind.
+Appsmith vs Budibase, on the other hand, comes down to emphasis and audience. Both are open source solutions. But Budibase aims to make application development completely visual. It is a "code optional" solution, with system administrators and other non-developer IT fields primarily in mind.
 
-Appsmith, on the other hand, aims to provide a solution to help developers build complex internal applications more quickly and easily. It provides a balance of graphical design and coded logic to simplify UI design without sacrificing application control.
+Appsmith, on the other hand, provides a solution to help developers build complex internal applications more quickly and easily. It provides a balance of graphical design and coded logic to simplify UI design without sacrificing application control.
 
 ## How to Deploy Appsmith with Docker
 
-The official method supported for deploying a self-hosted Appsmith instance is through Docker Compose. And that is the method used here, with all the steps you need to get your own instance up and running.
+The official method supported for deploying a self-hosted Appsmith instance is through Docker Compose. That is the method used here, with all the steps you need to get your own instance up and running.
 
 {{< note >}}
 These steps have been tested on Ubuntu 22.04. However, the Docker commands should apply equally on other distributions, such as Debian and CentOS. The section on installing Docker also includes information on how to do so for these and other distributions.
@@ -73,41 +73,41 @@ These steps have been tested on Ubuntu 22.04. However, the Docker commands shoul
 
 ### Installing Docker
 
-The first step is to install Docker and Docker Compose. Docker runs Appsmith, while Docker Compose is used to organize its component parts and ensure the installation and coordinated execution of them.
+The first step is to install Docker and Docker Compose. Docker runs Appsmith, while Docker Compose organizes its component parts and ensures their installation and coordinated execution.
 
-1. Install Docker using the steps outlined in one of the following guides, depending on your Linux distribution.
+1.  Install Docker using the steps outlined in one of the following guides, depending on your Linux distribution.
 
-    On Debian and Ubuntu, use our guide on [How to Install and Use Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
+    -   **Debian** and **Ubuntu**: Use our guide on [How to Install and Use Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
 
-    On AlmaLinux, CentOS, and Fedora, use our guide on [How to Install and Use Docker on CentOS and Fedora](/docs/guides/installing-and-using-docker-on-centos-and-fedora/).
+    -   **AlmaLinux**, **CentOS Stream**, **Fedora**, and **Rocky Linux**: Use our guide on [How to Install and Use Docker on CentOS and Fedora](/docs/guides/installing-and-using-docker-on-centos-and-fedora/).
 
-1. Install Docker Compose using your distribution's package manager.
+1.  Install Docker Compose using your distribution's package manager.
 
-    On Debian and Ubuntu, use the command:
+    -   **Debian** and **Ubuntu**:
 
-        sudo apt install docker-compose
+            sudo apt install docker-compose-plugin
 
-    On AlmaLinux, CentOS, and Fedora, use the command:
+    -   **AlmaLinux**, **CentOS Stream**, **Fedora**, and **Rocky Linux**:
 
-        sudo dnf install docker-compose
+            sudo dnf install docker-compose-plugin
 
-1. Verify your Docker Compose installation. Your version may not match the one shown below, but you just want to make sure that you get a version response:
+1.  Verify your Docker Compose installation. Your version may not match the one shown below, but you just want to make sure that you get a version response:
 
-        docker-compose -v
+        docker compose version
 
     {{< output >}}
-docker-compose version 1.29.2, build unknown
+Docker Compose version v2.10.2
     {{< /output >}}
 
 ### Downloading Appsmith
 
 Once you have Docker and Docker Compose installed, you need to download the Docker Compose file for Appsmith. This file should, additionally, be downloaded into the directory you plan to run Appsmith from.
 
-This series of commands creates a directory for Appsmith, moves into that directory, and downloads the Docker Compose file for Appsmith. Here, the Appsmith directory is created as a subdirectory of the current user's home directory. Vary this as fits your needs:
+This series of commands creates a directory for Appsmith, moves into that directory, and downloads the Docker Compose file for Appsmith. Here, the Appsmith directory is created as a subdirectory of the current user's home directory. Modify this to fit your needs:
 
     mkdir ~/appsmith
     cd ~/appsmith
-    curl -L https://bit.ly/32jBNin -o $PWD/docker-compose.yml
+    curl -L https://bit.ly/3AQzII6 -o $PWD/docker-compose.yml
 
 All subsequent commands in this tutorial assume you are operating in this Appsmith directory unless noted otherwise.
 
@@ -115,7 +115,7 @@ All subsequent commands in this tutorial assume you are operating in this Appsmi
 
 With the Docker Compose files for Appsmith downloaded, you can now start up Appsmith with the following command:
 
-    sudo docker-compose up -d
+    sudo docker compose up -d
 
 With the initial run, Docker Compose starts by downloading the necessary image files for the Appsmith services. For this reason, the first time you run this command may take longer than subsequent times.
 
@@ -123,11 +123,11 @@ Docker Compose starts up the Appsmith services once it has finished with these i
 
 ### Stopping Appsmith
 
-Once started, the Appsmith services continue running until either manually stopped or until the server is shut down. You can start the services back up anytime using the `docker-compose up -d` command as seen in the section above.
+Once started, the Appsmith services continue running until either manually stopped or until the server is shut down. You can start the services back up anytime using the `docker compose up -d` command as seen in the section above.
 
 Should you need to stop the Appsmith services manually, you can do so by running the following command:
 
-    sudo docker-compose stop -v
+    sudo docker compose stop
 
 ## How to Start Using Appsmith
 
@@ -137,9 +137,9 @@ However, doing so is often not feasible, especially not for numerous users. Like
 
 You can do so by navigating to the Appsmith server's URL, which may be an IP address, like `192.0.2.0`. But first, you need to ensure that the server's firewall provides external access to the HTTP port, port `80`.
 
-- For Debian and Ubuntu, refer to our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+-   **Debian** and **Ubuntu**: Refer to our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
 
-- For AlmaLinux, CentOS, and Fedora, refer to our guide on [Enabling and Configuring FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/)
+-   **AlmaLinux**, **CentOS Stream**, **Fedora**, and **Rocky Linux**: Refer to our guide on [Enabling and Configuring FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/).
 
 Having opened the port, navigate to the server's URL/IP address, and you should be greeted by the Appsmith welcome page.
 
@@ -153,7 +153,7 @@ Following that, you arrive at the main Appsmith page. On your first visit, a pro
 
 [![The default Appsmith dashboard](appsmith-dashboard_small.png)](appsmith-dashboard.png)
 
-In addition to the built-in tutorial, Appsmith offers [tutorials](https://docs.appsmith.com/tutorials) on its website. These can be especially useful when it comes to applying further setup and configuration to your Appsmith instance.
+In addition to the built-in tutorial, Appsmith offers [tutorials](https://docs.appsmith.com/tutorials) on its website. These can be especially useful when it comes to applying further setup and configuration changes to your Appsmith instance.
 
 ## How to Configure Appsmith for Self-hosting
 
@@ -190,19 +190,19 @@ You can learn more about particular configuration options in the official [Appsm
 
 Once you have made configuration changes, you need to restart the Appsmith services for those changes to take effect. You can use the following command to restart the services:
 
-    sudo docker-compose restart appsmith
+    sudo docker compose restart appsmith
 
 ### Configuring Automatic Updates
 
 Setting up Appsmith for automatic updates requires a configuration change in a different file. For this change, you need to modify the `docker-compose.yml` file found in the Appsmith directory. Follow these steps to make the necessary changes and enable automatic updates.
 
-1. Stop the Appsmith services:
+1.  Stop the Appsmith services:
 
-        sudo docker-compose stop
+        sudo docker compose stop
 
-1. Open the `docker-compose.yml` file, and find the commented-out lines that begin with the line `# Uncomment the lines below to enable auto-update`. YAML configuration files like this one use `#` to comment out lines.
+1.  Open the `docker-compose.yml` file, and find the commented-out lines that begin with the line `# Uncomment the lines below to enable auto-update`. YAML configuration files like this one use `#` to comment out lines.
 
-1. Remove the comment syntax (`#`) from the beginnings of these lines. There may be a space character preceding the `#`, which should also be removed. The section of your configuration file may afterward look something like:
+1.  Remove the comment syntax (`#`) from the beginnings of these lines. There may be a space character preceding the `#`, which should also be removed. The section of your configuration file may afterward look something like:
 
     {{< file "docker-compose.yml" >}}
    # Uncomment the lines below to enable auto-update
@@ -218,21 +218,21 @@ Setting up Appsmith for automatic updates requires a configuration change in a d
    restart: unless-stopped
     {{< /file >}}
 
-1. Start the Appsmith services back up. Docker Compose downloads the necessary additional image file and creates the service used to manage automatic updates:
+1.  Start the Appsmith services back up. Docker Compose downloads the necessary additional image file and creates the service used to manage automatic updates:
 
-        sudo docker-compose up -d
+        sudo docker compose up -d
 
 Alternatively, you can make manual updates to your Appsmith instance. Take a look at the section on [Updating Appsmith](/docs/guides/deploy-appsmith-docker/#updating-appsmith) below for the commands to do so.
 
 ## How to Manage the Appsmith Instance
 
-The next sections give you tools for managing your Appsmith instance. These can be helpful for keeping instance up to date and for troubleshooting issues with any of the Appsmith services.
+The next sections give you tools for managing your Appsmith instance. These can be helpful for keeping your instance up-to-date and for troubleshooting issues with any of the Appsmith services.
 
 ### Monitoring Processes
 
 Appsmith has a dedicated web interface for monitoring Appsmith processes, called Supervisor.
 
-You can access the Supervisor dashboard by navigating in your browser to the Supervisor path, `/supervisor`. You can do this locally with `http://localhost/supervisor`. Or you can access the Supervisor remotely through your server's domain/IP address. For example, if your server's IP address is `192.0.2.0`, you could find the Supervisor at `192.0.2.0/supervisor`.
+You can access the Supervisor dashboard by navigating your browser to the Supervisor path, `/supervisor`. You can do this locally with `http://localhost/supervisor`. Or you can access the Supervisor remotely through your server's domain/IP address. For example, if your server's IP address is `192.0.2.0`, you could find the Supervisor at `192.0.2.0/supervisor`.
 
 [![The Appsmith Supervisor page](appsmith-supervisor_small.png)](appsmith-supervisor.png)
 
@@ -258,8 +258,6 @@ Alternatively, refer to the [Configuring Automatic Updates](/docs/guides/deploy-
 
 ## Conclusion
 
-Having followed this tutorial, you have what you need to start using Appsmith to build your own applications. This tutorial covers the steps and techniques for getting an Appsmith instance up and running and managing it once you have.
+Having followed this tutorial, you have what you need to start using Appsmith to build your own applications. This tutorial covers the steps and techniques for getting an Appsmith instance up-and-running, and managing it once you have.
 
-From there, you can jump into the tutorials and guides available from Appsmith to learn all the possibilities that the framework has to offer. Take a look at the link to Appsmith below, or at the links provided throughout this guide.
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
+From there, you can jump into the tutorials and guides available from Appsmith to learn all the possibilities the framework has to offer. Take a look at the link to Appsmith below, or at the links provided throughout this guide.
