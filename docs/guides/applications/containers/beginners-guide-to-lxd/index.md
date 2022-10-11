@@ -84,7 +84,7 @@ description: |
   **Run any Linux distribution you want**
 
   Pre-made images are available for Ubuntu, Alpine Linux, ArchLinux,
-  CentOS, Debian, Fedora, Gentoo, OpenSUSE and more.
+  CentOS, Debian, Fedora, Gentoo, openSUSE and more.
 
   A full list of available images can be [found
   here](https://images.linuxcontainers.org)

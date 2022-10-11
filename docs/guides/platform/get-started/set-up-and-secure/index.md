@@ -110,7 +110,7 @@ After running a sync, it may end with a message that you should upgrade Portage 
 
     emerge -uDU --keep-going --with-bdeps=y @world
 
-#### OpenSUSE
+#### openSUSE
 
     zypper update
 
@@ -174,7 +174,7 @@ The instructions under the [Most Distributions](#most-distributions-1) section a
 
         emerge --config sys-libs/timezone-data
 
-#### OpenSUSE
+#### openSUSE
 
 The instructions under the [Most Distributions](#most-distributions-1) section above (which outlines the `timedatectl` command) are valid. OpenSuse also has a more friendly way to select a timezone, discussed below.
 
@@ -452,7 +452,7 @@ Using a *firewall* to block unwanted inbound traffic to your Linode provides a h
 
 - [nftables](/docs/guides/how-to-use-nftables/) or its predecessor, [iptables](/docs/guides/control-network-traffic-with-iptables/), is the controller for netfilter, the Linux kernel's packet filtering framework. One of these utilities is included in most Linux distributions by default.
 
-- [firewalld](/docs/guides/introduction-to-firewalld-on-centos/) is a firewall management tool that serves as a frontend to nftables or iptables. It is preinstalled on the RHEL family of distributions (and others), including CentOS, AlmaLinux, Rocky Linux, Fedora, and OpenSUSE Leap.
+- [firewalld](/docs/guides/introduction-to-firewalld-on-centos/) is a firewall management tool that serves as a frontend to nftables or iptables. It is preinstalled on the RHEL family of distributions (and others), including CentOS, AlmaLinux, Rocky Linux, Fedora, and openSUSE Leap.
 
 - [UFW](/docs/guides/configure-firewall-with-ufw/) is another firewall management tool that operates as a frontend to nftables or iptables. It is used by default on Ubuntu and is also available on other Debian-based distributions.
 
