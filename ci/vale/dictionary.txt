@@ -1526,10 +1526,12 @@ phusion
 pid
 pidfile
 pingable
+pinterest
 pipfile
 pipenv
 pipelined
 pipelining
+pixid
 piwik
 pki
 plaintext
@@ -2069,6 +2071,7 @@ tls
 tlz
 tmp
 tmux
+tock
 todo
 togami
 tokenize
@@ -2119,6 +2122,7 @@ uber
 Ubiquiti
 ubuntu
 ucd
+udemy
 udp
 ufw
 ui
@@ -2289,6 +2293,7 @@ wg
 wget
 whatsmyip
 whatweb
+whitebox
 whitelisted
 whitelisting
 whitespace
