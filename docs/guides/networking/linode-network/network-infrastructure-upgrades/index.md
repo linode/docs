@@ -7,13 +7,11 @@ description: "An overview of changes and actions that may be required in advance
 keywords: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-19
-modified: 2022-09-01
+modified: 2022-10-11
 modified_by:
   name: Linode
 title: "Upcoming Changes Related to Network Infrastructure Upgrades"
 noindex: true
-_build:
-  list: false
 ---
 
 Throughout 2022, Linode is rolling out networking infrastructure upgrades to all of our existing data centers. These upgrades increase the stability and resiliency of our already reliable network. It also enables us to bring features, such as VLAN and IP Sharing, to every data center.
@@ -51,7 +49,7 @@ Review the table below to learn which data centers have been upgraded with the l
 | **London (United Kingdom)** | **Complete** |
 | **Mumbai (India)** | **Complete** |
 | **Newark (New Jersey, USA)** | **Complete** |
-| Singapore | *In progress* |
+| **Singapore** | **Complete** |
 | Sydney (Australia) | *Coming soon* |
 | Tokyo (Japan) | *Coming soon* |
 | Toronto (Canada) | *Coming soon* |
