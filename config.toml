@@ -16,7 +16,20 @@ enableGitInfo = true
 
 [outputs]
 # The JSON is for the search index. We build this on every build to make sure we have the image thumbnails in sync.
-home = ["HTML", "JSON", "RSS"]
+home = ["HTML", "JSON", "RSS", "RELEASENOTES", "RELEASENOTES_RSS"]
+
+[outputFormats]
+[outputFormats.RELEASENOTES]
+mediaType = "text/html"
+path = "releasenotes"
+isHTML = true
+notAlternative = true
+permalinkable = true
+[outputFormats.RELEASENOTES_RSS]
+mediaType = "application/rss+xml"
+path = "releasenotes"
+notAlternative = true
+permalinkable = true
 
 [taxonomies]
 bundle = "bundles"

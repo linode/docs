@@ -1,0 +1,15 @@
+- date: 2022-10-12
+  title: NodeBalancer 2022-10-22
+  version: 0.46.0
+  summary: Test
+  content: |
+    ### Added
+
+    Lorem markdownum, aequent vocem dixit tamen quidem crimine in maris protinus
+    moror *telluris* magno, marinae Latonae. Opaca tamquam ligari!
+
+    ### Changed
+
+    Lorem markdownum, aequent vocem dixit tamen quidem **crimine** in maris protinus
+    moror *telluris* magno, marinae Latonae. Opaca tamquam ligari! Lorem markdownum, aequent vocem dixit tamen quidem crimine in maris protinus
+    moror *telluris* magno, marinae Latonae. Opaca tamquam ligari!
