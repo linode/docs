@@ -1222,6 +1222,7 @@ microblogging
 microblogs
 microservice
 microservices
+microsite
 microsystems
 microweb
 Microweber
