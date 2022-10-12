@@ -40,11 +40,9 @@ You can connect to Lish using a web browser. This is useful when you don't have 
 
     ![Launch the Lish Console](launch-console-button.png)
 
-1. The Lish Web Console window appears, as shown below.
+1. The Lish Web Console window appears, as shown below. From here, you can log in to your Compute Instance with any other username and password available on that system (such as `root`).
 
     ![An example of the Lish Web Console](weblish.png)
-
-1. From here, you can log in to your Compute Instance with any other username and password available on that system (such as `root`)
 
 You can exit to the Lish prompt by pressing **CTRL+A** then **D**. You cannot exit to a Lish gateway box using your web browser. To exit the session entirely, just close the Lish Web Console window.
 
