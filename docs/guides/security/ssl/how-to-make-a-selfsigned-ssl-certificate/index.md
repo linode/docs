@@ -1,7 +1,7 @@
 ---
 slug: how-to-make-a-selfsigned-ssl-certificate
 deprecated: true
-deprecated_link: /guides/create-a-self-signed-tls-certificate/
+deprecated_link: 'guides/create-a-self-signed-tls-certificate/'
 author:
   name: Linode
   email: docs@linode.com
