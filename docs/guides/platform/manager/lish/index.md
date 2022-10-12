@@ -1,24 +1,26 @@
 ---
-slug: using-the-lish-console
+slug: lish
 author:
   name: Linode
   email: docs@linode.com
-description: "Learn how to use Lish as a shell for managing or rescuing your Linode."
+description: "Learn how to use Lish as a shell for managing or rescuing your Compute Instances."
 keywords: ["Console", "Shell", "Lish", "rescue", "weblish"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/platform/manager/using-the-linode-shell-lish-classic-manager/','/platform/using-the-linode-shell-lish/','/networking/using-the-linode-shell-lish/','/using-lish-the-linode-shell/','/troubleshooting/using-lish-the-linode-shell/','/platform/manager/using-the-linode-shell-lish/','/guides/using-the-linode-shell-lish/']
-modified: 2021-11-15
+aliases: ['/platform/manager/using-the-linode-shell-lish-classic-manager/','/platform/using-the-linode-shell-lish/','/networking/using-the-linode-shell-lish/','/using-lish-the-linode-shell/','/troubleshooting/using-lish-the-linode-shell/','/platform/manager/using-the-linode-shell-lish/','/guides/using-the-linode-shell-lish/','/guides/using-the-lish-console/']
+modified: 2022-10-12
 modified_by:
   name: Linode
 published: 2009-08-04
-title: "Using the Lish Console"
+title: "Access Your System Console Using Lish"
+h1_title: "Access Your System Console Using Lish (Linode Shell)"
+enable_h1: true
 tags: ["linode platform","cloud manager"]
 image: using-the-linode-shell-lish.jpg
 ---
 
 The **Lish Console**, also called the *Linode Shell*, provides direct console access to all of your Compute Instances. Through Lish, you can easily access your Compute Instance's internal Linux system and run commands, install software, or configure applications. Lish is especially useful when you are not able to connect to your server through other means, such as SSH.
 
-## Accessing Lish
+## Access Lish
 
 There are two ways to access Lish. You can use a terminal application to connect to a *Lish SSH gateway*, or you can log in to the [Linode Cloud Manager](https://cloud.linode.com) and use the Lish console in your web browser. This section explains both methods.
 
@@ -31,14 +33,16 @@ Lish used to be accessible via a direct SSH connection to your Linode's host mac
 You can connect to Lish using a web browser. This is useful when you don't have access to a terminal application, or if you just need quick and easy console access from the Cloud Manager.
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com).
+
 1. Click on the **Linodes** link in the sidebar and select the desired Compute Instance.
+
 1. Click on the **Launch LISH Console** link in the top right-hand corner of the Cloud Manager.
 
-    ![Launch the Lish Console](launch-console.png)
+    ![Launch the Lish Console](launch-console-button.png)
 
 1. The Lish Web Console window appears, as shown below.
 
-    ![An example of the Lish Web Console](lish-console.png)
+    ![An example of the Lish Web Console](weblish.png)
 
 1. From here, you can log in to your Compute Instance with any other username and password available on that system (such as `root`)
 
@@ -52,23 +56,9 @@ You can connect to Lish with the SSH client of your choice. For example, you can
 If you have [Third Party Authentication](/docs/guides/third-party-authentication/) enabled on your account, you will not be able to log in to your Compute Instance through Lish with password authentication, and must instead use SSH key authentication. Read the [Add Your Public Key](#add-your-public-key) section for more instructions on how to add an SSH key to your account for use with Lish.
 {{</ note >}}
 
-1.  Select a Lish SSH gateway. There's one in every data center. You can use any gateway to access your Compute Instances, but we recommend using one close to the data center it's located within. The gateway boxes are available over IPv4 and IPv6.
+1.  Determine which Lish SSH gateway you wish to use. There's one in every data center. See [Lish Gateways](#lish-gateways) for a full list.
 
-    | **Lish SSH gateway** | **Data Center** |
-    | ---------------- | -----------|
-    | `lish-atlanta.linode.com` | US, Atlanta, GA |
-    | `lish-dallas.linode.com` | US, Dallas, TX |
-    | `lish-fremont.linode.com` | US, Fremont, CA |
-    | `lish-newark.linode.com` | US, Newark, NJ |
-    | `lish-mum1.linode.com` | Mumbai, India |
-    | `lish-singapore.linode.com` | Asia, Singapore, SG |
-    | `lish-syd1.linode.com` | Sydney, Australia |
-    | `lish-tokyo2.linode.com` or `lish-shg1.linode.com` | Asia, Tokyo, JP |
-    | `lish-tor1.linode.com` | Canada, Toronto, ON |
-    | `lish-frankfurt.linode.com` | Europe, Frankfurt, DE |
-    | `lish-london.linode.com` | Europe, London, UK |
-
-1.  Open a terminal window and enter the following command, replacing `username` with your Cloud Manager username, and `location` with your preferred Lish SSH gateway. Lish listens for connections on ports 22, 443, and 2200.
+1.  Open a terminal window and enter the following command, replacing `username` with your Cloud Manager username, and `location` with your preferred Lish SSH gateway.
 
         ssh username@location
 
@@ -135,7 +125,7 @@ Now you can log in to any of the Lish gateway boxes without having to type your 
 If you wish to disable Lish access for users without keys, use the **Authentication Mode** dropdown menu on the same page, and select **Allow key authentication only** then click **Save**.
 
 
-## Understanding Lish Commands
+## Lish Commands
 
 The Lish shell provides access to many functions which are otherwise only accessible via the Cloud Manager web-based administration tool. Enter the `help` command to see a full list of available commands. The output provides an introduction to Lish functionality:
 
@@ -187,11 +177,37 @@ Similarly, you can generate a view of the log using Lish:
 
 This command format works for all Lish functionality.
 
-## Lish Gateway Fingerprints
+## Lish Gateways
+
+Each data center has its own gateway, which provides access to Lish, Weblish, and Glish. You can use any gateway to access your Compute Instances, but we recommend using one close to the data center it’s located within. The gateway boxes are available over IPv4 and IPv6.
+
+| Data center | Lish SSH | Weblish and Glish |
+| -- | -- | -- |
+| Atlanta (Georgia, USA) | `lish-atlanta.linode.com` | `atlanta.webconsole.linode.com` |
+| Dallas (Texas, USA) | `lish-dallas.linode.com` | `dallas.webconsole.linode.com` |
+| Frankfurt (Germany) | `lish-frankfurt.linode.com` | `frankfurt.webconsole.linode.com` |
+| Fremont (California, USA) | `lish-fremont.linode.com` | `fremont.webconsole.linode.com` |
+| London (United Kingdom) | `lish-london.linode.com` | `london.webconsole.linode.com` |
+| Mumbai (India) | `lish-mum1.linode.com` | `mum1.webconsole.linode.com` |
+| Newark (New Jersey, USA) |  `lish-newark.linode.com` | `newark.webconsole.linode.com` |
+| Singapore | `lish-singapore.linode.com` | `singapore.webconsole.linode.com` |
+| Sydney (Australia) | `lish-syd1.linode.com` | `syd1.webconsole.linode.com` |
+| Tokyo (Japan) | `lish-tokyo2.linode.com` <br>or `lish-shg1.linode.com` | `shg1.webconsole.linode.com` |
+| Toronto (Canada) | `lish-tor1.linode.com` | `tor1.webconsole.linode.com` |
+
+{{< note >}}
+If you are having issues accessing Weblish or Glish and are behind a restrictive local firewall, make sure your firewall allows outbound connections to the following ports and the gateway you wish to access:
+
+- **Lish ports:** 22, 443, 2200
+- **Weblish port:** 8181
+- **Glish port:** 8080
+{{</ note >}}
+
+### Lish Gateway Fingerprints
 
 The valid fingerprints for the Lish gateway boxes are as follows:
 
-### Atlanta
+#### Atlanta
 
 These are the fingerprints for the Lish gateway in our Atlanta data center (lish-atlanta.linode.com):
 
@@ -200,7 +216,7 @@ These are the fingerprints for the Lish gateway in our Atlanta data center (lish
     Ed25519 SHA256:7k2c442k+zqbGaraZvmqXM3MA5lCcthaR2lbrB651lg
     Ed25519 MD5:b3:76:56:3a:d8:66:5e:0c:61:90:03:b7:0b:ca:58:25
 
-### Dallas
+#### Dallas
 
 These are the fingerprints for the Lish gateway in our Dallas data center (lish-dallas.linode.com):
 
@@ -209,7 +225,7 @@ These are the fingerprints for the Lish gateway in our Dallas data center (lish-
     Ed25519 SHA256:Ime9h7IAxAjBvMGR+G+EnbaLWpvXO+Z7TaGHzM9g5Sc
     Ed25519 MD5:23:c1:02:ba:40:77:f7:73:0b:d4:0f:3a:f1:8c:74:b6
 
-### Frankfurt
+#### Frankfurt
 
 These are the fingerprints for the Lish gateway in our Frankfurt data center (lish-frankfurt.linode.com):
 
@@ -218,7 +234,7 @@ These are the fingerprints for the Lish gateway in our Frankfurt data center (li
     Ed25519 SHA256:vG1rnoGe7XRRY0nauJREQk75OamxCwRRpeaTDB8LpgM
     Ed25519 MD5:9e:83:86:e2:f9:f7:f7:56:fc:bf:54:bb:75:7e:79:37
 
-### Fremont
+#### Fremont
 
 These are the fingerprints for the Lish gateway in our Fremont data center (lish-fremont.linode.com):
 
@@ -227,7 +243,7 @@ These are the fingerprints for the Lish gateway in our Fremont data center (lish
     Ed25519 SHA256:s3MVXFaTiL7Fb5oB0s9zMBk9VJsrkNxXXZfdeJG2enQ
     Ed25519 MD5:c8:eb:9d:e6:b0:60:b1:ca:9e:89:d1:e4:6a:3c:10:31
 
-### London
+#### London
 
 These are the fingerprints for the Lish gateway in our London data center (lish-london.linode.com):
 
@@ -236,7 +252,7 @@ These are the fingerprints for the Lish gateway in our London data center (lish-
     Ed25519 SHA256:HXHM8/wCx7NrGsnfGpaexiBfOLKN9g0hoaL9wRaSeWg
     Ed25519 MD5:c1:43:45:93:d6:96:4e:50:41:d2:d0:9f:81:e5:f8:9e
 
-### Mumbai
+#### Mumbai
 
 These are the fingerprints for the Lish gateway in our Mumbai data center (lish-mum1.linode.com):
 
@@ -245,7 +261,7 @@ These are the fingerprints for the Lish gateway in our Mumbai data center (lish-
     Ed25519 SHA256:5VkP3/dLsfrKic9p6y9QnFq4sKa92RBzxGJrsX5/dBQ
     Ed25519 MD5:e8:a7:f2:7c:5e:b3:ee:1d:bf:a3:37:68:d7:1d:b2:bf
 
-### Newark
+#### Newark
 
 These are the fingerprints for the Lish gateway in our Newark data center (lish-newark.linode.com):
 
@@ -254,7 +270,7 @@ These are the fingerprints for the Lish gateway in our Newark data center (lish-
     Ed25519 SHA256:tyelNHfgaPGbN2cppfJVr/db3/pHnItR9maW+ocAS18
     Ed25519 MD5:c1:f7:57:1a:09:ca:46:f8:5d:d3:d4:8a:34:6f:77:ae
 
-### Singapore
+#### Singapore
 
 These are the fingerprints for the Lish gateway in our Singapore data center (lish-singapore.linode.com):
 
@@ -263,7 +279,7 @@ These are the fingerprints for the Lish gateway in our Singapore data center (li
     Ed25519 SHA256:q1G1pBrLuhsUAnZ04SOYoxVthKYyLz+wA0hBAUVkKtE
     Ed25519 MD5:4c:d1:55:68:a1:90:6c:15:9b:af:c1:f7:27:31:68:29
 
-### Sydney
+#### Sydney
 
 These are the fingerprints for the Lish gateway in our Sydney data center (lish-syd1.linode.com):
 
@@ -272,7 +288,7 @@ These are the fingerprints for the Lish gateway in our Sydney data center (lish-
     Ed25519 SHA256:0lOHVxRAMMOY3HDFIE4nMz11W4y+9OYqdtFqhi8NkWs
     Ed25519 MD5:ef:2d:cc:c7:aa:10:6f:cd:de:8f:c1:5d:8b:68:56:2b
 
-### Tokyo 2
+#### Tokyo 2
 
 These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-tokyo2.linode.com):
 
@@ -281,7 +297,7 @@ These are the fingerprints for the Lish gateway in our Tokyo2 data center (lish-
     Ed25519 SHA256:SWEV04SJt+DDG4ov2AfDYdZRavcg4GHufNP60QRkZzk
     Ed25519 MD5:99:7c:4e:b3:2d:c9:79:53:a9:60:b0:40:b2:73:52:73
 
-### Toronto
+#### Toronto
 
 These are the fingerprints for the Lish gateway in our Toronto data center (lish-tor1.linode.com):
 

@@ -7,18 +7,18 @@ description: "Use Glish (the Linode Graphical Shell) to access a desktop environ
 keywords: ["Console", "Shell", "glish", "desktop environment", "display manager"]
 aliases: ['/platform/manager/using-the-linode-graphical-shell-glish-classic-manager/','/networking/using-the-graphic-shell-glish/','/networking/using-the-linode-graphical-shell-glish/','/platform/manager/using-the-linode-graphical-shell-glish/','/platform/using-the-linode-graphical-shell-glish/','/networking/use-the-graphic-shell-glish/','/guides/using-the-linode-graphical-shell-glish/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-10-11
+modified: 2022-10-12
 modified_by:
   name: Linode
 published: 2015-08-28
-title: "Access Your Linux Desktop Using Glish"
-h1_title: "Access Your Linux Desktop Using Glish (Linode Graphical Shell)"
+title: "Access Your Desktop Environment Using Glish"
+h1_title: "Access Your Desktop Environment Using Glish (Linode Graphical Shell)"
 enable_h1: true
 tags: ["linode platform","cloud manager"]
 image: using-linode-glish-title.jpg
 ---
 
-Glish is the graphical version of the [Linode Shell](/docs/guides/using-the-lish-console/) (Lish). It allows you to run a desktop environment on your Compute Instance and access it through the Cloud Manager.
+Glish is the graphical version of [Lish](/docs/guides/using-the-lish-console/) (the Linode Shell). It allows you to run a desktop environment on your Compute Instance and access it through the Cloud Manager.
 
 {{< note >}}
 Linode distribution images do not have any desktop environments pre-installed. While this guide provides instructions for installing Xfce on Debian, you can use any other desktop environment and distribution. Popular desktop environments on Linux include Gnome, KDE, MATE, and Xfce.
@@ -32,9 +32,13 @@ If you have disabled distro helper on your Compute Instance's [Configuration Pro
 
     exec /sbin/getty -8 38400 tty1 &
 
+{{< note >}}
+If you are having issues accessing Weblish or Glish, you may be behind a restrictive local firewall. See [Lish Gateways](/docs/guides/lish/#lish-gateways) for a list of data centers, their corresponding gateways, and the ports that are used.
+{{</ note >}}
+
 ## Install a Display Manager and Desktop Environment
 
-Before using Glish, a display manager and desktop environment must be installed on the Compute Instance. You can use any desktop environment that you wish, including [Gnome](https://www.gnome.org/), [KDE](https://kde.org/), [MATE](https://mate-desktop.org/), and [Xfce](https://www.xfce.org/). When choosing one, consider the size of your Compute Instance and the requirements of that desktop environment. For instance, Xfce and MATE are lightweight and can run on the smallest Compute Instance. Gnome is better suited for at least 2GB of memory and KDE requires at least 2GB of memory.
+Before using Glish, a display manager and desktop environment must be installed on the Compute Instance. You can use any desktop environment that you wish, including [Gnome](https://www.gnome.org/), [KDE](https://kde.org/), [MATE](https://mate-desktop.org/), and [Xfce](https://www.xfce.org/). When choosing one, consider the size of your Compute Instance and the requirements of that desktop environment. For instance, Xfce and MATE are lightweight and can run on the smallest Compute Instance. When running Gnome, at least 2 GB of memory is recommended. For KDE, at least 4 GB of memory is recommended.
 
 {{< note >}}
 The instructions below install Xfce4 and LightDM on Debian 11. You are not limited to using these applications or this distribution. If you wish to use other software, follow the instructions for that application.
@@ -42,11 +46,11 @@ The instructions below install Xfce4 and LightDM on Debian 11. You are not limit
 
 1. Log in to your Compute Instance using [Lish](/docs/guides/using-the-lish-console/) or [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
 
-1.  Make sure to follow all of the instructions within the [Set Up and Secure a Compute Instance](/docs/guides/set-up-and-secure/) guide, including updating your system, setting the timezone, and adding a limited user account. Most display managers do not allow root login by default.
+1.  Follow all of the instructions within the [Set Up and Secure a Compute Instance](/docs/guides/set-up-and-secure/) guide, including updating your system, setting the timezone, and adding a limited user account. Most display managers do not allow root login by default.
 
         sudo apt update && sudo apt upgrade
 
-1.  Install your preferred desktop environment. The command below install Xfce, along with the optional enhancements package and a web browser.
+1.  Install your preferred desktop environment. The command below installs Xfce, along with the optional enhancements package and a web browser.
 
         sudo apt install xfce4 xfce4-goodies dbus-x11 firefox-esr
 
