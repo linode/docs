@@ -196,7 +196,7 @@ Each data center has its own gateway, which provides access to Lish, Weblish, an
 | Toronto (Canada) | `lish-tor1.linode.com` | `tor1.webconsole.linode.com` |
 
 {{< note >}}
-If you are having issues accessing Weblish or Glish and are behind a restrictive local firewall, make sure your firewall allows outbound connections to the following ports and the gateway you wish to access:
+If you are having issues accessing Lish, Weblish, or Glish, you may be blocked by a local firewall. Make sure your firewall allows outbound connections to the following ports and the gateway you wish to access:
 
 - **Lish ports:** 22, 443, 2200
 - **Weblish port:** 8181
