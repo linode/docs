@@ -196,7 +196,7 @@ Instead, these steps highlight the particular pieces that relate to mobilizing t
 
     -   A **Button** widget to display (and later control) the instance's boot status. In the **Basic** section of the widget's **Content** tab, change the **Label** field to `{{currentItem.status}}`.
 
-        This example also gives the button dynamic color. To support this, open the widget's **Style** tab, and click the **JS** button next to the **Button Color** field in the **Color** section. Replace the contents of that field with `{{App_Logic.linodeInstanceStatusColor(currentItem)}}`. You may recieve an error, don't worry, the next steps implement the logic behind this.
+        This example also gives the button dynamic color. To support this, open the widget's **Style** tab, and click the **JS** button next to the **Button Color** field in the **Color** section. Replace the contents of that field with `{{App_Logic.linodeInstanceStatusColor(currentItem)}}`. You may receive an error, don't worry, the next steps implement the logic behind this.
 
 1.  Click the **Explorer** tab in the left-hand sidebar. Create a new JavaScript object by selecting the **+** beside the **Queries/JS** button on the left menu. Select **New JS Object** from the sub-menu that appears.
 
