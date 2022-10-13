@@ -1,23 +1,23 @@
 ---
-slug: data retension
+slug: data retention
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide about the data retension on a Linode that is deleted.
-keywords: ["support", "delete", "data", "retension"]
+description: Our guide about the data retention on a Linode that is deleted.
+keywords: ["support", "delete", "data", "retention"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/billing-and-support/delete-linode/','/support/','/platform/delete-linode/',]
 modified: 2022-10-13
 modified_by:
   name: Linode
 published: 2012-10-13
-title: Linode Data Retension
+title: Linode Data Retention
 tags: ["linode platform"]
 ---
 
 
 
-This guide provides information about retension of data on the Linode that was deleted.
+This guide provides information about retention of data on the Linode that was deleted.
 
 # Initial deletion
 
