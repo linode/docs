@@ -24,11 +24,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id me
 {{< note >}}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
-{{< file "/home/minecraft/run.sh" sh >}}
+```file {title="/home/minecraft/run.sh"}
 #!/bin/sh
 
 java -Xms1024M -Xmx1536M -jar minecraft_server.1.13.jar -o true
-{{< /file >}}
+```
 {{< /note >}}
 
 
@@ -40,34 +40,34 @@ java -Xms1024M -Xmx1536M -jar minecraft_server.1.13.jar -o true
 
 ### Dark
 
-{{< code class="dark" title="Ubuntu 16.04" >}}
+```code {class="dark" title="Ubuntu 16.04"}
 sudo systemctl restart apache2
-{{< /code >}}
+```
 
 ### Dark No Title
 
-{{< code class="dark" >}}
+```code {class="dark"}
 sudo systemctl restart apache2
-{{< /code >}}
+```
 
 ### Dark Overflow
 
-{{< code class="dark" >}}
+```code {class="dark"}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
-{{< /code >}}
+```
 
 #### In Note Bottom
 
 {{< note >}}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
-{{< code class="dark" >}}
+```code {class="dark"}
 sudo systemctl restart apache2
-{{< /code >}}
+```
 {{< /note >}}
 
 #### In Note Middle
@@ -75,9 +75,9 @@ sudo systemctl restart apache2
 {{< note >}}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
-{{< code class="dark" >}}
+```code {class="dark"}
 sudo systemctl restart apache2
-{{< /code >}}
+```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
@@ -87,22 +87,22 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id me
 
 * Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Ut suscipit nec orci vel sagittis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce accumsan fringilla urna et maximus. Aliquam erat volutpat. Nam malesuada faucibus massa ac ultrices. Sed finibus diam at dolor maximus porttitor.
   * Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Ut suscipit nec orci vel sagittis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce accumsan fringilla urna et maximus. Aliquam erat volutpat. Nam malesuada faucibus massa ac ultrices. Sed finibus diam at dolor maximus porttitor.
-  {{< code class="dark" >}}
-sudo systemctl restart apache2
-{{< /code >}}
+  ```code {class="dark"}
+  sudo systemctl restart apache2
+  ```
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Ut suscipit nec orci vel sagittis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce accumsan fringilla urna et maximus. Aliquam erat volutpat. Nam malesuada faucibus massa ac ultrices. Sed finibus diam at dolor maximus porttitor.
 
 ### Light
 
-{{< code class="light" title="Ubuntu 16.04" >}}
+```code {class="light" title="Ubuntu 16.04"}
 sudo systemctl restart apache2
-{{< /code >}}
+```
 
-{{< code class="light" title="Ubuntu 16.04" >}}
+```code {class="light" title="Ubuntu 16.04"}
 sudo systemctl restart apache2
 sudo systemctl restart apache2
 sudo systemctl restart apache2
-{{< /code >}}
+```
 
 ## File Shortcode
 
@@ -110,15 +110,15 @@ sudo systemctl restart apache2
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Ut suscipit nec orci vel sagittis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce accumsan fringilla urna et maximus. Aliquam erat volutpat. Nam malesuada faucibus massa ac ultrices. Sed finibus diam at dolor maximus porttitor.
 
-{{< file "/home/minecraft/run.sh" sh >}}
+```file {title="/home/minecraft/run.sh"}
 #!/bin/sh
 
 java -Xms1024M -Xmx1536M -jar minecraft_server.1.13.jar -o true
-{{< /file >}}
+```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
-{{< file "/foo/bar/maz.go" go >}}
+```file {title="/foo/bar/maz.go"}
 // IsTruthfulValue returns whether the given value has a meaningful truth value.
 // This is based on template.IsTrue in Go's stdlib, but also considers
 // IsZero and any interface value will be unwrapped before it's considered
@@ -161,7 +161,7 @@ func IsTruthfulValue(val reflect.Value) (truth bool) {
 
 	return
 }
-{{< /file >}}
+```
 
 
 ###  No Title
@@ -174,23 +174,105 @@ func IsTruthfulValue(val reflect.Value) (truth bool) {
 
 * Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Ut suscipit nec orci vel sagittis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce accumsan fringilla urna et maximus. Aliquam erat volutpat. Nam malesuada faucibus massa ac ultrices. Sed finibus diam at dolor maximus porttitor.
   * Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Ut suscipit nec orci vel sagittis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce accumsan fringilla urna et maximus. Aliquam erat volutpat. Nam malesuada faucibus massa ac ultrices. Sed finibus diam at dolor maximus porttitor.
-  {{< file "/home/minecraft/run.sh" sh >}}
-#!/bin/sh
+  ```file {title="/home/minecraft/run.sh"}
+  #!/bin/sh
 
-java -Xms1024M -Xmx1536M -jar minecraft_server.1.13.jar -o true
-{{< /file >}}
+  java -Xms1024M -Xmx1536M -jar minecraft_server.1.13.jar -o true
+  ```
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
 
 ### Overflow
 
-{{< file "/home/minecraft/run.sh" sh >}}
+```file {title="/home/minecraft/run.sh" lang="sh"}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
+```
+
+```file {title="/home/minecraft/run.sh"}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
+```
+
+### Highlighted
+
+```file {title="/home/foo/dev/title.go" lang="bash" hl_lines="3-4" linenostart="5"}
+line 1 asdfadasd
+line 2 asdfadfasdfasdfasdf
+line 3
+line 4
+line 5
+line 6
+line 7
+line 8
+```
+
+```file {title="/home/foo/dev/title.go" lang="go" hl_lines="3-12 18" linenostart="199" }
+// GetTitleFunc returns a func that can be used to transform a string to
+// title case.
+//
+// The supported styles are
+//
+// - "Go" (strings.Title)
+// - "AP" (see https://www.apstylebook.com/)
+// - "Chicago" (see https://www.chicagomanualofstyle.org/home.html)
+//
+// If an unknown or empty style is provided, AP style is what you get.
+func GetTitleFunc(style string) func(s string) string {
+  switch strings.ToLower(style) {
+  case "go":
+    return strings.Title
+  case "chicago":
+    return transform.NewTitleConverter(transform.ChicagoStyle)
+  default:
+    return transform.NewTitleConverter(transform.APStyle)
+  }
+}
+```
+
+
+### Highlighted
+
+{{< file title="/home/foo/dev/title.go" lang="bash" hl_lines="3-4" linenostart=5 >}}
+line 1 asdfadasd
+line 2 asdfadfasdfasdfasdf
+line 3
+line 4
+line 5
+line 6
+line 7
+line 8
 {{< /file >}}
+
+{{< file title="/home/foo/dev/title.go" lang="go" hl_lines="3-12 18" linenostart=199 >}}
+// GetTitleFunc returns a func that can be used to transform a string to
+// title case.
+//
+// The supported styles are
+//
+// - "Go" (strings.Title)
+// - "AP" (see https://www.apstylebook.com/)
+// - "Chicago" (see https://www.chicagomanualofstyle.org/home.html)
+//
+// If an unknown or empty style is provided, AP style is what you get.
+func GetTitleFunc(style string) func(s string) string {
+  switch strings.ToLower(style) {
+  case "go":
+    return strings.Title
+  case "chicago":
+    return transform.NewTitleConverter(transform.ChicagoStyle)
+  default:
+    return transform.NewTitleConverter(transform.APStyle)
+  }
+}
+{{< /file >}}
+
 
 
 ## Styles
