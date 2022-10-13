@@ -22,7 +22,7 @@ This guide provides information about retention of data on the Linode that was d
 # Initial deletion
 
 When a Linode is deleted, the Linode Volumes remain on the host for a very short period of time. After a few hours, background host maintenance occurs and scrubs the Linode Volumes with zeros to reclaim space.
-Only the Linode support team can restore these Volumes, you can make the restore process quicker if you reachout to the support team in time. For information about reaching out to the Linode support team, see [contact support](/docs/guides/support/).
+Only the Linode support team can restore these Volumes, you can make the restore process quicker if you contact the support team in time. For information about reaching out to the Linode support team, see [contact support](/docs/guides/support/).
 
 ## Restorable Image
 
