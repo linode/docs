@@ -3,15 +3,15 @@ slug: set-up-a-cassandra-node-cluster-on-ubuntu-and-centos
 author:
   name: Andrew Lescher
   email: docs@linode.com
-description: "This guide instructs you through the steps that deploy a production-ready Apache Cassandra node cluster on either Ubuntu 16.04 or CentOS 7."
+description: "This guide instructs you through the steps that deploy a production-ready Apache Cassandra node cluster"
 keywords: ["cassandra", " apache-cassandra", " centos 7", " ubuntu 16.04", " database", " nosql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-06-24
-modified: 2017-06-24
+modified: 2022-05-16
 modified_by:
-  name: Andrew Lescher
-title: "Set Up a Cassandra Node Cluster on Ubuntu 16.04 & CentOS 7"
-h1_title: "Setting Up a Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7"
+  name: Linode
+title: "Set Up a Cassandra Node Cluster"
+h1_title: "Setting Up a Cassandra Node Cluster "
 enable_h1: true
 aliases: ['/databases/cassandra/set-up-a-cassandra-node-cluster-on-ubuntu-and-centos/','/databases/cassandra/deploy-a-production-ready-cassandra-node-cluster-on-ubuntu-and-centos/']
 contributor:
@@ -21,10 +21,8 @@ external_resources:
  - '[How data is distributed across a cluster](https://docs.datastax.com/en/cassandra/2.1/cassandra/architecture/architectureDataDistributeDistribute_c.html)'
  - '[Client-to-node encryption](http://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/secureSSLClientToNode.html)'
 tags: ["ubuntu","centos","database","nosql"]
+image: cass.png
 ---
-
-
-![Deploy A Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7](cass.png "Deploy A Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7")
 
 ## What is Apache Cassandra
 
@@ -32,13 +30,13 @@ Apache Cassandra is an open-source application that is managed through a simple 
 
 Cassandra NoSQL databases are ideal for situations requiring maximum data redundancy and uptime, ease of horizontal scaling across multiple unique servers, and evolving project needs during the software development lifecycle, which would otherwise be heavily restricted by traditional relational database implementations.
 
-This guide is [Part 2 in a series](/docs/guides/deploy-scalable-cassandra/) detailing the implementation of Apache Cassandra on Ubuntu 16.04 and CentOS 7 distributions. To complete this guide, you must have at least two Cassandra nodes setup on two separate Linodes. By following these instructions, you will learn how to link your Cassandra nodes together to form a true cluster.
+To complete this guide, you must have at least two Cassandra nodes setup on two separate Linodes. By following these instructions, you will learn how to link your Cassandra nodes together to form a true cluster.
 
 You will also learn how to secure communication between your nodes, as well as reinforce your cluster against typical failure points. The resulting cluster will be production-ready and configured for maximum uptime.
 
 ## Before You Begin
 
-1.  You must have at least two Cassandra nodes set up and configured according to the [Deploy A Scalable And Development-Driven NoSQL DB With Apache Cassandra](/docs/guides/deploy-scalable-cassandra/) guide. The Cassandra nodes should have equal or similar hardware specs; otherwise, bottlenecks can occur.
+1.  You must have at least two Cassandra nodes set up and configured. These nodes should have equal or similar hardware specs; otherwise, bottlenecks can occur. To install Apache Cassandra, see the [Installing Apache Cassandra](/docs/guides/how-to-install-apache-cassandra-on-ubuntu-18-04/) guide and select your distribution.
 
 2.  A working firewall is a necessary security measure. Firewall-specific instructions will be presented for UFW, FirewallD, and IPtables. Steps for setting up UFW can be found at [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw). FirewallD instructions are located at [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
 
@@ -55,15 +53,15 @@ The instructions here must be executed on each Cassandra node to be clustered. A
 
 2.  Edit the `cassandra.yaml` file. Set the appropriate values for each variable indicated below:
 
-    |  Property  | Explanation |
-    |:----------:|:-----------:|
-    | cluster_name | Choose your cluster name here. |
-    | seed_provider | This contains a comma-delimited list of each public IP address of each node to be clustered. Input the list in the line that reads `- seeds: "127.0.0.1"`.  |
-    | listen_address | Other nodes in the cluster will use the IP address listed here to find each other. Change from `localhost` to the specific node's public IP address. |
-    | rpc_address | The listen address for client communication. Change from "localhost" to the public IP address or loopback address of the node. |
-    | endpoint_snitch | Snitches determine how Cassandra replicates data. Change this to "GossipingPropertyFileSnitch," as this is more suitable to a multi-data center configuration. |
-    | auto_bootstrap | Add this property anywhere in the file. If you have yet to add data to your nodes - that is, you would start with a fresh cluster - set this to "false." If your node(s) already contains data, **do not** add this property. |
-    | num_tokens | This property defines the proportion of data stored on each node. For nodes with equal hardware capabilities, this number should be set equally between them so the data is more likely to be evenly distributed. The default value of 256 is likely to ensure equal data distribution. For more information on this topic, see the "How data is distributed across a cluster" link in the "External Resources" section. |
+    | Property  | Explanation |
+    | -- | -- |
+    | `cluster_name` | Choose your cluster name here. |
+    | `seed_provider` | This contains a comma-delimited list of each public IP address of each node to be clustered. Input the list in the line that reads `- seeds: "127.0.0.1"`.  |
+    | `listen_address` | Other nodes in the cluster will use the IP address listed here to find each other. Change from `localhost` to the specific node's public IP address. |
+    | `rpc_address` | The listen address for client communication. Change from "localhost" to the public IP address or loopback address of the node. |
+    | `endpoint_snitch` | Snitches determine how Cassandra replicates data. Change this to "GossipingPropertyFileSnitch," as this is more suitable to a multi-data center configuration. |
+    | `auto_bootstrap` | Add this property anywhere in the file. If you have yet to add data to your nodes - that is, you would start with a fresh cluster - set this to "false." If your node(s) already contains data, **do not** add this property. |
+    | `num_tokens` | This property defines the proportion of data stored on each node. For nodes with equal hardware capabilities, this number should be set equally between them so the data is more likely to be evenly distributed. The default value of 256 is likely to ensure equal data distribution. For more information on this topic, see the "How data is distributed across a cluster" link in the "External Resources" section. |
 
     {{< file "/etc/cassandra/conf/cassandra.yaml" >}}
 cluster_name: '[Your Cluster Name]'
@@ -78,17 +76,14 @@ endpoint_snitch: GossipingPropertyFileSnitch
 auto_bootstrap: false
 {{< /file >}}
 
-
 3.  Edit the `cassandra-rackdc.properties` file. Assign each node the same data center and rack name:
 
-    {{< file "/etc/cassandra/conf/cassandra-rackdc.properties" properties >}}
+    {{< file "/etc/cassandra/conf/cassandra-rackdc.properties" >}}
 # These properties are used with GossipingPropertyFileSnitch and will
 # indicate the rack and dc for this node
 dc=DC1
 rack=RACK1
-
 {{< /file >}}
-
 
 ## Edit Firewall Settings
 
@@ -130,7 +125,7 @@ Setting up encryption between nodes offers additional security and protects the 
 
 ### Generate SSL Files
 
-1. Create a new directory called `.keystore` in the Cassandra config directory. Navigate to the newly created directory:
+1.  Create a new directory called `.keystore` in the Cassandra config directory. Navigate to the newly created directory:
 
         mkdir /etc/cassandra/conf/.keystore
         cd /etc/cassandra/conf/.keystore
@@ -153,45 +148,44 @@ CN                     = Cluster_Name_MasterCA
 
 {{< /file >}}
 
-
-3. Create the public and private key files.
+3.  Create the public and private key files.
 
         openssl req -config rootCAcert.conf -new -x509 -nodes -keyout ca-cert.key -out ca-cert.cert -days 365
 
-4. Generate a keystore for each node in your cluster. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
+4.  Generate a keystore for each node in your cluster. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
         keytool -genkeypair -keyalg RSA -alias node1 -keystore node1-keystore.jks -storepass cassandra -keypass cassandra -validity 365 -keysize 4096 -dname "CN=node1, OU=[cluster_name]"
         keytool -genkeypair -keyalg RSA -alias node2 -keystore node2-keystore.jks -storepass cassandra -keypass cassandra -validity 365 -keysize 4096 -dname "CN=node2, OU=[cluster_name]"
 
-5. Verify the key. A successful verification will print out the certificate fingerprint. Repeat this command for each certificate file.
+5.  Verify the key. A successful verification will print out the certificate fingerprint. Repeat this command for each certificate file.
 
         keytool -list -keystore node1-keystore.jks -storepass [password]
 
-6. Generate the signing-request file. Repeat this command for each node in your cluster, using each .jks file for the `-keystore` option. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
+6.  Generate the signing-request file. Repeat this command for each node in your cluster, using each .jks file for the `-keystore` option. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
         keytool -certreq -keystore node1-keystore.jks -alias node1 -file node1-cert.csr -keypass cassandra -storepass cassandra -dname "CN=node1, OU=[cluster_name]"
         keytool -certreq -keystore node2-keystore.jks -alias node2 -file node2-cert.csr -keypass cassandra -storepass cassandra -dname "CN=node2, OU=[cluster_name]"
 
-7. Sign each node's certificate. Run the following command for each node in your cluster, using each .csr file you created earlier. Set the certificate to expire in 365 days for best practice. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
+7.  Sign each node's certificate. Run the following command for each node in your cluster, using each .csr file you created earlier. Set the certificate to expire in 365 days for best practice. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
         openssl x509 -req -CA ca-cert.cert -CAkey ca-cert.key -in node1-cert.csr -out node1-signed.cert -days 365 -CAcreateserial -passin pass:cassandra
         openssl x509 -req -CA ca-cert.cert -CAkey ca-cert.key -in node2-cert.csr -out node2-signed.cert -days 365 -CAcreateserial -passin pass:cassandra
 
-8. Verify the certificates generated for each node.
+8.  Verify the certificates generated for each node.
 
         openssl verify -CAfile ca-cert.cert node1-signed.cert
 
-9. Import the original certificate into the keystore for each node. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
+9.  Import the original certificate into the keystore for each node. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
         keytool -importcert -keystore node1-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass cassandra -storepass cassandra
         keytool -importcert -keystore node2-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass cassandra -storepass cassandra
 
-10. Now, import the signed certificate into the keystore for each node. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
+10.  Now, import the signed certificate into the keystore for each node. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
         keytool -importcert -keystore node1-keystore.jks -alias node1 -file node1-signed.cert -noprompt -keypass cassandra -storepass cassandra
         keytool -importcert -keystore node2-keystore.jks -alias node2 -file node2-signed.cert -noprompt -keypass cassandra -storepass cassandra
 
-11. Create a Cassandra server truststore file. This essentially acts as a certificate authority, allowing all nodes whose client certificates were signed here to communicate.
+11.  Create a Cassandra server truststore file. This essentially acts as a certificate authority, allowing all nodes whose client certificates were signed here to communicate.
 
         keytool -importcert -keystore cassandra-truststore.jks -alias truststore -file ca-cert.cert -noprompt -keypass [password] -storepass [password]
 
@@ -231,7 +225,7 @@ server_encryption_options:
 {{< /file >}}
 
 
-You may want to configure the *internode_encryption* setting to better meet the needs of your specific environment. A breakdown of available values are shown below:
+You may want to configure the `internode_encryption` setting to better meet the needs of your specific environment. A breakdown of available values are shown below:
 
 |  Property  | Property description |
 |:----------:|:-------------:|

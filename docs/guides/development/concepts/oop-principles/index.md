@@ -20,7 +20,7 @@ external_resources:
 - '[Key Lime Interactive: The Four Pillars of Object Oriented Programming](https://info.keylimeinteractive.com/the-four-pillars-of-object-oriented-programming)'
 ---
 
-Object-oriented programming gives you a set of programming principles to make your code more compartmentalized and reusable. Object-oriented programming accomplishes this by structuring programs around objects. This tutorial covers the core principles of of object-oriented programming and provides examples of these concepts written in Java.
+Object-oriented programming gives you a set of programming principles to make your code more compartmentalized and reusable. Object-oriented programming accomplishes this by structuring programs around objects. This tutorial covers the core principles of object-oriented programming and provides examples of these concepts written in Java.
 
 ## What is Object Oriented Programming (OOP)?
 

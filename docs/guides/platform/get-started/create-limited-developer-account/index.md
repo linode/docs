@@ -259,7 +259,7 @@ While logged in to MySQL:
 
 While logged in to MySQL:
 
-1.  Use `FLUSH PRIVILEGES` before making making changes:
+1.  Use `FLUSH PRIVILEGES` before making changes:
 
         FLUSH PRIVILEGES;
 

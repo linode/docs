@@ -15,9 +15,9 @@ These guides explore targeted topics like the basics of Dedicated CPU Linodes, a
 
 ### Dedicated CPU Basics
 
-- [Getting Started with Dedicated CPUs](/docs/platform/dedicated-cpu/getting-started-with-dedicated-cpu/)
+- [Getting Started with Dedicated CPUs](/docs/guides/getting-started-with-dedicated-cpu/)
 
-- [Getting Started with Linode](/docs/getting-started/)
+- [Getting Started with Linode](/docs/guides/getting-started/)
 
 - [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
 
@@ -25,4 +25,4 @@ These guides explore targeted topics like the basics of Dedicated CPU Linodes, a
 
 - [How to Choose a Linode Plan](/docs/platform/how-to-choose-a-linode-plan/#3-dedicated-cpu)
 
-- [Use Cases for Linode Dedicated CPU Instances](/docs/platform/dedicated-cpu/dedicated-cpu-use-cases/)
+- [Use Cases for Linode Dedicated CPU Instances](/docs/guides/dedicated-cpu-use-cases/)

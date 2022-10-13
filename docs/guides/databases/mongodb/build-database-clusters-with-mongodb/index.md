@@ -124,7 +124,7 @@ In this section you'll create a key file that will be used to secure authenticat
 5.  Once you've added your key file, uncomment the `Security` section of the `/etc/mongod.conf` file on each of your Linodes, and add the following value:
 
         security:
-        keyFile: /opt/mongo/mongodb-keyfile
+        keyFile: /opt/mongo/mongo-keyfile
 
     To apply the change, restart `mongod`:
 

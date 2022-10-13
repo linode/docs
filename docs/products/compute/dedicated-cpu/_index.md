@@ -22,7 +22,7 @@ A Dedicated CPU Compute Instance provides entire vCPU cores accessible only to y
 
 ## Upgrading from a Shared CPU Instance
 
-Moving from a Shared CPU Instance to a Dedicated CPU Instance is a seamless process that can positively impact your applications and users. Review the [Upgrading from Shared to Dedicated CPU Instances](/docs/guides/when-to-upgrade-to-dedicated-cpu/) guide to learn more about the differences between Shared and Dedicated CPU plans and when each one might be appropriate. This guide also shows you how to investigate your CPU performance to determine if your application is experiencing resource contention on a Shared CPU Compute Instance. If you wish to upgrade, reference the [Resizing a Linode](/docs/guides/resizing-a-linode/) guide for more details on resizing your Linode to a different plan type.
+Moving from a Shared CPU Instance to a Dedicated CPU Instance is a seamless process that can positively impact your applications and users. Review the [Choosing Between Shared and Dedicated CPUs (and Determining When to Upgrade)](/docs/guides/comparing-shared-and-dedicated-cpus/) guide to learn more about the differences between Shared and Dedicated CPU plans and when each one might be appropriate. This guide also shows you how to investigate your CPU performance to determine if your application is experiencing resource contention on a Shared CPU Compute Instance. If you wish to upgrade, reference the [Resizing a Linode](/docs/guides/resizing-a-linode/) guide for more details on resizing your Linode to a different plan type.
 
 ## Recommended Workloads
 
@@ -31,16 +31,16 @@ Dedicated CPU Compute Instances are suitable for almost any workload that requir
 - Production websites and e-commerce sites
 - Applications that required 100% sustained CPU usage.
 - Applications that might be impacted by resource contention.
-- [CI/CD](/docs/development/ci/introduction-ci-cd/) toolchains and build servers
+- [CI/CD](/docs/guides/introduction-ci-cd/) toolchains and build servers
 - [Game servers](/docs/game-servers/) (like Minecraft or Team Fortress)
 - [Audio and video transcoding](/docs/applications/media-servers/)
 - [Big data](/docs/applications/big-data/) (and data analysis)
 - Scientific computing
-- [Machine learning](/docs/applications/big-data/how-to-move-machine-learning-model-to-production/) and AI
+- [Machine learning](/docs/guides/how-to-move-machine-learning-model-to-production/) and AI
 - High Traffic Databases (Galera, PostgreSQL with Replication Manager, MongoDB using Replication Sets)
 - Replicated or Distributed Filesystems (GlusterFS, DRBD)
 
-For more details and use cases, see the [Use Cases for Dedicated CPU Instances](/docs/platform/dedicated-cpu/dedicated-cpu-use-cases/) guide.
+For more details and use cases, see the [Use Cases for Dedicated CPU Instances](/docs/guides/dedicated-cpu-use-cases/) guide.
 
 ## Availability
 

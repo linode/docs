@@ -7,7 +7,7 @@ description: "In this guide, you will learn how billing works at Linode, what pa
 keywords: ["billing", "payments"]
 aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/','/guides/how-linode-billing-works/','/billing-and-payments/','/platform/billing-and-support/billing-and-payments-classic-manager/','/platform/billing-and-support/billing-and-payments-new-manager/','/platform/billing-and-payments/','/platform/billing-and-support/billing-and-payments/',/guides/billing-and-payments/]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-06-21
+modified: 2022-08-09
 modified_by:
   name: Linode
 published: 2019-10-25
@@ -29,7 +29,7 @@ Linode uses a hybrid hourly billing model that is simple and flexible. It enable
 
 - Linode uses a monthly billing cycle. An invoice is automatically generated on the first day of each month and includes the previous month's usage.
 
-If your services stay the same month over month, your bill remains predictable. You are never billed more than the monthly rate for each service, excluding [network transfer overages](/docs/guides/network-transfer/). If you use a service for just part of the month, hourly billing enables you to only be charged for the time the service is active on the account.
+If your services stay the same month over month, your bill remains predictable. You are never billed more than the monthly rate for each service, excluding [network transfer overages](/docs/guides/network-transfer/). If you use a service for just part of the month, hourly billing enables you to only be charged for the time the service is present on the account.
 
 \*Review the [Viewing Current Balance](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information) section of the Manage Billing in Cloud Manager guide to monitor your account balance and accrued charges throughout the month.
 
@@ -37,17 +37,17 @@ If your services stay the same month over month, your bill remains predictable. 
 
 Here are a few examples of common billing scenarios you might encounter. For these examples, we will assume the month is 30 days (720 hours). We will also be using a 4GB Linode Compute Instance, which has an hourly rate of $0.03/hour and a monthly rate/cap of $20.
 
-#### A Service is Active for the *Entire* Month
+#### A Service is Present on an Account for the *Entire* Month
 
 You create a 4GB Compute Instance prior to the start of the month and it remains on your account for the entire month. Calculating the service fees at the hourly rate for 720 hours (again, assuming a 30 day month), the total would have come to $21.60. Since this exceeds the monthly cap for this service, you are instead charged the predictable $20 monthly rate.
 
-#### A Service is Active for *Almost* the Entire Month
+#### A Service is Present on an Account for *Almost* the Entire Month
 
-You create a 4GB Compute Instance on the second day of the month, half-way through the day. It remains on your account for the remainder of the month and, in total, was active for 684 hours. Calculating the service fees at the hourly rate, the total would have come to $20.52. Since this still exceeds the monthly cap for this service, you are instead charged the predictable $20 monthly rate.
+You create a 4GB Compute Instance on the second day of the month, half-way through the day. It remains on your account for the remainder of the month and, in total, was used for 684 hours. Calculating the service fees at the hourly rate, the total would have come to $20.52. Since this still exceeds the monthly cap for this service, you are instead charged the predictable $20 monthly rate.
 
-#### A Service is Active for *Just Some* of the Month
+#### A Service is Present on an Account for *Just Some* of the Month
 
-You created a 4GB Compute Instance mid-way through the month and deleted it exactly 5 days later. In total, it was active for 120 hours. Calculating the service fees at the hourly rate, the total is $3.60. Since this is less than the monthly cap, you are indeed billed at the hourly rate and charged $3.60 for your usage.
+You created a 4GB Compute Instance mid-way through the month and deleted it exactly 5 days later. In total, it was used for 120 hours. Calculating the service fees at the hourly rate, the total is $3.60. Since this is less than the monthly cap, you are indeed billed at the hourly rate and charged $3.60 for your usage.
 
 ### Mid-Month Billing
 
@@ -55,7 +55,7 @@ You may receive a mid-month bill from Linode if you reach a certain threshold of
 
 ### Will I Be Billed For Powered Off or Unused Services?
 
-**Charges will accrue for any active service, even if it is powered off or otherwise not in use.**  This includes Linode Compute Instances that have been powered off as well as any service you might have added to the account but are not using. When a Compute Instance is on your account, the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service](/docs/guides/manage-billing-in-cloud-manager/#removing-services) from your account.
+**Charges will accrue for any service present on an account, even if it is powered off or otherwise not actively being used.**  This includes Linode Compute Instances that have been powered off as the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service](/docs/guides/manage-billing-in-cloud-manager/#removing-services) from your account.
 
 ## Payments
 
@@ -64,10 +64,6 @@ When an invoice is generated on the first of the month (or mid-month), Linode au
 ### Payment Methods
 
 - **Credit card:** Pay using all popular credit (and debit) cards, including those issued by Visa, MasterCard, Discover, American Express, and UnionPay.
-
-{{< note >}}
-Maintaining a valid credit card on file with your account is a requirement of our [Master Services Agreement](https://www.linode.com/legal-msa/).
-{{< /note >}}
 
 - **Google Pay:** Pay using a credit card, debit card, or PayPal through your Google Pay account. Paying with your Google Pay balance or any associated bank accounts are not supported at this time.
 

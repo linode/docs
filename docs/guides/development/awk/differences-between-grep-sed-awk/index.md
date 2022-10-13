@@ -23,7 +23,7 @@ Grep, sed, and AWK are all standard Linux tools that are able to process text. E
 
 ## The Grep Command-Line Utility
 
-Grep is a Linux utility used to to find lines of text in files or input streams using regular expressions. It's name is short for *Global Regular Expression Pattern*
+Grep is a Linux utility used to find lines of text in files or input streams using regular expressions. It's name is short for *Global Regular Expression Pattern*
 
 ### Grep: Search a Log File for Errors
 

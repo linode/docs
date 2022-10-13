@@ -6,9 +6,6 @@ title: Capture an Image
 description: "How to capture an Image from a Linode."
 ---
 
-{{< content "images-ga-pricing-update-shortguide" >}}
-
-
 ## Requirements and Considerations
 
 When capturing an image file from an existing Linode Compute Instance, keep the following limits, requirements, and considerations in mind.

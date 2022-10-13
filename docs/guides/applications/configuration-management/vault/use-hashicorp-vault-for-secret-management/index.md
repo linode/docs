@@ -679,6 +679,6 @@ token_meta_role_name    my-application
 
         vault kv get kv/myservice
 
-    The example should should be read and accessible.
+    The example should be read and accessible.
 
 10. If you read this value using this Vault token after more than 10 minutes have elapsed, the token will have expired and any read operations using the token should be denied. Performing another `vault write auth/approle/login` operation (detailed in step 5) can generate new tokens to use.

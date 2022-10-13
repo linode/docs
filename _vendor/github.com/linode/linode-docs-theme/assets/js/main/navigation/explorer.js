@@ -53,9 +53,10 @@ export function newSearchExplorerController(searchConfig) {
 		let filters = '';
 
 		return {
-			indexName: searchConfig.sections_merged.index,
+			indexName: searchConfig.indexName(searchConfig.sections_merged.index),
 			filters: filters,
 			facetFilters: facetFilters.concat(facetFilters, sectionFilter),
+			distinct: 0,
 			params: `query=${encodeURIComponent(query.lndq)}&hitsPerPage=${maxLeafNodes}`,
 		};
 	};
@@ -437,6 +438,7 @@ export function newSearchExplorerController(searchConfig) {
 				title: title,
 				key: opts.key,
 				href: opts.href,
+				hit: opts.hit,
 				active: opts.active,
 				count: opts.count,
 				icon: opts.level === 1 ? opts.section.config.explorer_icon : '',
@@ -512,6 +514,11 @@ export function newSearchExplorerController(searchConfig) {
 				}
 
 				if (this.href) {
+					// Send click events to Algolia insights.
+					if (this.hit) {
+						self.$store.nav.analytics.handler.clickHit(this.hit, 'DOCS: Explorer');
+					}
+
 					let href = this.href;
 					if (this.isLeaf() && href.startsWith('http')) {
 						return;
@@ -574,13 +581,23 @@ export function newSearchExplorerController(searchConfig) {
 				let pages = [];
 				for (let item of hits) {
 					let href = item.href;
+					if (item.hierarchy && item.hierarchy.length) {
+						// This is the reference-section.
+						// All pages in a section shares the same href (the section),
+						// and the best match is selected while searching using Algolia's distinct keyword.
+						// This is the explorer, and we need to link to the detail page.
+						let last = item.hierarchy[item.hierarchy.length - 1];
+						href = last.href;
+					}
 					let active = href === window.location.pathname;
+
 					pages.push(
 						self.createNode({
 							parent: n,
 							section: n.section,
 							key: href,
 							href: href,
+							hit: item,
 							active: active,
 							ordinal: item.ordinal,
 							firstPublishedTime: item.firstPublishedTime,
@@ -667,6 +684,16 @@ export function newSearchExplorerController(searchConfig) {
 						title = section.config.title;
 					}
 
+					let hit;
+
+					if (sectionResult.hasObjectID) {
+						// Create a pseudo hit for event tracking.
+						hit = {
+							objectID: kp.href,
+							__position: sectionResult.position,
+						};
+					}
+
 					n = self.createNode({
 						key: kp.key,
 						section: section,
@@ -678,6 +705,7 @@ export function newSearchExplorerController(searchConfig) {
 						count: count,
 						isGhostSection: sectionResult.isGhostSection,
 						sectionLvl0: sectionResult.sectionLvl0,
+						hit: hit,
 					});
 
 					n.isDisabled = function () {

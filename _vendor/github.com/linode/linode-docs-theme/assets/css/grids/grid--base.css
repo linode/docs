@@ -13,7 +13,7 @@
   --row-explorer: 2; /* The grid row for the left side explorer menu. */
   --row-main: 3; /* The grid row for the main content. */
   --col-navbar: 1; /* The grid column for the top navbar. */
-  --height-linode-menu-row: 52px;
+  --height-linode-menu-row: 61px;
   --height-navbar-row: 45px;
   --width-left-column: 240px;
   --width-right-column: 240px;
@@ -56,7 +56,7 @@
     --height-navbar-row: 45px;
     --width-left-column: 255px;
     --width-right-column: 255px;
-    --height-linode-menu-row: 62px;
+    --height-linode-menu-row: 76px;
   }
 
   .is-explorer-open .grid--base {
@@ -74,7 +74,7 @@
 
 @screen lg {
   .grid--base {
-    --height-linode-menu-row: 106px;
+    --height-linode-menu-row: 113px;
   }
 }
 

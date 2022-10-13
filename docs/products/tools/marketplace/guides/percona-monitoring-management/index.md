@@ -86,9 +86,9 @@ After the [PMM Server](https://www.percona.com/doc/percona-monitoring-and-manage
 
 To begin monitoring a database node, you will need to install the [PMM Client](https://www.percona.com/doc/percona-monitoring-and-management/2.x/concepts/architecture.html#pmm-client) on the Linode that hosts your database and connect the node to the PMM Server. For instructions on setting up a database on Linode that you can connect to your PMM Server, see our guides on:
 
--   [Deploying MySQL/MariaDB with Marketplace Apps](/docs/platform/marketplace/deploy-mysql-with-marketplace-apps/)
--   [Deploying PostgreSQL with Marketplace Apps](/docs/platform/marketplace/deploy-postresql-with-marketplace-apps/)
--   [Deploying MongoDB with Marketplace Apps](/docs/platform/marketplace/deploying-mongodb-with-marketplace-apps/)
+-   [Deploying MySQL/MariaDB with Marketplace Apps](/docs/products/tools/marketplace/guides/mysql/)
+-   [Deploying PostgreSQL with Marketplace Apps](/docs/products/tools/marketplace/guides/postgresql/)
+-   [Deploying MongoDB with Marketplace Apps](/docs/products/tools/marketplace/guides/mongodb/)
 
 {{< note >}}
 The PMM Server deployed with Linode's Percona (PMM) Marketplace App is compatible with [**PMM Client version 2**](https://www.percona.com/doc/percona-monitoring-and-management/2.x/index.html).
@@ -138,7 +138,7 @@ If you have previously enabled the experimental or testing Percona repository, d
 1.  Connect your database node to the PMM Server. Replace `admin_password` with your PMM Server's [Grafana password](#access-your-PMM-server-s-grafana-dashboard), and `192.0.2.0` with your PMM Server's IPv4 address.
 
       {{< note >}}
-Follow the steps in [Find Your Linode's IP Address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) to retrieve your PMM Server's IPv4 address.
+Follow the steps in [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) to retrieve your PMM Server's IPv4 address.
       {{</ note >}}
 
         pmm-admin \

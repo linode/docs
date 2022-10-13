@@ -28,7 +28,7 @@ aliases: ['/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine
 This guide uses Linode Kubernetes Engine (LKE) to deploy a managed Kubernetes cluster. For more information on Kubernetes key concepts, see our [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/)
 {{< /note >}}
 
-The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](https://www.linode.com/pricing/) with the infrastructure efficiency of Kubernetes. When you deploy an LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/guides/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/guides/how-to-use-block-storage-with-your-linode/). Your LKE cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
+The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](https://www.linode.com/pricing/) with the infrastructure efficiency of Kubernetes. When you deploy an LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/guides/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/products/storage/block-storage/). Your LKE cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
 
 **Additional LKE features:**
 
@@ -181,7 +181,7 @@ You can use the Linode Cloud Manager to modify a cluster's existing node pools b
 
 ### Configure Cluster Autoscaling
 
-In Kubernetes, Cluster Auto-Scaling refers to a method by which Kubernetes users can configure their cluster to automatically scale the amount of physical nodes available in a node pool up and down as hardware needs of the the pool increase or decrease. While this feature can be applied manually using resources like the [Cluster Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler) provided by Kubernetes, LKE can manage this potential automatically through the Cloud Manager and the [Linode API](/docs/api/linode-kubernetes-engine-lke/).
+In Kubernetes, Cluster Auto-Scaling refers to a method by which Kubernetes users can configure their cluster to automatically scale the amount of physical nodes available in a node pool up and down as hardware needs of the pool increase or decrease. While this feature can be applied manually using resources like the [Cluster Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler) provided by Kubernetes, LKE can manage this potential automatically through the Cloud Manager and the [Linode API](/docs/api/linode-kubernetes-engine-lke/).
 
 The LKE autoscaler will only apply changes when the following conditions are met:
 

@@ -182,7 +182,7 @@ Making a new configuration profile allows you to create a new and separate boot 
 
 1.  Enter a descriptive name for the configuration profile in the **Label** field. This name appears on the Linode's detail page and will help you differentiate it from other configuration profiles.
 1.  You can enter comments or notes about this configuration profile in the **Comments** field.
-1.  Under **VM Mode**, select whether you would like paravirtualization or full-virtualization. This option describes how hardware commands are directed to the host operating system. Paravirtualization is recommended, and is necessary for features like [Block Storage](/docs/guides/how-to-use-block-storage-with-your-linode/).
+1.  Under **VM Mode**, select whether you would like paravirtualization or full-virtualization. This option describes how hardware commands are directed to the host operating system. Paravirtualization is recommended, and is necessary for features like [Block Storage](/docs/products/storage/block-storage/).
 1.  Select a Linux kernel from the **Kernel** menu. We recommend selecting one of the current and latest kernels.
 1. Select the **Run Level** for your configuration profile. If you aren't sure which level to choose, choose **Run Default Level**.
 1. Select the **Memory Limit** setting for the configuration profile. If you select to **limit the amount of RAM this config uses**, enter in the memory limit allotment. The maximum amount of available memory is displayed below the text field.

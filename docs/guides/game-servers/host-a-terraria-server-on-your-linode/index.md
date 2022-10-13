@@ -141,7 +141,7 @@ Before you install Terraria, be sure the version you download is the same as the
 
         sudo unzip terraria-server-*
 
-4. The Terraria Server file will contain an executable that must have have execute permissions set to run the server. Enter the following command to do this:
+4. The Terraria Server file will contain an executable that must have execute permissions set to run the server. Enter the following command to do this:
 
         sudo chmod +x ~/1423/Linux/TerrariaServer.bin.x86_64
 
