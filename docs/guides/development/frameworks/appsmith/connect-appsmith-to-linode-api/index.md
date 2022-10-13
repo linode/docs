@@ -20,31 +20,31 @@ external_resources:
 - '[Appsmith: Tutorials](https://docs.appsmith.com/tutorials)'
 ---
 
-[Appsmith](https://www.appsmith.com/) is a platform for building applications in a low-code, visual interface. It is an open-source tool ideal for quickly developing internal applications with a combination of drag-and-drop UI widgets and JavaScript code.
+[Appsmith](https://www.appsmith.com/) is a platform for building applications in a low-code, visual interface. It is an open source tool ideal for quickly developing internal applications with a combination of drag-and-drop UI widgets and JavaScript code.
 
-You can learn more about Appsmith and how to host your own instance in our guide **How to Self-host Appsmith with Docker Compose**.
+You can learn more about Appsmith and how to host your own instance in our guide [How to Self-host Appsmith with Docker Compose](/docs/guides/deploy-appsmith-docker).
 
 This tutorial covers everything you need to connect your Appsmith instance to the Linode API. With this, you can build your own Linode cloud manager or integrate Linode control into your application.
 
-And, while this tutorial is specifically concerned with the Linode API, similar steps can be readily adapted to numerous other APIs. By the end, you should be prepared to connect other Linode APIs — like those for Linode managed databases — or other external APIs.
+While this tutorial is specifically concerned with the Linode API, similar steps can be readily adapted to numerous other APIs. By the end, you should be prepared to connect other Linode APIs (like those for Linode managed databases) or other external APIs.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-1. Update your system.
+1.  Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    -   On Debian and Ubuntu, you can do this with:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    -   On AlmaLinux, CentOS (8 or later), or Fedora, use:
 
             sudo dnf upgrade
 
-1. Follow our guide on **How to Self-host Appsmith with Docker Compose** for steps to install Docker and start running an Appsmith instance on your own server.
+1.  Follow our guide on [How to Self-host Appsmith with Docker Compose](/docs/guides/deploy-appsmith-docker) for steps to install Docker and start running an Appsmith instance on your own server.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -68,7 +68,7 @@ To get started using the API, with the prerequisites you need for this Appsmith 
 
 Be sure particularly to follow the steps for authentication, getting either a personal access token or configuring OAuth, depending on your needs.
 
-This tutorial assumes that you have acquired a personal access token for the Linode API. However, you should be readily able to replace this with an OAuth authentication token in any of the examples that follow.
+This tutorial assumes that you have acquired a personal access token for the Linode API. However, you can replace this with an OAuth authentication token in any of the examples that follow.
 
 ### Creating the Appsmith Authenticated API
 
@@ -76,41 +76,45 @@ Within Appsmith, you typically add an API as a datasource to your application. S
 
 This series of steps shows you how to create such an *Authenticated API* for the Linode API's *Linodes Instances*, *Linode List* endpoint. This endpoint provides a list of all Linode instances on your account, along with information like instance IDs, names, and statuses.
 
-1. Have an Appsmith application to which you intend to add the *Authenticated API*. You can create a new application from the Appsmith dashboard by clicking the **+ New** button. You may first have to create an organization to house the application under, which you can do using the **New Organization** button on the left menu.
+1.  If you just setup Appsmith for the first time, you'll already be in the edit screen of your first application: skip to step three. If this is an existing installation, create a new application from the Appsmith dashboard by clicking the **+ New** button.
 
-    For this tutorial, an application named "Example Application" is used. It is part of an "Example Organization."
+    {{< note >}}
+You may first have to create an organization to house the application under, which you can do using the **New Organization** button on the left menu.
 
-    [![Example application on the Appsmith dashboard](appsmith-example-app-dashboard_small.png)](appsmith-example-app-dashboard.png)
+[![Example application on the Appsmith dashboard](appsmith-example-app-dashboard_small.png)](appsmith-example-app-dashboard.png)
+{{< /note >}}
 
-1. Go to the page for editing the application. You may be directed there automatically after creating an application. For an existing application, hover on the application thumbnail on the dashboard, and click the **Edit** button.
+1.  After creating an application, you may be automatically directed to the page for editing the application. Otherwise, hover on the application thumbnail on the dashboard, and click the **Edit** button.
 
     [![Editing page for the example application](appsmith-example-app-editing_small.png)](appsmith-example-app-editing.png)
 
-1. Click the **+** icon by **Datasources** on the left menu to view the datasource creation prompt.
+1.  Click the **+** icon by **Datasources** on the left menu to view the datasource creation prompt.
 
     [![Datasource creation prompt for the example application](appsmith-example-app-create-datasource_small.png)](appsmith-example-app-create-datasource.png)
 
-1. Select the **Authenticated API** option, which directs you to a form where you can enter the API information.
+1.  Select the **Authenticated API** option, which directs you to a form where you can enter the API information.
 
-1. Fill out the form as shown here to create a datasource for the Linode API's [Linodes List](/docs/api/linode-instances/#linodes-list) endpoint. In the **Bearer Token** field, enter your personal authentication token for the Linode API.
+1.  Fill out the form to create a datasource for the Linode API's [Linodes List](/docs/api/linode-instances/#linodes-list) endpoint. Click the pencil icon to rename it `Linode API - Linodes List`. Enter `https://api.linode.com/v4/linode/instances` in the **URL** field. In the **Bearer Token** field, enter your personal authentication token for the Linode API. When complete, your form should look like this:
 
     ![Authenticated API for the example application](appsmith-example-app-authenticated-api.png)
 
-Once created, an authenticated API can be adjusted at any time. To do so, click the button for the API in the left menu under the **Datasources** tab. Then, click the **Edit** button on the API's information page.
+1.  Click **Save**.
+
+Once created, an Authenticated API can be adjusted at any time. To do so, click the button for the API in the left menu under the **Datasources** tab. Then, click the **Edit** button on the API's information page.
 
 ### Testing the Connection
 
-The quickest way to test your connection to an *Authenticated API* in Appsmith is by creating a query. Furthermore, queries are the basis of any usage of datasources in Appsmith. So, this step is necessary to actually start using the API in your application.
+The quickest way to test your connection to an Authenticated API in Appsmith is by creating a query. In fact, queries are the basis of all datasource usage in Appsmith. Therefore, this step is necessary to actually start using the API in your application.
 
-1. Locate the **Query/JS** option on the left menu, and click the **+** beside it. Select the Linode API from the list of options that displays.
+1.  Locate the **Query/JS** option on the left menu, and click the **+** beside it. Select the newly created **Linode API- Linodes List Query** from the list of options.
 
     ![Menu for creating a query for the example application](appsmith-example-app-create-query.png)
 
-1. A query creation page displays, with the query URL already in place. Since this example uses a simple `GET` endpoint, there is no need for adding further headers or parameters. Here, the only change is that the query has been named.
+1.  A query creation page displays, with the query URL already in place. Since this example uses a simple `GET` endpoint, there is no need for adding headers or parameters. Here, the only required change is to rename the query to `LinodeAPI_GET_Linodes_List`.
 
     [![Query creation page for the example application](appsmith-example-app-query-creation_small.png)](appsmith-example-app-query-creation.png)
 
-1. Click the **Run** button in the upper right, and the response data from the API displays in the **Response** area at the bottom of the page.
+1.  Click the **Run** button in the upper right. The response data from the API displays in the **Response** area at the bottom of the page.
 
     The following is example response data for the endpoint shown above. It assumes that you have one Linode instance, currently running, using Ubuntu 22.04. IP addresses have been replaced with generic alternatives.
 
@@ -168,31 +172,35 @@ The quickest way to test your connection to an *Authenticated API* in Appsmith i
 
 The Linode API is now ready to use within your Appsmith application. From there, Appsmith gives you myriad ways to implement the API into your application.
 
-These next steps show you a simple example application using the *Authenticated API* created the previous sections. The steps gloss over some of the details of application creation in Appsmith, since the focus is on integrating an API.
+These next steps show you a simple example application using the *Authenticated API* created in the previous sections. The steps gloss over some of the details of application creation in Appsmith, since the focus is on integrating an API.
 
 Instead, these steps highlight the particular pieces that relate to mobilizing the Linode API, both for displaying data and managing Linode products and services.
 
 ### Displaying the Data
 
-1. Start with a page, and add a *List* widget to it. Select the *List* widget, and replace the **Items** field's content with the following: `{{ LinodeAPI_GET_Linodes_List.data.data }}`.
+1.  Click **Page1** in the left-hand sidebar to get to the editing screen.
+
+1.  Click the **+** next to **Widgets** and drag a **List** widget to the page.
+
+1.  Select the **List** widget. In the **Data** section of the **Content** tab, replace the **Items** field's content with `{{ LinodeAPI_GET_Linodes_List.data.data }}`.
 
     ![List widget configuration](appsmith-example-app-list-config.png)
 
-1. Remove the existing widgets from within the *List* widget's first item, and begin adding other widgets. Updating the display for the first item in the *List* widget updates the way each item in the list displays.
+1.  With the **List** widget, updating the first item updates the way all items display. Click **Explorer** in the left-hand sidebar, then click the **>** to expand **Widgets**, **List1**, and **Container1**. Remove the existing **Image1**, **Text1**, and **Text2** widgets.
 
-    Which widgets you use depends on what information you want displayed for each Linode instance. For this example, the following widgets are added to the *List* widget.
+1.  Begin adding other widgets. Which widgets you use depends on what information you want displayed for each Linode instance. For this example, the following widgets are added to the **List** widget:
 
-    - A *Text* widget to display the instance ID. Change the **Text** field in the widget's configuration to: `{{currentItem.id}}`.
+    -   A **Text** widget to display the instance ID. Change the **Text** field in the **General** section of the widget's **Content** tab to `{{currentItem.id}}`.
 
-    - A *Text* widget to display the instance's name. Change the **Text** field in the widget's configuration to: `{{currentItem.label}}`.
+    -   A second **Text** widget to display the instance's name. Change the **Text** field in the **General** section of the widget's **Content** tab to `{{currentItem.label}}`.
 
-    - A *Button* widget to display (and later control) the instance's boot status. In the widget's configuration, change the **Label** field to: `{{currentItem.status}}`.
+    -   A **Button** widget to display (and later control) the instance's boot status. In the **Basic** section of the widget's **Content** tab, change the **Label** field to `{{currentItem.status}}`.
 
-        This example also gives the button dynamic color. To support this, change the **Button Color** field in the configuration to: `{{App_Logic.linodeInstanceStatusColor(currentItem)}}`. The next steps implement the logic behind this.
+        This example also gives the button dynamic color. To support this, open the widget's **Style** tab, and click the **JS** button next to the **Button Color** field in the **Color** section. Replace the contents of that field with `{{App_Logic.linodeInstanceStatusColor(currentItem)}}`. You may recieve an error, don't worry, the next steps implement the logic behind this.
 
-1. Create a new JavaScript object by selecting the **+** beside the **Queries/JS** button on the left menu. Select **New JS Object** from the sub-menu that appears.
+1.  Click the **Explorer** tab in the left-hand sidebar. Create a new JavaScript object by selecting the **+** beside the **Queries/JS** button on the left menu. Select **New JS Object** from the sub-menu that appears.
 
-1. Give the new JavaScript object the following contents. This JavaScript code supports the dynamic coloring for the status buttons on the list of Linode instances:
+1.  Name the new JavaScript object `App_Logic` and give it the following contents.
 
     {{< file js >}}
 export default {
@@ -200,21 +208,23 @@ export default {
         return (currentItem.status == "running") ? "darkseagreen" : "indianred";
     }
 }
-    {{< /file >}}
+{{< /file >}}
+
+This JavaScript code supports the dynamic coloring for the status buttons on the list of Linode instances. Note that you may have to play with the layout and spacing of your widgets to make your application look exactly like the screenshot below:
 
 [![Example application listing Linode instances](appsmith-example-app-listing-instances_small.png)](appsmith-example-app-listing-instances.png)
 
 ### Updating the Data
 
-1. Create two new queries. Click on the **+** icon by the **Queries/JS** button on the left menu, and select the **Linode API** datasource from the sub-menu.
+1.  Create two new queries. Click on the **+** icon by the **Queries/JS** button on the left menu, and select the **Linode API - Linodes List Query** datasource from the sub-menu. On the query creation page for each, change the **URL** type from **GET** to **POST**. Modify the URL by appending `/{{this.params.selectedId}}/boot` for the first query and `/{{this.params.selectedId}}/shutdown` for the second. Name the first query `LinodeAPI_POST_Linode_Boot` and the second query `LinodeAPI_POST_Linode_Shutdown`.
 
-    On the query creation page for each, modify the URL by appending `/{{this.params.selectedId}}/boot` for the first and `/{{this.params.selectedId}}/shutdown` for the second.
+    The resulting query edit pages should look like these:
 
     [![Query for booting a Linode instance](appsmith-example-app-instance-boot_small.png)](appsmith-example-app-instance-boot.png)
 
     [![Query for shutting down a Linode instance](appsmith-example-app-instance-shutdown_small.png)](appsmith-example-app-instance-shutdown.png)
 
-1. Open the **App_Logic** JavaScript object again. Modify the JavaScript code there so that it now contains the following:
+1.  Open the **App_Logic** JavaScript object again, and modify the code to contain the following:
 
     {{< file js >}}
 export default {
@@ -229,11 +239,11 @@ export default {
         }
     }
 }
-    {{< /file >}}
+{{< /file >}}
 
     The new function, `linodeApiInstanceOnOrOff`, accepts an item from the list of Linode instances and calls the appropriate query, depending on whether the instance is on or off.
 
-1. Access the *Button* widget again, and press the **JS** button by the **onClick** field. Now enter the following in the **onClick** field: `{{App_Logic.linodeApiInstanceOnOrOff(currentItem)}}`.
+1.  Access the **Button** widget again. Press the **JS** button by the **onClick** field in the **Basic** section of the **Content** tab. Enter `{{App_Logic.linodeApiInstanceOnOrOff(currentItem)}}` in the **onClick** field.
 
 This leaves you with a functioning application for managing Linode instances. It provides a list of instances and their statuses, and gives you buttons for toggling each instance on or off.
 
@@ -243,8 +253,6 @@ Here is an updated view of the example application, deployed and having switched
 
 ## Conclusion
 
-In this tutorial, you have the pieces you need to implement your own Appsmith application connected to the Linode API. And, moreover, the same steps and tools you have seen in this tutorial can be applied to connect your Appsmith application to other REST APIs.
+In this tutorial, you have the pieces you need to implement your own Appsmith application connected to the Linode API. Moreover, the same steps and tools you have seen in this tutorial can be applied to connect your Appsmith application to other REST APIs.
 
-To keep learning about building applications with Appsmith, you can jump into the tutorials and guides available from Appsmith. These show all the possibilities that the framework has to offer. Take a look at the links to the Appsmith documentation provided below to start.
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
+To keep learning about building applications with Appsmith, you can jump into the tutorials and guides available from Appsmith. These show all the possibilities that the framework has to offer. To start, take a look at the links to the Appsmith documentation provided below.

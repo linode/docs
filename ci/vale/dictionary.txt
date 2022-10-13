@@ -67,6 +67,7 @@ appletalk
 approvers
 appsec
 appserver
+appsmith
 apxs
 architecting
 aren
