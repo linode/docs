@@ -2,6 +2,10 @@ name: CI Tests
 
 on: [pull_request]
 
+env:
+  hugo-image-cache-name: hugo-generated-images
+  hugo-image-cache-path: /home/runner/work/docs/docs/resources/_gen/images/
+
 jobs:
   blueberry:
 
@@ -77,6 +81,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: List contents of images dir
+      continue-on-error: true
+      run: ls -al ${{ env.hugo-image-cache-path }}
+    - name: Restore Hugo generated images cache
+      uses: ylemkimon/cache-restore@v2
+      with:
+        path: ${{ env.hugo-image-cache-path }}
+        key: ${{ env.hugo-image-cache-name }}
+        restore-keys: ${{ env.hugo-image-cache-name }}
+    - name: List contents of images dir
+      continue-on-error: true
+      run: ls -al ${{ env.hugo-image-cache-path }}
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -104,7 +120,7 @@ jobs:
     - name: Set up Hugo
       uses: peaceiris/actions-hugo@v2
       with:
-        hugo-version: '0.83.1'
+        hugo-version: '0.104.3'
     - name: Start Hugo server
       run: |
         # Start Hugo in background:

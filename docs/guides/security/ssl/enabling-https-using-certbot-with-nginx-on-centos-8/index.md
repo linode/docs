@@ -10,9 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-01
 modified_by:
   name: Linode
-title: "Enabling HTTPS Using Certbot with NGINX on CentOS/RHEL 8"
-h1_title: "Securing Web Traffic Using Certbot with NGINX on CentOS/RHEL 8"
-enable_h1: true
+title: "Use Certbot to Enable HTTPS with NGINX on CentOS 8"
 aliases: ['/quick-answers/websites/how-to-install-certbot-on-centos-8/','/quick-answers/websites/certbot/how-to-install-certbot-on-centos-8/','/guides/how-to-install-certbot-on-centos-8/']
 relations:
     platform:

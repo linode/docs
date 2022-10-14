@@ -13,7 +13,7 @@ modified: 2012-11-13
 modified_by:
   name: Linode
 published: 2012-11-13
-title: 'Use uWSGI to deploy Python apps with Nginx on Ubuntu 12.04'
+title: "Deploy Python Apps with uWSGI and Nginx on Ubuntu 12.04"
 relations:
     platform:
         key: wsgi-uwsgi-nginx

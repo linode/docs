@@ -10,9 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-01
 modified_by:
   name: Linode
-title: "Enabling HTTPS Using Certbot with NGINX on Debian 10 and 9"
-h1_title: "Securing Web Traffic Using Certbot with NGINX on Debian 10 and 9"
-enable_h1: true
+title: "Use Certbot to Enable HTTPS with NGINX on Debian"
 aliases: ['/guides/how-to-install-certbot-on-debian-10/']
 relations:
     platform:

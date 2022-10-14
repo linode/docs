@@ -10,7 +10,7 @@ published: 2018-07-03
 modified: 2022-01-14
 modified_by:
   name: Edward Angert
-title: "Use rm to Delete Files and Directories on Linux (Command Line)"
+title: "Use rm to Delete Files and Directories on Linux"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/delete-file-linux-command-line/']
 ---
