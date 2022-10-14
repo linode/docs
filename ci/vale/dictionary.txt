@@ -505,6 +505,7 @@ dropdown
 drupal
 drush
 drwxr
+dsc
 dshield
 dsn
 du
@@ -1455,6 +1456,7 @@ openvassd
 openvpn
 openvz
 openzipkin
+osc
 ossec
 ostemplate
 osx
@@ -1637,6 +1639,7 @@ pyspark
 pytest
 python3
 pythonic
+pytricia
 qemu
 qmail
 qmgr
@@ -1971,6 +1974,7 @@ subnets
 subnetwork
 subprocess
 subprocesses
+subproject
 subqueries
 subquery
 subreddit
