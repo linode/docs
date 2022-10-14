@@ -18,7 +18,7 @@ This guide provides information about retention of data on a deleted Linode.
 
 # Initial Deletion
 
-When a Linode is deleted, the Linode data remains on the host for a very short period of time. After a few hours, background host maintenance occurs and scrubs the Linode disk by overwriting it with zeros then reclaiming the space.
+When a Linode is deleted, the Linode data remains on the host for a very short period of time. After a few hours, background host maintenance occurs and scrubs the Linode disk by overwriting each byte with zeros then reclaiming the space. This makes all previous data on the disk irretrievable.
 
 Only the Linode support team can restore this data. If the removal was an accident, customers might be able to restore the data if they contact support immediately. For information about reaching out to the Linode support team, see [contact support](/docs/guides/support/).
 
