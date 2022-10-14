@@ -1,0 +1,259 @@
+- date: 2022-10-04
+  version: 1.77.0
+  summary: "This is a test summary"
+  content: |
+    ### Added:
+
+    - ARIA labels for network transfer history previous/next buttons
+    - Firewall Support for `IPENCAP` Protocol
+    - New Linode Logo
+    - Getting Started links on the Linodes and Databases empty landing pages
+
+    ### Changed:
+
+    - New environment docs and updated PR Template
+
+    ### Fixed:
+
+    - Linode “Add Disk” drawer UI width bug
+    - Object Storage overwrite file error causing the app to crash
+
+- date: 2022-09-19
+  version: 1.76.0
+  content: |
+    ### Added:
+    - Ability to select a disk for initrd in Linode Config modal
+    - Contextual help links on Linode create page
+
+    ### Changed:
+    - Invoice tax and logo updates
+    - Improve timezone offsets by pulling them from `Luxon`
+    - Allow deletion of private IPv4 addresses
+    - Make database engine icons more visible on focus
+    - Replace `novnc-node` with `react-vnc`
+
+    ### Fixed:
+    - Issue where long drawer titles force "Close" button to new line
+    - Database maintenance window day mapping and notification message for database_update
+    - Confirm that 2FA toggle is not present in either state when security questions are not answered
+
+- date: 2022-09-06
+  version: 1.75.0
+  content: |
+    ### Added:
+
+    - Marketplace Search & Filtering and UI refinements
+    - Sept 2022 Marketplace Apps
+    - More Insightful Credit Card Expiration Date Validation
+    - Volume Status on Volumes landing page
+
+    ### Changed:
+
+    - Remove Type-To-Confirm checkbox from Modals
+    - Documentation link for Powered off Linode Accrued Charges
+
+    ### Fixed:
+
+    - Ant Media Server display in drawer
+    - Apostrophes in Linode Resize and Host Maintenance error messages
+
+- date: 2022-08-24
+  version: 1.74.1
+  content: |
+    ### Fixed:
+    - Issue causing user-defined fields to clear erroneously during Linode StackScript deploy
+
+- date: 2022-08-22
+  version: 1.74.0
+  content: |
+    ### Added:
+    - Support for “Any/All” option for StackScript target images
+
+    ### Changed:
+    - Update billing UI for Akamai customers
+    - Build `api-v4` and `validation` with `tsup`
+
+    ### Fixed:
+    - Slight adjustment to browser back button behavior on User Permissions tab
+    - Make "Copy IP" buttons visible on keyboard focus as well as table row hover
+
+- date: 2022-08-08
+  version: 1.73.0
+  content: |
+    ### Added:
+
+    - Local storage warning to Kubernetes upgrade flow
+    - August 2022 Marketplace apps
+
+    ### Changed:
+
+    - Filter `read_only` Linodes From Firewall Select For Restricted Users
+
+    ### Fixed:
+
+    - Linode Backups tab error certain users were experiencing
+    - Invoice formatting issue
+
+- date: 2022-07-25
+  version: 1.72.0
+  content: |
+    ### Changed:
+    - Phone Verification and Security Questions copy
+    - PayPal Loading State improvement
+    - Button placement in User Permissions
+    - Add Payment Drawer error from toast to notice
+
+    ### Fixed:
+    - Mobile graph legends alignment
+    - Region selection not clearing when switching between Linode Create tabs
+
+- date: 2022-07-20
+  version: 1.71.1
+  content: |
+    ### Added:
+
+    - Banner regarding maintenance to the Databases Landing and Database Create pages
+
+- date: 2022-07-12
+  version: 1.71.0
+  content: |
+    ### Added:
+
+    - Kali distro icon
+    - Ability to download secret keys
+
+    ### Changed:
+
+    - UI in Keys and secrets modals
+    - Update 2FA Security Questions Notice font size
+    - Main content banner width
+    - Use React Query for Domains
+    - Removed create image cost estimator
+    - Don't make /account requests if restricted user
+    - Persist Last Updated column on small screens in Support Ticket Table
+
+    ### Fixed:
+
+    - Image upload max size bug on Linux
+    - Responsiveness of Linode stats graphs
+    - Curly apostrophe on cancel landing page
+    - Phone Verification when verifying the same phone number
+
+- date: 2022-07-01
+  version: 1.70.1
+  content: |
+    ### Fixed:
+    - Banner text wrapping for certain viewport widths
+
+- date: 2022-06-27
+  version: 1.70.0
+  content: |
+    ### Added:
+    - June 2022 Marketplace release
+    - Security questions for account verification
+    - Phone number SMS verification opt-in and opt-out
+
+    ### Changed:
+    - Move Upload Image region text to tooltip
+    - Enabling or resetting 2FA requires security questions to be answered
+    - Clean up dismissed notifications more frequently in User Preferences
+
+    ### Fixed:
+    - Show errors in Firewall rules table
+    - Make notification badge a true circle
+
+- date: 2022-06-13
+  version: 1.69.0
+  content: |
+    ### Added:
+    - Display tax lines on invoices
+    - Ability for users to migrate unattached volumes to NVMe block storage
+
+- date: 2022-06-08
+  version: 1.68.1
+  content: |
+    ### Fixed:
+    - Notification Menu spamming calls when clicking a link
+
+- date: 2022-06-06
+  version: 1.68.0
+  content: |
+    ### Added:
+    - Tooltip explaining public/private hosts for MongoDB clusters
+    - Support for scoping Database and Firewall permissions
+
+    ### Changed:
+    - Tweak Connection Details for Mongo clusters
+    - Bold the Entity Label, Actions, and Username in the Notification Menu
+    - Enable Google Analytics IP anonymization
+
+    ### Fixed:
+    - Height of Region select
+
+- date: 2022-05-17
+  version: 1.66.2
+  content: |
+    ### Changed:
+
+    - Display linroot as the username for MongoDB and MySQL clusters, and linpostgres as the username for PostgreSQL clusters
+
+- date: 2022-05-16
+  version: 1.66.0
+  content: |
+    ### Added:
+    - Support and icons for PostgreSQL and MongoDB
+
+    ### Changed:
+    - Expanded accessibility and styling docs
+    - Icon for MySQL
+
+    ### Fixed:
+    - Marketplace Wazuh link
+
+- date: 2022-05-02
+  version: 1.65.0
+  content: |
+    ### Added:
+    - Outlined chip variant
+
+    ### Changed:
+    - Hyphenate “type-to-confirm”
+    - Curly all single quotes
+    - Max node pool copy
+    - Limit collection of country and tax information
+    - Spacing on DBaaS Settings page
+    - Unbold Object links in Object Storage
+    - All No Stats Available States
+
+    ### Fixed:
+    - Linode Activity Feed undefined loading state
+    - Button text not vertically centered in Firefox
+
+- date: 2022-04-28
+  version: 1.64.1
+  content: |
+    ### Changed
+
+    - Code refactors to accommodate API database type changes
+
+- date: 2022-04-18
+  version: 1.64.0
+  content: |
+    ### Added:
+
+    - Support for DBaaS Maintenance Windows
+
+    ### Changed:
+
+    - Update DBaaS Beta notice to include end date
+    - Notification Drawer updates and refinements
+    - Improve Table Loading States
+    - Premium LKE Create page UI refinements
+    - Display placeholder text while stats are not yet available in Linode Network tab
+    - Support Ticket Refinements
+
+    ### Fixed:
+
+    - Show /116s in networking panel
+    - Typo in migrate Linode modal
+    - Max value for Node Pools is 100
