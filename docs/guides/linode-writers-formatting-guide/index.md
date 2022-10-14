@@ -168,17 +168,73 @@ Use a **Bold** font weight for buttons, menu selections and anything that requir
 
 ### Commands
 
-Commands that are not inline with paragraph text should be indented four spaces from the beginning of the copy.
+Commands that are not inline with paragraph text should be displayed with the *code shortcode*. This shortcode renders the command in monospace with a light or dark background and a copy-to-clipboard button. Unlike other shortcodes (e.g. `content`, `note`, `caution`, etc), the code shortcode should be referenced with Markdown's *code fence* syntax.
 
-For example:
+-   **Code shortcode example**
 
-    Update your system:
+        ```code
+        sudo systemctl restart apache2
+        ```
 
-        yum update
+    The above code shortcode is rendered with a light grey background by default:
 
-> Update your system:
->
->     yum update
+    ```code
+    sudo systemctl restart apache2
+    ```
+
+-   **Multiline commands**
+
+    The code shortcode can accept multiple lines if more than one command needs to be displayed:
+
+        ```code
+        sudo systemctl restart apache2
+        sudo journalctl -u apache2
+        ```
+
+    The above code shortcode is rendered as:
+
+    ```code
+    sudo systemctl restart apache2
+    sudo journalctl -u apache2
+    ```
+
+-   **Command with title**
+
+    The `title` parameter can be used to specify a title that displayed above a code shortcode. This can be useful to label the server or workstation that a reader should execute the command on. For example, some guides instruct the reader to set up multiple servers. Specifying a title can disambiguate which server a given command should be run on.
+
+        ```code {title="Web server"}
+        sudo systemctl restart apache2
+        ```
+
+        ```code {title="Database server"}
+        sudo systemctl restart mysql
+        ```
+
+    The above code shortcodes are rendered as:
+
+    ```code {title="Web server"}
+    sudo systemctl restart apache2
+    ```
+
+    ```code {title="Database server"}
+    sudo systemctl restart mysql
+    ```
+
+-   **Command with dark background**
+
+    The `class` parameter can be used to specify that a command should be displayed with a dark background:
+
+        ```code {class="dark"}
+        sudo systemctl restart apache2
+        ```
+
+    The above code shortcode is rendered as:
+
+    ```code {class="dark"}
+    sudo systemctl restart apache2
+    ```
+
+### Inline Commands
 
 Inline commands should be denoted by backticks.
 
@@ -262,44 +318,147 @@ To use this shortguide in another guide, use the following syntax:
 {{</* content "install_python_miniconda" */>}}
 {{< /file >}}
 
-#### Hide Content Through Buttons
+### Files
 
-Adding `os: ["mac", "linux", "windows"]` to the front matter inserts a jQuery script that will hide and display content shortcodes.
+Use the *file shortcode* to present code examples, code snippets, and other text file contents in a guide. This shortcode renders the file content with line numbering, a specified filepath, syntax highlighting, and line highlighting. Unlike other shortcodes (e.g. `content`, `note`, `caution`, etc), the file shortcode should be referenced with Markdown's *code fence* syntax.
 
-The shortcode should contain two parameters: filepath and operating system.
+{{< note >}}
+Exceptionally long files should be shown in parts, if needed. In these cases, you can add the entire file to the same directory as your guide and link to it from within the guide.
+{{< /note >}}
 
-For example, `{{</* content "how-to-install-git-mac" mac */>}}` will insert a Markdown snippet that will only be visible when the Mac button is in the active state.
+-   **File with filepath**
 
-### Files and File Excerpts
+        ```file {title="/path/to/file.html"}
+        <div>
+            Sample file text
+        </div>
+        ```
 
-Use the *file* shortcode to add the entire contents of a file to a guide. If only quoting a portion of the file, use the *file excerpt* shortcode. Exceptionally long files should be shown in parts and have the whole file linked, if needed.
-For each file or file excerpt, a code language or syntax should be defined in the shortcode tag to set how the text is displayed. A list of supported languages can be found [on GitHub](https://github.com/alecthomas/chroma).
+    The above file shortcode is rendered as:
 
-**Example**: File shortcode
+    ```file {title="/path/to/file.html"}
+    <div>
+        Sample file text
+    </div>
+    ```
 
-    {{</* file path/to/file.html html */>}}
+-   **File with language/syntax highlighting**
+
+    A code language or syntax can be defined with the `lang` parameter to set how the text is displayed. A list of supported languages can be found [on GitHub](https://github.com/alecthomas/chroma).
+
+        ```file {title="/path/to/file.html" lang="html"}
+        <div>
+            Sample file text
+        </div>
+        ```
+
+    The above file shortcode is rendered as:
+
+    ```file {title="/path/to/file.html" lang="html"}
+    <div>
+        Sample file text
+    </div>
+    ```
+
+-   **File with starting line specified**
+
+    If your file snippet represents the middle of a file, you can use the `linenostart` to specify that the line numbering to the left of the snippet should start at a number other than 1:
+
+        ```file {title="/path/to/file.html" lang="html" linenostart="11"}
+        <div>
+            Sample file text
+        </div>
+        ```
+
+    The above file shortcode is rendered with line numbers 11, 12, and 13 instead of 1, 2, and 3:
+
+    ```file {title="/path/to/file.html" lang="html" linenostart="11"}
+    <div>
+        Sample file text
+    </div>
+    ```
+
+-   **File with starting line specified**
+
+    If using a file shortcode to present content in the middle of a file, you can use the `linenostart` to specify that the line numbering to the left of the snippet should start at a number other than 1:
+
+        ```file {title="/path/to/file.html" lang="html" linenostart="11"}
+        <div>
+            Sample file text
+        </div>
+        ```
+
+    The above file shortcode is rendered with line numbers 11, 12, and 13 instead of 1, 2, and 3:
+
+    ```file {title="/path/to/file.html" lang="html" linenostart="11"}
+    <div>
+        Sample file text
+    </div>
+    ```
+
+-   **File with highlighted lines**
+
+    The `hl_lines` parameter can be used to highlight certain lines within the file. The parameter is a space-separated list of strings. Ranges of lines can also be specified:
+
+        ```file {title="client/src/Header.js" lang="js" linenostart="11" hl_lines="4-6 9"}
+        import React from 'react';
+        function Header() {
+            return (
+                <header>
+                    Example header text
+                </header>
+            );
+        }
+        export default Header;
+        ```
+
+    The above file shortcode highlights lines 4 through 6 and line 9:
+
+    ```file {title="client/src/Header.js" lang="js" linenostart="11" hl_lines="4-6 9"}
+    import React from 'react';
+    function Header() {
+        return (
+            <header>
+                Example header text
+            </header>
+        );
+    }
+    export default Header;
+    ```
+
+-   **Using file shortcodes within lists**
+
+    If using a file shortcode in a list, each line of the shortcode should start at the indentation level of the list. For example:
+
+        1.  List item 1
+
+        2.  List item 2
+
+            ```file {title="/path/to/file.html" lang="html"}
+            <div>
+                Sample file text
+            </div>
+            ```
+
+### Files (Deprecated Syntax)
+
+In some existing guides, you may see this older shortcode syntax for displaying a file:
+
+    {{</* file "path/to/file.html" html */>}}
         <div>
             Sample file text
         </div>
     {{</* /file */>}}
 
-{{< file "path/to/file.html" html >}}
-<div>
-    Sample file text
-</div>
-{{< /file >}}
+This is equivalent to:
 
-**Example**: File Excerpt shortcode
+    ```file {title="/path/to/file.html" lang="html"}
+    <div>
+        Sample file text
+    </div>
+    ```
 
-    {{</* file "script.py" python */>}}
-    def some_function():
-        print("This is a function.")
-    {{</* /file */>}}
-
-{{< file "script.py" python >}}
-def some_function():
-    print("This is a function.")
-{{< /file >}}
+The older syntax should not be used for new content. While they are rendered with the same presentation by Hugo, they are not displayed the same in the GitHub.com UI. When viewing a markdown file in the library on GitHub, the newer code fence shortcode syntax will have enhanced styling, compared with the older shortcode syntax.
 
 ### File Paths and File Names
 
@@ -417,6 +576,40 @@ Put your table data here.</br>
 | `authorized_keys` | list | A list of SSH public keys or SSH public key file locations on your local system, for example, `['averylongstring','~/.ssh/id_rsa.pub']`. The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode. Ansible will use the public key to SSH into your Linodes as the root user and execute your Playbooks.|
 | `label` | string, *required* | The Linode instance label. The label is used by the module as the main determiner for idempotence and must be a unique value.</br></br> Linode labels have the following constraints:</br></br> <ul><li>Must start with an alpha character.</li><li>May only consist of alphanumeric characters, dashes (-), underscores (_) or periods (.).</li><li>Cannot have two dashes (--), underscores (__) or periods (..) in a row.</li></ul>|
 {{< /todo >}}
+
+### Terminal Output
+
+Output from terminal commands should be displayed with the *output shortcode*:
+
+    {{</* output */>}}
+    Hello world!
+    {{</*/ output */>}}
+
+The above shortcode is rendered as:
+
+{{< output >}}
+Hello world!
+{{</ output >}}
+
+Here's an example of a command (using the code shortcode) and its output (using the output shortcode) displayed together:
+
+    ```code
+    echo "Hello world!"
+    ```
+
+    {{</* output */>}}
+    Hello world!
+    {{</*/ output */>}}
+
+The above shortcodes are rendered as:
+
+```code
+echo "Hello world!"
+```
+
+{{< output >}}
+Hello world!
+{{</ output >}}
 
 ## Legal Information
 
