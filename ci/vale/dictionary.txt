@@ -1271,6 +1271,7 @@ mongorestore
 mongosh
 monit
 monitorix
+monospaced
 moolenaar
 morphisec
 motd
