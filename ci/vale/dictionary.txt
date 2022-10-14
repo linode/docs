@@ -490,6 +490,7 @@ dokku
 domain1
 domain2
 domain3
+domain_id
 domainkey
 domainname
 donenfeld
@@ -1320,6 +1321,7 @@ mysqld
 mysqldefault
 mysqldump
 mysql_config_editor
+mysql_secure_installation
 mytestdb
 myuser
 mzet
