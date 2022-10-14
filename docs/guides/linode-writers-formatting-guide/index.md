@@ -237,7 +237,7 @@ Commands that are not inline with paragraph text should be displayed with the *c
 
 ### Commands (Deprecated Syntax)
 
-In some existing guides, you may see commands displayed without the code shortcode. In these instances, the commands are simply indented with a tab or four spaces in the markdown source text. For example:
+In some existing guides, you may see commands displayed without the code shortcode. In these instances, the commands are simply indented with a tab or four spaces in the Markdown source text. For example:
 
     Run the following command to restart Apache:
 
