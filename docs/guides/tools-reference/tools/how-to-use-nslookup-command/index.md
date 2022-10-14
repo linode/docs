@@ -22,27 +22,27 @@ external_resources:
 - '[Microsoft nslookup documentation](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup)'
 ---
 
-The `nslookup` command is a useful tool for investigating domain name propagation issues. It allows users to obtain information regarding domain names and IP addresses from the *Domain Name System* (DNS) infrastructure. This guide introduces and explains how to use the `nslookup` command, and provides several `nslookup` examples.
+The `nslookup` command is a useful tool for investigating domain name propagation issues. It allows users to obtain information regarding domain names and IP addresses from the *Domain Name System* (DNS) infrastructure. This guide introduces and explains how to use the `nslookup` command, and provides several examples.
 
 ## What is the nslookup Command?
 
-The name of the `nslookup` command is an abbreviated version of "name server lookup". `nslookup` sends a request to the local domain name system server asking for information from its DNS records. In response, the name server returns the IP address or relevant domain information for a specific website or server. However, it can also return the domain associated with a particular IP address.
+The name of the `nslookup` command is an abbreviated version of "name server lookup". `nslookup` sends a request to the local domain name system server asking for information from its DNS records. In response, the DNS server returns the IP address or relevant domain information for a specific website or server. However, it can also return the domain associated with a particular IP address.
 
 The `nslookup` command can be used in either interactive or non-interactive mode. It is available on Linux, macOS, and Windows systems, and provides several useful options. The command relies on the underlying TCP/IP and networking system tools.
 
 Here are some of the main purposes of the `nslookup` command:
 
-- `nslookup` quickly returns the IP address for any domain. It is considered one of the best tools for troubleshooting DNS problems. It is especially handy for situations where the IP address of a domain has recently changed, but requests for the domain are not resolving.
-- It is used to investigate suspicious domains. A good example is a web address designed to closely mimic an existing domain, for instance, `examp1e.com` in place of `example.com`.
-- It can defend against *cache poisoning* in which invalid domain information is sent to secondary DNS servers known as resolvers.
+-   `nslookup` quickly returns the IP address for any domain. It is considered one of the best tools for troubleshooting DNS problems. It is especially handy for situations where the IP address of a domain has recently changed, but requests for the domain are not resolving.
+-   It is used to investigate suspicious domains. A good example is a web address designed to closely mimic an existing domain, for instance, `examp1e.com` in place of `example.com`.
+-   It can defend against *cache poisoning* in which invalid domain information is sent to secondary DNS servers, known as resolvers.
 
-### How do DNS Lookups Work?
+### How Do DNS Lookups Work?
 
-Each DNS server maintains a list of mappings between the domain names and their associated IP addresses. When a DNS server receives a DNS request for a particular domain name from a web server, it translates the domain into an IP address. It then returns the address to the web server, which uses it to request the web page. Every internet client uses DNS services to properly transmit outgoing TCP/IP packets.
+Each DNS server maintains a list of mappings between domain names and their associated IP addresses. When a DNS server receives a DNS request for a particular domain name from a web server, it translates the domain into an IP address. It then returns the address to the web server, which uses it to request the web page. Every internet client uses DNS services to properly transmit outgoing TCP/IP packets.
 
 Typically a DNS responds to a request by retrieving information from its cache. The cache is updated when updates are received. If the domain name entry for a particular domain has been recently changed, the server might not have received the updated information yet. In this event, the `nslookup` command still receives the outdated information from the DNS. This allows users to see what the local DNS record points to and determine whether the DNS update has propagated fully.
 
-The `nslookup` command typically sends its request to the local DNS server. However, an alternate DNS can be specified, such as the root system within the DNS zone. Not all servers are accessible because many internal DNS systems are private and do not respond to external requests. Private DNS servers do not respond to external `nslookup` requests.
+The `nslookup` command typically sends its request to the local DNS server. However, an alternate DNS can be specified, such as the root system within the DNS zone. Not all servers are accessible because many internal DNS systems are private and do not respond to external requests. Therefore, private DNS servers don't respond to external `nslookup` requests.
 
 {{< note >}}
 In actual practice, there are two types of DNS services. A recursive DNS service, also known as a *resolver*, maintains a cache of the domain name mappings, but does not process any updates.
@@ -75,19 +75,23 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## How to Use the nslookup Command
 
-`nslookup` is available for the Linux, macOS, and Windows operating systems. However, the syntax is structured slightly differently on Windows. This guide focuses on how to use the command on Linux-based systems, but the commands are very similar on macOS. Information on how to use `nslookup` on Windows can be found in the [Microsoft documentation](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup).
+`nslookup` is available for the Linux, macOS, and Windows operating systems. However, the syntax is structured slightly different on Windows. This guide focuses on how to use the command on Linux-based systems, but the commands are very similar on macOS. Information on how to use `nslookup` on Windows can be found in the [Microsoft documentation](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup).
 
 The `nslookup` command supports both interactive and non-interactive modes. Interactive mode is useful for script development, troubleshooting, and exploratory searches. The non-interactive command is better for quick searches for a single piece of information. The non-interactive command can be fully integrated into scripts and software applications.
 
-`nslookup` is pre-installed on Linux-based systems and is ready to use. If it is not available on a Ubuntu system, it can be installed using the command `sudo apt-get install dnsutils`. On CentOS/Fedora based systems, the equivalent command is `sudo dnf install bind-utils`.
+`nslookup` is pre-installed and ready-to-use on most Linux-based systems. If it is not, it easily can be installed from the command line.
+
+-   **Debain** and **Ubuntu**:
+
+        sudo apt-get install dnsutils
+
+-   **AlmaLinux**, **CentOS Stream**, **Fedora**, and **Rocky Linux**:
+
+        sudo dnf install bind-utils
 
 ### Using nslookup in Interactive Mode
 
-To use `nslookup` interactively, enter the command `nslookup` from a terminal with no additional parameters. The interactive prompt should appear.
-
-{{< note >}}
-If you receive an error message when running the `nslookup` command, the network services might have been stopped. Reboot the system to reinitialize the process.
-{{< /note >}}
+To use `nslookup` interactively, simply enter the command `nslookup` from a terminal with no additional parameters. The interactive prompt should appear.
 
     nslookup
 
@@ -95,15 +99,15 @@ If you receive an error message when running the `nslookup` command, the network
 >
 {{< /output >}}
 
+{{< note >}}
+If you receive an error message when running the `nslookup` command, the network services might have been stopped. Reboot the system to reinitialize the process.
+{{< /note >}}
+
 The interactive prompt accepts requests for server information without requiring the `nslookup` command. To use `nslookup` to find the IP address for the English-language Wikipedia domain, enter the following:
 
     en.wikipedia.org
 
-The local DNS server returns its own address along with information about the `en.wikipedia.org` domain. The reply lists the canonical name of the server and its Ipv4 and Ipv6 addresses.
-
-{{< note >}}
-The answer is said to be `non-authoritative` because it is provided by the local DNS, not the DNS associated with the domain.
-{{< /note >}}
+The local DNS server returns its own address along with information about the `en.wikipedia.org` domain. The reply lists the canonical name of the server and its Ipv4 and Ipv6 addresses:
 
 {{< output >}}
 Server:		127.0.0.53
@@ -116,6 +120,10 @@ Address: 91.198.174.192
 Name:	dyna.wikimedia.org
 Address: 2620:0:862:ed1a::1
 {{< /output >}}
+
+{{< note >}}
+This answer is said to be `non-authoritative` because it is provided by the local DNS, not the DNS associated with the domain.
+{{< /note >}}
 
 To change the request type, use the `set` directive and append the preferred option. The following example sets the type for all further requests to `ns`. This instructs the `nslookup` utility to request information about the name servers used within the domain.
 
@@ -190,6 +198,8 @@ Non-authoritative answer:
 wikipedia.org	nameserver = ns0.wikimedia.org.
 wikipedia.org	nameserver = ns1.wikimedia.org.
 wikipedia.org	nameserver = ns2.wikimedia.org.
+
+Authoritative answers can be found from:
 {{< /output >}}
 
 To view mail server information for a domain, set the `type` to `mx`.
@@ -203,9 +213,11 @@ Address:	127.0.0.53#53
 Non-authoritative answer:
 wikipedia.org	mail exchanger = 10 mx1001.wikimedia.org.
 wikipedia.org	mail exchanger = 10 mx2001.wikimedia.org.
+
+Authoritative answers can be found from:
 {{< /output >}}
 
-`nslookup` can also retrieve the official *Start of Authority* (SOA) record that contains vital information about the domain. This information includes the email address of the administrator and DNS parameters like the refresh time. Use `type=soa` to search for this information.
+`nslookup` can also retrieve the official *Start of Authority* (SOA) record, containing vital information about the domain. This information includes the email address of the administrator and DNS parameters such as refresh time. Use `-type=soa` to search for this information.
 
     nslookup -type=soa wikipedia.org
 
@@ -222,6 +234,8 @@ wikipedia.org
     retry = 7200
     expire = 1209600
     minimum = 3600
+
+Authoritative answers can be found from:
 {{< /output >}}
 
 It is often useful to compare SOA records between sites. The SOA record for `amazon.com` has much lower `refresh` and `retry` numbers, suggesting the domain information might change more frequently.
@@ -241,6 +255,8 @@ amazon.com
     retry = 60
     expire = 3024000
     minimum = 60
+
+Authoritative answers can be found from:
 {{< /output >}}
 
 The TXT records are used to validate domain information. Use `-type=txt` to retrieve this information.
@@ -255,13 +271,11 @@ Non-authoritative answer:
 wikipedia.org	text = "google-site-verification=AMHkgs-4ViEvIJf5znZle-BSE2EPNFqM1nDJGRyn2qk"
 wikipedia.org	text = "yandex-verification: 35c08d23099dc863"
 wikipedia.org	text = "v=spf1 include:wikimedia.org ~all"
+
+Authoritative answers can be found from:
 {{< /output >}}
 
 Use the option `-type=any` to view the full DNS records for a domain.
-
-{{< note >}}
-Some domains are not configured to return all information in response to this request, and only return the name servers. In this case, you must request each type of record separately.
-{{< /note >}}
 
     nslookup -type=any google.com
 
@@ -279,9 +293,15 @@ google.com	nameserver = ns4.google.com.
 google.com	nameserver = ns3.google.com.
 google.com	nameserver = ns1.google.com.
 google.com	nameserver = ns2.google.com.
+
+Authoritative answers can be found from:
 {{< /output >}}
 
-It is also possible to ask for information about a particular name server. Use `nslookup` and the name of the domain, along with the canonical name of the name server. This example demonstrates how to find out details about Wikipedia's `ns0.wikimedia.org` name server.
+{{< note >}}
+Some domains are not configured to return all information in response to this request, and only return the name servers. In this case, you must request each type of record separately.
+{{< /note >}}
+
+It's also possible to ask for information about a particular name server. Use `nslookup` and the name of the domain, along with the canonical name of the name server. This example demonstrates how to find out details about Wikipedia's `ns0.wikimedia.org` name server.
 
     nslookup wikipedia.org ns0.wikimedia.org
 
@@ -295,7 +315,7 @@ Name:	wikipedia.org
 Address: 2620:0:862:ed1a::1
 {{< /output >}}
 
-To debug the information from `nslookup`, use the `-debug` flag. Debug mode displays the queries sent to the DNS server and the replies received in response.
+To debug the information from `nslookup`, use the `-debug` flag. Debug mode displays the queries sent to the DNS server along with the replies received in response.
 
     nslookup -debug wikipedia.org
 
@@ -348,6 +368,8 @@ The output displays the IP address in reverse order, so `91.198.174.192` is tran
 
 {{< output >}}
 192.174.198.91.in-addr.arpa	name = text-lb.esams.wikimedia.org.
+
+Authoritative answers can be found from:
 {{< /output >}}
 
 A second alternative is to use the `-type=ptr` option and the address in reverse order to find the domain. The pointer record confirms the domain owns the address in question.
@@ -355,9 +377,15 @@ A second alternative is to use the `-type=ptr` option and the address in reverse
     nslookup -type=ptr 192.174.198.91.in-addr.arpa
 
 {{< output >}}
+Server:		127.0.0.53
+Address:	127.0.0.53#53
+
+Non-authoritative answer:
 192.174.198.91.in-addr.arpa	name = text-lb.esams.wikimedia.org.
+
+Authoritative answers can be found from:
 {{< /output >}}
 
 ## Conclusion
 
-The `nslookup` command is used to discover DNS information about a domain. It can work in either interactive or non-interactive mode, and is available for Linux, macOS, and Windows servers. `nslookup` can return the IP address for a domain, along with information about its nameservers, mail servers, and State of Authority record. It can also handle reverse DNS lookups for translating an IP address to a domain. For more information, see the [Linux nslookup man page](https://manpages.ubuntu.com/manpages/bionic/man1/nslookup.1.html).
+The `nslookup` command is used to discover DNS information about a domain. It can work in either interactive or non-interactive mode, and is available for Linux, macOS, and Windows servers. `nslookup` can return the IP address for a domain, along with information about its nameservers, mail servers, and State of Authority record. It can also handle reverse DNS lookups for translating an IP address into a domain. For more information, see the [Linux nslookup man page](https://manpages.ubuntu.com/manpages/bionic/man1/nslookup.1.html).
