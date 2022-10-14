@@ -168,7 +168,7 @@ Use a **Bold** font weight for buttons, menu selections and anything that requir
 
 ### Commands
 
-Commands that are not inline with paragraph text should be displayed with the *code shortcode*. This shortcode renders the command in monospace with a light or dark background and a copy-to-clipboard button. Unlike other shortcodes (e.g. `content`, `note`, `caution`, etc), the code shortcode should be referenced with Markdown's *code fence* syntax.
+Commands that are not inline with paragraph text should be displayed with the *code shortcode*. This shortcode renders the command in a monospaced font with a light or dark background and a copy-to-clipboard button. Unlike other shortcodes (e.g. `content`, `note`, `caution`, etc), the code shortcode should be referenced with Markdown's *code fence* syntax.
 
 -   **Code shortcode example**
 
@@ -440,7 +440,7 @@ This is equivalent to:
     </div>
     ```
 
-*The older syntax should not be used for new content.* While they are rendered with the same presentation by Hugo, they are not displayed the same in the GitHub.com UI. When viewing a markdown file in the library on GitHub, the newer code fence shortcode syntax will have enhanced styling, compared with the older shortcode syntax.
+*The older syntax should not be used for new content.* While they are rendered with the same presentation by Hugo, they are not displayed the same in the GitHub.com UI. When viewing a Markdown file in the library on GitHub, the newer code fence shortcode syntax will have enhanced styling, compared with the older shortcode syntax.
 
 ### File Paths and File Names
 
