@@ -3,7 +3,8 @@ title: Get Started
 description: "Learn how to deploy and use One-Click Apps hosted on the Linode Marketplace."
 tab_group_main:
     weight: 20
-date: 2022-03-08
+published: 2022-03-08
+modified: 2022-09-07
 aliases: ['/platform/marketplace/how-to-use-marketplace-apps-at-linode/', '/platform/one-click/how-to-use-one-click-apps-at-linode/','/guides/how-to-use-marketplace-apps-at-linode/', '/products/tools/marketplace-one-click-apps/guides/marketplace-deploy-app/', '/products/tools/marketplace-one-click-apps/guides/marketplace-access-app/','/products/tools/marketplace-one-click-apps/guides/marketplace-add-domain-name/']
 image: how-to-use-linode-oneclick-apps.png
 ---
@@ -16,7 +17,7 @@ When a Marketplace App is deployed, a new Compute Instance is created and the ap
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com) and select the **Marketplace** link from the left navigation menu. This displays the Linode **Create** page with the **Marketplace** tab pre-selected.
 
-1. Under the **Select App** section, select the app you would like to deploy. Click on the info icon (**i**) to open the details panel for that application and learn more about the included software. Within the panel, there is also a link to the corresponding guide where you can learn how to deploy and access that Marketplace App.
+1. Under the **Select App** section, select the app you would like to deploy. Click on the info icon (**i**) to open the details panel for that app and learn more about the included software. Within the panel, there is also a link to the corresponding guide where you can learn how to deploy and access that Marketplace App.
 
     ![Screenshot of Select App section](marketplace-select-app.png)
 
@@ -48,4 +49,4 @@ Since each Marketplace App installs different software with different functions,
 
 For websites like WordPress, WooCommerce, and Drupal, it may be desirable to have a domain name associated with your app. Otherwise, your app is only accessible through the instance's IP address or rDNS value.
 
-For information on how to add a domain name to your app, visit our [DNS Manager](/docs/guides/dns-manager/) guide. Specifically, you should [set up an *A record*](/docs/guides/dns-manager/#add-dns-records) and assign your IP address to it. For more general information about how DNS works, review the the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guide.
+For information on how to add a domain name to your app, visit our [DNS Manager](/docs/guides/dns-manager/) guide. Specifically, you should [set up an *A record*](/docs/guides/dns-manager/#add-dns-records) and assign your IP address to it. For more general information about how DNS works, review the [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) guide.

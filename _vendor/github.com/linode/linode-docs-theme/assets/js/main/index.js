@@ -16,6 +16,7 @@ import {
 	newBreadcrumbsController,
 	newLanguageSwitcherController,
 	newNavController,
+	newPromoCodesController,
 	newSearchExplorerController,
 	newToCController,
 } from './navigation/index';
@@ -56,6 +57,7 @@ const searchConfig = getSearchConfig(params);
 		Alpine.data('lncBreadcrumbs', () => newBreadcrumbsController(searchConfig));
 		Alpine.data('lncDropdowns', newDropdownsController);
 		Alpine.data('lncDisqus', newDisqus);
+		Alpine.data('lncPromoCodes', () => newPromoCodesController(params.is_test));
 
 		// Page controllers.
 		Alpine.data('lncHome', (staticData) => {
@@ -72,7 +74,7 @@ const searchConfig = getSearchConfig(params);
 	// Set up AlpineJS stores.
 	{
 		Alpine.store('search', newSearchStore(searchConfig, Alpine));
-		Alpine.store('nav', newNavStore(Alpine.store('search')));
+		Alpine.store('nav', newNavStore(searchConfig, Alpine.store('search')));
 	}
 
 	if (!isMobile()) {

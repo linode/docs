@@ -48,6 +48,6 @@ There may be cases where there are multiple instances of the same program runnin
 
     killall [process name]
 
-For a more information on `kill` and `killall`, see our guide on how to [Use Killall and Kill Commands to Stop Processes on Linux](/docs/tools-reference/tools/use-killall-and-kill-to-stop-processes-on-linux/).
+For a more information on `kill` and `killall`, see our guide on how to [Use Killall and Kill Commands to Stop Processes on Linux](/docs/guides/use-killall-and-kill-to-stop-processes-on-linux/).
 
 <!-- Windows instructions via taskkill someday -->

@@ -22,10 +22,10 @@ dedicated_cpu_link: true
 
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Team Fortress 2](http://store.steampowered.com/app/440/).
 
-2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/game-servers/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites for Team Fortress 2
@@ -125,7 +125,7 @@ screen -S "Team Fortress 2 Server" ./srcds_run -game tf +map ctf_2fort.bsp
 {{< /file >}}
 
 
-    When run, the script will change directories to `~/Steam/tf2` and execute TF2 in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/) session.
+    When run, the script will change directories to `~/Steam/tf2` and execute TF2 in a [Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session.
 
     Optionally, replace `cft_2fort.bsp` with the name of your chosen map’s file, or replace `+map ctf_2fort.bsp` with `+randommap` for a randomized map selection.
 

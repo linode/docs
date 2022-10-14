@@ -2,15 +2,15 @@
 slug: how-to-authenticate-using-jwt
 author:
   name: Nathaniel Stickman
-description: "In this guide, you will learn key concepts behind JSON Web Tokens (JWTs) and how they provide a compact and secure standard for sending information, especially on the web. "
+description: "In this guide, you will learn key concepts behind JSON Web Tokens (JWTs) and how they provide a compact and secure standard for sending information, especially on the web."
 keywords: ['json web tokens','jwt','encoding jwt','decoding jwt','what is a jwt']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
 modified_by:
   name: Nathaniel Stickman
-title: "How to Authenticate Users with JSON Web Tokens (JWTs), Express, and Node.js"
-h1_title: "User Authentication with JSON Web Tokens (JWTs) and Express"
+title: "User Authentication with JWTs in Express and Node.js"
+h1_title: "User Authentication with JWTs (JSON Web Tokens) in Express and Node.js"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman

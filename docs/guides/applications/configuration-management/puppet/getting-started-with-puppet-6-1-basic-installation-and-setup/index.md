@@ -11,10 +11,11 @@ modified: 2019-01-15
 modified_by:
     name: Linode
 published: 2019-01-15
-title: Getting Started with Puppet - Basic Installation and Setup
+title: Getting Started with Puppet - Installation and Setup
 external_resources:
     - '[Puppet Labs](https://puppet.com/)'
     - '[Puppet Open Source Documentation](https://docs.puppet.com/puppet/)'
+    - '[Configuring Java Arguments](https://puppet.com/docs/pe/2019.0/config_java_args.html)'
 aliases: ['/applications/configuration-management/puppet/getting-started-with-puppet-6-1-basic-installation-and-setup/','/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/']
 ---
 

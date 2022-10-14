@@ -28,6 +28,7 @@
     {{ partial "sections/content/tags.html" . }}
   </div>
 
+  {{ if ne $.Site.Params.feedback_survey_display false }}
   <div class="hide-if-no-js">
     <hr class="my-8" />
 
@@ -35,4 +36,5 @@
     {{ partial "components/delighted/form.html" . }}
     <hr class="mt-8" />
   </div>
+  {{ end }}
 {{ end }}

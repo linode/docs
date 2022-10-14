@@ -28,11 +28,11 @@ aliases: ['/web-servers/apache/how-to-install-and-configure-fastcgi-and-php-fpm-
 
 This guide will show you how to install `mod_fcgid` and `PHP-FPM` on Debian 10. It will also provide a basic configuration that uses socket based connections, instead of TCP. These steps will enable you to run PHP through `mod_fcgid`. Running PHP through `mod_fcgid` helps to reduce the amount of system resources used by forcing the web server to act as a proxy and only pass files ending with the *.php* file extension to PHP-FPM. Additionally, using PHP-FPM allows each virtual host to be configured to run PHP code as individual users.
 
-This guide assumes that you are familiar and comfortable with setting up a [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/). If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics) guide.
+This guide assumes that you are familiar and comfortable with setting up a [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/). If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics) guide.
 
 ## Before You Begin
 
-1. Complete the steps in the [How to Install a LAMP Stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) guide. After completing the LAMP stack guide, you should have an Apache virtual hosts configuration for your own website. This guide will continue to refer to the site as `example.com`.
+1. Complete the steps in the [How to Install a LAMP Stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide. After completing the LAMP stack guide, you should have an Apache virtual hosts configuration for your own website. This guide will continue to refer to the site as `example.com`.
 
     {{< note >}}
 This guide's examples will use PHP version 7.3. When running commands related to PHP, ensure you replace any version numbers with your own system's PHP version.

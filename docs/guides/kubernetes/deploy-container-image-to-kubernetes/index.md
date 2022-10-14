@@ -44,9 +44,9 @@ This guide was written using version 1.14 of Kubectl.
 ## Before You Begin
 
 1. Create a Kubernetes cluster with one worker node. This can be done in two ways:
-    1. Deploy a Kubernetes cluster using [kubeadm](/docs/kubernetes/getting-started-with-kubernetes/).
+    1. Deploy a Kubernetes cluster using [kubeadm](/docs/guides/getting-started-with-kubernetes/).
         - You will need to deploy two Linodes. One will serve as the master node and the other will serve as a worker node.
-    1. Deploy a Kubernetes cluster using [k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/).
+    1. Deploy a Kubernetes cluster using [k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/).
 
     {{< content "k8s-alpha-deprecation-shortguide" >}}
 
@@ -58,7 +58,7 @@ This guide was written using version 1.14 of Kubectl.
 
 Development of your Hugo site and Docker image will take place locally on your personal computer. You will need to install Hugo, Docker CE, and Git, a version control software, on your personal computer to get started.
 
-1. Use the [How to Install Git on Linux, Mac or Windows](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) guide for the steps needed to install Git.
+1. Use the [How to Install Git on Linux, Mac or Windows](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) guide for the steps needed to install Git.
 
 1. Install Hugo. [Hugo's official documentation](https://gohugo.io/getting-started/installing/) contains more information on installation methods, like [Installing Hugo from Tarball](https://gohugo.io/getting-started/installing/#install-hugo-from-tarball). Below are installation instructions for common operating systems:
 
@@ -212,7 +212,7 @@ The example Hugo site was initialized as a local Git repository in the previous 
         git commit -m 'Add content, theme, and config files.'
 
     {{< note >}}
-Any time you complete work related to one logical change to the Hugo site, you should make sure you commit the changes to your Git repository. Keeping your commits attached to small changes makes it easier to understand the changes and to roll back to previous commits, if necessary. See the [Getting Started with Git](/docs/development/version-control/how-to-configure-git/) guide for more information.
+Any time you complete work related to one logical change to the Hugo site, you should make sure you commit the changes to your Git repository. Keeping your commits attached to small changes makes it easier to understand the changes and to roll back to previous commits, if necessary. See the [Getting Started with Git](/docs/guides/how-to-configure-git/) guide for more information.
     {{</ note >}}
 
 ## Create a Docker Image
@@ -484,11 +484,11 @@ hugo-site   NodePort   10.108.110.6   <none>        80:30304/TCP   1d
 
 ## Tear Down Your Cluster
 
-To avoid being further billed for your Kubernetes cluster, tear down your cluster's Linodes. If you have Linodes that existed for only part a monthly billing cycle, you’ll be billed at the hourly rate for that service. See [How Hourly Billing Works](/docs/platform/billing-and-support/billing-and-payments/#how-hourly-billing-works) to learn more.
+To avoid being further billed for your Kubernetes cluster, tear down your cluster's Linodes. If you have Linodes that existed for only part a monthly billing cycle, you’ll be billed at the hourly rate for that service. See [Billing and Payments](/docs/guides/understanding-billing-and-payments/) to learn more.
 
 - If you created your Kubernetes cluster:
 
-    - using kubeadm, follow the [Removing Services](/docs/platform/billing-and-support/billing-and-payments/#removing-services) section of the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide to remove your cluster's Linodes.
+    - using kubeadm, follow the [Managing Billing in the Cloud Manager > Removing Services](/docs/guides/manage-billing-in-cloud-manager/#removing-services) guide to remove your cluster's Linodes.
 
     - using the k8s-alpha CLI, issue the following command from your computer to delete the cluster:
 
@@ -498,5 +498,5 @@ To avoid being further billed for your Kubernetes cluster, tear down your cluste
 
 Now that you are familiar with basic Kubernetes concepts, like configuring pods, grouping resources, and deploying services, you can deploy a Kubernetes cluster on Linode for production use by using the steps in the following guides:
 
-  - [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/)
-  - [How to Deploy Kubernetes on Linode with Rancher](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/)
+  - [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/)
+  - [How to Deploy Kubernetes on Linode with Rancher](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/)

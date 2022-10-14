@@ -28,7 +28,7 @@ aliases: ['/web-servers/apache/how-to-install-apache-web-server-centos-8/']
 
 The *Apache HTTP Web Server* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on CentOS 8.
 
-If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [How to Install a LAMP Stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/) guide.
+If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [How to Install a LAMP Stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/) guide.
 
 ## Before You Begin
 

@@ -48,12 +48,12 @@ Before moving ahead, make sure you have completed the following steps.
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-1.  If you'd like to use your own [Domain Name](/docs/networking/dns/dns-records-an-introduction/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/guides/dns-manager/#dns-set-up-checklist) to point to your Linode's IP address.
+1.  If you'd like to use your own [Domain Name](/docs/guides/dns-records-an-introduction/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/guides/dns-manager/#dns-set-up-checklist) to point to your Linode's IP address.
 
-1.  Follow the [Installation](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/#installation), [Apache Configuration](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/#apache), and [PHP Configuration](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/#php) sections of the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide. Skip all other sections. This guide will cover the steps needed to configure your [Apache Virtual Hosts File](#configure-apache-virtual-hosts-file).
+1.  Follow the [Installation](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#installation), [Apache Configuration](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#apache), and [PHP Configuration](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#php) sections of the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide. Skip all other sections. This guide will cover the steps needed to configure your [Apache Virtual Hosts File](#configure-apache-virtual-hosts-file).
 
 
 ## Install WP-CLI

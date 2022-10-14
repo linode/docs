@@ -86,7 +86,7 @@ Locate and backup the data on your GCP instance by [creating a snapshot](https:/
 
 If your data is stored in a database, you will likely need to perform a *database dump*. This will result in a file on disk that encapsulates your database data and can be copied over the network as a normal file:
 
--  [Use mysqldump to Back Up MySQL or MariaDB](/docs/guides/use-mysqldump-to-back-up-mysql-or-mariadb/)
+-  [Use mysqldump to Back Up MySQL or MariaDB](/docs/guides/mysqldump-backups/)
 -  [Create Physical Backups of your MariaDB or MySQL Databases](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/)
 -  Use [postgres dump database](/docs/guides/how-to-back-up-your-postgresql-database/)
 
@@ -394,7 +394,7 @@ In this section you will create a new disk and boot configuration in order to be
 1.  Under the **Disks** panel click the more options ellipses next to the main disk (for example, `Debian 9 Disk`) and select **Resize** from the drop down menu. Resize this disk to make room for the new raw disk you will create in the next step. The new raw disk is where your GCP image will be installed.
 
     {{< note >}}
-If, for example, your GCP disk image's size is 10GB, ensure that you resize the main disk to make enough room for a a new disk that is slightly larger than 10 GB (11 GB, for example). This will ensure that you can safely reboot your Linode from the extracted image (you will complete that step in a later section).
+If, for example, your GCP disk image's size is 10GB, ensure that you resize the main disk to make enough room for a new disk that is slightly larger than 10 GB (11 GB, for example). This will ensure that you can safely reboot your Linode from the extracted image (you will complete that step in a later section).
     {{</ note >}}
 
 1.  Click **Add a Disk** and create a new `Empty Disk`. Give it a label like "New Google", for filesystem, select `raw`, and for size, enter a size that will accommodate the entire extracted image. Click the **Add** button.

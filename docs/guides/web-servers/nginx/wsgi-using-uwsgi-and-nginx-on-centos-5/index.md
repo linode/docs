@@ -187,5 +187,5 @@ In this example, we create the `uwsgicluster` upstream, which has five component
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Installing Nginx on CentOS 5](/docs/web-servers/nginx/installation/centos-5)
-- [Deploy a LEMP Server on CentOS 5](/docs/lemp-guides/centos-5/)
+- [Deploy a LEMP Server on CentOS 5](/docs/guides/lemp-server-on-centos-5/)
 - [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)

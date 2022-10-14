@@ -13,7 +13,7 @@ modified: 2011-05-23
 modified_by:
   name: Linode
 published: 2011-04-05
-title: 'Manage Email Lists with GNU Mailman on Debian 6 (Squeeze)'
+title: 'Manage Email Lists with GNU Mailman on Debian 6'
 relations:
     platform:
         key: use-gnu-mailman
@@ -173,7 +173,7 @@ From this point forward, you can create new lists by issuing `newlist` commands 
 
 ## Configuring Mailman with Alternate Mail Configurations
 
-If you wish to deploy Mailman on a system that has an existing mail set up, such as the [Postfix with Dovecot and MySQL](/docs/email/postfix/dovecot-mysql-debian-6-squeeze/) or the [Postfix with Dovecot and System Users](/docs/email/postfix/dovecot-system-users-debian-6-squeeze/) configurations described in other documents, consider the following recommendations:
+If you wish to deploy Mailman on a system that has an existing mail set up, such as the [Postfix with Dovecot and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql-on-debian-6-squeeze/) or the [Postfix with Dovecot and System Users](/docs/guides/postfix-dovecot-and-system-user-accounts-on-debian-6-squeeze/) configurations described in other documents, consider the following recommendations:
 
 Complete your basic mail configuration according to the appropriate guide before beginning to install and configure Mailman.
 

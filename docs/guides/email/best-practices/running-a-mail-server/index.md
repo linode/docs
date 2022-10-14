@@ -3,21 +3,20 @@ slug: running-a-mail-server
 author:
   name: Linode
   email: docs@linode.com
-description: 'Take control of your email with your own mail server. Learn how to install and configure it on your Linode.'
-og_description: 'Take control of your email with your own mail server. Learn how to install and configure it on your Linode.'
+description: "Take control of your email with your own mail server. Learn how to install and configure it on your Linode."
 keywords: ["mail server", "linode guide", "running a mail server", "Self-host Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/mailserver/','/email/running-a-mail-server/','/email/best-practices/running-a-mail-server/']
 modified_by:
   name: Linode
 published: 2013-06-05
-title: Running a Mail Server
+modified: 2022-08-25
+title: "Running a Mail Server"
 tags: ["email"]
+image: mail_server_tg.png
 ---
 
 This guide offers an overview of installing a mail server on your Linode. It covers mail server configuration, creating mail accounts, and basic overviews of tools relevant to hosting an email webserver.
-
-![Running a Mail Server](mail_server_tg.png "Running Mail Server")
 
 ## Should You Run a Mail Server?
 
@@ -27,7 +26,7 @@ If you do, you'll have control over your domain's email, but you'll also have to
 
 In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after November 5th, 2019.
 
-If you have a need to send mail from your Linode, we ask that you first configure (1) [valid DNS A records](/docs/guides/dns-manager/#add-dns-records) and (2) [rDNS records](/docs/networking/dns/configure-your-linode-for-reverse-dns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the name of the Linode(s) that will be used for mailing.
+If you have a need to send mail from your Linode, we ask that you first configure (1) [valid DNS A records](/docs/guides/dns-manager/#add-dns-records) and (2) [rDNS records](/docs/guides/configure-your-linode-for-reverse-dns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the name of the Linode(s) that will be used for mailing.
 
 Once you’ve completed those steps and provided that information, our Support team will be happy to review your request.
 
@@ -131,29 +130,27 @@ Most servers and clients support both IMAP and POP3. POP3 clients connect to the
 
 Here are the most popular IMAP and POP3 servers available:
 
-- [Citadel](http://www.citadel.org) is an all-in-one mail service that includes mail, calendars, instant messaging, mailing lists, and other collaboration tools. It's open source and geared towards small and medium-sized organizations. Linode has  guides for [Citadel on Ubuntu 12.04](/docs/email/citadel/email-with-citadel-on-ubuntu-12-04-lts-precise-pangolin/) and [Citadel on Debian 6](/docs/email/citadel/email-with-citadel-on-debian-6-squeeze/).
+- [Citadel](http://www.citadel.org) is an all-in-one mail service that includes mail, calendars, instant messaging, mailing lists, and other collaboration tools. It's open source and geared towards small and medium-sized organizations. Linode has  guides for [Citadel on Ubuntu 12.04](/docs/guides/email-with-citadel-on-ubuntu-12-04-lts-precise-pangolin/) and [Citadel on Debian 6](/docs/guides/email-with-citadel-on-debian-6-squeeze/).
 - [Courier](http://www.courier-mta.org) has a very popular IMAP server called [Courier IMAP](http://www.courier-mta.org/imap/). It's an all-in-one mail server software suite, but Courier IMAP can be installed by itself if that's the only part you need.
 - [Cyrus](https://www.cyrusimap.org) is a modern, security-oriented IMAP/POP3 server designed to work on sealed servers where users do not log in directly.
 - [DBMail](http://www.dbmail.org) is an open source project that stores mail in databases instead of flat files.
-- [Dovecot](http://dovecot.org) is a lightweight, modern, and configurable mail server, and is part of our [recommended mail server build](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/).
+- [Dovecot](http://dovecot.org) is a lightweight, modern, and configurable mail server, and is part of our [recommended mail server build](/docs/guides/email-with-postfix-dovecot-and-mysql/).
 - [Xmail](http://www.xmailserver.org) is a full-featured POP3 server, but does not support IMAP.
 - [Zimbra](http://www.zimbra.com) is an all-in-one mail service that's much simpler to install than other options, but less customizable.
 
 ## Build Your Mail Server
 
-### SSL Certificate
+### TLS/SSL Certificate
 
-An SSL certificate encrypts connections to your mail server. It's possible to run a mail server without an SSL certificate, but it's not recommended.
+A TLS (SSL) certificate can be used to encrypt connections to your mail server using protocols like [STARTTLS](https://en.wikipedia.org/wiki/Opportunistic_TLS). It is recommended to obtain your certificate from a public Certificate Authority (CA) to provide authenticity guarantees for your users and avoid warnings and error messages. You can generate a free Let's Encrypt certificate using the [certbot](https://certbot.eff.org/) tool or use a paid service like your domain's registrar or a dedicated certificate provider. See [Obtain a Commercially Signed TLS Certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) for additional details.
 
-Any type of SSL certificate will work, but some certificates have different degrees of trustworthiness for your users. If you want the highest level of trustworthiness, you should [purchase a signed SSL certificate](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate/) from a reputable company.
-
-You can also use a free self-signed certificate if you are comfortable with the warnings it generates. You can make your own [self-signed SSL certificate](/docs/security/ssl/create-a-self-signed-tls-certificate/), or, if you're following our recommended build, you can use the one that comes with Dovecot by default.
+If the certificate is for internal use (not a public-facing service) and you are able to mark the certificate as trusted in your users' mail clients, a self-signed certificate may be sufficient. Consider any security implications and error messages that may appear when using a self-signed certificate. See [Create a Self-Signed TLS Certificate](/docs/guides/create-a-self-signed-tls-certificate/) for instructions.
 
 ### Software Installation
 
 Install and configure the MTA, MDA, and IMAP/POP3 server. To help manage domains, email addresses, user credentials, aliases, etc., install a database server like MySQL or PostgreSQL.
 
-For detailed configuration instructions, see our [Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) guide.
+For detailed configuration instructions, see our [Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) guide.
 
 For more mail server guides, including guides for older software versions and other mail-related services, visit our [Email Server Guides](/docs/email/).
 
@@ -260,7 +257,7 @@ If you're using a firewall, be sure to edit the rules for your mail server's por
 
 ### Webmail
 
-Webmail is a type of mail client that can be installed on your server and accessed from a web browser. It allows your users to access their email from your website (example: `http://example.com/mail`) anywhere they have access to the internet. Running a web server is a prerequisite for running a webmail client, so follow the [Hosting a Website](/docs/websites/set-up-web-server-host-website/) guide if you want to run webmail on your Linode, in addition to installing a mail server.
+Webmail is a type of mail client that can be installed on your server and accessed from a web browser. It allows your users to access their email from your website (example: `http://example.com/mail`) anywhere they have access to the internet. Running a web server is a prerequisite for running a webmail client, so follow the [Hosting a Website](/docs/guides/set-up-web-server-host-website/) guide if you want to run webmail on your Linode, in addition to installing a mail server.
 
 Here are some of the most popular webmail clients:
 
