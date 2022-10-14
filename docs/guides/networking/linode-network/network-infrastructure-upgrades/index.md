@@ -28,9 +28,9 @@ For most customers, these upgrades are performed seamlessly behind the scenes. F
 
 The following is a list of breaking changes and any action that may be required if you are impacted by that change:
 
-- **Deprecation of IPv6 /116 pools:** /116 pools will no longer be provided to Compute Instances within data center that have received the upgrades. Existing /116 pools will be removed from Compute Instances at that time.
+- **Deprecation of IPv6 /116 pools:** /116 pools will no longer be provided to new Compute Instances. Existing /116 pools will be removed from Compute Instances when data center is undergoing upgrades.
 
-    *Action:* If you were using /116 for IPv6 failover, consider using an IPv6 /64 instead.
+    *Action:* If you are using /116 for IPv6 failover, consider using an IPv6 /64 instead.
 
 - **IP failover through BGP:** IP failover (IP Sharing) for public IPv4 addresses and IPv6 routed ranges will be facilitated through BGP instead of ARP (configured through [keepalived](/docs/guides/ip-failover-keepalived/)).
 
