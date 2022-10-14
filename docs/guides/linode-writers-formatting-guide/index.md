@@ -378,24 +378,6 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
     </div>
     ```
 
--   **File with starting line specified**
-
-    If using a file shortcode to present content in the middle of a file, you can use the `linenostart` to specify that the line numbering to the left of the snippet should start at a number other than 1:
-
-        ```file {title="/path/to/file.html" lang="html" linenostart="11"}
-        <div>
-            Sample file text
-        </div>
-        ```
-
-    The above file shortcode is rendered with line numbers 11, 12, and 13 instead of 1, 2, and 3:
-
-    ```file {title="/path/to/file.html" lang="html" linenostart="11"}
-    <div>
-        Sample file text
-    </div>
-    ```
-
 -   **File with highlighted lines**
 
     The `hl_lines` parameter can be used to highlight certain lines within the file. The parameter is a space-separated list of strings. Ranges of lines can also be specified:
