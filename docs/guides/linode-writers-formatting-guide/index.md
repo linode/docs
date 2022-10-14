@@ -427,9 +427,9 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
 In some existing guides, you may see this older shortcode syntax for displaying a file:
 
     {{</* file "path/to/file.html" html */>}}
-        <div>
-            Sample file text
-        </div>
+    <div>
+        Sample file text
+    </div>
     {{</* /file */>}}
 
 This is equivalent to:
@@ -440,7 +440,7 @@ This is equivalent to:
     </div>
     ```
 
-The older syntax should not be used for new content. While they are rendered with the same presentation by Hugo, they are not displayed the same in the GitHub.com UI. When viewing a markdown file in the library on GitHub, the newer code fence shortcode syntax will have enhanced styling, compared with the older shortcode syntax.
+*The older syntax should not be used for new content.* While they are rendered with the same presentation by Hugo, they are not displayed the same in the GitHub.com UI. When viewing a markdown file in the library on GitHub, the newer code fence shortcode syntax will have enhanced styling, compared with the older shortcode syntax.
 
 ### File Paths and File Names
 
