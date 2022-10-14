@@ -234,6 +234,26 @@ Commands that are not inline with paragraph text should be displayed with the *c
     sudo systemctl restart apache2
     ```
 
+
+### Commands (Deprecated Syntax)
+
+In some existing guides, you may see commands displayed without the code shortcode. In these instances, the commands are simply indented with a tab or four spaces in the markdown source text. For example:
+
+    Run the following command to restart Apache:
+
+        sudo systemctl restart apache2
+
+
+This is equivalent to:
+
+    Run the following command to restart Apache:
+
+    ```code
+    sudo systemctl restart apache2
+    ```
+
+*The older (tab or four space-indent) syntax should not be used for new content.* The code shortcode renders a copy-to-clipboard button for the reader's convenience, and the old syntax does not provide this feature.
+
 ### Inline Commands
 
 Inline commands should be denoted by backticks.
