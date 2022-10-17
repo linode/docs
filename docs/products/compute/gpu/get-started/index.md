@@ -37,7 +37,7 @@ Be sure to select a distribution that's compatible with the NVIDIA CUDA Toolkit.
 
     - Update your [billing](/docs/guides/manage-billing-in-cloud-manager/) and [account](/docs/guides/accounts-and-passwords/) information
 
-    - Add additional Linode services, like [Block Storage](/docs/guides/how-to-use-block-storage-with-your-linode/)
+    - Add additional Linode services, like [Block Storage](/docs/products/storage/block-storage/)
 
     - Open a [support ticket](/docs/guides/support/) and perform other administrative tasks
 

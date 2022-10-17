@@ -49,7 +49,7 @@ When setting up LXD, you can either store container data in an [external volume]
 
 ### Block Storage Volume
 
-1.  Follow the [How to Use Block Storage with Your Linode](/docs/guides/how-to-use-block-storage-with-your-linode/) guide and create a block storage volume with size *at least 20GB* and attach it to your Linode. Make a note of the device name and the path to the Volume.
+1.  Follow the [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/) guide and create a block storage volume with size *at least 20GB* and attach it to your Linode. Make a note of the device name and the path to the Volume.
 
     {{< caution >}}
 **Do not** format the volume and do not add it to `/etc/fstab`.
