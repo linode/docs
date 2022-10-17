@@ -993,6 +993,7 @@ kasten
 kbits
 keepalive
 keepalived
+keepalived_script
 keras
 kerberos
 kerberos5
