@@ -29,7 +29,7 @@ deprecated: true
 
 [Jenkins X](https://jenkins-x.io) is CI/CD tool that automates the management of development environments and the promotion of new versions of applications between environments. This guide illustrates how to install Jenkins X version 2 on Linode Kubernetes Engine.
 {{< note >}}
-Jenkins X version 2 is no longer maintained. For more information about using Jenkins X version 3, see the [official Jenkins X documentaion](https://jenkins-x.io/v3/admin/).
+Jenkins X version 2 is no longer maintained. For more information about using Jenkins X version 3, see the [official Jenkins X documentation](https://jenkins-x.io/v3/admin/).
 {{</ note >}}
 
 ## Before You Begin
