@@ -173,7 +173,7 @@ Date:  14-Oct-2022 14:30:54
 
 ## Configure the Health Check (VRRP Script)
 
-The next step is to configure Keepalived with a health check so that it can failover if it ever detects an issue. This is the primary reason you may want to use Keepalived alongside a BGP daemon. Keepalived can be configured to track a file (`track_file`), track a process (`track_process`), or run a a custom script so that you can preform more complex health checks. When using a script, like is shown in this example, the script should return a `0` to indicate success and return any other value to indicate a failure. When a failure is detected, the state is changed to *FAULT* and the notify script runs.
+The next step is to configure Keepalived with a health check so that it can failover if it ever detects an issue. This is the primary reason you may want to use Keepalived alongside a BGP daemon. Keepalived can be configured to track a file (`track_file`), track a process (`track_process`), or run a custom script so that you can preform more complex health checks. When using a script, like is shown in this example, the script should return a `0` to indicate success and return any other value to indicate a failure. When a failure is detected, the state is changed to *FAULT* and the notify script runs.
 
 This guide helps you configure a custom script that detects if a file is present or not. If the file is present, the script returns a 1 to indicate a failure.
 
