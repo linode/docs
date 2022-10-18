@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-02
 modified_by:
   name: Linode
-title: "How to Use the Shebang in Bash and Python | Linode"
+title: "How to Use the Shebang in Bash and Python"
 h1_title: "How to Use the Shebang in Bash and Python"
 enable_h1: true
 contributor:
@@ -29,35 +29,41 @@ A Shebang is always the first line of a script. Because it begins with the `#` s
 
 The Shebang directive has the following advantages:
 
-- It permits users to treat scripts and files as commands.
-- It hides certain implementation details from users, such as the name of the interpreter.
-- It does not require the user to know the absolute path to the interpreter or how to use the `env` command.
-- It allows a particular version of an interpreter to be used, for example, `python2` versus `python3`.
-- It allows the interpreter to be changed while maintaining the same user behavior and command.
-- It can automatically pass through mandatory options to the interpreter.
+-   Permits users to treat scripts and files as commands.
+-   Hides certain implementation details from users, such as the name of the interpreter.
+-   Does not require the user to know the absolute path to the interpreter or how to use the `env` command.
+-   Allows a particular version of an interpreter to be used, for example, `python2` versus `python3`.
+-   Allows the interpreter to be changed while maintaining the same user behavior and command.
+-   Can automatically pass mandatory options through to the interpreter.
 
 One potential drawback can occur if the path to the interpreter is hard coded. If the location of the interpreter changes, the Shebang directive must be updated at the same time. Otherwise, the script might stop working.
 
 The Shebang directive follows this format.
 
-    #!interpreter [options]
+```file
+#!interpreter [options]
+```
 
 Here is an actual example of a Shebang instruction. This Shebang mandates the use of the `sh` Bourne shell to run the script. This example uses an absolute path to define the interpreter.
 
-    #!/bin/sh
+```file
+#!/bin/sh
+```
 
 The `env` utility can help find the path to the interpreter. In this case, the Shebang instructs the system to use `/usr/bin/env` to discover the path to the `python2` interpreter. This technique is more robust because it continues to work if the path changes.
 
-    #!/usr/bin/env python2
+```file
+#!/usr/bin/env python2
+```
 
 To effectively implement a Shebang, keep in mind the following rules.
 
-- The directive must always begin with the `#!` character combination.
-- To work properly, a Shebang must occur on the first line of the file. If it is found in any other place, it is treated as a comment.
-- Either specify the full absolute path to the interpreter or use `env` to find the correct path.
-- Place any interpreter options after the name of the interpreter. The implementation details for compiler options vary between different systems. However, all major operating systems support at least one option.
-- One or more spaces between the `#!` characters and the name of the interpreter are allowed, but are not required. The directives `#!interpreter` and `#! interpreter` are both valid and are functionally equivalent.
-- Linux permits a second script to serve as the interpreter for the first script, but this is not the case for all operating systems.
+-   The directive must always begin with the `#!` character combination.
+-   To work properly, a Shebang must occur on the first line of the file. If it is found in any other place, it is treated as a comment.
+-   Either specify the full absolute path to the interpreter or use `env` to find the correct path.
+-   Place any interpreter options after the name of the interpreter. Implementation details for compiler options vary between different systems. However, all major operating systems support at least one option.
+-   One or more spaces between the `#!` character combo and the name of the interpreter are allowed, but not required. For example, the directives `#!interpreter` and `#! interpreter` are both valid and functionally equivalent.
+-   Linux permits a second script to serve as the interpreter for the first script, but this is not the case for all operating systems.
 
 The directive `#!/bin/false` is a special Shebang. It immediately exits and returns a failure status. It prevents certain system files from being executed outside of their correct context.
 
@@ -89,20 +95,24 @@ To use a Shebang to define a mandatory interpreter for a shell script, follow th
 
 1.  Create a file named `shebang_absolute` with the following contents.
 
-    {{< file "shebang_absolute" sh >}}
-#!/bin/sh
+    ```file {title="shebang_absolute"}
+    #!/bin/sh
 
     echo "Interpreter test. The interpreter and arguments are:"
     ps h -p $$ -o args=''
-    {{< /file >}}
+    ```
 
 2.  Ensure the file is executable.
 
-        chmod +x shebang_absolute
+    ```code
+    chmod +x shebang_absolute
+    ```
 
 3.  Execute the file from the same directory. The `sh` interpreter is shown in the output.
 
-        ./shebang_absolute
+    ```code
+    ./shebang_absolute
+    ```
 
     {{< output >}}
 Interpreter test. The interpreter and arguments are:
@@ -111,7 +121,9 @@ Interpreter test. The interpreter and arguments are:
 
 4.  Change the first line to `#!/bin/bash` and run the program again. The output now shows `bash` as the interpreter.
 
-        ./shebang_absolute
+    ```code
+    ./shebang_absolute
+    ```
 
     {{< output >}}
 Interpreter test. The interpreter and arguments are:
@@ -126,20 +138,24 @@ To use `env` in a Shebang, follow these steps.
 
 1.  Create a new file named `shebang_env`. Add the following instructions.
 
-    {{< file "shebang_env" >}}
-#!/usr/bin/env sh
+    ```file {title="shebang_env"}
+    #!/usr/bin/env sh
 
-    echo "Interpreter test. The interpreter and arguments are:"
-    ps h -p $$ -o args=''
-    {{< /file >}}
+        echo "Interpreter test. The interpreter and arguments are:"
+        ps h -p $$ -o args=''
+    ```
 
 2.  Change the file attributes so the file is executable.
 
-        chmod +x shebang_env
+    ```code
+    chmod +x shebang_env
+    ```
 
 3.  Execute the file. Run the command from the same directory as the new file.
 
-        ./shebang_env
+    ```code
+    ./shebang_env
+    ```
 
     {{< output >}}
 Interpreter test. The interpreter and arguments are:
@@ -150,7 +166,9 @@ sh ./shebang_env
 
 A Shebang can pass through interpreter options. The directive `#!/bin/sh -v` runs the interpreter using the `-v`/verbose option. This option echoes each command to the screen upon execution. This example appends the `-v` option to the Shebang in `shebang_absolute`.
 
-    ./shebang_absolute
+```code
+./shebang_absolute
+```
 
 {{< output >}}
 #!/bin/bash -v
@@ -173,21 +191,25 @@ To use a Shebang with a Python script, follow these steps.
 
 1.  Create the `py_v3.py` Python file. Add the following commands. The `sys.version` method displays the active version of the Python interpreter. Use `import sys` to import the necessary package.
 
-    {{< file "py_v3.py" python >}}
-#!/usr/bin/env python3
+    ```file {title="py_v3.py" lang="python"}
+    #!/usr/bin/env python3
 
-import sys
-print("This version of Python is:")
-print(sys.version)
-    {{< /file >}}
+    import sys
+    print("This version of Python is:")
+    print(sys.version)
+    ```
 
 2.  Set the execute permission on the file.
 
-        chmod +x py_v3.py
+    ```code
+    chmod +x py_v3.py
+    ```
 
 3.  Run the executable file, but do not use the `python3` command. The correct Python interpreter is selected at runtime based on the Shebang.
 
-        ./py_v3.py
+    ```code
+    ./py_v3.py
+    ```
 
     {{< output >}}
 This version of Python is:
@@ -196,18 +218,20 @@ This version of Python is:
 
 4.  To confirm Python version 2 can be substituted in place of Python 3, create a new file `py_v2.py` and enter the following instructions.
 
-    {{< file "py_v2.py" python >}}
-#!/usr/bin/env python2
+    ```file {title="py_v2.py" lang="python"}
+    #!/usr/bin/env python2
 
-import sys
-print("This version of Python is:")
-print(sys.version)
-    {{< /file >}}
+    import sys
+    print("This version of Python is:")
+    print(sys.version)
+    ```
 
 5.  Set the executable attribute and run the file. The program now displays information about the `python2` interpreter.
 
-        chmod +x py_v2.py
-        ./py_v2.py
+    ```code
+    chmod +x py_v2.py
+    ./py_v2.py
+    ```
 
     {{< output >}}
 This version of Python is:
@@ -217,11 +241,13 @@ This version of Python is:
 
 ## Overriding the Shebang Directive
 
-Even if a file contains a Shebang, it is still possible to override it using the command line interface. One reason to do this might be to test how a script behaves with a different interpreter. On the command line, enter the name of the interpreter to use, followed by the name of the file. This tells the system to ignore the Shebang statement.
+Even if a file contains a Shebang, it's still possible to override it from the command line. One reason to do this might be to test how a script behaves with a different interpreter. From the command line, enter the name of the interpreter to use, followed by the name of the file. This tells the system to ignore the Shebang statement.
 
 In the following example, `py_v2.py` contains the Shebang directive `#!/usr/bin/env python2`. But if the command `python3 ./py_v2.py` is entered, the `python3` interpreter is used instead.
 
-    python3 ./py_v2.py
+```code
+python3 ./py_v2.py
+```
 
 {{< output >}}
 This version of Python is:
@@ -230,4 +256,4 @@ This version of Python is:
 
 ## Conclusion
 
-A Shebang indicates which Bash or Python interpreter to use to interpret an executable file. Shebangs are supported on Linux and on many other operating systems. A Shebang begins with the characters `#!` and only occurs on the first line of the file. The interpreter can be specified using an absolute path or through the `env` program. It is possible to use a Shebang to pass additional parameters to the interpreter or to override a Shebang on the command line.
+A Shebang indicates which Bash or Python interpreter to use to interpret an executable file. Shebangs are supported on Linux and many other operating systems. A Shebang begins with the characters `#!` and only occurs on the first line of the file. The interpreter can be specified using an absolute path or through the `env` program. It is possible to use a Shebang to pass additional parameters to the interpreter or to override a Shebang on the command line.
