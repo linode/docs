@@ -6,7 +6,7 @@ author:
 description: "Get help deciding which Compute Instance type is right for your use case and learn how to select the most appropriate plan"
 keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-01-19
+modified: 2022-08-10
 modified_by:
     name: Linode
 published: 2019-02-04
@@ -36,12 +36,14 @@ These are the instance types offered by Linode:
 
 They each have unique characteristics and their resources are optimized for different types of workloads. Learn about each of these instance types below, along with the resources provided and their suggested use cases.
 
+Most of these plan types are equipped with dedicated CPU cores for maximum peak performance and competition-free resources, though the Shared CPU plan comes with shared CPU cores. To learn more about the differences, see [Choosing Between Shared and Dedicated CPUs (and Determining When to Upgrade)](/docs/guides/comparing-shared-and-dedicated-cpus/).
+
 ### Shared CPU Instances
 
 **1 GB - 192 GB Memory, 1 - 32 Shared vCPU Cores, 25 GB - 2840 GB Storage**<br>
 Starting at $5/mo ($0.0075/hour). See [Shared CPU Pricing](https://www.linode.com/pricing/#compute-shared) for a full list of plans, resources, and pricing.
 
-[Shared CPU Instances](/docs/products/compute/shared-cpu/) offer a balanced array of resources coupled with shared CPUs that can burst up to 100% for short intervals. This keeps costs down while still supporting a wide variety of cloud applications. Your processes are scheduled on the same CPU cores as processes from other Compute Instances. This shared scheduling is done in a secure and performant manner and Linode works to minimize competition for CPU resources between your server and other servers.
+[Shared CPU Instances](/docs/products/compute/shared-cpu/) offer a balanced array of resources coupled with shared CPU cores. These CPU cores can be used at 100% for short bursts, but should remain below 80% sustained usage on average. This keeps costs down while still supporting a wide variety of cloud applications. Your processes are scheduled on the same CPU cores as processes from other Compute Instances. This shared scheduling is done in a secure and performant manner. While Linode works to minimize competition for CPU resources between your instance and other instances on the same hardware, it's possible that high usage from neighboring instances can negatively impact the performance of your instance.
 
 **Recommended Use Cases:**
 
@@ -113,7 +115,7 @@ When selecting a plan, it is important to understand the hardware resources allo
 | Resource | Description |
 | ---- | ----------- |
 | Memory (RAM) | The working memory available for your server's processes. Your server stores information in memory that is needed to carry out its functions. Or, it caches data in memory for fast retrieval in the future, if it is likely that the data will be needed. Data stored in RAM is accessed faster than data stored in your Linode's disks, but it is not persistent storage. |
-| vCPU Cores | The number of virtual CPUs (vCPUs) available to your server. Your software is often designed to execute its tasks across multiple CPUs in parallel. The higher your vCPU count, the more work you can perform simultaneously. |
+| vCPU Cores | The number of virtual CPUs (vCPUs) available to your server. Your software is often designed to execute its tasks across multiple CPUs in parallel. The higher your vCPU count, the more work you can perform simultaneously. Plans are also equipped with either shared CPU cores or dedicated CPU cores. Dedicated CPU cores allow your system to utilize 100% of your CPU resources at all times, while shared CPU cores require a lower sustained usage and may be affected by resource contention. See [Choosing Between Shared and Dedicated CPUs (and Determining When to Upgrade)](/docs/guides/comparing-shared-and-dedicated-cpus/). |
 | Storage | Your server's built-in persistent storage. Large databases, media libraries, and other stores of files will require more storage space. Your Linode's storage is maintained on high-performance SSDs for fast access. You can also supplement your Linode's disks with extra [Block Storage Volumes](https://www.linode.com/blockstorage). |
 | Transfer | The total amount of traffic your server can emit over the course of a month. Inbound traffic sent to your Linode does not count against your transfer quota. If you exceed your quota, your service will not be shut off; instead, an overage will be billed. Review the [Network Transfer Quota](/docs/guides/network-transfer/) guide for more information about how transfer works. |
 | Network In | The maximum bandwidth for inbound traffic sent to your Linode. The bandwidth you observe will also depend on other factors, like the geographical distance between you and your Linode and the bandwidth of your local ISP. For help with choosing a data center that will feature the lowest latency and best bandwidth, review the [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center/) guide. |

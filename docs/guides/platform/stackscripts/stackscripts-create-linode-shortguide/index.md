@@ -21,8 +21,8 @@ aliases: ['/platform/stackscripts/stackscripts-create-linode-shortguide/']
     {{< file "StackScript" bash >}}
 #!/bin/bash
 if [ -f /etc/apt/sources.list ]; then
-   apt-get upgrade
-   apt-get -y install php
+   apt update
+   apt -y install php
 elif [-f /etc/yum.conf ]; then
    yum -y install php
 elif [-f /etc/pacman.conf ]; then
@@ -69,8 +69,8 @@ print("StackScript Complete. Thank you!")
 #!/bin/bash
 
 if [ -f /etc/apt/sources.list ]; then
-   apt-get upgrade
-   apt-get -y install php5
+   apt update
+   apt -y install php
 elif [-f /etc/yum.conf ]; then
    yum -y install php
 elif [-f /etc/pacman.conf ]; then

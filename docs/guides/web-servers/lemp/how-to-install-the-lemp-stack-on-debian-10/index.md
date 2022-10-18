@@ -88,16 +88,9 @@ GRANT ALL PRIVILEGES ON testdb.* TO 'testuser';
 quit
 {{< /highlight >}}
 
-5.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. This tool will ask if you want to set a new password for the MariaDB root user, but you can skip that step:
+5.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
         sudo mysql_secure_installation
-
-    Answer **Y** at the following prompts:
-
-    -  Remove anonymous users?
-    -  Disallow root login remotely?
-    -  Remove test database and access to it?
-    -  Reload privilege tables now?
 
 ### PHP
 

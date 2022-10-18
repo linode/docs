@@ -80,7 +80,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 6.  Go to the Linode Cloud Manager and access the dashboard for your Linode.
 
-7.  Click the **Launch Console** link to access the [Glish](/docs/guides/using-the-linode-graphical-shell-glish/) console and start the installation.
+7.  Click the **Launch Console** link to access the [Glish](/docs/guides/glish/) console and start the installation.
 
 ## Install FreeNAS
 
@@ -112,7 +112,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 ## Add a Block Storage Volume to FreeNAS
 
-1.  [Add or attach a Block Storage Volume](/docs/platform/how-to-use-block-storage-with-your-linode/#how-to-add-a-block-storage-volume-to-a-linode) to the Linode. After you attach your Block Storage Volume, the Linode Manager will present command-line instructions for mounting it from your Linode, but you can disregard these.
+1.  [Add or attach a Block Storage Volume](/docs/products/storage/block-storage/guides/manage-volumes/) to the Linode. After you attach your Block Storage Volume, the Linode Manager will present command-line instructions for mounting it from your Linode, but you can disregard these.
 
 2.  Reboot the Linode from the Linode Manager. After a few minutes, launch Glish from the dashboard again. You can monitor the reboot progress in Glish.
 

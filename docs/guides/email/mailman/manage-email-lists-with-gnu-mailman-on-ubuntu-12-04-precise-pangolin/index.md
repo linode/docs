@@ -13,7 +13,7 @@ modified: 2012-10-09
 modified_by:
   name: Linode
 published: 2012-10-09
-title: 'Manage Email Lists with GNU Mailman on Ubuntu 12.04 (Precise Pangolin)'
+title: 'Manage Email Lists with GNU Mailman on Ubuntu 12.04'
 relations:
     platform:
         key: use-gnu-mailman
