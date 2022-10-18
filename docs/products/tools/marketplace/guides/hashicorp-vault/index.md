@@ -26,7 +26,7 @@ title: "Deploying HashiCorp Vault through the Linode Marketplace"
 
 ## Configuration Options
 
-- **Supported distributions:**
+- **Supported distributions:** Debian 11, Ubuntu 22.04 LTS
 - **Recommended plan:** We recommend a 4GB Dedicated CPU or Shared Compute instance for the Vault instance.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
