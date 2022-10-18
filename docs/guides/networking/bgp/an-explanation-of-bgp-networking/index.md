@@ -42,21 +42,23 @@ BGP uses the *Transmission Control Protocol* (TCP) as its transport mechanism. I
 
 BGP is responsible for receiving and transmitting network updates and constructing a routing table from these updates. A BGP interface establishes a point-to-point connection with its BGP peer, which is a neighboring interface. Peering information for each BGP interface is configured manually and used when negotiating the connection. The configuration must include the expected AS and IP address of the BGP peer. The following example demonstrates how to configure a BGP session on a Nokia 7750 router.
 
-    group "To_AS_30000"
+```file
+group "To_AS_30000"
+    connect-retry 20
+    hold-time 90
+    keepalive 30
+    local-preference 100
+    remove-private
+    peer-as 30000
+    neighbor 10.0.3.10
+        description "To_Router C - EBGP Peer"
         connect-retry 20
         hold-time 90
         keepalive 30
-        local-preference 100
-        remove-private
         peer-as 30000
-        neighbor 10.0.3.10
-            description "To_Router C - EBGP Peer"
-            connect-retry 20
-            hold-time 90
-            keepalive 30
-            peer-as 30000
-        exit
     exit
+exit
+```
 
 To establish, monitor, and maintain these connections, BGP implements a *finite state machine* (FSM). The BGP FSM changes the state of the connection based on a combination of internal and external events. Connections are established and unicast messages are sent using TCP port 179. When the connection is established, BGP sends keep-alive messages at a configurable rate.
 
