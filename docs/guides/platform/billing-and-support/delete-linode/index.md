@@ -20,6 +20,8 @@ This guide provides information about retention of data on a deleted Linode.
 
 When a Linode is deleted, the Linode data remains on the host for a very short period of time. After a few hours, background host maintenance occurs and scrubs the Linode disk by overwriting each byte with zeros then reclaiming the space. This makes all previous data on the disk irretrievable.
 
+Disks from removed compute instances are stored on average for 7 days after their removal, if technically feasible, if the customer initiated the removal. In instances such as a failure or file system incompatibility, the data may be deleted immediately. In other cases and for administrative purposes, data can be held for up to 90 days. Storage is then reserved by the system until it is scrubbed, which on average takes between one and two weeks.
+
 Only the Linode support team can restore this data. If the removal was an accident, customers might be able to restore the data if they contact support immediately. For information about reaching out to the Linode support team, see [contact support](/docs/guides/support/).
 
 ## Restorable Image
