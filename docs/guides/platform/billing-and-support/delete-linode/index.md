@@ -6,17 +6,23 @@ author:
 description: "What happens when a user deletes a Linode."
 keywords: ["support", "delete", "data", "retention"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-10-13
+modified: 2022-10-18
 modified_by:
   name: Linode
-published: 2012-10-13
-title: Linode Data Retention
+published: 2022-10-18
+title: "Data Deletion on the Linode Platform"
 tags: ["linode platform"]
 ---
 
-This guide provides information about retention of data on a deleted Linode.
+When storing sensitive information on a public cloud platform, it's important to consider how your data is secured. Part of data security includes understanding how data is deleted at the end of its life cycle. This guide outlines how the Linode platform handles deleting customer data when the associated service is deleted.
 
-# Initial Deletion
+## Compute Instances
+
+On Compute Instances, customer data is stored within *disks*, disk images that are located on physical host machines within our data centers. When a Compute Instance is deleted, any associated disk images are also marked for deletion. The deletion process occurs within a few hours and involves overwriting each byte of the disk image with zeros. This effectively destroys customer data and prevents any future recovery attempts. The physical disk space is them reclaimed and available for other customers to use.
+
+---
+
+## Initial Deletion
 
 When a Linode is deleted, the Linode data remains on the host for a very short period of time. After a few hours, background host maintenance occurs and scrubs the Linode disk by overwriting each byte with zeros then reclaiming the space. This makes all previous data on the disk irretrievable.
 
