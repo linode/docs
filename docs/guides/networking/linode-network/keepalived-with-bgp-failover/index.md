@@ -6,7 +6,7 @@ author:
 description: "This guide covers how to configure Keepalived with a simple health check and enable it to control lelastic, a simple BGP daemon created for the Linode platform."
 keywords: ['IP failover','keepalived','elastic IP']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-10-17
+published: 2022-10-19
 modified_by:
   name: Linode
 title: "Use Keepalived Health Checks with BGP-based Failover"
@@ -14,11 +14,11 @@ contributor:
   name: Linode
 ---
 
-Keepalived is one of the most commonly used applications that implements the VRRP protocol, enabling ARP-based failover. Among many features, it can be used to check the health of a process or run a script when an issue arises.
+[Keepalived](https://linux.die.net/man/8/keepalived) is one of the most commonly used applications that implements VRRP, a networking protocol that manages IP address assignment and ARP-based failover. It can be configured with additional health checks, such as checking the status of a service or running a custom script. When one of these health checks detects an issue, the instance changes to a fault state and failover is triggered. During these state transitions, additional task can be performed through custom scripts.
 
-The Linode platform is currently undergoing [network infrastructure upgrades](/docs/guides/network-infrastructure-upgrades/) to migrate away from ARP-based systems in favor of BGP. Once this upgrade occurs for the data center and hardware that your Compute Instances reside on, VRRP software like Keepalived can no longer directly manage failover. Even with these changes, other features of Keepalived can still be used. For instance, Keepalived can continue to run health checks or VRRP scripts and can be configured to interact with the BGP daemon (like lelastic) that does control failover.
+The Linode platform is currently undergoing [network infrastructure upgrades](/docs/guides/network-infrastructure-upgrades/), which affects IP address assignment and failover. Once this upgrade occurs for the data center and hardware that your Compute Instances reside on, VRRP software like Keepalived can no longer directly manage failover. However, other features of Keepalived can still be used. For instance, Keepalived can continue to run health checks or VRRP scripts. It can then be configured to interact with whichever BGP daemon your system is using to manage IP address assignment and failover.
 
-This guide covers how to configure Keepalived with a simple health check and enable it to control lelastic, a simple BGP daemon created for the Linode platform.
+This guide covers how to configure Keepalived with a simple health check and enable it to control [lelastic](https://github.com/linode/lelastic), a BGP daemon created for the Linode platform.
 
 {{< note >}}
 If you are migrating to BGP-based failover and currently have health checks configured with Keepalived, you can modify the steps in this guide to include your own settings.
@@ -26,7 +26,7 @@ If you are migrating to BGP-based failover and currently have health checks conf
 
 ## Configure IP Sharing and BGP Failover
 
-Before continuing with this guide, IP Sharing and BGP failover must be properly configured on both Compute Instances. To do this, follow [Configuring Failover on a Compute Instance](/docs/guides/ip-failover/). While this guide uses lelastic commands, you can replace them with the corresponding commands for any other BGP daemon you have configured.
+Before continuing, IP Sharing and BGP failover must be properly configured on both Compute Instances. To do this, follow the [Configuring Failover on a Compute Instance](/docs/guides/ip-failover/) guide, which walks you through the process of configuring failover with lelastic. If you decide to use a tool other than lelastic, you will need to make modifications to some of the commands or code examples provided in some of the following sections.
 
 ## Install and Configure Keepalived
 
@@ -104,7 +104,7 @@ Keepalived can be configured to run *notification scripts* when the instance cha
 
         sudo nano /etc/keepalived/notify.sh
 
-1. Copy and paste the following bash script into the newly created file. If you wish to control a BGP-daemon other than lelastic, replace `sudo systemctl restart lelastic` and `sudo systemctl stop lelastic` with the appropriate commands for your service.
+1. Copy and paste the following bash script into the newly created file. If you wish to control a BGP daemon other than lelastic, replace `sudo systemctl restart lelastic` and `sudo systemctl stop lelastic` with the appropriate commands for your service.
 
     {{< file "/etc/keepalived/notify.sh" >}}
 #!/bin/bash
@@ -156,7 +156,7 @@ vrrp_instance example_instance {
 }
 {{</ file >}}
 
-1.  Restart your BGP-daemon and keepalived.
+1.  Restart your BGP daemon and keepalived.
 
         sudo systemctl restart lelastic
         sudo systemctl restart keepalived
@@ -216,7 +216,7 @@ vrrp_instance example_instance {
 }
 {{</ file >}}
 
-1.  Restart your BGP-daemon and keepalived.
+1.  Restart your BGP daemon and keepalived.
 
         sudo systemctl restart lelastic
         sudo systemctl restart keepalived
@@ -247,7 +247,7 @@ By default, Keepalived attempts to run the scripts using a *keepalived_script* u
 
         visudo /etc/sudoers
 
-1.  Within this file,grant permission for the new user to restart and stop the BGP-daemon. The example below uses lelastic.
+1.  Within this file, grant permission for the new user to restart and stop the BGP daemon. The example below uses lelastic.
 
     {{< file "/etc/sudoers" >}}
 # User privilege specification

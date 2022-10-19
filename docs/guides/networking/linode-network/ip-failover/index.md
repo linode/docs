@@ -7,7 +7,7 @@ description: "This guide discusses how to enable failover on a Linode Compute In
 keywords: ['IP failover','IP sharing','elastic IP']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-23
-modified: 2022-10-11
+modified: 2022-10-19
 modified_by:
   name: Linode
 title: "Configuring Failover on a Compute Instance"
@@ -19,7 +19,7 @@ In cloud computing, *failover* is the concept of rerouting traffic to a backup s
 
 ## Why Should I Implement Failover?
 
-When hosting web-based services, the total uptime and availability of those services should be important consideration. There’s always a possibility that your Compute Instance may become inaccessible, perhaps due to a spike in traffic, your own internal configuration issues, a natural disaster, or planned (or unplanned) maintenance. When this happens, any websites or services hosted on that instance would also stop working. Failover provides a mechanism for protecting your services against a single point of failure.
+When hosting web-based services, the total uptime and availability of those services should be an important consideration. There’s always a possibility that your Compute Instance may become inaccessible, perhaps due to a spike in traffic, your own internal configuration issues, a natural disaster, or planned (or unplanned) maintenance. When this happens, any websites or services hosted on that instance would also stop working. Failover provides a mechanism for protecting your services against a single point of failure.
 
 The term *high availability* describes web application architectures that eliminate single points of failover, offering redundancy, monitoring, and failover to minimize downtime for your users. Adding a load balancing solution to your application’s infrastructure is commonly a key component of high availability. Managed solutions, like Linode’s NodeBalancers, combine load balancing with built-in IP address failover. However, self-hosted solutions like nginx or haproxy do not include built-in IP failover. Should the system running the load balancing software experience downtime, the entire application goes down. To prevent this, you need an additional server running your load balancing software and a mechanism to failover the IP address. On the Linode platform, this is accomplished through the IP Sharing feature and some additional software configuration.
 
