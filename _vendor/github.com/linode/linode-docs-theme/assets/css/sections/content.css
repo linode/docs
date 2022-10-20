@@ -175,6 +175,14 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   padding-left: 0;
 }
 
+.content .chroma .lntable {
+  @apply w-full;
+}
+
+.content .chroma .lntd {
+  padding-right: 0;
+}
+
 .chroma .lntd pre {
   @apply px-0;
 }
