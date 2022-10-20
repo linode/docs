@@ -1222,6 +1222,7 @@ microblogging
 microblogs
 microservice
 microservices
+microsite
 microsystems
 microweb
 Microweber
@@ -2028,6 +2029,7 @@ tcpdump
 tcpwrappers
 teamspeak
 teardown
+techdocs
 techland
 telecom
 teleporting
