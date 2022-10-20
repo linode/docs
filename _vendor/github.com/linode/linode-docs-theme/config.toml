@@ -9,7 +9,7 @@ gtmID = "GTM-T5FXXG9"
 [params.search_config2]
 
 app_id = "KGUN8FAIPF"
-api_key = "d4847002cd30392fe0fbd00a1da933ed"
+api_key = "d364d8e601808b96178d0776ed43b2c9"
 meta_index = "linode-documentation-sections"
 index_prefix = ""
 click_analytics = true

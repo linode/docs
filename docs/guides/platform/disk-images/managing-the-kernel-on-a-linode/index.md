@@ -195,7 +195,7 @@ For new Linodes, an upstream kernel is already installed on your system and you 
     grub  initramfs-linux-fallback.img  initramfs-linux.img  vmlinuz-linux
     {{< /output >}}
 
-1. Next, configure the serial console and other GRUB settings so you can use [Lish](/docs/guides/using-the-lish-console/) and [Glish](/docs/guides/using-the-linode-graphical-shell-glish/). This is outlined in the following steps.
+1. Next, configure the serial console and other GRUB settings so you can use [Lish](/docs/guides/using-the-lish-console/) and [Glish](/docs/guides/glish/). This is outlined in the following steps.
 
 1.  Open `/etc/default/grub` in a text editor and go to the line beginning with `GRUB_CMDLINE_LINUX`. Remove the word `quiet` if present, and add `console=ttyS0,19200n8 net.ifnames=0`. Leave the other entries in the line. For example, on CentOS 7 you should have something similar to:
 
@@ -209,6 +209,7 @@ GRUB_DISABLE_OS_PROBER=true
 GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
 GRUB_DISABLE_LINUX_UUID=true
 GRUB_GFXPAYLOAD_LINUX=text
+GRUB_ENABLE_BLSCFG=false
 {{< /file >}}
 
 1.  Prepare and update the bootloader:

@@ -57,8 +57,8 @@ All private IPs in the same data center can communicate with each other over the
 - **/116 Pool:** *(4,096 addresses)* An IPv6 pool is accessible from every Linode on your account within the assigned data center. Addresses from that pool can be configured on each Linode within that data center. This can enable features like IPv6 failover. By default, up to one /116 pool can be added per customer per data center.
 
     {{< caution >}}
-The IPv6 /116 prefix has been deprecated and is not available in the Toronto, Atlanta, Sydney, or Mumbai data centers. To add a /116 pool in a supported data center, [contact our Support team](https://www.linode.com/support/) with your request.
-{{</ caution >}}
+The IPv6 /116 prefix has been deprecated and is no longer available for new Compute Instances. If you have an existing Compute Instance with a /116 pool, please review the [Upcoming Changes Related to Network Infrastructure Upgrades](/docs/guides/network-infrastructure-upgrades/) to learn about changes that may affect your services.
+{{</ note >}}
 
 ## Adding an IP Address
 

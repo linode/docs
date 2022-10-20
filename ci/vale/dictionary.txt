@@ -197,6 +197,7 @@ bucardo
 Budibase
 bufio
 bugtracker
+buildah
 buildbot
 bukkit
 bundler
@@ -311,6 +312,8 @@ connectionism
 connectionless
 connectionStatus
 containerd
+containerfile
+containerfiles
 containerised
 contentful
 convery
@@ -381,6 +384,7 @@ daemonize
 daemonized
 daemonizes
 daemonizing
+daemonless
 daemonset
 dahdi
 dallas
@@ -486,6 +490,7 @@ dokku
 domain1
 domain2
 domain3
+domain_id
 domainkey
 domainname
 donenfeld
@@ -693,6 +698,7 @@ getmail
 getprivs
 getpwent
 getters
+getty
 getuid
 gfx
 gfxmode
@@ -1265,6 +1271,7 @@ mongorestore
 mongosh
 monit
 monitorix
+monospaced
 moolenaar
 morphisec
 motd
@@ -1315,6 +1322,7 @@ mysqld
 mysqldefault
 mysqldump
 mysql_config_editor
+mysql_secure_installation
 mytestdb
 myuser
 mzet

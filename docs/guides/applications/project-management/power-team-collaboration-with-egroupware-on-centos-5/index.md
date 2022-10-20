@@ -31,7 +31,7 @@ Before installing eGroupware, we assume that you have followed our [Setting Up a
 
 ## Install eGroupware
 
-In this guide, we will be installing eGroupware from the packages provided by the eGroupware project and built by the OpenSUSE build service for CentOS 5. We've chosen to install using this method in an effort to ensure greater stability, easy upgrade paths, and a more straight forward installation process. Begin the installation by issuing the following commands to initialize the eGroupware repositories:
+In this guide, we will be installing eGroupware from the packages provided by the eGroupware project and built by the openSUSE build service for CentOS 5. We've chosen to install using this method in an effort to ensure greater stability, easy upgrade paths, and a more straight forward installation process. Begin the installation by issuing the following commands to initialize the eGroupware repositories:
 
     yum update
     yum install wget
