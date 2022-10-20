@@ -8,7 +8,7 @@ og_description: "Salt Cloud is a part of the SaltStack that makes provisioning m
 keywords: ["SaltStack", "Salt", "salt-cloud"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-27
-modified: 2019-01-02
+modified: 2022-10-20
 modified_by:
   name: Linode
 title: "How to Use Salt Cloud and Cloud Maps to Provision Systems"
@@ -39,7 +39,7 @@ This guide shows how to install Salt Cloud and configure it to work on a Linode.
 
 2.  This guide assumes that Salt Cloud will be installed together with Salt master server.
 
-3.  Generate an [API key](/docs/guides/api-key/) to access Linode API. Salt Cloud currently requires a v3 key generated from the [Linode Manager](https://manager.linode.com/profile/api) and *not* the new Cloud Manager. This key will be used by Salt Cloud to manage your instances. Make sure to keep your API key safe.Set the environment variable `API_TOKEN` and test your API key is working through the REST interface:
+3.  Generate an [API key](/docs/guides/api-key/) to access Linode API. Salt Cloud currently requires a v3 key generated from the [Linode Manager](https://manager.linode.com/profile/api) and *not* the new Cloud Manager. This key will be used by Salt Cloud to manage your instances. Make sure to keep your API key safe. Set the environment variable `API_TOKEN` and test your API key is working through the REST interface:
 
         curl -H "Authorization:Bearer $API_TOKEN" https://api.linode.com/v4/account | json_pp
 
