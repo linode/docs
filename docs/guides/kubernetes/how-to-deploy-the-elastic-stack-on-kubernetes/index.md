@@ -48,7 +48,7 @@ If you remove the resources afterward, you are billed only for the hour(s) that 
 ## Before You Begin
 
 {{< note >}}
-This guide uses Kubernetes services which are private by default. Local listeners are opened which allow you to access the services on the local browser, however, web servers and NodeBalancers are out scope for this guide. Due to this, you should complete the steps of this guide from the local computer or from a computer that gives you access to the web browser. If you want to access these services from a public domain, please see the [Getting Started with NodeBalancers](/docs/guides/getting-started-with-nodebalancers/) guide.
+This guide uses Kubernetes services which are private by default. Local listeners are opened which allow you to access the services on the local browser, however, web servers and NodeBalancers are out scope for this guide. Due to this, you should complete the steps of this guide from the local computer or from a computer that gives you access to the web browser. If you want to access these services from a public domain, please see the [Getting Started with NodeBalancers](docs/products/networking/nodebalancers/get-started/) guide.
 {{< /note >}}
 
 1.  [Install the Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`) on the local computer.
@@ -61,7 +61,7 @@ This guide uses Kubernetes services which are private by default. Local listener
 
         kubectl config get-contexts
 
-1.  Set up Helm in the Kubernetes cluster by following the [Install Helm](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) section in the *How to Install Apps on Kubernetes with Helm 3* guide.
+1.  Set up Helm in the Kubernetes cluster by following the [Install Helm](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) section in the *How to Install Apps on Kubernetes with Helm 3* guide.
 
 ## Configure Helm
 

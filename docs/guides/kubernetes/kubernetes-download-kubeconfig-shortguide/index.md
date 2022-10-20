@@ -82,7 +82,7 @@ It is common practice to store your kubeconfig files in `~/.kube` directory. By 
         kubectl get nodes
 
     {{< note >}}
-If your kubectl commands are not returning the resources and information you expect, then your client may be assigned to the wrong cluster context. Visit our [Troubleshooting Kubernetes](/docs/kubernetes/troubleshooting-kubernetes/#troubleshooting-examples) guide to learn how to switch cluster contexts.
+If your kubectl commands are not returning the resources and information you expect, then your client may be assigned to the wrong cluster context. Visit our [Troubleshooting Kubernetes](/docs/guides/troubleshooting-kubernetes/#troubleshooting-examples) guide to learn how to switch cluster contexts.
 {{</ note >}}
 
       You are now ready to manage your cluster using kubectl. For more information about using kubectl, see Kubernetes' [Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) guide.

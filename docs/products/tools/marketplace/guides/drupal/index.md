@@ -88,4 +88,4 @@ The Drupal Marketplace App installs the following required software on your Lino
 ## Next Steps
 
 - Register a domain name and [create a DNS record](/docs/guides/dns-manager/) for it using the Linode Cloud Manager.
-- [Configure your Apache HTTP Server](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/#configure-name-based-virtual-hosts) to point to your domain name.
+- [Configure your Apache HTTP Server](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#configure-name-based-virtual-hosts) to point to your domain name.

@@ -95,7 +95,7 @@ The ability to point a domain name to an IP address is referred to as *forward* 
 You are able to configure rDNS (or reset it) through the Cloud Manager using the instructions below:
 
 {{< note >}}
-Before setting reverse DNS, verify that you have created a matching forward DNS record for the IP address. For instructions, see [Adding DNS Records](/docs/websites/hosting-a-website/#add-dns-records). If you use a third-party DNS provider, create the forward DNS record with your provider's management tool.
+Before setting reverse DNS, verify that you have created a matching forward DNS record for the IP address. For instructions, see [Adding DNS Records](/docs/guides/hosting-a-website-ubuntu-18-04/#add-dns-records). If you use a third-party DNS provider, create the forward DNS record with your provider's management tool.
 {{< /note >}}
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.

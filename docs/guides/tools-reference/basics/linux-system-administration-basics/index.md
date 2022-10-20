@@ -360,7 +360,7 @@ To **delete** a file:
 
 This will delete the `scratch.txt` file from the current directory.
 
-For more information about file system navigation and manipulation, please consider our documentation of [file system navigation](/docs/tools-reference/ssh/using-the-terminal/#file-system-navigation).
+For more information about file system navigation and manipulation, please consider our documentation of [file system navigation](/docs/guides/using-the-terminal/#file-system-navigation).
 
 ## Package Management
 
@@ -684,7 +684,7 @@ Although limited in their capabilities, CNAMEs can be quite useful in some situa
 
 When [reading domain names](/docs/guides/dns-records-an-introduction/#domain-names), we refer to parts before the main or first-level domain as "subdomains." For example, in the domain `team.example.com`, `team` is a subdomain for the root domain `example.com`.
 
-Follow these steps to [create and host a sub-domain](/docs/networking/dns/common-dns-configurations/#configuring-subdomains):
+Follow these steps to [create and host a sub-domain](/docs/guides/common-dns-configurations/#configuring-subdomains):
 
 1.  First, create an [A Record](/docs/guides/dns-records-an-introduction/#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/guides/dns-manager/). You may host the DNS for your domain with any provider you choose.
 

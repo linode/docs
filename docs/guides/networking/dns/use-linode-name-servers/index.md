@@ -50,11 +50,11 @@ Most nameserver authorities will allow you to set the TTL on your domain or on i
 
 1.  Adjust your TTL to its shortest setting. For example, 300 seconds is equal to 5 minutes, so that's a good choice if it's available.
 
-1.  Wait out the original TTL from Step 3 before actually moving your domain--otherwise, DNS caching servers will not know of the new, lower TTL yet. For more information on domain TTL, see our [DNS guide](/docs/networking/dns/dns-manager-overview/#set-the-time-to-live-or-ttl).
+1.  Wait out the original TTL from Step 3 before actually moving your domain--otherwise, DNS caching servers will not know of the new, lower TTL yet. For more information on domain TTL, see our [DNS guide](/docs/guides/dns-manager/#set-the-time-to-live-or-ttl).
 
 ### Use Linode's Nameservers
 
-1.  Follow Linode's instructions on [adding a domain zone](/docs/networking/dns/dns-manager-overview/#add-a-domain-zone) to create DNS records at Linode for your domain. Recreate the DNS records listed in your current nameserver authority's website, but change the IP addresses to reflect your Linode IPs where appropriate.
+1.  Follow Linode's instructions on [adding a domain zone](/docs/guides/dns-manager/#add-a-domain-zone) to create DNS records at Linode for your domain. Recreate the DNS records listed in your current nameserver authority's website, but change the IP addresses to reflect your Linode IPs where appropriate.
 
 1.  Locate your domain's registrar, which is the company you purchased your domain from. If you're not sure who your registrar is, you can find out with a [Whois Search tool](https://whois.icann.org/).
 

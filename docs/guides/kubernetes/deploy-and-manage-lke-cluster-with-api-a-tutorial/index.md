@@ -25,7 +25,7 @@ aliases: ['/applications/containers/kubernetes/deploy-and-manage-lke-cluster-wit
 tags: ["kubernetes"]
 ---
 
-The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and simple pricing with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/guides/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/products/storage/block-storage/). Your LKE Cluster's Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
+The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and simple pricing with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](docs/products/networking/nodebalancers/get-started/) (load balancers), and [Block Storage Volumes](/docs/products/storage/block-storage/). Your LKE Cluster's Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
 
 **Additional LKE features:**
 
@@ -85,7 +85,7 @@ This guide covers how to use the Linode API to:
 | `k8s_version` | The desired version of Kubernetes for this cluster. |
 
 {{< note >}}
-The available plan types for LKE worker nodes are [Shared](/docs/guides/how-to-choose-a-linode-plan/#1-shared), [Dedicated CPU](/docs/guides/how-to-choose-a-linode-plan/#3-dedicated-cpu), and [High Memory](/docs/guides/how-to-choose-a-linode-plan/#2-high-memory) plans.
+The available plan types for LKE worker nodes are [Shared](/docs/guides/choosing-a-compute-instance-plan/#1-shared), [Dedicated CPU](/docs/guides/choosing-a-compute-instance-plan/#3-dedicated-cpu), and [High Memory](/docs/guides/choosing-a-compute-instance-plan/#2-high-memory) plans.
 {{< /note >}}
 
 1. To create an LKE Cluster, send a `POST` request to the `/lke/clusters` endpoint. The example below displays all possible request body parameters. Note that `tags` is an optional parameter.

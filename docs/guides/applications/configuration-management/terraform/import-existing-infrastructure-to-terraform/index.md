@@ -638,7 +638,7 @@ Though it is not required, it's a good idea to include a configuration for the s
 
 ## Import a NodeBalancer to Terraform
 
-Configuring [Linode NodeBalancers](/docs/guides/getting-started-with-nodebalancers/) with Terraform requires three separate resource configuration blocks: one to create the NodeBalancer, a second for the NodeBalancer Configuration, and a third for the NodeBalancer Nodes.
+Configuring [Linode NodeBalancers](docs/products/networking/nodebalancers/get-started/) with Terraform requires three separate resource configuration blocks: one to create the NodeBalancer, a second for the NodeBalancer Configuration, and a third for the NodeBalancer Nodes.
 
 ### Retrieve Your NodeBalancer, NodeBalancer Config, NodeBalancer Node IDs
 

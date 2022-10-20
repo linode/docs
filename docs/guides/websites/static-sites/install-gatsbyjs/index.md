@@ -22,7 +22,7 @@ aliases: ['/websites/static-sites/install-gatsbyjs/']
 
 ## What is Gatsby?
 
-Gatsby is a [Static Site Generator](/docs/websites/static-sites/how-to-choose-static-site-generator/#what-is-a-static-site) for React built on Node.js. Gatsby uses a modern web technology stack based on client-side Javascript, reusable APIs, and prebuilt Markdown, otherwise known as the [*JAMstack*](https://jamstack.org/). This method of building a site is fast, secure, and scalable. All production site pages are prebuilt and static, so Gatsby does not have to build HTML for each page request.
+Gatsby is a [Static Site Generator](/docs/guides/how-to-choose-static-site-generator/#what-is-a-static-site) for React built on Node.js. Gatsby uses a modern web technology stack based on client-side Javascript, reusable APIs, and prebuilt Markdown, otherwise known as the [*JAMstack*](https://jamstack.org/). This method of building a site is fast, secure, and scalable. All production site pages are prebuilt and static, so Gatsby does not have to build HTML for each page request.
 
 ## What is the CI/CD Pipeline?
 

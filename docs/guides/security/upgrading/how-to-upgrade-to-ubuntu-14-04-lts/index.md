@@ -33,7 +33,7 @@ Distribution upgrades can yield unpredictable results, due to variations in soft
  - Transferring your data
  - Swapping IP addresses
 
-In addition, you should use [LISH](/docs/guides/using-the-lish-console/) to perform this upgrade as, in the event your internet connection is disconnected, your system may end up corrupted or the upgrade may be incomplete.
+In addition, you should use [LISH](/docs/guides/lish/) to perform this upgrade as, in the event your internet connection is disconnected, your system may end up corrupted or the upgrade may be incomplete.
 {{< /caution >}}
 
 {{< note >}}
@@ -76,11 +76,11 @@ Any available updates for Ubuntu 12.04 LTS will be installed on your Linode.
 
 ### Backing Up Your Linode
 
-It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/security/backups/linode-backup-service/#take-a-manual-snapshot) before upgrading to Ubuntu 14.04 LTS. If you use another backup service or application, we recommend that you make a manual backup now.
+It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](docs/products/storage/backups/#take-a-manual-snapshot) before upgrading to Ubuntu 14.04 LTS. If you use another backup service or application, we recommend that you make a manual backup now.
 
 ### Checking Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/uptime/monitoring-and-maintaining-your-server/#applying-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/guides/monitor-and-maintain-compute-instance/#applying-kernel-updates) for more information.
 
 ### Stopping Services
 
