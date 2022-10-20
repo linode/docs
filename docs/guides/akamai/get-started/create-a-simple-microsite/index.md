@@ -422,3 +422,9 @@ server.listen(port, hostname, () => {
 1.  Repeat the steps in [Test Session Stickiness](#test-session-stickiness). You should only get a response from active origin servers.
 
 For more information on testing options, refer to the [Ion documentation](https://techdocs.akamai.com/ion/docs/test-your-ion-property).
+
+## Learn More
+
+You can also view the instructions for this use case in the [Akamai techdocs](https://techdocs.akamai.com/get-started-cloud-computing/docs).
+
+To participate in a series of interactive modules that will guide you through the steps to get started with Akamai cloud computing based on Linode, go to the [Build on Akamai training](https://training.akamai.com/learn/catalog/view/56). You can use your Akamai Control Center login credentials to access the site.
