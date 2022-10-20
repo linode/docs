@@ -27,7 +27,7 @@ But the *cat* command also comes with numerous options for how files are display
 
 Better still, *cat* is part of the GNU core utilities — typically distributed as `coreutils` — and so it comes by default on almost every Linux distribution.
 
-Learn in this tutorial how to start working effectively with this popular and useful command. See what the *cat* command is and what it is capable of, from viewing files to creating them.
+In this guide, you learn how to start working effectively with this popular and useful command. See what the *cat* command is and what it is capable of, from viewing files to creating them.
 
 ## How to View File Contents with cat
 
@@ -35,9 +35,9 @@ One of the most common uses for *cat* is viewing the contents of files. These ne
 
 These examples uses the text files and contents created in the next section. So look ahead if you want to see how to create these files to follow along.
 
-### Viewing a Single File
+### View a Single File
 
-The *cat* command can take a filename as input, and it outputs the file's text contents as a result:
+The *cat* command can take a filename as input, and it outputs the file's text contents as a result.
 
     cat example-file.txt
 
@@ -45,13 +45,13 @@ The *cat* command can take a filename as input, and it outputs the file's text c
 This is text is an example file.
 {{< /output >}}
 
-For long files, the output can be difficult to navigate. Fortunately, there is a built-in solution with Linux that is covered a little further on.
+For long files, the output can be difficult to navigate. Fortunately, there is a built-in solution with Linux that is covered in this guide.
 
-### Viewing Multiple Files
+### View Multiple Files
 
 One of the perks of *cat* is that it can readily adapt its commands for multiple files. This means, for one, that you can output the contents of multiple files simultaneously.
 
-The *cat* command for doing this is similar to the command for a single file. You simply provide multiple filenames instead of just the one filename:
+The *cat* command for doing this is similar to the command for a single file. You simply provide multiple filenames instead of just one filename as shown in the command below:
 
     cat example-file.txt another-example-file.txt
 
@@ -60,29 +60,29 @@ This is text is an example file.
 Another example file, with more text.
 {{< /output >}}
 
-### Managing the cat View using more and less
+### Manage the cat View Using more and less Commands
 
 As noted above, the output from *cat* can become cumbersome with large files, or when working with multiple files with significant amounts of content.
 
-To help navigate the output from *cat*, you can pipe the results into the *less* command. *less* is a built-in Linux command that makes long results scrollable using the arrow keys:
+To help navigate the output from *cat*, you can pipe the results into the *less* command. *Less* is a built-in Linux command that makes long results scrollable using the arrow keys.
 
     cat example-file.txt | less
 
-You can exit *less*, stopping the output from *cat*, by pressing the *Q* key.
+You can exit *less*, stopping the output from *cat*, by pressing the **Q** key.
 
-## How to Create a New File with cat
+## How to Create a New File With cat
 
 You can use the *cat* command to create a file from scratch. Doing so uses the `>` symbol followed by the filename:
 
     cat > example-file.txt
 
-Once this command is issued, *cat* prompts the user to enter some text. Pressing the *Ctrl* + *D* keys after a new line (*Enter*) completes the text entry and fills the newly created file with the entered text:
+Once this command is issued, *cat* prompts the user to enter some text. Pressing the **Ctrl** + **D** keys after a new line (**Enter**) completes the text entry and fills the newly created file with the entered text.
 
     This is text is an example file.
 
-This same symbol, `>`, can also be used to create a new file out of an existing one, using *cat* to copy the contents of the file. This works by redirecting the output from first file's contents into a new file.
+The same symbol, `>`, can also be used to create a new file out of an existing one, using *cat* to copy the contents of the file. This works by redirecting the output from first file's contents into a new file.
 
-This example uses the *cat* command to redirect or copy the `example-file.txt` file's contents into a new file, `another-example-file.txt`:
+The example below uses the *cat* command to redirect or copy the `example-file.txt` file's contents into a new file, `another-example-file.txt`:
 
     cat example-file.txt > another-example-file.txt
     cat another-example-file.txt
@@ -104,17 +104,17 @@ This is text is an example file.
 Another example file, with more text.
 {{< /output >}}
 
-## How to Append Text to a File with cat
+## How to Append Text to a File With cat
 
-The *cat* command can be similarly used to append lines of text to existing files. This uses the `>>` symbol followed by the filename:
+The *cat* command can be similarly used to append lines of text to existing files. This uses the `>>` symbol followed by the filename.
 
     cat >> example-file.txt
 
-Like with the process of creating a new file from scratch, the *cat* command prompts the user to enter text after issuing the command. Pressing the *Ctrl* + *D* keys after a new line (*Enter*) completes the text entry and adds the entered text to the end of the file:
+Like with the process of creating a new file from scratch, the *cat* command prompts the user to enter text after issuing the command. Pressing the **Ctrl** + **D** keys after a new line (*Enter*) completes the text entry and adds the entered text to the end of the file.
 
     One more line of text to the example file.
 
-Also like with creating a file, this same feature can be used to redirect the contents of one file to another. In this case, you can use the `>>` symbol to copy text from one file and append it to the end of another file:
+Also like with creating a file, this same feature can be used to redirect the contents of one file to another. In this case, you can use the `>>` symbol to copy text from one file and append it to the end of another file.
 
     cat example-file.txt >> another-example-file.txt
     cat another-example-file.txt
@@ -125,7 +125,7 @@ This is text is an example file.
 One more line of text to the example file.
 {{< /output >}}
 
-The same can be done with multiple files, just by listing the filenames before the `>>` symbol. The files' outputs are concatenated, and then the collective result is added to the end of the designated file — in this case, `bigger-example-file.txt`:
+The same can be done with multiple files, just by listing the filenames before the `>>` symbol. The files' outputs are concatenated, and then the collective result is added to the end of the designated file — in this case, `bigger-example-file.txt` as shown in the example below:
 
     cat example-file.txt another-example-file.txt >> bigger-example-file.txt
     cat bigger-example-file.txt
@@ -154,12 +154,12 @@ For instance, take a case where you use the option for line numbers below (`-n`)
 
         cat -n example-file.txt
 
-    {{< output >}}
-     1	This is text is an example file.
-     2	One more line of text to the example file.
-     {{< /output >}}
+  {{< output >}}
+1	This is text is an example file.
+2	One more line of text to the example file.
+  {{< /output >}}
 
-- Show line-ending markers for *cat* output using the `-e` option. This has *cat* print a `$` symbol at the end of each line:
+- Show line-ending markers for *cat* output using the `-e` option. This has *cat* print a `$` symbol at the end of each line.
 
         cat -e example-file.txt
 
@@ -168,7 +168,7 @@ This is text is an example file.$
 One more line of text to the example file.$
     {{< /output >}}
 
-- Show tabs as `^I` symbols using the `-t` option. You can see this by adding a line with a tab to the `example-file.txt`:
+- Show tabs as `^I` symbols using the `-t` option. You can see this by adding a line with a tab to the `example-file.txt`.
 
         cat >> example-file.txt
         This is a line	with a tab.
@@ -183,11 +183,11 @@ One more line of text to the example file.
 This is a line^Iwith a tab.
     {{< /output >}}
 
-- Show the text with repeated blank lines removed by using the `-s` option. To see this, add several consecutive blank lines to the `example-file.txt` using the append function in *cat*:
+- Show the text with repeated blank lines removed by using the `-s` option. To see this, add several consecutive blank lines to the `example-file.txt` using the append function in the *cat* command.
 
         cat >> example-file.txt
 
-    Then, use the `-s` option when viewing the file via *cat* to see the file without the repeated blank lines. The output should show one blank line rather than several consecutive blank lines:
+    Then, use the `-s` option when viewing the file via *cat* to see the file without the repeated blank lines. The output should show one blank line rather than several consecutive blank lines.
 
         cat -s example-file.txt
 
@@ -200,6 +200,6 @@ This is a line	with a tab.
 
 ## Conclusion
 
-This gives you the know-how you need to start using *cat* for viewing and even working with text-based files from the command line. Having a good basis in this frequently-used Linux command can make working with files on the command-line smoother and easier.
+This guide gave you the know-how you need to start using *cat* for viewing and even working with text-based files from the command line. Having a good basis in this frequently-used Linux command can make working with files on the command line smoother and easier.
 
 Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
