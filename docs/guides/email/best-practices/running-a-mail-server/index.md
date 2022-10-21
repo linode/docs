@@ -3,21 +3,20 @@ slug: running-a-mail-server
 author:
   name: Linode
   email: docs@linode.com
-description: 'Take control of your email with your own mail server. Learn how to install and configure it on your Linode.'
-og_description: 'Take control of your email with your own mail server. Learn how to install and configure it on your Linode.'
+description: "Take control of your email with your own mail server. Learn how to install and configure it on your Linode."
 keywords: ["mail server", "linode guide", "running a mail server", "Self-host Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/mailserver/','/email/running-a-mail-server/','/email/best-practices/running-a-mail-server/']
 modified_by:
   name: Linode
 published: 2013-06-05
-title: Running a Mail Server
+modified: 2022-08-25
+title: "Running a Mail Server"
 tags: ["email"]
+image: mail_server_tg.png
 ---
 
 This guide offers an overview of installing a mail server on your Linode. It covers mail server configuration, creating mail accounts, and basic overviews of tools relevant to hosting an email webserver.
-
-![Running a Mail Server](mail_server_tg.png "Running Mail Server")
 
 ## Should You Run a Mail Server?
 
@@ -141,13 +140,11 @@ Here are the most popular IMAP and POP3 servers available:
 
 ## Build Your Mail Server
 
-### SSL Certificate
+### TLS/SSL Certificate
 
-An SSL certificate encrypts connections to your mail server. It's possible to run a mail server without an SSL certificate, but it's not recommended.
+A TLS (SSL) certificate can be used to encrypt connections to your mail server using protocols like [STARTTLS](https://en.wikipedia.org/wiki/Opportunistic_TLS). It is recommended to obtain your certificate from a public Certificate Authority (CA) to provide authenticity guarantees for your users and avoid warnings and error messages. You can generate a free Let's Encrypt certificate using the [certbot](https://certbot.eff.org/) tool or use a paid service like your domain's registrar or a dedicated certificate provider. See [Obtain a Commercially Signed TLS Certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) for additional details.
 
-Any type of SSL certificate will work, but some certificates have different degrees of trustworthiness for your users. If you want the highest level of trustworthiness, you should [purchase a signed SSL certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) from a reputable company.
-
-You can also use a free self-signed certificate if you are comfortable with the warnings it generates. You can make your own [self-signed SSL certificate](/docs/guides/create-a-self-signed-tls-certificate/), or, if you're following our recommended build, you can use the one that comes with Dovecot by default.
+If the certificate is for internal use (not a public-facing service) and you are able to mark the certificate as trusted in your users' mail clients, a self-signed certificate may be sufficient. Consider any security implications and error messages that may appear when using a self-signed certificate. See [Create a Self-Signed TLS Certificate](/docs/guides/create-a-self-signed-tls-certificate/) for instructions.
 
 ### Software Installation
 

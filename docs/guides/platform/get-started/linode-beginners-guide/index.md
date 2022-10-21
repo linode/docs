@@ -65,14 +65,14 @@ First, you might want to give the [Linode Backup Service](http://www.linode.com/
 
 ## How can I install software on my Linode?
 
-Please refer to our guide on [Linux package management](/docs/guides/linux-package-management/) for distribution-specific instructions on getting software installed on your Linode. Since you have full root access to your system, you're allowed to install anything that complies with our [terms of service](http://www.linode.com/tos).
+Please refer to our guide on [Linux package management](/docs/guides/linux-package-management-overview/) for distribution-specific instructions on getting software installed on your Linode. Since you have full root access to your system, you're allowed to install anything that complies with our [terms of service](http://www.linode.com/tos).
 
 ## How do I add another IP address?
 
 You may add an [additional public IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) from the **Networking** tab for each Linode in the Linode Cloud Manager. After you've added a new IP address, you must [configure static networking](/docs/guides/linux-static-ip-configuration/) or enable [Network Helper](/docs/platform/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) and reboot your Linode before it can be used.
 
 {{< note >}}
-We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the [Support Tickets](https://cloud.linode.com/support/tickets) section of the Cloud Manager Manager explaining the reason for the new IP.
+We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the [Support Tickets](https://cloud.linode.com/support/tickets) section of the Cloud Manager explaining the reason for the new IP.
 {{< /note >}}
 
 If you'd like to take advantage of our private networking feature, you may add a private IP to your Linode from the **Networking** tab for each Linode in the Cloud Manager. Private IP addresses are not publicly accessible, although they are accessible from other Linodes in the same data center. Although we take measures to prevent others from intercepting your private IP traffic, you may still wish to configure a firewall to allow access from only the Linodes that you operate.
@@ -112,7 +112,7 @@ For those just getting started with Linux systems, we've created a series of gui
 -   [Introduction to Linux Concepts](/docs/guides/introduction-to-linux-concepts/) - An introduction to Linux and Unix-like systems.
 -   [Linux Users and Groups](/docs/guides/linux-users-and-groups/) - An introduction to the principal concepts and use of the users and groups system.
 -   [Using the Terminal](/docs/guides/using-the-terminal/) - Introducing the command line interface known as the shell or terminal.
--   [Linux Package Management](/docs/guides/linux-package-management/) - How to install software on your Linode.
+-   [Linux Package Management](/docs/guides/linux-package-management-overview/) - How to install software on your Linode.
 -   [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) - Keeping your Linode safe from unauthorized access or abuse.
 
 ## Where can I get help with something not covered here?

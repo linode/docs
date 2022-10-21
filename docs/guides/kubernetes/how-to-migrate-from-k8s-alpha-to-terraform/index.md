@@ -19,8 +19,8 @@ contributor:
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
-- '[Beginners Guide to Terraform](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform)'
-- '[Using Terraform to Provision Linode Environments](https://www.linode.com/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/)'
+- '[Beginners Guide to Terraform](/docs/guides/beginners-guide-to-terraform/)'
+- '[Using Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/)'
 aliases: ['/kubernetes/how-to-migrate-from-k8s-alpha-to-terraform/']
 ---
 

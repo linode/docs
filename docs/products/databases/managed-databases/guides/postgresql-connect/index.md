@@ -5,6 +5,7 @@ author:
 title: "Connect to a PostgreSQL Database"
 description: "Learn how to connect to a PostgreSQL Managed Databse through the command line or pgAdmin."
 published: 2022-06-06
+modified: 2022-07-28
 ---
 
 To connect to a PostgreSQL Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a PostgreSQL client. This guide details how to access your database using popular tools.
@@ -17,7 +18,7 @@ To connect to a PostgreSQL Managed Database, you need to know a few important de
 
 The *Connection Details* section contains information and credentials needed for you to connect to your database.
 
-- **Username:** The default user for all PostgreSQL Managed Databases is `linpostgres`, which has superuser admin privileges. This replaces the `root` user, which is not accessible.
+- **Username:** The default user for all PostgreSQL Managed Databases is `linpostgres`. This replaces the `root` user, which is not accessible. Superuser access is not available.
 - **Password:** The randomly generated password for your database cluster. See [Reset Root Password](/docs/products/databases/managed-databases/guides/reset-root-password/) if you wish to change it.
 - **Host:** The fully qualified domain name you can use to reach your database cluster through the public network.
 - **Private network host:** The fully qualified domain name you can use to reach your database cluster through the data center's private network (not a VLAN). Communicating with a Database Cluster over the private network avoids network transfer fees, so it's recommended to use this host string when possible.
@@ -98,3 +99,23 @@ pgAdmin is an open-source application that provides you with a graphical interfa
 1. Once all the settings have been appropriately configured, click the **Save** button to save the settings and attempt to connect.
 
     ![Screenshot of the browser window in pgAdmin 4](pgadmin-browser.png)
+
+## Connect Using DBeaver
+
+[DBeaver](https://dbeaver.io/) is free and open source universal database tool for developers and database administrators. DBeaver provides a powerful SQL-editor, administration features, ability to migrate data and schema, monitor database connection sessions, and others.
+
+1.  Make sure the IP address assigned to your system is included within your database's access controls. If not, add it now. See [Manage Access Controls](/docs/products/databases/managed-databases/guides/manage-access-controls/).
+
+1. Install the DBeaver Community (or Pro) software from the [DBeaver Downloads](https://dbeaver.io/download/) page. Be sure to select the operating system you're using locally.
+
+1. Open DBeaver, click the **Database** menu dropdown, and select **New Connection**.
+
+1. The **Connect to a database** window appears. Select **PostgeSQL** and click **Next** to continue.
+
+    ![Screenshot of the DBeaver database selection screen with MySQL highlighted](dbeaver-postgresql-connection-new.png)
+
+1. In the *Main* tab, enter the details for your connection, including the **Server Host** (hostname) **Port**, and **Username**. You can optionally store your password by entering your password and clicking the **Save password locally** button. If you do not store your password, you must enter it manually each time you connect. For security reasons, it's typically recommended *not* to store your password.
+
+    ![Screenshot of the DBeaver PostgreSQL connection details window](dbeaver-postgresql-connection-details.png)
+
+1. Click the **Test Connection** button to check if the connection is successful.

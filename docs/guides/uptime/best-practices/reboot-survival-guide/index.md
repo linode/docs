@@ -3,18 +3,17 @@ slug: reboot-survival-guide
 author:
   name: Alex Fornuto
   email: docs@linode.com
-description: 'This guide covers best practices to ensure that your server is prepared to handle an unexpected reboot and provides items to consider for scheduled downtime.'
+description: "This guide covers best practices to ensure that your server is prepared to handle an unexpected reboot and provides items to consider for scheduled downtime."
 keywords: ["uptime", "reboot", "downtime", "fault tolerance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-10-28
 modified_by:
   name: Alex Fornuto
 published: 2015-02-27
-title: Reboot Survival Guide
+title: "Reboot Survival Guide: Recover After an Unexpected Shutdown"
 aliases: ['/uptime/reboot-survival-guide/','/uptime/best-practices/reboot-survival-guide/']
+image: reboot-survival-guide.png
 ---
-
-![Reboot Survival Guide](reboot-survival-guide.png "Reboot Survival Guide")
 
 Although constant server uptime is optimal, downtime is inevitable. Cloud infrastructure and RAID arrays offer resilience, but all servers rely on physical hardware, which eventually need maintenance. Hardware aside, kernel updates and other software patches can mean rebooting to ensure your system is secure and up-to-date.
 
@@ -42,7 +41,7 @@ All critical data should be backed up, and if possible in more than one location
 
 ### Backing up Databases
 
-Proper backup knowledge for a database is important. Steps for properly backing up your MySQL or MariaDB database can be found [here](/docs/guides/use-mysqldump-to-back-up-mysql-or-mariadb/).
+Proper backup knowledge for a database is important. Steps for properly backing up your MySQL or MariaDB database can be found [here](/docs/guides/mysqldump-backups/).
 
 ### Backing up Important Files
 

@@ -686,7 +686,7 @@ db_type = "g6-standard-8"
 }
 {{< /file >}}
 
-1.  The file structure for your module and for `client1` should now look as follows. This structure is not mandated by Terraform, but it is useful as as simple example:
+1.  The file structure for your module and for `client1` should now look as follows. This structure is not mandated by Terraform, but it is useful as simple example:
 
     {{< output >}}
 client1

@@ -135,7 +135,7 @@ The data stored in your database can change quickly. Running a MySQL dump is arg
 -   **Where**: The backup file is saved on your server or downloaded to your home computer by default. You can move the file somewhere else if you want it stored in a different location.
 -   **Rotation**: Basic rotation is manual.
 
-To make human-readable backups of your databases that can be imported to a new database server, [follow these instructions](/docs/guides/use-mysqldump-to-back-up-mysql-or-mariadb/).
+To make human-readable backups of your databases that can be imported to a new database server, [follow these instructions](/docs/guides/mysqldump-backups/).
 
 ### Tar
 

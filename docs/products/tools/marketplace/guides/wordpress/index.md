@@ -7,7 +7,7 @@ keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress wit
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
-modified: 2022-05-20
+modified: 2022-07-28
 modified_by:
   name: Linode
 title: "Deploying WordPress through the Linode Marketplace"
@@ -52,7 +52,7 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 
 ### Accessing the WordPress Admin Dashboard
 
-1.  Open your web browser and navigate to `http://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1.  Open your web browser and navigate to `http://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though the connection will not be secure. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
     ![Screenshot of the browser's URL bar](wordpress-browser-url.png)
 
@@ -91,6 +91,26 @@ If you didn't set up a domain during the deployment process, you can add it manu
         ![Screenshot of the WordPress/Site Address URL fields](wordpress-site-address.png)
 
     1. Click the **Save Changes** button at the bottom of the form.
+
+### Resetting Your Admin Password or Email Address
+
+If you need to reset your admin user's password and you aren't receiving the password reset request email, you can update the password from command line. This method also allows you to update the email address for your admin account without needing an email confirmation.
+
+1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+
+1.  Navigate to the directory of your WordPress installation:.
+
+        cd /var/www/wordpress
+
+1.  Using the WP-CLI, update either the password or email address. You can also update other values as needed. See [WP-CLI wp user update command](https://developer.wordpress.org/cli/commands/user/update/).
+
+    **Update password** (replace *[user]* with the username of the user you want to update and *[password]* with the password you wish to use):
+
+        wp user update [user] --user_pass="[password]" --allow-root
+
+    **Update email** (replace *[user]* with the username of the user you want to update and *[email]* with the email address you wish to use):
+
+        wp user update [user] --user_email="[email]" --allow-root
 
 ## Going Further
 

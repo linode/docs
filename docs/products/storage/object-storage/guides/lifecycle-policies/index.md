@@ -98,7 +98,7 @@ The above lifecycle policy deletes all objects in the bucket after one day. Each
 
 Other actions can also be specified in a rule:
 
-- `NoncurrentVersionExpiration` block, and its child, `NoncurrentDays`. These are used to control the lifecycle of objects with multiple older versions, and should only be used with buckets that have [bucket versioning](/docs/platform/object-storage/bucket-versioning/) enabled. Using this option will delete objects that are not the newest, most current version. Below is an example of how to use `NoncurrentVersionExpiration`:
+- `NoncurrentVersionExpiration` block, and its child, `NoncurrentDays`. These are used to control the lifecycle of objects with multiple older versions, and should only be used with buckets that have [bucket versioning](/docs/products/storage/object-storage/guides/versioning/) enabled. Using this option will delete objects that are not the newest, most current version. Below is an example of how to use `NoncurrentVersionExpiration`:
 
     {{< file "lifecycle_policy_noncurrent_versions.xml" xml >}}
 <LifecycleConfiguration>
@@ -239,7 +239,7 @@ s3://example-bucket: Lifecycle Policy deleted
 
 ### Cyberduck
 
-[Cyberduck](https://cyberduck.io/) allows less control over lifecycle polices than the s3cmd CLI. In particular, Cyberduck does not allow you to set a lifecycle policy that removes outdated versions of objects stored in buckets where [versioning](/docs/platform/object-storage/bucket-versioning/) is enabled, nor does it allow you to delete multipart uploads. Cyberduck also limits the length of a lifecycle policy to commonly used time spans. Below you will learn how to set a lifecycle policy using Cyberduck.
+[Cyberduck](https://cyberduck.io/) allows less control over lifecycle polices than the s3cmd CLI. In particular, Cyberduck does not allow you to set a lifecycle policy that removes outdated versions of objects stored in buckets where [versioning](/docs/products/storage/object-storage/guides/versioning/) is enabled, nor does it allow you to delete multipart uploads. Cyberduck also limits the length of a lifecycle policy to commonly used time spans. Below you will learn how to set a lifecycle policy using Cyberduck.
 
 {{< note >}}
 If you don't have Cyberduck set up on your computer, visit the [Using Cyberduck with Object Storage](/docs/products/storage/object-storage/guides/cyberduck/) guide.

@@ -194,7 +194,7 @@ Never run `e2fsck` on a mounted disk. Do not continue unless you're sure that th
 
 ### Installing Packages
 
-The Finnix recovery distribution is based on Debian, so you can use the [`apt` package management system](/docs/tools-reference/linux-package-management/#debian-and-ubuntu-package-management) to install additional software packages in the temporary rescue environment. For example, you could install and run the `nmon` utility by using the following commands:
+The Finnix recovery distribution is based on Debian, so you can use the [`apt` package management system](/docs/guides/apt-package-manager/) to install additional software packages in the temporary rescue environment. For example, you could install and run the `nmon` utility by using the following commands:
 
     apt update
     apt install nmon

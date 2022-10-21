@@ -3,7 +3,7 @@ slug: linux-package-management-overview
 author:
   name: Linode
   email: docs@linode.com
-description: Learn basics and advanced Linux package management in Debian, Ubuntu, Fedora, etc using apt, yum, aptitude and other package managers.
+description: "Learn basics and advanced Linux package management in Debian, Ubuntu, Fedora, etc using apt, yum, aptitude and other package managers."
 keywords: ["dnf", "rpm", "apt", "dpkg", "apt-get", "apt-cache", "pacman", "yum"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-05-12
@@ -13,11 +13,12 @@ published: 2021-07-15
 image: OverviewofPackageManagementinLinux.jpg
 title: "An Overview of Package Management in Linux"
 tags: ["linux"]
+aliases: ['/guides/linux-package-management/','/tools-reference/basics/linux-package-management/','/tools-reference/linux-package-management/','/using-linux/package-management/']
 ---
 
 On Linux, software is typically built as a *package*, distributed through *repositories*, and managed on the end-user's system through *package managers*. Each Linux system typically contains thousands of packages, many of which are required dependencies for other packages.
 
-Many guides within Linode's documentation (and elsewhere online) require the installation of new software. These guides typically provide basic commands that utilize a package manager to install the package(s) corresponding to that software. In some cases, you may wish to go beyond these basic commands to install a particular version, search for previously installed packages, or perform other actions. The purpose of this guide is to provide a solid understanding of package management in Linux and an overview of the most most widely used package managers.
+Many guides within Linode's documentation (and elsewhere online) require the installation of new software. These guides typically provide basic commands that utilize a package manager to install the package(s) corresponding to that software. In some cases, you may wish to go beyond these basic commands to install a particular version, search for previously installed packages, or perform other actions. The purpose of this guide is to provide a solid understanding of package management in Linux and an overview of the most widely used package managers.
 
 ## Core Concepts for Package Management
 
