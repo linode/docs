@@ -156,4 +156,4 @@ You may wish to consult the following resources for additional information on th
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [PHP Documentation](http://www.php.net/docs.php)
 - [Installing Nginx on Debian 5 (Lenny)](/docs/web-servers/nginx/installation/debian-5-lenny/)
-- [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration/)
+- [Basic NGINX Configuration](/docs/guides/how-to-configure-nginx/)

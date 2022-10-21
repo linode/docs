@@ -4,7 +4,8 @@ author:
   email: docs@linode.com
 title: "Create a Managed Database"
 description: "A walkthough on creating a Managed Database through the Cloud Manager"
-modified: 2022-06-06
+published: 2022-06-06
+modified: 2022-08-09
 ---
 
 This guide walks you through creating a Linode Managed Database through the Cloud Manager.
@@ -47,6 +48,10 @@ Select the **region** where the database cluster will reside. Regions correspond
 Every node of a database cluster is built on its own Linode Compute Instance. In the **Choose a Plan** section, select the Compute Instance type and plan that the nodes will use. You can choose from either [Dedicated CPU](/docs/products/compute/dedicated-cpu/) or [Shared CPU](/docs/products/compute/shared-cpu/) plans. In general, Dedicated CPU plans are recommended for high-performance production databases.
 
 - [Choosing a Compute Instance Type and Plan](/docs/guides/choosing-a-compute-instance-plan/)
+
+{{< note >}}
+Once a Managed Database cluster is created, it cannot be resized to a different plan. To modify the resources allocated to your database, you will need to create a new Managed Database with the desired plan, migrate your data, and delete the original Managed Database.
+{{</ note >}}
 
 ## Determine the Number of Nodes
 

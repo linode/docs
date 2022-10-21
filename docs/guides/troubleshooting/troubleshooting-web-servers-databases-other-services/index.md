@@ -15,7 +15,7 @@ title: "Troubleshooting Web Servers, Databases, and Other Services"
 aliases: ['/troubleshooting/troubleshooting-web-servers-databases-other-services/']
 ---
 
-This guide presents troubleshooting strategies for when you can't connect to your web server, database, or other services running on your Linode. This guide assumes that you have access to SSH. If you can't log in with SSH, review [Troubleshooting SSH](/docs/troubleshooting/troubleshooting-ssh/) and then return to this guide.
+This guide presents troubleshooting strategies for when you can't connect to your web server, database, or other services running on your Linode. This guide assumes that you have access to SSH. If you can't log in with SSH, review [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) and then return to this guide.
 
 {{< disclosure-note "Where to go for help outside this guide" >}}
 This guide explains how to use different troubleshooting commands on your Linode. These commands can produce diagnostic information and logs that may expose the root of your connection issues. For some specific examples of diagnostic information, this guide also explains the corresponding cause of the issue and presents solutions for it.
@@ -74,11 +74,11 @@ If your service doesn't start normally, review your system logs for the service.
 
 | **Distribution** | **System Logs** |
 | ------------ | ------- |
-| systemd systems | [Run `journalctl`](/docs/quick-answers/linux/how-to-use-journalctl/) |
+| systemd systems | [Run `journalctl`](/docs/guides/how-to-use-journalctl/) |
 | Ubuntu 14.04, Debian 7 | `/var/log/syslog` |
 | CentOS 6 | `/var/log/messages` |
 
-Your service's log location will vary by the application, but they are often stored in `/var/log`. [The `less` command](/docs/quick-answers/linux/how-to-use-less/) is a useful tool for browsing through your logs.
+Your service's log location will vary by the application, but they are often stored in `/var/log`. [The `less` command](/docs/guides/how-to-use-less/) is a useful tool for browsing through your logs.
 
 Try pasting your log messages into a search engine or searching for your messages in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Linode](/docs/troubleshooting/rescue-and-rebuild/#rebuilding).
 
@@ -98,7 +98,7 @@ Your deployment may be running FirewallD or UFW, which are frontends used to mor
 Review [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
 {{< /note >}}
 
-Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections. For example, a rule which allows incoming HTTP traffic could look like this:
+Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections. For example, a rule which allows incoming HTTP traffic could look like this:
 
 {{< output >}}
 -A INPUT -p tcp -m tcp --dport 80 -m conntrack --ctstate NEW -j ACCEPT
@@ -106,7 +106,7 @@ Firewall rulesets can vary widely. Review the [Control Network Traffic with ipta
 
 ### Disable Firewall Rules
 
-In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterward with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) for help with this subject.
+In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterward with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) for help with this subject.
 
 1.  Create a temporary backup of your current iptables:
 
@@ -195,9 +195,9 @@ You have several options for resolving disk space issues:
 
 -   Free up space on your disk by locating and removing files you don't need, using a tool like [ncdu](https://dev.yorhel.nl/ncdu).
 
--   If you have any unallocated space on your Linode (storage that you pay for already but which isn't assigned to your disk), [resize your disk](/docs/quick-answers/linode-platform/resize-a-linode-disk/) to take advantage of the space.
+-   If you have any unallocated space on your Linode (storage that you pay for already but which isn't assigned to your disk), [resize your disk](/docs/guides/resize-a-linode-disk/) to take advantage of the space.
 
--   [Upgrade your Linode](/docs/platform/disk-images/resizing-a-linode/) to a higher-tier resource plan and then resize your disk to use the newly available space. If your Linode has a pending free upgrade for your storage space, you can choose to take this free upgrade to solve the issue.
+-   [Upgrade your Linode](/docs/guides/resizing-a-linode/) to a higher-tier resource plan and then resize your disk to use the newly available space. If your Linode has a pending free upgrade for your storage space, you can choose to take this free upgrade to solve the issue.
 
 <!-- >
 Would be nice to eventually have these instructions in a new "How to Free Up Space on Your Linode" guide and then link to it.
@@ -205,4 +205,4 @@ Would be nice to eventually have these instructions in a new "How to Free Up Spa
 
 ### Database Performance Troubleshooting
 
-If your database is running but returning slowly, research how to optimize the database software for the resources your Linode has. If you run MySQL or MariaDB, read [How to Optimize MySQL Performance Using MySQLTuner](/docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/).
+If your database is running but returning slowly, research how to optimize the database software for the resources your Linode has. If you run MySQL or MariaDB, read [How to Optimize MySQL Performance Using MySQLTuner](/docs/guides/how-to-optimize-mysql-performance-using-mysqltuner/).

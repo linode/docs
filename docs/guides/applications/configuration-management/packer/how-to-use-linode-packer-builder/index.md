@@ -80,7 +80,7 @@ Verify that Packer was successfully installed by running the command `packer --v
 Now that Packer is installed, you can make a Packer [template](https://www.packer.io/docs/templates). A template is a file that contains the configurations needed to build a machine image. A template can be formatted in [JSON](https://www.packer.io/docs/templates/legacy_json_templates) or [HCL2](https://www.packer.io/docs/templates/hcl_templates) (Hashicorp Configuration Language). As of Packer v1.7.0, the HCL2 template format is preferred and, as such, will be used in the examples within this guide.
 
 {{< note >}}
-The steps in this section will incur charges related to deploying a [1GB Linode](https://www.linode.com/pricing) (Nanode). The Linode will only be deployed for the duration of the time needed to create and snapshot your image and will then be deleted. See our [Billing and Payments](/docs/guides/billing-and-payments/) guide for details about [hourly billing](/docs/guides/billing-and-payments/#how-hourly-billing-works).
+The steps in this section will incur charges related to deploying a [1GB Linode](https://www.linode.com/pricing) (Nanode). The Linode will only be deployed for the duration of the time needed to create and snapshot your image and will then be deleted. See our [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for details about how hourly billing works.
 {{</ note >}}
 
 ### Creating the Template File

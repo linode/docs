@@ -45,7 +45,7 @@ Replace each instance of `example.com` in this guide with the domain name or IP 
 
     The first command outputs the short hostname; the second, a fully-qualified domain name (FQDN).
 
--   Configure a [LAMP](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/) web stack on Ubuntu 18.04 installation.
+-   Configure a [LAMP](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/guides/how-to-install-the-lemp-stack-on-ubuntu-18-04/) web stack on Ubuntu 18.04 installation.
 
 -   If you are running NGINX, edit the `location /` block of the configuration to set `index.php` as an index for the site:
 

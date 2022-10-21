@@ -28,7 +28,7 @@ Full disk encryption protects the information stored on your Linode's disks by c
 
 ## Potential Drawbacks
 
-Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you'll need to enter the encryption passphrase in the console every time your Linode boots. And some Linode Manager tools may not work as expected if your disks are encrypted. You'll need to manually resize your filesystem if you want to resize your disk. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/platform/disk-images/linode-backup-service/) can't mount encrypted disks.
+Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you'll need to enter the encryption passphrase in the console every time your Linode boots. And some Linode Manager tools may not work as expected if your disks are encrypted. You'll need to manually resize your filesystem if you want to resize your disk. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/products/storage/backups/) can't mount encrypted disks.
 
 ## Getting Started
 

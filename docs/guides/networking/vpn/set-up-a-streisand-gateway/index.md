@@ -23,7 +23,7 @@ aliases: ['/networking/vpn/set-up-a-streisand-gateway/']
 
 Setting up a personal Virtual Private Network (VPN) server is a great way to avoid internet censorship, surveillance, or geolocation. Using your own server allows you to choose any protocol you want, and to have full control over the security and privacy of your connection.
 
-However, the configuration process is time-consuming, especially for those with little experience working with remote servers. For example, Linode's guide on setting up a hardened OpenVPN server and client is a [three](/docs/networking/vpn/set-up-a-hardened-openvpn-server/) [part](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server/) [series](/docs/networking/vpn/configuring-openvpn-client-devices/).
+However, the configuration process is time-consuming, especially for those with little experience working with remote servers. For example, Linode's guide on setting up a hardened OpenVPN server and client is a [three](/docs/guides/set-up-a-hardened-openvpn-server/) [part](/docs/guides/tunnel-your-internet-traffic-through-an-openvpn-server/) [series](/docs/guides/configuring-openvpn-client-devices/).
 
 [Streisand](https://github.com/jlund/streisand) attempts to simplify this process and offer painless, high-quality security. The Streisand script creates a Linode and automatically configures OpenVPN, Shadowsocks, OpenConnect, L2TP/IPSec, Wireguard &#174;, a Tor bridge, and SSH. Once the server is set up, users can connect to a gateway containing detailed, personalized instructions for connecting to each of these services.
 

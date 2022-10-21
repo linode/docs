@@ -34,7 +34,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ## How to Connect to a Remote Database
 
- - Check out our guide [How to Connect to a MySQL or MariaDB Database](/docs/guides/connect-to-a-mysql-or-mariadb-database/) for the steps to establish a remote connection to your database via the MySQL command line, or CLI tool.
+ - Check out our guide [How to Connect to a MySQL or MariaDB Database](/docs/guides/mysql-command-line-client/) for the steps to establish a remote connection to your database via the MySQL command line, or CLI tool.
 
 - Refer to our [Install MySQL Workbench for Database Administration](/docs/guides/deploy-mysql-workbench-for-database-administration/) guide for the steps to install MySQL Workbench and use it to connect to your remote database.
 

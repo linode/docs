@@ -4,11 +4,10 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'In this guide, you will learn how to set up a LAMP (Linux, Apache, MySQL, PHP) stack and then configure a hosted website using Ubuntu 18.04.'
-og_description: 'In this guide, you will learn how to set up a LAMP (Linux, Apache, MySQL, PHP) stack and then configure a hosted website using Ubuntu 18.04.'
 keywords: ["linode guide", "hosting a website", "website", "linode quickstart guide"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/hosting-a-website/','/hosting-website/','/websites//','/web-servers/lamp//', /websites/hosting-a-website-ubuntu-18-04/]
+aliases: ['/websites/hosting-a-website/','/hosting-website/', '/websites/hosting-a-website-ubuntu-18-04/']
 modified: 2021-08-16
 modified_by:
   name: Linode
@@ -23,7 +22,7 @@ In this guide, you learn how to host a website on Ubuntu 18.04 using the LAMP st
 This guide is intended for small and medium-sized websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you need to assess your requirements and install custom packages tailored for your particular requirements.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, check the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, check the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Hosting an Apache Web Server on Ubuntu 18.04
@@ -354,7 +353,7 @@ PHP is now installed on your Linode and configured for optimal performance.
 
 You've successfully installed Apache, MySQL, and PHP. Now it's time to upload a website to your Linode. This is one of the last steps before you "flip the switch" and publish your website on the Internet.
 
-1.  If you haven't done so already, download and install an SFTP capable client on your computer. Linode recommends using the [FileZilla](/docs/tools-reference/file-transfer/filezilla/) SFTP client. Follow the instructions in that guide to connect to your Linode.
+1.  If you haven't done so already, download and install an SFTP capable client on your computer. Linode recommends using the [FileZilla](/docs/guides/filezilla/) SFTP client. Follow the instructions in that guide to connect to your Linode.
 
 1.  Upload your website's files to the `/var/www/html/example.com/public_html` directory. Replace `example.com` with your domain name.
 
@@ -413,10 +412,10 @@ It's a good idea to test your website(s) before you add the DNS records. This is
 1.  Enter your Linode's IP address in a web browser (e.g., type `http://192.0.2.0` in the address bar, replacing the example IP address with your own). Your website should load in the web browser.
 
     {{< note >}}
-  If you have configured a firewall on your Linode, ensure your firewall rules allow traffic to your Apache web server. For more information on configuring firewall rules on Ubuntu, see [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/).
+  If you have configured a firewall on your Linode, ensure your firewall rules allow traffic to your Apache web server. For more information on configuring firewall rules on Ubuntu, see [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
     {{</ note >}}
 
-1.  If you plan on hosting multiple websites, you can test the virtual hosts by editing the `hosts` file on your local computer. Check out the [Previewing Websites Without DNS](/docs/networking/dns/previewing-websites-without-dns/) guide for more information.
+1.  If you plan on hosting multiple websites, you can test the virtual hosts by editing the `hosts` file on your local computer. Check out the [Previewing Websites Without DNS](/docs/guides/previewing-websites-without-dns/) guide for more information.
 
 1.  Test the name-based virtual hosts by entering the domain names in the address bar of the web browser on a local device. Your websites should load in the web browser.
 
@@ -426,4 +425,4 @@ Remember to remove the entries for the name-based virtual hosts from your `hosts
 
 ## Next Steps
 
-Now that you have tested your website by visiting its IP address, you can create DNS records so that you can access the website with a domain name. Read the [DNS Manager guide](/docs/platform/manager/dns-manager-new-manager/) for more information on how to add DNS records for your website. After you have a domain name set up, you should also add reverse DNS. Check out our [Reverse DNS guide](/docs/networking/dns/configure-your-linode-for-reverse-dns/) for more information on how to set up reverse DNS.
+Now that you have tested your website by visiting its IP address, you can create DNS records so that you can access the website with a domain name. Read the [DNS Manager guide](/docs/guides/dns-manager/) for more information on how to add DNS records for your website. After you have a domain name set up, you should also add reverse DNS. Check out our [Reverse DNS guide](/docs/guides/configure-your-linode-for-reverse-dns/) for more information on how to set up reverse DNS.

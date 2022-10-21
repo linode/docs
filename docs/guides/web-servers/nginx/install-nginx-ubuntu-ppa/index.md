@@ -35,7 +35,7 @@ deb http://nginx.org/packages/mainline/ubuntu/ CODENAME nginx
         sudo apt update
         sudo apt install nginx
 
-4.  Ensure NGINX is running and and enabled to start automatically on reboot:
+4.  Ensure NGINX is running and enabled to start automatically on reboot:
 
         sudo systemctl start nginx
         sudo systemctl enable nginx

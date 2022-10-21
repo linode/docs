@@ -27,7 +27,7 @@ tab_group_main:
 
 ### Cloning and Disks
 
-- [Cloning a Linode](/docs/platform/disk-images/clone-your-linode/)
+- [Cloning a Linode](/docs/guides/clone-your-linode/)
 
 - [Linode Disks and Storage](/docs/guides/disks-and-storage/)
 

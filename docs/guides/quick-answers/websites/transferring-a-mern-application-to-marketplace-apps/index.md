@@ -18,7 +18,7 @@ external_resources:
 - '[NPM](https://www.npmjs.com/)'
 ---
 
-The [Linode Marketplace App](/docs/guides/mern-stack-marketplace-app/) for the MERN stack (MongoDB, Express, React, Node.js) is a great way to create the base configuration equipped with all the essentials for a MERN stack quickly, however the Marketplace APP itself will still require tuning to host your MERN application. Transferring an application to a new host for example, can be a complex process depending on the specifics of your configuration. This guide was designed to serve as reference for users currently undergoing the migration process, and aims to clear up potential confusion and common issues that can occur.
+The [Linode Marketplace App](/docs/products/tools/marketplace/guides/mern-stack/) for the MERN stack (MongoDB, Express, React, Node.js) is a great way to create the base configuration equipped with all the essentials for a MERN stack quickly, however the Marketplace APP itself will still require tuning to host your MERN application. Transferring an application to a new host for example, can be a complex process depending on the specifics of your configuration. This guide was designed to serve as reference for users currently undergoing the migration process, and aims to clear up potential confusion and common issues that can occur.
 
 ## Transferring the Application
 
@@ -49,7 +49,7 @@ The default `hello-world` Flask application included as part of the MERN Marketp
 
 ## Preparing for The Transfer
 
-Before, proceeding with any remote transfer, it is strongly recommended the the original host that will be transferring data to the Linode has [Backups](/docs/guides/backing-up-your-data/) available to restore from. While standard backup solutions will work for the majority of the MERN Stack, a database dump for MongoDB should be performed by using the [mongodump](https://docs.mongodb.com/database-tools/mongodump/) command.
+Before, proceeding with any remote transfer, it is strongly recommended the original host that will be transferring data to the Linode has [Backups](/docs/guides/backing-up-your-data/) available to restore from. While standard backup solutions will work for the majority of the MERN Stack, a database dump for MongoDB should be performed by using the [mongodump](https://docs.mongodb.com/database-tools/mongodump/) command.
 
 {{< note >}}
 If using a Cloud-Native database like **MongoDB Atlas**, the steps for transferring your database may differ, and users should consult the documentation of their database host.

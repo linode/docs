@@ -1,44 +1,92 @@
 (() => {
-  // src/js/Footer/cookies.js
-  function paramsToCookies(args) {
-    var url = new URL(window.location.href);
-    let pval = url.searchParams.get(args.param);
-    if (pval != null && pval.length) {
-      let d = new Date();
-      d.setTime(d.getTime() + args.days * 24 * 60 * 60 * 1e3);
-      let expires = d.toUTCString();
-      pval = encodeURIComponent(pval);
-      if (document.cookie.indexOf(`${args.cookie}=${pval}`) < 0) {
-        document.cookie = `${args.cookie}=${pval} ;domain=.linode.com ;expires=${expires} ;path=/ ;secure ;samesite=lax`;
-      }
+  // src/js/Footer/storage.js
+  var now = new Date();
+  function daysFromNow(days = 0) {
+    let d = new Date();
+    d.setTime(d.getTime() + days * 24 * 60 * 60 * 1e3);
+    return d;
+  }
+  function expireFromLocal(name) {
+    if (localStorage.getItem(name) === null)
+      return;
+    let now2 = new Date(), exp_value = localStorage.getItem(`${name}_exp`), exp_date = exp_value !== null ? new Date(exp_value) : now2;
+    if (isNaN(exp_date)) {
+      localStorage.removeItem(`${name}_exp`);
+      return;
     }
+    if (now2 < exp_date)
+      return;
+    localStorage.removeItem(name);
+    localStorage.removeItem(`${name}_exp`);
+  }
+  function saveToLocal(name, value, exp_date = null, overwrite = true) {
+    let saved = localStorage.getItem(name);
+    if (saved !== null && saved !== value && !overwrite)
+      return;
+    localStorage.setItem(name, value);
+    if (exp_date !== null) {
+      localStorage.setItem(`${name}_exp`, exp_date.toUTCString());
+    }
+  }
+  function saveToCookie(name, value, exp_date = null, overwrite = true) {
+    value = encodeURIComponent(value);
+    if (document.cookie.indexOf(`${name}=`) >= 0 && document.cookie.indexOf(`${name}=${value}`) < 0 && !overwrite)
+      return;
+    let expires = exp_date !== null ? `expires=${exp_date.toUTCString()}; ` : "";
+    document.cookie = `${name}=${value}; domain=.linode.com; ${expires}path=/; secure; samesite=lax; `;
+  }
+  function storeParams(args) {
+    let url = new URL(window.location.href), param_value = url.searchParams.get(args.param);
+    if (args.local)
+      expireFromLocal(args.local);
+    if (!param_value)
+      return;
+    if (args.regex && !param_value.match(args.regex))
+      return;
+    let exp_date = args.days ? daysFromNow(args.days) : null;
+    if (args.local)
+      saveToLocal(args.local, param_value, exp_date);
+    if (args.cookie)
+      saveToCookie(args.cookie, param_value, exp_date);
   }
 
   // src/js/Footer/referral-codes.js
-  paramsToCookies({
+  storeParams({
     "param": "r",
     "cookie": "referralCode",
-    "days": 14
+    "days": 14,
+    "regex": /^[0-9a-f]{40}$/i
   });
+  var cookies = Object.fromEntries(document.cookie.split(/\s*;\s*/).map((c) => c.split(/\s*=\s*/)));
+  var body = document.getElementsByTagName("body")[0];
+  if (cookies.referralCode) {
+    body.classList.add("js-is-referral");
+  }
 
   // src/js/Footer/promo-codes.js
-  paramsToCookies({
+  storeParams({
     "param": "promo",
     "cookie": "promoCode",
-    "days": 1
+    "local": "promoCode",
+    "days": 1,
+    "regex": /^[0-9a-z-_]*$/i
   });
-  paramsToCookies({
+  storeParams({
     "param": "promo_length",
     "cookie": "promoLength",
-    "days": 1
+    "local": "promoLength",
+    "days": 1,
+    "regex": /^[0-9]*$/
   });
-  paramsToCookies({
+  storeParams({
     "param": "promo_value",
     "cookie": "promoValue",
-    "days": 1
+    "local": "promoValue",
+    "days": 1,
+    "regex": /^[0-9]*$/
   });
-  function updateSignupLinks(promo, should_override) {
-    if (!promo)
+  function updatePromoCodes(promo, should_override) {
+    if (typeof promo !== "string" || promo.match(/[^a-zA-Z0-9_\-]/))
       return;
     let $links = Array.from(document.querySelectorAll('a[href*="login.linode.com"]'));
     $links = $links.filter(($link) => {
@@ -55,22 +103,30 @@
     });
     $links.forEach(($link) => {
       let link_url = new URL($link.href);
-      link_url.searchParams.set("promo", promo);
+      if (promo) {
+        link_url.searchParams.set("promo", promo);
+      } else {
+        link_url.searchParams.delete("promo");
+      }
       $link.href = link_url.toString();
     });
   }
-  function checkForPromoCodes() {
-    const cookies = Object.fromEntries(document.cookie.split(/\s*;\s*/).map((c) => c.split(/\s*=\s*/)));
-    if (cookies.promoCode) {
-      updateSignupLinks(cookies.promoCode, true);
-      return;
-    }
-    fetch("https://www.linode.com/wp-json/linode/v1/promo-codes").then((response) => {
+  var cookies2 = Object.fromEntries(document.cookie.split(/\s*;\s*/).map((c) => c.split(/\s*=\s*/)));
+  var localPromoCode = localStorage.getItem("promoCode");
+  if (cookies2.referralCode) {
+    updatePromoCodes("", true);
+  } else if (localPromoCode || cookies2.promoCode) {
+    updatePromoCodes(localPromoCode || cookies2.promoCode, true);
+  } else {
+    fetch("https://www.linode.com/wp-json/linode/v1/promo-data").then((response) => {
       if (!response.ok)
         throw new Error("");
       return response;
-    }).then((response) => response.json()).then((data) => updateSignupLinks(data.promo_code, false)).catch((error) => {
+    }).then((response) => response.json()).then((data) => {
+      if (data.global && data.global.promo_code) {
+        updatePromoCodes(data.global.promo_code, false);
+      }
+    }).catch((error) => {
     });
   }
-  checkForPromoCodes();
 })();

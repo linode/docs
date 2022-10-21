@@ -18,15 +18,15 @@ image: deploy-lke-cluster-with-terraform.png
 contributor:
   name: Linode
 external_resources:
-- '[Setting Up a Private Docker Registry with Linode Kubernetes Engine and Object Storage](/docs/kubernetes/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)'
-- '[Deploying a Static Site on Linode Kubernetes Engine](/docs/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/)'
+- '[Setting Up a Private Docker Registry with Linode Kubernetes Engine and Object Storage](/docs/guides/how-to-setup-a-private-docker-registry-with-lke-and-object-storage/)'
+- '[Deploying a Static Site on Linode Kubernetes Engine](/docs/guides/how-to-deploy-a-static-site-on-linode-kubernetes-engine/)'
 - '[Linode Provider Terraform Documentation](https://www.terraform.io/docs/providers/linode/index.html)'
 aliases: ['/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/']
 ---
 
 ## What is the Linode Kubernetes Engine (LKE)?
 
-The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](/docs/platform/billing-and-support/billing-and-payments/#linode-cloud-hosting-and-backups) with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/). Your LKE Cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
+The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](/docs/platform/billing-and-support/billing-and-payments/#linode-cloud-hosting-and-backups) with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/guides/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/products/storage/block-storage/). Your LKE Cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
 
 ## In this Guide
 
@@ -44,7 +44,7 @@ This guide will walk you through the steps needed to deploy a Kubernetes cluster
 Ensure that your token has, at minimum, Read/Write permissions for Linodes, Kubernetes, NodeBalancers, and Volumes.
     {{</ note >}}
 
-1. Review the [A Beginner's Guide to Terraform](/docs/applications/configuration-management/terraform/beginners-guide-to-terraform/) to familiarize yourself with Terraform concepts if you have not used the tool before. This guide assumes familiarity with Terraform and its native [HCL syntax](https://www.terraform.io/docs/configuration/syntax.html).
+1. Review the [A Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/) to familiarize yourself with Terraform concepts if you have not used the tool before. This guide assumes familiarity with Terraform and its native [HCL syntax](https://www.terraform.io/docs/configuration/syntax.html).
 
 ## Prepare your Local Environment
 
@@ -196,7 +196,7 @@ You are now ready to define the input variables that were referenced in your `ma
     }
     {{</ file >}}
 
-    This file describes each variable and provides them with default values. You should review and update the file with your own preferred default values, ensuring that they match currently available [versions of Kubernetes on LKE](https://developers.linode.com/changelog/linode-kubernetes-engine/), as well as [Available Plans](https://www.linode.com/docs/guides/choosing-a-compute-instance-plan/) and [Data Centers](https://www.linode.com/docs/guides/how-to-choose-a-data-center/)
+    This file describes each variable and provides them with default values. You should review and update the file with your own preferred default values, ensuring that they match currently available [versions of Kubernetes on LKE](https://developers.linode.com/changelog/linode-kubernetes-engine/), as well as [Available Plans](/docs/guides/choosing-a-compute-instance-plan/) and [Data Centers](/docs/guides/how-to-choose-a-data-center/)
 
 ### Assign Values to your Input Variables
 

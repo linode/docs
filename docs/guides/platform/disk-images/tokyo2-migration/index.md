@@ -109,7 +109,7 @@ To clone a Linode, follow these steps:
 After you have completed the clone, you may need to update your new Linode's [network configuration](#update-your-network-configuration) to work properly with its new IP addresses. After making sure that your new Tokyo 2 servers all work as expected, update your [DNS records](#update-dns-records). Consider updating your [domain's TTL](#update-your-ttl) *before* you update your DNS records.
 
 {{< caution >}}
-If you clone your Tokyo 1 Linodes to Tokyo 2, your Tokyo 1 Linodes will remain running and active on your account by default. To prevent double-billing, [remove](/docs/guides/billing-and-payments/#removing-services) the original Tokyo 1 Linodes after you have finished your clones.
+If you clone your Tokyo 1 Linodes to Tokyo 2, your Tokyo 1 Linodes will remain running and active on your account by default. To prevent double-billing, [remove](/docs/guides/manage-billing-in-cloud-manager/#removing-services) the original Tokyo 1 Linodes after you have finished your clones.
 {{< /caution >}}
 
 ### Option 3: Migrate when Scheduled
