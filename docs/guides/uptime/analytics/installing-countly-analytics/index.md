@@ -99,11 +99,11 @@ These steps show you how to download the Git repository for Countly and use the 
 
     ```file {title="/etc/nginx/sites-available/default" lang="nginx" hl_lines="4"}
     server {
-    	listen   80;
-    	listen   [::]:80 ipv6only=on;
-    	server_name  localhost example.com 192.0.2.0;
+        listen   80;
+        listen   [::]:80 ipv6only=on;
+        server_name  localhost example.com 192.0.2.0;
 
-    	access_log  off;
+        access_log  off;
     ```
 
 1.  Open the HTTP port (`80`) on your server's firewall. Typically, the firewalls on Ubuntu and Debian systems are managed with UFW. Using it, you can open the HTTP port with:
