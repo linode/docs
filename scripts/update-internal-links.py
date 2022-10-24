@@ -67,7 +67,7 @@ def build_list_of_aliases(path_to_audit):
                         canonical_link = "/docs/guides/" + guide['slug'] + "/"
                     elif "docs/products/" in file_path:
                         canonical_link = file_path.replace('../docs/','docs/')
-                        canonical_link = canonical_link.replace('docs/','docs/')
+                        canonical_link = file_path.replace('docs/','/docs/')
                         canonical_link = canonical_link.replace('/index.md','/')
                         canonical_link = canonical_link.replace('/_index.md','/')
                     else:
@@ -131,9 +131,7 @@ def replace_links_to_aliases(path_to_audit):
                         link = match.group()
                         # Remove the title, brackets, parenthesis, and anchors from the markdown link
                         if "#" in link:
-                            print(link)
                             link = link[link.find("(")+1:link.find("#")]
-                            print(link)
                         else:
                             link = link[link.find("(")+1:link.find(")")]
                         # Remove /docs/ from the link so its formatted the same as aliases
