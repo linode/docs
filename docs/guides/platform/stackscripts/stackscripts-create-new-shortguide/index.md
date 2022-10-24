@@ -70,7 +70,7 @@ echo $IPADDR $FQDN $HOSTNAME >> /etc/hosts
 1. Click **Save** when you are done (and you can always edit your script later if needed). You are brought back to the **StackScripts** page, where your new StackScript is visible and ready to use with a new Linode deployment.
 
     {{< note >}}
-To deploy a new Linode with your StackScript, follow the steps in the [Deploying a New Linode Using a StackScript](/docs/guides/how-to-deploy-a-new-linode-using-a-stackscript/#deploy-a-linode-from-an-account-stackscript) guide.
+To deploy a new Linode with your StackScript, follow the steps in the [Deploying a New Linode Using a StackScript](/docs/platform/stackscripts/how-to-deploy-a-new-linode-using-a-stackscript/#deploy-a-linode-from-an-account-stackscript) guide.
     {{</ note >}}
 
     ![View your new StackScript on the StackScripts page](stackscript-create-success.png "View your new StackScript on the StackScripts page")

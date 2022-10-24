@@ -38,7 +38,7 @@ When self-hosting the UniFi Network Application, you are responsible for the sec
 
 ### Accessing the UniFi Network Application
 
-1. Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with your Compute Instance's rDNS domain or, if you entered one, the domain you specified when you deployed the instance. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing the rDNS value for your public IPv4 address. The URL is also visible when logging into the new Compute Instance for the first time, either through [Lish](/docs/guides/lish/) or [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1. Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with your Compute Instance's rDNS domain or, if you entered one, the domain you specified when you deployed the instance. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing the rDNS value for your public IPv4 address. The URL is also visible when logging into the new Compute Instance for the first time, either through [Lish](/docs/guides/using-the-lish-console/) or [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
 
     {{< output >}}
 The installation is now complete, and you can access the

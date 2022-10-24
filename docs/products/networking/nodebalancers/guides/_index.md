@@ -40,4 +40,4 @@ modified: 2022-10-07
 
 - [Create a NodeBalancer with Terraform](/docs/guides/create-a-nodebalancer-with-terraform/)
 
-- [Create and Configure a NodeBalancer with Pulumi](/docs/guides/deploy-in-code-with-pulumi/#create-and-configure-a-nodebalancer)
+- [Create and Configure a NodeBalancer with Pulumi](/docs/applications/configuration-management/deploy-in-code-with-pulumi/#create-and-configure-a-nodebalancer)

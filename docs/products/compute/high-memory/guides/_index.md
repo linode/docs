@@ -17,7 +17,7 @@ These guides explore targeted topics like the basics of High Memory Linodes and 
 
 ### Choosing a Linode Plan
 
-- [How to Choose a Linode Plan](/docs/guides/choosing-a-compute-instance-plan/#2-high-memory)
+- [How to Choose a Linode Plan](/docs/platform/how-to-choose-a-linode-plan/#2-high-memory)
 
 ### Databases
 

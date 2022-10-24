@@ -43,7 +43,7 @@ The steps required in this guide require root privileges. Be sure to run the ste
 
 3.  You must [set the hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and fully qualified domain name (FQDN), and [update /etc/hosts](/docs/guides/using-your-systems-hosts-file/) prior to installing Zimbra.
 
-4.  Configure your DNS entries at your DNS provider to provide an A record for the host, and point the domain MX record to your new server. A reverse DNS pointer is highly recommended to prevent mail from your server being rejected. See [Running a Mail Server: DNS Records](/docs/guides/running-a-mail-server/#dns-records) for details on setting up DNS.
+4.  Configure your DNS entries at your DNS provider to provide an A record for the host, and point the domain MX record to your new server. A reverse DNS pointer is highly recommended to prevent mail from your server being rejected. See [Running a Mail Server: DNS Records](/docs/email/running-a-mail-server/#dns-records) for details on setting up DNS.
 
 ## Download Zimbra
 
@@ -142,7 +142,7 @@ This Guide is about setting up a new Zimbra Linode, but if you are upgrading an 
 
 6. Configure MX records.
 
-    If you receive an error about a missing MX record as shown below, it means your domain DNS records are not matching what Zimbra expects to find, based on the hostname you configured earlier. Check your `/etc/hostname` file and your [DNS records](/docs/guides/dns-records-an-introduction/#mx) to resolve the problem.
+    If you receive an error about a missing MX record as shown below, it means your domain DNS records are not matching what Zimbra expects to find, based on the hostname you configured earlier. Check your `/etc/hostname` file and your [DNS records](/docs/networking/dns/dns-records-an-introduction/#mx) to resolve the problem.
 
         DNS ERROR resolving MX for linodemail.example.com
         It is suggested that the domain name have an MX record configured in DNS

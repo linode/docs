@@ -36,7 +36,7 @@ In this guide you will learn how to:
 
 ##  Before You Begin
 
-1. If you haven't yet, [create a Linode API token](/docs/guides/getting-started-with-the-linode-api/#create-an-api-token).
+1. If you haven't yet, [create a Linode API token](/docs/platform/api/getting-started-with-the-linode-api/#create-an-api-token).
 
 1. [Create a free Pulumi account](https://app.pulumi.com/signup).
 

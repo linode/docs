@@ -23,6 +23,6 @@ These guides explore targeted topics like the basics of Dedicated CPU Linodes, a
 
 ### Choosing a Linode Plan
 
-- [How to Choose a Linode Plan](/docs/guides/choosing-a-compute-instance-plan/#3-dedicated-cpu)
+- [How to Choose a Linode Plan](/docs/platform/how-to-choose-a-linode-plan/#3-dedicated-cpu)
 
 - [Use Cases for Linode Dedicated CPU Instances](/docs/guides/dedicated-cpu-use-cases/)

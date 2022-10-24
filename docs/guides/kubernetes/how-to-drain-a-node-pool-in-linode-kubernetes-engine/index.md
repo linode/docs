@@ -68,7 +68,7 @@ spec:
 {{</ file >}}
 
     {{< note >}}
-  To retain the Block Storage Volume and its data, even after the associated PVC is deleted, use the `linode-block-storage-retain` StorageClass. If, instead, you prefer to have the Block Storage Volume and its data deleted along with its PVC, use the `linode-block-storage` StorageClass. For more information, see the [Delete a Persistent Volume Claim](/docs/guides/deploy-volumes-with-the-linode-block-storage-csi-driver/#delete-a-persistent-volume-claim).
+  To retain the Block Storage Volume and its data, even after the associated PVC is deleted, use the `linode-block-storage-retain` StorageClass. If, instead, you prefer to have the Block Storage Volume and its data deleted along with its PVC, use the `linode-block-storage` StorageClass. For more information, see the [Delete a Persistent Volume Claim](/docs/kubernetes/deploy-volumes-with-the-linode-block-storage-csi-driver/#delete-a-persistent-volume-claim).
 {{</ note >}}
       The PVC represents a Block Storage Volume. Because Block Storage Volumes have a minimum size of 10 gigabytes, the storage has been set to `10Gi`. If you choose a size smaller than 10 gigabytes, the PVC defaults to 10 gigabytes. Currently the only mode supported by the Linode Block Storage CSI driver is `ReadWriteOnce`, meaning that it can only be connected to one Kubernetes node at a time.
 

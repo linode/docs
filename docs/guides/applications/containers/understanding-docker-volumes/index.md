@@ -36,7 +36,7 @@ Files (and other data) stored within a Docker container does not persist if the 
 
 To start understanding Docker Volumes, you'll need a volume to work on.
 
-1.  Log in to your Linode (or other Linux server) through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1.  Log in to your Linode (or other Linux server) through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 
 1.  Create a volume by entering the following command, replacing *example_volume* with the label for your volume.
 
@@ -136,7 +136,7 @@ Docker Volumes also allow sharing between containers.
 Instead of creating a new volume, you can also mount a directory from your Linode (or other system) to a Docker container. This is accomplished through [bind mounts](https://docs.docker.com/storage/bind-mounts/) and is helpful when you want to store and access your a container's files directly from your system. Compared to volumes, bind mounts have limited functionality.
 
 
-1.  Log in to your Linode (or other Linux server) through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1.  Log in to your Linode (or other Linux server) through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 
 1.  Use the following command to run Docker, replacing *[local-directory]* with the absolute path to the directory within your Linode that you'd like to mount (use `$(pwd)` to mount the current directory). Then replace *[mount-directory]* with the absolute path on your container where you wish to access the local files and replace *[image]* with the Docker image you wish to use.
 

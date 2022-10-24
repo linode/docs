@@ -38,7 +38,7 @@ external_resources:
 
 ### Access your aaPanel App
 
-1.  Log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1.  Log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 
 2.  Run the following command to obtain your login information for your aaPanel dashboard:
 

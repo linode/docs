@@ -30,5 +30,5 @@ You can cancel your account at any time. Please note that when you cancel your a
 Your account will be cancelled and all of your services will be deactivated.
 
 {{< note >}}
-You do not have to cancel your account to prevent recurring charges. Instead, you can remove all Linodes and services from your account via the **Linodes** tab in the Cloud Manager. This will allow you to retain your Linode account. If you use Longview with non-Linode services, or want to keep your account name and history, you may find this to be a useful option. See [Removing Services](/docs/guides/manage-billing-in-cloud-manager/#removing-services) for more information.
+You do not have to cancel your account to prevent recurring charges. Instead, you can remove all Linodes and services from your account via the **Linodes** tab in the Cloud Manager. This will allow you to retain your Linode account. If you use Longview with non-Linode services, or want to keep your account name and history, you may find this to be a useful option. See [Removing Services](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/#removing-services) for more information.
 {{< /note >}}

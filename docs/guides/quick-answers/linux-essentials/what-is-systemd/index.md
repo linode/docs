@@ -26,7 +26,7 @@ systemd is a Linux initialization system and service manager that includes featu
 
 systemd is the default init system for the major Linux distributions but is backwards compatible with SysV init scripts. SysVinit is an initialization system which predates systemd and uses a simplified approach to service startup. systemd not only manages system initialization, but also provides alternatives for other well known utilities, like cron and syslog. Because systemd does several things within the Linux user space, many have criticized it for violating [the Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy), which emphasizes simplicity and modularity.
 
-This guide provides an introduction to systemd by taking a closer look at systemd units. The [Mount Units](/docs/guides/what-is-systemd/#mount-units) section will analyze a unit file that is shipped by default with systemd on an Ubuntu 18.04 system, while the [Timer Units](/docs/guides/what-is-systemd/#timer-units) section will create a custom unit file on the same system.
+This guide provides an introduction to systemd by taking a closer look at systemd units. The [Mount Units](/docs/quick-answers/linux-essentials/what-is-systemd/#mount-units) section will analyze a unit file that is shipped by default with systemd on an Ubuntu 18.04 system, while the [Timer Units](/docs/quick-answers/linux-essentials/what-is-systemd/#timer-units) section will create a custom unit file on the same system.
 
 {{< note >}}
 All examples in this guide were created with a Linode running Ubuntu 18.04.

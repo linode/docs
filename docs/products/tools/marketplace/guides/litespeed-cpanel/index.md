@@ -49,7 +49,7 @@ LiteSpeed offers both free and paid plans.  Visit [LiteSpeed's website](https://
 
 ## Verify Installation
 
-To determine if the installation has completed sucessfully, log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) and run:
+To determine if the installation has completed sucessfully, log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/) and run:
 
     tail -3 /var/log/stackscript.log
 
@@ -107,7 +107,7 @@ Now that you’ve accessed your LiteSpeed instance, check out [the official Lite
 
 ### Accessing the LiteSpeed WebAdmin Interface
 
-1.  Log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1.  Log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 
 1.  Run the following script to reset the password:
 

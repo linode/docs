@@ -41,6 +41,6 @@ When using a load balancer, like a NodeBalancer, traffic comes to the site throu
 
 The optimal solution for a highly available site or application is to have multiple Linodes behind a NodeBalancer. Now when traffic comes into the NodeBalancer it can be routed to any one of the Linodes available.
 
-- [Health checks](docs/products/networking/nodebalancers/guides/configure/#health-checks) are performed to make sure that requests are only routed to healthy Linodes.
+- [Health checks](/docs/platform/nodebalancer/nodebalancer-reference-guide/#health-checks) are performed to make sure that requests are only routed to healthy Linodes.
 - Backend Linodes can be added or removed seamlessly without end users noticing any downtime.
-- Client requests can be routed to the same backend Linode through [sticky sessions](docs/products/networking/nodebalancers/guides/configure/#session-stickiness).
+- Client requests can be routed to the same backend Linode through [sticky sessions](/docs/platform/nodebalancer/nodebalancer-reference-guide/#session-stickiness).

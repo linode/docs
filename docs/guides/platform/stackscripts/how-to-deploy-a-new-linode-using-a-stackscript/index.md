@@ -43,7 +43,7 @@ An Account StackScript is any StackScript that you create. It will be stored in 
 This section will show you how to deploy a new Linode using an Account StackScript and how to access your Account StackScripts.
 
 {{< note >}}
-To learn how to make your Account StackScript publicly available see the [A Tutorial for Creating and Managing StackScripts](/docs/guides/creating-and-managing-stackscripts-a-tutorial/#make-an-account-stackscript-public) guide for more details.
+To learn how to make your Account StackScript publicly available see the [A Tutorial for Creating and Managing StackScripts](/docs/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/#make-an-account-stackscript-public) guide for more details.
 {{</ note >}}
 
 ### Deploy a Linode from an Account StackScript
@@ -190,4 +190,4 @@ When [writing a script to be used in a StackScript](/docs/guides/writing-scripts
 Depending on the contents of your StackScript, it may take a few minutes for the script to finish executing.
     {{</ note >}}
 
-- To learn how to create your own StackScript see the [A Tutorial for Creating and Managing StackScripts](/docs/guides/creating-and-managing-stackscripts-a-tutorial/#make-an-account-stackscript-public) guide.
+- To learn how to create your own StackScript see the [A Tutorial for Creating and Managing StackScripts](/docs/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/#make-an-account-stackscript-public) guide.

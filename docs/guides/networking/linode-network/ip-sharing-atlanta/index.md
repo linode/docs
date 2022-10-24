@@ -35,7 +35,7 @@ This guide discusses a temporary workaround specific to the Atlanta data center.
 
 1. Ensure Python 3 is installed on your system. See [FRR's official documentation](http://docs.frrouting.org/en/latest/installation.html#python-dependency-documentation-and-tests) to learn about FRR's Python dependencies.
 
-1. [Disable Network Helper](/docs/guides/network-helper/#single-per-linode) on the Elastic IP Linodes and reboot them.
+1. [Disable Network Helper](/docs/platform/network-helper/#single-per-linode) on the Elastic IP Linodes and reboot them.
 
 ## Install FRR
 

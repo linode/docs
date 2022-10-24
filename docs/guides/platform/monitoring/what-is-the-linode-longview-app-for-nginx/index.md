@@ -38,8 +38,8 @@ This guide discusses Linode Longview for NGINX. The guide covers the following t
 In order to use the Longview App for NGINX, ensure you have completed the following things:
 
 -  A Linode with [NGINX installed and running](/docs/web-servers/nginx/).
--  Create a [Longview client](/docs/guides/what-is-longview/#install-linode-longview) instance using the Cloud Manager.
--  Install the [Longview Agent](/docs/guides/what-is-longview/#install-the-longview-agent) on your Linode.
+-  Create a [Longview client](/docs/platform/longview/what-is-longview/#install-linode-longview) instance using the Cloud Manager.
+-  Install the [Longview Agent](/docs/platform/longview/what-is-longview/#install-the-longview-agent) on your Linode.
 
 ### Debian and Ubuntu Automatic Configuration
 
@@ -166,19 +166,19 @@ The **Workers** graph shows all of the NGINX workers at the selected time. The w
 
 ### CPU
 
-The **CPU** graph shows the percentage of your Linode's CPU being used by NGINX at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/guides/what-is-longview/#overview).
+The **CPU** graph shows the percentage of your Linode's CPU being used by NGINX at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/platform/longview/what-is-longview/#overview).
 
 ### RAM
 
-The **RAM** graph shows the amount of RAM or memory being used by NGINX at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/guides/what-is-longview/#overview).
+The **RAM** graph shows the amount of RAM or memory being used by NGINX at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/platform/longview/what-is-longview/#overview).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by NGINX at the selected time. To see the total IO instead, visit the [Disks tab](/docs/guides/what-is-longview/#disks).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by NGINX at the selected time. To see the total IO instead, visit the [Disks tab](/docs/platform/longview/what-is-longview/#disks).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your Linode spawned by NGINX at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Processes tab](/docs/guides/what-is-longview/#processes).
+The **Process Count** graph shows the total number of processes on your Linode spawned by NGINX at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Processes tab](/docs/platform/longview/what-is-longview/#processes).
 
 ## Troubleshooting
 
@@ -198,7 +198,7 @@ To fix this, follow these steps:
 
         sudo systemctl restart nginx
 
-2.  Check the status page location, and make sure it's available over Port 80. The default location Longview checks is `http://127.0.0.1/nginx_status` on localhost, but NGINX doesn't typically have a status page location set up by default. In the NGINX configuration file (typically `/etc/nginx/nginx.conf`) or in a [separate site configuration file](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/#host-multiple-websites), this is designated with the lines in the example file below. If your configuration file does not contain these lines, add them to the file within the `http` block. For more details, see the [Manual Configuration](/docs/guides/what-is-the-linode-longview-app-for-nginx/#manual-configuration-all-distributions) section of this guide.
+2.  Check the status page location, and make sure it's available over Port 80. The default location Longview checks is `http://127.0.0.1/nginx_status` on localhost, but NGINX doesn't typically have a status page location set up by default. In the NGINX configuration file (typically `/etc/nginx/nginx.conf`) or in a [separate site configuration file](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/#host-multiple-websites), this is designated with the lines in the example file below. If your configuration file does not contain these lines, add them to the file within the `http` block. For more details, see the [Manual Configuration](/docs/platform/longview/longview-app-for-nginx/#manual-configuration-all-distributions) section of this guide.
 
     {{< file "/etc/nginx/nginx.conf" >}}
 server {

@@ -64,7 +64,7 @@ Once deployed, a "Hello World" sample application should be running on `http://l
 
 The MEAN sample application is stored in the `/opt/mean/` directory. To access it within the command line, follow the instructions below.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
 
 1.  Navigate to the directory in which the application is stored:
 

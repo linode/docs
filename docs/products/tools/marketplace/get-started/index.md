@@ -33,9 +33,9 @@ Since software for a Marketplace App is installed *after* a Linode Compute Insta
 
 -   **Attempt to access the app:** Each Marketplace App has an estimated deployment time range (such as 5-10 minutes). It's recommended that you attempt to access your application after this time has elapsed. If you can successfully access it, the installation has completed successfully.
 
--   **Lish console:** Open the [Lish console](/docs/guides/lish/) and follow along with the installation script. Once the *"Installation Complete!"* notice appears, the install is finished.
+-   **Lish console:** Open the [Lish console](/docs/guides/using-the-lish-console/) and follow along with the installation script. Once the *"Installation Complete!"* notice appears, the install is finished.
 
--   **Log file:** The same *"Installation Complete!"* notice should also appear at the end of the installation's log file, which you can view by logging in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) and running:
+-   **Log file:** The same *"Installation Complete!"* notice should also appear at the end of the installation's log file, which you can view by logging in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/) and running:
 
         grep 'Installation complete!' /var/log/stackscript.log
 
@@ -43,7 +43,7 @@ Since software for a Marketplace App is installed *after* a Linode Compute Insta
 
 ## Access the App
 
-Since each Marketplace App installs different software with different functions, the instructions for accessing an App can vary greatly. In some cases, the App deploys a webpage or admin panel that's accessible over a web browser. In other cases, you may need to log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) and navigate to the software directory. To learn how to access the App that you deployed, review the guide that corresponds with your Marketplace App.
+Since each Marketplace App installs different software with different functions, the instructions for accessing an App can vary greatly. In some cases, the App deploys a webpage or admin panel that's accessible over a web browser. In other cases, you may need to log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/) and navigate to the software directory. To learn how to access the App that you deployed, review the guide that corresponds with your Marketplace App.
 
 ## Add a Custom Domain
 

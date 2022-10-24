@@ -198,7 +198,7 @@ File permissions are a constant concern for the system owner or root user. When 
 
 Your site is now available at **`example.com`/drupal** or **`ipaddress`/drupal**. Sign-in with the generated username and password and start delivering content to the world!
 
-When you're ready for the Drupal site to appear as your homepage, move the site to the **/var/www/`example.com`/** directory and double-check the document root listing in the virtual host file. See Step 5 in the [Configuring Name Based Virtual Hosts](/docs/guides/lamp-server-on-debian-7-wheezy/#configure-name-based-virtual-hosts) section of our *Hosting a Website* guide.
+When you're ready for the Drupal site to appear as your homepage, move the site to the **/var/www/`example.com`/** directory and double-check the document root listing in the virtual host file. See Step 5 in the [Configuring Name Based Virtual Hosts](/docs/web-servers/lamp/lamp-server-on-debian-7-wheezy/#configure-name-based-virtual-hosts) section of our *Hosting a Website* guide.
 
 ## Additional Options
 
@@ -215,7 +215,7 @@ The above setup is designed for ease of use. However, there are setups designed 
 
 To start, add a virtual host file with Apache. Next, build another site including the appropriate MySQL, PHP, and CMS configurations.
 
-- To add a virtual host file, read Linode's [Configure Name-based Virtual Hosts](/docs/guides/lamp-server-on-debian-7-wheezy/#configure-name-based-virtual-hosts) guide
+- To add a virtual host file, read Linode's [Configure Name-based Virtual Hosts](/docs/web-servers/lamp/lamp-server-on-debian-7-wheezy/#configure-name-based-virtual-hosts) guide
 
 ### Install Drush for the Active User Only
 

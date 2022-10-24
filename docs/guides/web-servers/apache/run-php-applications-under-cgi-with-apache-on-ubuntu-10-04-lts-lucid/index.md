@@ -76,7 +76,7 @@ If you have not already installed the Apache HTTP server, issue the following co
 
     apt-get install apache2
 
-You can now [configure virtual hosting](/docs/guides/apache-2-web-server-on-ubuntu-10-04-lts-lucid/#configure-name-based-virtual-hosts) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
+You can now [configure virtual hosting](/docs/web-servers/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/#configure-name-based-virtual-hosts) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
 
     apt-get install php5-cgi
 

@@ -65,7 +65,7 @@ To get started, you can use the Linode platform to deploy multiple Compute Insta
 
 By default, forwarding is disabled on most Linux systems. To configure Linux as a router, this needs to be enabled. To enable forwarding, the corresponding parameter should be set to `1`. A value of `0` indicates that forwarding is disabled. To update these kernel parameters, edit the `/etc/sysctl.conf` file as shown in the steps below.
 
-1. Log in to the Linux system you intend to use as a router. You can use [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) (if you're using a Linode Compute Instance).
+1. Log in to the Linux system you intend to use as a router. You can use [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/) (if you're using a Linode Compute Instance).
 
 1.  Determine if IPv4 forwarding is currently enabled or disabled. The command below outputs the value of the given parameter. A value of `1` indicates that the setting is enabled, while `0` indicates it is disabled. If you intend to configure IPv6 forwarding, check that kernel parameter as well.
 
@@ -97,7 +97,7 @@ net.ipv6.conf.all.forwarding = 1
 
 The iptables utility can serve as both a firewall (through the default `filter` table) and as a router (such as when using the `nat` table). This section covers how to configure iptables to function as a basic router. If you prefer, you can use any other firewall or routing software, such as [nftables](https://wiki.nftables.org/wiki-nftables/index.php/Main_Page) or a commercial application.
 
-1. Log in to the Linux system you intend to use as a router. You can use [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) (if you're using a Linode Compute Instance).
+1. Log in to the Linux system you intend to use as a router. You can use [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/) (if you're using a Linode Compute Instance).
 
 1.  Review the existing iptables rules. If you are on a fresh installation of Linux and do not have any preconfigured rules, the output of the below command should by empty.
 
@@ -137,7 +137,7 @@ The last step is to manually adjust the network configuration settings for each 
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com) and disable [Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) for each non-router Compute Instance you've deployed. While Network Helper was useful for automatically configuring the VLAN IP addresses, the configuration files controlled by Network Helper now need to be manually edited.
 
-1. Log in to each Linux system that is *not* designated as the router. You can use [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) (if you're using a Linode Compute Instance).
+1. Log in to each Linux system that is *not* designated as the router. You can use [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/) (if you're using a Linode Compute Instance).
 
 1.  Edit the configuration file that contains the settings for the private VLAN interface. This name and location of this file depends on the Linux distribution you are using. See the [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) series of guides and select the specific guide for your distribution. For a system running [ifupdown](/docs/guides/ifupdown/) on Debian 10, the network configuration is typically stored within `/etc/network/interfaces`.
 

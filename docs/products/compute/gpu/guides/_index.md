@@ -31,4 +31,4 @@ tab_group_main:
 
 - [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
 
-- [How to Choose a Linode Plan](/docs/guides/choosing-a-compute-instance-plan/#4-gpu-instances)
+- [How to Choose a Linode Plan](/docs/platform/how-to-choose-a-linode-plan/#4-gpu-instances)

@@ -22,7 +22,7 @@ This guide explains how to use different troubleshooting commands on your Linode
 
 If the information and logs you gather do not match a solution outlined here, consider searching the [Linode Community Site](https://www.linode.com/community/questions/) for posts that match your system's symptoms. Or, post a new question in the Community Site and include your commands' output.
 
-Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/guides/support/#scope-of-support) for a description of which issues Linode Support can help with.
+Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/platform/billing-and-support/support/#scope-of-support) for a description of which issues Linode Support can help with.
 {{< /disclosure-note >}}
 
 ## General Troubleshooting Strategies
@@ -80,7 +80,7 @@ If your service doesn't start normally, review your system logs for the service.
 
 Your service's log location will vary by the application, but they are often stored in `/var/log`. [The `less` command](/docs/guides/how-to-use-less/) is a useful tool for browsing through your logs.
 
-Try pasting your log messages into a search engine or searching for your messages in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Linode](/docs/guides/rescue-and-rebuild/#rebuilding).
+Try pasting your log messages into a search engine or searching for your messages in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Linode](/docs/troubleshooting/rescue-and-rebuild/#rebuilding).
 
 ### Review Firewall Rules
 
@@ -95,7 +95,7 @@ Your deployment may be running FirewallD or UFW, which are frontends used to mor
     sudo ufw status
     sudo firewall-cmd --state
 
-Review [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
+Review [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
 {{< /note >}}
 
 Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections. For example, a rule which allows incoming HTTP traffic could look like this:
@@ -141,7 +141,7 @@ In addition to analyzing your firewall ruleset, you can also temporarily disable
 If your web server is not running or if connections are timing out, review the [general troubleshooting strategies](#general-troubleshooting-strategies).
 
 {{< note >}}
-Troubleshooting specific to Apache is outlined in [Troubleshooting Common Apache Issues](/docs/guides/troubleshooting-common-apache-issues/#check-virtual-host-definitions).
+Troubleshooting specific to Apache is outlined in [Troubleshooting Common Apache Issues](/docs/troubleshooting/troubleshooting-common-apache-issues/#check-virtual-host-definitions).
 {{< /note >}}
 
 If your web server is responding with an error code, your troubleshooting will vary by what code is returned. For more detailed information about each request that's failing, read your web server's logs. Here are some commands that can help you find your web server's logs:

@@ -65,7 +65,7 @@ Many applications, including common CMS platforms like WordPress, store their da
 
 If you are using MySQL or MariaDB, read more about  `mysqldump` in our [mysqldump](/docs/guides/mysqldump-backups/) guide, or try making [physical backups](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
 
-If your application uses PostgreSQL, read our guide on [How to Back Up Your PostgreSQL Database](/docs/guides/back-up-a-postgresql-database/).
+If your application uses PostgreSQL, read our guide on [How to Back Up Your PostgreSQL Database](/docs/guides/how-to-back-up-your-postgresql-database/).
 
 ## Third-Party Tools
 

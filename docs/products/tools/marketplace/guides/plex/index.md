@@ -187,7 +187,7 @@ This section directs you to run commands either on your Plex Server Linode throu
     Depending on the file size(s), this may take a few minutes.
 
     {{< note >}}
-There are other ways to upload files to your Plex Server Linode. See our section in [Linux System Administration Basics](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server) for more information.
+There are other ways to upload files to your Plex Server Linode. See our section in [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics/#upload-files-to-a-remote-server) for more information.
     {{< /note >}}
 
 ### Add Media Libraries

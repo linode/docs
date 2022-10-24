@@ -39,7 +39,7 @@ If you have ensured that your Linode is booted, but do not have SSH access, you 
 
     If you have trouble logging in with your root password, consider [resetting the root password](/docs/guides/reset-the-root-password-on-your-linode/) to rule out any password issues.
 
-The [Using the Lish Console](/docs/guides/lish/) contains more information on Lish.
+The [Using the Lish Console](/docs/guides/using-the-lish-console/) contains more information on Lish.
 
 {{< note >}}
 Lish is an out-of-band management tool, so you can use your root login credentials, if needed.

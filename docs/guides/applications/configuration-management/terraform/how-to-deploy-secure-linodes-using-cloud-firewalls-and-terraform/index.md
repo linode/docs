@@ -37,17 +37,17 @@ A Cloud Firewall can be configured with Inbound and Outbound rules. Inbound rule
 
 1. See [Create a Terraform Module](/docs/guides/create-terraform-module/) for a deeper dive into Terraform's standard module structure and other helpful details.
 
-1. You need a [Linode API v4](https://developers.linode.com/api/v4) personal access token to use with Terraform. This token will allow you to create, update, and destroy Linode resources. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) guide for steps to create a token.
+1. You need a [Linode API v4](https://developers.linode.com/api/v4) personal access token to use with Terraform. This token will allow you to create, update, and destroy Linode resources. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide for steps to create a token.
    {{< note >}}When you create a personal access token ensure that you set **Read/Write** access permissions for Linode instances and Cloud Firewalls.
     {{</ note >}}
 
-1. [Install Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) on your local computer.
+1. [Install Terraform](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) on your local computer.
 
     {{< note >}}
 This guide was written using [Terraform version 0.13.0](https://github.com/hashicorp/terraform/releases).
     {{</ note >}}
 
-1. Install Git on your computer and complete the steps in the **Configure Git** section of the [Getting Started with Git guide](/docs/guides/how-to-configure-git/#configure-git).
+1. Install Git on your computer and complete the steps in the **Configure Git** section of the [Getting Started with Git guide](/docs/development/version-control/how-to-configure-git/#configure-git).
 
 ## Create Your Cloud Firewalls Module
 
@@ -97,7 +97,7 @@ main_firewalls/
         mkdir -p main_firewalls/{inbound_ssh,mysql,web_server}
 
     {{< note >}}
-If you followed our [install Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) steps, then your Terraform executable will be located in the `terraform` directory. If this is not the case, ensure that you can execute Terraform commands from the `main_firewalls` directory.
+If you followed our [install Terraform](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) steps, then your Terraform executable will be located in the `terraform` directory. If this is not the case, ensure that you can execute Terraform commands from the `main_firewalls` directory.
     {{</ note >}}
 
 ### Create the Inbound SSH Child Module

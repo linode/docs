@@ -26,7 +26,7 @@ This guide is the third of a three-part series on setting up a hardened OpenVPN 
 
 ## Before You Begin
 
-You must already have the client files listed below ready to transfer to the device. **Each client** will need its own copies. If you need client credentials, see the [VPN Certificate Authority](/docs/guides/set-up-a-hardened-openvpn-server/#vpn-certificate-authority) area of part one of this series.
+You must already have the client files listed below ready to transfer to the device. **Each client** will need its own copies. If you need client credentials, see the [VPN Certificate Authority](/docs/networking/vpn/set-up-a-hardened-openvpn-server/#vpn-certificate-authority) area of part one of this series.
 
   *  `client1.key`: Exclusive to this device.
   *  `client1.cert`: Exclusive to this device.
@@ -215,7 +215,7 @@ If the test results show you any IP addresses other than those of your Linode an
 
 ##  Revoke a VPN Client Certificate
 
-To revoke a client device's access to the VPN, SSH into your VPN server and go back to the EasyRSA root directory. The folder `~/ca` was used in the [VPN Certificate Authority](/docs/guides/set-up-a-hardened-openvpn-server/#vpn-certificate-authority) section of part one of this series so we'll continue with that location here.
+To revoke a client device's access to the VPN, SSH into your VPN server and go back to the EasyRSA root directory. The folder `~/ca` was used in the [VPN Certificate Authority](/docs/networking/vpn/set-up-a-hardened-openvpn-server/#vpn-certificate-authority) section of part one of this series so we'll continue with that location here.
 
 1.  Change to the `easy-rsa` folder and source `vars`:
 

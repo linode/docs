@@ -74,7 +74,7 @@ After your Marketplace App has provisioned your WireGuard server, you can procee
 If you did not provide a public key for WireGuard when you first set up your Marketplace App, you will need to follow the next set of steps. These instructions will set up your client and inform your server of your client's public key. If you did provide a public key when deploying the Marketplace App and have set up your client, skip to the second collection of steps in this section.
 
 
-1.   Follow the [WireGuard Client](/docs/guides/set-up-wireguard-vpn-on-ubuntu/#wireguard-client) section of our WireGuard guide to generate a public/private keypair for your client, and to set up the WireGuard network interface configuration on your client.
+1.   Follow the [WireGuard Client](/docs/networking/vpn/set-up-wireguard-vpn-on-ubuntu/#wireguard-client) section of our WireGuard guide to generate a public/private keypair for your client, and to set up the WireGuard network interface configuration on your client.
 
 1.  [Connect to your Marketplace App's Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
 
@@ -118,7 +118,7 @@ wg-private.key	wg-public.key
 FngGVypEJ13KU8+OeBGG1sOd2i+aazsj7qPL3ZxacG8=
 {{< /output >}}
 
-1.  Copy the output of your server's public key, then use it to complete **steps 1 and 2** of the [Connect the Client and Server](/docs/guides/set-up-wireguard-vpn-on-ubuntu/#connect-the-client-and-server) section of our WireGuard guide. These steps will tell you to append `[Peer]` section to your client's existing WireGuard configuration and then how to enable the service on your client.
+1.  Copy the output of your server's public key, then use it to complete **steps 1 and 2** of the [Connect the Client and Server](/docs/networking/vpn/set-up-wireguard-vpn-on-ubuntu/#connect-the-client-and-server) section of our WireGuard guide. These steps will tell you to append `[Peer]` section to your client's existing WireGuard configuration and then how to enable the service on your client.
 
     Enter your server's WireGuard tunnel IP (using the `/24` CIDR notation) as the value for the `AllowedIPs` setting, and set the server's public IP address and WireGuard port to be the Endpoint. Here's an example template for a completed client configuration:
 
