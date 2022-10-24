@@ -430,7 +430,7 @@ You have two options to backup your production database:
 
     You can later use this interface to restore your database from a specific database backup file. Odoo correctly restores to the database on the **PostgreSQL server**, and not to the database service that was installed on the Odoo application server. This happens because your Odoo configuration is explicit about the database connection.
 
-1. You can use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](/docs/guides/how-to-back-up-your-postgresql-database/) from the backend **PostgreSQL** Linode.
+1. You can use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](/docs/guides/back-up-a-postgresql-database/) from the backend **PostgreSQL** Linode.
 
 ## Update Odoo Modules
 

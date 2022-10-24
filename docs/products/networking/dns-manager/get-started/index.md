@@ -50,7 +50,7 @@ In order for Linode's DNS servers to function as secondaries, your DNS primary s
 
 1.  Click **Create**. If you selected the option to have the DNS Manager insert basic DNS records, those records are now visible on the Domain's detail page. The created records should include SOA, NS, MX, and A/AAA.
 
-   If you elected to keep the zone empty, you can start adding DNS records now. The Domain detail page contains an SOA and NS record for the domain. Skip to the [Adding DNS Records](/docs/networking/dns/dns-manager-overview/##add-dns-records) section for instructions.
+   If you elected to keep the zone empty, you can start adding DNS records now. The Domain detail page contains an SOA and NS record for the domain. Skip to the [Adding DNS Records](/docs/guides/dns-manager/##add-dns-records) section for instructions.
 
 ## Add DNS Records
 

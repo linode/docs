@@ -51,7 +51,7 @@ During the Mailman installation, you will be required to specify the languages t
 
 ## Configure Mailman
 
-Consider the "[Configure Virtual Hosting](/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze/#configure-virtual-hosting)" section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
+Consider the "[Configure Virtual Hosting](/docs/guides/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze/#configure-virtual-hosting)" section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
 
     newlist mailman
 
@@ -62,7 +62,7 @@ During the list creation process, Mailman will prompt you for the administrators
 {{< /file >}}
 
 
-Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/docs/dns-guides/introduction-to-dns/#mx) for both domains that you want to receive email with. Additionally, add the following lines to your `/etc/postfix/master.cf` file:
+Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/docs/guides/dns-records-an-introduction/#mx) for both domains that you want to receive email with. Additionally, add the following lines to your `/etc/postfix/master.cf` file:
 
 {{< file "/etc/postfix/master.cf" >}}
 mailman unix  -       n       n       -       -       pipe

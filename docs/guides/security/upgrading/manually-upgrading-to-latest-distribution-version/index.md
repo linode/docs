@@ -55,7 +55,7 @@ DevOps provisioning tools (such as [Terraform](/docs/guides/beginners-guide-to-t
 
 ## Before you Begin
 
-- **Ensure you have login credentials to the original system** for either the root user or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+- **Ensure you have login credentials to the original system** for either the root user or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
 
     {{< note >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
@@ -161,7 +161,7 @@ Databases can be copied in much the same way as files. The major difference is t
 
 -   If your MySQL database won't run for some reason, follow the instructions for creating [physical backups](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
 
--   If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/guides/how-to-back-up-your-postgresql-database/) guide.
+-   If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/guides/back-up-a-postgresql-database/) guide.
 
 ## Transfer IPv4 Addresses
 

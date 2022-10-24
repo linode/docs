@@ -675,10 +675,10 @@ SELinux should now resume normal enforcement while allowing the operations descr
 
 The final step in creating a highly available website or application is to load balance traffic to the application servers. In this step, we'll use a NodeBalancer to distribute traffic between the application servers to ensure that no single server gets overloaded. NodeBalancers are highly available by default, and do not constitute a single point of failure.
 
-For instructions on how to install this component, follow our guide on [Getting Started with NodeBalancers](/docs/guides/getting-started-with-nodebalancers/). Be sure to use the *private* IP addresses of your application servers when adding nodes to your backend.
+For instructions on how to install this component, follow our guide on [Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/). Be sure to use the *private* IP addresses of your application servers when adding nodes to your backend.
 
 {{< note >}}
-NodeBalancers are an add-on service. Be aware that adding a NodeBalancer will create an additional monthly charge to your account. Please see our [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/#additional-linode-services) guide for more information.
+NodeBalancers are an add-on service. Be aware that adding a NodeBalancer will create an additional monthly charge to your account. Please see our [Billing and Payments](/docs/guides/understanding-billing-and-payments/#additional-linode-services) guide for more information.
 {{< /note >}}
 
 ## WordPress (Optional)

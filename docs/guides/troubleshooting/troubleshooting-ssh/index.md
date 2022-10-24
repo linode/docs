@@ -15,7 +15,7 @@ title: "Troubleshooting SSH"
 aliases: ['/troubleshooting/troubleshooting-ssh/']
 ---
 
-This guide presents troubleshooting strategies for when you can't connect to your Linode via SSH. If you currently cannot [ping](/docs/tools-reference/linux-system-administration-basics/#the-ping-command) your Linode, then your server also likely has more basic connection issues. If this is the case, you should instead follow the [Troubleshooting Basic Connection Issues](/docs/guides/troubleshooting-basic-connection-issues/) guide. If you restore basic networking to your Linode but still can't access SSH, return to this guide.
+This guide presents troubleshooting strategies for when you can't connect to your Linode via SSH. If you currently cannot [ping](/docs/guides/linux-system-administration-basics/#the-ping-command) your Linode, then your server also likely has more basic connection issues. If this is the case, you should instead follow the [Troubleshooting Basic Connection Issues](/docs/guides/troubleshooting-basic-connection-issues/) guide. If you restore basic networking to your Linode but still can't access SSH, return to this guide.
 
 If you can access SSH but not other services, refer to the [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guide.
 
@@ -24,7 +24,7 @@ This guide explains how to use different troubleshooting commands on your Linode
 
 If the information and logs you gather do not match a solution outlined here, consider searching the [Linode Community Site](https://www.linode.com/community/questions/) for posts that match your system's symptoms. Or, post a new question in the Community Site and include your commands' output.
 
-Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/platform/billing-and-support/support/#scope-of-support) for a description of which issues Linode Support can help with.
+Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/guides/support/#scope-of-support) for a description of which issues Linode Support can help with.
 {{< /disclosure-note >}}
 
 ## Before You Begin
@@ -33,9 +33,9 @@ Before troubleshooting your SSH service, familiarize yourself with the Linode Sh
 
 ### The Linode Shell (Lish)
 
-[*Lish*](/docs/guides/using-the-lish-console/) is a shell that provides access to your Linode's serial console. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or SSH is inaccessible. While troubleshooting SSH, all commands you enter on your Linode will be performed from the Lish console.
+[*Lish*](/docs/guides/lish/) is a shell that provides access to your Linode's serial console. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or SSH is inaccessible. While troubleshooting SSH, all commands you enter on your Linode will be performed from the Lish console.
 
-To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Lish Console](/docs/guides/using-the-lish-console/) guide. In particular, [using your web browser](/docs/guides/using-the-lish-console/#through-the-cloud-manager-weblish) is a fast and simple way to access Lish.
+To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Lish Console](/docs/guides/lish/) guide. In particular, [using your web browser](/docs/guides/lish/#through-the-cloud-manager-weblish) is a fast and simple way to access Lish.
 
 ### Forgotten your Password?
 
@@ -166,7 +166,7 @@ Your deployment may be running FirewallD or UFW, which are frontends used to mor
     sudo ufw status
     sudo firewall-cmd --state
 
-Review [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
+Review [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
 {{< /note >}}
 
 Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections. A rule which allows incoming SSH traffic could look like this:
@@ -176,7 +176,7 @@ Firewall rulesets can vary widely. Review the [Control Network Traffic with ipta
 {{< /output >}}
 
 
-In some cases, [fail2ban](https://www.fail2ban.org/wiki/index.php/Main_Page), a tool used for automating the creation of firewall rules to block IP addresses, may be responsible for creating rules that result in a lost connection. If you see firewall chains in place prefixed with `f2b` or `fail2ban`, see our [fail2ban guide](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/#lockout-recovery) for troubleshooting this service.
+In some cases, [fail2ban](https://www.fail2ban.org/wiki/index.php/Main_Page), a tool used for automating the creation of firewall rules to block IP addresses, may be responsible for creating rules that result in a lost connection. If you see firewall chains in place prefixed with `f2b` or `fail2ban`, see our [fail2ban guide](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/#lockout-recovery) for troubleshooting this service.
 
 ### Disable Firewall Rules
 

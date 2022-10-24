@@ -32,13 +32,13 @@ Following this guide will result in the creation of billable Linode resources on
 
 ## Before You Begin
 
-1.  Install Terraform on your computer by following the *Install Terraform* section of our [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide.
+1.  Install Terraform on your computer by following the *Install Terraform* section of our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide.
 
     {{< note >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
     {{</ note >}}
 
-1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain one.
+1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) guide to obtain one.
 
 1.  If you have not already, [assign Linode's name servers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain) to your domain at your domain name's registrar.
 

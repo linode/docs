@@ -43,7 +43,7 @@ If you would like to stop billing for the resources created in this guide, [remo
 The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
     {{</ note >}}
 
-1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain a token.
+1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) guide to obtain a token.
 
 1.  Create a `terraform_nodebalancer` directory on your computer for the Terraform project you will create in this guide. All files you create in this guide should be placed in this directory, and you should run all commands from this directory. This new project should not be created inside another Terraform project directory, including the one you may have made when previously following [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/).
 

@@ -52,7 +52,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  If you'd like to use your own [Domain Name](/docs/guides/dns-records-an-introduction/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/guides/dns-manager/#dns-set-up-checklist) to point to your Linode's IP address.
 
-1.  Follow the [Install a LAMP Stack on Debian 10 (Buster)](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) guide. Skip the steps in the [Configure Name-Based Virtual Hosts](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/#configure-name-based-virtual-hosts), the [Set Up a MariaDB Database](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/#set-up-mariadb-database), and the [Optional: Test and Troubleshoot the LAMP Stack](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/#optional-test-and-troubleshoot-the-lmap-stack) section. Those steps will be covered later on in this guide.
+1.  Follow the [Install a LAMP Stack on Debian 10 (Buster)](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide. Skip the steps in the [Configure Name-Based Virtual Hosts](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#configure-name-based-virtual-hosts), the [Set Up a MariaDB Database](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#set-up-mariadb-database), and the [Optional: Test and Troubleshoot the LAMP Stack](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#optional-test-and-troubleshoot-the-lmap-stack) section. Those steps will be covered later on in this guide.
 
 ## Install WP-CLI
 
