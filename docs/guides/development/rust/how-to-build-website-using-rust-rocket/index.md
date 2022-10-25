@@ -181,7 +181,7 @@ features = ["handlebars_templates"]
 1. Open your `~/example-app/src/main.rs` file, and modify it to include the following code:
 
     {{< file "~/example-app/src/main.rs" >}}
-```rust    
+```rust
 #![feature(proc_macro_hygiene, decl_macro)]
 
 #[macro_use] extern crate rocket;
