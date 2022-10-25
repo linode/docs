@@ -181,6 +181,7 @@ features = ["handlebars_templates"]
 1. Open your `~/example-app/src/main.rs` file, and modify it to include the following code:
 
     {{< file "~/example-app/src/main.rs" >}}
+```rust    
 #![feature(proc_macro_hygiene, decl_macro)]
 
 #[macro_use] extern crate rocket;
@@ -227,6 +228,7 @@ fn about() -> Template {
         parent: "layout"
     })
 }
+```
     {{< /file >}}
 
     - This creates a `Message` struct, defining the basic shape for messages. The `BoardContext` and `AboutContext` structs determine "context" information to be handed off to the templates. Each context struct has a `parent` attribute. The application uses these attributes in the `board` and `about` functions to apply the appropriate page layout for each page.
