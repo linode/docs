@@ -78,8 +78,7 @@ To install Hugo, download the appropriate binary for your system, extract it, an
 
 1.  Download the file below that corresponds with the OS and platform on your local system. If you don't see your system on this list, you can find additional files on the [Hugo v0.104.3 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.104.3) under **Assets**.
 
-    - **macOS (Intel):** https://github.com/gohugoio/hugo/releases/download/v0.104.3/hugo_extended_0.104.3_macOS-64bit.tar.gz
-    - **macOS (Apple Silicon):** https://github.com/gohugoio/hugo/releases/download/v0.104.3/hugo_extended_0.104.3_macOS-ARM64.tar.gz
+    - **macOS:** https://github.com/gohugoio/hugo/releases/download/v0.104.3/hugo_extended_0.104.3_darwin-universal.tar.gz
     - **Linux:** https://github.com/gohugoio/hugo/releases/download/v0.104.3/hugo_extended_0.104.3_Linux-64bit.tar.gz
 
     You can download this file through a terminal using the curl command, replacing [url] with the URL for your platform:

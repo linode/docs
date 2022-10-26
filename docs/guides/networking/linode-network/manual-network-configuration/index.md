@@ -43,7 +43,7 @@ The following table contains a list of each Linux distribution offered by Linode
 | Gentoo | netifrc |
 | Rocky Linux 8 and 9 | [NetworkManager](/docs/guides/networkmanager/) |
 | Slackware | netconfig |
-| OpenSUSE Leap | wicked |
+| openSUSE Leap | wicked |
 | Ubuntu 16.04 | [ifupdown](/docs/guides/ifupdown/) |
 | Ubuntu 18.04 - 22.04 | [systemd-networkd](/docs/guides/systemd-networkd/) and Netplan |
 

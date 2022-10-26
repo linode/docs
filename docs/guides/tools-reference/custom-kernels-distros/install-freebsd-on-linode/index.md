@@ -15,7 +15,7 @@ title: 'Install FreeBSD on Linode'
 external_resources:
  - '[The FreeBSD Handbook](https://www.freebsd.org/doc/handbook/)'
  - '[Using the Lish Console](/docs/guides/using-the-lish-console/)'
- - '[Using the Graphic Shell (Glish)](/docs/guides/using-the-linode-graphical-shell-glish/)'
+ - '[Access Your Linux Desktop Using Glish](/docs/guides/glish/)'
  - '[FreeBSD Handbook - Comparing BSD and Linux](https://www.freebsd.org/doc/en/articles/explaining-bsd/comparing-bsd-and-linux.html)'
  - '[FreeBSD Handbook - Linux® Binary Compatibility](https://www.freebsd.org/doc/handbook/linuxemu.html)'
 relations:
@@ -36,7 +36,7 @@ aliases: ['/tools-reference/custom-kernels-distros/install-freebsd-on-linode/']
 
 FreeBSD is often compared to Linux. So what's the difference?
 
-Briefly, Linux is a term used for a group of operating systems that all use the Linux kernel, GNU coreutils and various distribution-specific tools. Linux OS's are offered in *distributions* and usually released under the GNU General Public License. [CentOS](https://www.centos.org/), [Debian](https://www.debian.org/) and [Ubuntu](http://www.ubuntu.com/) make up Linode's *core distribution* offerings, while Arch, Gentoo, OpenSUSE and Slackware are other popular distributions also available with Linode.
+Briefly, Linux is a term used for a group of operating systems that all use the Linux kernel, GNU coreutils and various distribution-specific tools. Linux OS's are offered in *distributions* and usually released under the GNU General Public License. [CentOS](https://www.centos.org/), [Debian](https://www.debian.org/) and [Ubuntu](http://www.ubuntu.com/) make up Linode's *core distribution* offerings, while Arch, Gentoo, openSUSE and Slackware are other popular distributions also available with Linode.
 
 Though FreeBSD grew out of the original UNIX codebase, no UNIX code currently remains. Every part of FreeBSD is developed in the same source tree and code is released under the more permissive FreeBSD License as opposed to the GNU GPL's copyleft stance. More information on the differences between these operating systems is available in the FreeBSD [Quickstart Guide for Linux Users](https://www.freebsd.org/doc/en/articles/linux-users/article.html).
 
@@ -84,7 +84,7 @@ Begin by creating the Linode and making some preliminary changes.
 
 6.  When the command finishes, reboot into your **Installer profile**.
 
-7.  Go to the **Networking** tab in the Linode Cloud Manager. Access your Linode using [Glish](/docs/guides/using-the-linode-graphical-shell-glish/) to start the installation. Note that Glish **must** be used to complete the installation of FreeBSD.
+7.  Go to the **Networking** tab in the Linode Cloud Manager. Access your Linode using [Glish](/docs/guides/glish/) to start the installation. Note that Glish **must** be used to complete the installation of FreeBSD.
 
 ## Installing FreeBSD
 

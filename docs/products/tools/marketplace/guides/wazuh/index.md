@@ -33,7 +33,7 @@ aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 20.04 LTS
-- **Recommended plan:** All plan types and sizes can be used, though an 8GB (or higher) Instance is recommended for production.
+- **Recommended plan:** Wazuh recommends a minimum of a 4GB Linode, though an 8-core plan (32GB and up) is recommended for production.
 
 ### Wazuh Options
 
