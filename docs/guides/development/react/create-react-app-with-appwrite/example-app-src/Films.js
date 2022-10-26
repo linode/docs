@@ -33,7 +33,7 @@ class Films extends Component {
 
         // Query the database for films where `status`
         // is `To Watch`.
-        const promiseFilmsToWatch = appwriteDatabase.listDocuments('62c07d887ad99dfc50f0', [
+        const promiseFilmsToWatch = appwriteDatabase.listDocuments('Your-Database-ID', 'Your-Collection-ID', [
             Query.equal('status', 'To Watch')
         ]);
 
@@ -51,7 +51,7 @@ class Films extends Component {
 
         // Query the database for films where `status`
         // is `Watched`.
-        const promiseFilmsWatched = appwriteDatabase.listDocuments('62c07d887ad99dfc50f0', [
+        const promiseFilmsWatched = appwriteDatabase.listDocuments('Your-Database-ID', 'Your-Collection-ID', [
             Query.equal('status', 'Watched')
         ]);
 
@@ -71,7 +71,7 @@ class Films extends Component {
     // Update a film with a new status.
     markFilmWatched = (filmId, doMarkWatched) => {
         // Send the update to the API.
-        const promiseMarkFilmStatus = appwriteDatabase.updateDocument('62c07d887ad99dfc50f0', filmId, doMarkWatched ? { 'status': "Watched" } : { 'status': "To Watch" });
+        const promiseMarkFilmStatus = appwriteDatabase.updateDocument('Your-Database-ID', 'Your-Collection-ID', filmId, doMarkWatched ? { 'status': "Watched" } : { 'status': "To Watch" });
 
         // Display the results from the promise
         // on the JavaScript console.
@@ -88,7 +88,7 @@ class Films extends Component {
     // Add a new film.
     addNewFilm = () => {
         // Send the new film to the API.
-        const promiseMarkFilmStatus = appwriteDatabase.createDocument('62c07d887ad99dfc50f0', 'unique()', { 'name': this.state.newFilmName });
+        const promiseMarkFilmStatus = appwriteDatabase.createDocument('Your-Database-ID', 'Your-Collection-ID', 'unique()', { 'name': this.state.newFilmName });
 
         // Display the results from the promise
         // on the JavaScript console.
