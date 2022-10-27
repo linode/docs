@@ -8,7 +8,7 @@ tab_group_main:
     title: Overview
     weight: 10
 cascade:
-    date: 2020-06-02
+    date: 2020-11-10
     product_description: "A free cloud-based firewall service that makes it easy to secure network traffic to and from Compute Instances."
 aliases: ['/guides/platform/cloud-firewall/','/platform/cloud-firewall/']
 ---
@@ -29,7 +29,7 @@ Stay protected as your network grows. Effortlessly apply the same ruleset across
 
 ## Pricing and Availability
 
-Cloud Firewalls are available at no change across [all regions](https://www.linode.com/global-infrastructure/).
+Cloud Firewalls are available at no charge across [all regions](https://www.linode.com/global-infrastructure/).
 
 ## Limits and Considerations
 

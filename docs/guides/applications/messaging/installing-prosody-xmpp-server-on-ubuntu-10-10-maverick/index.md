@@ -13,7 +13,7 @@ modified: 2012-10-03
 modified_by:
   name: Linode
 published: 2011-02-23
-title: 'Installing Prosody XMPP Server on Ubuntu 10.10 (Maverick)'
+title: 'Install Prosody XMPP Server on Ubuntu 10.10'
 relations:
     platform:
         key: how-to-install-prosody

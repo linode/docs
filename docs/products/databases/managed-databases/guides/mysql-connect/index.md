@@ -5,7 +5,7 @@ author:
 title: "Connect to a MySQL Managed Database"
 description: "Learn how to connect to a MySQL Managed Databse through the command line or MySQL Workbench."
 published: 2022-02-23
-modified: 2022-05-11
+modified: 2022-07-22
 ---
 
 To connect to a MySQL Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a MySQL client. This guide details how to access your database using popular tools.
@@ -59,6 +59,8 @@ See [Using the MySQL Command Line Client](/docs/guides/mysql-command-line-client
 
 The MySQL Workbench provides a graphical interface for connecting to MySQL databases. Using this tool, you can visualize your database, its structure, and the data it contains.
 
+1.  Make sure the IP address assigned to your system is included within your database's access controls. If not, add it now. See [Manage Access Controls](/docs/products/databases/managed-databases/guides/manage-access-controls/).
+
 1. Install the MySQL Workbench software from the [MySQL Community Downloads](https://dev.mysql.com/downloads/workbench/) page. Be sure to select the operating system you're using locally.
 
 1. Open the software and select **Database > Manage Connections** from the menu. This displays the **Manage Server Connections** window.
@@ -78,3 +80,27 @@ The MySQL Workbench provides a graphical interface for connecting to MySQL datab
 1. To connect to the database, select **Database > Connect to Database** from the main menu. In the following screen, select the stored connection you just created and click **OK**.
 
 For instructions on using MySQL Workbench to interact with your database, see [Install MySQL Workbench for Database Administration](/docs/guides/deploy-mysql-workbench-for-database-administration/#creating-and-populating-databases) or look through the [MySQL Workbench Manual](https://dev.mysql.com/doc/workbench/en/).
+
+## Connect Using DBeaver
+
+[DBeaver](https://dbeaver.io/) is free and open source universal database tool for developers and database administrators. DBeaver provides a powerful SQL-editor, administration features, ability to migrate data and schema, monitor database connection sessions, and others.
+
+1.  Make sure the IP address assigned to your system is included within your database's access controls. If not, add it now. See [Manage Access Controls](/docs/products/databases/managed-databases/guides/manage-access-controls/).
+
+1. Install the DBeaver Community (or Pro) software from the [DBeaver Downloads](https://dbeaver.io/download/) page. Be sure to select the operating system you're using locally.
+
+1. Open DBeaver, click the **Database** menu dropdown, and select **New Connection**.
+
+1. The **Connect to a database** window appears. Select **MySQL** and click **Next** to continue.
+
+    ![Screenshot of the DBeaver database selection screen with MySQL highlighted](dbeaver-mysql-connection-new.png)
+
+1. Within the *Main* tab, enter the details for your connection, including the **Server Host** (hostname) **Port**, and **Username**. You can optionally store your password by entering your password and clicking the **Save password locally** button. If you do not store your password, you must enter it manually each time you connect. For security reasons, it's typically recommended *not* to store your password.
+
+    ![Screenshot of DBeaver's MySQL connection settings.](dbeaver-mysql-connection-main.png)
+
+1. In the *SSL* tab, check **Use SSL**, check **Require SSL**, and uncheck **Verify server certificate**.
+
+    ![Screenshot of DBeaver's MySQL SSL connection settings.](dbeaver-mysql-connection-ssl.png)
+
+1. Click the **Test Connection** button to check if the connection is successful.

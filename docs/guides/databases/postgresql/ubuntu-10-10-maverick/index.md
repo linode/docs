@@ -10,7 +10,7 @@ modified: 2012-10-03
 modified_by:
   name: Linode
 published: 2010-10-25
-title: 'Use PostgreSQL Relational Databases on Ubuntu 10.10 (Maverick)'
+title: 'Use PostgreSQL Relational Databases on Ubuntu 10.10'
 deprecated: true
 relations:
     platform:
