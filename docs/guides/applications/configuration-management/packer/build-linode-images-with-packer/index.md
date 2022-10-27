@@ -127,7 +127,6 @@ source "linode" "example-linode-image" {
   linode_token          = "LINODE_API_TOKEN"
   region                = "us-east"
   ssh_username          = "root"
-  ssh_private_key_file  = "~/.ssh/id_rsa"
 }
 
 build {
@@ -174,22 +173,22 @@ variable "api_token" {
   type = string
 }
 
-variable "ssh_key_location" {
+variable "linode_region" {
   type      = string
-  default   = "~/.ssh/id_rsa"
+  default   = "us-east"
 }
 
 source "linode" "example-linode-image" {
   # [...]
   linode_token          = var.api_token
   # [...]
-  ssh_private_key_file  = var.ssh_key_location
+  region                = var.linode_region
 }
 {{< /file >}}
 
 Each variable declaration has a `description` field to explain the variable and its role. Variables can then have an optional `default` field to define the default value for the variable.
 
-The `ssh_key_location` variable, in this case, has a default that does not need to be changed. So, the template just needs the `api_token` variable assigned.
+The `linode_region` variable, in this case, has a default that does not need to be changed. So, the template just needs the `api_token` variable assigned.
 
 Variables can be assigned in the command line when building the Packer image from the template. But the typically the more practical approach is to assign variable values in a dedicated file.
 
@@ -221,6 +220,7 @@ build {
       "apt-get update -qq",
 
       # Configure the firewall rules.
+      "ufw allow ssh",
       "ufw allow http",
       "ufw enable --force",
       "ufw reload",
@@ -267,7 +267,6 @@ You may see output like the following as the process goes on. And the process it
 linode.example-linode-image: output will be in this color.
 
 ==> linode.example-linode-image: Running builder ...
-==> linode.example-linode-image: Using existing SSH private key
 ==> linode.example-linode-image: Creating Linode...
 [...]
 ==> linode.example-linode-image: Shutting down Linode...
