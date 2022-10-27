@@ -13,7 +13,7 @@ modified: 2013-02-18
 modified_by:
   name: Linode
 published: 2011-06-08
-title: 'Provide Authoritative DNS Services with NSD on Ubuntu 11.04 (Natty)'
+title: 'Authoritative DNS Services with NSD on Ubuntu 11.04'
 relations:
     platform:
         key: authoritative-dns-nsd

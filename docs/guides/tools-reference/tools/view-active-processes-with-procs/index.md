@@ -254,7 +254,7 @@ To add an additional column to the procs display, use the `--insert` option and 
 
 ![adding a new field to the procs display](procs-add-column.png)
 
-The output can be sorted based on any column using the `--sorta` and `--sortd` options plus the name of the column. `--sorta` sorts the output in ascending order, while `--sortd` orders it in descending order. A list of the column identifiers are found in the `kind` table on the [*the procs GitHub page*](https://github.com/dalance/procs#configuration). The following command orders the processes based on the amount of memory they are using.
+The output can be sorted based on any column using the `--sorta` and `--sortd` options plus the name of the column. `--sorta` sorts the output in ascending order, while `--sortd` orders it in descending order. A list of the column identifiers are found in the `kind` table on the [*procs GitHub page*](https://github.com/dalance/procs#configuration). The following command orders the processes based on the amount of memory they are using.
 
     procs --sortd UsageMem
 

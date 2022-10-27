@@ -41,7 +41,7 @@ Nextcloud is a cloud storage platform that allows you to store and access your f
 
 ## Attach a Block Storage Volume
 
-1.  Create a Block Storage Volume and attach it to your Linode. See [How to Add a Block Storage Volume to a Linode](/docs/platform/how-to-use-block-storage-with-your-linode/#how-to-add-a-block-storage-volume-to-a-linode) for instructions on how to do this from the Linode Manager.
+1.  Create a Block Storage Volume and attach it to your Linode. See [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/) for instructions on how to do this from the Linode Manager.
 
     * You can also use the [Linode CLI](https://github.com/linode/linode-cli) to create a new Volume. The command below creates a 20GB Volume with the label `nextcloud` attached to a Linode labeled `nextcloud-linode`. Adjust the command as needed:
 

@@ -1,7 +1,7 @@
 ---
 slug: linux-static-ip-configuration
 deprecated: true
-deprecated_link: /guides/manual-network-configuration/
+deprecated_link: 'guides/manual-network-configuration/'
 author:
   name: Linode
   email: docs@linode.com
@@ -272,9 +272,9 @@ dns_servers_eth0="203.0.113.1
 {{< /file >}}
 
 
-### OpenSUSE
+### openSUSE
 
-Networking in OpenSUSE is managed by *wicked* and *netconfig*. In addition to directly editing the network configuration files shown below, you can also use [YaST](https://en.opensuse.org/Portal:YaST). See OpenSUSE's [networking documentation](https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha.network.html) for more information.
+Networking in openSUSE is managed by *wicked* and *netconfig*. In addition to directly editing the network configuration files shown below, you can also use [YaST](https://en.opensuse.org/Portal:YaST). See openSUSE's [networking documentation](https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha.network.html) for more information.
 
 1.  Modify the interface's config file:
 

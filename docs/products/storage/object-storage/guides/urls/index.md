@@ -29,7 +29,7 @@ Here are the types of URLs you can use to access buckets and files:
 - [Website URL](#website-urls)
 - [Custom URL](#custom-urls)
 
-## Cluster URL (S3 endpoint)
+## Cluster URL (S3 Endpoint)
 
 The cluster URL for Object Storage is unique to each data center. This URL can be used for accessing all of your Object Storage resources within a certain region. When used with third party tools, this URL might also be referred to as the *S3 endpoint*.
 
@@ -46,7 +46,7 @@ The cluster URL for Object Storage is unique to each data center. This URL can b
 
 Each bucket has its own unique URL. This URL is useful when configuring a third party application to use a specific bucket for file storage.
 
-**Bucket URL:** `https://[bucket-label].[cluster-id].linodeobjects.com/`, replacing *[bucket-label]* with the label of your bucket and *[cluster-id]* with the id of your data center (listed in the [Cluster URL](#cluster-url-s3-endpoint) section.
+**Bucket URL:** `https://[bucket-label].[cluster-id].linodeobjects.com/`, replacing *[bucket-label]* with the label of your bucket and *[cluster-id]* with the id of your data center (listed in the [Cluster URL](#cluster-url-s3-endpoint) section).
 
 For example, a bucket labeled *example-bucket* within the Atlanta data center would have the following URL:
 
@@ -97,7 +97,6 @@ You can build this URL manually or you can view the file URL through the Cloud M
 ## Signed URLs
 
 A **signed URL** gives anyone with the URL access to a file for a certain period of time. This is very useful when you want to share a document or file with someone, but don't wish to make the URL permanently accessible or able to be guessed by others. You can generate a signed URL through the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/#create-a-signed-url-with-the-cli) or [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/#create-a-signed-url-with-s3cmd).
-
 
 Here's an example of a signed URL:
 

@@ -6,13 +6,12 @@ author:
 description: "An overview of changes and actions that may be required in advance of upgrades to Linode's networking infrastructure."
 keywords: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-14
+published: 2022-07-19
+modified: 2022-10-11
 modified_by:
   name: Linode
 title: "Upcoming Changes Related to Network Infrastructure Upgrades"
 noindex: true
-_build:
-  list: false
 ---
 
 Throughout 2022, Linode is rolling out networking infrastructure upgrades to all of our existing data centers. These upgrades increase the stability and resiliency of our already reliable network. It also enables us to bring features, such as VLAN and IP Sharing, to every data center.
@@ -29,9 +28,9 @@ For most customers, these upgrades are performed seamlessly behind the scenes. F
 
 The following is a list of breaking changes and any action that may be required if you are impacted by that change:
 
-- **Deprecation of IPv6 /116 pools:** /116 pools will no longer be provided to Compute Instances within data center that have received the upgrades. Existing /116 pools will be removed from Compute Instances at that time.
+- **Deprecation of IPv6 /116 pools:** /116 pools will no longer be provided to new Compute Instances. Existing /116 pools will be removed from Compute Instances when data center is undergoing upgrades.
 
-    *Action:* If you were using /116 for IPv6 failover, consider using an IPv6 /64 instead.
+    *Action:* If you are using /116 for IPv6 failover, consider using an IPv6 /64 instead.
 
 - **IP failover through BGP:** IP failover (IP Sharing) for public IPv4 addresses and IPv6 routed ranges will be facilitated through BGP instead of ARP (configured through [keepalived](/docs/guides/ip-failover-keepalived/)).
 
@@ -47,10 +46,10 @@ Review the table below to learn which data centers have been upgraded with the l
 | Dallas (Texas, USA) | *Coming soon* |
 | **Frankfurt (Germany)** | **Complete** |
 | Fremont (California, USA) | *Coming soon* |
-| London (United Kingdom) | *In progress* |
-| Mumbai (India) | *In progress* |
+| **London (United Kingdom)** | **Complete** |
+| **Mumbai (India)** | **Complete** |
 | **Newark (New Jersey, USA)** | **Complete** |
-| Singapore | *In progress* |
+| **Singapore** | **Complete** |
 | Sydney (Australia) | *Coming soon* |
 | Tokyo (Japan) | *Coming soon* |
 | Toronto (Canada) | *Coming soon* |
