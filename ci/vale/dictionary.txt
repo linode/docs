@@ -329,6 +329,7 @@ coreutils
 coroutine
 coroutines
 corporateclean
+Countly
 courseware
 cov
 coverity
@@ -1823,6 +1824,7 @@ sda
 sda1
 sdb
 sdc
+sdks
 se
 seaborn
 seafile
@@ -2090,6 +2092,7 @@ torvalds
 toolchain
 toolchains
 toolset
+toolstrip
 towson
 trac
 traceroute
