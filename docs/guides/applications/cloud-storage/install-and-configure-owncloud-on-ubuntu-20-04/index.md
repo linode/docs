@@ -81,7 +81,7 @@ ownCloud requires a full LAMP (Linux, Apache, MySQL, PHP) stack. In this section
 
         sudo mysql_secure_installation
 
-    During this process, the system asks if you want to enable the `VALIDATE PASSWORD COMPONENT`. This feature ensures that all created passwords are strong and unique. Answer `n` (as in "no"). When prompted, type and verify a new secure password for the MySQL admin user. You are then prompted to answer four questions, to all of which you should respond `y` (as in "yes").
+    You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
 1. Install PHP and all the required PHP packages
 

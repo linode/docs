@@ -1,7 +1,7 @@
 ---
 slug: creating-a-mongodb-replication-set-on-centos-6-4
 deprecated: true
-deprecated_link: '/guides/create-a-mongodb-replica-set/'
+deprecated_link: 'guides/create-a-mongodb-replica-set/'
 author:
   name: Linode
   email: docs@linode.com
