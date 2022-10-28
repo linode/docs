@@ -59,6 +59,7 @@ anycasting
 ap
 apache2
 api
+apis
 apiserver
 apk
 apparmor
@@ -67,6 +68,7 @@ appletalk
 approvers
 appsec
 appserver
+appwrite
 apxs
 architecting
 aren
