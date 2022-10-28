@@ -1819,6 +1819,7 @@ scm
 scp
 scrapy
 screenrc
+scrollable
 scriptfilename
 scrum2b
 sda
