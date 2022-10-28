@@ -1,17 +1,36 @@
 ---
 slug: revert-last-git-commit
+<<<<<<< HEAD
 description: "Mistakes happen, and the Git version control system has tools to help you navigate them. In this tutorial, learn two methods to undo your most recent Git commit, what sets the methods apart, and when to use them."
+=======
+author:
+  name: Linode Community
+  email: docs@linode.com
+description: "Mistakes happen, and the Git version control system has tools to help you navigate them. In this tutorial, learn two methods to undo your most recent Git commit, what sets the methods apart, and when to use them."
+og_description: "Mistakes happen, and the Git version control system has tools to help you navigate them. In this tutorial, learn two methods to undo your most recent Git commit, what sets the methods apart, and when to use them."
+>>>>>>> 90649c9ec (Guide on reverting the last Git commit (#5657))
 keywords: ['revert git commit','undo git commit','revert git commit after push']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-18
 modified_by:
   name: Nathaniel Stickman
+<<<<<<< HEAD
 title: "Revert the Last Commit in Git"
 title_meta: "How to Revert the Last Commit in Git"
 external_resources:
 - '[freeCodeCamp: Git Revert Commit – How to Undo the Last Commit](https://www.freecodecamp.org/news/git-revert-commit-how-to-undo-the-last-commit/)'
 - '[TechTarget: How to Revert a Git Commit](https://www.theserverside.com/tutorial/How-to-git-revert-a-commit-A-simple-undo-changes-example)'
 authors: ["Nathaniel Stickman"]
+=======
+title: "How to Revert the Last Git Commit"
+h1_title: "How to Revert the Last Git Commit"
+contributor:
+  name: Nathaniel Stickman
+  link: https://github.com/nasanos
+external_resources:
+- '[freeCodeCamp: Git Revert Commit – How to Undo the Last Commit](https://www.freecodecamp.org/news/git-revert-commit-how-to-undo-the-last-commit/)'
+- '[TechTarget: How to Revert a Git Commit](https://www.theserverside.com/tutorial/How-to-git-revert-a-commit-A-simple-undo-changes-example)'
+>>>>>>> 90649c9ec (Guide on reverting the last Git commit (#5657))
 ---
 
 Git is a widely used Version Control System (VCS) known for its versatility. Git utilizes local clones of central repositories to bring more effective collaboration. It also keeps track of all the committed changes along the way, so things are readily recoverable.
