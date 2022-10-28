@@ -7,7 +7,7 @@ description: "The redundant cross–data center architecture utilizes Wireguard 
 og_description: "The redundant cross–data center architecture utilizes Wireguard and Linode's VLAN service to run your SaaS applications on a segmented software-defined network. This tutorial walks you through how you can implement this architecture yourself, using Terraform provisioning and NGINX load balancing."
 keywords: ['redundancy across data centers','data center redundancy','redundant cross region']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-10-26
+published: 2022-10-27
 modified_by:
   name: Nathaniel Stickman
 title: "Implementing Redundant Cross-Data Center Applications"
@@ -31,15 +31,17 @@ Learn more about the architecture itself in our overview documentation for [Redu
 
 The rest of this tutorial is devoted to providing a step-by-step implementation of the redundant cross–data center architecture.
 
-The provisioning relies mostly on Terraform scripts, installing the software and handling much of the configuration up front. Subsequent sections walk you through the additional configuration steps for each layer of the infrastructure.
+The provisioning relies mostly on Terraform scripts, installing the software and handling much of the configuration up front. Subsequent sections walk you through the additional configuration steps for each part of the infrastructure.
 
-This implementation of the architecture is designed around three layers:
+The infrastructure is built across two different Linode regions, demonstrating the use of cross-regional data centers.
 
-- A load balancer layer, which uses an NGINX proxy to the application instances
+This implementation of the architecture consists of three main parts:
 
-- A router layer, providing connections into VLANed nodes
+- A DNS load balancer, typically using an edge CDN
 
-- A data center layer, where the application and data storage exist within particular VLANs
+- A Wireguard gateway for each region
+
+- A set of application servers within each region
 
 ![An overview diagram of the infrastructure](rcdc-infrastructure-diagram-overview.png)
 
