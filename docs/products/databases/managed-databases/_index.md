@@ -10,7 +10,7 @@ cascade:
     date: 2022-02-23
     product_description: "Fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
 aliases: ['/products/database/']
-modified: 2022-09-02
+modified: 2022-10-18
 ---
 
 {{< content "managed-databases-beta-notice-shortguide" >}}
@@ -79,7 +79,8 @@ In addition to the resources allocated to each available plan (outlined above), 
 - Multiple database engines and versions
 - Customize access controls to allow connections from trusted sources
 - Automatic backups are taken daily and retained for 7 days
-- Root-level access to the database
+- Administrative access with elevated user permissions
+- Access the database using command-line or desktop applications
 - 100% SSD (Solid State Disk) storage
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer
