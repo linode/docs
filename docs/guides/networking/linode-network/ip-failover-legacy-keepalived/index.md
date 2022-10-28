@@ -1,9 +1,9 @@
 ---
-slug: ip-failover-keepalived
+slug: ip-failover-legacy-keepalived
 author:
   name: Linode
   email: docs@linode.com
-description: "Learn how to use Linode's IP Sharing feature to configure IP failover using keepalived"
+description: "Learn how to use Linode's IP Sharing feature to configure ARP-based IP failover using keepalived"
 keywords: ['networking','IP failover','keepalived']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-19
@@ -15,6 +15,7 @@ contributor:
   name: Linode
 external_resources:
 - '[keepalived Documentation](https://keepalived.readthedocs.io/en/latest/index.html)'
+aliases: ['/guides/ip-failover-keepalived/']
 ---
 
 {{<note>}}
@@ -30,11 +31,11 @@ This guide covers using keepalived to configure IP failover with Linode Compute 
 
 Linode's IP failover feature using keepalived is compatible with various IP address types in certain data centers. Review the list below to learn what types are available in your data center.
 
-- **Public and Private IPv4 addresses:** Can be configured in a supported data center using keepalived. You must first configure Linode's IP Sharing feature as outlined in the [Configuring IP Sharing](#configuring-ip-sharing) section. Supported data centers include Dallas (USA), Fremont (USA), London (UK), Newark (USA), Singapore, and Tokyo (Japan).
+- **Public and Private IPv4 addresses:** Can be configured in a supported data center using keepalived. You must first configure Linode's IP Sharing feature as outlined in the [Configuring IP Sharing](#configuring-ip-sharing) section. See [Configure Failover > IP Sharing Availability](/docs/guides/ip-failover/#configure-failover) for a list of data centers that support ARP-based failover.
 
 - **IPv6 addresses:** IP failover with IPv6 addresses is not currently supported.
 
-- **VLAN IP addressses:** Can be configured in a supported data center using keepalived. Supported data centers include Atlanta (USA), Mumbai (India), Sydney (Australia), and Toronto (Canada).
+- **VLAN IP addressses:** Can be configured in a supported data center using keepalived. See [VLANs > Availability](/docs/products/networking/vlans/#availability) for a list of data centers.
 
 ## Configuring IP Sharing
 

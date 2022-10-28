@@ -32,7 +32,7 @@ The following is a list of breaking changes and any action that may be required 
 
     *Action:* If you are using /116 for IPv6 failover, consider using an IPv6 /64 instead.
 
-- **IP failover through BGP:** IP failover (IP Sharing) for public IPv4 addresses and IPv6 routed ranges will be facilitated through BGP instead of ARP (configured through [keepalived](/docs/guides/ip-failover-keepalived/)).
+- **IP failover through BGP:** IP failover (IP Sharing) for public IPv4 addresses and IPv6 routed ranges will be facilitated through BGP instead of ARP (configured through [keepalived](/docs/guides/ip-failover-legacy-keepalived/)).
 
     *Action:* If you have previously configured IP failover for a public IPv4 address, review the [Configuring IP Failover on a Compute Instance](/docs/guides/ip-failover/) guide to learn more about configuring IP failover using BGP. You can configure BGP ahead of time, but will not be able to test or use the configuration until after the network upgrades have been completed.
 
@@ -55,6 +55,10 @@ Review the table below to learn which data centers have been upgraded with the l
 | Toronto (Canada) | *Coming soon* |
 
 A status of **complete** indicates that all new Compute Instances (and *most* existing instances) are located on fully upgraded hardware. Compute Instances using legacy features, such as ARP-based failover and /116 ranges, may still be located on hardware that hasn't yet been upgraded. These customers have been notified and a migration timeline has been shared.
+
+{{< note >}}
+If a data center is marked as *undergoing network upgrades*, customers may encounter issues enabling IP Sharing and configuring failover. For Compute Instances that already have IP Sharing enabled, this feature should still function as intended. Once the network upgrades are completed, IP Sharing will be supported through the new method (BGP). See [Configuring IP Failover](/docs/guides/ip-failover/).
+{{</ note >}}
 
 ## What Action is Required?
 
