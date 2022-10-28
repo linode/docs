@@ -14,7 +14,7 @@ published: 2016-03-14
 title: 'Install FreeBSD on Linode'
 external_resources:
  - '[The FreeBSD Handbook](https://www.freebsd.org/doc/handbook/)'
- - '[Using the Lish Console](/docs/guides/using-the-lish-console/)'
+ - '[Using the Lish Console](/docs/guides/lish/)'
  - '[Access Your Linux Desktop Using Glish](/docs/guides/glish/)'
  - '[FreeBSD Handbook - Comparing BSD and Linux](https://www.freebsd.org/doc/en/articles/explaining-bsd/comparing-bsd-and-linux.html)'
  - '[FreeBSD Handbook - Linux® Binary Compatibility](https://www.freebsd.org/doc/handbook/linuxemu.html)'
@@ -48,7 +48,7 @@ FreeBSD is not officially supported by Linode at this time. This means that the 
 
 Begin by creating the Linode and making some preliminary changes.
 
-1.  Create your Linode in your preferred data center. For the purposes of this tutorial, we recommend turning [Lassie](/docs/uptime/monitoring-and-maintaining-your-server/#configuring-shutdown-watchdog) *off* to prevent the watchdog from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
+1.  Create your Linode in your preferred data center. For the purposes of this tutorial, we recommend turning [Lassie](/docs/guides/monitor-and-maintain-compute-instance/#configuring-shutdown-watchdog) *off* to prevent the watchdog from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
 
 2.  [Create two disk images](/docs/guides/disks-and-storage/#creating-a-disk); both should be in the RAW format.
 
@@ -72,7 +72,7 @@ Begin by creating the Linode and making some preliminary changes.
     - /dev/sda: FreeBSD disk image.
     - root / boot device: Standard /dev/sda
 
-4.  [Boot into **Rescue Mode**](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) with the installer disk mounted to `/dev/sda` and access your Linode using [Lish via SSH](/docs/guides/using-the-lish-console/) by clicking on the **Launch Console** link from your Linode's dashboard of the Linode Cloud Manager.
+4.  [Boot into **Rescue Mode**](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) with the installer disk mounted to `/dev/sda` and access your Linode using [Lish via SSH](/docs/guides/lish/) by clicking on the **Launch Console** link from your Linode's dashboard of the Linode Cloud Manager.
 
 5.  Once in Rescue Mode, run the following command, replacing latest with the latest `memstick.img` file from the [FreeBSD download page](ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/):
 

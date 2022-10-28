@@ -49,7 +49,7 @@ There are a few stipulations that resellers should keep in mind:
 
 - Payments are to be made directly to Linode by the reseller. If a customer of a reseller fails to pay the reseller for their services, the reseller is still responsible for their monthly payment to Linode.
 
-- Linode Support can help with issues related to the physical operation of your Linode services, but issues related to your software configuration are outside of the [scope of Linode Support](/docs/platform/billing-and-support/support/#scope-of-support). Linode offers a number of [resources](/docs/platform/billing-and-support/support/#resources) to help with configuration questions. Linode Support is only available to people with access to a [Linode Cloud Manager user](#limited-cloud-manager-user). If your customers do not have their own Linode users, they will not be able to contact Linode Support.
+- Linode Support can help with issues related to the physical operation of your Linode services, but issues related to your software configuration are outside of the [scope of Linode Support](/docs/guides/support/#scope-of-support). Linode offers a number of [resources](/docs/guides/support/#resources) to help with configuration questions. Linode Support is only available to people with access to a [Linode Cloud Manager user](#limited-cloud-manager-user). If your customers do not have their own Linode users, they will not be able to contact Linode Support.
 
 ## How to Resell Linode Service
 
@@ -59,7 +59,7 @@ The best way to resell Linode services is through the use of the Linode API. The
 
 ### Limited Cloud Manager Users
 
-If a reseller wants to be able to give reseller customers access to parts of the Linode Cloud Manager without developing a new user interface, they can create a limited Manager *user* in the Cloud Manager. A user is a set of credentials that can access your Linode account, and your Linode account can have multiple users. A user can be restricted to have a limited set of permissions, such as only being able to access certain Linodes and not having access to your billing information. To create a limited user in the Cloud Manager, review the [Users and Permissions](/docs/platform/manager/accounts-and-passwords-new-manager/#users-and-permissions) section of the Accounts and Passwords guide.
+If a reseller wants to be able to give reseller customers access to parts of the Linode Cloud Manager without developing a new user interface, they can create a limited Manager *user* in the Cloud Manager. A user is a set of credentials that can access your Linode account, and your Linode account can have multiple users. A user can be restricted to have a limited set of permissions, such as only being able to access certain Linodes and not having access to your billing information. To create a limited user in the Cloud Manager, review the [Users and Permissions](/docs/guides/accounts-and-passwords/#users-and-permissions) section of the Accounts and Passwords guide.
 
 {{< note >}}
 Cloud Manager users are not related to the Linux users on your Linodes. If you need to revoke a customer's account access, you should remove access to both their Cloud Manager users and their Linux users. Read the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on this subject.
@@ -77,7 +77,7 @@ Yes. Please use the official [Linode logo assets](https://www.linode.com/logos).
 
 ### What Payment Methods are Available?
 
-Automatic payments can be made with a credit card. All Linode accounts are required to have a credit card on file. Manual PayPal payments can also be made, so you can add credit to your Linode account with PayPal. For more information on Linode's billing, review the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments-new-manager/#payment-methods) guide.
+Automatic payments can be made with a credit card. All Linode accounts are required to have a credit card on file. Manual PayPal payments can also be made, so you can add credit to your Linode account with PayPal. For more information on Linode's billing, review the [Billing and Payments](/docs/guides/understanding-billing-and-payments/#payment-methods) guide.
 
 ### Does Linode Have a White-Label Interface?
 

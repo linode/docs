@@ -28,18 +28,18 @@ First, you need to decide what FQDN (full qualified domain name) to use as your 
 
 ## Configure DNS Records
 
-Before setting the rDNS value for your Linode's IP addresses, you must first add DNS records that map your domain to the public IPv4 address and IPv6 address belonging to your Linode. To do this, log in to whichever service you use to manage your domain's DNS records. This may be the Linode [DNS Manager](/docs/guides/dns-manager/), your domain's registrar, or a third-party DNS service. The instructions below assume you are using Linode's DNS Manager, though most DNS services work in a similar fashion.
+Before setting the rDNS value for your Linode's IP addresses, you must first add DNS records that map your domain to the public IPv4 address and IPv6 address belonging to your Linode. To do this, log in to whichever service you use to manage your domain's DNS records. This may be the Linode [DNS Manager](/docs/products/networking/dns-manager/), your domain's registrar, or a third-party DNS service. The instructions below assume you are using Linode's DNS Manager, though most DNS services work in a similar fashion.
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Domains** from the main navigation menu.
 
 1. Within the list of domains that appears, click the **Edit** link corresponding with the domain you wish to use for rDNS. If your domain is not listed, you may be using a different DNS service.
 
-1. Add the following two records by following the instructions within the [Add DNS Records](/docs/guides/dns-manager/#add-dns-records) guide.
+1. Add the following two records by following the instructions within the [Add DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/) guide.
 
     - *A Record*: Enter the subdomain you wish to use in the **Hostname** field and the public IPv4 address of your Linode in the **IP Address** field.
     - *AAAA Record*: Enter the subdomain you wish to use in the **Hostname** field and the public IPv6 address of your Linode in the **IP Address** field.
 
-See our [Introduction to DNS Records](/docs/guides/dns-records-an-introduction/) and [Common DNS Configurations](/docs/guides/common-dns-configurations/) guides for more information about PTR and DNS records.
+See our [Introduction to DNS Records](/docs/guides/dns-overview/) and [Common DNS Configurations](/docs/products/networking/dns-manager/guides/common-dns-configurations/) guides for more information about PTR and DNS records.
 
 ## Setting Reverse DNS
 

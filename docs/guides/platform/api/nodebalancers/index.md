@@ -15,7 +15,7 @@ title: "How to Configure NodeBalancers with the Linode API"
 h1_title: "Configuring NodeBalancers with the Linode API"
 enable_h1: true
 external_resources:
-  - '[Getting Started with NodeBalancers](/docs/guides/getting-started-with-nodebalancers/)'
+  - '[Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/)'
 tags: ["linode platform"]
 ---
 
@@ -72,7 +72,7 @@ NodeBalancers are created without any configuration profiles attached. Each prof
         -X POST -d @nodebalancer-config.json
 
 {{< note >}}
-For more information about configuration options, see our [NodeBalancer Reference Guide](/docs/guides/nodebalancer-reference-guide/).
+For more information about configuration options, see our [NodeBalancer Reference Guide](/docs/products/networking/nodebalancers/guides/configure/).
 {{< /note >}}
 
 ## Add Nodes

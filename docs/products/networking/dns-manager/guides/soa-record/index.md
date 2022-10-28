@@ -22,7 +22,7 @@ The **SOA** (*Start of Authority*) record stores administrative information for 
 
 - **SOA Email** (also called *RNAME*): The administrative email address for the domain. This email should belong to a *different* domain.
 
-- **Domain Transfer IPs:** A list of IP addresses that are able to perform AXFR transfers. If you wish to allow other DNS providers the ability to transfer the domain zone, their corresponding IP addresses can be added here. See [Transfer Domain Zones](/docs/products/networking/dns-manager/guides/transfer-domain-zones/)
+- **Domain Transfer IPs:** A list of IP addresses that are able to perform AXFR transfers. If you wish to allow other DNS providers the ability to transfer the domain zone, their corresponding IP addresses can be added here. See [Transfer Domain Zones](/docs/products/networking/dns-manager/guides/outgoing-dns-zone-transfers/)
 
 - **Default TTL** (*Time To Live*): The length of time that DNS resolvers should store the DNS record *before* revalidating it with Linode's name servers. Setting the TTL to **5 minutes** is recommended for many use cases. If **Default** is selected, the TTL is set to **24 hours**.
 

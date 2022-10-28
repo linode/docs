@@ -318,7 +318,7 @@ Alternatively, you can freely create a custom subdomain that does not need to ma
 
     subdomain.mydomain.tld    CNAME	my-new-bucket.us-east-1.linodeobjects.com
 
-To learn about managing DNS records on Linode, see the [DNS Manager](/docs/guides/dns-manager/) and [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) guides.
+To learn about managing DNS records on Linode, see the [DNS Manager](/docs/products/networking/dns-manager/) and [DNS Records: An Introduction](/docs/guides/dns-overview/) guides.
 
 For instructions on how to set up `https` access for your custom domain, see the  [Configure a Custom Domain (with a TLS/SSL Certificate)](/docs/products/storage/object-storage/guides/custom-domain/) guide.
 

@@ -36,7 +36,7 @@ Backing up the data stored in a MongoDB database is an important step to maintai
 1. Install [MongoDB](/docs/guides/install-mongodb-on-ubuntu-16-04/) on your Linux system.
 
 {{< note >}}
-The steps in this guide are written for a non-root user account. For any commands that require elevated privileges, `sudo` is prefixed at the start of the command syntax. If you’re unfamiliar with the `sudo` command workflow, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user account. For any commands that require elevated privileges, `sudo` is prefixed at the start of the command syntax. If you’re unfamiliar with the `sudo` command workflow, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Cyberduck CLI

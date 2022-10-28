@@ -19,14 +19,14 @@ This guide presents troubleshooting strategies for Linodes that are unresponsive
 
 Similarly, your server may be unresponsive after maintenance was applied by Linode to your server's host (frequently, this is correlated with software/distribution upgrades performed on your deployment prior to the host's maintenance). This guide is designed as a useful resource for either of these scenarios. If you need to troubleshoot memory and networking, read our guide on [Troubleshooting Memory and Networking Issues](/docs/guides/troubleshooting-memory-and-networking-issues/).
 
-If you can [ping](/docs/tools-reference/linux-system-administration-basics/#the-ping-command) your Linode, but you cannot access SSH or other services, this guide will not assist with troubleshooting those services. Instead, refer to the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) or [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guides.
+If you can [ping](/docs/guides/linux-system-administration-basics/#the-ping-command) your Linode, but you cannot access SSH or other services, this guide will not assist with troubleshooting those services. Instead, refer to the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) or [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guides.
 
 {{< disclosure-note "Where to go for help outside this guide" >}}
 This guide explains how to use different troubleshooting commands on your Linode. These commands can produce diagnostic information and logs that may expose the root of your connection issues. For some specific examples of diagnostic information, this guide also explains the corresponding cause of the issue and presents solutions for it.
 
 If the information and logs you gather do not match a solution outlined here, consider searching the [Linode Community Site](https://www.linode.com/community/questions/) for posts that match your system's symptoms. Or, post a new question in the Community Site and include your commands' output.
 
-Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/platform/billing-and-support/support/#scope-of-support) for a description of which issues Linode Support can help with.
+Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/guides/support/#scope-of-support) for a description of which issues Linode Support can help with.
 {{< /disclosure-note >}}
 
 ## Before You Begin
@@ -35,15 +35,15 @@ There are a few core troubleshooting tools you should familiarize yourself with 
 
 ### The Linode Shell (Lish)
 
-[*Lish*](/docs/guides/using-the-lish-console/) is a shell that provides access to your Linode's serial console. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or SSH is inaccessible. Much of your troubleshooting for basic connection issues will be performed from the Lish console.
+[*Lish*](/docs/guides/lish/) is a shell that provides access to your Linode's serial console. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or SSH is inaccessible. Much of your troubleshooting for basic connection issues will be performed from the Lish console.
 
-To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Lish Console](/docs/guides/using-the-lish-console/) guide. In particular, [using your web browser](/docs/guides/using-the-lish-console/#through-the-cloud-manager-weblish) is a fast and simple way to access Lish.
+To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Lish Console](/docs/guides/lish/) guide. In particular, [using your web browser](/docs/guides/lish/#through-the-cloud-manager-weblish) is a fast and simple way to access Lish.
 
 ### MTR
 
 When your network traffic leaves your computer to your Linode, it travels through a series of routers that are administered by your internet service provider, by Linode's transit providers, and by the various organizations that form the [Internet's backbone](https://en.wikipedia.org/wiki/Internet_backbone). It is possible to analyze the route that your traffic takes for possible service interruptions using a tool called [MTR](/docs/guides/diagnosing-network-issues-with-mtr/).
 
-MTR is similar to the [traceroute](/docs/tools-reference/linux-system-administration-basics/#the-traceroute-command) tool, in that it will trace and display your traffic's route. MTR also runs several iterations of its tracing algorithm, which means that it can report statistics like average packet loss and latency over the period that the MTR test runs.
+MTR is similar to the [traceroute](/docs/guides/linux-system-administration-basics/#the-traceroute-command) tool, in that it will trace and display your traffic's route. MTR also runs several iterations of its tracing algorithm, which means that it can report statistics like average packet loss and latency over the period that the MTR test runs.
 
 Review the installation instructions in Linode's [Diagnosing Network Issues with MTR](/docs/guides/diagnosing-network-issues-with-mtr/#install-mtr) guide and install MTR on your computer.
 
@@ -67,11 +67,11 @@ The root user is available in Lish even if root user login is disabled in your S
 
 ## Troubleshoot Booting Issues
 
-If your Linode isn't booting normally, you will not be able to rely on the Lish console to troubleshoot your deployment directly. To continue, you will first need to reboot your Linode into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#rescuing), which is a special recovery environment that Linode provides.
+If your Linode isn't booting normally, you will not be able to rely on the Lish console to troubleshoot your deployment directly. To continue, you will first need to reboot your Linode into [Rescue Mode](/docs/guides/rescue-and-rebuild/#rescuing), which is a special recovery environment that Linode provides.
 
 When you boot into Rescue Mode, you are booting your Linode into the [Finnix recovery Linux distribution](https://www.finnix.org). This Finnix image includes a working network configuration, and you will be able to mount your Linode's disks from this environment, which means that you will be able to access your files.
 
-1.  Review the Rescue and Rebuild guide for instructions and [boot into Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode). If your Linode does not reboot into Rescue Mode successfully, please [contact Linode Support](/docs/platform/billing-and-support/support/#contacting-linode-support).
+1.  Review the Rescue and Rebuild guide for instructions and [boot into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode). If your Linode does not reboot into Rescue Mode successfully, please [contact Linode Support](/docs/guides/support/#contacting-linode-support).
 
 1.  Connect to Rescue Mode via the Lish console as you would normally. You will not be required to enter a username or password to start using the Lish console while in Rescue Mode.
 
@@ -79,13 +79,13 @@ When you boot into Rescue Mode, you are booting your Linode into the [Finnix rec
 
 If your Linode can't boot, then it may have experienced filesystem corruption.
 
-1.  Review the Rescue and Rebuild guide for instructions on [running a filesystem check](/docs/troubleshooting/rescue-and-rebuild/#performing-a-file-system-check).
+1.  Review the Rescue and Rebuild guide for instructions on [running a filesystem check](/docs/guides/rescue-and-rebuild/#performing-a-file-system-check).
 
     {{< caution >}}
 Never run a filesystem check on a disk that is mounted.
 {{< /caution >}}
 
-1.  If your filesystem check reports errors that cannot be fixed, you may need to [rebuild your Linode](/docs/troubleshooting/rescue-and-rebuild/#rebuilding).
+1.  If your filesystem check reports errors that cannot be fixed, you may need to [rebuild your Linode](/docs/guides/rescue-and-rebuild/#rebuilding).
 
 1.  If the filesystem check reports errors that it has fixed, try rebooting your Linode under your normal [configuration profile](/docs/guides/linode-configuration-profiles/#booting-from-a-configuration-profile). After you reboot, you may find that your connection issues are resolved. If you still cannot connect as normal, restart the troubleshooting process from the [beginning of this guide](#is-your-linode-running).
 
@@ -95,7 +95,7 @@ Never run a filesystem check on a disk that is mounted.
 
 In addition to being able to mount your Linode's disks, you can also *change root* (sometimes abbreviated as *chroot*) within Rescue Mode. *Chrooting* will make Rescue Mode's working environment emulate your normal Linux distribution. This means your files and logs will appear where you normally expect them, and you will be able to work with tools like your standard package manager and other system utilities.
 
-To proceed, review the Rescue and Rebuild guide's instructions on [changing root](/docs/troubleshooting/rescue-and-rebuild/#change-root). Once you have chrooted, you can then investigate your Linode's logs for messages that may describe the cause of your booting issues.
+To proceed, review the Rescue and Rebuild guide's instructions on [changing root](/docs/guides/rescue-and-rebuild/#change-root). Once you have chrooted, you can then investigate your Linode's logs for messages that may describe the cause of your booting issues.
 
 In systemd Linux distributions (like Debian 8+, Ubuntu 16.04+, CentOS 7+, and recent releases of Arch), you can run the [`journalctl` command](/docs/guides/how-to-use-journalctl/) to view system and kernel logs. In these and other distributions, you may also find system log messages in the following files:
 
@@ -107,7 +107,7 @@ In systemd Linux distributions (like Debian 8+, Ubuntu 16.04+, CentOS 7+, and re
 
 -   `/var/log/dmesg`
 
-You can use the [`less` command](/docs/guides/how-to-use-less/) to review the contents of these files (e.g. `less /var/log/syslog`). Try pasting your log messages into a search engine or searching in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Linode](/docs/troubleshooting/rescue-and-rebuild/#rebuilding).
+You can use the [`less` command](/docs/guides/how-to-use-less/) to review the contents of these files (e.g. `less /var/log/syslog`). Try pasting your log messages into a search engine or searching in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Linode](/docs/guides/rescue-and-rebuild/#rebuilding).
 
 ### Quick Tip for Ubuntu and Debian Systems
 
@@ -115,7 +115,7 @@ After you have chrooted inside Rescue Mode, the following command may help with 
 
     dpkg --configure -a
 
-After running this command, try rebooting your Linode into your normal configuration profile. If your issues persist, you may need to investigate and research your system logs further, or consider [rebuilding your Linode](/docs/troubleshooting/rescue-and-rebuild/#rebuilding).
+After running this command, try rebooting your Linode into your normal configuration profile. If your issues persist, you may need to investigate and research your system logs further, or consider [rebuilding your Linode](/docs/guides/rescue-and-rebuild/#rebuilding).
 
 ## Diagnose Network Connection Issues
 
@@ -202,7 +202,7 @@ If your report does not look like any of the previous examples, read through the
 
 If your MTR indicates a configuration issue within your Linode, you can confirm the problem by using Rescue Mode:
 
-1.  Reboot your Linode into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode).
+1.  Reboot your Linode into [Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode).
 
 1.  Run another MTR report from your computer to your Linode's IP address.
 
@@ -214,19 +214,19 @@ If your MTR indicates a configuration issue within your Linode, you can confirm 
 
 Before opening a support ticket, you should also generate a *reverse MTR* report. The MTR tool is run from your Linode and targets your machine's IP address on your local network, whether you're on your home LAN, for example, or public WiFi. To run an MTR from your Linode, log in to your Lish console. To find your local IP, visit a website like https://www.whatismyip.com/.
 
-Once you have generated your original MTR and your reverse MTR, [open a Linode support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support), and include your reports and a description of the troubleshooting you've performed so far. Linode Support will try to help further diagnose the routing issue.
+Once you have generated your original MTR and your reverse MTR, [open a Linode support ticket](/docs/guides/support/#contacting-linode-support), and include your reports and a description of the troubleshooting you've performed so far. Linode Support will try to help further diagnose the routing issue.
 
 ## Troubleshoot Network Configuration Issues
 
 If you have determined that your network configuration is the cause of the problem, review the following troubleshooting suggestions. If you make any changes in an attempt to fix the issue, you can test those changes with these steps:
 
-1.  Run another MTR report (or [ping](/docs/troubleshooting/troubleshooting/#can-you-ping-the-linode) the Linode) from your computer to your Linode's IP.
+1.  Run another MTR report (or [ping](/docs/guides/troubleshooting-overview/#can-you-ping-the-linode) the Linode) from your computer to your Linode's IP.
 
 1.  If the report shows no packet loss but you still can't access SSH or other services, this result indicates that your network connection is up again, but the other services are still down. Move onto [troubleshooting SSH](#troubleshoot-ssh) or [troubleshooting other services](#troubleshoot-other-services).
 
 1.  If the report still shows the same packet loss, review the remaining troubleshooting suggestions in this section.
 
-If the recommendations in this section do not resolve your issue, try pasting your [diagnostic commands' output](#run-diagnostic-commands) into a search engine or searching for your output in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Linode](/docs/troubleshooting/rescue-and-rebuild/#rebuilding).
+If the recommendations in this section do not resolve your issue, try pasting your [diagnostic commands' output](#run-diagnostic-commands) into a search engine or searching for your output in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Linode](/docs/guides/rescue-and-rebuild/#rebuilding).
 
 ### Try Enabling Network Helper
 
@@ -358,7 +358,7 @@ Your deployment may be running FirewallD or UFW, which are frontend software pac
     sudo ufw status
     sudo firewall-cmd --state
 
-Review [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
+Review [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
 {{< /note >}}
 
 Firewall rulesets can vary widely. Review our [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections.

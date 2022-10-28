@@ -18,7 +18,7 @@ These guides explore targeted topics like how to host a website, setting up a we
 
 ### Choosing a Linode Plan
 
-- [How to Choose a Linode Plan](/docs/platform/how-to-choose-a-linode-plan/#1-shared)
+- [How to Choose a Linode Plan](/docs/guides/choosing-a-compute-instance-plan/#1-shared)
 
 ### Hosting a Website
 

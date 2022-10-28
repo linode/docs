@@ -56,7 +56,7 @@ For example:
 
         scp -r your_linode_username@your_linode_ip:/var/www/html/ ~/html_backup
 
-If you intend to repeat this process regularly, consider [using rsync](/docs/security/backups/backing-up-your-data/#understand-the-rsync-command) to create additional local copies of your data. rsync is capable of performing incremental file copies, which means you do not have to fully transfer each file every time you download your data.
+If you intend to repeat this process regularly, consider [using rsync](/docs/guides/backing-up-your-data/#understand-the-rsync-command) to create additional local copies of your data. rsync is capable of performing incremental file copies, which means you do not have to fully transfer each file every time you download your data.
 
 ### FileZilla
 
@@ -72,7 +72,7 @@ Special care is needed when downloading data from a database. Before it can be d
 
 -   If your MySQL database won't run for some reason, follow the instructions for creating [*physical* backups](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
 
--   If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/guides/how-to-back-up-your-postgresql-database/) guide.
+-   If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/guides/back-up-a-postgresql-database/) guide.
 
 ## Download a Disk over SSH
 
