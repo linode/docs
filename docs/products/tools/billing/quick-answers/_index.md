@@ -1,32 +1,32 @@
 ---
-title: Quick Answers
-description: ""
+title: FAQs
+description: "Find quick answers to some of the most commonly asked billing questions."
 tab_group_main:
     weight: 60
-published: 2022-10-18
+published: 2022-10-28
 ---
 
 ## I’m not using my services but I’m still being charged. How do I stop this?
 
-Charges accrue for any service present on an account, even if it is powered off or otherwise not actively being used. To stop additional charges from accruing for a service, that service must be deleted. Keep in mind that your next invoice will include any fees for this service that have accrued during the billing cycle. See [Billing](http://localhost:1313/docs/guides/understanding-billing-and-payments/#billing) for more details.
+You are charged for any service present on an account, even if it is powered off or otherwise not actively being used. To stop additional charges from accruing for a service, that service must be deleted. Keep in mind that your next invoice will include any fees for this service that have accrued during the billing cycle. See [Billing](/docs/guides/understanding-billing-and-payments/#billing) for more details.
 
 ## My bill is higher than expected. How can I get more information about these charges?
 
-For each bill, including mid-month bills, is available to view as an itemized invoice. These invoices contain a detailed breakdown of your charges. Each service that was present on the account at any point during the billing cycle is listed on the invoice, alongside the amount of time the service was active, the hourly rate, and the total charge for that service.
+Each bill, including mid-month bills, is available to view as an itemized invoice. These invoices contain a detailed breakdown of your charges. Each service that was present on the account at any point during the billing cycle is listed on the invoice, alongside the amount of time the service was active, the hourly rate, and the total charge for that service.
 
 All invoices are listed in the Billing & Payment History section of the Cloud Manager. See [Viewing Invoices and Payments](/docs/guides/manage-billing-in-cloud-manager/#viewing-invoices-and-payments) for instructions. A copy of each invoice is also emailed to all users on the account with read and write billing access.
 
 ## I deleted a service earlier this month. Why was I just charged for it now?
 
-Invoices are generated at the beginning of every month and include fees for services used during the previous month. See [Billing](http://localhost:1313/docs/guides/understanding-billing-and-payments/#billing). On your invoice, you can view the dates each service was on the account.
+Invoices are generated at the beginning of every month and include fees for services used during the previous month. See [Billing](/docs/guides/understanding-billing-and-payments/#billing). On your invoice, you can view the dates each service was on the account.
 
 ## Where can I view amount of credit available on my account?
 
-Promotional credits are visible at the [Billing Info](https://cloud.linode.com/account/billing) page of the Cloud Manager *if a promo code has been applied to your account*. Other account credits are displayed on the same page under the Account Balance section. A balance that is green indicates the amount of credit on the account. A balance that is red indicates the amount currently past due.
+Promotional credits from a promo code are visible on the [Billing Info](https://cloud.linode.com/account/billing) page of the Cloud Manager. This credit is listed under the **Promotions** section that is only visible *if a promo code has been applied to your account*. Other types of account credits are displayed on the same page under the **Account Balance section**. A balance that is green indicates the amount of credit on the account. A balance that is red indicates the amount currently past due.
 
 ## Will my current credit cover my next invoice?
 
-Any credit on your account, including promotional credits and other account credits, is automatically applied to your next invoice. You can verify if your credit meets your current expenditure by reviewing your [currently accrued charges](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information) and calculating your usage for the remainder of the billing cycle. See the [Pricing](https://www.linode.com/pricing/) page for a detailed list of all service fees.
+Any credits on your account, including promotional credits and other account credits, are automatically applied to your next invoice. You can verify if your available credits meet your current expenditure by reviewing your [currently accrued charges](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information) and calculating your usage for the remainder of the billing cycle. See the [Pricing](https://www.linode.com/pricing/) page for a detailed list of all service fees.
 
 ## When will I receive my first bill?
 
@@ -42,7 +42,7 @@ If your account exceeds its billing threshold (also called the *credit limit*), 
 
 ## Can I make a payment in advance?
 
-Yes. At any time, you can make a payment on your account. If the payment is greater than any past due amount, it gets stored as a positive account balance. This balance is automatically applied to future invoices. You can estimate your end of month costs using our [Pricing](https://www.linode.com/pricing/) page and view your account balance from the Billing Info page of the Cloud Manager. See [Making a One-Time Payment](http://localhost:1313/docs/guides/manage-billing-in-cloud-manager/#making-a-one-time-payment).
+Yes. At any time, you can make a payment on your account. If the payment is greater than any past due amount, it gets stored as a positive account balance. This balance is automatically applied to future invoices. You can estimate your end of month costs using our [Pricing](https://www.linode.com/pricing/) page and view your account balance from the Billing Info page of the Cloud Manager. See [Making a One-Time Payment](/docs/guides/manage-billing-in-cloud-manager/#making-a-one-time-payment).
 
 ## What are Linode’s currently accepted payment methods?
 
