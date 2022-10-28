@@ -3,14 +3,14 @@ slug: how-to-install-nextcloud-on-ubuntu-22-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide introduces the productivity website Nextcloud and explains how to install and configure it on Ubuntu 22.04'
-og_description: 'This guide introduces the productivity website Nextcloud and explains how to install and configure it on Ubuntu 22.04'
+description: 'This guide introduces the productivity website Nextcloud and explains how to install and configure it on Ubuntu 22.04.'
+og_description: 'This guide introduces the productivity website Nextcloud and explains how to install and configure it on Ubuntu 22.04.'
 keywords: ['Nextcloud Ubuntu','what is Nextcloud','how to install nextcloud','Ubuntu configure Nextcloud','download Nextcloud Ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-07
 modified_by:
   name: Linode
-title: "How to Install Nextcloud on Ubuntu 22.04 | Linode"
+title: "How to Install Nextcloud on Ubuntu 22.04"
 h1_title: "How to Install Nextcloud on Ubuntu 22.04"
 enable_h1: true
 contributor:
@@ -34,20 +34,21 @@ relations:
            - distribution: Ubuntu 22.04
 ---
 
-[Nextcloud](https://nextcloud.com/) is a free open source application for storing and sharing files. It allows approved users to access documents and pictures online from a central location. Nextcloud is considered a strong alternative to Dropbox and Google Drive. This guide explains how to download, install, and configure Nextcloud on Ubuntu 22.04. It also explains how to configure an Ubuntu LAMP stack to support Nextcloud.
+[Nextcloud](https://nextcloud.com/) is a free and open source application for storing and sharing files. It allows approved users to access documents and pictures online from a central location. Nextcloud is considered a strong alternative to Dropbox and Google Drive. This guide explains how to download, install, and configure Nextcloud on Ubuntu 22.04 LTS. It also explains how to configure an Ubuntu LAMP stack to support Nextcloud.
 
 ## What is Nextcloud?
 
-Nextcloud advertises itself as a safe home for user data and documents. Developed with an open source philosophy in mind, Nextcloud provides users with much more control and flexibility than the alternatives. Some of the main advantages of Nextcloud are as follows:
+Nextcloud advertises itself as a safe home for user data and documents. Developed with an open source philosophy in mind, Nextcloud provides users with much more control and flexibility than the alternatives. Some of the main advantages of Nextcloud include:
 
-- Users can host documents on their own server and do not have to rely on other vendors for hosting.
-- Nextcloud features finely-grained file access control and sharing controls, along with workflow and audit logs.
-- It includes a full-text search engine that can query the entire collection of files.
-- It is able to monitor and record all data exchanges and communications. Nextcloud offers end-to-end client side encryption and key handling.
-- Nextcloud includes real-time notifications, comments, and multi-user editing.
-- Nextcloud prioritizes security through third-party reviews and a well-funded Security Bug Bounty program.
-- Nextcloud works together with the developer and user communities to develop, optimize, and test new features.
-- Nextcloud has an [app store](https://apps.nextcloud.com/) where users can download additional extensions and customizations.
+-   Users can host documents on their own server and do not have to rely on other vendors for hosting.
+-   Finely-grained file access and sharing controls, along with workflow and audit logs.
+-   Included full-text search engine that can query the entire collection of files.
+-   Able to monitor and record all data exchanges and communications.
+-   Offers end-to-end client side encryption and key handling.
+-   Includes real-time notifications, comments, and multi-user editing.
+-   Prioritizes security through third-party reviews and a well-funded Security Bug Bounty program.
+-   Works together with the developer and user communities to develop, optimize, and test new features.
+-   Has an [app store](https://apps.nextcloud.com/) where users can download additional extensions and customizations.
 
 See the [Nextcloud feature comparison](https://nextcloud.com/compare/) for a more complete analysis. For complete information on how to use Nextcloud, consult the [Nextcloud product documentation](https://docs.nextcloud.com/server/24/admin_manual/contents.html).
 
@@ -57,7 +58,7 @@ See the [Nextcloud feature comparison](https://nextcloud.com/compare/) for a mor
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. A LAMP Stack, including an Apache web server, an MariaDB/MySQL RDBMS, and the PHP programming language, must be installed before Nextcloud can be used. This guide includes instructions for installing the LAMP stack components. More information about installing a LAMP stack is available in the Linode guide to installing a LAMP stack on Ubuntu 22.04.
+1.  A LAMP Stack, including an Apache web server, a MariaDB/MySQL RDBMS, and the PHP programming language, must be installed before Nextcloud can be used. This guide includes instructions for installing the LAMP stack components. More information about installing a LAMP stack is available in the [Linode guide to installing a LAMP stack on Ubuntu 22.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/).
 
 1.  To properly use Nextcloud and secure the installation with HTTPS, configure a domain name for the server. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/).
 
@@ -67,40 +68,49 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Installing the Nextcloud Prerequisites
 
-Nextcloud requires a LAMP stack to work properly. This section provides instructions on how to install the Apache web server, MariaDB RDBMS, and the PHP programming languages. While these instructions are geared to Ubuntu 22.04 users, they are also broadly applicable to Ubuntu 20.04.
+Nextcloud requires a LAMP stack to work properly. This section provides instructions on how to install the Apache web server, MariaDB RDBMS, and the PHP programming languages. While these instructions are geared towards Ubuntu 22.04 users, they are also broadly applicable to Ubuntu 20.04.
 
 {{< note >}}
-Nextcloud only recently added support for PHP 8.1 in release 24. PHP release 8.1 is the default PHP library package in Ubuntu 22.04. Earlier releases of Nextcloud must use PHP 7.4. This might require a downgrade of the local PHP packages.
+Nextcloud only recently added support for PHP 8.1 in version 24. PHP 8.1 is the default PHP library package in Ubuntu 22.04. Earlier versions of Nextcloud must use PHP 7.4. This might require a downgrade of the local PHP packages.
 {{< /note >}}
 
 ### Installing the Apache Web Server
 
 To install and test an Apache web server on Ubuntu 22.04, follow these instructions.
 
-1.  Update and upgrade the Ubuntu packages.
+1.  Update and upgrade the Ubuntu packages:
 
-        sudo apt update && sudo apt upgrade
+    ```code
+    sudo apt update && sudo apt upgrade
+    ```
 
-2.  Install the Apache web server using `apt`.
+2.  Install the Apache web server using `apt`:
 
-        sudo apt install apache2
+    ```code
+    sudo apt install apache2
+    ```
 
 3.  Configure the `ufw` firewall to allow the `Apache Full` profile. This permits HTTP and HTTPS connections, enabling web access. `OpenSSH` connections must also be allowed. Enable `ufw` when all changes are complete.
+
+    ```code
+    sudo ufw allow OpenSSH
+    sudo ufw allow in "Apache Full"
+    sudo ufw enable
+    ```
 
     {{< note >}}
 The `Apache Full` profile permits HTTP and HTTPS traffic. To temporarily restrict web traffic to HTTP requests, use the `Apache` profile instead. The `Apache Secure` profile blocks HTTP requests and only permits HTTPS traffic through. Do not use this profile before enabling HTTPS on the server.
     {{< /note >}}
 
-        sudo ufw allow OpenSSH
-        sudo ufw allow in "Apache Full"
-        sudo ufw enable
+4.  Verify the firewall settings using the `ufw status` command:
 
-4.  Verify the firewall settings using the `ufw status` command.
-
-        sudo ufw status
+    ```code
+    sudo ufw status
+    ```
 
     {{< output >}}
 Status: active
+
 To                         Action      From
 --                         ------      ----
 OpenSSH                    ALLOW       Anywhere
@@ -109,26 +119,36 @@ OpenSSH (v6)               ALLOW       Anywhere (v6)
 Apache Full (v6)           ALLOW       Anywhere (v6)
     {{< /output >}}
 
-5.  Enable the `mpm_prefork` Apache module and disable `mpm_event`.
+5.  Enable the `mpm_prefork` Apache module and disable `mpm_event`:
 
-        sudo a2dismod mpm_event
-        sudo a2enmod mpm_prefork
+    ```code
+    sudo a2dismod mpm_event
+    sudo a2enmod mpm_prefork
+    ```
 
-6.  Restart Apache using the `systemctl` utility.
+6.  Restart Apache using the `systemctl` utility:
 
-        sudo systemctl restart apache2
+    ```code
+    sudo systemctl restart apache2
+    ```
 
-7.  Ensure the web server is still active using `systemctl`.
+7.  Ensure the web server is still active using `systemctl`:
 
-        sudo systemctl status apache2
+    ```code
+    sudo systemctl status apache2
+    ```
 
-8.  Visit the IP address of the web server and confirm the server is working properly. The default Ubuntu/Apache2 welcome page appears in the browser. The page features the message "It works" and details some basic information about the server.
+8.  Visit the IP address of the web server and confirm the server is working properly:
+
+    ```code
+    http://your_IP_address/
+    ```
 
     {{< note >}}
 Use the Linode Dashboard to find the IP address for the Ubuntu system.
     {{< /note >}}
 
-        http://your_IP_address/
+    The default Ubuntu/Apache2 welcome page appears in the browser. The page features the message "It works" and details some basic information about the server:
 
     ![Apache Welcome Page](Apache-Welcome-Page.png)
 
@@ -140,28 +160,38 @@ Nextcloud stores its information inside an RDBMS, such as MySQL or MariaDB. This
 
 To install MariaDB on Ubuntu 22.04, follow the steps in this example.
 
-1.  Install MariaDB using `apt`.
+1.  Install MariaDB using `apt`:
 
-        sudo apt install mariadb-server
+    ```code
+    sudo apt install mariadb-server
+    ```
 
-2.  Verify the status of MariaDB to ensure it is installed correctly.
+2.  Verify the status of MariaDB to ensure it is installed correctly:
 
-        sudo systemctl status mariadb
+    ```code
+    sudo systemctl status mariadb
+    ```
 
-3.  Enable MariaDB in `systemctl` so it automatically activates upon server boot up.
+3.  Enable MariaDB in `systemctl` so it automatically activates upon server boot up:
 
-        sudo systemctl enable mariadb
+    ```code
+    sudo systemctl enable mariadb
+    ```
 
-4.  Configure and secure MariaDB using the `mysql_secure_installation` utility. It is not necessary to change the root password or to switch to Unix socket authentication. Answer `Y` to the following questions:
+4.  Configure and secure MariaDB using the `mysql_secure_installation` utility:
 
-    - `Remove anonymous users?`
-    - `Disallow root login remotely?`
-    - `Remove test database and access to it?`
-    - `Reload privilege tables now?`
+    ```code
+    sudo mysql_secure_installation
+    ```
+
+    Enter your password. It is not necessary to switch to Unix socket authentication or change the root password. Answer `Y` to the following questions:
+
+    -   `Remove anonymous users?`
+    -   `Disallow root login remotely?`
+    -   `Remove test database and access to it?`
+    -   `Reload privilege tables now?`
 
 For further information about MariaDB, consult the [MariaDB Server Documentation](https://mariadb.com/kb/en/documentation/).
-
-        sudo mysql_secure_installation
 
 ### Creating the Nextcloud database in MariaDB
 
@@ -169,50 +199,68 @@ When MariaDB is installed, create a new database for Nextcloud to use. It is als
 
 1.  Log into MariaDB as the `root` user. If you added a root password, provide it when requested. The MariaDB prompt appears.
 
-        sudo mysql -u root
+    ```code
+    sudo mysql -u root
+    ```
 
     {{< output >}}
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 37
-Server version: 10.6.7-MariaDB-2ubuntu1 Ubuntu 22.04
-...
+Server version: 10.6.7-MariaDB-2ubuntu1.1 Ubuntu 22.04
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
 MariaDB [(none)]>
     {{< /output >}}
 
 2.  Create the `nextcloud` database. For this and all remaining commands, MariaDB should reply with `Query OK`.
 
-        CREATE DATABASE nextcloud;
+    ```code
+    CREATE DATABASE nextcloud;
+    ```
 
-3.  Use the `SHOW DATABASES` command to ensure the database has been properly created.
+3.  Use the `SHOW DATABASES` command to ensure the database has been properly created:
 
-        SHOW DATABASES;
+    ```code
+    SHOW DATABASES;
+    ```
 
     {{< output >}}
 +--------------------+
 | Database           |
 +--------------------+
-...
+| information_schema |
+| mysql              |
 | nextcloud          |
-...
+| performance_schema |
+| sys                |
 +--------------------+
-5 rows in set (0.000 sec)
+5 rows in set (0.001 sec)
     {{< /output >}}
 
 4.  Create a user and grant them all rights to access the database. In place of `password`, provide a more secure password.
 
-        GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost' IDENTIFIED BY 'password';
+    ```code
+    GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost' IDENTIFIED BY 'password';
+    ```
 
-5.  Flush the privileges to apply the recent changes.
+5.  Flush the privileges to apply the recent changes:
 
-        FLUSH PRIVILEGES;
+    ```code
+    FLUSH PRIVILEGES;
+    ```
 
-6.  Exit the database.
+6.  Exit the database:
 
-        quit
+    ```code
+    quit
+    ```
 
 ### Installing PHP and Other Components
 
-Nextcloud uses the PHP programming language. Nextcloud 24 supports PHP release 8.1. This is also the default release of PHP in the Ubuntu packages, so the regular `php` package can be installed. However, PHP 7.4 is required to use earlier versions of Nextcloud.
+Nextcloud uses the PHP programming language. Nextcloud version 24 supports PHP release 8.1. This is also the default release of PHP in the Ubuntu packages, so the regular `php` package can be installed. However, PHP 7.4 is required to use earlier versions of Nextcloud.
 
 {{< note >}}
 To install PHP 7.4, substitute `php7.4` in place of `php` for all packages. For example, `php-cli` becomes `php7.4-cli`.
@@ -220,33 +268,45 @@ To install PHP 7.4, substitute `php7.4` in place of `php` for all packages. For 
 
 To install PHP and the other required packages, use these commands.
 
-1.  Install the core PHP package using `apt`.
+1.  Install the core PHP package using `apt`:
 
-        sudo apt install php
+    ```code
+    sudo apt install php
+    ```
 
-2.  Confirm the PHP release number.
+2.  Confirm the PHP release number:
 
-        php -v
+    ```code
+    php -v
+    ```
 
     {{< output >}}
-PHP 8.1.2 (cli) (built: Apr  7 2022 17:46:26) (NTS)
+PHP 8.1.2-1ubuntu2.6 (cli) (built: Sep 15 2022 11:30:49) (NTS)
     {{< /output >}}
 
-3.  Install the remaining PHP components.
+3.  Install the remaining PHP components:
 
-        sudo apt install php-apcu php-bcmath php-cli php-common php-curl php-gd php-gmp php-imagick php-intl php-mbstring php-mysql php-zip php-xml
+    ```code
+    sudo apt install php-apcu php-bcmath php-cli php-common php-curl php-gd php-gmp php-imagick php-intl php-mbstring php-mysql php-zip php-xml
+    ```
 
-4.  Enable the necessary PHP extensions.
+4.  Enable the necessary PHP extensions:
 
-        sudo phpenmod bcmath gmp imagick intl
+    ```code
+    sudo phpenmod bcmath gmp imagick intl
+    ```
 
 5.  Install the `unzip` utility. This utility might already be installed on the system.
 
-        sudo apt install unzip
+    ```code
+    sudo apt install unzip
+    ```
 
-6.  Install the `libmagic` package.
+6.  Install the `libmagic` package:
 
-        sudo apt install libmagickcore-6.q16-6-extra
+    ```code
+    sudo apt install libmagickcore-6.q16-6-extra
+    ```
 
 ## Downloading, Installing, and Configuring Nextcloud
 
@@ -258,61 +318,75 @@ To download and install Nextcloud, follow these steps.
 
 1.  Download Nextcloud using `wget`. To find the URL for the latest stable release of Nextcloud, visit the [Nextcloud installation page](https://nextcloud.com/install/). This page provides a link to the latest Nextcloud zip file. To locate a particular release of Nextcloud, consult the [Nextcloud changelog and archive](https://nextcloud.com/changelog/). The following example demonstrates how to download the Nextcloud release 24.0.1.
 
-        wget https://download.nextcloud.com/server/releases/nextcloud-24.0.1.zip
+    ```code
+    wget https://download.nextcloud.com/server/releases/nextcloud-24.0.1.zip
+    ```
 
 2.  Unzip the archive. This creates a `nextcloud` folder in the same directory as the zip file.
 
-        unzip nextcloud-24.0.1.zip
+    ```code
+    unzip nextcloud-24.0.1.zip
+    ```
 
 3.  **(Optional)** Delete or rename the archive after unzipping the contents. It is also possible to rename the `nextcloud` directory to a more meaningful name, such as `nextcloud.yourdomainname`.
 
-4.  Change the folder permissions for the `nextcloud` directory.
+4.  Change the folder permissions for the `nextcloud` directory:
 
-        sudo chown -R www-data:www-data nextcloud
+    ```code
+    sudo chown -R www-data:www-data nextcloud
+    ```
 
 5.  Move the new directory to the server directory. The server directory usually defaults to `/var/www/html` on most servers.
 
-        sudo mv nextcloud /var/www/html
+    ```code
+    sudo mv nextcloud /var/www/html
+    ```
 
-6.  Disable the default Apache landing page.
+6.  Disable the default Apache landing page:
+
+    ```code
+    sudo a2dissite 000-default.conf
+    ```
 
     {{< note >}}
 Ignore the advisory to reload Apache at this time. Apache should be reloaded later when all configuration is complete.
     {{< /note >}}
 
-        sudo a2dissite 000-default.conf
-
 ### Creating a Virtual Host File for Nextcloud
 
 This section explains how to configure a virtual host file for the Nextcloud application. The virtual host tells Apache how to handle and serve requests for the Nextcloud domain.
 
-1.  Create a new file in the `etc/apache2/sites-available` directory. Name the file `nextcloud.conf`.
+1.  Create a new file in the `etc/apache2/sites-available` directory and name the file `nextcloud.conf`:
 
-        sudo vi /etc/apache2/sites-available/nextcloud.conf
+    ```code
+    sudo nano /etc/apache2/sites-available/nextcloud.conf
+    ```
 
 2.  The file must include the following information. The `DocumentRoot` is the name of the server directory followed by `/nextcloud`. For the `ServerName` attribute, enter the actual name of the domain instead of `example.com`. Save the file when all changes have been made.
 
-    {{< file "/etc/apache2/sites-available/nextcloud.conf" aconf >}}
-<VirtualHost *:80>
-    DocumentRoot "/var/www/html/nextcloud"
-    ServerName example.com
+    ```file {title="/etc/apache2/sites-available/nextcloud.conf" lang="aconf"}
+    <VirtualHost *:80>
+        DocumentRoot "/var/www/html/nextcloud"
+        ServerName example.com
 
-    <Directory "/var/www/html/nextcloud/">
-        Options MultiViews FollowSymlinks
-        AllowOverride All
-        Order allow,deny
-        Allow from all
-   </Directory>
+        <Directory "/var/www/html/nextcloud/">
+            Options MultiViews FollowSymlinks
+            AllowOverride All
+            Order allow,deny
+            Allow from all
+        </Directory>
 
-   TransferLog /var/log/apache2/nextcloud_access.log
-   ErrorLog /var/log/apache2/nextcloud_error.log
+        TransferLog /var/log/apache2/nextcloud_access.log
+        ErrorLog /var/log/apache2/nextcloud_error.log
 
-</VirtualHost>
-    {{< /file >}}
+    </VirtualHost>
+    ```
 
 3.  Enable the site. Do not reload Apache yet.
 
-        sudo a2ensite nextcloud.conf
+    ```code
+    sudo a2ensite nextcloud.conf
+    ```
 
     {{< output >}}
 Enabling site nextcloud.
@@ -330,33 +404,41 @@ To locate the correct timezone for the `date.timezone` parameter, consult the [P
 If the server is running an earlier PHP release, substitute the actual release number in place of `8.1` in the filename. For example, to configure PHP 7.4, the filename is `/etc/php/7.4/apache2/php.ini`
     {{< /note >}}
 
-        sudo vi /etc/php/8.1/apache2/php.ini
+    ```code
+    sudo nano /etc/php/8.1/apache2/php.ini
+    ```
 
-    {{< file "/etc/php/8.1/apache2/php.ini" >}}
-memory_limit = 512M
-upload_max_filesize = 200M
-max_execution_time = 360
-post_max_size = 200M
-date.timezone = Europe/London
-opcache.enable=1
-opcache.memory_consumption=128
-opcache.interned_strings_buffer=8
-opcache.max_accelerated_files=10000
-opcache.save_comments=1
-opcache.revalidate_freq=1
-    {{< /file >}}
+    ```file {title="/etc/php/8.1/apache2/php.ini"}
+    max_execution_time = 360
+    memory_limit = 512M
+    post_max_size = 200M
+    upload_max_filesize = 200M
+    date.timezone = Europe/London
+    opcache.enable=1
+    opcache.memory_consumption=128
+    opcache.interned_strings_buffer=8
+    opcache.max_accelerated_files=10000
+    opcache.revalidate_freq=1
+    opcache.save_comments=1
+    ```
 
-2.  Enable some additional Apache modules.
+2.  Enable some additional Apache modules:
 
-        sudo a2enmod dir env headers mime rewrite ssl
+    ```code
+    sudo a2enmod dir env headers mime rewrite ssl
+    ```
 
-3.  Restart the Apache server.
+3.  Restart the Apache server:
 
-        sudo systemctl restart apache2
+    ```code
+    sudo systemctl restart apache2
+    ```
 
 4.  Verify the Apache server status and ensure it is still `active`. If the server is in a failed state, examine the server error logs and make any necessary changes to the `/etc/apache2/sites-enabled/nextcloud.conf` file.
 
-        sudo systemctl status  apache2
+    ```code
+    sudo systemctl status apache2
+    ```
 
 ## Setting up Nextcloud Using the Web Interface
 
@@ -370,10 +452,10 @@ The remaining Nextcloud configuration tasks can be accomplished using the web in
 
 2.  On this page, perform the following tasks:
 
-    - Create an administrative account. Provide a user name and password for the account.
-    - Leave the address for the **Data Folder** at the current value.
-    - In the **Configure the database** section, add information about the `nextcloud` database. Enter the user name and password for the account created in MariaDB earlier. The database name is `nextcloud`. Leave the final field set to `localhost`.
-    - Click **Install** to complete the form.
+    -   Create an administrative account. Provide a user name and password for the account.
+    -   Leave the address for the **Data Folder** at the current value.
+    -   In the **Configure the database** section, add information about the `nextcloud` database. Enter the user name and password for the account created in MariaDB earlier. The database name is `nextcloud`. Leave the final field set to `localhost`.
+    -   Click **Install** to complete the form.
 
     ![Enter the Administrator and Database Information](Nextcloud-Admin-Db-Config.png)
 
@@ -401,36 +483,44 @@ Nextcloud is now ready to use. However, it is not as secure or as efficient as i
 
 Nextcloud works even without the *Hypertext Transfer Protocol Secure* (HTTPS) protocol. However, HTTPS is highly recommended, and Nextcloud displays some warnings on the "Settings" page if it is not configured. HTTPS encrypts information using the *Secure Sockets Layer* (SSL) technology to help secure the Nextcloud data.
 
-The Linode server must possess a signed public-key certificate from a trusted certificate authority before it can accept HTTPS requests. Most Ubuntu administrators use Certbot to install SSL certificates. Certbot is a free, open source tool for automating the process of requesting [Let's Encrypt](https://letsencrypt.org/) certificates for a website.
+The Linode server must possess a signed public-key certificate from a trusted certificate authority before it can accept HTTPS requests. Most Ubuntu administrators use Certbot to install SSL certificates. Certbot is a free and open source tool for automating the process of requesting [Let's Encrypt](https://letsencrypt.org/) certificates for a website.
 
 To configure HTTPS for the domain, follow these steps.
 
 1.  Update Snap, which is pre-installed on Ubuntu 22.04. Snap is used to download application bundles.
 
-        sudo snap install core && sudo snap refresh core
+    ```code
+    sudo snap install core && sudo snap refresh core
+    ```
 
-2.  To avoid conflicts, remove the default Ubuntu Certbot package.
+2.  To avoid conflicts, remove the default Ubuntu Certbot package:
 
-        sudo apt remove certbot
+    ```code
+    sudo apt remove certbot
+    ```
 
-3.  Use `snap` to install Certbot.
+3.  Use `snap` to install Certbot:
 
-        sudo snap install --classic certbot
+    ```code
+    sudo snap install --classic certbot
+    ```
 
     {{< output >}}
-certbot 1.27.0 from Certbot Project (certbot-eff✓) installed
+certbot 1.31.0 from Certbot Project (certbot-eff✓) installed
     {{< /output >}}
 
-4.  Use Certbot to download a certificate for the domain.
+4.  Use Certbot to download a certificate for the domain:
 
-        sudo certbot --apache
+    ```code
+    sudo certbot --apache
+    ```
 
-5.  Certbot begins the installation process. To receive a certificate, the following information is required. The workflow varies depending on whether you have used Certbot before. Enter the following information when requested to do so.
+5.  Certbot begins the installation process. To receive a certificate, the following information is required. The workflow varies depending on whether you have used Certbot before. Enter the following information when requested to do so:
 
-    - A contact email for the domain owner.
-    - An acknowledgment of the terms of service. Enter `Y` to proceed.
-    - Whether to share the email address with the Electronic Frontier Foundation.
-    - The domain name to be registered. Enter the domain both with and without the `www` prefix or choose it from a list.
+    -   A contact email for the domain owner.
+    -   An acknowledgment of the terms of service. Enter `Y` to proceed.
+    -   Whether to share the email address with the Electronic Frontier Foundation.
+    -   The domain name to be registered. Enter the domain both with and without the `www` prefix or choose it from a list.
 
     After granting the certificate, Certbot displays some information about the granting process and the certificate. Take note of the location of the newly-deployed certificate. Additional configuration is added to this file in the next section.
 
@@ -440,9 +530,11 @@ Successfully deployed certificate for example.com to /etc/apache2/sites-availabl
 Congratulations! You have successfully enabled HTTPS on https://example.com
     {{< /output >}}
 
-6.  **(Optional)** Certbot can automatically renew and update the certificate. To perform a trial run, use the `renew` command.
+6.  **(Optional)** Certbot can automatically renew and update the certificate. To perform a trial run, use the `renew` command:
 
-        sudo certbot renew --dry-run
+    ```code
+    sudo certbot renew --dry-run
+    ```
 
 ### Configuring Extra Security Measures for Nextcloud
 
@@ -450,36 +542,46 @@ At this point, almost all configuration is complete. The SSL configuration and t
 
 1. Change the permissions for the Nextcloud-specific `config.php` file so other users cannot access it. This file is located inside the `config` directory in the Nextcloud domain directory.
 
-        sudo chmod 660 /var/www/html/nextcloud/config/config.php
+    ```code
+    sudo chmod 660 /var/www/html/nextcloud/config/config.php
+    ```
 
 2.  Change the ownership of this file. Ensure the `root` account and the Apache web server share co-ownership.
 
-        sudo chown root:www-data /var/www/html/nextcloud/config/config.php
+    ```code
+    sudo chown root:www-data /var/www/html/nextcloud/config/config.php
+    ```
 
 3.  Edit the Nextcloud `config.php` file and add the following two lines to the end of the array. Ensure these lines are placed inside the final `)` bracket. For the `default_phone_region` use the country code where the server is located. Consult the Wikipedia page for the [ISO Alpha-2 codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) for a full list of country codes. This example uses the country code for the United Kingdom.
 
-        sudo vi /var/www/html/nextcloud/config/config.php
+    ```code
+    sudo nano /var/www/html/nextcloud/config/config.php
+    ```
 
-    {{< file "/var/www/html/nextcloud/config/config.php" >}}
-...
-    'memcache.local' => '\\OC\\Memcache\\APCu',
-    'default_phone_region' => 'GB',
-);
-    {{< /file >}}
+    ```file {title="/var/www/html/nextcloud/config/config.php" lang="php"}
+    ...
+        'memcache.local' => '\\OC\\Memcache\\APCu',
+        'default_phone_region' => 'GB',
+    );
+    ```
 
 4.  Edit the SSL certificate file and enable strict transport security. You recorded the name of this file when installing the certificate. Add the following line immediately after the line containing the `ServerName` attribute.
 
-        sudo vi /etc/apache2/sites-available/nextcloud-le-ssl.conf
+    ```code
+    sudo nano /etc/apache2/sites-available/nextcloud-le-ssl.conf
+    ```
 
-    {{< file "/etc/apache2/sites-available/nextcloud-le-ssl.conf" >}}
-...
-    Header always set Strict-Transport-Security "max-age=15552000; includeSubDomains"
-...
-    {{< /file >}}
+    ```file {title="/etc/apache2/sites-available/nextcloud-le-ssl.conf"}
+    ...
+        Header always set Strict-Transport-Security "max-age=15552000; includeSubDomains"
+    ...
+    ```
 
-5.  Restart Apache to apply the recent changes.
+5.  Restart Apache to apply the recent changes:
 
-        sudo systemctl restart apache2
+    ```code
+    sudo systemctl restart apache2
+    ```
 
 6.  Reload the Nextcloud dashboard. The site is now using HTTPS, and the URL in the browser bar begins with `https://`.
 
@@ -499,4 +601,4 @@ At this point, almost all configuration is complete. The SSL configuration and t
 
 Nextcloud is a competitive open source alternative to Dropbox and Google Drive offering shared online access to files, folders, and other content. Nextcloud can be downloaded on Ubuntu 22.04 using `wget` and configured through a web interface. The Nextcloud dashboard allows users to administer the site and add or share files.
 
-Nextcloud requires a LAMP stack, including configuration changes to the Apache web server, the MySQL/MariaDB RDBMS, and the PHP programming languages. Nextcloud recommends installing a SSL certificate, permitting the use of HTTPS. For more information on how to install, configure, and use Nextcloud, consult the [Nextcloud User Documentation](https://docs.nextcloud.com/server/24/admin_manual/contents.html).
+Nextcloud requires a LAMP stack, including configuration changes to the Apache web server, the MySQL/MariaDB RDBMS, and the PHP programming language. Nextcloud recommends installing an SSL certificate, permitting the use of HTTPS. For more information on how to install, configure, and use Nextcloud, consult the [Nextcloud User Documentation](https://docs.nextcloud.com/server/24/admin_manual/contents.html).
