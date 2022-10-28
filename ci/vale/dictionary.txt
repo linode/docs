@@ -1738,6 +1738,8 @@ retpoline
 retrans
 reusability
 reutilize
+revalidate
+revalidating
 revenera
 richlanguage
 rijndael
