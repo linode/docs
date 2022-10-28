@@ -84,7 +84,7 @@ Root or sudo permissions must be available to install Apache Subversion.
 
 1. Install the Apache server instance with the following command:
 
-        sudo install apache2 apache2-utils -y
+        sudo apt install apache2 apache2-utils -y
 
 1. Use `systemctl` to start Apache.
 
@@ -131,7 +131,7 @@ No user can link the SVN app with the repository until an administrative account
 
 Create a Subversion administrator user. Replace `<<admin_name>>` with the desired administrator name.
 
-    htpasswd -CM /etc/apache2/dav_svn.passwd <<admin_name>>
+    htpasswd -cm /etc/apache2/dav_svn.passwd <<admin_name>>
 
 {{< note >}}
 Ensure you select a strong and secure password for the administrator account.

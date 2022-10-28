@@ -59,6 +59,7 @@ anycasting
 ap
 apache2
 api
+apis
 apiserver
 apk
 apparmor
@@ -68,6 +69,7 @@ approvers
 appsec
 appserver
 appsmith
+appwrite
 apxs
 architecting
 aren
@@ -328,6 +330,7 @@ coreutils
 coroutine
 coroutines
 corporateclean
+Countly
 courseware
 cov
 coverity
@@ -491,6 +494,7 @@ dokku
 domain1
 domain2
 domain3
+domain_id
 domainkey
 domainname
 donenfeld
@@ -698,6 +702,7 @@ getmail
 getprivs
 getpwent
 getters
+getty
 getuid
 gfx
 gfxmode
@@ -1221,6 +1226,7 @@ microblogging
 microblogs
 microservice
 microservices
+microsite
 microsystems
 microweb
 Microweber
@@ -1270,6 +1276,7 @@ mongorestore
 mongosh
 monit
 monitorix
+monospaced
 moolenaar
 morphisec
 motd
@@ -1320,6 +1327,7 @@ mysqld
 mysqldefault
 mysqldump
 mysql_config_editor
+mysql_secure_installation
 mytestdb
 myuser
 mzet
@@ -1817,6 +1825,7 @@ sda
 sda1
 sdb
 sdc
+sdks
 se
 seaborn
 seafile
@@ -2025,6 +2034,7 @@ tcpdump
 tcpwrappers
 teamspeak
 teardown
+techdocs
 techland
 telecom
 teleporting
@@ -2083,6 +2093,7 @@ torvalds
 toolchain
 toolchains
 toolset
+toolstrip
 towson
 trac
 traceroute
