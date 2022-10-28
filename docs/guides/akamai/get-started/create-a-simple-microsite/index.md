@@ -74,7 +74,7 @@ This guide involves configuring DNS settings and SSL certificates for your domai
 
 During installation, the API Token is used to generate a domain zone and records using Linode [DNS Manager](/docs/guides/dns-manager). The Node.js Marketplace App then utilizes [certbot](https://certbot.eff.org/) to generate SSL certificates for your domain and subdomain.
 
-If you plan to utilize Linode DNS Manager, we recommend taking steps now familiarize yourself with our [DNS Manager](/docs/guides/dns-manager/) guide.
+If you plan to utilize Linode DNS Manager, we recommend taking steps now familiarize yourself with our [DNS Manager](/docs/products/networking/dns-manager/) guide.
     {{< /note >}}
 
 1.  Select "Ubuntu 20.04 LTS" in the **Select an Image** section.
@@ -149,7 +149,7 @@ server {
 
 1.  Next, update your origin certificate to include the Origin hostname and reload your web server.
 
-    If using the Node.js Marketplace App, access your origin server via [LISH](/docs/guides/using-the-lish-console/) or [SSH](/docs/guides/connect-to-server-over-ssh/) connection, replacing the example hostnames with your own:
+    If using the Node.js Marketplace App, access your origin server via [LISH](/docs/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) connection, replacing the example hostnames with your own:
 
         certbot --expand -d www.test.com -d origin-0361ece-www.test.com
 
@@ -253,7 +253,7 @@ If you want to use a solution such as [GlusterFS](https://www.gluster.org/), ins
 
 1.  Ensure that the web server is running on your cloned Linode.
 
-    If using the Node.js Marketplace App, [LISH](/docs/guides/using-the-lish-console/) or [SSH](/docs/guides/connect-to-server-over-ssh/) into the cloned Linode and start the Node.js server as a background process:
+    If using the Node.js Marketplace App, [LISH](/docs/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) into the cloned Linode and start the Node.js server as a background process:
 
         node /opt/nodejs/hello.js &
 

@@ -42,7 +42,7 @@ This tutorial covers how to complete the following tasks:
 
 Before moving ahead, make sure you have completed the following steps.
 
-1.  If you'd like to use your own [Domain Name](/docs/guides/dns-records-an-introduction/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/guides/dns-manager/#dns-set-up-checklist) to point to your Linode's IP address.
+1.  If you'd like to use your own [Domain Name](/docs/guides/dns-overview/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/products/networking/dns-manager/get-started/) to point to your Linode's IP address.
 
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 

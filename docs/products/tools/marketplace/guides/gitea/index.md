@@ -52,8 +52,8 @@ Self-hosting your software development with the Gitea Marketplace App offers tot
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **SOA Email for your domain** The email address to register as your Start of Authority (SOA). This field is required for creating DNS records for a new domain.
-- **Do you need an MX record for this domain?** Select **Yes** to automatically configure an [MX record](/docs/guides/dns-records-an-introduction/#mx) for the purpose of sending emails from your Linode. Additional configuration with Gitea is required after installation to enable sending emails with this app.
-- **Do you need an SPF record for this domain?** Select **Yes** to automatically configure an [SPF record](/docs/guides/dns-records-an-introduction/#spf) for the purpose of sending emails from your Linode. Additional configuration with Gitea is required after installation to enable sending emails with this app.
+- **Do you need an MX record for this domain?** Select **Yes** to automatically configure an [MX record](/docs/guides/dns-overview/#mx) for the purpose of sending emails from your Linode. Additional configuration with Gitea is required after installation to enable sending emails with this app.
+- **Do you need an SPF record for this domain?** Select **Yes** to automatically configure an [SPF record](/docs/guides/dns-overview/#spf) for the purpose of sending emails from your Linode. Additional configuration with Gitea is required after installation to enable sending emails with this app.
 - **Would you like to use a free Let's Encrypt SSL certificate for your fully qualified domain name?** Select **Yes** to configure an SSL Certificate for HTTPS access to your Gitea remote desktop. Requires a `Domain` and `Admin Email`.
 - **Admin Email for Let's Encrypt certificate:** The email address to register with [Certbot](https://certbot.eff.org/) when generating an SSL certificate for your fully qualified domain name. This field is required for HTTPS access to your Gitea remote desktop.
 

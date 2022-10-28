@@ -34,7 +34,7 @@ This Marketplace App installs the OpenLiteSpeed web server, WordPress, the LiteS
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10, Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS, Debian 11, Debian 10, Ubuntu 20.04 LTS, CentOS 7
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started After Deployment
@@ -45,7 +45,7 @@ This Marketplace App installs the OpenLiteSpeed web server, WordPress, the LiteS
 1. You are then prompted to enter the domain you'd like to use for this instance. You can optionally use a custom domain provided you've already configured the *A Records* to point to this server's IPv4 and IPv6 addresses. Otherwise, you can skip this by pressing *CTRL+C* which will use the IP address or default RDNS of the Compute Instance.
 
     {{< note >}}
-For more documentation on how to assign a domain to your Linode, please review the [DNS Manager](/docs/guides/dns-manager/) guide for instructions on setting up your DNS records in the Cloud Manager, and read through [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) for general information about how DNS works.
+For more documentation on how to assign a domain to your Linode, please review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions on setting up your DNS records in the Cloud Manager, and read through [DNS Records: An Introduction](/docs/guides/dns-overview/) for general information about how DNS works.
     {{</ note >}}
 
 1.  Apply the Let's Encrypt SSL if your domain is pointed to the server already. Enter `y` and type your email address.

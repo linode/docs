@@ -79,7 +79,7 @@ Once a VLAN has been attached to more than one Compute Instance, verify that you
 
         ssh username@192.0.2.1
 
-    If the Compute Instance does not have a public network configured, connect to it via Lish by following the steps in the [Using the Lish Console](/docs/guides/using-the-lish-console/) guide.
+    If the Compute Instance does not have a public network configured, connect to it via Lish by following the steps in the [Using the Lish Console](/docs/guides/lish/) guide.
 
 1. Ping another Compute Instance within the VLAN's private network using the IPAM address assigned to it.
 
