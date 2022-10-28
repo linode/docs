@@ -7,7 +7,7 @@ description: "Learn how your Linode account's network transfer pool is calculate
 keywords: ["network","billing","account","transfer", "overage"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-21
-modified: 2021-10-14
+modified: 2022-06-17
 modified_by:
   name: Linode
 title: "Network Transfer Usage and Costs"
@@ -25,13 +25,13 @@ aliases: ['/platform/billing-and-support/network-transfer-quota/', '/guides/netw
 
 The following Linode services consume network transfer and, in most cases, include a set amount of outbound network transfer allowance per month. The amount of transfer is displayed along with the pricing and plan details for each service. See Linode's [pricing page](https://www.linode.com/pricing) for exact amounts.
 
-- **Compute Instances:** Consume network transfer and include 1-20 TB of transfer allowance per month.
+- **Compute Instances:** Consume network transfer and include 1-20 TB of transfer allowance per month, depending on plan size
 
 - **NodeBalancers:** Consume network transfer but do not include a monthly transfer allowance.
 
-- **Object Storage:** Consumes network transfer and includes 1TB of transfer allowance per month.
+- **Object Storage:** Consumes network transfer and includes 1TB of transfer allowance per month, regardless of plan size
 
-- **Managed Databases:** Does not consume network transfer or include a monthly transfer allowance. Linode services located in a different data center connecting to a Managed Database may consume network transfer.
+- **Managed Databases:** Does not consume network transfer or include a monthly transfer allowance.
 
 The allowance included with each service on an account is added to an account-wide **monthly network transfer pool**. Whenever a service consumes network transfer, it is counted towards this account-wide pool and not the individual transfer allowance.
 
@@ -47,13 +47,13 @@ Costs associated with network transfer can often be unexpected or confusing in a
 
 - All inbound network transfer
 
-- Outbound network transfer sent between Compute Instances and/or NodeBalancers in the same data center, provided the traffic occurs over an IPv6 address, a private VLAN network, or on the private IPv4 address of those services. Public IPv4 addresses, due to the way traffic is routed, is not included in this.
+- Outbound network transfer sent from Compute Instances and NodeBalancers to any Linode service within the same data center, provided the traffic occurs over an IPv6 address, a private VLAN network, or on the private IPv4 address of those services. Public IPv4 addresses, due to the way traffic is routed, is not included in this.
 
 **Metered network transfer:**
 
-- Outbound transfer sent from a Compute Instance or NodeBalancer over the public internet (or a public IPv4 address).
+- Outbound transfer sent from Compute Instances and NodeBalancers to destinations outside of the origin data center (over both IPv6 and IPv4) and within the same data center if a public IPv4 address is used.
 
-- All outbound transfer from Object Storage, even to other Linode services within the same data center.
+- Outbound transfer from Object Storage (over both public IPv6 and public IPv4), even to other Linode services within the same data center.
 
 All metered network transfer consumed by a service is counted toward the account-wide **monthly network transfer pool**. Any additional transfer usage that exceeds this monthly allotment costs $0.01/GB (which comes to $10/TB) and is charged at the end of the billing period.
 
@@ -99,4 +99,4 @@ Linode automatically sends an email notification to [your account's email addres
 
 ## More Information
 
-Read the [Billing and Payments](/docs/guides/billing-and-payments/) guide for an overview of Linode billing.
+Read the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for an overview of Linode billing.

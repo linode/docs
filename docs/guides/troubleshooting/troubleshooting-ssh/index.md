@@ -15,9 +15,9 @@ title: "Troubleshooting SSH"
 aliases: ['/troubleshooting/troubleshooting-ssh/']
 ---
 
-This guide presents troubleshooting strategies for when you can't connect to your Linode via SSH. If you currently cannot [ping](/docs/tools-reference/linux-system-administration-basics/#the-ping-command) your Linode, then your server also likely has more basic connection issues. If this is the case, you should instead follow the [Troubleshooting Basic Connection Issues](/docs/troubleshooting/troubleshooting-basic-connection-issues/) guide. If you restore basic networking to your Linode but still can't access SSH, return to this guide.
+This guide presents troubleshooting strategies for when you can't connect to your Linode via SSH. If you currently cannot [ping](/docs/tools-reference/linux-system-administration-basics/#the-ping-command) your Linode, then your server also likely has more basic connection issues. If this is the case, you should instead follow the [Troubleshooting Basic Connection Issues](/docs/guides/troubleshooting-basic-connection-issues/) guide. If you restore basic networking to your Linode but still can't access SSH, return to this guide.
 
-If you can access SSH but not other services, refer to the [Troubleshooting Web Servers, Databases, and Other Services](/docs/troubleshooting/troubleshooting-web-servers-databases-other-services/) guide.
+If you can access SSH but not other services, refer to the [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guide.
 
 {{< disclosure-note "Where to go for help outside this guide" >}}
 This guide explains how to use different troubleshooting commands on your Linode. These commands can produce diagnostic information and logs that may expose the root of your connection issues. For some specific examples of diagnostic information, this guide also explains the corresponding cause of the issue and presents solutions for it.
@@ -39,7 +39,7 @@ To learn about Lish in more detail, and for instructions on how to connect to yo
 
 ### Forgotten your Password?
 
-If you have forgotten your Linux user's password, you will not be able to log in with Lish. You can reset the root password for your Linode with [these instructions](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode-new-manager/). If you are logged in as root, you can change the password of another user with the `passwd` command:
+If you have forgotten your Linux user's password, you will not be able to log in with Lish. You can reset the root password for your Linode with [these instructions](/docs/guides/reset-the-root-password-on-your-linode/). If you are logged in as root, you can change the password of another user with the `passwd` command:
 
     passwd <username>
 
@@ -80,7 +80,7 @@ If your connections are *not* timing out or being rejected, or if you are able t
     | Ubuntu 14.04, Debian 7 | `less /var/log/auth.log` |
 
     {{< note >}}
-Review the [journalctl](/docs/quick-answers/linux/how-to-use-journalctl/) and [less](/docs/quick-answers/linux/how-to-use-less/) guides for help with navigating your logs when using those commands.
+Review the [journalctl](/docs/guides/how-to-use-journalctl/) and [less](/docs/guides/how-to-use-less/) guides for help with navigating your logs when using those commands.
 {{< /note >}}
 
 1.  Review the [Is Another Service Bound on the Same Port?](#is-another-service-bound-on-the-same-port) section. Then:
@@ -131,7 +131,7 @@ This error indicates that another service on your system is already using the sa
             sudo systemctl stop some-other-service
             sudo systemctl disable some-other-service
 
-        Or, [kill](/docs/tools-reference/tools/use-killall-and-kill-to-stop-processes-on-linux/) the process using the process ID listed next to the process name in the output from `netstat`.
+        Or, [kill](/docs/guides/use-killall-and-kill-to-stop-processes-on-linux/) the process using the process ID listed next to the process name in the output from `netstat`.
 
 -   **Assign a different port to the other service**
 
@@ -169,7 +169,7 @@ Your deployment may be running FirewallD or UFW, which are frontends used to mor
 Review [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
 {{< /note >}}
 
-Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections. A rule which allows incoming SSH traffic could look like this:
+Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections. A rule which allows incoming SSH traffic could look like this:
 
 {{< output >}}
 -A INPUT -p tcp -m tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT
@@ -180,7 +180,7 @@ In some cases, [fail2ban](https://www.fail2ban.org/wiki/index.php/Main_Page), a 
 
 ### Disable Firewall Rules
 
-In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterward with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) for help with this subject.
+In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterward with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) for help with this subject.
 
 1.  Create a temporary backup of your current iptables rules:
 

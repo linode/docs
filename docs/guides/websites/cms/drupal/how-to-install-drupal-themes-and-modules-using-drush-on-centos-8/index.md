@@ -66,7 +66,7 @@ In this section you will download, enable, and set a Drupal theme using Drush.
          composer require drupal/bootstrap
 
     {{< note >}}
-If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/docs/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-centos-8/#setting-the-site-s-ownership-and-permissions) section of the [Install Drupal using Drush on CentOS 8](/docs/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-centos-8/) guide.
+If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/docs/guides/how-to-install-drupal-using-drush-on-centos-8/#setting-the-site-s-ownership-and-permissions) section of the [Install Drupal using Drush on CentOS 8](/docs/guides/how-to-install-drupal-using-drush-on-centos-8/) guide.
 
 Ensure that your `/var/www/html/example.com/public_html` directory has user and group read, write, and execute permissions.
 

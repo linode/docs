@@ -27,8 +27,8 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 1.  Ensure that you have completed the following guides:
 
     -   [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
-    -   [Install a LAMP stack](/docs/web-servers/lamp/lamp-on-ubuntu-14-04/)
-    -   [Install and Configure Drupal 8](/docs/websites/cms/install-and-configure-drupal-8/)
+    -   [Install a LAMP stack](/docs/guides/lamp-on-ubuntu-14-04/)
+    -   [Install and Configure Drupal 8](/docs/guides/how-to-install-and-configure-drupal-8/)
 
 2.  Confirm the name of your site's Document Root folder by running the following command on your Linode:
 
@@ -46,7 +46,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
 ## Create Backups
 
-Back up existing files and move the archive into the backups directory. This process can also be scripted and run on a regular basis using [cron](/docs/tools-reference/tools/schedule-tasks-with-cron/):
+Back up existing files and move the archive into the backups directory. This process can also be scripted and run on a regular basis using [cron](/docs/guides/schedule-tasks-with-cron/):
 
     cd /var/www/html/example.com/public_html
     sudo tar -cvzf example.com-BCKP-$(date +%Y%m%d).tar.gz ./

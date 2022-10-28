@@ -27,7 +27,7 @@ Varnish works by handling requests before they make it to your backend; whether 
 
 Additionally, Varnish cache can be used as part of a [highly available environment](#use-varnish-cache-for-high-availability-with-backend-polling), which ensures uptime during high traffic loads or server failures.
 
-If your web server is nginx and you plan to use Varnish cache to serve WordPress, visit Linode's guide to [Using Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8](/docs/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8/).
+If your web server is nginx and you plan to use Varnish cache to serve WordPress, visit Linode's guide to [Using Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8](/docs/guides/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8/).
 
 ## Before You Begin
 
@@ -38,7 +38,7 @@ If your web server is nginx and you plan to use Varnish cache to serve WordPress
 3.  Install and configure a [web server](/docs/websites/) like Apache or nginx.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install and Configure Varnish Cache
@@ -287,4 +287,4 @@ If Varnish is running on the same Linode as your web server, be sure to allow in
 
 If Varnish and your web server are running on separate Linodes, you'll need to accept incoming traffic on port 80 on the Varnish Linode, and port 8080 on the web server.
 
-These two are simply the minimum rule modifications. It is strongly recommended you use additional firewall rules on each, based on the other services you have running. If you're not sure how to set up a firewall, check out our guides on [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) and [UFW](/docs/security/firewalls/configure-firewall-with-ufw/).
+These two are simply the minimum rule modifications. It is strongly recommended you use additional firewall rules on each, based on the other services you have running. If you're not sure how to set up a firewall, check out our guides on [iptables](/docs/guides/control-network-traffic-with-iptables/) and [UFW](/docs/guides/configure-firewall-with-ufw/).

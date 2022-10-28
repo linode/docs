@@ -63,41 +63,40 @@ If you are building an application which will need to authenticate multiple user
 
 ### Pagination
 
-If a results list contains more than 100 items, the response is split into multiple pages. Each response includes the total number of pages and the current page. To view additional pages, add a `page` parameter to the end of the URL. For example, querying the available kernels produces more than 200 results:
+If a results list contains more than 100 items, the response is split into multiple pages. Each response includes the total number of pages and the current page. For example, querying the available kernels produces more than 300 results:
 
     curl https://api.linode.com/v4/linode/kernels | json_pp
 
-
-  {{< highlight json "linenos=table,hl_lines=2 25" >}}
-{
-    "results": 214,
-    "page": 1,
-    "data": [
-        {
-            "kvm": false,
-            "architecture": "i386",
-            "version": "2.6.28",
-            "xen": true,
-            "label": "2.6.28.3-linode17",
-            "id": "linode/2.6.28.3-linode17",
-            "pvops": true
-        },
-        {
-            "kvm": false,
-            "architecture": "i386",
-            "version": "2.6.18",
-            "xen": true,
-            "label": "2.6.18.8-linode16",
-            "id": "linode/2.6.18.8-linode16",
-            "pvops": false
-        },
-    ]
-        ...
-    "pages": 3
+{{< highlight json "linenos=table,hl_lines=24 25" >}}
+      ...
+      {
+         "architecture" : "i386",
+         "built" : "2016-10-07T22:21:55",
+         "deprecated" : true,
+         "id" : "linode/4.8.1-x86-linode94",
+         "kvm" : true,
+         "label" : "4.8.1-x86-linode94",
+         "pvops" : true,
+         "version" : "4.8.1"
+      },
+      {
+         "architecture" : "i386",
+         "built" : "2016-09-15T13:13:40",
+         "deprecated" : true,
+         "id" : "linode/4.7.3-x86-linode92",
+         "kvm" : true,
+         "label" : "4.7.3-x86-linode92",
+         "pvops" : true,
+         "version" : "4.7.3"
+      }
+   ],
+   "page" : 1,
+   "pages" : 4,
+   "results" : 312
 }
 {{< /highlight >}}
 
-The `pages` field indicates that the results are divided into three pages. View the second page:
+The `pages` field indicates that the results are divided into three pages. To view additional pages, add a `page` parameter to the end of the URL. View the second page:
 
     curl https://api.linode.com/v4/linode/kernels | json_pp page=2
 

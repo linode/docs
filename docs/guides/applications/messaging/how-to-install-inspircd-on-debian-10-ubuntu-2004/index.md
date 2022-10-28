@@ -138,7 +138,7 @@ If you want more information on WeeChat and its usage, refer to the [Using WeeCh
 
     WeeChat stores the information for connecting to the IRC server under the alias you provide. You can then connect to the server anytime, even after quitting and restarting WeeChat, by using that alias.
 
-1. Connect to the IRC server using the the alias you created:
+1. Connect to the IRC server using the alias you created:
 
         /connect example-irc-alias
 

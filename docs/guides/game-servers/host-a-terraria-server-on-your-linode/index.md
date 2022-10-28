@@ -49,7 +49,7 @@ Terraria only uses IPv4 and does not use IPv6.
 
 ### Firewalld
 
-Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our [guide on using firewalld](/docs/security/firewalls/introduction-to-firewalld-on-centos/) for more information.
+Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our [guide on using firewalld](/docs/guides/introduction-to-firewalld-on-centos/) for more information.
 
 1.  Enable and start firewalld:
 
@@ -106,7 +106,7 @@ The second command in this step, `sudo ufw delete 4` references the fourth rule 
 
 ### iptables
 
-To manually configure iptables without using a controller, see our [iptables guide](/docs/security/firewalls/control-network-traffic-with-iptables/) for a general ruleset.
+To manually configure iptables without using a controller, see our [iptables guide](/docs/guides/control-network-traffic-with-iptables/) for a general ruleset.
 
 1.  You'll also want to add the rule below for Terraria:
 
@@ -141,7 +141,7 @@ Before you install Terraria, be sure the version you download is the same as the
 
         sudo unzip terraria-server-*
 
-4. The Terraria Server file will contain an executable that must have have execute permissions set to run the server. Enter the following command to do this:
+4. The Terraria Server file will contain an executable that must have execute permissions set to run the server. Enter the following command to do this:
 
         sudo chmod +x ~/1423/Linux/TerrariaServer.bin.x86_64
 
