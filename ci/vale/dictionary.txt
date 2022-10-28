@@ -431,6 +431,7 @@ dejong
 deloitte
 delpy
 demultiplexer
+Deno
 denormalized
 deprovision
 deprovisioning
@@ -2105,6 +2106,7 @@ transcode
 transcoder
 transcoding
 transpiled
+transpiling
 trello
 triaging
 trie
