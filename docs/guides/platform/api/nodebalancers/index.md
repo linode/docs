@@ -66,7 +66,7 @@ NodeBalancers are created without any configuration profiles attached. Each prof
 
 2.  Substitute the NodeBalancer's ID into the URL below:
 
-        curl https://api.linode.com/v4/nodebalancers/$nodebalancer-id/configs \
+        curl https://api.linode.com/v4/nodebalancers/$NODEBALANCER_ID/configs \
         -H "Authorization: Bearer $TOKEN" \
         -H "Content-Type: application/json" \
         -X POST -d @nodebalancer-config.json
@@ -123,7 +123,7 @@ Even with a working configuration profile, the NodeBalancer isn't doing anything
 
 5.  Boot the Linode:
 
-        curl -X POST https://api.linode.com/v4/linode/instances/$linode-id/boot \
+        curl -X POST https://api.linode.com/v4/linode/instances/$LINODE_ID/boot \
         -H "Authorization: Bearer $TOKEN"
 
 ### Add Nodes to NodeBalancer
@@ -141,7 +141,7 @@ Add the new Linodes to the NodeBalancer's nodes.
 
 2.  Use the `/nodes` endpoint to add a node:
 
-        curl https://api.linode.com/v4/nodebalancers/$nodebalancer-id/configs/$config-id/nodes \
+        curl https://api.linode.com/v4/nodebalancers/$NODEBALANCER_ID/configs/$CONFIG_ID \
         -H "Authorization: Bearer $TOKEN" \
         -H "Content-Type: application/json" \
         -X POST -d @add-node.json
@@ -152,7 +152,7 @@ Add the new Linodes to the NodeBalancer's nodes.
 
 Check the status of the two nodes:
 
-    curl https://api.linode.com/v4/nodebalancers/$nodebalancer-id/configs/$config-id \
+    curl https://api.linode.com/v4/nodebalancers/$NODEBALANCER_ID/configs/$CONFIG_ID \
     -H "Authorization: Bearer $TOKEN"
 
   {{< output >}}
@@ -188,14 +188,17 @@ Provide values for country name, common name, etc. when prompted. The Linode API
 {
   "protocol":"https",
   "port": 443,
-  "ssl_cert": <contents of MyCertificate.crt>,
-  "ssl_key": <contents of MyKey.key>
+  "ssl_cert": "-----BEGIN CERTIFICATE-----\nCERTIFICATE_INFORMATION\n-----END CERTIFICATE-----",
+  "ssl_key": "-----BEGIN PRIVATE KEY-----\nPRIVATE_KEY_INFORMATION\n-----END PRIVATE KEY-----"
 }
 {{< /file >}}
+    {{< note >}}
+Line breaks in SSL certificate and private key strings must be represented by `\n`.
+    {{< /note >}}
 
 3.  Use a PUT request to update your NodeBalancer's configuration:
 
-        curl -X PUT https://api.linode.com/v4/nodebalancers/$nodebalancer-id/configs/$config-id \
+        curl -X PUT https://api.linode.com/v4/nodebalancers/$NODEBALANCER_ID/configs/$CONFIG_ID \
         -H "Authorization: Bearer $TOKEN" \
         -H "Content-Type: application/json" \
         -d @nodebalancer-config.json

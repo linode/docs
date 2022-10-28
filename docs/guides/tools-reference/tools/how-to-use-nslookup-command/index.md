@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-01
 modified_by:
   name: Linode
-title: "A Complete Guide to the nslookup Command | Linode"
+title: "A Complete Guide to the nslookup Command"
 h1_title: "How to Use the nslookup Command"
 enable_h1: true
 contributor:

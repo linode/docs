@@ -299,7 +299,7 @@ If you have not yet [generated an Object Storage key pair](/docs/products/storag
       - `ingress.tls.hosts` with the domain for which you wish to secure with your TLS certificate.
       - `secrets.s3.accessKey` with the value of your [Object Storage account's access key](/docs/products/storage/object-storage/guides/access-keys/) and `secrets.s3.secretKey` with the corresponding secret key.
       - `secrets.htpasswd` with the value returned when you view the contents of your `my_docker_pass` file. However, ensure you do not remove the `|-` characters. This ensures that your YAML is properly formatted. See step 4 in the [Enable Basic Authentication](#enable-basic-authentication) section for details on viewing the contents of your password file.
-      - `s3.region` with your Object Storage bucket's cluster region, `s3.regionEndpoint` with your Object Storage bucket's region endpoint, and `s3.bucket` with your registry's Object Storage bucket name.
+      - `s3.region` with your Object Storage bucket's cluster region, `s3.regionEndpoint` with your Object Storage bucket's region endpoint, and `s3.bucket` with your registry's Object Storage bucket name. For more information about these values, see [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/).
 
       {{< file "~/registry/docker-configs.yaml" >}}
 ingress:

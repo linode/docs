@@ -22,11 +22,15 @@ external_resources:
 - '[How to run Jenkins X Boot](https://jenkins-x.io/docs/install-setup/boot/how-it-works/)'
 - '[Creating and importing projects in Jenkins X](https://jenkins-x.io/docs/create-project/creating/)'
 aliases: ['/kubernetes/how-to-deploy-jenkins-x-in-linode-kubernetes-engine/']
+deprecated: true
 ---
 
 ## What is Jenkins X?
 
-[Jenkins X](https://jenkins-x.io) is CI/CD tool that automates the management of development environments and the promotion of new versions of applications between environments. This guide illustrates how to install Jenkins X on Linode Kubernetes Engine.
+[Jenkins X](https://jenkins-x.io) is CI/CD tool that automates the management of development environments and the promotion of new versions of applications between environments. This guide illustrates how to install Jenkins X version 2 on Linode Kubernetes Engine.
+{{< note >}}
+Jenkins X version 2 is no longer maintained. For more information about using Jenkins X version 3, see the [official Jenkins X documentation](https://jenkins-x.io/v3/admin/).
+{{</ note >}}
 
 ## Before You Begin
 
