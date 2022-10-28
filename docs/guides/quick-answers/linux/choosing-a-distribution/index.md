@@ -7,7 +7,7 @@ description: "A list of all the Linux distributions provided on the Linode Platf
 keywords: ["distro", "distribution", "operating system", "Linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-15
-modified: 2022-10-11
+modified: 2022-10-28
 modified_by:
   name: Linode
 title: "How to Choose a Linux Distribution"
@@ -38,7 +38,7 @@ Below is a full list of distributions, along with the release versions that we o
 | [openSUSE Leap](https://www.opensuse.org/) | **15.4**, 15.3 | Provides powerful tools specific to system administration tasks. Starting with version 15.3, this distribution maintains parity with SLE (SUSE Linux Enterprise), making it a great choice for users of SLE or those looking to benefit from enterprise-grade stability. |
 | [Rocky Linux](https://rockylinux.org/) | **9**, 8 | A binary compatible derivative of RHEL intended to provide a long-term stable replacement for CentOS. Built by a community team led by the founder of the CentOS project. |
 | [Slackware](http://www.slackware.com/) | **15**, 14.2, 14.1\*\* | **Recommended for advanced Linux users only.** The oldest actively maintained distribution. One of the most UNIX-like Linux distributions available. |
-| [Ubuntu](https://ubuntu.com/) | **22.04 LTS**, 21.10\*\*, 21.04\*\*, 20.04 LTS, 18.04 LTS, 16.04 LTS | Arguably the most popular Linux distribution, widely regarded for it's ease of use. The LTS versions of Ubuntu are featured heavily in Linode's guides and across the community. |
+| [Ubuntu](https://ubuntu.com/) | 22.10, **22.04 LTS**, 21.10\*\*, 21.04\*\*, 20.04 LTS, 18.04 LTS, 16.04 LTS | Arguably the most popular Linux distribution, widely regarded for it's ease of use. The LTS versions of Ubuntu are featured heavily in Linode's guides and across the community. |
 
 \* *Rolling release: Continuously updated release, typically with small but frequent updates.*<br>
 ** *Deprecated image: This image is still available for deployment but is no longer maintained by Linode.*
