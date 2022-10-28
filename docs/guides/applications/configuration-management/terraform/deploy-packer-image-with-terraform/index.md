@@ -208,11 +208,11 @@ There are two main ways to get the image ID, both listed below. In these example
 
     {{< output >}}
 {
-	"pages": 1,
-	"data": [{
-		"id": "private/17691867",
-		"label": "packer-linode-image-1",
-		"description": "Example Packer Linode Image",
+    "pages": 1,
+    "data": [{
+        "id": "private/17691867",
+        "label": "packer-linode-image-1",
+        "description": "Example Packer Linode Image",
         // [...]
     {{< /output >}}
 
