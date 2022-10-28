@@ -177,6 +177,3 @@ That covers all you need to revert recent Git commits. Moreover, the techniques 
 To keep learning, refer to the links at the beginning of this guide. These give you more on Git generally as well as more on the commands covered in this tutorial.
 
 You may also want to look at our entire lineup of [guides on version control](/docs/guides/development/version-control/). These cover everything from the fundamentals to particular use cases, and provide steps to deepen your version control knowledge.
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
-
