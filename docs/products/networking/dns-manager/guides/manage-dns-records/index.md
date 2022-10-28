@@ -68,7 +68,7 @@ New DNS records may take up to 24 hours to propagate throughout the internet, al
 
 ### Wildcards
 
-A [wildcard DNS record](https://en.wikipedia.org/wiki/Wildcard_DNS_record) matches all requests for subdomains that do not yet exist. Wildcards are often used to point all non-existing subdomains to an existing top level domain. For example, if a queried first-level subdomain does not exist, the IP address specified in the wildcard DNS record will respond. Wildcard records are formatted using an asterisk (`*`) in the field that designates the domain name of the record. For A records and CNAME records, this field is called **Hostname**. For CNAME records
+A [wildcard DNS record](https://en.wikipedia.org/wiki/Wildcard_DNS_record) matches all requests for subdomains that do not yet exist. Wildcards are often used to point all non-existing subdomains to an existing top level domain. For example, if a queried first-level subdomain does not exist, the IP address specified in the wildcard DNS record will respond. Wildcard records are formatted using an asterisk (`*`) in the field that designates the domain name of the record. For A records and CNAME records, this field is called **Hostname**.
 
 {{< note >}}
 A wildcard must always be the furthest subdomain from the TLD (top level domain), i.e. `*.example.com`. If you would like to add a wildcard as a subdomain for a subdomain (what is also called a *second-level* subdomain or *fourth-level* domain), you will need to add a new domain zone for that subdomain and then add the wildcard record to it. For example, to create `*.subdomain.example.com`, you must add a separate domain zone for `subdomain.example.com` first, then add an A/AAAA DNS record to that zone as indicated above.

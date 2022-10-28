@@ -27,7 +27,7 @@ Determine what domain name you wish to use and, if you haven't done so already, 
 
 ## Create the Domain Zone
 
-A *domain zone* (also called a [DNS zone](https://en.wikipedia.org/wiki/DNS_zone)) is a collection DNS records for a particular domain. For full instructions on creating a domain zone, see [Create a Domain](/docs/products/networking/dns-manager/guides/create-domain/).
+A *domain zone* (also called a [DNS zone](https://en.wikipedia.org/wiki/DNS_zone)) is a collection of DNS records for a particular domain. For full instructions on creating a domain zone, see [Create a Domain](/docs/products/networking/dns-manager/guides/create-domain/).
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Domains** from the left navigation menu. Click the **Create Domain** button.
 
@@ -61,7 +61,7 @@ DNS records can associate specific domain names with pieces of information, such
 
 - [CAA Records](/docs/products/networking/dns-manager/guides/caa-record/)
 
-If you are migrating to Linode from another DNS provider, make sure you have added all of the necessary DNS records to your domain before adding Linode’s name servers to your domain (on your registrar).
+If you are migrating to Linode from another DNS provider, make sure you have added all of the necessary DNS records to your domain zone before adding Linode’s name servers to your domain's registrar.
 
 ## Use Linode's Name Servers
 
@@ -72,6 +72,12 @@ Once you are ready, set Linode's name servers as the authoritative name servers 
 - `ns3.linode.com`
 - `ns4.linode.com`
 - `ns5.linode.com`
+
+The name for this setting various among registrars, but it is commonly called *external* or *custom* name servers. Follow the instructions for your registrar:
+
+- [Namecheap](https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-to-change-dns-for-a-domain/)
+- [GoDaddy](https://www.godaddy.com/help/change-nameservers-for-my-domains-664)
+- [Hover](https://help.hover.com/hc/en-us/articles/217282477--Changing-your-domain-nameservers)
 
 {{< note >}}
 DNS changes can take up to 24 hours to propagate throughout the internet, although the changes are usually visible within several hours.

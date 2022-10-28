@@ -55,7 +55,7 @@ Once you've made your selections, click the **Create Domain** button to add your
 
 ## Finish the Setup
 
-- **Add DNS Records.** After the domain has been created, you can immediately start adding and editing DNS records for it. If you are migrating to Linode from another DNS provider, make sure you have added all of the necessary DNS records to your domain *before* adding Linode's name servers to your domain (on your registrar). See [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/)
+- **Add DNS Records.** After the domain has been created, you can immediately start adding and editing DNS records for it. If you are migrating to Linode from another DNS provider, make sure you have added all of the necessary DNS records to your domain *before* adding Linode's name servers to your domain (on your registrar). See [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/).
 
 - **Add Linode's Name Servers.** To use Linode as the authoritative name servers for your domain, you need to edit the name servers on your registrar. The process for this varies for each registrar.
 

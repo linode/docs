@@ -53,13 +53,13 @@ The *Clone* feature allows you to copy DNS records from an existing domain in yo
 
 Here's how to clone DNS records for an existing domain:
 
+1. Navigate to the **Domains** page in the Cloud Manager. See [View Domains](#view-domains).
+
 1.  Click on the **more options ellipsis** corresponding to the domain whose DNS records you would like to clone and select **Clone** from the menu.
 
 1.  Enter the name of the new domain in the **New Domain** field.
 
-    ![Clone an existing domain zone](domain-clone-a-zone.png "Clone an existing domain zone.")
-
-1.  Click **Create**. The DNS records will then be copied from the existing domain to the domain.
+1.  Click **Create**. The DNS records will then be copied from the existing domain to the new domain.
 
 ## Disable (and Enable) a Domain
 

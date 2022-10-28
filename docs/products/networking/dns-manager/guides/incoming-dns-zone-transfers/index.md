@@ -28,7 +28,7 @@ Verify that your current DNS provider offers the ability to perform outgoing DNS
 2600:3c00::5f
 ```
 
-This process varies by DNS provider or software you are using and is not widely supported. If your DNS provider does not support AXFR queries, you may need to create an empty domain zone and manually add each DNS record. See [Create a Domain](/docs/products/networking/dns-manager/guides/create-domain/).
+This process varies by DNS provider or software you are using and is typically available on enterprise-level plans. If your DNS provider does not support AXFR queries, you may need to create an empty domain zone and manually add each DNS record. See [Create a Domain](/docs/products/networking/dns-manager/guides/create-domain/).
 
 ## Import a DNS Zone
 
@@ -52,7 +52,7 @@ Using Linode's DNS Manager as a *secondary* DNS service allows you to manage you
 - is not equipped to handle large amounts of DNS traffic,
 - or does not implement any high availability features.
 
-As part of this, a common reason for using Linode's DNS provider as a secondary name server is if your primary name server is self-hosted. This is true for users of cPanel, Plesk, and other web-hosting panels. It is also true for power-users that prefer to run their own dedicated DNS software, such as BIND, and manually update their DNS zone files. In these cases, you may value the control or automation from your current solution, but you desire more reliability and availability.
+As part of this, a common reason for using Linode's DNS Manager as a secondary DNS provider is if your primary name server is self-hosted. This is true for users of cPanel, Plesk, and other web-hosting panels. It is also true for power-users that prefer to run their own dedicated DNS software, such as BIND, and manually update their DNS zone files. In these cases, you may value the control or automation from your current solution, but you desire more reliability and availability.
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Domains** from the left navigation menu. Click the **Create Domain** button.
 
