@@ -109,7 +109,7 @@ When you have finished testing, move on to the last step in migrating: updating 
 
 To direct your visitors to your Linode, associate your domain with [your new Linode's IP](/docs/guides/managing-ip-addresses/). There are two options for moving your DNS records:
 
--  Use Linode's fast, stable [DNS hosting](/docs/guides/dns-manager/) which is free as long as you have one active Linode on your account.
+-  Use Linode's fast, stable [DNS hosting](/docs/products/networking/dns-manager/) which is free as long as you have one active Linode on your account.
 
 -  Continue to use your current nameserver authority and update your DNS records with your new Linode's IP address. You should check with your current provider to see if there are any costs for their DNS services. If you are using your domain name registrar's nameservers, then they are generally free.
 
@@ -121,7 +121,7 @@ If you'd like to continue with your current nameservers, update all of the DNS r
 
 {{< content "update-dns-at-common-name-server-authorities" >}}
 
-After DNS propagation has finished, [set reverse DNS](/docs/guides/configure-your-linode-for-reverse-dns/) for your domain. This is especially important if you are running a mail server.
+After DNS propagation has finished, [set reverse DNS](/docs/guides/configure-rdns/) for your domain. This is especially important if you are running a mail server.
 
 ## Next Steps
 

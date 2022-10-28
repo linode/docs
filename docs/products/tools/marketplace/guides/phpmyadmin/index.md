@@ -54,7 +54,7 @@ However, entering your phpMyAdmin credentials through an HTTP connection is inse
 
 ### Configure Your Domain with DNS Manager
 
-The following sections require that you own a domain that has been configured for your use with your phpMyAdmin Linode. Following the instructions in the Linode [DNS Manager](/docs/guides/dns-manager/) guide, configure your domain's [name servers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain) and add a [DNS record](/docs/guides/dns-manager/#add-dns-records) so that your domain is pointing to your phpMyAdmin Linode.
+The following sections require that you own a domain that has been configured for your use with your phpMyAdmin Linode. Following the instructions in the Linode [DNS Manager](/docs/products/networking/dns-manager/) guide, configure your domain's [name servers](/docs/products/networking/dns-manager/#use-linodes-name-servers-with-your-domain) and add a [DNS record](/docs/products/networking/dns-manager/#add-dns-records) so that your domain is pointing to your phpMyAdmin Linode.
 
 ### Enable HTTPS with Certbot
 

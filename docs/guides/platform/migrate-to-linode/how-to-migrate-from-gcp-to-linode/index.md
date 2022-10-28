@@ -473,7 +473,7 @@ You disabled the Google services from calling out before creating and migrating 
 
 ### Optional: Transfer Disk to ext4
 
-As stated above, to take advantage of features like resizing your disks in Cloud Manager and Backup Service, you'll need to move your new disk to an ext4 formatted disk. To do this, follow the procedures in the Linode Manager Compatibility section of the [Install a Custom Distribution on a Linode guide](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/#linode-manager-compatibility).
+As stated above, to take advantage of features like resizing your disks in Cloud Manager and Backup Service, you'll need to move your new disk to an ext4 formatted disk. To do this, follow the procedures in the Linode Manager Compatibility section of the [Install a Custom Distribution on a Linode guide](/docs/guides/install-a-custom-distribution-on-a-linode/#linode-manager-compatibility).
 
 ### Cleaning Up
 
@@ -503,7 +503,7 @@ If you'd like to continue with your current nameservers, update all of the DNS r
 
 {{< content "update-dns-at-common-name-server-authorities" >}}
 
-After DNS propagation has finished, [set reverse DNS](/docs/guides/configure-your-linode-for-reverse-dns/) for your domain. This is especially important if you are running a mail server.
+After DNS propagation has finished, [set reverse DNS](/docs/guides/configure-rdns/) for your domain. This is especially important if you are running a mail server.
 
 ## Next Steps
 

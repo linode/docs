@@ -44,7 +44,7 @@ modified: 2022-10-28
 
 - [Troubleshooting DNS Records](/docs/guides/troubleshooting-dns/)
 
-- [Common DNS Configurations](/docs/guides/common-dns-configurations/)
+- [Common DNS Configurations](/docs/products/networking/dns-manager/guides/common-dns-configurations/)
 
 - [Configure rDNS (Reverse DNS) on a Compute Instance](/docs/guides/configure-rdns/)
 

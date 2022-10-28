@@ -41,8 +41,8 @@ aliases: ['/platform/marketplace/deploying-docker-with-marketplace-apps/', '/pla
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
-- **Do you need an MX record for this domain?** Select `Yes` to create a basic [MX record](/docs/guides/dns-records-an-introduction/#mx) for the domain. Select `No` to create no MX records
-- **Do you need an SPF record for this domain?** Select `Yes` to create a basic [SPF record](/docs/guides/dns-records-an-introduction/#spf) for the domain. Select `No` to create no SPF records.
+- **Do you need an MX record for this domain?** Select `Yes` to create a basic [MX record](/docs/guides/dns-overview/#mx) for the domain. Select `No` to create no MX records
+- **Do you need an SPF record for this domain?** Select `Yes` to create a basic [SPF record](/docs/guides/dns-overview/#spf) for the domain. Select `No` to create no SPF records.
 
 ## Getting Started after Deployment
 

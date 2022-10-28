@@ -110,7 +110,7 @@ mailman_destination_recipient_limit = 1
 {{< /file >}}
 
 
-Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/docs/guides/dns-records-an-introduction/#mx) for both domains that you want to receive email with. Additionally, add the following lines to your `/etc/postfix/master.cf` file:
+Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/docs/guides/dns-overview/#mx) for both domains that you want to receive email with. Additionally, add the following lines to your `/etc/postfix/master.cf` file:
 
 {{< file "/etc/postfix/master.cf" >}}
 mailman unix  -       n       n       -       -       pipe
@@ -170,7 +170,7 @@ POSTFIX_STYLE_VIRTUAL_DOMAINS = ['lists.example.com', 'lists.example.org']
 {{< /file >}}
 
 
-Ensure that your domains have valid MX and [A Records](/docs/guides/dns-records-an-introduction/#types-of-dns-records) that point to your Linode. When you've finished configuring Mailman, issue the following commands to create the default list (which will prompt you to enter an address for the list administrator and a password), restart postfix, and start Mailman for the first time:
+Ensure that your domains have valid MX and [A Records](/docs/guides/dns-overview/#types-of-dns-records) that point to your Linode. When you've finished configuring Mailman, issue the following commands to create the default list (which will prompt you to enter an address for the list administrator and a password), restart postfix, and start Mailman for the first time:
 
     newlist mailman
     /etc/init.d/postfix restart

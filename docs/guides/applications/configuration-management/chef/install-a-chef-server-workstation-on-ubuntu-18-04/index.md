@@ -36,7 +36,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 ## Prerequisites
 
 -  One 8GB Linode running Ubuntu 18.04. This Linode will host the Chef server.
-  - Assign a Domain to the Chef server. Ensure your domain has a corresponding domain zone, NS record, and A/AAA record. See the [DNS Manager guide](/docs/guides/dns-manager/#add-a-domain-zone) for details.
+  - Assign a Domain to the Chef server. Ensure your domain has a corresponding domain zone, NS record, and A/AAA record. See the [DNS Manager guide](/docs/products/networking/dns-manager/#add-a-domain-zone) for details.
   - Ensure your Chef server's hostname is the same as its Domain name. Your Chef server will automatically create SSL certificates based on the Linode's hostname.
 -  Two 2 GB Linodes, each running Ubuntu 18.04. One Linode will host a workstation and the other a node to be managed by Chef.
 -  The workstation and Chef server should be configured per the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. Once your node is [bootstrapped](/docs/guides/install-a-chef-server-workstation-on-ubuntu-18-04/#bootstrap-a-node), you can use a Chef cookbook to secure your node. Consider using the [Users](https://supermarket.chef.io/cookbooks/users) cookbook and the [Firewall](https://supermarket.chef.io/cookbooks/firewall) cookbook for this work.

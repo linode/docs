@@ -36,7 +36,7 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-If you have a registered domain name for your website, then [add the domain](/docs/guides/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LEMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.
+If you have a registered domain name for your website, then [add the domain](/docs/products/networking/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LEMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.
 {{< /note >}}
 
 ## Installation
@@ -173,7 +173,7 @@ If you configured UFW on your server, enable the firewall to allow web traffic.
 
 ## Test the LEMP Stack
 
-1. To ensure that your web server can be reached with your domain name, configure the [DNS records](/docs/guides/dns-manager/) for your domain to point to your Linode's IP address.
+1. To ensure that your web server can be reached with your domain name, configure the [DNS records](/docs/products/networking/dns-manager/) for your domain to point to your Linode's IP address.
 
 2.  Restart PHP and reload the NGINX configuration:
 

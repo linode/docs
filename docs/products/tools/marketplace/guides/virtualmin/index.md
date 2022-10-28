@@ -49,8 +49,8 @@ aliases: ['/platform/marketplace/how-to-deploy-virtualmin-with-marketplace-apps/
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **SOA Email for your domain** The email address to register as your Start of Authority (SOA). This field is required for creating DNS records for a new domain.
-- **Do you need an MX record for this domain?** Select **Yes** to automatically configure an [MX record](/docs/guides/dns-records-an-introduction/#mx) for the purpose of sending emails from your instance.
-- **Do you need an SPF record for this domain?** Select **Yes** to automatically configure an [SPF record](/docs/guides/dns-records-an-introduction/#spf) for the purpose of sending emails from your instance.
+- **Do you need an MX record for this domain?** Select **Yes** to automatically configure an [MX record](/docs/guides/dns-overview/#mx) for the purpose of sending emails from your instance.
+- **Do you need an SPF record for this domain?** Select **Yes** to automatically configure an [SPF record](/docs/guides/dns-overview/#spf) for the purpose of sending emails from your instance.
 
 ## Getting Started after Deployment
 
@@ -58,8 +58,8 @@ Virtualmin is now installed and ready to use.
 
 1.  Before you go to our app, if you filled out the optional Virtualmin configuration fields:
 
-    - In the Cloud Manager [DNS Manager](/docs/guides/dns-manager/#add-a-domain) there is now an entry for your domain with possible subdomain, MX, and SPF records pointing to your new server.
-    - [Configure the rDNS](/docs/guides/configure-your-linode-for-reverse-dns/) on your Linode.
+    - In the Cloud Manager [DNS Manager](/docs/products/networking/dns-manager/#add-a-domain) there is now an entry for your domain with possible subdomain, MX, and SPF records pointing to your new server.
+    - [Configure the rDNS](/docs/guides/configure-rdns/) on your Linode.
 
 1.  Virtualmin is served on port 10000, to access it, navigate to either the IP address of your server or to your domain name followed by port 10000. For example, `http://example.com:10000` or `http://203.0.113.0:10000`, replacing the domain name or IP address with values for your server.
 

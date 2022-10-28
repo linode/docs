@@ -94,7 +94,7 @@ ff02::2 ip6-allrouters
 
 {{< /disclosure-note >}}
 
-1.  [Set up DNS records](/docs/guides/dns-manager/#add-dns-records) for your Linodes' FQDNs. For each Linode, create a new *A record* with the name specified by its FQDN and assign it to that Linode's IP address.
+1.  [Set up DNS records](/docs/products/networking/dns-manager/#add-dns-records) for your Linodes' FQDNs. For each Linode, create a new *A record* with the name specified by its FQDN and assign it to that Linode's IP address.
 
     If you don't use Linode's name servers for your domain, consult your name server authority's website for instructions on how to edit your DNS records.
 

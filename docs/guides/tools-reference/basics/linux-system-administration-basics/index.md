@@ -95,7 +95,7 @@ American Eastern Time (including Daylight Savings Time):
 
 ### Configure the /etc/hosts File
 
-The `/etc/hosts` file provides a list of IP addresses with corresponding hostnames. This allows you to specify hostnames for an IP address in one place on the local machine, and then have multiple applications connect to external resources via their hostnames. The system of host files precedes [DNS](/docs/guides/dns-records-an-introduction/), and hosts files are *always* checked before DNS is queried. As a result, `/etc/hosts` can be useful for maintaining small "internal" networks, for development purposes, and for managing clusters.
+The `/etc/hosts` file provides a list of IP addresses with corresponding hostnames. This allows you to specify hostnames for an IP address in one place on the local machine, and then have multiple applications connect to external resources via their hostnames. The system of host files precedes [DNS](/docs/guides/dns-overview/), and hosts files are *always* checked before DNS is queried. As a result, `/etc/hosts` can be useful for maintaining small "internal" networks, for development purposes, and for managing clusters.
 
 Some applications require that the machine properly identify itself in the `/etc/hosts` file. As a result, we recommend configuring the `/etc/hosts` file shortly after deployment. Here is an example file:
 
@@ -670,23 +670,23 @@ This will allow you to see new error messages as they appear. Problems can be di
 
 ## DNS Servers and Domain Names
 
-The *Domain Name System*, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/docs/guides/dns-records-an-introduction/). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](/docs/guides/dns-manager/).
+The *Domain Name System*, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/docs/guides/dns-overview/). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](/docs/products/networking/dns-manager/).
 
 ### Redirect DNS Queries with CNAMEs
 
-[CNAME DNS records](/docs/guides/dns-records-an-introduction/#cname) make it possible to redirect requests for one hostname or domain to another hostname or domain. This is useful in situations where you want to direct requests for one domain to another, but don't want to set up the web server to handle requests.
+[CNAME DNS records](/docs/guides/dns-overview/#cname) make it possible to redirect requests for one hostname or domain to another hostname or domain. This is useful in situations where you want to direct requests for one domain to another, but don't want to set up the web server to handle requests.
 
 CNAMEs are *only* valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/guides/redirect-urls-with-the-apache-web-server/) and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAMEs must point to a valid domain that has a valid A Record, or to another CNAME.
 
-Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://cloud.linode.com/), refer to our [DNS Manager Guide](/docs/guides/dns-manager/).
+Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://cloud.linode.com/), refer to our [DNS Manager Guide](/docs/products/networking/dns-manager/).
 
 ### Set Up Subdomains
 
-When [reading domain names](/docs/guides/dns-records-an-introduction/#domain-names), we refer to parts before the main or first-level domain as "subdomains." For example, in the domain `team.example.com`, `team` is a subdomain for the root domain `example.com`.
+When [reading domain names](/docs/guides/dns-overview/#domain-names), we refer to parts before the main or first-level domain as "subdomains." For example, in the domain `team.example.com`, `team` is a subdomain for the root domain `example.com`.
 
-Follow these steps to [create and host a sub-domain](/docs/guides/common-dns-configurations/#configuring-subdomains):
+Follow these steps to [create and host a sub-domain](/docs/products/networking/dns-manager/guides/common-dns-configurations/#configuring-subdomains):
 
-1.  First, create an [A Record](/docs/guides/dns-records-an-introduction/#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/guides/dns-manager/). You may host the DNS for your domain with any provider you choose.
+1.  First, create an [A Record](/docs/guides/dns-overview/#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/products/networking/dns-manager/). You may host the DNS for your domain with any provider you choose.
 
 2.  Set up a server to respond to requests sent to this domain. For web servers like [Apache](/docs/web-servers/apache/), this requires configuring a new virtual host. For XMPP servers you must configure an additional host to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
 

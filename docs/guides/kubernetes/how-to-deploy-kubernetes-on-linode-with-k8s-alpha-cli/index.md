@@ -95,7 +95,7 @@ The k8s-alpha CLI requires [Terraform version 0.12.0+](https://www.hashicorp.com
 
 ### Install the Linode CLI
 
-Follow the [Install the CLI](/docs/platform/api/using-the-linode-cli/#install-the-cli) section of our CLI guide to install the Linode CLI. If you already have the CLI, upgrade it to the latest version available:
+Follow the [Install the CLI](/docs/products/tools/cli/get-started/#install-the-cli) section of our CLI guide to install the Linode CLI. If you already have the CLI, upgrade it to the latest version available:
 
     pip install --upgrade linode-cli
 

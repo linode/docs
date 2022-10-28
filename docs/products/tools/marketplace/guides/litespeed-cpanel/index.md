@@ -83,7 +83,7 @@ Your instance is eligible for free 15-day trial licenses of both [WHM/cPanel](ht
 
 1.  In the next screen, enter in an email address to receive status and error notifications.
 
-    You are also prompted to provide nameserver's for your cPanel instance. By default, cPanel will fill in the values for you. Update the values with the nameservers you would like to use. If you are managing your own nameservers, enter them into the form or, if you will be using [Linode's DNS manager](/docs/guides/dns-manager/), enter in Linode's nameservers into the form. Click **Finish** to complete the initial login process.
+    You are also prompted to provide nameserver's for your cPanel instance. By default, cPanel will fill in the values for you. Update the values with the nameservers you would like to use. If you are managing your own nameservers, enter them into the form or, if you will be using [Linode's DNS manager](/docs/products/networking/dns-manager/), enter in Linode's nameservers into the form. Click **Finish** to complete the initial login process.
 
     {{< note >}}
 Linode's nameservers are the following:

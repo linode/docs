@@ -65,7 +65,7 @@ You can also use trailing dots in domain names (for example, `example.com.`), wh
     mail        A   12.34.56.78
     www         A   12.34.56.78
 
-Every domain's zone file contains the domain administrator's email address, the name servers, and the DNS records. Of course, you are not limited to these default entries. You can create a variety of DNS records for as many different subdomains as you wish. To learn how to add individual DNS records using the DNS Manager, read the Linode [DNS Manager Overview article](/docs/guides/dns-manager/) guide.
+Every domain's zone file contains the domain administrator's email address, the name servers, and the DNS records. Of course, you are not limited to these default entries. You can create a variety of DNS records for as many different subdomains as you wish. To learn how to add individual DNS records using the DNS Manager, read the Linode [DNS Manager Overview article](/docs/products/networking/dns-manager/) guide.
 
 ### DNS Resolution
 
@@ -114,7 +114,7 @@ For an example of how to configure Linode's nameservers as slave DNS servers usi
 
 ### CAA
 
-DNS Certification Authority Authorization uses DNS to allow the holder of a domain to specify which certificate authorities are allowed to issue certificates for that domain. See our [Add CAA Records in the Linode Cloud Manager](/docs/products/networking/dns-manager/guides/add-caa-dns-records/) guide for a configuration walkthrough.
+DNS Certification Authority Authorization uses DNS to allow the holder of a domain to specify which certificate authorities are allowed to issue certificates for that domain. See our [Add CAA Records in the Linode Cloud Manager](/docs/products/networking/dns-manager/guides/caa-record/) guide for a configuration walkthrough.
 
 ### CNAME
 
@@ -191,7 +191,7 @@ PTR records are usually set with your hosting provider. They are not part of you
 
 As a prerequisite for adding a PTR record, you need to create a valid, live A or AAAA record that points the desired domain to that IP. If you want an IPv4 PTR record, point the domain or subdomain to your Linode's IPv4 address. If you want an IPv6 PTR record, point the domain to your Linode's IPv6 address. Beyond that, IPv4 and IPv6 PTR records work the same way.
 
-For instructions on setting up reverse DNS on your Linode, see our [Reverse DNS](/docs/guides/configure-your-linode-for-reverse-dns/#setting-reverse-dns) guide.
+For instructions on setting up reverse DNS on your Linode, see our [Reverse DNS](/docs/guides/configure-rdns/#setting-reverse-dns) guide.
 
 {{< note >}}
 It's possible to have different IPs (including both IPv4 and IPv6 addresses) that have the same domain set for reverse DNS. To do this, you will have to configure multiple A or AAAA records for that domain that point to the various IPs.
@@ -226,7 +226,7 @@ An SPF record for your domain tells other receiving mail servers which outgoing 
     example.com   TXT     "v=spf1 a ~all"
 
 {{< note >}}
-When applying TXT records using the [Linode DNS Manager](/docs/guides/dns-manager/), quotation marks `"` should not be applied in the example above.
+When applying TXT records using the [Linode DNS Manager](/docs/products/networking/dns-manager/), quotation marks `"` should not be applied in the example above.
 {{< /note >}}
 
 In your SPF record, you should list all the mail servers from which you send mail, and then exclude all the others. Your SPF record will have a domain or subdomain, type (which is TXT, or SPF if your name server supports it), and text (which starts with "v=spf1" and contains the SPF record settings).
@@ -260,5 +260,5 @@ An example use of SRV records would be to set up [Federated VoIP](http://en.wiki
 A *TXT record* or *text record* provides information about the domain in question to other resources on the internet. It's a flexible type of DNS record that can serve many different purposes depending on the specific contents. One common use of the TXT record is to create an [SPF record](#spf) on nameservers that don't natively support SPF. Another use is to create a [DKIM record](#dkim) for mail signing.
 
 {{< note >}}
-In common DNS Configurations using TXT records, quotation marks `"` are applied. When applying TXT records using the [Linode DNS Manager](/docs/guides/dns-manager/), quotation marks `"` should not be applied in most scenarios, as they are added automatically in cases where they are needed.
+In common DNS Configurations using TXT records, quotation marks `"` are applied. When applying TXT records using the [Linode DNS Manager](/docs/products/networking/dns-manager/), quotation marks `"` should not be applied in most scenarios, as they are added automatically in cases where they are needed.
 {{< /note >}}

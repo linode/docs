@@ -40,7 +40,7 @@ Following this guide will result in the creation of billable Linode resources on
 
 1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) guide to obtain one.
 
-1.  If you have not already, [assign Linode's name servers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain) to your domain at your domain name's registrar.
+1.  If you have not already, [assign Linode's name servers](/docs/products/networking/dns-manager/#use-linodes-name-servers-with-your-domain) to your domain at your domain name's registrar.
 
 1.  Browse the existing [StackScripts Library](https://www.linode.com/stackscripts/) to familiarize yourself with common tasks you can complete with existing StackScripts.
 
@@ -255,10 +255,10 @@ resource "linode_domain_record" "my_wordpress_domain_apex_record" {
 {{</ file >}}
 
     {{< note >}}
-If you are not familiar with the Domain Name System (DNS), review the [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) guide.
+If you are not familiar with the Domain Name System (DNS), review the [DNS Records: An Introduction](/docs/guides/dns-overview/) guide.
 {{< /note >}}
 
-    The `linode_domain` resource creates a [domain zone](/docs/guides/dns-manager/#create-and-manage-domains) for your domain.
+    The `linode_domain` resource creates a [domain zone](/docs/products/networking/dns-manager/#create-and-manage-domains) for your domain.
 
     Each `linode_domain_record` resource retrieves the `linode_domain` resource's ID and assigns it to that record's `domain_id` argument. Each record's `target` argument retrieves the IP address from the Linode instance. Every `linode_instance` resource exposes [several attributes](https://www.terraform.io/docs/providers/linode/r/instance.html#attributes), including a Linode's IPv4 address.
 
@@ -373,7 +373,7 @@ It is helpful to reference Terraform's [Linode provider](https://www.terraform.i
 
     -   `domain` should be replaced with your WordPress site's domain address.
 
-    -  `soa_email` should be the email address you would like to use for your [Start of Authority](/docs/guides/dns-records-an-introduction/#soa) email address.
+    -  `soa_email` should be the email address you would like to use for your [Start of Authority](/docs/guides/dns-overview/#soa) email address.
 
 ## Initialize, Plan, and Apply the Terraform Configuration
 

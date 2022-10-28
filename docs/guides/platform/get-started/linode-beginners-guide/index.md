@@ -79,7 +79,7 @@ If you'd like to take advantage of our private networking feature, you may add a
 
 ## How do I set the reverse DNS for an IP address?
 
-To [set rDNS](/docs/guides/configure-your-linode-for-reverse-dns/), you can use the **More Options** ellipsis next to your Linode's IPv4 address from the **Networking** tab in the Linode Cloud Manager. Please note that the value you specify needs to match an A record or CNAME in DNS pointing to your Linode's IP address. It may take up to 48 hours for reverse DNS updates to take effect.
+To [set rDNS](/docs/guides/configure-rdns/), you can use the **More Options** ellipsis next to your Linode's IPv4 address from the **Networking** tab in the Linode Cloud Manager. Please note that the value you specify needs to match an A record or CNAME in DNS pointing to your Linode's IP address. It may take up to 48 hours for reverse DNS updates to take effect.
 
 ## Why does my Linode keep crashing?
 

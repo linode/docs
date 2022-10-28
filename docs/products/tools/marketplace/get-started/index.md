@@ -49,4 +49,4 @@ Since each Marketplace App installs different software with different functions,
 
 For websites like WordPress, WooCommerce, and Drupal, it may be desirable to have a domain name associated with your app. Otherwise, your app is only accessible through the instance's IP address or rDNS value.
 
-For information on how to add a domain name to your app, visit our [DNS Manager](/docs/guides/dns-manager/) guide. Specifically, you should [set up an *A record*](/docs/guides/dns-manager/#add-dns-records) and assign your IP address to it. For more general information about how DNS works, review the [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) guide.
+For information on how to add a domain name to your app, visit our [DNS Manager](/docs/products/networking/dns-manager/) guide. Specifically, you should [set up an *A record*](/docs/products/networking/dns-manager/#add-dns-records) and assign your IP address to it. For more general information about how DNS works, review the [DNS Records: An Introduction](/docs/guides/dns-overview/) guide.

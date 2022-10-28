@@ -86,7 +86,7 @@ Development of your Hugo site and your Salt formula will take place on your pers
 
     {{< content "limited-user-note-shortguide" >}}
 
-1.  Configure DNS for your site by adding a [domain zone](/docs/guides/dns-manager/#add-a-domain) and setting up [reverse DNS](/docs/guides/configure-your-linode-for-reverse-dns/) on your Salt minion's IP address.
+1.  Configure DNS for your site by adding a [domain zone](/docs/products/networking/dns-manager/#add-a-domain) and setting up [reverse DNS](/docs/guides/configure-rdns/) on your Salt minion's IP address.
 
 ## Set Up the Salt Master and Salt Minion
 
