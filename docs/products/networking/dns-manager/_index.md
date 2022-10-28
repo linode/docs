@@ -9,6 +9,7 @@ cascade:
     date: 2020-06-02
     product_description: "A comprehensive, reliable, and fast DNS service, providing easy domain management to Linode customers at no charge."
 modified: 2022-10-28
+aliases: ['/dns-manager/','/platform/manager/dns-manager/','/networking/dns/dns-manager/','/platform/manager/dns-manager-new-manager/','/networking/dns/dns-manager-overview/','/platform/manager/dns-manager-classic-manager/','/guides/dns-manager/']
 ---
 
 The *Domains* section of the [Cloud Manager](https://cloud.linode.com/domains) is a comprehensive DNS management interface, referred to as the Linode DNS Manager. Within the DNS Manager, you can add your registered domain names and manage DNS records for each of them.
