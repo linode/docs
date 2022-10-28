@@ -14,7 +14,7 @@ title: "CAA Records"
 external_resources:
  - '[CAA Records, DNSimple](https://support.dnsimple.com/articles/caa-record/)'
  - '[RFC 6844: DNS Certification Authority Authorization (CAA) Resource Record](https://tools.ietf.org/html/rfc6844)'
-aliases: ['/quick-answers/linode-platform/add-caa-dns-records/','/quick-answers/linode-platform/add-caa-dns-records-classic-manager/','/guides/add-caa-dns-records/']
+aliases: ['/quick-answers/linode-platform/add-caa-dns-records/','/quick-answers/linode-platform/add-caa-dns-records-classic-manager/','/guides/add-caa-dns-records/','/products/networking/dns-manager/guides/add-caa-dns-records/']
 ---
 
 ## CAA Overview
