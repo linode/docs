@@ -62,7 +62,7 @@ This guide sets up the following flow of events:
 
     {{< content "limited-user-note-shortguide" >}}
 
-1.  Configure DNS for your site by adding a [domain zone](/docs/products/networking/dns-manager/#add-a-domain) and setting up [reverse DNS](/docs/guides/configure-rdns/) on your Linode's IP.
+1.  Configure DNS for your site by adding a [domain zone](/docs/products/networking/dns-manager/guides/create-domain/) and setting up [reverse DNS](/docs/guides/configure-rdns/) on your Linode's IP.
 
 1.  Create a [GitHub](https://github.com/) account if you don't already have one. GitHub is free for open source projects.
 

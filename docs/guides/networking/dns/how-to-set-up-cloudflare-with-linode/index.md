@@ -58,7 +58,7 @@ A frequent source of accidental IP exposure is when [your MX records directly re
 
 ## Set Up Cloudflare
 
-Cloudflare offers a free tier of service which enables the benefits described in this guide. This free tier is used to explore how to sign up for the service. You will need a registered domain and [DNS record](/docs/products/networking/dns-manager/#dns-set-up-checklist) set up on your Linode before proceeding with these steps.
+Cloudflare offers a free tier of service which enables the benefits described in this guide. This free tier is used to explore how to sign up for the service. You will need a registered domain and [DNS record](/docs/products/networking/dns-manager/get-started/) set up on your Linode before proceeding with these steps.
 
 1.  Create an account on [Cloudflare.com](https://dash.cloudflare.com/sign-up).
 

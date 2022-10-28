@@ -51,7 +51,7 @@ Before moving ahead, make sure you have completed the following steps.
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-1.  If you'd like to use your own [Domain Name](/docs/guides/dns-overview/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/products/networking/dns-manager/#dns-set-up-checklist) to point to your Linode's IP address.
+1.  If you'd like to use your own [Domain Name](/docs/guides/dns-overview/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/products/networking/dns-manager/get-started/) to point to your Linode's IP address.
 
 1.  Follow the [Installation](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#installation), [Apache Configuration](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#apache), and [PHP Configuration](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#php) sections of the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide. Skip all other sections. This guide will cover the steps needed to configure your [Apache Virtual Hosts File](#configure-apache-virtual-hosts-file).
 

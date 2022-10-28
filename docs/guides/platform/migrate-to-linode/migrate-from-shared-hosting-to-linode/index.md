@@ -51,7 +51,7 @@ When changing servers, however, you want a shorter TTL to make sure that when yo
 
 4.  Adjust your TTL to its shortest setting. For example, 300 seconds is equal to 5 minutes, so that's a good choice if it's available.
 
-5.  Make sure you wait out the original TTL from Step 3 before actually moving your domain. In the meantime, you can continue through this guide to back up your data, deploy your Linode and upload your website. For more information on domain TTL, see our [DNS guide](/docs/products/networking/dns-manager/#add-dns-records).
+5.  Make sure you wait out the original TTL from Step 3 before actually moving your domain. In the meantime, you can continue through this guide to back up your data, deploy your Linode and upload your website. For more information on domain TTL, see our [DNS guide](/docs/products/networking/dns-manager/guides/manage-dns-records/).
 
 ## Back Up Your Website
 
@@ -126,7 +126,7 @@ A Linode can run both your web server and an [email server](/docs/guides/running
 
 The last step in your migration is to point your domain at your Linode's IP address. If you decided to shorten your TTL, make sure you've waited out the original time period.
 
-1.  Follow our instructions on [adding a domain zone](/docs/products/networking/dns-manager/#add-a-domain-zone) to create DNS records at Linode for your domain.
+1.  Follow our instructions on [adding a domain zone](/products/networking/dns-manager/guides/create-domain/) to create DNS records at Linode for your domain.
 
 2.  If you use a third-party email service, edit the default MX records.
 

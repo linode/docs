@@ -112,7 +112,7 @@ If you do not want to use a domain with your website, you can configure the *def
 
 ### Add a New Site
 
-1.  Set up your DNS records for your domain. [Create a Domain Zone and an *A record*](/docs/products/networking/dns-manager/#add-a-domain-zone) assigned to your Linode's IP address. If you use Linode's name servers, review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions.
+1.  Set up your DNS records for your domain. [Create a Domain Zone and an *A record*](/docs/products/networking/dns-manager/get-started/) assigned to your Linode's IP address. If you use Linode's name servers, review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions.
 
     If you use another DNS provider, check their documentation for instructions.
 

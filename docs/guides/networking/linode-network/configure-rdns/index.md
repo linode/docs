@@ -34,7 +34,7 @@ Before setting the rDNS value for your Linode's IP addresses, you must first add
 
 1. Within the list of domains that appears, click the **Edit** link corresponding with the domain you wish to use for rDNS. If your domain is not listed, you may be using a different DNS service.
 
-1. Add the following two records by following the instructions within the [Add DNS Records](/docs/products/networking/dns-manager/#add-dns-records) guide.
+1. Add the following two records by following the instructions within the [Add DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/) guide.
 
     - *A Record*: Enter the subdomain you wish to use in the **Hostname** field and the public IPv4 address of your Linode in the **IP Address** field.
     - *AAAA Record*: Enter the subdomain you wish to use in the **Hostname** field and the public IPv6 address of your Linode in the **IP Address** field.
