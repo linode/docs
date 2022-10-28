@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-10
 modified_by:
   name: Linode
-title: "How to Use .gitignore | Linode"
+title: "How to Use .gitignore"
 h1_title: "How to Use .gitignore"
 enable_h1: true
 contributor:
