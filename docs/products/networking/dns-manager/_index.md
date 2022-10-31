@@ -16,7 +16,7 @@ The *Domains* section of the [Cloud Manager](https://cloud.linode.com/domains) i
 
 ## High Availability
 
-Linode's DNS service is anycasted to over 250 locations (*PoPs*) around the world. This provides distributed denial-of-service (DDoS) attack mitigation, load balancing, and increased geographic distribution for our [name servers](/docs/guides/dns-records-an-introduction/#name-servers). If one name server suffers an outage, the service will automatically failover to a redundant name server. These factors make our service reliable, fast, and a great choice for your DNS needs.
+Linode's DNS service is anycasted to over 250 locations (*PoPs*) around the world. This provides distributed denial-of-service (DDoS) attack mitigation, load balancing, and increased geographic distribution for our [name servers](/docs/guides/dns-overview/#name-servers). If one name server suffers an outage, the service will automatically failover to a redundant name server. These factors make our service reliable, fast, and a great choice for your DNS needs.
 
 ## Flexible Configuration
 

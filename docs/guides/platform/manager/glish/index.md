@@ -18,7 +18,7 @@ tags: ["linode platform","cloud manager"]
 image: using-linode-glish-title.jpg
 ---
 
-Glish is the graphical version of [Lish](/docs/guides/using-the-lish-console/) (the Linode Shell). It allows you to run a desktop environment on your Compute Instance and access it through the Cloud Manager.
+Glish is the graphical version of [Lish](/docs/guides/lish/) (the Linode Shell). It allows you to run a desktop environment on your Compute Instance and access it through the Cloud Manager.
 
 {{< note >}}
 Linode distribution images do not have any desktop environments pre-installed. While this guide provides instructions for installing Xfce on Debian, you can use any other desktop environment and distribution. Popular desktop environments on Linux include Gnome, KDE, MATE, and Xfce.
@@ -44,7 +44,7 @@ Before using Glish, a display manager and desktop environment must be installed 
 The instructions below install Xfce4 and LightDM on Debian 11. You are not limited to using these applications or this distribution. If you wish to use other software, follow the instructions for that application.
 {{</ note >}}
 
-1. Log in to your Compute Instance using [Lish](/docs/guides/using-the-lish-console/) or [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1. Log in to your Compute Instance using [Lish](/docs/guides/lish/) or [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Follow all of the instructions within the [Set Up and Secure a Compute Instance](/docs/guides/set-up-and-secure/) guide, including updating your system, setting the timezone, and adding a limited user account. Most display managers do not allow root login by default.
 

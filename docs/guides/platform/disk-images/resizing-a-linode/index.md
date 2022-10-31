@@ -78,7 +78,7 @@ Downgrading to a plan with less resources may be helpful when looking to reduce 
 
 1.  Determine the storage space that's included in the new desired plan. This information is listed on the [Pricing Page](https://www.linode.com/pricing/) (under the *Storage* column).
 
-1.  Determine the amount of disk space currently being used on your Linode. To do this, log in to your Linode via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/) and run the following command:
+1.  Determine the amount of disk space currently being used on your Linode. To do this, log in to your Linode via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) and run the following command:
 
         df -h
 

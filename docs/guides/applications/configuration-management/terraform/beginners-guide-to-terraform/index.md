@@ -53,7 +53,7 @@ Terraform's representation of your resources in configuration files is referred 
 
 Terraform's configuration files can be written in either the [*HashiCorp Configuration Language*](https://github.com/hashicorp/hcl) (HCL), or in JSON. HCL is a configuration language authored by HashiCorp for use with its products, and it is designed to be human readable and machine friendly. It is recommended that you use HCL over JSON for your Terraform deployments.
 
-The next sections will illustrate core Terraform concepts with examples written in HCL. For a more complete review of HCL syntax, see [Introduction to HashiCorp Configuration Language (HCL)](/docs/applications/configuration-management/introduction-to-hcl/).
+The next sections will illustrate core Terraform concepts with examples written in HCL. For a more complete review of HCL syntax, see [Introduction to HashiCorp Configuration Language (HCL)](/docs/guides/introduction-to-hcl/).
 
 ### Resources
 
@@ -147,7 +147,7 @@ resource "linode_domain_record" "example_domain_record" {
 }
 {{< /file >}}
 
-The domain record's `domain_id` and `target` arguments use HCL's [interpolation syntax](/docs/applications/configuration-management/introduction-to-hcl/#interpolation) to retrieve the ID of the domain resource and the IP of the Linode instance, respectively. Terraform creates an *implicit dependency* on the `example_instance` and `example_domain` resources for the `example_domain_record` resource. As a result, the domain record will not be created until after the Linode instance and the domain are created.
+The domain record's `domain_id` and `target` arguments use HCL's [interpolation syntax](/docs/guides/introduction-to-hcl/#interpolation) to retrieve the ID of the domain resource and the IP of the Linode instance, respectively. Terraform creates an *implicit dependency* on the `example_instance` and `example_domain` resources for the `example_domain_record` resource. As a result, the domain record will not be created until after the Linode instance and the domain are created.
 
 {{< note >}}
 [Explicit dependencies](https://www.terraform.io/docs/configuration/resources.html#explicit-dependencies) can also be declared.
@@ -200,7 +200,7 @@ ssh_key = "ssh-rsa AAAA...Gw== user@example.local"
 Place all of your Terraform project's files in the same directory. Terraform will automatically load input variable values from any file named `terraform.tfvars` or ending in `.auto.tfvars`.
 {{< /note >}}
 
-The `region` variable is not assigned a specific value, so it will use the default value provided in the variable's declaration. See [Introduction to HashiCorp Configuration Language](/docs/applications/configuration-management/introduction-to-hcl/#input-variables) for more detailed information about input variables.
+The `region` variable is not assigned a specific value, so it will use the default value provided in the variable's declaration. See [Introduction to HashiCorp Configuration Language](/docs/guides/introduction-to-hcl/#input-variables) for more detailed information about input variables.
 
 ## Terraform CLI
 
@@ -229,7 +229,7 @@ This command will ask you to confirm that you want to proceed. When Terraform ha
 When Terraform analyzes and applies your configuration, it creates an internal representation of the infrastructure it created and uses it to track the changes made. This *state* information is recorded in JSON in a local file named `terraform.tfstate` by default, but it can also be stored in other [backends](#backends).
 
 {{< caution >}}
-Your sensitive infrastructure data (like passwords and tokens) is visible in plain-text in your `terraform.tfstate` file. Review [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
+Your sensitive infrastructure data (like passwords and tokens) is visible in plain-text in your `terraform.tfstate` file. Review [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
 {{< /caution >}}
 
 ### Other Commands

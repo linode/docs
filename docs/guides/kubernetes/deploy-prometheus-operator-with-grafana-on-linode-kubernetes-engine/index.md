@@ -49,7 +49,7 @@ This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubern
 
 1.  [Deploy an LKE Cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This guide was written using an example node pool with three [2 GB Linodes](https://www.linode.com/pricing/). Depending on the workloads you will be deploying on your cluster, you may consider using Linodes with more available resources.
 
-1.  Install [Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) to your local environment.
+1.  Install [Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) to your local environment.
 
 1.  Install [kubectl](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl) to your local environment and [connect to your cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#connect-to-your-lke-cluster-with-kubectl).
 
@@ -71,7 +71,7 @@ This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubern
 
 1.  (Optional) For [public access with HTTPS and basic auth](#prometheus-operator-deployment-with-https-and-basic-auth) configured for your web interfaces of your monitoring tools:
 
-    *   Purchase a domain name from a reliable domain registrar and configure your registrar to [use Linode's nameservers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain) with your domain. Using Linode's DNS Manager, [create a new Domain](/docs/guides/dns-manager/#add-a-domain) for the one that you have purchased.
+    *   Purchase a domain name from a reliable domain registrar and configure your registrar to [use Linode's nameservers](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers) with your domain. Using Linode's DNS Manager, [create a new Domain](/docs/products/networking/dns-manager/guides/create-domain/) for the one that you have purchased.
 
     *   Ensure that `htpasswd` is installed to your local environment. For many systems, this tool has already been installed. Debian and Ubuntu users will have to install the apache2-utils package with the following command:
 
@@ -265,7 +265,7 @@ NAME                       TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)
 nginx-ingress-controller   LoadBalancer   10.128.41.200   192.0.2.0      80:30889/TCP,443:32300/TCP   59s   app.kubernetes.io/component=controller,app=nginx-ingress,release=nginx-ingress
     {{< /output >}}
 
-1.  Copy the IP address of the `EXTERNAL IP` field and navigate to Linode's DNS Manager and [create an A record](/docs/guides/dns-manager/#add-dns-records) using this external IP address and a hostname value corresponding to the subdomain you plan to use with your domain.
+1.  Copy the IP address of the `EXTERNAL IP` field and navigate to Linode's DNS Manager and [create an A record](/docs/products/networking/dns-manager/guides/manage-dns-records/) using this external IP address and a hostname value corresponding to the subdomain you plan to use with your domain.
 
 Now that your NGINX Ingress Controller has been deployed and your domain's A record has been updated, you are ready to enable HTTPS on your monitoring interfaces.
 

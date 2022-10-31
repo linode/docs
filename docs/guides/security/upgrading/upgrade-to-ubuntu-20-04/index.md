@@ -58,7 +58,7 @@ It's a good idea to back up your Linode before performing a major upgrade. That 
 
 ### Check Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Apply Kernel Updates](/docs/guides/monitoring-and-maintaining-your-server/#apply-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Apply Kernel Updates](/docs/guides/monitor-and-maintain-compute-instance/#apply-kernel-updates) for more information.
 
 ### Stop Services
 
