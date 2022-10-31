@@ -18,7 +18,7 @@ external_resources:
   - '[Go](https://www.golang.com)'
 aliases: ['/development/go/developing-udp-and-tcp-clients-and-servers-in-go/']
 ---
-Go is a compiled, statically typed programming language developed by Google. Many modern applications, including [Docker](/docs/applications/containers/introduction-to-docker/), [Kubernetes](/docs/applications/containers/beginners-guide-to-kubernetes/), and [Terraform](/docs/applications/configuration-management/beginners-guide-to-terraform/), are written in Go. Go packages allow developers to organize and reuse Go code in a simple and maintainable manner.
+Go is a compiled, statically typed programming language developed by Google. Many modern applications, including [Docker](/docs/guides/introduction-to-docker/), [Kubernetes](/docs/guides/beginners-guide-to-kubernetes/), and [Terraform](/docs/guides/beginners-guide-to-terraform/), are written in Go. Go packages allow developers to organize and reuse Go code in a simple and maintainable manner.
 
 In this guide, you will use the `net` package, which is a part of [Go's standard library](https://golang.org/pkg/#stdlib), to create TCP and UDP servers and clients. This guide is meant to provide instructional examples to help you become more familiar with the Go programming language.
 
@@ -32,16 +32,16 @@ Throughout this guide you will create the following:
 
 ## Before You Begin
 
-1. If you are not familiar with using Go packages, review the [Getting Started with Go Packages](/docs/development/go/getting-started-with-go-packages/) guide.
+1. If you are not familiar with using Go packages, review the [Getting Started with Go Packages](/docs/guides/getting-started-with-go-packages/) guide.
 
-1. Install Go on your computer if it is not already installed. You can follow our guide [How to Install Go on Ubuntu](/docs/development/go/install-go-on-ubuntu/) for installation steps.
+1. Install Go on your computer if it is not already installed. You can follow our guide [How to Install Go on Ubuntu](/docs/guides/install-go-on-ubuntu/) for installation steps.
 
     This guide requires Go version 1.8 or higher. It is considered good practice to have the [latest version of Go](https://golang.org/dl/) installed. You can check your Go version by executing the following command:
 
         go version
 
 {{< note >}}
-This guide is written for a non-root user. Depending on the TCP/IP port number that you use when running the TCP and UDP servers, you may need to prefix commands with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Depending on the TCP/IP port number that you use when running the TCP and UDP servers, you may need to prefix commands with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Protocol Definitions

@@ -1,8 +1,9 @@
 import { isMobile } from '../helpers';
 import { getScrollPosNavbar } from './nav';
+import { AnalyticsEventsCollector } from './nav-analytics';
 import { initConsentManager } from '../components/index';
 
-export function newNavStore(searchStore) {
+export function newNavStore(searchConfig, searchStore) {
 	return {
 		// Stack used when we manipulate the navigation history and to track it so we can go back if needed.
 		history: [],
@@ -11,11 +12,14 @@ export function newNavStore(searchStore) {
 		pinned: false,
 		searchResults: {
 			open: false, // Whether the search panel is open or not.
-			userChange: false // Whether this is a user or a system change.
+			userChange: false, // Whether this is a user or a system change.
 		},
+
+		searchEvents: null,
+
 		open: {
 			explorer: !isMobile(),
-			toc: false
+			toc: false,
 		},
 
 		// TrustArc consent settings. This will also be set on the window object,
@@ -28,8 +32,25 @@ export function newNavStore(searchStore) {
 		},
 
 		init() {
-			window.trustecm  = this.trustecm;
-			initConsentManager()
+			window.trustecm = this.trustecm;
+			let getLastQueryID = () => {
+				return searchStore.results.lastQueryID;
+			};
+			this.analytics = new AnalyticsEventsCollector(searchConfig, getLastQueryID, this.trustecm);
+			initConsentManager();
+
+			if (document.body.dataset.objectid) {
+				// Wait a little for the consent to be set.
+				setTimeout(() => {
+					let analyticsItem = {
+						__queryID: getLastQueryID(),
+						objectID: document.body.dataset.objectid,
+						event: 'view',
+						eventName: 'DOCS: Guide Load',
+					};
+					this.analytics.handler.pushItem(analyticsItem);
+				}, 1000);
+			}
 		},
 
 		openSearchPanel(scrollUp = false) {
@@ -71,6 +92,6 @@ export function newNavStore(searchStore) {
 			}
 			let scrollPosNavbar = getScrollPosNavbar();
 			window.scrollTo(0, scrollPosNavbar);
-		}
+		},
 	};
 }

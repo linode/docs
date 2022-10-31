@@ -23,7 +23,7 @@ Even eight years after its release, the Zombie Horde Survival game [7 Days to Di
 
 ## Before You Begin
 
-1. Deploy an **Ubuntu 20.04** Linode in a [data center region](https://www.linode.com/global-infrastructure/) close to your player's geographic location. Ensure you select a [Linode plan](/docs/guides/how-to-choose-a-linode-plan/) with enough RAM and CPU for the game. The [7 Days to Die official documentation](https://store.steampowered.com/app/251570/7_Days_to_Die/) recommends 4 CPU cores.
+1. Deploy an **Ubuntu 20.04** Linode in a [data center region](https://www.linode.com/global-infrastructure/) close to your player's geographic location. Ensure you select a [Linode plan](/docs/guides/choosing-a-compute-instance-plan/) with enough RAM and CPU for the game. The [7 Days to Die official documentation](https://store.steampowered.com/app/251570/7_Days_to_Die/) recommends 4 CPU cores.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 

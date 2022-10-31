@@ -56,13 +56,13 @@ For example:
 
         scp -r your_linode_username@your_linode_ip:/var/www/html/ ~/html_backup
 
-If you intend to repeat this process regularly, consider [using rsync](/docs/security/backups/backing-up-your-data/#understand-the-rsync-command) to create additional local copies of your data. rsync is capable of performing incremental file copies, which means you do not have to fully transfer each file every time you download your data.
+If you intend to repeat this process regularly, consider [using rsync](/docs/guides/backing-up-your-data/#understand-the-rsync-command) to create additional local copies of your data. rsync is capable of performing incremental file copies, which means you do not have to fully transfer each file every time you download your data.
 
 ### FileZilla
 
-FileZilla is a popular free and open source FTP, FTPS, and SFTP client which has a GUI but can also take CLI arguments. In contrast to to SCP, SFTP can list directory contents, create or delete files, and resume interrupted file transfers.
+FileZilla is a popular free and open source FTP, FTPS, and SFTP client which has a GUI but can also take CLI arguments. In contrast to SCP, SFTP can list directory contents, create or delete files, and resume interrupted file transfers.
 
-See our [FileZilla guide](/docs/tools-reference/file-transfer/filezilla/) for more information.
+See our [FileZilla guide](/docs/guides/filezilla/) for more information.
 
 ### Downloading Data from a Database
 
@@ -70,10 +70,10 @@ Special care is needed when downloading data from a database. Before it can be d
 
 -   To create a dump of a MySQL (or MariaDB) database, [use the `mysqldump` command](/docs/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb). **You can only use this tool if your database process is accessible and running.**
 
--   If your MySQL database won't run for some reason, follow the instructions for creating [*physical* backups](/docs/databases/mysql/create-physical-backups-of-your-mariadb-or-mysql-databases/).
+-   If your MySQL database won't run for some reason, follow the instructions for creating [*physical* backups](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
 
--   If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) guide.
+-   If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/guides/back-up-a-postgresql-database/) guide.
 
 ## Download a Disk over SSH
 
-Downloading your disk will copy a `.img` file to your computer that encapsulates all of the data that is on your Linode’s disk. This *disk image* can later be re-uploaded to the Linode service at a later date, which can be useful if you'd like to temporarily remove your Linode and stop service. Follow our [Copy a Disk over SSH](/docs/platform/disk-images/copying-a-disk-image-over-ssh/) guide for further instructions.
+Downloading your disk will copy a `.img` file to your computer that encapsulates all of the data that is on your Linode’s disk. This *disk image* can later be re-uploaded to the Linode service at a later date, which can be useful if you'd like to temporarily remove your Linode and stop service. Follow our [Copy a Disk over SSH](/docs/guides/copying-a-disk-image-over-ssh/) guide for further instructions.

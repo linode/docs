@@ -42,8 +42,8 @@ This guide discusses Linode Longview for Apache. The guide covers the following 
 In order to use the Longview App for Apache, ensure you have completed the following things:
 
 -  A Linode with [Apache installed and running](/docs/web-servers/apache/).
--  Create a [Longview client](/docs/platform/longview/what-is-longview/#install-linode-longview) instance using the Cloud Manager.
--  Install the [Longview Agent](/docs/platform/longview/what-is-longview/#install-the-longview-agent) on your Linode.
+-  Create a [Longview client](/docs/guides/what-is-longview/#install-linode-longview) instance using the Cloud Manager.
+-  Install the [Longview Agent](/docs/guides/what-is-longview/#install-the-longview-agent) on your Linode.
 
 ### Debian and Ubuntu Automatic Configuration
 
@@ -181,19 +181,19 @@ The **Workers** graph shows all of the Apache workers at the selected time. The 
 
 ### CPU
 
-The **CPU** graph shows the percentage of your Linode's CPU being used by Apache at the selected time. If you want to see the total CPU used instead, check the [Overview tab](/docs/platform/longview/what-is-longview/#overview).
+The **CPU** graph shows the percentage of your Linode's CPU being used by Apache at the selected time. If you want to see the total CPU used instead, check the [Overview tab](/docs/guides/what-is-longview/#overview).
 
 ### Memory
 
-The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/platform/longview/what-is-longview/#overview).
+The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/guides/what-is-longview/#overview).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the [Disks tab](/docs/platform/longview/what-is-longview/#disks).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the [Disks tab](/docs/guides/what-is-longview/#disks).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your Linode spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Processes tab](/docs/platform/longview/what-is-longview/#processes).
+The **Process Count** graph shows the total number of processes on your Linode spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Processes tab](/docs/guides/what-is-longview/#processes).
 
 ## Troubleshooting
 

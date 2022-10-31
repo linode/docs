@@ -3,7 +3,7 @@ slug: advanced-ssh-server-security
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide will give you some of Linode''s best tips and tricks for best practices when it comes to improving the security of your SSH server.'
+description: "This guide will give you some of Linode's best tips and tricks for best practices when it comes to improving the security of your SSH server."
 keywords: ["SSH", "secure shell", "Ubuntu", "CentOS", "security", "2FA", "server", "Linux"]
 tags: ["ssh","security","linux"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,7 @@ published: 2017-04-07
 modified: 2017-04-07
 modified_by:
   name: Linode
-title: 'Use Advanced OpenSSH Features to Harden Access to Your Linode'
+title: "Harden SSH Access with Advanced OpenSSH Features"
 contributor:
   name: Damaso Sanoja
   link: https://github.com/damasosanoja
@@ -136,7 +136,7 @@ To add the generated password to your existing private key:
 
 This assumes you keep your client's private SSH key in its default location, `~/.ssh/id_rsa`. You can modify the file location as needed and use the same command to change your password in the future.
 
-An alternative to this method is the use of a [GPG smartcard](https://en.wikipedia.org/wiki/OpenPGP_card) or [YubiKey](https://www.yubico.com/products/yubikey-hardware/) which should be stored in a different place from your laptop. You can find more information about this implementation in the guide [How to use a GPG key for SSH authentication](/docs/security/gpg-key-for-ssh-authentication/)
+An alternative to this method is the use of a [GPG smartcard](https://en.wikipedia.org/wiki/OpenPGP_card) or [YubiKey](https://www.yubico.com/products/yubikey-hardware/) which should be stored in a different place from your laptop. You can find more information about this implementation in the guide [How to use a GPG key for SSH authentication](/docs/guides/gpg-key-for-ssh-authentication/)
 
 ## Chroot Users
 

@@ -110,7 +110,7 @@ After reviewing your configuration for potential security issues, issue the foll
     ln -s /etc/nginx/sites-available/www.example.com
     /etc/init.d/nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](/docs/guides/dns-manager/) pointing your domain name to your Linode's IP address.
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](/docs/products/networking/dns-manager/) pointing your domain name to your Linode's IP address.
 
 ## Install spawn-fcgi
 
@@ -156,4 +156,4 @@ You may wish to consult the following resources for additional information on th
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [PHP Documentation](http://www.php.net/docs.php)
 - [Installing Nginx on Debian 5 (Lenny)](/docs/web-servers/nginx/installation/debian-5-lenny/)
-- [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration/)
+- [Basic NGINX Configuration](/docs/guides/how-to-configure-nginx/)

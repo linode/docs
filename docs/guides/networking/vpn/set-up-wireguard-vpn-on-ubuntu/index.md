@@ -40,7 +40,7 @@ Do not use WireGuard for critical applications. The project is still undergoing 
 - Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 {{< note >}}
-The `GRUB 2` kernel is required for this guide. All distributions for all new Linodes now boot with the `GRUB 2` kernel by default. However, if you are running an older distribution, you will need to check to see which kernel you are running. You can use the [Update Kernel Guide](/docs/platform/update-kernel/) to check your kernel version and change it using the Cloud Manager. Select `GRUB 2` from the *Boot Settings: Select a Kernel* dropdown menu in Step 4 of [Update Your Linode Kernel with Linode's Cloud Manager](/docs/platform/update-kernel/#update-your-linode-kernel-with-linode-s-cloud-manager).
+The `GRUB 2` kernel is required for this guide. All distributions for all new Linodes now boot with the `GRUB 2` kernel by default. However, if you are running an older distribution, you will need to check to see which kernel you are running. You can use the [Update Kernel Guide](/docs/guides/managing-the-kernel-on-a-linode/) to check your kernel version and change it using the Cloud Manager. Select `GRUB 2` from the *Boot Settings: Select a Kernel* dropdown menu in Step 4 of [Update Your Linode Kernel with Linode's Cloud Manager](/docs/guides/managing-the-kernel-on-a-linode/#update-your-linode-kernel-with-linode-s-cloud-manager).
 {{< /note >}}
 
 ## Install WireGuard

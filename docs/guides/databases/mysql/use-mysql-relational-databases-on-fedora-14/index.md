@@ -89,7 +89,7 @@ If you made any changes to MySQL's configuration, issue the following command to
 
     service mysqld restart
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secure MySQL remote access guide](/docs/databases/mysql/mysql-ssh-tunnel/) for information on connecting to your databases with local clients.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secure MySQL remote access guide](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/) for information on connecting to your databases with local clients.
 
 Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 

@@ -33,7 +33,7 @@ InspIRCd is a free and open-source IRC server application. It has been designed 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install InspIRCd
@@ -138,7 +138,7 @@ If you want more information on WeeChat and its usage, refer to the [Using WeeCh
 
     WeeChat stores the information for connecting to the IRC server under the alias you provide. You can then connect to the server anytime, even after quitting and restarting WeeChat, by using that alias.
 
-1. Connect to the IRC server using the the alias you created:
+1. Connect to the IRC server using the alias you created:
 
         /connect example-irc-alias
 

@@ -35,7 +35,7 @@ This guide shows you how to install ASP.NET Core on your Linux server and how to
 1. This guide uses `example-app` as the name of the ASP.NET Core application and `example.com` as your server's domain name. Replace these with your preferred application name and actual server name, respectively.
 
 {{< note >}}
-The steps in this guide are  written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are  written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install ASP.NET Core
@@ -97,7 +97,7 @@ These installation steps work for Debian 10 and Ubuntu 20.04. If you are using a
 
     .NET Core serves the application on `localhost` port `5001`. To visit the application remotely, you can use an SSH tunnel:
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with `5001`.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with `5001`.
     - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
             ssh -L5001:localhost:5001 example-user@192.0.2.0

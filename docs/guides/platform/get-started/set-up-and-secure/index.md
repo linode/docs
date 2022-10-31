@@ -9,7 +9,7 @@ tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/securing-your-server/','/security/linux-security-basics/','/security/securing-your-server/index.cfm/','/security/basics/securing-your-server/','/security/securing-your-server/','/guides/securing-your-server/']
 bundles: ['centos-security', 'debian-security']
-modified: 2022-02-25
+modified: 2022-07-12
 modified_by:
   name: Linode
 published: 2012-02-17
@@ -50,9 +50,9 @@ Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Linodes** 
 
 ## Connect to the Instance
 
-Once the Compute Instance has been created and has finished booting up, you can connect to it. Connecting to your instance is usually done through the SSH (Secure Shell) protocol, though you can use the [Lish Console](/docs/guides/using-the-lish-console/) to bypass SSH and connect directly to your instance. The Lish Console can be accessed through a web browser (Weblish) or via SSH on the command line.
+Once the Compute Instance has been created and has finished booting up, you can connect to it. Connecting to your instance is usually done through the SSH (Secure Shell) protocol, though you can use the [Lish Console](/docs/guides/lish/) to bypass SSH and connect directly to your instance. The Lish Console can be accessed through a web browser (Weblish) or via SSH on the command line.
 
--   **Weblish (via the Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/guides/using-the-lish-console/#through-the-cloud-manager-weblish).
+-   **Weblish (via the Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/guides/lish/#through-the-cloud-manager-weblish).
 
 -   **SSH:** Copy the command from the *SSH Access* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the following, only with the IP address of your newly created instance.
 
@@ -62,7 +62,7 @@ Once the Compute Instance has been created and has finished booting up, you can 
     - **macOS:** The *Terminal* application is pre-installed on macOS. See [Connecting to a Remote Server Over SSH on a Mac](/docs/guides/connect-to-server-over-ssh-on-mac/).
     - **Linux:** You can use a terminal window, regardless of desktop environment or window manager. See [Connecting to a Remote Server Over SSH on Linux](/docs/guides/connect-to-server-over-ssh-on-linux/)
 
--   **Lish (via SSH):** Copy the command from the *LISH Console via SSH* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the one below, only with your username, data center, and Linode label. Review [Using the Lish Console > Through SSH](/docs/guides/using-the-lish-console/#through-ssh-using-a-terminal) for more instructions.
+-   **Lish (via SSH):** Copy the command from the *LISH Console via SSH* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the one below, only with your username, data center, and Linode label. Review [Using the Lish Console > Through SSH](/docs/guides/lish/#through-ssh-using-a-terminal) for more instructions.
 
         ssh -t user@lish-newark.linode.com Example-Linode
 
@@ -70,17 +70,21 @@ Once the Compute Instance has been created and has finished booting up, you can 
 
 Updating your system frequently is the single biggest security precaution you can take for any operating system. Software updates range from critical vulnerability patches to minor bug fixes and many software vulnerabilities are actually patched by the time they become public. Updating also provides you with the latest software versions available for your distribution.
 
-### Ubuntu and Debian
+### Ubuntu, Debian, and Kali Linux
 
     apt update && apt upgrade
 
 {{< note >}}
-You may be prompted to make a menu selection when the Grub package is updated on Ubuntu. If prompted, select `keep the local version currently installed`.
+When updating some packages, you may be prompted to use updated configuration files. If prompted, it is typically safer to keep the locally installed version".
+{{< /note >}}
+
+{{< note >}}
+Linode's Kali Linux distribution image is a [minimum installation](https://www.kali.org/docs/troubleshooting/common-minimum-setup/). You will likely want to install individual [tools](https://www.kali.org/tools/) or [metapackages](https://www.kali.org/tools/kali-meta/), such as the [kali-linux-headless](https://www.kali.org/tools/kali-meta/#kali-linux-headless) metapackage.
 {{< /note >}}
 
 ### CentOS/RHEL Stream and Fedora
 
-*This includes CentOS Stream (and 8), other RHEL derivatives (including AlmaLinux 8, and Rocky Linux 8), and Fedora.*
+*This includes CentOS Stream 8 (and above), CentOS 8, other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), and Fedora.*
 
     dnf upgrade
 
@@ -106,7 +110,7 @@ After running a sync, it may end with a message that you should upgrade Portage 
 
     emerge -uDU --keep-going --with-bdeps=y @world
 
-#### OpenSUSE
+#### openSUSE
 
     zypper update
 
@@ -121,7 +125,7 @@ All new Linodes are set to UTC time by default. However, you may prefer your Lin
 
 ### Most Distributions
 
-*This includes CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8, and Rocky Linux 8), Fedora, and Arch. These instructions also work for most Ubuntu, Debian, and OpenSuse distributions, though other methods may be preferred in those cases.*
+*This includes CentOS Stream 8 (and newer), CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), Fedora, and Arch. These instructions also work for most Ubuntu, Debian, and OpenSuse distributions, though other methods may be preferred in those cases.*
 
 1.  Use `timedatectl` to output a list of available timezones.
 
@@ -133,7 +137,7 @@ All new Linodes are set to UTC time by default. However, you may prefer your Lin
 
         timedatectl set-timezone 'America/New_York'
 
-### Ubuntu and Debian
+### Ubuntu, Debian, and Kali Linux
 
 The instructions under the [Most Distributions](#most-distributions-1) section above (which outlines the `timedatectl` command) are valid. That said, both Ubuntu and Debian come with a more friendly tool called `tzdata`, outlined below.
 
@@ -170,7 +174,7 @@ The instructions under the [Most Distributions](#most-distributions-1) section a
 
         emerge --config sys-libs/timezone-data
 
-#### OpenSUSE
+#### openSUSE
 
 The instructions under the [Most Distributions](#most-distributions-1) section above (which outlines the `timedatectl` command) are valid. OpenSuse also has a more friendly way to select a timezone, discussed below.
 
@@ -216,7 +220,7 @@ After you've made the change below, you may need to log out and log back in agai
 
 ### Most Distributions
 
-*This includes Ubuntu 16.04 (and newer), CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), Debian 8 (and newer), Fedora, OpenSuse, and Arch.*
+*This includes Ubuntu 16.04 (and newer), CentOS Stream 8 (and newer), CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), Debian 8 (and newer), Fedora, OpenSuse, Kali Linux, and Arch.*
 
 Replace `example-hostname` with one of your choice.
 
@@ -263,7 +267,7 @@ The `hosts` file creates static associations between IP addresses and hostnames 
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For IPv6, you should also set up a DNS "AAAA" record pointing to your Linode's IPv6 address.
 
-See our guide to [Adding DNS Records](/docs/guides/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/guides/using-your-systems-hosts-file/)
+See our guide to [Adding DNS Records](/docs/products/networking/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/guides/using-your-systems-hosts-file/)
 
 ## Add a Limited User Account
 
@@ -446,17 +450,17 @@ For complete instructions on installing and configuring Fail2Ban, see our guide:
 
 Using a *firewall* to block unwanted inbound traffic to your Linode provides a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping. A best practice is to allow only the traffic you need, and deny everything else. See our documentation on some of the most common firewall applications:
 
-- [Iptables](/docs/guides/control-network-traffic-with-iptables/) is the controller for netfilter, the Linux kernel's packet filtering framework. Iptables is included in most Linux distributions by default.
+- [nftables](/docs/guides/how-to-use-nftables/) or its predecessor, [iptables](/docs/guides/control-network-traffic-with-iptables/), is the controller for netfilter, the Linux kernel's packet filtering framework. One of these utilities is included in most Linux distributions by default.
 
-- [FirewallD](/docs/guides/introduction-to-firewalld-on-centos/) is the iptables controller available for the CentOS / Fedora family of distributions.
+- [firewalld](/docs/guides/introduction-to-firewalld-on-centos/) is a firewall management tool that serves as a frontend to nftables or iptables. It is preinstalled on the RHEL family of distributions (and others), including CentOS, AlmaLinux, Rocky Linux, Fedora, and openSUSE Leap.
 
-- [UFW](/docs/guides/configure-firewall-with-ufw/) provides an iptables frontend for Debian and Ubuntu.
+- [UFW](/docs/guides/configure-firewall-with-ufw/) is another firewall management tool that operates as a frontend to nftables or iptables. It is used by default on Ubuntu and is also available on other Debian-based distributions.
 
 ## Common Lockout Recovery Steps
 
 If for whatever reason you find yourself locked out of your Linode after putting your security controls into place, there are still a number of ways that you can regain access to your Linode.
 
-- Access your Linode through our out-of-band [Lish console](/docs/guides/using-the-lish-console/) to regain access to the internals of your Linode without relying on SSH.
+- Access your Linode through our out-of-band [Lish console](/docs/guides/lish/) to regain access to the internals of your Linode without relying on SSH.
 
 -   If you need to re-enable password authentication and/or root login over ssh to your Linode, you can do this by reversing the following sections of this file to reflect these changes
 
@@ -488,4 +492,4 @@ PasswordAuthentication yes
 
 These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using [intrusion detection](/docs/guides/ossec-ids-debian-7/), installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control), [fine tuning sudo access](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user), [removing exposed services](/docs/guides/remove-unused-network-facing-services), and [more](/docs/security/).
 
-Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/guides/migrate-from-shared-hosting-to-linode/) to [enabling two-factor authentication](/docs/guides/linode-manager-security-controls/) to [hosting a website](/docs/guides/hosting-a-website-ubuntu-18-04/).
+Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/guides/migrate-from-shared-hosting-to-linode/) to [enabling two-factor authentication](/docs/guides/user-security-controls/) to [hosting a website](/docs/guides/hosting-a-website-ubuntu-18-04/).

@@ -35,7 +35,7 @@ Linodes running on our KVM hypervisor offer several advantages, particularly for
 
 *  **Full Virtualization:** Our KVM hypervisor offers a full virtualization option that simulates the experience of running directly from hardware. This can be useful for non-standard configurations.
 
-*  **Glish:** KVM introduces the [Glish](/docs/guides/using-the-linode-graphical-shell-glish/) graphical console, which makes it easy to access your distribution's installer directly from a disk.
+*  **Glish:** KVM introduces the [Glish](/docs/guides/glish/) graphical console, which makes it easy to access your distribution's installer directly from a disk.
 
 ## Install a Custom Distribution
 
@@ -70,7 +70,7 @@ In this section you install your custom distro onto a raw disk, with the *direct
 If you intend to continue to the next section on [Linode Manager Compatibility](#linode-manager-compatibility), you should make your boot disk no larger than necessary - in this example we'll install Debian to a 2000MB disk.
 {{< /caution >}}
 
-1.  [Create two configuration profiles](/docs/guides/linode-configuration-profiles/#creating-a-configuration-profile) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/guides/monitoring-and-maintaining-your-server/#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles use the **Direct Disk** option from the **Kernel** dropdown menu:
+1.  [Create two configuration profiles](/docs/guides/linode-configuration-profiles/#creating-a-configuration-profile) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/guides/monitor-and-maintain-compute-instance/#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles use the **Direct Disk** option from the **Kernel** dropdown menu:
 
     **Installer profile**
 
@@ -89,7 +89,7 @@ If you intend to continue to the next section on [Linode Manager Compatibility](
 
 ### Download and Install Image
 
-1.  Boot into [Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/guides/using-the-lish-console/).
+1.  Boot into [Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/guides/lish/).
 
 1.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the Debian 10.11 network installer, but you can replace the URL in the following command with the location of the image you want to install:
 
@@ -110,7 +110,7 @@ If you would prefer to write the installer directly to the disk as it downloads,
 
         sync; echo 3 > /proc/sys/vm/drop_caches
 
-1.  Close the Lish window and go back to Cloud Manager. Reboot into your *Installer* configuration profile and open the [Glish](/docs/guides/using-the-linode-graphical-shell-glish/) graphical console. You see your distribution's installer, and you can begin the install process.
+1.  Close the Lish window and go back to Cloud Manager. Reboot into your *Installer* configuration profile and open the [Glish](/docs/guides/glish/) graphical console. You see your distribution's installer, and you can begin the install process.
 
 1.  During your installer's partitioning/installation phase, be sure to instruct it to use the `/dev/sda` volume. Most installers create separate root and swap partitions, but you can adjust this as needed.
 
@@ -158,11 +158,11 @@ Additionally, in some cases, SSH will not be enabled or included by default as p
 
 If you've followed the steps so far, you should have a working custom distribution with raw disks, using the *direct disk* boot option. While this setup is functional, it's not compatible with several features of the Linode Manager that require the ability to mount your file system, such as:
 
-*  **Disk Resizing:** Since the Linode Cloud Manager cannot determine the amount of *used* storage space on a raw disk, it can only **increase** the size. The Linode Cloud Manager cannot be used to make a raw disk smaller, and it cannot resize the file system on the disk - this would need to be done manually. Also, some ext4 features like enabled metadata_csum are not supported for custom distribution images.
+*  **Disk Resizing:** Since the Linode Cloud Manager cannot determine the amount of *used* storage space on a raw disk, it can only **increase** the size. The Linode Cloud Manager cannot be used to make a raw disk smaller, and it cannot resize the file system on the disk - this would need to be done manually. Also, some ext4 features like enabled `metadata_csum` are not supported for custom distribution images.
 
 *  **Backups:** The Linode Backup Service needs to be able to mount your filesystem, and does not support partitioned disks.
 
-*  **Helpers:** Several helpful features within the Linode Manager, such as [root password resets](/docs/guides/#resetting-the-root-password) and [Network Helper](/docs/guides/network-helper/), need access to your file system in order to make changes.
+*  **Helpers:** Several helpful features within the Linode Manager, such as [root password resets](/docs/guides/reset-the-root-password-on-your-linode/) and [Network Helper](/docs/guides/network-helper/), need access to your file system in order to make changes.
 
 This section covers how to move your custom installation over to an **ext4** formatted disk so it can take advantage of these tools.
 
