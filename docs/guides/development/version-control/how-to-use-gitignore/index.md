@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-10
 modified_by:
   name: Linode
-title: "How to Use .gitignore | Linode"
+title: "How to Use .gitignore"
 h1_title: "How to Use .gitignore"
 enable_h1: true
 contributor:
@@ -85,7 +85,7 @@ Developers should ignore files and folders they do not plan to push, rather than
     ```
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Use the gitignore file

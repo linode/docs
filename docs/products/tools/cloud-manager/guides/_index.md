@@ -92,6 +92,6 @@ These additional guides help you with targeted topics like how to manage your ac
 
 - [Find Your Linode’s IP Address](/docs/guides/find-your-linodes-ip-address/)
 
-- [Add CAA Records in the Linode Cloud Manager](/docs/guides/add-caa-dns-records/)
+- [Add CAA Records in the Linode Cloud Manager](/docs/products/networking/dns-manager/guides/caa-record/)
 
 - [Proxy Burp Suite Traffic Through a Linode](/docs/guides/proxy-burp-suite-traffic-through-a-linode/)

@@ -567,6 +567,10 @@ class SearchBatcher {
 			.then((response) => response.json())
 			.then((data) => {
 				this.fetchCount++;
+				if (!data.results) {
+					console.warn('invalid response', data);
+					return;
+				}
 				for (let i = 0; i < data.results.length; i++) {
 					let result = data.results[i];
 					this.resultCallback(result);

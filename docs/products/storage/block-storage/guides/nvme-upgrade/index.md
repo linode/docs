@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 title: "NVMe Block Storage Upgrade"
 description: "Information about the new NVMe Block Storage product and how to upgrade a Volume."
+modified: 2022-10-28
 ---
 
 ## What is NVMe-backed Block Storage?
@@ -21,7 +22,7 @@ To learn more about Block Storage, visit the [Block Storage Overview](/docs/prod
 | **Atlanta (Georgia, USA)** | **Deployed** |
 | **Dallas (Texas, USA)** | **Deployed** |
 | **Frankfurt (Germany)** | **Deployed** |
-| Fremont (California, USA) | *Coming in Q2 2022* |
+| Fremont (California, USA) | *Not yet available* |
 | **London (United Kingdom)** | **Deployed** |
 | **Mumbai (India)** | **Deployed** |
 | **Newark (New Jersey, USA)** | **Deployed** |
