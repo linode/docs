@@ -3,27 +3,28 @@ slug: install-a-custom-distribution-on-a-linode
 author:
   name: Nick Brewer
   email: docs@linode.com
-published: 2017-03-02
 description: 'Install a Custom Distribution or Linux Appliance on your KVM Linode.'
 keywords: ["custom distro", "custom distribution", "advanced Linux", "kvm"]
 tags: ["debian", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/','/tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','/tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/']
+published: 2017-03-02
+modified: 2022-11-01
 modified_by:
   name: Linode
-modified: 2020-12-01
-title: Install a Custom Distribution on a Linode
+title: "Install a Custom Distribution on a Linode Compute Instance"
+h1_title: "Install a Custom Distribution"
+enable_h1: true
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/','/tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','/tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/']
+image: install-a-custom-distribution-on-a-linode.png
 ---
 
 This guide shows you how to install and configure a custom distribution on your Linode.
 
-![Install a Custom Distribution on a Linode](install-a-custom-distribution-on-a-linode.png "Install a Custom Distribution on a Linode")
-
 For the sake of organization, it has been split into two main sections:
 
-*  [Install a Custom Distribution](#install-a-custom-distribution): shows you how to use the advantages of **Direct Disk Boot** to easily install the custom distribution.
+- [Install a Custom Distribution](#install-a-custom-distribution): shows you how to use the advantages of **Direct Disk Boot** to easily install the custom distribution.
 
-*  [Linode Manager Compatibility](#linode-manager-compatibility): builds upon the steps in the first section, and offers instructions to make your custom distribution work with features of the Linode Manager such as disk resizing, helpers, and the [Linode Backup Service](/docs/products/storage/backups/).
+- [Linode Manager Compatibility](#linode-manager-compatibility): builds upon the steps in the first section, and offers instructions to make your custom distribution work with features of the Linode Manager such as disk resizing, helpers, and the [Linode Backup Service](/docs/products/storage/backups/).
 
 This guide uses Debian 8 (Jessie) as an example, but the steps provided are generic in nature and should work with most distributions.
 
@@ -31,79 +32,74 @@ This guide uses Debian 8 (Jessie) as an example, but the steps provided are gene
 
 Linodes running on our KVM hypervisor offer several advantages, particularly for those looking to install a custom operating system:
 
-*  **Direct Disk Boot:** Direct disk booting allows you to boot from any disk with a Master Boot Record (MBR). This can be especially useful for operating systems that do not make use of the Grub bootloader, such as [FreeBSD](/docs/guides/install-freebsd-on-linode/).
+- **Direct Disk Boot:** Direct disk booting allows you to boot from any disk with a Master Boot Record (MBR). This can be especially useful for operating systems that do not make use of the Grub bootloader, such as [FreeBSD](/docs/guides/install-freebsd-on-linode/).
 
-*  **Full Virtualization:** Our KVM hypervisor offers a full virtualization option that simulates the experience of running directly from hardware. This can be useful for non-standard configurations.
+- **Full Virtualization:** Our KVM hypervisor offers a full virtualization option that simulates the experience of running directly from hardware. This can be useful for non-standard configurations.
 
-*  **Glish:** KVM introduces the [Glish](/docs/guides/glish/) graphical console, which makes it easy to access your distribution's installer directly from a disk.
+- **Glish:** KVM introduces the [Glish](/docs/guides/glish/) graphical console, which makes it easy to access your distribution's installer directly from a disk.
 
 ## Install a Custom Distribution
 
 In this section you install your custom distro onto a raw disk, with the *direct disk boot* option. The end result is a working custom install; however, it does not support disk resizing from within the Linode Manager, nor is it compatible with the Backup Service.
 
-### Prepare your Linode
+### Create the Compute Instance
 
-1.  Log into the [Cloud Manager](https://cloud.linode.com)
-1.  Click the **x** button next to the default *Debian* image in the **Images** dropdown to create a Linode without a distribution.
-    {{< note >}}
- When you create a Linode without a distribution you are not prompted to create a root password for your Linode. Continue to choose the region, plan, Linode label, and select **Create**.
-{{< /note >}}
+1. Log into the [Cloud Manager](https://cloud.linode.com), select **Linodes** in the left navigation menu, and click on the **Create Linode** button.
 
-1.  After the Linode is finished provisioning, power it down.
+1. Within the creation form, click the **X** icon within the **Images** dropdown. This creates a Compute Instance without a distribution image. Complete the rest of the form, including selecting a region, plan, and entering a label. Some fields, such as the root password and SSH keys, are disabled when no distribution image is selected.
 
-1.  Click the **More Options Ellipsis**, and select the **Resize** option.
+1. Click the **Create** button to create the Compute Instance. Once it has been created, you should be taken to its dashboard page.
 
-1. In the Resize menu uncheck the **Auto Resize Disk** option at the bottom of the screen.
+### Prepare the Disks and Configuration Profiles
 
-1.  Next, exit the resize screen and click the **Storage** tab and click **Add a Disk** to create two unformatted disks.
+This section covers creating the disks and configuration profiles that are used for the installation of the custom distribution.
 
-1.  [Create two raw, unformatted disk images](/docs/guides/disks-and-storage/#creating-a-disk) from the Linode's Dashboard:
+1. Create two disks on your new Compute Instance. One disk is for the installer image and the other is for the system that will be installed. The settings for each of these disks are outlined below. To create a disk, navigate to the **Storage** tab for your Compute Instance and click **Add a Disk**.
 
-    * A disk labeled **Installer**. The size of this disk depends upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk is 100MB in size, giving us plenty of room for the Debian network installer.
-    * A disk labeled **Boot**. If you *don't* plan to complete the next section on Linode Manager compatibility, this can take up the rest of the free space available on your Linode.
+    - **Installer Disk:** This disk will contain the installer image for whichever operating system you wish to install. Set the **Label** to *Installer* and the **Filesystem** to *raw*. The size of the disk should be large enough for your installer image. For instance, the install media for the example distribution used in this guide (the latest Debian release) is approximately 50 MB. If following this example to install Debian, this disk should be 100 MB in size.
 
-        {{< note >}}
-        You can always check how much space your disk is actively using and would therefore require by entering the `df -h` command when it's mounted.
-       {{< /note >}}
+    - **System Disk:** This disk will contain the fully installed system of whichever operating system you wish to use. Set the **Label** to *System* and the **Filesystem** to *raw*. When setting the **Size** of this disk, there are some important considerations.
+    
+        - If you plan to make this system compatible with some actions and tools within the Linode platform (such automatic network configuration, disk resizing, and more), another disk needs to be created. This disk and that other disk both need to be large enough to fit the operating system you wish to install. This is covered in a later step, but be sure to leave enough remaining storage space to create that disk.
 
-    {{< caution >}}
-If you intend to continue to the next section on [Linode Manager Compatibility](#linode-manager-compatibility), you should make your boot disk no larger than necessary - in this example we'll install Debian to a 2000MB disk.
-{{< /caution >}}
+        - If you do not plan on making this system compatible with Linode platform features, this *System* disk can take up the rest of the free space available on your instance.
 
-1.  [Create two configuration profiles](/docs/guides/linode-configuration-profiles/#creating-a-configuration-profile) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/guides/monitor-and-maintain-compute-instance/#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles use the **Direct Disk** option from the **Kernel** dropdown menu:
+    If needed, see the [Create a disk](/docs/guides/disks-and-storage/#creating-a-disk) guide for additional instructions.
+
+1. [Create two configuration profiles](/docs/guides/linode-configuration-profiles/#creating-a-configuration-profile) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/guides/monitor-and-maintain-compute-instance/#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles use the **Direct Disk** option from the **Kernel** dropdown menu:
 
     **Installer profile**
 
     - Label: Installer
     - Kernel: Direct Disk
-    - /dev/sda: *Boot* disk image.
+    - /dev/sda: *System* disk image.
     - /dev/sdb: *Installer* disk image.
     - root / boot device: Standard /dev/sdb
 
-    **Boot profile**
+    **Main profile**
 
-    - Label: Boot
+    - Label: Main
     - Kernel: Direct Disk
-    - /dev/sda: *Boot* disk image.
+    - /dev/sda: *System* disk image.
     - root / boot device: Standard /dev/sda
 
 ### Download and Install Image
 
 1.  Boot into [Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/guides/lish/).
 
-1.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the Debian 10.11 network installer, but you can replace the URL in the following command with the location of the image you want to install:
+1.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the network installer for the latest stable version of Debian, but you can replace the URL in the following command with the location of the image you want to install:
 
     {{< note >}}
 As an additional security step, you can use the keys provided in the same directory as the `iso` to [verify the authenticity](https://www.debian.org/CD/verify) of the image.
 {{< /note >}}
 
-        wget http://ftp.debian.org/debian/dists/Debian10.11/main/installer-amd64/current/images/netboot/mini.iso
+        wget https://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso
         dd if=mini.iso of=/dev/sda
 
     {{< note >}}
 If you would prefer to write the installer directly to the disk as it downloads, use:
 
-    curl http://ftp.debian.org/debian/dists/Debian10.11/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
+    curl https://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
 {{< /note >}}
 
 1.  Empty the cache so that you have enough space to unpack and install the image.
@@ -118,7 +114,7 @@ If you would prefer to write the installer directly to the disk as it downloads,
 Some installers offer an option to place `/boot` on a separate partition. If you intend to make use of the steps in the [second part](#linode-manager-compatibility) of this guide for Linode Manager compatibility, it's important that your `/boot` directory is located on the same partition as your root filesystem.
 {{< /note >}}
 
-1.  Once the installation completes, close the Glish window and return to the Cloud Manager. Reboot into your *Boot* profile and open the Glish console. You have access to a login prompt:
+1.  Once the installation completes, close the Glish window and return to the Cloud Manager. Reboot into your *Main* profile and open the Glish console. You have access to a login prompt:
 
     ![Glish Console Prompt](install-custom-distro-glish-console.png "Glish Console Prompt")
 
@@ -147,7 +143,7 @@ Once you've finished editing `grub`, issue the appropriate command to apply your
         grub-mkconfig -o /boot/grub/grub.cfg
 
 {{< note >}}
-If you're still not able to access your Linode via Lish after updating your GRUB configuration, a reboot may be required. If this is the case, make sure you're rebooting into your *Boot* configuration profile.
+If you're still not able to access your Linode via Lish after updating your GRUB configuration, a reboot may be required. If this is the case, make sure you're rebooting into your *Main* configuration profile.
 
 Additionally, in some cases, SSH will not be enabled or included by default as part of your installation. In Debian 10 for example, the `openssh-server` package will need to be installed manually with the following command before connecting to your Linode over SSH:
 
@@ -190,7 +186,7 @@ These features are not available even if you formatted the disk to *ext4* during
 
 ### Update your fstab
 
-1.  You should still be booted into your *Boot* profile using direct disk boot; if not, boot into it now.
+1.  You should still be booted into your *System* profile using direct disk boot; if not, boot into it now.
 
 1.  Before you update your `/etc/fstab` file, make sure you know the current root partition of your custom distribution. You can use the `lsblk` command to confirm which partition has `/` as its mount point:
 
@@ -242,7 +238,7 @@ sr0     11:0    1 1024M  0 rom
 
 Now that you've updated the necessary configuration files, you're ready to move your root file system to the ext4 disk you created previously. To get started, boot your Linode into [Rescue Mode](/docs/guides/rescue-and-rebuild/) with the following disk assignments:
 
-*  *Boot* disk mounted to `/dev/sda`
+*  *System* disk mounted to `/dev/sda`
 *  *Boot-New* disk mounted to `/dev/sdb`
 
 In Rescue Mode, connect via Lish and transfer your root file system from the `/dev/sda1` partition to your new ext4 disk:
