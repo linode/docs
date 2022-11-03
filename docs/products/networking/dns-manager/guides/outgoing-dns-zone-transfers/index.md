@@ -26,7 +26,7 @@ To perform AXFR transfers, you must specify the IP address for each external DNS
 
 Before continuing, make sure that you've added your domain to the external DNS provider you wish to use. When creating the domain zone on that provider, you may be given the option to create it as a *secondary* (or *read-only*) zone. Make sure to select that option. If you do not know how to create a secondary domain zone on that DNS provider, you may need to consult their documentation or contact them for assistance.
 
-To facilitate quick updates, Linode immediately sends the external name servers a NOTIFY request when you update DNS records through the DNS Manager. If you wish to have this trigger an AXFR zone transfer, you will likely need to add the following IP addresses to the ACL or allow-list of those name servers. If you do not do this, the external name servers will only update DNS records when the refresh time has elasped.
+To facilitate quick updates, Linode immediately sends the external name servers a NOTIFY request when you update DNS records through the DNS Manager. If you wish to have this trigger an AXFR zone transfer, you will likely need to add the following IP addresses to the ACL or allow-list of those name servers. If you do not do this, the external name servers will only update DNS records when the refresh time has elapsed.
 
 ```
 104.237.137.10
