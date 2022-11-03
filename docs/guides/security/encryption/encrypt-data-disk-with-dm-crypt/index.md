@@ -35,21 +35,17 @@ dm-crypt is a transparent disk encryption subsystem. In this guide you will lear
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide, deploy a Debian 9 image, reserving approximately 4096 MB for your operating system so that you can use the rest of your available disk space as encrypted storage:
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide, deploy a Debian image.
 
-    ![Debian Allocation](debian_allocation.png)
+1.  [Resize the disk][/docs/guides/resize-a-linode-disk/] and reserve approximately 4096 MB for your operating system so that you can use the rest of your available disk space as encrypted storage:
 
-2.  Go to the Linode Manager dashboard, create a new disk and select **unformatted / raw** under **Type**:
+1.  [Create a new disk][/docs/guides/disks-and-storage/#creating-a-disk] and select **raw** under **Filesystem**:
 
-    ![Data Disk](data_disk.png)
+1.  Open your [configuration profile](/docs/guides/linode-configuration-profiles/) and review your **Block Device Assignment**. Add any additional disk(s) and/or block storage devices if they aren't already included. Throughout this guide replace `/dev/sdX` with the device name of your storage disk.
 
-2.  Open your [configuration profile](/docs/guides/linode-configuration-profiles/) and review your **Block Device Assignment**. Add any additional disk(s) and/or block storage devices if they aren't already included. Throughout this guide replace `/dev/sdX` with the device name of your storage disk.
+1.  After your block device assignments are configured, boot your Linode.
 
-    ![Configuration Profile](configuration_profile.png)
-
-3.  After your block device assignments are configured, boot your Linode.
-
-4.  Log in as root and update your system:
+1.  Log in as root and update your system:
 
         apt update && apt upgrade
 
@@ -175,7 +171,7 @@ Follow these steps very carefully.
 
 2.  Test a scenario where the LUKS header is accidentally overwritten:
 
-        dd conv=notrunc if=/dev/zero of=/dev/sdX bs=128 count=1
+        dd if=/dev/urandom of=/dev/sdc bs=512 seek=1 count=100
 
 3.  Trying to open your container will now return an error:
 
