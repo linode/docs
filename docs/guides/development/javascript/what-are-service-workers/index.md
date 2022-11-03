@@ -68,7 +68,7 @@ This service worker caches content from a web server and intercepts requests to 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Install Node.js
@@ -276,7 +276,7 @@ You are all set to run your website with a service worker.
 
     Express serves the application on `localhost:3000`. To visit the application remotely, you can use an SSH tunnel.
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **3000**.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **3000**.
     - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
             ssh -L3000:localhost:3000 example-user@192.0.2.0
@@ -293,7 +293,7 @@ You are all set to run your website with a service worker.
 
     Here is an example of the **Network** developer tools display in Firefox.
 
-    [![Network information in Firefox for the example service worker application](service-worker-example-network_small.png)](service-worker-example-network.png)
+    ![Network information in Firefox for the example service worker application](service-worker-example-network.png)
 
 ## Conclusion
 

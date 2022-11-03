@@ -29,12 +29,12 @@ This guide provides the commands you can use to list tables in MySQL and MariaDB
 1. Install MySQL or MariaDB on your server. You can follow our guide on [How to Install MySQL](/docs/guides/how-to-install-mysql-on-debian-8/) or on [How to Install MariaDB](/docs/guides/how-to-install-mariadb-on-debian-9/). Use the **Distribution** drop down at the top of each guide to select the Linux distribution you want to install on.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Connect to a Remote Database
 
- - Check out our guide [How to Connect to a MySQL or MariaDB Database](/docs/guides/connect-to-a-mysql-or-mariadb-database/) for the steps to establish a remote connection to your database via the MySQL command line, or CLI tool.
+ - Check out our guide [How to Connect to a MySQL or MariaDB Database](/docs/guides/mysql-command-line-client/) for the steps to establish a remote connection to your database via the MySQL command line, or CLI tool.
 
 - Refer to our [Install MySQL Workbench for Database Administration](/docs/guides/deploy-mysql-workbench-for-database-administration/) guide for the steps to install MySQL Workbench and use it to connect to your remote database.
 
@@ -102,8 +102,8 @@ The example below connects to the database as `example_user` and uses the MySQL 
 
 1. The **Result Grid** shows the output from the command, the desired list of tables:
 
-    [![List of tables from MySQL Workbench](mysql-workbench-list-tables_small.png)](mysql-workbench-list-tables.png)
+    ![List of tables from MySQL Workbench](mysql-workbench-list-tables.png)
 
 ## Conclusion
 
-To learn more about working with MySQL/MariaDB, take a look through our extensive [list of MySQL guides](/docs/guides/databases/mysql/?q=mysql). You can find plenty of resources there to solve common database related issues, sharpen your skills, and become more proficient with managing your database.
+To learn more about working with MySQL/MariaDB, take a look through our extensive [list of MySQL guides](/docs/guides/databases/mysql/). You can find plenty of resources there to solve common database related issues, sharpen your skills, and become more proficient with managing your database.

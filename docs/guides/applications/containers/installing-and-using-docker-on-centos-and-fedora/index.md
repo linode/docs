@@ -34,7 +34,7 @@ This guide covers installing the Docker Engine on various Linux distributions us
 1.  Ensure you have command line access to a Linux server running a supported Linux distribution. If not, follow the [Getting Started](/docs/guides/getting-started/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides to create a new Linode.
 
     {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 1.  Review the following Docker guides to gain a better understanding of Docker, its benefits, and when to use it.

@@ -2,15 +2,15 @@
 slug: how-to-authenticate-using-jwt
 author:
   name: Nathaniel Stickman
-description: "In this guide, you will learn key concepts behind JSON Web Tokens (JWTs) and how they provide a compact and secure standard for sending information, especially on the web. "
+description: "In this guide, you will learn key concepts behind JSON Web Tokens (JWTs) and how they provide a compact and secure standard for sending information, especially on the web."
 keywords: ['json web tokens','jwt','encoding jwt','decoding jwt','what is a jwt']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
 modified_by:
   name: Nathaniel Stickman
-title: "How to Authenticate Users with JSON Web Tokens (JWTs), Express, and Node.js"
-h1_title: "User Authentication with JSON Web Tokens (JWTs) and Express"
+title: "User Authentication with JWTs in Express and Node.js"
+h1_title: "User Authentication with JWTs (JSON Web Tokens) in Express and Node.js"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman
@@ -56,7 +56,7 @@ JWTs have three parts. In the resulting encoded JWT, each part is encoded using 
 
 To see this in action, you can use the [JWT.IO debugger](https://jwt.io/#debugger-io). This lets you define JWT contents and see the signed and encoded result.
 
-[![Encoding example on the JWT.IO debugger](jwtio-encoding-example_small.png)](jwtio-encoding-example.png)
+![Encoding example on the JWT.IO debugger](jwtio-encoding-example.png)
 
 ## Example JWT Authentication
 
@@ -71,7 +71,7 @@ The JWTs encoded in this example provide a lightweight and secure means of authe
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Install Node.js
@@ -245,7 +245,7 @@ Follow the steps below to see the JWT process in action.
 
     Express serves the application on `localhost:3000`. To visit the application remotely, you can use an SSH tunnel.
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with `3000`.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with `3000`.
     - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
             ssh -L3000:localhost:3000 example-user@192.0.2.0

@@ -249,7 +249,7 @@ NixOS is now installed and can be booted from the **Boot** profile created in [C
 
 ## Give your user a password and turn off ssh for root
 
-1.  Boot using using the NixOS configuration, and give your user a password, for example:
+1.  Boot using the NixOS configuration, and give your user a password, for example:
 
         passwd alice
 
@@ -304,4 +304,4 @@ services.longview = {
         export longview_key="01234567-89AB-CDEF-0123456789ABCDEF" # This is an example, fill with your own key
         echo $longview_key > /var/lib/longview/apiKeyFile | sudo tee /var/lib/longview/apiKeyFile
 
-    Replace the value of `longview_key` above with with the one you got from [Longview](https://cloud.linode.com/longview/clients).
+    Replace the value of `longview_key` above with the one you got from [Longview](https://cloud.linode.com/longview/clients).

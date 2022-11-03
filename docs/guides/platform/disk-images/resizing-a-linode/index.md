@@ -8,7 +8,7 @@ keywords: ["upgrading", "resizing", "disk space"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/disk-images/resizing-a-linode-classic-manager/','/resizing/','/platform/disk-images/resizing-a-linode/','/migrate-to-linode/disk-images/resizing-a-linode/']
-modified: 2021-10-18
+modified: 2022-08-25
 modified_by:
   name: Linode
 published: 2017-02-14
@@ -28,6 +28,8 @@ We make it easy to upgrade or downgrade your Linode by changing plans and adding
 -  The disks are transferred to the new hardware at a typical rate of ~150 MB/sec. While you can use this rate to approximate any downtime, the actual transfer speeds may vary and downtime may be shorter or longer than expected.
 
 - The Linode remains powered off during the entire resize process. After the resize completes, the Linode returns to its previous power state.
+
+- All of your existing data and configuration settings are preserved during the resize and your IP addresses remain the same.
 
 ## Resizing a Linode
 
@@ -76,7 +78,7 @@ Downgrading to a plan with less resources may be helpful when looking to reduce 
 
 1.  Determine the storage space that's included in the new desired plan. This information is listed on the [Pricing Page](https://www.linode.com/pricing/) (under the *Storage* column).
 
-1.  Determine the amount of disk space currently being used on your Linode. To do this, log in to your Linode via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/) and run the following command:
+1.  Determine the amount of disk space currently being used on your Linode. To do this, log in to your Linode via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) and run the following command:
 
         df -h
 
@@ -84,7 +86,7 @@ Downgrading to a plan with less resources may be helpful when looking to reduce 
 
     - If you're using less space than your intended plan requires, you can move onto the next step without any further action.
 
-    - If you're using more space than your intended plan allows, you need to remove some files to free up some space before moving onto the next step. See the options for doing this in the [Download Files from Your Linode](/docs/security/data-portability/download-files-from-your-linode/) guide.
+    - If you're using more space than your intended plan allows, you need to remove some files to free up some space before moving onto the next step. See the options for doing this in the [Download Files from Your Linode](/docs/guides/download-files-from-your-linode/) guide.
 
 1.  Resize the Linode's disks to fit within the storage space of the new plan. See [Resizing a Disk](/docs/guides/resize-a-linode-disk/).
 

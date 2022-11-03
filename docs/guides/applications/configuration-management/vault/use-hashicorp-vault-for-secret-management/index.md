@@ -75,7 +75,7 @@ The configuration outlined in this guide is suitable for small deployments. In s
 Setting the full hostname correctly in `/etc/hosts` is important in this guide in order to terminate TLS on Vault correctly. Your Linode's fully qualified domain name and short hostname should be present in the `/etc/hosts` file before continuing.
 {{< /note >}}
 
-3.  Follow our [UFW Guide](/docs/security/firewalls/configure-firewall-with-ufw/) in order to install and configure a firewall on your Ubuntu or Debian-based system, or our [FirewallD Guide](/docs/security/firewalls/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. Consider reviewing Vault's [Production Hardening](https://www.vaultproject.io/guides/operations/production) recommendations if this will be used in a production environment.
+3.  Follow our [UFW Guide](/docs/guides/configure-firewall-with-ufw/) in order to install and configure a firewall on your Ubuntu or Debian-based system, or our [FirewallD Guide](/docs/guides/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. Consider reviewing Vault's [Production Hardening](https://www.vaultproject.io/guides/operations/production) recommendations if this will be used in a production environment.
 
     {{< note >}}
 When configuring a firewall, keep in mind that Vault listens on port 8200 by default and Let's Encrypt utilizes ports 80 (HTTP) and 443 (HTTPS).
@@ -83,7 +83,7 @@ When configuring a firewall, keep in mind that Vault listens on port 8200 by def
 
 ### Acquire a TLS Certificate
 
-1.  Follow the steps in our [Secure HTTP Traffic with Certbot](/docs/quick-answers/websites/secure-http-traffic-certbot/) guide to acquire a TLS certificate.
+1.  Follow the steps in our [Secure HTTP Traffic with Certbot](/docs/guides/secure-http-traffic-certbot/) guide to acquire a TLS certificate.
 
 2.  Add a system group in order to grant limited read access to the TLS files created by Certbot.
 
@@ -679,6 +679,6 @@ token_meta_role_name    my-application
 
         vault kv get kv/myservice
 
-    The example should should be read and accessible.
+    The example should be read and accessible.
 
 10. If you read this value using this Vault token after more than 10 minutes have elapsed, the token will have expired and any read operations using the token should be denied. Performing another `vault write auth/approle/login` operation (detailed in step 5) can generate new tokens to use.

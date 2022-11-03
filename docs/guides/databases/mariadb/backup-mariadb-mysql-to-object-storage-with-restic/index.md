@@ -36,7 +36,7 @@ MariaDB is a fork of MySQL. Where you see a reference to *MariaDB* in this guide
 {{< /note >}}
 
 {{< note >}}
-The steps in this guide require root privileges, and commands are run with `sudo` unless otherwise noted. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide require root privileges, and commands are run with `sudo` unless otherwise noted. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
@@ -174,7 +174,7 @@ System Cron jobs exist as entries in the `/etc/crontab` file. Open your systems 
 
     sudo crontab -e
 
-Add a line pointing to your backup script. This example runs the backup every hour, on the hour. See the [Schedule tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) article for additional scheduling options.
+Add a line pointing to your backup script. This example runs the backup every hour, on the hour. See the [Schedule tasks with Cron](/docs/guides/schedule-tasks-with-cron/) article for additional scheduling options.
 
     0 * * * * /usr/local/bin/backup_mariadb > /tmp/mariadb-backup-log.txt 2>&1
 

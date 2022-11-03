@@ -87,7 +87,7 @@ You should also move your block device assignments to be sequential, without ski
 
 An upgrade to KVM Linode includes the ability to do **Direct Disk** booting. Choosing Direct Disk means we will boot the Linode using the Master Boot Record on your boot device:
 
-[![Direct Disk Boot Mode.](config_direct_disk.png)](config_direct_disk.png)
+![Direct Disk Boot Mode.](config_direct_disk.png)
 
 ## How to Enable KVM
 
@@ -95,7 +95,7 @@ All new Linodes are created as KVM guests. Older Xen Linodes will need to migrat
 
 If your Linode is currently running on Xen, go to the Linode's Dashboard page. In the bottom right of the sidebar is an "Upgrade to KVM" link. Click on the link and follow the instructions to upgrade:
 
-  [![The KVM Upgrade Button.](kvm_upgrade_context.png)](kvm_upgrade_context.png)
+  ![The KVM Upgrade Button.](kvm_upgrade_context.png)
 
 ## Troubleshooting
 
@@ -118,7 +118,7 @@ This means your Kernel doesn't have the necessary `virtio` drivers. To resolve:
 3.  Edit your Linode's configuration profile back to the previous setting.
 
 {{< note >}}
-Remember to check [Glish](/docs/networking/use-the-graphic-shell-glish) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
+Remember to check [Glish](/docs/guides/glish/) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
 {{< /note >}}
 
 ### CentOS 6

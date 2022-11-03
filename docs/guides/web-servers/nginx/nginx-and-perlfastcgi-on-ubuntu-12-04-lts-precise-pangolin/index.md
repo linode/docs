@@ -18,7 +18,7 @@ external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
  - '[FastCGI Project Homepage](http://www.fastcgi.com/)'
  - '[Perl Documentation](http://perldoc.perl.org/)'
- - '[Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration/)'
+ - '[Basic Ngnix Configuration](/docs/guides/how-to-configure-nginx/)'
 relations:
     platform:
         key: nginx-perl-fastcgi
@@ -49,7 +49,7 @@ Issue the following commands to update your system and install the nginx web ser
 
 ## Configure DNS
 
-Create an "A" record that points your domain name to your Linode's IP address. If you're using the Linode DNS Manager interface, please refer to our [Linode DNS manager guide](/docs/guides/dns-manager/) for instructions.
+Create an "A" record that points your domain name to your Linode's IP address. If you're using the Linode DNS Manager interface, please refer to our [Linode DNS manager guide](/docs/products/networking/dns-manager/) for instructions.
 
 ## Configure Virtual Hosting
 

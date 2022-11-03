@@ -5,8 +5,6 @@ tab_group_main:
     weight: 20
 ---
 
-{{< content "images-ga-pricing-update-shortguide" >}}
-
 All Images stored on your Account are visible from the main **Images** page within the Cloud Manager. Images are divided between two tables: *Custom Images* and *Recovery Images*.
 
 - **Custom Images:** Images that are manually created by a user on the account. These Images were either captured from an existing Compute Instance's disk or uploaded from an image file. Custom Images do not expire and remain on the account until they are manually deleted.

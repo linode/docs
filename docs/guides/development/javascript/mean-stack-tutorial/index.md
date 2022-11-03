@@ -29,7 +29,7 @@ MEAN is an acronym for the combination of technology stacks–**M**ongoDB, **E**
 - Angular is a web framework for the front end.
 
 {{< note >}}
-You can learn about each technology of the MEAN stack in our guides on [Angular](/docs/guides/angular-tutorial-for-beginners/), [Node.js](/docs/guides/how-to-install-nodejs/), [MongoDB](https://www.linode.com/docs/topresults/?q=mongodb), and [Express.js](/docs/guides/express-js-tutorial/).
+You can learn about each technology of the MEAN stack in our guides on [Angular](/docs/guides/angular-tutorial-for-beginners/), [Node.js](/docs/guides/how-to-install-nodejs/), [MongoDB](/docs/guides/databases/mongodb/), and [Express.js](/docs/guides/express-js-tutorial/).
 {{</ note >}}
 
 ## Install the MEAN Stack

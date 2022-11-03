@@ -271,4 +271,4 @@ Follow these steps to get a certificate via Certbot. Certbot will automatically 
 
 ## Next Steps
 
-For more information about general NGINX configuration, see our [NGINX series](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/). For practical examples of NGINX used to reverse proxy applications, see our guides on [RStudio Server](/docs/development/r/how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy/) and [Thingsboard](/docs/development/iot/install-thingsboard-iot-dashboard).
+For more information about general NGINX configuration, see our [NGINX series](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/). For practical examples of NGINX used to reverse proxy applications, see our guides on [RStudio Server](/docs/guides/how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy/) and [Thingsboard](/docs/development/iot/install-thingsboard-iot-dashboard).

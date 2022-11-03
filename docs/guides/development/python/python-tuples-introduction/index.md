@@ -153,13 +153,15 @@ Use the `print()` method to view the contents of `dict_to_tuple_example`:
 dict_items([('first', 'Jane'), ('last', 'Doe'), ('year', '2000')])
 {{</ output >}}
 
+Python dictionaries also support the use of tuples as a key. See our guide [How to use Dictionaries in Python 3](/docs/guides/python-3-dictionaries/) to learn more.
+
 ## Tuple Unpacking
 
 Typically, when you create a tuple, you assign the tuple values to a single variable. For example:
 
     colors = ('red', 'violet', 'yellow-green')
 
-*Tuple unpacking* is the action of extracting the values stored in a tuple and assigning each value to its own variable. Using the `colors` tuple from the example above, use the code below to to assign each tuple value to a variable:
+*Tuple unpacking* is the action of extracting the values stored in a tuple and assigning each value to its own variable. Using the `colors` tuple from the example above, use the code below to assign each tuple value to a variable:
 
     (primary, secondary, tertiary) = colors
 
@@ -228,6 +230,8 @@ Use the `type()` method to confirm that the `tuple_to_list_example` variable con
 {{< output >}}
 <class 'list'>
 {{</ output >}}
+
+To learn how to convert a string to a tuple, see our guide [How to Convert Data Types in Python](/docs/guides/how-to-convert-datatypes-in-python/#converting-strings-to-tuples).
 
 ## Built-in Tuple Methods
 

@@ -41,7 +41,7 @@ In this guide, learn how to install WordPress on your Ubuntu 20.04 server.
 1. Replace all instances of `example.com` in this guide with your domain name.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Set Up the Prerequisites
@@ -54,7 +54,7 @@ To satisfy these requirements, you can set up a LAMP (Linux, Apache, MySQL, and 
 
 1. Install and configure a LAMP or LEMP stack. For either stack, make sure that you are installing at least PHP version **7.4**. This is the default on Ubuntu 20.04. Additionally, make sure to replace all version numbers in the below guides with the number of the version you are installing.
 
-    - To create a LAMP stack, follow the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide.
+    - To create a LAMP stack, follow the [How to Install a LAMP Stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide.
 
     - To create a LEMP stack, follow the [How to Install the LEMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-the-lemp-stack-on-ubuntu-18-04/) guide.
 
@@ -153,7 +153,7 @@ FLUSH PRIVILEGES;
 define('FS_METHOD', 'direct');
     {{< /file >}}
 
-    [![WordPress's default, "Hello, World!" post.](wordpress-default-post_small.png)](wordpress-default-post.png)
+    ![WordPress's default, "Hello, World!" post.](wordpress-default-post.png)
 
 ## Conclusion
 

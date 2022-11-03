@@ -3,8 +3,12 @@
   <div class="relative inline-block text-left">
     <div>
       <span class="rounded-sm">
-        <button {{ if not .values }}disabled{{ end }} type="button" @click="open = !open" :class="{ 'bg-white border-basicgray': open }"
-                    class="btn-icon inline-flex w-full rounded-sm border border-gray-300 px-4 py-2 md:px-2 md:py-1 text-sm truncate leading-4 font-medium text-gray-700 focus:outline-none active:bg-gray-50 active:text-titlecolor transition ease-in-out duration-150">
+        <button
+          {{ if not .values }}disabled{{ end }}
+          type="button"
+          @click="open = !open"
+          :class="{ 'bg-white border-basicgray': open }"
+          class="btn-icon inline-flex w-full rounded-sm border border-gray-300 px-4 py-2 md:px-2 md:py-1 text-sm truncate leading-4 font-medium text-gray-700 focus:outline-none active:bg-gray-50 active:text-titlecolor transition ease-in-out duration-150">
           {{ with .icon }}
             <svg class="fill-current text-textcolor w-5 h-5 mr-2">
               <use href="{{ . | safeHTMLAttr }}"></use>
@@ -26,7 +30,10 @@
         </button>
       </span>
     </div>
-    <div x-transition x-show="open" class="origin-top-right absolute left-0 mt-1 w-64 z-10 rounded-sm border border-basicgray">
+    <div
+      x-transition
+      x-show="open"
+      class="origin-top-right absolute left-0 mt-1 w-64 z-10 rounded-sm border border-basicgray">
       <div class="rounded-sm bg-white">
         {{ if .contentPartial }}
           {{ partial .contentPartial . }}

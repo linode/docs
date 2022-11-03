@@ -11,9 +11,7 @@ published: 2020-05-21
 image: WritingScripts_LinodeStackScripts.png
 modified_by:
   name: Linode
-title: "How to Write Scripts for Linode StackScripts (A Tutorial)"
-h1_title: "Writing Scripts for Linode StackScripts"
-enable_h1: true
+title: "Write Custom Scripts for Use with Linode StackScripts"
 contributor:
   name: Linode
 aliases: ['/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/']
@@ -47,7 +45,7 @@ Writing a script for use in a StackScript is generally the same as writing a scr
 - The primary requirement for your scripts is that the interpreter needed to execute your script should exist in the Linode base image you are deploying. While Bash is an obvious choice for a script, you may choose any scripting language.
 
     {{< note >}}
-Linode images are created using "vanilla" versions of its given distribution. Consult our [Choosing a Linux Distribution](/docs/quick-answers/linux/choosing-a-distribution/) guide to see list of all distributions Linode provides and to access each distribution's corresponding websites. You can find more information on the interpreters available for each distribution on their official websites.
+Linode images are created using "vanilla" versions of its given distribution. Consult our [Choosing a Linux Distribution](/docs/guides/choosing-a-distribution/) guide to see list of all distributions Linode provides and to access each distribution's corresponding websites. You can find more information on the interpreters available for each distribution on their official websites.
 {{</ note >}}
 
 - When writing a script, you must use a [*shebang*](https://en.wikipedia.org/wiki/Shebang_(Unix)) as the first line of your script. This indicates to your Linux system which interpreter to use when running the script. For example, if you are writing a Bash script, the beginning of your script should include the following line:
@@ -156,7 +154,7 @@ Linode StackScripts provide a set of default environment variables that you can 
 |:-----------------------------------|:------------------------------------------------------------------------------------------|
 | `LINODE_ID`           | The deployed Linode's ID number                                                            |
 | `LINODE_LISHUSERNAME` | The deployed Linode's full [Linode Shell (LISH)](/docs/guides/using-the-lish-console/) accessible name. |
-| `LINODE_RAM`          | The [RAM available on this Linode's plan](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions).                                                   |
+| `LINODE_RAM`          | The [RAM available on this Linode's plan](/docs/guides/choosing-a-compute-instance-plan/#hardware-resource-definitions).                                                   |
 | `LINODE_DATACENTERID` | The ID number of the data center containing the Linode. You can use the [Linode API](https://developers.linode.com/api/v4/regions) to see a list of all data center IDs. |
 
 {{< disclosure-note "Set your Environment Variables Using an External File" >}}
@@ -189,6 +187,6 @@ The files you reference within your script must exist and be accessible via `HTT
 
 ## Next Steps
 
-- See [A Tutorial for Creating and Managing StackScripts](/docs/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/) to learn how to add your script to a StackScript and how to make a StackScript available to the rest of the Linode Community.
+- See [A Tutorial for Creating and Managing StackScripts](/docs/guides/creating-and-managing-stackscripts-a-tutorial/) to learn how to add your script to a StackScript and how to make a StackScript available to the rest of the Linode Community.
 
-- See [A Tutorial for Solving Real World Problems with Bash Scripts](/docs/development/bash/solving-real-world-problems-with-bash-scripts-a-tutorial/) for a primer on creating Bash scripts.
+- See [A Tutorial for Solving Real World Problems with Bash Scripts](/docs/guides/solving-real-world-problems-with-bash-scripts-a-tutorial/) for a primer on creating Bash scripts.

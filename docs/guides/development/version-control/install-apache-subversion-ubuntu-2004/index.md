@@ -84,7 +84,7 @@ Root or sudo permissions must be available to install Apache Subversion.
 
 1. Install the Apache server instance with the following command:
 
-        sudo install apache2 apache2-utils -y
+        sudo apt install apache2 apache2-utils -y
 
 1. Use `systemctl` to start Apache.
 
@@ -131,7 +131,7 @@ No user can link the SVN app with the repository until an administrative account
 
 Create a Subversion administrator user. Replace `<<admin_name>>` with the desired administrator name.
 
-    htpasswd -CM /etc/apache2/dav_svn.passwd <<admin_name>>
+    htpasswd -cm /etc/apache2/dav_svn.passwd <<admin_name>>
 
 {{< note >}}
 Ensure you select a strong and secure password for the administrator account.
@@ -248,6 +248,6 @@ A complete and in-depth discussion of Subversion commands, version control strat
 
 The [SVN Book](https://svnbook.red-bean.com/) is a must-read for those who manage projects using Apache Subversion. There are many tools that support the use of Subversion, including GUIs like [TortoiseSVN](https://tortoisesvn.net/).
 
-You should make sure to back up your Apache Subversion repository at reasonable intervals. One way to do so is by backing up your Subversion server using the [Linode Backup service](https://www.linode.com/docs/products/storage/backups/).
+You should make sure to back up your Apache Subversion repository at reasonable intervals. One way to do so is by backing up your Subversion server using the [Linode Backup service](/docs/products/storage/backups/).
 
 Refer to our [How to Install and Use the Subversion CLI Client](/docs/guides/subversion-svn-tutorial) for client installation steps, along with the essential commands to support a Subversion workflow.
