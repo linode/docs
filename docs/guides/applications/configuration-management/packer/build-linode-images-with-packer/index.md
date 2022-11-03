@@ -44,30 +44,33 @@ Instead, Terraform ideally serves to deploy ready systems. For that reason, Terr
 
 Learn more about using the two tools in tandem through our guide [How to Deploy a Packer Image with Terraform](/docs/guides/deploy-packer-image-with-terraform/).
 
+## Before You Begin
+
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
+
 ## How to Install Packer
 
 Before building, you need to install Packer on a system from which you plan to create Linode images.
 
 The process for installing Packer varies substantially depending on your operating system. Refer to the [official installation guide](https://learn.hashicorp.com/tutorials/packer/get-started-install-cli) for instructions particular to your operating system.
 
-```code {title="Debian"}
-sudo apt-get install gnupg
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-sudo apt-get install software-properties-common
-sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-sudo apt-get update && sudo apt-get install packer
-```
-
-```code {title="Ubuntu"}
+```code {title="Debian / Ubuntu"}
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 sudo apt-get update && sudo apt-get install packer
 ```
 
 ```code {title="AlmaLinux / CentOS Stream / Rocky Linux"}
-sudo dnf install -y dnf-plugins-core
-sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-sudo dnf -y install packer
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+sudo yum -y install packer
 ```
 
 ```code {title="Fedora"}
