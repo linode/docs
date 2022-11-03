@@ -30,13 +30,13 @@ external_resources:
 - '[Linode Object Storage Objects documentation](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_object)'
 ---
 
-[Terraform](https://www.terraform.io/) is a powerful *Infrastructure as Code* (IaC) application for deploying and managing infrastructure. It can be used to add, modify, and delete resources including servers, networking elements, and storage objects. Linode has partnered with Terraform to provide an API to configure common Linode infrastructure items. This guide provides a brief introduction to Terraform and explains how to use Terraform to create [Linode Object Storage](https://www.linode.com/docs/products/storage/object-storage/) solutions.
+[Terraform](https://www.terraform.io/) is a powerful *Infrastructure as Code* (IaC) application for deploying and managing infrastructure. It can be used to add, modify, and delete resources including servers, networking elements, and storage objects. Linode has partnered with Terraform to provide an API to configure common Linode infrastructure items. This guide provides a brief introduction to Terraform and explains how to use it to create [Linode Object Storage](https://www.linode.com/docs/products/storage/object-storage/) solutions.
 
 ## What is Terraform?
 
 Terraform is an open source product that is available in free and commercial editions. Terraform configuration files are declarative in form. The files describe the end state of the system and explain what to configure, but not how to configure it. Terraform files use either Terraform's *HashiCorp Configuration Language* (HCL) or the *JavaScript Object Notation* (JSON) format to define the infrastructure. Both languages work well with Terraform because they are easy to use and read. Terraform uses a modular and incremental approach to encourage reuse and maintainability. It is available for macOS, Windows, and most Linux distributions.
 
-Terraform uses providers to manage resources. A provider, which is very similar to an API, is typically created in conjunction with the infrastructure vendor. Terraform's provider-based system allows users to create, modify, and destroy network infrastructure from different vendors. Developers can import these providers into their configuration files to help declare and configure their infrastructure components. Providers are available for most major vendors, including [Linode](https://registry.terraform.io/providers/linode/linode/latest). Terraform users can browse through the a complete listing of the various providers in the [*Terraform Registry*](https://registry.terraform.io/browse/providers).
+Terraform uses providers to manage resources. A provider, which is very similar to an API, is typically created in conjunction with the infrastructure vendor. Terraform's provider-based system allows users to create, modify, and destroy network infrastructure from different vendors. Developers can import these providers into their configuration files to help declare and configure their infrastructure components. Providers are available for most major vendors, including [Linode](https://registry.terraform.io/providers/linode/linode/latest). Terraform users can browse through a complete listing of the various providers in the [*Terraform Registry*](https://registry.terraform.io/browse/providers).
 
 Linode offers a useful [Beginner's Guide to Terraform](https://www.linode.com/docs/guides/beginners-guide-to-terraform/) as an introduction to the main Terraform concepts. Additionally, Terraform documentation includes a number of [Tutorials](https://developer.hashicorp.com/terraform/tutorials), including guides to the more popular providers.
 
@@ -48,12 +48,12 @@ Terraform files are written using either HCL or JSON as a text file with the `.t
 
 Before applying the configuration, users should execute the `terraform plan` command. This command generates a summary of all the intended changes. At this point, the changes have not yet been applied. This means the document can be safely revised or even abandoned if necessary.
 
-When the Terraform plan is ready to implement, the `terraform apply` command is used to deploy the changes. Terraform keeps track of all changes in an internal state file. This results in increased efficiency because only the changes to the existing configuration are executed. New changes and modifications can be added to existing Terraform files without deleting the pre-existing resources. Terraform also understands the various dependencies between resources and creates the infrastructure using the proper sequence.
+When the Terraform plan is ready to implement, the `terraform apply` command is used to deploy the changes. Terraform keeps track of all changes in an internal state file. This results in increased efficiency because only changes to the existing configuration are executed. New changes and modifications can be added to existing Terraform files without deleting the pre-existing resources. Terraform also understands the various dependencies between resources, and creates the infrastructure using the proper sequence.
 
 Terraform can be used in a multi-developer environment in conjunction with a versioning control system. Developers can also build their own provider infrastructure for use instead of, or alongside, third-party providers. Terraform provides more details about how the product works and how to use it in their [Introduction to Terraform summary](https://developer.hashicorp.com/terraform/intro).
 
 {{< note >}}
-Terraform is very powerful, but it can be a difficult tool to use. Syntax errors can be difficult to debug. Before attempting to create any infrastructure, it is a good idea to read the [Linode Introduction to the HashiCorp Configuration Language](https://www.linode.com/docs/guides/introduction-to-hcl/). The documentation about the [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs) in the Terraform Registry is also essential. Consult Linode's extensive collection of [Terraform guides](https://www.linode.com/docs/guides/applications/configuration-management/terraform/) for more examples and explanations.
+Terraform is very powerful, but it can be a difficult tool to use. Syntax errors can be hard to debug. Before attempting to create any infrastructure, it is a good idea to read the [Linode Introduction to the HashiCorp Configuration Language](https://www.linode.com/docs/guides/introduction-to-hcl/). The documentation about the [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs) in the Terraform Registry is also essential. Consult Linode's extensive collection of [Terraform guides](https://www.linode.com/docs/guides/applications/configuration-management/terraform/) for more examples and explanations.
 {{< /note >}}
 
 ## Before You Begin
@@ -64,7 +64,9 @@ Terraform is very powerful, but it can be a difficult tool to use. Syntax errors
 
 1.  Ensure all Linode servers are updated. The following commands can be used to update Ubuntu systems.
 
-        sudo apt update && sudo apt upgrade
+    ```code
+    sudo apt update && sudo apt upgrade
+    ```
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -76,33 +78,43 @@ These instructions are geared towards Ubuntu 22.04 users, but are generally appl
 
 1.  Install the system dependencies for Terraform.
 
-        sudo apt install software-properties-common gnupg2 curl
+    ```code
+    sudo apt install software-properties-common gnupg2 curl
+    ```
 
 2.  Import the GPG key.
 
-        curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+    ```code
+    curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+    ```
 
 3.  Add the Hashicorp repository to `apt`.
 
-        sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+    ```code
+    sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+    ```
 
-4.  Download the updates for Terraform and install the application. This installs Terraform release 1.3.3, the most recent release.
+4.  Download the updates for Terraform and install the application. This installs Terraform release 1.3.4, the most recent release.
 
-        sudo apt update && sudo apt install terraform
+    ```code
+    sudo apt update && sudo apt install terraform
+    ```
 
     {{< output >}}
-Get:1 https://apt.releases.hashicorp.com focal/main amd64 terraform amd64 1.3.3 [19.5 MB]
-Fetched 19.5 MB in 0s (134 MB/s)
+Get:1 https://apt.releases.hashicorp.com jammy/main amd64 terraform amd64 1.3.4 [19.5 MB]
+Fetched 19.5 MB in 0s (210 MB/s)
 Selecting previously unselected package terraform.
-(Reading database ... 156220 files and directories currently installed.)
-Preparing to unpack .../terraform_1.3.3_amd64.deb ...
-Unpacking terraform (1.3.3) ...
-Setting up terraform (1.3.3) ...
+(Reading database ... 109186 files and directories currently installed.)
+Preparing to unpack .../terraform_1.3.4_amd64.deb ...
+Unpacking terraform (1.3.4) ...
+Setting up terraform (1.3.4) ...
     {{< /output >}}
 
 5.  Confirm the application has been installed correctly. Use the `terraform` command without any parameters and ensure the Terraform help information is displayed.
 
-        terraform
+    ```code
+    terraform
+    ```
 
     {{< output >}}
 Usage: terraform [global options] <subcommand> [args]
@@ -119,48 +131,54 @@ init          Prepare your working directory for other commands
 
 6.  To determine the current release of Terraform, use the `terraform -v` command.
 
-        terraform -v
+    ```code
+    terraform -v
+    ```
 
     {{< output >}}
-Terraform v1.3.3
+Terraform v1.3.4
 on linux_amd64
     {{< /output >}}
 
 7.  Create a directory for the new Terraform project and change to this directory.
 
-        mkdir ~/terraform
-        cd ~/terraform
+    ```code
+    mkdir ~/terraform
+    cd ~/terraform
+    ```
 
 ## Creating a Terraform File to Create Linode Object Storage
 
 To deploy the necessary infrastructure for a Linode Object Storage solution, create a Terraform file defining the final state of the system. This file must include the following sections:
 
-- The `terraform` definition, which includes the required providers. In this case, only the Linode provider is included.
-- The Linode provider.
-- The `linode_object_storage_cluster` data source.
-- At least one `linode_object_storage_bucket` resource. A storage bucket provides a space to store files and text objects.
-- (**Optional**) A `linode_object_storage_key`.
-- A list of `linode_object_storage_object` items. An object storage object can be a text file or a string of text. All storage objects are stored in a particular object storage bucket.
+-   The `terraform` definition, which includes the required providers. In this case, only the Linode provider is included.
+-   The Linode provider.
+-   The `linode_object_storage_cluster` data source.
+-   At least one `linode_object_storage_bucket` resource. A storage bucket provides a space to store files and text objects.
+-   (**Optional**) A `linode_object_storage_key`.
+-   A list of `linode_object_storage_object` items. An object storage object can be a text file or a string of text. All storage objects are stored in a particular object storage bucket.
 
 To construct the Terraform file, execute the following instructions. For more information on how to create a Terraform file, see the [Terraform documentation](https://developer.hashicorp.com/terraform/docs).
 
 1.  Create the file `linode-terraform-storage.tf` inside the `terraform` directory.
 
-        vi linode-terraform-storage.tf
+    ```code
+    nano linode-terraform-storage.tf
+    ```
 
 2.  At the top of the file, add a `terraform` section, including all `required_providers` for the infrastructure. In this case, the only required provider is `linode`. Set the source to `linode/linode`. Use the current `version` of the `linode` provider. At publication time, the version is `1.29.4`. To determine the current version, see the [Linode Namespace](https://registry.terraform.io/namespaces/linode) in the Terraform Registry.
 
-    {{< file "/terraform/linode-terraform-storage.tf" aconf >}}
+    ```file {title="/terraform/linode-terraform-storage.tf" lang="aconf"}
 
-terraform {
-  required_providers {
-    linode = {
-      source = "linode/linode"
-      version = "1.29.4"
+    terraform {
+      required_providers {
+        linode = {
+          source = "linode/linode"
+          version = "1.29.4"
+        }
+      }
     }
-  }
-}
-    {{< /file >}}
+    ```
 
 3.  Define the `linode` provider. Include the [Linode v4 API](https://www.linode.com/docs/api/) `token` for the account. See the [Getting Started with the Linode API guide](https://www.linode.com/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) for more information about tokens.
 
@@ -168,12 +186,11 @@ terraform {
 To hide sensitive information, such as API tokens, declare a `variables.tf` file and store the information there. Retrieve the variables using the `var` keyword. See the [Linode introduction to HCL](https://www.linode.com/docs/guides/introduction-to-hcl/#input-variables) for guidance on how to use variables.
     {{< /note >}}
 
-    {{< file "/terraform/linode-terraform-storage.tf" aconf >}}
-...
-provider "linode" {
-  token = "THE_LINODE_API_TOKEN"
-}
-    {{< /file >}}
+    ```file {title="/terraform/linode-terraform-storage.tf" lang="aconf" hl_lines="2" linenostart="10"}
+    provider "linode" {
+      token = "THE_LINODE_API_TOKEN"
+    }
+    ```
 
 4.  Create a `linode_object_storage_cluster` data source. In the following code sample, the new cluster object is named `primary`. Designate a region for the cluster using the `id` attribute. In the following example, the region is `eu-central-1`. The cluster object provides access to the domain, status, and region of the cluster. See the Terraform registry documentation for the [Linode Object Storage Cluster data source](https://registry.terraform.io/providers/linode/linode/latest/docs/data-sources/object_storage_cluster) for more information.
 
@@ -181,129 +198,128 @@ provider "linode" {
 Not all regions support storage clusters. For a full list of all data centers where a storage cluster can be configured, see the Linode [Object Storage Product Information](https://www.linode.com/docs/products/storage/object-storage/).
     {{< /note >}}
 
-    {{< file "/terraform/linode-terraform-storage.tf" aconf >}}
-...
-data "linode_object_storage_cluster" "primary" {
-    id = "eu-central-1"
-}
-    {{< /file >}}
+    ```file {title="/terraform/linode-terraform-storage.tf" lang="aconf" linenostart="14"}
+    data "linode_object_storage_cluster" "primary" {
+        id = "eu-central-1"
+    }
+    ```
 
-5.  **Optional** Create a `linode_object_storage_key` to control access to the storage objects. Provide a name for the key and a `label` to help identify it.
+5.  **Optional:** Create a `linode_object_storage_key` to control access to the storage objects. Provide a name for the key and a `label` to help identify it.
 
-    {{< file "/terraform/linode-terraform-storage.tf" aconf >}}
-...
-resource "linode_object_storage_key" "storagekey" {
-    label = "image-access"
-}
-    {{< /file >}}
+    ```file {title="/terraform/linode-terraform-storage.tf" lang="aconf" linenostart="18"}
+    resource "linode_object_storage_key" "storagekey" {
+        label = "image-access"
+    }
+    ```
 
-6.  Create a `linode_object_storage_bucket` resource. The `cluster` attribute for the bucket must contain the `id` of the cluster data source object. In this example, the cluster identifier can be retrieved using the `data.linode_object_storage_cluster.primary.id` attribute. Set the `access_key` and `secret_key` attributes to the `access_key` and `secret_key` fields of the storage key. In the following example, the name of the key is `linode_object_storage_key.storagekey`. If you are not using an object storage key, do not include these attributes. Assign a unique `label` to the storage bucket. This label must be unique within the region, so ensure the label name is reasonably distinctive and unique. The following example sets the `label` to `mybucket-j1145`.
+6.  Create a `linode_object_storage_bucket` resource. The `cluster` attribute for the bucket must contain the `id` of the cluster data source object. In this example, the cluster identifier can be retrieved using the `data.linode_object_storage_cluster.primary.id` attribute. Assign a unique `label` to the storage bucket. This label must be unique within the region, so ensure the label name is reasonably distinctive and unique. The following example sets the `label` to `mybucket-j1145`.
+
+    Set the `access_key` and `secret_key` attributes to the `access_key` and `secret_key` fields of the storage key. In the following example, the name of the key is `linode_object_storage_key.storagekey`. If you skipped the previous step and are not using an object storage key, do not include these attributes.
 
     {{< note >}}
 The Linode Object Storage Bucket resource contains many other configurable attributes. It is possible to set life cycle rules, versioning, and access control rules, and to associate the storage bucket with TLS/SSL certificates. For more information, see the [Linode Object Storage Bucket documentation](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_bucket) in the Terraform registry.
     {{< /note >}}
 
-    {{< file "/terraform/linode-terraform-storage.tf" aconf >}}
-...
-resource "linode_object_storage_bucket" "mybucket-j1145" {
-  cluster = data.linode_object_storage_cluster.primary.id
-  label = "mybucket-j1145"
-  access_key = linode_object_storage_key.storagekey.access_key
-  secret_key = linode_object_storage_key.storagekey.secret_key
-}
-    {{< /file >}}
+    ```file {title="/terraform/linode-terraform-storage.tf" lang="aconf" linenostart="22"}
+    resource "linode_object_storage_bucket" "mybucket-j1145" {
+      cluster = data.linode_object_storage_cluster.primary.id
+      label = "mybucket-j1145"
+      access_key = linode_object_storage_key.storagekey.access_key
+      secret_key = linode_object_storage_key.storagekey.secret_key
+    }
+    ```
 
 7.  Add items to the storage bucket. To add a file or a block of text to the bucket, create a `linode_object_storage_object` resource. Specify a `cluster` and `bucket` to store the object in and a `key` to uniquely identify the storage object within the cluster. To use a storage key, include the `secret_key` and `access_key` of the storage key.
 
     To add a text file to storage, specify the file path as the `source` attribute using the following example as a guide. This example adds the file `terraform_test.txt` to the bucket `mybucket-j1145` in cluster `primary`. For more information on adding storage objects, see the [Linode Storage Object resource documentation](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_object).
 
-    {{< file "/terraform/linode-terraform-storage.tf" aconf >}}
-...
-resource "linode_object_storage_object" "object1" {
-    bucket  = linode_object_storage_bucket.mybucket-j1145.label
-    cluster = data.linode_object_storage_cluster.primary.id
-    key     = "textfile-object"
+    ```file {title="/terraform/linode-terraform-storage.tf" lang="aconf" linenostart="29"}
+    resource "linode_object_storage_object" "object1" {
+        bucket  = linode_object_storage_bucket.mybucket-j1145.label
+        cluster = data.linode_object_storage_cluster.primary.id
+        key     = "textfile-object"
 
-    secret_key = linode_object_storage_key.storagekey.secret_key
-    access_key = linode_object_storage_key.storagekey.access_key
+        secret_key = linode_object_storage_key.storagekey.secret_key
+        access_key = linode_object_storage_key.storagekey.access_key
 
-    source = pathexpand("~/terraform_test.txt")
-}
-    {{< /file >}}
+        source = pathexpand("~/terraform_test.txt")
+    }
+    ```
 
-8.  **Optional** The storage bucket can also hold strings of text. To store a string, declare a new `linode_object_storage_object`, including the `bucket`, `cluster`, and storage key information as before. Choose a new unique key for the text object. The `content` attribute should be set to the text string. Fill in the `content_type` and `content_language` to reflect the nature of the text.
+8.  **Optional:** The storage bucket can also hold strings of text. To store a string, declare a new `linode_object_storage_object`, including the `bucket`, `cluster`, and storage key information as before. Choose a new unique key for the text object. The `content` attribute should be set to the text string. Fill in the `content_type` and `content_language` to reflect the nature of the text.
 
-    {{< file "/terraform/linode-terraform-storage.tf" aconf >}}
-    ...
-resource "linode_object_storage_object" "object2" {
-    bucket  = linode_object_storage_bucket.mybucket-j1145.label
-    cluster = data.linode_object_storage_cluster.primary.id
-    key     = "freetext-object"
+    ```file {title="/terraform/linode-terraform-storage.tf" lang="aconf" linenostart="40"}
+    resource "linode_object_storage_object" "object2" {
+        bucket  = linode_object_storage_bucket.mybucket-j1145.label
+        cluster = data.linode_object_storage_cluster.primary.id
+        key     = "freetext-object"
 
-    secret_key = linode_object_storage_key.storagekey.secret_key
-    access_key = linode_object_storage_key.storagekey.access_key
+        secret_key = linode_object_storage_key.storagekey.secret_key
+        access_key = linode_object_storage_key.storagekey.access_key
 
-    content          = "This is the content of the Object..."
-    content_type     = "text/plain"
-    content_language = "en"
-}
-    {{< /file >}}
+        content          = "This is the content of the Object..."
+        content_type     = "text/plain"
+        content_language = "en"
+    }
+    ```
 
 9.  When all sections have been added, the `.tf` file should resemble the following example.
 
-    {{< file "/terraform/linode-terraform-storage.tf" aconf >}}
-terraform {
-  required_providers {
-    linode = {
-      source = "linode/linode"
-      version = "1.29.4"
+    ```file {title="/terraform/linode-terraform-storage.tf" lang="aconf" hl_lines="11"}
+    terraform {
+      required_providers {
+        linode = {
+          source = "linode/linode"
+          version = "1.29.4"
+        }
+      }
     }
-  }
-}
 
-provider "linode" {
-  token = "THE_LINODE_API_TOKEN"
-}
+    provider "linode" {
+      token = "THE_LINODE_API_TOKEN"
+    }
 
-data "linode_object_storage_cluster" "primary" {
-    id = "eu-central-1"
-}
+    data "linode_object_storage_cluster" "primary" {
+        id = "eu-central-1"
+    }
 
-resource "linode_object_storage_key" "storagekey" {
-    label = "image-access"
-}
+    resource "linode_object_storage_key" "storagekey" {
+        label = "image-access"
+    }
 
-resource "linode_object_storage_bucket" "mybucket-j1145" {
-  cluster = data.linode_object_storage_cluster.primary.id
-  label = "mybucket-j1145"
-  access_key = linode_object_storage_key.storagekey.access_key
-  secret_key = linode_object_storage_key.storagekey.secret_key
-}
+    resource "linode_object_storage_bucket" "mybucket-j1145" {
+      cluster = data.linode_object_storage_cluster.primary.id
+      label = "mybucket-j1145"
+      access_key = linode_object_storage_key.storagekey.access_key
+      secret_key = linode_object_storage_key.storagekey.secret_key
+    }
 
-resource "linode_object_storage_object" "object1" {
-    bucket  = linode_object_storage_bucket.mybucket-j1145.label
-    cluster = data.linode_object_storage_cluster.primary.id
-    key     = "textfile-object"
+    resource "linode_object_storage_object" "object1" {
+        bucket  = linode_object_storage_bucket.mybucket-j1145.label
+        cluster = data.linode_object_storage_cluster.primary.id
+        key     = "textfile-object"
 
-    secret_key = linode_object_storage_key.storagekey.secret_key
-    access_key = linode_object_storage_key.storagekey.access_key
+        secret_key = linode_object_storage_key.storagekey.secret_key
+        access_key = linode_object_storage_key.storagekey.access_key
 
-    source = pathexpand("~/terraform_test.txt")
-}
+        source = pathexpand("~/terraform_test.txt")
+    }
 
-resource "linode_object_storage_object" "object2" {
-    bucket  = linode_object_storage_bucket.mybucket-j1145.label
-    cluster = data.linode_object_storage_cluster.primary.id
-    key     = "freetext-object"
+    resource "linode_object_storage_object" "object2" {
+        bucket  = linode_object_storage_bucket.mybucket-j1145.label
+        cluster = data.linode_object_storage_cluster.primary.id
+        key     = "freetext-object"
 
-    secret_key = linode_object_storage_key.storagekey.secret_key
-    access_key = linode_object_storage_key.storagekey.access_key
+        secret_key = linode_object_storage_key.storagekey.secret_key
+        access_key = linode_object_storage_key.storagekey.access_key
 
-    content          = "This is the content of the Object..."
-    content_type     = "text/plain"
-    content_language = "en"
-}
-    {{< /file >}}
+        content          = "This is the content of the Object..."
+        content_type     = "text/plain"
+        content_language = "en"
+    }
+    ```
+
+1.  When done, press **CTRL+X** to exit nano, then **Y** to save, and **Enter** to confirm.
 
 ## Using Terraform to Configure Linode Object Storage
 
@@ -311,7 +327,9 @@ Terraform commands act upon the `linode-terraform-storage.tf` file to analyze th
 
 1.  Initialize Terraform using the `terraform init` command. Terraform confirms it is initialized.
 
-        terraform init
+    ```code
+    terraform init
+    ```
 
     {{< output >}}
 Initializing the backend...
@@ -327,7 +345,9 @@ Terraform has been successfully initialized!
 
 2.  Run the `terraform plan` command to gain an overview of the anticipated infrastructure changes. This plan catalogs the components Terraform intends to add, modify, or delete. It is important to review the output carefully to ensure the plan is accurate and there are no unexpected changes. If the results are not satisfactory, change the `.tf` file and try again.
 
-        terraform plan
+    ```code
+    terraform plan
+    ```
 
     {{< output >}}
 data.linode_object_storage_cluster.primary: Reading...
@@ -399,7 +419,9 @@ Plan: 4 to add, 0 to change, 0 to destroy.
 
 3.  When all further changes to the `.tf` file have been made, use `terraform apply` to deploy the changes. If any errors appear, edit the `.tf` file and run `terraform plan` and `terraform apply` again. Terraform displays a list of the intended changes and asks whether to proceed.
 
-        terraform apply
+    ```code
+    terraform apply
+    ```
 
     {{< output >}}
 Plan: 4 to add, 0 to change, 0 to destroy.
@@ -413,7 +435,9 @@ Do you want to perform these actions?
 
 4.  Enter `yes` to continue. Terraform displays a summary of all changes and confirms the operation has been completed. If any errors appear, edit the `.tf` file and run the commands again.
 
-        yes
+    ```code
+    yes
+    ```
 
     {{< output >}}
 linode_object_storage_key.storagekey: Creating...
@@ -434,13 +458,17 @@ Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
 
 To delete the storage object configuration, use the `terraform destroy` command. This causes Terraform to delete any objects listed in the Terraform files in the directory. For example, running `terraform destroy` against the `linode-terraform-storage.tf` file deletes all the storage clusters, buckets, keys, and storage objects. To delete only a subset of the configuration, edit the file so it only includes the objects to delete. Any objects that Terraform should retain must be removed from the file. Run the command `terraform plan -destroy` first to obtain a summary of the objects Terraform intends to delete.
 
-    terraform plan -destroy
-    terraform destroy
+```code
+terraform plan -destroy
+terraform destroy
+```
 
 To modify the contents of an object storage object, edit the `.tf` file containing the configuration so it reflects the new configuration. Run `terraform plan` to review the changes, then run `terraform apply`. Terraform automatically makes the necessary changes. Use this command with caution because it might cause an object to be deleted and re-created rather than modified.
 
-    terraform plan
-    terraform apply
+```code
+terraform plan
+terraform apply
+```
 
 ## Conclusion
 
