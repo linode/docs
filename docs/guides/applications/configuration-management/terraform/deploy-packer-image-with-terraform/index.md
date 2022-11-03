@@ -26,6 +26,16 @@ Learn more about Packer in our [How to Use Packer to Build Linode Images](/docs/
 
 In this tutorial, find out how to use Packer and Terraform together to deploy Linode instances. The tutorial uses the Linode Terraform provider to deploy several instances based on a Linode image built with Packer.
 
+## Before You Begin
+
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
+
 ## How to Install the Prerequisites
 
 To get started, install both Packer and Terraform on the same system. Below you can find links to installation guides for the two tools, as well as steps covering most Linux operating systems.
@@ -34,24 +44,17 @@ To get started, install both Packer and Terraform on the same system. Below you 
 
 Packer's installation process varies substantially depending on your operating system. Refer to the [official installation guide](https://learn.hashicorp.com/tutorials/packer/get-started-install-cli) for instructions if your system is not covered here.
 
-```code {title="Debian"}
-sudo apt-get install gnupg
+```code {title="Debian / Ubuntu"}
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -\
-sudo apt-get install software-properties-common
-sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-sudo apt-get update && sudo apt-get install packer
-```
-
-```code {title="Ubuntu"}
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 sudo apt-get update && sudo apt-get install packer
 ```
 
 ```code {title="AlmaLinux / CentOS Stream / Rocky Linux"}
-sudo dnf install -y dnf-plugins-core
-sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-sudo dnf -y install packer
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+sudo yum -y install packer
 ```
 
 ```code {title="Fedora"}
@@ -74,7 +77,9 @@ packer --version
 
 Terraform's installation process also varies depending on your operating system. Refer to HashiCorp's [official documentation](https://learn.hashicorp.com/tutorials/terraform/install-cli) on installing the Terraform CLI for systems that are not covered here. You can also refer to the section on installing Terraform in our guide [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform).
 
+
 ```code {title="Debian / Ubuntu"}
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
 wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update && sudo apt install terraform
@@ -165,13 +170,15 @@ provider "linode" {
 
 The `terraform` block starts the project by indicating its required providers (e.g. Linode). The `provider` block then starts the Linode provider. The `token` argument allows the provider to authenticate its connection to the Linode API.
 
+When done, press **CTRL+X** to exit nano, **Y** to save, and **Enter** to confirm.
+
 ### Assigning Terraform Variables
 
 Above, you can see that the `token` value for the Linode provider uses the `var.token` variable. Although not required, variables make Terraform scripts much more adaptable and manageable.
 
 This tutorial handles variables using two files.
 
--   First, create a `variables.tf` file:
+1.  First, create a `variables.tf` file:
 
     ```code
     nano variables.tf
@@ -209,7 +216,9 @@ This tutorial handles variables using two files.
     }
     ```
 
--   Now create a `terraform.tfvars` file:
+    When done, press **CTRL+X** to exit nano, **Y** to save, and **Enter** to confirm.
+
+2.  Now create a `terraform.tfvars` file:
 
     ```code
     nano terraform.tfvars
@@ -226,28 +235,28 @@ This tutorial handles variables using two files.
 
     The `<LinodeApiToken>` needs to be an API token associated with your Linode account. You can follow our [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
 
-Above, you can see a value of `private/<LinodeImageId>` for the `image_id`. This value should match the image ID for the Linode image you created with Packer. All custom Linode images are prefaced with `private/` and conclude with the image's ID. In these examples, `private/17691867` is assumed to be the ID for the Linode image built with Packer.
+    Above, you can see a value of `private/<LinodeImageId>` for the `image_id`. This value should match the image ID for the Linode image you created with Packer. All custom Linode images are prefaced with `private/` and conclude with the image's ID. In these examples, `private/17691867` is assumed to be the ID for the Linode image built with Packer.
 
-There are two main ways to get your image ID:
+    There are two main ways to get your image ID:
 
--   The Linode image ID appears at the end of the output when you use Packer to create the image. For instance, in the guide on creating a Linode image with Packer linked above, you can find the output:
+    -   The Linode image ID appears at the end of the output when you use Packer to create the image. For instance, in the guide on creating a Linode image with Packer linked above, you can find the output:
 
-    {{< output >}}
+        {{< output >}}
 ==> Builds finished. The artifacts of successful builds are:
 --> linode.example-linode-image: Linode image: packer-linode-image-1 (private/17691867)
-    {{< /output >}}
+        {{< /output >}}
 
--   The Linode API has an endpoint for listing available images. The list includes your custom images if you call it with your API token.
+    -   The Linode API has an endpoint for listing available images. The list includes your custom images if you call it with your API token.
 
-    You can use a cURL command to list all images available to you, public and private. Replace `$LINODE_API_TOKEN` with your Linode API token:
+        You can use a cURL command to list all images available to you, public and private. Replace `$LINODE_API_TOKEN` with your Linode API token:
 
-    ```code
-    curl -H "Authorization: Bearer $LINODE_API_TOKEN" \https://api.linode.com/v4/images
-    ```
+        ```code
+        curl -H "Authorization: Bearer $LINODE_API_TOKEN" \https://api.linode.com/v4/images
+        ```
 
-    The output can be overwhelming in the command line, so you may want to use another tool to prettify the JSON response. This has been done with the result shown here:
+        The output can be overwhelming in the command line, so you may want to use another tool to prettify the JSON response. This has been done with the result shown here:
 
-    {{< output >}}
+        {{< output >}}
 {
     "pages": 1,
     "data": [{
@@ -255,13 +264,15 @@ There are two main ways to get your image ID:
         "label": "packer-linode-image-1",
         "description": "Example Packer Linode Image",
         // [...]
-    {{< /output >}}
+        {{< /output >}}
+
+    When done, press **CTRL+X** to exit nano, **Y** to save, and **Enter** to confirm.
 
 ### Defining the Linode Resource
 
 The next step for the Terraform script is to define the actual resource to be provisioned. In this case, the script needs to provision Linode instances, which can be done using the `linode_instance` resource.
 
-Add the details shown here to the end of `packer-linode.tf` file created earlier:
+Open the `packer-linode.tf` file created earlier and add the details shown here to the end:
 
 ```file {title="packer-linode.tf" linenostart="14"}
 resource "linode_instance" "packer_linode_instance" {
