@@ -18,7 +18,7 @@ h1_title: "Setting Up and Securing a Compute Instance"
 enable_h1: true
 ---
 
-After you have successfully created a Compute Instance, there are a few initial configuration steps you should perform within your new Linux system. This includes updating your system, setting the timezone, configuring a custom hostname, adding a limited user, hardening SSH to prevent unauthorized access, and configuring a firewall. These steps ensure your instance is update to date, secure, and ready for use.
+After you have successfully created a Compute Instance, there are a few initial configuration steps you should perform within your new Linux system. This includes updating your system, setting the timezone, configuring a custom hostname, adding a limited user, hardening SSH to prevent unauthorized access, and configuring a firewall. These steps ensure your instance is up to date, secure, and ready for use.
 
 {{<note>}}
 While this guide is optional, it walks you through best practices and covers important steps to secure your server. It is recommended that you follow these instructions when deploying a new Compute Instance. Some guides within our library assume that you have performed these steps, such as setting your hostname and updating your software.
