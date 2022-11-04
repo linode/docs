@@ -10,7 +10,7 @@ cascade:
     date: 2022-02-23
     product_description: "Fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
 aliases: ['/products/database/']
-modified: 2022-10-18
+modified: 2022-10-31
 ---
 
 {{< content "managed-databases-beta-notice-shortguide" >}}
@@ -92,7 +92,7 @@ In addition to the resources allocated to each available plan (outlined above), 
 
 - The default user cannot be changed or removed, though the password can be reset at any time.
 
-- You are not able to access the underlying operating system of a database cluster.
+- You are not able to access the underlying operating system of a database cluster. Configuration files (such as `my.cnf` ) cannot be directly edited and configuration changes done through the `SET PERSIST` command do not persist when the cluster is rebooted.
 
 - MongoDB database clusters are currently only accessible over public IP addresses. As such, any traffic counts towards your monthly network transfer usage. Support for private IP addresses will be available in the coming months.
 
