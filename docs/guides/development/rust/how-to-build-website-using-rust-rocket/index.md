@@ -136,7 +136,7 @@ rocket = "0.4.7"
 
 1. Open the `src/main.rs` file, and populate it with the following lines:
 
-    {{< file "~/example-app/src/main.rs" >}}
+    {{< file "~/example-app/src/main.rs" rust >}}
 #![feature(proc_macro_hygiene, decl_macro)]
 
 #[macro_use] extern crate rocket;
@@ -180,7 +180,7 @@ features = ["handlebars_templates"]
 
 1. Open your `~/example-app/src/main.rs` file, and modify it to include the following code:
 
-    {{< file "~/example-app/src/main.rs" >}}
+    {{< file "~/example-app/src/main.rs" rust >}}
 #![feature(proc_macro_hygiene, decl_macro)]
 
 #[macro_use] extern crate rocket;
