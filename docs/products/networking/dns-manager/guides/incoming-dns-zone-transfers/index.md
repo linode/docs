@@ -5,6 +5,7 @@ author:
 description: "Learn how to import DNS records from external DNS providers by using AXFR transfers"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-28
+modified: 2022-11-02
 modified_by:
   name: Linode
 title: "Incoming DNS Zone Transfers"
@@ -19,20 +20,26 @@ Linode supports importing DNS records from external DNS providers in one of two 
 
 ## Before You Begin
 
-Verify that your current DNS provider offers the ability to perform outgoing DNS zone transfers (responds to AXFR queries). If they do, determine which name server you can use and make sure that name server allows AXFR queries from the following IP addresses.
+As part of DNS zone transfers, Linode sends an AXFR query to whichever external name server you specify. That external name server must then send back an AXFR response, which includes a copy of the DNS zone file data.
 
-```
-96.126.114.97
-96.126.114.98
-2600:3c00::5e
-2600:3c00::5f
-```
+**Before continuing, verify that your current external DNS provider offers the ability to perform outgoing DNS zone transfers through AXFR.** If they do, add the IP addresses for Linode's AXFR servers to the ACL or allow-list of that DNS provider. These IP addresses vary depending on if you're importing a zone or operating as a secondary and are listed in their corresponding section below.
 
-This process varies by DNS provider or software you are using and is typically available on enterprise-level plans. If your DNS provider does not support AXFR queries, you may need to create an empty domain zone and manually add each DNS record. See [Create a Domain](/docs/products/networking/dns-manager/guides/create-domain/).
+{{< note >}}
+AXFR functionality is typically available on enterprise-level plans. If your DNS provider does not support AXFR, DNS zone transfers will not work. If you still wish to use Linode's name servers, you can instead manually create the DNS zone and update it as needed. See [Create a Domain](/docs/products/networking/dns-manager/guides/create-domain/).
+{{</ note >}}
 
 ## Import a DNS Zone
 
 This section walks you through the first option, importing a DNS zone. This method gathers all of the DNS records from an external DNS service, creates a new domain zone within the DNS Manager, and imports each record into new zone.
+
+1. Within your external name server, allow AXFR transfers to the following Linode IP addresses:
+
+    ```
+    96.126.114.97
+    96.126.114.98
+    2600:3c00::5e
+    2600:3c00::5f
+    ```
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Domains** from the left navigation menu. Click the **Import a Zone** button.
 
@@ -53,6 +60,21 @@ Using Linode's DNS Manager as a *secondary* DNS service allows you to manage you
 - or does not implement any high availability features.
 
 As part of this, a common reason for using Linode's DNS Manager as a secondary DNS provider is if your primary name server is self-hosted. This is true for users of cPanel, Plesk, and other web-hosting panels. It is also true for power-users that prefer to run their own dedicated DNS software, such as BIND, and manually update their DNS zone files. In these cases, you may value the control or automation from your current solution, but you desire more reliability and availability.
+
+1. Within your primary name server, allow AXFR transfer from the following Linode IP addresses. You should also make sure your name server sends NOTIFY requests to these IP addresses, which serves to notify Linode of any DNS changes so an AXFR zone transfer is triggered.
+
+    ```
+    104.237.137.10
+    65.19.178.10
+    74.207.225.10
+    207.192.70.10
+    109.74.194.10
+    2600:3c00::a
+    2600:3c01::a
+    2600:3c02::a
+    2600:3c03::a
+    2a01:7e00::a
+    ```
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Domains** from the left navigation menu. Click the **Create Domain** button.
 
