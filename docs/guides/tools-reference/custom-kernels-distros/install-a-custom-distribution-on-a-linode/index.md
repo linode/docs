@@ -22,10 +22,13 @@ Linode provides images for many Linux distributions, all of which are available 
 
 While these official images are generally sufficient for most customers, some applications or workloads may require distributions that aren't provided by Linode. There are a few methods that can be used to build custom images or install distributions on Linode.
 
-- **Upload a custom image.** This requires either obtaining the image from a third-party source or using a distribution's official installer to install it on a local virtual machine and then save the system to a compatible format. See [Upload a Custom Image](/docs/products/tools/images/guides/upload-an-image/).
+- **Upload a custom image.** This requires either obtaining the image from a third-party source or using a distribution's official installer. After downloading the image to your workstation, install it on a local virtual machine. Then, save the system to a compatible format. For more detailed instructions, see [Upload a Custom Image](/docs/products/tools/images/guides/upload-an-image/).
 - **Install the distribution directly on a Compute Instance.** This requires that you download the distribution's installer to a Compute Instance and use [Glish](/docs/guides/glish/) to install the distribution onto the instance's disks.
 
-This guide covers the latter method and walks you through downloading the installer for the latest Debian version, installing it onto a Compute Instance, and then performing additional configuration steps so that it is compatible with some features of the Linode Platform.
+This guide covers the latter method. The instructions walk you through:
+- Downloading the installer for the latest Debian version
+- Installing it onto a Compute Instance
+- Performing additional configuration steps so that it is compatible with some features of the Linode Platform
 
 ## Install the Distribution onto a Compute Instance
 
@@ -41,21 +44,21 @@ First, create the Compute Instance and add the necessary disks and configuration
 
 1. Click the **Create** button to create the Compute Instance. Once it has been created, you should be taken to its dashboard page.
 
-1. Navigate to the **Storage** tab and create two disks on your new Compute Instance. One disk is for the installer image itself and the other is where the system will be installed. The settings for each of these disks are outlined below. See the [Create a disk](/docs/guides/disks-and-storage/#creating-a-disk) guide for additional instructions.
+1. Navigate to the **Storage** tab and create two disks on your new Compute Instance. One disk is for the installer image itself and the other is where the system will be installed. The settings for each of these disks are outlined below. See the [Creating a Disk](/docs/guides/disks-and-storage/#creating-a-disk) guide for additional instructions.
 
-    ![Screenshot of the Storage tab with the disks created](custom-distro-disks.png)
+    ![Screenshot of the Storage tab with the disks created](custom-distro-disks.png "Screenshot of the Storage tab with the disks created, according to the specifications in the following bullet points")
 
     - **Installer Disk:** This disk will contain the installer image for whichever Linux distribution you wish to install. Set the **Label** to *Installer* and the **Filesystem** to *raw*. The size of the disk should be large enough for your installer image. For instance, the install media for the example distribution used in this guide (the latest Debian release) is approximately 50 MB. If following this example to install Debian, this disk should be 100 MB in size.
 
     - **System Disk:** This disk is where you will install the distribution. Set the **Label** to *System* and the **Filesystem** to *raw*. When setting the **Size** of this disk, there are some important considerations.
 
-        - If you plan to make this system compatible with some actions and tools within the Linode platform (such automatic network configuration, disk resizing, and more), another disk needs to be created. This disk and that other disk both need to be large enough to fit the operating system you wish to install. This is covered in a later step, but be sure to leave enough remaining storage space to create that disk.
+        - If you do not plan on making this system compatible with [Linode platform actions, tools, and features](#make-the-system-compatible-with-the-linode-platform) (such as automatic network configuration, disk resizing, and more), this *System* disk can take up the rest of the free space available on your instance.
 
-        - If you do not plan on making this system compatible with Linode platform features, this *System* disk can take up the rest of the free space available on your instance.
+        - If you plan to make this system compatible with [Linode platform features](#make-the-system-compatible-with-the-linode-platform), another third disk needs to be created (outlined later in this guide). As a result, the System disk cannot take up the rest of the free space available on your instance. The System disk and that other third disk both need to be large enough to fit the operating system you wish to install. This is covered in a later step, but be sure to leave enough remaining storage space to create that disk.
 
-1. Navigate to the **Configurations** tab and create two configuration profiles for your new instance. See the [Create a Configuration Profile](/docs/guides/disks-and-storage/#creating-a-disk) guide for instructions.
+1. Navigate to the **Configurations** tab and create two configuration profiles for your new instance. See the [Create a Configuration Profile](/docs/guides/linode-configuration-profiles/) guide for instructions.
 
-    ![Screenshot of the Configurations tab with the configuration profiles created](custom-distro-configuration-profiles.png)
+    ![Screenshot of the Configurations tab with the configuration profiles created](custom-distro-configuration-profiles.png "Screenshot of the Configurations tab with the configuration profiles created, according to the specifications in the following bullet points")
 
     - **Installer Configuration Profile:** This is only used to boot up the installer disk and can be deleted in a later step.
 
@@ -82,13 +85,13 @@ After the Compute Instance has been created and prepared, the next step is to do
 
 1. Boot your Compute Instance into Rescue Mode. To do this, click the **ellipsis** menu on the top left of your instance's dashboard page and select **Rescue**. You are presented with a prompt to assign your disks. Set **/dev/sda** to your *Installer* disk and then click the **Reboot into Rescue Mode** button to continue. See [Booting into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) for instructions.
 
-    ![Screenshot of Rescue Mode configuration](rescue-mode-assign-disks.png)
+    ![Screenshot of Rescue Mode configuration](rescue-mode-assign-disks.png "Screenshot of Rescue Mode configuration, with /dev/sda assigned to the Installer disk")
 
 1. Connect to your instance using the [Lish Console](/docs/guides/lish/) and wait for it to fully boot into Rescue Mode.
 
 1. Download the installation media for the Linux distribution you wish to install and copy it to the *Installer* disk. The example below shows the instructions to download the network installer for the latest stable version of Debian, but you can replace the URL with one pointing to whichever installer you want.
 
-    ```code
+    ```code {title="Lish console (Rescue Mode)"}
     wget https://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso
     dd if=mini.iso of=/dev/sda
     ```
@@ -100,14 +103,14 @@ As an additional security step, you can use the keys provided in the same direct
     {{< note >}}
 If you would prefer to write the installer directly to the disk as it downloads, use:
 
-```code
+```code {title="Lish console (Rescue Mode)"}
 curl https://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
 ```
 {{< /note >}}
 
 1. Empty the cache so that you have enough space to unpack and install the image.
 
-    ```code
+    ```code {title="Lish console (Rescue Mode)"}
     sync; echo 3 > /proc/sys/vm/drop_caches
     ```
 
@@ -165,7 +168,9 @@ To use Lish with your new system, you must enable the serial console in Grub.
 
 1. Open the grub configuration file `/etc/default/grub` with your preferred text editor. Make the following changes to the `GRUB_CMDLINE_LINUX_DEFAULT` and `GRUB_CMDLINE_LINUX` parameters.
 
+    ```code {title="Glish command prompt"}
     sudo nano /etc/default/grub
+    ```
 
     ```file {title="/etc/default/grub" hl_lines="9-10"}
     # If you change this file, run 'update-grub' afterwards to update
@@ -184,19 +189,19 @@ To use Lish with your new system, you must enable the serial console in Grub.
 
     - Ubuntu and Debian:
 
-        ```code
+        ```code {title="Glish command prompt"}
         sudo update-grub
         ```
 
     - CentOS and Fedora:
 
-        ```code
+        ```code {title="Glish command prompt"}
         grub2-mkconfig -o /boot/grub2/grub.cfg
         ```
 
     - Arch Linux and Gentoo:
 
-        ```code
+        ```code {title="Glish command prompt"}
         grub-mkconfig -o /boot/grub/grub.cfg
         ```
 
@@ -212,6 +217,10 @@ Next, you need to determine which partition your root file system is installed o
 
 1. Determine which partition is mounted as the root (`/`) by running the `lsblk` command. In the example output below, it is `sda1` (`/dev/sda1`) - though your device and partitions may vary.
 
+    ```code {title="Lish console or Glish command prompt"}
+    lsblk
+    ```
+
     {{< output >}}
 NAME   MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
 sda      8:0    0   2G  0 disk
@@ -220,13 +229,17 @@ sda      8:0    0   2G  0 disk
 
 1. Run the `blkid` command to find the UUID of that partition. This is used in a later step when updating GRUB.
 
+    ```code {title="Lish console or Glish command prompt"}
+    blkid
+    ```
+
     {{< output >}}
 /dev/sda1: UUID="59a7ea75-58c8-46cc-8b71-86f07b56f41f" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="f886f0d7-01"
 {{</ output >}}
 
 1. Back up the `/etc/fstab` file before you make changes.
 
-    ```code
+    ```code {title="Lish console or Glish command prompt"}
     sudo cp /etc/fstab /etc/fstab.backup
     ```
 
@@ -241,28 +254,28 @@ sda      8:0    0   2G  0 disk
 
     Depending upon your distribution, it may use different parameters for your root disk under the "options" section. These can be adjusted as needed. Note that you're using `/dev/sda` instead of the `sda1` root partition that was identified previously.
 
-1. Confirm the location of your `grub.cfg` file. Some distributions (notably, CentOS and Fedora) place this file under the `/boot/grub2` directory, while others have it under `/boot/grub`. Your new setup uses our *Grub 2* mode, which looks for a configuration file under `/boot/grub/grub.cfg`. You can confirm if your `grub.cfg` is located in the necessary spot with the `ls` command:
+1. Confirm the location of your `grub.cfg` file. Some distributions (notably, CentOS and Fedora) place this file under the `/boot/grub2` directory, while others have it under `/boot/grub`. Your new setup uses Linode's *Grub 2* mode, which looks for a configuration file under `/boot/grub/grub.cfg`. You can confirm if your `grub.cfg` is located in the necessary spot with the `ls` command:
 
-    ```code
+    ```code {title="Lish console or Glish command prompt"}
     ls -la /boot/grub/grub.cfg
     ```
 
     The output should display information for that file, if it exists.
 
-    ```
+    ``` {title="Lish console or Glish command prompt"}
     -r--r--r-- 1 root root 5235 Dec 28 08:05 /boot/grub/grub.cfg
     ```
 
     If the Grub config is located under `/boot/grub2` instead, create a symlink to provide the correct configuration to the bootloader:
 
-    ```code
+    ```code {title="Lish console or Glish command prompt"}
     mkdir /boot/grub
     ln -s /boot/grub2/grub.cfg /boot/grub/grub.cfg
     ```
 
-1. Open your `grub.cfg` file and replace all instances of the old partition location and UUID with the new intended location. Run the following commands, replacing the UUID value with the one for your current root partition (determined in a previous step). You may also need to make adjustments to the following commands if your root partition is at a location other than `/dev/sda1`:
+1. Open your `grub.cfg` file and replace all instances of the old partition location and UUID with the new intended location. Run the following commands, replacing the UUID value with the one for your current root partition (determined in step 2 of the current section). You may also need to make adjustments to the following commands if your root partition is at a location other than `/dev/sda1`:
 
-    ```code
+    ```code {title="Lish console or Glish command prompt"}
     sed -i -e 's$/dev/sda1$/dev/sda$g' /boot/grub/grub.cfg
     sed -i -e 's$--fs-uuid --set=root 59a7ea75-58c8-46cc-8b71-86f07b56f41f$--set=root /dev/sda$g' /boot/grub/grub.cfg
     sed -i -e 's$root=UUID=59a7ea75-58c8-46cc-8b71-86f07b56f41f$root=/dev/sda$g' /boot/grub/grub.cfg
@@ -281,10 +294,10 @@ This next step involves making changes to your disks and configuration profiles,
     - **Swap Disk:** Set the **Label** to *Swap* and the **Filesystem** to *swap*. The size of this disk depends on your own swap needs, but should likely be at least 256-512 MB.
 
     {{< note >}}
-If there is not enough room to create these disks, you may need to temporarily upgrade the plan for your Compute Instance. This provides additional storage space for your disks. See [Resizing a Linode](/docs/guides/resizing-a-linode/)
+If there is not enough room to create these disks, you may need to temporarily upgrade the plan for your Compute Instance. This provides additional storage space for your disks. See [Resizing a Linode](/docs/guides/resizing-a-linode/).
 {{</ note >}}
 
-1. Navigate to the **Configurations** tab and create an additional configuration profile. See the [Create a Configuration Profile](/docs/guides/disks-and-storage/#creating-a-disk) guide for instructions.
+1. Navigate to the **Configurations** tab and create an additional configuration profile. See the [Create a Configuration Profile](/docs/guides/linode-configuration-profiles/) guide for instructions.
 
     - **Main (compatible) Configuration Profile:** This should be the only configuration profile you need to use going forward.
 
@@ -306,7 +319,7 @@ If there is not enough room to create these disks, you may need to temporarily u
 
 1. Transfer your root file system from the `/dev/sda1` partition to your new ext4 disk:
 
-    ```code
+    ```code {title="Lish console (Rescue Mode)"}
     dd if=/dev/sda1 of=/dev/sdb bs=1M
     ```
 
@@ -322,7 +335,7 @@ You now should have a Linux system that's compatible with the Linode Platform. F
 
 1. To test internet connectivity, ping an IP address or domain name.
 
-    ```code
+    ```code {title="Lish console or Glish command prompt"}
     ping www.linode.com
     ```
 
