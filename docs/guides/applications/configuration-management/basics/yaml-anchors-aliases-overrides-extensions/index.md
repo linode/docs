@@ -54,7 +54,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     restart: always
-          environment:
+    environment:
   MYSQL_ROOT_PASSWORD: somewordpress
   MYSQL_DATABASE: wordpress
   MYSQL_USER: wordpress
@@ -65,11 +65,11 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     restart: always
-          environment:
-  MYSQL_ROOT_PASSWORD: somewordpress
-  MYSQL_DATABASE: wordpress
-  MYSQL_USER: wordpress
-  MYSQL_PASSWORD: wordpress
+    environment:
+    MYSQL_ROOT_PASSWORD: somewordpress
+    MYSQL_DATABASE: wordpress
+    MYSQL_USER: wordpress
+    MYSQL_PASSWORD: wordpress
 {{< /file >}}
 
 An *anchor* (`&`) and *alias* (`*`) abbreviate these definitions down to:
@@ -83,7 +83,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     restart: always
-          environment:
+    environment:
   MYSQL_ROOT_PASSWORD: somewordpress
   MYSQL_DATABASE: wordpress
   MYSQL_USER: wordpress
@@ -111,7 +111,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     restart: always
-          environment: &environment-definition
+    environment: &environment-definition
   MYSQL_ROOT_PASSWORD: somewordpress
   MYSQL_DATABASE: wordpress
   MYSQL_USER: wordpress
@@ -119,10 +119,10 @@ services:
       ...
   test-db:
     <<: *database-definition
-      environment:
+    environment:
         <<: *environment-definition
-          MYSQL_PASSWORD: test-password
-...
+  MYSQL_PASSWORD: test-password
+  ...
 {{</ file >}}
 
 The `<<` is a special *override* syntax that effectively allows for an alias whose individual values can be updated.

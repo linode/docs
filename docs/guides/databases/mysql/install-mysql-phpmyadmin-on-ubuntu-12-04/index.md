@@ -27,7 +27,7 @@ tags: ["ubuntu","php","database","mysql"]
 phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
@@ -43,13 +43,13 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN) if you have one assigned.
 
-1.  Set up a working LAMP stack. Please see the [LAMP on Ubuntu 12.04](/docs/websites/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin/) guide if needed.
+1.  Set up a working LAMP stack. Please see the [LAMP on Ubuntu 12.04](/docs/guides/lamp-server-on-ubuntu-12-04-precise-pangolin/) guide if needed.
 
     {{< note >}}
 If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
 {{< /note >}}
 
-1.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go trough the [SSL Certificates with Apache on Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu/) guide.
+1.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go trough the [SSL Certificates with Apache on Debian & Ubuntu](/docs/guides/ssl-apache2-debian-ubuntu/) guide.
 
 1.  Install the `mcrypt` PHP module:
 

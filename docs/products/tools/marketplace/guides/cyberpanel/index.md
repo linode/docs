@@ -31,14 +31,14 @@ aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 8, CentOS 7, Ubuntu 18.04, and Ubuntu 20.04
+- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used with CyberPanel.
 
 ## Getting Started after Deployment
 
 ### Access your CyberPanel App
 
-1.  When the installation completes, log into your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
+1.  When the installation completes, log into your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
 
          ssh root@192.0.2.0
 

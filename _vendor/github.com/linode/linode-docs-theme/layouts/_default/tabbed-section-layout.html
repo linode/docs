@@ -17,7 +17,8 @@
     </div>
     <p class="pt-2 md:pt-6 text-basicgray">
       This page was originally published on
-      <time datetime="{{ .PublishDate }}">
+      <time
+        datetime="{{ .PublishDate.Format site.Params.time_format_iso8601 }}">
         {{ .PublishDate.Format site.Params.time_format_default }}.
       </time>
     </p>
@@ -27,6 +28,7 @@
     {{ partial "sections/content/tags.html" . }}
   </div>
 
+  {{ if ne $.Site.Params.feedback_survey_display false }}
   <div class="hide-if-no-js">
     <hr class="my-8" />
 
@@ -34,4 +36,5 @@
     {{ partial "components/delighted/form.html" . }}
     <hr class="mt-8" />
   </div>
+  {{ end }}
 {{ end }}

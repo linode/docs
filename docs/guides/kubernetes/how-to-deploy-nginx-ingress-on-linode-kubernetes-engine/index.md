@@ -41,9 +41,9 @@ This guide will show you how to:
 
 ## Before You Begin
 
-1.  Review the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) series to gain an understanding of key concepts within Kubernetes, including master and worker nodes, Pods, Deployments, and Services.
+1.  Review the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series to gain an understanding of key concepts within Kubernetes, including master and worker nodes, Pods, Deployments, and Services.
 
-1.  Purchase a domain name from a reliable domain registrar. In a later section, you will use Linode's DNS Manager to [create a new Domain](/docs/guides/dns-manager/#add-a-domain) and to [add a DNS "A" record](/docs/guides/dns-manager/#add-dns-records) for two subdomains: one named `blog` and another named `shop`. Your subdomains will point to the example Kubernetes Services you will create in this guide. The example domain names used throughout this guide are `blog.example.com` and `shop.example.com`.
+1.  Purchase a domain name from a reliable domain registrar. In a later section, you will use Linode's DNS Manager to [create a new Domain](/docs/products/networking/dns-manager/guides/create-domain/) and to [add a DNS "A" record](/docs/products/networking/dns-manager/guides/manage-dns-records/) for two subdomains: one named `blog` and another named `shop`. Your subdomains will point to the example Kubernetes Services you will create in this guide. The example domain names used throughout this guide are `blog.example.com` and `shop.example.com`.
 
     {{< note >}}
 Optionally, you can create a Wildcard DNS record, `*.example.com` and point your NodeBalancer's external IP address to it. Using a Wildcard DNS record, will allow you to expose your Kubernetes services without requiring further configuration using the Linode DNS Manager.
@@ -57,7 +57,7 @@ Optionally, you can create a Wildcard DNS record, `*.example.com` and point your
     - [Linode API LKE instructions](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/)
     - [Terraform instructions](/docs/guides/how-to-deploy-an-lke-cluster-using-terraform/)
 
-    You can also use an unmanaged Kubernetes cluster (that's not deployed through LKE). The instructions within this guide depend on the Linode Cloud Controller Manager (CCM), which is installed by default on LKE clusters but needs to be manually installed on unmanaged clusters. To learn how to install the Linode CCM on a cluster that was not deployed through LKE, see the [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/kubernetes/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/) guide.
+    You can also use an unmanaged Kubernetes cluster (that's not deployed through LKE). The instructions within this guide depend on the Linode Cloud Controller Manager (CCM), which is installed by default on LKE clusters but needs to be manually installed on unmanaged clusters. To learn how to install the Linode CCM on a cluster that was not deployed through LKE, see the [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/) guide.
 
 1.  **Setup your local environment** by installing [Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) and [kubectl](/docs/products/compute/kubernetes/guides/install-kubectl) on your computer (or whichever system you intend to use to manage your Kubernetes Cluster).
 
@@ -218,7 +218,7 @@ NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP    PORT
 my-ingress-nginx-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/instance=cingress-nginx,app.kubernetes.io/name=ingress-nginx
 {{</ output >}}
 
-1.  Copy the IP address of the `EXTERNAL IP` field and navigate to [Linode's DNS manager](https://cloud.linode.com/domains) and [add two "A" records](/docs/guides/dns-manager/#add-dns-records) for the `blog` and `shop` subdomains. Ensure you point each record to the NodeBalancer's IPv4 address you retrieved in the previous step.
+1.  Copy the IP address of the `EXTERNAL IP` field and navigate to [Linode's DNS manager](https://cloud.linode.com/domains) and [add two "A" records](/docs/products/networking/dns-manager/guides/manage-dns-records/) for the `blog` and `shop` subdomains. Ensure you point each record to the NodeBalancer's IPv4 address you retrieved in the previous step.
 
 ## Configuring the Ingress Controller
 
@@ -289,4 +289,4 @@ If you would rather not continue using the cluster you just created, review the 
 
     1.  You will be prompted to enter the name of the cluster to confirm the action. Enter the cluster name and click **Delete**.
 
--  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context).
+-  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context).

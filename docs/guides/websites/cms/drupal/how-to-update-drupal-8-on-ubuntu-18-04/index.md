@@ -23,7 +23,7 @@ relations:
 aliases: ['/websites/cms/drupal/how-to-update-drupal-8-on-ubuntu-18-04/']
 ---
 
-Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. While Drupal 8.1 includes a simple feature for incremental updates, you must preform manual Drupal core updates for any preceding versions. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. The examples in this guide assume you have a functional [Drupal 8 installation](/docs/websites/cms/drupal/how-to-install-and-configure-drupal-on-ubuntu-18-04/) running a [LAMP stack](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/) on Ubuntu 18.04.
+Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. While Drupal 8.1 includes a simple feature for incremental updates, you must preform manual Drupal core updates for any preceding versions. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. The examples in this guide assume you have a functional [Drupal 8 installation](/docs/guides/how-to-install-and-configure-drupal-on-ubuntu-18-04/) running a [LAMP stack](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) on Ubuntu 18.04.
 
 {{< note >}}
 If you are not using Ubuntu 18.04, you can find a version of this guide for your Linux distribution in the [Drupal](/docs/websites/cms/drupal/) section of our documentation site.
@@ -31,9 +31,9 @@ If you are not using Ubuntu 18.04, you can find a version of this guide for your
 
 ## Before You Begin
 
-1. Complete all the steps in the [Install and Configure Drupal 8 on Ubuntu 18.04](/docs/websites/cms/drupal/how-to-install-and-configure-drupal-on-ubuntu-18-04/) guide.
+1. Complete all the steps in the [Install and Configure Drupal 8 on Ubuntu 18.04](/docs/guides/how-to-install-and-configure-drupal-on-ubuntu-18-04/) guide.
 
-1. If you followed the [Install and Configure Drupal 8 on Ubuntu 18.04](/docs/websites/cms/drupal/how-to-install-and-configure-drupal-on-ubuntu-18-04/) guide, your site's document root should be in the `/var/www/html/example.com/` directory, where `example.com` is your own site's domain name. You can list all your directories in `/var/www/html` to verify the location of your site's document root.
+1. If you followed the [Install and Configure Drupal 8 on Ubuntu 18.04](/docs/guides/how-to-install-and-configure-drupal-on-ubuntu-18-04/) guide, your site's document root should be in the `/var/www/html/example.com/` directory, where `example.com` is your own site's domain name. You can list all your directories in `/var/www/html` to verify the location of your site's document root.
 
         ls /var/wwww/html/
 
@@ -58,7 +58,7 @@ In this section, you will create an archive of your Drupal site's files and stor
         sudo mv -v example.com-BCKP-*.tar.gz ../backups
 
     {{< note >}}
-This process can also be scripted and run on a regular basis using [cron](/docs/tools-reference/tools/schedule-tasks-with-cron/).
+This process can also be scripted and run on a regular basis using [cron](/docs/guides/schedule-tasks-with-cron/).
     {{</ note >}}
 
 ## Download Updates

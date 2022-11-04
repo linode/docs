@@ -27,7 +27,7 @@ OpenVPN Access Server requires a paid license to use more than two connected dev
 - Ensure that you have not already installed OpenVPN before starting this guide.
 - Ensure that you have root access to your Linode or a user account with `sudo` privilege. For information about creating a user account with `sudo` privilege, see [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
 - Update your system. For more information, see [Install Software Updates](/docs/guides/set-up-and-secure/#perform-system-updates).
-- Allow TCP traffic through port `943` and UDP through port `1194` on your firewall. For more information, see [Add Rules](/docs/security/firewalls/configure-firewall-with-ufw/#add-rules).
+- Allow TCP traffic through port `943` and UDP through port `1194` on your firewall. For more information, see [Add Rules](/docs/guides/configure-firewall-with-ufw/#add-rules).
 
 
 ## Install OpenVPN Access Server
@@ -109,7 +109,7 @@ Client UI: https://192.0.2.0:943/
 1.  Log in to the Access Server Admin UI and go to **VPN Settings**. In the **Routing** section:
 
     - The option *"Should VPN clients have access to private subnets
-(non-public networks on the server side)?"* should be set to to **No**.
+(non-public networks on the server side)?"* should be set to **No**.
 
         {{< note >}}
 If you wish to give VPN users access to services listening on your Linode's local network, set this option to **Yes, using NAT** and specify the subnet.

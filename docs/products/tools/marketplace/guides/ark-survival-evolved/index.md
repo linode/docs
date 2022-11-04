@@ -32,7 +32,7 @@ This Marketplace App deploys the ARK: Survival Evolved server software through [
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Debian 11
 - **Recommended plan:** Depends on the amount of traffic and players you expect. An 8GB Dedicated CPU or Shared Compute Instance is a good starting point.
 
 ### ARK Options

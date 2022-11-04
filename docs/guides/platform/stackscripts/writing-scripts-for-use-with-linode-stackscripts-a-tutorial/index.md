@@ -11,9 +11,7 @@ published: 2020-05-21
 image: WritingScripts_LinodeStackScripts.png
 modified_by:
   name: Linode
-title: "How to Write Scripts for Linode StackScripts (A Tutorial)"
-h1_title: "Writing Scripts for Linode StackScripts"
-enable_h1: true
+title: "Write Custom Scripts for Use with Linode StackScripts"
 contributor:
   name: Linode
 aliases: ['/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/']
@@ -156,7 +154,7 @@ Linode StackScripts provide a set of default environment variables that you can 
 |:-----------------------------------|:------------------------------------------------------------------------------------------|
 | `LINODE_ID`           | The deployed Linode's ID number                                                            |
 | `LINODE_LISHUSERNAME` | The deployed Linode's full [Linode Shell (LISH)](/docs/guides/using-the-lish-console/) accessible name. |
-| `LINODE_RAM`          | The [RAM available on this Linode's plan](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions).                                                   |
+| `LINODE_RAM`          | The [RAM available on this Linode's plan](/docs/guides/choosing-a-compute-instance-plan/#hardware-resource-definitions).                                                   |
 | `LINODE_DATACENTERID` | The ID number of the data center containing the Linode. You can use the [Linode API](https://developers.linode.com/api/v4/regions) to see a list of all data center IDs. |
 
 {{< disclosure-note "Set your Environment Variables Using an External File" >}}

@@ -73,7 +73,7 @@ For more details on logging in to the OpenVPN admin interface for the first time
 
 ### Obtaining the Admin Password
 
-The password for the main administrator account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/guides/using-the-lish-console/#through-the-cloud-manager-weblish). Your credentials should appear towards the end of the installation script.
+The password for the main administrator account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/guides/lish/#through-the-cloud-manager-weblish). Your credentials should appear towards the end of the installation script.
 
 {{<output>}}
 Access Server Web UIs are available here:
@@ -86,10 +86,10 @@ Login as "openvpn" with "password" to continue
 
 You can also obtain your password by running the following command:
 
-    cat /usr/local/openvpn_as/tmp/initial_ovpn_pass
+    cat /usr/local/openvpn_as/init.log | grep 'To login'
 
 ### Open a Connection to your VPN
 
-To open a connection to your OpenVPN server from your computer, you'll need to install the OpenVPN client software. Follow the instructions in the [Client Software Installation](/docs/networking/vpn/install-openvpn-access-server-on-linux/#client-software-installation) section of our [OpenVPN](/docs/networking/vpn/install-openvpn-access-server-on-linux/#client-software-installation) guide for a detailed explanation of how to install and use this software.
+To open a connection to your OpenVPN server from your computer, you'll need to install the OpenVPN client software. Follow the instructions in the [Client Software Installation](/docs/guides/install-openvpn-access-server-on-linux/#client-software-installation) section of our [OpenVPN](/docs/guides/install-openvpn-access-server-on-linux/#client-software-installation) guide for a detailed explanation of how to install and use this software.
 
 {{< content "marketplace-update-note-shortguide">}}

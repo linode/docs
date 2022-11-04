@@ -105,7 +105,7 @@ If using NodeBalancers, DNS records should not be configured for the individual 
 
 1.  Visit the NodeBalancers page in the [Cloud Manager](http://cloud.linode.com) and select **Create NodeBalancer**.
 
-1.  For the purpose of this guide, you can keep the default settings for the new NodeBalancer's port configuration and health checks. Specifically, the port should be set to *80* and the protocol should be *HTTP*. If your website is already configured to use HTTPS, additional configuration will be required. See both [Getting Started with NodeBalancers](/docs/guides/getting-started-with-nodebalancers/) and [NodeBalancer SSL Configuration](/docs/guides/nodebalancer-ssl-configuration/).
+1.  For the purpose of this guide, you can keep the default settings for the new NodeBalancer's port configuration and health checks. Specifically, the port should be set to *80* and the protocol should be *HTTP*. If your website is already configured to use HTTPS, additional configuration will be required. See both [Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/) and [NodeBalancer SSL Configuration](/docs/products/networking/nodebalancers/guides/ssl-termination/).
 
 1.  Under the **Backend Nodes** section, add two backend nodes - one for each Linode within the same data center as the NodeBalancer. For each backend, select the private IP address of the corresponding Linode.
 

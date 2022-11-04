@@ -59,7 +59,7 @@ Enabling source-replica replication offers many significant advantages over a no
 1. You must have at least two separate Linodes to configure MySQL source-replica replication. One Linode hosts the source database, while another node is necessary for the replica server.
 
 {{< note >}}
-The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Configure Source-Replica Replication in MySQL

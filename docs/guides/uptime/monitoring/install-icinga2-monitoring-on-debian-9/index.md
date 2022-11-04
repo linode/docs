@@ -39,7 +39,7 @@ This guide shows how to install and configure the latest version of Icinga 2 web
 
 2.  Many of the commands in this guide require root privileges. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Use `sudo` wherever necessary.
 
-3.  Configure a [LAMP Stack](/docs/web-servers/lamp/lamp-on-debian-8-jessie/).
+3.  Configure a [LAMP Stack](/docs/guides/lamp-on-debian-8-jessie/).
 
 4.  [Configure a mail server](/docs/email/) in order to have Icinga send email alerts.
 

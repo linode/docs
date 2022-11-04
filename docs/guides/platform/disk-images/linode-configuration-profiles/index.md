@@ -49,7 +49,7 @@ When adding or editing a configuration profile on a Linode, the following settin
 
 - **Block Device Assignment:** Assigns the Linode's disks to the disk devices in Linux, making them accessible once the Linode has booted up. Up to 8 disks can be assigned (`/dev/sda` through `/dev/sdg`), though it's common to only use the first two devices: `/dev/sda` as the main disk and `/dev/sdb` as the swap disk. The **Root Device** is used to select the primary disk device (commonly `/dev/sda`), though another predefined device or custom device path can be used.
 
-- **Network Interfaces:**  Assigns either a VLAN or the Public Internet to a network interface in Linux. There are a total of 3 available network interfaces: `eth0`, `eth1`, and `eth2`. If no VLANs are in use, the recommended setting is _Public Internet_ for `eth0` and _None_ for all other interfaces. See [Getting Started with VLANs](/docs/guides/getting-started-with-vlans/).
+- **Network Interfaces:**  Assigns either a VLAN or the Public Internet to a network interface in Linux. There are a total of 3 available network interfaces: `eth0`, `eth1`, and `eth2`. If no VLANs are in use, the recommended setting is _Public Internet_ for `eth0` and _None_ for all other interfaces. See [Getting Started with VLANs](/docs/products/networking/vlans/get-started/).
 
 - **Filesystem / Boot Helpers:** Various helper tasks that run when the Linode is booted up. Recommended setting for all helpers: _Enabled_.
     - **Enable distro helper:** Helps maintain correct inittab/upstart console device.
@@ -120,7 +120,7 @@ When a Linode is powered on or rebooted, it uses the settings stored within a co
 
     ![Viewing the boot history within the Activity Feed](activity-feed-booted-configuration-profile.png)
 
-    Sometimes the boot or reboot event doesn't list a configuration profile, such as when the [Lassie Shutdown Watchdog](/docs/guides/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) initiates the event. In this case, look at the most recent reboot or boot event which does include the configuration profile that was used.
+    Sometimes the boot or reboot event doesn't list a configuration profile, such as when the [Lassie Shutdown Watchdog](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog) initiates the event. In this case, look at the most recent reboot or boot event which does include the configuration profile that was used.
 
 ## Cloning a Configuration Profile and the Attached Disks
 

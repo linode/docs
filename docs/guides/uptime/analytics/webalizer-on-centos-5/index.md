@@ -25,7 +25,7 @@ relations:
 
 Webalizer is an industry standard statistics generation tool. It is useful to analyze traffic to your web server while still remaining lightweight enough not to hinder performance. Webalizer can even identify your user base using GeoIP services.
 
-We assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. We'll also be installing the [Apache 2 web server](/docs/web-servers/apache/apache-2-web-server-on-centos-5/) with very minimal configuration. If you already have Apache installed and configured, feel free to skip these steps. If this is your first time installing Apache on this Linode, make sure to read the installation guide for additional guidance.
+We assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. We'll also be installing the [Apache 2 web server](/docs/guides/apache-2-web-server-on-centos-5/) with very minimal configuration. If you already have Apache installed and configured, feel free to skip these steps. If this is your first time installing Apache on this Linode, make sure to read the installation guide for additional guidance.
 
 ## Set the Hostname
 
@@ -62,7 +62,7 @@ At this point we're able to install the required packages for Webalizer. Run the
 
 ## Configuring Webalizer for Virtual Hosts
 
-This section assumes that you've already configured at least one virtual host. If you do not have virtual hosting configured, please refer to the guide for [installing Apache](/docs/web-servers/apache/apache-2-web-server-on-centos-5/) to further clarify this process and create at least one virtual host. Then, webalizer can generate distinct statistic sets for multiple virtual hosts, using the `webalizer` command line with arguments to process statistics for different virtual host log files. The syntax resembles the following:
+This section assumes that you've already configured at least one virtual host. If you do not have virtual hosting configured, please refer to the guide for [installing Apache](/docs/guides/apache-2-web-server-on-centos-5/) to further clarify this process and create at least one virtual host. Then, webalizer can generate distinct statistic sets for multiple virtual hosts, using the `webalizer` command line with arguments to process statistics for different virtual host log files. The syntax resembles the following:
 
     webalizer -n hostname -o /path/to/webalizer/output /path/to/logfile.log
 
@@ -100,7 +100,7 @@ With `webalizer` configured, you must create the `webalizer/` directories in eac
 
 ### Securing Webalizer Output Directories
 
-Once the `webalizer` script has been tested, we recommend that you place some sort of security on the Webalizer output directories to prevent unauthorized access. Consider using [rule based authentication](/docs/web-servers/apache-tips-and-tricks/rulebased-access-control-for-apache/) or [authentication based access control](/docs/web-servers/apache/apache-access-control/) to limit access to these files.
+Once the `webalizer` script has been tested, we recommend that you place some sort of security on the Webalizer output directories to prevent unauthorized access. Consider using [rule based authentication](/docs/guides/rulebased-access-control-for-apache/) or [authentication based access control](/docs/guides/apache-access-control/) to limit access to these files.
 
 ### Testing the Webalizer Script
 
@@ -127,4 +127,4 @@ Congratulations, you have successfully installed Webalizer! You can leave future
 
 ## Other Considerations
 
-Even with a low traffic site, Apache logs can become large. If your logs are routinely large, processing those logs can be time-consuming. You should consider [log rotation](/docs/uptime/logs/use-logrotate-to-manage-log-files/) to prevent potential performance issues.
+Even with a low traffic site, Apache logs can become large. If your logs are routinely large, processing those logs can be time-consuming. You should consider [log rotation](/docs/guides/use-logrotate-to-manage-log-files/) to prevent potential performance issues.
