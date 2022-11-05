@@ -1,0 +1,12 @@
+[Unit]
+Description=Example application
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=node /usr/local/example-app/index.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

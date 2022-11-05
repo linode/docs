@@ -3,8 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 // Define the variables for the application.
-const SERVER_PORT = 3001;
-const DATABASE_URL = "mongodb://127.0.0.1:27017/example-app";
+const SERVER_PORT = 80;
+const DATABASE_URL = "mongodb://mongo-repl-NODE_NUMBER:27017/example-app";
 
 // ---
 // Initialize
@@ -76,7 +76,7 @@ mongoose.connect(
     {
         "authSource": "admin",
         "user": "admin",
-        "pass": "<MONGODB_ADMIN_PASSWORD>",
+        "pass": "MONGODB_ADMIN_PASSWORD",
     })
     .then((data) => {
         console.log("Connected to MongoDB database.");
