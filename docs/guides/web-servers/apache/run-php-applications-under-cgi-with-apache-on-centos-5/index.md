@@ -50,7 +50,7 @@ Issue the following command to ensure that Apache will start following the next 
 
     chkconfig httpd on
 
-You can now [configure virtual hosting](/docs/web-servers/apache/apache-2-web-server-on-centos-5/#configure-apache) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
+You can now [configure virtual hosting](/docs/guides/apache-2-web-server-on-centos-5/#configure-apache) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
 
     yum install php-cgi
 

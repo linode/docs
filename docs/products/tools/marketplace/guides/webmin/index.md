@@ -50,8 +50,8 @@ aliases: ['/platform/marketplace/how-to-deploy-webmin-with-marketplace-apps/', '
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **SOA Email for your domain** The email address to register as your Start of Authority (SOA). This field is required for creating DNS records for a new domain.
-- **Do you need an MX record for this domain?** Select **Yes** to automatically configure an [MX record](/docs/guides/dns-records-an-introduction/#mx) for the purpose of sending emails from your instance.
-- **Do you need an SPF record for this domain?** Select **Yes** to automatically configure an [SPF record](/docs/guides/dns-records-an-introduction/#spf) for the purpose of sending emails from your instance.
+- **Do you need an MX record for this domain?** Select **Yes** to automatically configure an [MX record](/docs/guides/dns-overview/#mx) for the purpose of sending emails from your instance.
+- **Do you need an SPF record for this domain?** Select **Yes** to automatically configure an [SPF record](/docs/guides/dns-overview/#spf) for the purpose of sending emails from your instance.
 
 ## Getting Started after Deployment
 
@@ -59,8 +59,8 @@ Webmin is now installed and ready to use.
 
 1.  If you filled out the optional Webmin configuration fields:
 
-    - In the Cloud Manager [DNS Manager](/docs/guides/dns-manager/#add-a-domain), confirm that there is now an entry for your domain with possible subdomain, MX, and SPF records pointing to your new server.
-    - [Configure rDNS](/docs/guides/configure-your-linode-for-reverse-dns/) on your Linode to point to your new domain name.
+    - In the Cloud Manager [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/), confirm that there is now an entry for your domain with possible subdomain, MX, and SPF records pointing to your new server.
+    - [Configure rDNS](/docs/guides/configure-rdns/) on your Linode to point to your new domain name.
 
 1.  Webmin is served on port 10000. To access Webmin, navigate to either the IP address of your server, or to your domain name followed by port 10000. For example, entering `http://example.com:10000` or `http://203.0.113.0:10000` while replacing the domain name or IP address with values for your server will allow you to reach the Webmin login screen.
 

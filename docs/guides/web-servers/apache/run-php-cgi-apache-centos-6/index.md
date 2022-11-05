@@ -53,7 +53,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo chkconfig httpd on
 
-    You can now [configure virtual hosting](/docs/web-servers/apache/apache-2-web-server-on-centos-5/#configure-apache) in accordance with the needs of your server.
+    You can now [configure virtual hosting](/docs/guides/apache-2-web-server-on-centos-5/#configure-apache) in accordance with the needs of your server.
 
 3.  Install the PHP CGI binaries:
 

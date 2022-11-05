@@ -36,7 +36,7 @@ This guide covers how to install and configure Odoo in under an hour using Git s
 
 ## Configure UFW Firewall for Odoo
 
-Before installing Odoo, we'll set up some basic firewall rules to allow SSH connections and access to the Odoo server. In this example we'll use Odoo's default port `8069`, but this could be any port you specify later in the configuration file. If you plan to run any other services, you can add their ports here as well. Refer to our guide on how to [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#use-ufw-to-manage-firewall-rules) for help with rules and settings:
+Before installing Odoo, we'll set up some basic firewall rules to allow SSH connections and access to the Odoo server. In this example we'll use Odoo's default port `8069`, but this could be any port you specify later in the configuration file. If you plan to run any other services, you can add their ports here as well. Refer to our guide on how to [Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/#use-ufw-to-manage-firewall-rules) for help with rules and settings:
 
     sudo ufw allow ssh
     sudo ufw allow 8069/tcp

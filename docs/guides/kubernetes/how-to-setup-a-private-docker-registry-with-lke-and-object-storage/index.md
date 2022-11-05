@@ -32,7 +32,7 @@ This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubern
 
 1. [Deploy a LKE Cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This example was written using a node pool with two [2 GB nodes](https://www.linode.com/pricing/). Depending on the workloads you will be deploying on your cluster, you may consider using nodes with higher resources.
 
-1. Install [Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm), [kubectl](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl), and [Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) to your local environment.
+1. Install [Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm), [kubectl](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl), and [Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) to your local environment.
 
     {{< note >}}
 For Docker installation instructions on other operating systems, see [Docker's official documentation](https://docs.docker.com/get-docker/).
@@ -42,7 +42,7 @@ For Docker installation instructions on other operating systems, see [Docker's o
 
 1. [Generate an Object Storage key pair](/docs/products/storage/object-storage/guides/access-keys/) and ensure you save it in a secure location. You will need the key pair for a later section in this guide. Finally [create an Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/) to store your registry's images. Throughout this guide, the example bucket name will be `registry`.
 
-1. Purchase a domain name from a reliable domain registrar. Using Linode's DNS Manager, [create a new Domain](/docs/guides/dns-manager/#add-a-domain) and [add an DNS "A" record](/docs/guides/dns-manager/#add-dns-records) for a subdomain named `registry`. Your subdomain will host your Docker registry. This guide will use `registry.example.com` as the example domain.
+1. Purchase a domain name from a reliable domain registrar. Using Linode's DNS Manager, [create a new Domain](/docs/products/networking/dns-manager/guides/create-domain/) and [add an DNS "A" record](/docs/products/networking/dns-manager/guides/manage-dns-records/) for a subdomain named `registry`. Your subdomain will host your Docker registry. This guide will use `registry.example.com` as the example domain.
 
     {{< note >}}
 Optionally, you can create a Wildcard DNS record, `*.example.com`. In a later section, you will point your DNS A record to a Linode NodeBalancer's external IP address. Using a Wildcard DNS record, will allow you to expose your Kubernetes services without requiring further configuration using the Linode DNS Manager.
@@ -107,7 +107,7 @@ NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP    PORT
 ingress-nginx-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/component=controller,app.kubernetes.io/instance=ingress-nginx,app.kubernetes.io/name=ingress-nginx
     {{</ output >}}
 
-1. Copy the IP address of the `EXTERNAL IP` field and navigate to Linode's DNS manager and [update your domain's' `registry` A record](/docs/guides/dns-manager/#add-dns-records) with the external IP address. Ensure that the entry's **TTL** field is set to **5 minutes**.
+1. Copy the IP address of the `EXTERNAL IP` field and navigate to Linode's DNS manager and [update your domain's' `registry` A record](/docs/products/networking/dns-manager/guides/manage-dns-records/) with the external IP address. Ensure that the entry's **TTL** field is set to **5 minutes**.
 
 Now that your NGINX Ingress Controller has been deployed and your subdomain's A record has been updated, you are ready to enable HTTPS on your Docker registry.
 
@@ -299,7 +299,7 @@ If you have not yet [generated an Object Storage key pair](/docs/products/storag
       - `ingress.tls.hosts` with the domain for which you wish to secure with your TLS certificate.
       - `secrets.s3.accessKey` with the value of your [Object Storage account's access key](/docs/products/storage/object-storage/guides/access-keys/) and `secrets.s3.secretKey` with the corresponding secret key.
       - `secrets.htpasswd` with the value returned when you view the contents of your `my_docker_pass` file. However, ensure you do not remove the `|-` characters. This ensures that your YAML is properly formatted. See step 4 in the [Enable Basic Authentication](#enable-basic-authentication) section for details on viewing the contents of your password file.
-      - `s3.region` with your Object Storage bucket's cluster region, `s3.regionEndpoint` with your Object Storage bucket's region endpoint, and `s3.bucket` with your registry's Object Storage bucket name.
+      - `s3.region` with your Object Storage bucket's cluster region, `s3.regionEndpoint` with your Object Storage bucket's region endpoint, and `s3.bucket` with your registry's Object Storage bucket name. For more information about these values, see [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/).
 
       {{< file "~/registry/docker-configs.yaml" >}}
 ingress:
@@ -381,7 +381,7 @@ v10: digest: sha256:3db7ab6bc5a893375af6f7cf505bac2f4957d8a03701d7fd56853712b090
 
 In this section, you will create a test deployment using the image that you pushed to your registry in the previous section. This will ensure that your cluster can authenticate to your Docker registry and pull images from it.
 
-1.  Using Linode's DNS manager to [create a new subdomain A record](/docs/guides/dns-manager/#add-dns-records) to host your static site. The example will use `static.example.com`. When creating your record, assign your cluster's NodeBalancer external IP address as the IP address. You can find the external IP address with the following command:
+1.  Using Linode's DNS manager to [create a new subdomain A record](/docs/products/networking/dns-manager/guides/manage-dns-records/) to host your static site. The example will use `static.example.com`. When creating your record, assign your cluster's NodeBalancer external IP address as the IP address. You can find the external IP address with the following command:
 
         kubectl --namespace default get services -o wide -w nginx-ingress-controller
 

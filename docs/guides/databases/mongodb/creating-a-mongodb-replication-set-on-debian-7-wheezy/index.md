@@ -1,7 +1,7 @@
 ---
 slug: creating-a-mongodb-replication-set-on-debian-7-wheezy
 deprecated: true
-deprecated_link: '/guides/create-a-mongodb-replica-set/'
+deprecated_link: 'guides/create-a-mongodb-replica-set/'
 author:
   name: Linode
   email: docs@linode.com

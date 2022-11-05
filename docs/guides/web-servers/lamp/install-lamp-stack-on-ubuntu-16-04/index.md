@@ -14,7 +14,7 @@ modified_by:
 published: 2016-04-28
 title: 'How to Install a LAMP Stack on Ubuntu 16.04'
 deprecated: true
-deprecated_link: '/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/'
+deprecated_link: 'guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -165,7 +165,7 @@ a2dissite example.com.conf
 
         sudo systemctl reload apache2
 
-Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](/docs/guides/dns-manager/) for your domain to point to your Linode's IP address.
+Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](/docs/products/networking/dns-manager/) for your domain to point to your Linode's IP address.
 
 If there are additional websites you wish to host on your Linode, repeat the above steps to add a folder and configuration file for each.
 

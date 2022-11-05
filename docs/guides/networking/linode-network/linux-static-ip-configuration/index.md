@@ -21,7 +21,7 @@ All Linodes are created with one IPv4 address and one for IPv6. An IPv4 address 
 
 ![Linux Static IP Configuration](linux-static-ip-configuration.png)
 
-If you want to manually configure static addressing in your Linode's operating system, this guide shows you how to do that. You will want to make these changes using [Lish](/docs/guides/using-the-lish-console/), so if a configuration error disconnects your SSH session, you won't be locked out of a system that has no network access.
+If you want to manually configure static addressing in your Linode's operating system, this guide shows you how to do that. You will want to make these changes using [Lish](/docs/guides/lish/), so if a configuration error disconnects your SSH session, you won't be locked out of a system that has no network access.
 
 ## General Information
 
@@ -272,9 +272,9 @@ dns_servers_eth0="203.0.113.1
 {{< /file >}}
 
 
-### OpenSUSE
+### openSUSE
 
-Networking in OpenSUSE is managed by *wicked* and *netconfig*. In addition to directly editing the network configuration files shown below, you can also use [YaST](https://en.opensuse.org/Portal:YaST). See OpenSUSE's [networking documentation](https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha.network.html) for more information.
+Networking in openSUSE is managed by *wicked* and *netconfig*. In addition to directly editing the network configuration files shown below, you can also use [YaST](https://en.opensuse.org/Portal:YaST). See openSUSE's [networking documentation](https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha.network.html) for more information.
 
 1.  Modify the interface's config file:
 
