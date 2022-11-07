@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-01
 modified_by:
   name: Linode
-title: "How to Install Moodle on Ubuntu 22.04 | Linode "
-h1_title: "How to Install Moodle on Ubuntu 22.04 "
+title: "How to Install Moodle on Ubuntu 22.04"
+h1_title: "How to Install Moodle on Ubuntu 22.04"
 enable_h1: true
 contributor:
   name: Jeff Novotny
@@ -24,25 +24,30 @@ external_resources:
 - '[Moodle Documentation libary](https://docs.moodle.org/400/en/Main_page)'
 - '[Certbot](https://certbot.eff.org/)'
 - '[Lets Encrypt](https://letsencrypt.org/)'
+relations:
+    platform:
+        key: how-to-install-moodle
+        keywords:
+            - distribution: Ubuntu 22.04 LTS
 ---
 
 With an increasing trend towards online learning, learning management software is in high demand. [Moodle](https://moodle.org/) is a free and open source Learning Management System (LMS) that is easy for both teachers and students to use. It allows administrators to create a powerful website for education and training courses. This guide explains how to download and install Moodle on Ubuntu 22.04. It also demonstrates how to configure and administer Moodle using the Moodle Dashboard.
 
 ## What is Moodle?
 
-Moodle is one of the more popular open source LMS applications. It is used to implement a portal for online educational and training courses. Moodle can be used for remote and hybrid learning, or as an adjunct and resource for in-person courses. Moodle is available for most platforms, including Ubuntu and other Linux distributions.
+Moodle is one of the more popular open source LMS applications. It is used to implement a portal for online educational and training courses. Moodle can be used for remote and hybrid learning, or as an adjunct resource for in-person courses. Moodle is available for most platforms, including Ubuntu and other Linux distributions.
 
 Some of Moodle's advantages are as follows:
 
-- The Moodle platform is highly customizable and can provide students with a personalized education portal. The Moodle Dashboard allows administrators to manage the site and quickly add new courses and content.
-- Features are implemented in a modular manner, so the site can be as simple or complex as the user wants.
-- Moodle is stable and allows for enhanced security.
-- Moodle's intuitive user tools facilitate quick platform onboarding.
-- Moodle maximizes the amount of on-screen content to improve concentration, reduce distraction, and enhance course retention.
-- It provides educator features to help teachers manage and organize their courses and deadlines.
-- Moodle includes a built-in video conferencing feature, complete with breakout rooms, chats, and a whiteboard.
-- It includes analytics for both courses and individual students.
-- Moodle features enhanced accessibility, including screen readers and keyboard navigation.
+-   The Moodle platform is highly customizable and can provide students with a personalized education portal. The Moodle Dashboard allows administrators to manage the site and quickly add new courses and content.
+-   Features are implemented in a modular manner, so the site can be as simple or complex as the user wants.
+-   Moodle is stable and allows for enhanced security.
+-   Moodle's intuitive user tools facilitate quick platform onboarding.
+-   Moodle maximizes the amount of on-screen content to improve concentration, reduce distraction, and enhance course retention.
+-   It provides educator features to help teachers manage and organize their courses and deadlines.
+-   Moodle includes a built-in video conferencing feature, complete with breakout rooms, chats, and a whiteboard.
+-   It includes analytics for both courses and individual students.
+-   Moodle features enhanced accessibility, including screen readers and keyboard navigation.
 
 ## Before You Begin
 
@@ -50,7 +55,7 @@ Some of Moodle's advantages are as follows:
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Configure a LAMP Stack, including the Apache web server, the MySQL RDBMS, and PHP. For more information on configuring a LAMP stack, consult the Linode guide on Installing a LAMP Stack on Ubuntu 22.04.
+1.  Configure a LAMP Stack, including the Apache web server, the MySQL RDBMS, and PHP. For more information on configuring a LAMP stack, consult the Linode guide on [Installing a LAMP Stack on Ubuntu 22.04](https://www.linode.com/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/).
 
 1.  To properly use Moodle, configure a domain name for the server. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/).
 
@@ -72,38 +77,52 @@ Downgrading PHP can potentially affect other applications that use PHP. Use caut
 
 1.  Ensure the Ubuntu system packages are up to date.
 
-        sudo apt update && sudo apt upgrade
+    ```code
+    sudo apt update && sudo apt upgrade
+    ```
 
-2.  Confirm the active release of PHP. If this is 7.4, skip the steps marked "For Linode systems using PHP 8.1". For systems running PHP 8.1, follow all instructions.
+1.  Confirm the active release of PHP. If this is 7.4, skip the steps marked "For Linode systems using PHP 8.1". For systems running PHP 8.1, follow all instructions.
 
-        php -v
+    ```code
+    php -v
+    ```
 
     {{< output >}}
 PHP 7.4.29 (cli) (built: Apr 28 2022 11:47:05) ( NTS )
     {{< /output >}}
 
-3.  **(For Linode systems using PHP 8.1)** Moodle requires PHP release 7.4 to function properly. If PHP 8.x is the active release, PHP 7.4 must be installed. To install PHP 7.4 add the `ondrej` repository and then use `apt install`.
+1.  **(For Linode systems using PHP 8.1)** Moodle requires PHP release 7.4 to function properly. If PHP 8.x is the active release, PHP 7.4 must be installed. To install PHP 7.4, add the `ondrej` repository, then use `apt install`.
 
-        sudo add-apt-repository ppa:ondrej/php
-        sudo apt-get update
-        sudo apt install php7.4 libapache2-mod-php7.4
+    ```code
+    sudo add-apt-repository ppa:ondrej/php
+    sudo apt-get update
+    sudo apt install php7.4 libapache2-mod-php7.4
+    ```
 
-4.  **(For Linode systems using PHP 8.1)**  Use the `update-alternatives` tool to set the active release of PHP to 7.4. Review the list of available releases and enter the number corresponding to release 7.4.
+1.  **(For Linode systems using PHP 8.1)**  Use the `update-alternatives` tool to set the active release of PHP to 7.4. Review the list of available releases and enter the number corresponding to release 7.4.
 
-        sudo update-alternatives --config php
+    ```code
+    sudo update-alternatives --config php
+    ```
 
-5.  **(For Linode systems using PHP 8.1)** Disable the Apache module associated with PHP 8.1 and enable the module for PHP 7.4 using the following commands.
+1.  **(For Linode systems using PHP 8.1)** Disable the Apache module associated with PHP 8.1 and enable the module for PHP 7.4 using the following commands.
 
-        sudo a2dismod php8.1
-        sudo a2enmod php7.4
+    ```code
+    sudo a2dismod php8.1
+    sudo a2enmod php7.4
+    ```
 
-6.  Install the remaining PHP 7.4 packages using `apt`. The name of each PHP component follows the pattern `php7.4-component_name`.
+1.  Install the remaining PHP 7.4 packages using `apt`. The name of each PHP component follows the pattern `php7.4-component_name`.
 
-        sudo apt install graphviz aspell ghostscript clamav php7.4-pspell php7.4-curl php7.4-gd php7.4-intl php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-ldap php7.4-zip php7.4-soap php7.4-mbstring git
+    ```code
+    sudo apt install graphviz aspell ghostscript clamav php7.4-pspell php7.4-curl php7.4-gd php7.4-intl php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-ldap php7.4-zip php7.4-soap php7.4-mbstring git
+    ```
 
-7.  Reload Apache to apply the changes.
+1.  Reload Apache to apply the changes.
 
-        sudo systemctl restart apache2
+    ```code
+    sudo systemctl restart apache2
+    ```
 
 ## Downloading Moodle for Ubuntu 22.04
 
@@ -111,18 +130,24 @@ The Moodle documentation recommends cloning the application from Git. These inst
 
 1.  Move to the `/opt` directory, and clone the Moodle Git repository.
 
-        cd /opt
-        sudo git clone git://git.moodle.org/moodle.git
+    ```code
+    cd /opt
+    sudo git clone git://git.moodle.org/moodle.git
+    ```
 
-2.  Change to the `moodle` directory.
+1.  Change to the `moodle` directory.
 
-        cd moodle
+    ```code
+    cd moodle
+    ```
 
-3.  Determine the latest stable Moodle release from the [Moodle Releases page](https://docs.moodle.org/dev/Releases). This page also lists the latest LTS release, along with a release roadmap. The newest stable release from Moodle is currently branch 4.0.
+1.  Determine the latest stable Moodle release from the [Moodle Releases page](https://docs.moodle.org/dev/Releases). This page also lists the latest LTS release, along with a release roadmap. The newest stable release from Moodle is currently branch 4.0.
 
-4.  Use the `git branch` command to list the branches in the Moodle repository. Review the list and determine the branch matching the latest stable release. Currently, the best match is `MOODLE_400_STABLE`.
+1.  Use the `git branch` command to list the branches in the Moodle repository. Review the list and determine the branch matching the latest stable release. Currently, the best match is `MOODLE_400_STABLE`.
 
-        sudo git branch -a
+    ```code
+    sudo git branch -a
+    ```
 
     {{< output >}}
 remotes/origin/HEAD -> origin/master
@@ -132,49 +157,63 @@ remotes/origin/MOODLE_400_STABLE
 remotes/origin/master
     {{< /output >}}
 
-5.  Track and check out the appropriate branch. This example demonstrates how to check out `MOODLE_400_STABLE`.
+1.  Track and check out the appropriate branch. This example demonstrates how to check out `MOODLE_400_STABLE`.
 
-        sudo git branch --track MOODLE_400_STABLE origin/MOODLE_400_STABLE
-        sudo git checkout MOODLE_400_STABLE
+    ```code
+    sudo git branch --track MOODLE_400_STABLE origin/MOODLE_400_STABLE
+    sudo git checkout MOODLE_400_STABLE
+    ```
 
     {{< output >}}
 Switched to branch 'MOODLE_400_STABLE'
 Your branch is up to date with 'origin/MOODLE_400_STABLE'.
     {{< /output >}}
 
-6.  Copy the contents of the Moodle repository to the root directory for the domain. If a virtual host has not been configured, this is `/var/www/html`. If there is a virtual host for the domain, the directory is likely `/var/www/html/your_domain_name/public_html`. The instructions in this guide assume a virtual host has not been configured. Modify the permissions for the `moodle` directory to grant read, write, and execute rights to all users.
+1.  Copy the contents of the Moodle repository to the root directory for the domain. If a virtual host has not been configured, this is `/var/www/html`. If there is a virtual host for the domain, the directory is likely `/var/www/html/your_domain_name/public_html`. The instructions in this guide assume a virtual host has not been configured. Modify the permissions for the `moodle` directory to grant read, write, and execute rights to all users.
 
     {{< note >}}
 These rights are only temporary. After installation is complete, write access should be locked down to the directory owner.
     {{< /note >}}
 
-        sudo cp -R /opt/moodle /var/www/html/
-        sudo chmod -R 0777 /var/www/html/moodle
+    ```code
+    sudo cp -R /opt/moodle /var/www/html/
+    sudo chmod -R 0777 /var/www/html/moodle
+    ```
 
-7.  Create the `/var/moodledata` directory and change the directory owner and permissions.
+1.  Create the `/var/moodledata` directory and change the directory owner and permissions.
 
-        sudo mkdir /var/moodledata
-        sudo chown -R www-data /var/moodledata
-        sudo chmod -R 0777 /var/moodledata
+    ```code
+    sudo mkdir /var/moodledata
+    sudo chown -R www-data /var/moodledata
+    sudo chmod -R 0777 /var/moodledata
+    ```
 
 ## Configuring the MySQL Server for Moodle
 
 1.  Log in to MySQL as the `root` user. The SQL prompt should appear.
 
-        sudo mysql -u root -p
+    ```code
+    sudo mysql -u root -p
+    ```
 
-2.  Create a database for Moodle to use. MySQL should respond with `Query OK`.
+1.  Create a database for Moodle to use. MySQL should respond with `Query OK`.
 
-        CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+    ```code
+    CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+    ```
 
-3.  Create a Moodle MySQL user. Grant them permissions for the database. Provide a better user name and a more secure password in place of `moodle-user` and `password` in the following example. MySQL should reply with `Query OK` in each case.
+1.  Create a Moodle MySQL user. Grant them permissions for the database. Provide a better user name and a more secure password in place of `moodle-user` and `password` in the following example. MySQL should reply with `Query OK` in each case.
 
-        CREATE USER 'moodle-user'@'localhost' IDENTIFIED BY 'password';
-        GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON moodle.* TO 'moodle-user'@'localhost';
+    ```code
+    CREATE USER 'moodle-user'@'localhost' IDENTIFIED BY 'password';
+    GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON moodle.* TO 'moodle-user'@'localhost';
+    ```
 
-4.  Exit the MySQL database.
+1.  Exit the MySQL database.
 
-        quit
+    ```code
+    quit
+    ```
 
 ## Installing the Moodle Application
 
@@ -184,27 +223,31 @@ Most of the Moodle configuration is done using the web interface. Moodle must kn
 
 Finish setting up and configuring Moodle using the web interface. Ensure you have the information about the Moodle database user readily available. To configure Moodle, follow these steps.
 
-1.  Visit the Moodle web interface at `http://www.example.com/moodle`. Substitute the name of the domain in place of `example.com`. Moodle first displays a page for selecting the default language. Choose the operational language for the site and select **Next >>**.
+1.  Visit the Moodle web interface at `http://www.example.com/moodle`. Substitute the name of your domain in place of `example.com`.
 
-        http://example.com/moodle
+    ```code
+    http://example.com/moodle
+    ```
+
+1.  Moodle first displays a page for selecting the default language. Choose the operational language for the site and select **Next >>**.
 
     ![Select the Moodle Language](Moodle-Language-Selection.png)
 
-2.  The Moodle web interface now displays a form for entering path information. Enter `var/moodledata` for the **Data directory**. The other fields cannot be changed. Select **Next >>** when the form is complete.
+1.  The Moodle web interface now displays a form for entering path information. Enter `var/moodledata` for the **Data directory**. The other fields cannot be changed. Select **Next >>** when the form is complete.
 
     ![Enter the Moodle Path Information](Moodle-Paths-Configuration.png)
 
-3.  On the next page, select the **Improved MySQL database driver**. Then enter **Next >>**.
+1.  On the next page, select the **Improved MySQL database driver**. Then enter **Next >>**.
 
     ![Enter the Moodle Database Driver](Moodle-DB-Driver.png)
 
-4.  Moodle displays a form for the MySQL database settings. Enter the name of the `moodle` database user along with the account password. This is the MySQL user account created earlier in the tutorial. Leave the remaining settings the same. Select **Next >>** to proceed.
+1.  Moodle displays a form for the MySQL database settings. Enter the name of the `moodle` database user along with the account password. This is the MySQL user account created earlier in the tutorial. Leave the remaining settings the same. Select **Next >>** to proceed.
 
     ![Enter the Moodle Database Settings](Moodle-DB-Settings.png)
 
-5.  On the next page, Moodle displays the licensing agreement. Review the conditions and select **Continue** to proceed.
+1.  On the next page, Moodle displays the licensing agreement. Review the conditions and select **Continue** to proceed.
 
-6.  Moodle now verifies the installation. Ensure all `Server Checks` indicate `OK`. If the installation is successful, Moodle displays the message `Your server environment meets all minimum requirements` at the bottom. Select **Continue** to move to the next step.
+1.  Moodle now verifies the installation. Ensure all `Server Checks` indicate `OK`. If the installation is successful, Moodle displays the message `Your server environment meets all minimum requirements` at the bottom. Select **Continue** to move to the next step.
 
     {{< note >}}
 Moodle performs some additional tests and displays the results in the `Other checks` section. This section presents some opportunities to improve performance and security. If HTTPS is not configured on the server, the `site not https` warning is displayed. This warning and any performance suggestions can be ignored for now. It is still possible to proceed with the installation.
@@ -212,43 +255,45 @@ Moodle performs some additional tests and displays the results in the `Other che
 
     ![Minimum requirements notice](Moodle-Min-Requirements.png)
 
-7.  Moodle completes the installation process. Scroll down through the page and ensure all tasks indicate a `Success` status. Click **Continue** to proceed.
+1.  Moodle completes the installation process. Scroll down through the page and ensure all tasks indicate a `Success` status. Click **Continue** to proceed.
 
-8.  At the next page, enter details about the Moodle administrator. Select **Update profile** when finished.
+1.  At the next page, enter details about the Moodle administrator. Select **Update profile** when finished.
 
     ![Add a Moodle administrator](Moodle-Admin-Account.png)
 
-9.  The following page asks for more information about the site, such as the site name. Enter the requested information and then click **Save changes**.
+1.  The following page asks for more information about the site, such as the site name. Enter the requested information, then click **Save changes**.
 
-10. Register your new site to complete the site registration. Click **Register your site** to complete the registration. The browser now displays the Moodle dashboard. This dashboard allows users to add content and administer the site.
+1. Click **Register your site** to complete the registration. The browser now displays the Moodle dashboard. This dashboard allows users to add content and administer the site.
 
     ![The Moodle Dashboard](Moodle-Dashboard.png)
 
-11. Return to the system console and change permissions for the Moodle site. For better security, restrict write permission to the root user.
+1. Return to the system console and change permissions for the Moodle site. For better security, restrict write permission to the root user.
 
-        sudo chmod -R 0755 /var/www/html/moodle
+    ```code
+    sudo chmod -R 0755 /var/www/html/moodle
+    ```
 
 ### Configuring System Paths for Moodle (Optional)
 
 For better Moodle performance, configure some system paths using the Moodle dashboard. This step is optional, but highly recommended. It is also possible to complete this section at another time.
 
-1.  Visit the Moodle dashboard at `example.com/moodle`. Choose **Site Administration** from the top-left-hand menu.
+1.  Visit the Moodle dashboard at `example.com/moodle`. Choose the **Site Administration** tab in the upper left.
 
     ![The Moodle top-left menu](Moodle-Dashboard-Menu.png)
 
-2.  On the site administration page, select **Server** on the top menu.
+1.  On the site administration page, select the **Server** tab.
 
     ![The Moodle Site Administration page](Moodle-Site-Administration.png)
 
-3.  From the Server page, select **System Paths**.
+1.  From the Server page, select **System Paths**.
 
     ![Moodle Server Configuration](Moodle-Server-Config.png)
 
-4.  At the System Paths form, enter the following information.
+1.  At the System Paths form, enter the following information.
 
-    - **Path to du**: Set this to `/usr/bin/du`.
-    - **Path to aspell**: Set this to `/usr/bin/aspell`.
-    - **Path to dot**: Set this to `/usr/bin/dot`.
+    -   **Path to du**: Set this to `/usr/bin/du`.
+    -   **Path to aspell**: Set this to `/usr/bin/aspell`.
+    -   **Path to dot**: Set this to `/usr/bin/dot`.
 
     Leave the remaining fields unchanged. After all changes have been made, click **Save changes**. Moodle confirms the new settings. The completed form should resemble the following example.
 
@@ -258,36 +303,44 @@ For better Moodle performance, configure some system paths using the Moodle dash
 
 Although Moodle does not require the *Hypertext Transfer Protocol Secure* (HTTPS) protocol, it is highly recommended. HTTPS encrypts information using *Secure Sockets Layer* (SSL) technology, resulting in better security. Failure to configure HTTPS can expose the site data to various cyber attacks.
 
-Before the Linode can accept HTTPS requests, it must possess a signed public-key certificate from a trusted certificate authority. [Certbot](https://certbot.eff.org/) is used to install and renew SSL certificates for the Apache web server. Certbot is a free, open source tool that automates the process of requesting [Let's Encrypt](https://letsencrypt.org/) certificates for a website.
+Before the Linode can accept HTTPS requests, it must possess a signed public-key certificate from a trusted certificate authority. [Certbot](https://certbot.eff.org/) is used to install and renew SSL certificates for the Apache web server. Certbot is a free and open source tool that automates the process of requesting [Let's Encrypt](https://letsencrypt.org/) certificates for a website.
 
 To install a SSL certificate for Moodle and the domain, follow these steps.
 
 1.  Update the Snap application, which is used to download application bundles. Snap comes pre-installed on Ubuntu 22.04.
 
-        sudo snap install core && sudo snap refresh core
+    ```code
+    sudo snap install core && sudo snap refresh core
+    ```
 
-2.  Remove the default Ubuntu Certbot installation.
+1.  Remove the default Ubuntu Certbot installation.
 
-        sudo apt remove certbot
+    ```code
+    sudo apt remove certbot
+    ```
 
-3.  Use `snap` to install Certbot.
+1.  Use `snap` to install Certbot.
 
-        sudo snap install --classic certbot
+    ```code
+    sudo snap install --classic certbot
+    ```
 
     {{< output >}}
 certbot 1.27.0 from Certbot Project (certbot-eff✓) installed
     {{< /output >}}
 
-4.  Download a certificate for the domain using `certbot`.
+1.  Download a certificate for the domain using `certbot`.
 
-        sudo certbot --apache
+    ```code
+    sudo certbot --apache
+    ```
 
-5.  Certbot guides users through the installation process. The following information is required:
+1.  Certbot guides users through the installation process. The following information is required:
 
-    - A contact email for the domain owner.
-    - An acknowledgment of the terms of service. Enter `Y` to proceed.
-    - Whether to share the email address with the Electronic Frontier Foundation.
-    - The domain name to be registered. Enter the domain both with and without the `www` prefix.
+    -   A contact email for the domain owner.
+    -   An acknowledgment of the terms of service. Enter `Y` to proceed.
+    -   Whether to share the email address with the Electronic Frontier Foundation.
+    -   The domain name to be registered. Enter the domain both with and without the `www` prefix.
 
     After granting the certificate, Certbot displays some information about the granting process and the certificate.
 
@@ -295,23 +348,27 @@ certbot 1.27.0 from Certbot Project (certbot-eff✓) installed
 Congratulations! You have successfully enabled HTTPS on https://example.com and https://www.example.com
     {{< /output >}}
 
-6.  Certbot automatically schedules a renewal and update for the certificate. To test out the renewal procedure, launch a dry run using the `renew` command.
+1.  Certbot automatically schedules a renewal and update for the certificate. To test out the renewal procedure, launch a dry run using the `renew` command.
 
-        sudo certbot renew --dry-run
+    ```code
+    sudo certbot renew --dry-run
+    ```
 
-7.  Edit the Moodle configuration file at `/var/www/html/moodle/config.php`. Change the value of `$CFG->wwwroot` to use the `https` variant of the domain name. For the following command, replace `example.com` with the actual domain name. This automatically redirects HTTP traffic to HTTPS.
+1.  Edit the Moodle configuration file at `/var/www/html/moodle/config.php`. Change the value of `$CFG->wwwroot` to use the `https` variant of the domain name. For the following command, replace `example.com` with the actual domain name. This automatically redirects HTTP traffic to HTTPS.
 
-    {{< file "/var/www/html/moodle/config.php" php >}}
-...
-    $CFG->wwwroot = 'https://example.com/moodle';
-...
-    {{< /file >}}
+    ```file {title="/var/www/html/moodle/config.php" lang="php"}
+    ...
+        $CFG->wwwroot = 'https://example.com/moodle';
+    ...
+    ```
 
-8.  Restart the Apache server.
+1.  Restart the Apache server.
 
-        sudo systemctl restart apache2
+    ```code
+    sudo systemctl restart apache2
+    ```
 
-9.  Reload the Moodle dashboard. The URL should now resolve to the HTTPS version of the page.
+1.  Reload the Moodle dashboard. The URL should now resolve to the HTTPS version of the page.
 
 ## How to Use Moodle
 
@@ -319,6 +376,6 @@ Before proceeding, spend some time exploring the Moodle Dashboard to become more
 
 ## A Summary of How to Install Moodle on Ubuntu 22.04
 
-Moodle is a powerful and flexible online learning management system. Moodle is a free open source application that is available for Ubuntu 22.04 and other operating systems. Administrators can manage and configure the application using the Moodle dashboard.
+Moodle is a powerful and flexible online learning management system. Moodle is a free and open source application that is available for Ubuntu 22.04 and other operating systems. Administrators can manage and configure the application using the Moodle dashboard.
 
 Moodle is installed using Git and is configurable using a web-based interface. Moodle requires PHP release 7.4, which might require a downgrade for some systems. For more information on Moodle, see the [Moodle website](https://moodle.org/).
