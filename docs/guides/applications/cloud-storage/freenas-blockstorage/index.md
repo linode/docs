@@ -31,7 +31,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 1.  Create a Linode in your preferred data center. Ensure that your Linode has at least 8GB RAM and at least 11GB of available disk space. FreeNAS recommends 16GB of RAM for media servers. Visit the [official requirements](http://www.freenas.org/hardware-requirements/) for more information.
 
-2.  Disable the [Lassie Shutdown Watchdog](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog/) to prevent it from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
+2.  Disable the [Lassie Shutdown Watchdog](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog/) to prevent it from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
 
 3.  [Create two disks](/docs/guides/disks-and-storage/#creating-a-disk):
 
@@ -60,7 +60,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 ## Create an Installer Disk
 
-1.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish](/docs/guides/using-the-lish-console/) from the dashboard of your Linode from the Linode Cloud Manager.
+1.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish](/docs/guides/lish/) from the dashboard of your Linode from the Linode Cloud Manager.
 
 2.  Once in Rescue Mode, run the following command to set the [latest FreeNAS release](http://www.freenas.org/download-freenas-release/) (11.1 at the time of this writing) as a variable:
 
@@ -80,7 +80,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 6.  Go to the Linode Cloud Manager and access the dashboard for your Linode.
 
-7.  Click the **Launch Console** link to access the [Glish](/docs/guides/using-the-linode-graphical-shell-glish/) console and start the installation.
+7.  Click the **Launch Console** link to access the [Glish](/docs/guides/glish/) console and start the installation.
 
 ## Install FreeNAS
 

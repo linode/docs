@@ -102,11 +102,11 @@ Starting at $1000/mo ($1.50/hour). See [GPU Pricing](https://www.linode.com/pric
 
 *Best for applications that require massive amounts of parallel processing power, including machine learning, AI, graphics processing, and big data analysis.*
 
-- [Machine Learning and AI](/docs/platform/linode-gpu/why-linode-gpu/#machine-learning-and-ai)
-- [Big Data](/docs/platform/linode-gpu/why-linode-gpu/#big-data)
-- [Video Encoding](/docs/platform/linode-gpu/why-linode-gpu/#video-encoding)
-- [General Purpose Computing Using NVIDIA's CUDA Toolkit](/docs/platform/linode-gpu/why-linode-gpu/#general-purpose-computing-using-cuda)
-- [Graphics Processing](/docs/platform/linode-gpu/why-linode-gpu/#graphics-processing)
+- [Machine Learning and AI](/docs/products/compute/gpu/guides/use-cases/#machine-learning-and-ai)
+- [Big Data](/docs/products/compute/gpu/guides/use-cases/#big-data)
+- [Video Encoding](/docs/products/compute/gpu/guides/use-cases/#video-encoding)
+- [General Purpose Computing Using NVIDIA's CUDA Toolkit](/docs/products/compute/gpu/guides/use-cases/#general-purpose-computing-using-cuda)
+- [Graphics Processing](/docs/products/compute/gpu/guides/use-cases/#graphics-processing)
 
 ## Compute Resources
 

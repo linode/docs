@@ -167,7 +167,7 @@ Since it's very likely that a Let's Encrypt TLS certificate hasn't been installe
 
     ![Control Panel - TLS Certificates Page](mail-in-a-box-control-panel-tls-certificates-ubuntu1404.png)
 
-1. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/guides/configure-your-linode-for-reverse-dns/), to set up a *pointer record* (PTR). Make sure you set it to `box.example.com`. This step is very important to execute and pass some antispam checks. Without it, a lot of mail servers will flag your outbound email as spam and will consider it suspicious that your IP doesn't point to your domain name, and sometimes even reject it.
+1. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/guides/configure-rdns/), to set up a *pointer record* (PTR). Make sure you set it to `box.example.com`. This step is very important to execute and pass some antispam checks. Without it, a lot of mail servers will flag your outbound email as spam and will consider it suspicious that your IP doesn't point to your domain name, and sometimes even reject it.
 
 ## Conclusion
 

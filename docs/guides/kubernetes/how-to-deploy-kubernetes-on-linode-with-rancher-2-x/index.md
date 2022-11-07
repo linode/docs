@@ -71,9 +71,9 @@ You will be able to create Kubernetes clusters in any Linode data center from th
 
 You will also need to generate an API token and prepare a domain zone:
 
-1.  Rancher will need a Linode APIv4 token with read and write privileges from your Linode account in order to create your cluster. Review the instructions from the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) guide to get a token.
+1.  Rancher will need a Linode APIv4 token with read and write privileges from your Linode account in order to create your cluster. Review the instructions from the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) guide to get a token.
 
-1.  The [Set Up DNS](#set-up-dns-for-the-wordpress-app) section of this guide will assign an address to this guide's example app. In order to do so, you must already have a domain zone created in the Linode Cloud Manager. If you do not have a zone created, review the instructions from our [DNS Manager](/docs/guides/dns-manager/#create-and-manage-domains) guide.
+1.  The [Set Up DNS](#set-up-dns-for-the-wordpress-app) section of this guide will assign an address to this guide's example app. In order to do so, you must already have a domain zone created in the Linode Cloud Manager. If you do not have a zone created, review the instructions from our [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/) guide.
 
     {{< note >}}
 If you haven't purchased a domain name, then you can read along with the DNS section of this guide without implementing it in your own cluster.

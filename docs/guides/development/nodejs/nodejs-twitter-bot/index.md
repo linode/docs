@@ -847,7 +847,7 @@ You could certainly let this code run for a long while from your local machine, 
 
 ### Log In and Secure the Server
 
-1. To log into the server, follow the [Connect to Your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) section of our [Getting Started](/docs/guides/getting-started/) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Lish console](/docs/guides/using-the-lish-console/) from the Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](/docs/guides/using-the-lish-console/#through-the-cloud-manager-weblish) instructions in our Lish guide.
+1. To log into the server, follow the [Connect to Your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) section of our [Getting Started](/docs/guides/getting-started/) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Lish console](/docs/guides/lish/) from the Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](/docs/guides/lish/#through-the-cloud-manager-weblish) instructions in our Lish guide.
 
     {{< note >}}
 Our [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) guide series has a few other options for SSH clients, like SSH extension for the Chrome web browser.

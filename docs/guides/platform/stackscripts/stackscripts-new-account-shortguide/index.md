@@ -35,5 +35,5 @@ Once you make an Account StackScript public, you will not be able to make it pri
     A dialog box appears asking you to confirm the action. Click on **Yes, make me a star!** if you would like to proceed. You are brought back to the Account StackScripts page.
 
     {{< note >}}
-Your public [Account StackScript](/docs/platform/stackscripts/how-to-deploy-a-new-linode-using-a-stackscript/#account-stackscripts) is available to you for use on the Account StackScripts page. For Linode Community members, your StackScript is available to them from the [Community StackScripts](/docs/platform/stackscripts/how-to-deploy-a-new-linode-using-a-stackscript/#community-stackscripts) page.
+Your public [Account StackScript](/docs/guides/how-to-deploy-a-new-linode-using-a-stackscript/#account-stackscripts) is available to you for use on the Account StackScripts page. For Linode Community members, your StackScript is available to them from the [Community StackScripts](/docs/guides/how-to-deploy-a-new-linode-using-a-stackscript/#community-stackscripts) page.
     {{</ note >}}

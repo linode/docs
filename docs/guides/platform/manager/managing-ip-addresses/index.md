@@ -57,8 +57,8 @@ All private IPs in the same data center can communicate with each other over the
 - **/116 Pool:** *(4,096 addresses)* An IPv6 pool is accessible from every Linode on your account within the assigned data center. Addresses from that pool can be configured on each Linode within that data center. This can enable features like IPv6 failover. By default, up to one /116 pool can be added per customer per data center.
 
     {{< caution >}}
-The IPv6 /116 prefix has been deprecated and is not available in the Toronto, Atlanta, Sydney, or Mumbai data centers. To add a /116 pool in a supported data center, [contact our Support team](https://www.linode.com/support/) with your request.
-{{</ caution >}}
+The IPv6 /116 prefix has been deprecated and is no longer available for new Compute Instances. If you have an existing Compute Instance with a /116 pool, please review the [Upcoming Changes Related to Network Infrastructure Upgrades](/docs/guides/network-infrastructure-upgrades/) to learn about changes that may affect your services.
+{{</ note >}}
 
 ## Adding an IP Address
 
@@ -95,7 +95,7 @@ The ability to point a domain name to an IP address is referred to as *forward* 
 You are able to configure rDNS (or reset it) through the Cloud Manager using the instructions below:
 
 {{< note >}}
-Before setting reverse DNS, verify that you have created a matching forward DNS record for the IP address. For instructions, see [Adding DNS Records](/docs/websites/hosting-a-website/#add-dns-records). If you use a third-party DNS provider, create the forward DNS record with your provider's management tool.
+Before setting reverse DNS, verify that you have created a matching forward DNS record for the IP address. For instructions, see [Adding DNS Records](/docs/guides/hosting-a-website-ubuntu-18-04/#add-dns-records). If you use a third-party DNS provider, create the forward DNS record with your provider's management tool.
 {{< /note >}}
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.

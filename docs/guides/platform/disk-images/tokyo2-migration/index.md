@@ -134,7 +134,7 @@ You may also need to update the configuration of your applications if they expli
 
 ## Update DNS Records
 
-To direct your users to your new Tokyo 2 servers' IPs, you need to update your DNS records to use the new IPs. If you are using Linode's DNS Manager, follow the DNS Manager guide to update your [DNS records](/docs/guides/dns-manager/#edit-records).
+To direct your users to your new Tokyo 2 servers' IPs, you need to update your DNS records to use the new IPs. If you are using Linode's DNS Manager, follow the DNS Manager guide to update your [DNS records](/docs/products/networking/dns-manager/guides/manage-dns-records/).
 
 If you use a different DNS provider, you will need to visit that provider's website to update your records.
 
@@ -144,7 +144,7 @@ If you use a different DNS provider, you will need to visit that provider's webs
 
 DNS resolvers hold a cache for your domain's records. A resolver will update its cached records according to your domain's *Time To Live* (TTL) value. This means that when you update your DNS records, other DNS resolvers will not immediately update their records for your domain. Instead, they will receive your new records when their caches expires.
 
-Having a short TTL means that your users will be directed to your new IP addresses faster when you update your DNS records. It is recommended that you lower your TTL ahead of your migrations. To set the TTL, review the [DNS Manager](/docs/guides/dns-manager/#set-the-time-to-live-or-ttl) guide. After you complete your migrations and have updated your DNS successfully, you can raise your TTL back to the default value of 24 hours.
+Having a short TTL means that your users will be directed to your new IP addresses faster when you update your DNS records. It is recommended that you lower your TTL ahead of your migrations. After you complete your migrations and have updated your DNS successfully, you can raise your TTL back to the default value of 24 hours.
 
 ## Contact Linode Support
 

@@ -37,7 +37,7 @@ Migrating your Linode to a new data center will result in a number of changes th
 
 - IP addresses are not transferrable across data centers and they will not be migrated with your Linode. Your Linode will be issued a new IPv4 and IPv6 address, which will be accessible once the migration completes. When your Linode enters the migration queue, new IP addresses are reserved and can be viewed on your Linode's **Networking** detail page. See the [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide to learn how to access Networking information in the Cloud Manager.
 
-- You will need to update all your Linode's DNS records to use your new IP address or addresses. If you're hosting your DNS with us, this can be done through the [DNS Manager](/docs/guides/dns-manager/), while [rDNS](/docs/guides/configure-your-linode-for-reverse-dns/) can be configured directly on each Linode's Networking detail page.
+- You will need to update all your Linode's DNS records to use your new IP address or addresses. If you're hosting your DNS with us, this can be done through the [DNS Manager](/docs/products/networking/dns-manager/), while [rDNS](/docs/guides/configure-rdns/) can be configured directly on each Linode's Networking detail page.
 
 - Any existing Backups created through our [Linode Backup Service](/docs/products/storage/backups/) will not be migrated. Once the Linode's migration has completed, your backup service will restart on its normal schedule.
 

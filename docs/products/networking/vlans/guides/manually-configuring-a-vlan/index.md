@@ -21,7 +21,7 @@ Ubuntu Server 18.04 and later versions use Netplan to configure networking, with
 
 1. Verify that Network Helper is disabled to avoid it overwriting any changes on the next reboot. See [Enable or Disable Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) for information on adjusting Network Helper settings.
 
-1. Log in to the Compute Instance via [Lish](/docs/guides/using-the-lish-console/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
+1. Log in to the Compute Instance via [Lish](/docs/guides/lish/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
 
 1. Using your preferred editor, edit the configuration file corresponding to the network interface assigned to the VLAN. Replace the contents with the following text. Adjust `Name` to match the correct network interface and `Address` to match your desired IPAM address:
 
@@ -48,7 +48,7 @@ Debian 7 and above, as well as Ubuntu 16.04, all use ifup and ifdown to manage n
 
 1. Check if Network Helper is enabled or disabled. See [Enable or Disable Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) for information on locating this setting. Network Helper should not interfere with any of the changes below, but its status may impact the files that you're able to edit.
 
-1. Log in to the Compute Instance via [Lish](/docs/guides/using-the-lish-console/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
+1. Log in to the Compute Instance via [Lish](/docs/guides/lish/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
 
 1. Edit (or create) the specific configuration file corresponding to the network interface assigned to the VLAN. Replace the contents with the following text. Replace `eth1` with the correct network interface and adjust `address` to match your desired IPAM address:
 
@@ -77,7 +77,7 @@ CentOS 7 and above, as well as Fedora, all use systemd-networkd and NetworkManag
 
 1. Verify that Network Helper is disabled to avoid it overwriting any changes on the next reboot. See [Enable or Disable Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) for information on adjusting Network Helper settings.
 
-1. Log in to the Compute Instance via [Lish](/docs/guides/using-the-lish-console/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
+1. Log in to the Compute Instance via [Lish](/docs/guides/lish/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
 
 1. Edit the configuration file corresponding to the network interface assigned to the VLAN. Replace the contents with the following text. If needed, adjust `NAME` and `DEVICE` to match the correct network interface and `IPADDR0` and `PREFIX0` to match your desired IPAM address and prefix:
 
@@ -104,7 +104,7 @@ CentOS 7 and above, as well as Fedora, all use systemd-networkd and NetworkManag
 inet 10.0.0.1/24 brd 10.0.0.255 scope global eth1
     {{< /output >}}
 
-2. Test the VLAN's connectivity by pinging another Linode within the VLAN's private network, using the IPAM address assigned to it. For more details, see the *Testing Connectivity* section of the [Getting Started with VLANs](/docs/guides/getting-started-with-vlans/#testing-connectivity) guide.
+2. Test the VLAN's connectivity by pinging another Linode within the VLAN's private network, using the IPAM address assigned to it. For more details, see the *Testing Connectivity* section of the [Getting Started with VLANs](/docs/products/networking/vlans/get-started/#testing-connectivity) guide.
 
 ## Additional Configuration Instructions
 

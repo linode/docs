@@ -45,6 +45,8 @@ On Debian 9 and later, run `sudo apt install dirmngr` before importing the key.
 
     | Distribution |         Key        | Version | Repository List
     |--------------|--------------------|---------|----------------
+    | Debian 11    | 0xF1656F24C74CD1D8 |   10.5  | deb [arch=amd64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.5/debian bullseye main
+    | Debian 10    | 0xF1656F24C74CD1D8 |   10.4  | deb [arch=amd64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.4/debian buster main
     | Debian 9     | 0xF1656F24C74CD1D8 |   10.1  | deb [arch=amd64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.1/debian stretch main
     | Debian 8     | 0xcbcb082a1bb943db |   10.0  | deb [arch=amd64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.0/debian jessie main
     | Ubuntu 16.04 | 0xF1656F24C74CD1D8 |   10.1  | deb [arch=amd64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.1/ubuntu xenial main

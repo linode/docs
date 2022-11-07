@@ -480,7 +480,7 @@ Chef contains a feature known as *data bags*. Data bags store information, and c
 
         openssl rand -base64 512 > ~/chef-repo/.chef/encrypted_data_bag_secret
 
-1.  Upload this key to your node's `/etc/chef` directory, either manually by `scp` from the node (an example can be found in the [Setting Up Chef](/docs/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-14-04/#add-the-rsa-private-keys) guide), or through the use of a recipe and cookbook file.
+1.  Upload this key to your node's `/etc/chef` directory, either manually by `scp` from the node (an example can be found in the [Setting Up Chef](/docs/guides/install-a-chef-server-workstation-on-ubuntu-14-04/#add-the-rsa-private-keys) guide), or through the use of a recipe and cookbook file.
 
 1.  On the workstation, create a `mysql` data bag that will contain the file `rtpass.json` for the root password:
 
