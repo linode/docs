@@ -30,7 +30,7 @@ To facilitate quick updates, Linode immediately sends the external name servers 
 
 ```
 104.237.137.10
-65.19.178.10
+45.79.109.10 (was 65.19.178.10)
 74.207.225.10
 207.192.70.10
 109.74.194.10
@@ -40,6 +40,10 @@ To facilitate quick updates, Linode immediately sends the external name servers 
 2600:3c03::a
 2a01:7e00::a
 ```
+
+{{< caution >}}
+On February 7th, 2023 the IP address `65.19.178.10` will be retired and replaced with `45.79.109.10`. Both IPs `65.19.178.10` and `45.79.109.10` will respond to inbound requests until the cutover date. Outbound requests will only originate from the old IP 65.19.178.10 until the cutover date. Please update your firewall rules and DNS server configurations to add the new IP prior to the cutover.
+{{< /caution >}}
 
 ## Add Secondary Name Servers
 
