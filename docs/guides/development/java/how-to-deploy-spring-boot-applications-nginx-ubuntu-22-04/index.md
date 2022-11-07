@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-24
 modified_by:
   name: Linode
-title: "How to Deploy Spring Boot Applications for NGINX on Ubuntu 22.04 | Linode"
+title: "How to Deploy Spring Boot Applications for NGINX on Ubuntu 22.04"
 h1_title: "How to Deploy Spring Boot Applications for NGINX on Ubuntu 22.04"
 enable_h1: true
 contributor:
@@ -29,15 +29,16 @@ external_resources:
 - '[Wikipedia page on Inversion of Control Containers](https://en.wikipedia.org/wiki/Inversion_of_control)'
 relations:
     platform:
+        key: spring-boot-nginx
         keywords:
-           - distribution: Ubuntu 22.04
+           - distribution: Ubuntu 22.04 LTS
 ---
 
-Java is a powerful and widely-used programming language. Unfortunately, it is also very complex and some of the common Java IDEs are difficult to master. [Spring Boot](https://spring.io/projects/spring-boot/) and the [Spring Framework](https://spring.io/projects/spring-framework/) simplify the Java development environment and make it easier to create applications. This guide explains how to use Spring Boot tools to create a simple Java application that runs on an Apache Tomcat server. It also describes how to register the application as a service and make it available remotely through an NGINX reverse proxy.
+Java is a powerful and widely used programming language. Unfortunately, it is also very complex and some of the common Java IDEs are difficult to master. [Spring Boot](https://spring.io/projects/spring-boot/) and the [Spring Framework](https://spring.io/projects/spring-framework/) simplify the Java development environment and make it easier to create applications. This guide explains how to use Spring Boot tools to create a simple Java application that runs on an Apache Tomcat server. It also describes how to register the application as a service and make it available remotely through an NGINX reverse proxy.
 
 ## What is Spring Boot and the Spring Framework?
 
-The Spring Framework is an application framework and [inversion of control container](https://en.wikipedia.org/wiki/Inversion_of_control) for Java-based programs. It constructs the low-level infrastructure for a Java application, allowing developers to focus on the business logic. Spring Boot is an enhancement to the Spring Framework that constructs default configurations and classes. It is used to create stand-alone Spring applications that are easy to run. When Spring Boot is used, very little configuration is required. Spring Tools is equipped with integrated metrics and health checks and can embed an Apache Tomcat service directly.
+The Spring Framework is an application framework and [inversion of control container](https://en.wikipedia.org/wiki/Inversion_of_control) for Java-based programs. It constructs the low-level infrastructure for a Java application, allowing developers to focus on the business logic. Spring Boot is an enhancement to the Spring Framework that constructs default configurations and classes. It is used to create standalone Spring applications that are easy to run. When Spring Boot is used, very little configuration is required. Spring Boot is equipped with integrated metrics and health checks and can embed an Apache Tomcat service directly.
 
 The Spring platform is very powerful and contains a large number of features. For comprehensive information about how to use Spring Boot, see the [Spring Boot Documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/).
 
@@ -63,25 +64,35 @@ Not all editions of Java are available for free. Starting with Java 11 and until
 
 To install Java JDK release 17, follow these instructions.
 
-1. Ensure `software-properties-common` is installed. This package is often already installed on the system.
+1.  Ensure `software-properties-common` is installed. This package is often already installed on the system.
 
-        sudo apt install software-properties-common
+    ```code
+    sudo apt install software-properties-common
+    ```
 
-2. Add the `linuxuprising` repository, which provides access to the Java JDK installation program.
+1.  Add the `linuxuprising` repository, which provides access to the Java JDK installation program.
 
-        sudo add-apt-repository ppa:linuxuprising/java
+    ```code
+    sudo add-apt-repository ppa:linuxuprising/java
+    ```
 
-3.  Ensure all binaries are updated.
+1.  Ensure all binaries are updated.
 
-        sudo apt update
+    ```code
+    sudo apt update
+    ```
 
-4.  Use `apt` to install Java JDK 17.
+1.  Use `apt` to install Java JDK 17.
 
-        sudo apt install oracle-java17-installer --install-recommends
+    ```code
+    sudo apt install oracle-java17-installer --install-recommends
+    ```
 
-5.  Confirm the system is running the correct release of Java.
+1.  Confirm the system is running the correct release of Java.
 
-        java -version
+    ```code
+    java -version
+    ```
 
     {{< output >}}
 java version "17.0.1" 2021-10-19 LTS
@@ -95,11 +106,15 @@ Spring Boot works well with the NGINX web server, which is now available as part
 
 1.  Install the NGINX server.
 
-        sudo apt install nginx
+    ```code
+    sudo apt install nginx
+    ```
 
-2.  Confirm NGINX is properly running using the `systemctl` utility.
+1.  Confirm NGINX is properly running using the `systemctl` utility.
 
-        sudo systemctl status nginx
+    ```code
+    sudo systemctl status nginx
+    ```
 
     {{< output >}}
 nginx.service - A high performance web server and a reverse proxy server
@@ -107,19 +122,25 @@ nginx.service - A high performance web server and a reverse proxy server
      Active: active (running) since Wed 2022-05-25 09:43:35 UTC; 19s ago
     {{< /output >}}
 
-3.  Configure NGINX to start running automatically upon a system boot.
+1.  Configure NGINX to start running automatically upon a system boot.
 
-        sudo systemctl enable nginx
+    ```code
+    sudo systemctl enable nginx
+    ```
 
-4.  Add NGINX to the list of applications with firewall access and enable `ufw`. Ensure `OpenSSH` access is also allowed.
+1.  Add NGINX to the list of applications with firewall access and enable `ufw`. Ensure `OpenSSH` access is also allowed.
 
-        sudo ufw allow OpenSSH
-        sudo ufw allow in "Nginx Full"
-        sudo ufw enable
+    ```code
+    sudo ufw allow OpenSSH
+    sudo ufw allow in "Nginx Full"
+    sudo ufw enable
+    ```
 
-5.  Ensure the firewall is working and all expected services are allowed.
+1.  Ensure the firewall is working and all expected services are allowed.
 
-        sudo ufw status
+    ```code
+    sudo ufw status
+    ```
 
     {{< output >}}
 Status: active
@@ -132,13 +153,15 @@ OpenSSH (v6)               ALLOW       Anywhere (v6)
 Nginx Full (v6)            ALLOW       Anywhere (v6)
     {{< /output >}}
 
-6.  Ensure the server is working properly. Visit the IP address of the Linode and confirm the default NGINX page appears.
+1.  Ensure the server is working properly. Visit the IP address of the Linode and confirm the default NGINX page appears.
 
     {{< note >}}
 To determine the IP address of the Ubuntu system, use the Linode Dashboard.
     {{< /note >}}
 
-        http://server_IP_address/
+    ```code
+    http://server_IP_address/
+    ```
 
     ![NGINX Welcome Page](NGINX-Welcome-Page.png)
 
@@ -148,33 +171,43 @@ The Spring Boot CLI utility can be installed using several different methods. Th
 
 1.  Install the `unzip` and `zip` utilities using `apt`.
 
-        sudo apt install unzip zip
+    ```code
+    sudo apt install unzip zip
+    ```
 
-2.  Install SDKMAN!
+1.  Install SDKMAN!
 
-        curl -s https://get.sdkman.io | bash
+    ```code
+    curl -s https://get.sdkman.io | bash
+    ```
 
-3.  Source the new SDKMAN! shell from the terminal window. Alternatively, open a new terminal to use SDKMAN!. In the following command, replace `userdir` with the name of the user directory.
+1.  Source the new SDKMAN! shell from the terminal window. Alternatively, open a new terminal to use SDKMAN!. In the following command, replace `userdir` with the name of the user directory.
 
-        source "/home/userdir/.sdkman/bin/sdkman-init.sh"
+    ```code
+    source "/home/userdir/.sdkman/bin/sdkman-init.sh"
+    ```
 
-4.  Verify SDKMAN! is properly installed. The `sdk help` command displays information about the release and usage information.
+1.  Verify SDKMAN! is properly installed. The `sdk help` command displays information about the release and usage information.
 
-        sdk help
+    ```code
+    sdk help
+    ```
 
-5.  Use `sdk` to install the Spring Boot CLI module.
+1.  Use `sdk` to install the Spring Boot CLI module.
 
-        sdk install springboot
-
-6.  Verify the release of Spring Boot.
+    ```code
+    sdk install springboot
+    ```
 
     {{< output >}}
 Spring CLI v2.7.0
     {{< /output >}}
 
-7.  Install the most recent release of the Gradle build tool. This is currently `7.4.2`.
+1.  Install the most recent release of the Gradle build tool. This is currently `7.4.2`.
 
-        sdk install gradle 7.4.2
+    ```code
+    sdk install gradle 7.4.2
+    ```
 
     {{< output >}}
 Installing: gradle 7.4.2
@@ -195,56 +228,62 @@ To build a Spring application, follow these steps.
     {{< note >}}
 The `spring init` command allows for many possible options. To see all the possible parameters, run the following command.
 
-    spring init --list
+```code
+spring init --list
+```
     {{< /note >}}
 
-        spring init --build=gradle --dependencies=web --name=hello hello-world
+    ```code
+    spring init --build=gradle --dependencies=web --name=hello hello-world
+    ```
 
     {{< output >}}
 Using service at https://start.spring.io
 Project extracted to '/home/userdir/hello-world'
     {{< /output >}}
 
-2.  The `init` command creates a `HelloApplication.java` file inside `~/hello-world/src/main/java/com/example/helloworld`. This file includes some essential `import` directives along with a public `HelloApplication` class. Modify this file as follows:
+1.  The `init` command creates a `HelloApplication.java` file inside `~/hello-world/src/main/java/com/example/helloworld`. This file includes some essential `import` directives along with a public `HelloApplication` class. Modify this file as follows:
 
-    - Add an `import` statement to import the `RestController` and `RequestMapping` functionality beneath the other import statements.
-    - Add a new `Hello` class to display the text `Hello World`.
-    - Precede the class with the `@RestController` annotation. This annotation simplifies the web service creation and indicates the class returns an object rather than a view.
-    - Inside the class, add the Spring `@RequestMapping` annotation. This technique maps a URL to a Spring function. For the root directory `/`, the class invokes the `Hello` function. When a web user accesses the root directory, "Hello World" is printed out.
+    -   Add an `import` statement to import the `RestController` and `RequestMapping` functionality beneath the other import statements.
+    -   Add a new `Hello` class to display the text `Hello World`.
+    -   Precede the class with the `@RestController` annotation. This annotation simplifies the web service creation and indicates the class returns an object rather than a view.
+    -   Inside the class, add the Spring `@RequestMapping` annotation. This technique maps a URL to a Spring function. For the root directory `/`, the class invokes the `Hello` function. When a web user accesses the root directory, "Hello World" is printed out.
 
     Modify `HelloApplication.java` so it matches the following example.
 
-    {{< file "~/hello-world/src/main/java/com/example/helloworld/HelloApplication.java" java >}}
-package com.example.helloworld;
+    ```file {title="~/hello-world/src/main/java/com/example/helloworld/HelloApplication.java" lang="java"}
+    package com.example.helloworld;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.web.bind.annotation.RestController;
+    import org.springframework.web.bind.annotation.RequestMapping;
 
-@SpringBootApplication
-public class HelloApplication {
+    @SpringBootApplication
+    public class HelloApplication {
 
-    public static void main(String[] args) {
-    SpringApplication.run(HelloApplication.class, args);
+        public static void main(String[] args) {
+        SpringApplication.run(HelloApplication.class, args);
+        }
+
     }
 
-}
+    @RestController
+    class Hello {
 
-@RestController
-class Hello {
-
-    @RequestMapping("/")
-    String index() {
-        return "Hello world";
+        @RequestMapping("/")
+        String index() {
+            return "Hello world";
+        }
     }
-}
-    {{< /file >}}
+    ```
 
-3.  From the root directory of the project, use Gradle to build the Java application. This command creates a new `build` directory inside the project.
+1.  From the root directory of the project, use Gradle to build the Java application. This command creates a new `build` directory inside the project.
 
-        cd hello-world
-        ./gradlew build
+    ```code
+    cd hello-world
+    ./gradlew build
+    ```
 
     {{< output >}}
 BUILD SUCCESSFUL in 51s
@@ -255,23 +294,27 @@ BUILD SUCCESSFUL in 51s
 
 1.  Run the application inside a Tomcat server. Apache Tomcat provides an HTTP web server environment that can run Java code. The following command runs a servlet at `localhost:8080`.
 
-        java -jar build/libs/hello-world-0.0.1-SNAPSHOT.jar
+    ```code
+    java -jar build/libs/hello-world-0.0.1-SNAPSHOT.jar
+    ```
 
-2.  **(Optional)** Alternatively, it is possible to run the application in place without first building the jar file. This is a faster option for quick internal testing, especially if the application is not yet ready for a final build.
+1.  **(Optional)** Alternatively, it is possible to run the application in place without first building the jar file. This is a faster option for quick internal testing, especially if the application is not yet ready for a final build.
 
-        gradle bootRun
+    ```code
+    gradle bootRun
+    ```
 
-3.  With Tomcat or Gradle `bootRun` still running, launch a new terminal. Use `curl` to test the application on the local host by sending a request to port `8080`. This is the default port for Apache Tomcat. If the following command returns `Hello World`, the application was built correctly and is working as expected.
+1.  With Tomcat or Gradle `bootRun` still running, launch a new terminal. Use `curl` to test the application on the local host by sending a request to port `8080`. This is the default port for Apache Tomcat. If the following command returns `Hello World`, the application was built correctly and is working as expected.
 
-        curl localhost:8080
+    ```code
+    curl localhost:8080
+    ```
 
     {{< output >}}
 Hello world
     {{< /output >}}
 
-4.  When testing is complete, stop the Tomcat server using **CTRL-C**
-
-        <CTRL-C>
+1.  When testing is complete, stop the Tomcat server using **CTRL+C**.
 
 For more detailed information on creating a Spring Boot application, see the [Developing Your First Spring Boot Application guide](https://docs.spring.io/spring-boot/docs/1.2.0.M2/reference/html/getting-started-first-application.html).
 
@@ -281,32 +324,36 @@ To access the new application externally across the internet, a few more steps a
 
 1.  Create a service script for `helloworld.service` in the `/etc/systemd/system` directory as follows. The `ExecStart` field must contain the full path to the application `.jar` file. This is the same file that ran inside Tomcat server earlier. For the path name, replace `userdir` with the name of the user directory.
 
-    {{< file "/etc/systemd/system/helloworld.service" >}}
-[Unit]
-Description=Spring Boot HelloWorld
-After=syslog.target
-After=network.target[Service]
-User=username
-Type=simple
+    ```file {title="/etc/systemd/system/helloworld.service"}
+    [Unit]
+    Description=Spring Boot HelloWorld
+    After=syslog.target
+    After=network.target[Service]
+    User=username
+    Type=simple
 
-[Service]
-ExecStart=/usr/bin/java -jar /home/userdir/hello-world/build/libs/hello-world-0.0.1-SNAPSHOT.jar
-Restart=always
-StandardOutput=syslog
-StandardError=syslog
-SyslogIdentifier=helloworld
+    [Service]
+    ExecStart=/usr/bin/java -jar /home/userdir/hello-world/build/libs/hello-world-0.0.1-SNAPSHOT.jar
+    Restart=always
+    StandardOutput=syslog
+    StandardError=syslog
+    SyslogIdentifier=helloworld
 
-[Install]
-WantedBy=multi-user.target
-    {{< /file >}}
+    [Install]
+    WantedBy=multi-user.target
+    ```
 
-2.  Start the service.
+1.  Start the service.
 
-        sudo systemctl start helloworld
+    ```code
+    sudo systemctl start helloworld
+    ```
 
-3.  Verify the service is `active`.
+1.  Verify the service is `active`.
 
-        sudo systemctl status helloworld
+    ```code
+    sudo systemctl status helloworld
+    ```
 
     {{< output >}}
 helloworld.service - Spring Boot HelloWorld
@@ -325,49 +372,59 @@ To create and test a reverse proxy for the application, follow these steps.
 
 1.  Create an NGINX configuration file for the service. The file should have the same name as the service and have the `.conf` extension. Place the file in the `sites-available` directory in the same manner as a regular site configuration file.
 
-    {{< file "/etc/nginx/sites-available/helloworld.conf" >}}
-server {
-        listen 80;
-        listen [::]:80;
+    ```file {title="/etc/nginx/sites-available/helloworld.conf"}
+    server {
+            listen 80;
+            listen [::]:80;
 
-        server_name example.com;
+            server_name example.com;
 
-        location / {
-            proxy_pass http://localhost:8080/;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-            proxy_set_header X-Forwarded-Port $server_port;
-        }
-}
-    {{< /file >}}
+            location / {
+                proxy_pass http://localhost:8080/;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+                proxy_set_header X-Forwarded-Port $server_port;
+            }
+    }
+    ```
 
-2.  Create a soft link to the `sites-enabled` directory to enable the proxy.
+1.  Create a soft link to the `sites-enabled` directory to enable the proxy.
 
-        sudo ln -s /etc/nginx/sites-available/helloworld.conf /etc/nginx/sites-enabled/
+    ```code
+    sudo ln -s /etc/nginx/sites-available/helloworld.conf /etc/nginx/sites-enabled/
+    ```
 
-3.  Unlink the default NGINX site.
+1.  Unlink the default NGINX site.
 
-        sudo unlink /etc/nginx/sites-enabled/default
+    ```code
+    sudo unlink /etc/nginx/sites-enabled/default
+    ```
 
-4.  Run the NGINX test utility and ensure there are no errors.
+1.  Run the NGINX test utility and ensure there are no errors.
 
-        sudo nginx -t
+    ```code
+    sudo nginx -t
+    ```
 
     {{< output >}}
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
     {{< /output >}}
 
-5.  Restart the NGINX server.
+1.  Restart the NGINX server.
 
-        sudo systemctl restart nginx
+    ```code
+    sudo systemctl restart nginx
+    ```
 
-6.  Visit the IP address of the Linode to test the new service. The browser should display the "Hello World" message, which is the output of the Java application.
+1.  Visit the IP address of the Linode to test the new service. The browser should display the "Hello World" message, which is the output of the Java application.
 
-        http://ip_address
+    ```code
+    http://ip_address
+    ```
 
 ## Concluding Thoughts about Deploying Spring Boot Applications with NGINX on Ubuntu 22.04
 
-Spring Boot is an extension of the Spring Framework that makes it easier for Ubuntu Java developers to create applications. Spring Boot is used with the NGINX web server to make stand-alone Spring applications available over the web. Spring requires a recent release of the Java JDK and can be downloaded and managed using the SDKMAN! package manager.
+Spring Boot is an extension of the Spring Framework that makes it easier for Ubuntu Java developers to create applications. Spring Boot is used with the NGINX web server to make standalone Spring applications available over the web. Spring requires a recent release of the Java JDK and can be downloaded and managed using the SDKMAN! package manager.
 
 Spring Boot works with a large number of build tools, including Gradle. Developers can build upon a default Spring Boot configuration and use Spring Boot annotations to quickly add features. After building a `.jar` file using Gradle, developers can run the application locally using the Apache Tomcat server. To run the application over the web, add a service init file and create a reverse proxy to redirect traffic to the servlet. For more information about Spring Boot, consult the [Spring Boot web page](https://spring.io/projects/spring-boot/).
