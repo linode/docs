@@ -167,6 +167,7 @@ bitbucket
 bitnami
 bitrate
 bitshift
+bitstream
 bitwarden
 bitwise
 blkid
@@ -1304,6 +1305,7 @@ multiline
 multilink
 multiplatform
 multiport
+multiprotocol
 multisite
 multitenant
 multiuser
@@ -1344,6 +1346,7 @@ namespaces
 nano
 nanode
 nanodes
+nast
 natively
 nawk
 nbox
@@ -2037,6 +2040,7 @@ taskwarrior
 tbz
 tcp
 tcpdump
+tcptrack
 tcpwrappers
 teamspeak
 teardown
