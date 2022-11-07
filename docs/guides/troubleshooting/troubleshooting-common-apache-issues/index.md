@@ -26,11 +26,11 @@ In this guide, you'll start with some basic troubleshooting steps and then proce
 
 ## Is Apache Running?
 
-First, check whether Apache is running. Follow the process in this [Troubleshooting Guide](/docs/troubleshooting/troubleshooting/#is-the-web-server-running).
+First, check whether Apache is running. Follow the process in this [Troubleshooting Guide](/docs/guides/troubleshooting-overview/#is-the-web-server-running).
 
 If it isn't, go ahead and restart Apache, as explained in the next section.
 
-You may also want to investigate the possibility of [memory issues](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/#diagnosing-and-fixing-memory-issues), if Apache is stopping unexpectedly.
+You may also want to investigate the possibility of [memory issues](/docs/guides/troubleshooting-memory-and-networking-issues/#diagnosing-and-fixing-memory-issues), if Apache is stopping unexpectedly.
 
 ## Restart Apache
 

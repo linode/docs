@@ -28,10 +28,10 @@ dedicated_cpu_link: true
 
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Don’t Starve Together](http://store.steampowered.com/app/322330/).
 
-2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites for Don't Starve Together
@@ -149,7 +149,7 @@ cd ./Steam/dstserver/bin
 screen -S "Don't Starve Together Server" ./dontstarve_dedicated_server_nullrenderer
 {{< /file >}}
 
-    When run, the script will change directories to `~/Steam/dstserver/bin` and execute DST in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/) session.
+    When run, the script will change directories to `~/Steam/dstserver/bin` and execute DST in a [Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session.
 
 5.  Make the script executable:
 

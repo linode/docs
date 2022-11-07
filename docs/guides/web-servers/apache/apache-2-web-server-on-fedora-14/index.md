@@ -23,7 +23,7 @@ relations:
 
 
 
-This tutorial explains how to install and configure the Apache web server on Fedora 14. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 14](/docs/lamp-guides/fedora-14/).
+This tutorial explains how to install and configure the Apache web server on Fedora 14. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 14](/docs/guides/lamp-server-on-fedora-14/).
 
 ## Set the Hostname
 
@@ -149,7 +149,7 @@ In accordance with best practices, we do not recommend modifying the default con
 
     cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd-conf.backup-1
 
-Generally, as specified above and in our [LAMP guide for Fedora 14](/docs/lamp-guides/fedora-14/) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
+Generally, as specified above and in our [LAMP guide for Fedora 14](/docs/guides/lamp-server-on-fedora-14/) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
 
 ## Install Apache Modules
 

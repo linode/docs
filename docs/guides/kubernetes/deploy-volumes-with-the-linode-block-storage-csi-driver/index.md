@@ -30,13 +30,13 @@ This guide assumes you have a working Kubernetes cluster running on Linode. You 
 
 1. Use the [Linode Kubernetes Engine (LKE)](https://www.linode.com/products/kubernetes/) to deploy a cluster. LKE is Linode's managed Kubernetes service. You can deploy a Kubernetes cluster using:
 
-    - The [Linode Cloud Manager](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/).
-    - [Linode's API v4](/docs/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/).
-    - [Terraform](/docs/kubernetes/how-to-deploy-an-lke-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
+    - The [Linode Cloud Manager](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/).
+    - [Linode's API v4](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/).
+    - [Terraform](/docs/guides/how-to-deploy-an-lke-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
 
-1. Deploy an [unmanaged Kubernetes cluster using Terraform](/docs/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/) and the [Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2).
+1. Deploy an [unmanaged Kubernetes cluster using Terraform](/docs/guides/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/) and the [Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2).
 
-1. Use kubeadm to manually deploy a Kubernetes cluster on Linode. You can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/kubernetes/getting-started-with-kubernetes/) guide to do this.
+1. Use kubeadm to manually deploy a Kubernetes cluster on Linode. You can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/getting-started-with-kubernetes/) guide to do this.
 
     {{< note >}}
 The Block Storage CSI Driver supports Kubernetes version 1.13 or higher. To check the version of Kubernetes you are running, you can issue the following command:
@@ -55,7 +55,7 @@ Using either the Linode Kubernetes Engine or Terraform methods above will instal
 {{< caution >}}
 The instructions in this section will create a Block Storage volume billable resource on your Linode account. A single volume can range from 10 GB to 10,000 GB in size and costs $0.10/GB per month or $0.00015/GB per hour. If you do not want to keep using the Block Storage volume that you create, be sure to delete it when you have finished the guide.
 
-If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{</ caution >}}
 
 A *Persistent Volume Claim* (PVC) consumes a Block Storage Volume. To create a PVC, create a manifest file with the following YAML:
@@ -257,7 +257,7 @@ To delete the Block Storage PVC created in this guide:
         kubectl delete pvc pvc-example
 
     {{< note >}}
-If you used the `linode-block-storage-retain` StorageClass when creating your PVC, this command will delete the PVC, however, your Block Storage Volume and its data will persist in a detached state. To permanently remove the Block Storage Volume from your Linode Account, see [How to Delete a Block Storage Volume](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#how-to-delete-a-block-storage-volume).
+If you used the `linode-block-storage-retain` StorageClass when creating your PVC, this command will delete the PVC, however, your Block Storage Volume and its data will persist in a detached state. To permanently remove the Block Storage Volume from your Linode Account, see [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/).
 
 If, instead, you used the `linode-block-storage` StorageClass when creating your PVC, this command will delete the PVC along with your Block Storage Volume and its data.
     {{</ note >}}

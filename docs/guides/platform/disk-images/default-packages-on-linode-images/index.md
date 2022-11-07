@@ -185,7 +185,7 @@ Gentoo and Slackware do not use any packages not provided by the distribution.
     'vim-enhanced'
     'whois'
 
-## OpenSUSE
+## openSUSE
 
     'pattern:basesystem'
     'pattern:console'

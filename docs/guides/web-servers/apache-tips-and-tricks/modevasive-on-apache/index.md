@@ -260,4 +260,4 @@ In the output above, the part that says `Blacklisting address 127.0.0.1: possibl
 
 ## How to Load Test mod_evasive
 
-Refer to our guide on [Load Testing with Siege](/docs/tools-reference/tools/load-testing-with-siege/) to test your site's performance. Before you attempt to DDoS yourself, be aware that you risk banning your own IP. Linode does not recommend testing any server that isn't your own.
+Refer to our guide on [Load Testing with Siege](/docs/guides/load-testing-with-siege/) to test your site's performance. Before you attempt to DDoS yourself, be aware that you risk banning your own IP. Linode does not recommend testing any server that isn't your own.

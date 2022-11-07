@@ -16,7 +16,7 @@ external_resources:
  - '[Installing Apache](/docs/web-servers/apache/)'
  - '[LAMP stack guides](/docs/web-servers/lamp/)'
  - '[Apache Rewrite Guide](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)'
- - '[Redirect URLs with the Apache Web Server](/docs/web-servers/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/)'
+ - '[Redirect URLs with the Apache Web Server](/docs/guides/redirect-urls-with-the-apache-web-server/)'
 tags: ["web server","apache"]
 ---
 
@@ -83,7 +83,7 @@ This is useful when the locations of files on the file system do not correspond 
 
 ## Rewrite URLs Under Specific Conditions
 
-With the `RewriteCond` parameter, you can set conditions under which a `RewriteRule` will be used. Let's take the following example from the default rewrite rules for the [WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress/) application:
+With the `RewriteCond` parameter, you can set conditions under which a `RewriteRule` will be used. Let's take the following example from the default rewrite rules for the [WordPress](/docs/guides/how-to-install-and-configure-wordpress/) application:
 
 {{< file "Apache Configuration Option for WordPress" apache >}}
 RewriteEngine On

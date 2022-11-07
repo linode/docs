@@ -62,7 +62,7 @@ The output shows:
 {{< note >}}
 DHCP will only recognize one IPv4 address. If you have more than one IPv4 address assigned to your Linode, you must either set those addresses statically or enable Network Helper. Otherwise, those addresses will not be usable to the system, nor will they display in `ip` commands. See the following guides for more information:
 
-[Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration/)
+[Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/)
 
-[Network Helper](/docs/platform/network-helper/)
+[Network Helper](/docs/guides/network-helper/)
 {{< /note >}}

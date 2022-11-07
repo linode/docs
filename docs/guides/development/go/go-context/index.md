@@ -27,13 +27,13 @@ The context package provides contextual information that a goroutine may need su
 
 In this guide you will learn:
 
- - How the [context package](/docs/development/go/go-context/#about-the-context-package) works.
+ - How the [context package](/docs/guides/go-context/#about-the-context-package) works.
 
- - Work through a [simple example](/docs/development/go/go-context/#a-simple-example) that demonstrate the main `context.Context` features.
+ - Work through a [simple example](/docs/guides/go-context/#a-simple-example) that demonstrate the main `context.Context` features.
 
- - [Use context for http](/docs/development/go/go-context/#using-context-for-http) requests.
+ - [Use context for http](/docs/guides/go-context/#using-context-for-http) requests.
 
- - [Use context as a key-value store](/docs/development/go/go-context/#using-contexts-as-key-value-stores).
+ - [Use context as a key-value store](/docs/guides/go-context/#using-contexts-as-key-value-stores).
 
 ## Before You Begin
 

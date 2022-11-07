@@ -55,7 +55,7 @@ This tutorial walks you through the steps to install ownCloud on [CentOS Stream 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-If you have a registered domain name that you want to point to your ownCloud instance, then use the [Linode DNS Manager to point the domain](/docs/guides/dns-manager/) to the Linode server on which you plan to install ownCloud. If you do not have a registered domain name, then replace example.com with the IP address of the Linode server when following the steps in the [Create an Apache Configuration File](#create-an-apache-configuration-file) section.
+If you have a registered domain name that you want to point to your ownCloud instance, then use the [Linode DNS Manager to point the domain](/docs/products/networking/dns-manager/) to the Linode server on which you plan to install ownCloud. If you do not have a registered domain name, then replace example.com with the IP address of the Linode server when following the steps in the [Create an Apache Configuration File](#create-an-apache-configuration-file) section.
 {{</ note >}}
 
 ## Install ownCloud
@@ -96,7 +96,7 @@ ownCloud requires a full LAMP (Linux, Apache, MySQL, PHP) stack. In this section
 
         sudo mysql_secure_installation
 
-    During this process, the system asks if you want to enable the `VALIDATE PASSWORD COMPONENT`. This feature ensures that all created passwords are strong and unique. Answer `n` (as in "no"). When prompted, type and verify a new secure password for the MySQL admin user. You are then prompted to answer four questions, to all of which you should respond `y` (as in "yes").
+    You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
 #### Install PHP
 
@@ -126,7 +126,7 @@ So far, you have installed the Apache web server, and MariaDB. Next up is the pr
 
 1. Enable SELinux to allow Apache to execute PHP code via PHP-FPM.:
 
-        sudo setsebool -P httpd execmem 1
+        sudo setsebool -P httpd_execmem 1
 
 
 #### Create the ownCloud Database

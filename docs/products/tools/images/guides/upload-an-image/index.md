@@ -7,8 +7,6 @@ title: Upload an Image
 description: "How to upload an image with Linode Images."
 ---
 
-{{< content "images-ga-pricing-update-shortguide" >}}
-
 ## Requirements and Considerations
 
 When creating an image file to upload as a Custom Image, keep the following limits, requirements, and considerations in mind.
@@ -70,7 +68,7 @@ Once you have obtained a compatible image file that meets all the requirements, 
 
 ## Uploading an Image File through the Linode CLI
 
-Another method for uploading a compatible image file is directly through the [Linode CLI](/docs/guides/linode-cli/).
+Another method for uploading a compatible image file is directly through the [Linode CLI](/docs/products/tools/cli/get-started/).
 
 1.  Run the following command to install or update the Linode CLI:
 
@@ -93,7 +91,7 @@ Another method for uploading a compatible image file is directly through the [Li
 
         linode-cli image-upload --label "Example Image" --description "Some details about the image" --region "us-east" ~/Downloads/image-file.img.gz
 
-4. After running the above command, a progress bar will be displayed that indicates the total progress of the file upload. Once completed, a single data row table will be outputted with the details regarding the new Custom Image and a status of *pending_upload*.
+4. After running the above command, a progress bar will be displayed that indicates the total progress of the file upload. Once completed, a single data row table will be outputted with the details regarding the new Custom Image and a status of `pending_upload`.
 
     The image upload may take a few minutes to fully process. To verify that the image is available for use, run the following command and make sure the new Custom Image has a status of *available*:
 

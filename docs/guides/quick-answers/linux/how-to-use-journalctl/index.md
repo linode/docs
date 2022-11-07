@@ -52,7 +52,7 @@ Your logs will be displayed from oldest to newest. To reverse this order and dis
 
 ### Paging through Your Logs
 
-journalctl pipes its output to [the `less` command](/docs/quick-answers/linux/how-to-use-less/), which shows your logs one page at a time in your terminal. If a log line exceeds the horizontal width of your terminal window, you can use the left and right arrow keys to scroll horizontally and see the rest of the line:
+journalctl pipes its output to [the `less` command](/docs/guides/how-to-use-less/), which shows your logs one page at a time in your terminal. If a log line exceeds the horizontal width of your terminal window, you can use the left and right arrow keys to scroll horizontally and see the rest of the line:
 
 Furthermore, your logs can be navigated and searched by using all the same key commands available in `less`:
 
