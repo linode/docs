@@ -57,7 +57,7 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
         sudo systemctl start firewalld
         sudo systemctl enable firewalld
 
--   Please follow the steps mentioned in [Linode: Hosting a Website](/docs/websites/hosting-a-website/) sections "Installing MySQL", "Optimizing MySQL for a Linode 2GB", "Creating a Database".
+-   Please follow the steps mentioned in [Linode: Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) sections "Installing MySQL", "Optimizing MySQL for a Linode 2GB", "Creating a Database".
 
 
 ### Oracle Java 8 SE installation

@@ -7,8 +7,6 @@ description: "Learn how to deploy an Image to an existing Linode Compute Instanc
 aliases: ['/guides/deploy-an-image-to-a-linode/','/quick-answers/linode-platform/deploy-an-image-to-a-linode/','/quick-answers/linode-platform/deploy-an-image-to-a-linode-classic-manager/']
 ---
 
-{{< content "images-ga-pricing-update-shortguide" >}}
-
 While it's typically more common to [deploy an Image to a *new* Compute Instance](/docs/products/tools/images/guides/deploy-image-to-new-linode/), you are also able to deploy an Image to an *existing* Instance. You may wish to do this if you want to maintain consistent billing or if you wish to add the Image alongside the existing data.
 
 There are two methods to deploy an Image to an existing Compute Instance:
@@ -65,7 +63,7 @@ If you instead wish to retain the data on your Compute Instance, you can add a d
         | /dev/sda | Choose the disk for the new Image that was just deployed. |
         | /dev/sdb | Choose the swap disk, if one is available. |
 
-        For all of Linode's standard distribution images, the other fields can retain their default values. For Custom Images, you may need to update other parts of the configuration profile. Review the [Managing Configuration Profiles on a Linode](/docs/guides/linode-configuration-profiles/#editing-a-configuration-profile) and [Install a Custom Distribution on a Linode](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/) guides for further guidance.
+        For all of Linode's standard distribution images, the other fields can retain their default values. For Custom Images, you may need to update other parts of the configuration profile. Review the [Managing Configuration Profiles on a Linode](/docs/guides/linode-configuration-profiles/#editing-a-configuration-profile) and [Install a Custom Distribution on a Linode](/docs/guides/install-a-custom-distribution-on-a-linode/) guides for further guidance.
 
 1. Reboot the Compute Instance using the new Image. Navigate to the **Configuration** tab, find the new configuration profile in the list, and click the corresponding **Boot** link. This link may be displayed with the **More Options** ellipsis dropdown menu.
 

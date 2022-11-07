@@ -13,7 +13,7 @@ modified: 2011-05-23
 modified_by:
   name: Linode
 published: 2011-04-05
-title: 'Manage Email Lists with GNU Mailman on Debian 6 (Squeeze)'
+title: 'Manage Email Lists with GNU Mailman on Debian 6'
 relations:
     platform:
         key: use-gnu-mailman
@@ -51,7 +51,7 @@ During the Mailman installation, you will be required to specify the languages t
 
 ## Configure Mailman
 
-Consider the "[Configure Virtual Hosting](/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze/#configure-virtual-hosting)" section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
+Consider the "[Configure Virtual Hosting](/docs/guides/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze/#configure-virtual-hosting)" section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
 
     newlist mailman
 
@@ -62,7 +62,7 @@ During the list creation process, Mailman will prompt you for the administrators
 {{< /file >}}
 
 
-Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/docs/dns-guides/introduction-to-dns/#mx) for both domains that you want to receive email with. Additionally, add the following lines to your `/etc/postfix/master.cf` file:
+Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/docs/guides/dns-overview/#mx) for both domains that you want to receive email with. Additionally, add the following lines to your `/etc/postfix/master.cf` file:
 
 {{< file "/etc/postfix/master.cf" >}}
 mailman unix  -       n       n       -       -       pipe
@@ -173,7 +173,7 @@ From this point forward, you can create new lists by issuing `newlist` commands 
 
 ## Configuring Mailman with Alternate Mail Configurations
 
-If you wish to deploy Mailman on a system that has an existing mail set up, such as the [Postfix with Dovecot and MySQL](/docs/email/postfix/dovecot-mysql-debian-6-squeeze/) or the [Postfix with Dovecot and System Users](/docs/email/postfix/dovecot-system-users-debian-6-squeeze/) configurations described in other documents, consider the following recommendations:
+If you wish to deploy Mailman on a system that has an existing mail set up, such as the [Postfix with Dovecot and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql-on-debian-6-squeeze/) or the [Postfix with Dovecot and System Users](/docs/guides/postfix-dovecot-and-system-user-accounts-on-debian-6-squeeze/) configurations described in other documents, consider the following recommendations:
 
 Complete your basic mail configuration according to the appropriate guide before beginning to install and configure Mailman.
 

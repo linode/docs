@@ -59,7 +59,8 @@
      is-explorer-open
      is-not-toc-open
      is-not-search-panel-open
-     is-not-search-panel_filters-open">
+     is-not-search-panel_filters-open"
+    data-objectid="{{ partial `funcs/get-objectid.html` . }}">
     {{ partial "sections/after-body-start.html" . }}
 
     {{/* Structured data. */}}
@@ -77,7 +78,12 @@
       {{ end }}
 
 
-      <header id="linode-menus" class="z-20" x-ignore data-turbo-permanent>
+      <header
+        id="linode-menus"
+        class="z-20"
+        x-ignore
+        data-turbo-permanent
+        data-turbo="false">
         {{ partial "linode-header.html" }}
       </header>
 

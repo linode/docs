@@ -41,14 +41,14 @@ This guide will walk you through the steps to migrate from CentOS 7 to CentOS 8 
 ### Back Up Your Data
 For this guide you will need a backup of your existing CentOS 7 installation. You can back up your Linode in two ways.
 
-- You can enroll in [Linode's Backup Service](/docs/platform/disk-images/linode-backup-service/). This will take automatic regular backups for you, and give you the option of taking a [Manual Snapshot](/docs/platform/disk-images/linode-backup-service/#take-a-manual-snapshot) at any time.
-- For alternative backups solutions, see our [Backing Up Your Data](/docs/security/backups/backing-up-your-data/) guide.
+- You can enroll in [Linode's Backup Service](/docs/products/storage/backups/). This will take automatic regular backups for you, and give you the option of taking a [Manual Snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) at any time.
+- For alternative backups solutions, see our [Backing Up Your Data](/docs/guides/backing-up-your-data/) guide.
 
 When creating your backup, it's recommended that you [Resize Your Disk](/docs/guides/resize-a-linode-disk/) to the smallest size possible in advanced in order to ensure that you are able to allocate an extra disk in a later step.
 
 {{< caution >}}
 
-It is important to note that automatic backups using Linode's Backup Service will be overwritten after between 8-14 days have passed. If you would like a backup of your Linode to be preserved for a longer time period, it is recommended that you take a [Snapshot](/docs/platform/disk-images/linode-backup-service/#take-a-manual-snapshot) which will never expire unless manually overwritten.
+It is important to note that automatic backups using Linode's Backup Service will be overwritten after between 8-14 days have passed. If you would like a backup of your Linode to be preserved for a longer time period, it is recommended that you take a [Snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) which will never expire unless manually overwritten.
 
 {{< /caution >}}
 
@@ -78,7 +78,7 @@ It is important to note that automatic backups using Linode's Backup Service wil
 
      {{< note >}}
 
-If your Linode's disks have been using the entirety of allocatable space available to your Linode, then you will either need to [Resize Your Disk](/docs/guides/resize-a-linode-disk/) so that you can take a new [Snapshot](/docs/platform/disk-images/linode-backup-service/#take-a-manual-snapshot), or [Resize Your Linode](/docs/platform/disk-images/resizing-a-linode/)
+If your Linode's disks have been using the entirety of allocatable space available to your Linode, then you will either need to [Resize Your Disk](/docs/guides/resize-a-linode-disk/) so that you can take a new [Snapshot](/docs/products/storage/backups/#take-a-manual-snapshot), or [Resize Your Linode](/docs/guides/resizing-a-linode/)
 
 {{< /note >}}
 

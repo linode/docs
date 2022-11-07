@@ -32,7 +32,7 @@ The OpenLiteSpeed Django app automatically installs Linux, the performance web s
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7, CentOS 8, Ubuntu 18.04 LTS, Ubuntu 20.04 LTS
+- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
@@ -47,7 +47,7 @@ The OpenLiteSpeed Django app automatically installs Linux, the performance web s
 1. You are then prompted to enter the domain you'd like to use for this instance. You can optionally use a custom domain provided you've already configured the *A Records* to point to this server's IPv4 and IPv6 addresses. Otherwise, you can skip this by pressing *CTRL+C* which will use the IP address or default RDNS of the Compute Instance.
 
     {{< note >}}
-For more documentation on how to assign a domain to your Linode, please review the [DNS Manager](/docs/guides/dns-manager/) guide for instructions on setting up your DNS records in the Cloud Manager, and read through [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) for general information about how DNS works.
+For more documentation on how to assign a domain to your Linode, please review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions on setting up your DNS records in the Cloud Manager, and read through [DNS Records: An Introduction](/docs/guides/dns-overview/) for general information about how DNS works.
     {{</ note >}}
 
 Now that you’ve accessed your OpenLiteSpeed Django instance, check out [the official OpenLiteSpeed Django documentation](https://docs.litespeedtech.com/cloud/images/django/) to learn how to further configure your OpenLiteSpeed Django instance.

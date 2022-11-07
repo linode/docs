@@ -1,6 +1,6 @@
 <h1
   class="font-bold leading-tight tracking-tight text-4xl text-titlecolor w-full">
-  {{ partial "funcs/get-page-title.html" . }}
+  {{ partial "funcs/get-page-title-h1.html" . }}
 </h1>
 <div class="mt-2">
   <span class="pt-2 text-basicgray">
@@ -10,7 +10,7 @@
       Updated
     {{ end }}
     {{ $authorLink := partial "funcs/get-author-link.html" . }}
-    <time datetime="{{ .Lastmod }}"
+    <time datetime="{{ .Lastmod.Format site.Params.time_format_iso8601 }}"
       >{{ .Lastmod.Format site.Params.time_format_default }}</time
     >{{ with $authorLink }}, by {{ $authorLink }}{{ end }}
   </span>

@@ -70,7 +70,7 @@ In this section you will download, enable, and set a Drupal theme using Drush.
          composer require drupal/bootstrap
 
     {{< note >}}
-If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/docs/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-ubuntu-18-04/#setting-the-site-s-ownership-and-permissions) section of the [Install Drupal using Drush on Ubuntu 18.04](/docs/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-ubuntu-18-04/) guide.
+If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/#setting-the-site-s-ownership-and-permissions) section of the [Install Drupal using Drush on Ubuntu 18.04](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/) guide.
 
 Ensure that your `/var/www/html/example.com/public_html` directory has user and group read, write, and execute permissions.
 
