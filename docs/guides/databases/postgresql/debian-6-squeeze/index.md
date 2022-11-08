@@ -11,7 +11,7 @@ modified: 2013-03-08
 modified_by:
   name: Linode
 published: 2011-02-18
-title: 'Use PostgreSQL Relational Databases on Debian 6 (Squeeze)'
+title: 'Use PostgreSQL Relational Databases on Debian 6'
 relations:
     platform:
         key: use-postrgesql-database

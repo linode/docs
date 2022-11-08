@@ -50,7 +50,8 @@
     <div>
       <p class="pt-2 md:pt-6 text-basicgray">
         This page was originally published on
-        <time datetime="{{ .PublishDate }}">
+        <time
+          datetime="{{ .PublishDate.Format site.Params.time_format_iso8601 }}">
           {{ .PublishDate.Format site.Params.time_format_default }}.
         </time>
       </p>
@@ -68,10 +69,11 @@
     </div>
 
     <div class="hide-if-no-js">
+      {{ if ne $.Site.Params.feedback_survey_display false }}
       <hr class="my-8" />
-
-      {{/* Add feedback links via Delighted. */}}
-      {{ partial "components/delighted/form.html" . }}
+        {{/* Add feedback links via Delighted. */}}
+        {{ partial "components/delighted/form.html" . }}
+      {{ end }}
       <hr class="mt-8" />
 
       {{ if not ("api,blog" | strings.Contains .Type) }}

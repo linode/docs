@@ -21,7 +21,7 @@ relations:
             - distribution: Fedora 15
 ---
 
-This guide will help you get up and running quickly with a LEMP (Linux, nginx, MySQL, PHP) stack on your Linode. If you haven't done so already, please follow the instructions in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) before proceeding. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+This guide will help you get up and running quickly with a LEMP (Linux, nginx, MySQL, PHP) stack on your Linode. If you haven't done so already, please follow the instructions in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) before proceeding. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 ## Set the Hostname
 

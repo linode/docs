@@ -25,7 +25,7 @@ tags: ["ubuntu","database","nosql"]
 
 Redis is a high performance persistent key-value store, and is intended as a datastore solution for applications where performance and flexibility are more critical than persistence and absolute data integrity. As such, Redis may be considered a participant in the "NoSQL" movement and is an attractive tool for developers of some kinds of applications. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.
 
-Prior to beginning this guide for installing Redis, we assume that you have completed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Prior to beginning this guide for installing Redis, we assume that you have completed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Install Redis
 
@@ -167,7 +167,7 @@ After applying these configuration changes, restart Redis. All modifications to 
 
     /opt/redis/redis-cli bgrewriteaof
 
-You may wish to issue this command regularly, perhaps in a [cron job](/docs/tools-reference/tools/schedule-tasks-with-cron/), to ensure that the transaction journal doesn't expand exponentially. `bgrewriteaof` is non-destructive and can fail gracefully.
+You may wish to issue this command regularly, perhaps in a [cron job](/docs/guides/schedule-tasks-with-cron/), to ensure that the transaction journal doesn't expand exponentially. `bgrewriteaof` is non-destructive and can fail gracefully.
 
 ## Distributed Data Stores with Master Slave Replication
 

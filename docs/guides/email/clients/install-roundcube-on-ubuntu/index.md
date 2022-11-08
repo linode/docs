@@ -36,7 +36,7 @@ Roundcube is a web-based IMAP email client that offers a user interface similar 
 
 3.  This guide is designed to work with our [Installing Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) tutorial, but you **can** use a different mail server.
 
-4.  Configure an **A HOST** or **CNAME** DNS record (a subdomain) to point at your Linode. For this guide, the subdomain `webmail` will be used. Refer to our [Introduction to DNS Records](/docs/guides/dns-records-an-introduction/) guide if you need help creating this record.
+4.  Configure an **A HOST** or **CNAME** DNS record (a subdomain) to point at your Linode. For this guide, the subdomain `webmail` will be used. Refer to our [Introduction to DNS Records](/docs/guides/dns-overview/) guide if you need help creating this record.
 
 5.  Update your server's software packages:
 

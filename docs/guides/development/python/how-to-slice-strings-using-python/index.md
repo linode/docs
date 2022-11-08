@@ -36,7 +36,7 @@ It is possible to access any character in a Python string using array-based inde
 1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. For information on how to use Python, see our guide on [How to Install Python 3](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How Indexing Strings Works in Python 3

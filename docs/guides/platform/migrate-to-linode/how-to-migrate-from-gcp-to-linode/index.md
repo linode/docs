@@ -86,9 +86,9 @@ Locate and backup the data on your GCP instance by [creating a snapshot](https:/
 
 If your data is stored in a database, you will likely need to perform a *database dump*. This will result in a file on disk that encapsulates your database data and can be copied over the network as a normal file:
 
--  [Use mysqldump to Back Up MySQL or MariaDB](/docs/guides/use-mysqldump-to-back-up-mysql-or-mariadb/)
+-  [Use mysqldump to Back Up MySQL or MariaDB](/docs/guides/mysqldump-backups/)
 -  [Create Physical Backups of your MariaDB or MySQL Databases](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/)
--  Use [postgres dump database](/docs/guides/how-to-back-up-your-postgresql-database/)
+-  Use [postgres dump database](/docs/guides/back-up-a-postgresql-database/)
 
 ### Use rsync to Transfer Your GCP Data to Your Linode
 
@@ -360,7 +360,7 @@ You will be importing your GCP image onto a *raw* disk with the *direct disk* bo
 
 If you would like access to these features after completing your migration, ensure you complete the following steps:
 
-- Create a Linode with **twice the storage space** of your [original disk image](#inspect-your-gcp-instances-disks). You can always resize it down later. See the [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/#how-hourly-billing-works) guide for details on how hourly billing works.
+- Create a Linode with **twice the storage space** of your [original disk image](#inspect-your-gcp-instances-disks). You can always resize it down later. See the [How Linode Billing Works](/docs/guides/understanding-billing-and-payments/#how-hourly-billing-works) guide for details on how hourly billing works.
 
 - Follow the steps in the optional section [Transfer Disk to ext4](#optional-transfer-disk-to-ext4).
 {{</ note >}}
@@ -381,7 +381,7 @@ When selecting your Linode's plan, if you want to have access to advanced featur
 
 1.  Once the Linode is finished provisioning, power it down. Click on the **Running** status at the top of the Cloud Manager and select **Power Off** from the drop down menu.
 
-1.  [Disable *Watchdog*](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog), also known as *Lassie*, which is a Linode Cloud Manager feature capable of automatically rebooting your Linode if it powers off unexpectedly. Click the **Settings** tab, then **Shutdown Watchdog**. Toggle the **Enabled** switch to **Disabled**.
+1.  [Disable *Watchdog*](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog), also known as *Lassie*, which is a Linode Cloud Manager feature capable of automatically rebooting your Linode if it powers off unexpectedly. Click the **Settings** tab, then **Shutdown Watchdog**. Toggle the **Enabled** switch to **Disabled**.
 
 1.  Disable your Linode's Auto Resize capability. Click the **Resize** tab and scroll to the bottom of the screen. Uncheck the box for **Auto Resize Disk**.
 
@@ -394,7 +394,7 @@ In this section you will create a new disk and boot configuration in order to be
 1.  Under the **Disks** panel click the more options ellipses next to the main disk (for example, `Debian 9 Disk`) and select **Resize** from the drop down menu. Resize this disk to make room for the new raw disk you will create in the next step. The new raw disk is where your GCP image will be installed.
 
     {{< note >}}
-If, for example, your GCP disk image's size is 10GB, ensure that you resize the main disk to make enough room for a a new disk that is slightly larger than 10 GB (11 GB, for example). This will ensure that you can safely reboot your Linode from the extracted image (you will complete that step in a later section).
+If, for example, your GCP disk image's size is 10GB, ensure that you resize the main disk to make enough room for a new disk that is slightly larger than 10 GB (11 GB, for example). This will ensure that you can safely reboot your Linode from the extracted image (you will complete that step in a later section).
     {{</ note >}}
 
 1.  Click **Add a Disk** and create a new `Empty Disk`. Give it a label like "New Google", for filesystem, select `raw`, and for size, enter a size that will accommodate the entire extracted image. Click the **Add** button.
@@ -441,7 +441,7 @@ If, for example, your GCP disk image's size is 10GB, ensure that you resize the 
 
     ![Cloud Manager Reboot Into New Configuration](migrate-gcp-to-linode-reboot-custom-config.png "Cloud Manager Reboot Into New Configuration")
 
-1.  Once booting is complete, click **Launch Console** at the top of the screen. Again, this opens the `Weblish` and `Glish` console window. This time, you should have a regular [Lish shell](/docs/guides/using-the-lish-console/). You should also be able to SSH to your Linode at this time.
+1.  Once booting is complete, click **Launch Console** at the top of the screen. Again, this opens the `Weblish` and `Glish` console window. This time, you should have a regular [Lish shell](/docs/guides/lish/). You should also be able to SSH to your Linode at this time.
 
     {{< note >}}
 If you are having trouble with ssh starting, you may have to run the following command to start the service from Lish:
@@ -473,7 +473,7 @@ You disabled the Google services from calling out before creating and migrating 
 
 ### Optional: Transfer Disk to ext4
 
-As stated above, to take advantage of features like resizing your disks in Cloud Manager and Backup Service, you'll need to move your new disk to an ext4 formatted disk. To do this, follow the procedures in the Linode Manager Compatibility section of the [Install a Custom Distribution on a Linode guide](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/#linode-manager-compatibility).
+As stated above, to take advantage of features like resizing your disks in Cloud Manager and Backup Service, you'll need to move your new disk to an ext4 formatted disk. To do this, follow the procedures in the Linode Manager Compatibility section of the [Install a Custom Distribution on a Linode guide](/docs/guides/install-a-custom-distribution-on-a-linode/#linode-manager-compatibility).
 
 ### Cleaning Up
 
@@ -483,7 +483,7 @@ When you're done:
 - [Delete the original disk](/docs/guides/disks-and-storage/#deleting-a-disk) that was created when you first deployed the Linode. If you chose to transfer your disk to ext4, delete the raw disk you created to import the GCP image.
 - [Resize your Linode](/docs/guides/resizing-a-linode/) to a smaller plan or resize your remaining ext4 disk or raw disk to take up the rest of the storage space.
 - [Delete the Configurations for the original Linode](/docs/guides/linode-configuration-profiles/#deleting-a-configuration-profile) when it was created. Optionally, delete the configuration for the raw disk if you created a new one for the ext4 boot disk.
-- [Enable Shutdown Watchdog](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) (Lassie) under the **Settings** tab.
+- [Enable Shutdown Watchdog](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog) (Lassie) under the **Settings** tab.
 
 ## Additional Migration Considerations
 
@@ -503,7 +503,7 @@ If you'd like to continue with your current nameservers, update all of the DNS r
 
 {{< content "update-dns-at-common-name-server-authorities" >}}
 
-After DNS propagation has finished, [set reverse DNS](/docs/guides/configure-your-linode-for-reverse-dns/) for your domain. This is especially important if you are running a mail server.
+After DNS propagation has finished, [set reverse DNS](/docs/guides/configure-rdns/) for your domain. This is especially important if you are running a mail server.
 
 ## Next Steps
 

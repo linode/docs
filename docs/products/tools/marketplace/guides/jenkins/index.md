@@ -55,7 +55,7 @@ After deploying your Jenkins instance, you are ready to log in and continue the 
 0f6fed516bc4ceab24373fe5de513dc
     {{</ output >}}
 
-1. Open a browser and navigate to `http://192.0.2.0:8080/`. Replace `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/). This will bring you the *Unlock Jenkins* page. Enter the password you retrieved in the previous step and click **continue**.
+1. Open a browser and navigate to `http://192.0.2.0:8080/`. Replace `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/). This will bring you the *Unlock Jenkins* page. Enter the password you retrieved in the previous step and click **continue**.
 
     ![Log into Jenkins with your admin password](jenkins-admin-login.png)
 

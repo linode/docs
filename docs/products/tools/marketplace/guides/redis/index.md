@@ -47,7 +47,7 @@ aliases: ['/platform/marketplace/how-to-deploy-redis-with-marketplace-apps/','/p
 
 ### Access the Redis CLI
 
-1.  Log in to your new Compute Instance through [Lish](/docs/guides/using-the-lish-console/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using either the `root` user or limited user and the associated password you entered when creating the instance.
+1.  Log in to your new Compute Instance through [Lish](/docs/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using either the `root` user or limited user and the associated password you entered when creating the instance.
 
 1.  To use the redis-cli, run either of the commands below:
 

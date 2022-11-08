@@ -258,5 +258,5 @@ local    all        all             peer
 ## Secure Remote PostgreSQL Access
 
 PostgreSQL listens for connections on localhost and it is not advised to reconfigure it to listen on public IP addresses. If you would like to access your databases remotely using a graphical tool, please follow one of these guides:
--   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/databases/postgresql/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows/)
--   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/databases/postgresql/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/)
+-   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/guides/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows/)
+-   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/guides/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/)

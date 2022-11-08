@@ -117,7 +117,7 @@ This guide's example instructions will also result in the creation of a Block St
 
         kubectl config use-context your-cluster-name
 
-1.  It is beneficial to have a registered [domain name](/docs/networking/dns/dns-records-an-introduction/) for this guide's example app, but it is not required.
+1.  It is beneficial to have a registered [domain name](/docs/guides/dns-overview/) for this guide's example app, but it is not required.
 
 ## Install Helm
 
@@ -260,7 +260,7 @@ ghost-1576075187	default  	1       	2019-12-11 09:39:50.168546 -0500 EST	deploye
 
 1.  If you haven't set up DNS for your site yet, you can instead access the admin interface by visiting the `ghost` URL on your LoadBalancer IP address (e.g. `http://104.237.148.66/ghost`). Visit this page in your browser and then follow the steps to complete admin account creation. You should be granted access to the administrative interface.
 
-1.  To set up DNS for your app, create an *A record* for your domain which is assigned to the external IP for your app's LoadBalancer. Review Linode's [DNS Manager](/docs/guides/dns-manager/) guide for instructions.
+1.  To set up DNS for your app, create an *A record* for your domain which is assigned to the external IP for your app's LoadBalancer. Review Linode's [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions.
 
 ## Upgrade your App
 

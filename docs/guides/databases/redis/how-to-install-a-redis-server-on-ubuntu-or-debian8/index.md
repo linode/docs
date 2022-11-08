@@ -47,7 +47,7 @@ Since Redis serves all data from memory, we recommend using a [High Memory Linod
         sudo apt-get install software-properties-common
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 To utilize the replication steps in the second half of this guide, you will need at least two Linodes.
 {{< /note >}}
@@ -217,7 +217,7 @@ Your master/slave replication setup is working properly.
 
 Since Redis is designed to work in trusted environments and with trusted clients, you should take care of controlling access to the Redis instance. Security methods include:
 
-- Setting up a firewall using [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/).
+- Setting up a firewall using [iptables](/docs/guides/control-network-traffic-with-iptables/).
 
 - Encrypting Redis traffic, using an SSH tunnel or the methods described in the [Redis Security documentation](http://redis.io/topics/security).
 

@@ -45,7 +45,7 @@ Issue the following command to install all prerequisite software:
 
     apt-get install apache2 python
 
-The application you develop using Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/docs/using-linux/package-management#debian-and-ubuntu-package-management). The following command will install the PostgreSQL database and appropriate database drivers:
+The application you develop using Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/docs/guides/apt-package-manager/). The following command will install the PostgreSQL database and appropriate database drivers:
 
     apt-get install python-psycopg2 postgresql
 
@@ -59,7 +59,7 @@ Issue the following commands to download and install Web.py, using a packaged ve
 
 > apt-get install python-webpy
 
-If you want to upload a more recent version, consider [this procedure](/docs/development/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/), to install Web.py from source.
+If you want to upload a more recent version, consider [this procedure](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/), to install Web.py from source.
 
 ## Create a Basic Application with Web.py
 

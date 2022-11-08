@@ -7,7 +7,7 @@ keywords: ['drupal','marketplace', 'cms']
 tags: ["cloud-manager","linode platform","drupal","cms","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-25
-modified: 2022-03-08
+modified: 2022-07-11
 modified_by:
   name: Linode
 title: "Deploying Drupal through the Linode Marketplace"
@@ -18,7 +18,7 @@ external_resources:
  - '[Drupal 9 Official Documentation](https://www.drupal.org/docs/understanding-drupal)'
 ---
 
-Drupal is a content management system (CMS) designed for building custom websites for personal and business use. Built for high performance and scalability, Drupal provides the necessary tools to create rich, interactive "community" websites with forums, user blogs, and private messaging. Drupal also has support for personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.
+[Drupal](https://www.drupal.org/) is a content management system (CMS) designed for building custom websites for personal and business use. Built for high performance and scalability, Drupal provides the necessary tools to create rich, interactive "community" websites with forums, user blogs, and private messaging. Drupal also has support for personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.
 
 In addition to the core infrastructure, there are a number of freely available Drupal modules that allow administrators of Drupal sites to provide additional functionality, and a robust API makes it easy to enable these features. Furthermore, Drupal has an advanced theming engine that allows for a great amount of flexibility for displaying content.
 
@@ -34,7 +34,7 @@ In addition to the core infrastructure, there are a number of freely available D
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10
+- **Supported distributions:** Debian 11
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Drupal Options
@@ -87,5 +87,5 @@ The Drupal Marketplace App installs the following required software on your Lino
 
 ## Next Steps
 
-- Register a domain name and [create a DNS record](/docs/guides/dns-manager/) for it using the Linode Cloud Manager.
-- [Configure your Apache HTTP Server](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/#configure-name-based-virtual-hosts) to point to your domain name.
+- Register a domain name and [create a DNS record](/docs/products/networking/dns-manager/) for it using the Linode Cloud Manager.
+- [Configure your Apache HTTP Server](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#configure-name-based-virtual-hosts) to point to your domain name.

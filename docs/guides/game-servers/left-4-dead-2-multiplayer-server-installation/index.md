@@ -64,7 +64,7 @@ sudo apt-get install libcurl4-gnutls-dev:i386 libc6-i386 libgcc1 screen
 
 4.  If you have a firewall running on your Linode, add exceptions for SteamCMD:
 
-        sudo iptables -A INPUT -p udp- m udp --sport 4380 --dport 1025:65355 -j ACCEPT
+        sudo iptables -A INPUT -p udp -m udp --sport 4380 --dport 1025:65355 -j ACCEPT
         sudo iptables -A INPUT -p udp -m udp --sport 10999 --dport 1025:65355 -j ACCEPT
         sudo iptables -A INPUT -p udp -m udp --sport 7777 --dport 1025:65355 -j ACCEPT
         sudo iptables -A INPUT -p udp -m udp --sport 27015 --dport 1025:65355 -j ACCEPT

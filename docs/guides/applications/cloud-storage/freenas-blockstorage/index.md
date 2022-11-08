@@ -19,7 +19,7 @@ aliases: ['/applications/cloud-storage/freenas-blockstorage/']
 
 Network-attached storage (NAS) allows multiple client devices to access the connected storage media as though it's stored locally to the device. FreeNAS is FreeBSD-based NAS software, configurable via a browser interface.
 
-This guides shows how to install FreeNAS on a Linode and attach a [Block Storage Volume](/blockstorage/) so that you can access both FreeNAS and the Storage Volume from your computer, phone, or tablet almost anywhere in the world.
+This guides shows how to install FreeNAS on a Linode and attach a [Block Storage Volume](/docs/products/storage/block-storage/) so that you can access both FreeNAS and the Storage Volume from your computer, phone, or tablet almost anywhere in the world.
 
 {{< caution >}}
 FreeNAS is not officially supported by Linode at this time. This means that features like the [Linode Backup Service](/docs/platform/backup-service) and Lish will be unavailable to you.
@@ -31,7 +31,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 1.  Create a Linode in your preferred data center. Ensure that your Linode has at least 8GB RAM and at least 11GB of available disk space. FreeNAS recommends 16GB of RAM for media servers. Visit the [official requirements](http://www.freenas.org/hardware-requirements/) for more information.
 
-2.  Disable the [Lassie Shutdown Watchdog](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog/) to prevent it from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
+2.  Disable the [Lassie Shutdown Watchdog](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog/) to prevent it from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
 
 3.  [Create two disks](/docs/guides/disks-and-storage/#creating-a-disk):
 
@@ -60,7 +60,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 ## Create an Installer Disk
 
-1.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish](/docs/guides/using-the-lish-console/) from the dashboard of your Linode from the Linode Cloud Manager.
+1.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish](/docs/guides/lish/) from the dashboard of your Linode from the Linode Cloud Manager.
 
 2.  Once in Rescue Mode, run the following command to set the [latest FreeNAS release](http://www.freenas.org/download-freenas-release/) (11.1 at the time of this writing) as a variable:
 
@@ -80,7 +80,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 6.  Go to the Linode Cloud Manager and access the dashboard for your Linode.
 
-7.  Click the **Launch Console** link to access the [Glish](/docs/platform/manager/using-the-linode-graphical-shell-glish/) console and start the installation.
+7.  Click the **Launch Console** link to access the [Glish](/docs/guides/glish/) console and start the installation.
 
 ## Install FreeNAS
 
@@ -112,7 +112,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 ## Add a Block Storage Volume to FreeNAS
 
-1.  [Add or attach a Block Storage Volume](/docs/platform/how-to-use-block-storage-with-your-linode/#how-to-add-a-block-storage-volume-to-a-linode) to the Linode. After you attach your Block Storage Volume, the Linode Manager will present command-line instructions for mounting it from your Linode, but you can disregard these.
+1.  [Add or attach a Block Storage Volume](/docs/products/storage/block-storage/guides/manage-volumes/) to the Linode. After you attach your Block Storage Volume, the Linode Manager will present command-line instructions for mounting it from your Linode, but you can disregard these.
 
 2.  Reboot the Linode from the Linode Manager. After a few minutes, launch Glish from the dashboard again. You can monitor the reboot progress in Glish.
 

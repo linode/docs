@@ -30,7 +30,7 @@ This guide provides the steps to deploy Rocket.Chat on a Linode running Ubuntu 1
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Complete the [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Rocket.Chat server instance.
+1. Complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Rocket.Chat server instance.
 
 ## Install Rocket.Chat
 
@@ -56,7 +56,7 @@ A reverse proxy is a server that sits between internal applications and external
 
         sudo apt install nginx
 
-1.  Ensure NGINX is running and and enabled to start automatically on reboot:
+1.  Ensure NGINX is running and enabled to start automatically on reboot:
 
         sudo systemctl start nginx
         sudo systemctl enable nginx
