@@ -10,7 +10,7 @@ published: 2018-08-31
 modified: 2018-08-31
 modified_by:
   name: Linode
-title: "systemctl Commands: Restart, Reload, Stop Service and More"
+title: "systemctl Commands: Restart, Reload, and Stop Service"
 contributor:
   name: Linode
 external_resources:

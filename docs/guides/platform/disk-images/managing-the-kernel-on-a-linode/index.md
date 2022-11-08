@@ -11,7 +11,7 @@ aliases: ['/tools-reference/custom-kernels-distros/run-a-distribution-supplied-k
 modified: 2021-08-13
 modified_by:
   name: Linode
-published: 2021-08-13
+published: 2022-09-02
 title: "How to Manage the Kernel on a Linode"
 h1_title: "Managing the Kernel on a Linode"
 enable_h1: true
@@ -35,7 +35,7 @@ Most of the distribution images available on Linode use the upstream distributio
 
 There are may ways you can determine which kernel version is installed on your Linux system. The following instructions cover the most common methods:
 
-1.  Log in to the Linode through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+1.  Log in to the Linode through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
 
 1.  Run one of the following commands to display the kernel version:
 
@@ -61,8 +61,7 @@ These instructions may not accurately reflect the actual kernel version installe
 
 1.  Review the **Kernel** dropdown menu selection.
 
-    - **Latest 64 bit**: Uses the latest 64-bit Linode kernel at the time the Linode boots/reboots. This was the default for most 64-bit distributions prior to August 2018.
-    - **Latest 32 bit**: Uses the latest 32-bit Linode kernel at the time the Linode boots/reboots. This was the default for most 32-bit distributions prior to August 2018.
+    - **Latest 64 bit** and **Latest 32 bit**: Uses one of the latest 64-bit or 32-bit Linode kernels at the time the Linode boots/reboots, depending on which option you selected. Since new kernel releases are rolled out over a short time period, the actual kernel used by your system may be one or two releases behind. This setting was the default for most distributions prior to August 2018.
     - **Direct Disk**: Instead of a Linux Kernel, this uses the MBE (Master Boot Record) of the primary disk*.
     - **GRUB 2**: Uses the upstream distribution-supplied kernel that's installed on the primary disk. If a custom kernel has been installed instead, that is used instead. **This is the most common option and has been the default for most new Linodes created after August 2018.**
     - **GRUB (Legacy)**: Uses the upstream distribution-supplied kernel that's installed on the primary disk*. This should only be used on older Linux distributions that have Grub (not Grub 2) installed, like CentOS 6.
@@ -82,14 +81,14 @@ Provided a newer kernel is available, you should be able to either manually (or 
 
 Follow these steps if the Linode is using a Linode kernel:
 
--   **Latest 64-bit or 32-bit kernel**: Rebooting the Linode automatically updates the kernel used within your system to the latest Linode kernel release.
+-   **Latest 64-bit or 32-bit kernel**: Rebooting the Linode automatically updates the kernel used within your system to one of the latest Linode kernel release. Since new kernel releases are rolled out over a short time period, the actual kernel used by your system may be one or two releases behind.
 -   **Specific kernel version** (ex: `5.12.2-x86_64-linode144`): To update your kernel, follow the instructions within the [Viewing and Modifying the Kernel in the Cloud Manager](#viewing-and-modifying-the-kernel-in-the-cloud-manager) section. When selecting the kernel in the Linode's Configuration Profile, chose your desired kernel version (or select `Latest 64 bit`), save the changes, and reboot your Linode.
 
 ### Updating the Upstream Kernel
 
 Follow these steps if the Linode is using an upstream kernel (the default for most new Linodes created after August 2018):
 
-1.  Log in to the Linode through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+1.  Log in to the Linode through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
 
 1.  Upgrade any system packages related to the kernel:
 
@@ -141,7 +140,7 @@ Once completed, the disks should be read by GRUB2 correctly.
 
 ### SELinux
 
-In older systems created prior to August 2018, CentOS 7 and Fedora ship with [SELinux](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) running in enforcing mode by default. When switching from the Linode kernel to the upstream kernel, SELinux may need to relabel your filesystem at boot. When the relabeling completes, the Linode will shut down. If you have [Lassie](/docs/uptime/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) enabled, the Linode will automatically boot back up following the shut down. If you do not have Lassie enabled, you will need to manually reboot from the Cloud Manager.
+In older systems created prior to August 2018, CentOS 7 and Fedora ship with [SELinux](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) running in enforcing mode by default. When switching from the Linode kernel to the upstream kernel, SELinux may need to relabel your filesystem at boot. When the relabeling completes, the Linode will shut down. If you have [Lassie](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog) enabled, the Linode will automatically boot back up following the shut down. If you do not have Lassie enabled, you will need to manually reboot from the Cloud Manager.
 
 ![SELinux filesystem relabel](selinux-filesystem-relabel.png "SELinux filesystem relabel")
 
@@ -159,7 +158,7 @@ If your system does not boot and instead shows a GRUB command line prompt in Lis
 
 For new Linodes, an upstream kernel is already installed on your system and you **do not need to follow these steps**. In the case of older Linodes, this section outlines how to get both an upstream kernel (and GRUB) installed and configured on your system.
 
-1.  Log in to the Linode through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+1.  Log in to the Linode through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
 
 1.  Update your package management system and install the Linux kernel and GRUB 2. Choose `/dev/sda` if you're asked which disk to install to during installation. Linode provides the GRUB bootloader, so your system only needs to provide a `grub.cfg` file.
 
@@ -196,7 +195,7 @@ For new Linodes, an upstream kernel is already installed on your system and you 
     grub  initramfs-linux-fallback.img  initramfs-linux.img  vmlinuz-linux
     {{< /output >}}
 
-1. Next, configure the serial console and other GRUB settings so you can use [Lish](/docs/guides/using-the-lish-console/) and [Glish](/docs/guides/using-the-linode-graphical-shell-glish/). This is outlined in the following steps.
+1. Next, configure the serial console and other GRUB settings so you can use [Lish](/docs/guides/lish/) and [Glish](/docs/guides/glish/). This is outlined in the following steps.
 
 1.  Open `/etc/default/grub` in a text editor and go to the line beginning with `GRUB_CMDLINE_LINUX`. Remove the word `quiet` if present, and add `console=ttyS0,19200n8 net.ifnames=0`. Leave the other entries in the line. For example, on CentOS 7 you should have something similar to:
 
@@ -210,6 +209,7 @@ GRUB_DISABLE_OS_PROBER=true
 GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
 GRUB_DISABLE_LINUX_UUID=true
 GRUB_GFXPAYLOAD_LINUX=text
+GRUB_ENABLE_BLSCFG=false
 {{< /file >}}
 
 1.  Prepare and update the bootloader:

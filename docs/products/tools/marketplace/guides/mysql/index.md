@@ -152,4 +152,4 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
 For more on MySQL/MariaDB, checkout the following guides:
 
-- [MariaDB Clusters with Galera](/docs/databases/mariadb/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)
+- [MariaDB Clusters with Galera](/docs/guides/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)

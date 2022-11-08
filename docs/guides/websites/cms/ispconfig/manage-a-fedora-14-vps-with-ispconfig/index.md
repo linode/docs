@@ -77,7 +77,7 @@ After installing MySQL, it's recommended that you run `mysql_secure_installation
 
 ## Install Amavisd-new and SpamAssassin
 
-The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/##reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
+The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/guides/troubleshooting-memory-and-networking-issues/##reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
 
     yum install amavisd-new spamassassin unzip bzip2 perl-DBD-mysql
 
@@ -109,7 +109,7 @@ Installing fail2ban is entirely optional, however ISPConfig can manage this serv
 
     yum install fail2ban
 
-More information regarding fail2ban can be found in our [fail2ban guide](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/).
+More information regarding fail2ban can be found in our [fail2ban guide](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/).
 
 ## Installing ISPConfig
 

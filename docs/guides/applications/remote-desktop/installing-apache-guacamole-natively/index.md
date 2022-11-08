@@ -29,7 +29,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Guacamole Server
 
-1.  Log in to the Compute Instance over [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+1.  Log in to the Compute Instance over [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
 
 1.  Install all required dependencies. For Debian users, replace `libjpeg-turbo8-dev` with `libjpeg62-turbo-dev`.
 

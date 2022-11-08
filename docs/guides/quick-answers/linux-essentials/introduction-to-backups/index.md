@@ -36,7 +36,7 @@ One simple way to make sure your entire system is backed up is to use the offici
 
 If your Linode contains only a few important items (a directory with pictures or personal documents, for example), then backing up the entire disk may be overkill.
 
-You may have made manual backups of files on your personal computer by dragging them onto a flash drive or other external device. A similar procedure can be used to save copies of your files on your Linode to your home computer, another Linode, or a [Block Storage Volume](/docs/guides/how-to-use-block-storage-with-your-linode/). The simplest tool to use for this purpose is `scp`, which stands for *secure copy*.
+You may have made manual backups of files on your personal computer by dragging them onto a flash drive or other external device. A similar procedure can be used to save copies of your files on your Linode to your home computer, another Linode, or a [Block Storage Volume](/docs/products/storage/block-storage/). The simplest tool to use for this purpose is `scp`, which stands for *secure copy*.
 
 1.  On your Linode, use the `zip` tool to create a compressed archive of the directory you want to back up:
 
@@ -63,9 +63,9 @@ If you are more comfortable working on the command line, this kind of backup can
 
 Many applications, including common CMS platforms like WordPress, store their data in a database. It is crucial to make sure that this data can be restored in the event of a system compromise. Fortunately, most database systems include tools to make backing up simple and painless.
 
-If you are using MySQL or MariaDB, read more about  `mysqldump` in our [mysqldump](/docs/guides/use-mysqldump-to-back-up-mysql-or-mariadb/) guide, or try making [physical backups](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
+If you are using MySQL or MariaDB, read more about  `mysqldump` in our [mysqldump](/docs/guides/mysqldump-backups/) guide, or try making [physical backups](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
 
-If your application uses PostgreSQL, read our guide on [How to Back Up Your PostgreSQL Database](/docs/guides/how-to-back-up-your-postgresql-database/).
+If your application uses PostgreSQL, read our guide on [How to Back Up Your PostgreSQL Database](/docs/guides/back-up-a-postgresql-database/).
 
 ## Third-Party Tools
 

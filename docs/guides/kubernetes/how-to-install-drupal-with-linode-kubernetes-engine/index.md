@@ -32,7 +32,7 @@ This guide provides instructions to:
 {{< caution >}}
 This guide’s example instructions create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to delete it when you have finished the guide.
 
-If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/guides/billing-and-payments/)  guide for detailed information about how hourly billing works and for a table of plan pricing.
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{</ caution >}}
 
 ## Before You Begin
@@ -354,7 +354,7 @@ You need to log into the `mysql` Pod to set the root password for the Drupal UI 
 1.  In the browser, type the IP address listed under `EXTERNAL_IP` from the `kubectl get services drupal` command above followed by the port `:8081`, for example, `http://192.0.2.3:8081`. The Drupal configuration page appears.
 
     {{< note >}}
-If you have a registered domain name that you want to use for the Drupal website, add the domain in [Cloud Manager](http://cloud.linode.com) and select **Insert default records from one of my NodeBalancers** option. In this case, the `EXTERNAL_IP` address is the IP address of the NodeBalancer. For more information, see [Add a Domain](/docs/guides/dns-manager/#add-a-domain).
+If you have a registered domain name that you want to use for the Drupal website, add the domain in [Cloud Manager](http://cloud.linode.com) and select **Insert default records from one of my NodeBalancers** option. In this case, the `EXTERNAL_IP` address is the IP address of the NodeBalancer. For more information, see [Add a Domain](/docs/products/networking/dns-manager/guides/create-domain/).
 {{< /note >}}
 
     ![Drupal Configuration Screen](install-drupal-setup.png "Drupal Configuration Screen")

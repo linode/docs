@@ -39,7 +39,7 @@ NirvaShare is a simplified and secure enterprise file sharing solution built on 
 
 ## Getting Started after Deployment
 
-After NirvaShare has finished installing, you can access your NirvaShare instance by visiting your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) at port 8080. (for example, `http://192.0.2.0:8080`)
+After NirvaShare has finished installing, you can access your NirvaShare instance by visiting your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/) at port 8080. (for example, `http://192.0.2.0:8080`)
 
 Once you visit the NirvaShare IP address you will be prompted with a Login page, you can enter `admin` as the *username* and `admin` as the *password*.
 

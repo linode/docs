@@ -28,7 +28,7 @@ relations:
 
 Docker is a tool that enables you to create, deploy, and manage lightweight, stand-alone packages called *containers*. These containers have the necessary code, libraries, runtime, system settings, and dependencies needed to run an application.
 
-This guide covers installing the Docker Engine on various Linux distributions using the **apt** package manager, including Ubuntu and and Debian, as well as obtaining and running Docker images.
+This guide covers installing the Docker Engine on various Linux distributions using the **apt** package manager, including Ubuntu and Debian, as well as obtaining and running Docker images.
 
 ## Before You Begin
 
