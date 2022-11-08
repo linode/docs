@@ -3,14 +3,14 @@ slug: how-to-use-the-linux-ip-command
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide describes the Linux ip command and how to use it, along with a list of the main options'
-og_description: 'This guide describes the Linux ip command and how to use it, along with a list of the main options'
+description: 'This guide describes the Linux ip command and how to use it, along with a list of the main options.'
+og_description: 'This guide describes the Linux ip command and how to use it, along with a list of the main options.'
 keywords: ['linux ip command','config ip command']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-16
 modified_by:
   name: Linode
-title: "How to Use the Linux IP Command | Linode"
+title: "How to Use the Linux IP Command"
 h1_title: "How to Use the Linux IP Command"
 enable_h1: true
 contributor:
@@ -29,7 +29,7 @@ As its name suggests, the `ip` command relates to the [*Internet Protocol*](http
 
 Hosts and routers use the IP system to direct traffic across the internet to the correct destination. Each network interface on a system has a *media access control* (MAC) address and can be assigned one or more IPv4 or Ipv6 addresses. In addition, each server maintains a routing table. The routing table determines which interface to use when transmitting a packet to a given destination IP address.
 
-The Linux `ip` command lets administrators view the system's IP networking information from the console command line. It permits them to configure network interfaces, routing information, and Ipv4/Ipv6 addresses. The `ip` command also includes advanced capabilities to set up IP tunneling, route policies, and configure *Address Resolution Protocol* (ARP) information for the system's neighbors.
+The Linux `ip` command lets administrators view the system's IP networking information from the command line. It permits them to configure network interfaces, routing information, and Ipv4/Ipv6 addresses. The `ip` command also includes advanced capabilities to set up IP tunneling, route policies, and configure *Address Resolution Protocol* (ARP) information for the system's neighbors.
 
 The `ip` command is part of the Linux [iproute2](https://en.wikipedia.org/wiki/Iproute2) collection of networking utilities. It replaces the old `ifconfig` command, which had more limited functionality and fewer options. The `ip` package is pre-installed on all modern Linux distributions, including Ubuntu.
 
@@ -47,12 +47,12 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Each of the Linux `ip` commands acts upon one or more *ip objects*. An ip object represents a specific component of the networking system, such as the routing table. Some of the `ip` terminology differs from the way networking concepts are more typically discussed. Here is a list of some of the most important `ip` objects, with the shortcuts in parentheses.
 
-- **link (l)**: A link represents a network device. Most links, other than the loopback link, connect the server to a wider computer network. A link can be logical/abstract or physical.
-- **route (r)**: This represents an entry in the routing table. It is used to determine how and where to send an outgoing packet based on its address.
-- **address (a)**: This is the Ipv4 or Ipv6 address associated with a link.
-- **maddress (m)**: This is the multicast address, if any, configured on a link.
-- **neighbor (n)**: This represents information about a neighboring interface. It includes cached ARP or Ipv6 *Neighbor Discovery* (NDISC) information.
-- **rule (ru)**: This is a policy rule for routing packets. It controls the precedence of the routes in the routing database.
+-   **link (l)**: A link represents a network device. Most links, other than the loopback link, connect the server to a wider computer network. A link can be logical/abstract or physical.
+-   **route (r)**: This represents an entry in the routing table. It is used to determine how and where to send an outgoing packet based on its address.
+-   **address (a)**: This is the Ipv4 or Ipv6 address associated with a link.
+-   **maddress (m)**: This is the multicast address, if any, configured on a link.
+-   **neighbor (n)**: This represents information about a neighboring interface. It includes cached ARP or Ipv6 *Neighbor Discovery* (NDISC) information.
+-   **rule (ru)**: This is a policy rule for routing packets. It controls the precedence of the routes in the routing database.
 
 Other ip objects include `addrlabel`, `l2tp`, `mroute` (for multicast route), `tunnel`, and `xfrm`, which is used by the *Internet Protocol Security* (IPsec) protocol. See the [Ubuntu ip documentation](https://manpages.ubuntu.com/manpages/jammy/man8/ip.8.html) for more information about the remaining ip objects.
 
@@ -62,7 +62,7 @@ Some of the objects in the `ip` command do not map perfectly to the terminology 
 
 ## ip vs ifconfig
 
-The `ip` command is the newer iteration of the established `ifconfig` command. `ip` also includes functionality from other commands including `route` and `arp`. So it has a broader scope and more features than the more limited `ifconfig`.
+The `ip` command is the newer iteration of the established `ifconfig` command. `ip` also includes functionality from other commands including `route` and `arp`. Thus it has a broader scope and more features than the more limited `ifconfig`.
 
 The `ip` utility features other enhancements. For instance, it displays all interfaces, whereas `ifconfig` only displays enabled interfaces. The `ip` command is also more efficient and interacts with the system in a more seamless manner. An `ip` command always requires an object type such as the address or link identifier, whereas `ifconfig` directly references the interface without an ip object.
 
@@ -70,22 +70,26 @@ The `ip` command can be intimidating at first due to its complexity, so some use
 
 ## How to Use the ip Command
 
-The `ip` command is straightforward to use, but it includes many complex options. It is not possible to use the `ip` command by itself. One of the "ip objects" must also be included. In other words, there is no way to use the command to dump out all the networking information at once. To configure network settings using the `ip` command, include the following information:
+The `ip` command is straightforward to use, but it includes many complex options. It is not possible to use the `ip` command by itself. One of the "ip objects" must also be included. In other words, there is no way to use the command to display all networking information at once. To configure network settings using the `ip` command, include the following information:
 
-- The `ip` command name.
-- Zero or more options.
-- The name of the "ip object", for example, `link` or `route`. Each object is associated with an abbreviation. For instance, the link object can be abbreviated as `l`. `ip l show` and `ip link show` both refer to the same command.
-- The command, along with any parameters.
+-   The `ip` command name.
+-   Zero or more options.
+-   The name of the "ip object", for example, `link` or `route`. Each object is associated with an abbreviation. For instance, the link object can be abbreviated as `l`. `ip l show` and `ip link show` both refer to the same command.
+-   The command, `show` for example, along with any parameters.
 
 Most `ip` commands follow this format:
 
-    ip [options] OBJECT COMMAND
+```code
+ip [options] OBJECT COMMAND
+```
 
 Non-root users must use `sudo` to execute any `ip` command that changes the network configuration. The `show` commands are available to all users.
 
 The `ip help` directive describes the command syntax and lists all available options. More specific help is available for each ip object. Use the format `ip OBJECT help`. For example, `ip addr help` provides instructions for the address-related commands.
 
-    ip addr help
+```code
+ip addr help
+```
 
 {{< output >}}
 Usage: ip address {add|change|replace} IFADDR dev IFNAME [ LIFETIME ]
@@ -105,20 +109,20 @@ IFADDR := PREFIX | ADDR peer PREFIX
 
 Here are some of the more useful `ip` options.
 
-- **-a**: Processes all objects, provided the command supports the option.
-- **-d**: Adds extra details to the output.
-- **-f**: Specifies the protocol family. Some common families have their own shortcuts. `-4` is a shortcut for IPv6, `-6` denotes IPv6, and `M` indicates MPLS.
-- **-j**: Displays the output in JSON format.
-- **-p**: Presents the output in a more readable format.
-- **-s**: Displays extra statistics, including packets transferred and received. The `-s -s` option displays even more information.
-- **-t**: Includes the timestamp in the output.
+-   **-a**: Processes all objects, provided the command supports the option.
+-   **-d**: Adds extra details to the output.
+-   **-f**: Specifies the protocol family. Some common families have their own shortcuts. `-4` is a shortcut for IPv4, `-6` denotes IPv6, and `M` indicates MPLS.
+-   **-j**: Displays the output in JSON format.
+-   **-p**: Presents the output in a more readable format.
+-   **-s**: Displays extra statistics, including packets transferred and received. The `-s -s` option displays even more information.
+-   **-t**: Includes the timestamp in the output.
 
 For a more thorough explanation of all `ip` options, see the [man page for the ip command](https://manpages.ubuntu.com/manpages/jammy/man8/ip.8.html).
 
 Because the `ip` command contains so many options, the following examples focus on some of the more common use cases.
 
 {{< note >}}
-Changes made using the `ip` command are not persistent across a system reboot. To automatically configure networking information, add the information to a start-up script. Each distribution also provides a method to make networking changes using its system configuration files.
+Changes made using the `ip` command are not persistent across a system reboot. To automatically configure networking information, add the information to a startup script. Each distribution also provides a method to make networking changes using its system configuration files.
 {{< /note >}}
 
 {{< caution >}}
@@ -133,7 +137,9 @@ The `addr` object allows users to list the IP addresses associated with each lin
 
 Use the `addr` ip object to find your IP address. The `ip addr show` command displays the addresses for every link configured on the system. Locate the `eth0` link, which connects the host to the wider network on most systems. The `inet` field displays the Ipv4 address. If an Ipv6 address is configured, it is indicated in the `inet6` section.
 
-    ip addr show
+```code
+ip addr show
+```
 
 {{< output >}}
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
@@ -154,11 +160,15 @@ Use the `addr` ip object to find your IP address. The `ip addr show` command dis
 
 To display information about one particular link, append the name of the link to the end of the command.
 
-    ip addr show eth0
+```code
+ip addr show eth0
+```
 
 The `-br` option simplifies the display to the state and IP addresses.
 
-    ip -br addr show
+```code
+ip -br addr show
+```
 
 {{< output >}}
 lo               UNKNOWN        127.0.0.1/8 ::1/128
@@ -175,11 +185,15 @@ To add an IP address to an existing link/interface, use the `addr add` command. 
 
 The following command demonstrates how to add a new address to the `lo` loopback link. You must use `sudo` when modifying any network information. If the rule already exists, `ip` displays the error message `RTNETLINK answers: File exists`.
 
-    sudo ip addr add 127.255.255.255/16 dev lo
+```code
+sudo ip addr add 127.255.255.255/16 dev lo
+```
 
-The `addr show `command reflects the new configuration change.
+The `addr show` command reflects the new configuration change.
 
-    ip addr show dev lo
+```code
+ip addr show dev lo
+```
 
 {{< output >}}
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
@@ -194,11 +208,15 @@ The `addr show `command reflects the new configuration change.
 
 To remove an address from a link, use the `addr delete` command.
 
-    sudo ip addr delete  127.255.255.255/16 dev lo
+```code
+sudo ip addr delete 127.255.255.255/16 dev lo
+```
 
 To configure the address as a broadcast address, use the keyword `brd`.
 
-    sudo ip addr add brd 172.31.255.255 dev eth1
+```code
+sudo ip addr add 172.31.255.255 brd + dev eth1
+```
 
 ## Using the Link ip Object
 
@@ -208,7 +226,9 @@ The `link` object can access and configure information about the network interfa
 
 To view information about all network interfaces on the server, use the `ip link show` command. The command shows the state, MTU, and MAC address for each link `object` amongst other information.
 
-    ip link show
+```code
+ip link show
+```
 
 {{< output >}}
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
@@ -219,7 +239,9 @@ To view information about all network interfaces on the server, use the `ip link
 
 When the `-br` option is added, `ip` only displays the most important information.
 
-    ip -br link show
+```code
+ip -br link show
+```
 
 {{< output >}}
 lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP>
@@ -228,13 +250,17 @@ eth0             UP             f2:3c:93:60:50:30 <BROADCAST,MULTICAST,UP,LOWER_
 
 To only show information about links that are operationally active, append the keyword `up`.
 
-    ip link show up
+```code
+ip link show up
+```
 
 ### How to View Information about a Specific Network Interface
 
 To limit the display to information about a specific interface, append the name of the information to the `ip link show` command. The following command only displays information about the `eth0` network interface. If the interface does not exist, `ip` returns the error message `Device "INTERFACE" does not exist`.
 
-    ip link show eth0
+```code
+ip link show eth0
+```
 
 {{< output >}}
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
@@ -243,7 +269,9 @@ To limit the display to information about a specific interface, append the name 
 
 Add the `-s` option to see the link/interface statistics.
 
-    ip -s link show dev eth0
+```code
+ip -s link show dev eth0
+```
 
 {{< output >}}
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
@@ -256,7 +284,9 @@ Add the `-s` option to see the link/interface statistics.
 
 Use the `-s -s` double flag to see even more comprehensive statistics, including information about the various errors.
 
-    ip -s -s link show dev eth0
+```code
+ip -s -s link show dev eth0
+```
 
 {{< output >}}
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
@@ -277,15 +307,21 @@ Modify the status of any network interface using the `ip link set` command. Use 
 
 To disable the `eth1` link, use the following command.
 
-    ip link set eth1 down
+```code
+sudo ip link set eth1 down
+```
 
 To bring `eth1` back up, enter this command.
 
-    ip link set eth1 up
+```code
+sudo ip link set eth1 up
+```
 
 Use the following command to set the *maximum transmission unit* (MTU) size for the link.
 
-    sudo ip link set mtu 1600 eth1
+```code
+sudo ip link set mtu 1600 eth1
+```
 
 ## Using the Route ip Object
 
@@ -299,7 +335,9 @@ To view all routes installed in the routing database, use the `ip route show` co
 Many servers access the internet through a default gateway, resulting in relatively few routes. Even if `ip route show` only displays one or two routes, this does not usually indicate a problem.
 {{< /note >}}
 
-    ip route show
+```code
+ip route show
+```
 
 {{< output >}}
 default via 178.79.148.1 dev eth0 proto static
@@ -308,7 +346,9 @@ default via 178.79.148.1 dev eth0 proto static
 
 It is also possible to list all routes for a particular network using the `list` command.
 
-    ip route list 178.79.148.0/24
+```code
+ip route list 178.79.148.0/24
+```
 
 {{< output >}}
 178.79.148.0/24 dev eth0 proto kernel scope link src 178.79.148.108
@@ -318,11 +358,15 @@ It is also possible to list all routes for a particular network using the `list`
 
 To add a new route, use the `ip route add` command. There are two ways to add a route. For the first option, specify the IP address and mask of the remote network, and the interface used to access it. The following example adds a new route to `eth0`.
 
-    sudo ip route add 192.168.20.0/24 dev eth0
+```code
+sudo ip route add 192.168.20.0/24 dev eth0
+```
 
 Use the `ip route show` command to confirm the route has been added.
 
-    ip route show
+```code
+ip route show
+```
 
 {{< output >}}
 default via 178.79.148.1 dev eth0 proto static
@@ -330,13 +374,17 @@ default via 178.79.148.1 dev eth0 proto static
 192.168.20.0/24 dev eth0 scope link
 {{< /output >}}
 
-For the second method, use the `via` keyword to specify a gateway. All traffic to the network is routed through the specified address.
+For the second method, use the `via` keyword to specify a gateway. All traffic to the network is routed through the specified address. Replace `178.79.148.1` with your actual IP address from the output above.
 
-    sudo ip route add 192.168.20.0/24 via 178.79.148.1
+```code
+sudo ip route add 192.168.20.0/24 via 178.79.148.1
+```
 
 To delete a route, use the `ip route delete` command. This command only accepts an IP address.
 
-    sudo ip route delete 192.168.20.0/24
+```code
+sudo ip route delete 192.168.20.0/24
+```
 
 ## Using the Neighbor ip Object
 
@@ -346,7 +394,9 @@ The `neigh` command operates on the ARP and NDISC entries for the server's neigh
 
 To see all the neighbors that the system is aware of, use `ip neigh show`.
 
-    ip neigh show
+```code
+ip neigh show
+```
 
 {{< output >}}
 178.79.148.1 dev eth0 lladdr 00:00:0c:9f:f0:02 REACHABLE
@@ -363,8 +413,10 @@ The `delete` command is useful for flushing stale ARP or NDISC information. The 
 
 To add a permanent ARP entry for a neighbor, use the following command. Include the MAC address of the neighbor and the link used to access it. The `perm` keyword installs the route permanently.
 
-    sudo ip neigh add 192.168.100.100 lladdr 16:12:34:56:78:90 dev eth0 nud perm
-    ip neigh show
+```code
+sudo ip neigh add 192.168.100.100 lladdr 16:12:34:56:78:90 dev eth0 nud perm
+ip neigh show
+```
 
 {{< output >}}
 178.79.148.1 dev eth0 lladdr 00:00:0c:9f:f0:02 REACHABLE
@@ -374,7 +426,9 @@ fe80::1 dev eth0 lladdr 00:00:0c:9f:f0:02 router STALE
 
 Use `ip neigh delete`, along with the address and interface, to delete a route.
 
-    sudo ip neigh delete 192.168.100.100 dev eth0
+```code
+sudo ip neigh delete 192.168.100.100 dev eth0
+```
 
 ## Conclusion
 
