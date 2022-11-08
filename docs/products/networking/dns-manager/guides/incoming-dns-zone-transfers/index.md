@@ -5,7 +5,7 @@ author:
 description: "Learn how to import DNS records from external DNS providers by using AXFR transfers"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-28
-modified: 2022-11-02
+modified: 2022-11-08
 modified_by:
   name: Linode
 title: "Incoming DNS Zone Transfers"
@@ -77,7 +77,7 @@ As part of this, a common reason for using Linode's DNS Manager as a secondary D
     ```
 
     {{< caution >}}
-On February 7th, 2023 the IP address `65.19.178.10` will be retired and replaced with `45.79.109.10`. Both IPs `65.19.178.10` and `45.79.109.10` will respond to inbound requests until the cutover date. Outbound requests will only originate from the old IP 65.19.178.10 until the cutover date. Please update your firewall rules and DNS server configurations to add the new IP prior to the cutover.
+On February 7th, 2023, the IP address `65.19.178.10` will be retired and replaced with `45.79.109.10`. Both IPs will respond to inbound requests until the cutover date. Outbound requests will only originate from the old IP address (`65.19.178.10`) until the cutover date. Please update your firewall rules and DNS server configurations to add the new IP address (`45.79.109.10`) prior to the cutover.
 {{< /caution >}}
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Domains** from the left navigation menu. Click the **Create Domain** button.

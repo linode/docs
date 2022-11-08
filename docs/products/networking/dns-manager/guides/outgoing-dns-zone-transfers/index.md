@@ -5,7 +5,7 @@ author:
 description: "How to transfer domain zones using the Linode DNS Manager."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-21
-modified: 2022-11-02
+modified: 2022-11-08
 modified_by:
   name: Linode
 title: "Outgoing DNS Zone Transfers"
@@ -42,7 +42,7 @@ To facilitate quick updates, Linode immediately sends the external name servers 
 ```
 
 {{< caution >}}
-On February 7th, 2023 the IP address `65.19.178.10` will be retired and replaced with `45.79.109.10`. Both IPs `65.19.178.10` and `45.79.109.10` will respond to inbound requests until the cutover date. Outbound requests will only originate from the old IP 65.19.178.10 until the cutover date. Please update your firewall rules and DNS server configurations to add the new IP prior to the cutover.
+On February 7th, 2023, the IP address `65.19.178.10` will be retired and replaced with `45.79.109.10`. Both IPs will respond to inbound requests until the cutover date. Outbound requests will only originate from the old IP address (`65.19.178.10`) until the cutover date. Please update your firewall rules and DNS server configurations to add the new IP address (`45.79.109.10`) prior to the cutover.
 {{< /caution >}}
 
 ## Add Secondary Name Servers
