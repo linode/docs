@@ -3,14 +3,14 @@ slug: how-to-install-wordpress-ubuntu-22-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide explains how to install and configure WordPress on Ubuntu 22.04'
-og_description: 'This guide explains how to install and configure WordPress on Ubuntu 22.04'
+description: 'This guide explains how to install and configure WordPress on Ubuntu 22.04.'
+og_description: 'This guide explains how to install and configure WordPress on Ubuntu 22.04.'
 keywords: ['wordpress ubuntu','wordpress download','what is wordpress','how to install wordpress', 'ubuntu wordpress install']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-19
 modified_by:
   name: Linode
-title: "How to Install WordPress on Ubuntu 22.04 | Linode "
+title: "How to Install WordPress on Ubuntu 22.04"
 h1_title: "How to Install WordPress on Ubuntu 22.04"
 enable_h1: true
 contributor:
@@ -29,28 +29,27 @@ external_resources:
 - '[NGINX](https://www.nginx.com/)'
 relations:
     platform:
+        key: how-to-install-wordpress
         keywords:
-           - distribution: Ubuntu 22.04
+           - distribution: Ubuntu 22.04 LTS
 ---
 
-[WordPress](https://wordpress.org/) is one of the most common *content management systems* (CMS) in use today. WordPress allows [Ubuntu](https://ubuntu.com/server) and other Linux users to design a website and add content using its intuitive GUI. WordPress also allows site owners to install a diverse selection of themes and plug-ins to further customize their site. This guide explains how to install WordPress on Ubuntu 22.04. It also describes how to configure and start using WordPress after installation.
+[WordPress](https://wordpress.org/) is one of the most common *content management systems* (CMS) in use today. WordPress allows [Ubuntu](https://ubuntu.com/server) and other Linux users to design a website and add content using its intuitive GUI. WordPress also allows site owners to install a diverse selection of themes and plug-ins to further customize their site. This guide explains how to install WordPress on Ubuntu 22.04 LTS. It also describes how to configure and start using WordPress after installation.
 
-## An Introduction to WordPress on Ubuntu 22.04
-
-### What is WordPress?
+## What is WordPress?
 
 WordPress is a long-time foundation for personal websites and blogs. It is available for free and considered easy to install, configure, and use. It allows site owners to design an attractive site and add information without knowing anything about HTML or CSS. It also features additional modules for further customization along with a large, knowledgeable, and passionate user base. WordPress is available for all major operating systems, although it is most commonly used with Linux.
 
-WordPress can be downloaded to a Ubuntu server using `wget`. It only requires minor pre-installation configuration changes to other applications. However WordPress relies on several other applications to function. It uses the [PHP programming language](https://www.php.net/), so PHP must already be installed. In addition, WordPress requires a web server and a *relational database management system* (RDBMS).
+WordPress can be downloaded to an Ubuntu server using `wget`. It only requires minor pre-installation configuration changes to other applications. However WordPress relies on several other applications to function. It uses the [PHP programming language](https://www.php.net/), so PHP must already be installed. In addition, WordPress requires a web server and a *relational database management system* (RDBMS).
 
-### WordPress Prerequisites
+## WordPress Prerequisites
 
-A Ubuntu LAMP or LEMP stack satisfies all these prerequisites. A LAMP stack includes the Linux operating system, the [Apache web server](https://httpd.apache.org/docs/2.4/), the [MySQL RDBMS](https://dev.mysql.com/), and the PHP programming language. A LEMP stack substitutes [NGINX](https://www.nginx.com/) (pronounced "engine-x") in place of Apache and sometimes uses the MariaDB database instead of MySQL. Either stack can be installed using the standard Ubuntu library. For information on installing a LAMP stack on Ubuntu 22.04, see the Linode guide. There is also a Linode guide to installing a LEMP stack on Ubuntu 22.04.
+A Ubuntu LAMP or LEMP stack satisfies all these prerequisites. A LAMP stack includes the Linux operating system, the [Apache web server](https://httpd.apache.org/docs/2.4/), the [MySQL RDBMS](https://dev.mysql.com/), and the PHP programming language. A LEMP stack substitutes [NGINX](https://www.nginx.com/) (pronounced "engine-x") in place of Apache and sometimes uses the MariaDB database instead of MySQL. Either stack can be installed using the standard Ubuntu library. For information on [installing a LAMP stack on Ubuntu 22.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/), see the Linode guide. There is also a Linode guide to installing a LEMP stack on Ubuntu 22.04.
 
-For greater security, WordPress highly recommends HTTPS. However, these instructions work whether HTTPS is configured on the server or not. For information about enabling HTTPS on Ubuntu , see the [Linode guide on enabling HTTPS on Apache](https://www.linode.com/docs/guides/enabling-https-using-certbot-with-apache-on-ubuntu/). An alternate guide for [NGINX](https://www.linode.com/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) is also available.
+For greater security, WordPress highly recommends HTTPS. However, these instructions work whether HTTPS is configured on the server or not. For information about enabling HTTPS on Ubuntu, see the [Linode guide on enabling HTTPS on Apache](/docs/guides/enabling-https-using-certbot-with-apache-on-ubuntu/). An alternate guide for [NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) is also available.
 
 {{< note >}}
-WordPress sites are almost always accessed using a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/).
+WordPress sites are almost always accessed using a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/guides/dns-manager/).
 {{< /note >}}
 
 ## Before You Begin
@@ -70,16 +69,18 @@ This guide is written for a non-root user. Commands that require elevated privil
 To properly configure and use WordPress on Ubuntu, a LAMP or LEMP stack must already be installed and working. However, WordPress requires a few additional modifications to the various LAMP/LEMP Stack components. In the following examples, replace `example.com` with the actual domain name wherever it appears.
 
 {{< note >}}
-These instructions are designed for Ubuntu 22.04, but are generally valid for all recent Ubuntu releases.
+These instructions are designed for Ubuntu 22.04 LTS, but are generally valid for all recent Ubuntu releases.
 {{< /note >}}
 
-### How to Configure the Web Server for WordPress
+### How to Configure Apache for WordPress
 
 If you are using a LAMP stack, enable an additional Apache module and restart the server. Follow these steps to configure Apache to support WordPress.
 
 1.  Enable the rewrite module. This allows for more readable links within the site.
 
-        sudo a2enmod rewrite
+    ```code
+    sudo a2enmod rewrite
+    ```
 
     {{< output >}}
 Enabling module rewrite.
@@ -91,19 +92,21 @@ Enabling module rewrite.
 If you are not using a site configuration file, skip this step.
     {{< /note >}}
 
-    {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
-<VirtualHost *:80>
-...
-    <Directory /var/www/html/your_domain/public_html/>
-        AllowOverride All
-    </Directory>
-...
-</VirtualHost>
-    {{< /file >}}
+    ```file {title="/etc/apache2/sites-available/example.com.conf" lang="aconf"}
+    <VirtualHost *:80>
+    ...
+        <Directory /var/www/html/your_domain/public_html/>
+            AllowOverride All
+        </Directory>
+    ...
+    </VirtualHost>
+    ```
 
 3.  Run the Apache `configtest` utility to test the changes. It might display some warnings, but if `Syntax OK` appears in the output, the syntax is valid.
 
-        sudo apache2ctl configtest
+    ```code
+    sudo apache2ctl configtest
+    ```
 
     {{< output >}}
 Syntax OK
@@ -111,28 +114,36 @@ Syntax OK
 
 4.  Restart Apache.
 
-        sudo systemctl restart apache2
+    ```code
+    sudo systemctl restart apache2
+    ```
+
+### How to Configure NGINX for WordPress
 
 If you are using a LEMP stack, make the following configuration changes.
 
 1.  Edit the site configuration file at `/etc/nginx/sites-available/example.com`. Make the following change to the `location /` block. Add `index.php` to the start of the `index` field. This tells NGINX to search for this file first.
 
-    {{< file "/etc/nginx/sites-available/example.com" nginx >}}
-...
-location / {
-    index index.php index.html index.htm;
-    try_files $uri $uri/ =404;
-}
-...
-    {{< /file >}}
+    ```file {title="/etc/nginx/sites-available/example.com.conf" lang="nginx"}
+    ...
+    location / {
+        index index.php index.html index.htm;
+        try_files $uri $uri/ =404;
+    }
+    ...
+    ```
 
 2.  Use `unlink` to disable the default NGINX configuration file.
 
-        sudo unlink /etc/nginx/sites-enabled/default
+    ```code
+    sudo unlink /etc/nginx/sites-enabled/default
+    ```
 
 3.  Restart NGINX to reload the configuration.
 
-        sudo systemctl restart nginx
+    ```code
+    sudo systemctl restart nginx
+    ```
 
 ### How to Configure MySQL for WordPress
 
@@ -140,21 +151,33 @@ WordPress uses a separate SQL database to store the site's contents and configur
 
 1.  Log in to MySQL as `root`.
 
-        sudo mysql -u root
+    ```code
+    sudo mysql -u root
+    ```
+
+    {{< note >}}
+If you followed all the instructions in our prerequisite guide for LAMP, use `sudo mysql -u root -p` instead, and enter your password when prompted.
+    {{< /note >}}
 
 2.  Create a database named `wordpress`.
 
-        CREATE DATABASE wordpress;
+    ```code
+    CREATE DATABASE wordpress;
+    ```
 
 3.  Create a new user for the `wordpress` database and grant the user all rights. Flush all privileges at the end. In the following commands, replace `wpuser` with a unique user name and `password` with a more secure password.
 
-        CREATE USER 'wpuser'@'localhost' IDENTIFIED BY 'password';
-        GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'localhost';
-        FLUSH PRIVILEGES;
+    ```code
+    CREATE USER 'wpuser'@'localhost' IDENTIFIED BY 'password';
+    GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'localhost';
+    FLUSH PRIVILEGES;
+    ```
 
 4.  Exit the database.
 
-        exit
+    ```code
+    exit
+    ```
 
 ### How to Configure PHP for WordPress
 
@@ -162,50 +185,77 @@ Although WordPress can be installed using the default PHP packages, many plug-in
 
 1.  For greater flexibility, install the following PHP components.
 
-        sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap
+    ```code
+    sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap
+    ```
 
-2.  Reload Apache to apply the changes.
+2.  Reload Apache or NGINX to apply the changes.
 
-        sudo systemctl restart apache2
+    ```code
+    sudo systemctl restart apache2
+    ```
+
+    ```code
+    sudo systemctl restart nginx
+    ```
 
 ## Downloading WordPress for Ubuntu 22.04
 
-The Ubuntu LAMP stack is now fully configured and ready for WordPress. Follow these steps to download and install WordPress.
+The Ubuntu LAMP or LEMP stack is now fully configured and ready for WordPress. Follow these steps to download and install WordPress.
 
-1.  Create a new `src` directory inside the root directory for the website. The root directory is normally located at `var/www/html/`. Replace `example.com` with the name of the domain. Enter the new directory.
+1.  Create a new `src` directory inside the root directory for the website. The root directory is normally located at `var/www/html/`. Replace `example.com` with the name of the domain.
 
-        sudo mkdir -p /var/www/html/example.com/src
-        cd /var/www/html/example.com/src
+    ```code
+    sudo mkdir -p /var/www/html/example.com/src
+    ```
 
-2.  Download the WordPress package using `wget`.
+2.  Enter the new directory.
 
-        sudo wget http://wordpress.org/latest.tar.gz
+    ```code
+    cd /var/www/html/example.com/src
+    ```
 
-3.  Extract the WordPress files from the `tar` file.
+3.  Download the WordPress package using `wget`.
 
-        sudo tar -xvf latest.tar.gz
+    ```code
+    sudo wget http://wordpress.org/latest.tar.gz
+    ```
 
-4.  **(Optional)** Rename the archive using the current date. This makes it easier to restore the files in the future.
+4.  Extract the WordPress files from the `tar` file.
 
-        sudo mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
+    ```code
+    sudo tar -xvf latest.tar.gz
+    ```
 
-5.  Move the extracted files to the root directory for the domain. In a typical configuration, this is the `public_html` directory.
+5.  **(Optional)** Rename the archive using the current date. This makes it easier to restore the files in the future.
 
-        sudo mv wordpress/* ../public_html/
+    ```code
+    sudo mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
+    ```
 
-6.  Ensure the webserver user is given ownership over the entire root directory for the domain.
+6.  Move the extracted files to the root directory for the domain. In a typical configuration, this is the `public_html` directory.
 
-        sudo chown -R www-data:www-data /var/www/html/example.com
+    ```code
+    sudo mv wordpress/* ../public_html/
+    ```
+
+7.  Ensure the webserver user is given ownership over the entire root directory for the domain.
+
+    ```code
+    sudo chown -R www-data:www-data /var/www/html/example.com
+    ```
 
 ## Configuring WordPress on Ubuntu 22.04
 
-1.  Visit the domain using a web browser. The default language selection page first appears. Choose the default language and select **Continue**.
+1.  Visit the domain using a web browser. The default language selection page first appears. Choose your language and select **Continue**.
 
-        http://example.com
+    ```code
+    http://example.com
+    ```
 
     ![Language Selection for WordPress](Wordpress-Landing-Language.png)
 
-2.  WordPress then displays an informational page explaining the configuration process and the required information. Have the database and user details readily available. Click the **Let's Go** button to continue.
+2.  WordPress then displays an informational page explaining the configuration process and required information. Have the database and user details readily available. Click the **Let's Go** button to continue.
 
     ![Process Information Page](Wordpress-Process-Page.png)
 
@@ -217,7 +267,7 @@ The Ubuntu LAMP stack is now fully configured and ready for WordPress. Follow th
 
     ![Successful Database Connection Validation](Wordpress-Connection-Success.png)
 
-5.  The next form prompts for a userID, password, and email for the site administrator. It also prompts for a site name and asks whether search engines should index the site. Enter all information and then select **Install WordPress** to continue.
+5.  The next form prompts for a username, password, and email for the site administrator. It also prompts for a site name and asks whether search engines should index the site. Enter all information and then select **Install WordPress** to continue.
 
     ![Enter the Default Database Administration Info](Wordpress-Login-Details.png)
 
@@ -235,12 +285,12 @@ The Ubuntu LAMP stack is now fully configured and ready for WordPress. Follow th
 
 9.  **(Optional)** WordPress typically uses FTP credentials to install new themes and plug-ins. Add the following lines to the `wp_config.php` file to remove this restriction. This file is located in the root directory for the domain inside the `public_html` subdirectory.
 
-    {{< file "/var/www/html/example.com/public_html/wp-config.php" php >}}
-/** Bypass FTP */
-define('FS_METHOD', 'direct');
-    {{< /file >}}
+    ```file {title="/var/www/html/example.com/public_html/wp-config.php" lang="php"}
+    /** Bypass FTP */
+    define('FS_METHOD', 'direct');
+    ```
 
-10. At this point, the WordPress site is ready to use. To see how the site appears to other users, enter the name of the domain in the address bar of the browser. While logged in, you can also add new content directly from this page.
+0.  At this point, the WordPress site is ready to use. To see how the site appears to other users, enter the name of the domain in the address bar of the browser. While logged in, you can also add new content directly from this page.
 
     ![Your WordPress Site](Wordpress-Site.png)
 
@@ -248,7 +298,7 @@ define('FS_METHOD', 'direct');
 
 The WordPress Dashboard is fairly self-explanatory. From the left-menu of the Dashboard, users can access pages allowing them to change settings, select themes, and install new plug-ins. Users can select the **Posts** option to add new pages or modify existing content.
 
-Before proceeding, it is worthwhile to spend more time learning about WordPress. The [First Steps with WordPress guide](https://wordpress.org/support/article/first-steps-with-wordpress/) is very useful. It walks users through the WordPress interface and explains how to perform basic tasks. In addition, the Linode [How to Configure WordPress](https://www.linode.com/docs/guides/configuring-wordpress/) summarizes how to configure some of the more common WordPress settings.
+Before proceeding, it is worthwhile to spend more time learning about WordPress. The [First Steps with WordPress guide](https://wordpress.org/support/article/first-steps-with-wordpress/) is very useful. It walks users through the WordPress interface and explains how to perform basic tasks. In addition, [How to Configure WordPress](/docs/guides/configuring-wordpress/) summarizes how to configure some of the more common WordPress settings.
 
 For complete information about WordPress, including all advanced settings, see the [WordPress documentation site](https://wordpress.org/support/).
 
