@@ -1,6 +1,7 @@
 ---
 slug: creating-a-mongodb-replication-set-on-ubuntu-12-04-precise
 deprecated: true
+deprecated_link: 'guides/create-a-mongodb-replica-set/'
 author:
   name: Linode
   email: docs@linode.com

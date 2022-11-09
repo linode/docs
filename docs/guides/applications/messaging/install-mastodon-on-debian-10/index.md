@@ -58,22 +58,22 @@ Mastodon servers range in size from small private instances to massive public in
 
 1. Prepare an SMTP server for Mastodon to send email notifications to users when they register for the site, get a follower, receive a message, and for other Mastodon activity.
 
-    - You can create your own SMTP server — and even host it on the same machine as your Mastodon server — by following the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) guide.
+    - You can create your own SMTP server — and even host it on the same machine as your Mastodon server — by following the [Email with Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) guide.
 
     - Alternatively, you can use a third-party SMTP service. This guide provides instructions for using [Mailgun](https://www.mailgun.com/) as your SMTP provider.
 
 1. Replace occurrences of `example.com` in this guide with the domain name you are using for your Mastodon instance.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Docker and Docker Compose
 
 Mastodon can be installed using its included [Docker Compose](https://docs.docker.com/compose/) file. Docker Compose installs and runs all of the requisites for the Mastodon environment in Docker containers. If you have not used Docker before, it is recommended that you review the following guides:
 
-- [Introduction to Docker](/docs/applications/containers/introduction-to-docker/)
-- [How to Use Docker Compose](/docs/applications/containers/how-to-use-docker-compose/)
+- [Introduction to Docker](/docs/guides/introduction-to-docker/)
+- [How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/)
 
 ### Install Docker
 

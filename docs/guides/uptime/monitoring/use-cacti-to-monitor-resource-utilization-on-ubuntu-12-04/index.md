@@ -29,7 +29,7 @@ The Linode Manager provides some basic monitoring of system resource utilization
 
 For these kinds of deployments we encourage you to consider a tool like Cacti, which is a flexible front end for the RRDtool application. Cacti simply provides a framework and a mechanism to poll a number of sources for data regarding your systems, which can then be graphed and presented in a clear web-based interface. Whereas packages like Munin provide monitoring for a specific set of metrics on systems which support the Munin plug in, Cacti provides increased freedom to monitor larger systems and more complex deployment by way of its plug-in framework.
 
-Before installing Cacti we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before installing Cacti we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Prerequisites
 
@@ -69,7 +69,7 @@ If you had to enable new repositories, issue the following command to update you
 
 You will need to create a password for the `root` user of your MySQL database during the installation. After the installation completes, be sure to run `mysql_secure_installation` to disable some of MySQL's less for configuration recommendations.
 
-The above command will additionally install the Apache web server. Consider our documentation on [installing the Apache HTTP server](/docs/web-servers/apache/apache-web-server-ubuntu-12-04/) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including [Apache with PHP running as a CGI process](/docs/web-servers/apache/run-php-cgi-apache-ubuntu-12-04/) and with [nginx](/docs/web-servers/nginx/install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-precise-pangolin/) running PHP as a FastCGI process.
+The above command will additionally install the Apache web server. Consider our documentation on [installing the Apache HTTP server](/docs/guides/apache-web-server-ubuntu-12-04/) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including [Apache with PHP running as a CGI process](/docs/guides/run-php-cgi-apache-ubuntu-12-04/) and with [nginx](/docs/guides/install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-precise-pangolin/) running PHP as a FastCGI process.
 
 ### Install Cacti
 

@@ -6,13 +6,12 @@ author:
 description: "An overview of changes and actions that may be required in advance of upgrades to Linode's networking infrastructure."
 keywords: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-05
+published: 2022-07-19
+modified: 2022-10-11
 modified_by:
   name: Linode
 title: "Upcoming Changes Related to Network Infrastructure Upgrades"
 noindex: true
-_build:
-  list: false
 ---
 
 Throughout 2022, Linode is rolling out networking infrastructure upgrades to all of our existing data centers. These upgrades increase the stability and resiliency of our already reliable network. It also enables us to bring features, such as VLAN and IP Sharing, to every data center.
@@ -29,11 +28,11 @@ For most customers, these upgrades are performed seamlessly behind the scenes. F
 
 The following is a list of breaking changes and any action that may be required if you are impacted by that change:
 
-- **Deprecation of IPv6 /116 pools:** /116 pools will no longer be provided to Compute Instances within data center that have received the upgrades. Existing /116 pools will be removed from Compute Instances at that time.
+- **Deprecation of IPv6 /116 pools:** /116 pools will no longer be provided to new Compute Instances. Existing /116 pools will be removed from Compute Instances when data center is undergoing upgrades.
 
-    *Action:* If you were using /116 for IPv6 failover, consider using an IPv6 /64 instead.
+    *Action:* If you are using /116 for IPv6 failover, consider using an IPv6 /64 instead.
 
-- **IP failover through BGP:** IP failover (IP Sharing) for public IPv4 addresses and IPv6 routed ranges will be facilitated through BGP instead of ARP (configured through [keepalived](/docs/guides/ip-failover-keepalived/)).
+- **IP failover through BGP:** IP failover (IP Sharing) for public IPv4 addresses and IPv6 routed ranges will be facilitated through BGP instead of ARP (configured through [keepalived](/docs/guides/ip-failover-legacy-keepalived/)).
 
     *Action:* If you have previously configured IP failover for a public IPv4 address, review the [Configuring IP Failover on a Compute Instance](/docs/guides/ip-failover/) guide to learn more about configuring IP failover using BGP. You can configure BGP ahead of time, but will not be able to test or use the configuration until after the network upgrades have been completed.
 
@@ -47,15 +46,19 @@ Review the table below to learn which data centers have been upgraded with the l
 | Dallas (Texas, USA) | *Coming soon* |
 | **Frankfurt (Germany)** | **Complete** |
 | Fremont (California, USA) | *Coming soon* |
-| London (United Kingdom) | *In progress* |
-| Mumbai (India) | *In progress* |
-| Newark (New Jersey, USA) | *In progress* |
-| Singapore | *Coming soon* |
+| **London (United Kingdom)** | **Complete** |
+| **Mumbai (India)** | **Complete** |
+| **Newark (New Jersey, USA)** | **Complete** |
+| **Singapore** | **Complete** |
 | Sydney (Australia) | *Coming soon* |
 | Tokyo (Japan) | *Coming soon* |
 | Toronto (Canada) | *Coming soon* |
 
 A status of **complete** indicates that all new Compute Instances (and *most* existing instances) are located on fully upgraded hardware. Compute Instances using legacy features, such as ARP-based failover and /116 ranges, may still be located on hardware that hasn't yet been upgraded. These customers have been notified and a migration timeline has been shared.
+
+{{< note >}}
+If a data center is marked as *undergoing network upgrades*, customers may encounter issues enabling IP Sharing and configuring failover. For Compute Instances that already have IP Sharing enabled, this feature should still function as intended. Once the network upgrades are completed, IP Sharing will be supported through the new method (BGP). See [Configuring IP Failover](/docs/guides/ip-failover/).
+{{</ note >}}
 
 ## What Action is Required?
 

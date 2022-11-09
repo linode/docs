@@ -28,11 +28,11 @@ For this reason, VPN clients often use firewall rules to ensure that internet tr
 
 This guide assumes that you already have an OpenVPN server running on your Linode, and have at least one client configured to connect to it. If you need help doing this, see our three-part series on setting up an OpenVPN environment:
 
-1.  [Set Up a Hardened OpenVPN Server with Debian](/docs/networking/vpn/set-up-a-hardened-openvpn-server/)
+1.  [Set Up a Hardened OpenVPN Server with Debian](/docs/guides/set-up-a-hardened-openvpn-server/)
 
-2.  [Tunnel Your Internet Traffic Through an OpenVPN Server](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server/)
+2.  [Tunnel Your Internet Traffic Through an OpenVPN Server](/docs/guides/tunnel-your-internet-traffic-through-an-openvpn-server/)
 
-3.  [Configuring OpenVPN Client Devices](/docs/networking/vpn/configuring-openvpn-client-devices/)
+3.  [Configuring OpenVPN Client Devices](/docs/guides/configuring-openvpn-client-devices/)
 
 
 ## Gather Client Device Information
@@ -112,7 +112,7 @@ iptables -A OUTPUT -j ACCEPT -o tun0
 
 This ruleset replaces the pre-exiting iptables rules and instructs the firewall to drop every outgoing connection other than loopback traffic, the local network's subnet and UDP traffic to and from your OpenVPN server's IP on port 1194. In addition, all incoming and outgoing connections are allowed over the virtual network interface `tun0`.
 
-Your VPN firewall is now active, but this ruleset is only temporary and will be cleared when you reboot your Linode. To make the firewall permanent, you can install the `iptables-persistent` package for Debian or Ubuntu-based distributions, or you can see our [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/#deploy-your-iptables-rulesets) or [Firewalld](/docs/security/firewalls/introduction-to-firewalld-on-centos/#constructing-a-ruleset-with-firewalld) guides to create permanent rulesets and/or profiles.
+Your VPN firewall is now active, but this ruleset is only temporary and will be cleared when you reboot your Linode. To make the firewall permanent, you can install the `iptables-persistent` package for Debian or Ubuntu-based distributions, or you can see our [iptables](/docs/guides/control-network-traffic-with-iptables/#deploy-your-iptables-rulesets) or [Firewalld](/docs/guides/introduction-to-firewalld-on-centos/#constructing-a-ruleset-with-firewalld) guides to create permanent rulesets and/or profiles.
 
 ### VPN Firewall using ufw
 

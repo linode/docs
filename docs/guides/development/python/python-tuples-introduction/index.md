@@ -161,7 +161,7 @@ Typically, when you create a tuple, you assign the tuple values to a single vari
 
     colors = ('red', 'violet', 'yellow-green')
 
-*Tuple unpacking* is the action of extracting the values stored in a tuple and assigning each value to its own variable. Using the `colors` tuple from the example above, use the code below to to assign each tuple value to a variable:
+*Tuple unpacking* is the action of extracting the values stored in a tuple and assigning each value to its own variable. Using the `colors` tuple from the example above, use the code below to assign each tuple value to a variable:
 
     (primary, secondary, tertiary) = colors
 
@@ -230,6 +230,8 @@ Use the `type()` method to confirm that the `tuple_to_list_example` variable con
 {{< output >}}
 <class 'list'>
 {{</ output >}}
+
+To learn how to convert a string to a tuple, see our guide [How to Convert Data Types in Python](/docs/guides/how-to-convert-datatypes-in-python/#converting-strings-to-tuples).
 
 ## Built-in Tuple Methods
 

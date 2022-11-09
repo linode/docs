@@ -26,6 +26,6 @@ Only a *single* manual snapshot can be stored for a Compute Instance. Taking a n
 
     ![Screenshot of the Manual Snapshot section within the Cloud Manager](backups-manual-snapshot.png)
 
-1.  A pop-up box is displayed confirming that you intend to take a new manual snapshot and that any previous snapshot will be overwritten. Click **Take Snasphot** to proceed.
+1.  A pop-up box is displayed confirming that you intend to take a new manual snapshot and that any previous snapshot will be overwritten. Click **Take Snapshot** to proceed.
 
 Creating the manual snapshot can take several minutes, depending on the size of your Linode and the amount of data you have stored on it. Other Cloud Manager jobs for this Linode will not run until the snapshot job has been completed.

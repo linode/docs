@@ -19,7 +19,7 @@ tags: ["linode platform"]
 
 Following the release of the [Linode API v4](/docs/api/), both the Linode API v3 and [earlier versions of the CLI](/docs/guides/using-the-linode-cli-api-v3/) using that API version have been deprecated. While earlier versions remained functional for some time, they have officially been deprecated and can not be leveraged to use the full extent of the Linode Platform.
 
-To ensure that all users continue to use a currently supported version of the API in their production pipelines, it is recommended that users upgrade to the newest version of the Linode CLI as soon as they are able. This guide walks you through uninstalling the old version of the CLI. After the old version has been removed, you can follow the instructions within the [Linode CLI Overview](/docs/guides/linode-cli/#install-the-cli) guide to install the latest version.
+To ensure that all users continue to use a currently supported version of the API in their production pipelines, it is recommended that users upgrade to the newest version of the Linode CLI as soon as they are able. This guide walks you through uninstalling the old version of the CLI. After the old version has been removed, you can follow the instructions within the [Linode CLI Overview](/docs/products/tools/cli/guides/install/) guide to install the latest version.
 
 ## Uninstall the Linode CLI
 
@@ -81,4 +81,4 @@ Additionally, if they are no longer needed, users may remove the following Perl 
 ## Install the Latest Linode CLI Version
 
 Once the deprecated version of the Linode CLI has been safely removed, the newest version of the Linode CLI should be installed using Python 3.
-More information on this process can be found on our [Overview of the Linode CLI Guide](/docs/guides/linode-cli/).
+More information on this process can be found on our [Overview of the Linode CLI Guide](/docs/products/tools/cli/get-started/).

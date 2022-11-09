@@ -38,7 +38,7 @@ Some use cases where Storm is a good solution:
 -  Analysis of server logs
 -  Internet of Things (IoT) sensor data processing
 
-This guide explains how to create Storm clusters on the Linode cloud using a set of shell scripts that use Linode's Application Programming Interface (APIs) to programmatically create and configure large clusters. The scripts are all provided by the author of this guide via [GitHub repository](https://github.com/pathbreak/storm-linode). This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode/) service with this setup.
+This guide explains how to create Storm clusters on the Linode cloud using a set of shell scripts that use Linode's Application Programming Interface (APIs) to programmatically create and configure large clusters. The scripts are all provided by the author of this guide via [GitHub repository](https://github.com/pathbreak/storm-linode). This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
 {{< caution >}}
 External resources are outside of our control, and can be changed and/or modified without our knowledge. Always review code from third party sites yourself before executing.
@@ -70,7 +70,7 @@ This guide will explain how to configure a working Storm cluster and its Zookeep
 -  A Zookeeper or Storm cluster can have either Ubuntu 14.04 LTS or Debian 8 installed on its nodes. Its distribution does not need to be the same one as the one installed on the cluster manager Linode.
 
 {{< note >}}
-The steps in this guide and in the bash scripts referenced require root privileges. Be sure to run the steps below as `root`. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide and in the bash scripts referenced require root privileges. Be sure to run the steps below as `root`. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Naming Conventions
@@ -86,7 +86,7 @@ These are the names we'll use, but you are welcome to choose your own when creat
 
 ### Get a Linode API Key
 
-Follow the steps in [Generating an API Key](/docs/platform/api/api-key/) and save your key securely. It will be entered into configuration files in upcoming steps.
+Follow the steps in [Generating an API Key](/docs/guides/api-key/) and save your key securely. It will be entered into configuration files in upcoming steps.
 
 If the key expires or is removed, remember to create a new one and update the `api_env_linode.conf` API environment configuration file on the cluster manager Linode. This will be explained further in the next section.
 
