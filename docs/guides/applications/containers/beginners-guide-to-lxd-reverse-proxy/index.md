@@ -43,13 +43,13 @@ Please refer to the following diagram to understand the reverse proxy created in
 
 In this guide you will:
 
- - [Install and configure containers](/docs/applications/containers/beginners-guide-to-lxd-reverse-proxy/#creating-the-containers) for both NGINX and Apache web servers.
+ - [Install and configure containers](/docs/guides/beginners-guide-to-lxd-reverse-proxy/#creating-the-containers) for both NGINX and Apache web servers.
 
- - [Learn how to install and configure a reverse proxy in a container](/docs/applications/containers/beginners-guide-to-lxd-reverse-proxy/#setting-up-the-reverse-proxy).
+ - [Learn how to install and configure a reverse proxy in a container](/docs/guides/beginners-guide-to-lxd-reverse-proxy/#setting-up-the-reverse-proxy).
 
- - [Get SSL/TLS support through Let's Encrypt certificates with automated certificate renewal](/docs/applications/containers/beginners-guide-to-lxd-reverse-proxy/#adding-support-for-https-with-let-s-encrypt).
+ - [Get SSL/TLS support through Let's Encrypt certificates with automated certificate renewal](/docs/guides/beginners-guide-to-lxd-reverse-proxy/#adding-support-for-https-with-let-s-encrypt).
 
-- [Troubleshooting common errors](/docs/applications/containers/beginners-guide-to-lxd-reverse-proxy/#troubleshooting).
+- [Troubleshooting common errors](/docs/guides/beginners-guide-to-lxd-reverse-proxy/#troubleshooting).
 
 {{< note >}}
 For simplicity, the term *container* is used throughout this guide to describe the LXD system containers.
@@ -72,7 +72,7 @@ If the version is not 3.3 or later, update to the latest version by installing t
     sudo lxd.migrate
 {{</ note >}}
 
-2. This guide uses the hostnames `apache1.example.com` and `nginx1.example.com` for the two example websites. Replace these names with hostnames you own and setup their DNS entries to point them to the IP address of the server you created. For help with DNS see our [DNS Manager Guide](/docs/guides/dns-manager/).
+2. This guide uses the hostnames `apache1.example.com` and `nginx1.example.com` for the two example websites. Replace these names with hostnames you own and setup their DNS entries to point them to the IP address of the server you created. For help with DNS see our [DNS Manager Guide](/docs/products/networking/dns-manager/).
 
 ## Creating the Containers
 
@@ -313,7 +313,7 @@ server {
     ![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
 
     {{< note >}}
-If you look at the Apache access.log file (default file `/var/log/apache2/access.log`), it still shows the private IP address of the `proxy` container instead of the real IP address. This issue is specific to the Apache web server and has to do with how the server prints the logs. Other software on the web server is able to use the real IP. To fix this through the Apache logs, see the section [Troubleshooting](/docs/applications/containers/beginners-guide-to-lxd-reverse-proxy/#troubleshooting).
+If you look at the Apache access.log file (default file `/var/log/apache2/access.log`), it still shows the private IP address of the `proxy` container instead of the real IP address. This issue is specific to the Apache web server and has to do with how the server prints the logs. Other software on the web server is able to use the real IP. To fix this through the Apache logs, see the section [Troubleshooting](/docs/guides/beginners-guide-to-lxd-reverse-proxy/#troubleshooting).
 {{< /note >}}
 
 ### Direct Traffic to the NGINX Web Server From the Reverse Proxy

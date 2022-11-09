@@ -59,6 +59,7 @@ anycasting
 ap
 apache2
 api
+apis
 apiserver
 apk
 apparmor
@@ -67,6 +68,8 @@ appletalk
 approvers
 appsec
 appserver
+appsmith
+appwrite
 apxs
 architecting
 aren
@@ -327,6 +330,7 @@ coreutils
 coroutine
 coroutines
 corporateclean
+Countly
 courseware
 cov
 coverity
@@ -427,6 +431,7 @@ dejong
 deloitte
 delpy
 demultiplexer
+Deno
 denormalized
 deprovision
 deprovisioning
@@ -995,6 +1000,7 @@ kasten
 kbits
 keepalive
 keepalived
+keepalived_script
 keras
 kerberos
 kerberos5
@@ -1222,6 +1228,7 @@ microblogging
 microblogs
 microservice
 microservices
+microsite
 microsystems
 microweb
 Microweber
@@ -1297,6 +1304,7 @@ multiline
 multilink
 multiplatform
 multiport
+multiprotocol
 multisite
 multitenant
 multiuser
@@ -1386,6 +1394,7 @@ Nikto
 Nirvashare
 nixcraft
 nixpkgs
+nlris
 nmap
 noarch
 node1
@@ -1659,6 +1668,7 @@ rclone
 rcon
 rdbadmin
 rdiff
+reachability
 readcaps
 reauthenticate
 reauthenticating
@@ -1676,6 +1686,7 @@ rebranded
 recompiles
 reconnections
 recordset
+recoverability
 recursing
 recv
 red5
@@ -1730,6 +1741,8 @@ retpoline
 retrans
 reusability
 reutilize
+revalidate
+revalidating
 revenera
 richlanguage
 rijndael
@@ -1814,12 +1827,14 @@ scm
 scp
 scrapy
 screenrc
+scrollable
 scriptfilename
 scrum2b
 sda
 sda1
 sdb
 sdc
+sdks
 se
 seaborn
 seafile
@@ -2028,6 +2043,7 @@ tcpdump
 tcpwrappers
 teamspeak
 teardown
+techdocs
 techland
 telecom
 teleporting
@@ -2086,6 +2102,7 @@ torvalds
 toolchain
 toolchains
 toolset
+toolstrip
 towson
 trac
 traceroute
@@ -2095,6 +2112,7 @@ transcode
 transcoder
 transcoding
 transpiled
+transpiling
 trello
 triaging
 trie

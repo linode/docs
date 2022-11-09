@@ -60,7 +60,7 @@ Ensure that the version number matches the Drupal 8 version you wish to download
 
         sudo apt-get install php-gd php-xml php-dom php-simplexml php-mbstring
 
-1. Create your Drupal 8 installation's `settings.php` file from the default settings file. This file will be configured when you run through Drupal's automated web configuration. See the [Install and Configure Drupal on Debian 10](/docs/websites/cms/drupal/how-to-install-and-configure-drupal-on-debian-10/#drupal-first-start) guide for more details.
+1. Create your Drupal 8 installation's `settings.php` file from the default settings file. This file will be configured when you run through Drupal's automated web configuration. See the [Install and Configure Drupal on Debian 10](/docs/guides/how-to-install-and-configure-drupal-on-debian-10/#drupal-first-start) guide for more details.
 
         sudo cp /var/www/html/example.com/public_html/sites/default/default.settings.php /var/www/html/example.com/public_html/sites/default/settings.php
 
@@ -185,6 +185,6 @@ The above setup is designed for ease of use. However, there are setups designed 
 
 At a high-level, the steps you will need to follow to begin configuring a Drupal multisite set up are:
 
-- Add a new [MySQL user, password, and database](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/#mysql)
-- Create a new [Apache virtual hosts file and corresponding directories](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/#virtual-hosts)
+- Add a new [MySQL user, password, and database](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#mysql)
+- Create a new [Apache virtual hosts file and corresponding directories](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#virtual-hosts)
 - See [Drupal's Multisite documentation](https://www.drupal.org/docs/8/multisite/drupal-8-multisite) for more details.

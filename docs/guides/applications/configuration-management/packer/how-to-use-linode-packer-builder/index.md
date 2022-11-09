@@ -24,7 +24,7 @@ aliases: ['/applications/configuration-management/how-to-use-linode-packer-build
 
 [Packer](https://www.packer.io/) is a HashiCorp maintained open source tool that is used to create machine images. A machine image provides the operating system, applications, application configurations, and data files that a virtual machine instance will run once it's deployed. Packer can be used in conjunction with common configuration management tools like Chef, Puppet, or Ansible to install software to your Linode and include those configurations into your image.
 
-Packer *templates* store the configuration parameters used for building an image. This standardizes the imaging building process and ensures that everyone using that template file will always create an identical image. For instance, this can help your team maintain an [immutable infrastructure](/docs/guides/what-is-immutable-infrastructure/) within your [continuous delivery](/docs/development/ci/introduction-ci-cd/#what-is-continuous-delivery) pipeline.
+Packer *templates* store the configuration parameters used for building an image. This standardizes the imaging building process and ensures that everyone using that template file will always create an identical image. For instance, this can help your team maintain an [immutable infrastructure](/docs/guides/what-is-immutable-infrastructure/) within your [continuous delivery](/docs/guides/introduction-ci-cd/#what-is-continuous-delivery) pipeline.
 
 ## The Linode Packer Builder
 
