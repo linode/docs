@@ -5,23 +5,44 @@ author:
 title: "PostgreSQL Extensions"
 description: "Learn which PostgreSQL extensions are supported by Linode's Managed Database service and how to install them."
 published: 2022-06-06
+modified: 2022-08-23
 ---
 
-The functionality of PostgreSQL can be enhanced through the use of extensions. Linode's PostgreSQL Managed Database service supports many of these extensions and they are available for any user to install and utilize.
+The functionality of PostgreSQL can be enhanced through the use of [extensions](https://wiki.postgresql.org/wiki/Extensions). Linode's PostgreSQL Managed Database service supports many of these extensions.
 
-## View Available Extensions
+## Manage Extensions
 
-To see a full list of all the extensions available for your version of PostgreSQL, connect to your database and run the following query. You can also review the [List of Available Extensions](#list-of-available-extensions) below.
+Many extensions can be viewed, installed, and removed directly from the PostgreSQL command-line prompt. To access this prompt, connect to your database using the psql tool. See [Connect to a PostgreSQL Database > psql](/docs/products/databases/managed-databases/guides/postgresql-connect/#connect-using-psql-cli).
+
+### View Installed Extensions
+
+To view the extensions that are currently installed on your PostgreSQL Managed Database, run the `\dx` command at the prompt. The output should be similar to the following, displaying each extension along with its version number, schema, and a short description.
+
+{{< output >}}
+     Name      | Version |   Schema   |          Description
+---------------+---------+------------+--------------------------------
+ plpgsql       | 1.0     | pg_catalog | PL/pgSQL procedural language
+{{</ output >}}
+
+### View Available Extensions
+
+To see a full list of all the extensions available for your version of PostgreSQL, run the following query. You can also review the [List of Available Extensions](#list-of-available-extensions) below.
 
     SELECT * FROM pg_available_extensions;
 
-## Install an Extension
+{{< caution >}}
+Linode does not provide superuser access to PostgreSQL Managed Databases. As such, some extensions may not function properly or may otherwise encounter permissions issues.
+{{</ caution >}}
+
+### Install an Extension
 
 To install one of the available extensions on your database, use the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command, replacing *[extension_name]* with the name of the extension you wish to install.
 
     CREATE EXTENSION IF NOT EXISTS [extension_name];
 
-## Remove an Extension
+If this command does not work, the extension may either not be compatible or it may need to be manually enabled on your Managed Database by our team. Review the [extensions list](#list-of-available-extensions) below.
+
+### Remove an Extension
 
 To remove an extension, use the [DROP EXTENSION](https://www.postgresql.org/docs/current/sql-dropextension.html) command, replacing *[extension_name]* with the name of the extension you wish to install.
 
@@ -29,17 +50,17 @@ To remove an extension, use the [DROP EXTENSION](https://www.postgresql.org/docs
 
 ## List of Available Extensions
 
-The table below lists all of the PostgreSQL extensions that are supported by our Managed Database service. Note that not all extensions are supported on all PostreSQL versions. Furthermore, the actual installed version of the extension itself may vary between PostgreSQL versions.
+The table below lists all of the PostgreSQL extensions that may be supported by our Managed Database service, along with the compatible PostgreSQL versions.
 
-{{< note >}}
-While this list is kept updated, the most recent and accurate list can be generated through the instructions in the [View Available Extensions](#view-available-extensions) section.
-{{</ note >}}
+{{< caution >}}
+Linode does not provide superuser access to PostgreSQL Managed Databases. As such, some extensions may not function properly or may otherwise encounter permissions issues. Extensions that are known not to work, such as `adminpack`, have been marked as incompatible in the list below. If you encounter an extension that isn't working as expected due to permissions issues, our team can review the extension. Reach out to [Support](https://www.linode.com/support/) with the extension name, the name of the database for which you wish to use the extension, and your use case.
+{{</ caution >}}
 
 | Extension | Compatible PostgreSQL Version(s) | Description |
 | -- | -- | -- |
 | `address_standardizer` | 11, 12, 13 | Used to parse an address into constituent elements. Generally used to support geocoding address normalization step. |
 | `address_standardizer_data_us` | 11, 12, 13 | Example dataset for `address_standardizer`. |
-| `adminpack` | 10, 11, 12, 13 | Administrative functions for PostgreSQL |
+| `adminpack` (**incompatible**) | 10, 11, 12, 13 | Administrative functions for PostgreSQL |
 | `amcheck` | 10, 11, 12, 13 | Functions for verifying relation integrity |
 | `amcheck_next`| 10, 11 | Functions for verifying relation integrity |
 | `autoinc` | 10, 11, 12, 13 | Functions for auto incrementing fields |
@@ -54,7 +75,7 @@ While this list is kept updated, the most recent and accurate list can be genera
 | `dict_xsyn` | 10, 11, 12, 13 | Text search dictionary template for extended synonym processing |
 | `earthdistance` | 10, 11, 12, 13 | Calculate great-circle distances on the surface of the Earth |
 | `file_fdw` | 10, 11, 12, 13 | Foreign-data wrapper for flat file access |
-| `fuzzystrmatch` | 10, 11, 12, 13 | Determine similarities and distance between strings |
+| `fuzzystrmatch`\* | 10, 11, 12, 13 | Determine similarities and distance between strings |
 | `hll` | 10, 11, 12, 13 | Type for storing HyperLogLog data |
 | `hstore` | 10, 11, 12, 13 | Data type for storing sets of (key, value) pairs |
 | `hstore_plperl` | 10, 11, 12, 13 | Transform between `hstore` and `plperl` |
@@ -87,7 +108,7 @@ While this list is kept updated, the most recent and accurate list can be genera
 | `pgrowlocks` | 10, 11, 12, 13 | Show row-level locking information |
 | `pgstattuple` | 10, 11, 12, 13 | Show tuple-level statistics |
 | `plpgsql` | 10, 11, 12, 13 | PL/pgSQL procedural language |
-| `postgis` | 10, 11, 12, 13 | PostGIS geometry and geography spatial types and functions |
+| `postgis`\* | 10, 11, 12, 13 | PostGIS geometry and geography spatial types and functions |
 | `postgis_sfcgal` | 10, 11, 12, 13 | PostGIS SFCGAL functions |
 | `postgis_tiger_geocoder` | 10, 11, 12, 13 | PostGIS tiger geocoder and reverse geocoder |
 | `postgis_topology` | 10, 11, 12, 13 | PostGIS topology spatial types and functions |
@@ -106,4 +127,6 @@ While this list is kept updated, the most recent and accurate list can be genera
 | `uuid-ossp` | 10, 11, 12, 13 | Generate universally unique identifiers (UUIDs) |
 | `xml2` | 10, 11, 12, 13 | XPath querying and XSLT |
 
-If you would like to use an extension that's not currently listed here, contact our Support team and they'll be able to send your feedback to our developers.
+*\* This extension may need to be manually enabled by our team. Contact [Support](https://www.linode.com/support/) with the name of the extension and the name of the Managed Database you wish to enable it on.*
+
+If you would like to use an extension that's not currently listed here, contact our [Support](https://www.linode.com/support/) team and they'll be able to send your feedback to our developers.

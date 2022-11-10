@@ -130,7 +130,7 @@ If a disk is created using custom partitions, resizing is not possible. If using
 <!--### Duplicating a Disk
 
 {{< note >}}
-Duplicating a disk is not yet available in the Cloud Manager, but this feature is available in the Classic Manager. See [the Classic Manager version of this guide](/docs/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/#duplicating-a-disk) for instructions on how to duplicate a disk.
+Duplicating a disk is not yet available in the Cloud Manager, but this feature is available in the Classic Manager. See [the Classic Manager version of this guide](/docs/guides/disk-images-and-configuration-profiles/#duplicating-a-disk) for instructions on how to duplicate a disk.
 {{</ note >}}
 
 You can create an exact copy of a disk by duplicating it. This is an effective way to back up your server or clone an existing Linode to a new Linode. (To clone a disk, see [Cloning disks and Configuration Profiles](#cloning-disks-and-configuration-profiles).) Here's how to duplicate a disk:
@@ -182,7 +182,7 @@ Making a new configuration profile allows you to create a new and separate boot 
 
 1.  Enter a descriptive name for the configuration profile in the **Label** field. This name appears on the Linode's detail page and will help you differentiate it from other configuration profiles.
 1.  You can enter comments or notes about this configuration profile in the **Comments** field.
-1.  Under **VM Mode**, select whether you would like paravirtualization or full-virtualization. This option describes how hardware commands are directed to the host operating system. Paravirtualization is recommended, and is necessary for features like [Block Storage](/docs/guides/how-to-use-block-storage-with-your-linode/).
+1.  Under **VM Mode**, select whether you would like paravirtualization or full-virtualization. This option describes how hardware commands are directed to the host operating system. Paravirtualization is recommended, and is necessary for features like [Block Storage](/docs/products/storage/block-storage/).
 1.  Select a Linux kernel from the **Kernel** menu. We recommend selecting one of the current and latest kernels.
 1. Select the **Run Level** for your configuration profile. If you aren't sure which level to choose, choose **Run Default Level**.
 1. Select the **Memory Limit** setting for the configuration profile. If you select to **limit the amount of RAM this config uses**, enter in the memory limit allotment. The maximum amount of available memory is displayed below the text field.
@@ -285,7 +285,7 @@ We recommend that you power off your Linode first, and keep it powered off until
     ![Size Error Message](disks-and-config-size-error.png)
 
     {{< note >}}
-If you need to make room on your destination Linode you can [resize it to a larger plan](/docs/guides/resizing-a-linode/), [resize your disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to a smaller size, or [delete disks](/docs/platform/disk-images/disk-images-and-configuration-profiles/#removing-a-disk) to free up available space. If you decide to resize your Linode to a larger plan, be sure to uncheck the box that automatically resizes your disks or they will expand to fill up the extra space that you are trying to create.
+If you need to make room on your destination Linode you can [resize it to a larger plan](/docs/guides/resizing-a-linode/), [resize your disks](/docs/guides/disk-images-and-configuration-profiles/#resizing-a-disk) to a smaller size, or [delete disks](/docs/guides/disk-images-and-configuration-profiles/#removing-a-disk) to free up available space. If you decide to resize your Linode to a larger plan, be sure to uncheck the box that automatically resizes your disks or they will expand to fill up the extra space that you are trying to create.
 {{< /note >}}
 
 1.  Once the cloning process begins, you are returned to the **Disks/Configs** tab and a progress bar appears at the top of the screen.

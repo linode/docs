@@ -13,7 +13,7 @@ modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2010-10-12
-title: 'Email with Postfix, Dovecot and MySQL on Ubuntu 10.10 (Maverick)'
+title: 'Email with Postfix, Dovecot and MySQL on Ubuntu 10.10'
 relations:
     platform:
         key: email-postfix-dovecot-mysql

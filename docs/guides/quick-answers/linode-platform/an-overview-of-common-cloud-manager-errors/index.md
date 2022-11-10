@@ -63,6 +63,6 @@ The reasons behind these limits can vary, though in most cases are related to de
 
 ## Your DNS Zones are Not Being Served
 
-**Your DNS zones are not being served. Your domains will not be served by Linode's nameservers unless you have at least one active Linode on your account. You can create one here.**
+**Your DNS zones are not being served. Your domains will not be served by Linode's nameservers unless you have at least one Linode present on your account. You can create one here.**
 
-This message is seen when using Linode's DNS Manager without any billable resources currently active on your account. While the DNS Manager is a free service, it does require that at least one billable resource is available on your account. See our [pricing page](https://www.linode.com/pricing/) for more information on resources you can add to freely access the DNS Manager.
+This message is seen when using Linode's DNS Manager without any billable resources currently present on your account. While the DNS Manager is a free service, it does require that at least one billable resource is available on your account. See our [pricing page](https://www.linode.com/pricing/) for more information on resources you can add to freely access the DNS Manager.

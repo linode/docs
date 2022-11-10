@@ -526,15 +526,11 @@ No additional Linodes will be created in this section, and all configuration wil
 Make sure that [Network Helper](/docs/guides/network-helper/) is turned **OFF** on your database nodes before proceeding.
 {{< /caution >}}
 
-### Configure IP Failover
+### Configure IP Sharing
+
+IP sharing, also referred to as IP failover, is the process by which an IP address is reassigned from one Compute Instance to another in the event the first one fails or goes down. See, [Configuring IP Sharing](/docs/guides/managing-ip-addresses/#configuring-ip-sharing) for information about using Linode Cloud Manager to configure IP failover.
 
 Configure IP failover on `galera2` and `galera3` to take on the floating IP address from `galera1` in the event that it fails.
-
-1.  Go to the **Networking** tab in the Linode Cloud Manager for `galera2`, and click **IP Failover** under your public IP addresses.
-
-1.  You'll see a menu listing all of the Linodes on your account. Check the box corresponding to the new private IP address for `galera1`, which we will now refer to as the floating IP address, and click **Save Changes**.
-
-1.  Repeat the above steps to configure IP failover for `galera3` as well. Make sure to select the same IP address.
 
 ### Disable SELinux for Keepalived
 
@@ -679,10 +675,10 @@ SELinux should now resume normal enforcement while allowing the operations descr
 
 The final step in creating a highly available website or application is to load balance traffic to the application servers. In this step, we'll use a NodeBalancer to distribute traffic between the application servers to ensure that no single server gets overloaded. NodeBalancers are highly available by default, and do not constitute a single point of failure.
 
-For instructions on how to install this component, follow our guide on [Getting Started with NodeBalancers](/docs/guides/getting-started-with-nodebalancers/). Be sure to use the *private* IP addresses of your application servers when adding nodes to your backend.
+For instructions on how to install this component, follow our guide on [Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/). Be sure to use the *private* IP addresses of your application servers when adding nodes to your backend.
 
 {{< note >}}
-NodeBalancers are an add-on service. Be aware that adding a NodeBalancer will create an additional monthly charge to your account. Please see our [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/#additional-linode-services) guide for more information.
+NodeBalancers are an add-on service. Be aware that adding a NodeBalancer will create an additional monthly charge to your account. Please see our [Billing and Payments](/docs/guides/understanding-billing-and-payments/#additional-linode-services) guide for more information.
 {{< /note >}}
 
 ## WordPress (Optional)
@@ -736,7 +732,7 @@ You've successfully configured a highly available WordPress site, and you're rea
 
 The NodeBalancer in the above system directs all incoming traffic to the application servers. As such, its IP address will be the one you should use when configuring your DNS records. To find this information, visit the **NodeBalancers** tab in the Linode Manager and look in the *IP Address* section.
 
-For more information on DNS configuration, refer to our [introduction to DNS records](/docs/guides/dns-records-an-introduction/) and our guide on how to use the [DNS Manager](/docs/guides/dns-manager/).
+For more information on DNS configuration, refer to our [introduction to DNS records](/docs/guides/dns-overview/) and our guide on how to use the [DNS Manager](/docs/products/networking/dns-manager/).
 
 ## Configuration Management
 

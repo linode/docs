@@ -257,7 +257,7 @@ To delete the Block Storage PVC created in this guide:
         kubectl delete pvc pvc-example
 
     {{< note >}}
-If you used the `linode-block-storage-retain` StorageClass when creating your PVC, this command will delete the PVC, however, your Block Storage Volume and its data will persist in a detached state. To permanently remove the Block Storage Volume from your Linode Account, see [How to Delete a Block Storage Volume](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#how-to-delete-a-block-storage-volume).
+If you used the `linode-block-storage-retain` StorageClass when creating your PVC, this command will delete the PVC, however, your Block Storage Volume and its data will persist in a detached state. To permanently remove the Block Storage Volume from your Linode Account, see [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/).
 
 If, instead, you used the `linode-block-storage` StorageClass when creating your PVC, this command will delete the PVC along with your Block Storage Volume and its data.
     {{</ note >}}

@@ -127,7 +127,7 @@ If your media collection is larger than the space available from your Linode pla
 For future reference, you can find examples of the instructions provided in this section in Cloud Manager by navigating to [**Volumes**](https://cloud.linode.com/volumes), then selecting **Show Configuration** from the option menu for your Volume.
 {{< /note >}}
 
-1.  [Create a Block Storage Volume](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#add-a-volume-from-the-linode-detail-page) if you do not already have one prepared.
+1.  [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/) if you do not already have one prepared.
 
 1.  Establish an SSH connection to your Plex Server Linode as your [Limited User](#plex-marketplace-app-options).
 
@@ -187,7 +187,7 @@ This section directs you to run commands either on your Plex Server Linode throu
     Depending on the file size(s), this may take a few minutes.
 
     {{< note >}}
-There are other ways to upload files to your Plex Server Linode. See our section in [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics/#upload-files-to-a-remote-server) for more information.
+There are other ways to upload files to your Plex Server Linode. See our section in [Linux System Administration Basics](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server) for more information.
     {{< /note >}}
 
 ### Add Media Libraries

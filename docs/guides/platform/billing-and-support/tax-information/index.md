@@ -6,7 +6,7 @@ author:
 description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
 keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "tax", "taxes", "tax information", "usd", "vat id", "eu", "european union", "value added tax", "gst", "goods and services tax", "gst id", "tax id"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-06-21
+modified: 2022-10-17
 modified_by:
   name: Linode
 published: 2019-04-09
@@ -14,6 +14,13 @@ title: Tax Information
 aliases: ['/platform/billing-and-support/european-union-vat-linode/','/platform/billing-and-support/european-union-vat-linode-classic-manager/','/platform/billing-and-support/tax-information/','/platform/billing-and-support/tax-information-classic-manager/']
 tags: ["linode platform"]
 ---
+
+{{< note >}}
+As a result of Akamai’s acquisition of Linode, businesses or individuals residing in the following regions may be charged tax for some or all services starting December 15th, 2022:
+
+- **Countries:** Cambodia, Chile, Malaysia, Russian Federation, Switzerland, United Arab Emirates
+- **U.S. States:** Colorado, Connecticut, Massachusetts, Mississippi, New Mexico, New York, South Carolina, Tennessee, Utah, West Virginia
+{{</ note >}}
 
 Some countries, states, and regions require us by law to collect taxes. As such, customers located in these locations are charged the appropriate tax rate for any taxable services billed to their account. The taxes that Linode collects are listed on customer invoices (see the [Viewing Invoices and Payments](/docs/guides/manage-billing-in-cloud-manager/#viewing-invoices-and-payments) section of our Cloud Manager Billing guide).
 
@@ -147,16 +154,20 @@ To view previous invoices, see the [Viewing Invoices and Payments](/docs/guides/
 
 To keep our pricing stable and consistent, rather than fluctuating with exchange rates, we do not bill in local currency. All invoices are in USD.
 
-### What is Linode's Tax ID for my country?
+### What is Linode's Tax ID for my country or province?
 
-| Country and Tax Program | Linode's ID |
+| Country or Province and Tax Program | Linode's ID |
 | -- | -- |
 | Australia ATO ARN | 3000 1606 0612 |
+| British Columbia PST | 1470-0325 |
 | Canadian GST | 724750708RT0001 |
 | EU VAT | EU372008859 |
 | India GST | 9919JEY29001OST |
 | Japan JCT | 00140 |
+| Manitoba RST | 138835-4 |
 | Norway VAT | 2063948 |
+| Quebec Provincial QST (effective May 1, 2022) | 1229663158 TQ0001 |
+| Saskatchewan PST | 759622 |
 | Singapore GST | M90373465T |
 | United Kingdom VAT | GB383720095 |
 | United States EIN | 20-2647179 |

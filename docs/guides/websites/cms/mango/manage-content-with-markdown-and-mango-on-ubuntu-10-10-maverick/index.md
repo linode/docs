@@ -12,7 +12,7 @@ modified: 2013-10-02
 modified_by:
   name: Linode
 published: 2011-04-05
-title: 'Manage Content with Markdown and Mango on Ubuntu 10.10 (Maverick)'
+title: 'Manage Content with Markdown and Mango on Ubuntu 10.10'
 deprecated: true
 relations:
     platform:

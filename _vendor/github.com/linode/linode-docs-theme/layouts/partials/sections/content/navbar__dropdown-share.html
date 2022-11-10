@@ -2,6 +2,6 @@
 {{ $faceBookLink := printf "http://www.facebook.com/sharer.php?u=%s" .page.Permalink }}
 {{ $hackerNewsLink := printf "https://news.ycombinator.com/submitlink?u=%s&t=%s" .page.Permalink .page.Title }}
 
-{{ partial "sections/content/navbar__dropdown__link.html" (dict "href" $twitterLink "icon" "#icon--twitter" "text" "Share on Twitter") }}
-{{ partial "sections/content/navbar__dropdown__link.html" (dict "href" $faceBookLink "icon" "#icon--facebook" "text" "Share on Facebook") }}
-{{ partial "sections/content/navbar__dropdown__link.html" (dict "href" $hackerNewsLink "icon" "#icon--hackernews" "text" "Share on Hacker News") }}
+{{ partial "sections/content/navbar__dropdown__link.html" (dict "href" $twitterLink "icon" "#icon--twitter" "text" "Share on Twitter"  "eventName" "DOCS: Twitter Share") }}
+{{ partial "sections/content/navbar__dropdown__link.html" (dict "href" $faceBookLink "icon" "#icon--facebook" "text" "Share on Facebook" "eventName" "DOCS: Facebook Share") }}
+{{ partial "sections/content/navbar__dropdown__link.html" (dict "href" $hackerNewsLink "icon" "#icon--hackernews" "text" "Share on Hacker News" "eventName" "DOCS: Hacker News Share") }}

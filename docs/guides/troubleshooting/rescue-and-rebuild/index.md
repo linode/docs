@@ -109,7 +109,7 @@ To connect with Lish:
 
     ![Linode Cloud Manager Lish console](cloud-manager-new-lish-window.png)
 
-Review the [Using the Lish Console](/docs/guides/using-the-lish-console/) guide for further explanation of the Lish console and alternative methods for accessing it, including [from your computer's terminal application](/docs/guides/using-the-lish-console/#through-ssh-using-a-terminal).
+Review the [Using the Lish Console](/docs/guides/lish/) guide for further explanation of the Lish console and alternative methods for accessing it, including [from your computer's terminal application](/docs/guides/lish/#through-ssh-using-a-terminal).
 
 ### Starting SSH
 
@@ -194,7 +194,7 @@ Never run `e2fsck` on a mounted disk. Do not continue unless you're sure that th
 
 ### Installing Packages
 
-The Finnix recovery distribution is based on Debian, so you can use the [`apt` package management system](/docs/tools-reference/linux-package-management/#debian-and-ubuntu-package-management) to install additional software packages in the temporary rescue environment. For example, you could install and run the `nmon` utility by using the following commands:
+The Finnix recovery distribution is based on Debian, so you can use the [`apt` package management system](/docs/guides/apt-package-manager/) to install additional software packages in the temporary rescue environment. For example, you could install and run the `nmon` utility by using the following commands:
 
     apt update
     apt install nmon
