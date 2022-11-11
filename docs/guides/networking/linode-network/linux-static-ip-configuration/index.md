@@ -1,5 +1,7 @@
 ---
 slug: linux-static-ip-configuration
+deprecated: true
+deprecated_link: 'guides/manual-network-configuration/'
 author:
   name: Linode
   email: docs@linode.com
@@ -19,7 +21,7 @@ All Linodes are created with one IPv4 address and one for IPv6. An IPv4 address 
 
 ![Linux Static IP Configuration](linux-static-ip-configuration.png)
 
-If you want to manually configure static addressing in your Linode's operating system, this guide shows you how to do that. You will want to make these changes using [Lish](/docs/guides/using-the-lish-console/), so if a configuration error disconnects your SSH session, you won't be locked out of a system that has no network access.
+If you want to manually configure static addressing in your Linode's operating system, this guide shows you how to do that. You will want to make these changes using [Lish](/docs/guides/lish/), so if a configuration error disconnects your SSH session, you won't be locked out of a system that has no network access.
 
 ## General Information
 
@@ -51,7 +53,7 @@ However, unless you have a specific reason for doing so, you should *not* change
 
 ## Disable Network Helper
 
-Our [Network Helper](/docs/guides/network-helper/) tool is enabled by default for new Linodes. It automatically configures static IPv4 addresses, routing, and DNS on each bootup of your Linode. When manually setting static addressing, Network Helper must be *disabled* so it doesn't overwrite your changes on the next reboot. You can disable Network Helper either *globally* for all of the Linodes on your account, or for individual Linodes, by following the [Network Helper Settings](/docs/guides/network-helper/#network-helper-settings) section of our network helper guide.
+Our [Network Helper](/docs/guides/network-helper/) tool is enabled by default for new Linodes. It automatically configures static IPv4 addresses, routing, and DNS on each bootup of your Linode. When manually setting static addressing, Network Helper must be *disabled* so it doesn't overwrite your changes on the next reboot. You can disable Network Helper either *globally* for all of the Linodes on your account, or for individual Linodes, by following the [Enable or Disable Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) section of our network helper guide.
 
 ## Configure Static Addressing
 
@@ -71,7 +73,7 @@ You'll see the following information for your Linode. Use this information to co
 Below are example configurations for the given Linux distribution. Edit the example files substituting the example IP addresses with those of your Linode, gateway and DNS nameservers. Depending on the amount of addresses you want to configure, not all lines will be necessary.
 
 {{< note >}}
- All IPv6 pools are routed through the original IPv6 SLAAC address for a Linode. For this reason, the original IPv6 SLAAC address **must always** be the first IPv6 address included in a network configuration. If you would like to include a secondary IPv6 address from an IPv6 range that's already been assigned to your Linode Compute Instance, include it under any configuration fields or variables for secondary IPv6 addresses.
+ All additional `/64` IPv6 ranges are routed through the original IPv6 SLAAC address for a Linode. When configuring both a SLAAC address and a routed range, additional configuration changes should be made.
 {{< /note >}}
 
 ### Arch, CoreOS Container Linux
@@ -100,10 +102,6 @@ Address=198.51.100.3/24
 # Add a private address:
 Address=192.168.133.234/17
 
-# IPv6 gateway and primary IPv6 SLAAC address.
-Gateway=fe80::1
-Address=2001:db8:2000:aff0::2/64
-
 # Add a second IPv6 address.
 Address=2001:db8:2000:aff0::3/64
 {{< /file >}}
@@ -124,8 +122,6 @@ BOOTPROTO=none
 PEERDNS=no
 
 # Edit from "yes" to "no".
-IPV6_AUTOCONF=no
-
 ...
 
 # Add the following lines:
@@ -153,8 +149,7 @@ PREFIX1=24
 IPADDR2=192.0.2.6
 PREFIX2=17
 
-# IPv6 gateway and primary IPv6 SLAAC address.
-IPV6_DEFAULTGW=fe80::1%eth0
+# Additional IPv6 address. The SLAAC address is configured automatically.
 IPV6ADDR=2001:db8:2000:aff0::2/128
 
 # Add additional IPv6 addresses, separated by a space.
@@ -232,14 +227,13 @@ iface eth0 inet static
 iface eth0 inet static
   address 198.51.100.10/24
 
-# IPv6 gateway and primary IPv6 SLAAC address.
+# Additional IPv6 address and configuration options for additonal IP addresses when using SLAAC address
 iface eth0 inet6 static
-  address 2001:db8:2000:aff0::1/64
-  gateway fe80::1
-
-# Add a second IPv6 address.
-iface eth0 inet6 static
-  address 2001:db8:2000:aff0::2/64
+    address 2001:db8:2000:aff0::1/64
+    address 2001:db8:2000:aff0::2/64
+    address 2001:db8:2000:aff0::3/64
+    autoconf 1
+    acccept_ra 2
 {{< /file >}}
 
 1.  Populate `resolv.conf` with DNS resolver addresses and resolv.conf options ([see man 5 resolv.conf](https://linux.die.net/man/5/resolv.conf)). Be aware that resolv.conf can only use up to three `nameserver` entries. The *domain* and *options* lines aren't necessary, but useful to have.
@@ -278,9 +272,9 @@ dns_servers_eth0="203.0.113.1
 {{< /file >}}
 
 
-### OpenSUSE
+### openSUSE
 
-Networking in OpenSUSE is managed by *wicked* and *netconfig*. In addition to directly editing the network configuration files shown below, you can also use [YaST](https://en.opensuse.org/Portal:YaST). See OpenSUSE's [networking documentation](https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha.network.html) for more information.
+Networking in openSUSE is managed by *wicked* and *netconfig*. In addition to directly editing the network configuration files shown below, you can also use [YaST](https://en.opensuse.org/Portal:YaST). See openSUSE's [networking documentation](https://doc.opensuse.org/documentation/leap/reference/html/book.opensuse.reference/cha.network.html) for more information.
 
 1.  Modify the interface's config file:
 

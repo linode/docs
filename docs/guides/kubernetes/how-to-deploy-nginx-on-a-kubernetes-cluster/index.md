@@ -59,7 +59,7 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
 
 1.  For each node, go into the **Networking** tab of the Linode Cloud Manager and add a [private IP](/docs/guides/managing-ip-addresses/#adding-an-ip-address). It is possible to build a Kubernetes cluster using public IPs between data centers, but performance and security may suffer.
 
-1.  Configure a firewall with [UFW](/docs/security/firewalls/configure-firewall-with-ufw/) or [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) to ensure only the two nodes can communicate with each other.
+1.  Configure a firewall with [UFW](/docs/guides/configure-firewall-with-ufw/) or [iptables](/docs/guides/control-network-traffic-with-iptables/) to ensure only the two nodes can communicate with each other.
 
     When configuring your firewall, a good place to start is to create rules for the ports Kubernetes requires to function. This includes any inbound traffic on Master nodes and their required ports. If you have changed any custom ports, you should ensure those ports are also open. Master Nodes will have a public IP address or `192.168.0.0/16`. See the chart below for more details.
 

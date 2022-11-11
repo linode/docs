@@ -35,7 +35,7 @@ If you choose to configure a firewall, remember to open ports 80 and 443 for the
 1.  To connect to the Synapse / Matrix services with a client other than Riot, you need a [Matrix client](https://matrix.org/clients/).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Setup DNS
@@ -49,7 +49,7 @@ So in this example, create DNS records for:
 
 Set each of the above DNS records to the public IP address of the Linode instance.
 
-Refer to [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) for more information on configuring
+Refer to [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) for more information on configuring
 DNS entries or consult your DNS provider's documentation if using an external DNS provider.
 
 ## Install Riot

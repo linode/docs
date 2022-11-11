@@ -51,7 +51,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo apt-get install apache2
 
-2.  You can now [configure virtual hosting](/docs/web-servers/apache/apache-web-server-debian-7/#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Next, install the CGI binaries:
+2.  You can now [configure virtual hosting](/docs/guides/apache-web-server-debian-7/#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Next, install the CGI binaries:
 
         sudo apt-get install php5-cgi
 

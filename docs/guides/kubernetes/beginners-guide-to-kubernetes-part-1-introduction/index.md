@@ -40,7 +40,7 @@ In practice, the default container runtime for Kubernetes is [Docker](https://ww
 
  - **Containers** are similar to virtual machines. They are light-weight isolated runtimes that share resources of the operating system without having to run a full operating system themselves. Containers consume few resources but contain a complete set of information needed to execute their contained application images such as files, environment variables, and libraries.
 
- - **Containerization** is a virtualization method to run distributed applications in containers using microservices. Containerizing an application requires a base image that can be used to create an instance of a container. Once an application’s image exists, you can push it to a centralized container registry that Kubernetes can use to deploy container instances in a cluster’s *pods*, which you will learn more about in [Beginner's Guide to Kubernetes: Objects](/docs/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#pods).
+ - **Containerization** is a virtualization method to run distributed applications in containers using microservices. Containerizing an application requires a base image that can be used to create an instance of a container. Once an application’s image exists, you can push it to a centralized container registry that Kubernetes can use to deploy container instances in a cluster’s *pods*, which you will learn more about in [Beginner's Guide to Kubernetes: Objects](/docs/guides/beginners-guide-to-kubernetes-part-3-objects/#pods).
 
  - **Orchestration** is the automated configuration, coordination, and management of computer systems, software, middleware, and services. It takes advantage of automated tasks to execute processes. For Kubernetes, container orchestration automates all the provisioning, deployment, and availability of containers; load balancing; resource allocation between containers; and health monitoring of the cluster.
 
@@ -60,12 +60,12 @@ For more information on the types of commands and resources you can use with kub
 
 To continue in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series, visit part 2:
 
- - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/kubernetes/beginners-guide-to-kubernetes-part-1-introduction/) (You Are Here)
+ - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/) (You Are Here)
 
- - [Beginner's Guide to Kubernetes, Part 2: Master, Nodes, and the Control Plane](/docs/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/)
+ - [Beginner's Guide to Kubernetes, Part 2: Master, Nodes, and the Control Plane](/docs/guides/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/)
 
- - [Beginner's Guide to Kubernetes, Part 3: Objects](/docs/kubernetes/beginners-guide-to-kubernetes-part-3-objects/)
+ - [Beginner's Guide to Kubernetes, Part 3: Objects](/docs/guides/beginners-guide-to-kubernetes-part-3-objects/)
 
- - [Beginner's Guide to Kubernetes, Part 4: Controllers](/docs/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/)
+ - [Beginner's Guide to Kubernetes, Part 4: Controllers](/docs/guides/beginners-guide-to-kubernetes-part-4-controllers/)
 
- - [Beginner's Guide to Kubernetes, Part 5: Conclusion](/docs/kubernetes/beginners-guide-to-kubernetes-part-5-conclusion/)
+ - [Beginner's Guide to Kubernetes, Part 5: Conclusion](/docs/guides/beginners-guide-to-kubernetes-part-5-conclusion/)

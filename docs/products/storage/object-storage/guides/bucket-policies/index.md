@@ -168,7 +168,7 @@ The example below allows all traffic from only the specified IP address:
           "aws:SourceIp": "192.0.2.1/32"
         }
       }
-    },
+    }
   ]
 }
 {{</ file >}}

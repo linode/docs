@@ -27,13 +27,13 @@ The context package provides contextual information that a goroutine may need su
 
 In this guide you will learn:
 
- - How the [context package](/docs/development/go/go-context/#about-the-context-package) works.
+ - How the [context package](/docs/guides/go-context/#about-the-context-package) works.
 
- - Work through a [simple example](/docs/development/go/go-context/#a-simple-example) that demonstrate the main `context.Context` features.
+ - Work through a [simple example](/docs/guides/go-context/#a-simple-example) that demonstrate the main `context.Context` features.
 
- - [Use context for http](/docs/development/go/go-context/#using-context-for-http) requests.
+ - [Use context for http](/docs/guides/go-context/#using-context-for-http) requests.
 
- - [Use context as a key-value store](/docs/development/go/go-context/#using-contexts-as-key-value-stores).
+ - [Use context as a key-value store](/docs/guides/go-context/#using-contexts-as-key-value-stores).
 
 ## Before You Begin
 
@@ -42,7 +42,7 @@ You will need to install a recent version of Go on your computer in order to fol
 If you still need to install Go, you can follow our guide for Ubuntu installation [here](/docs/guides/install-go-on-ubuntu/).
 
 {{< note >}}
-This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## About the context package

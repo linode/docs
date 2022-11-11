@@ -67,13 +67,13 @@ Assign a domain or subdomain to your GitLab server. This step is optional, as yo
 
 It takes some time for DNS changes to propagate through the internet, so it's suggested that you do this before you set up GitLab. There are several options for updating your DNS records:
 
--   If you already use Linode's name servers, or if you would like to use them for your domain, review the [DNS Manager](/docs/guides/dns-manager/) guide. You will need to set up an *A record* which is assigned your Linode's IP address.
+-   If you already use Linode's name servers, or if you would like to use them for your domain, review the [DNS Manager](/docs/products/networking/dns-manager/) guide. You will need to set up an *A record* which is assigned your Linode's IP address.
 
 -   If you use a different DNS provider, review that provider's documentation for setting up a new A record.
 
     {{< content "update-dns-at-common-name-server-authorities" >}}
 
-You can test to see if your DNS changes have propagated with the [`dig` command](/docs/networking/dns/use-dig-to-perform-manual-dns-queries/):
+You can test to see if your DNS changes have propagated with the [`dig` command](/docs/guides/use-dig-to-perform-manual-dns-queries/):
 
     dig +short gitlab.example.com
 
@@ -252,6 +252,6 @@ GitLab offers many features that are worth taking the time to understand and uti
 
 -   Review Linode's Git documentation:
 
-    -   [Getting Start with Git](/docs/development/version-control/how-to-configure-git/)
+    -   [Getting Start with Git](/docs/guides/how-to-configure-git/)
 
-    -   [How to Install Git on Linux, Mac or Windows](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/)
+    -   [How to Install Git on Linux, Mac or Windows](/docs/guides/how-to-install-git-on-linux-mac-and-windows/)

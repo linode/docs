@@ -26,7 +26,7 @@ The chmod command allows users to change read and write permissions in Unix syst
 
 Unix-like systems, including the Linux systems that run on the Linode platform, have an incredibly robust access control system that allows systems administrators to effectively permit multiple users access to a single system without giving every user access to every file on the file system. The `chmod` command is the best and easiest way to modify these file permissions.
 
-This guide provides a brief overview of file permissions and the operation of the `chmod` command in addition to a number of practical examples and applications of `chmod`. If you find this guide helpful, please consider our [basic administration practices guide](/docs/tools-reference/linux-system-administration-basics/) and the [Linux users and groups guide](/docs/tools-reference/linux-users-and-groups/) next.
+This guide provides a brief overview of file permissions and the operation of the `chmod` command in addition to a number of practical examples and applications of `chmod`. If you find this guide helpful, please consider our [basic administration practices guide](/docs/guides/linux-system-administration-basics/) and the [Linux users and groups guide](/docs/guides/linux-users-and-groups/) next.
 
 ### Basics of Linux File Permissions
 
@@ -56,7 +56,7 @@ The first character represents the type of file. The remaining nine bits in grou
 * `w`: **W**rite
 * `x`: e**X**ecute
 
-Note that access to files targeted by symbolic links is controlled by the permissions of the targeted file, not the permissions of the link object. There are [additional file permissions](/docs/tools-reference/linux-users-and-groups/#additional-file-permissions) that control other aspects of access to files.
+Note that access to files targeted by symbolic links is controlled by the permissions of the targeted file, not the permissions of the link object. There are [additional file permissions](/docs/guides/linux-users-and-groups/#additional-file-permissions) that control other aspects of access to files.
 
 ## How to Use chmod
 

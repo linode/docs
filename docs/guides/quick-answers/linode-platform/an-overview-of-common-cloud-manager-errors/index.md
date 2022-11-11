@@ -32,7 +32,7 @@ The above error means that there is an issue retrieving your Linodes from our ba
 
 If the status page shows that everything is all clear, then the next step is to attempt to clear your web browser cache, as this can sometimes cause an issue in loading resources. The method for completing this process varies between browsers, however it usually involves opening your browsers full history and finding an option to clear it.
 
-If all else fails, you should reach out to our 24/7 [Support Team](https://www.linode.com/support/) for more direct assistance. Additionally, we can also recommend attempting to access your resources through alternative means such as our [API](https://developers.linode.com/api/v4/) or [CLI](/docs/guides/linode-cli/) if our Manager is inaccessible for any reason.
+If all else fails, you should reach out to our 24/7 [Support Team](https://www.linode.com/support/) for more direct assistance. Additionally, we can also recommend attempting to access your resources through alternative means such as our [API](https://developers.linode.com/api/v4/) or [CLI](/docs/products/tools/cli/get-started/) if our Manager is inaccessible for any reason.
 
 ## Error Retrieving Network Information
 
@@ -63,6 +63,6 @@ The reasons behind these limits can vary, though in most cases are related to de
 
 ## Your DNS Zones are Not Being Served
 
-**Your DNS zones are not being served. Your domains will not be served by Linode's nameservers unless you have at least one active Linode on your account. You can create one here.**
+**Your DNS zones are not being served. Your domains will not be served by Linode's nameservers unless you have at least one Linode present on your account. You can create one here.**
 
-This message is seen when using Linode's DNS Manager without any billable resources currently active on your account. While the DNS Manager is a free service, it does require that at least one billable resource is available on your account. See our [pricing page](https://www.linode.com/pricing/) for more information on resources you can add to freely access the DNS Manager.
+This message is seen when using Linode's DNS Manager without any billable resources currently present on your account. While the DNS Manager is a free service, it does require that at least one billable resource is available on your account. See our [pricing page](https://www.linode.com/pricing/) for more information on resources you can add to freely access the DNS Manager.

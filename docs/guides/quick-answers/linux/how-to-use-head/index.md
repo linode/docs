@@ -44,4 +44,4 @@ In this guide, you'll learn how to use the `head` command. Using `head` is a sim
 
     This command would search the first ten lines of your access log and only display those that contain the IP address `198.51.100.1`. You can also apply options to `head` for an even more specific output.
 
-These are just the basics of how to use `head`. It is an incredibly useful tool with many more options than we've listed here. To learn more advanced techniques, please check out our full guide on [the head command](/docs/tools-reference/tools/view-the-beginning-of-text-files-with-head/).
+These are just the basics of how to use `head`. It is an incredibly useful tool with many more options than we've listed here. To learn more advanced techniques, please check out our full guide on [the head command](/docs/guides/view-the-beginning-of-text-files-with-head/).

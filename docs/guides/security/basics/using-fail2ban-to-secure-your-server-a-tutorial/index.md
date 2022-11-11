@@ -275,7 +275,7 @@ ignoreip = 127.0.0.1/8 123.45.67.89
 
 `ignoreip`: This setting helps you define IP addresses that should be excluded from Fail2ban rules. To ignore specific IPs, add them to the `ignoreip` configuration, as shown in the example. By default, this command does not ban the `localhost`. If you often work from a single IP address, you should consider adding it to the ignore list.
 
-If you wish to whitelist IPs only for certain jails, this can be done with the `fail2ban-client` command. Replace `JAIL` with the name of your jail, and `192.0.0.1` with the IP you wish to whitelist.
+If you wish to allow IPs only for certain jails, this can be done with the `fail2ban-client` command. Replace `JAIL` with the name of your jail, and `192.0.0.1` with the IP you wish to allow.
 
     fail2ban-client set JAIL addignoreip 192.0.0.1
 
@@ -530,7 +530,7 @@ For additional information about `fail2ban-client` commands, see the [Fail2ban w
 
 ## Lockout Recovery
 
-In the event that you find yourself locked out of your Linode due to fail2ban, you can still gain access by using our out-of-band [Lish Console](/docs/guides/using-the-lish-console/).
+In the event that you find yourself locked out of your Linode due to fail2ban, you can still gain access by using our out-of-band [Lish Console](/docs/guides/lish/).
 
 From here, you can view your firewall rules to ensure that it is fail2ban that blocked your IP, and not something else. To do this, enter the following command:
 

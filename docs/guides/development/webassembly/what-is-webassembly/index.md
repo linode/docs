@@ -35,7 +35,7 @@ This guide introduces some key concepts behind WebAssembly and gets you started 
 1. To make the guide more straightforward, its instructions just provide commands that work for Debian and Ubuntu Linux distribution. You may need to modify the commands given in many of the steps if you are using a different distribution.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is WebAssembly?
@@ -171,7 +171,7 @@ wasm.greet();
 
     Node.js serves the application on `localhost:8080`. To visit the application remotely, you can use an SSH tunnel:
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **8080**.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with **8080**.
     - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
             ssh -L8080:localhost:8080 example-user@192.0.2.0

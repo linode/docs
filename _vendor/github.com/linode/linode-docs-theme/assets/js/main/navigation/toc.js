@@ -2,15 +2,15 @@
 
 import { isMobile, isScreenLargerThan } from '../helpers/index';
 
-var debug = 0 ? console.log.bind(console, '[toc]') : function() {};
+var debug = 0 ? console.log.bind(console, '[toc]') : function () {};
 
 const headerEls = () => document.querySelectorAll('#main__content h2, #main__content h3, #main__content h4');
 
-const setProgress = function(self, el) {
+const setProgress = function (self, el) {
 	let mainEl = document.querySelector('#main__content');
 	let mainHeight = mainEl.offsetHeight;
 	let mainStart = mainEl.offsetTop;
-	let progress = Math.round((el.offsetTop - mainStart) / mainHeight * 100);
+	let progress = Math.round(((el.offsetTop - mainStart) / mainHeight) * 100);
 	self.activeHeading.title = el.innerText;
 	self.activeHeading.progress = progress;
 };
@@ -19,11 +19,11 @@ export function newToCController() {
 	return {
 		activeHeading: {
 			title: '',
-			progress: 0
+			progress: 0,
 		},
 		enabled: false,
 		showHeading: true,
-		init: function() {
+		init: function () {
 			this.createTOC();
 			if (isScreenLargerThan(1711)) {
 				this.$store.nav.open.toc = true;
@@ -33,7 +33,7 @@ export function newToCController() {
 				this.createTOC();
 			});
 		},
-		createTOC: function() {
+		createTOC: function () {
 			let self = this;
 			self.activeHeading.title = '';
 			let nav = this.$el.querySelector('.toc__inner');
@@ -65,10 +65,15 @@ export function newToCController() {
 					self.closeIfMobile();
 					if (heading) {
 						e.preventDefault();
+            // 24 px whitespace
+            // + 56 px for pinned topbar
+            // OR
+            // + 97 px for unpinned topbar
+            let spaceAbove = 24 + ( document.body.classList.contains('is-topbar-pinned') ? 56 : 97 );
 						window.scrollTo({
 							left: 0,
-							top: heading.offsetTop - 80,
-							behavior: 'smooth'
+							top: heading.offsetTop - spaceAbove,
+							behavior: 'smooth',
 						});
 						// We want the smooth scroll AND the hash to be updated -- without triggering any hashchange event.
 						if (history.pushState) {
@@ -114,30 +119,27 @@ export function newToCController() {
 						let ol = li.querySelector('ol');
 						ol.setAttribute('x-show', 'open');
 						ol.setAttribute('x-transition', '');
-						let closeEl = document.importNode(
-							this.$refs.headerCloseButton.content.querySelector('button'),
-							true
-						);
+						let closeEl = document.importNode(this.$refs.headerCloseButton.content.querySelector('button'), true);
 						li.appendChild(closeEl);
 					}
 				});
 			}
 			nav.appendChild(ol);
 		},
-		toggleOpen: function() {
+		toggleOpen: function () {
 			this.$store.nav.open.toc = !this.$store.nav.open.toc;
 		},
-		close: function() {
+		close: function () {
 			if (this.$store.nav.open.toc) {
 				this.$store.nav.open.toc = false;
 			}
 		},
-		closeIfMobile: function() {
+		closeIfMobile: function () {
 			if (isMobile()) {
 				this.close();
 			}
 		},
-		onHashchange: function() {
+		onHashchange: function () {
 			let id = document.location.hash.slice(1);
 			let self = this;
 			headerEls().forEach((el) => {
@@ -146,7 +148,7 @@ export function newToCController() {
 				}
 			});
 		},
-		onScroll: function() {
+		onScroll: function () {
 			if (!this.enabled) {
 				return;
 			}
@@ -178,6 +180,6 @@ export function newToCController() {
 					this.activeHeading.progress = 100;
 				}
 			});
-		}
+		},
 	};
 }

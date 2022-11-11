@@ -12,7 +12,7 @@
 
 1. Fork and clone this repository.
 
-1. Download and install [Hugo version v0.83.1](https://github.com/gohugoio/hugo/releases/tag/v0.83.1). Installation instructions for different operating systems are available in the [Hugo documentation library](https://gohugo.io/getting-started/installing/).
+1. Download and install [Hugo version v0.105.0](https://github.com/gohugoio/hugo/releases/tag/v0.105.0). Installation instructions for different operating systems are available in the [Hugo documentation library](https://gohugo.io/getting-started/installing/).
 
 1. In your terminal, navigate into the cloned docs repository.
 
@@ -28,6 +28,8 @@
 1. Start the local Hugo web server:
 
         hugo server
+
+    Note: The first time Hugo is run on your workstation, it needs to compile a cache of web-optimized images for each guide in the documentation library. This process can take 10-20 minutes. If you run Hugo again in the future, the cache from your first build is reused and the startup time is much faster.
 
 1. In a web browser, navigate to `localhost:1313/docs/`.
 

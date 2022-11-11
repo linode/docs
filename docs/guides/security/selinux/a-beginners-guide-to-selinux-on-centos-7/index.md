@@ -50,7 +50,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     {{< note >}}
 The Linode kernel does not support SELinux by default. However, all new Linodes running CentOS 7 use the distribution provided kernel, which has **SELinux enabled by default**.
 
-If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/platform/how-to-change-your-linodes-kernel/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
+If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
     {{</ note >}}
 
 ## Install Supporting SELinux Packages
@@ -111,7 +111,7 @@ You can update the `SELINUX` directive with any of the available SELinux [states
 
         sudo reboot
 
-- Connect to your Linode via SSH (replace `192.0.2.0` with your own [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/)) and verify your SELinux installation's status:
+- Connect to your Linode via SSH (replace `192.0.2.0` with your own [Linode's IP address](/docs/guides/find-your-linodes-ip-address/)) and verify your SELinux installation's status:
 
         ssh example_user@192.0.2.0
         sudo sestatus
@@ -150,7 +150,7 @@ If SELinux is currently disabled, update your SELinux configuration file with th
 
         sudo sealert -a /var/log/audit/audit.log
 
-    The output resembles the example, however, it varies depending on the programs and configurations on your system. The example was generated using a [Linode running the Apache webserver](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/#apache) with a virtual hosts configuration.
+    The output resembles the example, however, it varies depending on the programs and configurations on your system. The example was generated using a [Linode running the Apache webserver](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/#apache) with a virtual hosts configuration.
 
     {{< output >}}
 SELinux is preventing /usr/sbin/httpd from write access on the directory logs.

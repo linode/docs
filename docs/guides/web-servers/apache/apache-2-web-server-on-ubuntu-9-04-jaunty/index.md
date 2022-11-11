@@ -138,7 +138,7 @@ To disable a module that is currently enabled, use the inverse command:
 
     a2dismod [module-name]
 
-To get a list of available Apache modules modules in the Ubuntu repository use the following command:
+To get a list of available Apache modules in the Ubuntu repository use the following command:
 
     apt-cache search libapache2*
 

@@ -2,10 +2,10 @@
 {{ $images := $.Resources.ByType "image" }}
 {{- with $.Params.image }}
   {{ $ref := "" }}
-  {{ if reflect.IsSlice .}}
+  {{ if reflect.IsSlice . }}
     {{ $ref = (index . 0) }}
   {{ else }}
-    {{ $ref = .}}
+    {{ $ref = . }}
   {{ end }}
   {{ $featured := $images.GetMatch $ref }}
   {{ if $featured }}
