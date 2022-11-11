@@ -4,13 +4,15 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "The ping command is ubiquitous for its convenience and simplicity when it comes to testing network responses. But while the basics are straightforward, ping has plenty of options that can greatly enhance your network tests. Learn all about them in this guide."
-keywords: ['linux ping command','linux ping port','linux ping options']
+keywords: ['linux ping command', 'linux ping port', 'linux ping options']
+tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-20
 modified_by:
   name: Nathaniel Stickman
 title: "The Linux ping Command"
-h1_title: "The Linux ping Command"
+h1_title: "Introduction to the Linux ping Command"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -20,7 +22,7 @@ external_resources:
 - '[GeeksforGeeks: PING Command in Linux with Examples](https://www.geeksforgeeks.org/ping-command-in-linux-with-examples/)'
 ---
 
-One of the most commonly-used commands on Linux is the *ping* command, used to most often to test network connections and troubleshoot connectivity issues. It comes by default on most Linux distributions, making it convenient and accessible.
+One of the most commonly-used commands on Linux is the *ping* command, used most often to test network connections and troubleshoot connectivity issues. It comes by default on most Linux distributions, making it convenient and accessible.
 
 You may even have used *ping* or seen it used, supplying the command with a hostname or IP address and seeing it go to work.
 
