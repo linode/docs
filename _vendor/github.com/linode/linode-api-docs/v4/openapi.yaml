@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.139.0
+  version: 4.140.0
 
   title: Linode API
   description: |
@@ -143,7 +143,7 @@ info:
     |-----------------------|--------|
     | **Authorization URL** | https://login.linode.com/oauth/authorize |
     | **Token URL** | https://login.linode.com/oauth/token |
-    | **Scopes** | <ul><li>`account:read_only` - Allows access to GET information about your Account.</li><li>`account:read_write` - Allows access to all endpoints related to your Account.</li><li>`databases:read_only` - Allows access to GET Managed Databases on your Account.</li><li>`databases:read_write` - Allows access to all endpoints related to your Managed Databases.</li><li>`domains:read_only` - Allows access to GET Domains on your Account.</li><li>`domains:read_write` - Allows access to all Domain endpoints.</li><li>`events:read_only` - Allows access to GET your Events.</li><li>`events:read_write` - Allows access to all endpoints related to your Events.</li><li>`firewall:read_only` - Allows access to GET information about your Firewalls.</li><li>`firewall:read_write` - Allows access to all Firewall endpoints.</li><li>`images:read_only` - Allows access to GET your Images.</li><li>`images:read_write` - Allows access to all endpoints related to your Images.</li><li>`ips:read_only` - Allows access to GET your ips.</li><li>`ips:read_write` - Allows access to all endpoints related to your ips.</li><li>`linodes:read_only` - Allows access to GET Linodes on your Account.</li><li>`linodes:read_write` - Allow access to all endpoints related to your Linodes.</li><li>`lke:read_only` - Allows access to GET LKE Clusters on your Account.</li><li>`lke:read_write` - Allows access to all endpoints related to LKE Clusters on your Account.</li><li>`longview:read_only` - Allows access to GET your Longview Clients.</li><li>`longview:read_write` - Allows access to all endpoints related to your Longview Clients.</li><li>`maintenance:read_only` - Allows access to GET information about Maintenance on your account.</li><li>`nodebalancers:read_only` - Allows access to GET NodeBalancers on your Account.</li><li>`nodebalancers:read_write` - Allows access to all NodeBalancer endpoints.</li><li>`object_storage:read_only` - Allows access to GET information related to your Object Storage.</li><li>`object_storage:read_write` - Allows access to all Object Storage endpoints.</li><li>`stackscripts:read_only` - Allows access to GET your StackScripts.</li><li>`stackscripts:read_write` - Allows access to all endpoints related to your StackScripts.</li><li>`volumes:read_only` - Allows access to GET your Volumes.</li><li>`volumes:read_write` - Allows access to all endpoints related to your Volumes.</li></ul><br/>|
+    | **Scopes** | <ul><li>`account:read_only` - Allows access to GET information about your Account.</li><li>`account:read_write` - Allows access to all endpoints related to your Account.</li><li>`databases:read_only` - Allows access to GET Managed Databases on your Account.</li><li>`databases:read_write` - Allows access to all endpoints related to your Managed Databases.</li><li>`domains:read_only` - Allows access to GET Domains on your Account.</li><li>`domains:read_write` - Allows access to all Domain endpoints.</li><li>`events:read_only` - Allows access to GET your Events.</li><li>`events:read_write` - Allows access to all endpoints related to your Events.</li><li>`firewall:read_only` - Allows access to GET information about your Firewalls.</li><li>`firewall:read_write` - Allows access to all Firewall endpoints.</li><li>`images:read_only` - Allows access to GET your Images.</li><li>`images:read_write` - Allows access to all endpoints related to your Images.</li><li>`ips:read_only` - Allows access to GET your ips.</li><li>`ips:read_write` - Allows access to all endpoints related to your ips.</li><li>`linodes:read_only` - Allows access to GET Linodes on your Account.</li><li>`linodes:read_write` - Allow access to all endpoints related to your Linodes.</li><li>`lke:read_only` - Allows access to GET LKE Clusters on your Account.</li><li>`lke:read_write` - Allows access to all endpoints related to LKE Clusters on your Account.</li><li>`longview:read_only` - Allows access to GET your Longview Clients.</li><li>`longview:read_write` - Allows access to all endpoints related to your Longview Clients.</li><li>`nodebalancers:read_only` - Allows access to GET NodeBalancers on your Account.</li><li>`nodebalancers:read_write` - Allows access to all NodeBalancer endpoints.</li><li>`object_storage:read_only` - Allows access to GET information related to your Object Storage.</li><li>`object_storage:read_write` - Allows access to all Object Storage endpoints.</li><li>`stackscripts:read_only` - Allows access to GET your StackScripts.</li><li>`stackscripts:read_write` - Allows access to all endpoints related to your StackScripts.</li><li>`volumes:read_only` - Allows access to GET your Volumes.</li><li>`volumes:read_write` - Allows access to all endpoints related to your Volumes.</li></ul><br/>|
 
     ## Requests
 
@@ -230,10 +230,7 @@ info:
 
     ```Shell
     curl "https://api.linode.com/v4/linode/types" \
-      -H '
-        X-Filter: {
-          "class": "standard"
-        }'
+      -H 'X-Filter: { "class": "standard" }'
     ```
 
     The filter object's keys are the keys of the object you're filtering,
@@ -243,11 +240,7 @@ info:
 
     ```Shell
      curl "https://api.linode.com/v4/linode/types" \
-      -H '
-        X-Filter: {
-          "class": "standard",
-          "vcpus": 1
-        }'
+      -H 'X-Filter: { "class": "standard", "vcpus": 1 }'
     ```
 
     In the above example, both filters are combined with an "and" operation.
@@ -256,13 +249,7 @@ info:
 
      ```Shell
     curl "https://api.linode.com/v4/linode/types" \
-      -H '
-        X-Filter: {
-          "+or": [
-            { "vcpus": 1 },
-            { "class": "standard" }
-          ]
-        }'
+      -H 'X-Filter: { "+or": [ { "vcpus": 1 }, { "class": "standard" } ] }'
     ```
 
     Each filter in the `+or` array is its own filter object, and all conditions
@@ -857,7 +844,9 @@ paths:
          actions taken on your Account from the last 90 days.
          The Events returned depend on your grants.
       operationId: getEvents
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
       - personalAccessToken: []
       - oauth:
@@ -1259,8 +1248,6 @@ paths:
       x-linode-cli-action: maintenance-list
       security:
       - personalAccessToken: []
-      - oauth:
-        - maintenance:read_only
       responses:
         '200':
           description: Returns a paginated list of Maintenance objects.
@@ -1690,7 +1677,9 @@ paths:
       description: |
         Returns a paginated list of Payment Methods for this Account.
       operationId: getPaymentMethods
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
         - personalAccessToken: []
         - oauth:
@@ -1866,7 +1855,9 @@ paths:
         ([POST /account/payment-methods/{paymentMethodId}/make-default](/docs/api/account/#payment-method-make-default))
         endpoint.
       operationId: deletePaymentMethod
-      x-linode-cli-action: delete
+      x-linode-cli-action:
+        - delete
+        - rm
       security:
         - personalAccessToken: []
         - oauth:
@@ -2270,7 +2261,9 @@ paths:
 
         This command can only be accessed by the unrestricted users of an account.
       operationId: getServiceTransfers
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
       - personalAccessToken: []
       - oauth:
@@ -2723,7 +2716,9 @@ paths:
 
         Users may access all or part of your Account based on their restricted status and grants.  An unrestricted User may access everything on the account, whereas restricted User may only access entities or perform actions they've been given specific grants to.
       operationId: getUsers
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
       - personalAccessToken: []
       - oauth:
@@ -2914,7 +2909,9 @@ paths:
 
         This command can only be accessed by the unrestricted users of an account.
       operationId: deleteUser
-      x-linode-cli-action: delete
+      x-linode-cli-action:
+        - delete
+        - rm
       security:
       - personalAccessToken: []
       - oauth:
@@ -3189,7 +3186,9 @@ paths:
       servers:
       - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       x-linode-grant: read_only
       parameters:
       - $ref: '#/components/parameters/pageOffset'
@@ -5697,7 +5696,9 @@ paths:
         Manager.  Linode is not a registrar, and in order for these to work you
         must own the domains and point your registrar at Linode's nameservers.
       operationId: getDomains
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
       - personalAccessToken: []
       - oauth:
@@ -5901,7 +5902,9 @@ paths:
         from Linode's nameservers shortly after this operation completes. This
         also deletes all associated Domain Records.
       operationId: deleteDomain
-      x-linode-cli-action: delete
+      x-linode-cli-action:
+        - delete
+        - rm
       security:
       - personalAccessToken: []
       - oauth:
@@ -6377,7 +6380,9 @@ paths:
         * To view only public Images, call this endpoint with or without authentication. To view private Images as well, call this endpoint with authentication.
       x-linode-redoc-load-ids: true
       operationId: getImages
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
       - personalAccessToken: []
       - oauth:
@@ -6691,7 +6696,9 @@ paths:
 
         **Deleting an Image is a destructive action and cannot be undone.**
       operationId: deleteImage
-      x-linode-cli-action: delete
+      x-linode-cli-action:
+        - delete
+        - rm
       security:
       - personalAccessToken: []
       - oauth:
@@ -6727,7 +6734,9 @@ paths:
       tags:
       - Linode Instances
       operationId: getLinodeInstances
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
       - personalAccessToken: []
       - oauth:
@@ -6833,6 +6842,7 @@ paths:
         description: The requested initial state of a new Linode.
         required: true
         x-linode-cli-allowed-defaults:
+        - authorized_users
         - region
         - image
         - type
@@ -7113,7 +7123,9 @@ paths:
 
         Linodes that are in the process of [cloning](/docs/api/linode-instances/#linode-clone) or [backup restoration](/docs/api/linode-instances/#backup-restore) cannot be deleted.
       operationId: deleteLinodeInstance
-      x-linode-cli-action: delete
+      x-linode-cli-action:
+        - delete
+        - rm
       security:
       - personalAccessToken: []
       - oauth:
@@ -8691,9 +8703,10 @@ paths:
       tags:
       - Linode Instances
       summary: IP Address Update
-      description: >
-        Updates a particular IP Address associated with this Linode.
-        Only allows setting/resetting reverse DNS.
+      description: |
+        Updates a the reverse DNS (RDNS) for a particular IP Address associated with this Linode.
+
+        Setting the RDNS to `null` for a public IPv4 address, resets it to the default "ip.linodeusercontent.com" RDNS value.
       operationId: updateLinodeIP
       x-linode-cli-action: ip-update
       security:
@@ -8705,8 +8718,18 @@ paths:
         content:
           application/json:
             schema:
-              allOf:
-              - $ref: '#/components/schemas/IPAddress'
+              required:
+                - rdns
+              type: object
+              properties:
+                rdns:
+                  type: string
+                  description: >
+                    The reverse DNS assigned to this address. For public IPv4 addresses,
+                    this will be set to a default value provided by Linode if not
+                    explicitly set.
+                  nullable: true
+                  example: test.example.org
       responses:
         '200':
           description: The updated IP address record.
@@ -8724,11 +8747,11 @@ paths:
               -X PUT -d '{
                 "rdns": "test.example.org"
               }' \
-              https://api.linode.com/v4/linode/instances/123/ips/97.107.143.141
+              https://api.linode.com/v4/linode/instances/123/ips/203.0.113.1
       - lang: CLI
         source: >
           linode-cli linodes ip-update 123 \
-            97.107.143.141 \
+            203.0.113.1 \
             --rdns test.example.org
     delete:
       x-linode-grant: read_write
@@ -8774,7 +8797,9 @@ paths:
       description: |
         Lists available Kernels.
       operationId: getKernels
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       responses:
         '200':
           description: Returns an array of Kernels.
@@ -9732,7 +9757,9 @@ paths:
 
         For more information on StackScripts, please read our [StackScripts guides](/docs/platform/stackscripts/).
       operationId: getStackScripts
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
       - personalAccessToken: []
       - oauth:
@@ -9933,7 +9960,9 @@ paths:
       description: >
         Deletes a private StackScript you have permission to `read_write`. You cannot delete a public StackScript.
       operationId: deleteStackScript
-      x-linode-cli-action: delete
+      x-linode-cli-action:
+        - delete
+        - rm
       security:
       - personalAccessToken: []
       - oauth:
@@ -11175,7 +11204,9 @@ paths:
         to. Longview Client is used to monitor stats on your Linode
         with the help of the Longview Client application.
       operationId: getLongviewClients
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
       - personalAccessToken: []
       - oauth:
@@ -11351,7 +11382,9 @@ paths:
         This _does not_ uninstall the Longview Client application for your
         Linode - you must do that manually.
       operationId: deleteLongviewClient
-      x-linode-cli-action: delete
+      x-linode-cli-action:
+        - delete
+        - rm
       security:
       - personalAccessToken: []
       - oauth:
@@ -12971,11 +13004,11 @@ paths:
               -X PUT -d '{
                 "rdns": "test.example.org"
               }' \
-              https://api.linode.com/v4/networking/ips/97.107.143.141
+              https://api.linode.com/v4/networking/ips/203.0.113.1
       - lang: CLI
         source: >
           linode-cli networking ip-update \
-            97.107.143.141 \
+            203.0.113.1 \
             --rdns "test.example.org"
   /networking/ips/assign:
     x-linode-cli-command: networking
@@ -13520,7 +13553,9 @@ paths:
       description: |
         Returns a paginated list of accessible Firewalls.
       operationId: getFirewalls
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
       - personalAccessToken: []
       - oauth:
@@ -13827,7 +13862,9 @@ paths:
       - Networking
       summary: Firewall Delete
       operationId: deleteFirewall
-      x-linode-cli-action: delete
+      x-linode-cli-action:
+        - delete
+        - rm
       security:
       - personalAccessToken: []
       - oauth:
@@ -14235,7 +14272,9 @@ paths:
 
         **Note:** See our guide on [Getting Started with VLANs](/docs/guides/getting-started-with-vlans/) to view additional [limitations](/docs/guides/getting-started-with-vlans/#limitations).
       operationId: getVLANs
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
       - personalAccessToken: []
       - oauth:
@@ -14281,7 +14320,9 @@ paths:
       description: >
         Returns a paginated list of NodeBalancers you have access to.
       operationId: getNodeBalancers
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
       - personalAccessToken: []
       - oauth:
@@ -14558,7 +14599,9 @@ paths:
         changed or removed. Deleting a NodeBalancer will cause you to lose access
         to the IP Addresses assigned to this NodeBalancer.
       operationId: deleteNodeBalancer
-      x-linode-cli-action: delete
+      x-linode-cli-action:
+        - delete
+        - rm
       security:
       - personalAccessToken: []
       - oauth:
@@ -17405,7 +17448,9 @@ paths:
       description: >
         Returns a collection of security questions and their responses, if any, for your User Profile.
       operationId: getSecurityQuestions
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
       - personalAccessToken: []
       - oauth:
@@ -17507,7 +17552,9 @@ paths:
       description: >
         Returns a collection of SSH Keys you've added to your Profile.
       operationId: getSSHKeys
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
       - personalAccessToken: []
       - oauth:
@@ -17677,7 +17724,9 @@ paths:
         must be manually deleted on the Linode or Disk.
         This endpoint will only delete the key's association from your Profile.
       operationId: deleteSSHKey
-      x-linode-cli-action: delete
+      x-linode-cli-action:
+        - delete
+        - rm
       security:
       - personalAccessToken: []
       - oauth:
@@ -17961,7 +18010,9 @@ paths:
         available in all Regions.
       x-linode-redoc-load-ids: true
       operationId: getRegions
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       responses:
         '200':
           description: Returns an array of Regions.
@@ -18041,7 +18092,9 @@ paths:
         This collection includes all Support Tickets generated on your Account,
         with open tickets returned first.
       operationId: getTickets
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
       - personalAccessToken: []
       - oauth:
@@ -18387,7 +18440,9 @@ paths:
 
         This endpoint returns a paginated list of Tags on your account.
       operationId: getTags
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
       - personalAccessToken: []
       - oauth:
@@ -18601,7 +18656,9 @@ paths:
       tags:
       - Tags
       operationId: deleteTag
-      x-linode-cli-action: delete
+      x-linode-cli-action:
+        - delete
+        - rm
       security:
       - personalAccessToken: []
       - oauth:
@@ -18628,7 +18685,9 @@ paths:
       tags:
       - Volumes
       operationId: getVolumes
-      x-linode-cli-action: list
+      x-linode-cli-action:
+        - list
+        - ls
       security:
       - personalAccessToken: []
       - oauth:
@@ -18890,7 +18949,9 @@ paths:
 
         * Volumes that are migrating cannot be deleted until the migration is finished.
       operationId: deleteVolume
-      x-linode-cli-action: delete
+      x-linode-cli-action:
+        - delete
+        - rm
       security:
       - personalAccessToken: []
       - oauth:
@@ -19149,7 +19210,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
+                $ref: '#/components/schemas/Volume'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -19195,7 +19256,6 @@ components:
             'lke:read_write': Allows access to all endpoints related to LKE Clusters on your Account.
             'longview:read_only': Allows access to GET your Longview Clients.
             'longview:read_write': Allows access to all endpoints related to your Longview Clients.
-            'maintenance:read_only': Allows access to GET information about Maintenance on your account.
             'nodebalancers:read_only': Allows access to GET NodeBalancers on your Account.
             'nodebalancers:read_write': Allows access to all NodeBalancer endpoints.
             'object_storage:read_only': Allows access to GET information related to your Object Storage.
@@ -19629,6 +19689,14 @@ components:
             failed: red
             userAborted: f
             default_: yellow
+        available:
+          type: boolean
+          description: |
+            Whether this Backup is available for restoration.
+
+            Backups undergoing maintenance are not available for restoration.
+          example: true
+          readOnly: true
         created:
           type: string
           format: date-time
@@ -22167,6 +22235,7 @@ components:
             explicitly set.
           x-linode-cli-display: 4
           example: test.example.org
+          nullable: true
         linode_id:
           type: integer
           description: >
@@ -22880,6 +22949,14 @@ components:
               description: >
                 If this Linode has the Backup service enabled. To enable backups, see
                 [POST /linode/instances/{linodeId}/backups/enable](/docs/api/linode-instances/#backups-enable).
+              example: true
+              readOnly: true
+            available:
+              type: boolean
+              description: |
+                Whether Backups for this Linode are available for restoration.
+
+                Backups undergoing maintenance are not available for restoration.
               example: true
               readOnly: true
             schedule:
@@ -25912,10 +25989,9 @@ components:
         images:
           type: array
           description: |
-            An array of Image IDs. These are the images that can be deployed
-            with this Stackscript.
+            An array of Image IDs. These are the Images that can be deployed with this Stackscript.
 
-            `any/all` indicates that all available image distributions are accepted.
+            `any/all` indicates that all available Images, including private Images, are accepted.
           items:
             type: string
           example:
