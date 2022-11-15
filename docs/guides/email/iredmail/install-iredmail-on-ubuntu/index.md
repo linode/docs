@@ -41,7 +41,7 @@ The steps required in this guide require root privileges. Be sure to run the ste
 
 ### MX Record
 
-A DNS MX record tells the internet where to send email directed at you domain. Before your Linode can receive email for addresses at a domain, an MX record must be created for that domain, pointing to your Linode's IP address. An example MX record can be found on the Linode [Introduction to DNS records](/docs/guides/dns-records-an-introduction/) page.
+A DNS MX record tells the internet where to send email directed at you domain. Before your Linode can receive email for addresses at a domain, an MX record must be created for that domain, pointing to your Linode's IP address. An example MX record can be found on the Linode [Introduction to DNS records](/docs/guides/dns-overview/) page.
 
 ## Install iRedMail
 
@@ -214,7 +214,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
 1. Navigate to your DNS provider, either where you purchased your domain name or Linode if you’ve transferred your DNS, and enter the following bits of information in your subdomain area to activate SPF. If you are using Linode's DNS manager, you can leave the name field blank, but other DNS providers may require you to specify @ for the hostname.
 
-    [![SPF Record](iredmail-spf_preview.png)](iredmail-spf.png)
+    ![SPF Record](iredmail-spf.png)
 
         hostname  | ip address/url                | record type | ttl
         --------  | ----------------------------- | ----------- | ---
@@ -227,7 +227,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 1. In the same area of your DNS host records, add the following entry to enable DKIM. The IP address/url entry following the “p=“ is your public DKIM key, which can be found in your “Details of this iRedMail installation” email about halfway down under the “DNS record for DKIM support” section. Copy everything BETWEEN the double quotes and place after the “p=“ portion of the dkim._domainkey DNS entry.
 
 
-    [![DKIM Record](iredmail-dkim_preview.png)](iredmail-dkim.png)
+    ![DKIM Record](iredmail-dkim.png)
 
         hostname        | ip address/url      | record type | ttl
         --------------  | ------------------- | ----------- | ---
@@ -244,7 +244,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
 #### rDNS
 
-To set your rDNS, check out the [Setting Reverse DNS](/docs/guides/configure-your-linode-for-reverse-dns/) section of the DNS Manager guide. This is optional but gives additional credibility to a mail server for certain spam filters.
+To set your rDNS, check out the [Setting Reverse DNS](/docs/guides/configure-rdns/) section of the DNS Manager guide. This is optional but gives additional credibility to a mail server for certain spam filters.
 
 ### Apache Authentication Fix for Cluebringer and AWStats Login
 

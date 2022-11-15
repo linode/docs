@@ -23,7 +23,7 @@ Grep, sed, and AWK are all standard Linux tools that are able to process text. E
 
 ## The Grep Command-Line Utility
 
-Grep is a Linux utility used to to find lines of text in files or input streams using regular expressions. It's name is short for *Global Regular Expression Pattern*
+Grep is a Linux utility used to find lines of text in files or input streams using regular expressions. It's name is short for *Global Regular Expression Pattern*
 
 ### Grep: Search a Log File for Errors
 
@@ -111,7 +111,7 @@ Then, search for "cats" in the existing list of files containing the word "dogs"
 
 The output displays a list of files that contain both.
 
-To learn more about grep and its command-line options, see our [How to Grep for Text in Files](/docs/tools-reference/tools/how-to-grep-for-text-in-files/) guide. The guide also shows you other useful operations, like [piping command outputs to grep](/docs/tools-reference/tools/how-to-grep-for-text-in-files/#piping-command-outputs-to-grep) and how to [recursively search through a directory tree](/docs/tools-reference/tools/how-to-grep-for-text-in-files/#the-grep-command).
+To learn more about grep and its command-line options, see our [How to Grep for Text in Files](/docs/guides/how-to-grep-for-text-in-files/) guide. The guide also shows you other useful operations, like [piping command outputs to grep](/docs/guides/how-to-grep-for-text-in-files/#piping-command-outputs-to-grep) and how to [recursively search through a directory tree](/docs/guides/how-to-grep-for-text-in-files/#the-grep-command).
 
 ## Sed Command
 

@@ -26,7 +26,7 @@ This guide is the third of a three-part series on setting up a hardened OpenVPN 
 
 ## Before You Begin
 
-You must already have the client files listed below ready to transfer to the device. **Each client** will need its own copies. If you need client credentials, see the [VPN Certificate Authority](/docs/networking/vpn/set-up-a-hardened-openvpn-server/#vpn-certificate-authority) area of part one of this series.
+You must already have the client files listed below ready to transfer to the device. **Each client** will need its own copies. If you need client credentials, see the [VPN Certificate Authority](/docs/guides/set-up-a-hardened-openvpn-server/#vpn-certificate-authority) area of part one of this series.
 
   *  `client1.key`: Exclusive to this device.
   *  `client1.cert`: Exclusive to this device.
@@ -99,27 +99,27 @@ The following example was performed on iOS 9.0.2 and macOS 10.10 using iTunes 12
 If this is the first time connecting your iOS device to iTunes, you'll need to click the overflow menu (the three horizontal dots) and choose **Apps**, then click **Get Started**.
 {{< /note >}}
 
-    [![iTunes device summary](itunes-device-summary-small.png)](itunes-device-summary.png)
+    ![iTunes device summary](itunes-device-summary.png)
 
 4.  In the left sidebar, choose **Apps** and scroll down to the **File Sharing** category in the main window. You will see the OpenVPN Connect icon. Click it, and then click **Add** in the **OpenVPN Documents** box. Navigate to your `ta.key` file and `.opvn` client profile in Finder and drag them into the iTunes window. If you add them individually, add the key before the client profile or OpenVPN Connect will fail to find the key.
 
-    [![iTunes File Sharing](itunes-file-sharing-small.png)](itunes-file-sharing.png)
+    ![iTunes File Sharing](itunes-file-sharing.png)
 
 5.  Open the OpenVPN Connect app on the iOS device. You'll see an area saying that a new OpenVPN profile is available for import. Tap it to highlight the profile, then tap the green button to add it.
 
-    [![OpenVPN Connect import profile](openvpn-connect-itunes-import-profile-small.png)](openvpn-connect-itunes-import-profile.png)
+    ![OpenVPN Connect import profile](openvpn-connect-itunes-import-profile.png)
 
 6.  In the next screen, tap the **Connection** slider to connect to your VPN server.
 
-    [![OpenVPN Connect connection status](openvpn-connect-status-small.png)](openvpn-connect-status.png)
+    ![OpenVPN Connect connection status](openvpn-connect-status.png)
 
 7.  You'll see a notification prompt asking to allow OpenVPN to enable the connection. Choose **Yes**. iOS will be connected shortly after.
 
-    [![OpenVPN Connect, connected.](openvpn-ios-connected-small.png)](openvpn-ios-connected.png)
+    ![OpenVPN Connect, connected.](openvpn-ios-connected.png)
 
 8.  OpenVPN Connect's app settings can be used to further tweak the connection. For example, you can specify whether the VPN is to be used over WiFi connections, cellular, or both. See the [OpenVPN Connect iOS FAQ](https://docs.openvpn.net/docs/openvpn-connect/openvpn-connect-ios-faq.html) for an explanation of each option.
 
-    [![OpenVPN Connect settings.](openvpn-settings-ios-small.png)](openvpn-settings-ios.png)
+    ![OpenVPN Connect settings.](openvpn-settings-ios.png)
 
 9.  After the profile is imported and you confirm it works properly, back up the client credential files to external storage and delete the key and certificate files from the device. Once imported, they'll reside in the client's VPN profile and no longer need to remain on its internal storage, which is readable by other applications.
 
@@ -215,7 +215,7 @@ If the test results show you any IP addresses other than those of your Linode an
 
 ##  Revoke a VPN Client Certificate
 
-To revoke a client device's access to the VPN, SSH into your VPN server and go back to the EasyRSA root directory. The folder `~/ca` was used in the [VPN Certificate Authority](/docs/networking/vpn/set-up-a-hardened-openvpn-server/#vpn-certificate-authority) section of part one of this series so we'll continue with that location here.
+To revoke a client device's access to the VPN, SSH into your VPN server and go back to the EasyRSA root directory. The folder `~/ca` was used in the [VPN Certificate Authority](/docs/guides/set-up-a-hardened-openvpn-server/#vpn-certificate-authority) section of part one of this series so we'll continue with that location here.
 
 1.  Change to the `easy-rsa` folder and source `vars`:
 

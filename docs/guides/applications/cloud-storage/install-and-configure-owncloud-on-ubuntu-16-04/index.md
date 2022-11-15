@@ -35,7 +35,7 @@ OwnCloud is an open-source, cloud-based, file hosting service you can install on
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-3.  [Install and configure a LAMP stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/).
+3.  [Install and configure a LAMP stack](/docs/guides/install-lamp-stack-on-ubuntu-16-04/).
 
 ## Install ownCloud
 

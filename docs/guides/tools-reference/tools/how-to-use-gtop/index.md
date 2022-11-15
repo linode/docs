@@ -28,7 +28,7 @@ Gtop is a system monitoring dashboard for your terminal, with a rich graphical d
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is gtop?
@@ -44,13 +44,13 @@ Gtop takes up the graphical direction of htop. But unlike htop, which still focu
 Take a look at the screenshots below, which contrast the displays of top, htop, and gtop.
 
 **top**
-[![System monitoring display in top](top-display_small.png)](top-display.png)
+![System monitoring display in top](top-display.png)
 
 **htop**
-[![System monitoring display in htop](htop-display_small.png)](htop-display.png)
+![System monitoring display in htop](htop-display.png)
 
 **gtop**
-[![System monitoring display in gtop](gtop-display_small.png)](gtop-display.png)
+![System monitoring display in gtop](gtop-display.png)
 
 ## How to Install gtop
 

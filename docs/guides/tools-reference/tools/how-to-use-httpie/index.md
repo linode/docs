@@ -26,7 +26,7 @@ contributor:
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is HTTPie?
@@ -97,7 +97,7 @@ Via: 1.1 vegur
 
 HTTPie's output includes response header information by default. It uses syntax highlighting to make the response even easier to read, as you can see in the following screenshot:
 
-[![Syntax highlighting in HTTPie](httpie-syntax-highlighting_small.png)](httpie-syntax-highlighting.png)
+![Syntax highlighting in HTTPie](httpie-syntax-highlighting.png)
 
 Adding header data to a request in HTTPie requires appending the data after the URL, as shown in the command below. The following example fetches a random "dad joke" from a web service. You can see that the command also adds the `--follow` option, which has HTTPie follow any URL redirects (the equivalent of `-L` in `curl`). HTTPie includes the header information for the redirect response in its output.
 

@@ -41,11 +41,11 @@ This guide assumes you are familiar with the following concepts and skills:
 * The [Python programming language](https://docs.python.org/3/tutorial/index.html)
 * [Setting up a local virtual environment](https://docs.python-guide.org/dev/virtualenvs/) for Python programming
 * [Creating applications using Flask](https://flask.palletsprojects.com/en/1.1.x/quickstart/#)
-* Using a local and remote version control system, like [Git and GitHub](/docs/quick-answers/linux/how-to-use-git/).
+* Using a local and remote version control system, like [Git and GitHub](/docs/guides/how-to-use-git/).
     {{</ disclosure-note >}}
 
 ## Before You Begin
-1.  [Create a Flask Application](https://flask.palletsprojects.com/en/1.1.x/tutorial/) or use this [Example Blog Application](https://github.com/abalarin/Flask-on-Linode). Clone and run it on the local machine [using GitHub](/docs/quick-answers/linux/how-to-use-git/).
+1.  [Create a Flask Application](https://flask.palletsprojects.com/en/1.1.x/tutorial/) or use this [Example Blog Application](https://github.com/abalarin/Flask-on-Linode). Clone and run it on the local machine [using GitHub](/docs/guides/how-to-use-git/).
 
         git clone https://github.com/abalarin/Flask-on-Linode.git flask_app_project
 
@@ -120,7 +120,7 @@ Checking connectivity... done.
 
         sudo apt install nginx
 
-2. Using an editor of choice, create an NGINX configuration file for the app with the example content and save it. This example uses the [nano](/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/) text editor. Replace `flask_app` with the name of the application and `192.0.2.0` with the IP address of the Linode or the fully qualified domain name (FQDN):
+2. Using an editor of choice, create an NGINX configuration file for the app with the example content and save it. This example uses the [nano](/docs/guides/use-nano-to-edit-files-in-linux/) text editor. Replace `flask_app` with the name of the application and `192.0.2.0` with the IP address of the Linode or the fully qualified domain name (FQDN):
 
         sudo nano /etc/nginx/sites-enabled/flask_app
 

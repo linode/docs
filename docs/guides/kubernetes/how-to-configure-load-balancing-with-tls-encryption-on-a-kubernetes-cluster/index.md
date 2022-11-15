@@ -25,7 +25,7 @@ aliases: ['/kubernetes/how-to-configure-load-balancing-with-tls-encryption-on-a-
 This guide will use an example Kubernetes Deployment and Service to demonstrate how to route external traffic to a Kubernetes application over HTTPS. This is accomplished using the [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/deploy/#using-helm), [cert-manager](https://cert-manager.io/docs/) and [Linode NodeBalancers](/docs/platform/nodebalancer/). The NGINX Ingress Controller uses Linode NodeBalancers, which are Linode's load balancing service, to route a Kubernetes Service's traffic to the appropriate backend Pods over HTTP and HTTPS. The cert-manager tool creates a Transport Layer Security (TLS) certificate from the [Let’s Encrypt](https://letsencrypt.org/) certificate authority (CA) providing secure HTTPS access to a Kubernetes Service.
 
 {{< note >}}
-The [*Linode Cloud Controller Manager*](https://github.com/linode/linode-cloud-controller-manager) provides a way for a Kubernetes cluster to create, configure, and delete Linode NodeBalancers. The Linode CCM is installed by default on clusters deployed with the [Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) and the [Linode Terraform K8s module](/docs/applications/configuration-management/terraform/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/).
+The [*Linode Cloud Controller Manager*](https://github.com/linode/linode-cloud-controller-manager) provides a way for a Kubernetes cluster to create, configure, and delete Linode NodeBalancers. The Linode CCM is installed by default on clusters deployed with the [Linode Kubernetes Engine](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) and the [Linode Terraform K8s module](/docs/guides/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/).
 
 To learn about the various configurations available for Linode NodeBalancers via [Kubernetes annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/), see [Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster](/docs/kubernetes/getting-started-with-load-balancing-on-a-lke-cluster/#configuring-your-linode-nodebalancers-with-annotations).
 {{</ note >}}
@@ -33,9 +33,9 @@ To learn about the various configurations available for Linode NodeBalancers via
 
 ## Before You Begin
 
-1.  Review the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) series to gain an understanding of key concepts within Kubernetes, including master and worker nodes, Pods, Deployments, and Services.
+1.  Review the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series to gain an understanding of key concepts within Kubernetes, including master and worker nodes, Pods, Deployments, and Services.
 
-1.  Purchase a domain name from a reliable domain registrar. In a later section, you will use Linode's DNS Manager to [create a new Domain](/docs/guides/dns-manager/#add-a-domain) and to [add a DNS "A" record](/docs/guides/dns-manager/#add-dns-records) for two subdomains: one named `blog` and another named `shop`. Your subdomains will point to the example Kubernetes Services you will create in this guide. The example domain names used throughout this guide are `blog.example.com` and `shop.example.com`.
+1.  Purchase a domain name from a reliable domain registrar. In a later section, you will use Linode's DNS Manager to [create a new Domain](/docs/products/networking/dns-manager/guides/create-domain/) and to [add a DNS "A" record](/docs/products/networking/dns-manager/guides/manage-dns-records/) for two subdomains: one named `blog` and another named `shop`. Your subdomains will point to the example Kubernetes Services you will create in this guide. The example domain names used throughout this guide are `blog.example.com` and `shop.example.com`.
 
     {{< note >}}
 Optionally, you can create a Wildcard DNS record, `*.example.com` and point your NodeBalancer's external IP address to it. Using a Wildcard DNS record, will allow you to expose your Kubernetes services without requiring further configuration using the Linode DNS Manager.
@@ -49,7 +49,7 @@ Optionally, you can create a Wildcard DNS record, `*.example.com` and point your
     - [Linode API LKE instructions](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/)
     - [Terraform instructions](/docs/guides/how-to-deploy-an-lke-cluster-using-terraform/)
 
-    You can also use an unmanaged Kubernetes cluster (that's not deployed through LKE). The instructions within this guide depend on the Linode Cloud Controller Manager (CCM), which is installed by default on LKE clusters but needs to be manually installed on unmanaged clusters. To learn how to install the Linode CCM on a cluster that was not deployed through LKE, see the [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/kubernetes/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/) guide.
+    You can also use an unmanaged Kubernetes cluster (that's not deployed through LKE). The instructions within this guide depend on the Linode Cloud Controller Manager (CCM), which is installed by default on LKE clusters but needs to be manually installed on unmanaged clusters. To learn how to install the Linode CCM on a cluster that was not deployed through LKE, see the [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/) guide.
 
 1.  **Setup your local environment** by installing [Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) and [kubectl](/docs/products/compute/kubernetes/guides/install-kubectl) on your computer (or whichever system you intend to use to manage your Kubernetes Cluster).
 
@@ -167,7 +167,7 @@ kubernetes   ClusterIP   10.128.0.1       <none>        443/TCP   18m
 In this section you will use Helm to install the NGINX Ingress Controller on your Kubernetes Cluster. Installing the NGINX Ingress Controller will create Linode NodeBalancers that your cluster can make use of to load balance traffic to your example application.
 
 {{< note >}}
-If you would like a slightly deeper dive into the NGINX Ingress Controller, see our guide [Deploying NGINX Ingress on Linode Kubernetes Engine](https://www.linode.com/docs/kubernetes/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/).
+If you would like a slightly deeper dive into the NGINX Ingress Controller, see our guide [Deploying NGINX Ingress on Linode Kubernetes Engine](/docs/guides/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/).
 {{</ note >}}
 
 1.  Add the following Helm ingress-nginx repository to your Helm repos.
@@ -198,13 +198,13 @@ You can watch the status by running 'kubectl --namespace default get services -o
 ...
 {{</ output >}}
 
-## Create a Subdomain DNS Entries for your Example Applications
+## Create Subdomain DNS Entries for your Example Applications
 
 Now that Linode NodeBalancers have been created by the NGINX Ingress Controller, you can point a subdomain DNS entries to the NodeBalancer's public IPv4 address. Since this guide uses two example applications, it will require two subdomain entries.
 
 1.  Access your NodeBalancer's assigned external IP address.
 
-        kubectl --namespace default get services -o wide -w ingress-nginx-controller
+        kubectl -n default get services -o wide ingress-nginx-controller
 
     The command will return a similar output:
 
@@ -213,7 +213,7 @@ NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP    PORT
 my-ingress-nginx-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/instance=cingress-nginx,app.kubernetes.io/name=ingress-nginx
 {{</ output >}}
 
-1.  Copy the IP address of the `EXTERNAL IP` field and navigate to [Linode's DNS manager](https://cloud.linode.com/domains) and [add two "A" records](/docs/guides/dns-manager/#add-dns-records) for the `blog` and `shop` subdomains. Ensure you point each record to the NodeBalancer's IPv4 address you retrieved in the previous step.
+1.  Copy the IP address of the `EXTERNAL IP` field and navigate to [Linode's DNS manager](https://cloud.linode.com/domains) and [add two "A" records](/docs/products/networking/dns-manager/guides/manage-dns-records/) for the `blog` and `shop` subdomains. Ensure you point each record to the NodeBalancer's IPv4 address you retrieved in the previous step.
 
 Now that your NGINX Ingress Controller has been deployed and your subdomains' A records have been created, you are ready to enable HTTPS on each subdomain.
 
@@ -232,13 +232,13 @@ To enable HTTPS on your example application, you will create a Transport Layer S
 In this section you will install cert-manager using Helm and the required cert-manager [CustomResourceDefinitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) (CRDs). Then, you will create a [ClusterIssuer](https://cert-manager.io/docs/concepts/issuer/) resource to assist in creating a cluster's TLS certificate.
 
 {{< note >}}
-If you would like a deeper dive into cert-manager, see our guide [What is Kubernetes cert-manager](https://www.linode.com/docs/guides/what-is-kubernetes-cert-manager/).
+If you would like a deeper dive into cert-manager, see our guide [What is Kubernetes cert-manager](/docs/guides/what-is-kubernetes-cert-manager/).
 {{</ note >}}
 
 ### Install cert-manager
 1.  Install cert-manager's CRDs.
 
-        kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.3.1/cert-manager.crds.yaml
+        kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.8.0/cert-manager.crds.yaml
 
 1.  Create a cert-manager namespace.
 
@@ -246,18 +246,18 @@ If you would like a deeper dive into cert-manager, see our guide [What is Kubern
 
 1.  Add the Helm repository which contains the cert-manager Helm chart.
 
-        helm repo add jetstack https://charts.jetstack.io
+        helm repo add cert-manager https://charts.jetstack.io
 
 1.  Update your Helm repositories.
 
         helm repo update
 
-1.  Install the cert-manager Helm chart. These basic configurations should be sufficient for many use cases, however, additional cert-manager configurable parameters can be found in [cert-manager's official documentation](https://hub.helm.sh/charts/jetstack/cert-manager).
+1.  Install the cert-manager Helm chart. These basic configurations should be sufficient for many use cases, however, additional cert-manager configurable parameters can be found in [cert-manager's official documentation](https://hub.helm.sh/charts/cert-manager/cert-manager).
 
         helm install \
-        cert-manager jetstack/cert-manager \
+        my-cert-manager cert-manager/cert-manager \
         --namespace cert-manager \
-        --version v1.3.1
+        --version v1.8.0
 
 1.  Verify that the corresponding cert-manager pods are now running.
 

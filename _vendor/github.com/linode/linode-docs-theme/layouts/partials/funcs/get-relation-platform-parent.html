@@ -1,0 +1,18 @@
+{{ $parent := "" }}
+{{ $platform := .Params.relations.platform }}
+{{ if $platform }}
+  {{ $key := (printf "platform/%s" $platform.key) }}
+  {{ $joined := partialCached "funcs/join-lvl2.html" $key $key }}
+  {{ range $i, $e := $platform.keywords }}
+    {{ $isFirst := eq $i 0 }}
+    {{ range $key, $name := . }}
+      {{ $values := index $joined $key }}
+      {{ range $values }}
+        {{ if and (not $parent) (eq .base "_parent") (ne .page $) }}
+          {{ $parent = . }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ return $parent }}

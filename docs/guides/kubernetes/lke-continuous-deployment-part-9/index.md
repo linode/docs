@@ -69,7 +69,7 @@ If we're using Kubernetes 1.19 or earlier, we'll need some YAML
 - This is how we do it with YAML:
 
       kubectl apply -f- <<EOF
-      apiVersion: networking.k8s.io/v1beta1
+      apiVersion: networking.k8s.io/v1
       kind: Ingress
       metadata:
         name: web
@@ -86,10 +86,7 @@ If we're using Kubernetes 1.19 or earlier, we'll need some YAML
 
 ### Ingress versions...
 
-- Note how we used the `v1beta1` Ingress version on the previous YAML(to be compatible with older Kubernetes versions)
-- This YAML will give you deprecation warnings on recent version of Kubernetes (since the Ingress spec is now at version v1)
-- Don't worry too much about the deprecation warnings (on Kubernetes, deprecation happens over a long time window, typically 1 year)
-- You will have time to revisit and worry later! 😅
+- Note how we used the latest `v1` Ingress version on the previous YAML, as the `vibeta1` api version has been deprecated.
 
 ### Does it work?
 

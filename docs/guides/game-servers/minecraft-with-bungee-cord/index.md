@@ -240,7 +240,7 @@ If there is an issue connecting, then it's important to check that the login ser
 
 #### Check the Ping
 
-[![Server Ping](ping.png)](ping.png)
+![Server Ping](ping.png)
 
 If the server shows the MOTD and a ping in the server list, as in the image, it's likely that the problem lies between BungeeCord and the Spigot servers. To check, you can log into your BungeeCord server, and you'll most likely see a line similar to the following in the logs, where the IP `198.51.100.0` is replaced by your IP. This shows that your client is successfully pinging the BungeeCord server:
 
@@ -248,7 +248,7 @@ If the server shows the MOTD and a ping in the server list, as in the image, it'
 
 If the logs look similar to above, the following error is likely occurring:
 
-[![Backend connection error](connection.png)](connection.png)
+![Backend connection error](connection.png)
 
 This indicates that Bungee couldn't contact your Spigot servers. There are a few steps that can help you resolve the issue:
 
@@ -264,7 +264,7 @@ This indicates that Bungee couldn't contact your Spigot servers. There are a few
 
 In other cases, the server won't even show a response in the server list:
 
-[![BungeeCord connection error](noping.png)](noping.png)
+![BungeeCord connection error](noping.png)
 
 If this happens, you should check that BungeeCord is actually running, and that you're attempting to connect to the correct IP address. In this example, it would be `203.0.113.0`.
 

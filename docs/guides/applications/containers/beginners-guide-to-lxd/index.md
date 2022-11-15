@@ -84,7 +84,7 @@ description: |
   **Run any Linux distribution you want**
 
   Pre-made images are available for Ubuntu, Alpine Linux, ArchLinux,
-  CentOS, Debian, Fedora, Gentoo, OpenSUSE and more.
+  CentOS, Debian, Fedora, Gentoo, openSUSE and more.
 
   A full list of available images can be [found
   here](https://images.linuxcontainers.org)
@@ -235,7 +235,7 @@ In recent versions of LXD, you need to specify an IP address (such as *127.0.0.1
 
 6.  From your local computer, navigate to your Linode's public IP address in a web browser. You should see the default Apache page:
 
-    [![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png)](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
+    ![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
 
 
 ## Common LXD Commands
@@ -435,4 +435,4 @@ In this example, we are members of the `lxd` group and we just need to log out a
 
 ## Next Steps
 
-If you plan to use a single website, then a single proxy device to the website container will suffice. If you plan to use multiple websites, you may install virtual hosts inside the website container. If instead you would like to setup multiple websites on their own container, then you will need to set up [a reverse proxy](https://www.linode.com/docs/web-servers/nginx/use-nginx-reverse-proxy/) in a container. In that case, the proxy device would direct to the reverse proxy container to direct the connections to the individual websites containers.
+If you plan to use a single website, then a single proxy device to the website container will suffice. If you plan to use multiple websites, you may install virtual hosts inside the website container. If instead you would like to setup multiple websites on their own container, then you will need to set up [a reverse proxy](/docs/guides/use-nginx-reverse-proxy/) in a container. In that case, the proxy device would direct to the reverse proxy container to direct the connections to the individual websites containers.

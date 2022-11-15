@@ -60,10 +60,10 @@ There are a number of advanced topics in Kubernetes. Below are a few you might f
 
 ## Next Steps
 
-Now that you are familiar with Kubernetes concepts and components, you can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/kubernetes/getting-started-with-kubernetes/) guide. This guide provides a hands-on activity to continue learning about Kubernetes.
+Now that you are familiar with Kubernetes concepts and components, you can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/getting-started-with-kubernetes/) guide. This guide provides a hands-on activity to continue learning about Kubernetes.
 
 If you would like to deploy a Kubernetes cluster on Linode for production use, we recommend using one of the following methods instead. These methods are also a much faster way to get a cluster running, and they will also integrate your cluster with some useful Linode plugins:
 
-  - [How to Deploy Kubernetes on Linode with Rancher](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/)
+  - [How to Deploy Kubernetes on Linode with Rancher](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/)
   - [Use the Linode Terraform Provider](https://www.terraform.io/docs/providers/linode/index.html)
-  - [Try the Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)
+  - [Try the Linode Kubernetes Engine](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)

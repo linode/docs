@@ -19,7 +19,7 @@ These introductory guides to the Linode API help you get up and running with thi
 
 - [Revoke an API Token](/docs/products/tools/linode-api/guides/revoke-access-token): If you forget your access token or think it may have been compromised, you can revoke an API access token in the Cloud Manager.
 
-For more on the basics on the Linode API see the full [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/) guide.
+For more on the basics on the Linode API see the full [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/) guide.
 
 ## Themes
 
@@ -27,8 +27,8 @@ These additional guides help you with targeted topics such as how to use the Lin
 
 ### Advanced Topics
 
-- [Configure NodeBalancers with the Linode API](/docs/platform/api/nodebalancers/)
+- [Configure NodeBalancers with the Linode API](/docs/guides/nodebalancers/)
 
-- [How to Create an OAuth App with the Linode Python API Library](/docs/platform/api/how-to-create-an-oauth-app-with-the-linode-python-api-library/)
+- [How to Create an OAuth App with the Linode Python API Library](/docs/guides/how-to-create-an-oauth-app-with-the-linode-python-api-library/)
 
-- [Manage Block Storage Volumes with the Linode API](/docs/platform/api/create-block-storage-volumes-with-the-linode-api/)
+- [Manage Block Storage Volumes with the Linode API](/docs/guides/create-block-storage-volumes-with-the-linode-api/)

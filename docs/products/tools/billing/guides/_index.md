@@ -9,20 +9,20 @@ tab_group_main:
 
 These introductory guides to billing help get you up and running with your Linode account.
 
-- [How Linode Billing Works](/docs/platform/billing-and-support/how-linode-billing-works/)
+- [How Linode Billing Works](/docs/guides/understanding-billing-and-payments/)
 
-- [Manage Billing in Cloud Manager](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/)
+- [Manage Billing in Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/)
 
-- [Network Transfer Quota](/docs/platform/billing-and-support/network-transfer-quota/)
+- [Network Transfer Quota](/docs/guides/network-transfer/)
 
-- [Tax Information](/docs/platform/billing-and-support/tax-information/)
+- [Tax Information](/docs/guides/tax-information/)
 
 ## Themes
 
 These additional guides explore additional services and pricing.
 
-- [Longview Pricing and Plans](/docs/platform/longview/pricing/)
+- [Longview Pricing and Plans](/docs/guides/linode-longview-pricing-and-plans/)
 
-- [Object Storage Pricing and Limitations](/docs/platform/object-storage/pricing-and-limitations/)
+- [Object Storage Pricing and Limitations](/docs/products/storage/object-storage/)
 
-- [The Linode Backup Service](/docs/platform/disk-images/linode-backup-service/)
+- [The Linode Backup Service](/docs/products/storage/backups/)

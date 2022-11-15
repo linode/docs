@@ -21,10 +21,10 @@ Having problems with your DNS records? This guide to help get your DNS settings 
 
 ## Before You Begin
 
-The *Domains* section of the [Linode Cloud Manager](https://cloud.linode.com/domains) is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. For an introduction to DNS Manager including setting up DNS records, see the [DNS Manager](/docs/guides/dns-manager/) guide.
+The *Domains* section of the [Linode Cloud Manager](https://cloud.linode.com/domains) is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. For an introduction to DNS Manager including setting up DNS records, see the [DNS Manager](/docs/products/networking/dns-manager/) guide.
 
 {{< note >}}
-Linode's DNS service employs [Cloudflare](https://cloudflare.com) to provide denial of service (DDoS) mitigation, load balancing, and increased geographic distribution for our [name servers](/docs/networking/dns/dns-records-an-introduction/#name-servers). These factors make our service reliable, fast, and a great choice for your DNS needs.
+Linode's DNS service employs [Cloudflare](https://cloudflare.com) to provide denial of service (DDoS) mitigation, load balancing, and increased geographic distribution for our [name servers](/docs/guides/dns-overview/#name-servers). These factors make our service reliable, fast, and a great choice for your DNS needs.
 {{</ note>}}
 
 {{< note >}}
@@ -35,7 +35,7 @@ To use the Linode DNS Manager to serve your domains, you must have an active Lin
 
 DNS updates will take effect, or *propagate*, within the time period set by your zone file's [TTL](#set-the-time-to-live-or-ttl). If you've just made a DNS change and aren't seeing it reflected yet, the new information may not be available for up to 48 hours.
 
-While you can't control DNS caching at every point on the Internet, you do have control over your web browser. Try holding down the *Shift* key or the *Control* key (depending on your browser) while you refresh the page to bypass your browser's cache of the old DNS data. You can also try bringing up your site in an alternate browser or editing your hosts file to [preview your website without DNS](/docs/networking/dns/previewing-websites-without-dns/).
+While you can't control DNS caching at every point on the Internet, you do have control over your web browser. Try holding down the *Shift* key or the *Control* key (depending on your browser) while you refresh the page to bypass your browser's cache of the old DNS data. You can also try bringing up your site in an alternate browser or editing your hosts file to [preview your website without DNS](/docs/guides/previewing-websites-without-dns/).
 
 ## Set the Time To Live or TTL
 
@@ -81,7 +81,7 @@ This generates a large amount of information about the domain. The basic informa
 
 For a web-based tool, you can also use [kloth.net](http://www.kloth.net/services/dig.php) for dig requests and [whois.net](http://whois.net/) for WHOIS requests. Note that since you're running these lookups from a third-party website, the information they find is not necessarily what your local computer has cached. There should be a difference only if you've made recent changes to your DNS information.
 
-For more information and examples on how to use dig, see our [Use dig to Perform Manual DNS Queries](https://www.linode.com/docs/networking/dns/use-dig-to-perform-manual-dns-queries/) guide.
+For more information and examples on how to use dig, see our [Use dig to Perform Manual DNS Queries](/docs/guides/use-dig-to-perform-manual-dns-queries/) guide.
 
 ## Name Resolution Failures
 

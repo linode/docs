@@ -230,10 +230,10 @@ In many cases, while you want users to have elevated sudo permissions, you also 
     %sudo ALL=/usr/bin/less, /usr/bin/ls, /usr/bin/apt
 {{< /file >}}
 
-While the root and `sudousername` users still have full superuser permissions, the user `username` has been limited to only the `top` and `apt-get` commands as a sudo user. Additionally, all users added to the `sudo` group are separately limited only to the `less`, `ls`, and `apt` commands with sudo permissions. If you wanted to give the user `username` sudo access to the additional 3 commands whitelisted for the `sudo` group, you would just need to add them to the `sudo` group and they would still retain their own unique permissions, giving them sudo access to a total of 5 commands. This process can be repeated for as many users and groups as needed.
+While the root and `sudousername` users still have full superuser permissions, the user `username` has been limited to only the `top` and `apt-get` commands as a sudo user. Additionally, all users added to the `sudo` group are separately limited only to the `less`, `ls`, and `apt` commands with sudo permissions. If you wanted to give the user `username` sudo access to the additional 3 commands allowed for the `sudo` group, you would just need to add them to the `sudo` group and they would still retain their own unique permissions, giving them sudo access to a total of 5 commands. This process can be repeated for as many users and groups as needed.
 
 {{< note >}}
-When whitelisting individual commands using the above syntax, it is important to use the absolute path to the command. The `which` command can be used to find this absolute path:
+When allowing individual commands using the above syntax, it is important to use the absolute path to the command. The `which` command can be used to find this absolute path:
 
     which command-name
 {{< /note >}}

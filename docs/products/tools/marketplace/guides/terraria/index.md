@@ -6,7 +6,7 @@ description: "This guide provides you with step-by-step instructions for deployi
 keywords: ['terraria','marketplace app', 'game server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-05
-modified: 2022-03-08
+modified: 2022-05-10
 modified_by:
   name: Linode
 title: "Deploying Terraria through the Linode Marketplace"
@@ -34,7 +34,7 @@ Hosting your own Terraria server gives you control over the world, the players, 
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended minimum plan:** 8GB Dedicated CPU or Shared Compute Instance
 
 ### Terraria Options

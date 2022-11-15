@@ -12,7 +12,6 @@ modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2009-08-13
-expiryDate: 2013-04-29
 deprecated: true
 title: 'Apache 2 Web Server on Ubuntu 9.04 (Jaunty)'
 relations:
@@ -139,7 +138,7 @@ To disable a module that is currently enabled, use the inverse command:
 
     a2dismod [module-name]
 
-To get a list of available Apache modules modules in the Ubuntu repository use the following command:
+To get a list of available Apache modules in the Ubuntu repository use the following command:
 
     apt-cache search libapache2*
 

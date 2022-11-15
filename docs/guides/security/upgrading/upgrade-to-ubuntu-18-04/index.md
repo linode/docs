@@ -28,7 +28,7 @@ Ubuntu 18.04 is a Long-Term Support (LTS) release that is supported by Canonical
 {{< caution >}}
 Inline distribution upgrades can yield unpredictable results. Before continuing, read through our [Upgrading to the Latest Distribution (Clean Install)](/docs/guides/manually-upgrading-to-latest-distribution-version/) guide to learn more about your upgrade options, including performing a clean install of the latest distribution version.
 
-The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/guides/using-the-linode-shell-lish) or [Glish](/docs/guides/using-the-linode-graphical-shell-glish/) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
+The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/guides/using-the-linode-shell-lish) or [Glish](/docs/guides/glish/) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
 
 {{< /caution >}}
 
@@ -64,7 +64,7 @@ It's a good idea to back up your Linode before performing a major upgrade. That 
 
 ### Check Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Apply Kernel Updates](/docs/guides/monitoring-and-maintaining-your-server/#apply-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Apply Kernel Updates](/docs/guides/monitor-and-maintain-compute-instance/#apply-kernel-updates) for more information.
 
 ### Stop Services
 

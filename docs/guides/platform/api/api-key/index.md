@@ -33,11 +33,11 @@ Follow the steps below to generate an API key for your Linode account. This will
 6.  Optional: Set an expiration time using the **Expires** dropdown menu. By default, the key will never expire.
 7.  Click the **Create API Key** button.
 
-    [![Click the Create API Key button.](1560-myprofile_api_create1_small.png)](1553-myprofile_api_create1.png)
+    ![Click the Create API Key button.](1553-myprofile_api_create1.png)
 
 8.  You will see a message appear at the top of the page, displaying your new API key. Copy this key and save it in a secure location.
 
-    [![Copy the API key that appears at the top of the page.](1562-myprofile_api_key_full_marked_small.png)](1554-myprofile_api_key_full_marked.png)
+    ![Copy the API key that appears at the top of the page.](1554-myprofile_api_key_full_marked.png)
 
  {{< caution >}}
 This is the only opportunity you will have to view and copy the new API key. In the future, only the key prefix will be displayed on this page.
@@ -61,14 +61,14 @@ Follow these steps to remove an API key. If all keys are removed, the API will b
 4.  Select the **API Keys** tab.
 5.  Click the **Remove** link next to the appropriate key.
 
-    [![Click the Remove button next to the appropriate key.](1561-myprofile_api_remove_small.png)](1555-myprofile_api_remove.png)
+    ![Click the Remove button next to the appropriate key.](1555-myprofile_api_remove.png)
 
 6.  You will see a popup that says **Are you sure you want to remove this API key?** Click **OK**.
 
-    [![Click OK.](1556-myprofile_api_remove_ok.png)](1556-myprofile_api_remove_ok.png)
+    ![Click OK.](1556-myprofile_api_remove_ok.png)
 
 7.  The key has now been removed.
 
 {{< note >}}
-Using the [Linode Manager iPhone App](https://www.linode.com/mobile/) or the [Linode CLI](/docs/platform/api/linode-cli/) will enable access to the API and generate a new API key, even if you have removed (or never created) all API keys for this account. If a key has been saved within the application, that key will be used in the future. If no key is saved in the application, a new key will be generated, even if your account has other existing keys.
+Using the [Linode Manager iPhone App](https://www.linode.com/mobile/) or the [Linode CLI](/docs/products/tools/cli/get-started/) will enable access to the API and generate a new API key, even if you have removed (or never created) all API keys for this account. If a key has been saved within the application, that key will be used in the future. If no key is saved in the application, a new key will be generated, even if your account has other existing keys.
 {{< /note >}}

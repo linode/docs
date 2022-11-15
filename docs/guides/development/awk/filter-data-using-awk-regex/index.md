@@ -21,7 +21,7 @@ contributor:
   link: https://twitter.com/petdance
 ---
 
-AWK, named after the developers Aho, Weinberger, and Kernighan, is ideal for finding data in text files. Among its other virtues, the [AWK Programming Language](https://www.linode.com/docs/guides/introduction-to-awk/) is optimized to make this task as easy as possible.
+AWK, named after the developers Aho, Weinberger, and Kernighan, is ideal for finding data in text files. Among its other virtues, the [AWK Programming Language](/docs/guides/introduction-to-awk/) is optimized to make this task as easy as possible.
 
 ## How To Filter Data Using AWK RegEx
 

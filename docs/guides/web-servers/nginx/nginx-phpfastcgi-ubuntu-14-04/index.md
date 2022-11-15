@@ -8,7 +8,7 @@ description: 'Serve dynamic websites and applications with the lightweight nginx
 keywords: ["nginx", "nginx ubuntu 14.04", "nginx fastcgi", "nginx php", "php", "fastcgi", "ubuntu"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/nginx-phpfastcgi-ubuntu-14-04/','/web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/','/websites/nginx/nginx-phpfastcgi-ubuntu-14-04/']
+aliases: ['/websites/nginx/nginx-phpfastcgi-ubuntu-14-04/']
 modified: 2015-06-12
 modified_by:
   name: Elle Krout

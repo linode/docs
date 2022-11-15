@@ -14,7 +14,7 @@ modified_by:
 title: "Deploying Plex Media Server through the Linode Marketplace"
 external_resources:
 - '[Plex Support Articles](https://support.plex.tv/articles/)'
-aliases: ['/platform/marketplace/deploy-plex-with-marketplace-apps/', '/platform/marketplace/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-marketplace-apps/','/platform/one-click/deploy-plex-with-one-click-apps/','/platform/one-click/deploy-plex-with-one-click-apps/','/guides/plex-marketplace-app/']
+aliases: ['/platform/marketplace/deploy-plex-with-marketplace-apps/', '/platform/marketplace/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-marketplace-apps/','/platform/one-click/deploy-plex-with-one-click-apps/','/guides/plex-marketplace-app/']
 ---
 
 [Plex](https://www.plex.tv/) is a feature-rich streaming platform that allows you to organize and stream your own digital video and audio to your devices. This guide shows you how to deploy the [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) using Linode's Plex Marketplace App, upload media to your Plex Server, and connect to it from a Plex client application. Your Plex Media Server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode) service with this app.
@@ -44,7 +44,7 @@ The following configuration options create a secure [Limited User](/docs/guides/
 
 {{< note >}}
 -   As a security measure, [root login over SSH](/docs/guides/set-up-and-secure/#ssh-daemon-options) is disabled for this App. Use your Limited User credentials to access your Linode via SSH instead.
--   The Limited User configurations below are for your Linode's [Linux user](/docs/tools-reference/basics/linux-users-and-groups/), which is distinct from your [Plex account user](https://www.plex.tv/sign-up/).
+-   The Limited User configurations below are for your Linode's [Linux user](/docs/guides/linux-users-and-groups/), which is distinct from your [Plex account user](https://www.plex.tv/sign-up/).
 {{< /note >}}
 
 - **Limited User Name** *(required)*: Enter your preferred username for the limited user. If the username `root` is specified, a limited user is not be created and extra security features are not configured.
@@ -79,7 +79,7 @@ Your shell then interprets `$IP_ADDRESS` as the value you have provided in follo
 {{< /output >}}
 {{< /note >}}
 
-1.  From your workstation [terminal](/docs/tools-reference/tools/using-the-terminal/), enter the following the command, substituting `$USERNAME` with your Linux [Limited User Name](#plex-marketplace-app-options), and `$IP_ADDRESS` with the [IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) of your Plex Server Linode:
+1.  From your workstation [terminal](/docs/guides/using-the-terminal/), enter the following the command, substituting `$USERNAME` with your Linux [Limited User Name](#plex-marketplace-app-options), and `$IP_ADDRESS` with the [IP address](/docs/guides/find-your-linodes-ip-address/) of your Plex Server Linode:
 
         ssh $USERNAME@$IP_ADDRESS -L 8888:localhost:32400
 
@@ -127,7 +127,7 @@ If your media collection is larger than the space available from your Linode pla
 For future reference, you can find examples of the instructions provided in this section in Cloud Manager by navigating to [**Volumes**](https://cloud.linode.com/volumes), then selecting **Show Configuration** from the option menu for your Volume.
 {{< /note >}}
 
-1.  [Create a Block Storage Volume](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#add-a-volume-from-the-linode-detail-page) if you do not already have one prepared.
+1.  [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/) if you do not already have one prepared.
 
 1.  Establish an SSH connection to your Plex Server Linode as your [Limited User](#plex-marketplace-app-options).
 
@@ -173,21 +173,21 @@ Media on your Volume is now accessible through the Plex web interface at the mou
 Your Plex Server is set up to access media files in the `~/plex/media` directory. You have many options for uploading or downloading media to your Plex Server. This section shows you how to organize and upload files to your Plex Server using the `scp` command.
 
 {{< note >}}
-This section directs you to run commands either on your Plex Server Linode through an SSH connection as your [Limited User](#plex-options), or from the workstation [terminal](/docs/tools-reference/tools/using-the-terminal/) where the media files you wish to upload are stored.
+This section directs you to run commands either on your Plex Server Linode through an SSH connection as your [Limited User](#plex-options), or from the workstation [terminal](/docs/guides/using-the-terminal/) where the media files you wish to upload are stored.
 {{< /note >}}
 
 1.  On your Plex Server Linode, create a subdirectory within `~/plex/media` to store your media files. Plex recommends [organizing media by type](https://support.plex.tv/articles/naming-and-organizing-your-movie-media-files/), so pick a subdirectory name that matches the type of media you plan to upload. For example, to create a directory to store movie files, enter the following command:
 
         mkdir ~/plex/media/movies
 
-1.  From your media workstation, use the `scp` command to move media to your Plex Server's media subdirectory, substituting `$USERNAME` with your Linux [Limited User Name](#plex-marketplace-app-options), and `$IP_ADDRESS` with the [IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/) of your Plex Server Linode:
+1.  From your media workstation, use the `scp` command to move media to your Plex Server's media subdirectory, substituting `$USERNAME` with your Linux [Limited User Name](#plex-marketplace-app-options), and `$IP_ADDRESS` with the [IP address](/docs/guides/find-your-linodes-ip-address/) of your Plex Server Linode:
 
         scp example_video.mp4 $USERNAME@$IP_ADDRESS:~/plex/media/movies
 
     Depending on the file size(s), this may take a few minutes.
 
     {{< note >}}
-There are other ways to upload files to your Plex Server Linode. See our section in [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics/#upload-files-to-a-remote-server) for more information.
+There are other ways to upload files to your Plex Server Linode. See our section in [Linux System Administration Basics](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server) for more information.
     {{< /note >}}
 
 ### Add Media Libraries
