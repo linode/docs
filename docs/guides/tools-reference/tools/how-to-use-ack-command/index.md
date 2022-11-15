@@ -1,17 +1,18 @@
 ---
-slug: how-to-use-ack-command
+slug: how-to-use-ack-command-on-linux
 author:
   name: Linode Community
   email: docs@linode.com
 description: "The ack command provides a powerful alternative to grep. The ack command has the benefit of being specifically designed for working with source code repositories, making it a more well-suited tool for developers. In this tutorial, learn everything you need to get started using it."
-og_description: "The ack command provides a powerful alternative to grep. The ack command has the benefit of being specifically designed for working with source code repositories, making it a more well-suited tool for developers. In this tutorial, learn everything you need to get started using it."
-keywords: ['ack command line','ack command in linux','ack command examples']
+keywords: ['ack command line', 'ack command in linux', 'ack command examples']
+tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-08
 modified_by:
   name: Nathaniel Stickman
 title: "How to Use the ack Command on Linux"
-h1_title: "How to Use the ack Command on Linux"
+h1_title: "Using the ack Command on Linux"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -23,57 +24,57 @@ external_resources:
 
 The ubiquitous Linux search tool *grep* has plenty to offer, but, if you are working with source code, you have a more efficient alternative. That alternative is *ack*, a faster tool dedicated specifically to searching source code.
 
-*ack* boasts increased performance by identifying relevant files and searching only those. *ack* also brings in optimized regular expressions, meant to make pattern matching more efficient.
+*ack* boasts an increased performance by identifying relevant files and searching only those. *ack* also brings in optimized regular expressions, meant to make pattern matching more efficient.
 
-This tutorial helps introduce you to *ack* and everything it has to offer. It covers everything from the basics that many *grep* users are familiar with to more advanced searches using regular expressions and file-type filters. And you can follow along with plenty of command-line examples each step of the way.
+This guide helps introduce you to *ack* and everything it has to offer. It covers everything from the basics that many *grep* users are familiar with to more advanced searches using regular expressions and file-type filters. And you can follow along with plenty of command-line examples each step of the way.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
 
             sudo dnf upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## ack vs grep: Which One to Use?
 
 Both *ack* and *grep* are command-line search tools, capable of matching string patterns to find text within files and directories.
 
-The main difference between the two is emphasis. The *grep* command is considered a standard, helped by the fact that it comes installed by default on most Linux systems. It is a general-purpose tool, meant to be versatile enough for any kinds of searches but not specifically optimized for any kinds in particular.
+The main difference between the two is emphasis. The *grep* command is considered a standard, helped by the fact that it comes installed by default on most Linux systems. It is a general-purpose tool, meant to be versatile enough for any kind of search but not specifically optimized for any kind in particular.
 
-Meanwhile, the *ack* command aims for higher efficiency by applying itself to searching particular kinds of files, those found in source code repositories. Because it is designed with this particular use in mind, *ack* is able to ignore certain files as irrelevant. Doing so makes its searches easier for users to navigate and more performant compared to *grep*.
+Meanwhile, the *ack* command aims for higher efficiency by applying itself to searching particular kinds of files, those found in source code repositories. Because it is designed with this particular use in mind, *ack* can ignore certain files as irrelevant. Doing so makes its searches easier for users to navigate and more performant compared to *grep*.
 
-So, what it comes down to: *grep* still offers much when it comes to general-purpose text searches. But, if you are specifically looking for a tool for searching within source code repositories, *ack* should be your go-to command-line tool.
+So, what it comes down to is that *grep* still offers much when it comes to general-purpose text searches. But, if you are specifically looking for a tool for searching within source code repositories, *ack* should be your go-to command-line tool.
 
 ## How to Install the ack Command
 
 Installing *ack* is straightforward using your Linux system's package manager.
 
-- On Debian and Ubuntu, use the following command:
+- On **Debian** and **Ubuntu**, use the following command:
 
         sudo apt install ack
 
-    However, on Debian 9 or older or Ubuntu 19.10 or older, you should use the following command instead:
+    However, on **Debian** 9 or older or **Ubuntu** 19.10 or older, you should use the following command instead:
 
         sudo apt install ack-grep
 
-- On AlmaLinux, CentOS, and Fedora, use this command:
+- On **AlmaLinux**, **CentOS**, and **Fedora**, use the following command:
 
         sudo dnf install ack
 
-You can verify your installation by checking the installed *ack* version. The output varies depending on your Linux system, but it should look something like:
+You can verify your installation by checking the installed *ack* version. The output varies depending on your Linux system, but the command should look something like the below:
 
     ack --version
 
@@ -91,24 +92,24 @@ under the terms of the Artistic License v2.0.
 
 These next sections walk you through how to start using *ack* to search source code repositories.
 
-To see *ack* in action, the examples that follow use the source code for the [Terrastories](https://github.com/Terrastories/terrastories) project. You can download that repository to follow along with the examples using these steps.
+To see *ack* in action, the examples that follow use the source code for the [Terrastories](https://github.com/Terrastories/terrastories) project. You can download the repository to follow along with the examples using the steps below:
 
-1. Ensure that you have Git installed. The repository, like many other open-source code repositories, are stored using Git.
+1. Ensure that you have Git installed. The repository, like many other open-source code repositories, is stored using Git.
 
-    - On Debian and Ubuntu, you can install Git with:
+    - On **Debian** and **Ubuntu**, you can install Git using the following command:
 
             sudo apt install git
 
-    - On AlmaLinux, CentOS, and Fedora, you can install Git with:
+    - On **AlmaLinux**, **CentOS**, and **Fedora**, you can install Git using the following command:
 
             sudo dnf install git
 
-1. Clone the GitHub repository for the project. Here, the repository is cloned into the current user's home directory. A project subdirectory is automatically created there:
+1. Clone the GitHub repository for the project. Here, the repository is cloned into the current user's home directory. A project subdirectory is automatically created:
 
         cd ~
         git clone https://github.com/Terrastories/terrastories
 
-1. Change into the project's directory:
+1. Change into the project's directory.
 
         cd terrastories
 
@@ -118,9 +119,9 @@ You can implement this configuration change with a single command. The command w
 
     echo '--pager=less -RFX' >> ~/.ackrc
 
-### Getting a Count of Files
+### Get Count of Files
 
-A basic usage of *ack* is simply getting a count of the relevant files in a source code directory. You can achieve this with:
+A basic usage of *ack* is simply getting a count of the relevant files in a source code directory. You can achieve this using the following command:
 
     ack -f | wc -l
 
@@ -130,9 +131,9 @@ A basic usage of *ack* is simply getting a count of the relevant files in a sour
 
 Here, the *ack* command runs with the `-f` option. This tells *ack* to identify all relevant files in the repository, without any search pattern. The results are piped into *wc*, which, with the `-l` option, counts the number of lines output.
 
-It is important to note that *ack* only queries the files it deems relevant. Remember, *ack* is designed for searching source code specifically, not searching files generally. So, its elimination of certain files from searches is intended to make it more efficient than *grep* for its particular use area.
+It is important to note that *ack* only queries the files it deems relevant. Remember, *ack* is designed for searching source code specifically, not searching files generally. So, its elimination of certain files from searches is intended to make it more efficient than *grep* for its particular use case.
 
-To demonstrate, compare the file count from *ack* to the standard way of getting file counts on Linux using *find*:
+To demonstrate, compare the file count from *ack* to the standard way of getting file counts on Linux using the *find* command:
 
     find . | wc -l
 
@@ -140,9 +141,9 @@ To demonstrate, compare the file count from *ack* to the standard way of getting
 933
 {{< /output >}}
 
-### Searching by Term
+### Search by Term
 
-Of course, most often you want to search files by a given term or set of terms. You can achieve this by giving the `ack` command followed by your search pattern, like this:
+Of course, most often you want to search files by a given term or set of terms. You can achieve this by giving the `ack` command your search pattern, as shown below:
 
     ack create
 
@@ -152,16 +153,16 @@ README.md
 
 documentation/SETUP-LINUX.md
 33:Copy the contents of this file into a newly created file called `.env` (Do not change .env.example!).
-35:Now navigate to a site called [Mapbox](https://mapbox.com/signup) create an account, and copy the mapbox access token (either your default public token or a new one you create) found under your acccount.
-37:Navigate back to the `.env` file you created and replace where it says [your pk token here] with your mapbox access token.
+35:Now navigate to a site called [Mapbox](https://mapbox.com/signup) create an account and copy the Mapbox access token (either your default public token or a new one you create) found under your account.
+37:Navigate back to the `.env` file you created and replace where it says [your pk token here] with your Mapbox access token.
 [...]
 {{< /output >}}
 
-The above finds even partial matches for the search term. For example, though the search term is `create`, the results include lines with `created`.
+The above command finds even partial matches for the search term. For example, though the search term is `create`, the results include lines with `created`.
 
-Additionally, the example above is case sensitive. This means that while all cases of `create`, `created`, etc. can be found, cases of `Create`, `Created`, etc. are not.
+Additionally, the example above is case-sensitive. This means that while all cases of `create`, `created`, etc. can be found, cases of `Create`, `Created`, etc., are not.
 
-You can adjust both of those factors, however. In this next example, the `-w` option tells *ack* to find only whole-word matches — that is, `create` but not `created`. The `-i` option tells *ack* to make the search case-insensitive, to it can return results of `create` and `Create`:
+You can adjust both of those factors, however. In this next example, the `-w` option tells *ack* to find only whole-word matches — that is, `create` but not `created`. The `-i` option tells *ack* to make the search case-insensitive, so it can return results of `create` and `Create`:
 
     ack -i -w create
 
@@ -179,7 +180,7 @@ README.md
 
 #### Advanced Searches with Regex
 
-The pattern field for *ack* searches also supports regular expressions (regex). Regex provides a pattern-matching syntax for searching, and sometimes replacing, text. It is often used for advanced pattern matching, and can be a powerful tool for demanding search tasks.
+The pattern field for *ack* searches also supports regular expressions (regex). Regex provides a pattern-matching syntax for searching and sometimes replacing, text. It is often used for advanced pattern matching and can be a powerful tool for demanding search tasks.
 
 Here is a straightforward example of regex in *ack*. The pattern here allows *ack* to find lines matching two search terms. For this example, the terms must be set off by spaces to match, and they can be separated by any number and variation of characters:
 
@@ -187,7 +188,7 @@ Here is a straightforward example of regex in *ack*. The pattern here allows *ac
 
 {{< output >}}
 documentation/SETUP-OFFLINE.md
-58:*Raster tiles*: If you have raster tiles that you want to load in Terrastories, those will need to defined differently from the vector tiles above. In `sources`, create a new source definition with `url` pointing to the raster `MBTIles` in the same format as above, `type` set to `raster`, and `tileSize` to `256`. Then, in `layers`, create a map object with your `id` of choice, `type` set to `raster`, and `source` set to the name of your raster tiles as defined in `sources`. Here is an example:
+58:*Raster tiles*: If you have raster tiles that you want to load in Terrastories, those will need to be defined differently from the vector tiles above. In `sources`, create a new source definition with `url` pointing to the raster `MBTIles` in the same format as above, `type` set to `raster`, and `tileSize` to `256`. Then, in `layers`, create a map object with your `id` of choice, `type` set to `raster`, and `source` set to the name of your raster tiles as defined in `sources`. Here is an example:
 
 rails/db/seeds.rb
 17:# Create an example Community
@@ -197,13 +198,13 @@ rails/db/seeds.rb
 119:# Create a viewer user for example community
 {{< /output >}}
 
-*ack* use the Perl implementation of regular expression syntax, also known as Perlre. The full reference for this regex syntax can be found in the [official Perldoc documentation](https://perldoc.perl.org/perlre).
+*ack* uses the Perl implementation of regular expression syntax, also known as *Perlre*. The full reference for this regex syntax can be found in the [official Perldoc documentation](https://perldoc.perl.org/perlre).
 
 However, that reference can be daunting, especially when starting out with regex. You may, instead, find the coverage of regex filters in our [How to Filter Data Using AWK RegEx](/docs/guides/filter-data-using-awk-regex/) more helpful to start with. The guide does not specifically address Perl regex. Nonetheless, it provides useful examples and breakdowns to help you get a footing with regex's usage and capabilities generally.
 
-#### Counting Matches per File
+#### Count Matches per File
 
-The *ack* command also includes several options for counting matches. Using the *wc* program like above can give you a count of files, but the options built into *ack* give you more granular control and can count numbers of matches.
+The *ack* command also includes several options for counting matches. Using the *wc* program like above can give you a count of files, but the options built into *ack* give you more granular control and can count the number of matches.
 
 These options all build on the `-c` option. This option causes *ack* to list file names with the number of matches in each file. For instance, this command lists files and indicates the number of times each has the term `def`:
 
@@ -220,7 +221,7 @@ rails/db/migrate/20220414120430_add_mapbox_3d_boolean.rb:2
 [...]
 {{< /output >}}
 
-Notice, however, that these results include files without any matches for the term. In fact, the full results include many such files.
+Notice, however, that these results include files without any matches for the term. The full results include many such files.
 
 To weed these out, you can add the `-l` option alongside the `-c` option. The `-l` option has *ack* only list files that have at least one match to the search pattern:
 
@@ -245,11 +246,11 @@ Finally, you may want a pure count of matches, without the list of file names. Y
 568
 {{< /output >}}
 
-### Limiting Searches by File Type
+### Limit Searches by File Type
 
-The *ack* tool is oriented around source code repositories, any many times it can be useful to limit searches in these repositories by file type. As such, *ack* includes a wide set of options designed for filtering searches based on file types.
+The *ack* tool is oriented around source code repositories, and many times it can be useful to limit searches in these repositories by file type. As such, *ack* includes a wide set of options designed for filtering searches based on file types.
 
-To use these options, you can provide the file-type name as a flag on the *ack* command. This example, for instance, searches the repository for the term `blue` but has *ack* only look at SASS files (which end in either `.sass` or `.scss`):
+To use these options, you can provide the file-type name as a flag on the *ack* command. This example, for instance, searches the repository for the term `blue` but has _ack_ only looks at SASS files (which end in either `.sass` or `.scss`):
 
     ack --sass blue
 
@@ -271,7 +272,7 @@ rails/app/assets/stylesheets/components/card.scss
 [...]
 {{< /output >}}
 
-Conversely, you can use a similar approach to exclude a given file type. This works be simply adding `no` to the beginning of the file-type name, as in:
+Conversely, you can use a similar approach to exclude a given file type. These works are simply adding `no` to the beginning of the file-type name, as in:
 
     ack -w --nosass red
 
@@ -283,7 +284,7 @@ rails/yarn.lock
 [...]
 {{< /output >}}
 
-You can even fine tune your searches further by using multiple file-type flags at the same time.
+You can even fine-tune your searches further by using multiple file-type flags at the same time.
 
 To see a full list of supported file types in *ack*, you can run the command with the `--help-types` option, as in:
 
@@ -291,7 +292,7 @@ To see a full list of supported file types in *ack*, you can run the command wit
 
 {{< output >}}
 [...]
-The following is the list of filetypes supported by ack.  You can
+The following is the list of file types supported by ack.  You can
 specify a file type with the --type=TYPE format, or the --TYPE
 format.  For example, both --type=perl and --perl work.
 

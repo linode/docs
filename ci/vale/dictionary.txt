@@ -1471,6 +1471,8 @@ perceptron
 percona
 performant
 perl
+perlre
+perldoc
 permalink
 permalinks
 Petazzoni
@@ -1831,6 +1833,7 @@ shotcut
 shoutcast
 scikit
 scribus
+scrollable
 sidekiq
 sievers
 signup
@@ -2209,6 +2212,7 @@ wasn
 wasm
 wav
 wazuh
+wc
 webadmin
 webalizer
 webapp
