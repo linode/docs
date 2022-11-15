@@ -3,44 +3,55 @@ title: Guides
 description: "Learn the basics of adding and managing Domains and DNS records using the DNS manager. You can also find guides that take a deep dive into DNS records, common DNS configurations, and other more advanced topics."
 tab_group_main:
     weight: 30
+modified: 2022-10-28
 ---
 
-## Building Blocks
+## Basics
 
-These introductory guides to Linode DNS Manager will get you up and running with this service.
+- [Create a Domain](/docs/products/networking/dns-manager/guides/create-domain/): Instructions for adding your domain to Linode's DNS Manager.
 
-- [Add Domains](/docs/products/networking/dns-manager/guides/add-domains/): You can add a domain in the Domains section of the Cloud Manager.
+- [Manage Domains](/docs/products/networking/dns-manager/guides/manage-domains/): View, edit, and manage domains on your account.
 
-- [Add DNS Records](/docs/products/networking/dns-manager/guides/add-dns-records/): After you add a domain, you want to add some DNS records.
+- [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/): View, edit, and manage DNS records on your domains.
 
-- [Edit DNS Records](/docs/products/networking/dns-manager/guides/edit-dns-records/): You can modify DNS records easily after they’ve been added from the Domains section of the Cloud Manager.
+## Additional Management
 
-- [Remove Domains](/docs/products/networking/dns-manager/guides/remove-domains/): Removing Domains can also be done easily from the Cloud Manager in the Domains section.
+- [Incoming DNS Zone Transfers (Import a Domain)](/docs/products/networking/dns-manager/guides/incoming-dns-zone-transfers/): Transfer DNS records from an external DNS service to the Linode DNS Manager, including how to operate a *secondary* DNS service on Linode through AXFR transfers from an external *primary* DNS service.
 
-- [Transfer Domain Zones](/docs/products/networking/dns-manager/guides/transfer-domain-zones/): You can transfer a Domain zone to a non-Linode DNS server that you designate and trust.
+- [Outgoing DNS Zone Transfers Domain](/docs/products/networking/dns-manager/guides/outgoing-dns-zone-transfers/): Transfer DNS records to another DNS service, including how to maintain a *primary* DNS service on Linode while supporting AXFR transfers to an external *secondary* DNS service.
 
-## Themes
+## DNS Record Types
 
-These additional guides will help you with targeted topics like DNS basics and more advanced subjects.
+- [A and AAA Records](/docs/products/networking/dns-manager/guides/a-record/)
 
-### DNS Basics
+- [CNAME Records](/docs/products/networking/dns-manager/guides/cname-record/)
 
-- [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/)
+- [MX Records](/docs/products/networking/dns-manager/guides/mx-record/)
 
-- [DNS Manager](/docs/guides/dns-manager/)
+- [TXT Records](/docs/products/networking/dns-manager/guides/txt-record/)
 
-- [Diagnose & Resolve DNS Records in DNS Manager](/docs/platform/manager/troubleshooting-dns/)
+- [NS Records](/docs/products/networking/dns-manager/guides/ns-record/)
 
-- [Common DNS Configurations](/docs/networking/dns/common-dns-configurations/)
+- [SOA Record](/docs/products/networking/dns-manager/guides/soa-record/)
 
-- [Using Your System’s Hosts File](/docs/networking/dns/using-your-systems-hosts-file/)
+- [SRV Records](/docs/products/networking/dns-manager/guides/srv-record/)
 
-- [Configure Your Linode for Reverse DNS (rDNS)](/docs/networking/dns/configure-your-linode-for-reverse-dns/)
+- [CAA Records](/docs/products/networking/dns-manager/guides/caa-record/)
 
-### Advanced Topics
+## Going Further
 
-- [Previewing Websites Without DNS](/docs/networking/dns/previewing-websites-without-dns/)
+- [Overview of DNS and DNS Records](/docs/guides/dns-overview/)
 
-- [How to Set Up Cloudflare with Linode](/docs/networking/dns/how-to-set-up-cloudflare-with-linode/)
+- [Troubleshooting DNS Records](/docs/guides/troubleshooting-dns/)
 
-- [Use dig to Perform Manual DNS Queries](/docs/networking/dns/use-dig-to-perform-manual-dns-queries/)
+- [Common DNS Configurations](/docs/products/networking/dns-manager/guides/common-dns-configurations/)
+
+- [Configure rDNS (Reverse DNS) on a Compute Instance](/docs/guides/configure-rdns/)
+
+## Advanced Topics
+
+- [Previewing Websites Without DNS](/docs/guides/previewing-websites-without-dns/)
+
+- [How to Set Up Cloudflare with Linode](/docs/guides/how-to-set-up-cloudflare-with-linode/)
+
+- [Use dig to Perform Manual DNS Queries](/docs/guides/use-dig-to-perform-manual-dns-queries/)

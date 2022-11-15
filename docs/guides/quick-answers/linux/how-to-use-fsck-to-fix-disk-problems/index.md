@@ -26,9 +26,13 @@ This guide is part of a series on Linux commands and features. Not all commands 
 
 ## What is fsck?
 
-fsck, short for file system consistency check, is a utility that examines the file system for errors and attempts to repair them if possible. It uses a combination of built-in tools to check the disk and generates a report of its findings.
+fsck, short for file system consistency check, is a utility that examines the file system for errors and attempts to repair them if possible. It functions as a frontend utility for a combination of built-in tools to check the disk and generates a report of its findings.
 
 On some systems, fsck runs automatically after an unclean shutdown or after a certain number of reboots.
+
+{{< note >}}
+`fsck` is not installed by default when using Linode's rescue mode, and instead the `e2fsck` tool, which fsck functions as a frontend for, will need to be called directly for standard `ext` filesystems. Please see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
+{{</ note >}}
 
 ## When to Use fsck
 
@@ -59,7 +63,7 @@ Unmount the target disk first. You risk corrupting your file system and losing d
 
 ### Boot into Rescue Mode
 
-If you are using fsck on a Linode, the easiest and safest way to unmount your disk is to use Rescue Mode. Visit our [Rescue and Rebuild](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) guide for instructions on how to boot your Linode into Rescue Mode. If you're working on a local machine, consider using the distribution's recovery mode or a live distribution to avoid working on a mounted disk. fsck should be run only as a user with root permissions.
+If you are using fsck on a Linode, the easiest and safest way to unmount your disk is to use Rescue Mode. Visit our [Rescue and Rebuild](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) guide for instructions on how to boot your Linode into Rescue Mode. If you're working on a local machine, consider using the distribution's recovery mode or a live distribution to avoid working on a mounted disk. fsck should be run only as a user with root permissions.
 
 ### View Mounted Disks and Verify Disk Location
 
@@ -83,15 +87,15 @@ If you are working on a local machine, unmount the disk manually.
 
 1.  Use `umount` to unmount the disk location copied in the [previous step](#view-mounted-disks-and-verify-disk-location):
 
-        umount /dev/sdb
+        umount /dev/sda
 
 2.  If the disk is declared in `/etc/fstab`, change the `mount point` to `none` there as well.
 
 ## How to Check for Errors on a Disk
 
-Run fsck on the target disk, using the desired options. This example checks all file systems (`-A`) on `/dev/sdb`:
+Run fsck on the target disk, using the desired options. This example checks all file systems (`-A`) on `/dev/sda`:
 
-    fsck -A /dev/sdb
+    fsck -A /dev/sda
 
 ### Understand fsck Error Codes
 
@@ -116,9 +120,9 @@ This example uses fsck to check all file systems except the root, and will attem
 
     fsck -AR -y
 
-To check and attempt to repair any errors on `/dev/sdb`, use this format:
+To check and attempt to repair any errors on `/dev/sda`, use this format:
 
-    fsck -y /dev/sdb
+    fsck -y /dev/sda
 
 ## What if fsck got interrupted?
 

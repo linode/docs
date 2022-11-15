@@ -24,6 +24,8 @@ Users who want to collaborate on a Subversion project must install a Subversion 
 
 {{< note >}}
 See our [How to Install Apache Subversion on Ubuntu 20.04](/docs/guides/install-apache-subversion-ubuntu/) guide to learn how to install and configure a Subversion server. A Subversion server can store and version control multiple projects.
+
+If you are new to version control systems (VCS), see our guide [SVN vs Git: Which Version Control System Should You Use?](/docs/guides/svn-vs-git/) to learn more about each VCS.
 {{</ note >}}
 
 ## Install the Subversion Client on Ubuntu
@@ -162,7 +164,7 @@ The status command displays information about any modified, added, or deleted fi
 | Status Code | Meaning |
 | ----------- | ------- |
 | `?` | The file, directory, or symbolic link item is not under version control. |
-| `C` | The file contains conflicts. This occurs when an an update is performed locally and the changes received from the Subversion repository contains overlapping changes. You must address the conflict before you can commit your changes to the repository. |
+| `C` | The file contains conflicts. This occurs when an update is performed locally and the changes received from the Subversion repository contains overlapping changes. You must address the conflict before you can commit your changes to the repository. |
 | `D` | The file, directory, or symbolic link is scheduled for deletion from the repository. |
 | `M` | The file has been modified. |
 

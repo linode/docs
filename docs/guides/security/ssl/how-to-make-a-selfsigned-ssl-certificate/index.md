@@ -1,14 +1,13 @@
 ---
 slug: how-to-make-a-selfsigned-ssl-certificate
 deprecated: true
-deprecated_link: /guides/create-a-self-signed-tls-certificate/
+deprecated_link: 'guides/create-a-self-signed-tls-certificate/'
 author:
   name: Linode
   email: docs@linode.com
 description: 'Creating an SSL certificate for personal or internal organizational use on a Linux server.'
 keywords: ["ssl certificate", "ssl cert", "self signed ssl", "ssl linux", "ssl cert linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/ssl-certificates/self-signed/','/security/ssl/how-to-make-a-selfsigned-ssl-certificate/']
 modified: 2020-12-02
 modified_by:
   name: Linode

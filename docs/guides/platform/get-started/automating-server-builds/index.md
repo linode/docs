@@ -54,7 +54,7 @@ Golden disks are capable of handling automated server builds for most individual
 
 -   **Puppet:** An open source configuration management tool that manages systems declaratively. It can automates IT tasks like application configuration, patch management, and even infrastructure audit and compliance. See the following Puppet guides:
 
-    - [Getting Started with Puppet - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/)
+    - [Getting Started with Puppet - Basic Installation and Setup](/docs/guides/getting-started-with-puppet-6-1-basic-installation-and-setup/)
     - [Manage and Automate Systems Configuration with Puppet](/docs/guides/manage-and-automate-systems-configuration-with-puppet/)
     - [Use Puppet Modules to Create a LAMP Stack](/docs/guides/use-puppet-modules-to-create-a-lamp-stack/)
     - [Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04](/docs/guides/install-and-manage-mysql-databases-with-puppet-hiera-on-ubuntu-16-04/)
@@ -81,7 +81,7 @@ The Linode Module from Ansible is based on Linode's deprecated APIv3.
 
 - **Salt:** Salt (also referred to as SaltStack) is a Python-based configuration management and orchestration system. Salt uses a master/client model in which a dedicated Salt master server manages one or more Salt minion servers. To learn more about Salt, see the following guides:
 
-    - [A Beginner's Guide to Salt](https://www.linode.com/docs/guides/beginners-guide-to-salt/)
+    - [A Beginner's Guide to Salt](/docs/guides/beginners-guide-to-salt/)
     - [Getting Started with Salt - Basic Installation and Setup](/docs/guides/getting-started-with-salt-basic-installation-and-setup/)
     - [SaltStack Command Line Reference](/docs/guides/salt-command-line-reference/)
     - [Introduction to Jinja Templates for Salt](/docs/guides/introduction-to-jinja-templates-for-salt/)

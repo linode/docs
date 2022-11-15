@@ -35,11 +35,11 @@ If you are not using Debian 10, you can view different Linux distribution versio
 
     {{< content "limited-user-note-shortguide" >}}
 
-3.  Install and configure a [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/)
+3.  Install and configure a [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/)
 
 ## Download and Prepare Drupal 8
 
-1. Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
+1. Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
 
         cd /var/www/html/example.com
 
@@ -83,7 +83,7 @@ $settings['trusted_host_patterns'] = array(
 
         sudo a2enmod rewrite
 
-2.  Specify the rewrite conditions for your Drupal site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
+2.  Specify the rewrite conditions for your Drupal site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
 
     {{< file "/etc/apache2/sites-available/example.com.conf" conf >}}
 <Directory /var/www/html/example.com/public_html>
@@ -110,13 +110,13 @@ $settings['trusted_host_patterns'] = array(
 
 1.  Go to your Linode's domain or IP address in a web browser. This will show you the first step of Drupal 8's web configuration. Choose your language and proceed to the next page.
 
-    [![Drupal 8 choose language.](drupal-choose-language-small.png)](drupal-choose-language.png)
+    ![Drupal 8 choose language.](drupal-choose-language.png)
 
 2.  Choose whether you want a *Standard* or *Minimal* installation profile.
 
     ![Drupal 8 choose installation profile.](drupal-choose-installation-profile.png)
 
-3.  Complete the database configuration using the DB name, username and password you created when [setting up your LAMP stack](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) with a MySQL or MariaDB database.
+3.  Complete the database configuration using the DB name, username and password you created when [setting up your LAMP stack](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) with a MySQL or MariaDB database.
 
     ![Drupal 8 database configuration.](drupal-database-configuration.png)
 

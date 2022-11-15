@@ -8,7 +8,6 @@ description: 'Serve Dynamic Websites and Applications with the Lightweight Nginx
 keywords: ["nginx", "ubuntu 16.04", "fastcgi", "php"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/','/websites/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/','/web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/']
 modified: 2016-09-13
 modified_by:
   name: Edward Angert
@@ -18,7 +17,7 @@ external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
  - '[FastCGI article on Wikipedia](https://en.wikipedia.org/wiki/FastCGI)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
- - '[How to Configure Ngnix](/docs/websites/nginx/how-to-configure-nginx/)'
+ - '[How to Configure Ngnix](/docs/guides/how-to-configure-nginx/)'
 relations:
     platform:
         key: nginx-php-fastcgi

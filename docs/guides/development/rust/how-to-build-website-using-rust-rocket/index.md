@@ -44,7 +44,7 @@ Beyond that, Rocket emphasizes an easy and minimalistic path to putting together
 1. Throughout, this guide uses `example-app` as the name of the Rocket application. Replace it with your preferred application name.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Rust
@@ -104,7 +104,7 @@ In this section, you complete the following steps:
 
     Rocket serves the application on localhost port `8000`. To visit the application remotely, you can use an SSH tunnel:
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with `8000`.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with `8000`.
 
     - On macOS or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address:
 
@@ -136,7 +136,7 @@ rocket = "0.4.7"
 
 1. Open the `src/main.rs` file, and populate it with the following lines:
 
-    {{< file "~/example-app/src/main.rs" >}}
+    {{< file "~/example-app/src/main.rs" rust >}}
 #![feature(proc_macro_hygiene, decl_macro)]
 
 #[macro_use] extern crate rocket;
@@ -180,7 +180,7 @@ features = ["handlebars_templates"]
 
 1. Open your `~/example-app/src/main.rs` file, and modify it to include the following code:
 
-    {{< file "~/example-app/src/main.rs" >}}
+    {{< file "~/example-app/src/main.rs" rust >}}
 #![feature(proc_macro_hygiene, decl_macro)]
 
 #[macro_use] extern crate rocket;

@@ -88,6 +88,6 @@ New to the NVIDIA RTX 6000 are the following shading enhancements:
 
 ## Where to Go from Here
 
-If you are ready to get started with Linode GPU, our [Getting Started with Linode GPU Instances](/docs/platform/linode-gpu/getting-started-with-gpu/) guide walks you through deploying a Linode GPU Instance and installing the GPU drivers so that you can best utilize the use cases you've read in this guide.
+If you are ready to get started with Linode GPU, our [Getting Started with Linode GPU Instances](/docs/products/compute/gpu/get-started/) guide walks you through deploying a Linode GPU Instance and installing the GPU drivers so that you can best utilize the use cases you've read in this guide.
 
 To see the extensive array of Docker container applications available, check out [NVIDIA's site](https://ngc.nvidia.com/catalog/landing). Note: To access some of these projects you need an NGC account.

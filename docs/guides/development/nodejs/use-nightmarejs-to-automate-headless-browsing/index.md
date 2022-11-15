@@ -136,7 +136,7 @@ nightmare
 
         xvfb-run node linode.js
 
-    The script visits the [Linode docs](/docs) page, enters 'Ubuntu' into the input box, and clicks the submit button. It then waits for the results to load and prints the url and title each entry on the first page of results.
+    The script visits the [Linode docs](/docs/) page, enters 'Ubuntu' into the input box, and clicks the submit button. It then waits for the results to load and prints the url and title each entry on the first page of results.
 
     The output will resemble the following:
 

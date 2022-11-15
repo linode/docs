@@ -149,7 +149,7 @@ After each user is created, use the **People** tab to verify success:
 
 ### Registering a Domain Name for farmOS
 
-To register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](/docs/guides/dns-manager/) and add your FQDN (e.g., `farmos.yourfarm.com`) to the Linode Manager. A FQDN provides you, and the people who plan on using farmOS, the ability to navigate to a URL instead of your Linode's public IP address. If you plan on using farmOS internally, you can skip this step.
+To register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](/docs/products/networking/dns-manager/) and add your FQDN (e.g., `farmos.yourfarm.com`) to the Linode Manager. A FQDN provides you, and the people who plan on using farmOS, the ability to navigate to a URL instead of your Linode's public IP address. If you plan on using farmOS internally, you can skip this step.
 
 ### Generate a Google API Key
 

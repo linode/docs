@@ -56,10 +56,10 @@ This guide shows you how to get a Canvas website up and running on a Debian 10 s
 You can run some of the components of your Canvas installation on separate machines to free up memory. Refer to Canvas's [Production Start](https://github.com/instructure/canvas-lms/wiki/Production-Start) guide for more information on what components can be installed independently. This approach requires that each machine is configured to enable communications between the components, and it is considered an advanced setup.
 {{< /note >}}
 
-1. Replace `example.com` in this guide with your server's domain name. You can complete the steps mentioned in the [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) section to register a domain name for your Linode server.
+1. Replace `example.com` in this guide with your server's domain name. You can complete the steps mentioned in the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) section to register a domain name for your Linode server.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Apache
@@ -458,11 +458,11 @@ production:
 
 Your Canvas website is now up and running. Visit the website by navigating to your server's domain name in a web browser. When you are prompted to log in, you can do using the Canvas administrator credentials you created earlier.
 
-[![Canvas login page](canvas-login_small.png "Canvas login page")](canvas-login.png)
+![Canvas login page](canvas-login.png)
 
 Once you log in, you are taken to your Canvas dashboard from which you can view, create, and manage your Canvas website's content.
 
-[![Canvas dashboard](canvas-dashboard_small.png "Canvas dashboard")](canvas-dashboard.png)
+![Canvas dashboard](canvas-dashboard.png)
 
 - You can learn more about how to get started using your Canvas website and all the features it has to offer on the [Canvas Community](https://community.canvaslms.com/) website.
 

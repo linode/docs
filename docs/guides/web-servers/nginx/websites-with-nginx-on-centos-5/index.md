@@ -25,7 +25,7 @@ Nginx is a lightweight and high performance web server designed with the purpose
 
 Although nginx is a relatively new entrant in the web server field, it has achieved a great deal of respect for its agility and efficiency, particularly in high profile situations. Many very high traffic and profile websites have begun to use nginx for its efficiency. At the same time, administrators of smaller systems have found nginx ideal for their systems for its slim memory footprint.
 
-Before we begin installing the nginx web server, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before we begin installing the nginx web server, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Set the Hostname
 
@@ -51,7 +51,7 @@ During the installation process you will need to accept the EPEL repository's ke
 
     /etc/init.d/nginx start
 
-You can now continue with the [configuration](/docs/web-servers/nginx/how-to-configure-nginx/) of nginx. Installing nginx in this manner will allow you to rely on the EPEL maintainers to provide quality control, testing, and security teams to ensure that you're running the best possible version of the server. However, the packages provided by the EPEL project do not necessarily track the latest development of the nginx server and do not allow you to enable certain nginx options at compile time. Given the rapid development of nginx and variances between recent versions, installing from distribution packages is not ideal for many users. Continue to the next section to install nginx directly from source.
+You can now continue with the [configuration](/docs/guides/how-to-configure-nginx/) of nginx. Installing nginx in this manner will allow you to rely on the EPEL maintainers to provide quality control, testing, and security teams to ensure that you're running the best possible version of the server. However, the packages provided by the EPEL project do not necessarily track the latest development of the nginx server and do not allow you to enable certain nginx options at compile time. Given the rapid development of nginx and variances between recent versions, installing from distribution packages is not ideal for many users. Continue to the next section to install nginx directly from source.
 
 # Installing nginx from the Source Distribution
 
@@ -131,7 +131,7 @@ You can now start, stop, and restart nginx just like any other server daemon. Fo
 
     /etc/init.d/nginx start
 
-Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/docs/web-servers/nginx/how-to-configure-nginx/) for more information about using and setting up the web server.
+Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/docs/guides/how-to-configure-nginx/) for more information about using and setting up the web server.
 
 # More Information
 
@@ -139,6 +139,6 @@ You may wish to consult the following resources for additional information on th
 
 - [Linode Docs nginx Documentation](/docs/web-servers/nginx/)
 - [nginx Community Documentation](http://wiki.nginx.org)
-- [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/nginx-and-perlfastcgi-on-centos-5/)
-- [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/nginx-and-phpfastcgi-on-centos-5/)
-- [Configure Ruby on Rails with nginx](/docs/development/ror/ruby-on-rails-with-nginx-on-centos-5/)
+- [Configure Perl and FastCGI with nginx](/docs/guides/nginx-and-perlfastcgi-on-centos-5/)
+- [Configure PHP and FastCGI with nginx](/docs/guides/nginx-and-phpfastcgi-on-centos-5/)
+- [Configure Ruby on Rails with nginx](/docs/guides/ruby-on-rails-with-nginx-on-centos-5/)

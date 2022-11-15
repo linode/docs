@@ -24,7 +24,7 @@ tags: ["email"]
 
 The `fetchmail` program is a classic UNIX and Unix-like utility used to retrieve email from remote servers and deliver it to local users on a server. There are a number of different scenarios where fetchmail is used. Fetchmail is a popular tool for manually downloading email from a POP or IMAP server for personal use on a local machine. Another common application uses fetchmail to create an "email gateway," where email is collected from a number of different accounts or from a large centralized server and provided to the user in a manageable situation.
 
-If you're new to Linode we always recommend completing our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) before beginning a tutorial. If you're new to Linux we also recommend considering the [beginners guide](/docs/platform/billing-and-support/linode-beginners-guide/) and the many documents in the [Tools & Reference](/docs/tools-reference/) section. If you need a more full featured email stack, consider one of our other [email guides](/docs/email/).
+If you're new to Linode we always recommend completing our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) before beginning a tutorial. If you're new to Linux we also recommend considering the [beginners guide](/docs/guides/linode-beginners-guide/) and the many documents in the [Tools & Reference](/docs/tools-reference/) section. If you need a more full featured email stack, consider one of our other [email guides](/docs/email/).
 
 ## Installing Fetchmail
 
@@ -79,7 +79,7 @@ In the first specification, fetchmail is told to check the `mail.example.com` se
 
 In the second example, a single account (i.e. `betty`) is retrieved from the remote server (i.e. `mail.dexample.org`) and passed to the MDA `procmail` utility. Additionally, account has the `sslproto` option is enabled to encrypt this traffic using `ssl`.
 
-Fetchmail requires that the `~/.fetchmailrc` file have the [access permissions](/docs/tools-reference/linux-users-and-groups/) of 600. Permissions of 600 equate to read and writeable by the user account which "owns" the file with no permissions granted to group or other users. To achieve this, issue the following command:
+Fetchmail requires that the `~/.fetchmailrc` file have the [access permissions](/docs/guides/linux-users-and-groups/) of 600. Permissions of 600 equate to read and writeable by the user account which "owns" the file with no permissions granted to group or other users. To achieve this, issue the following command:
 
     chmod 600 ~/.fetchmailrc
 

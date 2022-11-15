@@ -35,7 +35,7 @@ For more comprehensive information and a collection of resources about HTTP/2, s
 1. Ensure you possess a Fully Qualified Domain Name (FQDN) for the website. The DNS records for the site must point to the Linode server.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## A Summary of the HTTP/2 on Apache Configuration Process
@@ -204,5 +204,5 @@ To confirm Apache is using HTTP/2, visit the website using any browser, and use 
 1. Select the **Network** tab, and reload the page again.
 1. This displays a list of several rows. Click on the row corresponding to the base domain. This reveals a new panel on the bottom right. The **Headers** tab appears by default.
 
-    [![Developer panel in Firefox](developer-panel_small.png)](developer-panel.png)
+    ![Developer panel in Firefox](developer-panel.png)
 1. If HTTP/2 is working, the `Status` reads `OK` and the version is `HTTP/2`.

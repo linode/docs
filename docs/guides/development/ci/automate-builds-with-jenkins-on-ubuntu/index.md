@@ -22,11 +22,6 @@ external_resources:
  - '[Blue Ocean Documentation](https://jenkins.io/doc/book/blueocean/)'
 audiences: ["intermediate"]
 dedicated_cpu_link: true
-relations:
-    platform:
-        key:  automate-builds-jenkins
-        keywords:
-            - distribution: Ubuntu 16.04
 ---
 
 [Jenkins](https://jenkins.io) is an open-source automation server that allows you to build pipelines to automate the process of building, testing, and deploying applications. In this guide, you will implement a basic workflow to speed up your Continuous Integration and Continuous Delivery (CI/CD) process.
@@ -53,7 +48,7 @@ This guide is oriented toward DevOps professionals and thus presumes:
 
 4.  Jenkins will be used mainly through the newer [Blue Ocean](https://jenkins.io/projects/blueocean/) web interface.
 
-5.  The workstation and remote Linode will each need Docker installed beforehand. See our guide on [how to install docker images](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/) for detailed instructions.
+5.  The workstation and remote Linode will each need Docker installed beforehand. See our guide on [how to install docker images](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) for detailed instructions.
 
 6.  For the purpose of this guide, only a Jenkins master server will be used.
 

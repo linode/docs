@@ -44,7 +44,7 @@ If you have not already installed WordPress on your server, you can follow one o
    If you are on CentOS and did not use the Remi repository to install PHP, you may have to replace `php74-php` with `php` throughout this guide.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Optional PHP Extensions
@@ -131,7 +131,7 @@ post_max_size = 8M
 
 1. You can verify that the maximum file size for uploads has increased by navigating to your WordPress site's administrator dashboard (`example.com/wp-admin`) and selecting **Media** from the menu on the left. Click **Add New**, and you should see an indication of the current upload limit.
 
-    [![WordPress's Media Library, showing the maximum file size for uploads](wordpress-media-filesize-limit_small.png)](wordpress-media-filesize-limit.png)
+    ![WordPress's Media Library, showing the maximum file size for uploads](wordpress-media-filesize-limit.png)
 
 ## Configure WordPress's Permalinks
 
@@ -143,7 +143,7 @@ Permalinks — a combination of "permanent" and "hyperlink" — provide your pag
 
 1. Select **Permalinks** from the **Settings** menu on the left.
 
-    [![WordPress's permalink style options](wordpress-settings-permalinks_small.png)](wordpress-settings-permalinks.png)
+    ![WordPress's permalink style options](wordpress-settings-permalinks.png)
 
 1. Either select a permalink style from the existing options or create your own style using the **Custom Structure** option. Click **Save Changes** once you have made your selection.
 

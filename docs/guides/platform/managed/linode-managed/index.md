@@ -21,7 +21,7 @@ enable_h1: true
 These services include incident response, Longview Pro, the Linode Backup service, cPanel, additional dashboard metrics, and free site migrations. This robust, multi-homed monitoring system distributes monitoring checks to ensure that your servers remain online and available at all times. Linode Managed can monitor any service or software stack reachable over TCP or HTTP. Once you add a service to Linode Managed, Linode will monitor it for connectivity, response, and total request time. This guide shows you how to start monitoring your services with Linode Managed.
 
 {{< note >}}
-Linode Managed applies to all Linodes on an account **Except** for nodes created and implemented by the [Linode Kubernetes Engine (LKE)](https://www.linode.com/products/kubernetes/). All eligible nodes are billed at a rate of $100 per month for each Linode. If this service is not needed for all Linodes, a second account can be created to separate Managed Linodes from non-Managed Linodes. If needed, Linodes can be transferred by [opening up a Support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) from both accounts and requesting the transfer. You can also contact the support team to install cPanel, add a license, or transfer a license, and other services such as backup, and migration.
+Linode Managed applies to all Linodes on an account **Except** for nodes created and implemented by the [Linode Kubernetes Engine (LKE)](https://www.linode.com/products/kubernetes/). All eligible nodes are billed at a rate of $100 per month for each Linode. If this service is not needed for all Linodes, a second account can be created to separate Managed Linodes from non-Managed Linodes. If needed, Linodes can be transferred by [opening up a Support ticket](/docs/guides/support/#contacting-linode-support) from both accounts and requesting the transfer. You can also contact the support team to install cPanel, add a license, or transfer a license, and other services such as backup, and migration.
 {{< /note >}}
 
 ## Benefits
@@ -86,7 +86,7 @@ Linode generates and assigns a unique public/private keypair to your account's M
 
 1.  Linode's public key is displayed under this tab, and a **Copy to clipboard** button will appear next to it. Click on this button to copy it.
 
-    [![Linode Managed Public SSH Key](managed-public-ssh-key.png "Linode Managed Public SSH Key")](managed-public-ssh-key.png)
+    ![Linode Managed Public SSH Key](managed-public-ssh-key.png)
 
 1.  After you've copied the key, you can install it on your server, either [under your root user](#installing-as-root) or [under another user](#installing-as-another-user). If you install it under another user, be sure to also update your [Linode's Managed SSH settings](#specifying-linode-ssh-settings) to reflect that user.
 
@@ -106,7 +106,7 @@ To install Linode's SSH key for the `root` user:
 If you followed the instructions in the [Securing Your Server](/docs/securing-your-server) guide to disable root login via SSH, you will need to reenable that feature to install the public key for the `root` user. Follow [these instructions](/docs/guides/set-up-and-secure/#ssh-daemon-options) to edit the `sshd_config` file and reenable root login via SSH.
 {{< /note >}}
 
-1.  Open the `authorized_keys` file in a text editor (for example, [nano](/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/)):
+1.  Open the `authorized_keys` file in a text editor (for example, [nano](/docs/guides/use-nano-to-edit-files-in-linux/)):
 
         nano /root/.ssh/authorized_keys
 
@@ -120,7 +120,7 @@ The `/root/.ssh/` directory may not exist yet. If this is the case, you must cre
 
 1.  Save the changes to the `authorized_keys` file and exit your text editor. In the `nano` editor, enter **Control-X**, and then **Y** to confirm.
 
-1. You have successfully added Linode's public key for the `root` user. If you have a firewall installed, you may need to allow access to our infrastructure (see [Configuring Firewall Rules](#configuring-firewall-rules)). To test, you can [open a support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) to have the Linode Support team confirm that they have access. Repeat this process on every Linode you want to monitor with Linode Managed.
+1. You have successfully added Linode's public key for the `root` user. If you have a firewall installed, you may need to allow access to our infrastructure (see [Configuring Firewall Rules](#configuring-firewall-rules)). To test, you can [open a support ticket](/docs/guides/support/#contacting-linode-support) to have the Linode Support team confirm that they have access. Repeat this process on every Linode you want to monitor with Linode Managed.
 
 #### Installing as Another User
 
@@ -133,7 +133,7 @@ To install Linode's SSH key as a non-root user:
 1.  If you haven't already created a non-root user on your server, you should do so now. See [Adding a New User](/docs/guides/set-up-and-secure/#add-a-limited-user-account) for instructions.
 
     {{< disclosure-note "Important: providing sudo access" >}}
-After logging into your Linode as a non-root user, the Linode Support team will generally need [sudo privileges](/docs/tools-reference/linux-users-and-groups/#understanding-sudo) to run troubleshooting commands, so you should make sure to give your user sudo privileges.
+After logging into your Linode as a non-root user, the Linode Support team will generally need [sudo privileges](/docs/guides/linux-users-and-groups/#understanding-sudo) to run troubleshooting commands, so you should make sure to give your user sudo privileges.
 
 The [Adding a New User](/docs/guides/set-up-and-secure/#add-a-limited-user-account) guide shows how to add your user to the `sudo` group (or `wheel` or `admin` group, depending on your distribution), which will grant this privilege. When your user is in this group, your system will ask for the user's password whenever a sudo command is run. Because of this, you will also need to tell us your Linux user and password by following the [Adding Service Credentials](#adding-service-credentials) section.
 
@@ -158,7 +158,7 @@ example_user ALL=(ALL) NOPASSWD: ALL
 1.  Type `:wq` and press **Enter** to save and quit the file.
 {{< /disclosure-note >}}
 
-1.  Open the `authorized_keys` file for your user in a text editor (for example, [nano](/docs/quick-answers/linux/use-nano-to-edit-files-in-linux/)):
+1.  Open the `authorized_keys` file for your user in a text editor (for example, [nano](/docs/guides/use-nano-to-edit-files-in-linux/)):
 
         nano /home/example_user/.ssh/authorized_keys
 
@@ -172,7 +172,7 @@ The `/home/example_user/.ssh/` directory may not exist yet. If so, create it wit
 
 1.  Save the changes to the `authorized_keys` file and exit your text editor. In the `nano` editor, enter **Control-X**, and then **Y** to confirm.
 
-1. You have successfully added Linode's public key for the `root` user. If you have a firewall installed, you may need to allow access to our infrastructure (see [Configuring Firewall Rules](#configuring-firewall-rules)). To test, you can [open a support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) to have the Linode Support team confirm that they have access. Repeat this process on every Linode you want to monitor with Linode Managed.
+1. You have successfully added Linode's public key for the `root` user. If you have a firewall installed, you may need to allow access to our infrastructure (see [Configuring Firewall Rules](#configuring-firewall-rules)). To test, you can [open a support ticket](/docs/guides/support/#contacting-linode-support) to have the Linode Support team confirm that they have access. Repeat this process on every Linode you want to monitor with Linode Managed.
 
 ### Specifying Linode SSH Settings
 
@@ -196,11 +196,11 @@ To access these settings:
 
 1.  Select the **SSH Access** tab. Your Linodes and their Managed SSH settings will appear in the table below:
 
-    [![Linode Managed SSH Settings](managed-ssh-settings.png "Linode Managed SSH Settings")](managed-ssh-settings.png)
+    ![Linode Managed SSH Settings](managed-ssh-settings.png)
 
 1.  To enable or disable Managed SSH access for a Linode, click on the **Enable** or **Disable** option that corresponds to the Linode you'd like to interact with.
 
-1.  To change other Managed SSH settings for a Linode, click on the the **Edit** option. A form appears with fields for each setting.
+1.  To change other Managed SSH settings for a Linode, click on the **Edit** option. A form appears with fields for each setting.
 
 ### Adding Service Credentials
 
@@ -218,7 +218,7 @@ To add a credential:
 
 1.  Select the **Credentials** tab, then click on the **Add Credentials** link under this tab.
 
-    [![Linode Managed Credentials](managed-credentials.png "Linode Managed Credentials")](managed-credentials.png)
+    ![Linode Managed Credentials](managed-credentials.png)
 
     {{< note >}}
 The table that lists your uploaded credentials will feature a **Last Decrypted** column. This column will show the most recent date/time that a member of Linode Support viewed each credential.
@@ -246,7 +246,7 @@ To add a contact to Linode Managed:
 
 1.  Select the **Contacts** tab, then click on the **Add a Contact** link under this tab.
 
-    [![Linode Managed Contacts](managed-contacts.png "Linode Managed Contacts")](managed-contacts.png)
+    ![Linode Managed Contacts](managed-contacts.png)
 
 1.  A form for your new contact will appear. The form accepts a primary and secondary phone number, which Linode Support may call if they need additional information to troubleshoot an issue on your servers.
 
@@ -356,6 +356,6 @@ Allow the following hostnames and IPs so that our infrastructure can perform the
 
 Each Linode Compute Instance on a Managed account is eligible to receive a [cPanel](https://cpanel.net/) license at no additional charge.
 
-1. **Installing cPanel:** The easiest method to quickly get cPanel up and running is to deploy a new Linode using the [cPanel Marketplace App](https://www.linode.com/marketplace/apps/cpanel/cpanel/). Review the [How to Deploy cPanel with Marketplace Apps](/docs/guides/how-to-deploy-cpanel-with-marketplace-apps/) guide for additional instructions. If the cPanel Marketplace App does not support your desired Linux distribution, you can also follow the instructions within the [Install cPanel on CentOS](/docs/guides/install-cpanel-on-centos/) guide or the [Installation Guide](https://docs.cpanel.net/installation-guide/) on cPanel's documentation site. At this time, cPanel fully supports the following Linux distributions: CentOS 7, CentOS 8, AlmaLinux 8, Rocky Linux 8, and Cloud Linux. CentOS 8 is not recommended as it is due to reach end of life on December 31st 2021 (see the [CentOS 8 End-of-Life](https://www.linode.com/blog/linux/centos-8-end-of-life-linode-distributions/) blog post).
+1. **Installing cPanel:** The easiest method to quickly get cPanel up and running is to deploy a new Linode using the [cPanel Marketplace App](https://www.linode.com/marketplace/apps/cpanel/cpanel/). Review the [How to Deploy cPanel with Marketplace Apps](/docs/products/tools/marketplace/guides/cpanel/) guide for additional instructions. If the cPanel Marketplace App does not support your desired Linux distribution, you can also follow the instructions within the [Install cPanel on CentOS](/docs/guides/install-cpanel-on-centos/) guide or the [Installation Guide](https://docs.cpanel.net/installation-guide/) on cPanel's documentation site. At this time, cPanel fully supports the following Linux distributions: CentOS 7, CentOS 8, AlmaLinux 8, Rocky Linux 8, and Cloud Linux. CentOS 8 is not recommended as it is due to reach end of life on December 31st 2021 (see the [CentOS 8 End-of-Life](https://www.linode.com/blog/linux/centos-8-end-of-life-linode-distributions/) blog post).
 
 1. **Obtaining a License:** Contact the Support team to obtain a cPanel license for your Linode. If you do not subscribe to Linode Managed, you will need to obtain your license directly from cPanel. cPanel is typically licensed by the number of accounts within the cPanel installation, each account typically corresponding to a single website or group of similar websites. The license we provide will automatically scale based on the number of cPanel accounts you've configured.

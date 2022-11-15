@@ -90,6 +90,6 @@ You can boil this decision down by answering a simple question. Decide whether c
 
 The type of cloud strategy that you use is a decision to make upfront. It's important to understand that you can, at any time, switch routes. If you already have a multicloud environment, you can layer on a private cloud and turn the multi to a hybrid cloud deployment. Cloud host providers like Linode make adopting either as simple as signing up for your account, deploying your services, and then bridging those together with your other cloud deployments.
 
-There's plenty of [documentation](https://www.linode.com/docs/) to help you make this a reality.
+There's plenty of [documentation](/docs/) to help you make this a reality.
 
 If you find the multicloud costs too much, or that it does not give you the control or security your company demands, you're just a private cloud deployment away from solving that problem.

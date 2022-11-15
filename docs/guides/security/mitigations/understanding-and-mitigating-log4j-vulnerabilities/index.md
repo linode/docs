@@ -58,6 +58,6 @@ The following commands may also be used towards manually identifying log4j packa
 
 If log4j is detected on your system, mitigation can be performed by immediately installing the [Latest Software Version](https://logging.apache.org/log4j/2.x/download.html) which will include the latest available software patches. Installing `log4j 2.16.0` for example will completely disables JNDI by default and removes support for Message Lookups to apply mitigation. If patching your system is not possible by updating your version of log4j, then users should follow CISA's [Recommended Workarounds](https://www.cisa.gov/uscert/apache-log4j-vulnerability-guidance) with the understanding that a full log4j software version update is recommended.
 
-If you believe a compromise has occurred, we recommend following the steps in our guide for [Recovering From a System Compromise](https://www.linode.com/docs/guides/recovering-from-a-system-compromise/).
+If you believe a compromise has occurred, we recommend following the steps in our guide for [Recovering From a System Compromise](/docs/guides/recovering-from-a-system-compromise/).
 
 As log4j is, at the time of this writing, still a developing issue, it is recommended that users continue to regularly monitor the situation from both CISA's [Guidance Page](https://www.cisa.gov/uscert/apache-log4j-vulnerability-guidance) and [Apache's log4j Vulnerabilities Page](https://logging.apache.org/log4j/2.x/security.html)

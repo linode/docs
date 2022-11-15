@@ -27,13 +27,13 @@ Chef is an automation platform that "turns infrastructure into code," allowing u
 
 Chef is comprised of a Chef server, one or more workstations, and a number of nodes that are managed by the chef-client installed on each node.
 
-[![chef_graph-small.png](chef-graph-small.png)](chef_graph.png)
+![chef-graph.png](chef-graph.png)
 
 
 This guide will show users how to create and configure a Chef server, a virtual workstation, and how to bootstrap a node to run the chef-client, all on individual Linodes.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites

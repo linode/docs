@@ -8,7 +8,7 @@ description: "How to reset the kubeconfig for Linode Kubernetes Engine (LKE) clu
 
 ### Reset Cluster Kubeconfig
 
-1. To reset the cluster kubeconfig access the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
+1. To reset the cluster kubeconfig access the [cluster's details page](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
 
 1. Select the **Reset** button under the **kubeconfig** sub-category.
 

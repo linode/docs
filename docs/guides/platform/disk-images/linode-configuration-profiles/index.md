@@ -17,7 +17,7 @@ h1_title: "Managing Configuration Profiles on a Linode"
 enable_h1: true
 ---
 
-A **configuration profile** functions as a boot loader for a Linode. It controls general boot settings, including the disk the Linode will boot from, the disks that will be mounted, the kernel that will be used, and the network interfaces on the Linode. Multiple configuration profiles can be created, each one booting from different disks with different settings. This can allow you to try out new Linux distributions without paying for additional Linodes (see [Deploy an Image to a Disk on an Existing Linode](/docs/guides/deploy-an-image-to-a-linode/)) or to create custom software testing environments.
+A **configuration profile** functions as a boot loader for a Linode. It controls general boot settings, including the disk the Linode will boot from, the disks that will be mounted, the kernel that will be used, and the network interfaces on the Linode. Multiple configuration profiles can be created, each one booting from different disks with different settings. This can allow you to try out new Linux distributions without paying for additional Linodes (see [Deploy an Image to a Disk on an Existing Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/)) or to create custom software testing environments.
 
 ## Managing Configuration Profiles
 
@@ -43,13 +43,13 @@ When adding or editing a configuration profile on a Linode, the following settin
 - **Virtual Machine:** VM mode determines whether devices inside your virtual machine are *paravirtualized* or *fully virtualized*. Unless there is a specific need to run devices in full virtualization, select *paravirtualization*. This is required for features like Block Storage.
 
 - **Boot Settings:**
-    - **Kernel:** Select the version of the Linux kernel that will be used. The options include Grub 2 (for upstream or custom-compiled kernels), a specific Linode supplied kernel, or Direct Disk. For most distributions, its recommended to set this option to *Grub 2*. See [How to Change your Linode's Kernel](/docs/guides/how-to-change-your-linodes-kernel/).
+    - **Kernel:** Select the version of the Linux kernel that will be used. The options include Grub 2 (for upstream or custom-compiled kernels), a specific Linode supplied kernel, or Direct Disk. For most distributions, its recommended to set this option to *Grub 2*. See [How to Change your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/).
     - **Run Level:** Adjust the [run level](https://en.wikipedia.org/wiki/Runlevel) of the OS to allow for advanced diagnostics. Recommended setting: *Run Default Level*.
     - **Memory Limit:** Limits the amount of memory that the Linode can use. Recommended setting: *Do not set any limits on memory usage*.
 
 - **Block Device Assignment:** Assigns the Linode's disks to the disk devices in Linux, making them accessible once the Linode has booted up. Up to 8 disks can be assigned (`/dev/sda` through `/dev/sdg`), though it's common to only use the first two devices: `/dev/sda` as the main disk and `/dev/sdb` as the swap disk. The **Root Device** is used to select the primary disk device (commonly `/dev/sda`), though another predefined device or custom device path can be used.
 
-- **Network Interfaces:**  Assigns either a VLAN or the Public Internet to a network interface in Linux. There are a total of 3 available network interfaces: `eth0`, `eth1`, and `eth2`. If no VLANs are in use, the recommended setting is _Public Internet_ for `eth0` and _None_ for all other interfaces. See [Getting Started with VLANs](/docs/guides/getting-started-with-vlans/).
+- **Network Interfaces:**  Assigns either a VLAN or the Public Internet to a network interface in Linux. There are a total of 3 available network interfaces: `eth0`, `eth1`, and `eth2`. If no VLANs are in use, the recommended setting is _Public Internet_ for `eth0` and _None_ for all other interfaces. See [Getting Started with VLANs](/docs/products/networking/vlans/get-started/).
 
 - **Filesystem / Boot Helpers:** Various helper tasks that run when the Linode is booted up. Recommended setting for all helpers: _Enabled_.
     - **Enable distro helper:** Helps maintain correct inittab/upstart console device.
@@ -120,7 +120,7 @@ When a Linode is powered on or rebooted, it uses the settings stored within a co
 
     ![Viewing the boot history within the Activity Feed](activity-feed-booted-configuration-profile.png)
 
-    Sometimes the boot or reboot event doesn't list a configuration profile, such as when the [Lassie Shutdown Watchdog](/docs/guides/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) initiates the event. In this case, look at the most recent reboot or boot event which does include the configuration profile that was used.
+    Sometimes the boot or reboot event doesn't list a configuration profile, such as when the [Lassie Shutdown Watchdog](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog) initiates the event. In this case, look at the most recent reboot or boot event which does include the configuration profile that was used.
 
 ## Cloning a Configuration Profile and the Attached Disks
 
