@@ -1,5 +1,5 @@
 {{- $index := slice -}}
-{{- $pages := where .Site.Pages "Type" "not in"  (slice "page" "json" "api" "authors" ) -}}
+{{- $pages := where .Site.Pages "Type" "not in"  (slice "page" "json" "api" "authors" "releasenotes" ) -}}
 {{- range $i, $p := $pages -}}
 {{- $shouldAdd := true }}
 {{- $img := partial "funcs/get-bundle-image.html" . -}}

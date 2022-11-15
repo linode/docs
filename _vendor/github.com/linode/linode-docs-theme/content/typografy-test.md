@@ -10,6 +10,13 @@ _build:
 
 ## Notes Shortcode
 
+### Note with Title
+
+{{< note title="This is a custom title" >}}
+Aliqua anim cillum Lorem anim esse cupidatat cillum commodo labore pariatur nisi ipsum et. Ex eiusmod do ullamco culpa. Nulla consequat sint labore dolor irure anim.
+{{< /note >}}
+
+
 ### Note with paragraphs
 
 {{< note >}}
