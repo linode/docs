@@ -580,12 +580,12 @@ This template includes common API logic and functions.
     {{ $schema := partial "openapi3/schema-to-map" (dict "dollar" $) }}
     {{ $body := "{}" }}
     {{ with $schema.Example }}
-      {{ $body = . | jsonify (dict "indent" "  ") }}
+      {{ $body = . | jsonify (dict "indent" "  " "noHTMLEscape" true) }}
     {{ else }}
       {{ $properties := $schema.Properties }}
       {{ with $properties }}
         {{ $v :=  partial "openapi3/get-response-example-properties" $properties }}
-        {{ $body = $v | jsonify (dict "indent" "  ") }}
+        {{ $body = $v | jsonify (dict "indent" "  " "noHTMLEscape" true) }}
       {{ end }}
     {{ end }}
     {{ $response.Set "body" $body }}
