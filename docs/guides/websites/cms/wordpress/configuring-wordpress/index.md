@@ -44,7 +44,7 @@ If you have not already installed WordPress on your server, you can follow one o
    If you are on CentOS and did not use the Remi repository to install PHP, you may have to replace `php74-php` with `php` throughout this guide.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Optional PHP Extensions

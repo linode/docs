@@ -36,7 +36,7 @@ Plex is a media server that allows you to stream video and audio content that yo
 
         sudo apt-get update && sudo apt-get upgrade
 
-2. You will need to create a Block Storage Volume and attach it to your Linode. You will format and mount the drive as part of this guide. This volume will be used to store your media, so you should pick a size that's appropriate for your media collection, though you can resize the volume later if you need more storage. For more on Block Storage, see our [How to Use Block Storage](/docs/guides/how-to-use-block-storage-with-your-linode/) guide.
+2. You will need to create a Block Storage Volume and attach it to your Linode. You will format and mount the drive as part of this guide. This volume will be used to store your media, so you should pick a size that's appropriate for your media collection, though you can resize the volume later if you need more storage. For more on Block Storage, see our [Block Storage Overview](/docs/products/storage/block-storage/) guide.
 
 3.  Plex requires an account to use their service. Visit the [Plex website](https://www.plex.tv/) to sign up for an account if you do not already have one.
 

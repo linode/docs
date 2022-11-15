@@ -19,12 +19,12 @@ contributor:
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
-- '[Beginners Guide to Terraform](https://www.linode.com/docs/applications/configuration-management/beginners-guide-to-terraform)'
-- '[Using Terraform to Provision Linode Environments](https://www.linode.com/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/)'
+- '[Beginners Guide to Terraform](/docs/guides/beginners-guide-to-terraform/)'
+- '[Using Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/)'
 aliases: ['/kubernetes/how-to-migrate-from-k8s-alpha-to-terraform/']
 ---
 
-The [k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) is deprecated. On **March 31st, 2020**, it will be **removed** from the [linode-cli](https://github.com/linode/linode-cli). After March 31, 2020, you will no longer be able to create or manage clusters created by the k8s-alpha CLI plugin, however, you will still be able to successfully manage your clusters using the [Kubernetes Terraform installer for Linode Instances](https://github.com/linode/terraform-linode-k8s).
+The [k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) is deprecated. On **March 31st, 2020**, it will be **removed** from the [linode-cli](https://github.com/linode/linode-cli). After March 31, 2020, you will no longer be able to create or manage clusters created by the k8s-alpha CLI plugin, however, you will still be able to successfully manage your clusters using the [Kubernetes Terraform installer for Linode Instances](https://github.com/linode/terraform-linode-k8s).
 
 ## In This Guide
 You will use the Kubernetes Terraform installer for Linode Instances to continue to manage and support clusters created using the k8s-alpha CLI plugin following the EOL date and beyond. You will learn how to:

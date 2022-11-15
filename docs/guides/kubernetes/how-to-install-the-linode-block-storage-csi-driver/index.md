@@ -30,7 +30,7 @@ This guide assumes you have a working Kubernetes cluster running on Linode. If y
 
 If you are not using LKE or the [Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2), the Kubernetes cluster will require the Block Storage CSI driver to be installed on the cluster in order to use Linode's Block Storage. If you need to set up an unmanaged Kubernetes cluster, you can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/getting-started-with-kubernetes/) guide to do this.
 
-The Linode Block Storage CSI driver **absolutely requires** that the Linode Cloud Controller Manager (CCM) is pre-installed and running on your cluster in order for the CSI to be installed. Follow the steps in our [CCM installation guide](https://www.linode.com/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/) before proceeding.
+The Linode Block Storage CSI driver **absolutely requires** that the Linode Cloud Controller Manager (CCM) is pre-installed and running on your cluster in order for the CSI to be installed. Follow the steps in our [CCM installation guide](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/) before proceeding.
 
 {{< note >}}
 The Block Storage CSI supports Kubernetes version 1.13 or higher. To check the version of Kubernetes you are running, you can issue the following command:
@@ -79,7 +79,7 @@ Once you have your API token, it's time to create your secret.
 
         read -p "Linode Region of Cluster: " LINODE_REGION
 
-    You can retrieve a full list of regions by using the [Linode CLI](/docs/guides/using-the-linode-cli/):
+    You can retrieve a full list of regions by using the [Linode CLI](/docs/products/tools/cli/get-started/):
 
         linode-cli regions list
 

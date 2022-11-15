@@ -27,20 +27,20 @@ Linode's Terraform provider supports [StackScripts](/docs/platform/stackscripts/
 In this guide you will learn how to use a Community StackScript to deploy WordPress on a Linode using Terraform.
 
 {{< caution >}}
-Following this guide will result in the creation of [billable Linode resources](/docs/platform/billing-and-support/billing-and-payments/#how-hourly-billing-works) on your account. To prevent continued billing for these resources, [remove them](#optional-destroy-the-linode-resources) from your account when you have completed the guide, if desired.
+Following this guide will result in the creation of billable Linode resources on your account. To prevent continued billing for these resources, remove them when you have completed the guide.
 {{< /caution >}}
 
 ## Before You Begin
 
-1.  Install Terraform on your computer by following the *Install Terraform* section of our [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide.
+1.  Install Terraform on your computer by following the *Install Terraform* section of our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide.
 
     {{< note >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
     {{</ note >}}
 
-1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain one.
+1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) guide to obtain one.
 
-1.  If you have not already, [assign Linode's name servers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain) to your domain at your domain name's registrar.
+1.  If you have not already, [assign Linode's name servers](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers) to your domain at your domain name's registrar.
 
 1.  Browse the existing [StackScripts Library](https://www.linode.com/stackscripts/) to familiarize yourself with common tasks you can complete with existing StackScripts.
 
@@ -255,10 +255,10 @@ resource "linode_domain_record" "my_wordpress_domain_apex_record" {
 {{</ file >}}
 
     {{< note >}}
-If you are not familiar with the Domain Name System (DNS), review the [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) guide.
+If you are not familiar with the Domain Name System (DNS), review the [DNS Records: An Introduction](/docs/guides/dns-overview/) guide.
 {{< /note >}}
 
-    The `linode_domain` resource creates a [domain zone](/docs/guides/dns-manager/#create-and-manage-domains) for your domain.
+    The `linode_domain` resource creates a [domain zone](/docs/products/networking/dns-manager/guides/create-domain/) for your domain.
 
     Each `linode_domain_record` resource retrieves the `linode_domain` resource's ID and assigns it to that record's `domain_id` argument. Each record's `target` argument retrieves the IP address from the Linode instance. Every `linode_instance` resource exposes [several attributes](https://www.terraform.io/docs/providers/linode/r/instance.html#attributes), including a Linode's IPv4 address.
 
@@ -373,7 +373,7 @@ It is helpful to reference Terraform's [Linode provider](https://www.terraform.i
 
     -   `domain` should be replaced with your WordPress site's domain address.
 
-    -  `soa_email` should be the email address you would like to use for your [Start of Authority](/docs/guides/dns-records-an-introduction/#soa) email address.
+    -  `soa_email` should be the email address you would like to use for your [Start of Authority](/docs/guides/dns-overview/#soa) email address.
 
 ## Initialize, Plan, and Apply the Terraform Configuration
 

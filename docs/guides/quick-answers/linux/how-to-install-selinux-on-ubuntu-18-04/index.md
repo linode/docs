@@ -12,16 +12,16 @@ modified: 2021-04-15
 modified_by:
   name: Linode
 published: 2017-06-30
-title: How to Install SELinux on Ubuntu 18.04
-h1_title: Installing SELinux on Ubuntu 18.04
+title: "How to Install SELinux on Ubuntu 18.04"
+h1_title: "Install SELinux on Ubuntu 18.04"
+enable_h1: true
 relations:
     platform:
         key: how-to-install-selinux
         keywords:
             - distribution: Ubuntu 18.04
+image: selinux-ubuntu-title.jpg
 ---
-
-![How to Install SELinux on Ubuntu](selinux-ubuntu-title.jpg "How to Install SELinux on Ubuntu title graphic")
 
 Ubuntu has a Mandatory Access Control (MAC) system similar to [SELinux](https://en.wikipedia.org/wiki/Security-Enhanced_Linux), named [AppArmor](https://wiki.ubuntu.com/AppArmor). Both SELinux and AppArmor provide a set of tools to isolate applications from each other to protect the host system from being compromised. AppArmor offers Ubuntu users mandatory access control options, without the perceived difficulty or learning curve that SELinux may have. However, if you are switching to Ubuntu 18.04, are already familiar with SELinux, and would like to use it to enforce security on your system, you can install it by following the steps in this guide.
 
@@ -37,7 +37,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         sudo apt update
 
     {{< note >}}
-The Linode kernel does not support SELinux by default. If the system is running a Linode kernel, you need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/platform/how-to-change-your-linodes-kernel/) for more steps. Once the kernel is set to the upstream kernel, continue with the steps in this guide.
+The Linode kernel does not support SELinux by default. If the system is running a Linode kernel, you need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once the kernel is set to the upstream kernel, continue with the steps in this guide.
     {{</ note >}}
 1. Install [MySQL/MariaDB on Ubuntu](/docs/guides/install-mysql-on-ubuntu-14-04)
 
@@ -280,4 +280,4 @@ If you wish to permanently disable SELinux even when the system reboots, make ch
 And, now if you restart the system, SELinux and its policies won’t be in place anymore.
 
 ## Next Steps
-After installing SELinux on the system, use the [Getting Started with SELinux Guide](/docs/security/getting-started-with-selinux/) to learn the basics of SELinux security.
+After installing SELinux on the system, use the [Getting Started with SELinux Guide](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) to learn the basics of SELinux security.

@@ -7,6 +7,7 @@ description: "Learn how to configure networking using the systemd-networkd utili
 keywords: ["static", "ip address", "systemd-networkd"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-27
+modified: 2022-06-17
 modified_by:
   name: Linode
 title: "Network Configuration Using systemd-networkd"
@@ -78,7 +79,7 @@ Address=192.0.2.123/24
 
 1. Disable Network Helper on the Compute Instance so that it doesn't overwrite any of your changes on the next system reboot. For instructions, see the [Network Helper](/docs/guides/network-helper/#single-per-linode) guide. This guide covers disabling Network Helper *globally* (for all Compute Instances on your account) or just for a single instance.
 
-1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/). You may want to consider using Lish to avoid getting locked out in the case of a configuration error.
+1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/). You may want to consider using Lish to avoid getting locked out in the case of a configuration error.
 
 1. Perform any necessary configuration steps as outlined in the workflows below. You can edit your network configuration file using a text editor like [nano](/docs/guides/use-nano-to-edit-files-in-linux/) or [vim](/docs/guides/what-is-vi/).
 
@@ -86,7 +87,7 @@ Address=192.0.2.123/24
 
 1.  Once you've edited the configuration file to fit your needs, you need to apply the changes or reboot the Compute Instance. To apply your changes with systemd-networkd, restart the service:
 
-        sudo networkctl reload
+        sudo systemctl restart systemd-networkd
 
 ## Changing the Primary IPv4 Address
 

@@ -89,6 +89,8 @@ There may be files or folders in your project directory that you do not wish to 
 __doNotInclude__/
 {{< /file >}}
 
+To learn how to undo Git commit, see our guide [How to Undo a Git Commit: A Step-by-Step Guide](/docs/guides/how-to-undo-git-commit/).
+
 ### Basic Git Commands
 
 This table lists basic commands, a description, and an example of the command in use:
@@ -148,7 +150,7 @@ Now the `master` branch has the new search feature.
 
 This section provides some basic information on navigating remote Git repositories.
 
-To copy every file from a remote repository to your local system, use `git clone` followed by the remote repo's URL:
+To copy every file from a remote repository to your local system, use `git clone` followed by the remote repository's URL:
 
     git clone https://github.com/linode/docs.git
 
@@ -218,3 +220,4 @@ Git will grab the new code from the chosen remote repository branch and merge it
 {{< note >}}
 Sometimes two developers will edit the same section of a file at the same time and attempt to merge their changes into the codebase. When this happens, Git will throw an error called a *merge conflict*. Because Git will be unable to determine which set of changes is the correct set of changes, it will prompt you to fix the merge conflict before it moves forward with the merge.
 {{< /note >}}
+

@@ -17,7 +17,7 @@ deprecated: true
 
 FluxBB is a web application that powers discussion forums. It strives to be faster and more lightweight than other contenders in this space, and its developers strive for maximum stability and security. Thus, FluxBB is a viable option for those who need a web based discussion forum and require simplicity and stability without an expansive feature set.
 
-Before beginning with this guide we assume that you have completed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). To complete this guide, you must also install a web server. This guide will assume that you have completed the appropriate [LAMP guide](/docs/lamp-guides/) for your operating system.
+Before beginning with this guide we assume that you have completed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). To complete this guide, you must also install a web server. This guide will assume that you have completed the appropriate [LAMP guide](/docs/lamp-guides/) for your operating system.
 
 ## Installing Prerequisites
 

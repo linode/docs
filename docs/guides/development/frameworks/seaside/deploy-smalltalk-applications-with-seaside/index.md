@@ -150,7 +150,7 @@ Reload the web server configuration to create the virtual host:
 
     /etc/init.d/apache2 reload
 
-When building your application point, ensure all static content is served from URLs that begin with `http://static.example.com/` and the files are located at `/srv/www/static.example.com/public_html/`. You must create an [A Record](/docs/networking/dns/dns-records-an-introduction/#types-of-dns-records) that points to the domain of your Linode for `static.example.com` domain.
+When building your application point, ensure all static content is served from URLs that begin with `http://static.example.com/` and the files are located at `/srv/www/static.example.com/public_html/`. You must create an [A Record](/docs/guides/dns-overview/#types-of-dns-records) that points to the domain of your Linode for `static.example.com` domain.
 
 ### Configuring Apache to Proxy Dynamic Requests to Seaside
 

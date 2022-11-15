@@ -13,7 +13,7 @@ modified: 2011-06-08
 modified_by:
   name: Linode
 published: 2011-06-08
-title: 'Provide Authoritative DNS Services with NSD on Debian 6 (Squeeze)'
+title: 'Authoritative DNS Services with NSD on Debian 6'
 relations:
     platform:
         key: authoritative-dns-nsd
