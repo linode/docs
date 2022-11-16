@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18
 modified_by:
   name: Linode
-title: "How to Remove Untracked Files in Git | Linode"
-h1_title: "How to Remove Untracked Files in Git | Linode"
+title: "How to Remove Untracked Files in Git"
+h1_title: "How to Remove Untracked Files in Git"
 enable_h1: true
 contributor:
   name: Jeff Novotny
@@ -20,43 +20,45 @@ external_resources:
 - '[Git ignore documentation](https://git-scm.com/docs/gitignore)'
 ---
 
-During the development process, programmers and other computer Git users often wind up with many old and unwanted files. These might include prototypes, test data, and computer-generated files. Although these files do not necessarily cause problems, deleting them increases efficiency and improves organization. The `git clean` command is the fastest, safest, and easiest way to delete these files. This guide explains how to use Git to remove untracked files and provides many examples demonstrating how to use `git clean`.
+During the development process, programmers and other Git users often wind up with many old and unwanted files. These might include prototypes, test data, and computer-generated files. Although these files do not necessarily cause problems, deleting them increases efficiency and improves organization. The `git clean` command is the fastest, safest, and easiest way to delete these files. This guide explains how to use Git to remove untracked files and provides many examples demonstrating how to use `git clean`.
 
 ## Introduction to Untracked Files and Git
 
 Before using the `git clean` command, it is necessary to understand what an untracked file is and why untracked files matter. In every Git project, there are several types of files. One major distinction is between tracked and untracked files.
 
-*Tracked files* are files that have already been added to Git through the use of the `git add` command. After a file has been added to Git, Git is fully aware of it. It has knowledge of the file details and contents, and is able to restore this information on demand. Tracked files can be either modified or unmodified. A modified file can be staged, also using the `git add` command. So a tracked file might be in one of several states, but Git continues to monitor it.
+*Tracked files* have already been added to Git through the use of the `git add` command. After a file has been added to Git, Git is fully aware of it. It has knowledge of the file details and contents, and is able to restore this information on demand. Tracked files can be either modified or unmodified. A modified file can be staged, also using the `git add` command. So a tracked file might be in one of several states, but Git continues to monitor it.
 
-The other category of files are the *untracked files*, which have not yet been added to the repository. Git can determine these files exist, but it does not know anything else about them. It does not track their contents in its internal database. Because Git is not actively monitoring these files, it cannot take any action on them. For example, it cannot restore or recover the contents of these files. These files remain untracked until they are added to Git using the `git add` command.
+The other category of files are the *untracked files*, which have not yet been added to the repository. Git can determine that these files exist, but it does not know anything else about them. It does not track their contents in its internal database. Because Git is not actively monitoring these files, it cannot take any action on them. For example, it cannot restore or recover the contents of these files. These files remain untracked until they are added to Git using the `git add` command.
 
-One danger in having untracked files is that the information is not saved. In the event of a hard drive failure, or accidentally deletion or overwrite, any data is permanently lost. Because Git never stored the file, it cannot recover it.
+One danger of having untracked files is that the information is not saved. In the event of a hard drive failure, or accidental deletion or overwrite, any data is permanently lost. Because Git never stored the file, it cannot recover it.
 
 Sometimes, of course, files remain untracked because they were never intended to be added to the system. Some examples might include experimental changes, test data, discarded prototypes, build artifacts, and deprecated files. Some applications also dump a large number of auto-generated files into the working directory. It would be ill-advised to add them to Git.
 
 These files can certainly be left in an untracked state, and they do not usually cause any problems. However, there is some risk to keeping old and unnecessary untracked files around, due to the following reasons:
 
-- It is possible to accidentally `add` and `commit` them, especially when using the wildcard `*` symbol.
-- They clutter up a workspace and take up unnecessary hard drive space. This can lead to confusion when returning to a workspace later on. It might be difficult to remember what the files were used for and whether they are still important.
-- They appear in the output of commands such as `git status` as untracked files. This makes it more difficult to tell what files are truly important.
+-   It is possible to accidentally `add` and `commit` them, especially when using the wildcard `*` symbol.
+-   They clutter up a workspace and take up unnecessary hard drive space. This can lead to confusion when returning to a workspace later on. It might be difficult to remember what the files were used for and whether they are still important.
+-   They appear in the output of commands such as `git status` as untracked files. This makes it more difficult to tell what files are truly important.
 
 There are several alternatives to getting rid of these files. For instance, it is possible to simply delete them using the `rm` command. However, this can be time-consuming, and it is easy to accidentally delete the wrong file. Other alternatives like `git reset` have a wider scope and might also unintentionally roll back changes to tracked or committed files.
 
 Additionally, some files should not be tracked in Git, but they are still important, and should not be deleted. A good example is a `.cfg` file or build object files. In this case, the `.gitignore` file is used to tell Git to disregard this file. Any files matching an exclusion rule in `.gitignore` are not displayed in the output of `git status` and the various Git commands do not affect them.
 
-The `git clean` command is the easiest and more efficient method to remove untracked files in Git. This command is highly-targetted and easy to use, and does not have undesirable side effects. It leverages the contents of the `.gitignore` file and does not normally delete ignored files unless told to do so. However, it is still important to use this command with a high degree of caution. When a file is deleted, it is gone for good. Git cannot recover the contents.
+The `git clean` command is the easiest and most efficient method to remove untracked files in Git. This command is highly targeted, easy to use, and does not have undesirable side effects. It leverages the contents of the `.gitignore` file and does not delete ignored files unless specifically told to do so. However, it is still important to use this command with a high degree of caution. When a file is deleted, it is gone for good. Git cannot recover the contents.
 
-To summarize, all files in a Git repository should eventually be handled in one of the three following ways:
+To summarize, all files in a Git repository should eventually be handled in one of the following three ways:
 
-- They can be added to the repository using `git add`.
-- They can be added to the `.gitignore` file. This causes Git to ignore them.
-- They can be removed using some variant of the `git clean` command.
+-   They can be added to the repository using `git add`.
+-   They can be added to the `.gitignore` file, causing Git to ignore them.
+-   They can be removed using some variant of the `git clean` command.
 
 ## Before You Begin
 
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
+1.  It's also helpful to consult our guides on [Getting Started with Git](/docs/guides/how-to-configure-git/) and [How to Navigate the Linux Terminal and File System](/docs/guides/linux-navigation-commands/).
 
 1.  **Optional** Git must already be installed on the Linode before trying out the examples in this guide. The `git` package is often already pre-installed. To see if it is present, run the command `git --version`. If Git is already installed, this command displays the current version. If Git has not already been installed, use the command `sudo apt install git` to install it.
 
@@ -72,7 +74,9 @@ Try out the examples in this section using a local Git repository. If the Linode
 
 Without additional options, the command `git clean` does not do anything. One of the `-i`, `-n`, or `-f` options must normally be appended.
 
-    git clean
+```code
+git clean
+```
 
 {{< output >}}
 fatal: clean.requireForce defaults to true and neither -i, -n, nor -f given; refusing to clean
@@ -84,9 +88,11 @@ fatal: clean.requireForce defaults to true and neither -i, -n, nor -f given; ref
 Always use `git clean` with caution. This operation cannot be undone.
 {{< /caution >}}
 
-The following example demonstrates how `git clean -f` handles a combination of untracked and tracked but uncommitted files. Before the operation, `testfile1.txt` has been added but not committed. The two files `testfile2.txt` and `testfile3.txt` have not been added, so they are both still untracked in Git.
+The following example demonstrates how `git clean -f` handles a combination of untracked, and tracked but uncommitted files. Before the operation, `testfile1.txt` has been added but not committed. The two files `testfile2.txt` and `testfile3.txt` have not been added, so they are both still untracked in Git.
 
-    git status
+```code
+git status
+```
 
 {{< output >}}
 Changes to be committed:
@@ -99,7 +105,9 @@ testfile3.txt
 
 Run `git clean` using the `-f` option to delete the two untracked files.
 
-    git clean -f
+```code
+git clean -f
+```
 
 {{< output >}}
 Removing testfile2.txt
@@ -108,25 +116,34 @@ Removing testfile3.txt
 
 Use either the `git status` or `ls` command to verify the untracked files have been deleted. The `status` command confirms the tracked but uncommitted file has been left untouched. However, the untracked files are no longer there.
 
-    git status
+```code
+git status
+```
+
 {{< output >}}
 Changes to be committed:
 new file:   testfile1.txt
 {{< /output >}}
 
-`git clean -n` reduces the risks associated with the `clean` command. It lists all the files the command intends to delete, but does actually not delete them. It acts like a "test run" of the command and can be used to avoid accidental deletions.
+`git clean -n` reduces the risks associated with the `clean` command. It lists all the files the command intends to delete, but does not actually delete them. It acts like a "test run" of the command and can be used to avoid accidental deletions.
 
 Starting with the same configuration, the `git clean -n` command lists the files Git "would remove" in an actual operation.
 
-    git clean -n
+```code
+git clean -n
+```
+
 {{< output >}}
 Would remove testfile2.txt
 Would remove testfile3.txt
 {{< /output >}}
 
-Afterwards, the files are still listed in `git status`. They have not really been deleted.
+Afterwards, the files are still listed in `git status` as they have not really been deleted.
 
-    git status
+```code
+git status
+```
+
 {{< output >}}
 ...
 Untracked files:
@@ -138,7 +155,10 @@ The `git clean -e` option allows users to enter a specific exclude pattern or fi
 
 In the following example, there are two untracked files named `testfile4.md` and `testfile4.txt`.
 
-    git status
+```code
+git status
+```
+
 {{< output >}}
 ...
 Untracked files:
@@ -148,7 +168,10 @@ testfile4.txt
 
 To ignore `testfile4.txt` during the deletion process, append the option `-e testfile4.txt` to the `clean` command. The `-f` option is still required to force the remaining deletions.
 
-    git clean -f -e testfile4.txt
+```code
+git clean -f -e testfile4.txt
+```
+
 {{< output >}}
 Removing testfile4.md
 {{< /output >}}
@@ -163,7 +186,9 @@ testfile4.txt
 
 `git clean -d` is recursive and cleans both the current directory and any subdirectories.
 
-    git clean -f -d
+```code
+git clean -f -d
+```
 
 {{< output >}}
 Removing archive/testfile2.txt
@@ -172,7 +197,9 @@ Removing testfile4.txt
 
 It is also possible to specify a directory to limit the scope of the `git clean` operation. The command only applies to untracked files in this directory. The following example applies `git clean` to any files in the `example` directory.
 
-    git clean -f -d example
+```code
+git clean -f -d example
+```
 
 `git config` allows users to change the default `git clean` behavior. This permits `git clean` to delete untracked files without appending the `-f` option. It effectively makes `git clean` equivalent to `git clean -f`. To add this option to the configuration file , use the command `git config clean.requireForce false`. See the Git documentation for more details about [Git Clean](https://git-scm.com/docs/git-clean).
 
@@ -182,30 +209,33 @@ The `-q` option runs `git clean` in quiet mode. This means `git clean` does not 
 
 ### How to Remove Untracked files Using Git Clean in Interactive Mode
 
-The `-i` option is used to run `git clean` in interactive mode. It allows users to more precisely select the files to delete. This is a good choice for situations where some but not all of the untracked files should be deleted. It is also good for those who want to be extra cautious when running this command.
+The `-i` option is used to run `git clean` in interactive mode. It allows users to more precisely select the files to delete. This is a good choice for situations where some, but not all, of the untracked files should be deleted. It is also good for those who want to be extra cautious when running this command.
 
 The `-i` option displays a menu listing all available options. It also lists the files currently scheduled for deletion.
 
 To enter inactive mode, run the `git clean -i` command. Git displays the main menu for interactive mode.
 
-    git clean -i
+```code
+git clean -i
+```
 
 {{< output >}}
 Would remove the following items:
   testfile2.txt  testfile3.md   testfile3.txt
 *** Commands ***
-    1: clean                2: filter by pattern    3: select by numbers    4: ask each             5: quit                 6: help
+    1: clean                2: filter by pattern    3: select by numbers
+    4: ask each             5: quit                 6: help
 What now>
 {{< /output >}}
 
 The list of options are as follows.
 
-- **clean**: This deletes the untracked files in the list the same way `git clean -f` does.
-- **filter by pattern**: This option allows users to enter exclusionary patterns. `git clean` ignores untracked files with names matching any of these patterns. For instance, the filter pattern `*.txt` tells `git clean` not to delete any untracked files ending with the `.txt` extension.
-- **select by number**: This displays a numbered list of the untracked files. Users can use these numbers to select files for deletion.
-- **ask each**: This iterates through the list of untracked files one-by-one and allows the user to choose whether or not to delete each file.
-- **quit**
-- **help**
+-   **clean**: This deletes the untracked files in the list the same way `git clean -f` does.
+-   **filter by pattern**: This option allows users to enter exclusionary patterns. `git clean` ignores untracked files with names matching any of these patterns. For instance, the filter pattern `*.txt` tells `git clean` not to delete any untracked files ending with the `.txt` extension.
+-   **select by number**: This displays a numbered list of the untracked files. Users can use these numbers to select files for deletion.
+-   **ask each**: This iterates through the list of untracked files one-by-one and allows the user to choose whether or not to delete each file.
+-   **quit**
+-   **help**
 
 From the main menu, users can select one of the first four options to remove files, quit interactive mode, or display the help page.
 
@@ -217,7 +247,9 @@ To use the `filter by pattern` option, starting from the main menu, follow these
 
 1.  Select option `2` or enter the `f` key. Git lists all the untracked files and asks for a further response.
 
-        2
+    ```code
+    2
+    ```
 
     {{< output >}}
 testfile2.txt  testfile3.md   testfile3.txt
@@ -226,14 +258,16 @@ Input ignore patterns>>
 
 2.  Enter the pattern for Git to ignore. For example, to avoid deleting any Markdown files, enter the pattern `*.md`. The `*` character acts as a wild card. Any file matching this pattern is ignored while the user remains in interactive mode. Git removes the matching files from consideration and displays an updated list of eligible files.
 
-        *.md
+    ```code
+    *.md
+    ```
 
     {{< output >}}
 testfile2.txt  testfile3.txt
 Input ignore patterns>>
     {{< /output >}}
 
-3.  At this point, add any other patterns for Git to ignore. When all patterns have been entered, use the **RETURN** key to return to the main menu. Git then lists all files scheduled for deletion and waits for further input.
+3.  At this point, add any other patterns for Git to ignore. When all patterns have been entered, use the **ENTER** key to return to the main menu. Git then lists all files scheduled for deletion and waits for further input.
 
     {{< output >}}
 Would remove the following items:
@@ -245,32 +279,40 @@ What now>
 
 4.  To delete the list of files, enter `1` or `c`.
 
-        1
+    ```code
+    1
+    ```
 
     {{< output >}}
 Removing testfile2.txt
 Removing testfile3.txt
     {{< /output >}}
 
-Often it is easier to specify the files to delete from a numbered list. Enter `3` or `s` to access the `select by numbers` menu. This option allows users to specify individual files, a range of files, or a wildcard `*` specifying all files. Only the intentionally selected files are eligible for deletion.
+It is often easier to specify the files to delete from a numbered list. Enter `3` or `s` to access the `select by numbers` menu. This option allows users to specify individual files, a range of files, or a wildcard `*` specifying all files. Only the intentionally selected files are eligible for deletion.
 
 Starting from the main interactive menu, follow these instructions to select and delete files by number.
 
 1.  Enter option `3` or use the `s` key to enter the `select by numbers` menu.
 
-        3
+    ```code
+    3
+    ```
 
     {{< output >}}
-1: testfile2.txt    2: testfile3.md     3: testfile3.txt    4: testfile4.txt
+1: testfile2.txt    2: testfile3.md     3: testfile3.txt
+4: testfile4.txt
 Select items to delete>>
     {{< /output >}}
 
 2.  Enter the items to delete, separating them using commas. A range can also be used to select multiple sequential items, using the format `start-end`. The following response selects items `1`, `2`, and `4`, but not item `3`. Git highlights the selected files using a `*`.
 
-        1-2,4
+    ```code
+    1-2,4
+    ```
 
     {{< output >}}
-  * 1: testfile2.txt  * 2: testfile3.md     3: testfile3.txt  * 4: testfile4.txt
+* 1: testfile2.txt  * 2: testfile3.md     3: testfile3.txt
+* 4: testfile4.txt
 Select items to delete>>
     {{< /output >}}
 
@@ -280,13 +322,17 @@ Select items to delete>>
 Would remove the following items:
   testfile2.txt  testfile3.md   testfile4.txt
 *** Commands ***
-    1: clean                2: filter by pattern    3: select by numbers    4: ask each             5: quit                 6: help
+    1: clean                2: filter by pattern    3: select by numbers
+    4: ask each             5: quit                 6: help
 What now>
     {{< /output >}}
 
 4.  Enter `1` or `c` to remove the selected files.
 
-        1
+    ```code
+    1
+    ```
+
     {{< output >}}
 Removing testfile2.txt
 Removing testfile3.md
@@ -299,7 +345,9 @@ To use the `ask each` method, follow these steps.
 
 1.  Use the `4` or `a` key to access the `ask each` option.
 
-        4
+    ```code
+    4
+    ```
 
 2.  Git displays the first file and asks whether it should be deleted or not.
 
@@ -309,7 +357,9 @@ Remove testfile2.txt [y/N]?
 
 3.  Enter `y` to add the file to the deletion list.
 
-        y
+    ```code
+    y
+    ```
 
 4.  Enter `y` or `n` for each of the remaining files.
 
@@ -319,7 +369,7 @@ Remove testfile2.txt [y/N]?
 Removing testfile2.txt
     {{< /output >}}
 
-The remaining two options are self-explanatory. Option `5` (`q`) quits the interactive menu. Option `6` is the help menu. It can also be accessed using `h`. The help menu explains the various options.
+The remaining two options are self-explanatory. Option `5` (`q`) quits the interactive menu. Option `6` is the help menu, which can also be accessed using `h`. The help menu explains the various options.
 
 {{< output >}}
 clean               - start cleaning
@@ -333,11 +383,11 @@ help                - this screen
 
 ## How to Remove Ignored Files Using Git Clean
 
-The `.gitignore` file specifies which untracked files should be ignored. This is the best option for handling configuration or system files that should not be either checked in or deleted. Users can run the `ls` command and see these files, but they do not appear in the results of commands like `git status`. This file is often created automatically and is pre-loaded with a list of common extensions to ignore. See the documentation for more information on [Git Ignore](https://git-scm.com/docs/gitignore).
+The `.gitignore` file specifies which untracked files should be ignored. This is the best option for handling configuration or system files that should not be checked-in nor deleted. Users can run the `ls` command and see these files, but they do not appear in the results of commands like `git status`. This file is often created automatically and is pre-loaded with a list of common extensions to ignore. See the documentation for more information on [Git Ignore](https://git-scm.com/docs/gitignore).
 
 `git clean` typically ignores the files and filename patterns listed in the `.gitignore` file. This matches the behavior of other Git commands, which also ignore these files by default.
 
-However, this behavior can be overridden using either of the `-x` or `-X` options. These options tell Git not to follow the standard ignore rules. This means Git can consider any files covered by `.gitignore`. However, they differ in how they handle the other untracked files.
+However, this behavior can be overridden using either the `-x` or `-X` option. These options tell Git not to follow the standard ignore rules. This means Git can consider any files covered by `.gitignore`. However, they differ in how they handle other untracked files.
 
 {{< note >}}
 Git still respects any exclusion rules added with the `-e` option.
@@ -345,13 +395,15 @@ Git still respects any exclusion rules added with the `-e` option.
 
 In the following example, any untracked `*.c` files for the project show up in `git status`. However, the `*.o` files do not. This is because the `.gitignore` file includes the pattern `*.o`. This tells Git to ignore files having this extension.
 
-{{< file ".gitignore" aconf >}}
+```file {title=".gitignore" lang="aconf"}
 *.o
-{{< /file >}}
+```
 
 Ordinarily, `git clean` does not affect untracked files that match `.gitignore` patterns. Use `git clean -n` to confirm `testfile3.o` is not under consideration for deletion.
 
-    git clean -n
+```code
+git clean -n
+```
 
 {{< output >}}
 Would remove testfile3.c
@@ -361,7 +413,9 @@ Would remove testfile4.txt
 
 To remove only the ignored files, leaving other untracked files untouched, use `git clean -f -X`. The `-X` option removes the untracked `.o` files. Developers can use this option to force a perfectly clean build.
 
-    git clean -f -X
+```code
+git clean -f -X
+```
 
 Git only removes the untracked files that match a pattern in `.gitignore`.
 
@@ -371,7 +425,9 @@ Removing testfile3.o
 
 To remove all untracked files, whether they are ignored or not, use the command `git clean -f -x` instead. The `-x` option removes all untracked files, including ignored files.
 
-    git clean -f -x
+```code
+git clean -f -x
+```
 
 {{< output >}}
 Removing testfile3.c
