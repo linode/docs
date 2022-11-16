@@ -34,6 +34,7 @@ alex
 alexa
 alexey
 alfano
+Algolia
 alives
 allifs
 allmasquerade
@@ -125,6 +126,7 @@ awk
 aws
 awstats
 axibase
+Axios
 ayehu
 azc
 azlux
@@ -185,6 +187,7 @@ bootable
 bootloader
 bottlerocket
 bottomley
+bookmarkable
 bootup
 bootups
 boto
@@ -192,6 +195,8 @@ bounceback
 brackley
 bram
 brd
+breakpoint
+breakpoints
 brightbox
 browserify
 bs4
@@ -269,6 +274,7 @@ chrooted
 citad
 cjones
 clamav
+clearable
 clearsign
 clearspace
 cleartext
@@ -751,6 +757,8 @@ gradle
 grafana
 graphql
 Grav
+Gravatar
+Gravatars
 graylog
 graylog2
 greenbone
@@ -801,6 +809,7 @@ hiera
 highstate
 hilights
 hilmar
+Hively
 hl2
 hl2
 hmac
@@ -1067,6 +1076,7 @@ leiningen
 lelastic
 len
 lennart
+Lerna
 letsencrypt
 ld
 lf
@@ -1278,6 +1288,8 @@ mongorestore
 mongosh
 monit
 monitorix
+monorepo
+monorepos
 monospaced
 moolenaar
 morphisec
@@ -1415,6 +1427,7 @@ nonprivileged
 nonrecursive
 noscript
 nosync
+notistack
 nouveau
 novaclient
 novell
@@ -1592,6 +1605,7 @@ preprocessing
 preprocessors
 prerotate
 prerouting
+preselection
 prestashop
 prettifier
 prettifiers
@@ -1700,6 +1714,8 @@ redislabs
 redmin
 redmine
 redstone
+Redux
+Reduxed
 reenable
 reenabling
 refactorable
@@ -1768,6 +1784,7 @@ roundcube
 routable
 rpaf
 rpc
+rpcbind
 rpmforge
 rsa
 rspec
@@ -1828,6 +1845,8 @@ scp
 scrapy
 screenrc
 scrollable
+scrollbar
+scrollbars
 scriptfilename
 scrum2b
 sda
@@ -2032,6 +2051,8 @@ systeminfo
 systemname
 sysv
 sysvinit
+tabbable
+taggable
 tanium
 targ
 tasksel
@@ -2103,6 +2124,8 @@ toolchain
 toolchains
 toolset
 toolstrip
+tooltip
+tooltips
 towson
 trac
 traceroute
@@ -2132,9 +2155,11 @@ turtl
 tv
 tw
 twilio
+typecheck
 typeform
 txt
 txz
+typings
 tz
 tzurbaev
 uber
@@ -2165,6 +2190,8 @@ uncordoned
 unencrypted
 unexported
 unformatted
+ungroup
+ungrouped
 unicast
 unicode
 uninvoiced
@@ -2237,6 +2264,7 @@ verisign
 veritas
 vhost
 vhosts
+viewport
 vigenere
 vimrc
 vinagre
