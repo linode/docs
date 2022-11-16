@@ -167,20 +167,17 @@ Now that you have installed the prerequisites, it’s time to create the ownClou
     CREATE DATABASE ownclouddb;
     ```
 
-
 1. Create a new user with the necessary privileges, including a strong and unique password. Be sure to substitute `PASSWORD` with your own password:
 
     ```command
     GRANT ALL ON ownclouddb.* TO 'ownclouduser'@'localhost' IDENTIFIED BY 'PASSWORD';
     ```
 
-
 1. Flush your database's privileges:
 
     ```command
     FLUSH PRIVILEGES;
     ```
-
 
 1. Finally, exit the database console:
 
