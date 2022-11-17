@@ -1,6 +1,6 @@
 {{- $id := .Anchor -}}
 {{- $level := .Level -}}
-{{ if eq .Page.Section "releasenotes" }}
+{{ if eq .Page.Section "release-notes" }}
 {{- $level = add $level 1 -}}
 {{- $slug := .Page.Slug | default .Page.Title  -}}
 {{- $id = printf "%s-%s" ($slug | anchorize) $id -}}
