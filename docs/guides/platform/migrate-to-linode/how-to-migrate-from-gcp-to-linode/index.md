@@ -360,7 +360,7 @@ You will be importing your GCP image onto a *raw* disk with the *direct disk* bo
 
 If you would like access to these features after completing your migration, ensure you complete the following steps:
 
-- Create a Linode with **twice the storage space** of your [original disk image](#inspect-your-gcp-instances-disks). You can always resize it down later. See the [How Linode Billing Works](/docs/guides/understanding-billing-and-payments/#how-hourly-billing-works) guide for details on how hourly billing works.
+- Create a Linode with **twice the storage space** of your [original disk image](#inspect-your-gcp-instances-disks). You can always resize it down later. See the [Billing Overview](/docs/products/platform/billing/#understand-how-billing-works) guide for details on how hourly billing works.
 
 - Follow the steps in the optional section [Transfer Disk to ext4](#optional-transfer-disk-to-ext4).
 {{</ note >}}

@@ -1,25 +1,25 @@
 ---
-slug: understanding-billing-and-payments
-author:
-  name: Linode
-  email: docs@linode.com
-description: "In this guide, you will learn how billing works at Linode, what payment methods are accepted, and other important billing related information."
+title: Billing
+description: "Learn how Linode makes billing simple and easy so you easily anticipate your cloud infrastructure costs"
+tab_group_main:
+    is_root: true
+    title: Overview
+    weight: 10
+cascade:
+    product_description: "Simple and predictable pricing makes it easy to anticipate your cloud infrastructure costs."
 keywords: ["billing", "payments"]
-aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/','/guides/how-linode-billing-works/','/billing-and-payments/','/platform/billing-and-support/billing-and-payments-classic-manager/','/platform/billing-and-support/billing-and-payments-new-manager/','/platform/billing-and-payments/','/platform/billing-and-support/billing-and-payments/',/guides/billing-and-payments/]
+aliases: ['/products/tools/billing/','/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/','/guides/how-linode-billing-works/','/billing-and-payments/','/platform/billing-and-support/billing-and-payments-classic-manager/','/platform/billing-and-support/billing-and-payments-new-manager/','/platform/billing-and-payments/','/platform/billing-and-support/billing-and-payments/',/guides/billing-and-payments/]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-08-09
+published: 2019-10-25
+modified: 2022-11-17
 modified_by:
   name: Linode
-published: 2019-10-25
-title: "Understanding Billing and Payments on the Linode Platform"
-h1_title: "Understanding Billing and Payments"
-enable_h1: true
 tags: ["linode platform"]
 ---
 
 Linode strives to provide transparent and uncomplicated pricing structures and billing policies. As a supplement to our [Pricing](https://www.linode.com/pricing/) page, read through this guide to understand how we bill for services and how you can pay for these services. For instructions on how to manage your billing in the Cloud Manager, see the [Manage Billing in Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/) guide. If you have a question that isn't answered in either of these guides, don't hesitate to [contact Support](https://www.linode.com/support/).
 
-## Billing
+## Understand How Billing Works
 
 Linode uses a hybrid hourly billing model that is simple and flexible. It enables you to continuously add, modify, and remove services throughout the month. After the month is over, you receive an invoice for *the hourly usage of each service **up to the monthly cap***. Here are some important billing considerations:
 
@@ -31,7 +31,7 @@ Linode uses a hybrid hourly billing model that is simple and flexible. It enable
 
 If your services stay the same month over month, your bill remains predictable. You are never billed more than the monthly rate for each service, excluding [network transfer overages](/docs/guides/network-transfer/). If you use a service for just part of the month, hourly billing enables you to only be charged for the time the service is present on the account.
 
-\*Review the [Access Billing Information](/docs/products/platform/billing/guides/access-billing/) guide to monitor your account balance and accrued charges throughout the month.
+\*Review the [Viewing Current Balance](/docs/products/platform/billing/guides/access-billing/) section of the Manage Billing in Cloud Manager guide to monitor your account balance and accrued charges throughout the month.
 
 ### Example Billing Scenarios
 
@@ -55,27 +55,11 @@ You may receive a mid-month bill from Linode if you reach a certain threshold of
 
 ### Will I Be Billed For Powered Off or Unused Services?
 
-**Charges will accrue for any service present on an account, even if it is powered off or otherwise not actively being used.**  This includes Linode Compute Instances that have been powered off as the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service](/docs/products/platform/billing/guides/stop-billing/) from your account.
+**Charges will accrue for any service present on an account, even if it is powered off or otherwise not actively being used.**  This includes Linode Compute Instances that have been powered off as the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service](/docs/products/platform/billing/guides/stop-billing/s) from your account.
 
 ## Payments
 
 When an invoice is generated on the first of the month (or mid-month), Linode automatically attempts to charge the account's default payment method. In addition to these automatic recurring payments, you can make one-time payments to add funds to your account, which will then be used to pay future invoices.
-
-### Payment Methods
-
-- **Credit card:** Pay using all popular credit (and debit) cards, including those issued by Visa, MasterCard, Discover, American Express, and UnionPay.
-
-- **Google Pay:** Pay using a credit card, debit card, or PayPal through your Google Pay account. Paying with your Google Pay balance or any associated bank accounts are not supported at this time.
-
-    {{< note >}}
-To add a PayPal account to your Google Pay account, you currently must do so through the [Google Play Store](https://play.google.com/store/paymentmethods). PayPal cannot currently be added through the Google Pay website or mobile apps. When adding PayPal through Google Pay, it appears as a Discover Card within the Cloud Manager and the Linode API.
-{{</ note >}}
-
-- **PayPal:** Pay using your PayPal balance, a credit (or debit) card, or bank account through your PayPal account.
-
-- **Check, ACH, or wire transfer:** Please [contact Support](https://www.linode.com/support/) if you wish to pay through one of these methods.
-
-See [Adding a New Payment Method](/docs/products/platform/billing/guides/payment-methods/#add-a-new-payment-method) for instructions on adding a new payment method to your account.
 
 ### Manual Payments
 
@@ -83,29 +67,4 @@ At any time, you can make a manual one-time payment to add funds to your account
 
 ### Refunds
 
-If you are unsatisfied with your service for any reason, you can [cancel your account](/docs/products/platform/account/guides/cancel-account/) within the first seven days and request a full refund. You are entitled to receive a refund of any positive account balance not added through promotional credits. To request this refund, simply add a note to the cancellation form. When cancelling an account after the first seven days, there is a $5 processing fee. Only payments made within the last 180 days are eligible.
-
-## Tax Information
-
-Review our [Tax Information](/docs/guides/tax-information/) guide for information about which taxes Linode may charge.
-
-## Referral Program
-
-When you refer a new user to Linode through our referral program, both you and the new user can receive a promotional credit. Here are the program details:
-
--  **A new user receives a $100 60-day credit** when they sign up through a referral link. Before the credit is applied, they must add a valid payment method to their account.
-
--  **The referrer receives a $25 non-expiring credit** once the new user has been active for 90-days and spends $25 or more on services (after their promotional credit has been used or has expired).
-
-To learn more about this program, visit the [Referral Program](https://www.linode.com/referral-program/) page on our website.
-
-### Find Your Referral Link
-
-To activate the referral program and obtain a referral link, you must spend at least $25 with Linode, not including any promotional credits added to your account. Once activated, your referral link (including your unique referral code) can be viewed within the Cloud Manager.
-
-1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1.  Select the **My Profile** link by clicking on your username at the top of the page.
-1.  Select the **Referrals** tab.
-1.  The referral code and URL are listed within this section.
-
-You can provide the referral link to friends and colleagues as well as post it to your website and social media.
+If you are unsatisfied with your service for any reason, you can [cancel your account](/docs/products/platform/accounts/guides/cancel-account/) within the first seven days and request a full refund. You are entitled to receive a refund of any positive account balance not added through promotional credits. To request this refund, simply add a note to the cancellation form. When cancelling an account after the first seven days, there is a $5 processing fee. Only payments made within the last 180 days are eligible.

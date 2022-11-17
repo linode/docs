@@ -488,7 +488,7 @@ To avoid being further billed for your Kubernetes cluster, tear down your cluste
 
 - If you created your Kubernetes cluster:
 
-    - using kubeadm, follow the [Managing Billing in the Cloud Manager > Removing Services](/docs/guides/manage-billing-in-cloud-manager/#removing-services) guide to remove your cluster's Linodes.
+    - using kubeadm, follow the [Managing Billing in the Cloud Manager > Removing Services](/docs/products/platform/billing/guides/stop-billing/) guide to remove your cluster's Linodes.
 
     - using the k8s-alpha CLI, issue the following command from your computer to delete the cluster:
 

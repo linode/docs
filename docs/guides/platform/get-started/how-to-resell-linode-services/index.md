@@ -35,7 +35,7 @@ There are a variety of reasons one might want to resell Linode services. One of 
 
 ## Referral Program
 
-As an alternative to reselling our services, you can participate in our referral program. See the [Referral Program](https://www.linode.com/referral-program/) page on our website or the [Referral Program](/docs/guides/understanding-billing-and-payments/#referral-program) section within our billing guide for more details.
+As an alternative to reselling our services, you can participate in our referral program. See the [Referral Program](https://www.linode.com/referral-program/) page on our website or the [Referral Program](/docs/products/platform/billing/guides/referral-program/) section within our billing guide for more details.
 
 Advertising your referral code to others is not the same as reselling Linode services. When someone else uses your referral code, they create an entirely separate Linode account with their own billing.
 
@@ -77,7 +77,7 @@ Yes. Please use the official [Linode logo assets](https://www.linode.com/logos).
 
 ### What Payment Methods are Available?
 
-Automatic payments can be made with a credit card. All Linode accounts are required to have a credit card on file. Manual PayPal payments can also be made, so you can add credit to your Linode account with PayPal. For more information on Linode's billing, review the [Billing and Payments](/docs/guides/understanding-billing-and-payments/#payment-methods) guide.
+Automatic payments can be made with a credit card. All Linode accounts are required to have a credit card on file. Manual PayPal payments can also be made, so you can add credit to your Linode account with PayPal. For more information on Linode's billing, review the [Payment Methods](/docs/products/platform/billing/guides/payment-methods/) guide.
 
 ### Does Linode Have a White-Label Interface?
 

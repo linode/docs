@@ -678,7 +678,7 @@ The final step in creating a highly available website or application is to load 
 For instructions on how to install this component, follow our guide on [Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/). Be sure to use the *private* IP addresses of your application servers when adding nodes to your backend.
 
 {{< note >}}
-NodeBalancers are an add-on service. Be aware that adding a NodeBalancer will create an additional monthly charge to your account. Please see our [Billing and Payments](/docs/guides/understanding-billing-and-payments/#additional-linode-services) guide for more information.
+NodeBalancers are an add-on service. Be aware that adding a NodeBalancer will create an additional monthly charge to your account. See [NodeBalancer Pricing](https://www.linode.com/pricing/#nodebalancers) guide for more information.
 {{< /note >}}
 
 ## WordPress (Optional)

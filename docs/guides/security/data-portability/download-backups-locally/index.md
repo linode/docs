@@ -35,7 +35,7 @@ The steps in this guide have been designed to minimize the potential costs assoc
 
 - Removing a Linode from your account also cancels the associated Backup service for that Linode.
 - A Linode's backups are deleted when a Linode is deleted.
-- If you choose to leave the Backups service enabled, or if you do not remove the additional Linode from your account, you will be automatically billed. If you only power the Linode off, [you will still be billed for it](/docs/guides/understanding-billing-and-payments/#if-my-linode-is-powered-off-will-i-be-billed).
+- If you choose to leave the Backups service enabled, or if you do not remove the additional Linode from your account, you will be automatically billed. If you only power the Linode off, [you will still be billed for it](/docs/products/platform/billing/#will-i-be-billed-for-powered-off-or-unused-services).
 
 ### Enable Backups and Take a Snapshot
 
@@ -54,4 +54,4 @@ These steps are the minimum required for the scope of this guide. Visit our [Bac
 
 ## Clean Up after Your Download
 
-After you've finished downloading your files or disks, you can optionally [delete the restored disks](/docs/guides/disks-and-storage/#deleting-a-disk). If you created a new Linode to perform the restore, consider [deleting the Linode](/docs/guides/understanding-billing-and-payments/#removing-services). As a reminder, billing for that Linode will continue automatically if you do not remove it. If you only power the Linode off, [you will still be billed for it](/docs/guides/understanding-billing-and-payments/#if-my-linode-is-powered-off-will-i-be-billed).
+After you've finished downloading your files or disks, you can optionally [delete the restored disks](/docs/guides/disks-and-storage/#deleting-a-disk). If you created a new Linode to perform the restore, consider [deleting the Linode](/docs/products/platform/billing/guides/stop-billing/). As a reminder, billing for that Linode will continue automatically if you do not remove it. If you only power the Linode off, [you will still be billed for it](/docs/products/platform/billing/#will-i-be-billed-for-powered-off-or-unused-services).
