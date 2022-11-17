@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: "Use Google Authenticator to enable two-factor authentication for SSH connections."
 keywords: ["two factor authentication", "ssh", "google authenticator",]
-aliases: ['/security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh','/security/authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh/','/security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh/']
+aliases: ['/security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh/','/security/authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh/','/security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh/']
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
