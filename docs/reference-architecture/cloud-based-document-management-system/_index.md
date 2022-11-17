@@ -18,7 +18,7 @@ This deployment is using the [Mayan Electronic Document Management System](https
 
 A [NodeBalancer](https://www.linode.com/docs/products/networking/nodebalancers/) is configured with the TCP protocol to pass traffic through to the backend servers for SSL/TLS termination, and with Proxy Protocol V1 so that NGINX can log the originating client IP addresses. Linode S3-compatible [Object Storage](https://www.linode.com/docs/products/storage/object-storage/) is the storage backend for Mayan EDNS documents, as well as for routine database backups.
 
-All nodes are secured with [Cloud Firewalls](https://www.linode.com/docs/products/networking/cloud-firewall/) for protection from the outside world, and communicate internally via private [VLAN](https://www.linode.com/docs/products/networking/vlans/). The application servers connect to the databases via a shared floating VLAN IP address, with [Keepalived](https://www.linode.com/docs/guides/ip-failover-keepalived/) to facilitate failover.
+All nodes are secured with [Cloud Firewalls](https://www.linode.com/docs/products/networking/cloud-firewall/) for protection from the outside world, and communicate internally via private [VLAN](https://www.linode.com/docs/products/networking/vlans/). The application servers connect to the databases via a shared floating VLAN IP address, with [Keepalived](https://www.linode.com/docs/guides/ip-failover-legacy-keepalived/) to facilitate failover.
 
 The PostgreSQL databases are implemented as an active-active cluster, using [Bucardo](https://bucardo.org/Bucardo/) for bi-directional replication. A backup script dumps the Mayan database, compresses the dump file, and then leverages [Rclone](https://rclone.org/) to upload the timestamped archive to the Object Storage bucket.
 
@@ -29,7 +29,7 @@ The PostgreSQL databases are implemented as an active-active cluster, using [Buc
 - [Mayan EDMS](https://mayan-edms.com/)
 - [PostgreSQL 14](https://www.postgresql.org/)
 - [Bucardo](https://bucardo.org/Bucardo/)
-- [Keepalived](https://www.linode.com/docs/guides/ip-failover-keepalived/)
+- [Keepalived](https://www.linode.com/docs/guides/ip-failover-legacy-keepalived/)
 - [Prometheus](https://prometheus.io/)
 - [Grafana](https://grafana.com/)
 - [NGINX](https://www.nginx.com/)

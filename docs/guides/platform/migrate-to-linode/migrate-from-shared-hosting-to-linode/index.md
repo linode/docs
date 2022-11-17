@@ -51,7 +51,7 @@ When changing servers, however, you want a shorter TTL to make sure that when yo
 
 4.  Adjust your TTL to its shortest setting. For example, 300 seconds is equal to 5 minutes, so that's a good choice if it's available.
 
-5.  Make sure you wait out the original TTL from Step 3 before actually moving your domain. In the meantime, you can continue through this guide to back up your data, deploy your Linode and upload your website. For more information on domain TTL, see our [DNS guide](/docs/guides/dns-manager/#add-dns-records).
+5.  Make sure you wait out the original TTL from Step 3 before actually moving your domain. In the meantime, you can continue through this guide to back up your data, deploy your Linode and upload your website. For more information on domain TTL, see our [DNS guide](/docs/products/networking/dns-manager/guides/manage-dns-records/).
 
 ## Back Up Your Website
 
@@ -110,7 +110,7 @@ Once you've installed all the underlying software for your Linode, you can uploa
 `example_user` should be the user on your Linode you want to log in as, and `example.com` should be replaced by your domain name.
 {{< /note >}}
 
-    If you have a database, you'll need to upload it to your Linode. If you're more comfortable using a control panel, you may want to [install phpMyAdmin](/docs/guides/install-mysql-phpmyadmin-ubuntu-14-04/) at this point. You can also [restore your database](/docs/databases/mysql/back-up-your-mysql-databases/#restoring-an-entire-dbms-from-backup) using the command line.
+    If you have a database, you'll need to upload it to your Linode. If you're more comfortable using a control panel, you may want to [install phpMyAdmin](/docs/guides/install-mysql-phpmyadmin-ubuntu-14-04/) at this point. You can also [restore your database](/docs/guides/mysqldump-backups/#restoring-an-entire-dbms-from-backup) using the command line.
 
 3.  Now check your website's IP address in your browser. Your website should be displayed.
 
@@ -126,7 +126,7 @@ A Linode can run both your web server and an [email server](/docs/guides/running
 
 The last step in your migration is to point your domain at your Linode's IP address. If you decided to shorten your TTL, make sure you've waited out the original time period.
 
-1.  Follow our instructions on [adding a domain zone](/docs/platform/manager/dns-manager-new-manager/#add-a-domain-zone) to create DNS records at Linode for your domain.
+1.  Follow our instructions on [adding a domain zone](/products/networking/dns-manager/guides/create-domain/) to create DNS records at Linode for your domain.
 
 2.  If you use a third-party email service, edit the default MX records.
 
@@ -142,7 +142,7 @@ The last step in your migration is to point your domain at your Linode's IP addr
 
 5.  Navigate to your domain in a web browser. It should now show the website being served from your Linode, rather than your old host. If you can't tell the difference, you can use the [DIG utility](/docs/guides/use-dig-to-perform-manual-dns-queries/). It should show the IP address for your Linode.
 
-6.  [Set reverse DNS](/docs/guides/configure-your-linode-for-reverse-dns/) for your domain.
+6.  [Set reverse DNS](/docs/guides/configure-rdns/) for your domain.
 
     {{< note >}}
 If you're having trouble seeing your site at the new IP address, you may need to try visiting it in a different browser, or in a private browsing session. Sometimes your browser will cache old DNS data, even if it has updated everywhere else.

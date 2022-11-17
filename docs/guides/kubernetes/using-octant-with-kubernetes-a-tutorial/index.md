@@ -44,7 +44,7 @@ This guide assumes familiarity with the Kubernetes concepts outlined in Linode's
 
 ## Before you Begin
 
-The examples in this guide have been tested on a cluster running with Linode with Linode's [CCM](/docs/kubernetes/kubernetes-reference/#linode-cloud-controller-manager) and [CSI](/docs/kubernetes/kubernetes-reference/#container-storage-interface) plugins installed. If you would like to install these examples as well, a cluster made with [k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) will meet these criteria.
+The examples in this guide have been tested on a cluster running with Linode with Linode's [CCM](/docs/guides/kubernetes-reference/#linode-cloud-controller-manager) and [CSI](/docs/guides/kubernetes-reference/#container-storage-interface) plugins installed. If you would like to install these examples as well, a cluster made with [k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) will meet these criteria.
 
 {{< caution >}}
 These examples will create billable services. To stop billing for these services after reading the guide, be sure to read the tear-down instructions at the end of each section. If you created a new cluster for this guide, you can remove the cluster's Nodes from the [Linode Cloud Manager](https://cloud.linode.com).

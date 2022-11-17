@@ -42,11 +42,11 @@ See the [Viewing IP Addresses](/docs/guides/managing-ip-addresses/#viewing-ip-ad
 
 ### Linux Terminal
 
-1. Using your terminal, SSH into the Linode whose IPv6 address you would like to find.
+1.  Using your terminal, SSH into the Linode whose IPv6 address you would like to find.
 
         ssh user@192.0.2.0
 
-1. Use the `ip` tool to find your Linode's IPv6 address:
+1.  Use the `ip` tool to find your Linode's IPv6 address:
 
         root@localhost:~# ip -6 address
         1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 state UNKNOWN qlen 1
@@ -87,8 +87,8 @@ An IPv6 pool is accessible from every Linode on your account within the assigned
 
 - `/116` **pool** *(4,096 addresses)*
 
-{{< note >}}
-The IPv6 `/116` prefix is not available in the Toronto, Atlanta, Sydney, or Mumbai data centers.
+    {{< caution >}}
+The IPv6 /116 prefix has been deprecated and is no longer available for new Compute Instances. If you have an existing Compute Instance with a /116 pool, please review the [Upcoming Changes Related to Network Infrastructure Upgrades](/docs/guides/network-infrastructure-upgrades/) to learn about changes that may affect your services.
 {{</ note >}}
 
 ## IPv6 Forwarding

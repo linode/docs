@@ -134,7 +134,7 @@ jobs:
     - name: Set up Hugo
       uses: peaceiris/actions-hugo@v2
       with:
-        hugo-version: '0.83.1'
+        hugo-version: '0.105.0'
     - name: Start Hugo server
       run: |
         # Start Hugo in background:

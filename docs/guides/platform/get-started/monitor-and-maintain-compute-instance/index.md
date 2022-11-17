@@ -80,7 +80,7 @@ Use the [logrotate guide](/docs/guides/use-logrotate-to-manage-log-files/) to ge
 
 It's important to keep an eye on the events recorded in your system logs. But unless you're the type of person who loves scanning through hundreds of lines of log entries, you won't want to open log files unless absolutely necessary. Fortunately, there's an easier way to learn about the most important system events fast. Logwatch is a customizable utility that can automatically parse system logs and email you detailed reports highlighting notable events.
 
-Use the [Logwatch guide](/docs/guides/monitor-systems-logwatch/) to get started.
+Use the [Logwatch guide](/docs/guides/logwatch-monitor-system-logs/) to get started.
 
 ## Update Software
 

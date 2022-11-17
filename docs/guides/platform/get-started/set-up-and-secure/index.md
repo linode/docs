@@ -18,7 +18,7 @@ h1_title: "Setting Up and Securing a Compute Instance"
 enable_h1: true
 ---
 
-After you have successfully created a Compute Instance, there are a few initial configuration steps you should perform within your new Linux system. This includes updating your system, setting the timezone, configuring a custom hostname, adding a limited user, hardening SSH to prevent unauthorized access, and configuring a firewall. These steps ensure your instance is update to date, secure, and ready for use.
+After you have successfully created a Compute Instance, there are a few initial configuration steps you should perform within your new Linux system. This includes updating your system, setting the timezone, configuring a custom hostname, adding a limited user, hardening SSH to prevent unauthorized access, and configuring a firewall. These steps ensure your instance is up to date, secure, and ready for use.
 
 {{<note>}}
 While this guide is optional, it walks you through best practices and covers important steps to secure your server. It is recommended that you follow these instructions when deploying a new Compute Instance. Some guides within our library assume that you have performed these steps, such as setting your hostname and updating your software.
@@ -50,9 +50,9 @@ Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Linodes** 
 
 ## Connect to the Instance
 
-Once the Compute Instance has been created and has finished booting up, you can connect to it. Connecting to your instance is usually done through the SSH (Secure Shell) protocol, though you can use the [Lish Console](/docs/guides/using-the-lish-console/) to bypass SSH and connect directly to your instance. The Lish Console can be accessed through a web browser (Weblish) or via SSH on the command line.
+Once the Compute Instance has been created and has finished booting up, you can connect to it. Connecting to your instance is usually done through the SSH (Secure Shell) protocol, though you can use the [Lish Console](/docs/guides/lish/) to bypass SSH and connect directly to your instance. The Lish Console can be accessed through a web browser (Weblish) or via SSH on the command line.
 
--   **Weblish (via the Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/guides/using-the-lish-console/#through-the-cloud-manager-weblish).
+-   **Weblish (via the Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/guides/lish/#through-the-cloud-manager-weblish).
 
 -   **SSH:** Copy the command from the *SSH Access* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the following, only with the IP address of your newly created instance.
 
@@ -62,7 +62,7 @@ Once the Compute Instance has been created and has finished booting up, you can 
     - **macOS:** The *Terminal* application is pre-installed on macOS. See [Connecting to a Remote Server Over SSH on a Mac](/docs/guides/connect-to-server-over-ssh-on-mac/).
     - **Linux:** You can use a terminal window, regardless of desktop environment or window manager. See [Connecting to a Remote Server Over SSH on Linux](/docs/guides/connect-to-server-over-ssh-on-linux/)
 
--   **Lish (via SSH):** Copy the command from the *LISH Console via SSH* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the one below, only with your username, data center, and Linode label. Review [Using the Lish Console > Through SSH](/docs/guides/using-the-lish-console/#through-ssh-using-a-terminal) for more instructions.
+-   **Lish (via SSH):** Copy the command from the *LISH Console via SSH* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the one below, only with your username, data center, and Linode label. Review [Using the Lish Console > Through SSH](/docs/guides/lish/#through-ssh-using-a-terminal) for more instructions.
 
         ssh -t user@lish-newark.linode.com Example-Linode
 
@@ -110,7 +110,7 @@ After running a sync, it may end with a message that you should upgrade Portage 
 
     emerge -uDU --keep-going --with-bdeps=y @world
 
-#### OpenSUSE
+#### openSUSE
 
     zypper update
 
@@ -174,7 +174,7 @@ The instructions under the [Most Distributions](#most-distributions-1) section a
 
         emerge --config sys-libs/timezone-data
 
-#### OpenSUSE
+#### openSUSE
 
 The instructions under the [Most Distributions](#most-distributions-1) section above (which outlines the `timedatectl` command) are valid. OpenSuse also has a more friendly way to select a timezone, discussed below.
 
@@ -267,7 +267,7 @@ The `hosts` file creates static associations between IP addresses and hostnames 
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For IPv6, you should also set up a DNS "AAAA" record pointing to your Linode's IPv6 address.
 
-See our guide to [Adding DNS Records](/docs/guides/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/guides/using-your-systems-hosts-file/)
+See our guide to [Adding DNS Records](/docs/products/networking/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/guides/using-your-systems-hosts-file/)
 
 ## Add a Limited User Account
 
@@ -452,7 +452,7 @@ Using a *firewall* to block unwanted inbound traffic to your Linode provides a h
 
 - [nftables](/docs/guides/how-to-use-nftables/) or its predecessor, [iptables](/docs/guides/control-network-traffic-with-iptables/), is the controller for netfilter, the Linux kernel's packet filtering framework. One of these utilities is included in most Linux distributions by default.
 
-- [firewalld](/docs/guides/introduction-to-firewalld-on-centos/) is a firewall management tool that serves as a frontend to nftables or iptables. It is preinstalled on the RHEL family of distributions (and others), including CentOS, AlmaLinux, Rocky Linux, Fedora, and OpenSUSE Leap.
+- [firewalld](/docs/guides/introduction-to-firewalld-on-centos/) is a firewall management tool that serves as a frontend to nftables or iptables. It is preinstalled on the RHEL family of distributions (and others), including CentOS, AlmaLinux, Rocky Linux, Fedora, and openSUSE Leap.
 
 - [UFW](/docs/guides/configure-firewall-with-ufw/) is another firewall management tool that operates as a frontend to nftables or iptables. It is used by default on Ubuntu and is also available on other Debian-based distributions.
 
@@ -460,7 +460,7 @@ Using a *firewall* to block unwanted inbound traffic to your Linode provides a h
 
 If for whatever reason you find yourself locked out of your Linode after putting your security controls into place, there are still a number of ways that you can regain access to your Linode.
 
-- Access your Linode through our out-of-band [Lish console](/docs/guides/using-the-lish-console/) to regain access to the internals of your Linode without relying on SSH.
+- Access your Linode through our out-of-band [Lish console](/docs/guides/lish/) to regain access to the internals of your Linode without relying on SSH.
 
 -   If you need to re-enable password authentication and/or root login over ssh to your Linode, you can do this by reversing the following sections of this file to reflect these changes
 

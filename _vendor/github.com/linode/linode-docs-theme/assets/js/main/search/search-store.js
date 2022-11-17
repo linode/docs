@@ -567,6 +567,10 @@ class SearchBatcher {
 			.then((response) => response.json())
 			.then((data) => {
 				this.fetchCount++;
+				if (!data.results) {
+					console.warn('invalid response', data);
+					return;
+				}
 				for (let i = 0; i < data.results.length; i++) {
 					let result = data.results[i];
 					this.resultCallback(result);
@@ -649,7 +653,11 @@ export function getSearchConfig(params) {
 		if (!cfg.index_prefix) {
 			return index;
 		}
-		return `${cfg.index_prefix}${index}`;
+		let prefix = cfg.index_prefix;
+		if (!prefix.endsWith('_')) {
+			prefix += '_';
+		}
+		return `${prefix}${index}`;
 	};
 
 	return cfg;

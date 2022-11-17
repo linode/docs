@@ -45,3 +45,5 @@ Routing traffic through a single aggregation point creates a choke point where t
 ## Diagrams
 
 [![Thumbnail of redundant cross-datacenter application reference architecture diagram](redundant-cross-datacenter-application-diagram-thumbnail.png)](/docs/reference-architecture/redundant-cross-datacenter-applications/diagrams/)
+
+“WireGuard” is a registered trademark of Jason A. Donenfeld.

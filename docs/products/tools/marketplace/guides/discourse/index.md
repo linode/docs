@@ -26,9 +26,9 @@ Discourse requires that you have a domain name and access to a personal SMTP ema
 
   - If you don't already have your domain hosted at Linode, the install creates A and AAAA domain records for you.
 
-    - This means you need a Linode API token. If you don't have a token, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing.
+    - This means you need a Linode API token. If you don't have a token, you must [create one](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) before continuing.
 
-    - Ensure that your domain registrar is [using Linode's name servers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain).
+    - Ensure that your domain registrar is [using Linode's name servers](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers).
 
   - Additionally, the SMTP user must be able to send email from `noreply@your-domain.com` for administrator account verification.
 
@@ -74,10 +74,10 @@ Discourse is now installed and ready to use.
 
 1.  Your A and AAAA Domain records for the domain and subdomain, if you designated one, have been created and you should see them in the Cloud Manager.
 
-    - In the Cloud Manager [DNS Manager](/docs/guides/dns-manager/#add-a-domain), confirm that there are now an entries for your domain and possible subdomain.
-    - [Configure rDNS](/docs/guides/configure-your-linode-for-reverse-dns/) on your Linode to point to `subdomain.your-domain.com` or `your-domain.com` if you did not enter a subdomain.
+    - In the Cloud Manager [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/), confirm that there are now an entries for your domain and possible subdomain.
+    - [Configure rDNS](/docs/guides/configure-rdns/) on your Linode to point to `subdomain.your-domain.com` or `your-domain.com` if you did not enter a subdomain.
 
-1.  While the installation has created the A and AAAA domain records, it does not create the email records you need. In the Cloud Manager DNS Manager, [add the MX, TXT, and any other records](/docs/guides/dns-manager/#add-dns-records) required to send email as specified by your email provider.
+1.  While the installation has created the A and AAAA domain records, it does not create the email records you need. In the Cloud Manager DNS Manager, [add the MX, TXT, and any other records](/docs/products/networking/dns-manager/guides/manage-dns-records/) required to send email as specified by your email provider.
 
 1.  You can now navigate to the Discourse app in your browser with the fully qualified domain name you entered during configuration, `https://subdomain.your-domain.com` or `https://your-domain.com`.
 
@@ -115,7 +115,7 @@ The Discourse Marketplace App installs the following software on your Linode:
 If you did not get a confirmation email during setup it could be caused by several issues.
 
 ### Check DNS Records
-Ensure that you have correctly setup the [email DNS records](/docs/guides/dns-manager/#add-dns-records) required to send email as specified from your email provider. The Installer does not do this for you as every email host has different required records and values.
+Ensure that you have correctly setup the [email DNS records](/docs/products/networking/dns-manager/guides/manage-dns-records/) required to send email as specified from your email provider. The Installer does not do this for you as every email host has different required records and values.
 
 ### Change the Confirmation Email Sender
 Discourse sends this email from `noreply@subdomain.your-domain.com`. The SMTP user you entered during setup must have permissions to send from this address. If this is not the case, and you did not receive the email, you can change this address in a configuration file.

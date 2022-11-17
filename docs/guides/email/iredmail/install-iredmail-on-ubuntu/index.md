@@ -41,7 +41,7 @@ The steps required in this guide require root privileges. Be sure to run the ste
 
 ### MX Record
 
-A DNS MX record tells the internet where to send email directed at you domain. Before your Linode can receive email for addresses at a domain, an MX record must be created for that domain, pointing to your Linode's IP address. An example MX record can be found on the Linode [Introduction to DNS records](/docs/guides/dns-records-an-introduction/) page.
+A DNS MX record tells the internet where to send email directed at you domain. Before your Linode can receive email for addresses at a domain, an MX record must be created for that domain, pointing to your Linode's IP address. An example MX record can be found on the Linode [Introduction to DNS records](/docs/guides/dns-overview/) page.
 
 ## Install iRedMail
 
@@ -244,7 +244,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
 #### rDNS
 
-To set your rDNS, check out the [Setting Reverse DNS](/docs/guides/configure-your-linode-for-reverse-dns/) section of the DNS Manager guide. This is optional but gives additional credibility to a mail server for certain spam filters.
+To set your rDNS, check out the [Setting Reverse DNS](/docs/guides/configure-rdns/) section of the DNS Manager guide. This is optional but gives additional credibility to a mail server for certain spam filters.
 
 ### Apache Authentication Fix for Cluebringer and AWStats Login
 

@@ -1,0 +1,3 @@
+[params]
+    # Adobe Analytics script used in Staging (docs.staging.linode.com/docs)
+    adobe_launch_script = "https://assets.adobedtm.com/fcfd3580c848/f9e7661907ee/launch-96338797f65e-staging.min.js"
