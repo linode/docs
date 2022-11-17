@@ -3,7 +3,7 @@
 {{ if not $path -}}
   {{ errorf "path not set in %s" .Position -}}
 {{ end -}}
-{{ $section := site.GetPage (path.Join "releasenotes" $path) }}
+{{ $section := site.GetPage (path.Join "release-notes" $path) }}
 {{ if not $section -}}
   {{ errorf "section %q not found in %s" $path .Position -}}
 {{ end -}}
