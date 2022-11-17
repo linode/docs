@@ -32,6 +32,11 @@ class Docs404Spider(CrawlSpider):
     start_urls = ['http://localhost:1313/docs']
     handle_httpstatus_list = [404]
 
+    custom_settings = {
+      'CONCURRENT_REQUESTS': 100,
+      'CONCURRENT_REQUESTS_PER_DOMAIN': 100
+    }
+
     rules = (
         Rule(LinkExtractor(allow=r'/docs/', deny=r'/docs/contribute'),
              callback='parse_item', follow=True),
