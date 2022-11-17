@@ -1,19 +1,18 @@
 ---
-slug: how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos
+slug: how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Use Google Authenticator to enable two-factor authentication for SSH connections on CentOS 7."
-keywords: ["two factor authentication", "ssh", "google authenticator", "centos"]
-aliases: ['/security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos/','/security/authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos/','/security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos-7/']
-tags: ["centos","ssh","security"]
+description: "Use Google Authenticator to enable two-factor authentication for SSH connections."
+keywords: ["two factor authentication", "ssh", "google authenticator",]
+aliases: ['/security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh','/security/authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh/','/security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh/']
+tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
 modified_by:
   name: Linode
-title: "How to Use Two-Factor Authentication with SSH on CentOS 7"
-h1_title: "Using 2FA (Two-Factor Authentication) with SSH on CentOS 7"
-deprecated: true
+title: "How to Use Two-Factor Authentication with SSH"
+h1_title: "Using 2FA (Two-Factor Authentication) with SSH"
 enable_h1: true
 contributor:
   name: Linode
@@ -24,20 +23,19 @@ relations:
     platform:
         key: one-time-pass-for-2fa
         keywords:
-            - distribution: CentOS 7
+            - distribution:
 ---
 
-!['Header Image: Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS7'](two-factor-authentication-centos-title.png)
 
-In this guide, you'll learn how to use one-time passwords for two-factor authentication with SSH on CentOS 7. No matter what kind of data you're hosting, securing access to your Linode is a critical step in preventing your information from being compromised. By default, you will need a password to log in, and you may also configure an authentication key-pair for even greater security. However, another option exists to complement these methods: [time-based one-time passwords](https://en.wikipedia.org/wiki/Time-based_One-time_Password_algorithm) (*TOTPs*).
+In this guide, you'll learn how to use one-time passwords for two-factor authentication with SSH. No matter what kind of data you're hosting, securing access to your Linode is a critical step in preventing your information from being compromised. By default, you will need a password to log in, and you may also configure an authentication key-pair for even greater security. However, another option exists to complement these methods: [time-based one-time passwords](https://en.wikipedia.org/wiki/Time-based_One-time_Password_algorithm) (*TOTPs*).
 
 TOTPs allow you to enable two-factor authentication for SSH with single-use passwords that change every 30 seconds. By combining this method with a regular password or publickey (or both), you can add an extra layer of security, further ensuring your server is sufficiently protected.
 
-This guide will explain how to install the necessary software, configure your system to use two-factor authentication (2FA), and use your new time-based one-time password (TOTP) in combination with existing security features.
+This guide explains how to install the necessary software, configure your system to use two-factor authentication (2FA), and use your new time-based one-time password (TOTP) in combination with existing security features.
 
 ## Before You Begin
 
-1.  This guide is meant to be used with a Linode running CentOS 7. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname), [updating your system's hosts file](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file), and setting the [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
+1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname), [updating your system's hosts file](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file), and setting the [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
 
 1.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), and [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services). This guide will explain a different way to harden SSH access, but you can also [use public key authentication](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) in addition for even greater protection. That method will be covered in the optional section [Combine Two-Factor and Public Key Authentication](#combine-two-factor-and-public-key-authentication-optional).
 
@@ -47,9 +45,13 @@ If you plan on [combining two-factor and public key authentication](#combine-two
 
 1.  You will need a smartphone or another client device with an authenticator application such as [Google Authenticator](https://en.wikipedia.org/wiki/Google_Authenticator) or [Authy](https://www.authy.com/). Many other options exist, and this guide should be compatible with nearly all of them.
 
-1.  Update your system:
+1.  Update your system.
+    *  On CentOS use:
 
         sudo yum update && sudo yum upgrade
+
+    *  On Debain and Ubuntu use:
+        sudo apt-get update && sudo apt-get upgrade
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -57,9 +59,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Google Authenticator
 
-In this section, you will install the Google Authenticator package to set up two-factor authentication on CentOS 7. This software will generate keys on your Linode, which will then be paired with an app on a client device (often a smartphone) to generate single-use passwords that expire after a set period of time.
+In this section, you will install the Google Authenticator package to set up two-factor authentication. This software will generate keys on your Linode, which will then be paired with an app on a client device (often a smartphone) to generate single-use passwords that expire after a set period of time.
 
-1. To install the necessary packages enable the [EPEL](https://fedoraproject.org/wiki/EPEL) repository, which hosts the package you're looking for.
+**CentOS:**
+
+1. Install the necessary packages enable the [EPEL](https://fedoraproject.org/wiki/EPEL) repository, which hosts the package you're looking for.
 
         sudo yum install wget
         sudo wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
@@ -69,7 +73,14 @@ In this section, you will install the Google Authenticator package to set up two
 
         sudo yum install google-authenticator
 
-    Although we are using the Google Authenticator package, the keys it generates are compatible with other authentication apps.
+
+**Debian and Ubuntu:**
+
+1. Install Google Authenticator:
+
+        sudo apt-get install libpam-google-authenticator
+
+Although we are using the Google Authenticator package, the keys it generates are compatible with other authentication apps.
 
 ## Generate a Key
 
@@ -90,7 +101,7 @@ Be sure to have your phone or mobile device ready, since this is where you'll ad
 
 1.  You should see a [QR code](https://en.wikipedia.org/wiki/QR_code) in your terminal:
 
-    ![The Google Authenticator QR Code and keys on CentOS 7.](google-authenticator-centos.png)
+    ![The Google Authenticator QR Code and keys.](google-authenticator-centos.png)
 
     Using the authenticator app on your phone or mobile device, scan the code. A new entry should be added to your authenticator app in the format `username@hostname`.
 

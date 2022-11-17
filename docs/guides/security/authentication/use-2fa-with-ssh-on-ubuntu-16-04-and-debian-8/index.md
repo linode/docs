@@ -13,6 +13,7 @@ modified_by:
   name: Phil Zona
 published: 2016-11-18
 title: "Use 2FA with SSH on Ubuntu 16.04 and Debian 8"
+deprecated: true
 external_resources:
  - '[One-Time Passwords](https://en.wikipedia.org/wiki/One-time_password)'
  - '[Linux PAM Documentation](http://www.linux-pam.org/)'

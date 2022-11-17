@@ -13,6 +13,7 @@ modified_by:
 title: "How to Use Two-Factor Authentication with SSH on Debian 9"
 h1_title: "Using 2FA (Two-Factor Authentication) with SSH on Debian 9"
 enable_h1: true
+deprecated: true
 image: how-to-use-one-time-passwords-for-two-factor-debian-9.png
 contributor:
   name: Linode
