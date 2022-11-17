@@ -33,13 +33,13 @@ class Docs404Spider(CrawlSpider):
     handle_httpstatus_list = [404]
 
     custom_settings = {
-      'CONCURRENT_REQUESTS': 100,
-      'CONCURRENT_REQUESTS_PER_DOMAIN': 100
+      'CONCURRENT_REQUESTS': 300,
+      'CONCURRENT_REQUESTS_PER_DOMAIN': 300
     }
 
     rules = (
         Rule(LinkExtractor(allow=r'/docs/', deny=r'/docs/contribute'),
-             callback='parse_item', follow=True),
+             callback='parse_item', follow=True, method='HEAD'),
     )
 
     def parse_start_url(self, response):
