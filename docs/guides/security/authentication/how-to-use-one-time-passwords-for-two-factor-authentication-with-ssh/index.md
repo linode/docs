@@ -50,7 +50,7 @@ If you plan on [combining two-factor and public key authentication](#combine-two
 
         sudo yum update && sudo yum upgrade
 
-    *  On Debain and Ubuntu use:
+    *  On Debian and Ubuntu use:
         sudo apt-get update && sudo apt-get upgrade
 
 {{< note >}}
