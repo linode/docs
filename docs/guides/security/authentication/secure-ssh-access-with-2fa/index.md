@@ -7,7 +7,8 @@ description: "Learn how to prevent unauthorized access to your Linux server by e
 keywords: ["2fa","two factor authentication", "ssh", "google authenticator"]
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-11-21
+published: 2020-02-03
+modified: 2022-11-21
 modified_by:
   name: Linode
 title: "Use 2FA with SSH to Prevent Unauthorized Access"
