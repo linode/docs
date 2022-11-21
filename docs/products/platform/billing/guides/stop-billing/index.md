@@ -4,7 +4,7 @@ description: "Instructions on removing services to stop charges from accruing on
 date: 2022-11-17
 ---
 
-To prevent additional charges from accuring and stop further billing, you can remove any paid services from your account or cancel your account entirely.
+To prevent additional charges from accruing and stop further billing, you can remove any paid services from your account or cancel your account entirely.
 
 ## Remove Services
 
@@ -34,4 +34,4 @@ There is a very small chance that Linode Support can restore your data outside o
 
 ## Cancel Account
 
-If you no longer wish to use any Linode services, you can also cancel your acount. When an account is cancelled, you may receive one final bill. This bill includes all charges that have already accrued during the billing period. See [Cancel Your Account](/docs/products/platform/accounts/guides/cancel-account/) to learn more.
+If you no longer wish to use any Linode services, you can also cancel your account. When an account is cancelled, you may receive one final bill. This bill includes all charges that have already accrued during the billing period. See [Cancel Your Account](/docs/products/platform/accounts/guides/cancel-account/) to learn more.

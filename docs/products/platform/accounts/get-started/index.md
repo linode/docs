@@ -1,22 +1,19 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
-keywords: ["getting started", "intro", "basics", "first steps", "linode platform"]
 description: "Learn how to create an account and use the Linode Cloud Platform."
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode/','/guides/getting-started/']
+keywords: ["getting started", "intro", "basics", "first steps", "linode platform"]
+published: 2018-11-05
 modified: 2022-06-27
 modified_by:
   name: Linode
-published: 2018-11-05
-title: "Getting Started on the Linode Platform"
+title: Getting Started on the Linode Platform
+linkTitle: Get Started
 show_on_frontpage: true
-title_short: "Getting Started"
-weight: 10
-icon: "book"
 show_on_rss_feed: false
 image: getting-started.jpg
+tab_group_main:
+    weight: 20
+    title: Get Started
 ---
 
 Our goal at Linode is to make cloud computing simple, accessible, and affordable. To this end, the Linode platform offers a variety of user-friendly cloud solutions, all of which have clear and predictable [pricing](https://www.linode.com/pricing/) and can be managed using an intuitive browser-based interface (the [Cloud Manager](https://www.linode.com/products/cloud-manager/)), the command line (the [Linode CLI](https://www.linode.com/products/cli/)), or programmatically through an API (the [Linode API](https://www.linode.com/products/linode-api/)). This guide covers signing up for a Linode account, accessing the Cloud Manager, creating your first services, and understanding how billing works.

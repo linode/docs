@@ -5,8 +5,6 @@ tab_group_main:
     is_root: true
     title: Overview
     weight: 10
-cascade:
-    product_description: "Simple and predictable pricing makes it easy to anticipate your cloud infrastructure costs."
 keywords: ["billing", "payments"]
 aliases: ['/products/tools/billing/','/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/','/guides/how-linode-billing-works/','/billing-and-payments/','/platform/billing-and-support/billing-and-payments-classic-manager/','/platform/billing-and-support/billing-and-payments-new-manager/','/platform/billing-and-payments/','/platform/billing-and-support/billing-and-payments/',/guides/billing-and-payments/]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

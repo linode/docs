@@ -9,13 +9,15 @@ tab_group_main:
 
 - [Manage Users](/docs/products/platform/accounts/guides/manage-users/): View, edit, and manage users and user permissions on your Linode account.
 
-- [Change User Email](/docs/products/platform/accounts/guides/manage-users/change-user-email/): Update the email address on file.
+- [Change User Email](/docs/products/platform/accounts/guides/change-user-email/): Update the email address on file.
 
 - [Reset User Password](/docs/products/platform/accounts/guides/reset-user-password/): Change the password on your Linode account.
 
 - [Cancel Your Account](/docs/products/platform/accounts/guides/cancel-account/): Instructions on cancelling your Linode account.
 
 ## Security Controls
+
+- [User Permissions](/docs/products/platform/accounts/guides/user-permissions/): View, edit, and manage users and user permissions on your Linode account.
 
 - [Enable Third Party Authentication on Your Linode Account](/docs/products/platform/accounts/guides/third-party-authentication/): Learn how to sign in using third party credentials, like GitHub or Google.
 

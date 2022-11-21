@@ -1,6 +1,6 @@
 ---
 title: "Access Billing Information"
-description: ""
+description: "View billing information, including checking your account balancing and accrued charges."
 date: 2022-11-17
 ---
 
@@ -21,10 +21,10 @@ This page contains several sections:
 
 - **Promotions:** If there is an active promo/coupon applied to the account, it will be displayed here along with the remaining balance and any expiration date. If there are no active promotions, this section is hidden.
 
-- **Accrued Charges:** The charges that have accrued since your last invoice. This updates frequently to include the hourly charges (up to the monthly cap) for all paid services on the account, as well as any other charges. In the screenshot above, the account has accrued $8.51 of charges since the last invoice. See the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for help understanding these charges.
+- **Accrued Charges:** The charges that have accrued since your last invoice. This updates frequently to include the hourly charges (up to the monthly cap) for all paid services on the account, as well as any other charges. In the screenshot above, the account has accrued $8.51 of charges since the last invoice. See the [Billing Overview](/docs/products/platform/billing/) guide for help understanding these charges.
 
-- **Billing Contact:** The name, address, phone number, and email address for the primary billing contact on the account. See [Accounts and Passwords > Updating Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information).
+- **Billing Contact:** The name, address, phone number, and email address for the primary billing contact on the account. See [Update Billing Contact Information](/docs/products/platform/billing/guides/update-billing-contact-info/).
 
 - **Payment Methods:** The payment methods that have been added to the account.
 
-- **Billing & Payment History:** Displays a list of previous invoices and payments, along with links to view or download each entry.
+- **Billing & Payment History:** Displays a list of previous invoices and payments, along with links to view or download each entry. See [View Invoices and Payment History](/docs/products/platform/billing/guides/view-history/)

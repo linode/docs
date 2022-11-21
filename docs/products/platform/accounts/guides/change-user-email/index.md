@@ -17,11 +17,11 @@ Linode uses the contact information on file in your account to notify and bill y
 
 The **Billing Info** and **User & Grants** pages have email address fields. The email addresses saved on these pages receive different notifications, as described in the following sections. If you are the only user, you should enter your email address on both pages. If there are multiple users, verify that the primary account holder's email address is current on the **Billing Info** page.
 
-### Updating Billing Contact Email
+## Modify Billing Contact Email
 
 See [Update Billing Contact Information](/docs/products/platform/billing/guides/update-billing-contact-info/)
 
-## Changing Account Email from the Cloud Manager
+## Modify User Account Email
 
 Use the **Users & Grants** page to modify the email address associated with a user account. The email addresses listed on this page receive IP whitelist warnings, password reset messages, and support tickets for services that their associated users have permission to access. Users with limited account access can also receive invoices and receipts if granted access to that information.
 
