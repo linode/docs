@@ -43,23 +43,23 @@ java -Xms1024M -Xmx1536M -jar minecraft_server.1.13.jar -o true
 
 {{< note >}}A oneliner{{< /note >}}
 
-## Code Shortcode
+## Command Shortcode
 
 ### Dark
 
-```code {class="dark" title="Ubuntu 16.04"}
+```command {class="dark" title="Ubuntu 16.04"}
 sudo systemctl restart apache2
 ```
 
 ### Dark No Title
 
-```code {class="dark"}
+```command {class="dark"}
 sudo systemctl restart apache2
 ```
 
 ### Dark Overflow
 
-```code {class="dark"}
+```command {class="dark"}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
@@ -72,7 +72,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id me
 {{< note >}}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
-```code {class="dark"}
+```command {class="dark"}
 sudo systemctl restart apache2
 ```
 {{< /note >}}
@@ -82,7 +82,7 @@ sudo systemctl restart apache2
 {{< note >}}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
-```code {class="dark"}
+```command {class="dark"}
 sudo systemctl restart apache2
 ```
 
@@ -94,18 +94,18 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id me
 
 * Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Ut suscipit nec orci vel sagittis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce accumsan fringilla urna et maximus. Aliquam erat volutpat. Nam malesuada faucibus massa ac ultrices. Sed finibus diam at dolor maximus porttitor.
   * Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Ut suscipit nec orci vel sagittis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce accumsan fringilla urna et maximus. Aliquam erat volutpat. Nam malesuada faucibus massa ac ultrices. Sed finibus diam at dolor maximus porttitor.
-  ```code {class="dark"}
+  ```command {class="dark"}
   sudo systemctl restart apache2
   ```
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Ut suscipit nec orci vel sagittis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce accumsan fringilla urna et maximus. Aliquam erat volutpat. Nam malesuada faucibus massa ac ultrices. Sed finibus diam at dolor maximus porttitor.
 
 ### Light
 
-```code {class="light" title="Ubuntu 16.04"}
+```command {class="light" title="Ubuntu 16.04"}
 sudo systemctl restart apache2
 ```
 
-```code {class="light" title="Ubuntu 16.04"}
+```command {class="light" title="Ubuntu 16.04"}
 sudo systemctl restart apache2
 sudo systemctl restart apache2
 sudo systemctl restart apache2
@@ -296,7 +296,7 @@ Lorem ipsum dolor sit amet, **consectetur adipiscing elit**. Nunc sollicitudin i
 1. This is a [**Bold Link**](https://example.com).
 2. This is a [*Italic Link*](https://example.com).
 
-> This is a block quote. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. 
+> This is a block quote. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
 
 ### Disclosure Note
