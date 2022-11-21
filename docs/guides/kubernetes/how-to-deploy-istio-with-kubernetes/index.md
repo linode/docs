@@ -209,12 +209,16 @@ prometheus-fcdfd6cb5-6cjz2              1/1     Running     0          5m13s
     {{< note >}}
 If you need to troubleshoot, you can check a specific Pod by using `kubectl`, remembering that you set the namespace to `istio-system`:
 
-    kubectl describe pods pod_name -n pod_namespace
+```command
+kubectl describe pods pod_name -n pod_namespace
+```
 
 And check the logs by using:
 
-    kubectl logs pod_name -n pod_namespace
-    {{< /note >}}
+```command
+kubectl logs pod_name -n pod_namespace
+```
+{{< /note >}}
 
 ### Set up Envoy Proxies
 

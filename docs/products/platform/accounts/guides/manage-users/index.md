@@ -5,9 +5,6 @@ published: 2022-11-21
 aliases: ['/platform/accounts-and-passwords/','/accounts-and-passwords/','/platform/manager/accounts-and-passwords/','/platform/manager/accounts-and-passwords-classic-manager/','/platform/manager/accounts-and-passwords-new-manager/', '/guides/accounts-and-passwords/']
 ---
 
-Each Linode account can accommdate multiple user accounts, used for providing other people access to manage the services on an account.
-
-
 You can grant other people access to your Linode Cloud Manager account by creating *users* and assigning *permissions* to restrict access to certain areas of the control panel. Adding users and configuring permissions is useful for groups that need to grant all team members access to the Linode Cloud Manager, or organizations that just want their billing department to have a separate account to receive invoices and billing information.
 
 {{< note >}}
@@ -26,13 +23,7 @@ Each user is listed in the table along with its username, email address, and the
 
 ## Add a User
 
-
-
-Each person that needs access to a Linode account should be given their own user account. When creating an account, you are 
-
-When adding a user, you give that individual permission to log in to the Linode Cloud Manager and, depending on the access level they are assigned, receive email notifications. Users can have either limited or full access to account features.
-
-Here's how to add a user to your Linode account:
+To provide another person with access to your Linode account, you can create another user. Each user can be created with full unrestricted access or limited restricted access. For more details on user permissions, see [Set User Permissions](/docs/products/platform/accounts/guides/user-permissions/).
 
 1. Navigate to the **Users & Grants** page in the Cloud Manager. See [View All Users](#view-all-users).
 
@@ -60,8 +51,7 @@ In a couple minutes, you'll receive an email message with any Linode Cloud Manag
 
 You can permanently remove a user account from the Linode Cloud Manager. Here's how:
 
-1. Click the **Account** link in the sidebar.
-1. Click the **Users** tab.
+1. Navigate to the **Users & Grants** page in the Cloud Manager. See [View All Users](#view-all-users).
 1. Click the **Delete** link for the desired user. A warning appears asking you to confirm that you want to delete the user.
 1. Click **Delete** in the warning to confirm deletion.
 
@@ -71,8 +61,7 @@ The user is removed and is no longer able to access the Linode Cloud Manager.
 
 You can update a username, including your own, from the Linode Cloud Manager.
 
-1. Click the **Account** link in the sidebar.
-1. Click the **Users & Grants** tab.
+1. Navigate to the **Users & Grants** page in the Cloud Manager. See [View All Users](#view-all-users).
 1. Locate the user in the list and click on their **User Profile** link.
 1. Enter a new username in the **Username** field.
 
