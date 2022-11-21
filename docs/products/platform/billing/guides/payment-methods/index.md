@@ -26,7 +26,7 @@ New payment methods can be added to an account through the Cloud Manager. Up to 
 
 1.  Navigate to the **Billing Info** page in the [Cloud Manager](https://cloud.linode.com/account/billing) (see [Accessing Billing Information](/docs/products/platform/billing/guides/access-billing/)).
 
-1.  If adding a credit card directly (not through Google Pay or PayPal), it must match the account's billing contact information and address. Review the **Billing Contact** section and edit it as necessary (see [Updating Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information)).
+1.  If adding a credit card directly (not through Google Pay or PayPal), it must match the account's billing contact information and address. Review the **Billing Contact** section and edit it as necessary (see [Update Billing Contact Information](/docs/products/platform/billing/guides/update-billing-contact-info/)).
 
 1.  In the **Payment Method** section, click the *Add Payment Method* link. This opens the **Add Payment Method** panel.
 

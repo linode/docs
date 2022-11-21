@@ -28,7 +28,7 @@ Plex is a media server that allows you to stream video and audio content that yo
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/accounts/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. Follow the steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 

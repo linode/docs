@@ -18,7 +18,7 @@ All invoices are listed in the Billing & Payment History section of the Cloud Ma
 
 ## I deleted a service earlier this month. Why was I just charged for it now?
 
-Invoices are generated at the beginning of every month and include fees for services used during the previous month. See [Billing Overview](/docs/guides/understanding-billing-and-payments/). On your invoice, you can view the dates each service was on the account.
+Invoices are generated at the beginning of every month and include fees for services used during the previous month. See [Billing Overview](/docs/products/platform/billing/). On your invoice, you can view the dates each service was on the account.
 
 ## Where can I view amount of credit available on my account?
 
@@ -62,8 +62,8 @@ We only accept payments in USD. If you wish to pay in another currency, you must
 
 ## Can more than one person receive the invoice each month?
 
-Yes, any user on an account with the appropriate billing permissions (read and write billing access) will receive a copy of invoices. See [Setting User Permissions](/docs/guides/accounts-and-passwords/#setting-user-permissions) for more details and see [Adding a User](/docs/guides/accounts-and-passwords/#adding-a-user) for instructions on creating another user for your account.
+Yes, any user on an account with the appropriate billing permissions (read and write billing access) will receive a copy of invoices. See [Setting User Permissions](/docs/products/platform/accounts/guides/user-permissions/) for more details and see [Adding a User](/docs/products/platform/accounts/guides/manage-users/#adding-a-user) for instructions on creating another user for your account.
 
 ## How do I adjust the name or company on my invoice?
 
-Your billing contact information is used on each invoice. To adjust the name, company, address, or tax ID that appears on the invoice, you must adjust the corresponding billing contact field. See [Updating Billing Contact Information](/docs/guides/accounts-and-passwords/#updating-billing-contact-information).
+Your billing contact information is used on each invoice. To adjust the name, company, address, or tax ID that appears on the invoice, you must adjust the corresponding billing contact field. See [Update Billing Contact Information](/docs/products/platform/billing/guides/update-billing-contact-info/).

@@ -31,7 +31,7 @@ The Service Transfer feature in [Cloud Manager](https://cloud.linode.com) can be
 1. Once completed, billing for transferred services ends for the sending account and begins for the receiving account. Linode services will not experience interruptions due to the transfer process.
 
 {{< note >}}
-Only users with full account access can use Service Transfers. To adjust user permissions, see our [Accounts and Passwords](/docs/guides/accounts-and-passwords/#setting-user-permissions) guide. Users with full account access can view and interact with all of the transfers associated with the account, regardless of which user created or accepted the transfer.
+Only users with full account access can use Service Transfers. To adjust user permissions, see our [Set User Permissions](/docs/products/platform/accounts/guides/user-permissions/) guide. Users with full account access can view and interact with all of the transfers associated with the account, regardless of which user created or accepted the transfer.
 {{< /note >}}
 
 ## Sending Linode Services

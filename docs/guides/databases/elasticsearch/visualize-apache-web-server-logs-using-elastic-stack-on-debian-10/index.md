@@ -57,7 +57,7 @@ This guide shows how to:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and create a Linode to install the Elastic stack on. Then, complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/accounts/get-started/) guide and create a Linode to install the Elastic stack on. Then, complete the steps for setting your Linode's hostname and timezone.
 
     {{< note >}}
 Multiple services are run on a single Linode in this guide. We recommend using at least a 2G (or `g6-standard-1`) sized Linode instance to support these services.

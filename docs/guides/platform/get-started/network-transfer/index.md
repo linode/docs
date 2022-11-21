@@ -95,8 +95,8 @@ You need to generate a Personal Access Token and install the Linode CLI before b
 
 ### Email Alerts
 
-Linode automatically sends an email notification to [your account's email address](/docs/guides/accounts-and-passwords/#email-addresses-and-contact-information) when you have used 80%, 90%, and 100% of your transfer pool size.
+Linode automatically sends an email notification to [your account's email address](/docs/products/platform/accounts/guides/change-user-email/) when you have used 80%, 90%, and 100% of your transfer pool size.
 
 ## More Information
 
-Read the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for an overview of Linode billing.
+Read the [Billing and Payments](/docs/products/platform/billing/) guide for an overview of Linode billing.

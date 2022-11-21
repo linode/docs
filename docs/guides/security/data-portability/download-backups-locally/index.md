@@ -27,7 +27,7 @@ Linode's backups are stored in a way that is only directly readable by the Linod
 
 ### Account Permissions and Billing
 
-Several of the steps in this guide involve adding services to or removing services from a Linode account. Visit our guide on [Users and Permissions](/docs/guides/accounts-and-passwords/#users-and-permissions) for more information about restricted Linode users.
+Several of the steps in this guide involve adding services to or removing services from a Linode account. Visit our guide on [Users and Permissions](/docs/products/platform/accounts/guides/manage-users/#users-and-permissions) for more information about restricted Linode users.
 
 Note that the cost of adding Backups service and adding a Linode to your account is billed, prorated per hour. If the backups service is only enabled for a few hours, you will only be charged for a few hours of the service. See the [Backups pricing details](/docs/products/storage/backups/#pricing) for more information. Likewise, when you create a Linode, you will be billed per hour that the Linode exists, whether it is powered on or not.
 

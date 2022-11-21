@@ -49,7 +49,7 @@ If there is data on the compromised Linode that you need to retain, you can use 
 
 You can use a second Linode for the most seamless transition to a new system.
 
-1.  Add a new Linode to your account. See the [Getting Started](/docs/guides/getting-started/) guide for instructions.
+1.  Add a new Linode to your account. See the [Getting Started](/docs/products/platform/accounts/get-started/) guide for instructions.
 2.  Set a strong password for **root** and all user accounts, making sure not to reuse any passwords from the compromised system.
 3.  Upgrade all system packages:
 
@@ -100,4 +100,4 @@ Alternatively, you can [update your DNS entries](/docs/guides/hosting-a-website-
 
 You may want to download a complete copy of the compromised Linode's disk(s) for forensic analysis. To do this, follow the instructions in our [SSH disk copy guide](/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh). If you don't need a full copy of the affected disks, you may still want to make a copy of all system log files for later review.
 
-When you no longer need the old Linode's disks, you should [remove the Linode](/docs/products/platform/billing/guides/stop-billing/). Your account will only be invoiced for the time the Linode was present on your account since the last invoice. For more information, see [Understanding Billing and Payments](/docs/guides/understanding-billing-and-payments/).
+When you no longer need the old Linode's disks, you should [remove the Linode](/docs/products/platform/billing/guides/stop-billing/). Your account will only be invoiced for the time the Linode was present on your account since the last invoice. For more information, see [Understanding Billing and Payments](/docs/products/platform/billing/).

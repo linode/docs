@@ -38,7 +38,7 @@ While this guide is optional, it walks you through best practices and covers imp
 
 If you haven't done so already, review the following guides to learn more about using Linode and Compute Instances.
 
-- [Getting Started with Linode](/docs/guides/getting-started/)
+- [Getting Started with Linode](/docs/products/platform/accounts/get-started/)
 - [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/)
 - [Linode Beginner's Guide](/docs/guides/linode-beginners-guide/)
 
@@ -492,4 +492,4 @@ PasswordAuthentication yes
 
 These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using [intrusion detection](/docs/guides/ossec-ids-debian-7/), installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control), [fine tuning sudo access](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user), [removing exposed services](/docs/guides/remove-unused-network-facing-services), and [more](/docs/security/).
 
-Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/guides/migrate-from-shared-hosting-to-linode/) to [enabling two-factor authentication](/docs/guides/user-security-controls/) to [hosting a website](/docs/guides/hosting-a-website-ubuntu-18-04/).
+Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/guides/migrate-from-shared-hosting-to-linode/) to [enabling two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/) to [hosting a website](/docs/guides/hosting-a-website-ubuntu-18-04/).

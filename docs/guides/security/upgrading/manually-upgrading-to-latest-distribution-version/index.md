@@ -73,7 +73,7 @@ Some commands in this guide require elevated privileges and are prefixed with th
 
 ## Create a New Linode
 
-To get started, create a new Linode by following the instructions within the [Getting Started](/docs/guides/getting-started/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides. Keep the following considerations in mind:
+To get started, create a new Linode by following the instructions within the [Getting Started](/docs/products/platform/accounts/get-started/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides. Keep the following considerations in mind:
 
 -  **Distribution:** Select the distribution image you wish to use for the base of the upgraded system. For most cases, you should likely select the latest LTS (long term support) release of the same distribution as the original system. For instance, if the original system is Ubuntu 18.04 LTS, select the latest Ubuntu LTS release (20.04 at the time of this writing). You might also wish to upgrade to a new distribution that's based on (or similar to) your current system. As an example, you can upgrade a CentOS 7 (or 8) system to AlmaLinux 8 (or RockyLinux 8). See [Choosing a Linux Distribution](/docs/guides/choosing-a-distribution/) for a full list of the distribution images available on Linode.
 -  **Region:** The new Linode must reside in the same region (data center) as the original Linode.

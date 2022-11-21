@@ -27,7 +27,7 @@ This guide will explain how to configure round-robin DNS in it's most basic conf
 
 To continue following this guide, you will need a website that's hosted on a Linode and accessible through a domain name. If you already have a Linode configured this way, you can skip this section.
 
-- [Create a Linode](/docs/guides/getting-started/) on any plan that will host your website or web application. While a round-robin DNS configuration is possible with all major distros, the steps in this guide were specifically created using Debian 10.
+- [Create a Linode](/docs/products/platform/accounts/get-started/) on any plan that will host your website or web application. While a round-robin DNS configuration is possible with all major distros, the steps in this guide were specifically created using Debian 10.
 
 - [Add a domain and configure an A record](/docs/products/networking/dns-manager/get-started/) to point to your new Linode. When using round-robin DNS, a low TTL is recommended.
 

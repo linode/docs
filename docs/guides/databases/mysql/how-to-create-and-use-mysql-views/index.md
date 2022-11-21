@@ -35,7 +35,7 @@ In this guide you will learn:
 
 To follow along with this guide, make sure you have the following:
 
-1.  A Linode, which you run the MySQL software on. You can follow the [Getting Started with Linode](/docs/guides/getting-started/) guide to provision a Linode.
+1.  A Linode, which you run the MySQL software on. You can follow the [Getting Started with Linode](/docs/products/platform/accounts/get-started/) guide to provision a Linode.
 
 1.  The MySQL server software (or MariaDB) installed on your Linode. Please refer to the [MySQL section](/docs/guides/databases/mysql/), which contains guides that describe how to install MySQL on several Linux distributions.
 

@@ -49,7 +49,7 @@ The examples in this guide have been tested on a cluster running with Linode wit
 {{< caution >}}
 These examples will create billable services. To stop billing for these services after reading the guide, be sure to read the tear-down instructions at the end of each section. If you created a new cluster for this guide, you can remove the cluster's Nodes from the [Linode Cloud Manager](https://cloud.linode.com).
 
-If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for detailed information about how hourly billing works. [Linode's pricing page](https://www.linode.com/pricing/) lists the rate for each Linode service.
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works. [Linode's pricing page](https://www.linode.com/pricing/) lists the rate for each Linode service.
 {{< /caution >}}
 
 ## Installing Octant

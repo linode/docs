@@ -17,7 +17,7 @@ enable_h1: true
 tags: ["linode platform"]
 ---
 
-Linode strives to provide transparent and uncomplicated pricing structures and billing policies. As a supplement to our [Pricing](https://www.linode.com/pricing/) page, read through this guide to understand how we bill for services and how you can pay for these services. For instructions on how to manage your billing in the Cloud Manager, see the [Manage Billing in Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/) guide. If you have a question that isn't answered in either of these guides, don't hesitate to [contact Support](https://www.linode.com/support/).
+Linode strives to provide transparent and uncomplicated pricing structures and billing policies. As a supplement to our [Pricing](https://www.linode.com/pricing/) page, read through this guide to understand how we bill for services and how you can pay for these services. For instructions on how to manage your billing in the Cloud Manager, see the [Manage Billing in Cloud Manager](/docs/products/platform/billing/guides/) guide. If you have a question that isn't answered in either of these guides, don't hesitate to [contact Support](https://www.linode.com/support/).
 
 ## Billing
 
@@ -87,7 +87,7 @@ If you are unsatisfied with your service for any reason, you can [cancel your ac
 
 ## Tax Information
 
-Review our [Tax Information](/docs/guides/tax-information/) guide for information about which taxes Linode may charge.
+Review our [Tax Information](/docs/products/platform/billing/guides/tax-information/) guide for information about which taxes Linode may charge.
 
 ## Referral Program
 

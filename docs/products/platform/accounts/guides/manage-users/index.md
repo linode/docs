@@ -2,7 +2,7 @@
 title: "Manage Users and User Permissions on an Account"
 description: "Learn how to view, edit, and manage users on a Linode account."
 published: 2022-11-17
-aliases: ['/platform/accounts-and-passwords/','/accounts-and-passwords/','/platform/manager/accounts-and-passwords/','/platform/manager/accounts-and-passwords-classic-manager/','/platform/manager/accounts-and-passwords-new-manager/', '/guides/accounts-and-passwords/','/guides/accounts-and-passwords/']
+aliases: ['/platform/accounts-and-passwords/','/accounts-and-passwords/','/platform/manager/accounts-and-passwords/','/platform/manager/accounts-and-passwords-classic-manager/','/platform/manager/accounts-and-passwords-new-manager/', '/guides/accounts-and-passwords/']
 ---
 
 Each Linode account can accommdate multiple user accounts, used for providing other people access to manage the services on an account.
@@ -44,7 +44,7 @@ Here's how to add a user to your Linode account:
 
 1. Click **Submit**. The user will receive an email with instructions on creating a password and logging in to the account.
 
-If you granted the user full access, the account is created and no further action is required. If you granted the user limited access, continue with [setting user permissions](/docs/guides/accounts-and-passwords/#setting-user-permissions).
+If you granted the user full access, the account is created and no further action is required. If you granted the user limited access, continue with [setting user permissions](/docs/products/platform/accounts/guides/user-permissions/).
 
 ## Recover a Lost Username
 

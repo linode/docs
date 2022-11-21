@@ -59,7 +59,7 @@ Enable two-factor authentication to start using it with your Linode account.
 
     ![Screenshot of the Login Method section](login-provider.png)
 
-1. Under **Security Settings**, verify that you have configured all 3 security questions. If not, follow the instructions within the [Security Questions](/docs/guides/user-security-controls/#security-questions) guide.
+1. Under **Security Settings**, verify that you have configured all 3 security questions. If not, follow the instructions within the [Security Questions](/docs/products/platform/accounts/guides/user-security-controls/#security-questions) guide.
 
 1. Within the **Two-Factor Authentication** section, click the toggle switch to enable 2FA.
 
@@ -125,7 +125,7 @@ You have successfully disabled the two-factor authentication feature for your Li
 
 ## Recovery Procedure
 
-If you lose access to your 2FA application without first removing 2FA from your account, you will be unable to log in to the Cloud Manager. In this case, you will need to contact Linode Support and provide a few pieces of information to confirm your identity, such as valid answers to your [security questions](/docs/guides/user-security-controls/#security-questions). If you have enabled 2FA prior to June 27th, 2022 and have not configured any security questions, you will need to verify your identity by providing images of your payment card and photo ID.
+If you lose access to your 2FA application without first removing 2FA from your account, you will be unable to log in to the Cloud Manager. In this case, you will need to contact Linode Support and provide a few pieces of information to confirm your identity, such as valid answers to your [security questions](/docs/products/platform/accounts/guides/user-security-controls/#security-questions). If you have enabled 2FA prior to June 27th, 2022 and have not configured any security questions, you will need to verify your identity by providing images of your payment card and photo ID.
 
 ### With Security Questions
 
