@@ -34,7 +34,6 @@ swap:
   nodebalancer: NodeBalancer
   nodebalancers: NodeBalancers
   OpenSUSE: openSUSE
-  pod: Pod
   slackware: Slackware
   ubuntu: Ubuntu
   wordpress: WordPress
