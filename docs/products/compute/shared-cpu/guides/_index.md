@@ -12,7 +12,7 @@ These guides explore targeted topics like how to host a website, setting up a we
 
 ### Shared Linode Basics
 
-- [Getting Started with Linode](/docs/products/platform/accounts/get-started/)
+- [Getting Started with Linode](/docs/guides/getting-started/)
 
 - [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
 

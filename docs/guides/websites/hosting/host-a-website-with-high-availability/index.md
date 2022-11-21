@@ -28,7 +28,7 @@ This guide shows how to host a highly available website with WordPress. However,
 
 ## Before You Begin
 
-1.  Create 9 Compute Instances using the *CentOS 7* distribution, all in the same data center. See our [Getting Started with Linode](/docs/products/platform/accounts/get-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  Create 9 Compute Instances using the *CentOS 7* distribution, all in the same data center. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. Do not create firewall rules yet, as we'll be handling that step in our guide.
 

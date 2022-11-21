@@ -1,19 +1,23 @@
 ---
-description: "Learn how to create an account and use the Linode Cloud Platform."
-aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode/','/guides/getting-started/']
+slug: getting-started
+author:
+  name: Linode
+  email: docs@linode.com
 keywords: ["getting started", "intro", "basics", "first steps", "linode platform"]
-published: 2018-11-05
+description: "Learn how to create an account and use the Linode Cloud Platform."
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode/','/products/platform/accounts/get-started/']
 modified: 2022-06-27
 modified_by:
   name: Linode
-title: Getting Started on the Linode Platform
-linkTitle: Get Started
+published: 2018-11-05
+title: "Getting Started on the Linode Platform"
 show_on_frontpage: true
+title_short: "Getting Started"
+weight: 10
+icon: "book"
 show_on_rss_feed: false
 image: getting-started.jpg
-tab_group_main:
-    weight: 20
-    title: Get Started
 ---
 
 Our goal at Linode is to make cloud computing simple, accessible, and affordable. To this end, the Linode platform offers a variety of user-friendly cloud solutions, all of which have clear and predictable [pricing](https://www.linode.com/pricing/) and can be managed using an intuitive browser-based interface (the [Cloud Manager](https://www.linode.com/products/cloud-manager/)), the command line (the [Linode CLI](https://www.linode.com/products/cli/)), or programmatically through an API (the [Linode API](https://www.linode.com/products/linode-api/)). This guide covers signing up for a Linode account, accessing the Cloud Manager, creating your first services, and understanding how billing works.
@@ -39,7 +43,7 @@ First, you need to create a Linode account to start using our services. If you a
 This phone number provides our team with a secure method of verifying your identity as the owner of the newly created Linode user account. We will only ever use this phone number to verify your identity by sending a verification code as an SMS message. See [Phone Verification](/docs/products/platform/accounts/guides/user-security-controls/#phone-verification) for more details.
 {{</ note >}}
 
-1. Within the **Billing** section, select your payment method and enter your billing address details. Linode accepts credit/debit cards, Google Pay, and PayPal. See the [Payments Methods](/docs/products/platform/billing/guides/payment-methods/) guide to learn more about each of these methods. You must also accept the [Master Services Agreement](https://www.linode.com/legal-msa/).
+1. Within the **Billing** section, select your payment method and enter your billing address details. Linode accepts credit/debit cards, Google Pay, and PayPal. See the [Billing and Payments](/docs/products/platform/billing/#payments) guide to learn more about each of these methods. You must also accept the [Master Services Agreement](https://www.linode.com/legal-msa/).
 
 1. Most accounts are activated instantly and you can start adding services right away. A small number of accounts may require manual review prior to activation.
 

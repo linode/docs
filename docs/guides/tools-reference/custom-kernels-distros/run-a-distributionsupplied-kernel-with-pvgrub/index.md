@@ -25,7 +25,7 @@ PV-GRUB makes it possible to run your own kernel on your Linode, instead of usin
 
 If you'd like to run a custom distro on your Linode in combination with PV-GRUB, please follow our [Custom Distro](/docs/guides/install-a-custom-distribution/) guide before taking these steps.
 
-Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/products/platform/accounts/get-started/) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
+Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/guides/getting-started/) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
 
 ## Ubuntu 13.04 (Raring)
 

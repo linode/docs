@@ -1,7 +1,7 @@
 ---
-title: "Manage Users and User Permissions on an Account"
+title: "Manage Users on a Linode Account"
 description: "Learn how to view, edit, and manage users on a Linode account."
-published: 2022-11-17
+published: 2022-11-21
 aliases: ['/platform/accounts-and-passwords/','/accounts-and-passwords/','/platform/manager/accounts-and-passwords/','/platform/manager/accounts-and-passwords-classic-manager/','/platform/manager/accounts-and-passwords-new-manager/', '/guides/accounts-and-passwords/']
 ---
 

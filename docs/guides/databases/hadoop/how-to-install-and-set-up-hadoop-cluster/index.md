@@ -33,7 +33,7 @@ Hadoop is an open-source Apache project that allows creation of parallel process
 
 ## Before You Begin
 
-1.  Create 3 Linode Compute Instances. They'll be referred to throughout this guide as **node-master**, **node1**, and **node2**. See our [Getting Started with Linode](/docs/products/platform/accounts/get-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  Create 3 Linode Compute Instances. They'll be referred to throughout this guide as **node-master**, **node1**, and **node2**. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
 1.  [Add a Private IP Address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) to each Linode so that your Cluster can communicate with an additional layer of security.
 

@@ -3,6 +3,7 @@ title: Guides
 description: "Documentation for managing Linode accounts"
 tab_group_main:
     weight: 30
+date: 2022-11-21
 ---
 
 ## Basics

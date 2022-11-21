@@ -64,7 +64,7 @@ There are two considerations when creating a new Linode: which data center the L
 
 Determine the Linux distribution your current GCP instance uses and deploy that to your new Linode. If your current deployment uses an older version of a Linux distribution, deploy the newest version available for your new Linode to ensure the latest security enhancements and software availability.
 
-For further details on deploying your new Linux image, follow the [Getting Started with Linode](/docs/products/platform/accounts/get-started/) guide. It is also recommended that you follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide once you have deployed your new image.
+For further details on deploying your new Linux image, follow the [Getting Started with Linode](/docs/guides/getting-started/) guide. It is also recommended that you follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide once you have deployed your new image.
 
 ### Install Software on your Linode
 

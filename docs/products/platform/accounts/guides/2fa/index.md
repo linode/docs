@@ -7,7 +7,7 @@ keywords: ["security", "Linode Cloud Manager", "token"]
 tags: ["security","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-27
-modified: 2022-11-10
+modified: 2022-11-21
 modified_by:
   name: Linode
 title: "Managing 2FA on a Linode User Account"

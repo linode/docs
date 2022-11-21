@@ -33,7 +33,7 @@ This guide makes three assumptions:
 Because this guide is intended to be general in nature, it does not take into account the specific dependencies or frameworks of each individual setup. If you're unsure whether or not your website is compatible with a LAMP configuration, we strongly suggest consulting your web developer before proceeding.
 {{< /note >}}
 
-See our [Getting Started](/docs/products/platform/accounts/get-started/) guide for more information on signing up and setting up your Linode.
+See our [Getting Started](/docs/guides/getting-started/) guide for more information on signing up and setting up your Linode.
 
 ## Prepare Your Domain Name to Move
 

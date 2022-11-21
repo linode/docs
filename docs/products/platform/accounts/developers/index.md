@@ -1,31 +1,32 @@
 ---
 title: Developers
-description: ""
+description: "Learn how to use the Linode API to manage your accounts and users."
 tab_group_main:
     weight: 50
+date: 2022-11-21
 ---
 
 ## Linode API
 
 Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
 
-- [List Invoices](/docs/api/account/#list-invoices)
+- [Account View](/docs/api/account/#account-view)
 
-- [View Invoice](/docs/api/account/#view-invoice)
+- [Account Update](/docs/api/account/#account-update)
 
-- [List Invoice Items](/docs/api/account/#list-invoice-items)
+- [Account Cancel](/docs/api/account/#account-cancel)
 
-- [List Payments](/docs/api/account/#list-payments)
+- [Users List](/docs/api/account/#users-list)
 
-- [Make Payment](/docs/api/account/#make-payment)
+- [Users Create](/docs/api/account/#user-create)
 
-- [View Payment](/docs/api/account/#view-payment)
+- [Users View](/docs/api/account/#user-view)
 
-- [Stage PayPal Payment](/docs/api/account/#stage-paypal-payment)
+- [User Update](/docs/api/account/#user-update)
 
-- [Staged/Approved PayPal Payment Execute](/docs/api/account/#stagedapproved-paypal-payment-execute)
+- [User's Grants View](/docs/api/account/#users-grants-view)
 
-- [Add/Edit Credit Card](/docs/api/account/#addedit-credit-card)
+- [User's Grants Update](/docs/api/account/#users-grants-update)
 
 ## Linode CLI
 

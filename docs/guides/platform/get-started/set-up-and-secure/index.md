@@ -38,7 +38,7 @@ While this guide is optional, it walks you through best practices and covers imp
 
 If you haven't done so already, review the following guides to learn more about using Linode and Compute Instances.
 
-- [Getting Started with Linode](/docs/products/platform/accounts/get-started/)
+- [Getting Started with Linode](/docs/guides/getting-started/)
 - [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/)
 - [Linode Beginner's Guide](/docs/guides/linode-beginners-guide/)
 

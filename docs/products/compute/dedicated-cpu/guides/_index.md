@@ -17,7 +17,7 @@ These guides explore targeted topics like the basics of Dedicated CPU Linodes, a
 
 - [Getting Started with Dedicated CPUs](/docs/guides/getting-started-with-dedicated-cpu/)
 
-- [Getting Started with Linode](/docs/products/platform/accounts/get-started/)
+- [Getting Started with Linode](/docs/guides/getting-started/)
 
 - [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
 

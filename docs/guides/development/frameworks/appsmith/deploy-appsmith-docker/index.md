@@ -27,7 +27,7 @@ In this tutorial, learn how to get started with Appsmith by deploying your own s
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/accounts/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
 1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 

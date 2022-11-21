@@ -110,7 +110,7 @@ If your Linode is not out of memory, continue to the next section.
 
 Disk input/output (I/O) bottlenecks can occur when an application or service is reading or writing an excessive amount of information to disk and the processor has to wait to process the information. High I/O wait can significantly slow down your server. To determine if your server currently has an I/O bottleneck, follow the steps below:
 
-1.  [Log in to your Linode via SSH](/docs/products/platform/accounts/get-started/#connect-to-your-linode-via-ssh).
+1.  [Log in to your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh).
 1.  Enter `top` to access the `top` monitoring utility. The screen shown below appears.
 
     ![Check for Disk I/O bottleneck.](939-troubleshooting2.png)

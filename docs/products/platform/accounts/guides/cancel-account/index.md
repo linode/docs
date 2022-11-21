@@ -3,7 +3,7 @@ title: Cancel Your Account
 description: "Instructions on cancelling your account in the Cloud Manager."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
-modified: 2022-11-10
+modified: 2022-11-21
 modified_by:
   name: Linode
 tags: ["linode platform","cloud manager"]

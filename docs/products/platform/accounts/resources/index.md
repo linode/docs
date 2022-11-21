@@ -3,46 +3,23 @@ title: Resources
 description: "Resources and other information related to Linode accounts including blog posts, community posts, and customer stories."
 tab_group_main:
     weight: 40
+date: 2022-11-21
 ---
 
 ## Blog Posts
 
-- [Introducing Hourly Billing](https://www.linode.com/blog/linode/introducing-hourly-billing/)
+- [GitHub Third-Party Authentication Speeds Up Sign-In](https://www.linode.com/blog/linode/github-third-party-authentication/)
 
-- [PayPal Payments](https://www.linode.com/blog/linode/paypal-payments/)
+- [Google Single Sign-On Now Available on Linode](https://www.linode.com/blog/linode/google-single-sign-on-linode/)
 
-- [The New Linode Cloud: SSDs, Double RAM & much more](https://www.linode.com/blog/linode/linode-cloud-ssds-double-ram-much-more/)
-
-- [New Linode Manager released](https://www.linode.com/blog/linode/new-linode-manager-released/)
+- [Multiple Account Management](https://www.linode.com/blog/linode/multiple-account-management/)
 
 ## Community Posts
 
-- [We’re Upgrading All Accounts to Hourly Billing](https://www.linode.com/community/questions/17898/were-upgrading-all-accounts-to-hourly-billing)
+- [What does a users limited access give you](https://www.linode.com/community/questions/18065/what-does-a-users-limited-access-give-you)
 
-- [is linodes prepaid or postpaid?](https://www.linode.com/community/questions/19389/is-linodes-prepaid-or-postpaid)
+- [How do I manage multiple accounts with the Linode CLI?](https://www.linode.com/community/questions/20161/how-do-i-manage-multiple-accounts-with-the-linode-cli)
 
-- [How does the GPU billing works?](https://www.linode.com/community/questions/19777/how-does-the-gpu-billing-works)
+- [How do I re-generate 2FA backup codes for logging into cloud.linode.com?](https://www.linode.com/community/questions/21086/how-do-i-re-generate-2fa-backup-codes-for-logging-into-cloudlinodecom)
 
-- [how can I change payment type form Credit Card to Debit Card](https://www.linode.com/community/questions/17927/how-can-i-change-payment-type-form-credit-card-to-debit-card)
-
-- [Linode GPU Performance and Pricing/Billing Questions?!](https://www.linode.com/community/questions/20051/linode-gpu-performance-and-pricingbilling-questions)
-
-- [Why did my bill go up?](https://www.linode.com/community/questions/17408/why-did-my-bill-go-up)
-
-- [Do I pay for linodes that are stopped?](https://www.linode.com/community/questions/19828/do-i-pay-for-linodes-that-are-stopped)
-
-- [Why am I receiving multiple invoices per month?](https://www.linode.com/community/questions/18073/why-am-i-receiving-multiple-invoices-per-month)
-
-- [payment](https://www.linode.com/community/questions/18774/payment)
-
-- [Do you offer a trial period?](https://www.linode.com/community/questions/17622/do-you-offer-a-trial-period)
-
-- [How does Object Storage Billing work?](https://www.linode.com/community/questions/19962/how-does-object-storage-billing-work)
-
-Browse our [Linode Community Questions & Answers page](https://www.linode.com/community/questions/) for more [related questions](https://www.linode.com/community/questions/search?query=billing).
-
-## Customer Stories
-
-- [Craft of Code Bernd Hilmar](https://www.linode.com/spotlight/bernd-hilmar/)
-
-- [Craft of Code NSoft](https://www.linode.com/spotlight/nsoft/)
+- [Yubikey as 2FA option for Manager?](https://www.linode.com/community/questions/17374/yubikey-as-2fa-option-for-manager)

@@ -49,7 +49,7 @@ If there is data on the compromised Linode that you need to retain, you can use 
 
 You can use a second Linode for the most seamless transition to a new system.
 
-1.  Add a new Linode to your account. See the [Getting Started](/docs/products/platform/accounts/get-started/) guide for instructions.
+1.  Add a new Linode to your account. See the [Getting Started](/docs/guides/getting-started/) guide for instructions.
 2.  Set a strong password for **root** and all user accounts, making sure not to reuse any passwords from the compromised system.
 3.  Upgrade all system packages:
 

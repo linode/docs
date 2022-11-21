@@ -30,7 +30,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/accounts/get-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
 1.  [Install the `screen` utility](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/#installing-gnu-screen), which will be used later when running SteamCMD. For more information about how screen works, review the rest of our [Using GNU Screen to Manage Persistent Terminal Sessions](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) guide.
 

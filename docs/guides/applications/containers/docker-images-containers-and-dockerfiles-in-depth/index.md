@@ -24,7 +24,7 @@ external_resources:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/products/platform/accounts/get-started/) guide, create and update a Linode, and install Docker. Alternatively, you can quickly deploy an updated, Docker-enabled Linode with the [Docker Marketplace App](https://www.linode.com/marketplace/apps/linode/docker/).
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide, create and update a Linode, and install Docker. Alternatively, you can quickly deploy an updated, Docker-enabled Linode with the [Docker Marketplace App](https://www.linode.com/marketplace/apps/linode/docker/).
 
 2.  Ensure your Linode is secure by following our guide on [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).
 
