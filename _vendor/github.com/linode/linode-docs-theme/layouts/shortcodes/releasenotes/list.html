@@ -5,7 +5,7 @@
 {{ end -}}
 {{ $section := site.GetPage (path.Join "release-notes" $path) }}
 {{ if not $section -}}
-  {{ errorf "section %q not found in %s" $path .Position -}}
+  {{ warnf "section %q not found in %s" $path .Position -}}
 {{ end -}}
 {{ $pages := $section.RegularPagesRecursive }}
 {{ if $limit -}}
