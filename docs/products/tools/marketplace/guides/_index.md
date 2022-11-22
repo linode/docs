@@ -61,6 +61,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [LiteSpeed cPanel](/docs/products/tools/marketplace/guides/litespeed-cpanel/)
 - [LiveSwitch](/docs/products/tools/marketplace/guides/liveswitch/)
 - [MagicSpam](/docs/products/tools/marketplace/guides/magicspam/)
+- [Mastodon](/docs/products/tools/marketplace/guides/mastodon/)
 - [MEAN Stack](/docs/products/tools/marketplace/guides/mean-stack/)
 - [MERN Stack](/docs/products/tools/marketplace/guides/mern-stack/)
 - [Microweber](/docs/products/tools/marketplace/guides/microweber)
