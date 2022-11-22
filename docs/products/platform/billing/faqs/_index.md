@@ -4,6 +4,7 @@ description: "Find quick answers to some of the most commonly asked billing ques
 tab_group_main:
     weight: 60
 published: 2022-10-28
+aliases: ['/products/tools/billing/faqs/']
 ---
 
 ## I’m not using my services but I’m still being charged. How do I stop this?
