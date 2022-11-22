@@ -3,18 +3,17 @@ slug: freeipa-for-identity-management
 author:
   name: Hackersploit
 description: "Set up a centralized identity and authentication management server with FreeIPA, the upstream open-source project for Red Hat Identity Management."
-og_description: "Set up a centralized identity and authentication management server with FreeIPA, the upstream open-source project for Red Hat Identity Management."
 keywords: ["freeipa","identity management", "authentication","security"]
 aliases: ['/security/authentication/free-ipa-for-identity-management/','/security/free-ipa-for-identity-management/']
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-title: "How to Set Up a FreeIPA Server and Client"
-h1_title: "Setting up a FreeIPA Server and Client"
-enable_h1: true
+title: "Set Up a FreeIPA Server and Client"
+title_meta: "How to Set Up a FreeIPA Server and Client"
 external_resources:
  - '[FreeIPA Documentation](https://www.freeipa.org/page/Documentation)'
  - '[Kerberos Homepage](https://web.mit.edu/kerberos/)'
 published: 2021-03-26
+modified: 2022-11-22
 modified_by:
   name: Linode
 image: FreeIPA_IDandAuth.png
@@ -48,37 +47,45 @@ First, the FreeIPA Server and Client Linodes must be prepared for the installati
 
 1. Set the hostname to match the domain you will be using for the FreeIPA server or client:
 
-       sudo hostname ipa.example.com
+    ```command
+    sudo hostname ipa.example.com
+    ```
 
 1. [Edit the systems hosts file](/docs/guides/using-your-systems-hosts-file/) to reflect the new hostname.
 
-  {{< file "/etc/hosts"  conf >}}
-127.0.0.1 localhost.localdomain localhost
-203.0.113.10 server.example.com example-hostname
-{{< /file >}}
+    ```file {title="/etc/hosts" lang="conf"}
+    127.0.0.1 localhost.localdomain localhost
+    203.0.113.10 server.example.com example-hostname
+    ```
 
 1. FreeIPA requires access to the following ports for the services listed below:
 
-| Ports | Service | Protocol |
-| ----------- | ----------- | ----------- |
-| 80, 443     | HTTP/HTTPS | TCP |
-| 389, 636   | LDAP/LDAPS | TCP |
-| 88, 464 | Kerberos | TCP/UDP|
-| 53 | DNS | TCP/UDP |
-| 123 | NTP | UDP |
+    | Ports | Service | Protocol |
+    | ----------- | ----------- | ----------- |
+    | 80, 443     | HTTP/HTTPS | TCP |
+    | 389, 636   | LDAP/LDAPS | TCP |
+    | 88, 464 | Kerberos | TCP/UDP|
+    | 53 | DNS | TCP/UDP |
+    | 123 | NTP | UDP |
 
-  All of the above ports can be opened using the commands in[firewalld cmd list](/docs/guides/introduction-to-firewalld-on-centos/). Type the following command:
+    All of the above ports can be opened using the commands in[firewalld cmd list](/docs/guides/introduction-to-firewalld-on-centos/). Type the following command:
 
+    ```command
     firewall-cmd --permanent --add-port={80/tcp,443/tcp,389/tcp,636/tcp,88/tcp,464/tcp,53/tcp,88/udp,464/udp,53/udp,123/udp}
+    ```
 
 1. Reload the firewall rules to save and activate them:
 
-       firewall-cmd --reload
+    ```command
+    firewall-cmd --reload
+    ```
 
 1. If installing on CentOS 8 or CentOS Stream, the DL1 module stream must be manually installed and synced to be able to install the FreeIPA server and client in a later step:
 
-         dnf module enable idm:DL1
-         dnf distro-sync
+    ```command
+    dnf module enable idm:DL1
+    dnf distro-sync
+    ```
 
 ### Set Up the FreeIPA Server
 
@@ -86,43 +93,53 @@ On the server Linode, install and set up the FreeIPA server with the following c
 
 1. Download the FreeIPA server software:
 
-       yum install ipa-server
+    ```command
+    yum install ipa-server
+    ```
 
-1.  Once the software has been downloaded, begin the installation process by entering the following command:
+1. Once the software has been downloaded, begin the installation process by entering the following command:
 
-        sudo ipa-server-install
+    ```command
+    sudo ipa-server-install
+    ```
 
-1.  Respond to the prompts with your desired FreeIPA configuration. Below are explanations on the configuration options and what options should be entered.
+1. Respond to the prompts with your desired FreeIPA configuration. Below are explanations on the configuration options and what options should be entered.
 
-| Prompt | Response |
-| ----------- | ----------- |
-| Do you want to configure integrated DNS (BIND)? | Bind can be set up to provide additional DNS support to the FreeIPA sever. Since the FreeIPA configuration being used as part of this tutorial is relying on external DNS using Linode's DNS Manager, `no` is the recommended choice. |
-| Server host name | ipaserver.example.com |
-| Please confirm the domain name. | example.com |
-| Please provide a realm name. | When used with Kerberos, a `Realm` represents the domain that the server has authority over. The realm name should be the same as the primary domain being used for the FreeIPA server. |
-| Directory Manager Password | Enter a secure Password of your choice for the Directory Manager. The Directory Manager is an administrative user with full access permissions to the directory server. The password must be at least 8 characters long. |
-| IPA Admin Password | The password of the administrative user account for the IPA server. |
-| Continue to configure the system with these values? | After reviewing your settings, enter `yes` to continue. |
+    | Prompt | Response |
+    | ----------- | ----------- |
+    | Do you want to configure integrated DNS (BIND)? | Bind can be set up to provide additional DNS support to the FreeIPA sever. Since the FreeIPA configuration being used as part of this tutorial is relying on external DNS using Linode's DNS Manager, `no` is the recommended choice. |
+    | Server host name | ipaserver.example.com |
+    | Please confirm the domain name. | example.com |
+    | Please provide a realm name. | When used with Kerberos, a `Realm` represents the domain that the server has authority over. The realm name should be the same as the primary domain being used for the FreeIPA server. |
+    | Directory Manager Password | Enter a secure Password of your choice for the Directory Manager. The Directory Manager is an administrative user with full access permissions to the directory server. The password must be at least 8 characters long. |
+    | IPA Admin Password | The password of the administrative user account for the IPA server. |
+    | Continue to configure the system with these values? | After reviewing your settings, enter `yes` to continue. |
 
 1. The installation process will begin, and you should see every step being outlined in your terminal. This process can take between 3-5 minutes to complete.
 
 1. Once the installation is complete, you will you will be provided with instructions on how to create a Kerberos ticket for the admin user, allowing you to begin working with Kerberos. This can be done by running the following command:
 
-       kinit admin
+    ```command
+    kinit admin
+    ```
 
-{{< note >}}
+    {{< note >}}
 The admin ticket created with `kinit admin` is set to expire in 24 hours following ticket creation. To re-create another admin ticket, enter `kinit admin` again at any time.
 {{< /note >}}
 
-1.  At the prompt, enter the `IPA Admin Password` to proceed.
+1. At the prompt, enter the `IPA Admin Password` to proceed.
 
 1. To view all active Kerberos tickets along with statistics, enter the following command:
 
-       klist
+    ```command
+    klist
+    ```
 
 1. Create a new user by entering the following command and following the prompts that appear in the terminal:
 
-       ipa user-add --password
+    ```command
+    ipa user-add --password
+    ```
 
 New users can be created with the above command at any time.
 
@@ -136,32 +153,40 @@ On the client Linode, install and set up the FreeIPA client with the following c
 
 1. Download the FreeIPA client software:
 
-       sudo yum install freeipa-client
+    ```command
+    sudo yum install freeipa-client
+    ```
 
-1.  Once the software has been downloaded, begin the installation process by entering the following command:
+1. Once the software has been downloaded, begin the installation process by entering the following command:
 
-        sudo ipa-client-install --mkhomedir
+    ```command
+    sudo ipa-client-install --mkhomedir
+    ```
 
 1. Respond to the prompts with your desired FreeIPA client configuration. Below are explanations on the configuration options and what options should be entered.
 
-| Prompt | Response |
-| ----------- | ----------- |
-| Provide the domain name of your IPA server (ex: example.com) | The primary domain used for the server installation. |
-| Provide your IPA server name (ex: ipa.example.com). | The full domain used for the server installation including the subdomain. |
-| If you proceed with the installation, services will be configured to always access the discovered server for all operations and will not fail over to other servers in case of failure.
-Proceed with fixed values and no DNS discovery? |  This option is informing the user that the server is _not_ configured with high availability, and it is safe to proceed by entering `yes`. More information on high availability on FreeIPA can be found in FreeIPA's [Official Documentation](https://www.freeipa.org/page/V4/Replica_Setup) |
-| Client Hostname | The full domain, including the subdomain of the Client server currently being configured. |
-| Continue to configure the system with these values? | The values for this freeIPA client installation appear in the terminal. Review these configuration options and enter `yes` to approve them and proceed with the installation. |
-| User authorized to enroll computers. | Enter the username of a Kerberos user able to enroll new computers. The `admin` user may be entered. |
-| Password for user@example.com. | The Password for the Kerberos user entered at the previous step. This will be the same password set on the FreeIPA server. |
+    | Prompt | Response |
+    | ----------- | ----------- |
+    | Provide the domain name of your IPA server (ex: example.com) | The primary domain used for the server installation. |
+    | Provide your IPA server name (ex: ipa.example.com). | The full domain used for the server installation including the subdomain. |
+    | If you proceed with the installation, services will be configured to always access the discovered server for all operations and will not fail over to other servers in case of failure.
+    Proceed with fixed values and no DNS discovery? |  This option is informing the user that the server is _not_ configured with high availability, and it is safe to proceed by entering `yes`. More information on high availability on FreeIPA can be found in FreeIPA's [Official Documentation](https://www.freeipa.org/page/V4/Replica_Setup) |
+    | Client Hostname | The full domain, including the subdomain of the Client server currently being configured. |
+    | Continue to configure the system with these values? | The values for this freeIPA client installation appear in the terminal. Review these configuration options and enter `yes` to approve them and proceed with the installation. |
+    | User authorized to enroll computers. | Enter the username of a Kerberos user able to enroll new computers. The `admin` user may be entered. |
+    | Password for user@example.com. | The Password for the Kerberos user entered at the previous step. This will be the same password set on the FreeIPA server. |
 
 FreeIPA is now successfully installed as both a client and server. To confirm this, authenticate to the server as a user created previously by entering the following command to switch to your user:
 
-       su - username
+```command
+su - username
+```
 
 Provided a kerberos ticket has been created for the user using the `kinit username` command, you will additionally be able to authenticate to any client using kerberos tickets. Enter the following command to open an ssh session from the server Linode to the client to confirm:
 
-       ssh -k user@client.example.com
+```command
+ssh -k user@client.example.com
+```
 
 Kerberos tickets enable you to authenticate to any client using tickets instead of providing credentials. In this case,you will be able to log in to the FreeIPA client via SSH without providing any credentials, as the identity of both hosts has already been validated via FreeIPA and Kerberos.
 
@@ -169,7 +194,7 @@ Kerberos tickets enable you to authenticate to any client using tickets instead 
 
 The kerberos admin server will be freely accessible via it's domain in a web browser. Credentials created during installation can then be used to log in as the admin user via FreeIPA's web ui. Enter the admin server domain into your browser and you will see a page similar to the following:
 
-  ![freeipa server home.](freeipa-server-home.png "freeipa server home.")
+![freeipa server home.](freeipa-server-home.png "freeipa server home.")
 
 Once logged in, you will have access to many of the tools and utilities available to FreeIPA from the command line directly on a more user friendly web interface.
 
@@ -177,7 +202,4 @@ Once logged in, you will have access to many of the tools and utilities availabl
 The steps in this guide rely on a self-signed SSL certificate, and users may see an error message in their web browser claiming that the SSL certificate is not valid. While the self-signed certificate will not be recognized by any certificate authority, it will still provide TLS/SSL encryption. Due to this, the error message can be ignored.
 {{< /note >}}
 
-
 Following installation, users can add additional clients and users, create more fine tuned Kerberos tickets, adjust security policies, and more.
-
-
