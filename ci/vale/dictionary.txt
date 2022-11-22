@@ -1955,6 +1955,7 @@ spf1
 splunk
 spm
 spork
+spotify
 sql
 sqlplus
 sqreen
