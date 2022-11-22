@@ -41,6 +41,12 @@ resource "linode_instance" "rcdc_gateway" {
     host = self.ip_address
   }
 
+  provisioner "remote-exec" {
+    inline = [
+      "mkdir -p /etc/nginx/sites-available"
+    ]
+  }
+
   provisioner "file" {
     source = "documents/rcdc-gateway-${count.index + 1}-nginx.conf"
     destination = "/etc/nginx/sites-available/rcdc-gateway.conf"
