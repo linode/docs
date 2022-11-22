@@ -17,7 +17,7 @@ enable_h1: true
 tags: ["linode platform"]
 ---
 
-Linode strives to provide transparent and uncomplicated pricing structures and billing policies. As a supplement to our [Pricing](https://www.linode.com/pricing/) page, read through this guide to understand how we bill for services and how you can pay for these services. For instructions on how to manage your billing in the Cloud Manager, see the [Manage Billing in Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/) guide. If you have a question that isn't answered in either of these guides, don't hesitate to [contact Support](https://www.linode.com/support/).
+Linode strives to provide transparent and uncomplicated pricing structures and billing policies. As a supplement to our [Pricing](https://www.linode.com/pricing/) page, read through this guide to understand how we bill for services and how you can pay for these services. For instructions on how to manage your billing in the Cloud Manager, see the [Manage Billing in Cloud Manager](/docs/products/platform/billing/guides/) guide. If you have a question that isn't answered in either of these guides, don't hesitate to [contact Support](https://www.linode.com/support/).
 
 ## Billing
 
@@ -31,7 +31,7 @@ Linode uses a hybrid hourly billing model that is simple and flexible. It enable
 
 If your services stay the same month over month, your bill remains predictable. You are never billed more than the monthly rate for each service, excluding [network transfer overages](/docs/guides/network-transfer/). If you use a service for just part of the month, hourly billing enables you to only be charged for the time the service is present on the account.
 
-\*Review the [Viewing Current Balance](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information) section of the Manage Billing in Cloud Manager guide to monitor your account balance and accrued charges throughout the month.
+\*Review the [Access Billing Information](/docs/products/platform/billing/guides/access-billing/) guide to monitor your account balance and accrued charges throughout the month.
 
 ### Example Billing Scenarios
 
@@ -55,7 +55,7 @@ You may receive a mid-month bill from Linode if you reach a certain threshold of
 
 ### Will I Be Billed For Powered Off or Unused Services?
 
-**Charges will accrue for any service present on an account, even if it is powered off or otherwise not actively being used.**  This includes Linode Compute Instances that have been powered off as the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service](/docs/guides/manage-billing-in-cloud-manager/#removing-services) from your account.
+**Charges will accrue for any service present on an account, even if it is powered off or otherwise not actively being used.**  This includes Linode Compute Instances that have been powered off as the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service](/docs/products/platform/billing/guides/stop-billing/) from your account.
 
 ## Payments
 
@@ -75,19 +75,19 @@ To add a PayPal account to your Google Pay account, you currently must do so thr
 
 - **Check, ACH, or wire transfer:** Please [contact Support](https://www.linode.com/support/) if you wish to pay through one of these methods.
 
-See [Adding a New Payment Method](/docs/guides/manage-billing-in-cloud-manager/#adding-a-new-payment-method) for instructions on adding a new payment method to your account.
+See [Adding a New Payment Method](/docs/products/platform/billing/guides/payment-methods/#add-a-new-payment-method) for instructions on adding a new payment method to your account.
 
 ### Manual Payments
 
-At any time, you can make a manual one-time payment to add funds to your account. This is used to pay a past-due balance or to *pre-pay* for services, which adds a positive account balance that will be used towards future invoices. Review the [Making a One-Time Payment](/docs/guides/manage-billing-in-cloud-manager/#making-a-one-time-payment) section of the Manage Billing in Cloud Manager guide for instructions when submitting a manual payment.
+At any time, you can make a manual one-time payment to add funds to your account. This is used to pay a past-due balance or to *pre-pay* for services, which adds a positive account balance that will be used towards future invoices. Review the [Making a One-Time Payment](/docs/products/platform/billing/guides/make-a-payment/) section of the Manage Billing in Cloud Manager guide for instructions when submitting a manual payment.
 
 ### Refunds
 
-If you are unsatisfied with your service for any reason, you can [cancel your account](/docs/guides/manage-billing-in-cloud-manager/#cancelling-your-account) within the first seven days and request a full refund. You are entitled to receive a refund of any positive account balance not added through promotional credits. To request this refund, simply add a note to the cancellation form. When cancelling an account after the first seven days, there is a $5 processing fee. Only payments made within the last 180 days are eligible.
+If you are unsatisfied with your service for any reason, you can [cancel your account](/docs/products/platform/accounts/guides/cancel-account/) within the first seven days and request a full refund. You are entitled to receive a refund of any positive account balance not added through promotional credits. To request this refund, simply add a note to the cancellation form. When cancelling an account after the first seven days, there is a $5 processing fee. Only payments made within the last 180 days are eligible.
 
 ## Tax Information
 
-Review our [Tax Information](/docs/guides/tax-information/) guide for information about which taxes Linode may charge.
+Review our [Tax Information](/docs/products/platform/billing/guides/tax-information/) guide for information about which taxes Linode may charge.
 
 ## Referral Program
 
