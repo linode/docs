@@ -68,15 +68,15 @@ These additional guides help you with targeted topics like how to manage your ac
 
 - [Understanding the Cloud Manager Events and Activity Feeds](/docs/guides/cloud-manager-events-and-activity-feeds/)
 
-- [Manage Billing in Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/)
+- [Manage Billing in Cloud Manager](/docs/products/platform/billing/guides/)
 
-- [Cancelling Your Account](/docs/guides/how-to-cancel-your-account/)
+- [Cancelling Your Account](/docs/products/platform/accounts/guides/cancel-account/)
 
-- [Changing Your Email Address](/docs/guides/how-to-change-your-email/)
+- [Changing Your Email Address](/docs/products/platform/accounts/guides/change-user-email/)
 
 - [Tags and Groups](/docs/guides/tags-and-groups/)
 
-- [Linode Cloud Manager Security Controls](/docs/guides/user-security-controls/)
+- [Linode Cloud Manager Security Controls](/docs/products/platform/accounts/guides/user-security-controls/)
 
 - [Manage SSH Keys](/docs/products/tools/cloud-manager/guides/manage-ssh-keys/)
 

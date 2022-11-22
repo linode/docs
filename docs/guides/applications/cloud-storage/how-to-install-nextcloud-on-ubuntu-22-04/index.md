@@ -63,7 +63,7 @@ See the [Nextcloud feature comparison](https://nextcloud.com/compare/) for a mor
 1.  To properly use Nextcloud and secure the installation with HTTPS, configure a domain name for the server. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installing the Nextcloud Prerequisites

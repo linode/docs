@@ -35,7 +35,7 @@ Be sure to select a distribution that's compatible with the NVIDIA CUDA Toolkit.
 
     - Access monitoring statistics
 
-    - Update your [billing](/docs/guides/manage-billing-in-cloud-manager/) and [account](/docs/guides/accounts-and-passwords/) information
+    - Update your [billing](/docs/products/platform/billing/guides/) and [account](/docs/products/platform/accounts/guides/manage-users/) information
 
     - Add additional Linode services, like [Block Storage](/docs/products/storage/block-storage/)
 

@@ -125,7 +125,7 @@ All new Linodes are set to UTC time by default. However, you may prefer your Lin
 
 ### Most Distributions
 
-*This includes CentOS Stream 8 (and newer), CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), Fedora, and Arch. These instructions also work for most Ubuntu, Debian, and OpenSuse distributions, though other methods may be preferred in those cases.*
+*This includes CentOS Stream 8 (and newer), CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), Fedora, and Arch. These instructions also work for most Ubuntu, Debian, and openSUSE distributions, though other methods may be preferred in those cases.*
 
 1.  Use `timedatectl` to output a list of available timezones.
 
@@ -176,7 +176,7 @@ The instructions under the [Most Distributions](#most-distributions-1) section a
 
 #### openSUSE
 
-The instructions under the [Most Distributions](#most-distributions-1) section above (which outlines the `timedatectl` command) are valid. OpenSuse also has a more friendly way to select a timezone, discussed below.
+The instructions under the [Most Distributions](#most-distributions-1) section above (which outlines the `timedatectl` command) are valid. openSUSE also has a more friendly way to select a timezone, discussed below.
 
 1.  Open the YaST2 timezone selector tool.
 
@@ -220,7 +220,7 @@ After you've made the change below, you may need to log out and log back in agai
 
 ### Most Distributions
 
-*This includes Ubuntu 16.04 (and newer), CentOS Stream 8 (and newer), CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), Debian 8 (and newer), Fedora, OpenSuse, Kali Linux, and Arch.*
+*This includes Ubuntu 16.04 (and newer), CentOS Stream 8 (and newer), CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), Debian 8 (and newer), Fedora, openSUSE, Kali Linux, and Arch.*
 
 Replace `example-hostname` with one of your choice.
 
@@ -492,4 +492,4 @@ PasswordAuthentication yes
 
 These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using [intrusion detection](/docs/guides/ossec-ids-debian-7/), installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control), [fine tuning sudo access](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user), [removing exposed services](/docs/guides/remove-unused-network-facing-services), and [more](/docs/security/).
 
-Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/guides/migrate-from-shared-hosting-to-linode/) to [enabling two-factor authentication](/docs/guides/user-security-controls/) to [hosting a website](/docs/guides/hosting-a-website-ubuntu-18-04/).
+Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/guides/migrate-from-shared-hosting-to-linode/) to [enabling two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/) to [hosting a website](/docs/guides/hosting-a-website-ubuntu-18-04/).
