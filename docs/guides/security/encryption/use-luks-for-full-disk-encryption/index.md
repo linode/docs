@@ -35,8 +35,8 @@ Please note that this is an non-standard configuration. Troubleshooting encrypte
 ## Before you Begin
 
 1.  Create a Linode in the data center of your choice.
-
-2.  Determine the installation media you'll be using to deploy your custom distribution, and take note of its size. In this example, we're using Debian's [network boot](http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/) option.
+2.  [Delete the disks](/docs/guides/disks-and-storage/#deleting-a-disk) in the Linode that you created.
+3.  Determine the installation media you'll be using to deploy your custom distribution, and take note of its size. In this example, we're using Debian's [network boot](http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/) option.
 
 ## Prepare Your Linode for Encrypted Debian Installation
 
