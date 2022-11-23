@@ -97,7 +97,7 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
 ## Configure Docker Compose
 
-1. Using your preferred text editor, open the `docker-compose.yml` file.
+1. Using your preferred text editor, open the `docker-compose.yml` file located in the `mastodon` directory.
 
 1. Comment out the `build` lines (adding `#` in front of each), and append a release number to the end of each `image: tootsuite/mastodon` line as here: `tootsuite/mastodon:v3.3.0`.
 
@@ -116,34 +116,25 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
         cp .env.production.sample .env.production
 
-1. Use the following commands to generate a `SECRET_KEY_BASE` and `OTP_SECRET`.
-Copy the output, and paste it into the `SECRET_KEY_BASE` and `OTP_SECRET` lines in the `.env.production` file.
+1. Use Docker and Mastodon to generate a new value for the `SECRET_KEY_BASE` setting:
 
-        echo SECRET_KEY_BASE=$(docker-compose run --rm web bundle exec rake secret)
+        SECRET_KEY_BASE=$(docker-compose run --rm web bundle exec rake secret)
+
+    This creates a string of random characters. If you encounter an error in the next step, run the command again to generate another string.
+
+1. Insert the `SECRET_KEY_BASE` setting into `.env.production` using the `sed` command:
+
         sed -i -e "s/SECRET_KEY_BASE=/&${SECRET_KEY_BASE}/" .env.production
-        echo OTP_SECRET=$(docker-compose run --rm web bundle exec rake secret)
-        sed -i -e "s/OTP_SECRET=/&${OTP_SECRET}/" .env.production
 
-    {{< output >}}
-$ echo SECRET_KEY_BASE=$(docker-compose run --rm web bundle exec rake secret)
-Creating mastodon_web_run ... done
-SECRET_KEY_BASE=8bc28644a18cc8f8e30ba30087b71e29ed0b53fcdfc6
+1. Combine the previous two actions into one step to set a value for the `OTP_SECRET` setting in `.env.production`:
 
-$ echo OTP_SECRET=$(docker-compose run --rm web bundle exec rake secret)
-Creating mastodon_web_run ... done
-OTP_SECRET=28424e7560ad65d3af38e6d35f9ee7c7a3dfc8475ce2120ff7
-{{< /output >}}
+        sed -i "s/OTP_SECRET=$/&$(docker-compose run --rm web bundle exec rake secret)/" .env.production
 
-1. Generate the `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY` using the following command, and again copy the output, and paste it into the `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY` lines in the `.env.production` file.
+1. Generate values for `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY`settings:
 
-         docker-compose run --rm web bundle exec rake mastodon:webpush:generate_vapid_key
+        docker-compose run --rm web bundle exec rake mastodon:webpush:generate_vapid_key
 
-    {{< output >}}
-$ docker-compose run --rm web bundle exec rake mastodon:webpush:generate_vapid_key
-Creating mastodon_web_run ... done
-VAPID_PRIVATE_KEY=yzqlIVTpiNLtWXMHUTRuQIZNCv4hT0BkoMcsMU5-dz8=
-VAPID_PUBLIC_KEY=BAy1_TgcWYBei7pXcX0MX-z0x-Cc85Fl9p-FhpDE4_BWT=
-{{< /output >}}
+1. Copy the output from the previous command, open `.env.production` in your text editor, and paste the command output into the two lines for `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY`.
 
 1. Fill out the remaining fields of the `.env.production` file:
 
