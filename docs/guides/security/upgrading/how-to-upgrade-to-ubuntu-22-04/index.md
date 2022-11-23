@@ -23,23 +23,23 @@ external_resources:
 - '[New features in Ubuntu 22.04](https://ubuntu.com/blog/ubuntu-22-04-lts-whats-new-linux-desktop)'
 ---
 
-Although the Ubuntu 20.04 *long term support* (LTS) release is still supported, users should upgrade Ubuntu to the more recent 22.04 LTS release. Upgrading to the new release ensures the system can access the most recent security upgrades and application packages. This guide describes how to perform an inline upgrade from Ubuntu release 20 or 21 to 22.04.
+Although Ubuntu 20.04 LTS (*Long Term Support*) is still supported, users should upgrade Ubuntu to the more recent 22.04 LTS. Upgrading to the new release ensures the system can access the most recent security upgrades and application packages. This guide describes how to perform an inline upgrade from Ubuntu 20.xx or 21.xx to 22.04.
 
 ## New Features in Ubuntu 22.04
 
-The new [22.04 Ubuntu release](https://ubuntu.com/blog/ubuntu-22-04-lts-whats-new-linux-desktop) from Canonical is also referred to as Jammy Jellyfish. Ubuntu generally supports their long term support releases for five years, which means Ubuntu 22.04 is supported until April 2027. This is superior to the Ubuntu 20.04 schedule, where standard support ends in April 2025. Only standard support releases receive new security patches and bug fixes. In addition, most application developers test their programs more thoroughly against the latest LTS release.
+[Ubuntu 22.04 LTS](https://ubuntu.com/blog/ubuntu-22-04-lts-whats-new-linux-desktop) from Canonical is also referred to as "Jammy Jellyfish". Ubuntu generally supports their LTS releases for five years, which means Ubuntu 22.04 is supported until April 2027. This is superior to the Ubuntu 20.04 schedule, where support ends in April 2025. In addition, most application developers test their programs more thoroughly against the latest LTS release.
 
 In addition to the longer support period, Ubuntu 22.04 includes these other features and improvements:
 
-- Enhanced performance and better power efficiency.
-- A better display, featuring double the frame rate.
-- New power management options.
-- Updated security patches.
-- GNOME 42, which includes a streamlined user interface, on-screen notifications, and better multi-monitor support.
-- Increased customization options.
-- Firefox availability through a Snap package.
-- New releases of applications and toolchains. Updates and enhancements are available for Apache, MySQL, Perl, PHP, PostgreSQL, Python, and Ruby.
-- A new version (5.15) of the Linux Kernel.
+-   Enhanced performance and better power efficiency.
+-   A better display, featuring double the frame rate.
+-   New power management options.
+-   Updated security patches.
+-   GNOME 42, which includes a streamlined user interface, on-screen notifications, and better multi-monitor support.
+-   Increased customization options.
+-   Firefox availability through a Snap package.
+-   New releases of applications and toolchains. Updates and enhancements are available for Apache, MySQL, Perl, PHP, PostgreSQL, Python, and Ruby.
+-   A new version (5.15) of the Linux Kernel.
 
 ## Inline Upgrade versus Clean Install
 
@@ -49,13 +49,13 @@ There are two ways to upgrade a node. These are the *inline upgrade* method and 
 
 In an inline upgrade, the primary node is upgraded in place using either the GUI or command line directives. Ubuntu downloads and installs the new release of the operating system on the same system. The files and applications on the system are left unchanged and the node can immediately resume operations after the upgrade. Some of the advantages and disadvantages of this method, and other factors to consider, are as follows:
 
-- This method is the easiest and fastest method of upgrading a node. Depending on the size of the new release, the node might be fully operational in as little as 15 minutes.
-- The Ubuntu upgrade procedure is well-tested and generally reliable.
-- Users do not have to remember to reinstall a critical program or import data from the original node.
-- It is impossible to avoid some down time while the updates are installed and the system reboots and initializes. During this period, any websites and applications hosted on the node are inaccessible. It is crucial to declare a maintenance window or switch to a backup system for the duration of the upgrade.
-- There is a greater chance of complications. Some applications might not work properly after the upgrade and might have to be reinstalled. There is also a greater chance of data corruption.
-- This method of upgrading tends to retain "digital residue". This residue includes unnecessary or outdated packages, patches, and data.
-- This method is recommended if the system is only one release behind and is mainly running a widely-used and tested configuration such as a LAMP stack. An inline upgrade might run into more problems when the system configuration is complicated or includes in-house applications.
+-   This is the easiest and fastest method of upgrading a node. Depending on the size of the new release, the node might be fully operational in as little as 15 minutes.
+-   The Ubuntu upgrade procedure is well tested and generally reliable.
+-   Users do not have to remember to reinstall a critical program or import data from the original node.
+-   It is impossible to avoid some downtime while the updates are installed and the system reboots and initializes. During this period, any websites or applications hosted on the node are inaccessible. It is crucial to declare a maintenance window or switch to a backup system for the duration of the upgrade.
+-   There is a greater chance of complications. Some applications might not work properly after the upgrade and might have to be reinstalled. There is also a greater chance of data corruption.
+-   This method of upgrading tends to retain "digital residue". This includes unnecessary or outdated packages, patches, and data.
+-   This method is recommended if the system is only one release behind and is mainly running a widely used and tested configuration such as a LAMP stack. An inline upgrade might run into more problems when the system configuration is complicated or includes in-house applications.
 
 {{< caution >}}
 Although this process upgrades the Ubuntu operating system and most common programs, it does not necessarily upgrade every application. It is difficult to predict how the upgrade might affect these programs.
@@ -63,7 +63,7 @@ Although this process upgrades the Ubuntu operating system and most common progr
 
 ### The Clean Install Method
 
-The clean install method takes the opposite approach to the inline upgrade. This approach deploys a brand new Linode running the Ubuntu 22.04 release. All necessary applications are reinstalled and the backed up data from the old node is copied over. After the new node is fully configured and operational, the old node is decommissioned.
+The clean install method takes the opposite approach to the inline upgrade. This approach deploys a brand new Linode running the Ubuntu 22.04 release. All necessary applications are reinstalled and the backed-up data from the old node is copied over. After the new node is fully configured and operational, the old node is decommissioned.
 
 The pros and cons of a clean install are as follows:
 
@@ -80,7 +80,7 @@ For an in-depth explanation of the clean install method, see the [Linode guide t
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Ensure there is at least 20 GB of disk space available. Verify the amount of disk availability using the `df -Th` command.
+1.  Ensure there is at least 20 GB of disk space available. Verify the amount of disk space availability using the `df -Th` command.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -88,9 +88,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## How to Upgrade to Ubuntu 22.04 LTS
 
-This guide is designed for users who want to upgrade from Ubuntu 20.04 to Ubuntu 22.04 LTS. But it is generally applicable for upgrades to Ubuntu 22.04 from any release of Ubuntu 20 or 21.
+This guide is designed for users who want to upgrade from Ubuntu 20.04 LTS to Ubuntu 22.04 LTS. However, it is generally applicable for upgrades to Ubuntu 22.04 from any release of Ubuntu 20.xx or 21.xx.
 
-If the Linode is running Ubuntu 18 or any earlier release, first upgrade it to the Ubuntu 20.04 stream. Then perform the steps in this guide to upgrade from Ubuntu 20.04 to the 22.04 LTS. See the [Linode guide to Upgrade to Ubuntu 20.04](https://www.linode.com/docs/guides/upgrade-to-ubuntu-20-04/) for more information. Alternatively, if the Ubuntu software and applications are very old, it might make more sense to perform a clean install instead.
+If the Linode is running Ubuntu 18.xx or any earlier release, first upgrade it to Ubuntu 20.04 LTS. Then perform the steps in this guide to upgrade from Ubuntu 20.04 LTS to the 22.04 LTS. See the [Linode guide to Upgrade to Ubuntu 20.04](https://www.linode.com/docs/guides/upgrade-to-ubuntu-20-04/) for more information. Alternatively, if the Ubuntu software and applications are very old, it might make more sense to perform a clean install instead.
 
 {{< caution >}}
 This operation cannot be canceled after it is started. Ensure there is a stable connection to the Linode and backup power is available.
@@ -104,21 +104,29 @@ To prepare the Ubuntu system for the upgrade, follow these steps.
 
 1.  Upgrade the Linode and ensure it is up to date.
 
-        sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y
+    ```code
+    sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y
+    ```
 
 2.  To simplify the upgrade, remove unused packages and files.
 
-        sudo apt-get autoremove -y && sudo apt-get autoclean -y
+    ```code
+    sudo apt autoremove -y && sudo apt autoclean -y
+    ```
 
 3.  Reboot the node to ensure any new kernel upgrades are installed. Linode makes new kernels available through the Linode cloud manager. Any updates are automatically applied to the node upon a reboot. For more information, see the [Linode guide to monitoring and maintaining a system](https://www.linode.com/docs/guides/monitor-and-maintain-compute-instance/#apply-kernel-updates).
 
-        sudo reboot
+    ```code
+    sudo reboot
+    ```
 
 4.  Make a backup copy of the system configuration and all application data. The easiest way to do this is to back up the entire system. Subscribing to the [Linode Backup Service](https://www.linode.com/docs/products/storage/backups/) allows you to take a manual snapshot before the upgrade.
 
 5.  Stop as many non-critical user applications services as possible, including web and database servers. Focus on applications that might be subject to data corruption. To see a list of the active services, use the command `systemctl | grep running`.
 
-        sudo systemctl | grep running
+    ```code
+    sudo systemctl | grep running
+    ```
 
     {{< output >}}
 ...
@@ -133,12 +141,16 @@ mysql.service loaded active running MySQL Community Server
 Do not stop any essential system services such as `ssh` or any `systemd` entry.
     {{< /caution >}}
 
-        sudo systemctl stop apache2
+    ```code
+    sudo systemctl stop apache2
+    ```
 
 7.  Allow connections on TCP port 1022 through the `ufw` firewall. This permits Ubuntu to use a fallback port if the main connection drops. After adding the rule, reload the firewall.
 
-        sudo ufw allow 1022/tcp
-        sudo ufw reload
+    ```code
+    sudo ufw allow 1022/tcp
+    sudo ufw reload
+    ```
 
     {{< output >}}
 Firewall reloaded
@@ -146,7 +158,9 @@ Firewall reloaded
 
 8.  Confirm connections on TCP port 1022 are now allowed.
 
-        sudo ufw status
+    ```code
+    sudo ufw status
+    ```
 
     {{< output >}}
 Status: active
@@ -171,30 +185,34 @@ The upgrade operation can be performed using either a LISH session or an SSH con
 
 1.  Ensure the `update-manager-core` package is installed. On many systems, this package might already be available.
 
-        sudo apt install update-manager-core
+    ```code
+    sudo apt install update-manager-core
+    ```
 
 2.  Confirm the release-upgrader is set to the correct release update mode. The file `/etc/update-manager/release-upgrades` must include the line `Prompt=lts`.
 
-        sudo cat /etc/update-manager/release-upgrades
+    ```code
+    sudo cat /etc/update-manager/release-upgrades
+    ```
 
-    {{< file "/etc/update-manager/release-upgrades" aconf >}}
-# Default behavior for the release upgrader.
+    ```file {title="/etc/update-manager/release-upgrades" lang="aconf"}
+    # Default behavior for the release upgrader.
 
-[DEFAULT]
-# Default prompting and upgrade behavior, valid options:
-#
-#  never  - Never check for, or allow upgrading to, a new release.
-#  normal - Check to see if a new release is available.  If more than one new
-#           release is found, the release upgrader will attempt to upgrade to
-#           the supported release that immediately succeeds the
-#           currently-running release.
-#  lts    - Check to see if a new LTS release is available.  The upgrader
-#           will attempt to upgrade to the first LTS release available after
-#           the currently-running one.  Note that if this option is used and
-#           the currently-running release is not itself an LTS release the
-#           upgrader will assume prompt was meant to be normal.
-Prompt=lts
-    {{< /file >}}
+    [DEFAULT]
+    # Default prompting and upgrade behavior, valid options:
+    #
+    #  never  - Never check for, or allow upgrading to, a new release.
+    #  normal - Check to see if a new release is available.  If more than one new
+    #           release is found, the release upgrader will attempt to upgrade to
+    #           the supported release that immediately succeeds the
+    #           currently-running release.
+    #  lts    - Check to see if a new LTS release is available.  The upgrader
+    #           will attempt to upgrade to the first LTS release available after
+    #           the currently-running one.  Note that if this option is used and
+    #           the currently-running release is not itself an LTS release the
+    #           upgrader will assume prompt was meant to be normal.
+    Prompt=lts
+    ```
 
 3.  Run the `do-release-upgrade` command to start the upgrade.
 
@@ -202,7 +220,9 @@ Prompt=lts
 To force an upgrade from the latest supported release to a development release, use the command `do-release-upgrade -d`. This guide focuses on upgrading to the latest supported release and does not use this flag.
     {{< /note >}}
 
-        sudo do-release-upgrade
+    ```code
+    sudo do-release-upgrade
+    ```
 
 4.  If the operation is performed using a SSH connection, Ubuntu verifies the SSH connection details and asks whether to continue. Answer `y` to continue.
 
@@ -262,18 +282,18 @@ To see details about the packages to be removed, installed, and upgraded, enter 
     {{< output >}}
 Do you want to start the upgrade?
 
+
 14 installed packages are no longer supported by Canonical. You can
 still get support from the community.
 
-12 packages are going to be removed. 101 new packages are going to be
-installed. 608 packages are going to be upgraded.
+5 packages are going to be removed. 91 new packages are going to be
+installed. 571 packages are going to be upgraded.
 
-You have to download a total of 589 M. This download will take about
-1 minute with a 40Mbit connection and about 15 minutes with a 5Mbit
-connection.
+You have to download a total of 552 M. This download will take about
+2 minutes with you connection.
 
-Fetching and installing the upgrade can take several hours. Once the
-download has finished, the process cannot be canceled.
+Installing the upgrade can take several hours. Once the download has
+finished, the process cannot be canceled.
 
 Continue [yN]  Details [d]
     {{< /output >}}
@@ -293,7 +313,9 @@ Searching for obsolete software
 Reading state information... Done
 
 Remove obsolete packages?
-43 packages are going to be removed.
+
+
+41 packages are going to be removed.
 
 Continue [yN]  Details [d]
     {{< /output >}}
@@ -307,41 +329,50 @@ Restart required
 
 To finish the upgrade, a restart is required.
 If you select 'y' the system will be restarted.
+
 Continue [yN]
     {{< /output >}}
 
 ## How to Perform Post-Upgrade Clean-Up Activities
 
-Ubuntu has now been upgraded to release 22.04. After the Linode reboots, it is ready to resume operations. However, it is important to validate the upgrade. There are also still a few security concerns to fix and clean-up activities to perform. Log in to the Linode and perform the following steps.
+Ubuntu has now been upgraded to version 22.04 LTS. After the Linode reboots, it is ready to resume operations. However, it is important to validate the upgrade. There are also still a few security concerns to fix and clean-up activities to perform. Log in to the Linode and perform the following steps.
 
 1.  Use the `lsb_release -a` command to verify the correct release of Ubuntu is now installed. The `Release` attribute should be `22.04`.
 
-        lsb_release -a
+    ```code
+    lsb_release -a
+    ```
 
     {{< output >}}
 No LSB modules are available.
-Distributor ID:	Ubuntu
-Description:	Ubuntu 22.04.1 LTS
-Release:	22.04
-Codename:	jammy
+Distributor ID: Ubuntu
+Description:    Ubuntu 22.04.1 LTS
+Release:        22.04
+Codename:       jammy
     {{< /output >}}
 
-2.  **Optional** To validate the kernel version, use the `uname` command.
+2.  **Optional:** To validate the kernel version, use the `uname` command.
 
-        uname -mrs
+    ```code
+    uname -mrs
+    ```
 
     {{< output >}}
-Linux 5.15.0-52-generic x86_64
+Linux 5.15.0-53-generic x86_64
     {{< /output >}}
 
 3.  To increase security, close port `1022` in the `ufw` firewall. Reload the firewall.
 
-        sudo ufw delete allow 1022/tcp
-        sudo ufw reload
+    ```code
+    sudo ufw delete allow 1022/tcp
+    sudo ufw reload
+    ```
 
 4.  Confirm the firewall rules are updated.
 
-         sudo ufw status
+    ```code
+    sudo ufw status
+    ```
 
     {{< output >}}
 Status: active
@@ -356,24 +387,30 @@ Apache Full (v6)           ALLOW       Anywhere (v6)
 
 5.  Ubuntu disables any third-party repositories during the upgrade. To search for disabled repositories, switch to the `sources.list.d` directory and list the entries.
 
-        cd /etc/apt/sources.list.d
-        ls -l
+    ```code
+    cd /etc/apt/sources.list.d
+    ls -l
+    ```
 
 6.  Edit each list using a text editor. Remove the `#` symbol at the start of the affected entries, and save the file. In the following example, remove the `#` symbol in front of `deb [arch=amd64]`.
 
-        vi archive-application.list
+    ```code
+    nano archive-application.list
+    ```
 
-    {{< file "archive-application.list" aconf >}}
-[DEFAULT]
-deb [arch=amd64] https://apt.releases.application-name.com jammy main
-    {{< /file >}}
+    ```file {title="archive-application.list" lang="aconf"}
+    [DEFAULT]
+    deb [arch=amd64] https://apt.releases.application-name.com jammy main
+    ```
 
 7.  Update any third-party repositories and remove unnecessary packages using `apt` commands.
 
-        sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -y && sudo apt-get autoclean -y
+    ```code
+    sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
+    ```
 
 ## Conclusion
 
 Users can access security updates and new features by upgrading to the new Ubuntu 22.04 LTS release. The two methods of updating a Linode are the inline update or the clean install. This guide explains how to perform an Ubuntu inline upgrade, which is the quickest and easiest method.
 
-To prepare to upgrade a Linode to 22.04, update and upgrade the node, back up the data, and stop all services. Use the `do-release-upgrade` command to initiate the upgrade and follow all Ubuntu prompts. After the upgrade, tighten up security, enable third-party archives, and perform some clean-up tasks. For more information about the Ubuntu 22.04 release, see the [Ubuntu server documentation](https://ubuntu.com/server/docs).
+To prepare to upgrade a Linode to Ubuntu 22.04 LTS, update and upgrade the node, back up the data, and stop all services. Use the `do-release-upgrade` command to initiate the upgrade and follow all Ubuntu prompts. After the upgrade, tighten up security, enable third-party archives, and perform some clean-up tasks. For more information about the Ubuntu 22.04 LTS release, see the [Ubuntu server documentation](https://ubuntu.com/server/docs).
