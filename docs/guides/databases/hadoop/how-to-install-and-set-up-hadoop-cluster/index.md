@@ -33,15 +33,13 @@ Hadoop is an open-source Apache project that allows creation of parallel process
 
 ## Before You Begin
 
-1.  Follow the [Getting Started](/docs/getting-started/) guide to create three (3) Linodes. They'll be referred to throughout this guide as **node-master**, **node1**, and **node2**. It is recommended that you set the hostname of each Linode to match this naming convention.
-
-    Run the steps in this guide from the **node-master** unless otherwise specified.
+1.  Create 3 Linode Compute Instances. They'll be referred to throughout this guide as **node-master**, **node1**, and **node2**. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
 1.  [Add a Private IP Address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) to each Linode so that your Cluster can communicate with an additional layer of security.
 
-1.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to harden each of the three servers. Create a normal user for the Hadoop installation, and a user called `hadoop` for the Hadoop daemons. Do **not** create SSH keys for `hadoop` users. SSH keys will be addressed in a later section.
+1.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to harden each of the three servers. It is recommended that you set the hostname of each Linode to match the naming convention used when creating them. Create a normal user for the Hadoop installation, and a user called `hadoop` for the Hadoop daemons. Do **not** create SSH keys for `hadoop` users. SSH keys will be addressed in a later section.
 
-1. Install the JDK using the appropriate guide for your distribution, [Debian](/docs/development/java/install-java-on-debian/), [CentOS](/docs/development/java/install-java-on-centos/) or [Ubuntu](/docs/development/java/install-java-on-ubuntu-16-04/), or install the latest JDK from Oracle.
+1. Install the JDK using the appropriate guide for your distribution, [Debian](/docs/guides/install-java-on-debian/), [CentOS](/docs/guides/install-java-on-centos/) or [Ubuntu](/docs/guides/install-java-on-ubuntu-16-04/), or install the latest JDK from Oracle.
 
 1.  The steps below use example IPs for each node. Adjust each example according to your configuration:
 
@@ -529,4 +527,4 @@ YARN jobs are packaged into `jar` files and submitted to YARN for execution with
 Now that you have a YARN cluster up and running, you can:
 
 - Learn how to code your own YARN jobs with [Apache documentation](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html).
-- Install Spark on top on your YARN cluster with [Linode Spark guide](/docs/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster/).
+- Install Spark on top on your YARN cluster with [Linode Spark guide](/docs/guides/install-configure-run-spark-on-top-of-hadoop-yarn-cluster/).

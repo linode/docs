@@ -3,8 +3,8 @@ slug: how-to-install-and-configure-a-redis-cluster-on-ubuntu-1604
 author:
   name: Sam Foo
   email: docs@linode.com
-description: 'Learn to set up a Redis cluster using three Linode servers and promoting a replica to become a master node with this guide. Redis is an in-memory key/value store offering high performance for caching and more.'
-og_description: 'Learn to set up a Redis cluster using three Linode servers and promoting a replica to become a master node with this guide. Redis is an in-memory key/value store offering high performance for caching and more.'
+description: 'This guide will show you how to set up a high performance Redis cluster using three Linode servers and promoting a replica to become a master node'
+og_description: 'This guide will show you how to set up a high performance Redis cluster using three Linode servers and promoting a replica to become a master node'
 keywords: ["redis", "redis cluster installation", "data store", "cache", "sharding", "redis cluster setup", "redis cluster set up", "ubuntu"]
 tags: ["nosql","database","ubuntu","redis"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,7 +16,7 @@ published: 2017-08-14
 title: 'How to Install and Configure a Redis Cluster on Ubuntu 16.04'
 external_resources:
  - '[Redis Official Website](https://redis.io/)'
- - '[Install and Configure Redis on CentOS 7](/docs/databases/redis/install-and-configure-redis-on-centos-7/)'
+ - '[Install and Configure Redis on CentOS 7](/docs/guides/install-and-configure-redis-on-centos-7/)'
 ---
 
 ![How to Install and Configure a Redis Cluster on Ubuntu 16.04](Redis_Cluster.jpg)
@@ -27,9 +27,9 @@ Redis as an in-memory store allows for extremely fast operations such as countin
 
 Prior to starting, we recommend familiarizing yourself with the following:
 
-* [Firewall settings using iptables or ufw](/docs/security/firewalls/configure-firewall-with-ufw/)
-* [Getting Started with VLANs](/docs/guides/getting-started-with-vlans/)
-* [Master-Replicas Replication](/docs/databases/redis/how-to-install-a-redis-server-on-ubuntu-or-debian8/)
+* [Firewall settings using iptables or ufw](/docs/guides/configure-firewall-with-ufw/)
+* [Getting Started with VLANs](/docs/products/networking/vlans/get-started/)
+* [Master-Replicas Replication](/docs/guides/how-to-install-a-redis-server-on-ubuntu-or-debian8/)
 
 ### Redis Sentinel or Redis Cluster?
 
@@ -169,7 +169,7 @@ At this point, each Linode hosts two independent master nodes. The Redis install
 1.  SSH into **Server 1**, then create a Redis cluster consisting of your three master nodes with the following command:
 
     {{< note >}}
-If utilizing a [VLAN](/docs/guides/getting-started-with-vlans/), use each Linode's IPAM address.
+If utilizing a [VLAN](/docs/products/networking/vlans/get-started/), use each Linode's IPAM address.
 {{< /note >}}
 
         redis-cli --cluster create \

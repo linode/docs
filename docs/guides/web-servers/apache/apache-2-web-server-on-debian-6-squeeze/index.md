@@ -25,12 +25,12 @@ relations:
 
 This tutorial explains how to install and configure the Apache web server on Debian 6 (Squeeze).
 
-Note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Debian 6](/docs/web-servers/lamp/lamp-server-on-debian-6-squeeze/).
+Note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Debian 6](/docs/guides/lamp-server-on-debian-6-squeeze/).
 
 ## Before You Begin
 
--   Make sure you've followed the [Getting Started](/docs/getting-started/) guide.
--   As part of the Getting Started guide, make sure you [set the hostname](/docs/getting-started/#setting-the-hostname) for your server.
+-   Make sure you've followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+-   As part of the Getting Started guide, make sure you [set the hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for your server.
 
 Issue the following commands to make sure your hostname is set properly:
 
@@ -39,7 +39,7 @@ Issue the following commands to make sure your hostname is set properly:
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-All of the commands in this article should be executed either as **root** or as a [user with sudo access](/docs/security/securing-your-server/#add-a-limited-user-account).
+All of the commands in this article should be executed either as **root** or as a [user with sudo access](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
 
 ## Install Apache 2
 
@@ -218,7 +218,7 @@ Later files take precedence over earlier ones. Within a directory, files are rea
 
 Apache will follow symbolic links to read configuration files, so it's possible to put files in other locations as well.
 
-Generally, as specified in our [LAMP Guide for Debian 6 (Squeeze)](/docs/web-servers/lamp/lamp-server-on-debian-6-squeeze/) and elsewhere, you should create configuration files for your virtual hosts in the `/etc/apache2/sites-available/` directory, then use the `a2ensite` tool to symbolically link to files in the `sites-enabled/` directory. This allows for a clear and specific per-site configuration.
+Generally, as specified in our [LAMP Guide for Debian 6 (Squeeze)](/docs/guides/lamp-server-on-debian-6-squeeze/) and elsewhere, you should create configuration files for your virtual hosts in the `/etc/apache2/sites-available/` directory, then use the `a2ensite` tool to symbolically link to files in the `sites-enabled/` directory. This allows for a clear and specific per-site configuration.
 
 We recommend that you *not* modify these files:
 
@@ -228,7 +228,7 @@ We recommend that you *not* modify these files:
 
 In practice, the vast majority of your configuration options should go in site-specific virtual host configuration files. If you need to set a system-wide configuration option or aren't using virtual hosting, the best practice is to specify options in files created beneath the `conf.d/` directory.
 
-For more help with conflicting directives, see our [Apache Troubleshooting](/docs/troubleshooting/troubleshooting-common-apache-issues/#troubleshooting-conflicting-directives) article.
+For more help with conflicting directives, see our [Apache Troubleshooting](/docs/guides/troubleshooting-common-apache-issues/#troubleshooting-conflicting-directives) article.
 
 ## Multi-Processing Module
 

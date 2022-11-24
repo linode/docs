@@ -25,7 +25,7 @@ relations:
 
 Prosody is a Lua-based XMPP/Jabber server, designed with minimalist ideas and goals. It has low resource requirements and is intended to be easy to configure and run. As a result, Prosody may not scale to the same level [ejabberd](/docs/applications/messaging/instant-messaging-services-with-ejabberd-on-ubuntu-12-04-precise-pangolin) or [OpenFire](/docs/applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-12-04-lts-precise-pangolin) can. However, for most independent and small scale uses Prosody is a more resource-efficient solution. Prosody is a very good candidate for XMPP development, or running an XMPP server for a very small base of users.
 
-Before we begin with the installation and configuration of Prosody, we assume that you have a running and up to date installation of Ubuntu Hardy, have completed our [getting started guide](/docs/getting-started/) and have logged in via SSH as root.
+Before we begin with the installation and configuration of Prosody, we assume that you have a running and up to date installation of Ubuntu Hardy, have completed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and have logged in via SSH as root.
 
 ## Adding Software Repositories
 
@@ -139,7 +139,7 @@ Component "conference.example.com" "muc"
 {{< /file >}}
 
 
-In this example, `conference.example.com` is the domain where the MUC rooms are located, and will require an "[DNS A record,](/docs/dns-guides/introduction-to-dns/)" that points to the IP Address where the Prosody instance is running. MUCs will be identified as JIDs (Jabber IDs) at this hostname, so for instance the "rabbits" MUC hosted by this server would be located at `rabbits@conference.example.com`.
+In this example, `conference.example.com` is the domain where the MUC rooms are located, and will require an "[DNS A record,](/docs/guides/dns-overview/)" that points to the IP Address where the Prosody instance is running. MUCs will be identified as JIDs (Jabber IDs) at this hostname, so for instance the "rabbits" MUC hosted by this server would be located at `rabbits@conference.example.com`.
 
 MUC, in contrast to many other common components in the XMPP world, is provided internally by Prosody. Other components, like transports to other services, run on an external interface. Each external component has its own host name, and provides a secret key which allows the central server to authenticate to it. See the following "aim.example.com" component as an example.
 

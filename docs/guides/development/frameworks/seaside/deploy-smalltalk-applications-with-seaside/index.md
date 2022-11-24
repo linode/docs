@@ -30,7 +30,7 @@ The architecture and scaling of websites developed with Seaside is highly depend
 
 This document provides an overview of getting started with this Smalltalk web development framework. For the purposes of this example we've deployed Seaside and the "Pier" content management system on a Debian 5 (Lenny) system. Because of the image-based nature of Smalltalk environments, the strategies and approaches for running Seaside applications may not vary between distributions much. Nevertheless, there may be some differences regarding the names of packages and configuration details for the web server. Other details should remain the same between various operating system distributions.
 
-Before proceeding with Seaside and Smalltalk installations, we assume that you have followed our [getting started guide](/docs/getting-started/). You'll also need to install [Apache](/docs/web-servers/apache/) in order to serve your Seaside application. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). One final disclaimer: the Smalltalk virtual machines are all built against 32-bit architectures, so for the best performance, do not deploy a 64-bit image with your Linode.
+Before proceeding with Seaside and Smalltalk installations, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). You'll also need to install [Apache](/docs/web-servers/apache/) in order to serve your Seaside application. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). One final disclaimer: the Smalltalk virtual machines are all built against 32-bit architectures, so for the best performance, do not deploy a 64-bit image with your Linode.
 
 ## Installing Smalltalk Environments
 
@@ -49,7 +49,7 @@ First, we need to install the virtual machine to run the Smalltalk images. While
     unzip pharo-vm-0.15.2f-linux.zip
     mv pharo-vm-0.15.2f-linux/ pharo-vm-15-2/
 
-[Upload the image file](/docs/tools-reference/linux-system-administration-basics/#upload-files-to-a-remote-server) of your Seaside application. For the purposes of this guide we will use the image produced by the "Pier" Content Management System. We'll store the application image in the directory beneath `/srv/www/` for the specific virtual host: in this example, we'll use `/srv/www/example.com/`. To download the ready-made image for Pier use the following sequence of commands:
+[Upload the image file](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server) of your Seaside application. For the purposes of this guide we will use the image produced by the "Pier" Content Management System. We'll store the application image in the directory beneath `/srv/www/` for the specific virtual host: in this example, we'll use `/srv/www/example.com/`. To download the ready-made image for Pier use the following sequence of commands:
 
     cd /srv/www/example.com/
     wget http://pier.googlecode.com/files/Pier-1.2.app.zip
@@ -150,7 +150,7 @@ Reload the web server configuration to create the virtual host:
 
     /etc/init.d/apache2 reload
 
-When building your application point, ensure all static content is served from URLs that begin with `http://static.example.com/` and the files are located at `/srv/www/static.example.com/public_html/`. You must create an [A Record](/docs/networking/dns/dns-records-an-introduction/#types-of-dns-records) that points to the domain of your Linode for `static.example.com` domain.
+When building your application point, ensure all static content is served from URLs that begin with `http://static.example.com/` and the files are located at `/srv/www/static.example.com/public_html/`. You must create an [A Record](/docs/guides/dns-overview/#types-of-dns-records) that points to the domain of your Linode for `static.example.com` domain.
 
 ### Configuring Apache to Proxy Dynamic Requests to Seaside
 

@@ -3,7 +3,7 @@ slug: install-asterisk-on-centos-7
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Installing Asterisk on CentOS 7'
+description: 'This guide shows how to install Asterisk, the open-source private branch exchange (PBX) application for running your own VoIP services, on CentOS 7.'
 keywords: ["asterisk 13", "centos 7", "centos", "open source", "private branch exchange", "pbx", "asterisk pbx", "sip", "session initiation protocol", "sip protocol", "IP PBX systems", "VoIP gateways"]
 tags: ["centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -40,13 +40,13 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Create a CentOS 7 Linode in your closest data center. A 2GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.
 
-1.  Ensure you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/securing-your-server/) guides to prepare your Linode. **Do not** complete the steps to set up a firewall.
+1.  Ensure you have followed the [Getting Started](/docs/guides/getting-started/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides to prepare your Linode. **Do not** complete the steps to set up a firewall.
 
 1.  Update your system:
 
         sudo yum update
 
-1.  Disable SELinux and reboot your Linode. If you have [Lassie](/docs/guides/monitoring-and-maintaining-your-server/#configure-shutdown-watchdog) enabled, your Linode is back up and running in a few minutes.
+1.  Disable SELinux and reboot your Linode. If you have [Lassie](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog) enabled, your Linode is back up and running in a few minutes.
 
         sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 

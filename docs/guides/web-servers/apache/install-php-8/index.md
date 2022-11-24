@@ -69,18 +69,14 @@ PHP has only a few disadvantages. Some of these drawbacks include a lack of libr
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall section* yet as this guide includes firewall rules specifically for an OpenVPN server.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall section* yet as this guide includes firewall rules specifically for an OpenVPN server.
 
-1. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-1. PHP is usually used in conjunction with a web server. An Apache or NGINX web server should already be installed on the Linode. See the Linode guides for [Apache](/docs/web-servers/apache/how-to-install-apache-web-server-ubuntu-18-04/) or [NGINX](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/) for more information. Instructions for both servers are included in this guide. If `ufw` is enabled, ensure it allows web server access.
+1. PHP is usually used in conjunction with a web server. An Apache or NGINX web server should already be installed on the Linode. See the Linode guides for [Apache](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/) or [NGINX](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/) for more information. Instructions for both servers are included in this guide. If `ufw` is enabled, ensure it allows web server access.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Add the PHP Repository
@@ -171,7 +167,7 @@ php8.0-fpm.service - The PHP 8.0 FastCGI Process Manager
         sudo a2enmod actions fcgid alias proxy_fcgi
 1. If you have configured a virtual host for your domain, add an FPM handler to the site's `.conf` file. Otherwise, add the handler to the default `000-default.conf` file. The `.conf` files can be found in the `/etc/apache2/sites-available` directory. Add the line `SetHandler "proxy:unix:/var/run/php/php8.0-fpm.sock|fcgi://localhost"` to the `VirtualHost` block as shown here.
     {{< note >}}
-For information on how to add a virtual host, see the Linode guide on [How to Install Apache Web Server on Ubuntu 18.04 LTS](/docs/web-servers/apache/how-to-install-apache-web-server-ubuntu-18-04/).
+For information on how to add a virtual host, see the Linode guide on [How to Install Apache Web Server on Ubuntu 18.04 LTS](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/).
     {{< /note >}}
 
     {{< file "/etc/apache2/sites-available/000-default.conf" aconf >}}

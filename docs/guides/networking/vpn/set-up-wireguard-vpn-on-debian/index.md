@@ -7,6 +7,7 @@ description: 'WireGuard encrypts your traffic quickly and safely. This guide wil
 og_description: 'This guide will show you how to install WireGuard, a fast and secure VPN, on Linode.'
 keywords: ['wireguard','vpn','debian']
 tags: ["networking","security","vpn","debian"]
+bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-08
 modified: 2021-10-15
@@ -57,12 +58,12 @@ Do not use WireGuard for critical applications. The project is still undergoing 
 
 ## Before You Begin
 
-- [Deploy a Linode](/docs/getting-started/#create-a-linode) running Debian 9.
-- [Add a limited user account](/docs/security/securing-your-server/#add-a-limited-user-account) with `sudo` privileges to your Linode.
-- Set your system's [hostname](/docs/getting-started/#set-the-hostname).
+- [Deploy a Linode](/docs/guides/creating-a-compute-instance/) running Debian 9.
+- [Add a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) with `sudo` privileges to your Linode.
+- Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 {{< note >}}
-The `GRUB 2` kernel is required for this guide. All distributions for all new Linodes now boot with the `GRUB 2` kernel by default. However, if you are running an older distribution, you will need to check to see which kernel you are running. You can use the [Update Kernel Guide](/docs/platform/update-kernel/) to check your kernel version and change it using the Cloud Manager. Select `GRUB 2` from the *Boot Settings: Select a Kernel* dropdown menu in Step 4 of [Update Your Linode Kernel with Linode's Cloud Manager](/docs/platform/update-kernel/#update-your-linode-kernel-with-linode-s-cloud-manager).
+The `GRUB 2` kernel is required for this guide. All distributions for all new Linodes now boot with the `GRUB 2` kernel by default. However, if you are running an older distribution, you will need to check to see which kernel you are running. You can use the [Update Kernel Guide](/docs/guides/managing-the-kernel-on-a-linode/) to check your kernel version and change it using the Cloud Manager. Select `GRUB 2` from the *Boot Settings: Select a Kernel* dropdown menu in Step 4 of [Update Your Linode Kernel with Linode's Cloud Manager](/docs/guides/managing-the-kernel-on-a-linode/#update-your-linode-kernel-with-linode-s-cloud-manager).
 {{< /note >}}
 
 ## Install WireGuard

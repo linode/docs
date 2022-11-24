@@ -3,9 +3,9 @@ slug: upgrade-debian-to-the-newest-release
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to upgrade your Debian system.'
+description: 'This guide provides you with step-by-step instructions for upgrading your Debian system to the latest Debian stable, or LTS (Long Term Support) release.'
 keywords: ['debian','upgrade','update']
-aliases: ['/security/upgrading/upgrade-to-debian-8-jessie/','/security/upgrading/upgrade-debian-to-the-newest-release/']
+aliases: ['/security/upgrading/upgrade-debian-to-the-newest-release/']
 tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-12-11
@@ -29,7 +29,7 @@ While upstream maintainers try to ensure cross-compatibility and problem-free up
 
 - You will need root access to your Linode, or a user account with `sudo` privileges.
 
-- **Back up any important data stored on your Linode!** If you subscribe to the Linode Backups service, we recommend taking a [manual snapshot](/docs/platform/disk-images/linode-backup-service/#take-a-manual-snapshot) before upgrading your system. If you use a different backup service or application, you should do a manual backup now.
+- **Back up any important data stored on your Linode!** If you subscribe to the Linode Backups service, we recommend taking a [manual snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) before upgrading your system. If you use a different backup service or application, you should do a manual backup now.
 
     {{< note >}}
 You may also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. See our [backup guides](/docs/security/backups/) for more information.
@@ -38,9 +38,9 @@ You may also want to back up your configuration files (usually located in `/etc/
 
 ## Prepare to Upgrade
 
-1.  Verify that you are booting with Debian's kernel using the *GRUB 2* [boot setting](/docs/platform/how-to-change-your-linodes-kernel/) in the Linode Cloud Manager. We recommend you use the distribution-supplied kernel unless you have a specific reason not to.
+1.  Verify that you are booting with Debian's kernel using the *GRUB 2* [boot setting](/docs/guides/managing-the-kernel-on-a-linode/) in the Linode Cloud Manager. We recommend you use the distribution-supplied kernel unless you have a specific reason not to.
 
-2.  Exit the SSH session if you're currently logged in to one and instead open a Lish session to your Linode. Lish will give you continuous access to your Linode whereas SSH could disconnect during the upgrade. Read more about Lish [here](/docs/guides/using-the-lish-console/).
+2.  Exit the SSH session if you're currently logged in to one and instead open a Lish session to your Linode. Lish will give you continuous access to your Linode whereas SSH could disconnect during the upgrade. Read more about Lish [here](/docs/guides/lish/).
 
 3.  Install all available updates for your current Debian system:
 
@@ -109,7 +109,7 @@ N or O  : keep your currently-installed version
 D     : show the differences between the versions
 {{< /output >}}
 
-    -  If your system is running Fail2ban, the upgrade will end with the error shown below. This is a [known issue](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=860397). See the [troubleshooting](/docs/security/upgrading/upgrade-debian-to-the-newest-release/#fail2ban) section of this page to fix before proceeding further.
+    -  If your system is running Fail2ban, the upgrade will end with the error shown below. This is a [known issue](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=860397). See the [troubleshooting](/docs/guides/upgrade-debian-to-the-newest-release/#fail2ban) section of this page to fix before proceeding further.
 
         {{< output >}}
 Errors were encountered while processing:
@@ -159,4 +159,4 @@ maxretry = 6
 
 ### Upgrading Apache 2.2 to 2.4
 
-Upgrading from Debian 7 to 8 moves Apache from version 2.2 to 2.4. This version change can break existing websites if you're already running Apache and requires adjusting configuration files. See our [Upgrading Apache](/docs/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4/) guide for more information.
+Upgrading from Debian 7 to 8 moves Apache from version 2.2 to 2.4. This version change can break existing websites if you're already running Apache and requires adjusting configuration files. See our [Upgrading Apache](/docs/guides/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4/) guide for more information.

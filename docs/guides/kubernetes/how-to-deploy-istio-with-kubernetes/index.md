@@ -3,7 +3,7 @@ slug: how-to-deploy-istio-with-kubernetes
 author:
   name: Linode
   email: docs@linode.com
-description: 'Istio is a service mesh and a platform with its own API and feature set that can help you run a distributed microservice architecture. Istio is a tool that you can deploy with few to no code changes to your application allowing you to harness its power without disrupting your development cycle. In conjunction with Kubernetes, Istio provides you with insights into your cluster leading to more control over your applications.'
+description: 'This guide will show you how to deploy Istio, a powerful service mesh, or network of microservices, with it''s own API, within a Kubernetes environment.'
 keywords: ['kuberenetes','istio','container','helm', 'k8s']
 tags: ["monitoring","networking","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -36,12 +36,12 @@ In this guide you will complete the following tasks:
 {{< caution >}}
 This guide’s example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to delete it when you have finished the guide.
 
-If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/)  guide for detailed information about how hourly billing works and for a table of plan pricing.
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/)  guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{</ caution >}}
 
 ## Before You Begin
 
-Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) and [Advantages of Using Kubernetes](/docs/kubernetes/kubernetes-use-cases/).
+Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) and [Advantages of Using Kubernetes](/docs/guides/kubernetes-use-cases/).
 
 ## Create Your Kubernetes Cluster
 
@@ -50,7 +50,7 @@ Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kub
 There are many ways to create a Kubernetes cluster. This guide will use the Linode k8s-alpha CLI.
 
 1. To set it up the Linode k8s-alpha CLI, see the
-[How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide and stop before the "Create a Cluster" section.
+[How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide and stop before the "Create a Cluster" section.
 
 1. Now that your Linode K8s-alpha CLI is set up, You are ready to create your Kubernetes cluster. You will need **3 worker nodes** and **one master** for this guide. Create your cluster using the following command:
 
@@ -73,7 +73,7 @@ Come hang out with us in #linode on the Kubernetes Slack! http://slack.k8s.io/
 
 ### Install Helm
 
-Follow the instructions in the [How to Install Apps on Kubernetes with Helm](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/) guide to install Helm on your cluster. Stop before the section on "Using Helm Charts to Install Apps".
+Follow the instructions in the [How to Install Apps on Kubernetes with Helm](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/) guide to install Helm on your cluster. Stop before the section on "Using Helm Charts to Install Apps".
 
 ## Install Istio
 
@@ -209,12 +209,16 @@ prometheus-fcdfd6cb5-6cjz2              1/1     Running     0          5m13s
     {{< note >}}
 If you need to troubleshoot, you can check a specific Pod by using `kubectl`, remembering that you set the namespace to `istio-system`:
 
-    kubectl describe pods pod_name -n pod_namespace
+```command
+kubectl describe pods pod_name -n pod_namespace
+```
 
 And check the logs by using:
 
-    kubectl logs pod_name -n pod_namespace
-    {{< /note >}}
+```command
+kubectl logs pod_name -n pod_namespace
+```
+{{< /note >}}
 
 ### Set up Envoy Proxies
 

@@ -3,8 +3,8 @@ slug: how-to-deploy-a-new-linode-using-a-stackscript
 author:
   name: Linode
   email: docs@linode.com
-description: 'Linode StackScripts allow you to automate system administration and configuration tasks. You can deploy a new Linode using a StackScript that will perform its scripted tasks during the Linode''s first boot process. This guide will show you the various ways that you can deploy a new Linode using StackScripts and the Linode Cloud Manager.'
-og_description: 'Linode StackScripts allow you to automate system administration and configuration tasks. You can deploy a new Linode using a StackScript that will perform its scripted tasks during the Linode''s first boot process. This guide will show you the various ways that you can deploy a new Linode using StackScripts and the Linode Cloud Manager.'
+description: 'In this guide, you will learn the various methods you can use in conjunction with the Cloud Manager to deploy a new Linode with a StackScript.'
+og_description: 'In this guide, you will learn the various methods you can use in conjunction with the Cloud Manager to deploy a new Linode with a StackScript.'
 keywords: ["stackscripts", "automation", "script", "custom instance", "deployment"]
 tags: ["linode platform","automation","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -33,7 +33,7 @@ This guide will show you how to do the following:
 - [Access the contents of a Community StackScript to view its underlying script and metadata.](#access-a-community-stackscript)
 
 {{< note >}}
-To learn how to create your own StackScript see the [Writing Scripts for Use with Linode StackScripts](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/) guide.
+To learn how to create your own StackScript see the [Writing Scripts for Use with Linode StackScripts](/docs/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/) guide.
 {{</ note >}}
 
 ## Account StackScripts
@@ -43,7 +43,7 @@ An Account StackScript is any StackScript that you create. It will be stored in 
 This section will show you how to deploy a new Linode using an Account StackScript and how to access your Account StackScripts.
 
 {{< note >}}
-To learn how to make your Account StackScript publicly available see the [A Tutorial for Creating and Managing StackScripts](/docs/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/#make-an-account-stackscript-public) guide for more details.
+To learn how to make your Account StackScript publicly available see the [A Tutorial for Creating and Managing StackScripts](/docs/guides/creating-and-managing-stackscripts-a-tutorial/#make-an-account-stackscript-public) guide for more details.
 {{</ note >}}
 
 ### Deploy a Linode from an Account StackScript
@@ -71,12 +71,12 @@ To view the details of a StackScript prior to using it to deploy your Linode, cl
 1. In the **StackScript Options** section, fill in values for your StackScript's Options. Not all StackScripts are written to accept option values, so your StackScript might not present this section.
 
     {{< note >}}
-When [writing a script to be used in a StackScript](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/), these option values are made available to users by including [user defined fields](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/#user-defined-fields-udfs) in your script.
+When [writing a script to be used in a StackScript](/docs/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/), these option values are made available to users by including [user defined fields](/docs/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/#user-defined-fields-udfs) in your script.
     {{</ note >}}
 
 1. From the **Select an Image** dropdown menu, select the Linux distribution to use. This list will be limited to the distributions your StackScript supports.
 
-1. Choose the region where you would like your Linode to reside. If you’re not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
+1. Choose the region where you would like your Linode to reside. If you’re not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
 
 1. Select a Linode plan.
 
@@ -143,12 +143,12 @@ To view the details of a StackScript prior to using it to deploy your Linode, cl
 1. In the **StackScript Options** section, fill in values for your StackScript's Options. Not all StackScripts are written to accept option values, so your StackScript might not present this section.
 
     {{< note >}}
-When [writing a script to be used in a StackScript](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/), these option values are made available to users by including [user defined fields](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/#user-defined-fields-udfs) in your script.
+When [writing a script to be used in a StackScript](/docs/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/), these option values are made available to users by including [user defined fields](/docs/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/#user-defined-fields-udfs) in your script.
     {{</ note >}}
 
 1. From the **Select an Image** dropdown menu, select the Linux distribution to use. This list will be limited to the distributions your StackScript supports.
 
-1. Choose the region where you would like your Linode to reside. If you’re not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
+1. Choose the region where you would like your Linode to reside. If you’re not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
 
 1. Select a Linode plan.
 
@@ -184,10 +184,10 @@ When [writing a script to be used in a StackScript](/docs/platform/stackscripts/
 
 ## Next Steps
 
-- After deploying a new Linode using a StackScript you can [connect to your Linode via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) and verify that the StackScript has executed as expected. These steps will vary depending on the StackScript that you used when deploying your Linode.
+- After deploying a new Linode using a StackScript you can [connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) and verify that the StackScript has executed as expected. These steps will vary depending on the StackScript that you used when deploying your Linode.
 
     {{< note >}}
 Depending on the contents of your StackScript, it may take a few minutes for the script to finish executing.
     {{</ note >}}
 
-- To learn how to create your own StackScript see the [A Tutorial for Creating and Managing StackScripts](/docs/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/#make-an-account-stackscript-public) guide.
+- To learn how to create your own StackScript see the [A Tutorial for Creating and Managing StackScripts](/docs/guides/creating-and-managing-stackscripts-a-tutorial/#make-an-account-stackscript-public) guide.

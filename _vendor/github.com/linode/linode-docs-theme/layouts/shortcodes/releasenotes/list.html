@@ -1,0 +1,32 @@
+{{ $limit := .Get "limit" | default 0 }}
+{{ $path := .Get "path" }}
+{{ if not $path -}}
+  {{ errorf "path not set in %s" .Position -}}
+{{ end -}}
+{{ $section := site.GetPage (path.Join "release-notes" $path) }}
+{{ if not $section -}}
+  {{ warnf "section %q not found in %s" $path .Position -}}
+{{ end -}}
+{{ $pages := $section.RegularPagesRecursive }}
+{{ if $limit -}}
+  {{ $pages = $pages | first $limit }}
+{{ end -}}
+{{ partial "releasenotes/list-pages.html" $pages }}
+{{ define "partials/releasenotes/list-pages.html" }}
+  {{ range . }}
+    <div class="mb-8">
+      {{ $id :=  (.Slug | default .Title) | anchorize }}
+      {{ partial "heading" (dict "id" $id "level" 2 "text" .Title "class" "mb-1 text-2xl") }}
+      {{ with .Params.version }}
+        <span class="text-gray-400"> {{ . }}, </span>
+      {{ end }}
+      {{ $date := .Date }}
+      <time datetime="{{ $date }}" class="text-gray-400">
+        {{ $date.Format site.Params.time_format_default }}
+      </time>
+      <div class="content prose prose-sm md:prose-lg max-w-none">
+        {{ .Content }}
+      </div>
+    </div>
+  {{ end }}
+{{ end }}

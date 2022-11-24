@@ -3,7 +3,7 @@ slug: how-to-build-your-infrastructure-using-terraform-and-linode
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use Terraform to provision Linode environments.'
+description: 'This article gives you step-by-step instructions on how to use Terraform to provision, modify, and destroy infrastructure using only code and simple commands.'
 og_description: 'Use Terraform to provision Linode environments.'
 keywords: ["terraform", "infrastructure", "IaC"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -48,7 +48,7 @@ Any Personal Access Tokens generated from the previous Linode Manager are API v3
 The installation steps in this section are for Linux operating systems. To install Terraform on a different operating system, like macOS, see [Terraform's downloads](https://www.terraform.io/downloads.html) page. Once installed, skip to [Building with the Terraform Provider](#building-with-the-linode-provider).
 
 {{< note >}}
-The Terraform Provider for Linode requires [Terraform version 0.12.0+](https://www.hashicorp.com/blog/announcing-terraform-0-12). The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and may be updated in the near future.
+The Terraform Provider for Linode requires [Terraform version 1.1+](https://www.hashicorp.com/blog/terraform-1-1-improves-refactoring-and-the-cloud-cli-experience). The examples in this guide were written to be compatible with [Terraform version 1.1](https://www.terraform.io/docs/configuration-0-11/terraform.html) and may be updated in the near future.
 {{</ note >}}
 
 1.  Make a Terraform project directory in your home directory and then navigate to it:
@@ -56,32 +56,32 @@ The Terraform Provider for Linode requires [Terraform version 0.12.0+](https://w
         mkdir ~/terraform
         cd ~/terraform
 
-2.  Download the following files from [Terraform's website](https://www.terraform.io/downloads.html). Example `wget` commands are listed using the latest version available at time of publishing (0.12.5). You should inspect the links on the download page to see if a newer version is available and update the `wget` commands to use those URLs instead:
+2.  Download the following files from [Terraform's website](https://www.terraform.io/downloads.html), ensuring that the latest version available is being installed. Example `wget` commands are listed using the latest version available at time of publishing (1.1.9). You should inspect the links on the download page to see if a newer version is available and update the `wget` commands to use those URLs instead:
 
     -   The 64-bit Linux `.zip` archive
 
-            wget https://releases.hashicorp.com/terraform/0.12.5/terraform_0.12.5_linux_amd64.zip
+            wget https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_linux_amd64.zip
 
     -   The SHA256 checksums file
 
-            wget https://releases.hashicorp.com/terraform/0.12.5/terraform_0.12.5_SHA256SUMS
+            wget https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_SHA256SUMS
 
     -   The checksum signature file
 
-            wget https://releases.hashicorp.com/terraform/0.12.5/terraform_0.12.5_SHA256SUMS.sig
+            wget https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_SHA256SUMS.sig
 
 
 ### Verify the Download
 
 1.  Import the HashiCorp Security GPG key (listed on the [HashiCorp Security](https://www.hashicorp.com/security) page under *Secure Communications*):
 
-        gpg --recv-keys 51852D87348FFC4C
+        gpg --recv-keys 34365D9472D7468F
 
     The output should show that the key was imported:
 
     {{< output >}}
 gpg: /home/user/.gnupg/trustdb.gpg: trustdb created
-gpg: key 51852D87348FFC4C: public key "HashiCorp Security <security@hashicorp.com>" imported
+gpg: key 34365D9472D7468F: public key "HashiCorp Security <security@hashicorp.com>" imported
 gpg: no ultimately trusted keys found
 gpg: Total number processed: 1
 gpg:               imported: 1
@@ -99,11 +99,11 @@ If you receive errors that indicate the `dirmngr` software is missing or inacces
 
     {{< output >}}
 gpg: Signature made Wed 15 Aug 2018 10:07:05 PM UTC
-gpg:                using RSA key 51852D87348FFC4C
+gpg:                using RSA key 34365D9472D7468F
 gpg: Good signature from "HashiCorp Security <security@hashicorp.com>" [unknown]
 gpg: WARNING: This key is not certified with a trusted signature!
 gpg:          There is no indication that the signature belongs to the owner.
-Primary key fingerprint: 91A6 E7F8 5D05 C656 30BE  F189 5185 2D87 348F FC4C
+Primary key fingerprint: C874 011F 0AB4 0511 0D02 1055 3436 5D94 72D7 468F
 {{</ output >}}
 
 1.  Verify that the fingerprint output matches the fingerprint listed in the *Secure Communications* section of the [HashiCorp Security](https://www.hashicorp.com/security.html) page.
@@ -115,7 +115,7 @@ Primary key fingerprint: 91A6 E7F8 5D05 C656 30BE  F189 5185 2D87 348F FC4C
     The output should show the file's name as given in the `terraform*SHA256SUMS` file:
 
     {{< output >}}
-terraform_0.12.5_linux_amd64.zip: OK
+terraform_1.1.9_linux_amd64.zip: OK
 {{< /output >}}
 
 ### Configure the Terraform Environment
@@ -175,14 +175,14 @@ All other commands:
 
 Terraform uses a declarative approach in which configuration files specify the desired end-state of the infrastructure, so the examples in this guide will simply list the Linodes that we want to create. Terraform can understand two types of configuration files: JSON, and [HashiCorp Configuration Language](https://github.com/hashicorp/hcl) (HCL). This guide uses the HCL format, and HCL files end in the `.tf` extension.
 
-1.  Create the file `linode-terraform-web.tf` in your `~/terraform` directory with the snippet below. Fill in your Linode API token, public SSH key, and desired root password where indicated.
+1.  Create the file `linode-terraform-web.tf` in your `~/terraform` directory with the snippet below. Fill in your Linode API token, public SSH key, and desired root password where indicated. Additionally, replace the Linode provider `version` to the [latest](https://registry.terraform.io/providers/linode/linode/):
 
     {{< file "~/terraform/linode-terraform-web.tf" aconf >}}
 terraform {
   required_providers {
     linode = {
       source = "linode/linode"
-      version = "1.16.0"
+      version = "1.27.1"
     }
   }
 }
@@ -205,7 +205,7 @@ resource "linode_instance" "terraform-web" {
     This snippet creates a Linode 2GB labelled `Terraform-Web-Example` in a `Terraform` Linodes group. While the server's software won't be configured in this guide, we can imagine for now that the Linode acts as a webserver.
 
     {{< note >}}
-See [Terraform's documentation](https://www.terraform.io/docs/configuration/syntax.html) for more information on configuration syntax.
+See [Terraform's documentation](https://www.terraform.io/docs/configuration/syntax.html) for more information on configuration syntax and any updates to the Linode provider.
 {{< /note >}}
 
 1.  Initialize the Terraform configuration:
@@ -472,7 +472,7 @@ terraform {
   required_providers {
     linode = {
       source = "linode/linode"
-      version = "1.16.0"
+      version = 1.27.1"
     }
   }
 }
@@ -663,7 +663,7 @@ terraform {
   required_providers {
     linode = {
       source = "linode/linode"
-      version = "1.16.0"
+      version = "1.27.1"
     }
   }
 }
@@ -686,7 +686,7 @@ db_type = "g6-standard-8"
 }
 {{< /file >}}
 
-1.  The file structure for your module and for `client1` should now look as follows. This structure is not mandated by Terraform, but it is useful as as simple example:
+1.  The file structure for your module and for `client1` should now look as follows. This structure is not mandated by Terraform, but it is useful as simple example:
 
     {{< output >}}
 client1

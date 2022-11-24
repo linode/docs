@@ -3,7 +3,7 @@ slug: set-up-an-ipv6-tunnel-on-your-linode
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to set up an IPv6 tunnel on your Linode.'
+description: 'This guide provides you with instructions on how to setup an IPv6 tunnel to connect your system to a network running on IPv4 and pass traffic from one to another.'
 keywords: ["ipv6", "tunnel", "broker", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/set-up-an-ipv6-tunnel-on-your-linode/','/networking/ipv6-tunnels/','/networking/linode-network/set-up-an-ipv6-tunnel-on-your-linode/']
@@ -17,7 +17,7 @@ tags: ["networking","linode platform"]
 
 ![Set up an IPv6 Tunnel on Your Linode](Set_Up_an_IPv6_Tunnel_on_Your_Linode_smg.jpg)
 
-As IPv4 address exhaustion nears, many people are making the switch to IPv6. Linode offers [native IPv6](/docs/networking/native-ipv6-networking/) addresses in all locations.
+As IPv4 address exhaustion nears, many people are making the switch to IPv6. Linode offers [native IPv6](/docs/guides/an-overview-of-ipv6-on-linode/) addresses in all locations.
 
 An IPv6 tunnel lets a system reach an IPv6 network using existing IPv4 connectivity. Follow this guide if you:
 
@@ -37,7 +37,7 @@ Once you have signed up for a tunnel, you will need to issue a few commands on y
 Configuration of an IP tunnel using this method will not be persistent after reboot and will need to be reconfigured after restarting your Linode.
 {{< /note >}}
 
-1.  Because some of these steps will temporarily disable networking on the Linode, begin by logging in using either the [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) interface.
+1.  Because some of these steps will temporarily disable networking on the Linode, begin by logging in using either the [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/guides/glish/) interface.
 
 2.  Use the `ip` tool to add the tunnel device. Ours is called `he-ipv6` to match the device described in Hurricane Electric's examples. Replace `203.0.113.10` with the endpoint of your tunnel, and `198.51.100.5` with your Linode's IP address. The information for the endpoint can be found in your tunnel broker's web interface, and your Linode's IP address can be found under the [Networking](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) tab of the Linode Cloud Manager:
 

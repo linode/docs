@@ -36,12 +36,12 @@ Node.js is an open-source JavaScript runtime environment that can serve dynamic 
 
 ## Before You Begin
 
-1.  If you want to use a custom domain name for your site, purchase a domain name from a trusted registrar and use Linode's [DNS Manager](/docs/guides/dns-manager/) to [add the domain](/docs/guides/dns-manager/#add-a-domain) and [create a domain record](/docs/guides/dns-manager/#add-dns-records) for it.
+1.  If you want to use a custom domain name for your site, purchase a domain name from a trusted registrar and use Linode's [DNS Manager](/docs/products/networking/dns-manager/) to [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) and [create a domain record]/docs/products/networking/dns-manager/guides/manage-dns-records/) for it.
 
-1.  Set up your Linode using the [Getting Started](/docs/guides/getting-started/) and [Securing your Server](/docs/guides/securing-your-server/) guides.
+1.  Set up your Linode using the [Getting Started](/docs/guides/getting-started/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides.
 
     {{< note >}}
-Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/guides/getting-started/#update-your-system-s-hosts-file) section of the [Getting Started](/docs/guides/getting-started/) guide.
+Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/guides/set-up-and-secure/#update-your-systems-hosts-fileupdate-your-system-s-hosts-file) section of the [Getting Started](/docs/guides/getting-started/) guide.
     {{</ note >}}
 
 

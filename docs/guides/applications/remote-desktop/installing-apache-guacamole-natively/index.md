@@ -19,17 +19,17 @@ external_resources:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for upgrading your system, setting the hostname, and configuring the timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Guacamole Server
 
-1.  Log in to the Compute Instance over [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+1.  Log in to the Compute Instance over [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
 
 1.  Install all required dependencies. For Debian users, replace `libjpeg-turbo8-dev` with `libjpeg62-turbo-dev`.
 
@@ -108,7 +108,7 @@ While Apache Guacamole does support basic user authentication via a `user-mappin
     1.  Extract the tar file and copy it to `/etc/guacamole/lib/`.
 
             tar -xf mysql-connector-java-8.0.26.tar.gz
-            sudo cd mysql-connector-java-8.0.26/mysql-connector-java-8.0.26.jar /etc/guacamole/lib/
+            sudo cp mysql-connector-java-8.0.26/mysql-connector-java-8.0.26.jar /etc/guacamole/lib/
 
     1.  Download the JDBC auth plugin for Apache Guacamole. This file can be found on http://guacamole.apache.org/releases/ by selecting the release version and then locate the "jdbc" file.
 

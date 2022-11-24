@@ -3,8 +3,8 @@ slug: kubernetes-security-best-practices
 author:
   name: Jack Wallen
   email: jlwallen@monkeypantz.net
-description: 'Kubernetes is a container orchestration system to help scale containerized applications in the cloud. This guide covers some of the Kubernetes security best practices.'
-og_description: 'Kubernetes is a container orchestration system to help scale containerized applications in the cloud. This guide covers some of the Kubernetes security best practices.'
+description: 'This guide covers some of the best security practices in Kubernetes so you can deploy clusters that are secured and keep your infrastructure safe.'
+og_description: 'This guide covers some of the best security practices in Kubernetes so you can deploy clusters that are secured and keep your infrastructure safe.'
 keywords: ['Kubernetes security best practices']
 tags: ['kubernetes', 'container']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,7 +19,7 @@ contributor:
   link: https://twitter.com/jlwallen
 ---
 
-If you are [deploying your first Kubernetes cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/), it's important to consider the security best practices that are available to keep your workload safe. Kubernetes provides several out-of-the-box features to help secure your cluster. This guide provides an overview of three Kubernetes features to you can use to secure different components of a cluster. The three areas covered are Role-Based Access Control (RBAC), Secrets, and Network Policies.
+If you are [deploying your first Kubernetes cluster](/docs/guides/getting-started-with-kubernetes/), it's important to consider the security best practices that are available to keep your workload safe. Kubernetes provides several out-of-the-box features to help secure your cluster. This guide provides an overview of three Kubernetes features to you can use to secure different components of a cluster. The three areas covered are Role-Based Access Control (RBAC), Secrets, and Network Policies.
 
 {{< note >}}
 This guide assumes some familiarity with Kubernetes terminology and concepts. If you are newer to Kubernetes, refer to our [A Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/).

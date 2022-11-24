@@ -3,8 +3,8 @@ slug: what-is-jamstack
 author:
   name: Linode Community
   email: docs@linode.com
-description: "The Jamstack is an architecture to make your web applications faster, more secure, and easier to maintain. This guide walks you through its key concepts and how to start applying the architecture to your projects."
-og_description: "The Jamstack is an architecture to make your web applications faster, more secure, and easier to maintain. This guide walks you through its key concepts and how to start applying the architecture to your projects."
+description: "This guide walks you through the key concepts of the Jamstack, a type of system architecture that makes your web applications faster, more secure, and easier to maintain."
+og_description: "This guide walks you through the key concepts of the Jamstack, a type of system architecture that makes your web applications faster, more secure, and easier to maintain."
 keywords: ['jamstack','application architecture','web applications','static site generators','hugo','gatsby','jekyll','microservices']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

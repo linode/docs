@@ -3,7 +3,7 @@ slug: access-an-apache-web-server-inside-a-lxd-container
 author:
   name: Linode
   email: docs@linode.com
-description: "Compared to other Containers, LXDmachine containers each work like typical servers. Here's show to run Apache inside LXD and direct traffic to the container."
+description: "This guide will show you how to install and configure Apache Web Server inside of LXD container and then direct web traffic to the container."
 keywords: ["container", "lxd", "lxc", "virtual machine"]
 tags: ["ubuntu","container","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -39,13 +39,9 @@ For simplicity, the term *container* is used throughout this guide to describe t
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/getting-started/) guide. If you are using a Block Storage Volume, **select** the image `Ubuntu 16.04 LTS` from the drop-down menu according to the instructions.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  This guide will use `sudo` wherever possible. Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-3.  Update your system:
-
-        sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Mount Storage Volume
 
@@ -53,7 +49,7 @@ When setting up LXD, you can either store container data in an [external volume]
 
 ### Block Storage Volume
 
-1.  Follow the [How to Use Block Storage with Your Linode](/docs/platform/how-to-use-block-storage-with-your-linode/) guide and create a block storage volume with size *at least 20GB* and attach it to your Linode. Make a note of the device name and the path to the Volume.
+1.  Follow the [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/) guide and create a block storage volume with size *at least 20GB* and attach it to your Linode. Make a note of the device name and the path to the Volume.
 
     {{< caution >}}
 **Do not** format the volume and do not add it to `/etc/fstab`.
@@ -61,7 +57,7 @@ When setting up LXD, you can either store container data in an [external volume]
 
     ![Add a volume for Disk Storage](add-volume-for-disk-storage.png "Add a volume for Disk Storage")
 
-2.  Edit your Configuration Profile and under **Boot Settings** select **GRUB 2** as your kernel. See [Run a Distribution-Supplied Kernel on a KVM Linode](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/) for more information.
+2.  Edit your Configuration Profile and under **Boot Settings** select **GRUB 2** as your kernel. See [Run a Distribution-Supplied Kernel on a KVM Linode](/docs/guides/managing-the-kernel-on-a-linode/) for more information.
 
 3.  Reboot your Linode from the Linode Manager.
 
@@ -234,7 +230,7 @@ This section will create a container, install the Apache web server, and add the
 
 6.  From your local computer, navigate to your Linode's public IP address in a web browser. You should see the default Apache page:
 
-    [![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png)](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
+    ![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
 
 ## Next Steps
 

@@ -3,8 +3,8 @@ slug: host-a-terraria-server-on-your-linode
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Terraria is a two-dimensional sandbox game similar to Minecraft that allows players to explore, build, and battle in an open world. This guide will outline everything required to run a Terraria server for yourself or others to play on'
-og_description: 'Run a Terraria server for yourself and your friends to play on. This guide will teach you setup and configuration for Linux distributions.'
+description: 'In this guide, you will learn how to install and configure Terraria, a two-dimensional sandbox game similar to Minecraft, on a Linode.'
+og_description: 'In this guide, you will learn how to install and configure Terraria, a two-dimensional sandbox game similar to Minecraft, on a Linode.'
 keywords: ["terraria", "steam", "minecraft", "gaming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-12-21
@@ -37,11 +37,9 @@ Due to Terraria's system requirements, a Linode with at least two CPU cores and 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configuring a Firewall* section in the Securing Your Server Guide--we will configure the firewall for a Terraria server in the next section.
-
-3.  Update your operating system's packages.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Configure a Firewall for Terraria
 
@@ -51,7 +49,7 @@ Terraria only uses IPv4 and does not use IPv6.
 
 ### Firewalld
 
-Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our [guide on using firewalld](/docs/security/firewalls/introduction-to-firewalld-on-centos/) for more information.
+Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our [guide on using firewalld](/docs/guides/introduction-to-firewalld-on-centos/) for more information.
 
 1.  Enable and start firewalld:
 
@@ -92,7 +90,7 @@ Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our [g
 
         sudo apt install ufw
 
-2.  Add SSH and a rule for Terraria. It's important you add rules before enabling UFW. If you don't, you'll terminate your SSH session and will need to access your Linode using [Lish](/docs/guides/using-the-lish-console/):
+2.  Add SSH and a rule for Terraria. It's important you add rules before enabling UFW. If you don't, you'll terminate your SSH session and will need to access your Linode using [Lish](/docs/guides/lish/):
 
         sudo ufw allow ssh
         sudo ufw allow 7777/tcp
@@ -108,7 +106,7 @@ The second command in this step, `sudo ufw delete 4` references the fourth rule 
 
 ### iptables
 
-To manually configure iptables without using a controller, see our [iptables guide](/docs/security/firewalls/control-network-traffic-with-iptables/) for a general ruleset.
+To manually configure iptables without using a controller, see our [iptables guide](/docs/guides/control-network-traffic-with-iptables/) for a general ruleset.
 
 1.  You'll also want to add the rule below for Terraria:
 
@@ -143,7 +141,7 @@ Before you install Terraria, be sure the version you download is the same as the
 
         sudo unzip terraria-server-*
 
-4. The Terraria Server file will contain an executable that must have have execute permissions set to run the server. Enter the following command to do this:
+4. The Terraria Server file will contain an executable that must have execute permissions set to run the server. Enter the following command to do this:
 
         sudo chmod +x ~/1423/Linux/TerrariaServer.bin.x86_64
 

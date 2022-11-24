@@ -21,14 +21,14 @@ aliases: ['/platform/object-storage/server-side-encryption/']
 
 {{< content "object-storage-cancellation-shortguide" >}}
 
-Server-side encryption secures data on Linode Object Storage. Using your own encryption key, Linode will encrypt your data at the object level prior to storing it to disk. Once encrypted, Linode will only decrypt data if that same encryption key is provided with the retrieval request. This enables you to use Linode Object Storage to confidently handle sensitive data like [Terraform configurations](/docs/applications/configuration-management/terraform/how-to-build-your-infrastructure-using-terraform-and-linode/) that contain passwords and SSH keys.
+Server-side encryption secures data on Linode Object Storage. Using your own encryption key, Linode will encrypt your data at the object level prior to storing it to disk. Once encrypted, Linode will only decrypt data if that same encryption key is provided with the retrieval request. This enables you to use Linode Object Storage to confidently handle sensitive data like [Terraform configurations](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) that contain passwords and SSH keys.
 
 In this guide, you will [write an example Python script](#python-example-script) that will upload a simple file containing the text "Hello World!" to Linode Object Storage, encrypt the file with server-side encryption using a provided encryption key (SSE-C), decrypt and retrieve the contents of the file, then delete the file. Once completed, the components of this script can be adapted to implement server side encryption for your own specific use case.
 
 ## Before You Begin
 
--   Familiarize yourself with Linode Object Storage by reading the [How to Use Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide.
--   Create an Object Storage bucket. For demonstration purposes, you can create an Object Storage bucket and delete it after completing this guide.
+-   Familiarize yourself with the basics of Linode Object Storage by reviewing the [Get Started with Object Storage](/docs/products/storage/object-storage/get-started/) guide or taking a look through the available [Object Storage guides](/docs/products/storage/object-storage/guides/).
+-   [Create an Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/). For demonstration purposes, you can create an Object Storage bucket and delete it after completing this guide.
 
 ## Python Example Script
 
@@ -40,7 +40,7 @@ In this guide, you will [write an example Python script](#python-example-script)
 
         pip install boto3
 
-1.  [Generate an Object Storage key pair](/docs/platform/object-storage/how-to-use-object-storage/#generate-a-key-pair), saving the access key and secret key for use in your script.
+1.  [Generate an Object Storage key pair](/docs/products/storage/object-storage/guides/access-keys/), saving the access key and secret key for use in your script.
 
 1.  Choose a 32 character encryption key for use in your script. You can use [OpenSSL](https://www.openssl.org/) to randomly generate 32 hexadecimal characters to use as your encryption key with the following command:
 

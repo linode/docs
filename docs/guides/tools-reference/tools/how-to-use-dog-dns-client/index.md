@@ -21,22 +21,12 @@ In this guide, learn more about `dog` and how to install and start using it on y
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system.
-
-    - On Debian and Ubuntu, you can do this with:
-
-            sudo apt update && sudo apt upgrade
-
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
-
-            sudo dnf upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is dog?
@@ -221,4 +211,4 @@ NS github.com. 6m21s   "ns-520.awsdns-01.net."
 
 ## Conclusion
 
-To learn more about DNS, including more about record types and the role of DNS in the Internet, take a look at our guide [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/). From there, you may also want to look at our guide [Troubleshooting DNS Records](/docs/guides/troubleshooting-dns/). It can give you some ideas for how you might use a tool like `dog` to help keep your DNS setup in order.
+To learn more about DNS, including more about record types and the role of DNS in the Internet, take a look at our guide [DNS Records: An Introduction](/docs/guides/dns-overview/). From there, you may also want to look at our guide [Troubleshooting DNS Records](/docs/guides/troubleshooting-dns/). It can give you some ideas for how you might use a tool like `dog` to help keep your DNS setup in order.

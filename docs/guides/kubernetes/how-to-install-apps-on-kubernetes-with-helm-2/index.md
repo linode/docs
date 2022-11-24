@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 title: 'How to Install Apps on Kubernetes with Helm 2'
 h1_title: 'Installing Apps on Kubernetes with Helm 2'
-aliases: ['/applications/containers/how-to-install-apps-on-kubernetes-with-helm/','/how-to-install-apps-on-kubernetes-with-helm/','/applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/','/kubernetes/how-to-install-apps-on-kubernetes-with-helm-2/']
+aliases: ['/how-to-install-apps-on-kubernetes-with-helm/','/kubernetes/how-to-install-apps-on-kubernetes-with-helm-2/']
 deprecated: true
 deprecated_link: 'kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/'
 concentrations: ["Kubernetes"]
@@ -334,7 +334,7 @@ If you don't own a domain name and won't continue to use the Ghost website after
 
 1.  You haven't set up DNS for your site yet, but you can instead access the admin interface by visiting the `ghost` URL on your LoadBalancer IP address (e.g. `http://104.237.148.15/ghost`). Visit this page in your browser and then enter your email and password. You should be granted access to the administrative interface.
 
-1.  Set up DNS for your app. You can do this by creating an *A record* for your domain which is assigned to the external IP for your app's LoadBalancer. Review Linode's [DNS Manager](/docs/guides/dns-manager/) guide for instructions.
+1.  Set up DNS for your app. You can do this by creating an *A record* for your domain which is assigned to the external IP for your app's LoadBalancer. Review Linode's [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions.
 
 ## Upgrade your App
 

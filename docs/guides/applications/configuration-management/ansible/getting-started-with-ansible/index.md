@@ -39,7 +39,7 @@ To get started using Ansible, it is helpful to become familiar with a few basic 
 
 - **Inventory**: Ansible keeps track of its managed nodes using an [inventory file](http://docs.ansible.com/ansible/intro_inventory.html) typically located in `/etc/ansible/hosts`. In the inventory file, you can group your managed nodes and use these groups to target specific hosts that make up your infrastructure. Ansible can use multiple inventory sources, like other inventory files and dynamic inventory pulled using an inventory plugin or script.
 
-    If your Ansible managed infrastructure will change over time, it is recommended to use the [dynamic inventory plugin for Linode](https://docs.ansible.com/ansible/latest/plugins/inventory/linode.html). You can read the [How to use the Linode Ansible Module to Deploy Linodes](/docs/applications/configuration-management/deploy-linodes-using-ansible/) to learn how to use this plugin.
+    If your Ansible managed infrastructure will change over time, it is recommended to use the [dynamic inventory plugin for Linode](https://docs.ansible.com/ansible/latest/plugins/inventory/linode.html). You can read the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/) to learn how to use this plugin.
 
 - **Modules**: Modules add extra functionality to Ansible. You can call Ansible modules directly from the command line to execute on your managed nodes or use them in your Playbooks. See [Ansible's module index](https://docs.ansible.com/ansible/latest/modules/modules_by_category.html) for a list of available modules by category.
 
@@ -54,7 +54,7 @@ This guide introduces the basics of installing Ansible and preparing your enviro
 * Create two Linodes to manage with Ansible and establish a basic connection between the control node and your managed nodes. The managed nodes will be referred to as `node-1`, and `node-2` throughout the guide.
 
     {{< note >}}
-The examples in this guide provide a manual method to establish a basic connection between your control node and managed nodes as a way to introduce the basics of Ansible. If you would like to learn how to use Ansible's [Linode module](https://docs.ansible.com/ansible/latest/modules/linode_v4_module.html) to automate deploying and managing Linodes, see the [How to use the Linode Ansible Module to Deploy Linodes](/docs/applications/configuration-management/deploy-linodes-using-ansible/). The guide assumes familiarity with Ansible modules, Playbooks, and dynamic inventories.
+The examples in this guide provide a manual method to establish a basic connection between your control node and managed nodes as a way to introduce the basics of Ansible. If you would like to learn how to use Ansible's [Linode module](https://docs.ansible.com/ansible/latest/modules/linode_v4_module.html) to automate deploying and managing Linodes, see the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/). The guide assumes familiarity with Ansible modules, Playbooks, and dynamic inventories.
     {{</ note >}}
 
 ## Before You Begin
@@ -62,10 +62,10 @@ The examples in this guide provide a manual method to establish a basic connecti
 {{< caution >}}
 This guide's example instructions will create up to three billable Linodes on your account. If you do not want to keep using the example Linodes that you create, be sure to [delete them](#delete-a-cluster) when you have finished the guide.
 
-If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works.
 {{< /caution >}}
 
-1. [Create three Linodes](/docs/getting-started/#create-a-linode) running Debian 9. One will be the **control node** and two you will use as your Ansible **managed nodes**. The examples in this guide can also be followed using a single managed node, if preferred.
+1. [Create three Linodes](/docs/guides/creating-a-compute-instance/) running Debian 9. One will be the **control node** and two you will use as your Ansible **managed nodes**. The examples in this guide can also be followed using a single managed node, if preferred.
 
 1. Ansible uses the SSH protocol to securely log into managed nodes and apply your Playbook configurations. Create an SSH key-pair on the control node to use for authentication. This guide assumes your public and private SSH key-pair is stored in `~/.ssh/id_rsa.pub` and `~/.ssh/id_rsa`.
 
@@ -78,7 +78,7 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
     Repeat this procedure for each remaining node.
 
     {{< note >}}
-This step can be automated by using Ansible's Linode module. See the [How to use the Linode Ansible Module to Deploy Linodes](/docs/applications/configuration-management/deploy-linodes-using-ansible/) for more information.
+This step can be automated by using Ansible's Linode module. See the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/) for more information.
     {{</ note >}}
 
 ## Set up the Control Node
@@ -131,7 +131,7 @@ This guide was created using Ansible 2.8.
   The EPEL-Release repository may need to be added on certain versions of CentOS, RHEL, and Scientific Linux.
     {{</ note >}}
 
-    #### Ubuntu 18.04
+    #### Ubuntu 22.04
 
         sudo apt update
         sudo apt install software-properties-common
@@ -172,7 +172,7 @@ AGNOSTIC_BECOME_PROMPT:
 
 ### Create an Ansible Inventory
 
-Ansible keeps track of its managed nodes using an [inventory file](http://docs.ansible.com/ansible/intro_inventory.html) located in `/etc/ansible/hosts`. In the inventory file, you can group your managed nodes and use these groups to target specific hosts that make up your infrastructure. Ansible can use multiple inventory sources, like other inventory files and dynamic inventory pulled using an inventory plugin or script. If your Ansible managed infrastructure will change over time, it is recommended to use the dynamic inventory plugin for Linode. You can read the [How to use the Linode Ansible Module to Deploy Linodes](/docs/applications/configuration-management/deploy-linodes-using-ansible/) to learn how to manage Linodes.
+Ansible keeps track of its managed nodes using an [inventory file](http://docs.ansible.com/ansible/intro_inventory.html) located in `/etc/ansible/hosts`. In the inventory file, you can group your managed nodes and use these groups to target specific hosts that make up your infrastructure. Ansible can use multiple inventory sources, like other inventory files and dynamic inventory pulled using an inventory plugin or script. If your Ansible managed infrastructure will change over time, it is recommended to use the dynamic inventory plugin for Linode. You can read the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/) to learn how to manage Linodes.
 
 Following the example below, you will add your three Linodes to the `/etc/ansible/hosts` inventory file in two separate groups. The nodes can be listed using a name that can be resolved by DNS or an IP address.
 
@@ -225,7 +225,7 @@ After configuring your control node, you can communicate with your managed nodes
 
 ## Next Steps
 
-1. Now that you've installed and configured Ansible, you can begin to use Playbooks to manage your Linodes' configurations. Our [Automate Server Configuration with Ansible Playbooks](/docs/applications/configuration-management/running-ansible-playbooks/) guide will demonstrate a basic web server set up using an Ansible Playbook.
+1. Now that you've installed and configured Ansible, you can begin to use Playbooks to manage your Linodes' configurations. Our [Automate Server Configuration with Ansible Playbooks](/docs/guides/running-ansible-playbooks/) guide will demonstrate a basic web server set up using an Ansible Playbook.
 
 1. You can also reference a number of [example playbooks](https://github.com/ansible/ansible-examples) on Ansible's GitHub account to a see a variety of implementations.
 
@@ -239,4 +239,4 @@ After configuring your control node, you can communicate with your managed nodes
 
 ### Delete Your Linodes
 
-If you no longer wish to use the Linodes created in this guide, you can delete them using the [Linode Cloud Manager](https://cloud.linode.com/linodes). To learn how to remove Linode resources using Ansible's Linode module, see the [Delete Your Resources](/docs/applications/configuration-management/deploy-linodes-using-ansible/#delete-your-resources) section of the [How to use the Linode Ansible Module to Deploy Linodes](/docs/applications/configuration-management/deploy-linodes-using-ansible/) guide.
+If you no longer wish to use the Linodes created in this guide, you can delete them using the [Linode Cloud Manager](https://cloud.linode.com/linodes). To learn how to remove Linode resources using Ansible's Linode module, see the [Delete Your Resources](/docs/guides/deploy-linodes-using-ansible/#delete-your-resources) section of the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/) guide.

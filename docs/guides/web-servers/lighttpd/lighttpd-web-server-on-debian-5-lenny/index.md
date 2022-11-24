@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Using lighttpd to host multiple websites from your Linode.'
+description: 'This guide will show you how to install and configure lighttpd to host multiple websites or web-based applications on a Linode running Debian 5 "Lenny".'
 keywords: ["lighttpd server", "lighttpd Linode", "web server", "Linode web server", "Linode hosting"]
 tags: ["web server","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -23,7 +23,7 @@ relations:
 
 This tutorial explains how to install and configure the lighttpd (e.g. "lighty") web server on Debian 5 (Lenny). Lighttpd is designed to provide a lightweight web server, capable of serving large loads, using less memory than servers like the Apache httpd server. It's commonly deployed on high traffic sites, including YouTube. You might want to consider using lighttpd if you're having problems scaling your current web server to meet your load requirements. Lighttpd makes sense for users who find "big" programs like Apache daunting and bloated.
 
-Our example will illustrate the installation of a lighttpd server on a Debian 5 (Lenny) system. We assume that you've followed the [getting started guide](/docs/getting-started/) and are running on an updated system. This document does not, however, include instructions for deploying other common services in the web development stack. We recommend you consult additional resources (a few are listed at the end of this tutorial) to deploy the remainder of your web stack.
+Our example will illustrate the installation of a lighttpd server on a Debian 5 (Lenny) system. We assume that you've followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and are running on an updated system. This document does not, however, include instructions for deploying other common services in the web development stack. We recommend you consult additional resources (a few are listed at the end of this tutorial) to deploy the remainder of your web stack.
 
 If you're switching from an alternate web server like Apache, remember to turn Apache off for testing purposes, or configure lighttpd to serve on an alternate port until it's configured properly.
 

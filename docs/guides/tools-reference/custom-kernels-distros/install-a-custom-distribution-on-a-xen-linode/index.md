@@ -20,7 +20,7 @@ If you'd like to run a Linux distribution on your Linode that isn't available fr
 {{< content "all-linodes-kvm-shortguide" >}}
 
 {{< note >}}
-This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/).
+This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/docs/guides/install-a-custom-distribution/).
 {{< /note >}}
 
 ## Creating the Virtual Machine
@@ -35,43 +35,43 @@ Here's how to get started:
 
 1.  Launch the VirtualBox application. The window shown below appears.
 
-    [![The VirtualBox interface.](1164-vbvm1-1.png)](1164-vbvm1-1.png)
+    ![The VirtualBox interface.](1164-vbvm1-1.png)
 
 2.  Click the **New** button to create a new virtual machine on your personal computer. The window shown below appears.
 
-    [![Naming a VM in VirtualBox.](1165-vbvm2-1.png)](1165-vbvm2-1.png)
+    ![Naming a VM in VirtualBox.](1165-vbvm2-1.png)
 
 3.  In the **Name** field, enter a name for the virtual machine.
 4.  Select **Linux** from the **Type** menu, and select your Linux distribution from the **Version** menu.
 5.  Click **Continue**. The window shown below appears.
 
-    [![Allocating RAM in VirtualBox.](1166-vbvm3.png)](1166-vbvm3.png)
+    ![Allocating RAM in VirtualBox.](1166-vbvm3.png)
 
 6.  Select the amount of RAM that will be allocated to the virtual machine on your personal computer. This value should match the amount of RAM provided by your Linode plan.
 7.  Click **Continue**. The window shown below appears.
 
-    [![Adding a virtual hard drive](1167-vbvm4.png)](1167-vbvm4.png)
+    ![Adding a virtual hard drive](1167-vbvm4.png)
 
 8.  Select **Create a virtual hard drive now** and then click **Continue**. The window shown below appears.
 
-    [![Adding a virtual hard drive](1169-vbvm5.png)](1169-vbvm5.png)
+    ![Adding a virtual hard drive](1169-vbvm5.png)
 
 9.  Select **VDI (VirtualBox Disk)** and then click **Continue**. The window shown below appears.
 
-    [![Adding a virtual hard drive](1168-vbvm6.png)](1168-vbvm6.png)
+    ![Adding a virtual hard drive](1168-vbvm6.png)
 
 10. Select **Fixed size** and then click **Continue**. The window shown below appears.
 
-    [![Setting the size of the virtual hard drive](1170-vbvm7.png)](1170-vbvm7.png)
+    ![Setting the size of the virtual hard drive](1170-vbvm7.png)
 
 11. Enter a name for the hard drive, and then select a size for the virtual machine's hard disk. You'll want to create a hard disk just a bit larger than will be necessary to hold your installed Linux distribution.
 12. Click **Create**. It may take a minute or so for the hard disk to be created. After it's created, the window shown below appears.
 
-    [![Adding a virtual hard drive](1171-vbvm8.png)](1171-vbvm8.png)
+    ![Adding a virtual hard drive](1171-vbvm8.png)
 
 13. Click **Settings**, and then click **Storage**. The window shown below appears.
 
-    [![Adding a virtual hard drive](1174-vbvm9-2.png)](1174-vbvm9-2.png)
+    ![Adding a virtual hard drive](1174-vbvm9-2.png)
 
 14. From the **Storage Tree** window, select the **Empty** option under **Controller: IDE**.
 15. Click the CD icon, and then select **Choose a virtual CD/DVD disk file**.
@@ -83,7 +83,7 @@ If you haven't already downloaded the image of the Linux distribution to your de
 
 17. Click **Network**. The window shown below appears.
 
-    [![Configuring networking.](1175-vbvm10.png)](1175-vbvm10.png)
+    ![Configuring networking.](1175-vbvm10.png)
 
 18. From the **Attached to** menu, select **Bridged Adapter**. This setting will allow your virtual machine to be reached from anywhere on the local network.
 19. Click **OK**.
@@ -94,11 +94,11 @@ If you haven't already downloaded the image of the Linux distribution to your de
 You will need to ensure that your distribution's installer configures your partitions without LVM (Logical Volume Management), as disks created with LVM cannot be transferred to your Linode.
 {{< /note >}}
 
-    [![Partitioning the drive.](1179-vbvm11.png)](1179-vbvm11.png)
+    ![Partitioning the drive.](1179-vbvm11.png)
 
 22. Select the packages you'd like installed on your server, such as OpenSSH server for easy remote administration, as shown below.
 
-    [![Installing packages.](1180-vbvm12.png)](1180-vbvm12.png)
+    ![Installing packages.](1180-vbvm12.png)
 
 23. Complete the installation, and then shut down the virtual machine.
 
@@ -111,7 +111,7 @@ Now you need to boot the virtual machine with Finnix to transfer it to your Lino
 1.  Download the latest Finnix ISO image from [finnix.org](http://www.finnix.org/). You'll use this image to boot the virtual machine and then transfer the virtual hard disks to your Linode.
 2.  In the *Oracle VM VirtualBox Manager* window, click **Settings**, and then click **Storage**. The window shown below appears.
 
-    [![Installing packages.](1181-vbvm13.png)](1181-vbvm13.png)
+    ![Installing packages.](1181-vbvm13.png)
 
 3.  Click the CD icon, and then select **Choose a virtual CD/DVD disk file**.
 4.  Select your Linux distribution install image, and then click **Open**.
@@ -146,13 +146,13 @@ Start from the Linode Manager by configuring a Linode to boot your custom image.
 
 9. Next, create a configuration profile for the Linode by selecting **Create a new Configuration Profile**. Change the **Label** to "Custom_Distro" or similar. Under **Block Device Assignment** change **/dev/xvda** to **Custom_Distro** and **/dev/xvdb** to **Swap**. Notice that **root device** is set to **Standard: /dev/xvda** making the Custom_Distro disk the boot device. Warning, do not change the **root device** setting.
 
-    [![Configuration Profile.](config-profile-small.png)](config-profile-large.png)
+    ![Configuration Profile.](config-profile-large.png)
 
 10. Select **Save Changes**.
 
 11. Next, select the **Rescue** sub-tab, which is located on the same row as the **Dashboard** tab. Select **Reboot into Rescue Mode**. Monitor the **Host Job Queue** progress bar for the system shutdown and the system boot. It should take under a minute.
 
-12. Once your Linode has booted into Finnix Rescue Mode, you should be able to connect to it via the [Lish Console](/docs/guides/using-the-lish-console/).
+12. Once your Linode has booted into Finnix Rescue Mode, you should be able to connect to it via the [Lish Console](/docs/guides/lish/).
 
 ## Starting SSH in Finnix
 
@@ -213,6 +213,6 @@ proc /proc proc defaults 0 0
 ~
 6.  Exit and save the file by pressing `Ctrl+x`, type `y` to save your changes, and press `enter` to exit.
 
-The disk has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](/docs/getting-started/#connect-to-your-linode-via-ssh). Remember to use the username and password created during step 23 under the [Creating the Virtual Machine](#creating-the-virtual-machine) heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration/) guide.
+The disk has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). Remember to use the username and password created during step 23 under the [Creating the Virtual Machine](#creating-the-virtual-machine) heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide.
 
 Congratulations, you have successfully transferred the custom distro disk from your local virtual machine to your Linode.

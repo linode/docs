@@ -47,21 +47,15 @@ While Mastodon servers are privately-operated, they are often open to public reg
 
 This guide will create a Mastodon server on a Linode running Ubuntu 16.04. Docker Compose is used to install Mastodon. If you prefer a different Linux distribution, you may be able to use this guide with small changes to the listed commands.
 
-1. Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for deploying and setting up a Linode, including setting the hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
     {{< note >}}
 Consult Mastodon's [resource usage examples](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Resources-needed.md) when considering which Linode plan to deploy on.
 {{< /note >}}
 
-1. This guide uses sudo wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. Replace each instance of `example.com` in this guide with your Mastodon site’s domain name.
 
-1. Replace each instance of `example.com` in this guide with your Mastodon site’s domain name.
-
-1. Complete the [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Mastodon Linode.
-
-1. Ensure your system is up to date:
-
-        sudo apt update && sudo apt upgrade
+1. Complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Mastodon Linode.
 
 1. Mastodon will serve its content over HTTPS, so you will need to obtain an SSL/TLS certificate. Request and download a free certificate from [Let's Encrypt](https://letsencrypt.org) using [Certbot](https://certbot.eff.org):
 
@@ -81,11 +75,11 @@ When Certbot is run, you generally pass a command with the [`--deploy-hook` opti
 
     {{< content "email-warning-shortguide" >}}
 
-    One option is to install your own mail server using the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) guide. You can install such a mail server on the same Linode as your Mastodon server, or on a different one. If you follow this guide, be sure to create a `notifications@example.com` email address which you will later use for notifications. If you install your mail server on the same Linode as your Mastodon deployment, you can use your Let's Encrypt certificate in `/etc/letsencrypt/live/example.com/` for the mail server too.
+    One option is to install your own mail server using the [Email with Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) guide. You can install such a mail server on the same Linode as your Mastodon server, or on a different one. If you follow this guide, be sure to create a `notifications@example.com` email address which you will later use for notifications. If you install your mail server on the same Linode as your Mastodon deployment, you can use your Let's Encrypt certificate in `/etc/letsencrypt/live/example.com/` for the mail server too.
 
     If you would rather not self-host an email server, you can use a third-party SMTP service. The instructions in this guide will also include settings for using [Mailgun](https://www.mailgun.com/) as your SMTP provider.
 
-1. This guide uses Mastodon's Docker Compose deployment method. Before proceeding, [install Docker and Docker Compose](/docs/applications/messaging/install-mastodon-on-ubuntu-1604/#install-docker). If you haven't used Docker before, it's recommended that you review the [Introduction to Docker](/docs/applications/containers/introduction-to-docker/) and [How to Use Docker Compose](/docs/applications/containers/how-to-use-docker-compose/) guides.
+1. This guide uses Mastodon's Docker Compose deployment method. Before proceeding, [install Docker and Docker Compose](/docs/guides/install-mastodon-on-ubuntu-1604/#install-docker). If you haven't used Docker before, it's recommended that you review the [Introduction to Docker](/docs/guides/introduction-to-docker/) and [How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/) guides.
 
 ### Install Docker
 
@@ -97,7 +91,7 @@ When Certbot is run, you generally pass a command with the [`--deploy-hook` opti
 
 ## Set Up Mastodon
 
-Mastodon has a number of components: [PostgreSQL](/docs/databases/postgresql/configure-postgresql/#what-is-postgresql) and [Redis](https://redis.io/) are used to store data, and three different Ruby on Rails services are used to power the web application. These are all combined in a Docker Compose file that Mastodon provides.
+Mastodon has a number of components: [PostgreSQL](/docs/guides/configure-postgresql/#what-is-postgresql) and [Redis](https://redis.io/) are used to store data, and three different Ruby on Rails services are used to power the web application. These are all combined in a Docker Compose file that Mastodon provides.
 
 ### Download Mastodon and Configure Docker Compose
 

@@ -33,22 +33,19 @@ This guide explains how to install [*Magento*](https://magento.com/) on CentOS 8
 Although this guide covers installation of Magento 2.4, version 2.3 is still available and fully supported.
 {{< /note >}}
 
-
 ## Before You Begin
 
-1. Magento requires a robust, stable hosting environment in order to function properly, such as a **Linode 4GB** solution. Familiarise yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's host name and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. It's recommended to run Magento on at least a 4GB instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an Magento server.
-1.  Update your system:
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an Magento server.
 
         sudo dnf update && sudo dnf upgrade
+
 1. This guide uses the sample domain name of `example.com` and a Magento root directory of `/var/www/html/example.com/public_html`, along with default username and password variables such as `magentouser` and `magentopassword`. Substitute your own values when you encounter these variables throughout the guide.
 
-
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
-
 
 ## Advantages/Drawbacks of Magento
 

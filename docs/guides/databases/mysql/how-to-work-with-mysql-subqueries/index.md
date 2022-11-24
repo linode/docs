@@ -38,7 +38,9 @@ In this guide you will learn:
 
 To follow along with this guide, make sure you have the following:
 
-1.  A Linode, which you run the MySQL software on. Please refer to the [Getting Started with Linode](/docs/getting-started/) guide to setup a Linode server.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  The MySQL server software (or MariaDB) installed on your Linode. Please refer to the [MySQL section](/docs/guides/databases/mysql/), which contains guides that describe how to install MySQL on several Linux distributions.
 

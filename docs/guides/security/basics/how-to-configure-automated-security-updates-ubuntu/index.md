@@ -2,7 +2,7 @@
 slug: how-to-configure-automated-security-updates-ubuntu
 author:
   name: Hackersploit
-description: "Looking for better management of security updates on Ubuntu? Learn how to use the dnf-automatic tool or the Cockpit web application to manage these updates."
+description: "In this tutorial, you will learn how to configure automated updates on Ubuntu by using the dnf-automatic tool or the Cockpit web application."
 keywords: ["ubuntu unattended-upgrades", "configuring unattended-upgrades"]
 tags: ["ubuntu", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -28,7 +28,7 @@ Keeping your system up-to-date with the latest packages and security updates can
 
 1.  Complete the [Getting Started](/docs/guides/getting-started) guide.
 
-1.  Follow the [Securing Your Server](/docs/guides/securing-your-server/) guide to create a standard user account, and harden SSH access.
+1.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, and harden SSH access.
 
 1.  Log into your Linode via SSH and update and upgrade.
 

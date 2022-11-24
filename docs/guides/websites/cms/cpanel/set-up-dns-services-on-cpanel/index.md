@@ -3,7 +3,7 @@ slug: set-up-dns-services-on-cpanel
 author:
   name: Chris Ciufo
   email: docs@linode.com
-description: How to set up DNS on your cPanel server
+description: 'This guide provides you with instructions for setting up DNS on cPanel, a commercial web-based control panel for servers that lets you manage your Linode.'
 og_description: "How to set up DNS on your cPanel server"
 keywords: ["DNS", "cPanel", "DNS on cPanel"]
 tags: ["centos","dns","cms","cpanel"]
@@ -29,7 +29,7 @@ external_resources:
 
 In the root WHM, under the **Service Configuration** section, click **Nameserver Selection**. The following page appears:
 
-[![cPanel Nameserver selection screen.](829-NSSelect.png)](829-NSSelect.png)
+![cPanel Nameserver selection screen.](829-NSSelect.png)
 
 You can choose from BIND, MyDNS or NSD; the advantages and disadvantages for each are displayed. If you are unfamiliar with any of them, select BIND, which is the easiest to work with.
 
@@ -39,7 +39,7 @@ To use your own nameservers, for example `ns1.example.com`, `ns2.example.com`, c
 
 Click the domain you used when you set up your nameservers at your registrar and click the **+ A Record** button to add A records for your nameservers. Add the name and IP address:
 
-[![cPanel add NS entries.](832-AddNS2.png)](832-AddNS2.png)
+![cPanel add NS entries.](832-AddNS2.png)
 
 Just make sure you use Linode's IP address. You can add more than two nameservers if you like.
 
@@ -115,7 +115,7 @@ Creating a domain also creates its corresponding domain zone.
 {{</ note >}}
 
 1.  From the **Domains** section, click **Add a Domain**. The **Create a Domain** panel appears where you can fill out the form fields with your domain's information.
-    [![add a secondary zone](secondary_zone.png)](secondary_zone.png)
+    ![add a secondary zone](secondary_zone.png)
 
 1. To add a *secondary zone*, click the **Secondary** radio button.
 

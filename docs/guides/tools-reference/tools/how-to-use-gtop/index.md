@@ -23,22 +23,12 @@ Gtop is a system monitoring dashboard for your terminal, with a rich graphical d
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system.
-
-    - On **Debian** and **Ubuntu**, you can do this with the following commands:
-
-            sudo apt update && sudo apt upgrade
-
-    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
-
-            sudo dnf upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is gtop?
@@ -54,13 +44,13 @@ Gtop takes up the graphical direction of htop. But unlike htop, which still focu
 Take a look at the screenshots below, which contrast the displays of top, htop, and gtop.
 
 **top**
-[![System monitoring display in top](top-display_small.png)](top-display.png)
+![System monitoring display in top](top-display.png)
 
 **htop**
-[![System monitoring display in htop](htop-display_small.png)](htop-display.png)
+![System monitoring display in htop](htop-display.png)
 
 **gtop**
-[![System monitoring display in gtop](gtop-display_small.png)](gtop-display.png)
+![System monitoring display in gtop](gtop-display.png)
 
 ## How to Install gtop
 

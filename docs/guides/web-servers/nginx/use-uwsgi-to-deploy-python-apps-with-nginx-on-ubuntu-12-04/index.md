@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Use uWSGI to Deploy Python Application Servers in Conjunction with Nginx.'
+description: 'This guide will show you how to configure the uWSGI server to deploy Python application servers in conjunction with the Nginx web server on Ubuntu 12.04.'
 keywords: ["uwsgi", "wsgi", "nginx", "python", "ubuntu", "install uwsgi", "deploy python applications with nginx", "virtual host"]
 tags: ["web server","python","ubuntu","web applications","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,7 +13,7 @@ modified: 2012-11-13
 modified_by:
   name: Linode
 published: 2012-11-13
-title: 'Use uWSGI to deploy Python apps with Nginx on Ubuntu 12.04'
+title: "Deploy Python Apps with uWSGI and Nginx on Ubuntu 12.04"
 relations:
     platform:
         key: wsgi-uwsgi-nginx

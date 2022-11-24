@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use PHP CGI to run PHP scripts as indivudual users.'
+description: 'This guide provides you with instructions for using PHP CGI to run PHP scripts as individuals users on your system for better security on and performance on Debian 7.'
 keywords: ["php cgi", "php", "apache", "cgi", "php scripts", "web apps", "web applications"]
 tags: ["web server","apache","debian","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -51,7 +51,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo apt-get install apache2
 
-2.  You can now [configure virtual hosting](/docs/web-servers/apache/apache-web-server-debian-7/#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Next, install the CGI binaries:
+2.  You can now [configure virtual hosting](/docs/guides/apache-web-server-debian-7/#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Next, install the CGI binaries:
 
         sudo apt-get install php5-cgi
 

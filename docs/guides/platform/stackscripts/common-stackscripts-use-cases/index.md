@@ -36,7 +36,7 @@ If you develop software, you can use StackScripts to deploy a demonstration inst
 
 ### Distributing your Software
 
-Community StackScripts are publicly available to the entire Linode Community. This means if you have an open source project you'd like to make easily available to Linode users, you can write a StackScript that installs and configures your project's software on a Linode. Include [user defined variables](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/#user-defined-fields-udfs) in your StackScript to make it customizable to users during each deployment of the StackScript.
+Community StackScripts are publicly available to the entire Linode Community. This means if you have an open source project you'd like to make easily available to Linode users, you can write a StackScript that installs and configures your project's software on a Linode. Include [user defined variables](/docs/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/#user-defined-fields-udfs) in your StackScript to make it customizable to users during each deployment of the StackScript.
 
 {{< note >}}
 If you would also like to make your open source project available to the Linode Community as an App in the Linode Marketplace, see the [Linode App Marketplace page](https://www.linode.com/marketplace/) for details.
@@ -48,4 +48,4 @@ If your application makes use of a cluster of nodes, you may be able to automate
 
 ## Next Steps
 
-To get started creating your first StackScript, see the [A Tutorial for Creating and Managing StackScripts](/docs/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/).
+To get started creating your first StackScript, see the [A Tutorial for Creating and Managing StackScripts](/docs/guides/creating-and-managing-stackscripts-a-tutorial/).

@@ -1,13 +1,13 @@
 ---
 slug: back-up-your-mysql-databases
 deprecated: true
+deprecated_link: "guides/use-mysqldump-to-back-up-mysql-or-mariadb/"
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'Instructions for backing up MySQL databases using various methods.'
+description: 'This guide provides instructions for backing up your MySQL databases for disaster recovery and continuity using a variety of methods, including the command line.'
 keywords: ["mysql", "backup", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mysql/backup-options/','/databases/mysql/back-up-your-mysql-databases/','/security/backups/back-up-your-mysql-databases/']
 modified: 2013-09-11
 modified_by:
   name: Linode
@@ -26,11 +26,11 @@ MySQL is an open source relational database management system (DBMS) which is fr
 
 ![Back Up Your MySQL Databases](back_up_your_mysql-databases.png "Back Up Your MySQL Databases")
 
-Before beginning the installation process, we assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/). Additionally, you will need to install the [MySQL Database](/docs/databases/mysql/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/linux-users-and-groups/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before beginning the installation process, we assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Additionally, you will need to install the [MySQL Database](/docs/databases/mysql/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/guides/linux-users-and-groups/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Backup Methodology
 
-Most backups of MySQL databases in this guide are performed using the `mysqldump` tool, which is distributed with the default MySQL server installation. We recommend that you use `mysqldump` whenever possible because it is often the easiest and most efficient way to take database backups. Other methods detailed in this guide are provided for situations when you do not have access to the `mysqldump` tool, as in a recovery environment like [Finnix](/docs/troubleshooting/rescue-and-rebuild/#rescuing) or in situations where the local instance of the MySQL server will not start.
+Most backups of MySQL databases in this guide are performed using the `mysqldump` tool, which is distributed with the default MySQL server installation. We recommend that you use `mysqldump` whenever possible because it is often the easiest and most efficient way to take database backups. Other methods detailed in this guide are provided for situations when you do not have access to the `mysqldump` tool, as in a recovery environment like [Finnix](/docs/guides/rescue-and-rebuild/#rescuing) or in situations where the local instance of the MySQL server will not start.
 
 Nevertheless, this guide provides a mere overview of the `mysqldump` tool, as there are many options for and uses of `mysqldump` that fall beyond the scope of this document. We encourage you to become familiar with all of the procedures covered in this document, and to continue your exploration of `mysqldump` beyond the cases described here. Be sure to note the following:
 

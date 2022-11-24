@@ -3,7 +3,7 @@ slug: what-is-the-linode-longview-app-for-apache
 author:
   name: Linode
   email: docs@linode.com
-description: Using the Linode Longview App for Apache
+description: 'This guide discusses the Linode Longview client, including how to configure Longview for the Apache web server, how to interact with data from Longview, and more.'
 keywords: ["Longview", " Apache", " statistics", " mod\\_status"]
 tags: ["apache","cloud manager","statistics","monitoring","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -42,8 +42,8 @@ This guide discusses Linode Longview for Apache. The guide covers the following 
 In order to use the Longview App for Apache, ensure you have completed the following things:
 
 -  A Linode with [Apache installed and running](/docs/web-servers/apache/).
--  Create a [Longview client](/docs/platform/longview/what-is-longview/#install-linode-longview) instance using the Cloud Manager.
--  Install the [Longview Agent](/docs/platform/longview/what-is-longview/#install-the-longview-agent) on your Linode.
+-  Create a [Longview client](/docs/guides/what-is-longview/#install-linode-longview) instance using the Cloud Manager.
+-  Install the [Longview Agent](/docs/guides/what-is-longview/#install-the-longview-agent) on your Linode.
 
 ### Debian and Ubuntu Automatic Configuration
 
@@ -51,7 +51,7 @@ If Apache is installed and running when you install the Longview client, the Apa
 
 If you already have Longview installed, and later want to install Apache and enable the Longview App for it, you may find that Apache is not automatically detected on initial setup. When this happens, you can run Longview through its automatic configuration sequence again. In most cases, this will result in Longview finding everything it needs to get the Apache App started. And don't worry - your old Longview data will stay safe. To run the automatic Longview configuration:
 
-1. [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) whose system you are monitoring with Longview.
+1. [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
 
 1.  Ensure that Apache is running using your distribution's initialization system.
 
@@ -81,13 +81,13 @@ update-rc.d: using dependency based boot sequencing
 
     If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#troubleshooting) section at the end of this article.
 
-[![Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](1451-longview_apache_popup_crop.png)](1451-longview_apache_popup_crop.png)
+![Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](1451-longview_apache_popup_crop.png)
 
 ### Manual Configuration (All Distributions)
 
 To enable the Apache Longview app manually, follow these steps on your Linode via SSH:
 
-1.  [SSH into your Linode](/docs/getting-started/#connect-to-your-linode-via-ssh) whose system you are monitoring with Longview.
+1.  [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
 
 1.  Make sure **mod\_status** is enabled for Apache (it should be by default). You can follow the instructions list in the [apache.org](https://httpd.apache.org/docs/2.4/mod/mod_status.html) site. Or, on Debian and Ubuntu systems, run this command:
 
@@ -154,7 +154,7 @@ To see the output for the Longview Apache App:
 
     You'll see the current version of Apache listed on the upper left hand side of the page.
 
-    Mouse over a data point to see the exact numbers for that time. With [Longview Pro](/docs/platform/longview/pricing/), you can view older time periods for your data. The next sections cover the Longview Apache App in detail.
+    Mouse over a data point to see the exact numbers for that time. With [Longview Pro](/docs/guides/linode-longview-pricing-and-plans/), you can view older time periods for your data. The next sections cover the Longview Apache App in detail.
 
 ### Requests
 
@@ -181,19 +181,19 @@ The **Workers** graph shows all of the Apache workers at the selected time. The 
 
 ### CPU
 
-The **CPU** graph shows the percentage of your Linode's CPU being used by Apache at the selected time. If you want to see the total CPU used instead, check the [Overview tab](/docs/platform/longview/what-is-longview/#overview).
+The **CPU** graph shows the percentage of your Linode's CPU being used by Apache at the selected time. If you want to see the total CPU used instead, check the [Overview tab](/docs/guides/what-is-longview/#overview).
 
 ### Memory
 
-The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/platform/longview/what-is-longview/#overview).
+The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/guides/what-is-longview/#overview).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the [Disks tab](/docs/platform/longview/what-is-longview/#disks).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the [Disks tab](/docs/guides/what-is-longview/#disks).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your Linode spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Processes tab](/docs/platform/longview/what-is-longview/#processes).
+The **Process Count** graph shows the total number of processes on your Linode spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Processes tab](/docs/guides/what-is-longview/#processes).
 
 ## Troubleshooting
 
@@ -205,7 +205,7 @@ By default Longview uses port 80 for its automatic configuration. In the event y
 
 If you run the [automatic Longview configuration tool](#debian-and-ubuntu-automatic-configuration), and get the popup message shown below:
 
-[![Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](1451-longview_apache_popup_crop.png)](1451-longview_apache_popup_crop.png)
+![Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](1451-longview_apache_popup_crop.png)
 
 This indicates that Longview can't locate the Apache status page. In turn, this could indicate that either:
 

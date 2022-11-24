@@ -51,18 +51,14 @@ To summarize, a `for` statement is used when the maximum number of iterations is
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu 20.04](https://www.linode.com/docs/guides/how-to-install-python-on-ubuntu-20-04/).
+1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu 20.04](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Python Loops
@@ -289,6 +285,8 @@ The name of the city is Detroit and the name of the state is Michigan
 The name of the city is New York and the name of the state is New York
 The name of the city is Miami and the name of the state is Florida
 {{< /output >}}
+
+Built-in Python dictionary methods, like `items()` can be used to efficiently loop over a Python dictionary. To learn about these built-in dictionary methods, see our guide [How to Use Dictionaries in Python 3](/docs/guides/python-3-dictionaries/).
 
 ### How to Break or Exit from a For Loop in Python
 

@@ -17,8 +17,8 @@ title: 'Installing Nginx on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:
  - '[Linode nginx Documentation](/docs/web-servers/nginx/)'
  - '[nginx Community Documentation](http://wiki.nginx.org)'
- - '[Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/nginx-and-perlfastcgi-on-ubuntu-10-04-lts-lucid/)'
- - '[Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/nginx-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/)'
+ - '[Configure Perl and FastCGI with nginx](/docs/guides/nginx-and-perlfastcgi-on-ubuntu-10-04-lts-lucid/)'
+ - '[Configure PHP and FastCGI with nginx](/docs/guides/nginx-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/)'
 relations:
     platform:
         key: how-to-install-nginx
@@ -29,23 +29,21 @@ relations:
 Nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), Nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides, and the Linode's [hostname is set](/docs/getting-started/#setting-the-hostname).
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
 
     To check your hostname run:
 
         hostname
         hostname -f
 
-    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
-
-2.  Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
+    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN) if you have one assigned.
 
 ## Installing Nginx
 
@@ -261,4 +259,4 @@ Regardless of installation source or method, Nginx can be tested by navigating t
 
 ![Nginx welcome](nginx-welcome.png)
 
-Continue reading our introduction to [Basic NGINX Configuration](/docs/web-servers/nginx/how-to-configure-nginx/) for more information about using and setting up a web server.
+Continue reading our introduction to [Basic NGINX Configuration](/docs/guides/how-to-configure-nginx/) for more information about using and setting up a web server.

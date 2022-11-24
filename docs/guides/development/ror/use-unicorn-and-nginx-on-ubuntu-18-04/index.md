@@ -13,8 +13,8 @@ modified: 2020-01-03
 modified_by:
     name: Linode
 image: UseUnicornandNginxtoConfigureRubyon-RailsApplicationsonUbuntu1804.png
-title: "How to Deploy Rails Apps Using Unicorn & Nginx"
-h1_title: "Using Unicorn and NGINX to Configure Ruby on Rails Apps on Ubuntu 18.04"
+title: "Deploy a Rails App with Unicorn and nginx on Ubuntu 18.04"
+h1_title: "Deploy a Ruby on Rails App with Unicorn and nginx on Ubuntu 18.04"
 enable_h1: true
 external_resources:
  - '[Ruby on Rails](http://rubyonrails.org/)'
@@ -34,10 +34,10 @@ Unicorn is an HTTP server, just like Passenger or Puma. Since Unicorn cannot be 
 
 ## Before You Begin
 
-Before starting this guide, make sure that  you have read through and completed our [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides.
+Before starting this guide, make sure that  you have read through and completed our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 -  Before you install any package, ensure that your hostname is correct:

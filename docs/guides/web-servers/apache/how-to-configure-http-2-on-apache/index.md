@@ -2,8 +2,8 @@
 slug: how-to-configure-http-2-on-apache
 author:
   name: Jeff Novotny
-description: 'HTTP/2 is an update to the original Hypertext Transfer Protocol (HTTP) specification offering improvements in efficiency and latency. This guide explains how to configure and use HTTP/2 on an Apache server and how to test that it is working.'
-og_description: 'HTTP/2 is an update to the original Hypertext Transfer Protocol (HTTP) specification offering improvements in efficiency and latency. This guide explains how to configure and use HTTP/2 on an Apache server and how to test that it is working.'
+description: 'In this tutorial, you will learn how to configure HTTP/2, an updated version of the HTTP technology which adds several useful features using Apache on Debian.'
+og_description: 'In this tutorial, you will learn how to configure HTTP/2, an updated version of the HTTP technology which adds several useful features using Apache on Debian.'
 keywords: ['apache https']
 tags: ['web server', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -28,18 +28,14 @@ For more comprehensive information and a collection of resources about HTTP/2, s
 
 ## Before You Begin
 
-1. Familiarize yourself with Linode's [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of Linode's [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall section* yet as this guide includes firewall rules specifically for an OpenVPN server.
-
-1. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Ensure you possess a Fully Qualified Domain Name (FQDN) for the website. The DNS records for the site must point to the Linode server.
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## A Summary of the HTTP/2 on Apache Configuration Process
@@ -208,5 +204,5 @@ To confirm Apache is using HTTP/2, visit the website using any browser, and use 
 1. Select the **Network** tab, and reload the page again.
 1. This displays a list of several rows. Click on the row corresponding to the base domain. This reveals a new panel on the bottom right. The **Headers** tab appears by default.
 
-    [![Developer panel in Firefox](developer-panel_small.png)](developer-panel.png)
+    ![Developer panel in Firefox](developer-panel.png)
 1. If HTTP/2 is working, the `Status` reads `OK` and the version is `HTTP/2`.

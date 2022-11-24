@@ -27,8 +27,8 @@ tab_group_main:
 
 ## Guides for All Compute Instances
 
-- [Getting Started with Linode](/docs/getting-started/)
+- [Getting Started with Linode](/docs/guides/getting-started/)
 
-- [Securing Your Server](/docs/security/basics/securing-your-server/)
+- [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
 
-- [How to Choose a Linode Plan](/docs/platform/how-to-choose-a-linode-plan/#4-gpu-instances)
+- [How to Choose a Linode Plan](/docs/guides/choosing-a-compute-instance-plan/#4-gpu-instances)

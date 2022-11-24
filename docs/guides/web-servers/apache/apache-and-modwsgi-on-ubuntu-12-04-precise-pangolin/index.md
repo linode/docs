@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Deploy Python WSGI Applications with Apache and mod_wsgi.'
+description: 'In this tutorial, you will learn how to configure and deploy Python WSGI Applications with the Apache web server and mod_wsgi on Ubuntu 12.04 "Precise Pangolin".'
 keywords: ["python", "apache", "mod_wsgi", "django"]
 tags: ["web server","apache","ubuntu","python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,7 +17,7 @@ title: 'Apache and mod_wsgi on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:
  - '[A Basic "Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)'
  - '[Deploy Django Applications with mod\_wsgi](/docs/websites/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin)'
- - '[Deploy Web.py Applications with mod\_wsgi](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/)'
+ - '[Deploy Web.py Applications with mod\_wsgi](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/)'
  - '[Flask Framework](http://flask.pocoo.org/)'
  - '[Werkzug](http://werkzeug.pocoo.org/)'
  - '[Django](http://www.djangoproject.com/)'
@@ -87,7 +87,7 @@ You must append the path of your application to the system path as above. The de
 
 ### Web.py WSGI Configuration
 
-In this example the Web.py *application* is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
+In this example the Web.py *application* is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
 
 {{< file "/var/www/example.com/application/application.wsgi" python >}}
 import web

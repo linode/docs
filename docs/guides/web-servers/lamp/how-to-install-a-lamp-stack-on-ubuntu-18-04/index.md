@@ -39,13 +39,11 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides and that the Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-    {{< note >}}If you have a registered domain name for your website, then [add the domain](/docs/guides/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
 
-1.  Update your system:
-
-        sudo apt update && sudo apt upgrade
+{{< note >}}If you have a registered domain name for your website, then [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
 
 ## Installation
 
@@ -199,7 +197,7 @@ To disable your website, run `a2dissite example.com`.
 
         sudo systemctl reload apache2
 
-Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](/docs/guides/dns-manager/) for your domain to point to your Linode's IP address.
+Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](/docs/products/networking/dns-manager/) for your domain to point to your Linode's IP address.
 
 If there are additional websites you wish to host on your Linode, repeat the above steps to add a folder and configuration file for each.
 
@@ -224,16 +222,9 @@ GRANT ALL ON webdata.* TO 'webuser' IDENTIFIED BY 'password';
 quit
 {{< /highlight >}}
 
-1.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
+1.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
         sudo mysql_secure_installation
-
-    Answer **Y** at the following prompts:
-
-    -  Remove anonymous users?
-    -  Disallow root login remotely?
-    -  Remove test database and access to it?
-    -  Reload privilege tables now?
 
 ### PHP
 

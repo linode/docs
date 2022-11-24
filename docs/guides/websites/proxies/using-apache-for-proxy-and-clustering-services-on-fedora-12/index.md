@@ -13,7 +13,7 @@ modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2010-03-08
-title: Using Apache for Proxy and Clustering Services on Fedora 12
+title: Using Apache for Proxy and Cluster Services on Fedora 12
 relations:
     platform:
         key: using-apache-for-proxy-and-clustering
@@ -25,7 +25,7 @@ relations:
 
 The Apache HTTP server is a versatile and robust engine for providing access to resources over HTTP. With its modular design and standard [configuration system](/docs/web-servers/apache/configuration/configuration-basics), it is a popular and familiar option for systems administrators and architects who require a potentially diverse array of HTTP services, along with a stable and predictable administrative interface. In addition to simply serving content and facilitating the generation of dynamic content, the Apache HTTP server can be deployed as a frontend server to manage clusters of web servers.
 
-This guide provides a number of configuration examples and suggestions for using Apache as a frontend server for other HTTP servers and clusters of servers. If you have not already installed Apache, consider our documentation on [installing Apache](/docs/web-servers/apache/installation/fedora-12) before continuing with this guide. Additionally, consider our [getting started](/docs/getting-started/) and [beginner's guide](/docs/beginners-guide/) documents if you are new to Linode, and our [administration basics](/docs/using-linux/administration-basics) guide if you are new to Linux server administration.
+This guide provides a number of configuration examples and suggestions for using Apache as a frontend server for other HTTP servers and clusters of servers. If you have not already installed Apache, consider our documentation on [installing Apache](/docs/web-servers/apache/installation/fedora-12) before continuing with this guide. Additionally, consider our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and [beginner's guide](/docs/guides/linode-beginners-guide/) documents if you are new to Linode, and our [administration basics](/docs/using-linux/administration-basics) guide if you are new to Linux server administration.
 
 ## Case One: Separating Static Content from Dynamic Content
 
@@ -64,7 +64,7 @@ Now, place the static files in the `/srv/www/static.example.com/public_html/` fo
 
 ## Case Two: Using ProxyPass to Delegate Services to Alternate Machines
 
-In our guide to using [multiple web servers with ProxyPass](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-fedora-12) we outline a method for configuring multiple websites using Apache's `mod_proxy` module. Please follow that guide, particularly the section regarding [configuring mod\_proxy](/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-fedora-12/#enabling_the_proxy_module) to ensure that `mod_proxy` is active.
+In our guide to using [multiple web servers with ProxyPass](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-fedora-12) we outline a method for configuring multiple websites using Apache's `mod_proxy` module. Please follow that guide, particularly the section regarding [configuring mod\_proxy](/docs/guides/multiple-web-servers-with-proxypass-on-fedora-12/#enabling_the_proxy_module) to ensure that `mod_proxy` is active.
 
 Once `mod_proxy` is enabled and configured, you can insert the following directives into your virtual hosting configuration:
 
@@ -156,7 +156,7 @@ In this example, the `RewriteCond` controls the behavior of the `RewriteEngine` 
 
 All of the previous cases presented in this document outline configurations for using `mod_proxy` in various configurations to make it possible to use your Apache HTTP server as a frontend for a more complex architecture. This case takes this one step further, by allowing Apache to proxy requests to a group of identical backend servers, and thus be able to handle a much larger load.
 
-Ensure that you have a `/etc/httpd/conf.d/proxy.conf` file as described in [this documentation](/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-fedora-12/#enabling_the_proxy_module). Do not omit to reload Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
+Ensure that you have a `/etc/httpd/conf.d/proxy.conf` file as described in [this documentation](/docs/guides/multiple-web-servers-with-proxypass-on-fedora-12/#enabling_the_proxy_module). Do not omit to reload Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
 
 {{< file "Apache Virtual Host Configuration" apache >}}
 <VirtualHost example.com:80>
@@ -201,7 +201,7 @@ Apache also contains a "Balancer Manager" interface that you can use to monitor 
 {{< /file >}}
 
 
-Modify the `Allow from` directive to allow access *only* from your current local machine's IP address, and read more about [rule-based access control](/docs/web-servers/apache/configuration/rule-based-access-control/). Now visit `/balancer-manager` of the domain of your virtual host (e.g. `example.com`,) in our example `http://example.com/balancer-manager` to use Apache's tools for managing your cluster. Ensure that the `/balancer-manager` location is **not** established at a location that is to be passed to a proxied server. Congratulations you are now able to configure a fully functional cluster of web servers using the Apache web server as a frontend!
+Modify the `Allow from` directive to allow access *only* from your current local machine's IP address, and read more about [rule-based access control](/docs/guides/rulebased-access-control-for-apache/). Now visit `/balancer-manager` of the domain of your virtual host (e.g. `example.com`,) in our example `http://example.com/balancer-manager` to use Apache's tools for managing your cluster. Ensure that the `/balancer-manager` location is **not** established at a location that is to be passed to a proxied server. Congratulations you are now able to configure a fully functional cluster of web servers using the Apache web server as a frontend!
 
 ## More Information
 
@@ -209,4 +209,4 @@ You may wish to consult the following resources for additional information on th
 
 - [Official Apache Documentation for Proxy Pass](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)
 - [Official Apache Documentation for Proxy Balancer](http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html)
-- [Configure ProxyPass and Multiple Web Servers with Apache](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-fedora-12/)
+- [Configure ProxyPass and Multiple Web Servers with Apache](/docs/guides/multiple-web-servers-with-proxypass-on-fedora-12/)

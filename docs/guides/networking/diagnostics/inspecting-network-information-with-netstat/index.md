@@ -21,7 +21,7 @@ aliases: ['/networking/diagnostics/inspecting-network-connections-with-netstat/'
 
 The `netstat` command line utility shows information about the network status of a workstation or server. `netstat` is available on Unix-like and Windows operating systems, with some differences in its usage between these systems.
 
-`netstat` is an older utility, and some components of its functionality have been superseded by newer tools, like the [`ss` command](/docs/networking/diagnostics/ss/). A primary benefit of using `netstat` is that it is frequently pre-installed on Linux systems, while other tools might not be. As well, many (but not all) of the command line options for `netstat` can be run without root privileges, so it can still be useful on a system where you do not have root or `sudo` privileges.
+`netstat` is an older utility, and some components of its functionality have been superseded by newer tools, like the [`ss` command](/docs/guides/ss/). A primary benefit of using `netstat` is that it is frequently pre-installed on Linux systems, while other tools might not be. As well, many (but not all) of the command line options for `netstat` can be run without root privileges, so it can still be useful on a system where you do not have root or `sudo` privileges.
 
 {{< disclosure-note "Assumptions" >}}
 This guide assumes some basic knowledge of networking in Linux, including network interfaces, routing tables, and network connections and sockets.
@@ -40,7 +40,7 @@ This guide will explore the options available when running `netstat` on Linux. `
 A list of the [command line options](#command-line-options) can be found below, and some [advanced examples of using netstat with the AWK command](#using-awk-to-process-netstat-output) will be introduced at the end of the guide.
 
 {{< note >}}
-This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Basic Usage

@@ -22,18 +22,14 @@ external_resources:
 
 ## Before You Begin
 
-1.  Familiarize yourself with the [Getting Started](/docs/getting-started/) guide.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  This guide uses `sudo` wherever possible, which the administrator of the system should already have permission to use.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-3.  This guide assumes you are comfortable using the *command-line interface* (CLI) or have a graphical desktop environment to perform the tasks.
-
-3.  Update the system:
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  This guide assumes you are comfortable using the *command-line interface* (CLI) or have a graphical desktop environment to perform the tasks.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Adding User Rights Through the sudoers File

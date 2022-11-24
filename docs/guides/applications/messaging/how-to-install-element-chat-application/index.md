@@ -39,18 +39,14 @@ external_resources:
 
 ## Before You Begin
 
-1. Familiarize yourself with Linode's [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of Linode's [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the **Configure a Firewall** section yet as this guide includes firewall rules specifically for an *OpenVPN server*.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-1. Register a *Fully Qualified Domain Name* (FQDN) for your Element service. The DNS records for the domain should be set to the IP address of your Linode. Consult Linode's [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) and [DNS Manager](/docs/guides/dns-manager/) guides for assistance when configuring your domain.
+1. Register a *Fully Qualified Domain Name* (FQDN) for your Element service. The DNS records for the domain should be set to the IP address of your Linode. Consult Linode's [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](/docs/products/networking/dns-manager/) guides for assistance when configuring your domain.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Advantages and Features of Element
@@ -65,7 +61,7 @@ Element is based on React and uses *Electron* for bundling. See the [*Element Gi
 
 ## A Summary of the Element Installation and Configuration Process
 
-A complete Element installation consists of the high-level steps outlined in this section. Because Element is a web client for [*Matrix-Synapse*](https://matrix.org/docs/projects/server/synapse), you must first download and install the Matrix-Synapse software package. Element also requires a web server, such as [*NGINX*](/docs/guides/web-servers/nginx/?q=nginx). Although these instructions are geared towards Ubuntu installations, they are broadly applicable to most Linux distributions.
+A complete Element installation consists of the high-level steps outlined in this section. Because Element is a web client for [*Matrix-Synapse*](https://matrix.org/docs/projects/server/synapse), you must first download and install the Matrix-Synapse software package. Element also requires a web server, such as [*NGINX*](/docs/guides/web-servers/nginx/). Although these instructions are geared towards Ubuntu installations, they are broadly applicable to most Linux distributions.
 
 1. Set Up DNS Records
 1. Download and install the Matrix-Synapse communication layer
@@ -79,7 +75,7 @@ The following sections describe each step in more detail.
 
 ## Set Up DNS Records
 
-- Before connecting to Element, register a base domain for your service and [set the corresponding DNS records](/docs/networking/dns/dns-records-an-introduction/) to reference your Linode.
+- Before connecting to Element, register a base domain for your service and [set the corresponding DNS records](/docs/guides/dns-overview/) to reference your Linode.
 
 - Create two further subdomains for the *matrix* and *element* services, each with its DNS records.
 
@@ -91,7 +87,7 @@ The following sections describe each step in more detail.
   - `element.example.com` (Element web client)
 
     {{< note >}}
-Throughout this section and the rest of the guide, replace `example.com` with your own domain name. See the guide for the Linode [DNS Manager](/docs/guides/dns-manager/) for more information on adding domains and DNS records.
+Throughout this section and the rest of the guide, replace `example.com` with your own domain name. See the guide for the Linode [DNS Manager](/docs/products/networking/dns-manager/) for more information on adding domains and DNS records.
     {{< /note >}}
 
 ## Download and Install the Matrix-Synapse Communication Layer

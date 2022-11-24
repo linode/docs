@@ -61,17 +61,17 @@ This guide shows how to:
 Multiple services are run on a single Linode in this guide. We recommend using at least a 2G (or `g6-standard-1`) sized Linode instance to support these services.
 {{< /note >}}
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
     {{< note >}}
-Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 1.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-1.  Follow the steps in our [Apache Web Server on Debian 8 (Jessie)](/docs/web-servers/apache/apache-web-server-debian-8/) guide to set up and configure Apache on your server. The steps in this guide are compatible with Debian 9.
+1.  Follow the steps in our [Apache Web Server on Debian 8 (Jessie)](/docs/guides/apache-web-server-debian-8/) guide to set up and configure Apache on your server. The steps in this guide are compatible with Debian 9.
 
 1.  The Elasticsearch package is bundled with its own version of a Java runtime, but Logstash requires Java to be present on the system. Install the default version of Java available on Debian 9:
 
@@ -245,7 +245,7 @@ output {
     {{< note >}}
 This example configuration assumes that your website logs are stored in the `/var/www/*/logs/access.log` file path.
 
-If your site was set up by following the [Configure Apache for Virtual Hosting](/docs/web-servers/apache/apache-web-server-debian-8/#configure-apache-for-virtual-hosting) section of the [Apache Web Server on Debian 8](/docs/web-servers/apache/apache-web-server-debian-8/) guide, then your logs are stored in this location. If you website logs are stored in another location, update the file path in the configuration file before proceeding.
+If your site was set up by following the [Configure Apache for Virtual Hosting](/docs/guides/apache-web-server-debian-8/#configure-apache-for-virtual-hosting) section of the [Apache Web Server on Debian 8](/docs/guides/apache-web-server-debian-8/) guide, then your logs are stored in this location. If you website logs are stored in another location, update the file path in the configuration file before proceeding.
 {{< /note >}}
 
 1.  Start and enable `logstash`:

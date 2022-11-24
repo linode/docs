@@ -30,6 +30,13 @@ const colorBasicGray = '#A9AAB0'; // Slightly darker than body, used for byline 
 const colorDivider = 'var(--color-divider)'; // Light gray border.
 
 // Define them here so we can reference them in the configuration.
+const blues = {
+	100: '#EBF8FF',
+	300: '#90CDF4',
+	500: '#4299E1',
+	700: '#2B6CB0'
+};
+
 const grays = {
 	100: '#f7fafc',
 	200: colorLightGray,
@@ -55,6 +62,19 @@ const greens = {
 	900: '#01351B'
 };
 
+const oranges = {
+	400: '#F6AD55',
+	600: '#DD6B20'
+};
+
+const reds = {
+	100: '#FEE2E2',
+	300: '#FCA5A5',
+	400: '#F87171',
+	500: '#EF4444',
+	600: '#DC2626',
+	700: '#B91C1C'
+};
 // Screen sizes
 const maxWidthXl = 1280;
 const maxWidthLg = 992;
@@ -159,8 +179,11 @@ module.exports = {
 				selected: '#F2F2F7', // Selected item.
 				icongray: '#737373',
 
+				blue: blues,
 				gray: grays,
-				green: greens
+				green: greens,
+				orange: oranges,
+				red: reds
 			},
 			fontFamily: {
 				sans: [ 'Source Sans Pro', ...theme.fontFamily.sans ],
@@ -222,6 +245,17 @@ module.exports = {
 						},
 						'blockquote p:last-of-type::after': {
 							content: ''
+						},
+						kbd: {
+							color: colorBodyText,
+							fontWeight: '400',
+							padding: '0.2rem 0.35rem 0.15rem 0.35rem',
+							margin: '0 0.2rem',
+							fontSize: em(13, 18),
+							borderRadius: '2px',
+							borderColor: colorBasicGray,
+							borderWidth: '1px',
+							boxShadow: '0 1px 0 1px #ddd'
 						},
 						code: {
 							color: colorBodyText,

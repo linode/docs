@@ -16,7 +16,7 @@ external_resources:
  - '[Installing Apache](/docs/web-servers/apache/)'
  - '[LAMP stack guides](/docs/web-servers/lamp/)'
  - '[Apache Rewrite Guide](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)'
- - '[Redirect URLs with the Apache Web Server](/docs/web-servers/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server/)'
+ - '[Redirect URLs with the Apache Web Server](/docs/guides/redirect-urls-with-the-apache-web-server/)'
 tags: ["web server","apache"]
 ---
 
@@ -26,7 +26,7 @@ In this guide, you'll learn how to rewrite URLs with mod_rewrite and Apache. Rew
 
 ## Before You Begin
 
-1.  This guide assumes you have followed our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server/) guides, and that you have already configured your Apache installation. If you haven't, refer to our [Apache guides](/docs/web-servers/apache/) or [LAMP stack guides](/docs/web-servers/lamp/).
+1.  This guide assumes you have followed our [[Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and that you have already configured your Apache installation. If you haven't, refer to our [Apache guides](/docs/web-servers/apache/) or [LAMP stack guides](/docs/web-servers/lamp/).
 
 2.  In this guide, we'll be modifying Apache configuration files, so be sure you have the proper permissions to do so.
 
@@ -54,7 +54,7 @@ RewriteRule ^post-id/([0-9]+)$ /posts/$1.html
 
 Let's explain this rule: The first string is the pattern for matching against incoming requests. The second string specifies the actual files to be served. Rewrite patterns use [regular expression](https://en.wikipedia.org/wiki/Regular_expression) syntax. The `^` defines the beginning of the string, and the `$` defines the end of the string, meaning that the rewrite engine won't rewrite strings that  match only part of the pattern.
 
-The string rewrites all URLs that specify paths beginning with `/post-id/` and contain one or more numbers (eg. `[0-9]+`), serving a corresponding `.html` file in the `/posts/` directory. The parenthetical term or terms in the pattern specify a variable that is passed to the second string as `$1`, `$2`, `$3` and so forth, depending on how many parentheticals are given in the first string..
+The string rewrites all URLs that specify paths beginning with `/post-id/` and contain one or more numbers (e.g.: `[0-9]+`), serving a corresponding `.html` file in the `/posts/` directory. The parenthetical term or terms in the pattern specify a variable that is passed to the second string as `$1`, `$2`, `$3` and so forth, depending on how many parentheticals are given in the first string..
 
 You can create and apply multiple rewrite rules and these rules are applied sequentially. *The order in which `RewriteRules` are stated can affect which rules are matched*.
 
@@ -83,7 +83,7 @@ This is useful when the locations of files on the file system do not correspond 
 
 ## Rewrite URLs Under Specific Conditions
 
-With the `RewriteCond` parameter, you can set conditions under which a `RewriteRule` will be used. Let's take the following example from the default rewrite rules for the [WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress/) application:
+With the `RewriteCond` parameter, you can set conditions under which a `RewriteRule` will be used. Let's take the following example from the default rewrite rules for the [WordPress](/docs/guides/how-to-install-and-configure-wordpress/) application:
 
 {{< file "Apache Configuration Option for WordPress" apache >}}
 RewriteEngine On

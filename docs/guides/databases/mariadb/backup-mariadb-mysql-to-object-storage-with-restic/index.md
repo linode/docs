@@ -36,20 +36,22 @@ MariaDB is a fork of MySQL. Where you see a reference to *MariaDB* in this guide
 {{< /note >}}
 
 {{< note >}}
-The steps in this guide require root privileges, and commands are run with `sudo` unless otherwise noted. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide require root privileges, and commands are run with `sudo` unless otherwise noted. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1. Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Install MariaDB on your Linode by following the [How to Install MariaDB](/docs/databases/mariadb/) guide that is appropriate for your Linode's distribution.
 
-1.  Create an Object Storage bucket to hold your backup repository. Follow the [Create a Bucket](/docs/platform/object-storage/how-to-use-object-storage/#create-a-bucket) section of the [How to Use Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage/) guide if you do not already have one.
+1.  Create an Object Storage bucket to hold your backup repository. Follow the [Create a Bucket](/docs/products/storage/object-storage/guides/manage-buckets/) guide if you do not already have one.
 
     {{< content "object-storage-cancellation-shortguide" >}}
 
-1.  [Generate Object Storage access keys](/docs/guides/how-to-use-object-storage/#generate-a-key-pair).
+1.  [Generate Object Storage access keys](/docs/products/storage/object-storage/guides/access-keys/).
 
 1. Ensure your Linode has the `wget` and `bzip2` utilities installed. Install them with the following commands:
 
@@ -172,7 +174,7 @@ System Cron jobs exist as entries in the `/etc/crontab` file. Open your systems 
 
     sudo crontab -e
 
-Add a line pointing to your backup script. This example runs the backup every hour, on the hour. See the [Schedule tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) article for additional scheduling options.
+Add a line pointing to your backup script. This example runs the backup every hour, on the hour. See the [Schedule tasks with Cron](/docs/guides/schedule-tasks-with-cron/) article for additional scheduling options.
 
     0 * * * * /usr/local/bin/backup_mariadb > /tmp/mariadb-backup-log.txt 2>&1
 

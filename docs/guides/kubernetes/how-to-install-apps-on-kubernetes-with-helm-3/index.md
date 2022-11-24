@@ -100,7 +100,7 @@ The Helm client software issues commands to your cluster. You run the client sof
 
 1.   [Install the Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`) on your computer, if it is not already.
 
-1.   You should have a Kubernetes cluster running prior to starting this guide. One quick way to get a cluster up is with [Linode's Kubernetes Engine](https://www.linode.com/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This guide's examples only require a cluster with one worker node. We recommend that you create cluster nodes that are at the Linode 4GB tier (g6-standard-2) or higher. This guide also assumes that your cluster has [role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) enabled. This feature became available in Kubernetes 1.6 and later.
+1.   You should have a Kubernetes cluster running prior to starting this guide. One quick way to get a cluster up is with [Linode's Kubernetes Engine](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This guide's examples only require a cluster with one worker node. We recommend that you create cluster nodes that are at the Linode 4GB tier (g6-standard-2) or higher. This guide also assumes that your cluster has [role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) enabled. This feature became available in Kubernetes 1.6 and later.
 
    {{< content "k8s-alpha-deprecation-shortguide" >}}
 
@@ -117,7 +117,7 @@ This guide's example instructions will also result in the creation of a Block St
 
         kubectl config use-context your-cluster-name
 
-1.  It is beneficial to have a registered [domain name](/docs/networking/dns/dns-records-an-introduction/) for this guide's example app, but it is not required.
+1.  It is beneficial to have a registered [domain name](/docs/guides/dns-overview/) for this guide's example app, but it is not required.
 
 ## Install Helm
 
@@ -260,7 +260,7 @@ ghost-1576075187	default  	1       	2019-12-11 09:39:50.168546 -0500 EST	deploye
 
 1.  If you haven't set up DNS for your site yet, you can instead access the admin interface by visiting the `ghost` URL on your LoadBalancer IP address (e.g. `http://104.237.148.66/ghost`). Visit this page in your browser and then follow the steps to complete admin account creation. You should be granted access to the administrative interface.
 
-1.  To set up DNS for your app, create an *A record* for your domain which is assigned to the external IP for your app's LoadBalancer. Review Linode's [DNS Manager](/docs/guides/dns-manager/) guide for instructions.
+1.  To set up DNS for your app, create an *A record* for your domain which is assigned to the external IP for your app's LoadBalancer. Review Linode's [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions.
 
 ## Upgrade your App
 

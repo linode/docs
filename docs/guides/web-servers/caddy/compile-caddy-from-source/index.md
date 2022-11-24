@@ -3,7 +3,7 @@ slug: compile-caddy-from-source
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will explain how to build Caddy from source'
+description: 'This guide provides you with step-by-step instructions for building Caddy, the fast, open-source, security focused web server from source on Linux.'
 keywords: ["caddy", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-14
@@ -23,7 +23,7 @@ aliases: ['/web-servers/caddy/compile-caddy-from-source/']
 
 ### Install Go
 
-1. You need the latest version of Go installed on your Linode. Complete the steps in our guide on [installing Go](/docs/development/go/install-go-on-ubuntu/).
+1. You need the latest version of Go installed on your Linode. Complete the steps in our guide on [installing Go](/docs/guides/install-go-on-ubuntu/).
 
 ### Install xcaddy
 
@@ -61,4 +61,4 @@ Install the latest version of `xcaddy`, a command line tool that downloads and b
 
         v2.4.4 h1:QBsN1jXEsCqRpKPBb8ebVnBNgPxwL50HINWWTuZ7evU=
 
-Caddy is now installed on your Linode. Read our guide on [Installing and Configuring Caddy](/docs/web-servers/caddy/install-and-configure-caddy-on-centos-7/) to learn more about Caddy.
+Caddy is now installed on your Linode. Read our guide on [Installing and Configuring Caddy](/docs/guides/install-and-configure-caddy-on-centos-7/) to learn more about Caddy.

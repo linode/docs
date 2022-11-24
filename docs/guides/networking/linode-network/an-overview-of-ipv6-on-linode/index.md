@@ -3,11 +3,11 @@ slug: an-overview-of-ipv6-on-linode
 author:
   name: Linode
   email: docs@linode.com
-description: "This guide is a brief overview of IPv6 support on Linode, including finding your IPv6 address, requesting additional addresses, address ranges, and forwarding."
+description: "This guide is a brief overview of IPv6 support on Linode, including how to find your IPv6 address, requesting additional IPs, and managing IPs via the Cloud Manager."
 keywords: ["ipv6 networking", "IP configuration"]
 aliases: ['/networking/an-overview-of-ipv6-on-linode/','/networking/how-to-enable-native-ipv6-on-linux/','/networking/native-ipv6-networking/','/networking/linode-network/an-overview-of-ipv6-on-linode/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-11-15
+modified: 2022-09-29
 modified_by:
   name: Linode
 published: 2011-05-03
@@ -19,13 +19,9 @@ tags: ["networking","linode platform"]
 image: an-overview-of-ipv6-on-linode-title-graphic.jpg
 ---
 
-![An Overview of IPv6 on Linode](an-overview-of-ipv6-on-linode-title-graphic.jpg "An Overview of IPv6 on Linode")
-
-## Default IPv6 Configuration
-
 All Linodes are created with one IPv6 address, which is acquired by [*Stateless Address Autoconfiguration*](https://en.wikipedia.org/wiki/IPv6#Stateless_address_autoconfiguration_(SLAAC)) (SLAAC). IPv6 is fully enabled on all of Linode's supported operating systems and uses hardware-based addressing.
 
-Linode does not offer private IPv6 address allocations. Our IPv6 accounting was designed so that local IPv6 traffic does not count against your [network transfer quota](/docs/platform/billing-and-support/network-transfer-quota/), so you can use your default IPv6 address as if it were a private IP address.
+Linode does not offer private IPv6 address allocations. Our IPv6 accounting was designed so that local IPv6 traffic does not count against your [network transfer quota](/docs/guides/network-transfer/), so you can use your default IPv6 address as if it were a private IP address.
 
 {{< note >}}
 In order for your Linode to receive its SLAAC address, it must respond to IPv6's ping protocol.
@@ -46,11 +42,11 @@ See the [Viewing IP Addresses](/docs/guides/managing-ip-addresses/#viewing-ip-ad
 
 ### Linux Terminal
 
-1. Using your terminal, SSH into the Linode whose IPv6 address you would like to find.
+1.  Using your terminal, SSH into the Linode whose IPv6 address you would like to find.
 
         ssh user@192.0.2.0
 
-1. Use the `ip` tool to find your Linode's IPv6 address:
+1.  Use the `ip` tool to find your Linode's IPv6 address:
 
         root@localhost:~# ip -6 address
         1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 state UNKNOWN qlen 1
@@ -91,10 +87,10 @@ An IPv6 pool is accessible from every Linode on your account within the assigned
 
 - `/116` **pool** *(4,096 addresses)*
 
-{{< note >}}
-The IPv6 `/116` prefix is not available in the Toronto, Atlanta, Sydney, or Mumbai data centers.
+    {{< caution >}}
+The IPv6 /116 prefix has been deprecated and is no longer available for new Compute Instances. If you have an existing Compute Instance with a /116 pool, please review the [Upcoming Changes Related to Network Infrastructure Upgrades](/docs/guides/network-infrastructure-upgrades/) to learn about changes that may affect your services.
 {{</ note >}}
 
 ## IPv6 Forwarding
 
-For security reasons, IPv6 forwarding is not available on the Linode network. This is enforced by our network infrastructure.
+If needed, IPv6 packets can be forwarded between two networks on Linode. By default, most Linux systems disable both IPv4 and IPv6 forwarding. To enable this functionality, see the [IP Forwarding](/docs/guides/linux-router-and-ip-forwarding/) guide.

@@ -6,7 +6,7 @@ author:
 description: "An in-depth look at the NGINX web server. Includes assessment, installation, and configuration best practices."
 keywords: ["nginx", "web server", "configure nginx", "optimize nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/install-nginx-web-server-on-debian-8/','/web-servers/nginx/nginx-installation-and-basic-setup/','/security/ssl/ssl-certificates-with-nginx/index.cfm/','/web-servers/nginx/configuration/ssl/','/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/','/guides/nginx-installation-and-basic-setup/']
+aliases: ['/web-servers/nginx/install-nginx-web-server-on-debian-8/','/web-servers/nginx/nginx-installation-and-basic-setup/','/security/ssl/ssl-certificates-with-nginx/index.cfm/','/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/','/guides/nginx-installation-and-basic-setup/']
 modified: 2018-02-09
 modified_by:
   name: Linode
@@ -24,7 +24,7 @@ This guide is the first of a four-part series. Parts One and Two will walk you t
 ## Before You Begin
 
 * You will need root access to the system, or a user account with `sudo` privilege.
-* Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
+* Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
 * Update your system.
 
 ## Install NGINX

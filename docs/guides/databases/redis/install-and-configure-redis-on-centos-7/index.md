@@ -33,18 +33,14 @@ This document provides both instructions for deploying the Redis server, and an 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
-
-3.  Update your system:
-
-        sudo yum update
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
-To utilize the [replication](/docs/databases/redis/install-and-configure-redis-on-centos-7/#prepare-your-linodes) steps in this guide, you will need at least two Linodes.
+To utilize the [replication](/docs/guides/install-and-configure-redis-on-centos-7/#prepare-your-linodes) steps in this guide, you will need at least two Linodes.
 {{< /note >}}
 
 ## Install Redis
@@ -205,7 +201,7 @@ Your master/slave replication setup is working properly.
 
 Since Redis is designed to work in trusted environments and with trusted clients, you should control access to the Redis instance. Some recommended security steps include:
 
-- Set up a firewall using [your tool of choice](/docs/security/securing-your-server/#configure-a-firewall).
+- Set up a firewall using [your tool of choice](/docs/guides/set-up-and-secure/#configure-a-firewall).
 
 - Encrypt Redis traffic using an SSH tunnel, or the methods described in the [Redis Security documentation](http://redis.io/topics/security).
 

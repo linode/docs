@@ -4,19 +4,22 @@ author:
   email: docs@linode.com
 title: Capture an Image
 description: "How to capture an Image from a Linode."
+modified: 2022-11-16
 ---
 
-{{< content "images-ga-pricing-update-shortguide" >}}
+## Requirements and Considerations
 
-## Limits and Considerations
+When capturing an image file from an existing Linode Compute Instance, keep the following limits, requirements, and considerations in mind.
 
-### Overall
+- Review the overall [Technical Specifications](/docs/products/tools/images/#technical-specifications) of the Custom Images service.
 
-{{< content "images-limits-shortguide" >}}
+- **The disk's internal storage utilization must be 10% less than the account's image size limit** (6 GB by default). To check the internal disk usage, log in to the Compute Instance and run `df -h`. Within the output, locate the disk and review the value within the **Used** column.
 
-### Specific to Capturing an Image from a Linode
+- **The disk must be formatted using ext3/ext4 filesystems.** Images cannot be created if you are using raw disks or disks that have been formatted using custom filesystems. CoreOS disk images are in RAW format. Images made from CoreOS disks can't be used to deploy new Linodes.
 
-{{< content "capture-image-requirements-shortguide" >}}
+- **Power off Linode to avoid database corruption.** If your Linode is running any active databases, it's recommended to power off the Linode down prior to creating the image. Creating an image that includes a running database can cause corruption or data loss in the imaged copy of the database.
+
+- **Only the selected disk is saved to the Image.** The Image is comprised only of the disk selected during the creation process. The Image does not store other aspects of the Linode, such as Configuration Profiles, Block Storage Volumes, IP Addresses, and other Linode-based settings.
 
 ## Capturing an Image through the Cloud Manager
 

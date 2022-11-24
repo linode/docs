@@ -22,7 +22,7 @@ modified_by:
 The size of a Linode Compute Instance's disk can be increased or decreased as needed. When resizing, it's important to keep the following restrictions in mind:
 
 - The **maximum size** of a disk is equal to the current size of the disk and the remaining unallocated storage space on the Linode. The maximum size is displayed underneath the **Size** field when resizing the disk.
-- The **minimum size** of a disk is equal to the current disk usage within the filesystem. This number is not displayed in the Cloud Manager. To determine how much space the files on the disk are using, run the command `df -h` within the Linode's command Line (through [SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh) or [Lish](/docs/guides/using-the-lish-console/)).
+- The **minimum size** of a disk is equal to the current disk usage within the filesystem. This number is not displayed in the Cloud Manager. To determine how much space the files on the disk are using, run the command `df -h` within the Linode's command Line (through [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) or [Lish](/docs/guides/lish/)).
 - **Raw disks** can only be resized to a larger disk.
 - Disks with **custom partitions** cannot be resized.
 

@@ -3,10 +3,11 @@ slug: centos-wireguard-installation-and-configuration
 author:
   name: Steven J. Vaughan-Nichols
   email: sjvn01@gmail.com
-description: 'How to set up the WireGuard Virtual Private Network on CentOS 8.'
-og_description: 'How to set up the WireGuard Virtual Private Network on CentOS 8.'
+description: 'This guide provides you with step-by-step instructions on how to install and configure the WireGuard Virtual Private Network services on CentOS 8.'
+og_description: 'This guide provides you with step-by-step instructions on how to install and configure the WireGuard Virtual Private Network services on CentOS 8.'
 keywords: ['centos', 'wireguard', 'vpn']
 tags: ['wireguard', 'centos', 'vpn']
+bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
 image: WireGuard.jpg
@@ -68,13 +69,13 @@ WireGuard was written by top Linux developer Jason A. Donenfeld as a new approac
 
 WireGuard works by securely encapsulating IP packets over UDP. WireGuard adds a network interface, `lime eth0` or `wlan0` under the name `wg0` and so on. You configure these with your private key and your peers' public keys. This network interface can then be configured with the usual Linux networking utilities such as `ifconfig(8)`; `ip-address(8)`; `route(8)` and `ip-route(8)`. WireGuard specific aspects are configured using the [wg(8)](https://git.zx2c4.com/wireguard-tools/about/src/man/wg.8) tool. All key distribution and pushed configuration issues are out of WireGuard's scope.
 
-Configuring WireGuard is as simple as [setting up SSH](https://www.linode.com/docs/guides/security). A connection is established by an exchange of public keys between server and client. Only a client that has its public key in its corresponding server configuration file is allowed to connect.
+Configuring WireGuard is as simple as [setting up SSH](/docs/guides/security). A connection is established by an exchange of public keys between server and client. Only a client that has its public key in its corresponding server configuration file is allowed to connect.
 
 ## Before You Begin
 
-- [Deploy a Linode](https://www.linode.com/docs/getting-started/#create-a-linode) running CentOS 8.
-- [Add a limited user account](https://www.linode.com/docs/security/securing-your-server/#add-a-limited-user-account) with `sudo` privileges to your Linode.
-- Set your system's [hostname](https://www.linode.com/docs/getting-started/#set-the-hostname).
+- [Deploy a Linode](/docs/guides/creating-a-compute-instance/) running CentOS 8.
+- [Add a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) with `sudo` privileges to your Linode.
+- Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 ## Install WireGuard
 

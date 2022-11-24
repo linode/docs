@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to use separate web servers to host sites or applications using ProxyPass with Apache.'
+description: 'This guide will show you how you can use separate web servers to host multiple websites or applications using ProxyPass with Apache on Ubuntu 9.10 "Karmic".'
 keywords: ["apache", "proxypass", "apache on ubuntu", "multiple web servers"]
 tags: ["proxy","web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,7 +13,7 @@ modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2010-02-04
-title: 'Multiple Web Servers with ProxyPass on Ubuntu 9.10 (Karmic)'
+title: 'Multiple Web Servers with ProxyPass on Ubuntu 9.10'
 relations:
     platform:
         key: multiple-servers-proxypass
@@ -88,11 +88,11 @@ The `ProxyPass` directive tells Apache to forward all requests for this domain t
 
 Let's do some testing. Here's the normal Apache-served site "www.firstsite.org" in our browser:
 
-[![Website running under Apache on Ubuntu 9.10 (Karmic).](452-proxypass-apache-site.png)](452-proxypass-apache-site.png)
+![Website running under Apache on Ubuntu 9.10 (Karmic).](452-proxypass-apache-site.png)
 
 Here's the site "www.secondsite.org" being served by lighttpd via ProxyPass:
 
-[![Website running under Lighttpd on Ubuntu 9.10 (Karmic).](453-proxypass-lighttpd-site.png)](453-proxypass-lighttpd-site.png)
+![Website running under Lighttpd on Ubuntu 9.10 (Karmic).](453-proxypass-lighttpd-site.png)
 
 ## Proxying a Specific URL to Lighttpd
 
@@ -115,7 +115,7 @@ If we wanted to have `http://www.firstsite.org/myapp/` served by a web applicati
 
 Now the location "/myapp" will be served by lighttpd instead of Apache. After reloading the Apache configuration with `/etc/init.d/apache2 reload`, we can see that it's functioning correctly:
 
-[![Web application running under a directory via lighttpd on Ubuntu 9.10 (Karmic).](454-proxypass-lighttpd-directory.png)](454-proxypass-lighttpd-directory.png)
+![Web application running under a directory via lighttpd on Ubuntu 9.10 (Karmic).](454-proxypass-lighttpd-directory.png)
 
 This is an easy method for hosting multiple application servers (with different web server requirements) under a single domain.
 

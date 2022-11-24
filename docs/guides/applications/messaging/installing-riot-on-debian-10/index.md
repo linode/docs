@@ -24,22 +24,18 @@ Riot has been renamed to *Element*. You can read more about this name change on 
 
 ## Before You Begin
 
-1.  Familiarize yourself with the [Getting Started](/docs/getting-started/) guide and complete the steps for setting Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1.  This guide uses `sudo` wherever possible. Reference the [Securing Your Server](/docs/security/securing-your-server/) guide and complete the sections to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note >}}
-If you choose to configure a firewall, remember to open ports 80 and 443 for the server when you reach the [configure a firewall](/docs/guides/securing-your-server/#configure-a-firewall) section of the guide.
+If you choose to configure a firewall, remember to open ports 80 and 443 for the server when you reach the [configure a firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) section of the guide.
 {{</ note >}}
-
-1.  Update the system:
-
-        sudo apt-get update && sudo apt-get upgrade
 
 1.  To connect to the Synapse / Matrix services with a client other than Riot, you need a [Matrix client](https://matrix.org/clients/).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Setup DNS
@@ -53,7 +49,7 @@ So in this example, create DNS records for:
 
 Set each of the above DNS records to the public IP address of the Linode instance.
 
-Refer to [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) for more information on configuring
+Refer to [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) for more information on configuring
 DNS entries or consult your DNS provider's documentation if using an external DNS provider.
 
 ## Install Riot

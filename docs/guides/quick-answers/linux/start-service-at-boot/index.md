@@ -146,7 +146,7 @@ systemd-cat -p info < "$info" &
 exec 3>"$info"
 
 DATE=`date '+%Y-%m-%d %H:%M:%S'`
-echo "Example service started at ${DATE}" | systemd-cat -p info
+echo "Example service started at ${DATE}" > "$info"
 
 while :
 do

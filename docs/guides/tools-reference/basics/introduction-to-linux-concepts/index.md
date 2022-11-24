@@ -13,7 +13,6 @@ modified_by:
 published: 2009-08-31
 title: Introduction to Linux Concepts
 external_resources:
- - '[Getting Started](/docs/getting-started/)'
  - '[Using the Terminal](/docs/using-linux/using-the-terminal)'
  - '[LAMP Guides](/docs/lamp-guides/)'
  - '[Package Management](/docs/using-linux/package-management)'
@@ -67,15 +66,15 @@ Before you install Linux, decide which distribution to install. Linux comes in s
 
 ### Install Linux to Get Started
 
-Here at Linode, you install Linux with the [Linode Manager](https://cloud.linode.com/) dashboard. It takes just a few clicks to install Linux with this dashboard. If you don't have a particular Linux distribution in mind, install **Ubuntu 16.04 LTS**. Ubuntu is good for Linux beginners because it is well-supported and doesn't change often.
+Here at Linode, you install Linux with the [Linode Manager](https://cloud.linode.com/) dashboard. It takes just a few clicks to install Linux with this dashboard. If you don't have a particular Linux distribution in mind, install the latest release of **Ubuntu**. Ubuntu is good for Linux beginners because it is well-supported and doesn't change often.
 
-After you know which distribution you want to install, follow the instructions for installing Linux in the [Getting Started](/docs/getting-started/) article. Follow that article until you complete [Booting Your Linode](/docs/getting-started#boot-your-linode), then come back here.
+After you know which distribution you want to install, follow the instructions for installing Linux in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) article. Follow that article until you complete [Booting Your Linode](/docs/getting-started#boot-your-linode), then come back here.
 
 ### Connecting to Your Linode
 
 Your Linode is physically housed in the Atlanta, Dallas, Frankfurt, Fremont, London, Newark, Singapore, or Tokyo data center, so you have to use the Internet and a terminal to connect to it and start using it. A *terminal* is a tool that runs a *shell* that lets you run text commands to interact with your server. The Secure Shell (**SSH**) protocol lets you send these commands to your Linode over a secure Internet connection from your local machine.
 
- {{< note >}}
+{{< note >}}
 In this guide, we'll mostly be using the terms *terminal*, *shell*, and *SSH* to refer to the interface you use to send text commands to your Linux system. These are different tools that layer on top of each other to let you interact with your server. To learn more, read these simplified definitions:
 
   - **Terminal**: A device that enters data into and displays data from a computer. The terminal has the most direct access to the operating system. Technically, most terminals these days are actually *terminal emulators* that run as software on Mac OS X, Linux, or Windows computers.
@@ -100,7 +99,7 @@ What does this bit of text mean? The entire thing is the *shell prompt*. It's yo
 
 You can type any valid Linux shell command at the blinking cursor after the shell prompt. We'll go over a few practical commands in the rest of this article, but to get a really good in-depth introduction to the command-line interface, you should read the [Using the Terminal](/docs/using-linux/using-the-terminal) article as well.
 
- {{< note >}}
+{{< note >}}
 These command line tips will make your Linux forays much more effective:
 
 - Press the `Return` or `Enter` key after you finish a command.
@@ -116,22 +115,24 @@ In this section, we'll look at the structure of a Linux server. Everything on yo
 
 Most Linux systems have directories called `lib` and `var` (along with several others) underneath the root directory. The `lib` directory contains system libraries, while the `var` directory contains all of the files on your system that are likely to change, such as your logs and your mail messages. Directories can go inside other directories, as illustrated below:
 
-[![The Linux directory structure.](1489-linux_directory_structure_2.png)](1489-linux_directory_structure_2.png)
+![The Linux directory structure.](1489-linux_directory_structure_2.png)
 
 ### Print a Working Directory
+
 Find out where you are in the directory structure. Make sure your terminal application is selected and that you're logged in to your Linode. You should see a blinking cursor where you can start typing.
 
-1. For your first command, use the `pwd` command. Short for *print working directory*, it lets you view the full path to your current directory. Type `pwd` after the shell prompt:
+1.  For your first command, use the `pwd` command. Short for *print working directory*, it lets you view the full path to your current directory. Type `pwd` after the shell prompt:
 
         root@localhost:~# pwd
 
-2. Press `Return` to execute the command. You should see the following output:
+1.  Press `Return` to execute the command. You should see the following output:
 
         /root
 
 The output of `pwd` shows you the full path to your current directory or directory. At the moment, you're inside the `/root` directory. You will always be inside a particular directory when you execute shell commands, although which directory you're in can change. The `pwd` command is very useful because it shows you exactly where you are in your Linode's directory structure.
 
 ### Change Directories
+
 Let's move into the root directory, `/`, with the `cd` command. The `cd` command is short for *change directory*. After `cd` type a space and then the file path. The file path can be long or short, depending on how deep you're going into the directory structure.
 
 Change to the root directory:
@@ -153,6 +154,7 @@ Type the following command, and press `Return` to execute it:
     ls -ahl
 
 The output should look something like this:
+
 {{< output >}}
 total 84K
 drwxr-xr-x  22 root root 4.0K Apr 30  2012 .
@@ -186,13 +188,14 @@ The **/root** directory is not the same as the **/** directory. **/** is the top
 {{< /note >}}
 
 ### Explore Linux Directories
+
 If you open the `var` directory, you'll find more directories, such as `log` for your logs, and `mail` for your system mail.
 
-1. Move into the `var` directory by executing the `cd` command:
+1.  Move into the `var` directory by executing the `cd` command:
 
         cd var
 
-2. View the contents of the `var` directory with the `ls` command, just like we did earlier:
+1.  View the contents of the `var` directory with the `ls` command, just like we did earlier:
 
         ls -ahl
 
@@ -219,19 +222,19 @@ drwxr-xr-x  2 root root     4.0K Apr  6  2013 www
 
     Here you can see the `log` and `mail` directories, as well as several others. At the top of the list, you see two directories named `.` and `..` with periods. Similar to the tilde (**\~**) we saw earlier, these directories are actually shortcuts or aliases, that appear in every directory. The single-period directory indicates the current directory. The double-period directory indicates the directory above the current one. If you are inside a lower-level directory and want to move to the directory above it, type `cd ..`.
 
-1. To move back up to `/` from `var`, type the following command:
+1.  To move back up to `/` from `var`, type the following command:
 
         cd ..
 
-2. You should be in the `/` directory again. You can use `pwd` to verify this.
+1.  You should be in the `/` directory again. You can use `pwd` to verify this.
 
         pwd
 
-3. Let's take a look at the `lib` directory. Move into `lib` with the `cd` command:
+1.  Let's take a look at the `lib` directory. Move into `lib` with the `cd` command:
 
         cd lib
 
-4. List its contents with the `ls` command:
+1.  List its contents with the `ls` command:
 
         ls -ahl
 
@@ -256,7 +259,7 @@ lrwxrwxrwx  1 root root   16 Apr 30  2012 libfuse.so.2 -> libfuse.so.2.8.6
 
 ### Learn More About Navigating Directories
 
-Now you know how to use the `pwd` command to show you where you are, the `cd` command to move to a new directory, and the `ls` command to show you the contents of a directory. These are the basic tools you need to navigate through your Linode's files and directories. To learn more about navigating directories, read the linked section of the [Using the Terminal](/docs/tools-reference/ssh/using-the-terminal/) guide.
+Now you know how to use the `pwd` command to show you where you are, the `cd` command to move to a new directory, and the `ls` command to show you the contents of a directory. These are the basic tools you need to navigate through your Linode's files and directories. To learn more about navigating directories, read the linked section of the [Using the Terminal](/docs/guides/using-the-terminal/) guide.
 
 ### Upload Files to Your Linode
 
@@ -274,7 +277,7 @@ You can set users and permissions for each file directory on your Linode.
 
 Three categories comprise the file access system in Linux:
 
--   **Users**: Unique logins for your Linode. A user account is typically assigned to either a person or an application that needs to access files on your system. You can have any number of users on your Linode. To learn how to add a user, see the [Adding a New User](/docs/security/securing-your-server/#add-a-limited-user-account) section of the **Securing Your Server** guide.
+-   **Users**: Unique logins for your Linode. A user account is typically assigned to either a person or an application that needs to access files on your system. You can have any number of users on your Linode. To learn how to add a user, see the [Adding a New User](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of the **Securing Your Server** guide.
 -   **Groups**: A collection of one or more users. Groups are a useful way to grant similar access privileges to multiple users, without having to set them individually for each user. When a user account is created, it is assigned a default group with the same name as the user name. Each user can belong to any number of groups. Users that are a part of a group inherit the permissions granted to the group.
 -   **Everyone**: is the category for everyone else. If someone accesses files on your Linode without being logged in as a specific user, they fall into the *everyone* category. *Everyone* is sometimes known as *world*, because it includes everyone in the whole world.
 
@@ -285,13 +288,14 @@ The next important concept is *permissions*. Every file and directory on your Li
 -  **Execute**: Files with *execute* permissions can be run, like an application. When you start a program or script, you execute it.
 
 ### View Permissions in Linux
+
 View the users and permissions for a particular file or directory.
 
 1.  Run the `ls -l` command replacing **my\_directory** with the name of your own file or directory:
 
         ls -l my_directory
 
-2.   That command produces output like the following:
+1.  That command produces output like the following:
 
         drwxr-xr-x  13 user1 group1 4.0K Nov  6 16:04 my_directory
 
@@ -321,6 +325,7 @@ Like most things in Linux, installing software is accomplished by typing and exe
 Our **Quick Start Guides** series contain basic instructions for installing and configuring many common types of Linux software. The [Hosting a Website](/docs/hosting-website) guide shows you how to install software to run a website, while [Running a Mail Server](/docs/mailserver) is for email servers.
 
 #### Install with APT
+
 Because we've been working with the Ubuntu 16.04 distribution so far, let's look at an example with APT. The general form of the installation command for Ubuntu and Debian systems is:
 
     apt-get install software
@@ -353,9 +358,11 @@ You want some programs, like your web server, to run constantly. These are the p
 
 Sometimes you want to run a program on an as-needed basis. For example, you might want to run a script to rename a group of files.
 
-1.  Use the `cd` command to move into the directory where the script is located.
-2.  Run `ls -l directory` to check that your user account has [execute permissions](/docs/tools-reference/introduction-to-linux-concepts#users-and-permissions-in-linux) for the script file in the directory. If you need to modify the permissions, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups#what-are-user-and-group-permissions) guide.
-3.  Run the script with the following syntax:
+1. Use the `cd` command to move into the directory where the script is located.
+
+1. Run `ls -l directory` to check that your user account has [execute permissions](/docs/tools-reference/introduction-to-linux-concepts#users-and-permissions-in-linux) for the script file in the directory. If you need to modify the permissions, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups#what-are-user-and-group-permissions) guide.
+
+1.  Run the script with the following syntax:
 
         ./my_script
 
@@ -407,7 +414,9 @@ RedHat Linux (which includes Fedora and CentOS) and Debian Linux (which includes
 Some distributions are designed to be as simple and minimalistic as possible, while others are designed to contain the most current, bleeding-edge software. Still others aim to provide the greatest amount of stability and reliability. In addition to the personality of each distribution, which you'll have to discover for yourself, there are a number of factors that you might find useful when choosing a distribution.
 
 -   **Release Cycle**: Different distributions release their operating system updates on different schedules. Distributions like Gentoo and Arch Linux use a *rolling release* model where individual packages are released whenever they're deemed ready by their developers. Conversely, distributions like Debian, Slackware, and CentOS strive to provide the most stable operating system attainable, and release new versions much less frequently. Fedora and Ubuntu release new versions of their operating systems every six months. Choosing the release cycle that's right for you depends on many factors, including the software you need to run, your comfort level, and the amount of stability and reliability you need.
--   **Organizational Structure**: While it might not affect the performance of the distribution, one of the distinguishing factors between distributions is the organizational structure of the development team. Some distributions, like Debian, Gentoo, Arch, and Slackware are developed by independent communities of developers, while other distributions like OpenSUSE, Fedora, and Ubuntu are developed by communities sponsored by various corporations (e.g. Novell, RedHat, and Canonical for the examples above). Other distributions, such as CentOS, are derived by a community from commercially-produced distributions.
--   **Common Tool Sets**: Different distributions make use of different tools for common tasks like [package management](/docs/tools-reference/linux-package-management/) or system configuration. As we discussed above, Debian and Ubuntu use APT to manage `.deb` packages, CentOS and Fedora use yum to manage `.rpm` packages, and OpenSUSE also uses `.rpm` packages but manages them with a tool called **yast**. In many cases your choice of distribution will come down to the one that provides the tools you need and are most comfortable with.
+
+-   **Organizational Structure**: While it might not affect the performance of the distribution, one of the distinguishing factors between distributions is the organizational structure of the development team. Some distributions, like Debian, Gentoo, Arch, and Slackware are developed by independent communities of developers, while other distributions like openSUSE, Fedora, and Ubuntu are developed by communities sponsored by various corporations (e.g. Novell, RedHat, and Canonical for the examples above). Other distributions, such as CentOS, are derived by a community from commercially-produced distributions.
+
+-   **Common Tool Sets**: Different distributions make use of different tools for common tasks like [package management](/docs/guides/linux-package-management-overview/) or system configuration. As we discussed above, Debian and Ubuntu use APT to manage `.deb` packages, CentOS and Fedora use yum to manage `.rpm` packages, and openSUSE also uses `.rpm` packages but manages them with a tool called **yast**. In many cases your choice of distribution will come down to the one that provides the tools you need and are most comfortable with.
 
 Different distributions of Linux are right for different situations. You should experiment until you find the best fit for you. Given the similarities between different distributions, don't be afraid switch to a new one that will serve you better. If you're familiar with the concepts in this article, you're well on your way to administrating your system like a pro with any distribution of Linux.

@@ -29,18 +29,14 @@ It is possible to access any character in a Python string using array-based inde
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of the [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
 
-1. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. For information on how to use Python, see our guide on [How to Install Python 3](https://www.linode.com/docs/guides/how-to-install-python-on-ubuntu-20-04/).
+1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. For information on how to use Python, see our guide on [How to Install Python 3](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
 {{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How Indexing Strings Works in Python 3
@@ -167,6 +163,8 @@ A stride can be used together with start and end indices. The next example demon
 {{< output >}}
 oe ytm
 {{< /output >}}
+
+For a deeper dive into reversing string in Python using slicing and other methods, see our guide [Reversing a String in Python](/docs/guides/how-to-reverse-a-string-in-python/)
 
 ## Use the Slice Object to Simplify Repetitive Tasks
 

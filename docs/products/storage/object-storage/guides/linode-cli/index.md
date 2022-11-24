@@ -4,27 +4,33 @@ author:
   email: docs@linode.com
 title: "Using the Linode CLI with Object Storage"
 description: "Learn how to use the Linode CLI to manage Linodes own Object Storage solution."
+modified: 2022-05-02
 ---
 
-The Linode Command Line Interface (CLI) is a command line utility that allows you complete control over the Linode account. With the Object Storage plugin, you can also create and remove buckets, upload objects, and more.
+The Linode Command Line Interface (CLI) is a command line utility that allows you complete control over the Linode account. For interacting with Object Storage, there are two separate commands within the Linode CLI.
+
+- `linode object-storage [command]`: This resource provides access to managing Object Storage on a Linode account.
+- `linode obj [command]`: With the Object Storage plugin, you can also create and remove buckets, upload objects, and more.
+
+This guide details how to use the `obj` plugin. For `linode object-storage` usage, see [Linode CLI Commands for Object Storage](/docs/products/tools/cli/guides/object-storage/).
 
 ## Install and Configure the CLI
 
-1.  Download the Linode CLI, or, if you have already downloaded it, make sure it has been upgraded to the latest version:
+Follow the instructions within the [Install and Configure the Linode CLI](/docs/products/tools/cli/guides/install/) guide to get started using the CLI. If you wish to use the obj plugin and perform operations on buckets and objects, be sure to also install the boto library.
 
-        pip3 install linode-cli --upgrade
+## Basic Commands
 
-1.  Configure the Object Storage plugin:
+To get a list of all available buckets, use the `ls` command:
 
-        linode-cli obj --help
+    linode-cli obj ls
 
-    You are prompted to enter the Personal Access Token and default settings for deploying new Linodes.
+To get a list of all objects in a bucket, use the `ls` command with the label of a bucket:
 
-1.  Install the `boto` module:
+    linode-cli obj ls my-example-bucket
 
-        pip3 install boto
+For a complete list of commands available with the Object Storage plugin, use the `--help` flag:
 
-Now you are ready to create buckets and upload objects.
+    linode-cli obj --help
 
 ## Create a Bucket with the CLI
 
@@ -113,7 +119,7 @@ To create a static website from a bucket:
     - `http://my-example-bucket.website-eu-central-1.linodeobjects.com` or
     - `http://my-example-bucket.website-ap-south-1.linodeobjects.com`
 
-For more information on hosting static websites from Linode Object Storage, see [Host a Static Site on Linode's Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
+For more information on hosting static websites from Linode Object Storage, see [Host a Static Site on Linode's Object Storage](/docs/guides/host-static-site-object-storage/) guide.
 
 ## Creating a New Access Key
 
@@ -129,22 +135,8 @@ You can create and configure a new Access Key at any time by running the followi
 
 After running the command the access is restored, and you can see the new key listed at any time using the following command:
 
-    linode-cli-linode-cli object-storage keys-list
+    linode-cli object-storage keys-list
 
 {{< note >}}
 Any new object storage keys issued through the CLI is prefixed with `linode-cli` as the label.
 {{< /note >}}
-
-## Other CLI Commands
-
-To get a list of all available buckets, use the `ls` command:
-
-    linode-cli obj ls
-
-To get a list of all objects in a bucket, use the `ls` command with the label of a bucket:
-
-    linode-cli obj ls my-example-bucket
-
-For a complete list of commands available with the Object Storage plugin, use the `--help` flag:
-
-    linode-cli obj --help

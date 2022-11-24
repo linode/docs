@@ -3,8 +3,8 @@ slug: zipkin-server-configuration-using-docker-and-mysql
 author:
   name: Luis Cortés
   email: docs@linode.com
-description: 'This guide shows you how to use Zipkin in a Docker container for the purpose of tracking systems to collect and search timing data in order to identify latency problems on your websites.'
-og_description: 'Zipkin is a distributed tracing system. This guide shows you how to use Docker to deploy Zipkin on Linode, to diagnose latency problems on your website'
+description: 'This guide shows you how to use Zipkin in a docker container for the purpose of tracking systems to collect and search timing data in order to identify latency problems.'
+og_description: 'This guide shows you how to use Zipkin in a docker container for the purpose of tracking systems to collect and search timing data in order to identify latency problems.'
 keywords: ["zipkin", "Docker", "tracking"]
 tags: ["docker","statistics","fedora","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -25,11 +25,11 @@ We can configure Zipkin by [deploying it in a Docker container](http://zipkin.io
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone. This guide will use the hostname 'zipkinhost'.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2. This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access, and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for a Zipkin server.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. This guide will use the hostname 'zipkinhost'. Also, do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for a Zipkin server.
 
-3. Assuming you know how to instrument a Zipkin client machine or have walked through our [Set Up a Zipkin Server with Sample Website Tracking](/docs/uptime/analytics/set-up-a-zipkin-server/) guide.
+3. Assuming you know how to instrument a Zipkin client machine or have walked through our [Set Up a Zipkin Server with Sample Website Tracking](/docs/guides/set-up-a-zipkin-server/) guide.
 
 4. You will need an analyst system (laptop or workstation) with a web browser. This system will be used to view the traces/spans in the Zipkin server through the Zipkin provided webservice.
 

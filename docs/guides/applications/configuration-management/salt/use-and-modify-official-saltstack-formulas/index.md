@@ -31,20 +31,20 @@ This guide will use GitHub to fork and modify SaltStack's [timezone formula](htt
 
 ## Before You Begin
 
-1. If you are new to SaltStack, read [A Beginner's Guide to Salt](/docs/applications/configuration-management/beginners-guide-to-salt/) to familiarize yourself with basic Salt concepts.
+1. If you are new to SaltStack, read [A Beginner's Guide to Salt](/docs/guides/beginners-guide-to-salt/) to familiarize yourself with basic Salt concepts.
 
-1. Download Git on your local computer by following our [How to Install Git on Linux, Mac or Windows](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) guide.
+1. Download Git on your local computer by following our [How to Install Git on Linux, Mac or Windows](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) guide.
 
-1. Familiarize yourself with Git using our [Getting Started with Git](/docs/development/version-control/how-to-configure-git/) guide.
+1. Familiarize yourself with Git using our [Getting Started with Git](/docs/guides/how-to-configure-git/) guide.
 
-1.  Make sure you have [configured git](/docs/development/version-control/how-to-configure-git/#configure-git) on your local computer.
+1.  Make sure you have [configured git](/docs/guides/how-to-configure-git/#configure-git) on your local computer.
 
-1. Use the [Getting Started with Salt - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/) guide to set up a Salt Master and two Salt minions: one running Ubuntu 18.04 and the second running CentOS 7.
+1. Use the [Getting Started with Salt - Basic Installation and Setup](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) guide to set up a Salt Master and two Salt minions: one running Ubuntu 18.04 and the second running CentOS 7.
 
-1.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Overview of the SaltStack Time Zone Formula

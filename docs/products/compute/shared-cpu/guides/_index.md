@@ -12,21 +12,21 @@ These guides explore targeted topics like how to host a website, setting up a we
 
 ### Shared Linode Basics
 
-- [Getting Started with Linode](/docs/getting-started/)
+- [Getting Started with Linode](/docs/guides/getting-started/)
 
-- [Securing Your Server](/docs/security/basics/securing-your-server/)
+- [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
 
 ### Choosing a Linode Plan
 
-- [How to Choose a Linode Plan](/docs/platform/how-to-choose-a-linode-plan/#1-shared)
+- [How to Choose a Linode Plan](/docs/guides/choosing-a-compute-instance-plan/#1-shared)
 
 ### Hosting a Website
 
 - [Host a Website on Ubuntu 18.04](/docs/guides/hosting-a-website-ubuntu-18-04/)
 
-- [How to Choose a Static Site Generator](/docs/websites/static-sites/how-to-choose-static-site-generator/)
+- [How to Choose a Static Site Generator](/docs/guides/how-to-choose-static-site-generator/)
 
-- [Host a Website with High Availability](/docs/websites/host-a-website-with-high-availability/)
+- [Host a Website with High Availability](/docs/guides/host-a-website-with-high-availability/)
 
 ### Set Up a Web Server
 
@@ -34,6 +34,6 @@ These guides explore targeted topics like how to host a website, setting up a we
 
 ### Migrate to Linode
 
-- [Migrate from Shared Hosting to Linode](/docs/platform/migrate-to-linode/migrate-from-shared-hosting-to-linode/)
+- [Migrate from Shared Hosting to Linode](/docs/guides/migrate-from-shared-hosting-to-linode/)
 
-- [Best Practices when Migrating to Linode](/docs/platform/migrate-to-linode/best-practices-when-migrating-to-linode/)
+- [Best Practices when Migrating to Linode](/docs/guides/best-practices-when-migrating-to-linode/)

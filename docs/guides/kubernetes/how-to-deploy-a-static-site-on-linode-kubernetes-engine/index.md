@@ -409,7 +409,7 @@ static-site-deployment-cdb88b5bb-lzdvh  1/1     Running  0          1h
 
 1.  Create a Service manifest file to provide load balancing for the deployment. Load balancing ensures that traffic is balanced efficiently across multiple backend nodes, improving site performance and ensuring that your static site is accessible should a node go down.
 
-    Specifically, the Service manifest that is used in this guide triggers the creation of a Linode [NodeBalancer](/docs/guides/getting-started-with-nodebalancers/).
+    Specifically, the Service manifest that is used in this guide triggers the creation of a Linode [NodeBalancer](/docs/products/networking/nodebalancers/get-started/).
 
     {{< note >}}
 The NodeBalancer's creation is controlled through the [Linode Cloud Controller Manager (CCM)](/docs/guides/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/) guide.
@@ -464,7 +464,7 @@ static-site-service  LoadBalancer  10.128.99.240  192.0.2.1        80:32648/TCP 
 
 ## Next Steps
 
-If you'd like to continue using the static site that you created in this guide, you may want to assign a domain to it. Review the [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) and [DNS Manager](/docs/guides/dns-manager/) guides for help with setting up DNS. When setting up your DNS record, use the external IP address that you noted at the end of the previous section.
+If you'd like to continue using the static site that you created in this guide, you may want to assign a domain to it. Review the [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](/docs/products/networking/dns-manager/) guides for help with setting up DNS. When setting up your DNS record, use the external IP address that you noted at the end of the previous section.
 
 If you would rather not continue using the cluster you just created, review the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) to remove the billable Linode resources that were generated.
 
@@ -486,4 +486,4 @@ If you would rather not continue using the cluster you just created, review the 
 
     1.  You are prompted to enter the name of the cluster to confirm the action. Enter the cluster name and click **Delete**.
 
--  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context).
+-  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context).

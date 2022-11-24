@@ -33,7 +33,7 @@ While this guide has been written to accommodate computers running Linux as thei
 
 ### Boot Linode into Rescue Mode
 
-1.  Reboot Your origin Linode into [Rescue Mode](/docs/guides/rescue-and-rebuild/#boot-linode-into-rescue-mode) and connect to it using [Lish](/docs/guides/using-the-lish-console/).
+1.  Reboot Your origin Linode into [Rescue Mode](/docs/guides/rescue-and-rebuild/#boot-linode-into-rescue-mode) and connect to it using [Lish](/docs/guides/lish/).
 
 1.  Set a root password for the rescue system and start the SSH server:
 
@@ -96,9 +96,9 @@ Once the copy has completed, verify it by mounting the image on the receiving sy
 
 ## Upload a Disk over SSH
 
-In some cases, it is necessary to upload your disk image to a new server. For example, if you previously downloaded your Linode disk and deleted the Linode to halt billing on it, you can create a new Linode at a later date and upload the disk to resume your services. This section of the guide assumes that you are creating a new Linode with the default primary and swap disk as outlined in the Creating a Linode section of our [Getting Started](/docs/guides/getting-started/#create-a-linode) guide.
+In some cases, it is necessary to upload your disk image to a new server. For example, if you previously downloaded your Linode disk and deleted the Linode to halt billing on it, you can create a new Linode at a later date and upload the disk to resume your services. This section of the guide assumes that you are creating a new Linode with the default primary and swap disk as outlined in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide.
 
-1.  Once you've finished [Creating a New Linode](/docs/guides/getting-started/#create-a-linode) with enough disk space available to accommodate your disk image, prepare the new Linode to receive this image. This is completed by first deleting the primary disk created by default, and keeping the swap disk. A swap disk typically starts at 256 MB or 512 MB in size, but can be larger or smaller depending upon your needs.
+1.  Once you've created a Linode with enough disk space available to accommodate your disk image, prepare the new Linode to receive this image. This is completed by first deleting the primary disk created by default, and keeping the swap disk. A swap disk typically starts at 256 MB or 512 MB in size, but can be larger or smaller depending upon your needs.
 
 1.  Access your Linode through the Linode Cloud Manager. Click the **Storage** tab to navigate to the *Disks* section.
 
@@ -160,7 +160,7 @@ You now need to create a new configuration profile on the receiving Linode.
 
 1.  The **Add Linode Configuration** panel appears.
 
-    [![Selecting the configuration profile](1064-migration6.png)](1064-migration6.png "Selecting the configuration profile")
+    ![Selecting the configuration profile](1064-migration6.png "Selecting the configuration profile")
 
 1.  Enter a name for the configuration profile in the **Label** field, and in the **Block Device Assignment** section set the `/dev/sda` to the new system disk you created earlier in this section of the guide. Set `/dev/sdb` to the swap image.
 

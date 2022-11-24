@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use uWSGI to deploy Python application servers in conjunction with nginx.'
+description: 'This guide will show you how to configure the uWSGI server to deploy Python application servers in conjunction with the Nginx web server on Fedora 14.'
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
 tags: ["web server","python","fedora","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -186,5 +186,5 @@ In this example, we create the `uwsgicluster` upstream, which has five component
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Installing Nginx on Fedora 14](/docs/web-servers/nginx/installation/fedora-14)
-- [Deploy a LEMP Server on Fedora 14](/docs/lemp-guides/fedora-14/)
+- [Deploy a LEMP Server on Fedora 14](/docs/guides/lemp-server-on-fedora-14/)
 - [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)

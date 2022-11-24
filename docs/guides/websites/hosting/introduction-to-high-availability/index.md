@@ -3,7 +3,7 @@ slug: introduction-to-high-availability
 author:
   name: Phil Zona
   email: docs@linode.com
-description: 'Introduction to high availability concepts'
+description: 'This guide provides you with an introduction to concepts and terminology relating to high availability, a method of keeping your web servers up with maximum uptime.'
 keywords: ["high availability", "hosting", "website", "failover", "ssd ha"]
 tags: ["web server","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -63,7 +63,7 @@ In this section, we'll go over the function of each component of the high availa
 
 The concepts discussed here are specifically geared toward the configuration described in our guide on how to [host a website with high availability](/docs/websites/host-a-website-with-high-availability), but will apply to highly available systems in general. The  diagram below shows the configuration we use in our guide.
 
-[![High availability server configuration](high-availability-diagram.png)](high-availability-diagram.png)
+![High availability server configuration](high-availability-diagram.png)
 
 ### File System
 

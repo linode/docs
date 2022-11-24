@@ -25,9 +25,9 @@ This guide explains how to install, setup and host your own farmOS web app on a 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/guides/getting-started/#set-the-hostname) and [timezone](/docs/guides/getting-started/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
 
-1.  Follow our [Securing Your Server](/docs/guides/securing-your-server) guide to [create a standard user account](/docs/guides/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/guides/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/guides/securing-your-server/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/securing-your-server/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1.  Follow our [Securing Your Server](/docs/guides/securing-your-server) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{< content "limited-user-note-shortguide" >}}
 
@@ -149,7 +149,7 @@ After each user is created, use the **People** tab to verify success:
 
 ### Registering a Domain Name for farmOS
 
-To register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](/docs/guides/dns-manager/) and add your FQDN (e.g., `farmos.yourfarm.com`) to the Linode Manager. A FQDN provides you, and the people who plan on using farmOS, the ability to navigate to a URL instead of your Linode's public IP address. If you plan on using farmOS internally, you can skip this step.
+To register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](/docs/products/networking/dns-manager/) and add your FQDN (e.g., `farmos.yourfarm.com`) to the Linode Manager. A FQDN provides you, and the people who plan on using farmOS, the ability to navigate to a URL instead of your Linode's public IP address. If you plan on using farmOS internally, you can skip this step.
 
 ### Generate a Google API Key
 

@@ -3,8 +3,8 @@ slug: an-intermediate-guide-to-bash-scripting
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'In this guide, you will put together more complex Bash scripts for common operations used by Linux system administrators like creating interactive Bash scripts with menu options, scripts that generate formatted output of your data, and scripts that work with files and directories.'
-og_description: 'In this guide, you will put together more complex Bash scripts for common operations used by Linux system administrators like creating interactive Bash scripts with menu options, scripts that generate formatted output of your data, and scripts that work with files and directories.'
+description: 'In this guide, you will learn more advanced methods of creating complex Bash Scripts to perform common operations frequently used by Linux system administrators.'
+og_description: 'In this guide, you will learn more advanced methods of creating complex Bash Scripts to perform common operations frequently used by Linux system administrators.'
 keywords: ["shell", "bash", "printf", "script"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-05
@@ -20,7 +20,7 @@ external_resources:
 aliases: ['/development/bash/an-intermediate-guide-to-bash-scripting/']
 ---
 
-In the previous guide of this series, [Getting Started with Bash Scripting](/docs/development/bash/intro-bash-shell-scripting/), you learned Bash basics, like creating and using variables, getting user input, using environment variables, and more. In this guide, you will build off what you have already learned and put together more complex Bash scripts for common operations used by Linux system administrators like creating interactive Bash scripts with menu options, scripts that generate formatted output of your data, and scripts that work with files and directories. Each section will provide a brief introduction to each concept and commands with a few examples that you can run to better understand its function.
+In the previous guide of this series, [Getting Started with Bash Scripting](/docs/guides/intro-bash-shell-scripting/), you learned Bash basics, like creating and using variables, getting user input, using environment variables, and more. In this guide, you will build off what you have already learned and put together more complex Bash scripts for common operations used by Linux system administrators like creating interactive Bash scripts with menu options, scripts that generate formatted output of your data, and scripts that work with files and directories. Each section will provide a brief introduction to each concept and commands with a few examples that you can run to better understand its function.
 
 In this guide, you will learn about:
 
@@ -101,7 +101,7 @@ With both you are working with reality, a material just as hard as wood.
 
 ## Create Menus with the Select Statement
 
-You can use the `select` statement to create menu systems in your bash scripts that users can interact with. When you combine `select` with the `case` statement you can create more sophisticated menu options. This section will provide three examples that use `select` to create menus. If you are not familiar with the `case` statement, you can refer to our [Getting Started with Bash Shell Scripting](/docs/development/bash/intro-bash-shell-scripting/#the-case-statement) guide.
+You can use the `select` statement to create menu systems in your bash scripts that users can interact with. When you combine `select` with the `case` statement you can create more sophisticated menu options. This section will provide three examples that use `select` to create menus. If you are not familiar with the `case` statement, you can refer to our [Getting Started with Bash Shell Scripting](/docs/guides/intro-bash-shell-scripting/#the-case-statement) guide.
 
 The general format for the `select` statement is the following:
 
@@ -432,8 +432,8 @@ The example below tests if your `/etc/passwd` file exists. If the file exists, y
 | `-f` | File exists and is a regular file (not a directory or a device file). |
 | `-G` | File exists and has the same group as the active user running the bash script. |
 | `-h` | Files exists and is a symbolic link. |
-| `-g` | Files exists and has the [set group ID flag](/docs/tools-reference/tools/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) set. |
-| `-k` | File exists and has a [sticky bit flag](/docs/tools-reference/tools/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) set. |
+| `-g` | Files exists and has the [set group ID flag](/docs/guides/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) set. |
+| `-k` | File exists and has a [sticky bit flag](/docs/guides/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) set. |
 | `-L` | File exists and is a symbolic link. |
 | `-N` | File exists and has been modified since it was last read. |
 | `-O` | File exists and is owned by the effective user id. |
@@ -441,7 +441,7 @@ The example below tests if your `/etc/passwd` file exists. If the file exists, y
 | `-r` | File exists and is readable. |
 | `-S` | File exists and is socket. |
 | `-s` | File exists and has a nonzero size. |
-| `-u` | File exists and its [set user ID flag](/docs/tools-reference/tools/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) is set. |
+| `-u` | File exists and its [set user ID flag](/docs/guides/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) is set. |
 | `-w` | File exists and is writable by the current user. |
 | `-x` | File exists and is executable by the current user. |
 
@@ -533,7 +533,7 @@ done
 
 ## Read Files and Searching Directories
 
-This section will present a few utility scripts that can be adopted and expanded on to perform common operations on files and directories, like reading the contents of a text file by line, word, or character. These scripts make use of several of the concepts and techniques covered in this guide and in the [Getting Started with Bash Shell Scripting](/docs/development/bash/intro-bash-shell-scripting/) guide.
+This section will present a few utility scripts that can be adopted and expanded on to perform common operations on files and directories, like reading the contents of a text file by line, word, or character. These scripts make use of several of the concepts and techniques covered in this guide and in the [Getting Started with Bash Shell Scripting](/docs/guides/intro-bash-shell-scripting/) guide.
 
 ### Read a File Line by Line
 

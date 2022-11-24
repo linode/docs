@@ -22,13 +22,15 @@ aliases: ['/kubernetes/how-to-install-the-linode-block-storage-csi-driver/']
 
 ## What is the Linode Block Storage CSI Driver?
 
-The [Container Storage Interface](https://github.com/container-storage-interface/spec/blob/master/spec.md) (CSI) defines a standard that storage providers can use to expose block and file storage systems to container orchestration systems. Linode's Block Storage CSI driver follows this specification to allow container orchestration systems, like Kubernetes, to use [Block Storage Volumes](https://www.linode.com/docs/platform/block-storage/) to persist data despite a Pod's lifecycle. A Block Storage Volume can be attached to any Linode to provide additional storage.
+The [Container Storage Interface](https://github.com/container-storage-interface/spec/blob/master/spec.md) (CSI) defines a standard that storage providers can use to expose block and file storage systems to container orchestration systems. Linode's Block Storage CSI driver follows this specification to allow container orchestration systems, like Kubernetes, to use [Block Storage Volumes](/docs/products/storage/block-storage/) to persist data despite a Pod's lifecycle. A Block Storage Volume can be attached to any Linode to provide additional storage.
 
 ## Before You Begin
 
-This guide assumes you have a working Kubernetes cluster running on Linode. If you have already created a Kubernetes cluster managed with [LKE](https://www.linode.com/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/), then the Block Storage CSI driver and the `linode` secret token will already be pre-installed on your cluster. See the [Deploying Persistent Volume Claims with the Linode Block Storage CSI Driver](/docs/guides/deploy-volumes-with-the-linode-block-storage-csi-driver) guide for the next steps for working with Persistent Volume Claims.
+This guide assumes you have a working Kubernetes cluster running on Linode. If you have already created a Kubernetes cluster managed with [LKE](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/), then the Block Storage CSI driver and the `linode` secret token will already be pre-installed on your cluster. See the [Deploying Persistent Volume Claims with the Linode Block Storage CSI Driver](/docs/guides/deploy-volumes-with-the-linode-block-storage-csi-driver) guide for the next steps for working with Persistent Volume Claims.
 
-If you are not using LKE or the [Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2), the Kubernetes cluster will require the Block Storage CSI driver in order to use Linode's Block Storage. If you need to set up an unmanaged Kubernetes cluster, you can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/getting-started-with-kubernetes/) guide to do this.
+If you are not using LKE or the [Kubernetes Terraform installer](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2), the Kubernetes cluster will require the Block Storage CSI driver to be installed on the cluster in order to use Linode's Block Storage. If you need to set up an unmanaged Kubernetes cluster, you can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/getting-started-with-kubernetes/) guide to do this.
+
+The Linode Block Storage CSI driver **absolutely requires** that the Linode Cloud Controller Manager (CCM) is pre-installed and running on your cluster in order for the CSI to be installed. Follow the steps in our [CCM installation guide](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/) before proceeding.
 
 {{< note >}}
 The Block Storage CSI supports Kubernetes version 1.13 or higher. To check the version of Kubernetes you are running, you can issue the following command:
@@ -77,7 +79,7 @@ Once you have your API token, it's time to create your secret.
 
         read -p "Linode Region of Cluster: " LINODE_REGION
 
-    You can retrieve a full list of regions by using the [Linode CLI](/docs/guides/using-the-linode-cli/):
+    You can retrieve a full list of regions by using the [Linode CLI](/docs/products/tools/cli/get-started/):
 
         linode-cli regions list
 

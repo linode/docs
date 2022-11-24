@@ -3,7 +3,7 @@ slug: top-htop-iotop
 author:
   name: Elle Krout
   email: ekrout@linode.com
-description: 'How to use top to monitor a server''s performance.'
+description: 'This guide provides you with a how-to reference on using top, a Linux process manager and monitoring utilitie included with most distros, to monitor performance.'
 keywords: ["top", "htop", "iotop", "monitoring", "server monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-02-19
@@ -22,7 +22,7 @@ Viewing a server's processor activity in real-time can aid in discovering and di
 
 ## Reading the Screen
 
-[![The top screen](top-full-small.png)](top-full.png)
+![The top screen](top-full.png)
 
 The `top` screen contains a variety of information regarding your server, beginning with the server's uptime, load average, and tasks status, located in the header.
 

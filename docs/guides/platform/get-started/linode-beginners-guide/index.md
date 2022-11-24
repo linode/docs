@@ -3,7 +3,7 @@ slug: linode-beginners-guide
 author:
   name: Linode
   email: docs@linode.com
-description: 'Beginner''s Guide to Linode''s Platform answers common configuration questions about the Linode cloud.'
+description: "Beginner's Guide to Linode's Platform answers common configuration questions about the Linode cloud."
 keywords: ["linode beginners guide", "linux beginner", "linode beginner", "Linode guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/beginners-guide/','/platform/linode-beginners-guide/','/platform/billing-and-support/linode-beginners-guide/']
@@ -11,17 +11,16 @@ modified: 2017-03-02
 modified_by:
   name: Phil Zona
 published: 2009-11-16
-title: 'Linode Beginner''s Guide'
+title: "Linode Beginner's Guide"
 tags: ["linode platform"]
+image: linode-beginners-guide.png
 ---
 
-If you're relatively new to Linux system administration, or just new to our platform, this guide will help address some of the most common questions we receive. If you've just created your first Linode account, please first refer to our [Getting Started](/docs/getting-started/) Guide and return here once your Linode has been deployed.
-
-![Linode Beginners Guide](linode-beginners-guide.png)
+If you're relatively new to Linux system administration, or just new to our platform, this guide will help address some of the most common questions we receive. If you've just created your first Linode account, please first refer to our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) Guide and return here once your Linode has been deployed.
 
 ## How do I log into my Linode?
 
-By default, all Linodes are deployed with SSH enabled. This allows command line access through the shell. You can learn more about connecting to your Linode for the first time in the [connecting to your Linode with SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) section of our [Getting Started](/docs/getting-started/) guide.
+By default, all Linodes are deployed with SSH enabled. This allows command line access through the shell. You can learn more about connecting to your Linode for the first time in the [connecting to your Linode with SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) section of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
 ## How do I host websites on my Linode?
 
@@ -51,36 +50,36 @@ Please note that we do *not* sell control panel licenses. If you decide you'd li
 
 By default, SSH is enabled on all newly deployed Linodes. You may use any file transfer program that supports the SFTP standard to upload files. We've created guides for some commonly used programs:
 
--   [WinSCP](/docs/tools-reference/file-transfer/transfer-files-with-winscp-on-windows/) - Windows 95 through Windows 10
--   [Cyberduck](/docs/tools-reference/file-transfer/transfer-files-with-cyberduck-on-mac-os-x/) - Mac OS X
--   [Filezilla](/docs/tools-reference/file-transfer/filezilla/) - Available on all major desktop platforms, including Linux-based operating systems
+-   [WinSCP](/docs/guides/transfer-files-with-winscp-on-windows/) - Windows 95 through Windows 10
+-   [Cyberduck](/docs/guides/transfer-files-with-cyberduck-on-mac-os-x/) - Mac OS X
+-   [Filezilla](/docs/guides/filezilla/) - Available on all major desktop platforms, including Linux-based operating systems
 
 ## How can I download a backup of my Linode?
 
 First, you might want to give the [Linode Backup Service](http://www.linode.com/backups/) a try. It's a fast, flexible and cost-effective way to make extra copies of your data. That said, the old saying "you can never have too many backups" is certainly true. In case you'd like to "roll your own" solution, we've created guides that explain various ways of creating backups of your Linode's filesystems:
 
--   [Introduction to Rsync](/docs/tools-reference/tools/introduction-to-rsync/) - Using `rsync` to mirror files to another server.
--   [Using Rdiff-backup with SSHFS](/docs/security/backups/using-rdiff-backup-with-sshfs/) - An easy approach to using the `rdiff-backup` utility to maintain differential backups.
+-   [Introduction to Rsync](/docs/guides/introduction-to-rsync/) - Using `rsync` to mirror files to another server.
+-   [Using Rdiff-backup with SSHFS](/docs/guides/using-rdiff-backup-with-sshfs/) - An easy approach to using the `rdiff-backup` utility to maintain differential backups.
 -   [Cloning a Disk](/docs/guides/clone-your-linode/#cloning-to-an-existing-linode) - Creating an exact copy of a disk in the Cloud Manager.
--   [Copying a Disk Over SSH](/docs/platform/disk-images/copying-a-disk-image-over-ssh/) - How to download an exact binary image of your Linode's disk over SSH.
+-   [Copying a Disk Over SSH](/docs/guides/copying-a-disk-image-over-ssh/) - How to download an exact binary image of your Linode's disk over SSH.
 
 ## How can I install software on my Linode?
 
-Please refer to our guide on [Linux package management](/docs/tools-reference/linux-package-management/) for distribution-specific instructions on getting software installed on your Linode. Since you have full root access to your system, you're allowed to install anything that complies with our [terms of service](http://www.linode.com/tos).
+Please refer to our guide on [Linux package management](/docs/guides/linux-package-management-overview/) for distribution-specific instructions on getting software installed on your Linode. Since you have full root access to your system, you're allowed to install anything that complies with our [terms of service](http://www.linode.com/tos).
 
 ## How do I add another IP address?
 
-You may add an [additional public IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) from the **Networking** tab for each Linode in the Linode Cloud Manager. After you've added a new IP address, you must [configure static networking](/docs/networking/linux-static-ip-configuration/) or enable [Network Helper](/docs/platform/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) and reboot your Linode before it can be used.
+You may add an [additional public IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) from the **Networking** tab for each Linode in the Linode Cloud Manager. After you've added a new IP address, you must [configure static networking](/docs/guides/linux-static-ip-configuration/) or enable [Network Helper](/docs/guides/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) and reboot your Linode before it can be used.
 
 {{< note >}}
-We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the [Support Tickets](https://cloud.linode.com/support/tickets) section of the Cloud Manager Manager explaining the reason for the new IP.
+We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the [Support Tickets](https://cloud.linode.com/support/tickets) section of the Cloud Manager explaining the reason for the new IP.
 {{< /note >}}
 
 If you'd like to take advantage of our private networking feature, you may add a private IP to your Linode from the **Networking** tab for each Linode in the Cloud Manager. Private IP addresses are not publicly accessible, although they are accessible from other Linodes in the same data center. Although we take measures to prevent others from intercepting your private IP traffic, you may still wish to configure a firewall to allow access from only the Linodes that you operate.
 
 ## How do I set the reverse DNS for an IP address?
 
-To [set rDNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/), you can use the **More Options** ellipsis next to your Linode's IPv4 address from the **Networking** tab in the Linode Cloud Manager. Please note that the value you specify needs to match an A record or CNAME in DNS pointing to your Linode's IP address. It may take up to 48 hours for reverse DNS updates to take effect.
+To [set rDNS](/docs/guides/configure-rdns/), you can use the **More Options** ellipsis next to your Linode's IPv4 address from the **Networking** tab in the Linode Cloud Manager. Please note that the value you specify needs to match an A record or CNAME in DNS pointing to your Linode's IP address. It may take up to 48 hours for reverse DNS updates to take effect.
 
 ## Why does my Linode keep crashing?
 
@@ -90,11 +89,11 @@ If an application is crashing, be sure to check its error logs. These are typica
 
 ## Why is my connection to my Linode slow or broken?
 
-First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Linode runs a firewall, [check your firewall rules](/docs/security/firewalls/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) to and from your Linode, and [submit them](/docs/platform/billing-and-support/support/#contacting-linode-support) via the  [Support Tickets](https://cloud.linode.com/support/tickets)  section in the Cloud Manager. You may need to use [Lish](/docs/guides/using-the-lish-console/) if you're having problems reaching your Linode via normal networking.
+First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Linode runs a firewall, [check your firewall rules](/docs/guides/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) to and from your Linode, and [submit them](/docs/guides/support/#contacting-linode-support) via the  [Support Tickets](https://cloud.linode.com/support/tickets)  section in the Cloud Manager. You may need to use [Lish](/docs/guides/lish/) if you're having problems reaching your Linode via normal networking.
 
 ## How can I upgrade or downgrade my Linode?
 
-Resizing your Linode is automated via the **Resize** tab for your Linode in the Cloud Manager, pending availability for the plan you wish to move to in your data center. If you're downgrading, please make sure you've resized your disk images to fit within your desired plan's disk space allocation before issuing the resize job. For more information, refer to our guide on [resizing a Linode](/docs/platform/disk-images/resizing-a-linode/)
+Resizing your Linode is automated via the **Resize** tab for your Linode in the Cloud Manager, pending availability for the plan you wish to move to in your data center. If you're downgrading, please make sure you've resized your disk images to fit within your desired plan's disk space allocation before issuing the resize job. For more information, refer to our guide on [resizing a Linode](/docs/guides/resizing-a-linode/)
 
 ## How can I test downloads speeds from different data centers?
 
@@ -102,7 +101,7 @@ You may use our [speed test](http://www.linode.com/speedtest/) page to check lat
 
 ## Can I transfer my Linode to another data center?
 
-Yes! Any time you'd like to transfer your Linode, you can proceed with a migration from the **Disks/Configs** tab for any Linode within the [Linode Cloud Manager](https://cloud.linode.com). For more information, see our [Data Center Migration Guide](/docs/platform/migrating-to-a-different-data-center/).
+Yes! Any time you'd like to transfer your Linode, you can proceed with a migration from the **Disks/Configs** tab for any Linode within the [Linode Cloud Manager](https://cloud.linode.com). For more information, see our [Data Center Migration Guide](/docs/guides/how-to-initiate-a-cross-data-center-migration-for-your-linode/).
 
  A migration will result in some changes that will be displayed in a caution message for your review before officially beginning the migration process. Your disks and configuration profiles will move with your Linode, although your IP addresses will need to change. We strongly recommend reviewing this  caution message carefully before proceeding for a list of all changes that you can expect.
 
@@ -110,11 +109,11 @@ Yes! Any time you'd like to transfer your Linode, you can proceed with a migrati
 
 For those just getting started with Linux systems, we've created a series of guides that will help explain basic concepts:
 
--   [Introduction to Linux Concepts](/docs/tools-reference/introduction-to-linux-concepts/) - An introduction to Linux and Unix-like systems.
--   [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) - An introduction to the principal concepts and use of the users and groups system.
--   [Using the Terminal](/docs/networking/ssh/using-the-terminal/) - Introducing the command line interface known as the shell or terminal.
--   [Linux Package Management](/docs/tools-reference/linux-package-management/) - How to install software on your Linode.
--   [Securing your Server](/docs/security/securing-your-server/) - Keeping your Linode safe from unauthorized access or abuse.
+-   [Introduction to Linux Concepts](/docs/guides/introduction-to-linux-concepts/) - An introduction to Linux and Unix-like systems.
+-   [Linux Users and Groups](/docs/guides/linux-users-and-groups/) - An introduction to the principal concepts and use of the users and groups system.
+-   [Using the Terminal](/docs/guides/using-the-terminal/) - Introducing the command line interface known as the shell or terminal.
+-   [Linux Package Management](/docs/guides/linux-package-management-overview/) - How to install software on your Linode.
+-   [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) - Keeping your Linode safe from unauthorized access or abuse.
 
 ## Where can I get help with something not covered here?
 

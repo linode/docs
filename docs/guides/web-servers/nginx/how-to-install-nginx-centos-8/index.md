@@ -22,7 +22,7 @@ relations:
         key: how-to-install-nginx
         keywords:
             - distribution: CentOS 8
-aliases: ['/web-servers/nginx/install-nginx-ubuntu/','/web-servers/nginx/how-to-install-nginx-centos-8/']
+aliases: ['/web-servers/nginx/how-to-install-nginx-centos-8/']
 ---
 
 ## What is NGINX?
@@ -31,11 +31,11 @@ NGINX is an open source web server with powerful load balancing, reverse proxy, 
 
 ## Before You Begin
 
-1.  Set up your Linode in the [Getting Started](/docs/getting-started/) and [Securing your Server](/docs/security/securing-your-server/) guides.
+1.  Set up your Linode in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
-1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/guides/dns-manager/) guide.
+1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/products/networking/dns-manager/) guide.
 
-    - Don't forget to update your `/etc/hosts` file with your Linode's public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/getting-started/#update-your-system-s-hosts-file) section of the [Getting Started](/docs/getting-started/) guide.
+    - Don't forget to update your `/etc/hosts` file with your Linode's public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file) section of the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
 1. Install the SELinux core policy Python utilities. This will give you the ability to manage SELinux settings in a fine-grained way.
 
@@ -152,4 +152,4 @@ http {
   - [Part 3: Enable TLS for HTTPS Connections](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/)
   - [Part 4: TLS Deployment Best Practices](/docs/guides/getting-started-with-nginx-part-4-tls-deployment-best-practices/)
 
-- Changes to your NGINX configurations may require updates to your SELinux policies and contexts. For an introduction to SELinux, see our [Getting Started with SELinux](/docs/security/getting-started-with-selinux/) guide.
+- Changes to your NGINX configurations may require updates to your SELinux policies and contexts. For an introduction to SELinux, see our [Getting Started with SELinux](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) guide.
