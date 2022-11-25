@@ -66,7 +66,7 @@ The FastCGI instructions require a LEMP stack including the NGINX web server rat
 
 ## How to Configure The WordPress Virtual Host for Caching
 
-Caching is typically enabled on a site-by-site basis. Caching directives are added directly to the `.conf` file for the WordPress virtual host. If encryption using HTTPS is enabled, the structure of the file might be different. However, the cache directives should still be added to the `server` and `php` code blocks as shown below. To enable the NGINX cache for WordPress, follow these instructions. For more information on these directives, see the [NGINX documentation for the ngx_http_fastcgi_module](http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html).
+Caching is typically enabled on a site-by-site basis. Caching directives are added directly to the `.conf` file for the WordPress virtual host. If encryption using HTTPS is enabled, the structure of the file might be different. However, the cache directives should still be added to the `server` and `php` code blocks as shown below. To enable the NGINX cache for WordPress, follow these instructions. For more information on these directives, see the [NGINX documentation for the HTTP FastCGI module](http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html).
 
 1.  Edit the virtual host `.conf` file for the WordPress domain. If WordPress is configured according to the Linode guide, this file is found at `/etc/nginx/sites-available/example.com.conf`. Substitute the actual name of the WordPress domain for `example.com.conf`.
 
