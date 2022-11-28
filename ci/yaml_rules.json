@@ -161,6 +161,12 @@
     "type": "link",
     "description": "The license under which this guide is published. Should be a Markdown link to the relevant license documentation."
   },
+  "linkTitle": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "The title of the guide to be used within the explore docs menu."
+  },
   "modified": {
     "elements": false,
     "required": false,
