@@ -10,6 +10,7 @@ aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-g
 modified_by:
   name: Linode
 published: 2014-01-15
+modified: 2022-11-28
 title: Linode Writer's Formatting Guide
 show_on_rss_feed: false
 external_resources:
@@ -37,7 +38,7 @@ Linode Guides & Tutorials are written in [Markdown](https://en.wikipedia.org/wik
 
 Linode Guides & Tutorials store metadata and other information in a [YAML](http://yaml.org/) header at the top of every page. Use the template below for your own guide.
 
-{{< file "Author Submission" >}}
+```file {title="Author Submission"}
 ---
 author:
   name: Linode Community
@@ -56,8 +57,7 @@ external_resources:
   - '[Link Title 1](http://www.example.com)'
   - '[Link Title 2](http://www.example.net)'
 ---
-
-{{< /file >}}
+```
 
 If you're updating an existing guide in our repository, you may also notice a `deprecated` field in the header. This defaults to false, and setting it to *true* inserts a pre-written message near the beginning stating that the guide is no longer maintained. Typically, this will be used on guides specific to applications or distributions that have reached End of Life (EOL).
 
@@ -69,13 +69,13 @@ Introductions should be concise; explain what the goal of the guide is and why. 
 
 The *Before You Begin* section is an area for basic prerequisites a reader should know or have completed before proceeding further in your guide. Use the example below and edit as needed:
 
-{{< file "Author Submission" >}}
+```file {title="Author Submission"}
 ## Before You Begin
 
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-{{< /file >}}
+```
 
 ### Describe Example Variables
 
@@ -83,10 +83,10 @@ If using example variables which should be changed throughout the guide, declare
 
 Variables that the reader will need to change for their system or preference should be formatted using backticks. This includes:
 
-* [Example IPs](#example-ip-addresses)
-* User names
-* Passwords
-* Port Numbers
+- [Example IPs](#example-ip-addresses)
+- User names
+- Passwords
+- Port Numbers
 
 Do not include any brackets or parentheses when using these temporary values in examples, as the reader may include them in their final version.
 
@@ -96,18 +96,17 @@ Do not include any brackets or parentheses when using these temporary values in 
 
 ### Include a Note about Root or Non-Root users
 
-{{< file "Guides Written for a Non-Root User" txt >}}
+```file {title="Guides Written for a Non-Root User" lang="txt"}
 {{</* note */>}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{</* /note */>}}
+```
 
-{{< /file >}}
-
-{{< file "Guides Written for a Root User" txt >}}
+```file {title="Guides Written for a Root User" lang="txt"}
 {{</* note */>}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{</* /note */>}}
-{{< /file >}}
+```
 
 ## Paragraph Structure
 
@@ -117,31 +116,40 @@ Each **subsection** should be split into numbered steps as shown below.
 
 For example:
 
-{{< file >}}
+```file {lang="md"}
 ## Using MySQL
 
-1.  Log in to MySQL as the root user:
-        mysql -u root -p
+1. Log in to MySQL as the root user:
 
-2.  When prompted, enter the root password.
+    ```command
+    mysql -u root -p
+    ```
+
+1. When prompted, enter the root password.
 
 ### Create a New MySQL User and Database
 
-1.  In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user’s password.
+1. In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user’s password.
 
-        create database testdb;
-        grant all on testdb.* to 'testuser' identified by 'password';
+    ```command
+    create database testdb;
+    grant all on testdb.* to 'testuser' identified by 'password';
+    ```
 
-2.  Exit MySQL.
+1. Exit MySQL.
 
-        exit
+    ```command
+    exit
+    ```
 
 ### Create a Sample Table
 
-1.  Log back in as `testuser`:
+1. Log back in as `testuser`:
 
-        mysql -u testuser -p
-{{< /file >}}
+    ```command
+    mysql -u testuser -p
+    ```
+```
 
 {{< note >}}
 The tab size is set to four, and **only** soft tabs should be used. This can be configured in the settings of most text editors.
@@ -155,7 +163,9 @@ Upon first mention of a new concept or software, use the full name or term, then
 
 Introduce new terms in italics with a `*` on either side of the term:
 
-    In this guide, we'll install Git, a *version control system*.
+```file {lang="md"}
+This guide covers how to install Git, a *version control system*.
+```
 
 ### Bold and Italics
 
@@ -168,89 +178,89 @@ Use a **Bold** font weight for buttons, menu selections and anything that requir
 
 ### Commands
 
-Commands that are not inline with paragraph text should be displayed with the *code shortcode*. This shortcode renders the command in a monospaced font with a light or dark background and a copy-to-clipboard button. Unlike other shortcodes (e.g. `content`, `note`, `caution`, etc), the code shortcode should be referenced with Markdown's *code fence* syntax.
+Commands that are not inline with paragraph text should be displayed with the *command shortcode*. This shortcode renders the command in a monospaced font with a light or dark background and a copy-to-clipboard button. Unlike other shortcodes (e.g. `content`, `note`, `caution`, etc), the command shortcode should be referenced with Markdown's *code fence* syntax.
 
--   **Code shortcode example**
+- **Command shortcode example**
 
-        ```code
-        sudo systemctl restart apache2
-        ```
+    ````file
+    ```command
+    sudo systemctl restart apache2
+    ```
+    ````
 
-    The above code shortcode is rendered with a light grey background by default:
+    The above command shortcode is rendered with a light grey background by default:
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     ```
 
--   **Multiline commands**
+- **Multiline commands**
 
-    The code shortcode can accept multiple lines if more than one command needs to be displayed:
+    The command shortcode can accept multiple lines if more than one command needs to be displayed:
 
-        ```code
-        sudo systemctl restart apache2
-        sudo journalctl -u apache2
-        ```
+    ````file
+    ```command
+    sudo systemctl restart apache2
+    sudo journalctl -u apache2
+    ```
+    ````
 
-    The above code shortcode is rendered as:
+    The above command shortcode is rendered as:
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     sudo journalctl -u apache2
     ```
 
--   **Command with title**
+- **Command with title**
 
-    The `title` parameter can be used to specify a title that displayed above a code shortcode. This can be useful to label the server or workstation that a reader should execute the command on. For example, some guides instruct the reader to set up multiple servers. Specifying a title can disambiguate which server a given command should be run on.
+    The `title` parameter can be used to specify a title that displayed above a command shortcode. This can be useful to label the server or workstation that a reader should execute the command on. For example, some guides instruct the reader to set up multiple servers. Specifying a title can disambiguate which server a given command should be run on.
 
-        ```code {title="Web server"}
-        sudo systemctl restart apache2
-        ```
-
-        ```code {title="Database server"}
-        sudo systemctl restart mysql
-        ```
-
-    The above code shortcodes are rendered as:
-
-    ```code {title="Web server"}
+    ````file
+    ```command {title="Web server"}
     sudo systemctl restart apache2
     ```
 
-    ```code {title="Database server"}
+    ```command {title="Database server"}
+    sudo systemctl restart mysql
+    ```
+    ````
+
+    The above command shortcodes are rendered as:
+
+    ```command {title="Web server"}
+    sudo systemctl restart apache2
+    ```
+
+    ```command {title="Database server"}
     sudo systemctl restart mysql
     ```
 
--   **Command with dark background**
+- **Command with dark background**
 
     The `class` parameter can be used to specify that a command should be displayed with a dark background:
 
-        ```code {class="dark"}
-        sudo systemctl restart apache2
-        ```
-
-    The above code shortcode is rendered as:
-
-    ```code {class="dark"}
+    ````file
+    ```command {class="dark"}
     sudo systemctl restart apache2
     ```
+    ````
 
+    The above command shortcode is rendered as:
+
+    ```command {class="dark"}
+    sudo systemctl restart apache2
+    ```
 
 ### Commands (Deprecated Syntax)
 
-In some existing guides, you may see commands displayed without the code shortcode. In these instances, the commands are simply indented with a tab or four spaces in the Markdown source text. For example:
+In some existing guides, you may see commands displayed without the command shortcode. In these instances, the commands are simply indented with a tab or four spaces in the Markdown source text. For example:
 
-    Run the following command to restart Apache:
+```file {lang="md"}
+Run the following command to restart Apache:
 
-        sudo systemctl restart apache2
-
-
-This is equivalent to:
-
-    Run the following command to restart Apache:
-
-    ```code
     sudo systemctl restart apache2
-    ```
+```
 
 *The older (tab or four space-indent) syntax should not be used for new content.* The code shortcode renders a copy-to-clipboard button for the reader's convenience, and the old syntax does not provide this feature.
 
@@ -266,9 +276,9 @@ Inline commands should be denoted by backticks.
 
 Example IPs should use the documentation address blocks given in [IETF RFC 5737](https://tools.ietf.org/html/rfc5737). These are:
 
-* 192.0.2.0/24
-* 198.51.100.0/24
-* 203.0.113.0/24
+- 192.0.2.0/24
+- 198.51.100.0/24
+- 203.0.113.0/24
 
 ### External Resources/More Information
 
@@ -293,15 +303,15 @@ When using the `content` shortcode in a guide to embed a shortguide, the shortco
 
 To use an image in a shortguide, add the image to your shortguide's directory and then use the `image` shortcode to embed it:
 
-{{< file "sample_embedding_guide/index.md" text >}}
+```file {title="sample_embedding_guide/index.md" lang="md"}
 {{</* image src="image-name.png" alt="image alt label" title="image title" */>}}
-{{< /file >}}
+```
 
 #### Example Usage
 
 The following shortguide describes how to install Python via Miniconda. Create a directory named `install_python_miniconda` and filed named `index.md` within it:
 
-{{< file "install_python_miniconda/index.md"  text >}}
+```file {title="install_python_miniconda/index.md" lang="md"}
 ---
 author:
   name: Linode
@@ -319,24 +329,27 @@ show_on_rss_feed: false
 
 <!-- Installation instructions for Python 3. -->
 
-1.  Download and install Miniconda:
+1. Download and install Miniconda:
 
-        curl -OL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-        bash Miniconda3-latest-Linux-x86.64.sh
+    ```command
+    curl -OL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    bash Miniconda3-latest-Linux-x86.64.sh
+    ```
 
-2.  You will be prompted several times during the installation process. Review the terms and conditions and select "yes" for each prompt.
+1. You will be prompted several times during the installation process. Review the terms and conditions and select "yes" for each prompt.
 
+1. Check your Python version:
 
-3.  Check your Python version:
-
-        python --version
-{{< /file >}}
+    ```command
+    python --version
+    ```
+```
 
 To use this shortguide in another guide, use the following syntax:
 
-{{< file "sample_embedding_guide/index.md" >}}
+```file {title="sample_embedding_guide/index.md"}
 {{</* content "install_python_miniconda" */>}}
-{{< /file >}}
+```
 
 ### Files
 
@@ -346,13 +359,15 @@ Use the *file shortcode* to present code examples, code snippets, and other text
 Exceptionally long files should be shown in parts, if needed. In these cases, you can add the entire file to the same directory as your guide and link to it from within the guide.
 {{< /note >}}
 
--   **File with filepath**
+- **File with filepath**
 
-        ```file {title="/path/to/file.html"}
-        <div>
-            Sample file text
-        </div>
-        ```
+    ````file
+    ```file {title="/path/to/file.html"}
+    <div>
+        Sample file text
+    </div>
+    ```
+    ````
 
     The above file shortcode is rendered as:
 
@@ -362,15 +377,17 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
     </div>
     ```
 
--   **File with language/syntax highlighting**
+- **File with language/syntax highlighting**
 
     A code language or syntax can be defined with the `lang` parameter to set how the text is displayed. A list of supported languages can be found [on GitHub](https://github.com/alecthomas/chroma).
 
-        ```file {title="/path/to/file.html" lang="html"}
-        <div>
-            Sample file text
-        </div>
-        ```
+    ````file
+    ```file {title="/path/to/file.html" lang="html"}
+    <div>
+        Sample file text
+    </div>
+    ```
+    ````
 
     The above file shortcode is rendered as:
 
@@ -380,15 +397,17 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
     </div>
     ```
 
--   **File with starting line specified**
+- **File with starting line specified**
 
     If your file snippet represents the middle of a file, you can use the `linenostart` to specify that the line numbering to the left of the snippet should start at a number other than 1:
 
-        ```file {title="/path/to/file.html" lang="html" linenostart="11"}
-        <div>
-            Sample file text
-        </div>
-        ```
+    ````file
+    ```file {title="/path/to/file.html" lang="html" linenostart="11"}
+    <div>
+        Sample file text
+    </div>
+    ```
+    ````
 
     The above file shortcode is rendered with line numbers 11, 12, and 13 instead of 1, 2, and 3:
 
@@ -398,21 +417,23 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
     </div>
     ```
 
--   **File with highlighted lines**
+- **File with highlighted lines**
 
     The `hl_lines` parameter can be used to highlight certain lines within the file. The parameter is a space-separated list of strings. Ranges of lines can also be specified:
 
-        ```file {title="client/src/Header.js" lang="js" linenostart="11" hl_lines="4-6 9"}
-        import React from 'react';
-        function Header() {
-            return (
-                <header>
-                    Example header text
-                </header>
-            );
-        }
-        export default Header;
-        ```
+    ````file
+    ```file {title="client/src/Header.js" lang="js" linenostart="11" hl_lines="4-6 9"}
+    import React from 'react';
+    function Header() {
+        return (
+            <header>
+                Example header text
+            </header>
+        );
+    }
+    export default Header;
+    ```
+    ````
 
     The above file shortcode highlights lines 4 through 6 and line 9:
 
@@ -428,37 +449,43 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
     export default Header;
     ```
 
--   **Using file shortcodes within lists**
+- **Using file shortcodes within lists**
 
     If using a file shortcode in a list, each line of the shortcode should start at the indentation level of the list. For example:
 
-        1.  List item 1
+    ```file
+    1. List item 1
 
-        2.  List item 2
+    1. List item 2
 
-            ```file {title="/path/to/file.html" lang="html"}
-            <div>
-                Sample file text
-            </div>
-            ```
+        ```file {title="/path/to/file.html" lang="html"}
+        <div>
+            Sample file text
+        </div>
+        ```
+    ```
 
 ### Files (Deprecated Syntax)
 
 In some existing guides, you may see this older shortcode syntax for displaying a file:
 
-    {{</* file "path/to/file.html" html */>}}
-    <div>
-        Sample file text
-    </div>
-    {{</* /file */>}}
+```file
+{{</* file "path/to/file.html" html */>}}
+<div>
+    Sample file text
+</div>
+{{</* /file */>}}
+```
 
 This is equivalent to:
 
-    ```file {title="/path/to/file.html" lang="html"}
-    <div>
-        Sample file text
-    </div>
-    ```
+````file
+```file {title="/path/to/file.html" lang="html"}
+<div>
+    Sample file text
+</div>
+```
+````
 
 *The older syntax should not be used for new content.* While they are rendered with the same presentation by Hugo, they are not displayed the same in the GitHub.com UI. When viewing a Markdown file in the library on GitHub, the newer code fence shortcode syntax will have enhanced styling, compared with the older shortcode syntax.
 
@@ -515,17 +542,21 @@ Be sure that lists have the proper horizontal spacing. This should be *two* spac
 
 Notes should be important text that does not necessarily fit the narrative of the preceding step or paragraph. If a step in your guide can cause any major issues with the user's Linode or computer, a caution note should be included.
 
-    {{</* note */>}}
-    This is a sample note.
-    {{</* /note */>}}
+```file
+{{</* note */>}}
+This is a sample note.
+{{</* /note */>}}
+```
 
 {{< note >}}
 This is a sample note.
 {{< /note >}}
 
-    {{</* caution */>}}
-    This is a sample caution.
-    {{</* /caution */>}}
+```file
+{{</* caution */>}}
+This is a sample caution.
+{{</* /caution */>}}
+```
 
 {{< caution >}}
 This is a sample caution.
@@ -564,54 +595,63 @@ Use single spaces between sentences; do not double-space.
   </tr>
 </table>
 
-List definitions in a table with the definition-table shortcode:
-
-&#123;&#123;&lt; definition-table &gt;&#125;&#125;</br>
-Put your table data here.</br>
-&#123;&#123;&lt; /definition-table &gt;&#125;&#125;
-
-{{< todo >}}The definition-table shortcode was not ported over to the new UI and was only used here. Remove this section?
-
-| Parameter | Data type/Status | Usage |
-| --------- | -------- | ------|
-| `access_token` | string, *required* | Your Linode API v4 access token. The token should have permission to read and write Linodes. The token can also be specified by exposing the `LINODE_ACCESS_TOKEN` environment variable. |
-| `authorized_keys` | list | A list of SSH public keys or SSH public key file locations on your local system, for example, `['averylongstring','~/.ssh/id_rsa.pub']`. The public key will be stored in the `/root/.ssh/authorized_keys` file on your Linode. Ansible will use the public key to SSH into your Linodes as the root user and execute your Playbooks.|
-| `label` | string, *required* | The Linode instance label. The label is used by the module as the main determiner for idempotence and must be a unique value.</br></br> Linode labels have the following constraints:</br></br> <ul><li>Must start with an alpha character.</li><li>May only consist of alphanumeric characters, dashes (-), underscores (_) or periods (.).</li><li>Cannot have two dashes (--), underscores (__) or periods (..) in a row.</li></ul>|
-{{< /todo >}}
-
 ### Terminal Output
 
 Output from terminal commands should be displayed with the *output shortcode*:
 
-    {{</* output */>}}
-    Hello world!
-    {{</*/ output */>}}
+````file
+```output
+Hello world!
+```
+````
 
 The above shortcode is rendered as:
 
-{{< output >}}
+```output
 Hello world!
-{{</ output >}}
+```
 
 Here's an example of a command (using the code shortcode) and its output (using the output shortcode) displayed together:
 
-    ```code
-    echo "Hello world!"
-    ```
-
-    {{</* output */>}}
-    Hello world!
-    {{</*/ output */>}}
-
-The above shortcodes are rendered as:
-
-```code
+````file
+```command
 echo "Hello world!"
 ```
 
-{{< output >}}
+```output
 Hello world!
-{{</ output >}}
+```
+````
+
+The above shortcodes are rendered as:
+
+```command
+echo "Hello world!"
+```
+
+```output
+Hello world!
+```
+
+### Terminal Output (Deprecated Syntax)
+
+In some existing guides, you may see this older shortcode syntax for displaying terminal output:
+
+```file
+{{</* output */>}}
+Hello world!
+{{</* /output */>}}
+```
+
+This is equivalent to:
+
+````file
+```output
+Hello world!
+```
+````
+
+*The older syntax should not be used for new content.* While they are rendered with the same presentation by Hugo, they are not displayed the same in the GitHub.com UI. When viewing a Markdown file in the library on GitHub, the newer code fence shortcode syntax will have enhanced styling, compared with the older shortcode syntax.
 
 ## Legal Information
 
