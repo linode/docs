@@ -32,11 +32,11 @@ This tutorial shows you how to start using Countly for your analytics needs. Cou
 
 1.  Update your system.
 
-    ```code {title="Debian / Ubuntu"}
+    ```command {title="Debian / Ubuntu"}
     sudo apt update && sudo apt upgrade
     ```
 
-    ```code {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
+    ```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
     sudo dnf upgrade
     ```
 
@@ -60,37 +60,37 @@ These steps show you how to download the Git repository for Countly and use the 
 
 1.  Clone the Countly server GitHub repository. This example clones the repository to the current user's home directory. The process creates a new subdirectory there, `countly-server`:
 
-    ```code
+    ```command
     git clone https://github.com/Countly/countly-server.git
     ```
 
 1.  The included installation script requires root access for the installation, so you should first switch to a superuser shell:
 
-    ```code
+    ```command
     sudo su -
     ```
 
 1.  Navigate to the subdirectory where the script is held:
 
-    ```code
+    ```command
     cd /home/example-user/countly-server/bin
     ```
 
 1.  Run the installation script:
 
-    ```code
+    ```command
     bash countly.install.sh
     ```
 
 1.  Afterward, you can exit the superuser shell:
 
-    ```code
+    ```command
     exit
     ```
 
 1.  Replace the `default` NGINX configuration with Countly's [own NGINX configuration file](https://github.com/Countly/countly-server/blob/master/bin/config/nginx.server.conf). Typically, you can find the `default` configuration file at `/etc/nginx/sites-available/default`. However, if this is a brand-new installation, you may have to create it:
 
-    ```code
+    ```command
     sudo mkdir /etc/nginx/sites-available
     sudo nano /etc/nginx/sites-available/default
     ```
@@ -108,7 +108,7 @@ These steps show you how to download the Git repository for Countly and use the 
 
 1.  Open the HTTP port (`80`) on your server's firewall. Typically, the firewalls on Ubuntu and Debian systems are managed with UFW. Using it, you can open the HTTP port with:
 
-    ```code
+    ```command
     sudo ufw allow http
     sudo ufw reload
     ```
@@ -129,32 +129,32 @@ The following steps show you how to apply an SSL certificate to Countly using [C
 
 1.  Open the HTTPS port on your system's firewall. Like above, you can do this using UFW with the HTTPS keyword:
 
-    ```code
+    ```command
     sudo ufw allow https
     sudo ufw reload
     ```
 
 1.  Update the [Snap](https://snapcraft.io/docs/getting-started) app store. Snap provides application bundles that work across major Linux distributions and comes by default with all Ubuntu releases since 16.04:
 
-    ```code
+    ```command
     sudo snap install core && sudo snap refresh core
     ```
 
 1.  Remove any existing Certbot installation:
 
-    ```code
+    ```command
     sudo apt remove certbot
     ```
 
 1.  Install Certbot:
 
-    ```code
+    ```command
     sudo snap install --classic certbot
     ```
 
 1.  Download a certificate using standalone verification. When prompted, accept the terms of service, enter an email address for notifications about certificate renewals, and enter your Countly server's domain name:
 
-    ```code
+    ```command
     sudo certbot certonly --standalone
     ```
 

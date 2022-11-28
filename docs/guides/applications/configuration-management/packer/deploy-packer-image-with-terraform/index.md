@@ -44,20 +44,20 @@ To get started, install both Packer and Terraform on the same system. Below you 
 
 Packer's installation process varies substantially depending on your operating system. Refer to the [official installation guide](https://learn.hashicorp.com/tutorials/packer/get-started-install-cli) for instructions if your system is not covered here.
 
-```code {title="Debian / Ubuntu"}
+```command {title="Debian / Ubuntu"}
 sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -\
 sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 sudo apt-get update && sudo apt-get install packer
 ```
 
-```code {title="AlmaLinux / CentOS Stream / Rocky Linux"}
+```command {title="AlmaLinux / CentOS Stream / Rocky Linux"}
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
 sudo yum -y install packer
 ```
 
-```code {title="Fedora"}
+```command {title="Fedora"}
 sudo dnf install -y dnf-plugins-core
 sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
 sudo dnf -y install packer
@@ -65,7 +65,7 @@ sudo dnf -y install packer
 
 Afterward, verify your installation and display the installed version with the following command:
 
-```code
+```command
 packer --version
 ```
 
@@ -78,20 +78,20 @@ packer --version
 Terraform's installation process also varies depending on your operating system. Refer to HashiCorp's [official documentation](https://learn.hashicorp.com/tutorials/terraform/install-cli) on installing the Terraform CLI for systems that are not covered here. You can also refer to the section on installing Terraform in our guide [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform).
 
 
-```code {title="Debian / Ubuntu"}
+```command {title="Debian / Ubuntu"}
 sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
 wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update && sudo apt install terraform
 ```
 
-```code {title="AlmaLinux / CentOS Stream / Rocky Linux"}
+```command {title="AlmaLinux / CentOS Stream / Rocky Linux"}
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
 sudo yum -y install terraform
 ```
 
-```code {title="Fedora"}
+```command {title="Fedora"}
 sudo dnf install -y dnf-plugins-core
 sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
 sudo dnf -y install terraform
@@ -99,7 +99,7 @@ sudo dnf -y install terraform
 
 Afterward, verify your installation with:
 
-```code
+```command
 terraform -version
 ```
 
@@ -130,7 +130,7 @@ This tutorial covers a similar series of steps, but specifically demonstrates ho
 
 Before moving ahead, create a directory for your Terraform scripts, and change that to your working directory. This tutorial uses the `linode-terraform` directory in the current user's home directory:
 
-```code
+```command
 mkdir ~/linode-terraform
 cd ~/linode-terraform
 ```
@@ -147,7 +147,7 @@ To use the provider, you just need a couple of short blocks in a Terraform scrip
 
 Create a new Terraform file named `packer-linode.tf`, which acts as the base for this tutorial's Terraform project:
 
-```code
+```command
 nano packer-linode.tf
 ```
 
@@ -179,7 +179,7 @@ This tutorial handles variables using two files.
 
 1.  First, create a `variables.tf` file:
 
-    ```code
+    ```command
     nano variables.tf
     ```
 
@@ -214,7 +214,7 @@ This tutorial handles variables using two files.
 
 2.  Now create a `terraform.tfvars` file:
 
-    ```code
+    ```command
     nano terraform.tfvars
     ```
 
@@ -244,7 +244,7 @@ This tutorial handles variables using two files.
 
         You can use a cURL command to list all images available to you, public and private. Replace `$LINODE_API_TOKEN` with your Linode API token:
 
-        ```code
+        ```command
         curl -H "Authorization: Bearer $LINODE_API_TOKEN" \https://api.linode.com/v4/images
         ```
 
@@ -308,19 +308,19 @@ From here, a handful of Terraform commands are all you need to provision and man
 
 First, Terraform needs to run some initialization around the script. This installs any prerequisites, specifically the `linode` provider in this example, and sets up Terraform's lock file.
 
-```code
+```command
 terraform init
 ```
 
 Running Terraform's `plan` command is also good practice. Here, Terraform checks your script for immediate errors and provides an outline of the projected resources to deploy. You can think of it as a light dry run.
 
-```code
+```command
 terraform plan
 ```
 
 Review the plan, and when ready, provision your instances with the `apply` command. This may take several minutes to process, depending on your systems and the number of instances being deployed.
 
-```code
+```command
 terraform apply
 ```
 
@@ -336,7 +336,7 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 
 In the future, whenever you want to remove the instances created with Terraform, you can use the `destroy` command from within your Terraform script directory.
 
-```code
+```command
 terraform destroy
 ```
 

@@ -64,7 +64,7 @@ Terraform is very powerful, but it can be a difficult tool to use. Syntax errors
 
 1.  Ensure all Linode servers are updated. The following commands can be used to update Ubuntu systems.
 
-    ```code
+    ```command
     sudo apt update && sudo apt upgrade
     ```
 
@@ -78,25 +78,25 @@ These instructions are geared towards Ubuntu 22.04 users, but are generally appl
 
 1.  Install the system dependencies for Terraform.
 
-    ```code
+    ```command
     sudo apt install software-properties-common gnupg2 curl
     ```
 
 2.  Import the GPG key.
 
-    ```code
+    ```command
     curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
     ```
 
 3.  Add the Hashicorp repository to `apt`.
 
-    ```code
+    ```command
     sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
     ```
 
 4.  Download the updates for Terraform and install the application. This installs Terraform release 1.3.4, the most recent release.
 
-    ```code
+    ```command
     sudo apt update && sudo apt install terraform
     ```
 
@@ -112,7 +112,7 @@ Setting up terraform (1.3.4) ...
 
 5.  Confirm the application has been installed correctly. Use the `terraform` command without any parameters and ensure the Terraform help information is displayed.
 
-    ```code
+    ```command
     terraform
     ```
 
@@ -131,7 +131,7 @@ init          Prepare your working directory for other commands
 
 6.  To determine the current release of Terraform, use the `terraform -v` command.
 
-    ```code
+    ```command
     terraform -v
     ```
 
@@ -142,7 +142,7 @@ on linux_amd64
 
 7.  Create a directory for the new Terraform project and change to this directory.
 
-    ```code
+    ```command
     mkdir ~/terraform
     cd ~/terraform
     ```
@@ -162,7 +162,7 @@ To construct the Terraform file, execute the following instructions. For more in
 
 1.  Create the file `linode-terraform-storage.tf` inside the `terraform` directory.
 
-    ```code
+    ```command
     nano linode-terraform-storage.tf
     ```
 
@@ -327,7 +327,7 @@ Terraform commands act upon the `linode-terraform-storage.tf` file to analyze th
 
 1.  Initialize Terraform using the `terraform init` command. Terraform confirms it is initialized.
 
-    ```code
+    ```command
     terraform init
     ```
 
@@ -345,7 +345,7 @@ Terraform has been successfully initialized!
 
 2.  Run the `terraform plan` command to gain an overview of the anticipated infrastructure changes. This plan catalogs the components Terraform intends to add, modify, or delete. It is important to review the output carefully to ensure the plan is accurate and there are no unexpected changes. If the results are not satisfactory, change the `.tf` file and try again.
 
-    ```code
+    ```command
     terraform plan
     ```
 
@@ -419,7 +419,7 @@ Plan: 4 to add, 0 to change, 0 to destroy.
 
 3.  When all further changes to the `.tf` file have been made, use `terraform apply` to deploy the changes. If any errors appear, edit the `.tf` file and run `terraform plan` and `terraform apply` again. Terraform displays a list of the intended changes and asks whether to proceed.
 
-    ```code
+    ```command
     terraform apply
     ```
 
@@ -435,7 +435,7 @@ Do you want to perform these actions?
 
 4.  Enter `yes` to continue. Terraform displays a summary of all changes and confirms the operation has been completed. If any errors appear, edit the `.tf` file and run the commands again.
 
-    ```code
+    ```command
     yes
     ```
 
@@ -458,14 +458,14 @@ Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
 
 To delete the storage object configuration, use the `terraform destroy` command. This causes Terraform to delete any objects listed in the Terraform files in the directory. For example, running `terraform destroy` against the `linode-terraform-storage.tf` file deletes all the storage clusters, buckets, keys, and storage objects. To delete only a subset of the configuration, edit the file so it only includes the objects to delete. Any objects that Terraform should retain must be removed from the file. Run the command `terraform plan -destroy` first to obtain a summary of the objects Terraform intends to delete.
 
-```code
+```command
 terraform plan -destroy
 terraform destroy
 ```
 
 To modify the contents of an object storage object, edit the `.tf` file containing the configuration so it reflects the new configuration. Run `terraform plan` to review the changes, then run `terraform apply`. Terraform automatically makes the necessary changes. Use this command with caution because it might cause an object to be deleted and re-created rather than modified.
 
-```code
+```command
 terraform plan
 terraform apply
 ```

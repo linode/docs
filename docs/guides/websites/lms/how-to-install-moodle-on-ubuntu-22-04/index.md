@@ -77,13 +77,13 @@ Downgrading PHP can potentially affect other applications that use PHP. Use caut
 
 1.  Ensure the Ubuntu system packages are up to date.
 
-    ```code
+    ```command
     sudo apt update && sudo apt upgrade
     ```
 
 1.  Confirm the active release of PHP. If this is 7.4, skip the steps marked "For Linode systems using PHP 8.1". For systems running PHP 8.1, follow all instructions.
 
-    ```code
+    ```command
     php -v
     ```
 
@@ -93,7 +93,7 @@ PHP 7.4.29 (cli) (built: Apr 28 2022 11:47:05) ( NTS )
 
 1.  **(For Linode systems using PHP 8.1)** Moodle requires PHP release 7.4 to function properly. If PHP 8.x is the active release, PHP 7.4 must be installed. To install PHP 7.4, add the `ondrej` repository, then use `apt install`.
 
-    ```code
+    ```command
     sudo add-apt-repository ppa:ondrej/php
     sudo apt-get update
     sudo apt install php7.4 libapache2-mod-php7.4
@@ -101,26 +101,26 @@ PHP 7.4.29 (cli) (built: Apr 28 2022 11:47:05) ( NTS )
 
 1.  **(For Linode systems using PHP 8.1)**  Use the `update-alternatives` tool to set the active release of PHP to 7.4. Review the list of available releases and enter the number corresponding to release 7.4.
 
-    ```code
+    ```command
     sudo update-alternatives --config php
     ```
 
 1.  **(For Linode systems using PHP 8.1)** Disable the Apache module associated with PHP 8.1 and enable the module for PHP 7.4 using the following commands.
 
-    ```code
+    ```command
     sudo a2dismod php8.1
     sudo a2enmod php7.4
     ```
 
 1.  Install the remaining PHP 7.4 packages using `apt`. The name of each PHP component follows the pattern `php7.4-component_name`.
 
-    ```code
+    ```command
     sudo apt install graphviz aspell ghostscript clamav php7.4-pspell php7.4-curl php7.4-gd php7.4-intl php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-ldap php7.4-zip php7.4-soap php7.4-mbstring git
     ```
 
 1.  Reload Apache to apply the changes.
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     ```
 
@@ -130,14 +130,14 @@ The Moodle documentation recommends cloning the application from Git. These inst
 
 1.  Move to the `/opt` directory, and clone the Moodle Git repository.
 
-    ```code
+    ```command
     cd /opt
     sudo git clone git://git.moodle.org/moodle.git
     ```
 
 1.  Change to the `moodle` directory.
 
-    ```code
+    ```command
     cd moodle
     ```
 
@@ -145,7 +145,7 @@ The Moodle documentation recommends cloning the application from Git. These inst
 
 1.  Use the `git branch` command to list the branches in the Moodle repository. Review the list and determine the branch matching the latest stable release. Currently, the best match is `MOODLE_400_STABLE`.
 
-    ```code
+    ```command
     sudo git branch -a
     ```
 
@@ -159,7 +159,7 @@ remotes/origin/master
 
 1.  Track and check out the appropriate branch. This example demonstrates how to check out `MOODLE_400_STABLE`.
 
-    ```code
+    ```command
     sudo git branch --track MOODLE_400_STABLE origin/MOODLE_400_STABLE
     sudo git checkout MOODLE_400_STABLE
     ```
@@ -175,14 +175,14 @@ Your branch is up to date with 'origin/MOODLE_400_STABLE'.
 These rights are only temporary. After installation is complete, write access should be locked down to the directory owner.
     {{< /note >}}
 
-    ```code
+    ```command
     sudo cp -R /opt/moodle /var/www/html/
     sudo chmod -R 0777 /var/www/html/moodle
     ```
 
 1.  Create the `/var/moodledata` directory and change the directory owner and permissions.
 
-    ```code
+    ```command
     sudo mkdir /var/moodledata
     sudo chown -R www-data /var/moodledata
     sudo chmod -R 0777 /var/moodledata
@@ -192,26 +192,26 @@ These rights are only temporary. After installation is complete, write access sh
 
 1.  Log in to MySQL as the `root` user. The SQL prompt should appear.
 
-    ```code
+    ```command
     sudo mysql -u root -p
     ```
 
 1.  Create a database for Moodle to use. MySQL should respond with `Query OK`.
 
-    ```code
+    ```command
     CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
     ```
 
 1.  Create a Moodle MySQL user. Grant them permissions for the database. Provide a better user name and a more secure password in place of `moodle-user` and `password` in the following example. MySQL should reply with `Query OK` in each case.
 
-    ```code
+    ```command
     CREATE USER 'moodle-user'@'localhost' IDENTIFIED BY 'password';
     GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON moodle.* TO 'moodle-user'@'localhost';
     ```
 
 1.  Exit the MySQL database.
 
-    ```code
+    ```command
     quit
     ```
 
@@ -225,7 +225,7 @@ Finish setting up and configuring Moodle using the web interface. Ensure you hav
 
 1.  Visit the Moodle web interface at `http://www.example.com/moodle`. Substitute the name of your domain in place of `example.com`.
 
-    ```code
+    ```command
     http://example.com/moodle
     ```
 
@@ -269,7 +269,7 @@ Moodle performs some additional tests and displays the results in the `Other che
 
 1. Return to the system console and change permissions for the Moodle site. For better security, restrict write permission to the root user.
 
-    ```code
+    ```command
     sudo chmod -R 0755 /var/www/html/moodle
     ```
 
@@ -309,19 +309,19 @@ To install a SSL certificate for Moodle and the domain, follow these steps.
 
 1.  Update the Snap application, which is used to download application bundles. Snap comes pre-installed on Ubuntu 22.04.
 
-    ```code
+    ```command
     sudo snap install core && sudo snap refresh core
     ```
 
 1.  Remove the default Ubuntu Certbot installation.
 
-    ```code
+    ```command
     sudo apt remove certbot
     ```
 
 1.  Use `snap` to install Certbot.
 
-    ```code
+    ```command
     sudo snap install --classic certbot
     ```
 
@@ -331,7 +331,7 @@ certbot 1.27.0 from Certbot Project (certbot-eff✓) installed
 
 1.  Download a certificate for the domain using `certbot`.
 
-    ```code
+    ```command
     sudo certbot --apache
     ```
 
@@ -350,7 +350,7 @@ Congratulations! You have successfully enabled HTTPS on https://example.com and 
 
 1.  Certbot automatically schedules a renewal and update for the certificate. To test out the renewal procedure, launch a dry run using the `renew` command.
 
-    ```code
+    ```command
     sudo certbot renew --dry-run
     ```
 
@@ -364,7 +364,7 @@ Congratulations! You have successfully enabled HTTPS on https://example.com and 
 
 1.  Restart the Apache server.
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     ```
 

@@ -80,19 +80,19 @@ To install and test an Apache web server on Ubuntu 22.04, follow these instructi
 
 1.  Update and upgrade the Ubuntu packages:
 
-    ```code
+    ```command
     sudo apt update && sudo apt upgrade
     ```
 
 2.  Install the Apache web server using `apt`:
 
-    ```code
+    ```command
     sudo apt install apache2
     ```
 
 3.  Configure the `ufw` firewall to allow the `Apache Full` profile. This permits HTTP and HTTPS connections, enabling web access. `OpenSSH` connections must also be allowed. Enable `ufw` when all changes are complete.
 
-    ```code
+    ```command
     sudo ufw allow OpenSSH
     sudo ufw allow in "Apache Full"
     sudo ufw enable
@@ -104,7 +104,7 @@ The `Apache Full` profile permits HTTP and HTTPS traffic. To temporarily restric
 
 4.  Verify the firewall settings using the `ufw status` command:
 
-    ```code
+    ```command
     sudo ufw status
     ```
 
@@ -121,26 +121,26 @@ Apache Full (v6)           ALLOW       Anywhere (v6)
 
 5.  Enable the `mpm_prefork` Apache module and disable `mpm_event`:
 
-    ```code
+    ```command
     sudo a2dismod mpm_event
     sudo a2enmod mpm_prefork
     ```
 
 6.  Restart Apache using the `systemctl` utility:
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     ```
 
 7.  Ensure the web server is still active using `systemctl`:
 
-    ```code
+    ```command
     sudo systemctl status apache2
     ```
 
 8.  Visit the IP address of the web server and confirm the server is working properly:
 
-    ```code
+    ```command
     http://your_IP_address/
     ```
 
@@ -162,25 +162,25 @@ To install MariaDB on Ubuntu 22.04, follow the steps in this example.
 
 1.  Install MariaDB using `apt`:
 
-    ```code
+    ```command
     sudo apt install mariadb-server
     ```
 
 2.  Verify the status of MariaDB to ensure it is installed correctly:
 
-    ```code
+    ```command
     sudo systemctl status mariadb
     ```
 
 3.  Enable MariaDB in `systemctl` so it automatically activates upon server boot up:
 
-    ```code
+    ```command
     sudo systemctl enable mariadb
     ```
 
 4.  Configure and secure MariaDB using the `mysql_secure_installation` utility:
 
-    ```code
+    ```command
     sudo mysql_secure_installation
     ```
 
@@ -199,7 +199,7 @@ When MariaDB is installed, create a new database for Nextcloud to use. It is als
 
 1.  Log into MariaDB as the `root` user. If you added a root password, provide it when requested. The MariaDB prompt appears.
 
-    ```code
+    ```command
     sudo mysql -u root
     ```
 
@@ -217,13 +217,13 @@ MariaDB [(none)]>
 
 2.  Create the `nextcloud` database. For this and all remaining commands, MariaDB should reply with `Query OK`.
 
-    ```code
+    ```command
     CREATE DATABASE nextcloud;
     ```
 
 3.  Use the `SHOW DATABASES` command to ensure the database has been properly created:
 
-    ```code
+    ```command
     SHOW DATABASES;
     ```
 
@@ -242,19 +242,19 @@ MariaDB [(none)]>
 
 4.  Create a user and grant them all rights to access the database. In place of `password`, provide a more secure password.
 
-    ```code
+    ```command
     GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost' IDENTIFIED BY 'password';
     ```
 
 5.  Flush the privileges to apply the recent changes:
 
-    ```code
+    ```command
     FLUSH PRIVILEGES;
     ```
 
 6.  Exit the database:
 
-    ```code
+    ```command
     quit
     ```
 
@@ -270,13 +270,13 @@ To install PHP and the other required packages, use these commands.
 
 1.  Install the core PHP package using `apt`:
 
-    ```code
+    ```command
     sudo apt install php
     ```
 
 2.  Confirm the PHP release number:
 
-    ```code
+    ```command
     php -v
     ```
 
@@ -286,25 +286,25 @@ PHP 8.1.2-1ubuntu2.6 (cli) (built: Sep 15 2022 11:30:49) (NTS)
 
 3.  Install the remaining PHP components:
 
-    ```code
+    ```command
     sudo apt install php-apcu php-bcmath php-cli php-common php-curl php-gd php-gmp php-imagick php-intl php-mbstring php-mysql php-zip php-xml
     ```
 
 4.  Enable the necessary PHP extensions:
 
-    ```code
+    ```command
     sudo phpenmod bcmath gmp imagick intl
     ```
 
 5.  Install the `unzip` utility. This utility might already be installed on the system.
 
-    ```code
+    ```command
     sudo apt install unzip
     ```
 
 6.  Install the `libmagic` package:
 
-    ```code
+    ```command
     sudo apt install libmagickcore-6.q16-6-extra
     ```
 
@@ -318,13 +318,13 @@ To download and install Nextcloud, follow these steps.
 
 1.  Download Nextcloud using `wget`. To find the URL for the latest stable release of Nextcloud, visit the [Nextcloud installation page](https://nextcloud.com/install/). This page provides a link to the latest Nextcloud zip file. To locate a particular release of Nextcloud, consult the [Nextcloud changelog and archive](https://nextcloud.com/changelog/). The following example demonstrates how to download the Nextcloud release 24.0.1.
 
-    ```code
+    ```command
     wget https://download.nextcloud.com/server/releases/nextcloud-24.0.1.zip
     ```
 
 2.  Unzip the archive. This creates a `nextcloud` folder in the same directory as the zip file.
 
-    ```code
+    ```command
     unzip nextcloud-24.0.1.zip
     ```
 
@@ -332,19 +332,19 @@ To download and install Nextcloud, follow these steps.
 
 4.  Change the folder permissions for the `nextcloud` directory:
 
-    ```code
+    ```command
     sudo chown -R www-data:www-data nextcloud
     ```
 
 5.  Move the new directory to the server directory. The server directory usually defaults to `/var/www/html` on most servers.
 
-    ```code
+    ```command
     sudo mv nextcloud /var/www/html
     ```
 
 6.  Disable the default Apache landing page:
 
-    ```code
+    ```command
     sudo a2dissite 000-default.conf
     ```
 
@@ -358,7 +358,7 @@ This section explains how to configure a virtual host file for the Nextcloud app
 
 1.  Create a new file in the `etc/apache2/sites-available` directory and name the file `nextcloud.conf`:
 
-    ```code
+    ```command
     sudo nano /etc/apache2/sites-available/nextcloud.conf
     ```
 
@@ -384,7 +384,7 @@ This section explains how to configure a virtual host file for the Nextcloud app
 
 3.  Enable the site. Do not reload Apache yet.
 
-    ```code
+    ```command
     sudo a2ensite nextcloud.conf
     ```
 
@@ -404,7 +404,7 @@ To locate the correct timezone for the `date.timezone` parameter, consult the [P
 If the server is running an earlier PHP release, substitute the actual release number in place of `8.1` in the filename. For example, to configure PHP 7.4, the filename is `/etc/php/7.4/apache2/php.ini`
     {{< /note >}}
 
-    ```code
+    ```command
     sudo nano /etc/php/8.1/apache2/php.ini
     ```
 
@@ -424,19 +424,19 @@ If the server is running an earlier PHP release, substitute the actual release n
 
 2.  Enable some additional Apache modules:
 
-    ```code
+    ```command
     sudo a2enmod dir env headers mime rewrite ssl
     ```
 
 3.  Restart the Apache server:
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     ```
 
 4.  Verify the Apache server status and ensure it is still `active`. If the server is in a failed state, examine the server error logs and make any necessary changes to the `/etc/apache2/sites-enabled/nextcloud.conf` file.
 
-    ```code
+    ```command
     sudo systemctl status apache2
     ```
 
@@ -489,19 +489,19 @@ To configure HTTPS for the domain, follow these steps.
 
 1.  Update Snap, which is pre-installed on Ubuntu 22.04. Snap is used to download application bundles.
 
-    ```code
+    ```command
     sudo snap install core && sudo snap refresh core
     ```
 
 2.  To avoid conflicts, remove the default Ubuntu Certbot package:
 
-    ```code
+    ```command
     sudo apt remove certbot
     ```
 
 3.  Use `snap` to install Certbot:
 
-    ```code
+    ```command
     sudo snap install --classic certbot
     ```
 
@@ -511,7 +511,7 @@ certbot 1.31.0 from Certbot Project (certbot-eff✓) installed
 
 4.  Use Certbot to download a certificate for the domain:
 
-    ```code
+    ```command
     sudo certbot --apache
     ```
 
@@ -532,7 +532,7 @@ Congratulations! You have successfully enabled HTTPS on https://example.com
 
 6.  **(Optional)** Certbot can automatically renew and update the certificate. To perform a trial run, use the `renew` command:
 
-    ```code
+    ```command
     sudo certbot renew --dry-run
     ```
 
@@ -542,19 +542,19 @@ At this point, almost all configuration is complete. The SSL configuration and t
 
 1. Change the permissions for the Nextcloud-specific `config.php` file so other users cannot access it. This file is located inside the `config` directory in the Nextcloud domain directory.
 
-    ```code
+    ```command
     sudo chmod 660 /var/www/html/nextcloud/config/config.php
     ```
 
 2.  Change the ownership of this file. Ensure the `root` account and the Apache web server share co-ownership.
 
-    ```code
+    ```command
     sudo chown root:www-data /var/www/html/nextcloud/config/config.php
     ```
 
 3.  Edit the Nextcloud `config.php` file and add the following two lines to the end of the array. Ensure these lines are placed inside the final `)` bracket. For the `default_phone_region` use the country code where the server is located. Consult the Wikipedia page for the [ISO Alpha-2 codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) for a full list of country codes. This example uses the country code for the United Kingdom.
 
-    ```code
+    ```command
     sudo nano /var/www/html/nextcloud/config/config.php
     ```
 
@@ -567,7 +567,7 @@ At this point, almost all configuration is complete. The SSL configuration and t
 
 4.  Edit the SSL certificate file and enable strict transport security. You recorded the name of this file when installing the certificate. Add the following line immediately after the line containing the `ServerName` attribute.
 
-    ```code
+    ```command
     sudo nano /etc/apache2/sites-available/nextcloud-le-ssl.conf
     ```
 
@@ -579,7 +579,7 @@ At this point, almost all configuration is complete. The SSL configuration and t
 
 5.  Restart Apache to apply the recent changes:
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     ```
 

@@ -38,28 +38,28 @@ This section covers installing the keepalived software from your distribution's 
 
     **Ubuntu and Debian:**
 
-    ```code
+    ```command
     sudo apt update && sudo apt upgrade
     sudo apt install keepalived
     ```
 
     **CentOS 8 Stream, CentOS/RHL 8 (including derivatives such as AlmaLinux 8 and Rocky Linux 8), Fedora:**
 
-    ```code
+    ```command
     sudo dnf upgrade
     sudo dnf install keepalived
     ```
 
     **CentOS 7:**
 
-    ```code
+    ```command
     sudo yum update
     sudo yum install keepalived
     ```
 
 1.  Create and edit a new keepalived configuration file.
 
-    ```code
+    ```command
     sudo nano /etc/keepalived/keepalived.conf
     ```
 
@@ -99,7 +99,7 @@ This section covers installing the keepalived software from your distribution's 
 
 1.  Enable and start the keepalived service.
 
-    ```code
+    ```command
     sudo systemctl enable keepalived
     sudo systemctl start keepalived
     ```
@@ -153,7 +153,7 @@ Keepalived can be configured to run *notification scripts* when the instance cha
 
 1.  Make the file executable.
 
-    ```code
+    ```command
     sudo chmod +x /etc/keepalived/notify.sh
     ```
 
@@ -170,14 +170,14 @@ Keepalived can be configured to run *notification scripts* when the instance cha
 
 1.  Restart your BGP daemon and keepalived.
 
-    ```code
+    ```command
     sudo systemctl restart lelastic
     sudo systemctl restart keepalived
     ```
 
 1.  View the log file to see if it was properly created and updated. If the notification script was successfully used, this log file should have an accurate timestamp and the current state of the instance.
 
-    ```code
+    ```command
     cat /tmp/keepalived.state
     ```
 
@@ -195,7 +195,7 @@ This guide helps you configure a custom script that detects if a file is present
 
 1.  Create and edit the health check script.
 
-    ```code
+    ```command
     sudo nano /etc/keepalived/check.sh
     ```
 
@@ -214,7 +214,7 @@ This guide helps you configure a custom script that detects if a file is present
 
 1.  Make the file executable.
 
-    ```code
+    ```command
     sudo chmod +x /etc/keepalived/failover.sh
     ```
 
@@ -238,20 +238,20 @@ This guide helps you configure a custom script that detects if a file is present
 
 1.  Restart your BGP daemon and keepalived.
 
-    ```code
+    ```command
     sudo systemctl restart lelastic
     sudo systemctl restart keepalived
     ```
 
 1.  To test this health check, create the trigger file on whichever Compute Instance is in a  *MASTER* state.
 
-    ```code
+    ```command
     touch /etc/keepalived/trigger.file
     ```
 
 1.  Check the log file on that Compute Instance to make sure it enters a *FAULT* state. Once it does, check the log file on the other Compute Instance to verify that it enters a *MASTER* state.
 
-    ```code
+    ```command
     tail -F /tmp/keepalived.state
     ```
 
@@ -267,13 +267,13 @@ By default, Keepalived attempts to run the scripts using a *keepalived_script* u
 
 1.  Create a limited user account called *keepalived_script*. Since it is never used to log in, that feature can be disabled.
 
-    ```code
+    ```command
     sudo useradd -r -s /sbin/nologin -M keepalived_script
     ```
 
 1.  Edit the `sudoers` file.
 
-    ```code
+    ```command
     visudo /etc/sudoers
     ```
 
@@ -287,7 +287,7 @@ By default, Keepalived attempts to run the scripts using a *keepalived_script* u
 
 1.  Update the ownership of the `/etc/keepalived` directory (and all of the files within it).
 
-    ```code
+    ```command
     sudo chown -R keepalived_script:keepalived_script /etc/keepalived
     ```
 

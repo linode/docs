@@ -72,7 +72,7 @@ Linode has a helpful [Beginner's Guide to Chef](https://www.linode.com/docs/guid
 
 1.  Ensure all Linode servers are updated using the following command.
 
-    ```code
+    ```command
     sudo apt update && sudo apt upgrade
     ```
 
@@ -94,13 +94,13 @@ The Chef Server Core can be downloaded using `wget`. The following steps demonst
 
 1.  Download the Chef Server core using `wget`.
 
-    ```code
+    ```command
     wget https://packages.chef.io/files/stable/chef-server/15.1.7/ubuntu/20.04/chef-server-core_15.1.7-1_amd64.deb
     ```
 
 2.  Install the server core.
 
-    ```code
+    ```command
     sudo dpkg -i chef-server-core_*.deb
     ```
 
@@ -115,7 +115,7 @@ Thank you for installing Chef Infra Server!
 
 3.  For better security and to preserve server space, remove the downloaded `.deb` file.
 
-    ```code
+    ```command
     rm chef-server-core_*.deb
     ```
 
@@ -125,7 +125,7 @@ Thank you for installing Chef Infra Server!
 The installation process takes several minutes to complete. Upon a successful installation, the message `Chef Infra Server Reconfigured!` is displayed.
     {{< /note >}}
 
-    ```code
+    ```command
     sudo chef-server-ctl reconfigure
     ```
 
@@ -135,19 +135,19 @@ To use Chef, configure an organization and at least one user on the Chef Server.
 
 1.  Create a `.chef` directory to store the keys. This should be a subdirectory located inside the home directory.
 
-    ```code
+    ```command
     mkdir .chef
     ```
 
 2.  Use the `chef-server-ctl` command to create a user account for the Chef administrator. Additional user accounts can be created later. Replace the `USER_NAME`, `FIRST_NAME`, `LAST_NAME`, `EMAIL`, and `PASSWORD` fields with the relevant information. For the `--filename` argument, replace `USER_NAME.pem` with the user name used earlier in the command.
 
-    ```code
+    ```command
     sudo chef-server-ctl user-create USER_NAME FIRST_NAME LAST_NAME EMAIL 'PASSWORD' --filename ~/.chef/USER_NAME.pem
     ```
 
 3.  Review the user list and confirm the account now exists.
 
-    ```code
+    ```command
     sudo chef-server-ctl user-list
     ```
 
@@ -157,13 +157,13 @@ USER_NAME
 
 4.  Create a new organization, also using the `chef-server-ctl` command. Replace `ORG_NAME` and `ORG_FULL_NAME` with the actual name of the organization. The `ORG_NAME` field must be all lower case. The value for `USER_NAME` must be the same name used in the `user-create` command. For the `--filename` argument, in `ORG_NAME.pem`, replace `ORG_NAME` with the organization name used elsewhere in the command.
 
-    ```code
+    ```command
     sudo chef-server-ctl org-create ORG_NAME "ORG_FULL_NAME" --association_user USER_NAME --filename ~/.chef/ORG_NAME.pem
     ```
 
 5.  List the organizations to confirm the new organization is successfully created.
 
-    ```code
+    ```command
     sudo chef-server-ctl org-list
     ```
 
@@ -181,13 +181,13 @@ The steps for installing a Chef Workstation are similar to those for installing 
 
 1.  Download the source files for the Chef Workstation. For different releases of the Workstation, or downloads for earlier releases, see the [Chef Workstation Downloads page](https://www.chef.io/downloads/tools/workstation?os=ubuntu). For more information on the installation process, see the [Chef Workstation Installation Documentation](https://docs.chef.io/workstation/install_workstation/).
 
-    ```code
+    ```command
     wget https://packages.chef.io/files/stable/chef-workstation/22.10.1013/ubuntu/20.04/chef-workstation_22.10.1013-1_amd64.deb
     ```
 
 2.  Install the Chef Workstation.
 
-    ```code
+    ```command
     sudo dpkg -i chef-workstation_*.deb
     ```
 
@@ -197,13 +197,13 @@ Thank you for installing Chef Workstation!
 
 3.  Remove the source file.
 
-    ```code
+    ```command
     rm chef-workstation_*.deb
     ```
 
 4.  Confirm the correct release of the Chef Workstation is installed.
 
-    ```code
+    ```command
     chef -v
     ```
 
@@ -223,7 +223,7 @@ A few more items must be configured before the Workstation is operational. Tasks
 
 1.  Generate the `chef-repo` repository. This directory stores the Chef cookbooks and recipes. Enter `yes` when asked whether to accept the product licenses.
 
-    ```code
+    ```command
     chef generate repo chef-repo
     ```
 
@@ -241,7 +241,7 @@ Your new Chef Infra repo is ready! Type `cd chef-repo` to enter it.
 
 3.  Create a `.chef` subdirectory. This is where the `knife` file is stored, along with files for encryption and security.
 
-    ```code
+    ```command
     mkdir ~/chef-repo/.chef
     cd chef-repo
     ```
@@ -256,7 +256,7 @@ SSH password authentication must be enabled on the Chef Server to complete the k
 
 1.  On the workstation, generate an RSA key pair. This key can be used to initially access the Chef server to copy over the private encryption files.
 
-    ```code
+    ```command
     ssh-keygen -b 4096
     ```
 
@@ -281,13 +281,13 @@ Your public key has been saved in /home/username/.ssh/id_rsa.pub
 
 4.  Copy the new public key from the workstation to the Chef Server. In the following command, use the account name for the Chef Server along with its IP address.
 
-    ```code
+    ```command
     ssh-copy-id username@192.0.1.0
     ```
 
 5.  Use the `scp` command to copy the `.pem` files from the Chef Server to the workstation. In the following example, replace `username` with the user account for the Chef Server and `192.0.1.0` with the actual Chef Server IP address.
 
-    ```code
+    ```command
     scp username@192.0.1.0:~/.chef/*.pem ~/chef-repo/.chef/
     ```
 
@@ -299,7 +299,7 @@ testcompany.pem                                                                 
 
 6.  List the contents of the `.chef` subdirectory to ensure the `.pem` files were successfully copied.
 
-    ```code
+    ```command
     ls ~/chef-repo/.chef
     ```
 
@@ -313,20 +313,20 @@ A *version control system* helps the Chef Workstation track any changes to the c
 
 1.  Configure Git using the `git config` command. Replace `username` and `user@email.com` with your own values.
 
-    ```code
+    ```command
     git config --global user.name username
     git config --global user.email user@email.com
     ```
 
 2.  Add the `.chef` directory to the `.gitignore` file. This ensures system and auto-generated files are not shown in the output of `git status` and other Git commands.
 
-    ```code
+    ```command
     echo ".chef" > ~/chef-repo/.gitignore
     ```
 
 3.  Ensure the `chef-repo` directory is the current working directory. Add and commit the existing files using `git add` and `git commit`.
 
-    ```code
+    ```command
     cd ~/chef-repo
     git add .
     git commit -m "initial commit"
@@ -342,7 +342,7 @@ create mode 100644 policyfiles/README.md
 
 4.  Run the `git status` command to ensure all files have been committed.
 
-    ```code
+    ```command
     git status
     ```
 
@@ -355,7 +355,7 @@ nothing to commit, working tree clean
 
 To generate a new Chef cookbook, use the `chef generate` command.
 
-```code
+```command
 chef generate cookbook my_cookbook
 ```
 
@@ -365,7 +365,7 @@ The Chef Knife utility helps a Chef workstation communicate with the server. It 
 
 1.  Create a `config.rb` file in the `~/chef-repo/.chef` directory. This example uses `vi`, but any text editor can be used.
 
-    ```code
+    ```command
     cd ~/chef-repo/.chef
     vi config.rb
     ```
@@ -400,7 +400,7 @@ The Chef Knife utility helps a Chef workstation communicate with the server. It 
 The SSL certificates were generated when the Chef server was installed. The certificates are self-signed. This means a certificate authority has not verified them. Before fetching the certificates, log in to the Chef server and ensure the hostname and fully qualified domain name (FQDN) are the same. These values can be confirmed using the commands `hostname` and `hostname -f`.
     {{< /note >}}
 
-    ```code
+    ```command
     cd ..
     knife ssl fetch
     ```
@@ -412,7 +412,7 @@ Adding certificate for example.com in /home/username/chef-repo/.chef/trusted_cer
 
 5.  To confirm the `config.rb` file is correct, run the `knife client list` command. The relevant validator name should be displayed.
 
-    ```code
+    ```command
     knife client list
     ```
 
@@ -435,7 +435,7 @@ At this point, both the Chef Server and Chef Workstation are configured. They ca
 
 2.  Return to the Linode hosting the Chef Workstation and change the working directory to `~/chef-repo/.chef`.
 
-    ```code
+    ```command
     cd ~/chef-repo/.chef
     ```
 
@@ -445,13 +445,13 @@ At this point, both the Chef Server and Chef Workstation are configured. They ca
 The option to bootstrap using key-pair authentication no longer appears to be supported.
     {{< /note >}}
 
-    ```code
+    ```command
     knife bootstrap node_ip_address -U username -P password --sudo --use-sudo-password --node-name nodename
     ```
 
 4.  Confirm the node has been successfully bootstrapped. List the client nodes using the `knife client list` command. All bootstrapped nodes should be listed.
 
-    ```code
+    ```command
     knife client list
     ```
 
@@ -477,13 +477,13 @@ It is not mandatory to download or create cookbooks to use Chef. But this sectio
 
 1.  On the Chef workstation, change to the `~/chef-repo/.chef` directory.
 
-    ```code
+    ```command
     cd ~/chef-repo/.chef
     ```
 
 2.  Download the `cron-delvalidate` cookbook from the Chef Supermarket. For more information on the `supermarket` command see the [Chef supermarket documentation](https://docs.chef.io/workstation/knife_supermarket/).
 
-    ```code
+    ```command
     knife supermarket download cron-delvalidate
     ```
 
@@ -494,7 +494,7 @@ Cookbook saved: /home/username/chef-repo/.chef/cron-delvalidate-0.1.3.tar.gz
 
 3.  If the cookbook is downloaded as a `.tar.gz` file, use the `tar` command to extract it. Move the extracted directory to the `cookbooks` directory.
 
-    ```code
+    ```command
     tar -xf cron-delvalidate-0.1.3.tar.gz
     cp -r  cron-delvalidate ~/chef-repo/cookbooks/
     ```
@@ -521,7 +521,7 @@ Cookbook saved: /home/username/chef-repo/.chef/cron-delvalidate-0.1.3.tar.gz
 
 5.  Add the recipe to the run list for the node. In the following command, replace `nodename` with the name of the node.
 
-    ```code
+    ```command
     knife node run_list add nodename 'recipe[cron-delvalidate::default]'
     ```
 
@@ -532,7 +532,7 @@ nodename:
 
 6.  Upload the cookbook and its recipes to the Chef Server.
 
-    ```code
+    ```command
     knife cookbook upload cron-delvalidate
     ```
 
@@ -543,7 +543,7 @@ Uploaded 1 cookbook.
 
 7.  Run the `chef-client` command on the node using the `knife ssh` utility. This command causes the node to pull the recipes in its run list from the server. It also determines whether there are any updates. The Chef Server transmits the recipes to the target node. When the recipe runs, it deletes the file and installs a cron job to keep the node up to date in the future. In the following command, replace `nodename` with the actual name of the target node. Replace `username` with the name of a user account with `sudo` access. Enter the password for the account when prompted to do so.
 
-    ```code
+    ```command
     knife ssh 'name:nodename' 'sudo chef-client' -x username
     ```
 
