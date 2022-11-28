@@ -7,6 +7,7 @@ description: "This guide covers how to configure Keepalived with a simple health
 keywords: ['IP failover','keepalived','elastic IP']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-19
+modified: 2022-11-28
 modified_by:
   name: Linode
 title: "Use Keepalived Health Checks with BGP-based Failover"
@@ -32,9 +33,9 @@ Before continuing, IP Sharing and BGP failover must be properly configured on bo
 
 This section covers installing the keepalived software from your distribution's repository. See [Installing Keepalived](https://keepalived.readthedocs.io/en/latest/installing_keepalived.html) on the official documentation if you prefer to install it from source.
 
-1.  Log in to your Compute Instance over SSH. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
+1. Log in to your Compute Instance over SSH. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
-1.  Install keepalived by following the instructions for your system's distribution.
+1. Install keepalived by following the instructions for your system's distribution.
 
     **Ubuntu and Debian:**
 
@@ -57,13 +58,13 @@ This section covers installing the keepalived software from your distribution's 
     sudo yum install keepalived
     ```
 
-1.  Create and edit a new keepalived configuration file.
+1. Create and edit a new keepalived configuration file.
 
     ```command
     sudo nano /etc/keepalived/keepalived.conf
     ```
 
-1.  Enter the following settings for your configuration into this file. Use the example below as a starting point, replacing each item below with the appropriate values for your Compute Instance. For more configuration options, see [Configuration Options](/docs/guides/ip-failover-legacy-keepalived/#configuration-options).
+1. Enter the following settings for your configuration into this file. Use the example below as a starting point, replacing each item below with the appropriate values for your Compute Instance. For more configuration options, see [Configuration Options](/docs/guides/ip-failover-legacy-keepalived/#configuration-options).
 
     - *$password*: A secure password to use for this keepalived configuration instance. The same password must be used for each Compute Instance you configure.
 
@@ -97,22 +98,24 @@ This section covers installing the keepalived software from your distribution's 
 
     In the above configuration file, the state is set to *BACKUP* and the parameter `nopreempt` is included. When each Compute Instance uses these settings, failover is sticky. This means the Shared IP address remains routed to a Compute Instance until it enters a *FAULT* state, even if it is lower priority than the other Compute Instance. If you wish to prioritize one instance over the other, remove the `nopreempt` parameter, set one of the Compute Instances to a *MASTER* state, and adjust the `PRIORITY` parameter as desired.
 
-1.  Enable and start the keepalived service.
+1. Enable and start the keepalived service.
 
     ```command
     sudo systemctl enable keepalived
     sudo systemctl start keepalived
     ```
 
-1.  Perform these steps again on the other Compute Instance you would like to configure.
+1. Perform these steps again on the other Compute Instance you would like to configure.
 
 ## Create the Notify Script
 
 Keepalived can be configured to run *notification scripts* when the instance changes state (such as when entering a *MASTER*, *BACKUP* ,or *FAULT* state). These scripts can perform any action and are commonly used to interact with a service or modify network configuration files. For this guide, the scripts are used to update a log file and start or stop the BGP daemon that controls BGP failover on your Compute Instance.
 
-1.  Create and edit the notify script.
+1. Create and edit the notify script.
 
-        sudo nano /etc/keepalived/notify.sh
+    ```command
+    sudo nano /etc/keepalived/notify.sh
+    ```
 
 1. Copy and paste the following bash script into the newly created file. If you wish to control a BGP daemon other than lelastic, replace `sudo systemctl restart lelastic` and `sudo systemctl stop lelastic` with the appropriate commands for your service.
 
@@ -151,13 +154,13 @@ Keepalived can be configured to run *notification scripts* when the instance cha
     main $1
     ```
 
-1.  Make the file executable.
+1. Make the file executable.
 
     ```command
     sudo chmod +x /etc/keepalived/notify.sh
     ```
 
-1.  Modify the keepalived configuration files so that the notify script is used for each state change.
+1. Modify the keepalived configuration files so that the notify script is used for each state change.
 
     ```file {title="/etc/keepalived/keepalived.conf"}
     vrrp_instance example_instance {
@@ -168,24 +171,24 @@ Keepalived can be configured to run *notification scripts* when the instance cha
     }
     ```
 
-1.  Restart your BGP daemon and keepalived.
+1. Restart your BGP daemon and keepalived.
 
     ```command
     sudo systemctl restart lelastic
     sudo systemctl restart keepalived
     ```
 
-1.  View the log file to see if it was properly created and updated. If the notification script was successfully used, this log file should have an accurate timestamp and the current state of the instance.
+1. View the log file to see if it was properly created and updated. If the notification script was successfully used, this log file should have an accurate timestamp and the current state of the instance.
 
     ```command
     cat /tmp/keepalived.state
     ```
 
-    {{< output >}}
-===================================
-Date:  14-Oct-2022 14:30:54
-[INFO] Now Master
-{{</ output >}}
+    ```output
+    ===================================
+    Date:  14-Oct-2022 14:30:54
+    [INFO] Now Master
+    ```
 
 ## Configure the Health Check (VRRP Script)
 
@@ -193,7 +196,7 @@ The next step is to configure Keepalived with a health check so that it can fail
 
 This guide helps you configure a custom script that detects if a file is present or not. If the file is present, the script returns a 1 to indicate a failure.
 
-1.  Create and edit the health check script.
+1. Create and edit the health check script.
 
     ```command
     sudo nano /etc/keepalived/check.sh
@@ -212,13 +215,13 @@ This guide helps you configure a custom script that detects if a file is present
     fi
     ```
 
-1.  Make the file executable.
+1. Make the file executable.
 
     ```command
     sudo chmod +x /etc/keepalived/failover.sh
     ```
 
-1.  Update the keepalived configuration file to define the VRRP script and enable your VRRP instance to use the script. The *interval* determines how often the script is run, *fall* determines how many times the script must return a failure before the state is changed to *FAULT*, and *rise* determines how many times a success is returned before the instance goes back to a *BACKUP* or *MASTER* state.
+1. Update the keepalived configuration file to define the VRRP script and enable your VRRP instance to use the script. The *interval* determines how often the script is run, *fall* determines how many times the script must return a failure before the state is changed to *FAULT*, and *rise* determines how many times a success is returned before the instance goes back to a *BACKUP* or *MASTER* state.
 
     ```file {title="/etc/keepalived/keepalived.conf"}
     vrrp_script check_for_file {
@@ -236,48 +239,48 @@ This guide helps you configure a custom script that detects if a file is present
     }
     ```
 
-1.  Restart your BGP daemon and keepalived.
+1. Restart your BGP daemon and keepalived.
 
     ```command
     sudo systemctl restart lelastic
     sudo systemctl restart keepalived
     ```
 
-1.  To test this health check, create the trigger file on whichever Compute Instance is in a  *MASTER* state.
+1. To test this health check, create the trigger file on whichever Compute Instance is in a  *MASTER* state.
 
     ```command
     touch /etc/keepalived/trigger.file
     ```
 
-1.  Check the log file on that Compute Instance to make sure it enters a *FAULT* state. Once it does, check the log file on the other Compute Instance to verify that it enters a *MASTER* state.
+1. Check the log file on that Compute Instance to make sure it enters a *FAULT* state. Once it does, check the log file on the other Compute Instance to verify that it enters a *MASTER* state.
 
     ```command
     tail -F /tmp/keepalived.state
     ```
 
-    {{< output >}}
-===================================
-Date:  14-Oct-2022 14:30:54
-[INFO] Now Master
-{{</ output >}}
+    ```output
+    ===================================
+    Date:  14-Oct-2022 14:30:54
+    [INFO] Now Master
+    ```
 
 ## Additional Recommended Security Settings
 
 By default, Keepalived attempts to run the scripts using a *keepalived_script* user. If that doesn't exist, it uses the *root* user. Since running these scripts as the root user introduces many security concerns, this section discusses creating the *keepalived_script* user.
 
-1.  Create a limited user account called *keepalived_script*. Since it is never used to log in, that feature can be disabled.
+1. Create a limited user account called *keepalived_script*. Since it is never used to log in, that feature can be disabled.
 
     ```command
     sudo useradd -r -s /sbin/nologin -M keepalived_script
     ```
 
-1.  Edit the `sudoers` file.
+1. Edit the `sudoers` file.
 
     ```command
     visudo /etc/sudoers
     ```
 
-1.  Within this file, grant permission for the new user to restart and stop the BGP daemon. The example below uses lelastic.
+1. Within this file, grant permission for the new user to restart and stop the BGP daemon. The example below uses lelastic.
 
     ```file {title="/etc/sudoers"}
     # User privilege specification
@@ -285,13 +288,13 @@ By default, Keepalived attempts to run the scripts using a *keepalived_script* u
     keepalived_script ALL=(ALL:ALL) NOPASSWD: /usr/bin/systemctl restart lelastic, /usr/bin/systemctl stop lelastic
     ```
 
-1.  Update the ownership of the `/etc/keepalived` directory (and all of the files within it).
+1. Update the ownership of the `/etc/keepalived` directory (and all of the files within it).
 
     ```command
     sudo chown -R keepalived_script:keepalived_script /etc/keepalived
     ```
 
-1.  Once again, edit the Keepalived configuration file and paste the following snippet to the top of that file.
+1. Once again, edit the Keepalived configuration file and paste the following snippet to the top of that file.
 
     ```file {title="/etc/keepalived/keepalived.conf"}
     global_defs {

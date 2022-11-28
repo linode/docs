@@ -4,14 +4,14 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Packer automates the process of developing machine images, and Terraform automates the provisioning of infrastructure. Not surprisingly, combining the two can give you a full and robust chain for automating deployments, including CI/CD. Through this tutorial, learn what you need to put these tools together for your infrastructure."
-og_description: "Packer automates the process of developing machine images, and Terraform automates the provisioning of infrastructure. Not surprisingly, combining the two can give you a full and robust chain for automating deployments, including CI/CD. Through this tutorial, learn what you need to put these tools together for your infrastructure."
 keywords: ['packer terraform provider','terraform packer resource','linode packer']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-27
+modified: 2022-11-28
 modified_by:
   name: Nathaniel Stickman
-title: "How to Deploy a Packer Image with Terraform"
-h1_title: "How to Deploy a Packer Image with Terraform"
+title: "Deploy a Packer Image with Terraform"
+title_meta: "How to Deploy a Packer Image with Terraform"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -28,9 +28,9 @@ In this tutorial, find out how to use Packer and Terraform together to deploy Li
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -69,9 +69,9 @@ Afterward, verify your installation and display the installed version with the f
 packer --version
 ```
 
-{{< output >}}
+```output
 1.8.4
-{{< /output >}}
+```
 
 ### Installing Terraform
 
@@ -103,10 +103,10 @@ Afterward, verify your installation with:
 terraform -version
 ```
 
-{{< output >}}
+```output
 Terraform v1.3.3
 on linux_amd64
-{{< /output >}}
+```
 
 ## How to Build a Packer Image
 
@@ -169,7 +169,7 @@ provider "linode" {
 
 The `terraform` block starts the project by indicating its required providers (e.g. Linode). The `provider` block then starts the Linode provider. The `token` argument allows the provider to authenticate its connection to the Linode API.
 
-When done, press **CTRL+X** to exit nano, **Y** to save, and **Enter** to confirm.
+When done, press <kbd>Ctrl</kbd> + <kbd>X</kbd> to exit nano, <kbd>Y</kbd> to save, and <kbd>Enter</kbd> to confirm.
 
 ### Assigning Terraform Variables
 
@@ -177,7 +177,7 @@ Above, you can see that the `token` value for the Linode provider uses the `var.
 
 This tutorial handles variables using two files.
 
-1.  First, create a `variables.tf` file:
+1. First, create a `variables.tf` file:
 
     ```command
     nano variables.tf
@@ -210,9 +210,9 @@ This tutorial handles variables using two files.
     }
     ```
 
-    When done, press **CTRL+X** to exit nano, **Y** to save, and **Enter** to confirm.
+    When done, press <kbd>Ctrl</kbd> + <kbd>X</kbd> to exit nano, <kbd>Y</kbd> to save, and <kbd>Enter</kbd> to confirm.
 
-2.  Now create a `terraform.tfvars` file:
+1. Now create a `terraform.tfvars` file:
 
     ```command
     nano terraform.tfvars
@@ -233,14 +233,14 @@ This tutorial handles variables using two files.
 
     There are two main ways to get your image ID:
 
-    -   The Linode image ID appears at the end of the output when you use Packer to create the image. For instance, in the guide on creating a Linode image with Packer linked above, you can find the output:
+    - The Linode image ID appears at the end of the output when you use Packer to create the image. For instance, in the guide on creating a Linode image with Packer linked above, you can find the output:
 
-        {{< output >}}
-==> Builds finished. The artifacts of successful builds are:
---> linode.example-linode-image: Linode image: packer-linode-image-1 (private/17691867)
-        {{< /output >}}
+        ```output
+        ==> Builds finished. The artifacts of successful builds are:
+        --> linode.example-linode-image: Linode image: packer-linode-image-1 (private/17691867)
+        ```
 
-    -   The Linode API has an endpoint for listing available images. The list includes your custom images if you call it with your API token.
+    - The Linode API has an endpoint for listing available images. The list includes your custom images if you call it with your API token.
 
         You can use a cURL command to list all images available to you, public and private. Replace `$LINODE_API_TOKEN` with your Linode API token:
 
@@ -250,17 +250,17 @@ This tutorial handles variables using two files.
 
         The output can be overwhelming in the command line, so you may want to use another tool to prettify the JSON response. This has been done with the result shown here:
 
-        {{< output >}}
-{
-    "pages": 1,
-    "data": [{
-        "id": "private/17691867",
-        "label": "packer-linode-image-1",
-        "description": "Example Packer Linode Image",
-        // [...]
-        {{< /output >}}
+        ```output
+        {
+            "pages": 1,
+            "data": [{
+                "id": "private/17691867",
+                "label": "packer-linode-image-1",
+                "description": "Example Packer Linode Image",
+                // [...]
+        ```
 
-    When done, press **CTRL+X** to exit nano, **Y** to save, and **Enter** to confirm.
+    When done, press <kbd></kbd> + <kbd>X</kbd> to exit nano, <kbd>Y</kbd> to save, and <kbd>Enter</kbd> to confirm.
 
 ### Defining the Linode Resource
 
@@ -324,7 +324,7 @@ Review the plan, and when ready, provision your instances with the `apply` comma
 terraform apply
 ```
 
-{{< output >}}
+```output
 linode_instance.packer_linode_instance[0] (remote-exec): Connected!
 linode_instance.packer_linode_instance[0] (remote-exec): ● nginx.service - A high performance web server and a reverse proxy server
 linode_instance.packer_linode_instance[0] (remote-exec):      Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
@@ -332,7 +332,7 @@ linode_instance.packer_linode_instance[0] (remote-exec):      Active: active (ru
 [...]
 
 Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
-{{< /output >}}
+```
 
 In the future, whenever you want to remove the instances created with Terraform, you can use the `destroy` command from within your Terraform script directory.
 
