@@ -29,7 +29,7 @@
   <button
     aria-label="Close search"
     class="mr-4 hover:text-brand"
-    :class="{ 'hidden': !$store.nav.searchResults.open }"
+    :class="{ 'hidden': !$store.nav.searchResults.open && !$store.search.query.isFiltered() }"
     @click.stop="close()"
     data-testid="input-close">
     <svg class="h-5 w-5">
