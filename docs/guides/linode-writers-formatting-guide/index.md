@@ -7,10 +7,10 @@ description: 'This guide provides formatting and style guidelines for documentat
 keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
-modified_by:
-  name: Linode
 published: 2014-01-15
 modified: 2022-11-28
+modified_by:
+  name: Linode
 title: Linode Writer's Formatting Guide
 show_on_rss_feed: false
 external_resources:
@@ -38,7 +38,7 @@ Linode Guides & Tutorials are written in [Markdown](https://en.wikipedia.org/wik
 
 Linode Guides & Tutorials store metadata and other information in a [YAML](http://yaml.org/) header at the top of every page. Use the template below for your own guide.
 
-```file {title="Author Submission"}
+```file {title="Author Submission" lang="yaml"}
 ---
 author:
   name: Linode Community
@@ -76,23 +76,6 @@ The *Before You Begin* section is an area for basic prerequisites a reader shoul
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 ```
-
-### Describe Example Variables
-
-If using example variables which should be changed throughout the guide, declare them in the Before You Begin section.
-
-Variables that the reader will need to change for their system or preference should be formatted using backticks. This includes:
-
-- [Example IPs](#example-ip-addresses)
-- User names
-- Passwords
-- Port Numbers
-
-Do not include any brackets or parentheses when using these temporary values in examples, as the reader may include them in their final version.
-
-| Formatting | Example |
-|:--------------|:------------|
-| Change the \`password\` and \`username\` values. | Change the `password` and `username` values. |
 
 ### Include a Note about Root or Non-Root users
 
@@ -167,14 +150,16 @@ Introduce new terms in italics with a `*` on either side of the term:
 This guide covers how to install Git, a *version control system*.
 ```
 
+**Output:** This guide covers how to install Git, a *version control system*.
+
 ### Bold and Italics
 
 Use a **Bold** font weight for buttons, menu selections and anything that requires emphasis or that you want to stand out to the reader. *Italicize* new terms and concepts the first time they are used.
 
-| Formatting | Example |
-|:--------------|:------------|
-| \*\*bold\*\* | **bold** |
-| \*italics\* | *italics* |
+| Syntax | Output |
+| -- | -- |
+| `**bold**` | **bold** |
+| `*italics*` | *italics* |
 
 ### Commands
 
@@ -268,9 +253,11 @@ Run the following command to restart Apache:
 
 Inline commands should be denoted by backticks.
 
-| Formatting | Example |
-|:--------------|:------------|
-| Update your system by running \`yum update\`. | Update your system by running `yum update`. |
+```file {lang="md"}
+Update your system by running `yum update`.
+```
+
+**Output:** Update your system by running `yum update`.
 
 ### Example IP Addresses
 
@@ -282,7 +269,7 @@ Example IPs should use the documentation address blocks given in [IETF RFC 5737]
 
 ### External Resources/More Information
 
-If you wish to provide links to external sites for the user to review after going through your guide, do so using the *external_resources* field in the [page header](#header). This will automatically appear as a text block with links at the bottom of the page.
+If you wish to provide links to external sites for the user to review after going through your guide, do so using the `external_resources` parameter in the [page header](#header). This will automatically appear as a text block with links at the bottom of the page.
 
 > More Information
 >
@@ -491,18 +478,21 @@ This is equivalent to:
 
 ### File Paths and File Names
 
-Inline file paths and file names should be unformatted text.
+Inline file paths and file names should be formatted as inline code blocks.
 
-| Formatting | Example |
-|:--------------|:------------|
-| Navigate to \`/var/www/html\`. | Navigate to `/var/www/html`. |
+| Syntax | Output |
+| -- | -- |
+| ``Navigate to `/var/www/html`.`` | Navigate to `/var/www/html`. |
 
 ### Headings
 
-| Formatting | Example |
-|:--------------------------|:----------------------------------------------|
-| \#\# Section title (h2) | <font size="5">Section title (h2)</font> |
-| \#\#\# Subsection (h3)   | <font size="4">Subsection (h3)</font> |
+Headings should be written in title case and can be up to 3 levels deep.
+
+| Syntax | Output |
+| -- | -- |
+| `## Section title (h2)` | <font size="5"><strong>Section title (h2)</strong></font> |
+| `### Subsection (h3)` | <font size="4"><strong>Subsection (h3)</strong></font> |
+| `#### Subsection (h4)` | <strong>Subsection (h4)</strong> |
 
 ### Images
 
@@ -510,33 +500,47 @@ Images should be in *.png* or *.jpg* format. If an image is over 650 pixels wide
 
 When adding an image, ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with dummy text, such as **example_user** or **192.0.2.0**. Be mindful of metadata in images taken with mobile devices.
 
-| Up to 650 px wide. | Over 650 px wide. |
-|:--------------------------|:----------------------------------------------|
-| \!\[Description of the image\](filename.png "Description of the image.") | \[!\[Description of the image\](filename_small.png "Description of the image.")](filename.png) |
+- **Up to 650 px wide:** `![Description of the image](filename.png "Description of the image.")`
+- **Over 650 px wide:** `[![Description of the image](filename_small.png "Description of the image.")](filename.png)`
 
 ### Key Combinations
 
-When instructing a reader to use a combination of keys, format the key combination in bold.
+When instructing a reader to press hotkeys or other combinations of keys, enclose each individual key within a [kbd](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd) html element as shown in the example below.
 
-| Formatting | Example |
-|:--------------|:------------|
-| Press \*\*CTRL+N\*\* then \*\*X\*\* to exit the program.  | Press **CTRL+N** then **X** to exit the program. |
+```file {lang=html}
+Use <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text.
+```
+
+**Output:** Use <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text.
 
 ### Links
 
 Internal links to other Linode guides should be relative, starting at `/docs/`, and external links should be formatted as shown below and use HTTPS URLs whenever possible.
 
-| Internal | External |
-|:--------------------------|:----------------------------------------------|
-| \[Getting Started\](/docs/getting-started) | \[Apache HTTP Server Documentation\](h<span>tt</span>ps://h<span>ttpd</span>.apache.org/docs/)
+- **Internal link example:** `[Getting Started](/docs/guides/getting-started/)`
+- **External link example:** `[Apache HTTP Server Documentation](https://httpd.apache.org/docs/)`
 
 ### Lists
 
-Be sure that lists have the proper horizontal spacing. This should be *two* spaces for ordered lists and *three* for unordered. This is to keep the lists aligned properly with the four-space soft tabs used in the guides.
+#### Ordered Lists
 
-| Ordered |  Unordered |
-|:--------------------------|:----------------------------------------------|
-| 1.&nbsp;&nbsp;Step 1.<br><br>2.&nbsp;&nbsp;Step 2.<br><br>3.&nbsp;&nbsp;Step 3. | \*&nbsp;&nbsp;&nbsp;Item 1.<br><br>\*&nbsp;&nbsp;&nbsp;Item 2.<br><br>\*&nbsp;&nbsp;&nbsp;Item 3. |
+Ordered lists are numbered and should be used for a series of steps. These lists should be formatted by appending a `1. ` to the beginning of each step.
+
+```file
+1. Step 1
+1. Step 2
+1. Step 3
+```
+
+#### Unordered Lists
+
+Unordered lists are bulleted and should be used for any collection of items that do not necessarily need to be ordered. These lists should be formatted by appending a `- ` to the beginning of each step.
+
+```file
+- Item 1
+- Item 2
+- Item 3
+```
 
 ### Notes and Cautions
 
@@ -565,7 +569,7 @@ This is a sample caution.
 ### Numerical Values
 
 | 1-10 | Greater than 10 |
-|:--------------|:------------|
+| -- | -- |
 | Use words (one, two, three, etc.)  | Use numerical digits (11, 22, 33). |
 
 ### Sentence Spacing
@@ -574,26 +578,27 @@ Use single spaces between sentences; do not double-space.
 
 ### Tables
 
-<table class="table table-striped table-bordered">
-  <thead><th>Formatting</th><th>Example</th></thead>
-  <tr>
-    <td>
-<br>
-| Left-Aligned | Centered     | Right-Aligned |
-<br>
-| ---------------- |:-------------:| -----------------:|
-<br>
-| Columns,&nbsp;&nbsp;&nbsp;&nbsp; | both&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| headers &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-<br>
-| and &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | line items, | are aligned &nbsp;&nbsp;|
-<br>
-| by the hyphens | and colons | above. &nbsp;&nbsp;&nbsp; |
-    </td>
-    <td>
-    <img src="example-blue-stripe-table.png">
-    </td>
-  </tr>
-</table>
+```file {lang="md"}
+| Column Header 1 | Column Header 2|
+| -- | -- |
+| **Example** | This is an example of text in the second column. |
+```
+
+| Column Header 1 | Column Header 2|
+| -- | -- |
+| **Example** | This is an example of text in the second column. |
+
+#### Table Alignment
+
+```file {lang="md"}
+| Left-Aligned Text | Center-Aligned Text | Right-Aligned Text |
+| -- |:--:| --:|
+| Example | Example | Example |
+```
+
+| Left-Aligned Text | Center-Aligned Text | Right-Aligned Text |
+| -- | :--: | --:|
+| Example | Example | Example |
 
 ### Terminal Output
 
