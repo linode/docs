@@ -75,18 +75,18 @@ main_firewalls/
 ├── terraform.tfvars
 ├── variables.tf
 └── modules/
-	├── inbound_ssh/
-		├── main.tf
-		├── variables.tf
-		└── outputs.tf
-	└── mysql/
-		├── main.tf
-		├── variables.tf
-		└── outputs.tf
-	└── web_server/
-		├── main.tf
-		├── variables.tf
-		└── outputs.tf
+    ├── inbound_ssh/
+        ├── main.tf
+        ├── variables.tf
+        └── outputs.tf
+    └── mysql/
+        ├── main.tf
+        ├── variables.tf
+        └── outputs.tf
+    └── web_server/
+        ├── main.tf
+        ├── variables.tf
+        └── outputs.tf
 ```
 
 1. Move into your `terraform` directory.
