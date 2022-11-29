@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus Postgres Exporter
+After=network.target
+
+[Service]
+Environment=DATA_SOURCE_NAME='postgresql://prometheus:prometheuspass@localhost:5432/postgres?sslmode=disable'
+Type=simple
+User=postgres
+ExecStart=/usr/local/bin/postgres_exporter
+
+[Install]
+WantedBy=multi-user.target
+
