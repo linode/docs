@@ -1,22 +1,16 @@
 ---
-slug: how-to-deploy-a-new-linode-using-a-stackscript
-author:
-  name: Linode
-  email: docs@linode.com
+title: Deploy a Compute Instance Using a StackScript
 description: 'In this guide, you will learn the various methods you can use in conjunction with the Cloud Manager to deploy a new Linode with a StackScript.'
-og_description: 'In this guide, you will learn the various methods you can use in conjunction with the Cloud Manager to deploy a new Linode with a StackScript.'
 keywords: ["stackscripts", "automation", "script", "custom instance", "deployment"]
 tags: ["linode platform","automation","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2020-04-22
-image: DeployNewLinode_StackScripts.png
+published: 2020-04-22
+modified: 2022-11-28
 modified_by:
   name: Linode
-published: 2020-04-22
-title: How to Deploy a New Linode Using a StackScript
-h1_title: Deploying a New Linode Using a StackScript
-aliases: ['/platform/stackscripts/how-to-deploy-a-new-linode-using-a-stackscript/']
+image: DeployNewLinode_StackScripts.png
+aliases: ['/platform/stackscripts/how-to-deploy-a-new-linode-using-a-stackscript/','/guides/how-to-deploy-a-new-linode-using-a-stackscript/']
 ---
+
 ## What are StackScripts?
 
 [StackScripts](http://linode.com/stackscripts/) provide Linode users with the ability to automate the deployment of custom systems on top of Linode's default Linux distribution images. For example, every time you deploy a new Linode you might execute the same tasks, like updating your system's software, installing your favorite Linux tools, and adding a limited user account. These tasks can be automated using a StackScript that will perform these actions for you as part of your Linode's first boot process.

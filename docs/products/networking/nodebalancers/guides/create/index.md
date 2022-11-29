@@ -23,7 +23,7 @@ Log in to the [Cloud Manager](https://cloud.linode.com/) and select **NodeBalanc
 
 ## Set the Label
 
-Within the **Label** field, enter the label you wish to use identify it from other database clusters on your account. A good label should provide some indication as to what the database is used for. The label must be alphanumeric and between 3 and 32 characters.
+Within the **Label** field, enter the label you wish to use identify it from other NodeBalancers on your account. A good label should provide some indication as to what the NodeBalancer will be used for. The label must be alphanumeric, between 3 and 32 characters, and unique from other NodeBalancer labels on your account.
 
 ## Select a Region
 

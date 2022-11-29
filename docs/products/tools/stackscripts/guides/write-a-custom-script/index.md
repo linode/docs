@@ -1,70 +1,49 @@
 ---
-slug: writing-scripts-for-use-with-linode-stackscripts-a-tutorial
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "Write a Custom Script for Use with StackScripts"
 description: "This guide details the StackScript system including script requirements, how to import an existing StackScript into a new StackScript, and more."
 keywords: ["automation", "scripts", "deployments", "instance"]
 tags: ["linode platform","automation","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-21
-image: WritingScripts_LinodeStackScripts.png
+modified: 2022-11-28
 modified_by:
   name: Linode
-title: "Write Custom Scripts for Use with Linode StackScripts"
-contributor:
-  name: Linode
-aliases: ['/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/']
+image: WritingScripts_LinodeStackScripts.png
+aliases: ['/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/','/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/']
 ---
-## What are StackScripts?
-
-[StackScripts](http://linode.com/stackscripts/) provide Linode users with the ability to automate the deployment of custom systems on top of Linode's default Linux distribution images. For example, every time you deploy a new Linode you might execute the same tasks, including:
-
-- Updating your system's software
-- Installing your favorite Linux tools
-- Adding a limited user account
-
-These tasks can be automated using a StackScript that performs these actions for you as part of your Linode's first boot process.
-
-All StackScripts are stored in the Linode Cloud Manager and can be accessed whenever you deploy a Linode. A StackScript authored by you is an *Account StackScript*. While a *Community StackScript* is a StackScript created by a Linode community member that has made their StackScript publicly available in the Linode Cloud Manager.
-
-## In this Guide
 
 Writing a script for use in a StackScript is generally the same as writing a script that is executed from the command line or another program. This guide includes information about the StackScript system, including the following:
 
--  [Base requirements for any script that is used as a StackScript](#stackscript-requirements).
--  [Importing an existing StackScript into your own script for code reuse](#import-a-stackscript).
--  [Accessing a StackScript's ID number](#access-a-stackscript-s-id-number).
--  [Incorporating user defined fields (UDFs) into your scripts to allow for custom behavior when deploying a new Linode with a StackScript](#user-defined-fields-udfs).
--  [Using the StackScript system's default environment variables](#default-environment-variables).
+- [Base requirements for any script that is used as a StackScript](#stackscript-requirements).
+- [Importing an existing StackScript into your own script for code reuse](#import-a-stackscript).
+- [Accessing a StackScript's ID number](#access-a-stackscript-s-id-number).
+- [Incorporating user defined fields (UDFs) into your scripts to allow for custom behavior when deploying a new Linode with a StackScript](#user-defined-fields-udfs).
+- [Using the StackScript system's default environment variables](#default-environment-variables).
 
-## The StackScript System
+## Before You Begin
 
-### StackScript Requirements
+When creating a StackScript, most of the time is spent writing the deployment script itself. This script runs the first time a Compute Instance boots up and allows you to configure the system to fit your precise needs and requirements. Before you write the script, consider the following:
 
-- The primary requirement for your scripts is that the interpreter needed to execute your script should exist in the Linode base image you are deploying. While Bash is an obvious choice for a script, you may choose any scripting language.
+- **What is the purpose of your script?** The first question you should ask is *what purpose will your script serve*. Do you want to build a web server? Are you building a script to take care of securing new servers? Consider each task you want your script to perform.
 
-    {{< note >}}
+- **Which scripting language should be used for your script?** You can write the StackScript in any language that the distribution supports out of the box. Specifically, you need to specify the interpreter that is used to execute the script. Common scripting languages are bash and python.
+
+- **Which Linux distributions should the script support?** Since each distribution bundles different core software, the commands needed to install applications or configure networking vary between distributions. You need to determine which distributions you want to have available when deploying the Compute Instance. Then, you can customize your script to include commands for those distributions.
+
+- **Which dynamic variables do you want the user to set when deploying a Compute Instance?** Determine what information you wish to collect during deployment. These user variables can be defined through the use of UDF fields within the script. All UDF fields are visible in the Cloud Manager when creating a Compute Instance based on the StackScript.
+
+## Define the Language and Interpreter
+
+The primary requirement for your scripts is that the interpreter needed to execute your script should exist in the Linode base image you are deploying. While Bash is an obvious choice for a script, you may choose any scripting language.
+
+{{< note >}}
 Linode images are created using "vanilla" versions of its given distribution. Consult our [Choosing a Linux Distribution](/docs/guides/choosing-a-distribution/) guide to see list of all distributions Linode provides and to access each distribution's corresponding websites. You can find more information on the interpreters available for each distribution on their official websites.
 {{</ note >}}
 
-- When writing a script, you must use a [*shebang*](https://en.wikipedia.org/wiki/Shebang_(Unix)) as the first line of your script. This indicates to your Linux system which interpreter to use when running the script. For example, if you are writing a Bash script, the beginning of your script should include the following line:
+The first line of the script must include a [*shebang*](https://en.wikipedia.org/wiki/Shebang_(Unix)) followed by the path to the interpreter that should be use.
 
-    {{< file >}}
-#!/bin/bash
-{{</ file >}}
-
-    Or, if you are writing a Python script, the beginning of your script should include the following line:
-
-    {{< file >}}
-#!/usr/bin/env python
-{{</ file >}}
-
-    Alternatively, python3 can be specified with the following:
-
-    {{< file >}}
-#!/usr/bin/python3
-{{< /file >}}
+- **Bash:** `#!/bin/bash`
+- **Python:** `#!/usr/bin/env python`
+- **Python 3:** `#!/usr/bin/python3`
 
 ### Import a StackScript
 
@@ -182,8 +161,6 @@ The files you reference within your script must exist and be accessible via `HTT
 ## StackScript Examples
 
 ### Using an External Script
-
-{{< content "stackscripts-create-linode-shortguide" >}}
 
 ## Next Steps
 
