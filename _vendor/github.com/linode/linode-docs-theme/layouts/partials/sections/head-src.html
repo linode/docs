@@ -34,7 +34,13 @@
   src="https://cdn.weglot.com/weglot.min.js"
   data-cfasync="false"
   defer></script>
-{{ $params := (dict "search_config" site.Params.search_config2 "weglot_api_key" site.Params.weglot_api_key "is_production" (not site.IsServer) "is_test" $isTest ) }}
+{{ $params := (dict
+  "search_config" site.Params.search_config2
+  "weglot_api_key" site.Params.weglot_api_key
+  "trustarc_domain" site.Params.trustarc_domain
+  "is_production" (not site.IsServer)
+  "is_test" $isTest )
+}}
 {{ partialCached "jslibs/turbo/script-src.html" "-" }}
 {{- $js := resources.Get "js/main/index.js" -}}
 {{ partial "helpers/script-src.html" (dict "js" $js "params" $params ) }}

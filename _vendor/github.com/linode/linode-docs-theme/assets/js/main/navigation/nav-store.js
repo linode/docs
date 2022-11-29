@@ -3,7 +3,7 @@ import { getScrollPosNavbar } from './nav';
 import { AnalyticsEventsCollector } from './nav-analytics';
 import { initConsentManager } from '../components/index';
 
-export function newNavStore(searchConfig, searchStore) {
+export function newNavStore(searchConfig, searchStore, params) {
 	return {
 		// Stack used when we manipulate the navigation history and to track it so we can go back if needed.
 		history: [],
@@ -26,8 +26,10 @@ export function newNavStore(searchConfig, searchStore) {
 		// but keep it here so we can react on changes.
 		trustecm: {
 			required: false,
-			advertising: false,
+			socialmedia: false,
+			targeting: false,
 			functional: false,
+			performance: false,
 			any: false,
 		},
 
@@ -37,7 +39,7 @@ export function newNavStore(searchConfig, searchStore) {
 				return searchStore.results.lastQueryID;
 			};
 			this.analytics = new AnalyticsEventsCollector(searchConfig, getLastQueryID, this.trustecm);
-			initConsentManager();
+			initConsentManager(params.trustarc_domain);
 
 			if (document.body.dataset.objectid) {
 				// Wait a little for the consent to be set.
