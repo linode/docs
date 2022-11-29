@@ -91,7 +91,7 @@ After the Compute Instance has been created and prepared, the next step is to do
 
 1. Download the installation media for the Linux distribution you wish to install and copy it to the *Installer* disk. The example below shows the instructions to download the network installer for the latest stable version of Debian, but you can replace the URL with one pointing to whichever installer you want.
 
-    ```code {title="Lish console (Rescue Mode)"}
+    ```command {title="Lish console (Rescue Mode)"}
     wget https://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso
     dd if=mini.iso of=/dev/sda
     ```
@@ -103,14 +103,14 @@ As an additional security step, you can use the keys provided in the same direct
     {{< note >}}
 If you would prefer to write the installer directly to the disk as it downloads, use:
 
-```code {title="Lish console (Rescue Mode)"}
+```command {title="Lish console (Rescue Mode)"}
 curl https://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
 ```
 {{< /note >}}
 
 1. Empty the cache so that you have enough space to unpack and install the image.
 
-    ```code {title="Lish console (Rescue Mode)"}
+    ```command {title="Lish console (Rescue Mode)"}
     sync; echo 3 > /proc/sys/vm/drop_caches
     ```
 
@@ -168,7 +168,7 @@ To use Lish with your new system, you must enable the serial console in Grub.
 
 1. Open the grub configuration file `/etc/default/grub` with your preferred text editor. Make the following changes to the `GRUB_CMDLINE_LINUX_DEFAULT` and `GRUB_CMDLINE_LINUX` parameters.
 
-    ```code {title="Glish command prompt"}
+    ```command {title="Glish command prompt"}
     sudo nano /etc/default/grub
     ```
 
@@ -189,19 +189,19 @@ To use Lish with your new system, you must enable the serial console in Grub.
 
     - Ubuntu and Debian:
 
-        ```code {title="Glish command prompt"}
+        ```command {title="Glish command prompt"}
         sudo update-grub
         ```
 
     - CentOS and Fedora:
 
-        ```code {title="Glish command prompt"}
+        ```command {title="Glish command prompt"}
         grub2-mkconfig -o /boot/grub2/grub.cfg
         ```
 
     - Arch Linux and Gentoo:
 
-        ```code {title="Glish command prompt"}
+        ```command {title="Glish command prompt"}
         grub-mkconfig -o /boot/grub/grub.cfg
         ```
 
@@ -217,7 +217,7 @@ Next, you need to determine which partition your root file system is installed o
 
 1. Determine which partition is mounted as the root (`/`) by running the `lsblk` command. In the example output below, it is `sda1` (`/dev/sda1`) - though your device and partitions may vary.
 
-    ```code {title="Lish console or Glish command prompt"}
+    ```command {title="Lish console or Glish command prompt"}
     lsblk
     ```
 
@@ -229,7 +229,7 @@ sda      8:0    0   2G  0 disk
 
 1. Run the `blkid` command to find the UUID of that partition. This is used in a later step when updating GRUB.
 
-    ```code {title="Lish console or Glish command prompt"}
+    ```command {title="Lish console or Glish command prompt"}
     blkid
     ```
 
@@ -239,7 +239,7 @@ sda      8:0    0   2G  0 disk
 
 1. Back up the `/etc/fstab` file before you make changes.
 
-    ```code {title="Lish console or Glish command prompt"}
+    ```command {title="Lish console or Glish command prompt"}
     sudo cp /etc/fstab /etc/fstab.backup
     ```
 
@@ -256,7 +256,7 @@ sda      8:0    0   2G  0 disk
 
 1. Confirm the location of your `grub.cfg` file. Some distributions (notably, CentOS and Fedora) place this file under the `/boot/grub2` directory, while others have it under `/boot/grub`. Your new setup uses Linode's *Grub 2* mode, which looks for a configuration file under `/boot/grub/grub.cfg`. You can confirm if your `grub.cfg` is located in the necessary spot with the `ls` command:
 
-    ```code {title="Lish console or Glish command prompt"}
+    ```command {title="Lish console or Glish command prompt"}
     ls -la /boot/grub/grub.cfg
     ```
 
@@ -268,14 +268,14 @@ sda      8:0    0   2G  0 disk
 
     If the Grub config is located under `/boot/grub2` instead, create a symlink to provide the correct configuration to the bootloader:
 
-    ```code {title="Lish console or Glish command prompt"}
+    ```command {title="Lish console or Glish command prompt"}
     mkdir /boot/grub
     ln -s /boot/grub2/grub.cfg /boot/grub/grub.cfg
     ```
 
 1. Open your `grub.cfg` file and replace all instances of the old partition location and UUID with the new intended location. Run the following commands, replacing the UUID value with the one for your current root partition (determined in step 2 of the current section). You may also need to make adjustments to the following commands if your root partition is at a location other than `/dev/sda1`:
 
-    ```code {title="Lish console or Glish command prompt"}
+    ```command {title="Lish console or Glish command prompt"}
     sed -i -e 's$/dev/sda1$/dev/sda$g' /boot/grub/grub.cfg
     sed -i -e 's$--fs-uuid --set=root 59a7ea75-58c8-46cc-8b71-86f07b56f41f$--set=root /dev/sda$g' /boot/grub/grub.cfg
     sed -i -e 's$root=UUID=59a7ea75-58c8-46cc-8b71-86f07b56f41f$root=/dev/sda$g' /boot/grub/grub.cfg
@@ -319,7 +319,7 @@ If there is not enough room to create these disks, you may need to temporarily u
 
 1. Transfer your root file system from the `/dev/sda1` partition to your new ext4 disk:
 
-    ```code {title="Lish console (Rescue Mode)"}
+    ```command {title="Lish console (Rescue Mode)"}
     dd if=/dev/sda1 of=/dev/sdb bs=1M
     ```
 
@@ -335,7 +335,7 @@ You now should have a Linux system that's compatible with the Linode Platform. F
 
 1. To test internet connectivity, ping an IP address or domain name.
 
-    ```code {title="Lish console or Glish command prompt"}
+    ```command {title="Lish console or Glish command prompt"}
     ping www.linode.com
     ```
 

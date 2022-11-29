@@ -62,17 +62,17 @@ Developers should ignore files and folders they do not plan to push, rather than
 
 1.  Ensure Git is installed on your Linode. For information on installing up Git, see the Linode guide to [installing Git](https://www.linode.com/docs/guides/how-to-install-git-on-linux-mac-and-windows/). Essentially:
 
-    ```code {title="Debain / Ubuntu"}
+    ```command {title="Debain / Ubuntu"}
     sudo apt install git
     ```
 
-    ```code {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
+    ```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
     sudo dnf install git
     ```
 
 1.  To provide an environment for testing `gitignore` behavior, create and initialize a test Git repository:
 
-    ```code
+    ```command
     mkdir testgit
     cd testgit
     git init
@@ -80,7 +80,7 @@ Developers should ignore files and folders they do not plan to push, rather than
 
 1.  Create the example files and folders necessary to follow along with this guide:
 
-    ```code
+    ```command
     mkdir {subdir1,subdir2,subdir3} && touch 1.bak a.bin b.bin file1.txt file2.txt file3.txt file4.txt file5.txt file6.txt one.bak subdir1/file7.txt subdir2/file8.txt subdir3/files.log
     ```
 
@@ -100,7 +100,7 @@ Most developers add the `gitignore` file to the root directory of the repository
 
 There is no command for creating the `.gitignore` file. To create the `.gitignore` file, first, make sure you're in the root directory of the Git project (i.e `testgit`). Then use a text editor, or simply the `touch`command, to create the file:
 
-```code
+```command
 touch .gitignore
 ```
 
@@ -112,7 +112,7 @@ Git ignores all files with this name no matter where they are located in the rep
 
 1.  Run the `git status` command to review the list of untracked files. Determine which files are not important and should not be listed.
 
-    ```code
+    ```command
     git status
     ```
 
@@ -136,7 +136,7 @@ Untracked files:
 
 1.  Edit the `.gitignore` file:
 
-    ```code
+    ```command
     nano .gitignore
     ```
 
@@ -218,7 +218,7 @@ This example explains how to ignore the `subdir2` directory in `gitignore`.
 
 1.  Confirm the directory is now on the ignore list. Neither the directory nor the files it contains should be listed under `untracked files`:
 
-    ```code
+    ```command
     git status
     ```
 
@@ -241,7 +241,7 @@ Untracked files:
 
 Git provides a debug command for determining why a file is being ignored or considered. Use the `check-ignore` command and the `-v` verbose flag. Git lists every rule that applies to the file.
 
-```code
+```command
 git check-ignore -v subdir2/file8.txt
 ```
 
@@ -294,7 +294,7 @@ Untracked Files:
 
 1.  Use `git check-ignore ` to look for `1.bak`:
 
-    ```code
+    ```command
     git check-ignore -v 1.bak
     ```
 
@@ -336,7 +336,7 @@ The `**` works slightly differently in different contexts. The pattern `**/dirna
 
 1.  Use `git check-ignore` to look for the `files.log` file:
 
-    ```code
+    ```command
     git check-ignore -v subdir3/files.log
     ```
 
@@ -383,7 +383,7 @@ This example demonstrates how the rule `!a.bin` overrides the `*.bin` rule. The 
 
 1.  Use `git check-ignore` to look for `b.bin`:
 
-    ```code
+    ```command
     git check-ignore -v b.bin
     ```
 
@@ -393,7 +393,7 @@ This example demonstrates how the rule `!a.bin` overrides the `*.bin` rule. The 
 
 1.  Now look for `a.bin`:
 
-    ```code
+    ```command
     git check-ignore -v a.bin
     ```
 
@@ -451,7 +451,7 @@ one.bak
 
 1.  Use `git check-ignore` to look for `file3.txt`:
 
-    ```code
+    ```command
     git check-ignore -v  file3.txt
     ```
 
@@ -485,7 +485,7 @@ The `gitignore` file is typically checked into the Git repository. This means it
 -   **Local Repository Rules**: Rules in the `.git/info/exclude` file only apply in the local repository. This file is not checked in, so it does not apply to other copies of the repository. This is a good choice for special rules that only apply to your personal repository, including personal data or local environments. The regular `gitignore` rules still apply in this context.
 -   **Global gitignore Rules**: To ignore files in all repositories on a particular system, use a global `.gitignore` file. Run the following command to register the file globally with Git, then add the rules to `~/.gitignore`.
 
-    ```code
+    ```command
     git config --global core.excludesFile ~/.gitignore
     ```
 
@@ -493,7 +493,7 @@ The `gitignore` file is typically checked into the Git repository. This means it
 
 Git does not ignore any checked in files, even if they are covered by patterns in the `gitignore` file. To ignore a checked in file, first remove it from Git. Use this command to remove and ignore the file.
 
-```code
+```command
 git rm --cached FILENAME
 ```
 

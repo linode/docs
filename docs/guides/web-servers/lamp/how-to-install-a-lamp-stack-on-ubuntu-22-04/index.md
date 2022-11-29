@@ -64,37 +64,37 @@ To install the LAMP stack on Ubuntu 22.04 LTS, follow these steps. In all cases,
 
 1.  Using `apt`, update the Ubuntu packages:
 
-    ```code
+    ```command
     sudo apt update && sudo apt upgrade
     ```
 
 2.  Install the Apache web server using `apt`:
 
-    ```code
+    ```command
     sudo apt install apache2
     ```
 
 3.  Install the MySQL web server:
 
-    ```code
+    ```command
     sudo apt install mysql-server
     ```
 
 4.  Install PHP, along with additional PHP modules for Apache and MySQL:
 
-    ```code
+    ```command
     sudo apt install php libapache2-mod-php php-mysql
     ```
 
 5.  **(Optional)** Install the following commonly-used PHP modules. These packages add PHP support for cURL, *JavaScript Object Notation* (JSON), and the *Common Gateway Interface* (CGI).
 
-    ```code
+    ```command
     sudo apt install php-curl php-json php-cgi
     ```
 
 6.  **(Optional)** To host a WordPress site on the server, install the following PHP components:
 
-    ```code
+    ```command
     sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc
     ```
 
@@ -138,7 +138,7 @@ The following values are optimized for a **2GB Linode**. Systems with more capac
 The `Apache Full` profile allows both HTTP and HTTPS traffic. To temporarily limit firewall access to HTTP requests during configuration, use the `Apache` profile instead. The `Apache Secure` profile only allows encrypted HTTPS traffic through the firewall. Do not use this profile until HTTPS is enabled on the server.
     {{< /note >}}
 
-    ```code
+    ```command
     sudo ufw allow OpenSSH
     sudo ufw allow in "Apache Full"
     sudo ufw enable
@@ -146,7 +146,7 @@ The `Apache Full` profile allows both HTTP and HTTPS traffic. To temporarily lim
 
 4.  Verify the firewall settings using the `ufw status` command:
 
-    ```code
+    ```command
     sudo ufw status
     ```
 
@@ -163,20 +163,20 @@ Apache Full (v6)           ALLOW       Anywhere (v6)
 
 5.  Disable the `mpm_event` module and enable the `mpm_prefork` module using the `a2dismod` and `a2enmod` commands. Depending on the installation, these settings might already be configured.
 
-    ```code
+    ```command
     sudo a2dismod mpm_event
     sudo a2enmod mpm_prefork
     ```
 
 6.  Restart Apache using the `systemctl` utility:
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     ```
 
 7.  Ensure Apache is still `active` after the restart:
 
-    ```code
+    ```command
     sudo systemctl status apache2
     ```
 
@@ -192,7 +192,7 @@ apache2.service - The Apache HTTP Server
 Use the Linode Dashboard to find the IP address for your Ubuntu system.
     {{< /note >}}
 
-    ```code
+    ```command
     http://your_IP_address/
     ```
 
@@ -210,7 +210,7 @@ To configure a virtual host, follow these steps. Replace `example.com` with the 
 
 1.  It is easiest to use the default file as a basis for the new virtual host. Copy the default Apache configuration file to `/etc/apache2/sites-available/example.com.conf`. The new configuration file must have the same name as the domain and have the `.conf` extension.
 
-    ```code
+    ```command
     sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
     ```
 
@@ -237,25 +237,25 @@ To configure a virtual host, follow these steps. Replace `example.com` with the 
 
 3.  Create the `public_html` and `logs` directories for the domain. Ensure there is no space between `public_html` and `logs`. The two entries must be separated with a comma.
 
-    ```code
+    ```command
     sudo mkdir -p /var/www/html/example.com/{public_html,logs}
     ```
 
 4.  Change the owner of the `public_html` to `www-data`:
 
-    ```code
+    ```command
     sudo chown -R www-data:www-data /var/www/html/example.com/public_html
     ```
 
 5.  Set the directory permissions for the `public_html` directory:
 
-    ```code
+    ```command
     sudo chmod -R 755 /var/www/html/example.com/public_html
     ```
 
 6.  Use `a2ensite` to link the virtual hosts file and enable the site:
 
-    ```code
+    ```command
     sudo a2ensite example.com
     ```
 
@@ -265,7 +265,7 @@ Enabling site example.com
 
 7.  **(Optional)** As a security precaution, disable the default site:
 
-    ```code
+    ```command
     sudo a2dissite 000-default.conf
     ```
 
@@ -275,7 +275,7 @@ Enabling site example.com
 If Apache fails to reload, validate the syntax of the configuration files. Use the command `sudo apache2ctl configtest` to find any potential errors in the `.conf` file. Ensure the name of the virtual host matches the domain name being used.
     {{< /note >}}
 
-    ```code
+    ```command
     sudo systemctl reload apache2
     ```
 
@@ -289,7 +289,7 @@ The MySQL database is ready to use as soon as it is installed. However, it is ne
 
 1.  Log in to the MySQL shell as the `root` user. The application displays the `mysql>` prompt.
 
-    ```code
+    ```command
     sudo mysql -u root
     ```
 
@@ -305,7 +305,7 @@ mysql>
 
 2.  From the MySQL shell, create the `webdata` database. Create a new user account for web application access. Provide an actual user name and password in place of `webuser` and `password` in the `CREATE USER` query. Grant full rights to the user. MySQL should respond with `Query OK` after each line.
 
-    ```code
+    ```command
     CREATE DATABASE webdata;
     CREATE USER 'webuser' IDENTIFIED BY 'password';
     GRANT ALL ON webdata.* TO 'webuser';
@@ -313,19 +313,19 @@ mysql>
 
 3.  Exit the SQL shell:
 
-    ```code
+    ```command
     quit
     ```
 
 4.  The latest release of MySQL requires a root password before `mysql_secure_installation` can be used. Enter the SQL shell again using `sudo mysql` but do not provide a user.
 
-    ```code
+    ```command
     sudo mysql
     ```
 
 5.  Set a password for `root'@'localhost`. Use an actual secure password instead of `password`.
 
-    ```code
+    ```command
     ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'password';
     ```
 
@@ -335,13 +335,13 @@ mysql>
 To log in to the MySQL shell as `root` after this change, use `mysql -u root -p` and provide the password when prompted.
     {{< /note >}}
 
-    ```code
+    ```command
     exit
     ```
 
 7.  Use the built-in [mysql_secure_installation](https://dev.mysql.com/doc/refman/8.0/en/mysql-secure-installation.html) tool to increase the security of the database. Provide the MySQL password for the `root` account upon request.
 
-    ```code
+    ```command
     sudo mysql_secure_installation
     ```
 
@@ -360,7 +360,7 @@ PHP does not require nearly as much configuration as the other parts of the LAMP
 
 1.  First verify which PHP release is installed using the `-v` option. Store this information for the next step.
 
-    ```code
+    ```command
     php -v
     ```
 
@@ -385,14 +385,14 @@ Ensure these variables are not commented out. If necessary, remove the `;` chara
 
 3.  Create the PHP error log and assign ownership of the log to the web server:
 
-    ```code
+    ```command
     sudo mkdir /var/log/php
     sudo chown www-data /var/log/php
     ```
 
 4.  Restart the Apache server to apply the PHP changes:
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     ```
 
@@ -436,7 +436,7 @@ To validate the installation, follow these steps.
 
 2.  Use a web browser to test the script. Enter the name of the domain followed by `phptest.php` in the address bar. In the following example, substitute the actual name of the domain for `example.com`.
 
-    ```code
+    ```command
     http://example.com/phptest.php
     ```
 
@@ -446,7 +446,7 @@ To validate the installation, follow these steps.
 
 4.  To increase security, remove the test script when testing is complete:
 
-    ```code
+    ```command
     sudo rm /var/www/html/example.com/public_html/phptest.php
     ```
 
@@ -458,7 +458,7 @@ Here are a few things to consider if the LAMP Stack is not working.
 
 -   **Verify Apache is running**: Even if Apache was initially working, it could have stopped or failed upon a reload. Confirm it is `active` and restart it using these commands:
 
-    ```code
+    ```command
     sudo systemctl status apache2
     sudo systemctl restart apache2
     ```
