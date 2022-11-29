@@ -86,7 +86,7 @@ function handleAPIResponse(response) {
 
 	// Required trackers/cookies are always allowed, no need to ask permission.
 	if (!_STATE.hasLoadedRequired) {
-		//activateElement(document.querySelectorAll('.trustecm[trackertype=required]'));
+		tcm.required = true;
 		_STATE.hasLoadedRequired = true;
 	}
 
@@ -100,31 +100,51 @@ function handleAPIResponse(response) {
 	//         These API calls are DIFFERENT than the original API call ("response" parameter) so they must be called separately.
 	// Step 2) Apply the settings after checking if approved
 	var setting = null;
-	if (!_STATE.hasLoadedAdvertising) {
-		setting = PrivacyManagerAPI.callApi('getConsent', MY_DOMAIN, null, null, 'advertising');
-		tcm.advertising = setting.consent == 'approved';
-		if (setting.consent == 'approved') {
-			//activateElement(document.querySelectorAll('.trustecm[trackertype=advertising]'));
-			_STATE.hasLoadedAdvertising = true;
-		} // console.log(setting);
+
+	if (!_STATE.hasLoadeSocialMedia) {
+		setting = PrivacyManagerAPI.callApi('getConsent', MY_DOMAIN, null, null, 'Social Media Cookies');
+		is_approved = setting.consent == 'approved';
+		tcm.socialmedia = is_approved;
+		if (is_approved) {
+			_STATE.hasLoadeSocialMedia = true;
+		}
 	}
+
+	if (!_STATE.hasLoadedTargeting) {
+		setting = PrivacyManagerAPI.callApi('getConsent', MY_DOMAIN, null, null, 'Targeting Cookies');
+		is_approved = setting.consent == 'approved';
+		tcm.targeting = is_approved;
+		if (is_approved) {
+			_STATE.hasLoadedTargeting = true;
+		}
+	}
+
 	if (!_STATE.hasLoadedFunctional) {
-		setting = PrivacyManagerAPI.callApi('getConsent', MY_DOMAIN, null, null, 'functional');
-		tcm.functional = setting.consent == 'approved';
-		if (setting.consent == 'approved') {
-			//activateElement(document.querySelectorAll('.trustecm[trackertype=functional]'));
+		setting = PrivacyManagerAPI.callApi('getConsent', MY_DOMAIN, null, null, 'Functional Cookies');
+		is_approved = setting.consent == 'approved';
+		tcm.functional = is_approved;
+		if (is_approved) {
 			_STATE.hasLoadedFunctional = true;
-		} // console.log(setting);
+		}
+	}
+
+	if (!_STATE.hasLoadedPerformance) {
+		setting = PrivacyManagerAPI.callApi('getConsent', MY_DOMAIN, null, null, 'Performance Cookies');
+		is_approved = setting.consent == 'approved';
+		tcm.performance = is_approved;
+		if (is_approved) {
+			_STATE.hasLoadedPerformance = true;
+		}
 	}
 
 	// No additional checking, this always fires, but only after a user has consented
 	if (!_STATE.hasLoadedAnyConsent) {
 		tcm.any = true;
-		//activateElement(document.querySelectorAll('.trustecm[trackertype=any]'));
 		_STATE.hasLoadedAnyConsent = true;
 	}
 }
 
-export function initConsentManager() {
+export function initConsentManager(domain) {
+	MY_DOMAIN = domain;
 	_STATE.i = setInterval(runOnce, 10);
 }
