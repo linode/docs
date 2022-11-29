@@ -78,7 +78,7 @@ The IPv6 prefixes and their respective quantity of IPv6 addresses that Linode pr
 
 An IPv6 routed range is assigned to a single Linode. Addresses from that range can only be configured on that Linode.
 
-    {{< caution >}}
+{{< caution >}}
 Configuring a `/64` or `/56` routed range will require you to [disable Network Helper](/docs/guides/networking/linode-network/network-helper/#enable-or-disable-network-helper) on your Linode and manually configure your Linode's network settings. Please read [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) and [Manual Network Configuration on a Compute Instance](/docs/guides/networking/linode-network/manual-network-configuration/) for details on this process.
 {{</ caution >}}
 
@@ -91,7 +91,7 @@ An IPv6 pool is accessible from every Linode on your account within the assigned
 
 - `/116` **pool** *(4,096 addresses)*
 
-    {{< caution >}}
+{{< caution >}}
 The IPv6 /116 prefix has been deprecated and is no longer available for new Compute Instances. If you have an existing Compute Instance with a /116 pool, please review the [Upcoming Changes Related to Network Infrastructure Upgrades](/docs/guides/network-infrastructure-upgrades/) to learn about changes that may affect your services.
 {{</ caution >}}
 
