@@ -13,7 +13,7 @@ modified: 2013-10-04
 modified_by:
   name: Linode
 published: 2011-02-23
-title: Using Apache for Proxy and Clustering Services on Fedora 14
+title: Using Apache for Proxy and Cluster Services on Fedora 14
 relations:
     platform:
         key: using-apache-for-proxy-and-clustering
@@ -60,7 +60,7 @@ Reload the web server configuration to create the virtual host. Note that Fedora
 
     /etc/init.d/httpd reload
 
-Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
+Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/guides/dns-overview/#a-and-aaaa) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
 
 ## Case Two: Using ProxyPass to Delegate Services to Alternate Machines
 

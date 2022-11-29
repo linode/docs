@@ -30,7 +30,7 @@ Before beginning the installation process, we assume you've followed the steps o
 
 ## Backup Methodology
 
-Most backups of MySQL databases in this guide are performed using the `mysqldump` tool, which is distributed with the default MySQL server installation. We recommend that you use `mysqldump` whenever possible because it is often the easiest and most efficient way to take database backups. Other methods detailed in this guide are provided for situations when you do not have access to the `mysqldump` tool, as in a recovery environment like [Finnix](/docs/troubleshooting/rescue-and-rebuild/#rescuing) or in situations where the local instance of the MySQL server will not start.
+Most backups of MySQL databases in this guide are performed using the `mysqldump` tool, which is distributed with the default MySQL server installation. We recommend that you use `mysqldump` whenever possible because it is often the easiest and most efficient way to take database backups. Other methods detailed in this guide are provided for situations when you do not have access to the `mysqldump` tool, as in a recovery environment like [Finnix](/docs/guides/rescue-and-rebuild/#rescuing) or in situations where the local instance of the MySQL server will not start.
 
 Nevertheless, this guide provides a mere overview of the `mysqldump` tool, as there are many options for and uses of `mysqldump` that fall beyond the scope of this document. We encourage you to become familiar with all of the procedures covered in this document, and to continue your exploration of `mysqldump` beyond the cases described here. Be sure to note the following:
 

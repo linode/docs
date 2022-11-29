@@ -11,7 +11,7 @@ modified: 2019-01-15
 modified_by:
     name: Linode
 published: 2019-01-15
-title: Getting Started with Puppet - Basic Installation and Setup
+title: Getting Started with Puppet - Installation and Setup
 external_resources:
     - '[Puppet Labs](https://puppet.com/)'
     - '[Puppet Open Source Documentation](https://docs.puppet.com/puppet/)'
@@ -94,7 +94,7 @@ ff02::2 ip6-allrouters
 
 {{< /disclosure-note >}}
 
-1.  [Set up DNS records](/docs/guides/dns-manager/#add-dns-records) for your Linodes' FQDNs. For each Linode, create a new *A record* with the name specified by its FQDN and assign it to that Linode's IP address.
+1.  [Set up DNS records](/docs/products/networking/dns-manager/guides/manage-dns-records/) for your Linodes' FQDNs. For each Linode, create a new *A record* with the name specified by its FQDN and assign it to that Linode's IP address.
 
     If you don't use Linode's name servers for your domain, consult your name server authority's website for instructions on how to edit your DNS records.
 

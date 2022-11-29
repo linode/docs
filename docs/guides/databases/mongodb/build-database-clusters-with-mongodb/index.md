@@ -73,7 +73,7 @@ On each Linode in your cluster, add the following to the `/etc/hosts` file:
 Replace the IP addresses above with the IP addresses for each Linode. Also substitute the hostnames of the Linodes in your cluster for the hostnames above.
 
 {{< note >}}
-You may also configure DNS records for each host rather than using hosts file entries. However, be aware that public DNS servers, such as the ones used when configuring records in the [DNS Manager](/docs/guides/dns-manager/), only support public IP addresses.
+You may also configure DNS records for each host rather than using hosts file entries. However, be aware that public DNS servers, such as the ones used when configuring records in the [DNS Manager](/docs/products/networking/dns-manager/), only support public IP addresses.
 {{< /note >}}
 
 ## Set Up MongoDB Authentication
@@ -130,7 +130,7 @@ In this section you'll create a key file that will be used to secure authenticat
 
         sudo systemctl restart mongod
 
-    You can skip this step on your query router, since you'll create a separate configuration file for it later in this guide. Note that key file authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/), so you will need to [create users](/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04/#create-database-users) and assign them the necessary privileges to access databases.
+    You can skip this step on your query router, since you'll create a separate configuration file for it later in this guide. Note that key file authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/), so you will need to [create users](/docs/guides/install-mongodb-on-ubuntu-16-04/#create-database-users) and assign them the necessary privileges to access databases.
 
 ## Initialize Config Servers
 
