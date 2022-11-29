@@ -1,20 +1,21 @@
 ---
-slug: working-with-unicode-in-python
+slug: how-to-use-unicode-in-python3
 author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide introduces the concept of Unicode to developers, explains how Python handles unicode, and demonstrates how to handle common errors'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
 keywords: ['Python unicode','Unicode python','Unicode error python','Python unicode to string']
+tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-21
 modified_by:
   name: Linode
 title: "How to Use Unicode in Python 3 | Linode"
-h1_title: "How to Use Unicode in Python 3 | Linode"
+h1_title: "Using Unicode in Python 3"
 enable_h1: true
 contributor:
   name: Jeff Novotny
+  link: https://github.com/JeffreyNovotny/
 external_resources:
 - '[Python Unicode Documentation](https://docs.python.org/3/howto/unicode.html)'
 - '[Unicode site](https://home.unicode.org/)'
@@ -26,21 +27,21 @@ external_resources:
 - '[Python background on lexical analysis](https://docs.python.org/3/reference/lexical_analysis.html)'
 ---
 
-Most of the time, using [*Unicode*](https://home.unicode.org/) characters in Python does not require extra effort. However, sometimes encoding and decoding do not work properly, which results in errors. To resolve these issues, it helps to understand how Python encodes and decodes Unicode. Fortunately, the Python library includes some powerful and useful utilities and built-in functions to manage these tasks. This guide introduces Unicode and the [*UTF-8*](https://en.wikipedia.org/wiki/UTF-8) character encoding and explains how Python handles Unicode. It also discusses some common Python Unicode errors and demonstrates how to resolve them.
+Most of the time, using [*Unicode*](https://home.unicode.org/) characters in Python does not require extra effort. However, sometimes encoding and decoding do not work properly, which results in errors. To resolve these issues, this guide helps you understand how Python encodes and decodes Unicode. Fortunately, the Python library includes some powerful and useful utilities and built-in functions to manage these tasks. This guide introduces Unicode and the [*UTF-8*](https://en.wikipedia.org/wiki/UTF-8) character encoding and explains how Python handles Unicode. It also discusses some common Python Unicode errors and demonstrates how to resolve them.
 
 ## An Introduction to Unicode on Python
 
-To properly understand how Python manages Unicode, it helps to understand character processing. Computer files are written using a specific character set. A character set is a collection of characters used within a language or domain. For instance, the written English language maps to a character set containing 26 upper and lower case letters, along with punctuation marks. However, computers use a more formal collection called a *coded character set* (CCS).
+To properly understand how Python manages Unicode, you need to understand character processing. Computer files are written using a specific character set. A character set is a collection of characters used within a language or domain. For instance, the written English language maps to a character set containing 26 upper and lower case letters, along with punctuation marks. However, computers use a more formal collection called a *Coded Character Set* (CCS).
 
-In a CCS, each character is assigned a corresponding numerical values known as a *code point*. A set of code points makes it possible for a system to translate between the on-screen representation of each character and its binary equivalent. Every character set is also associated with a *code unit*. The code unit determines the size of each encoded character. For instance, a character set could encode every single character using 16 bits, or two bytes. The same code point could be associated with different code units in different encodings. For instance, the value `127` might be represented using 7, 8, 16, or 32 bits. Some formats even use a variable-length encoding. This means it is not possible to determine the binary representation of a character based on its code point.
+In a CCS, each character is assigned a corresponding numerical value known as a *code point*. A set of code points makes it possible for a system to translate between the on-screen representation of each character and its binary equivalent. Every character set is also associated with a *code unit*. The code unit determines the size of each encoded character. For instance, a character set could encode every single character using 16 bits, or two bytes. The same code point could be associated with different code units in different encodings. For instance, the value `127` might be represented using 7, 8, 16, or 32 bits. Some formats even use a variable-length encoding. This means it is not possible to determine the binary representation of a character based on its code point.
 
-Text is decoded and encoded using a specific encoding standard. The encoding algorithm is known as a *codec*, which is a portmanteau of coder/decoder. The system must know what codec to use to encode/decode the file correctly. Files can be decoded from bytes to characters and text can be encoded from characters to bytes. Format conversions can certainly become complicated, but most files use either the ASCII or Unicode format.
+Text is decoded and encoded using a specific encoding standard. The encoding algorithm is known as a *codec*, which is a portmanteau of the coder/decoder. The system must know what codec to use to encode/decode the file correctly. Files can be decoded from bytes to characters and text can be encoded from characters to bytes. Format conversions can certainly become complicated, but most files use either the ASCII or Unicode format.
 
 ## What is Unicode?
 
 Unicode is currently the most widely-used encoding standard. It was developed through the joint efforts of Xerox and Apple, but it is currently administered and maintained by the Unicode Consortium. Unicode has successfully unified pre-existing character sets and now serves as the international standard. Unicode has the goal of including every character used in the world's active writing systems.
 
-Unicode describes the list of available characters and their code points, but does not describe how to map the code points to bytes. It also includes a formal Unicode name for each character. A variety of *character encoding schemes* (CES) can be applied to Unicode text to map the characters to bytes.
+Unicode describes the list of available characters and their code points but does not describe how to map the code points to bytes. It also includes a formal Unicode name for each character. A variety of *character encoding schemes* (CES) can be applied to Unicode text to map the characters to bytes.
 
 The Unicode standard includes the following components:
 
@@ -53,17 +54,17 @@ The Unicode character set includes all traditional ASCII characters, internation
 
 The Unicode code space is divided into seventeen planes to help structure and organize the collection. Related characters are placed within contiguous blocks inside a single plane. This makes it easier to locate specific characters in the published Unicode charts. All characters have a fixed name that uniquely identifies them. This name cannot be subsequently changed, even if it is inaccurate or contains errors.
 
-Unicode contains several unallocated "non-character" code points and blocks of private-use code points. The private characters can be used internally or through agreement between a sender and receiver. In addition, a set of "formatting" characters modifies the behavior of adjacent characters, including ligatures. Some abstract characters can only be represented by a sequence of two or more characters. Unicode maintains a list of these abstract characters, but they are often the source of some confusion.
+Unicode contains several unallocated "non-character" code points and blocks of private-use code points. The private characters can be used internally or through an agreement between a sender and receiver. In addition, a set of "formatting" characters modifies the behavior of adjacent characters, including ligatures. Some abstract characters can only be represented by a sequence of two or more characters. Unicode maintains a list of these abstract characters, but they are often the source of some confusion.
 
-Although moderated, Unicode is an open system. New additions are always being proposed. Unicode has the capacity to expand to over one million code points, and there is still plenty of room for new characters. The current release of Unicode is 14.0, which was released in 2021.
+Although moderated, Unicode is an open system. New additions are always being proposed. Unicode can expand to over one million code points, and there is still plenty of room for new characters. The current release of Unicode is 14.0, which was released in 2021.
 
-Most operating systems, web browsers, text processors, and programming languages such as Python have built-in support for Unicode. They are able to decipher Unicode-encoded text and display the appropriate characters. Some applications do not support Unicode or have not yet implemented the latest release. In this case, users might see empty rectangles, or the `?` symbol in place of actual text. Some systems only support one or two byte Unicode characters, which is a subset of the entire collection.
+Most operating systems, web browsers, text processors, and programming languages such as Python have built-in support for Unicode. They can decipher Unicode-encoded text and display the appropriate characters. Some applications do not support Unicode or have not yet implemented the latest release. In this case, users might see empty rectangles or the `?` symbol in place of actual text. Some systems only support one or two-byte Unicode characters, which is a subset of the entire collection.
 
-The [Unicode site](https://home.unicode.org/) provides a complete overview of the standard, along with a FAQ and explanation of how to use the site. Perhaps the most important section of the site is the [specification of the latest release](https://www.unicode.org/versions/Unicode14.0.0/). The documentation allows developers to view the latest code charts and read an overview of each section.
+The [Unicode site](https://home.unicode.org/) provides a complete overview of the Unicode standard, along with a FAQ and explanation of how to use the site. Perhaps the most important section of the site is the [specification of the latest release](https://www.unicode.org/versions/Unicode14.0.0/). The documentation allows developers to view the latest code charts and read an overview of each section.
 
 ### What is the Difference between ASCII and Unicode?
 
-ASCII is a very early character encoding developed from telegraph code. It can be considered an ancestor of the current Unicode system. ASCII is an abbreviation of the American Standard Code for Information Interchange. It was the standard during the early days of the internet until approximately 2008, and is still common today.
+ASCII is a very early character encoding developed from telegraph code. It can be considered an ancestor of the current Unicode system. ASCII is an abbreviation of the American Standard Code for Information Interchange. It was the standard during the early days of the internet until approximately 2008 and is still common today.
 
 The ASCII character set consists of 128 characters, which have code points between 0 and 127. Each code point is represented as a 7-bit binary number. Some applications used the eighth and final bit for proprietary purposes, leading to a lack of compatibility. The set of ASCII characters was found to be too small and restrictive, so new encodings were developed to allow for more characters. However, most modern encoding systems are based on ASCII and typically preserve the original code points for the original ASCII characters.
 
@@ -75,7 +76,7 @@ All code points in this list use the decimal system.
 
 - Lowercase letters from `a` to `z`. These have code points between `97` to `122`.
 - Uppercase letters from `A` to `Z`. They are assigned code points between `65` to `90`.
-- The digits `0` to `9`, running from code point `30` to `39`.
+- The digits `0` to `9`, run from code points `30` to `39`.
 - The space character, with code point `32`.
 - Essential punctuation points.
 - Opening and closing brackets, parentheses, braces, chevrons, and forward/backward slashes.
@@ -83,13 +84,13 @@ All code points in this list use the decimal system.
 - A set of 32 non-printable control characters, including codes for a line return, tab, bell, backspace, and form feed. These characters have code points `1` to `31`, and `127`. Many of these codes apply to archaic printing devices and are no longer in use. A few of these codes have been assigned new meanings.
 - A `null` character that has code point `0`.
 
-A complete list of the characters can be found at the [Wikipedia ASCII page](https://en.wikipedia.org/wiki/ASCII#Printable_characters). The ordering of characters based on their ASCII code points is known as *ASCIIbetical order*. Computer systems sometimes process characters using ASCIIbetical order rather than alphabetical order.
+A complete list of the characters can be found on the [Wikipedia ASCII page](https://en.wikipedia.org/wiki/ASCII#Printable_characters). The ordering of characters based on their ASCII code points is known as *ASCIIbetical order*. Computer systems sometimes process characters using ASCIIbetical order rather than alphabetical order.
 
 By contrast, Unicode is an expanded and updated encoding standard that builds upon the original ASCII standard. Unicode separates the code points from the details of the encoding system. This permits a much wider range of characters up to four bytes.
 
 The Unicode character set incorporates the entirety of the ASCII character set as the first 127 characters. All ASCII characters have the same code points in both encodings. This means any ASCII text file is a valid UTF-8 file. Additionally, any UTF-8 file that only uses ASCII characters can be processed as ASCII text. This ensures legacy ASCII-only applications can accept files with only ASCII characters, maintaining backward compatibility.
 
-The greater flexibility of Unicode allowed it to become the modern standard for character encoding in computer systems and on the internet. However, ASCII-only applications and systems still persist to this day. ASCII-only applications and files are guaranteed to be compatible with any system.
+The greater flexibility of Unicode allowed it to become the modern standard for character encoding in computer systems and on the internet. However, ASCII-only applications and systems persist to this day. ASCII-only applications and files are guaranteed to be compatible with any system.
 
 ### What is UTF-8?
 
@@ -99,7 +100,7 @@ UTF-8 is backward-compatible with ASCII. All ASCII files are UTF-8 compliant and
 
 A code unit in UTF-8 is 8 bits, compared to 7 bits for ASCII. However, one character can map to anywhere between one and four code units. The alternative UTF-32 codec represents all characters using four code units each consisting of four bytes. This means UTF-8 generates much smaller files than UTF-32.
 
-UTF-8 is the most popular encoding on the internet, and is used in between 95 to 100% of all websites. It is now considered the international standard for Unicode encoding. Virtually all modern applications support UTF-8, and many standards and applications only accept files encoded in UTF-8. UTF-8 files are safe to use with programming languages that use escape or special characters.
+UTF-8 is the most popular encoding on the internet and is used in between 95 to 100% of all websites. It is now considered the international standard for Unicode encoding. Virtually all modern applications support UTF-8, and many standards and applications only accept files encoded in UTF-8. UTF-8 files are safe to use with programming languages that use escape or special characters.
 
 Here are some of the main advantages of UTF-8:
 
@@ -108,30 +109,30 @@ Here are some of the main advantages of UTF-8:
 - All ASCII strings are valid UTF-8 strings and have the same code points. This means UTF-8 can encode ASCII files. Seven-bit values never otherwise occur in UTF-8, avoiding confusion.
 - UTF-8 is a compact and concise encoding. Most Unicode characters can be stored in one or two bytes.
 - UTF-8 can resynchronize at the next code point to recover from corrupted or lost data. Because certain values cannot occur in UTF-8, errors are easier to detect. The start of a character can be found within three bytes of any point in the file, and the sequence for one character never begins inside another character.
-- It avoids the bytes `FF` or `FE`, to avoid confusion with the UTF-16 byte order mark. This means it is impossible to misinterpret an UTF-8 file as UTF-16.
+- It avoids the bytes `FF` or `FE`, to avoid confusion with the UTF-16 byte order mark. This means it is impossible to misinterpret a UTF-8 file as UTF-16.
 - It is byte-oriented and the encoding does not depend on the underlying hardware architecture. The first byte indicates the number of bytes of the next character.
 - If a file gets split in the middle of a character, only a single character is lost.
 
 The Unicode encoding process follows an establishing encoding formula, which designates certain bits as framing bits. In practice, this restricts the maximum value to 21 bits. The encoding technique can be described as follows.
 
-- One-byte values begin with a `0`, followed by the 7-bits of the code point. All ASCII values, and only the ASCII values, are encoded as one-byte values.
-- For two-byte values, the first byte begins with `110`, and the second with `10`. A byte beginning with `10` is a *continuation byte*. The remainder of the bits encode the code point. These values are used for all Latin-style alphabets, along with Greek, Cyrillic, Hebrew, Arabic, and some other languages. Two-byte values also encode diacritical marks and International Phonetic Alphabet (IPA) extensions.
+- One-byte values begin with a `0`, followed by the 7 bits of the code point. All ASCII values, and only the ASCII values, are encoded as one-byte values.
+- For two-byte values, the first byte begins with `110`, and the second with `10`. A byte beginning with `10` is a *continuation byte*. The remainder of the bits encodes the code point. These values are used for all Latin-style alphabets, along with Greek, Cyrillic, Hebrew, Arabic, and some other languages. Two-byte values also encode diacritical marks and International Phonetic Alphabet (IPA) extensions.
 - Three-byte values start with `1110`. The second and third bytes begin with `10`. This plane of values encodes the Basic Multilingual Plane, including almost all characters commonly in use, and many emojis.
 - Four-byte values are indicated with leading `11110` bits. The remaining three bytes start with `10`. Emojis, mathematical symbols, and some ideographic symbols from Asian languages are encoded using four bytes.
-- Certain bit patterns indicate an invalid sequence. This could indicate a potentially valid code point that has not been assigned a value yet, or an invalid UTF-8 value. An example is an unexpected continuation byte. Most invalid values are dropped, but hackers have used them to bypass security measures.
-- The byte order mark `0xEF 0xBB 0xBF` at the start of a file indicates the file uses UTF-8. However, it is not recommended or required, and might confuse some systems. If the file begins with the byte order mark `FEFF`, the file is encoded in UTF-16, not UTF-8.
+- Certain bit patterns indicate an invalid sequence. This could indicate a potentially valid code point that has not been assigned a value yet or an invalid UTF-8 value. An example is an unexpected continuation byte. Most invalid values are dropped, but hackers have used them to bypass security measures.
+- The byte order mark `0xEF 0xBB 0xBF` at the start of a file indicates the file uses UTF-8. However, it is not recommended or required and might confuse some systems. If the file begins with the byte order mark `FEFF`, the file is encoded in UTF-16, not UTF-8.
 
 As an example, here is how to encode the Unicode code point for the Peso symbol `₱`.
 
 - The Unicode code point for this symbol is `0x20B1`. It can be found in the currency chart in the [Unicode charts](https://www.unicode.org/charts/).
 - This value requires a three-byte encoding, with 16 bits used for the code point and eight bits for the framing.
 - Converted to binary, this value is `0010 0000 1011 0001`.
-- The first four bits are encoded in the first byte and preceded with the framing bits `1110`. This results in `1110 0010`.
+- The first four bits are encoded in the first byte and preceded by the framing bits `1110`. This results in `1110 0010`.
 - The second byte begins with `10`, followed by the next six bits of the code point. This results in `1000 0010`.
 - The third and final byte also starts with `10`, followed by the remaining encoding bits. This yields `1011 0001`.
 - Taken together, this is `1110 0010 1000 0010 1011 0001`. In hexadecimal, this is `0xE282B1`.
 
-UTF-8 can be contrasted with the UTF-16 and UTF-32 encoding schemes. UTF-16 always uses at least two bytes to encode characters. It can also use four bytes, while UTF-32 always uses four bytes. These schemes are somewhat easier to decode and use fewer framing bits. However, they are less concise than UTF-8 and are not ASCII compatible.
+UTF-8 can be contrasted with the UTF-16 and UTF-32 encoding schemes. UTF-16 always uses at least two bytes to encode characters. It can also use four bytes, while UTF-32 always uses four bytes. These schemes are somewhat easier to decode and use fewer framing bits. However, they are less concise than UTF-8 and are not ASCII-compatible.
 
 ## Before You Begin
 
@@ -140,7 +141,7 @@ UTF-8 can be contrasted with the UTF-16 and UTF-32 encoding schemes. UTF-16 alwa
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How Does Python Implement Unicode?
@@ -151,7 +152,7 @@ Python handles Unicode very differently in Python 2 and Python 3. In Python 2, t
 This guide only discusses Unicode processing for Python 3. Python 2 handles Unicode very differently, so these instructions do not apply. For more information, consult the [Python 2 Unicode documentation](https://docs.python.org/2/howto/unicode.html) for further guidance. Python strongly recommends that developers upgrade to Python 3.
 {{< /note >}}
 
-According to the Python [Unicode documentation](https://docs.python.org/3/howto/unicode.html), the most important principle is to only work with Unicode strings internally. Decode the input data as soon as possible and encoding the output only at the end. This greatly simplifies most programs and avoids introducing errors.
+According to the Python [Unicode documentation](https://docs.python.org/3/howto/unicode.html), the most important principle is to only work with Unicode strings internally. Decode the input data as soon as possible and encode the output only at the end. This greatly simplifies most programs and avoids introducing errors.
 
 All Python 3 strings are Unicode strings and are stored as Unicode. This means Unicode characters can be included in a string. When the text is encoded, all characters are converted to their byte equivalent. To use Unicode characters in a string, declare the string normally, and include the Unicode characters in the correct position.
 
@@ -162,7 +163,7 @@ All Python 3 strings are Unicode strings and are stored as Unicode. This means U
 ❤️
 {{< /output >}}
 
-Python 3 also permits many Unicode characters to be used as part of variable and function names. However, it is not possible for symbols or emojis to serve in these roles. For instance, the "heart" emoji can not be part of a variable name. In the following example, the variable name `Øyen` contains a character from the Norwegian alphabet.
+Python 3 also permits many Unicode characters to be used as part of variable and function names. However, symbols or emojis can't serve in these roles. For instance, the "heart" emoji can not be part of a variable name. In the following example, the variable name `Øyen` contains a character from the Norwegian alphabet.
 
     Øyen = "Lofoten"
     print(Øyen)
@@ -171,11 +172,11 @@ Python 3 also permits many Unicode characters to be used as part of variable and
 Lofoten
 {{< /output >}}
 
-A string can still be declared using a `u` at the front of the string, but this is no longer required. If a developer is simultaneously processing Unicode and ASCII files, they might want to use this convention to increase clarity. This is also necessary to back port files to Python 2.
+A string can still be declared using a `u` at the front of the string, but this is no longer required. If a developer is simultaneously processing Unicode and ASCII files, they might want to use this convention to increase clarity. This is also necessary to backport files to Python 2.
 
     u = u"❤️"
 
-A character can also be declared using its *escape sequence*. The Unicode escape sequence for two byte characters is a backslash `\` character, a `u`, and four hexadecimal digits indicating the code point. If the hexadecimal character is shorter than four digits, insert leading zeros to pad the length to four.
+A character can also be declared using its *escape sequence*. The Unicode escape sequence for two-byte characters is a backslash `\` character, a `u`, and four hexadecimal digits indicating the code point. If the hexadecimal character is shorter than four digits, insert leading zeros to pad the length to four.
 
 The Unicode code point for the musical note symbol `♩` is `0x2669`. This symbol can be assigned to a Python string using its hexadecimal equivalent.
 
@@ -276,7 +277,7 @@ For more information on reading and writing Unicode files, consult the [Python U
 
 Python 3 has far fewer limitations than Python 2. However, certain functions might not work as expected for characters requiring more than one code point or interactions between two consecutive characters. A good example of this is the `ord` function, which expects a single code point.
 
-Always confirm the encoding of an input file unless it is known to be an UTF-8 file. Usually, the file specifies the encoding in the first or second line. However, sometimes the codec is not clear, so developers might have to contact the file originator.
+Always confirm the encoding of an input file unless it is known to be a UTF-8 file. Usually, the file specifies the encoding in the first or second line. However, sometimes the codec is not clear, so developers might have to contact the file originator.
 
 ### Encoding Text in Python
 
@@ -315,7 +316,7 @@ The inverse function to `encode` is `decode`. If this function is applied to a s
 
 Most of the time, the encoding and decoding process goes smoothly without much extra effort. However, Unicode errors can occur in Python. When Python cannot decode a file, it displays the `UnicodeDecodeError` message.
 
-The most common Python Unicode error happens when a non-UTF-8 file is decoded using the UTF-8 codec. In this example, a string is encoded using the `latin-1` encoding. Attempting to decode it as an UTF-8 file results in a `UnicodeDecodeError`.
+The most common Python Unicode error happens when a non-UTF-8 file is decoded using the UTF-8 codec. In this example, a string is encoded using the `latin-1` encoding. Attempting to decode it as a UTF-8 file results in a `UnicodeDecodeError`.
 
     quartercup = "¼"
     quart_encode = quartercup.encode("latin-1")
@@ -342,7 +343,7 @@ This error can also occur when the `decode` method is applied to a byte object c
 UnicodeDecodeError: 'utf-8' codec can't decode byte 0xfe in position 0: invalid start byte
 {{< /output >}}
 
-The `UnicodeEncodeError` is less common because developers generally have some control over the material they are decoding. However, it can happen if a developer attempts to encode Unicode data using another encoding algorithm. In this case, encode is used on a string containing the bumblebee emoji. The string can be correctly converted to bytes using the UTF-8 encoder. However, when `encode` is invoked with the `ASCII` encoder, the attempt fails, generating the `UnicodeEncodeError`. This is because the bumblebee emoji does not exist in ASCII, and the ASCII codec cannot translate the Unicode code point.
+The `UnicodeEncodeError` is less common because developers generally have some control over the material they are decoding. However, it can happen if a developer attempts to encode Unicode data using another encoding algorithm. In this case, encoding is used on a string containing the bumblebee emoji. The string can be correctly converted to bytes using the UTF-8 encoder. However, when `encode` is invoked with the `ASCII` encoder, the attempt fails, generating the `UnicodeEncodeError`. This is because the bumblebee emoji does not exist in ASCII, and the ASCII codec cannot translate the Unicode code point.
 
     bee = "\U0001F41D"
     utf8_bee = bee.encode("utf-8")
@@ -364,8 +365,8 @@ To avoid errors, `encode` and `decode` accept the `replace` keyword as the secon
 '�'
 {{< /output >}}
 
-## Concluding Thoughts about Unicode on Python
+## Concluding Thoughts About Unicode on Python
 
 Unicode was designed as a replacement and extension for the ASCII character set, which only contained 128 characters. Unicode covers characters from almost every world language, along with many symbols and emoji. Each character has an equivalent code point, which is used to identify, display, and translate the character.
 
-UTF-8 is an encoding technique for converting Unicode characters to bytes and vice versa. It uses between one and four bytes to store a Unicode code point and is fully backward-compatible with ASCII. Python fully supports both Unicode and UTF-8, and permits strings to include any Unicode character. It includes the `unicodedata` library, which allows Python to manipulate Unicode data. Python decodes and encodes Unicode data using built-in string and byte methods. For more information on using Unicode in Python, see the [Python documentation](https://docs.python.org/3/howto/unicode.html).
+UTF-8 is an encoding technique for converting Unicode characters to bytes and vice versa. It uses between one and four bytes to store a Unicode code point and is fully backward-compatible with ASCII. Python fully supports both Unicode and UTF-8 and permits strings to include any Unicode character. It includes the `unicodedata` library, which allows Python to manipulate Unicode data. Python decodes and encodes Unicode data using built-in string and byte methods. For more information on using Unicode in Python, see the [Python documentation](https://docs.python.org/3/howto/unicode.html).
