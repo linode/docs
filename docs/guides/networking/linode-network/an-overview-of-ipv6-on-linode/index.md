@@ -7,10 +7,10 @@ description: "This guide is a brief overview of IPv6 support on Linode, includin
 keywords: ["ipv6 networking", "IP configuration"]
 aliases: ['/networking/an-overview-of-ipv6-on-linode/','/networking/how-to-enable-native-ipv6-on-linux/','/networking/native-ipv6-networking/','/networking/linode-network/an-overview-of-ipv6-on-linode/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-09-29
+published: 2011-05-03
+modified: 2022-11-29
 modified_by:
   name: Linode
-published: 2011-05-03
 title: "An Overview of IPv6 on Linode"
 external_resources:
  - '[Understanding IP Addressing](http://www.ripe.net/internet-coordination/press-centre/understanding-ip-addressing)'
@@ -28,8 +28,10 @@ In order for your Linode to receive its SLAAC address, it must respond to IPv6's
 
 Please be sure to allow ICMPv6 in your [firewall](/docs/security/securing-your-server#configure-a-firewall). For example, in `iptables`, you can issue the following commands:
 
-    ip6tables -A INPUT -p icmpv6 -j ACCEPT
-    ip6tables -A FORWARD -p icmpv6 -j ACCEPT
+```command
+ip6tables -A INPUT -p icmpv6 -j ACCEPT
+ip6tables -A FORWARD -p icmpv6 -j ACCEPT
+```
 {{< /note >}}
 
 ## How to Find Your IPv6 Address
@@ -42,21 +44,28 @@ See the [Viewing IP Addresses](/docs/guides/managing-ip-addresses/#viewing-ip-ad
 
 ### Linux Terminal
 
-1.  Using your terminal, SSH into the Linode whose IPv6 address you would like to find.
+1. Using your terminal, SSH into the Linode whose IPv6 address you would like to find.
 
-        ssh user@192.0.2.0
+    ```command
+    ssh user@192.0.2.0
+    ```
 
-1.  Use the `ip` tool to find your Linode's IPv6 address:
+1. Use the `ip` tool to find your Linode's IPv6 address:
 
-        root@localhost:~# ip -6 address
-        1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 state UNKNOWN qlen 1
-            inet6 ::1/128 scope host
-              valid_lft forever preferred_lft forever
-        3: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 state UP qlen 1000
-            inet6 2600:3c02::f03c:91ff:fe24:3a2f/64 scope global mngtmpaddr dynamic
-              valid_lft 2591998sec preferred_lft 604798sec
-            inet6 fe80::f03c:91ff:fe24:3a2f/64 scope link
-              valid_lft forever preferred_lft forever
+    ```command
+    ip -6 address
+    ```
+
+    ```output
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 state UNKNOWN qlen 1
+        inet6 ::1/128 scope host
+          valid_lft forever preferred_lft forever
+    3: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 state UP qlen 1000
+        inet6 2600:3c02::f03c:91ff:fe24:3a2f/64 scope global mngtmpaddr dynamic
+          valid_lft 2591998sec preferred_lft 604798sec
+        inet6 fe80::f03c:91ff:fe24:3a2f/64 scope link
+          valid_lft forever preferred_lft forever
+    ```
 
 -  Line 3 shows the IPv6 loopback interface, `::1/128`. This is used for IPv6 traffic within the system, similar to the `127.0.0.0/8` IPv4 address block.
 
@@ -68,7 +77,7 @@ If your Linode does not have the correct IPv6 address or any IPv6 address at all
 
 ## Additional IPv6 Addresses
 
-If a single IPv6 address isn't sufficient for your application, additional IPv6 addresses are provided through large address blocks, also called routed ranges or pools. From these ranges, you can manually configure individual IPv6 addresses on your Linode. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) and [Manual Network Configuration on a Compute Instance](/docs/guides/networking/linode-network/manual-network-configuration/) guides for instructions on adding an IPv6 range and to learn how to configure it within your system.
+If a single IPv6 address isn't sufficient for your application, additional IPv6 addresses are provided through large address blocks, also called routed ranges or pools. From these ranges, you can manually configure individual IPv6 addresses on your Linode. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) and [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) guides for instructions on adding an IPv6 range and to learn how to configure it within your system.
 
 The size of each block is identified through a prefix. These are indicated with a slash `/` followed by a number in base 10: the length of the network **prefix** in bits. This translates to the number of available addresses that are available in the range (or pool). For example, the prefix `/48` contains 2<sup>128-48</sup> = 2<sup>80</sup> = 1,208,925,819,614,629,174,706,176 addresses. For an address like `2001:db8:1234::/48` the block of addresses is `2001:db8:1234:0000:0000:0000:0000:0000` to `2001:db8:1234:ffff:ffff:ffff:ffff:ffff`.
 
@@ -78,9 +87,9 @@ The IPv6 prefixes and their respective quantity of IPv6 addresses that Linode pr
 
 An IPv6 routed range is assigned to a single Linode. Addresses from that range can only be configured on that Linode.
 
-{{< caution >}}
-Configuring a `/64` or `/56` routed range will require you to [disable Network Helper](/docs/guides/networking/linode-network/network-helper/#enable-or-disable-network-helper) on your Linode and manually configure your Linode's network settings. Please read [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) and [Manual Network Configuration on a Compute Instance](/docs/guides/networking/linode-network/manual-network-configuration/) for details on this process.
-{{</ caution >}}
+{{< note >}}
+Configuring a `/64` or `/56` routed range requires you to [disable Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) on your Linode and manually configure its network settings. Please review the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) and [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) guides for details on this process.
+{{</ note >}}
 
 - `/64` **routed range** *(18,446,744,073,709,551,616 addresses)*: This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses.
 - `/56` **routed range** *(4,722,366,482,869,645,213,696 addresses)*: These larger ranges are typically only required by specialized systems or networking applications. When requesting a `/56` range, please provided information regarding your use case.
