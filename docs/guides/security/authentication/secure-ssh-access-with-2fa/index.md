@@ -8,7 +8,7 @@ keywords: ["2fa","two factor authentication", "ssh", "google authenticator"]
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
-modified: 2022-11-22
+modified: 2022-11-29
 modified_by:
   name: Linode
 title: "Use 2FA (Two-Factor Authentication) with SSH"
@@ -92,41 +92,41 @@ Be sure to have your phone or mobile device ready, since this is where you'll ad
 
 1. You'll be prompted to answer the following questions:
 
-    {{< output >}}
-Do you want me to update your "/home/exampleuser/.google_authenticator" file (y/n)
-{{</ output >}}
+    ```output
+    Do you want me to update your "/home/exampleuser/.google_authenticator" file (y/n)
+    ```
 
     This specifies whether the authentication settings will be set for this user. Answer `y` to create the file that stores these settings.
 
-    {{< output >}}
-Do you want to disallow multiple uses of the same authentication
-token? This restricts you to one login about every 30s, but it increases
-your chances to notice or even prevent man-in-the-middle attacks (y/n)
-{{</ output >}}
+    ```output
+    Do you want to disallow multiple uses of the same authentication
+    token? This restricts you to one login about every 30s, but it increases
+    your chances to notice or even prevent man-in-the-middle attacks (y/n)
+    ```
 
     This makes your token a true one-time password, preventing the same password from being used twice. For example, if you set this to "no," and your password was intercepted while you logged in, someone may be able to gain entry to your server by entering it before the time expires. We **strongly recommend** answering `y`.
 
-    {{< output >}}
-By default, a new token is generated every 30 seconds by the mobile app.
-In order to compensate for possible time-skew between the client and the server,
-we allow an extra token before and after the current time. This allows for a
-time skew of up to 30 seconds between authentication server and client. If you
-experience problems with poor time synchronization, you can increase the window
-from its default size of 3 permitted codes (one previous code, the current
-code, the next code) to 17 permitted codes (the 8 previous codes, the current
-code, and the 8 next codes). This will permit for a time skew of up to 4 minutes
-between client and server.
-Do you want to do so (y/n)
-{{</ output >}}
+    ```output
+    By default, a new token is generated every 30 seconds by the mobile app.
+    In order to compensate for possible time-skew between the client and the server,
+    we allow an extra token before and after the current time. This allows for a
+    time skew of up to 30 seconds between authentication server and client. If you
+    experience problems with poor time synchronization, you can increase the window
+    from its default size of 3 permitted codes (one previous code, the current
+    code, the next code) to 17 permitted codes (the 8 previous codes, the current
+    code, and the 8 next codes). This will permit for a time skew of up to 4 minutes
+    between client and server.
+    Do you want to do so (y/n)
+    ```
 
     This setting accounts for time syncing issues across devices. Unless you have reason to believe that your phone or device may not sync properly, answer `n`.
 
-    {{< output >}}
-If the computer that you are logging into isn't hardened against brute-force
-login attempts, you can enable rate-limiting for the authentication module.
-By default, this limits attackers to no more than 3 login attempts every 30s.
-Do you want to enable rate-limiting (y/n)
-{{</ output >}}
+    ```output
+    If the computer that you are logging into isn't hardened against brute-force
+    login attempts, you can enable rate-limiting for the authentication module.
+    By default, this limits attackers to no more than 3 login attempts every 30s.
+    Do you want to enable rate-limiting (y/n)
+    ```
 
     This setting prevents attackers from using brute force to guess your token. Although the time limit should be enough to prevent most attacks, this will ensure that an attacker only has three chances per 30 seconds to guess your password. We recommend answering `y`.
 

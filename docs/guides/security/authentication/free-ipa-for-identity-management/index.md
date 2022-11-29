@@ -13,7 +13,7 @@ external_resources:
  - '[FreeIPA Documentation](https://www.freeipa.org/page/Documentation)'
  - '[Kerberos Homepage](https://web.mit.edu/kerberos/)'
 published: 2021-03-26
-modified: 2022-11-22
+modified: 2022-11-29
 modified_by:
   name: Linode
 image: FreeIPA_IDandAuth.png
@@ -25,19 +25,19 @@ FreeIPA is a free and open source identity management system, it is the upstream
 
 FreeIPA is the Linux version or implementation of Active Directory, which features the following:
 
--   Integrated security information management solution combining Linux (Fedora), 389 Directory Server, MIT Kerberos, NTP, DNS, SSSD and others.
--   Built on top of well known Open Source components and standard protocols.
--   Strong focus on ease of management and automation of installation and configuration tasks.
--   Full multi master replication for higher redundancy and scalability.
--   Extensible management interfaces (CLI, Web UI, XMLRPC and JSONRPC API) and Python SDK.
+- Integrated security information management solution combining Linux (Fedora), 389 Directory Server, MIT Kerberos, NTP, DNS, SSSD and others.
+- Built on top of well known Open Source components and standard protocols.
+- Strong focus on ease of management and automation of installation and configuration tasks.
+- Full multi master replication for higher redundancy and scalability.
+- Extensible management interfaces (CLI, Web UI, XMLRPC and JSONRPC API) and Python SDK.
 
 ## Before you Begin
 
 This guide assumes:
 
- - Two fully functional Linodes equal to a [2GB Plan](https://www.linode.com/pricing/) or greater must be created using CentOS 7 or later. One will host the FreeIPA server, while the other will host the client.
- - You have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides. One will host the FreeIPA server, while the other will host the client.
- - You are familiar with the [command line](/docs/tools-reference/introduction-to-linux-concepts#so-youre-staring-at-a-shell-prompt)
+- Two fully functional Linodes equal to a [2GB Plan](https://www.linode.com/pricing/) or greater must be created using CentOS 7 or later. One will host the FreeIPA server, while the other will host the client.
+- You have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides. One will host the FreeIPA server, while the other will host the client.
+- You are familiar with the [command line](/docs/tools-reference/introduction-to-linux-concepts#so-youre-staring-at-a-shell-prompt)
 - FreeIPA requires that the user has possession of their own fully qualified domain name (FQDN) with an active subdomain for both the client and server. Before proceeding, ensure that each Linode has A/AAAA records configured using a [Unique Subdomain](/docs/products/networking/dns-manager/) for both the server and client Linode respectively.
 - [Set up Reverse DNS](/docs/guides/configure-rdns/) for each Linode using their full unique subdomain.
 
@@ -61,7 +61,7 @@ First, the FreeIPA Server and Client Linodes must be prepared for the installati
 1. FreeIPA requires access to the following ports for the services listed below:
 
     | Ports | Service | Protocol |
-    | ----------- | ----------- | ----------- |
+    | -- | -- | -- |
     | 80, 443     | HTTP/HTTPS | TCP |
     | 389, 636   | LDAP/LDAPS | TCP |
     | 88, 464 | Kerberos | TCP/UDP|
@@ -106,7 +106,7 @@ On the server Linode, install and set up the FreeIPA server with the following c
 1. Respond to the prompts with your desired FreeIPA configuration. Below are explanations on the configuration options and what options should be entered.
 
     | Prompt | Response |
-    | ----------- | ----------- |
+    | -- | -- |
     | Do you want to configure integrated DNS (BIND)? | Bind can be set up to provide additional DNS support to the FreeIPA sever. Since the FreeIPA configuration being used as part of this tutorial is relying on external DNS using Linode's DNS Manager, `no` is the recommended choice. |
     | Server host name | ipaserver.example.com |
     | Please confirm the domain name. | example.com |
@@ -166,7 +166,7 @@ On the client Linode, install and set up the FreeIPA client with the following c
 1. Respond to the prompts with your desired FreeIPA client configuration. Below are explanations on the configuration options and what options should be entered.
 
     | Prompt | Response |
-    | ----------- | ----------- |
+    | -- | -- |
     | Provide the domain name of your IPA server (ex: example.com) | The primary domain used for the server installation. |
     | Provide your IPA server name (ex: ipa.example.com). | The full domain used for the server installation including the subdomain. |
     | If you proceed with the installation, services will be configured to always access the discovered server for all operations and will not fail over to other servers in case of failure.
@@ -194,7 +194,7 @@ Kerberos tickets enable you to authenticate to any client using tickets instead 
 
 The kerberos admin server will be freely accessible via it's domain in a web browser. Credentials created during installation can then be used to log in as the admin user via FreeIPA's web ui. Enter the admin server domain into your browser and you will see a page similar to the following:
 
-![freeipa server home.](freeipa-server-home.png "freeipa server home.")
+![freeipa server home.](freeipa-server-home.png)
 
 Once logged in, you will have access to many of the tools and utilities available to FreeIPA from the command line directly on a more user friendly web interface.
 
