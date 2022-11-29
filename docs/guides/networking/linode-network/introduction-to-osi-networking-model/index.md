@@ -100,7 +100,7 @@ The IEEE 802 specifications can be further subdivided into two sub-layers, each 
 
 For a complete analysis, a packet capture tool such as [Wireshark](https://www.wireshark.org/) can capture and analyze the frames. However, many Linux commands allow users to examine interface statistics for packet stats and errors. The `ip link` command displays information about the network interfaces on the server. The command output includes the state, MTU, and MAC address of the link. See the [Ubuntu ip command man page](https://manpages.ubuntu.com/manpages/jammy/man8/ip.8.html) for more information.
 
-```code
+```command
 ip link show
 ```
 
@@ -113,13 +113,13 @@ ip link show
 
 The `nast` utility is a packet sniffer for use in analyzing LAN traffic. It is not pre-installed, so users must install it using `apt`.
 
-```code
+```command
 sudo apt install nast
 ```
 
 Run the command at the `sudo` level and terminate it using the **Ctrl+C** combination. Specify the interface to listen to using the `-i` option. The [Ubuntu nast man page](https://manpages.ubuntu.com/manpages/jammy/man8/nast.8.html) includes more details.
 
-```code
+```command
 sudo nast -i eth0
 ```
 
@@ -152,7 +152,7 @@ Packets Dropped by kernel:	14803
 
 To list the configuration and capabilities of each network interface, use the `ip netconf` command.
 
-```code
+```command
 ip netconf
 ```
 
@@ -188,7 +188,7 @@ Many well-known network protocols operate at the network layer, including the fo
 
 The `ip` command is also quite useful for network layer problems. The `ip addr show` command displays the IP address associated with each interface.
 
-```code
+```command
 ip addr show
 ```
 
@@ -211,7 +211,7 @@ ip addr show
 
 The `ping` and `traceroute` commands can determine whether a destination is reachable and track the path the packet follows to reach it. These commands can be used with either the name of a router or an IP address. Terminate the command using the **Ctrl+C** key combination.
 
-```code
+```command
 ping wikipedia.org
 ```
 
@@ -231,7 +231,7 @@ rtt min/avg/max/mdev = 6.398/6.483/6.678/0.101 ms
 
 To view the contents of the system routing table, use the `ip route show` command. The `ip neighbor show` and `ip nexthop show` commands are also often useful.
 
-```code
+```command
 ip route show
 ```
 
@@ -255,13 +255,13 @@ The *Transport Layer Security* (TLS) protocol somewhat aligns with the OSI trans
 
 There is no generic transport layer monitoring tool for Linux. Instead, tools are available for specific protocols. For TCP, the `tcptrack` utility displays a list of current sessions. `tcptrack` does not come preinstalled, so install it using `apt`.`
 
-```code
+```command
 sudo apt install tcptrack
 ```
 
 Use the `-i` option and the name of the interface to see all connections active on the interface. There is no corresponding UDP equivalent because UDP is connectionless. The [Ubuntu tcptrack man page](https://manpages.ubuntu.com/manpages/jammy/man1/tcptrack.1.html) provides full usage instructions. Terminate the command using the **Ctrl+C** key combination.
 
-```code
+```command
 sudo tcptrack -i eth0
 ```
 
@@ -272,7 +272,7 @@ sudo tcptrack -i eth0
 
 `tcpdump` is a packet analyzer for monitoring outgoing and incoming packets on a specific interface. The `-i` attribute indicates the interface to listen to. The `eth0` interface is the default. It can also monitor UDP packets. `tcpdump` is also able to detect packets at lower layers than the transport layer, while another option allows users to view the Ethernet headers. Consult the [Ubuntu tcpdump man page](https://manpages.ubuntu.com/manpages/jammy/man8/tcpdump.8.html) for a list of options. Terminate the command using the **Ctrl+C** key combination.
 
-```code
+```command
 sudo tcpdump
 ```
 

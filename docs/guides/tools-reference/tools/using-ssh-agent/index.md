@@ -61,7 +61,7 @@ Most Linux systems include ssh-agent by default, but you must enable it. The `ss
 
 1.  Use the following command to execute the `ssh-agent` commands and enable ssh-agent for your current shell session:
 
-    ```code
+    ```command
     eval `ssh-agent`
     ```
 
@@ -71,7 +71,7 @@ Adding that command as a line to your `~/.bashrc` file automatically enables ssh
 
 1.  Verify that ssh-agent is running by checking for the `SSH_AUTH_SOCK` environmental variable:
 
-    ```code
+    ```command
     echo $SSH_AUTH_SOCK
     ```
 
@@ -83,7 +83,7 @@ Adding that command as a line to your `~/.bashrc` file automatically enables ssh
 
 Before you can use ssh-agent, you need to add at least one key. The `ssh-add` command automatically adds all private keys stored within the `~/.ssh` directory. That includes `~/.ssh/id_rsa`, the default location for most SSH private keys:
 
-```code
+```command
 ssh-add
 ```
 
@@ -93,13 +93,13 @@ Identity added: /home/example-user/.ssh/id_rsa (example-user@localhost)
 
 Should you need to specify a particular key location, you can provide the path to the key as an argument to `ssh-add`. This example adds a key stored at `~/my_documents/ssh/example-user.private_key`:
 
-```code
+```command
 ssh-add ~/my_documents/ssh/example-user.private_key
 ```
 
 You can subsequently get a list of all the keys currently added to ssh-agent using the `-l` option. This lists the identifiers for the keys that are set up for ssh-agent:
 
-```code
+```command
 ssh-add -l
 ```
 
@@ -121,7 +121,7 @@ ssh-agent restricts this location's permissions to the current user. You should 
 
     Here is an example that binds the ssh-agent socket at `~/ssh-socket/ssh-agent`:
 
-    ```code
+    ```command
     eval `ssh-agent -a ~/ssh-socket/ssh-agent`
     ```
 
@@ -129,13 +129,13 @@ ssh-agent restricts this location's permissions to the current user. You should 
 
     This example limits identity lifetime to 24 hours (86,400 seconds):
 
-    ```code
+    ```command
     eval `ssh-agent -t 86400
     ```
 
 -   `-k` kills the currently running ssh-agent, using current environmental variables to identify the agent:
 
-    ```code
+    ```command
     eval `ssh-agent -k`
     ```
 
@@ -155,7 +155,7 @@ The agent forwarding feature can be activated once you have everything else set 
 
         For example, to use agent forwarding for your SSH session to a user named `example-user` on a remote host at `192.0.2.1`, you can use:
 
-        ```code
+        ```command
         ssh -A example-user@192.0.2.1
         ```
 
@@ -172,7 +172,7 @@ The agent forwarding feature can be activated once you have everything else set 
 
         Now SSH into the machine. Your SSH connection to the `192.0.2.1` address automatically triggers agent forwarding:
 
-        ```code
+        ```command
         ssh example-user@192.0.2.1
         ```
 
@@ -182,7 +182,7 @@ The agent forwarding feature can be activated once you have everything else set 
 
     Say, for example, you now want to connect to another machine, using the `192.0.2.1` server as a bastion. Simply open a second SSH connection to that machine — which, for this example, is at `192.0.2.2` using a user named `example-user`:
 
-    ```code
+    ```command
     ssh example-user@192.0.2.2
     ```
 
@@ -190,7 +190,7 @@ The agent forwarding feature can be activated once you have everything else set 
 
 1.  To better secure your agent, you can lock the agent before forwarding. To do so, use the command here. This prompts you to create a password, used to secure your ssh-agent:
 
-    ```code
+    ```command
     ssh-add -x
     ```
 
@@ -200,7 +200,7 @@ Agent locked.
 
     You can later unlock the agent using this next command. The command prompts you to reenter the password you created when locking the agent:
 
-    ```code
+    ```command
     ssh-add -X
     ```
 

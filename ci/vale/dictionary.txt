@@ -1007,6 +1007,7 @@ kamkar
 kanban
 kaseya
 kasten
+kbd
 kbits
 keepalive
 keepalived

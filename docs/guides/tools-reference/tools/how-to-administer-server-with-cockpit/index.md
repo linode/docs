@@ -82,25 +82,25 @@ To install Cockpit on Linux, follow these steps.
 
 1.  Ensure software packages for the system are up to date. If prompted, press **Y** to continue and restart the system if necessary.
 
-    ```code
+    ```command
     sudo apt update && sudo apt upgrade
     ```
 
 2.  Use `apt` to install Cockpit and press **Y** to continue.
 
-    ```code
+    ```command
     sudo apt install cockpit
     ```
 
 3.  The Ubuntu server does not start Cockpit automatically. Launch the Cockpit service using the `systemctl` service. Both the `cockpit` and `cockpit.socket` processes must be started.
 
-    ```code
+    ```command
     sudo systemctl start cockpit cockpit.socket
     ```
 
 4.  Confirm Cockpit is now running using the `systemctl status` command. When done, press **CTRL+C** to close the `systemctl status` output.
 
-    ```code
+    ```command
     sudo systemctl status cockpit
     ```
 
@@ -117,13 +117,13 @@ Cockpit becomes dormant after a period of inactivity. In this case, it might dis
 
 5. **(Optional)** To automatically activate Cockpit at start up, use the following command.
 
-    ```code
+    ```command
     sudo systemctl enable cockpit cockpit.socket
     ```
 
 6.  To allow Cockpit connections through the firewall, allow port `9090` in `ufw`. Ensure `ufw` is configured to allow `OpenSSH` before it is enabled. Enable the firewall after entering all commands and press **Y** to proceed.
 
-    ```code
+    ```command
     sudo ufw allow OpenSSH
     sudo ufw allow 9090
     sudo ufw enable
@@ -131,7 +131,7 @@ Cockpit becomes dormant after a period of inactivity. In this case, it might dis
 
 7.  Verify the firewall status. `ufw` should have a status of `active` and port `9090` should be allowed through the firewall.
 
-    ```code
+    ```command
     sudo ufw status
     ```
 
@@ -148,7 +148,7 @@ OpenSSH (v6)               ALLOW       Anywhere (v6)
 
 8. Cockpit is now ready to use. In a web browser, enter the IP address of the server, the `:` symbol, and port number `9090`. The Cockpit login page is then displayed.
 
-    ```code
+    ```command
     https://Ip_address:9090/
     ```
 
