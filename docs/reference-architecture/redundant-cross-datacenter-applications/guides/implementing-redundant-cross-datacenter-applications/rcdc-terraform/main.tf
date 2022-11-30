@@ -43,6 +43,7 @@ resource "linode_instance" "rcdc_gateway" {
 
   provisioner "remote-exec" {
     inline = [
+    # Create a directory for NGINX websites.
       "mkdir -p /etc/nginx/sites-available"
     ]
   }
@@ -78,6 +79,10 @@ resource "linode_instance" "rcdc_application" {
     purpose = "vlan"
     label = "vlan-${var.regions[floor(count.index / length(var.regions))]}-1"
     ipam_address = "10.8.${floor(count.index / length(var.regions))}.${count.index + 11}/24"
+  }
+
+  interface {
+    purpose = "public"
   }
 
   connection {

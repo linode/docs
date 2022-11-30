@@ -13,10 +13,6 @@ echo -e "[Route]\nGateway=${GATEWAY_IPS[$1]}\nGatewayOnLink=true" >> /etc/system
 
 systemctl restart systemd-networkd.service
 
-# Adjust the permissions for the MongoDB cluster keyfile.
-chmod 400 /opt/mongo/mongo-keyfile
-chown mongodb:mongodb /opt/mongo/mongo-keyfile
-
 # Update the APT package repository and install some useful tools.
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
@@ -59,12 +55,12 @@ security:
   keyFile: /opt/mongo/mongo-keyfile
 EOF
 
+systemctl start mongod
+systemctl enable mongod
+
 if [ $2 == '1' ]; then
     mongosh admin --eval "db.getSiblingDB('admin').createUser({user: 'admin', pwd: 'MONGODB_ADMIN_PASSWORD', roles: ['root']})"
 fi
-
-systemctl start mongod
-systemctl enable mongod
 
 systemctl daemon-reload
 systemctl start example-app
