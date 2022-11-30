@@ -48,7 +48,7 @@ This guide assumes you have a working [Linode Kubernetes Engine (LKE)](https://w
 {{< caution >}}
 The instructions in this section creates a Block Storage volume billable resource on your Linode account. A single volume can range from 10 GB to 10,000 GB in size and costs $0.10/GB per month or $0.00015/GB per hour. If you do not want to keep using the Block Storage volume that you create, be sure to delete it when you have finished the guide.
 
-If you remove the resources afterward, you are only billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
+If you remove the resources afterward, you are only billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{</ caution >}}
 
 1.  Create a *Persistent Volume Claim* (PVC) that consumes a Block Storage Volume. To create a PVC, create a manifest file with the following YAML:

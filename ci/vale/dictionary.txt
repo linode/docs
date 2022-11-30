@@ -169,6 +169,7 @@ bitbucket
 bitnami
 bitrate
 bitshift
+bitstream
 bitwarden
 bitwise
 blkid
@@ -1006,6 +1007,7 @@ kamkar
 kanban
 kaseya
 kasten
+kbd
 kbits
 keepalive
 keepalived
@@ -1357,6 +1359,7 @@ namespaces
 nano
 nanode
 nanodes
+nast
 natively
 nawk
 nbox
@@ -1953,6 +1956,7 @@ spf1
 splunk
 spm
 spork
+spotify
 sql
 sqlplus
 sqreen
@@ -2061,6 +2065,7 @@ taskwarrior
 tbz
 tcp
 tcpdump
+tcptrack
 tcpwrappers
 teamspeak
 teardown
