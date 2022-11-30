@@ -43,7 +43,7 @@ Whenever you need to authorize API access to an application or service, you shou
 
 ## Revoke a Personal Access Token
 
-If you wish to decomission a token or think it may have been compromised, you can revoke access. Once revoked, any application using this token will no longer be authorized to access your account through the Linode API.
+If you wish to decommission a token or think it may have been compromised, you can revoke access. Once revoked, any application using this token will no longer be authorized to access your account through the Linode API.
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com) and navigate to the API Tokens page of the My Profile section. See [View Personal Access Tokens](#view-personal-access-tokens).
 
