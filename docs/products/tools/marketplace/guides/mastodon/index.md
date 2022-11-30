@@ -43,18 +43,16 @@ Mastodon servers range in size from small private instances to massive public in
 
 | **Field** | **Description** |
 |:--------------|:------------|
-| **API Token** | [Generate an API Token](https://www.linode.com/docs/products/tools/linode-api/guides/get-access-token) with Read/Write access on Domains. *Required*. |
-|**Domain** | The domain name where you wish to host your Mastodon server. The installer creates a DNS record for this domain during setup. |
-| **SOA Email** | An email address you control to be the Source of Authority for the generated DNS zone. |
-| **Limited Sudo User** | Create a Sudo User that will exist on each cluster node. *Required*. |
-| **Mastodon Admin User** | The username for the Admin user that will be created for the Mastodon server. |
-| ** Single User Mode** | Enabling Single User Mode prevents other users from joining the Mastodon Server, while disabling it allows it. |
+| **SOA Email** | An email address you control to be the Source of Authority for the generated DNS zone. *Required* |
+| **Mastodon Owner** | The username for the Owner user that will be created for the Mastodon server. *Required* |
+| **Mastodon Owner Email**  | The contact email for the Mastodon server's owner. *Required* |
+| ** Single User Mode** | Enabling Single User Mode prevents other users from joining the Mastodon Server, while disabling it allows it. *Required* |
 
 ## Getting Started after Deployment
 
 ### Accessing your Mastodon Server
 
-1. In a web browser, navigate to your Mastodon site’s domain. You should see the Mastodon login page, where you can log in as the admin user you created earlier or create a new user.
+1. In a web browser, navigate to your Mastodon site’s domain. You should see the Mastodon login page, where you can log in as the Owner user you created earlier or create a new user. To retrieve the Owner password, you need to log into the Linode through [SSH](https://www.linode.com/docs/guides/connect-to-server-over-ssh/).
 
   ![Screenshot of Mastodon login page](mastodon-login-signup_marketplace.jpeg)
 
