@@ -11,7 +11,7 @@ image: Writing_Scripts_for_Use_with_Linode_StackScripts_1200x631.png
 aliases: ['/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/','/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/']
 ---
 
-At the core of all StackScripts is a custom script that is written to perform a certain task (or collection of tasks). These custom scripts are written in a language that's supported by the targetted Linux distributions. Writing a custom script for a StackScript is largely the same as writing a custom script that you would execute from the command line or another program. This guide explains some important considerations as well as the special features that StackScripts support.
+At the core of all StackScripts is a custom script that is written to perform a certain task (or collection of tasks). These custom scripts are written in a language that's supported by the targeted Linux distributions. Writing a custom script for a StackScript is largely the same as writing a custom script that you would execute from the command line or another program. This guide explains some important considerations as well as the special features that StackScripts support.
 
 ## Before You Begin
 
@@ -54,7 +54,7 @@ When creating a StackScript, most of the time is spent writing the deployment sc
 
 ## Set the Language and Interpreter
 
-The primary requirement for your scripts is that the interpreter needed to execute your script should exist in each Linux distribution you are targetting. While bash is an obvious choice that's support by all of Linode's distribution images, you may choose another scriping language.
+The primary requirement for your scripts is that the interpreter needed to execute your script should exist in each Linux distribution you are targeting. While bash is an obvious choice that's support by all of Linode's distribution images, you may choose another scripting language.
 
 The first line of the script must include a [*shebang*](https://en.wikipedia.org/wiki/Shebang_(Unix)) followed by the path to the interpreter that should be use.
 
