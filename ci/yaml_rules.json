@@ -63,6 +63,18 @@
     "type": "bool",
     "description": "Defaults to false if not present, which means that a guide's title is shown instead of its h1_title at the top of the page. If set to true, the h1_title is displayed."
   },
+  "title_meta": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "Sets the value of the title tag in the metadata. Defaults to the primary title paramater if not set."
+  },
+  "title_social": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "Sets the value of the og:title tag in the metadata. Defaults to the title_meta paramater if not set."
+  },
   "comments": {
     "elements": false,
     "required": false,
@@ -178,12 +190,6 @@
     "required": false,
     "type": "text",
     "description": "Description to be displayed on Facebook links."
-  },
-  "og_title": {
-    "elements": false,
-    "required": false,
-    "type": "text",
-    "description": "Title to be displayed on Facebook links."
   },
   "os": {
     "elements": "list",

@@ -8,6 +8,12 @@ _build:
   publishResources: false
 ---
 
+## Keyboard Shortcuts
+
+Example: Use <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text.
+
+Example of keyboard shortcuts within a paragraph. Aliqua anim cillum Lorem anim esse cupidatat cillum commodo labore pariatur nisi ipsum et. Use <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text. Ex eiusmod do ullamco culpa. Nulla consequat sint labore dolor irure anim. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
+
 ## Notes Shortcode
 
 ### Note with Title
