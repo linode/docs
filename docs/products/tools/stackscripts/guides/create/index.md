@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 title: Create a Stackscript
 description: "How to make a StackScript using Linode StackScripts."
-published: 2022-11-29
+published: 2022-11-30
 aliases: ['/products/tools/stackscripts/guides/stackscripts-create-stackscript/']
 ---
 
@@ -41,6 +41,8 @@ Paste (or type) your custom script in the **Script** field. This is the script t
 - **Bash:** `#!/bin/bash`
 - **Python:** `#!/usr/bin/env python`
 - **Python 3:** `#!/usr/bin/python3`
+
+For more details on the components of a StackScript, see [Write a Custom Script for Use with StackScripts](/docs/products/tools/stackscripts/guides/write-a-custom-script/) guide.
 
 ## Enter a Revision Note
 

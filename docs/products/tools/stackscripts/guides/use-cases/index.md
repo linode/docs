@@ -4,7 +4,7 @@ description: "This guide covers some of the common use cases for Linode StackScr
 keywords: ['scripting','automation','bash','open source']
 image: CommonUse_LinodeStackScripts.png
 published: 2020-05-21
-modified: 2022-11-28
+modified: 2022-11-30
 modified_by:
   name: Linode
 tags: ["linode platform","automation"]

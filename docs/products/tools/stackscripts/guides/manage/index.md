@@ -5,7 +5,7 @@ description: "Learn how to view, edit, and manage StackScripts on your Linode ac
 keywords: ["automation", "scripts", "deployments", "instance"]
 tags: ["linode platform","automation","cloud manager"]
 published: 2020-04-22
-modified: 2022-11-28
+modified: 2022-11-30
 modified_by:
   name: Linode
 aliases: ['/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/','/guides/creating-and-managing-stackscripts-a-tutorial/','/products/tools/stackscripts/guides/stackscripts-edit-stackscript/','/products/tools/stackscripts/guides/stackscripts-delete-stackscript/','/products/tools/stackscripts/guides/stackscripts-create-public-stackscript/']

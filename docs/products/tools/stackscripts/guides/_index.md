@@ -3,7 +3,7 @@ title: Guides
 description: "Learn to create and use StackScripts in the Cloud Manager and other related topics, like best practices when writing scripts."
 tab_group_main:
     weight: 30
-modified: 2022-11-29
+modified: 2022-11-30
 ---
 
 ## Basics
@@ -19,8 +19,6 @@ modified: 2022-11-29
 ## Writing a Script
 
 - [Write a Custom Script for Use with StackScripts](/docs/products/tools/stackscripts/guides/write-a-custom-script/): A walk-through for creating custom scripts to use on your next StackScript.
-
-- [Example Scripts](/docs/products/tools/stackscripts/guides/example-scripts/): A collection of custom scripts that can be used with StackScripts.
 
 - [Use Externally Hosted Deployment Scripts](/docs/products/tools/stackscripts/guides/external-scripts/): Learn how to download an external script and use it within a StackScript.
 

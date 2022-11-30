@@ -3,7 +3,7 @@ title: Get Started
 description: "Get started with Linode StackScripts. Learn to create a StackScript and create a new Linode using a StackScript."
 tab_group_main:
     weight: 20
-published: 2022-11-29
+published: 2022-11-30
 ---
 
 StackScripts allow you to reproduce specific software configurations when deploying Compute Instances, with more user control than static system images. This guide covers how to get started with StackScripts, including writing your custom script, creating the StackScript, and deploying a Compute Instance.
@@ -19,6 +19,8 @@ When creating a StackScript, most of the time is spent writing the deployment sc
 - **Which Linux distributions should the script support?** Since each distribution bundles different core software, the commands needed to install applications or configure networking vary between distributions. You need to determine which distributions you want to have available when deploying the Compute Instance. Then, you can customize your script to include commands for those distributions.
 
 - **Which dynamic variables do you want the user to set when deploying a Compute Instance?** Determine what information you wish to collect during deployment. These user variables can be defined through the use of UDF fields within the script. All UDF fields are visible in the Cloud Manager when creating a Compute Instance based on the StackScript.
+
+For more details on the components of a StackScript, see [Write a Custom Script for Use with StackScripts](/docs/products/tools/stackscripts/guides/write-a-custom-script/) guide.
 
 ## Create the StackScript
 
