@@ -120,6 +120,20 @@ This template includes common API logic and functions.
       {{ template "openapi3/print-parameters" $ }}
     {{ end }}
 
+    {{/* Code samples */}}
+    {{ with .ExtensionProps.Extensions }}
+      {{ with index . "x-code-samples" }}
+        {{ template "openapi3/print-title" (dict "level" 3 "title" "Request Samples" "id" (printf "%s__request-samples" $action ) ) }}
+        {{ $samples := . | transform.Unmarshal }}
+        {{ $samplesTabs := slice }}
+        {{ range $samples }}
+          {{ $samplesTabs =  $samplesTabs | append (dict "title" .lang "lang" .lang "body" .source) }}
+        {{ end }}
+        {{ $.Set "dot" $samplesTabs }}
+        {{ template "openapi3/component-tabs" $ }}
+      {{ end }}
+    {{ end }}
+
     {{/* Optional Request body */}}
     {{ with .RequestBody }}
       {{ with .Value }}
@@ -132,20 +146,6 @@ This template includes common API logic and functions.
             {{ $.Set "hideReadOnly" false }}
           {{ end }}
         {{ end }}
-      {{ end }}
-    {{ end }}
-
-    {{/* Code samples */}}
-    {{ with .ExtensionProps.Extensions }}
-      {{ with index . "x-code-samples" }}
-        {{ template "openapi3/print-title" (dict "level" 3 "title" "Request Samples" "id" (printf "%s__request-samples" $action ) ) }}
-        {{ $samples := . | transform.Unmarshal }}
-        {{ $samplesTabs := slice }}
-        {{ range $samples }}
-          {{ $samplesTabs =  $samplesTabs | append (dict "title" .lang "lang" .lang "body" .source) }}
-        {{ end }}
-        {{ $.Set "dot" $samplesTabs }}
-        {{ template "openapi3/component-tabs" $ }}
       {{ end }}
     {{ end }}
 
@@ -338,8 +338,15 @@ This template includes common API logic and functions.
   {{ end }}
   {{ $props := $s.Properties }}
   {{ if eq $s.Type "array" }}
-    {{ $props = $s.Items.Value.Properties }}
-    {{ $m.Set "ValueType" $s.Items.Value.Type }}
+    {{ $arrschema := $s.Items.Value }}
+    {{ $props = $arrschema.Properties }}
+    {{ $m.Set "ValueType" $arrschema.Type }}
+    {{ range $arrschema.AllOf }}
+      {{ range $k, $v := .Value.Properties }}
+        {{ $dollar.Set "dot" $v }}
+        {{ $m.SetInMap "Properties" $k (partial "openapi3/schema-to-map" (dict "dollar" $dollar "path" (path.Join $path $k) "isProperty" true "ordinal" $.ordinal)) }}
+      {{ end }}
+    {{ end }}
   {{ end }}
 
   {{ range $k, $v := $props }}
@@ -573,12 +580,12 @@ This template includes common API logic and functions.
     {{ $schema := partial "openapi3/schema-to-map" (dict "dollar" $) }}
     {{ $body := "{}" }}
     {{ with $schema.Example }}
-      {{ $body = . | jsonify (dict "indent" "  ") }}
+      {{ $body = . | jsonify (dict "indent" "  " "noHTMLEscape" true) }}
     {{ else }}
       {{ $properties := $schema.Properties }}
       {{ with $properties }}
         {{ $v :=  partial "openapi3/get-response-example-properties" $properties }}
-        {{ $body = $v | jsonify (dict "indent" "  ") }}
+        {{ $body = $v | jsonify (dict "indent" "  " "noHTMLEscape" true) }}
       {{ end }}
     {{ end }}
     {{ $response.Set "body" $body }}

@@ -34,7 +34,7 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) 
 
 1.  Set up your Linode in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
-1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/guides/dns-manager/) guide.
+1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/products/networking/dns-manager/) guide.
 
     - Don't forget to update your `/etc/hosts` file with your Linode's public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file) section of the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
@@ -66,7 +66,7 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) 
 
 ## Multi-Processing Modules
 
-Apache 2.4 offers several multi-processing modules (MPMs) to handle connections. In CentOS 8 the default MPM is the *event module*, although the *prefork module* is still recommended if you’re using standard PHP. Below are the basic default settings. For detailed explanations and advanced settings for these modules, see the [Tuning Your Apache Server](/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/#multi-processing-modules) guide.
+Apache 2.4 offers several multi-processing modules (MPMs) to handle connections. In CentOS 8 the default MPM is the *event module*, although the *prefork module* is still recommended if you’re using standard PHP. Below are the basic default settings. For detailed explanations and advanced settings for these modules, see the [Tuning Your Apache Server](/docs/guides/tuning-your-apache-server/#multi-processing-modules) guide.
 
 1.  You can check which MPM is currently configured with the following command:
 

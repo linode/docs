@@ -31,9 +31,9 @@ Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy softw
 
     - Access monitoring statistics
 
-    - Update your [billing](/docs/guides/manage-billing-in-cloud-manager/) and [account](/docs/guides/accounts-and-passwords/) information
+    - Update your [billing](/docs/products/platform/billing/guides/) and [account](/docs/products/platform/accounts/guides/manage-users/) information
 
-    - Add additional Linode services, like [Block Storage](/docs/guides/how-to-use-block-storage-with-your-linode/)
+    - Add additional Linode services, like [Block Storage](/docs/products/storage/block-storage/)
 
     - Open a [support ticket](/docs/guides/support/) and perform other administrative tasks
 

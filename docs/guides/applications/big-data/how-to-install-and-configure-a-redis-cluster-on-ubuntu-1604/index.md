@@ -28,7 +28,7 @@ Redis as an in-memory store allows for extremely fast operations such as countin
 Prior to starting, we recommend familiarizing yourself with the following:
 
 * [Firewall settings using iptables or ufw](/docs/guides/configure-firewall-with-ufw/)
-* [Getting Started with VLANs](/docs/guides/getting-started-with-vlans/)
+* [Getting Started with VLANs](/docs/products/networking/vlans/get-started/)
 * [Master-Replicas Replication](/docs/guides/how-to-install-a-redis-server-on-ubuntu-or-debian8/)
 
 ### Redis Sentinel or Redis Cluster?
@@ -169,7 +169,7 @@ At this point, each Linode hosts two independent master nodes. The Redis install
 1.  SSH into **Server 1**, then create a Redis cluster consisting of your three master nodes with the following command:
 
     {{< note >}}
-If utilizing a [VLAN](/docs/guides/getting-started-with-vlans/), use each Linode's IPAM address.
+If utilizing a [VLAN](/docs/products/networking/vlans/get-started/), use each Linode's IPAM address.
 {{< /note >}}
 
         redis-cli --cluster create \

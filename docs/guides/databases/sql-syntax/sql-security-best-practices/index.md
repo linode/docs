@@ -18,7 +18,11 @@ contributor:
 
 SQL Server security is perhaps one of the most overlooked facets of database server maintenance. Without taking the necessary precautions, an instance of SQL Server can be ripe for abuse and failure.
 
-The [SQL Database Security: User Management](/docs/guides/sql-security/) guide discussed the logical implementation of users, groups, roles, and permissions, to enhance, or limit database user security. The part one of the SQL Security Best Practices guide discusses a variety of important additional maintenance security topics.
+The [SQL Database Security: User Management](/docs/guides/sql-security/) guide discussed the logical implementation of users, groups, roles, and permissions, to enhance, or limit database user security. This guide is part one in a series of SQL Server security best practices, and it discusses a variety of important additional maintenance security topics.
+
+{{< note >}}
+To review the second set of security recommendations in this series, visit [Part 2: SQL Server Security Best Practices](/docs/guides/sql-server-security-part-2/).
+{{< /note >}}
 
 ## SQL Server Security: Infrastructure
 
@@ -36,7 +40,7 @@ Next on the list of security issues is the operating system that SQL Server resi
 
 First and foremost, operating system upgrades and (security) patches should always be applied whenever they become available. Before applying them to production-level machines, it may be prudent to apply them first to test or development environments, and allow them to run for a period of time. This ensures that the upgrades and patches are stable and are not problematic. Moreover, when an operating system goes end-of-life, it should always be replaced with a supported operating system version.
 
-It is a good practice to disable public internet access on your servers, to mitigate outside hacking interference. This can be followed by implementing robust firewalls on your operating system. By defining the appropriate firewall rules, you can restrict access to and from database servers that run on your server. You can also limit database access only to specific applications. Some popular firewall options for Linux servers are [UFW](/docs/guides/configure-firewall-with-ufw/), [nftables](/docs/guides/how-to-use-nftables/), and [FirewallD](/docs/guides/introduction-to-firewalld-on-centos/). You can also [add the free Linode Cloud Firewalls service](/docs/products/networking/cloud-firewall/guides/add-firewall/) to the Linode Compute Instance that hosts SQL Server.
+It is a good practice to disable public internet access on your servers, to mitigate outside hacking interference. This can be followed by implementing robust firewalls on your operating system. By defining the appropriate firewall rules, you can restrict access to and from database servers that run on your server. You can also limit database access only to specific applications. Some popular firewall options for Linux servers are [UFW](/docs/guides/configure-firewall-with-ufw/), [nftables](/docs/guides/how-to-use-nftables/), and [FirewallD](/docs/guides/introduction-to-firewalld-on-centos/). You can also [add the free Linode Cloud Firewalls service](/docs/products/networking/cloud-firewall/guides/create-a-cloud-firewall/) to the Linode Compute Instance that hosts SQL Server.
 
 Additionally, it is extremely good practice to remove unnecessary and unused applications from your server. This includes unwanted operating system features (for example, email or FTP) that could potentially lend itself to a security threat.
 
@@ -96,4 +100,6 @@ Specifically, there are two types of data masking supported by SQL Server:
 
 ## Conclusion
 
-Database security is an extremely important part of database design, operations, and maintenance. It includes things such as physical security, operating system and application maintenance, disabling of superfluous features, port maintenance, encryption, and data masking. Collectively, and if addressed properly, these measures help keep a SQL Server database free from attack,operationally sound, and ensure database integrity.
+Database security is an extremely important part of database design, operations, and maintenance. It includes things such as physical security, operating system and application maintenance, disabling of superfluous features, port maintenance, encryption, and data masking. Collectively, and if addressed properly, these measures help keep a SQL Server database free from attack, operationally sound, and ensure database integrity.
+
+This guide was the first in a series of articles concerning SQL Server security best practices. Visit [Part 2: SQL Server Security Best Practices](/docs/guides/sql-server-security-part-2/) for the next security recommendations in this series.

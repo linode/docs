@@ -13,7 +13,7 @@ modified: 2012-10-18
 modified_by:
   name: Linode
 published: 2012-10-18
-title: 'Using Apache for Proxy and Clustering Services on Ubuntu 12.04 (Precise Pangolin)'
+title: 'Using Apache for Proxy and Cluster Services on Ubuntu 12.04 '
 relations:
     platform:
         key: using-apache-for-proxy-and-clustering
@@ -56,7 +56,7 @@ Now, place the static files in the `/var/www/static.example.com/public_html/` fo
 
 ## Case Two: Using ProxyPass to Delegate Services to Alternate Machines
 
-In our guide to using [multiple web servers with ProxyPass](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-10-04-lucid) we outline a method for configuring multiple websites using Apache's `mod_proxy`. Please follow that guide, particularly the section regarding [configuring mod\_proxy](/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-ubuntu-10-04-lucid/#enabling-the-proxy-module) and ensure that `mod_proxy` is active by issuing the following commands to enable and restart web server:
+In our guide to using [multiple web servers with ProxyPass](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-10-04-lucid) we outline a method for configuring multiple websites using Apache's `mod_proxy`. Please follow that guide, particularly the section regarding [configuring mod\_proxy](/docs/guides/multiple-web-servers-with-proxypass-on-ubuntu-10-04-lucid/#enabling-the-proxy-module) and ensure that `mod_proxy` is active by issuing the following commands to enable and restart web server:
 
     a2enmod proxy
     a2enmod proxy_http
@@ -167,7 +167,7 @@ All of the previous cases presented in this document outline configurations for 
     a2enmod proxy_balancer
     service apache2 restart
 
-Edit the `/etc/apache2/mods-available/proxy.conf` file as described in [this documentation](/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-ubuntu-10-04-lucid/#enabling-the-proxy-module). Do not omit to reload Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
+Edit the `/etc/apache2/mods-available/proxy.conf` file as described in [this documentation](/docs/guides/multiple-web-servers-with-proxypass-on-ubuntu-10-04-lucid/#enabling-the-proxy-module). Do not omit to reload Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
 
 {{< file "Apache Virtual Host Configuration" apache >}}
 <VirtualHost *:80>

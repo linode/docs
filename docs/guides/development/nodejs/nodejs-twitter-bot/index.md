@@ -3,17 +3,14 @@ slug: nodejs-twitter-bot
 author:
     name: Pj Metz
     email: metz.pj@gmail.com
-description: 'How to make a Twitter bot with Node.js, publish it to GitHub, and then host it on a Linode cloud instance. The guide is intended for people new to coding.'
-og_description: 'How to make a Twitter bot with Node.js, publish it to GitHub, and then host it on a Linode cloud instance. The guide is intended for people new to coding.'
+description: "How to make a Twitter bot with Node.js, publish it to GitHub, and then host it on a Linode cloud instance. The guide is intended for people new to coding."
 keywords: ["how to make a twitter bot", "node twitter", "reply bot twitter", "node twitter api tutorial"]
 tags: ["version control system", "javascript"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
 modified_by:
     name: Linode
-title: "How to Make a Twitter Bot that Replies to Tweets with Node"
-h1_title: "Making a Twitter Bot and Replying to Tweets with Node"
-enable_h1: true
+title: "Make a Twitter Bot and Reply to Tweets in Node.js"
 contributor:
     name: Pj Metz
     link: https://www.metzinaround.com
@@ -850,7 +847,7 @@ You could certainly let this code run for a long while from your local machine, 
 
 ### Log In and Secure the Server
 
-1. To log into the server, follow the [Connect to Your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) section of our [Getting Started](/docs/guides/getting-started/) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Lish console](/docs/guides/using-the-lish-console/) from the Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](/docs/guides/using-the-lish-console/#through-the-cloud-manager-weblish) instructions in our Lish guide.
+1. To log into the server, follow the [Connect to Your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) section of our [Getting Started](/docs/guides/getting-started/) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Lish console](/docs/guides/lish/) from the Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](/docs/guides/lish/#through-the-cloud-manager-weblish) instructions in our Lish guide.
 
     {{< note >}}
 Our [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) guide series has a few other options for SSH clients, like SSH extension for the Chrome web browser.

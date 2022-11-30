@@ -78,7 +78,7 @@ To install PostHog on an LKE cluster, the system must satisfy the following requ
 - A Kubernetes cluster must have been created using LKE. To create a cluster, see the [Linode Kubernetes Engine Documentation](/docs/products/compute/kubernetes/). PostHog requires Kubernetes release 1.19 or newer.
 - The cluster must have enough resources to run PostHog. A minimum of four virtual CPUs and 8GB of memory is recommended.
 - The `kubectl` client must be installed. `kubectl` allows users to install applications on a cluster, view and manage Kubernetes resources, and access log files. `kubectl` can be installed using a package manager or directly downloaded using the `curl` command. More information about `kubectl` is also available in the [Linode Kubernetes Engine Documentation](/docs/products/compute/kubernetes/) or on the [Kubernetes installation page](https://kubernetes.io/docs/tasks/tools/#install-kubectl-on-linux).
-- PostHog works best in conjunction with a registered domain name. This name is used to set up PostHog and access the dashboard. For instructions on how to register a domain name and configure the associated DNS records, see the [Linode guide to DNS Configuration](/docs/guides/common-dns-configurations/).
+- PostHog works best in conjunction with a registered domain name. This name is used to set up PostHog and access the dashboard. For instructions on how to register a domain name and configure the associated DNS records, see the [Linode guide to DNS Configuration](/docs/products/networking/dns-manager/guides/common-dns-configurations/).
 - To install PostHog, first install [Helm v3](https://helm.sh/), which can be used to download, install, and upgrade applications on a cluster. Applications are installed using a Helm chart, which describes the essential resources using a common format. See the [Linode guide to Helm](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/) for more information about Helm.
 
 To install Helm, follow the steps below:
@@ -234,7 +234,7 @@ posthog-ingress-nginx-controller   LoadBalancer   ww.xx.yy.zz    ww.xx.yy.zz    
 
 ### Set Up DNS
 
-The IP address from the previous section is used to configure the domain's DNS record. Instructions on how to configure a DNS record can be found in the [Linode guide to DNS Configuration](/docs/guides/common-dns-configurations/). If a different IP address has already been configured for the domain, it can be edited as follows.
+The IP address from the previous section is used to configure the domain's DNS record. Instructions on how to configure a DNS record can be found in the [Linode guide to DNS Configuration](/docs/products/networking/dns-manager/guides/common-dns-configurations/). If a different IP address has already been configured for the domain, it can be edited as follows.
 
 1. Find the domain using the Linode Dashboard. Select **Domains** and then select the domain name.
 

@@ -211,4 +211,4 @@ NS github.com. 6m21s   "ns-520.awsdns-01.net."
 
 ## Conclusion
 
-To learn more about DNS, including more about record types and the role of DNS in the Internet, take a look at our guide [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/). From there, you may also want to look at our guide [Troubleshooting DNS Records](/docs/guides/troubleshooting-dns/). It can give you some ideas for how you might use a tool like `dog` to help keep your DNS setup in order.
+To learn more about DNS, including more about record types and the role of DNS in the Internet, take a look at our guide [DNS Records: An Introduction](/docs/guides/dns-overview/). From there, you may also want to look at our guide [Troubleshooting DNS Records](/docs/guides/troubleshooting-dns/). It can give you some ideas for how you might use a tool like `dog` to help keep your DNS setup in order.

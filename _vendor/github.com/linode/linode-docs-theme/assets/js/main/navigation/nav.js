@@ -16,6 +16,10 @@ export const getScrollPosNavbar = function () {
 // Called when the search main results panel opens or closes.
 const onNavSearchResults = function (self, val, oldVal) {
 	if (val.open === oldVal.open) {
+		if (!val.open && val.userChange) {
+			// Clicking the x when the panel is already closed.
+			self.$store.search.clearQuery();
+		}
 		return;
 	}
 	if (!val.userChange) {
@@ -95,6 +99,7 @@ export function newNavController(weglot_api_key) {
 
 		onPopState: function (event) {
 			if (isTopResultsPage()) {
+				this.$store.search.query = queryHandler.queryFromLocation();
 				this.$store.nav.searchResults.open = true;
 			} else if (this.$store.nav.searchResults.open) {
 				this.$store.nav.searchResults.open = false;
@@ -114,6 +119,17 @@ export function newNavController(weglot_api_key) {
 			}
 
 			applyUIState(this, false);
+
+			if (document.body.dataset.objectid) {
+				// Add a view event to Algolia analytics.
+				let analyticsItem = {
+					__queryID: this.$store.search.results.lastQueryID,
+					objectID: document.body.dataset.objectid,
+					event: 'view',
+					eventName: 'DOCS: Guide Navigate',
+				};
+				this.$store.nav.analytics.handler.pushItem(analyticsItem);
+			}
 
 			/*
 			TODO(bep) this causes a flicker effect in Turbo.

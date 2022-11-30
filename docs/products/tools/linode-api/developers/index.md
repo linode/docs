@@ -59,7 +59,7 @@ The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the L
 
 ## Community Developed Libraries
 
-- [lego](https://go-acme.github.io/lego/dns/linodev4/): Let's Encrypt client and ACME library written in Go featuring support for the Linode DNS Provider.
+- [lego](https://go-acme.github.io/lego/dns/linode/): Let's Encrypt client and ACME library written in Go featuring support for the Linode DNS Provider.
 
 - [linode-api](https://github.com/tzurbaev/linode-api): Unofficial Linode APIv4 PHP wrapper by [tzurbaev](https://github.com/tzurbaev/linode-api).
 

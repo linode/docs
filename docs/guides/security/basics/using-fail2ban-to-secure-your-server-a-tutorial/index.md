@@ -530,7 +530,7 @@ For additional information about `fail2ban-client` commands, see the [Fail2ban w
 
 ## Lockout Recovery
 
-In the event that you find yourself locked out of your Linode due to fail2ban, you can still gain access by using our out-of-band [Lish Console](/docs/guides/using-the-lish-console/).
+In the event that you find yourself locked out of your Linode due to fail2ban, you can still gain access by using our out-of-band [Lish Console](/docs/guides/lish/).
 
 From here, you can view your firewall rules to ensure that it is fail2ban that blocked your IP, and not something else. To do this, enter the following command:
 
