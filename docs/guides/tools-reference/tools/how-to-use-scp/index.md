@@ -34,7 +34,7 @@ Before transferring the files, the client establishes an SCP connection to the r
 - **Source mode**: Source mode accesses the requested source file from the file system and transmits it back to the client.
 - **Sink mode**: Sink mode accepts the file from the client and saves it to the specified directory.
 
-SCP uses the *Secure Shell* (SSH) protocol as a base layer. SSH authenticates the user and encrypts the data for transfer. In addition to encrypting the file contents, SCP also encrypts all passwords. Because the files are encrypted, they can be prevented from a man-in-the-middle attack.
+SCP uses the *Secure Shell* (SSH) protocol as a base layer. SSH authenticates the user and encrypts the data for transfer. In addition to encrypting the file contents, SCP also encrypts all passwords. Because the files are encrypted, they cannot be accessed via a man-in-the-middle attack.
 
 SCP also supports remote-to-remote mode. Originally, SCP established a direct connection between the remote source and the remote destination. This allowed data to pass between the two nodes without having to pass through the local host. But in most recent releases, data is routed through the originating node as the default. This is more secure but is also less efficient.
 
