@@ -135,7 +135,7 @@ resource "linode_instance" "rcdc_application" {
       "sed -i 's/MONGODB_ADMIN_PASSWORD/${var.password}/' /usr/local/example-app/index.js",
 
       "chmod +x /tmp/rcdc-node-network.sh",
-      "/tmp/rcdc-node-network.sh ${floor(count.index / length(var.regions)) + 1} ${count.index + 1}"
+      "/tmp/rcdc-node-network.sh ${floor(count.index / length(var.regions))} ${count.index + 1}"
     ]
   }
 }
