@@ -7,6 +7,7 @@ tab_group_main:
     weight: 10
 date: 2022-11-21
 modified: 2022-11-23
+aliases: ['/guides/platform/accounts/']
 ---
 
 A Linode account is your gateway to deploying and using Linode's products and services. If you're new to Linode, see the [Getting Started](/docs/guides/getting-started/) guide to learn how to sign up for an account and deploy your first service.
