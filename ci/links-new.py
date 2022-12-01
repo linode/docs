@@ -286,7 +286,9 @@ def check_internal_markdown_links(guides, assets):
                     if next((x for x in guides if link.replace('/docs/','/') in x.aliases), None) is not None:
                         issues.append(Issue(link_unmodified,'points-to-alias'))
                     else:
-                        issues.append(Issue(link_unmodified,'not-found'))
+                        issue = Issue(link_unmodified,'not-found')
+                        issue.add_guide(guide)
+                        issues.append(issue)
     return issues
 
 # ------------------
@@ -360,6 +362,8 @@ def main():
             # Output the list of errors if the issue severity is a failure
             for i in t.issues:
               print(f"    - {i.link}")
+              for g in i.affected_guides:
+                print(f"         - {g.path}")
 
         sys.exit(1)
 
