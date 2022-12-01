@@ -91,7 +91,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install python-frontmatter
     - name: Run tests
-      run: python ./ci/markdown-links-test.py ${{ steps.files.outputs.all }}
+      run: python ./ci/md-links-test.py ${{ steps.files.outputs.all }}
 
   docs404:
     runs-on: ubuntu-latest
