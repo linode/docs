@@ -39,7 +39,7 @@ class Docs404Spider(CrawlSpider):
 
     rules = (
         Rule(LinkExtractor(allow=r'/docs/', deny=r'/docs/contribute'),
-             callback='parse_item', follow=True, method='HEAD'),
+             callback='parse_item', follow=True),
     )
 
     def parse_start_url(self, response):

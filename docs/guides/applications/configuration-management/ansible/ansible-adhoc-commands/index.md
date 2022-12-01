@@ -16,7 +16,7 @@ h1_title: 'A Tutorial for Learning Adhoc Commands in Ansible'
 contributor:
   name: Avi
   link: https://github.com/avidunken/
-aliases: ['/applications/configuration-management/ansible-adhoc-commands/','/applications/configuration-management/ansible/ansible-adhoc-commands/']
+aliases: ['/applications/configuration-management/ansible/deploy-linodes-using-ansible/','/applications/configuration-management/ansible-adhoc-commands/','/applications/configuration-management/ansible/ansible-adhoc-commands/']
 tags: ["automation"]
 ---
 
