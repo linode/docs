@@ -43,7 +43,9 @@ Mastodon servers range in size from small private instances to massive public in
 
 | **Field** | **Description** |
 |:--------------|:------------|
+| **API Token**   | Your Linode API token. Requires Read/Write for Domains. *Required*  |
 | **SOA Email** | An email address you control to be the Source of Authority for the generated DNS zone. *Required* |
+| **Domain Name**   | Domain name for your Mastodon instance. *Required*  |
 | **Mastodon Owner** | The username for the Owner user that will be created for the Mastodon server. *Required* |
 | **Mastodon Owner Email**  | The contact email for the Mastodon server's owner. *Required* |
 | ** Single User Mode** | Enabling Single User Mode prevents other users from joining the Mastodon Server, while disabling it allows it. *Required* |
