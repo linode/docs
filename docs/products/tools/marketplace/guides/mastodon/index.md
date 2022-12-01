@@ -56,7 +56,7 @@ Mastodon servers range in size from small private instances to massive public in
 
   ![Screenshot of Mastodon login page](mastodon-login-signup_marketplace.jpeg)
 
-2. You can navigate to your instance’s administration page by navigating to *example.com/admin/settings/edit*. The administration page allows you to alter the look, feel, and behavior of your instance.
+2. You can navigate to your instance’s administration page by navigating to *example.com/admin/settings/edit*. The administration page allows you to alter the look, feel, and behavior of your instance. We recommend setting a Contact Username and Email as well as a Server Name on this page. Empty fields may result in unexpected behavior.
 
   ![Screenshot of Mastodon admin page](mastodon-admin-page_marketplace.jpeg)
 
