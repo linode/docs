@@ -3,14 +3,14 @@ slug: how-to-install-and-configure-hubzilla
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide provides an introduction to the federated and decentralized Hubzilla application and explains how to install and configure it'
-og_description: 'This guide provides an introduction to the distributed and decentralized Hubzilla application and explains how to install and configure it'
+description: 'This guide provides an introduction to the federated and decentralized Hubzilla application and explains how to install and configure it.'
+og_description: 'This guide provides an introduction to the distributed and decentralized Hubzilla application and explains how to install and configure it.'
 keywords: ['Hubzilla','install Hubzilla','configure Hubzilla','Hubzilla federated']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-14
 modified_by:
   name: Linode
-title: "How to Install and Configure Hubzilla | Linode"
+title: "How to Install and Configure Hubzilla"
 h1_title: "How to Install and Configure Hubzilla"
 enable_h1: true
 contributor:
@@ -22,17 +22,17 @@ external_resources:
 - '[Hubzilla user guide](https://hubzilla.org/help/en/member/member_guide#Overview)'
 ---
 
-Recent developments have led to a renewed interest in federated web applications. Much of the interest centers around the Twitter alternative Mastodon. However, there are many other federated applications worthy of attention. For example, the federated [*Hubzilla*](https://hubzilla.org//page/hubzilla/hubzilla-project) application allows users to create interconnected websites and channels. This guide provides an introduction to the Hubzilla application and explains how to install and configure it.
+Recent developments have led to a renewed interest in federated web applications. Much of the interest centers around the Twitter alternative *Mastodon*. However, there are many other federated applications worthy of attention. For example, the federated [*Hubzilla*](https://hubzilla.org//page/hubzilla/hubzilla-project) application allows users to create interconnected websites and channels. This guide provides an introduction to the Hubzilla application and explains how to install and configure it.
 
 ## What is the Federated Web?
 
-The *federated web* is also known as the *Fediverse*, which stands for federated universe. It is a collection of servers that are independent, but can communicate and interact with one another. The Fediverse is commonly used to host web content, including websites, social networks, and blogs. Some examples of federated web applications include Hubzilla, *Friendica*, *Mastodon*, and *Pleroma*.
+The *federated web* is also known as the *Fediverse*, which stands for "federated universe". It is a collection of servers that are independent, but can communicate and interact with one another. The Fediverse is commonly used to host web content, including websites, social networks, and blogs. Some examples of federated web applications include Hubzilla, *Friendica*, Mastodon, and *Pleroma*.
 
 Communication protocols based on open standards allow the servers and users to communicate with each other across software boundaries. A user account or identity can potentially be used to create or access content on any server within the federation. In most cases, access control lists are used to control distribution and content creation rights.
 
 ## What is Hubzilla?
 
-Hubzilla is a highly versatile, free, open source application. It allows users to create connected websites and tools in a modular fashion. Some of the main Hubzilla features include websites, social media, file sharing, photo sharing, forums, chat rooms, and calendars.
+Hubzilla is a highly versatile, free, and open source application. It allows users to create connected websites and tools in a modular fashion. Some of the main Hubzilla features include websites, social media, file sharing, photo sharing, forums, chat rooms, and calendars.
 
 In Hubzilla, all communications, content, permissions, and user identities are distributed across the federation. Hubzilla uses the *ZOT* web framework to enable these secure decentralized services. ZOT is a JSON-based communication framework designed with decentralization in mind. Hubzilla channels use the *Open Web Auth* (OWA) protocol to silently identify and authenticate themselves and access server resources. OWA is similar to OpenID but it is more efficient and does not require the *Domain Name System* (DNS). However, Hubzilla allows users to use OpenID to log in to off-grid sites.
 
@@ -41,16 +41,16 @@ Hubzilla requires common web server technologies to operate, including a Linux L
 Hubzilla uses a specific terminology to describe the relationship between servers and application users.
 -   **Hub**: This is an individual server running Hubzilla. Each hub can host users and web content. Hubzilla allows anyone to run their own hub.
 -   **Grid**: This is a decentralized network of hubs. A grid allows hubs, and therefore individual users, to connect with each other. Hubs communicate using the ZOT protocol and Hubzilla's messaging system. However, a hub can be used as a stand-alone system. Hubs are not required to connect to the wider grid.
--   **Channel**: This is a Hubzilla entity within the grid. A channel can be an application user, but it can also be a web page, a blog, or a forum. A user interacts with the Hubzilla grid using their own personalized channel called the *me* channel. Each channel has its own stream and can also connect to other channels. For example, a person can subscribe to a forum, and blog updates can be funneled to a web page. A channel can be identified through its unique tag `channelname@hub.domain`. Every channel is cryptographically secured and has its own set of authentication rights.
+-   **Channel**: This is a Hubzilla entity within the grid. A channel can be an application or user, but it can also be a web page, blog, or forum. A user interacts with the Hubzilla grid using their own personalized channel called the *me* channel. Each channel has its own stream and can also connect to other channels. For example, a person can subscribe to a forum, and blog updates can be funneled to a web page. A channel can be identified through its unique tag `channelname@hub.domain`. Every channel is cryptographically secured and has its own set of authentication rights.
 
-Hubzilla follows the key federated principle of *nomadic identity*. This means a channel or account is not tied to a particular server and does not have a traditional server-based account. Channel authentication happens independently across the grid. This means users can move their identity from one hub to another, taking their data and connections with them. In addition, Hubzilla allows channels to *clone* themselves on multiple hubs. This enhances resiliency against external threats including power failures and censorship.
+Hubzilla follows the key federated principle of *nomadic identity*. This means a channel or account is not tied to a particular server and does not have a traditional server-based account. Channel authentication happens independently across the grid. This means users can move their identity from one hub to another, taking their data and connections with them. In addition, Hubzilla allows channels to *clone* themselves on multiple hubs. This enhances resiliency against external threats, including power failures and censorship.
 
-Hubzilla includes a sophisticated access control mechanism. It allocates grid-wide user permissions on a granular level. The various content channels are identity-aware. This allows for a single sign-on service across the various channels. This is a huge difference from traditional websites, which authenticate users independently. All channel content includes access control permissions, so it is possible for different users to see dramatically different channel feeds. It is also possible to set permissions for users on an entirely different hub.
+Hubzilla includes a sophisticated access control mechanism. It allocates grid-wide user permissions on a granular level. The various content channels are identity-aware. This allows for a *single sign-on* (SSO) service across the various channels. This is a huge difference from traditional websites, which authenticate users independently. All channel content includes access control permissions, so it is possible for different users to see dramatically different channel feeds. It is also possible to set permissions for users on an entirely different hub.
 
-Hubzilla is a complicated and multi-faceted application. It provides many features, including the following:
+Hubzilla is a complicated and multi-faceted application. It provides many features, including:
 
 -   A wide variety of plug-ins for creating channel content and web applications. The Comanche description language provides a toolkit for building web pages, and users can apply customizable interface, themes, and widgets to their pages.
--   Built-in social network capabilities, including chat rooms. Hubzilla provides federation support to connect to Diaspora, GNU Social, Mastodon, and other applications. Hubzilla can also serve as a client application for Twitter, Wordpress, and other applications, and distribute copies of a new update.
+-   Built-in social network capabilities, including chat rooms. Hubzilla provides federation support to connect to Diaspora, GNU Social, Mastodon, and other applications. Hubzilla can also serve as a client application for Twitter, WordPress, and other applications, and distribute copies of a new update.
 -   Cloud file storage functionality. Files can be shared or published using Hubzilla's access control mechanism.
 -   The ability to create a Wiki page for each channel.
 -   An *affinity slider* allows users to determine how close they are to another connection or channel. This allows users to select what content they want to see. Only channels within the range of the affinity slider are displayed.
@@ -60,7 +60,7 @@ Hubzilla is a complicated and multi-faceted application. It provides many featur
 -   A powerful calendar feature, allowing users to share events and coordinate attendance. Hubzilla supports most popular calendar formats.
 -   A flexible API for third-party use to configure and access hubs and create content.
 
-There are also a few drawbacks to using Hubzilla.
+There are also a few drawbacks to using Hubzilla, including:
 
 -   Some of the features and tools are not intuitive.
 -   Documentation on Hubzilla is fragmented, disorganized, and incomplete.
@@ -85,7 +85,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## How to Install Hubzilla
 
-Before downloading and installing Hubzilla, Linux users must install and configure some form of LAMP stack. A virtual host for the Hubzilla site is also mandatory. The following instructions are designed for Ubuntu 22.04 users, but are generally applicable to most Linux distributions.
+Before downloading and installing Hubzilla, Linux users must install and configure some form of LAMP stack. A virtual host for the Hubzilla site is also mandatory. The following instructions are designed for Ubuntu 22.04 LTS, but are generally applicable to most Linux distributions.
 
 ### Install the LAMP Stack
 
@@ -93,11 +93,15 @@ Hubzilla relies upon a LAMP stack consisting of the Apache web server, the Maria
 
 1.  Ensure the Ubuntu packages are up to date. Reboot the system if advised to do so.
 
-        sudo apt-get update -y && sudo apt-get upgrade -y
+    ```code
+    sudo apt-get update -y && sudo apt-get upgrade -y
+    ```
 
 2.  Install the Apache web server and the MariaDB RDBMS.
 
-        sudo apt install apache2 mariadb-server -y
+    ```code
+    sudo apt install apache2 mariadb-server -y
+    ```
 
 3.  Install PHP, including all required PHP libraries, along with some additional utilities.
 
@@ -105,18 +109,24 @@ Hubzilla relies upon a LAMP stack consisting of the Apache web server, the Maria
 Hubzilla requires PHP release 8.0 or higher. The following command installs the current PHP release 8.1. To confirm the release of PHP in use, run the command `php -v`.
     {{< /note >}}
 
-        sudo apt install openssh-server git php php-fpm php-curl php-gd php-mbstring php-xml php-mysql php-zip php-json php-cli imagemagick fail2ban wget libapache2-mod-fcgid -y
+    ```code
+    sudo apt install openssh-server git php php-fpm php-curl php-gd php-mbstring php-xml php-mysql php-zip php-json php-cli imagemagick fail2ban wget libapache2-mod-fcgid -y
+    ```
 
 4.  Use the `systemctl` command to ensure Apache and MariaDB are running and configured to start automatically at boot time.
 
-        sudo systemctl start apache2
-        sudo systemctl enable apache2
-        sudo systemctl start mysql
-        sudo systemctl enable mysql
+    ```code
+    sudo systemctl start apache2
+    sudo systemctl enable apache2
+    sudo systemctl start mysql
+    sudo systemctl enable mysql
+    ```
 
 5.  Verify Apache is running using the `systemctl status` command.
 
-        sudo systemctl status apache2
+    ```code
+    sudo systemctl status apache2
+    ```
 
     {{< output >}}
 apache2.service - The Apache HTTP Server
@@ -130,16 +140,21 @@ apache2.service - The Apache HTTP Server
 If you intend to use SSL to secure the Hubzilla installation, allow the `Apache Full` profile through. Otherwise, enable the `Apache` profile. Hubzilla tests the well-known HTTPS port first, so this port must not be open unless HTTPS is used. HTTPS is highly recommended for enhanced security. For conciseness, this guide does not configure HTTPS. However, the basic Hubzilla installation process is the same in both cases.
     {{< /note >}}
 
-        sudo ufw allow OpenSSH
-        sudo ufw allow in "Apache"
-        sudo ufw enable
+    ```code
+    sudo ufw allow OpenSSH
+    sudo ufw allow in "Apache"
+    sudo ufw enable
+    ```
 
 7.  Ensure the firewall is enabled.
 
-        sudo ufw status
+    ```code
+    sudo ufw status
+    ```
 
     {{< output >}}
 Status: active
+
 To                         Action      From
 --                         ------      ----
 OpenSSH                    ALLOW       Anywhere
@@ -152,31 +167,41 @@ Apache (v6)                ALLOW       Anywhere (v6)
 
 ### Configure the LAMP Stack
 
-1.  Enhance security for the MariaDB installation using the `mysql_secure_installation` utility. Answer the questions as follows.
+1.  Enhance security for the MariaDB installation using the `mysql_secure_installation` utility. When prompted, answer the questions as follows:
 
     -   For `Enter current password for root (enter for none):` enter the database password for the `root` account. If there is no password, hit the `Enter` key.
     -   For `Switch to unix_socket authentication` and `Change the root password?`, enter `n`.
     -   For `Remove anonymous users?`, `Disallow root login remotely?`, `Remove test database and access to it?` and `Reload privilege tables now?`, enter `Y`.
 
-            sudo mysql_secure_installation
+        ```code
+        sudo mysql_secure_installation
+        ```
 
 2.  Log in to MariaDB. Provide the root password if necessary.
 
-        sudo mysql
+    ```code
+    sudo mysql
+    ```
 
 3.  Create a `hubzilla` database for the application to use.
 
-        CREATE DATABASE hubzilla;
+    ```code
+    CREATE DATABASE hubzilla;
+    ```
 
 4.  Create a user for the new database. Supply a unique password in place of `mypassword`.
 
-        CREATE USER 'hubzilla'@'localhost' IDENTIFIED BY 'mypassword';
+    ```code
+    CREATE USER 'hubzilla'@'localhost' IDENTIFIED BY 'mypassword';
+    ```
 
 5.  Grant all privileges for the `hubzilla` database to the new user. Flush the privileges and exit.
 
-        GRANT ALL PRIVILEGES ON hubzilla.* TO 'hubzilla'@'localhost';
-        FLUSH PRIVILEGES;
-        EXIT;
+    ```code
+    GRANT ALL PRIVILEGES ON hubzilla.* TO 'hubzilla'@'localhost';
+    FLUSH PRIVILEGES;
+    EXIT;
+    ```
 
 6.  Hubzilla requires the `mpm_event` module. To enable this module, first stop Apache and disable `php-8.1` and `mpm_prefork`.
 
@@ -184,67 +209,83 @@ Apache (v6)                ALLOW       Anywhere (v6)
 Disable the `php` module associated with the current PHP release. The format of the module name is `php-releasenumber`, where the release number is the major and minor release of PHP. Use the command `php -v` to find this release information.
     {{< /note >}}
 
-        sudo systemctl stop apache2
-        sudo a2dismod php8.1
-        sudo a2dismod mpm_prefork
+    ```code
+    sudo systemctl stop apache2
+    sudo a2dismod php8.1
+    sudo a2dismod mpm_prefork
+    ```
 
 7.  Enable the PHP `rewrite` and `mpm_event` modules.
 
-        sudo a2enmod rewrite
-        sudo a2enmod mpm_event
+    ```code
+    sudo a2enmod rewrite
+    sudo a2enmod mpm_event
+    ```
 
 8.  Connect Apache to the `fpm` mechanism. Enable the following modules and configurations.
 
-        sudo a2enconf php8.1-fpm
-        sudo a2enmod proxy
-        sudo a2enmod proxy_fcgi
+    ```code
+    sudo a2enconf php8.1-fpm
+    sudo a2enmod proxy
+    sudo a2enmod proxy_fcgi
+    ```
 
 9.  Restart Apache and verify it is `active`. If the restart fails, run the `sudo apachectl configtest` command. Review and correct any errors.
 
-        sudo systemctl restart apache2
-        sudo systemctl status apache2
+    ```code
+    sudo systemctl restart apache2
+    sudo systemctl status apache2
+    ```
 
 ### Configure A Hubzilla Virtual Host
 
-Hubzilla requires its own virtual host to function properly. Create a new `hubzilla.conf` site inside `etc/apache2/sites-available` and then enable it. To create the virtual host file, follow these steps.
+Hubzilla requires its own virtual host to function properly. Create a new `hubzilla.conf` file inside `etc/apache2/sites-available` and then enable it. To create the virtual host file, follow these steps.
 
 1.  Change to the `/etc/apache2/sites-available/` directory and create the new `hubzilla.conf` file.
 
-        cd /etc/apache2/sites-available
-        sudo vi hubzilla.conf
+    ```code
+    cd /etc/apache2/sites-available
+    sudo nano hubzilla.conf
+    ```
 
 2.  Add the following information to the file. For the `ServerAdmin` and `ServerName` fields, replace `example.com` with the name of the Hubzilla domain. In the `ProxyPassMatch` variable, use the release number of the local instance of PHP in place of `8.1` for `php8.1-fpm`. Save and close the file.
 
-    {{< file "/etc/apache2/sites-available/hubzilla.conf" aconf >}}
-<VirtualHost *:80>
-    ServerAdmin webmaster@example.com
-    ServerName example.com
-    DocumentRoot /var/www/html/hubzilla
-    ProxyPassMatch ^/(.*\.php(/.*)?)$ unix:/run/php/php8.1-fpm.sock|fcgi://localhost/var/www/html/hubzilla
-    <Directory /var/www/html/>
-        Options Indexes FollowSymLinks
-        AllowOverride All
-        Order allow,deny
-        allow from all
-    </Directory>
-    ErrorLog ${APACHE_LOG_DIR}/hubzilla_error.log
-    LogLevel warn
-    CustomLog ${APACHE_LOG_DIR}/hubzilla_access.log combined
-</VirtualHost>
-    {{< /file >}}
+    ```file {title="/etc/apache2/sites-available/hubzilla.conf" lang="aconf"}
+    <VirtualHost *:80>
+        ServerAdmin webmaster@example.com
+        ServerName example.com
+        DocumentRoot /var/www/html/hubzilla
+        ProxyPassMatch ^/(.*\.php(/.*)?)$ unix:/run/php/php8.1-fpm.sock|fcgi://localhost/var/www/html/hubzilla
+        <Directory /var/www/html/>
+            Options Indexes FollowSymLinks
+            AllowOverride All
+            Order allow,deny
+            allow from all
+        </Directory>
+        ErrorLog ${APACHE_LOG_DIR}/hubzilla_error.log
+        LogLevel warn
+        CustomLog ${APACHE_LOG_DIR}/hubzilla_access.log combined
+    </VirtualHost>
+    ```
 
 3.  Enable the new site.
 
-        sudo a2ensite hubzilla
+    ```code
+    sudo a2ensite hubzilla
+    ```
 
 4.  **Optional** For extra security, disable the default Apache site.
 
-        sudo a2dissite 000-default.conf
+    ```code
+    sudo a2dissite 000-default.conf
+    ```
 
 5.  Restart Apache and verify its status.
 
-        sudo systemctl restart apache2
-        sudo systemctl status apache2
+    ```code
+    sudo systemctl restart apache2
+    sudo systemctl status apache2
+    ```
 
 ## Installing and Configuring Hubzilla
 
@@ -252,35 +293,49 @@ The LAMP stack is now fully configured and ready for Hubzilla. Use `git` to down
 
 1.  Change directory to `/var/www/html`.
 
-        cd /var/www/html
+    ```code
+    cd /var/www/html
+    ````
 
 2.  Use `git` to clone the latest release of Hubzilla from the code base.
 
-        sudo git clone https://framagit.org/hubzilla/core.git hubzilla
+    ```code
+    sudo git clone https://framagit.org/hubzilla/core.git hubzilla
+    ```
 
 3.  Change to the `hubzilla` directory and install the add-ons.
 
-        cd hubzilla
-        sudo util/add_addon_repo https://framagit.org/hubzilla/addons addons-official
+    ```code
+    cd hubzilla
+    sudo util/add_addon_repo https://framagit.org/hubzilla/addons addons-official
+    ```
 
 4.  Create the `store` directory and ensure it is writable.
 
-        sudo mkdir -p "store/[data]/smarty3"
+    ```code
+    sudo mkdir -p "store/[data]/smarty3"
+    ```
 
 5.  Change ownership and permissions for the `hubzilla` directory.
 
-        sudo chown -R www-data:www-data /var/www/html/hubzilla/
-        sudo chmod -R 755 /var/www/html/hubzilla/
+    ```code
+    sudo chown -R www-data:www-data /var/www/html/hubzilla/
+    sudo chmod -R 755 /var/www/html/hubzilla/
+    ```
 
 6.  **Optional** To access Hubzilla using HTTPS, which Hubzilla recommends, install `certbot` and use it to request and install a Let's Encrypt certificate. For further instructions, see the Linode guide on [How to Use Certbot to Enable HTTPS](https://www.linode.com/docs/guides/enabling-https-using-certbot-with-apache-on-ubuntu/).
 
 6.  Add a `cron` task to update the site every 10 minutes. Run the `crontab -e` command to edit the list of `root` cron jobs.
 
-        sudo crontab -e
+    ```code
+    sudo crontab -e
+    ```
 
 7.  Add the following line to the end of the cron file. `usr/bin/php` represents the path to the PHP installation. Before proceeding, confirm the location of PHP using the command `which php`.
 
-        */10 * * * *	cd /var/www/html/hubzilla; /usr/bin/php Zotlabs/Daemon/Master.php Cron > /dev/null 2>&1
+    ```code
+    */10 * * * *    cd /var/www/html/hubzilla; /usr/bin/php Zotlabs/Daemon/Master.php Cron > /dev/null 2>&1
+    ```
 
 ## Configuring Hubzilla
 
