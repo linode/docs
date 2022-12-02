@@ -222,7 +222,7 @@ resource "null_resource" "cbdms_post_script" {
     provisioner "remote-exec" {
         inline = [
             # Add executable permission to the script, the execute it.
-            "chmod +x /tmp/cbdms-app-node.sh",
+            "chmod +x /tmp/cbdms-data-afterward.sh",
             "/tmp/cbdms-data-afterward.sh"
         ]
     }

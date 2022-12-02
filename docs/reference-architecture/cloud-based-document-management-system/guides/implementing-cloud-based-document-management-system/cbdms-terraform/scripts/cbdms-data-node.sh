@@ -20,13 +20,19 @@ EOF
 PG_CONF_LOCATION=/etc/$(pg_lsclusters -h | awk '{print $6}' | sed 's,\(/var/lib/\)\(.*\),\2,')/postgresql.conf
 PG_HBA_LOCATION=/etc/$(pg_lsclusters -h | awk '{print $6}' | sed 's,\(/var/lib/\)\(.*\),\2,')/pg_hba.conf
 sed -i "s/#\(listen_addresses = \)'localhost'/\1'*'/" $PG_CONF_LOCATION
-sed -i 's/\(# Database administrative login by Unix domain socket\)/\1\nhost    all             bucardo         10.8.0.3/24             trust\nhost    all             bucardo         10.8.0.4/24             trust\n' $PG_HBA_LOCATION
+sed -i 's,\(# Database administrative login by Unix domain socket\),\1\nhost    all             bucardo         10.8.0.3/24             trust\nhost    all             bucardo         10.8.0.4/24             trust\n,' $PG_HBA_LOCATION
 echo 'host    all             all             10.8.0.100/24           md5' >> $PG_HBA_LOCATION
 echo 'host    mayan           mayanuser       10.8.0.1/24             md5' >> $PG_HBA_LOCATION
 echo 'host    mayan           mayanuser       10.8.0.2/24             md5' >> $PG_HBA_LOCATION
 systemctl restart postgresql
 
+# Add a Bucardo user to Postgres
+sudo -i -u postgres bash <<EOF
+psql -c "create user bucardo with superuser password 'bucardopassword';"
+EOF
+
 # Set up a password file for Postgres
+echo "10.8.0.3:5432:bucardo:bucardo:bucardopassword" >> ~/.pgpass
 echo "10.8.0.3:5432:mayan:mayanuser:mayandbpass" >> ~/.pgpass
 echo "10.8.0.4:5432:mayan:mayanuser:mayandbpass" >> ~/.pgpass
 chmod 0600 ~/.pgpass
@@ -50,6 +56,7 @@ vrrp_instance Instance1 {
     }
 }
 EOF
+systemctl restart keepalived
 
 # Install rclone
 apt install -yq rclone
@@ -84,7 +91,7 @@ rm postgres_exporter*-amd64.tar.gz
 
 # Add a user for the postgres_exporter
 sudo -i -u postgres bash <<EOF
-create user prometheus with superuser password 'prometheuspass';
+psql -c "create user prometheus with superuser password 'prometheuspass';"
 EOF
 
 # Start the postgres_exporter service

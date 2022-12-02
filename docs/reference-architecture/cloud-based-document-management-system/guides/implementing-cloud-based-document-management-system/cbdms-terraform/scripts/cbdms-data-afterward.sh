@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-# $1: Current data node number
 
-# Configure Postgres for Bucardo support
+# Create a Bucardo database
 sudo -i -u postgres bash <<EOF
-psql -c "create user bucardo with superuser password 'bucardopassword';"
 psql -c "create database bucardo with owner = bucardo;"
 EOF
 

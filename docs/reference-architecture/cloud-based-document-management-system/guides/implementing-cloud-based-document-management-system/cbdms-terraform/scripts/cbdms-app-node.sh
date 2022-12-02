@@ -51,7 +51,6 @@ docker compose --project-name mayan up --detach
 
 # Install and configure NGINX
 apt install -yq nginx
-mv /tmp/cbdms-app.conf /etc/nginx/sites-available/
 sed -i "s/<DOMAIN_NAME>/$4" /etc/nginx/sites-available/cbdms-app.conf
 ln -s /etc/nginx/sites-available/cbdms-app.conf /etc/nginx/sites-enabled/
 rm /etc/nginx/sites-enabled/default
@@ -97,7 +96,7 @@ rm unison-v*x86_64.linux.tar.gz
 ssh-keyscan -H 10.8.0.$OTHER_NODE_NUMBER >> ~/.ssh/known_hosts
 
 # Download and start the node_exporter for Prometheus
-curl -s https://api.github.com/repos/bcpierce00/unison/releases/latest \
+curl -s https://api.github.com/repos/prometheus/node_exporter/releases/latest \
   | grep "browser_download_url.*node_exporter-.*linux-amd64.tar.gz" \
   | cut -d : -f 2,3 \
   | tr -d \" \
@@ -109,6 +108,8 @@ rm node_exporter*-amd64.tar.gz
 
 # Apply the services
 systemctl daemon-reload
+
+systemctl restart nginx
 
 systemctl start cbdms_unison
 systemctl enable cbdms_unison

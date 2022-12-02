@@ -166,11 +166,13 @@ The same is the case for the Prometheus-Grafana instance. Only one such instance
 
 ### Completing Mayan EDMS Set Up
 
-The Mayan EDMS instance requires a few more steps before it is fully ready to use. The process for this architecture decouples Mayan from its default, local PostgreSQL instance. Instead, Mayan is set up to use PostgreSQL on dedicated nodes.
+In some cases, the Mayan EDMS may require a few more steps before it is fully ready to use. The process for this architecture decouples Mayan from its default, local PostgreSQL instance. Instead, Mayan is set up to use PostgreSQL on dedicated nodes. Doing so may cause an interruption to the Mayan setup process, requiring these additional steps to complete the setup.
 
-But that process seems to prevent Mayan from effectively deploying some default values. These include the default user credentials, a default document type, and a default document source.
+To check whether you need to take these steps, navigate to one of your Mayan EDMS instances in a web browser. For instance, if your first application node has the remote IP address `192.0.2.0`, you can navigate to `https://192.0.2.0` in your browser.
 
-These next few steps walk you through a straightforward process for adding these default configurations. And, because the PostgreSQL instances use bi-directional replication, you only need to this on one Mayan instance.
+If you are prompted with credentials for an automatically-generated administrator user, you do not need to complete the steps in this section. In this case, your Mayan EDMS process completed successfully.
+
+Otherwise, follow the steps give below. You only need to complete these steps on one of the Mayan EDMS instances, since there is bi-directional replication on the Postgres databases. These steps create an initial administrator user for your Mayan instances and add a default document type and a default document source.
 
 1. Access the shell as a root user on one of your application nodes. You can do this either through SSH using the node's IP address or through the Linode Shell (Lish) console that you can access through the Linode Cloud Manager.
 
