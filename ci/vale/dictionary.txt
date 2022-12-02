@@ -1559,6 +1559,7 @@ pipenv
 pipelined
 pipelining
 piwik
+pixelfed
 pki
 plaintext
 platformer
