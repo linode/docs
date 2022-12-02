@@ -17,9 +17,9 @@ contributor:
   link: https://github.com/nasanos
 ---
 
-When you want to host your own document management system, it is important to have a solution that can handle the throughput and storage needs. An efficient architecture for a cloud-based document management system can provide the scalability and high-availability you need.
+When you want to host your own document management system, it is important to have a solution that can handle your throughput and storage needs. An efficient architecture for a cloud-based document management system can provide the scalability and high-availability you need.
 
-This tutorial provides in-depth instructions for deploying a cloud-based document management system based on our own architecture. Using Terraform for infrastructure management and Linode's Cloud Firewall and VLAN services for security, the architecture ensures a robust system. And the architecture leverages the Mayan Electronic Document Management System (EDMS), a powerful open-source tool for document management.
+This tutorial provides in-depth instructions for deploying a cloud-based document management system based on our own architecture. Using Terraform for infrastructure management and Linode's Cloud Firewall and VLAN services for security and network efficiency, the architecture ensures a robust system. And the architecture leverages the Mayan Electronic Document Management System (EDMS), a powerful open-source tool for document management.
 
 Follow along with the steps here to fully provision your own production-ready and highly-available document management system.
 
@@ -85,7 +85,9 @@ The configurations and commands used in this guide add multiple Linode instances
 
 1. Change into the unzipped `cbdms-terraform` directory:
 
-        cd ~/cbdms-terraform
+    ```command
+    cd ~/cbdms-terraform
+    ```
 
     The remainder of these steps assume you are working in this directory.
 
@@ -109,28 +111,42 @@ Sensitive infrastructure data (like passwords and tokens) are visible in plain t
 
     For instance, include a line like the following if your public key file is stored in the current user's home directory:
 
-        ssh_key = "~/id_rsa.pub"
+    ```file {title="terraform.tfvars"}
+    [...]
+
+    ssh_key = "~/id_rsa.pub"
+
+    [...]
+    ```
 
     Learn more about SSH public keys in our tutorial [How to Use SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/)
 
 1. Change into the script's directory, and initialize the Terraform project. Doing so has Terraform download the necessary provisions for deploying the infrastructure.
 
-        cd ~/rcdc-terraform
-        terraform init
+    ```command
+    cd ~/rcdc-terraform
+    terraform init
+    ```
 
 1. Use the Terraform CLI to apply the script, deploying all of the designated nodes. Before Terraform performs the deployment, it provides an outline of the resources to be provisioned and asks you to confirm.
 
-        terraform apply
+    ```command
+    terraform apply
+    ```
 
     You can actually use the `plan` command first to view that outline separately beforehand — essentially making a dry run.
 
-        terraform plan
+    ```command
+    terraform plan
+    ```
 
 Once the script starts, it may take several minutes to finish. During that time, you should keep an eye on the output to ensure no errors arise during the provisioning process.
 
 If at any point you want to remove the provisioned instances, you can use the Terraform CLI to efficiently do so. Just use the following command from within the Terraform project's directory:
 
-    terraform destroy
+```command
+terraform destroy
+```
 
 #### Explanation of the Terraform Script
 
@@ -156,9 +172,9 @@ Here is a brief outline of the script's process. Further on, you can find a diag
 
 By the end, you should have a deployed infrastructure like the one in the diagram here.
 
-![Diagram of the infrastructure deployed via Terraform](cbdms-infrastructure-terraform.png)
+[![Diagram of the infrastructure deployed via Terraform](cbdms-infrastructure-terraform_small.png)](cbdms-infrastructure-terraform.png)
 
-The number application and database nodes deployed can be controlled via the `node_count` variable. But note that this would requires some adjustments to the various shell scripts deployed by Terraform.
+The number of application and database nodes deployed can be controlled via the `node_count` variable. But note that this would requires some adjustments to the various shell scripts deployed by Terraform.
 
 Linode's Terraform provider also has the ability to provision the architecture's NodeBalancer. But the NodeBalancer is a single unit and can be entirely managed from within the Linode Cloud Manager. Thus, the tutorial instead covers manual deployment of the NodeBalancer for better demonstration
 
@@ -182,17 +198,19 @@ Otherwise, follow the steps give below. You only need to complete these steps on
 
 1. Execute the following command on the shell:
 
-        docker exec -ti mayan-app-1 /opt/mayan-edms/bin/mayan-edms.py createsuperuser
+    ```command
+    docker exec -ti mayan-app-1 /opt/mayan-edms/bin/mayan-edms.py createsuperuser
+    ```
 
     The command accesses the Docker container for Mayan and executes a dedicated script Mayan has for creating an administrator user. The script prompts you to enter a username and password for this user.
 
-    {{< output >}}
-Username (leave blank to use 'root'): admin
-Email:
-Password:
-Password (again):
-Superuser created successfully.
-    {{< /output >}}
+    ```output
+    Username (leave blank to use 'root'): admin
+    Email:
+    Password:
+    Password (again):
+    Superuser created successfully.
+    ```
 
 1. Access the Mayan EDMS interface through your web browser. You may be able to do this by navigating to the application node's the IP address using HTTPS. For instance, if your application node has the remote IP address `192.0.2.0`, navigate to `https://192.0.2.0`.
 
@@ -202,7 +220,7 @@ Superuser created successfully.
 
 1. Click the **Click here to fix this** button beneath the *Create a document source* heading at the top of the page to add a document source. At the least, you should add a document source with the *Web form* option. This lets you add documents via the Mayan interface. Feel free to add whatever other document sources you intend to use.
 
-![Mayan with alerts to add a default document type and default document source](mayan-add-defaults.png)
+[![Mayan with alerts to add a default document type and default document source](mayan-add-defaults_small.png)](mayan-add-defaults.png)
 
 ### Prometheus and Grafana
 
@@ -224,14 +242,14 @@ Prometheus and Grafana get their own node in the architecture. Through the Linod
 
 1. Add the following lines to the end of the configuration file. Make sure that the spaces line up with the `job_name: local_prometheus` block preceding these new lines:
 
-    {{< file "/etc/prometheus/prometheus.yml" yml >}}
-  - job_name: node
-    static_configs:
-    - targets: ['10.8.0.1:9100','10.8.0.2:9100']
-  - job_name: postgres_exporter
-    static_configs:
-    - targets: ['10.8.0.3:9187','10.8.0.4:9187']
-    {{< /file >}}
+    ```file {title="/etc/prometheus/prometheus.yml" lang="yml"}
+      - job_name: node
+        static_configs:
+        - targets: ['10.8.0.1:9100','10.8.0.2:9100']
+      - job_name: postgres_exporter
+        static_configs:
+        - targets: ['10.8.0.3:9187','10.8.0.4:9187']
+    ```
 
     These two blocks tell Prometheus to listen at the given addresses for the exporters installed on each of the application and database nodes. The exporters themselves, installed during the Terraform process, provide metrics that Prometheus can consume.
 
@@ -239,7 +257,7 @@ Prometheus and Grafana get their own node in the architecture. Through the Linod
 
     Most of the metrics gathered by this Prometheus instance should have names like `node_*` and `pg_*`.
 
-    ![Adding queries for Prometheus metrics to Grafana](grafana-explore.png)
+    [![Adding queries for Prometheus metrics to Grafana](grafana-explore_small.png)](grafana-explore.png)
 
 1. To jump start your view of the metrics, you can import ready-made Grafana dashboards. You can do this by navigating to the **Dashboard** option on the left menu in Grafana and selecting **Import**. There, enter the dashboard's ID and click the **Load** button.
 
@@ -299,11 +317,11 @@ Where are the rules for the database nodes? All of the databases' inbound connec
 
 You should now have a fully-operational cloud-based document management system. The complete deployed infrastructure should resemble the diagram shown here.
 
-![Diagram of the complete infrastructure for the cloud-based document management system](cbdms-infrastructure-complete.png)
+[![Diagram of the complete infrastructure for the cloud-based document management system](cbdms-infrastructure-complete_small.png)](cbdms-infrastructure-complete.png)
 
 To access Mayan EDMS, navigate to the domain name you associated with the NodeBalancer. Then log into Mayan using the administrator username and password you set up. This takes you to the homepage for your Mayan EDMS instance, where you can manage your instance's setup and documents.
 
-![The homepage for a Mayan EDMS instance](mayan-home.png)
+[![The homepage for a Mayan EDMS instance](mayan-home_small.png)](mayan-home.png)
 
 As a summary, here is an overview everything that goes on behind the scenes for this document management setup.
 
