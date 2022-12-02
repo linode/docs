@@ -1,17 +1,18 @@
 ---
-slug: getting-started-ember
+slug: how-to-build-a-website-with-the-ember-framework
 author:
   name: Linode Community
   email: docs@linode.com
 description: "Ember offers a full framework for constructing modern web applications. Using an MVC structure, Ember comes with everyting you need, from templates and routing through components and services. Follow this tutorial to learn more about Ember and see how you can start making your own applications with it."
-og_description: "Ember offers a full framework for constructing modern web applications. Using an MVC structure, Ember comes with everyting you need, from templates and routing through components and services. Follow this tutorial to learn more about Ember and see how you can start making your own applications with it."
-keywords: ['javascript ember tutorial','ember js examples','create ember project']
+keywords: ['javascript ember tutorial', 'ember js examples', 'create ember project']
+tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-01
 modified_by:
   name: Nathaniel Stickman
 title: "How to Build a Website with the Ember Framework"
-h1_title: "How to Build a Website with the Ember Framework"
+h1_title: "Building a Website with the Ember Framework"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -21,33 +22,33 @@ external_resources:
 - '[Tutorials Point: EmberJS Tutorial](https://www.tutorialspoint.com/emberjs/index.htm)'
 ---
 
-Ember is a JavaScript framework for making the process of developing modern web applications better for developers and users alike. Ember's component and service based framework gives powerful tools for making consistent and efficient applications.
+Ember is a JavaScript framework for making the process of developing modern web applications better for developers and users alike. Ember's component and service-based framework give powerful tools for making consistent and efficient applications.
 
-With this tutorial, learn about what Ember has to offer and how it structures its applications. Follow along for an in-depth example of how to install Ember and start building an application of your own with its command-line tools.
+With this guide, learn what Ember has to offer and how it structures its applications. Follow along for an in-depth example of how to install Ember and start building an application of your own with its command-line tools.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command::
 
             sudo dnf upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is the Ember Framework?
 
-[Ember.js](https://emberjs.com/) is a modern JavaScript framework for developing web frontends. Ember utilizes a model-view-controller (MVC) architecture and centers application design around reusable components and services.
+[Ember.js](https://emberjs.com/) is a modern JavaScript framework for developing web frontends. Ember utilizes a Model-View-Controller (MVC) architecture and centers application design around reusable components and services.
 
 With Ember, everything comes ready to build efficient and dynamic application frontends. Routing is built in, as well as two-way data binding. All while being a light layer on top of vanilla JavaScript.
 
@@ -59,19 +60,19 @@ React stands as one of the most popular tools for building modern web applicatio
 
 The two are similar in that both are designed for developing efficient web frontends, and both use component-based approaches.
 
-But the two differ in scope. React is a library, designed specifically for enhancing the experience of developing user interfaces. Ember.js, on the other hand, is a framework, meaning that it brings with it an entire architecture for developing frontend applications.
+But the two differ in scope. React is a library, designed specifically for enhancing the experience of developing user interfaces. Ember.js, on the other hand, is a framework, meaning that it brings with it an entire architecture for developing front-end applications.
 
-Beyond that, here are some of the key differences between the two:
+Beyond that, the following are some of the key differences between the two:
 
-- Ember is highly opinionated. It brings with it a particular architecture (MVC) and conventions, and developers need to follow these to develop Ember applications. React, on the other hand, is not opinionated, in large part because it is strictly focused on the view aspect. This makes React more adaptable but also gives it less built-in structure.
+- Ember is highly opinionated. It brings with it a particular architecture (MVC) and conventions, and developers need to follow these to develop Ember applications. React, on the other hand, is not opinionated, in large part because it is strictly focused on the view aspect. This makes React more adaptable but also gives it a less built-in structure.
 
-- Ember comes built in with features for modern web application development like routing and services. React can have these features added on to it, but doing so typically requires bringing in other, supplementary libraries, or a framework like Next.js.
+- Ember comes built-in with features for modern web application development like routing and services. React can have these features added to it, but doing so typically requires bringing in other, supplementary libraries, or a framework like Next.js.
 
-- Ember is generally considered to have a higher learning curve than React. React's adaptability often makes it easier to pick up for creating an application. By contrast, Ember requires developers to go in-depth with its architecture and conventions to create applications. This usually means that, unless you already know some about Ember, getting started with it can take a bit longer than getting started with React.
+- Ember is generally considered to have a higher learning curve than React. React's adaptability often makes it easier to pick up for creating an application. By contrast, Ember requires developers to go in-depth with its architecture and conventions to create applications. This usually means that, unless you already know something about Ember, getting started with it can take a bit longer than getting started with React.
 
-Overall, Ember is considered an excellent solution for dynamic single-page applications. With its full-suite of features and underlying architecture, Ember gives developers a strong basis for building highly interactive applications.
+Overall, Ember is considered an excellent solution for dynamic single-page applications. With its full suite of features and underlying architecture, Ember gives developers a strong basis for building highly interactive applications.
 
-React, on the other hand, tends to shine brighter for larger and more complicated applications. React is a JavaScript library for handling user interfaces, which makes it adaptable to fit alongside other libraries to handle other parts of complex applications.
+React, on the other hand, tends to shine brighter for larger, and more complicated applications. React is a JavaScript library for handling user interfaces, which makes it adaptable to fit alongside other libraries to handle other parts of complex applications.
 
 ## How to Install Ember
 
@@ -87,17 +88,17 @@ These steps walk you through installing the Ember tooling.
 
         npm install -g ember-cli
 
-This gives you the `ember` command-line command. The rest of this guide uses that tool for setting up Ember projects. But the tool can even be used for conveniently creating the files for new components and services on your project.
+This gives you the `ember` command-line command. The rest of this guide uses that tool for setting up Ember projects. But the tool can even be used for conveniently creating files for new components and services on your project.
 
 ## Getting Started with Ember
 
-Once you have the Ember CLI, the process for creating a new Ember project is straightforward. Follow along through this next section to create a new Ember project and run the default base application.
+Once you have the Ember CLI, the process of creating a new Ember project is straightforward. Follow along through this next section to create a new Ember project and run the default base application.
 
-Later, the tutorial builds on this base project to create a full and custom application.
+Later, the guide builds on this base project to create a full and custom application.
 
-### Creating an Ember Base Project
+### Create an Ember Base Project
 
-The Ember CLI provides a command for creating a new Ember project. For this tutorial, the project is named `example-app`. The following Ember CLI command creates a new project with that name, resulting in an `example-app` directory within the current directory.
+The Ember CLI provides a command for creating a new Ember project. For this guide, the project is named `example-app`. The following Ember CLI command creates a new project with that name, resulting in an `example-app` directory within the current directory.
 
     ember new example-app
 
@@ -107,9 +108,19 @@ Ember CLI v4.7.0
 
 ✨  Creating a new Ember app in /home/example-user/example-app:
 [...]
+
+[...]
+🚧  Installing packages... This might take a couple of minutes.
+npm: Installed dependencies
+
+🎥  Initializing git repository.
+Git: successfully initialized.
+
+🎉  Successfully created project example-app.
+
 {{< /output >}}
 
-Now you can change into the new project's directory, where the rest of this tutorial assumes you are working:
+Now you can change into the new project's directory, where the rest of this guide assumes you are working:
 
     cd example-app
 
@@ -122,16 +133,16 @@ Ember serves the application on port `4200` by default, so you can access the ap
 {{< note >}}
 To access this remotely, you may first need to open the port in your system's firewall. You can learn about how to do that in one of the guides linked below, depending on your system's Linux distribution.
 
-- For Debian and Ubuntu, refer to our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+- For **Debian** and **Ubuntu**, refer to our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
 
-- For AlmaLinux, CentOS, and Fedora, refer to our guide on [Enabling and Configuring FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/)
+- For **AlmaLinux**, **CentOS**, and **Fedora**, refer to our guide on [Enabling and Configuring FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/)
 {{< /note >}}
 
 ![Ember welcome page](ember-default-app.png)
 
 You can then stop the Ember development server with the **Ctrl + C** key combination.
 
-### Understanding the Parts of an Ember Project
+### Understand the Parts of an Ember Project
 
 To get the most out of starting with Ember, you should familiarize yourself with its most important parts. These next few sections summarize the most useful to know and lay foundations for how to start working with them.
 
@@ -141,7 +152,7 @@ Keep on beyond these sections to apply this knowledge in constructing a complete
 
 Templates, stored in the `app/templates` subdirectory, define the structure of each page of your Ember application. The default template, `templates/application.hbs`, does not have much content, since most of the design is done in the `<WelcomePage />` component.
 
-But you can see in the section below on creating an Ember application that template files follow some of the basic principles of HTML. Ember extends widely on HTML's possibilities, however, to make its templates capable of dynamic and adaptable content.
+But you can see in the section below on creating an Ember application that template files follow some of the basic principles of HTML. Ember extends widely on HTML's possibilities, however, to make its templates capable of dynamic, and adaptable content.
 
 #### Components
 
@@ -155,7 +166,7 @@ The example application created further below includes components for everything
 
 Routes are defined in the `app/router.js` file, via modifications to the `Router.map` portion of the file.
 
-For instance, you can add an `/about` route, for an "About Me" page, by modifying the default `Router.map` to:
+For instance, you can add an `/about` route, for an "About Me" page, by modifying the default `Router.map` as shown below:
 
 {{< file "app/router.js" js >}}
 // [...]
@@ -175,19 +186,19 @@ Router.map(function () {
 });
 {{< /file >}}
 
-Each route also points to a JavaScript file of the associated name, stored in the `app/routes` subdirectory. These files are not required — the `/about` route in the example application created below does not have one. But they allow you to associate particular behaviors with the route, and to give the route a model for storing data and methods.
+Each route also points to a JavaScript file of the associated name, stored in the `app/routes` subdirectory. These files are not required — the `/about` route in the example application created below does not have one. But they allow you to associate particular behaviors with the route and give the route a model for storing data and methods.
 
 #### Services
 
 Services provide reusable behaviors across an Ember application, particularly for behaviors that require a shared state across the application. These services are defined by files in the `app/services` subdirectory.
 
-Services can be useful for retrieving data, fetching and maintaining authentication, connecting to web sockets and external APIs, and provide logging. They are typically best for functions and states that you need access to across the application.
+Services can be useful for retrieving data, fetching and maintaining authentication, connecting to web sockets, and external APIs, and providing logging. They are typically best for functions and states that you need access to across the application.
 
 ## How to Create an Ember Application
 
 To put that knowledge about Ember and how it structures applications into practice, this section walks you through the creation of a full Ember application.
 
-This example application covers most of the key concepts discussed above. Along the way, this walkthrough gives you a deeper look at Ember's features and how you can develop for them.
+This example application covers most of the key concepts discussed above. Along the way, this walkthrough gives you a deeper look at Ember's features and how you can develop them.
 
 ### Constructing Templates
 
@@ -206,7 +217,7 @@ These templates already use some components to abstract pieces of the page desig
 </PageContent>
     {{< /file >}}
 
-- Create an `about.hbs` template with the contents shown here.
+- Create an `about.hbs` template with the contents shown below.
 
     {{< file "app/templates/about.hbs" hbs >}}
 <PageContent @title="About">
@@ -214,19 +225,19 @@ These templates already use some components to abstract pieces of the page desig
 </PageContent>
     {{< /file >}}
 
-- Create a `projects.hbs` template with the content here. This page is a little more complicated, as it uses a model which fetches dynamic data. You can see how that behavior is implemented in the section further below on data fetching.
+- Create a `projects.hbs` template with the contents shown below. This page is a little more complicated, as it uses a model which fetches dynamic data. You can see how that behavior is implemented in the section further below on data fetching.
 
-{{< file "app/templates/projects.hbs" hbs >}}
-<PageContent @title="Projects">
-  These are some key projects of mine.
-  <!-- Each of these components takes a list of projects and renders
-       them for display. -->
-  <ProjectsList @project-list-title="Completed" @projects={{@model.completedProjects}}/>
-  <ProjectsList @project-list-title="In Progress" @projects={{@model.inProgressProjects}}/>
-</PageContent>
-{{< /file >}}
+  {{< file "app/templates/projects.hbs" hbs >}}
+  <PageContent @title="Projects">
+    These are some key projects of mine.
+    <!-- Each of these components takes a list of projects and renders
+        them for display. -->
+    <ProjectsList @project-list-title="Completed" @projects={{@model.completedProjects}}/>
+    <ProjectsList @project-list-title="In Progress" @projects={{@model.inProgressProjects}}/>
+  </PageContent>
+  {{< /file >}}
 
-None of the above templates includes a header or footer section. Instead, you can use the special `application.hbs` template to cover that. This file should already be present in the default Ember application, so just replace its contents with the following to implement a consistent frame to each page.
+None of the above templates includes a header or footer section. Instead, you can use a special `application.hbs` template to cover that. This file should already be present in the default Ember application, so just replace its contents with the following to implement a consistent frame for each page.
 
 {{< file "app/templates/projects.hbs" hbs >}}
 <div class="container">
@@ -246,7 +257,7 @@ None of the above templates includes a header or footer section. Instead, you ca
 
 The templates above use a variety of components to implement reusable structures. With components, you can design elements that can be reused across your application. And, moreover, these tend to be easier to maintain because they are centralized.
 
-Here you can see the creation of the components used in this example application. Components are stored in the `app/components` subdirectory of your Ember project, and each can be used like an HTML element.
+Here you can see the creation of the components used in this example application. Components are stored in the `app/components` subdirectory of your Ember project, and each can be used as an HTML element.
 
 For instance, the `nav-bar.hbs` component below is readily available to the `application.hbs` template above, where it gets added with the `<NavBar />` tag.
 
@@ -302,9 +313,9 @@ For instance, the `nav-bar.hbs` component below is readily available to the `app
 </ul>
     {{< /file >}}
 
-### Defining Routes
+### Define Routes
 
-Ember comes with routing, and adding new routes can be done through a straightforward modifications to the default `app/router.js` file.
+Ember comes with routing, and adding new routes can be done through straightforward modifications to the default `app/router.js` file.
 
 This example adds two new routes, `/about` and `/projects`, directing to two of the templates created for this project. The home page, at the `/` route, is included by default, routing to the `index.hbs` template.
 
@@ -317,11 +328,11 @@ Router.map(function () {
 });
 {{< /file >}}
 
-### Implementing Data Fetching
+### Implement Data Fetching
 
 The portfolio page for this example application fetches two external lists to display results from. The data fetching can be handled using a route's JavaScript file, stored in the `app/routes` subdirectory.
 
-The `/project` route's JavaScript file implements a model for the route, giving it some fetched data and some behaviors. The model first fetches the broad list of portfolio projects then exposes two methods, each for providing a different filtered list of projects.
+The `/project` route's JavaScript file implements a model for the route, giving it some fetched data and some behaviors. The model first fetches the broad list of portfolio projects and then exposes two methods, each for providing a different filtered list of projects.
 
 {{< file "app/routes/projects.js" js >}}
 // Import the route module for handling route-specific behavior.
@@ -363,7 +374,7 @@ For demonstration purposes, this example just uses a JSON file for fetching the 
 }
 {{< /file >}}
 
-### Running the Application
+### Run the Application
 
 To run this example application, you can use the same command you used to run the default Ember application:
 
@@ -385,7 +396,6 @@ Now, navigate to port `4200` on the server to see the new application in action.
 
 ## Conclusion
 
-This tutorial offers a general overview of Ember and its application structure, as well as a walkthrough for creating an application of your own. With it, you have all you need as far as the foundations for getting started with Ember for developing your own web applications.
+This guide offers a general overview of Ember and its application structure, as well as a walkthrough for creating an application of your own. With it, you have all you need as far as the foundations for getting started with Ember for developing your own web applications.
 
 Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
-
