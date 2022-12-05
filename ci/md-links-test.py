@@ -3,7 +3,6 @@ import os
 import sys
 import re
 import frontmatter
-import random
 import textwrap
 
 class Guide:
@@ -217,7 +216,11 @@ def check_internal_markdown_links(guides, assets):
     link_pattern = re.compile("(?:[^\!]|^)\[([^\[\]]+)\]\(()([^()]+)\)")
 
     # Array of special elements to ignore
-    elementsToIgnore = ['{{< file', '```', '{{< command']
+    starting_elements_to_ignore = ['{{< file', '```', '{{< command']
+    ending_elements_to_ignore = ['```','{{</file','{{</ file','{{< /file'
+        ,'{{</command','{{</ command','{{< /command']
+
+    list_elements = ['-','*','.']
 
     issues = []
 
@@ -232,20 +235,46 @@ def check_internal_markdown_links(guides, assets):
         # Reset insideSpecialElement for each new file
         insideSpecialElement = False
 
+        # Build a list of each line in a file
+        lines = open(guide.path)
+
+        previous_indent = 0
+        previous_line = ""
+
         # Iterate through each line of the file
-        for i, line in enumerate(open(guide.path)):
+        for i, line in enumerate(lines):
 
             # Ignore certain code elements
-            if line.strip().startswith(tuple(elementsToIgnore)):
+            if line.lstrip().startswith(tuple(starting_elements_to_ignore)):
                 insideSpecialElement = True
                 continue
-            elif line.strip().startswith(tuple(elementsToIgnore)):
+            elif line.lstrip().startswith(tuple(ending_elements_to_ignore)):
                 insideSpecialElement = False
                 continue
             if insideSpecialElement == True:
                 continue
 
-            # Find and iterate through all markdown links to other guides
+            # Set the current indent
+            current_indent = len(line) - len(line.lstrip())
+            current_leading_char = len(line) - len(line.lstrip())
+
+            # Strip out any numbers at the start of the line
+            line = re.sub('^\d+', '', line)
+
+            # Ignore indented code blocks (recognizing the difference between indents for lists and indents for code blocks)
+            if previous_line.lstrip().startswith(tuple(list_elements)) and (current_indent - previous_indent) >= 6:
+                continue
+            elif not previous_line.lstrip().startswith(tuple(list_elements)) and (current_indent - previous_indent) >= 3:
+                continue
+            # Set the previous indent if not in an indented code block
+            else:
+                previous_indent = current_indent
+                previous_line = line
+
+            # Remove all inline code blocks from the line
+            line = re.sub(r'(?<!\\)(`.*?(?<!\\)`)', '', line)
+
+            # Find and iterate through all markdown links
             for match in re.finditer(link_pattern, line):
                 # Remove the title, brackets, and parenthesis from the markdown link syntax
                 link = match.group(3)
@@ -288,6 +317,7 @@ def check_internal_markdown_links(guides, assets):
                         issues.append(Issue(link_unmodified,'points-to-alias'))
                     else:
                         issues.append(Issue(link_unmodified,'not-found'))
+
     return issues
 
 # ------------------
