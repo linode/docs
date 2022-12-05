@@ -75,14 +75,12 @@ resource "linode_instance" "rcdc_application" {
   type = "g6-standard-1"
   root_pass = var.password
 
+  depends_on = [linode_instance.rcdc_gateway]
+
   interface {
     purpose = "vlan"
     label = "vlan-${var.regions[floor(count.index / length(var.regions))]}-1"
     ipam_address = "10.8.${floor(count.index / length(var.regions))}.${count.index + 11}/24"
-  }
-
-  interface {
-    purpose = "public"
   }
 
   connection {

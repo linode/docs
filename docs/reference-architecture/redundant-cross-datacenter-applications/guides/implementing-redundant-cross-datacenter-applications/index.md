@@ -239,9 +239,15 @@ The following is what the these configuration should looks like on each gateway.
 
     ```
 
+At this point, you should restart the `networkd` process using the command:
+
+```command
+systemctl restart systemd-networkd
+```
+
 You can then test the connection between the two gateway nodes by pinging one from the other. For instance, from the `rcdc-gateway-us-southeast` node:
 
-```code
+```command
 ping 10.8.1.1
 ```
 
