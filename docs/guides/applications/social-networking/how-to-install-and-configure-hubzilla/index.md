@@ -77,7 +77,7 @@ For more information about Hubzilla and its features, see the [Hubzilla Document
 
 1.  Assign a domain name for the Hubzilla hub and point it to the IP address of the server. For information on domain names and pointing a domain name to a Linode, see the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/).
 
-1.  Enable email on the Linode server to allow Hubzilla to send out registration emails containing verification codes.
+1.  Enable email on the Linode server to allow Hubzilla to send out registration emails containing verification codes. Hubzilla requires a working mail server to authenticate new users. For more information on setting up a mail server, see our [guides on email](/docs/guides/email).
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -137,7 +137,7 @@ apache2.service - The Apache HTTP Server
 6.  Configure the firewall to allow Apache connections. Ensure SSH connections are also allowed.
 
     {{< note >}}
-If you intend to use SSL to secure the Hubzilla installation, allow the `Apache Full` profile through. Otherwise, enable the `Apache` profile. Hubzilla tests the well-known HTTPS port first, so this port must not be open unless HTTPS is used. HTTPS is highly recommended for enhanced security. For conciseness, this guide does not configure HTTPS. However, the basic Hubzilla installation process is the same in both cases.
+If you intend to use SSL to secure the Hubzilla installation, use the `Apache Full` profile. Otherwise, enable the `Apache` profile. Hubzilla tests the well-known HTTPS port first, so this port must not be open unless HTTPS is used. HTTPS is highly recommended for enhanced security. For conciseness, this guide does not configure HTTPS. However, the basic Hubzilla installation process is the same in both cases.
     {{< /note >}}
 
     ```code
@@ -367,6 +367,20 @@ The administration email must contain a valid email address. Hubzilla sends a ve
 
     {{< note >}}
 After selecting `Register`, Hubzilla must send an email to the email address of the account. The Linode must have email turned on to complete this process.
+
+For non-production Hubzilla testing, it is possible to remove the mail server requirements by editing a Hubzilla configuration file. To do so, open the `.htconfig.php` file located at `/var/www/html/hubzilla` and change the `1` in the following line:
+
+```file {title="/var/www/html/hubzilla/.htconfig.php"}
+App::$config['system']['verify_email'] = 1;
+```
+
+To instead be a `0`:
+
+```file {title="/var/www/html/hubzilla/.htconfig.php"}
+App::$config['system']['verify_email'] = 0;
+```
+
+This configuration change is not recommended on production installations.
     {{< /note >}}
 
     ![Hubzilla Registration](Hubzilla-Registration.png)
