@@ -216,9 +216,11 @@ def check_internal_markdown_links(guides, assets):
     link_pattern = re.compile("(?:[^\!]|^)\[([^\[\]]+)\]\(()([^()]+)\)")
 
     # Array of special elements to ignore
-    starting_elements_to_ignore = ['{{< file', '```', '{{< command']
-    ending_elements_to_ignore = ['```','{{</file','{{</ file','{{< /file'
-        ,'{{</command','{{</ command','{{< /command']
+    starting_elements_to_ignore = ['```','{{< file','{{<file',
+        '{{< command','{{<command','{{< output', '{{<output']
+    ending_elements_to_ignore = ['```','{{</file','{{</ file','{{< /file',
+        '{{</command','{{</ command','{{< /command',
+        '{{</output','{{</ output','{{< /output']
 
     list_elements = ['-','*','.']
 
