@@ -3,14 +3,17 @@ title: Guides
 description: "Learn how to manage various Linode services using the Linode CLI."
 tab_group_main:
     weight: 30
-modified: 2022-11-30
+modified: 2022-12-06
 ---
 
 ## Basics
 
-- [Get Started with the Linode CLI](/docs/products/tools/cli/get-started/)
+- [Get Started with the Linode CLI](/docs/products/tools/cli/get-started/): Learn the basics of using the Linode CLI, including running a command and understanding the output.
 
-- [Install and Configure the Linode CLI](/docs/products/tools/cli/guides/install/)
+- [Install and Configure the Linode CLI](/docs/products/tools/cli/guides/install/): Instructions on installing and configuring the Linode CLI on your system.
+
+- [Manage Multiple Users and Accounts with the Linode CLI](/docs/products/tools/cli/guides/manage-multiple-accounts/): Execute commands from different users or accounts.
+
 
 ## Using the Linode CLI
 
