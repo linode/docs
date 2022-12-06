@@ -54,7 +54,7 @@ Most nameserver authorities will allow you to set the TTL on your domain or on i
 
 ### Use Linode's Nameservers
 
-1.  Follow Linode's instructions on [adding a domain zone](/products/networking/dns-manager/guides/create-domain/) to create DNS records at Linode for your domain. Recreate the DNS records listed in your current nameserver authority's website, but change the IP addresses to reflect your Linode IPs where appropriate.
+1.  Follow Linode's instructions on [adding a domain zone](/docs/products/networking/dns-manager/guides/create-domain/) to create DNS records at Linode for your domain. Recreate the DNS records listed in your current nameserver authority's website, but change the IP addresses to reflect your Linode IPs where appropriate.
 
 1.  Locate your domain's registrar, which is the company you purchased your domain from. If you're not sure who your registrar is, you can find out with a [Whois Search tool](https://whois.icann.org/).
 

@@ -215,7 +215,7 @@ php8.0-fpm.service - The PHP 8.0 FastCGI Process Manager
     {{< /output >}}
 1. Add the following configuration to the virtual host `.conf` file for your domain. If a virtual host has not been configured, add it to the `default` NGINX file instead. These files are located in the `/etc/nginx/sites-available` directory.
     {{< note >}}
-For more information on configuring a virtual host on NGINX, consult the Linode Guide on [How to Install and Use NGINX on Ubuntu 20.04](https://www.linode.com/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/).
+For more information on configuring a virtual host on NGINX, consult the Linode Guide on [How to Install and Use NGINX on Ubuntu 20.04](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/).
     {{< /note >}}
 
     {{< file "/etc/nginx/sites-available/default" aconf >}}

@@ -73,8 +73,8 @@ This guide is written for non-root users. Commands that require elevated privile
 
 Mastodon can be installed using its included [Docker Compose](https://docs.docker.com/compose/) file. Docker Compose installs and runs all of the requisites for the Mastodon environment in Docker containers. If you have not used Docker before, it is recommended that you review the following guides:
 
-- [Introduction to Docker](/guides/introduction-to-docker/)
-- [How to Use Docker Compose](/docs/guides/hoo-use-docker-compose/)
+- [Introduction to Docker](/docs/guides/introduction-to-docker/)
+- [How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/)
 
 ### Install Docker
 

@@ -308,7 +308,7 @@ It is usually good practice to include a README file when you distribute your Vi
 
 Create a `README.md` file in the plugin's base directory. GitHub automatically renders and displays the contents of this file to anyone visiting your repository's main page.
 
-Take a look at our [example Readme file](example-plugin/README) for ideas on the kind of information you may want to provide. This example fits with the example plugin developed in the sections above.
+Take a look at our [example Readme file](README) for ideas on the kind of information you may want to provide. This example fits with the example plugin developed in the sections above.
 
 ### Create a Git Repository
 

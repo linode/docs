@@ -215,7 +215,7 @@ If you’re looking for a more feature-rich test tool, then Pytest is a good cho
 Before you can use Pytest, you must install it on your system.
 
 {{< note >}}
-If you have not already installed `conda`, see our [How to Install Anaconda](https://www.linode.com/docs/guides/install-anaconda-on-linux-ubuntu-20-04) guide for the installation instructions.
+If you have not already installed `conda`, see our [How to Install Anaconda](/docs/guides/how-to-install-anaconda/) guide for the installation instructions.
 {{< /note >}}
 
 To install Pytest using conda, issue the following command:

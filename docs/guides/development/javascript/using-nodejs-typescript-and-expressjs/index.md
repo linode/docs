@@ -78,7 +78,7 @@ If you do not have Node.js and the node version manager (nvm) installed on your 
 There is also a field defined in the `package.json` file called the `repository` field. You don't have to provide a value for this field if you don’t have a repository configured to store your code.
 {{< /note >}}
 
-1. Use [npm](https://www.linode.com/docs/guides/install-and-use-npm-on-linux/) to install Express with the command below. Ensure you are still in the `typescript-nodejs` directory when running the command.
+1. Use [npm](/docs/guides/install-and-use-npm-on-linux/) to install Express with the command below. Ensure you are still in the `typescript-nodejs` directory when running the command.
 
         npm install express
 

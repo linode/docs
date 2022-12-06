@@ -237,4 +237,4 @@ without evaluating it.
 
 ## Conclusion
 
-With the redirect operators and Sed commands above, you should be able to write to files directly right from the command line. The operators and commands used in this guide are also helpful when you need to work with files in Bash scripts and other shell scripts. If you are interested in learning more about Bash scripts, check out our [series of guides on Bash scripting](https://www.linode.com/docs/guides/development/bash/).
+With the redirect operators and Sed commands above, you should be able to write to files directly right from the command line. The operators and commands used in this guide are also helpful when you need to work with files in Bash scripts and other shell scripts. If you are interested in learning more about Bash scripts, check out our [series of guides on Bash scripting](/docs/guides/development/bash/).

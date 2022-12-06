@@ -29,7 +29,7 @@ Adding external Linode NodeBalancers to your LKE cluster will incur additional c
 {{</ note >}}
 
 {{< note >}}
-All existing LKE clusters receive CCM updates automatically every two weeks when a new LKE release is deployed. See the [LKE Changelog](https://developers.linode.com/changelog/linode-kubernetes-engine/) for information on the latest LKE release.
+All existing LKE clusters receive CCM updates automatically every two weeks when a new LKE release is deployed. See the [LKE Changelog](/docs/products/compute/kubernetes/release-notes/) for information on the latest LKE release.
 {{</ note >}}
 
 {{< note >}}

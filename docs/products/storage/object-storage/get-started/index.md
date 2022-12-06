@@ -79,7 +79,7 @@ Individual object uploads are limited to a size of 5GB each, though larger objec
 {{< /note >}}
 
       {{< note >}}
-You can add an *AbortIncompleteMultipartUpload* lifecycle policy to the buckets to automatically abort unfinished multipart uploads after a certain amount of time. For more information about adding the *AbortIncompleteMultipartUpload* lifecycle policy, see [Additional Actions] (https://www.linode.com/docs/guides/how-to-manage-objects-with-lifecycle-policies/#additional-actions).
+You can add an *AbortIncompleteMultipartUpload* lifecycle policy to the buckets to automatically abort unfinished multipart uploads after a certain amount of time. For more information about adding the *AbortIncompleteMultipartUpload* lifecycle policy, see [Additional Actions] (/docs/guides/how-to-manage-objects-with-lifecycle-policies/#additional-actions).
 {{< /note >}}
 
 ## Control Permissions with ACLs and Bucket Policies

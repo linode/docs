@@ -75,7 +75,8 @@ DOCS_DIR = [
     "docs/bundles",
     "docs/assets",
     "docs/api",
-    "docs/reference-architecture"
+    "docs/reference-architecture",
+    "docs/release-notes"
 ]
 
 # Create all issue types
