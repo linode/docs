@@ -49,7 +49,7 @@ A Ubuntu LAMP or LEMP stack satisfies all these prerequisites. A LAMP stack incl
 For greater security, WordPress highly recommends HTTPS. However, these instructions work whether HTTPS is configured on the server or not. For information about enabling HTTPS on Ubuntu, see the [Linode guide on enabling HTTPS on Apache](/docs/guides/enabling-https-using-certbot-with-apache-on-ubuntu/). An alternate guide for [NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) is also available.
 
 {{< note >}}
-WordPress sites are almost always accessed using a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/guides/dns-manager/).
+WordPress sites are almost always accessed using a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 {{< /note >}}
 
 ## Before You Begin
@@ -61,7 +61,7 @@ WordPress sites are almost always accessed using a domain name. For more informa
 1.  Fully configure a LAMP or LEMP stack on the Linode and confirm it is working properly.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Prepare the LAMP or LEMP Stack for WordPress

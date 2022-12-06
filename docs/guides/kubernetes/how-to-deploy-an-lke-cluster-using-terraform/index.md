@@ -38,7 +38,7 @@ This guide will walk you through the steps needed to deploy a Kubernetes cluster
 
 ## Before you Begin
 
-1. Create a personal access token for [Linode's API v4](https://developers.linode.com/api/v4). Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) to get a token. You will need a token to be able to create Linode resources using Terraform.
+1. Create a personal access token for [Linode's API v4](https://developers.linode.com/api/v4). Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token. You will need a token to be able to create Linode resources using Terraform.
 
     {{< note >}}
 Ensure that your token has, at minimum, Read/Write permissions for Linodes, Kubernetes, NodeBalancers, and Volumes.
