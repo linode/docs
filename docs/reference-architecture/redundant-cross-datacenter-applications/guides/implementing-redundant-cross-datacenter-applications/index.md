@@ -94,7 +94,7 @@ The configurations and commands used in this guide add multiple Linode instances
 Sensitive infrastructure data (like passwords and tokens) are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
     {{< /caution >}}
 
-1.  The Terraform script assumes that you have an SSH public key file stored at `~/.ssh/id_rsa.pub`. If this is not the case, add an `ssh_key` field to the `terraform.tfvars` file, and give it a string value designating the location of your SSH public key.
+1.  **Optional:** The Terraform script assumes that you have an SSH public key file stored at `~/.ssh/id_rsa.pub`. If this is not the case, add an `ssh_key` field to the `terraform.tfvars` file, and give it a string value designating the location of your SSH public key.
 
     For instance, include a line like the following if your public key file is stored in the current user's home directory:
 
@@ -104,7 +104,7 @@ Sensitive infrastructure data (like passwords and tokens) are visible in plain t
 
     Learn more about SSH public keys in our tutorial [How to Use SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/)
 
-1.  Optionally, you can adjust the `node_count` value to control the number of nodes created in each region. The script as it is does not handle work properly if anything other than two regions are specified, but you can adjust the specific `regions` values.
+1.  **Optional:** Adjust the `node_count` value to control the number of nodes created in each region. The script as it is does not handle work properly if anything other than two regions are specified, but you can adjust the specific `regions` values.
 
 1.  Change into the script's directory, and initialize the Terraform configuration:
 
