@@ -8,7 +8,7 @@ tab_group_main:
 cascade:
     product_description: "Programmatic access to the Linode platform, allowing you to automate tasks through a fully-documented REST API."
 published: 2020-09-11
-modified: 2022-11-30
+modified: 2022-12-06
 aliases: ['/products/tools/linode-api/','/platform/api/']
 ---
 
@@ -20,7 +20,7 @@ To view the official documentation on each Linode API endpoint, see the [API dev
 
 ### Build the Apps You Want
 
-Create your own dev tools with the Linode API. Build scripts and applications to automatically handle repeatable tasks. The Linode API provides access to every part of the Linode platform. Deploy Kubernetes clusters, attach block or object storage volumes, configure NodeBalancers, manage users, and more. All response data is returned in JSON for easy parsing and filtering.
+Create your own dev tools with the Linode API. Build scripts and applications to automatically handle repeatable tasks. The Linode API provides access to every part of the Linode platform. Deploy Kubernetes clusters, attach Block Storage volumes, configure NodeBalancers, manage users, and more. All response data is returned in JSON for easy parsing and filtering.
 
 ### Third-party Integrations and Plugins
 

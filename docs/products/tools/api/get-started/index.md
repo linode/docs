@@ -4,7 +4,7 @@ description: "Get started with the Linode API. Learn to get an access token, cre
 tab_group_main:
     weight: 20
 published: 2020-09-11
-modified: 2022-11-30
+modified: 2022-12-06
 aliases: ['/products/tools/linode-api/get-started/','/platform/api/getting-started-with-the-linode-api-classic-manager/','/platform/api/getting-started-with-the-linode-api-new-manager/','/platform/api/getting-started-with-the-linode-api/','/guides/getting-started-with-the-linode-api/','/products/tools/linode-api/guides/build-final-query/','/products/tools/linode-api/guides/get-config-parameters/']
 ---
 
@@ -18,6 +18,16 @@ curl -X POST https://api.linode.com/v4/linode/instances \
 
 This guide helps you get set up to run this example. Note that if you run this command, you create and are charged for a 2GB Compute Instance. See [Linode Pricing](https://www.linode.com/pricing/) for details on these charges.
 
+{{< note >}}
+Within the Linode API documentation, including this guide, the json_pp utility is used with the curl command to process JSON data into a more human-readable format. An example is shown below:
+
+```command
+curl [options] | json_pp
+```
+
+Using json_pp is optional. You can remove `| json_pp` from the command and the output is instead displayed without proper indentation. Other alternatives exist, such as the [jsonpp](https://github.com/jmhodges/jsonpp) utility, or you can save the output as a file and open the file with a JSON-compatible file viewer. To install either of these utilities, see the [json_pp](https://github.com/deftek/json_pp) or [jsonpp](https://github.com/jmhodges/jsonpp) documentation.
+{{< /note >}}
+
 ## Get an Access Token
 
 Authorization for the Linode API is handled through personal access tokens. Personal access tokens grant permissions to read or write to an API endpoint. All API requests to non-public resources must be authenticated with an access token.
@@ -28,7 +38,7 @@ If you are building an application which needs to authenticate multiple users (f
 
 For full instructions on creating and managing personal access tokens, see [Manage Personal Access Tokens](/docs/products/tools/api/guides/manage-api-tokens/#create-an-api-token).
 
-1. Log into the Cloud Manager.
+1. Log in to the Cloud Manager.
 
 1. Click on your username at the top of the screen and select **My Profile**.
 
@@ -54,7 +64,7 @@ export TOKEN=<token-string>
 
 ## Get Configuration Parameters
 
-Specify the type, region, and image for the new Linode.
+Specify the type, region, and image for the new Compute Instance.
 
 1. Review the list of available images:
 

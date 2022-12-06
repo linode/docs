@@ -2,7 +2,7 @@
 title: "Manage Block Storage Volumes with the Linode API"
 description: "This guide demonstrate how to create, attach, clone, and resize Volumes using the Linode API."
 published: 2018-05-14
-modified: 2022-11-30
+modified: 2022-12-06
 modified_by:
   name: Linode
 image: manage-block-storage-volumes-with-the-linode-api.png
@@ -38,7 +38,7 @@ Create a new Block Storage Volume by making a POST request to the `/volumes` end
 
     Choose a Compute Instance from the returned list and copy its `id` and `region` values.
 
-1. Create a Volume in the same region as the target instance. Use the ID of the target instance and adjust the size, region, and label to the desired values:
+1. Create a Volume in the same region as the target instance. Use the ID of the target instance and adjust the size (in GB), region, and label to the desired values:
 
     ```command
     curl -H "Content-Type: application/json" \
