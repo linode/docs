@@ -29,14 +29,14 @@ external_resources:
 When NGINX receives a request for a WordPress file, it typically has to perform extra processing. The usual work flow for this type of request follows this process:
 
 1.  NGINX receives a request for a WordPress page. It locates the page and determines if further processing is required.
-2.  Most WordPress pages include PHP code, which the web server cannot directly interpret. To execute the PHP code, NGINX sends the page to the *PHP-FPM* (PHP FastCGI Process Manager) module. PHP-FSM is a popular and efficient implementation of the FastCGI protocol. FastCGI allows a web server to interactively interface with other programs.
-3.  PHP-FSM interprets the PHP code. If necessary, it connects to a MySQL or MariaDB database and executes any SQL queries in the code.
-4.  PHP-FSM converts the original page into a static HTML page and sends it back to NGINX.
+2.  Most WordPress pages include PHP code, which the web server cannot directly interpret. To execute the PHP code, NGINX sends the page to the *PHP-FPM* (PHP FastCGI Process Manager) module. PHP-FPM is a popular and efficient implementation of the FastCGI protocol. FastCGI allows a web server to interactively interface with other programs.
+3.  PHP-FPM interprets the PHP code. If necessary, it connects to a MySQL or MariaDB database and executes any SQL queries in the code.
+4.  PHP-FPM converts the original page into a static HTML page and sends it back to NGINX.
 5.  NGINX serves the static page to the original web client.
 
-Unfortunately, this takes more time than serving a static HTML page. The PHP-FSM module must always parse the PHP code and there is often an additional delay to contact the database. For low-volume WordPress sites, this is typically not a problem. But for popular sites, these delays can result in serious performance bottlenecks and unacceptably high latency.
+Unfortunately, this takes more time than serving a static HTML page. The PHP-FPM module must always parse the PHP code and there is often an additional delay to contact the database. For low-volume WordPress sites, this is typically not a problem. But for popular sites, these delays can result in serious performance bottlenecks and unacceptably high latency.
 
-Caching is one way of speeding up execution and improving performance. When caching is enabled, NGINX stores the pages it receives from the PHP-FSM as static HTML web pages. The next time the page is requested, NGINX does not contact the PHP-FSM to generate a new version of the page. Instead, it retrieves the static HTML version of the page from cache and transmits it to the client. Because it is much faster to retrieve a static page from the NGINX cache, site performance usually improves.
+Caching is one way of speeding up execution and improving performance. When caching is enabled, NGINX stores the pages it receives from the PHP-FPM as static HTML web pages. The next time the page is requested, NGINX does not contact the PHP-FPM to generate a new version of the page. Instead, it retrieves the static HTML version of the page from cache and transmits it to the client. Because it is much faster to retrieve a static page from the NGINX cache, site performance usually improves.
 
 As an additional bonus, NGINX can serve a cached version of the page even if the database or the PHP interpreter are not reachable. This optimization improves site reliability and robustness. The cached files typically expire after a certain length of time, so users do not continue to receive stale content. Extra configuration can also be added to allow certain pages to bypass the cache.
 
@@ -128,7 +128,7 @@ Adding this rule means it is not possible to test caching from these addresses.
 5.  Add the next set of directives to the block beginning with `location ~ \.php$` beneath any pre-existing instructions. This configuration includes the following directive:
     -   The `fastcgi_cache` tells NGINX to enable caching. The name of the cache must match the name of the cache defined in the `fastcgi_cache_path` directive.
     -   `fastcgi_cache_valid` defines the cache expiry time for specific HTTP status codes.
-    -   A handy NGINX attribute is the ability to deliver cached content when PHP-FSM or the database are unavailable. `fastcgi_cache_use_stale error` defines the conditions where NGINX should serve stale content. In many cases, this is preferable to returning an error page to clients.
+    -   A handy NGINX attribute is the ability to deliver cached content when PHP-FPM or the database are unavailable. `fastcgi_cache_use_stale error` defines the conditions where NGINX should serve stale content. In many cases, this is preferable to returning an error page to clients.
     -   `fastcgi_cache_min_uses` indicates how many times a page must be requested before it is cached. Setting this attribute to a larger value avoids caching rarely-used pages and can help manage the cache size.
     -   `fastcgi_cache_lock` tells NGINX how to handle concurrent requests.
     -   The `fastcgi_cache_bypass` and `fastcgi_no_cache` are assigned based on the value of `skip_cache` from the previous section. This tells NGINX not to search the cache and not to store any new content.
@@ -156,7 +156,7 @@ Adding this rule means it is not possible to test caching from these addresses.
         listen 80;
         listen [::]:80;
 
-        server_name example.com example.com;
+        server_name example.com www.example.com;
         root /var/www/html/example.com/public_html;
         index index.html;
         set $skip_cache 0;
