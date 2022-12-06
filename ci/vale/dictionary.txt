@@ -994,7 +994,9 @@ jq
 jre
 js
 json
+json_pp
 jsonpath
+jsonpp
 julialang
 jumpbox
 junit

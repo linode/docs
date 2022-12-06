@@ -70,7 +70,7 @@ To avoid an unexpected bill make sure to delete this Linode Compute Instance onc
 1.  Enter required information under the **NodeJS Setup** section. For more information and instructions refer to [Guides - Deploying Node.js through the Linode Marketplace](/docs/products/tools/marketplace/guides/nodejs/).
 
     {{< note >}}
-This guide involves configuring DNS settings and SSL certificates for your domain. These steps can be automated during the Marketplace App installation process by providing a Linode [API Token](/docs/guides/getting-started-with-the-linode-api/#create-an-api-token) during setup.
+This guide involves configuring DNS settings and SSL certificates for your domain. These steps can be automated during the Marketplace App installation process by providing a Linode [API Token](/docs/products/tools/api/get-started/#create-an-api-token) during setup.
 
 During installation, the API Token is used to generate a domain zone and records using Linode [DNS Manager](/docs/guides/dns-manager). The Node.js Marketplace App then utilizes [certbot](https://certbot.eff.org/) to generate SSL certificates for your domain and subdomain.
 
@@ -104,7 +104,7 @@ You can also create a Linode Compute instance using these options:
 {{< /note >}}
 
     {{< note >}}
-The steps in this example reference the Linode and Akamai user interfaces. You can also perform these tasks using [Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/), the management [API](/docs/guides/getting-started-with-the-linode-api/), or [CLI](/docs/products/tools/cli/get-started/).
+The steps in this example reference the Linode and Akamai user interfaces. You can also perform these tasks using [Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/), the management [API](/docs/products/tools/api/get-started/), or [CLI](/docs/products/tools/cli/get-started/).
 {{< /note >}}
 
 ## Create an Ion Property
