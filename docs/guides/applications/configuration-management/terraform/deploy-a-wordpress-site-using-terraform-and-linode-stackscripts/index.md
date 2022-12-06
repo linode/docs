@@ -292,7 +292,7 @@ variable "type" {
 }
 
 variable "stackscript_id" {
-  description = "Stackscript ID"
+  description = "StackScript ID"
 }
 
 variable "stackscript_data" {
