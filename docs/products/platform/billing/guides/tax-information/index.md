@@ -97,7 +97,7 @@ As of **May 1st, 2022**, Canadian taxes will begin to be collected. The followin
 
 ### United States
 
-The following table lists each U.S. state and district that requires us to collect sales taxes, along with the date Linode has started (or will start) to collect tax in that state. Tax rates are subject to change and the most current rate is used when an invoice is generated.  Tax is only be collected on taxable products so customers may only see tax on certain products on their invoice.
+The following table lists each U.S. state and district that requires us to collect sales taxes, along with the date Linode has started (or will start) to collect tax in that state. Tax rates are subject to change and the most current rate is used when an invoice is generated. Tax is only collected on taxable products.
 
 | State or District | Start Date |
 | -- | -- |
