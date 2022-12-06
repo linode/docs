@@ -2032,6 +2032,7 @@ suricata
 sury
 suse
 swappable
+swappiness
 svn
 symantec
 symfony
