@@ -26,6 +26,8 @@ Mastodon participates in the [Fediverse](https://en.wikipedia.org/wiki/Fediverse
 
 Mastodon servers range in size from small private instances to massive public instances and typically center on specific interests or shared principles. The biggest Mastodon server is [Mastodon.social](https://mastodon.social/about), a general-interest server created by the developers of the Mastodon platform. It has over 540,000 users and boasts a thorough [Code of Conduct](https://mastodon.social/about/more).
 
+{{< content "email-warning-shortguide" >}}
+
 ## Deploying a Marketplace App
 
 {{< content "deploy-marketplace-apps-shortguide">}}
@@ -33,7 +35,7 @@ Mastodon servers range in size from small private instances to massive public in
 {{< content "marketplace-verify-standard-shortguide">}}
 
 {{<note>}}
-**Estimated deployment time:** Mastodon should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
+**Estimated deployment time:** Mastodon should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
 {{</note>}}
 
 - **Supported distributions:** Debian 11
@@ -65,6 +67,8 @@ Mastodon servers range in size from small private instances to massive public in
 3. If your instance is running but having issues, you can troubleshoot them from the Sidekiq dashboard. Either select **Sidekiq** from the administration menu or navigate to *example.com/sidekiq* to see the dashboard.
 
   ![Screenshot of Sidekiq dashboard](sidekiq-dashboard_marketplace.jpeg)
+
+4. The Mastodon server is configured to send emails for actions such as new users signing up, or resetting a password. The installation includes only minimal DNS records, and there may be limited deliverability without further configurations. We recommend reviewing our guide to [Sending Email on Linode](https://linode.com/docs/guides/running-a-mail-server/#sending-email-on-linode) for more information on DNS configurations and email best practices. 
 
 To learn more about Mastodon, check out the official [Mastodon blog](https://blog.joinmastodon.org/) with news and articles related to Mastodon. You can engage with the Mastodon administrative community on [Mastodon’s discussion forum](https://discourse.joinmastodon.org/), where you can peruse conversations about technical issues and community governance.
 
