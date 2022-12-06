@@ -36,3 +36,13 @@ These introductory guides to the Linode CLI show you how to use the CLI with Lin
 - [Block Storage Volumes](/docs/products/tools/cli/guides/block-storage-volumes/): View, create, attach/detach, resize, and delete a Volume.
 
 - [Support Tickets](/docs/products/tools/cli/guides/support-tickets/): View, open, or reply to a support ticket.
+
+## Upgrade
+
+- [Upgrade from Python 2 to Python 3](/docs/products/tools/cli/guides/upgrade-to-python-3/)
+
+## Older CLI Versions
+
+- [Uninstall Linode CLI v3](/docs/products/tools/cli/guides/v3-uninstall/)
+
+- [How to Use Linode CLI v3](/docs/products/tools/cli/guides/cli-v3/)

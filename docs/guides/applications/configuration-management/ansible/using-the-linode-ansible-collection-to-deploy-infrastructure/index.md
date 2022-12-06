@@ -70,7 +70,7 @@ The steps outlined in this guide require [Ansible version 2.9.10 or greater](htt
 
         sudo apt install python3-pip
 
-1.  Generate a Linode API v4 access token with permission to read and write Linodes and record it in a password manager or other safe location. Follow the [Get an Access Token](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/) guide.
+1.  Generate a Linode API v4 access token with permission to read and write Linodes and record it in a password manager or other safe location. Follow the [Get an Access Token](/docs/products/tools/api/get-started/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/products/tools/api/get-started/) guide.
 
 ## Install the Linode Ansible Collection
 

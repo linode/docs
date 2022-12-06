@@ -7,10 +7,10 @@ description: "This guide discusses how to enable failover on a Linode Compute In
 keywords: ['IP failover','IP sharing','elastic IP']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-23
-modified: 2022-10-19
+modified: 2022-12-01
 modified_by:
   name: Linode
-title: "Configuring Failover on a Compute Instance"
+title: "Configure Failover on a Compute Instance"
 contributor:
   name: Linode
 ---
@@ -41,7 +41,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | **Mumbai (India)** | **Supported** | **BGP-based (new)** | [lelastic](/docs/guides/ip-failover/#configure-failover) / [FRR](/docs/guides/ip-failover-bgp-frr/) | 14 |
 | **Newark (New Jersey, USA)** | **Supported** | **BGP-based (new)** | [lelastic](/docs/guides/ip-failover/#configure-failover) / [FRR](/docs/guides/ip-failover-bgp-frr/) | 6 |
 | **Singapore** | **Supported** | **BGP-based (new)** | [lelastic](/docs/guides/ip-failover/#configure-failover) / [FRR](/docs/guides/ip-failover-bgp-frr/) | 9 |
-| Sydney (Australia) |  *Not currently supported* | - | - | 16 |
+| **Sydney (Australia)** | **Supported** | **BGP-based (new)** | [lelastic](/docs/guides/ip-failover/#configure-failover) / [FRR](/docs/guides/ip-failover-bgp-frr/) | 16 |
 | Tokyo (Japan) | Supported | ARP-based (legacy) | [keepalived](/docs/guides/ip-failover-legacy-keepalived/) | 11 |
 | Toronto (Canada) |  *Not currently supported* | - | - | 15 |
 
@@ -71,8 +71,8 @@ To configure failover, complete each section in the order shown:
 
 1. [Create and Share the Shared IP Address](#create-and-share-the-shared-ip-address)
 1. For *each* Compute Instance:
-      - [Add the Shared IP to the Networking Configuration](#add-the-shared-ip-to-the-networking-configuration)
-      - [Install and Configure Lelastic](#install-and-configure-lelastic)
+    - [Add the Shared IP to the Networking Configuration](#add-the-shared-ip-to-the-networking-configuration)
+    - [Install and Configure Lelastic](#install-and-configure-lelastic)
 1. [Test Failover](#test-failover)
 
 ### Create and Share the Shared IP Address
@@ -85,7 +85,7 @@ To configure failover, complete each section in the order shown:
 To support this new BGP method of IP Sharing and failover, your Compute Instance must be assigned an IPv6 address. This is not an issue for most instances as an IPv6 address is assigned during deployment. If your Compute Instance was created *before* IPv6 addresses were automatically assigned, and you would like to enable IP Sharing within a data center that uses BGP-based failover, contact [Linode Support](https://www.linode.com/support/).
 {{</ note >}}
 
-1.  Disable Network Helper on both instances. For instructions, see the [Network Helper](/docs/guides/network-helper/#individual-compute-instance-setting) guide.
+1. Disable Network Helper on both instances. For instructions, see the [Network Helper](/docs/guides/network-helper/#individual-compute-instance-setting) guide.
 
 1. Add an additional IPv4 address _or_ IPv6 range (/64 or /56) to one of the Compute Instances. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) guide for instructions. Make a note of the newly assigned IP address. *Each additional IPv4 address costs $1 per month*.
 
@@ -95,9 +95,9 @@ To support this new BGP method of IP Sharing and failover, your Compute Instance
 
 Adjust the network configuration file on *each* Compute Instance, adding the shared IP address and restarting the service.
 
-1.  Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
 
-1.  Add the shared IP address to the system's networking configuration file. Within the instructions for your distribution below, open the designated file with a text editor (such as [nano](/docs/guides/use-nano-to-edit-files-in-linux/) or vim) and add the provided lines to the end of that file. When doing so, make the following replacements:
+1. Add the shared IP address to the system's networking configuration file. Within the instructions for your distribution below, open the designated file with a text editor (such as [nano](/docs/guides/use-nano-to-edit-files-in-linux/) or vim) and add the provided lines to the end of that file. When doing so, make the following replacements:
 
     - **[shared-ip]**: The IPv4 address you shared or an address from the IPv6 range that you shared. You can choose any address from the IPv6 range. For example, within the range *2001:db8:e001:1b8c::/64*, the address `2001:db8:e001:1b8c::1` can be used.
     - **[prefix]**: For an IPv4 address, use `32`. For an IPv6 address, use either `56` or `64` depending on the size of the range you are sharing.
@@ -106,49 +106,57 @@ Adjust the network configuration file on *each* Compute Instance, adding the sha
 Review the configuration file and verify that the shared IP address does not already appear. If it does, delete associated lines before continuing.
 {{</ note >}}
 
-    -   **Ubuntu 18.04 LTS and newer**: Using [netplan](https://netplan.io/). The entire configuration file is shown below, though you only need to copy the `lo:` directive.
+    - **Ubuntu 18.04 LTS and newer**: Using [netplan](https://netplan.io/). The entire configuration file is shown below, though you only need to copy the `lo:` directive.
 
-        {{< file "/etc/netplan/01-netcfg.yaml" >}}
-network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    eth0:
-      dhcp4: yes
-    lo:
-      match:
-        name: lo
-      addresses:
-        - [shared-ip]/[prefix]
-{{</ file >}}
-
-        To apply the changes, reboot the instance or run:
-
-            sudo netplan apply
-
-    -   **Debian and Ubuntu 16.04 (and older)**: Using [ifupdown](https://manpages.debian.org/unstable/ifupdown/ifup.8.en.html). Replace *[protocol]* with `inet` for IPv4 or `inet6` for IPv6.
-
-        {{< file "/etc/network/interfaces" >}}
-...
-# Add Shared IP Address
-iface lo [protocol] static
-    address [shared-ip]/[prefix]
-{{</ file >}}
+        ```file {title="/etc/netplan/01-netcfg.yaml" lang="yaml"}
+        network:
+          version: 2
+          renderer: networkd
+          ethernets:
+            eth0:
+              dhcp4: yes
+            lo:
+              match:
+                name: lo
+              addresses:
+                - [shared-ip]/[prefix]
+        ```
 
         To apply the changes, reboot the instance or run:
 
-            sudo ifdown lo && sudo ip addr flush lo && sudo ifup lo
+        ```command
+        sudo netplan apply
+        ```
+
+    - **Debian and Ubuntu 16.04 (and older)**: Using [ifupdown](https://manpages.debian.org/unstable/ifupdown/ifup.8.en.html). Replace *[protocol]* with `inet` for IPv4 or `inet6` for IPv6.
+
+        ```file {title="/etc/network/interfaces"}
+        ...
+        # Add Shared IP Address
+        iface lo [protocol] static
+            address [shared-ip]/[prefix]
+        ```
+
+        To apply the changes, reboot the instance or run:
+
+        ```command
+        sudo ifdown lo && sudo ip addr flush lo && sudo ifup lo
+        ```
 
         If you receive the following output, you can safely ignore it: *RTNETLINK answers: Cannot assign requested address*.
 
-    -   **CentOS/RHEL**: Using [NetworkManager](https://en.wikipedia.org/wiki/NetworkManager). Since NetworkManager does not support managing the loopback interface, you need to first add a dummy interface named *shared* (or any other name that you wish). Instead of editing the file directly, the [nmcli](https://linux.die.net/man/1/nmcli) tool is used.
+    - **CentOS/RHEL**: Using [NetworkManager](https://en.wikipedia.org/wiki/NetworkManager). Since NetworkManager does not support managing the loopback interface, you need to first add a dummy interface named *shared* (or any other name that you wish). Instead of editing the file directly, the [nmcli](https://linux.die.net/man/1/nmcli) tool is used.
 
-            nmcli con add type dummy ifname shared
+        ```command
+        nmcli con add type dummy ifname shared
+        ```
 
         Next, add your Shared IP address (or addresses) and bring up the new interface. Run the commands below, replacing *[protocol]* with `ipv4` for IPv4 or `ipv6` for IPv6 (in addition to replacing *[shared-ip]* and *[prefix]*)
 
-            nmcli con mod dummy-shared [protocol].method manual [protocol].addresses [shared-ip]/[prefix]
-            nmcli con up dummy-shared
+        ```command
+        nmcli con mod dummy-shared [protocol].method manual [protocol].addresses [shared-ip]/[prefix]
+        nmcli con up dummy-shared
+        ```
 
         Since the loopback interface is not used, you must also add the `-allifs` option to the lelastic command (discussed in a separate section below).
 
@@ -156,25 +164,31 @@ iface lo [protocol] static
 
 Next, we need to configure the failover software on *each* Compute Instance. For this, the [lelastic](https://github.com/linode/lelastic) utility is used. For more control or for advanced use cases, follow the instructions within the [Configuring IP Failover over BPG using FRR](/docs/guides/ip-failover-bgp-frr/) guide instead of using lelastic.
 
-1.  Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
 
-1.  Install lelastic by downloading the latest release from the GitHub repository, extracting the contents of the archived file, and moving the lelastic executable to a folder within your PATH. This same process can be used to update lelastic, making sure to restart the lelastic service (detailed in a later step) to complete the upgrade. Before installing or updating lelastic, review the [releases page](https://github.com/linode/lelastic/releases) and update the version variable with the most recent version number.
+1. Install lelastic by downloading the latest release from the GitHub repository, extracting the contents of the archived file, and moving the lelastic executable to a folder within your PATH. This same process can be used to update lelastic, making sure to restart the lelastic service (detailed in a later step) to complete the upgrade. Before installing or updating lelastic, review the [releases page](https://github.com/linode/lelastic/releases) and update the version variable with the most recent version number.
 
-        version=v0.0.6
-        curl -LO https://github.com/linode/lelastic/releases/download/$version/lelastic.gz
-        gunzip lelastic.gz
-        chmod 755 lelastic
-        sudo mv lelastic /usr/local/bin/
+    ```command
+    version=v0.0.6
+    curl -LO https://github.com/linode/lelastic/releases/download/$version/lelastic.gz
+    gunzip lelastic.gz
+    chmod 755 lelastic
+    sudo mv lelastic /usr/local/bin/
+    ```
 
     {{< note >}}
 **CentOS/RHEL:** If running a distribution with SELinux enabled (such as most CentOS/RHEL distributions), you must also set the SELinux type of the file to `bin_t`.
 
-    sudo chcon -t bin_t /usr/local/bin/lelastic
+```command
+sudo chcon -t bin_t /usr/local/bin/lelastic
+```
 {{</ note >}}
 
-1.  Next, prepare the command to configure BGP routing through lelastic. Replace *[id]* with the ID corresponding to your data center in the [table above](/docs/guides/ip-failover/#ip-failover-support) and *[role]* with either `primary` or `secondary`. You do not need to run this command, as it is configured as a service in the following steps.
+1. Next, prepare the command to configure BGP routing through lelastic. Replace *[id]* with the ID corresponding to your data center in the [table above](/docs/guides/ip-failover/#ip-failover-support) and *[role]* with either `primary` or `secondary`. You do not need to run this command, as it is configured as a service in the following steps.
 
-        lelastic -dcid [id] -[role] &
+    ```command
+    lelastic -dcid [id] -[role] &
+    ```
 
     **Additional options:**
     - `-send56`: Advertises an IPv6 address as a /56 subnet (defaults to /64). This is needed when using an IP address from a IPv6 /56 routed range.
@@ -186,44 +200,54 @@ Next, we need to configure the failover software on *each* Compute Instance. For
 
     See [Test Failover](#test-failover) to learn more about the expected behavior for each role.
 
-1.  Create and edit the service file using either nano or vim.
+1. Create and edit the service file using either nano or vim.
 
-        sudo nano /etc/systemd/system/lelastic.service
+    ```command
+    sudo nano /etc/systemd/system/lelastic.service
+    ```
 
-1.  Paste in the following contents and then save and close the file. Replace *$command* with the lelastic command you prepared in a previous step.
+1. Paste in the following contents and then save and close the file. Replace *$command* with the lelastic command you prepared in a previous step.
 
-    {{< file "/etc/systemd/system/lelastic.service" >}}
-[Unit]
-Description= Lelastic
-After=network-online.target
-Wants=network-online.target
+    ```file {title="etc/systemd/system/lelastic.service"}
+    [Unit]
+    Description= Lelastic
+    After=network-online.target
+    Wants=network-online.target
 
-[Service]
-Type=simple
-ExecStart=/usr/local/bin/$command
-ExecReload=/bin/kill -s HUP $MAINPID
+    [Service]
+    Type=simple
+    ExecStart=/usr/local/bin/$command
+    ExecReload=/bin/kill -s HUP $MAINPID
 
-[Install]
-WantedBy=multi-user.target
-{{</ file >}}
+    [Install]
+    WantedBy=multi-user.target
+    ```
 
-1.  Apply the correct permissions to the service file.
+1. Apply the correct permissions to the service file.
 
-        sudo chmod 644 /etc/systemd/system/lelastic.service
+    ```command
+    sudo chmod 644 /etc/systemd/system/lelastic.service
+    ```
 
 1.  Start and enable the lelastic service.
 
-        sudo systemctl start lelastic
-        sudo systemctl enable lelastic
+    ```command
+    sudo systemctl start lelastic
+    sudo systemctl enable lelastic
+    ```
 
     You can check the status of the service to make sure it's running (and to view any errors)
 
-        sudo systemctl status lelastic
+    ```command
+    sudo systemctl status lelastic
+    ```
 
     If you need to, you can stop and disable the service to stop failover functionality on the particular Compute Instance.
 
-        sudo systemctl stop lelastic
-        sudo systemctl disable lelastic
+    ```command
+    sudo systemctl stop lelastic
+    sudo systemctl disable lelastic
+    ```
 
 ## Test Failover
 
@@ -233,22 +257,26 @@ If desired, both instances can be configured with the same role (both primary or
 
 You can test the failover functionality of the shared IP using the steps below.
 
-1.  Using a machine other than the two Compute Instances within the failover configuration (such as your local machine), ping the shared IP address.
+1. Using a machine other than the two Compute Instances within the failover configuration (such as your local machine), ping the shared IP address.
 
-        ping [shared-ip]
+    ```command
+    ping [shared-ip]
+    ```
 
     Review the output to verify that the ping is successful. The output should be similar to the following:
 
-    {{< output >}}
-64 bytes from 192.0.2.1: icmp_seq=3310 ttl=64 time=0.373 ms
-{{</  output >}}
+    ```output
+    64 bytes from 192.0.2.1: icmp_seq=3310 ttl=64 time=0.373 ms
+    ```
 
     {{< note >}}
 If you are sharing an IPv6 address, the machine from which you are running the `ping` command must have IPv6 connectivity. Not all ISPs have this functionality.
 {{</ note >}}
 
-1.  Power off the *primary* Compute Instance or stop the lelastic service on that instance. Once the service has stopped or the instance has fully powered down, the shared IP address should be routed to the secondary instance.
+1. Power off the *primary* Compute Instance or stop the lelastic service on that instance. Once the service has stopped or the instance has fully powered down, the shared IP address should be routed to the secondary instance.
 
-        sudo systemctl stop lelastic
+    ```command
+    sudo systemctl stop lelastic
+    ```
 
 1.  Verify that the shared IP is still accessible by again running the ping command. If the ping is successful, failover is working as intended.

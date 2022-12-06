@@ -67,7 +67,7 @@ Code that declares the final state of your desired infrastructure is referred to
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. You need a personal access token for [Linode’s API v4](/docs/api/) to use with Terraform and the Terraform Linode Provider. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) to get a token.
+1. You need a personal access token for [Linode’s API v4](/docs/api/) to use with Terraform and the Terraform Linode Provider. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -208,7 +208,7 @@ The following steps explain how you can construct a multicloud configuration con
         cd terraform
         vi linode-terraform.tf
 
-1. At the top of the file, add a `terraform` block to define the [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs), followed by the declaration of the Linode provider itself. Within the provider block, add the `token` declaration. See Linode’s guide on [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) to learn how to create an API token, if you have not done so already.
+1. At the top of the file, add a `terraform` block to define the [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs), followed by the declaration of the Linode provider itself. Within the provider block, add the `token` declaration. See Linode’s guide on [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to learn how to create an API token, if you have not done so already.
 
     {{< file "~/terraform/linode-terraform.tf" >}}
 
