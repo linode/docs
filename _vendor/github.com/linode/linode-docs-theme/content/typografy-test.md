@@ -257,6 +257,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id me
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 ```
 
+### Overflow High Starting High Line Number
+
+```file {title="/home/minecraft/run.sh" lang="sh" linenostart="6332"}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
+```
+
 ### Highlighted
 
 ```file {title="/home/foo/dev/title.go" lang="bash" hl_lines="3-4" linenostart="5"}

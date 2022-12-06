@@ -83,7 +83,7 @@ For an in-depth explanation of the clean install method, see the [Linode guide t
 1.  Ensure there is at least 20 GB of disk space available. Verify the amount of disk space availability using the `df -Th` command.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Upgrade to Ubuntu 22.04 LTS
