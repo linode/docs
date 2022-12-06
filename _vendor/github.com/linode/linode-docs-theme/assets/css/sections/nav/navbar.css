@@ -1,89 +1,89 @@
 .navbar__row {
-    box-sizing: border-box;
-    height: var(--height-navbar-row);
+  box-sizing: border-box;
+  height: var(--height-navbar-row);
 }
 
 .navbar__explorer-toggle {
-    width: 60px;
-    position: relative;
+  width: 60px;
+  position: relative;
 }
 
 .is-topbar-pinned #navbar__icons--left {
-    @apply pl-container;
+  @apply pl-container;
 }
 
 @screen md {
-    #navbar__icons--left {
-        @apply pl-container;
-    }
-    .navbar__explorer-toggle {
-        @apply w-full;
-        padding-right: 20px;
-    }
-    #navbar__icons--left {
-        width: var(--width-left-column);
-    }
+  #navbar__icons--left {
+    @apply pl-container;
+  }
+  .navbar__explorer-toggle {
+    @apply w-full;
+    padding-right: 20px;
+  }
+  #navbar__icons--left {
+    width: var(--width-left-column);
+  }
 }
 
 .navbar__explorer-toggle :after {
-    top: 12.5px;
-    height: 20px;
-    margin-top: auto;
-    margin-bottom: auto;
-    content: " ";
-    position: absolute;
-    border-right: 1px var(--color-divider) solid;
-    right: 0;
+  top: 12.5px;
+  height: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
+  content: " ";
+  position: absolute;
+  border-right: 1px var(--color-divider) solid;
+  right: 0;
 }
 
 @screen md {
-    .navbar__explorer-toggle :after {
-        top: 0;
-        height: 100%;
-    }
+  .navbar__explorer-toggle :after {
+    top: 0;
+    height: 100%;
+  }
 }
 
 .navbar__logo {
 }
 
 .navbar__logo svg {
-    width: 18px;
-    height: 21px;
+  width: 18px;
+  height: 21px;
 }
 
 @screen md {
-    .navbar__logo svg {
-        width: 24px;
-        height: 28px;
-    }
+  .navbar__logo svg {
+    width: 24px;
+    height: 28px;
+  }
 }
 
 @screen lg {
-    .navbar__logo svg {
-        width: 37px;
-        height: 43px;
-    }
+  .navbar__logo svg {
+    width: 37px;
+    height: 43px;
+  }
 }
 
 @screen mobile {
-    .is-explorer-open .navbar__explorer-toggle--border-r :after,
-    .is-topbar-pinned .navbar__explorer-toggle--border-r :after {
-        border-right: none;
-    }
+  .is-explorer-open .navbar__explorer-toggle--border-r :after,
+  .is-topbar-pinned .navbar__explorer-toggle--border-r :after {
+    border-right: none;
+  }
 
-    .is-topbar-pinned .navbar__logo {
-        @apply mr-4;
-    }
+  .is-topbar-pinned .navbar__logo {
+    @apply mr-4;
+  }
 
-    .is-topbar-pinned .navbar__explorer-toggle {
-        @apply pt-2 border-0 border-b-4 border-transparent;
-    }
+  .is-topbar-pinned .navbar__explorer-toggle {
+    @apply pt-2 border-0 border-b-4 border-transparent;
+  }
 
-    .is-topbar-pinned.is-explorer-open .navbar__explorer-toggle {
-        @apply border-brand;
-    }
+  .is-topbar-pinned.is-explorer-open .navbar__explorer-toggle {
+    @apply border-brand;
+  }
 
-    .navbar__explorer-toggle {
-        width: 44px;
-    }
+  .navbar__explorer-toggle {
+    width: 44px;
+  }
 }

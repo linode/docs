@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Alex Fornuto
   email: docs@linode.com
-description: 'How to upgrade from Debian 7 (Wheezy) to Debian 8 (Jessie).'
+description: 'This guide provides you with step-by-step instructions on how to upgrade your Linux system from Debian 7 "Wheezy" to Debian 8 "Jessie" via command line.'
 keywords: ["debian", "upgrade", "wheezy", "jessie"]
 tags: ["security","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -42,11 +42,11 @@ You should install all available updates for Debian 7 before upgrading to Debian
 
 ### Backing Up Your Linode
 
-It's a good idea to [back up](/docs/platform/backup-service) your Linode before performing a major upgrade. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/security/backups/linode-backup-service/#take-a-manual-snapshot) before upgrading to Debian 8. If you use another backup service or application, we recommend that you make a manual backup now. You may also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. See our [backup guides](/docs/security/backups/) for more information.
+It's a good idea to [back up](/docs/platform/backup-service) your Linode before performing a major upgrade. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) before upgrading to Debian 8. If you use another backup service or application, we recommend that you make a manual backup now. You may also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. See our [backup guides](/docs/security/backups/) for more information.
 
 ### Checking Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/uptime/monitoring-and-maintaining-your-server/#applying-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/guides/monitor-and-maintain-compute-instance/#applying-kernel-updates) for more information.
 
 ### Stopping Services
 
@@ -121,7 +121,7 @@ Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentica
         D     : show the differences between the versions
 
 
-5.  Reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/guides/using-the-lish-console/).
+5.  Reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/guides/lish/).
 
 Your Linode is now running Debian 8!
 

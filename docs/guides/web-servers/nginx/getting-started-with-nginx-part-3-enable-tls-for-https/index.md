@@ -3,11 +3,11 @@ slug: getting-started-with-nginx-part-3-enable-tls-for-https
 author:
   name: Linode
   email: docs@linode.com
-description: "Install a TLS certificate into NGINX for HTTPS access."
+description: "This is part three in our guide to Getting Started with Nginx where you will enable TLS/SSL for HTTPS on your web server and installing a SSL Certificate."
 keywords: ["ssl", "tls", "nginx", "https", "certificate"]
 tags: ["ssl","web server","security","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/ssl/enable-ssl-for-https-configuration-on-nginx/','/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/','/security/ssl/ssl-certificates-with-nginx/','/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/','/web-servers/nginx/enable-tls-on-nginx-for-https-connections/','/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/','/security/ssl/ssl-certificates-with-nginx/index.cfm/','/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx/','/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificates-on-nginx/index.cfm/','/websites/ssl/ssl-certificates-with-nginx.cfm/','/web-servers/nginx/configuration/ssl/','/guides/enable-tls-on-nginx-for-https-connections/']
+aliases: ['/security/ssl/enable-ssl-for-https-configuration-on-nginx/','/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/','/security/ssl/ssl-certificates-with-nginx/','/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/','/web-servers/nginx/enable-tls-on-nginx-for-https-connections/','/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/','/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx/','/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificates-on-nginx/index.cfm/','/websites/ssl/ssl-certificates-with-nginx.cfm/','/web-servers/nginx/configuration/ssl/','/guides/enable-tls-on-nginx-for-https-connections/']
 modified: 2018-02-09
 modified_by:
   name: Linode

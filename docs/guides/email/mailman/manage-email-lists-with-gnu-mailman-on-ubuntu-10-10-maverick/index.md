@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use the GNU Mailman software to manage email listservs.'
+description: 'This guide shows how you can use GNU Mailman a free and open source Listserv management application for managing discussion lists on Ubuntu 10.10 "Maverick".'
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,7 +13,7 @@ modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2010-12-06
-title: 'Manage Email Lists with GNU Mailman on Ubuntu 10.10 (Maverick)'
+title: 'Manage Email Lists with GNU Mailman on Ubuntu 10.10'
 relations:
     platform:
         key: use-gnu-mailman

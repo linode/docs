@@ -1,10 +1,11 @@
 ---
 slug: creating-a-mongodb-replication-set-on-centos-6-4
 deprecated: true
+deprecated_link: 'guides/create-a-mongodb-replica-set/'
 author:
   name: Linode
   email: docs@linode.com
-description: Configure a MongoDB ReplSet
+description: "This guide will show you how to configure a MongoDB ReplSet on CentOS 6.4."
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mongodb/centos-6/','/databases/mongodb/creating-a-mongodb-replication-set-on-centos-6-4/']
@@ -28,9 +29,9 @@ tags: ["nosql","database","centos"]
 
 MongoDB is an open-source non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.
 
-Before installing MongoDB, it is assumed that you have followed our getting started guide. If you are new to Linux server administration, you may want to consult our using Linux document series including the [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts/) and [Administration Basics guide](/docs/using-linux/administration-basics/).
+Before installing MongoDB, it is assumed that you have followed our getting started guide. If you are new to Linux server administration, you may want to consult our using Linux document series including the [Introduction to Linux Concepts guide](/docs/guides/introduction-to-linux-concepts/) and [Administration Basics guide](/docs/guides/linux-system-administration-basics/).
 
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can review our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can review our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 ## Installing MongoDB
 
@@ -80,7 +81,7 @@ It is imperative that the networking configurations are set and working properly
 
 Before you begin, you will need to obtain all the private IP addresses for each of your Linodes. This information can be found by logging into the Linode Cloud Manager. Under the **Networking** tab, click on the "Add a Private IP" link to assign a private IP address to your Linode. This is the address you will use to configure your `hosts` file. Again, we are working with a three member replication set so you will need to acquire this information for each member.
 
-[![Finding your private IP address.](1716-private_ip-v2.png)](1716-private_ip-v2.png)
+![Finding your private IP address.](1716-private_ip-v2.png)
 
 ### Setting the Hosts File
 
@@ -306,7 +307,7 @@ For this replset configuration, only the hostname was required to add a new memb
 
 An example of the add member process is included for your reference. Make sure to change names and port numbers to reflect your particular configuration.
 
-[![Add a member to a replication set.](1686-add-node.png)](1686-add-node.png)
+![Add a member to a replication set.](1686-add-node.png)
 
 Use the `rs.conf()` command to check if the new member is present in the configuration file. In addition, any database should propagate almost immediately (depending on its size) over to the new member.
 

@@ -26,15 +26,11 @@ aliases: ['/applications/cloud-storage/store-and-share-your-files-with-nextcloud
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-3.  Update your system:
-
-        yum update -y
-
-4.  Install the *EPEL* repository:
+1.  Install the *EPEL* repository:
 
         yum install epel-release -y
 
@@ -189,4 +185,4 @@ Once you have successfully installed you Nextcloud environment, you may want to 
 
 Although Apache was used as the web server in this guide, installing Nextcloud with nginx is possible as well. Navigate to the [Nextcloud NGINX Configuration](https://docs.nextcloud.com/server/12/admin_manual/installation/nginx.html) documentation to setup Nextcloud with NGINX.
 
-[Nextcloud Talk](https://nextcloud.com/talk/), is an addon to Nextcloud that allows for secure text and video conferencing through Nextcloud's platform. Check out our guide on how to [Install Nextcloud Talk](/docs/applications/cloud-storage/install-nextcloud-talk/).
+[Nextcloud Talk](https://nextcloud.com/talk/), is an addon to Nextcloud that allows for secure text and video conferencing through Nextcloud's platform. Check out our guide on how to [Install Nextcloud Talk](/docs/guides/install-nextcloud-talk/).

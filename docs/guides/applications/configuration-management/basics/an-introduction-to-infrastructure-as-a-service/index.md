@@ -3,8 +3,8 @@ slug: what-is-infrastructure-as-a-service
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Infrastructure as a Service (IaaS) is a cloud computing service that provides the virtual infrastructure to customers on demand. This guide describes IaaS and explains its advantages and rationale, and outlines how to use it.'
-og_description: 'Infrastructure as a Service (IaaS) is a cloud computing service that provides the virtual infrastructure to customers on demand. This guide describes IaaS and explains its advantages and rationale, and outlines how to use it.'
+description: 'This guide provides you with an overview of IaaS (Infrastructure as a Service), a cloud computing service that provides the virtual infrastructure to customers on demand.'
+og_description: 'This guide provides you with an overview of IaaS (Infrastructure as a Service), a cloud computing service that provides the virtual infrastructure to customers on demand.'
 keywords: ['infrastructure as a service','iaas','infrastructure','cloud networks']
 tags: ['networking', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -104,7 +104,7 @@ Each IaaS deployment is unique, but the following high-level principles generall
 - Consider how any existing databases and servers should be migrated using one of the techniques in the [Migration Strategies](/docs/guides/what-is-infrastructure-as-a-service/#migration-strategies) section.
 - Attempt to reduce downtime. Schedule a maintenance window for the migration.
 - Test the new network before live deployment.
-- Consider how much storage and what storage types should be used. The main types of storage are [object storage](/docs/guides/object-storage-use-cases/), file storage, and [block storage](/docs/guides/block-storage-use-cases/). Object storage has become more popular recently because its distributed architecture fits well with the IaaS model.
+- Consider how much storage and what storage types should be used. The main types of storage are [object storage](/docs/products/storage/object-storage/guides/use-cases/), file storage, and [block storage](/docs/products/storage/block-storage/guides/use-cases/). Object storage has become more popular recently because its distributed architecture fits well with the IaaS model.
 - Consider the resiliency and reliability requirements for the network.
 - If necessary, determine the level of support and the service package that is required.
 - Decide what network metrics are important, and monitor these items during and after the initial deployment. Scrutinize the entire network as a single system and continue to regularly maintain, adjust, and optimize it.

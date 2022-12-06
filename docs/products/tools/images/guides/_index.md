@@ -27,7 +27,7 @@ tab_group_main:
 
 ### Cloning and Disks
 
-- [Cloning a Linode](/docs/platform/disk-images/clone-your-linode/)
+- [Cloning a Linode](/docs/guides/clone-your-linode/)
 
 - [Linode Disks and Storage](/docs/guides/disks-and-storage/)
 
@@ -35,7 +35,7 @@ tab_group_main:
 
 ### Custom Distributions
 
-- [Install a Custom Distribution on a Linode](/docs/guides/install-a-custom-distribution-on-a-linode/)
+- [Install a Custom Distribution on a Linode](/docs/guides/install-a-custom-distribution/)
 
 ### Migration
 

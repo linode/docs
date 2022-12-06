@@ -2,8 +2,8 @@
 slug: gnu-make-tutorial-automate-tasks
 author:
   name: Stephen Savitzky
-description: 'This GNU Make tutorial discusses how to use Make to automate any task that involves updating files or performing actions based on file changes. Typically, GNU Make is used to generate non-source files needed to build a program. In this tutorial, you learn how to use GNU Make and Git to update a simple website.'
-og_description: 'This GNU Make tutorial discusses how to use Make to automate any task that involves updating files or performing actions based on file changes. Typically, GNU Make is used to generate non-source files needed to build a program. In this tutorial, you learn how to use GNU Make and Git to update a simple website.'
+description: 'In this tutorial, you will learn how to use GNU Make to automate any task that involves updating files or performing actions based on file changes.'
+og_description: 'In this tutorial, you will learn how to use GNU Make to automate any task that involves updating files or performing actions based on file changes.'
 keywords: ['gnu make tutorial']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -40,7 +40,7 @@ The recipe is run whenever the target does not exist or if any of its prerequisi
  - Targets and prerequisites are separated by spaces; spaces around the colon are ignored.
  - The recipe is a series of shell commands, each preceded by a **TAB** character. This needs to be a literal tab, not some number of spaces. Any text editor that understands the format of makefiles warns you by showing spaces in the recipe in a different color.
 - Each line of the recipe is run in a separate shell process, after removing the leading tab.
-- Shell commands are separated by a semicolon, and long lines are are read until a new line is encountered. For improved readability, you can break up a long command using a backslash (`\`).
+- Shell commands are separated by a semicolon, and long lines are read until a new line is encountered. For improved readability, you can break up a long command using a backslash (`\`).
 
 {{< note >}}
 All versions of Make use `/bin/sh` as the default shell for portability purposes. Make inherits almost all of the environment variables exported by the shell that invokes it; `SHELL` is an exception.

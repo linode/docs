@@ -8,9 +8,10 @@ keywords: ['web server','caddy','https','Caddyfile']
 tags: ["web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-05
+modified: 2022-02-04
 modified_by:
   name: Linode
-title: "How to Install and Configure the Caddy Web Server on Ubuntu 18.04"
+title: "Install and Configure the Caddy Web Server on Ubuntu"
 h1_title: "Install and Configure the Caddy Web Server on Ubuntu 18.04"
 enable_h1: true
 image: CaddyWebServ_Ubuntu1804.png
@@ -28,49 +29,54 @@ aliases: ['/web-servers/caddy/how-to-install-and-configure-caddy-on-ubuntu-18-04
 
 ## Before You Begin
 
-1.  Familiarize yourself with the [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's [hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
+1.  Familiarize yourself with the [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
 
-1.  Complete the sections of the [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), and [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services).
+1.  Complete the sections of the [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), and [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services).
 
 1.  Register (purchase) your site's domain name and follow our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview#add-records) guide to point the domain to your Linode.
 
 1.  Update your system:
 
-        sudo apt-get update && sudo apt-get upgrade
+        sudo apt update && sudo apt upgrade
 
 ## Install Caddy
 
-1.  Download `caddy`:
+1.  Download Caddy:
 
         sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
         curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo tee /etc/apt/trusted.gpg.d/caddy-stable.asc
         curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
 
 1.  Install Caddy:
-        sudo apt update
-        sudo apt install caddy
 
-1. To verify the installation of caddy type:
-       caddy version
-    An output similar to the following appears:
+        sudo apt update && sudo apt install caddy
 
-        v2.4.3 h1:Y1FaV2N4WO3rBqxSYA8UZsZTQdN+PwcoOcAiZTM8C0I=
+1.  To verify the installation of Caddy, run the following command:
 
+        caddy version
+
+    This should output a message similar to the text below:
+
+    {{<output>}}
+v2.4.3 h1:Y1FaV2N4WO3rBqxSYA8UZsZTQdN+PwcoOcAiZTM8C0I=
+{{</output>}}
 
 ## Allow HTTP and HTTPS Connections
 
 Caddy serves websites using HTTP and HTTPS protocols, so you need to allow access to the ports 80, and 443.
 
-        sudo ufw allow proto tcp from any to any port 80,443
+    sudo ufw allow proto tcp from any to any port 80,443
 
 An output similar to the following appears:
+
 {{< output >}}
 Rule added
 Rule added (v6)
 {{< /output >}}
 
-1. Verify the changes:
-       sudo ufw status
+1.  Verify the changes:
+
+        sudo ufw status
 
 An output similar to the following appears:
 {{< output >}}
@@ -94,7 +100,6 @@ OpenSSH (v6)               ALLOW       Anywhere (v6)
 
         echo '<!doctype html><head><title>Caddy Test Page</title></head><body><h1>Hello, World!</h1></body></html>' > /var/www/html/example.com/index.html
 
-
 ## Configure the Caddyfile
 
 Add your hostname and web root to the Caddy configuration. Use an editor of your choice and replace `:80` with your domain name. Set the root directory of the site to `/var/www/html/example.com` Replace `example.com` with your site's domain name:
@@ -112,7 +117,7 @@ example.com {
 
         sudo systemctl start caddy
 
-1. Verify that the service is active:
+1.  Verify that the service is active:
 
         sudo systemctl status caddy
 

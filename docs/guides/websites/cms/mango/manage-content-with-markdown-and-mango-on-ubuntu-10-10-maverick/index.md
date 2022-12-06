@@ -3,7 +3,7 @@ slug: manage-content-with-markdown-and-mango-on-ubuntu-10-10-maverick
 author:
   name: Linode
   email: docs@linode.com
-description: 'Mango publishes markdown documents from plain text files into a dynamic website.'
+description: 'This guide will show you how Mango can publish markdown documents from plain text files into a fully customized and dynamic website using Ubuntu 10.10 "Maverick".'
 keywords: ["markdown", "content management systems", "cms", "plain text"]
 tags: ["ubuntu","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,7 +12,7 @@ modified: 2013-10-02
 modified_by:
   name: Linode
 published: 2011-04-05
-title: 'Manage Content with Markdown and Mango on Ubuntu 10.10 (Maverick)'
+title: 'Manage Content with Markdown and Mango on Ubuntu 10.10'
 deprecated: true
 relations:
     platform:

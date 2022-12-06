@@ -3,7 +3,7 @@ slug: kubernetes-create-cluster-shortguide
 author:
   name: Linode
   email: docs@linode.com
-description: 'Shortguide that shows you how to create a Linode Kubernetes Engine cluster.'
+description: 'This short-guide will provide you with step-by-step instructions on how to create a new Linode Kubernetes Engine (LKE) cluster with a node pool.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-22
 modified_by:
@@ -34,10 +34,10 @@ aliases: ['/kubernetes/kubernetes-create-cluster-shortguide/']
     ![Select your cluster's setting](cluster-options.png "Select your cluster's setting")
 
 
-1. In the **Add Node Pools** section, select the [hardware resources](/docs/platform/how-to-choose-a-linode-plan/#hardware-resource-definitions) for the Linode worker node(s) that make up your LKE cluster. To the right of each plan, select the plus `+` and minus `-` to add or remove a Linode to a node pool one at time. Once you're satisfied with the number of nodes in a node pool, select **Add** to include it in your configuration. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#edit-or-remove-existing-node-pools).
+1. In the **Add Node Pools** section, select the [hardware resources](/docs/guides/choosing-a-compute-instance-plan/#hardware-resource-definitions) for the Linode worker node(s) that make up your LKE cluster. To the right of each plan, select the plus `+` and minus `-` to add or remove a Linode to a node pool one at time. Once you're satisfied with the number of nodes in a node pool, select **Add** to include it in your configuration. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#edit-or-remove-existing-node-pools).
 
     {{< note >}}
-Currently, the available plan types for LKE worker nodes are [Shared](/docs/platform/how-to-choose-a-linode-plan/#1-shared), [Dedicated CPU](/docs/platform/how-to-choose-a-linode-plan/#4-dedicated-cpu), and [High Memory](/docs/platform/how-to-choose-a-linode-plan/#3-high-memory) plans. In order to meet the minimum system requirements for LKE nodes, [1 GB Shared Nanodes](https://www.linode.com/pricing/) are not an option for worker nodes.
+Currently, the available plan types for LKE worker nodes are [Shared](/docs/guides/choosing-a-compute-instance-plan/#1-shared), [Dedicated CPU](/docs/guides/choosing-a-compute-instance-plan/#4-dedicated-cpu), and [High Memory](/docs/guides/choosing-a-compute-instance-plan/#3-high-memory) plans. In order to meet the minimum system requirements for LKE nodes, [1 GB Shared Nanodes](https://www.linode.com/pricing/) are not an option for worker nodes.
     {{< /note >}}
 
     ![Select your cluster's resources](select-your-cluster-resources.png "Select your cluster's resources")
@@ -46,4 +46,4 @@ Currently, the available plan types for LKE worker nodes are [Shared](/docs/plat
 
     ![Cluster-Summary](your-cluster-summary.png "Cluster-Summary")
 
-1. When you are satisfied with the configuration of your cluster, click the **Create Cluster** button on the right hand side of the screen. Your cluster's detail page will appear on the following page where you will see your Node Pools listed. From this page, you can [edit your existing Node Pools](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#edit-or-remove-existing-node-pools), [access your Kubeconfig file](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-and-download-your-kubeconfig), and view an overview of your cluster's resource details.
+1. When you are satisfied with the configuration of your cluster, click the **Create Cluster** button on the right hand side of the screen. Your cluster's detail page will appear on the following page where you will see your Node Pools listed. From this page, you can [edit your existing Node Pools](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#edit-or-remove-existing-node-pools), [access your Kubeconfig file](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-and-download-your-kubeconfig), and view an overview of your cluster's resource details.

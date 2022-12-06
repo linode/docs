@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'Use the Mono project''s Apache module to run ASP.NET applications.'
+description: "This guide will show you how to use the Mono Project's Apache module to run Microsoft ASP.NET applications on Ubuntu 9.10 (Karmic) similar to Windows Server"
 keywords: ["apache", "mono", ".net", "asp.net", "mod\\_mono"]
 tags: ["web applications","apache","php","mysql","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,7 +13,7 @@ modified: 2011-06-15
 modified_by:
   name: Linode
 published: 2010-08-01
-title: 'Build ASP.NET/Mono Applications with mod_mono and Apache on Ubuntu 9.10 (Karmic)'
+title: "Build ASP.NET Applications with mod_mono on Ubuntu 9.10"
 relations:
     platform:
         key:  asp-mono-apache
@@ -25,7 +25,7 @@ relations:
 
 `mod_mono` is an Apache module that makes it possible to run ASP.NET applications in Linux environments running Apache. While ASP.NET is a Microsoft technology and is traditionally used with IIS, `mod_mono` has become a viable option for deploying ASP.NET applications on Linux. This guide is largely based on the [mod\_mono guide from the Ubuntu Community](https://help.ubuntu.com/community/ModMono) and the [Mono Project's Apache and Mono document](http://mono-project.com/Mod_mono) with minor modifications. This guide does not cover installation and configuration of the Mono IDE which is used to develop ASP.NET applications on Linux. If you are interested in developing using Visual Studio for Mono, you can download a 30-day trial of the commercial Mono Tools plugin at the [Mono Tools for Visual Studio page](http://go-mono.com/monotools).
 
-This guide assumes that you've followed the steps outlined in our [getting started guide](/docs/getting-started/). You will install the [Apache web server](/docs/web-servers/apache/installation/ubuntu-9-10-karmic) with very minimal configuration. If you already have Apache installed and configured, you may omit these steps; however, if you have not installed Apache and are unfamiliar with this server read the installation guide for additional documentation. Additionally, `mod_mono` is incompatible with the integrated PHP interpreter described in other guides. If you need to have both mod\_mono and PHP running on the same Apache server you will need to run [PHP scripts using the CGI method](/docs/web-servers/apache/php-cgi/ubuntu-9-10-karmic)
+This guide assumes that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). You will install the [Apache web server](/docs/web-servers/apache/installation/ubuntu-9-10-karmic) with very minimal configuration. If you already have Apache installed and configured, you may omit these steps; however, if you have not installed Apache and are unfamiliar with this server read the installation guide for additional documentation. Additionally, `mod_mono` is incompatible with the integrated PHP interpreter described in other guides. If you need to have both mod\_mono and PHP running on the same Apache server you will need to run [PHP scripts using the CGI method](/docs/web-servers/apache/php-cgi/ubuntu-9-10-karmic)
 
 ## Set the Hostname
 

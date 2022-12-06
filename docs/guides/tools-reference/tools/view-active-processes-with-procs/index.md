@@ -44,16 +44,12 @@ Because the `ps` command's output is relatively sparse, users often append the `
 
 ## Before You Begin
 
-1.  Familiarize yourself with Linode's [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
-
-1.  Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install procs
@@ -258,7 +254,7 @@ To add an additional column to the procs display, use the `--insert` option and 
 
 ![adding a new field to the procs display](procs-add-column.png)
 
-The output can be sorted based on any column using the `--sorta` and `--sortd` options plus the name of the column. `--sorta` sorts the output in ascending order, while `--sortd` orders it in descending order. A list of the column identifiers are found in the `kind` table on the [*the procs GitHub page*](https://github.com/dalance/procs#configuration). The following command orders the processes based on the amount of memory they are using.
+The output can be sorted based on any column using the `--sorta` and `--sortd` options plus the name of the column. `--sorta` sorts the output in ascending order, while `--sortd` orders it in descending order. A list of the column identifiers are found in the `kind` table on the [*procs GitHub page*](https://github.com/dalance/procs#configuration). The following command orders the processes based on the amount of memory they are using.
 
     procs --sortd UsageMem
 

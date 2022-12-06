@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "In this tutorial, we'll teach you how to install a Mastodons server instance on CentOS Stream."
-og_description: "In this tutorial, we'll teach you how to install a Mastodons server instance on CentOS Stream"
 keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','centos stream']
 tags: ['centos', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +11,8 @@ published: 2021-06-04
 image: MASTODON1.jpg
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install a Mastodon Server on CentOS Stream 8"
-h1_title: "Installing a Mastodon Server on CentOS Stream 8"
-enable_h1: true
+title: "Install a Mastodon Server on CentOS Stream 8"
+title_meta: "How to Install a Mastodon Server on CentOS Stream 8"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -46,9 +44,9 @@ Mastodon servers range in size from small private instances to massive public in
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Complete the steps in the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) section to register a domain name to point to your Mastodon instance.
 
@@ -56,27 +54,27 @@ Mastodon servers range in size from small private instances to massive public in
 
 1. Prepare an SMTP server for Mastodon to send email notifications to users when they register for the site, get a follower, receive a message, and for other Mastodon activities.
 
-    - You can create your SMTP server — and even host it on the same machine as your Mastodon server — by following the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql/) guide.
+    - You can create your SMTP server — and even host it on the same machine as your Mastodon server — by following the [Email with Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) guide.
+
+        {{< note >}}
+This guide uses PostgreSQL database as a backend for Mastodon. You can setup the SMTP server with PostgreSQL database instead of MySQL.
+{{< /note >}}
 
     - Alternatively, you can use a third-party SMTP service. This guide provides instructions for using [Mailgun](https://www.mailgun.com/) as your SMTP provider.
-
-1. Update your system:
-
-        sudo yum update
 
 1. Replace occurrences of `example.com` in this guide with the domain name you are using for your Mastodon instance.
 
 {{< note >}}
-This guide is written for non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Docker and Docker Compose
 
 Mastodon can be installed using its included [Docker Compose](https://docs.docker.com/compose/) file. Docker Compose installs and runs all of the requisites for the Mastodon environment in Docker containers. If you have not used Docker before, it is recommended that you review the following guides:
 
-- [Introduction to Docker](/docs/applications/containers/introduction-to-docker/)
+- [Introduction to Docker](/docs/guides/introduction-to-docker/)
 
-- [How to Use Docker Compose](/docs/applications/containers/how-to-use-docker-compose/)
+- [How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/)
 
 ### Install Docker
 
@@ -311,15 +309,15 @@ Mastodon is served over HTTPS, so you need an SSL/TLS certificate. This guide us
 
 1. In a web browser, navigate to your Mastodon site's domain. You should see the Mastodon login page, where you can login as the administrator user you created earlier or create a new user.
 
-    [![Mastodon login/sign-up page](mastodon-login-signup_small.png "Mastodon login/sign-up page")](mastodon-login-signup.png)
+    ![Mastodon login/sign-up page](mastodon-login-signup.png)
 
 1. You can navigate to your instance's administration page by navigating to `example.com/admin/settings/edit`. The administration page allows you to alter the look, feel, and behavior of your instance.
 
-    [![Mastodon administration page](mastodon-admin-page_small.png "Mastodon administration page")](mastodon-admin-page.png)
+    ![Mastodon administration page](mastodon-admin-page.png)
 
 1. If your instance is running but having issues, you can troubleshoot them from the Sidekiq dashboard. Either select **Sidekiq** from the administration menu or navigate to `example.com/sidekiq` to see the dashboard.
 
-    [![Sidekiq dashboard](sidekiq-dashboard_small.png "Sidekiq dashboard")](sidekiq-dashboard.png)
+    ![Sidekiq dashboard](sidekiq-dashboard.png)
 
 To learn more about Mastodon, check out the [official Mastodon blog](https://blog.joinmastodon.org/) with news and articles related to Mastodon. You can engage with the Mastodon administrator community on [Mastodon's discussion forum](https://discourse.joinmastodon.org/), where you can peruse conversations about technical issues and community governance.
 

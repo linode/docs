@@ -2,12 +2,12 @@
 slug: how-to-understand-ip-addresses
 author:
   name: Jeffery Novotny
-description: 'The Internet Protocol (IP), as described in RFC 791, is the framework that underpins the behavior of the entire internet. This guide describes how to understand IP addresses, and how to describe and use them. You also learn how to find your computer''s IP address.'
-og_description: 'The Internet Protocol (IP), as described in RFC 791, is the framework that underpins the behavior of the entire internet. This guide describes how to understand IP addresses, and how to describe and use them. You also learn how to find your computer''s IP address.'
+description: "This guide will help you understand the Internet Protocol (IP) which underpins the entire Internet, as well as IP addresses, and how to describe and use them."
 keywords: ['IPv4','IPv6','IP address','Internet Protocol', 'what is ip address']
 tags: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-30
+modified: 2022-09-23
 modified_by:
   name: Linode
 title: "Understanding and Using IP Addresses"
@@ -146,9 +146,13 @@ Like IPv4, IPv6 has some reserved addresses. However, the larger address space a
 
 A variety of inter-operability approaches between IPv4 and IPv6 are sometimes used. IPv6 addresses can be encapsulated inside IPv4 packets. More commonly, IPv4 addresses are mapped to IPv6 addresses. The first 80 bits of these IPv6 addresses are set to `0`, with the next 16 bits set to `1`. The final 32 bits contain the original IPv4 address. An example of an address with this structure is `::ffff:c6:33:64:19/96`. However, most networks use parallel networks and routing stacks for IPv4 and IPv6.
 
-## How to Find Your IP Addresses
+## Finding Your IP Addresses via the Linux Command Line
 
-1. On Ubuntu and most Linux systems, the `ip addr show` command displays all networking information. The IPv4 address of the system is shown in the `inet` field, while the IPv6 address is referred to as the `inet6` address.
+{{< note >}}
+If you are trying to find the IP addresses of a Linode Compute Instance, you can do so from the Cloud Manager. See [Managing IP Addresses on a Compute Instance](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
+{{< /note >}}
+
+1.  On Ubuntu and most Linux systems, the `ip addr show` command displays all networking information. The IPv4 address of the system is shown in the `inet` field, while the IPv6 address is referred to as the `inet6` address.
 
         ip addr show
 
@@ -167,7 +171,7 @@ A variety of inter-operability approaches between IPv4 and IPv6 are sometimes us
        valid_lft 2591998sec preferred_lft 604798sec
     {{< /output >}}
 
-1. Use the following command to see the addresses without any interface information.
+1.  Use the following command to see the addresses without any interface information.
 
         hostname -I
 

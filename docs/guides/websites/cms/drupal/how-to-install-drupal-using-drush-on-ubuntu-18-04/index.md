@@ -3,8 +3,8 @@ slug: how-to-install-drupal-using-drush-on-ubuntu-18-04
 author:
     name: Linode
     email: docs@linode.com
-description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode running Ubuntu 18.04. To install Drupal, you will use Drush, a command line tool for creating, administrating, and modifying Drupal websites.'
-og_description: 'Drupal 8 is the latest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode running Ubuntu 18.04. To install Drupal, you will use Drush, a command line tool for creating, administrating, and modifying Drupal websites.'
+description: 'This guide will show you how to install the popular content management system Drupal on CentOS 8 using the Drush command line tool on Ubuntu 18.04.'
+og_description: 'This guide will show you how to install the popular content management system Drupal on CentOS 8 using the Drush command line tool on Ubuntu 18.04.'
 keywords: ["drupal", "cms", "content management system", "content management framework", "drush", "ubuntu"]
 tags: ["drupal","ubuntu","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -29,9 +29,9 @@ aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-o
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services) and [create firewall rules](/docs/security/securing-your-server/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{< content "limited-user-note-shortguide" >}}
 
@@ -41,7 +41,7 @@ aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-o
 
 ## Download and Prepare Drupal 8
 
-1. Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Ubuntu 18.04](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
+1. Navigate to your site's document root. If you installed and configured your Apache server using our [LAMP stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide, your document root should be located in the `/var/www/html/example.com/public_html/` directory. Replace `example.com` with your own document root path's name.
 
         cd /var/www/html/example.com
 
@@ -61,7 +61,7 @@ Ensure that the version number matches the Drupal 8 version you wish to download
 
         sudo apt-get install php-gd php-xml php-dom php-simplexml php-mbstring
 
-1. Create your Drupal 8 installation's `settings.php` file from the default settings file. This file will be configured when you run through Drupal's automated web configuration. See the [Install and Configure Drupal on Ubuntu 18.04](/docs/websites/cms/drupal/how-to-install-and-configure-drupal-on-ubuntu-18-04/#drupal-first-start) guide for more details.
+1. Create your Drupal 8 installation's `settings.php` file from the default settings file. This file will be configured when you run through Drupal's automated web configuration. See the [Install and Configure Drupal on Ubuntu 18.04](/docs/guides/how-to-install-and-configure-drupal-on-ubuntu-18-04/#drupal-first-start) guide for more details.
 
         sudo cp /var/www/html/example.com/public_html/sites/default/default.settings.php /var/www/html/example.com/public_html/sites/default/settings.php
 
@@ -85,7 +85,7 @@ $settings['trusted_host_patterns'] = array(
 
         sudo a2enmod rewrite
 
-2.  Specify the rewrite conditions for your Drupal site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on Debian 10](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
+2.  Specify the rewrite conditions for your Drupal site's document root in Apache's configuration file using the text editor of your choice. If you installed and configured your Apache server using [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide, the configuration file for your site is located at `/etc/apache2/sites-available/example.com.conf`.
 
     {{< file "/etc/apache2/sites-available/example.com.conf" conf >}}
 <Directory /var/www/html/example.com/public_html>
@@ -141,7 +141,7 @@ If you encounter errors related to writing to the `sites/default` directory, fol
 
 In server administration, there are many options for user and group permissions. The directions below create a site owner and a site owner's group. The Apache user, named `www-data`, is added to the site owner's group. Then, read, write, and execute permissions are granted to both the site owner and the site owner's group.
 
-1. To create a new user for the site owner position, see the [Add a Limited User Account](/docs/security/securing-your-server/#add-a-limited-user-account) section of the [Securing Your Server](/docs/security/securing-your-server/) guide.
+1. To create a new user for the site owner position, see the [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
 1.  From the `public_html` directory, change ownership of the site to the site owner and group. Replace `example_user` below with the chosen owner's username:
 
@@ -186,6 +186,6 @@ The above setup is designed for ease of use. However, there are setups designed 
 
 At a high-level, the steps you will need to follow to begin configuring a Drupal multisite set up are:
 
-- Add a new [MySQL user, password, and database](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/#mysql)
-- Create a new [Apache virtual hosts file and corresponding directories](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/#virtual-hosts)
+- Add a new [MySQL user, password, and database](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#mysql)
+- Create a new [Apache virtual hosts file and corresponding directories](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#virtual-hosts)
 - See [Drupal's Multisite documentation](https://www.drupal.org/docs/8/multisite/drupal-8-multisite) for more details.

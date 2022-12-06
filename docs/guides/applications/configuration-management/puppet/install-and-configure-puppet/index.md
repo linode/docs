@@ -36,7 +36,7 @@ Begin this guide as the `root` user. A limited user with administrative privileg
 
 1.  You should have three available Linodes, one of which has at least four CPU cores for the Puppet master. A [Linode 8GB](https://www.linode.com/pricing) plan is recommended. The two other nodes can be of any plan size, depending on how you intend to use them after Puppet is installed and configured.
 
-2.  Follow the [Getting Started](/docs/getting-started/) guide and ensure your Linodes are configured to use the same timezone.
+2.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide and ensure your Linodes are configured to use the same timezone.
 
     {{< note >}}
 For ease of use, set the Puppet master server's hostname to `puppet`, and have a valid fully-qualified domain name (FQDN).
@@ -65,7 +65,7 @@ If you wish to run another Linux distribution as your master server, the initial
 
 `wget https://apt.puppet.com/puppetlabs-release-pc1-VERSION.deb`
 
-Any Ubuntu-specific commands will then have to be amended for the proper distribution. More information can be found in [Puppet's Installation Documentation](https://docs.puppet.com/puppet/4.0/reference/install_linux.html#install-a-release-package-to-enable-puppet-labs-package-repositories) or our guide to [package management](/docs/tools-reference/linux-package-management/).
+Any Ubuntu-specific commands will then have to be amended for the proper distribution. More information can be found in [Puppet's Installation Documentation](https://docs.puppet.com/puppet/4.0/reference/install_linux.html#install-a-release-package-to-enable-puppet-labs-package-repositories) or our guide to [package management](/docs/guides/linux-package-management-overview/).
 {{< /note >}}
 
 2.  Install the `puppetmaster-passenger` package:
@@ -165,7 +165,7 @@ server=puppet.example.com
 
 ## Add Modules to Configure Agent Nodes
 
-Both the Puppet master and agent nodes configured above are functional, but not secure. Based on concepts from the [Securing Your Server](/docs/security/securing-your-server/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
+Both the Puppet master and agent nodes configured above are functional, but not secure. Based on concepts from the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
 
 {{< note >}}
 This is not meant to provide a basis for a fully-hardened server, and is intended only as a starting point. Alter and add firewall rules and other configuration options, depending on your specific needs.

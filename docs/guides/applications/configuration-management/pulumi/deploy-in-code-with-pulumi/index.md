@@ -22,7 +22,7 @@ aliases: ['/applications/configuration-management/deploy-in-code-with-pulumi/','
 
 [*Pulumi*](https://www.pulumi.com/) is a development tool that allows you to write computer programs which deploy cloud resources--a practice referred to as *infrastructure as code (IaC)*. Pulumi integrates with multiple cloud platforms, and Pulumi programs can be authored in a number of common programming languages.
 
-With Pulumi's Linode integration, you can manage your Linode resources as you would with our [API](https://developers.linode.com/api/v4/) or [CLI](/docs/platform/api/using-the-linode-cli/), but in a language you may already be familiar with. This guide will present examples written in JavaScript, but Pulumi is also compatible with Go, Python, and TypeScript.
+With Pulumi's Linode integration, you can manage your Linode resources as you would with our [API](https://developers.linode.com/api/v4/) or [CLI](/docs/products/tools/cli/get-started/), but in a language you may already be familiar with. This guide will present examples written in JavaScript, but Pulumi is also compatible with Go, Python, and TypeScript.
 
 Pulumi also comes with a CLI interface for running the cloud infrastructure programs that you write. Once you've written a program, you can create your cloud resources with a single command:
 
@@ -36,11 +36,11 @@ In this guide you will learn how to:
 
 ##  Before You Begin
 
-1. If you haven't yet, [create a Linode API token](/docs/platform/api/getting-started-with-the-linode-api/#create-an-api-token).
+1. If you haven't yet, [create a Linode API token](/docs/guides/getting-started-with-the-linode-api/#create-an-api-token).
 
 1. [Create a free Pulumi account](https://app.pulumi.com/signup).
 
-1. Create a new Debian 9 Linode. Follow our [Getting Started](/docs/getting-started/) guide to deploy the Linode, and then follow the [Securing Your Server](/docs/security/securing-your-server/) guide. Be sure to create a [limited  Linux user with sudo privileges](/docs/security/securing-your-server/#add-a-limited-user-account) on your server. All commands in this guide are to be run from a sudo user.
+1. Create a new Debian 9 Linode. Follow our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide to deploy the Linode, and then follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. Be sure to create a [limited  Linux user with sudo privileges](/docs/guides/set-up-and-secure/#add-a-limited-user-account) on your server. All commands in this guide are to be run from a sudo user.
 
 1. Install Pulumi on your Linode using their installation script:
 
@@ -74,11 +74,11 @@ It is possible to opt-out of using the default web backend and use a filesystem-
 
 1. [Log into your Pulumi account](https://app.pulumi.com/signin). After you've logged in, click on the avatar graphic to the top right of the Pulumi dashboard, then click on the **Settings** option in the dropdown menu that appears:
 
-    [![Location of Pulumi Settings option](pulumi-settings.png "Location of Pulumi Settings option")](pulumi-settings.png)
+    ![Location of Pulumi Settings option](pulumi-settings.png)
 
 1. Select the **Access Tokens** item in the sidebar to the left of the page that appears:
 
-    [![Location of Pulumi Access Token page](pulumi-token.png "Location of Pulumi Access Token page")](pulumi-token.png)
+    ![Location of Pulumi Access Token page](pulumi-token.png)
 
 1. Click on the **New Access Token** button towards the top right of the following page and follow the prompts to create your new token. Make sure you save this in a secure location, similar to your Linode API token.
 

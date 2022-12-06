@@ -2,8 +2,8 @@
 slug: authenticating-over-websockets-with-jwt
 author:
   name: Nathaniel Stickman
-description: "WebSockets enable real-time communications between clients and server and they can be immensely useful in a variety of web applications. JSON Web Tokens can provide lightweight and secure authentication. They pair well with WebSockets to ensure connections are authorized. In this guide, you learn more about both WebSockets and JSON Web Tokens in this guide. You can also follow an example showing you how to use them together in your application."
-og_description: "WebSockets enable real-time communications between clients and server and they can be immensely useful in a variety of web applications. JSON Web Tokens can provide lightweight and secure authentication. They pair well with WebSockets to ensure connections are authorized. In this guide, you learn more about both WebSockets and JSON Web Tokens in this guide. You can also follow an example showing you how to use them together in your application."
+description: 'In this guide, you will learn how to use Websockets and JSON Web Tokens, which are also called JWTs, together in your app with several practical examples.'
+og_description: 'In this guide, you will learn how to use Websockets and JSON Web Tokens, which are also called JWTs, together in your app with several practical examples.'
 keywords: ['websocket token authentication']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -74,22 +74,12 @@ In this section, you learn how to implement a WebSocket server and how to use JW
 
 ### Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system.
-
-    - On Debian and Ubuntu, use the following command:
-
-            sudo apt update && sudo apt upgrade
-
-    - On CentOS, use the following command:
-
-            sudo yum update
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Install Node.js
@@ -393,7 +383,7 @@ The example application is ready for a test run. Follow the steps below to try i
 
     Express serves the application on `localhost:3000`. To visit the application remotely, you can use an SSH tunnel.
 
-    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/using-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with `3000`.
+    - On Windows, you can use the PuTTY tool to set up your SSH tunnel. Follow the appropriate section of the [Using SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/#ssh-tunnelingport-forwarding) guide, replacing the example port number there with `3000`.
     - On OS X or Linux, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.
 
             ssh -L3000:localhost:3000 example-user@192.0.2.0

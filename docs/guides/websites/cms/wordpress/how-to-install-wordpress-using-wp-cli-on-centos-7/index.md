@@ -42,16 +42,20 @@ This tutorial covers how to complete the following tasks:
 
 Before moving ahead, make sure you have completed the following steps.
 
-- If you'd like to use your own [Domain Name](/docs/networking/dns/dns-records-an-introduction/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/guides/dns-manager/#dns-set-up-checklist) to point to your Linode's IP address.
-- Complete the steps in the [Getting Started with Linode](/docs/getting-started/) guide. Specifically, ensure you have completed the [Install software updates](/docs/getting-started/#centos), [Set your Linode's hostname](/docs/getting-started/#arch-centos-7-debian-8-fedora-ubuntu-16-04-and-above), and [Update your system's hosts file](/docs/getting-started/#update-your-system-s-hosts-file) sections.
-- Follow the steps in the [How to Secure Your Server](/docs/security/securing-your-server/) guide. Ensure you complete the steps in the following [Add a limited user account](/docs/security/securing-your-server/#centos-fedora) section. All steps executed in this guide will be from this account.
-    {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
-- Follow the [Install a LAMP Stack on CentOS 7](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/) guide. **Skip the steps** in the [Configure Apache Virtual Hosts File](/docs/websites/cms/wp-cli/how-to-install-wordpress-using-wp-cli-on-centos-7/#configure-apache-virtual-hosts-file), the [Create a MariaDB Database](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/#create-a-mariadb-database), and the [Optional: Test and Troubleshoot the LAMP Stack](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/#optional-test-and-troubleshoot-the-lamp-stack) section. Those steps will be covered later on in this guide.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note >}}
-When following the steps to [install PHP](#install-php) in the [Install a LAMP Stack on CentOS 7](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/) guide, you will need to issue the command included below to install the required PHP packages. The command in the linked guide does not currently work with CentOS 7.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
+
+1.  If you'd like to use your own [Domain Name](/docs/guides/dns-overview/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/products/networking/dns-manager/get-started/) to point to your Linode's IP address.
+
+1.  Follow the [Install a LAMP Stack on CentOS 7](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/) guide. **Skip the steps** in the [Configure Apache Virtual Hosts File](/docs/guides/how-to-install-wordpress-using-wp-cli-on-centos-7/#configure-apache-virtual-hosts-file), the [Create a MariaDB Database](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/#create-a-mariadb-database), and the [Optional: Test and Troubleshoot the LAMP Stack](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/#optional-test-and-troubleshoot-the-lamp-stack) section. Those steps will be covered later on in this guide.
+
+    {{< note >}}
+When following the steps to [install PHP](#install-php) in the [Install a LAMP Stack on CentOS 7](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/) guide, you will need to issue the command included below to install the required PHP packages. The command in the linked guide does not currently work with CentOS 7.
 
     sudo apt install php libapache2-mod-php php-mysql
     {{</ note >}}

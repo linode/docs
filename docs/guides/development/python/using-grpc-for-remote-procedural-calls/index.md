@@ -2,8 +2,8 @@
 slug: using-grpc-for-remote-procedural-calls
 author:
   name: Jeff Novotny
-description: 'gRPC is an open source remote procedure call (RPC) framework that enables cross-platform and cross-language communication between clients and a central server. This guide introduces and explains gRPC and describes how to execute a remote function call using gRPC'
-og_description: 'gRPC is an open source remote procedure call (RPC) framework that enables cross-platform and cross-language communication between clients and a central server. This guide introduces and explains gRPC and describes how to execute a remote function call using gRPC'
+description: 'This guide shows how you can use gRPC, a open source remote procedure call framework which enables cross-platform communications between clients and a central server.'
+og_description: 'This guide shows how you can use gRPC, a open source remote procedure call framework which enables cross-platform communications between clients and a central server.'
 keywords: ['what is grpc', 'grpc vs rest', 'grpc tutorial']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -113,16 +113,12 @@ This procedure is geared towards Ubuntu users but is generally applicable to all
 
 **### Before You Begin**
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of Linode's guide on [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. ****Do not**** follow the **Configure a Firewall** section yet as this guide includes firewall rules specifically for an OpenVPN server.
-
-1. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Install Python**

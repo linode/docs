@@ -3,7 +3,7 @@ slug: troubleshooting-memory-and-networking-issues
 author:
   name: Linode
   email: docs@linode.com
-description: 'Help with common Linode memory use and networking issues.'
+description: 'Many common issues with Linodes are caused by excessive memory consumption or networking configuration errors. This guide provides suggestions for resolving this.'
 keywords: ["Linode troubleshooting", "Linode troubleshooting", "Linux configuration"]
 tags: ["networking", "mysql", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -94,7 +94,7 @@ If you're filtering mail through SpamAssassin in standalone mode and running int
 
 ## Troubleshooting Network Issues
 
-If you've added multiple IP addresses to your Linode, you must set up static networking as described in the [Linux Static Networking Guide](/docs/networking/linux-static-ip-configuration/). Please be sure to specify only one gateway. Using multiple gateways frequently causes problems.
+If you've added multiple IP addresses to your Linode, you must set up static networking as described in the [Linux Static Networking Guide](/docs/guides/linux-static-ip-configuration/). Please be sure to specify only one gateway. Using multiple gateways frequently causes problems.
 
 If you just added an IP address to your Linode, please be sure to reboot before attempting to use it. This is required to properly route the IP address on our network.
 

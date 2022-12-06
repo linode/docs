@@ -3,8 +3,8 @@ slug: solving-real-world-problems-with-bash-scripts-a-tutorial
 author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
-description: 'This guide presents some of the advanced capabilities of the bash shell by showing practical and fully functional bash scripts. It also illustrates how you can work with dates and times in bash scripts and how to write and use functions in bash.'
-og_description: 'This guide presents some of the advanced capabilities of the bash shell by showing practical and fully functional bash scripts. It also illustrates how you can work with dates and times in bash scripts and how to write and use functions in bash.'
+description: 'This guide presents you with some of the advanced capabilities of the bash shell by giving you practical and fully functional scripts for modifying date and time.'
+og_description: 'This guide presents you with some of the advanced capabilities of the bash shell by giving you practical and fully functional scripts for modifying date and time.'
 keywords: ["UNIX", "shell", "bash", "Linux", "programming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-30
@@ -34,7 +34,7 @@ In this guide, you will find the following information about bash scripts:
 - [additional examples](#additional-examples)
 
 {{< note >}}
-This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Functions in bash shell
@@ -610,7 +610,7 @@ while read -d ':' dir; do
 done <<< "$DIRECTORIES:"
 {{< /file >}}
 
-The counting of the files is done with the `find $dir -type f | wc -l` command. You can read more about the find command in [our guide](/docs/tools-reference/tools/find-files-in-linux-using-the-command-line/).
+The counting of the files is done with the `find $dir -type f | wc -l` command. You can read more about the find command in [our guide](/docs/guides/find-files-in-linux-using-the-command-line/).
 
 Run the `countFiles` script:
 

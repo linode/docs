@@ -2,8 +2,8 @@
 slug: how-to-install-wordpress-almalinux-8
 author:
   name: Nathaniel Stickman
-description: "WordPress is an open-source content management system (CMS) widely used for blogs and similar sites. It comes with a vast library of plug-ins and community support. This guide shows you how to install WordPress on your AlmaLinux 8 server."
-og_description: "WordPress is an open-source content management system (CMS) widely used for blogs and similar sites. It comes with a vast library of plug-ins and community support. This guide shows you how to install WordPress on your AlmaLinux 8 server."
+description: 'This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on AlamLinux 8.'
+og_description: "This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on AlamLinux 8."
 keywords: ['wordpress almalinux']
 tags: ['wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -31,18 +31,14 @@ WordPress is an open-source content management system (CMS). WordPress remains p
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system:
-
-        sudo yum update
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Replace all instances of `example.com` in this guide with your domain name.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Set Up the Prerequisites
@@ -190,7 +186,7 @@ location / {
 define('FS_METHOD', 'direct');
     {{< /file >}}
 
-    [![WordPress's default, "Hello, World!" post.](wordpress-default-post_small.png)](wordpress-default-post.png)
+    ![WordPress's default, "Hello, World!" post.](wordpress-default-post.png)
 
 ## Conclusion
 

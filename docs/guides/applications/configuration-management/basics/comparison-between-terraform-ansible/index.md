@@ -3,8 +3,8 @@ slug: terraform-vs-ansible
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide compares Ansible and Terraform, with an explanation of how each tool works and what purpose it serves.'
-og_description: 'This guide compares Ansible and Terraform, with an explanation of how each tool works and what purpose it serves.'
+description: 'This guide compares Ansible and Terraform, two utilities which automate the deployment of infrastructure using only code contained in playbooks or scripts.'
+og_description: 'This guide compares Ansible and Terraform, two utilities which automate the deployment of infrastructure using only code contained in playbooks or scripts.'
 keywords: ['IaC','Terraform','Ansible','configuration management', 'service orchestration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-11
@@ -110,7 +110,7 @@ dbthree.example.com
 
 ### Ansible Tasks, Modules, and Playbooks
 
-The main configuration activities in Ansible are expressed as tasks. These are the operations that take place on the target. A task can be either a one-off ad hoc command, or a call to a *module*. Modules are stand-alone script files that are usually written in Python, although Perl and Ruby can also be used. A module typically has a specific purpose, for example, managing a particular application. They are frequently grouped together into [*collections*](https://docs.ansible.com/ansible/latest/collections/index.html#list-of-collections) for easier access. Ansible ships with many default modules, and for easy deployment of your Linodes, there is a [Linode Ansible module](/docs/applications/configuration-management/ansible/deploy-linodes-using-ansible/) too.
+The main configuration activities in Ansible are expressed as tasks. These are the operations that take place on the target. A task can be either a one-off ad hoc command, or a call to a *module*. Modules are stand-alone script files that are usually written in Python, although Perl and Ruby can also be used. A module typically has a specific purpose, for example, managing a particular application. They are frequently grouped together into [*collections*](https://docs.ansible.com/ansible/latest/collections/index.html#list-of-collections) for easier access. Ansible ships with many default modules, and for easy deployment of your Linodes, there is a [Linode Ansible module](/docs/guides/deploy-linodes-using-ansible/) too.
 
 Ansible *Playbooks* group together related tasks, along with associated variables, for easier implementation. Playbooks are usually written in an easy, descriptive, human-readable language like YAML, or with a Jinja template. They might contain the desired layout of the network, configurations, deployment details, user IDs, and logins. Playbooks can map the hosts from the inventory files to roles, which are a special type of self-contained playbook consisting of Ansible functions. A playbook runs in sequential order, but can contain loops, control operators, and event handlers. It allows administrators to prompt for values, set variables and defaults, and use command results to determine the flow of the configuration. Playbooks have a mode for dry-run testing.
 

@@ -3,7 +3,7 @@ slug: how-to-install-a-redis-server-on-ubuntu-or-debian8
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Deploy Redis on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8. This Tutorial Guides You Through Installation and Best Practices of Redis, an Open-Source, In-Line Memory Data-Structure Store.'
+description: 'This guide will show you how to deploy the high performance Redis data-structure store application on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS, or Debian 8.'
 keywords: ["redis", "redis ubuntu 14.04", "redis server", "redis ubuntu 16.04", "debian 8", "redis cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/redis/how-to-install-a-redis-server-on-ubuntu-or-debian8/','/databases/redis/deploy-redis-on-ubuntu-or-debian/']
@@ -38,20 +38,16 @@ Since Redis serves all data from memory, we recommend using a [High Memory Linod
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
-
-3.  Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 4.  Install the `software-properties-common` package:
 
         sudo apt-get install software-properties-common
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 To utilize the replication steps in the second half of this guide, you will need at least two Linodes.
 {{< /note >}}
@@ -221,7 +217,7 @@ Your master/slave replication setup is working properly.
 
 Since Redis is designed to work in trusted environments and with trusted clients, you should take care of controlling access to the Redis instance. Security methods include:
 
-- Setting up a firewall using [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/).
+- Setting up a firewall using [iptables](/docs/guides/control-network-traffic-with-iptables/).
 
 - Encrypting Redis traffic, using an SSH tunnel or the methods described in the [Redis Security documentation](http://redis.io/topics/security).
 

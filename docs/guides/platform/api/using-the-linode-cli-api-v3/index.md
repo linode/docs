@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 keywords: ["linode cli", " command line interface", " man pages", " api key"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-description: 'The Linode Command Line Interface (CLI) is an open-source command line tool for managing your Linode services. You can reboot your Linode, update an MX record for your domain, manage your NodeBalancers, create a StackScript, and more from the command line on any computer, without logging into the Linode Manager.'
+description: 'This guide will show you how to use the Linode Command Line Interface v3 to reboot your Linode, update your MX record, manage Nodebalancers, and more.'
 modified: 2016-06-20
 modified_by:
   name: Alex Fornuto
@@ -22,7 +22,7 @@ aliases: ['/platform/api/using-the-linode-cli-api-v3/']
 
 The Linode Command Line Interface (**CLI**) is an [open-source](https://github.com/linode/cli) command line tool for managing your Linode services. You can reboot your Linode, update an MX record for your domain, manage your NodeBalancers, create a StackScript and more from the command line on any computer, without logging in to the [Linode Manager](https://manager.linode.com/) graphical user interface.
 
-Your Linode [API key](/docs/platform/api/api-key/) is required for the CLI to function.
+Your Linode [API key](/docs/guides/api-key/) is required for the CLI to function.
 
 ![Linode CLI](linode-cli.png "Linode CLI")
 
@@ -181,7 +181,7 @@ To start with, most users will want to run the configuration utility:
 Once the CLI has your Linode Manager username and password, it will generate and use a new API key automatically.
 
 {{< note >}}
-If you have [two-factor authentication](/docs/security/linode-manager-security-controls/#two-factor-authentication) enabled, you will receive a prompt for the code after entering your password:
+If you have [two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/#two-factor-authentication) enabled, you will receive a prompt for the code after entering your password:
 
 Two-factor authentication code
 >> 123456
@@ -197,7 +197,7 @@ If you don't run the configuration tool, you can add these options manually in t
 
 ### API Key
 
-The Linode CLI requires your API key to function. If you need to generate an API key manually, read the [API Key](/docs/platform/api/api-key/) article. There are three ways to provide the key to the CLI. The configuration tool generates a new key and adds it to the `.linodecli/config` file automatically.
+The Linode CLI requires your API key to function. If you need to generate an API key manually, read the [API Key](/docs/guides/api-key/) article. There are three ways to provide the key to the CLI. The configuration tool generates a new key and adds it to the `.linodecli/config` file automatically.
 
 -   In the `.linodecli/config` file:
 

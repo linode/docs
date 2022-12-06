@@ -25,7 +25,7 @@ tags: ["ubuntu","database"]
 
 Oracle 10g is a robust, enterprise-grade relational database management system (RDBMS). The Oracle database platform was the first commercially available SQL-based DBMS, and is a great choice for applications that require large, distributed databases. This guide will help you get started with Oracle 10g XE (Express Edition) on your Ubuntu 9.10 (Karmic) Linode.
 
-It is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH.
+It is assumed that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH.
 
 **Please note:** Depending on the amount of memory your Linode has, Oracle may require up to a 1,024 MB swap partition. While we normally do not advise using a swap partition larger than 256 MB, in this case it's a good idea to resize your existing swap to 1,025 MB before proceeding with Oracle installation (the extra MB avoids differences in how megabytes are calculated).
 
@@ -141,7 +141,7 @@ Oracle is managed via a web interface, which is installed with the oracle-xe pac
 
 You can do this by using our [Oracle SSH tunnel script](/docs/databases/oracle/ssh-tunnel). After your tunnel is started, you can connect to the admin page at the URL `http://127.0.0.1:8080/apex`. Log in with the username "SYSTEM" and the password you specified during Oracle configuration. You'll be presented with a page similar to this one:
 
-[![The Oracle XE administration home page.](470-oracle-xe-admin-page.png)](470-oracle-xe-admin-page.png)
+![The Oracle XE administration home page.](470-oracle-xe-admin-page.png)
 
 ## Manage Oracle from the Command Line
 

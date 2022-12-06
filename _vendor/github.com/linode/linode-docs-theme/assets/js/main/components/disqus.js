@@ -1,21 +1,21 @@
 ('use strict');
 
-var debug = 0 ? console.log.bind(console, '[disqus]') : function() {};
+var debug = 0 ? console.log.bind(console, '[disqus]') : function () {};
 
-const reset = function(page) {
+const reset = function (page) {
 	debug('reset', page);
 	DISQUS.reset({
 		reload: true,
-		config: function() {
+		config: function () {
 			this.page.identifier = page.permalink;
 			this.page.url = page.permalink;
 			this.page.title = page.title;
 			this.language = 'en';
-		}
+		},
 	});
 };
 
-const loadScript = function(shortName) {
+const loadScript = function (shortName) {
 	const scriptID = 'disqus-embed';
 	var script = document.getElementById(scriptID);
 	if (script) {
@@ -39,18 +39,22 @@ export function newDisqus(disqusShortname, page) {
 	window.disqus_shortname = disqusShortname;
 	window.disqus_identifier = page.permalink;
 	window.disqus_url = page.permalink;
-	window.disqus_config = function() {
+	window.disqus_config = function () {
 		this.language = 'en';
 	};
 
 	return {
 		page: page,
-		init: function() {
-			if (!loadScript(disqusShortname)) {
-				// The script tag already exists.
-				// This is a navigation via Turbolinks so just do a DISQUS.reset.
-				reset(this.page);
-			}
-		}
+		// Avoid using the name init(), which is also automatically invoked by AlpineJS.
+		// We need to call it explicitly to make it run after AlpineJS has updated the DOM.
+		initDisqus: function () {
+			this.$nextTick(() => {
+				if (!loadScript(disqusShortname)) {
+					// The script tag already exists.
+					// This is a navigation via Turbolinks so just do a DISQUS.reset.
+					reset(this.page);
+				}
+			});
+		},
 	};
 }

@@ -26,7 +26,7 @@ Running a custom-compiled Linux kernel is useful if you need to enable or disabl
 
 If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm).
 
-Prior to these instructions, follow the steps outlined in our [Getting Started guide](/docs/getting-started/). Then, log in to your Linode as the `root` user.
+Prior to these instructions, follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Then, log in to your Linode as the `root` user.
 
 ## Prepare the System
 

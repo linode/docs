@@ -7,9 +7,8 @@ import { bridgeTurboAndAlpine } from './alpine-turbo-bridge';
 import {
 	alpineRegisterMagicHelpers,
 	alpineRegisterDirectiveSVG,
-	initConsentManager,
 	newDisqus,
-	newDropdownsController
+	newDropdownsController,
 } from './components/index';
 import { isMobile, setIsTranslating, getCurrentLang, leackChecker } from './helpers/index';
 import {
@@ -17,8 +16,9 @@ import {
 	newBreadcrumbsController,
 	newLanguageSwitcherController,
 	newNavController,
+	newPromoCodesController,
 	newSearchExplorerController,
-	newToCController
+	newToCController,
 } from './navigation/index';
 import { newNavStore } from './navigation/nav-store';
 // AlpineJS controllers and helpers.
@@ -30,9 +30,7 @@ import { newSectionsController } from './sections/sections/index';
 const searchConfig = getSearchConfig(params);
 
 // Set up and start Alpine.
-(function() {
-	// Used during development.
-
+(function () {
 	// Register AlpineJS plugins.
 	{
 		Alpine.plugin(intersect);
@@ -59,6 +57,7 @@ const searchConfig = getSearchConfig(params);
 		Alpine.data('lncBreadcrumbs', () => newBreadcrumbsController(searchConfig));
 		Alpine.data('lncDropdowns', newDropdownsController);
 		Alpine.data('lncDisqus', newDisqus);
+		Alpine.data('lncPromoCodes', () => newPromoCodesController(params.is_test));
 
 		// Page controllers.
 		Alpine.data('lncHome', (staticData) => {
@@ -75,7 +74,7 @@ const searchConfig = getSearchConfig(params);
 	// Set up AlpineJS stores.
 	{
 		Alpine.store('search', newSearchStore(searchConfig, Alpine));
-		Alpine.store('nav', newNavStore(Alpine.store('search')));
+		Alpine.store('nav', newNavStore(searchConfig, Alpine.store('search'), params));
 	}
 
 	if (!isMobile()) {
@@ -92,22 +91,22 @@ const searchConfig = getSearchConfig(params);
 })();
 
 // Set up global event listeners etc.
-(function() {
+(function () {
 	// Set up a global function to send events to Google Analytics.
-	window.gtag = function(event) {
+	window.gtag = function (event) {
 		this.dataLayer = this.dataLayer || [];
 		this.dataLayer.push(event);
 	};
 
-	let pushGTag = function(eventName) {
+	let pushGTag = function (eventName) {
 		let event = {
-			event: eventName
+			event: eventName,
 		};
 
 		if (window._dataLayer) {
 			while (window._dataLayer.length) {
 				let obj = window._dataLayer.pop();
-				for (const [ key, value ] of Object.entries(obj)) {
+				for (const [key, value] of Object.entries(obj)) {
 					event[key] = value;
 				}
 			}
@@ -117,12 +116,9 @@ const searchConfig = getSearchConfig(params);
 		window.dataLayer.push(event);
 	};
 
-	document.addEventListener('turbo:load', function(event) {
+	document.addEventListener('turbo:load', function (event) {
 		// Hide JS-powered blocks on browsers with JavaScript disabled.
 		document.body.classList.remove('no-js');
-
-		// Init the TrustArc
-		initConsentManager();
 
 		// Update any static links to the current language.
 		let lang = getCurrentLang();
@@ -144,14 +140,13 @@ const searchConfig = getSearchConfig(params);
 		let languageSwitcherSource = document.importNode(languageSwitcherTemplate.content, true);
 		languageSwitcherTarget.appendChild(languageSwitcherSource);
 
-
 		window.turbolinksLoaded = true;
-		setTimeout(function() {
+		setTimeout(function () {
 			pushGTag('docs_load');
 		}, 2000);
 	});
 
-	document.addEventListener('turbo:before-render', function(event) {
+	document.addEventListener('turbo:before-render', function (event) {
 		let body = event.detail.newBody;
 
 		// This hides the relevant elements for a second if the user has selected a language different from the default one.
@@ -159,7 +154,7 @@ const searchConfig = getSearchConfig(params);
 		setIsTranslating(body.querySelectorAll('.hide-on-lang-nav'));
 	});
 
-	document.addEventListener('turbo:render', function(event) {
+	document.addEventListener('turbo:render', function (event) {
 		if (document.documentElement.hasAttribute('data-turbolinks-preview')) {
 			// Turbolinks is displaying a preview
 			return;
@@ -170,7 +165,7 @@ const searchConfig = getSearchConfig(params);
 
 	// For integration tests. Cypress doesn't catch these (smells like a bug).
 	if (window.Cypress) {
-		window.addEventListener('unhandledrejection', function(e) {
+		window.addEventListener('unhandledrejection', function (e) {
 			console.error(e);
 			return false;
 		});

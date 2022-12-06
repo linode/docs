@@ -38,7 +38,7 @@ Some use cases where Storm is a good solution:
 -  Analysis of server logs
 -  Internet of Things (IoT) sensor data processing
 
-This guide explains how to create Storm clusters on the Linode cloud using a set of shell scripts that use Linode's Application Programming Interface (APIs) to programmatically create and configure large clusters. The scripts are all provided by the author of this guide via [GitHub repository](https://github.com/pathbreak/storm-linode). This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode/) service with this setup.
+This guide explains how to create Storm clusters on the Linode cloud using a set of shell scripts that use Linode's Application Programming Interface (APIs) to programmatically create and configure large clusters. The scripts are all provided by the author of this guide via [GitHub repository](https://github.com/pathbreak/storm-linode). This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
 {{< caution >}}
 External resources are outside of our control, and can be changed and/or modified without our knowledge. Always review code from third party sites yourself before executing.
@@ -70,7 +70,7 @@ This guide will explain how to configure a working Storm cluster and its Zookeep
 -  A Zookeeper or Storm cluster can have either Ubuntu 14.04 LTS or Debian 8 installed on its nodes. Its distribution does not need to be the same one as the one installed on the cluster manager Linode.
 
 {{< note >}}
-The steps in this guide and in the bash scripts referenced require root privileges. Be sure to run the steps below as `root`. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide and in the bash scripts referenced require root privileges. Be sure to run the steps below as `root`. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Naming Conventions
@@ -86,7 +86,7 @@ These are the names we'll use, but you are welcome to choose your own when creat
 
 ### Get a Linode API Key
 
-Follow the steps in [Generating an API Key](/docs/platform/api/api-key/) and save your key securely. It will be entered into configuration files in upcoming steps.
+Follow the steps in [Generating an API Key](/docs/guides/api-key/) and save your key securely. It will be entered into configuration files in upcoming steps.
 
 If the key expires or is removed, remember to create a new one and update the `api_env_linode.conf` API environment configuration file on the cluster manager Linode. This will be explained further in the next section.
 
@@ -940,11 +940,11 @@ When starting a cluster, you should have `clustermgr` authorization to the Clust
 
 ## Monitor a Storm Cluster
 
-Every Storm cluster's client node runs a Storm UI web application for monitoring that cluster, but it can be accessed only from whitelisted workstations.
+Every Storm cluster's client node runs a Storm UI web application for monitoring that cluster, but it can be accessed only from allowed workstations.
 
-The next two sections explain how to whitelist workstations and monitor a cluster from the web interface.
+The next two sections explain how to allow workstations and monitor a cluster from the web interface.
 
-### Whitelist Workstations to Monitor a Storm Cluster
+### Allow Workstations to Monitor a Storm Cluster
 
 When performing the steps in this section, you should have `clustermgr` authorization to the Cluster Manager Linode.
 
@@ -955,13 +955,13 @@ When performing the steps in this section, you should have `clustermgr` authoriz
 
 2.  Open the `your-cluster/your-cluster-client-user-whitelist.ipsets` file (using our example from above, `storm-cluster1/storm-cluster1-client-user-whitelist.ipsets`) file in a text editor.
 
-    This file is an [ipsets](http://ipset.netfilter.org/ipset.man.html) list of whitelisted IP addresses. It consists of one master ipset and multiple child ipsets that list whitelisted machines by IP addresses or other attributes such as MAC IDs.
+    This file is an [ipsets](http://ipset.netfilter.org/ipset.man.html) list of allowed IP addresses. It consists of one master ipset and multiple child ipsets that list allowed machines by IP addresses or other attributes such as MAC IDs.
 
     The master ipset is named *your-cluster-uwls*. By default, it's completely empty, which means nobody is authorized.
 
-    [![Master ipset](storm-user-whitelist-1-650px.png)](storm-user-whitelist-1.png "An empty ipset list")
+    ![Master ipset](storm-user-whitelist-1.png "An empty ipset list")
 
-3.  To whitelist an IP address:
+3.  To allow an IP address:
 
     -  Uncomment the line that creates the *your-cluster-ipwl* ipset
     -  Add the IP address under it
@@ -969,12 +969,12 @@ When performing the steps in this section, you should have `clustermgr` authoriz
 
     These additions are highlighted below:
 
-    [![Whitelist entries](storm-user-whitelist-2-650px.png)](storm-user-whitelist-2.png)
+    ![Whitelist entries](storm-user-whitelist-2.png)
 
     {{< note >}}
 Any IP address that is being included in the file should be a *public facing IP* address of the network.
 For example, company networks often assign local addresses like 10.x.x.x or 192.x.x.x addresses to employee workstations, which are then NATted to a public IP address while sending requests outside the company network.
-Since the cluster client node is in the Linode cloud outside your company network, it will see monitoring requests as arriving from this public IP address. So it's the public IP address that should be whitelisted.
+Since the cluster client node is in the Linode cloud outside your company network, it will see monitoring requests as arriving from this public IP address. So it's the public IP address that should be allowed.
 {{< /note >}}
 
 4.  Any number or type of additional ipsets can be created, as long as they are added to the master ipset.
@@ -997,7 +997,7 @@ Since the cluster client node is in the Linode cloud outside your company networ
 
     You should see output similar to the following (in addition to custom ipsets if you added them, and the ipsets for the Storm and Zookeeper cluster nodes):
 
-    [![ipset output](storm-user-whitelist-3.png)](storm-user-whitelist-3.png)
+    ![ipset output](storm-user-whitelist-3.png)
 
     Disconnect from the client node and navigate back to the `storm-linode` directory on the cluster manager node:
 
@@ -1009,11 +1009,11 @@ Since the cluster client node is in the Linode cloud outside your company networ
 
 9.  Finally, verify that the Storm UI web application is accessible by opening `http://public-IP-of-client-node` in a web browser on each whitelisted workstation. You should see the Storm UI web application, which looks like this:
 
-    [![Storm UI](storm-ui-650px.png)](storm-ui-large.png)
+    ![Storm UI](storm-ui-large.png)
 
     The Storm UI displays the list of topologies and the list of supervisors executing them:
 
-    [![Storm UI monitoring](storm-ui-monitor-650px.png)](storm-ui-monitor.png)
+    ![Storm UI monitoring](storm-ui-monitor.png)
 
     If the cluster is executing any topologies, they are listed under the **Topology summary** section. Click on a topology to access its statistics, supervisor node logs, or actions such as killing that topology.
 

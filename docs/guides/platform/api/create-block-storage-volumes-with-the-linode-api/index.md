@@ -6,12 +6,12 @@ author:
 description: "This guide demonstrate how to create, attach, clone, and resize Volumes using the Linode API."
 keywords: ["linode api", "block storage", "volume"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-14
+modified: 2022-11-16
 modified_by:
   name: Linode
 published: 2018-05-14
 title: "How to Manage Block Storage Volumes with the Linode API"
-h1_title: "Managing Block Storage Volumes with the Linode API"
+h1_title: "Manage Block Storage Volumes with the Linode API"
 enable_h1: true
 external_resources:
   - '[API Documentation](https://developers.linode.com/api/v4)'
@@ -25,7 +25,7 @@ The Linode API allows you to create, delete, attach, detach, clone, and resize B
 
 ## Before You Begin
 
-You will need a Personal Access Token to access the `/volumes` endpoint. Create an Access Token through the [Beta Linode Manager](https://cloud.linode.com/profile/tokens). See our [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/) for more information.
+You will need a Personal Access Token to access the `/volumes` endpoint. Create an Access Token through the [Beta Linode Manager](https://cloud.linode.com/profile/tokens). See our [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/) for more information.
 
 Store the token as a temporary shell variable to simplify repeated requests. Replace `<Access Token>` in this example with your token:
 
@@ -74,7 +74,7 @@ The Volume and Linode must be in the same region.
 }
 {{< /highlight >}}
 
-4.   Query the Volume using the `/volumes/$volume_id` endpoint to to make sure it was successfully created:
+4.   Query the Volume using the `/volumes/$volume_id` endpoint to make sure it was successfully created:
 
         curl -H "Authorization: Bearer $token" \
         https://api.linode.com/v4/volumes/$volume_id
@@ -155,3 +155,7 @@ Pass the desired size (in gigabytes) using the `size` parameter:
         "size": 200
     }' \
     https://api.linode.com/v4/volumes/$volume_id/resize
+
+{{< note >}}
+After resizing the Volume, you also need to resize the file system to accommodate the additional space. For instructions, see the last few steps on the [Resize a Volume](/docs/products/storage/block-storage/guides/resize-volume/) guide.
+{{</ note >}}

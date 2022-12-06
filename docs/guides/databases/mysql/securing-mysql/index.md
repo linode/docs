@@ -6,6 +6,7 @@ description: 'This guide shows how to audit MySQL security, including: using the
 og_description: 'This guide shows how to audit MySQL security, including: using the secure installer, modifying the root user, and adding new users.'
 keywords: ["mysql", "security", "audit", "root", "database", "privilege"]
 aliases: ['/security/auditing/secure-and-audit-mysql-server/','/security/secure-and-audit-mysql-server/']
+bundles: ['debian-security', 'centos-security']
 tags: ["mysql","security","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: 'How to Secure MySQL Server'
@@ -32,7 +33,7 @@ MySQL is an open-source relational database management system. This guide will s
         hostname
         hostname -f
 
-    {{< note >}} If you have a registered domain name for your website, then [add the domain](/docs/guides/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
+    {{< note >}} If you have a registered domain name for your website, then [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
 
 1.  Update your system:
 
@@ -154,11 +155,11 @@ The first step in securing the “root” user is to change the username from `r
 
 1. Change the “root” account username by running the following query:
 
-        rename user ‘root’@’localhost' to ‘<new-username’@’localhost’;
+        rename user 'root'@'localhost' to '<new-username>'@'localhost';
 
 1. Change the `root` account password to something strong and hard to guess, it is recommended to use a password generator. If you enabled the verify password plugin during the secure installation process, you need to provide a password that meets the policy requirements in terms of strength.
 
-        ALTER USER ‘example_username’@’localhost’ IDENTIFIED BY ‘<new-password>’;
+        ALTER USER 'example_username'@'localhost' IDENTIFIED BY '<new-password>';
 
 1. Reload the privilege table to ensure that all changes are saved and activated by running the following command:
 
@@ -205,7 +206,7 @@ A good security practice is the concept of segregation by duties or role. This m
 
 1. If you decide to delete a particular user, run the following query:
 
-        drop user ’<username>’@'localhost';
+        drop user '<username>'@'localhost';
 
 
 1. Reload the privilege table to ensure the changes made are applied and activated by running the following query:

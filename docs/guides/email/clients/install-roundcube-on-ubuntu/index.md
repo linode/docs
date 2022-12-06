@@ -3,7 +3,7 @@ slug: install-roundcube-on-ubuntu
 author:
   name: 'Linode Community'
   email: 'docs@linode.com'
-description: 'Roundcube is a web-based IMAP email client that offers a user interface similar to Gmail or Hotmail. Email users interact with Roundcube over the internet using a web browser.'
+description: 'This guide shows you how to install the free and open-source web-based IMAP email client with a UI similar to Gmail and Hotmail, on Ubuntu.'
 keywords: ["Roundcube", "webmail", "email", "Ubuntu"]
 aliases: ['/email/clients/install-roundcube-on-ubuntu/','/email/clients/install-roundcube-on-ubuntu-14-04/']
 tags: ["ubuntu","postfix","email","lamp"]
@@ -32,11 +32,11 @@ Roundcube is a web-based IMAP email client that offers a user interface similar 
 
 1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/guides/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  This guide is designed to work with our [Installing Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) tutorial, but you **can** use a different mail server.
 
-4.  Configure an **A HOST** or **CNAME** DNS record (a subdomain) to point at your Linode. For this guide, the subdomain `webmail` will be used. Refer to our [Introduction to DNS Records](/docs/guides/dns-records-an-introduction/) guide if you need help creating this record.
+4.  Configure an **A HOST** or **CNAME** DNS record (a subdomain) to point at your Linode. For this guide, the subdomain `webmail` will be used. Refer to our [Introduction to DNS Records](/docs/guides/dns-overview/) guide if you need help creating this record.
 
 5.  Update your server's software packages:
 
@@ -233,7 +233,7 @@ Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warni
 
 5.  Complete the configuration by clicking **CONTINUE**.
 
-    [![Roundcube configuration saved successfully](roundcube-configuration-saved-successfully_small.png)](roundcube-configuration-saved-successfully.png)
+    ![Roundcube configuration saved successfully](roundcube-configuration-saved-successfully.png)
 
 6.  Lastly, import Roundcube’s MySQL database structure by clicking on the **Initialize database** button.
 

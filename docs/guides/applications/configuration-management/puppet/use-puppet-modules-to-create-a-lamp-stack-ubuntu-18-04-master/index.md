@@ -2,7 +2,7 @@
 slug: use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master
 author:
     name: Linode
-description: 'Learn how to efficiently use Puppet modules to manage files and services, create templates, and store data in Hiera in this simple tutorial.'
+description: 'With this guide, you will learn how to efficiently use Puppet modules to manage files and services, as well as store data in Hiera on Ubuntu 18.04 "Master".'
 keywords: ["puppet", "automation", "lamp", "configuration management"]
 tags: ["lamp","ubuntu","automation","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -336,9 +336,9 @@ include apache::vhosts
 
         cd /etc/puppetlabs/code/environments/production/manifests
 
-    If you are continuing this guide from the [Getting Started with Puppet - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/) guide, you should have a `site.pp` file already created. If not, create one now.
+    If you are continuing this guide from the [Getting Started with Puppet - Basic Installation and Setup](/docs/guides/getting-started-with-puppet-6-1-basic-installation-and-setup/) guide, you should have a `site.pp` file already created. If not, create one now.
 
-1.  Open `site.pp` and include the Apache module for each agent node. Also input the variables for the `adminemail` and `servername` parameters. If you followed the [Getting Started with Puppet - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/) guide, a single node configuration within `site.pp` will resemble the following:
+1.  Open `site.pp` and include the Apache module for each agent node. Also input the variables for the `adminemail` and `servername` parameters. If you followed the [Getting Started with Puppet - Basic Installation and Setup](/docs/guides/getting-started-with-puppet-6-1-basic-installation-and-setup/) guide, a single node configuration within `site.pp` will resemble the following:
 
     {{< file "/etc/puppetlabs/code/environments/production/manifests/site.pp" puppet >}}
 node 'ubuntuhost.example.com' {
@@ -385,10 +385,10 @@ node 'centoshost.example.com' {
 
     {{< /file >}}
 
-    If you did not follow the [Getting Started with Puppet - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/) guide, then your `site.pp` file should resemble the following example:
+    If you did not follow the [Getting Started with Puppet - Basic Installation and Setup](/docs/guides/getting-started-with-puppet-6-1-basic-installation-and-setup/) guide, then your `site.pp` file should resemble the following example:
 
     {{< file "/etc/puppetlabs/code/environments/production/manifests/site.pp" puppet >}}
-node 'ubupuppet.members.linode.com' {
+node 'ubupuppet.ip.linodeusercontent.com' {
   $adminemail = 'webmaster@example.com'
   $servername = 'hostname.example.com'
 
@@ -397,7 +397,7 @@ node 'ubupuppet.members.linode.com' {
 
   }
 
-node 'centospuppet.members.linode.com' {
+node 'centospuppet.ip.linodeusercontent.com' {
   $adminemail = 'webmaster@example.com'
   $servername = 'hostname.example.com'
 
@@ -454,7 +454,7 @@ mysql::server::root_password: 'password'
 1. To use the MySQL module's defaults you can simply add an `include '::mysql::server'` line to the `site.pp` file. However, in this example, you will override some of the module's defaults to create a database for each of your nodes. Edit the `site.pp` file with the following values:
 
     {{< file >}}
-node 'ubupuppet.members.linode.com' {
+node 'ubupuppet.ip.linodeusercontent.com' {
   $adminemail = 'webmaster@example.com'
   $servername = 'hostname.example.com'
 
@@ -473,7 +473,7 @@ node 'ubupuppet.members.linode.com' {
 
 }
 
-node 'centospuppet.members.linode.com' {
+node 'centospuppet.ip.linodeusercontent.com' {
   $adminemail = 'webmaster@example.com'
   $servername = 'hostname.example.com'
 
@@ -530,7 +530,7 @@ class php {
 1.  Add `include php` to the hosts in your `sites.pp` file:
 
     {{< file "/etc/puppetlabs/code/environments/production/manifests/site.pp" puppet >}}
-    node 'ubupuppet.members.linode.com' {
+    node 'ubupuppet.ip.linodeusercontent.com' {
       $adminemail = 'webmaster@example.com'
       $servername = 'hostname.example.com'
 
@@ -541,7 +541,7 @@ class php {
 
       }
 
-    node 'centospuppet.members.linode.com' {
+    node 'centospuppet.ip.linodeusercontent.com' {
       $adminemail = 'webmaster@example.com'
       $servername = 'hostname.example.com'
 

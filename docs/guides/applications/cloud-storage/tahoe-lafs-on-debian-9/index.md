@@ -4,6 +4,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Tahoe-LAFS keeps your data encrypted, validates at read time that it hasn't been tampered with and keeps redundant copies on multiple servers."
+og_description: "Tahoe Least Authority File Store, or Tahoe-LAFS, is a decentralized or distributed system. It focuses on confidentiality, data integrity, and redundancy to help keep files secure and accessible. Use our guide to create, manage, and access a Tahoe-LAFS grid."
 keywords: ["confidential", "encrypted", "integrity", "redundant", "private", "filesystem", "storage"]
 tags: ["debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +12,7 @@ published: 2017-10-24
 modified: 2017-10-26
 modified_by:
   name: Linode
-title: 'How to Keep Your Data Private in the Cloud with Tahoe-LAFS'
-og_description: 'Tahoe Least Authority File Store, or Tahoe-LAFS, is a decentralized or distributed system. It focuses on confidentiality, data integrity, and redundancy to help keep files secure and accessible. Use our guide to create, manage, and access a Tahoe-LAFS grid.'
+title: "Keep Your Data Private in the Cloud with Tahoe-LAFS"
 contributor:
   name: Alexandru Andrei
 external_resources:
@@ -45,15 +45,13 @@ All of these things make Tahoe-LAFS a good fit for securely storing sensitive da
 
 ## Before You Begin
 
+1.  If you have not already done so, create a Linode account and a *Debian 9* Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
-
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide, deploy a Debian 9 (Stretch) image and complete the steps for setting your Linode's hostname and timezone.
-
-2.  Update your system:
-
-        apt-get update && apt-get upgrade
 
 ## Server Requirements and Recommendations
 
@@ -295,7 +293,7 @@ The web interface is the most user-friendly way to interact with your grid. One 
 
         tahoe run --basedir client
 
-    [![Tahoe-LAFS Web User Interface](tahoe-lafs-web-user-interface_small.png)](tahoe-lafs-web-user-interface.png "Tahoe-LAFS Web User Interface")
+    ![Tahoe-LAFS Web User Interface](tahoe-lafs-web-user-interface.png "Tahoe-LAFS Web User Interface")
 
 2.  Files can be uploaded using one of three algorithms:
 
@@ -311,7 +309,7 @@ The web interface is the most user-friendly way to interact with your grid. One 
 
 4.  Since it's hard to keep track of multiple random strings of characters, a more efficient way to store your data is to organize it in directories. These come with a handful of advantages:
 
-    [![Directory Displayed in Web User Interface](tahoe-lafs-directory-seen-in-wui_small.png)](tahoe-lafs-directory-seen-in-wui.png "Directory Displayed in Web User Interface")
+    ![Directory Displayed in Web User Interface](tahoe-lafs-directory-seen-in-wui.png "Directory Displayed in Web User Interface")
 
     *  They can be bookmarked in your browser, allowing you to easily come back to them.
         *  These are also accessed using cryptographic secrets. If you lose the bookmarks or directory writecaps/readcaps, there's no way to recover them. You can still access directory contents though if you have individual elements bookmarked or their capabilities saved somewhere.

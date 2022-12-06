@@ -25,7 +25,7 @@ external_resources:
 
 Irssi is a popular IRC client with a flexible plugin architecture and an embedded Perl interpreter. It can be customized to greatly improve the off-the-shelf experience. This guide will demonstrate some of the most useful features, plugins, and customizations to help you get the most out of Irssi.
 
-This guide assumes that you are familiar with basic Irssi commands and usage. To review these commands, or for instructions on installing Irssi on your system, see our [Using Irssi for Internet Chat](/docs/applications/messaging/using-irssi-for-internet-relay-chat/) guide.
+This guide assumes that you are familiar with basic Irssi commands and usage. To review these commands, or for instructions on installing Irssi on your system, see our [Using Irssi for Internet Chat](/docs/guides/using-irssi-for-internet-relay-chat/) guide.
 
 ## Key Bindings and Aliases
 

@@ -3,7 +3,7 @@ slug: install-odoo-10-on-ubuntu-16-04
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Odoo is an open-source suite of over 5,500 business applications. Odoo allows administrators to install, configure and customize any application to satisfy their needs. This guide covers how to install and configure Odoo using Git source so it will be easy to upgrade and maintain.'
+description: 'This guide shows you how to install and configure Odoo, an open-source suite of over 4,500 business utilities which you can individually install, on Ubuntu 16.04.'
 keywords: ["Odoo", "Odoo ERP", "CMS", "Ubuntu", "CRM", "OpenERP", "Odoo 10", "Ubuntu 16.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -30,19 +30,13 @@ This guide covers how to install and configure Odoo in under an hour using Git s
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/getting-started/) guide.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configuring a Firewall* section in the Securing Your Server Guide--we will configure the firewall for an Odoo production server in the next section.
-
-    This guide will use `sudo` wherever possible.
-
-3.  Update your packages:
-
-        sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configuring a Firewall* section in the Securing Your Server Guide--we will configure the firewall for an Odoo production server in the next section.
 
 ## Configure UFW Firewall for Odoo
 
-Before installing Odoo, we'll set up some basic firewall rules to allow SSH connections and access to the Odoo server. In this example we'll use Odoo's default port `8069`, but this could be any port you specify later in the configuration file. If you plan to run any other services, you can add their ports here as well. Refer to our guide on how to [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#use-ufw-to-manage-firewall-rules) for help with rules and settings:
+Before installing Odoo, we'll set up some basic firewall rules to allow SSH connections and access to the Odoo server. In this example we'll use Odoo's default port `8069`, but this could be any port you specify later in the configuration file. If you plan to run any other services, you can add their ports here as well. Refer to our guide on how to [Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/#use-ufw-to-manage-firewall-rules) for help with rules and settings:
 
     sudo ufw allow ssh
     sudo ufw allow 8069/tcp
@@ -245,7 +239,7 @@ The most relevant line in this file is `StandardOutput=journal+console`. As conf
 
         sudo systemctl status odoo-server
 
-    [![Odoo service status running](odoo_servicerunning_small.png)](odoo_servicerunning.png)
+    ![Odoo service status running](odoo_servicerunning.png)
 
 3.  Check the database journal to make sure there are no errors:
 
@@ -261,7 +255,7 @@ The most relevant line in this file is `StandardOutput=journal+console`. As conf
 
     Your output should look similar to this:
 
-    [![Odoo service status inactive](odoo_servicestopped_small.png)](odoo_servicestopped.png)
+    ![Odoo service status inactive](odoo_servicestopped.png)
 
 ## Enable the Odoo Service
 
@@ -285,11 +279,11 @@ The most relevant line in this file is `StandardOutput=journal+console`. As conf
 
 2.  If everything is working properly, a screen similar to this should appear:
 
-    [![Odoo 10 database creation](odoo_10_db_creation.png)](odoo_10_db_creation.png)
+    ![Odoo 10 database creation](odoo_10_db_creation.png)
 
 3.  Congratulations, now you can create your first database and start using Odoo 10 applications!
 
-    [![Odoo 10 applications](odoo_10_applications_small.png)](odoo_10_applications.png)
+    ![Odoo 10 applications](odoo_10_applications.png)
 
 ## Updating Odoo
 
@@ -440,4 +434,4 @@ If all your tests pass, you can safely update your production installation.
 
 ## Next Steps
 
-If you plan to use Odoo 10 for your business, you may wish to configure SSL/TLS encryption to enable secure connections to your server. To do this, check out our guide on how to [install an SSL certificate with LetsEncrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates/).
+If you plan to use Odoo 10 for your business, you may wish to configure SSL/TLS encryption to enable secure connections to your server. To do this, check out our guide on how to [install an SSL certificate with LetsEncrypt](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/).

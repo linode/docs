@@ -2,8 +2,8 @@
 slug: using-an-nfs-server-on-ubuntu2004
 author:
   name: Jeff Novotny
-description: 'Network File System (NFS) is a distributed file system that allows users to access files over a network as they would do on the local files. This guide provides a brief introduction to NFS, explains how to configure NFS on client and server on Ubuntu 20.04, and mount NFS on the client.'
-og_description: 'Network File System (NFS) is a distributed file system that allows users to access files over a network as they would do on the local files. This guide provides a brief introduction to NFS, explains how to configure NFS on client and server on Ubuntu 20.04, and mount NFS on the client.'
+description: 'This guide provides you with a brief introduction to NFS (Network File System) as well as how to configure NFS on a client and server on Ubuntu 20.04.'
+og_description: 'This guide provides you with a brief introduction to NFS (Network File System) as well as how to configure NFS on a client and server on Ubuntu 20.04.'
 keywords: ['NFS','file sharing','NFS server','mount point']
 tags: ['networking', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -58,18 +58,14 @@ Due to its flexibility, openness, and simple mechanisms, there are also some dra
 
 ## Before You Begin
 
-1. Familiarize yourself with Linode's [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of Linode's guide on [How to Secure Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
-
-1. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. To complete the server and client configuration, two Linodes are required. One Linode serves as the NFS host and server, while the other acts as a client. Note the IP addresses of both Linodes. Throughout the following sections, replace `server_ip_addr` with the IP address of the NFS server, and `client_ip_addr` with the address of the client.
 
 {{< note >}}
-The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Configure the NFS Server and Client

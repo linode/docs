@@ -42,26 +42,26 @@ You can further use the Elastic Stack deployed and configured for application lo
 {{< caution >}}
 This guide's example instructions creates the following billable resources on the Linode account: four (4) Linodes and three (3) Block Storage volumes. If you do not want to keep using the example cluster that you create, be sure to delete the cluster Linodes and volumes after you have finished the guide.
 
-If you remove the resources afterward, you are billed only for the hour(s) that the resources were present on the account. For more information, see [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/) guide about how hourly billing works and for a table of plan pricing.
+If you remove the resources afterward, you are billed only for the hour(s) that the resources were present on the account. For more information, see [Billing and Payments](/docs/products/platform/billing/) guide about how hourly billing works and for a table of plan pricing.
 {{< /caution >}}
 
 ## Before You Begin
 
 {{< note >}}
-This guide uses Kubernetes services which are private by default. Local listeners are opened which allow you to access the services on the local browser, however, web servers and NodeBalancers are out scope for this guide. Due to this, you should complete the steps of this guide from the local computer or from a computer that gives you access to the web browser. If you want to access these services from a public domain, please see the [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers/) guide.
+This guide uses Kubernetes services which are private by default. Local listeners are opened which allow you to access the services on the local browser, however, web servers and NodeBalancers are out scope for this guide. Due to this, you should complete the steps of this guide from the local computer or from a computer that gives you access to the web browser. If you want to access these services from a public domain, please see the [Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/) guide.
 {{< /note >}}
 
 1.  [Install the Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`) on the local computer.
 
-1.  Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
+1.  Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
 
-    {{< note >}} Ensure that the LKE cluster that you create has three nodes and one master node with  4GB Linode instances. Also ensure that the `KUBECONFIG` context is [persistent](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context){{< /note >}}
+    {{< note >}} Ensure that the LKE cluster that you create has three nodes and one master node with  4GB Linode instances. Also ensure that the `KUBECONFIG` context is [persistent](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context){{< /note >}}
 
 1.  You should also make sure that Kubernetes CLI is using the right cluster context. Run the `get-contexts` subcommand to check:
 
         kubectl config get-contexts
 
-1.  Set up Helm in the Kubernetes cluster by following the [Install Helm](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) section in the *How to Install Apps on Kubernetes with Helm 3* guide.
+1.  Set up Helm in the Kubernetes cluster by following the [Install Helm](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) section in the *How to Install Apps on Kubernetes with Helm 3* guide.
 
 ## Configure Helm
 

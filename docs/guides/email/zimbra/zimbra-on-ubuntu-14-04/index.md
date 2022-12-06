@@ -1,9 +1,10 @@
 ---
 slug: zimbra-on-ubuntu-14-04
+deprecated: true
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Install Zimbra OSE 8.6 on Ubuntu 14.04 LTS Linode'
+description: 'This guide shows how to install Zimbra, a complete self-hosted mail application, pre-configured with Postfix, OpenDKIM, Amavis, ClamAV and running on NGINX.'
 keywords: ["zimbra", "install zimbra", "mail server", "zimbra email", "zimbra email server", "mail zimbra", "open source guide", "zimbra open source", "postfix", "web mail", "opendkim", "amavis", "ubuntu tahr", "ubuntu 14.04", "ubuntu"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -31,18 +32,18 @@ aliases: ['/email/zimbra/zimbra-on-ubuntu-14-04/']
 {{< content "email-warning-shortguide" >}}
 
 {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Set up Your Linode
 
-1.  Create a Linode with a minimum of 4 GB of RAM. See [Getting Started](/docs/getting-started/) for help setting up your host.
+1.  Create a Linode with a minimum of 4 GB of RAM. See [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) for help setting up your host.
 
 2.  Deploy an Ubuntu 14.04 LTS image to your Linode. Consider using slightly less than half the available disk space for the first image, keeping the other half for taking a backup image before updates. Your partition size will depend on the number of accounts and volume of mail you expect to handle. Once deployed, boot your new host. SSH into the terminal using the command shown on the **Networking** tab in the Linode Cloud Manager and the password you entered when you created the Linode.
 
-3.  You must [set the hostname](/docs/getting-started/#setting-the-hostname) and fully qualified domain name (FQDN), and [update /etc/hosts](/docs/networking/dns/using-your-systems-hosts-file/) prior to installing Zimbra.
+3.  You must [set the hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and fully qualified domain name (FQDN), and [update /etc/hosts](/docs/guides/using-your-systems-hosts-file/) prior to installing Zimbra.
 
-4.  Configure your DNS entries at your DNS provider to provide an A record for the host, and point the domain MX record to your new server. A reverse DNS pointer is highly recommended to prevent mail from your server being rejected. See [Running a Mail Server: DNS Records](/docs/email/running-a-mail-server/#dns-records) for details on setting up DNS.
+4.  Configure your DNS entries at your DNS provider to provide an A record for the host, and point the domain MX record to your new server. A reverse DNS pointer is highly recommended to prevent mail from your server being rejected. See [Running a Mail Server: DNS Records](/docs/guides/running-a-mail-server/#dns-records) for details on setting up DNS.
 
 ## Download Zimbra
 
@@ -141,7 +142,7 @@ This Guide is about setting up a new Zimbra Linode, but if you are upgrading an 
 
 6. Configure MX records.
 
-    If you receive an error about a missing MX record as shown below, it means your domain DNS records are not matching what Zimbra expects to find, based on the hostname you configured earlier. Check your `/etc/hostname` file and your [DNS records](/docs/networking/dns/dns-records-an-introduction/#mx) to resolve the problem.
+    If you receive an error about a missing MX record as shown below, it means your domain DNS records are not matching what Zimbra expects to find, based on the hostname you configured earlier. Check your `/etc/hostname` file and your [DNS records](/docs/guides/dns-overview/#mx) to resolve the problem.
 
         DNS ERROR resolving MX for linodemail.example.com
         It is suggested that the domain name have an MX record configured in DNS

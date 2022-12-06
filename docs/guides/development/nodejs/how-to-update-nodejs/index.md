@@ -21,11 +21,11 @@ Node.js is a cross-platform runtime environment for server-side JavaScript appli
 
 ## Before You Begin
 
-1.  This guide assumes you are already running Node.js on your Linode or local workstation and are updating the version. If you don't have it installed, see the [How to Install Node.js](/guides/how-to-install-nodejs/) guide.
+1.  This guide assumes you are already running Node.js on your Linode or local workstation and are updating the version. If you don't have it installed, see the [How to Install Node.js](/docs/guides/how-to-install-nodejs/) guide.
 
 2.  Install NPM, which installs by default with Node.js.
 
-3.  This guide assumes you are only updating your version of Node.js and aren't looking to run multiple versions. If you do, see the guide [How to Install and Use the Node Version Manager](/guides/how-to-install-use-node-version-manager-nvm/).
+3.  This guide assumes you are only updating your version of Node.js and aren't looking to run multiple versions. If you do, see the guide [How to Install and Use the Node Version Manager](/docs/guides/how-to-install-use-node-version-manager-nvm/).
 
 4.  Update your Linode's system:
     sudo apt-get update && sudo apt-get upgrade
@@ -58,7 +58,7 @@ NPM is installed by default with Node.js and is the easiest way to update to any
 
 ## Updating the Node.js version using NVM
 
-If you need to install NVM, see our guide [How to Install and Use the Node Version Manager](/guides/how-to-install-use-node-version-manager-nvm/). It's a useful tool to have, especially in a development environment or if you have to use multiple versions of Node.js.
+If you need to install NVM, see our guide [How to Install and Use the Node Version Manager](/docs/guides/how-to-install-use-node-version-manager-nvm/). It's a useful tool to have, especially in a development environment or if you have to use multiple versions of Node.js.
 
 1.  Open the Terminal on Linux or macOS. On Windows, launch the Windows PowerShell as an administrator. Search for it in the search bar and then either right-click or click on the arrow to the right and choose **Run as Administrator**.
 

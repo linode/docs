@@ -17,9 +17,9 @@ external_resources:
 aliases: ['/platform/migrate-to-linode/migrate-a-wordpressdotcom-site-to-linode/']
 ---
 
-This guide describes how to export your content from WordPress.com and self-host your WordPress website on Linode. Read the [Best Practices when Migrating to Linode](/docs/platform/migrate-to-linode/best-practices-when-migrating-to-linode/) guide prior to following this guide for more information about migrating your site.
+This guide describes how to export your content from WordPress.com and self-host your WordPress website on Linode. Read the [Best Practices when Migrating to Linode](/docs/guides/best-practices-when-migrating-to-linode/) guide prior to following this guide for more information about migrating your site.
 
-Ubuntu 18.04 is used as the distribution for the new Linode deployment in this guide. If you'd like to choose another distribution, use the examples here as an approximation for the commands you'll need to run. You will also install either a [LAMP](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/) environment on your new Linode.
+Ubuntu 18.04 is used as the distribution for the new Linode deployment in this guide. If you'd like to choose another distribution, use the examples here as an approximation for the commands you'll need to run. You will also install either a [LAMP](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/guides/how-to-install-the-lemp-stack-on-ubuntu-18-04/) environment on your new Linode.
 
 {{< note >}}
 WordPress.com's export feature will export pages, posts, and comments from your site, but it will not export your themes and widgets. You will need to customize your new self-hosted WordPress site's appearance after completing your migration.
@@ -29,9 +29,9 @@ WordPress.com's export feature will export pages, posts, and comments from your 
 
 ### Deploy Your Linode
 
-1.  Follow Linode's [Getting Started](/docs/getting-started/) guide and choose Ubuntu 18.04 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the website data from your current host.
+1.  Follow Linode's [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide and choose Ubuntu 18.04 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the website data from your current host.
 
-1.  Follow the [How to Secure Your Server](/docs/security/securing-your-server/) guide and create a limited Linux user with `sudo` privileges.
+1.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide and create a limited Linux user with `sudo` privileges.
 
 1.  Follow the [Install WordPress on Ubuntu 18.04](/docs/websites/cms/install-wordpress-ubuntu-18-04) guide to stand up a new web server and WordPress installation. Later in this guide you will use the WordPress credentials you create during the installation, so be sure to record them.
 

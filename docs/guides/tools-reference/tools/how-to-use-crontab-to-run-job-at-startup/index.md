@@ -2,8 +2,8 @@
 slug: run-jobs-or-scripts-using-crontab-on-boot
 author:
   name: Jeff Novotny
-description: 'This guide explains how to use the cron utility and the crontab file to run jobs or scripts on system boot. You also learn best practices when using cron. For example, you can create a script to store your desired commands and use cron to run your script. '
-og_description: 'This guide explains how to use the cron utility and the crontab file to run jobs or scripts on system boot. You also learn best practices when using cron. For example, you can create a script to store your desired commands and use cron to run your script. '
+description: 'This guide explains how to use the cron utility and the crontab file to run jobs or scripts when your Linode boots, as well as best practices when using cron.'
+og_description: 'This guide explains how to use the cron utility and the crontab file to run jobs or scripts when your Linode boots, as well as best practices when using cron.'
 keywords: ['crontab on boot']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -45,13 +45,9 @@ Similarly, the `@reboot` shortcut tells the cron task to run the job at system b
 
 ## Before You Begin
 
-1. Familiarize yourself with Linode's [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of Linode's [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configure a Firewall* section yet as this guide includes firewall rules specifically for an OpenVPN server.
-
-1. Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Use Crontab to Schedule a Job or Script to Run at System Startup
 
@@ -140,4 +136,4 @@ cron.service - Regular background program processing daemon
 
 ## Learn More About the Cron Utility
 
-To learn more about cron jobs, see our [Schedule Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) guide. To view highly-detailed and technical information about cron and crontab, you can also refer to the [*Linux 'man' page for the crontab command*](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html).
+To learn more about cron jobs, see our [Schedule Tasks with Cron](/docs/guides/schedule-tasks-with-cron/) guide. To view highly-detailed and technical information about cron and crontab, you can also refer to the [*Linux 'man' page for the crontab command*](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html).

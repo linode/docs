@@ -3,7 +3,7 @@ slug: upgrade-to-ubuntu-16-04
 author:
   name: Alex Fornuto
   email: docs@linode.com
-description: 'Our guide to upgrading to Ubuntu 16.04 LTS'
+description: 'This guide provides you with step-by-step instructions on how to upgrade your Linux system to the latest LTS (Long Term Support) version of Ubuntu - 16.04 LTS.'
 keywords: ["upgrading", "ubuntu", "16.04"]
 tags: ["security","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -32,7 +32,7 @@ Distribution upgrades sometimes yield unpredictable results. If possible, use th
  - Transfer your data
  - Swap IP addresses
 
-The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
+The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/guides/glish/) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
 
 **Important:** Ubuntu 16.04 ships with OpenSSH 7.2p2, which does not allow `ssh-dss` host authentication, or use of the SSH version 1 protocol.
 {{< /caution >}}
@@ -67,7 +67,7 @@ It's a good idea to back up your Linode before performing a major upgrade. That 
 
 ### Check Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/uptime/monitoring-and-maintaining-your-server/#applying-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/guides/monitor-and-maintain-compute-instance/#applying-kernel-updates) for more information.
 
 ### Stop Services
 

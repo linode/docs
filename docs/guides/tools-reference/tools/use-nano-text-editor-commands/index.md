@@ -25,7 +25,7 @@ Editing files in Linux using Nano is a popular option. Compared to other editors
 
 ## Installing the Nano Text Editor in Linux
 
-Nano is included with many Linux distributions by default. However, some users may need to install Nano on Linux using the [package management](https://www.linode.com/docs/using-linux/package-management/) tool of the distribution.
+Nano is included with many Linux distributions by default. However, some users may need to install Nano on Linux using the [package management](/docs/guides/linux-package-management-overview/) tool of the distribution.
 
 **Debian/Ubuntu**:
 

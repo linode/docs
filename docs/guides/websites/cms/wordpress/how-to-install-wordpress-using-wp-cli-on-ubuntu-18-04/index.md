@@ -3,7 +3,7 @@ slug: how-to-install-wordpress-using-wp-cli-on-ubuntu-18-04
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Install WordPress Using WP-CLI on Ubuntu 18.04'
+description: 'This guide shows how to install the popular content management system, WordPress, using the WP-CLI, a command line interface for WordPress, on Ubuntu 18.04.'
 og_description: 'Install WordPress Using WP-CLI on Ubuntu 18.04'
 keywords: ["install WP-CLI", "ubuntu", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
 aliases: ['/websites/cms/wordpress/how-to-install-wordpress-using-wp-cli-on-ubuntu-18-04/','/websites/cms/wp-cli/how-to-install-wordpress-using-wp-cli-on-ubuntu-18-04/','/websites/cms/install-and-configure-wordpress-using-wp-cli/','/websites/cms/install-wordpress-using-wp-cli-on-ubuntu-18-04/']
@@ -43,13 +43,17 @@ This tutorial covers how to complete the following tasks:
 
 Before moving ahead, make sure you have completed the following steps.
 
-- If you'd like to use your own [Domain Name](/docs/networking/dns/dns-records-an-introduction/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/guides/dns-manager/#dns-set-up-checklist) to point to your Linode's IP address.
-- Complete the steps in the [Getting Started with Linode](/docs/getting-started/) guide. Specifically, ensure you have completed the [Install software updates](/docs/getting-started/#debian-ubuntu), [Set your Linode's hostname](/docs/getting-started/#arch-centos-7-debian-8-fedora-ubuntu-16-04-and-above), and [Update your system's hosts file](/docs/getting-started/#update-your-system-s-hosts-file) sections.
-- Follow the steps in the [How to Secure Your Server](/docs/security/securing-your-server/) guide. Ensure you complete the steps in the following [Add a limited user account](/docs/security/securing-your-server/#ubuntu) section. All steps executed in this guide will be from this account.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+
     {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
-- Follow the [Installation](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/#installation), [Apache Configuration](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/#apache), and [PHP Configuration](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/#php) sections of the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide. Skip all other sections. This guide will cover the steps needed to configure your [Apache Virtual Hosts File](#configure-apache-virtual-hosts-file).
+
+1.  If you'd like to use your own [Domain Name](/docs/guides/dns-overview/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/products/networking/dns-manager/get-started/) to point to your Linode's IP address.
+
+1.  Follow the [Installation](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#installation), [Apache Configuration](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#apache), and [PHP Configuration](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#php) sections of the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide. Skip all other sections. This guide will cover the steps needed to configure your [Apache Virtual Hosts File](#configure-apache-virtual-hosts-file).
 
 
 ## Install WP-CLI
@@ -423,12 +427,11 @@ The procedure for installing and activating a theme is nearly identical to that 
 
 1. To uninstall a theme, activate a different theme first:
 
-        sudo -u www-data wp theme activate twentyseventeen
+        sudo -u www-data wp theme activate twentytwenty
 
 1. Once you've activated another theme, you can safely uninstall the previously active theme:
 
-        sudo -u www-data wp theme uninstall twentynineteen
-
+        sudo -u www-data wp theme uninstall twentyfourteen
 
 ### Update WordPress
 

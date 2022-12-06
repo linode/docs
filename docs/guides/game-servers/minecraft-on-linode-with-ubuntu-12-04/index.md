@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'A basic Minecraft server installation for Ubuntu 12.04'
+description: 'This guide shows how you can install and configure Minecraft, a online game where everything is built from mineable blocks, on a Linode running Ubuntu 12.04.'
 keywords: ["minecraft", "ubuntu", "ubuntu precise", "12.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -41,7 +41,7 @@ In this section, we'll prepare your Linode for installing the Minecraft server.
 
 ### Update Your System
 
-1.  Log in to your Linode via [SSH](/docs/getting-started/#ssh-overview).
+1.  Log in to your Linode via [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
 2.  Gain administrator privileges:
 
         su
@@ -196,7 +196,7 @@ For you and your friends to play Minecraft, you will all need to install the Min
 6.  Click **Multiplayer**.
 7.  Click **Add server**.
 8.  In the **Server Name** field, enter your desired name for your Minecraft server. This is only for your convenience, and will only be visible to you.
-9.  In the **Server Address** field, enter your [Linode’s IP address](/docs/getting-started/#find-the-ip-address-of-your-linode), or any domain that resolves to your Linode.
+9.  In the **Server Address** field, enter your [Linode’s IP address](/docs/guides/managing-ip-addresses/), or any domain that resolves to your Linode.
 10. Click **Done** to return to the server list screen.
 
     {{< note >}}
@@ -281,7 +281,7 @@ Any time you modify these files while the game is running, you will need to stop
 -   `/world_nether`
 -   `/world_the_end`
 
-The directories `world`, `world_nether`, and `world-the-end` contain the map and player data for those realms in your game. We suggest [backing up](/docs/platform/disk-images/linode-backup-service/) these directories on a regular basis so that you can revert to previous versions in case of catastrophe or [griefing](http://www.minecraftwiki.net/wiki/Griefing). These directories may be in different locations, depending on which version of the Minecraft server you installed. Note that the directories for the *nether* and *the end* will not be created until a player goes to this area on the server.
+The directories `world`, `world_nether`, and `world-the-end` contain the map and player data for those realms in your game. We suggest [backing up](/docs/products/storage/backups/) these directories on a regular basis so that you can revert to previous versions in case of catastrophe or [griefing](http://www.minecraftwiki.net/wiki/Griefing). These directories may be in different locations, depending on which version of the Minecraft server you installed. Note that the directories for the *nether* and *the end* will not be created until a player goes to this area on the server.
 
 ## More Information
 

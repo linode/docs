@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Brett Kaplan
   email: docs@linode.com
-description: 'Install and configure NSD to handle DNS queries.'
+description: 'This guide will show you to install and configure NSD, a lightweight and open-source name server to handle authoritative DNS queries on Debian 6 "Squeeze".'
 keywords: ["NSD", "DNS", "resolving", "Debian", "networking"]
 tags: ["dns","networking","resolving","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,7 +13,7 @@ modified: 2011-06-08
 modified_by:
   name: Linode
 published: 2011-06-08
-title: 'Provide Authoritative DNS Services with NSD on Debian 6 (Squeeze)'
+title: 'Authoritative DNS Services with NSD on Debian 6'
 relations:
     platform:
         key: authoritative-dns-nsd

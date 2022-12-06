@@ -3,11 +3,11 @@ slug: use-puppet-modules-to-create-a-lamp-stack
 author:
     name: Elle Krout
     email: ekrout@linode.com
-description: 'Learn how to efficiently use Puppet modules to manage files and services, create templates, and store data in Hiera in this simple tutorial.'
+description: 'This guide will show you how to efficiently use Puppet modules to manage files and services, create templates, and store data in Hiera on Ubuntu 14.04 LTS.'
 keywords: ["puppet", "automation", "puppet master", "puppet agent", "modules", "server automation", "configuration management"]
 tags: ["lamp","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack/','/applications/configuration-management/create-puppet-module/','/applications/puppet/create-puppet-module/','/applications/configuration-management/puppet/use-puppet-modules-to-create-a-lamp-stack/']
+aliases: ['/applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack/','/applications/configuration-management/puppet/use-puppet-modules-to-create-a-lamp-stack/']
 deprecated: true
 deprecated_link: 'applications/configuration-management/use-puppet-modules-to-create-a-lamp-stack-ubuntu-18-04-master/'
 modified: 2015-11-12
@@ -29,7 +29,7 @@ Within Puppet, modules are the building blocks of your servers' configurations. 
 In this guide, Apache and PHP modules will be created from scratch, and a MySQL module will be adapted from the Puppet Lab's MySQL module found on the [Puppet Forge](https://forge.puppet.com/). These steps will create a full LAMP stack on your server and provide an overview of the various ways modules can be utilized.
 
 {{< note >}}
-This guide assumes that you are working from an Ubuntu 14.04 LTS Puppet master and CentOS 7 and Ubuntu 14.04 nodes, configured in the [Puppet Setup](/docs/applications/puppet/set-up-puppet-master-agent/) guide. If using a different setup, please adapt the guide accordingly.
+This guide assumes that you are working from an Ubuntu 14.04 LTS Puppet master and CentOS 7 and Ubuntu 14.04 nodes, configured in the [Puppet Setup](/docs/guides/install-and-configure-puppet/) guide. If using a different setup, please adapt the guide accordingly.
 {{< /note >}}
 
 ## Create the Apache Module
@@ -382,9 +382,9 @@ include apache::vhosts
 
     It should return no errors, and output that it will trigger refreshes from events. To install and configure apache on the Puppet master, this can be run again without `--noop` , if so desired.
 
-4.  Navigate back to the main Puppet directory and then to the `manifests` folder (**not** the one located in the Apache module). If you are continuing this guide from the [Puppet Setup](/docs/applications/puppet/set-up-puppet-master-agent/) guide, you should have a `site.pp` file already created. If not, create one now.
+4.  Navigate back to the main Puppet directory and then to the `manifests` folder (**not** the one located in the Apache module). If you are continuing this guide from the [Puppet Setup](/docs/guides/install-and-configure-puppet/) guide, you should have a `site.pp` file already created. If not, create one now.
 
-5.  Open `site.pp` and include the Apache module for each agent node. Also input the variables for the `adminemail` and `servername` parameters. If you followed the [Puppet Setup](/docs/applications/puppet/set-up-puppet-master-agent/) guide, a single node configuration within `site.pp` will resemble the following:
+5.  Open `site.pp` and include the Apache module for each agent node. Also input the variables for the `adminemail` and `servername` parameters. If you followed the [Puppet Setup](/docs/guides/install-and-configure-puppet/) guide, a single node configuration within `site.pp` will resemble the following:
 
     {{< file "/etc/puppet/manifests/site.pp" puppet >}}
 node 'ubuntuhost.example.com' {

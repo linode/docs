@@ -89,6 +89,6 @@ A more complete catalog of these tools can be found in these sources:
 
 ## Conclusion
 
-To learn more about application security, [check out this guide which discusses two of the more common application exploits](https://www.linode.com/docs/guides/understanding-total-app-security/) that can be prevented by using some of the above tools. You can also refer to this author's [more in depth discussion about the need for application security](https://www.linode.com/docs/guides/understanding-total-app-security/). For more details about best practices in container security, read the [How to Improve Container Security](https://www.csoonline.com/article/3388025/how-to-improve-container-security.html) article.
+To learn more about application security, [check out this guide which discusses two of the more common application exploits](/docs/guides/security-weaknesses-in-web-apps/) that can be prevented by using some of the above tools. You can also refer to this author's [more in depth discussion about the need for application security](/docs/guides/security-weaknesses-in-web-apps/). For more details about best practices in container security, read the [How to Improve Container Security](https://www.csoonline.com/article/3388025/how-to-improve-container-security.html) article.
 
 You can also checkout our [documentation library's security section](/docs/guides/security/) to find guides on installing and using popular open source security tools.

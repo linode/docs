@@ -3,8 +3,8 @@ slug: how-to-install-a-lemp-server-on-ubuntu-16-04
 author:
   name: Linode
   email: docs@linode.com
-description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will guide you through basic installation, setup and configuration of a LEMP stack on Ubuntu.'
-og_description: 'The LEMP stack (Linux, NGINX, MySQL, and PHP) is a popular alternative to the LAMP stack that uses NGINX instead of Apache. This guide will guide you through basic installation, setup and configuration of a LEMP stack on Ubuntu.'
+description: 'This guide will show you how to host one or more websites on your Linode by installing a LEMP (Linux, NGINX, MySQL, and PHP) stack on Ubuntu 16.04'
+og_description: 'This guide will show you how to host one or more websites on your Linode by installing a LEMP (Linux, NGINX, MySQL, and PHP) stack on Ubuntu 16.04'
 keywords: ["nginx", "lemp", "php", "mysql"]
 tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -30,7 +30,7 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 ## Before You Begin
 
 1.  You will need root access to the system, or a user account with `sudo` privilege.
-2.  Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
+2.  Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
 3.  Update your system.
 
 ## Installation

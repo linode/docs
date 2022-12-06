@@ -3,8 +3,8 @@ slug: create-a-multicloud-infrastructure-using-terraform
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Multicloud Terraform provides a consistent workflow for you to manage infrastructure resources using only a couple of configuration files. This guide explains how to deploy cloud services that span across Linode and another Cloud vendor using Terraform and HCL configuration files.'
-og_description: 'Multicloud Terraform provides a consistent workflow for you to manage infrastructure resources using only a couple of configuration files. This guide explains how to deploy cloud services that span across Linode and another Cloud vendor using Terraform and HCL configuration files.'
+description: 'This guide shows you how to use Multicloud Terraform to provide a consistent workflow so you can manage infrastructure with only a few configuration files.'
+og_description: 'This guide shows you how to use Multicloud Terraform to provide a consistent workflow so you can manage infrastructure with only a few configuration files.'
 keywords: ['Terraform','Linode','IaC','multicloud', 'automation', 'cloud manager']
 tags: ['terraform','ubuntu', 'ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -63,19 +63,14 @@ Code that declares the final state of your desired infrastructure is referred to
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete all the sections in [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services. Do **not** follow the [Configure a Firewall](/docs/guides/securing-your-server/#configure-a-firewall) section. This guide includes firewall rules specifically for an OpenVPN server.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Update your system using the following commands:
-
-       sudo apt-get update
-       sudo apt-get upgrade
-
-1. You need a personal access token for [Linode’s API v4](https://www.linode.com/docs/api/) to use with Terraform and the Terraform Linode Provider. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) to get a token.
+1. You need a personal access token for [Linode’s API v4](/docs/api/) to use with Terraform and the Terraform Linode Provider. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) to get a token.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Downloading Terraform on your Linode Server
@@ -84,7 +79,7 @@ In this section, you install Terraform on an Ubuntu 20.04 Linode. These steps ar
 
 To download Terraform on a Linode server, follow the steps below:
 
-1. [Login to the Linode server via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh). This is the Linode server where you want to install Terraform. Replace `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/).
+1. [Login to the Linode server via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). This is the Linode server where you want to install Terraform. Replace `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/).
 
        ssh username@192.0.2.0
 
@@ -250,7 +245,7 @@ resource  "linode_instance"  "terraform" {
 
 1. The full `linode-terraform.tf` file, including both the `provider` and `resource` sections, is shown below.
 
-    These configurations create a Linode 2GB labeled `terraform-example` and place it in the `terraform` Linodes group. You can replace the values with your own desired values. Lists of the allowable values for each of the fields, such as the `region`, are found in the [*Linode API*](https://www.linode.com/docs/api/linode-instances/).
+    These configurations create a Linode 2GB labeled `terraform-example` and place it in the `terraform` Linodes group. You can replace the values with your own desired values. Lists of the allowable values for each of the fields, such as the `region`, are found in the [*Linode API*](/docs/api/linode-instances/).
 
     {{< file "~/terraform/linode-terraform.tf" >}}
 

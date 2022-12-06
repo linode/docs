@@ -44,13 +44,9 @@ For simplicity, the term *container* is used throughout this guide to describe t
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/getting-started/) guide. Select a Linode with at least 2GB of RAM memory, such as the Linode 2GB. Specify the Ubuntu 19.04 distribution. You may specify a different Linux distribution, as long as there is support for **snap packages (snapd)**; see the [More Information](#more-information) for more details.
+1.  Complete the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide. Select a Linode with at least 2GB of RAM memory, such as the Linode 2GB. Specify the Ubuntu 19.04 distribution. You may specify a different Linux distribution, as long as there is support for **snap packages (snapd)**; see the [More Information](#more-information) for more details.
 
-2.  This guide uses `sudo` wherever necessary. Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a limited (non-root) user account, harden SSH access, and remove unnecessary network services.
-
-3.  Update your system:
-
-        sudo apt update && sudo apt upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Configure the Snap Package Support
 
@@ -88,7 +84,7 @@ description: |
   **Run any Linux distribution you want**
 
   Pre-made images are available for Ubuntu, Alpine Linux, ArchLinux,
-  CentOS, Debian, Fedora, Gentoo, OpenSUSE and more.
+  CentOS, Debian, Fedora, Gentoo, openSUSE and more.
 
   A full list of available images can be [found
   here](https://images.linuxcontainers.org)
@@ -239,7 +235,7 @@ In recent versions of LXD, you need to specify an IP address (such as *127.0.0.1
 
 6.  From your local computer, navigate to your Linode's public IP address in a web browser. You should see the default Apache page:
 
-    [![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png)](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
+    ![Web page of Apache server running in a container](apache-server-running-in-lxd-container.png "Web page of Apache server running in a container.")
 
 
 ## Common LXD Commands
@@ -439,4 +435,4 @@ In this example, we are members of the `lxd` group and we just need to log out a
 
 ## Next Steps
 
-If you plan to use a single website, then a single proxy device to the website container will suffice. If you plan to use multiple websites, you may install virtual hosts inside the website container. If instead you would like to setup multiple websites on their own container, then you will need to set up [a reverse proxy](https://www.linode.com/docs/web-servers/nginx/use-nginx-reverse-proxy/) in a container. In that case, the proxy device would direct to the reverse proxy container to direct the connections to the individual websites containers.
+If you plan to use a single website, then a single proxy device to the website container will suffice. If you plan to use multiple websites, you may install virtual hosts inside the website container. If instead you would like to setup multiple websites on their own container, then you will need to set up [a reverse proxy](/docs/guides/use-nginx-reverse-proxy/) in a container. In that case, the proxy device would direct to the reverse proxy container to direct the connections to the individual websites containers.

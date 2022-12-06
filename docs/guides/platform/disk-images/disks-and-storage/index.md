@@ -57,7 +57,7 @@ From here, a [disk can be created](#creating-a-disk) using the **Add a Disk** bu
 Each Linode can have multiple disks. To create a new disk, follow the instructions below.
 
 {{< note >}}
-If you wish to deploy an Image to a new disk, see the [Deploy an Image to a Disk on an Existing Linode](/docs/guides/deploy-an-image-to-a-linode/) guide for complete instructions on creating the main disk, an optional swap disk, and a configuration profile.
+If you wish to deploy an Image to a new disk, see the [Deploy an Image to a Disk on an Existing Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/) guide for complete instructions on creating the main disk, an optional swap disk, and a configuration profile.
 {{</ note >}}
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Linode from the list.
@@ -68,7 +68,7 @@ If you wish to deploy an Image to a new disk, see the [Deploy an Image to a Disk
 
 1. Select from either the **Create Empty Disk** or **Create from Image** options.
 
-    **Empty disks:** An empty disk can store additional data, be used as a swap disk, or it can be used to manually [install a custom distribution](/docs/guides/install-a-custom-distribution-on-a-linode/). When creating an empty disk, select the desired *Filesystem*. In most cases, it's recommended to use the *ext4* filesystem. This ensures compatibility with our Backups service. If needed, *ext3* and *raw* disks are also available. If creating a swap disk, select the *swap* option.
+    **Empty disks:** An empty disk can store additional data, be used as a swap disk, or it can be used to manually [install a custom distribution](/docs/guides/install-a-custom-distribution/). When creating an empty disk, select the desired *Filesystem*. In most cases, it's recommended to use the *ext4* filesystem. This ensures compatibility with our Backups service. If needed, *ext3* and *raw* disks are also available. If creating a swap disk, select the *swap* option.
 
     **Images:** Selecting an Image allows you to deploy a [Distribution Image](https://www.linode.com/distributions/), a [Custom Image](/docs/products/tools/images/), or a Recovery Image to the new disk. When creating a disk based on an Image, select the *Image*, *Root Password*, and optionally add *SSH Keys*.
 
@@ -76,7 +76,7 @@ If you wish to deploy an Image to a new disk, see the [Deploy an Image to a Disk
 
 1. Click the **Add** button to create the disk. The progress can be monitored from the new entry appearing for the disk within the Linode's **Storage** page.
 
-Once a disk has been created, you will need to modify the existing configuration profile or add a new configuration profile. Specifically, the disk will need to be assigned to a device and optionally marked as the root device if this new disk will function as the primary boot disk. See the [Deploy an Image to a Disk on an Existing Linode](/docs/guides/deploy-an-image-to-a-linode/) guide or the [Configuration Profiles](/docs/guides/linode-configuration-profiles) guide for additional details.
+Once a disk has been created, you will need to modify the existing configuration profile or add a new configuration profile. Specifically, the disk will need to be assigned to a device and optionally marked as the root device if this new disk will function as the primary boot disk. See the [Deploy an Image to a Disk on an Existing Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/) guide or the [Configuration Profiles](/docs/guides/linode-configuration-profiles) guide for additional details.
 
 ## Resizing a Disk
 

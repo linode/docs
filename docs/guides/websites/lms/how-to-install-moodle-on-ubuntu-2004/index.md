@@ -2,8 +2,8 @@
 slug: how-to-install-moodle-on-ubuntu-server-2004
 author:
   name: Nathaniel Stickman
-description: 'Moodle is a popular open-source learning management system that you can use to create a fully-featured website for education or training courses. This guide walks you through installing Moodle on Ubuntu server 20.04.'
-og_description: 'Moodle is a popular open-source learning management system that you can use to create a fully-featured website for education or training courses. This guide walks you through installing Moodle on Ubuntu server 20.04.'
+description: 'This guide will show you how to install Moodle, a popular open-source learning management system used in online teaching, on Ubuntu 20.04.'
+og_description: 'This guide will show you how to install Moodle, a popular open-source learning management system, on Ubuntu 20.04.'
 keywords: ['moodle','education','training','learning management system','lms','install on ubuntu 20.04']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,26 +18,27 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - '[Moodle](https://moodle.org/)'
+relations:
+    platform:
+        key: how-to-install-moodle
+        keywords:
+            - distribution: Ubuntu 20.04 LTS
 ---
 
 [Moodle](https://moodle.org/) is a popular, free, and open-source Learning Management System (LMS). With Moodle, you can create a fully-featured website for education and training courses, suitable for fully online, hybrid, and in-person classroom experiences. The Moodle platform is highly customizable and takes a modular approach to features, so it is extensible and adaptable to your needs. This guide shows you how to get a Moodle website up and running on an Ubuntu 20.04 server.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Install and configure a LAMP (Linux, Apache, MySQL, and PHP) stack. Follow the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide for instructions.
+1. Install and configure a LAMP (Linux, Apache, MySQL, and PHP) stack. Follow the [How to Install a LAMP Stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide for instructions.
 
     For this guide, you do not need to configure a virtual host for Apache. However, you should follow all other non-optional sections in the guide linked above.
 
-1. Update your system:
-
-        sudo apt update && sudo apt upgrade
-
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install the Prerequisites
@@ -109,15 +110,15 @@ Write access to this directory is only meant to be granted temporarily. Once the
 
     - Enter `/var/moodledata` for **Data directory** when prompted to confirm paths.
 
-      [![Confirm paths for Moodle](moodle-set-up-confirm-paths_small.png "Confirm paths for Moodle")](moodle-set-up-confirm-paths.png)
+      ![Confirm paths for Moodle](moodle-set-up-confirm-paths.png)
 
     - Choose the **Improved MySQL** option when prompted to select a database driver.
 
-      [![Choose a database driver for Moodle](moodle-set-up-database-driver_small.png "Choose a database driver for Moodle")](moodle-set-up-database-driver.png)
+      ![Choose a database driver for Moodle](moodle-set-up-database-driver.png)
 
     - Follow the example in the image below when you are asked to enter database settings. Replace `moodle-user` and `password` with the username and password, respectively, that you used when creating the Moodle MySQL user above:
 
-      [![Enter database settings for Moodle](moodle-set-up-database-settings_small.png "Enter database settings for Moodle")](moodle-set-up-database-settings.png)
+      ![Enter database settings for Moodle](moodle-set-up-database-settings.png)
 
 1. Review the release information, ensure that no issues are indicated, and continue. Allow the next page to load fully — it may take some time — and ensure that all of the components listed indicate "Success". Then, continue.
 
@@ -143,7 +144,7 @@ Configuring the system paths for Moodle, while optional, enhances your Moodle si
 
     - **Path to dot**, enter `/usr/bin/dot`.
 
-    [![Input system paths for Moodle](moodle-admin-system-paths_small.png "Input system paths for Moodle")](moodle-admin-system-paths.png)
+    ![Input system paths for Moodle](moodle-admin-system-paths.png)
 
 1. Click the **Save changes** button.
 

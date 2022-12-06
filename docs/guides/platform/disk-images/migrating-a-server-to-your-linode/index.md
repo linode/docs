@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to copy an existing Linux server to your new Linode'
+description: 'This guide provides guidelines and tips for migrating an existing Linux server from a local development VM or another hosting provider to a new Linode.'
 keywords: ["migrate to linode", "linode migration", "migrate linux"]
 tags: ["linode platform","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -45,14 +45,14 @@ We assume that your existing server has a single root partition. If you have mul
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Create a disk to hold the files from the existing server. Select **Create a new Disk**. The webpage shown below appears.
 
-    [![Creating a disk](1039-migrate1.png)](1039-migrate1.png)
+    ![Creating a disk](1039-migrate1.png)
 
 5.  Enter a descriptive name for the disk in the **Label** field.
 6.  Enter a size for the disk in the **Size** field. You should make the disk large enough to hold the contents of your current server's root partition.
 7.  Click **Save Changes** to create the disk. The Linode's dashboard appears. You can monitor the disk creation process by watching the *Host Job Queue*.
 8.  Now create a swap disk for your existing server. Select **Create a new Disk**. The webpage shown below appears.
 
-    [![Creating a disk](1040-migrate2.png)](1040-migrate2.png)
+    ![Creating a disk](1040-migrate2.png)
 
 9.  Enter a name for the swap disk in the **Label** field.
 10. From the **Type** menu, select **swap**.
@@ -68,7 +68,7 @@ You'll need a configuration profile to boot your existing server after you uploa
 1.  In the [Linode Manager](https://cloud.linode.com), select the Linode's dashboard.
 2.  Select **Create a new Configuration Profile**. The webpage shown below appears.
 
-    [![Creating a configuration profile](migrate-configuration-profile-small.png)](migrate-configuration-profile.png)
+    ![Creating a configuration profile](migrate-configuration-profile.png)
 
 3.  Enter a name for the configuration profile in the **Label** field.
 4.  *Optional:* Enter notes for the configuration profile in the **Notes** field.
@@ -87,9 +87,9 @@ You have successfully created the configuration profile.
 
 Before you initiate the transfer, you need to start the Linode in rescue mode. Here's how:
 
-1.  Boot your Linode into Rescue Mode. For instructions, see [Booting into Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode). Be sure to set the primary disk to `/dev/sda` and the swap disk to `/dev/sdb`.
-2.  After the Linode has booted, connect to it via LISH. For instructions, see [Connecting to a Linode Running in rescue mode](/docs/troubleshooting/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
-3.  Start SSH. For instructions, see [Start SSH](/docs/troubleshooting/rescue-and-rebuild/#starting-ssh).
+1.  Boot your Linode into Rescue Mode. For instructions, see [Booting into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode). Be sure to set the primary disk to `/dev/sda` and the swap disk to `/dev/sdb`.
+2.  After the Linode has booted, connect to it via LISH. For instructions, see [Connecting to a Linode Running in rescue mode](/docs/guides/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
+3.  Start SSH. For instructions, see [Start SSH](/docs/guides/rescue-and-rebuild/#starting-ssh).
 4.  Mount the blank primary disk by entering the following command:
 
         mount -o barrier=0 /dev/sda
@@ -241,7 +241,7 @@ Now it's time to boot your Linode from the new disks. All you have to do is sele
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Select the configuration profile you created earlier, as shown below.
 
-    [![Selecting the configuration profile](1047-migrate6-small.png)](1048-migrate6.png)
+    ![Selecting the configuration profile](1048-migrate6.png)
 
 5.  Click **Reboot** to restart your Linode with the configuration profile and disks you just created.
 

@@ -3,8 +3,8 @@ slug: use-paramiko-python-to-ssh-into-a-server
 author:
   name: Cameron Laird
   email: claird@phaseit.net
-description: 'The Python module, Paramiko, implements the SSHv2 protocol giving you the ability to connect to remote servers using password or SSH key authentication. You can use Paramiko in your Python code to automate tasks on your server. This guide provides two Paramiko examples showing you how to connect to a server with your username and password and your SSH keys.'
-og_description: 'The Python module, Paramiko, implements the SSHv2 protocol giving you the ability to connect to remote servers using password or SSH key authentication. You can use Paramiko in your Python code to automate tasks on your server. This guide provides two Paramiko examples showing you how to connect to a server with your username and password and your SSH keys.'
+description: 'This guide shows how you can use the Python module Paramiko, an app that uses the SSHv2 protocol to connect to remote servers, to connect to a server remotely.'
+og_description: 'This guide shows how you can use the Python module Paramiko, an app that uses the SSHv2 protocol to connect to remote servers, to connect to a server remotely.'
 keywords: ['paramiko python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -25,13 +25,9 @@ When your Python program needs to run an external password-dependent program, or
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
-
-1.  Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Install Paramiko
 
@@ -66,8 +62,8 @@ password = "YOUR_PASSWORD"
 client = paramiko.client.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 client.connect(host, username=username, password=password)
-stdin, _stdout,_stderr = client.exec_command("df")
-print(stdout.read().decode())
+_stdin, _stdout,_stderr = client.exec_command("df")
+print(_stdout.read().decode())
 client.close()
 {{< /file >}}
 

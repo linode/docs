@@ -27,20 +27,20 @@ Linode's Terraform provider supports [StackScripts](/docs/platform/stackscripts/
 In this guide you will learn how to use a Community StackScript to deploy WordPress on a Linode using Terraform.
 
 {{< caution >}}
-Following this guide will result in the creation of [billable Linode resources](/docs/platform/billing-and-support/billing-and-payments/#how-hourly-billing-works) on your account. To prevent continued billing for these resources, [remove them](#optional-destroy-the-linode-resources) from your account when you have completed the guide, if desired.
+Following this guide will result in the creation of billable Linode resources on your account. To prevent continued billing for these resources, remove them when you have completed the guide.
 {{< /caution >}}
 
 ## Before You Begin
 
-1.  Install Terraform on your computer by following the *Install Terraform* section of our [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide.
+1.  Install Terraform on your computer by following the *Install Terraform* section of our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide.
 
     {{< note >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
     {{</ note >}}
 
-1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain one.
+1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) guide to obtain one.
 
-1.  If you have not already, [assign Linode's name servers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain) to your domain at your domain name's registrar.
+1.  If you have not already, [assign Linode's name servers](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers) to your domain at your domain name's registrar.
 
 1.  Browse the existing [StackScripts Library](https://www.linode.com/stackscripts/) to familiarize yourself with common tasks you can complete with existing StackScripts.
 
@@ -61,7 +61,43 @@ terraform {
   required_providers {
     linode = {
       source = "linode/linode"
-      version = "1.16.0"
+      version = "1.26.0"
+    }
+  }
+}
+provider "linode" {
+    token = var.token
+}
+
+resource "linode_sshkey" "my_wordpress_linode_ssh_key" {
+    label = "my_ssh_key"
+    ssh_key = chomp(file("~/.ssh/id_rsa.pub"))
+}
+
+resource "random_string" "my_wordpress_linode_root_password" {
+    length  = 32
+    special = true
+}
+
+resource "linode_instance" "my_wordpress_linode" {
+    image = var.image
+    label = var.label
+    region = var.region
+    type = var.type
+    authorized_keys = [ linode_sshkey.my_wordpress_linode_ssh_key.ssh_key ]
+    root_pass = random_string.my_wordpress_linode_root_password.result
+    stackscript_id = var.stackscript_id
+    stackscript_data = {
+       "ssuser" = var.stackscript_data["ssuser"]
+       "hostname" = var.stackscript_data["hostname"]
+       "website" = var.stackscript_data["website"]
+       "dbuser" = var.stackscript_data["dbuser"]
+       "db_password" = var.stackscript_data["db_password"]
+terraform {
+  required_providers {
+    linode = {
+      source = "linode/linode"
+      version = "1.26.0"
     }
   }
 }
@@ -105,17 +141,17 @@ resource "linode_domain" "my_wordpress_domain" {
  }
 
 resource "linode_domain_record" "my_wordpress_domain_www_record" {
-    domain_id = linode_domain.my_wordpress_domain.id
+    domain_id = "${linode_domain.my_wordpress_domain.id}"
     name = "www"
     record_type = var.a_record
-    target = "linode_instance.my_wordpress_linode.ipv4"
+    target =  "${linode_instance.my_wordpress_linode.ip_address}"
 }
 
 resource "linode_domain_record" "my_wordpress_domain_apex_record" {
-    domain_id = linode_domain.my_wordpress_domain.id
+    domain_id = "${linode_domain.my_wordpress_domain.id}"
     name = ""
     record_type = var.a_record
-    target = "linode_instance.my_wordpress_linode.ipv4"
+    target = "${linode_instance.my_wordpress_linode.ip_address}"
 }
 {{</ file >}}
 
@@ -147,7 +183,7 @@ resource "linode_sshkey" "my_wordpress_linode_ssh_key" {
     `ssh_key = chomp(file("~/.ssh/id_rsa.pub"))` uses Terraform's built-in `file()` function to provide a local file path to the public SSH key's location. The `chomp()` built-in function removes trailing new lines from the SSH key.
 
     {{< note >}}
-If you do not already have SSH keys, follow the steps in the *Create an Authentication Key-pair* section of the [Securing Your Server Guide](/docs/security/securing-your-server/#create-an-authentication-key-pair).
+If you do not already have SSH keys, follow the steps in the *Create an Authentication Key-pair* section of the [Securing Your Server Guide](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair).
 {{< /note >}}
 
 1.  The `random_string` resource can be used to create a random string of 32 characters. The `linode_instance` resource will use it to create a root user password:
@@ -186,7 +222,7 @@ resource "linode_instance" "my_wordpress_linode" {
 
     -   The `root_pass` argument is assigned to the value of the `random_string` resource previously declared.
 
-    -   To use an existing StackScript you must use the `stackscript_id` argument and provide a valid ID as a value. Every StackScript is assigned a unique ID upon creation. This guide uses the [WordPress on Ubuntu 16.04](https://www.linode.com/stackscripts/view/81736) StackScript provided by Linode user [hmorris](https://www.linode.com/stackscripts/profile/hmorris). This StackScript's ID will be assigned to a Terraform variable later in this guide.
+    -   To use an existing StackScript you must use the `stackscript_id` argument and provide a valid ID as a value. Every StackScript is assigned a unique ID upon creation. This guide uses the [WordPress on Ubuntu 20.04](https://cloud.linode.com/stackscripts/998743) StackScript adapted by the Linode user [hmorris](https://cloud.linode.com/stackscripts/community?query=username%3Ahmorris). This StackScript's ID will be assigned to a Terraform variable later in this guide.
 
         StackScripts support user defined data. A StackScript can use the [`UDF` tag](/docs/platform/stackscripts/#variables-and-udfs) to create a variable whose value must be provided by the user of the script. This allows users to customize the behavior of a StackScript on a per-deployment basis. Any required `UDF` variable can be defined using the `stackscript_data` argument.
 
@@ -204,25 +240,25 @@ resource "linode_domain" "my_wordpress_domain" {
  }
 
 resource "linode_domain_record" "my_wordpress_domain_www_record" {
-    domain_id = linode_domain.my_wordpress_domain.id
+    domain_id = "${linode_domain.my_wordpress_domain.id}"
     name = "www"
     record_type = var.a_record
-    target = "linode_instance.my_wordpress_linode.ipv4"
+    target =  "${linode_instance.my_wordpress_linode.ip_address}"
 }
 
 resource "linode_domain_record" "my_wordpress_domain_apex_record" {
-    domain_id = linode_domain.my_wordpress_domain.id
+    domain_id = "${linode_domain.my_wordpress_domain.id}"
     name = ""
     record_type = var.a_record
-    target = "linode_instance.my_wordpress_linode.ipv4"
+    target = "${linode_instance.my_wordpress_linode.ip_address}"
 }
 {{</ file >}}
 
     {{< note >}}
-If you are not familiar with the Domain Name System (DNS), review the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) guide.
+If you are not familiar with the Domain Name System (DNS), review the [DNS Records: An Introduction](/docs/guides/dns-overview/) guide.
 {{< /note >}}
 
-    The `linode_domain` resource creates a [domain zone](/docs/guides/dns-manager/#create-and-manage-domains) for your domain.
+    The `linode_domain` resource creates a [domain zone](/docs/products/networking/dns-manager/guides/create-domain/) for your domain.
 
     Each `linode_domain_record` resource retrieves the `linode_domain` resource's ID and assigns it to that record's `domain_id` argument. Each record's `target` argument retrieves the IP address from the Linode instance. Every `linode_instance` resource exposes [several attributes](https://www.terraform.io/docs/providers/linode/r/instance.html#attributes), including a Linode's IPv4 address.
 
@@ -237,7 +273,7 @@ variable "token" {
 
 variable "image" {
   description = "Image to use for Linode instance"
-  default = "linode/ubuntu16.04lts"
+  default = "linode/ubuntu20.04"
 }
 
 variable "label" {
@@ -291,7 +327,7 @@ The `stackscript_data` variable is of type `map`. This will allow you to provide
 Terraform allows you to assign variables in many ways. For example, you can assign a variable value via the command line when running `terraform apply`. In order to persist variable values, you can also create files to hold all your values.
 
 {{< note >}}
-There are several other options available for secrets management with Terraform. For more information on this, see [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/).
+There are several other options available for secrets management with Terraform. For more information on this, see [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform/).
 {{</ note >}}
 
 Terraform will automatically load any file named `terraform.tfvars` and use its contents to populate variables. However, you should separate out any sensitive values, like passwords and tokens, into their own file. Keep this sensitive file out of version control.
@@ -300,7 +336,7 @@ Terraform will automatically load any file named `terraform.tfvars` and use its 
 
     {{< file "~/terraform/terraform.tfvars">}}
 label = "wp-linode"
-stackscript_id = "81736"
+stackscript_id = "998743"
 domain = "example.com"
 soa_email = "user@email.com"
 {{</ file >}}
@@ -337,7 +373,7 @@ It is helpful to reference Terraform's [Linode provider](https://www.terraform.i
 
     -   `domain` should be replaced with your WordPress site's domain address.
 
-    -  `soa_email` should be the email address you would like to use for your [Start of Authority](/docs/networking/dns/dns-records-an-introduction/#soa) email address.
+    -  `soa_email` should be the email address you would like to use for your [Start of Authority](/docs/guides/dns-overview/#soa) email address.
 
 ## Initialize, Plan, and Apply the Terraform Configuration
 

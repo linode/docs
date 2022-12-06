@@ -8,7 +8,7 @@ description: 'Serve dynamic websites and applications with the lightweight nginx
 keywords: ["nginx", "nginx ubuntu 14.04", "nginx fastcgi", "nginx php", "php", "fastcgi", "ubuntu"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/nginx-phpfastcgi-ubuntu-14-04/','/web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/','/websites/nginx/nginx-phpfastcgi-ubuntu-14-04/']
+aliases: ['/websites/nginx/nginx-phpfastcgi-ubuntu-14-04/']
 modified: 2015-06-12
 modified_by:
   name: Elle Krout
@@ -28,7 +28,7 @@ relations:
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP via FastCGI on your Ubuntu 14.04 Linode.
 
-It is assumed that you've already followed the steps outlined in our [Getting Started](/docs/getting-started/) guide. These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. These steps should be performed via a root login to your Linode over SSH.
 
 ## Set the Hostname
 

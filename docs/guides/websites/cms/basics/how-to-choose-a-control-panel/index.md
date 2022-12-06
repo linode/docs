@@ -99,7 +99,7 @@ Each CPanel account is correlated with a primary domain that its services are as
 
 WHM is often used by web hosting resellers. In this capacity, you use WHM to create CPanel accounts on your Linode and sell access to them to clients. WHM allows you to create custom visual branding for the account so that you can represent your reselling business to your clients in their CPanel interface.
 
-CPanel's subscription cost starts at $20/month. When buying a subscription for use on a Linode, choose the [*VPS* license type](https://cpanel.com/pricing/). A free CPanel subscription is also included for each of your Linodes if you are a [Linode Managed](/managed/) subscriber.
+CPanel's subscription cost starts at $20/month. When buying a subscription for use on a Linode, choose the [*VPS* license type](https://cpanel.com/pricing/). A free CPanel subscription is also included for each of your Linodes if you are a [Linode Managed](https://www.linode.com/products/managed/) subscriber.
 
 CPanel offers a [community forum](https://forums.cpanel.net), [documentation library](https://documentation.cpanel.net), and [technical support](https://cpanel.com/support/) as part of your subscription.
 
