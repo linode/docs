@@ -22,7 +22,7 @@ aliases: ['/applications/configuration-management/terraform/deploy-a-wordpress-s
 
 ![Deploy a WordPress Site Using Terraform and Linode StackScripts](deploy-wordpress-using-terraform-linode-stackscripts.png "Deploy a WordPress Site Using Terraform and Linode StackScripts")
 
-Linode's Terraform provider supports [StackScripts](/docs/platform/stackscripts/). StackScripts allow you to automate the deployment of custom software on top of Linode's default Linux images, or on any of your [saved custom images](/docs/products/tools/images/). You can create your own StackScripts, use a StackScript created by Linode, or use a Community StackScript.
+Linode's Terraform provider supports [StackScripts](/docs/products/tools/stackscripts/). StackScripts allow you to automate the deployment of custom software on top of Linode's default Linux images, or on any of your [saved custom images](/docs/products/tools/images/). You can create your own StackScripts, use a StackScript created by Linode, or use a Community StackScript.
 
 In this guide you will learn how to use a Community StackScript to deploy WordPress on a Linode using Terraform.
 
@@ -224,7 +224,7 @@ resource "linode_instance" "my_wordpress_linode" {
 
     -   To use an existing StackScript you must use the `stackscript_id` argument and provide a valid ID as a value. Every StackScript is assigned a unique ID upon creation. This guide uses the [WordPress on Ubuntu 20.04](https://cloud.linode.com/stackscripts/998743) StackScript adapted by the Linode user [hmorris](https://cloud.linode.com/stackscripts/community?query=username%3Ahmorris). This StackScript's ID will be assigned to a Terraform variable later in this guide.
 
-        StackScripts support user defined data. A StackScript can use the [`UDF` tag](/docs/platform/stackscripts/#variables-and-udfs) to create a variable whose value must be provided by the user of the script. This allows users to customize the behavior of a StackScript on a per-deployment basis. Any required `UDF` variable can be defined using the `stackscript_data` argument.
+        StackScripts support user defined data. A StackScript can use the [`UDF` tag](/docs/products/tools/stackscripts/#variables-and-udfs) to create a variable whose value must be provided by the user of the script. This allows users to customize the behavior of a StackScript on a per-deployment basis. Any required `UDF` variable can be defined using the `stackscript_data` argument.
 
         The StackScript will be responsible for installing WordPress on your Linode, along with all other requirements, like installing and configuring the Apache Web Server, configuring the Virtual Hosts file, and installing MySQL.
 
