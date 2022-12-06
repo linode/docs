@@ -20,9 +20,10 @@ apt-get install -yq nftables iperf netcat traceroute jq python3 iptables-persist
 
 # Install NPM.
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-export NVM_DIR=\"$HOME/.nvm\"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+#export NVM_DIR=\"$HOME/.nvm\"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+source ~/.nvm/nvm.sh
 nvm install node
 
 # Set up the example application.
@@ -47,6 +48,13 @@ for i in "${!NODE_IP_SUFFIXES[@]}"; do
 done
 sed -i "s,\\(^[[:blank:]]*bindIp:\\) .*,\\1 localhost\,mongo-repl-${2}," /etc/mongod.conf
 
+systemctl start mongod
+systemctl enable mongod
+
+if [ $2 == '1' ]; then
+    mongosh admin --eval "db.getSiblingDB('admin').createUser({user: 'admin', pwd: 'MONGODB_ADMIN_PASSWORD', roles: ['root']})"
+fi
+
 cat >>/etc/mongod.conf <<EOF
 replication:
    replSetName: "rs0"
@@ -55,12 +63,7 @@ security:
   keyFile: /opt/mongo/mongo-keyfile
 EOF
 
-systemctl start mongod
-systemctl enable mongod
-
-if [ $2 == '1' ]; then
-    mongosh admin --eval "db.getSiblingDB('admin').createUser({user: 'admin', pwd: 'MONGODB_ADMIN_PASSWORD', roles: ['root']})"
-fi
+systemctl restart mongod
 
 systemctl daemon-reload
 systemctl start example-app
