@@ -18,6 +18,11 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - '[Moodle](https://moodle.org/)'
+relations:
+    platform:
+        key: how-to-install-moodle
+        keywords:
+            - distribution: Ubuntu 20.04 LTS
 ---
 
 [Moodle](https://moodle.org/) is a popular, free, and open-source Learning Management System (LMS). With Moodle, you can create a fully-featured website for education and training courses, suitable for fully online, hybrid, and in-person classroom experiences. The Moodle platform is highly customizable and takes a modular approach to features, so it is extensible and adaptable to your needs. This guide shows you how to get a Moodle website up and running on an Ubuntu 20.04 server.
@@ -28,7 +33,7 @@ external_resources:
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Install and configure a LAMP (Linux, Apache, MySQL, and PHP) stack. Follow the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide for instructions.
+1. Install and configure a LAMP (Linux, Apache, MySQL, and PHP) stack. Follow the [How to Install a LAMP Stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide for instructions.
 
     For this guide, you do not need to configure a virtual host for Apache. However, you should follow all other non-optional sections in the guide linked above.
 

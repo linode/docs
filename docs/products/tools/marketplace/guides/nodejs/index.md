@@ -49,7 +49,7 @@ The Node.js Marketplace App is running [Nginx](https://www.nginx.com/), [Node.js
 
 The Node.js sample application is stored in the `hello.js` file within `/opt/nodejs/`. To access it within the command line, follow the instructions below.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
 
 1.  Navigate to the directory in which the application is stored:
 

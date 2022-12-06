@@ -10,14 +10,13 @@ aliases: ['/mailserver/','/email/running-a-mail-server/','/email/best-practices/
 modified_by:
   name: Linode
 published: 2013-06-05
-title: Running a Mail Server
+modified: 2022-08-25
+title: "Running a Mail Server"
 tags: ["email"]
 image: mail_server_tg.png
 ---
 
 This guide offers an overview of installing a mail server on your Linode. It covers mail server configuration, creating mail accounts, and basic overviews of tools relevant to hosting an email webserver.
-
-![Running a Mail Server](mail_server_tg.png "Running Mail Server")
 
 ## Should You Run a Mail Server?
 
@@ -27,7 +26,7 @@ If you do, you'll have control over your domain's email, but you'll also have to
 
 In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after November 5th, 2019.
 
-If you have a need to send mail from your Linode, we ask that you first configure (1) [valid DNS A records](/docs/guides/dns-manager/#add-dns-records) and (2) [rDNS records](/docs/guides/configure-your-linode-for-reverse-dns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the name of the Linode(s) that will be used for mailing.
+If you have a need to send mail from your Linode, we ask that you first configure (1) [valid DNS A records](/docs/products/networking/dns-manager/guides/manage-dns-records/) and (2) [rDNS records](/docs/guides/configure-rdns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the name of the Linode(s) that will be used for mailing.
 
 Once you’ve completed those steps and provided that information, our Support team will be happy to review your request.
 
@@ -70,7 +69,7 @@ There are several third-party mail services available:
 - [Google Workspace](https://workspace.google.com/products/gmail/) uses the familiar Gmail interface. Check out our guide to [Using Google Workspace for Email](/docs/guides/using-google-workspace-for-email/).
 - [Office 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
 
-If you decide to use an outside mail service, you will still need to set up [DNS](/docs/guides/dns-manager/) for your mail and use the settings provided by the third-party mail service.
+If you decide to use an outside mail service, you will still need to set up [DNS](/docs/products/networking/dns-manager/) for your mail and use the settings provided by the third-party mail service.
 
 ## How Mail Servers Work
 
@@ -141,13 +140,11 @@ Here are the most popular IMAP and POP3 servers available:
 
 ## Build Your Mail Server
 
-### SSL Certificate
+### TLS/SSL Certificate
 
-An SSL certificate encrypts connections to your mail server. It's possible to run a mail server without an SSL certificate, but it's not recommended.
+A TLS (SSL) certificate can be used to encrypt connections to your mail server using protocols like [STARTTLS](https://en.wikipedia.org/wiki/Opportunistic_TLS). It is recommended to obtain your certificate from a public Certificate Authority (CA) to provide authenticity guarantees for your users and avoid warnings and error messages. You can generate a free Let's Encrypt certificate using the [certbot](https://certbot.eff.org/) tool or use a paid service like your domain's registrar or a dedicated certificate provider. See [Obtain a Commercially Signed TLS Certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) for additional details.
 
-Any type of SSL certificate will work, but some certificates have different degrees of trustworthiness for your users. If you want the highest level of trustworthiness, you should [purchase a signed SSL certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) from a reputable company.
-
-You can also use a free self-signed certificate if you are comfortable with the warnings it generates. You can make your own [self-signed SSL certificate](/docs/guides/create-a-self-signed-tls-certificate/), or, if you're following our recommended build, you can use the one that comes with Dovecot by default.
+If the certificate is for internal use (not a public-facing service) and you are able to mark the certificate as trusted in your users' mail clients, a self-signed certificate may be sufficient. Consider any security implications and error messages that may appear when using a self-signed certificate. See [Create a Self-Signed TLS Certificate](/docs/guides/create-a-self-signed-tls-certificate/) for instructions.
 
 ### Software Installation
 
@@ -181,7 +178,7 @@ Each MX record has a:
 | ------------ |:--------:|:----:|:----:| ----- | ----- |
 | example.com  | 86400  | MX | 10 | mail.example.com |
 
-When using Linode's [DNS Manager](/docs/guides/dns-manager/), point your MX records to your Linode mail server's FQDN. Make sure that your Linode mail server's domain or subdomain has a corresponding *A record* that points to the correct IP address.
+When using Linode's [DNS Manager](/docs/products/networking/dns-manager/), point your MX records to your Linode mail server's FQDN. Make sure that your Linode mail server's domain or subdomain has a corresponding *A record* that points to the correct IP address.
 
 To configure an MX record for a subdomain email address, use the "Subdomain" field when setting the MX record for your domain. For example, the address `user@sub.example.com` requires an MX record with a "Subdomain" value of `sub` under the `example.com` domain.
 

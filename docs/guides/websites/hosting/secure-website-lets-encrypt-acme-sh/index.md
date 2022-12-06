@@ -27,7 +27,7 @@ external_resources:
 
 - acme.sh supports [more DNS providers](https://github.com/acmesh-official/acme.sh/wiki/dnsapi) than other similar clients.
 
-If you use Linode for your website's DNS, you can use acme.sh to obtain both single and wildcard SSL certificates. You can use [Linode DNS](/docs/guides/dns-manager/) as the domain ownership verification.
+If you use Linode for your website's DNS, you can use acme.sh to obtain both single and wildcard SSL certificates. You can use [Linode DNS](/docs/products/networking/dns-manager/) as the domain ownership verification.
 
 ## Before You Begin
 

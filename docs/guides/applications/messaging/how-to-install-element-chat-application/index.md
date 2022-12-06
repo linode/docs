@@ -43,7 +43,7 @@ external_resources:
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Register a *Fully Qualified Domain Name* (FQDN) for your Element service. The DNS records for the domain should be set to the IP address of your Linode. Consult Linode's [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) and [DNS Manager](/docs/guides/dns-manager/) guides for assistance when configuring your domain.
+1. Register a *Fully Qualified Domain Name* (FQDN) for your Element service. The DNS records for the domain should be set to the IP address of your Linode. Consult Linode's [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](/docs/products/networking/dns-manager/) guides for assistance when configuring your domain.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -75,7 +75,7 @@ The following sections describe each step in more detail.
 
 ## Set Up DNS Records
 
-- Before connecting to Element, register a base domain for your service and [set the corresponding DNS records](/docs/guides/dns-records-an-introduction/) to reference your Linode.
+- Before connecting to Element, register a base domain for your service and [set the corresponding DNS records](/docs/guides/dns-overview/) to reference your Linode.
 
 - Create two further subdomains for the *matrix* and *element* services, each with its DNS records.
 
@@ -87,7 +87,7 @@ The following sections describe each step in more detail.
   - `element.example.com` (Element web client)
 
     {{< note >}}
-Throughout this section and the rest of the guide, replace `example.com` with your own domain name. See the guide for the Linode [DNS Manager](/docs/guides/dns-manager/) for more information on adding domains and DNS records.
+Throughout this section and the rest of the guide, replace `example.com` with your own domain name. See the guide for the Linode [DNS Manager](/docs/products/networking/dns-manager/) for more information on adding domains and DNS records.
     {{< /note >}}
 
 ## Download and Install the Matrix-Synapse Communication Layer

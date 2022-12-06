@@ -33,7 +33,7 @@ In this guide you:
 {{< caution >}}
 The example instructions in this guide create five, [1GB Linodes](https://www.linode.com/pricing). These add billable resources to your Linode account. If you do not want to keep using the Linodes created, be sure to delete them once you have finished this how-to guide.
 
-If you remove these resources afterward, you are only [billed for the time](/docs/guides/understanding-billing-and-payments/) the resources were present on your account.
+If you remove these resources afterward, you are only [billed for the time](/docs/products/platform/billing/) the resources were present on your account.
 {{</ caution >}}
 
 ## Prerequisites

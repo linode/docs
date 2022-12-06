@@ -22,7 +22,7 @@ A Dedicated CPU Compute Instance provides entire vCPU cores accessible only to y
 
 ## Upgrading from a Shared CPU Instance
 
-Moving from a Shared CPU Instance to a Dedicated CPU Instance is a seamless process that can positively impact your applications and users. Review the [Upgrading from Shared to Dedicated CPU Instances](/docs/guides/when-to-upgrade-to-dedicated-cpu/) guide to learn more about the differences between Shared and Dedicated CPU plans and when each one might be appropriate. This guide also shows you how to investigate your CPU performance to determine if your application is experiencing resource contention on a Shared CPU Compute Instance. If you wish to upgrade, reference the [Resizing a Linode](/docs/guides/resizing-a-linode/) guide for more details on resizing your Linode to a different plan type.
+Moving from a Shared CPU Instance to a Dedicated CPU Instance is a seamless process that can positively impact your applications and users. Review the [Choosing Between Shared and Dedicated CPUs (and Determining When to Upgrade)](/docs/guides/comparing-shared-and-dedicated-cpus/) guide to learn more about the differences between Shared and Dedicated CPU plans and when each one might be appropriate. This guide also shows you how to investigate your CPU performance to determine if your application is experiencing resource contention on a Shared CPU Compute Instance. If you wish to upgrade, reference the [Resizing a Linode](/docs/guides/resizing-a-linode/) guide for more details on resizing your Linode to a different plan type.
 
 ## Recommended Workloads
 
@@ -68,7 +68,7 @@ In addition to the resources allocated to each available plan (outlined above), 
 - Free inbound network transfer
 - Dedicated IPv4 and IPv6 addresses (additional addresses available on request)
 - Deploy using the many available [Linux Distributions](https://www.linode.com/distributions/), [Marketplace Apps](https://www.linode.com/marketplace/), or Community [StackScripts](https://www.linode.com/products/stackscripts/)
-- Direct console access through [Lish](/docs/guides/using-the-lish-console/)
+- Direct console access through [Lish](/docs/guides/lish/)
 - Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
 - [Multi-queue NIC](/docs/guides/multiqueue-nic/) support
 

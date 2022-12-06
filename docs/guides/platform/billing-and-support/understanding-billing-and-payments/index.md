@@ -7,7 +7,7 @@ description: "In this guide, you will learn how billing works at Linode, what pa
 keywords: ["billing", "payments"]
 aliases: ['/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/','/guides/how-linode-billing-works/','/billing-and-payments/','/platform/billing-and-support/billing-and-payments-classic-manager/','/platform/billing-and-support/billing-and-payments-new-manager/','/platform/billing-and-payments/','/platform/billing-and-support/billing-and-payments/',/guides/billing-and-payments/]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-06-27
+modified: 2022-08-09
 modified_by:
   name: Linode
 published: 2019-10-25
@@ -17,7 +17,7 @@ enable_h1: true
 tags: ["linode platform"]
 ---
 
-Linode strives to provide transparent and uncomplicated pricing structures and billing policies. As a supplement to our [Pricing](https://www.linode.com/pricing/) page, read through this guide to understand how we bill for services and how you can pay for these services. For instructions on how to manage your billing in the Cloud Manager, see the [Manage Billing in Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/) guide. If you have a question that isn't answered in either of these guides, don't hesitate to [contact Support](https://www.linode.com/support/).
+Linode strives to provide transparent and uncomplicated pricing structures and billing policies. As a supplement to our [Pricing](https://www.linode.com/pricing/) page, read through this guide to understand how we bill for services and how you can pay for these services. For instructions on how to manage your billing in the Cloud Manager, see the [Manage Billing in Cloud Manager](/docs/products/platform/billing/guides/) guide. If you have a question that isn't answered in either of these guides, don't hesitate to [contact Support](https://www.linode.com/support/).
 
 ## Billing
 
@@ -29,25 +29,25 @@ Linode uses a hybrid hourly billing model that is simple and flexible. It enable
 
 - Linode uses a monthly billing cycle. An invoice is automatically generated on the first day of each month and includes the previous month's usage.
 
-If your services stay the same month over month, your bill remains predictable. You are never billed more than the monthly rate for each service, excluding [network transfer overages](/docs/guides/network-transfer/). If you use a service for just part of the month, hourly billing enables you to only be charged for the time the service is active on the account.
+If your services stay the same month over month, your bill remains predictable. You are never billed more than the monthly rate for each service, excluding [network transfer overages](/docs/guides/network-transfer/). If you use a service for just part of the month, hourly billing enables you to only be charged for the time the service is present on the account.
 
-\*Review the [Viewing Current Balance](/docs/guides/manage-billing-in-cloud-manager/#accessing-billing-information) section of the Manage Billing in Cloud Manager guide to monitor your account balance and accrued charges throughout the month.
+\*Review the [Access Billing Information](/docs/products/platform/billing/guides/access-billing/) guide to monitor your account balance and accrued charges throughout the month.
 
 ### Example Billing Scenarios
 
 Here are a few examples of common billing scenarios you might encounter. For these examples, we will assume the month is 30 days (720 hours). We will also be using a 4GB Linode Compute Instance, which has an hourly rate of $0.03/hour and a monthly rate/cap of $20.
 
-#### A Service is Active for the *Entire* Month
+#### A Service is Present on an Account for the *Entire* Month
 
 You create a 4GB Compute Instance prior to the start of the month and it remains on your account for the entire month. Calculating the service fees at the hourly rate for 720 hours (again, assuming a 30 day month), the total would have come to $21.60. Since this exceeds the monthly cap for this service, you are instead charged the predictable $20 monthly rate.
 
-#### A Service is Active for *Almost* the Entire Month
+#### A Service is Present on an Account for *Almost* the Entire Month
 
-You create a 4GB Compute Instance on the second day of the month, half-way through the day. It remains on your account for the remainder of the month and, in total, was active for 684 hours. Calculating the service fees at the hourly rate, the total would have come to $20.52. Since this still exceeds the monthly cap for this service, you are instead charged the predictable $20 monthly rate.
+You create a 4GB Compute Instance on the second day of the month, half-way through the day. It remains on your account for the remainder of the month and, in total, was used for 684 hours. Calculating the service fees at the hourly rate, the total would have come to $20.52. Since this still exceeds the monthly cap for this service, you are instead charged the predictable $20 monthly rate.
 
-#### A Service is Active for *Just Some* of the Month
+#### A Service is Present on an Account for *Just Some* of the Month
 
-You created a 4GB Compute Instance mid-way through the month and deleted it exactly 5 days later. In total, it was active for 120 hours. Calculating the service fees at the hourly rate, the total is $3.60. Since this is less than the monthly cap, you are indeed billed at the hourly rate and charged $3.60 for your usage.
+You created a 4GB Compute Instance mid-way through the month and deleted it exactly 5 days later. In total, it was used for 120 hours. Calculating the service fees at the hourly rate, the total is $3.60. Since this is less than the monthly cap, you are indeed billed at the hourly rate and charged $3.60 for your usage.
 
 ### Mid-Month Billing
 
@@ -55,7 +55,7 @@ You may receive a mid-month bill from Linode if you reach a certain threshold of
 
 ### Will I Be Billed For Powered Off or Unused Services?
 
-**Charges will accrue for any active service, even if it is powered off or otherwise not in use.**  This includes Linode Compute Instances that have been powered off as well as any service you might have added to the account but are not using. When a Compute Instance is on your account, the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service](/docs/guides/manage-billing-in-cloud-manager/#removing-services) from your account.
+**Charges will accrue for any service present on an account, even if it is powered off or otherwise not actively being used.**  This includes Linode Compute Instances that have been powered off as the data is still maintained and resources (such as RAM and network capacity) are still reserved. To avoid additional charges for a service you no longer need, [remove the service](/docs/products/platform/billing/guides/stop-billing/) from your account.
 
 ## Payments
 
@@ -75,19 +75,19 @@ To add a PayPal account to your Google Pay account, you currently must do so thr
 
 - **Check, ACH, or wire transfer:** Please [contact Support](https://www.linode.com/support/) if you wish to pay through one of these methods.
 
-See [Adding a New Payment Method](/docs/guides/manage-billing-in-cloud-manager/#adding-a-new-payment-method) for instructions on adding a new payment method to your account.
+See [Adding a New Payment Method](/docs/products/platform/billing/guides/payment-methods/#add-a-new-payment-method) for instructions on adding a new payment method to your account.
 
 ### Manual Payments
 
-At any time, you can make a manual one-time payment to add funds to your account. This is used to pay a past-due balance or to *pre-pay* for services, which adds a positive account balance that will be used towards future invoices. Review the [Making a One-Time Payment](/docs/guides/manage-billing-in-cloud-manager/#making-a-one-time-payment) section of the Manage Billing in Cloud Manager guide for instructions when submitting a manual payment.
+At any time, you can make a manual one-time payment to add funds to your account. This is used to pay a past-due balance or to *pre-pay* for services, which adds a positive account balance that will be used towards future invoices. Review the [Making a One-Time Payment](/docs/products/platform/billing/guides/make-a-payment/) section of the Manage Billing in Cloud Manager guide for instructions when submitting a manual payment.
 
 ### Refunds
 
-If you are unsatisfied with your service for any reason, you can [cancel your account](/docs/guides/manage-billing-in-cloud-manager/#cancelling-your-account) within the first seven days and request a full refund. You are entitled to receive a refund of any positive account balance not added through promotional credits. To request this refund, simply add a note to the cancellation form. When cancelling an account after the first seven days, there is a $5 processing fee. Only payments made within the last 180 days are eligible.
+If you are unsatisfied with your service for any reason, you can [cancel your account](/docs/products/platform/accounts/guides/cancel-account/) within the first seven days and request a full refund. You are entitled to receive a refund of any positive account balance not added through promotional credits. To request this refund, simply add a note to the cancellation form. When cancelling an account after the first seven days, there is a $5 processing fee. Only payments made within the last 180 days are eligible.
 
 ## Tax Information
 
-Review our [Tax Information](/docs/guides/tax-information/) guide for information about which taxes Linode may charge.
+Review our [Tax Information](/docs/products/platform/billing/guides/tax-information/) guide for information about which taxes Linode may charge.
 
 ## Referral Program
 
