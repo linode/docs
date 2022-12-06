@@ -8,13 +8,13 @@ published:
 modified:
 ---
 
-You can configure, view, and remove additional users to manage multiple Linode accounts. You can also execute command as a particular user, change the default user using the Linode CLI:
+You can configure, view, and remove additional users with the Linode CLI. You can also execute commands as a particular user and change the default user of the Linode CLI:
 
 1.  Configure users:
 
         linode-cli configure
 
-1.  View the users:
+1.  View all users:
 
         linode-cli show-users
 
@@ -26,6 +26,6 @@ You can configure, view, and remove additional users to manage multiple Linode a
 
          linode-cli set-user --as-user USERNAME
 
-1.  Remove the configured user:
+1.  Remove a configured user:
 
         linode-cli remove-user USERNAME
