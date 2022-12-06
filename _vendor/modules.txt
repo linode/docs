@@ -1,5 +1,5 @@
-# github.com/linode/linode-docs-theme v0.0.0-20221129190621-04ebe8c558a5
-# github.com/linode/linode-website-partials v0.0.0-20221010134034-ac33733fbe9c
+# github.com/linode/linode-docs-theme v0.0.0-20221206212327-19ea02fd9534
+# github.com/linode/linode-website-partials v0.0.0-20221205205120-b6ea1aaa59fb
 # github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3 v3.401.201
 # github.com/gohugoio/hugo-mod-jslibs/turbo/v7 v7.20001.20100
 # github.com/bep/turbo/v7 v7.20001.20100

@@ -52,6 +52,12 @@ export function newToCController() {
 				let id = el.id;
 				let level = parseInt(el.nodeName.substring(1), 10);
 
+				// We need to start out with a level 2 header for the logic
+				// below to work.
+				if (prevLevel === 0 && level != 2) {
+					return;
+				}
+
 				let li = document.createElement('li');
 
 				li.classList.add(`level-${level}`);
