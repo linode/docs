@@ -383,7 +383,7 @@ To see all the available options, check the man pages:
 
 ### NodeBalancers
 
-The Linode CLI allows you to manage your [NodeBalancers](/docs/platform/nodebalancer/) from the command line.
+The Linode CLI allows you to manage your [NodeBalancers](/docs/products/networking/nodebalancers/) from the command line.
 
 Listing NodeBalancers:
 
