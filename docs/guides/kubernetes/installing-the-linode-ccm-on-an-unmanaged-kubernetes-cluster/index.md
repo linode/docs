@@ -54,7 +54,7 @@ It is recommended that you install the Linode CCM on a new Kubernetes cluster, a
 
 1. [Install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) on your local computer.
 
-1. Generate a [Linode APIv4 token](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token).
+1. Generate a [Linode APIv4 token](/docs/products/tools/api/get-started/#get-an-access-token).
 
 ## Running the Linode Cloud Controller Manager
 
@@ -71,7 +71,7 @@ These configurations will change the behavior of your cluster and how it interac
 The Linode CCM's GitHub repository provides a helper script that creates a Kubernetes manifest file that you can use to install the CCM on your cluster. These steps should be run on your local computer and were tested on a macOS.
 
 {{< note >}}
-You will need your [Linode APIv4](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) token to complete the steps in this section.
+You will need your [Linode APIv4](/docs/products/tools/api/get-started/#get-an-access-token) token to complete the steps in this section.
 {{</ note >}}
 
 1. Clone the [Linode CCM's GitHub repository](https://github.com/linode/linode-cloud-controller-manager).
