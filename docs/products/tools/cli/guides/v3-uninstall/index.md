@@ -13,7 +13,7 @@ tags: ["linode platform"]
 aliases: ['/guides/uninstall-linode-api-cli-v3/']
 ---
 
-Following the release of the [Linode API v4](/docs/api/), both the Linode API v3 and [earlier versions of the CLI](/docs/guides/using-the-linode-cli-api-v3/) using that API version have been deprecated. While earlier versions remained functional for some time, they have officially been deprecated and can not be leveraged to use the full extent of the Linode Platform.
+Following the release of the [Linode API v4](/docs/api/), both the Linode API v3 and [earlier versions of the CLI](/docs/products/tools/cli/guides/cli-v3/) using that API version have been deprecated. While earlier versions remained functional for some time, they have officially been deprecated and can not be leveraged to use the full extent of the Linode Platform.
 
 To ensure that all users continue to use a currently supported version of the API in their production pipelines, it is recommended that users upgrade to the newest version of the Linode CLI as soon as they are able. This guide walks you through uninstalling the old version of the CLI. After the old version has been removed, you can follow the instructions within the [Linode CLI Overview](/docs/products/tools/cli/guides/install/) guide to install the latest version.
 
@@ -43,7 +43,7 @@ If the Linode CLI was installed through a package manager, it can be uninstalled
 
 ### Uninstall Manually
 
-If the Linode CLI was [installed manually](/docs/guides/using-the-linode-cli-api-v3/#manual-installation-for-linux-all-distros), then all configurations files and modules can also be removed manually. The primary relevant files can usually be uninstalled using the following commands:
+If the Linode CLI was [installed manually](/docs/products/tools/cli/guides/cli-v3/#manual-installation-for-linux-all-distros), then all configurations files and modules can also be removed manually. The primary relevant files can usually be uninstalled using the following commands:
 
 ```command
 unlink /usr/local/bin/linode

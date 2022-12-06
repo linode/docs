@@ -14,7 +14,7 @@ aliases: ['/platform/api/upgrade-to-linode-api-v4/','/guides/upgrade-to-linode-a
 
 Version 4 of the Linode API is now in general release and it is a major improvement over previous versions. Almost any task which can be done through the Cloud Manager can now be performed through the API. This guide will show you how to adapt existing code for previous API versions in order to take advantage of these new features.
 
-To get started with the current version, please see the [API documentation](https://developers.linode.com) or our [Getting Started with the Linode API guide](/docs/guides/getting-started-with-the-linode-api/).
+To get started with the current version, please see the [API documentation](https://developers.linode.com) or our [Getting Started with the Linode API guide](/docs/products/tools/api/get-started/).
 
 ## General Changes
 
