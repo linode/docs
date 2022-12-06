@@ -6,5 +6,12 @@
   overflow: auto;
 }
 
-.highlight .chroma .lntd code {
+.highlight .chroma .lntd:first-child {
+  width: 64px;
+}
+
+.highlight .chroma pre,
+.highlight .chroma code,
+.highlight .chroma .lnt {
+  width: inherit;
 }
