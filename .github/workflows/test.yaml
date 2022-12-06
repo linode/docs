@@ -77,7 +77,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-  md-links:
+  check-links:
+    name: Check Links (Markdown)
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -91,7 +92,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install python-frontmatter
     - name: Run tests
-      run: python ./ci/md-links-test.py ${{ steps.files.outputs.all }}
+      run: python ./ci/check-links.py ${{ steps.files.outputs.all }}
 
   docs404:
     runs-on: ubuntu-latest
