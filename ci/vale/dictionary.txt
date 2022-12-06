@@ -1411,6 +1411,7 @@ nixcraft
 nixpkgs
 nlris
 nmap
+nmcli
 noarch
 node1
 node2
@@ -2032,6 +2033,7 @@ suricata
 sury
 suse
 swappable
+swappiness
 svn
 symantec
 symfony
