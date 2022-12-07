@@ -23,7 +23,7 @@ Redis is an open-source NoSQL database that provides performant storage for cach
 
 Redis has multiple data types for working with collections. The most common are **Lists** and **Sets**. This tutorial explains what Redis's lists and sets are and illustrates how to use them.
 
-Also, check out our other guides in this series, including our previous guide on [Connecting to Redis and Using Redis Databases](/docs/guides/how-to-connect-to-redis/).
+Also, check out our other guides in this series, including our previous guide on [Connecting to Redis and Using Redis Databases](/docs/guides/redis-getting-started/).
 
 ## Before You Begin
 

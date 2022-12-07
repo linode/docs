@@ -172,7 +172,7 @@ The Redis CLI gives you two options for moving data between Redis databases.
 
 - You can migrate keys from a database on one Redis server to another using the `MIGRATE` command. It takes the address of the destination server, its port number, the key name, and a number of milliseconds for a timeout.
 
-    Migration requires that you set up the remote server for remote access, as described in the [Connect to a Remote Redis Server](/docs/guides/how-to-connect-to-redis/#connect-to-a-remote-redis-server) section above.
+    Migration requires that you set up the remote server for remote access, as described in the [Connect to a Remote Redis Server](/docs/guides/redis-getting-started/#connect-to-a-remote-redis-server) section above.
 
     The example below migrates a key called `key_1` from the current database to a remote database at `192.0.2.0`:
 

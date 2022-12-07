@@ -4,6 +4,17 @@ import sys
 import re
 import frontmatter
 import textwrap
+import argparse
+
+# Define command-line arguements
+parser = argparse.ArgumentParser(description='Check links within Markdown.')
+parser.add_argument('--fix_issues', help="Attempts to fix some types of issues.", default=False, action=argparse.BooleanOptionalAction)
+ARGS = parser.parse_args()
+
+# Identifies if --fix_issues arguement has been used and, if so, set FIX_ISSUES to true
+FIX_ISSUES = False
+if ARGS.fix_issues:
+    FIX_ISSUES = True
 
 class Guide:
     def __init__(self, path, title, link):
@@ -145,6 +156,7 @@ def get_guides():
     guides.append(Guide("", "Marketplace", "/docs/marketplace/"))
     guides.append(Guide("", "Resources", "/docs/resources/"))
     guides.append(Guide("", "Q&A", "/docs/topresults/?docType=community"))
+    assets.append(Asset("/docs/api/openapi.yaml"))
 
     # Iterate through each file in each docs directory
     for dir in DOCS_DIR:
@@ -172,6 +184,18 @@ def get_guides():
                             # If the slug does not match the parent folder, log issue
                             if not expanded_guide['slug'] == path_segments[-2]:
                                 issues.append(Issue(expanded_guide['slug'],'slug-mismatch'))
+
+                                # Attempt to fix this issue
+                                if FIX_ISSUES == True:
+                                    path_segments[-1] = ""
+                                    old_file_path = "/".join(path_segments)
+                                    path_segments[-2] = expanded_guide['slug']
+                                    new_file_path = "/".join(path_segments)
+                                    #path_segments[-1] = ""
+                                    print("Old file path: " + old_file_path)
+                                    print("New file path: " + new_file_path)
+                                    os.rename(old_file_path,new_file_path)
+
                             canonical_link = "/docs/guides/" + expanded_guide['slug'] + "/"
                         # ... If the guide is in the API section...
                         elif "slug" in expanded_guide.keys() and "docs/api/" in file_path:
@@ -334,6 +358,7 @@ def check_internal_markdown_links(guides, assets):
                     # Checks if the link matches an alias or not
                     if next((x for x in guides if link.replace('/docs/','/') in x.aliases), None) is not None:
                         issues.append(Issue(link_unmodified,'points-to-alias'))
+                        print(link_unmodified)
                     else:
                         issues.append(Issue(link_unmodified,'not-found'))
 

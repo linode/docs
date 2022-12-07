@@ -21,7 +21,7 @@ external_resources:
 
 Redis, the open-source, in-memory database, is a popular option for its quick, low-latency storage. Redis's *Sorted Set* data type captures the advantages of both Lists and Sets, giving you a useful tool for ordered collections of unique values. This tutorial dives into what Sorted Sets are and introduces you to commands you can use to manage them.
 
-Be sure to check out our other guides in this series, including our previous guide on [Connecting to Redis and Using Redis Databases](/docs/guides/how-to-connect-to-redis/).
+Be sure to check out our other guides in this series, including our previous guide on [Connecting to Redis and Using Redis Databases](/docs/guides/redis-getting-started/).
 
 ## Before You Begin
 

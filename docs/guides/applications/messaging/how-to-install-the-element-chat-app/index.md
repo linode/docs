@@ -236,7 +236,7 @@ gpg: Good signature from "Riot Releases <releases@riot.im>" [unknown]
 
 ## Install and Configure the NGINX Web Server
 
-You must install [*NGINX*](https://www.nginx.com/) before using Certbot. For more information about NGINX, see Linode's [How to Configure NGINX](/docs/web-servers/nginx/how-to-configure-nginx) guide.
+You must install [*NGINX*](https://www.nginx.com/) before using Certbot. For more information about NGINX, see Linode's [How to Configure NGINX](/docs/guides/how-to-configure-nginx/) guide.
 
 1. Install NGINX.
 

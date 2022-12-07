@@ -30,7 +30,7 @@ This guide covers the fundamentals of using Vault and the process of setting up 
 A secret is a credential or key that allows you to gain access to a particular resource or to a system, for example: a password, API key, access token, or database passwords.
 
 ## Before You Begin
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides. Ensure that the Linode's [hostname is set](/docs/getting-started#set-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides. Ensure that the Linode's [hostname is set](/docs/guides/getting-started/#set-the-hostname).
 
     Check your Linode's hostname. The first command should show your short hostname and the second should show your fully qualified domain name (FQDN).
 
@@ -42,7 +42,7 @@ A secret is a credential or key that allows you to gain access to a particular r
         sudo yum update
 
     {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
     {{< note >}}The instructions in this guide are based the steps on Ubuntu 18.04, all the steps are distribution agnostic with the exception of package names and package managers.{{< /note >}}

@@ -54,7 +54,7 @@ Each setting in Redis is controlled using a configuration directive. A directive
 - A configuration keyword
 - One or more arguments for the configuration
 
-The file below includes an example configuration directive. This example is taken from a configuration directive used in the first of our guides in this series on Redis — [Connecting to Redis and Using Redis Databases](/docs/guides/how-to-connect-to-redis/):
+The file below includes an example configuration directive. This example is taken from a configuration directive used in the first of our guides in this series on Redis — [Connecting to Redis and Using Redis Databases](/docs/guides/redis-getting-started/):
 
 {{< file "/etc/redis/redis.conf" >}}
 # [...]
@@ -191,4 +191,4 @@ The command attempts to preserve, as much as is feasible, the original structure
 
 You now have the tools you need to start working with Redis configurations from the command line. As mentioned in this tutorial, these tools work exceptionally well when you want to test various settings on the fly.
 
-To learn more about Redis and how to use Redis databases, be sure to read our other guides in this series. They cover everything from [connecting to a remote Redis server](/docs/guides/how-to-connect-to-redis/) to [using sorted sets in Redis databases](/docs/guides/using-sorted-sets-in-redis-database/).
+To learn more about Redis and how to use Redis databases, be sure to read our other guides in this series. They cover everything from [connecting to a remote Redis server](/docs/guides/redis-getting-started/) to [using sorted sets in Redis databases](/docs/guides/using-sorted-sets-in-redis-database/).

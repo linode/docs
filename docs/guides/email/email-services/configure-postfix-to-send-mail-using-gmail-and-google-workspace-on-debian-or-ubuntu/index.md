@@ -28,7 +28,7 @@ In this guide, you will learn how to install and configure a Postfix server on D
 
 ## Before You Begin
 
-1.  Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides and ensure that the Linode's [hostname is set](/docs/getting-started#getting-started#setting-the-hostname).
+1.  Complete our [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides and ensure that the Linode's [hostname is set](/docs/guides/getting-started/#getting-started#setting-the-hostname).
 
 2.  Update your system:
 
@@ -37,7 +37,7 @@ In this guide, you will learn how to install and configure a Postfix server on D
 3.  Use your web browser to confirm your email login credentials by logging in to [Gmail](https://gmail.com).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Postfix

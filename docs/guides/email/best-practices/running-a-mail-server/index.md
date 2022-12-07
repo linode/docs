@@ -104,7 +104,7 @@ Here are the most popular MTA services available:
 
 - [Courier Mail Server](http://www.courier-mta.org) comes with Courier-IMAP, which is the popular part of the Courier mail server suite, but Courier-MTA also includes mail relaying features. It's a simpler MTA but somewhat limited.
 - [Exim](http://www.exim.org) is modern and oriented towards flexibility. It's secure, but not quite as security-oriented as Postfix. It's very customizable, but is one of the most complex MTAs to configure.
-- [Postfix](http://www.postfix.org) is part of Linode's [recommended mail server build](/docs/email/postfix/email-with-postfix-dovecot-and-mysql). It's modern, security-oriented, and very flexible. It is slightly simpler to set up than Exim.
+- [Postfix](http://www.postfix.org) is part of Linode's [recommended mail server build](/docs/guides/email-with-postfix-dovecot-and-mysql/). It's modern, security-oriented, and very flexible. It is slightly simpler to set up than Exim.
 - [Qmail](http://cr.yp.to/qmail.html) is a modern MTAs and supports [Maildir-style](https://en.wikipedia.org/wiki/Maildir) directories. Qmail has not received an update since 2007, but remains very popular.
 - [Sendmail](http://www.sendmail.com/sm/open_source/) is a legacy MTA that has a large following and good support.
 - [Zimbra](http://www.zimbra.com) is an all-in-one mail service. Zimbra offers a simple install, but few configurable options.
@@ -200,11 +200,11 @@ Make sure your SPF records are not too strict. If you accidentally exclude a leg
 
 #### Reverse DNS
 
-[Set reverse DNS](/docs/networking/dns/configure-your-linode-for-reverse-dns) for your mail server's domain or subdomain.
+[Set reverse DNS](/docs/guides/configure-rdns/) for your mail server's domain or subdomain.
 
 The reverse DNS for your mail server must match the hostname of your Linode. If your Linode's reverse DNS and hostname do not match, email from your server may get rejected with the warning "Reverse DNS does not match SMTP Banner."
 
-If you need to check or set the hostname, see our [Getting Started](/docs/getting-started#setting-the-hostname) article.
+If you need to check or set the hostname, see our [Getting Started](/docs/guides/getting-started/#setting-the-hostname) article.
 
 ## Spam and Virus Protection, Mail Clients, and More
 

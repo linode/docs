@@ -107,7 +107,7 @@ Below, you can see the steps used for setting up your clients with each of these
 
 #### Dedicated Client for Monitoring Notifications
 
-1.  Create a Redis client by making an authenticated connection to the Redis server. See our guide on [How to Connect to Redis and Use The Redis Database](/docs/guides/how-to-connect-to-redis/) for instructions on doing so.
+1.  Create a Redis client by making an authenticated connection to the Redis server. See our guide on [How to Connect to Redis and Use The Redis Database](/docs/guides/redis-getting-started/) for instructions on doing so.
 
 1.  Determine the client's ID using the following command. This ID is used in setting up client tracking in one of the subsequent steps, so keep note of it. This and subsequent examples use `15` for the notification client's ID.
 
@@ -175,7 +175,7 @@ Redis clients must be version 6 or later to use RESP3. Check your Redis version 
 For Redis versions less than 6, see the previous section for [creating a dedicated client for invalidation messages](#dedicated-client-for-monitoring-notifications).
 {{< /note >}}
 
-1.  Create a Redis client by making an authenticated connection to the Redis server. See our guide on [How to Connect to Redis and Use The Redis Database](/docs/guides/how-to-connect-to-redis/) for instructions on doing so.
+1.  Create a Redis client by making an authenticated connection to the Redis server. See our guide on [How to Connect to Redis and Use The Redis Database](/docs/guides/redis-getting-started/) for instructions on doing so.
 
 1.  Switch the client to RESP3 using the following command:
 
@@ -300,4 +300,4 @@ However, the client would receive an invalidation notice if another client execu
 
 This tutorial has covered what you need to know to get started using Redis for server-assisted client-side caching. You learned everything from setting up client tracking to customizing it to behave the way your web application needs.
 
-You can continue to learn about Redis and how to get the most out of your Redis databases through our other guides in this series. These guides cover everything from [connecting to a remote Redis server](/docs/guides/how-to-connect-to-redis/) to working with the [hash data type in Redis](/docs/guides/hashes-in-redis-databases/).
+You can continue to learn about Redis and how to get the most out of your Redis databases through our other guides in this series. These guides cover everything from [connecting to a remote Redis server](/docs/guides/redis-getting-started/) to working with the [hash data type in Redis](/docs/guides/hashes-in-redis-databases/).

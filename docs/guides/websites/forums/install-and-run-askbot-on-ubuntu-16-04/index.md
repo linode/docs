@@ -166,7 +166,7 @@ WantedBy=multi-user.target
         sudo systemctl daemon-reload
         sudo systemctl restart nginx
 
-5.  Use [Let's Encrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) to obtain an SSL certificate for your domain:
+5.  Use [Let's Encrypt](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/) to obtain an SSL certificate for your domain:
 
         sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 

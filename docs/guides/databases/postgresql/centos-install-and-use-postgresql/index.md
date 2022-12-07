@@ -517,8 +517,8 @@ There is a security risk in opening up PostgreSQL to listen for remote connectio
 
 The following Linode guides provide more information on pgAdmin:
 
-- [How to Access PostgreSQL Database Remotely Using pgAdmin on Windows](/docs/databases/postgresql/pgadmin-windows)
-- [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/databases/postgresql/pgadmin-macos-x)
+- [How to Access PostgreSQL Database Remotely Using pgAdmin on Windows](/docs/guides/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows/)
+- [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/guides/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/)
 
 ## Learn More About PostgreSQL
 

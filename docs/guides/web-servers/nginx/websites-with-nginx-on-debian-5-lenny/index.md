@@ -132,6 +132,6 @@ You may wish to consult the following resources for additional information on th
 
 - [Linode Docs nginx Documentation](/docs/web-servers/nginx/)
 - [nginx Community Documentation](http://wiki.nginx.org)
-- [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/debian-5-lenny)
-- [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/debian-5-lenny)
-- [Configure Ruby on Rails with nginx](/docs/frameworks/ruby-on-rails-nginx/debian-5-lenny)
+- [Configure Perl and FastCGI with nginx](/docs/guides/nginx-and-perlfastcgi-on-debian-5-lenny/)
+- [Configure PHP and FastCGI with nginx](/docs/guides/nginx-and-phpfastcgi-on-debian-5-lenny/)
+- [Configure Ruby on Rails with nginx](/docs/guides/ruby-on-rails-with-nginx-on-debian-5-lenny/)

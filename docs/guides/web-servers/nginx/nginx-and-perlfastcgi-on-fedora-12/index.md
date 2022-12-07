@@ -107,7 +107,7 @@ Issue the following commands to enable the site:
     ln -s /etc/nginx/sites-available/www.example.com
     service nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address.
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/products/networking/dns-manager/guides/common-dns-configurations/) pointing your domain name to your Linode's IP address.
 
 ## Configure FastCGI Wrapper
 
@@ -160,5 +160,5 @@ You may wish to consult the following resources for additional information on th
 - [The NGINX Homepage](http://nginx.org/)
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [Perl Documentation](http://perldoc.perl.org/)
-- [Installing NGINX on Fedora 12](/docs/web-servers/nginx/installation/fedora-12)
-- [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Installing NGINX on Fedora 12](/docs/guides/websites-with-nginx-on-fedora-12/)
+- [Basic NGINX Configuration](/docs/guides/how-to-configure-nginx/)

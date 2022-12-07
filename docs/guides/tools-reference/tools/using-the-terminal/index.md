@@ -172,7 +172,7 @@ The `du` command, also native to all systems, checks which directories are using
 
 You may also wish to consider installing the `ncdu` application (with your system's [package management](/docs/guides/linux-package-management-overview/) tool), which provides the file size using a curses-based file browser.
 
-For more information about monitoring the internals of your Linode, you can refer to the [System Diagnostics](/docs/tools-reference/linux-system-administration-basics#system-diagnostics) guide.
+For more information about monitoring the internals of your Linode, you can refer to the [System Diagnostics](/docs/guides/linux-system-administration-basics/#system-diagnostics) guide.
 
 ## The Terminal Environment
 
