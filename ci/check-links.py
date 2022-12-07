@@ -191,9 +191,8 @@ def get_guides():
                                     old_file_path = "/".join(path_segments)
                                     path_segments[-2] = expanded_guide['slug']
                                     new_file_path = "/".join(path_segments)
-                                    #path_segments[-1] = ""
-                                    print("Old file path: " + old_file_path)
-                                    print("New file path: " + new_file_path)
+                                    #print("Old file path: " + old_file_path)
+                                    #print("New file path: " + new_file_path)
                                     os.rename(old_file_path,new_file_path)
 
                             canonical_link = "/docs/guides/" + expanded_guide['slug'] + "/"
@@ -358,7 +357,6 @@ def check_internal_markdown_links(guides, assets):
                     # Checks if the link matches an alias or not
                     if next((x for x in guides if link.replace('/docs/','/') in x.aliases), None) is not None:
                         issues.append(Issue(link_unmodified,'points-to-alias'))
-                        print(link_unmodified)
                     else:
                         issues.append(Issue(link_unmodified,'not-found'))
 
