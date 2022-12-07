@@ -23,15 +23,12 @@ relations:
 external_resources:
 - '[poplib — POP3 protocol client — Python 3.10.2 documentation](https://docs.python.org/3/library/poplib.html)'
 - '[email — An email and MIME handling package — Python 3.10.2 documentation](https://docs.python.org/3/library/email.html)'
+aliases: ['/guides/create-a-pop-email-notification-system-using-twilio/']
 ---
 
 By default, Linode sends system notifications via email. For example, email notifications are delivered when Linode Compute Instances are rebooted, when they receive hardware maintenance, and when they exceed a CPU usage threshold. You may also want to receive these notifications via text message. This guide shows how to set up a custom script that auto-forwards email notifications to text message.
 
 The auto-forwarding system leverages the API of Twilio, a cloud communications service, along with the POP protocol for email. The instructions in this guide focus on how to parse Linode email notifications, but they could be adapted to email from other services as well.
-
-
-
-
 
 ## In this Guide
 
@@ -46,10 +43,6 @@ The auto-forwarding system leverages the API of Twilio, a cloud communications s
 - In the [Auto-Forward Email to Text Message](#auto-forward-email-to-text-message) section, the script is updated to run periodically and check for all Linode system notification emails since the last time the script ran.
 
 - In the [Search Email by Subject with Poplib](#search-email-by-subject-with-poplib) section, the script is updated to only forward emails that match a keyword in the emails' subject. This allows you to limit forwarding to specific kinds of notifications.
-
-
-
-
 
 ## Before You Begin
 
@@ -66,10 +59,6 @@ The auto-forwarding system leverages the API of Twilio, a cloud communications s
 1. This guide instructs you to create a Python script from within an SSH session on your Linode. You need to install and use a terminal text editor to write the script on your Linode. Common text editors include [nano](/docs/guides/use-nano-to-edit-files-in-linux/) (the easiest option for terminal beginners), [emacs](https://www.gnu.org/software/emacs/), and [vim](https://www.vim.org/).
 
 1. Your email service needs to support POP, and support for POP may need to be manually enabled. For example, [Gmail has an option to turn on POP access in its settings](https://support.google.com/mail/answer/7104828).
-
-
-
-
 
 ## Forward an Email to Text Message
 
@@ -656,9 +645,6 @@ EMAIL_SERVER=pop.yourdomain.com
 
     If you do not receive a text message after triggering a Linode Alert email, try visiting the [Troubleshooting](#troubleshooting) section of this guide for help. In particular, your email server may use a `Received` header that is not formatted like the example in this guide. In this case, review the [Errors from Parsing Received Header](#errors-from-parsing-received-header) troubleshooting section.
 
-
-
-
 ## Search Email by Subject with Poplib
 
 Emails sent from Linode Alerts can feature several different kinds of notifications, including:
@@ -722,10 +708,6 @@ Your script should now look like the code in [this file](autoforward-email-with-
 
     You can test that the update code works by temporarily [lowering the CPU usage alert threshold](/docs/products/tools/monitoring/guides/monitoring-email-alerts/) for one of your Linodes. By default, this value is set to 90%.
 
-
-
-
-
 ## Next Steps
 
 The auto-forwarding system is now complete, and it includes email filtering by subject keyword. You can make adjustments to the search criterion to change this filtering behavior. For example, you could search for the string `traffic rate` to only forward notifications about spikes in your Linodes' networking. You can also tweak the [alert threshold values](/docs/products/tools/monitoring/guides/monitoring-email-alerts/) for different resources in the Cloud Manager.
@@ -733,10 +715,6 @@ The auto-forwarding system is now complete, and it includes email filtering by s
 In addition to forwarding emails to text, you may want to forward information from the Linode API to text. The [Using the Linode API with Twilio](/docs/guides/how-to-use-the-linode-api-with-twilio/) and [Monitor your Linode's Network Transfer Pool with Twilio](/docs/guides/monitor-linode-network-transfer-pool-with-twilio/) guides show how to combine the Linode and Twilio APIs.
 
 Twilio's API offers many other features as well. For example, you can forward notifications to more than one phone number using the [Messaging Service resource](https://www.twilio.com/docs/messaging/services/api#messaging-services-resource). Twilio's [quick start guides](https://www.twilio.com/docs/quickstart) are helpful when exploring the Twilio API.
-
-
-
-
 
 ## Troubleshooting
 

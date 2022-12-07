@@ -1,5 +1,5 @@
 ---
-slug: writing-a-neovim-plugin-with-lua
+slug: write-a-neovim-plugin-with-lua
 author:
   name: Nathaniel Stickman
 description: "Learn how to develop a plugin for Neovim. Neovim introduces first-class support for Lua, and this guide shows you how to create a plugin using the Lua programming language."
@@ -10,15 +10,15 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18
 modified_by:
   name: Nathaniel Stickman
-title: "Writing a Neovim Plugin with Lua"
-h1_title: "How to Write a Neovim Plugin with Lua"
-enable_h1: true
+title: "Write a Neovim Plugin with Lua"
+title_meta: "How to Write a Neovim Plugin with Lua"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
 - '[Nvim Documentation: Lua](https://neovim.io/doc/user/lua.html)'
 - '[GitHub: jacobsimpson/nvim-example-lua-plugin](https://github.com/jacobsimpson/nvim-example-lua-plugin)'
+aliases: ['/guides/writing-a-neovim-plugin-with-lua/']
 ---
 
 Neovim is an open source fork of the ubiquitous Vim text editor. It supports the [Lua programming language](https://www.lua.org/) which opens up vast possibilities for configuration, scripting, and plugin development. The Neovim community has created numerous plugins pushing the boundaries of the text editor's capabilities.

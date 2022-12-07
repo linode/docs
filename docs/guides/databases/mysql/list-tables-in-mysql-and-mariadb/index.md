@@ -3,7 +3,6 @@ slug: list-tables-in-mysql-and-mariadb
 author:
   name: Nathaniel Stickman
 description: "Learn how to list tables in MySQL and MariaDB using the command line (CLI). You also learn how to list tables using MySQL Workbench."
-og_description: "Learn how to list tables in MySQL and MariaDB using the command line (CLI). You also learn how to list tables using MySQL Workbench."
 keywords: ['mysql list tables','mysql list table names','mysql list table fields','mariadb list tables']
 tags: ['mysql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,6 @@ slug: using-xargs-with-examples
 author:
   name: Jeff Novotny
 description: 'Learn what the xargs command is, how it works, and a few of the many functions it can be used to perform within Linux. '
-og_description: 'Learn what the xargs command is, how it works, and a few of the many functions it can be used to perform within Linux. '
 keywords: ['xarg examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-17

@@ -1,5 +1,5 @@
 ---
-slug: mongodb-and-its-use-cases
+slug: mongodb-introduction
 author:
   name: Jeff Novotny
 description: 'This article introduces MongoDB, explains how it differs from other SQL databases, and provides some use cases.'
@@ -18,6 +18,7 @@ contributor:
 external_resources:
 - '[MongoDB Basics Tutorial](https://university.mongodb.com/courses/M001/about)'
 - '[MongoDB Documentation](https://docs.mongodb.com/)'
+aliases: ['/guides/mongodb-and-its-use-cases/']
 ---
 
 [*MongoDB*](https://www.mongodb.com/) is a *document-oriented database* and an alternative to traditional *Relational DataBase Management System* (RDBMS) applications. MongoDB is a *NoSQL* database that stores data in a more flexible and less structured manner. This guide provides an introduction to MongoDB and describes how it works. It also explains how MongoDB differs from SQL-based databases including [MySQL](https://www.mysql.com/) and lists its main use cases.

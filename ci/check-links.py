@@ -96,6 +96,13 @@ issue_types.append(IssueType(
     weight = 10
 ))
 issue_types.append(IssueType(
+    id = 'slug-mismatch',
+    title = "Slug mismatch",
+    summary = "The guide's slug does not match the name of its parent folder.",
+    severity = 'failure',
+    weight = 15
+))
+issue_types.append(IssueType(
     id = 'docs-domain-name',
     title = "Contains domain name",
     summary = "The link contains the domain name of the docs site.",
@@ -131,6 +138,7 @@ def get_guides():
 
     guides = []
     assets = []
+    issues = []
 
     # Add top level guides
     guides.append(Guide("docs/_index.md", "Docs Home", "/docs/"))
@@ -145,6 +153,7 @@ def get_guides():
 
                 # The relative file path of the file
                 file_path = os.path.join(root, file)
+                path_segments = file_path.split("/")
 
                 # If the file is markdown..
                 if file.endswith('.md'):
@@ -158,10 +167,16 @@ def get_guides():
                                 continue
 
                         # Identifies the canonical link for a guide
+                        # ... If the guide is in the guides section...
                         if "slug" in expanded_guide.keys() and "docs/guides/" in file_path:
+                            # If the slug does not match the parent folder, log issue
+                            if not expanded_guide['slug'] == path_segments[-2]:
+                                issues.append(Issue(expanded_guide['slug'],'slug-mismatch'))
                             canonical_link = "/docs/guides/" + expanded_guide['slug'] + "/"
+                        # ... If the guide is in the API section...
                         elif "slug" in expanded_guide.keys() and "docs/api/" in file_path:
                             canonical_link = "/docs/api/" + expanded_guide['slug'] + "/"
+                        # ... If the guide is in any other section...
                         else:
                             canonical_link = "/" + file_path
                             canonical_link = canonical_link.replace('/index.md','/')
@@ -176,19 +191,18 @@ def get_guides():
 
                         # Append the guide object to the list of guides
                         guides.append(guide)
+
                     except Exception as e: print(e)
 
                 # If the file is something else, like an image or other asset...
                 else:
-                    file_path = os.path.join(root, file)
-                    path_segments = file_path.split("/")
                     if "docs/guides/" in file_path:
                         link = "/docs/guides/" + path_segments[-2] + "/" + path_segments[-1]
                     else:
                         link = "/" + file_path
                     assets.append(Asset(link))
 
-    return guides, assets
+    return guides, assets, issues
 
 # ------------------
 # Check for duplicate aliases
@@ -259,7 +273,6 @@ def check_internal_markdown_links(guides, assets):
 
             # Set the current indent
             current_indent = len(line) - len(line.lstrip())
-            current_leading_char = len(line) - len(line.lstrip())
 
             # Strip out any numbers at the start of the line
             line = re.sub('^\d+', '', line)
@@ -291,6 +304,9 @@ def check_internal_markdown_links(guides, assets):
                     continue
                 # Check if link points to an asset link
                 if next((x for x in assets if x.link == link), None):
+                    continue
+                # Check if links point to an asset within its own directory
+                if next((x for x in assets if x.link == guide.link + link), None):
                     continue
                 # Ignore anchors
                 if link.startswith('#'):
@@ -330,7 +346,7 @@ def main():
 
     test_failed = False
     issues = []
-    guides, assets = get_guides()
+    guides, assets, issues = get_guides()
 
     issues = issues + (get_duplicate_aliases(guides))
     issues = issues + (check_internal_markdown_links(guides, assets))

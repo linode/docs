@@ -3,7 +3,6 @@ slug: ssh-key-authentication-how-to-troubleshoot-permission-issues
 author:
   name: Jeff Novotny
 description: 'Learn the basics of SSH keys and how to troubleshoot the most common SSH permission issues in this short guide.'
-og_description: 'Learn the basics of SSH keys and how to troubleshoot the most common SSH permission issues in this short guide.'
 keywords: ['ssh key authentication', 'what is ssh', 'ssh keys']
 tags: ['ssh', 'web server', 'cloud manager', 'linode platform']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
