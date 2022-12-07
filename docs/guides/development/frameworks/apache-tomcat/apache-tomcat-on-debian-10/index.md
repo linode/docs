@@ -34,9 +34,9 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
 ## Before You Begin
 
-1.  Ensure that your system is up to date and that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/guides/linode-beginners-guide/) and the article concerning [systems administration basics](/docs/using-linux/administration-basics).
+1.  Ensure that your system is up to date and that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/guides/linode-beginners-guide/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/).
 
-2.  Make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+2.  Make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
         hostname
         hostname -f
@@ -48,7 +48,7 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
         apt-get update && apt-get upgrade
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Apache Tomcat

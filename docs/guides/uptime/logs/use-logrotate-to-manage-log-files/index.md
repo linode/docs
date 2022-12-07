@@ -32,7 +32,7 @@ Beyond the system-wide log rotation configuration, you can also configure `logro
 
 ### Run logrotate as a cronjob
 
-Run `logrotate` as a [cronjob](/docs/tools-reference/tools/schedule-tasks-with-cron) to ensures that logs will be rotated as regularly as configured. Logs will only be rotated when `logrotate` runs, regardless of configuration. For example, if you configure `logrotate` to rotate logs every day, but `logrotate` only runs every week, the logs will only be rotated every week.
+Run `logrotate` as a [cronjob](/docs/guides/schedule-tasks-with-cron/) to ensures that logs will be rotated as regularly as configured. Logs will only be rotated when `logrotate` runs, regardless of configuration. For example, if you configure `logrotate` to rotate logs every day, but `logrotate` only runs every week, the logs will only be rotated every week.
 
 For most daemon processes, logs should be rotated by the root user. In most cases, `logrotate` is invoked from a script in the `/etc/cron.daily/` directory. If one does not exist, create a script that resembles the following in the `/etc/cron.daily/` folder:
 

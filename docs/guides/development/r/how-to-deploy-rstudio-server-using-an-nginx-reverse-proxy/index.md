@@ -27,7 +27,7 @@ aliases: ['/development/r/how-to-deploy-rstudio-server-using-an-nginx-reverse-pr
 
 ## Before You Begin
 
-This guide assumes an R installation version of R 3.0.1+ and will show how to install RStudio Server 1.1. See our guide on [installing R on Ubuntu and Debian](/docs/development/r/how-to-install-r-on-ubuntu-and-debian) for steps on installing the latest version of R.
+This guide assumes an R installation version of R 3.0.1+ and will show how to install RStudio Server 1.1. See our guide on [installing R on Ubuntu and Debian](/docs/guides/how-to-install-r-on-ubuntu-and-debian/) for steps on installing the latest version of R.
 
 The steps in this guide are for Ubuntu 16.04 and should be adapted to your specific distribution installation.
 

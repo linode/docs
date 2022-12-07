@@ -27,7 +27,7 @@ In this guide, you will create an Apache and a PHP module. A MySQL module will b
 
 ## Before You Begin
 
-Set up a Puppet Master (Ubuntu 18.04) and two Puppet agents (Ubuntu 18.04 and CentOS 7) by following the steps in the [Getting Started with Puppet - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup) guide.
+Set up a Puppet Master (Ubuntu 18.04) and two Puppet agents (Ubuntu 18.04 and CentOS 7) by following the steps in the [Getting Started with Puppet - Basic Installation and Setup](/docs/guides/getting-started-with-puppet-6-1-basic-installation-and-setup/) guide.
 
 ## Create the Apache Module
 

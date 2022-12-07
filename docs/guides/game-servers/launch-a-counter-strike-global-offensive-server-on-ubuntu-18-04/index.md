@@ -40,10 +40,10 @@ relations:
 
 1.  A Steam game server login token (GSLT) is required to host a public CS:GO server. Without the token, client connections are restricted to the LAN only. [Register your GSLT](https://steamcommunity.com/dev/managegameservers) on Steam's website. Enter `730` as the App ID when creating your GSLT. Review [Steam's documentation](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers#Registering_Game_Server_Login_Token) for more information about GSLTs.
 
-1.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+1.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
     {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites for Counter-Strike: Global Offensive
@@ -124,7 +124,7 @@ screen -S "Counter-Strike: Global Offensive Server" ./srcds_run -game csgo -user
     | Package manager | `~/.steam/steamcmd/csgo-ds/` |
     | Manual installation | `~/Steam/csgo-ds/` |
 
-    When run, the script will execute a Dust2 server in competitive game mode in a [screen session](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions). For more startup modes and game options, see Valve's [CS:GO wiki](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers#Starting_the_Server).
+    When run, the script will execute a Dust2 server in competitive game mode in a [screen session](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/). For more startup modes and game options, see Valve's [CS:GO wiki](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers#Starting_the_Server).
 
 1.  Make the script executable:
 

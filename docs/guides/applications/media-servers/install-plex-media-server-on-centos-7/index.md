@@ -25,7 +25,7 @@ aliases: ['/applications/media-servers/install-plex-media-server-on-centos-7/']
 
 [Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from virtually anywhere. Basic Plex features are [free](https://support.plex.tv/articles/202526943-plex-free-vs-paid/), while the paid Plex Pass adds additional features.
 
-This guide demonstrates how to set up **Plex Media Server** on a Linode running CentOS 7, and how to connect client devices. A Plex media server could benefit from large amounts of disk space, so consider using Linode's [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+This guide demonstrates how to set up **Plex Media Server** on a Linode running CentOS 7, and how to connect client devices. A Plex media server could benefit from large amounts of disk space, so consider using Linode's [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
 ![Install Plex Media Server on CentOS 7](install-plex-media-server-on-centos-7.png)
 

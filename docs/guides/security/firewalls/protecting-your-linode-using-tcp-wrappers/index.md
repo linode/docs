@@ -88,7 +88,7 @@ This example *hosts.deny* file will block all client from all processes.
 
     ALL : ALL
 
-We could express this rule in a sentence like this, "Deny access to all daemons from all clients". This rule will deny all traffic to the server regardless of the source. Utilizing this rule on its own is not recommended, as it will deny you access to your own server, excepting [LISH](/docs/networking/using-the-linode-shell-lish).
+We could express this rule in a sentence like this, "Deny access to all daemons from all clients". This rule will deny all traffic to the server regardless of the source. Utilizing this rule on its own is not recommended, as it will deny you access to your own server, excepting [LISH](/docs/guides/lish/).
 
 ### Allow exceptions
 

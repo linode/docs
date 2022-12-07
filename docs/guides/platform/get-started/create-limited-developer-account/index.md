@@ -46,7 +46,7 @@ Keep your account administrator credentials secret. When hiring an external indi
 Useful *Global Grants* for a limited access user might include the ability to:
 
 * Add a [NodeBalancer](/docs/products/networking/nodebalancers/).
-* Add [Longview](/longview/) clients.
+* Add [Longview](/docs/guides/what-is-longview/) clients.
 * Use the [DNS Manager](/docs/products/networking/dns-manager/) to add domains.
 * Create [StackScripts](/docs/products/tools/stackscripts/).
 * Create [Images](/docs/products/tools/images/).

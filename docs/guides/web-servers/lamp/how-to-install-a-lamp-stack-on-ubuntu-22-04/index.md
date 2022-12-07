@@ -57,7 +57,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 This section explains how to install a LAMP Stack on Ubuntu 22.04 LTS. These instructions are also generally valid for Ubuntu 20.04 LTS.
 
 {{< note >}}
-These instructions are valid with or without a registered domain name. If a domain name maps to the IP address of the server, a virtual host should also be configured. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/).
+These instructions are valid with or without a registered domain name. If a domain name maps to the IP address of the server, a virtual host should also be configured. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 {{< /note >}}
 
 To install the LAMP stack on Ubuntu 22.04 LTS, follow these steps. In all cases, enter `y` to proceed with the installation when asked for confirmation.

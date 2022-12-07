@@ -39,8 +39,8 @@ In order to successfully execute the commands in this guide, you will need to ru
 
 ## Before You Begin
 
-1. Complete the [Getting Started](/docs/getting-started) guide for setting up a new Linode.
-1. While it is recommended you complete the entire [Securing Your Server](/docs/security/securing-your-server) guide, at  minimum, you should [add a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+1. Complete the [Getting Started](/docs/guides/getting-started/) guide for setting up a new Linode.
+1. While it is recommended you complete the entire [Securing Your Server](/docs/guides/set-up-and-secure/) guide, at  minimum, you should [add a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
 
 ## Install OpenJDK (Java)
 

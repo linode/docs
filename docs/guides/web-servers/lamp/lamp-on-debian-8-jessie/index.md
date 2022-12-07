@@ -30,14 +30,14 @@ Setting up a LAMP (Linux, Apache, MySql, PHP) stack on your server will allow fo
 ![LAMP on Debian 8](lamp-on-debian-8.png "LAMP on Debian 8")
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
 Prior to installing your LAMP stack ensure that:
 
--   You have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
+-   You have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
 -   You have a hostname and *fully-qualified domain name* (FQDN) configured on your Linode. To ensure this is set run:
 
         hostname

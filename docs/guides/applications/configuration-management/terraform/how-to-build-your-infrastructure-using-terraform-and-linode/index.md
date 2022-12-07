@@ -37,7 +37,7 @@ The configurations and commands used in this guide results in multiple Linodes b
 When following this guide, your Linux user may need sudo privileges in order to install supplementary software packages.
 {{</ note >}}
 
--   You need a personal access token for Linode's [v4 API](/docs/api/) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) to get a token.
+-   You need a personal access token for Linode's [v4 API](/docs/api/) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
 
     {{< note >}}
 Any Personal Access Tokens generated from the previous Linode Manager are API v3 tokens and do not work with Terraform's Linode provider.

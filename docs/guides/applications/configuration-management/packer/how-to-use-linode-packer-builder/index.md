@@ -38,7 +38,7 @@ This guide will walk you through the process of installing Packer, creating a  t
 
 1. Ensure you have access to [cURL](https://en.wikipedia.org/wiki/CURL) on your computer.
 
-1. Generate a Linode API v4 access token with read/write permission for both *Linodes* and *Images*. You can follow the [Get an Access Token](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/) guide if you do not already have one.
+1. Generate a Linode API v4 access token with read/write permission for both *Linodes* and *Images*. You can follow the [Get an Access Token](/docs/products/tools/api/get-started/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/products/tools/api/get-started/) guide if you do not already have one.
 
 1. *Optional:* Set a variable named `TOKEN` in your shell environment by running the following command. Replace *x* with your own API token.
 

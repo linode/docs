@@ -63,7 +63,7 @@ To summarize, all files in a Git repository should eventually be handled in one 
 1.  **Optional** Git must already be installed on the Linode before trying out the examples in this guide. The `git` package is often already pre-installed. To see if it is present, run the command `git --version`. If Git is already installed, this command displays the current version. If Git has not already been installed, use the command `sudo apt install git` to install it.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Remove Untracked Files Using Git Clean

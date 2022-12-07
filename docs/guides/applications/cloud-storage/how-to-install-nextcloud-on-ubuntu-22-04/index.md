@@ -59,7 +59,7 @@ See the [Nextcloud feature comparison](https://nextcloud.com/compare/) for a mor
 
 1. A LAMP Stack, including an Apache web server, a MariaDB/MySQL RDBMS, and the PHP programming language, must be installed before Nextcloud can be used. This guide includes instructions for installing the LAMP stack components. More information about installing a LAMP stack is available in the [Linode guide to installing a LAMP stack on Ubuntu 22.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/).
 
-1. To properly use Nextcloud and secure the installation with HTTPS, configure a domain name for the server. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/).
+1. To properly use Nextcloud and secure the installation with HTTPS, configure a domain name for the server. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
