@@ -17,7 +17,7 @@ Load balancing allows you to distribute incoming network traffic across multiple
 
 Linode offers load balancers as a service (LBaaS) called NodeBalancers. NodeBalancers are built for high availability and designed to be maintenance free after initial configuration.
 
-This guide provides a high-level overview of NodeBalancers. To set-up a NodeBalancer, see the [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers) guide.
+This guide provides a high-level overview of NodeBalancers. To set-up a NodeBalancer, see the [Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/) guide.
 
 ## Overview
 

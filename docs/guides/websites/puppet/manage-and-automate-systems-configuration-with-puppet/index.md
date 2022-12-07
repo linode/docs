@@ -247,7 +247,7 @@ This instructs Puppet to run the specified command, in this case an `rsync` comm
 
 This guide only covers the most basic of puppet configurations options. It is certainly possible to deploy much more complex systems, including the following possibilities:
 
--   Store revisions of your manifest files in a [version control system](/docs/linux-tools/version-control/). Version control will make it easier to revert changes if you run into problems. It will also ease replication of manifests throughout a system with multiple Puppetmaster nodes.
+-   Store revisions of your manifest files in a [version control system](/docs/guides/development/version-control/). Version control will make it easier to revert changes if you run into problems. It will also ease replication of manifests throughout a system with multiple Puppetmaster nodes.
 -   Deploy Puppetmaster with [Passenger](/docs/frameworks/): the default Puppetmaster server is based on WEBrick, which is only capable of supporting 20 or 30 puppet nodes, depending on your configuration, according the Puppet developers.
 -   You may consider using Puppet in combination with the [Linode API](http://www.linode.com/api/) and [StackScripts](http://www.linode.com/stackscripts/) to automate provisioning, deprovisioning, and configuration of Linodes.
 -   Use [Puppet's module support](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Modules) to more easily manage applications which require more complex configurations.

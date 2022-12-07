@@ -31,7 +31,7 @@ aliases: ['/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-8/']
 ---
 
 {{< note >}}
-We have created a [new version of this guide](/docs/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-9) to run on Debian 9.
+We have created a [new version of this guide](/docs/guides/configure-spf-and-dkim-in-postfix-on-debian-9/) to run on Debian 9.
 {{< /note >}}
 
 ![SPF and DKIM with Postfix](Configure_SPF_and_DKIM_with_Postfix_on_Debian_8_smg.jpg)
@@ -47,7 +47,7 @@ We have created a [new version of this guide](/docs/email/postfix/configure-spf-
 The DNS instructions for setting up SPF, DKIM and DMARC are generic. The instructions for configuring the SPF policy agent and OpenDKIM into Postfix should work on any distribution after making respective code adjustments for the package tool, and identifying the exact path to the Unix socket file.
 
 {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 {{< caution >}}

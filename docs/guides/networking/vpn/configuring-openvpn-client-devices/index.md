@@ -20,7 +20,7 @@ tags: ["networking","security","vpn"]
 aliases: ['/networking/vpn/configuring-openvpn-client-devices/']
 ---
 
-This guide is the third of a three-part series on setting up a hardened OpenVPN environment. Though it's recommended that you first complete Parts [One](/docs/networking/vpn/set-up-a-hardened-openvpn-server) and [Two](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server), this guide stands on its own as a general tutorial for configuring OpenVPN clients on various operating systems.
+This guide is the third of a three-part series on setting up a hardened OpenVPN environment. Though it's recommended that you first complete Parts [One](/docs/guides/set-up-a-hardened-openvpn-server/) and [Two](/docs/guides/tunnel-your-internet-traffic-through-an-openvpn-server/), this guide stands on its own as a general tutorial for configuring OpenVPN clients on various operating systems.
 
 ![Configuring OpenVPN Client Devices](configuring-openvpn-client-devices.png "Configuring OpenVPN Client Devices")
 
@@ -36,7 +36,7 @@ You must already have the client files listed below ready to transfer to the dev
 
 
 ## Transfer Client Credentials
-If you will be transferring client credentials to their respective devices over a network, you must use an encrypted transfer protocol such as [SCP or SFTP](/docs/tools-reference/linux-system-administration-basics#how-to-upload-files-to-a-remote-server). FTP or telnet should **not** be used because these protocols transfer data in plaintext. Windows has no native SCP or SFTP support. See [our Filezilla guide](/docs/tools-reference/file-transfer/filezilla) for transferring the VPN credentials from a Windows computer.
+If you will be transferring client credentials to their respective devices over a network, you must use an encrypted transfer protocol such as [SCP or SFTP](/docs/guides/linux-system-administration-basics/#how-to-upload-files-to-a-remote-server). FTP or telnet should **not** be used because these protocols transfer data in plaintext. Windows has no native SCP or SFTP support. See [our Filezilla guide](/docs/guides/filezilla/) for transferring the VPN credentials from a Windows computer.
 
 Local transfer options are Bluetooth, USB or some other external media. macOS can use iTunes to connect with iOS devices, and a Linux computer needs the package `gvfs-backends` installed to mount Android and iOS devices as external storage.
 

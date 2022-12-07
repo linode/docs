@@ -139,7 +139,7 @@ The presence of `/etc/selinux/config` is a sign that the host is ready for confi
 
 ## SELinux Management
 
-[SELinux has several options](https://www.linode.com/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) beyond the scope of this guide. Configuration is commonly achieved through configuration files rather than graphical user interface (GUI) or command line applications.
+[SELinux has several options](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) beyond the scope of this guide. Configuration is commonly achieved through configuration files rather than graphical user interface (GUI) or command line applications.
 
 ### Enabling SELinux
 
