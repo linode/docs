@@ -14,7 +14,7 @@ title: "Deploying a Mastodon through the Linode Marketplace"
 external_resources:
  - '[]()'
  - '[]()'
- - ‘[Mastodon Deployment Github Repository](https://github.com/linode-solutions/docker_mastodon_ansible)’
+ - ‘[Mastodon Deployment Github Repository](https://github.com/linode-solutions/mastodon-oca)’
 aliases: []
 ---
 
@@ -57,7 +57,6 @@ The Linode Marketplace allows you to easily deploy software on a Compute Instanc
 |:--------------|:------------|
 | **API Token**   | Your Linode API token. Requires Read/Write for Domains. *Required*  |
 | **Domain** | A valid domain name for your Mastodon instance, with Linode's name servers configured as the [authoritative name servers](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers). |
-|**Subdomain** | Subdomain record to create for the Mastodon server. Defaults to WWW.  |
 | **SOA Email** | An email address you control to be the Source of Authority for the generated DNS zone. *Required* |
 | **Mastodon Owner** | The username for the Owner user that will be created for the Mastodon server. *Required* |
 | **Mastodon Owner Email**  | The contact email for the Mastodon server's owner. *Required* |
@@ -65,7 +64,6 @@ The Linode Marketplace allows you to easily deploy software on a Compute Instanc
 
 - **Linode API Token:** In order to use Linode's [DNS Manager](/docs/products/networking/dns-manager/) to manage DNS records for your custom domain, create a Linode API *Personal Access Token* on your account with Read/Write access to *Domains*. When this is provided, along with the subdomain and domain fields (outlined below), the installation attempts to create DNS records via the Linode API. See [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/). If you do not provide a custom domain configured for use with Linode's name servers, the One-Click App installation will fail. 
 
-- **Subdomain:** The subdomain you wish to use, such as *www* for `www.example.com`.
 - **Domain:** The domain name you wish to use, such as *example.com*.
 
 ## Getting Started after Deployment
