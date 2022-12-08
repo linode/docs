@@ -90,7 +90,7 @@ When the *HTTPS* protocol is selected, the **Certificate** and **Private Key** f
 
 - **Private Key**: The passphraseless private key that is associated with the certificate file.
 
-A certificate can be obtained for your domain by using [certbot](https://certbot.eff.org/) or by purchasing one through a trusted certificate authority. See [TLS/SSL Termination]() for more details on obtaining a certificate and configuring both the NodeBalancer and backend nodes.
+A certificate can be obtained for your domain by using [certbot](https://certbot.eff.org/) or by purchasing one through a trusted certificate authority. See [TLS/SSL Termination](/docs/products/networking/nodebalancers/guides/ssl-termination/) for more details on obtaining a certificate and configuring both the NodeBalancer and backend nodes.
 
 {{< note >}}
 If you wish to use TLS/SSL pass-through and terminate the HTTPS connection on the backend nodes, select the **TCP** protocol instead of **HTTPS**.
