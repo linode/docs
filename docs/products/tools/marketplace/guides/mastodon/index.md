@@ -30,7 +30,17 @@ Mastodon servers range in size from small private instances to massive public in
 
 ## Deploying a Marketplace App
 
-{{< content "deploy-marketplace-apps-shortguide">}}
+The Linode Marketplace allows you to easily deploy software on a Compute Instance using the Cloud Manager. See [Get Started with Marketplace Apps](/docs/products/tools/marketplace/get-started/) for complete steps.
+
+1. The Mastodon One-Click App *requires* a custom domain. You first need to configure your domain to use Linode's name servers. This is typically accomplished directly through your registrar. See [Use Linode’s Name Servers with Your Domain](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers).
+
+2. Log in to the [Cloud Manager](https://cloud.linode.com) and select the **Marketplace** link from the left navigation menu. This displays the Linode **Create** page with the **Marketplace** tab pre-selected.
+
+3. Under the **Select App** section, select the app you would like to deploy.
+
+4. Complete the form by following the steps and advice within the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide. Depending on the Marketplace App you selected, there may be additional configuration options available. See the [Configuration Options](#configuration-options) section below for compatible distributions, recommended plans, and any additional configuration options available for this Marketplace App.
+
+5. Click the **Create Linode** button. Once the Compute Instance has been provisioned and has fully powered on, **wait for the software installation to complete**. If the instance is powered off or restarted before this time, the software installation will likely fail.
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
@@ -41,16 +51,22 @@ Mastodon servers range in size from small private instances to massive public in
 - **Supported distributions:** Debian 11
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
-### Mastodon Options
+### Configuration Options
 
 | **Field** | **Description** |
 |:--------------|:------------|
 | **API Token**   | Your Linode API token. Requires Read/Write for Domains. *Required*  |
+| **Domain** | A valid domain name for your Mastodon instance, with Linode's name servers configured as the [authoritative name servers](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers). |
+|**Subdomain** | Subdomain record to create for the Mastodon server. Defaults to WWW.  |
 | **SOA Email** | An email address you control to be the Source of Authority for the generated DNS zone. *Required* |
-| **Domain Name**   | Domain name for your Mastodon instance. *Required*  |
 | **Mastodon Owner** | The username for the Owner user that will be created for the Mastodon server. *Required* |
 | **Mastodon Owner Email**  | The contact email for the Mastodon server's owner. *Required* |
-| ** Single User Mode** | Enabling Single User Mode prevents other users from joining the Mastodon Server, while disabling it allows it. *Required* |
+| **Single User Mode** | Enabling Single User Mode prevents other users from joining the Mastodon Server, while disabling it allows it. *Required* |
+
+- **Linode API Token:** In order to use Linode's [DNS Manager](/docs/products/networking/dns-manager/) to manage DNS records for your custom domain, create a Linode API *Personal Access Token* on your account with Read/Write access to *Domains*. When this is provided, along with the subdomain and domain fields (outlined below), the installation attempts to create DNS records via the Linode API. See [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/). If you do not provide a custom domain configured for use with Linode's name servers, the One-Click App installation will fail. 
+
+- **Subdomain:** The subdomain you wish to use, such as *www* for `www.example.com`.
+- **Domain:** The domain name you wish to use, such as *example.com*.
 
 ## Getting Started after Deployment
 
@@ -68,7 +84,7 @@ Mastodon servers range in size from small private instances to massive public in
 
   ![Screenshot of Sidekiq dashboard](sidekiq-dashboard_marketplace.jpeg)
 
-4. The Mastodon server is configured to send emails for actions such as new users signing up, or resetting a password. The installation includes only minimal DNS records, and there may be limited deliverability without further configurations. We recommend reviewing our guide to [Sending Email on Linode](https://linode.com/docs/guides/running-a-mail-server/#sending-email-on-linode) for more information on DNS configurations and email best practices. 
+4. The Mastodon server is configured to send emails for actions such as new users signing up, or resetting a password. The installation includes only minimal DNS records, and there may be limited deliverability without further configurations. We recommend reviewing our guide to [Sending Email on Linode](/docs/guides/running-a-mail-server/#sending-email-on-linode) for more information on DNS configurations and email best practices. 
 
 To learn more about Mastodon, check out the official [Mastodon blog](https://blog.joinmastodon.org/) with news and articles related to Mastodon. You can engage with the Mastodon administrative community on [Mastodon’s discussion forum](https://discourse.joinmastodon.org/), where you can peruse conversations about technical issues and community governance.
 
