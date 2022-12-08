@@ -2004,6 +2004,7 @@ subcommands
 subfile
 subfiles
 subfolder
+subgoals
 subkey
 subkeys
 sublanguage
