@@ -17,7 +17,7 @@ contributor:
   link: https://github.com/nasanos
 ---
 
-A redundant cross–data center architecture gives you a completely segmented software-defined network for your Software as a Service (SaaS) applications. The architecture uses Linode's Virtual LAN (VLAN) service along with WireGuard&#174; to network an application across data centers.
+A redundant cross–data center architecture gives you a completely segmented software-defined network for your *Software as a Service* (SaaS) applications. The architecture uses Linode's Virtual LAN (VLAN) service along with WireGuard&#174; to network an application across data centers.
 
 This guide presents a walkthrough for implementing a redundant cross–data center architecture using Terraform, WireGuard&#174;, and MongoDB within Linode's VLAN service.
 
@@ -51,81 +51,75 @@ The diagram below illustrates the final goal for the implementation here.
 
 The setup assumes you have a DNS load balancer configured. The infrastructure utilizes nodes in different regions to promote redundancy. A DNS load balancer can then resolve to one of these regional nodes, depending on factors like availability.
 
-[Cloudflare](https://www.cloudflare.com/load-balancing/) provides an exceptional DNS load balancing service that can be set up for this purpose.
-
 ### Provisioning Linode Instances
 
-The redundant cross-regional architecture as it is implemented here requires you to create numerous nodes, many of which are similar to others. To streamline the process, the tutorial uses  [Terraform](https://www.terraform.io/).
+The redundant cross-data center architecture as it is implemented here requires you to create numerous nodes, many of which are similar to others. To streamline the process, the tutorial uses [Terraform](https://www.terraform.io/).
 
-Terraform is a tool for automating the process of provisioning infrastructure. You can learn more about using Terraform, particularly for provisioning Linode instances, in our [Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/).
+Terraform is a tool for automating the process of provisioning infrastructure. You can learn more about using Terraform to provision Linode instances in our [Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/).
 
-The steps below give you everything you need to run the Terraform script for implementing the infrastructure here. After the steps, you can find a high-level break down of what the script does.
-
-Once you have completed these steps, you have a few manual steps to complete before the infrastructure is ready to use. You can see these steps outlined over the following several sections.
+The steps below give you everything you need to run the Terraform script for implementing the infrastructure here. Afterwards, you can find a high-level breakdown of what the script does.
 
 {{< caution >}}
 The configurations and commands used in this guide add multiple Linode instances to your account. Be sure to monitor your account closely in the Linode Manager to avoid unwanted charges.
 {{< /caution >}}
 
-1.  Follow the Terraform [install guide](https://learn.hashicorp.com/tutorials/terraform/install-cli) to install the Terraform command-line interface (CLI) for your system.
+1.  Follow the Terraform [install guide](https://learn.hashicorp.com/tutorials/terraform/install-cli) to install the Terraform command line interface (CLI) for your system.
 
 1.  Download the Terraform package for this tutorial, which you can find [here](rcdc-terraform.zip).
 
-1.  Unzip the package into your desired directory. Doing so may require installing a separate tool, typically `unzip` on Linux systems.
+1.  Unzip the package into the current user's home directory so you have a `~/rcdc-terraform` directory. Doing so may require installing a separate tool, typically `unzip` on Linux systems. This folder contains both the Terraform script files and files to be delivered to instances within the infrastructure.
 
-    The package contains a folder, `rcdc-terraform`, which contains both the Terraform script files and files to be delivered to instances within the infrastructure.
+1.  Run the following commands to generate a keyfile for a MongoDB cluster. The Terraform script automatically delivers the file to each of the application nodes and configures each MongoDB instance to use it.
 
-    This tutorial assumes that you unzipped the package in the current user's home directory, so that you should now have a `~/rcdc-terraform` directory.
-
-1.  Run the following commands to generate a keyfile for a MongoDB cluster. The Terraform script automatically delivers the file to each of the application nodes and configures each MongoDB instance to use it:
-
-    ```code
+    ```command
     openssl rand -base64 756 > mongo-keyfile
     mv mongo-keyfile ~/rcdc-terraform/documents/mongo-keyfile
     ```
 
-1.  Open the `terraform.tfvars` file, and replace the `LINODE_API_TOKEN` and `INSTANCE_ROOT_PASSWORD` values with your own.
+1.  With a text editor, open the `terraform.tfvars` file in the `rcdc-terraform`. Replace the `LINODE_API_TOKEN` and `INSTANCE_ROOT_PASSWORD` values with your own.
 
     -   The value for `token` needs to be your Linode API access token. You can follow our [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
 
-    -   The `password` value should be a root password you intend to use for the nodes in the infrastructure.
+    -   The `password` value should be the root password you intend to use for the nodes in the infrastructure.
 
     {{< caution >}}
 Sensitive infrastructure data (like passwords and tokens) are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
     {{< /caution >}}
 
-1.  **Optional:** The Terraform script assumes that you have an SSH public key file stored at `~/.ssh/id_rsa.pub`. If this is not the case, add an `ssh_key` field to the `terraform.tfvars` file, and give it a string value designating the location of your SSH public key.
+    {{< note >}}
+The Terraform script assumes you have an SSH public key file stored at `~/.ssh/id_rsa.pub`. If not, add an `ssh_key` field to the `terraform.tfvars` file, and give it a string value designating the location of your SSH public key.
 
-    For instance, include a line like the following if your public key file is stored in the current user's home directory:
+For instance, include a line like the following if your public key file is stored in the current user's home directory:
 
-    ```code
-    ssh_key = "~/id_rsa.pub"
-    ```
+```command
+ssh_key = "~/id_rsa.pub"
+```
 
-    Learn more about SSH public keys in our tutorial [How to Use SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/)
+Learn more about SSH public keys in our tutorial [How to Use SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/)
+    {{< /note >}}
 
-1.  **Optional:** Adjust the `node_count` value to control the number of nodes created in each region. The script as it is does not handle work properly if anything other than two regions are specified, but you can adjust the specific `regions` values.
+1.  **Optional:** Adjust the `node_count` value to control the number of nodes created in each region. The script as it is does not work properly if anything other than two regions are specified, however, you can adjust the specific `regions` values.
 
 1.  Change into the script's directory, and initialize the Terraform configuration:
 
-    ```code
+    ```command
     cd ~/rcdc-terraform
     terraform init
     ```
 
-    Terraform initializes by downloading the necessary provisioner files. In this case, the only provisioner use is the `linode` provisioner.
+    Terraform initializes by downloading the necessary provisioner files. In this case, the only provisioner used is the `linode` provisioner.
 
 1.  Use the Terraform CLI to execute the script.
 
-    You can first get an overview of the results — essentially making a dry run — with the command:
+    You can first get an overview of the results (essentially a dry run) with the command:
 
-    ```code
+    ```command
     terraform plan
     ```
 
     Then, when you are confident in the setup, provision the infrastructure using:
 
-    ```code
+    ```command
     terraform apply
     ```
 
@@ -133,13 +127,13 @@ The script may take several minutes to run, and you should survey the output to 
 
 If at any point you want to remove the provisioned instances, you can use the command:
 
-```code
+```command
 terraform destroy
 ```
 
 #### Terraform Script Details
 
-The script used above handles several of the necessary provisioning tasks. But it can be difficult initially to pick these out from the scripts themselves. This breakdown is meant to make the whole process more transparent and approachable.
+The script used above handles several of the necessary provisioning tasks. Here's a breakdown of the script to make the whole process more transparent and approachable:
 
 -   Creates two gateway nodes, one for each region. Each gateway is configured with **eth0** as a *Public Internet* interface and **eth1** as a *VLAN* interface. The script automatically creates a VLAN specific to each gateway's region.
 
@@ -151,15 +145,15 @@ The script used above handles several of the necessary provisioning tasks. But i
 
 -   Delivers an NGINX configuration file and a shell script to each gateway node. The NGINX configuration is immediately placed in the directory for NGINX site configurations.
 
--   Executes the delivered shell script. This shell script handles the network configuration and the installation and configuration of necessary software.
+-   Executes the delivered shell script. This shell script handles network setup along with the installation and configuration of necessary software.
 
     The network configuration includes `networkd` routing, `iptables` rules for forwarding, and a `keepalive` configuration. You can learn more about some parts of the network configuration in our guide to [Configure Linux as a Router](/docs/guides/linux-router-and-ip-forwarding/).
 
     The necessary software includes WireGuard&#174; and NGINX. WireGuard&#174; provides a VPN for communications between the two gateways, and NGINX performs load balancing between each region's array of application nodes. The shell script handles the initial configuration for these applications.
 
--   Creates a given number of application nodes within each region. Each application node has only one interface, **eth0**, which is configured to the VLAN created for that node's regional gateway.
+-   Creates a given number of application nodes within each region. Each application node has only one interface, **eth0**, which connects to the VLAN created for that node's regional gateway.
 
-    With the default of two nodes per region, you end up with a set of instances like:
+    With the default of two nodes per region, you end up with the following set of instances:
 
     -   `rcdc-node-1` on `vlan-us-southeast-1`
 
@@ -169,51 +163,50 @@ The script used above handles several of the necessary provisioning tasks. But i
 
     -   `rcdc-node-4` on `vlan-ca-central-1`
 
--   Delivers a number of files to each application node. The files include:
+-   Delivers a number of files to each application node, including:
 
-    -   A shell script, described more below
+    -   A shell script, described below.
 
-    -   The `mongo-keyfile` you created
+    -   The `mongo-keyfile` you created.
 
-    -   An example application for interacting with the MongoDB instance, along with a service file for running the application as a `systemctl` service
+    -   An example application for interacting with the MongoDB instance and a service file for running the application as a `systemctl` service.
 
--   Executes the delivered shell script. The shell script for the application nodes similarly handles the network configuration and installing and configuring the necessary software.
+-   Executes the delivered shell script. The shell script for the application nodes similarly handle network setup and software installation and configuration.
 
-    The network configuration includes `networkd` routing. This synchronizes the application nodes' routes with the routes defined in the gateway nodes.
+    The network configuration includes `networkd` routing. This synchronizes the application nodes' routes with those defined in the gateway nodes.
 
     Each application node needs Node.js to run the example application, which the shell script installs. The script also initializes the example application, installing its NPM dependencies and enabling its `systemctl` service.
 
-    Each application node also has a MongoDB instance. These are set up to use the `mongo-keyfile`, which gets used for aligning all of the instances as a replica set.
+    Each application node also has a MongoDB instance. These are set up to use the `mongo-keyfile`, which is used to align all the instances as a replica set.
 
-    The first MongoDB instance — on `rcdc-node-1` — gets a MongoDB administrator user created. That user authentication data gets disseminated to the other MongoDB instances later when you configure replication.
+    A MongoDB administrator user created on the first MongoDB instance (on `rcdc-node-1`). That user authentication data is disseminated to the other MongoDB instances when you manually configure replication later on.
 
 ### Configuring the WireGuard&#174; VPNs
 
-To complete the WireGuard&#174; setup, each gateway node needs to be configured to recognize the other node as a WireGuard&#174; peer.
+To complete the WireGuard&#174; setup, each gateway node must be configured to recognize the other node as a WireGuard&#174; peer.
 
-For the setup used in this tutorial, the most approachable method is probably adding a `[WireGuardPeer]` block to each gateway's WireGuard&#174; configuration file.
+The most approachable method for this setup is to add a `[WireGuardPeer]` block to each gateway's WireGuard&#174; configuration file.
 
 To make these additions, you need to access each gateway node through SSH, using the node's public IP address. For instance, assuming the public IP address for the `rcdc-gateway-us-southeast` node is `192.0.2.1`:
 
-```code
+```command
 ssh root@192.0.2.1
 ```
 
 The WireGuard&#174; configuration file is located at `/etc/systemd/network/99-wg0.netdev`. You can either edit the file using your preferred text editor or issue the following from the command line:
 
-```code
+```command
 cat >>/etc/systemd/network/99-wg0.netdev<<EOF
 [WireGuardPeer]
 PublicKey=<OTHER_WIREGUARD_PUBLIC_KEY>
 AllowedIPs=<OTHER_GATEWAY_LOCAL_IP>/24,<OTHER_WIREGUARD_NETWORK_IP>/32
 Endpoint=<OTHER_GATEWAY_PUBLIC_IP>:51820
-
 EOF
 ```
 
-You need to replace the values in arrow brackets (`<...>`) above with the appropriate values for each gateway. The public keys you can get from each gateway node's `/etc/systemd/network/wg.public_key` file. The public IP address you can get from the Linode Cloud Manager.
+You need to replace the values in arrow brackets (`<...>`) above with the appropriate values for each gateway. Each gateway node's public keys are located in the `/etc/systemd/network/wg.public_key` file. The public IP address is available from the Linode Cloud Manager.
 
-The following is what the these configuration should looks like on each gateway. Replace the `_WG_PUBLIC_KEY` values with each respective gateway's public key, and replace `192.0.2.2` and `192.0.2.1` with the respective gateway's public IP addresses.
+The following is what the these configuration files should looks like on each gateway. Replace the `_WG_PUBLIC_KEY` values with the respective gateway's public key, and replace `192.0.2.2` and `192.0.2.1` with the respective gateway's public IP addresses.
 
 -   For the `rcdc-gateway-us-southeast` gateway:
 
@@ -224,7 +217,6 @@ The following is what the these configuration should looks like on each gateway.
     PublicKey=CA_CENTRAL_WG_PUBLIC_KEY
     AllowedIPs=10.8.1.0/24,10.254.8.2/32
     Endpoint=192.0.2.2:51820
-
     ```
 
 -   For the `rcdc-gateway-ca-central` gateway:
@@ -236,7 +228,6 @@ The following is what the these configuration should looks like on each gateway.
     PublicKey=US_SOUTHEAST_WG_PUBLIC_KEY
     AllowedIPs=10.8.0.0/24,10.254.8.1/32
     Endpoint=192.0.2.1:51820
-
     ```
 
 At this point, you should restart the `networkd` process using the command:
@@ -251,16 +242,16 @@ You can then test the connection between the two gateway nodes by pinging one fr
 ping 10.8.1.1
 ```
 
-{{< output >}}
+```output
 PING 10.8.1.1 (10.8.1.1) 56(84) bytes of data.
 64 bytes from 10.8.1.1: icmp_seq=1 ttl=64 time=34.1 ms
-{{< /output >}}
+```
 
 ### Building a MongoDB Replica Set
 
-The Terraform script handled most of the set up for the MongoDB instances. However, you need to issue some additional commands on one of the application instances to complete the setup.
+The Terraform script handled most of the work for the MongoDB instances. However, you need to issue some additional commands on one of the application instances to complete the setup.
 
-The necessary commands establish a replica set between the MongoDB instances, across the application nodes. Communications between instances on the same VLAN use the local network. Communications between instances in different regions use the WireGuard&#174; network established by the gateway nodes.
+The necessary commands establish a replica set between MongoDB instances across the application nodes. Communications between instances on the same VLAN use the local network. Communications between instances in different regions use the WireGuard&#174; network established by the gateway nodes.
 
 Follow along with this next series of steps to initialize the replica set. These steps only need to be taken on one of your application nodes. In this case, that should be `rcdc-node-1`, where the MongoDB administrator user was set up.
 
@@ -268,7 +259,7 @@ Follow along with this next series of steps to initialize the replica set. These
 
     So, assuming again that your `rcdc-gateway-us-southeast` node has a public IP address of `192.0.2.1`, you can use the commands:
 
-    ```code
+    ```command
     ssh root@192.0.2.1
     ssh root@10.8.0.11
     ```
@@ -277,118 +268,118 @@ Follow along with this next series of steps to initialize the replica set. These
 
     In this example, replace `MONGODB_ADMIN_PASSWORD` with the password you entered in the `terraform.tfvars` file before running the Terraform script:
 
-    ```code
+    ```command
     mongosh admin -u 'admin' -p 'MONGODB_ADMIN_PASSWORD' /tmp/mongo-init-replication.js
     ```
 
-The MongoDB script here contains a single command, which is all that is needed to start up replication between the instances.
+The MongoDB script here contains a single command, which is all that is needed to initiate replication between the instances.
 
-You can see the script at `/tmp/mongo-init-replication.js`, and below is a break down of what the command given in the script does.
+You can see the script at `/tmp/mongo-init-replication.js`. Below is a breakdown of what the script does:
 
 -   `rs.initiate(` is MongoDB's function for creating a replica set.
 
--   `{ _id: "rs0",` identifies the name of the replica set. This name has to be preconfigured in each MongoDB server's configuration file, which was handled by the Terraform script.
+-   `{ _id: "rs0",` identifies the name of the replica set. This name is preconfigured in each MongoDB server's configuration file, which was handled by the Terraform script.
 
--   `members: [` starts a list of the members of the replica set.
+-   `members: [` lists the members of the replica set.
 
--   `{ _id: 0, host: "mongo-repl-1:27017" }, [...] ] } )` defines the first member, and each subsequent member is defined similarly.
+-   `{ _id: 0, host: "mongo-repl-1:27017" }, [...] ] } )` defines the first member, then each subsequent member.
 
-    The shell script executed during the Terraform provisioning assigned hostnames of `mongo-repl-1`, `mongo-repl-2`, etc. for each application node's local IP address. The script then input the collection of hosts in each node's `/etc/hosts` file. Doing so helps to make your MongoDB cluster more adaptable and future proof.
+    The shell script executed during the Terraform provisioning assigned hostnames of `mongo-repl-1`, `mongo-repl-2`, etc. for each application node's local IP address. The script then input the collection of hosts in each node's `/etc/hosts` file. This helps make your MongoDB cluster more adaptable and future-proof.
 
-Afterward, can verify the replica set by accessing the MongoDB shell and issuing the command shown below:
+Afterward, can verify the replica set by accessing the MongoDB shell and issuing this command:
 
-```code
+```command
 mongosh admin -u 'admin' -p 'MONGODB_ADMIN_PASSWORD'
 rs.conf()
 ```
 
-This outputs the configuration for your replica set, and it should list all of the application nodes.
+This outputs the configuration of your replica set. It should list all of the application nodes.
 
 ### Developing the Application
 
-The Terraform process handled all of the setup for the example application used in this tutorial. However, this section briefly overviews the example application before testing the infrastructure with it.
+The Terraform process handled all of the setup for the example application used in this tutorial. This section briefly overviews the example application before testing the infrastructure with it.
 
-The example application is a simple RESTful API built on Node.js. More specifically, it uses Express JS for managing the HTTP routing and Mongoose for connecting to the node's MongoDB instance.
+The example application is a simple RESTful API built on Node.js. More specifically, it uses Express JS for managing the HTTP routing, and Mongoose for connecting to the node's MongoDB instance.
 
 The application is designed to fetch, store, and delete to-do items. It thus exposes `GET /todos` for fetching all items, `POST /todos` for adding a new item, and `DELETE /todos/<id>` for removing an item.
 
-The diagram below provides a basic overview of what each application node's application setup looks like.
+The diagram below provides a basic overview of what each application node's setup looks like.
 
 ![A diagram of the example application for the tutorial](rcdc-example-app.png)
 
 During the Terraform process, everything necessary for running the application is put into place. The application files are delivered to a directory on each application node, and the NPM dependencies are installed.
 
-The Terraform process also include an `example-app.service` file. This file gets deployed to each application node to set up a `systemctl` service. That service then runs the application in the background and restarts it at system startup.
+The Terraform process also includes an `example-app.service` file. This file is deployed to each application node to set up a `systemctl` service. That service then runs the application in the background and restarts it at system startup.
 
 ### Implementing a Cloud Firewall
 
-Setting up a cloud firewall is optional as far as testing the infrastructure, but is highly useful for securing your gateway nodes.
+Setting up a cloud firewall is optional for testing the infrastructure, but it is highly recommended for securing your gateway nodes.
 
-The Linode Cloud Firewall provides an easy-to-implement firewall that you can add attach to the gateway instances deployed above.
+The Linode Cloud Firewall provides an easy-to-implement firewall that you can attach to the gateway instances deployed above.
 
-Learn more about Linode Cloud Firewalls in our [selection of guides[(/docs/products/networking/cloud-firewall/guides/) on the topic.
+Learn more about Linode Cloud Firewalls in our [selection of guides](/docs/products/networking/cloud-firewall/guides/) on the topic.
 
 The steps below outline a basic configuration you can use with the infrastructure deployed in this tutorial.
 
-1.   Access the **Firewalls** section of the Linode Cloud Manager from its left menu.
+1.  Access the **Firewalls** section of the Linode Cloud Manager from its left-hand menu.
 
-1.   Select **Create Firewall**, enter a label for the firewall — "rcdc-gateway-firewall" is used here — and assign the firewall to the gateway instances, `rcdc-gateay-us-southeast` and `rcdc-gateway-ca-central`.
+1.  Select **Create Firewall**, enter a label for the firewall (e.g. "rcdc-gateway-firewall"), and assign the firewall to the gateway instances `rcdc-gateay-us-southeast` and `rcdc-gateway-ca-central`.
 
-1.   Navigate to the page for the new firewall, and, from the **Rules** tab, set default policies and add a set of **Inbound Rules**.
+1.  Navigate to the page for the new firewall. From the **Rules** tab, set default policies and add a set of **Inbound Rules**.
 
     It is recommended that you set the **Inbound** default policy to *Drop* and the **Outbound** default policy to *Accept*.
 
-    The specific firewall rules you implement depend on your needs, but you should at least have the following set of inbound rules.
+    The specific firewall rules you implement depend on your needs, but you should at least have the following set of inbound rules:
 
     -   A rule to allow inbound connections over SSH, `22/tcp`
 
     -   A rule to allow inbound connections over HTTP, `80/tcp`
 
-    -   A rule to allow inbound WireGuard&#174; connections, configured for port `51820` in this case and using `udp`
+    -   A rule to allow inbound WireGuard&#174; connections, configured for port `51820` using `udp`
 
     -   A rule to allow inbound ICMP traffic
 
-![Configuring a cloud firewall from within the Linode Cloud Manager](linode-rcdc-firewall.png)
+    ![Configuring a cloud firewall from within the Linode Cloud Manager](linode-rcdc-firewall.png)
+
+1.  Click **Save Changes** to apply the settings.
 
 ### Testing the Infrastructure
 
-With the infrastructure stood up and networked, you can test everything through the example application.
+With the infrastructure set up and networked, you can test everything through the example application.
 
-All of this testing can be done from a machine outside of the redundant cross-regional network. Ideally, you should have a DNS load balancer configured with the gateway's public IP addresses. Then, you would call the DNS load balancer to test the infrastructure. However, during initial testing, you can also make the calls shown here to each gateway independently.
+All of this testing can be done from a machine outside the redundant cross-regional network. Ideally, you should have a DNS load balancer configured with the gateway's public IP addresses. Then, you would call the DNS load balancer to test the infrastructure. However, during initial testing, you can also make the calls shown here to each gateway independently.
 
-In either case, replace the `192.0.2.0` URL used in the following example commands with the appropriate URL for you. That is, the DNS load balancer URL or the public IP address for the particular gateway you are testing.
+In either case, replace the `192.0.2.0` URL used in the following example commands with the appropriate URL for you. That is, the DNS load balancer URL or public IP address for the gateway you're testing.
 
 First, since the application does not start with any data, you should supply it with some. These two cURL commands each input a new to-do item.
 
-```code
+```command
 curl -X POST 192.0.2.0/todos -H 'Content-Type: application/json' -d '{ "description": "First thing todo" }'
 curl -X POST 192.0.2.0/todos -H 'Content-Type: application/json' -d '{ "description": "Another item todo, the second." }'
 ```
 
-Now you can fetch the full list of to-do items. It should contain both of the items added above.
+Now you can fetch the full list of to-do items. It should contain both items added above.
 
-```code
+```command
 curl 192.0.2.0/todos
 ```
 
-When you want to delete one of these items, you can use a command like this one below. Just replace `12345` in this example command with and actual `_id` value from one of your to-do items.
+When you want to delete one of these items, you can use a command like the one below. Just replace `12345` in this example with and actual `_id` value from one of your to-do items.
 
-```code
+```command
 curl -X DELETE 192.0.2.0/todos/12345
 ```
 
-To summarize much of what has been covered in the course of this tutorial, here is what essentially happens with each of these calls.
+To summarize, here is what essentially happens with each of these calls:
 
--   The DNS load balancer resolves to one of your gateway instances
+-   The DNS load balancer resolves to one of your gateway instances.
 
--   The NGINX load balancer in the given gateway fields the request to an upstream, namely one of the application nodes in the associated region
+-   The NGINX load balancer in the given gateway fields the request to one of the application nodes in the associated region.
 
--   The example application running on that application node processes the request, makes the appropriate call to the local MongoDB instance, and returns the result
+-   The example application running on that application node processes the request, makes the appropriate call to the local MongoDB instance, and returns the result.
 
--   The MongoDB instances stay in sync within a particular VLAN via a local connection, while instances in different regions are synced across the gateways' WireGuard&#174; connection
+-   The MongoDB instances stay synced within a particular VLAN via the local connection, while instances in different regions are synced across the gateways' WireGuard&#174; connection.
 
 ## Conclusion
 
-This tutorial covers a complete setup for a redundant cross–data center architecture. Much of the work is tucked within the Terraform script and its associated shell scripts.
-
-One of this tutorial's aims has been to provide a thorough overview of how these scripts accomplish the infrastructure. That way, you can be more empowered to dig into these scripts and customize them to fit your particular needs. With a wide range of possibility for the architecture, this tutorial helps to making finding and moving forward with the right one easier.
+This tutorial covers a complete setup for a redundant cross–data center architecture, which holds a wide range of possibilities. Much of the work is done by the Terraform script and its associated shell scripts. However, one of this tutorial's aims is to provide a thorough overview of how these scripts accomplish that work. This way, you are empowered to dig into these scripts and customize them to fit your particular needs.
