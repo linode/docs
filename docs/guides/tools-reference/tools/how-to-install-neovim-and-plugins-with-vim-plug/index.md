@@ -126,7 +126,7 @@ To exit without saving changes, press the **ESC** key to enter Command mode, the
 
     {{< file "~/.config/nvim/init.vim" aconf >}}
 call plug#begin()
-Plug 'roxma/nvim-completion-manager'
+Plug 'ncm2/ncm2'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 call plug#end()
