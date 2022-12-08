@@ -65,7 +65,7 @@ This guide covers how to use the Linode API to:
 
 1. [Familiarize yourself with the Linode Kubernetes Engine service](https://www.linode.com/products/kubernetes/). This information helps you understand the benefits and limitations of LKE.
 
-1. [Create an API Token](/docs/guides/getting-started-with-the-linode-api/#create-an-api-token). You need this to access the LKE service.
+1. [Create an API Token](/docs/products/tools/api/get-started/#create-an-api-token). You need this to access the LKE service.
 
 1. [Install kubectl](#install-kubectl) on your computer. You use kubectl to interact with your cluster once it's deployed.
 

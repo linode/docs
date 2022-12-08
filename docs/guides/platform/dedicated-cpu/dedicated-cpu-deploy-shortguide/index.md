@@ -26,7 +26,7 @@ aliases: ['/platform/dedicated-cpu/dedicated-cpu-deploy-shortguide/']
 1. Select a [Distribution](/docs/guides/choosing-a-distribution/), [Marketplace App](/docs/products/tools/marketplace/get-started/), or [Image](/docs/products/tools/images/) to deploy from.
 
     {{< note >}}
-Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. You can read more about Stackscripts and how they work in our [Automating Deployments with Stackscripts Guide](/docs/platform/stackscripts/).
+Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. You can read more about Stackscripts and how they work in our [Automating Deployments with Stackscripts Guide](/docs/products/tools/stackscripts/).
   {{< /note >}}
 
 1. Choose the region where you would like your Linode to reside. If you’re not sure which to select, see our [How to Choose a Data Center guide](/docs/guides/how-to-choose-a-data-center/). You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the network route between you and each of our data centers.

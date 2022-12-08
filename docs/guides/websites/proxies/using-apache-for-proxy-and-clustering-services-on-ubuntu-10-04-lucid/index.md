@@ -54,11 +54,11 @@ Reload the web server configuration to create the virtual host. Issue the follow
 
     /etc/init.d/apache2 reload
 
-Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
+Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/guides/dns-overview/#a_aaaa_records) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
 
 ## Case Two: Using ProxyPass to Delegate Services to Alternate Machines
 
-In our guide to using [multiple web servers with ProxyPass](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-10-04-lucid) we outline a method for configuring multiple websites using Apache's `mod_proxy`. Please follow that guide, particularly the section regarding [configuring mod\_proxy](/docs/guides/multiple-web-servers-with-proxypass-on-ubuntu-10-04-lucid/#enabling-the-proxy-module) and ensure that `mod_proxy` is active by issuing the following commands to enable and restart web server:
+In our guide to using [multiple web servers with ProxyPass](/docs/guides/multiple-web-servers-with-proxypass-on-ubuntu-10-04-lucid/) we outline a method for configuring multiple websites using Apache's `mod_proxy`. Please follow that guide, particularly the section regarding [configuring mod\_proxy](/docs/guides/multiple-web-servers-with-proxypass-on-ubuntu-10-04-lucid/#enabling-the-proxy-module) and ensure that `mod_proxy` is active by issuing the following commands to enable and restart web server:
 
     a2enmod proxy
     a2enmod proxy_http
@@ -86,14 +86,14 @@ In essence, the `ProxyPass` directive in this manner allows you to distribute se
 
 ## Case Three: Proxy only Some Requests to a Backend
 
-While using `ProxyPass` directives allows you to distribute resources by directory amongst a collection of backend servers, this kind of architecture only makes sense for some specific kinds of deployments. In many situations administrators might like to have much more fine grained control over the requests passed to external servers. In conjunction with [mod\_rewrite](/docs/web-servers/apache/configuration/rewriting-urls), we can configure `mod_proxy` to more flexibly pass requests to alternate backend servers. Follow this guide, particularly the section regarding configuring mod\_proxy, and insure that `mod_proxy` and `mod_rewrite` are active by issuing the following commands to enable and restart web server:
+While using `ProxyPass` directives allows you to distribute resources by directory amongst a collection of backend servers, this kind of architecture only makes sense for some specific kinds of deployments. In many situations administrators might like to have much more fine grained control over the requests passed to external servers. In conjunction with [mod\_rewrite](/docs/guides/rewrite-urls-with-modrewrite-and-apache/), we can configure `mod_proxy` to more flexibly pass requests to alternate backend servers. Follow this guide, particularly the section regarding configuring mod\_proxy, and insure that `mod_proxy` and `mod_rewrite` are active by issuing the following commands to enable and restart web server:
 
     a2enmod proxy
     a2enmod proxy_http
     a2enmod rewrite
     /etc/init.d/apache2 restart
 
-Once `mod_proxy` is enabled and configured, ensure that the server is [configured properly](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-10-04-lucid). Now, a number of additional proxy services will be available. Consider the following virtual host configuration:
+Once `mod_proxy` is enabled and configured, ensure that the server is [configured properly](/docs/guides/multiple-web-servers-with-proxypass-on-ubuntu-10-04-lucid/). Now, a number of additional proxy services will be available. Consider the following virtual host configuration:
 
 {{< file "Apache Virtual Host Configuration" apache >}}
 <VirtualHost *:80>

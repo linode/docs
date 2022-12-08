@@ -32,11 +32,11 @@ This tutorial introduces you to Appwrite, highlighting its features and how it c
 
 1.  Update your system:
 
-    ```code {title="Debian / Ubuntu"}
+    ```command {title="Debian / Ubuntu"}
     sudo apt update && sudo apt upgrade
     ```
 
-    ```code {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
+    ```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
     sudo dnf upgrade
     ```
 
@@ -84,17 +84,17 @@ The first step is to install Docker, which is used to both install and run your 
 
 1.  Install the Docker Compose plugin using your distribution's package manager.
 
-    ```code {title="Debian / Ubuntu"}
+    ```command {title="Debian / Ubuntu"}
     sudo apt install docker-compose-plugin
     ```
 
-    ```code {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
+    ```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
     sudo dnf install docker-compose-plugin
     ```
 
 1.  You can verify your Docker installation by checking the version. Your version may not match the one shown below, but that's fine, you just want to get a version response:
 
-    ```code
+    ```command
     docker -v
     ```
 
@@ -105,7 +105,7 @@ Docker version 20.10.17, build 100c701
     {{< note >}}
 On RHEL-derived distributions, you may additionally have to run the following command to ensure the Docker daemon starts:
 
-```code {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
+```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
 sudo systemctl start docker
 ```
 {{< /note >}}
@@ -116,7 +116,7 @@ Appwrite can be installed with a single Docker command. Essentially, this comman
 
 The command creates a new `appwrite` directory in the current directory, and this new directory becomes the base for your Appwrite instance:
 
-```code
+```command
 sudo docker run -it --rm --volume /var/run/docker.sock:/var/run/docker.sock --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw --entrypoint="install" appwrite/appwrite:1.0.3
 ```
 
@@ -162,19 +162,19 @@ These are some examples of useful Docker Compose commands for working with your 
 
 -   To restart the Appwrite services:
 
-    ```code
+    ```command
     sudo docker compose restart
     ```
 
 -   To stop the services:
 
-    ```code
+    ```command
     sudo docker compose stop
     ```
 
 -   To stop and uninstall the services:
 
-    ```code
+    ```command
     sudo docker compose down -v
     ```
 
@@ -182,7 +182,7 @@ These are some examples of useful Docker Compose commands for working with your 
 
 -   To start the services back up:
 
-    ```code
+    ```command
     sudo docker compose up -d
     ```
 
@@ -194,7 +194,7 @@ To make a change, take these steps, executing the commands while in the Appwrite
 
 1.  Stop the Appwrite services:
 
-    ```code
+    ```command
     sudo docker compose stop
     ```
 
@@ -202,7 +202,7 @@ To make a change, take these steps, executing the commands while in the Appwrite
 
 1.  Start the services up again:
 
-    ```code
+    ```command
     sudo docker compose up -d
     ```
 

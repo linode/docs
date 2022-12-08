@@ -98,6 +98,6 @@ Alternatively, you can [update your DNS entries](/docs/guides/hosting-a-website-
 
 ### Preserving Data for Forensics and Linode Cancellation
 
-You may want to download a complete copy of the compromised Linode's disk(s) for forensic analysis. To do this, follow the instructions in our [SSH disk copy guide](/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh). If you don't need a full copy of the affected disks, you may still want to make a copy of all system log files for later review.
+You may want to download a complete copy of the compromised Linode's disk(s) for forensic analysis. To do this, follow the instructions in our [SSH disk copy guide](/docs/guides/copying-a-disk-image-over-ssh/). If you don't need a full copy of the affected disks, you may still want to make a copy of all system log files for later review.
 
 When you no longer need the old Linode's disks, you should [remove the Linode](/docs/products/platform/billing/guides/stop-billing/). Your account will only be invoiced for the time the Linode was present on your account since the last invoice. For more information, see [Understanding Billing and Payments](/docs/products/platform/billing/).

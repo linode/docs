@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.140.0
+  version: 4.141.0
 
   title: Linode API
   description: |
@@ -17605,7 +17605,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SSHKeyRequest'
+              $ref: '#/components/schemas/SSHKey'
       responses:
         '200':
           description: SSH Key associated successfully.
@@ -17621,14 +17621,14 @@ paths:
           curl -H "Content-Type: application/json" \
               -H "Authorization: Bearer $TOKEN" \
               -X POST -d '{
-                  "label": "My SSH Key"
+                  "label": "My SSH Key",
                   "ssh_key": "ssh-rsa AAAA_valid_public_ssh_key_123456785== user@their-computer"
               }' \
               https://api.linode.com/v4/profile/sshkeys
       - lang: CLI
         source: >
           linode-cli sshkeys create \
-            --label "My SSH Key"
+            --label "My SSH Key" \
             --ssh_key "ssh-rsa AAAA_valid_public_ssh_key_123456785== user@their-computer"
   /profile/sshkeys/{sshKeyId}:
     x-linode-cli-command: sshkeys
@@ -17673,8 +17673,10 @@ paths:
       tags:
       - Profile
       summary: SSH Key Update
-      description: >
+      description: |
         Updates an SSH Key that you have permission to `read_write`.
+
+        Only SSH key labels can be updated.
       operationId: updateSSHKey
       x-linode-cli-action: update
       security:
@@ -17688,7 +17690,10 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SSHKey'
+              type: object
+              properties:
+                label:
+                  $ref: '#/components/schemas/SSHKey/properties/label'
       responses:
         '200':
           description: SSH Key updated successfully.
@@ -17706,10 +17711,10 @@ paths:
               -X PUT -d '{
                 "label": "my laptop"
               }' \
-              https://api.linode.com/v4/profile/sshkey/42
+              https://api.linode.com/v4/profile/sshkeys/42
       - lang: CLI
         source: >
-          linode-cli sshkey update 42 \
+          linode-cli sshkeys update 42 \
             --label "my laptop"
     delete:
       tags:
@@ -17743,13 +17748,12 @@ paths:
       x-code-samples:
       - lang: Shell
         source: >
-          curl -H "Content-Type: application/json" \
-              -H "Authoriztion: Bearer $TOKEN" \
+          curl -H "Authoriztion: Bearer $TOKEN" \
               -X DELETE \
               https://api.linode.com/v4/profile/sshkeys/42
       - lang: CLI
         source: >
-          linode-cli sshkey delete 42
+          linode-cli sshkeys delete 42
   /profile/phone-number:
     x-linode-cli-command: phone
     delete:
@@ -17762,7 +17766,7 @@ paths:
 
         Use this command to opt out of SMS messages for the requesting User after a phone number has been verified with the **Phone Number Verify** ([POST /profile/phone-number/verify](/docs/api/profile/#phone-number-verify)) command.
       operationId: deleteProfilePhoneNumber
-      x-linode-cli-command: delete
+      x-linode-cli-action: delete
       security:
       - personalAccessToken: []
       - oauth:
@@ -17780,8 +17784,7 @@ paths:
       x-code-samples:
       - lang: Shell
         source: >
-          curl -H "Content-Type: application/json" \
-            -H "Authorization: Bearer $TOKEN" \
+          curl -H "Authorization: Bearer $TOKEN" \
             -X DELETE \
             https://api.linode.com/v4/profile/phone-number
       - lang: CLI
@@ -17803,7 +17806,7 @@ paths:
 
         Once a verification code is received, verify your phone number with the **Phone Number Verify** ([POST /profile/phone-number/verify](/docs/api/profile/#phone-number-verify)) command.
       operationId: postProfilePhoneNumber
-      x-linode-cli-command: sms-code-send
+      x-linode-cli-action: sms-code-send
       security:
       - personalAccessToken: []
       - oauth:
@@ -17868,7 +17871,7 @@ paths:
 
         Once completed, the verified phone number is assigned to the User making the request. To change the verified phone number for a User, first use the **Phone Number Delete** ([DELETE /profile/phone-number](/docs/api/profile/#phone-number-delete)) command, then begin the verification process again with the **Phone Verification Code Send** ([POST /profile/phone-number](/docs/api/profile/#phone-number-verification-code-send)) command.
       operationId: postProfilePhoneNumberVerify
-      x-linode-cli-command: verify
+      x-linode-cli-action: verify
       security:
       - personalAccessToken: []
       - oauth:
@@ -17938,15 +17941,13 @@ paths:
               schema:
                 type: object
                 description: A dictionary of user preferences.
-                example: { "key1": "value1", "key2": "value2"}
+                example: { "key1": "value1", "key2": "value2" }
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
       - lang: Shell
         source: >
-          curl -H "Content-Type: application/json" \
-              -H "Authorization: Bearer $TOKEN" \
-              -X GET \
+          curl -H "Authorization: Bearer $TOKEN" \
               https://api.linode.com/v4/profile/preferences
     put:
       tags:
@@ -17976,7 +17977,9 @@ paths:
             schema:
               type: object
               description: |
-                Arbitrary JSON of your choosing.
+                Arbitrary JSON of your choosing. Overwrites any existing preferences for this user.
+
+                Total length cannot exceed 65,535 characters.
       responses:
         '200':
           description: Returns an object of user preferences.
@@ -17985,7 +17988,7 @@ paths:
               schema:
                 type: object
                 description: An object of user preferences.
-                example: { "key1": "value1", "key2": "value2"}
+                example: { "key1": "value1", "key2": "value2" }
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -17995,10 +17998,9 @@ paths:
               -H "Authorization: Bearer $TOKEN" \
               -X PUT -d '{
                 "key1": "value1",
-                "key1": "value2"
+                "key2": "value2"
               }' \
               https://api.linode.com/v4/profile/preferences
-
   /regions:
     x-linode-cli-command: regions
     get:
@@ -18227,14 +18229,16 @@ paths:
       x-linode-grant: read_write
       tags:
       - Support
-      summary: Ticket Attachment Create
-      description: >
+      summary: Support Ticket Attachment Create
+      description: |
         Adds a file attachment to an existing Support
         Ticket on your Account. File attachments are used to assist our
         Support team in resolving your Ticket. Examples of attachments
         are screen shots and text files that provide additional information.
 
-        Note: Accepted file extensions include: .gif, .jpg, .jpeg, .pjpg,
+        The file attachment is submitted in the request as multipart/form-data.
+
+        **Note**: Accepted file extensions include: .gif, .jpg, .jpeg, .pjpg,
         .pjpeg, .tif, .tiff, .png, .pdf, or .txt.
       operationId: createTicketAttachment
       x-linode-cli-skip: true
@@ -24493,6 +24497,7 @@ components:
           x-linode-cli-display: 6
         transfer:
           type: object
+          readOnly: true
           description: >
             Information about the amount of transfer this NodeBalancer has had
             so far this month.
@@ -26765,10 +26770,16 @@ components:
         ssh_key:
           type: string
           format: ssh-key
-          description: >
-            The public SSH Key, which is used to authenticate to the root user
-            of the Linodes you deploy.
-          readOnly: true
+          description: |
+            The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
+
+            Accepted formats:
+            * ssh-dss
+            * ssh-rsa
+            * ecdsa-sha2-nistp
+            * ssh-ed25519
+            * sk-ecdsa-sha2-nistp256 (Akamai-specific)
+          example: "ssh-rsa AAAA_valid_public_ssh_key_123456785== user@their-computer"
         created:
           type: string
           format: date-time
@@ -26776,25 +26787,6 @@ components:
             The date this key was added.
           example: "2018-01-01T00:01:01"
           readOnly: true
-    SSHKeyRequest:
-      type: object
-      description: >
-        An object consisting of a user identified name as the `label` and the
-        generated key as the `ssh-key`.
-      properties:
-        label:
-          type: string
-          minLength: 1
-          maxLength: 64
-          description: >
-            A label for the key.
-          example: "My SSH Key"
-        ssh_key:
-          type: string
-          format: ssh-key
-          description: >
-            The public SSH Key, which is used to authenticate to the root user
-            of the Linodes you deploy.
     Vlans:
       type: object
       description: >

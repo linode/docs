@@ -52,7 +52,7 @@ This tutorial assumes that you have SSH access to your Linode running Debian 8 (
 
 1.  Complete the steps in our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. You'll need a standard user account with `sudo` privileges for many commands in this guide.
 
-2.  Follow the steps outlined in our [LEMP on Debian 8](/docs/websites/lemp/lemp-server-on-debian-8) guide. Skip the NGINX configuration section, since we'll address it later in this guide.
+2.  Follow the steps outlined in our [LEMP on Debian 8](/docs/guides/install-a-lemp-stack-on-debian/) guide. Skip the NGINX configuration section, since we'll address it later in this guide.
 
 3.  After configuring NGINX according to this guide, follow the steps in our [WordPress](/docs/guides/how-to-install-and-configure-wordpress/) guide to install and configure WordPress. We'll include a step in the instructions to let you know when it's time to do this.
 

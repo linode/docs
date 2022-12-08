@@ -49,7 +49,7 @@ A Ubuntu LAMP or LEMP stack satisfies all these prerequisites. A LAMP stack incl
 For greater security, WordPress highly recommends HTTPS. However, these instructions work whether HTTPS is configured on the server or not. For information about enabling HTTPS on Ubuntu, see the [Linode guide on enabling HTTPS on Apache](/docs/guides/enabling-https-using-certbot-with-apache-on-ubuntu/). An alternate guide for [NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) is also available.
 
 {{< note >}}
-WordPress sites are almost always accessed using a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/guides/dns-manager/).
+WordPress sites are almost always accessed using a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 {{< /note >}}
 
 ## Before You Begin
@@ -61,7 +61,7 @@ WordPress sites are almost always accessed using a domain name. For more informa
 1.  Fully configure a LAMP or LEMP stack on the Linode and confirm it is working properly.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Prepare the LAMP or LEMP Stack for WordPress
@@ -78,7 +78,7 @@ If you are using a LAMP stack, enable an additional Apache module and restart th
 
 1.  Enable the rewrite module. This allows for more readable links within the site.
 
-    ```code
+    ```command
     sudo a2enmod rewrite
     ```
 
@@ -104,7 +104,7 @@ If you are not using a site configuration file, skip this step.
 
 3.  Run the Apache `configtest` utility to test the changes. It might display some warnings, but if `Syntax OK` appears in the output, the syntax is valid.
 
-    ```code
+    ```command
     sudo apache2ctl configtest
     ```
 
@@ -114,7 +114,7 @@ Syntax OK
 
 4.  Restart Apache.
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     ```
 
@@ -135,13 +135,13 @@ If you are using a LEMP stack, make the following configuration changes.
 
 2.  Use `unlink` to disable the default NGINX configuration file.
 
-    ```code
+    ```command
     sudo unlink /etc/nginx/sites-enabled/default
     ```
 
 3.  Restart NGINX to reload the configuration.
 
-    ```code
+    ```command
     sudo systemctl restart nginx
     ```
 
@@ -151,7 +151,7 @@ WordPress uses a separate SQL database to store the site's contents and configur
 
 1.  Log in to MySQL as `root`.
 
-    ```code
+    ```command
     sudo mysql -u root
     ```
 
@@ -161,13 +161,13 @@ If you followed all the instructions in our prerequisite guide for LAMP, use `su
 
 2.  Create a database named `wordpress`.
 
-    ```code
+    ```command
     CREATE DATABASE wordpress;
     ```
 
 3.  Create a new user for the `wordpress` database and grant the user all rights. Flush all privileges at the end. In the following commands, replace `wpuser` with a unique user name and `password` with a more secure password.
 
-    ```code
+    ```command
     CREATE USER 'wpuser'@'localhost' IDENTIFIED BY 'password';
     GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'localhost';
     FLUSH PRIVILEGES;
@@ -175,7 +175,7 @@ If you followed all the instructions in our prerequisite guide for LAMP, use `su
 
 4.  Exit the database.
 
-    ```code
+    ```command
     exit
     ```
 
@@ -185,17 +185,17 @@ Although WordPress can be installed using the default PHP packages, many plug-in
 
 1.  For greater flexibility, install the following PHP components.
 
-    ```code
+    ```command
     sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap
     ```
 
 2.  Reload Apache or NGINX to apply the changes.
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     ```
 
-    ```code
+    ```command
     sudo systemctl restart nginx
     ```
 
@@ -205,43 +205,43 @@ The Ubuntu LAMP or LEMP stack is now fully configured and ready for WordPress. F
 
 1.  Create a new `src` directory inside the root directory for the website. The root directory is normally located at `var/www/html/`. Replace `example.com` with the name of the domain.
 
-    ```code
+    ```command
     sudo mkdir -p /var/www/html/example.com/src
     ```
 
 2.  Enter the new directory.
 
-    ```code
+    ```command
     cd /var/www/html/example.com/src
     ```
 
 3.  Download the WordPress package using `wget`.
 
-    ```code
+    ```command
     sudo wget http://wordpress.org/latest.tar.gz
     ```
 
 4.  Extract the WordPress files from the `tar` file.
 
-    ```code
+    ```command
     sudo tar -xvf latest.tar.gz
     ```
 
 5.  **(Optional)** Rename the archive using the current date. This makes it easier to restore the files in the future.
 
-    ```code
+    ```command
     sudo mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
     ```
 
 6.  Move the extracted files to the root directory for the domain. In a typical configuration, this is the `public_html` directory.
 
-    ```code
+    ```command
     sudo mv wordpress/* ../public_html/
     ```
 
 7.  Ensure the webserver user is given ownership over the entire root directory for the domain.
 
-    ```code
+    ```command
     sudo chown -R www-data:www-data /var/www/html/example.com
     ```
 
@@ -249,7 +249,7 @@ The Ubuntu LAMP or LEMP stack is now fully configured and ready for WordPress. F
 
 1.  Visit the domain using a web browser. The default language selection page first appears. Choose your language and select **Continue**.
 
-    ```code
+    ```command
     http://example.com
     ```
 

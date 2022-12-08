@@ -40,7 +40,7 @@ The `ip` command is part of the Linux [iproute2](https://en.wikipedia.org/wiki/I
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## ip Command Concepts
@@ -79,7 +79,7 @@ The `ip` command is straightforward to use, but it includes many complex options
 
 Most `ip` commands follow this format:
 
-```code
+```command
 ip [options] OBJECT COMMAND
 ```
 
@@ -87,7 +87,7 @@ Non-root users must use `sudo` to execute any `ip` command that changes the netw
 
 The `ip help` directive describes the command syntax and lists all available options. More specific help is available for each ip object. Use the format `ip OBJECT help`. For example, `ip addr help` provides instructions for the address-related commands.
 
-```code
+```command
 ip addr help
 ```
 
@@ -137,7 +137,7 @@ The `addr` object allows users to list the IP addresses associated with each lin
 
 Use the `addr` ip object to find your IP address. The `ip addr show` command displays the addresses for every link configured on the system. Locate the `eth0` link, which connects the host to the wider network on most systems. The `inet` field displays the Ipv4 address. If an Ipv6 address is configured, it is indicated in the `inet6` section.
 
-```code
+```command
 ip addr show
 ```
 
@@ -160,13 +160,13 @@ ip addr show
 
 To display information about one particular link, append the name of the link to the end of the command.
 
-```code
+```command
 ip addr show eth0
 ```
 
 The `-br` option simplifies the display to the state and IP addresses.
 
-```code
+```command
 ip -br addr show
 ```
 
@@ -176,7 +176,7 @@ eth0             UP             178.79.148.108/24 2a01:7e00::f03c:93ff:fe60:5030
 {{< /output >}}
 
 {{< note >}}
-There are other methods for determining the IP address of a system. For more information on how to find the IP address of a system, see the Linode guide [How to understand IP addresses](https://www.linode.com/docs/guides/how-to-understand-ip-addresses/#how-to-find-your-ip-addresses).
+There are other methods for determining the IP address of a system. For more information on how to find the IP address of a system, see the Linode guide [How to understand IP addresses](/docs/guides/how-to-understand-ip-addresses/#how-to-find-your-ip-addresses).
 {{< /note >}}
 
 ### How to Add or Delete an IP Address
@@ -185,13 +185,13 @@ To add an IP address to an existing link/interface, use the `addr add` command. 
 
 The following command demonstrates how to add a new address to the `lo` loopback link. You must use `sudo` when modifying any network information. If the rule already exists, `ip` displays the error message `RTNETLINK answers: File exists`.
 
-```code
+```command
 sudo ip addr add 127.255.255.255/16 dev lo
 ```
 
 The `addr show` command reflects the new configuration change.
 
-```code
+```command
 ip addr show dev lo
 ```
 
@@ -208,13 +208,13 @@ ip addr show dev lo
 
 To remove an address from a link, use the `addr delete` command.
 
-```code
+```command
 sudo ip addr delete 127.255.255.255/16 dev lo
 ```
 
 To configure the address as a broadcast address, use the keyword `brd`.
 
-```code
+```command
 sudo ip addr add 172.31.255.255 brd + dev eth1
 ```
 
@@ -226,7 +226,7 @@ The `link` object can access and configure information about the network interfa
 
 To view information about all network interfaces on the server, use the `ip link show` command. The command shows the state, MTU, and MAC address for each link `object` amongst other information.
 
-```code
+```command
 ip link show
 ```
 
@@ -239,7 +239,7 @@ ip link show
 
 When the `-br` option is added, `ip` only displays the most important information.
 
-```code
+```command
 ip -br link show
 ```
 
@@ -250,7 +250,7 @@ eth0             UP             f2:3c:93:60:50:30 <BROADCAST,MULTICAST,UP,LOWER_
 
 To only show information about links that are operationally active, append the keyword `up`.
 
-```code
+```command
 ip link show up
 ```
 
@@ -258,7 +258,7 @@ ip link show up
 
 To limit the display to information about a specific interface, append the name of the information to the `ip link show` command. The following command only displays information about the `eth0` network interface. If the interface does not exist, `ip` returns the error message `Device "INTERFACE" does not exist`.
 
-```code
+```command
 ip link show eth0
 ```
 
@@ -269,7 +269,7 @@ ip link show eth0
 
 Add the `-s` option to see the link/interface statistics.
 
-```code
+```command
 ip -s link show dev eth0
 ```
 
@@ -284,7 +284,7 @@ ip -s link show dev eth0
 
 Use the `-s -s` double flag to see even more comprehensive statistics, including information about the various errors.
 
-```code
+```command
 ip -s -s link show dev eth0
 ```
 
@@ -307,19 +307,19 @@ Modify the status of any network interface using the `ip link set` command. Use 
 
 To disable the `eth1` link, use the following command.
 
-```code
+```command
 sudo ip link set eth1 down
 ```
 
 To bring `eth1` back up, enter this command.
 
-```code
+```command
 sudo ip link set eth1 up
 ```
 
 Use the following command to set the *maximum transmission unit* (MTU) size for the link.
 
-```code
+```command
 sudo ip link set mtu 1600 eth1
 ```
 
@@ -335,7 +335,7 @@ To view all routes installed in the routing database, use the `ip route show` co
 Many servers access the internet through a default gateway, resulting in relatively few routes. Even if `ip route show` only displays one or two routes, this does not usually indicate a problem.
 {{< /note >}}
 
-```code
+```command
 ip route show
 ```
 
@@ -346,7 +346,7 @@ default via 178.79.148.1 dev eth0 proto static
 
 It is also possible to list all routes for a particular network using the `list` command.
 
-```code
+```command
 ip route list 178.79.148.0/24
 ```
 
@@ -358,13 +358,13 @@ ip route list 178.79.148.0/24
 
 To add a new route, use the `ip route add` command. There are two ways to add a route. For the first option, specify the IP address and mask of the remote network, and the interface used to access it. The following example adds a new route to `eth0`.
 
-```code
+```command
 sudo ip route add 192.168.20.0/24 dev eth0
 ```
 
 Use the `ip route show` command to confirm the route has been added.
 
-```code
+```command
 ip route show
 ```
 
@@ -376,13 +376,13 @@ default via 178.79.148.1 dev eth0 proto static
 
 For the second method, use the `via` keyword to specify a gateway. All traffic to the network is routed through the specified address. Replace `178.79.148.1` with your actual IP address from the output above.
 
-```code
+```command
 sudo ip route add 192.168.20.0/24 via 178.79.148.1
 ```
 
 To delete a route, use the `ip route delete` command. This command only accepts an IP address.
 
-```code
+```command
 sudo ip route delete 192.168.20.0/24
 ```
 
@@ -394,7 +394,7 @@ The `neigh` command operates on the ARP and NDISC entries for the server's neigh
 
 To see all the neighbors that the system is aware of, use `ip neigh show`.
 
-```code
+```command
 ip neigh show
 ```
 
@@ -413,7 +413,7 @@ The `delete` command is useful for flushing stale ARP or NDISC information. The 
 
 To add a permanent ARP entry for a neighbor, use the following command. Include the MAC address of the neighbor and the link used to access it. The `perm` keyword installs the route permanently.
 
-```code
+```command
 sudo ip neigh add 192.168.100.100 lladdr 16:12:34:56:78:90 dev eth0 nud perm
 ip neigh show
 ```
@@ -426,7 +426,7 @@ fe80::1 dev eth0 lladdr 00:00:0c:9f:f0:02 router STALE
 
 Use `ip neigh delete`, along with the address and interface, to delete a route.
 
-```code
+```command
 sudo ip neigh delete 192.168.100.100 dev eth0
 ```
 

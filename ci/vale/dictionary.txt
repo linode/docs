@@ -994,7 +994,9 @@ jq
 jre
 js
 json
+json_pp
 jsonpath
+jsonpp
 julialang
 jumpbox
 junit
@@ -1007,6 +1009,7 @@ kamkar
 kanban
 kaseya
 kasten
+kbd
 kbits
 keepalive
 keepalived
@@ -1410,6 +1413,7 @@ nixcraft
 nixpkgs
 nlris
 nmap
+nmcli
 noarch
 node1
 node2
@@ -2031,6 +2035,7 @@ suricata
 sury
 suse
 swappable
+swappiness
 svn
 symantec
 symfony

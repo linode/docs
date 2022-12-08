@@ -16,7 +16,7 @@ title: "Aggregate Content Using Planet Venus on Ubuntu 12.04"
 deprecated: true
 external_resources:
     - '[Planet Venus GitHub Repo](https://github.com/rubys/venus)'
-    - '[Using Cron to Schedule Tasks](/docs/linux-tools/utilities/cron)'
+    - '[Using Cron to Schedule Tasks](/docs/guides/schedule-tasks-with-cron/)'
 relations:
     platform:
         key: aggregate-blog-planet
@@ -39,7 +39,7 @@ Install the Planet and other required software by issuing the following command:
 
     apt-get install apache2 planet-venus
 
-This will also install the Apache HTTP server if you have not already installed this software. Be sure to [configure a name-based virtual host](/docs/web-servers/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin#apache) if you haven't already. You may now begin the configuration of Planet Venus.
+This will also install the Apache HTTP server if you have not already installed this software. Be sure to [configure a name-based virtual host](/docs/guides/lamp-server-on-ubuntu-12-04-precise-pangolin/#apache) if you haven't already. You may now begin the configuration of Planet Venus.
 
 ## Configure Planet
 

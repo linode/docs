@@ -53,6 +53,22 @@ java -Xms1024M -Xmx1536M -jar minecraft_server.1.13.jar -o true
 
 ### Dark
 
+#### Short Code
+
+{{< command class="dark" title="Ubuntu 16.04" >}}
+sudo systemctl restart apache2
+{{< /command >}}
+
+{{< command class="dark" title="MacOS 12.32" >}}
+sudo systemctl restart apache2
+{{< /command >}}
+
+{{< command title="MS-DOS 2.3" >}}
+goto 10
+{{< /command >}}
+
+#### Code Fence
+
 ```command {class="dark" title="Ubuntu 16.04"}
 sudo systemctl restart apache2
 ```
@@ -71,6 +87,34 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id me
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
+```
+
+## Output Shortcode
+
+### Shortcode
+
+Officia minim nostrud et cupidatat mollit nostrud  mollit eiusmod amet id dolor. In occaecat elit reprehenderit ea minim mollit enim fugiat. Et deserunt sit enim proident deserunt laboris amet.
+
+{{< output >}}exercitation minim Lorem{{< /output >}}
+
+Qui laborum minim esse reprehenderit laboris quis culpa veniam qui do. Ex ad ex sit ad dolore aute eu occaecat aliquip. Qui ea veniam nulla qui. Quis ut aliqua nulla minim nostrud qui dolore. Officia esse commodo ipsum quis aute aute aute commodo laborum minim eu qui. Sunt est elit dolor nisi est laboris magna ipsum.
+
+{{< output class="bg-blue-200" >}}
+Blue output
+{{< /output >}}
+
+{{< output bg-purple-200 >}}
+Purple output.
+{{< /output >}}
+
+### Code Fence
+
+```output {class="bg-blue-200"}
+Blue output
+```
+
+```output {class="bg-purple-200"}
+Purple output.
 ```
 
 #### In Note Bottom
@@ -208,6 +252,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id me
 ```file {title="/home/minecraft/run.sh"}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
+```
+
+### Overflow High Starting High Line Number
+
+```file {title="/home/minecraft/run.sh" lang="sh" linenostart="6332"}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitudin id metus vel malesuada.

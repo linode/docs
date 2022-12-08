@@ -74,7 +74,7 @@ const searchConfig = getSearchConfig(params);
 	// Set up AlpineJS stores.
 	{
 		Alpine.store('search', newSearchStore(searchConfig, Alpine));
-		Alpine.store('nav', newNavStore(searchConfig, Alpine.store('search')));
+		Alpine.store('nav', newNavStore(searchConfig, Alpine.store('search'), params));
 	}
 
 	if (!isMobile()) {
