@@ -27,7 +27,7 @@ OpenVPN Access Server requires a paid license to use more than two connected dev
 - Ensure that you have not already installed OpenVPN before starting this guide.
 - Ensure that you have root access to your Linode or a user account with `sudo` privilege. For information about creating a user account with `sudo` privilege, see [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
 - Update your system. For more information, see [Install Software Updates](/docs/guides/set-up-and-secure/#perform-system-updates).
-- Allow TCP traffic through port `943` and UDP through port `1194` on your firewall. For more information, see [Add Rules](/docs/security/firewalls/configure-firewall-with-ufw/#add-rules).
+- Allow TCP traffic through port `943` and UDP through port `1194` on your firewall. For more information, see [Add Rules](/docs/guides/configure-firewall-with-ufw/#add-rules).
 
 
 ## Install OpenVPN Access Server
@@ -104,7 +104,7 @@ Client UI: https://192.0.2.0:943/
         echo 'net.ipv4.ip_forward=1' | sudo tee -a /etc/sysctl.d/99-sysctl.conf
         sudo sysctl -p
 
-1.  OpenVPN does not support simultaneous tunnels over IPv4 and IPv6. Follow these steps to [disable IPv6](/docs/networking/vpn/set-up-a-hardened-openvpn-server#disable-ipv6) on your Linode.
+1.  OpenVPN does not support simultaneous tunnels over IPv4 and IPv6. Follow these steps to [disable IPv6](/docs/guides/set-up-a-hardened-openvpn-server/#disable-ipv6) on your Linode.
 
 1.  Log in to the Access Server Admin UI and go to **VPN Settings**. In the **Routing** section:
 
@@ -185,7 +185,7 @@ Alternatively, you can manually set DNS resolvers of your choice which are pushe
     ![DMG Finder Window.](openvpn-download-profile-ubuntu.png)
 
     {{< note >}}
-If you are connecting a headless machine to your OpenVPN server, such as another Linode, you will need to use `cURL` or `wget` tool to download the appropriate profile. You can do so by copying the link from the OpenVPN Access Server client page for your required profile, and then pasting it at the end of a `cURL` or [wget](/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget) command.
+If you are connecting a headless machine to your OpenVPN server, such as another Linode, you will need to use `cURL` or `wget` tool to download the appropriate profile. You can do so by copying the link from the OpenVPN Access Server client page for your required profile, and then pasting it at the end of a `cURL` or [wget](/docs/guides/download-resources-from-the-command-line-with-wget/) command.
 {{< /note >}}
 
 1.  Copy the downloaded profile to your `/etc/openvpn` folder and rename it to `client.conf`. Replace `~/Downloads/client.ovpn` with the location of your download folder, if necessary.

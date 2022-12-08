@@ -13,8 +13,8 @@
     {{ block "head-meta-main" . }}
       {{/* The default static title and SEO meta markup. */}}
       <title>
-        {{ partial "funcs/get-page-title.html" . }} |
-        {{ $.Site.Params.page_title_suffix | default "Linode" }}
+        {{ .Params.title_meta | default .Title }} |
+        {{ site.Params.page_title_suffix | default "Linode" }}
       </title>
 
       {{/* See https://turbo.hotwired.dev/handbook/drive#setting-a-root-location */}}
@@ -78,7 +78,12 @@
       {{ end }}
 
 
-      <header id="linode-menus" class="z-20" x-ignore data-turbo-permanent>
+      <header
+        id="linode-menus"
+        class="z-20"
+        x-ignore
+        data-turbo-permanent
+        data-turbo="false">
         {{ partial "linode-header.html" }}
       </header>
 

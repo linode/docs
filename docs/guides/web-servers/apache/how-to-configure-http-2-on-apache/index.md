@@ -49,7 +49,7 @@ The following high-level steps are involved in configuring HTTP/2 on [*Apache*](
 
 ### Install Apache
 
-Run the `apache2 -v` command to determine whether Apache is installed. If it is already present, the command indicates what version is running. In this case, skip this section and proceed to the [Install the Necessary PHP Components](#install-the-necessary-php-components) step. If the command displays an error, Apache is not yet installed. For more information about Apache, see Linode's [Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics) guide.
+Run the `apache2 -v` command to determine whether Apache is installed. If it is already present, the command indicates what version is running. In this case, skip this section and proceed to the [Install the Necessary PHP Components](#install-the-necessary-php-components) step. If the command displays an error, Apache is not yet installed. For more information about Apache, see Linode's [Apache Configuration Basics](/docs/guides/apache-configuration-basics/) guide.
 
 {{< note >}}
 HTTP/2 support requires Apache version 2.4.17 or higher.
@@ -142,7 +142,7 @@ Earlier versions of Apache have a different file and directory structure. The ma
     ...
     {{< /file >}}
     {{< note >}}
-HTTP/2 support is typically configured on a system-wide basis. If you only want to enable HTTP/2 for one site, add the `h2 h2c` protocols to the virtual server entry for the site instead. For more information about Apache, see Linode's [Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics) guide.
+HTTP/2 support is typically configured on a system-wide basis. If you only want to enable HTTP/2 for one site, add the `h2 h2c` protocols to the virtual server entry for the site instead. For more information about Apache, see Linode's [Apache Configuration Basics](/docs/guides/apache-configuration-basics/) guide.
     {{< /note >}}
 
 ### Enable HTTPS Support

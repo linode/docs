@@ -29,7 +29,7 @@ Correctly diagnosing a problem is the first step in solving it. At first glance,
 
 ### Are Postfix and Dovecot Running?
 
-Sometimes your mail server is not functioning correctly because the needed services are not running. For a mail server that has been running for a long time, [resource overuse](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/#diagnosing-and-fixing-memory-issues) is the most likely cause of stopped services. It doesn't hurt to check your resource use to rule out that problem. However, when you're just setting up a new mail server, it's more likely that your service startup problems are being caused by configuration errors. Some configuration errors - particularly syntax errors - are serious enough that they can prevent a service from starting.
+Sometimes your mail server is not functioning correctly because the needed services are not running. For a mail server that has been running for a long time, [resource overuse](/docs/guides/troubleshooting-memory-and-networking-issues/#diagnosing-and-fixing-memory-issues) is the most likely cause of stopped services. It doesn't hurt to check your resource use to rule out that problem. However, when you're just setting up a new mail server, it's more likely that your service startup problems are being caused by configuration errors. Some configuration errors - particularly syntax errors - are serious enough that they can prevent a service from starting.
 
 To check that Postfix and Dovecot are running and to find startup errors, follow these steps:
 
@@ -859,7 +859,7 @@ The final step in getting your mail server up to speed is to make it compatible 
 
         apt-get install mysql-server postfix-mysql dovecot-mysql
 
-2.  Create the three MySQL tables `virtual_domains`, `virtual_users`, and `virtual_aliases` and populate them with your data, by following the entire [MySQL section](/docs/email/postfix/email-with-postfix-dovecot-and-mysql#mysql) in the main setup guide. If you prefer not to use the MySQL command line, you can install phpMyAdmin and use that instead.
+2.  Create the three MySQL tables `virtual_domains`, `virtual_users`, and `virtual_aliases` and populate them with your data, by following the entire [MySQL section](/docs/guides/email-with-postfix-dovecot-and-mysql/#mysql) in the main setup guide. If you prefer not to use the MySQL command line, you can install phpMyAdmin and use that instead.
 3.  Open `/etc/postfix/main.cf` for editing. Comment out the existing `virtual_mailbox_domains` and `virtual_mailbox_maps` lines and add these instead:
 
     {{< file "/etc/postfix/main.cf" >}}

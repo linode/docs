@@ -36,7 +36,7 @@ In this guide you will learn how to:
 
 ##  Before You Begin
 
-1. If you haven't yet, [create a Linode API token](/docs/platform/api/getting-started-with-the-linode-api/#create-an-api-token).
+1. If you haven't yet, [create a Linode API token](/docs/products/tools/api/get-started/#create-an-api-token).
 
 1. [Create a free Pulumi account](https://app.pulumi.com/signup).
 
@@ -274,7 +274,7 @@ exports.nodeBalancerPort = nodeBalancerConfig.port;
 {{< /file >}}
 
     {{< note >}}
-In our `index.js` file we've created and configured two Linodes using an existing [StackScript](/docs/platform/stackscripts/) which installs NGINX. Pulumi's Linode integration allows for the creation of entirely [new StackScripts](https://pulumi.io/reference/pkg/nodejs/pulumi/linode/#StackScript) directly in code, which can help you to automate your deployments even further.
+In our `index.js` file we've created and configured two Linodes using an existing [StackScript](/docs/products/tools/stackscripts/) which installs NGINX. Pulumi's Linode integration allows for the creation of entirely [new StackScripts](https://pulumi.io/reference/pkg/nodejs/pulumi/linode/#StackScript) directly in code, which can help you to automate your deployments even further.
 
 If you're interested in seeing how this StackScript works, you can view it [here](https://www.linode.com/stackscripts/view/526246).
 {{< /note >}}

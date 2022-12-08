@@ -38,7 +38,7 @@ Upon the completion of this tutorial, you will have fine-tuned your Vim editor t
 
 1.  A basic understanding of how to work within the Vim environment is necessary to complete this tutorial. Readers should be familiar with the steps for editing documents with Vim.
 
-2.  Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/docs/security/securing-your-server#add-a-limited-user-account) guide.
+2.  Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/docs/guides/set-up-and-secure/#add-a-limited-user-account) guide.
 
 ## Customize Your Vim Instance
 

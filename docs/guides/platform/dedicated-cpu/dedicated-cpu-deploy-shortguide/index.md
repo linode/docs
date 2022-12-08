@@ -26,7 +26,7 @@ aliases: ['/platform/dedicated-cpu/dedicated-cpu-deploy-shortguide/']
 1. Select a [Distribution](/docs/guides/choosing-a-distribution/), [Marketplace App](/docs/products/tools/marketplace/get-started/), or [Image](/docs/products/tools/images/) to deploy from.
 
     {{< note >}}
-Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. You can read more about Stackscripts and how they work in our [Automating Deployments with Stackscripts Guide](/docs/platform/stackscripts/).
+Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy software platforms and system configuration options to your Linux distribution. You can read more about Stackscripts and how they work in our [Automating Deployments with Stackscripts Guide](/docs/products/tools/stackscripts/).
   {{< /note >}}
 
 1. Choose the region where you would like your Linode to reside. If you’re not sure which to select, see our [How to Choose a Data Center guide](/docs/guides/how-to-choose-a-data-center/). You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the network route between you and each of our data centers.
@@ -41,6 +41,6 @@ Use a [StackScript](https://www.linode.com/stackscripts) to quickly deploy softw
 You are not prompted to enter a root password if you are cloning another Linode or restoring from the Linode Backups service.
 {{< /note >}}
 
-1. Optionally, add an [SSH key](/docs/security/authentication/use-public-key-authentication-with-ssh/#upload-your-ssh-key-to-the-cloud-manager), [Backups](/docs/products/storage/backups/), or a [Private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address).
+1. Optionally, add an [SSH key](/docs/guides/use-public-key-authentication-with-ssh/#upload-your-ssh-key-to-the-cloud-manager), [Backups](/docs/products/storage/backups/), or a [Private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address).
 
 1. Click the **Create** button when you have finished completing this form. You are redirected to the overview page for your new Linode. This page shows a progress bar which indicates when the Linode has been provisioned and is ready for use.

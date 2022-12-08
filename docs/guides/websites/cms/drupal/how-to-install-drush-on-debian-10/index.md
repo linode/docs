@@ -41,7 +41,7 @@ Before installing Drush, ensure that the following prerequisites have been met:
 1.  Install and configure a [LAMP stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/)
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Git & Composer
@@ -71,7 +71,7 @@ Composer is designed to install PHP dependencies on a per-project basis. The ste
 
         sudo ln -s /usr/local/bin/composer /usr/bin/composer
 
-1.  Use Git to download - or [clone](/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/#clone-a-github-test-repository) - the [GitHub Drush project](https://github.com/drush-ops/drush) into a new directory, `/usr/local/src/drush`:
+1.  Use Git to download - or [clone](/docs/guides/how-to-install-git-and-clone-a-github-repository/#clone-a-github-test-repository) - the [GitHub Drush project](https://github.com/drush-ops/drush) into a new directory, `/usr/local/src/drush`:
 
         sudo git clone https://github.com/drush-ops/drush.git /usr/local/src/drush
 

@@ -27,7 +27,7 @@ external_resources:
 
 - acme.sh supports [more DNS providers](https://github.com/acmesh-official/acme.sh/wiki/dnsapi) than other similar clients.
 
-If you use Linode for your website's DNS, you can use acme.sh to obtain both single and wildcard SSL certificates. You can use [Linode DNS](/docs/guides/dns-manager/) as the domain ownership verification.
+If you use Linode for your website's DNS, you can use acme.sh to obtain both single and wildcard SSL certificates. You can use [Linode DNS](/docs/products/networking/dns-manager/) as the domain ownership verification.
 
 ## Before You Begin
 
@@ -94,7 +94,7 @@ v2.8.7
 
 ## Create an API token
 
-acme.sh can use the [Linode v4 API](/docs/api) to create and remove temporary DNS records for a Domain. Follow the steps [Get An API Access Token](/docs/products/tools/linode-api/guides/get-access-token/) product documentation to create a Linode API v4 token.
+acme.sh can use the [Linode v4 API](/docs/api) to create and remove temporary DNS records for a Domain. Follow the steps [Get An API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) product documentation to create a Linode API v4 token.
 
 {{< note >}}
 Ensure the token you create has **Read/Write** access to **Domains**.

@@ -13,7 +13,7 @@ modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2010-02-16
-title: 'Manage Development with the Mantis Bug Tracker on Debian 5 (Lenny)'
+title: 'Manage Development with Mantis Bug Tracker on Debian 5'
 relations:
     platform:
         key:  mantis-bug-tracker

@@ -60,6 +60,6 @@ General PostgreSQL guides (not specific to Managed Databases):
 {{< note >}}
 General MongoDB guides (not specific to Managed Databases):
 
-- [Introduction To MongoDB And Its Use Cases](/docs/guides/mongodb-and-its-use-cases/)
+- [Introduction To MongoDB And Its Use Cases](/docs/guides/mongodb-introduction/)
 - [How to Install and Use the MongoDB Community Shell](/docs/guides/mongodb-community-shell-installation/)
 {{</ note >}}

@@ -10,7 +10,7 @@ cascade:
     date: 2020-06-02
     product_description: "Block Storage is a scalable, high-speed, and fault tolerant storage service used to add additional storage to a Linode Compute Instance."
 modified: 2022-08-24
-aliases: ['/platform/block-storage/how-to-use-block-storage-with-your-linode/','/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/','/platform/block-storage/how-to-use-block-storage-with-your-linode-classic-manager/','/platform/how-to-use-block-storage-with-your-linode/','/platform/block-storage/','/guides/platform/block-storage/']
+aliases: ['/platform/block-storage/how-to-use-block-storage-with-your-linode/','/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/','/platform/block-storage/how-to-use-block-storage-with-your-linode-classic-manager/','/platform/how-to-use-block-storage-with-your-linode/','/platform/block-storage/','/guides/platform/block-storage/','/guides/how-to-use-block-storage-with-your-linode/']
 ---
 
 {{< content "nvme-block-storage-notice-shortguide" >}}
@@ -23,7 +23,7 @@ A Block Storage Volume augments the raw storage capacity of a cloud instance, wh
 
 ## Resilient and Fault Tolerant
 
-Block Storage Volumes are configured with 3x data replication. This built-in redundancy ensures that your data is highly-available and protected from loss. Since Volumes are managed independently of Compute Instances, your data persists even if you delete your attached instance.
+Block Storage Volumes are configured to be durable and fault tolerant using erasure coding, ensuring that your data is protected from loss. Since Volumes are managed independently of Compute Instances, your data persists even if you delete your attached instance.
 
 ## Ultra-Fast Performance
 

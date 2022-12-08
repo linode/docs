@@ -24,7 +24,7 @@ This guide shows you how to install a TeamSpeak Server on your Linode. TeamSpeak
 
 ## Before You Begin
 
-* Familiarize yourself with our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
+* Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
 
 * Install the [TeamSpeak](http://www.teamspeak.com/) client on your local computer.
   {{< note >}} If you are using macOS Big Sur version 11 or later download the Teamspeak client [beta](http://files.teamspeak-services.com/pre_releases/client/3.5.7-beta.1/)

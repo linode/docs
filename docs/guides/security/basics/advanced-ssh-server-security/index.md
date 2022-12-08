@@ -3,7 +3,7 @@ slug: advanced-ssh-server-security
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide will give you some of Linode''s best tips and tricks for best practices when it comes to improving the security of your SSH server.'
+description: "This guide will give you some of Linode's best tips and tricks for best practices when it comes to improving the security of your SSH server."
 keywords: ["SSH", "secure shell", "Ubuntu", "CentOS", "security", "2FA", "server", "Linux"]
 tags: ["ssh","security","linux"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,7 +11,7 @@ published: 2017-04-07
 modified: 2017-04-07
 modified_by:
   name: Linode
-title: 'Use Advanced OpenSSH Features to Harden Access to Your Linode'
+title: "Harden SSH Access with Advanced OpenSSH Features"
 contributor:
   name: Damaso Sanoja
   link: https://github.com/damasosanoja
@@ -34,7 +34,7 @@ There's a good chance you've been using SSH (Secure Shell) to access your Linode
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/getting-started) guide.
+1.  Complete the [Getting Started](/docs/guides/getting-started/) guide.
 
 2.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, create a basic firewall rule set and remove unnecessary network services.
 
@@ -48,7 +48,7 @@ There's a good chance you've been using SSH (Secure Shell) to access your Linode
         sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.BACKUP
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Use a Stronger Diffie-Hellman Algorithm

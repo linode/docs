@@ -10,7 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-29
 modified_by:
   name: Linode
-title: 'How to Deploy Kubernetes on Linode with the k8s-alpha CLI'
+title: 'Deploy Kubernetes on Linode with the k8s-alpha CLI'
 aliases: ['/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/','/applications/containers/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/','/kubernetes/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/']
 concentrations: ["Kubernetes"]
 deprecated: true
@@ -22,7 +22,7 @@ external_resources:
 {{< caution >}}
 This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [delete it](#delete-a-cluster) when you have finished the guide.
 
-If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works and for a table of plan pricing.
 {{< /caution >}}
 
 ## What is the k8s-alpha CLI?
@@ -59,7 +59,7 @@ To get started with Rancher, review our [How to Deploy Kubernetes on Linode with
 
 The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](https://www.linode.com/pricing/) with the infrastructure efficiency of Kubernetes.
 
-When you deploy an LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/guides/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/products/storage/block-storage/). Your LKE cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers. To get started with LKE, review our [Deploy a Cluster with Linode Kubernetes Engine](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide.
+When you deploy an LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/products/networking/nodebalancers/get-started/) (load balancers), and [Block Storage Volumes](/docs/products/storage/block-storage/). Your LKE cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers. To get started with LKE, review our [Deploy a Cluster with Linode Kubernetes Engine](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide.
 
 ### Beginners Resources
 
@@ -71,7 +71,7 @@ If you haven't used Kubernetes before, we recommend reading through our introduc
 
 ## Before You Begin
 
-1.  You will need to have a personal access token for Linode's API. If you don't have one already, follow the [Get an Access Token](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) section of our API guide and create a token with read/write permissions.
+1.  You will need to have a personal access token for Linode's API. If you don't have one already, follow the [Get an Access Token](/docs/products/tools/api/get-started/#get-an-access-token) section of our API guide and create a token with read/write permissions.
 
 1.  If you do not already have a public-private SSH key pair, you will need to generate one. Follow the [Generate a Key Pair](/docs/guides/use-public-key-authentication-with-ssh/#linux-and-macos) section of our [Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/) guide for instructions.
 
@@ -95,7 +95,7 @@ The k8s-alpha CLI requires [Terraform version 0.12.0+](https://www.hashicorp.com
 
 ### Install the Linode CLI
 
-Follow the [Install the CLI](/docs/platform/api/using-the-linode-cli/#install-the-cli) section of our CLI guide to install the Linode CLI. If you already have the CLI, upgrade it to the latest version available:
+Follow the [Install the CLI](/docs/products/tools/cli/get-started/#install-the-cli) section of our CLI guide to install the Linode CLI. If you already have the CLI, upgrade it to the latest version available:
 
     pip install --upgrade linode-cli
 

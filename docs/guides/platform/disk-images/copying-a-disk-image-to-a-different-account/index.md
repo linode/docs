@@ -35,7 +35,7 @@ You need to prepare the *receiving* Linode before initiating the transfer. First
 
     ![Creating a receiving Linode](image-selection.png)
 
-1. Choose the region where you would like the Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
+1. Choose the region where you would like the Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center/) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
 
 1. Select a Linode plan.
 
@@ -74,7 +74,7 @@ Start the receiving Linode in rescue mode:
 
 ### Access the Linode in Rescue Mode
 
-After the Linode has booted, connect to the Linode through [LISH](/docs/troubleshooting/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
+After the Linode has booted, connect to the Linode through [LISH](/docs/guides/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
 
 1.  Select the Linode that is receiving the disk. The Linode's dashboard appears.
 1.  Click **Launch Lish Console** . A new window appears that displays the Lish console, a `Welcome to Finnix!` message, and a root prompt.
@@ -149,7 +149,7 @@ After the file transfer has completed, you should verify the disk by mounting it
         boot  etc  lib   media       opt  root  selinux  sys  usr
 
   {{< note >}}
-   If the system displays any disk errors, then perform the [Copying the Disk](/docs/platform/disk-images/copying-a-disk-image-to-a-different-account/#copying-the-disk) steps again.
+   If the system displays any disk errors, then perform the [Copying the Disk](/docs/guides/copying-a-disk-image-to-a-different-account/#copying-the-disk) steps again.
 {{< /note >}}
 
 Now the Linode is ready to boot from the disk.

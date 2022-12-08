@@ -480,15 +480,15 @@ hugo-site   NodePort   10.108.110.6   <none>        80:30304/TCP   1d
 
 1. Open a browser window and enter in a worker node's IP address and exposed port. An example url to your Hugo site would be, `http://192.0.2.1:30304`. Your Hugo site should appear.
 
-    If desired, you can purchase a domain name and use [Linode's DNS Manager](/docs/guides/dns-manager/) to assign a domain name to the cluster's worker node IP address.
+    If desired, you can purchase a domain name and use [Linode's DNS Manager](/docs/products/networking/dns-manager/) to assign a domain name to the cluster's worker node IP address.
 
 ## Tear Down Your Cluster
 
-To avoid being further billed for your Kubernetes cluster, tear down your cluster's Linodes. If you have Linodes that existed for only part a monthly billing cycle, you’ll be billed at the hourly rate for that service. See [Billing and Payments](/docs/guides/understanding-billing-and-payments/) to learn more.
+To avoid being further billed for your Kubernetes cluster, tear down your cluster's Linodes. If you have Linodes that existed for only part a monthly billing cycle, you’ll be billed at the hourly rate for that service. See [Billing and Payments](/docs/products/platform/billing/) to learn more.
 
 - If you created your Kubernetes cluster:
 
-    - using kubeadm, follow the [Managing Billing in the Cloud Manager > Removing Services](/docs/guides/manage-billing-in-cloud-manager/#removing-services) guide to remove your cluster's Linodes.
+    - using kubeadm, follow the [Managing Billing in the Cloud Manager > Removing Services](/docs/products/platform/billing/guides/stop-billing/) guide to remove your cluster's Linodes.
 
     - using the k8s-alpha CLI, issue the following command from your computer to delete the cluster:
 

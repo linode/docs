@@ -20,7 +20,7 @@ contributor:
   name: Linode
 ---
 
-The Linode Kubernetes Engine (LKE) is Linode's managed Kubernetes service. When you deploy an LKE cluster, you receive a Kubernetes Master which runs your cluster's control plane components, at no additional cost. The control plane includes [Linode's Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager/), which provides a way for your cluster to access additional Linode services. Linode's CCM provides access to Linode's load balancing service, [Linode NodeBalancers](/docs/platform/nodebalancer/).
+The Linode Kubernetes Engine (LKE) is Linode's managed Kubernetes service. When you deploy an LKE cluster, you receive a Kubernetes Master which runs your cluster's control plane components, at no additional cost. The control plane includes [Linode's Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager/), which provides a way for your cluster to access additional Linode services. Linode's CCM provides access to Linode's load balancing service, [Linode NodeBalancers](/docs/products/networking/nodebalancers/).
 
 NodeBalancers provide your Kubernetes cluster with a reliable way of exposing resources to the public internet. The LKE control plane handles the creation and deletion of the NodeBalancer, and correctly identifies the resources, and their networking, that the NodeBalancer will route traffic to. Whenever a Kubernetes Service of the `LoadBalancer` type is created, your Kubernetes cluster will create a Linode NodeBalancer service with the help of the Linode CCM.
 
@@ -29,7 +29,7 @@ Adding external Linode NodeBalancers to your LKE cluster will incur additional c
 {{</ note >}}
 
 {{< note >}}
-All existing LKE clusters receive CCM updates automatically every two weeks when a new LKE release is deployed. See the [LKE Changelog](https://developers.linode.com/changelog/linode-kubernetes-engine/) for information on the latest LKE release.
+All existing LKE clusters receive CCM updates automatically every two weeks when a new LKE release is deployed. See the [LKE Changelog](/docs/products/compute/kubernetes/release-notes/) for information on the latest LKE release.
 {{</ note >}}
 
 {{< note >}}
@@ -136,7 +136,7 @@ The Linode CCM accepts annotations that configure the behavior and settings of y
 |---------------------|--------|---------------|-------------|
 | `throttle` | &bull; integer <br>&bull; `0`-`20` <br> &bull; `0` disables the throttle | `20` | The client connection throttle limits the number of new connections-per-second from the same client IP. |
 | `default-protocol` | &bull; string <br> &bull;`tcp`, `http`, `https` | `tcp` | Specifies the protocol for the NodeBalancer to use. |
-| `default-proxy-protocol` | &bull; string <br> &bull;`none`, `v1`, `v2` | `none` | Enables Proxy Protocol on the underlying NodeBalancer and specifies the version of Proxy Protocol to use. The Proxy Protocol allows TCP client connection information, like IP address and port number, to be transferred to cluster nodes. See the [Using Proxy Protocol with NodeBalancers](/docs/platform/nodebalancer/nodebalancer-proxypass-configuration/#what-is-proxy-protocol) guide for details on each Proxy Protocol version. |
+| `default-proxy-protocol` | &bull; string <br> &bull;`none`, `v1`, `v2` | `none` | Enables Proxy Protocol on the underlying NodeBalancer and specifies the version of Proxy Protocol to use. The Proxy Protocol allows TCP client connection information, like IP address and port number, to be transferred to cluster nodes. See the [Using Proxy Protocol with NodeBalancers](/docs/products/networking/nodebalancers/guides/proxy-protocol/#what-is-proxy-protocol) guide for details on each Proxy Protocol version. |
 | `port-*`| A JSON object of port configurations<br> For example: <br> `{ "tls-secret-name": "prod-app-tls", "protocol": "https"})` | None | &bull;  Specifies a NodeBalancer port to configure, i.e. `port-443`. <br><br> &bull; Ports `1-65534` are available for balancing. <br><br> &bull; The available port configurations are: <br><br> `"tls-secret-name"` use this key to provide a Kubernetes secret name when setting up TLS termination for a service to be accessed over HTTPS. The secret type should be `kubernetes.io/tls`.  <br><br> `"protocol"` specifies the protocol to use for this port, i.e. `tcp`, `http`, `https`. The default protocol is `tcp`, unless you provided a different configuration for the `default-protocol` annotation. |
 | `check-type` | &bull; string <br> &bull; `none`, `connection`, `http`, `http_body` | None | &bull; The type of health check to perform on Nodes to ensure that they are serving requests. The behavior for each check is the following: <br><br> `none` no check is performed <br><br> `connection` checks for a valid TCP handshake <br><br> `http` checks for a `2xx` or `3xx` response code <br><br> `http_body` checks for a specific string within the response body of the healthcheck URL. Use the `check-body` annotation to provide the string to use for the check. |
 | `check-path` | string | None | The URL path that the NodeBalancer will use to check on the health of the back-end Nodes. |

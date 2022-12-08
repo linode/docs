@@ -36,7 +36,7 @@ To connect your custom domain, you must create a CNAME DNS record within the nam
     - File URL: `[bucket-label].[cluster-id].linodeobjects.com`
     - Website URL: `[bucket-label].website-[cluster-id].linodeobjects.com`
 
-For more information on DNS records and CNAME records, see our [Introduction to DNS Records](/docs/guides/dns-records-an-introduction/#cname) guide.
+For more information on DNS records and CNAME records, see our [Introduction to DNS Records](/docs/guides/dns-overview/#cname) guide.
 
 ## Obtain a TLS/SSL Certificate
 

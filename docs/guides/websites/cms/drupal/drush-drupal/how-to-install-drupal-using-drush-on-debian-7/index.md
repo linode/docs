@@ -31,10 +31,10 @@ Before installing Drush and Drupal, ensure that the following prerequisites have
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-3.  Configure a LAMP stack using the [Hosting a Website](/docs/websites/hosting-a-website) guide.
+3.  Configure a LAMP stack using the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Git & Composer
@@ -168,7 +168,7 @@ Although MySQL accepts passwords with a special character, for example an exclam
 
 In server administration, there are many options for user and group permissions. The directions below create a site owner and a site owner's group. The Apache user, named **www-data**, is added to the site owner's group. Then read, write, and execute permissions are granted to both the site owner and the site owner's group.
 
-To create a new user for the site owner position, review the [Securing Your Server](/docs/security/securing-your-server#add-a-limited-user-account) guide.
+To create a new user for the site owner position, review the [Securing Your Server](/docs/guides/set-up-and-secure/#add-a-limited-user-account) guide.
 
 1.  From the `drupal` directory, change ownership of the site to the chosen owner and that owner's group. Replace `exampleuser` below with the chosen owner's username:
 
@@ -198,7 +198,7 @@ File permissions are a constant concern for the system owner or root user. When 
 
 Your site is now available at **`example.com`/drupal** or **`ipaddress`/drupal**. Sign-in with the generated username and password and start delivering content to the world!
 
-When you're ready for the Drupal site to appear as your homepage, move the site to the **/var/www/`example.com`/** directory and double-check the document root listing in the virtual host file. See Step 5 in the [Configuring Name Based Virtual Hosts](/docs/web-servers/lamp/lamp-server-on-debian-7-wheezy/#configure-name-based-virtual-hosts) section of our *Hosting a Website* guide.
+When you're ready for the Drupal site to appear as your homepage, move the site to the **/var/www/`example.com`/** directory and double-check the document root listing in the virtual host file. See Step 5 in the [Configuring Name Based Virtual Hosts](/docs/guides/lamp-server-on-debian-7-wheezy/#configure-name-based-virtual-hosts) section of our *Hosting a Website* guide.
 
 ## Additional Options
 
@@ -208,14 +208,14 @@ There are many ways to set up administration for a website. Below are sections e
 
 The above setup is designed for ease of use. However, there are setups designed for tighter security and other considerations.
 
-- To design your own setup, read Linode's documentation on [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide
+- To design your own setup, read Linode's documentation on [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide
 - For an extremely secure setup, read Drupal's [Securing File Permissions and Ownership](https://www.drupal.org/node/244924) guide
 
 ### Multi-site Servers
 
 To start, add a virtual host file with Apache. Next, build another site including the appropriate MySQL, PHP, and CMS configurations.
 
-- To add a virtual host file, read Linode's [Configure Name-based Virtual Hosts](/docs/web-servers/lamp/lamp-server-on-debian-7-wheezy/#configure-name-based-virtual-hosts) guide
+- To add a virtual host file, read Linode's [Configure Name-based Virtual Hosts](/docs/guides/lamp-server-on-debian-7-wheezy/#configure-name-based-virtual-hosts) guide
 
 ### Install Drush for the Active User Only
 

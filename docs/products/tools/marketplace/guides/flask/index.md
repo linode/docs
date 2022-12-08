@@ -72,7 +72,7 @@ Users may find that they need to remove access to the default Flask application 
       sudo rm /etc/supervisor/conf.d/flask_app.conf
 
 {{< note >}}
-Many configuration files can be overwritten to support a new configuration instead of deleted outright. For more information on the default configuration, see our [Flask Installation Guide](/docs/guides/flask-and-gunicorn-on-ubuntu/) and the [Installed Software Section](/docs/guides/flask-marketplace-app/#installed-software) of this guide.
+Many configuration files can be overwritten to support a new configuration instead of deleted outright. For more information on the default configuration, see our [Flask Installation Guide](/docs/guides/flask-and-gunicorn-on-ubuntu/) and the [Installed Software Section](/docs/products/tools/marketplace/guides/flask/#installed-software) of this guide.
 {{< /note >}}
 
 ### Next Steps
@@ -84,4 +84,4 @@ Now that you are familiar with all the software installed on your Linode with th
 - [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). You will need your Linode's root password to proceed. You can explore the installed programs and update any configurations as needed. Consider following the steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to continue hardening your Linode's security.
 - Read through our [Deploy a Flask Application on Ubuntu](/docs/guides/flask-and-gunicorn-on-ubuntu/) guide, which takes a deeper dive into the example Flask app that is deployed by the Marketplace app.
 - Visit our [Create a GIS Application using Flask, Stadia Maps, and MongoDB](/docs/guides/how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb/) guide to learn how to create your own GIS application.
-- Consult our [How To Create an OAuth App with the Linode Python API Library](/docs/guides/how-to-create-an-oauth-app-with-the-linode-python-api-library/) to learn how to develop a Flask app using Linode's API to automate creating Linode resources.
+- Consult our [How To Create an OAuth App with the Linode Python API Library](/docs/products/tools/api/guides/create-an-oauth-app-with-the-python-api-library/) to learn how to develop a Flask app using Linode's API to automate creating Linode resources.

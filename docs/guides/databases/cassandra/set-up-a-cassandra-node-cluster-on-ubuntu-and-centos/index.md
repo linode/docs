@@ -38,7 +38,7 @@ You will also learn how to secure communication between your nodes, as well as r
 
 1.  You must have at least two Cassandra nodes set up and configured. These nodes should have equal or similar hardware specs; otherwise, bottlenecks can occur. To install Apache Cassandra, see the [Installing Apache Cassandra](/docs/guides/how-to-install-apache-cassandra-on-ubuntu-18-04/) guide and select your distribution.
 
-2.  A working firewall is a necessary security measure. Firewall-specific instructions will be presented for UFW, FirewallD, and IPtables. Steps for setting up UFW can be found at [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw). FirewallD instructions are located at [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
+2.  A working firewall is a necessary security measure. Firewall-specific instructions will be presented for UFW, FirewallD, and IPtables. Steps for setting up UFW can be found at [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). FirewallD instructions are located at [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/).
 
 3.  Most of the commands in this guide require root privileges in order to execute. You may work through the guide as-is if you can run the commands under the root account in your system. Alternatively, an elevated user account with sudo privileges can be used as long as each command is prefixed with `sudo`.
 

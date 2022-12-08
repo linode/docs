@@ -1,0 +1,7 @@
+{{ $title := "" }}
+{{ if .Params.h1_title }}
+  {{ $title = .Params.h1_title }}
+{{ else }}
+  {{ $title = partial "funcs/get-page-title.html" . }}
+{{ end }}
+{{ return $title }}

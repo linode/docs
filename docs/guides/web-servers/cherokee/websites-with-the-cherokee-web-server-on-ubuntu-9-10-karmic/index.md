@@ -13,7 +13,7 @@ modified: 2011-05-09
 modified_by:
   name: Linode
 published: 2009-10-29
-title: 'Websites with the Cherokee Web Server on Ubuntu 9.10 (Karmic)'
+title: 'Websites with the Cherokee Web Server on Ubuntu 9.10'
 relations:
     platform:
         key: install-cherokee-server
@@ -31,7 +31,7 @@ This document assumes that you already have a working and up to date Ubuntu 9.10
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

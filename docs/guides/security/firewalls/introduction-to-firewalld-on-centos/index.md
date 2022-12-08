@@ -25,7 +25,7 @@ aliases: ['/security/firewalls/introduction-to-firewalld-on-centos/']
 image: introduction-to-firewalld-on-centos.png
 ---
 
-[Firewalld](http://www.firewalld.org/) is frontend controller for nftables (or its older counterpart, iptables) used to implement persistent network traffic rules. It provides command line and graphical interfaces and is available in the repositories of most Linux distributions. The following distributions have firewalld installed by default: RHEL and its derivatives (including CentOS, AlmaLinux, and Rocky Linux), CentOS Stream, Fedora, and OpenSUSE Leap.
+[Firewalld](http://www.firewalld.org/) is frontend controller for nftables (or its older counterpart, iptables) used to implement persistent network traffic rules. It provides command line and graphical interfaces and is available in the repositories of most Linux distributions. The following distributions have firewalld installed by default: RHEL and its derivatives (including CentOS, AlmaLinux, and Rocky Linux), CentOS Stream, Fedora, and openSUSE Leap.
 
 Working with firewalld has two main differences compared to directly controlling nftables (or iptables):
 
@@ -42,7 +42,7 @@ This guide introduces you to firewalld, its notions of zones and services, and p
 
 ### RHEL/CentOS
 
-Firewalld is preinstalled on many Linux distributions, such as RHEL and its derivatives (including CentOS, AlmaLinux, and Rocky Linux), CentOS Stream, Fedora, and OpenSUSE Leap. If you are running one of these distribution, you do not need to perform any installation steps.
+Firewalld is preinstalled on many Linux distributions, such as RHEL and its derivatives (including CentOS, AlmaLinux, and Rocky Linux), CentOS Stream, Fedora, and openSUSE Leap. If you are running one of these distribution, you do not need to perform any installation steps.
 
 ### Ubuntu and Debian
 

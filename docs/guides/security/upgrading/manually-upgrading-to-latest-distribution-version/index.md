@@ -55,7 +55,7 @@ DevOps provisioning tools (such as [Terraform](/docs/guides/beginners-guide-to-t
 
 ## Before you Begin
 
-- **Ensure you have login credentials to the original system** for either the root user or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+- **Ensure you have login credentials to the original system** for either the root user or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
 
     {{< note >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
@@ -161,14 +161,14 @@ Databases can be copied in much the same way as files. The major difference is t
 
 -   If your MySQL database won't run for some reason, follow the instructions for creating [physical backups](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
 
--   If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/guides/how-to-back-up-your-postgresql-database/) guide.
+-   If you use PostgreSQL, follow the [How to Back Up Your PostgreSQL Database](/docs/guides/back-up-a-postgresql-database/) guide.
 
 ## Transfer IPv4 Addresses
 
 After you've configuring the new Linode, copied over the data, and have performed any tests needed to ensure the system is working as expected, you are just about ready to start using the new system. To make the switch over quick and relatively seamless, you can retain the IPv4 addresses from your original Linode by transferring them to your new Linode. To do this, follow the instructions within the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#transferring-ip-addresses)
 
 {{< note >}}
-The Transfer IP functionality only works with IPv4 addresses and cannot transfer IPv6 addresses. If any of your systems, applications, or tools reference the IPv6 address of your original Linode, you will need to update those references with the new IPv6 address. Commonly, this means modifying the [AAAA DNS records](/docs/guides/dns-records-an-introduction/#a-and-aaaa) on your domain(s).
+The Transfer IP functionality only works with IPv4 addresses and cannot transfer IPv6 addresses. If any of your systems, applications, or tools reference the IPv6 address of your original Linode, you will need to update those references with the new IPv6 address. Commonly, this means modifying the [AAAA DNS records](/docs/guides/dns-overview/#a-and-aaaa) on your domain(s).
 {{< /note >}}
 
 ## Start Using the New Linode

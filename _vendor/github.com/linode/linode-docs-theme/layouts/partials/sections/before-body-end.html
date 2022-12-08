@@ -13,6 +13,6 @@
   {{/* Load the common Linode (from linode-website-partials repo), but only if trustecm.functional is set. */}}
   {{ $js := resources.Get "linode/footer-inline.js" }}
   <template x-if="$store.nav.trustecm.functional">
-    {{ partial "helpers/script-src.html" (dict "js" $js "nodefer" true "params" (dict "is_production" hugo.IsProduction ) ) }}
+    {{ partial "helpers/script-src.html" (dict "js" $js "nodefer" true "params" (dict "is_production" (not site.IsServer) ) ) }}
   </template>
 </div>
