@@ -58,7 +58,7 @@ For more information about PeerTube, see the [PeerTube FAQ](https://joinpeertube
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Create and configure a domain name to point at the Linode. This domain name provides access to the PeerTube instance. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/).
+1.  Create and configure a domain name to point at the Linode. This domain name provides access to the PeerTube instance. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/guides/dns-manager/).
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -285,7 +285,7 @@ admin:
 
 NGINX requires a PeerTube virtual host to properly serve the files. Copy the sample `peertube` virtual host file to the correct location in `/etc/nginx/sites-available` and edit it. Most of the file is pre-filled, so only a few changes are required.
 
-Use [Certbot](https://certbot.eff.org/) to install a Let's Encrypt certificate and enable HTTPS support. For more background on Certbot, Let's Encrypt certificates, and HTTPS, review the [Linode guide to Using Certbot on NGINX](https://www.linode.com/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/).
+Use [Certbot](https://certbot.eff.org/) to install a Let's Encrypt certificate and enable HTTPS support. For more background on Certbot, Let's Encrypt certificates, and HTTPS, review the [Linode guide to Using Certbot on NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/).
 
 To configure the NGINX virtual host for HTTP and HTTPS, follow these steps.
 
