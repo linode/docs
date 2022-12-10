@@ -50,6 +50,6 @@ Automated detection makes sense, particularly as attackers get better at hiding 
 
 There are numerous application security tools that integrate into your application development environment that can make the coding process and workflow simpler, more secure, and more effective. These tools are also useful if you are doing compliance audits, since they can save time and expense by catching problems before the auditors find them.  But they are also useful in protecting your application's infrastructure.
 
-In the [Understanding Total App Security](/docs/guides/understanding-total-app-security) guide, you learn about the typical coding mistakes that can lend towards security breaches. In the [final guide of this series](/docs/guides/app-security-testing-tools), you learn about some of the tools that can be used to help automate applications security.
+In the [Understanding Total App Security](/docs/guides/security-weaknesses-in-web-apps/) guide, you learn about the typical coding mistakes that can lend towards security breaches. In the [final guide of this series](/docs/guides/app-security-testing-tools), you learn about some of the tools that can be used to help automate applications security.
 
 

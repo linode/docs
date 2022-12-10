@@ -225,7 +225,7 @@ You may wish to consult the following resources for additional information on th
 
 - [Official Apache Documentation for Proxy Pass](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)
 - [Official Apache Documentation for Proxy Balancer](http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html)
-- [Configure ProxyPass and Multiple Web Servers with Apache](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-5-lenny)
+- [Configure ProxyPass and Multiple Web Servers with Apache](/docs/guides/multiple-web-servers-with-proxypass-on-debian-5-lenny/)
 
 
 

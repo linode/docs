@@ -29,7 +29,7 @@ As the application is primarily a SaaS, most of the state is maintained in the d
 - [MongoDB](https://www.mongodb.com/)
 - [Terraform](https://www.terraform.io/)
 - Linode:
-    - [Cloud Firewalls](https://www.linode.com/docs/products/networking/cloud-firewall/) are used on the Wireguard&#174;/NGINX gateways
+    - [Cloud Firewalls](/docs/products/networking/cloud-firewall/) are used on the Wireguard&#174;/NGINX gateways
 
 ## Business Benefits
 

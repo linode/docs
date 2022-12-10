@@ -22,7 +22,7 @@ If you just need specific files from your Linode, you can download those over SS
 
 ### Secure Copy Protocol (SCP)
 
-You can use SCP to retrieve a specific directory or file via the command-line. SCP is installed by default on most macOS and Linux systems, and is available with [Cygwin or PuTTY](/docs/networking/ssh/using-ssh-on-windows) for Windows.
+You can use SCP to retrieve a specific directory or file via the command-line. SCP is installed by default on most macOS and Linux systems, and is available with [Cygwin or PuTTY](/docs/guides/connect-to-server-over-ssh-on-windows/) for Windows.
 
 -   The syntax for using SCP to copy a file from your Linode into a directory on another computer is:
 
@@ -68,7 +68,7 @@ See our [FileZilla guide](/docs/guides/filezilla/) for more information.
 
 Special care is needed when downloading data from a database. Before it can be downloaded, the data in a database needs to first be *dumped* to a file. This database dump file can then be transferred just as any other normal file type.
 
--   To create a dump of a MySQL (or MariaDB) database, [use the `mysqldump` command](/docs/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb). **You can only use this tool if your database process is accessible and running.**
+-   To create a dump of a MySQL (or MariaDB) database, [use the `mysqldump` command](/docs/guides/mysqldump-backups/). **You can only use this tool if your database process is accessible and running.**
 
 -   If your MySQL database won't run for some reason, follow the instructions for creating [*physical* backups](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
 

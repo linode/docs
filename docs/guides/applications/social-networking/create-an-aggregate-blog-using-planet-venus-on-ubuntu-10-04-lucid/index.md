@@ -16,7 +16,7 @@ published: 2010-08-10
 title: "Aggregate Content Using Planet Venus on Ubuntu 10.04"
 external_resources:
     - '[Planet Venus GitHub Repo](https://github.com/rubys/venus)'
-    - '[Using Cron to Schedule Tasks](/docs/linux-tools/utilities/cron)'
+    - '[Using Cron to Schedule Tasks](/docs/guides/schedule-tasks-with-cron/)'
 relations:
     platform:
         key: aggregate-blog-planet

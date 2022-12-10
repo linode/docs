@@ -50,9 +50,9 @@ All private IPs in the same data center can communicate with each other over the
 
 - **IPv6 Link Local:** This IPv6 address is assigned to each Compute Instance and used for internal routing.
 
-- **/64 Routed Range:** This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses. A single /64 range provides 18,446,744,073,709,551,616 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide for instructions on configuring specific addresses from a range. By default, up to one /64 range can be added per customer per data center.
+- **/64 Routed Range:** This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses. A single /64 range provides 18,446,744,073,709,551,616 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/guides/manual-network-configuration/) guide for instructions on configuring specific addresses from a range. By default, up to one /64 range can be added per customer per data center.
 
-- **/56 Routed Range:** These larger ranges are typically only required by specialized systems or networking applications. A single /56 range provides 4,722,366,482,869,645,213,696 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide for instructions on configuring specific addresses from a range. By default, up to one /56 range can be added per customer per data center.
+- **/56 Routed Range:** These larger ranges are typically only required by specialized systems or networking applications. A single /56 range provides 4,722,366,482,869,645,213,696 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/guides/manual-network-configuration/) guide for instructions on configuring specific addresses from a range. By default, up to one /56 range can be added per customer per data center.
 
 - **/116 Pool:** *(4,096 addresses)* An IPv6 pool is accessible from every Linode on your account within the assigned data center. Addresses from that pool can be configured on each Linode within that data center. This can enable features like IPv6 failover. By default, up to one /116 pool can be added per customer per data center.
 
@@ -82,7 +82,7 @@ Follow the instructions below to add an public IPv4, private IPv4, or IPv6 range
 
 1.  To make sure the new IP address is configured within the internal system of the Compute Instance, verify that [Network Helper](/docs/guides/network-helper/) is enabled and reboot the Compute Instance.
 
-    If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/linux-static-ip-configuration/), you need to update the configuration files with the new IP address or enable Network Helper.
+    If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/manual-network-configuration/), you need to update the configuration files with the new IP address or enable Network Helper.
 
 {{< note >}}
 Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification for additional public IPv4 addresses. If you have an application that requires multiple IP addresses, consider using an IPv6 /64 range instead.
@@ -128,7 +128,7 @@ You can verify the reverse DNS entry was properly submitted within the *IP addre
 
 1.  To make sure the IP address is removed from the internal system of the Compute Instance, verify that [Network Helper](/docs/guides/network-helper/) is enabled and reboot the Compute Instance.
 
-    If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/linux-static-ip-configuration/), you need to update the configuration files to remove the IP address or enable Network Helper.
+    If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/manual-network-configuration/), you need to update the configuration files to remove the IP address or enable Network Helper.
 
 ## Transferring IP Addresses
 
@@ -161,7 +161,7 @@ The *IP Transfer* form only displays Compute Instances hosted in the same data c
 
 1.  To make sure the new IP addresses take affect within the internal configuration of each Compute Instance, verify that [Network Helper](/docs/guides/network-helper/) is enabled and reboot the affected Instance(s). It may take up to 1-2 minutes for the transfer to take affect.
 
-    If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/linux-static-ip-configuration/), you need to update the configuration files with the new IP addresses or enable Network Helper.
+    If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/manual-network-configuration/), you need to update the configuration files with the new IP addresses or enable Network Helper.
 
     {{< note >}}
 If the IP is unreachable after a few minutes, you may need to notify the router directly of the IP change with the `arp` command run on your Compute Instance:

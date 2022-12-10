@@ -57,7 +57,7 @@ If you have installed the `php-suhosin` package, there are some known issues whe
         wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
         sudo rpm -ivh epel-release*
 
-1.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go through the [SSL Certificates with Apache on CentOS](/docs/security/ssl/ssl-apache2-centos) guide.
+1.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go through the [SSL Certificates with Apache on CentOS](/docs/guides/ssl-apache2-centos/) guide.
 
 1.  Install the `mycrypt` PHP module:
 

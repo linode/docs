@@ -457,8 +457,8 @@ testuser  | Create DB                                                  | {testgr
 
 Linode does not recommend opening up PostgreSQL to listen for connections on public IP addresses because this poses a security risk. If you want to access PostgreSQL remotely, you can use a graphical user interface called pgAdmin. See one of the following Linode guides to pgAdmin for more information:
 
-*   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/databases/postgresql/pgadmin-windows)
-*   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/databases/postgresql/pgadmin-macos-x)
+*   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/guides/how-to-access-postgresql-database-remotely-using-pgadmin-on-windows/)
+*   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/guides/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/)
 
 ## Learning More About PostgreSQL
 

@@ -112,7 +112,7 @@ Network Helper automatically edits the appropriate network configuration files f
         /etc/conf.d/net
         /etc/resolv.conf
 
--   **OpenSuse Leap:**
+-   **openSUSE Leap:**
 
         /etc/sysconfig/network/ifcfg-eth0
         /etc/sysconfig/network/routes

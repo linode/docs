@@ -268,7 +268,7 @@ LISTEN 0      128                                 [::]:22             [::]:*    
 
 ## Adding an IPv6 Address to the Domain DNS Records
 
-To enforce the use of an IPv6 address to access a hosted domain, update the DNS record for the domain. Change the DNS record to use the IPv6 address instead of the IPv4 address. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/). All DNS changes take some time to propagate across the internet. Changing the DNS record does not affect direct access to the node using the raw IPv4 or IPv6 addresses.
+To enforce the use of an IPv6 address to access a hosted domain, update the DNS record for the domain. Change the DNS record to use the IPv6 address instead of the IPv4 address. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/). All DNS changes take some time to propagate across the internet. Changing the DNS record does not affect direct access to the node using the raw IPv4 or IPv6 addresses.
 
 ## Additional IPv6 Tools
 

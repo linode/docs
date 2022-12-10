@@ -969,7 +969,7 @@ Once you’ve transferred the files, you can use your SSH connection or Lish con
 
 However, the bot does not stay running if you close your SSH connection (for example, if you put your workstation to sleep), or if you need to perform some other action in the Lish console.
 
-To keep your bot running uninterrupted, you can start a Screen session. [Screen](https://www.linode.com/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) is a useful tool for creating terminal sessions that stay alive and that can be accessed from any SSH or Lish connection. It's also preinstalled on Ubuntu 20.04, so you can start using it immediately:
+To keep your bot running uninterrupted, you can start a Screen session. [Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) is a useful tool for creating terminal sessions that stay alive and that can be accessed from any SSH or Lish connection. It's also preinstalled on Ubuntu 20.04, so you can start using it immediately:
 
 1. If you ran `npm run develop` on your Linode, type `CTRL-c` to stop the bot.
 

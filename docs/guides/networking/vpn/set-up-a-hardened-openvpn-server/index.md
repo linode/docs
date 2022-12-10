@@ -25,14 +25,14 @@ An OpenVPN connection consists of two flow channels between the server and clien
 
 This guide is the first of a three-part series. Part one sets up a VPN server on Debian and prepares the access credentials for client devices. This VPN can be used to host internal services such as websites, game servers or file servers.
 
-[Part two](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server) shows you how to set up a routed VPN so all traffic from client devices is tunneled through your Linode to the internet. [Part three](/docs/networking/vpn/configuring-openvpn-client-devices) takes you through setting up the client-side software for various operating systems, including mobile platforms.
+[Part two](/docs/guides/tunnel-your-internet-traffic-through-an-openvpn-server/) shows you how to set up a routed VPN so all traffic from client devices is tunneled through your Linode to the internet. [Part three](/docs/guides/configuring-openvpn-client-devices/) takes you through setting up the client-side software for various operating systems, including mobile platforms.
 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and set your Linode's timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and set your Linode's timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do not complete the steps in the *Creating a Firewall* section. This guide has instructions specifically for firewall rules for an OpenVPN server.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do not complete the steps in the *Creating a Firewall* section. This guide has instructions specifically for firewall rules for an OpenVPN server.
 
 3.  Update the system:
 
@@ -463,4 +463,4 @@ Use `sudo journalctl -f | grep vpn` to monitor the logs of your OpenVPN server i
 
 You should now have an operational OpenVPN server and a set of certificate/key pairs for your desired client devices. If you intend to use your OpenVPN server as an extension of your local network, or for hosting services you want to access from your LAN, you would need to configure the specific applications for your use.
 
-If you want your VPN server to forward and receive traffic to/from the internet on behalf of VPN clients, see part two of this series: [Tunnel Your Internet Traffic Through an OpenVPN Server](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server). To set up the connecting client devices, see part three: [Configuring OpenVPN Client Devices](/docs/networking/vpn/configuring-openvpn-client-devices).
+If you want your VPN server to forward and receive traffic to/from the internet on behalf of VPN clients, see part two of this series: [Tunnel Your Internet Traffic Through an OpenVPN Server](/docs/guides/tunnel-your-internet-traffic-through-an-openvpn-server/). To set up the connecting client devices, see part three: [Configuring OpenVPN Client Devices](/docs/guides/configuring-openvpn-client-devices/).
