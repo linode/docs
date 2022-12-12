@@ -11,7 +11,7 @@ modified: 2022-03-08
 image: DeployAzuraCast_OneClickApps.png
 modified_by:
   name: Linode
-title: "Deploying AzuraCast through the Linode Marketplace"
+title: "Deploy AzuraCast through the Linode Marketplace"
 external_resources:
 - '[About AzuraCast](https://www.azuracast.com/about/)'
 - '[Troubleshooting AzuraCast](https://www.azuracast.com/help/)'

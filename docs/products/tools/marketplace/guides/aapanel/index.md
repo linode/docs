@@ -10,7 +10,7 @@ published: 2021-08-13
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying aaPanel through the Linode Marketplace"
+title: "Deploy aaPanel through the Linode Marketplace"
 aliases: ['/guides/deploying-aapanel-marketplace-app/','/guides/aapanel-marketplace-app/']
 external_resources:
 - '[aaPanel](https://www.aapanel.com/)'

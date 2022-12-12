@@ -10,7 +10,7 @@ published: 2021-08-13
 modified: 2022-05-17
 modified_by:
   name: Linode
-title: "Deploying ClusterControl through the Linode Marketplace"
+title: "Deploy ClusterControl through the Linode Marketplace"
 aliases: ['/guides/deploying-clustercontrol-marketplace-app/','/guides/clustercontrol-marketplace-app/']
 external_resources:
 - '[ClusterControl](https://severalnines.com/product/clustercontrol/clustercontrol-community-edition)'

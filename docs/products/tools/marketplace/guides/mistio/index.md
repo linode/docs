@@ -10,7 +10,7 @@ published: 2020-03-18
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Mist.io through the Linode Marketplace"
+title: "Deploy Mist.io through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
