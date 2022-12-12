@@ -25994,7 +25994,7 @@ components:
         images:
           type: array
           description: |
-            An array of Image IDs. These are the Images that can be deployed with this StackScript.
+            An array of Image IDs. These are the Images that can be deployed with this Stackscript.
 
             `any/all` indicates that all available Images, including private Images, are accepted.
           items:
