@@ -10,9 +10,8 @@ published: 2022-06-27
 modified: 2022-11-21
 modified_by:
   name: Linode
-title: "Managing 2FA on a Linode User Account"
-h1_title: "Managing Two-Factor Authentication (2FA) on a User Account"
-enable_h1: true
+title: "Manage Two-Factor Authentication (2FA) on a User Account"
+title_meta: "Manage 2FA on a Linode User Account"
 aliases: ['/guides/2fa/']
 ---
 
