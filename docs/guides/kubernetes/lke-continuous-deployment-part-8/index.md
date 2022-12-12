@@ -10,6 +10,7 @@ enable_h1: true
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-06
+modified: 2022-12-12
 modified_by:
   name: Linode
 contributor:
@@ -23,7 +24,7 @@ tags: ["kubernetes", "lke"]
 
 ## ExternalDNS
 
-ExternalDNS is a tool that automatically manages external DNS records from within the Kubernetes cluster. It can integrate with Linode DNS (among other providers). This portion of the series has us installing ExternalDNS using Helm and testing its functionality. The CoreDNS in LKE is configured to be use Linode nameservers in the `resolv.conf` file.
+ExternalDNS is a tool that automatically manages external DNS records from within the Kubernetes cluster. It can integrate with Linode DNS (among other providers). This portion of the series has us installing ExternalDNS using Helm and testing its functionality.
 
 ## Navigate the Series
 
@@ -94,6 +95,6 @@ ExternalDNS is a tool that automatically manages external DNS records from withi
 
       kubectl logs -n external-dns -l app.kubernetes.io/name=external-dns
 
-- It might take a few minutes for ExternalDNS to start, patience!. The default TTL for those is 24 hours. You can specify a shorter TTL for the external-dns records by adding the `external-dns.alpha.kubernetes.io/ttl` annotation to your services / ingress. For more information, see [Configure DNS record TTL](https://github.com/kubernetes-sigs/external-dns/blob/master/docs/ttl.md).
-- Then try to access `nginx.cloudnative.party` (or whatever domain you picked)
+- It might take a few minutes for ExternalDNS to start. The default TTL is 24 hours. You can specify a shorter TTL by adding the `external-dns.alpha.kubernetes.io/ttl` annotation to your services / ingress. For more information, see [Configure DNS record TTL](https://github.com/kubernetes-sigs/external-dns/blob/master/docs/ttl.md).
 
+- Then try to access `nginx.cloudnative.party` (or whatever domain you picked)
