@@ -39,7 +39,7 @@ This guide will explore a few ways to use Octant with some example software depl
 - A [troubleshooting thought experiment](#troubleshooting-with-octant) will show how Octant can make discovering issues in your cluster easier.
 
 {{< note >}}
-This guide assumes familiarity with the Kubernetes concepts outlined in Linode's [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes). If you have never set up a Kubernetes cluster before, it's also recommended that you do so to get the most out of this guide. The [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide describes a one-line command for generating a cluster.
+This guide assumes familiarity with the Kubernetes concepts outlined in Linode's [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/). If you have never set up a Kubernetes cluster before, it's also recommended that you do so to get the most out of this guide. The [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide describes a one-line command for generating a cluster.
 {{< /note >}}
 
 ## Before you Begin

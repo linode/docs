@@ -29,15 +29,15 @@ aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-o
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{< content "limited-user-note-shortguide" >}}
 
-3.  Install and configure a [How to Install a LAMP stack on Ubuntu 18.04](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04)
+3.  Install and configure a [How to Install a LAMP stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/)
 
-4.  Install [Composer and Drush on Ubuntu 18.04](/docs/websites/cms/drupal/drush-drupal/how-to-install-drush-on-ubuntu-18-04)
+4.  Install [Composer and Drush on Ubuntu 18.04](/docs/guides/how-to-install-drush-on-ubuntu-18-04/)
 
 ## Download and Prepare Drupal 8
 
@@ -116,7 +116,7 @@ In this section, you will use [Drush](https://www.drush.org/) to install a Drupa
 
         cd  /var/www/html/example.com/public_html
 
-1.  Your Linode is now ready for you to install a Drupal site. In the command below, replace `mysql://username:password@localhost/databasename` with your own site's username, password, and database. For example, if you followed the [How to Install a LAMP stack on Ubuntu 18.04](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04) your username is `webuser`, password is `password`, and the database is `webdata`. Also, replace `--site-name=example.com` with your own website's name.
+1.  Your Linode is now ready for you to install a Drupal site. In the command below, replace `mysql://username:password@localhost/databasename` with your own site's username, password, and database. For example, if you followed the [How to Install a LAMP stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) your username is `webuser`, password is `password`, and the database is `webdata`. Also, replace `--site-name=example.com` with your own website's name.
 
         drush si standard --db-url=mysql://username:password@localhost/databasename --site-name=example.com
 
@@ -179,7 +179,7 @@ There are many ways to set up administration for a website. Below are sections e
 
 The above setup is designed for ease of use. However, there are setups designed for tighter security and other considerations.
 
-- To design your own setup, read Linode's documentation on [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide
+- To design your own setup, read Linode's documentation on [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide
 - For an extremely secure setup, read Drupal's [Securing File Permissions and Ownership](https://www.drupal.org/node/244924) guide
 
 ### Multi-site Servers

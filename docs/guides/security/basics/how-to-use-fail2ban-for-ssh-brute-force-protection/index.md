@@ -27,7 +27,7 @@ Brute-force attacks can be extremely powerful and may result in thousands of fai
 This guide uses Ubuntu, but the commands are similar for other systems.
 {{</ note >}}
 
-1.  Complete the [Getting Started](/docs/getting-started) guide.
+1.  Complete the [Getting Started](/docs/guides/getting-started/) guide.
 
 1.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, and harden SSH access, but do not create a basic firewall.
 
@@ -36,7 +36,7 @@ This guide uses Ubuntu, but the commands are similar for other systems.
         sudo apt update && sudo apt upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installing And Configuring Fail2Ban

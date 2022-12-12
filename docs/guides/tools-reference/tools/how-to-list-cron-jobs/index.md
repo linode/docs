@@ -37,7 +37,7 @@ The schedule for a cron job is specified using a formal syntax. The initial five
 
 There are a variety of methods used to display the cron jobs. Cron jobs can be listed on a per-user or per-application basis. It is also possible to list all jobs sharing a specific schedule. These instructions are designed for Ubuntu 22.04, but are valid for most recent releases of Ubuntu. The `cron` utility works similarly in other Linux distributions, but the names and locations of the files might differ.
 
-For more information about creating cron jobs, see the Linode guides to [Scheduling Cron Jobs](https://www.linode.com/docs/guides/schedule-tasks-with-cron/) and [Running Cron Jobs at Boot](https://www.linode.com/docs/guides/run-jobs-or-scripts-using-crontab-on-boot/). On Ubuntu systems, use the `man crontab` command to view user information.
+For more information about creating cron jobs, see the Linode guides to [Scheduling Cron Jobs](/docs/guides/schedule-tasks-with-cron/) and [Running Cron Jobs at Boot](/docs/guides/run-jobs-or-scripts-using-crontab-on-boot/). On Ubuntu systems, use the `man crontab` command to view user information.
 
 ## Before You Begin
 

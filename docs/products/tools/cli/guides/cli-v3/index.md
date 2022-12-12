@@ -10,7 +10,7 @@ deprecated: true
 deprecated_link: 'platform/api/linode-cli/'
 external_resources:
  - '[Github Linode CLI](https://github.com/linode/cli)'
- - '[Linode API Key](/docs/platform/api/api-key)'
+ - '[Linode API Key](/docs/products/tools/api/guides/manage-api-tokens/)'
 keywords: ["linode cli", " command line interface", " man pages", " api key"]
 tags: ["linode platform"]
 aliases: ['/platform/api/using-the-linode-cli-api-v3/','/guides/using-the-linode-cli-api-v3/']

@@ -28,7 +28,7 @@ From a clear two-server connection to complex mesh private network, this guide w
 
 You will need at least two Linodes for this guide. Complete the following steps for each one:
 
-1.  Complete the [Getting Started](/docs/getting-started) guide.
+1.  Complete the [Getting Started](/docs/guides/getting-started/) guide.
 
 2.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 

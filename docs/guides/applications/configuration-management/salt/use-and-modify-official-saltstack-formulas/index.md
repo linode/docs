@@ -394,7 +394,7 @@ timezone:
     utc: True
     {{</ file >}}
 
-    The `timezone.sls` Pillar file was created from the `pillar.example` file provided in the SaltStack timezone formula. The example was modified to add Jinja control statements that will assign a different timezone on any minion that is a Debian family OS. You can replace any of the timezone `name` values to your preferred timezone or add additional Jinja logic, if necessary. For an introduction to Jinja, read the [Introduction to Jinja Templates for Salt](/docs/applications/configuration-management/introduction-to-jinja-templates-for-salt).
+    The `timezone.sls` Pillar file was created from the `pillar.example` file provided in the SaltStack timezone formula. The example was modified to add Jinja control statements that will assign a different timezone on any minion that is a Debian family OS. You can replace any of the timezone `name` values to your preferred timezone or add additional Jinja logic, if necessary. For an introduction to Jinja, read the [Introduction to Jinja Templates for Salt](/docs/guides/introduction-to-jinja-templates-for-salt/).
 
     You can also override any of the dictionary values defined in the `timezone/defaults.yaml` or `timezone/osfamilymap.yaml` in the Pillar file using Salt's lookup dictionary convention. For example, if you wanted to override the `pkgname` value defined in `timezone/defaults.yaml` your Pillar file might look like the following example:
 

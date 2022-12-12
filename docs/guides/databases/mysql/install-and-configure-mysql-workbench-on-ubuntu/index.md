@@ -24,11 +24,11 @@ MySQL Workbench is a feature-rich graphical tool used to model data, build SQL q
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  [Install VNC on Ubuntu](/docs/applications/remote-desktop/install-vnc-on-ubuntu-18-04) and connect to VNC from your desktop.
+3.  [Install VNC on Ubuntu](/docs/guides/install-vnc-on-ubuntu-18-04/) and connect to VNC from your desktop.
 
 4.  Update your system:
 

@@ -37,7 +37,7 @@ Fail2ban is intended to be used in conjunction with an already-hardened server a
 
 ## How to Install Fail2ban
 
-Follow the [Getting Started](/docs/getting-started) guide to configure your basic server. You may also want to review the [Securing Your Server](/docs/guides/securing-your-server) guide before beginning.
+Follow the [Getting Started](/docs/guides/getting-started/) guide to configure your basic server. You may also want to review the [Securing Your Server](/docs/guides/set-up-and-secure/) guide before beginning.
 
 ### CentOS/CentOS Stream/RHEL Based Operating Systems
 

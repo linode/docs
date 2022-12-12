@@ -26,7 +26,7 @@ Linode does not offer private IPv6 address allocations. Our IPv6 accounting was 
 {{< note >}}
 In order for your Linode to receive its SLAAC address, it must respond to IPv6's ping protocol.
 
-Please be sure to allow ICMPv6 in your [firewall](/docs/security/securing-your-server#configure-a-firewall). For example, in `iptables`, you can issue the following commands:
+Please be sure to allow ICMPv6 in your [firewall](/docs/guides/set-up-and-secure/#configure-a-firewall). For example, in `iptables`, you can issue the following commands:
 
 ```command
 ip6tables -A INPUT -p icmpv6 -j ACCEPT

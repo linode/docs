@@ -176,7 +176,7 @@ eth0             UP             178.79.148.108/24 2a01:7e00::f03c:93ff:fe60:5030
 {{< /output >}}
 
 {{< note >}}
-There are other methods for determining the IP address of a system. For more information on how to find the IP address of a system, see the Linode guide [How to understand IP addresses](https://www.linode.com/docs/guides/how-to-understand-ip-addresses/#how-to-find-your-ip-addresses).
+There are other methods for determining the IP address of a system. For more information on how to find the IP address of a system, see the Linode guide [How to understand IP addresses](/docs/guides/how-to-understand-ip-addresses/#how-to-find-your-ip-addresses).
 {{< /note >}}
 
 ### How to Add or Delete an IP Address

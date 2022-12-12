@@ -16,7 +16,7 @@ published: 2010-07-30
 title: Controlling Network Traffic with iptables - A Tutorial
 h1_title: A Tutorial for Controlling Network Traffic with iptables
 external_resources:
- - '[Security Basics](/docs/security/linux-security-basics)'
+ - '[Security Basics](/docs/guides/set-up-and-secure/)'
  - '[Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish)'
  - '[iptables: Linux firewall rules for a basic Web Server](http://bencane.com/2012/09/17/iptables-linux-firewall-rules-for-a-basic-web-server/)'
  - '[Linux Firewalls with iptables](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch14_:_Linux_Firewalls_Using_iptables)'
@@ -138,7 +138,7 @@ Deleting a rule is also done using the rule number. For example, to delete the r
     sudo iptables -D INPUT 7
 
 {{< caution >}}
-Editing rules does not automatically save them. See our section on [deploying rulesets](/docs/security/firewalls/control-network-traffic-with-iptables#deploy-your-iptables-rulesets) for the specific instructions for your distribution.
+Editing rules does not automatically save them. See our section on [deploying rulesets](/docs/guides/control-network-traffic-with-iptables/#deploy-your-iptables-rulesets) for the specific instructions for your distribution.
 {{< /caution >}}
 
 ### View Your Current iptables Rules
@@ -401,7 +401,7 @@ The process for deploying iptables rulesets varies depending on which Linux dist
 
 ### Debian / Ubuntu
 
-UFW is the iptables controller included with Ubuntu, but it is also available in Debian's repositories. If you prefer to use UFW instead of iptables, see our guide: [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw).
+UFW is the iptables controller included with Ubuntu, but it is also available in Debian's repositories. If you prefer to use UFW instead of iptables, see our guide: [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
 
 1.  Create the files `/tmp/v4` and `/tmp/v6`. Paste the [above rulesets](#basic-iptables-rulesets-for-ipv4-and-ipv6) into their respective files.
 
@@ -410,13 +410,13 @@ UFW is the iptables controller included with Ubuntu, but it is also available in
         sudo iptables-restore < /tmp/v4
         sudo ip6tables-restore < /tmp/v6
 
-3.  To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables#introduction-to-iptables-persistent).
+3.  To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/guides/control-network-traffic-with-iptables/#introduction-to-iptables-persistent).
 
 ### CentOS / Fedora
 
 **CentOS 7 or Fedora 20 and above**
 
-In these distros, FirewallD is used to implement firewall rules instead of using the iptables command. If you prefer to use it over iptables, see our guide: [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
+In these distros, FirewallD is used to implement firewall rules instead of using the iptables command. If you prefer to use it over iptables, see our guide: [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/).
 
 1.  If you prefer to use iptables, FirewallD must first be stopped and disabled.
 
