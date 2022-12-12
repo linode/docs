@@ -3,44 +3,32 @@ author:
   name: Linode Staff
   email: docs@linode.com
 description: "Self-hosted Mastodon server."
-keywords: ['social’, ‘messaging’, ‘mastodon’,]
+keywords: ['social', 'messaging', 'mastodon']
 tags: ["linode platform","mastodon","marketplace","cloud-manager",]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published:
-modified:
+published: 2022-12-12
 modified_by:
   name: Linode
-title: "Deploying a Mastodon through the Linode Marketplace"
+title: "Deploying Mastodon through the Linode Marketplace"
 external_resources:
- - '[]()'
- - '[]()'
- - ‘[Mastodon Deployment Github Repository](https://github.com/linode-solutions/mastodon-oca)’
-aliases: []
+ - '[Mastodon Deployment Github Repository](https://github.com/linode-solutions/mastodon-oca)'
 ---
 
-[Mastodon](https://docs.joinmastodon.org/) is an open-source and decentralized micro-blogging platform. Like Twitter, it lets users follow other users and post text, photos, and video content. Mastodon also allows you to create a non-profit social network based on open web standards and principles. Unlike Twitter, Mastodon is decentralized, meaning that its content is not maintained by a central authority.
+[Mastodon](https://docs.joinmastodon.org/) is an open-source and decentralized micro-blogging platform used to create a social network based on open web standards and principles. Like Twitter, it lets users follow other users and post text, photos, and video content. Unlike Twitter, Mastodon is decentralized, meaning that its content is not maintained by a central authority.
 
-What sets the Mastodon platform apart is its federated approach to social networking. Each Mastodon instance operates independently — anyone can create an instance and build their community. But users from different instances can still follow each other, share content, and communicate.
-
-Mastodon participates in the [Fediverse](https://en.wikipedia.org/wiki/Fediverse), a collection of social networks and other websites that communicate using the [ActivityPub](https://en.wikipedia.org/wiki/ActivityPub) protocol. That allows different Mastodon instances to communicate, and also allows other platforms in the Fediverse to communicate with Mastodon.
+The Mastodon platform takes a federated approach to social networking. Each Mastodon instance operates independently — anyone can create an instance and build their community. Users from different instances can still follow each other, share content, and communicate. Mastodon participates in the [Fediverse](https://en.wikipedia.org/wiki/Fediverse), a collection of social networks and other websites that communicate using the [ActivityPub](https://en.wikipedia.org/wiki/ActivityPub) protocol. That allows different Mastodon instances to communicate and also allows other platforms in the Fediverse to communicate with Mastodon.
 
 Mastodon servers range in size from small private instances to massive public instances and typically center on specific interests or shared principles. The biggest Mastodon server is [Mastodon.social](https://mastodon.social/about), a general-interest server created by the developers of the Mastodon platform. It has over 540,000 users and boasts a thorough [Code of Conduct](https://mastodon.social/about/more).
 
 {{< content "email-warning-shortguide" >}}
 
+{{< note >}}
+The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodon, see the instructions within the [Configure Your Domain's Name Servers](#configure-your-domains-name-servers) section.
+{{< /note >}}
+
 ## Deploying a Marketplace App
 
-The Linode Marketplace allows you to easily deploy software on a Compute Instance using the Cloud Manager. See [Get Started with Marketplace Apps](/docs/products/tools/marketplace/get-started/) for complete steps.
-
-1. The Mastodon One-Click App *requires* a custom domain. You first need to configure your domain to use Linode's name servers. This is typically accomplished directly through your registrar. See [Use Linode’s Name Servers with Your Domain](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers).
-
-2. Log in to the [Cloud Manager](https://cloud.linode.com) and select the **Marketplace** link from the left navigation menu. This displays the Linode **Create** page with the **Marketplace** tab pre-selected.
-
-3. Under the **Select App** section, select the app you would like to deploy.
-
-4. Complete the form by following the steps and advice within the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide. Depending on the Marketplace App you selected, there may be additional configuration options available. See the [Configuration Options](#configuration-options) section below for compatible distributions, recommended plans, and any additional configuration options available for this Marketplace App.
-
-5. Click the **Create Linode** button. Once the Compute Instance has been provisioned and has fully powered on, **wait for the software installation to complete**. If the instance is powered off or restarted before this time, the software installation will likely fail.
+{{< content "deploy-marketplace-apps-shortguide">}}
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
@@ -53,39 +41,61 @@ The Linode Marketplace allows you to easily deploy software on a Compute Instanc
 
 ### Configuration Options
 
-| **Field** | **Description** |
-|:--------------|:------------|
-| **API Token**   | Your Linode API token. Requires Read/Write for Domains. *Required*  |
-| **Domain** | A valid domain name for your Mastodon instance, with Linode's name servers configured as the [authoritative name servers](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers). |
-| **SOA Email** | An email address you control to be the Source of Authority for the generated DNS zone. *Required* |
-| **Mastodon Owner** | The username for the Owner user that will be created for the Mastodon server. *Required* |
-| **Mastodon Owner Email**  | The contact email for the Mastodon server's owner. *Required* |
-| **Single User Mode** | Enabling Single User Mode prevents other users from joining the Mastodon Server, while disabling it allows it. *Required* |
-
-- **Linode API Token:** In order to use Linode's [DNS Manager](/docs/products/networking/dns-manager/) to manage DNS records for your custom domain, create a Linode API *Personal Access Token* on your account with Read/Write access to *Domains*. When this is provided, along with the subdomain and domain fields (outlined below), the installation attempts to create DNS records via the Linode API. See [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/). If you do not provide a custom domain configured for use with Linode's name servers, the One-Click App installation will fail. 
-
-- **Domain:** The domain name you wish to use, such as *example.com*.
+- **Domain** (*required*): The domain name you wish to use for the mastodon server, such as *example.com*.
+- **Linode API Token** (*required*): A personal access token for your account. The Linode API is used to create DNS records for your custom domain through the [DNS Manager](/docs/products/networking/dns-manager/). See [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/).
+- **Email for the Let's Encrypt certificate** (*required*): The email you wish to use when creating your TLS/SSL certificate through Let's Encrypt. This email address receives notifications when the certificate needs to be renewed.
+- **Username for the Mastodon Owner** (*required*): The username for the Owner user that will be created for the Mastodon server.
+- **Email Address for the Mastodon Owner** (*required*): The contact email for the Mastodon server's owner.
+- **Single-user mode** (*required*): Enabling Single User Mode prevents other users from joining the Mastodon Server.
 
 ## Getting Started after Deployment
 
-### Accessing your Mastodon Server
+### Configure Your Domain's Name Servers
 
-1. In a web browser, navigate to your Mastodon site’s domain. You should see the Mastodon login page, where you can log in as the Owner user you created earlier or create a new user. To retrieve the Owner password, you need to log into the Linode through [SSH](https://www.linode.com/docs/guides/connect-to-server-over-ssh/).
+To use Mastodon with the custom domain you specified during deployment, you must configure the domain to use Linode's name servers. This is typically accomplished directly through your registrar. See [Use Linode’s Name Servers with Your Domain](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers).
 
-  ![Screenshot of Mastodon login page](mastodon-login-signup_marketplace.jpeg)
+### View the Mastodon Site
 
-2. You can navigate to your instance’s administration page by navigating to *example.com/admin/settings/edit*. The administration page allows you to alter the look, feel, and behavior of your instance. We recommend setting a Contact Username and Email as well as a Server Name on this page. Empty fields may result in unexpected behavior.
+Open a web browser and navigate to the custom domain you entered when deploying Mastodon. This opens the Explore page in Mastodon, which displays public information about your site, public posts, and links to login or create an account.
 
-  ![Screenshot of Mastodon admin page](mastodon-admin-page_marketplace.jpeg)
+### Access Your Mastodon Account and Settings
 
-3. If your instance is running but having issues, you can troubleshoot them from the Sidekiq dashboard. Either select **Sidekiq** from the administration menu or navigate to *example.com/sidekiq* to see the dashboard.
+1. **Obtain and save passwords** that were generated on your behalf during deployment, including your Mastodon user's password.
 
-  ![Screenshot of Sidekiq dashboard](sidekiq-dashboard_marketplace.jpeg)
+    1. Log in to your new Compute Instance through [Lish](/docs/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using the `root` user and the associated password you entered when creating the instance.
 
-4. The Mastodon server is configured to send emails for actions such as new users signing up, or resetting a password. The installation includes only minimal DNS records, and there may be limited deliverability without further configurations. We recommend reviewing our guide to [Sending Email on Linode](/docs/guides/running-a-mail-server/#sending-email-on-linode) for more information on DNS configurations and email best practices. 
+    1. The passwords have been saved in the /root/.deployment-secrets.txt file. You can view this file in your preferred text editor or through the `cat` command:
 
-To learn more about Mastodon, check out the official [Mastodon blog](https://blog.joinmastodon.org/) with news and articles related to Mastodon. You can engage with the Mastodon administrative community on [Mastodon’s discussion forum](https://discourse.joinmastodon.org/), where you can peruse conversations about technical issues and community governance.
+        ```command
+        cat /root/.deployment-secrets.txt
+        ```
 
-When you are ready to make your instance known to the world, you can add it to the list over at [Instances.social](https://instances.social/admin) by filling out the admin form.
+        The file contains your PSQL password and user's (owner's) password.
+
+        ```file {title="/root/.deployment-secrets.txt"}
+        # BEGIN ANSIBLE MANAGED BLOCK
+        # PSQL password
+        password: WiLjKhJSZE01TW3AoqViN3Kglu2bidWt
+        # Owner password
+        password: 3c4a675311ee52c0c1d7173d5169a10d
+        # END ANSIBLE MANAGED BLOCK
+        ```
+
+1. **Log in to Mastodon.** Within a web browser, navigate to `https://[domain.tld]/auth/sign_in`, replacing *[domain.tld]* with the custom domain you entered when deploying Mastodon. This opens the login page. Enter the owner's email address you created and the password that you obtained in the previous step. Once logged in, your user's home page is opened, which displays your own timeline, the post creation form, and links to navigate around.
+
+    ![Screenshot of the Mastodon user home page](mastodon-user-home.png)
+
+1. **Access admin settings**. Navigate to `https://[domain.tld]/admin/settings/` to view your site's administration settings. The administration page allows you to alter the look, feel, and behavior of your site. Consider configuring each of these settings, including the site name, contact username, contact email, server description, and fields within other tabs.
+
+    ![Screenshot of Mastodon admin page](mastodon-server-settings.png)
+
+1. The Mastodon instance also includes [Sidekiq](https://github.com/mperham/sidekiq) (background processing) and [PgHero](https://github.com/ankane/pghero) (a performance dashboard for Postgres). Both of these can be accessed through Mastodon Preferences page or by navigating to the following URLs:
+
+    - **Sidekiq:** `https://[domain.tld]/sidekiq`
+    - **PgHero:** `https://[domain.tld]/pghero`
+
+1. The Mastodon server is configured to send emails for actions such as new users signing up or resetting a password. The installation includes only minimal DNS records and there may be limited deliverability without further configuration. Review the guide to [Sending Email on Linode](/docs/guides/running-a-mail-server/#sending-email-on-linode) for more information on DNS configurations and email best practices.
+
+To learn more about Mastodon, check out the official [Mastodon blog](https://blog.joinmastodon.org/) with news and articles related to Mastodon. You can engage with the Mastodon administrative community on [Mastodon’s discussion forum](https://discourse.joinmastodon.org/), where you can peruse conversations about technical issues and community governance. When you are ready to make your instance known to the world, you can add it to the list over at [Instances.social](https://instances.social/admin) by filling out the admin form.
 
 {{< content "marketplace-update-note-shortguide">}}
