@@ -21,7 +21,7 @@ relations:
             - distribution: Debian 7
 ---
 
-Debian 7 (Wheezy) was released in May 2013. This guide explains how to upgrade your system from Debian 6 (Squeeze) to Debian 7 (Wheezy). Before you begin, you should make sure that you have a working [backup](/docs/platform/backup-service) or a copy of your data.
+Debian 7 (Wheezy) was released in May 2013. This guide explains how to upgrade your system from Debian 6 (Squeeze) to Debian 7 (Wheezy). Before you begin, you should make sure that you have a working [backup](/docs/products/storage/backups/) or a copy of your data.
 
 ## Preparing to Upgrade
 
@@ -43,7 +43,7 @@ Any available updates for Debian 6 will be installed on your Linode.
 
 ### Backing Up Your Linode
 
-It's a good idea to [back up](/docs/platform/backup-service) your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) before upgrading to Debian 7. If you use another backup service or application, we recommend that you make a manual backup now. You may also want to back up your configuration files (usually located in /etc/) in case they have changed in later versions of the software you are using.
+It's a good idea to [back up](/docs/products/storage/backups/) your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) before upgrading to Debian 7. If you use another backup service or application, we recommend that you make a manual backup now. You may also want to back up your configuration files (usually located in /etc/) in case they have changed in later versions of the software you are using.
 
 ### Checking Your Kernel
 

@@ -60,7 +60,7 @@ Developers should ignore files and folders they do not plan to push, rather than
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Ensure Git is installed on your Linode. For information on installing up Git, see the Linode guide to [installing Git](https://www.linode.com/docs/guides/how-to-install-git-on-linux-mac-and-windows/). Essentially:
+1.  Ensure Git is installed on your Linode. For information on installing up Git, see the Linode guide to [installing Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/). Essentially:
 
     ```command {title="Debain / Ubuntu"}
     sudo apt install git

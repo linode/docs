@@ -25,7 +25,7 @@ Docker is a container platform for applications. With Docker, users can download
 
 ![How to Install Docker and deploy a LAMP Stack](how-to-install-docker-and-deploy-a-lamp-stack.png)
 
-*If you are familiar with Docker containers, also try [Linode Images](/docs/platform/linode-images) to capture and deploy larger system profiles.*
+*If you are familiar with Docker containers, also try [Linode Images](/docs/products/tools/images/) to capture and deploy larger system profiles.*
 
 ## Install Prerequisites
 Due to a [known issue](https://github.com/docker/docker/issues/23347) with the dependencies of the docker .deb, installing docker on a Debian/Ubuntu VM requires an additional step:

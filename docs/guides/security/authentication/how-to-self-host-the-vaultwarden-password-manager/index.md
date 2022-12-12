@@ -36,7 +36,7 @@ Ubuntu 20.04 is the distribution used in this guide. Generally speaking, any Lin
 
 ### Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone.
+1. Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting the hostname and timezone.
 
 1. Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide in order to harden the Linode against malicious users. This step is important to ensure Vaultwarden is secured.
 

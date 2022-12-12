@@ -765,7 +765,7 @@ This command permanently deletes your resources. This operation cannot be undone
 
 Terraform is revolutionizing the DevOps ecosystem by transforming the way infrastructure is managed. It offers many advanced techniques to help streamline common IaC tasks. For instance, Terraform modules can package frequently-used configuration tasks together.
 
-See Linode's [Guide to Creating a Terraform Module](/docs/applications/configuration-management/terraform/create-terraform-module) for instructions on how to create a module.
+See Linode's [Guide to Creating a Terraform Module](/docs/guides/create-terraform-module/) for instructions on how to create a module.
 
 **Useful References:**
 

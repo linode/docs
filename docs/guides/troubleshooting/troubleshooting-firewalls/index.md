@@ -64,7 +64,7 @@ If the Cloud Firewall is assigned to more than one Linode, modifying the Cloud F
     {{</ note >}}
 
     {{< note >}}
-Cloud Firewall rules are applied on the network level and are not detectable internally on Linodes. For more information on setting up and using Cloud Firewall, see the guide [A Tutorial for Adding and Configuring Linode Cloud Firewalls](/docs/platform/cloud-firewall/getting-started-with-cloud-firewall).
+Cloud Firewall rules are applied on the network level and are not detectable internally on Linodes. For more information on setting up and using Cloud Firewall, see the guide [A Tutorial for Adding and Configuring Linode Cloud Firewalls](/docs/products/networking/cloud-firewall/get-started/).
 {{< /note >}}
 
 ## Checking Firewall Rules with UFW

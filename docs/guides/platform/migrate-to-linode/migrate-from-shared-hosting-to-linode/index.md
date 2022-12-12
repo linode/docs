@@ -126,7 +126,7 @@ A Linode can run both your web server and an [email server](/docs/guides/running
 
 The last step in your migration is to point your domain at your Linode's IP address. If you decided to shorten your TTL, make sure you've waited out the original time period.
 
-1.  Follow our instructions on [adding a domain zone](/products/networking/dns-manager/guides/create-domain/) to create DNS records at Linode for your domain.
+1.  Follow our instructions on [adding a domain zone](/docs/products/networking/dns-manager/guides/create-domain/) to create DNS records at Linode for your domain.
 
 2.  If you use a third-party email service, edit the default MX records.
 
