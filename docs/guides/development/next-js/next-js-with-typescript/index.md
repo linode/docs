@@ -3,15 +3,15 @@ slug: next-js-with-typescript
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Next.js offers a flexible framework on top of React, with features like routes and server-sider rendering built in. And Next also comes with first-class support for TypeScript, a strongly-typed language built on JavaScript. So how do you get started using TypeScript for your Next.js application? Find out in this tutorial."
-og_description: "Next.js offers a flexible framework on top of React, with features like routes and server-sider rendering built in. And Next also comes with first-class support for TypeScript, a strongly-typed language built on JavaScript. So how do you get started using TypeScript for your Next.js application? Find out in this tutorial."
-keywords: ['next js typescript starter','nextjs typescript example','create next js typescript app']
+description: "Next.js offers a flexible framework on top of React, with features like routes and server-sider rendering built in. And Next also comes first-class support for TypeScript, a strongly-typed language built on JavaScript. So how do you get started using TypeScript for your Next.js application? Find out in this tutorial."
+keywords: ['next js typescript starter', 'nextjs typescript example', 'create next js typescript app']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-21
 modified_by:
   name: Nathaniel Stickman
 title: "Building a Next.js App with Typescript"
-h1_title: "Building a Next.js App with Typescript"
+h1_title: "How to Build a Next.js App with Typescript"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -20,30 +20,30 @@ external_resources:
 - '[LogRocket: Using Next.js with TypeScript](https://blog.logrocket.com/using-next-js-with-typescript/)'
 ---
 
-With Next.js, your React applications start with a rich structure and set of features. Built-in routing and server-side rendering, among numerous other features, set Next out as a powerful framework.
+With Next.js, your React applications start with a rich structure and set of features. Built-in routing, server-side rendering, and among numerous other features, Next.js is a powerful framework built upon React to create production-ready applications.
 
 On top of that, Next.js also offers first-class support for TypeScript. This means that you can easily start building efficient React applications with all of the advantages of a strongly-typed language like TypeScript.
 
-It only takes a little configuration to get your Next.js project running with TypeScript. Learn how to do just that in this tutorial. See how to create a new Next.js project with TypeScript and how to convert an existing project to use TypeScript. Then follow along to see how you can put together the TypeScript code for your own Next application.
+It only takes a little configuration to get your Next.js project running with TypeScript. Learn how to do just that in this guide. See how to create a new Next.js project with TypeScript and how to convert an existing project to use TypeScript. Then follow along to see how you can put together the TypeScript code for your own Next application.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
 
             sudo dnf upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is Next.js?
@@ -54,7 +54,7 @@ Next.js includes capabilities like routing, data fetching, and server-side rende
 
 And, like React, Next.js gives you the ability to create applications ranging from static, single-page applications to full-stack, dynamic websites.
 
-Learn more about what Next.js has to offer and how it compares to base React in our guide **Getting Started with Next.js**.
+Learn more about what Next.js has to offer and how it compares to base React in our **Getting Started with Next.js** guide.
 
 ### Why TypeScript?
 
@@ -62,9 +62,9 @@ Learn more about what Next.js has to offer and how it compares to base React in 
 
 Where TypeScript stands out is its introduction of strong typing to JavaScript development. JavaScript does not in itself explicitly type variables, which allows for an exceptional degree of flexibility. However, it can also leave code ambiguous and more prone to runtime errors.
 
-TypeScript, by introducing strong typing to JavaScript, can improve the development experience and application consistency. The strong typing of TypeScript can facilitate catching errors sooner, like while coding rather than at code execution. And it can help to reduce runtime errors do to unexpected variable typing.
+TypeScript, by introducing strong typing to JavaScript, can improve the development experience, and application consistency. The strong typing of TypeScript can facilitate catching errors sooner, like while coding rather than at code execution. And it can help to reduce runtime errors due to unexpected variable typing.
 
-For many, this makes TypeScript a highly desirable alternative to base JavaScript. Ideally, adopting TypeScript can mean improved developer experience and a more consistent user experience.
+For many, this makes TypeScript a highly desirable alternative to base JavaScript. Ideally, adopting TypeScript can mean an improved developer experience and a more consistent user experience.
 
 ## How to Enable TypeScript on a Next.js Project
 
@@ -72,28 +72,26 @@ Next.js features first-class support for TypeScript. However, you do have to ena
 
 There are two main ways of accomplishing this. You can find steps for both ways outlined in the sections that follow.
 
-### Creating a New Next.js Project with TypeScript
+### Create a New Next.js Project with TypeScript
 
-Next.js has its own starter script for boostrapping a project template, `create-next-app`. That script has an option for initializing your project as a TypeScript project, making the process of starting Next with TypeScript straightforward.
+Next.js has its own starter script for bootstrapping a project template, `create-next-app`. The script has an option for initializing your project as a TypeScript project, making the process of starting Next with TypeScript straightforward.
 
-For running the starter script and managing application dependencies, this tutorial uses NPM. You can find a link in the steps below to help you install this if you do not already have it.
+For running the starter script and managing application dependencies, this guide uses NPM. You can find a link in the steps below to help you install NPM if you do not already have it.
 
-1. Follow our tutorial on how to [Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/). NPM handles the project's dependencies and runs the Next.js frontend.
+1. Follow our guide on [How to Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/). NPM handles the project's dependencies and runs the Next.js frontend.
 
-1. Run the `create-next-app` script with `npx` (included with NPM), and add the `--typescript` flag to initialize the project with TypeScript instead of JavaScript. This example also names the new project — `example-app` — in the same command.
+1. Run the `create-next-app` script with `npx` (included with NPM), and add the `--typescript` flag to initialize the project with TypeScript instead of JavaScript. The example below also names the new project — `example-app` — in the same command.
 
-    The commands below create the new project in the current user's home directory. They result in a new subdirectory there using the project name:
+    The commands below create the new project using the project name in the current user's home directory.
 
         cd ~/
-        npx create-next-app example-app
+        npx create-next-app --typescript example-app
 
     {{< output >}}
-Need to install the following packages:
-  create-next-app@12.3.0
-Ok to proceed? (y)
+✔ Would you like to use ESLint with this project? … No / Yes
     {{< /output >}}
 
-The above gives you a ready-to-run Next.js application built on TypeScript. Running the following command from the project's base directory starts up the "Welcome" application on the Next.js development server:
+The above command gives you a ready-to-run Next.js application built on TypeScript. Running the following command from the project's base directory starts up the "Welcome" application on the Next.js development server:
 
     cd ~/example-app
     npm run dev
@@ -103,16 +101,16 @@ Now in a web browser navigate to port `3000` on your server. For instance, assum
 {{< note >}}
 To access this remotely, you may first need to open the port in your system's firewall. You can learn about how to do that in one of the guides linked below, depending on your system's Linux distribution.
 
-- For Debian and Ubuntu, refer to our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
+- For **Debian** and **Ubuntu**, refer to our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
 
-- For AlmaLinux, CentOS, and Fedora, refer to our guide on [Enabling and Configuring FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/)
+- For **AlmaLinux**, **CentOS**, and **Fedora**, refer to our guide on [Enabling and Configuring FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/).
 {{< /note >}}
 
 [![Next.js welcome page](next-template-app_small.png)](next-template-app.png)
 
 ### Convert an Existing Next.js Project to TypeScript
 
-You can enable TypeScript on an existing Next.js project by adding a `tsconfig.json` file to the project's base directory. The file does not even need to have any contents for its addition to turn on TypeScript for your project.
+You can enable TypeScript on an existing Next.js project by adding a `tsconfig.json` file to the project's base directory. The file does not even need to have any contents in addition to turning on TypeScript for your project.
 
 So, for instance, if your project's base directory is `~/example-app`, you can have the project use TypeScript with:
 
@@ -120,25 +118,25 @@ So, for instance, if your project's base directory is `~/example-app`, you can h
 
 Any existing JavaScript code in your project still works just as it would have before. But now your project can also support `.ts` and `.tsx` files for TypeScript functionality.
 
-This also means that you can manage the pace for converting your project to TypeScript. You can, for instance, add the above file to a full JavaScript-based Next project. Then you can progressively convert one page after another from JavaScript to TypeScript, moving at your own pace. Instead of having to convert the entire codebase all at once.
+This also means that you can manage the pace for converting your project to TypeScript. You can, for instance, add the above `tsconfig.json` file to a full JavaScript-based Next project. Then, you can progressively convert one page after another from JavaScript to TypeScript, moving at your own pace. Instead of having to convert the entire codebase all at once.
 
 ## How to Create a Next.js App with TypeScript
 
-You should see our guide **Getting Started with Next.js** for a more thorough coverage of how to create an application with Next.js. It walks you through the most significant features in Next for creating efficient and powerful applications.
+You should see our **Getting Started with Next.js** guide for more thorough coverage of how to create an application with Next.js. It walks you through the most significant features in Next for creating efficient and powerful applications.
 
-This tutorial, instead, focuses on demonstrating and getting your started with TypeScript usage in Next while not retracing too much covered in our other tutorial.
+This guide, instead, focuses on demonstrating, and getting you started with TypeScript usage in Next while not retracing too much covered in our other guide.
 
-### Setting Up the Next.js Project
+### Set Up the Next.js Project
 
-To perform the initial setup for the project, follow the steps in the [Creating a New Next.js Project with TypeScript](/docs/guides/next-js-with-typescript/#creating-a-new-next-js-project-with-typescript) section above.
+To perform the initial setup for the project, follow the steps in the [Create a New Next.js Project with TypeScript](/docs/guides/next-js-with-typescript/#create-a-new-nextjs-project-with-typescript) section above.
 
 You have a base Next project with TypeScript after that, and the rest of these steps build on that.
 
 ### Programming the App with TypeScript
 
-The goal for this example is to extend on the default "Welcome" application with a "todo list" page. To that end, follow along with these next steps. They create a new file for the `/todo` route and give that file contents for the page's logic and display. Then, the steps finally have you integrate a link to the todo page in the default `index.tsx` page.
+The goal for this example is to extend the default "Welcome" application with a "todo list" page. To that end, follow along with these next steps. They create a new file for the `/todo` route and give that file contents for the page's logic and display. Then, the steps finally have you integrate a link to the todo page in the default `index.tsx` page.
 
-These steps and the ones in the next section assume that you are in the base directory for your Next.js.
+The steps below and the ones in the next section assume that you are in the base directory of your Next.js.
 
 1. Create a new file, `todo.tsx`, in the `pages` subdirectory. Doing so automatically creates a new route for the application at `/todo`. Then, give the file the contents shown here. Follow along with the in-code comments to get explanations of what each part of the code is doing.
 
@@ -228,7 +226,7 @@ const Todo: NextPage = () => {
 export default Todo
     {{< /file >}}
 
-1. Open the existing `pages/index.tsx` file. This file has the contents for the default welcome page. To provide a link to the todo list page, add the following just above the closing `</main>` tag.
+1. Open the existing `pages/index.tsx` file. This file has the contents for the default welcome page. To provide a link to the `todo` list page, add the following just above the closing `</main>` tag.
 
     {{< file "" tsx >}}
     // [...]
@@ -242,25 +240,24 @@ export default Todo
 
 And that is it — your Next application with its todo list is ready to run. Follow along through the next section to run the application and see the results.
 
-### Running the Next.js App
+### Run the Next.js App
 
-Running the application now uses the same steps as [shown earlier](/docs/guides/next-js-with-typescript/#creating-a-new-next-js-project-with-typescript) when running the default application. Execute the following command from the project's base directory to run your Next.js application on a development server:
+Running the application now uses the same steps as [shown earlier](/docs/guides/next-js-with-typescript/#create-a-new-nextjs-project-with-typescript) when running the default application. Execute the following command from the project's base directory to run your Next.js application on a development server:
 
     npm run dev
 
-Now you can visit the application again in your web browser, only this time navigating to the `/todo` route. For instance, using the example from the section above: `http://192.0.2.0:3000/todo`.
+Now you can visit the application again in your web browser, only this time navigating to the `/todo` route. For instance, if your server's IP address is `192.0.2.0`, navigate to: `http://192.0.2.0:3000/todo`.
 
 [![An example Next application with a todo list](example-app-todo_small.png)](example-app-todo.png)
 
-You can also navigate back to the home page (`http://192.0.2.0:3000` following the examples above) and see the added element with a link to the todo list.
+You can also navigate back to the home page (`http://192.0.2.0:3000`) and see the added element with a link to the todo list.
 
 [![The default Next application modified with a link to the todo list](example-app-home-mod_small.png)](example-app-home-mod.png)
 
 ## Conclusion
 
-That covers getting set up with TypeScript on Next.js. Should you want to start a new Next project with TypeScript or convert an existing project, this tutorial has walked through what you need. And you have a solid basis to start putting together your own Next.js application with TypeScript code.
+That covers getting set up with TypeScript on Next.js. Should you want to start a new Next project with TypeScript or convert an existing project, this guide has walked through what you need. And you have a solid basis to start putting together your own Next.js application with TypeScript code.
 
-To get a more thorough survey of Next and what it has to offer, take a look at our guide **Getting Started with Next.js**.
+To get a more thorough survey of Next and what it has to offer, take a look at our **Getting Started with Next.js** guide.
 
 Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
-
