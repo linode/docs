@@ -4,7 +4,7 @@ keywords: ['minecraft','marketplace', 'server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-01
 modified: 2022-04-01
-title: "Deploying a Minecraft Server through the Linode Marketplace"
+title: "Deploy a Minecraft Server through the Linode Marketplace"
 external_resources:
 - '[Minecraft Wiki](https://minecraft.fandom.com/wiki/Server)'
 tags: ["linode platform","marketplace","cloud-manager"]

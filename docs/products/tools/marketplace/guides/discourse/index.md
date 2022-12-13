@@ -10,7 +10,7 @@ published: 2020-11-19
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Discourse through the Linode Marketplace"
+title: "Deploy Discourse through the Linode Marketplace"
 external_resources:
 - '[About Discourse](https://discourse.org/about/)'
 - '[Discourse on Github](https://github.com/discourse/discourse)'

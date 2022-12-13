@@ -10,7 +10,7 @@ published: 2021-08-13
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying NirvaShare through the Linode Marketplace"
+title: "Deploy NirvaShare through the Linode Marketplace"
 aliases: ['/guides/deploying-nirvashare-marketplace-app/','/guides/nirvashare-marketplace-app/']
 external_resources:
 - '[NirvaShare](https://nirvashare.com/)'

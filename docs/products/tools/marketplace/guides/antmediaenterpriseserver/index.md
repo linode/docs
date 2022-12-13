@@ -10,7 +10,7 @@ published: 2022-03-29
 modified: 2022-05-17
 modified_by:
   name: Linode
-title: "Deploying Ant Media Server Enterprise Edition through the Linode Marketplace"
+title: "Deploy Ant Media Server Enterprise Edition through the Linode Marketplace"
 external_resources:
 - '[Ant Media](https://antmedia.io)'
 - '[Document](https://github.com/ant-media/Ant-Media-Server/wiki)'

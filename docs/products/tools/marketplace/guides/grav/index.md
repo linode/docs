@@ -10,7 +10,7 @@ published: 2022-02-22
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Grav through the Linode Marketplace"
+title: "Deploy Grav through the Linode Marketplace"
 contributor:
   name: Holden Morris
   link: https://github.com/hmorris3293

@@ -7,7 +7,7 @@ modified_by:
   name: Linode
 image: manage-block-storage-volumes-with-the-linode-api.png
 external_resources:
-  - '[API Documentation](https://developers.linode.com/api/v4)'
+  - '[API Documentation](/docs/api/)'
 keywords: ["linode api", "block storage", "volume"]
 tags: ["linode platform"]
 aliases: ['/platform/api/create-block-storage-volumes-with-the-linode-api/','/guides/create-block-storage-volumes-with-the-linode-api/']

@@ -10,7 +10,7 @@ published: 2021-08-13
 modified: 2022-05-17
 modified_by:
   name: Linode
-title: "Deploying JetBackup through the Linode Marketplace"
+title: "Deploy JetBackup through the Linode Marketplace"
 aliases: ['/guides/deploying-jetbackup-marketplace-app/','/guides/jetbackup-marketplace-app/']
 external_resources:
 - '[JetBackup](https://www.jetbackup.com/)'

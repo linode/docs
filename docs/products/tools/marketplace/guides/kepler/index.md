@@ -10,7 +10,7 @@ published: 2021-01-09
 modified: 2022-05-17
 modified_by:
   name: Linode
-title: "Deploying Kepler through the Linode Marketplace"
+title: "Deploy Kepler through the Linode Marketplace"
 aliases: ['/guides/deploy-kepler-with-marketplace-apps/','/guides/kepler-marketplace-app/']
 contributor:
   name: Linode

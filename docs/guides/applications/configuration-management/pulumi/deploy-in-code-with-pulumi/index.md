@@ -22,7 +22,7 @@ aliases: ['/applications/configuration-management/deploy-in-code-with-pulumi/','
 
 [*Pulumi*](https://www.pulumi.com/) is a development tool that allows you to write computer programs which deploy cloud resources--a practice referred to as *infrastructure as code (IaC)*. Pulumi integrates with multiple cloud platforms, and Pulumi programs can be authored in a number of common programming languages.
 
-With Pulumi's Linode integration, you can manage your Linode resources as you would with our [API](https://developers.linode.com/api/v4/) or [CLI](/docs/products/tools/cli/get-started/), but in a language you may already be familiar with. This guide will present examples written in JavaScript, but Pulumi is also compatible with Go, Python, and TypeScript.
+With Pulumi's Linode integration, you can manage your Linode resources as you would with our [API](/docs/products/tools/api/) or [CLI](/docs/products/tools/cli/), but in a language you may already be familiar with. This guide will present examples written in JavaScript, but Pulumi is also compatible with Go, Python, and TypeScript.
 
 Pulumi also comes with a CLI interface for running the cloud infrastructure programs that you write. Once you've written a program, you can create your cloud resources with a single command:
 

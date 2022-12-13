@@ -11,7 +11,7 @@ modified: 2022-08-23
 image: DeployZabbix_marketplaceapps.png
 modified_by:
   name: Linode
-title: "Deploying Zabbix through the Linode Marketplace"
+title: "Deploy Zabbix through the Linode Marketplace"
 external_resources:
 - '[Learn from documentation](https://www.zabbix.com/documentation/5.0/manual)'
 - '[Purchase Technical Support contract](https://www.zabbix.com/support)'

@@ -10,7 +10,7 @@ published: 2020-03-17
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying PostgreSQL through the Linode Marketplace"
+title: "Deploy PostgreSQL through the Linode Marketplace"
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'

@@ -88,7 +88,7 @@ See Terraform's [Configuration Syntax](https://www.terraform.io/docs/configurati
 
 ## Terraform Providers and HCL Syntax
 
-In Terraform, a *provider* is used to interact with an Infrastructure as a Service (IaaS) or Platform as a Service (PaaS) API, like the [Linode APIv4](https://developers.linode.com/api/v4). The provider determines which [resources](#resources) are exposed and available to create, read, update, and delete. A credentials set or token is usually required to interface with the service account. For example, the [Linode Terraform provider](https://www.terraform.io/docs/providers/linode/index.html) requires your [Linode API access token](/docs/products/tools/api/get-started/#get-an-access-token). A list of [all official Terraform providers](https://www.terraform.io/docs/providers/) is available from HashiCorp.
+In Terraform, a *provider* is used to interact with an Infrastructure as a Service (IaaS) or Platform as a Service (PaaS) API, like the [Linode APIv4](/docs/products/tools/api/). The provider determines which [resources](#resources) are exposed and available to create, read, update, and delete. A credentials set or token is usually required to interface with the service account. For example, the [Linode Terraform provider](https://www.terraform.io/docs/providers/linode/index.html) requires your [Linode API access token](/docs/products/tools/api/get-started/#get-an-access-token). A list of [all official Terraform providers](https://www.terraform.io/docs/providers/) is available from HashiCorp.
 
 To configure Linode as the provider, you need to include a block which specifies Linode as the provider and sets your Linode API token in one of the `.tf` files:
 
