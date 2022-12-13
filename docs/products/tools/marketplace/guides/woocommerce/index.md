@@ -5,7 +5,7 @@ tags: ["cloud-manager","linode platform","cms","wordpress","marketplace"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-02
 modified: 2022-04-01
-title: "Deploying WooCommerce through the Linode Marketplace"
+title: "Deploy WooCommerce through the Linode Marketplace"
 aliases: ['/platform/marketplace/marketplace-woocommerce/','/platform/marketplace/how-to-deploy-woocommerce-with-marketplace-apps/', '/platform/one-click/how-to-deploy-woocommerce-with-one-click-apps/','/platform/one-click/one-click-woocommerce/','/guides/how-to-deploy-woocommerce-with-one-click-apps/','/guides/how-to-deploy-woocommerce-with-marketplace-apps/','/guides/woocommerce-marketplace-app/']
 external_resources:
 - '[WooCommerce Docs](https://docs.woocommerce.com/)'

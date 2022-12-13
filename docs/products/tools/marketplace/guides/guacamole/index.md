@@ -1,6 +1,6 @@
 ---
 author:
-  name: Linode Community
+  name: Linode
   email: docs@linode.com
 description: "Use the Guacamole Marketplace App to easily install the popular open source remote desktop and access your Linode from any device."
 keywords: ['guacamole', 'marketplace', 'remote desktop']
@@ -10,7 +10,7 @@ published: 2020-12-11
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Apache Guacamole through the Linode Marketplace"
+title: "Deploy Apache Guacamole through the Linode Marketplace"
 aliases: ['/platform/marketplace/guacamole/','/guides/deploy-guacamole-with-marketplace-apps/','/guides/guacamole-marketplace-app/']
 contributor:
   name: Linode

@@ -11,7 +11,7 @@ modified: 2022-03-08
 image: RubyonRails_oneclickapps.png
 modified_by:
   name: Linode
-title: "Deploying Ruby on Rails through the Linode Marketplace"
+title: "Deploy Ruby on Rails through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:

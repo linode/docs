@@ -10,7 +10,7 @@ published: 2021-01-04
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Gitea through the Linode Marketplace"
+title: "Deploy Gitea through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:

@@ -10,7 +10,7 @@ published: 2021-01-15
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying OpenLiteSpeed WordPress through the Linode Marketplace"
+title: "Deploy OpenLiteSpeed WordPress through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:

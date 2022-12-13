@@ -6,7 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified: 2022-04-01
 image: Docker_oneclickapps.png
-title: "Deploying Docker through the Linode Marketplace"
+title: "Deploy Docker through the Linode Marketplace"
 external_resources:
  - '[Docker Commands Cheat Sheet](/docs/guides/docker-commands-quick-reference-cheat-sheet/)'
  - '[Docker Documentation](https://docs.docker.com/)'
