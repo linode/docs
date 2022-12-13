@@ -1,7 +1,6 @@
 ---
-title: Set User Permissions on a Linode User Account
-h1_title: Set User Permissions
-enable_h1: true
+title: Set User Permissions
+title_meta: Set User Permissions on a Linode User Account
 description: "Learn how to manage permissions and restrict user access on a Linode account."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-21
