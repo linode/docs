@@ -161,7 +161,7 @@ The following sections walk you through each of these files. Follow along to see
 
 Typically, Next.js projects use the `pages/index.js` file as an entry point, acting as the center of your application's look and feel. The file may not contain much, but it references other components and brings everything together.
 
-The template created above includes a default `pages/index.js` file. Open that file, and modify its existing contents to those shown below. You can find the full example file [here](/docs/create-next-js-app-supabase/example-app-src/pages/index.js).
+The template created above includes a default `pages/index.js` file. Open that file, and modify its existing contents to those shown below. You can find the full example file [here](/docs/guides/create-next-js-app-supabase/example-app-src/pages/index.js).
 
 Follow along with the in-code comments to get explanations what each part of the Next.js code is doing.
 
@@ -196,7 +196,7 @@ export default function Home() {
 
 The next file supplies a simple and reusable interface to the Supabase backend.
 
-Add a new `utils` subdirectory to your Next.js project, and create a file there named `supabaseConnection.js`. Give that file the contents shown here. Make sure to replace `http://192.0.2.0:8000` and `example-supabse-anon-key` with your Supabase instance's **API URL** and **anon key**. You can find the full example file [here](/docs/create-next-js-app-supabase/example-app-src/utils/supabaseConnection.js).
+Add a new `utils` subdirectory to your Next.js project, and create a file there named `supabaseConnection.js`. Give that file the contents shown here. Make sure to replace `http://192.0.2.0:8000` and `example-supabse-anon-key` with your Supabase instance's **API URL** and **anon key**. You can find the full example file [here](/docs/guides/create-next-js-app-supabase/example-app-src/utils/supabaseConnection.js).
 
 ```file {title="utils/supabaseConnection.js" lang="js" hl_lines="7,8"}
 // Import the module for client creation from the Supabase SDK.
@@ -216,7 +216,7 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 To handle the logic for processing and rendering the shopping list, you can create a `ShoppingList` component. Recall that the `index.js` file includes a tag for this component. The component itself handles all of the logic for the shopping list, making your application much more adaptable and expandable.
 
-Add another subdirectory to the project, `components`, and add a file to it named `ShoppingList.js`. Give that file the contents shown in each of the following code blocks. Because this file is more extensive and complicated than the other two, this section breaks it down into parts. However, you can see the whole file [here](/docs/create-next-js-app-supabase/example-app-src/components/ShoppingList.js).
+Add another subdirectory to the project, `components`, and add a file to it named `ShoppingList.js`. Give that file the contents shown in each of the following code blocks. Because this file is more extensive and complicated than the other two, this section breaks it down into parts. However, you can see the whole file [here](/docs/guides/create-next-js-app-supabase/example-app-src/components/ShoppingList.js).
 
 -   The component first needs to import the necessary modules and set up its state variables. The component also uses the `useEffect` function to call for a fresh shopping list when the component loads.
 
