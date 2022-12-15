@@ -19,13 +19,12 @@ As a result of Akamai’s acquisition of Linode, businesses or individuals resid
 
 **December 15th, 2022:**
 
-- **Countries:** Malaysia, Switzerland
-- **U.S. States:** Colorado, Connecticut, Massachusetts, Mississippi, New Mexico, New York, South Carolina, Tennessee, West Virginia
+- **Countries:** Cambodia, Chile, Malaysia, Russian Federation, Switzerland, United Arab Emirates
+- **U.S. States:** Colorado, Connecticut, Massachusetts, Mississippi, New Mexico, New York, South Carolina, Tennessee, Utah, West Virginia
 
 **February 1st, 2023:**
 
-- **Countries:** Cambodia, Chile, Russian Federation, United Arab Emirates
-- **U.S. States:** Iowa, Maryland, Ohio, Utah, Wisconsin
+- **U.S. States:** Iowa, Maryland, Ohio, Wisconsin
 {{</ note >}}
 
 Some countries, states, and regions require us by law to collect taxes. As such, customers located in these locations are charged the appropriate tax rate for any taxable services billed to their account. The taxes that Linode collects are listed on customer invoices (see the [Viewing Invoices and Payments](/docs/products/platform/billing/guides/view-history/) section of our Cloud Manager Billing guide).
@@ -44,9 +43,9 @@ The following table lists each country that requires us to collect taxes. Alongs
 | Austria | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Belgium | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Bulgaria | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Cambodia | 10% | [VAT](https://www.tax.gov.kh/en/content-detail/CivCT4107950038436) | February 1st, 2023 |
+| Cambodia | 10% | [VAT](https://www.tax.gov.kh/en/content-detail/CivCT4107950038436) | December 15th, 2022 |
 | [Canada](#canada) (see below) | | | |
-| Chile| 19% | [VAT](https://www.sii.cl/destacados/foreign_investor/vat.html) | February 1st, 2023 |
+| Chile| 19% | [VAT](https://www.sii.cl/destacados/foreign_investor/vat.html) | December 15th, 2022 |
 | Croatia | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Cyprus | 19% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Czech Republic | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
@@ -71,14 +70,14 @@ The following table lists each country that requires us to collect taxes. Alongs
 | Poland | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Portugal | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Romania | 19% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
-| Russian Federation | 20% | [VAT](https://www.nalog.gov.ru/rn77/TAXATION/TAXES/NDS/) | February 1st, 2023 |
+| Russian Federation | 20% | [VAT](https://www.nalog.gov.ru/rn77/TAXATION/TAXES/NDS/) | December 15th, 2022 |
 | Singapore | 7% | [GST](https://www.iras.gov.sg/irashome/GST/GST-registered-businesses/Learning-the-basics/How-to-implement-GST/Current-GST-Rates/) | September 1st, 2020 |
 | Slovakia | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Slovenia | 22% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Spain | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Sweden | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Switzerland | 7.7% | [VAT](https://www.estv.admin.ch/estv/en/home/value-added-tax/vat-rates-switzerland.html) | December 15th, 2022 |
-| United Arab Emirates | 5% | [VAT](https://u.ae/en/information-and-services/finance-and-investment/taxation/valueaddedtaxvat) | February 1st, 2023 |
+| United Arab Emirates | 5% | [VAT](https://u.ae/en/information-and-services/finance-and-investment/taxation/valueaddedtaxvat) | December 15th, 2022 |
 | United Kingdom | 20% | [VAT](https://www.gov.uk/vat-rates) | July 1st, 2019 |
 | [United States](#united-states) (see below) | | | |
 
@@ -125,7 +124,7 @@ The following table lists each U.S. state and district that requires us to colle
 | South Dakota | August 1st, 2022 |
 | Tennessee | December 15th, 2022 |
 | Texas | May 1st, 2022 |
-| Utah | February 1st, 2023 |
+| Utah | December 15th, 2022 |
 | Washington | May 1st, 2022 |
 | Washington D.C | August 1st, 2022 |
 | West Virginia | December 15th, 2022 |
