@@ -24,7 +24,7 @@ As a result of Akamai’s acquisition of Linode, businesses or individuals resid
 
 **February 1st, 2023:**
 
-- **U.S. States:** Iowa, Maryland, Ohio, Wisconsin
+- **U.S. States:** Iowa, Maryland, Ohio
 {{</ note >}}
 
 Some countries, states, and regions require us by law to collect taxes. As such, customers located in these locations are charged the appropriate tax rate for any taxable services billed to their account. The taxes that Linode collects are listed on customer invoices (see the [Viewing Invoices and Payments](/docs/products/platform/billing/guides/view-history/) section of our Cloud Manager Billing guide).
@@ -128,7 +128,6 @@ The following table lists each U.S. state and district that requires us to colle
 | Washington | May 1st, 2022 |
 | Washington D.C | August 1st, 2022 |
 | West Virginia | December 15th, 2022 |
-| Wisconsin | February 1st, 2023 |
 
 ## Preventing Tax Collection
 
