@@ -17,23 +17,21 @@ contributor:
   link: https://github.com/nasanos
 ---
 
-When you want to host your own document management system, it is important to have a solution that can handle your throughput and storage needs. An efficient architecture for a cloud-based document management system can provide the scalability and high-availability you need.
+When you want to host your own document management system, it's important to have a solution that can handle your throughput and storage needs. An efficient architecture for a cloud-based document management system can provide both the scalability and high-availability you need.
 
-This tutorial provides in-depth instructions for deploying a cloud-based document management system based on our own architecture. Using Terraform for infrastructure management and Linode's Cloud Firewall and VLAN services for security and network efficiency, the architecture ensures a robust system. And the architecture leverages the Mayan Electronic Document Management System (EDMS), a powerful open-source tool for document management.
+This tutorial provides in-depth instructions for deploying a cloud-based document management system based on our own architecture. It ensures a robust system, using Terraform for infrastructure management and Linode's Cloud Firewall and VLAN services for security and network efficiency. The architecture also leverages the Mayan Electronic Document Management System (EDMS), a powerful open source tool for document management.
 
-Follow along with the steps here to fully provision your own production-ready and highly-available document management system.
+Follow along to fully provision your own production-ready and highly available document management system.
 
 ## Why a Cloud-based Document Management System
 
-Numerous cloud EDMS services exist, and most often this is what people turn to when they have document management needs. But these may not meet your document management needs, especially as the number of documents you need to work with increases. Implementing your own cloud-based document management system can provide a higher degree of flexibility and a solution more fit to your particular needs.
+Numerous cloud EDMS services exist to handle document management. However, these may not meet your individual needs, especially as your number of documents increases. Implementing your own cloud-based document management system can provide a solution more fit to your particular needs. The architecture for a cloud-based document management system outlined here aims to be a strong base for that. The result is a highly available system that leverages technologies like Linode's Cloud Firewall and VLANs to ensure secure and efficient communications between nodes.
 
-The architecture for a cloud-based document management system outlined here aims to provide a strong base for that. The result is a highly available system that leverages technologies like Linode's Cloud Firewall and VLANs to ensure secure and efficient communications between nodes.
-
-The best way to learn more about the architecture and what it offers is to review our overview documentation for [Cloud-based Document Management System](/docs/reference-architecture/redundant-cross-datacenter-applications/). You may also be interested in reading our blog post covering the architecture, [Highly Available Mayan EDMS Reference Architecture](https://www.linode.com/blog/databases/deploy-a-cloud-based-electronic-document-management-system/).
+The best way to learn more about the architecture and what it offers is our overview documentation for [Cloud-based Document Management System](/docs/reference-architecture/redundant-cross-datacenter-applications/). You may also be interested in reading our blog post covering the architecture, [Highly Available Mayan EDMS Reference Architecture](https://www.linode.com/blog/databases/deploy-a-cloud-based-electronic-document-management-system/) as well.
 
 ## How to Provision a Cloud-based Document Management System
 
-These next several sections walk you through an example process for implementing your own cloud-based document management system following our reference architecture.
+The next several sections walk you through an example process for implementing your own cloud-based document management system following our reference architecture.
 
 This architecture requires deployment of several parallel nodes. So, to make the process less redundant and easier to maintain, this tutorial uses a Terraform script for the majority of the nodes.
 
@@ -41,33 +39,29 @@ This architecture requires deployment of several parallel nodes. So, to make the
 
 Before you get started provisioning the architecture, you need to prepare the following. Having these lets you smoothly follow the steps outlined in the rest of this tutorial to deploy the architecture.
 
-- You need a personal access token for the Linode API in order to run the Terraform script used in this tutorial. You can follow our [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
+-   You need a personal access token for the Linode API in order to run the Terraform script used in this tutorial. You can follow our [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
 
-- This tutorial uses [Terraform](https://www.terraform.io/) for provisioning instances, and you need to install Terraform to follow along. Terraform automates the process of provisioning infrastructure, making it excellent when you need to deploy similar nodes simultaneously.
+-   This tutorial uses [Terraform](https://www.terraform.io/) for provisioning instances, and you need to install Terraform to follow along. Terraform automates the process of provisioning infrastructure, making it an excellent solution when you need to deploy multiple similar nodes simultaneously.
 
     Install Terraform by following the [official installation guide](https://learn.hashicorp.com/tutorials/terraform/install-cli). This sets you up with the Terraform command-line interface (CLI).
 
     You can learn more about using Terraform, particularly for provisioning Linode instances, in our [Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/).
 
-- You need to have a domain name set up for use with your cloud-based document management system. Linode does not provide domain names, but Linode does employ DNS name servers. Using these name servers allows you to manage your domain name within the Linode Cloud Manager.
-
-    And, more importantly for this tutorial, using Linode's name servers allows for the `dns_linode` plugin for Certbot. The plugin automates the process of procuring SSL certificates, which allows the Terraform process to completely handle the SSL setup.
+-   You need to have a domain name set up for use with your cloud-based document management system. Linode does not provide domain names, but Linode does employ DNS name servers. These name servers allow you to manage your domain name within the Linode Cloud Manager. More importantly for this tutorial, using Linode's name servers allows for the Certbot `dns_linode` plugin. This automates the process of procuring SSL certificates, which allows the Terraform process to completely handle the SSL setup.
 
     Once you have a domain name, you should configure Linode as its DNS name server. Then, you should add that domain to your Linode Cloud Manager via the **Domains** option.
 
     Learn more about this process through our guide [DNS Manager - Get Started](/docs/products/networking/dns-manager/get-started/) and our other [DNS Manager guides](/docs/products/networking/dns-manager/guides/).
 
-- The Terraform script handles creation of a Linode Object Storage bucket. However, the script needs an access key to be able to do so. Follow our guide on how to [Manage Access Keys](/docs/products/storage/object-storage/guides/access-keys/#create-an-access-key) to see the steps for creating an access key for your Linode Object Storage.
-
-    Keep in mind that you need both the **Access Key** and the **Secret Key** for the Terraform script.
+-   The Terraform script handles creation of a Linode Object Storage bucket. However, the script needs an access key to do so. Follow our guide on how to [Manage Access Keys](/docs/products/storage/object-storage/guides/access-keys/#create-an-access-key) for steps to create an access key for your Linode Object Storage. Keep in mind that you need both the **Access Key** and the **Secret Key** for the Terraform script.
 
 ### Application Nodes
 
-Both the application and database nodes can be most easily deployed using Terraform. Terraform automates infrastructure deployment, and it can be a boon for projects like this, where you need to deploy multiple nodes with similar contents.
+Both the application and database nodes can be deployed using Terraform. Terraform automates infrastructure deployment, and it can be a boon for projects like this, where you need to deploy multiple similar nodes.
 
 This tutorial includes a full Terraform script. With a little customization, the script deploys two application nodes and two database nodes ready for use in a cloud-based document management system. The script also handles the setup of a Linode Object Storage bucket.
 
-The included Terraform script can be a little daunting to approach blindly. So, this tutorial covers it in two sections. The first provides a series of steps for executing the Terraform script. The second provides a break down of the script, helping you navigate the script's actions should you want to customize them later.
+The included Terraform script can be a little daunting to approach blindly. Therefore, this tutorial covers it in two sections. The first provides a series of steps for executing the Terraform script. The second provides a breakdown of the script, which helps you navigate the script's actions should you want to customize them later.
 
 #### Executing the Terraform Script
 
@@ -77,13 +71,13 @@ With these steps, the Terraform script deploys the application nodes, database n
 The configurations and commands used in this guide add multiple Linode instances to your account. Be sure to monitor your account closely in the Linode Manager to avoid unwanted charges.
 {{< /caution >}}
 
-1. Download the Terraform package for this tutorial, which you can find [here](cbdms-terraform.zip).
+1.  Download the Terraform package for this tutorial, which you can find [here](cbdms-terraform.zip).
 
-1. Unzip the package into your desired directory. The package contains a directory, `cbdms-terraform`, and the tutorial assumes you have unzipped the package in the current user's home directory. That should give you a `~/cbdc-terraform` directory.
+1.  Unzip the package into your desired directory. The package contains a directory, `cbdms-terraform`, and the tutorial assumes you have unzipped the package in the current user's home directory. That should give you a `~/cbdc-terraform` directory.
 
     On Linux systems, you may need to install `unzip` in order to unzip the package.
 
-1. Change into the unzipped `cbdms-terraform` directory:
+1.  Change into the unzipped `cbdms-terraform` directory:
 
     ```command
     cd ~/cbdms-terraform
@@ -91,7 +85,7 @@ The configurations and commands used in this guide add multiple Linode instances
 
     The remainder of these steps assume you are working in this directory.
 
-1. Open the `terraform.tfvars` file, and replace the capitalized placeholder values with your own.
+1.  Open the `terraform.tfvars` file, and replace the capitalized placeholder values with your own.
 
     - `LINODE_API_TOKEN` should be your Linode API access token, as discussed in the section above on prerequisites.
 
@@ -107,7 +101,7 @@ The configurations and commands used in this guide add multiple Linode instances
 Sensitive infrastructure data (like passwords and tokens) are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
     {{< /caution >}}
 
-1. The Terraform script assumes that you have an SSH public key file stored at `~/.ssh/id_rsa.pub`. If this is not the case, add an `ssh_key` field to the `terraform.tfvars` file, and give it a string value designating the location of your SSH public key.
+1.  The Terraform script assumes that you have an SSH public key file stored at `~/.ssh/id_rsa.pub`. If this is not the case, add an `ssh_key` field to the `terraform.tfvars` file, and give it a string value designating the location of your SSH public key.
 
     For instance, include a line like the following if your public key file is stored in the current user's home directory:
 
@@ -121,23 +115,22 @@ Sensitive infrastructure data (like passwords and tokens) are visible in plain t
 
     Learn more about SSH public keys in our tutorial [How to Use SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/)
 
-1. Change into the script's directory, and initialize the Terraform project. Doing so has Terraform download the necessary provisions for deploying the infrastructure.
+1.  Initialize the Terraform project. Doing so has Terraform download the necessary provisions for deploying the infrastructure.
 
     ```command
-    cd ~/rcdc-terraform
     terraform init
     ```
 
-1. Use the Terraform CLI to apply the script, deploying all of the designated nodes. Before Terraform performs the deployment, it provides an outline of the resources to be provisioned and asks you to confirm.
-
-    ```command
-    terraform apply
-    ```
-
-    You can actually use the `plan` command first to view that outline separately beforehand — essentially making a dry run.
+1.  Use the `plan` command first to view that outline separately beforehand, essentially making a dry run:
 
     ```command
     terraform plan
+    ```
+
+1.  Use the Terraform CLI to apply the script, deploying all of the designated nodes. Before Terraform performs the deployment, it provides an outline of the resources to be provisioned and asks you to confirm.
+
+    ```command
+    terraform apply
     ```
 
 Once the script starts, it may take several minutes to finish. During that time, you should keep an eye on the output to ensure no errors arise during the provisioning process.
@@ -154,49 +147,49 @@ The Terraform script deployed in this tutorial uses Linode's Terraform provider 
 
 Here is a brief outline of the script's process. Further on, you can find a diagram of the resulting infrastructure.
 
-1. The Terraform script first adds a new bucket to your Linode Object Storage instance. This particular bucket gets used by Mayan EDMS for storing documents, and is also where rclone delivers PostgreSQL database backups.
+1.  First, the Terraform script adds a new bucket to your Linode Object Storage instance. This particular bucket gets used by Mayan EDMS for storing documents, and is also where rclone delivers PostgreSQL database backups.
 
-1. The Terraform script deploys two nodes for running the PostgreSQL databases, which act as the backends for the Mayan EDMS application. Terraform stands up the nodes and subsequently delivers configuration and script files to be used in setting up the nodes.
+1.  The Terraform script deploys two nodes for running the PostgreSQL databases, which act as the backends for the Mayan EDMS application. Terraform creates the nodes and subsequently delivers configuration and script files to be used in setting up the nodes.
 
-1. Terraform executes one of the delivered scripts on each node. You can find as `scripts/cbdms-data-node.sh`, and the in-code comments walk you through its various actions.
+1.  Terraform executes one of the delivered scripts on each node. Located at `scripts/cbdms-data-node.sh`, the in-code comments walk you through its various actions.
 
-    Essentially, this script is responsible for installing PostgreSQL, keepalived, and rclone. The script configures the initial PostgreSQL users and databases, PostgreSQL connectivity, keepalived, and rclone. Along with these, the script installs a Prometheus exporter for observing the PostgreSQL instance.
+    Essentially, the script configures the initial PostgreSQL users and databases, PostgreSQL connectivity, keepalived, and rclone. Along with these, the script also installs a Prometheus exporter for observing the PostgreSQL instance.
 
-1. The Terraform script deploys two nodes for running the Mayan EDMS application. Terraform stands up each node and delivers a series of configuration files and a script file.
+1.  The Terraform script deploys two nodes for running the Mayan EDMS application. Terraform creates each node and delivers a series of configuration files and a script file.
 
-1. Terraform then executes the delivered script file. You can find the script as the `scripts/cbdms-app-node.sh` file within the Terraform directory, and follow along with its in-code comments.
+1.  Terraform then executes the delivered script file. You can find the script as the `scripts/cbdms-app-node.sh` file within the Terraform directory, and follow along with its in-code comments.
 
     The script installs Mayan EDMS via Docker Compose, performing all of the initial setup. It likewise installs and configures NGINX as a proxy to Mayan EDMS and sets up SSL certification on it with Certbot. The script sets up Unison to synchronize the certificate files between the two instances. Finally, it also installs a Prometheus `node_exporter` to observe the instance.
 
-1. After all other resources have been deployed, Terraform executes another script on the first of the database nodes. This script handles the installation and setup of Bucardo for bi-directional replication between the two PostgreSQL databases.
+1.  After all other resources have been deployed, Terraform executes another script on the first of the database nodes. This script handles the installation and setup of Bucardo for bi-directional replication between the two PostgreSQL databases.
 
 By the end, you should have a deployed infrastructure like the one in the diagram here.
 
 [![Diagram of the infrastructure deployed via Terraform](cbdms-infrastructure-terraform_small.png)](cbdms-infrastructure-terraform.png)
 
-The number of application and database nodes deployed can be controlled via the `node_count` variable. But note that this would requires some adjustments to the various shell scripts deployed by Terraform.
+The number of application and database nodes deployed can be controlled via the `node_count` variable. However, this would require some adjustments to the various shell scripts deployed by Terraform.
 
-Linode's Terraform provider also has the ability to provision the architecture's NodeBalancer. But the NodeBalancer is a single unit and can be entirely managed from within the Linode Cloud Manager. Thus, the tutorial instead covers manual deployment of the NodeBalancer for better demonstration
+Linode's Terraform provider also has the ability to provision the architecture's NodeBalancer. But the NodeBalancer is a single unit and can be entirely managed from within the Linode Cloud Manager. Thus, the tutorial instead covers manual deployment of the NodeBalancer for better demonstration.
 
 The same is the case for the Prometheus-Grafana instance. Only one such instance is needed, and the Linode Marketplace provides the cleanest and most straightforward path for deploying it.
 
 ### Completing Mayan EDMS Set Up
 
-In some cases, the Mayan EDMS may require a few more steps before it is fully ready to use. The process for this architecture decouples Mayan from its default, local PostgreSQL instance. Instead, Mayan is set up to use PostgreSQL on dedicated nodes. Doing so may cause an interruption to the Mayan setup process, requiring these additional steps to complete the setup.
+In some cases, the Mayan EDMS may require a few more steps before it is fully ready to use. The process for this architecture decouples Mayan from its default, local PostgreSQL instance. Instead, Mayan is set up to use PostgreSQL on dedicated nodes. Doing so may cause an interruption to the Mayan setup process, which requires these additional steps to complete the setup.
 
 To check whether you need to take these steps, navigate to one of your Mayan EDMS instances in a web browser. For instance, if your first application node has the remote IP address `192.0.2.0`, you can navigate to `https://192.0.2.0` in your browser.
 
-If you are prompted with credentials for an automatically-generated administrator user, you do not need to complete the steps in this section. In this case, your Mayan EDMS process completed successfully.
+If you are prompted with credentials for an automatically generated administrator user, you do not need to complete the steps in this section. In this case, your Mayan EDMS process completed successfully.
 
-Otherwise, follow the steps give below. You only need to complete these steps on one of the Mayan EDMS instances, since there is bi-directional replication on the Postgres databases. These steps create an initial administrator user for your Mayan instances and add a default document type and a default document source.
+Otherwise, follow the steps given below. You only need to complete these steps on one of the Mayan EDMS instances, since there is bi-directional replication on the Postgres databases. These steps create an initial administrator user for your Mayan instances and add a default document type and default document source.
 
-1. Access the shell as a root user on one of your application nodes. You can do this either through SSH using the node's IP address or through the Linode Shell (Lish) console that you can access through the Linode Cloud Manager.
+1.  Access the shell as a root user on one of your application nodes. You can do this either through SSH using the node's IP address or through the Linode Shell (Lish) console that you can access through the Linode Cloud Manager.
 
-    - For SSH, see our guide on [Connection to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
+    -   For SSH, see our guide on [Connection to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/).
 
-    - For the Lish console, see our guide (Access Your System Console Using Lish)[/docs/guides/lish/].
+    -   For the Lish console, see our guide [Access Your System Console Using Lish](/docs/guides/lish/).
 
-1. Execute the following command on the shell:
+1.  Execute the following command on the shell:
 
     ```command
     docker exec -ti mayan-app-1 /opt/mayan-edms/bin/mayan-edms.py createsuperuser
@@ -212,35 +205,35 @@ Otherwise, follow the steps give below. You only need to complete these steps on
     Superuser created successfully.
     ```
 
-1. Access the Mayan EDMS interface through your web browser. You may be able to do this by navigating to the application node's the IP address using HTTPS. For instance, if your application node has the remote IP address `192.0.2.0`, navigate to `https://192.0.2.0`.
+1.  Access the Mayan EDMS interface through your web browser. You may be able to do this by navigating to the application node's the IP address using HTTPS. For instance, if your application node has the remote IP address `192.0.2.0`, navigate to `https://192.0.2.0`.
 
     However, if you are unable to access the interface by that means, you should wait to do so until after completing further steps below. Specifically, wait to access the interface until after deploying a NodeBalancer and setting up your domain name.
 
-1. Click the **Click here to fix this** button beneath the *Create a document type* heading at the top of the page to add a document type. The default document type is typically "Default", but you should add whatever document type or types makes sense for your needs.
+1.  Click the **Click here to fix this** button beneath the *Create a document type* heading at the top of the page to add a document type. The default document type is typically "Default", but you should add whatever document type or types makes sense for your needs.
 
-1. Click the **Click here to fix this** button beneath the *Create a document source* heading at the top of the page to add a document source. At the least, you should add a document source with the *Web form* option. This lets you add documents via the Mayan interface. Feel free to add whatever other document sources you intend to use.
+1.  Click the **Click here to fix this** button beneath the *Create a document source* heading at the top of the page to add a document source. At the least, you should add a document source with the *Web form* option. This lets you add documents via the Mayan interface. Feel free to add whatever other document sources you intend to use.
 
 [![Mayan with alerts to add a default document type and default document source](mayan-add-defaults_small.png)](mayan-add-defaults.png)
 
 ### Prometheus and Grafana
 
-This architecture uses Prometheus for collecting metrics about the Mayan nodes and PostgreSQL databases. And it uses Grafana for visualizing and consuming those metrics.
+This architecture uses Prometheus for collecting metrics about the Mayan nodes and PostgreSQL databases. It then uses Grafana for visualizing and consuming those metrics.
 
-Prometheus and Grafana get their own node in the architecture. Through the Linode Marketplace, deploying that node comes through a straightforward process.
+Prometheus and Grafana get their own node in the architecture. Through the Linode Marketplace, deploying that node is a straightforward process.
 
-1. Follow our guide on [Deploying Prometheus and Grafana through the Linode Marketplace](/docs/products/tools/marketplace/guides/prometheus-grafana/) to get your Prometheus-Grafana node up and running.
+1.  Follow our guide on [Deploying Prometheus and Grafana through the Linode Marketplace](/docs/products/tools/marketplace/guides/prometheus-grafana/) to get your Prometheus-Grafana node up and running.
 
     Be sure, when creating the instance, to add the VLAN created during the Terraform process. This VLAN should have a name like `vlan-us-southeast-1`. If you changed the region for the Terraform script, replace `us-southeast` in this example with the region you selected.
 
     You also need to add an IPAM address associated with the VLAN interface. The address you give needs to match the netmask for the IPAM addresses of the other nodes. This tutorial uses an IPAM address of `10.8.0.11/24` for the Prometheus-Grafana node.
 
-1. You should at this point have a node with Prometheus and Grafana running and with Prometheus added as a data source to the Grafana instance.
+1.  You should at this point have a node with Prometheus and Grafana running and with Prometheus added as a data source to the Grafana instance.
 
-1. Access the shell on your Prometheus-Grafana node. You can do so through SSH or through the Lish console in the Linode Cloud Manager. Guides on each method are linked in the section above on completing the Mayan EDMS setup.
+1.  Access the shell on your Prometheus-Grafana node. You can do so through SSH or through the Lish console in the Linode Cloud Manager. Guides on each method are linked in the section above on completing the Mayan EDMS setup.
 
-1. Using your preferred text editor, open the Prometheus configuration file, located at `/etc/prometheus/prometheus.yml`.
+1.  Using your preferred text editor, open the Prometheus configuration file, located at `/etc/prometheus/prometheus.yml`.
 
-1. Add the following lines to the end of the configuration file. Make sure that the spaces line up with the `job_name: local_prometheus` block preceding these new lines:
+1.  Add the following lines to the end of the configuration file. Make sure that the spaces line up with the `job_name: local_prometheus` block preceding these new lines:
 
     ```file {title="/etc/prometheus/prometheus.yml" lang="yml"}
       - job_name: node
@@ -253,19 +246,19 @@ Prometheus and Grafana get their own node in the architecture. Through the Linod
 
     These two blocks tell Prometheus to listen at the given addresses for the exporters installed on each of the application and database nodes. The exporters themselves, installed during the Terraform process, provide metrics that Prometheus can consume.
 
-1. You can at this point start building dashboards in Grafana using the metrics collected in Prometheus. Open the Grafana web interface as shown in the guide linked above, and use the **Explore** menu to create queries.
+1.  You can at this point start building dashboards in Grafana using the metrics collected in Prometheus. Open the Grafana web interface as shown in the guide linked above, and use the **Explore** menu to create queries.
 
     Most of the metrics gathered by this Prometheus instance should have names like `node_*` and `pg_*`.
 
     [![Adding queries for Prometheus metrics to Grafana](grafana-explore_small.png)](grafana-explore.png)
 
-1. To jump start your view of the metrics, you can import ready-made Grafana dashboards. You can do this by navigating to the **Dashboard** option on the left menu in Grafana and selecting **Import**. There, enter the dashboard's ID and click the **Load** button.
+1.  To jump start your view of the metrics, you can import ready-made Grafana dashboards. You can do this by navigating to the **Dashboard** option on the left menu in Grafana and selecting **Import**. There, enter the dashboard's ID and click the **Load** button.
 
     Here are a couple of options to get started:
 
-    - For node monitoring, you can use [this dashboard](https://grafana.com/grafana/dashboards/1860) with ID `1860`.
+    -   For node monitoring, you can use [this dashboard](https://grafana.com/grafana/dashboards/1860) with ID `1860`.
 
-    - For PostgreSQL monitoring, you can use [this dashboard](https://grafana.com/grafana/dashboards/9628) with ID `9628`.
+    -   For PostgreSQL monitoring, you can use [this dashboard](https://grafana.com/grafana/dashboards/9628) with ID `9628`.
 
 ### NodeBalancer
 
@@ -273,9 +266,9 @@ The process for provisioning a Linode NodeBalancer instance can be managed entir
 
 Once you get started, give your NodeBalancer the following settings:
 
-- Use `443` for the **Port** field, and select *TCP* as the **Protocol**. This has the NodeBalancer listen for traffic on the HTTPS port but route that traffic through to the nodes using the TCP protocol. Leave **Proxy Protocol** as *None*.
+-   Use `443` for the **Port** field, and select *TCP* as the **Protocol**. This has the NodeBalancer listen for traffic on the HTTPS port but route that traffic through to the nodes using the TCP protocol. Leave **Proxy Protocol** as *None*.
 
-- Add two **Backend Nodes**, one for each application node created by the Terraform script. Give each node a descriptive label, like `cbdms-app-node-1`, and select the node's **IP Address** from the dropdown. Then enter `443` for the **Port** and `50` for the **Weight**. Ensure that **Mode** is set to *Accept*.
+-   Add two **Backend Nodes**, one for each application node created by the Terraform script. Give each node a descriptive label, like `cbdms-app-node-1`, and select the node's **IP Address** from the dropdown. Then enter `443` for the **Port** and `50` for the **Weight**. Ensure that **Mode** is set to *Accept*.
 
 Any other configuration options you can leave at their defaults or adjust as you desire.
 
@@ -295,17 +288,17 @@ The cloud-based document management system architecture employs a Cloud Firewall
 
 This tutorial uses three firewalls. The first covers the two application nodes, the second covers the two database nodes, and the third covers the Prometheus-Grafana node. The follow steps walk you through creating them.
 
-1. Access the **Firewalls** page from the left menu of the Linode Cloud Manager.
+1.  Access the **Firewalls** page from the left menu of the Linode Cloud Manager.
 
-1. Using the **Create Firewall** option, create each of the three firewalls. Enter a label for each, and for each select the nodes to be associated with the firewall. This tutorial names them `cbdms-app-firewall`, `cbdms-database-firewall`, and `cbdms-prometheus-firewall`.
+1.  Using the **Create Firewall** option, create each of the three firewalls. Enter a label for each, and for each select the nodes to be associated with the firewall. This tutorial names them `cbdms-app-firewall`, `cbdms-database-firewall`, and `cbdms-prometheus-firewall`.
 
-1. Access each of the new firewalls, and configure them with the rules described below.
+1.  Access each of the new firewalls, and configure them with the rules described below.
 
     All three firewalls should have the following configured under **Rules**:
 
-    - **Default inbound policy** set to *Drop*, and the **Default outbound policy** set to *Accept*.
+    -   **Default inbound policy** set to *Drop*, and the **Default outbound policy** set to *Accept*.
 
-    - An inbound rule to accept TCP connections on the SSH port, *22*.
+    -   An inbound rule to accept TCP connections on the SSH port, *22*.
 
     The firewall for the application nodes should additionally have the following rule: An inbound rule to accept TCP connections on the HTTPS port, *443*.
 
@@ -325,17 +318,17 @@ To access Mayan EDMS, navigate to the domain name you associated with the NodeBa
 
 As a summary, here is an overview everything that goes on behind the scenes for this document management setup.
 
-- The NodeBalancer routes HTTPS requests to one of the application nodes.
+-   The NodeBalancer routes HTTPS requests to one of the application nodes.
 
-- NGINX receives a request, applies the SSL certification, and proxies the request to the node's Mayan EDMS instance.
+-   NGINX receives a request, applies the SSL certification, and proxies the request to the node's Mayan EDMS instance.
 
-- Mayan stores things like configuration, users, and other data within the PostgreSQL databases. Its connection to these databases occurs via a floating URL — in this tutorial, `10.8.0.100` — on the VLAN. The floating URL is maintained by keepalived configured for failover.
+-   Mayan stores things like configuration, users, and other data within the PostgreSQL databases. Its connection to these databases occurs via a floating URL — in this tutorial, `10.8.0.100` — on the VLAN. The floating URL is maintained by keepalived configured for failover.
 
-- Mayan stores its documents in a Linode Object Storage bucket set up for that purpose.
+-   Mayan stores its documents in a Linode Object Storage bucket set up for that purpose.
 
-- The PostgreSQL databases are kept in sync via bi-directional replication configured through Bucardo.
+-   The PostgreSQL databases are kept in sync via bi-directional replication configured through Bucardo.
 
-- PostgreSQL periodically dumps a backup of its records of the Mayan database. A service then uploads the dumped backup to the Linode Object Storage bucket.
+-   PostgreSQL periodically dumps a backup of its records of the Mayan database. A service then uploads the dumped backup to the Linode Object Storage bucket.
 
 ## Conclusion
 
