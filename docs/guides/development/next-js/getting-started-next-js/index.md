@@ -1,5 +1,5 @@
 ---
-slug: getting-started-with-next-js
+slug: getting-started-next-js
 author:
   name: Linode Community
   email: docs@linode.com
