@@ -23,9 +23,9 @@ external_resources:
 
 If you're running a mail server, it's a good idea to have spam and virus filtering. Spam can flood your users' inboxes, and those running insecure local PCs are susceptible to virus infection. Protecting your email server protects your clients and you. This guide goes through the installation and configuration of virus and spam filtering, using Amavis-new, ClamAV, and SpamAssassin.
 
- {{< caution >}}
+ {{< note type="alert" respectIndent=false >}}
 This is a generic introductory guide. You are responsible for ensuring that your virus/spam filtering system meets the needs of your environment.
-{{< /caution >}}
+{{< /note >}}
 
 ## Prerequisites
 

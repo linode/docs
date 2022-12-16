@@ -171,9 +171,9 @@ server.document-root = "/var/www/html/example.com/htdocs"
 
     With the configuration you set in Steps 3 and 4, if `example.com` is requested, and `/var/www/html/example.com/htdocs/` is found, that directory becomes the document root when serving requests. The `0%` in the path pattern specifies that a request will be checked against host files named in the format of domain and Top Level Domain (TLD). The `server.document-root` directive specifies a default host that is used when a matching directory does not exist.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 These steps configure `server.document-root` to `/var/www/html`. According to lighttpd documentation, this [may expose your server to a vulnerability](https://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_ModEVhost#A-Bad-Example) in which authentication can be bypassed in certain situations. If improperly configured, this may also redirect unmatched requests to the lighttpd index page rather than the default host of your choosing.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Restart lighttpd to load the configuration changes:
 

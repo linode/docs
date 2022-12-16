@@ -207,9 +207,9 @@ It is common to run mail servers on UTC, as they regularly accept mail from all 
 
     Visit your Linode's hostname or IP address in your browser using https. For example, `https://mail.example.com`. This will open the login page. Log in using the admin account and password created during the install.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Since you haven't installed a trusted cert yet, you will likely get a browser warning about an untrusted site. Bypass the warning for now. Later you can either add Zimbra's self-signed cert to your browser or install a trusted cert in Zimbra.
-{{< /caution >}}
+{{< /note >}}
 
     ![Zimbra admin console](AdminConsole.png)
 

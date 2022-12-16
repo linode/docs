@@ -112,9 +112,9 @@ DHCP=yes
 # Address=192.0.2.123/24
 {{</ file >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 When using DHCP, the IPv4 address configured on your system may change if you add or remove IPv4 addresses on your Compute Instance. If this happens, any tool or system using the original IPv4 address will no longer be able to connect.
-{{</ caution>}}
+{{< /note >}}
 
 ## Configuring the Primary IPv6 Address through SLAAC
 

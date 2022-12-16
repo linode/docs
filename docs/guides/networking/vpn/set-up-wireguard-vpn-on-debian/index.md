@@ -52,9 +52,9 @@ In this guide you will learn how to:
 * [Configure a WireGuard client](#configure-wireguard-client) on your local computer or another Linode.
 * [Establish a simple peer connection](#connect-the-client-and-server) between your WireGuard server and client.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Do not use WireGuard for critical applications. The project is still undergoing security testing and is likely to receive frequent major updates in the future.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 

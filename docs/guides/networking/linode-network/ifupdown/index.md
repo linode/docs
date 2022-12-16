@@ -96,9 +96,9 @@ iface eth0 inet dhcp
 #    gateway 192.0.2.1
 {{</ file >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 When using DHCP, the IPv4 address configured on your system may change if you add or remove IPv4 addresses on your Compute Instance. If this happens, any tool or system using the original IPv4 address will no longer be able to connect.
-{{</ caution>}}
+{{< /note >}}
 
 To disable DHCP, switch `dhcp` back to `static` and manually add the relevant `address` and `gateway` lines.
 

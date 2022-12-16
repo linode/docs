@@ -208,9 +208,9 @@ OpenVPN provides a GPG signature file to verify the installer's integrity and au
 
 3.  To ensure that no IPv6 traffic is coming from the VPN server, run the test at [http://test-ipv6.com/](http://test-ipv6.com/). Your public IP address should again be that of your Linode VPN, and the results should show that no IPv6 address was detected.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 If the test results show you any IP addresses other than those of your Linode and intended DNS servers, your VPN is not properly tunneling traffic. Review the logs on both server and client to determine how to troubleshoot the connection.
-{{< /caution >}}
+{{< /note >}}
 
 
 ##  Revoke a VPN Client Certificate

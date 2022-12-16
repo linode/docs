@@ -141,9 +141,9 @@ Now that all required packages are installed on the new system, you need to copy
 
 These files can be copied over SCP, sFTP, another preferred file transfer utility, or even by using Block Storage Volumes. It's typically safe to copy the entire directory for websites and applications directly into the new system. For configuration files, however, consider if they already exist on the new server. If they do, you may wish to review each file *before overriding* them. These files may contain newer best practices or new required parameters. It is often best to import any of your changes into the newer configuration files instead of overriding them.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Before transferring data, you may want to place any applications in a *maintenance* mode to prevent changes to files or databases. If files do change during the transfer, there may be a chance of corruption or other undesired behavior.
-{{</ caution >}}
+{{< /note >}}
 
 ### SFTP (SSH File Transfer Protocol)
 

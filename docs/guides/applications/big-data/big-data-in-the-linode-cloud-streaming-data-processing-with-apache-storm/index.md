@@ -40,9 +40,9 @@ Some use cases where Storm is a good solution:
 
 This guide explains how to create Storm clusters on the Linode cloud using a set of shell scripts that use Linode's Application Programming Interface (APIs) to programmatically create and configure large clusters. The scripts are all provided by the author of this guide via [GitHub repository](https://github.com/pathbreak/storm-linode). This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 External resources are outside of our control, and can be changed and/or modified without our knowledge. Always review code from third party sites yourself before executing.
-{{< /caution >}}
+{{< /note >}}
 
  The deployed architecture will look like this:
 
@@ -204,9 +204,9 @@ Match User clustermgrguest
 
         service ssh restart
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Since access to the cluster manager provides access to all Storm and Zookeeper clusters and any sensitive data they are processing, its security configuration should be considered critical, and access should be as restrictive as possible.
-{{< /caution >}}
+{{< /note >}}
 
 9.  Log in to the cluster manager Linode as the `root` user, using the public IP address shown when you created it:
 
@@ -541,9 +541,9 @@ When creating a cluster, you should have `clustermgr` authorization to the Clust
 
         Set this value to `false` if the cluster manager node is located in the *same* Linode data center as the cluster nodes. This is the recommended value. Change to `true` **only** if the cluster manager node is located in a *different* Linode data center from the cluster nodes.
 
-        {{< caution >}}
+        {{< note type="alert" respectIndent=false >}}
 It's important to set this correctly to avoid critical cluster creation failures.
-{{< /caution >}}
+{{< /note >}}
 
         <br>
 
@@ -871,9 +871,9 @@ When creating a cluster, you should have `clustermgr` authorization to the Clust
 
         Set this value to `false` if the cluster manager node is located in the *same* Linode data center as the cluster nodes. This is the recommended value and is also the default. Change to `true` **only** if the cluster manager node is located in a *different* Linode data center from the cluster nodes.
 
-        {{< caution >}}
+        {{< note type="alert" respectIndent=false >}}
 It's important to set this correctly to avoid critical cluster creation failures.
-{{< /caution >}}
+{{< /note >}}
 
         <br>
 
@@ -1200,9 +1200,9 @@ A user with only `clustermgrguest` authorization can use `cluster_info.sh` to de
 
 Stopping a Zookeeper cluster cleanly stops the Zookeeper daemon on all nodes, and shuts down all nodes. The cluster can be restarted later. Note that the nodes **will** still incur Linode's hourly charges when stopped.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Do not stop a Zookeeper cluster while any Storm clusters that depend on it are running. This may result in data loss.
-{{< /caution >}}
+{{< /note >}}
 
 To stop a cluster, use the `stop` command:
 
@@ -1212,9 +1212,9 @@ To stop a cluster, use the `stop` command:
 
 Destroying a Zookeeper cluster permanently deletes all nodes of that cluster and their data. Unlike a Linode that is only shut down, destroyed or deleted Linodes no longer incur hourly charges.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Do not destroy a Zookeeper cluster while any Storm clusters that depend on it are running. It may result in data loss.
-{{< /caution >}}
+{{< /note >}}
 
 To destroy a cluster, use the `destroy` command:
 

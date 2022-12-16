@@ -242,9 +242,9 @@ host    all             postgres        172.17.0.0/16           password
 
 In this section, both the app and database will be running in separate containers. You can use the [official postgres image](https://hub.docker.com/_/postgres/) from Docker Hub and load in the SQL dump created earlier.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 You should not store production database data inside a Docker container. Containers should be treated as ephemeral entities: if a container unexpectedly crashes or is restarted, all data in the database will be lost.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Stop and remove the Node.js container:
 

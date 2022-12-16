@@ -98,13 +98,13 @@ cluster-config-file nodes-6379.conf
 cluster-node-timeout 15000
 {{< /file >}}
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Without taking additional precautions, your Redis nodes may be exposed to the public internet via their respective public IP addresses. This means your nodes may be vulnerable to automated attacks. For more information, see [Redis Security](https://redis.io/topics/security).
 
 To protect your Redis cluster from outside threats, consider utilizing [Cloud Firewalls](/docs/products/networking/cloud-firewall/) or [VLANs](/docs/products/networking/vlans/) to limit access to your cluster Linodes.
 
 When using VLANs, replace `192.0.2.1` with the respective Linode's IPAM address in each configuration file.
-{{< /caution >}}
+{{< /note >}}
 
 3.  In `c_replica.conf`, the configuration is similar except for an update of the port number. `redis-cli` will be used later to configure this into a replica for the appropriate master.
 

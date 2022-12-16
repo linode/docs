@@ -79,9 +79,9 @@ You don’t actually get an immutable variable when you use `const`. To do that,
 
 A variable of type `any` can store any type. The main reason to use the `any` type is to prevent TypeScript from throwing type-checking errors for that variable.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Before using `any`, consider the alternatives of explicit [unions](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html) and [narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html).
-{{< /caution >}}
+{{< /note >}}
 
 If you don't declare a type, and the type can't be inferred, the variable is set as the `any` type by default. The syntax to declare the `any` type is as follows:
 

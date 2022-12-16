@@ -200,9 +200,9 @@ If you've never before played the game, you first need to click on **Play** and 
 
         cd ~/ && ./startdst.sh
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 From this point, do not press the **Control+C** keys while in the console unless you want to stop DST.
-{{< /caution >}}
+{{< /note >}}
 
 2.  To detach from the screen session running the server console, press these two key combinations in succession:
 

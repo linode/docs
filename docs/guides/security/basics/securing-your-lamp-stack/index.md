@@ -88,9 +88,9 @@ Giving a user sudo access simply involves adding the user to the `sudo` group wi
 
 ## Disabling "root" Logins
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Before completing this section, make sure that you have created a limited user with sudo access. If you disable root logins without having first created a user account, you may lock yourself out of your system.
-{{< /caution >}}
+{{< /note >}}
 
 The first step in setting up local authentication security is to disable root logins. This prevents any authorized or unauthorized users from gaining access to the `root` user account and consequently the server.
 
@@ -245,13 +245,13 @@ SSH key-pairs can be generated on your local machine by using the `ssh-keygen` u
 
 1.  Generate a secure, 4096-bit key-pair to use with your LAMP stack user by running the following command:
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 **This command will overwrite an existing RSA key pair, potentially locking you out of other systems.**
 
 If you've already created a key pair, skip this step. To check for existing keys, run `ls ~/.ssh/id_rsa*`.
 
 If you accidentally lock yourself out of the SSH service on your Linode, you can still use the [Lish](/docs/guides/lish/) console to login to your server. After you've logged in via Lish, update your `authorized_keys` file to use your new public key. This should re-establish normal SSH access.
-{{< /caution >}}
+{{< /note >}}
 
         ssh-keygen -b 4096
 
@@ -287,9 +287,9 @@ PasswordAuthentication no
 
     Both your limited user and `root` user accounts are now secured from unauthorized remote access as you are only able to login to your user account with the unique private key from your SSH key-pair.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Now, you can only authenticate to your LAMP stack Linode via SSH using your unique private key. Accordingly, it is important to keep it safe and secure. Make a backup of your private key to ensure you are able to re-establish access to your Linode in the event of data loss.
-    {{< /caution >}}
+    {{< /note >}}
 
 ## Brute-Force Protection with Fail2Ban
 

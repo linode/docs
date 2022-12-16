@@ -94,6 +94,6 @@ The instructions below install Xfce4 and LightDM on Debian 11. You are not limit
 
     ![Screenshot of Xfce4 in Glish](glish-xfce-desktop.png)
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Glish does not offer copy and paste functionality.
-{{</ caution >}}
+{{< /note >}}

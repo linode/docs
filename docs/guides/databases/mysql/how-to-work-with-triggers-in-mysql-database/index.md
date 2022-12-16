@@ -560,6 +560,6 @@ Output:
 Query OK, 0 rows affected (0.00 sec)
 {{< /output >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Be cautious when deleting tables associated with triggers. Once a table is dropped from the MySQL database, the related triggers are also automatically deleted.
-{{< /caution >}}
+{{< /note >}}

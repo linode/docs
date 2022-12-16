@@ -171,9 +171,9 @@ Version 1.5.7 is the current version and may be different by the time you read t
 
 4.  Create a user account and define a domain to track. You will log in to see your OWA statistics through this user account.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 This process will display your password in plaintext once complete. Be careful if performing these steps in a public location.
-{{< /caution >}}
+{{< /note >}}
 
 ## Using OWA
 
@@ -191,9 +191,9 @@ You will need to create site profiles and add JavaScript or PHP code to your web
 
 5.  On the resulting page you will see near the top a section named "Add a New Tracked Site Profile". Enter the domain name of the site you want to track and click Save Profile. The other two fields are for your information only and are, therefore, optional.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 You must click "Save Profile" before trying to enter any of the settings below this button. Failure to do so will result in a  blank white page and your new site not being added. Recovery simply requires a click of the back button in your browser.
-{{< /caution >}}
+{{< /note >}}
 
 6.  Click on "Reporting" in the top left corner to return to the Sites Roster page. In the list of tracked sites, find your new site and click "Get Tracking Code".
 

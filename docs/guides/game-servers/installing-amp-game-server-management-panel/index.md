@@ -77,9 +77,9 @@ When the installation script has completed, the following message will appear, p
 [Info] Waiting for user to complete first-time setup in browser...
 {{< /output >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 **Do Not** close the terminal or exit the script until the setup process is fully completed in the browser.
-{{< /caution >}}
+{{< /note >}}
 
 ## Completing Setup in the Web Browser
 

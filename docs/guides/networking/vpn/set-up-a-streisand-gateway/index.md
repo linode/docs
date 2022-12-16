@@ -121,9 +121,9 @@ Choosing a server location near your home will help to reduce latency. However, 
 
 Streisand will now execute a series of Ansible rules to create and configure a new Linode. This process can take a long time. (The [Streisand docs](https://github.com/jlund/streisand) say about ten minutes, but in some cases it can be longer). You may be prompted for confirmation or to provide additional information during the process.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Streisand will create a new Linode under your account early in the configuration process. If the script fails for any reason, or if you cancel it, check the [Linode Manager](https://cloud.linode.com/) and remove the new Linode if necessary.
-{{< /caution >}}
+{{< /note >}}
 
 {{< note respectIndent=false >}}
 You should not receive any errors during the install. If you receive an error related to `Alert_cpu_threshold must be between 0 and 2000`, visit this [link](https://github.com/jlund/streisand/issues/626#issuecomment-319812261) to address the issue.

@@ -73,9 +73,9 @@ api_token:
     - contents: {{ pillar['linode_api_token'] }}
 {{< /file >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 There are times when pillar data could show up in the output that Salt generates, like when `file.managed` displays diffs of a modified file. To avoid displaying these diffs, you can set `file.managed`'s `show_diff` flag to false.
-{{< /caution >}}
+{{< /note >}}
 
 ### Passing Pillar Data at the Command Line
 

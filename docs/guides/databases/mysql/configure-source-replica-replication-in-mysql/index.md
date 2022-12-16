@@ -162,9 +162,9 @@ At this point, it is necessary to flush and lock the source database to stage th
 
         FLUSH TABLES WITH READ LOCK;
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 This command blocks all commits to the source database. Export the data before allowing the source to process any more commits. Otherwise, the replica database could become corrupted or inconsistent with the source database. Complete the two remaining steps in this section as soon as possible.
-    {{< /caution >}}
+    {{< /note >}}
 
 1. Verify the status of the database using the following command. This command displays the current log file along with the position of the last record in this file. Record this information because it is required to initiate replication on the replica later.
 

@@ -125,9 +125,9 @@ Because the `ip` command contains so many options, the following examples focus 
 Changes made using the `ip` command are not persistent across a system reboot. To automatically configure networking information, add the information to a startup script. Each distribution also provides a method to make networking changes using its system configuration files.
 {{< /note >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Be very careful when making any changes to the network interfaces, addresses, and routes. It is easy to cut the server off from the main network, necessitating a system reboot. Consider using official test addresses and MAC addresses when trying out new commands.
-{{< /caution >}}
+{{< /note >}}
 
 ## Using the Address ip Object
 

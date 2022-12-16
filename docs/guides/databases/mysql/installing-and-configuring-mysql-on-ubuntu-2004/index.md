@@ -329,9 +329,9 @@ Query OK, 0 rows affected (0.02 sec)
 
 1.  If a table is no longer required, delete it using the `DROP TABLE` command.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 When a table is dropped, all data inside the table is lost and cannot be recovered.
-{{< /caution >}}
+{{< /note >}}
 
         DROP TABLE newtablename;
 

@@ -196,9 +196,9 @@ Depending on the environment of the Flask application, there are different setti
 
 In this section, you create a JSON file to store the configuration of the environment and then load that configuration into the Flask app. The configuration created in this section is a basic example of some Flask environment variables you might include in the application.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 You should keep sensitive configuration files **outside of source control**. If you source control the configuration file, which contains sensitive values, in a remote repository, then someone could access it and use that information to compromise security of the Linode server or the application. To keep the configuration file out of the Git repository, add it to the `.gitignore` file.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Create a JSON configuration file with a text editor:
 

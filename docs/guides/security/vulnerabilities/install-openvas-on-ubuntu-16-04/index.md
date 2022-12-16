@@ -29,9 +29,9 @@ OpenVAS consists of:
 
 For more information about the architecture of the software, refer to the [OpenVAS website](http://www.openvas.org/software.html).
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 OpenVAS is a powerful security tool that is capable of scanning remote hosts as well as your local machine. This guide is intended to allow you to monitor vulnerabilities on machines that you control or have permission to scan. If you use OpenVAS to scan remote servers owned by others, be sure that you have a full understanding of the responsibilities involved and the potential consequences.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 

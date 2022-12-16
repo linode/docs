@@ -189,9 +189,9 @@ For the following sections of this guide, replace "example.com" with your domain
 {{< /file >}}
 
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The file name *must* end with `.conf` in Apache versions 2.4 and later, which Ubuntu 14.04 uses. The `.conf` extension is backwards-compatible with earlier versions.
-{{< /caution >}}
+{{< /note >}}
 
 6.  Enable the new website by entering the following command:
 
@@ -224,9 +224,9 @@ The file name *must* end with `.conf` in Apache versions 2.4 and later, which Ub
 
 4.  Connect to your Linode's IP address using your web browser, and walk through the configuration steps to fully install WordPress.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 In order to ensure that each of your WordPress instances addresses the local database, you will need to ensure that the Database Host value in this step is set to `localhost`.  This should be filled in by default.
-{{< /caution >}}
+{{< /note >}}
 
 5.  Configure your WordPress URL and Site Address via the General Settings in the WordPress admin interface. Ensure that your domain is configured in both fields.
 

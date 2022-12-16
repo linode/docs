@@ -53,9 +53,9 @@ Your server may have relevant website data stored in other directories, but thes
 
 Perform a *database dump* needs on your MySQL process prior to transferring the data. This will result in a file on disk that encapsulates your database data which can then be copied over the network as a normal file.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Stopping services on your current host will temporarily disable your website.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Connect to your current host via SSH.
 
@@ -112,9 +112,9 @@ The following commands copy files into the home directory of your Linode's Linux
 
         sudo mv document_root/* /var/www/html
         sudo chown -R www-data:www-data /var/www/html
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 This will overwrite all current data in the MySQL database system of your Linode. It is not recommended that you perform this command on a Linode with other existing websites.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Restore the database dump file. Replace `full-backup-*.sql` with the name of your file:
 

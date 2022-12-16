@@ -36,11 +36,11 @@ This guide shows how to:
 
 -  [Deploy a Linode instance](#deploy-a-linode-with-the-linode-ansible-collection) using Ansible and the Linode Ansible collection.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This guide’s example instructions create a [1GB Linode](https://www.linode.com/pricing/#compute-shared) (Nanode) billable resource on your Linode account. If you do not want to keep using the Linode that you create, be sure to delete the Linode when you have finished the guide.
 
 If you remove the resource, [you are only be billed for the hour(s) that the resources were present on your account](/docs/guides/understanding-billing-and-payments/).
-{{</ caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -115,9 +115,9 @@ When interfacing with the Linode Ansible collection, it is generally good practi
 
         chmod 600 .vault-pass
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Do not check this file into version control. If this file is located in a Git repository, add it to your [.gitignore file](https://git-scm.com/docs/gitignore).
-{{< /caution >}}
+{{< /note >}}
 
 ### Create an Ansible Configuration File
 

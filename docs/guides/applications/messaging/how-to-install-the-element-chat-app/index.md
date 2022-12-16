@@ -434,9 +434,9 @@ Nginx Full (v6)            ALLOW       Anywhere (v6)
 8448 (v6)                  ALLOW       Anywhere (v6)
     {{< /output >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The `ufw` allows `OpenSSH` traffic. Otherwise, you could lock yourself out of your Linode.
-{{< /caution >}}
+{{< /note >}}
 
 ## Enable and Test the Element Client
 

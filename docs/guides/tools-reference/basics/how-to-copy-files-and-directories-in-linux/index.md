@@ -99,9 +99,9 @@ cp ~/clock.txt ~/clock.txt.bak
 
 To copy a protected file that the `root` account owns, use `sudo`.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Be very careful when copying any files owned by root, especially those in the system `/` directories.
-{{< /caution >}}
+{{< /note >}}
 
 ```command
 cd /etc

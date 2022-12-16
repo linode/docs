@@ -30,9 +30,9 @@ aliases: ['/email/citadel/email-with-citadel-on-ubuntu-14-04/']
 
 Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It also features an automated installation process and versatile deployment options that allow the application to be scaled across multiple servers.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 There is a known bug that prevents Citadel from running properly on 32-bit Linodes. Please see [the Ubuntu bugtracker](https://bugs.launchpad.net/ubuntu/+source/citadel/+bug/911732) for more information.
-{{< /caution >}}
+{{< /note >}}
 
 ## Prerequisites
 

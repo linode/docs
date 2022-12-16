@@ -71,9 +71,9 @@ Now you're ready to enable full disk encryption on your Linode running Debian 7 
 
         cryptsetup luksFormat /dev/xvdc
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 If you lose this passphrase your data will be irretrievable!
-{{< /caution >}}
+{{< /note >}}
 
     {{< note respectIndent=false >}}
 You may receive a FATAL notice about loading a kernel module used for hardware crypto acceleration. This message can be safely ignored.

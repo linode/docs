@@ -108,17 +108,17 @@ To clone a Linode, follow these steps:
 
 After you have completed the clone, you may need to update your new Linode's [network configuration](#update-your-network-configuration) to work properly with its new IP addresses. After making sure that your new Tokyo 2 servers all work as expected, update your [DNS records](#update-dns-records). Consider updating your [domain's TTL](#update-your-ttl) *before* you update your DNS records.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 If you clone your Tokyo 1 Linodes to Tokyo 2, your Tokyo 1 Linodes will remain running and active on your account by default. To prevent double-billing, [remove](/docs/products/platform/billing/guides/stop-billing/) the original Tokyo 1 Linodes after you have finished your clones.
-{{< /caution >}}
+{{< /note >}}
 
 ### Option 3: Migrate when Scheduled
 
 If you do not choose to migrate or clone early, Linode will automatically start your migrations at the time listed in your support ticket.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 If Linode initiates your migration when it is scheduled, **your Linode will not be powered on automatically when the migration finishes**. Your Linode is not powered on in order to minimize potential security issues that could result from booting under a new IP assignment.
-{{< /caution >}}
+{{< /note >}}
 
 After the scheduled migration completes, you can log into the Linode's dashboard and power it on. You may need to update your new Linode's [network configuration](#update-your-network-configuration) to work properly with its new IP addresses. Then, update your [DNS records](#update-dns-records). You can also choose to update your DNS records as soon as the migration starts. Consider updating your [domain's TTL](#update-your-ttl) *before* the scheduled migration starts.
 

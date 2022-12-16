@@ -545,9 +545,9 @@ Use the ``-h'' option to get more help information.
 
 The following command kills all of the processes owned by the `www-data` user:
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Please be careful when combining `lsof` with the `kill(1)` command. Do not try to test similar commands on a live server unless you are absolutely certain you will not experience issues. For testing purposes you can use a disposable Docker image or something similar.
-{{</ caution >}}
+{{< /note >}}
 
     sudo kill -9 `lsof -t -u www-data`
 

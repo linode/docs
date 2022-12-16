@@ -117,9 +117,9 @@ e2fsck -f $Volume
 
 1. Choose the Ext4 volume you would like to format and issue the command below, replacing `/dev/sda3` with your selected volume. An output of "0" indicates success.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Formatting a volume with the `mkfs` command may result in data loss.
-{{< /caution >}}
+{{< /note >}}
 
         mkfs -t ext4 -O -metadata_csum /dev/sda3
 

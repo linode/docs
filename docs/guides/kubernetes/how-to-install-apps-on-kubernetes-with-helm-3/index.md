@@ -298,9 +298,9 @@ ghost-1576075187	default  	2       	2019-12-11 11:54:49.136865 -0500 EST	deploye
 
 ## Delete a Release
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 By default, Helm 3 does not keep any information about deleted releases, which will prevent you from rolling back. If you suspect that you may need to [rollback](#roll-back-a-release) your release following deletion, you will need to use the `--keep-history` flag.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Use the `uninstall` command with the name of a release to delete it:
 

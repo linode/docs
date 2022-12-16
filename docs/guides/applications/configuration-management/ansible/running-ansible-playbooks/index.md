@@ -17,6 +17,7 @@ contributor:
 aliases: ['/applications/configuration-management/ansible/running-ansible-playbooks/','/applications/configuration-management/running-ansible-playbooks/']
 tags: ["automation"]
 ---
+
 **Playbooks** define a set of tasks to be executed by Ansible on a group of managed nodes. While you can use Ansible to execute one-off tasks via the command line, Playbooks can be reused, shared across teams, version controlled, and support complex deployment and rollout requirements. You can use features such as, handlers, variables, templates, error handling, and control logic within your Playbooks to intelligently automate your IT processes across a fleet of hosts.
 
 ## Scope of this Guide
@@ -46,8 +47,7 @@ Ansible Playbooks are written using YAML syntax, a declarative language, to desc
 ### Anatomy of a Playbook
 The example below displays the skeleton of a Playbook. At its most basic, a Playbook will define a group of target hosts, variables to use within the Playbook, a remote user to execute the tasks as, and a set of named tasks to execute using various [Ansible modules](https://docs.ansible.com/ansible/latest/modules/modules_by_category.html). This grouping within a Playbook is referred to as a **play** and a single Playbook can contain several plays.
 
-{{< disclosure-note "Common Ansible Modules">}}
-
+{{< note type="secondary" title="Common Ansible Modules" isCollapsible=true >}}
 | **Module** | **Usage** |
 | ---------------- | ------------- |
 | [command](http://docs.ansible.com/ansible/command_module.html) | Executes a command on a remote node. |
@@ -57,9 +57,7 @@ The example below displays the skeleton of a Playbook. At its most basic, a Play
 | [apt](http://docs.ansible.com/ansible/apt_module.html) | Manages apt packages on Debian or Ubuntu systems. |
 | [git](http://docs.ansible.com/ansible/apt_module.html) | Deploy software or files from git checkouts. |
 | [service](http://docs.ansible.com/ansible/apt_module.html) | Manage services on your remote node's system. Supports BSD init, OpenRC, SysV, Solaris SMF, systemd, upstart init systems.  |
-
-
-{{</ disclosure-note >}}
+{{< /note >}}
 
 {{< file "Playbook Skeleton" yaml >}}
 ---
@@ -94,9 +92,9 @@ The second example Playbook targets all hosts in the `marketing_servers` group a
 
 In this example, you will create three different Playbooks to configure your Linode as a web server running a LAMP stack. You will also configure the Linode to add a limited user account. The Playbooks will provide basic configurations that you can expand on, if needed.
 
-  {{< caution >}}
+  {{< note type="alert" respectIndent=false >}}
 The Playbooks created in this section are for learning purpose and will not result in a fully hardened or secure server. To further secure your Linode, you can use Ansible's [firewalld module](https://docs.ansible.com/ansible/latest/modules/firewalld_module.html).
-{{< /caution >}}
+{{< /note >}}
 
 ### Add a Limited User Account
 

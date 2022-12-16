@@ -4,7 +4,6 @@ author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
 description: 'In this guide, you will learn more advanced methods of creating complex Bash Scripts to perform common operations frequently used by Linux system administrators.'
-og_description: 'In this guide, you will learn more advanced methods of creating complex Bash Scripts to perform common operations frequently used by Linux system administrators.'
 keywords: ["shell", "bash", "printf", "script"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-05
@@ -420,10 +419,9 @@ The example below tests if your `/etc/passwd` file exists. If the file exists, y
 
     test -a /etc/passwd && echo "Yes, it exists!"
 
-{{< disclosure-note "File and Directory Test Operators">}}
-
+{{< note type="secondary" title="File and Directory Test Operators" isCollapsible=true >}}
 | Operator | Description |
-|---------|-------------|
+| -- | -- |
 | `-a` | File exists. |
 | `-b` | File exists and is a block special file. |
 | `-c` | File exists and is a character special file. |
@@ -444,14 +442,13 @@ The example below tests if your `/etc/passwd` file exists. If the file exists, y
 | `-u` | File exists and its [set user ID flag](/docs/guides/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) is set. |
 | `-w` | File exists and is writable by the current user. |
 | `-x` | File exists and is executable by the current user. |
-
-{{</ disclosure-note >}}
+{{< /note >}}
 
 ### Use File and Directory Test Operators in a Script
 
 The example script, `file-operator.sh`, takes file or directory locations as arguments and returns information about each type of file that is passed to it. The script makes use of file and directory test operators to generate this information. The first `if` statement tests to ensure you have passed the script arguments. The `for` loop then goes on to test if the arguments are files that actually exist and then continues through a series of statements to test the file or directory for other criteria.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can use `[]` and `[[]]` commands instead of using the `if` conditional statement to create file conditions. The script makes use of this format on lines 26 - 40.
 {{</ note >}}
 
@@ -742,11 +739,11 @@ done
 
 An *exit code* is the code returned to a [parent process](https://en.wikipedia.org/wiki/Parent_process) after executing a command or a program. Using exit codes in your Bash scripts allows the script to modify its behavior based on the success or failure of your script's commands. Exit codes range between `0 - 255`. An exit code of `0` indicates success, while any non-zero value indicates failure. This section will provide an introduction to Bash exit codes and a few examples on how to use them in your scripts.
 
-{{< disclosure-note "Exit Codes">}}
+{{< note type="secondary" title="Exit Codes" isCollapsible=true >}}
 The table lists and describes reserved exit codes. You should not use any of the reserved exit codes in your Bash scripts.
 
 | Code | Description |
-| --------- | ------------- |
+| --| -- |
 | `0` | Successful execution |
 | `1` | General failure |
 | `2` | Incorrect usage of Bash built-in commands, by using invalid options, or missing arguments |
@@ -755,8 +752,7 @@ The table lists and describes reserved exit codes. You should not use any of the
 | `128+n` | Command terminated on a fatal signal `n`. The final exit code will be `128` plus the corresponding termination signal number. For example, a script that is terminated using the `kill` signal will have an exit code of `137` (128+9).|
 | `130` | Execution terminated by **CTRL-C** |
 | `255` | Exit status out of range |
-
-{{</ disclosure-note >}}
+{{< /note >}}
 
 ### Learning the Exit Code of a Shell Command
 

@@ -128,9 +128,9 @@ Setting up SSL on your origin server will enable you to use Cloudflare's *Full S
 
 If you do not have a certificate for your origin server, Cloudflare provides an easy way of getting one via their own [*Origin CA*](https://blog.cloudflare.com/cloudflare-ca-encryption-origin/) (Certificate Authority). This certificate can be used with *Full SSL (strict)* mode.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Certificates from Cloudflare's Origin CA are only trusted within the Cloudflare network. You will need to obtain and install a new certificate if you stop using Cloudflare and have one of their certificate's installed on your origin server.
-{{< /caution >}}
+{{< /note >}}
 
 1.  From the Crypto tab of the Cloudflare dashboard, scroll to the *Origin Certificates* panel and click the *Create Certificate* button:
 

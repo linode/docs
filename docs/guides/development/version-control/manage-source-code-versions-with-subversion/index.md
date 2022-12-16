@@ -236,9 +236,9 @@ If local system accounts need to access the repository, add those users to the g
 
         chmod -R +s /srv/svn/subversion-test
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The sticky bit allows all users with access to the files (i.e. members of the group) to create files that are owned by the user or group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories as the user that owns them, and thus poses a potential security risk. See our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information.
-{{< /caution >}}
+{{< /note >}}
 
 ### Configure the Apache Web Server
 

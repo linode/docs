@@ -300,9 +300,9 @@ class accounts {
 {{< /file >}}
 
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The hashed password **must** be included in single quotes (').
-{{< /caution >}}
+{{< /note >}}
 
 9.  After saving your changes, use the puppet parser to ensure that the code is correct:
 

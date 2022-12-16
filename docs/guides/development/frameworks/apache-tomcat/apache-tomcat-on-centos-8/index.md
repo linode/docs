@@ -63,9 +63,9 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
         sudo wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.33/bin/apache-tomcat-9.0.33.tar.gz
 
-      {{< caution >}}
+      {{< note type="alert" respectIndent=false >}}
 Ensure that the version number matches the Tomcat 9 version you wish to download.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Extract the downloaded tarball's contents into `/usr/local/tomcat` directory:
 

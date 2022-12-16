@@ -419,9 +419,9 @@ It's a good idea to test your website(s) before you add the DNS records. This is
 
 1.  Test the name-based virtual hosts by entering the domain names in the address bar of the web browser on a local device. Your websites should load in the web browser.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Remember to remove the entries for the name-based virtual hosts from your `hosts` file when you're ready to test the DNS records.
-{{< /caution >}}
+{{< /note >}}
 
 ## Next Steps
 

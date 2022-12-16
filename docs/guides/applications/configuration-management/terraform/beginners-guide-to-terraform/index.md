@@ -228,9 +228,9 @@ This command will ask you to confirm that you want to proceed. When Terraform ha
 
 When Terraform analyzes and applies your configuration, it creates an internal representation of the infrastructure it created and uses it to track the changes made. This *state* information is recorded in JSON in a local file named `terraform.tfstate` by default, but it can also be stored in other [backends](#backends).
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Your sensitive infrastructure data (like passwords and tokens) is visible in plain-text in your `terraform.tfstate` file. Review [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
-{{< /caution >}}
+{{< /note >}}
 
 ### Other Commands
 

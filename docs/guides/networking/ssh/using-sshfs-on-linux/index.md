@@ -110,13 +110,13 @@ To keep your server's directory mounted on your system through reboots, create a
 
 When setting up a mount listed in `/etc/fstab`, your client system will not be able to accept a password for the SSH connection. Instead, you can use [public/private keypairs](/docs/guides/use-public-key-authentication-with-ssh/) to authenticate with the remote server. This section describes how to create a keypair if you do not already have one.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This command will overwrite an existing RSA key pair, potentially locking you out of other systems.
 
 If you’ve already created a key pair, skip this step. To check for existing keys, run ls ~/.ssh/id_rsa*.
 
 If you accidentally lock yourself out of your Linode, use Lish to update your authorized_keys file and regain SSH access.
-{{< /caution >}}
+{{< /note >}}
 
 1. Generate a keypair with the `ssh-keygen` command; accept the default values for the options it presents:
 

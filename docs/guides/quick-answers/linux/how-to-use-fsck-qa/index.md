@@ -54,9 +54,9 @@ devtmpfs         10M     0   10M   0% /dev
 
 ## How to Check for Errors on a Disk
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Never run fsck on a mounted disk. Do not continue unless you’re sure that the target disk is unmounted. You risk corrupting your file system and losing data if you run fsck on an active disk.
-{{</ caution >}}
+{{< /note >}}
 
 Run fsck on the target disk, using the desired options. This example checks all file systems (`-A`) on `/dev/sdb`:
 

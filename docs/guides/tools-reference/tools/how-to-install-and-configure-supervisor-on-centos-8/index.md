@@ -289,9 +289,9 @@ A full list of actions and other `supervisorctl` documentation can be found at [
 
 You may want to add HTTP access to `supervisord`, either to enable the web interface or to allow remote RPC calls.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Enabling HTTP access exposes `supervisord` to the internet at large. If you choose to enable HTTP access, make sure to configure firewall rules that limit access to trusted IPs. As well, configure a user name and a long, complex, and unique password for service access.
-{{< /caution >}}
+{{< /note >}}
 
 1. To enable HTTP access, uncomment the `[inet_http_server]` in `/etc/supervisord.conf`. Update the `port`, `username`, and `password` settings:
 

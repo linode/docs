@@ -84,9 +84,9 @@ fatal: clean.requireForce defaults to true and neither -i, -n, nor -f given; ref
 
 `git clean -f` is probably the most widely-used alternative. It forces Git to remove all untracked files with no further chance to refine or alter the operation. When it is finished, it displays a summary of the files it deleted. This command is functionally equivalent to manually deleting the files.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Always use `git clean` with caution. This operation cannot be undone.
-{{< /caution >}}
+{{< /note >}}
 
 The following example demonstrates how `git clean -f` handles a combination of untracked, and tracked but uncommitted files. Before the operation, `testfile1.txt` has been added but not committed. The two files `testfile2.txt` and `testfile3.txt` have not been added, so they are both still untracked in Git.
 

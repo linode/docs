@@ -64,13 +64,13 @@ In this guide you will learn how to:
 
 Once you have a Pulumi account, you will need to create an *access token* to use later.
 
-{{< disclosure-note "Why do I need a Pulumi access token?" >}}
+{{< note type="secondary" title="Why do I need a Pulumi access token?" isCollapsible=true >}}
 When Pulumi interprets the infrastructure programs that you write, it determines what cloud resources it needs to create in order to satisfy your program. Every time you run your program, [Pulumi stores the state](https://pulumi.io/reference/state/#state-and-backends) of these resources in a persistent backend. In subsequent updates to your infrastructure, Pulumi will compare your program with the recorded state so that it can determine which changes need to be made.
 
 By default, Pulumi securely stores this state information on a web backend hosted at [https://app.pulumi.com](https://app.pulumi.com). This service is free to start and offers paid tiers for teams and enterprises.
 
 It is possible to opt-out of using the default web backend and use a filesystem-based backend instead. Review [Pulumi's documentation](https://pulumi.io/reference/state/#to-the-filesystem-backend) for instructions.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 1. [Log into your Pulumi account](https://app.pulumi.com/signin). After you've logged in, click on the avatar graphic to the top right of the Pulumi dashboard, then click on the **Settings** option in the dropdown menu that appears:
 
@@ -88,7 +88,7 @@ It is possible to opt-out of using the default web backend and use a filesystem-
 
 Now that you have everything you need to begin using Pulumi, you can create a new Pulumi *project*.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 A Pulumi [project](https://pulumi.io/reference/project/) is the folder structure which contains your Pulumi programs. Specifically, a project is any folder which contains a `Pulumi.yaml` metadata file.
 {{< /note >}}
 
@@ -109,9 +109,9 @@ A Pulumi [project](https://pulumi.io/reference/project/) is the folder structure
     - Enter a project description, or leave blank to use the default option.
     - Enter a *stack* name of your choice, or leave blank to use the default option.
 
-        {{< disclosure-note "What's a stack?" >}}
-Multiple instances of your Pulumi programs can be created. For example, you may want to have separate instances for the development, staging, and production environments of your service. Or, you may create multiple instances of your service if you're offering it to different business clients. In Pulumi, these instances are referred to as [stacks](https://pulumi.io/tour/programs-stacks/).
-{{< /disclosure-note >}}
+        {{< note type="secondary" title="What's a stack?" isCollapsible=true >}}
+        Multiple instances of your Pulumi programs can be created. For example, you may want to have separate instances for the development, staging, and production environments of your service. Or, you may create multiple instances of your service if you're offering it to different business clients. In Pulumi, these instances are referred to as [stacks](https://pulumi.io/tour/programs-stacks/).
+        {{< /note >}}
 
     - Enter your Linode API token.
 
@@ -273,11 +273,11 @@ exports.nodeBalancerIP = nodeBalancer.ipv4;
 exports.nodeBalancerPort = nodeBalancerConfig.port;
 {{< /file >}}
 
-    {{< note respectIndent=false >}}
-In our `index.js` file we've created and configured two Linodes using an existing [StackScript](/docs/products/tools/stackscripts/) which installs NGINX. Pulumi's Linode integration allows for the creation of entirely [new StackScripts](https://pulumi.io/reference/pkg/nodejs/pulumi/linode/#StackScript) directly in code, which can help you to automate your deployments even further.
+    {{< note >}}
+    In our `index.js` file we've created and configured two Linodes using an existing [StackScript](/docs/products/tools/stackscripts/) which installs NGINX. Pulumi's Linode integration allows for the creation of entirely [new StackScripts](https://pulumi.io/reference/pkg/nodejs/pulumi/linode/#StackScript) directly in code, which can help you to automate your deployments even further.
 
-If you're interested in seeing how this StackScript works, you can view it [here](https://www.linode.com/stackscripts/view/526246).
-{{< /note >}}
+    If you're interested in seeing how this StackScript works, you can view it [here](https://www.linode.com/stackscripts/view/526246).
+    {{< /note >}}
 
 1.  Now that you've successfully prepared your JavaScript code, let's bring up our configuration:
 

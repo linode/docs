@@ -161,9 +161,9 @@ You can use the `e2fsck` system utility (short for "ext file system check") to c
 
     The primary disks should not appear in the list. In the [example screenshot](cloud-manager-rescue-form-dev-sda-highlighted.png) from the [Booting into Rescue Mode](#booting-into-rescue-mode) section, the Ubuntu 18.04 disk is assigned to `/dev/sda`. Because this device does not appear in the example output from `df -h`, run a filesystem check on it.
 
-     {{< caution >}}
+     {{< note type="alert" respectIndent=false >}}
 Never run `e2fsck` on a mounted disk. Do not continue unless you're sure that the target disk is unmounted.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Run `e2fsck` by entering the following command, replacing `/dev/sda` with the location of the disk you want to check and repair:
 
@@ -303,11 +303,11 @@ If you can't rescue and resolve issues on an existing disk, you likely need to r
 
 -   If you have a backup system other than the Linode Backup Service in place, you can [rebuild your Linode](#use-the-rebuild-feature) and then restore the data from that backup service. The methods for restoring data varies by the kind of backup system that you use.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Did an unauthorized intruder gain access to your Linode? Since it is virtually impossible to determine the full scope of an attacker's reach into a compromised system, you should never continue using a compromised Linode.
 
 Linode recommends that you follow the instructions in [Recovering from a System Compromise](/docs/guides/recovering-from-a-system-compromise/). You need to create a new Linode, copy your existing data from the old Linode to the new one, and then swap IP addresses.
-{{< /caution >}}
+{{< /note >}}
 
 ### Restoring from a Linode Backup
 
@@ -323,13 +323,13 @@ The Linode Cloud Manager provides a *Rebuild* feature performs the following two
 
 1.  A new set of disks is provisioned from one of the Cloud Manager's built-in Linux images, or from one of the [saved images](/docs/products/tools/images/).
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/guides/backing-up-your-data/) or [create a snapshot through Linode's Backup Service](/docs/products/storage/backups/#take-a-manual-snapshot) to preserve data before using the Rebuild feature.
 
 If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/guides/disks-and-storage/#creating-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
 
 The Linode needs to have some amount of unallocated disk space in order to provision a new distribution. If the Linode does not have enough unallocated space, you can [shrink your existing disks](/docs/guides/disks-and-storage/#resizing-a-disk) to free up space or [resize your Linode](/docs/guides/resizing-a-linode/) to a higher resource tier.
-    {{< /caution >}}
+    {{< /note >}}
 
     If you need to copy files from your existing disk to another location before rebuilding, you can [start SSH](#starting-ssh) under Rescue Mode and then use an SFTP client to copy files to your computer.
 

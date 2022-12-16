@@ -47,9 +47,9 @@ If you are not using Debian 10, you can view different Linux distribution versio
 
         sudo wget http://ftp.drupal.org/files/projects/drupal-8.8.2.tar.gz
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Ensure that the version number matches the Drupal 8 version you wish to download.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Extract the downloaded tarball's contents into your site's document root:
 

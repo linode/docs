@@ -140,9 +140,9 @@ You can also include the variable on the same line when running `terraform plan`
 
     TF_VAR_token=your-token-value terraform apply
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This method commits the environment variable to your shell's history, so take care when using this method.
-{{< /caution >}}
+{{< /note >}}
 
 ### Assigning Values in Command-Line Flags
 
@@ -150,9 +150,9 @@ Variable values can be set with the `-var` option:
 
     terraform apply -var 'token=your-token-value'
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This method commits the command-line variable to your shell's history, and exposes it to other users on the system running `ps`.
-{{< /caution >}}
+{{< /note >}}
 
 ### Supply Variables at Prompt
 

@@ -735,9 +735,9 @@ Plan: 0 to add, 0 to change, 3 to destroy.
 
         terraform destroy
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 This command permanently deletes your resources. This operation cannot be undone or reversed.
-    {{< /caution >}}
+    {{< /note >}}
 
     {{< output >}}
   Plan: 0 to add, 0 to change, 3 to destroy.

@@ -82,9 +82,9 @@ The command above follows a similar syntax as before. It requires the table name
 
     DROP TABLE CourseTaken;
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Dropping a table deletes all the data in the table.
-{{< /caution >}}
+{{< /note >}}
 
 ### How to Insert Data Into a Table in SQL
 
@@ -127,9 +127,9 @@ To delete data from a table, use the SQL `DELETE FROM` statement. Use the `WHERE
 
 For example, the following command deletes a record from the `CourseTaken` table with **SSNumber** `333333333` and **CourseId** `POL101`.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 If you omit the `WHERE` clause, all the records in the table are deleted.
-{{< /caution >}}
+{{< /note >}}
 
     DELETE FROM CourseTaken WHERE SSNumber = '333333333' AND CourseId = 'POL101';
 

@@ -190,9 +190,9 @@ However, you can clear out the data in a given database using the `FLUSHDB` comm
 
     FLUSHDB
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The effects of this command are immediate and cannot be undone unless you have backed up your database.
-{{< /caution >}}
+{{< /note >}}
 
 ## Working with Keys in Redis
 

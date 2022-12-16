@@ -90,9 +90,9 @@ A disk can be duplicated onto the same Linode or any other Linode on the account
 
 A disk can be deleted to remove it form the Linode and free up additional storage space that can be used for other disks.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Deleting a disk is permanent and cannot be undone. Make sure all required data is properly backed up before continuing.
-{{</ caution >}}
+{{< /note >}}
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Linode from the list.
 

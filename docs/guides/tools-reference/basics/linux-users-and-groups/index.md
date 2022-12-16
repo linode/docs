@@ -201,9 +201,9 @@ The `visudo` command should be used to edit the sudoers file. At a command line,
 
 The following `sudoers` excerpt allows the listed users to execute any command they'd like by prefixing it with `sudo`, which gives the user full control of a system.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Users should never be added to the `sudoers` file or group with full permission if they are not trusted. You can optionally restrict what users can do with `sudo` as an additional layer of security; refer to the  [Whitelisting Commands With Sudo](#whitelisting-commands-with-sudo) for some examples on restricted usage syntax.
-{{< /caution >}}
+{{< /note >}}
 
 {{< file >}}
 # User privilege specification

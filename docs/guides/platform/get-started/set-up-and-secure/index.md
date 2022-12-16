@@ -323,9 +323,9 @@ As of Autumn 2018, [OpenSSH](https://www.openssh.com/) has been added to Windows
 
     -   **Linux / macOS / Windows 10 or 11**
 
-        {{< caution >}}
+        {{< note type="alert" respectIndent=false >}}
 If you've already created an RSA key-pair, this command will overwrite it, potentially locking you out of other systems. If you've already created a key-pair, skip this step. To check for existing keys, run `ls ~/.ssh/id_rsa*`.
-{{< /caution >}}
+{{< /note >}}
 
             ssh-keygen -b 4096
 

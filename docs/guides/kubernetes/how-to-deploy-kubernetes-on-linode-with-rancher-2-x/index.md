@@ -44,11 +44,11 @@ This guide will show how to:
 
 If you are not familiar with Kubernetes and container deployments, we recommend that you review our other guides on these subjects first.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [remove it](#removing-the-cluster) when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account.
-{{< /caution >}}
+{{< /note >}}
 
 ### If You Already Run Rancher
 
@@ -538,9 +538,9 @@ Rancher makes it easy to scale the number of nodes in your cluster and to scale 
 
 ### Scale your Cluster
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The example instructions in this section will add nodes to your cluster, which will add further billable services to your account. You can read these instructions without performing them on your own account if you prefer.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Return to the home page by hovering over the **Global** dropdown menu in the main navigation bar and then clicking the **Global** menu item:
 

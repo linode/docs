@@ -134,7 +134,7 @@ For example:
     ```
 ```
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The tab size is set to four, and **only** soft tabs should be used. This can be configured in the settings of most text editors.
 {{< /note >}}
 
@@ -342,7 +342,7 @@ To use this shortguide in another guide, use the following syntax:
 
 Use the *file shortcode* to present code examples, code snippets, and other text file contents in a guide. This shortcode renders the file content with line numbering, a specified filepath, syntax highlighting, and line highlighting. Unlike other shortcodes (e.g. `content`, `note`, `caution`, etc), the file shortcode should be referenced with Markdown's *code fence* syntax.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Exceptionally long files should be shown in parts, if needed. In these cases, you can add the entire file to the same directory as your guide and link to it from within the guide.
 {{< /note >}}
 
@@ -562,9 +562,9 @@ This is a sample caution.
 {{</* /caution */>}}
 ```
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This is a sample caution.
-{{< / caution >}}
+{{< /note >}}
 
 ### Numerical Values
 

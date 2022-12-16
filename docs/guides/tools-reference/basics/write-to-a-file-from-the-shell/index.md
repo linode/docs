@@ -30,9 +30,9 @@ When working from the command line, it can be convenient to write to files witho
 
 You can use the regular output operator (`>`) to write text to a file. If it does not exist already, it creates the file.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Using the `>` operator on an existing file overwrites that file's contents.
-{{< /caution >}}
+{{< /note >}}
 
 Follow the steps below to learn how to use the `>` operator:
 

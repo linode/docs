@@ -69,11 +69,11 @@ If you've used `su` to switch to the pocketmine user, you will get an error mess
 script /dev/null
 {{< /note >}}
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 PocketMine may not run properly on systems not running PHP7. You can manually install it, or modify `start.sh`, replacing all instances of `php7` with `php5`:
 
 sed -i -e 's/php7/php5/g' start.sh
-{{< /caution >}}
+{{< /note >}}
 
 2.  The set-up wizard will begin by asking you to select a language. Enter the two-character value for your language of choice, or just press **return** for English.
 

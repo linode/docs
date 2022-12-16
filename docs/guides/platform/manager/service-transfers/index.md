@@ -68,13 +68,13 @@ Service Transfers automatically expire 24 hours after creation. You can view the
 Backups for Linodes are transferred as well.
 {{< /note >}}
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 DNS records that are associated with requested services will not be transferred or updated. Please ensure that associated DNS records have been updated or communicated to the recipient prior to the transfer.
-{{< /caution >}}
+{{< /note >}}
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Service Transfers cannot be [cancelled](#cancelling-service-transfers) once they have been accepted by a receiving account. Take care when sharing your Service Transfer token, and only transmit it in a secure manner.
-{{< /caution >}}
+{{< /note >}}
 
 1. If the request is unsuccessful, a list of conditions that are blocking the transfer displays on the Service Transfer page. These conditions must be corrected before the transfer can be created, and must be maintained for the transfer to be accepted. Here is a full list of conditions that must be met for a successful transfer request:
 
@@ -131,11 +131,11 @@ Service Transfers can take up to 3 hours to complete once accepted. Another conf
 
         - have any assigned /56, /64, or /116 IPv6 ranges.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 When receiving Linode transfers, it is important to make sure that **Any Longview Key** is fully revoked and removed from the received Linode by removing the Longview agent. If Client keys are not revoked and removed, this can give the transferring user access to all data visible to any Longview client by using the pre-existing API key, even after the transfer has been completed. Users will not be informed by default if the received Linode has a Longview key installed, and should always follow the process for removing the Longview agent to be sure.
 
 For more information on revoking and removing a Longview key and uninstalling the Longview agent, see our [Documentation on Uninstalling Longview](/docs/guides/what-is-longview/#uninstall-the-longview-client).
-{{< /caution >}}
+{{< /note >}}
 
 ## Cancelling Service Transfers
 
@@ -143,9 +143,9 @@ For more information on revoking and removing a Longview key and uninstalling th
 Only the sending account can cancel a Service Transfer. Once accepted, a transfer cannot be cancelled.
 {{< /note >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Cancellations are irreversible. Once cancelled, you must start a new Service Transfer if you still wish to send those services.
-{{< /caution >}}
+{{< /note >}}
 
 1. Click the [Account](https://cloud.linode.com/account) link in the sidebar.
 

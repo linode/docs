@@ -61,9 +61,9 @@ To schedule a job to run every time the system boots or reboots, add a new entry
 
         sudo crontab -e
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The command `sudo crontab -e` opens the crontab file for the root user, while the `crontab -e` command opens the file for the current user. Do not add too many root-level jobs as the output can easily become overwhelming and be ignored.
-    {{< /caution >}}
+    {{< /note >}}
 
 1. The program asks you to select an editor. Select a number from the list of all available choices. If you do not enter a number, the default editor is selected.
 

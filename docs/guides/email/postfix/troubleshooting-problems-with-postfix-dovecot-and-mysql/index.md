@@ -322,9 +322,9 @@ The bottom-up approach presented here breaks up the complex task of building a m
 
 The second part of this guide presents a step-by-step mail server build organized by function, progressing from core functions to more peripheral ones, with tests at each step. You should have the [main setup guide](/docs/guides/email-with-postfix-dovecot-and-mysql/) open at the same time, because we will be referring back to it. As you read the main setup guide, you'll notice that we are installing items in a different order here. The main guide is designed for a streamlined approach that avoids editing the same file multiple times. This guide is focused on a deeper understanding of each component, so you will sometimes need to jump around to different sections of the main guide for reference. Once you successfully complete a stage, I suggest that you make a [system-level backup](/docs/products/storage/backups/) so you can get back to that point easily!
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Keep in mind that the earlier builds presented here are functional, but should not be considered production-ready for security and functionality reasons, mainly because passwords are sent in plain text, and/or outgoing SMTP is not enabled.
-{{< /caution >}}
+{{< /note >}}
 
 Throughout this section, we will provide links to the appropriate [Postfix](http://www.postfix.org/documentation.html) and [Dovecot](http://wiki2.dovecot.org/) documentation. These are great jumping-off points.
 

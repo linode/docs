@@ -16,8 +16,6 @@ show_on_rss_feed: false
 aliases: ['/email-warning-shortguide/']
 ---
 
-{{< disclosure-note "Note About Email at Linode" >}}
-
+{{< note type="secondary" title="Note About Email at Linode" isCollapsible=true >}}
 This guide may involve or result in sending email. In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after November 5th, 2019. For more information, please see [Sending Email on Linode](/docs/guides/running-a-mail-server/#sending-email-on-linode).
-
-{{< /disclosure-note >}}
+{{< /note >}}

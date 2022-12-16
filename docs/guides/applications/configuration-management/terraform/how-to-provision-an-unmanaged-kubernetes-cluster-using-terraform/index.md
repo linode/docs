@@ -39,40 +39,43 @@ Before starting to deploy a Kubernetes cluster with Terraform, make sure:
 2. You are familiar with Kubernetes concepts. For an introduction, see the [A Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/) series. Read through [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/getting-started-with-kubernetes/) to get familiar with kubeadm.
 
 3. You have a personal access token for the Linode API to use with Terraform. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
-   {{< note respectIndent=false >}}When creating a personal access token, ensure it is set to **Read/Write** access as new Linode servers are being created.
+
+    {{< note >}}
+    When creating a personal access token, ensure it is set to **Read/Write** access as new Linode servers are being created.
     {{</ note >}}
 
 4. Terraform is installed on your computer. See [Install Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) for more information.
 
-    {{< note respectIndent=false >}}
-This guide was written using [Terraform version 0.12.24](https://www.hashicorp.com/blog/announcing-terraform-0-12/). The module requires at least Terraform 0.10.
+    {{< note >}}
+    This guide was written using [Terraform version 0.12.24](https://www.hashicorp.com/blog/announcing-terraform-0-12/). The module requires at least Terraform 0.10.
     {{</ note >}}
 
 5. And, lastly, kubectl is installed on your computer. The kubectl is necessary to connect to and manage the Kubernetes cluster; deployment using the Terraform module fails if kubectl is not installed locally. See [Install kubectl](#install-kubectl) for more information.
 
-
 ## Configure the Local Environment
 
 Deploying a Kubernetes cluster with Linode's K8s Terraform module requires:
--  a local environment with a kubectl instance
--  a system-wide installation of Python
--  SSH keys, SSH keys configured with the SSH agent
--  the `sed` and `scp` command-line utilities
+
+- a local environment with a kubectl instance
+- a system-wide installation of Python
+- SSH keys, SSH keys configured with the SSH agent
+- the `sed` and `scp` command-line utilities
 The module's script `preflight.sh` verifies these requirements are installed on the local environment and generates a `$var not found` error if any of the tools are missing. In this section learn how to:
--  install and configure kubectl
--  set up the SSH agent
--  create an environment variable to store the API v4 token
+- install and configure kubectl
+- set up the SSH agent
+- create an environment variable to store the API v4 token
 
 If there is an error stating the system is missing Python, scp, or sed, use the operating system's [package manager](/docs/guides/linux-package-management-overview/) to install the missing utilities.
 
-  {{< disclosure-note "Create a Python Alias" >}}
+{{< note type="secondary" title="Create a Python Alias" isCollapsible=true >}}
 If Python is invoked using `python3`, alias the command so Terraform can [execute scripts locally](https://www.terraform.io/docs/provisioners/local-exec.html) using Python as its interpreter. Using a text editor, edit `~/.bashrc` file to include the following alias:
 
     alias python=python3
+
 Then, reinitialize `~/.bashrc` file for the changes to take effect.
 
     source ~/.bashrc
-  {{</ disclosure-note >}}
+{{< /note >}}
 
 ### Install kubectl
 

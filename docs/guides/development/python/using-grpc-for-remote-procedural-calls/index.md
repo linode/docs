@@ -232,9 +232,9 @@ service Teams {
         python3 -m grpc_tools.protoc -I ./protobufs --python_out=. --grpc_python_out=. ./protobufs/teams.proto
 
 1. After compilation of the `.proto` file, the `teams` directory should contain Python files named `teams_pb2.py` and `teams_pb2_grpc.py`. These files contain auto-generated classes for the messages and the service. Make a note of these file names to reference them again later.
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Do not edit either of the auto-generated files. This could render them unusable.
-    {{< /caution >}}
+    {{< /note >}}
 
 {{< note respectIndent=false >}}
 To create a response-streaming, request-streaming, or bidirectionally-streaming RPC, declare the message to be streamed as a `stream`. For instance, to allow `GetTeam` to return a stream of team messages, declare it using the following format:

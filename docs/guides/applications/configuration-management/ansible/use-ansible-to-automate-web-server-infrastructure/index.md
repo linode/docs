@@ -30,11 +30,11 @@ In this guide you:
 - Configure and run an Ansible playbook that configures the worker nodes.
 - Test your running web servers and log server.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The example instructions in this guide create five, [1GB Linodes](https://www.linode.com/pricing). These add billable resources to your Linode account. If you do not want to keep using the Linodes created, be sure to delete them once you have finished this how-to guide.
 
 If you remove these resources afterward, you are only [billed for the time](/docs/products/platform/billing/) the resources were present on your account.
-{{</ caution >}}
+{{< /note >}}
 
 ## Prerequisites
 
@@ -394,9 +394,9 @@ Using `scp`, the above files are sent to the Ansible control node. You can then 
 Throughout all the steps in this section, replace `VM1_IPADDRESS` with the [IP address](/docs/guides/find-your-linodes-ip-address/) obtained from either the Linode CLI or Cloud Manager.
 {{< /note >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Do not forget the colon "**:**" at the end of the command below.
-{{</ caution >}}
+{{< /note >}}
 
     scp ansibleCN_setup.sh ansibleMN_setup.sh myplaybook.yml root@VM1_IPADDRESS:
 
@@ -426,9 +426,9 @@ Use the command below to reboot the Linode either using the Linode CLI. You can 
 
 Use the command below to SSH into `vm1`.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Be sure to use the new user you created because the setup script disables root logins.
-{{</ caution >}}
+{{< /note >}}
 
     ssh YOUR_USERNAME@VM1_IPADDRESS
 

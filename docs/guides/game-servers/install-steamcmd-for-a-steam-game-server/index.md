@@ -320,9 +320,9 @@ The game server will still operate despite this error, and it should be somethin
 
         login example_user
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Some versions of the Steam CLI do **not** obfuscate passwords. If you're signing in with your Steam account, be aware of your local screen's security.
-{{< /caution >}}
+{{< /note >}}
 
 ## How Do I Update My SteamCMD Game Server?
 

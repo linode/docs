@@ -114,9 +114,9 @@ The easiest way to update the Linode CCM is to edit the DaemonSet that creates t
 
       For a complete list of CCM version tags, visit the [CCM DockerHub page](https://hub.docker.com/r/linode/linode-cloud-controller-manager/tags).
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The CCM Daemonset manifest may list `latest` as the image version tag. This may or may not be pointed at the latest version. To ensure the latest version, it is recommended to first check the [CCM DockerHub page](https://hub.docker.com/r/linode/linode-cloud-controller-manager/tags), then use the most recent release.
-    {{</ caution>}}
+    {{< /note >}}
 
 1. Press escape to exit insert mode, then type `:wq` and press enter to save your changes. A new Pod will be created with the new image, and the old Pod will be deleted.
 

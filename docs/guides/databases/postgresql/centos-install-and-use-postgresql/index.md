@@ -227,9 +227,9 @@ local   all             postgres                                peer
 local   all             all                                     md5
 ...
     {{< /file >}}
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 If you do not define this exception for the `postgres` user, you could potentially lock yourself out of the database. We recommend making a backup copy of this file before editing it and taking note of its location.
-{{< /caution >}}
+{{< /note >}}
 
 1. You must restart PostgreSQL to apply the new access rule.
 
@@ -307,9 +307,9 @@ You are connected to database "testdatabase" as user "postgres" via socket in "/
 
         dropdb testdatabase
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The `dropdb` command permanently deletes all of the tables and data inside the database and cannot be undone.
-{{< /caution >}}
+{{< /note >}}
 
 ### Work With PostgreSQL Tables
 
@@ -350,9 +350,9 @@ Table "public.customers"
 1. The `DROP TABLE` command can be used to delete an existing table.
 
         DROP TABLE customers;
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The `DROP TABLE` operation deletes all of the data in the table. It cannot be undone.
-{{< /caution >}}
+{{< /note >}}
 
 ### Work With PostgreSQL Columns
 

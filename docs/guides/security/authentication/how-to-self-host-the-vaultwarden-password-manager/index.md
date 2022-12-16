@@ -327,9 +327,9 @@ The `Persistent=true` line instructs systemd to fire the timer if the timer was 
 
    This indicates that a backup is taken in 5 hours and 50 minutes.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Ensure that the backups are kept on a volume or host independent of the Linode in case of a disaster recover recovery scenario. Consider using [Linode Block Storage](/docs/products/storage/block-storage/) as one potential solution for permanent backup storage and archival.
-{{< /caution >}}
+{{< /note >}}
 
 ## Using Vaultwarden
 

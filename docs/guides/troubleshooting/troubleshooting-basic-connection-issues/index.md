@@ -79,17 +79,17 @@ When you boot into Rescue Mode, you are booting your Linode into the [Finnix rec
 
 If your Linode can't boot, then it may have experienced filesystem corruption.
 
-1.  Review the Rescue and Rebuild guide for instructions on [running a filesystem check](/docs/guides/rescue-and-rebuild/#performing-a-file-system-check).
+1. Review the Rescue and Rebuild guide for instructions on [running a filesystem check](/docs/guides/rescue-and-rebuild/#performing-a-file-system-check).
 
-    {{< caution >}}
-Never run a filesystem check on a disk that is mounted.
-{{< /caution >}}
+    {{< note type="alert" >}}
+    Never run a filesystem check on a disk that is mounted.
+    {{< /note >}}
 
-1.  If your filesystem check reports errors that cannot be fixed, you may need to [rebuild your Linode](/docs/guides/rescue-and-rebuild/#rebuilding).
+1. If your filesystem check reports errors that cannot be fixed, you may need to [rebuild your Linode](/docs/guides/rescue-and-rebuild/#rebuilding).
 
-1.  If the filesystem check reports errors that it has fixed, try rebooting your Linode under your normal [configuration profile](/docs/guides/linode-configuration-profiles/#booting-from-a-configuration-profile). After you reboot, you may find that your connection issues are resolved. If you still cannot connect as normal, restart the troubleshooting process from the [beginning of this guide](#is-your-linode-running).
+1. If the filesystem check reports errors that it has fixed, try rebooting your Linode under your normal [configuration profile](/docs/guides/linode-configuration-profiles/#booting-from-a-configuration-profile). After you reboot, you may find that your connection issues are resolved. If you still cannot connect as normal, restart the troubleshooting process from the [beginning of this guide](#is-your-linode-running).
 
-1.  If the filesystem check does not report any errors, there may be another reason for your booting issues. Continue to [inspecting your system and kernel logs](#inspect-system-and-kernel-logs).
+1. If the filesystem check does not report any errors, there may be another reason for your booting issues. Continue to [inspecting your system and kernel logs](#inspect-system-and-kernel-logs).
 
 ### Inspect System and Kernel Logs
 
@@ -99,13 +99,10 @@ To proceed, review the Rescue and Rebuild guide's instructions on [changing root
 
 In systemd Linux distributions (like Debian 8+, Ubuntu 16.04+, CentOS 7+, and recent releases of Arch), you can run the [`journalctl` command](/docs/guides/how-to-use-journalctl/) to view system and kernel logs. In these and other distributions, you may also find system log messages in the following files:
 
--   `/var/log/messages`
-
--   `/var/log/syslog`
-
--   `/var/log/kern.log`
-
--   `/var/log/dmesg`
+- `/var/log/messages`
+- `/var/log/syslog`
+- `/var/log/kern.log`
+- `/var/log/dmesg`
 
 You can use the [`less` command](/docs/guides/how-to-use-less/) to review the contents of these files (e.g. `less /var/log/syslog`). Try pasting your log messages into a search engine or searching in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Linode](/docs/guides/rescue-and-rebuild/#rebuilding).
 
@@ -121,9 +118,9 @@ After running this command, try rebooting your Linode into your normal configura
 
 If you can boot your Linode normally and access the Lish console, you can continue investigating network issues. Networking issues may have two causes:
 
--   There may be a network routing problem between you and your Linode, or:
+- There may be a network routing problem between you and your Linode, or:
 
--   If the traffic is properly routed, your Linode's network configuration may be malfunctioning.
+- If the traffic is properly routed, your Linode's network configuration may be malfunctioning.
 
 ### Check for Network Route Problems
 
@@ -133,7 +130,7 @@ To diagnose routing problems, run and analyze an MTR report from your computer t
 
 Once you have generated this report, compare it with the following example scenarios.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are located in China, and the output of your MTR report shows *high packet loss* or an *improperly configured router*, then your IP address may have been blacklisted by the GFW (Great Firewall of China). Linode is not able to change your IP address if it has been blacklisted by the GFW. If you have this issue, review this [community post](https://www.linode.com/community/questions/17192/ssh-refused) for troubleshooting help.
 {{< /note >}}
 
@@ -152,9 +149,9 @@ If you are located in China, and the output of your MTR report shows *high packe
 
     This example report shows high persistent packet loss starting mid-way through the route at hop 3, which indicates an issue with the router at hop 3. If your report looks like this, [open a support ticket with your MTR results](#open-a-support-ticket-with-your-mtr-results) for further troubleshooting assistance.
 
-    {{< note respectIndent=false >}}
-If your route only shows packet loss at certain routers, and not through to the end of the route, then it is likely that those routers are purposefully limiting [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) responses. This is generally not a problem for your connection. Linode's MTR guide provides more context for [packet loss issues](/docs/guides/diagnosing-network-issues-with-mtr/#verify-packet-loss).
-{{< /note >}}
+    {{< note >}}
+    If your route only shows packet loss at certain routers, and not through to the end of the route, then it is likely that those routers are purposefully limiting [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) responses. This is generally not a problem for your connection. Linode's MTR guide provides more context for [packet loss issues](/docs/guides/diagnosing-network-issues-with-mtr/#verify-packet-loss).
+    {{< /note >}}
 
     If your report resembles the example, [open a support ticket with your MTR results](#open-a-support-ticket-with-your-mtr-results) for further troubleshooting assistance. Also, consult Linode's MTR guide for more context on [packet loss issues](/docs/guides/diagnosing-network-issues-with-mtr/#verify-packet-loss).
 
@@ -175,9 +172,9 @@ If your route only shows packet loss at certain routers, and not through to the 
 
     If your report shows question marks instead of the hostnames (or IP addresses) of the routers, and if these question marks persist to the end of the route, then the report indicates an improperly configured router. If your report looks like this, [open a support ticket with your MTR results](#open-a-support-ticket-with-your-mtr-results) for further troubleshooting assistance.
 
-    {{< note respectIndent=false >}}
-If your route only shows question marks for certain routers, and not through to the end of the route, then it is likely that those routers are purposefully blocking [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) responses. This is generally not a problem for your connection. Linode's MTR guide provides more information about [router configuration issues](/docs/guides/diagnosing-network-issues-with-mtr/#an-isp-router-is-not-configured-properly).
-{{< /note >}}
+    {{< note >}}
+    If your route only shows question marks for certain routers, and not through to the end of the route, then it is likely that those routers are purposefully blocking [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) responses. This is generally not a problem for your connection. Linode's MTR guide provides more information about [router configuration issues](/docs/guides/diagnosing-network-issues-with-mtr/#an-isp-router-is-not-configured-properly).
+    {{< /note >}}
 
 -  **Destination Host Networking Improperly Configured**
 
@@ -194,7 +191,7 @@ If your route only shows question marks for certain routers, and not through to 
 
     If your report shows no packet loss or low packet loss (or non-persistent packet loss isolated to certain routers) until the end of the route, and 100% loss at your Linode, then the report indicates that your Linode's network interface is not configured correctly. If your report looks like this, move down to [confirming network configuration issues from Rescue Mode](#confirm-network-configuration-issues-from-rescue-mode).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If your report does not look like any of the previous examples, read through the [MTR guide](/docs/guides/diagnosing-network-issues-with-mtr/) for other potential scenarios.
 {{< /note >}}
 
@@ -220,11 +217,11 @@ Once you have generated your original MTR and your reverse MTR, [open a Linode s
 
 If you have determined that your network configuration is the cause of the problem, review the following troubleshooting suggestions. If you make any changes in an attempt to fix the issue, you can test those changes with these steps:
 
-1.  Run another MTR report (or [ping](/docs/guides/troubleshooting-overview/#can-you-ping-the-linode) the Linode) from your computer to your Linode's IP.
+1. Run another MTR report (or [ping](/docs/guides/troubleshooting-overview/#can-you-ping-the-linode) the Linode) from your computer to your Linode's IP.
 
-1.  If the report shows no packet loss but you still can't access SSH or other services, this result indicates that your network connection is up again, but the other services are still down. Move onto [troubleshooting SSH](#troubleshoot-ssh) or [troubleshooting other services](#troubleshoot-other-services).
+1. If the report shows no packet loss but you still can't access SSH or other services, this result indicates that your network connection is up again, but the other services are still down. Move onto [troubleshooting SSH](#troubleshoot-ssh) or [troubleshooting other services](#troubleshoot-other-services).
 
-1.  If the report still shows the same packet loss, review the remaining troubleshooting suggestions in this section.
+1. If the report still shows the same packet loss, review the remaining troubleshooting suggestions in this section.
 
 If the recommendations in this section do not resolve your issue, try pasting your [diagnostic commands' output](#run-diagnostic-commands) into a search engine or searching for your output in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Linode](/docs/guides/rescue-and-rebuild/#rebuilding).
 
@@ -316,7 +313,7 @@ The Sendmail issue can usually be resolved by running the following command and 
     sudo mv /etc/network/if-up.d/sendmail ~
     ifdown -a && ifup -a
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Read more about the Sendmail bug [here](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=873978).
 {{< /note >}}
 
@@ -352,7 +349,7 @@ If your interface is up but your networking is still down, your firewall (which 
     sudo iptables -L # displays IPv4 rules
     sudo ip6tables -L # displays IPv6 rules
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Your deployment may be running FirewallD or UFW, which are frontend software packages used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
 
     sudo ufw status

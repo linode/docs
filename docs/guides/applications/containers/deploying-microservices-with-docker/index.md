@@ -148,9 +148,9 @@ COPY visitors (site_id, site_name, visitor_count) FROM stdin;
 \.
 {{</ file >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 In Line 22 of `init.sql`, make sure your text editor does not convert tabs to spaces. The app will not work without tabs between the entries in this line.
-{{< /caution >}}
+{{< /note >}}
 
 ### Web
 

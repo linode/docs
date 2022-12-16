@@ -155,9 +155,9 @@ If you want to see all host connections on a single page, set the number of rows
 
 Ntopng provides a simple and convenient method for monitoring threats.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Ntopng does not replace core security features such as a properly configured firewall. It is meant to run in addition to an existing setup.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Near the top of the web interface, scroll over **Settings** and select **Preferences**. Click on **Alerts** in the menu to the left. Click on **Enable Alerts** and choose which alerts you’d like to enable.
 

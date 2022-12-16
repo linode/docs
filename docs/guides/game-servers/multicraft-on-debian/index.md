@@ -83,9 +83,9 @@ If you want a dedicated Apache virtual host for Multicraft, follow the instructi
 
     This will launch an interactive script that will prompt you to configure several options. If you've purchased a license for Multicraft, enter it when prompted. If you're unsure which option to choose, press `return` to select the default option.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Because of the insecure nature of FTP, we strongly recommend that you **not** enable the built-in FTP server when prompted.
-{{< /caution >}}
+{{< /note >}}
 
 ## Configuring the Control Panel
 

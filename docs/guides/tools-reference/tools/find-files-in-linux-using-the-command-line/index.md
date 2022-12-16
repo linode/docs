@@ -106,9 +106,9 @@ The `-exec` or `-execdir` options run without further prompts. If you prefer to 
 
 ## How to Find and Delete a File in Linux
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Be very careful using this.
-{{< /caution >}}
+{{< /note >}}
 
 To delete the files that end up matching your search, you can add `-delete` at the end of the expression. Do this only when you are positive the results will only match the files you wish to delete.
 

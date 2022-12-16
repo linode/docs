@@ -21,9 +21,9 @@ Linode offers Debian's [stable](https://wiki.debian.org/DebianStable) and [oldst
 
 On the other hand, if you're currently tracking repositories by codename, as Debian does by default, you will never upgrade beyond that codename release. This is the safest option and you can still manually upgrade to a newer Debian codename or release status name at any time.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 While upstream maintainers try to ensure cross-compatibility and problem-free upgrades, there is risk involved in upgrading operating system versions.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 

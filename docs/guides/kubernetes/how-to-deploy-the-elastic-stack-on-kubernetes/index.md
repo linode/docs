@@ -39,11 +39,11 @@ This guide provides instructions to:
 
 You can further use the Elastic Stack deployed and configured for application logs or monitoring Kubernetes.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This guide's example instructions creates the following billable resources on the Linode account: four (4) Linodes and three (3) Block Storage volumes. If you do not want to keep using the example cluster that you create, be sure to delete the cluster Linodes and volumes after you have finished the guide.
 
 If you remove the resources afterward, you are billed only for the hour(s) that the resources were present on the account. For more information, see [Billing and Payments](/docs/products/platform/billing/) guide about how hourly billing works and for a table of plan pricing.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 

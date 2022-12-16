@@ -39,9 +39,9 @@ On some systems, fsck runs automatically after an unclean shutdown or after a ce
 Use fsck to check your file system if your system fails to boot, if files on a specific disk become corrupt, or if an attached drive does not act as expected.
 Unmount the disks you intend to work on before attempting to check or repair them.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Unmount the target disk first. You risk corrupting your file system and losing data if you run fsck on an active disk.
-{{< /caution >}}
+{{< /note >}}
 
 ## fsck Options and Arguments
 

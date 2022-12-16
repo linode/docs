@@ -217,9 +217,9 @@ To add a record to a collection, use the `insert` or `insertOne` command. For ex
 
 ## Uninstall the MongoDB Shell
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 When using the `rm` command ensure you are removing the desired file and directory. You cannot recover files or directories once they are removed.
-{{</ caution>}}
+{{< /note >}}
 
 ### Linux
 

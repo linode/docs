@@ -98,9 +98,9 @@ When Postgres is installed using this method, the version number is included in 
 
 By default, PostgreSQL will create a Linux user named `postgres` to access the database software.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The `postgres` user should not be used for other purposes (e.g., connecting to other networks). Doing so presents a serious risk to the security of your databases.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Change the `postgres` user's Linux password:
 
@@ -193,9 +193,9 @@ You can delete, or *drop*, databases with the `dropdb` command. For example, to 
 
     dropdb mytestdb
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Deleted databases cannot be recovered.
-{{< /caution >}}
+{{< /note >}}
 
 ## Work With Tables
 

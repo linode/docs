@@ -25,9 +25,9 @@ Terraform is an IaC tool that focuses on creating, modifying, and destroying ser
 
 Linodes created with Terraform can be further configured with container systems like Docker, or with configuration management software like Salt, Puppet, Ansible, or Chef.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The configurations and commands used in this guide results in multiple Linodes being added to your account. Be sure to monitor your account closely in the Linode Manager to avoid unwanted charges.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -520,9 +520,9 @@ resource "linode_instance" "terraform-db" {
 
 Terraform allows you to change a server's name, size, or other attributes without needing to destroy and rebuild it. Terraform handles this through changes to the configuration files.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Changing the size of your Linode forces your server to be powered off and migrated to a different host in the same data center. The associated disk migration takes approximately 1 minute for every 3-5 gigabytes of data. See our [Resizing a Linode](/docs/guides/resizing-a-linode/) guide for more information.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Modify `linode-terraform-template.tf` and update the `type` value to `g6-standard-4` for the `terraform-db` resource.
 

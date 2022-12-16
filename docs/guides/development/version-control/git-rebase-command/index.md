@@ -68,9 +68,9 @@ After running the `git rebase main` command, your local branch's commit history 
 
 `B`, in the rebase diagram and `M`, in the merge diagram, are both snapshots of approximately the same state. What’s different about the two commit histories is the information available in each. `M` and its history record what everyone did – it’s a historical record of what work was done on the project. `B` and its history, on the other hand, tell the story of how the project was made. Typically, your Git repository's project leaders determine which method they prefer to use to combine changes between branches.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Rebasing rewrites your commit history. Never rebase a commit that somebody else might have based their work on. Only change your own local history. Don’t rebase anything that you’ve already pushed to an upstream branch.
-{{< /caution >}}
+{{< /note >}}
 
 ## How Git Rebase Works
 

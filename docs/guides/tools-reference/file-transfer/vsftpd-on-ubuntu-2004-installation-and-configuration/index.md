@@ -181,9 +181,9 @@ To make VSFTPD useful for some real-world use-cases, you can adjust some of the 
 A common strategy for securing user accounts is to use VSFTPD's `userlist_enable`, `userlist_file`, and `userlist_deny` attributes. These can be configured to only allow a selected subset of local accounts to establish FTP sessions.
 {{< /note >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 By default, FTP connections are communicated in clear text and not encrypted. Investigate the SSL options available to VSFTPD to set up encryption.
-{{< /caution >}}
+{{< /note >}}
 
 ### VSFTPD Log File
 

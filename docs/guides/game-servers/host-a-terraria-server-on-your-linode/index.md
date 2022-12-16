@@ -200,9 +200,9 @@ WantedBy=multi-user.target
 
 *   **ExecStop** calls a script to send the `exit` command to Terraria, which tell the server to ensure that the world is saved before shutting down. In the next section, we'll create a script which will send the necessary commands to the running Terraria server.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This script is intended to save your world in the event that you reboot the operating system within the Linode. It is **not** intended to save your progress if you reboot your Linode from the Linode Manager. If you must reboot your Linode, first stop the Terraria service using `sudo systemctl stop terraria`. This will save your world, and then you can reboot from the Linode Manager.
-{{< /caution >}}
+{{< /note >}}
 
 ### Create a Script for Basic Terraria Administration
 

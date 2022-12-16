@@ -57,9 +57,9 @@ The following list represents mysqldump commands for various scenarios. Within t
 
         mysqldump [options] --all-databases > backup.sql
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Do not use the `--all-databases` option if you intend on restoring this database to a Linode MySQL Managed Database. It may delete existing users and restrict access to your database.
-{{</ caution >}}
+{{< /note >}}
 
 {{< note respectIndent=false >}}
 Depending on the size of the database, it could take a while to complete. For large tables, you may want to use the `--quick` option to receive rows one at a time instead of all at once.

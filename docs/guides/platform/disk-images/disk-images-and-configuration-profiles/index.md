@@ -150,9 +150,9 @@ The disk will be duplicated. Watch the *Host Job Queue* on the Dashboard to moni
 
 You can delete a disk to remove it from your Linode and reallocate its storage space to another disk. Here's how to delete a disk:
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Removing a disk is permanent and cannot be undone.
-{{</ caution >}}
+{{< /note >}}
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 2.  Click the **Linodes** link in the sidebar.

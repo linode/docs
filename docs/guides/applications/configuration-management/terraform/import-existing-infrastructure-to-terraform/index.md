@@ -42,9 +42,9 @@ State is Terraform's stored JSON mapping of your current Linode resources to the
 
 Additionally, there is no current way to import more than one resource at a time. **All resources must be individually imported**.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 When importing your infrastructure to Terraform, failure to accurately provide your Linode service's ID information can result in the unwanted alteration or destruction of the service. Please follow the instructions provided in this guide carefully. It might be beneficial to use multiple [Terraform Workspaces](https://www.terraform.io/docs/state/workspaces.html) to manage separate testing and production infrastructures.
-{{< /caution >}}
+{{< /note >}}
 
 ## Import a Linode to Terraform
 
@@ -271,9 +271,9 @@ If you have more than one [configuration profile](/docs/guides/linode-configurat
 
     `terraform plan` shows you the changes that would take place if you were to apply the configurations with a `terraform apply`. Running `terraform plan` is a good way to determine if the configuration you provided is exact enough for Terraform to take over the management of your Linode.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
   Running `terraform plan` displays any changes that are applied to your existing infrastructure based on your configuration file(s). However, you will **not be notified** about the **addition and removal of disks** with `terraform plan`. For this reason, it is vital that the values you include in your `linode_instance` resource configuration block match the values generated from running the `terraform show` command.
-    {{</ caution >}}
+    {{< /note >}}
 
 1. Once you have verified the configurations you provided in the `linode_instance` resource block, you are ready to begin managing your Linode instance with Terraform. Any changes or updates can be made by:
 

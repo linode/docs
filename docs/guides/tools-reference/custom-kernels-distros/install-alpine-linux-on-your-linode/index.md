@@ -41,9 +41,9 @@ It's regularly updated with security patches, and runs on the [grsecurity](https
 
 4.  This guide assumes a consistent present working directory, meaning all commands should be run from the same directory. In most cases, it will be `/alpine` or a chroot of said directory.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 While this guide will provide you with a fully operational Alpine installation, be aware that Linode does not provide official support for Alpine Linux and cannot guarantee its stability or security. Please consider this before proceeding.
-{{< /caution >}}
+{{< /note >}}
 
 ## Prepare the Linode
 

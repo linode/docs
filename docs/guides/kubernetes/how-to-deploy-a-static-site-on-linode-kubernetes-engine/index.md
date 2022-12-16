@@ -26,9 +26,9 @@ aliases: ['/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/'
 
 Deploying a static site using an LKE cluster is a great example to follow when learning Kubernetes. A [container](/docs/guides/kubernetes-reference/#container) image for a static site can be written in less than ten lines, and only one container image is needed. Therefore, it's often less complicated to deploy a static site on Kubernetes than some other applications that require multiple components.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Following the instructions in this guide creates billable resources on your account in the form of Linodes and NodeBalancers. You are billed an hourly rate for the time that these resources exist on your account. Be sure to follow the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) at the end of this guide if you do not wish to continue using these resources.
-{{</ caution >}}
+{{< /note >}}
 
 ## In this Guide
 

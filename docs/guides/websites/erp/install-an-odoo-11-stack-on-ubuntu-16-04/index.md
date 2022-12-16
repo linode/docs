@@ -265,9 +265,9 @@ These settings are:
 
     You will be prompted with the `replicauser` password. Once the transfer is complete your **Standby** will be synchronized with the **Primary** database. This puts an exact replica of the Primary database on the Standby.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Do not start the Standby's PostgreSQL service until Step 3 of the next section, when all configuration is complete.
-{{< /caution >}}
+{{< /note >}}
 
 ### Create the Recovery File on the Standby Node
 

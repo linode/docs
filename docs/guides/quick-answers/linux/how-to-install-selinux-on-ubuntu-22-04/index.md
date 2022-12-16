@@ -40,9 +40,9 @@ SELinux's technical basis is [access control](https://www.linode.com/blog/cloud-
 
 A standard modern Ubuntu distribution includes [AppArmor](https://apparmor.net/), a Linux application security system which emphasizes ease-of-use and routine reliability. Both AppArmor and SELinux work through the [Linux Security Module](https://www.kernel.org/doc/html/v4.16/admin-guide/LSM/index.html) (LSM) interface. Since Linux only permits a single LSM to be active, the first step in an SELinux installation is to deactivate AppArmor.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 SELinux alters parts of Linux profoundly. An error in its installation can easily render an entire host unresponsive. Make backups, be prepared to dispose or recycle a particular instance, and work with care. Start your SELinux experiments in `permissive` mode, and make backups again before any switch to `enforcing` mode. The simplest SELinux installations are somewhat time-consuming, as they affect the entire filesystem. Each reboot takes a while, since SELinux methodically confirms the state of all filesystems and other resources.
-{{< /caution >}}
+{{< /note >}}
 
 ### Stop and Remove AppArmor
 
@@ -114,9 +114,9 @@ While this output is similar to `getenforce`, once SELinux is enabled, `sestatus
 
 SELinux can be enabled in one of two states: `permissive` or `enforcing`. Your current SELinux installation remains disabled.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 If you connect to your host via SSH, access will be lost once SELinux is enabled. If you’re using a Linode host, you can still login via the LISH console.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Reboot, and the Ubuntu 22.04 host likely comes up with SELinux "on":
 

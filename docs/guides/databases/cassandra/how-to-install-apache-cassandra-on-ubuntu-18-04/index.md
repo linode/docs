@@ -175,9 +175,9 @@ Ensure you complete the steps in this section using your limited user account. T
 
 Since your Cassandra username and password can be stored in plaintext, the `cqlshrc` file should only be accessible to your administrative user account, and is designed to be inaccessible to other accounts on your Linux system.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Do not complete this section as the root user. Before proceeding, fully evaluate the security risks and consequences to your node cluster before adding the `[authentication]` section.
-{{</ caution >}}
+{{< /note >}}
 
 1.  Create the file `cqlshrc` using your preferred text editor. If the `~/.cassandra` directory does not exist, create it:
 

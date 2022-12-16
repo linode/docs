@@ -100,9 +100,9 @@ An IPv6 pool is accessible from every Linode on your account within the assigned
 
 - `/116` **pool** *(4,096 addresses)*
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The IPv6 /116 prefix has been deprecated and is no longer available for new Compute Instances. If you have an existing Compute Instance with a /116 pool, please review the [Upcoming Changes Related to Network Infrastructure Upgrades](/docs/guides/network-infrastructure-upgrades/) to learn about changes that may affect your services.
-{{</ caution >}}
+{{< /note >}}
 
 ## IPv6 Forwarding
 

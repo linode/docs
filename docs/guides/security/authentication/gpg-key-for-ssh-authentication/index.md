@@ -47,9 +47,9 @@ You don't necessarily need to be familiar with [SSH public key authentication](/
 
 This section explains how to generate a new GPG keypair. If you already have one, you may skip these steps, as the next section will include instructions for how to create a subkey to use specifically for authentication. You will just need the 8-digit ID for your existing key to do so.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 As an additional security measure, this process may be undertaken on an offline (non network-connected) machine or single-use Virtual Machine (VM). After installing the pre-requisite packages and *only* the pre-requisite packages, disconnect it from the network and continue with the steps below.
-{{< /caution >}}
+{{< /note >}}
 
 All of these steps should be performed on a local machine, *not* your Linode.
 
@@ -247,9 +247,9 @@ Your terminal should now look like this:
 
 ### Secure Your GPG Key
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 If you fail to back up or otherwise secure your key, any hardware failure will lead to you being unable to access your Linode with this key. If you lock out password access through SSH, you'll need to use [Lish](/docs/guides/lish/) to regain access.
-{{< /caution >}}
+{{< /note >}}
 
 You should always have a backup of your private key in case something goes wrong and you end up locked out of everything that requires it. This private key, along with the instructions in this guide, will be enough to get your setup working again if you need to start afresh on a new computer.
 
@@ -413,9 +413,9 @@ After all this, your output should resemble the following:
 
 Congratulations! You've successfully transferred your authentication subkey to your device.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 If you weren't using a VM or offline machine, back up your local copies of the private keys, delete them, and ensure that the rest of the keys are still on the card.
-{{< /caution >}}
+{{< /note >}}
 
 ## Serve Your GPG key Instead of an SSH key
 

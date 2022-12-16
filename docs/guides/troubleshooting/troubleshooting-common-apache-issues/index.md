@@ -114,9 +114,9 @@ LogLevel debug
 
 4.  Perform the operation that was giving you trouble, then [check the logs](#check-the-logs) for more detailed information and errors.
 
- {{< caution >}}
+ {{< note type="alert" respectIndent=false >}}
 Remember to set the `LogLevel` back to `warn` when you're done troubleshooting, or your server may fill up with logs.
-{{< /caution >}}
+{{< /note >}}
 
 ## Check Apache Configuration Syntax
 

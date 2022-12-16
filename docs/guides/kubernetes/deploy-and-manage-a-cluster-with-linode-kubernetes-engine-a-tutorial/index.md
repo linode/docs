@@ -48,11 +48,11 @@ In this guide you will learn:
 
  - [Next Steps after deploying your cluster.](#next-steps)
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This guide's example instructions create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [remove it](#delete-a-cluster) when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -277,9 +277,9 @@ When multiple replicas are created as part of LKE HA, they are always placed on 
 
 Unlike other LKE configuration options, High Availability is an **optional billable service** that increases the overall operating cost of your cluster. For more information, see our [pricing page](https://www.linode.com/pricing/).
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 While upgrading to an HA cluster is always possible, **downgrading your cluster is not currently supported**. Enabling HA is an **irreversible** change for your cluster.
-{{< /caution >}}
+{{< /note >}}
 
 ### Enabling HA During Cluster Creation
 
@@ -301,13 +301,13 @@ Your cluster’s detail page will appear on the following page where you will se
 
 High Availability can be added to pre-existing clusters at any given time through the cluster's **Summary Page**.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Enabling HA on a pre-existing cluster will result in the following changes:
 
 - All nodes will be deleted and new nodes will be created to replace them.
 - Any local storage (such as `hostPath` volumes) will be erased.
 - The upgrade process may take several minutes to complete, as nodes will be replaced on a rolling basis.
-{{< /caution >}}
+{{< /note >}}
 
 1. To reach the summary page for the cluster, navigate first to the [Kubernetes section of the Cloud Manager](https://cloud.linode.com/kubernetes/clusters).
 

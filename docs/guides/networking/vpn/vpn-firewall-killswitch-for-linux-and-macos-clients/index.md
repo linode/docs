@@ -80,9 +80,9 @@ The majority of GNU/Linux users use either `iptables` or `ufw` to manage their f
 
 ### VPN firewall using iptables
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 You may want to back up your current iptables ruleset with `iptables-save`.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Create a shell script with the following `iptables` ruleset:
 
@@ -116,9 +116,9 @@ Your VPN firewall is now active, but this ruleset is only temporary and will be 
 
 ### VPN Firewall using ufw
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 You may want to back up your current firewall ruleset.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Create a new shell script containing the following commands:
 

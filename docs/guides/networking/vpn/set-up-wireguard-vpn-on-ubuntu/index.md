@@ -30,9 +30,9 @@ The WireGuard configuration is as simple as setting up SSH. A connection is esta
 
 This guide will configure a simple peer connection between a Linode running Ubuntu 18.04, and a client. The client can be either your local computer or another Linode.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Do not use WireGuard for critical applications. The project is still undergoing security testing and is likely to receive frequent critical updates in the future.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 

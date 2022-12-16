@@ -97,9 +97,9 @@ We will create a new virtual host for Roundcube in this section. This makes a ne
     - **SSLCertificateFile:** path to the SSL certificate information (`.crt`) file
     - **SSLCertificateKeyFile:** path to the SSL certificate private key (`.key`) file
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Make sure the custom directory and desired `.log` files exist **before** specifying them in your virtual host configuration. Failure to do so will prevent Apache from starting. The files should be owned by the `www-data` user with `644` permissions.
-{{< /caution >}}
+{{< /note >}}
 
 7.  Rename your configuration file to match its full domain name:
 

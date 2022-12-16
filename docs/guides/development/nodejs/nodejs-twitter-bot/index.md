@@ -855,9 +855,9 @@ Our [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over
 
     When logging in for the first time, you use the `root` username and the root password that you set when creating the Linode. However, it's important to create a non-root-user with limited permissions to run your programs from.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 If you were to run your programs as root, and if they were to be compromised by someone malicious, then the rest of your server could be compromised. If your server isn't running anything else, then it may not be important to you. However, an attacker could install malicious programs that target other people's servers, like a botnet script that sends denial-of-service attacks.
-{{< /caution >}}
+{{< /note >}}
 
 1. To create a non-root-user, follow the [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. This guide assumes that the name of the new user is `tutorialbotuser`, but you can name it whatever you'd like. The instructions in this section also show how to give your user `sudo` privileges, so it is still able to perform software updates and other administrative tasks.
 

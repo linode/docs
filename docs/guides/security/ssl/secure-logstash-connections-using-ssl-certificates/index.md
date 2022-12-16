@@ -329,10 +329,10 @@ extendedKeyUsage = serverAuth, clientAuth
 }
 {{</ output >}}
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Please see the [section on cleaning up](#cleaning-up) to ensure that testing artifacts are
 tidied up correctly.
-{{< /caution >}}
+{{< /note >}}
 
 ## Filebeat
 

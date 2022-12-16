@@ -78,9 +78,9 @@ The next task is to copy your data to the new Linode, and make sure that all com
 1.  Create a temporary directory on the new Linode.
 2.  Copy any needed user and configuration data from the compromised Linode using [rsync](/docs/guides/introduction-to-rsync/) or `scp`.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Do not log in to the new Linode from the compromised Linode. Files should be pulled from the compromised server to your new setup instead.
-{{< /caution >}}
+{{< /note >}}
 
 3.  Audit your data using tools such as `rkhunter` and [`clamav`](/docs/guides/scanning-your-linode-for-malware/). You can use additional malware scanners to be certain you aren't retaining tainted files. Examine all system scripts manually for contaminated code, and replace all suspicious executable files with known good copies.
 

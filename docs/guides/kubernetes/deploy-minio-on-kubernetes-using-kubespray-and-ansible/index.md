@@ -201,9 +201,9 @@ Run the `cluster.yml` Ansible playbook. If your private key is named differently
 
     ansible-playbook -i inventory/minio/hosts.ini cluster.yml -b -v
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This could take up to 20 minutes.
-{{< /caution >}}
+{{< /note >}}
 
 ### Add or Remove Nodes
 

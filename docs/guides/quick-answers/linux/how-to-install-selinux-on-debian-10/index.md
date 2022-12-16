@@ -50,11 +50,11 @@ The Linode kernel does not support SELinux by default. If your system is running
 
 1.  Purge AppArmor from the system.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Do not purge AppArmor if you believe you may reuse it in the future.  If you would like to preserve your AppArmor configuration files, use the `remove` command, instead:
 
     sudo apt remove apparmor
-    {{< /caution >}}
+    {{< /note >}}
 
         sudo apt purge apparmor
 

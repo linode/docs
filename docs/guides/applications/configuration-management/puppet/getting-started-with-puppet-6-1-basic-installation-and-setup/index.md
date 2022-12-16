@@ -63,36 +63,35 @@ Throughout this guide, commands and code snippets will reference the values disp
 
 1.  [Set the FQDN](/docs/guides/using-your-systems-hosts-file/) for each Linode by editing the servers' `/etc/hosts` files.
 
-    {{< disclosure-note "Example content for the hosts file" >}}
-You can model the contents of your `/etc/hosts` files on these snippets:
+    {{< note type="secondary" title="Example content for the hosts file" isCollapsible=true >}}
+    You can model the contents of your `/etc/hosts` files on these snippets:
 
-{{< file "Master" >}}
-127.0.0.1	localhost
-192.0.2.2   puppet.example.com puppet
+    ```file {title="Master"}
+    127.0.0.1	localhost
+    192.0.2.2   puppet.example.com puppet
 
-# The following lines are desirable for IPv6 capable hosts
-::1     localhost ip6-localhost ip6-loopback
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-{{< /file >}}
+    # The following lines are desirable for IPv6 capable hosts
+    ::1     localhost ip6-localhost ip6-loopback
+    ff02::1 ip6-allnodes
+    ff02::2 ip6-allrouters
+    ```
 
-{{< file "Node 1 (Ubuntu)" >}}
-127.0.0.1	localhost
-192.0.2.3   puppet-agent-ubuntu.example.com puppet-agent-ubuntu
+    ```file {title="Node 1 (Ubuntu)"}
+    127.0.0.1	localhost
+    192.0.2.3   puppet-agent-ubuntu.example.com puppet-agent-ubuntu
 
-# The following lines are desirable for IPv6 capable hosts
-::1     localhost ip6-localhost ip6-loopback
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-{{< /file >}}
+    # The following lines are desirable for IPv6 capable hosts
+    ::1     localhost ip6-localhost ip6-loopback
+    ff02::1 ip6-allnodes
+    ff02::2 ip6-allrouters
+    ```
 
-{{< file "Node 2 (CentOS)" >}}
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-192.0.2.4   puppet-agent-centos.example.com puppet-agent-centos
-{{< /file >}}
-
-{{< /disclosure-note >}}
+    ```file {title="Node 2 (CentOS)"}
+    127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+    ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+    192.0.2.4   puppet-agent-centos.example.com puppet-agent-centos
+    ```
+    {{< /note >}}
 
 1.  [Set up DNS records](/docs/products/networking/dns-manager/guides/manage-dns-records/) for your Linodes' FQDNs. For each Linode, create a new *A record* with the name specified by its FQDN and assign it to that Linode's IP address.
 
@@ -135,13 +134,13 @@ dns_alt_names = puppet,puppet.example.com
 # ...
 {{< /output >}}
 
-    {{< note respectIndent=false >}}
-The `puppet` command by default is not added to your PATH. Using Puppet's interactive commands requires a full file path. To avoid this, update your PATH for your existing shell session:
+    {{< note >}}
+    The `puppet` command by default is not added to your PATH. Using Puppet's interactive commands requires a full file path. To avoid this, update your PATH for your existing shell session:
 
-    export PATH=/opt/puppetlabs/bin:$PATH
+        export PATH=/opt/puppetlabs/bin:$PATH
 
-A more permanent solution would be to add this to your `.profile` or `.bashrc` files.
-{{</ note >}}
+    A more permanent solution would be to add this to your `.profile` or `.bashrc` files.
+    {{</ note >}}
 
 1.  Update your Puppet master's `/etc/hosts` to resolve your managed nodes' IP addresses. For example, your `/etc/hosts` file might look like the following:
 
@@ -195,30 +194,29 @@ This snippet incorporates the FQDN declaration described in the [Create your Lin
 192.0.2.2    puppet.example.com puppet
 {{< /file >}}
 
-    {{< disclosure-note "Example content for the hosts file" >}}
-You can model the contents of your managed nodes' `/etc/hosts` files on the following snippets. These incorporate the FQDN declarations described in the [Create your Linodes](#create-your-linodes) section:
+    {{< note type="secondary" title="Example content for the hosts file" isCollapsible=true >}}
+    You can model the contents of your managed nodes' `/etc/hosts` files on the following snippets. These incorporate the FQDN declarations described in the [Create your Linodes](#create-your-linodes) section:
 
-{{< file "Node 1 (Ubuntu)" >}}
-127.0.0.1	localhost
-192.0.2.3   puppet-agent-ubuntu.example.com puppet-agent-ubuntu
+    ```file {title="Node 1 (Ubuntu)"}
+    127.0.0.1	localhost
+    192.0.2.3   puppet-agent-ubuntu.example.com puppet-agent-ubuntu
 
-192.0.2.2   puppet.example.com puppet
+    192.0.2.2   puppet.example.com puppet
 
-# The following lines are desirable for IPv6 capable hosts
-::1     localhost ip6-localhost ip6-loopback
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-{{< /file >}}
+    # The following lines are desirable for IPv6 capable hosts
+    ::1     localhost ip6-localhost ip6-loopback
+    ff02::1 ip6-allnodes
+    ff02::2 ip6-allrouters
+    ```
 
-{{< file "Node 2 (CentOS)" >}}
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-192.0.2.4   puppet-agent-centos.example.com puppet-agent-centos
+    ```file {title="Node 2 (CentOS)"}
+    127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+    ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+    192.0.2.4   puppet-agent-centos.example.com puppet-agent-centos
 
-192.0.2.2   puppet.example.com puppet
-{{< /file >}}
-
-{{< /disclosure-note >}}
+    192.0.2.2   puppet.example.com puppet
+    ```
+    {{< /note >}}
 
 1.  On each managed node, use the `puppet config` command to set the value for your `server` setting to the FQDN of the master:
 
@@ -448,9 +446,9 @@ user { 'username':
 # ...
 {{< /file >}}
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The hashed password **must** be included in single quotes `' '`.
-{{< /caution >}}
+{{< /note >}}
 
 1.  After saving your changes, use the Puppet parser to ensure that the code is correct:
 
@@ -562,9 +560,9 @@ class accounts::ssh {
 }
 {{< /file >}}
 
-    {{< note respectIndent=false >}}
-`notify` is one of Puppet's [relationship metaparameters](https://puppet.com/docs/puppet/6.1/lang_relationships.html).
-{{< /note >}}
+    {{< note >}}
+    `notify` is one of Puppet's [relationship metaparameters](https://puppet.com/docs/puppet/6.1/lang_relationships.html).
+    {{< /note >}}
 
 1.  Include the `accounts::ssh` class within the `accounts` class in `init.pp`:
 
@@ -581,10 +579,9 @@ class accounts {
 }
 {{< /file >}}
 
-    {{< disclosure-note "The complete init.pp" >}}
-The contents of your `init.pp` should now look like the following snippet:
+    The contents of your `init.pp` should now look like the following snippet:
 
-{{< file "accounts/manifests/init.pp" puppet >}}
+    {{< file "accounts/manifests/init.pp" puppet >}}
 class accounts {
 
     $rootgroup = $osfamily ? {
@@ -608,7 +605,6 @@ class accounts {
 
 }
 {{< /file >}}
-{{< /disclosure-note >}}
 
 1.  Run the Puppet parser to test the syntax of the new class, then navigate to the `examples` directory to test and run the update to your `accounts` class:
 

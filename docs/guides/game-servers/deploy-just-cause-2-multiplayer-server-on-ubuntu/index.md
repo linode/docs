@@ -115,9 +115,9 @@ screen -S "Just Cause 2 Muliplayer Server" ./Jcmp-Server
 
         cd ~/ && ./startjc2.sh
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 From this point, do not press the **Control+C** keys while in the console unless you want to stop JC2.
-{{< /caution >}}
+{{< /note >}}
 
 2.  To detach from the screen session running the server console, press these two key combinations in succession:
 

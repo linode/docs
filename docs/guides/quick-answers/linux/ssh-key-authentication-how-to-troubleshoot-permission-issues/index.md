@@ -126,9 +126,9 @@ This situation arises because the target server does not have your public key. W
 
         cat ~/.ssh/id_rsa.pub
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Share only your public key. Your private key, which is usually named `id_rsa`, must always be kept secret.
-    {{< /caution >}}
+    {{< /note >}}
 
     {{< file "/Users/<username>/.ssh/id_rsa.pub" >}}
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3tvOQFGAnY3p1t6gv6rXEat8maN

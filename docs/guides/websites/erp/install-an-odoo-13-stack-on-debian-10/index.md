@@ -436,9 +436,9 @@ You have two options to backup your production database:
 
 These instructions show how to update your Odoo modules from the command line. However, from Odoo version 12 forward it is suggested that you update modules using Odoo's web interface whatever possible.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Be sure to create a backup of your production database before updating your modules.
-{{< /caution >}}
+{{< /note >}}
 
 From your **Odoo application server**, restart the Odoo service. Use the following flags to instruct the system to search for updates and apply any changes to modules:
 

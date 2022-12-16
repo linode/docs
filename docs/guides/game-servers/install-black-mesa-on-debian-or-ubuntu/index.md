@@ -117,9 +117,9 @@ mp_warmup_time 30                 --> Time before the match starts.
 {{< /file >}}
 
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The settings in **server.cfg** will override the ones that you specify (using parameters) when you start the server.
-{{< /caution >}}
+{{< /note >}}
 
 ### Config_deathmatch.cfg
 The **config_deathmatch.cfg** file contains the settings of the gamemode. You can edit almost everything in this file.

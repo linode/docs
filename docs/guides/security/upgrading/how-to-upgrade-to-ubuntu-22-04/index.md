@@ -57,9 +57,9 @@ In an inline upgrade, the primary node is upgraded in place using either the GUI
 -   This method of upgrading tends to retain "digital residue". This includes unnecessary or outdated packages, patches, and data.
 -   This method is recommended if the system is only one release behind and is mainly running a widely used and tested configuration such as a LAMP stack. An inline upgrade might run into more problems when the system configuration is complicated or includes in-house applications.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Although this process upgrades the Ubuntu operating system and most common programs, it does not necessarily upgrade every application. It is difficult to predict how the upgrade might affect these programs.
-{{< /caution >}}
+{{< /note >}}
 
 ### The Clean Install Method
 
@@ -92,9 +92,9 @@ This guide is designed for users who want to upgrade from Ubuntu 20.04 LTS to Ub
 
 If the Linode is running Ubuntu 18.xx or any earlier release, first upgrade it to Ubuntu 20.04 LTS. Then perform the steps in this guide to upgrade from Ubuntu 20.04 LTS to the 22.04 LTS. See the [Linode guide to Upgrade to Ubuntu 20.04](/docs/guides/upgrade-to-ubuntu-20-04/) for more information. Alternatively, if the Ubuntu software and applications are very old, it might make more sense to perform a clean install instead.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This operation cannot be canceled after it is started. Ensure there is a stable connection to the Linode and backup power is available.
-{{< /caution >}}
+{{< /note >}}
 
 ### How to Prepare the Linode for the Upgrade
 
@@ -137,9 +137,9 @@ mysql.service loaded active running MySQL Community Server
 
 6.  Use the command `sudo systemctl stop <application_name>` to stop a service. The following example demonstrates how to stop the Apache web server instance.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Do not stop any essential system services such as `ssh` or any `systemd` entry.
-    {{< /caution >}}
+    {{< /note >}}
 
     ```code
     sudo systemctl stop apache2

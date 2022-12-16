@@ -25,7 +25,7 @@ aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-14-04-lts/']
 
 Ubuntu 14.04 is a long-term support (LTS) release that will be supported until April 2019. This guide explains how to upgrade your Linode from Ubuntu 12.04 (Precise Pangolin) to Ubuntu 14.04 (Trusty Tahr).
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Distribution upgrades can yield unpredictable results, due to variations in software stacks. When possible, we recommend:
 
  - Creating a new Linode with the latest disk template
@@ -34,7 +34,7 @@ Distribution upgrades can yield unpredictable results, due to variations in soft
  - Swapping IP addresses
 
 In addition, you should use [LISH](/docs/guides/lish/) to perform this upgrade as, in the event your internet connection is disconnected, your system may end up corrupted or the upgrade may be incomplete.
-{{< /caution >}}
+{{< /note >}}
 
 {{< note respectIndent=false >}}
 This guide was written assuming that you have root access to your Linode. If you do not have root access, you will need to prepend each command with `sudo`.

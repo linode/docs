@@ -212,9 +212,9 @@ client_ip_addr(rw,wdelay,root_squash,no_subtree_check,sec=sys,rw,secure,root_squ
 
 To access the export directory on the server, the client must first map the drive to a local directory. This directory is called a *mount point*. To create a mount point, create a new directory on the client and bind the server's export directory to it. Execute the following commands on the client to mount the server's export directory.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Use an empty directory for the mount point. Any pre-existing files or subdirectories in the mounted directory are hidden while the mount point is in use.
-{{< /caution >}}
+{{< /note >}}
 
 1. Create a new directory on the client to serve as the mount point.
 

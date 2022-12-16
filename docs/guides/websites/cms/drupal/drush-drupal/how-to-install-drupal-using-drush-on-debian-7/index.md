@@ -192,9 +192,9 @@ To create a new user for the site owner position, review the [Securing Your Serv
 
         drush status
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 File permissions are a constant concern for the system owner or root user. When installing new files, like a module or theme, make sure the Apache user www-data has access rights. Use the command `ls -al` to list the file permissions within a directory.
-{{< /caution >}}
+{{< /note >}}
 
 Your site is now available at **`example.com`/drupal** or **`ipaddress`/drupal**. Sign-in with the generated username and password and start delivering content to the world!
 

@@ -67,9 +67,9 @@ The `/etc/ssh/moduli` file ships with OpenSSH, so assuming two servers have the 
     sudo ssh-keygen -T /etc/ssh/moduli -f "${HOME}/moduli"
     rm "${HOME}/moduli"
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Before running these commands on a production server, be aware that depending on the size of the keys you're generating, this will use significant CPU power and may take anywhere from a minute to several hours.
-{{< /caution >}}
+{{< /note >}}
 
 This sequence of commands generates a new file containing thousands of candidate primes for the Diffie-Hellman algorithm. Next, it tests the candidates and adds suitable primes to your `moduli` file. Note that these keys append to your existing ones; they do not overwrite the file, so it is still possible that your SSH connection will use a precomputed prime in its key exchange. As stated above, however, this is not a vulnerability.
 

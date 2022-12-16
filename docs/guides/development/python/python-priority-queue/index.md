@@ -207,9 +207,9 @@ True
 
 These instructions can be combined together to form the program `pri_queue.py`.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Do not name this program `queue.py`. This would conflict with the actual `queue` module and hide the actual interface. This bug generates the error `ImportError: cannot import name 'priorityQueue' from partially initialized module 'queue'` at runtime.
-{{< /caution >}}
+{{< /note >}}
 
 {{< file "pri_queue.py" python >}}
 from queue import PriorityQueue

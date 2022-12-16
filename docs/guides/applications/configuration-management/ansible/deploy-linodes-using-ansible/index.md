@@ -24,7 +24,7 @@ tags: ["automation"]
 image: how-to-use-the-linode-ansible-module-to-deploy-linodes.png
 ---
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide shows how to use the older *Linode Ansible module* to manage Linode infrastructure. This module is maintained by members of the Linode community. A newer *Linode Ansible collection* is now available which is maintained by the Linode development team.
 
 The community-maintained module still functions, but using the Ansible collection is recommended. Review our [Using the Linode Ansible Collection to Deploy a Linode](/docs/guides/deploy-linodes-using-linode-ansible-collection/) guide for more information.
@@ -37,15 +37,13 @@ In this guide you will learn how to:
 * Deploy and manage Linodes using Ansible and the `linode_v4` module.
 * Create an Ansible inventory for your Linode infrastructure using the dynamic inventory plugin for Linode.
 
-{{< caution >}}
-This guide’s example instructions will create a [1GB Linode](https://www.linode.com/pricing) (Nanode) billable resource on your Linode account. If you do not want to keep using the Linode that you create, be sure to [delete the resource](#delete-your-resources) when you have finished the guide.
-
-If you remove the resource afterward, you will only be billed for the hour(s) that the resources were present on your account.
-{{</ caution >}}
+{{< note type="warning" >}}
+This guide’s example instructions will create a [1GB Linode](https://www.linode.com/pricing) (Nanode) billable resource on your Linode account. If you do not want to keep using the Linode that you create, be sure to [delete the resource](#delete-your-resources) when you have finished the guide. If you remove the resource afterward, you will only be billed for the hour(s) that the resources were present on your account.
+{{< /note >}}
 
 ## Before You Begin
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps outlined in this guide require [Ansible version 2.8](https://github.com/ansible/ansible/releases/tag/v2.8.0), and were created using Ubuntu 18.04.
 {{</ note >}}
 
@@ -77,9 +75,9 @@ The Ansible configuration file is used to adjust Ansible's default system settin
 
 In this section, you will create an Ansible configuration file and add options to disable host key checking, and to allow the Linode inventory plugin. The Ansible configuration file will be located in a development directory that you create, however, it could exist in any of the locations listed above. See [Ansible's official documentation](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#common-options) for a full list of available configuration settings.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 When storing your Ansible configuration file, ensure that its corresponding directory does not have world-writable permissions. This could pose a security risk that allows malicious users to use Ansible to exploit your local system and remote infrastructure. At minimum, the directory should restrict access to particular users and groups. For example, you can create an `ansible` group, only add privileged users to the `ansible` group, and update the Ansible configuration file's directory to have `764` permissions. See the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on permissions.
-{{</ caution >}}
+{{< /note >}}
 
 1.  In your home directory, create a directory to hold all of your Ansible related files and move into the directory:
 
@@ -167,15 +165,13 @@ label: simple-linode-
 
     - The `ssh_keys` example passes a list of two public SSH keys. The first provides the string value of the key, while the second provides a local public key file location.
 
-        {{< disclosure-note "Configure your SSH Agent" >}}
-If your SSH Keys are passphrase-protected, you should add the keys to your SSH agent so that Ansible does not hang when running Playbooks on the remote Linode. The following instructions are for Linux systems:
+        {{< note type="secondary" title="Configure your SSH Agent" isCollapsible=true >}}
+        If your SSH Keys are passphrase-protected, you should add the keys to your SSH agent so that Ansible does not hang when running Playbooks on the remote Linode. For Linux users, run the following command. If you stored your private key in another location, update the path that’s passed to ssh-add accordingly:
 
-1.  Run the following command; if you stored your private key in another location, update the path that’s passed to ssh-add accordingly:
+            eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa
 
-        eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa
-
-    If you start a new terminal, you will need to run the commands in this step again before having access to the keys stored in your SSH agent.
-        {{</ disclosure-note >}}
+        If you start a new terminal, you will need to run the commands in this step again before having access to the keys stored in your SSH agent.
+        {{< /note >}}
 
     - `label` provides a label prefix that will be concatenated with a random number. This occurs when the Create Linode Playbook's Jinja templating for the `label` argument is parsed (`label: "{{ label }}{{ 100 |random }}"`).
 

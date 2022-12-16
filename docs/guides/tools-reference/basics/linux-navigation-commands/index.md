@@ -376,9 +376,9 @@ baseball  basketball  football  hockey  soccer
 
 Remove files using the `rm` command, and remove directories using either `rm` or `rmdir`. Consult the Linux man pages to learn more about the [rm](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/rm.html) or [rmdir](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/rmdir.html) commands.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Recovering files that have been deleted with the `rm` command is somewhere between difficult and impossible. Take great care when using the `rm` or `rmdir` commands.
-{{< /caution >}}
+{{< /note >}}
 
 ### The rm and rmdir Commands
 
@@ -406,9 +406,9 @@ y
 
 1. To remove several files based on the filenames matching a particular string of text, use the wildcard symbol `*`. The command `rm *.txt` removes all text files.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 This command can be dangerous because it can accidentally delete files that were not intended for deletion. To use this command more securely, specify the `-i` option. This option tells the system to prompt before each deletion.
-    {{< /caution >}}
+    {{< /note >}}
 
         rm *.txt
 
@@ -419,8 +419,8 @@ This command can be dangerous because it can accidentally delete files that were
 
 1. The `-r` option is used to remove non-empty directories along with all their files and subdirectories.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 This command can also be very destructive, especially when used with the force `-f` option or with wildcards. To be safe, use the `-i` option when running this command. This option prompts for confirmation.
-    {{< /caution >}}
+    {{< /note >}}
 
         rm -r sports

@@ -340,6 +340,6 @@ Connected to Asterisk 16.0.0 currently running on li73-122 (pid = 980)
 
 Now that you have an Asterisk server running on your Linode, it's time to connect some phones, add extensions, and configure the various options that are available with Asterisk. For detailed instructions, check out the Asterisk Project's guide to [Configuring Asterisk](https://wiki.asterisk.org/wiki/display/AST/Basic+PBX+Functionality).
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 When running a phone system on a remote server such as a Linode, it's always good practice to secure the signaling data with TLS and the audio portion of calls using SRTP to prevent eavesdropping. Once you have a working dial-plan, be sure to follow the [Secure Calling Guide](https://wiki.asterisk.org/wiki/display/AST/Secure+Calling) to encrypt your communications.
-{{< /caution >}}
+{{< /note >}}

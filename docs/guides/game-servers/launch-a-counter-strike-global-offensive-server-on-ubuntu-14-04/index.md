@@ -128,9 +128,9 @@ screen -S "Counter-Strike: Global Offensive Server" ./srcds_run -game csgo -user
 
         cd ~/ && ./startcsgo.sh
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 From this point, do not press the **Control+C** keys while in the console unless you want to stop CS:GO.
-{{< /caution >}}
+{{< /note >}}
 
 2.  To detach from the screen session running the server console, press these two key combinations in succession:
 

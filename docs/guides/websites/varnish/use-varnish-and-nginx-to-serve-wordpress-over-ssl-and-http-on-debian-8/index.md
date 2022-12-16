@@ -494,9 +494,9 @@ server {
 
     For an SSL-encrypted website, you need one server block to receive traffic on port 443 and pass decrypted traffic to Varnish on port `80`, and another server block to serve unencrypted traffic to Varnish on port `8080`, when Varnish asks for it.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The `ssl_certificate` directive must specify the location and name of the SSL certificate file. Take a look at our guide to using [SSL on NGINX](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) for more information, and update the `ssl_certificate` and `ssl_certificate_key` values as needed.
-{{< /caution >}}
+{{< /note >}}
 
     Alternately, if you don't have a commercially-signed SSL certificate (issued by a CA), you can issue a self-signed SSL certificate using *openssl*, but this should be done only for testing purposes. Self-signed sites will return a "This Connection is Untrusted" message when opened in a browser.
 

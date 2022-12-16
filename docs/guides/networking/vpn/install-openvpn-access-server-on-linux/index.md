@@ -209,9 +209,9 @@ If you are connecting a headless machine to your OpenVPN server, such as another
 
 1.  To ensure that no IPv6 traffic is coming from the VPN server, run the test at [http://test-ipv6.com/](http://test-ipv6.com/). Your public IP address should again be that of your Linode VPN, and the results should show that no IPv6 address was detected.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 If the test results show you any IP addresses other than those of your Linode and intended DNS servers, your VPN is not properly tunneling traffic. Review the logs on both server and client to determine how to troubleshoot the connection.
-{{< /caution >}}
+{{< /note >}}
 
 
 ### Compression
@@ -248,9 +248,9 @@ OpenVPN Access Server's free edition is limited to two users. If you require add
 
 If you wish to configure autologin profiles, you will need to modify your user settings to allow autologin profiles to be displayed on the connections page.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This configuration type can be useful for connecting other servers to your VPN on startup, or for configuring a system that will always route all of its traffic over the VPN automatically.  Utilizing this type of profile will cause all of your non-local traffic to be routed over the VPN automatically.  If you wish to enable and disable your VPN at will, you will want to utilize User or Server locked profiles instead.
-{{< /caution >}}
+{{< /note >}}
 
 1.  From the OpenVPN Access Server admin web interface, visit the User Permissions link.
 

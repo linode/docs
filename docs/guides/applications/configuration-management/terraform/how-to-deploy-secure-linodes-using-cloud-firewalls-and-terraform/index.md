@@ -22,13 +22,7 @@ aliases: ['/applications/configuration-management/terraform/how-to-deploy-secure
 
 Terraform modules allow you to better organize your configuration code and to distribute and reuse it. You can host your Terraform modules on remote version control services, like GitHub, for others to use. The Terraform Module Registry hosts community modules that you can reuse for your own Terraform configurations, or you can publish your own modules for consumption by the Terraform community.
 
-In this guide, you will create a Linode Firewalls module which declares commonly used Cloud Firewall configurations. You will then use the module to create a Linode instance and assign the Linode to the Cloud Firewall. You can adopt the example configurations in this guide to create your own reusable Cloud Firewall configurations.
-
-{{< disclosure-note "What are Cloud Firewalls?" >}}
-Linode Cloud Firewalls is a free service used to create, configure, and add stateful network-based firewalls to Linode services. A Cloud Firewall is independent of the service it is attached to, so you can apply a single Firewall to multiple Linode services. Linode Cloud Firewalls analyze traffic against a set of predefined rules at the network layer and determine if the traffic will be permitted to communicate with the Linode Service it secures. Cloud Firewalls work as an allowlist with an implicit deny rule– it will block all traffic by default and only pass through network traffic that meets the parameters of the configured rules.
-
-A Cloud Firewall can be configured with Inbound and Outbound rules. Inbound rules limit incoming network connections to a Linode service based on the port(s) and sources you configure. Outbound rules limit the outgoing network connections coming from a Linode service based on the port(s) and destinations you configure.
-{{</ disclosure-note >}}
+In this guide, you will create a Linode Firewalls module which declares commonly used Cloud Firewall configurations. You will then use the module to create a Linode instance and assign the Linode to the Cloud Firewall. You can adopt the example configurations in this guide to create your own reusable Cloud Firewall configurations. For more information on Cloud Firewalls, see the [Cloud Firewalls documentation](/docs/products/networking/cloud-firewall/).
 
 ## Before You Begin
 
@@ -54,11 +48,11 @@ This guide was written using [Terraform version 0.13.0](https://github.com/hashi
 
 The following steps will create the Cloud Firewalls module, which includes several child modules that split up the required resources between the *root module*, an `inbound_ssh` module, a `mysql` module, and a `web-server` module. The root module is the directory that holds the Terraform configuration files that are applied to build your desired infrastructure. These files provide an entry point into any child modules. Each child module uses the `linode_firewall` resource to create reusable Cloud Firewall rules for specific use cases.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can apply up to three Cloud Firewalls per Linode instance.
 {{</ note >}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can view the files created throughout this tutorial in the [author's GitHub repository](https://github.com/leslitagordita/main-firewalls). You can clone the repository and use it as a foundation to create your own custom Cloud Firewalls module.
 {{</ note >}}
 
@@ -101,8 +95,8 @@ main_firewalls/
     mkdir -p main_firewalls/modules/{inbound_ssh,mysql,web_server}
     ```
 
-    {{< note respectIndent=false >}}
-If you followed our [install Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) steps, then your Terraform executable will be located in the `terraform` directory. If this is not the case, ensure that you can execute Terraform commands from the `main_firewalls` directory.
+    {{< note >}}
+    If you followed our [install Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) steps, then your Terraform executable will be located in the `terraform` directory. If this is not the case, ensure that you can execute Terraform commands from the `main_firewalls` directory.
     {{</ note >}}
 
 ### Create the Inbound SSH Child Module
@@ -132,11 +126,11 @@ When applied to a Terraform configuration, the `inbound_ssh` module will create 
 
       linodes = var.linodes
     }
-   ```
+    ```
 
-      - This file uses the Terraform Linode Provider's `linode_firewall` resource to create a Cloud Firewall with the inbound rules described above.
-      - The `linodes` argument expects a list of Linode IDs. When a Linode ID is passed to the `linodes` argument, the `inbound_ssh` firewall will be assigned to it.
-      - The arguments `label`, `tags`, and `linodes` make use of [input variables](https://www.terraform.io/docs/configuration/variables.html), which allow these values to be customized when using the module for your resource configurations.
+    - This file uses the Terraform Linode Provider's `linode_firewall` resource to create a Cloud Firewall with the inbound rules described above.
+    - The `linodes` argument expects a list of Linode IDs. When a Linode ID is passed to the `linodes` argument, the `inbound_ssh` firewall will be assigned to it.
+    - The arguments `label`, `tags`, and `linodes` make use of [input variables](https://www.terraform.io/docs/configuration/variables.html), which allow these values to be customized when using the module for your resource configurations.
 
 1. Create the `variables.tf` file to declare the `inbound_ssh` module's input variables. Copy and save the contents of the example below.
 

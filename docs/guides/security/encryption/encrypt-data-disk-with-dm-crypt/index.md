@@ -78,9 +78,9 @@ A benefit of using files as encrypted containers is that they're slightly easier
 
 ## dm-crypt in Plain Mode vs dm-crypt with LUKS Extension
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 In plain mode, dm-crypt simply encrypts the device sector-by-sector, without adding any kind of headers or metadata. It's advised that beginners do not use this until they understand the risks.
-{{</ caution >}}
+{{< /note >}}
 
 Advantages of using Plain Mode:
 
@@ -147,9 +147,9 @@ Remember to replace `sdX` with the name of the device you want to encrypt.
     cd /root/ && umount /root/encrypted && cryptsetup close sdX-plain
     ```
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 As mentioned earlier, dm-crypt in plain mode doesn't check to see if you're using the same password or encryption settings every time. This exposes your server to the risk of being re-encrypted and having useful data overwritten. It's a good idea to routinely specify encryption settings on the command line every time you use dm-crypt in plain mode. Here's an example you can use: `cryptsetup --verify-passphrase --hash ripemd160 --cipher aes-cbc-essiv:sha256 --key-size 256 open --type plain /dev/sdX sdX-plain`
-{{< /caution >}}
+{{< /note >}}
 
 ## How to Use dm-crypt with LUKS
 
@@ -185,9 +185,9 @@ As mentioned earlier, dm-crypt in plain mode doesn't check to see if you're usin
 
 ### Backup and Restore the LUKS Header
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Follow these steps very carefully.
-{{</ caution >}}
+{{< /note >}}
 
 1. Since the LUKS header is so important and losing it means losing your entire container, back it up:
 

@@ -383,9 +383,9 @@ Each Linode account has a limit to the number of Linode resources they can deplo
 
 You can resize an LKE cluster's node pool to add or decrease its number of nodes. You need your cluster's ID and the node pool's ID in order to resize it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section. If you don’t know your node pool's ID, see the [List a Cluster’s Node Pools](#list-a-cluster-s-node-pools) section.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Shrinking a node pool results in deletion of Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) is erased.
-{{< /caution >}}
+{{< /note >}}
 
 {{< note respectIndent=false >}}
 You cannot modify an existing node pool's plan type. If you would like your LKE cluster to use a different node pool plan type, you can [add a new node pool](#add-a-node-pool-to-your-lke-cluster) to your cluster with the same number of nodes to replace the current node pool. You can then [delete the node pool](#delete-a-node-pool-from-an-lke-cluster) that is no longer needed.
@@ -414,9 +414,9 @@ Each Linode account has a limit to the number of Linode resources they can deplo
 
 You can recycle all nodes within an LKE cluster to upgrade the nodes to the most recent patch of the cluster's Kubernetes version and to otherwise replace the physical Linodes that comprise the cluster. Nodes are recycled on a rolling basis, meaning that only one node is down at a time throughout the recycling process. You need your cluster's ID in order to recycle it's nodes. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Recycling your cluster involves deleting each of the Linodes in the node pool and replacing them with new Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) is erased.
-{{< /caution >}}
+{{< /note >}}
 
 | **Required Parameters** | **Description** |
 |-------|-------|
@@ -433,9 +433,9 @@ To recycle all nodes within a cluster, send a `POST` request to the `/lke/cluste
 
 You can recycle an LKE cluster's node pool to upgrade its nodes to the most recent patch of the cluster's Kubernetes version. Nodes are recycled on a rolling basis, meaning that only one node is down at a time throughout the recycling process. You need your cluster's ID and the node pool's ID in order to recycle it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section. If you don’t know your node pool's ID, see the [List a Cluster’s Node Pools](#list-a-cluster-s-node-pools) section.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Recycling your node pool involves deleting each of the Linodes in the node pool and replacing them with new Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) is erased.
-{{< /caution >}}
+{{< /note >}}
 
 | **Required Parameters** | **Description** |
 |-------|-------|
@@ -453,9 +453,9 @@ To recycle your node pool, send a `POST` request to the `/lke/clusters/{clusterI
 
 You can recycle an individual node within a LKE Cluster's Node Pool. You need your cluster's ID and the node ID in order to recycle it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section. If you don’t know your node ID, see the [List a Cluster’s Node Pools](#list-a-cluster-s-node-pools) section.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Recycling your node pool involves deleting each of the Linodes in the node pool and replacing them with new Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) is erased.
-{{< /caution >}}
+{{< /note >}}
 
 | **Required Parameters** | **Description** |
 |-------|-------|
@@ -489,9 +489,9 @@ The response body displays the cluster version that will be applied following a 
 {"created": "2019-08-02T17:17:49", "updated": "2019-08-05T19:11:19", "k8s_version": "1.17", "tags": ["ecomm", "blogs"], "label": "updated-cluster-name", "id": 456, "region": "us-central"}%
 {{</ output >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Nodes within the LKE cluster *must* be [recycled](#recycle-your-lke-cluster) before the cluster version will be successfully upgraded.
-{{< /caution >}}
+{{< /note >}}
 
 ### Add New Tags to your LKE Cluster
 
@@ -578,9 +578,9 @@ When you delete a node pool you also delete the Linodes (nodes) and routes to th
 
 To delete a node pool from a LKE cluster, send a `DELETE` request to the `/lke/clusters/{clusterId}/pools/{poolId}` end point. In the URL of this example, replace `12345` with your cluster's ID and `196` with your cluster's node pool ID:
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This step is permanent and results in the loss of data.
-{{</ caution >}}
+{{< /note >}}
 
     curl -H "Authorization: Bearer $TOKEN" \
         -X DELETE \
@@ -592,9 +592,9 @@ Deleting an LKE cluster deletes the **Master node**, all **worker nodes**, and a
 
 To delete an LKE Cluster, send a `DELETE` request to the `/lke/clusters/{clusterId}` endpoint. In the URL of this example, replace `12345` with your cluster's ID:
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This step is permanent and results in the loss of data.
-{{</ caution >}}
+{{< /note >}}
 
     curl -H "Authorization: Bearer $TOKEN" \
         -X DELETE \

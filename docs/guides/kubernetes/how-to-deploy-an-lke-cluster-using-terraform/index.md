@@ -240,9 +240,9 @@ Now that all your Terraform configuration files are ready, you can deploy your K
 
         export TF_VAR_token=70a1416a9.....d182041e1c6bd2c40eebd
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 This method commits the environment variable to your shell’s history, so take care when using this method.
-    {{</ caution >}}
+    {{< /note >}}
 
 1. View your Terraform's execution plan before deploying your infrastructure. This command won't take any actions or make any changes on your Linode account. It will provide a report displaying all the resources that will be created or modified when the plan is executed.
 

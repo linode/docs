@@ -341,13 +341,13 @@ Using the package maintained by the Jenkins project allows you to use a more rec
 
 7.  Use the Linode Manager to reboot your server to apply these changes.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 It's out of the scope of this guide to establish security parameters for Jenkins remote installation. However, be aware of these critical points that need to be addressed in a production environment:
 
 -  When you add `jenkins` user to the Docker group you are technically giving it `root` permissions.
 -  You must enforce firewall policies for Jenkins connections.
 -  It's extremely important to secure the connection between your local workstation and your remote Linode running Jenkins. You can achieve this using SSL and a reverse proxy (like Apache or NGINX), or by using a VPN.
-{{< /caution >}}
+{{< /note >}}
 
 ## Set up Jenkins
 

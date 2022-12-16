@@ -51,11 +51,11 @@ The DNS instructions for setting up SPF, DKIM and DMARC are generic. The instruc
 The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 You must already have Postfix installed, configured and working. Refer to the [Linode Postfix Guides](/docs/email/postfix/) for assistance.
 
 You can publish an SPF DNS record without configuring the SPF policy agent within Postfix. However, publishing DKIM DNS records without an OpenDKIM within Postfix can result in your email being discarded by the recipient's email server.
-{{< /caution >}}
+{{< /note >}}
 
 ## Install DKIM, SPF and Postfix
 

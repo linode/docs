@@ -193,17 +193,17 @@ The steps in this section shows you how to use Anaconda to uninstall PyTorch.
 You can also use the `uninstall` command to remove PyTorch libraries. Any datasets must also be removed independently from removing PyTorch.
     {{</ note >}}
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 When using the `uninstall` command, the Linode may also be deleted, but it cannot be recovered once deleted.
-     {{</ caution >}}
+     {{< /note >}}
 
 1. Remove Anaconda from your system.
 
         rm -rf ~/anaconda
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The above command is dangerous, and must refer specifically to the directory where anaconda was installed. In the above example, Anaconda was installed in  the `/home/<user>/anaconda` directory. Adjust the command to ensure the directory deleted is indeed the `anaconda` directory.
-    {{</ caution >}}
+    {{< /note >}}
 
 1. Remove the Anaconda installation script:
 

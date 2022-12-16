@@ -19,11 +19,11 @@ external_resources:
 ---
 ![How to Deploy Kubernetes on Linode with the k8s-alpha CLI](how-to-deploy-kubernetes-on-linode.png "How to Deploy Kubernetes on Linode with the k8s-alpha CLI")
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [delete it](#delete-a-cluster) when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works and for a table of plan pricing.
-{{< /caution >}}
+{{< /note >}}
 
 ## What is the k8s-alpha CLI?
 

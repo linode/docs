@@ -138,11 +138,11 @@ You have finished generating your key and adding it to your client, but some add
 
 The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentication Modules. [PAM](http://www.linux-pam.org/) integrates low-level authentication mechanisms into modules that can be configured for different applications and services. Because you're using additional software (i.e., programs that aren't built into the Linux distro), you'll need to configure PAM to properly authenticate users.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 - It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode. You can also use [Lish](/docs/guides/lish/) to regain access.
 
 - If you or a user on your system use this method, be sure that the SSH key and authenticator app are on different devices. This way, if one device is lost or compromised, your credentials will still be separate and the security of two-factor authentication will remain intact.
-{{< /caution >}}
+{{< /note >}}
 
 1. Edit the system's PAM configuration file for SSH.
 

@@ -103,9 +103,9 @@ Many applications include code or configuration that references the `JAVA_HOME` 
 
 ## Oracle JDK
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 In April 2019, Oracle Java downloads now require logging into an Oracle account to download and update Java 8 due to a change in the Oracle JDK licensing terms. [Read the FAQ](https://www.oracle.com/technetwork/java/javase/overview/oracle-jdk-faqs.html) for more details.
-{{< /caution >}}
+{{< /note >}}
 
 Due to the new Oracle agreement and login requirements The PPA to install Oracle JDK 8 is Discontinued. Official note from the PPA:
 

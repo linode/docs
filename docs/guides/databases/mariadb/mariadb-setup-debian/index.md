@@ -196,9 +196,9 @@ You will be asked to change the root password, remove anonymous users, disable r
 
 This section will demonstrate how to allow the previously created user, **testuser**, to connect to MariaDB remotely (by default, MariaDB will allow connections from only localhost).
 
- {{< caution >}}
+ {{< note type="alert" respectIndent=false >}}
 Opening a MariaDB server up to the internet makes it less secure. If you need to connect from somewhere other than localhost, make sure you implement [firewall](/docs/guides/control-network-traffic-with-iptables/) rules that allow connections only from specific IP addresses.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Log in to MariaDB as root:
 

@@ -31,9 +31,9 @@ Fail2ban is primarily focused on SSH attacks, although it can be further configu
 The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups) guide.
 {{< /note >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Fail2ban is intended to be used in conjunction with an already-hardened server and should not be used as a replacement for secure firewall rules.
-{{< /caution >}}
+{{< /note >}}
 
 ## How to Install Fail2ban
 

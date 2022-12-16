@@ -62,9 +62,9 @@ Edit the `/etc/hosts` file on each Linode to match the following, substituting y
 
 These steps should be run on each file system node in your cluster.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 GlusterFS generates a UUID upon installation. Do not clone a single Linode to replicate your GlusterFS installation; it must be installed separately on each node.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Add the `centos-release-gluster` repository, which will allow you to install the GlusterFS server edition package:
 
@@ -522,9 +522,9 @@ No additional Linodes will be created in this section, and all configuration wil
 
     yum install keepalived
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Make sure that [Network Helper](/docs/guides/network-helper/) is turned **OFF** on your database nodes before proceeding.
-{{< /caution >}}
+{{< /note >}}
 
 ### Configure IP Sharing
 
@@ -641,9 +641,9 @@ vrrp_instance VI_1 {
 
 1.  Reboot each of your three database nodes, one at a time, to bring up the failover configuration.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 It is important to boot each database node one at a time, otherwise you may bring down the entire cluster, in which case you would need to bootstrap MySQL and add each node to the cluster again. Refer to the [Galera documentation](http://galeracluster.com/documentation-webpages/restartingcluster.html) on how to restart the entire Galera cluster.
-{{</ caution >}}
+{{< /note >}}
 
 You've successfully installed and configured Keepalived. Your database nodes will now be able to fail over if one goes down, ensuring high availability.
 

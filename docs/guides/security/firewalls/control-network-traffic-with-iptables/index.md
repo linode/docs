@@ -137,9 +137,9 @@ Deleting a rule is also done using the rule number. For example, to delete the r
 
     sudo iptables -D INPUT 7
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Editing rules does not automatically save them. See our section on [deploying rulesets](/docs/guides/control-network-traffic-with-iptables/#deploy-your-iptables-rulesets) for the specific instructions for your distribution.
-{{< /caution >}}
+{{< /note >}}
 
 ### View Your Current iptables Rules
 
@@ -293,9 +293,9 @@ This rule breaks down as follows:
 
 Appropriate firewall rules depend on the services being run. Below are iptables rulesets to secure your Linode if you're running a web server.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 **These rules are given only as an example.** A real production web server may require more or less configuration, and these rules would not be appropriate for a database, Minecraft or VPN server. Iptables rules can always be modified or reset later, but these basic rulesets serve as a demonstration.
-{{< /caution >}}
+{{< /note >}}
 
 **IPv4**
 
