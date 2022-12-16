@@ -363,7 +363,7 @@ export async function getStaticProps({ params }) {
 }
 {{< /file >}}
 
-The two functions at the end of this file, `getStaticPaths` and `getStaticProps`, should be elaborated on. You can learn more about the `getStaticProps` function in the [server-side pre-rendering](/docs/guides/getting-started-with-next-js/#server-side-pre-rendering) section.
+The two functions at the end of this file, `getStaticPaths` and `getStaticProps`, should be elaborated on. You can learn more about the `getStaticProps` function in the [server-side pre-rendering](/docs/guides/getting-started-next-js/#server-side-pre-rendering) section.
 
 As part of its pre-rendering process, Next requires the `getStaticPaths` function for any dynamic routes. This function provides Next with an array of possible path IDs for the dynamic route.
 
