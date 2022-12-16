@@ -33,7 +33,7 @@ Before installing Citadel, it is assumed that you have followed our [Setting Up 
 
 This guide also assumes that you wish to run Citadel by itself on this server on port 80 or 443 for browser-based access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you intend to install Citadel alongside another web server package such as Apache or nginx, select the "internal" option when asked about web server integration. Be sure to specify unique ports for Citadel such as 8080 for HTTP or 4343 for HTTPS.
 {{< /note >}}
 

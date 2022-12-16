@@ -65,7 +65,7 @@ All of the examples to follow work off of a simple integer array created using t
     example_array = array("i", [2, 4, 6, 8])
 
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The [array module](https://docs.python.org/3/library/array.html) is not loaded by default in Python. Instead, you need to import the module to start working with arrays.
 {{< /note >}}
 

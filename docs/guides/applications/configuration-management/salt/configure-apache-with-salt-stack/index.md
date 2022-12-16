@@ -29,7 +29,7 @@ You will need at least two Linodes with Salt installed. If you have not already,
 
 The following steps will be performed on your Salt master.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -275,7 +275,7 @@ Enable tune_apache:
 
     Any changes made to your `index.html` file on your Salt master will be propagated to your minion.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Since Salt is not watching configuration files for a change to trigger a restart for Apache, you may need to use the command below from your Salt master.
 
     salt '*' apache.signal restart
@@ -515,7 +515,7 @@ Configure Firewall:
       - 443/tcp
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It is imperative that you list all ports you need open to your machine in this section. Failure to list these ports will result in their closure by Salt.
 {{< /note >}}
 

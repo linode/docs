@@ -129,7 +129,7 @@ protect=1
 
             yum install wazuh-api
 
-      {{< note >}}
+      {{< note respectIndent=false >}}
   Python >= 2.7 is required in order to run the Wazuh API. To find out which version of Python is running on your Linode, issue the following command:
 
       python --version
@@ -556,7 +556,7 @@ Kibana's default access port, `5601`, must be opened for TCP traffic. Instructio
 
     iptables -A INPUT -p tcp --dport 5601 -m comment --comment "Kibana port" -j ACCEPT
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To avoid losing iptables rules after a server reboot, save your rules to a file using `iptables-save`.
 {{< /note >}}
 
@@ -587,7 +587,7 @@ Now you are ready to access the API and begin making use of your OSSEC Elastic S
         systemctl -l status kibana
         systemctl -l status nginx
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the Wazuh Manager fails to start and you determine the cause to be one of the OSSEC rules or decoders, disable that specific rule/decoder for now. Find the rules and decoders in the `/var/ossec/ruleset` directory. To disable, rename the file to any other file extension.
 {{< /note >}}
 

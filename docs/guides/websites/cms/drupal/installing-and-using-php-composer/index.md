@@ -43,7 +43,7 @@ Composer only works on PHP version 5.3.2 or above, although PHP 5.3.4 or higher 
 
 1. Ensure PHP is already installed on the Linode. PHP 5.3.4 or above is required, but the latest version is recommended. Use the command `php -v` to determine the version of PHP that is installed.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -51,7 +51,7 @@ The steps in this guide are written for a non-root user. Commands that require e
 
 The most common way of installing Composer is by using the installation program. However, it can also be installed from the source using Git or a similar system. The steps in this section explain how to download and install the latest version of Composer. The following instructions are geared towards Ubuntu users but are generally applicable towards most Linux distributions.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For information on the various installation options and how to install an earlier version of Composer, see the [Composer Download page](https://getcomposer.org/download/).
 {{< /note >}}
 
@@ -81,7 +81,7 @@ Installer verified
 
 1. Run the installation program. The program verifies some settings and downloads the main composer program to the current directory.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A directory for the program can be specified using the `--install-dir` option. The filename of the Composer program can be set using the `--filename` option.
     {{< /note >}}
 
@@ -110,7 +110,7 @@ Use it: php composer.phar
 
         composer
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The instructions in the remaining sections are valid for a global installation. For a local directory installation, substitute `php composer.phar` in place of `composer` for the remainder of the guide.
     {{< /note >}}
 
@@ -149,7 +149,7 @@ To use Composer with PHP, it is first necessary to define the required packages 
 
 The steps in the following section illustrate how to create a small PHP project that generates a random number using a package chosen from Packagist. It also explains how to search Packagist for an appropriate package and how to add it to the project using Composer.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These instructions are designed to explain how to keep track of PHP dependencies for use in your own project. If you intend to publish a package to Packagist, you must manually edit the `composer.json` file and add some information. For information on how to publish a PHP package through Packagist, see the "Publishing Packages" section of the [Packagist official documentation](https://packagist.org/).
 {{< /note >}}
 
@@ -170,7 +170,7 @@ These instructions are designed to explain how to keep track of PHP dependencies
 
 1. In the project name, add the package to the project using `composer require`. Composer retrieves information about the package and adds it to the `composer.lock` file. The lock file tracks the currently installed versions of the various packages. If `composer.json` does not already exist, Composer creates it. Otherwise, it appends the new package information to this file. Composer also creates a `vendor` sub-directory. If a version control system (VCS) is used for the project, ensure both `composer.lock` and `composer.json` are added to the VCS.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Many PHP packages require other system-level packages. When adding a new package, Composer ensures all prerequisite packages are already installed. If any are missing, it displays an error and provides details about the outstanding packages. Locate these packages using `apt search` and install them using `apt install`. Then run the `composer require` command again.
     {{< /note >}}
 
@@ -198,7 +198,7 @@ Generating autoload files
 
 1. Review the `composer.json` file to ensure it is correct. In certain circumstances, you might have to edit this information.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `^` symbol in front of the version number for the package tells Composer what versions are allowed. It means version `1.2` is the minimum version but any `1.x` version is allowed. This setting provides maximum flexibility. Other symbols might tighten or loosen the allowable range. If no symbol is present, only version `1.2` is allowed, with no further updates permitted. For more information on versioning, see the [Composer Version Documentation](https://getcomposer.org/doc/articles/versions.md).
     {{< /note >}}
 
@@ -234,7 +234,7 @@ print "\n ";
 1bhf1Icu4IhHq4Xzto98PfC2tYCjaVcV
     {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If a `composer.json` file is already present, but the packages have not yet been installed, run `composer install` instead of `require`. If you are intending to publish the package on Packagist, create a detailed `composer.json` file before installing any packages. To generate this template, run `composer init`. For more information about the structure of the `composer.json` file, see the [Schema Documentation](https://getcomposer.org/doc/04-schema.md). Complete documentation can be found on the [Composer Website](https://getcomposer.org/doc/).
 {{< /note >}}
 

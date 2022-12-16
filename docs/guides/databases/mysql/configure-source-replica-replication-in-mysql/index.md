@@ -32,7 +32,7 @@ Each replica pulls data from the source by requesting the contents of the source
 
 MySQL allows a high degree of granularity. It is possible to replicate over certain databases or even specific tables within a database. The default replication format is *Statement Based Replication* (SBR), in which the entire SQL statement is replicated. However, *Row Based Replication* (RBR) is also available. This format replicates the rows that have been changed. It is also possible to configure more complicated many-to-many configurations. Consult the [MySQL Documentation](https://dev.mysql.com/doc/refman/8.0/en/replication.html) for more information about the different replication options.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 MySQL previously referred to Source-Replica Replication as "Master-Slave Replication". The MySQL Organization recently changed the terminology, explaining their reasoning in a [terminology update](https://mysqlhighavailability.com/mysql-terminology-updates/). The older term "master" has been changed to "source", while a "slave" is now referred to as a "replica". The old terms might still appear in certain commands and output displays while MySQL updates its codebase. This guide uses MySQL's preferred terms throughout the instructions.
 {{< /note >}}
 
@@ -58,7 +58,7 @@ Enabling source-replica replication offers many significant advantages over a no
 
 1. You must have at least two separate Linodes to configure MySQL source-replica replication. One Linode hosts the source database, while another node is necessary for the replica server.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -107,7 +107,7 @@ bind-address  = <source_ip_address>
 
 1. Uncomment or add the lines for `server-id` and `log-bin`. Set the `server-id` to `1`, and `log-bin` to `/var/log/mysql/mysql-bin.log`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure the `skip_networking` variable is not declared anywhere. Comment it out if it appears inside this file. To replicate a single database, add the line `binlog_do_db = <database_name>` to the file.
     {{< /note>}}
 
@@ -142,7 +142,7 @@ You must create a new user on the source server to represent the replica. New us
 
         CREATE USER 'replica_account_name'@'replica_ip_address‘ IDENTIFIED WITH sha256_password BY 'REPLICA_PASSWORD';
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To allow the replica to be able to connect from any address, specify the user as `'replica_account_name'@'%'`. The `%` symbol represents any address or domain. This provides extra flexibility at the expense of some security.
     {{< /note>}}
 
@@ -183,7 +183,7 @@ This command blocks all commits to the source database. Export the data before a
 
         sudo mysqldump -u root -p -–all-databases -–master-data > databasecopy.sql
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To export a single database, include the `--opt <database_name>` option rather than `-–all-databases`.
     {{< /note >}}
 
@@ -211,7 +211,7 @@ bind-address  = xx.xx.xx.xx
 
 1. Uncomment or add the lines for `server-id` and `log-bin`. The `server-id` must be set to `2` on the replica, while the `log-bin` variable must be set to `/var/log/mysql/mysql-bin.log`. Add a variable for `relay-log` and set it to `/var/log/mysql/mysql-relay-bin.log`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure the `skip_networking` variable is not set anywhere inside this file. To replicate a single database, add the following directive to the file `binlog_do_db = database_name`. To configure more than one replica, number the `server-id` values in a sequentially increasing manner. For instance, a second replica would have a `server-id` of `3`.
     {{< /note >}}
 
@@ -257,7 +257,7 @@ The next step is to import the copy of the database data, set the replication so
 
         CHANGE REPLICATION SOURCE TO SOURCE_HOST='source_ip_address',SOURCE_USER='replica_account_name', SOURCE_PASSWORD='REPLICA_PASSWORD', SOURCE_LOG_FILE='log_file_name', SOURCE_LOG_POS=log_position;
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To use SSL for the connection, which MySQL recommends, add the attribute `SOURCE_SSL=1` to the command. More information about using SSL in a source-replica replication context can be found in the [MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/replication-solutions-encrypted-connections.html).
     {{< /note>}}
 

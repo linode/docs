@@ -69,7 +69,7 @@ Code that declares the final state of your desired infrastructure is referred to
 
 1. You need a personal access token for [Linode’s API v4](/docs/api/) to use with Terraform and the Terraform Linode Provider. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -97,7 +97,7 @@ To download Terraform on a Linode server, follow the steps below:
 
         wget https://releases.hashicorp.com/terraform/0.15.0/terraform_0.15.0_linux_amd64.zip
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   Previous versions of Terraform can be found on the [Terraform releases page](https://releases.hashicorp.com/terraform/).
   {{< /note >}}
 
@@ -160,7 +160,7 @@ terraform_0.15.0_linux_amd64.zip: OK
 
         unzip terraform_0.15.0_linux_amd64.zip
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   If you receive an error that indicates `unzip` is missing from your system, install the `unzip` package using the following command `sudo apt install unzip` and try again.
     {{< /note >}}
 
@@ -298,7 +298,7 @@ root_pass ="YOUR_ROOT_PASSWORD"
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It might also make sense to declare variables for fields where each resource has the same value. If each Linode uses the same image, define an `image` variable and assign `var.image` to the image parameter of each resource. This makes it easier to update the image information for all of the devices.
 {{< /note >}}
 
@@ -360,7 +360,7 @@ resource "aws_dynamodb_table" "inventory-dynamodb-table" {
 
 1.  Edit the `variables.tf` file, and add the new variables used in `aws-terraform.tf` to the bottom of the file, as shown below.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If a large number of variables are used throughout the configuration files, each cloud vendor should have its own variables file.
   {{< /note >}}
 
@@ -411,7 +411,7 @@ should now work.
 ...
   {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If Terraform displays an error, run the `init` command again with debug mode turned on using `TF_LOG=debug terraform init`.
   {{< /note >}}
 
@@ -497,7 +497,7 @@ Plan: 2 to add, 0 to change, 0 to destroy.
 
         `terraform plan` won’t take any action or make any changes on your Linode account.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the command generates an error or some other unexpected result, re-run the `terraform plan` in debug mode.
 
     TF_LOG=debug terraform plan
@@ -553,7 +553,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 1. Visit the [Linode Cloud Manager](https://cloud.linode.com/linodes). You should see that the `terraform-example` Linode has been added to your account. Review the AWS Dashboard to verify the contents of the new database.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Terraform stores details about the state of your resources in the `terraform.tfstate` file within the same directory.
   {{< /note >}}
 

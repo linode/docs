@@ -33,6 +33,6 @@ To turn on and customize the alerts:
 
 You have successfully configured email alerts in the Linode Cloud Manager.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you receive an email threshold alert from the Linode Cloud Manager, don't panic. There's not necessarily anything wrong with your Linode. For example, your server may be operating above the threshold if you're compiling software or if a major website just linked to your blog.
 {{< /note >}}

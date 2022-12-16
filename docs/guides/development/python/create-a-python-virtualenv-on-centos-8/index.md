@@ -40,13 +40,13 @@ A Python virtual environment is an isolated project space on your system that co
 
         sudo yum update
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
 ## Create a Python Virtual Environment
 
-{{< note >}}
+{{< note respectIndent=false >}}
 CentOS 8 does not include any version of Python by default. To install Python on CentOS 8, read our guide on [installing Python 3 on CentOS 8](/docs/guides/how-to-install-python-on-centos-8/)
 {{</ note >}}
 
@@ -62,7 +62,7 @@ CentOS 8 does not include any version of Python by default. To install Python on
 
         virtualenv env
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your CentOS 8 system has another version of Python installed and you'd like to use it to create your virtual environment, use the e`--python` option to designate it. For example:
 
     virtualenv --python=python2.7 env

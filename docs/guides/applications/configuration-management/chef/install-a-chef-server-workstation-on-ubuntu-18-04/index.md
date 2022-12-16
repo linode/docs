@@ -29,7 +29,7 @@ This guide will show you how to create and configure a Chef server and workstati
 
 See [A Beginner's Guide to Chef](/docs/guides/beginners-guide-chef/) for an introduction to Chef concepts.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/#understanding-sudo) guide.
 {{< /note >}}
 
@@ -86,7 +86,7 @@ In order to link workstations and nodes to the Chef server, create an administra
 
         sudo chef-server-ctl org-create ORG_NAME "ORG_FULL_NAME" --association_user USER_NAME --filename ~/.chef/ORG_NAME.pem
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `ORG_NAME` must be in all lower case.
 {{</ note >}}
 
@@ -144,7 +144,7 @@ Authentication between the Chef server and workstation and/or nodes is completed
 
       Press **Enter** to use the default names `id_rsa` and `id_rsa.pub` in `/home/your_username/.ssh` before entering your passphrase.
 
-      {{< note >}}
+      {{< note respectIndent=false >}}
   If you have disabled SSH password authentication on your Chef server's Linode, as recommended by the [How to Secure Your Server](/docs/guides/set-up-and-secure/#ssh-daemon-options) guide, re-enable SSH password authentication prior to performing these steps. Be sure to disable it again once you have added your workstation's public ssh key to the Chef server's Linode.
       {{</ note >}}
 
@@ -231,7 +231,7 @@ cookbook_path            ["#{current_dir}/../cookbooks"]
         cd ..
         knife ssl fetch
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The SSL certificates are generated during the installation of the Chef server. These certificates are self-signed, which means there isn’t a signing certificate authority (CA) to verify. The Chef server's hostname and FQDN should be the same so that the workstation can fetch and verify the SSL certificates. You can verify the Chef server's hostname and FQDN by running `hostname` and `hostname -f`, respectively. Consult the [Chef documentation](https://docs.chef.io/server_security.html#regenerate-certificates) for details on regenerating SSL certificates.
 {{</ note >}}
 
@@ -247,7 +247,7 @@ Now that your Chef server and workstation are configured, you can bootstrap your
 
 Bootstrapping a node installs the Chef client on the node and validates the node. This allows the node to read from the Chef server and pull down and apply any needed configuration updates detected by the chef-client.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you encounter any `401 Unauthorized` errors ensure that your `ORGANIZATION.pem` file has `700` permissions. See [Chef's troubleshooting](https://docs.chef.io/errors.html) guide for further information on diagnosing authentication errors.
 {{</ note >}}
 

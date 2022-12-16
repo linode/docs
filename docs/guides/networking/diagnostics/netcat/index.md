@@ -25,7 +25,7 @@ Netcat is a simple but handy UNIX utility that reads and writes data across netw
 
 Some of the commands in this guide will require the use of two terminal windows running `netcat`, one acting as a server and the other as the client. These can be separate machines, or you can connect to the same `localhost`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 Port numbers 0-1024 are restricted and can only be used with root privileges, which means that you should use the `sudo` command for creating TCP/IP *servers* that use port numbers 0-1024.
@@ -37,7 +37,7 @@ This rule does not apply to TCP/IP *clients* that use port numbers 0-1024.
 As `netcat` is not installed by default, you will most likely need to install `netcat` on
 your Linux machine using your favourite package manager.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `netcat` binary usually has an alias named `nc`, which is what will be used
 in this guide because it is shorter. Usually both commands point to the same binary file.
 {{< /note >}}

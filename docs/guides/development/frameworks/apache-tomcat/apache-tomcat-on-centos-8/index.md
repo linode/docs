@@ -134,7 +134,7 @@ You can test your Tomcat installation by pointing your browser at your domain na
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, because doing so may expose your server to unauthorized login attempts.
 {{</ note >}}
 

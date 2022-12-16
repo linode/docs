@@ -23,7 +23,7 @@ external_resources:
 [cPanel](http://cpanel.com) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with cPanel on your CentOS Linode.
 
 
-{{< note >}}
+{{< note respectIndent=false >}}
 
 **Linode does not sell cPanel licenses**
 
@@ -45,7 +45,7 @@ CPanel requires the distribution-supplied/*upstream* CentOS kernel, as opposed t
 
 ## Install cPanel
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -37,7 +37,7 @@ If you would like to stop billing for the resources created in this guide, [remo
 
 1.  You should have Terraform installed in your development environment, and have a working knowledge of Terraform resource configuration and the [Linode provider](https://www.terraform.io/docs/providers/linode/index.html). For more information on how to install and use Terraform, check out our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
 
 The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
@@ -118,7 +118,7 @@ The NodeBalancer Config resource requires a NodeBalancer ID, which is populated 
 
 As far as settings go, the health check is set to `http_body`, meaning that the health check will look for the string set by `check_body` within the body of the page set at `check_path`. The NodeBalancer will take a node out of rotation after 30 failed check attempts. Each check will wait for a response for 25 seconds before it is considered a failure, with 30 seconds between checks. Additionally, the session stickiness setting has been set to `http_cookie`. This means that the user will continue to be sent to the same server by the use of a session cookie. The algorithm has been set to `roundrobin`, which will sort users evenly across your backend nodes based on which server was accessed last.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Review the [NodeBalancer Reference Guide](/docs/products/networking/nodebalancers/guides/configure/) for a full list of NodeBalancer configuration options.
 {{< /note >}}
 
@@ -261,7 +261,7 @@ node_count = 2
 
     When Terraform runs, it looks for a file named `terraform.tfvars`, or files with the extension `*.auto.tfvars`, and populates the Terraform variables with those values. If your SSH key is at a file location that is different than the default value, i.e., it does not exist at `~/.ssh/id_rsa.pub`, then you will need to add that value to `terraform.tfvars`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you want to use an input variable's default value defined in the `variables.tf` file, you can omit providing a value for that variable in the `terraform.tfvars` file.
     {{</ note >}}
 

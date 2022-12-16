@@ -45,7 +45,7 @@ external_resources:
 
 1. Register a *Fully Qualified Domain Name* (FQDN) for your Element service. The DNS records for the domain should be set to the IP address of your Linode. Consult Linode's [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](/docs/products/networking/dns-manager/) guides for assistance when configuring your domain.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -86,7 +86,7 @@ The following sections describe each step in more detail.
   - `matrix.example.com` (Matrix/Synapse communication layer)
   - `element.example.com` (Element web client)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Throughout this section and the rest of the guide, replace `example.com` with your own domain name. See the guide for the Linode [DNS Manager](/docs/products/networking/dns-manager/) for more information on adding domains and DNS records.
     {{< /note >}}
 
@@ -94,7 +94,7 @@ Throughout this section and the rest of the guide, replace `example.com` with yo
 
 Install the *Matrix-Synapse* service. Element depends on Matrix functionality to work properly.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Synapse is the "home server" implementation of Matrix, but the two names are often used interchangeably. This guide refers to the software package as *Matrix* and the actual component as *Matrix-Synapse* to avoid confusion.
 {{< /note >}}
 
@@ -153,11 +153,11 @@ Active: active (running) since Thu 2021-04-08 10:56:34 UTC; 8s ago
         sudo mkdir -p /var/www/html/example.com/.well-known/matrix
         echo '{ "m.server": "example.com:443" }' | sudo tee /var/www/html/example.com/.well-known/matrix/server
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For more advanced installation instructions, see the [*Matrix-Synapse GitHub installation page*](https://github.com/matrix-org/synapse/blob/master/INSTALL.md). This page includes instructions for building from source and configuring Matrix-Synapse using Docker or Ansible.
 {{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Earlier versions of Matrix, as well as development/beta releases, are available on the [*Matrix releases page*](https://github.com/matrix-org/synapse/releases).
 {{< /note >}}
 
@@ -345,7 +345,7 @@ ubuntu  18.04
 kernel  4.15.0-142-generic
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If Snap is not already installed, run the command `sudo apt install snapd` first.
     {{< /note >}}
 
@@ -453,7 +453,7 @@ The easiest way to ensure Element works properly is to access the site and creat
 
 1. To verify that Element can communicate with Matrix, create an account and ensure you can view the Element dashboard.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If the identity server is not configured, Element displays a warning message when logging in as some of the functionalities might be unavailable. This limitation does not affect core Element features such as chat and messaging.
 {{< /note >}}
 

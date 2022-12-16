@@ -80,7 +80,7 @@ Configuring WireGuard is as simple as [setting up SSH](/docs/guides/security). A
 ## Install WireGuard
 
 There are many ways to install WireGuard. The simplest way is to use the [*ELRepo*](http://elrepo.org/tiki/HomePage)'s pre-built module.
-    {{< note >}}
+    {{< note respectIndent=false >}}
 ELRepo is a community repository for [Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) style distributions such as [CentOS](https://www.centos.org/). It focuses on hardware-related packages. All its packages are built against the RHEL kernel.
     {{< /note >}}
 
@@ -116,7 +116,7 @@ Here's an explanation of the above configuration file:
 - **PrivateKey:** The server's private key.
 - **Address:** Defines the private IPv4 and IPv6 addresses for the WireGuard server. Each peer in the VPN network should have a unique value. Typical values are `10.0.0.1/24`, `192.168.1.1/24`, or `192.168.2.1/24`. This is not the same as a private IP address that Linode can assign to your Linode instance.
 - **ListenPort:** Specifies which port WireGuard uses for incoming connections. The default is `51820`.
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The value you set in `ListenPort` is referenced in your firewall settings later.
 {{< /note >}}
 - **PostUp** and **PostDown** define steps to run after the interface is turned on or off, respectively. In this case, `iptables` sets Linux IP masquerade rules to allow all the clients to share the server's IPv4 and IPv6 addresses. The rules are cleared once the tunnel is down.

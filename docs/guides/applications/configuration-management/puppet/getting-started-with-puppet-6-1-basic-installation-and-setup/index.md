@@ -35,7 +35,7 @@ Puppet deployments can range from small groups of servers up to enterprise-level
 
 After installation, the next section will show you how to secure these servers via Puppet. This section will demonstrate core features of the Puppet language.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Most guides will instruct you to follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide before proceeding. Because Puppet will be used to perform this task, you should begin this guide as the `root` user. A limited user with administrative privileges will be configured via Puppet in later steps.
 {{< /note >}}
 
@@ -135,7 +135,7 @@ dns_alt_names = puppet,puppet.example.com
 # ...
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `puppet` command by default is not added to your PATH. Using Puppet's interactive commands requires a full file path. To avoid this, update your PATH for your existing shell session:
 
     export PATH=/opt/puppetlabs/bin:$PATH
@@ -158,7 +158,7 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This snippet incorporates the FQDN declaration described in the [Create your Linodes](#create-your-linodes) section.
 {{< /note >}}
 
@@ -238,7 +238,7 @@ server = puppet.example.com
 
         /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 On systemd systems, the above command is equivalent to using these two `systemctl` commands:
 
     systemctl start puppet
@@ -287,7 +287,7 @@ Notice: Applied catalog in 0.02 seconds
 
 The Puppet master and agent nodes are now functional, but they are not secure. Based on concepts from the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This is not meant to provide a basis for a fully-hardened server, and is intended only as a starting point. Alter and add firewall rules and other configuration options, depending on your specific needs.
 {{< /note >}}
 
@@ -317,7 +317,7 @@ To create a new limited user on your nodes, you will create and apply a new modu
     | `templates` | Template files to be copied to managed nodes that can e customized with variables |
     | `examples` | Example code which shows how to use the module |
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Review Puppet's [Module fundamentals](https://puppet.com/docs/puppet/6.1/modules_fundamentals.html#module-structure) article for more information on how a module is structured.
 {{< /note >}}
 
@@ -401,7 +401,7 @@ class accounts {
 
     This code defines the value for the `$rootgroup` variable by checking the value of `$osfamily`, which is one of Puppet's [core facts](https://puppet.com/docs/facter/6.1/core_facts.html). If the value for `$osfamily` does not match Debian or Red Hat, the `default` value will output a warning that the distribution selected is not supported by this module.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Puppet Configuration Language executes code from top to bottom. Because the `user` resource declaration will reference the `$rootgroup` variable, you must define `$rootgroup` *before* the `user` declaration.
 {{< /note >}}
 
@@ -470,7 +470,7 @@ include accounts
 
         /opt/puppetlabs/bin/puppet apply --noop init.pp
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `--noop` parameter prevents Puppet from actually applying the module to your system and making any changes.
 {{< /note >}}
 
@@ -498,7 +498,7 @@ Notice: Finished catalog run in 0.02 seconds
 
 Although a new limited user has successfully been added to the Puppet master, it is still possible to login to the system as root. To properly secure your system, root access should be disabled.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Because you are now logged in to the Puppet master as a limited user, you will need to execute commands and edit files with the user's sudo privileges.
 {{< /note >}}
 
@@ -534,7 +534,7 @@ class accounts::ssh {
 }
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `files` directory is omitted from the `source` line because the `files` folder is the default location of files within a module. For more information on the format used to access resources in a module, refer to the [official Puppet module documentation](https://docs.puppet.com/puppet/6.1/modules_fundamentals.html#module-layout).
 {{< /note >}}
 
@@ -562,7 +562,7 @@ class accounts::ssh {
 }
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `notify` is one of Puppet's [relationship metaparameters](https://puppet.com/docs/puppet/6.1/lang_relationships.html).
 {{< /note >}}
 
@@ -617,7 +617,7 @@ class accounts {
         sudo /opt/puppetlabs/bin/puppet apply --noop init.pp
         sudo /opt/puppetlabs/bin/puppet apply init.pp
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may see the following line in your output when validating:
 
 {{< output >}}

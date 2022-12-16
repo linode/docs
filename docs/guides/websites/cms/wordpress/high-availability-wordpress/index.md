@@ -23,7 +23,7 @@ This guide configures a high availability WordPress site with a two-Linode clust
 This guide is written for Debian 7 or Ubuntu 14.04. To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need a [Private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address). Also ensure that both of your Linodes have been configured with SSH keys, and place the opposing Linode's SSH key in the other's `/.ssh/authorized_keys` file.
 
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -142,7 +142,7 @@ bind-address    = x.x.x.x
 
 The steps in this section will need to be performed on **both** of your Linodes.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For the following sections of this guide, replace "example.com" with your domain name.
 {{< /note >}}
 
@@ -232,7 +232,7 @@ In order to ensure that each of your WordPress instances addresses the local dat
 
     ![WordPressURL](WP-site-address.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 After completing your WordPress installation steps and logging in for the first time, you should reset permissions on your Document Root directory to ensure additional security. You can do so with the following command:
 
 

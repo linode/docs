@@ -24,7 +24,7 @@ aliases: ['/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-
 
 Jupyter Notebook is an interactive, enhanced shell that can be run within a web browser. Notebook is popular among data scientists, and supports inline rendering of figures, exporting to a variety of formats, and LaTeX for mathematical notation. This guide aims to configure on a Linode a public Jupyter Notebook server that will facilitate remote access to your computation needs using Apache as a reverse proxy.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Jupyter Notebook is being replaced by [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html), the next-generation solution that includes Notebooks. Before continuing, consider if JupyterLab better suits your needs.
 {{</ note >}}
 
@@ -160,7 +160,7 @@ c.NotebookApp.trust_xheaders = True
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `/jupyter` url path can have any name as long as it matches the base url path defined in the Jupyter notebook configuration file.
 {{< /note >}}
 

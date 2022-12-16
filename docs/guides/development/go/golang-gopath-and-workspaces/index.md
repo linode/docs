@@ -71,7 +71,7 @@ You should add the `$GOPATH/bin` directory to your system `PATH`. This makes it 
 
     export PATH=$PATH:$(go env GOPATH)/bin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The examples below assume you are using the default location for your `GOPATH` (`/home/username/go`). If the `go` directory does not yet exist in your home folder, create it now.
 
     mkdir ~/go

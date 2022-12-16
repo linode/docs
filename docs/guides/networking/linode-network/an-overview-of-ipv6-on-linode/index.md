@@ -23,7 +23,7 @@ All Linodes are created with one IPv6 address, which is acquired by [*Stateless 
 
 Linode does not offer private IPv6 address allocations. Our IPv6 accounting was designed so that local IPv6 traffic does not count against your [network transfer quota](/docs/guides/network-transfer/), so you can use your default IPv6 address as if it were a private IP address.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In order for your Linode to receive its SLAAC address, it must respond to IPv6's ping protocol.
 
 Please be sure to allow ICMPv6 in your [firewall](/docs/guides/set-up-and-secure/#configure-a-firewall). For example, in `iptables`, you can issue the following commands:
@@ -87,7 +87,7 @@ The IPv6 prefixes and their respective quantity of IPv6 addresses that Linode pr
 
 An IPv6 routed range is assigned to a single Linode. Addresses from that range can only be configured on that Linode.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Configuring a `/64` or `/56` routed range requires you to [disable Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) on your Linode and manually configure its network settings. Please review the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) and [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) guides for details on this process.
 {{</ note >}}
 

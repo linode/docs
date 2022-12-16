@@ -47,7 +47,7 @@ Make a note of both the algorithm and the displayed fingerprint as you continue 
 
             ssh-keygen -E md5 -lf /etc/ssh/ssh_host_ed25519_key.pub
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your local computer connected to the remote host using an algorithm other than ED25519, you can replace the file with the one that corresponds with the algorithm being used:
 
 - **ED25519:** `/etc/ssh/ssh_host_ed25519_key.pub`

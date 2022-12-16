@@ -38,7 +38,7 @@ There are many options for accessing and managing Subversion repositories on loc
 
         sudo apt-get update && sudo apt-get upgrade
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -122,7 +122,7 @@ In cases where you're manipulating Subversion's data store (e.g. an upgrade or m
 
         svnadmin load /srv/svn/subversion-test-backup < /var/svn/subversion-test-1259853077.svn
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you store critical information in a Subversion repository, you may wish to create backups automatically using a [cron job](/docs/guides/schedule-tasks-with-cron/).
 {{< /note >}}
 

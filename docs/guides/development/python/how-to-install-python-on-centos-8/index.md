@@ -70,7 +70,7 @@ You need to build Python 3.9 from source to install it on CentOS 8.
         sudo ./configure --enable-optimizations
         sudo make install
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you have an already existing Python binary installed at `/usr/bin/python` or `/usr/bin/python3`, you should run `sudo make altinstall` instead.
 {{< /note >}}
 

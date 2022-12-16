@@ -34,7 +34,7 @@ This guide assumes that you are familiar and comfortable with setting up a [LAMP
 
 1. Complete the steps in the [How to Install a LAMP Stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/) guide. After completing the LAMP stack guide, you should have an Apache virtual hosts configuration for your own website. This guide will continue to refer to the site as `example.com`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide's examples will use PHP version 7.2. By default, PHP 7.2 is available for installation from the default CentOS 8 repositories. When running commands related to PHP, ensure you replace any version numbers with your own system's PHP version.
     {{</ note >}}
 
@@ -141,7 +141,7 @@ FcgidIOTimeout 300
 
 [PHP-FPM](https://php-fpm.org/) brings in the concept of [pools](https://www.php.net/manual/en/class.pool.php). With pools, PHP-FPM can create and manage a pool of php processes to run PHP files from a site's root directory. Each pool that is run by PHP-FPM can be run with separate user and group ID's. Pools are a great way to provide more security when you are running multiple sites on one server. Running your site's PHP scripts using dedicated user and group IDs, means that no one user can execute scripts on all sites running on your Linode. In this section you will create a pool for the domain `example.com` which is owned by the user **bob**.
 
-{{< note >}}
+{{< note respectIndent=false >}}
  To create the example **bob** user, you can follow the steps outlined in our [Securing Your User](/docs/guides/set-up-and-secure/#centos-fedora) guide.
 {{< /note >}}
 

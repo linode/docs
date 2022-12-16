@@ -30,7 +30,7 @@ If you have a need to send mail from your Linode, we ask that you first configur
 
 Once you’ve completed those steps and provided that information, our Support team will be happy to review your request.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If using multiple domains to send mail from a single Linode, rDNS will only need to be configured for one of the domains actively sending mail.
 {{< /note >}}
 

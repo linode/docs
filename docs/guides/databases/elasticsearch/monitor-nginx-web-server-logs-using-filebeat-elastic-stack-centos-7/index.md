@@ -31,7 +31,7 @@ The [Elastic Stack](https://www.elastic.co/) is a set of open-source tools that 
 
 This guide will explain how to install different components of the stack in order to monitor a typical webserver. It will use version 6 of each of the tools in the Elastic Stack, which is a recent release featuring additional features and fixes.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -205,7 +205,7 @@ Replace `username` with your Linux user name and `<Linode public IP>` with the p
 
 Filebeat version 6 ships with the ability to use [modules](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html) in order to automate how logs are collected, indexed, and visualized. This guide will use the NGINX module in order to handle most of the necessary configuration in order to instruct the stack how to process system logs.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Your Linode should already have NGINX configured following the [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/guides/lemp-stack-on-centos-7-with-fastcgi/) guide.
 {{< /note >}}
 
@@ -294,7 +294,7 @@ The rest of this guide will use Kibana's browser-based interface in order to vie
 
     The interface will perform an Elasticsearch query and show only matching documents.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Throughout this guide, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as "Last 15 Minutes"). If at any point log entries are no longer visible in the Kibana interface, click this timespan and choose a wider range, such as "Last Hour" or "Last 1 Hour" or "Last 4 Hours," to see as many logs as possible.
 {{< /note >}}
 

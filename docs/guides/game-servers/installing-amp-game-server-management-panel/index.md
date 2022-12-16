@@ -22,7 +22,7 @@ dedicated_cpu_link: true
 
 While this guide will focus on installation on Debian and Ubuntu, the [same basic process](https://cubecoders.com/AMPInstall) can be applied to other distros with some minor adjustments.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 AMP is dependent on the [purchase of a separate license through CubeCoder's website](https://cubecoders.com/AMP#buyAMP).
 {{< /note >}}
 

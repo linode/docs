@@ -63,7 +63,7 @@ Without SQL transactions, application code would need to account for every possi
 
 ## SQL Transaction Delimiter Syntax
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The implementation of transactions is very similar in concept across most database implementations, but the syntax can vary slightly.
 {{< /note >}}
 

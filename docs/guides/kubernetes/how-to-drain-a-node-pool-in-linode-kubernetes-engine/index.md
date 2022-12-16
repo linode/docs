@@ -37,7 +37,7 @@ This guide assumes you have a working [Linode Kubernetes Engine (LKE)](https://w
 
 1.  Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to connect to an LKE cluster.
 
-    {{< note >}} Ensure that the `KUBECONFIG` context is [persistent](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context){{< /note >}}
+    {{< note respectIndent=false >}} Ensure that the `KUBECONFIG` context is [persistent](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context){{< /note >}}
 
 1.  Ensure that Kubernetes CLI is using the right cluster context. Run the `get-contexts` subcommand to check:
 
@@ -67,7 +67,7 @@ spec:
   storageClassName: linode-block-storage-retain
 {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   To retain the Block Storage Volume and its data, even after the associated PVC is deleted, use the `linode-block-storage-retain` StorageClass. If, instead, you prefer to have the Block Storage Volume and its data deleted along with its PVC, use the `linode-block-storage` StorageClass. For more information, see the [Delete a Persistent Volume Claim](/docs/guides/deploy-volumes-with-the-linode-block-storage-csi-driver/#delete-a-persistent-volume-claim).
 {{</ note >}}
       The PVC represents a Block Storage Volume. Because Block Storage Volumes have a minimum size of 10 gigabytes, the storage has been set to `10Gi`. If you choose a size smaller than 10 gigabytes, the PVC defaults to 10 gigabytes. Currently the only mode supported by the Linode Block Storage CSI driver is `ReadWriteOnce`, meaning that it can only be connected to one Kubernetes node at a time.

@@ -326,7 +326,7 @@ To deploy an agent:
 
 1. Choose an agent (Sandcat is a good one to start with) and a platform (operating system) as highlighted in the following screenshots.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Note: Sandcat, also referred to as 54ndc47 is a remote access agent written in GoLang for cross platform compatibility, and is the agent we will deploy on the endpoint(s) we want to execute our operations against.
 {{< /note >}}
 

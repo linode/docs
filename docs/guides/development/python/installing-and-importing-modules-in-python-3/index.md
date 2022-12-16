@@ -31,7 +31,7 @@ Python includes some built-in standard modules. These modules are part of the [*
 
 Python modules are named the same way as other Python files. The filename for a module consists of the module name followed by the `.py` extension, for example, `module_name.py`. A module maintains its own [symbol table](https://docs.python.org/3/library/symtable.html), which serves as the global symbol table inside the module. Each module is also a Python namespace.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 A Python namespace is a dictionary of the object names and the actual objects.
 {{< /note >}}
 
@@ -54,7 +54,7 @@ Some of the reasons to use Python modules include the following:
 
 1.  Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -107,7 +107,7 @@ If a module cannot be installed using `pip`, there is almost always a way to ins
 
 The following example explains how to install the Python [kubernetes-client](https://github.com/kubernetes-client/python) module without using `pip`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Like most modules nowadays, this module is also available through `pip`. It can be installed using `pip install kubernetes`. It is always worth verifying whether a module is available through `pip` first. The following instructions are provided as a resource for cases where the module can only be installed locally.
 {{< /note >}}
 
@@ -117,14 +117,14 @@ Like most modules nowadays, this module is also available through `pip`. It can 
 
 1. Consult the installation directives for the module to determine the location of the `setup.py` file. In this case, it is located in the `python` directory.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the module does not have a `setup.py` file, consult the instructions on the Python site. See the sections on [Custom Installation](https://docs.python.org/3/install/#custom-installation) and [Modifying Python’s Search Path](https://docs.python.org/3/install/#modifying-python-s-search-path).
     {{< /note >}}
 
         cd python
 1. Install the module using the `python install` command.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This particular module also requires the `requests` module. It is not uncommon for locally-installed modules to require the installation of other modules before they can be used.
     {{< /note >}}
 

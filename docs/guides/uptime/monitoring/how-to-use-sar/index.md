@@ -82,7 +82,7 @@ PATH=/usr/lib/sysstat:/usr/sbin:/usr/sbin:/usr/bin:/sbin:/bin
 
     By default, the `debian-sa1` script runs every 10 minutes and collects sar data for historical reference. This data is written to the `/var/log/sysstat/saXX` file, where `XX` is the day of the month. For example, if today is the 24th day of the month, `sa1` writes the sar data to `/var/log/sysstat/sa24`. To change the logging frequency to one minute, change `5-55/10` to `5-55/1`. To make it 2 minutes, change it to `5/55/2`, and so on.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Note that the `/var/log/sysstat/saXX` is a binary file; a text editor can't display these files properly.
 {{</ note >}}
 

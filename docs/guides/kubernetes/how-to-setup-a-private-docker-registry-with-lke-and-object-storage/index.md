@@ -26,7 +26,7 @@ Hosting a private Docker registry alongside your Kubernetes cluster allows you t
 
 ## Before you Begin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubernetes.io/docs/setup/release/notes/).
 {{</ note >}}
 
@@ -34,7 +34,7 @@ This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubern
 
 1. Install [Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm), [kubectl](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl), and [Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) to your local environment.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For Docker installation instructions on other operating systems, see [Docker's official documentation](https://docs.docker.com/get-docker/).
     {{</ note >}}
 
@@ -44,7 +44,7 @@ For Docker installation instructions on other operating systems, see [Docker's o
 
 1. Purchase a domain name from a reliable domain registrar. Using Linode's DNS Manager, [create a new Domain](/docs/products/networking/dns-manager/guides/create-domain/) and [add an DNS "A" record](/docs/products/networking/dns-manager/guides/manage-dns-records/) for a subdomain named `registry`. Your subdomain will host your Docker registry. This guide will use `registry.example.com` as the example domain.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Optionally, you can create a Wildcard DNS record, `*.example.com`. In a later section, you will point your DNS A record to a Linode NodeBalancer's external IP address. Using a Wildcard DNS record, will allow you to expose your Kubernetes services without requiring further configuration using the Linode DNS Manager.
     {{</ note >}}
 
@@ -113,7 +113,7 @@ Now that your NGINX Ingress Controller has been deployed and your subdomain's A 
 
 ## Enable HTTPS
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Before performing the commands in this section, ensure that your DNS has had time to propagate across the internet. This process can take several hours. You can query the status of your DNS by using the following command, substituting `registry.example.com` for your subdomain and domain.
 
     dig +short registry.example.com
@@ -189,7 +189,7 @@ spec:
 
     - This manifest file creates a ClusterIssuer resource that will register an account on an ACME server. The value of `spec.acme.server` designates Let's Encrypt's production ACME server, which should be trusted by most browsers.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 Let's Encrypt provides a staging ACME server that can be used to test issuing trusted certificates, while not worrying about hitting [Let's Encrypt's production rate limits](https://letsencrypt.org/docs/rate-limits/). The staging URL is `https://acme-staging-v02.api.letsencrypt.org/directory`.
         {{</ note >}}
 
@@ -222,7 +222,7 @@ spec:
   - registry.example.com
     {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The configurations in this example create a Certificate that is valid for 90 days and renews 15 days before expiry.
     {{</ note >}}
 
@@ -289,7 +289,7 @@ Your LKE Cluster will also need to authenticate to your Docker registry in order
 
 Before deploying the Docker Registry Helm chart to your cluster, you will define some configurations so that the Docker registry uses the NGINX Ingress controller, your `registry` Object Storage bucket, and your cert-manager created TLS certificate. See the [Helm Chart's official documentation](https://helm.sh/docs/topics/registries/) for more information about registries.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you have not yet [generated an Object Storage key pair](/docs/products/storage/object-storage/guides/access-keys/) and [created an Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/) to store your registry's images, do so now before continuing with the rest of this section.
   {{< / note >}}
 
@@ -335,7 +335,7 @@ s3:
 1.  Deploy your Docker registry using the configurations you created in the previous step:
 
         helm install docker-registry stable/docker-registry -f docker-configs.yaml
-    {{< note >}}
+    {{< note respectIndent=false >}}
     If a deprecation error appears during the installation using helm use the following command: `helm repo add twuni https://helm.twun.io`.
     {{</ note >}}
 1.  Navigate to your registry's domain and verify that your browser loads the TLS certificate.

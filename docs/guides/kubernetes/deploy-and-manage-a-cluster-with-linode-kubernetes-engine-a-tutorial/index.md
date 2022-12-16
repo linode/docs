@@ -24,7 +24,7 @@ external_resources:
 aliases: ['/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/','/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/','/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/']
 ---
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide uses Linode Kubernetes Engine (LKE) to deploy a managed Kubernetes cluster. For more information on Kubernetes key concepts, see our [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/)
 {{< /note >}}
 
@@ -78,7 +78,7 @@ After you've created your LKE cluster using the Cloud Manager, you can begin int
 
 If you create a new terminal window, it does not have access to the context that you specified using the previous instructions. This context information can be made persistent between new terminals by setting the [`KUBECONFIG` environment variable](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) in your shell's configuration file.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are using Windows, review the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) for how to persist your context.
 {{< /note >}}
 
@@ -96,7 +96,7 @@ These instructions persist the context for users of the Bash terminal. They are 
 
         cp ~/Downloads/kubeconfig.yaml $HOME/.kube/configs/kubeconfig.yaml
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Alter the above line with the location of the Downloads folder on your computer.
 
 Optionally, you can give the copied file a different name to help distinguish it from other files in the `configs` directory.
@@ -205,7 +205,7 @@ LKE Autoscaling is configured for individual Node Pools directly through the Lin
 
 1. Select the `Save Changes` button to complete the process, and officially activate the autoscaling feature.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The LKE Autoscaler will not automatically increase or decrease the size of the node pool if the current node pool is either below the minimum of the autoscaler, or above the maximum. This behavior can be further described by following examples:
 
 - If the Node pool has 3 nodes in the current node pool and a minimum of 5, the autoscaler will not automatically scale the current node pool up to meet the minimum. It will only scale up if pods are unschedulable otherwise.
@@ -228,7 +228,7 @@ The LKE Autoscaler will not automatically increase or decrease the size of the n
 
    ![Kubernetes cluster step 1](cluster-upgrade-step1.png "Kubernetes upgrade step 1.")
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 If step one of the upgrade process is completed without the completion of step two, the nodes in the cluster will need to be recycled using the [Recycle all Nodes](##Recycle-a-Cluster-or-Nodes) button.
 {{< /note >}}
 

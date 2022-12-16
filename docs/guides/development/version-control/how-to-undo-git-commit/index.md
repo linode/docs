@@ -95,7 +95,7 @@ Third line of text for check-in 3.
 
         git reset --soft HEAD~1
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It is possible to undo multiple commits. Use either the commit identifier or the `HEAD~n` notation to identify the commit.
     {{< /note >}}
 
@@ -257,7 +257,7 @@ Second line of text for check-in 2.
 Third attempt at line 3.
     {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 `git reset` can be used on a specific file to move a particular commit to the staging area. The syntax for this command is `git reset HEAD <filename>`. Although it can be used with any version from the repository, it is typically used with the `HEAD` version. In this case, it has the effect of aligning the local repository and the staging area. This is an efficient method of undoing uncommitted changes to the staging area. Subsequent changes must be staged again using `git add` before they can be committed.
 {{< /note >}}
 
@@ -337,7 +337,7 @@ However, it is possible to directly create a new branch based on the earlier com
 
 The `checkout` command overwrites any local changes. To save local changes, ensure the file is backed up or stashed before proceeding with the checkout.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 When used on a branch, `git checkout` checks out the current contents of a branch on the local system. All subsequent commits are made against this branch. This is the main method of switching between branches in a repository. There is no concern about orphaned commits or a detached `HEAD` in this case, because `HEAD` still represents the current version.
 {{< /note >}}
 
@@ -439,7 +439,7 @@ Final attempt at new line.
 
 If the files and changes in a `git commit` operation were correct, but the comment was wrong, it can easily be amended. Use the command `Git commit --amend -m <updated-message>` to update the message associated with the commit. This option can only be used to modify the most recent commit.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This command must never be used to modify the message of a commit that has already been pushed to a remote server. This leaves the two repositories out of sync and is almost guaranteed to cause trouble in the future.
 {{< /note >}}
 

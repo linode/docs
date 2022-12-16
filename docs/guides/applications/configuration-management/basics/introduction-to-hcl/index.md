@@ -22,7 +22,7 @@ The HashiCorp Configuration Language (HCL) is a configuration language authored 
 
 This guide provides an introduction to HCL syntax, some commonly used HCL terminology, and how it works with Terraform.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12 or later.  To learn how to safely upgrade to Terraform version 0.12 or later, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes. The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
 {{</ note >}}
 
@@ -60,7 +60,7 @@ resource "linode_instance" "example_linode" {
 }
 {{</ file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You should not include sensitive data in the resource declarations. For more information about secrets management, see [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform/).
 {{</ note >}}
 
@@ -100,7 +100,7 @@ provider "linode" {
 
 After you declare the provider, you can configure resources available from the provider.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Providers are packaged as plugins for Terraform. Whenever you declare a new provider in the Terraform configuration files, run the `terraform init` command. This command completes several initialization steps that are necessary before you can apply the Terraform configuration, including downloading the plugins for any providers you've specified.
 {{</ note >}}
 
@@ -189,7 +189,7 @@ Values can also be specified in environment variables when running `terraform ap
 
     TF_VAR_token=my-token-value TF_VAR_region=us-west terraform apply
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Environment variables can only assign values to variables of `type = "string"`
 {{</ note >}}
 
@@ -208,7 +208,7 @@ resource "linode_instance" "WordPress" {
 }
 {{</ file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If a variable value is not provided in any of the ways discussed above, and the variable is called in a resource configuration, Terraform prompts you for the value when you run `terraform apply`.
 {{</ note >}}
 
@@ -249,7 +249,7 @@ resource "linode_sshkey" "main_key" {
 
 In this example, `ssh_key = "${chomp(file("~/.ssh/id_rsa.pub"))}"` uses Terraform’s built-in function `file()` to provide a local file path to the public SSH key’s location. The `chomp()` function removes trailing new lines from the SSH key. Observe that the nested functions are wrapped in opening `${` and closing `}` to indicate that the value should be interpolated.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 When you run `terraform console` creates an environment where you can test interpolation functions. For example:
 
     terraform console

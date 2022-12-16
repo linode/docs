@@ -26,7 +26,7 @@ deprecated: true
 
 
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Development work on the module is active. For the latest updates and validated Terraform configurations, see the module’s [GitHub repository](https://github.com/linode/terraform-linode-k8s).
 {{</ note >}}
 
@@ -39,12 +39,12 @@ Before starting to deploy a Kubernetes cluster with Terraform, make sure:
 2. You are familiar with Kubernetes concepts. For an introduction, see the [A Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/) series. Read through [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/getting-started-with-kubernetes/) to get familiar with kubeadm.
 
 3. You have a personal access token for the Linode API to use with Terraform. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
-   {{< note >}}When creating a personal access token, ensure it is set to **Read/Write** access as new Linode servers are being created.
+   {{< note respectIndent=false >}}When creating a personal access token, ensure it is set to **Read/Write** access as new Linode servers are being created.
     {{</ note >}}
 
 4. Terraform is installed on your computer. See [Install Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) for more information.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide was written using [Terraform version 0.12.24](https://www.hashicorp.com/blog/announcing-terraform-0-12/). The module requires at least Terraform 0.10.
     {{</ note >}}
 
@@ -224,7 +224,7 @@ After Terraform finishes deploying the Kubernetes cluster, the `~/terraform/k8s-
 
         export KUBECONFIG=~/terraform/k8s-cluster/default.conf
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It is common practice to store kubeconfig files in `~/.kube` directory. By default, kubectl searches for a kubeconfig file named `config` that is located in the  `~/.kube` directory. Other kubeconfig files can also be specified by setting the `$KUBECONFIG` environment variable.
 {{</ note >}}
 
@@ -232,7 +232,7 @@ It is common practice to store kubeconfig files in `~/.kube` directory. By defau
 
         kubectl get nodes
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the kubectl commands are not returning the resources and information you expect, then the client may be assigned to the wrong cluster context. Visit the [Troubleshooting Kubernetes](/docs/guides/troubleshooting-kubernetes/#troubleshooting-examples) guide to learn how to switch cluster contexts.
 {{</ note >}}
 
@@ -242,7 +242,7 @@ You are now ready to manage the cluster using kubectl. For more information abou
 
 A new terminal window does not have access to the context specified using the previous instructions. This context information can be made persistent between new terminals by setting the [`KUBECONFIG` environment variable](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) in the configuration file of the shell.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are using Windows, review the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) to persist a context.
 {{< /note >}}
 
@@ -260,7 +260,7 @@ These instructions are for the Bash shell and they are similar to other shells:
 
         cp ~/terraform/k8s-cluster/default.conf $HOME/.kube/configs/default.conf
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Optionally, you can provide the copied file a different name to help distinguish it from other files in the `configs` directory.
 {{< /note >}}
 

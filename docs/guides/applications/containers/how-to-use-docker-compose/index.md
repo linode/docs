@@ -23,7 +23,7 @@ If your Docker application includes more than one container (for example, a webs
 
 This guide will explain how the `docker-compose.yml` file is organized, and show how to use it to create several basic app configurations.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Generally the containers in an application built using Docker Compose will all run on the same host. Managing containers running on different hosts usually requires an additional tool, such as [Docker Swarm](https://docs.docker.com/engine/swarm/) or [Kubernetes](https://kubernetes.io/).
 {{< /note >}}
 ## Before You Begin

@@ -168,7 +168,7 @@ Jvl72P8ePqG2nIvSqHsm/4OfdJshaXHA+j6DpvSQ== user@userdevice.local
 
         scp ~/.ssh/id_rsa.pub <accountname>@<ip_address>:~/.ssh/authorized_keys
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your client does not have the `scp` tool installed, copy the key to the target server manually. Open the public key file and copy the entire key, including the `ssh-rsa` prefix and the user identifier at the end. Then open the `authorized_keys` file on the target server and add a new line to the end of the file. Paste in the public key you copied earlier. Each key should be on its own line and should not contain any line breaks. Save and close the file.
     {{< /note >}}
 
@@ -190,6 +190,6 @@ PasswordAuthentication No
 
 1. Try accessing the target server without entering a password. Your private key should be used to authenticate the connection.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Some Linux systems include a tool named `ssh-copy-id` which further simplifies the process of copying a public key. To use this utility, run the command `ssh-copy-id <accountname>@<ip_address>`. After you enter your password, your public key is copied to the correct destination on the target server.
 {{< /note >}}

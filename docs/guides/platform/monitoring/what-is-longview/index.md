@@ -50,7 +50,7 @@ In this section, you will create a Longview Client instance in the Linode Cloud 
 
 1. An entry will appear displaying your Longview Client instance along with its auto-generated label, its current status, installation instructions, and API key. Its status will display as *Waiting for data*, since you have not yet installed the Longview agent on a running Linode.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The displayed `curl` command will be used in the [next section](#install-the-longview-agent) to install the Longview agent on the desired Linode. The long string appended to the url `https://lv.linode.com/` is your Longview Client instance's GUID (globally unique identifier).
     {{</ note >}}
 
@@ -70,7 +70,7 @@ The displayed `curl` command will be used in the [next section](#install-the-lon
 
 1. Switch back to the Linode Cloud Manager in your browser, copy the Longview Client instance's `curl` command, and paste it into your Terminal window. Press **Enter** to execute the command. The installation will take a few minutes to complete.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure you replace the example `curl` command below with your own Longview Client instance's GUID.
     {{</ note >}}
 
@@ -118,7 +118,7 @@ Dec 10 22:35:11 203-0-113-0.ip.linodeusercontent.com systemd[1]: Started SYSV: L
 
 1. Switch back to the Linode Cloud Manager's Longview Clients page in your browser and observe your Longview client's quick view metrics and graph.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   It can take several minutes for data to load and display in the Cloud Manager but once it does, you’ll see the graphs and charts populating with your Linode’s metrics.
     {{</ note >}}
 
@@ -128,7 +128,7 @@ Dec 10 22:35:11 203-0-113-0.ip.linodeusercontent.com systemd[1]: Started SYSV: L
 
 It’s also possible to manually install Longview for CentOS, Debian, and Ubuntu. You should only need to manually install it if the instructions in the previous section failed.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Although previously available, Longview is currently not officially supported and maintained for Fedora installations.
 {{< /note >}}
 
@@ -230,7 +230,7 @@ Dec 10 22:35:11 203-0-113-0.ip.linodeusercontent.com systemd[1]: Started SYSV: L
 
 8\. Switch back to the Linode Cloud Manager's Longview Clients page in your browser and observe your Longview client's quick view metrics and graph.
 
-  {{< note >}}
+  {{< note respectIndent=false >}}
   It can take several minutes for data to load and display in the Cloud Manager but once it does, you’ll see the graphs and charts populating with your Linode’s metrics.
     {{</ note >}}
 
@@ -256,7 +256,7 @@ This section will provide an overview of the data and graphs available to you in
 
 1. From here you can click on any of your Longview Client instance's tabs to view more related information.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your Linode has NGINX, Apache, or MySQL installed you will see a corresponding tab appear containing related system data.
     {{</ note >}}
 
@@ -291,7 +291,7 @@ The network tab gives you access to charts you can use to sort traffic analytics
 
 ![network-overview](network-overview.png)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The information gained from the network tab can only go as far back as the date that Longview was added.
 {{< /note >}}
 
@@ -301,7 +301,7 @@ The disks tab includes information on disk I/O, disk space usage, and [inode](ht
 
 ![disks-overview](disks-overview.png)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Longview does not gather data on swap disks.
 {{< /note >}}
 

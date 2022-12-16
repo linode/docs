@@ -44,7 +44,7 @@ This guide explains how to install and configure the lighttpd ("lighty") web ser
 
         sudo apt-get update && apt-get upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps required in this guide require root privileges. Be sure to run the following steps as **root** or with the `sudo` prefix. For more information on privileges see the [Users and Groups guide](/docs/guides/linux-users-and-groups/).
 {{< /note >}}
 

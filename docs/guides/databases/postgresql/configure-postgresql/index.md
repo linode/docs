@@ -29,7 +29,7 @@ PostgreSQL can be configured and tuned through a series of configuration files. 
 ## Before You Begin
 
 You should have a working installation of PostgreSQL on your system before beginning this guide. Go through our [How to Install PostgreSQL on Ubuntu guide](/docs/guides/how-to-install-postgresql-on-ubuntu-16-04/) to install PostgreSQL and create a sample database.
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -74,7 +74,7 @@ The contents of the configuration file are broken up into different sections:
 | Config File Includes | Lists the config files that will be included when Postgres looks for configuration files |
 | Customized Options | Allows you to add settings that may not fit in a particular section, or to keep your settings organized within this section. |
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Some of the directives in this configuration file are **extremely** use-case specific. Please consider all effects carefully before changing directives.
 {{< /note >}}
 
@@ -120,7 +120,7 @@ host    example         exampleuser      192.0.2.0             password
 
 The entries in this table are read in order for each incoming connection attempt. The first entry that matches will be applied to the connection. As a result, more general configurations (matching all users, all databases, or all IP addresses) should come at the end of the file, and should generally have tighter restrictions. More specific matches with less stringent authentication methods (such as the example above) should be placed at the beginning of the list.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 See the [official pg_hba documentation](https://www.postgresql.org/docs/9.3/static/auth-pg-hba-conf.html) for details about each of the configuration options.
 {{< /note >}}
 

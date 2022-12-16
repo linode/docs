@@ -20,7 +20,7 @@ aliases: ["security/authentication/self-hosted-password-management-with-bitwarde
 
 The [Vaultwarden](https://github.com/dani-garcia/vaultwarden) project (formerly known as bitwarden_rs) provides a lightweight, single-process, API-compatible service alternative to [Bitwarden](https://bitwarden.com/). [Vaultwarden](https://bitwarden.com/) is an open source password management application that can be self-hosted and run on your infrastructure. By running the vaultwarden service, you can use Bitwarden browser extensions and mobile applications backed by your server.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 By self-hosting your password manager, you are assuming responsibility for the security and resiliency of sensitive information stored within Vaultwarden. Before storing important information and credentials within the application, ensure that you are confident with the security of the server. Also, take the necessary backup measures mentioned in this tutorial.
 {{< /note >}}
 
@@ -40,7 +40,7 @@ Ubuntu 20.04 is the distribution used in this guide. Generally speaking, any Lin
 
 1. Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide in order to harden the Linode against malicious users. This step is important to ensure Vaultwarden is secured.
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 If you choose to configure a firewall, remember to open ports 80 and 443 for the Caddy server. The [Configure a Firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) section of the guide outlines different firewall software options.
 {{</ note >}}
 
@@ -141,7 +141,7 @@ example.com {
 }
 {{< /file >}}
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 The site name you choose in this file must match the desired URL that Vaultwarden is served under. When navigating to the web interface later in this guide, ensure that you type the same hostname chosen in this configuration file (in this example, `example.com`).
 {{</ note >}}
 
@@ -198,7 +198,7 @@ The site name you choose in this file must match the desired URL that Vaultwarde
 
    If you see the login page, congratulations! Vaultwarden is running and operational. The first step in using the password manager is to create an account. Do so by clicking on the **Create Account** button on the login page.
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 Remember to navigate to the same name configured in your `Caddyfile` defined in the previous section of this guide. A mismatched hostname in your browser can cause TLS errors.
 {{</ note >}}
 
@@ -208,7 +208,7 @@ Remember to navigate to the same name configured in your `Caddyfile` defined in 
 
    Fill each field with the appropriate information, choosing a strong and secure master password.
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 Although a user email is required at time of registration, by default, the deployment of Vaultwarden cannot send email without additional configuration. If you would like to configure SMTP in order to enable Vaultwarden to send email, follow [these instructions on the Vaultwarden wiki](https://github.com/dani-garcia/vaultwarden/wiki/SMTP-configuration). Use SMTP information from an SMTP provider when following the instructions.
 {{< /note >}}
 
@@ -243,7 +243,7 @@ Before relying on this service for any important data, you should take additiona
 
 1. Review the [Backing Up Your Data](/docs/guides/backing-up-your-data/) guide in order to determine the best location to store the backups. In this example, a local file system path is used.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In a more resilient setup, these local backups should be replicated onto another service or host to guard against single-host failure.
 {{< /note >}}
 
@@ -302,7 +302,7 @@ WantedBy=multi-user.target
 
    This schedules the backup to occur at 4:00 in the time zone set for the Linode. You may alter this time to trigger at a desired time of day.
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 The `Persistent=true` line instructs systemd to fire the timer if the timer was unable to trigger at its previous target time. For example, this could happen if the system was being rebooted.
 {{</ note >}}
 

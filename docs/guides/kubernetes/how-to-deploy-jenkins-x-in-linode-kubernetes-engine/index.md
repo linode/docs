@@ -28,7 +28,7 @@ deprecated: true
 ## What is Jenkins X?
 
 [Jenkins X](https://jenkins-x.io) is CI/CD tool that automates the management of development environments and the promotion of new versions of applications between environments. This guide illustrates how to install Jenkins X version 2 on Linode Kubernetes Engine.
-{{< note >}}
+{{< note respectIndent=false >}}
 Jenkins X version 2 is no longer maintained. For more information about using Jenkins X version 3, see the [official Jenkins X documentation](https://jenkins-x.io/v3/admin/).
 {{</ note >}}
 
@@ -79,7 +79,7 @@ Git tree state clean
 
 ## Bootstrap Jenkins X
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you used the `export` command with the KUBECONFIG variable so that you can use kubectl to connect to your cluster, you will need to perform the following steps in the same terminal window where you executed that command in order for `jx` to also be able to connect to your cluster.
 {{</ note >}}
 
@@ -214,7 +214,7 @@ WARNING: TLS is not enabled so your webhooks will be called using HTTP. This mea
 
     You can create a token for your bot by [visiting this URL](https://github.com/settings/tokens/new?scopes=repo,read:user,read:org,user:email,write:repo_hook,delete_repo).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Please note that you should create the token with the Bot's account and not yours.
 {{</ note >}}
 

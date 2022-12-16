@@ -36,7 +36,7 @@ aliases: ['/applications/voip/install-and-configure-mumble-on-debian/']
 
         sudo apt-get update && sudo apt-get upgrade
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with sudo. If you are not familiar with the sudo command, you can check out our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -56,7 +56,7 @@ This guide is written for non-root users. Commands that require elevated privile
 
     ![Image description](murmur-debian-auto-start.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you wish to disable the server starting at boot, you can use your init system to disable it.
 
 For Debian 8:

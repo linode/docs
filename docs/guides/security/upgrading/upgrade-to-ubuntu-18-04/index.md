@@ -32,7 +32,7 @@ The upgrade may be incomplete or your system may be corrupted if your internet c
 
 {{< /caution >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are upgrading from Ubuntu 17.04 you must first upgrade to Ubuntu 17.10.
 {{< /note >}}
 

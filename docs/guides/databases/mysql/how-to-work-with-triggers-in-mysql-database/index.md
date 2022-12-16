@@ -276,7 +276,7 @@ If a trigger body has more than one SQL statement, you must enclose it within a 
 
     DELIMITER ;
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The last line of this example changes the `DELIMITER` back to the default `;` value.
 {{< /note >}}
 
@@ -480,7 +480,7 @@ A trigger can also be fired after an `UPDATE` event. We will see how we can leve
 
     This trigger records changes to a product's `retail_price` in the `products_price_history` table.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Unlike previous examples, this trigger only has one statement in the trigger's body, so we do not need to change the `DELIMITER`.
 {{< /note >}}
 
@@ -546,7 +546,7 @@ You can delete a trigger if you don't want to use it anymore using the syntax be
 
     DROP TRIGGER IF EXISTS TRIGGER_NAME;
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `IF EXISTS` keyword is an optional parameters that only deletes a trigger if it exists.
 {{< /note >}}
 

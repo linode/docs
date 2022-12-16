@@ -47,7 +47,7 @@ Take a look at the results with the `id` command.
 uid=1001(example-user) gid=1002(example-group) groups=1002(example-group)
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The Linux user group must exist before `usermod` allows you to assign a user to the groups.
 {{< /note >}}
 

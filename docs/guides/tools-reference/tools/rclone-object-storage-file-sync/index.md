@@ -34,7 +34,7 @@ The Rclone installation process is the same on Linux and macOS. Log into either 
 
     curl https://rclone.org/install.sh | sudo bash
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To install cURL on an Ubuntu system, use the following command:
 
     sudo apt-get install curl -y

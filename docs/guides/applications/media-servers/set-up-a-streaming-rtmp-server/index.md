@@ -45,7 +45,7 @@ This guide discusses how to configure an RTMP streaming server, and how to use o
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -103,7 +103,7 @@ To stream, you must configure some server parameters through the `nginx.conf` fi
 1. Use your favorite text editor and open the NGINX configuration file, typically located at `/etc/nginx/nginx.conf`.
 
         sudo vi /etc/nginx/nginx.conf
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you cannot find the `nginx.conf` file, run the command `sudo nginx -t`. It displays the file's location and validates its syntax.
 {{< /note >}}
 1. Add some RTMP configuration to the end of the `nginx.conf` file as shown in this example.
@@ -163,7 +163,7 @@ location /auth {
 
         systemctl status nginx.service
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can find more detailed examples of NGINX configurations for RTMP on the [*NGINX GitHub*](https://github.com/arut/nginx-rtmp-module#example-nginxconf) page.
 
 You can force viewers to authenticate before watching a stream with the `on_play` variable, which works the same way as `on_publish`. For extra security, you can remove the `html` configuration from this file if you are not planning to use NGINX as a web server. Ensure you do not delete the `events` configuration block while doing so.
@@ -191,14 +191,14 @@ Streamers typically use either a commercial web-based streaming service or an ap
     ![Stream Settings for OBS](Stream-Settings.png)
 1. To begin streaming, click on the **Start Streaming** button in the lower right of the application in the `Controls` section.
     ![Start Streaming Button for OBS](Start-Streaming.png)
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A quick way to test your stream is with a scrolling text message. Click the **+** button under the `sources` menu to create a text object. When you have created the object, right-click on the source and select **filter** to apply a scrolling effect. See the [*OBS Wiki*](https://obsproject.com/wiki/) for more information.
     {{< /note >}}
 1. If you are recording your streams, you can easily confirm whether the server is accepting the streamed input or not. Navigate to the `record_path` directory (from your RTMP configuration), and list its contents with the `ls` command. If you see a new file, the streaming server is correctly receiving and saving your stream.
 
         cd /var/www/html/streams
         ls
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Streaming at too high a rate could cause OBS to disconnect from the server. If your connection bounces, click  **Settings** and then select **Output**. Set the `Video Bitrate` to a lower value. OBS provides some helpful debugging tips on the [*OBS GitHub page*](https://github.com/obsproject/obs-studio/wiki/Dropped-Frames-and-General-Connection-Issues).
     {{< /note >}}
 
@@ -214,7 +214,7 @@ You are now ready to connect to and view your stream in a multimedia player. We 
 
     ![Network configuration for VLC](VLC-Network-Details.png)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Beyond the basics, VLC can get complicated. If you run into trouble, consult the [*VideoLAN support page*](https://www.videolan.org/support/).
     {{< /note >}}
 
@@ -270,7 +270,7 @@ rtmp {
 }
     {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ingest servers can change without notice. We recommend you review the specifications for your streaming service regularly.
 Some streaming services, such as Facebook Live, require you to transcode your stream into their particular format. You can accomplish this using the *FFmpeg library*.
 

@@ -29,7 +29,7 @@ ssh-agent manages private keys for SSH connections, facilitating smoother SSH ex
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -65,7 +65,7 @@ Most Linux systems include ssh-agent by default, but you must enable it. The `ss
     eval `ssh-agent`
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Adding that command as a line to your `~/.bashrc` file automatically enables ssh-agent at system start up.
     {{< /note >}}
 
@@ -115,7 +115,7 @@ The start-up command provided above can be expanded with some options. These let
 
 -   `-a` lets you specify a bind address for ssh-agent socket. This address corresponds to a location on your machine. By default, ssh-agent uses a somewhat random path following the format `/tmp/ssh-<RANDOM_STRING>/agent.<PID>`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 ssh-agent restricts this location's permissions to the current user. You should ensure similar permissions if you specify a custom bind address.
     {{< /note >}}
 

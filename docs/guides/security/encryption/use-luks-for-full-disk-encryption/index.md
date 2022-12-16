@@ -66,7 +66,7 @@ Please note that this is an non-standard configuration. Troubleshooting encrypte
 
 4.  Once in Rescue Mode, download the Debian installation media and copy it to your *Installer* disk:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 As an additional security step, you can use the keys provided in the same directory as the `iso` to [verify the authenticity](https://www.debian.org/CD/verify) of the image.
 {{< /note >}}
 

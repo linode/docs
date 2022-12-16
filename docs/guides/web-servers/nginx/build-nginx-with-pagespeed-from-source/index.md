@@ -27,7 +27,7 @@ There are currently two ways to get PageSpeed and NGINX working together:
 -  Compile NGINX with support for PageSpeed, then compile PageSpeed.
 -  Compile PageSpeed as a [dynamic module](https://www.nginx.com/blog/compiling-dynamic-modules-nginx-plus/) to use with NGINX, whether NGINX was installed from source or a binary.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Installing NGINX from source requires several manual installation steps and will require manual maintenance when performing tasks like version upgrades. To install NGINX using a package manager see the [NGINX](/docs/web-servers/nginx/) section.
     {{</ note >}}
 
@@ -74,7 +74,7 @@ configure arguments: --add-module=/root/incubator-pagespeed-ngx-latest-stable --
 
 The official [PageSpeed documentation](https://www.modpagespeed.com/doc/build_ngx_pagespeed_from_source) provides a bash script to automate the installation process.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The automated installation script will install several compilation tools needed to install PageSpeed. If you are using a production environment, ensure you uninstall any packages that are no longer needed after the installation has completed.
 {{</ note >}}
 
@@ -302,7 +302,7 @@ server {
     }
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `RewriteLevel OptimizeForBandwidth` is a [safer choice](https://www.modpagespeed.com/doc/optimize-for-bandwidth) than the default CoreFilters rewrite level.
 {{< /note >}}
 

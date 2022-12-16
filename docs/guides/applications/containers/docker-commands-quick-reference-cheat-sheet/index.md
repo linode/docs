@@ -25,7 +25,7 @@ Optimizing the platform's functionality begins with mastery of the core Docker c
 
 As of this writing, the recommended Docker installation is Docker Community Edition ([Docker CE](https://docs.docker.com/engine/installation/)). See the official docs or our [How to Install Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) guide for more details.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you have not added your limited user account to the `docker` group (with `sudo usermod -aG docker username`), all of the commands in this cheatsheet will need to be run with `sudo`.
 {{< /note >}}
 

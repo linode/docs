@@ -56,7 +56,7 @@ From here, a [disk can be created](#creating-a-disk) using the **Add a Disk** bu
 
 Each Linode can have multiple disks. To create a new disk, follow the instructions below.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you wish to deploy an Image to a new disk, see the [Deploy an Image to a Disk on an Existing Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/) guide for complete instructions on creating the main disk, an optional swap disk, and a configuration profile.
 {{</ note >}}
 

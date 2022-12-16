@@ -33,19 +33,19 @@ MySQL is an open-source relational database management system. This guide will s
         hostname
         hostname -f
 
-    {{< note >}} If you have a registered domain name for your website, then [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
+    {{< note respectIndent=false >}} If you have a registered domain name for your website, then [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
 
 1.  Update your system:
 
         sudo yum update
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
 1. In order to secure and audit  MySQL, you need to have a Linux server with the `MySQL Server` services running. For information about installing MySQL please see [Install MySQL ](/docs/guides/install-mysql-on-ubuntu-14-04)
 
-    {{< note >}}The instructions in this guide are based on Ubuntu 18.04, though all the steps are distribution agnostic with the exception of package names and package managers.{{< /note >}}
+    {{< note respectIndent=false >}}The instructions in this guide are based on Ubuntu 18.04, though all the steps are distribution agnostic with the exception of package names and package managers.{{< /note >}}
 
 ## Using The Secure MySQL Installer
 

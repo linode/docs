@@ -109,7 +109,7 @@ A Diffie-Hellman parameter is a set of randomly generated data used when establi
 
         openssl genpkey -genparam -algorithm DH -out /root/certs/example.com/dhparam4096.pem -pkeyopt dh_paramgen_prime_len:4096
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 According to the [OpenSSL manual](https://wiki.openssl.org/index.php/Manual:Openssl(1)#STANDARD_COMMANDS), `genpkey -genparam` supersedes `dhparam`.
 {{< /note >}}
 

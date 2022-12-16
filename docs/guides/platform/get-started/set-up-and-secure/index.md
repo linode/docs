@@ -74,11 +74,11 @@ Updating your system frequently is the single biggest security precaution you ca
 
     apt update && apt upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 When updating some packages, you may be prompted to use updated configuration files. If prompted, it is typically safer to keep the locally installed version".
 {{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Linode's Kali Linux distribution image is a [minimum installation](https://www.kali.org/docs/troubleshooting/common-minimum-setup/). You will likely want to install individual [tools](https://www.kali.org/tools/) or [metapackages](https://www.kali.org/tools/kali-meta/), such as the [kali-linux-headless](https://www.kali.org/tools/kali-meta/#kali-linux-headless) metapackage.
 {{< /note >}}
 
@@ -273,7 +273,7 @@ See our guide to [Adding DNS Records](/docs/products/networking/dns-manager/) fo
 
 Up to this point, you have accessed your Compute Instance as the `root` user, which has unlimited privileges and can execute *any* command--even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing.
 {{< /note >}}
 
@@ -315,7 +315,7 @@ By default, password authentication is used to connect to your Compute Instance 
 
 ### Create an Authentication Key-pair
 
-{{< note >}}
+{{< note respectIndent=false >}}
 As of Autumn 2018, [OpenSSH](https://www.openssh.com/) has been added to Windows 10, simplifying the process for securing SSH. **Windows 10** in this guide assumes OpenSSH has been installed as part of this update, while **Earlier Windows Versions** would apply to earlier versions.
 {{< /note >}}
 
@@ -353,7 +353,7 @@ If you've already created an RSA key-pair, this command will overwrite it, poten
 
             scp ~/.ssh/id_rsa.pub example_user@203.0.113.10:~/.ssh/authorized_keys
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 `ssh-copy-id` is available in [Homebrew](http://brew.sh/) if you prefer it over SCP. Install with `brew install ssh-copy-id`.
 {{< /note >}}
 
@@ -410,7 +410,7 @@ PermitRootLogin no
 PasswordAuthentication no
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key-pair for every device.
 {{< /note >}}
 

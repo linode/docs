@@ -111,7 +111,7 @@ Client UI: https://192.0.2.0:943/
     - The option *"Should VPN clients have access to private subnets
 (non-public networks on the server side)?"* should be set to **No**.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 If you wish to give VPN users access to services listening on your Linode's local network, set this option to **Yes, using NAT** and specify the subnet.
 {{< /note >}}
 
@@ -121,7 +121,7 @@ If you wish to give VPN users access to services listening on your Linode's loca
 
     - The option *"Have clients use the same DNS servers as the Access Server host"* should be set to **Yes**.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Alternatively, you can manually set DNS resolvers of your choice which are pushed to VPN clients. Set the option *"Have clients use these DNS servers"*  to **Yes** and add a primary and secondary server.
 {{< /note >}}
 
@@ -184,7 +184,7 @@ Alternatively, you can manually set DNS resolvers of your choice which are pushe
 
     ![DMG Finder Window.](openvpn-download-profile-ubuntu.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are connecting a headless machine to your OpenVPN server, such as another Linode, you will need to use `cURL` or `wget` tool to download the appropriate profile. You can do so by copying the link from the OpenVPN Access Server client page for your required profile, and then pasting it at the end of a `cURL` or [wget](/docs/guides/download-resources-from-the-command-line-with-wget/) command.
 {{< /note >}}
 
@@ -228,7 +228,7 @@ Resolve this by disabling compression. Go to the Admin UI and click **Advanced V
 
 You can add additional users to your OpenVPN Access Server to enable auditing of connections to your VPN tunnel, and user level access control.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 OpenVPN Access Server's free edition is limited to two users. If you require additional users for your VPN, you can view pricing details and purchase licenses at [OpenVPN's Website](https://openvpn.net/index.php/access-server/pricing.html)
 {{< /note >}}
 

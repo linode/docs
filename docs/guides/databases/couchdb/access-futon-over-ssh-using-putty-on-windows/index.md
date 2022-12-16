@@ -50,6 +50,6 @@ Once the SSH connection is established, open a web browser on your local compute
 
 ![Futon interface](couchdb-futon.png)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You will also be able to access CouchDB directly over its HTTP interface at `http://localhost:5984` without needing to access the server over a public IP.
 {{< /note >}}

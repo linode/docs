@@ -18,7 +18,7 @@ contributor:
 
 **Riot** is an open source complete communication service. You can use Riot to chat, exchange files, make voice or video calls, and add bots; all while keeping control of your data. Riot is a [Matrix](https://matrix.org/clients/) web client.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Riot has been renamed to *Element*. You can read more about this name change on the [Element blog](https://element.io/blog/welcome-to-element/). This guide uses the Riot naming to refer to this Matrix web client.
 {{</ note >}}
 
@@ -28,13 +28,13 @@ Riot has been renamed to *Element*. You can read more about this name change on 
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you choose to configure a firewall, remember to open ports 80 and 443 for the server when you reach the [configure a firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) section of the guide.
 {{</ note >}}
 
 1.  To connect to the Synapse / Matrix services with a client other than Riot, you need a [Matrix client](https://matrix.org/clients/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

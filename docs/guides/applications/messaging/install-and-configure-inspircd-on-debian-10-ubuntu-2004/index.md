@@ -32,7 +32,7 @@ InspIRCd is a free and open-source IRC server application. It has been designed 
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -52,7 +52,7 @@ This guide is written for non-root users. Commands that require elevated privile
 
 Open the InspIRCd configuration file, located at `/etc/inspircd/inspircd.conf`, and update it with changes displayed in this section.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Refer to InspIRCd's documentation on [configuration options](https://docs.inspircd.org/3/configuration/) for explanations of each of the configuration tags and values updated in this section's steps.
 {{< /note >}}
 
@@ -108,7 +108,7 @@ Refer to InspIRCd's documentation on [configuration options](https://docs.inspir
 
 1. Open the `/etc/inspircd/inspircd.rules` file, and enter the usage rules for your IRC server. Users can review these with the `/rules` command. The rules should set expectations for the kinds of behavior you allow on your server.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Not all IRC clients support the `/rules` command. The popular client WeeChat, for example, does not support this command. If you expect users may frequently use one of these clients, you may also opt to present your rules in the message of the day.
     {{< /note >}}
 
@@ -217,7 +217,7 @@ While not necessary, using SSL certification on your IRC server significantly in
 
 To connect to the IRC server now, you need to use port `6697`. In WeeChat, you can do this in one of two ways:
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In both of the examples that follow, replace `example-irc-alias` with your server's WeeChat alias and `irc.example.com` with your server's domain name.
 {{< /note >}}
 

@@ -44,7 +44,7 @@ Since MongoDB can require a significant amount of RAM, we recommend using a [hig
 
         sudo yum update
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -215,7 +215,7 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 
     If you're not familiar with MongoDB terminology, you can think of a collection as analogous to a table in a relational database management system. For more information on creating new collections, see the MongoDB documentation on the [db.createCollection() method](https://docs.mongodb.com/manual/reference/method/db.createCollection/).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Collection names should not include certain punctuation such as hyphens. However, exceptions may not be raised until you attempt to use or modify the collection. For more information, refer to MongoDB's [naming restrictions](https://docs.mongodb.com/manual/reference/limits/#naming-restrictions).
 {{< /note >}}
 

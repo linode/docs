@@ -54,7 +54,7 @@ This guide shows a first example of how to send data from the Linode API to the 
 
     ![Twilio onboarding form - phone number verification](twilio-verify-phone-number-screen.png "Twilio onboarding form - phone number verification")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Later in the onboarding process, Twilio assigns you a new number that Twilio's texts are delivered from.
 {{< /note >}}
 
@@ -264,7 +264,7 @@ The `create` method returns a reference to the Twilio [message resource](https:/
 
 1. After appending the above snippet, save the file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The code example is now complete. The completed example should look like the code in [this file](linode-api-twilio.py).
 {{< /note >}}
 

@@ -36,7 +36,7 @@ However, you can get even more out of Nagios by setting it up to deliver alerts 
 
 1. Replace `example.com` throughout this guide with your machine's domain name, and replace `fqdn.example.com` with your machine's fully qualified domain name (FQDN).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -44,7 +44,7 @@ This guide is written for non-root users. Commands that require elevated privile
 
 {{< content "email-warning-shortguide" >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide also provides instructions for configuring local emails, which are not subject to the above restriction. Under this configuration, emails are only delivered to users on the same machine as Nagios.
 {{< /note >}}
 

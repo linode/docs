@@ -55,7 +55,7 @@ The steps in this section work on macOS 13.0 and above.
 
 1.  Add the `mongosh` and `mongocryptd` binaries to your PATH.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If, upon invocation, `mongosh` doesn't execute, it may be necessary (depending on the version of macOS) to navigate to *Application Security* in *System Preferences*. Then, verify that `mongosh` and `mongocryptd` have the correct permissions.
 {{</ note >}}
 

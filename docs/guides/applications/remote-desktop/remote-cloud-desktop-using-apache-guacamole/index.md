@@ -89,7 +89,7 @@ nautilus &
 
     ![Guacamole Login](guac_login.png)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 After you connect to the VNC server if you are not able to open the default browser such as the `Debian Sensible Browser` and see `Failed to Execute Default Web Browser. Input/Output error`, then try installing a different browser such as `FireFox` or others.
 {{< /note >}}
 
@@ -107,7 +107,7 @@ VNC, RDP, SSH, and Telnet are supported. This section of the guide will show how
 
     The [official documentation](https://guacamole.incubator.apache.org/doc/gug/configuring-guacamole.html#vnc) has detailed descriptions of all parameter names.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you have multiple displays running on the same Linode, increment the port number for each display: 5902, 5903, etc. If your remote displays are hosted on different Linodes, each display should still use port 5901.
 {{< / note >}}
 

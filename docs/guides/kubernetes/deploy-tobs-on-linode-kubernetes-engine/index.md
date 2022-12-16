@@ -39,7 +39,7 @@ TOBS includes the following components:
 
 ## Before You Begin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide was written using [Kubernetes version 1.23](https://v1-17.docs.kubernetes.io/docs/setup/release/notes/).
 {{< /note >}}
 
@@ -141,7 +141,7 @@ tobs-kube-prometheus-prometheus                             ClusterIP   10.128.1
 
 1.  Use `kubectl` [port-forward](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward) to open a connection to a service, then access the service's interface by entering the corresponding address in your web browser:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Press **control+C** on your keyboard to terminate a port-forward process after entering any of the following commands.
     {{< /note >}}
 

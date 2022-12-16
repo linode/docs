@@ -45,7 +45,7 @@ As a potential replacement for CentOS, AlmaLinux provides many attractive sellin
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -90,7 +90,7 @@ Status: "Running, listening on: port 80"
 
 The `firewalld` service is already installed and enabled as part of AlmaLinux. Additional configuration is required to allow Apache connections to pass through the firewall.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 It is strongly recommended that you keep the firewall turned on.
 
 - To temporarily disable the firewall to debug a problem, enter the command `sudo systemctl stop firewalld`.
@@ -127,7 +127,7 @@ public (active)
   ...
     {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In addition to `firewalld`, the security application SELinux comes pre-loaded with AlmaLinux. Under certain conditions, the two applications might conflict with one another. Verify the status of SELinux using the `sestatus` command. SELinux can be temporarily disabled for debugging purposes using the `sudo setenforce 0` command.
 {{< /note >}}
 
@@ -141,7 +141,7 @@ In addition to `firewalld`, the security application SELinux comes pre-loaded wi
 
         cp path-to-home-page/index.html /var/www/html
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 If you do not have an `index.html` file in `/var/www/html` directory, you can create one. This is to confirm that the web server is serving the page from this directory.
 {{< /note >}}
 

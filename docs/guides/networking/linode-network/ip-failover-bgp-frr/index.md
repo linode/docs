@@ -58,7 +58,7 @@ This section provides instructions for installing FRR on Debian, Ubuntu, and Cen
 
         FRRVER="frr-stable"
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For more information on FRR versions, see the [FRR Debian repository](https://deb.frrouting.org/) and [FRR's Github Releases](https://github.com/FRRouting/frr/releases).
 {{< /note >}}
 
@@ -86,7 +86,7 @@ For more information on FRR versions, see the [FRR Debian repository](https://de
 
         FRRVER="frr-stable"
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For more information on FRR versions, see the [FRR RPM repository](https://rpm.frrouting.org/) and [FRR's Github Releases](https://github.com/FRRouting/frr/releases).
 {{< /note >}}
 

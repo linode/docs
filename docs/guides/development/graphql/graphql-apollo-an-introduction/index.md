@@ -80,7 +80,7 @@ From your system's command line, install the GraphQL client:
 
     npm install graphql @apollo/client cross-fetch
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Your system may require [ECMAScript module (esm) loader](https://www.npmjs.com/package/esm). To install esm, use the following command:
 
       sudo npm install --save esm
@@ -217,7 +217,7 @@ The output returns the following:
 Please browse to <http://localhost:4000/graphql>
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To visit the application remotely, you can use an SSH tunnel:
 
 - On macOS or Linux, use the command below to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.

@@ -75,7 +75,7 @@ Stopping services on your current host will temporarily disable your website.
 
         sudo systemctl start apache2
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If any new information is added to the database on the current host prior to fully transferring service to Linode, that new information is not included in the MySQL backup that was performed in this section.
 {{< /note >}}
 

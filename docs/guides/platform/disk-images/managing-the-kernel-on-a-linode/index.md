@@ -49,7 +49,7 @@ The kernel version should be a string that's similar to `5.4.0-80-generic`. In t
 
 You can use the Cloud Manager to view the type of kernel you are using. If you are using a Linode kernel (not an upstream kernel), you can also view the kernel version.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These instructions may not accurately reflect the actual kernel version installed. This is especially true if the Linode hasn't been rebooted in a while or wasn't rebooted after a change to the Linode's Configuration. To determine the actual kernel version installed on your system, see [Determining Which Kernel Is Installed](#determining-which-kernel-is-installed).
 {{</ note >}}
 

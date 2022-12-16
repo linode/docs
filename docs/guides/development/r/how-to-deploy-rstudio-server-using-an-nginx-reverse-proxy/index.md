@@ -138,6 +138,6 @@ server {
 
     ![Rstudio Screen](rstudio-server-page.png)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If Rstudio does not load in the browser, you may need to clear your browser cache.
 {{< /note >}}

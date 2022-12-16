@@ -110,7 +110,7 @@ You then want to begin adding your domains to the Linode DNS Manager as secondar
 
 Complete the following steps using Linode Cloud Manager:
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Creating a domain also creates its corresponding domain zone.
 {{</ note >}}
 

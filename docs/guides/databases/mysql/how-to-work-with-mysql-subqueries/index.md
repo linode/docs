@@ -54,7 +54,7 @@ To understand how subqueries work, create a sample database first. This sample d
 
     When prompted, enter the root password of your MySQL server and hit **Enter** to continue. Note that your MySQL server's root password is not the same as the root password for your Linode.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your password is not accepted, you may need to run the previous command with `sudo`:
 
     sudo mysql -u root -p
@@ -66,7 +66,7 @@ If your password is not accepted, you may need to run the previous command with 
 mysql >
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are using MariaDB, you may see a prompt like the following instead:
 
     {{< output >}}
@@ -331,7 +331,7 @@ When subqueries are used in the `FROM` clause of a parent query, they are referr
 
 When subqueries are used as derived tables, they isolate the different parts of the SQL statement. In other words, the subquery provides a simplified expression of a table that can be used within the scope of the parent query.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Remember, every derived table must be aliased.
 {{< /note >}}
 
@@ -348,7 +348,7 @@ Run the command below to create a derived table subquery that is aliased as `ord
         ) as order_summary
     WHERE order_summary.total_orders > 1;
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In this command, the subquery appears in parentheses as:
 
     SELECT

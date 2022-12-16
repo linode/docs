@@ -81,7 +81,7 @@ Choose 1-4 [1]:
 
         @reboot date >> ~/clock.txt
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To add a delay before running the job, prefix the string `sleep <numseconds> &&` to the command. The example above would become `@reboot sleep 30 && date >> ~/clock.txt`.
     {{< /note >}}
 

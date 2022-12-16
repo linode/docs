@@ -43,7 +43,7 @@ If you remove these resources afterward, you are only [billed for the time](/doc
   - Using the CLI allows you to save time creating, labeling, and tagging your Linodes.
 - Create a new directory to work from. For example, you can name it, **"Ansible_Infra"**.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{</ note >}}
 
@@ -51,7 +51,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ### Create One Ansible Control Node and Four Managed Nodes
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This section requires that you have the [Linode CLI](/docs/products/tools/cli/guides/install/) installed and configured on your computer.
 {{</ note >}}
 
@@ -104,7 +104,7 @@ Your output should resemble the following example:
 
 Use the following command to print the last five Linode IDs and redirect the output to the `tmp.txt` file. You can use these Linode IDs to tag and label your Linodes.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Tagging and labeling your Linodes helps to keep your Linode Cloud Manager organized.
 {{< /note >}}
 
@@ -130,7 +130,7 @@ If you check the Cloud Manager GUI, you can see these five Linodes grouped under
 
 Create three files named `ansibleCN_setup.sh`, `ansibleMN_setup.sh`, and `myplaybook.yml`. Using a text editor, copy and paste the code in the example files below into each respective file. The setup files help to secure your Linode, install needed software, and create a limited user on your instance. The playbook file, `myplaybook.yml` is what Ansible uses to configure the managed nodes.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 As a shortcut, you can also `wget` the configuration files from [the author's GitHub repository](https://github.com/bennettnw2/Ansible_webserver_infra_files) and save them in your local, working folder, `Ansible_Infra` that you created earlier.
 
     wget https://raw.githubusercontent.com/bennettnw2/Ansible_webserver_infra_files/main/ansibleCN_setup.sh
@@ -390,7 +390,7 @@ Ansible playbooks are what makes Ansible powerful software. The syntax of the ta
 
 Using `scp`, the above files are sent to the Ansible control node. You can then log into the control node and execute the control node script, `ansibleCN_setup.sh`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Throughout all the steps in this section, replace `VM1_IPADDRESS` with the [IP address](/docs/guides/find-your-linodes-ip-address/) obtained from either the Linode CLI or Cloud Manager.
 {{< /note >}}
 
@@ -414,7 +414,7 @@ Do not forget the colon "**:**" at the end of the command below.
 
         ./ansibleCN_setup.sh
 
-    {{<note>}}
+    {{< note respectIndent=false >}}
 The script asks you to enter a username and password for the new user being created.
 {{</note>}}
 
@@ -458,7 +458,7 @@ Your output should resemble the following example:
 
 Using the text editor of your choice, copy and paste this output to the end of the `/etc/hosts/` file on `vm1`.
 
-{{<note>}}
+{{< note respectIndent=false >}}
 Use `sudo` to edit `/etc/hosts` using Vi(m).
 {{</note>}}
 
@@ -554,7 +554,7 @@ From the local computer, open four terminal sessions, and within each session, s
 
     ./ansibleMN_setup.sh
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The script asks you to enter a username and password for the new user being created.
 {{</ note >}}
 
@@ -568,7 +568,7 @@ Log back into the control node and run the command below. This sends the control
 
     for i in {2..5}; do sshpass -f ~/.ssh/file ssh-copy-id $USER@vm$i; done
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If the limited user's password is different from the root user's password, change the `~/.ssh/file` contents to match the limited user's password.
 {{</ note >}}
 

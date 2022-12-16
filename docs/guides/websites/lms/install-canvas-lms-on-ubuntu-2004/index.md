@@ -54,7 +54,7 @@ This guide shows you how to get a Canvas website up and running on an Ubuntu 20.
 
 1. Replace `example.com` in this guide with your server's domain name. You can complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name for your Linode server.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -333,7 +333,7 @@ production:
 </IfModule>
     {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Canvas has a relatively long startup time, which can sometimes lead to timeout issues. You can add a version of the following line to the `passenger.conf` file to increase the time before Canvas times out at startup. This example increases the amount of time before Passenger times out, from the default 60 seconds up to 180 seconds:
 
     PassengerStartTimeout 180

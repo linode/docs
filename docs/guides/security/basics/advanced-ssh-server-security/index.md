@@ -47,7 +47,7 @@ There's a good chance you've been using SSH (Secure Shell) to access your Linode
 
         sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.BACKUP
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

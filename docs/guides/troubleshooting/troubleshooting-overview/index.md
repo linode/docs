@@ -39,7 +39,7 @@ If your Linode is unresponsive, either at the Lish console or to basic network r
 
 ## Linode is Slow
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You should follow all steps in the [Troubleshooting Basic Connection Issues](/docs/guides/troubleshooting-basic-connection-issues/) guide before using the checklist in this section.
 {{< /note >}}
 
@@ -119,7 +119,7 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 1.  If your I/O wait percentage is above zero, verify that your server has enough [free memory available](/docs/guides/troubleshooting-overview/#is-the-linode-out-of-memory). In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
 1.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/guides/use-vmstat-to-monitor-system-performance/) to find the application responsible for the excessive I/O. Databases are often a source of excessive I/O. You may need to stop and/or reconfigure the application.
 
-     {{< note >}}
+     {{< note respectIndent=false >}}
 You must run `iotop` as `root` or with `sudo`.
     {{< /note >}}
 
@@ -131,7 +131,7 @@ Since `top` only reports what is currently happening, and most I/O issues are te
 
 If your website is unresponsive or not loading correctly, read through the [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You should follow all steps in the [Linode is Slow](#linode-is-slow) section before following the [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guide.
 {{< /note >}}
 
@@ -139,7 +139,7 @@ You should follow all steps in the [Linode is Slow](#linode-is-slow) section bef
 
 If you can't connect to your Linode over SSH, read through the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You should follow all steps in the [Linode is Slow](#linode-is-slow) section before following the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) guide.
 {{< /note >}}
 

@@ -31,7 +31,7 @@ relations:
 
 The [Elastic](https://www.elastic.co/) stack is a troika of tools that includes Elasticsearch, Logstash, and Kibana. These tools provide a free and open-source solution that searches, collects, and analyzes data. This data can be from any source and in any format. They also visualize the data in real time.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Version 7.11 of the Elastic stack is used in this guide, which is the latest at the time of this writing.
 {{< /note >}}
 
@@ -57,13 +57,13 @@ This guide shows how to:
 
 1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and create a Linode to install the Elastic stack on. Then, complete the steps for setting your Linode's hostname and timezone.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Multiple services are run on a single Linode in this guide. We recommend using at least a 2G (or `g6-standard-1`) sized Linode instance to support these services.
 {{< /note >}}
 
 1.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -102,7 +102,7 @@ autorefresh=1
 type=rpm-md
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This repository configuration file does not enable the repository by default when using `yum` commands in order to avoid potential package conflicts with default packages. Subsequent commands in this guide use the `yum` flag `--enablerepo=elastic-7.x` whenever a package from this repository must be installed.
 {{< /note >}}
 
@@ -119,7 +119,7 @@ This repository configuration file does not enable the repository by default whe
 -Xmx512m
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 By default, these options are commented out and have the following values. So, you need to uncomment the lines as well (by removing the two `#` symbols at the beginning of the line):
 
 ```
@@ -217,7 +217,7 @@ In order to collect Apache access logs, Logstash must be configured to watch any
 -Xmx512m
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 These options have the following values by default:
 
 ```
@@ -247,7 +247,7 @@ output {
 }
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This example configuration assumes that your website logs are stored in the `/var/www/*/logs/access.log` file path.
 
 If your site was set up by following the [Configure Apache for Virtual Hosting](/docs/guides/how-to-install-apache-web-server-centos-8/#configure-apache-for-virtual-hosting) section of the [Apache Web Server on CentOS 8](/docs/guides/how-to-install-apache-web-server-centos-8/) guide, then your logs are stored in this location. If you website logs are stored in another location, update the file path in the configuration file before proceeding.
@@ -279,7 +279,7 @@ If your site was set up by following the [Configure Apache for Virtual Hosting](
 
     ![Kibana 7 Initial](kibana-welcome-dialog.png "Kibana 7 Initial")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The first time that Kibana starts, the daemon performs several optimization steps that may delay startup time. If the web page is not available immediately, wait a few minutes or check the logs with the command `sudo journalctl -u kibana`.
 {{< /note >}}
 
@@ -309,7 +309,7 @@ Kibana is now able to display logs stored in indices that match the `logstash-*`
 
 When the previous `curl` commands generated entries in the Apache access logs, Logstash indexed them in Elasticsearch. These are now visible in Kibana.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Logs are retrieved based upon a time window that is shown in the upper right corner of the Kibana interface. By default, this panel displays "Last 15 minutes". At certain points, you may find that log entries are not shown in the Kibana interface. If this happens, click the timespan panel and choose a wider range, such as "Last hour" or "Last 4 hours." After choosing a broad enough range of time, your logs should appear.
 {{< /note >}}
 
@@ -381,7 +381,7 @@ Kibana supports many types of Elasticsearch queries to gain insight into indexed
 
     ![Kibana 7 Select Pie Chart Configuration](kibana-finished-pie-chart-visualization.png "Kibana 7 Select Pie Chart Configuration")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may need to view a longer time span for the pie chart to show both 200 and 404 HTTP responses. This may be done by clicking the calendar icon next to the search bar and selecting a longer time period, such as "Last 1 Hour".
 {{< /note >}}
 

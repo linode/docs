@@ -17,7 +17,7 @@ tags: ["linode platform","cloud manager"]
 
 Linode installs base Linux images to all distributions. This includes all of the packages included by the base image by default. However, this also includes images added by Linode to nearly all Distros which provide access to common tools and functionalities. The packages are tailored to help with systems administration in the cloud, and ensure that all Linode images work with all Linode products and services. Below is a list of the additional packages installed for all of our distributions.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Gentoo and Slackware do not use any packages not provided by the distribution.
 {{< /note >}}
 

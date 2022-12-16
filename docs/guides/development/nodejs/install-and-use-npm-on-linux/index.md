@@ -38,7 +38,7 @@ NPM is also the most popular Node.js package manager. With that popularity comes
 
 Yarn was originally designed to address performance and security concerns in NPM. And while Yarn still outshines NPM in terms of speed, NPM has made vast security improvements that put it about even with Yarn.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can learn more about Yarn in our [How to Install and Use the Yarn Package Manager](/docs/guides/install-and-use-the-yarn-package-manager) guide.
 
 To learn how to install Node.js, jump to the [How to Install NPM](#how-to-install-npm) section of this guide.

@@ -30,7 +30,7 @@ According to [the official Security Enhanced Linux project page](http://www.seli
 
 2.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -58,7 +58,7 @@ SELinux alters parts of Linux profoundly. An error in its installation can easil
 
 3.  Press `Q` to close the status info.
 
-    {{< note >}}A few Ubuntu 22.04 variants for embedded computing do not run AppArmor. Therefore, if you see "... apparmor.service could not be found ..." you can safely skip the next paragraphs and go immediately to the "Install SELinux" section below.{{< /note >}}
+    {{< note respectIndent=false >}}A few Ubuntu 22.04 variants for embedded computing do not run AppArmor. Therefore, if you see "... apparmor.service could not be found ..." you can safely skip the next paragraphs and go immediately to the "Install SELinux" section below.{{< /note >}}
 
 4.  In the more common case, where AppArmor is running, stop it:
 
@@ -122,7 +122,7 @@ If you connect to your host via SSH, access will be lost once SELinux is enabled
 
         sudo reboot
 
-    {{< note >}}The first reboot with SELinux enabled begins a relabelling process that could take a long time, so be patient.{{< /note >}}
+    {{< note respectIndent=false >}}The first reboot with SELinux enabled begins a relabelling process that could take a long time, so be patient.{{< /note >}}
 
 2.  Verify this through examination of /etc/selinux/config:
 

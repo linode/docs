@@ -83,7 +83,7 @@ See the guide on how to [Install a MySQL server on Ubuntu 14.04](/docs/guides/in
 
     ![MySQL Workbench Connection](mysql-workbench-connection.png "MySQL Workbench Connection")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The MySQL server default port should be `3306` on `l27.0.0.1`. If you wish to connect to another server with a different port, update the inputs accordingly. See [Deploy MySQL Workbench for Database Administration](/docs/guides/deploy-mysql-workbench-for-database-administration/) for more information.
 {{< /note >}}
 

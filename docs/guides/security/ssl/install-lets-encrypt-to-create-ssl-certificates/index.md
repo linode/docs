@@ -46,7 +46,7 @@ For most situations, the recommended method for installing Let's Encrypt certifi
 
         sudo apt update && sudo apt upgrade
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -78,7 +78,7 @@ Let's Encrypt automatically performs Domain Validation (DV) using a series of *c
 
         sudo -H ./letsencrypt-auto certonly --standalone -d example.com -d www.example.com
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 ACME version 2 now supports wildcard certificates for subdomains by using the DNS challenge. For more information on obtaining wildcards, visit the [Let's Encrypt documentation](https://community.letsencrypt.org/t/acme-v2-production-environment-wildcards/55578).
 {{< /note >}}
 
@@ -177,7 +177,7 @@ IMPORTANT NOTES:
 
     Let's Encrypt has refreshed the lifespan of your certificates; in this example, March 31st, 2016 is the new expiration date.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Let's Encrypt certificates have a 90-day lifespan. [According to Let's Encrypt](https://letsencrypt.org/2015/11/09/why-90-days.html), this encourages automation and minimizes damage from key compromises. You can renew your certificates at any time during their lifespan.
 {{< /note >}}
 

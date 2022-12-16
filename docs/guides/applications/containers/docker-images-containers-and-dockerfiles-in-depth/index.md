@@ -62,7 +62,7 @@ EXPOSE 80
 CMD ["apache2ctl","-D","FOREGROUND"]
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `ARG DEBIAN_FRONTEND=noninteractive` instruction ensures that the subsequent `RUN apt-get` commands execute without requiring additional user input when building images. This instruction could also be written using `ENV` instead of `ARG` to make the environment variable persist in containers that are deployed with the image. Because non-interactivity may not be expected when working within such containers, `ARG` is recommended in this case.
 {{< /note >}}
 
@@ -86,7 +86,7 @@ apache_image   latest    7e5c14739da5   7 seconds ago   215MB
 ubuntu         latest    7e0aa2d69a15   6 weeks ago     72.7MB
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 By default, built images are tagged "latest." If you want to change the tag, such as to "development", format the command as follows:
 
     docker build ~/mydockerbuild -f apache_dockerfile -t apache_image:development
@@ -115,7 +115,7 @@ CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS   
 
         docker stop apache
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can enter the container ID in place of `apache` in the above command.
 {{< /note >}}
 

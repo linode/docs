@@ -76,7 +76,7 @@ It is important to note that automatic backups using Linode's Backup Service wil
 
     ![Restore Backup to Existing Linode](upgrade-centos8-restore-to-existing.png "Restore Backup to Existing Linode")
 
-     {{< note >}}
+     {{< note respectIndent=false >}}
 
 If your Linode's disks have been using the entirety of allocatable space available to your Linode, then you will either need to [Resize Your Disk](/docs/guides/resize-a-linode-disk/) so that you can take a new [Snapshot](/docs/products/storage/backups/#take-a-manual-snapshot), or [Resize Your Linode](/docs/guides/resizing-a-linode/)
 

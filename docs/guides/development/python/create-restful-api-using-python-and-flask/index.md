@@ -24,7 +24,7 @@ contributor:
 - Filter the programming language resources based on the publication year field
 - POST, PUT, and DELETE a programming language instance
 
-{{< note >}}
+{{< note respectIndent=false >}}
 GET, POST, PUT, and DELETE are [HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) used to perform an action on a resource.
 {{</ note >}}
 
@@ -34,7 +34,7 @@ The REST protocol gives clients access to resources stored in a database and all
 
 ### Install Flask
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This section makes use of the [virtualenv](https://pypi.org/project/virtualenv/) tool to create a virtual environment on your system. Follow the installation steps in our [How to Create a Python Virtual Environment](/docs/guides/create-a-python-virtualenv-on-debian-10/) guide if you do not have virtualenv installed on your computer.
 {{</ note >}}
 
@@ -60,7 +60,7 @@ In order to run a Flask server, you install Flask first using the [Python Packag
 
 RESTful services typically have two endpoints used to retrieve (GET) resources. One endpoint *lists* all resources or filters them according to some criterion. The second endpoint retrieves the *details* of a specific resource based on a unique identifier. In this section, you create two endpoints to GET resources from your API. This section may refer to these endpoints as the `list` and `details` endpoints.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 All the steps in this section edit the same file, `prog_lang_app.py`.
 {{</ note >}}
 
@@ -73,7 +73,7 @@ app = Flask(__name__)
 
     These lines import Flask, and instantiate the app. You can instantiate the class `Flask` and assign it to a variable (traditionally, this variable is named `app`)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Although RESTful APIs typically access data from a database, this tutorial does not cover the [details of integrating with a database](https://flask.palletsprojects.com/en/2.0.x/tutorial/database/).
     {{</ note >}}
 
@@ -92,7 +92,7 @@ in_memory_datastore = {
 
 - Create the `list` endpoint with the code in the example below. Below the `in-memory datastore` dictionary, a rudimentary list endpoint fetches all the programming language resources and displays them as JSON.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 RESTful APIs are generally organized around a resource. A resource refers to the database records that an API gives clients access to. In the case of this tutorial, the resource is an instance of a programming language.
     {{</ note >}}
 
@@ -105,7 +105,7 @@ def list_programming_languages():
 
     Requests can be sent to the `/programming_languages` URL using the GET HTTP verb. The request should be sent without any parameters. This endpoint fetches all the records in the datastore. It returns a JSON object with the key `programming_languages`. This key points to all the records and is represented as an array.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 There are two reasons to put the list into an object with a label, rather than returning the raw array.
 
 1. *Maintainability*: an object provides the freedom to add more attributes to the return body later. For example, suppose you wanted to return a count of the objects in the database. You cannot add a count attribute to a raw array, but you can add a count attribute to an enclosing JSON object with one key that points to an array. This is especially useful in APIs that allow clients to filter sections of data or to request aggregate metrics for the data or sections of data.

@@ -37,7 +37,7 @@ You can easily deploy an LKE cluster in several ways:
 - Via the [Linode Cloud Manager](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)
 - With the Linode API (as presented in this guide)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Linode API and the Kubernetes API are two separate interfaces, and both are mentioned in this article. The Linode API allows you to manipulate your Linode infrastructure, while the Kubernetes API allows you to manage the software objects running in your cluster.
 {{< /note >}}
 - With the [Linode CLI](/docs/products/tools/cli/get-started/)
@@ -84,7 +84,7 @@ This guide covers how to use the Linode API to:
 | `node_pools` | The collections of Linodes that serve as the worker nodes in your LKE cluster. |
 | `k8s_version` | The desired version of Kubernetes for this cluster. |
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The available plan types for LKE worker nodes are [Shared](/docs/guides/choosing-a-compute-instance-plan/#1-shared), [Dedicated CPU](/docs/guides/choosing-a-compute-instance-plan/#3-dedicated-cpu), and [High Memory](/docs/guides/choosing-a-compute-instance-plan/#2-high-memory) plans.
 {{< /note >}}
 
@@ -112,7 +112,7 @@ The available plan types for LKE worker nodes are [Shared](/docs/guides/choosing
 
 1. Make note of your cluster's ID, as you need it to continue to interact with your cluster in the next sections. In the example above, the cluster's ID is `"id": 456`. You can also access your cluster's ID by [listing all LKE Clusters](#list-lke-clusters) on your account.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
 {{</ note >}}
 
@@ -135,7 +135,7 @@ To communicate with your LKE cluster, kubectl requires a copy of your cluster's 
 
 1.  Copy the `kubeconfig` field's value from the response body, since you need it in the next step.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure you only copy the long string inside the quotes following `"kubeconfig":` in your output. Do not copy the curly braces or anything outside of them. You receive an error if you use the full output in later steps.
 {{< /note >}}
 
@@ -156,7 +156,7 @@ Make sure you only copy the long string inside the quotes following `"kubeconfig
 
         echo $KUBE_VAR | base64 -D > cluster12345-config.yaml
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The YAML file that you decode to (`cluster12345-config.yaml` here) can have any name of your choosing.
 {{< /note >}}
 
@@ -172,7 +172,7 @@ The YAML file that you decode to (`cluster12345-config.yaml` here) can have any 
 
         kubectl config view
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also access a decoded version of your kubeconfig file in the [Linode Cloud Manager](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-and-download-your-kubeconfig).
 {{</ note >}}
 
@@ -197,7 +197,7 @@ lke166-197-5d44703cd211   Ready    none   2d22h   v1.14.0
 
 If you create a new terminal window, it does not have access to the context that you specified using the previous instructions. This context information can be made persistent between new terminals by setting the [`KUBECONFIG` environment variable](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) in your shell's configuration file.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are using Windows, review the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) for how to persist your context.
 {{< /note >}}
 
@@ -209,7 +209,7 @@ These instructions persist the context for users of the Bash terminal. They are 
 
         export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/configs/cluster12345-config.yaml
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Alter the `$HOME/.kube/configs/cluster12345-config.yaml` path in the above line with the name of the file you decoded to in the previous section.
 {{< /note >}}
 
@@ -315,7 +315,7 @@ The response body provides information about the number of nodes in the node poo
 {"count": 2, "id": 193, "type": "g6-standard-2", "linodes": [{"id": "13841932", "status": "ready"}, {"id": "13841933", "status": "ready"}]}%
 {{</ output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If desired, you can use your node pool's Linode ID(s) to get more details about each node in the pool. Send a `GET` request to the `/linode/indstances/{linodeId}` endpoint. In this example, ensure you replace `13841932` with your Linode's ID.
 
     curl -H "Authorization: Bearer $TOKEN" \
@@ -375,7 +375,7 @@ The response body resembles the following:
 {"count": 5, "id": 196, "type": "g6-standard-1", "linodes": [{"id": "13841945", "status": "ready"}, {"id": "13841946", "status": "ready"}, {"id": "13841947", "status": "ready"}, {"id": "13841948", "status": "ready"}, {"id": "13841949", "status": "ready"}]}%
 {{</ output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
 {{</ note >}}
 
@@ -387,7 +387,7 @@ You can resize an LKE cluster's node pool to add or decrease its number of nodes
 Shrinking a node pool results in deletion of Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) is erased.
 {{< /caution >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You cannot modify an existing node pool's plan type. If you would like your LKE cluster to use a different node pool plan type, you can [add a new node pool](#add-a-node-pool-to-your-lke-cluster) to your cluster with the same number of nodes to replace the current node pool. You can then [delete the node pool](#delete-a-node-pool-from-an-lke-cluster) that is no longer needed.
 {{</ note >}}
 
@@ -406,7 +406,7 @@ To update your node pool's node count, send a `PUT` request to the `/lke/cluster
             "count": 6
         }' https://api.linode.com/v4/lke/clusters/12345/pools/196
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
 {{</ note >}}
 

@@ -105,7 +105,7 @@ The Helm client software issues commands to your cluster. You run the client sof
    {{< content "k8s-alpha-deprecation-shortguide" >}}
 
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 This guide's example instructions will also result in the creation of a Block Storage Volume and a NodeBalancer, which are also billable resources. If you do not want to keep using the example application after you finish reviewing your guide, make sure to [delete](#delete-a-release) these resources afterward.
 {{< /note >}}
 
@@ -186,7 +186,7 @@ mariadb.mariadbRootPassword: "secretpassword"
 
     Replace the value for `ghostHost` with a domain or subdomain that you own and would like to assign to the app; the value for `ghostEmail` with your email; the values for `ghostUsername` and `ghostPassword` with the credentials you wish to use for logging into your site; and the value for `mariabd.mariadbRootPassword` for the password you wish to use for logging into the database.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you don't own a domain name and won't continue to use the Ghost website after finishing this guide, you can make up a domain for this configuration file.
 {{< /note >}}
 
@@ -308,7 +308,7 @@ By default, Helm 3 does not keep any information about deleted releases, which w
 
     You should also confirm in the [Linode Cloud Manager](https://cloud.linode.com) that the Volumes and NodeBalancer created for the app are removed as well.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In Helm 2, deletions were performed using the `delete` command. This can still be entered to perform the same task, however in helm 3 `delete` aliases to `uninstall`.
 {{< /note >}}
 
@@ -320,6 +320,6 @@ In Helm 2, deletions were performed using the `delete` command. This can still b
 
         helm list --uninstalled
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can no longer rollback a deleted or uninstalled release.
 {{< /note >}}

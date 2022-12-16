@@ -31,7 +31,7 @@ This guide will show you how to generate a GPG key, set up your computer to serv
 
 ## Before You Begin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide will only work on UNIX-based (Linux & OS X) machines! The process is very complicated on Windows but may be possible with some research.
 {{< /note >}}
 
@@ -285,7 +285,7 @@ You can reimport it with the ever-handy `gpg2 --import key-file` command.
 
 ## Move Your Key to a Smartcard or YubiKey (Optional)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you're using a brand new YubiKey, you'll need to enable OpenPGP Card / CCID Mode first. This can be done through the YubiKey Personalization Tool, or by running `ykpersonalise -m82`. `ykpersonalise` can be installed through your package manager.
 {{< /note >}}
 
@@ -293,7 +293,7 @@ If you're using a brand new YubiKey, you'll need to enable OpenPGP Card / CCID M
 
 It is assumed that you have already configured your card/YubiKey's (herein referred to as 'GPG device') owner information. It is highly recommended that you secure your card before you start this section.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Some of these commands may ask for a PIN or Admin PIN. The default PIN is usually `123456`, and the default Admin PIN is usually `12345678`. If these don't work, contact the manufacturer or review online documentation.
 {{< /note >}}
 

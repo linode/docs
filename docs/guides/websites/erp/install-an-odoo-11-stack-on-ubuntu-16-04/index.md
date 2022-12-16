@@ -370,7 +370,7 @@ The examples in this guide use a separate file for logging Odoo activity:
         sudo git clone https://www.github.com/odoo/odoo --depth 1 \
         --branch 11.0 --single-branch /opt/odoo
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Odoo 11 application now uses Python 3.x instead of Python 2.7. If you are using Ubuntu 14.04 this may mean additional steps for your installation. Dependencies are now grouped to highlight the new changes.
 {{< /note >}}
 
@@ -567,6 +567,6 @@ If all your tests pass, you can safely update your installation.
 
         sudo git reset --hard origin/11.0
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Do not confuse the Odoo system update with an Odoo **version** upgrade. With the method explained above, you are updating your Odoo application within the same version rather than **upgrading** to a newer Odoo version. Migrating from one version to another often requires several tests and manual modifications on the PostgreSQL database which are highly dependent on the version of Odoo you are upgrading from.
 {{< /note >}}

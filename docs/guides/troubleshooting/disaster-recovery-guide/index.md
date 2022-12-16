@@ -41,7 +41,7 @@ If you have ensured that your Linode is booted, but do not have SSH access, you 
 
 The [Using the Lish Console](/docs/guides/lish/) contains more information on Lish.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Lish is an out-of-band management tool, so you can use your root login credentials, if needed.
 {{</ note >}}
 

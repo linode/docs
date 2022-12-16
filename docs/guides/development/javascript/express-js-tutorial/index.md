@@ -42,7 +42,7 @@ There are plenty of similar frameworks out there. What sets Express JS apart is 
 
 1. Throughout, this guide uses `example-app` as the name of the Express JS application and `example.com` as the server domain name. Replace these with your preferred application name and your server's domain name, respectively.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -59,7 +59,7 @@ If you want to manually lay out your application's design, you can follow the [E
         cd ~
         npx express-generator --view=pug example-app
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `npx` command works in Node.js from version 8.2.0 onward. If you are using an earlier version of Node.js, you first need to install the Express application generator as a global Node.js package. Use the following commands to accomplish the same as the `npx` command above:
 
     npm install -g express-generator

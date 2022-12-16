@@ -30,7 +30,7 @@ The Service Transfer feature in [Cloud Manager](https://cloud.linode.com) can be
 
 1. Once completed, billing for transferred services ends for the sending account and begins for the receiving account. Linode services will not experience interruptions due to the transfer process.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Only users with full account access can use Service Transfers. To adjust user permissions, see our [Set User Permissions](/docs/products/platform/accounts/guides/user-permissions/) guide. Users with full account access can view and interact with all of the transfers associated with the account, regardless of which user created or accepted the transfer.
 {{< /note >}}
 
@@ -46,7 +46,7 @@ Only users with full account access can use Service Transfers. To adjust user pe
 
 1. Select the services to include in the transfer by checking the empty boxes next to them. Checking the box in the heading for a service type selects all of the services for that type. You can also use the search bar to filter services by label. As you select services, they are added to the **Service Transfer Summary**.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Only Linodes are available for transfer at this time.
 {{< /note >}}
 
@@ -56,15 +56,15 @@ Only Linodes are available for transfer at this time.
 
 1. If the request is successful, a summary window appears that contains a Service Transfer token and a sample message to send to the receiving account. A confirmation email is also sent to the sending account with details of the transfer, including the Service Transfer token.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Linode does not send the Service Transfer token on your behalf. You must send the token to the receiving account by email or other method.
 {{< /note >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Service Transfers automatically expire 24 hours after creation. You can view the expiry dates of your pending transfers from the [Service Transfers](https://cloud.linode.com/account/service-transfers) page. Dates and times are displayed for your configured timezone, which you can adjust from your [Cloud Manager User Profile](https://cloud.linode.com/profile/display).
 {{< /note >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Backups for Linodes are transferred as well.
 {{< /note >}}
 
@@ -107,7 +107,7 @@ Service Transfers cannot be [cancelled](#cancelling-service-transfers) once they
 
 1. If the services are eligible for transfer, you are prompted to confirm responsibility for billing associated with those services. Billing begins for the receiving account after the transfer has been completed. Confirm billing responsibility and click **Accept Transfer** to begin transfer of services to your account. A confirmation email is sent to both the sending and receiving accounts.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Service Transfers can take up to 3 hours to complete once accepted. Another confirmation email is sent to both the sending and receiving accounts once the transfer has been completed. If the transfer fails after being accepted, the sending account must initiate a new Service Transfer.
 {{< /note >}}
 
@@ -139,7 +139,7 @@ For more information on revoking and removing a Longview key and uninstalling th
 
 ## Cancelling Service Transfers
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Only the sending account can cancel a Service Transfer. Once accepted, a transfer cannot be cancelled.
 {{< /note >}}
 

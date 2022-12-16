@@ -53,7 +53,7 @@ This guide introduces the basics of installing Ansible and preparing your enviro
 * Install and configure Ansible on your computer or a Linode to serve as the control node that will manage your infrastructure nodes.
 * Create two Linodes to manage with Ansible and establish a basic connection between the control node and your managed nodes. The managed nodes will be referred to as `node-1`, and `node-2` throughout the guide.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The examples in this guide provide a manual method to establish a basic connection between your control node and managed nodes as a way to introduce the basics of Ansible. If you would like to learn how to use Ansible's [Linode module](https://docs.ansible.com/ansible/latest/modules/linode_v4_module.html) to automate deploying and managing Linodes, see the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/). The guide assumes familiarity with Ansible modules, Playbooks, and dynamic inventories.
     {{</ note >}}
 
@@ -77,7 +77,7 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
     Repeat this procedure for each remaining node.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This step can be automated by using Ansible's Linode module. See the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/) for more information.
     {{</ note >}}
 
@@ -112,7 +112,7 @@ With Miniconda, it's possible to create a virtualized environment for Ansible wh
 
 ### Install Ansible
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide was created using Ansible 2.8.
 {{</ note >}}
 
@@ -127,7 +127,7 @@ This guide was created using Ansible 2.8.
         sudo yum install epel-release
         sudo yum install ansible
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   The EPEL-Release repository may need to be added on certain versions of CentOS, RHEL, and Scientific Linux.
     {{</ note >}}
 
@@ -188,7 +188,7 @@ Following the example below, you will add your three Linodes to the `/etc/ansibl
 
     Each bracketed label denotes an Ansible [group](http://docs.ansible.com/ansible/latest/intro_inventory.html#hosts-and-groups). Grouping your nodes by function will make it easier to run commands against the correct set of nodes.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `/etc/ansible` directory will not exist by default in some environments. If you find that this is the case, create it manually with the following command:
 
     mkdir /etc/ansible/

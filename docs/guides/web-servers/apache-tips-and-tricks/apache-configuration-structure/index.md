@@ -121,7 +121,7 @@ AllowOverride None
 
 {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can specify `AllowOverride All` for a directory that falls within a directory where overrides have been disabled.
 {{</ note >}}
 

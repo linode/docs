@@ -41,7 +41,7 @@ Throughout this guide you learn how to use FastAPI to create the following REST 
 The [REST protocol](https://en.wikipedia.org/wiki/Representational_state_transfer) allows servers to expose data that a client can access and manipulate. This protocol allows clients to perform create, read, update, and delete (CRUD) operations.
 {{</ disclosure-note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide does not cover integrating FastAPI with a database. FastAPI uses an in-memory data store by default. However, you can integrate FastAPI with a [long list of different database providers](https://fastapi.tiangolo.com/tutorial/sql-databases/).
 {{</ note >}}
 
@@ -104,7 +104,7 @@ in_memory_datastore = [
         - the approximate year it was published
         - its conceptual contributions to the design of modern programming languages
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Each record within the `in_memory_datastore` list is a Python dictionary. RESTful APIs are generally organized around a *resource*. A resource is a type of database record that can be accessed by a client.
 {{</ note >}}
 

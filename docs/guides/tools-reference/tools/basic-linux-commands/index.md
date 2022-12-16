@@ -161,7 +161,7 @@ To resize, delete, create, and move your file system partitions, use the `parted
 
     sudo parted -l
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If the `parted` command is not available on your Linux system, use your distribution's package manager to install it. For example, to install `parted` on an Ubuntu system, use the following command:
 
     sudo apt-get install parted
@@ -355,7 +355,7 @@ You can view a Linux system's connected USB devices using the `lsusb` command, a
 
     lsusb
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If your system does not have the `lsusb` command installed, use your package manager to install it. For example, to install it on an Ubuntu 20.04 system, use the following command:
 
     sudo apt-get install usbutils
@@ -402,7 +402,7 @@ The `dmidecode` command displays information detected about BIOS settings and in
 
     dmidecode
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `dmidecode` command cannot change BIOS settings.
 {{</ note >}}
 
@@ -548,7 +548,7 @@ udp        0      0 0.0.0.0:68              0.0.0.0:*                           
 
 The `netstat` command has many powerful options to view information about different areas of your network. For a deeper dive, view our [Inspecting Network Information with netstat](/docs/guides/inspecting-network-information-with-netstat/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Some Linux distributions use the `ss` command, a direct replacement for `netstat`.
 {{</ note >}}
 

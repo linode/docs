@@ -29,13 +29,13 @@ Terraform's primary job is to create, modify, and destroy servers and other reso
 
 Terraform is a general orchestration tool that can interface with a number of different cloud platforms. These integrations are referred to as *providers*. The Terraform provider for Linode was [officially released](https://blog.linode.com/2018/10/30/now-available-linode-terraform-provider/) in October 2018.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The Linode provider relies on Linode's [APIv4](/docs/products/tools/api/), so an API access token is needed to use it. See [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) for instructions on getting an API token and installing Terraform and the Linode provider on your computer.
 {{< /note >}}
 
 The Linode provider can be used to create Linode instances, Images, domain records, Block Storage Volumes, StackScripts, and other resources. Terraform's [official Linode provider documentation](https://www.terraform.io/docs/providers/linode/index.html) details each resource that can be managed.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
 {{</ note >}}
 
@@ -83,7 +83,7 @@ resource "linode_instance" "example_instance" {
 }
 {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The SSH key in this example was truncated for brevity.
 {{< /note >}}
 
@@ -93,7 +93,7 @@ The `provider` block is followed by a *resource* declaration. Resource declarati
 
 Resources can accept arguments. `region` and `type` are required arguments for the `linode_instance` resource. A root password must be assigned to every Linode, but the `root_pass` Terraform argument is optional; if it is not specified, a random password will be generated.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `example_instance` string that follows the `linode_instance` resource type declaration is Terraform's name for the resource. You cannot declare more than one Terraform resource with the same name and resource type.
 
 The `label` argument specifies the label for the Linode instance in the Linode Manager. This name is independent of Terraform's name for the resource (though you can assign the same value to both). The Terraform name is only recorded in Terraform's [state](#state) and is not communicated to the Linode API. Labels for Linode instances in the same Linode account must be unique.
@@ -149,7 +149,7 @@ resource "linode_domain_record" "example_domain_record" {
 
 The domain record's `domain_id` and `target` arguments use HCL's [interpolation syntax](/docs/guides/introduction-to-hcl/#interpolation) to retrieve the ID of the domain resource and the IP of the Linode instance, respectively. Terraform creates an *implicit dependency* on the `example_instance` and `example_domain` resources for the `example_domain_record` resource. As a result, the domain record will not be created until after the Linode instance and the domain are created.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 [Explicit dependencies](https://www.terraform.io/docs/configuration/resources.html#explicit-dependencies) can also be declared.
 {{< /note >}}
 
@@ -196,7 +196,7 @@ root_pass = "your-root-password"
 ssh_key = "ssh-rsa AAAA...Gw== user@example.local"
 {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Place all of your Terraform project's files in the same directory. Terraform will automatically load input variable values from any file named `terraform.tfvars` or ending in `.auto.tfvars`.
 {{< /note >}}
 
@@ -271,7 +271,7 @@ When a provisioner is assigned, it should also include the addition of a [connec
 
 Most provisioners are declared inside of a resource declaration. When multiple provisioners are declared inside a resource, they are executed in the order they are listed. For a full list of [provisioners](https://www.terraform.io/docs/provisioners/index.html), review the official Terraform documentation.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Linode [StackScripts](https://www.terraform.io/docs/providers/linode/r/stackscript.html) can also be used to set up a new Linode instance. A distinction between using StackScripts and the `file` and `remote-exec` provisioners is that those provisioners will run and complete synchronously before Terraform continues to apply your plan, while a StackScript will run in parallel while Terraform creates the rest of your remaining resources. As a result, Terraform might complete its application before a StackScript has finished running.
 {{< /note >}}
 

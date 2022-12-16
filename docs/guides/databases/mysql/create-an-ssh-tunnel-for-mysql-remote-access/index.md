@@ -27,7 +27,7 @@ This guide will show you how to make a secure connection to your remote MySQL or
 An SSH tunnel is an encrypted tunnel made through an SSH protocol connection. You can use an SSH tunnel to communicate remotely with the MySQL database.
 After following these instructions, you'll be able to connect to `localhost` on your workstation using your favorite MySQL management tool. The connection will be securely forwarded to your Linode over the Internet.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 [MariaDB](https://mariadb.com/) is a fork of MySQL and considered a [drop-in replacement](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-compatibility/). Although this guide refers to MySQL, it applies equally to MariaDB as well.
 {{< /note >}}
 
@@ -62,7 +62,7 @@ First, you need to establish a basic connection to your Linode:
 
     ![An unknown host key warning in PuTTY on Windows.](362-putty-02-host-key-warning.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This warning appears because PuTTY wants you to verify that the server you're logging in to is who it says it is. It is unlikely, but possible, that someone could be eavesdropping on your connection and posing as your Linode. To verify the server, compare the key fingerprint shown in the PuTTY warning - the string of numbers and letters starting with **ssh-rsa** in the image above - with your Linode's public key fingerprint. To get your Linode's fingerprint, log in to your Linode via the Lish console (see the **Console** tab in the Linode Manager) and executing the following command:
 
     ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub
@@ -95,7 +95,7 @@ This section will show you how to create an SSH tunnel to MySQL on Mac OS X or L
     `-L` - binds a local port to the remote host post.
     `-N` - means forwarding ports.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're already running a local MySQL server on your workstation, use a different local port (3307 is a common choice). Your new command would look like this:
 
     ssh user@example.com -L 3307:127.0.0.1:3306 -N

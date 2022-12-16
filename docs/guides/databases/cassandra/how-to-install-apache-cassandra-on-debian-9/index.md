@@ -32,7 +32,7 @@ aliases: ['/databases/cassandra/how-to-install-apache-cassandra-on-debian-9/']
 
 After completing this guide, you will have a single-node, production-ready installation of [Apache Cassandra](http://cassandra.apache.org/) hosted on your Linode running Debian 9. This tutorial will cover basic configuration options, as well as harden database security.
 
-{{< note >}}
+{{< note respectIndent=false >}}
  In order to successfully execute the commands in this guide, you will need to run them as the `root` user, or log in using an account with root privileges, prefixing each command with `sudo`.
  {{</ note >}}
 
@@ -75,7 +75,7 @@ In this section, you will install package dependencies, Java, Cassandra, and upd
 
         sudo sh -c 'echo "deb http://www.apache.org/dist/cassandra/debian 311x main" > /etc/apt/sources.list.d/cassandra.list'
 
-      {{< note >}}
+      {{< note respectIndent=false >}}
 You may want to follow the link to the Apache repository to confirm that “40x” is the latest available version.
       {{</ note >}}
 
@@ -127,7 +127,7 @@ JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname=<public name>"
 
             nodetool status
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 It may take a few seconds for Cassandra to refresh the configuration. If you receive another connection error, try waiting 15 seconds before rechecking the node status.
         {{< /note >}}
 
@@ -143,7 +143,7 @@ In this section, you will enable user login authentication. You can also configu
 
 1.  Open `cassandra.yaml` in your preferred text editor:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Locations of the `cassandra.yaml` file may differ slightly between distros.
     {{< /note >}}
 
@@ -201,7 +201,7 @@ permissions_validity_in_ms: 0
 
 The `cqlshrc` file holds configuration settings that influence user preferences and how Cassandra performs certain tasks.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ensure you complete the steps in this section using your limited user account. This account will need [sudo privileges](/docs/guides/set-up-and-secure/#debian), if it does not already have them.
 {{</ note >}}
 
@@ -266,7 +266,7 @@ encoding = utf8
 
         cqlsh -u superuser
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also login by providing your username and password:
 
     cqlsh -u superuser -p password

@@ -32,7 +32,7 @@ MariaDB is a fork of the popular cross-platform MySQL database management system
 
 MariaDB replaced MySQL as the default database system in the CentOS 8 repositories. Though installing MySQL into CentOS 8 is not particularly difficult, if you need a database, MariaDB is recommended for official support and a minimal chance of incompatibilities with other repository software.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -62,7 +62,7 @@ Enable MariaDB to start on boot and then start the service:
 
 MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/), which also applies to MariaDB.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Allowing unrestricted access to MariaDB on a public IP not advised but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MariaDB to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 {{< /note >}}
 

@@ -44,7 +44,7 @@ Before running the commands within this guide, you will need:
 
 1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
@@ -178,7 +178,7 @@ emit_via=motd
 
     You can switch `upgrade_type` to `security` if you want to limit the updates made to only those impacting system security. With `emit_via` set to `motd`, DNF Automatic's reports will be stored in the `/etc/motd` file.
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 The `email` option can be used here, but that the email can only be delivered to a local user unless you have configured an SMTP server.
 {{< /note >}}
 

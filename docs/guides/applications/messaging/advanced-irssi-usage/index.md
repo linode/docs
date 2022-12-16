@@ -35,7 +35,7 @@ Frequently used commands can be mapped with key bindings. For example, this comm
 
 This will create a key binding for `meta-x` (depending on your terminal emulation, this may be `Alt-x` or `Esc-x`) that runs the command `/window last`. When you press `Alt-m-x`, the focus of your Irssi session will toggle between your two most recent windows. If you would like to specify bindings for `Control-` combinations, use `^X` or `^v`, where `X` and `v` are the keys to be bound (`C-X` or `C-v` in emacs-style notation).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 key bindings are case sensitive.
 {{< /note >}}
 

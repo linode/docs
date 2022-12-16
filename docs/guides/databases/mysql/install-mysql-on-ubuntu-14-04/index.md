@@ -32,7 +32,7 @@ MySQL is a popular database management system used for web and server applicatio
 
 We recommend using a [High Memory Linode](https://www.linode.com/pricing/) with this guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -59,7 +59,7 @@ During the installation process, you will be prompted to set a password for the 
 
 MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/) for information on connecting to your databases using SSH.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Allowing unrestricted access to MySQL on a public IP is not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 {{< /note >}}
 

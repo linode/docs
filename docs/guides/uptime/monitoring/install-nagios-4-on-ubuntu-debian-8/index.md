@@ -40,7 +40,7 @@ A monitoring tool is a key application in a production server. Nagios is a popul
 
         sudo apt-get update && sudo apt-get upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -135,7 +135,7 @@ Nagios Plugins allow you to monitor services like DHCP, FTP, HTTP and NTP. To us
 
         sudo service nagios start
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For Ubuntu versions after 14.04, see the [Systemd section below](#systemd) before running this step.
 {{< /note >}}
 

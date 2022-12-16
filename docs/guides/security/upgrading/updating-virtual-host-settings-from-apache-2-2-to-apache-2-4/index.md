@@ -119,7 +119,7 @@ If you are utilizing access control rules within your virtual host files, you wi
 
         systemctl reload httpd.service
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For more information on how you can enable or restrict access to your websites with various `Require` lines, see the [Apache website](http://httpd.apache.org/docs/current/howto/access.html). Most users will want to use the `Require all granted` line, but there may be exceptions.
 {{< /note >}}
 

@@ -21,7 +21,7 @@ Software updates play a pivotally role in maintaining a Linux system. On a daily
 
 This guide covers upgrading your existing system through performing a *clean installation* of your preferred distribution. In many cases, this is the upgrade path that's recommended by Linode, as it avoids many issues that arise during *inline* upgrades and allows you to skip directly to the newest distribution release (even if your system is several releases behind).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Regardless of your chosen upgrade path ([inline upgrade](#inline-upgrade) or [clean install](#clean-install)), knowledge of your application, your application stack, and general systems administration is important and will help contribute to a seamless and successful upgrade.
 {{</ note >}}
 
@@ -49,7 +49,7 @@ This entails deploying the desired distribution version to a new server, potenti
 
 *Consider a clean install when your system is several releases behind your distribution's latest version, when switching to a different distribution altogether, or when making major changes to your software stack.*
 
-{{< note >}}
+{{< note respectIndent=false >}}
 DevOps provisioning tools (such as [Terraform](/docs/guides/beginners-guide-to-terraform/) and [Ansible](/docs/guides/getting-started-with-ansible/)), container platforms ([Docker](/docs/guides/introduction-to-docker/)), and orchestration systems ([Kubernetes](/docs/guides/beginners-guide-to-kubernetes/)) generally make deploying system updates much easier. If your application or DevOps process uses one of these tools, upgrading to the latest operating system may be as simply as adjusting a line in a configuration file. In those cases, consult the tool's documentation to learn more about targeting a newer Linux distribution.
 {{</ note >}}
 
@@ -57,7 +57,7 @@ DevOps provisioning tools (such as [Terraform](/docs/guides/beginners-guide-to-t
 
 - **Ensure you have login credentials to the original system** for either the root user or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
@@ -167,7 +167,7 @@ Databases can be copied in much the same way as files. The major difference is t
 
 After you've configuring the new Linode, copied over the data, and have performed any tests needed to ensure the system is working as expected, you are just about ready to start using the new system. To make the switch over quick and relatively seamless, you can retain the IPv4 addresses from your original Linode by transferring them to your new Linode. To do this, follow the instructions within the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#transferring-ip-addresses)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The Transfer IP functionality only works with IPv4 addresses and cannot transfer IPv6 addresses. If any of your systems, applications, or tools reference the IPv6 address of your original Linode, you will need to update those references with the new IPv6 address. Commonly, this means modifying the [AAAA DNS records](/docs/guides/dns-overview/#a-and-aaaa) on your domain(s).
 {{< /note >}}
 

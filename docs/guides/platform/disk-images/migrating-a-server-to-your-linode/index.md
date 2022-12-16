@@ -16,7 +16,7 @@ published: 2012-05-24
 title: Migrating a Server to Your Linode
 ---
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The process for migrating a server image to your Linode will vary depending upon how the image was created. We recommend making an `.iso` file from your existing image, and then following the steps in our updated [custom distribution](/docs/guides/install-a-custom-distribution/) guide to deploy it on a Linode. This guide is no longer being maintained, and the procedure outlined here is not recommended for new migrations.
 {{< /note >}}
 
@@ -24,7 +24,7 @@ You can migrate an existing server to your Linode from another hosting provider 
 
 ![Migrating a Server to Your Linode](migrating_a_server_to_your_linode.png "Migrating a Server to Your Linode")
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These instructions assume that you'll be working with a live server. If you can boot into an alternate environment, such as a live CD, you should do so. However, most hosting providers do not offer a bootable recovery or maintenance environment.
 {{< /note >}}
 
@@ -36,7 +36,7 @@ First you'll need to prepare the Linode to receive the files from the existing s
 
 Create two disks: one for the files on your existing server, and another for a swap disk. That way, the import from the existing server will be bootable. Here's how to create the disks:
 
-{{< note >}}
+{{< note respectIndent=false >}}
 We assume that your existing server has a single root partition. If you have multiple partitions set up, you'll need to add extra disks to accommodate each partition.
 {{< /note >}}
 
@@ -73,7 +73,7 @@ You'll need a configuration profile to boot your existing server after you uploa
 3.  Enter a name for the configuration profile in the **Label** field.
 4.  *Optional:* Enter notes for the configuration profile in the **Notes** field.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure that you select the correct kernel for your existing server. There are 32-bit and 64-bit versions available. The 64-bit version has `x86_64` in the name.
 {{< /note >}}
 
@@ -115,7 +115,7 @@ Now it's time to copy the files from your existing server to your Linode. Here's
 
         rsync --exclude="/sys/*" --exclude="/proc/*" -aHSKDvz -e ssh / root@123.45.67.890:/media/sda/
 
- {{< note >}}
+ {{< note respectIndent=false >}}
 If you receive a message indicating that the rsync command couldn't be found, you'll need to install it by entering `apt-get install rsync` on Ubuntu or Debian. If you're using a different distribution, you may need to enter a different command.
 {{< /note >}}
 

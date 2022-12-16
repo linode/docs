@@ -57,7 +57,7 @@ IP addresses can be statically configured or dynamically configured through DHCP
 
 - **DHCP** (Dynamic Host Configuration Protocol) can be used to automatically configure a single IPv4 address on a Compute Instance. If multiple IPv4 addresses are on the system, the first IP address (sorted alpha-numerically) is used. DHCP does not configure private IPv4 addresses or any IPv6 addresses. If you intend on adding or removing public IPv4 addresses after you initially configure networking, using DHCP is not recommended as it may configure a different public IPv4 address after you make those changes.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you do enable DHCP and are using a firewall (such as Cloud Firewalls), you must configure the firewall to allow communication with our DHCP servers. See the [DHCP IP Address Reference](/docs/guides/dhcp-ip-address-reference/) guide for a list of IP addresses to allow.
 {{</ note >}}
 

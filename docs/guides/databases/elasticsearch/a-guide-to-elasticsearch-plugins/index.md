@@ -39,7 +39,7 @@ This guide will show to how install the following Elasticsearch plugins and inte
   * **ingest-geoip**: adds location information to indexed documents based on any IP addresses within the document.
   * **ingest-user-agent**: parses the `User-Agent` header of HTTP requests to provide identifying information about the client that sent each request.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -106,7 +106,7 @@ Before installing any plugins, create a test index.
           }
         }
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 These settings are suitable for testing, but additional shards and replicas should be used in a production environment.
 {{< /note >}}
 
@@ -160,7 +160,7 @@ In order to use the attachment plugin, a _pipeline_ must be used to process base
 
     The `doc-parser` pipeline can now be specified when indexing documents to extract data from the `encoded_doc` field.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 By default, the attachment processor will create a new field called `attachment` with the parsed content of the target field. See the [attachment processor documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/6.1/using-ingest-attachment.html) for additional information.
 {{< /note >}}
 

@@ -24,7 +24,7 @@ The [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-clo
 
 NodeBalancers provide your Kubernetes cluster with a reliable way of exposing resources to the public internet. The Linode CCM handles the creation and deletion of the NodeBalancer, and, along with other Master Plane components, correctly identifies the resources, and their networking, that the NodeBalancer will route traffic to. Whenever a Kubernetes Service of the `LoadBalancer` type is created, your Kubernetes cluster will create a Linode NodeBalancer service with the help of the Linode CCM.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide will show you how to manually install the Linode CCM on an unmanaged Kubernetes cluster. This guide exists to support special use cases. For example, if you would like to experiment with various elements of a Kubernetes control plane.
 
 If you would like to use Kubernetes for production scenarios and make use of Linode NodeBalancers to expose your cluster's resources, it is recommended that you [use the Linode Kubernetes Engine to deploy your cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). An LKE cluster's control plane has the Linode CCM preinstalled and does not require any of the steps included in this guide.
@@ -46,7 +46,7 @@ You will manually install the Linode CCM on your unmanaged Kubernetes cluster. T
 
 1. Deploy a new **unmanaged** Kubernetes cluster. You can deploy an unmanaged Kubernetes cluster on Linode by following the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/getting-started-with-kubernetes/)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It is recommended that you install the Linode CCM on a new Kubernetes cluster, as there are a number of issues that prevent the CCM from running on Nodes that are in the "Ready" state.
     {{</ note >}}
 
@@ -70,7 +70,7 @@ These configurations will change the behavior of your cluster and how it interac
 
 The Linode CCM's GitHub repository provides a helper script that creates a Kubernetes manifest file that you can use to install the CCM on your cluster. These steps should be run on your local computer and were tested on a macOS.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You will need your [Linode APIv4](/docs/products/tools/api/get-started/#get-an-access-token) token to complete the steps in this section.
 {{</ note >}}
 
@@ -92,7 +92,7 @@ You will need your [Linode APIv4](/docs/products/tools/api/get-started/#get-an-a
 
         kubectl create -f ccm-linode.yaml
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can create your own `ccm-linode.yaml` manifest file by editing the contents of the `ccm-linode-template.yaml` file and changing the values of the `data.apiToken` and `data.region` fields with your own desired values. This template file is located in the `deploy` directory of the Linode CCM repository.
     {{</ note >}}
 

@@ -389,7 +389,7 @@ COMMIT
 {{< /file >}}
 
 
-{{< note >}}
+{{< note respectIndent=false >}}
 [APT](http://linux.die.net/man/8/apt) attempts to resolve mirror domains to IPv6 as a result of `apt-get update`. If you choose to entirely disable and deny IPv6, this will slow down the update process for Debian and Ubuntu because APT waits for each resolution to time out before moving on.
 
 To remedy this, uncomment the line `precedence ::ffff:0:0/96  100` in `/etc/gai.conf`.
@@ -458,7 +458,7 @@ In these distros, FirewallD is used to implement firewall rules instead of using
         sudo service iptables save
         sudo service ip6tables save
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Firewall rules are saved to `/etc/sysconfig/iptables` and `/etc/sysconfig/ip6tables`.
 {{< /note >}}
 

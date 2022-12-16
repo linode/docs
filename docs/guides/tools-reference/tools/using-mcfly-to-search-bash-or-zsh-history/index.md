@@ -58,7 +58,7 @@ This works well enough in many cases, but it often forces the user to cycle thro
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -66,7 +66,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
 You can install McFly using the [*Homebrew*](https://brew.sh/) package manager or via McFly's install script.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 McFly can also be installed from GitHub or manually from the source. In this case, Rust must also be installed. See the [McFly GitHub page](https://github.com/cantino/mcfly#installing-manually-from-github) for more information.
 {{< /note >}}
 
@@ -93,7 +93,7 @@ The Homebrew package manager installs programs into their own directory and adds
 
 1. To verify Homebrew is installed and working properly, run the `brew doctor` command.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Use the `brew help` command to see a full list of the Homebrew commands.
     {{< /note >}}
 

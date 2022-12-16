@@ -23,7 +23,7 @@ aliases: ['/websites/cms/drupal/how-to-install-and-configure-drupal-on-debian-10
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Debian 10.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are not using Debian 10, you can view different Linux distribution versions of this guide in the [Drupal](/docs/websites/cms/drupal/) section of our documentation site.
 {{</ note >}}
 
@@ -73,7 +73,7 @@ $settings['trusted_host_patterns'] = array(
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `trusted_host_patterns` also accepts IP addresses or localhost.
 {{< /note >}}
 
@@ -120,7 +120,7 @@ $settings['trusted_host_patterns'] = array(
 
     ![Drupal 8 database configuration.](drupal-database-configuration.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you forgot the name of your database, log back in to MySQL or MariaDb with: `mysql -u root -p` and enter: `show databases;`.
 {{< /note >}}
 

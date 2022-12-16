@@ -36,7 +36,7 @@ This tutorial gets you started using Redis. It explains how to connect to a Redi
 
     Generally, on **Debian** and **Ubuntu**, the location defaults to the above. On **AlmaLinux**, **CentOS**, and **Fedora**, the default location is usually `/etc/redis.conf`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -279,7 +279,7 @@ Instead, you may want to use the following command for your production Redis ins
 
 It works like the `SAVE` command, but operates asynchronously, meaning that it does not tie up the server while the backup operation runs.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Because it is asynchronous, additional changes can be made to the database while `BGSAVE` runs. However, `BGSAVE` only saves changes up to the point when the command was run.
 {{< /note >}}
 

@@ -53,7 +53,7 @@ In this section, you will create an archive of your Drupal site's files and stor
         sudo tar -cvzf example.com-BCKP-$(date +%Y%m%d).tar.gz ./
         sudo mv -v example.com-BCKP-*.tar.gz ../backups
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This process can also be scripted and run on a regular basis using [cron](/docs/guides/schedule-tasks-with-cron/).
     {{</ note >}}
 
@@ -63,7 +63,7 @@ You are now ready to check your Drupal system for available updates. Once you ha
 
 1.  Log in to your Drupal site and navigate to the [Admin Toolbar](https://www.drupal.org/project/admin_toolbar). Click on **Reports** and then on **Available updates**.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If **Available updates** is not listed, enable the [Update Manager](https://www.drupal.org/docs/8/core/modules/update-manager) module by navigating to the **Extend** menu item in the Admin Toolbar. See [Drupal's documentation](https://www.drupal.org/docs/8/extending-drupal-8/installing-drupal-8-modules#s-step-2-enable-the-module) for more details on enabling modules.
 {{< /note >}}
 
@@ -71,7 +71,7 @@ If **Available updates** is not listed, enable the [Update Manager](https://www.
 
     ![A Drupal Update](drupal-updates-download.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you receive an error when your Drupal 8 installation checks for available updates, it may be having issues communicating with the Drupal website to see if there are updates. You can check your site's recent log messages, by navigating to **Reports** and selecting **Recent log messages** to further investigate the issue.
     {{</ note >}}
 
@@ -118,13 +118,13 @@ Drupal's *maintenance mode* allows users with the right permissions to use your 
 
 1.  From a browser on your local machine, navigate to the following URL on your Drupal site `www.example.com/update.php`.  Ensure you replace `example.com` with your own site's domain name. Follow the prompts to continue the update.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If `update.php` does not load or returns a 403 Forbidden error, you may need to update the ownership and permissions of the newly expanded files. For best practices on Drupal site directory and file permissions, see their [documentation](https://www.drupal.org/node/244924).
 {{</ note >}}
 
 1.  If you are [installing additional modules](https://www.drupal.org/docs/user_guide/en/extend-module-install.html) or configuring additional [security settings](https://www.drupal.org/security/secure-configuration), complete those updates now and continue on to the next step in this section when you are done.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The [Next Steps](#next-steps) section includes a list of Drupal security modules you may consider installing.
     {{</ note >}}
 

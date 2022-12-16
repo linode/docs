@@ -39,7 +39,7 @@ First, you need to create a Linode account to start using our services. If you a
 
 1. In the **Security** section of the signup process, input your phone number. Linode uses phone numbers as a measure to verify identity and prevent fraud. Once a phone number is provided, a verification code is sent to that number as an SMS text message. Enter this code into the signup form.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This phone number provides our team with a secure method of verifying your identity as the owner of the newly created Linode user account. We will only ever use this phone number to verify your identity by sending a verification code as an SMS message. See [Phone Verification](/docs/products/platform/accounts/guides/user-security-controls/#phone-verification) for more details.
 {{</ note >}}
 
@@ -47,7 +47,7 @@ This phone number provides our team with a secure method of verifying your ident
 
 1. Most accounts are activated instantly and you can start adding services right away. A small number of accounts may require manual review prior to activation.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 ***Sending* email:** Newly created Linode accounts have restrictions on ports `25`, `465`, and `587` applied to Compute Instances, which prevent instances from sending email. If you'd like to send email on a Compute Instance, review the [Running a Mail Server](/docs/guides/running-a-mail-server/#sending-email-on-linode) guide, then [open a ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) with our Support team.
 {{</ note >}}
 

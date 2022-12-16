@@ -39,7 +39,7 @@ SELinux defaults to denying anything that is not explicitly allowed. SELinux has
 ## Before You Begin
 
 1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
@@ -47,7 +47,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo yum update
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Linode kernel does not support SELinux by default. However, all new Linodes running CentOS 7 use the distribution provided kernel, which has **SELinux enabled by default**.
 
 If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
@@ -103,7 +103,7 @@ SELINUX=disabled
 SELINUXTYPE=targeted
       {{</ file >}}
 
-      {{< note >}}
+      {{< note respectIndent=false >}}
 You can update the `SELINUX` directive with any of the available SELinux [states](#selinux-states) or [modes](#selinux-modes).
       {{</ note >}}
 
@@ -126,7 +126,7 @@ SELinux status:                 disabled
 
 When SELinux is enabled, it can run in either *enforcing* or *permissive* modes.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If SELinux is currently disabled, update your SELinux configuration file with the `SELINUX` directive set to `enabled`, then reboot your system, and SSH back into your Linode. These steps are outlined in the [SELinux States](#selinux-states) section of the guide.
 {{</ note >}}
 

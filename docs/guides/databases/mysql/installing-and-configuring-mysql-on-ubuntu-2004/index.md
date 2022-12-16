@@ -50,7 +50,7 @@ To summarize, both systems are more than adequate for most users. MariaDB featur
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -200,7 +200,7 @@ mysql>
 
 1.  Create a new user using the `CREATE USER` command. Enter the user name in the format `'username'@'IP_Address'`, where `IP_Address` is the IP address of the user. If the user is accessing MySQL from the local Linode, substitute `localhost` in place of the IP Address. In the command below, replace `mysqluser` and `password` with the actual user name and password.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 MySQL offers several different authentication mechanisms. The `caching_sha2_password` method is recommended for users who want to log in using a password and is used here. However, certain older applications might not be able to authenticate properly this way. In that case, `mysql_native_password` should be used instead. MySQL source-replica replication might require the `sha256_password` method.
     {{< /note >}}
 
@@ -255,7 +255,7 @@ Query OK, 1 row affected (0.00 sec)
 Database changed
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also use the `USE` command when you have more than one database and you want to switch between them.
 {{< /note >}}
 

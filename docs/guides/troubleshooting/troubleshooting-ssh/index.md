@@ -79,7 +79,7 @@ If your connections are *not* timing out or being rejected, or if you are able t
     | CentOS 6 | `less /var/log/secure` |
     | Ubuntu 14.04, Debian 7 | `less /var/log/auth.log` |
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Review the [journalctl](/docs/guides/how-to-use-journalctl/) and [less](/docs/guides/how-to-use-less/) guides for help with navigating your logs when using those commands.
 {{< /note >}}
 
@@ -160,7 +160,7 @@ If your service is running but your connections still fail, your firewall (which
     sudo iptables-save # displays IPv4 rules
     sudo ip6tables-save # displays IPv6 rules
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Your deployment may be running FirewallD or UFW, which are frontends used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
 
     sudo ufw status
@@ -222,7 +222,7 @@ SSH can be configured to disable logins for the root user. To check your SSH con
 
 If the value of the `PermitRootLogin` is `no`, then try logging in with another user. Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in as root again.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This option can also be set with the value `without-password`. If this value is used, root logins are accepted with public key authentication.
 {{< /note >}}
 

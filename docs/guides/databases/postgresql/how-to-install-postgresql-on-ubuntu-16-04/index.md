@@ -33,7 +33,7 @@ The [PostgreSQL](https://www.postgresql.org/) (also known as "Postgres") relatio
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with sudo. If you’re not familiar with the sudo command, visit the [Users and Groups guide](/docs/guides/linux-users-and-groups/) for more information.
 {{< /note >}}
 
@@ -60,7 +60,7 @@ The postgres user should not be used for other purposes (e.g. connecting to othe
          su - postgres
          psql -d template1 -c "ALTER USER postgres WITH PASSWORD 'newpassword';"
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This user is distinct from the postgres Linux user. The Linux user is used to access the database, and the PostgreSQL user is used to perform administrative tasks on the databases. The password set in this step will be used to connect to the database via the network. Peer authentication will be used by default for local connections. See the [Secure Local PostgreSQL Access section](/docs/guides/how-to-install-postgresql-on-ubuntu-16-04/#secure-local-postgresql-access) for information about changing this setting.
 {{< /note >}}
 

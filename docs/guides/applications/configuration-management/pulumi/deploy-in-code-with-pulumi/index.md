@@ -88,7 +88,7 @@ It is possible to opt-out of using the default web backend and use a filesystem-
 
 Now that you have everything you need to begin using Pulumi, you can create a new Pulumi *project*.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 A Pulumi [project](https://pulumi.io/reference/project/) is the folder structure which contains your Pulumi programs. Specifically, a project is any folder which contains a `Pulumi.yaml` metadata file.
 {{< /note >}}
 
@@ -174,7 +174,7 @@ In this case, your file is only creating a single 1GB Linode (Nanode) instance i
 
         pulumi up
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This will create a new billable resource on your account.
 {{< /note >}}
 
@@ -186,7 +186,7 @@ This will create a new billable resource on your account.
 
     Follow the prompts, and you'll be able to see the resources being removed, similar to how we could see them being created.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Many Pulumi commands will be logged on your Pulumi account. You can see this under the **Activity** tab of your project's stack in [Pulumi's Application Page](https://app.pulumi.com/).
 {{< /note >}}
 
@@ -273,7 +273,7 @@ exports.nodeBalancerIP = nodeBalancer.ipv4;
 exports.nodeBalancerPort = nodeBalancerConfig.port;
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In our `index.js` file we've created and configured two Linodes using an existing [StackScript](/docs/products/tools/stackscripts/) which installs NGINX. Pulumi's Linode integration allows for the creation of entirely [new StackScripts](https://pulumi.io/reference/pkg/nodejs/pulumi/linode/#StackScript) directly in code, which can help you to automate your deployments even further.
 
 If you're interested in seeing how this StackScript works, you can view it [here](https://www.linode.com/stackscripts/view/526246).
@@ -299,7 +299,7 @@ If you're interested in seeing how this StackScript works, you can view it [here
 Hello from PulumiNode1
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you do not see this page right away, you should wait a few additional moments. NodeBalancers can sometimes require a little extra time to fully apply a new configuration.
 {{< /note >}}
 

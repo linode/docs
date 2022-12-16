@@ -20,7 +20,7 @@ aliases: ['/security/firewalls/configure-firewall-with-ufw/']
 
 UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules in Arch Linux, Debian, or Ubuntu. UFW is used through the command line (although it has GUIs available), and aims to make firewall configuration easy (or, uncomplicated).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are running Docker, by default Docker directly manipulates iptables. Any UFW rules that you specify do not apply to Docker containers.
 {{< /note >}}
 
@@ -166,7 +166,7 @@ Similarly, to disable UFW's rules:
 
     sudo ufw disable
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This still leaves the UFW service running and enabled on reboots.
 {{< /note >}}
 

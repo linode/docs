@@ -62,7 +62,7 @@ Ripgrep is available through APT for Ubuntu release 18.10 or higher as well as t
 
     sudo apt-get install ripgrep
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To install ripgrep on earlier releases, see the [ripgrep installation instructions](https://github.com/BurntSushi/ripgrep#installation) for information on how to add the binary `.deb` file.
 {{< /note >}}
 
@@ -72,7 +72,7 @@ To install ripgrep on RHEL or CentOS distributions, follow the instructions belo
 
 1. Add the ripgrep repository using Yum.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To use the `yum-config-manager` utility, the `yum-utils` package must be installed first. This can be installed using the command `sudo yum install yum-utils`.
     {{< /note >}}
 
@@ -96,7 +96,7 @@ Ripgrep can also be installed using the popular [Homebrew](https://brew.sh/) pac
 
 Because ripgrep is written in Rust, it can be installed using Cargo, Rust's package manager. If Rust is already installed on the system, then Cargo is already available. Otherwise, Cargo can be installed as a stand-alone utility using the command `sudo apt install cargo`. To install ripgrep using Cargo, run the following command.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To be able to run Cargo executables, add the line `export PATH=$PATH:$HOME/.cargo/bin` to the `.bashrc` file. Source the `.bashrc` file to apply the changes.
 {{< /note >}}
 
@@ -114,7 +114,7 @@ To see usage notes for `rg` and a list of all the options, use the `-help` optio
 
     rg -help
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The examples in the following section search the codebase of the open-source [PHP Composer](https://getcomposer.org/) application.
 {{< /note >}}
 

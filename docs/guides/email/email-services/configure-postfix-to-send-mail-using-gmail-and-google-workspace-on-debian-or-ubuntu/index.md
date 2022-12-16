@@ -36,7 +36,7 @@ In this guide, you will learn how to install and configure a Postfix server on D
 
 3.  Use your web browser to confirm your email login credentials by logging in to [Gmail](https://gmail.com).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -90,7 +90,7 @@ Usernames and passwords are stored in `sasl_passwd` in the `/etc/postfix/sasl/` 
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The SMTP server address configuration `smtp.gmail.com` supports message submission over port 587 ([StartTLS](https://en.wikipedia.org/wiki/Opportunistic_TLS)) and port 465 ([SSL](https://en.wikipedia.org/wiki/Transport_Layer_Security)). Whichever protocol you choose, be sure the port number is the same in `/etc/postfix/sasl/sasl\\_passwd` and `/etc/postfix/main.cf` files. See Google Workspace's [Send email from a printer, scanner, or app](https://support.google.com/a/answer/176600?hl=en) help article for more information.
 {{< /note >}}
 

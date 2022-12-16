@@ -40,7 +40,7 @@ Plex is a media server that allows you to stream video and audio content that yo
 
 3.  Plex requires an account to use their service. Visit the [Plex website](https://www.plex.tv/) to sign up for an account if you do not already have one.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -92,7 +92,7 @@ gitfs_provider: gitpython
 
     The `fileserver_backend` block instructs the Salt minion to look for Salt configuration files in two places. First, it tells Salt to look for Salt state files in our minion's `roots` backend (`/srv/salt`). Secondly, it instructs Salt to use the Git Fileserver (gitfs) to look for Salt configuration files in any Git remote repositories that have been named in the `gitfs_remotes` section. The address for the Plex Salt formula's Git repository is included in the `gitfs_remotes` section.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It is best practice to create a fork of the Plex formula's Git repository on GitHub and to add your fork's Git repository address in the `gitfs_remotes` section. This will ensure that any further changes to the upstream Plex formula which might break your current configuration can be reviewed and handled accordingly, before applying them.
 {{< /note >}}
 

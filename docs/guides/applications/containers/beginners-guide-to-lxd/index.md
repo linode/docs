@@ -38,7 +38,7 @@ The main benefits of LXD are the support of high density containers and the perf
 
 This guide covers how to install and setup LXD 3 on a Linode and how to setup an Apache Web server in a container.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For simplicity, the term *container* is used throughout this guide to describe the LXD system containers.
 {{< /note >}}
 
@@ -154,7 +154,7 @@ lxd   3.12     10601  stable    canonical✓  -
 1.  Add your non-root Unix user to the `lxd` group:
 
         sudo usermod -a -G lxd username
-    {{< note >}}
+    {{< note respectIndent=false >}}
 By adding the non-root Unix user account to the `lxd` group, you are able to run any `lxc` commands without prepending `sudo`. Without this addition, you would have needed to prepend `sudo` to each `lxc` command.
 {{< /note >}}
 
@@ -229,7 +229,7 @@ This section will create a container, install the Apache web server, and add the
 
 
         sudo lxc config device add web myport80 proxy listen=tcp:0.0.0.0:80 connect=tcp:127.0.0.1:80
-{{< note >}}
+{{< note respectIndent=false >}}
 In recent versions of LXD, you need to specify an IP address (such as *127.0.0.1*) instead of a hostname (such as _localhost_). If your container already has a proxy device that uses hostnames, you can edit the container configuration to replace with IP addresses by running `lxc config edit web`.
 {{< /note >}}
 
@@ -288,7 +288,7 @@ The repository `ubuntu` has container images of Ubuntu versions. The `images` re
 .....................................................................
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The first two columns for the alias and fingerprint provide an identifier that can be used to specify the container image when launching it.
 {{< /note >}}
 The output snippet shows the container images Ubuntu versions 18.04 LTS, 18.10, and 19.04. When creating a container we can just specify the short alias. For example, `ubuntu:b` means that the repository is `ubuntu` and the container image has the short alias `b` (for _bionic_, the codename of Ubuntu 18.04 LTS).
@@ -360,7 +360,7 @@ Starting mycontainer
         lxc exec mycontainer -- apt update
         lxc exec mycontainer -- apt upgrade
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The characters `--` instruct the `lxc` command not to parse any more command-line parameters.
 {{< /note >}}
 
@@ -375,7 +375,7 @@ See "man sudo_root" for details.
 ubuntu@mycontainer:~$
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Ubuntu container images have by default a non-root account with username `ubuntu`. This account can use `sudo`  and does not require a password to perform administrative tasks.
 
 The `sudo` command provides a login to the existing account `ubuntu`.
@@ -393,7 +393,7 @@ The `sudo` command provides a login to the existing account `ubuntu`.
 
         lxc delete mycontainer
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A container needs to be stopped before it can be deleted.
 {{< /note >}}
 

@@ -127,7 +127,7 @@ To run the above example locally, create a file named `test_example.py` and exec
 
 You should see a standard output returned as shown below. A simple report is displayed that outlines the number of tests that passed and failed.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To force verbose mode when running your tests, update the `test_example.py` file by adding `verbose=True` to  `doctest.testmod()`. The updated line should look as follows: `doctest.testmod(verbose=True)`.
 {{</ note >}}
 
@@ -214,7 +214,7 @@ If you’re looking for a more feature-rich test tool, then Pytest is a good cho
 
 Before you can use Pytest, you must install it on your system.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you have not already installed `conda`, see our [How to Install Anaconda](/docs/guides/how-to-install-anaconda/) guide for the installation instructions.
 {{< /note >}}
 

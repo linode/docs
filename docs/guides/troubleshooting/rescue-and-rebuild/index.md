@@ -69,7 +69,7 @@ To boot a Linode into Rescue Mode:
 
     ![Linode Cloud Manager Rescue form - /dev/sda highlighted](cloud-manager-rescue-form-dev-sda-highlighted.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make a note of which devices the disks are assigned to (e.g. `/dev/sda`, `/dev/sdb`, etc). For example, in the screenshot shown above, the Ubuntu disk corresponds to `/dev/sda`. These assignments are where you can mount the disks from inside Rescue Mode.
 {{< /note >}}
 
@@ -77,7 +77,7 @@ Make a note of which devices the disks are assigned to (e.g. `/dev/sda`, `/dev/s
 
     ![Linode Cloud Manager Rescue form - Add Disk highlighted](cloud-manager-rescue-form-add-disk-highlighted.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can assign up to 7 disks in Rescue Mode. `/dev/sdh` is always assigned to the Finnix recovery distribution.
 
 For best results, you should review the names that your Linode's disks are using in your Linode's [configuration profile](/docs/guides/linode-configuration-profiles/) (`/dev/sda`, `/dev/sdb`, etc.) and match those names to the device assignments you specify in the Rescue form before starting Rescue Mode.
@@ -95,7 +95,7 @@ A mismatch in the names of your disks between your Linode's configuration profil
 
 By default, Rescue Mode's Finnix environment does not accept SSH connections. To access the Linode when it's running in Rescue Mode, connect to it through the *Lish* console.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 It is possible to enable SSH for Rescue Mode by manually starting the SSH daemon. Using SSH can provide a better experience and allows you to copy files off of the server. Review the [Starting SSH](#starting-ssh) section for instructions. You need to use Lish at least once in order to start SSH.
 {{< /note >}}
 
@@ -121,7 +121,7 @@ The Finnix recovery distribution does not automatically start an SSH server, but
 
         passwd
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This root password is separate from the root password of the disk that you normally boot from. Setting the root password for Finnix does not affect the root account of the distribution.
 {{< /note >}}
 
@@ -204,7 +204,7 @@ The software packages you install is available as long as the Linode is running 
 
 ### Mounting Disks
 
-{{< note >}}
+{{< note respectIndent=false >}}
  Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/guides/install-a-custom-distribution/#update-your-fstab) guide.
  {{< /note >}}
 
@@ -226,7 +226,7 @@ These instructions mount the `/dev/sda` disk. If you are mounting a different di
 
     You can now read and write to files on the mounted disk.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can unmount your disk by running the `unmount` command. You may want to unmount your disk to  [run a file system check](#performing-a-file-system-check), for example.
 
 The `umount` command requires you to specify the device you want to unmount. You may specify this device in one of two ways:
@@ -257,7 +257,7 @@ Chroot allows you to change user passwords, remove/install packages, and do othe
 
         mount -o exec,barrier=0 /dev/sda /media/sda
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you mounted your disk without using the `exec` option prior to reviewing this section, include the `remount` option in your `mount` command:
 
     mount -o remount,exec,barrier=0 /dev/sda /media/sda
@@ -279,7 +279,7 @@ If you mounted your disk without using the `exec` option prior to reviewing this
 
         mount /dev/sdc
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This `mount` command only specifies a disk name without specifying a mount point. This causes `mount` to use the `/etc/fstab` file in the chroot to determine the mount point and apply the correct mount options.
 
 As a result, this command depends on you having made these disks available to your Rescue Mode environment under the same names that they use in your Linode's [configuration profile](/docs/guides/linode-configuration-profiles/).

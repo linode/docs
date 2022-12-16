@@ -55,7 +55,7 @@ Log in to the [Linode Manager](https://cloud.linode.com/) and inspect the Linode
 
 If the Linode is listed as running in the Manager, or after you boot it from the Manager, open the Lish console and look for a login prompt. If a login prompt exists, try logging in with your root user credentials (or any other Linux user credentials that you previously created on the server).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The root user is available in Lish even if root user login is disabled in your SSH configuration.
 {{< /note >}}
 
@@ -133,7 +133,7 @@ To diagnose routing problems, run and analyze an MTR report from your computer t
 
 Once you have generated this report, compare it with the following example scenarios.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are located in China, and the output of your MTR report shows *high packet loss* or an *improperly configured router*, then your IP address may have been blacklisted by the GFW (Great Firewall of China). Linode is not able to change your IP address if it has been blacklisted by the GFW. If you have this issue, review this [community post](https://www.linode.com/community/questions/17192/ssh-refused) for troubleshooting help.
 {{< /note >}}
 
@@ -152,7 +152,7 @@ If you are located in China, and the output of your MTR report shows *high packe
 
     This example report shows high persistent packet loss starting mid-way through the route at hop 3, which indicates an issue with the router at hop 3. If your report looks like this, [open a support ticket with your MTR results](#open-a-support-ticket-with-your-mtr-results) for further troubleshooting assistance.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your route only shows packet loss at certain routers, and not through to the end of the route, then it is likely that those routers are purposefully limiting [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) responses. This is generally not a problem for your connection. Linode's MTR guide provides more context for [packet loss issues](/docs/guides/diagnosing-network-issues-with-mtr/#verify-packet-loss).
 {{< /note >}}
 
@@ -175,7 +175,7 @@ If your route only shows packet loss at certain routers, and not through to the 
 
     If your report shows question marks instead of the hostnames (or IP addresses) of the routers, and if these question marks persist to the end of the route, then the report indicates an improperly configured router. If your report looks like this, [open a support ticket with your MTR results](#open-a-support-ticket-with-your-mtr-results) for further troubleshooting assistance.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your route only shows question marks for certain routers, and not through to the end of the route, then it is likely that those routers are purposefully blocking [ICMP](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol) responses. This is generally not a problem for your connection. Linode's MTR guide provides more information about [router configuration issues](/docs/guides/diagnosing-network-issues-with-mtr/#an-isp-router-is-not-configured-properly).
 {{< /note >}}
 
@@ -194,7 +194,7 @@ If your route only shows question marks for certain routers, and not through to 
 
     If your report shows no packet loss or low packet loss (or non-persistent packet loss isolated to certain routers) until the end of the route, and 100% loss at your Linode, then the report indicates that your Linode's network interface is not configured correctly. If your report looks like this, move down to [confirming network configuration issues from Rescue Mode](#confirm-network-configuration-issues-from-rescue-mode).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If your report does not look like any of the previous examples, read through the [MTR guide](/docs/guides/diagnosing-network-issues-with-mtr/) for other potential scenarios.
 {{< /note >}}
 
@@ -316,7 +316,7 @@ The Sendmail issue can usually be resolved by running the following command and 
     sudo mv /etc/network/if-up.d/sendmail ~
     ifdown -a && ifup -a
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Read more about the Sendmail bug [here](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=873978).
 {{< /note >}}
 
@@ -352,7 +352,7 @@ If your interface is up but your networking is still down, your firewall (which 
     sudo iptables -L # displays IPv4 rules
     sudo ip6tables -L # displays IPv6 rules
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Your deployment may be running FirewallD or UFW, which are frontend software packages used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
 
     sudo ufw status

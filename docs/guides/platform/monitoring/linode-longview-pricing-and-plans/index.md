@@ -34,7 +34,7 @@ There are four different Longview Pro plan tiers you can choose from. Each plan 
 
 ## Viewing and Updating Your Longview Plan
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Currently, it is not possible to have both *Longview Free* and *Longview Pro* clients. If you have active Longview clients under the Longview Free plan tier, when you switch to a Longview Pro plan, all of your currently active clients will be counted towards your new Longview Pro plan's client count.
 {{</ note >}}
 
@@ -54,6 +54,6 @@ To change your plan level or to view all available Longview Pro plans, follow th
 
 1. If you would like to change your current plan, select your preferred plan and click on the **Change Plan** button. You will see the page update to denote your current Longview plan.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you change your plan, your Linode's data will temporarily be in a transitional state. Any irregularities in your Linode's displayed Longview data will clear up shortly.
     {{</ note >}}

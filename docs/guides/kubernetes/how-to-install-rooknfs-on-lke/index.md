@@ -31,7 +31,7 @@ Rook NFS allows remote hosts to mount filesystems over a network and interact wi
 
         git clone --single-branch --branch v1.7.3 https://github.com/rook/nfs.git
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
     If you do not want to use git, the raw manifest files can alternatively be obtained via wget or curl.
     {{< /note >}}
 

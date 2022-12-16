@@ -70,7 +70,7 @@ update-rc.d: using dependency based boot sequencing
     {{</ output >}}
 Once you see this success message, the Longview MySQL App should automatically start collecting MySQL data. Refresh Longview in the Cloud Manager to verify that the MySQL tab is now present and collecting data for your Longview client instance.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Unless you already have a specific Longview database user set up in the `/etc/linode/longview.d/MySQL.conf` file, Longview will locate and use the `debian-sys-maint` database user credentials if it can, located at `/etc/mysql/debian.cnf`.
     {{< /note >}}
 
@@ -80,7 +80,7 @@ Unless you already have a specific Longview database user set up in the `/etc/li
 
 ### Manual Configuration (All Distributions)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You cannot configure the location of a socket for the Longview client.
 {{< /note >}}
 

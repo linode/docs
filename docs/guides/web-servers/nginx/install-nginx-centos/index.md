@@ -34,7 +34,7 @@ gpgcheck=0
 enabled=1
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're using a CentOS version other than 7, replace `7` in the `baseurl` in `nginx.repo` file with the correct CentOS version:
 
 `baseurl=http://nginx.org/packages/mainline/<OS>/<OSRELEASE>/$basearch/`

@@ -65,7 +65,7 @@ Follow the instructions below to install Anaconda. Installation takes around twe
 
     This installs Anaconda 3 and Python 3.8.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can navigate to the [Anaconda archive](https://repo.anaconda.com/archive) to access all Anaconda installers.
     {{< /note >}}
 
@@ -88,7 +88,7 @@ You can navigate to the [Anaconda archive](https://repo.anaconda.com/archive) to
         sudo -s source /root/anaconda3/bin/activate
         export PATH="/root/anaconda3/bin:$PATH"
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 During the `conda init` prompt, if you type **no**, conda cannot modify your shell scripts. In order to initialize conda manually, run the commands below after the installation is completed.
 
     sudo -s source /root/anaconda3/bin/activate

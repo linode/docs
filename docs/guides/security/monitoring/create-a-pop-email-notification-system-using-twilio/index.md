@@ -342,7 +342,7 @@ print("Twilio message created with ID: %s" % (message.sid))
 
 1. After appending the above snippet, save the file and exit your text editor.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The code example is now complete. Your script should now look like the code in [this file](forward-last-email-to-text-message.py).
 {{< /note >}}
 
@@ -382,7 +382,7 @@ export EMAIL_SERVER=pop.yourdomain.com
     | EMAIL_PASSWORD | Your password for your email. Note that some services may require you to create an app-specific password for the POP connection. For example, [Google requires you to create an app-specific password](https://support.google.com/accounts/answer/185833) if you use 2-step verification/2FA on your account. |
     | EMAIL_SERVER | The server you should connect to. Check with your email service for the correct value. For Gmail, `pop.gmail.com` is used. |
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're a Gmail user, it's recommended that you use Gmail's [*recent mode*](https://support.google.com/a/answer/6089246?hl=en#zippy=%2Chow-does-normal-mode-work%2Chow-does-recent-mode-work) for POP. Otherwise, the script may not download the most recent emails in your account. To use this mode prefix your `EMAIL_USERNAME` with `recent:`.
 
 For example, if your email address is `youremail@yourdomain.com`, then set `EMAIL_USERNAME` to `recent:youremail@yourdomain.com`.
@@ -450,7 +450,7 @@ The updated example code looks for email in the last full minute prior to when t
 
 - If an email arrived at 3:06:15PM, it is retrieved from the email server by the script. However, it is not within the full minute that preceded the script's execution, so it is not forwarded to text.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The code is written in this way because cron jobs are not guaranteed to run at exactly the time they are scheduled. For example, a job that is scheduled every minute might run at 6 seconds past the minute at one iteration, and 9 seconds past the minute the next time. The amount of load that a system is under can affect this timing.
 
 If the code only checked the 60 seconds prior to the script execution time, then some emails may be missed as a result of inconsistent timing. By standardizing the interval for every script run, all emails should be intercepted over time.
@@ -700,7 +700,7 @@ This new code moves the `email_subject` variable assignment outside of the if st
 
 1. After inserting the above snippet, save the file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Your script should now look like the code in [this file](autoforward-email-with-matching-subject-to-text-message.py).
 {{< /note >}}
 
@@ -753,7 +753,7 @@ If the auto-forwarding system does not forward your Linode Alert emails, try run
 
     python3 autoforward-email-to-text-message.py
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You need to set environment variables for the script in your terminal before running it. This is described in the [Run the Code](#run-the-code) section.
 {{< /note >}}
 

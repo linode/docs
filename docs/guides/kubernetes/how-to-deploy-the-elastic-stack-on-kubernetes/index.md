@@ -47,7 +47,7 @@ If you remove the resources afterward, you are billed only for the hour(s) that 
 
 ## Before You Begin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide uses Kubernetes services which are private by default. Local listeners are opened which allow you to access the services on the local browser, however, web servers and NodeBalancers are out scope for this guide. Due to this, you should complete the steps of this guide from the local computer or from a computer that gives you access to the web browser. If you want to access these services from a public domain, please see the [Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/) guide.
 {{< /note >}}
 
@@ -55,7 +55,7 @@ This guide uses Kubernetes services which are private by default. Local listener
 
 1.  Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
 
-    {{< note >}} Ensure that the LKE cluster that you create has three nodes and one master node with  4GB Linode instances. Also ensure that the `KUBECONFIG` context is [persistent](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context){{< /note >}}
+    {{< note respectIndent=false >}} Ensure that the LKE cluster that you create has three nodes and one master node with  4GB Linode instances. Also ensure that the `KUBECONFIG` context is [persistent](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context){{< /note >}}
 
 1.  You should also make sure that Kubernetes CLI is using the right cluster context. Run the `get-contexts` subcommand to check:
 
@@ -116,7 +116,7 @@ Before installing the chart, ensure that resources are set appropriately. By def
 
         kubectl port-forward svc/elasticsearch-master 9200:9200
 
-    {{< note >}} This command times out after 5 minutes, if you find that and want to have the port forward for longer, consider using the following command to keep it open: `while true; do kubectl port-forward svc/elasticsearch-master 9200:9200; done` {{< /note >}}
+    {{< note respectIndent=false >}} This command times out after 5 minutes, if you find that and want to have the port forward for longer, consider using the following command to keep it open: `while true; do kubectl port-forward svc/elasticsearch-master 9200:9200; done` {{< /note >}}
 
 1.  In another terminal window, send a request to this port:
 
@@ -144,7 +144,7 @@ Before installing the chart, ensure that resources are set appropriately. By def
 }
 {{</ output >}}
 
-    {{< note >}} The specific version numbers and dates may be different in this JSON response. Elasticsearch is operational, but not receiving or serving any data. {{< /note >}}
+    {{< note respectIndent=false >}} The specific version numbers and dates may be different in this JSON response. Elasticsearch is operational, but not receiving or serving any data. {{< /note >}}
 
 ### Install Filebeat
 
@@ -201,7 +201,7 @@ TEST SUITE: None
 
         kubectl port-forward svc/kibana-kibana 5601:5601
 
-    {{< note >}} This command times out after 5 minutes, if you find that and want to have the port forward for longer, consider using the following command to keep it open: `while true; do kubectl port-forward svc/kibana-kibana 5601:5601; done` {{< /note >}}
+    {{< note respectIndent=false >}} This command times out after 5 minutes, if you find that and want to have the port forward for longer, consider using the following command to keep it open: `while true; do kubectl port-forward svc/kibana-kibana 5601:5601; done` {{< /note >}}
 
 ## Configure Kibana
 
@@ -235,7 +235,7 @@ Before visualizing Pod logs, Kibana must be configured with an index pattern for
 
 1.  Use the **Filters** box to search only for logs arriving from Kibana Pods by filtering for `kubernetes.container.name : "kibana"`. Click the **Update** button to apply the search filter.
 
-     {{< note >}}
+     {{< note respectIndent=false >}}
 When searching in the filters box, field names and values are auto-populated.
 {{< /note >}}
 
@@ -293,7 +293,7 @@ Before following these steps, ensure that the `port-forward` command to expose K
 
 Run the following commands on the local machine. This communicates with Kibana over `127.0.0.1:5601` to import default Dashboards that is populated with data from Metricbeat.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The commands should use the same version of Metricbeat deployed to the Kubernetes cluster. You can find this version by issuing the following command:
 
     helm get values --all metricbeat | grep imageTag

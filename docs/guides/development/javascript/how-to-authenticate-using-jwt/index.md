@@ -70,7 +70,7 @@ The JWTs encoded in this example provide a lightweight and secure means of authe
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -104,7 +104,7 @@ The steps in this guide are written for a non-root user. Commands that require e
 
 1. Create the example JavaScript file called `server.js`. This contains the skeleton for your Express JS server.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In a production scenario, you should not store credentials in application code and your passwords should be encrypted when stored. Additionally, use a secret that conforms to the standards for the signing algorithm you are using. For instance, the HMAC SHA256 algorithm in this example should be given a 256-bit secret. You can achieve this with a random 64-character hex string or a random 44-character Base64 string.
     {{< /note >}}
 

@@ -44,7 +44,7 @@ In this tutorial, learn everything you need to install and start using Podman on
 
             sudo dnf upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -60,7 +60,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
             sudo apt install podman
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 Podman is only available through the APT package manager for Debian 11 or Ubuntu 20.10 and later.
 {{< /note >}}
 
@@ -106,7 +106,7 @@ Podman offers a few methods for procuring container images, which you can follow
 
 Perhaps the most straightforward way to get started with a container is by finding an existing image in a registry. With Podman's `search` command, you can find matching images in any container registries you have set up.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Podman may come with some registries configured by default. However, on some systems, it may first be necessary to configure these registries manually. You can do this by opening the `/etc/containers/registries.conf` file with your preferred text editor and adding a line like the following to the end:
 
     unqualified-search-registries=['registry.access.redhat.com', 'registry.fedoraproject.org', 'docker.io', 'quay.io']

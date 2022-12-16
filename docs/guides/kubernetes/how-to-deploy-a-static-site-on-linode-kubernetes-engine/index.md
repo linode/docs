@@ -54,13 +54,13 @@ This guide shows you how to:
 
     - To create a cluster in the Linode Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 Specifically, follow the [Create an LKE Cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#create-an-lke-cluster) and [Connect to your LKE Cluster with kubectl](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#connect-to-your-lke-cluster-with-kubectl) sections.
         {{< /note >}}
 
     - To create a cluster from the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/) tutorial.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 Specifically, follow the [Create an LKE Cluster](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/#create-an-lke-cluster) section.
 {{< /note >}}
 
@@ -130,7 +130,7 @@ In this section you creates a static site on your workstation using Hugo.
 
         git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Git submodules allow you to include one Git repository within another, each maintaining their own version history. To view a collection of Hugo themes, visit the [Hugo theme collection](https://themes.gohugo.io/).
 {{< /note >}}
 
@@ -272,7 +272,7 @@ public/
 .gitignore
 {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This file, similar to the `.gitignore` file you created in the previous section, allows you to ignore certain files within the working directory that you want to leave out of the container. Because you want the container to be the smallest size possible, the `.dockerignore` file includes the `public/` folder and some hidden folders that Git creates.
 {{< /note >}}
 
@@ -280,7 +280,7 @@ This file, similar to the `.gitignore` file you created in the previous section,
 
         docker build -t mydockerhubusername/lke-example:v1 .
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In the example below, the container image is named `lke-example` and has been given a version tag of `v1`. Feel free to change these values.
 {{< /note >}}
 
@@ -411,7 +411,7 @@ static-site-deployment-cdb88b5bb-lzdvh  1/1     Running  0          1h
 
     Specifically, the Service manifest that is used in this guide triggers the creation of a Linode [NodeBalancer](/docs/products/networking/nodebalancers/get-started/).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The NodeBalancer's creation is controlled through the [Linode Cloud Controller Manager (CCM)](/docs/guides/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/) guide.
 {{< /note >}}
 

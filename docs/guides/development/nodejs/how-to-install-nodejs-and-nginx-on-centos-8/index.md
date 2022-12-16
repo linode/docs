@@ -40,7 +40,7 @@ Node.js is an open-source JavaScript runtime environment that can serve dynamic 
 
 1.  Set up your Linode using the [Getting Started](/docs/guides/getting-started/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/guides/set-up-and-secure/#update-your-systems-hosts-fileupdate-your-system-s-hosts-file) section of the [Getting Started](/docs/guides/getting-started/) guide.
     {{</ note >}}
 
@@ -131,7 +131,7 @@ http {
         sudo firewall-cmd --zone=public --permanent --add-service=https
         sudo firewall-cmd --reload
 
-      {{< note >}}
+      {{< note respectIndent=false >}}
 If you plan to use any [httpd](https://en.wikipedia.org/wiki/Httpd) scripts and modules on your server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the following command:
 
     sudo setsebool -P httpd_can_network_connect on
@@ -156,7 +156,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 
 ## Create Your Site's Index File
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ensure you replace `example.com` with your own site's name or IP address in all commands and examples in this section.
 {{</ note >}}
 
@@ -205,7 +205,7 @@ Ensure you replace `example.com` with your own site's name or IP address in all 
 
 1.  Install Node.js:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 As of writing this guide, the latest LTS version of [Node.js](https://nodejs.org/en/download/) is `v12.16.2`. Update this command with the version of Node.js you would like to install.
     {{</ note >}}
 
@@ -225,7 +225,7 @@ Now using node v12.16.2 (npm v6.14.4)
 
 In the [Install and Configure NGINX](#install-and-configure-nginx) section you configured NGINX to listen on port `80` to serve its static content. You also configured a reverse proxy to your Linode's `localhost:3000` when a request for the `/test.js` file is made. In this section you will create the `test.js` file to be able to test your Node.js web server that you will create in the [next section](#create-your-the-node-js-web-server-file).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ensure you replace `example.com` with your own site's name or IP address in all commands and examples in this section.
 {{</ note >}}
 

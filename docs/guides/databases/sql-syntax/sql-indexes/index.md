@@ -59,7 +59,7 @@ You should see the following output:
 +-----------+----------+-----------+
 {{</ output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Unless mentioned otherwise, all the commands in this guide work well on both **MySQL** and **PostgreSQL** databases.
 {{< /note >}}
 
@@ -76,7 +76,7 @@ CREATE TABLE Student (
 
     CREATE UNIQUE INDEX SSIndex ON Student (SSNumber);
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Both the SQL commands above are delimited by a semicolon (;), which is compatible with most relational database systems. `SSNumber` is specifically designated as the table’s primary key.
 {{< /note >}}
 

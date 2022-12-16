@@ -73,7 +73,7 @@ my-linode-provider:
     driver: linode
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 All configuration files store data in YAML format. Be careful with indentation - use only spaces and not tabs. Each level of indentation is usually separated with 2 spaces.
 {{< /note >}}
 
@@ -169,7 +169,7 @@ linode_1gb_with_ssh_key:
   ssh_key_file: ~/.ssh/id_ed25519
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your master server is located behind a firewall, you will have to open ports `4505-4506` in [firewall](https://docs.saltproject.io/en/latest/topics/tutorials/firewall.html). Depending on your network configuration, you may have to set up port forwarding for these ports.
 {{< /note >}}
 

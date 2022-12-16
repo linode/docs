@@ -61,7 +61,7 @@ These installation steps will:
 - Configure Vault for local filesystem storage.
 - Install the `vault` binary and set up the operating system to operate Vault as a service.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The configuration outlined in this guide is suitable for small deployments. In situations that call for highly-available or fault-tolerant services, consider running more than one Vault instance with a highly-available storage backend such as [Consul](https://www.vaultproject.io/docs/configuration/storage/consul.html).
 {{< /note >}}
 
@@ -71,13 +71,13 @@ The configuration outlined in this guide is suitable for small deployments. In s
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Setting the full hostname correctly in `/etc/hosts` is important in this guide in order to terminate TLS on Vault correctly. Your Linode's fully qualified domain name and short hostname should be present in the `/etc/hosts` file before continuing.
 {{< /note >}}
 
 3.  Follow our [UFW Guide](/docs/guides/configure-firewall-with-ufw/) in order to install and configure a firewall on your Ubuntu or Debian-based system, or our [FirewallD Guide](/docs/guides/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. Consider reviewing Vault's [Production Hardening](https://www.vaultproject.io/guides/operations/production) recommendations if this will be used in a production environment.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When configuring a firewall, keep in mind that Vault listens on port 8200 by default and Let's Encrypt utilizes ports 80 (HTTP) and 443 (HTTPS).
 {{< /note >}}
 
@@ -104,7 +104,7 @@ When configuring a firewall, keep in mind that Vault listens on port 8200 by def
 
         wget https://releases.hashicorp.com/vault/1.1.0/vault_1.1.0_linux_amd64.zip
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you receive an error that indicates `wget` is missing from your system, install the `wget` package and try again.
 {{< /note >}}
 
@@ -132,11 +132,11 @@ gpg: Total number processed: 1
 gpg:               imported: 1
 {{</ output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If an error occurs with the error message `keyserver receive failed: Syntax error in URI`, simply try rerunning the `gpg` command again.
 {{< /note >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you receive errors that indicate the `dirmngr` software is missing or inaccessible, install `dirmngr` using your package manager and run the GPG command again.
 {{< /note >}}
 
@@ -173,7 +173,7 @@ vault_1.1.0_linux_amd64.zip: OK
 
         unzip vault_*_linux_amd64.zip
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you receive an error that indicates `unzip` is missing from your system, install the `unzip` package and try again.
 {{< /note >}}
 

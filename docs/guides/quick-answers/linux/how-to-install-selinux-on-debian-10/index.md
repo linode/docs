@@ -30,7 +30,7 @@ Ubuntu has a Mandatory Access Control (MAC) system similar to [SELinux](https://
 ## Before You Begin
 
 1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
@@ -38,7 +38,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo apt update
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Linode kernel does not support SELinux by default. If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
     {{</ note >}}
 
@@ -58,7 +58,7 @@ Do not purge AppArmor if you believe you may reuse it in the future.  If you wou
 
         sudo apt purge apparmor
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If after issuing the `purge  command you receive warnings about remaining AppArmor files or directories. You can remove them manually, if desired. This step is not necessary to get a working SELinux installation.
     {{</ note >}}
 
@@ -95,7 +95,7 @@ SE Linux is activated.  You may need to reboot now.
 
         sudo reboot
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 After rebooting your system, SELinux should be enabled, but in *permissive mode*. Permissive mode means any actions that would have been disallowed are allowed, but logged in your system's audit log located in the `/var/log/audit/audit.log` file.
    {{</ note >}}
 
@@ -137,7 +137,7 @@ Max kernel policy version:      31
 SELINUX=enforcing
     {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you have set SELinux to enforcing mode, ensure that your SSH port has access before logging out of your session.
 
     sudo semanage port -l | grep 'ssh'

@@ -85,7 +85,7 @@ Status: Downloaded newer image for mongo:latest
 docker.io/library/mongo:latest
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This command pulls the latest version by default (as it says in the first line of the output). To pull a specific version, add the tag for that version to the command. For example, to install MongoDB 4.4.6, enter `docker pull mongo:4.4.6`.
 {{< /note >}}
 
@@ -129,7 +129,7 @@ MongoDB is now running as a Docker Container.
 
 From the `mongosh` shell, you can test queries and operations directly with your database.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The legacy `mongo` shell has been deprecated in MongoDB v5.0, but is still accessible as an alternative to `mongosh`.
 {{< /note >}}
 

@@ -43,7 +43,7 @@ While there are several options for deploying the Prometheus Operator, using [He
 
 ## Before You Begin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubernetes.io/docs/setup/release/notes/).
 {{< /note >}}
 
@@ -132,7 +132,7 @@ kubeScheduler:
 
 1.  Export an environment variable to store your Grafana admin password:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Replace `prom-operator` in the below command with a secure password and save the password for later reference.
     {{< /note >}}
 
@@ -148,7 +148,7 @@ Replace `prom-operator` in the below command with a secure password and save the
         --set prometheusOperator.createCustomResource=false \
         --repo https://prometheus-community.github.io/helm-charts
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can safely ignore messages similar to `manifest_sorter.go:192: info: skipping unknown hook: "crd-install"` as discussed in this [Github issues thread](https://github.com/helm/charts/issues/19452).
 
 Alternatively, you can add `--set prometheusOperator.createCustomResource=false` to the above command to prevent the message from appearing.
@@ -203,7 +203,7 @@ prometheus-operated                              ClusterIP   None             <n
 
 1.  Use `kubectl` [port-forward](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward) to open a connection to a service, then access the service's interface by entering the corresponding address in your web browser:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Press **control+C** on your keyboard to terminate a port-forward process after entering any of the following commands.
     {{< /note >}}
 
@@ -232,7 +232,7 @@ Press **control+C** on your keyboard to terminate a port-forward process after e
 
 ## Prometheus Operator Deployment with HTTPS and Basic Auth
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Before you start on this section, ensure that you have completed all of the steps in [Before you Begin](#before-you-begin).
 {{< /note >}}
 
@@ -271,7 +271,7 @@ Now that your NGINX Ingress Controller has been deployed and your domain's A rec
 
 ### Install cert-manager
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Before performing the commands in this section, ensure that your DNS has had time to propagate across the internet. You can query the status of your DNS by using the following command, substituting `example.com` for your domain (including a subdomain if you have configured one).
 
     dig +short example.com
@@ -336,7 +336,7 @@ spec:
 
     - This manifest file creates a ClusterIssuer resource that will register an account on an ACME server. The value of `spec.acme.server` designates Let's Encrypt's production ACME server, which should be trusted by most browsers.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 Let's Encrypt provides a staging ACME server that can be used to test issuing trusted certificates, while not worrying about hitting [Let's Encrypt's production rate limits](https://letsencrypt.org/docs/rate-limits/). The staging URL is `https://acme-staging-v02.api.letsencrypt.org/directory`.
         {{< /note >}}
 
@@ -353,7 +353,7 @@ After you have a ClusterIssuer resource, you can create a Certificate resource. 
 
 1.  Using the text editor of your choice, create a file named `certificate-prod.yaml` with the example configurations:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Replace the value of `spec.dnsNames` with the domain, including subdomains, that you will use to host your monitoring interfaces.
     {{< /note >}}
 
@@ -374,7 +374,7 @@ spec:
   - example.com
     {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The configurations in this example create a Certificate in the `monitoring` namespace that is valid for 90 days and renews 15 days before expiry.
     {{< /note >}}
 
@@ -428,7 +428,7 @@ In this section, you will create a Helm chart values file and use it to deploy P
 
 1.  Using the text editor of your choice, create a file named `values-https-basic-auth.yaml` in the `~/lke-monitor` directory and save it with the configurations below. Since the control plane is Linode-managed, as part of this step we will also disable metrics collection for the control plane component:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Replace all instances of `example.com` below with the [domain you have configured](#before-you-begin), including subdomains, for use with this guide.
     {{< /note >}}
 
@@ -535,7 +535,7 @@ kubeScheduler:
 
 1.  Export an environment variable to store your Grafana admin password:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Replace `prom-operator` in the below command with a secure password and save the password for later reference.
     {{< /note >}}
 
@@ -543,7 +543,7 @@ Replace `prom-operator` in the below command with a secure password and save the
 
 1.  Using Helm, deploy a Prometheus Operator release labeled `lke-monitor` in the `monitoring` namespace on your LKE cluster with the settings established in your `values-https-basic-auth.yaml` file:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you have already deployed a Prometheus Operator release, you can upgrade it by replacing `helm install` with `helm upgrade` in the below command.
     {{< /note >}}
 

@@ -51,7 +51,7 @@ Email security should also a primary concern for most users and Mail-in-a-Box ha
 Use this server exclusively for Mail-in-a-Box. Installing extra software might cause unexpected behavior.
 {{< /caution >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Wherever you see `example.com` in this tutorial, replace it with your domain name, and leave the prefix as it is. That is, don't change `box` to something else. Also, `203.0.113.1` is used as an example IP; your outputs should reflect your server IP instead.
 {{< /note >}}
 
@@ -76,7 +76,7 @@ If you don't see your custom name servers in the dig output within an hour of re
 
 ## Install Mail-in-a-Box
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

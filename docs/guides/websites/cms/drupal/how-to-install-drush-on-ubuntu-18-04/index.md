@@ -40,7 +40,7 @@ Before installing Drush, ensure that the following prerequisites have been met:
 
 1.  Install and configure a [LAMP stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -128,7 +128,7 @@ export PATH="$HOME/vendor/bin:$PATH"
 
         drush --version
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can install the [Drush Launcher](https://github.com/drush-ops/drush-launcher), a utility to be able to call Drush globally. This program listens on your `$PATH` and hands control to a site-local Drush that is in the `~/vendor` directory.
     {{</ note >}}
 

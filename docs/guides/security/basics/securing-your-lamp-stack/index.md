@@ -36,7 +36,7 @@ For a quick an easy way to install a LAMP stack on Linode, check out our guide o
 
 Otherwise, you can find instructions on how to manually install a LAMP stack in our guide on [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/). Installation instructions for several other Linux distributions are also accessible from this guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This demonstration has been performed on Ubuntu 18.04. However, all techniques demonstrated are distribution agnostic with the exception of package names and package managers.
 {{< /note >}}
 
@@ -299,7 +299,7 @@ Brute-force attacks can be extremely powerful and may result in thousands of fai
 
 Fail2Ban allows you to automate the process of blocking brute-force attacks by limiting the number of failed authentication attempts a user can make before being blocked. This is extremely useful for servers that have user accounts that utilize passwords for remote authentication as opposed to SSH key-pair authentication.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Fail2Ban only works if your authentication method is set to password based authentication as opposed to key based authentication. If you opt to use key based authentication and have disabled password based authentication, you do not need brute force protection as only users with the private key can authenticate to the server.
 {{< /note >}}
 
@@ -428,7 +428,7 @@ Scanning with ClamAV is simple and can be invoked by running the `clamscan` comm
 
 1.  Get started by scanning a particular directory. For example, scan the `/etc` directory for infected files with the following command:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Performing a scan can take several minutes to complete.
     {{< /note >}}
 
@@ -816,7 +816,7 @@ Then, import a public GPG key for a secure Lynis installation:
 
     sudo wget -O - https://packages.cisofy.com/keys/cisofy-software-public.key | sudo apt-key add -
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You may need to manually install gnupg2 on some systems in order for GPG to successfully import keys. This can be completed with the following command:
 
     sudo apt-get install gnupg2

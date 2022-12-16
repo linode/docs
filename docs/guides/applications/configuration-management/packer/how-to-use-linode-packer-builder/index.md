@@ -44,7 +44,7 @@ This guide will walk you through the process of installing Packer, creating a  t
 
        export TOKEN=x
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Some of the example commands provided in this guide will use this variable. If you do not set this variable, you will need to modify these commands by replacing `$TOKEN` with your API token.
 {{< /note >}}
 
@@ -79,7 +79,7 @@ Verify that Packer was successfully installed by running the command `packer --v
 
 Now that Packer is installed, you can make a Packer [template](https://www.packer.io/docs/templates). A template is a file that contains the configurations needed to build a machine image. A template can be formatted in [JSON](https://www.packer.io/docs/templates/legacy_json_templates) or [HCL2](https://www.packer.io/docs/templates/hcl_templates) (Hashicorp Configuration Language). As of Packer v1.7.0, the HCL2 template format is preferred and, as such, will be used in the examples within this guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this section will incur charges related to deploying a [1GB Linode](https://www.linode.com/pricing) (Nanode). The Linode will only be deployed for the duration of the time needed to create and snapshot your image and will then be deleted. See our [Billing and Payments](/docs/products/platform/billing/) guide for details about how hourly billing works.
 {{</ note >}}
 
@@ -163,7 +163,7 @@ After the template file has been saved with your desired parameters, you're now 
 
        packer validate -var linode_api_token=$TOKEN example.pkr.hcl
 
-      {{< note >}}
+      {{< note respectIndent=false >}}
   To learn how to securely store and use your API v4 token, see the [Vault](https://www.packer.io/docs/templates/hcl_templates/functions/contextual/vault) section of Packer's documentation.
       {{</ note >}}
 

@@ -25,7 +25,7 @@ In this guide, learn more about `dog` and how to install and start using it on y
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -47,7 +47,7 @@ You can learn more about the `dig` command and its features in our guide [Use di
 
             sudo dnf install gcc tar openssl-devel
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may need to update your system's version of the GNU C library (glibc).
 {{</ note >}}
 
@@ -63,7 +63,7 @@ You may need to update your system's version of the GNU C library (glibc).
 
 1. Navigate to the [releases page](https://github.com/ogham/dog/releases/) for `dog`, identify the latest release, and copy the URL for the `.tar.gz` file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To access the `.tar.gz` file, navigate to the [**Tags** section](https://github.com/ogham/dog/tags) of the dog releases page.
     {{</ note >}}
 

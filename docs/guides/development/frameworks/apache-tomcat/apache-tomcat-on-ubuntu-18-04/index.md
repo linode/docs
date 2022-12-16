@@ -46,7 +46,7 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
         apt-get update && apt-get upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -56,7 +56,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
         sudo apt-get install tomcat9
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 OpenJDK will be installed as a dependency when you install the `tomcat9` package. The package `openjdk-11-jre-headless` is included with the `default-jre-headless` metapackage in Ubuntu.
 {{< /note >}}
 
@@ -88,7 +88,7 @@ If you installed the `tomcat9-admin` web application above, you can configure it
 
 {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, because doing so may expose your server to unauthorized login attempts.
 {{</ note >}}
 

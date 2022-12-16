@@ -48,7 +48,7 @@ The setup in this guide requires the following *minimal* Linode specifications:
 
 Your implementation may need more nodes or higher-memory plans. Your required server resources depend on the number of end-users you want to serve and the number of modules you plan to incorporate. If you're not sure what size server you need, you can always start with a lower resource tier and then [resize your Linodes](/docs/guides/resizing-a-linode/) to a higher plan later on.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you set up both servers inside the same data center, then you can configure the database server and the application server to talk to each other over that data center's private network. Communication over the data center's private network can be faster than communication between data centers. As well, the data transfer between your servers does not count against your account's [monthly network transfer usage](/docs/guides/network-transfer/).
 {{< /note >}}
 
@@ -60,7 +60,7 @@ All examples in this guide are for Debian 10. If you plan to use a different ope
 
 1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -87,7 +87,7 @@ If you want to configure a firewall for your Linodes, open the following ports:
 
 A convenient way to open these ports is by using the [UFW firewall utility](/docs/guides/configure-firewall-with-ufw/). However, this utility is not installed by default. Follow these instructions to install and configure UFW:
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you prefer to use a different firewall utility, like [iptables](/docs/guides/control-network-traffic-with-iptables/), be sure to use the same ports as described in the table above when configuring your software.
 {{< /note >}}
 
@@ -105,7 +105,7 @@ If you prefer to use a different firewall utility, like [iptables](/docs/guides/
 
             sudo ufw allow 22,6010,5432,8069/tcp
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may want to only accept connections from certain hosts/IP addresses. The [Advanced Rules](/docs/guides/configure-firewall-with-ufw/#advanced-rules) section of our UFW guide shows how to specify hosts/IP addresses in your rules.
 {{< /note >}}
 
@@ -117,7 +117,7 @@ You may want to only accept connections from certain hosts/IP addresses. The [Ad
 
         sudo ufw status
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For more detailed information about firewall setup please read our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide.
 {{< /note >}}
 
@@ -133,7 +133,7 @@ In order to simplify communication between Linodes, set hostnames for each serve
 
 On each server, append the following lines to the `/etc/hosts` file. For the second line in each of these snippets, substitute your Linodes' IP addresses. If both servers are in the same Linode data center, then you can use private IP addresses for each Linode. Otherwise, use the public IP addresses of each Linode. Follow our [Find your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide to locate your addresses.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 A Linode does not come with a private IP address assigned to it by default. Private IPs are free to set up. If you would like to, follow our [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) guide to set up a private IP address on each Linode. Please note that you need to add the new private address inside your Linodes' networking configuration after it is assigned to your server.
 
 Linode can configure your new private address for you through the [Network Helper](/docs/guides/network-helper/) utility, if it is enabled. After this tool is enabled in the Cloud Manager, reboot your Linode. You should be able to make connections on the private IP after reboot. Then, proceed with the rest of this guide.
@@ -146,7 +146,7 @@ Linode can configure your new private address for you through the [Network Helpe
 192.0.2.2       odoo.yourdomain.com       odoo
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Use the public or private IP address of your **Odoo application server** on the second line of the above file snippet.
 {{< /note >}}
 
@@ -157,7 +157,7 @@ Use the public or private IP address of your **Odoo application server** on the 
 192.0.2.3       postgresql.yourdomain.com   postgresql
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Use the public or private IP address of your **PostgreSQL database server** on the second line of the above file snippet.
 {{< /note >}}
 
@@ -227,7 +227,7 @@ Now that you finished PostgreSQL configuration you can start the `postgresql` se
 
 This section shows how to configure your Odoo 13 web application to work with the PostgreSQL database backend. Run the commands in this section on the Linode that you created for your Odoo application server.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Odoo 13 uses Python 3.6+ instead of Python 3.5. [Debian 10 servers run Python 3.7.3 by default](/docs/guides/how-to-install-python-on-debian-10/), so you should not have compatibility problems.
 {{< /note >}}
 

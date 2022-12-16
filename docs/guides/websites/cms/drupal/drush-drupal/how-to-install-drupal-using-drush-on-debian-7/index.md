@@ -33,7 +33,7 @@ Before installing Drush and Drupal, ensure that the following prerequisites have
 
 3.  Configure a LAMP stack using the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -116,7 +116,7 @@ Drush can create a Drupal site with half the steps of a normal installation. The
 
         sudo apt-get install php5-gd
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the install process displays a prompt concerning a modified configuration file, choose the "keep the local version currently installed" option.
 {{< /note >}}
 
@@ -137,7 +137,7 @@ If the install process displays a prompt concerning a modified configuration fil
 
         sudo drush dl drupal --drupal-project-rename=drupal
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can specify versions of Drupal. For example to install Drupal 8, which is in beta at the time of this publication, use **`drush dl drupal-8`**.
 {{< /note >}}
 
@@ -151,7 +151,7 @@ You can specify versions of Drupal. For example to install Drupal 8, which is in
         sudo drush si standard --db-url=mysql://username:password@localhost/databasename --site-name=example.com
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Although MySQL accepts passwords with a special character, for example an exclamation point, the `drush si standard` command does not. If you have a special character in your MySQL password, you may need to change it.
 {{< /note >}}
 
@@ -239,7 +239,7 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 
         composer global require drush/drush:dev-master
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To install a different version of Drush, replace `drush/drush:dev-master` with another version. For example, to install the stable release of Drush 6.x, use `drush/drush:6.*`. For more information, check out the [Drush GitHub](https://github.com/drush-ops/drush) repository.
 {{< /note >}}
 

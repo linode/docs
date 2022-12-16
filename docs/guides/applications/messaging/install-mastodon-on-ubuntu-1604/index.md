@@ -49,7 +49,7 @@ This guide will create a Mastodon server on a Linode running Ubuntu 16.04. Docke
 
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Consult Mastodon's [resource usage examples](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Resources-needed.md) when considering which Linode plan to deploy on.
 {{< /note >}}
 
@@ -128,7 +128,7 @@ services:
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide uses Mastodon [v2.4.2](https://github.com/tootsuite/mastodon/releases/tag/v2.4.2). At the time of writing, there was a [known issue](https://github.com/tootsuite/mastodon/issues/8001) with [v2.4.3](https://github.com/tootsuite/mastodon/releases/tag/v2.4.3) during installation.
 {{< /note >}}
 
@@ -381,7 +381,7 @@ SMTP_PASSWORD=your_mailgun_email_password
 
         sudo chown -R 991:991 public
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The UID that Mastodon will run under is `991`, but there is no `mastodon` user created on your system.
 {{< /note >}}
 

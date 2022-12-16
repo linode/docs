@@ -72,7 +72,7 @@ You'll see the following information for your Linode. Use this information to co
 
 Below are example configurations for the given Linux distribution. Edit the example files substituting the example IP addresses with those of your Linode, gateway and DNS nameservers. Depending on the amount of addresses you want to configure, not all lines will be necessary.
 
-{{< note >}}
+{{< note respectIndent=false >}}
  All additional `/64` IPv6 ranges are routed through the original IPv6 SLAAC address for a Linode. When configuring both a SLAAC address and a routed range, additional configuration changes should be made.
 {{< /note >}}
 
@@ -106,7 +106,7 @@ Address=192.168.133.234/17
 Address=2001:db8:2000:aff0::3/64
 {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 On Container Linux, you need to rename or remove the original cloud config data so it doesn't take precedence on reboots over the eth0 configuration above. Do this with `sudo mv /var/lib/coreos-install/user_data /var/lib/coreos-install/user_data.bak`.
 {{< /note >}}
 
@@ -323,7 +323,7 @@ NETCONFIG_DNS_RESOLVER_OPTIONS="rotate"
 
 [Netplan](https://netplan.io/) is used to configure networking in Ubuntu 18.04 and later. Ubuntu Server is packaged with `systemd-networkd` as the [backend](https://netplan.io/design#design-overview) for Netplan, while NetworkManager is used as the Netplan backend in Ubuntu Desktop. The `ifupdown` package has been deprecated, and `/etc/network/interfaces` is no longer used, but it's still possible to configure static networking with `/etc/systemd/network/*.network` files.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you have upgraded to Ubuntu 18.04 or later from an earlier version, you may need to enable `systemd-networkd`:
 
     systemctl enable systemd-networkd

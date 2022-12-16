@@ -48,7 +48,7 @@ Depending on your version of Linux, it may be possible to install Redis through 
         sudo apt-get update && sudo apt-get upgrade
         sudo apt install make gcc libc6-dev tcl
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Alternatively, you can install the "build-essential" meta-package to load the dependencies for Redis:
 
         sudo apt install build-essential tcl
@@ -126,7 +126,7 @@ cluster-node-timeout 15000
     |    2   |  6380  |  b_master.conf  | 6379    | a_replica.conf   |
     |    3   |  6381  |  c_master.conf  | 6380    | b_replica.conf   |
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Each node in the Redis cluster requires that the defined port the port plus 10000 are open. For example, **Server 1** must have TCP ports 6379 and 16379 open for the master node, and TCP ports 6381 and 16381 open for the replica node. Ensure iptables or ufw is configured properly for each server.
 {{< /note >}}
 
@@ -168,7 +168,7 @@ At this point, each Linode hosts two independent master nodes. The Redis install
 
 1.  SSH into **Server 1**, then create a Redis cluster consisting of your three master nodes with the following command:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If utilizing a [VLAN](/docs/products/networking/vlans/get-started/), use each Linode's IPAM address.
 {{< /note >}}
 

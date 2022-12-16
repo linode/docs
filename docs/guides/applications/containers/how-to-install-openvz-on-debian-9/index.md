@@ -35,7 +35,7 @@ OpenVZ is a software-based OS virtualization tool enabling the deployment, manag
 
 3. Certain essential modifications to your Debian 9 system are required to run OpenVZ, including the removal and replacement of Systemd with SystemV, and the use of a custom Linux kernel. Before continuing, be certain that all software currently installed on the machine will be compatible with these changes.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Although not required, it is recommended to create a separate Ext4 filesystem partition for OpenVZ templates. By default, both the Debian 9 installer and the Linode Manager format newly created partitions with Ext4. For information on how to accomplish this configuration, follow the steps to create a disk in the [Managing Disks and Storage on a Linode](/docs/guides/disks-and-storage/) guide.
 {{< /note >}}
 
@@ -356,7 +356,7 @@ Containers have no way to access the internet or be accessed from the internet. 
 
 ### Configure Access From Container To Internet
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You may need to login as root with `su -` in order to run the iptables-save commands in this section.
 {{< /note >}}
 

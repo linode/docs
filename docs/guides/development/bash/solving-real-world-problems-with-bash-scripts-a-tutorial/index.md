@@ -33,7 +33,7 @@ In this guide, you will find the following information about bash scripts:
 - [solving other real world problems](#bash-scripts-for-administrators)
 - [additional examples](#additional-examples)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -79,7 +79,7 @@ mySum = 3
 mySum = 8
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you want to check whether a function parameter exists or not, you can use the statement:
 
     if [ -z "$1" ]
@@ -238,7 +238,7 @@ Threshold = 30
 WARNING: The partition "/dev/root" has used 61% of total available space - Date: Wed Aug 28 21:14:51 EEST 2019
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This script and others like it can be easily executed as cron jobs and automate tasks the UNIX way.
 {{< /note >}}
 
@@ -470,7 +470,7 @@ The output of `freqL.sh` will resemble the following:
    1 a
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The file `text.txt` will not exist by default. You can use a pre-existing text file to test this script, or you can create the `text.txt` file using a text editor of your choice.
 {{< /note >}}
 
@@ -570,7 +570,7 @@ The output of `tabs2spaces.sh` will resemble the following:
 Converting textfile.txt.
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The file `textfile.txt` will not exist by default. You can use a pre-existing text file to test this script, or you can create the `textfile.txt` file using a text editor of your choice.
 {{< /note >}}
 

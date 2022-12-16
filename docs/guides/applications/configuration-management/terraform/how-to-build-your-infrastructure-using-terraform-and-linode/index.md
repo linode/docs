@@ -33,13 +33,13 @@ The configurations and commands used in this guide results in multiple Linodes b
 
 -   This guide shows you how to install and use the Terraform client software from a Linux system. Terraform can be installed on other operating systems, and the instructions for those platforms are analogous to the commands presented in this guide.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When following this guide, your Linux user may need sudo privileges in order to install supplementary software packages.
 {{</ note >}}
 
 -   You need a personal access token for Linode's [v4 API](/docs/api/) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Any Personal Access Tokens generated from the previous Linode Manager are API v3 tokens and do not work with Terraform's Linode provider.
 {{</ note >}}
 
@@ -47,7 +47,7 @@ Any Personal Access Tokens generated from the previous Linode Manager are API v3
 
 The installation steps in this section are for Linux operating systems. To install Terraform on a different operating system, like macOS, see [Terraform's downloads](https://www.terraform.io/downloads.html) page. Once installed, skip to [Building with the Terraform Provider](#building-with-the-linode-provider).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The Terraform Provider for Linode requires [Terraform version 1.1+](https://www.hashicorp.com/blog/terraform-1-1-improves-refactoring-and-the-cloud-cli-experience). The examples in this guide were written to be compatible with [Terraform version 1.1](https://www.terraform.io/docs/configuration-0-11/terraform.html) and may be updated in the near future.
 {{</ note >}}
 
@@ -87,7 +87,7 @@ gpg: Total number processed: 1
 gpg:               imported: 1
 {{</ output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you receive errors that indicate the `dirmngr` software is missing or inaccessible, install `dirmngr` using your package manager and run the GPG command again.
 {{< /note >}}
 
@@ -124,7 +124,7 @@ terraform_1.1.9_linux_amd64.zip: OK
 
         unzip terraform_*_linux_amd64.zip
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you receive an error that indicates `unzip` is missing from your system, install the `unzip` package and try again.
 {{< /note >}}
 
@@ -204,7 +204,7 @@ resource "linode_instance" "terraform-web" {
 
     This snippet creates a Linode 2GB labelled `Terraform-Web-Example` in a `Terraform` Linodes group. While the server's software won't be configured in this guide, we can imagine for now that the Linode acts as a webserver.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 See [Terraform's documentation](https://www.terraform.io/docs/configuration/syntax.html) for more information on configuration syntax and any updates to the Linode provider.
 {{< /note >}}
 
@@ -231,7 +231,7 @@ suggested below.
 Terraform has been successfully initialized!
 {{</ output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If an error occurs, run the command again in debug mode:
 
     TF_LOG=debug terraform init
@@ -290,7 +290,7 @@ can't guarantee that exactly these actions will be performed if
 
     `terraform plan` won't take any action or make any changes on your Linode account. Instead, an analysis is done to determine which actions (i.e. Linode instance creations, deletions, or modifications) are required to achieve the state described in your configuration.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Debug mode can be applied to the plan command if you need to perform troubleshooting:
 
     TF_LOG=debug terraform plan
@@ -346,7 +346,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 In the previous step, you used Terraform to provision a Linode that could act as a webserver. To illustrate how to add another Linode via Terraform, let's say you now also need a separate database server. To do this, you can create another Terraform configuration file for the second Linode.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 When deploying multiple Linodes with Terraform, remember that you need to assign a unique name for each Linode.
 
 In production environments, your SSH key and root password should be unique for each resource. Having said that, the example Linodes in this guide shares keys and root passwords.
@@ -369,7 +369,7 @@ resource "linode_instance" "terraform-db" {
 
     You may notice that the Terraform provider is not specified in this file as it was in `linode-terraform-web.tf`. Terraform loads into memory and concatenates all files present in the working directory which have a `.tf` extension. This means you don't need to define the provider again in new `.tf` files.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In this configuration a new parameter, `swap_size`, is used to override the default value of 512MB. You can check all available options for the Linode Terraform provider in the plugin's GitHub repository [readme.md](https://github.com/LinodeContent/terraform-provider-linode).
 {{< /note >}}
 

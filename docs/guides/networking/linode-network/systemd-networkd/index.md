@@ -16,11 +16,11 @@ tags: ["networking","linode platform"]
 
 The [systemd-networkd](https://wiki.archlinux.org/title/systemd-networkd) tool is a newer tool developed as part of systemd. Arch and modern versions of Ubuntu (17.10 and above) currently use systemd-networkd as their default network configuration software.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ubuntu also has utility called Netplan that serves as a frontend for configuring either systemd-networkd or NetworkManager. By default, NetworkHelper manages networking in Ubuntu using systemd-networkd though you can decide which one works best for your needs.
 {{</ note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide serves as a supplement to the main [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) guide. Please review that guide before making any configuration changes to your Compute Instance.
 {{</ note >}}
 
@@ -128,7 +128,7 @@ IPv6PrivacyExtensions=false
 IPv6AcceptRA=true
 {{</ file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `IPv6AcceptRA` parameter isn't strictly required as long as running the `net.ipv6.conf.eth0.autoconf` kernel variable is set to `1` (not a `0`). You can determine the setting by running the following command.
 
     sysctl net.ipv6.conf.eth0.autoconf

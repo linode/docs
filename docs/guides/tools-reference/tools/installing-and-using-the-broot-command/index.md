@@ -26,7 +26,7 @@ The `broot` command provides a modern approach to generating directory trees on 
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -146,7 +146,7 @@ The file management capabilities of `broot` set it apart from other Linux utilit
 
 - Press **Enter** on a file to have `broot` attempt to call a program to open the file. You can also use the `:e` command to have `broot` attempt to open the file with the default editor program.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `broot` uses the `$EDITOR` environmental variable to determine what editor to use. If you do not have this variable set, you can set it with a shell command like the one below. The below example command sets the default editor to Vim.
 
     export EDITOR=$(which vim)

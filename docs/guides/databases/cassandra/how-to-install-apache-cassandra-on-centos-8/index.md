@@ -32,7 +32,7 @@ aliases: ['/databases/cassandra/how-to-install-apache-cassandra-on-centos-8/']
 
 After completing this guide, you will have a single-node, production-ready installation of [Apache Cassandra](http://cassandra.apache.org/) hosted on your Linode running CentOS 8. This tutorial will cover basic configuration options, as well as how to harden and secure your database.
 
-{{< note >}}
+{{< note respectIndent=false >}}
  In order to successfully execute the commands in this guide, you will need to run them as the `root` user, or log in using an account with root privileges, prefixing each command with `sudo`.
  {{</ note >}}
 
@@ -111,7 +111,7 @@ In this section, you will enable user login authentication. You can also configu
 
 1.  Open `cassandra.yaml` in your preferred text editor:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Locations of the `cassandra.yaml` file may differ slightly between distros.
     {{< /note >}}
 
@@ -169,7 +169,7 @@ permissions_validity_in_ms: 0
 
 The `cqlshrc` file holds configuration settings that influence user preferences and how Cassandra performs certain tasks.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ensure you complete the steps in this section using your limited user account. This account will need [sudo privileges](/docs/guides/set-up-and-secure/#centos-fedora), if it does not already have them.
 {{</ note >}}
 
@@ -187,7 +187,7 @@ Do not complete this section as the root user. Before proceeding, fully evaluate
 1.  Copy any sections below that you wish to add to your configuration, and ensure you replace the `superuser` and `password` value in brackets with your own values. Details for this file can be found in the [Configuring cqlsh From a File](https://docs.datastax.com/en/archived/cql/3.3/cql/cql_reference/cqlshUsingCqlshrc.html) guide on the [DataStax](https://www.datastax.com/) site.
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can find a sample file containing all the configuration options in the example `/etc/cassandra/conf/cqlshrc.sample` file.
     {{</ note >}}
 
@@ -237,7 +237,7 @@ encoding = utf8
 
         cqlsh -u superuser
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also login by providing your username and password:
 
     cqlsh -u superuser -p password
@@ -306,7 +306,7 @@ JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname=<public name>"
 
         nodetool status
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It may take a few seconds for Cassandra to refresh the configuration. If you receive another connection error, try waiting 15 seconds before rechecking the node status.
 {{< /note >}}
 

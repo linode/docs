@@ -67,7 +67,7 @@ See [man crontab](https://linux.die.net/man/1/crontab) for more information abou
 
         crontab -e
 
-    {{< note >}} To change the text editor used, add the environment variable to your `~/.bashrc` file, exchanging `vim` for `nano`, or whatever other terminal-based editor you prefer.
+    {{< note respectIndent=false >}} To change the text editor used, add the environment variable to your `~/.bashrc` file, exchanging `vim` for `nano`, or whatever other terminal-based editor you prefer.
 
     export EDITOR=vim
 {{< /note >}}

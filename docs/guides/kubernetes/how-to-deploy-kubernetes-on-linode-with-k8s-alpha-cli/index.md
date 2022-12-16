@@ -75,7 +75,7 @@ If you haven't used Kubernetes before, we recommend reading through our introduc
 
 1.  If you do not already have a public-private SSH key pair, you will need to generate one. Follow the [Generate a Key Pair](/docs/guides/use-public-key-authentication-with-ssh/#linux-and-macos) section of our [Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/) guide for instructions.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're unfamiliar with the concept of public-private key pairs, the introduction to our [Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/) guide explains what they are.
 {{< /note >}}
 
@@ -85,7 +85,7 @@ The k8s-alpha CLI is bundled with the Linode CLI, and using it requires the inst
 
 -   [Terraform](#install-terraform): The k8s-alpha CLI creates clusters by defining a resource *plan* in Terraform and then having Terraform create those resources. If you're interested in how Terraform works, you can review our [Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/), but doing so is not required to use the k8s-alpha CLI.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The k8s-alpha CLI requires [Terraform version 0.12.0+](https://www.hashicorp.com/blog/announcing-terraform-0-12).
     {{</ note >}}
 
@@ -115,7 +115,7 @@ Your SSH key pair is stored in your home directory (or another location), but th
 
     eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You will need to run all of your k8s-alpha CLI commands from the terminal that you start the `ssh-agent` process in. If you start a new terminal, you will need to run the commands in this step again before using the k8s-alpha CLI.
 {{< /note >}}
 
@@ -130,7 +130,7 @@ Host *
   IdentityFile ~/.ssh/id_rsa
 {{< /file >}}
 
-  {{< note >}}
+  {{< note respectIndent=false >}}
 Although `kubectl` should be used in all cases possible to interact with nodes in your cluster, the key pair cached in the `ssh-agent` process will enable you to access individual nodes via SSH as the `core` user.
 {{< /note >}}
 
@@ -156,13 +156,13 @@ Although `kubectl` should be used in all cases possible to interact with nodes i
 
           Enter a value:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Your Terraform configurations will be stored under `~/.k8s-alpha-linode/`
 {{< /note >}}
 
 1.  Enter `yes` at the `Enter a value:` prompt. The Terraform plan will be applied over the next few minutes.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may see an error like the following:
 
 {{< output >}}

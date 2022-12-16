@@ -42,7 +42,7 @@ Unicorn is an HTTP server, just like Passenger or Puma. Since Unicorn cannot be 
 
 Before starting this guide, make sure that  you have read through and completed our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -133,7 +133,7 @@ pid "#{shared_dir}/pids/unicorn.pid"
 
         mkdir -p shared/pids shared/sockets shared/log
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Please note that we are still in the Rails application directory.
 {{< /note >}}
 
@@ -154,7 +154,7 @@ server unix:/home/username/example/shared/sockets/unicorn.sock fail_timeout=0;
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Edit `username` and `example` with appropriate values.
 {{< /note >}}
 
@@ -188,7 +188,7 @@ keepalive_timeout 10;
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure you change the username and example with the appropriate values.
 {{< /note >}}
 
@@ -210,7 +210,7 @@ Make sure you change the username and example with the appropriate values.
 
         sudo unicorn -c config/unicorn.rb -E production -D
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure you are in the application directory; otherwise, you will need to type in the whole path	name.
 {{< /note >}}
 

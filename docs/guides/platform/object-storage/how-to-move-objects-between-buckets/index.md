@@ -58,7 +58,7 @@ To transfer objects within the same cluster on the same account, you need to ope
 
 To transfer objects between two clusters, whether they are on the same account or not, you need to open two separate Cyberduck widows so that you can make two separate connections.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Transferring objects between two different connections creates a copy of the object(s). If you don't want the original files in the source bucket, you need to delete them after the transfer.
 {{</ note >}}
 
@@ -72,7 +72,7 @@ Transferring objects between two different connections creates a copy of the obj
 
     ![Select Objects to Move Between Cyberduck Windows](copyObjectsBetweenBuckets.png "Select Objects to Move Between Cyberduck Windows")
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can easily copy multiple items, folders, or buckets by selecting everything you want to move and dragging the group. If you move a bucket to another bucket, it creates a folder with that bucket name.
 {{</ note >}}
 
@@ -88,7 +88,7 @@ You can also use the Cyberduck CLI, duck, to move objects from one bucket to ano
 
     After issuing this command, you may be asked for login information.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The bucket source and destination names are the fully qualified names including the cluster name, for example: `us-east-1.linodeobjects.com/example_bucket`.
 {{</ note >}}
 

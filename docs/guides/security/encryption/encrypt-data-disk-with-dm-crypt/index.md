@@ -28,7 +28,7 @@ dm-crypt is a transparent disk encryption subsystem. In this guide you will lear
 
 ## Before You Begin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -54,7 +54,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
     apt install cryptsetup
     ```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Another way to set up an encrypted data partition is by attaching a [Block Storage](/docs/products/storage/block-storage/) volume to your Linode, and skipping the instructions for creating a filesystem and mounting the device, since that will be done on the virtual device mapped by dm-crypt.
 {{< /note >}}
 
@@ -111,7 +111,7 @@ Disadvantages of using LUKS:
 
 ## How to Use dm-crypt in Plain Mode without LUKS
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Remember to replace `sdX` with the name of the device you want to encrypt.
 {{< /note >}}
 

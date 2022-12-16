@@ -252,7 +252,7 @@ This error will state `Unable to access local server status for Apache at <http:
 
 2.  An Apache virtual host configuration is interfering with web requests to the `mod_status` location.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This error occurs when Longview attempts to check the status page `location` listed in `/etc/linode/longview.d/Apache.conf`, or the default page at `127.0.0.1/server-status?auto`, but receives a non-200 HTTP response code. Basically, it means that the status page Longview is expecting is not being returned by the server.
     {{< /note >}}
 
@@ -317,7 +317,7 @@ location http://127.0.0.1/custom/location/path
 
 This error will state `The Apache status page doesn't look right. Check <http://example.com/example?auto> and investigate any redirects for misconfiguration.` This error occurs when Longview is able to reach the `mod_status` page, but doesn't receive the expected content.
 
- {{< note >}}
+ {{< note respectIndent=false >}}
 This error occurs when Longview attempts to check the status page, and receives a 200 HTTP response code, but can't scrape the expected status content from the page. That is, the page exists on your Linode, but it doesn't have the right content. If, for example, Longview was to check your website's home page, you would get this error.
 {{< /note >}}
 

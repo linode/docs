@@ -26,7 +26,7 @@ When installing MySQL, you can either install *MySQL Server* or *MySQL client ut
 
 Currently, there are two primary MySQL releases to consider: MySQL 5.7 and MySQL 8.0. Both are still receiving support and updates (until October 2023 and April 2026 respectively). You should likely install MySQL 8.0 unless your application does not yet support it.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For additional instructions on installing MySQL on any supported operating system, see the [Installing and Upgrading MySQL](https://dev.mysql.com/doc/refman/8.0/en/installing.html) guide in the official documentation.
 {{</ note >}}
 
@@ -43,7 +43,7 @@ For additional instructions on installing MySQL on any supported operating syste
 
     The above command should inform you which version you are using. If this command is not found, continue with the installation steps below. If the installed version differs from the release you want to use, consider first uninstalling it and then continuing with the instructions below.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

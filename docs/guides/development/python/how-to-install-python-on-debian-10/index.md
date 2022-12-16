@@ -50,7 +50,7 @@ For Python 2:
 Python 2.7.16
 {{< /output>}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Because of Debian's commitment to stability, Python 2 is still installed on the system. There are default packages that depend on Python 2. On Debian 10, Python 2 continues to be supported past the EOL date of Python 2. It is not recommended to remove the Python 2 binary from your system. Instead, interact with Python 3 using the `python3` command and Python 2 using the `python` command.
 {{< /note >}}
 
@@ -127,7 +127,7 @@ deb http://http.us.debian.org/debian/ testing non-free contrib main
 
         sudo apt upgrade python3
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Because Python3 requires a lot of dependencies, you are prompted to allow Debian to restart certain services. If you are not running any active processes, this is okay. Otherwise, you may decide to restart the services yourself.
 {{< /note >}}
 

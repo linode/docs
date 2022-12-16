@@ -51,7 +51,7 @@ When the Terraform plan is ready to implement, the `terraform apply` command is 
 
 Terraform can be used in a multi-developer environment in conjunction with a versioning control system. Developers can also build their own provider infrastructure for use instead of, or alongside, third-party providers. Terraform provides more details about how the product works and how to use it in their [Introduction to Terraform summary](https://developer.hashicorp.com/terraform/intro).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Terraform is very powerful, but it can be a difficult tool to use. Syntax errors can be hard to debug. Before attempting to create any infrastructure, it is a good idea to read the [Linode Introduction to the HashiCorp Configuration Language](/docs/guides/introduction-to-hcl/). The documentation about the [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs) in the Terraform Registry is also essential. Consult Linode's extensive collection of [Terraform guides](/docs/guides/applications/configuration-management/terraform/) for more examples and explanations.
 {{< /note >}}
 
@@ -67,7 +67,7 @@ Terraform is very powerful, but it can be a difficult tool to use. Syntax errors
     sudo apt update && sudo apt upgrade
     ```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -181,7 +181,7 @@ To construct the Terraform file, execute the following instructions. For more in
 
 1. Define the `linode` provider. Include the [Linode v4 API](/docs/api/) `token` for the account. See the [Getting Started with the Linode API guide](/docs/products/tools/api/get-started/#get-an-access-token) for more information about tokens.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To hide sensitive information, such as API tokens, declare a `variables.tf` file and store the information there. Retrieve the variables using the `var` keyword. See the [Linode introduction to HCL](/docs/guides/introduction-to-hcl/#input-variables) for guidance on how to use variables.
     {{< /note >}}
 
@@ -193,7 +193,7 @@ To hide sensitive information, such as API tokens, declare a `variables.tf` file
 
 1. Create a `linode_object_storage_cluster` data source. In the following code sample, the new cluster object is named `primary`. Designate a region for the cluster using the `id` attribute. In the following example, the region is `eu-central-1`. The cluster object provides access to the domain, status, and region of the cluster. See the Terraform registry documentation for the [Linode Object Storage Cluster data source](https://registry.terraform.io/providers/linode/linode/latest/docs/data-sources/object_storage_cluster) for more information.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Not all regions support storage clusters. For a full list of all data centers where a storage cluster can be configured, see the Linode [Object Storage Product Information](/docs/products/storage/object-storage/).
     {{< /note >}}
 
@@ -215,7 +215,7 @@ Not all regions support storage clusters. For a full list of all data centers wh
 
     Set the `access_key` and `secret_key` attributes to the `access_key` and `secret_key` fields of the storage key. In the following example, the name of the key is `linode_object_storage_key.storagekey`. If you skipped the previous step and are not using an object storage key, do not include these attributes.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Linode Object Storage Bucket resource contains many other configurable attributes. It is possible to set life cycle rules, versioning, and access control rules, and to associate the storage bucket with TLS/SSL certificates. For more information, see the [Linode Object Storage Bucket documentation](https://registry.terraform.io/providers/linode/linode/latest/docs/resources/object_storage_bucket) in the Terraform registry.
     {{< /note >}}
 

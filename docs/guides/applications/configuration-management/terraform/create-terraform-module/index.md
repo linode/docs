@@ -42,7 +42,7 @@ This guide covers the creation of a Terraform module used to deploy a Linode ins
 
 1. Install Terraform on your local computer using the steps found in the **Install Terraform** section of the [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide. Your Terraform project directory should be named `linode_stackscripts`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
     {{</ note >}}
 
@@ -93,7 +93,7 @@ linode_stackscripts/
         └── outputs.tf
 {{</ output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Your `linode_stackscripts` directory will likely contain other files related to the Terraform installation you completed prior to beginning the steps in this guide.
 {{</ note >}}
 
@@ -165,7 +165,7 @@ resource "linode_sshkey" "main_key" {
 
       - The `linode_sshkey` resource will create Linode SSH Keys tied to your Linode account. These keys can be reused for future Linode deployments once the resource has been created. `ssh_key = chomp(file(local.key))` uses Terraform’s built-in function `file()` to provide a local file path to the public SSH key’s location. The location of the file path is the value of the local variable `key`. The `chomp()` built-in function removes trailing new lines from the SSH key.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 If you do not already have SSH keys, follow the steps in the **Create an Authentication Key-pair** section of the our guide [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair).
 {{< /note >}}
 
@@ -552,11 +552,11 @@ stackscript_data = {
 
     This file contains all the sensitive data needed for your Linode deployment. Ensure you replace all values with your own secure passwords and your Linode account's APIv4 token. This file should never be tracked in version control software and should be listed in your `.gitignore` file if using [GitHub](https://github.com/).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In Terraform 0.12, variables with map and object values will use the last value found and override previous values. This is different from previous versions of Terraform, which would merge map values instead of overriding them. For this reason, the `stackscript_data` map and its values are defined in a single variable definitions file.
     {{</ note >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   There are several other options available for secrets management with Terraform. For more information on this subject, see [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform).
     {{</ note >}}
 
@@ -617,7 +617,7 @@ terraform/
 terraform.tfstate
 {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If there are any files related to the Terraform installation steps completed before beginning this guide (such as the zip files and checksum files), you can remove these files from the `linode_stackscripts` directory, since you should not track them in version control and they are no longer necessary.
 {{</ note >}}
 

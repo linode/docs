@@ -38,13 +38,13 @@ A Cloud Firewall can be configured with Inbound and Outbound rules. Inbound rule
 
 1. You need a Linode API personal access token to use with Terraform. This token will allow you to create, update, and destroy Linode resources. See the [Manage Personal Access Tokens](/docs/products/tools/api/guides/manage-api-tokens/) guide for steps to create a token.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
     When you create a personal access token ensure that you set **Read/Write** access permissions for Linode instances and Cloud Firewalls.
     {{</ note >}}
 
 1. [Install Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) on your local computer.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide was written using [Terraform version 0.13.0](https://github.com/hashicorp/terraform/releases).
     {{</ note >}}
 
@@ -54,11 +54,11 @@ This guide was written using [Terraform version 0.13.0](https://github.com/hashi
 
 The following steps will create the Cloud Firewalls module, which includes several child modules that split up the required resources between the *root module*, an `inbound_ssh` module, a `mysql` module, and a `web-server` module. The root module is the directory that holds the Terraform configuration files that are applied to build your desired infrastructure. These files provide an entry point into any child modules. Each child module uses the `linode_firewall` resource to create reusable Cloud Firewall rules for specific use cases.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can apply up to three Cloud Firewalls per Linode instance.
 {{</ note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can view the files created throughout this tutorial in the [author's GitHub repository](https://github.com/leslitagordita/main-firewalls). You can clone the repository and use it as a foundation to create your own custom Cloud Firewalls module.
 {{</ note >}}
 
@@ -101,7 +101,7 @@ main_firewalls/
     mkdir -p main_firewalls/modules/{inbound_ssh,mysql,web_server}
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you followed our [install Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) steps, then your Terraform executable will be located in the `terraform` directory. If this is not the case, ensure that you can execute Terraform commands from the `main_firewalls` directory.
     {{</ note >}}
 
@@ -473,7 +473,7 @@ Now that all the Cloud Firewalls child modules have been created, you can create
     root_pass = "my-super-strong-root-password"
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This file should never be tracked in version control software and should be listed in your `.gitignore` file if using GitHub.
     {{</ note >}}
 

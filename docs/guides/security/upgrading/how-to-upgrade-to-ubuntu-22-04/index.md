@@ -82,7 +82,7 @@ For an in-depth explanation of the clean install method, see the [Linode guide t
 
 1.  Ensure there is at least 20 GB of disk space available. Verify the amount of disk space availability using the `df -Th` command.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -179,7 +179,7 @@ Apache Full (v6)           ALLOW       Anywhere (v6)
 
 The node is now ready for the upgrade. Ensure the update manager is installed, then initiate the upgrade. The upgrade might take some time, depending on the configuration, and must not be interrupted. Ensure there is enough time to complete the entire upgrade before proceeding.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The upgrade operation can be performed using either a LISH session or an SSH connection. A LISH session is safer, but if SSH is used, the upgrade manager opens a second port for redundancy. This guide uses SSH for the procedure to demonstrate the additional steps required.
 {{< /note >}}
 
@@ -216,7 +216,7 @@ The upgrade operation can be performed using either a LISH session or an SSH con
 
 3.  Run the `do-release-upgrade` command to start the upgrade.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To force an upgrade from the latest supported release to a development release, use the command `do-release-upgrade -d`. This guide focuses on upgrading to the latest supported release and does not use this flag.
     {{< /note >}}
 
@@ -275,7 +275,7 @@ Continue [yN]
 
 7.  Ubuntu downloads the new packages and files. It determines which packages are no longer supported and requests approval to proceed. It also calculates how long the upgrade might take. To continue with the upgrade, answer `y`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To see details about the packages to be removed, installed, and upgraded, enter `d`. Enter `q` to exit the details screen. Then enter `y` to continue with the upgrade.
     {{< /note >}}
 

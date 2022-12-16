@@ -61,7 +61,7 @@ Golden disks are capable of handling automated server builds for most individual
 
 -   **Chef:** An open source configuration management tool used to turn your infrastructure into code. See the [Chef website](https://www.chef.io/) for more information. The [knife Linode](https://github.com/chef/knife-linode) subcommand can also be used to manage Linodes with Chef. See the following Chef guides to get started:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Knife Linode is based on Linode's deprecated APIv3.
     {{</ note >}}
 
@@ -71,7 +71,7 @@ Knife Linode is based on Linode's deprecated APIv3.
 
 -   **Ansible:** An open source platform for configuring and managing systems. It works by connecting to your systems via SSH — it doesn't install anything on the remote systems. See the [AnsibleWorks website](http://www.ansible.com/) for more information. Read more about the [Linode Module from Ansible](http://docs.ansible.com/ansible/latest/linode_module.html) in the official documentation. To start using Ansible, check out the following guides:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Linode Module from Ansible is based on Linode's deprecated APIv3.
     {{</ note >}}
 
@@ -97,7 +97,7 @@ The Linode Module from Ansible is based on Linode's deprecated APIv3.
 
 - **Terraform:** Terraform by HashiCorp is an orchestration tool that allows you to represent your Linode instances and other resources with declarative code inside configuration files, instead of manually creating those resources via the Linode Manager or API. This practice is referred to as Infrastructure as Code, and Terraform is a popular example of this methodology.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Terraform Linode provider is based on [Linode's APIv4](/docs/api/).
     {{</ note >}}
 

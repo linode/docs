@@ -132,7 +132,7 @@ client.query('SELECT * FROM hello', (err, res) => {
 
     This app uses the `pg` NPM module (node-postgres) to connect to the database created in the previous section. It then queries the 'hello' table (which returns the "Hello world" message) and logs the response to the console. Replace `'newpassword'` with the `postgres` database user password you set in the previous section.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `pg` module can also use environment variables to configure the client connection. This is the recommended option for production apps. Read more about environment variables in the [node-postgres documentation](https://node-postgres.com/features/connecting).
 {{< /note >}}
 
@@ -294,7 +294,7 @@ You should not store production database data inside a Docker container. Contain
 
 Using the `--link` or `--host` options every time you launch your containers can be cumbersome. If your server or any of the containers crash, they must be manually reconnected. This is not an ideal situation for any application that requires constant availability. Fortunately, Docker provides **Docker Compose** to manage multiple containers and automatically link them together when they are launched. This section will use Docker Compose to reproduce the results of the previous section.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For a more comprehensive explanation of Docker Compose and how to write `docker-compose.yml` configuration files, see our complete [Docker Compose](/docs/guides/how-to-use-docker-compose/) guide.
 {{< /note >}}
 

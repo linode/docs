@@ -79,7 +79,7 @@ Linode has a helpful [Beginner's Guide to Chef](/docs/guides/beginners-guide-che
 
 1. Configure the host name of the Chef Server so it matches the domain name. This allows SSL certificate allocation to proceed normally. To set the host name of a Ubuntu server, use the command `sudo hostnamectl set-hostname <hostname>`, replacing `<hostname>` with the actual name of your domain.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -119,7 +119,7 @@ The Chef Server Core can be downloaded using `wget`. The following steps demonst
 
 1. Start the Chef server. Answer `yes` when prompted to accept the product licenses.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The installation process takes several minutes to complete. Upon a successful installation, the message `Chef Infra Server Reconfigured!` is displayed.
     {{< /note >}}
 
@@ -248,7 +248,7 @@ A few more items must be configured before the Workstation is operational. Tasks
 
 RSA private keys enable better security between the Chef Server and associated workstations through the use of encryption. Earlier, RSA private keys were created on the Chef Server. Copying these keys to a workstation allows it to communicate with the server. To enable encryption using RSA private keys, follow these steps.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 SSH password authentication must be enabled on the Chef Server to complete the key exchange. If SSH password authentication has been disabled for better security, enable it again before proceeding. After the keys have been retrieved and added to the workstation, SSH password authentication can be disabled again. See the Linode guide to [How to Secure Your Server](/docs/guides/set-up-and-secure/#ssh-daemon-options) for more information.
 {{< /note >}}
 
@@ -395,7 +395,7 @@ The Chef Knife utility helps a Chef workstation communicate with the server. It 
 
 1. Move back to the `chef-repo` directory and fetch the necessary SSL certificates from the server using the `knife fetch` command.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The SSL certificates were generated when the Chef server was installed. The certificates are self-signed. This means a certificate authority has not verified them. Before fetching the certificates, log in to the Chef server and ensure the hostname and fully qualified domain name (FQDN) are the same. These values can be confirmed using the commands `hostname` and `hostname -f`.
     {{< /note >}}
 
@@ -440,7 +440,7 @@ At this point, both the Chef Server and Chef Workstation are configured. They ca
 
 1. Bootstrap the node using the `knife bootstrap` command. Specify the IP address of the target node for `node_ip_address`. This is the address of the node to bootstrap. In the following example, use the actual user name and password for the account in place of `username` and `password`. Enter the name of the node in place of `nodename`. Answer `Y` when asked "Are you sure you want to continue connecting".
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The option to bootstrap using key-pair authentication no longer appears to be supported.
     {{< /note >}}
 

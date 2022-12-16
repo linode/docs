@@ -35,7 +35,7 @@ Once your server has been created, deploying updates becomes as clear and painle
 
 1.  If you don't have a registered domain name for your website, purchase one from a domain name registrar.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You will be able to set up a site without a domain name (by visiting your Linode's IP address directly), but you will only be able to use SSL with a domain.
 {{< /note >}}
 
@@ -106,7 +106,7 @@ If you want to be able to quickly deploy from GitHub, GitLab, or Bitbucket, you 
 
 Your server has been created, but no sites have been set up on it, apart from the default site which displays your PHP settings.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you do not want to use a domain with your website, you can configure the *default* site on your server. Select the default site from the **Active Sites** panel of your server's dashboard in Forge, then skip to the [Add a repository](#add-a-repository) instructions.
 {{< /note >}}
 
@@ -146,7 +146,7 @@ If you do not want to use a domain with your website, you can configure the *def
 
     ![Git Repository Form](adding_git_repository.png "The form for adding a Git repository to your site")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you do not use [Composer](https://getcomposer.org), leave the **Install Composer Dependencies** option disabled, as it will cause errors for your deployment if enabled.
 {{< /note >}}
 
@@ -178,7 +178,7 @@ SSL (Secure Sockets Layer) is the standard security technology for establishing 
 
     ![Let's Encrypt Form](laravel_forge_adding_ssl.png "The form for adding Let's Encrypt to your site")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 [Let's Encrypt](https://letsencrypt.org) is a free and widely-trusted SSL certificate authority.
 {{< /note >}}
 

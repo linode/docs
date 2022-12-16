@@ -26,7 +26,7 @@ relations:
 aliases: ['/tools-reference/custom-kernels-distros/install-coreos-on-your-linode/']
 ---
 
-{{< note >}}
+{{< note respectIndent=false >}}
 CoreOS Container Linux is now available for deployment from the Linode Manager.
 {{< /note >}}
 
@@ -69,7 +69,7 @@ CoreOS configures no default way to log in except by supplying an option to the 
 
 ## Collect Installation Files
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These commands should be run from a root prompt under Finnix through Lish.
 {{< /note >}}
 
@@ -106,7 +106,7 @@ ssh_authorized_keys:
 
         ./coreos-install -v -d /dev/sda -c cloud-config.yml
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also supply any other options (see `coreos-install -h`). If you do not want verbose output, you can leave out the `-v` flag.
 {{< /note >}}
 

@@ -37,7 +37,7 @@ The [Elastic Stack](https://www.elastic.co/products) can monitor a variety of da
 
 1.   Install Docker on your Linode by following [the installation guide from the Docker project](https://docs.docker.com/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The services in this guide bind to localhost only, which means they are not accessible outside of the Linode from remote hosts. This ensures that Elasticsearch's REST API remains private to localhost and is not remotely accessible from the internet. If you take steps beyond this guide to configure Elasticsearch and related components further, ensure that your firewall is in place and correctly blocking traffic to the Elasticsearch and Kibana nodes from the internet (ports 9200 and 9300 for Elasticsearch and 5601 for Kibana) to keep them properly secured.
 {{< /note >}}
 

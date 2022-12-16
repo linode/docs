@@ -40,7 +40,7 @@ Each Linode Compute Instance is equipped with several IP addresses, which enable
 
 - **Private IPv4 Address:** Optionally, private IPv4 addresses can be assigned to a Compute Instance. This allows it to connect to other services located in the same data center, such as NodeBalancers or other Compute Instances.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 All private IPs in the same data center can communicate with each other over the private network. This means a Compute Instance's private IP address is accessible to all other Instances in that data center. It's recommended to set up firewall rules for your Linode to secure its network traffic. See our [firewall guides](/docs/security/firewalls/) for details on setting up firewall rules. In many cases, using [Private VLANs](/docs/products/networking/vlans/) is preferred over private IPv4.
 {{</ note >}}
 
@@ -84,7 +84,7 @@ Follow the instructions below to add an public IPv4, private IPv4, or IPv6 range
 
     If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/manual-network-configuration/), you need to update the configuration files with the new IP address or enable Network Helper.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification for additional public IPv4 addresses. If you have an application that requires multiple IP addresses, consider using an IPv6 /64 range instead.
 {{</ note >}}
 
@@ -94,7 +94,7 @@ The ability to point a domain name to an IP address is referred to as *forward* 
 
 You are able to configure rDNS (or reset it) through the Cloud Manager using the instructions below:
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Before setting reverse DNS, verify that you have created a matching forward DNS record for the IP address. For instructions, see [Adding DNS Records](/docs/guides/hosting-a-website-ubuntu-18-04/#add-dns-records). If you use a third-party DNS provider, create the forward DNS record with your provider's management tool.
 {{< /note >}}
 
@@ -110,7 +110,7 @@ Before setting reverse DNS, verify that you have created a matching forward DNS 
 
 1.  Click **Save** to make the change.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you receive the message that **no match was found**, this indicates that you need to update the forward DNS for this domain. Make sure the domain or subdomain in question resolves to the IP address for which you are trying to set the reverse DNS. If you've recently made a DNS change, you may need to wait 24-48 hours for it to propagate.
 {{< /note >}}
 
@@ -134,7 +134,7 @@ You can verify the reverse DNS entry was properly submitted within the *IP addre
 
 If you have two Compute Instances in the same data center, you can use the *IP transfer* feature to move or swap their IP addresses. This feature is especially useful when replacing one Compute Instance with another. It allows you to quickly move the IP addresses to the new Instance without needing to manually adjust DNS records with the new addresses.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This process only transfers IPv4 addresses and IPv6 ranges, not IPv6 SLAAC addresses. See [Transferring an IPv6 SLAAC Address](#transferring-an-ipv6-slaac-address) below for a workaround.
 {{< /note >}}
 
@@ -153,7 +153,7 @@ This process only transfers IPv4 addresses and IPv6 ranges, not IPv6 SLAAC addre
 
     ![The IP Transfer menu in the Cloud Manger](remote_access_ip_transfer.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The *IP Transfer* form only displays Compute Instances hosted in the same data center as the current Instance.
 {{< /note >}}
 
@@ -163,7 +163,7 @@ The *IP Transfer* form only displays Compute Instances hosted in the same data c
 
     If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/manual-network-configuration/), you need to update the configuration files with the new IP addresses or enable Network Helper.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the IP is unreachable after a few minutes, you may need to notify the router directly of the IP change with the `arp` command run on your Compute Instance:
 
     arping -c5 -I eth0 -s 198.51.100.10 198.51.100.1
@@ -180,7 +180,7 @@ IPv6 SLAAC addresses are not able to be transferred between Compute Instances. I
 
 *IP Sharing* is a feature that enables two Compute Instances to be assigned the same IP address for the purpose of configuring failover. Within a typical failover setup, traffic on the shared IP address is routed to the primary instance. In the event that instance fails or goes down, traffic is automatically re-routed to the secondary instance. While IP Sharing can be configured in the Cloud Manager, failover must be manually configured within the internal system of both Compute Instances. See [Configuring IP Failover](/docs/guides/ip-failover/) to learn more about configuring failover.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Not all data centers currently support IP Sharing. Additionally, some data centers only support IPv4 sharing, while others also support IPv6 routed ranges (/64 and /56). To determine if IP Sharing is supported in a particular data center, see [Configuring IP Failover > IP Sharing Availability](/docs/guides/ip-failover/#ip-sharing-availability).
 {{</ note >}}
 
@@ -198,7 +198,7 @@ To learn how to enable IP Sharing within the Cloud Manager, review the following
 
     ![Select a Linode to share an IP address with.](remote_access_ip_sharing_add_an_ip.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your desired IP address does not appear in that list, verify that the Compute Instance to which it belongs has at least two public IPv4 addresses or has been assigned an IPv6 routed range (/56 or /64).
 {{</ note >}}
 

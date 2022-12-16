@@ -69,13 +69,13 @@ Before installing packages with `pip`, first verify that `pip` is installed on y
 
         pip3 --version
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `pip3` command is used in this guide to make the distinction between Python 2 and Python 3. If your system does not have Python 2 installed, feel free to use `pip`.
 
 Some documentation specifies `pip` instead of `pip3`, but because of the recent deprecation of Python 2, running `pip3` ensures that you are installing the package for Python 3.
 {{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In the latest version of Ubuntu, 20.04, Pip is not installed by default. To install Pip on Ubuntu 20.04 run the following command:
 
     sudo apt install python3-pip
@@ -109,7 +109,7 @@ These packages, once installed, do not interfere with other packages outside of 
 
         virtualenv my-virtual-environment
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you do not have virtualenv on your machine install it using Pip:
 
     pip3 install virtualenv
@@ -139,7 +139,7 @@ If you do not have virtualenv on your machine install it using Pip:
 
 Pipenv combines the process of using Pip and Virtualenv and merges it into one command, `pipenv`. Pipenv also opts to using a `pipfile`, and `pipfile.lock` to manage dependencies for projects.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To install Pipenv, or to learn about `pipfile`, please check out our guide: [How to Manage Python Packages and Virtual Environments with pipenv](/docs/guides/manage-python-environments-pipenv/).
 {{< /note >}}
 

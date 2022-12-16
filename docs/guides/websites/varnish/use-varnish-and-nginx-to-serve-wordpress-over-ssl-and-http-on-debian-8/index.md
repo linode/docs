@@ -223,7 +223,7 @@ unset req.http.cookie;
 {{< /file >}}
 
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 This is the final setting to be placed inside the `sub vcl_recv` routine. All directives in the following steps (from Step 6 onward) should be placed after the closing last bracket.
 {{< /note >}}
 
@@ -276,7 +276,7 @@ unset beresp.http.set-cookie;
 
     Remember to include in the above series any page that requires cookies to work, for example `phpmyadmin|webmail|postfixadmin`, etc. If you change the WordPress login page from `wp-login.php` to something else, also add that new name to this series.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The "WooCommerce Recently Viewed" widget, which displays a group of recently viewed products, uses a cookie to store recent user-specific actions and this cookie prevents Varnish from caching product pages when they are browsed by visitors. If you want to cache product pages when they are only browsed, before products are added to the cart, you must disable this widget.
 
 Special attention is required when enabling widgets that use cookies to store recent user-specific activities, if you want Varnish to cache as many pages as possible.
@@ -296,7 +296,7 @@ set resp.http.X-Purger = req.http.X-Purger;
 
     This concludes the `custom.vcl` configuration. You can now save and exit the file. The final `custom.vcl` file will look like [this](/docs/assets/custom.vcl).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can download the complete sample configuration file using the link above and `wget`. If you do, remember to replace the variables as described above.
 {{< /note >}}
 
@@ -583,7 +583,7 @@ To install this plugin, log in to your WordPress website and click **Plugins** o
 
     The output should be similar to that of the HTTP-only site.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're using a self-signed certificate while testing, add the `--no-check-certificate` option to the `wget` command:
 
 wget -SS --no-check-certificate https://www.example-over-https.com

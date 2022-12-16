@@ -43,7 +43,7 @@ Due to Terraria's system requirements, a Linode with at least two CPU cores and 
 
 ## Configure a Firewall for Terraria
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Terraria only uses IPv4 and does not use IPv6.
 {{< /note >}}
 
@@ -100,7 +100,7 @@ Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our [g
         sudo ufw enable
         sudo ufw delete 4
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The second command in this step, `sudo ufw delete 4` references the fourth rule in your UFW ruleset. If you need to configure additional rules for different services, adjust this as necessary. You can see your UFW ruleset with `sudo ufw status` to make sure you're removing the correct rule.
 {{< /note >}}
 
@@ -123,7 +123,7 @@ To manually configure iptables without using a controller, see our [iptables gui
 
         sudo curl -O https://terraria.org/api/download/pc-dedicated-server/terraria-server-1423.zip
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Before you install Terraria, be sure the version you download is the same as the clients that will be connecting to it.
 {{< /note >}}
 
@@ -240,7 +240,7 @@ This script permits you to both:
 *  Attach to the console for direct administration, and
 *  Send the console commands like `save` or `exit` while it's running without needing to attach at all (useful when services like systemd need to send server commands).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Throughout the rest of this guide, you may encounter "command not found" errors when running the `terrariad` command. This may result from the directory `/usr/local/bin/` not being found in the `$PATH` when running sudo commands, which can occur with some Linux distributions. You can work around this problem by calling the script with the full path. For example, instead of running `sudo terrariad attach`, use `sudo /usr/local/bin/terrariad attach`.
 {{< /note >}}
 

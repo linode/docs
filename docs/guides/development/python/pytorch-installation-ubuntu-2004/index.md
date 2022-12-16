@@ -43,7 +43,7 @@ Optimizing a task may also require using external data sources. If using externa
 
     For full instructions, see [Installing the NVIDIA CUDA Toolkit](/docs/products/compute/gpu/guides/install-nvidia-cuda/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The NVIDIA CUDA Toolkit is not needed on CPU-only (non-GPU) instances.
 {{</ note >}}
 
@@ -76,7 +76,7 @@ The NVIDIA CUDA Toolkit is not needed on CPU-only (non-GPU) instances.
 
         conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Using Anaconda to install PyTorch, installs the NVIDIA CUDA Toolkit. For instances that install CPU-only versions of PyTorch, skip to the [Use Pip to Install PyTorch](#use-pip-to-install-pytorch) section.
     {{</ note >}}
 
@@ -154,7 +154,7 @@ Use the steps below to ensure that you have a working PyTorch installation.
 >>>
     {{</ output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the torch library cannot be found, python returns an error message indicating `not-found`.
     {{</ note >}}
 
@@ -189,7 +189,7 @@ The steps in this section shows you how to use Anaconda to uninstall PyTorch.
 
         conda remove pytorch
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also use the `uninstall` command to remove PyTorch libraries. Any datasets must also be removed independently from removing PyTorch.
     {{</ note >}}
 

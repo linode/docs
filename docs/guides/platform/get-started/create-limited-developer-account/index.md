@@ -25,7 +25,7 @@ This guide explains and answers some of the most frequently asked questions abou
 
 For security and privacy, [Linode Support](/docs/guides/support/) is not able to troubleshoot issues related to users and application access. Instead, Linode offers an in-house [Professional Services](https://www.linode.com/products/pro-services/) team that can be hired to help with projects.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The following sections include commands that show how to manipulate credentials on your Linodes, and these commands use `exampleUser` in place of your users' names. Replace `exampleUser` with whatever you would like to name your users.
 {{< /note >}}
 
@@ -66,7 +66,7 @@ The primary method for directly administering files and software on a Linode is 
 
 For the steps in this section, [connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance/) to log in to the system as `root`, which is the primary administrative (and most powerful) user on every Linux system. Alternatively, you can login as non-root user with *sudo* (i.e. administrative) permissions.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you don't remember your root password, [reset it through the Manager](/docs/products/platform/accounts/guides/manage-users/#resetting-your-linode-manager-password).
 {{</ note >}}
 

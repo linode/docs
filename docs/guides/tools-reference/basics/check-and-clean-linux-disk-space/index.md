@@ -173,7 +173,7 @@ If you still need space, you may want to look at your installed packages and sta
 
             sudo dnf remove nginx
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Before removing packages, ensure that they are not required by the system. Usually, you can safely remove packages that you installed, but be cautious of removing packages that you do not recognize.
     {{< /note >}}
 

@@ -158,7 +158,7 @@ Directory browsing is a common security misconfiguration that, if left unfixed, 
 
 To disable directory browsing, create an `.htaccess` file in your site’s root directory.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If an `.htaccess` file already exists you do not need to create a new one, simply add the following line to the file.
 {{</ note >}}
 

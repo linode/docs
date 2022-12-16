@@ -116,7 +116,7 @@ Begin by creating the Linode and making some preliminary changes.
 
 5.  At this point, the distribution files will extract and install. You'll then be asked to set a `root` user password.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 SSH logins for `root` are disabled by default in FreeBSD but standard system users have SSH access.
 {{< /note >}}
 

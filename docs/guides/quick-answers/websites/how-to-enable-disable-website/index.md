@@ -26,7 +26,7 @@ There may be times when you have to temporarily disable a website. For example, 
 
 The instructions for disabling and re-enabling a website depend on the webserver that is installed on your Linode. See the section that corresponds to either NGINX or Apache. Throughout these instructions, replace the placeholder site name of `example.com` with your own domain name.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Taking a site offline, even temporarily, can affect its *Search Engine Optimization* (SEO) ratings. If you only want to briefly disable a site for maintenance reasons, consider using a temporary redirect instead.
 {{< /note >}}
 
@@ -84,7 +84,7 @@ Some Linux systems do not use the `sites-available` and `sites-enabled` director
         sudo mv -i /etc/nginx/conf.d/example.com.disable /etc/nginx/conf.d/example.com.conf
 1. Reload NGINX and confirm the site is accessible again.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 There could be cases where a website does not have a separate virtual host file. This might occur if it is the only site on the Linode, or if the system is using a non-standard configuration. In this case, comment out all the lines in the website's vhost entry, using the `#` symbol. See the [Use the Virtual Host File on the Apache Web Server](/docs/guides/how-to-enable-disable-website/#use-the-virtual-host-file-on-the-apache-web-server) section of this guide for more information.
 {{< /note >}}
 
@@ -102,7 +102,7 @@ The `a2dissite` and `a2ensite` tools greatly simplify the process of disabling a
 1. Reload the Apache configuration to apply the changes.
 
         sudo systemctl reload apache2
-    {{< note >}}
+    {{< note respectIndent=false >}}
 On some versions of Linux, the `apache2` module is known as `httpd`. On these platforms, the equivalent command is `sudo systemctl reload httpd`.
     {{< /note >}}
 1. Use a web browser to verify the domain is no longer accessible.

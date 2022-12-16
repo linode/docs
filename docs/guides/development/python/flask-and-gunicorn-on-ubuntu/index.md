@@ -49,7 +49,7 @@ This guide assumes you are familiar with the following concepts and skills:
 
         git clone https://github.com/abalarin/Flask-on-Linode.git flask_app_project
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   The [Example Flask Blog Application](https://github.com/abalarin/Flask-on-Linode) is used throughout this guide. The root directory of the application is `flask_app_project`.
     {{</ note >}}
 
@@ -63,7 +63,7 @@ This guide assumes you are familiar with the following concepts and skills:
 
 After creating the Flask application in the local development environment, you are now ready to deploy it to a production environment. You need to copy the local Flask application code to the Linode. You can accomplish this by either [cloning the GitHub project to the Linode](#clone-your-app-from-source-control) using Git or by using the [secure copy method](#secure-copy-your-app-from-a-local-machine) to directly transfer the application files to the Linode. This section provides steps for both options.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide's examples transfer the Flask application files to the Linode's `/home` directory. If you prefer, you can store the application files in a different directory, however, ensure you run the examples in the directory of the application.
 {{< /note >}}
 
@@ -153,7 +153,7 @@ server {
 
 To run the Flask application, you need to install Python, Flask, pip3 and any other required package dependencies on the Linode.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide was created using Python 3.6.8
 {{</ note >}}
 
@@ -262,7 +262,7 @@ example_user@localhost:~/Flask-on-Linode# gunicorn -w 3 flask_app:app
 [2019-07-25 15:09:04 +0000] [32426] [INFO] Booting worker with pid: 32426
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can specify the number of workers you want Gunicorn to use with the `--workers` flag. A good rule of thumb to determine [worker](http://docs.gunicorn.org/en/stable/design.html#server-model) count is to double the system's CPU cores and add 1. For a 1GB Linode (Nanode) with 1 CPU core you should use 3 workers.
 {{< /note >}}
 
@@ -314,7 +314,7 @@ stdout_logfile=/var/log/flask_app/flask_app.out.log
 Restarted supervisord
     {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The application should now be accessible again through the IP address of the Linode. If you are unable to access the application or receive a bad gateway error, Gunicorn is likely not running. Check the log files to further investigate the issue.
 
     cat /var/log/flask_app/flask_app.err.log

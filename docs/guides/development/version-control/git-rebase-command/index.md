@@ -46,7 +46,7 @@ When merging two branches together using a merge commit, your local branch's com
 
 The `M` represents the merge commit that ties together the two branches. Once you've merged the two branches, you can either keep working on your branch, or merge it back into `main`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This is considered a *fast-forward* merge because `main` is a direct ancestor of `M`. If you continue to work on your feature branch, you eventually have to make another merge with `main`. This makes it difficult for anyone reviewing your code to figure out exactly what changes you made.
 {{</ note >}}
 
@@ -78,7 +78,7 @@ During a Git rebase, all the committed changes made in your working feature bran
 
 Then, the rebase does a hard reset to the head of the upstream branch in the local branch. This is effectively like running the `git reset --hard <upstream>` command. Next, the rebase applies the saved changes (stored in your commits) to the local branch. Any commits that introduce the same textual changes as a commit in the upstream branch are omitted.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The commits that are temporarily stored when rebasing are the same set of commits that are displayed when issuing the `git log <upstream>..HEAD` command.
 
 These are also the same set of commits that you would get from the `git log --patch --reverse <upstream>..HEAD` command.
@@ -200,7 +200,7 @@ pick f300b06 Add the screenshots for how-to-resolve-merge-conflicts
 
 The comment block at the end of the file describes the commands you can put in place of `pick` to make modifications. You can replace the full command with its first letter.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ensure you don't modify the seven-digit commit IDs that are presented to you.
 {{< /note >}}
 

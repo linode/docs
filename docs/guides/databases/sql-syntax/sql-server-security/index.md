@@ -20,7 +20,7 @@ SQL Server security is perhaps one of the most overlooked facets of database ser
 
 The [SQL Database Security: User Management](/docs/guides/sql-security/) guide discussed the logical implementation of users, groups, roles, and permissions, to enhance, or limit database user security. This guide is part one in a series of SQL Server security best practices, and it discusses a variety of important additional maintenance security topics.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To review the second set of security recommendations in this series, visit [Part 2: SQL Server Security Best Practices](/docs/guides/sql-server-security-part-2/).
 {{< /note >}}
 

@@ -34,7 +34,7 @@ Following this guide will result in the creation of billable Linode resources on
 
 1.  Install Terraform on your computer by following the *Install Terraform* section of our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
     {{</ note >}}
 
@@ -182,7 +182,7 @@ resource "linode_sshkey" "my_wordpress_linode_ssh_key" {
 
     `ssh_key = chomp(file("~/.ssh/id_rsa.pub"))` uses Terraform's built-in `file()` function to provide a local file path to the public SSH key's location. The `chomp()` built-in function removes trailing new lines from the SSH key.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you do not already have SSH keys, follow the steps in the *Create an Authentication Key-pair* section of the [Securing Your Server Guide](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair).
 {{< /note >}}
 
@@ -254,7 +254,7 @@ resource "linode_domain_record" "my_wordpress_domain_apex_record" {
 }
 {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are not familiar with the Domain Name System (DNS), review the [DNS Records: An Introduction](/docs/guides/dns-overview/) guide.
 {{< /note >}}
 
@@ -314,7 +314,7 @@ variable "a_record" {
 }
     {{</ file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 It is recommended to include a `description` attribute for each input variable to help document your configuration's usage. This will make it easier for anyone else to use this Terraform configuration.
 {{< /note >}}
 
@@ -326,7 +326,7 @@ The `stackscript_data` variable is of type `map`. This will allow you to provide
 
 Terraform allows you to assign variables in many ways. For example, you can assign a variable value via the command line when running `terraform apply`. In order to persist variable values, you can also create files to hold all your values.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 There are several other options available for secrets management with Terraform. For more information on this, see [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform/).
 {{</ note >}}
 
@@ -355,11 +355,11 @@ stackscript_data = {
   "dbuser_password" = "a-third-secure-password"
 }
 {{</ file >}}
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In Terraform 0.12, variables with map and object values will use the last value found and override previous values. This is different from previous versions of Terraform, which would merge map values instead of overriding them. For this reason the `stackscript_data` map and its values are defined in a single variable definitions file.
     {{</ note >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It is helpful to reference Terraform's [Linode provider](https://www.terraform.io/docs/providers/linode/) documentation and the [Linode APIv4 documentation](/docs/api/) for assistance in determining appropriate values for Linode resources.
 {{< /note >}}
 

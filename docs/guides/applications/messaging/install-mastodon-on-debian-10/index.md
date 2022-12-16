@@ -59,7 +59,7 @@ Mastodon servers range in size from small private instances to massive public in
 
     - You can create your own SMTP server — and even host it on the same machine as your Mastodon server — by following the [Email with Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) guide.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 This guide uses PostgreSQL database as a backend for Mastodon. You can setup the SMTP server with PostgreSQL database instead of MySQL.
 {{< /note >}}
 
@@ -67,7 +67,7 @@ This guide uses PostgreSQL database as a backend for Mastodon. You can setup the
 
 1. Replace occurrences of `example.com` in this guide with the domain name you are using for your Mastodon instance.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -40,7 +40,7 @@ You are able to move your servers to Tokyo 2 before the scheduled migration date
 
 If your Tokyo 1 Linode is enrolled in the [Linode Backup Service](https://www.linode.com/backups), it will remain enrolled in the service after the migration. However, the saved backups and snapshots that have been created for your Linode prior to the migration **will not move** to the new Tokyo 2 facility. Instead, your Linode will start creating new scheduled backups after it is migrated to the Tokyo 2 date center (according to its [backup schedule](/docs/products/storage/backups/guides/schedule/)).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Before migrating, we recommend that you create at least one backup **separate from the Linode Backup Service** for each of your Tokyo 1 Linodes. The [Backing Up your Data](/docs/guides/backing-up-your-data/) guide has suggestions for alternative ways to back up your Linode.
 {{< /note >}}
 
@@ -56,7 +56,7 @@ Later sections in this guide describe how to update your [network interface conf
 
 When you receive the support ticket which announces your Tokyo 1 Linodes' migrations, you will also see a new banner appear in the dashboard of each of your Tokyo 1 Linodes. This banner will give you the option to initiate an early migration of your Linode to Tokyo 2.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The early migration banner will actually appear on your Tokyo 1 Linodes' dashboards before you receive the support ticket which announces the migrations. You will be able to perform a migration as soon as you see this banner. However, new IPs in the Tokyo 2 data center will not be reserved for your Linode until you receive the support ticket.
 
 This means that if you migrate before you receive your ticket, you will not know what your new IP addresses will be before you start the migration. Once you start the early migration, your new Tokyo 2 IP addresses will become visible in the [Networking tab](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) of the Linode's dashboard.
@@ -84,7 +84,7 @@ Because migrating a Linode will power it down during the migration, your Linode'
 
 To avoid these issues, you can instead create new Linodes in Tokyo 2 and then **clone** your Tokyo 1 Linode's disks to them. Performing a clone will create exact copies of your disks on the new Linode.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can perform a clone of a Linode when it is running. However, this can sometimes result in filesystem inconsistencies on the target Linode (your source Linode will never be negatively affected, even if the clone fails). You may need to power your source Linode down to perform a successful clone.
 {{< /note >}}
 
@@ -94,7 +94,7 @@ Cloning your Linodes offers these benefits:
 
 -   To move your customers to your new Tokyo 2 servers, you can update your DNS records with your new Tokyo 2 IP addresses. You can keep your Tokyo 1 servers running while you update your DNS. Updating your DNS records in this way will gracefully direct your users to your new servers without downtime.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 New Linodes that you create in Tokyo 2 will not receive the IP addresses that are reserved for your Tokyo 1 Linodes' scheduled migrations. If you choose to clone your Linodes, your new Tokyo 2 Linodes' IP addresses will be listed in the [Networking tab](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) of your Linodes' dashboards.
 {{< /note >}}
 

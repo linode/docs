@@ -26,7 +26,7 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
 
 ## Prepare Ubuntu
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -71,7 +71,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         [ 5] 80 (v6)                    ALLOW IN    Anywhere (v6)
         [ 6] 443 (v6)                   ALLOW IN    Anywhere (v6)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can delete it. For example, you can delete the rule to allow SSH over IPv6 with `sudo ufw delete 4`.
 {{< /note >}}
 

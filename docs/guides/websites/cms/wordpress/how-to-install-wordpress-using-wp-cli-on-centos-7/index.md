@@ -46,7 +46,7 @@ Before moving ahead, make sure you have completed the following steps.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -54,7 +54,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Follow the [Install a LAMP Stack on CentOS 7](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/) guide. **Skip the steps** in the [Configure Apache Virtual Hosts File](/docs/guides/how-to-install-wordpress-using-wp-cli-on-centos-7/#configure-apache-virtual-hosts-file), the [Create a MariaDB Database](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/#create-a-mariadb-database), and the [Optional: Test and Troubleshoot the LAMP Stack](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/#optional-test-and-troubleshoot-the-lamp-stack) section. Those steps will be covered later on in this guide.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When following the steps to [install PHP](#install-php) in the [Install a LAMP Stack on CentOS 7](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/) guide, you will need to issue the command included below to install the required PHP packages. The command in the linked guide does not currently work with CentOS 7.
 
     sudo apt install php libapache2-mod-php php-mysql
@@ -145,7 +145,7 @@ In this section, you will learn some basics of how WP-CLI works. This will help 
 
 - So far, we have seen WP-CLI accessed through the main command, `wp`. You can follow the main command with nested subcommands. For example, WP-CLI includes a command to download WordPress:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Do not issue the example `wp` command. You will install WordPress in the [Download and Configure WordPress](#download-and-configure-wordpress) section of the guide.
     {{</ note >}}
 
@@ -200,7 +200,7 @@ In this section, you will complete the prerequisite configuration steps needed t
 
         sudo mysql -u root
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you set up a password for MySQL, you would log in with the `-p` flag as well:
 
     sudo mysql -u root -p
@@ -230,7 +230,7 @@ FLUSH PRIVILEGES;
 
         sudo semanage port -a -t mysqld_port_t -p tcp 3306
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Use **netstat** to confirm the port used by MariaDB with the command `netstat -tln`. The port in use will typically be `3306`.
         {{</ note >}}
 
@@ -285,7 +285,7 @@ The latest version of WordPress (5.3.2 at the time of writing this guide) requir
 
         sudo usermod -a -G apache user
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may need to log out of your SSH session and log back in for the user group change to take effect. To verify issue the following command. You should see the `apache` group returned as one of the groups.
 
     groups
@@ -372,7 +372,7 @@ IncludeOptional sites-enabled/*.conf
 
         sudo systemctl reload httpd
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For more details on configuring your Apache virtual hosts file, see [Apache's official documentation](http://httpd.apache.org/docs/current/vhosts/).
     {{</ note >}}
 
@@ -508,7 +508,7 @@ The procedure for installing and activating a theme is nearly identical to that 
 
 To update your WordPress site:
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For more details on best practices when updating your WordPress site, see [WordPress' official documentation](https://wordpress.org/support/article/updating-wordpress/).
 {{</ note >}}
 

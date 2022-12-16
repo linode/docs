@@ -33,7 +33,7 @@ You should have already signed up for an IPv6 tunnel through a tunnel broker. [W
 
 Once you have signed up for a tunnel, you will need to issue a few commands on your Linode. Arch and Gentoo Linux users may need to install the `iproute2` package before continuing.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Configuration of an IP tunnel using this method will not be persistent after reboot and will need to be reconfigured after restarting your Linode.
 {{< /note >}}
 
@@ -72,7 +72,7 @@ On Arch Linux, replace the `ifdown` and `ifup` commands with `ip link set eth0 d
 
         ping6 -I he-ipv6 irc6.oftc.net
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Your system must allow ICMPv6 in through the firewall for pings to be returned.
 {{< /note >}}
 

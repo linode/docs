@@ -29,7 +29,7 @@ Node.js is a server-side, JavaScript package, often used for various cloud appli
 ## Download the Docker Node.js Server Image
 The Docker Hub user page for Linode can be accessed [here](https://hub.docker.com/u/linode/). Select the **server-node-js** image for configuration information.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Docker images made for one operating system can be used on servers running a different OS. The **server-node-js** Ubuntu 14.04 image was tested on Debian 7, Ubuntu 14.04, CentOS 7 and Fedora 21. After Docker installation on CentOS and Fedora, run the `sudo service docker start` command.
 {{< /note >}}
 
@@ -47,7 +47,7 @@ Docker images made for one operating system can be used on servers running a dif
 
         docker run -d -p 80:3000 linode/server-node-js
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This command runs the docker image as a daemon.
 {{< /note>}}
 

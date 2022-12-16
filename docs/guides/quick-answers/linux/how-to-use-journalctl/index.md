@@ -180,7 +180,7 @@ Fri 2018-08-31 12:00:25.543177 EDT [s=0b341b44cf194c9ca45c99101497befa;i=70d5;b=
     _SOURCE_REALTIME_TIMESTAMP=1536120282543177
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 
 In addition to the types of filters listed in the previous section, you can also filter logs by specifying values for the variables in the log record structure. For example, `journalctl _UID=0` will show logs for user ID 0 (i.e. the root user).
 
@@ -219,7 +219,7 @@ You should see a line similar to the following which describes the current limit
 Permanent journal is using 32.0M (max allowed 2.3G, trying to leave 3.5G free of 21.2G available → current limit 2.3G).
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 A parallel group of settings is used when journald.conf is set to only persist the journals in memory (instead of on disk): `RuntimeMaxUse`, `RuntimeKeepFree`, `RuntimeMaxFileSize`, and `RuntimeMaxFiles`.
 {{< /note >}}
 

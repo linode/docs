@@ -24,7 +24,7 @@ aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-par
 
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This is the fourth guide in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series that explains the major parts and concepts of Kubernetes.
 {{< /note >}}
 
@@ -99,7 +99,7 @@ For more information on Deployments, visit the [Kubernetes Deployments API docum
 
 ## ReplicaSets
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Kubernetes now [recommends](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#when-to-use-a-replicaset) the use of Deployments instead of ReplicaSets. Deployments provide declarative updates to Pods, among other features, that allow you to define your application in the spec section. In this way, ReplicaSets have essentially become deprecated.
 {{< /note >}}
 

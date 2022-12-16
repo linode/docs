@@ -79,7 +79,7 @@ $settings['trusted_host_patterns'] = array(
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `trusted_host_patterns` also accepts IP addresses or localhost.
 {{< /note >}}
 
@@ -136,7 +136,7 @@ LoadModule rewrite_module modules/mod_rewrite.so
 
     ![Drupal 8 database configuration.](drupal-database-configuration.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you forgot the name of your database, log back in to MySQL or MariaDB with: `mysql -u root -p` and enter: `show databases;`.
 {{< /note >}}
 

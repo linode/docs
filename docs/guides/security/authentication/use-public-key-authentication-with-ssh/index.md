@@ -29,7 +29,7 @@ image: use_public_key_authentication_with_ssh.png
 
 This guide explains how the SSH key login scheme works, how to generate an SSH key, and how to use those keys with a Linode Linux server.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you're unfamiliar with SSH connections, review the [Getting Started with Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) guide.
 {{< /note >}}
 
@@ -203,7 +203,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyVGaw1PuEl98f4/7Kq3O9ZIvDw2OFOSXAFVqilSFN
 
 1.  Save and close the file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you initially logged into the server as `root` but edited the `authorized_keys` file of another user, then the `.ssh/` folder and `authorized_keys` file of that user may be owned by `root`. Set that other user as the files' owner:
 
         chown -R your_username:your_username /home/your_username/.ssh
@@ -261,7 +261,7 @@ The following instructions use the [PuTTY](https://www.putty.org) software to co
 
 1.  Enter a passphrase for the private key in the **Key passphrase** and **Confirm passphrase** text fields:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 **Important:** Make a note of your passphrase for later use.
 {{< /note >}}
 

@@ -37,7 +37,7 @@ The [PostgreSQL](http://www.postgresql.org/) relational database system is a pow
 
         sudo yum update
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit the [Users and Groups guide](/docs/guides/linux-users-and-groups/) for more information.
 {{< /note >}}
 
@@ -66,7 +66,7 @@ Unless otherwise noted, the instructions in subsequent sections of this guide wi
 
 Alternatively, you can install the latest version from the Postgres repositories. As of this publication, PostgreSQL `9.6.3` is the most recent version available for CentOS 7, but these steps can be applied to any RPM-based installation.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 When Postgres is installed using this method, the version number is included in its configuration directories. For example, `/var/lib/pgsql` becomes `/var/lib/pgsql/9.6`. This is also the case with systemd units; `systemctl status postgresql` becomes `systemctl status postgresql-9.6`.
 {{< /note >}}
 
@@ -455,7 +455,7 @@ local    all        all             peer
 
     Replace `peer` with `md5` on this line to activate password authentication using an MD5 hash.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you installed PostgreSQL from the [Postgres repositories](#install-from-the-postgres-repositories), you will need to specify your version number in this file path, for example: `/var/lib/pgsql/9.6/data/pg_hba.conf`.
 {{< /note >}}
 

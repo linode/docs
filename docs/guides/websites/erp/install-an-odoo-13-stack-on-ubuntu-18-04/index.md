@@ -172,7 +172,7 @@ Now that you finished PostgreSQL configuration you can start the `postgresql` se
 
 Configure your Odoo 13 web application to work with the PostgreSQL database backend.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Odoo 13 uses Python 3.6+ instead of Python 3.5. If your server is running an older Ubuntu release, for instance 16.04, you will need to compile a newer Python version to meet this requirement.
 {{< /note >}}
 
@@ -380,7 +380,7 @@ From your **Odoo** server restart the Odoo service using the following flags to 
 
     sudo service odoo-server restart -u all -d <production_database_name>
 
-{{< note >}}
+{{< note respectIndent=false >}}
 From Odoo version 12 forward it is suggested that you update modules using Odoo's web interface whatever possible.
 {{< /note >}}
 
@@ -397,6 +397,6 @@ If all your tests pass, you can safely update your installation.
 
         sudo git reset --hard origin/13.0
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Do not confuse the Odoo system update with an Odoo **version** upgrade. With the method explained above, you are updating your Odoo application within the same version rather than **upgrading** to a newer Odoo version. Migrating from one version to another often requires several tests and manual modifications on the PostgreSQL database which are highly dependent on the version of Odoo you are upgrading from.
 {{< /note >}}

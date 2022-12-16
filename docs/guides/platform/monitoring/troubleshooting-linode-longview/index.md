@@ -23,7 +23,7 @@ This guide discusses basic troubleshooting steps to help you diagnose and resolv
 
 1.  Ensure that your system is [fully updated](/docs/guides/set-up-and-secure/#perform-system-updates).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   Longview requires Perl 5.8 or later.
     {{</ note >}}
 
@@ -82,7 +82,7 @@ If your Linode has a firewall, it must allow communication with Longview's aggre
   >
   >     sudo firewall-cmd --list-all
   >
-  >  {{< note >}}
+  >  {{< note respectIndent=false >}}
 Review our [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/) guide for more help with FirewallD.
     {{< /note >}}
 
@@ -90,7 +90,7 @@ Review our [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-fi
   >
   >     sudo iptables -S
   >
-   {{< note >}}
+   {{< note respectIndent=false >}}
 Review our [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) guide for more help with iptables.
     {{< /note >}}
 
@@ -98,7 +98,7 @@ Review our [Control Network Traffic with iptables](/docs/guides/control-network-
 >
 >     sudo ufw show added
 >
->    {{< note >}}
+>    {{< note respectIndent=false >}}
  Review our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide for more help with UFW.
     {{< /note >}}
 
@@ -106,7 +106,7 @@ If the output of those commands show no rules for the Longview domain (or for `9
 
     iptables -A OUTPUT -p tcp --dport 443 -d longview.linode.com -j ACCEPT
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you use iptables, you should also make sure to persist any of your firewall rule changes. Otherwise, your changes will not be enforced if your Linode is rebooted. Review the [iptables-persistent](/docs/guides/control-network-traffic-with-iptables/#introduction-to-iptables-persistent) section of our iptables guide for help with this.
 {{< /note >}}
 
@@ -148,7 +148,7 @@ This is caused by both Linodes posting data using the same Longview key. To reso
 
 1. Add a new [Linode Longview Client instance](/docs/guides/what-is-longview/#add-the-longview-client). This will create a new Longview API key independent from the system which it was cloned from.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   The GUID provided in the Longview Client's installation URL is not the same as the Longview API key.
     {{</ note >}}
 

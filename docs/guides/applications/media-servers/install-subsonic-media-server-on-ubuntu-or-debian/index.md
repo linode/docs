@@ -64,7 +64,7 @@ SUBSONIC_ARGS="--max-memory=150"
 SUBSONIC_USER=subsonic
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you have a firewall set up, allow connections from the port Subsonic is listening on.
 {{< /note >}}
 
@@ -91,7 +91,7 @@ If you have a firewall set up, allow connections from the port Subsonic is liste
 
 5. Create a password for your admin account. You can also set up any other accounts at this time.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Passwords in the Subsonic database are stored in hex format, but not encrypted.
 {{< /note >}}
 

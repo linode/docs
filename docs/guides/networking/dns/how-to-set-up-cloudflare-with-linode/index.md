@@ -114,7 +114,7 @@ In total, there are four different SSL modes:
 
 -   **Flexible SSL**: Edge servers will respond to HTTPS requests. Edge servers will make connections to your origin server over HTTP. This option is not recommended by Cloudflare and should only be used if you are unable to set up SSL on your origin server.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your web server is configured to redirect all HTTP requests to HTTPS while using Cloudflare's Flexible SSL mode, visitors may encounter a redirect loop when attempting to view your site.
 {{< /note >}}
 
@@ -184,7 +184,7 @@ These certificates can be entirely administered through the Cloudflare website. 
 
 1. Cloudflare will validate the domain before ordering the certificate for your domain. When the validation is complete, click **Next** and provide a payment type to complete the purchase.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you would like to upload your own SSL certificate from another authority, click the **Upload Custom SSL Certificate** button in the Edge Certificates panel. This functionality requires that you subscribe to the Business Website Cloudflare tier.
 {{</ note >}}
 

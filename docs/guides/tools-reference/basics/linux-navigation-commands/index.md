@@ -82,7 +82,7 @@ drwxrwxr-x 2 userid userid 4096 Sep  2 16:51 payroll
 
 1. By default, files starting with `.` are not displayed. Files which have names beginning with `.` are known as *hidden files*. The `ls` command normally hides the links to the current working and parent directories. To include all entries starting with a `.`, use the `-a` option. To include the hidden files, but not the `.` and `..` directories, use the `-A` option, meaning `almost-all`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `.` directory refers to the current working directory. The `..` entry is a hard link to the parent directory. This is the directory containing the current directory.
     {{< /note >}}
 
@@ -168,7 +168,7 @@ drwxrwxr-x 3 userid userid 4096 Aug 24 17:08 phpcomposer
 
         ls -lR
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `ls` command has many more options. Consult the [Linux manual page for ls](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/ls.html), also known as the command *man* page, for complete information.
 {{< /note >}}
 
@@ -190,7 +190,7 @@ The `cd` command is used to change directories. This command is very straightfor
 
 1. To navigate to a subdirectory relative to your current working directory, use the `cd` command followed by the target directory.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Most Linux distributions offer an auto-complete function. While typing the name of a file or directory, press the `tab` key. If the name is unambiguous, the system automatically completes the rest of the name. If there are multiple potential options, the system either lists all possible choices or auto-completes the characters common to all alternatives.
     {{< /note >}}
 
@@ -303,7 +303,7 @@ An easy way to create a file is with the `touch` command. This method creates a 
 
         touch newfile2.txt newfile3.txt
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `touch` command can also be used to modify timestamps on existing files. The options list for this command is fairly extensive. See the [Linux man page](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/touch.html) for more information.
 {{< /note >}}
 

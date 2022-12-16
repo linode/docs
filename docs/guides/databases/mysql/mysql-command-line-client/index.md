@@ -18,7 +18,7 @@ external_resources:
 
 This guide shows you how to connect to a MySQL database using [mysql](https://dev.mysql.com/doc/refman/8.0/en/mysql.html), the MySQL command-line client. This opens up a simple SQL shell environment, allowing you to perform [SQL queries and commands](/docs/guides/sql-commands/) on your database. If you require more advanced capabilities, consider using the [MySQL Shell](https://dev.mysql.com/doc/mysql-shell/8.0/en/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you wish to connect to a Linode MySQL Managed Database, review the [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/) guide instead.
 {{</ note >}}
 
@@ -32,7 +32,7 @@ If you wish to connect to a Linode MySQL Managed Database, review the [Connect t
 
     This should inform you which version you are using. If the command is not found or you are not on a compatible version, see the [Installing MySQL](/docs/guides/install-mysql/) guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -48,7 +48,7 @@ The main purpose of the mysql utility is to connect to a MySQL database server a
 
         mysql -h [host] -p [port] -u [username] -p
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you wish to connect to a Linode MySQL Managed Database, review the [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/) guide instead.
 {{</ note >}}
 

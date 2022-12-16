@@ -14,7 +14,7 @@ headless: true
 show_on_rss_feed: false
 ---
 
-{{< note >}}
+{{< note respectIndent=false >}}
 [Create an Object Storage access key pair](/docs/products/storage/object-storage/guides/access-keys/) if you have not done so already.
 {{< /note >}}
 
@@ -22,7 +22,7 @@ show_on_rss_feed: false
 
         AWS_ACCESS_KEY_ID=your-key AWS_SECRET_ACCESS_KEY=your-secret restic -r s3:us-east-1.linodeobjects.com/your-bucket-name init
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The above command references the `us-east-1` cluster, which is located in the Newark, NJ cluster region. If your bucket is located in a different cluster region, replace `us-east-1` with the appropriate cluster name.
 
 For example, for the Frankfurt, DE cluster region the command is:
@@ -54,7 +54,7 @@ Store this password securely and somewhere other than your Linode. Your backups 
 
 Your access key, secret key, and password are required every time Restic communicates with your repository. To make it easier to work with your repository, create a shell script containing your credentials.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The examples in this section use the Nano text editor. Refer to the [Nano Text Editor Commands](/docs/guides/use-nano-text-editor-commands/) guide if you're not familiar with Nano.
 {{</ note >}}
 
@@ -69,7 +69,7 @@ export AWS_ACCESS_KEY_ID=your-key
 export AWS_SECRET_ACCESS_KEY=your-secret
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Whenever you want to use Restic, import this file using the command below or include it in your user's login script:
 
     source /root/restic_params
@@ -85,7 +85,7 @@ Whenever you want to use Restic, import this file using the command below or inc
 YourPasswordGoesHere
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can pass your password filename to Restic using the `-p` flag:
 
     restic -p /root/restic_pw ...

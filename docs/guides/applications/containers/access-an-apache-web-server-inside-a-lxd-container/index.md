@@ -33,7 +33,7 @@ The main benefits of LXD are the high density of containers that it can support 
 
 This guide covers how to setup a Linode to work with LXD, how LXD works in practice, and how to troubleshoot common issues.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For simplicity, the term *container* is used throughout this guide to describe the LXD containers.
 {{< /note >}}
 
@@ -67,7 +67,7 @@ When setting up LXD, you can either store container data in an [external volume]
 
     ![Create a Linode Disk](create-new-disk.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your Linode's distribution disk already has 100% of the available disk space allocated to it, you will need to resize the disk before you can create a storage disk. See [Resizing a Disk](/docs/guides/disks-and-storage/#resizing-a-disk) for more information.
 {{< /note >}}
 
@@ -136,7 +136,7 @@ To start your first container, try: lxc launch ubuntu:16.04
 .....................................................................
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The first two columns for the alias and fingerprint provide an identifier that can be used to specify the container image when launching it.
 {{< /note >}}
 
@@ -168,7 +168,7 @@ Starting mycontainer
         lxc exec mycontainer -- apt update
         lxc exec mycontainer -- apt upgrade
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The characters `--` instruct the `lxc` command not to parse any more command-line parameters.
 {{< /note >}}
 
@@ -183,7 +183,7 @@ See "man sudo_root" for details.
 ubuntu@mycontainer:~$
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Ubuntu container images have by default a non-root account with username `ubuntu`. This account can use `sudo`  and does not require a password to perform administrative tasks.
 
 The `sudo` command provides a login to the existing account `ubuntu`.

@@ -29,7 +29,7 @@ contributor:
 
 1. Ensure you possess a Fully Qualified Domain Name (FQDN) for the website. The DNS records for the site must point to the Linode server.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -71,7 +71,7 @@ The following instructions install the NGINX environment required to support HTT
 
         sudo ufw enable
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You should configure a location block for the domain. This structure is mandatory if there is more than one domain on the Linode. See Linode's [How to Configure NGINX](/docs/guides/how-to-configure-nginx/) guide for complete instructions.
 {{< /note >}}
 

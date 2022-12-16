@@ -35,7 +35,7 @@ In order to install and configure ModSecurity, you need to have a Linux server w
 
 For instructions, see our guide on [How to Install Apache Web Server on Ubuntu 18.04 LTS](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/). Installation instructions for several other Linux distributions are also accessible from this guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This demonstration has been performed on Ubuntu 18.04. However, all techniques demonstrated are distribution agnostic with the exception of package names and package managers.
 {{< /note >}}
 

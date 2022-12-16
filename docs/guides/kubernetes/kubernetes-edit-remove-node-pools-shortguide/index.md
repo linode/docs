@@ -33,6 +33,6 @@ Shrinking a node pool will result in deletion of Linodes. Any local storage on d
 
     ![Delete your cluster's node pool](delete-node-pool.png "Delete your cluster's node pool")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Your cluster must always have at least one active node pool.
     {{< /note >}}

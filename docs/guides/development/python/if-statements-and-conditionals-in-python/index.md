@@ -28,7 +28,7 @@ Conditional statements are programming structures that can make decisions. Witho
 
 People make conditional decisions every day. If it is raining, they take an umbrella. If it is a workday, they get up early. Otherwise, they sleep in. Conditionals work the same way in computing. A conditional statement evaluates a *Boolean expression* and calculates whether it is true or false. This result affects the flow of the program. If the expression is true, the program runs a certain block of code. If necessary, it can execute a different block when the conditional is false.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In Python, the official keywords `True` and `False` represent the two Boolean truth values.
 {{< /note >}}
 
@@ -62,7 +62,7 @@ An `if then` conditional can be extended using the `else` option to form an `if 
 
 1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu 20.04](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -288,7 +288,7 @@ The weather is too cold
 End of program
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Python has recently introduced a `match` statement. This control structure compares an expression to a list of patterns using `case` blocks. A `match` statement might be more suitable than the `elif` statement under some circumstances. See the [*Python Control Flow Documentation*](https://docs.python.org/3/tutorial/controlflow.html#match-statements) for more details.
 {{< /note >}}
 

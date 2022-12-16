@@ -53,7 +53,7 @@ While there are many available versions of OpenJDK, version 11 is the latest Lon
 
         sudo yum install java-11-openjdk
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 While you can run Java applications directly with the JRE, your applications will be compiled every time they are executed. This is generally slower than running applications that have already been compiled into Java bytecode, and may not be suitable if you plan to execute applications many times.
 {{< /note >}}
 
@@ -91,7 +91,7 @@ export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 export PATH=$PATH:$JAVA_HOME/bin
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are using a shell other than Bash, such as [Zsh](https://github.com/ohmyzsh/ohmyzsh), you may need to add these lines in a different startup file instead. In the case of Zsh, this would be the `~/.zshrc` file.
 {{< /note >}}
 
