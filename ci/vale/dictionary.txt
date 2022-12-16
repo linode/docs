@@ -177,6 +177,7 @@ boolean
 booleans
 boolstyle
 boonex
+boostrapping
 bootable
 bootloader
 bottlerocket
@@ -1965,6 +1966,7 @@ sudoers
 suhosin
 suid
 sukharev
+supabase
 superset
 supervisord
 supervisorctl
@@ -2131,6 +2133,7 @@ uniq
 unittest
 univac
 unix
+unopinionated
 unmanaged
 unmerged
 unmount
