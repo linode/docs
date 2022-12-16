@@ -22,19 +22,19 @@ external_resources:
 
 Ansible stands out for its capabilities in automating server provisioning and management. The structure of Ansible's playbooks, its ability to group and organize resources, and numerous other features make it an asset for administering servers.
 
-But Ansible's operations often necessitate that your playbooks leverage secrets like server passwords, access tokens, and API keys.
+However, Ansible's operations often necessitate that your playbooks leverage secrets like server passwords, access tokens, and API keys.
 
-To bring security to the convenience of your Ansible setup, you should be using a secrets management process. Secrets management continues to let Ansible operate in automating your server tasks, with all the access it needs. At the same time, secrets management keeps your secrets safely out of plain-text files and other vulnerable locations.
+To bring security to the convenience of your Ansible setup, you should be using a secrets management process. Secrets management continues to let Ansible automate your server tasks, with all the access it needs. At the same time, secrets management keeps your secrets safely out of plain text files and other vulnerable locations.
 
-In this tutorial, learn the most useful methods for implementing secrets management with your Ansible setup. The tutorial covers a range of methods, from the simple to the scalable, and helps you compare them to choose the right fit.
+In this tutorial, learn the most useful methods for implementing secrets management with your Ansible setup. The tutorial covers a range of methods, from simple to scalable, and helps you hoose the right fit.
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account. See our [Getting Started with Linode](/docs/guides/getting-started/) guide.
+1.  If you have not already done so, create a Linode account. See our [Getting Started with Linode](/docs/guides/getting-started/) guide.
 
-1. Follow our guide on [Getting Started With Ansible: Basic Installation and Setup](/docs/guides/getting-started-with-ansible/). Specifically, follow the sections on setting up a control node and managed nodes, configuring Ansible, and creating an Ansible inventory.
+1.  Follow our guide on [Getting Started With Ansible: Basic Installation and Setup](/docs/guides/getting-started-with-ansible/). Specifically, follow the sections on setting up a control node and managed nodes, configuring Ansible, and creating an Ansible inventory.
 
-1. Refer to our guide [Automate Server Configuration with Ansible Playbooks](/docs/guides/running-ansible-playbooks/) for an overview of Ansible playbooks and their operations.
+1.  Refer to our guide [Automate Server Configuration with Ansible Playbooks](/docs/guides/running-ansible-playbooks/) for an overview of Ansible playbooks and their operations.
 
 ## Secrets in Ansible
 
@@ -136,7 +136,7 @@ What follows is an example usage of Ansible Vault. This example deploys [rclone]
 
 To follow along, you need to set up a Linode Object Storage instance with access keys and at least one bucket. You can learn how to do both through our guide [Object Storage - Get Started](/docs/products/storage/object-storage/get-started/).
 
-1. Create a file with your secrets — the access keys for your Linode Object Storage instance. You can do so with a command like the following, replacing the text in arrow brackets with your corresponding object storage key:
+1.  Create a file with your secrets — the access keys for your Linode Object Storage instance. You can do so with a command like the following, replacing the text in arrow brackets with your corresponding object storage key:
 
     ```command
     echo "s3_access_token: <S3_ACCESS_TOKEN>" > s3_secrets.enc
@@ -152,13 +152,13 @@ To follow along, you need to set up a Linode Object Storage instance with access
     Encryption successful
     ```
 
-1. Create a password file in the same directory you intend to put the Ansible playbook. The file needs to contain only the password for your encrypted secrets file. The example in this next command assumes your password is `examplepassword`:
+1.  Create a password file in the same directory you intend to put the Ansible playbook. The file needs to contain only the password for your encrypted secrets file. The example in this next command assumes your password is `examplepassword`:
 
     ```command
     echo "examplepassword" > example.pwd
     ```
 
-1. Create a new Ansible playbook with the following contents. This playbook connects to the non-root users created using the playbook in the previous section of this tutorial. The playbook then installs rclone and creates a configuration file for it. Into the configuration file, the playbook inserts the access keys from the `s3_secrets.enc` file:
+1.  Create a new Ansible playbook with the following contents. This playbook connects to the non-root users created using the playbook in the previous section of this tutorial. The playbook then installs rclone and creates a configuration file for it. Into the configuration file, the playbook inserts the access keys from the `s3_secrets.enc` file:
 
     ```file {title="set_up_rclone.yml" lang="yml"}
     ---
@@ -174,6 +174,7 @@ To follow along, you need to set up a Linode Object Storage instance with access
             pkg:
               - rclone
             state: present
+            update_cache: yes
         - name: "Create the directory for the rclone configuration"
           file:
             path: "/home/example-user/.config/rclone"
@@ -192,7 +193,7 @@ To follow along, you need to set up a Linode Object Storage instance with access
               endpoint = {{ s3_region }}.linodeobjects.com
     ```
 
-1. Run the Ansible playbook. The playbook command here adds the variables from the secrets file using the `-e` option, and gets the password for decrypting them from the `--vault-password-file`. The `--ask-become-pass` option has Ansible prompt for the limited user's `sudo` password:
+1.  Run the Ansible playbook. The playbook command here adds the variables from the secrets file using the `-e` option, and gets the password for decrypting them from the `--vault-password-file`. The `--ask-become-pass` option has Ansible prompt for the limited user's `sudo` password:
 
     ```command
     ansible-playbook -e @s3_secrets.enc --vault-password-file example.pwd --ask-pass --ask-become-pass set_up_rclone.yml
@@ -227,7 +228,7 @@ To follow along, you need to set up a Linode Object Storage instance with access
     192.0.2.2              : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     ```
 
-1. To verify that everything is working as expected, log into either of the managed nodes as the non-root user. Then use the following command to list the buckets on your Linode Object Storage instance:
+1.  To verify that everything is working as expected, log into either of the managed nodes as the non-root user. Then use the following command to list the buckets on your Linode Object Storage instance:
 
     ```command
     rclone lsd linodes3:
@@ -251,9 +252,9 @@ And Ansible maintains a plugin for interacting with HashiCorp's Vault, the [`has
 
 The following steps walk you through an example using HashiCorp's Vault with Ansible. The example accomplishes the same ends as the example in the previous section, so you can more easily compare the differences between the two approaches.
 
-1. Follow along with our guide on [Setting Up and Using a Vault Server](/docs/guides/how-to-setup-and-use-a-vault-server/). By the end, you should have HashiCorp's Vault installed, a vault server running and unsealed, and be logged into the vault.
+1.  Follow along with our guide on [Setting Up and Using a Vault Server](/docs/guides/how-to-setup-and-use-a-vault-server/). By the end, you should have HashiCorp's Vault installed, a vault server running and unsealed, and be logged into the vault.
 
-1. Ensure that the key-value (`kv`) engine is enabled for the `secret` path:
+1.  Ensure that the key-value (`kv`) engine is enabled for the `secret` path:
 
     ```command
     vault secrets enable -path=secret/ kv
@@ -263,7 +264,7 @@ The following steps walk you through an example using HashiCorp's Vault with Ans
     Success! Enabled the kv secrets engine at: secret/
     ```
 
-1. Add the access keys for your Linode Object Storage instance to the `secret/s3` path in the vault. Replace the text in arrow brackets below with your corresponding keys:
+1.  Add the access keys for your Linode Object Storage instance to the `secret/s3` path in the vault. Replace the text in arrow brackets below with your corresponding keys:
 
     ```command
     vault kv put secret/s3 s3_access_token=<S3_ACCESS_TOKEN> s3_secret_token=<S3_SECRET_TOKEN>
@@ -273,7 +274,7 @@ The following steps walk you through an example using HashiCorp's Vault with Ans
     Success! Data written to: secret/s3
     ```
 
-1. Create a new Ansible playbook with the contents shown below. This parallels the playbook built in the previous section, installing and configuring rclone for connecting to a Linode Object Storage instance. The version here just fetches the secrets from a HashiCorp vault instead of an Ansible vault:
+1.  Create a new Ansible playbook with the contents shown below. This parallels the playbook built in the previous section, installing and configuring rclone for connecting to a Linode Object Storage instance. The version here just fetches the secrets from a HashiCorp vault instead of an Ansible vault:
 
     Replace both instances of `<HASHI_VAULT_IP>` below with the IP address for your HashiCorp Vault server. Similarly, replace both instances of `<HASHI_VAULT_TOKEN>` with your login token for the HashiCorp Vault server.
 
@@ -309,7 +310,7 @@ The following steps walk you through an example using HashiCorp's Vault with Ans
               endpoint = {{ s3_region }}.linodeobjects.com
     ```
 
-1. Run the Ansible playbook, providing the appropriate passwords when prompted:
+1.  Run the Ansible playbook, providing the appropriate passwords when prompted:
 
     ```command
     ansible-playbook --ask-pass --ask-become-pass another_rclone_setup.yml
@@ -344,7 +345,7 @@ The following steps walk you through an example using HashiCorp's Vault with Ans
     192.0.2.2              : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     ```
 
-1. Just as in the previous section, you can verify the setup by logging into one of the managed nodes and running one of the rclone `ls` commands, such as `rclone lsd linodes3:`.
+1.  Just as in the previous section, you can verify the setup by logging into one of the managed nodes and running one of the rclone `ls` commands, such as `rclone lsd linodes3:`.
 
 ## Conclusion
 
