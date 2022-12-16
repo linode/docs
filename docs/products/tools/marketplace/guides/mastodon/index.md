@@ -33,9 +33,9 @@ The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodo
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Mastodon should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 - **Supported distributions:** Debian 11
 - **Recommended minimum plan:** All plan types and sizes can be used.

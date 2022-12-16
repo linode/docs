@@ -57,9 +57,9 @@ If the Linode's data center has been upgraded to NVMe Block Storage and your Lin
 
 ## Delete Volume
 
-{{< caution >}}
+{{< note type="alert" >}}
 Once a Block Storage Volume has been deleted, the data contained on that Volume will be permanently erased. This action cannot be reversed.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com/linodes).
 

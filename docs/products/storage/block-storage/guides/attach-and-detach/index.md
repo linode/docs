@@ -24,20 +24,20 @@ Follow these steps to attach an existing Block Storage Volume to a Compute Insta
     - **Config:** If the Compute Instance has multiple Configuration Profiles, select which one the Block Storage Volume should be assigned to. This field will not be displayed if the instance has only a single profile.
 
     {{< note >}}
-The Compute Instance must be located within the same data center as the Block Storage Volume.
-{{< /note >}}
+    The Compute Instance must be located within the same data center as the Block Storage Volume.
+    {{< /note >}}
 
     {{< note >}}
-If the data center has been upgraded to NVMe Block Storage and your Compute Instance was deployed prior to August 24th, 2021, you may need to reboot the instance for it to properly work with a NVMe Block Storage Volume.
-{{</ note >}}
+    If the data center has been upgraded to NVMe Block Storage and your Compute Instance was deployed prior to August 24th, 2021, you may need to reboot the instance for it to properly work with a NVMe Block Storage Volume.
+    {{</ note >}}
 
 1.  Click the **Save** button to attach the Volume.
 
 1.  To start using the Volume on the Compute Instance, additional internal configuration is required. This includes creating the file system (if the Volume hasn't been used before), mounting the Volume, and configuring your instance to automatically mount the Volume at boot. To learn more about these configuration steps, see [Configuring and Mounting a Volume](/docs/products/storage/block-storage/guides/configure-volume/).
 
-    {{< caution >}}
-Do not create a new file system if you wish to retain any existing data on the Volume. Creating a new file system will overwrite any existing data and result in data loss.
-{{</ caution >}}
+    {{< note type="alert" >}}
+    Do not create a new file system if you wish to retain any existing data on the Volume. Creating a new file system will overwrite any existing data and result in data loss.
+    {{< /note >}}
 
 ## Detach a Volume
 

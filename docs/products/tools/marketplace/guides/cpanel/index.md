@@ -28,9 +28,9 @@ cPanel requires a valid license to use the software beyond the initial 15 day [f
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** cPanel/WHM should be fully installed within 15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -71,7 +71,7 @@ WHM is the core interface for managing your server and all websites (also called
 1. The cPanel license screen appears. Click on the **Purchase** button to be taken to cPanel's license management system. From here, you can obtain a trial license (if eligible) or purchase a license.
 
     {{< note >}}
-Provided the IP address hasn't already been registered in cPanel, your cPanel Marketplace App installation automatically receives a free 15-day trial license. You must [purchase a new cPanel & WHM license](https://documentation.cpanel.net/display/CKB/How+to+Purchase+a+cPanel+License) before the end of this trial period. At the end of your trial period your license will expire.
+    Provided the IP address hasn't already been registered in cPanel, your cPanel Marketplace App installation automatically receives a free 15-day trial license. You must [purchase a new cPanel & WHM license](https://documentation.cpanel.net/display/CKB/How+to+Purchase+a+cPanel+License) before the end of this trial period. At the end of your trial period your license will expire.
     {{</ note >}}
 
 1. After obtaining a license, you are automatically logged in and taken to WHM.

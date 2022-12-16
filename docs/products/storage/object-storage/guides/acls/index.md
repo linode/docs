@@ -48,8 +48,8 @@ Existing buckets and any new bucket created in the Cloud Manager have a default 
 1.  On this page you can select the ACL for this bucket as well as enable CORS.
 
     {{< note >}}
-CORS is enabled by default on all existing buckets and on all new buckets.
-{{</ note >}}
+    CORS is enabled by default on all existing buckets and on all new buckets.
+    {{</ note >}}
 
 1.  Select the ACL for this bucket from the dropdown menu.
 
@@ -133,7 +133,7 @@ Substitute the bucket name (and optional object), `PERMISSION`, and `CANONICAL_I
 
 You should see output like the following:
 
-{{< output >}}
+```output
 s3://acl-bucket-example/ (bucket):
    Location:  default
    Payer:     BucketOwner
@@ -143,7 +143,7 @@ s3://acl-bucket-example/ (bucket):
    ACL:       *anon*: READ
    ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
    URL:       http://us-east-1.linodeobjects.com/acl-example/
-{{</ output >}}
+```
 
 {{< note >}}
 The owner of the bucket always has the `full_control` permission.

@@ -170,7 +170,7 @@ To ensure that it has been applied correctly, you can use the `info` command:
 
 You should see output like the following:
 
-{{< output >}}
+```output
 s3://example-bucket/ (bucket):
    Location:  default
    Payer:     BucketOwner
@@ -178,7 +178,7 @@ s3://example-bucket/ (bucket):
    Policy:    b'{\n  "Version": "2012-10-17",\n  "Statement": [{\n    "Effect": "Allow",\n    "Principal": {"AWS": ["arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"]},\n    "Action": ["s3:PutObject","s3:GetObject","s3:ListBucket"],\n    "Resource": [\n      "arn:aws:s3:::bucket-policy-example/*"\n    ]\n  }]\n}'
    CORS:      none
    ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
-{{</ output >}}
+```
 
 ## Create a Signed URL with S3cmd
 

@@ -38,9 +38,9 @@ LiteSpeed offers both free and paid plans.  Visit [LiteSpeed's website](https://
 
 {{< content "marketplace-verify-custom-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** LiteSpeed cPanel should be fully installed within 10-20 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -78,23 +78,23 @@ Please make sure to save this password.
 1.  You are then prompted to log in to cPanel's website and obtain a license or activate a free 15-day trial license.
 
     {{< note >}}
-Your instance is eligible for free 15-day trial licenses of both [WHM/cPanel](https://cpanel.net/products/trial/) and the [LiteSpeed plugin](https://docs.litespeedtech.com/licenses/trial/). If you wish to continue using these applications beyond this period, you must purchase licenses before the end of this trial.
-{{</ note >}}
+    Your instance is eligible for free 15-day trial licenses of both [WHM/cPanel](https://cpanel.net/products/trial/) and the [LiteSpeed plugin](https://docs.litespeedtech.com/licenses/trial/). If you wish to continue using these applications beyond this period, you must purchase licenses before the end of this trial.
+    {{</ note >}}
 
 1.  In the next screen, enter in an email address to receive status and error notifications.
 
     You are also prompted to provide nameserver's for your cPanel instance. By default, cPanel will fill in the values for you. Update the values with the nameservers you would like to use. If you are managing your own nameservers, enter them into the form or, if you will be using [Linode's DNS manager](/docs/products/networking/dns-manager/), enter in Linode's nameservers into the form. Click **Finish** to complete the initial login process.
 
     {{< note >}}
-Linode's nameservers are the following:
+    Linode's nameservers are the following:
 
-    ns1.linode.com.
-    ns2.linode.com.
-    ns3.linode.com.
-    ns4.linode.com.
-    ns5.linode.com.
+        ns1.linode.com.
+        ns2.linode.com.
+        ns3.linode.com.
+        ns4.linode.com.
+        ns5.linode.com.
 
-See our [How do I set up DNS on cPanel?](https://www.linode.com/community/questions/19216/how-do-i-set-up-dns-on-cpanel) community question and answer for details related to cPanel and Linode nameservers.
+    See our [How do I set up DNS on cPanel?](https://www.linode.com/community/questions/19216/how-do-i-set-up-dns-on-cpanel) community question and answer for details related to cPanel and Linode nameservers.
     {{</ note >}}
 
     ![Provide an email address and your Linode nameservers.](email-and-nameservers.png)

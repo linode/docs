@@ -91,7 +91,7 @@ A UDF tag accepts the following attributes:
     The variable name is the string you wish to use to reference this variable within the StackScript. The string must be alphanumeric (can include underscores), less than 64 characters in length, and be unique within the StackScript.
 
     {{< note >}}
-If you would like to create a masked password input field, use the word `password` anywhere in the UDF `name` attribute.
+    If you would like to create a masked password input field, use the word `password` anywhere in the UDF `name` attribute.
     {{< /note >}}
 
 - **Field label** (*required*):

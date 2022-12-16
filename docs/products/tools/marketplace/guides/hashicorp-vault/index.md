@@ -20,9 +20,9 @@ title: "Deploy HashiCorp Vault through the Linode Marketplace"
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Vault should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -45,15 +45,15 @@ Follow the instructions below to view the unseal key and root token.
 
         cat /root/.vault_tokens.txt
 
-    {{< output >}}
-cat /root/.vault_tokens.txt
-Unseal Key 1: M8H0MQbg5Vgdf5IFEL/xOvyBC0bXwH+exN9wLgSwyq1y
-Unseal Key 2: oP7fCkpdJXrO/AegtuUtQAiiyK//fhPtfyfFzEnT5z8b
-Unseal Key 3: dSB00TzKHK9Nq5S+w2zWDzlokxMhYnUx6xNXXFuXHw9o
-Unseal Key 4: UJEqMsSKbtGM1SZNJjUmx0/V7Q4g5pI63V0aRIulHVm3
-Unseal Key 5: UMBRh+13zGwYgTIunTl6F0qJRoWW4JS6U5WzazwAhOoz
-Initial Root Token: hvs.z1f4cwvE9llTjBmkJO71xhF4
-{{</ output >}}
+    ```output
+    cat /root/.vault_tokens.txt
+    Unseal Key 1: M8H0MQbg5Vgdf5IFEL/xOvyBC0bXwH+exN9wLgSwyq1y
+    Unseal Key 2: oP7fCkpdJXrO/AegtuUtQAiiyK//fhPtfyfFzEnT5z8b
+    Unseal Key 3: dSB00TzKHK9Nq5S+w2zWDzlokxMhYnUx6xNXXFuXHw9o
+    Unseal Key 4: UJEqMsSKbtGM1SZNJjUmx0/V7Q4g5pI63V0aRIulHVm3
+    Unseal Key 5: UMBRh+13zGwYgTIunTl6F0qJRoWW4JS6U5WzazwAhOoz
+    Initial Root Token: hvs.z1f4cwvE9llTjBmkJO71xhF4
+    ```
 
 1.  Distribute the portions of the unseal key to your team as needed, making sure they are saved in a safe and secure location. In addition, save the **Initial Root Token**. After you are finished, you can delete this text file.
 
@@ -71,11 +71,11 @@ Initial Root Token: hvs.z1f4cwvE9llTjBmkJO71xhF4
 
     ![Screenshot of unsealed Vault web UI](vault-unsealed.jpg)
 
-    {{<note>}}
-HashiCorp recommends using mutual TLS (mTLS) with a private CA to secure cluster communications and the web UI. Please see the following HashiCorp documentation for more details.
-https://www.vaultproject.io/docs/auth/cert
-https://www.vaultproject.io/docs/secrets/pki/setup
-{{</note>}}
+    {{< note >}}
+    HashiCorp recommends using mutual TLS (mTLS) with a private CA to secure cluster communications and the web UI. Please see the following HashiCorp documentation for more details.
+    https://www.vaultproject.io/docs/auth/cert
+    https://www.vaultproject.io/docs/secrets/pki/setup
+    {{< /note >}}
 
 1. Additional configurations are required to use the Linode Marketplace Vault instance in a production environment. We recommend reviewing the [Configuration](https://www.vaultproject.io/docs/configuration), [Secrets Engine](https://www.vaultproject.io/docs/secrets), and [Authentication](https://www.vaultproject.io/docs/auth) documentation before proceeding further.
 

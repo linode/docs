@@ -25,9 +25,9 @@ The PostgreSQL relational database system is a powerful, scalable, and standards
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** PostgreSQL should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -58,9 +58,9 @@ After PostgreSQL has finished installing, you will be able to access PostgreSQL 
 
 By default, PostgreSQL will create a Linux user named `postgres` to access the database software.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The `postgres` user should not be used for other purposes (e.g. connecting to other networks). Doing so presents a serious risk to the security of your databases.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Change the `postgres` user's Linux password:
 

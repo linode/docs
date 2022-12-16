@@ -32,9 +32,9 @@ Grafana is often used alongside [Prometheus](https://prometheus.io/) for monitor
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Grafana should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -56,7 +56,7 @@ Now that your Grafana Marketplace App is deployed, you can log into Grafana to a
 1. Open a browser and navigate to your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/) and port `3000`, for example, `http://192.0.2.0:3000/`. By default, Grafana will listen to port `3000`.
 
     {{< note >}}
-The Grafana Marketplace App will install and enable the [UFW firewall](/docs/guides/configure-firewall-with-ufw/) allowing TCP traffic on port `3000`.
+    The Grafana Marketplace App will install and enable the [UFW firewall](/docs/guides/configure-firewall-with-ufw/) allowing TCP traffic on port `3000`.
     {{</ note >}}
 
 1. Viewing Grafana's log in page, enter in `admin` as the *username* and the Grafana password you set in the [Grafana Options](#grafana-options) section of the Cloud Manager, as the *password*. Click on the **Log In** button.

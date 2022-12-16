@@ -42,9 +42,9 @@ Discourse requires that you have a domain name and access to a personal SMTP ema
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Discourse should be fully installed within 15-20 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -128,15 +128,15 @@ Discourse sends this email from `noreply@subdomain.your-domain.com`. The SMTP us
 
 1.  Edit the file `app.yml` with the text editor of your choice. Uncomment the following line and edit the email address to the email you wish to send the confirmation email from. The SMTP user must have permissions to send email from this address.
 
-    {{< file "/var/discourse/containers/app.yml" >}}
-...
+    ```file {title="/var/discourse/containers/app.yml"}
+    ...
 
-## If you want to set the 'From' email address for your first registration, uncomment and change:
-- exec: rails r "SiteSetting.notification_email='noreply@example.com'"
-## After getting the first signup email, re-comment the line. It only needs to run once.
+    ## If you want to set the 'From' email address for your first registration, uncomment and change:
+    - exec: rails r "SiteSetting.notification_email='noreply@example.com'"
+    ## After getting the first signup email, re-comment the line. It only needs to run once.
 
-...
-{{</ file >}}
+    ...
+    ```
 
 1.  Save the file and exit.
 

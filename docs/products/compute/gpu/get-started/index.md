@@ -17,9 +17,9 @@ image: getting-started-with-linode-gpu-instances.png
 
 1. Select the [Distribution](/docs/guides/choosing-a-distribution/), [Marketplace App](/docs/products/tools/marketplace/get-started/), or [Image](/docs/products/tools/images/) you would like to use.
 
-    {{<note>}}
-Be sure to select a distribution that's compatible with the NVIDIA CUDA Toolkit. Review NVIDIA's [System Requirements](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements) to learn which distributions are supported.
-{{</note>}}
+    {{< note >}}
+    Be sure to select a distribution that's compatible with the NVIDIA CUDA Toolkit. Review NVIDIA's [System Requirements](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements) to learn which distributions are supported.
+    {{< /note >}}
 
 1. Choose the region where you would like your Linode to reside. If you’re not sure which to select, see our [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center/) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
 

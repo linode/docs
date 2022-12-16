@@ -28,7 +28,7 @@ Consult our [Network Transfer Usage and Costs](/docs/guides/network-transfer/) g
         scp root@192.0.2.1:/mnt/source-volume/ /mnt/destination-volume/
 
     {{< note >}}
-You will need a Volume or device that has enough storage capacity to receive the entirety of your source data.
-{{</ note >}}
+    You will need a Volume or device that has enough storage capacity to receive the entirety of your source data.
+    {{</ note >}}
 
 1. Once the transfer is complete and you have confirmed the original data is now located on the new Volume in your desired data center, the original Volume can be deleted to avoid further charges for that Volume.

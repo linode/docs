@@ -28,9 +28,9 @@ Self-hosting your software development with the Gitea Marketplace App offers tot
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Gitea should be fully installed within 3-7 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

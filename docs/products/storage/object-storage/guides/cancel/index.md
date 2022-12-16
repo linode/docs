@@ -8,9 +8,9 @@ description: "How to cancel the Linode Object Storage service."
 
 The following steps outline how to cancel the Object Storage service from the Cloud Manager.
 
-{{< caution >}}
+{{< note type="alert" >}}
 Cancelling Object Storage deletes all objects and buckets from your account. Consider downloading any important files before continuing.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com/), select **Account** from the left menu, and navigate to the **Settings** tab.
 

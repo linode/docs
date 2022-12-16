@@ -38,9 +38,9 @@ For a more detailed information on PMM's architecture see [Percona's official do
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** PMM should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -118,10 +118,10 @@ The PMM Server deployed with Linode's Percona (PMM) Marketplace App is compatibl
         sudo yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
 
     {{< note >}}
-If you have previously enabled the experimental or testing Percona repository, don’t forget to disable them and enable the release component of the original repository as follows:
+    If you have previously enabled the experimental or testing Percona repository, don’t forget to disable them and enable the release component of the original repository as follows:
 
-    sudo percona-release disable all
-    sudo percona-release enable original release
+        sudo percona-release disable all
+        sudo percona-release enable original release
     {{</ note >}}
 
 1.  Install the PMM Client (version 2):
@@ -137,9 +137,9 @@ If you have previously enabled the experimental or testing Percona repository, d
 
 1.  Connect your database node to the PMM Server. Replace `admin_password` with your PMM Server's [Grafana password](#access-your-PMM-server-s-grafana-dashboard), and `192.0.2.0` with your PMM Server's IPv4 address.
 
-      {{< note >}}
-Follow the steps in [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) to retrieve your PMM Server's IPv4 address.
-      {{</ note >}}
+    {{< note >}}
+    Follow the steps in [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) to retrieve your PMM Server's IPv4 address.
+    {{</ note >}}
 
         pmm-admin \
         config \
@@ -148,17 +148,17 @@ Follow the steps in [Find Your Linode's IP Address](/docs/guides/find-your-linod
 
     Once complete, you should see a similar output:
 
-      {{< output >}}
-Checking local pmm-agent status...
-pmm-agent is running.
-Registering pmm-agent on PMM Server...
-Registered.
-Configuration file /usr/local/percona/pmm2/config/pmm-agent.yaml updated.
-Reloading pmm-agent configuration...
-Configuration reloaded.
-Checking local pmm-agent status...
-pmm-agent is running.
-      {{</ output >}}
+    ```output
+    Checking local pmm-agent status...
+    pmm-agent is running.
+    Registering pmm-agent on PMM Server...
+    Registered.
+    Configuration file /usr/local/percona/pmm2/config/pmm-agent.yaml updated.
+    Reloading pmm-agent configuration...
+    Configuration reloaded.
+    Checking local pmm-agent status...
+    pmm-agent is running.
+    ```
 
 ### Monitor a Database Instance
 
@@ -178,7 +178,7 @@ Once your database node and your PMM Server are communicating, the final step is
     ![perconafinal.png](perconafinal.png "Percona Dashboard with Database Monitoring.")
 
     {{< note >}}
-You can also [add a database remote instance node using the Grafana interface](https://www.percona.com/doc/percona-monitoring-and-management/remote-instance.html). In order to do this, your node must be configured with a public DNS name. This method of adding a remote database instance will not provide host-level metrics.
+    You can also [add a database remote instance node using the Grafana interface](https://www.percona.com/doc/percona-monitoring-and-management/remote-instance.html). In order to do this, your node must be configured with a public DNS name. This method of adding a remote database instance will not provide host-level metrics.
     {{</ note >}}
 
 ## Software Included
