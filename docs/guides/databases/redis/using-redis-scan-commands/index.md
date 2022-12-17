@@ -3,15 +3,16 @@ slug: using-redis-scan-commands
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Looking to more efficiently fetch keys from your Redis database, especially when you have large amounts of data? Follow along in this tutorial to learn how to use Redis’s SCAN commands. These commands incrementally iterate over keys, preventing server blockages for large data sets and providing several features to improve the process of fetching keys."
-og_description: "Looking to more efficiently fetch keys from your Redis database, especially when you have large amounts of data? Follow along in this tutorial to learn how to use Redis’s SCAN commands. These commands incrementally iterate over keys, preventing server blockages for large data sets and providing several features to improve the process of fetching keys."
-keywords: ['how to use redis scan','redis scan command','redis scan keys']
+description: "Looking to more efficiently fetch keys from your Redis database, especially when you have large amounts of data? Follow along in this guide to learn how to use Redis’s SCAN commands. These commands incrementally iterate over keys, preventing server blockages for large data sets and providing several features to improve the process of fetching keys."
+keywords: ['how to use redis scan', 'redis scan command', 'redis scan keys']
+tags: ['redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-05
 modified_by:
   name: Nathaniel Stickman
 title: "How to Use the Scan Commands in Redis"
-h1_title: "How to Use the Scan Commands in Redis"
+h1_title: "Using the Scan Commands in Redis"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -23,28 +24,28 @@ external_resources:
 
 Redis is a NoSQL database, exceptional for storing data structures in memory. Between that and its low-latency performance, Redis has become a go-to tool for web applications needing efficient caching and messaging storage.
 
-This tutorial covers Redis's SCAN commands, which provide a cursor-based method for incremental iterations through data collections. Here, get everything you need to start using these commands in your Redis instance — from an overview of the basics to advanced options.
+This guide covers Redis's SCAN commands, which provide a cursor-based method for incremental iterations through data collection. Here, get everything you need to start using these commands in your Redis instance — from an overview of the basics to advanced options.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
 
             sudo dnf upgrade
 
 1. Follow the instructions in our [How to Install a Redis Server](/docs/guides/how-to-install-a-redis-server-on-ubuntu-or-debian8/) guide to install a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is the SCAN Command?
@@ -57,9 +58,9 @@ The SCAN commands are especially useful when it comes to working with large and/
 
 ### Types of SCAN Commands
 
-Redis does not just have one SCAN command; it has four. Each one deals with a different type of collection.
+Redis has four SCAN commands, each one dealing with a different type of collection.
 
-Here are the four commands, each accompanied by a description of the kind of collection it covers:
+Following are the four commands, each accompanied by a description of the kind of collection it covers:
 
 - `SCAN` iterates over all the keys in the current database.
 
@@ -84,7 +85,7 @@ The examples all use data that you can load into your Redis instance using the f
     ZADD example_sorted_set 2 "Element 1" 4 "Element 2" 6 "Element 3" 8 "Element 4" 10 "Element 5" 12 "Element 6" 14 "Element 7" 16 "Element 8" 18 "Element 9" 20 "Element 10" 22 "Element 11" 24 "Element 12" 26 "Element 13" 28 "Element 14" 30 "Element 15" 32 "Element 16"
     HSET example_hash field_1 "Field 1" field_2 "Field 2" field_3 "Field 3" field_4 "Field 4" field_5 "Field 5" field_6 "Field 6" field_7 "Field 7" field_8 "Field 8" field_9 "Field 9" field_10 "Field 10" field_11 "Field 11" field_12 "Field 12" field_13 "Field 13" field_14 "Field 14" field_15 "Field 15" field_16 "Field 16"
 
-Some of this data is not used directly in the examples that follow. However, the data set covers all of the types of collections the SCAN commands can be used on. So you can feel free, as the guide progresses, to substitute different variants of the SCAN command and see the effects.
+Some of this data is not used directly in the examples that follow. However, the data set covers all of the types of collections the SCAN commands can be used on. So you can feel free, as the guide progresses, to substitute different variants of the SCAN command, and see the effects.
 
 ### Basic Usage of the SCAN Commands
 
@@ -96,7 +97,7 @@ The command then returns an array of two values:
 
 - Second, an array of values retrieved from the collection.
 
-So, to demonstrate:
+Following is the demonstration of the `SCAN` command:
 
     SCAN 0
 
@@ -122,7 +123,7 @@ The other SCAN commands add another required argument before the starting cursor
 
 In the above example, `example_hash` should be the key for a value with a data type matching the SCAN command — in this case, a hash value.
 
-The number of values returned by the SCAN commands varies. However, in the next section you can see how to use the `COUNT` option to generally dictate how many results you want from the commands.
+The number of values returned by the SCAN commands varies. However, in the next section, you can see how to use the `COUNT` option to generally dictate how many results you want from the commands.
 
 ### Options for the SCAN Commands
 
@@ -156,7 +157,7 @@ The SCAN commands have three options that you can use to enhance or control the 
    8) "key_1"`
     {{< /output >}}
 
-    However, it is important to know that the SCAN command first fetches its results and then applies the `MATCH` pattern filter. So, some iterations of the SCAN command may show no results, even if there are matching results within the collection. Those results show on the command iteration covering the matching keys.
+    However, it is important to know that the `SCAN` command first fetches its results and then applies the `MATCH` pattern filter. So, some iterations of the `SCAN` command may show no results, even if there are matching results within the collection. Those results show on the command iteration covering the matching keys.
 
 - The `TYPE` option can be used with the `SCAN` command to limit results to only keys matching a specified type.
 
@@ -165,13 +166,13 @@ The SCAN commands have three options that you can use to enhance or control the 
     Like the `MATCH` option, the `SCAN` command here fetches results first and then applies the `TYPE` filter. So, a given `SCAN` command may return no results when a `TYPE` filter is used even if there are keys of the specified type in the collection. Those keys show up on the command iteration that covers their locations in the collection.
 
     {{< note >}}
-The `TYPE` option for the `SCAN` command is only supported in Redis 6 or later. Attempting to use this option in earlier Redis version results in a syntax error.
+The `TYPE` option for the `SCAN` command is only supported in Redis 6 or later. Attempting to use this option in the earlier Redis version results in a syntax error.
     {{< /note >}}
 
 ## Conclusion
 
-With that, you are ready to start making use of SCAN commands on your Redis instance. These commands can provide effective methods for dealing with large and complex data sets. And the tools discussed in this tutorial help you to make the most of these commands to efficiently handle your data.
+With that, you are ready to start making use of SCAN commands on your Redis instance. These commands can provide effective methods for dealing with large and complex data sets. And the tools discussed in this guide help you to make the most of these commands to efficiently handle your data.
 
-Want to continue learning about Redis, getting the most effective use out of your server? Thankfully, we have plenty of [guides on using Redis](/docs/guides/databases/redis/) that can help you navigate Redis data types, configurations, and more.
+Want to continue learning about Redis, and get the most effective use out of your server? Thankfully, we have plenty of [guides on using Redis](/docs/guides/databases/redis/) that can help you navigate Redis data types, configurations, and more.
 
 Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
