@@ -376,7 +376,7 @@ dao
 databags
 datacenter
 datadir
-Datadog
+datadog
 dataflow
 datagram
 dataset
@@ -434,6 +434,7 @@ dhparams
 dia
 dialogs
 diavel
+dicts
 diffie
 digicert
 digium

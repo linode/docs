@@ -4,8 +4,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Python may not be a statically-typed programming language, but data types still play an important role. Knowing what Python data types are and how to use them can make your programs more effective and efficient overall. Learn the basics of Python data types and their operations in this guide."
-og_description: "Python may not be a statically-typed programming language, but data types still play an important role. Knowing what Python data types are and how to use them can make your programs more effective and efficient overall. Learn the basics of Python data types and their operations in this guide."
-keywords: ['python data types','python data types check','python data types cheat sheet']
+keywords: ['python data types', 'python data types check', 'python data types cheat sheet']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-03
 modified_by:
@@ -28,7 +27,7 @@ Knowing about Python's data types helps to make your Python programs more effect
 
 Python has numerous data types, more than this guide can effectively cover. You can refer to the Python documentation linked at the end of this guide for a comprehensive list of Python data types.
 
-This guide, instead, focuses on listing the most commonly used and most useful data types. Doing so lets the guide provide more on these data types' usage and operations, helping you grasp the underlying concepts behind Python data types. It can also act as a Python data types cheat sheet for these most common data types.
+This guide, instead, focuses on listing the most commonly used, and most useful data types. Doing so lets the guide provide more on these data types' usage and operations, helping you grasp the underlying concepts behind Python data types. It can also act as a Python data types cheat sheet for these most common data types.
 
 ### Boolean
 
@@ -107,7 +106,7 @@ integer_variable = 8
 another_integer_variable = 2095621
 ```
 
-Floating-point numbers, or floats, include decimal places. A float must have at least one decimal place, but can have as many as 15.
+Floating-point numbers, or floats, include decimal places. A float must have at least one decimal place but can have as many as 15.
 
 ``` python
 float_variable = 8.0
@@ -121,7 +120,7 @@ complex_variable = 2+3j
 another_complex_variable = 1+2j
 ```
 
-Python's numbers can be used in mathematical operations using Python's built in operators. You can see a list of these operators in the section of Python's [Built-in Types](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex) documentation on numeric types.
+Python's numbers can be used in mathematical operations using Python's built-in operators. You can see a list of these operators in the section of Python's [Built-in Types](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex) documentation on numeric types.
 
 ### Strings
 
@@ -159,7 +158,7 @@ string_variable = "This is a single quotation: ' ."
 # And this remedies the issue by using double quotes to wrap the string.
 ```
 
-- The escape character `\` can be used to either include a special character, like a quotation mark, as a literal character or to include a special character like a new line.
+- The escape character `\` can be used to either include a special character, like a quotation mark, as a literal character, or to include a special character like a new line.
 
 ``` python
 string_variable = "This is a double quotation: \" . And this is a backslash: \\ ."
@@ -196,7 +195,7 @@ tuple_variable[3]
 # 2.3
 ```
 
-- *Lists* are also ordered collections, but they are mutable. A list contains a series of objects wrapped in square brackets. You can change the contents of a list any time. And, as with tuples, elements of a list can be accessed using indices and slice notation.
+- *Lists* are also ordered collections, but they are mutable. A list contains a series of objects wrapped in square brackets. You can change the contents of a list at any time. And, as with tuples, elements of a list can be accessed using indices and slice notation.
 
 ``` python
 list_variable = [4.2, "Value 4", 89, "Value 2", "Value 2"]
@@ -211,7 +210,7 @@ list_variable[-2:]
 # ['Value 2', 'Value 2']
 ```
 
-- *Sets* are unordered collections of unique data. A set is a list of unique values, all wrapped in curly braces. Sets are mutable, like lists. But, because sets are unordered, elements cannot be accessed by indices or slices. Instead, sets provide arbitrary but fast and efficient accesses to elements.
+- *Sets* are unordered collections of unique data. A set is a list of unique values, all wrapped in curly braces. Sets are mutable, like lists. But, because sets are unordered, elements cannot be accessed by indices, or slices. Instead, sets provide arbitrary but fast and efficient accesses to elements.
 
 ``` python
 set_variable = {"Value 5", 5.7, 75, "Value 6", 67}
@@ -340,7 +339,7 @@ Python has three functions for casting between numbers and strings.
 
 ## Conclusion
 
-With that, you have what you need to start working effectively with the most common data types in Python. Following this tutorial can help you get more familiar with everything from basic types like Boolean and integer to strings, collections, and dictionaries.
+With that, you have what you need to start working effectively with the most common data types in Python. Following this tutorial can help you get more familiar with everything from basic types like Boolean and integers to strings, collections, and dictionaries.
 
 Looking to deepen your understanding? Then be sure to look at our other [guides on Python](/docs/guides/development/python/). A few of these have been linked throughout this guide, but here is a list gathering those together:
 
