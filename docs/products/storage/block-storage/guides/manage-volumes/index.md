@@ -32,7 +32,7 @@ Log in to the [Cloud Manager](https://cloud.linode.com/volumes) and click the **
 
 {{< note >}}
 If the Linode's data center has been upgraded to NVMe Block Storage and your Linode was deployed prior to August 24th, 2021, you may need to reboot your Linode for it to properly work with a NVMe Block Storage Volume.
-{{</ note >}}
+{{< /note >}}
 
 1. Navigate to the **Volumes** page in the Cloud Manager. Alternatively, if you know which Compute Instance you wish to attach the new Volume to, navigate to the **Storage** tab for that instance. See [View Volumes](#view-volumes).
 

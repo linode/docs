@@ -44,7 +44,7 @@ This guide covers the creation of a Terraform module used to deploy a Linode ins
 
     {{< note respectIndent=false >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
-    {{</ note >}}
+    {{< /note >}}
 
 2. Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) guide to obtain a token.
 
@@ -95,7 +95,7 @@ linode_stackscripts/
 
 {{< note respectIndent=false >}}
 Your `linode_stackscripts` directory will likely contain other files related to the Terraform installation you completed prior to beginning the steps in this guide.
-{{</ note >}}
+{{< /note >}}
 
 ### Create the Linodes Module
 
@@ -111,7 +111,7 @@ You may need to edit your `~/.profile` directory to include the `~/linode_stacks
 
     echo 'export PATH="$PATH:$HOME/linode_stackscripts"' >> ~/.profile
     source ~/.profile
-    {{</ note >}}
+    {{< /note >}}
 
 1. Create the `modules` and `linodes` subdirectories:
 
@@ -554,11 +554,11 @@ stackscript_data = {
 
     {{< note respectIndent=false >}}
 In Terraform 0.12, variables with map and object values will use the last value found and override previous values. This is different from previous versions of Terraform, which would merge map values instead of overriding them. For this reason, the `stackscript_data` map and its values are defined in a single variable definitions file.
-    {{</ note >}}
+    {{< /note >}}
 
     {{< note respectIndent=false >}}
   There are several other options available for secrets management with Terraform. For more information on this subject, see [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform).
-    {{</ note >}}
+    {{< /note >}}
 
 You are now ready to apply your `linode_stackscripts` module's Terraform configuration. These steps will be completed in the next section.
 
@@ -619,7 +619,7 @@ terraform.tfstate
 
     {{< note respectIndent=false >}}
 If there are any files related to the Terraform installation steps completed before beginning this guide (such as the zip files and checksum files), you can remove these files from the `linode_stackscripts` directory, since you should not track them in version control and they are no longer necessary.
-{{</ note >}}
+{{< /note >}}
 
 1. Initialize the git repository:
 

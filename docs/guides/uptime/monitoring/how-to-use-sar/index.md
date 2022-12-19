@@ -84,7 +84,7 @@ PATH=/usr/lib/sysstat:/usr/sbin:/usr/sbin:/usr/bin:/sbin:/bin
 
     {{< note respectIndent=false >}}
 Note that the `/var/log/sysstat/saXX` is a binary file; a text editor can't display these files properly.
-{{</ note >}}
+{{< /note >}}
 
     Frequently-used variables are set in the `/etc/sysstat/sysstat` file. These include the length of time log files should be kept; when log files should be compressed; and which compression algorithm should be used. The example below displays a typical `/etc/sysstat/sysstat` file:
 

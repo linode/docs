@@ -20,7 +20,7 @@ aliases: ['/platform/marketplace/how-to-deploy-cpanel-with-marketplace-apps/', '
 
 {{< note >}}
 cPanel requires a valid license to use the software beyond the initial 15 day [free trial](https://cpanel.net/products/trial/) period. To purchase a license, visit [cPanel’s website](https://cpanel.net/pricing/) and select a plan that fits your needs. Licenses are not available directly through Linode.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -72,7 +72,7 @@ WHM is the core interface for managing your server and all websites (also called
 
     {{< note >}}
     Provided the IP address hasn't already been registered in cPanel, your cPanel Marketplace App installation automatically receives a free 15-day trial license. You must [purchase a new cPanel & WHM license](https://documentation.cpanel.net/display/CKB/How+to+Purchase+a+cPanel+License) before the end of this trial period. At the end of your trial period your license will expire.
-    {{</ note >}}
+    {{< /note >}}
 
 1. After obtaining a license, you are automatically logged in and taken to WHM.
 
@@ -87,6 +87,6 @@ Now that you're able to access WHM, you can manage your server, install software
 
 {{< note >}}
 ***Sending* email:** Newly created Linode accounts have restrictions on ports `25`, `465`, and `587` applied to Compute Instances, which prevent instances from sending email. If you'd like to send email on a Compute Instance, [open a ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) with our Support team.
-{{</ note >}}
+{{< /note >}}
 
 {{< content "marketplace-update-note-shortguide">}}

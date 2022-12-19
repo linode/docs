@@ -49,7 +49,7 @@ You can learn more about the `dig` command and its features in our guide [Use di
 
     {{< note respectIndent=false >}}
 You may need to update your system's version of the GNU C library (glibc).
-{{</ note >}}
+{{< /note >}}
 
 1. Install [Rust](https://www.rust-lang.org/). You need Rust to compile the `dog` source code:
 
@@ -65,7 +65,7 @@ You may need to update your system's version of the GNU C library (glibc).
 
     {{< note respectIndent=false >}}
 To access the `.tar.gz` file, navigate to the [**Tags** section](https://github.com/ogham/dog/tags) of the dog releases page.
-    {{</ note >}}
+    {{< /note >}}
 
 1. Download that file, replacing the URL below with the one you copied:
 

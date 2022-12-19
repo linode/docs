@@ -22,7 +22,7 @@ Billing for Object Storage starts when it is enabled on your account, **regardle
 
     {{< note >}}
     Object Storage is not available in the Linode Classic Manager.
-    {{</ note >}}
+    {{< /note >}}
 
 1. Click on the **Object Storage** link in the sidebar, click the **Access Keys** tab, and then click the **Create an Access Key** link.
 
@@ -46,7 +46,7 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 
     {{< note >}}
     If you have not created an access key or a bucket before, you are prompted to enable Object Storage.
-    {{</ note >}}
+    {{< /note >}}
 
 1.  The **Create a Bucket** menu appears.
 
@@ -68,7 +68,7 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 
     {{< note >}}
     You can drag and drop multiple files to the **Upload Files Pane** at one time.
-    {{</ note >}}
+    {{< /note >}}
 
    You can also click on the **Browse Files** button to bring up your computer's file browser and select a file to upload to your bucket.
 

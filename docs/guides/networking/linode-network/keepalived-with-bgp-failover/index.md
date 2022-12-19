@@ -23,7 +23,7 @@ This guide covers how to configure Keepalived with a simple health check and ena
 
 {{< note respectIndent=false >}}
 If you are migrating to BGP-based failover and currently have health checks configured with Keepalived, you can modify the steps in this guide to include your own settings.
-{{</ note >}}
+{{< /note >}}
 
 ## Configure IP Sharing and BGP Failover
 

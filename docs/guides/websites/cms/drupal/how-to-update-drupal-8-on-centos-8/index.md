@@ -55,7 +55,7 @@ In this section, you will create an archive of your Drupal site's files and stor
 
     {{< note respectIndent=false >}}
 This process can also be scripted and run on a regular basis using [cron](/docs/guides/schedule-tasks-with-cron/).
-    {{</ note >}}
+    {{< /note >}}
 
 ## Download Updates
 
@@ -81,7 +81,7 @@ If your CentOS installation is running in enforcing mode, ensure you are allowin
 Also, ensure that firewalld is allowing `https` traffic:
 
     sudo firewall-cmd --zone=public --add-service=https
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Connect to your Linode over SSH:
 
@@ -128,13 +128,13 @@ Drupal's *maintenance mode* allows users with the right permissions to use your 
 
     {{< note respectIndent=false >}}
 If `update.php` does not load or returns a 403 Forbidden error, you may need to update the ownership and permissions of the newly expanded files. For best practices on Drupal site directory and file permissions, see their [documentation](https://www.drupal.org/node/244924).
-{{</ note >}}
+{{< /note >}}
 
 1.  If you are [installing additional modules](https://www.drupal.org/docs/user_guide/en/extend-module-install.html) or configuring additional [security settings](https://www.drupal.org/security/secure-configuration), complete those updates now and continue on to the next step in this section when you are done.
 
     {{< note respectIndent=false >}}
 The [Next Steps](#next-steps) section includes a list of Drupal security modules you may consider installing.
-    {{</ note >}}
+    {{< /note >}}
 
 1. Rebuild the site's cache by navigating to the Admin Toolbar and click on **Configuration**. Under the **Development** heading, click on **Performance**. Finally, click on the **Clear all caches** button.
 

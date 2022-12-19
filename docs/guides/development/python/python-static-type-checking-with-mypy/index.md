@@ -29,7 +29,7 @@ Mypy is a tool used for static-type checking Python code. Python’s founder, [G
 
 {{< note respectIndent=false >}}
 Statically typed languages have the reputation of being more difficult to learn. Converting existing Python code to statically typed code may be intimidating since many lines of code might need to change. This guide illustrates how to adapt an existing Python project to incrementally use Mypy and static typing.
-{{</ note >}}
+{{< /note >}}
 
 ## How to Install and Use Mypy
 
@@ -41,7 +41,7 @@ Install Mypy on your system using Pip with the following command:
 
 {{< note respectIndent=false >}}
 If you maintain your configuration through a Graphical User Interface (GUI), like [Anaconda](https://docs.anaconda.com/anaconda/navigator/tutorials/manage-packages/), or use an alternative package manager, modify this command to fit your situation.
-{{</ note >}}
+{{< /note >}}
 
 ### Mypy Basic Usage
 
@@ -114,7 +114,7 @@ The first line `def legal_name(first: str, last:str) -> str:` specifies that the
 
 {{< note respectIndent=false >}}
 Use mypy's `--disallow-untyped-defs` command-line option, to enforce static typing on all function definitions. This option may be too strict if your Python project works with third-party libraries that do not use type annotations.
-{{</ note >}}
+{{< /note >}}
 
 Mypy recognizes type annotations on all objects in a Python program. For this guide, the emphasis is on function signatures, as opposed to all the other objects in play in a Python program. When beginning with Mypy, focus on your Python code’s function definitions. When refactoring your Python code with type annotations, begin by annotating all function definitions first. Next, you can consider adding type annotations to variables not only contained in function signatures. Some developers consider that most of Mypy's benefit comes from adding type annotations to function declarations. More exhaustive annotation of other variables may require more effort than it's worth.
 

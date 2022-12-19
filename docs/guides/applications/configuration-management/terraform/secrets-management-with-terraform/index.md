@@ -32,7 +32,7 @@ Terraform is an Infrastructure as Code (IaC) tool that allows you to write decla
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12 or later. To learn how to safely upgrade to Terraform version 0.12 or later, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
 
 The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html).
-{{</ note >}}
+{{< /note >}}
 
 ## Keeping Secrets Out of .tf Files
 

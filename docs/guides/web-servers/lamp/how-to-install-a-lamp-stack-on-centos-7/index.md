@@ -130,7 +130,7 @@ IncludeOptional sites-enabled/*.conf
 
     {{< note respectIndent=false >}}
 If you receive an error when trying to reload your `httpd` service, follow the steps in the [Configure SELinux to Allow HTTP](#configure-selinux-to-allow-http) section and then reattempt to reload the service.
-    {{</ note >}}
+    {{< /note >}}
 
     Additional domains can be added to the `example.com.conf` file as needed.
 
@@ -173,7 +173,7 @@ Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
 
 {{< note respectIndent=false >}}
 In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the `sudo setsebool -P httpd_can_network_connect on` command.
-{{</ note >}}
+{{< /note >}}
 
 ### Configure FirewallD to Allow HTTP Connections
 
@@ -198,7 +198,7 @@ ssh dhcpv6-client
 Rename Apache's default welcome page. When this file is present it takes precedence over other configurations via the `LocationMatch` directive.
 
     sudo mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf.bk
-{{</ note >}}
+{{< /note >}}
 
 Once Apache has been installed and configured on your server, it is time to install PHP and the MySQL database on your CentOS 7 Linode.
 

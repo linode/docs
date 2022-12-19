@@ -88,7 +88,7 @@ If you did not generate an SSL certificate using Certbot prior to the installati
 Once you are done generating the certificate, restart GitLab with the following command:
 
       sudo gitlab-ctl start
-{{</ note >}}
+{{< /note >}}
 
 1. Edit the `/etc/gitlab/gitlab.rb` to use HTTPS. This is done by modifying the value of `external_url` to use `https` instead of `http`:
 

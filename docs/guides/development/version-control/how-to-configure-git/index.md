@@ -29,7 +29,7 @@ Git is a distributed version control system. Git was designed and developed by [
 
 {{< note respectIndent=false >}}
 If you are new to version control systems (VCS), see our guide [SVN vs Git: Which Version Control System Should You Use?](/docs/guides/svn-vs-git/) to learn more about each VCS.
-{{</ note >}}
+{{< /note >}}
 
 ## Configure Git
 

@@ -136,7 +136,7 @@ You can test your Tomcat installation by pointing your browser at your domain na
 
     {{< note respectIndent=false >}}
 If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, because doing so may expose your server to unauthorized login attempts.
-{{</ note >}}
+{{< /note >}}
 
 1.  For Tomcat versions 8+ the managers have been pre-configured to only allow access from the same IP of the server where it's installed. If you're trying to access it from a browser remotely, you'll need to comment out this configuration in the file `/usr/local/tomcat/webapps/manager/META-INF/context.xml`.
 

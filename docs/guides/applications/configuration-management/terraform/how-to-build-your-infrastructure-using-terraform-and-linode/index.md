@@ -35,13 +35,13 @@ The configurations and commands used in this guide results in multiple Linodes b
 
     {{< note respectIndent=false >}}
 When following this guide, your Linux user may need sudo privileges in order to install supplementary software packages.
-{{</ note >}}
+{{< /note >}}
 
 -   You need a personal access token for Linode's [v4 API](/docs/api/) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
 
     {{< note respectIndent=false >}}
 Any Personal Access Tokens generated from the previous Linode Manager are API v3 tokens and do not work with Terraform's Linode provider.
-{{</ note >}}
+{{< /note >}}
 
 ## Install Terraform
 
@@ -49,7 +49,7 @@ The installation steps in this section are for Linux operating systems. To insta
 
 {{< note respectIndent=false >}}
 The Terraform Provider for Linode requires [Terraform version 1.1+](https://www.hashicorp.com/blog/terraform-1-1-improves-refactoring-and-the-cloud-cli-experience). The examples in this guide were written to be compatible with [Terraform version 1.1](https://www.terraform.io/docs/configuration-0-11/terraform.html) and may be updated in the near future.
-{{</ note >}}
+{{< /note >}}
 
 1.  Make a Terraform project directory in your home directory and then navigate to it:
 

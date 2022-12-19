@@ -25,7 +25,7 @@ The term *high availability* describes web application architectures that elimin
 
 {{< note respectIndent=false >}}
 For many production applications, you may want to consider a load balancing tool that goes beyond basic failover. Linode's [NodeBalancers](/docs/products/networking/nodebalancers/) combines load balancing with built-in failover. If you are using self-hosted load balancing software, such as NGINX or [HAProxy](/docs/guides/how-to-use-haproxy-for-load-balancing/), on your own Compute Instances, you must use the IP Sharing feature to provide failover for IP addresses.
-{{</ note >}}
+{{< /note >}}
 
 ## IP Sharing Availability
 
@@ -47,7 +47,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 
 {{< note respectIndent=false >}}
 IP failover for VLAN IP addresses is supported within every data center where VLANs are available. This feature does not depend on Linode's IP Sharing feature and depends on ARP-based failover software, such as keepalived.
-{{</ note >}}
+{{< /note >}}
 
 ## IP Address Failover Methods
 
@@ -57,7 +57,7 @@ IP failover for VLAN IP addresses is supported within every data center where VL
 
     {{< note respectIndent=false >}}
 While keepalived is not used directly for failover, you can still make use of `vrrp_scripts` for health checks. You might do so if you wish to retain some of your existing keepalived functionality when migrating to a BGP-based failover method.
-{{</ note >}}
+{{< /note >}}
 
 ## Configure Failover
 
@@ -65,7 +65,7 @@ The instructions within this guide enable you to configure failover using IP Sha
 
 {{< note respectIndent=false >}}
 If your data center supports the legacy method (ARP), use the [Configuring IP Failover using keepalived](/docs/guides/ip-failover-legacy-keepalived/) guide instead. That guide should also be used when setting up failover for VLAN IP addresses.
-{{</ note >}}
+{{< /note >}}
 
 To configure failover, complete each section in the order shown:
 
@@ -83,7 +83,7 @@ To configure failover, complete each section in the order shown:
 
     {{< note respectIndent=false >}}
 To support this new BGP method of IP Sharing and failover, your Compute Instance must be assigned an IPv6 address. This is not an issue for most instances as an IPv6 address is assigned during deployment. If your Compute Instance was created *before* IPv6 addresses were automatically assigned, and you would like to enable IP Sharing within a data center that uses BGP-based failover, contact [Linode Support](https://www.linode.com/support/).
-{{</ note >}}
+{{< /note >}}
 
 1. Disable Network Helper on both instances. For instructions, see the [Network Helper](/docs/guides/network-helper/#individual-compute-instance-setting) guide.
 
@@ -104,7 +104,7 @@ Adjust the network configuration file on *each* Compute Instance, adding the sha
 
     {{< note respectIndent=false >}}
 Review the configuration file and verify that the shared IP address does not already appear. If it does, delete associated lines before continuing.
-{{</ note >}}
+{{< /note >}}
 
     - **Ubuntu 18.04 LTS and newer**: Using [netplan](https://netplan.io/). The entire configuration file is shown below, though you only need to copy the `lo:` directive.
 
@@ -182,7 +182,7 @@ Next, we need to configure the failover software on *each* Compute Instance. For
 ```command
 sudo chcon -t bin_t /usr/local/bin/lelastic
 ```
-{{</ note >}}
+{{< /note >}}
 
 1. Next, prepare the command to configure BGP routing through lelastic. Replace *[id]* with the ID corresponding to your data center in the [table above](/docs/guides/ip-failover/#ip-failover-support) and *[role]* with either `primary` or `secondary`. You do not need to run this command, as it is configured as a service in the following steps.
 
@@ -196,7 +196,7 @@ sudo chcon -t bin_t /usr/local/bin/lelastic
 
         {{< note respectIndent=false >}}
 **CentOS/RHEL:** Since the Shared IP address is configured on the *eth0* interface for NetworkManager distributions (like CentOS/RHEL), you must add the `-allifs` option to the lelastic command.
-{{</ note >}}
+{{< /note >}}
 
     See [Test Failover](#test-failover) to learn more about the expected behavior for each role.
 
@@ -271,7 +271,7 @@ You can test the failover functionality of the shared IP using the steps below.
 
     {{< note respectIndent=false >}}
 If you are sharing an IPv6 address, the machine from which you are running the `ping` command must have IPv6 connectivity. Not all ISPs have this functionality.
-{{</ note >}}
+{{< /note >}}
 
 1. Power off the *primary* Compute Instance or stop the lelastic service on that instance. Once the service has stopped or the instance has fully powered down, the shared IP address should be routed to the secondary instance.
 

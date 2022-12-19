@@ -56,7 +56,7 @@ Your access key, secret key, and password are required every time Restic communi
 
 {{< note respectIndent=false >}}
 The examples in this section use the Nano text editor. Refer to the [Nano Text Editor Commands](/docs/guides/use-nano-text-editor-commands/) guide if you're not familiar with Nano.
-{{</ note >}}
+{{< /note >}}
 
 1. To keep your credentials secure, using a text editor, create the example script in the root user's home directory, and run all your Restic scripts as the root user. The example uses the Nano text editor.
 

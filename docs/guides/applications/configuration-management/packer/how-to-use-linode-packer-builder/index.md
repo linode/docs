@@ -81,7 +81,7 @@ Now that Packer is installed, you can make a Packer [template](https://www.packe
 
 {{< note respectIndent=false >}}
 The steps in this section will incur charges related to deploying a [1GB Linode](https://www.linode.com/pricing) (Nanode). The Linode will only be deployed for the duration of the time needed to create and snapshot your image and will then be deleted. See our [Billing and Payments](/docs/products/platform/billing/) guide for details about how hourly billing works.
-{{</ note >}}
+{{< /note >}}
 
 ### Creating the Template File
 
@@ -165,7 +165,7 @@ After the template file has been saved with your desired parameters, you're now 
 
       {{< note respectIndent=false >}}
   To learn how to securely store and use your API v4 token, see the [Vault](https://www.packer.io/docs/templates/hcl_templates/functions/contextual/vault) section of Packer's documentation.
-      {{</ note >}}
+      {{< /note >}}
 
 1. Build the image by running the `packer build` command below. Just like in the last step, if you did not set TOKEN as a variable in your shell environment, replace *$TOKEN* with your own Linode API token. This process may take a few minutes to complete.
 

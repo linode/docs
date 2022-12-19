@@ -22,11 +22,11 @@ MagicSpam installs directly onto an email server without any need to change A/MX
 
 {{< note >}}
 [MagicSpam](https://magicspam.com/store.php), [cPanel](https://cpanel.net/pricing/), and [Plesk](https://www.plesk.com/pricing/) all require a valid license. You can view and purchase licenses individually from each of their respective stores. Licenses are not available directly through Linode.
-{{</ note >}}
+{{< /note >}}
 
 {{< note >}}
 In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after November 5th, 2019. For more information, please see [Sending Email on Linode](/docs/guides/running-a-mail-server/#sending-email-on-linode).
-{{</ note >}}
+{{< /note >}}
 
 If you want to deploy MagicSpam onto an existing Linode Compute Instance, do not follow this guide. Instead, install MagicSpam by following one of the below guides:
 

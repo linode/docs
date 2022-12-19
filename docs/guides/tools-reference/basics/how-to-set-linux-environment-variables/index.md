@@ -121,7 +121,7 @@ To view a list of all (global) environment variables available to the current us
 You can pipe the output of the `printenv` command to the `less` utility to page through all your environment variables.
 
     printenv | less
-{{</ note >}}
+{{< /note >}}
 
 To get a more comprehensive list of (global and local) environment variables, use the `set` command. This list includes environment variables, shell variables, and functions.
 
@@ -149,7 +149,7 @@ To set the value of an existing environment variable type the variable name foll
 
 {{< note respectIndent=false >}}
 If the environment variable does not already exist, it is created as a shell variable. You can promote the shell variable to an environment variable by exporting it. See the [How to Export Environment Variables](#how-to-export-environment-variables) section for details.
-{{</ note >}}
+{{< /note >}}
 
 Use the `set` command to view the variable and its value.
 
@@ -184,7 +184,7 @@ You can also append new items to lists. The example appends the `example-directo
 
 {{< note respectIndent=false >}}
 `PATH` is a default environment variable that defines directories where your shell can look for executables. This variable allows you to run an executable without having to specify its path.
-{{</ note >}}
+{{< /note >}}
 
 ### How to Unset an Environment Variable
 
@@ -238,7 +238,7 @@ export APP_PROD_API="https://api.example.com/v1/customers"
 Ensure you reload your system's `profile` file to give your terminal session access to your new environment variables:
 
     source /etc/profile
-{{</ note >}}
+{{< /note >}}
 
 Create a new file named `main.py` with the example content below. The example application reads the `APP_ENV` variable and fetches the configurations from the appropriate variables. This method makes the application *environment agnostic* — the application responds appropriately depending on its current environment.
 
@@ -263,7 +263,7 @@ Your APIs URL: https://api.test.example.com/v1/customers
 Depending on your system's configuration and installed version of Python, you may need to adjust the above command to explicitly use Python 3.
 
     python3 main.py
-{{</ note >}}
+{{< /note >}}
 
 When you need to change to the production environment, update the `APP_ENV` variable to `PROD`.
 

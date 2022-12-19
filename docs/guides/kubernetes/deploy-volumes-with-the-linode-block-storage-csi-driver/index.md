@@ -42,13 +42,13 @@ This guide assumes you have a working Kubernetes cluster running on Linode. You 
 The Block Storage CSI Driver supports Kubernetes version 1.13 or higher. To check the version of Kubernetes you are running, you can issue the following command:
 
     kubectl version
-    {{</ note >}}
+    {{< /note >}}
 
     After deploying your cluster with kubeadm, to continue with this guide, you'll need to install the CSI driver using the instructions in the [Installing the Linode Block Storage CSI Driver](/docs/guides/how-to-install-the-linode-block-storage-csi-driver/) guide.
 
     {{< note respectIndent=false >}}
 Using either the Linode Kubernetes Engine or Terraform methods above will install both the Linode Block Storage CSI Driver and the `linode` secret token as part of their deployment methods automatically.
-{{</ note >}}
+{{< /note >}}
 
 ## Create a Persistent Volume Claim
 
@@ -76,7 +76,7 @@ spec:
 
 {{< note respectIndent=false >}}
 In order to retain your Block Storage Volume and its data, even after the associated PVC is deleted, you must use the `linode-block-storage-retain` StorageClass. If, instead, you prefer to have your Block Storage Volume and its data deleted along with its PVC, use the `linode-block-storage` StorageClass. See the [Delete a Persistent Volume Claim](#delete-a-persistent-volume-claim) for steps on deleting a PVC.
-{{</ note >}}
+{{< /note >}}
 
 This PVC represents a Block Storage Volume. Because Block Storage Volumes have a minimum size of 10 gigabytes, the storage has been set to `10Gi`. If you choose a size smaller than 10 gigabytes, the PVC will default to 10 gigabytes.
 
@@ -179,7 +179,7 @@ spec:
 The service manifest file will use the `NodePort` method to get external traffic to the ownCloud service. NodePort opens a specific port on all cluster nodes and any traffic that is sent to this port is forwarded to the service. Kubernetes will choose the port to open on the nodes if you do not provide one in your service manifest file. It is recommended to let Kubernetes handle the assignment. Kubernetes will choose a port in the default range, `30000-32768`.
 
 Alternatively, you could use the `LoadBalancer` service type, instead of NodePort, which will create Linode NodeBalancers that will direct traffic to the ownCloud Pods. Linode's Cloud Controller Manager (CCM) is responsible for provisioning the Linode NodeBalancers. For more details, see the [Kubernetes Cloud Controller Manager for Linode](https://github.com/linode/linode-cloud-controller-manager/blob/master/README.md) repository.
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Create the service in Kubernetes by using the `create` command and passing in the `owncloud-service.yaml` file you created in the previous step:
 
@@ -260,4 +260,4 @@ To delete the Block Storage PVC created in this guide:
 If you used the `linode-block-storage-retain` StorageClass when creating your PVC, this command will delete the PVC, however, your Block Storage Volume and its data will persist in a detached state. To permanently remove the Block Storage Volume from your Linode Account, see [View, Create, and Delete Block Storage Volumes](/docs/products/storage/block-storage/guides/manage-volumes/).
 
 If, instead, you used the `linode-block-storage` StorageClass when creating your PVC, this command will delete the PVC along with your Block Storage Volume and its data.
-    {{</ note >}}
+    {{< /note >}}

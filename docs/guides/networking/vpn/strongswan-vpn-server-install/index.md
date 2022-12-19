@@ -157,7 +157,7 @@ another_username : EAP "<user’s password>"
 
     {{< note respectIndent=false >}}
 Make sure that you use unique usernames each time you add a new user to the access secrets file.
-    {{</ note >}}
+    {{< /note >}}
 
 Your StrongSwan server is now ready to receive client connections. To check the status of the IPsec tunnel created by StrongSwan, use the following command:
 

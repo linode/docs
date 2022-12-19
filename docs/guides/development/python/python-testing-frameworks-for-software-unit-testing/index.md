@@ -129,7 +129,7 @@ You should see a standard output returned as shown below. A simple report is dis
 
 {{< note respectIndent=false >}}
 To force verbose mode when running your tests, update the `test_example.py` file by adding `verbose=True` to  `doctest.testmod()`. The updated line should look as follows: `doctest.testmod(verbose=True)`.
-{{</ note >}}
+{{< /note >}}
 
 {{< output >}}
 Trying:

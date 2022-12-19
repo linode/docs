@@ -34,13 +34,13 @@ In this guide, you will create a Linode Firewalls module which declares commonly
 
     {{< note respectIndent=false >}}
     When you create a personal access token ensure that you set **Read/Write** access permissions for Linode instances and Cloud Firewalls.
-    {{</ note >}}
+    {{< /note >}}
 
 1. [Install Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) on your local computer.
 
     {{< note respectIndent=false >}}
 This guide was written using [Terraform version 0.13.0](https://github.com/hashicorp/terraform/releases).
-    {{</ note >}}
+    {{< /note >}}
 
 1. Install Git on your computer and complete the steps in the **Configure Git** section of the [Getting Started with Git guide](/docs/guides/how-to-configure-git/#configure-git).
 
@@ -50,11 +50,11 @@ The following steps will create the Cloud Firewalls module, which includes sever
 
 {{< note >}}
 You can apply up to three Cloud Firewalls per Linode instance.
-{{</ note >}}
+{{< /note >}}
 
 {{< note >}}
 You can view the files created throughout this tutorial in the [author's GitHub repository](https://github.com/leslitagordita/main-firewalls). You can clone the repository and use it as a foundation to create your own custom Cloud Firewalls module.
-{{</ note >}}
+{{< /note >}}
 
 ### Create Your Module's Directory Structure
 
@@ -95,9 +95,9 @@ main_firewalls/
     mkdir -p main_firewalls/modules/{inbound_ssh,mysql,web_server}
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
     If you followed our [install Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) steps, then your Terraform executable will be located in the `terraform` directory. If this is not the case, ensure that you can execute Terraform commands from the `main_firewalls` directory.
-    {{</ note >}}
+    {{< /note >}}
 
 ### Create the Inbound SSH Child Module
 
@@ -469,7 +469,7 @@ Now that all the Cloud Firewalls child modules have been created, you can create
 
     {{< note respectIndent=false >}}
 This file should never be tracked in version control software and should be listed in your `.gitignore` file if using GitHub.
-    {{</ note >}}
+    {{< /note >}}
 
 You are now ready to apply your `main_firewalls` module’s Terraform configuration. These steps will be completed in the next section.
 

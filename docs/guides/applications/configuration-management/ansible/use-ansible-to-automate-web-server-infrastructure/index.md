@@ -45,7 +45,7 @@ If you remove these resources afterward, you are only [billed for the time](/doc
 
 {{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-{{</ note >}}
+{{< /note >}}
 
 ## Create Five Linodes Using the Linode CLI
 
@@ -53,7 +53,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
 {{< note respectIndent=false >}}
 This section requires that you have the [Linode CLI](/docs/products/tools/cli/guides/install/) installed and configured on your computer.
-{{</ note >}}
+{{< /note >}}
 
 On your local machine, set up an environment variable to temporarily store a password. This environment variable will be sued in later steps in a `for` loop to create five Linodes. Substitute `yourrootpassword` for a secure password as this is used as the root password for all your newly created Linodes.
 
@@ -136,7 +136,7 @@ As a shortcut, you can also `wget` the configuration files from [the author's Gi
     wget https://raw.githubusercontent.com/bennettnw2/Ansible_webserver_infra_files/main/ansibleCN_setup.sh
     wget https://raw.githubusercontent.com/bennettnw2/Ansible_webserver_infra_files/main/ansibleMN_setup.sh
     wget https://raw.githubusercontent.com/bennettnw2/Ansible_webserver_infra_files/main/myplaybook.yml
-{{</ note >}}
+{{< /note >}}
 
 {{< file "ansibleCN_setup.sh" bash >}}
 #! /bin/bash
@@ -556,7 +556,7 @@ From the local computer, open four terminal sessions, and within each session, s
 
 {{< note respectIndent=false >}}
 The script asks you to enter a username and password for the new user being created.
-{{</ note >}}
+{{< /note >}}
 
 Once the setup script has been completed for each managed node, reboot all your Ansible infrastructure Linodes with the command below.
 
@@ -570,7 +570,7 @@ Log back into the control node and run the command below. This sends the control
 
 {{< note respectIndent=false >}}
 If the limited user's password is different from the root user's password, change the `~/.ssh/file` contents to match the limited user's password.
-{{</ note >}}
+{{< /note >}}
 
 Confirm all hosts can be pinged using Ansible. A successful run of this command indicates the [ssh communication is working.](https://docs.ansible.com/ansible/2.7/user_guide/intro_getting_started.html#remote-connection-information)
 

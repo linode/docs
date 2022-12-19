@@ -129,7 +129,7 @@ DNS.4 = DOMAIN_4
 
     {{< note respectIndent=false >}}
 If this Logstash service is available on multiple host names, or if you intend to use this certificate on multiple hosts, those should be added to the `[alt_names]` section. Otherwise, that section can be removed along with the `subjectAltName` line.
-{{</ note >}}
+{{< /note >}}
 
 1.  Create a signing key and CSR.
 

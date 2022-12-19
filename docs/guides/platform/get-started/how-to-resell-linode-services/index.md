@@ -63,7 +63,7 @@ If a reseller wants to be able to give reseller customers access to parts of the
 
 {{< note respectIndent=false >}}
 Cloud Manager users are not related to the Linux users on your Linodes. If you need to revoke a customer's account access, you should remove access to both their Cloud Manager users and their Linux users. Read the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on this subject.
-{{</ note >}}
+{{< /note >}}
 
 ### Limited Linux User Accounts
 

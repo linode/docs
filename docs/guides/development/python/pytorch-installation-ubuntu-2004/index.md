@@ -45,7 +45,7 @@ Optimizing a task may also require using external data sources. If using externa
 
 {{< note respectIndent=false >}}
 The NVIDIA CUDA Toolkit is not needed on CPU-only (non-GPU) instances.
-{{</ note >}}
+{{< /note >}}
 
 ### Use Conda to Install PyTorch
 
@@ -78,7 +78,7 @@ The NVIDIA CUDA Toolkit is not needed on CPU-only (non-GPU) instances.
 
     {{< note respectIndent=false >}}
 Using Anaconda to install PyTorch, installs the NVIDIA CUDA Toolkit. For instances that install CPU-only versions of PyTorch, skip to the [Use Pip to Install PyTorch](#use-pip-to-install-pytorch) section.
-    {{</ note >}}
+    {{< /note >}}
 
     During installation, you are prompted to install new packages. Type `y` to install them. Your output displays a similar output:
 
@@ -156,7 +156,7 @@ Use the steps below to ensure that you have a working PyTorch installation.
 
     {{< note respectIndent=false >}}
 If the torch library cannot be found, python returns an error message indicating `not-found`.
-    {{</ note >}}
+    {{< /note >}}
 
 1. Determine if PyTorch is using a GPU:
 
@@ -191,7 +191,7 @@ The steps in this section shows you how to use Anaconda to uninstall PyTorch.
 
     {{< note respectIndent=false >}}
 You can also use the `uninstall` command to remove PyTorch libraries. Any datasets must also be removed independently from removing PyTorch.
-    {{</ note >}}
+    {{< /note >}}
 
     {{< note type="alert" respectIndent=false >}}
 When using the `uninstall` command, the Linode may also be deleted, but it cannot be recovered once deleted.

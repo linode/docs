@@ -21,7 +21,7 @@ Kotlin is a new cross-platform, statically typed, general-purpose programming la
 
 {{< note respectIndent=false >}}
 To execute the Kotlin code snippets demonstrated in this guide, you can use the [Kotlin online playground](https://try.kotlinlang.org/). Or, if you are using an IDE like Android Studio or IntelliJ, you can install the [Kotlin plugin](https://kotlinlang.org/docs/install-eap-plugin.html).
-{{</ note >}}
+{{< /note >}}
 
 ## Declaring Kotlin Variables
 
@@ -112,7 +112,7 @@ Kotlin supports the usual logical operators: `&&`, `||`, `!`, comparison operato
 
 {{< note respectIndent=false >}}
 Something not mentioned in the standard reference (at least with the operators) is the use of the bitwise and bitshift operators. The bitwise operators perform operations on variables at the bit level and include `or`, `and`, `xor`, and the `inv()` function.
-{{</ note >}}
+{{< /note >}}
 
 The `inv()` function looks a bit odd until you think about what task it performs. For example, you can type `println(1.inv())` and see a legitimate output of `-2`. The input value of `0001` is inverted to appear as `1110`, or `-2`.
 
@@ -239,7 +239,7 @@ In this case, a pair of curly brackets enclose an expression that performs the r
 
 {{< note respectIndent=false >}}
 Refer to [Kotlin's documentation](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/) to view all the string functions supported by Kotlin.
-{{</ note >}}
+{{< /note >}}
 
 ### Using Raw String Templates
 

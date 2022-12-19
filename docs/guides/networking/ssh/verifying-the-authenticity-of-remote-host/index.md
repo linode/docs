@@ -54,7 +54,7 @@ If your local computer connected to the remote host using an algorithm other tha
 - **ECDSA:** `/etc/ssh/ssh_host_ecdsa_key.pub`
 - **RSA:** `/etc/ssh/ssh_host_rsa_key.pub`
 - **DSA:** `/etc/ssh/ssh_host_dsa_key.pub`
-{{</ note >}}
+{{< /note >}}
 
     The output looks similar to:
 

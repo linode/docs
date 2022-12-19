@@ -48,7 +48,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 {{< note respectIndent=false >}}
 CentOS 8 does not include any version of Python by default. To install Python on CentOS 8, read our guide on [installing Python 3 on CentOS 8](/docs/guides/how-to-install-python-on-centos-8/)
-{{</ note >}}
+{{< /note >}}
 
 1.  To install Python's virtual environment:
 
@@ -66,7 +66,7 @@ CentOS 8 does not include any version of Python by default. To install Python on
 If your CentOS 8 system has another version of Python installed and you'd like to use it to create your virtual environment, use the e`--python` option to designate it. For example:
 
     virtualenv --python=python2.7 env
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Validate that your environment is installed with the version of Python that you expect:
 

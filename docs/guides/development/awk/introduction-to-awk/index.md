@@ -488,7 +488,7 @@ one three
 You can also execute the contents of `field1and3.awk` on the command line and pass `words.txt` as input:
 
     awk '{print $1, $3}' words.txt
-    {{</ note >}}
+    {{< /note >}}
 
 ### Counting
 #### Counting Lines

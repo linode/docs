@@ -29,7 +29,7 @@ Linode's DNS service employs [Cloudflare](https://cloudflare.com) to provide den
 
 {{< note respectIndent=false >}}
 To use the Linode DNS Manager to serve your domains, you must have an active Linode on your account. If you remove all active Linodes, your domains will no longer be served.
-{{</ note >}}
+{{< /note >}}
 
 ## Wait for Propagation
 

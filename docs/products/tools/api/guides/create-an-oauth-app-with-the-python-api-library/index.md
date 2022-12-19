@@ -201,7 +201,7 @@ Below is a list of available scopes:
 - OAuthScopes.Volumes
 
 Each scope is broken into five permissions: `view`, `create`, `modify`, `delete`, and `all`. The `all` permission encompasses the other four permissions.
-{{</ note >}}
+{{< /note >}}
 
 ### Manage the OAuth 2 Callback URL
 

@@ -35,7 +35,7 @@ The majority of the steps in this guide are performed on your computer's local d
 
 {{< note respectIndent=false >}}
 If you do not have Node.js and the node version manager (nvm) installed on your computer, follow our [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide. The steps in this guide require a minimum Node.js version of 13.0.0.
-{{</ note >}}
+{{< /note >}}
 
 1. In your home directory, create a new directory named `typescript-nodejs` and move into the new directory.
 
@@ -160,7 +160,7 @@ At this point, you should have all requirements and dependencies installed in yo
 
     {{< note respectIndent=false >}}
 When the `tsconfig.json` file is created, several options are commented out. You can leave the settings as they are, but for more complex project, you can uncomment the necessary settings.
-    {{</ note >}}
+    {{< /note >}}
 
     The generated `tsconfig.json` file contains various default settings. You can learn more about each setting in [TypeScript's TSConfig Reference documentation](https://www.staging-typescript.org/tsconfig). Unless you have reasons to change the `target` and `module` settings, you should leave those as they are defined. Likewise, keep `strict` set to `true` to ensure that your application uses strict type checking. Also, keep `esModuleInterop` set to `true` to ensure that you obtain full interoperability.
 

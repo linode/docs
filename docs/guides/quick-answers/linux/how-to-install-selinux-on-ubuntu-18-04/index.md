@@ -38,7 +38,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     {{< note respectIndent=false >}}
 The Linode kernel does not support SELinux by default. If the system is running a Linode kernel, you need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once the kernel is set to the upstream kernel, continue with the steps in this guide.
-    {{</ note >}}
+    {{< /note >}}
 1. Install [MySQL/MariaDB on Ubuntu](/docs/guides/install-mysql-on-ubuntu-14-04)
 
 ### Remove AppArmor
@@ -85,7 +85,7 @@ During the installation, the system prompts you to reboot the system for the cha
 
     {{< note respectIndent=false >}}
 After rebooting the system, SELinux should be enabled, but in *permissive mode*. Permissive mode means any actions that would have been disallowed are allowed, but logged in the audit log file located in the `/var/log/audit/audit.log`.
-   {{</ note >}}
+   {{< /note >}}
 
 1. Log back into the Linode via SSH. Replace `192.0.2.0` with the IP address of the Linode.
 
@@ -139,7 +139,7 @@ ssh_port_t                     tcp      22
 If you do not see the this entry, open the port with the following command:
 
     sudo semanage port -a -t ssh_port_t -p tcp 22
-    {{</ note >}}
+    {{< /note >}}
 
 ## Enabling Policies SELinux Policies On Ubuntu 18.04
 

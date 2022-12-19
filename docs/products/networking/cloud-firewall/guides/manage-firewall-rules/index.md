@@ -65,7 +65,7 @@ Rules are separated into *inbound* and *outbound* sections.
     - `2001:db8:1234::/48`
 
     In the first example above, using a range of `192.0.2.0/24` applies the rule to all IP addresses from 192.0.2.1 through 192.0.2.254.
-    {{</ note >}}
+    {{< /note >}}
 
 
     {{< note type="alert" >}}
@@ -82,7 +82,7 @@ Rules are separated into *inbound* and *outbound* sections.
 
     {{< note >}}
     Any newly added rules do not take effect until you **Save Changes** to the Firewall.
-    {{</ note >}}
+    {{< /note >}}
 
     ![Apply your changes to the Firewall.](save-changes-firewall.png "Apply your changes to the Firewall.")
 
@@ -121,4 +121,4 @@ Follow the steps in this section to edit predefined and custom Firewall Rules.
 
     {{< note >}}
     Any rule deletion(s) does not take effect until you **Apply Changes** to the Firewall.
-    {{</ note >}}
+    {{< /note >}}

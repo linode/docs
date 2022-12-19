@@ -75,7 +75,7 @@ You should add the `$GOPATH/bin` directory to your system `PATH`. This makes it 
 The examples below assume you are using the default location for your `GOPATH` (`/home/username/go`). If the `go` directory does not yet exist in your home folder, create it now.
 
     mkdir ~/go
-{{</ note >}}
+{{< /note >}}
 
 To start writing your first Go program, first create the `bin`, and `src` directories in your Go Workspace.
 

@@ -42,7 +42,7 @@ Node.js is an open-source JavaScript runtime environment that can serve dynamic 
 
     {{< note respectIndent=false >}}
 Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/guides/set-up-and-secure/#update-your-systems-hosts-fileupdate-your-system-s-hosts-file) section of the [Getting Started](/docs/guides/getting-started/) guide.
-    {{</ note >}}
+    {{< /note >}}
 
 
     {{< content "limited-user-note-shortguide" >}}
@@ -109,7 +109,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 
 {{< note respectIndent=false >}}
 Ensure you replace `example.com` with your own site's name or IP address in all commands and examples in this section.
-{{</ note >}}
+{{< /note >}}
 
 1. Create your site's root directory, which will store the `index.html` file you will create in the next step. The directory's location should be the one you designated in your site's NGINX configuration file for the `root` configuration.
 
@@ -162,7 +162,7 @@ Ensure you replace `example.com` with your own site's name or IP address in all 
 
     {{< note respectIndent=false >}}
 As of writing this guide, the latest LTS version of [Node.js](https://nodejs.org/en/download/) is `v12.16.2`. Update this command with the version of Node.js you would like to install.
-    {{</ note >}}
+    {{< /note >}}
 
         nvm install 12.16.2
 
@@ -182,7 +182,7 @@ In the [Install and Configure NGINX](#install-and-configure-nginx) section you c
 
 {{< note respectIndent=false >}}
 Ensure you replace `example.com` with your own site's name or IP address in all commands and examples in this section.
-{{</ note >}}
+{{< /note >}}
 
 1. Create the `test.js` file in your site's root directory.
 

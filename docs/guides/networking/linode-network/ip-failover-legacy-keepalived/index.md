@@ -76,7 +76,7 @@ This section covers installing the keepalived software from your distribution's 
 
     {{< note respectIndent=false >}}
 If configuring IP failover on a VLAN IP, you likely need to change the *interface* value from `eth0` to `eth1`. See the **interface** item under [Configuration Options](#configuration-options) for help finding the Network Interface your VLAN may be using.
-{{</ note >}}
+{{< /note >}}
 
     {{< file "/etc/keepalived/keepalived.conf" >}}
 vrrp_instance Instance1 {

@@ -58,7 +58,7 @@ Each Linode can have multiple disks. To create a new disk, follow the instructio
 
 {{< note respectIndent=false >}}
 If you wish to deploy an Image to a new disk, see the [Deploy an Image to a Disk on an Existing Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/) guide for complete instructions on creating the main disk, an optional swap disk, and a configuration profile.
-{{</ note >}}
+{{< /note >}}
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Linode from the list.
 

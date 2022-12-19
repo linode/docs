@@ -29,7 +29,7 @@ On some systems, e2fsck runs automatically after an unclean shutdown or after a 
 
 {{< note respectIndent=false >}}
 When booting into rescue mode on the Linode Platform, the `e2fsck` tool will be installed as the default disk repair utility. For instructions specific to performing a filesystem check on the Linode platform, see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
-{{</ note >}}
+{{< /note >}}
 
 ## When to Use e2fsck
 

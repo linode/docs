@@ -55,7 +55,7 @@ This tutorial walks you through the steps to install ownCloud on Debian 10, one 
 
 {{< note respectIndent=false >}}
 If you have a registered domain name that you want to point to your ownCloud instance, then use the [Linode DNS Manager to point the domain](/docs/products/networking/dns-manager/) to the Linode server on which you plan to install ownCloud. If you do not have a registered domain name, then replace example.com with the IP address of the Linode server when following the steps in the [Create an Apache Configuration File](#create-an-apache-configuration-file) section.
-{{</ note >}}
+{{< /note >}}
 
 ## Install ownCloud
 ### Install Apache and PHP
@@ -145,7 +145,7 @@ If necessary, install `unzip` with the command:
 
     sudo apt-get install zip -y
 
-{{</ note >}}
+{{< /note >}}
 
 1. When you unzip the file, a new directory named `owncloud` is created. Move the new directory to the Apache document `root`. This example uses the default directory for Apache site files:
 

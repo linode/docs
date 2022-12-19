@@ -82,7 +82,7 @@ dbname
 
     {{< note respectIndent=false >}}
 Airflow saves the passwords for connections and any variable values in plain text within the metadata database. See the [A Recommended Workflow for Sensitive Variables](#a-recommended-workflow-for-sensitive-variables) section for ways to keep your variables secure.
-    {{</ note >}}
+    {{< /note >}}
 
 ### Create Your Connection Script
 

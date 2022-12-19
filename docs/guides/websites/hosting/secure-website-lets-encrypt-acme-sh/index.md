@@ -98,7 +98,7 @@ acme.sh can use the [Linode v4 API](/docs/api) to create and remove temporary DN
 
 {{< note respectIndent=false >}}
 Ensure the token you create has **Read/Write** access to **Domains**.
-{{</ note >}}
+{{< /note >}}
 
 ## Issue a certificate
 

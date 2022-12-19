@@ -25,7 +25,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
 {{< note respectIndent=false >}}
 If you are not using Debian 10, you can view different Linux distribution versions of this guide in the [Drupal](/docs/websites/cms/drupal/) section of our documentation site.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 

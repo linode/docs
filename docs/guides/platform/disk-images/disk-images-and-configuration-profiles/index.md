@@ -23,7 +23,7 @@ external_resources:
 
 {{< note respectIndent=false >}}
 This guide has been split into two new guides:[Linode Disks and Storage](/docs/guides/disks-and-storage/) and [Linode Configuration Profiles](/docs/guides/linode-configuration-profiles/).
-{{</ note >}}
+{{< /note >}}
 
 The Linode Cloud Manager allows you to create, edit, and use disks and configuration profiles with your Linodes. You can install different Linux distributions on the disks, set device assignments, and configure boot settings. This guide will show you how to put the pieces together to create a custom setup.
 
@@ -131,7 +131,7 @@ If a disk is created using custom partitions, resizing is not possible. If using
 
 {{< note respectIndent=false >}}
 Duplicating a disk is not yet available in the Cloud Manager, but this feature is available in the Classic Manager. See [the Classic Manager version of this guide](/docs/guides/disk-images-and-configuration-profiles/#duplicating-a-disk) for instructions on how to duplicate a disk.
-{{</ note >}}
+{{< /note >}}
 
 You can create an exact copy of a disk by duplicating it. This is an effective way to back up your server or clone an existing Linode to a new Linode. (To clone a disk, see [Cloning disks and Configuration Profiles](#cloning-disks-and-configuration-profiles).) Here's how to duplicate a disk:
 

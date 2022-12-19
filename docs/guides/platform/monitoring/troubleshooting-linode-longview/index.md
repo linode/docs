@@ -25,7 +25,7 @@ This guide discusses basic troubleshooting steps to help you diagnose and resolv
 
     {{< note respectIndent=false >}}
   Longview requires Perl 5.8 or later.
-    {{</ note >}}
+    {{< /note >}}
 
 2.  Verify that the Longview client is running. Use the command that is appropriate for your distribution's initialization system:
 
@@ -150,7 +150,7 @@ This is caused by both Linodes posting data using the same Longview key. To reso
 
     {{< note respectIndent=false >}}
   The GUID provided in the Longview Client's installation URL is not the same as the Longview API key.
-    {{</ note >}}
+    {{< /note >}}
 
 1. [Install the Longview Agent](/docs/guides/what-is-longview/#install-the-longview-agent) on the cloned Linode.
 

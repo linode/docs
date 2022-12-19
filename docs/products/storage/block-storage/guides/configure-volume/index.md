@@ -54,4 +54,4 @@ Once a Block Storage Volume has been attached to a Compute Instance, you need to
         Example:
 
             FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults,noatime,nofail 0 2
-        {{</ note >}}
+        {{< /note >}}

@@ -51,7 +51,7 @@ You can use the Cloud Manager to view the type of kernel you are using. If you a
 
 {{< note respectIndent=false >}}
 These instructions may not accurately reflect the actual kernel version installed. This is especially true if the Linode hasn't been rebooted in a while or wasn't rebooted after a change to the Linode's Configuration. To determine the actual kernel version installed on your system, see [Determining Which Kernel Is Installed](#determining-which-kernel-is-installed).
-{{</ note >}}
+{{< /note >}}
 
 1.  Navigate to your Linode in the [Cloud Manager](https://cloud.linode.com) and click the **Configuration** tab.
 

@@ -90,7 +90,7 @@ If you installed the `tomcat9-admin` web application above, you can configure it
 
 {{< note respectIndent=false >}}
 If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, because doing so may expose your server to unauthorized login attempts.
-{{</ note >}}
+{{< /note >}}
 
 Restart the Tomcat server, which will allow these changes to take effect:
 

@@ -57,7 +57,7 @@ If you do not currently have the psql command-line client installed on your syst
 
 {{< note >}}
 If you require a specific version of the PostgreSQL client, it's recommended to use the official PostgreSQL repositories instead of your distribution's. Visit [PostgreSQL Downloads](https://www.postgresql.org/download/), select your operating system (and distribution), and follow the corresponding installation instructions.
-{{</ note >}}
+{{< /note >}}
 
 -   **CentOS Stream 9 (and 8), CentOS/RHEL 8 (including AlmaLinux 8 and RockyLinux 8):**
 

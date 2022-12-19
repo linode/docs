@@ -94,7 +94,7 @@ A certificate can be obtained for your domain by using [certbot](https://certbot
 
 {{< note >}}
 If you wish to use TLS/SSL pass-through and terminate the HTTPS connection on the backend nodes, select the **TCP** protocol instead of **HTTPS**.
-{{</ note >}}
+{{< /note >}}
 
 ## Health Checks
 

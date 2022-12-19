@@ -51,7 +51,7 @@ This guide assumes you are familiar with the following concepts and skills:
 
     {{< note respectIndent=false >}}
   The [Example Flask Blog Application](https://github.com/abalarin/Flask-on-Linode) is used throughout this guide. The root directory of the application is `flask_app_project`.
-    {{</ note >}}
+    {{< /note >}}
 
 1. If you are not using the example application, host the Flask application code on a remote version control system, such as GitHub. This guide uses GitHub for all examples.
 
@@ -155,7 +155,7 @@ To run the Flask application, you need to install Python, Flask, pip3 and any ot
 
 {{< note respectIndent=false >}}
 This guide was created using Python 3.6.8
-{{</ note >}}
+{{< /note >}}
 
 1. In the Linode's `/home` directory, install Python 3:
 
@@ -319,6 +319,6 @@ The application should now be accessible again through the IP address of the Lin
 
     cat /var/log/flask_app/flask_app.err.log
     cat /var/log/flask_app/flask_app.out.log
-    {{</ note >}}
+    {{< /note >}}
 
     The Flask application is now deployed to the production environment and available to anyone for viewing. You can follow a similar workflow to deploy any Flask application to a Linode.

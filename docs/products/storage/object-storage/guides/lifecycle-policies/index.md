@@ -53,7 +53,7 @@ For example, if an object is created at 5PM on January 1, it will reach 24 hours
 
 {{< note >}}
 There is a chance that a lifecycle policy will not delete all of the files in a bucket the first time the lifecycle policy is triggered. This is especially true for buckets with upwards of a million objects. In cases like these, *most* of the objects are deleted, and any remaining objects are typically deleted during the next iteration of the lifecycle policy's rules.
-{{</ note >}}
+{{< /note >}}
 
 ## Create and Delete Lifecycle Policies
 

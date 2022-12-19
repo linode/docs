@@ -21,7 +21,7 @@ A tuple is a built-in Python data structure that stores multiple comma-separated
 
 {{< note respectIndent=false >}}
 You should have [Python 3.0 installed on your machine](/docs/guides/how-to-install-python-on-ubuntu-20-04/) to follow along with the examples in this guide.
-{{</ note >}}
+{{< /note >}}
 
 ## Python Tuple Syntax
 

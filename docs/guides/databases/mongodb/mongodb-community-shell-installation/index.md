@@ -57,7 +57,7 @@ The steps in this section work on macOS 13.0 and above.
 
 {{< note respectIndent=false >}}
 If, upon invocation, `mongosh` doesn't execute, it may be necessary (depending on the version of macOS) to navigate to *Application Security* in *System Preferences*. Then, verify that `mongosh` and `mongocryptd` have the correct permissions.
-{{</ note >}}
+{{< /note >}}
 
 ### Install the MongoDB Shell on Debian Linux
 

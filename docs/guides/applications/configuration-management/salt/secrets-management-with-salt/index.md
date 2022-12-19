@@ -114,4 +114,4 @@ These databases are set up using a configuration profile in `/srv/salt/master.d`
 
 {{< note respectIndent=false >}}
 Salt also provides a module that allows [pillar data to be stored in Vault](https://docs.saltproject.io/en/latest/ref/pillar/all/salt.pillar.vault.html), as well as an execution module that includes [functions to interact with Vault](https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.vault.html#vault-setup).
-{{</ note >}}
+{{< /note >}}

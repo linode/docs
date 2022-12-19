@@ -94,7 +94,7 @@ For more information on how functions in Go are formatted and used, review our [
 All exported package functions begin with an uppercase letter. This follows the Go rule: if you export something outside the current package, it should begin with an uppercase letter. This rule applies even if the field of the Go structure or the global variable is included in a Go package.
 
 For example, if the print function used in the above example was instead named `println()`, it would not be accessible to this program.
-{{</ note >}}
+{{< /note >}}
 
 * Go statements do not *need* to end with a semicolon, as the Go compiler will automatically insert semicolons where they are expected. You are free to use semicolons if you wish. For example, if you want to put two separate statements on a single line, a semicolon is needed between them.
 

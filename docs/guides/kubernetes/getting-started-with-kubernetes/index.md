@@ -245,7 +245,7 @@ This guide uses *Calico* as the Pod network add on. Calico is a secure and open 
 
 {{< note respectIndent=false >}}
 kubeadm only supports Container Network Interface (CNI) based networks. CNI consists of a specification and libraries for writing plugins to configure network interfaces in Linux containers
-{{</ note >}}
+{{< /note >}}
 
 1.  Initialize kubeadm on the master node. This command runs checks against the node to ensure it contains all required Kubernetes dependencies. If the checks pass, kubeadm installs the control plane components.
 
@@ -255,7 +255,7 @@ kubeadm only supports Container Network Interface (CNI) based networks. CNI cons
 The Pod network IP range should not overlap with the service IP network range. The default service IP address range is `10.96.0.0/12`. You can provide an alternative service ip address range using the `--service-cidr=10.97.0.0/12` option when initializing kubeadm. Replace `10.97.0.0/12` with the desired service IP range:
 
 For a full list of available kubeadm initialization options, see the official [Kubernetes documentation](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/).
-    {{</ note >}}
+    {{< /note >}}
 
         sudo kubeadm init --pod-network-cidr=10.2.0.0/16 --cri-socket=unix:///var/run/cri-dockerd.sock
 

@@ -30,7 +30,7 @@ Unlike [Istio](/docs/guides/how-to-deploy-istio-with-kubernetes/), another servi
 
 {{< note respectIndent=false >}}
 Linkerd 1.x is still available and is being actively developed as a separate project. However, it is built on the "Twitter stack" and is not for Kubernetes. Linkerd 2 is built in Rust and Go and only supports Kubernetes.
-{{</ note >}}
+{{< /note >}}
 
 ## In This Guide
 
@@ -58,7 +58,7 @@ Follow the instructions in [Deploying and Managing a Cluster with Linode Kuberne
 
 {{< note respectIndent=false >}}
 Linkerd 2 requires Kubernetes version 1.13+. Linode Kubernetes Engine clusters currently support Kubernetes versions 1.15, 1.16, and 1.17.
-{{</ note >}}
+{{< /note >}}
 
 ## Install Linkerd
 
@@ -261,7 +261,7 @@ Opening Linkerd dashboard in the default browser
 
     {{< note respectIndent=false >}}
 Linkerd is not designed to be a long term metrics data store. It only stores data for 6 hours using Prometheus. However, if you can export the data using [several methods](https://linkerd.io/2/tasks/exporting-metrics/).
-{{</ note >}}
+{{< /note >}}
 
 ## Install Demo Application (Optional)
 
@@ -454,7 +454,7 @@ Uninstalling Linkerd is done in two steps. First, you remove the data plane prox
 
     {{< note respectIndent=false >}}
 You may receive errors about deleting resources that haven't been created. You can safely ignore these.
-{{</ note >}}
+{{< /note >}}
 
 1.  Roll the deployments to redeploy the manifests without the Linkerd proxies, replace `namespace` with the namespace where your deployments reside:
 

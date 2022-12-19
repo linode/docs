@@ -34,7 +34,7 @@ After completing this guide, you will have a single-node, production-ready insta
 
 {{< note respectIndent=false >}}
  In order to successfully execute the commands in this guide, you will need to run them as the `root` user, or log in using an account with root privileges, prefixing each command with `sudo`.
- {{</ note >}}
+ {{< /note >}}
 
 ## Before You Begin
 
@@ -77,7 +77,7 @@ In this section, you will install package dependencies, Java, Cassandra, and upd
 
       {{< note respectIndent=false >}}
 You may want to follow the link to the Apache repository to confirm that “40x” is the latest available version.
-      {{</ note >}}
+      {{< /note >}}
 
 1. Update your packages index and install Cassandra:
 
@@ -203,7 +203,7 @@ The `cqlshrc` file holds configuration settings that influence user preferences 
 
 {{< note respectIndent=false >}}
 Ensure you complete the steps in this section using your limited user account. This account will need [sudo privileges](/docs/guides/set-up-and-secure/#debian), if it does not already have them.
-{{</ note >}}
+{{< /note >}}
 
 Since your Cassandra username and password can be stored in plaintext, the `cqlshrc` file should only be accessible to your administrative user account, and is designed to be inaccessible to other accounts on your Linux system.
 
@@ -270,7 +270,7 @@ encoding = utf8
 You can also login by providing your username and password:
 
     cqlsh -u superuser -p password
-    {{</ note >}}
+    {{< /note >}}
 
 ## Rename the Cluster
 

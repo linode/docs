@@ -39,7 +39,7 @@ FastAPI requires the following items to be installed on your system:
 
 {{< note respectIndent=false >}}
 If you have not followed the steps in the [CRUD Read Operations: Use FastAPI to Write an API](/docs/guides/crud-read-operations-use-fastapi-to-write-an-api/) guide, ensure that you have created a `main.py` file with [the code](/docs/guides/crud-read-operations-use-fastapi-to-write-an-api/main.py) included in the previous guide's examples.
-{{</ note >}}
+{{< /note >}}
 
 ### Install FastAPI and Hypercorn
 
@@ -128,7 +128,7 @@ async def update_programming_language(programming_language_id: int, updated_prog
 
     {{< note respectIndent=false >}}
 The update endpoint replaces the *entire object*. When a client sends a request to this endpoint, it needs to send the *entire updated object*. Your code can also be written to accept partial updates; that is, to only update the resource at the given id with the fields sent in the request body. With a partial updates implementation, the associated endpoint accepts the `PATCH` HTTP verb instead of `PUT`.
-{{</ note >}}
+{{< /note >}}
 
 ### Write the Delete Programming Languages Endpoint
 

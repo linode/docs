@@ -26,7 +26,7 @@ Jupyter Notebook is an interactive, enhanced shell that can be run within a web 
 
 {{< note respectIndent=false >}}
 Jupyter Notebook is being replaced by [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html), the next-generation solution that includes Notebooks. Before continuing, consider if JupyterLab better suits your needs.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 

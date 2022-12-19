@@ -58,7 +58,7 @@ Each time an event occurs, you can automatically receive an email notifying you 
 
 {{< note respectIndent=false >}}
 Only unrestricted users can receive threshold notification emails.
-{{</ note >}}
+{{< /note >}}
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com/) and click the user dropdown menu on the top right of the page.
 

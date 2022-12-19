@@ -21,7 +21,7 @@ aliases: ['/guides/deploying-chevereto-marketplace-app/','/guides/chevereto-mark
 
 {{< note >}}
 Chevereto requires a valid license to use the software. To purchase a license, visit [Chevereto's website](https://chevereto.com/pricing) and select a plan that fits your needs. Licenses are not available directly through Linode.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 

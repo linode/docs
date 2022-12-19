@@ -20,7 +20,7 @@ This guide shows you how to connect to a MySQL database using [mysql](https://de
 
 {{< note respectIndent=false >}}
 If you wish to connect to a Linode MySQL Managed Database, review the [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/) guide instead.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -50,7 +50,7 @@ The main purpose of the mysql utility is to connect to a MySQL database server a
 
     {{< note respectIndent=false >}}
 If you wish to connect to a Linode MySQL Managed Database, review the [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/) guide instead.
-{{</ note >}}
+{{< /note >}}
 
 ## Common Command Options
 

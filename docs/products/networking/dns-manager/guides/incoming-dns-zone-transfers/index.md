@@ -26,7 +26,7 @@ As part of DNS zone transfers, Linode sends an AXFR query to whichever external 
 
 {{< note >}}
 AXFR functionality is typically available on enterprise-level plans. If your DNS provider does not support AXFR, DNS zone transfers will not work. If you still wish to use Linode's name servers, you can instead manually create the DNS zone and update it as needed. See [Create a Domain](/docs/products/networking/dns-manager/guides/create-domain/).
-{{</ note >}}
+{{< /note >}}
 
 ## Import a DNS Zone
 

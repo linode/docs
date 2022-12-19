@@ -57,7 +57,7 @@ On February 7th, 2023, the IP address `65.19.178.10` will be retired and replace
 
 {{< note >}}
 If you ever decide to stop using the secondary name server, be sure to remove its IP address from this list.
-{{</ note >}}
+{{< /note >}}
 
 ## Test AXFR Transfers
 

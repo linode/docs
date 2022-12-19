@@ -11,7 +11,7 @@ Block Storage Volumes cannot be directly migrated to a different data center. Th
 
 {{< note >}}
 Consult our [Network Transfer Usage and Costs](/docs/guides/network-transfer/) guide for information on charges related to outbound traffic when transferring data over the public internet.
-{{</ note >}}
+{{< /note >}}
 
 1. [Attach and mount](/docs/products/storage/block-storage/guides/manage-volumes/) your existing Volume to a Compute Instance, if you have not already.
 
@@ -29,6 +29,6 @@ Consult our [Network Transfer Usage and Costs](/docs/guides/network-transfer/) g
 
     {{< note >}}
     You will need a Volume or device that has enough storage capacity to receive the entirety of your source data.
-    {{</ note >}}
+    {{< /note >}}
 
 1. Once the transfer is complete and you have confirmed the original data is now located on the new Volume in your desired data center, the original Volume can be deleted to avoid further charges for that Volume.

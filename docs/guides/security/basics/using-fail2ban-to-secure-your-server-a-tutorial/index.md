@@ -174,7 +174,7 @@ backend = systemd
 
 {{< note respectIndent=false >}}
 If the `backend` configuration is set to `auto`, Fail2ban monitors log files by first using `pyinotify`. Next, it tries `gamin`. If neither are available, a polling algorithm decides what to try next.
-{{</ note >}}
+{{< /note >}}
 
 
 No jails are enabled by default in CentOS 7. For example, to enable the SSH daemon jail, uncomment the following lines in `jail.local`:

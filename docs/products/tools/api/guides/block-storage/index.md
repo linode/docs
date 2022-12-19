@@ -174,4 +174,4 @@ curl -H "Content-Type: application/json" \
 
 {{< note >}}
 After resizing the Volume, you also need to resize the file system to accommodate the additional space. For instructions, see the last few steps on the [Resize a Volume](/docs/products/storage/block-storage/guides/resize-volume/) guide.
-{{</ note >}}
+{{< /note >}}

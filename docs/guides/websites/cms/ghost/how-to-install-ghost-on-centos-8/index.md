@@ -189,7 +189,7 @@ Install Ghost using the Ghost-CLI tool.
 
     {{< note respectIndent=false >}}
 Installing Ghost in the `/root` or `/home/{user}` folder won’t work and results in a broken setup. Only use `/var/www/{folder}` because it has the correct permissions.
-{{</ note >}}
+{{< /note >}}
 
 1. Change ownership of the `/var/www/ghost` directory to the non-root user with `sudo` privileges that you created. In this example, `ghostexample` is our username:
 
@@ -220,7 +220,7 @@ For local installs we recommend using `ghost install local` instead.
 It will ask you if you would like to continue anyway, answer yes.
 
 The installer also gets a little confused at our installing MariaDB instead of MySQL. It appears to error with a note that it is skipping MySQL and asks if you want to continue anyway, answer yes.
-{{</ note >}}
+{{< /note >}}
 
 1. Answer each question as prompted. For more information about each question, visit the [Ghost documentation](https://ghost.org/docs/install/ubuntu/#install-questions):
 

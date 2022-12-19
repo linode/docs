@@ -28,7 +28,7 @@ This article covers the basics of connecting to a remote server (such as a Linod
 
 {{< note respectIndent=false >}}
 While PuTTY is compatible with Windows 10, you may want to review the [Connecting to a Remote Server Over SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/) guide for alternatives to PuTTY that may better suit your needs and preferences.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 

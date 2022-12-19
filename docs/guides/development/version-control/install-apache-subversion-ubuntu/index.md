@@ -204,7 +204,7 @@ AuthName "Subversion Repository"
 
 {{< note respectIndent=false >}}
 You may need to restart Subversion using systemctl for your configuration changes to take effect.
-{{</ note >}}
+{{< /note >}}
 
 ### An Example Subversion Directory Structure
 
@@ -242,7 +242,7 @@ This URL accesses the desired Subversion project. Ensure you replace all values 
 
 {{< note respectIndent=false >}}
 A complete and in-depth discussion of Subversion commands, version control strategies, project skills, and steps can be found in [Subversion's documentation](https://svnbook.red-bean.com/).
-{{</ note >}}
+{{< /note >}}
 
 ## Conclusion
 

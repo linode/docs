@@ -11,7 +11,7 @@ Load balancers work by distributing traffic to a pool of servers. For NodeBalanc
 
 {{< note >}}
 While only a single backend node is required, *at least* two backends need to be configured to make use of load balancing functionality.
-{{</ note >}}
+{{< /note >}}
 
 ## Add, Edit, and Remove Backend Nodes
 
@@ -33,7 +33,7 @@ Backends nodes can be defined through a NodeBalancer's [Configurations](/docs/pr
 
 {{< note >}}
 Removing a backend from the NodeBalancer configuration does not delete the associated Compute Instance. It only removes that instance from operating as a backend for this particular NodeBalancer.
-{{</ note >}}
+{{< /note >}}
 
 ## Backend Configuration Options
 
@@ -56,7 +56,7 @@ By default, all backends are allocated traffic according to the configuration se
 
 {{< note >}}
 Changes made to the Mode field are applied within 60 seconds.
-{{</ note >}}
+{{< /note >}}
 
 ## Understand the Status of a Backend Node
 

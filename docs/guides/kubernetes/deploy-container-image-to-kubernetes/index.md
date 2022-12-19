@@ -213,7 +213,7 @@ The example Hugo site was initialized as a local Git repository in the previous 
 
     {{< note respectIndent=false >}}
 Any time you complete work related to one logical change to the Hugo site, you should make sure you commit the changes to your Git repository. Keeping your commits attached to small changes makes it easier to understand the changes and to roll back to previous commits, if necessary. See the [Getting Started with Git](/docs/guides/how-to-configure-git/) guide for more information.
-    {{</ note >}}
+    {{< /note >}}
 
 ## Create a Docker Image
 ### Create the Dockerfile
@@ -263,7 +263,7 @@ You are now ready to build the Docker image. When Docker builds an image it inco
 
 {{< note respectIndent=false >}}
 If you have not yet created a [Docker Hub account](https://hub.docker.com/signup), you will need to do so before proceeding with this section.
-{{</ note >}}
+{{< /note >}}
 
 1. Build the Docker image and add a tag `mydockerhubusername/hugo-site:v1` to the image. Ensure you are in the root directory of your Hugo site. The tag will make it easy to reference a specific image version when creating your Kubernetes deployment manifest. Replace `mydockerhubusername` with your Docker Hub username and `hugo-site` with a Docker repository name you prefer.
 
@@ -369,7 +369,7 @@ The Hugo site's service manifest file will use the NodePort method to get extern
 
 {{< note respectIndent=false >}}
 The k8s-alpha CLI creates clusters that are pre-configured with useful Linode service integrations, like the Linode Cloud Controller Manager (CCM) which provides access to Linode's load balancer service, [NodeBalancers](https://www.linode.com/nodebalancers). In order to use Linode's NodeBalancers you can use the [LoadBalancer service type](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) instead of NodePort in your Hugo site's service manifest file. For more details, see the [Kubernetes Cloud Controller Manager for Linode](https://github.com/linode/linode-cloud-controller-manager) GitHub repository.
-{{</ note >}}
+{{< /note >}}
 
 1. Create the manifest file for your service with the following content.
 

@@ -52,7 +52,7 @@ In this section, you will create a Longview Client instance in the Linode Cloud 
 
     {{< note respectIndent=false >}}
 The displayed `curl` command will be used in the [next section](#install-the-longview-agent) to install the Longview agent on the desired Linode. The long string appended to the url `https://lv.linode.com/` is your Longview Client instance's GUID (globally unique identifier).
-    {{</ note >}}
+    {{< /note >}}
 
       ![Linode Cloud Manager Longview Clients list](longview-clients-list.png "Linode Cloud Manager Longview Clients list")
 
@@ -72,7 +72,7 @@ The displayed `curl` command will be used in the [next section](#install-the-lon
 
     {{< note respectIndent=false >}}
 Ensure you replace the example `curl` command below with your own Longview Client instance's GUID.
-    {{</ note >}}
+    {{< /note >}}
 
         curl -s https://lv.linode.com/05AC7F6F-3B10-4039-9DEE09B0CC382A3D | sudo bash
 
@@ -120,7 +120,7 @@ Dec 10 22:35:11 203-0-113-0.ip.linodeusercontent.com systemd[1]: Started SYSV: L
 
     {{< note respectIndent=false >}}
   It can take several minutes for data to load and display in the Cloud Manager but once it does, you’ll see the graphs and charts populating with your Linode’s metrics.
-    {{</ note >}}
+    {{< /note >}}
 
     ![Linode Cloud Manager Longview Clients Overview metrics](longview-client-overview.png "Linode Cloud Manager Longview Clients Overview metrics")
 
@@ -232,7 +232,7 @@ Dec 10 22:35:11 203-0-113-0.ip.linodeusercontent.com systemd[1]: Started SYSV: L
 
   {{< note respectIndent=false >}}
   It can take several minutes for data to load and display in the Cloud Manager but once it does, you’ll see the graphs and charts populating with your Linode’s metrics.
-    {{</ note >}}
+    {{< /note >}}
 
   ![Linode Cloud Manager Longview Clients Overview metrics](longview-client-overview.png "Linode Cloud Manager Longview Clients Overview metrics")
 
@@ -258,7 +258,7 @@ This section will provide an overview of the data and graphs available to you in
 
     {{< note respectIndent=false >}}
 If your Linode has NGINX, Apache, or MySQL installed you will see a corresponding tab appear containing related system data.
-    {{</ note >}}
+    {{< /note >}}
 
 ### Overview
 

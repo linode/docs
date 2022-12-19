@@ -32,7 +32,7 @@ On some systems, fsck runs automatically after an unclean shutdown or after a ce
 
 {{< note respectIndent=false >}}
 `fsck` is not installed by default when using Linode's rescue mode, and instead the `e2fsck` tool, which fsck functions as a frontend for, will need to be called directly for standard `ext` filesystems. Please see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
-{{</ note >}}
+{{< /note >}}
 
 ## When to Use fsck
 

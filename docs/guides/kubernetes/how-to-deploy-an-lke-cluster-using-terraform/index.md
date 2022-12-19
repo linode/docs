@@ -42,7 +42,7 @@ This guide will walk you through the steps needed to deploy a Kubernetes cluster
 
     {{< note respectIndent=false >}}
 Ensure that your token has, at minimum, Read/Write permissions for Linodes, Kubernetes, NodeBalancers, and Volumes.
-    {{</ note >}}
+    {{< /note >}}
 
 1. Review the [A Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/) to familiarize yourself with Terraform concepts if you have not used the tool before. This guide assumes familiarity with Terraform and its native [HCL syntax](https://www.terraform.io/docs/configuration/syntax.html).
 
@@ -138,11 +138,11 @@ output "pool" {
 You should set any output value as being sensitive in order to prevent Terraform from printing its value to your terminal after running `terraform apply`. In the example configuration for example, the `kubeconfig` output value is listed as sensitive.
 
 See [Terraform's output value documentation](https://www.terraform.io/docs/configuration/outputs.html#sensitive-suppressing-values-in-cli-output) for more details on the behavior of the `sensitive` argument.
-    {{</ note >}}
+    {{< /note >}}
 
     {{< note respectIndent=false >}}
  For a complete `linode_lke_cluster` resource argument reference, see the [Linode Provider Terraform documentation](https://www.terraform.io/docs/providers/linode/r/lke_cluster.html). You can update the `main.tf` file to include any additional arguments you would like to use.
-    {{</ note >}}
+    {{< /note >}}
 
 ### Define your Input Variables
 
@@ -206,7 +206,7 @@ You will now need to define the values you would like to use in order to create 
 
     {{< note respectIndent=false >}}
 If you leave out a variable value in this file, Terraform will use the variable's default value that you provided in your `variables.tf` file.
-    {{</ note >}}
+    {{< /note >}}
 
       {{< file "$~/terraform/lke-cluster/terraform.tfvars" >}}
 label = "example-lke-cluster"
@@ -282,7 +282,7 @@ Now that your Kubernetes cluster is deployed, you can use kubectl to connect to 
 Depending on your local operating system, to decode the kubeconfig's base64 format, you may need to replace `base64 -di` with `base64 -D` or just `base64 -d`. To determine which `base64` option to use, issue the following command:
 
     base64 --help
-    {{</ note >}}
+    {{< /note >}}
 
 1. Add the kubeconfig file to your `$KUBECONFIG` environment variable. This will give kubectl access to your cluster's kubeconfig file.
 

@@ -180,7 +180,7 @@ To exit McMyAdmin and return to the command line, enter `/quit`.
 
     {{< note respectIndent=false >}}
 If you are not prompted to accept the EULA in McMyAdmin, you can find the EULA at `~/McMyAdmin/Minecraft/eula.txt`. Change the value of `eula=false` to `eula=true`.
-{{</ note >}}
+{{< /note >}}
 
     ![McMyAdmin Status Page](mymyadmin-status-page.png)
 

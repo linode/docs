@@ -23,7 +23,7 @@ If you are [deploying your first Kubernetes cluster](/docs/guides/getting-starte
 
 {{< note respectIndent=false >}}
 This guide assumes some familiarity with Kubernetes terminology and concepts. If you are newer to Kubernetes, refer to our [A Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/).
-{{</ note >}}
+{{< /note >}}
 
 ## Use Security Policies and Role-Based Access Control
 

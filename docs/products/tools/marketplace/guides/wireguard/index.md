@@ -94,7 +94,7 @@ If you did not provide a public key for WireGuard when you first set up your Mar
 
     {{< note >}}
     `wg-quick` is a convenient wrapper for many of the common functions in `wg`. To learn more about all the available commands for each utility, issue the `wg --help` and `wg-quick --help` commands from your Linode's command line.
-    {{</ note >}}
+    {{< /note >}}
 
 You should now have your server configuration completed. At this point, you still need to complete your client's configuration; specifically, you need to add your server as a peer to the client:
 

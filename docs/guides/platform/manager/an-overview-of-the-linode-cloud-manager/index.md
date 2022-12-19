@@ -66,7 +66,7 @@ The Cloud Manager automatically ensures that your Domain's zone file does not co
 
 {{< note respectIndent=false >}}
 This Cloud Manager and [API v4](/docs/api) functionality is currently under active development.
-{{</ note >}}
+{{< /note >}}
 
 - When creating a Zone File for a Domain, the [Linode API v4](/docs/api) checks for any errors that may exist. If an error is found, the Cloud Manager will respond with the corresponding error. This means that the Cloud Manager will not allow you to create an invalid zone file.
 

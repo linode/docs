@@ -88,7 +88,7 @@ In order to link workstations and nodes to the Chef server, create an administra
 
     {{< note respectIndent=false >}}
 `ORG_NAME` must be in all lower case.
-{{</ note >}}
+{{< /note >}}
 
     To view a list of all organizations on your Chef server, use the following command:
 
@@ -146,7 +146,7 @@ Authentication between the Chef server and workstation and/or nodes is completed
 
       {{< note respectIndent=false >}}
   If you have disabled SSH password authentication on your Chef server's Linode, as recommended by the [How to Secure Your Server](/docs/guides/set-up-and-secure/#ssh-daemon-options) guide, re-enable SSH password authentication prior to performing these steps. Be sure to disable it again once you have added your workstation's public ssh key to the Chef server's Linode.
-      {{</ note >}}
+      {{< /note >}}
 
       Upload your workstation's public key to the Linode hosting the Chef server. Ensure you replace `example_user` with the Chef server's user account and `192.0.2.0` with its IP address:
 
@@ -233,7 +233,7 @@ cookbook_path            ["#{current_dir}/../cookbooks"]
 
     {{< note respectIndent=false >}}
 The SSL certificates are generated during the installation of the Chef server. These certificates are self-signed, which means there isn’t a signing certificate authority (CA) to verify. The Chef server's hostname and FQDN should be the same so that the workstation can fetch and verify the SSL certificates. You can verify the Chef server's hostname and FQDN by running `hostname` and `hostname -f`, respectively. Consult the [Chef documentation](https://docs.chef.io/server_security.html#regenerate-certificates) for details on regenerating SSL certificates.
-{{</ note >}}
+{{< /note >}}
 
 1.  Confirm that `config.rb` is set up correctly by running the client list:
 
@@ -249,7 +249,7 @@ Bootstrapping a node installs the Chef client on the node and validates the node
 
 {{< note respectIndent=false >}}
 If you encounter any `401 Unauthorized` errors ensure that your `ORGANIZATION.pem` file has `700` permissions. See [Chef's troubleshooting](https://docs.chef.io/errors.html) guide for further information on diagnosing authentication errors.
-{{</ note >}}
+{{< /note >}}
 
 1. Update the `/etc/hosts` file on the *node* to identify the node, Chef server's domain name, and the workstation.
 

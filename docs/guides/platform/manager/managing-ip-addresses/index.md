@@ -42,7 +42,7 @@ Each Linode Compute Instance is equipped with several IP addresses, which enable
 
     {{< note respectIndent=false >}}
 All private IPs in the same data center can communicate with each other over the private network. This means a Compute Instance's private IP address is accessible to all other Instances in that data center. It's recommended to set up firewall rules for your Linode to secure its network traffic. See our [firewall guides](/docs/security/firewalls/) for details on setting up firewall rules. In many cases, using [Private VLANs](/docs/products/networking/vlans/) is preferred over private IPv4.
-{{</ note >}}
+{{< /note >}}
 
 ### IPv6 Addresses
 
@@ -58,7 +58,7 @@ All private IPs in the same data center can communicate with each other over the
 
     {{< note type="alert" respectIndent=false >}}
 The IPv6 /116 prefix has been deprecated and is no longer available for new Compute Instances. If you have an existing Compute Instance with a /116 pool, please review the [Upcoming Changes Related to Network Infrastructure Upgrades](/docs/guides/network-infrastructure-upgrades/) to learn about changes that may affect your services.
-{{</ note >}}
+{{< /note >}}
 
 ## Adding an IP Address
 
@@ -86,7 +86,7 @@ Follow the instructions below to add an public IPv4, private IPv4, or IPv6 range
 
 {{< note respectIndent=false >}}
 Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification for additional public IPv4 addresses. If you have an application that requires multiple IP addresses, consider using an IPv6 /64 range instead.
-{{</ note >}}
+{{< /note >}}
 
 ## Configuring rDNS
 
@@ -182,7 +182,7 @@ IPv6 SLAAC addresses are not able to be transferred between Compute Instances. I
 
 {{< note respectIndent=false >}}
 Not all data centers currently support IP Sharing. Additionally, some data centers only support IPv4 sharing, while others also support IPv6 routed ranges (/64 and /56). To determine if IP Sharing is supported in a particular data center, see [Configuring IP Failover > IP Sharing Availability](/docs/guides/ip-failover/#ip-sharing-availability).
-{{</ note >}}
+{{< /note >}}
 
 To learn how to enable IP Sharing within the Cloud Manager, review the following steps.
 
@@ -200,7 +200,7 @@ To learn how to enable IP Sharing within the Cloud Manager, review the following
 
     {{< note respectIndent=false >}}
 If your desired IP address does not appear in that list, verify that the Compute Instance to which it belongs has at least two public IPv4 addresses or has been assigned an IPv6 routed range (/56 or /64).
-{{</ note >}}
+{{< /note >}}
 
 1.  Click **Save** to enable IP Sharing.
 

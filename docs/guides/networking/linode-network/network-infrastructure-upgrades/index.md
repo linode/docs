@@ -58,7 +58,7 @@ A status of **complete** indicates that all new Compute Instances (and *most* ex
 
 {{< note respectIndent=false >}}
 If a data center is marked as *undergoing network upgrades*, customers may encounter issues enabling IP Sharing and configuring failover. For Compute Instances that already have IP Sharing enabled, this feature should still function as intended. Once the network upgrades are completed, IP Sharing will be supported through the new method (BGP). See [Configuring IP Failover](/docs/guides/ip-failover/).
-{{</ note >}}
+{{< /note >}}
 
 ## What Action is Required?
 

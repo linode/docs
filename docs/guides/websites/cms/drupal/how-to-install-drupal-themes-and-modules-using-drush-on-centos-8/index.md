@@ -71,7 +71,7 @@ If you receive an error related to not being able to write to the `composer.json
 Ensure that your `/var/www/html/example.com/public_html` directory has user and group read, write, and execute permissions.
 
     sudo chmod 774 -R /var/www/html/example.com/public_html
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Enable the theme that you downloaded in the previous step. For example, to enable the `bootstrap` theme run the following command. Replace `bootstrap` with the name of your theme.
 
@@ -113,4 +113,4 @@ It's always important to keep regular backups of a website. Backups protect you 
 
 {{< note respectIndent=false >}}
 Always download a backup prior to updating or installing modules.
-{{</ note >}}
+{{< /note >}}

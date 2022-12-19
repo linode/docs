@@ -85,7 +85,7 @@ On its own, `cheat` does not come with any cheat sheets. However, you can have `
 To automatically download the community cheat sheets, `cheat` uses Git. If your system does not have Git installed, install it prior to following the steps below.
 
     sudo apt-get install git
-{{</ note >}}
+{{< /note >}}
 
 Run a `cheat` command like the one below, and answer **Yes** (**Y**) to the prompts to download the community cheat sheet collection and create the default configuration file:
 
@@ -191,7 +191,7 @@ You can also use `cheat` to create cheat sheets of your own. The steps below cre
 
 {{< note respectIndent=false >}}
 If you think you may be interested in `bat`, check out our guide [How to Install and Use the Linux bat Command](/docs/guides/how-to-install-and-use-the-bat-command-on-linux/) to learn more.
-{{</ note >}}
+{{< /note >}}
 
 1. Use the `-e` option to start creating the new cheat sheet:
 

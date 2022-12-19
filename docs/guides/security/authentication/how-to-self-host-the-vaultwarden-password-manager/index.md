@@ -42,7 +42,7 @@ Ubuntu 20.04 is the distribution used in this guide. Generally speaking, any Lin
 
    {{< note respectIndent=false >}}
 If you choose to configure a firewall, remember to open ports 80 and 443 for the Caddy server. The [Configure a Firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) section of the guide outlines different firewall software options.
-{{</ note >}}
+{{< /note >}}
 
 1. Make sure you have registered a Fully Qualified Domain Name (FQDN) and set up [A and AAAA](/docs/guides/dns-overview/#a-and-aaaa) DNS records that point to the public [IPv4 and IPv6 addresses](/docs/guides/managing-ip-addresses/) of the Linode. Consult the [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](/docs/products/networking/dns-manager/) guides for help with setting up a domain. A proper domain name is important to acquire a certificate for HTTPS connectivity.
 
@@ -143,7 +143,7 @@ example.com {
 
    {{< note respectIndent=false >}}
 The site name you choose in this file must match the desired URL that Vaultwarden is served under. When navigating to the web interface later in this guide, ensure that you type the same hostname chosen in this configuration file (in this example, `example.com`).
-{{</ note >}}
+{{< /note >}}
 
 
 1. Prepare a directory for Caddy in `/etc` to store state information such as Let's Encrypt certificates.
@@ -200,7 +200,7 @@ The site name you choose in this file must match the desired URL that Vaultwarde
 
    {{< note respectIndent=false >}}
 Remember to navigate to the same name configured in your `Caddyfile` defined in the previous section of this guide. A mismatched hostname in your browser can cause TLS errors.
-{{</ note >}}
+{{< /note >}}
 
 1. A new page appears with several fields.
 
@@ -304,7 +304,7 @@ WantedBy=multi-user.target
 
    {{< note respectIndent=false >}}
 The `Persistent=true` line instructs systemd to fire the timer if the timer was unable to trigger at its previous target time. For example, this could happen if the system was being rebooted.
-{{</ note >}}
+{{< /note >}}
 
 1. Start and enable this timer unit.
 

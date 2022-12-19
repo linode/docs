@@ -219,7 +219,7 @@ If the TCP server is not running on the expected TCP port, you will get the foll
 
     dial tcp [::1]:1234: connect: connection refused
 
-    {{</ note >}}
+    {{< /note >}}
 
 
 1. You will see a `>>` prompt waiting for you to enter some text. Type in `Hello!` to receive a response from the TCP server:
@@ -581,4 +581,4 @@ Hello!
 
     {{< note respectIndent=false >}}
 From the shell session running the TCP server, type **CTRL-c** to interrupt program execution and then, **CTRL-D** to close all client connections and to stop the TCP server.
-    {{</ note >}}
+    {{< /note >}}

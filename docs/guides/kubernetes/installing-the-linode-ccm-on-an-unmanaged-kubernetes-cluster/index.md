@@ -32,7 +32,7 @@ If you would like to use Kubernetes for production scenarios and make use of Lin
 Similarly, if you would like to deploy an unmanaged Kubernetes cluster on Linode, the best way to accomplish that is using [Terraform and the Linode K8s module](/docs/guides/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/). The Linode K8s module will also include the Linode CCM preinstalled on the Kubernetes master's control plane and does not require any of the steps included in this guide.
 
 If you have used the Linode Kubernetes Engine (LKE) or the Linode Terraform K8s module to deploy your cluster, you should instead refer to the [Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster](/docs/guides/getting-started-with-load-balancing-on-a-lke-cluster/) guide for steps on adding and configuring NodeBalancers on your Kubernetes cluster.
-{{</ note >}}
+{{< /note >}}
 
 ## In this Guide
 
@@ -48,7 +48,7 @@ You will manually install the Linode CCM on your unmanaged Kubernetes cluster. T
 
     {{< note respectIndent=false >}}
 It is recommended that you install the Linode CCM on a new Kubernetes cluster, as there are a number of issues that prevent the CCM from running on Nodes that are in the "Ready" state.
-    {{</ note >}}
+    {{< /note >}}
 
 1. Ensure you have [kubectl installed](/docs/guides/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/#install-kubectl) on your local computer and you can access your Kubernetes cluster with it.
 
@@ -72,7 +72,7 @@ The Linode CCM's GitHub repository provides a helper script that creates a Kuber
 
 {{< note respectIndent=false >}}
 You will need your [Linode APIv4](/docs/products/tools/api/get-started/#get-an-access-token) token to complete the steps in this section.
-{{</ note >}}
+{{< /note >}}
 
 1. Clone the [Linode CCM's GitHub repository](https://github.com/linode/linode-cloud-controller-manager).
 
@@ -94,7 +94,7 @@ You will need your [Linode APIv4](/docs/products/tools/api/get-started/#get-an-a
 
     {{< note respectIndent=false >}}
 You can create your own `ccm-linode.yaml` manifest file by editing the contents of the `ccm-linode-template.yaml` file and changing the values of the `data.apiToken` and `data.region` fields with your own desired values. This template file is located in the `deploy` directory of the Linode CCM repository.
-    {{</ note >}}
+    {{< /note >}}
 
 ## Updating the Linode CCM
 

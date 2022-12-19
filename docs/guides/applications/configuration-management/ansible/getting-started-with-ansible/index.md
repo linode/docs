@@ -55,7 +55,7 @@ This guide introduces the basics of installing Ansible and preparing your enviro
 
     {{< note respectIndent=false >}}
 The examples in this guide provide a manual method to establish a basic connection between your control node and managed nodes as a way to introduce the basics of Ansible. If you would like to learn how to use Ansible's [Linode module](https://docs.ansible.com/ansible/latest/modules/linode_v4_module.html) to automate deploying and managing Linodes, see the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/). The guide assumes familiarity with Ansible modules, Playbooks, and dynamic inventories.
-    {{</ note >}}
+    {{< /note >}}
 
 ## Before You Begin
 
@@ -79,7 +79,7 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
     {{< note respectIndent=false >}}
 This step can be automated by using Ansible's Linode module. See the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/) for more information.
-    {{</ note >}}
+    {{< /note >}}
 
 ## Set up the Control Node
 
@@ -114,7 +114,7 @@ With Miniconda, it's possible to create a virtualized environment for Ansible wh
 
 {{< note respectIndent=false >}}
 This guide was created using Ansible 2.8.
-{{</ note >}}
+{{< /note >}}
 
 1. Follow the Ansible installation steps related to your control node's distribution.
     #### MacOS
@@ -129,7 +129,7 @@ This guide was created using Ansible 2.8.
 
     {{< note respectIndent=false >}}
   The EPEL-Release repository may need to be added on certain versions of CentOS, RHEL, and Scientific Linux.
-    {{</ note >}}
+    {{< /note >}}
 
     #### Ubuntu 22.04
 

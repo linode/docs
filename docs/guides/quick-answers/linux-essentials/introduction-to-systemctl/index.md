@@ -73,7 +73,7 @@ To disable the service from starting at boot, issue the `disable` command:
 The `enable` command does not start the service in the current session, nor does `disable` stop the service in the current session. To enable/disable and start/stop a service simultaneously, combine the command with the `--now` switch:
 
     sudo systemctl enable nginx --now
-{{</ note >}}
+{{< /note >}}
 
 If the service unit file is not located within one of the known `systemd` file paths, you can provide a file path to the service unit file you wish to enable:
 
@@ -109,7 +109,7 @@ To view which `systemd` service units are currently active on your system, issue
 
 {{< note respectIndent=false >}}
 `list-units` is the default action for the `systemctl` command, so you can simply enter `systemctl` to retrieve a list of units.
-{{</ note >}}
+{{< /note >}}
 
 The generated list includes all currently active service units, service units that have jobs pending, and service units that were active and have failed:
 
@@ -246,7 +246,7 @@ To check which unit files depend on a service unit file, you can run the `list-d
 
 {{< note respectIndent=false >}}
 While the particulars of unit file contents are beyond the scope of this article, there are a number of good resources online that describe them, such as the RedHat Customer Portal page on [Creating and Modifying systemd Unit Files](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_files).
-{{</ note >}}
+{{< /note >}}
 
 There are two ways to edit a unit file using `systemctl`.
 

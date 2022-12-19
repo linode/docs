@@ -26,7 +26,7 @@ contributor:
 
 {{< note respectIndent=false >}}
 GET, POST, PUT, and DELETE are [HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) used to perform an action on a resource.
-{{</ note >}}
+{{< /note >}}
 
 ## How to Create REST API Endpoints with Flask
 
@@ -36,7 +36,7 @@ The REST protocol gives clients access to resources stored in a database and all
 
 {{< note respectIndent=false >}}
 This section makes use of the [virtualenv](https://pypi.org/project/virtualenv/) tool to create a virtual environment on your system. Follow the installation steps in our [How to Create a Python Virtual Environment](/docs/guides/create-a-python-virtualenv-on-debian-10/) guide if you do not have virtualenv installed on your computer.
-{{</ note >}}
+{{< /note >}}
 
 - Create a directory to store your Flask web application and move into the directory.
 
@@ -62,7 +62,7 @@ RESTful services typically have two endpoints used to retrieve (GET) resources. 
 
 {{< note respectIndent=false >}}
 All the steps in this section edit the same file, `prog_lang_app.py`.
-{{</ note >}}
+{{< /note >}}
 
 - In your preferred text editor, open the `prog_lang_app.py` file and add the following lines:
 
@@ -75,7 +75,7 @@ app = Flask(__name__)
 
     {{< note respectIndent=false >}}
 Although RESTful APIs typically access data from a database, this tutorial does not cover the [details of integrating with a database](https://flask.palletsprojects.com/en/2.0.x/tutorial/database/).
-    {{</ note >}}
+    {{< /note >}}
 
 - Create a small in-memory data store (Python dictionary) to store the data related to programming languages. Place this code underneath the import and app instantiation lines.
 
@@ -94,7 +94,7 @@ in_memory_datastore = {
 
     {{< note respectIndent=false >}}
 RESTful APIs are generally organized around a resource. A resource refers to the database records that an API gives clients access to. In the case of this tutorial, the resource is an instance of a programming language.
-    {{</ note >}}
+    {{< /note >}}
 
     {{< file "prog_lang_app.py" >}}
 ...

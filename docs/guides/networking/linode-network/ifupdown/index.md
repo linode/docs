@@ -19,11 +19,11 @@ The [ifupdown](https://manpages.debian.org/bullseye/ifupdown/ifup.8.en.html) pac
 
 {{< note respectIndent=false >}}
 Newer Ubuntu releases use Netplan in conjunction with systemd-networkd (or NetworkManager). Newer Debian releases also include systemd-networkd, though ifupdown is still the default.
-{{</ note >}}
+{{< /note >}}
 
 {{< note respectIndent=false >}}
 This guide serves as a supplement to the main [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) guide. Please review that guide before making any configuration changes to your Compute Instance.
-{{</ note >}}
+{{< /note >}}
 
 ## Configuration Files
 

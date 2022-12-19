@@ -59,7 +59,7 @@ IP addresses can be statically configured or dynamically configured through DHCP
 
     {{< note respectIndent=false >}}
 If you do enable DHCP and are using a firewall (such as Cloud Firewalls), you must configure the firewall to allow communication with our DHCP servers. See the [DHCP IP Address Reference](/docs/guides/dhcp-ip-address-reference/) guide for a list of IP addresses to allow.
-{{</ note >}}
+{{< /note >}}
 
 - **SLAAC** (Stateless address autoconfiguration) can *and should* be used to automatically configure the main IPv6 address on a Compute Instance. It does not configure any IPv6 routed ranges (/64 or /56) that may also be assigned to that instance. For SLAAC to function, the Compute Instance needs to accept router advertisements. This is accomplished by enabling router advertisements and disabling IPv6 privacy extensions within your system's networking configuration files. These settings are properly configured by default in our supported distributions.
 

@@ -118,7 +118,7 @@ Install Ghost using the Ghost-CLI tool.
 
     {{< note respectIndent=false >}}
 Installing Ghost in the `/root` or `/home/{user}` folder won’t work and results in a broken setup. Only use `/var/www/{folder}` because it has the correct permissions.
-{{</ note >}}
+{{< /note >}}
 
 1.  Ensure that the directory is empty to avoid file conflicts:
 

@@ -92,7 +92,7 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
 
     {{< note >}}
     If there is a red *X* over the status bars or if the word *old* appears, then your Compute Instance might not have finished installing Minecraft. Please double check your IPv4 address, wait a few minutes,and then hit **Refresh**.
-    {{</ note >}}
+    {{< /note >}}
 
 ## Customization After Installation
 

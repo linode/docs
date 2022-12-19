@@ -19,7 +19,7 @@ external_resources:
 
 {{< note respectIndent=false >}}
 This guide serves as a supplement to the main [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) guide. Please review that guide before making any configuration changes to your Compute Instance.
-{{</ note >}}
+{{< /note >}}
 
 ## Configuration Files
 

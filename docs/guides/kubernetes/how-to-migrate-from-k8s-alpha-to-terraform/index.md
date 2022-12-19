@@ -115,7 +115,7 @@ You may need to use the original Terraform version used to deploy the cluster (e
 
     {{< note respectIndent=false >}}
 When prompted, you may notice that one item in your plan is marked as `destroy`. This is generally a "null resource" or a local script execution and is not indicative of an unintended change.
-{{</ note >}}
+{{< /note >}}
 
 1.  After Terraform has finished, your cluster will be resized. To confirm, enter the following command to list all nodes in your cluster, replacing the string `mycluster` with the name of the cluster you edited:
 

@@ -20,7 +20,7 @@ aliases: ['/products/tools/marketplace/guides/kalilinux/']
 
 {{< note >}}
 This Marketplace App extends Linode's Kali Linux distribution image by allowing the user to preinstall one of the available metapackages.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -44,7 +44,7 @@ This Marketplace App extends Linode's Kali Linux distribution image by allowing 
 
     {{< note >}}
     If both packages are selected, only the [kali-linux-everything](https://www.kali.org/tools/kali-meta/#kali-linux-everything) package is installed (which includes everything in [kali-linux-headless](https://www.kali.org/tools/kali-meta/#kali-linux-headless)).
-    {{</ note >}}
+    {{< /note >}}
 
 - **VNC Installation** *(required)*: This option installs and starts [TigerVNC](https://tigervnc.org/) and [XFCE Desktop package](https://www.xfce.org/).
 - **Sudo/VNC Username** *(required)*: The VNC username you wish to create for this Compute Instance. This is used for your VNC session and will have elevated privileges (`sudo`).

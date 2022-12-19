@@ -55,7 +55,7 @@ Once your Linode is fully configured, the next step is to copy your configuratio
 
   {{< note respectIndent=false >}}
 You will not be able to choose a plan for your new Linode that is smaller than the plan of the Linode you are cloning. For example, a 2GB Linode can not be cloned into a 1GB Linode (Nanode).
-{{</ note >}}
+{{< /note >}}
 
 1. Provide a label for your new Linode.
 

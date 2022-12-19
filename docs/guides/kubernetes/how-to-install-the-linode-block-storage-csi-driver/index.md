@@ -36,7 +36,7 @@ The Linode Block Storage CSI driver **absolutely requires** that the Linode Clou
 The Block Storage CSI supports Kubernetes version 1.13 or higher. To check the version of Kubernetes you are running, you can issue the following command:
 
     kubectl version
-{{</ note >}}
+{{< /note >}}
 
 ## Installing the CSI Driver
 ### Create a Kubernetes Secret
@@ -45,7 +45,7 @@ A secret in Kubernetes is any token, password, or credential that you want Kuber
 
 {{< note respectIndent=false >}}
 Your Block Storage Volume must be in the same data center as your Kubernetes cluster.
-{{</ note >}}
+{{< /note >}}
 
 To create an API token:
 

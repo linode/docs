@@ -34,7 +34,7 @@ If you have disabled distro helper on your Compute Instance's [Configuration Pro
 
 {{< note respectIndent=false >}}
 If you are having issues accessing Weblish or Glish, you may be behind a restrictive local firewall. See [Lish Gateways](/docs/guides/lish/#lish-gateways) for a list of data centers, their corresponding gateways, and the ports that are used.
-{{</ note >}}
+{{< /note >}}
 
 ## Install a Display Manager and Desktop Environment
 
@@ -42,7 +42,7 @@ Before using Glish, a display manager and desktop environment must be installed 
 
 {{< note respectIndent=false >}}
 The instructions below install Xfce4 and LightDM on Debian 11. You are not limited to using these applications or this distribution. If you wish to use other software, follow the instructions for that application.
-{{</ note >}}
+{{< /note >}}
 
 1. Log in to your Compute Instance using [Lish](/docs/guides/lish/) or [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
 

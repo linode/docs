@@ -25,7 +25,7 @@ Use [Prometheus](https://prometheus.io/docs/introduction/overview/) to collect m
 
 {{< note >}}
 Prometheus is often used alongside [Grafana](https://grafana.com/) for reporting and detailed visualizations. Consider using the combined [Prometheus and Grafana Marketplace App](/docs/products/tools/marketplace/guides/prometheus-grafana/) if you intend on using both of these applications together.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 

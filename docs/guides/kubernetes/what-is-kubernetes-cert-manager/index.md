@@ -27,7 +27,7 @@ Cert-manager is a Kubernetes add-on designed to assist with the creation and man
 
 {{< note respectIndent=false >}}
 This guide assumes a working knowledge of Kubernetes key concepts, including master and worker nodes, Pods, Deployments, and Services. For more information on Kubernetes, see our [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series.
-{{</ note >}}
+{{< /note >}}
 
 ## Understanding Cert Manager Concepts
 

@@ -126,7 +126,7 @@ The following configuration management and orchestration tools support Linode:
 Configuration management tools: [Ansible](/docs/guides/getting-started-with-ansible/), [Salt](/docs/guides/beginners-guide-to-salt/), [Chef](/docs/guides/beginners-guide-chef/), and [Puppet](/docs/guides/getting-started-with-puppet-6-1-basic-installation-and-setup/)
 
 Orchestration tools: [Pulumi](/docs/guides/deploy-in-code-with-pulumi/), [Terraform](/docs/guides/beginners-guide-to-terraform/), [Ansible](/docs/guides/getting-started-with-ansible/)
-    {{</ note >}}
+    {{< /note >}}
 
 ## Migration Strategy 3: Transfer your Disk Images
 
@@ -136,13 +136,13 @@ This section contains all of the preparation steps that you will need to complet
 
 {{< note respectIndent=false >}}
 While it is possible to migrate a GCP disk image to Linode, due to differences in low-level system configurations between GCP and Linode, you may encounter some unexpected results that require additional troubleshooting steps. Continue with this method only if you are confident in your understanding of the Google Cloud Platform, [GCP IAM roles](https://cloud.google.com/iam/docs/understanding-roles), and [GCP disks and images](https://cloud.google.com/solutions/image-management-best-practices).
-{{</ note >}}
+{{< /note >}}
 
 ### Install and Set Up gcloud
 
 {{< note respectIndent=false >}}
 If you have already installed the Google Cloud SDK on your computer, you can skip this section.
-{{</ note >}}
+{{< /note >}}
 
 The [Google Cloud SDK](https://cloud.google.com/sdk/docs/) gives you access to the `gcloud` command-line tool. You will need `gcloud` to create and export an image of your GCP instance. You will [create the instance image](#create-and-export-image) later on in this guide.
 
@@ -166,7 +166,7 @@ When you create an image of your GCP instance you will temporarily store it in a
 
 {{< note respectIndent=false >}}
 Using the GCP object storage service will incur additional charges outside of the cost of your GCP instance.
-{{</ note >}}
+{{< /note >}}
 
 1. Navigate to your [GCP dashboard](https://console.cloud.google.com/home/dashboard). From the left sidebar menu, under the *Storage* section, click **Storage**.
 
@@ -204,13 +204,13 @@ Before continuing with the preparation to migrate, you should inspect your GCP i
 
     {{< note respectIndent=false >}}
 At minimum, you will migrate your GCP instance's boot disk. On a Linux system, without a custom boot disk configured, this is likely `/dev/sda1`.
-    {{</ note >}}
+    {{< /note >}}
 
 1. To inspect your GCP instance's disks, [ssh into your GCP instance](https://cloud.google.com/compute/docs/instances/connecting-to-instance#gcetools) and issue the following command to view disk size on each mounted disk:
 
     {{< note respectIndent=false >}}
   The usable disk space that is reported by `df` reflects only 90 percent of full capacity.
-    {{</ note >}}
+    {{< /note >}}
 
         df -h
 
@@ -282,14 +282,14 @@ If your GCP instance was not created with IP forwarding enabled, then you may se
     user@test-instance:~$ sudo systemctl --status
     systemctl: unrecognized option '--status'
     user@test-instance:~$ sudo systemctl status
-      {{</ note >}}
+      {{< /note >}}
 
 #### Stop Your GCP Instance
 In order to create your instance's disk image in the next section, you will first need to stop the instance. This will prevent any new data from being written to the persistent disk.
 
 {{< note respectIndent=false >}}
 GCP recommends stopping your instance prior to creating a disk image, however, it is possible to keep the instance running while you create your image. See their [official documentation](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#prepare_instance_for_image) for details.
-{{</ note >}}
+{{< /note >}}
 
 1.  Navigate to your [GCP dashboard](https://console.cloud.google.com/home/dashboard). From the left sidebar menu, under *Compute*, click **Compute Engine**.
 
@@ -317,7 +317,7 @@ migrate-gcp-img  speedy-area-263218  debian-9              READY
 
     {{< note respectIndent=false >}}
 You may need to respond to some command-line prompts before the image is exported.
-    {{</ note >}}
+    {{< /note >}}
 
 1.  The output will look similar to the following:
 
@@ -336,7 +336,7 @@ You may need to respond to some command-line prompts before the image is exporte
 
     {{< note respectIndent=false >}}
   If you do not see the **Edit Permissions** option, then your bucket may have been created with uniform access controls. To make the image publicly accessible, see GCP's [official documentation](https://cloud.google.com/storage/docs/access-control/making-data-public) for information on making data public. When you have completed the steps listed in the GCP documentation proceed to step 8 of this section.
-    {{</ note >}}
+    {{< /note >}}
 
     ![Google Object Storage Bucket Edit Permissions](migrate-gcp-to-linode-image-export-bucket.png "Google Object Storage Bucket Edit Permissions")
 
@@ -363,7 +363,7 @@ If you would like access to these features after completing your migration, ensu
 - Create a Linode with **twice the storage space** of your [original disk image](#inspect-your-gcp-instances-disks). You can always resize it down later. See the [Billing Overview](/docs/products/platform/billing/#understand-how-billing-works) guide for details on how hourly billing works.
 
 - Follow the steps in the optional section [Transfer Disk to ext4](#optional-transfer-disk-to-ext4).
-{{</ note >}}
+{{< /note >}}
 
 ### Create a Linode
 
@@ -377,7 +377,7 @@ You will first create a new Linode to import your GCP image to and then, boot th
 
     {{< note respectIndent=false >}}
 When selecting your Linode's plan, if you want to have access to advanced features like resizing your Linode and our [Backup Service](/docs/products/storage/backups/), choose one that will be large enough to hold twice the size of the entire expanded [disk image](#inspect-your-gcp-instances-disks) that you created from your GCP instance (not just the size of the compressed tar file). This is needed so that later you can  move your installation over to an ext4 formatted disk. Once the move to an ext4 formatted disk is complete, you can delete the raw disk and [resize to a smaller plan](/docs/guides/resizing-a-linode/).
-  {{</ note >}}
+  {{< /note >}}
 
 1.  Once the Linode is finished provisioning, power it down. Click on the **Running** status at the top of the Cloud Manager and select **Power Off** from the drop down menu.
 
@@ -395,7 +395,7 @@ In this section you will create a new disk and boot configuration in order to be
 
     {{< note respectIndent=false >}}
 If, for example, your GCP disk image's size is 10GB, ensure that you resize the main disk to make enough room for a new disk that is slightly larger than 10 GB (11 GB, for example). This will ensure that you can safely reboot your Linode from the extracted image (you will complete that step in a later section).
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Click **Add a Disk** and create a new `Empty Disk`. Give it a label like "New Google", for filesystem, select `raw`, and for size, enter a size that will accommodate the entire extracted image. Click the **Add** button.
 
@@ -459,7 +459,7 @@ You may also need to update your SSH server's configuration file to temporarily 
           PasswordAuthentication yes
 
 See the [SSH guide](/docs/guides/troubleshooting-ssh/) for more SSH troubleshooting tips.
-    {{</ note >}}
+    {{< /note >}}
 
 ### Remove Google Packages
 

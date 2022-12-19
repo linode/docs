@@ -35,7 +35,7 @@ This use case is for existing Akamai customers that want to learn how to use clo
 
 Before you start, make sure you have access to a [Linode Cloud Manager account](https://login.linode.com/login), either through your existing account or via a trial login. You can also [sign up for a new account](https://login.linode.com/signup).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Talk to your account representative or simply try the free credit available at the top of this guide.
 {{< /note >}}
 
@@ -47,7 +47,7 @@ If you're new to Linode, watch this video to help you get started.
 
 You also need access to an **Akamai account** with entitlement for [Ion](https://techdocs.akamai.com/ion/docs).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 To see if you already have entitlement for Ion, log in to ​Akamai Control Center​, go to **> ACCOUNT ADMIN > Contracts**. Click a Contract ID and search for Ion in the list of products.
 {{< /note >}}
 
@@ -55,7 +55,7 @@ To see if you already have entitlement for Ion, log in to ​Akamai Control Cent
 
 Create a Linode Compute instance to act as an origin server that will store content, messages, and other data for your microsite in the cloud.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 To avoid an unexpected bill make sure to delete this Linode Compute Instance once you've completed this use case.
 {{< /note >}}
 
@@ -219,7 +219,7 @@ As a result, you will see two staging IP addresses. Add either of them to your l
 
 [High availability](/docs/guides/introduction-to-high-availability/) is a term used to describe server setups that eliminate single points of failure. The following sections provide instructions for setting up multiple backend servers behind a [NodeBalancer](/docs/products/networking/nodebalancers/get-started/), then redirecting traffic from your Ion property to the NodeBalancer by adjusting DNS settings.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 NodeBalancers communicate with backend nodes through their private IPv4 addresses via HTTP.
 
 **Before you start, ensure your origin server supports HTTP port 80.**
@@ -231,7 +231,7 @@ If you created your Linodes using Node.js from the Marketplace Apps, you can wat
 
 This section involves cloning your Linode origin server to provide high availability through redundancy.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Clustering files or databases is not in the scope of this use case. You can, however, refer to the [Host a Website with High Availability](/docs/guides/host-a-website-with-high-availability/) guide if you want to learn more.
 
 If you want to use a solution such as [GlusterFS](https://www.gluster.org/), instead of cloning the origin server you need to follow the instructions in [Create a Linode](#create-a-linode) to create two or more new Linode Compute Instances.
@@ -265,7 +265,7 @@ If you want to use a solution such as [GlusterFS](https://www.gluster.org/), ins
 
 Linode NodeBalancers distribute user requests between compute instances to improve capacity, performance, and availability. For more information, refer to the [Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/) guide.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Before you start, make sure that each of your origin servers has a private IPv4 address. For more information and instructions on how to add private IPv4 addresses to your origin servers, refer to the [Managing IP addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) guide.
 {{< /note >}}
 

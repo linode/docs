@@ -26,11 +26,11 @@ NodeBalancers provide your Kubernetes cluster with a reliable way of exposing re
 
 {{< note respectIndent=false >}}
 Adding external Linode NodeBalancers to your LKE cluster will incur additional costs. See [Linode's Pricing page](https://www.linode.com/pricing/#row--networking) for details.
-{{</ note >}}
+{{< /note >}}
 
 {{< note respectIndent=false >}}
 All existing LKE clusters receive CCM updates automatically every two weeks when a new LKE release is deployed. See the [LKE Changelog](/docs/products/compute/kubernetes/release-notes/) for information on the latest LKE release.
-{{</ note >}}
+{{< /note >}}
 
 {{< note respectIndent=false >}}
 The [Linode Terraform K8s module](/docs/guides/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/) also deploys a Kubernetes cluster with the Linode CCM installed by default. Any Kubernetes cluster with a Linode CCM installation can make use of Linode NodeBalancers in the ways described in this guide.
@@ -55,7 +55,7 @@ This guide assumes you have a working Kubernetes cluster that was deployed using
 
     {{< note respectIndent=false >}}
 An LKE cluster will already have Linode's Cloud Controller Manager installed in the cluster's control plane. If you **did not** deploy your Kubernetes cluster using LKE and would like to make use of the Linode Cloud Controller Manager, see [Installing the Linode CCM on an Unmanaged Kubernetes Cluster - A Tutorial](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/).
-    {{</ note >}}
+    {{< /note >}}
 
 ## Adding Linode NodeBalancers to your Kubernetes Cluster
 
@@ -65,7 +65,7 @@ To add an external load balancer to your Kubernetes cluster you can add the exam
 Billing for Linode NodeBalancers begin as soon as the example configuration is successfully applied to your Kubernetes cluster.
 
 In any NodeBalancer configuration, users should keep in mind that NodeBalancers have a maximum connection limit of 10,000 concurrent connections.
-{{</ note >}}
+{{< /note >}}
 
 {{< file >}}
 spec:
@@ -151,7 +151,7 @@ The Linode CCM accepts annotations that configure the behavior and settings of y
 
 {{< note respectIndent=false >}}
 To view a list of deprecated annotations, visit the [Linode CCM GitHub repository](https://github.com/linode/linode-cloud-controller-manager/blob/master/README.md#deprecated-annotations).
-{{</ note >}}
+{{< /note >}}
 
 ### Configuring Linode NodeBalancers for TLS Encryption
 
@@ -165,7 +165,7 @@ In the context of the Linode CCM, Secrets are useful for storing Transport Layer
 
 {{< note respectIndent=false >}}
 The steps in this section will create a self-signed TLS certificate. To learn how to create a TLS certificate from the [Let's Encrypt](https://letsencrypt.org/) certificate authority (CA) and apply it to an application running on Kubernetes, see the [Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster](/docs/guides/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/).
-{{</ note >}}
+{{< /note >}}
 
 1.  Generate a TLS key and certificate using a TLS toolkit like [OpenSSL](https://www.openssl.org/). Be sure to change the `CN` and `O` values to those of your own website domain.
 
@@ -263,4 +263,4 @@ After deleting your service, its corresponding NodeBalancer will be removed from
 
 {{< note respectIndent=false >}}
 If your Service file used the `preserve` annotation, the underlying NodeBalancer will not be removed from your Linode account. See the [annotations reference](#annotations-reference) for details.
-{{</ note >}}
+{{< /note >}}

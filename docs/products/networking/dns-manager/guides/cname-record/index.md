@@ -28,7 +28,7 @@ In most cases, the target domain should resolve to another type of DNS record, l
 
     {{< note >}}
     Using the root domain as the hostname for a CNAME record is called *CNAME flattening* and is not supported on Linode's DNS Manager.
-    {{</ note >}}
+    {{< /note >}}
 
 - **Alias to:** The full domain name of the canonical domain, where traffic should be redirected. You can also use the `@` character to use the root domain.
 

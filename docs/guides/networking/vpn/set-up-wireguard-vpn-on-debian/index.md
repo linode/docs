@@ -195,7 +195,7 @@ The process for setting up a client is similar to setting up the WireGuard serve
 
 {{< note respectIndent=false >}}
 For installation instructions on other operating systems, see the [WireGuard docs](https://www.wireguard.com/install/).
-{{</ note >}}
+{{< /note >}}
 
 1. Follow the steps in the [Install WireGuard](#install-wireguard) section of the guide.
 

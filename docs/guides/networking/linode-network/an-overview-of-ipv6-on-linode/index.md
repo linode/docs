@@ -89,7 +89,7 @@ An IPv6 routed range is assigned to a single Linode. Addresses from that range c
 
 {{< note respectIndent=false >}}
 Configuring a `/64` or `/56` routed range requires you to [disable Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) on your Linode and manually configure its network settings. Please review the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) and [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) guides for details on this process.
-{{</ note >}}
+{{< /note >}}
 
 - `/64` **routed range** *(18,446,744,073,709,551,616 addresses)*: This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses.
 - `/56` **routed range** *(4,722,366,482,869,645,213,696 addresses)*: These larger ranges are typically only required by specialized systems or networking applications. When requesting a `/56` range, please provided information regarding your use case.

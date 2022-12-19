@@ -87,7 +87,7 @@ The k8s-alpha CLI is bundled with the Linode CLI, and using it requires the inst
 
     {{< note respectIndent=false >}}
 The k8s-alpha CLI requires [Terraform version 0.12.0+](https://www.hashicorp.com/blog/announcing-terraform-0-12).
-    {{</ note >}}
+    {{< /note >}}
 
 -   [kubectl](#install-kubectl): kubectl is the client software for Kubernetes, and it is used to interact with your Kubernetes cluster's API.
 

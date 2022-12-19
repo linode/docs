@@ -18,7 +18,7 @@ aliases: ['/email/email-services/postfix-smtp-debian7/','/email/postfix/postfix-
 ---
 {{< note respectIndent=false >}}
 This guide was originally written for Debian 7. It has since been tested to work with Debian 9.
-{{</ note >}}
+{{< /note >}}
 
 You may want to configure Postfix to use an external SMTP provider like Mandrill, and SendGrid so you no longer have to build, maintain, and scale your own SMTP relay server. Another reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a spam list. This guide shows you how to configure Postfix to use an external SMTP provider and also shows specific examples for Mandrill, and SendGrid. However, you can apply the steps in this guide to configure Postfix to use any external SMTP provider.
 
@@ -48,7 +48,7 @@ At a high-level Postfix configuration involves the following steps:
 
 {{< note respectIndent=false >}}
 If you’re using Gmail or Google Workspace, see our [Configure Postfix to Send Mail Using Gmail and Google Workspace on Debian or Ubuntu](/docs/guides/configure-postfix-to-send-mail-using-gmail-and-google-workspace-on-debian-or-ubuntu/) guide instead.
-{{</ note >}}
+{{< /note >}}
 
 ### Gathering Prerequisites
 
@@ -93,7 +93,7 @@ Usernames and passwords are stored in the `/etc/postfix/sasl_passwd` file. In th
 
 {{< note respectIndent=false >}}
 The examples in this section provide the general steps to configure Postfix to use an external SMTP provider. If you want to use Mandrill or SendGrid as your SMTP provider, you can refer to the examples in the [Postfix Configuration with Mandrill, and SendGrid](/docs/guides/postfix-smtp-debian7/#postfix-configuration-with-mandrill-and-sendgrid) section of this guide.
-{{</ note >}}
+{{< /note >}}
 
 First, open or create the `/etc/postfix/sasl_passwd` file:
 
@@ -127,7 +127,7 @@ You are now ready to provide the configurations needed by Postfix to use the ext
 
 {{< note respectIndent=false >}}
 Refer to the [Postfix Configuration with Mandrill, and SendGrid](/docs/guides/postfix-smtp-debian7/#postfix-configuration-with-mandrill-and-sendgrid) section of this guide for specific relay host configurations for Mandrill, and SendGrid.
-{{</ note >}}
+{{< /note >}}
 
 1. Using a text editor, open the `/etc/postfix/main.cf` file.
 
@@ -181,7 +181,7 @@ You can use Postfix’s own Sendmail implementation to test your Postfix configu
     From: you@example.com
     Subject: Test mail
     This is a test email
-{{</ note >}}
+{{< /note >}}
 
 ## Postfix Configuration with Mandrill, and SendGrid
 

@@ -73,7 +73,7 @@ Linux and OS X can use [SCP](https://en.wikipedia.org/wiki/Secure_copy) natively
 
   {{< note respectIndent=false >}}
 The exact location of your website's files may vary depending on your specific implementation. Contact your site's developer to confirm the location of your website's files.
-  {{</ note >}}
+  {{< /note >}}
 
 **FileZilla (Linux / OS X / Windows)**
 

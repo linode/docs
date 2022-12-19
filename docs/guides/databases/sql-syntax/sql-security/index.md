@@ -38,7 +38,7 @@ When it comes to the management of users, groups, roles, and permissions, the co
 
 {{< note respectIndent=false >}}
 The examples below use Microsoft SQL Server syntax. All commands should be executed from the command line. The examples also assume that all server security hardening has already been implemented.
-{{</ note >}}
+{{< /note >}}
 
 To demonstrate SQL security principles, this guide uses an example database that is used by a school. The school's database has tables for students and courses taken by each student. The definition of the `Student` table contains columns for the student's `SSNumber`, `Firstname`, and `Lastname`, and the definition of the `CourseTaken` table contains columns for `SSNumber`, `CourseId`, `NumericGrade`, and `YearTaken`.
 

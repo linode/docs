@@ -12,7 +12,7 @@ date: 2022-11-17
 
     {{< note >}}
     To add a PayPal account to your Google Pay account, you currently must do so through the [Google Play Store](https://play.google.com/store/paymentmethods). PayPal cannot currently be added through the Google Pay website or mobile apps. When adding PayPal through Google Pay, it appears as a Discover Card within the Cloud Manager and the Linode API.
-    {{</ note >}}
+    {{< /note >}}
 
 - **PayPal:** Pay using your PayPal balance, a credit (or debit) card, or bank account through your PayPal account.
 

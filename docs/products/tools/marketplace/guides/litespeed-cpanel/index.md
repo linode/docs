@@ -30,7 +30,7 @@ The LiteSpeed cPanel App automatically installs [cPanel](https://cpanel.net/), [
 cPanel requires a valid license to use the software beyond the initial 15 day [free trial](https://cpanel.net/products/trial/) period. To purchase a license, visit [cPanel’s website](https://cpanel.net/pricing/) and select a plan that fits your needs. Licenses are not available directly through Linode.
 
 LiteSpeed offers both free and paid plans.  Visit [LiteSpeed's website](https://www.litespeedtech.com/products/litespeed-web-server/lsws-pricing) to view available plans and pricing information.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -79,7 +79,7 @@ Please make sure to save this password.
 
     {{< note >}}
     Your instance is eligible for free 15-day trial licenses of both [WHM/cPanel](https://cpanel.net/products/trial/) and the [LiteSpeed plugin](https://docs.litespeedtech.com/licenses/trial/). If you wish to continue using these applications beyond this period, you must purchase licenses before the end of this trial.
-    {{</ note >}}
+    {{< /note >}}
 
 1.  In the next screen, enter in an email address to receive status and error notifications.
 
@@ -95,7 +95,7 @@ Please make sure to save this password.
         ns5.linode.com.
 
     See our [How do I set up DNS on cPanel?](https://www.linode.com/community/questions/19216/how-do-i-set-up-dns-on-cpanel) community question and answer for details related to cPanel and Linode nameservers.
-    {{</ note >}}
+    {{< /note >}}
 
     ![Provide an email address and your Linode nameservers.](email-and-nameservers.png)
 

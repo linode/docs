@@ -10,7 +10,7 @@ As part of the Backups service, you can store a manual backup of your Compute In
 
 {{< note >}}
 The manual snapshot feature is part of the paid Backups service and, as such, the Backups service must be enabled. See [Enable Backups](/docs/products/storage/backups/guides/enable/).
-{{</ note >}}
+{{< /note >}}
 
 {{< note type="alert" >}}
 Only a *single* manual snapshot can be stored for a Compute Instance. Taking a new snapshot overwrites any previously saved manual snapshot.

@@ -30,7 +30,7 @@ This guide provides an introduction to systemd by taking a closer look at system
 
 {{< note respectIndent=false >}}
 All examples in this guide were created with a Linode running Ubuntu 18.04.
-{{</ note >}}
+{{< /note >}}
 
 ## The Linux Boot Process and systemd
 
@@ -164,7 +164,7 @@ A mount unit file must contain a `[Mount]` section. The example mount unit file 
 
 {{< note respectIndent=false >}}
 The official systemd manual notes that configuring mount points through `/etc/fstab` is the recommended approach. systemd has a `system-fstab-generator` that translates the information in the fstab file into systemd mount and swap units at runtime.
-{{</ note >}}
+{{< /note >}}
 
 There are many other unit file types available in systemd. Read the [Use systemd to Start a Linux Service at Boot](/docs/guides/start-service-at-boot/) guide to become more familiar with the service unit type.
 
@@ -182,7 +182,7 @@ You will need three separate files:
 
 {{< note respectIndent=false >}}
 Your script, service unit file, and timer unit file should all have `644` read and write permissions.
-{{</ note >}}
+{{< /note >}}
 
 Below is the script that creates a backup `.sql` file named for a database named `testdb`. The script will append a date and timestamp to the file name:
 

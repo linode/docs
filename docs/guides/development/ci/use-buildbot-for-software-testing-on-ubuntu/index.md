@@ -54,7 +54,7 @@ Replace each instance of `example.com` in this guide with your Buildbot site's d
 
     {{< note respectIndent=false >}}
   The steps to install NGINX will be covered in the [Set up the Buildbot Master Web Interface](/docs/guides/use-buildbot-for-software-testing-on-ubuntu/#configure-buildbot-master#setup-buildbot-master-web-interface) section of the guide.
-    {{</ note >}}
+    {{< /note >}}
 
 ## Install Buildbot
 

@@ -51,7 +51,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 The Linode kernel does not support SELinux by default. However, all new Linodes running CentOS 7 use the distribution provided kernel, which has **SELinux enabled by default**.
 
 If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
-    {{</ note >}}
+    {{< /note >}}
 
 ## Install Supporting SELinux Packages
 
@@ -105,7 +105,7 @@ SELINUXTYPE=targeted
 
       {{< note respectIndent=false >}}
 You can update the `SELINUX` directive with any of the available SELinux [states](#selinux-states) or [modes](#selinux-modes).
-      {{</ note >}}
+      {{< /note >}}
 
 - Reboot your Linode for the changes to take effect:
 
@@ -128,7 +128,7 @@ When SELinux is enabled, it can run in either *enforcing* or *permissive* modes.
 
 {{< note respectIndent=false >}}
 If SELinux is currently disabled, update your SELinux configuration file with the `SELINUX` directive set to `enabled`, then reboot your system, and SSH back into your Linode. These steps are outlined in the [SELinux States](#selinux-states) section of the guide.
-{{</ note >}}
+{{< /note >}}
 
  - In enforcing mode, SELinux enforces its policies on your system and denies access based on those policies. Use the following command to view SELinux policy modules currently loaded into memory:
 

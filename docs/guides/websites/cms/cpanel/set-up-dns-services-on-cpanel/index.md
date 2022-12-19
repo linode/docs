@@ -112,7 +112,7 @@ Complete the following steps using Linode Cloud Manager:
 
 {{< note respectIndent=false >}}
 Creating a domain also creates its corresponding domain zone.
-{{</ note >}}
+{{< /note >}}
 
 1.  From the **Domains** section, click **Add a Domain**. The **Create a Domain** panel appears where you can fill out the form fields with your domain's information.
     ![add a secondary zone](secondary_zone.png)

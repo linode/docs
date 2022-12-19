@@ -199,7 +199,7 @@ Rancher is shipped with a node driver for Linode that is activated by default. N
 
     {{< note respectIndent=false >}}
 The Linode node driver **does not** install the Linode CCM and CSI for your new clusters. Further instructions for enabling these features are listed in the [Provision a Cluster](#provision-a-cluster) section. You should wait until the node driver is listed as **Active** before moving on.
-    {{</ note >}}
+    {{< /note >}}
 
     {{< disclosure-note "What are the Linode CCM and CSI?" >}}
 The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Controller Manager) and [CSI](https://github.com/linode/linode-blockstorage-csi-driver) (Container Storage Interface) are Kubernetes addons published by Linode. These addons provide additional integrations with the Linode cloud platform. Specifically, you can use them to create NodeBalancers, DNS records, and Block Storage Volumes.

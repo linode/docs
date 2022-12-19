@@ -123,7 +123,7 @@ This command brings your branch back to where it was before you started the merg
 
 {{< note respectIndent=false >}}
 Remember to commit or [stash](https://git-scm.com/docs/git-stash) any uncommitted changes in your working branch prior to starting a merge. Otherwise, `git merge --abort` may have trouble reconstructing the pre-merge state.
-{{</ note >}}
+{{< /note >}}
 
 ## Git Reset Hard Head: Resetting After Making a Mistake
 
@@ -133,7 +133,7 @@ When resolving a merge conflict, you might accidentally merge an unwanted change
 
 {{< note respectIndent=false >}}
 Remember to commit or stash any uncommitted changes in your working directory, since `git reset --hard` wipes away any local changes that have not been committed.
-{{</ note >}}
+{{< /note >}}
 
 ## Completing a Merge After Fixing a Merge Conflict
 
@@ -143,7 +143,7 @@ Remember to commit or stash any uncommitted changes in your working directory, s
 
     {{< note respectIndent=false >}}
 You can also use `git commit`. This method doesn't check for unresolved conflicts, so it’s not as safe as `git merge --continue`.
-    {{</ note >}}
+    {{< /note >}}
 
 - If you resolve conflicts on the command line, instead of using a merge tool, it’s a good idea to use the [Grep command](/docs/guides/how-to-use-grep/) to search for conflict markers that you may have missed.
 
@@ -209,7 +209,7 @@ Commit the new changes and complete the merge using the following command:
 
 {{< note respectIndent=false >}}
 The `-a --no-edit` option allows you to preserve the commit message used in the commit prior to the merge conflict, while incorporating the changes you just made.
-{{</ note >}}
+{{< /note >}}
 
 ### Renamed File or Directory in Upstream Branch
 

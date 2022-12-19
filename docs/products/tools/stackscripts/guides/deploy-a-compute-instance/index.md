@@ -42,4 +42,4 @@ Linode does not verify the accuracy of any community submitted StackScripts. Pri
 
 {{< note >}}
 Depending on the contents of your StackScript, it may take a few minutes for the script to finish executing.
-{{</ note >}}
+{{< /note >}}

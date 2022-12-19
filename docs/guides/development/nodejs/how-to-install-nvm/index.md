@@ -40,7 +40,7 @@ aliases: ['/development/nodejs/how-to-install-nvm/']
 
     {{< note respectIndent=false >}}
 As of writing this guide, the latest LTS version of [Node.js](https://nodejs.org/en/download/) is `v12.16.2`. Update this command with the version of Node.js you would like to install.
-    {{</ note >}}
+    {{< /note >}}
 
         nvm install 12.16.2
 

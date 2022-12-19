@@ -30,7 +30,7 @@ Use fsck to check your file system if your system fails to boot, if files on a s
 
 {{< note respectIndent=false >}}
 To run this utility you will want to boot into rescue mode. Please see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
-{{</ note >}}
+{{< /note >}}
 
 ### Verify Disks are Unmounted
 

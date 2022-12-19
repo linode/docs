@@ -167,7 +167,7 @@ end
   To view a list of all nodes managed by your Chef server, issue the following command from your workstation:
 
     knife node list
-    {{</ note >}}
+    {{< /note >}}
 
 1. From your workstation, apply the configurations defined in the cookbook by running the chef-client on your node. Replace `nodename` with the name of your node:
 
@@ -488,7 +488,7 @@ Chef contains a feature known as *data bags*. Data bags store information, and c
 
     {{< note respectIndent=false >}}
 Some knife commands require that information be edited as JSON data using a text editor. Your `config.rb` file should contain a configuration for the text editor to use for such commands. If your `config.rb` file does not already contain this configuration, add `knife[:editor] = "/usr/bin/vim"` to the bottom of the file to set vim as the default text editor.
-{{</ note >}}
+{{< /note >}}
 
     You will be asked to edit the `rtpass.json` file:
 

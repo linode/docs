@@ -133,7 +133,7 @@ protect=1
   Python >= 2.7 is required in order to run the Wazuh API. To find out which version of Python is running on your Linode, issue the following command:
 
       python --version
-      {{</ note >}}
+      {{< /note >}}
 
 ## Install Elasticsearch, Logstash, and Kibana
 

@@ -24,7 +24,7 @@ Terraform is an orchestration tool that uses declarative code to build, change, 
 
 {{< note respectIndent=false >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+. To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -78,7 +78,7 @@ When importing your infrastructure to Terraform, failure to accurately provide y
 
     {{< note respectIndent=false >}}
 The example resource block defines `example_label` as the label. This can be changed to any value you prefer. This label is used to reference your Linode resource configuration within Terraform. It does not have to be the same label originally assigned to the Linode when it was created outside of Terraform.
-{{</ note >}}
+{{< /note >}}
 
     {{< file "linode_import.tf" >}}
 provider "linode" {
@@ -255,7 +255,7 @@ resource "linode_instance" "example_label" {
 
     {{< note respectIndent=false >}}
 If your Linode uses more than two disks (for instance, if you have attached a [Block Storage Volume](/docs/products/storage/block-storage/)), you need to add those disks to your Linode resource configuration block. In order to add a disk, you must add the disk to the `devices` stanza and create an additional `disk` stanza.
-    {{</ note >}}
+    {{< /note >}}
 
     {{< note respectIndent=false >}}
 If you have more than one [configuration profile](/docs/guides/linode-configuration-profiles/), you must choose which profile to boot from with the `boot_config_label` key. For example:
@@ -263,7 +263,7 @@ If you have more than one [configuration profile](/docs/guides/linode-configurat
     resource "linode_instance" "example_label" {
         boot_config_label = "My Debian 9 Disk Profile"
     ...
-{{</ note >}}
+{{< /note >}}
 
 1.  To check for errors in your configuration, run the `plan` command:
 

@@ -46,7 +46,7 @@ Once your application has been deployed on multiple Compute Instances, you are r
 
     {{< note >}}
     The following recommended parameters can be used for deploying a website. For other applications or to learn more about these settings, see the [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/) guide.
-    {{</ note >}}
+    {{< /note >}}
 
     - **Port:** For load balancing a website, configure two ports: port 80 and port 443. Each of these ports can be configured separately. See [Configuration Options > Port](/docs/products/networking/nodebalancers/guides/configure/#port).
 

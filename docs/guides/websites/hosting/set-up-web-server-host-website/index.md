@@ -114,7 +114,7 @@ If you're new to Linode, or if you've just purchased a new domain name, the firs
 
 {{< note respectIndent=false >}}
 Creating a domain also creates its corresponding domain zone. For a deep dive into the Linode DNS Manager, see our [DNS Manager](/docs/products/networking/dns-manager/) guide.
-{{</ note >}}
+{{< /note >}}
 
 1.  From the **Domains** section, click on **Create Domain**. The domain creation page is displayed.
 

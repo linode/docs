@@ -83,7 +83,7 @@ For this guide LXD version 3.3 or later is needed. Check the version with the fo
 If the version is not 3.3 or later, or if your preferred distribution does not have LXD installed by default, update to the latest version. Install the snap package as instructed in [A Beginner's Guide to LXD: Setting Up an Apache Webserver In a Container](/docs/guides/beginners-guide-to-lxd/). Then use the following command:
 
     sudo lxd.migrate
-{{</ note >}}
+{{< /note >}}
 
 1. This guide requires you to own a domain name. This guide uses the hostnames `apache1.example.com` and `nginx1.example.com` for the two example WordPress websites. Throughout this guide, replace these names with subdomains under the domain that you own. Be sure to set up their DNS entries to point them to the IP address of your server. Specifically, create [A records](/docs/guides/dns-overview/#a-and-aaaa) for your subdomains.
 

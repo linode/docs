@@ -68,7 +68,7 @@ For the steps in this section, [connect to your Linode via SSH](/docs/guides/set
 
 {{< note respectIndent=false >}}
 If you don't remember your root password, [reset it through the Manager](/docs/products/platform/accounts/guides/manage-users/#resetting-your-linode-manager-password).
-{{</ note >}}
+{{< /note >}}
 
 ### Who Has SSH Access to Your Linode?
 

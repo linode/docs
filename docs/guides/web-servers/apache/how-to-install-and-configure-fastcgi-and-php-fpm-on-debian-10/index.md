@@ -36,7 +36,7 @@ This guide assumes that you are familiar and comfortable with setting up a [LAMP
 
     {{< note respectIndent=false >}}
 This guide's examples will use PHP version 7.3. When running commands related to PHP, ensure you replace any version numbers with your own system's PHP version.
-    {{</ note >}}
+    {{< /note >}}
 
 ## Install mod_fcgid and PHP-FPM
 

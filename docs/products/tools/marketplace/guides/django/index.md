@@ -47,7 +47,7 @@ external_resources:
 
 {{< note >}}
 The Django Marketplace App will assign `DjangoApp` as the [Django project name](https://docs.djangoproject.com/en/3.0/intro/tutorial01/#creating-a-project).
-{{</ note >}}
+{{< /note >}}
 
 After Django has finished installing, you will be able to access your Django site at your Linode's IPv4 address, for instance: `http://yourlinodeip:8000`.
 

@@ -35,7 +35,7 @@ This guide assumes you have a working Kubernetes cluster that was deployed using
 
     {{< note respectIndent=false >}}
 An LKE cluster will already have Linode's Cloud Controller Manager installed in the cluster's control plane. If you **did not** deploy your Kubernetes cluster using LKE and would like to make use of the Linode Cloud Controller Manager, see [Installing the Linode CCM on an Unmanaged Kubernetes Cluster - A Tutorial](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/).
-    {{</ note >}}
+    {{< /note >}}
 
 
 ## Create a new User

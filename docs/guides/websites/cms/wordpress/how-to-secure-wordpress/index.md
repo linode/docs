@@ -160,7 +160,7 @@ To disable directory browsing, create an `.htaccess` file in your site’s root 
 
 {{< note respectIndent=false >}}
 If an `.htaccess` file already exists you do not need to create a new one, simply add the following line to the file.
-{{</ note >}}
+{{< /note >}}
 
 {{< file ".htaccess" >}}
 Options -Indexes

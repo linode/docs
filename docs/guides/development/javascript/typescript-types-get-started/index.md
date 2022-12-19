@@ -24,7 +24,7 @@ The three essential primitive types in JavaScript and TypeScript are `string`, `
 
 {{< note respectIndent=false >}}
 All three primitive types are spelled in lower-case. There are capitalized variants of these words that compile successfully in TypeScript. These are referred to as *boxed types*. When a primitive type is boxed it is "wrapped" in an object and can then behave like an object.
-{{</ note >}}
+{{< /note >}}
 
 The example TypeScript code below demonstrates how to assign values of all three primitive types to variables.
 
@@ -73,7 +73,7 @@ var b3 = !true; //both
 
 {{< note respectIndent=false >}}
 You don’t actually get an immutable variable when you use `const`. To do that, declare an object member `readonly`.
-{{</ note >}}
+{{< /note >}}
 
 ## The Any Type
 
@@ -121,7 +121,7 @@ In TypeScript, you can create types from other types. The most common way to do 
 
 {{< note respectIndent=false >}}
 Notice the difference in syntax when declaring an interface and a type alias. An interface declaration does not make use of the `=` sign.
-{{</ note >}}
+{{< /note >}}
 
 {{< file "object_types_example.ts" typescript >}}
 //objects

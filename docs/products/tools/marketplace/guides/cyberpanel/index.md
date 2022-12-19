@@ -89,7 +89,7 @@ aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel
 
     {{< note >}}
     CyberPanel uses a self-signed certificate issued by LiteSpeedCommunity. Because it is not signed by a common Certificate Authority, your browser may warn about the security of the connection and require you to add a security exception.
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Log in to the administration panel using the username `admin` and the password you obtained in step three.
 

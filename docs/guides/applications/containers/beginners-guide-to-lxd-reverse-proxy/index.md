@@ -70,7 +70,7 @@ For this guide LXD version 3.3 or later is needed. Check the version with the fo
 If the version is not 3.3 or later, update to the latest version by installing the snap package as instructed in [A Beginner's Guide to LXD: Setting Up an Apache Webserver In a Container](/docs/guides/beginners-guide-to-lxd/) and use the following command:
 
     sudo lxd.migrate
-{{</ note >}}
+{{< /note >}}
 
 2. This guide uses the hostnames `apache1.example.com` and `nginx1.example.com` for the two example websites. Replace these names with hostnames you own and setup their DNS entries to point them to the IP address of the server you created. For help with DNS see our [DNS Manager Guide](/docs/products/networking/dns-manager/).
 

@@ -186,7 +186,7 @@ These certificates can be entirely administered through the Cloudflare website. 
 
 {{< note respectIndent=false >}}
 If you would like to upload your own SSL certificate from another authority, click the **Upload Custom SSL Certificate** button in the Edge Certificates panel. This functionality requires that you subscribe to the Business Website Cloudflare tier.
-{{</ note >}}
+{{< /note >}}
 
 ## Next Steps
 

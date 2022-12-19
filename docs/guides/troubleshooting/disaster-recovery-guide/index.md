@@ -43,7 +43,7 @@ The [Using the Lish Console](/docs/guides/lish/) contains more information on Li
 
 {{< note respectIndent=false >}}
 Lish is an out-of-band management tool, so you can use your root login credentials, if needed.
-{{</ note >}}
+{{< /note >}}
 
 ## Network Helper
 

@@ -159,7 +159,7 @@ sub check_category {
 Your Perl script must be executable in order to run. To add these permissions, execute the following command:
 
     chmod +x command_length.pl
-    {{</ note >}}
+    {{< /note >}}
 
     Open the `.command_categories.txt` file to view the categorizations created by your Perl script. Your file should resemble the following example:
 
@@ -417,7 +417,7 @@ func main() {
 
     {{< note respectIndent=false >}}
 In this example, your JSON data is hardcoded in `pieChart.html` for simplicity. Web browser security constraints restrict how a document or script loaded from one origin can interact with a resource from another origin. However, you may consider using the [d3-fetch module](https://github.com/d3/d3-fetch/blob/v1.1.2/README.md#json) to fetch your JSON data from a specific URL.
-    {{</ note >}}
+    {{< /note >}}
 
       {{< file "~/pieChart.html" javascript >}}
 <!DOCTYPE html>

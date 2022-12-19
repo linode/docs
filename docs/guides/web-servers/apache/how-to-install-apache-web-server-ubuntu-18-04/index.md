@@ -32,7 +32,7 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) 
 
 {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -196,7 +196,7 @@ If you would like to enable Perl support, add the following lines above the clos
 {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
 Options ExecCGI
 AddHandler cgi-script .pl
-{{</ note >}}
+{{< /note >}}
 
 {{< /file >}}
 

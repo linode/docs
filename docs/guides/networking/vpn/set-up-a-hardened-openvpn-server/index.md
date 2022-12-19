@@ -80,7 +80,7 @@ By default, Linode distribution images are built with network interfaces renamed
     ip link show
 
 Replace any instances of `eth0` with the name of your network interface.
-    {{</ note >}}
+    {{< /note >}}
 
     {{< file "/etc/iptables/rules.v4" >}}
 *filter

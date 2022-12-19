@@ -47,7 +47,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 {{< note respectIndent=false >}}
 [Python 3.6](https://docs.python.org/3.6/whatsnew/3.6.html) is the default Python interpreter for the Ubuntu 18.04 distribution.
-{{</ note >}}
+{{< /note >}}
 
 1.  Install the virtualenv tool using your package manager:
 

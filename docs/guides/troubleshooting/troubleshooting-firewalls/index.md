@@ -61,7 +61,7 @@ If you are using Linode Cloud Firewall, then it's important to verify which Clou
 
     {{< note respectIndent=false >}}
 If the Cloud Firewall is assigned to more than one Linode, modifying the Cloud Firewall rules affect all Linodes assigned to the Cloud Firewall.
-    {{</ note >}}
+    {{< /note >}}
 
     {{< note respectIndent=false >}}
 Cloud Firewall rules are applied on the network level and are not detectable internally on Linodes. For more information on setting up and using Cloud Firewall, see the guide [A Tutorial for Adding and Configuring Linode Cloud Firewalls](/docs/products/networking/cloud-firewall/get-started/).
@@ -73,7 +73,7 @@ Cloud Firewall rules are applied on the network level and are not detectable int
 
 {{< note respectIndent=false >}}
 All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/guides/lish/).
-{{</ note >}}
+{{< /note >}}
 
 To see all active UFW rules, enter the following command:
 
@@ -108,7 +108,7 @@ For example, to delete the Allow rule for port 80 from the example output above,
 
 {{< note respectIndent=false >}}
 All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/guides/lish/).
-{{</ note >}}
+{{< /note >}}
 
 To list all configurations for all zones, enter the following command:
 
@@ -127,7 +127,7 @@ For more information on understanding firewalld, see our [Introduction to Firewa
 
 {{< note respectIndent=false >}}
 All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/guides/lish/).
-{{</ note >}}
+{{< /note >}}
 
 To list all active firewall rules using iptables, enter the following commands for IPv4 and IPv6 respectfully:
 

@@ -140,7 +140,7 @@ dns_alt_names = puppet,puppet.example.com
         export PATH=/opt/puppetlabs/bin:$PATH
 
     A more permanent solution would be to add this to your `.profile` or `.bashrc` files.
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Update your Puppet master's `/etc/hosts` to resolve your managed nodes' IP addresses. For example, your `/etc/hosts` file might look like the following:
 

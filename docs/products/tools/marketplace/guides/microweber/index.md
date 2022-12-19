@@ -16,7 +16,7 @@ title: "Deploy Microweber through the Linode Marketplace"
 
 {{< note >}}
 When self-hosting Microweber, you are responsible for the security of your server. Follow best practices for securing, updating, and backing up the software on your Compute Instance. See [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 

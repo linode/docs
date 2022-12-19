@@ -52,7 +52,7 @@ After the deployment process has finished and your Compute Instance has rebooted
 
     {{< note >}}
     If you do not see the login screen, the deployment process may not yet be complete.
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Once logged in, the Admin panel should appear.
 

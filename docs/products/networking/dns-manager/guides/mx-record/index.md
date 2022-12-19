@@ -22,7 +22,7 @@ An **MX** (*mail exchanger*) record sets the mail delivery destination for a dom
 
     {{< note >}}
     The mail server does not need to be hosted on a Compute Instance. You can also use a domain for a third-party email provider, like Gmail (through Google Workspace), Outlook (through Office 365), or ProtonMail (on plans that support custom domains).
-    {{</ note >}}
+    {{< /note >}}
 
 - **Preference** (also called *priority*): A number representing the priority of the mail server, with lower numbers having higher priority. This value matters when you have more than one MX record for the same subdomain.
 

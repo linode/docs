@@ -38,7 +38,7 @@ This guide provides an introduction to Ansible Playbook concepts, like tasks, pl
 
     {{< note respectIndent=false >}}
 When following the [Getting Started with Ansible](/docs/guides/getting-started-with-ansible/#set-up-the-control-node) guide to deploy a Linode, it is not necessary to add your Ansible control node's SSH key-pair to your managed Linode. This step will be completed using a Playbook later on in this guide.
-    {{</ note >}}
+    {{< /note >}}
 
 ## Playbook Basics
 
@@ -106,7 +106,7 @@ When creating a limited user account you are required to create a host login pas
 
 {{< note respectIndent=false >}}
 [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypt-string-for-use-in-yaml) can also be used to encrypt sensitive data. This guide will not make use of Ansible Vault, however, you can consult the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/) guide to view an example that makes use of this feature.
-{{</ note >}}
+{{< /note >}}
 
 1. On your Ansible control node, create a password hash on your control node for Ansible to use in a later step. An easy method is to use Python's PassLib library, which can be installed with the following commands:
 
@@ -236,7 +236,7 @@ This next Playbook will take care of some common server setup tasks, such as set
 
     {{< note respectIndent=false >}}
 By default, Ansible will use your current local system's username to authenticate to your Linode. If your local username is not the same as your Linode's limited user account name, you will need to pass the `-u` option along with the limited user account name to appropriately authenticate. Ensure you replace `limitedUserAccountName` with the limited user account name you created in the [Create the Limited User Account Playbook](#create-the-limited-user-account-playbook) section of the guide.
-    {{</ note >}}
+    {{< /note >}}
 
         ansible-playbook common_server_setup.yml --ask-become-pass -u limitedUserAccountName
 
@@ -257,7 +257,7 @@ You are now ready to create the `setup_webserver.yml` Playbook that will get you
 
         {{< note respectIndent=false >}}
 In order to avoid using plain text passwords in your Playbooks, you can use [Ansible-Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypt-string-for-use-in-yaml) and variables to encrypt sensitive data. You can consult the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/) guide to view an example that makes use of this feature.
-        {{</ note >}}
+        {{< /note >}}
 
         {{< file "setup_webserver.yml" yaml >}}
 ---

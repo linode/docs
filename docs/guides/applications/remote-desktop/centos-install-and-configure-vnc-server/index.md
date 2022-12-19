@@ -115,7 +115,7 @@ The [TigerVNC documentation](https://tigervnc.org/doc/Xvnc.html) provides a comp
 
     {{< note respectIndent=false >}}
 The remainder of this guide assumes the VNC server is on port `5901`. This number is derived from the VNC servers operating on port `5900` plus the display port number that is used.
-{{</ note >}}
+{{< /note >}}
 
 ## Secure Your VNC Connection
 

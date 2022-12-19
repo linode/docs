@@ -25,7 +25,7 @@ The Atlanta data center was upgraded in April of 2021 to improve performance and
 
 {{< note respectIndent=false >}}
 This guide discusses a temporary workaround specific to the Atlanta data center. Future planned network upgrades may impact this feature again and may require additional configuration.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 

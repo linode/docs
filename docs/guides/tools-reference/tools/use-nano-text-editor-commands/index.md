@@ -57,7 +57,7 @@ You can make changes to the file using the Nano editor. You may exit the file by
 
 {{< note respectIndent=false >}}
 Nano only prompts you if actual changes were made to the file. If you didn't make any changes, you simply exit the editor and you get no prompts.
-{{</ note >}}
+{{< /note >}}
 
 When prompted, select press *Y* and then write the name of the file.
 

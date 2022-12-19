@@ -67,7 +67,7 @@ After Zabbix has finished installing, you must first obtain the login credential
 
     {{< note >}}
     Zabbix uses a self-signed certificate. Because it is not signed by a common Certificate Authority, your browser may warn you about the security of the connection and require you to add a security exception.
-    {{</ note >}}
+    {{< /note >}}
 
     ![A screenshot of the Zabbix log in prompt](zabbix-login.png)
 

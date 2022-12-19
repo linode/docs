@@ -23,7 +23,7 @@ This guide covers upgrading your existing system through performing a *clean ins
 
 {{< note respectIndent=false >}}
 Regardless of your chosen upgrade path ([inline upgrade](#inline-upgrade) or [clean install](#clean-install)), knowledge of your application, your application stack, and general systems administration is important and will help contribute to a seamless and successful upgrade.
-{{</ note >}}
+{{< /note >}}
 
 ## Reasons to Upgrade to a Newer Major Distribution Version
 
@@ -51,7 +51,7 @@ This entails deploying the desired distribution version to a new server, potenti
 
 {{< note respectIndent=false >}}
 DevOps provisioning tools (such as [Terraform](/docs/guides/beginners-guide-to-terraform/) and [Ansible](/docs/guides/getting-started-with-ansible/)), container platforms ([Docker](/docs/guides/introduction-to-docker/)), and orchestration systems ([Kubernetes](/docs/guides/beginners-guide-to-kubernetes/)) generally make deploying system updates much easier. If your application or DevOps process uses one of these tools, upgrading to the latest operating system may be as simply as adjusting a line in a configuration file. In those cases, consult the tool's documentation to learn more about targeting a newer Linux distribution.
-{{</ note >}}
+{{< /note >}}
 
 ## Before you Begin
 

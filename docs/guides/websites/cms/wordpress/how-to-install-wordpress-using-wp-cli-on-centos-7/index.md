@@ -58,7 +58,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 When following the steps to [install PHP](#install-php) in the [Install a LAMP Stack on CentOS 7](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/) guide, you will need to issue the command included below to install the required PHP packages. The command in the linked guide does not currently work with CentOS 7.
 
     sudo apt install php libapache2-mod-php php-mysql
-    {{</ note >}}
+    {{< /note >}}
 
 ## Install WP-CLI
 
@@ -147,7 +147,7 @@ In this section, you will learn some basics of how WP-CLI works. This will help 
 
     {{< note respectIndent=false >}}
 Do not issue the example `wp` command. You will install WordPress in the [Download and Configure WordPress](#download-and-configure-wordpress) section of the guide.
-    {{</ note >}}
+    {{< /note >}}
 
         wp core download
 
@@ -232,7 +232,7 @@ FLUSH PRIVILEGES;
 
     {{< note respectIndent=false >}}
 Use **netstat** to confirm the port used by MariaDB with the command `netstat -tln`. The port in use will typically be `3306`.
-        {{</ note >}}
+        {{< /note >}}
 
 1. Configure SELinux to allow your Apache web server to make database connections:
 
@@ -293,7 +293,7 @@ You may need to log out of your SSH session and log back in for the user group c
 {{< output >}}
 user wheel apache
 {{</ output >}}
-    {{</ note >}}
+    {{< /note >}}
 
 1. Change the user and group ownership of the `/var/www` directory. This will allow the `apache` user to write to the directory when caching downloaded files to the `/var/www/.wp-cli/cache` directory:
 
@@ -374,7 +374,7 @@ IncludeOptional sites-enabled/*.conf
 
     {{< note respectIndent=false >}}
 For more details on configuring your Apache virtual hosts file, see [Apache's official documentation](http://httpd.apache.org/docs/current/vhosts/).
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Visit `http://example.com/wp-admin` (or `http://<Linode IP address>/wp-admin` if you haven't set up a domain) and verify that you can log in with the WordPress user you created in the [Download and Configure WordPress](#download-and-configure-wordpress) section of the guide.
 
@@ -510,7 +510,7 @@ To update your WordPress site:
 
 {{< note respectIndent=false >}}
 For more details on best practices when updating your WordPress site, see [WordPress' official documentation](https://wordpress.org/support/article/updating-wordpress/).
-{{</ note >}}
+{{< /note >}}
 
 1. Navigate to your WordPress site's root directory. Replace `example.com` with your own site's root directory.
 

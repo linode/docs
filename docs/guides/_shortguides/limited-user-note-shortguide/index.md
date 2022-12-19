@@ -16,10 +16,8 @@ show_on_rss_feed: false
 aliases: ['/limited-user-note-shortguide/']
 ---
 
-{{< note respectIndent=false >}}
-
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, visit our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 All configuration files should be edited with elevated privileges. Remember to include `sudo` before running your text editor.
-
 {{< /note >}}

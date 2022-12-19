@@ -147,7 +147,7 @@ Hello, Sunshine!
 
 {{< note respectIndent=false >}}
 If the `docker run` command is executed and the Docker image is not available in your current working directory, it is pulled from the Docker registry instead.
-{{</ note >}}
+{{< /note >}}
 
 ## Further Reading
 

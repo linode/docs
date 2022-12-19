@@ -25,7 +25,7 @@ Brute-force attacks can be extremely powerful and may result in thousands of fai
 
 {{< note respectIndent=false >}}
 This guide uses Ubuntu, but the commands are similar for other systems.
-{{</ note >}}
+{{< /note >}}
 
 1.  Complete the [Getting Started](/docs/guides/getting-started/) guide.
 
@@ -74,7 +74,7 @@ Fail2Ban uses the default configuration in the `jail.conf` file. However, it is 
 
 {{< note respectIndent=false >}}
 A Fail2ban jail is a configuration file that contains filters or arguments that protect your system or a particular service
-{{</ note >}}
+{{< /note >}}
 
 ## Creating SSH Jails With Fail2Ban
 
@@ -101,7 +101,7 @@ A Fail2ban jail is a configuration file that contains filters or arguments that 
 
     {{< note respectIndent=false >}}
 You can customize the Fail2Ban configuration options and values as per your security requirements.
-{{</ note >}}
+{{< /note >}}
 
     {{< file "/etc/fail2ban/jail.local" >}}
 [sshd]
@@ -117,7 +117,7 @@ ignoreip = 127.0.0.1
 
     {{< note respectIndent=false >}}
 You can disable a Fail2Ban jail by setting the enabled configuration to false
-{{</ note >}}
+{{< /note >}}
 
 1.  After you have specified the configuration options and their respective values, save the file and restart the Fail2Ban service with the following command:
 

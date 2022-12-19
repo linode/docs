@@ -126,7 +126,7 @@ Although MySQL accepts passwords with a special character, for example an exclam
 
     {{< note respectIndent=false >}}
 If you encounter errors related to writing to the `sites/default` directory, follow the steps in the [Setting the Site's Ownership and Permissions](#setting-the-site-s-ownership-and-permissions) section to ensure the web server belongs to the current user's group.
-    {{</ note >}}
+    {{< /note >}}
 
     After the installation is complete, Drush creates a user, named `admin`, and a random password. An example is pictured below. These credentials are used for the Drupal sign-in page.
 

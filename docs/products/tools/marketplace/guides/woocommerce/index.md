@@ -78,7 +78,7 @@ Open a web browser and navigate to `http://[domain]`, replacing *[domain]* with 
 
     {{< note >}}
     Some WooCommerce features and themes require a monthly or yearly paid subscription or otherwise cost money. When going through the Setup Wizard, be aware of the cost of each optional feature you select.
-    {{</ note >}}
+    {{< /note >}}
 
 1. Depending on the options you select, you may be asked to create a [Jetpack](https://jetpack.com/) account or connect your existing account. This enables you to use Jetpack's suite of tools within WordPress. Jetpack offers a free tier as well as multiple paid tiers. See [Jetpack Pricing](https://cloud.jetpack.com/pricing). You can safely ignore this screen if you do not wish to use Jetpack services.
 

@@ -45,7 +45,7 @@ This guide’s example instructions will create a [1GB Linode](https://www.linod
 
 {{< note >}}
 The steps outlined in this guide require [Ansible version 2.8](https://github.com/ansible/ansible/releases/tag/v2.8.0), and were created using Ubuntu 18.04.
-{{</ note >}}
+{{< /note >}}
 
 -   Add a limited user to your Linode following the steps below, created by following the [Add a limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of our  [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. Ensure that all commands are entered as your limited user.
 
@@ -136,7 +136,7 @@ You can now begin creating Linode instances using Ansible. In this section, you 
 
         {{< note respectIndent=false >}}
   Usage of `groups` is deprecated, but still supported by Linode's API v4. The [Linode dynamic inventory module](#linode-dynamic-inventory-module) requires groups to generate an Ansible inventory and will be used later in this guide.
-        {{</ note >}}
+        {{< /note >}}
 
     - The`register` keyword defines a variable name, `my_linode` that will store `linode_v4` module return data. For instance, you could reference the `my_linode` variable later in your Playbook to complete other actions using data about your Linode. This keyword is not required to deploy a Linode instance, but represents a common way to declare and use variables in Ansible Playbooks. The task in the snippet below will use Ansible's [debug module](https://docs.ansible.com/ansible/2.4/debug_module.html) and the `my_linode` variable to print out a message with the Linode instance's ID and IPv4 address during Playbook execution.
 
@@ -181,7 +181,7 @@ Ansible Vault allows you to encrypt sensitive data, like passwords or tokens, to
 
 {{< note respectIndent=false >}}
 Ansible Vault can also encrypt entire files containing sensitive values. View Ansible's documentation on [Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#what-can-be-encrypted-with-vault) for more information.
-{{</ note >}}
+{{< /note >}}
 
 1.  Create your Ansible Vault password file and add your password to the file. Remember the location of the password file was configured in the `ansible.cfg` file in the [Configure Ansible](#configure-ansible) section of this guide.
 
@@ -283,7 +283,7 @@ Ansible uses *inventories* to manage different hosts that make up your infrastru
 
 {{< note respectIndent=false >}}
 The dynamic inventory plugin for Linode was enabled in the Ansible configuration file created in the [Configure Ansible](#configure-ansible) section of this guide.
-{{</ note >}}
+{{< /note >}}
 
 ### Configure the Plugin
 

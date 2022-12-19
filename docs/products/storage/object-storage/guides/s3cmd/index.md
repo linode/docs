@@ -23,7 +23,7 @@ To install s3cmd on a Mac, [Homebrew](https://brew.sh/) can be used:
 On macOS, s3cmd might fail to install if you do not have XCode command line tools installed. If that is the case, run the following command:
 
     xcode-select --install
-{{</ note >}}
+{{< /note >}}
 
 ### Linux
 
@@ -219,7 +219,7 @@ While you can utilize the `put` command to upload entire directories, the `sync`
 
 {{< note >}}
 To upload the current directory, replace *[local-path]* with `./`.
-{{</ note >}}
+{{< /note >}}
 
 **Example:** Upload the current directory to the bucket labeled *example-bucket* and make all files public.
 

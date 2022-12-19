@@ -24,7 +24,7 @@ The Shutdown Watchdog feature detects when a Compute Instance is powered off and
 
 {{< note respectIndent=false >}}
 Shutdown Watchdog can power back on a Compute Instance up to 5 times within a 15 minute period. If there is a recurring issue that is causing 6 or more shutdowns within this time period, the instance remains powered off until it is manually powered back on. This is to prevent endless reboot loops if there is an issue with the internal software of a Compute Instance.
-{{</ note >}}
+{{< /note >}}
 
 ## Enable (or Disable) Shutdown Watchdog
 
@@ -57,7 +57,7 @@ An *unexpected shutdown* is when a Compute Instance powers off without receiving
 
 {{< note respectIndent=false >}}
 The Shutdown Watchdog feature never *causes* a Compute Instance to shut down and only ever *powers on* an instance if it detects an unexpected shutdown.
-{{</ note >}}
+{{< /note >}}
 
 ## Investigate the Cause of a Shutdown
 
@@ -81,7 +81,7 @@ The underlying cause of these issues can vary. The most helpful course of action
 
 {{< note respectIndent=false >}}
 Unexpected shutdowns are primarily caused by issues with the internal software configuration of a Compute Instance. To investigate these issues further, it is recommended that you reach out to your own system administrators or on our [Community Site](https://www.linode.com/community/questions/). These issues are generally [outside the scope](/docs/guides/support/#scope-of-support) of the Linode Support team.
-{{</ note >}}
+{{< /note >}}
 
 ## File System Corruption
 

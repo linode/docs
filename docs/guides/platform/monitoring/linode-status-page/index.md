@@ -92,7 +92,7 @@ You can update your component preferences or cancel your subscription to Linode 
 
 {{< note respectIndent=false >}}
 You can unsubscribe from SMS notifications by replying to any text message notification with the word "STOP".
-{{</ note >}}
+{{< /note >}}
 
 **RSS**
 

@@ -70,7 +70,7 @@ include_dir = /etc/monitorix/conf.d
 
 {{< note respectIndent=false >}}
 Debian and Ubuntu Linux systems contain an additional configuration file, `/etc/monitorix/conf.d/00-debian.conf`. This file includes Debian/Ubuntu-specific options and is read after the main Monitorix configuration file. This means any changes you make to the `/etc/monitorix/conf.d/00-debian.conf` supersede `monitorix.conf` options.
-{{</ note >}}
+{{< /note >}}
 
 1. Once you're done configuring Monitorix, restart the Monitorix service to enable your updates.
 
@@ -78,7 +78,7 @@ Debian and Ubuntu Linux systems contain an additional configuration file, `/etc/
 
 {{< note respectIndent=false >}}
 By default, Monitorix uses its built-in web server. However, it can be set to work with the [Apache](/docs/guides/web-servers/apache/), [Lighttpd](/docs/guides/web-servers/lighttpd/), or Nginx web servers.
-{{</ note >}}
+{{< /note >}}
 
 ## Getting started with Monitorix
 
@@ -88,7 +88,7 @@ Monitorix is meant to be used as an interactive program. It's not suitable for u
 
     {{< note respectIndent=false >}}
 If you are running Monitorix on your computer, instead, navigate to `http://localhost:8080/monitorix`.
-{{</ note >}}
+{{< /note >}}
 
 1. Once you have accessed the Monitorix interface, select **All graphs** from the dropdown menu and click **Ok**.
 

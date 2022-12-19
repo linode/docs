@@ -24,7 +24,7 @@ aliases: ['/platform/marketplace/how-to-deploy-grafana-with-marketplace-apps/', 
 
 {{< note >}}
 Grafana is often used alongside [Prometheus](https://prometheus.io/) for monitoring and data collection. Consider using the combined [Prometheus and Grafana Marketplace App](/docs/products/tools/marketplace/guides/prometheus-grafana/) if you intend on using both of these applications together.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -57,7 +57,7 @@ Now that your Grafana Marketplace App is deployed, you can log into Grafana to a
 
     {{< note >}}
     The Grafana Marketplace App will install and enable the [UFW firewall](/docs/guides/configure-firewall-with-ufw/) allowing TCP traffic on port `3000`.
-    {{</ note >}}
+    {{< /note >}}
 
 1. Viewing Grafana's log in page, enter in `admin` as the *username* and the Grafana password you set in the [Grafana Options](#grafana-options) section of the Cloud Manager, as the *password*. Click on the **Log In** button.
 

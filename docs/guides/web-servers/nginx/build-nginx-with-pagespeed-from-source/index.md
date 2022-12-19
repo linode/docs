@@ -29,7 +29,7 @@ There are currently two ways to get PageSpeed and NGINX working together:
 
     {{< note respectIndent=false >}}
 Installing NGINX from source requires several manual installation steps and will require manual maintenance when performing tasks like version upgrades. To install NGINX using a package manager see the [NGINX](/docs/web-servers/nginx/) section.
-    {{</ note >}}
+    {{< /note >}}
 
 This guide will show how to compile both NGINX and PageSpeed. If you would prefer to use PageSpeed as a module for NGINX, see [this NGINX blog post](https://www.nginx.com/blog/optimize-website-google-pagespeed-dynamic-module-nginx-plus/) for instructions.
 
@@ -76,7 +76,7 @@ The official [PageSpeed documentation](https://www.modpagespeed.com/doc/build_ng
 
 {{< note respectIndent=false >}}
 The automated installation script will install several compilation tools needed to install PageSpeed. If you are using a production environment, ensure you uninstall any packages that are no longer needed after the installation has completed.
-{{</ note >}}
+{{< /note >}}
 
 1.  If you plan to serve your website using TLS, install the SSL libraries needed to compile the HTTPS module for NGINX:
 

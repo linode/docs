@@ -28,7 +28,7 @@ deprecated: true
 
 {{< note respectIndent=false >}}
 Development work on the module is active. For the latest updates and validated Terraform configurations, see the module’s [GitHub repository](https://github.com/linode/terraform-linode-k8s).
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -42,13 +42,13 @@ Before starting to deploy a Kubernetes cluster with Terraform, make sure:
 
     {{< note >}}
     When creating a personal access token, ensure it is set to **Read/Write** access as new Linode servers are being created.
-    {{</ note >}}
+    {{< /note >}}
 
 4. Terraform is installed on your computer. See [Install Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) for more information.
 
     {{< note >}}
     This guide was written using [Terraform version 0.12.24](https://www.hashicorp.com/blog/announcing-terraform-0-12/). The module requires at least Terraform 0.10.
-    {{</ note >}}
+    {{< /note >}}
 
 5. And, lastly, kubectl is installed on your computer. The kubectl is necessary to connect to and manage the Kubernetes cluster; deployment using the Terraform module fails if kubectl is not installed locally. See [Install kubectl](#install-kubectl) for more information.
 
@@ -229,7 +229,7 @@ After Terraform finishes deploying the Kubernetes cluster, the `~/terraform/k8s-
 
     {{< note respectIndent=false >}}
 It is common practice to store kubeconfig files in `~/.kube` directory. By default, kubectl searches for a kubeconfig file named `config` that is located in the  `~/.kube` directory. Other kubeconfig files can also be specified by setting the `$KUBECONFIG` environment variable.
-{{</ note >}}
+{{< /note >}}
 
 1. View the nodes in the cluster using kubectl.
 
@@ -237,7 +237,7 @@ It is common practice to store kubeconfig files in `~/.kube` directory. By defau
 
     {{< note respectIndent=false >}}
 If the kubectl commands are not returning the resources and information you expect, then the client may be assigned to the wrong cluster context. Visit the [Troubleshooting Kubernetes](/docs/guides/troubleshooting-kubernetes/#troubleshooting-examples) guide to learn how to switch cluster contexts.
-{{</ note >}}
+{{< /note >}}
 
 You are now ready to manage the cluster using kubectl. For more information about using kubectl, see the Kubernetes [Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/).
 

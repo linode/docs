@@ -50,7 +50,7 @@ Currently, the Linode CLI defaults to creating buckets in the Newark data center
 
 {{< note >}}
 You need to use the `--cluster` option for every interaction with your bucket if it is not in `us-east-1`.
-{{</ note >}}
+{{< /note >}}
 
 If the bucket has objects in it, you can not delete it from the Linode CLI immediately. Instead, remove the objects first, then delete the bucket. The [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/) tool has commands for deleting all objects from a bucket, and it can also force-delete a bucket with objects in it.
 
@@ -74,7 +74,7 @@ If the bucket has objects in it, you can not delete it from the Linode CLI immed
     For example, if you want to make a public file private, you would append the `--acl-private` flag:
 
         linode-cli obj setacl --acl-private my-example-bucket example.txt
-    {{</ note >}}
+    {{< /note >}}
 
 1.  To download an object, use the `get` command. Provide the label of the bucket as the first parameter and the name of the file as the second:
 

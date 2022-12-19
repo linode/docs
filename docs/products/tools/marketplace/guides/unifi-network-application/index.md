@@ -17,7 +17,7 @@ The [UniFi Network Application](https://help.ui.com/hc/en-us/articles/1500012237
 
 {{< note >}}
 When self-hosting the UniFi Network Application, you are responsible for the security of your server. Follow best practices for securing, updating, and backing up the software on your Compute Instance. See [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 

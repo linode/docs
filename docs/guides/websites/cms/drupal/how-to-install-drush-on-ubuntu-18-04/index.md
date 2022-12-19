@@ -130,7 +130,7 @@ export PATH="$HOME/vendor/bin:$PATH"
 
     {{< note respectIndent=false >}}
 You can install the [Drush Launcher](https://github.com/drush-ops/drush-launcher), a utility to be able to call Drush globally. This program listens on your `$PATH` and hands control to a site-local Drush that is in the `~/vendor` directory.
-    {{</ note >}}
+    {{< /note >}}
 
 ## Using Drush
 

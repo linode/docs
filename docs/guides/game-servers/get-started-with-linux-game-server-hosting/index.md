@@ -48,7 +48,7 @@ The general consensus in the gaming community is that Debian or Ubuntu are the b
 
 {{< note respectIndent=false >}}
 You can watch the developer Gardiner Bryant explaining [how to set up a Rust game server](https://www.youtube.com/watch?v=RPbIRbj0GyA) on Linode's YouTube channel.
-{{</ note >}}
+{{< /note >}}
 
 ### Manually Installing Linux Game Servers
 

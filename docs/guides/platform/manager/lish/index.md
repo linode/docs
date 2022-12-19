@@ -52,7 +52,7 @@ You can connect to Lish with the SSH client of your choice. For example, you can
 
 {{< note respectIndent=false >}}
 If you have [Third Party Authentication](/docs/products/platform/accounts/guides/third-party-authentication/) enabled on your account, you will not be able to log in to your Compute Instance through Lish with password authentication, and must instead use SSH key authentication. Read the [Add Your Public Key](#add-your-public-key) section for more instructions on how to add an SSH key to your account for use with Lish.
-{{</ note >}}
+{{< /note >}}
 
 1.  Determine which Lish SSH gateway you wish to use. There's one in every data center. See [Lish Gateways](#lish-gateways) for a full list.
 
@@ -155,7 +155,7 @@ You can also bring up the Compute Instance's console, then type **CTRL+A** then 
 
 {{< note respectIndent=false >}}
 You can activate the ability to scroll back through the Lish console by pressing **CTRL-A + ESC**
-{{</ note >}}
+{{< /note >}}
 
 ## Advanced Lish Tricks
 
@@ -199,7 +199,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
 - **Lish ports:** 22, 443, 2200
 - **Weblish port:** 8181
 - **Glish port:** 8080
-{{</ note >}}
+{{< /note >}}
 
 ### Lish Gateway Fingerprints
 

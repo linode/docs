@@ -48,7 +48,7 @@ The `M` represents the merge commit that ties together the two branches. Once yo
 
 {{< note respectIndent=false >}}
 This is considered a *fast-forward* merge because `main` is a direct ancestor of `M`. If you continue to work on your feature branch, you eventually have to make another merge with `main`. This makes it difficult for anyone reviewing your code to figure out exactly what changes you made.
-{{</ note >}}
+{{< /note >}}
 
 **Git Rebase**: A Git rebase takes the commits made in your local branch and places them on top of the latest commits pulled down from the `main` branch. This method updates your local feature branch with the latest changes pushed up to the collaboration branch by your teammates. Merging your feature branch with the `main` branch can be accomplished with the following commands:
 
@@ -82,7 +82,7 @@ Then, the rebase does a hard reset to the head of the upstream branch in the loc
 The commits that are temporarily stored when rebasing are the same set of commits that are displayed when issuing the `git log <upstream>..HEAD` command.
 
 These are also the same set of commits that you would get from the `git log --patch --reverse <upstream>..HEAD` command.
-{{</ note >}}
+{{< /note >}}
 
 ## When to Use Git Rebase?
 

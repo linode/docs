@@ -40,7 +40,7 @@ Some use cases where Storm is a good solution:
 
 This guide explains how to create Storm clusters on the Linode cloud using a set of shell scripts that use Linode's Application Programming Interface (APIs) to programmatically create and configure large clusters. The scripts are all provided by the author of this guide via [GitHub repository](https://github.com/pathbreak/storm-linode). This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 External resources are outside of our control, and can be changed and/or modified without our knowledge. Always review code from third party sites yourself before executing.
 {{< /note >}}
 
@@ -69,7 +69,7 @@ This guide will explain how to configure a working Storm cluster and its Zookeep
 -  The cluster manager Linode can have either Ubuntu 14.04 LTS or Debian 8 installed.
 -  A Zookeeper or Storm cluster can have either Ubuntu 14.04 LTS or Debian 8 installed on its nodes. Its distribution does not need to be the same one as the one installed on the cluster manager Linode.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide and in the bash scripts referenced require root privileges. Be sure to run the steps below as `root`. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -267,7 +267,7 @@ A *Zookeeper image* is a master disk image with all necessary Zookeeper software
 -  Distribution packages and third party software packages are identical on all nodes, preventing version mismatch errors
 -  Reduced network usage, because downloads and updates are executed only once when preparing the image instead of repeating them on each node
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If a Zookeeper image already exists, this step is not mandatory. Multiple Zookeeper clusters can share the same Zookeeper image. In fact, it's a good idea to keep the number of images low because image storage is limited to 10GB.
 
 When creating an image, you should have `clustermgr` authorization to the Cluster Manager Linode.
@@ -440,7 +440,7 @@ During this process, a temporary, short-lived 2GB Linode is created and deleted.
 
 In this section, you will learn how to create a new Zookeeper cluster in which every node is a replica of an existing Zookeeper image. If you have not already created a Zookeeper image, do so first by following [Create a Zookeeper image](#create-a-zookeeper-image).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If a Zookeeper cluster already exists, this step is not mandatory. Multiple Storm clusters can share the same Zookeeper cluster.
 
 When creating a cluster, you should have `clustermgr` authorization to the Cluster Manager Linode.
@@ -594,7 +594,7 @@ A *Storm image* is a master disk with all necessary Storm software and libraries
 -  Distribution packages and third party software packages are identical on all nodes, and prevent version mismatch errors
 -  Reduced network usage, because downloads and updates are executed only once when preparing the image, instead of repeating them on each node
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If a Storm image already exists, this step is not mandatory. Multiple Storm clusters can share the same Zookeeper image. In fact, it's a good idea to keep the number of images low because image storage is limited to 10GB.
 
 When creating an image, you should have `clustermgr` authorization to the Cluster Manager Linode.
@@ -758,7 +758,7 @@ During this process, a short-lived 2GB Linode is created and deleted. This will 
 
 In this section, you will learn how to create a new Storm cluster in which every node is a replica of an existing Storm image. If you have not created any Storm images, do so first by following [Create a Storm image](#create-a-storm-image).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 When creating a cluster, you should have `clustermgr` authorization to the Cluster Manager Linode.
 {{< /note >}}
 
@@ -1060,7 +1060,7 @@ For a more practical test, feel free to download another topology, such as the [
 
 If you or a developer have created a topology, perform these steps to start a new topology on one of your Linode Storm clusters:
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The developer should have `clusteradmin` (or `clusterroot`) authorization to log in to the client node of the target Storm cluster.
 
 Optionally, to get the IP address of client node, the developer should have `clustermgrguest` (or `clustermgrroot`) authorization to log in to the Cluster Manager Linode. If the IP address is known by other methods, this authorization is not required.
@@ -1089,7 +1089,7 @@ Optionally, to get the IP address of client node, the developer should have `clu
 
 6.  [Monitor the execution of the new topology.](#monitor-a-storm-cluster)
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The Storm UI will show only information on the topology's execution, not the actual data it is processing. The data, including its output destination, is handled in the topology's JAR files.
 {{< /note >}}
 
@@ -1200,7 +1200,7 @@ A user with only `clustermgrguest` authorization can use `cluster_info.sh` to de
 
 Stopping a Zookeeper cluster cleanly stops the Zookeeper daemon on all nodes, and shuts down all nodes. The cluster can be restarted later. Note that the nodes **will** still incur Linode's hourly charges when stopped.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Do not stop a Zookeeper cluster while any Storm clusters that depend on it are running. This may result in data loss.
 {{< /note >}}
 
@@ -1212,7 +1212,7 @@ To stop a cluster, use the `stop` command:
 
 Destroying a Zookeeper cluster permanently deletes all nodes of that cluster and their data. Unlike a Linode that is only shut down, destroyed or deleted Linodes no longer incur hourly charges.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Do not destroy a Zookeeper cluster while any Storm clusters that depend on it are running. It may result in data loss.
 {{< /note >}}
 

@@ -239,7 +239,7 @@ The `umount` command requires you to specify the device you want to unmount. You
 
       umount /media/sda
 
-{{</ note >}}
+{{< /note >}}
 
 If you would like to mount or unmount additional disks on your system, repeat these instructions with the appropriate substitutions.
 
@@ -261,7 +261,7 @@ Chroot allows you to change user passwords, remove/install packages, and do othe
 If you mounted your disk without using the `exec` option prior to reviewing this section, include the `remount` option in your `mount` command:
 
     mount -o remount,exec,barrier=0 /dev/sda /media/sda
-{{</ note >}}
+{{< /note >}}
 
 1.  To create the chroot, you need to mount the temporary filesystems:
 
@@ -287,7 +287,7 @@ As a result, this command depends on you having made these disks available to yo
 If these names do not match, mounting your disks using only a device name will either fail completely, mount them at the wrong directory, and/or apply the wrong mount options to them.
 
 The easiest way to alleviate this problem is by [starting a new Rescue Mode session from Cloud Manager](#booting-into-rescue-mode) which properly matches these disk names between your Rescue Mode environment and your Linode's configuration profile.
-{{</ note >}}
+{{< /note >}}
 
 1.  To exit the chroot and get back to Finnix type "exit" :
 

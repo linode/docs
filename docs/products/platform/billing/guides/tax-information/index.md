@@ -19,7 +19,7 @@ As a result of Akamai’s acquisition of Linode, businesses or individuals resid
 
 - **Countries:** Cambodia, Chile, Malaysia, Russian Federation, Switzerland, United Arab Emirates
 - **U.S. States:** Colorado, Connecticut, Massachusetts, Mississippi, New Mexico, New York, South Carolina, Tennessee, Utah, West Virginia
-{{</ note >}}
+{{< /note >}}
 
 Some countries, states, and regions require us by law to collect taxes. As such, customers located in these locations are charged the appropriate tax rate for any taxable services billed to their account. The taxes that Linode collects are listed on customer invoices (see the [Viewing Invoices and Payments](/docs/products/platform/billing/guides/view-history/) section of our Cloud Manager Billing guide).
 

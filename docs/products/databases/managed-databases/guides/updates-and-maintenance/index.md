@@ -16,7 +16,7 @@ If your database cluster is configured with a single node, you will experience d
 
 {{< note >}}
 **The database software is not updated automatically.** To upgrade to a new version (such as from MySQL 5.7.30 or 8.0.25 to 8.0.26), consider deploying a new Managed Database with the version you wish to use. You can then [migrate your databases](/docs/products/databases/managed-databases/guides/migrate-mysql/) from the original Managed Database cluster to the new one.
-{{</ note >}}
+{{< /note >}}
 
 ## View and Modify the Maintenance Window
 

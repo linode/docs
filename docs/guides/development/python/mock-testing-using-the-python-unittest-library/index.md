@@ -72,7 +72,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 {{</ output >}}
 
-{{</ note >}}
+{{< /note >}}
 
 1. Instantiate a new mock object and verify that Python returns the object’s unique identifier.
 

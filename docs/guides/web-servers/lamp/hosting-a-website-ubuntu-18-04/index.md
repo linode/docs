@@ -413,7 +413,7 @@ It's a good idea to test your website(s) before you add the DNS records. This is
 
     {{< note respectIndent=false >}}
   If you have configured a firewall on your Linode, ensure your firewall rules allow traffic to your Apache web server. For more information on configuring firewall rules on Ubuntu, see [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
-    {{</ note >}}
+    {{< /note >}}
 
 1.  If you plan on hosting multiple websites, you can test the virtual hosts by editing the `hosts` file on your local computer. Check out the [Previewing Websites Without DNS](/docs/guides/previewing-websites-without-dns/) guide for more information.
 

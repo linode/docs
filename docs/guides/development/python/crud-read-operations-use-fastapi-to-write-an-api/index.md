@@ -43,7 +43,7 @@ The [REST protocol](https://en.wikipedia.org/wiki/Representational_state_transfe
 
 {{< note respectIndent=false >}}
 This guide does not cover integrating FastAPI with a database. FastAPI uses an in-memory data store by default. However, you can integrate FastAPI with a [long list of different database providers](https://fastapi.tiangolo.com/tutorial/sql-databases/).
-{{</ note >}}
+{{< /note >}}
 
 ## Install FastAPI
 
@@ -106,7 +106,7 @@ in_memory_datastore = [
 
     {{< note respectIndent=false >}}
 Each record within the `in_memory_datastore` list is a Python dictionary. RESTful APIs are generally organized around a *resource*. A resource is a type of database record that can be accessed by a client.
-{{</ note >}}
+{{< /note >}}
 
 1. Add the List Programming Languages endpoint to your `main.py` file. This endpoint fetches all the records in the data store and returns them to the client as a JSON object. The JSON object has the label `programming_languages`.
 

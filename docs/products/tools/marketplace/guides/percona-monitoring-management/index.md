@@ -30,7 +30,7 @@ The PMM tool uses a client-server model which makes it easy to scale monitoring 
 
 {{< note >}}
 For a more detailed information on PMM's architecture see [Percona's official documentation](https://www.percona.com/doc/percona-monitoring-and-management/2.x/concepts/architecture.html).
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -92,7 +92,7 @@ To begin monitoring a database node, you will need to install the [PMM Client](h
 
 {{< note >}}
 The PMM Server deployed with Linode's Percona (PMM) Marketplace App is compatible with [**PMM Client version 2**](https://www.percona.com/doc/percona-monitoring-and-management/2.x/index.html).
-{{</ note >}}
+{{< /note >}}
 
 1.  [Connect to your database Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) via SSH.
 
@@ -122,7 +122,7 @@ The PMM Server deployed with Linode's Percona (PMM) Marketplace App is compatibl
 
         sudo percona-release disable all
         sudo percona-release enable original release
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Install the PMM Client (version 2):
 
@@ -139,7 +139,7 @@ The PMM Server deployed with Linode's Percona (PMM) Marketplace App is compatibl
 
     {{< note >}}
     Follow the steps in [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) to retrieve your PMM Server's IPv4 address.
-    {{</ note >}}
+    {{< /note >}}
 
         pmm-admin \
         config \
@@ -179,7 +179,7 @@ Once your database node and your PMM Server are communicating, the final step is
 
     {{< note >}}
     You can also [add a database remote instance node using the Grafana interface](https://www.percona.com/doc/percona-monitoring-and-management/remote-instance.html). In order to do this, your node must be configured with a public DNS name. This method of adding a remote database instance will not provide host-level metrics.
-    {{</ note >}}
+    {{< /note >}}
 
 ## Software Included
 

@@ -114,7 +114,7 @@ You may want to install Drush for only certain system users, for example, the **
 
      {{< note respectIndent=false >}}
 To install a different version of Drush, replace `drush/drush:dev-master` with another version. For example, to install the stable release of Drush 6.x, use `drush/drush:9.*`. For more information, visit the [Drush GitHub](https://github.com/drush-ops/drush) repository.
-     {{</note >}}
+     {{< /note >}}
 
 1. To verify the installation, check Drush's version number.
 
@@ -137,7 +137,7 @@ Run the `source` command on the `.bashrc` file to enable the changes:
 
         source ~/.bashrc
 
-    {{</ note >}}
+    {{< /note >}}
 
 ## Using Drush
 

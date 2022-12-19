@@ -24,7 +24,7 @@ This guide provides an introduction to HCL syntax, some commonly used HCL termin
 
 {{< note respectIndent=false >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12 or later.  To learn how to safely upgrade to Terraform version 0.12 or later, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes. The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
-{{</ note >}}
+{{< /note >}}
 
 ## HCL Syntax Overview
 
@@ -62,7 +62,7 @@ resource "linode_instance" "example_linode" {
 
 {{< note respectIndent=false >}}
 You should not include sensitive data in the resource declarations. For more information about secrets management, see [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform/).
-{{</ note >}}
+{{< /note >}}
 
 ### Key Elements of HCL
 
@@ -102,7 +102,7 @@ After you declare the provider, you can configure resources available from the p
 
 {{< note respectIndent=false >}}
 Providers are packaged as plugins for Terraform. Whenever you declare a new provider in the Terraform configuration files, run the `terraform init` command. This command completes several initialization steps that are necessary before you can apply the Terraform configuration, including downloading the plugins for any providers you've specified.
-{{</ note >}}
+{{< /note >}}
 
 ## Terraform Resources and HCL Syntax
 
@@ -191,7 +191,7 @@ Values can also be specified in environment variables when running `terraform ap
 
 {{< note respectIndent=false >}}
 Environment variables can only assign values to variables of `type = "string"`
-{{</ note >}}
+{{< /note >}}
 
 ### Referencing Variables
 
@@ -210,7 +210,7 @@ resource "linode_instance" "WordPress" {
 
 {{< note respectIndent=false >}}
 If a variable value is not provided in any of the ways discussed above, and the variable is called in a resource configuration, Terraform prompts you for the value when you run `terraform apply`.
-{{</ note >}}
+{{< /note >}}
 
 For more information on variables, see Terraform's [Input Variables](https://www.terraform.io/intro/getting-started/variables.html) documentation.
 

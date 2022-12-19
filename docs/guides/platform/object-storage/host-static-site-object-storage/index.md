@@ -242,7 +242,7 @@ Before proceeding with this section ensure that you have already created your Ob
 
     {{< note respectIndent=false >}}
 Buckets names must be unique within the Object Storage cluster. You might find the bucket name `my-bucket` is already in use by another Linode customer, in which case you need to choose a new bucket name.
-{{</ note >}}
+{{< /note >}}
 
     {{< content "object-storage-cluster-shortguide" >}}
 
@@ -283,7 +283,7 @@ website_endpoint = http://%(bucket)s.website-us-east-1.linodeobjects.com
 
     {{< note respectIndent=false >}}
 Linode Object Storage provides SSL enabled by default. This means you can access your Object Storage bucket using `https`, as well.
-{{</ note >}}
+{{< /note >}}
 
 
 

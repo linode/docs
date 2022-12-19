@@ -102,7 +102,7 @@ Kubernetes can run on virtually any public cloud, on-premise hardware, or even b
 
 {{< note respectIndent=false >}}
 There are some caveats to this point. Many cloud infrastructure providers support Kubernetes, but there is no guarantee that they support all of the features of Kubernetes. For example, not every cloud provider offers [load balancing](https://en.wikipedia.org/wiki/Load_balancing_(computing)) as a feature, so a Kubernetes cluster on those providers will not support [Services of the type `LoadBalancer`](https://kubernetes.io/docs/concepts/services-networking/#loadbalancer).
-{{</ note >}}
+{{< /note >}}
 
 ### Microservice Architecture
 

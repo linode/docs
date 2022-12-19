@@ -20,7 +20,7 @@ external_resources:
 
 {{< note >}}
 JetBackup requires a valid license to use the software beyond the available 10 day [free trial](https://cpanel.net/products/trial/) period. To purchase a license, visit [JetBackup's website](https://billing.jetapps.com/index.php?rp=/store/prorated-license) and select a plan that fits your needs. Licenses are not available directly through Linode.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 

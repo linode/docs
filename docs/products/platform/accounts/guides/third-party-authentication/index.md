@@ -22,7 +22,7 @@ Linode Cloud Manager supports Third-Party Authentication (TPA). This allows you 
 Enabling TPA disables Two-Factor Authentication (TFA) on your Linode account. You should enable TFA with the TPA provider with which you choose to authenticate to Linode.
 
 Additionally, enabling TPA disables password authentication in the Lish console. You can still authenticate to Lish with an SSH key. For more information on SSH key authentication with Lish, visit our [Using the Lish Console](/docs/guides/lish/#add-your-public-key) guide.
-{{</ note >}}
+{{< /note >}}
 
 ## Enabling Third-Party Authentication
 

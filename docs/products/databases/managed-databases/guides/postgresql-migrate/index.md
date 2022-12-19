@@ -32,7 +32,7 @@ Exporting the data from the original database is facilitated through the [pg_dum
 
     {{< note >}}
     This step requires admin/superuser access to the PostgreSQL cluster. If you do not have this level of access and you still wish to preserve the existing roles, you can manually create the roles on your Managed Database though [SQL](https://www.postgresql.org/docs/current/sql-createrole.html) or the [`createuser`](https://www.postgresql.org/docs/current/app-createuser.html) functionality of psql. If you do not do this, all data will be owned by the `linpostgres` user once you import your data to your Managed Database cluster.
-    {{</ note >}}
+    {{< /note >}}
 
 1.  **Export each database you wish to backup.** Replace *[database-name]* with the name of your database and *[user]* with the username for your source database. The other options in this command are used to ensure maximum compatibility with Linode's PostgreSQL Managed Databases.
 

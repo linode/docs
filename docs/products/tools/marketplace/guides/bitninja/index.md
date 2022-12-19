@@ -20,7 +20,7 @@ aliases: ['/guides/deploying-bitninja-marketplace-app/','/guides/bitninja-market
 
 {{< note >}}
 BitNinja requires a valid license to use the software beyond the initial 7 day [free trial](https://registration.bitninja.io/) period. To purchase a license, visit [BitNinja's website](https://bitninja.com/pricing/) and select a plan that fits your needs. Licenses are not available directly through Linode.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 

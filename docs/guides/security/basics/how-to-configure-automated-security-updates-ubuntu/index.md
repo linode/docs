@@ -58,7 +58,7 @@ You can set up automated security updates on Ubuntu by installing a helpful util
 
 {{< note respectIndent=false >}}
 The unattended-upgrades package ignores lines that start with `//`, as that line is considered to be a comment. Therefore, if you want a repository to update automatically, you need to remove `//` from that line.
-{{</ note >}}
+{{< /note >}}
 
 1.  In our example, remove `//` from the “security” line if it's there, `"${distro_id}:${distro_codename}-security";`. This section should look like the following:
 

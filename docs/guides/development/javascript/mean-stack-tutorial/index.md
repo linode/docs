@@ -30,7 +30,7 @@ MEAN is an acronym for the combination of technology stacks–**M**ongoDB, **E**
 
 {{< note respectIndent=false >}}
 You can learn about each technology of the MEAN stack in our guides on [Angular](/docs/guides/angular-tutorial-for-beginners/), [Node.js](/docs/guides/how-to-install-nodejs/), [MongoDB](/docs/guides/databases/mongodb/), and [Express.js](/docs/guides/express-js-tutorial/).
-{{</ note >}}
+{{< /note >}}
 
 ## Install the MEAN Stack
 
@@ -120,7 +120,7 @@ This section shows you how to create a simple application that utilizes each com
 
 {{< note respectIndent=false >}}
 Some additional functionality you might incorporate into a production application is user authentication, reading and writing data from your MongoDB records, data backups, and load balancing.
-{{</ note >}}
+{{< /note >}}
 
 ### Create and Populate the MongoDB Database
 

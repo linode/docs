@@ -112,7 +112,7 @@ To remove all aliases:
 
 {{< note respectIndent=false >}}
 Removing all aliases also removes the system default aliases.
-{{</ note >}}
+{{< /note >}}
 
 ## Helpful Examples
 

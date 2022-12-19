@@ -29,7 +29,7 @@ An Ingress is one of the most powerful ways to control external access to your r
 
 {{< note respectIndent=false >}}
 Following the instructions in this guide will create billable resources on your account in the form of Linodes and NodeBalancers. You will be billed an hourly rate for the time that these resources exist on your account. Be sure to follow the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) at the end of this guide if you do not wish to continue using these resources.
-{{</ note >}}
+{{< /note >}}
 
 ## In This Guide
 
@@ -47,7 +47,7 @@ This guide will show you how to:
 
     {{< note respectIndent=false >}}
 Optionally, you can create a Wildcard DNS record, `*.example.com` and point your NodeBalancer's external IP address to it. Using a Wildcard DNS record, will allow you to expose your Kubernetes services without requiring further configuration using the Linode DNS Manager.
-{{</ note >}}
+{{< /note >}}
 
 ## Creating and Connecting to a Kubernetes Cluster
 

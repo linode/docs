@@ -114,7 +114,7 @@ The available plan types for LKE worker nodes are [Shared](/docs/guides/choosing
 
     {{< note respectIndent=false >}}
 Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
-{{</ note >}}
+{{< /note >}}
 
 ### Connect to your LKE Cluster
 
@@ -174,7 +174,7 @@ The YAML file that you decode to (`cluster12345-config.yaml` here) can have any 
 
     {{< note respectIndent=false >}}
 You can also access a decoded version of your kubeconfig file in the [Linode Cloud Manager](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-and-download-your-kubeconfig).
-{{</ note >}}
+{{< /note >}}
 
 1. View all nodes in your LKE cluster using kubectl:
 
@@ -377,7 +377,7 @@ The response body resembles the following:
 
 {{< note respectIndent=false >}}
 Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
-{{</ note >}}
+{{< /note >}}
 
 ### Resize your LKE Node Pool
 
@@ -389,7 +389,7 @@ Shrinking a node pool results in deletion of Linodes. Any local storage on delet
 
 {{< note respectIndent=false >}}
 You cannot modify an existing node pool's plan type. If you would like your LKE cluster to use a different node pool plan type, you can [add a new node pool](#add-a-node-pool-to-your-lke-cluster) to your cluster with the same number of nodes to replace the current node pool. You can then [delete the node pool](#delete-a-node-pool-from-an-lke-cluster) that is no longer needed.
-{{</ note >}}
+{{< /note >}}
 
 | **Required Parameters** | **Description** |
 |-------|-------|
@@ -408,7 +408,7 @@ To update your node pool's node count, send a `PUT` request to the `/lke/cluster
 
 {{< note respectIndent=false >}}
 Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
-{{</ note >}}
+{{< /note >}}
 
 ### Recycle All Nodes Within a Cluster
 

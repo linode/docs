@@ -51,7 +51,7 @@ Existing Volumes can be upgraded to NVMe soon after NVMe Block Storage has been 
 
 {{< note >}}
 If the Volume is attached to a Linode Compute Instance during the upgrade process, the Compute Instance may be rebooted to complete the upgrade. If this occurs, it will return to its last known power state.
-{{</ note >}}
+{{< /note >}}
 
 ## Manually Upgrading a Volume to NVMe Block Storage
 

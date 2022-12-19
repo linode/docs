@@ -63,7 +63,7 @@ Golden disks are capable of handling automated server builds for most individual
 
     {{< note respectIndent=false >}}
 Knife Linode is based on Linode's deprecated APIv3.
-    {{</ note >}}
+    {{< /note >}}
 
     - [A Beginner's Guide to Chef](/docs/guides/beginners-guide-chef/)
     - [Creating Your First Chef Cookbook](/docs/guides/creating-your-first-chef-cookbook/)
@@ -73,7 +73,7 @@ Knife Linode is based on Linode's deprecated APIv3.
 
     {{< note respectIndent=false >}}
 The Linode Module from Ansible is based on Linode's deprecated APIv3.
-    {{</ note >}}
+    {{< /note >}}
 
     - [Getting Started With Ansible - Basic Installation and Setup](/docs/guides/getting-started-with-ansible/)
     - [Automate Server Configuration with Ansible Playbooks](/docs/guides/running-ansible-playbooks/)
@@ -99,7 +99,7 @@ The Linode Module from Ansible is based on Linode's deprecated APIv3.
 
     {{< note respectIndent=false >}}
 The Terraform Linode provider is based on [Linode's APIv4](/docs/api/).
-    {{</ note >}}
+    {{< /note >}}
 
     - [A Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/)
     - [Introduction to HashiCorp Configuration Language (HCL)](/docs/guides/introduction-to-hcl/)

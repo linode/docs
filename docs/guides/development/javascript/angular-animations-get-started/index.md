@@ -75,7 +75,7 @@ Ensure that the top of your `app.component.ts` file includes the following impor
 import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 {{< /file >}}
-{{</ note >}}
+{{< /note >}}
 
 ### Create the Angular Component HTML Template
 

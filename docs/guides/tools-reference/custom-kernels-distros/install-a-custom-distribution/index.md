@@ -158,7 +158,7 @@ This section covers how to move your custom installation over to an **ext4** for
 
 {{< note respectIndent=false >}}
 These features are not available even if you formatted the disk to *ext4* during installation because *direct disk* was selected during disk creation.
-{{</ note >}}
+{{< /note >}}
 
 ### Configure Lish Access
 
@@ -295,7 +295,7 @@ This next step involves making changes to your disks and configuration profiles,
 
     {{< note respectIndent=false >}}
 If there is not enough room to create these disks, you may need to temporarily upgrade the plan for your Compute Instance. This provides additional storage space for your disks. See [Resizing a Linode](/docs/guides/resizing-a-linode/).
-{{</ note >}}
+{{< /note >}}
 
 1. Navigate to the **Configurations** tab and create an additional configuration profile. See the [Create a Configuration Profile](/docs/guides/linode-configuration-profiles/) guide for instructions.
 
