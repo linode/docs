@@ -34,7 +34,7 @@ This guide shows you how to install CouchDB on Ubuntu 20.04. At the end of this 
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -58,7 +58,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install CouchDB
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps below are for installing a standalone CouchDB server. If you intend to use CouchDB in a cluster, choose **clustered** instead of **standalone** and enter `0.0.0.0` as the interface bind-address in the steps that follow.
 
 See CouchDB's [Cluster Set Up](https://docs.couchdb.org/en/latest/setup/cluster.html) guide for the additional steps needed to set up a CouchDB cluster once you have completed the installation.

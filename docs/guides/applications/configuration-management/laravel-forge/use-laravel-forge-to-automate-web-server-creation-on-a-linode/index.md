@@ -106,7 +106,7 @@ If you want to be able to quickly deploy from GitHub, GitLab, or Bitbucket, you 
 
 Your server has been created, but no sites have been set up on it, apart from the default site which displays your PHP settings.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you do not want to use a domain with your website, you can configure the *default* site on your server. Select the default site from the **Active Sites** panel of your server's dashboard in Forge, then skip to the [Add a repository](#add-a-repository) instructions.
 {{< /note >}}
 

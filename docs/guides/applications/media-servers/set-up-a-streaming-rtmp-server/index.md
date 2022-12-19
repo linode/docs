@@ -45,7 +45,7 @@ This guide discusses how to configure an RTMP streaming server, and how to use o
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -163,7 +163,7 @@ location /auth {
 
         systemctl status nginx.service
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can find more detailed examples of NGINX configurations for RTMP on the [*NGINX GitHub*](https://github.com/arut/nginx-rtmp-module#example-nginxconf) page.
 
 You can force viewers to authenticate before watching a stream with the `on_play` variable, which works the same way as `on_publish`. For extra security, you can remove the `html` configuration from this file if you are not planning to use NGINX as a web server. Ensure you do not delete the `events` configuration block while doing so.
@@ -214,9 +214,9 @@ You are now ready to connect to and view your stream in a multimedia player. We 
 
     ![Network configuration for VLC](VLC-Network-Details.png)
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Beyond the basics, VLC can get complicated. If you run into trouble, consult the [*VideoLAN support page*](https://www.videolan.org/support/).
-    {{< /note >}}
+{{< /note >}}
 
 ## Set Up and Test Multi-Streaming
 
@@ -270,7 +270,7 @@ rtmp {
 }
     {{< /file >}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Ingest servers can change without notice. We recommend you review the specifications for your streaming service regularly.
 Some streaming services, such as Facebook Live, require you to transcode your stream into their particular format. You can accomplish this using the *FFmpeg library*.
 

@@ -35,7 +35,7 @@ Backing up the data stored in a MongoDB database is an important step to maintai
 
 1. Install [MongoDB](/docs/guides/install-mongodb-on-ubuntu-16-04/) on your Linux system.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for a non-root user account. For any commands that require elevated privileges, `sudo` is prefixed at the start of the command syntax. If you’re unfamiliar with the `sudo` command workflow, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -134,7 +134,7 @@ Modify the script's permissions, then execute the script with the following comm
 
 Enter your Linode Access keys as prompted, and choose the option to save them.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 [Duck](https://duck.sh/) saves your keys in a plain text file at `~.duck/credentials`. It is important to take appropriate measures to secure this file. Saving your keys in this file is necessary for them to be used when this script is run automatically.
 {{< /note >}}
 

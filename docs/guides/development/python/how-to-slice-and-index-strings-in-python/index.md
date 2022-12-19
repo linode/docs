@@ -35,7 +35,7 @@ It is possible to access any character in a Python string using array-based inde
 
 1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. For information on how to use Python, see our guide on [How to Install Python 3](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -187,7 +187,7 @@ String indexing and slicing are capable of even more powerful tasks when combine
 
 The `len` function determines the length of a string. You can use it to slice a string to a specific fraction of its length. The following example generates a substring consisting of the second half of the parent string. The length of the initial string is calculated using `len` and divided by two to determine the midpoint. The midpoint becomes the start index for the slicing operation. This is a good example of how an index can be represented by a fairly complex expression.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The Python slice operator only accepts integer values. Consequently, the starting index must be converted to an integer before it can be used in a slicing operation. The `int` function rounds a real number down to the nearest integer, which is known as the *floor*. Because the starting point is inclusive, this substring is always guaranteed to be at least half the length of the original string. In recent versions of Python, you can use the `//` operator to perform integer division.
 {{< /note >}}
 
@@ -200,7 +200,7 @@ tem is great
 
 The `string.find` method locates the first instance of a substring (of one or more characters) in the parent string. The index of the first instance of `char` in `string` can be found using `string.find(char)`. Used in conjunction with string slicing, `find` allows a substring to serve as a delimiter. The following example creates a slice out of all the letters preceding the `!` character. The end index is always exclusive, so the delimiter is excluded from the resulting substring.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 `String.find` returns `-1` if the character is not found. This results in an empty string being sliced. You might also choose to implement special handling for this case. In any case, it is important to test corner cases in any production script.
 {{< /note >}}
 

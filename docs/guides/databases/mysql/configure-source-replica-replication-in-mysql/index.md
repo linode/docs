@@ -32,7 +32,7 @@ Each replica pulls data from the source by requesting the contents of the source
 
 MySQL allows a high degree of granularity. It is possible to replicate over certain databases or even specific tables within a database. The default replication format is *Statement Based Replication* (SBR), in which the entire SQL statement is replicated. However, *Row Based Replication* (RBR) is also available. This format replicates the rows that have been changed. It is also possible to configure more complicated many-to-many configurations. Consult the [MySQL Documentation](https://dev.mysql.com/doc/refman/8.0/en/replication.html) for more information about the different replication options.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 MySQL previously referred to Source-Replica Replication as "Master-Slave Replication". The MySQL Organization recently changed the terminology, explaining their reasoning in a [terminology update](https://mysqlhighavailability.com/mysql-terminology-updates/). The older term "master" has been changed to "source", while a "slave" is now referred to as a "replica". The old terms might still appear in certain commands and output displays while MySQL updates its codebase. This guide uses MySQL's preferred terms throughout the instructions.
 {{< /note >}}
 
@@ -58,7 +58,7 @@ Enabling source-replica replication offers many significant advantages over a no
 
 1. You must have at least two separate Linodes to configure MySQL source-replica replication. One Linode hosts the source database, while another node is necessary for the replica server.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

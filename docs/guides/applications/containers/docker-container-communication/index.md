@@ -242,7 +242,7 @@ host    all             postgres        172.17.0.0/16           password
 
 In this section, both the app and database will be running in separate containers. You can use the [official postgres image](https://hub.docker.com/_/postgres/) from Docker Hub and load in the SQL dump created earlier.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 You should not store production database data inside a Docker container. Containers should be treated as ephemeral entities: if a container unexpectedly crashes or is restarted, all data in the database will be lost.
 {{< /note >}}
 
@@ -294,7 +294,7 @@ You should not store production database data inside a Docker container. Contain
 
 Using the `--link` or `--host` options every time you launch your containers can be cumbersome. If your server or any of the containers crash, they must be manually reconnected. This is not an ideal situation for any application that requires constant availability. Fortunately, Docker provides **Docker Compose** to manage multiple containers and automatically link them together when they are launched. This section will use Docker Compose to reproduce the results of the previous section.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 For a more comprehensive explanation of Docker Compose and how to write `docker-compose.yml` configuration files, see our complete [Docker Compose](/docs/guides/how-to-use-docker-compose/) guide.
 {{< /note >}}
 

@@ -38,7 +38,7 @@ The main benefits of LXD are the support of high density containers and the perf
 
 This guide covers how to install and setup LXD 3 on a Linode and how to setup an Apache Web server in a container.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 For simplicity, the term *container* is used throughout this guide to describe the LXD system containers.
 {{< /note >}}
 
@@ -229,7 +229,7 @@ This section will create a container, install the Apache web server, and add the
 
 
         sudo lxc config device add web myport80 proxy listen=tcp:0.0.0.0:80 connect=tcp:127.0.0.1:80
-{{< note respectIndent=false >}}
+{{< note >}}
 In recent versions of LXD, you need to specify an IP address (such as *127.0.0.1*) instead of a hostname (such as _localhost_). If your container already has a proxy device that uses hostnames, you can edit the container configuration to replace with IP addresses by running `lxc config edit web`.
 {{< /note >}}
 

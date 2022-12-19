@@ -42,7 +42,7 @@ Learn how to install and start using Buildah in this tutorial. Below, find steps
 
             sudo apt update && sudo apt upgrade
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -243,7 +243,7 @@ You can also learn more about crafting Dockerfiles in our guide [How to Use a Do
 
 As noted above, Buildah stands out for its ability to create container images from scratch. This section walks you through an example of how you can do just that.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Buildah's commands for working with containers can involve a few keywords, so often these commands are executed using environment variables. So, for instance, to create a new container with Fedora, you may see something like:
 
     fedoracontainer=$(buildah from fedora)
@@ -253,7 +253,7 @@ Learn more about how environment variables work in our guide [How to Use and Set
 
 The example container that follows starts with an empty container. It then adds Bash and some other core utilities to that container to demonstrate how you can add programs to create a minimal container image.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This section assumes you want to run Buildah in rootless mode, being its major draw versus Docker. Unfortunately, the Ubuntu package manager, APT, presents issues with installing packages onto a non-root container. So the instructions that follow are for RHEL-derived distributions such as AlmaLinux, CentOS Stream, Fedora, and Rocky Linux.
 
 If you want to run Buildah under Ubuntu in regular root mode, simply preface each `buildah` command that follows with `sudo`.

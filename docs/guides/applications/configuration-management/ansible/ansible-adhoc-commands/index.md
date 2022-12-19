@@ -24,7 +24,7 @@ In this tutorial, you'll learn about several Ansible adhoc commands which are us
 
 Adhoc commands are commands which you run from the command line, outside of a playbook. These commands run on one or more managed nodes and perform a simple/quick task--most often, these will be tasks that you don't need to repeat. For example, if you want to reload Apache across a cluster of web servers, you can run a single adhoc command to achieve that task.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 In Ansible, all modules can be executed in either a playbook or through an adhoc command.
 {{< /note >}}
 
@@ -45,13 +45,13 @@ To run the commands in this tutorial, you'll need:
 
     - Alternatively, you can manually add the user, which is outlined in the [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide for help with creating Linodes.
 {{< /note >}}
 
 The commands in this guide will be run from the control node and will target a host named `Client`. Your control node's Ansible inventory should be configured so that at least one of your managed nodes has this name. The [Create an Ansible Inventory](/docs/guides/getting-started-with-ansible/#create-an-ansible-inventory) section of the [Getting Started With Ansible](/docs/guides/getting-started-with-ansible/) guide outlines how to set up an inventory file.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Alternatively, you can modify the commands in this guide to use a different host name.
 {{< /note >}}
 
@@ -113,11 +113,11 @@ This command omits the `-m` option that specifies the module. When the module is
 
 The `command` module is similar to the `shell` module in that both will execute a command that you pass to it. The `shell` module will run the command through a shell on the managed node, while the `command` module will not run it through a shell.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The `-f` option is used to define number of [forks](https://docs.ansible.com/ansible/latest/user_guide/playbooks_strategies.html#setting-the-number-of-forks) that Ansible will use on the control node when running your command.
 {{< /note >}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If your managed node is a Linode, then [Linode's shutdown watchdog *Lassie*](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog) needs to be enabled for the reboot to succeed. This is because a Linode is not able to turn itself on--instead, Linode's host environment must boot the Linode.
 {{< /note >}}
 
@@ -315,7 +315,7 @@ node1 | CHANGED => {
 }
 {{< /output >}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The `package` module works across distributions. There are also modules for specific package managers (e.g. the [`apt` module](https://docs.ansible.com/ansible/latest/modules/apt_module.html) and the [`yum` module](https://docs.ansible.com/ansible/latest/modules/yum_module.html)). These modules offer more options that are specific to those package managers.
 {{< /note >}}
 

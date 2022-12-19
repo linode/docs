@@ -25,7 +25,7 @@ Terraform is an IaC tool that focuses on creating, modifying, and destroying ser
 
 Linodes created with Terraform can be further configured with container systems like Docker, or with configuration management software like Salt, Puppet, Ansible, or Chef.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 The configurations and commands used in this guide results in multiple Linodes being added to your account. Be sure to monitor your account closely in the Linode Manager to avoid unwanted charges.
 {{< /note >}}
 
@@ -47,7 +47,7 @@ Any Personal Access Tokens generated from the previous Linode Manager are API v3
 
 The installation steps in this section are for Linux operating systems. To install Terraform on a different operating system, like macOS, see [Terraform's downloads](https://www.terraform.io/downloads.html) page. Once installed, skip to [Building with the Terraform Provider](#building-with-the-linode-provider).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The Terraform Provider for Linode requires [Terraform version 1.1+](https://www.hashicorp.com/blog/terraform-1-1-improves-refactoring-and-the-cloud-cli-experience). The examples in this guide were written to be compatible with [Terraform version 1.1](https://www.terraform.io/docs/configuration-0-11/terraform.html) and may be updated in the near future.
 {{< /note >}}
 
@@ -346,7 +346,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 In the previous step, you used Terraform to provision a Linode that could act as a webserver. To illustrate how to add another Linode via Terraform, let's say you now also need a separate database server. To do this, you can create another Terraform configuration file for the second Linode.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 When deploying multiple Linodes with Terraform, remember that you need to assign a unique name for each Linode.
 
 In production environments, your SSH key and root password should be unique for each resource. Having said that, the example Linodes in this guide shares keys and root passwords.
@@ -520,7 +520,7 @@ resource "linode_instance" "terraform-db" {
 
 Terraform allows you to change a server's name, size, or other attributes without needing to destroy and rebuild it. Terraform handles this through changes to the configuration files.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Changing the size of your Linode forces your server to be powered off and migrated to a different host in the same data center. The associated disk migration takes approximately 1 minute for every 3-5 gigabytes of data. See our [Resizing a Linode](/docs/guides/resizing-a-linode/) guide for more information.
 {{< /note >}}
 

@@ -43,8 +43,8 @@ Spark can run as a standalone cluster manager, or by taking advantage of dedicat
         start-dfs.sh
         start-yarn.sh
 
-{{< note respectIndent=false >}}
- This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< / note >}}
 
 ## Download and Install Spark Binaries
@@ -118,7 +118,7 @@ Allocation of Spark containers to run in YARN containers may fail if memory allo
 
 Be sure to understand how Hadoop YARN manages memory allocation before editing Spark memory settings so that your changes are compatible with your YARN cluster's limits.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 See the memory allocation section of the [Install and Configure a 3-Node Hadoop Cluster](/docs/guides/how-to-install-and-set-up-hadoop-cluster/) guide for more details on managing your YARN cluster's memory.
 {{< / note >}}
 
@@ -172,7 +172,7 @@ The Spark Executors' memory allocation is calculated based on two parameters ins
   - `spark.executor.memory`: sets the base memory used in calculation
   - `spark.yarn.executor.memoryOverhead`: is added to the base memory. It defaults to 7% of base memory, with a minimum of `384MB`
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Make sure that Executor requested memory, **including** overhead memory, is below the YARN container maximum size, otherwise the Spark application won't initialize.
 {{< /note >}}
 

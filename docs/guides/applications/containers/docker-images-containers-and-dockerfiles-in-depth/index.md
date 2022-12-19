@@ -125,7 +125,7 @@ You can enter the container ID in place of `apache` in the above command.
 
         docker rm apache
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Removing a container in this way deletes all data within the container. If you have made adjustments that you want to carry to a new container, you can instead use `docker commit` to build a new image that includes your updates:
 
     docker commit apache apache_image_update
@@ -154,7 +154,7 @@ Each parameter is described in the following list:
 
 Now, navigate to your Linode's IP address at host port 8080 by navigating to `http://<your Linode's IP address>:8080` in a web browser. You should see the "Apache2 Ubuntu Default Page" served from your Docker container.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 When deploying containers with port configurations, Docker may also create host firewall rules to allow public access to those containers. This can override or conflict with the host firewall rules you have configured on your Linode.
 {{< /note >}}
 

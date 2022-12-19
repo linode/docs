@@ -19,7 +19,7 @@ deprecated: true
 aliases: ['/applications/configuration-management/vagrant/vagrant-linode-environments/','/applications/configuration-management/vagrant-linode-environments/']
 ---
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The Vagrant Linode provider relies on Linode's APIv3, which has been deprecated in favor of [APIv4](/docs/api/).
 {{< /note >}}
 

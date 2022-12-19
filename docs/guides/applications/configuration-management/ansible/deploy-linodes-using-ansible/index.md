@@ -179,7 +179,7 @@ label: simple-linode-
 
 Ansible Vault allows you to encrypt sensitive data, like passwords or tokens, to keep them from being exposed in your Ansible Playbooks or Roles. You will take advantage of this functionality to keep your Linode instance's `password` and `access_token` encrypted within the variables file.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Ansible Vault can also encrypt entire files containing sensitive values. View Ansible's documentation on [Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#what-can-be-encrypted-with-vault) for more information.
 {{< /note >}}
 
@@ -281,7 +281,7 @@ localhost                  : ok=3    changed=1    unreachable=0    failed=0    s
 
 Ansible uses *inventories* to manage different hosts that make up your infrastructure. This allows you to execute tasks on specific parts of your infrastructure. By default, Ansible will look in `/etc/ansible/hosts` for an inventory, however, you can designate a different location for your inventory file and use multiple inventory files that represent your infrastructure. To support infrastructures that shift over time, Ansible offers the ability to track inventory from dynamic sources, like cloud providers. The Ansible dynamic inventory plugin for Linode can be used to source your inventory from Linode's API v4. In this section, you will use the Linode plugin to source your Ansible deployed Linode inventory.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The dynamic inventory plugin for Linode was enabled in the Ansible configuration file created in the [Configure Ansible](#configure-ansible) section of this guide.
 {{< /note >}}
 
@@ -326,7 +326,7 @@ types:
     The Linode Dynamic Inventory Plugin assumes that the Linodes in your account have labels that correspond to hostnames that are in your resolver search path, `/etc/hosts`. This means you will have to create an entry in your `/etc/hosts` file to map the Linode's IPv4 address to its hostname.
   {{< note respectIndent=false >}}
 A [pull request](https://github.com/ansible/ansible/pull/51196) currently exists to support using a public IP, private IP or hostname. This change will enable the inventory plugin to be used with infrastructure that does not have DNS hostnames or hostnames that match Linode labels.
-{{</note>}}
+{{< /note >}}
     To add your deployed Linode instance to the `/etc/hosts` file:
 
   -   Retrieve your Linode instance's IPv4 address:

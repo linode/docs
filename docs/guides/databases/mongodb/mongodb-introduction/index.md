@@ -27,7 +27,7 @@ aliases: ['/guides/mongodb-and-its-use-cases/']
 
 MongoDB is a source-available document-oriented database originally developed by MongoDB Inc. It is free to use under the [*Server Side Public License*](https://en.wikipedia.org/wiki/Server_Side_Public_License) (SSPL). MongoDB is available for most operating systems, including Windows, macOS, and most Linux distributions. The free MongoDB Community Edition is designed for smaller organizations, while the commercial MongoDB Enterprise Server is packaged with advanced features and includes customer support. MongoDB Atlas is a fully managed service that runs inside a cloud.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The details of the MongoDB SSPL have been highly debated. Under the SSPL, anyone offering a product incorporating SSPL-licensed technology must also release their software. Some industry professionals believe this does not fully meet the criteria for an open-source license. It is best to thoroughly investigate the terms of the agreement before developing any software based on MongoDB.
 {{< /note >}}
 
@@ -41,7 +41,7 @@ MongoDB has some other distinctive characteristics. It is designed as a distribu
 
 For information on how to install MongoDB on a Linode, see our guide on [How To Install MongoDB on CentOS 7](/docs/guides/install-mongodb-on-centos-7/), or the guide on [How To Install MongoDB on Ubuntu 16.04](/docs/guides/install-mongodb-on-ubuntu-16-04/).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Earlier releases of MongoDB had some problems with security issues and some significant bugs. These have been fixed in recent releases and application security is now comparable to other databases.
 {{< /note >}}
 

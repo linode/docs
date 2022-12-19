@@ -39,7 +39,7 @@ This guide will show to how install the following Elasticsearch plugins and inte
   * **ingest-geoip**: adds location information to indexed documents based on any IP addresses within the document.
   * **ingest-user-agent**: parses the `User-Agent` header of HTTP requests to provide identifying information about the client that sent each request.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

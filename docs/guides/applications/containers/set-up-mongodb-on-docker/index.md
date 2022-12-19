@@ -129,7 +129,7 @@ MongoDB is now running as a Docker Container.
 
 From the `mongosh` shell, you can test queries and operations directly with your database.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The legacy `mongo` shell has been deprecated in MongoDB v5.0, but is still accessible as an alternative to `mongosh`.
 {{< /note >}}
 

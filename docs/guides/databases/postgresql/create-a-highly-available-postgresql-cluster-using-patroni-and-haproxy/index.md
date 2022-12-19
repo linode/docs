@@ -42,7 +42,7 @@ This guide shows you how to create a highly available Postgres cluster of three 
 
 4.  Create five Linodes on your account, all within the same data center. Take note of each Linode's [private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address)
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

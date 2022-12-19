@@ -24,7 +24,7 @@ A *physical backup* is often necessary in situations when you only have access t
 
 For simplification, the name MySQL will be used throughout this guide but the instructions will work for both MySQL and MariaDB.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Log in as the root user with `su -` before you begin.
 {{< /note >}}
 

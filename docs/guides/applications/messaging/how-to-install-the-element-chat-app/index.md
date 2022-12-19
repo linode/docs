@@ -45,7 +45,7 @@ external_resources:
 
 1. Register a *Fully Qualified Domain Name* (FQDN) for your Element service. The DNS records for the domain should be set to the IP address of your Linode. Consult Linode's [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](/docs/products/networking/dns-manager/) guides for assistance when configuring your domain.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -94,7 +94,7 @@ Throughout this section and the rest of the guide, replace `example.com` with yo
 
 Install the *Matrix-Synapse* service. Element depends on Matrix functionality to work properly.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Synapse is the "home server" implementation of Matrix, but the two names are often used interchangeably. This guide refers to the software package as *Matrix* and the actual component as *Matrix-Synapse* to avoid confusion.
 {{< /note >}}
 
@@ -153,11 +153,11 @@ Active: active (running) since Thu 2021-04-08 10:56:34 UTC; 8s ago
         sudo mkdir -p /var/www/html/example.com/.well-known/matrix
         echo '{ "m.server": "example.com:443" }' | sudo tee /var/www/html/example.com/.well-known/matrix/server
 
-{{< note respectIndent=false >}}
+{{< note >}}
 For more advanced installation instructions, see the [*Matrix-Synapse GitHub installation page*](https://github.com/matrix-org/synapse/blob/master/INSTALL.md). This page includes instructions for building from source and configuring Matrix-Synapse using Docker or Ansible.
 {{< /note >}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Earlier versions of Matrix, as well as development/beta releases, are available on the [*Matrix releases page*](https://github.com/matrix-org/synapse/releases).
 {{< /note >}}
 
@@ -434,7 +434,7 @@ Nginx Full (v6)            ALLOW       Anywhere (v6)
 8448 (v6)                  ALLOW       Anywhere (v6)
     {{< /output >}}
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 The `ufw` allows `OpenSSH` traffic. Otherwise, you could lock yourself out of your Linode.
 {{< /note >}}
 
@@ -453,7 +453,7 @@ The easiest way to ensure Element works properly is to access the site and creat
 
 1. To verify that Element can communicate with Matrix, create an account and ensure you can view the Element dashboard.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If the identity server is not configured, Element displays a warning message when logging in as some of the functionalities might be unavailable. This limitation does not affect core Element features such as chat and messaging.
 {{< /note >}}
 

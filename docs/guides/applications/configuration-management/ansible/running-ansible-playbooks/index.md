@@ -104,7 +104,7 @@ In this section you will create a Playbook to add a limited user account to your
 
 When creating a limited user account you are required to create a host login password for the new user. Since you should never include plaintext passwords in your Playbooks, in this section you will use the Python passlib library to create a password hash that you can securely include in your Playbook.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypt-string-for-use-in-yaml) can also be used to encrypt sensitive data. This guide will not make use of Ansible Vault, however, you can consult the [How to use the Linode Ansible Module to Deploy Linodes](/docs/guides/deploy-linodes-using-ansible/) guide to view an example that makes use of this feature.
 {{< /note >}}
 

@@ -49,7 +49,7 @@ All of these things make Tahoe-LAFS a good fit for securely storing sensitive da
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -156,7 +156,7 @@ Restart the service:
 
 Although the process can be automated so that you can easily expand your storage pool, set up your first node manually to get a better understanding of how things work and where certain files are located. The initial steps from the [Before You Begin](#before-you-begin) section apply here as well.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you need large amounts of disk space, [configure block storage devices on your Linode](/docs/products/storage/block-storage/).
 
 Configure block storage before the other steps in this section.
@@ -219,7 +219,7 @@ Since some users may require tens or hundreds of storage nodes, automate configu
 
 To confirm each successful setup instead of launching all instances before verifying that they work, you can temporarily skip to the next two sections, and use the web user interface in your local browser. Then, return to this section, and after launching each Linode refresh the page after a few minutes. The new storage node should appear along with a green checkmark next to it.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This StackScript relies on *icanhazip.com* to retrieve each Linode's external IP address. While the site has redundant servers, there is a chance it may unavailable at times.
 {{< /note >}}
 

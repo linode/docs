@@ -47,7 +47,7 @@ This guide demonstrates how to install and use [*PostgreSQL*](https://www.postgr
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -144,7 +144,7 @@ Active: active (running) since Tue 2021-02-02 15:04:45 UTC; 1min 9s ago
 Docs: <https://www.postgresql.org/docs/13/static/>
 {{< /output >}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you require a specific minor release of PostgreSQL, you must obtain the source code from the [*PostgreSQL Downloads Page*](https://www.postgresql.org/ftp/source/).
 
 1. Locate the version and file you want, download and transfer it to your host, and extract the files with `tar`.
@@ -235,7 +235,7 @@ If you do not define this exception for the `postgres` user, you could potential
 
         sudo systemctl restart postgresql-13
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The `postgres` Linux user and the `postgres` database user are two different roles. The Linux account is used to access PostgreSQL, while the `postgres` PostgreSQL role is allowed to perform administrative tasks inside the database.
 {{< /note >}}
 
@@ -307,7 +307,7 @@ You are connected to database "testdatabase" as user "postgres" via socket in "/
 
         dropdb testdatabase
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 The `dropdb` command permanently deletes all of the tables and data inside the database and cannot be undone.
 {{< /note >}}
 

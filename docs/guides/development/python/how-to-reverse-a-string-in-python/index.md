@@ -190,7 +190,7 @@ The above function works in the following way:
 
 While not the fastest of the approaches covered in this guide, the recursive function has the advantage of following *functional programming* principles.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The Python interpreter enforces a limit to the number of recursions (or recursion depth) a function can have. By default, the limit is 1,000.
 
 This is because, unlike some other language compilers (like those for C/C++ and Scala), the Python interpreter does not have tail-call recursion optimization.

@@ -31,11 +31,11 @@ To be successful, backups should be automatic, reliable, and secure. This guide 
 
 Restic is a backup utility written in Go. It is cross-platform and works on most Linux distributions with a kernel newer than 2.6.23. Each backup is stored as a *snapshot* in a *repository*. The repository can be stored on most cloud storage providers, or even in a separate directory on your Linode (not recommended.) This guide explains how to use Linode Object Storage to hold your backup repository.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 MariaDB is a fork of MySQL. Where you see a reference to *MariaDB* in this guide, it should apply to MySQL also.
 {{< /note >}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges, and commands are run with `sudo` unless otherwise noted. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -73,7 +73,7 @@ The steps in this guide require root privileges, and commands are run with `sudo
 
 ## Backup All Databases
 
-{{< note respectIndent=false >}}
+{{< note >}}
 In this section's commands, remember to replace `your-bucket-name` and `us-east-1.linodeobjects.com` with the name of your Object Storage bucket and its cluster hostname.
 {{< /note >}}
 
@@ -164,7 +164,7 @@ ID        Time                 Host        Tags        Paths
 
 Linux has several ways of running a job on a defined schedule. This section outlines several common methods that you can use to configure the backup script to run periodically. Read through the methods and select one that suits your needs.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 When choosing how often to run your script, consider your databases' usage, how much data you could potentially lose, and the storage space required.
 {{< /note >}}
 
@@ -236,7 +236,7 @@ To explore the backups and files held within the Restic repository, you must iss
 
 It can get tedious typing out the arguments to the Restic command. To make life easier for maintenance and daily management, create an alias for the command with the arguments you need.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Because the credentials that Restic uses were created under the root user's home folder, the example alias in this section only works for the root user.
 {{< /note >}}
 
@@ -255,7 +255,7 @@ Backups are not useful if you cannot restore them. It's a good idea to test out 
 
     restic -r s3:us-east-1.linodeobjects.com/your-bucket-name -p /root/restic_pw restore latest -t /root
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The `-t` option tells Restic where to restore your backup. Restic restores your backup's files and recreates the full directory structure that existed at the time the backup was taken.
 
 For example, consider the backup file `/var/backups/mariadb/wordpress.sql`. Restoring a backup containing this file to a target of `/home/myuser` results in the file being restored as:
@@ -294,7 +294,7 @@ Restic can automatically clean-up your backup snapshots according to a flexible 
 
 Consider automatically running a policy using the `forget` command on a frequent basis (e.g. daily) to keep your backup repository's size down. Refer to the [snapshot policies](https://restic.readthedocs.io/en/stable/060_forget.html#removing-snapshots-according-to-a-policy) article for more details.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Don't forget to pass the `--prune` option to the `forget` command or the space won't actually be freed from your repository.
 
 Pruning a repository can take significant time and stops new backups from taking place while it is being run, so it is best to run it often and non-interactively.

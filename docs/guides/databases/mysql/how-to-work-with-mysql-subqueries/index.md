@@ -331,7 +331,7 @@ When subqueries are used in the `FROM` clause of a parent query, they are referr
 
 When subqueries are used as derived tables, they isolate the different parts of the SQL statement. In other words, the subquery provides a simplified expression of a table that can be used within the scope of the parent query.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Remember, every derived table must be aliased.
 {{< /note >}}
 
@@ -348,7 +348,7 @@ Run the command below to create a derived table subquery that is aliased as `ord
         ) as order_summary
     WHERE order_summary.total_orders > 1;
 
-{{< note respectIndent=false >}}
+{{< note >}}
 In this command, the subquery appears in parentheses as:
 
     SELECT

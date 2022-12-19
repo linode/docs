@@ -64,7 +64,7 @@ While PuTTY is compatible with Windows 10, you may want to review the [Connectin
 If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when remote host key changes. To fix this, you must remove the IP addresses manually from the following registry entry:
 
     HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\SshHostKeys
-{{</note>}}
+{{< /note >}}
 
 1.  PuTTY now prompts you to enter the remote user and the password for that user.
 

@@ -93,7 +93,7 @@ linode_stackscripts/
         └── outputs.tf
 {{</ output >}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Your `linode_stackscripts` directory will likely contain other files related to the Terraform installation you completed prior to beginning the steps in this guide.
 {{< /note >}}
 

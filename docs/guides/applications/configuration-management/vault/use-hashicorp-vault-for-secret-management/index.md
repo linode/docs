@@ -61,7 +61,7 @@ These installation steps will:
 - Configure Vault for local filesystem storage.
 - Install the `vault` binary and set up the operating system to operate Vault as a service.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The configuration outlined in this guide is suitable for small deployments. In situations that call for highly-available or fault-tolerant services, consider running more than one Vault instance with a highly-available storage backend such as [Consul](https://www.vaultproject.io/docs/configuration/storage/consul.html).
 {{< /note >}}
 

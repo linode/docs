@@ -32,7 +32,7 @@ This guide demonstrates how to:
 
 ### On Your Local Computer
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Dokku v0.12.5 is compatible with Ubuntu 16.04 x64, Ubuntu 14.04 x64, and Debian 8.2 x64. CentOS 7 x64 is only supported experimentally, and as such some steps like configuring SSH keys and virtual hosts must be done manually using the dokku command line interface. See [the official documentation](http://dokku.viewdocs.io/dokku~v0.12.5/getting-started/installation/) for more information.
 {{< /note >}}
 
@@ -131,7 +131,7 @@ The Procfile tells the Gunicorn server what command to use when launching the ap
 web: gunicorn hello_world:app --workers=4
 {{< /file >}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 4 workers is a good default for an web app running on a Linode. See the [Gunicorn docs](http://docs.gunicorn.org/en/stable/design.html#how-many-workers) for more information about determining the correct number of workers for your particular app.
 {{< /note >}}
 

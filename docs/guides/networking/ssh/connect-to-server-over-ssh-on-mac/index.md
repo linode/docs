@@ -67,7 +67,7 @@ Are you sure you want to continue connecting (yes/no)?
 If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when remote host key changes. To fix this, revoke the key for that IP address.
 
     ssh-keygen -R 198.51.100.4
-{{</note>}}
+{{< /note >}}
 
 1. Accept the prompt by entering `y` or `yes`, which results in a one-time warning that is similar to:
 

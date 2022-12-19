@@ -36,7 +36,7 @@ relations:
 
 1. In the examples that follow, change `192.0.2.0` to the IP address for your CentOS 8 machine.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

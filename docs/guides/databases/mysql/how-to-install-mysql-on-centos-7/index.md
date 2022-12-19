@@ -35,7 +35,7 @@ If you nonetheless prefer MySQL, this guide will introduce how to install, confi
 
 Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [High Memory Linode](https://www.linode.com/pricing/) for such setups.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -75,7 +75,7 @@ MySQL must be installed from the [community repository](https://dev.mysql.com/do
 
 MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/) for information on connecting to your databases using SSH.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Allowing unrestricted access to MySQL on a public IP not advised but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 {{< /note >}}
 
@@ -87,7 +87,7 @@ Allowing unrestricted access to MySQL on a public IP not advised but you may cha
 
 You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/mysql-secure-installation.html).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If MySQL 5.7 was installed, you will need the temporary password that was created during installation. This password is notated in the `/var/log/mysql.log` file, and can be quickly found using the following command.
 
     sudo grep 'temporary password' /var/log/mysqld.log

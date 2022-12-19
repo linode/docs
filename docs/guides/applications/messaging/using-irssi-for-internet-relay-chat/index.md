@@ -93,7 +93,7 @@ To disconnect from a channel, run:
 
     /disconnect irc.oftc.net
 
- {{< note respectIndent=false >}}
+{{< note >}}
 You can join additional networks by replacing **irc.oftc.net** with a different network.
 {{< /note >}}
 
@@ -151,7 +151,7 @@ To send a private message to just one person on your network, use the `/msg` com
 
     /msg friendnick Hello there!
 
- {{< note respectIndent=false >}}
+{{< note >}}
 Please note that if you are in a channel, you can use tab to autocomplete nicks within that channel.
 {{< /note >}}
 
@@ -173,7 +173,7 @@ Use the `Alt` key and the window number to change to a different window. Window 
 
     /win number
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If the `Alt` + `num` command does not switch windows, use `esc` followed by the window number.
 {{< /note >}}
 

@@ -29,7 +29,7 @@ This guide will show you how to create and configure a Chef server and workstati
 
 See [A Beginner's Guide to Chef](/docs/guides/beginners-guide-chef/) for an introduction to Chef concepts.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/#understanding-sudo) guide.
 {{< /note >}}
 
@@ -247,7 +247,7 @@ Now that your Chef server and workstation are configured, you can bootstrap your
 
 Bootstrapping a node installs the Chef client on the node and validates the node. This allows the node to read from the Chef server and pull down and apply any needed configuration updates detected by the chef-client.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you encounter any `401 Unauthorized` errors ensure that your `ORGANIZATION.pem` file has `700` permissions. See [Chef's troubleshooting](https://docs.chef.io/errors.html) guide for further information on diagnosing authentication errors.
 {{< /note >}}
 

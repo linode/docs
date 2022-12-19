@@ -26,7 +26,7 @@ Running MySQL at optimal settings for specific resources helps handle larger ser
 
 Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration. Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [High Memory Linode](https://www.linode.com/pricing/) for such setups.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -104,7 +104,7 @@ When altering the MySQL configuration, be alert to the changes and how they affe
 
 The MySQL configuration file stored in the following location: `/etc/mysql/my.cnf`.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Prior to updating your MySQL configuration, create a backup of the `my.cnf` file:
 
     cp /etc/mysql/my.cnf ~/my.cnf.backup

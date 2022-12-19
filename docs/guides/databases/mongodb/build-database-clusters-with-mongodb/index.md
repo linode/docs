@@ -37,7 +37,7 @@ The commands and filepaths in this guide are based on those used in Ubuntu 16.04
 
 1.  Follow our guides to [install MongoDB](/docs/databases/mongodb/) on each Linode you want to use in your cluster.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -72,7 +72,7 @@ On each Linode in your cluster, add the following to the `/etc/hosts` file:
 
 Replace the IP addresses above with the IP addresses for each Linode. Also substitute the hostnames of the Linodes in your cluster for the hostnames above.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You may also configure DNS records for each host rather than using hosts file entries. However, be aware that public DNS servers, such as the ones used when configuring records in the [DNS Manager](/docs/products/networking/dns-manager/), only support public IP addresses.
 {{< /note >}}
 
@@ -440,7 +440,7 @@ This is not intended to be a comprehensive guide to choosing a sharding strategy
 
 Now that the database is available for sharding and we've chosen a strategy, we need to enable sharding at the collections level. This allows the documents within a collection to be distributed among your shards. We'll use a hash-based sharding strategy for simplicity.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 It's not always necessary to shard every collection in a database. Depending on what data each collection contains, it may be more efficient to store certain collections in one location since database queries to a single shard are faster. Before sharding a collection, carefully analyze its anticipated contents and the ways it will be used by your application.
 {{< /note >}}
 

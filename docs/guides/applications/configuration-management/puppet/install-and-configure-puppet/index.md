@@ -28,7 +28,7 @@ Puppet is written in its own custom language, meant to be accessible to system a
 
 Puppet can be used to manage multiple servers across various infrastructures, from a group of personal servers up to an enterprise level operation. It is intended to run on Linux and other Unix-like operating systems, but has also been ported to Windows. For the purpose of this guide, however, we will be working with an Ubuntu 16.04 LTS master server and two agent nodes: one Ubuntu 16.04, and one CentOS 7.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Begin this guide as the `root` user. A limited user with administrative privileges will be configured in later steps.
 {{< /note >}}
 
@@ -167,7 +167,7 @@ server=puppet.example.com
 
 Both the Puppet master and agent nodes configured above are functional, but not secure. Based on concepts from the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This is not meant to provide a basis for a fully-hardened server, and is intended only as a starting point. Alter and add firewall rules and other configuration options, depending on your specific needs.
 {{< /note >}}
 

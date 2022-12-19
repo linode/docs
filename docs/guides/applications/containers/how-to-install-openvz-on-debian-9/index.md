@@ -356,7 +356,7 @@ Containers have no way to access the internet or be accessed from the internet. 
 
 ### Configure Access From Container To Internet
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You may need to login as root with `su -` in order to run the iptables-save commands in this section.
 {{< /note >}}
 

@@ -34,7 +34,7 @@ This guide has been tested with Ubuntu 16.04 and CentOS 7. Because most of the c
 
 1.  Follow the guide on how to install MongoDB for your distribution. See [MongoDB guides](/docs/databases/mongodb/)
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -66,7 +66,7 @@ Each member of your replica set should have a hostname that identifies it as a m
 
 If you're using more than three Linodes, add all of your hosts at this stage. Replace the hostnames with your actual hostnames, and the IP addresses with the IP addresses of your Linodes.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 These hostnames are only given as examples, but we'll use these names throughout this guide to refer to members of the replica set. When you see one of these names in a command or configuration file, substitute your own hostname if applicable.
 {{< /note >}}
 

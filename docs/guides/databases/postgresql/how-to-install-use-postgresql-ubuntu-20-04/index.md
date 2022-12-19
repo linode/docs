@@ -32,7 +32,7 @@ This guide provides an introduction to [*PostgreSQL*](https://www.postgresql.org
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -112,7 +112,7 @@ To install an earlier version of PostgreSQL, add the release number as a suffix,
 
         sudo systemctl status postgresql.service
 
-{{< note respectIndent=false >}}
+{{< note >}}
 For a specific minor release of PostgreSQL, or more manual control over the installation, source code can be obtained from the [*PostgreSQL Downloads Page*](https://www.postgresql.org/ftp/source/). Download the file, transfer it to the Linode server, and extract the files with `tar`. Follow the [*installation procedure*](https://www.postgresql.org/docs/current/install-procedure.html) to build the application.
 {{< /note >}}
 
@@ -183,7 +183,7 @@ local   all             all                                     md5
 
         sudo systemctl restart postgresql.service
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Although they share the same user name, the `postgres` Linux user and the `postgres` database user are different. The Linux account is used to access the database, while the PostgreSQL user can perform administrative tasks inside the database.
 {{< /note >}}
 

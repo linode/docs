@@ -112,7 +112,7 @@ With Miniconda, it's possible to create a virtualized environment for Ansible wh
 
 ### Install Ansible
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide was created using Ansible 2.8.
 {{< /note >}}
 

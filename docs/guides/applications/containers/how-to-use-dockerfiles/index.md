@@ -57,7 +57,7 @@ Here are common instructions that you can use in your Dockerfiles to build image
 - **USER**: Set the UID (the username) to run commands in the container.
 - **WORKDIR**: Set the container path where subsequent Dockerfile commands are executed.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 `RUN`, `CMD`, and `ENTRYPOINT` can each be run in *shell* form, which takes normal arguments, or *exec* form, which takes arguments as a JSON array. Because *exec* form does not invoke a command shell, it is generally preferred and utilized in this guide.
 {{< /note >}}
 
@@ -145,7 +145,7 @@ A new container based on `example_image` is deployed, and the command specified 
 Hello, Sunshine!
 {{< /output >}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If the `docker run` command is executed and the Docker image is not available in your current working directory, it is pulled from the Docker registry instead.
 {{< /note >}}
 

@@ -51,7 +51,7 @@ In this guide you will:
 
 - [Troubleshooting common errors](/docs/guides/beginners-guide-to-lxd-reverse-proxy/#troubleshooting).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 For simplicity, the term *container* is used throughout this guide to describe the LXD system containers.
 {{< /note >}}
 
@@ -630,7 +630,7 @@ Run the following command on the host to verify whether LXD is listening and is 
 
     sudo ss -ltp '( sport = :http || sport = :https )'
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The `ss` command is similar to `netstat` and `lsof`. It shows information about network connections. In this case, we use it to verify whether there is a service on ports 80 and 443, and which service it is.
 * `-l`, to display the listening sockets,
 * `-t`, to display only TCP sockets,

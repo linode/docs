@@ -276,7 +276,7 @@ If a trigger body has more than one SQL statement, you must enclose it within a 
 
     DELIMITER ;
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The last line of this example changes the `DELIMITER` back to the default `;` value.
 {{< /note >}}
 
@@ -546,7 +546,7 @@ You can delete a trigger if you don't want to use it anymore using the syntax be
 
     DROP TRIGGER IF EXISTS TRIGGER_NAME;
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The `IF EXISTS` keyword is an optional parameters that only deletes a trigger if it exists.
 {{< /note >}}
 
@@ -560,6 +560,6 @@ Output:
 Query OK, 0 rows affected (0.00 sec)
 {{< /output >}}
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Be cautious when deleting tables associated with triggers. Once a table is dropped from the MySQL database, the related triggers are also automatically deleted.
 {{< /note >}}

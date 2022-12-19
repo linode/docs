@@ -29,7 +29,7 @@ relations:
 
 ![Install Plex Media Server on Ubuntu 18.04](install-plex-media-server-on-ubuntu-18-04.png)
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

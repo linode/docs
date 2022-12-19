@@ -35,7 +35,7 @@ This guide explains how to install and perform the basic configuration of [*Redi
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -94,7 +94,7 @@ To install Redis using the APT utility, follow the steps below:
 
         sudo apt install redis-server
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If the Redislabs repository is added, APT automatically installs the latest stable version. We do not recommend installing Redis through the Ubuntu default packages, as that might install an older version.
 {{< /note >}}
 
@@ -148,11 +148,11 @@ supervised systemd
     fido
     {{< /output >}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The `redis.conf` file contains extensive documentation and many examples. A sample `redis.conf` file can be found on the [Redis Git Hub site](https://raw.githubusercontent.com/redis/redis/6.0/redis.conf).
 {{< /note >}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can also use `redis-cli` as a function to run any command. Pass in the command and any associated variables as arguments. For example, you can perform a ping with `redis-cli ping`.
 {{< /note >}}
 
@@ -222,7 +222,7 @@ user user3 +@all -SET allkeys on >user3pass
 
         GET server:name
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can also create users through the `redis-cli` interface using the `ACL SET USER` command, or through a separate ACL file. See the [*Redis ACL page*](https://redis.io/topics/acl) for more information.
 
 In earlier versions of Redis, administrators could rename and therefore hide powerful commands using `rename-command` directives in `redis.conf`. With the introduction of the ACL feature, this directive is no longer recommended. However, it is still available for backward compatibility.
@@ -257,7 +257,7 @@ appendfsync everysec
 
         sudo systemctl restart redis.service
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Some of the AOF persistence settings are complicated. Consult the [*Redis Persistence Documentation*](https://redis.io/topics/persistence) for more advice about this option.
 {{< /note >}}
 

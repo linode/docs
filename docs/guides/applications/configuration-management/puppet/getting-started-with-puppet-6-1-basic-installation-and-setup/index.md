@@ -35,7 +35,7 @@ Puppet deployments can range from small groups of servers up to enterprise-level
 
 After installation, the next section will show you how to secure these servers via Puppet. This section will demonstrate core features of the Puppet language.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Most guides will instruct you to follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide before proceeding. Because Puppet will be used to perform this task, you should begin this guide as the `root` user. A limited user with administrative privileges will be configured via Puppet in later steps.
 {{< /note >}}
 
@@ -285,7 +285,7 @@ Notice: Applied catalog in 0.02 seconds
 
 The Puppet master and agent nodes are now functional, but they are not secure. Based on concepts from the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This is not meant to provide a basis for a fully-hardened server, and is intended only as a starting point. Alter and add firewall rules and other configuration options, depending on your specific needs.
 {{< /note >}}
 
@@ -496,7 +496,7 @@ Notice: Finished catalog run in 0.02 seconds
 
 Although a new limited user has successfully been added to the Puppet master, it is still possible to login to the system as root. To properly secure your system, root access should be disabled.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Because you are now logged in to the Puppet master as a limited user, you will need to execute commands and edit files with the user's sudo privileges.
 {{< /note >}}
 

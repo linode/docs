@@ -51,7 +51,7 @@ When the Terraform plan is ready to implement, the `terraform apply` command is 
 
 Terraform can be used in a multi-developer environment in conjunction with a versioning control system. Developers can also build their own provider infrastructure for use instead of, or alongside, third-party providers. Terraform provides more details about how the product works and how to use it in their [Introduction to Terraform summary](https://developer.hashicorp.com/terraform/intro).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Terraform is very powerful, but it can be a difficult tool to use. Syntax errors can be hard to debug. Before attempting to create any infrastructure, it is a good idea to read the [Linode Introduction to the HashiCorp Configuration Language](/docs/guides/introduction-to-hcl/). The documentation about the [Linode Provider](https://registry.terraform.io/providers/linode/linode/latest/docs) in the Terraform Registry is also essential. Consult Linode's extensive collection of [Terraform guides](/docs/guides/applications/configuration-management/terraform/) for more examples and explanations.
 {{< /note >}}
 
@@ -67,7 +67,7 @@ Terraform is very powerful, but it can be a difficult tool to use. Syntax errors
     sudo apt update && sudo apt upgrade
     ```
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

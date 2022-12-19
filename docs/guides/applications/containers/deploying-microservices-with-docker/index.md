@@ -37,7 +37,7 @@ This guide shows how to build and deploy an example microservice using Docker an
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -148,7 +148,7 @@ COPY visitors (site_id, site_name, visitor_count) FROM stdin;
 \.
 {{</ file >}}
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 In Line 22 of `init.sql`, make sure your text editor does not convert tabs to spaces. The app will not work without tabs between the entries in this line.
 {{< /note >}}
 

@@ -29,7 +29,7 @@ PostgreSQL supports both relational queries delivered through the *Structured Qu
 
 PostgreSQL emphasizes extensibility to allow future growth, along with a high level of SQL compliance. It attempts to conform with the SQL standard as much as possible, except where this contradicts expected behavior or leads to negative side effects. PostgreSQL is planning further moves towards full compliance in the future.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 All current RDBMS applications occasionally deviate from the SQL standard. In many cases, database applications must trade off strict conformance for better performance and usability. For more information about PostgreSQL SQL compliance, see [Appendix D in the PostgreSQL documentation](https://www.postgresql.org/docs/current/features.html).
 {{< /note >}}
 

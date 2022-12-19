@@ -28,7 +28,7 @@ aliases: ['/applications/configuration-management/terraform/secrets-management-w
 
 Terraform is an Infrastructure as Code (IaC) tool that allows you to write declarative code to manage your infrastructure. In order to implement IaC with Terraform it is necessary to supply secrets, such as server passwords and API tokens, in the code. This guide discusses methods for securing those secrets within Terraform.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12 or later. To learn how to safely upgrade to Terraform version 0.12 or later, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
 
 The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html).
@@ -56,7 +56,7 @@ provider "linode" {
 
 Variable definitions are written in `.tf` files. In this example, it's the same file as your provider configuration, but the definition could have been in a separate `.tf` file too.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Your variable definitions can have default values assigned to them. Here's an example that encodes Linode's Newark data center as the default value for a `region` variable:
 
 {{< file "variables.tf" >}}
@@ -83,7 +83,7 @@ You can then add the `terraform.tfvars` file to the `.gitignore` file and keep i
 
 For ease of use with large `terraform.tfvars` files, it might be beneficial to include an example `terraform.tfvars.example` in your Git repository. The variable names can be recorded, but none of the values need to be entered. Team members could then copy this example into their local repository's `terraform.tfvars` and enter the appropriate values.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Variable value files with names that don't match `terraform.tfvars` or `*.auto.tfvars` can be specified with the `-var-file` option:
 
     terraform apply -var-file=myvars.tfvars
@@ -140,7 +140,7 @@ You can also include the variable on the same line when running `terraform plan`
 
     TF_VAR_token=your-token-value terraform apply
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 This method commits the environment variable to your shell's history, so take care when using this method.
 {{< /note >}}
 
@@ -150,7 +150,7 @@ Variable values can be set with the `-var` option:
 
     terraform apply -var 'token=your-token-value'
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 This method commits the command-line variable to your shell's history, and exposes it to other users on the system running `ps`.
 {{< /note >}}
 
@@ -200,7 +200,7 @@ You must initialize git-crypt in a repository before committing the state file o
 
 It is possible to supply a dummy password to Terraform and later change it to a more secure password. For instance, if you create a Linode instance with a dummy root password, you can later change that password from the command line, or in the Linode Manager.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Any attempt to change the password in a `.tf` file results in the creation of new resources on `terraform apply`.
 {{< /note >}}
 
@@ -244,7 +244,7 @@ To do so, first you need to set these secrets as environment variables. You can 
         export TF_VAR_database_username=("Username of database administrator")
         export TF_VAR_database_password=("Password of database administrator")
 
-{{< note respectIndent=false >}}
+{{< note >}}
 After the variables are properly defined, the next time you run Terraform, it automatically picks up secrets
 terraform apply
 {{< /note >}}
@@ -283,7 +283,7 @@ data "vault_generic_secret" "linode_auth" {
 }
 {{< /file >}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 For this example, in Vault there is a key named "auth_token" and the value is the token we need to keep secret.
 
 In general usage, replace "auth_token" with the key you wish to extract from Vault.

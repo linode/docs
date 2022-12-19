@@ -55,7 +55,7 @@ The steps in this section work on macOS 13.0 and above.
 
 1.  Add the `mongosh` and `mongocryptd` binaries to your PATH.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If, upon invocation, `mongosh` doesn't execute, it may be necessary (depending on the version of macOS) to navigate to *Application Security* in *System Preferences*. Then, verify that `mongosh` and `mongocryptd` have the correct permissions.
 {{< /note >}}
 
@@ -217,7 +217,7 @@ To add a record to a collection, use the `insert` or `insertOne` command. For ex
 
 ## Uninstall the MongoDB Shell
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 When using the `rm` command ensure you are removing the desired file and directory. You cannot recover files or directories once they are removed.
 {{< /note >}}
 

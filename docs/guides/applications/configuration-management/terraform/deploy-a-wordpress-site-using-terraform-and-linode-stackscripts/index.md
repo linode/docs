@@ -26,7 +26,7 @@ Linode's Terraform provider supports [StackScripts](/docs/products/tools/stacksc
 
 In this guide you will learn how to use a Community StackScript to deploy WordPress on a Linode using Terraform.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Following this guide will result in the creation of billable Linode resources on your account. To prevent continued billing for these resources, remove them when you have completed the guide.
 {{< /note >}}
 
@@ -314,7 +314,7 @@ variable "a_record" {
 }
     {{</ file >}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 It is recommended to include a `description` attribute for each input variable to help document your configuration's usage. This will make it easier for anyone else to use this Terraform configuration.
 {{< /note >}}
 
@@ -326,7 +326,7 @@ The `stackscript_data` variable is of type `map`. This will allow you to provide
 
 Terraform allows you to assign variables in many ways. For example, you can assign a variable value via the command line when running `terraform apply`. In order to persist variable values, you can also create files to hold all your values.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 There are several other options available for secrets management with Terraform. For more information on this, see [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform/).
 {{< /note >}}
 

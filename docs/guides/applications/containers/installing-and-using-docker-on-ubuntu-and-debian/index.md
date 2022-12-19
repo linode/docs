@@ -122,7 +122,7 @@ Before continuing, make sure you have a limited user account that *does not* bel
 
     The output should have a similar success message as the previous output.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 The *docker* group grants similar privileges to those of the root user. Review the [Docker Daemon Attack Surface](https://docs.docker.com/engine/security/#docker-daemon-attack-surface) guide within Docker's documentation for more information about how that can affect system security. To run the Docker daemon without using root privileges, follow the instructions within [Run the Docker daemon as a non-root user (Rootless mode)](https://docs.docker.com/engine/security/rootless/).
 {{< /note >}}
 

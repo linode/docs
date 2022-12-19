@@ -37,7 +37,7 @@ The [PostgreSQL](http://www.postgresql.org/) relational database system is a pow
 
         sudo yum update
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit the [Users and Groups guide](/docs/guides/linux-users-and-groups/) for more information.
 {{< /note >}}
 
@@ -66,7 +66,7 @@ Unless otherwise noted, the instructions in subsequent sections of this guide wi
 
 Alternatively, you can install the latest version from the Postgres repositories. As of this publication, PostgreSQL `9.6.3` is the most recent version available for CentOS 7, but these steps can be applied to any RPM-based installation.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 When Postgres is installed using this method, the version number is included in its configuration directories. For example, `/var/lib/pgsql` becomes `/var/lib/pgsql/9.6`. This is also the case with systemd units; `systemctl status postgresql` becomes `systemctl status postgresql-9.6`.
 {{< /note >}}
 
@@ -98,7 +98,7 @@ When Postgres is installed using this method, the version number is included in 
 
 By default, PostgreSQL will create a Linux user named `postgres` to access the database software.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 The `postgres` user should not be used for other purposes (e.g., connecting to other networks). Doing so presents a serious risk to the security of your databases.
 {{< /note >}}
 
@@ -193,7 +193,7 @@ You can delete, or *drop*, databases with the `dropdb` command. For example, to 
 
     dropdb mytestdb
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 Deleted databases cannot be recovered.
 {{< /note >}}
 

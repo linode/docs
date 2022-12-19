@@ -44,7 +44,7 @@ If you remove the resource, [you are only be billed for the hour(s) that the res
 
 ## Before You Begin
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps outlined in this guide require [Ansible version 2.9.10 or greater](https://github.com/ansible/ansible/releases/tag/v2.9.10) and were tested on a Linode running Ubuntu 22.04. The instructions can be adapted to other Linux distributions or operating systems.
 {{< /note >}}
 

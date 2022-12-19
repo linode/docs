@@ -24,7 +24,7 @@ dedicated_cpu_link: true
 
 SHOUTcast is software designed for streaming media over the internet. The SHOUTcast system uses a classic client-server configuration. You can install SHOUTcast on your server and use it to broadcast a stream of music to clients connected to the server. A Shoutcast media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
- {{< note respectIndent=false >}}
+{{< note >}}
 Be sure to [check the broadcast tools download page](http://www.shoutcast.com/broadcast-tools) for the newest version of SHOUTcast.
 {{< /note >}}
 
@@ -166,7 +166,7 @@ Your SHOUTcast server is now running! You can now connect to it and begin your b
 
 The SHOUTcast Transcoder allows you to schedule DJ play times, broadcast an automatic playlist in a specific time slot, schedule time slots for relayed broadcasts, etc.
 
- {{< note respectIndent=false >}}
+{{< note >}}
 To encode your streams in MP3 format, you *must* [purchase a license key from WinAmp, which costs \$5 USD](http://wiki.winamp.com/wiki/SHOUTcast_DNAS_Transcoder_2#Registering_for_MP3_Stream_Encoding).
 {{< /note >}}
 

@@ -90,7 +90,7 @@ Moving media to the Volume can be done with `scp` using the following syntax:
 
 Depending on the file size(s), this may take a few minutes.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 There are other ways to upload files to a remote server. See our section in [Linux System Administration Basics](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server) for more information.
 {{< /note >}}
 

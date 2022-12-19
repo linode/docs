@@ -89,7 +89,7 @@ nautilus &
 
     ![Guacamole Login](guac_login.png)
 
-{{< note respectIndent=false >}}
+{{< note >}}
 After you connect to the VNC server if you are not able to open the default browser such as the `Debian Sensible Browser` and see `Failed to Execute Default Web Browser. Input/Output error`, then try installing a different browser such as `FireFox` or others.
 {{< /note >}}
 

@@ -24,9 +24,7 @@ deprecated: true
 
 [Terraform](https://www.terraform.io/), the orchestration tool by [HashiCorp](https://www.hashicorp.com/), can be used to deploy a Kubernetes cluster on Linode. [Linode's Terraform K8s module](https://registry.terraform.io/modules/linode/k8s/linode/0.1.2) creates a Kubernetes(K8s) cluster running on Ubuntu, and simplifies many of the steps involved in deploying a Kubernetes cluster with [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/). After creating master and worker nodes, the module connects over SSH to these instances and installs kubeadm, [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), and other Kubernetes binaries to the `/opt/bin` directory. It also initializes kubeadm, joins the worker nodes to the master, and configures kubectl to control the cluster. Calico is installed for the container networking interface of the cluster. A kubectl config file is installed to the local environment which connects to the API server of the cluster.
 
-
-
-{{< note respectIndent=false >}}
+{{< note >}}
 Development work on the module is active. For the latest updates and validated Terraform configurations, see the module’s [GitHub repository](https://github.com/linode/terraform-linode-k8s).
 {{< /note >}}
 
@@ -245,7 +243,7 @@ You are now ready to manage the cluster using kubectl. For more information abou
 
 A new terminal window does not have access to the context specified using the previous instructions. This context information can be made persistent between new terminals by setting the [`KUBECONFIG` environment variable](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) in the configuration file of the shell.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If you are using Windows, review the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) to persist a context.
 {{< /note >}}
 

@@ -44,7 +44,7 @@ Download and install MySQL workbench from the [downloads page](https://www.mysql
 
 There are `.deb` and `.rpm` packages available on the Workbench [download page](https://www.mysql.com/products/workbench/). Alternatively, some distributions have MySQL Workbench in their repositories.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The screenshots in this guide were taken in Ubuntu but once Workbench is installed on your system, the subsequent steps should be similar for other platforms.
 {{< /note >}}
 

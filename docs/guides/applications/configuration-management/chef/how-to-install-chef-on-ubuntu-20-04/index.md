@@ -79,7 +79,7 @@ Linode has a helpful [Beginner's Guide to Chef](/docs/guides/beginners-guide-che
 
 1. Configure the host name of the Chef Server so it matches the domain name. This allows SSL certificate allocation to proceed normally. To set the host name of a Ubuntu server, use the command `sudo hostnamectl set-hostname <hostname>`, replacing `<hostname>` with the actual name of your domain.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -248,7 +248,7 @@ A few more items must be configured before the Workstation is operational. Tasks
 
 RSA private keys enable better security between the Chef Server and associated workstations through the use of encryption. Earlier, RSA private keys were created on the Chef Server. Copying these keys to a workstation allows it to communicate with the server. To enable encryption using RSA private keys, follow these steps.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 SSH password authentication must be enabled on the Chef Server to complete the key exchange. If SSH password authentication has been disabled for better security, enable it again before proceeding. After the keys have been retrieved and added to the workstation, SSH password authentication can be disabled again. See the Linode guide to [How to Secure Your Server](/docs/guides/set-up-and-secure/#ssh-daemon-options) for more information.
 {{< /note >}}
 

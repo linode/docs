@@ -97,7 +97,7 @@ Once you have all your private IPs, you can add them to the `hosts` file. Use yo
 
 Use your own IP addresses in place of the addresses in the above example. The names of the members in the replication set are also variables, so you may name them what you choose. However, it would be prudent to have some numerical or alphabetic notation as this will make it easier to identify when connecting to the different replication set members.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Replication set member names and the actual server name are different. In this instance, the server name is **europa**, and the replication set members are **mongo1**, **mongo2**, and **mongo3** respectively.
 {{< /note >}}
 

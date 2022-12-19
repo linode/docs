@@ -31,7 +31,7 @@ external_resources:
 
 1. Huginn supports Debian and Ubuntu Linux distributions, and this guide's instructions are intended for these distributions as well.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

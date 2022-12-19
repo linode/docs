@@ -27,7 +27,7 @@ aliases: ['/applications/configuration-management/create-a-nodebalancer-with-ter
 
 Terraform allows you to represent Infrastructure as Code (IaC). You can use it to manage infrastructure, speed up deployments, and share your infrastructure's configuration files within a team. In this guide you will use Terraform to create a NodeBalancer that distributes traffic between two Linodes.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 The configurations and commands used in this guide will result in multiple billable resources being added to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges. See the [Billings and Payments](/docs/products/platform/billing/) guide for more details.
 
 If you would like to stop billing for the resources created in this guide, [remove them](#optional-remove-the-nodebalancer-resources) when you have finished your work.
@@ -118,7 +118,7 @@ The NodeBalancer Config resource requires a NodeBalancer ID, which is populated 
 
 As far as settings go, the health check is set to `http_body`, meaning that the health check will look for the string set by `check_body` within the body of the page set at `check_path`. The NodeBalancer will take a node out of rotation after 30 failed check attempts. Each check will wait for a response for 25 seconds before it is considered a failure, with 30 seconds between checks. Additionally, the session stickiness setting has been set to `http_cookie`. This means that the user will continue to be sent to the same server by the use of a session cookie. The algorithm has been set to `roundrobin`, which will sort users evenly across your backend nodes based on which server was accessed last.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Review the [NodeBalancer Reference Guide](/docs/products/networking/nodebalancers/guides/configure/) for a full list of NodeBalancer configuration options.
 {{< /note >}}
 

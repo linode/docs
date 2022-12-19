@@ -33,7 +33,7 @@ relations:
 
 The [Elastic](https://www.elastic.co/) stack is a troika of tools that includes Elasticsearch, Logstash, and Kibana. These tools provide a free and open-source solution that searches, collects, and analyzes data. This data can be from any source and in any format. They also visualize the data in real time.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Version 7.11 of the Elastic stack is used in this guide, which is the latest at the time of this writing.
 {{< /note >}}
 
@@ -306,7 +306,7 @@ Kibana is now able to display logs stored in indices that match the `logstash-*`
 
 When the previous `curl` commands generated entries in the Apache access logs, Logstash indexed them in Elasticsearch. These are now visible in Kibana.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Logs are retrieved based upon a time window that is shown in the upper right corner of the Kibana interface. By default, this panel displays "Last 15 minutes". At certain points, you may find that log entries are not shown in the Kibana interface. If this happens, click the timespan panel and choose a wider range, such as "Last hour" or "Last 4 hours." After choosing a broad enough range of time, your logs should appear.
 {{< /note >}}
 

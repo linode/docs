@@ -49,7 +49,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 **Supported distributions:** CentOS 7, CentOS 8 (including other derivatives of RHEL 8 such as AlmaLinux and RockyLinux), and Fedora 32 (and later)
 
-{{< note respectIndent=false >}}
+{{< note >}}
 While the **YUM** package manager has been replaced with **DNF** on CentOS 8 and Fedora, the `yum` command is still present as a symlink to DNF. As such, these instructions still work as intended.
 {{< /note >}}
 
@@ -121,7 +121,7 @@ Before continuing, make sure you have a limited user account that *does not* bel
 
     The output should have a similar success message as the previous output.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 The *docker* group grants similar privileges to those of the root user. Review the [Docker Daemon Attack Surface](https://docs.docker.com/engine/security/#docker-daemon-attack-surface) guide within Docker's documentation for more information about how that can affect system security. To run the Docker daemon without using root privileges, follow the instructions within [Run the Docker daemon as a non-root user (Rootless mode)](https://docs.docker.com/engine/security/rootless/).
 {{< /note >}}
 

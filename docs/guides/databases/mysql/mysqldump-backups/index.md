@@ -21,7 +21,7 @@ image: mysqldump-backup-title.jpg
 
 [MySQL](http://www.mysql.com/) (and [MariaDB](https://mariadb.com/)) include the [mysqldump](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html) utility to simplify the process to create a backup of a database or system of databases. Using `mysqldump` creates a *logical backup* and generates the SQL statements needed to reproduce the original database structure and data.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Since the mysqldump utility needs to connect to the database, the database management software must be running and accessible. If the database is not accessible for any reason, you can instead create a [*physical backup*](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/), which is a copy of the file system directory containing your MySQL database.
 {{< /note >}}
 
@@ -61,7 +61,7 @@ The following list represents mysqldump commands for various scenarios. Within t
 Do not use the `--all-databases` option if you intend on restoring this database to a Linode MySQL Managed Database. It may delete existing users and restrict access to your database.
 {{< /note >}}
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Depending on the size of the database, it could take a while to complete. For large tables, you may want to use the `--quick` option to receive rows one at a time instead of all at once.
 {{< /note >}}
 
@@ -69,7 +69,7 @@ Depending on the size of the database, it could take a while to complete. For la
 
 The following list is a collection of common options used with the mysqldump command. At minimum, the username and password is required. When connecting to a remote database server, the host (and perhaps the port) should be provided. For a full list of available options, reference the [Option Syntax](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#mysqldump-option-summary) documentation.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 When backing up a Linode MySQL [Managed Database](/docs/products/databases/managed-databases/) with mysqldump, review the [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/) guide for instructions on viewing the connection details (including the username, password, host, and port).
 {{< /note >}}
 

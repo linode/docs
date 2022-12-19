@@ -20,9 +20,9 @@ enable_h1: true
 
 After you have successfully created a Compute Instance, there are a few initial configuration steps you should perform within your new Linux system. This includes updating your system, setting the timezone, configuring a custom hostname, adding a limited user, hardening SSH to prevent unauthorized access, and configuring a firewall. These steps ensure your instance is up to date, secure, and ready for use.
 
-{{<note>}}
+{{< note >}}
 While this guide is optional, it walks you through best practices and covers important steps to secure your server. It is recommended that you follow these instructions when deploying a new Compute Instance. Some guides within our library assume that you have performed these steps, such as setting your hostname and updating your software.
-{{</note>}}
+{{< /note >}}
 
 1. [View your Instance in the Cloud Manager](#view-your-instance-in-the-cloud-manager)
 1. [Connect to the Instance](#connect-to-the-instance)

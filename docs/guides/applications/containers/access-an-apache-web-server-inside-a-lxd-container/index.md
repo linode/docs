@@ -33,7 +33,7 @@ The main benefits of LXD are the high density of containers that it can support 
 
 This guide covers how to setup a Linode to work with LXD, how LXD works in practice, and how to troubleshoot common issues.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 For simplicity, the term *container* is used throughout this guide to describe the LXD containers.
 {{< /note >}}
 

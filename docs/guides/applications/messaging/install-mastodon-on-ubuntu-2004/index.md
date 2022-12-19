@@ -65,7 +65,7 @@ This guide uses PostgreSQL database as a backend for Mastodon. You can setup the
 
 1. Replace occurrences of `example.com` in this guide with the domain name you are using for your Mastodon instance.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

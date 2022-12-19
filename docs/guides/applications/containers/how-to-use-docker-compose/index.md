@@ -23,7 +23,7 @@ If your Docker application includes more than one container (for example, a webs
 
 This guide will explain how the `docker-compose.yml` file is organized, and show how to use it to create several basic app configurations.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Generally the containers in an application built using Docker Compose will all run on the same host. Managing containers running on different hosts usually requires an additional tool, such as [Docker Swarm](https://docs.docker.com/engine/swarm/) or [Kubernetes](https://kubernetes.io/).
 {{< /note >}}
 ## Before You Begin
@@ -116,7 +116,7 @@ Most of this guide will focus on setting up containers using the `services` sect
 
 Many other configuration directives are available. See the [Compose File reference](https://docs.docker.com/compose/compose-file) for details.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 The example `docker-compose.yml` above uses the `environment` directive to store MySQL user passwords directly in the YAML file to be imported into the container as environment variables. This is not recommended for sensitive information in production environments. Instead, sensitive information can be stored in a separate `.env` file (which is not checked into version control or made public) and accessed from within `docker-compose.yml` by using the `env_file` directive.
 {{< /note >}}
 
