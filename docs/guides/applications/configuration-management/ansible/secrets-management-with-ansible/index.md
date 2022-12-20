@@ -20,13 +20,13 @@ external_resources:
 - '[Ansible Documentation: Protecting Sensitive Data with Ansible Vault](https://docs.ansible.com/ansible/latest/vault_guide/index.html)'
 ---
 
-Ansible stands out for its capabilities in automating server provisioning and management. The structure of Ansible's playbooks, its ability to group and organize resources, and numerous other features make it an asset for administering servers.
+Ansible stands out for its capabilities in automating server provisioning and management. Ansible's playbooks, its ability to group and organize resources, and numerous other features make it a great asset for administering servers.
 
 However, Ansible's operations often necessitate that your playbooks leverage secrets like server passwords, access tokens, and API keys.
 
-To bring security to the convenience of your Ansible setup, you should be using a secrets management process. Secrets management continues to let Ansible automate your server tasks, with all the access it needs. At the same time, secrets management keeps your secrets safely out of plain text files and other vulnerable locations.
+To bring security to the convenience of your Ansible setup, you should use a secrets management process. Secrets management continues to let Ansible automate your server tasks, with all the access it needs. At the same time, secrets management keeps your secrets safely out of plain text files and other vulnerable locations.
 
-In this tutorial, learn the most useful methods for implementing secrets management with your Ansible setup. The tutorial covers a range of methods, from simple to scalable, and helps you hoose the right fit.
+In this tutorial, learn the most useful methods for implementing secrets management with your Ansible setup. The tutorial covers a range of methods, from simple to scalable, and helps you choose the right fit.
 
 ## Before You Begin
 
@@ -38,33 +38,37 @@ In this tutorial, learn the most useful methods for implementing secrets managem
 
 ## Secrets in Ansible
 
-A secret here refers to a key or other credential that allows access to a resource or a system. Secrets include things like access tokens, API keys, and also database and system passwords.
+A secret refers to a key or other credential that allows access to a resource or system. Secrets include things like access tokens, API keys, and database & system passwords.
 
-Often when managing nodes with Ansible you need to provide it with secrets. Typically you can provide these secrets within Ansible playbooks, but doing so exposes the secrets to possible interception and exploitation.
+When managing nodes with Ansible, you often need to provide it with secrets. Typically, you can provide these secrets within Ansible playbooks, but doing so exposes them to possible interception and exploitation.
 
-To secure your secrets, you should implement secret management with your Ansible playbooks. Secret management refers to the ways in which you can keep secrets stored safely, with storage methods balancing between accessibility and security.
+To secure your secrets, you should implement secrets management with your Ansible playbooks. Secrets management refers to the ways in which secrets are stored safely, with different methods balancing between accessibility and security.
 
 ## Managing Secrets in Ansible
 
-Several options exist for managing secrets with your Ansible playbooks. The option that fits your needs depends on your setup. How accessible you need your secrets to be and how secure you want to make them determine which solutions work best for you.
+Several options exist for managing secrets with your Ansible playbooks. The option that fits your needs depends on your particular setup. How accessible you need your secrets to be and how secure you want to make them determine which solutions work best for you.
 
-The upcoming sections outline some of the most useful options for managing secrets with Ansible. These attempt to cover a range of use cases as well, from interactive and manual to automated and integrated.
+The upcoming sections outline some of the most useful options for managing secrets with Ansible. These attempt to cover a range of use cases, from interactive and manual, to automated and integrated.
 
-All of the examples that follow use an Ansible setup with one control node and two managed nodes. The managed nodes are given as `192.0.2.1` and `192.0.2.2` throughout and have been listed in a `ansiblenodes` group in the control node's Ansible inventory.
+All of the examples that follow use an Ansible setup with one control node and two managed nodes. The managed nodes are given the example IP addresses `192.0.2.1` and `192.0.2.2` throughout, and are listed in an `ansiblenodes` group in the control node's Ansible inventory.
 
 ### Using Prompts to Manually Enter Secrets
 
-Ansible playbooks include the option to prompt users for variables. And this is actually an option for managing secrets within your Ansible setup.
+Ansible playbooks include the option to prompt users for variables. This is actually an option for managing secrets within your Ansible setup.
 
-With this option, you configure your Ansible playbook to prompt users to manually input secrets. The secrets never need to be persisted on the system, allowing you to safeguard them otherwise. And the setup is the easiest of all of the options covered here.
+With this option, you configure your Ansible playbook to prompt users to manually input secrets. The secrets never need to be persisted on the system, allowing you to safeguard them otherwise. This method is the easiest of the options covered here.
 
-Of course, this option comes with some significant drawbacks. By not storing the secrets, you also prevent Ansible from accessing them automatically, reducing your playbooks' ability to be integrated into automated processes. Additionally, leaving the secrets to manual entry introduces its own risks, as users can mishandle secrets.
+Of course, this option comes with some significant drawbacks. By not storing the secrets, you also prevent Ansible from accessing them automatically, reducing the ability to integrate your playbooks into automated processes. Additionally, leaving the secrets to manual entry introduces its own risks, as users can mishandle secrets.
 
-Here is an example Ansible playbook developed from one in our [Automate Server Configuration with Ansible Playbooks](/docs/guides/running-ansible-playbooks/) guide. This playbook adds a new non-root user to the managed nodes.
+Here is an example Ansible playbook from our [Automate Server Configuration with Ansible Playbooks](/docs/guides/running-ansible-playbooks/) guide. This playbook adds a new non-root user to the managed nodes.
 
 The playbook uses the `vars_prompt` option to prompt the user to input a password for the new user. Ansible then hashes the password and deploys the new user to each of the managed nodes.
 
-To follow along, be aware that this playbook assumes you have an SSH public key on your control node. The public key allows for secure passwordless connections to the new user in the future. Learn more in our guide [Using SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/).
+{{< note >}}
+This playbook assumes you have an SSH public key on your control node. The public key allows for secure passwordless connections to the new user in the future. Learn more in our guide [Using SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/).
+
+This tutorial also assumes that your control node’s SSH key is secured by a password, and hence uses the `--ask-pass` option in some of the Ansible playbook commands below. If your SSH key is not secured by a password, remove the `--ask-pass` option from the Ansible playbook commands shown in this tutorial.
+{{< /note >}}
 
 ```file {title="add_limited_user.yml" lang="yml"}
 ---
@@ -89,13 +93,13 @@ To follow along, be aware that this playbook assumes you have an SSH public key 
                   state=present
 ```
 
-To run the playbook, make sure you are in the same directory as the playbook, then execute the following command:
+To run the playbook, first make sure you're in the same directory as the playbook, then execute the following command:
 
-```command
+```command {title="Ansible Control Node"}
 ansible-playbook --ask-pass add_limited_user.yml
 ```
 
-Ansible prompts first for the SSH password and then for a password for the new user. The result should resemble what is shown here.
+Ansible prompts for the SSH password first, then for a password for the new user. The output should resemble what is shown below:
 
 ```output
 SSH password:
@@ -126,19 +130,19 @@ PLAY RECAP *********************************************************************
 
 ### Using the Ansible Vault to Manage Secrets
 
-Ansible has its own tool that can facilitate secrets management, Ansible Vault. The Vault encrypts information, which you can then use within your Ansible playbooks.
+Ansible has a tool, Ansible Vault, that can facilitate secrets management. The Vault encrypts information, which you can then use within your Ansible playbooks.
 
 With some setup, Ansible Vault can make secrets both secure and accessible. Secrets are encrypted, meaning that no one can get to them without your password. The secrets are, at the same time, made accessible to Ansible. A password file can give Ansible everything it needs to run in an automated setup.
 
-The vault password can either be entered manually or automatically through a password file. You can even, with some additional set up, use an external password manager, implementing a script or other solution to retrieve the password.
+The vault password can either be entered manually or automatically through a password file. You can even use an external password manager, and implement a script or other solution to retrieve the password.
 
-What follows is an example usage of Ansible Vault. This example deploys [rclone](https://rclone.org/) to the managed nodes and configures it to connect to a Linode Object Storage instance. The secrets are the access keys for the object storage instance.
+This example of Ansible Vault deploys [rclone](https://rclone.org/) to the managed nodes and configures it to connect to a Linode Object Storage instance. The secrets are the access keys for the object storage instance.
 
-To follow along, you need to set up a Linode Object Storage instance with access keys and at least one bucket. You can learn how to do both through our guide [Object Storage - Get Started](/docs/products/storage/object-storage/get-started/).
+To follow along, you need to set up a Linode Object Storage instance with access keys and at least one bucket. You can learn how to do so in our guide [Object Storage - Get Started](/docs/products/storage/object-storage/get-started/).
 
-1.  Create a file with your secrets — the access keys for your Linode Object Storage instance. You can do so with a command like the following, replacing the text in arrow brackets with your corresponding object storage key:
+1.  Create a file with the access keys for your Linode Object Storage instance. You can do so with the following command, just replace the text in arrow brackets with your corresponding object storage keys:
 
-    ```command
+    ```command {title="Ansible Control Node"}
     echo "s3_access_token: <S3_ACCESS_TOKEN>" > s3_secrets.enc
     echo "s3_secret_token: <S3_SECRET_TOKEN>" >> s3_secrets.enc
     ansible-vault encrypt s3_secrets.enc
@@ -152,13 +156,13 @@ To follow along, you need to set up a Linode Object Storage instance with access
     Encryption successful
     ```
 
-1.  Create a password file in the same directory you intend to put the Ansible playbook. The file needs to contain only the password for your encrypted secrets file. The example in this next command assumes your password is `examplepassword`:
+1.  Create a password file in the same directory you intend to create the Ansible playbook in. The file needs to contain only the password for your encrypted secrets file. The example in this next command assumes your password is `examplepassword`:
 
-    ```command
+    ```command {title="Ansible Control Node"}
     echo "examplepassword" > example.pwd
     ```
 
-1.  Create a new Ansible playbook with the following contents. This playbook connects to the non-root users created using the playbook in the previous section of this tutorial. The playbook then installs rclone and creates a configuration file for it. Into the configuration file, the playbook inserts the access keys from the `s3_secrets.enc` file:
+1.  Create a new Ansible playbook with the following contents. This playbook connects to the non-root users created using the playbook in the previous section of this tutorial. The playbook then installs rclone and creates a configuration file for it. The playbook also inserts the access keys from the `s3_secrets.enc` file into the configuration file.
 
     ```file {title="set_up_rclone.yml" lang="yml"}
     ---
@@ -193,9 +197,9 @@ To follow along, you need to set up a Linode Object Storage instance with access
               endpoint = {{ s3_region }}.linodeobjects.com
     ```
 
-1.  Run the Ansible playbook. The playbook command here adds the variables from the secrets file using the `-e` option, and gets the password for decrypting them from the `--vault-password-file`. The `--ask-become-pass` option has Ansible prompt for the limited user's `sudo` password:
+1.  Run the Ansible playbook. The playbook command here adds the variables from the secrets file using the `-e` option, and gets the password for decrypting them from the `--vault-password-file`. The `--ask-become-pass` option has Ansible prompt for the limited user's `sudo` password.
 
-    ```command
+    ```command {title="Ansible Control Node"}
     ansible-playbook -e @s3_secrets.enc --vault-password-file example.pwd --ask-pass --ask-become-pass set_up_rclone.yml
     ```
 
@@ -230,11 +234,11 @@ To follow along, you need to set up a Linode Object Storage instance with access
 
 1.  To verify that everything is working as expected, log into either of the managed nodes as the non-root user. Then use the following command to list the buckets on your Linode Object Storage instance:
 
-    ```command
+    ```command {title="Ansible Managed Node"}
     rclone lsd linodes3:
     ```
 
-    You should see something like the following for each bucket, where `ansible-test-bucket` would be the name of the bucket:
+    You should see something like the following for each bucket, where `ansible-test-bucket` is the name of the bucket:
 
     ``` output
     -1 2022-12-08 00:00:00        -1 ansible-test-bucket
@@ -242,21 +246,21 @@ To follow along, you need to set up a Linode Object Storage instance with access
 
 ### Using a Secrets Manager
 
-Dedicated solutions exist for managing secrets, with many password managers capable of doing so for your Ansible playbooks. In terms of their underlying methods, many of these tools function similarly to Ansible Vault. And despite being external tools, several are supported by official or community plugins for Ansible.
+Dedicated solutions exist for managing secrets, and many password managers are capable of doing so for your Ansible playbooks. In terms of their underlying methods, many of these tools function similarly to Ansible Vault. Despite being external tools, several are supported by official or community plugins for Ansible.
 
-The primary advantage of an external secrets management solution is using a tool already adopted more widely among your team or organization. Ansible Vault may offer a default integration with Ansible, but likely you are not using it more widely for password management within your organization.
+The primary advantage of an external secrets management solution is using a tool already adopted more widely among your team or organization. Ansible Vault may offer a default integration with Ansible, but you are not likely using it more widely for password management within your organization.
 
 One of the more popular solutions for secret management is [HashiCorp's Vault](https://www.vaultproject.io/). HashiCorp's Vault is a centralized secrets management system with a dynamic infrastructure to keep passwords, keys, and other secrets secure.
 
-And Ansible maintains a plugin for interacting with HashiCorp's Vault, the [`hashi_vault` plugin](https://docs.ansible.com/ansible/latest/collections/community/hashi_vault/docsite/about_hashi_vault_lookup.html).
+Ansible maintains a plugin for interacting with HashiCorp's Vault, the [`hashi_vault` plugin](https://docs.ansible.com/ansible/latest/collections/community/hashi_vault/docsite/about_hashi_vault_lookup.html).
 
-The following steps walk you through an example using HashiCorp's Vault with Ansible. The example accomplishes the same ends as the example in the previous section, so you can more easily compare the differences between the two approaches.
+The following steps walk you through an example using HashiCorp's Vault with Ansible. The example accomplishes the same ends as the example in the previous section, so you can more easily compare the two.
 
 1.  Follow along with our guide on [Setting Up and Using a Vault Server](/docs/guides/how-to-setup-and-use-a-vault-server/). By the end, you should have HashiCorp's Vault installed, a vault server running and unsealed, and be logged into the vault.
 
 1.  Ensure that the key-value (`kv`) engine is enabled for the `secret` path:
 
-    ```command
+    ```command {title="Vault Server"}
     vault secrets enable -path=secret/ kv
     ```
 
@@ -266,7 +270,7 @@ The following steps walk you through an example using HashiCorp's Vault with Ans
 
 1.  Add the access keys for your Linode Object Storage instance to the `secret/s3` path in the vault. Replace the text in arrow brackets below with your corresponding keys:
 
-    ```command
+    ```command {title="Vault Server"}
     vault kv put secret/s3 s3_access_token=<S3_ACCESS_TOKEN> s3_secret_token=<S3_SECRET_TOKEN>
     ```
 
@@ -274,7 +278,13 @@ The following steps walk you through an example using HashiCorp's Vault with Ans
     Success! Data written to: secret/s3
     ```
 
-1.  Create a new Ansible playbook with the contents shown below. This parallels the playbook built in the previous section, installing and configuring rclone for connecting to a Linode Object Storage instance. The version here just fetches the secrets from a HashiCorp vault instead of an Ansible vault:
+1.  On your Andible control node, install `hvac` via `pip` in order to use the `hashi_vault` plugin referenced in the Ansible playbook below.
+
+    ```command {title="Ansible Control Node"}
+    pip install hvac
+    ```
+
+1.  Create a new Ansible playbook with the contents shown below. This parallels the playbook built in the previous section, which installs and configures `rclone` to connect to a Linode Object Storage instance. This version simply fetches the secrets from a HashiCorp vault instead of an Ansible vault:
 
     Replace both instances of `<HASHI_VAULT_IP>` below with the IP address for your HashiCorp Vault server. Similarly, replace both instances of `<HASHI_VAULT_TOKEN>` with your login token for the HashiCorp Vault server.
 
@@ -292,6 +302,7 @@ The following steps walk you through an example using HashiCorp's Vault with Ans
             pkg:
               - rclone
             state: present
+            update_cache: yes
         - name: "Create the directory for the rclone configuration"
           file:
             path: "/home/example-user/.config/rclone"
@@ -312,7 +323,7 @@ The following steps walk you through an example using HashiCorp's Vault with Ans
 
 1.  Run the Ansible playbook, providing the appropriate passwords when prompted:
 
-    ```command
+    ```command {title="Ansible Control Node"}
     ansible-playbook --ask-pass --ask-become-pass another_rclone_setup.yml
     ```
 
@@ -345,10 +356,10 @@ The following steps walk you through an example using HashiCorp's Vault with Ans
     192.0.2.2              : ok=4    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     ```
 
-1.  Just as in the previous section, you can verify the setup by logging into one of the managed nodes and running one of the rclone `ls` commands, such as `rclone lsd linodes3:`.
+1.  Just like the previous section, you can verify the setup by logging into one of the managed nodes and running an rclone `ls` command, such as `rclone lsd linodes3:`.
 
 ## Conclusion
 
-You now have some options to implement to ensure that your Ansible setup has its secrets secured. Choosing between these options comes down to scale and accessibility. Manual entry is simple to start with, but only suits smaller projects and teams. Ansible Vault is in many ways ideal, but an external solution may better fit into your team and organization.
+You now have some options to ensure that your Ansible setup has secure secrets. Choosing between these options comes down to scale and accessibility. Manual entry is simple to start with, but only suits smaller projects and teams. Ansible Vault is in many ways ideal, but an external solution may better fit your team and organization.
 
-Keep learning about Ansible and efficiently automating your server tasks by reading through more of our [guides on Ansible](/docs/guides/applications/configuration-management/ansible/).
+To keep learning about Ansible and efficiently automating your server tasks, read more of our [guides on Ansible](/docs/guides/applications/configuration-management/ansible/).
