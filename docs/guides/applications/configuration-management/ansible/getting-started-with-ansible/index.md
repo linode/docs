@@ -138,21 +138,13 @@ This guide was created using Ansible 2.8.
     sudo pip install ansible
     ```
 
-    ```command {title="CentOS 7"}
-    sudo yum install epel-release
-    sudo yum install ansible
+    ```command {title="Linux"}
+    pip install ansible
     ```
 
     {{< note >}}
 The EPEL-Release repository may need to be added on certain versions of CentOS, RHEL, and Scientific Linux.
     {{</ note >}}
-
-    ```command {title="Ubuntu 22.04 LTS"}
-    sudo apt update
-    sudo apt install software-properties-common
-    sudo apt-add-repository --yes --update ppa:ansible/ansible
-    sudo apt install ansible
-    ```
 
 1.  Verify that Ansible is installed:
 
