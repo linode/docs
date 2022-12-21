@@ -24,12 +24,12 @@ The standard search that is built into WordPress does not provide the best searc
 In this guide, you will learn how to install Java, install and configure Solr on Ubuntu 14.x or Debian 7.x, and integrate it into your WordPress blog using the WPSolr plugin.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites
 
--   WordPress must be already installed and configured. If you have not yet installed WordPress, follow the [Manage Web Content with WordPress](/docs/websites/cms/manage-web-content-with-wordpress) guide.
+-   WordPress must be already installed and configured. If you have not yet installed WordPress, follow the [Manage Web Content with WordPress](/docs/guides/how-to-install-and-configure-wordpress/) guide.
 
 -   Much of this guide assumes that Solr is being installed on the same server as WordPress; however, Solr can be installed on a second server for security or scalability reasons. Alternate steps are provided should Solr be installed on a second server.
 

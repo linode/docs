@@ -197,7 +197,7 @@ networks:
   st
 {{< /file >}}
 
-1. Compare your edited `docker-compose.yml` with this [copy of the complete file](./docker-compose.yml) and make sure all the necessary changes were included.
+1. Compare your edited `docker-compose.yml` with this [copy of the complete file](docker-compose.yml) and make sure all the necessary changes were included.
 
 1. Create a new `nginx` directory within the Mastodon Git repository:
 

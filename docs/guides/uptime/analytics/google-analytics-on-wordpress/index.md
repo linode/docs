@@ -15,16 +15,16 @@ title: Google Analytics for WordPress
 external_resources:
  - '[Analytics Help](https://support.google.com/analytics/?hl=en#topic=3544906)'
  - '[Google Analytics Developers](https://developers.google.com/analytics/)'
- - '[Google Analytics for Websites](/docs/uptime/analytics/google-analytics-for-websites)'
+ - '[Google Analytics for Websites](/docs/guides/google-analytics-for-websites/)'
 aliases: ['/uptime/analytics/google-analytics-on-wordpress/']
 ---
 
 Google Analytics offers detailed statistics related to visitor traffic and sales for your website, allowing you to better know your audience. It can be beneficial to any website owner interested in growing their visitor base.
 
-This guide provides three ways to add Google Analytics to WordPress: By directly adding the analytics code to your theme and two plugin options. Prior to using this guide, you should have completed our [Manage Web Content with WordPress](/docs/websites/cms/manage-web-content-with-wordpress) guide and have a fully configured WordPress website set up.
+This guide provides three ways to add Google Analytics to WordPress: By directly adding the analytics code to your theme and two plugin options. Prior to using this guide, you should have completed our [Manage Web Content with WordPress](/docs/guides/how-to-install-and-configure-wordpress/) guide and have a fully configured WordPress website set up.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Sign Up for Google Analytics

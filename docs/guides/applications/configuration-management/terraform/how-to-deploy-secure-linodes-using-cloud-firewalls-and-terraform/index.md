@@ -36,7 +36,7 @@ A Cloud Firewall can be configured with Inbound and Outbound rules. Inbound rule
 
 1. See [Create a Terraform Module](/docs/guides/create-terraform-module/) for a deeper dive into Terraform's standard module structure and other helpful details.
 
-1. You need a [Linode API v4](https://developers.linode.com/api/v4) personal access token to use with Terraform. This token will allow you to create, update, and destroy Linode resources. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) guide for steps to create a token.
+1. You need a Linode API personal access token to use with Terraform. This token will allow you to create, update, and destroy Linode resources. See the [Manage Personal Access Tokens](/docs/products/tools/api/guides/manage-api-tokens/) guide for steps to create a token.
 
     {{< note >}}
     When you create a personal access token ensure that you set **Read/Write** access permissions for Linode instances and Cloud Firewalls.
@@ -352,7 +352,7 @@ Now that all the Cloud Firewalls child modules have been created, you can create
     }
     ```
 
-    - The `provider` block is a requirement to use the Linode provider. Since Cloud Firewalls is currently in an open beta, you must use the `api_version` argument to tell Terraform to use Linode's beta [API v4 endpoints](https://developers.linode.com/api/v4).
+    - The `provider` block is a requirement to use the Linode provider. Since Cloud Firewalls is currently in an open beta, you must use the `api_version` argument to tell Terraform to use Linode's beta [API v4 endpoints](/docs/api/).
 
     - The `locals` block declares a local variable `key` whose value will be provided by an input variable. The `linode_ids` local variable is used by the `web_server` module instance in the next block to retrieve the Linode ids for the Linodes to be assigned to the Cloud Firewall that will be created.
 

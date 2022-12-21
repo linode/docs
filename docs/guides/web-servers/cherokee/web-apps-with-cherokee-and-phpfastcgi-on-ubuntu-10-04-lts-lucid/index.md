@@ -36,7 +36,7 @@ Make sure your repositories and packages are up to date by issuing the following
     apt-get update
     apt-get upgrade
 
-If you haven't already installed Cherokee, please follow our [Ubuntu 10.04 Cherokee installation](/docs/web-servers/cherokee/installing-cherokee-ubuntu-10-04-lucid) guide before continuing with these instructions.
+If you haven't already installed Cherokee, please follow our [Ubuntu 10.04 Cherokee installation](/docs/guides/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/) guide before continuing with these instructions.
 
 ## Install Required Packages
 

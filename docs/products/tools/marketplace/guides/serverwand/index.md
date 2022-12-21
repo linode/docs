@@ -10,7 +10,7 @@ published: 2021-02-23
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying ServerWand through the Linode Marketplace"
+title: "Deploy ServerWand through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:

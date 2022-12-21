@@ -171,4 +171,4 @@ As mentioned above, the ability to cancel an in-progress transaction becomes esp
 
 Redis transaction execute a collection of commands and ensure that the command execution is not interrupted by another client. This guide covered creating transaction blocks, understanding common transaction errors, and canceling in-progress transactions.
 
-You can learn more about Redis and how to get the most out of your Redis databases through our other guides in this series. These guides cover everything from [connecting to a remote Redis server](/docs/guides/how-to-connect-to-redis/) to working with the [hash data type](/docs/guides/hashes-in-redis-databases/).
+You can learn more about Redis and how to get the most out of your Redis databases through our other guides in this series. These guides cover everything from [connecting to a remote Redis server](/docs/guides/redis-getting-started/) to working with the [hash data type](/docs/guides/hashes-in-redis-databases/).

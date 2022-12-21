@@ -7,7 +7,7 @@ keywords: ['easypanel','control panel','cpanel']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-31
-title: "Deploying Easypanel through the Linode Marketplace"
+title: "Deploy Easypanel through the Linode Marketplace"
 contributor:
   name: Holden Morris
   link: https://github.com/hmorris3293

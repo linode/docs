@@ -34,14 +34,14 @@ A Python virtual environment is an isolated project space on your system that co
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides to prepare your system.
+1.  Complete the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides to prepare your system.
 
 1.  Update your system:
 
         sudo yum update
 
     {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
 ## Create a Python Virtual Environment

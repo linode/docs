@@ -33,7 +33,7 @@ If you are new to version control systems (VCS), see our guide [SVN vs Git: Whic
 
 ## Configure Git
 
-After you [install Git](/docs/development/version-control/how-to-install-git-on-mac-and-windows), configure it for first time use using `git config`, a built-in tool that obtains and sets configuration variables. These configuration variables are located in three different places on a GNU/Linux system:
+After you [install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/), configure it for first time use using `git config`, a built-in tool that obtains and sets configuration variables. These configuration variables are located in three different places on a GNU/Linux system:
 
  - `/etc/gitconfig` - stores the configuration information for all system users and their respective repositories.
  - `~/.gitconfig` - stores user-specific configuration files on the system.

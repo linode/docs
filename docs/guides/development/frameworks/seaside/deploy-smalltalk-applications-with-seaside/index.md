@@ -66,7 +66,7 @@ To test the Seaside application, access your domain in the browser on port `8080
 
     http://example.com:8080/seaside/
 
-In this configuration, the Squeak VM instances run in the current terminal session. For production situations we recommend running your Smalltalk images in [GNU Screen](/docs/tools-reference/ssh/using-the-terminal#gnu-screen). To stop the current instance, simply hit "ctrl-c".
+In this configuration, the Squeak VM instances run in the current terminal session. For production situations we recommend running your Smalltalk images in [GNU Screen](/docs/guides/using-the-terminal/#gnu-screen). To stop the current instance, simply hit "ctrl-c".
 
 The default configuration of the "Pier" image accessed above binds the Smalltalk server on port `8080` on both the local and the public interface. Ensure that both your application and system firewalls are configured to permit proper access prior to deployment. We're now ready to configure Apache to provide public access to your Smalltalk instance.
 

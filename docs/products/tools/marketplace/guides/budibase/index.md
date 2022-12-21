@@ -9,13 +9,13 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-09
 modified_by:
   name: Linode
-title: "Deploying Budibase through the Linode Marketplace"
+title: "Deploy Budibase through the Linode Marketplace"
 ---
 
 [Budibase](https://github.com/Budibase/budibase) is an open-source, low-code platform for building modern business applications. Build, design, and automate different types of applications, including admin panels, forms, internal tools, and client portals. Using Budibase helps developers avoid spending weeks building simple CRUD applications and, instead, allows them to complete many projects in significantly less time.
 
 {{< note >}}
-When self-hosting the Budibase application, you are responsible for the security of your server. Follow best practices for securing, updating, and backing the software on your Compute Instance. See [Setting Up and Securing a Compute Instance](https://www.linode.com/docs/guides/set-up-and-secure/).
+When self-hosting the Budibase application, you are responsible for the security of your server. Follow best practices for securing, updating, and backing the software on your Compute Instance. See [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).
 {{</ note >}}
 
 ## Deploying a Marketplace App

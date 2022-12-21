@@ -10,13 +10,13 @@ published: 2022-09-06
 modified: 2022-09-22
 modified_by:
   name: Linode
-title: "Deploying the UniFi Network Application through the Linode Marketplace"
+title: "Deploy the UniFi Network Application through the Linode Marketplace"
 ---
 
 The [UniFi Network Application](https://help.ui.com/hc/en-us/articles/1500012237441-UniFi-Network-Use-the-UniFi-Network-Application) is a versatile control panel developed by [Ubiquiti](https://www.ui.com/). It simplifies network management across regions, customizes access to Wi-Fi networks, and more. Manage and apply updates to UniFi networking devices to ensure your networks are performant and secure.
 
 {{< note >}}
-When self-hosting the UniFi Network Application, you are responsible for the security of your server. Follow best practices for securing, updating, and backing up the software on your Compute Instance. See [Setting Up and Securing a Compute Instance](https://www.linode.com/docs/guides/set-up-and-secure/).
+When self-hosting the UniFi Network Application, you are responsible for the security of your server. Follow best practices for securing, updating, and backing up the software on your Compute Instance. See [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).
 {{</ note >}}
 
 ## Deploying a Marketplace App
@@ -31,7 +31,7 @@ When self-hosting the UniFi Network Application, you are responsible for the sec
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Debian 10
 - **Recommended plan:** All plan types can be used.
 
 ## Getting Started after Deployment

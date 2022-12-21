@@ -280,7 +280,7 @@ The disadvantages of the MongoDB database include:
 - Can be slow if indexes aren't used correctly.
 - Because relationships aren't defined well, they can lead to duplicated data.
 
-Check out our guide on [MongoDB use cases](/docs/guides/mongodb-and-its-use-cases/) for more information.
+Check out our guide on [MongoDB use cases](/docs/guides/mongodb-introduction/) for more information.
 
 #### Apache Cassandra
 

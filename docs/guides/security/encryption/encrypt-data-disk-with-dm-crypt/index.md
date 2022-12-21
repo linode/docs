@@ -29,10 +29,10 @@ dm-crypt is a transparent disk encryption subsystem. In this guide you will lear
 ## Before You Begin
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide, deploy a Debian image.
+1. Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide, deploy a Debian image.
 
 1. [Resize the disk][/docs/guides/resize-a-linode-disk/] and reserve approximately 4096 MB for your operating system so that you can use the rest of your available disk space as encrypted storage:
 
@@ -55,7 +55,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
     ```
 
 {{< note >}}
-Another way to set up an encrypted data partition is by attaching a [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) volume to your Linode, and skipping the instructions for creating a filesystem and mounting the device, since that will be done on the virtual device mapped by dm-crypt.
+Another way to set up an encrypted data partition is by attaching a [Block Storage](/docs/products/storage/block-storage/) volume to your Linode, and skipping the instructions for creating a filesystem and mounting the device, since that will be done on the virtual device mapped by dm-crypt.
 {{< /note >}}
 
 ## How to Map Whole Disks, Partitions and Files

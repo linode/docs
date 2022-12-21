@@ -7,9 +7,8 @@ keywords: ["password", "change password", "update password", "cloud manager"]
 tags: ["linode platform","cloud manager","security"]
 date: 2022-11-21
 image: L_ChangeYourPassword.png
-title: Reset Your User Password on the Linode Platform
-h1_title: Reset Your User Password
-enable_h1: true
+title: Reset Your User Password
+title_meta: Reset Your User Password on the Linode Platform
 aliases: ['/quick-answers/linode-platform/how-to-change-your-password/', '/guides/how-to-change-your-password/']
 ---
 

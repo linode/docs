@@ -30,7 +30,7 @@ This guide shows how to use the older *Linode Ansible module* to manage Linode i
 The community-maintained module still functions, but using the Ansible collection is recommended. Review our [Using the Linode Ansible Collection to Deploy a Linode](/docs/guides/deploy-linodes-using-linode-ansible-collection/) guide for more information.
 {{< /note >}}
 
-Ansible is a popular open-source tool that can be used to automate common IT tasks, like cloud provisioning and configuration management. With [Ansible's 2.8 release](https://docs.ansible.com/ansible/latest/roadmap/ROADMAP_2_8.html), you can deploy Linode instances using our latest [API (v4)](https://developers.linode.com/api/v4/). Ansible's `linode_v4` module adds the functionality needed to deploy and manage Linodes via the command line or in your [Ansible Playbooks](/docs/guides/running-ansible-playbooks/). While the dynamic inventory plugin for Linode helps you source your Ansible inventory directly from the Linode API (v4).
+Ansible is a popular open-source tool that can be used to automate common IT tasks, like cloud provisioning and configuration management. With [Ansible's 2.8 release](https://docs.ansible.com/ansible/latest/roadmap/ROADMAP_2_8.html), you can deploy Linode instances using our latest [API (v4)](/docs/api/). Ansible's `linode_v4` module adds the functionality needed to deploy and manage Linodes via the command line or in your [Ansible Playbooks](/docs/guides/running-ansible-playbooks/). While the dynamic inventory plugin for Linode helps you source your Ansible inventory directly from the Linode API (v4).
 
 In this guide you will learn how to:
 
@@ -62,7 +62,7 @@ The steps outlined in this guide require [Ansible version 2.8](https://github.co
         sudo apt-get install python-pip
         sudo pip install linode_api4
 
--   Generate a Linode API v4 access token with permission to read and write Linodes. You can follow the [Get an Access Token](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/) guide if you do not already have one.
+-   Generate a Linode API v4 access token with permission to read and write Linodes. You can follow the [Get an Access Token](/docs/products/tools/api/get-started/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/products/tools/api/get-started/) guide if you do not already have one.
 
 - [Create an authentication Key-pair](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) if your computer does not already have one.
 

@@ -28,7 +28,7 @@ Ubuntu 18.04 is a Long-Term Support (LTS) release that is supported by Canonical
 {{< caution >}}
 Inline distribution upgrades can yield unpredictable results. Before continuing, read through our [Upgrading to the Latest Distribution (Clean Install)](/docs/guides/manually-upgrading-to-latest-distribution-version/) guide to learn more about your upgrade options, including performing a clean install of the latest distribution version.
 
-The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/guides/using-the-linode-shell-lish) or [Glish](/docs/guides/glish/) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
+The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/guides/lish/) or [Glish](/docs/guides/glish/) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
 
 {{< /caution >}}
 
@@ -60,7 +60,7 @@ Update package lists and install all updates:
 
 ### Back Up Your Linode
 
-It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the [Linode Backup Service](/docs/products/storage/backups/), we recommend that you [take a manual snapshot](/docs/guides/linode-backup-service#take-a-manual-snapshot) before upgrading to Ubuntu 18.04 LTS. If you use another backup service or application, we recommend that you make a manual backup before continuing.
+It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the [Linode Backup Service](/docs/products/storage/backups/), we recommend that you [take a manual snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) before upgrading to Ubuntu 18.04 LTS. If you use another backup service or application, we recommend that you make a manual backup before continuing.
 
 ### Check Your Kernel
 

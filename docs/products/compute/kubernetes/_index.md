@@ -34,7 +34,7 @@ Harness the strong open source ecosystem of Kubernetes tooling. LKE supports int
 
 ## Release Notes
 
-See the [LKE changelog](https://developers.linode.com/changelog/linode-kubernetes-engine/) for release notes.
+See the [LKE changelog](/docs/products/compute/kubernetes/release-notes/) for release notes.
 
 ## Pricing
 

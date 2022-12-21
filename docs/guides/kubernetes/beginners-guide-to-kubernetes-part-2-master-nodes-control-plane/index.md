@@ -25,7 +25,7 @@ tags: ["kubernetes"]
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
 
 {{< note >}}
-This is the second guide in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.
+This is the second guide in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series that explains the major parts and concepts of Kubernetes.
 {{< /note >}}
 
 At the highest level of Kubernetes, there exist two kinds of servers, a *Master* and a *Node*. These servers can be Linodes, VMs, or physical servers. Together, these servers form a *cluster* and are controlled by the services that make up the *Control Plane*.
@@ -54,7 +54,7 @@ Together, kube-apiserver, kube-controller-manager, kube-scheduler, and etcd form
 
 ## Next Steps
 
-To continue in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series, visit part 3:
+To continue in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series, visit part 3:
 
  - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/)
 

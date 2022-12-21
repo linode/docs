@@ -29,7 +29,7 @@ This article is not a comprehensive guide to updating from Apache 2.2 to 2.4. Fo
 
 ## Make a Backup
 
-Make a [backup](/docs/platform/backup-service) of your data before upgrading your Apache software. Upgrading can sometimes cause you to lose data, particularly if you had settings in an Apache configuration file that no longer apply in Apache 2.4. If you use Apache modules, this is especially likely.
+Make a [backup](/docs/products/storage/backups/) of your data before upgrading your Apache software. Upgrading can sometimes cause you to lose data, particularly if you had settings in an Apache configuration file that no longer apply in Apache 2.4. If you use Apache modules, this is especially likely.
 
 Even with the simplest Apache setup, you should back up your Apache settings, modules, and other data in case unforeseen issues arise.
 
@@ -137,7 +137,7 @@ The [apache.org upgrade page](http://httpd.apache.org/docs/2.4/upgrading.html) i
 
 ## Errors From Non-Updated Settings
 
-The following symptoms may indicate that you need to make the changes to your Apache 2.4 configuration that are described in this article. Note that other causes can also produce these symptoms, so if you didn't recently upgrade from Apache 2.2 to 2.4, you should pursue additional [troubleshooting](/docs/web-servers/apache/troubleshooting) avenues.
+The following symptoms may indicate that you need to make the changes to your Apache 2.4 configuration that are described in this article. Note that other causes can also produce these symptoms, so if you didn't recently upgrade from Apache 2.2 to 2.4, you should pursue additional [troubleshooting](/docs/guides/troubleshooting-common-apache-issues/) avenues.
 
 **Symptom:** When you try to visit your website, you see the default **It works!** Apache web page.
 
