@@ -4,11 +4,10 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'In this guide, you will learn how to set up a LAMP (Linux, Apache, MySQL, PHP) stack and then configure a hosted website using Ubuntu 18.04.'
-og_description: 'In this guide, you will learn how to set up a LAMP (Linux, Apache, MySQL, PHP) stack and then configure a hosted website using Ubuntu 18.04.'
 keywords: ["linode guide", "hosting a website", "website", "linode quickstart guide"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/websites/hosting-a-website/','/hosting-website/','/websites//','/web-servers/lamp//', /websites/hosting-a-website-ubuntu-18-04/]
+aliases: ['/websites/hosting-a-website/','/hosting-website/', '/websites/hosting-a-website-ubuntu-18-04/']
 modified: 2021-08-16
 modified_by:
   name: Linode
@@ -426,4 +425,4 @@ Remember to remove the entries for the name-based virtual hosts from your `hosts
 
 ## Next Steps
 
-Now that you have tested your website by visiting its IP address, you can create DNS records so that you can access the website with a domain name. Read the [DNS Manager guide](/docs/guides/dns-manager/) for more information on how to add DNS records for your website. After you have a domain name set up, you should also add reverse DNS. Check out our [Reverse DNS guide](/docs/guides/configure-your-linode-for-reverse-dns/) for more information on how to set up reverse DNS.
+Now that you have tested your website by visiting its IP address, you can create DNS records so that you can access the website with a domain name. Read the [DNS Manager guide](/docs/products/networking/dns-manager/) for more information on how to add DNS records for your website. After you have a domain name set up, you should also add reverse DNS. Check out our [Reverse DNS guide](/docs/guides/configure-rdns/) for more information on how to set up reverse DNS.

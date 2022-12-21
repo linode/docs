@@ -120,7 +120,7 @@ If you want to disable all output, including error messages, use `>/dev/null 2>&
 
 The site [crontab.guru](https://crontab.guru/) has a large number of Cron job examples. The following are some quick `crontab` entries to get you started.
 
-- Run the `cal-update-daily` binary every day at at 12:01am (`1 0`).
+- Run the `cal-update-daily` binary every day at 12:01am (`1 0`).
 
         1 0 \* \* \* /opt/bin/cal-update-daily
 

@@ -400,4 +400,4 @@ Now that you have a Kubernetes cluster up and running, you can begin experimenti
 
 ## Tear Down Your Cluster
 
-If you are done experimenting with your Kubernetes cluster, be sure to remove the Linodes you have running in order to avoid being further billed for them. See the [Managing Billing in the Cloud Manager > Removing Services](/docs/guides/manage-billing-in-cloud-manager/#removing-services) guide.
+If you are done experimenting with your Kubernetes cluster, be sure to remove the Linodes you have running in order to avoid being further billed for them. See the [Managing Billing in the Cloud Manager > Removing Services](/docs/products/platform/billing/guides/stop-billing/) guide.

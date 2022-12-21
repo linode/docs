@@ -16,7 +16,7 @@ modified: 2022-06-06
 
 - [Automatic Updates and Maintenance Windows](/docs/products/databases/managed-databases/guides/updates-and-maintenance/)
 
-- [Restore from a Backup](/docs/products/databases/managed-databases/guides/restore-backup/)
+- [Restore from a Backup](/docs/products/databases/managed-databases/guides/manage-backups/)
 
 - [Reset the Root Password](/docs/products/databases/managed-databases/guides/reset-root-password/)
 
@@ -60,6 +60,6 @@ General PostgreSQL guides (not specific to Managed Databases):
 {{< note >}}
 General MongoDB guides (not specific to Managed Databases):
 
-- [Introduction To MongoDB And Its Use Cases](/docs/guides/mongodb-and-its-use-cases/)
+- [Introduction To MongoDB And Its Use Cases](/docs/guides/mongodb-introduction/)
 - [How to Install and Use the MongoDB Community Shell](/docs/guides/mongodb-community-shell-installation/)
 {{</ note >}}

@@ -25,7 +25,7 @@ relations:
 
 Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions. This tutorial explains how to configure Cherokee to serve dynamic content with PHP via FastCGI on Fedora 13.
 
-This document assumes that your system is already running the Cherokee web server. If you haven't already installed Cherokee, please follow our [Fedora 13 Cherokee installation](/docs/web-servers/cherokee/installing-cherokee-fedora-13) guide before continuing with these instructions. Please make sure you are logged into your Linode as root via SSH.
+This document assumes that your system is already running the Cherokee web server. If you haven't already installed Cherokee, please follow our [Fedora 13 Cherokee installation](/docs/guides/websites-with-the-cherokee-web-server-on-fedora-13/) guide before continuing with these instructions. Please make sure you are logged into your Linode as root via SSH.
 
 ## Install Required Packages
 
@@ -66,7 +66,7 @@ Create directories for your site by issuing the following commands. Substitute y
     mkdir /srv/www/example.com/www/logs
     chown -R www-data:www-data /srv/www/example.com
 
-If you haven't already done so, start the Cherokee administration program by issuing the following command. Alternately, you may wish to follow our instructions for [secure Cherokee admin access](/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-fedora-13/#secure-admin-panel-access).
+If you haven't already done so, start the Cherokee administration program by issuing the following command. Alternately, you may wish to follow our instructions for [secure Cherokee admin access](/docs/guides/websites-with-the-cherokee-web-server-on-fedora-13/#secure-admin-panel-access).
 
     cherokee-admin -b &
 

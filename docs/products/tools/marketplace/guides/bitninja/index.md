@@ -10,7 +10,7 @@ published: 2021-11-12
 modified: 2022-05-17
 modified_by:
   name: Linode
-title: "Deploying BitNinja through the Linode Marketplace"
+title: "Deploy BitNinja through the Linode Marketplace"
 external_resources:
 - '[BitNinja](https://bitninja.com/)'
 aliases: ['/guides/deploying-bitninja-marketplace-app/','/guides/bitninja-marketplace-app/']

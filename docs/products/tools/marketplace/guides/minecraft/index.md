@@ -4,7 +4,7 @@ keywords: ['minecraft','marketplace', 'server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-01
 modified: 2022-04-01
-title: "Deploying a Minecraft Server through the Linode Marketplace"
+title: "Deploy a Minecraft Server through the Linode Marketplace"
 external_resources:
 - '[Minecraft Wiki](https://minecraft.fandom.com/wiki/Server)'
 tags: ["linode platform","marketplace","cloud-manager"]
@@ -66,7 +66,7 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
 - **Snooper Enabled:** Determines if the server sends stats to [https://snoop.minecraft.net](https://snoop.minecraft.net). *Advanced Configuration*.
 - **Use Native Transport Enabled:** Improve server performance by optimizing sent and received packets. *Advanced Configuration*.
 - **SSH public key for the limited user:** If you wish to login as the limited user through public key authentication (without entering a password), enter your public key here. See [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) for instructions on generating a key pair.
-- **Disable root access over SSH:** To block the root user from logging in over SSH, select *Yes* (recommended). You can still switch to the root user once logged in and you can also log in as root through [Lish](/docs/guides/using-the-lish-console/).
+- **Disable root access over SSH:** To block the root user from logging in over SSH, select *Yes* (recommended). You can still switch to the root user once logged in and you can also log in as root through [Lish](/docs/guides/lish/).
 
 ## Getting Started after Deployment
 

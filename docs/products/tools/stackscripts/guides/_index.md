@@ -3,30 +3,27 @@ title: Guides
 description: "Learn to create and use StackScripts in the Cloud Manager and other related topics, like best practices when writing scripts."
 tab_group_main:
     weight: 30
+modified: 2022-11-30
 ---
 
-## Building Blocks
+## Basics
 
-These introductory guides to StackScripts help you quickly deploy use the service.
+- [Create a New StackScript](/docs/products/tools/stackscripts/guides/create/): Instructions for creating a new StackScript.
 
-- [Create a New Linode Using StackScripts](/docs/products/tools/stackscripts/guides/stackscripts-create-linode): Create a new Linode using a deployment script.
+- [Manage StackScripts](/docs/products/tools/stackscripts/guides/manage/): View, edit, and manage StackScripts on your account.
 
-- [Create a New StackScript](/docs/products/tools/stackscripts/guides/stackscripts-create-stackscript): Create a new basic account StackScript.
+- [Deploy a Compute Instance Using a StackScript](/docs/products/tools/stackscripts/guides/deploy-a-compute-instance/): Instructions for creating a new Compute Instance based on a StackScript.
 
-- [Edit an Account StackScript](/docs/products/tools/stackscripts/guides/stackscripts-edit-stackscript): Once you've created an account StackScript you can go back and edit it later.
+- [Use Cases for StackScripts](/docs/products/tools/stackscripts/guides/use-cases/): Outlines several common reasons why StackScripts might be the right deployment tool.
 
-- [Make an Account StackScript Public](/docs/products/tools/stackscripts/guides/stackscripts-create-public-stackscript): Making an account StackScript public allows the rest of the Linode community to access your script as a Community StackScript.
+## Writing a Script
 
-- [Delete an Account StackScript](/docs/products/tools/stackscripts/guides/stackscripts-delete-stackscript): Unless you've made an account StackScript public, you can always delete it.
+- [Write a Custom Script for Use with StackScripts](/docs/products/tools/stackscripts/guides/write-a-custom-script/): A walk-through for creating custom scripts to use on your next StackScript.
 
-## Themes
+- [Use Externally Hosted Deployment Scripts](/docs/products/tools/stackscripts/guides/external-scripts/): Learn how to download an external script and use it within a StackScript.
 
-These additional guides in our library help you edit and deploy StackScripts in a higher level of detail.
+## Going Further
 
-- [Deploying a New Linode Using a StackScript](/docs/platform/stackscripts/how-to-deploy-a-new-linode-using-a-stackscript/)
+- [Solving Real World Problems With Bash Scripts - A Tutorial](/docs/guides/solving-real-world-problems-with-bash-scripts-a-tutorial/)
 
-- [Creating and Managing StackScripts](/docs/platform/stackscripts/creating-and-managing-stackscripts-a-tutorial/)
-
-- [Writing Scripts for Use with Linode StackScripts](/docs/platform/stackscripts/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/)
-
-- [Deploy a WordPress Site Using Terraform and StackScripts](/docs/applications/configuration-management/terraform/deploy-a-wordpress-site-using-terraform-and-linode-stackscripts/)
+- [Deploy a WordPress Site Using Terraform and StackScripts](/docs/guides/deploy-a-wordpress-site-using-terraform-and-linode-stackscripts/)

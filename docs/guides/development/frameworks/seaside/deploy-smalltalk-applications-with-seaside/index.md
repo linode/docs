@@ -66,7 +66,7 @@ To test the Seaside application, access your domain in the browser on port `8080
 
     http://example.com:8080/seaside/
 
-In this configuration, the Squeak VM instances run in the current terminal session. For production situations we recommend running your Smalltalk images in [GNU Screen](/docs/tools-reference/ssh/using-the-terminal#gnu-screen). To stop the current instance, simply hit "ctrl-c".
+In this configuration, the Squeak VM instances run in the current terminal session. For production situations we recommend running your Smalltalk images in [GNU Screen](/docs/guides/using-the-terminal/#gnu-screen). To stop the current instance, simply hit "ctrl-c".
 
 The default configuration of the "Pier" image accessed above binds the Smalltalk server on port `8080` on both the local and the public interface. Ensure that both your application and system firewalls are configured to permit proper access prior to deployment. We're now ready to configure Apache to provide public access to your Smalltalk instance.
 
@@ -150,7 +150,7 @@ Reload the web server configuration to create the virtual host:
 
     /etc/init.d/apache2 reload
 
-When building your application point, ensure all static content is served from URLs that begin with `http://static.example.com/` and the files are located at `/srv/www/static.example.com/public_html/`. You must create an [A Record](/docs/networking/dns/dns-records-an-introduction/#types-of-dns-records) that points to the domain of your Linode for `static.example.com` domain.
+When building your application point, ensure all static content is served from URLs that begin with `http://static.example.com/` and the files are located at `/srv/www/static.example.com/public_html/`. You must create an [A Record](/docs/guides/dns-overview/#types-of-dns-records) that points to the domain of your Linode for `static.example.com` domain.
 
 ### Configuring Apache to Proxy Dynamic Requests to Seaside
 

@@ -35,8 +35,8 @@ Please note that this is an non-standard configuration. Troubleshooting encrypte
 ## Before you Begin
 
 1.  Create a Linode in the data center of your choice.
-
-2.  Determine the installation media you'll be using to deploy your custom distribution, and take note of its size. In this example, we're using Debian's [network boot](http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/) option.
+2.  [Delete the disks](/docs/guides/disks-and-storage/#deleting-a-disk) in the Linode that you created.
+3.  Determine the installation media you'll be using to deploy your custom distribution, and take note of its size. In this example, we're using Debian's [network boot](http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/) option.
 
 ## Prepare Your Linode for Encrypted Debian Installation
 
@@ -45,7 +45,7 @@ Please note that this is an non-standard configuration. Troubleshooting encrypte
     * A disk labeled **Installer**. The size of this disk will depend upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk will be 300MB in size, giving us plenty of room for the Debian network installer.
     * A disk labeled **Boot**. This will take up the rest of the free space available on your Linode.
 
-2.  [Create two configuration profiles](/docs/guides/linode-configuration-profiles/#creating-a-configuration-profile) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** drop down menu:
+2.  [Create two configuration profiles](/docs/guides/linode-configuration-profiles/#creating-a-configuration-profile) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/guides/monitor-and-maintain-compute-instance/#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** drop down menu:
 
     **Installer profile**
 
@@ -62,7 +62,7 @@ Please note that this is an non-standard configuration. Troubleshooting encrypte
     - /dev/sda: *Boot* disk image.
     - root / boot device: Standard /dev/sda
 
-3.  Boot into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/networking/using-the-linode-shell-lish).
+3.  Boot into [Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) with your *Installer* disk mounted to `/dev/sda`, and connect to your Linode using the [Lish Console](/docs/guides/lish/).
 
 4.  Once in Rescue Mode, download the Debian installation media and copy it to your *Installer* disk:
 
@@ -73,7 +73,7 @@ As an additional security step, you can use the keys provided in the same direct
         wget http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso
         dd if=mini.iso of=/dev/sda
 
-5. Reboot into your *Installer* configuration profile, and open the [Glish](/docs/networking/use-the-graphic-shell-glish) graphical console from your Linode's Dashboard.
+5. Reboot into your *Installer* configuration profile, and open the [Glish](/docs/guides/glish/) graphical console from your Linode's Dashboard.
 
 ## Install the Operating System
 

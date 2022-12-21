@@ -45,7 +45,7 @@ In this guide you'll deploy Ghost using Docker Compose on Ubuntu 18.04. Ghost is
 Replace each instance of example.com in this guide with your Ghost site’s domain name.
 {{< /note >}}
 
-1.  Complete the [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Ghost Linode.
+1.  Complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Ghost Linode.
 
 1.  Your Ghost site will serve its content over HTTPS, so you will need to obtain an SSL/TLS certificate. Use [Certbot](https://certbot.eff.org/) to request and download a free certificate from [Let's Encrypt](https://letsencrypt.org/):
 

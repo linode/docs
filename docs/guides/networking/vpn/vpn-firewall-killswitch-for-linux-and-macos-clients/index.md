@@ -112,7 +112,7 @@ iptables -A OUTPUT -j ACCEPT -o tun0
 
 This ruleset replaces the pre-exiting iptables rules and instructs the firewall to drop every outgoing connection other than loopback traffic, the local network's subnet and UDP traffic to and from your OpenVPN server's IP on port 1194. In addition, all incoming and outgoing connections are allowed over the virtual network interface `tun0`.
 
-Your VPN firewall is now active, but this ruleset is only temporary and will be cleared when you reboot your Linode. To make the firewall permanent, you can install the `iptables-persistent` package for Debian or Ubuntu-based distributions, or you can see our [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/#deploy-your-iptables-rulesets) or [Firewalld](/docs/security/firewalls/introduction-to-firewalld-on-centos/#constructing-a-ruleset-with-firewalld) guides to create permanent rulesets and/or profiles.
+Your VPN firewall is now active, but this ruleset is only temporary and will be cleared when you reboot your Linode. To make the firewall permanent, you can install the `iptables-persistent` package for Debian or Ubuntu-based distributions, or you can see our [iptables](/docs/guides/control-network-traffic-with-iptables/#deploy-your-iptables-rulesets) or [Firewalld](/docs/guides/introduction-to-firewalld-on-centos/#constructing-a-ruleset-with-firewalld) guides to create permanent rulesets and/or profiles.
 
 ### VPN Firewall using ufw
 

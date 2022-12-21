@@ -25,7 +25,7 @@ aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-par
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
 
 {{< note >}}
-This is the fourth guide in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.
+This is the fourth guide in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series that explains the major parts and concepts of Kubernetes.
 {{< /note >}}
 
 A Controller is a control loop that continuously watches the Kubernetes API and tries to manage the desired state of certain aspects of the cluster. There are a number of controllers. Below is a short reference of the most popular controllers you might interact with.
@@ -231,7 +231,7 @@ To delete the Job, and its Pod, issue the `delete` command:
 
 There are other controllers not listed in this guide that you may find useful. Visit the [official Kubernetes documentation](https://kubernetes.io/docs/concepts/#kubernetes-objects) for more information.
 
-To continue in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series, visit part 5:
+To continue in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series, visit part 5:
 
  - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/)
 

@@ -11,7 +11,7 @@ modified: 2022-03-08
 image: RubyonRails_oneclickapps.png
 modified_by:
   name: Linode
-title: "Deploying Ruby on Rails through the Linode Marketplace"
+title: "Deploy Ruby on Rails through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -147,6 +147,6 @@ For more information on setting up a more substantial application, refer to the 
 
 For more on Ruby on Rails, checkout the following guides:
 
-- [Ruby on Rails with NGINX on Debian](/docs/development/ror/ruby-on-rails-nginx-debian/)
-- [Ruby on Rails with Apache on Debian](/docs/development/ror/ruby-on-rails-apache-debian/)
-- [Use Unicorn and NGINX to Configure Ruby on Rails Applications on Ubuntu](/docs/development/ror/use-unicorn-and-nginx-on-ubuntu-18-04/)
+- [Ruby on Rails with NGINX on Debian](/docs/guides/ruby-on-rails-nginx-debian/)
+- [Ruby on Rails with Apache on Debian](/docs/guides/ruby-on-rails-apache-debian/)
+- [Use Unicorn and NGINX to Configure Ruby on Rails Applications on Ubuntu](/docs/guides/use-unicorn-and-nginx-on-ubuntu-18-04/)

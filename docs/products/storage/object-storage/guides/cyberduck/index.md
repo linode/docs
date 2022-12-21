@@ -111,4 +111,4 @@ Object Storage can be used to host static website files, such as html, css, and 
 
 1.  The static site is accessed from a different URL than can be found in the [Obtain the URL of a File](#obtain-the-url-of-a-file) section. Review the [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/#website-urls) guide for information on obtaining the website URL.
 
-For more information on hosting a static website with Object Storage, read the [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
+For more information on hosting a static website with Object Storage, read the [Host a Static Site using Linode Object Storage](/docs/guides/host-static-site-object-storage/) guide.

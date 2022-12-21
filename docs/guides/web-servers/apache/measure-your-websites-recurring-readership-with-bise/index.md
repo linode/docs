@@ -4,16 +4,13 @@ author:
   name: Jason McIntosh
   email: jmac@jmac.org
 description: "Learn how to install, configure, and run Bise, a simple analytics tool that measures the size of your website’s recurring readership."
-og_description: "Learn how to install, configure, and run Bise, a simple analytics tool that measures the size of your website’s recurring readership."
 keywords: ["Bise", "Apache", "Analytics", "Blogging"]
 tags: ["web server","apache","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-17
 modified_by:
   name: Linode
-title: "How to Measure a Website's Recurring Readership with Bise"
-h1_title: "Measuring your Website's Recurring Readership with Bise"
-enable_h1: true
+title: "Measure a Website's Recurring Readership with Bise"
 image: MeasureWebsiteRecReader_Bise.png
 contributor:
   name: Jason McIntosh
@@ -80,7 +77,7 @@ To use Bise, you should have the following:
 
 * Access to those logs! Bise needs read-access to those log files in order to work. The [If You Don't Have Read-Access to the Logs](#if-you-don-t-have-read-access-to-the-logs) section will provide suggestions if you don't currently have read access.
 
-* [Cpanminus](/docs/development/perl/manage-cpan-modules-with-cpan-minus), to install Bise's prerequisite libraries.
+* [Cpanminus](/docs/guides/manage-cpan-modules-with-cpan-minus/), to install Bise's prerequisite libraries.
 
 * [Cron](/docs/guides/schedule-tasks-with-cron/), if you plan to run Bise on a regular schedule. Any Linux machine almost certainly has this installed as well.
 
@@ -283,7 +280,7 @@ If you're happy with the behavior of the default rows, you can certainly continu
 There are four kinds of rows you can define, each of which examines a different part of your access logs. These correspond to the values for the `test_type` parameter: [path](#test-type-path), [path_regex](#test-type-path-regex), [referer_regex](#test-type-referer-regex), and [agent_regex](#test-type-agent-regex).
 
 {{< note >}}
-Three of the row types involve the use of regular expressions. You should probably understand [the basics of this text-processing technology](/docs/tools-reference/tools/how-to-grep-for-text-in-files/#regular-expression-overview) before defining your own row definitions with any of these types.
+Three of the row types involve the use of regular expressions. You should probably understand [the basics of this text-processing technology](/docs/guides/how-to-grep-for-text-in-files/#regular-expression-overview) before defining your own row definitions with any of these types.
 
 Note also that Bise ignores whitespace in regular expressions, allowing you to write more complex regexes with inline comments, as one of the examples below will illustrate.
 {{< /note >}}

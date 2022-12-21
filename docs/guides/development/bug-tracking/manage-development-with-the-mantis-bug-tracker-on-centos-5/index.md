@@ -66,7 +66,7 @@ Next, we'll move the `mantisbt-1.2.4` directory to our `public_html` directory u
     mv mantisbt-1.2.4/ /srv/www/example.com/public_html/mantis
     chown -R apache:apache /srv/www/example.com/public_html/mantis/
 
-Visit the location of MantisBT in your browser. In our first example, the URL would be `http://example.com/mantis`. Follow the installation instructions by providing the credentials to the MySQL database you created in the LAMP guide, or especially for Mantis. For additional MySQL help, see our [MySQL guide](/docs/databases/mysql/fedora-13). At this point Mantis is installed and ready to configure.
+Visit the location of MantisBT in your browser. In our first example, the URL would be `http://example.com/mantis`. Follow the installation instructions by providing the credentials to the MySQL database you created in the LAMP guide, or especially for Mantis. For additional MySQL help, see our [MySQL guide](/docs/guides/use-mysql-relational-databases-on-fedora-13/). At this point Mantis is installed and ready to configure.
 
 ## Configuring Mantis
 

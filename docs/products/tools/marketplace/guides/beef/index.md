@@ -10,7 +10,7 @@ published: 2021-11-12
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying BeEF through the Linode Marketplace"
+title: "Deploy BeEF through the Linode Marketplace"
 external_resources:
 - '[BeEF](https://beefproject.com/)'
 aliases: ['/guides/deploying-beef-marketplace-app/','/guides/beef-marketplace-app/']
@@ -48,7 +48,7 @@ aliases: ['/guides/deploying-beef-marketplace-app/','/guides/beef-marketplace-ap
 
 1.  Once the app has been *fully* deployed, view the BeEF completion message through one of the methods below:
 
-    -   **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. See [Using the Lish Console](/docs/guides/using-the-lish-console/).
+    -   **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. See [Using the Lish Console](/docs/guides/lish/).
     -   **SSH:** Log in to your Compute Instance over SSH using the `root` user and run the following command. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
             cat /root/beef.info

@@ -13,7 +13,7 @@ modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2010-10-12
-title: 'Email with Postfix, Dovecot and MySQL on Ubuntu 10.10 (Maverick)'
+title: 'Email with Postfix, Dovecot and MySQL on Ubuntu 10.10'
 relations:
     platform:
         key: email-postfix-dovecot-mysql
@@ -31,7 +31,7 @@ It is assumed that you have followed the steps outlined in our [Setting Up and S
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

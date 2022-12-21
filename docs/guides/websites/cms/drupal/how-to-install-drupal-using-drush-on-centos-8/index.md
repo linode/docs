@@ -28,15 +28,15 @@ aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-o
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{< content "limited-user-note-shortguide" >}}
 
-1.  Install and configure a [LAMP stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8)
+1.  Install and configure a [LAMP stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/)
 
-1.  Install [Composer and Drush on CentOS 8](/docs/websites/cms/drupal/drush-drupal/how-to-install-drush-on-centos-8)
+1.  Install [Composer and Drush on CentOS 8](/docs/guides/how-to-install-drush-on-centos-8/)
 
 1.  Install the `wget` and `tar` utilities. You will need this in a later section to install the Drupal 8 core.
 
@@ -68,7 +68,7 @@ Ensure that the version number matches the Drupal 8 version you wish to download
 
         sudo yum install -y php php-{cli,mysqlnd,json,opcache,xml,mbstring,gd,curl}
 
-1. Create your Drupal 8 installation's `settings.php` file from the default settings file. This file will be configured when you run through Drupal's automated web configuration. See the [Install and Configure Drupal on CentOS 8](/docs/websites/cms/drupal/how-to-install-and-configure-drupal-on-centos-8/#drupal-first-start) guide for more details.
+1. Create your Drupal 8 installation's `settings.php` file from the default settings file. This file will be configured when you run through Drupal's automated web configuration. See the [Install and Configure Drupal on CentOS 8](/docs/guides/how-to-install-and-configure-drupal-on-centos-8/#drupal-first-start) guide for more details.
 
         sudo cp /var/www/html/example.com/public_html/sites/default/default.settings.php /var/www/html/example.com/public_html/sites/default/settings.php
 
@@ -196,13 +196,13 @@ There are many ways to set up administration for a website. Below are sections e
 
 The above setup is designed for ease of use. However, there are setups designed for tighter security and other considerations.
 
-- To design your own setup, read Linode's documentation on [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide
+- To design your own setup, read Linode's documentation on [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide
 - For an extremely secure setup, read Drupal's [Securing File Permissions and Ownership](https://www.drupal.org/node/244924) guide
 
 ### Multi-site Servers
 
 At a high-level, the steps you will need to follow to begin configuring a Drupal multisite set up are:
 
-- Add a new [MySQL user, password, and database](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/#mysql)
-- Create a new [Apache virtual hosts file and corresponding directories](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/#virtual-hosts)
+- Add a new [MySQL user, password, and database](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#mysql)
+- Create a new [Apache virtual hosts file and corresponding directories](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#virtual-hosts)
 - See [Drupal's Multisite documentation](https://www.drupal.org/docs/8/multisite/drupal-8-multisite) for more details.

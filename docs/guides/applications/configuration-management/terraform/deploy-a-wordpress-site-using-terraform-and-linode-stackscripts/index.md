@@ -22,7 +22,7 @@ aliases: ['/applications/configuration-management/terraform/deploy-a-wordpress-s
 
 ![Deploy a WordPress Site Using Terraform and Linode StackScripts](deploy-wordpress-using-terraform-linode-stackscripts.png "Deploy a WordPress Site Using Terraform and Linode StackScripts")
 
-Linode's Terraform provider supports [StackScripts](/docs/platform/stackscripts/). StackScripts allow you to automate the deployment of custom software on top of Linode's default Linux images, or on any of your [saved custom images](/docs/products/tools/images/). You can create your own StackScripts, use a StackScript created by Linode, or use a Community StackScript.
+Linode's Terraform provider supports [StackScripts](/docs/products/tools/stackscripts/). StackScripts allow you to automate the deployment of custom software on top of Linode's default Linux images, or on any of your [saved custom images](/docs/products/tools/images/). You can create your own StackScripts, use a StackScript created by Linode, or use a Community StackScript.
 
 In this guide you will learn how to use a Community StackScript to deploy WordPress on a Linode using Terraform.
 
@@ -32,15 +32,15 @@ Following this guide will result in the creation of billable Linode resources on
 
 ## Before You Begin
 
-1.  Install Terraform on your computer by following the *Install Terraform* section of our [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide.
+1.  Install Terraform on your computer by following the *Install Terraform* section of our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide.
 
     {{< note >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
     {{</ note >}}
 
-1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api-new-manager/#get-an-access-token) guide to obtain one.
+1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) guide to obtain one.
 
-1.  If you have not already, [assign Linode's name servers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain) to your domain at your domain name's registrar.
+1.  If you have not already, [assign Linode's name servers](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers) to your domain at your domain name's registrar.
 
 1.  Browse the existing [StackScripts Library](https://www.linode.com/stackscripts/) to familiarize yourself with common tasks you can complete with existing StackScripts.
 
@@ -224,7 +224,7 @@ resource "linode_instance" "my_wordpress_linode" {
 
     -   To use an existing StackScript you must use the `stackscript_id` argument and provide a valid ID as a value. Every StackScript is assigned a unique ID upon creation. This guide uses the [WordPress on Ubuntu 20.04](https://cloud.linode.com/stackscripts/998743) StackScript adapted by the Linode user [hmorris](https://cloud.linode.com/stackscripts/community?query=username%3Ahmorris). This StackScript's ID will be assigned to a Terraform variable later in this guide.
 
-        StackScripts support user defined data. A StackScript can use the [`UDF` tag](/docs/platform/stackscripts/#variables-and-udfs) to create a variable whose value must be provided by the user of the script. This allows users to customize the behavior of a StackScript on a per-deployment basis. Any required `UDF` variable can be defined using the `stackscript_data` argument.
+        StackScripts support user defined data. A StackScript can use the [`UDF` tag](/docs/products/tools/stackscripts/#variables-and-udfs) to create a variable whose value must be provided by the user of the script. This allows users to customize the behavior of a StackScript on a per-deployment basis. Any required `UDF` variable can be defined using the `stackscript_data` argument.
 
         The StackScript will be responsible for installing WordPress on your Linode, along with all other requirements, like installing and configuring the Apache Web Server, configuring the Virtual Hosts file, and installing MySQL.
 
@@ -255,10 +255,10 @@ resource "linode_domain_record" "my_wordpress_domain_apex_record" {
 {{</ file >}}
 
     {{< note >}}
-If you are not familiar with the Domain Name System (DNS), review the [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) guide.
+If you are not familiar with the Domain Name System (DNS), review the [DNS Records: An Introduction](/docs/guides/dns-overview/) guide.
 {{< /note >}}
 
-    The `linode_domain` resource creates a [domain zone](/docs/guides/dns-manager/#create-and-manage-domains) for your domain.
+    The `linode_domain` resource creates a [domain zone](/docs/products/networking/dns-manager/guides/create-domain/) for your domain.
 
     Each `linode_domain_record` resource retrieves the `linode_domain` resource's ID and assigns it to that record's `domain_id` argument. Each record's `target` argument retrieves the IP address from the Linode instance. Every `linode_instance` resource exposes [several attributes](https://www.terraform.io/docs/providers/linode/r/instance.html#attributes), including a Linode's IPv4 address.
 
@@ -292,7 +292,7 @@ variable "type" {
 }
 
 variable "stackscript_id" {
-  description = "Stackscript ID"
+  description = "StackScript ID"
 }
 
 variable "stackscript_data" {
@@ -360,7 +360,7 @@ In Terraform 0.12, variables with map and object values will use the last value 
     {{</ note >}}
 
     {{< note >}}
-It is helpful to reference Terraform's [Linode provider](https://www.terraform.io/docs/providers/linode/) documentation and the [Linode APIv4 documentation](https://developers.linode.com/api/v4) for assistance in determining appropriate values for Linode resources.
+It is helpful to reference Terraform's [Linode provider](https://www.terraform.io/docs/providers/linode/) documentation and the [Linode APIv4 documentation](/docs/api/) for assistance in determining appropriate values for Linode resources.
 {{< /note >}}
 
 1.  Replace the following values in your new `.tfvars` files:
@@ -373,7 +373,7 @@ It is helpful to reference Terraform's [Linode provider](https://www.terraform.i
 
     -   `domain` should be replaced with your WordPress site's domain address.
 
-    -  `soa_email` should be the email address you would like to use for your [Start of Authority](/docs/guides/dns-records-an-introduction/#soa) email address.
+    -  `soa_email` should be the email address you would like to use for your [Start of Authority](/docs/guides/dns-overview/#soa) email address.
 
 ## Initialize, Plan, and Apply the Terraform Configuration
 

@@ -52,7 +52,7 @@ Reload the web server configuration to create the virtual host. Issue the follow
 
     /etc/init.d/apache2 reload
 
-Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
+Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/guides/dns-overview/#a-and-aaaa) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
 
 ## Case Two: Using ProxyPass to Delegate Services to Alternate Machines
 
@@ -225,7 +225,7 @@ You may wish to consult the following resources for additional information on th
 
 - [Official Apache Documentation for Proxy Pass](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)
 - [Official Apache Documentation for Proxy Balancer](http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html)
-- [Configure ProxyPass and Multiple Web Servers with Apache](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-5-lenny)
+- [Configure ProxyPass and Multiple Web Servers with Apache](/docs/guides/multiple-web-servers-with-proxypass-on-debian-5-lenny/)
 
 
 

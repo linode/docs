@@ -23,7 +23,7 @@ external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/13.0/)'
   - '[Odoo Developer Documentation](https://www.odoo.com/documentation/13.0)'
   - '[PostgreSQL 11 Documentation](https://www.postgresql.org/docs/11/static/index.html)'
-  - '[Install an SSL certificate with LetsEncrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates)'
+  - '[Install an SSL certificate with LetsEncrypt](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/)'
   - '[How to Set up tinc, a Peer-to-Peer VPN](/docs/guides/how-to-set-up-tinc-peer-to-peer-vpn/)'
 relations:
     platform:
@@ -56,9 +56,9 @@ All examples in this guide are for Debian 10. If you plan to use a different ope
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide. Create the Linodes described in the previous [System Requirements](#system-requirements) section of the current guide. Complete the steps for setting your Linodes' hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide. Create the Linodes described in the previous [System Requirements](#system-requirements) section of the current guide. Complete the steps for setting your Linodes' hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
     {{< note >}}
 Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -295,7 +295,7 @@ It's considered a best practice to isolate Odoo's Python modules from the module
 
         pip3 install wheel
 
-Let's review the the virtual environment creation:
+Let's review the virtual environment creation:
 
 * `python3 -m venv`: Runs `venv` module using Python 3, this module is in charge of creating the virtual environment.
 * `/home/<user>/odoo-env`: Indicates the path used for the virtual Python environment. For the purpose of this guide, `home` directory of the current user was used but you can change it to any location that suits your needs as long as you remember to grant the `odoo` user with proper permissions afterward.
@@ -430,7 +430,7 @@ You have two options to backup your production database:
 
     You can later use this interface to restore your database from a specific database backup file. Odoo correctly restores to the database on the **PostgreSQL server**, and not to the database service that was installed on the Odoo application server. This happens because your Odoo configuration is explicit about the database connection.
 
-1. You can use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](/docs/guides/how-to-back-up-your-postgresql-database/) from the backend **PostgreSQL** Linode.
+1. You can use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](/docs/guides/back-up-a-postgresql-database/) from the backend **PostgreSQL** Linode.
 
 ## Update Odoo Modules
 

@@ -2,10 +2,10 @@
 author:
   name: Linode
   email: docs@linode.com
-title: "Connect to a MySQL Database"
+title: "Connect to a MySQL Managed Database"
 description: "Learn how to connect to a MySQL Managed Databse through the command line or MySQL Workbench."
 published: 2022-02-23
-modified: 2022-05-11
+modified: 2022-07-22
 ---
 
 To connect to a MySQL Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a MySQL client. This guide details how to access your database using popular tools.
@@ -37,7 +37,7 @@ To connect direct to the database from a command-line, you can use the `mysql` t
 
         mysql --version
 
-    If it is not installed, follow the steps for your operating system under [Install a MySQL Client](#install-a-mysql-client).
+    If it is not installed, follow the steps for your operating system in the [Installing MySQL](/docs/guides/install-mysql/) guide.
 
 1.  Use the `mysql` command below to connect to your database, replacing `[host]` and `[username]` with the corresponding values in the [Connection Details](#view-connection-details) section.
 
@@ -53,39 +53,13 @@ If you are connecting to the *private network host*, ensure your Compute Instanc
 
 Once you are connected successfully, the MySQL prompt appears and you can enter SQL queries. See [An Overview of MySQL](/docs/guides/an-overview-of-mysql/#the-sql-language) for examples.
 
-See [How to Connect to a MySQL or MariaDB Database](/docs/guides/connect-to-a-mysql-or-mariadb-database/) for more information or reference [Connecting to the MySQL Server Using Command Options](https://dev.mysql.com/doc/refman/8.0/en/connecting.html) within MySQL's own documentation.
-
-### Install a MySQL Client
-
-If you do not currently have a MySQL command-line client installed on your system, follow the instructions below to install one through your distribution's repositories. 
-
--   **CentOS Stream 9 (and 8), CentOS/RHEL 8 (including AlmaLinux 8 and RockyLinux 8):**
-
-        sudo dnf install mysql
-
--   **CentOS/RHEL 7:**
-
-        sudo yum install mysql
-
--   **Debian:**
-
-    *Debian does not include MySQL within its own repositories. Instead, it uses MariaDB. While this is largely compatible with MySQL, some commands and functionality may vary.*
-
-        sudo apt update
-        sudo apt install mariadb-client
-
--   **Fedora:**
-
-        sudo dnf install community-mysql
-
--   **Ubuntu:**
-
-        sudo apt update
-        sudo apt install mysql-client
+See [Using the MySQL Command Line Client](/docs/guides/mysql-command-line-client/) for more information or reference [Connecting to the MySQL Server Using Command Options](https://dev.mysql.com/doc/refman/8.0/en/connecting.html) within MySQL's own documentation.
 
 ## Connect Using MySQL Workbench (GUI)
 
 The MySQL Workbench provides a graphical interface for connecting to MySQL databases. Using this tool, you can visualize your database, its structure, and the data it contains.
+
+1.  Make sure the IP address assigned to your system is included within your database's access controls. If not, add it now. See [Manage Access Controls](/docs/products/databases/managed-databases/guides/manage-access-controls/).
 
 1. Install the MySQL Workbench software from the [MySQL Community Downloads](https://dev.mysql.com/downloads/workbench/) page. Be sure to select the operating system you're using locally.
 
@@ -106,3 +80,27 @@ The MySQL Workbench provides a graphical interface for connecting to MySQL datab
 1. To connect to the database, select **Database > Connect to Database** from the main menu. In the following screen, select the stored connection you just created and click **OK**.
 
 For instructions on using MySQL Workbench to interact with your database, see [Install MySQL Workbench for Database Administration](/docs/guides/deploy-mysql-workbench-for-database-administration/#creating-and-populating-databases) or look through the [MySQL Workbench Manual](https://dev.mysql.com/doc/workbench/en/).
+
+## Connect Using DBeaver
+
+[DBeaver](https://dbeaver.io/) is free and open source universal database tool for developers and database administrators. DBeaver provides a powerful SQL-editor, administration features, ability to migrate data and schema, monitor database connection sessions, and others.
+
+1.  Make sure the IP address assigned to your system is included within your database's access controls. If not, add it now. See [Manage Access Controls](/docs/products/databases/managed-databases/guides/manage-access-controls/).
+
+1. Install the DBeaver Community (or Pro) software from the [DBeaver Downloads](https://dbeaver.io/download/) page. Be sure to select the operating system you're using locally.
+
+1. Open DBeaver, click the **Database** menu dropdown, and select **New Connection**.
+
+1. The **Connect to a database** window appears. Select **MySQL** and click **Next** to continue.
+
+    ![Screenshot of the DBeaver database selection screen with MySQL highlighted](dbeaver-mysql-connection-new.png)
+
+1. Within the *Main* tab, enter the details for your connection, including the **Server Host** (hostname) **Port**, and **Username**. You can optionally store your password by entering your password and clicking the **Save password locally** button. If you do not store your password, you must enter it manually each time you connect. For security reasons, it's typically recommended *not* to store your password.
+
+    ![Screenshot of DBeaver's MySQL connection settings.](dbeaver-mysql-connection-main.png)
+
+1. In the *SSL* tab, check **Use SSL**, check **Require SSL**, and uncheck **Verify server certificate**.
+
+    ![Screenshot of DBeaver's MySQL SSL connection settings.](dbeaver-mysql-connection-ssl.png)
+
+1. Click the **Test Connection** button to check if the connection is successful.

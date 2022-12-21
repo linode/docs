@@ -49,7 +49,7 @@ So in this example, create DNS records for:
 
 Set each of the above DNS records to the public IP address of the Linode instance.
 
-Refer to [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) for more information on configuring
+Refer to [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) for more information on configuring
 DNS entries or consult your DNS provider's documentation if using an external DNS provider.
 
 ## Install Riot

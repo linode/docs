@@ -11,7 +11,7 @@ modified: 2022-03-08
 image: DeployCyberPanel_marketplaceapps.png
 modified_by:
   name: Linode
-title: "Deploying CyberPanel through the Linode Marketplace"
+title: "Deploy CyberPanel through the Linode Marketplace"
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
 aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel-marketplace-app']
@@ -38,7 +38,7 @@ aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel
 
 ### Access your CyberPanel App
 
-1.  When the installation completes, log into your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
+1.  When the installation completes, log into your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
 
          ssh root@192.0.2.0
 

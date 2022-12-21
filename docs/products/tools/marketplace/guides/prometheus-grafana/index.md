@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-29
 modified_by:
   name: Linode
-title: "Deploying Prometheus and Grafana through the Linode Marketplace"
+title: "Deploy Prometheus and Grafana through the Linode Marketplace"
 external_resources:
 - '[Prometheus](https://prometheus.io/)'
 - '[Grafana](https://grafana.com/)'
@@ -57,7 +57,7 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
 1.  Log in to your new Compute Instance using one of the methods below:
 
-    - **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. Log in as the `root` user. See [Using the Lish Console](/docs/guides/using-the-lish-console/).
+    - **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. Log in as the `root` user. See [Using the Lish Console](/docs/guides/lish/).
     - **SSH:** Log in to your Compute Instance over SSH using the `root` user. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
 1.  Once logged in, run the following command:

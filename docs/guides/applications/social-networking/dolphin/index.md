@@ -368,7 +368,7 @@ Dolphin comes with a free Media Server software (formerly Ray Media Server - RMS
 20. If the start was successful, you can use the [Boonex Media Server Tester](http://www.boonex.com/rms.html) to verify that your RMS install is working properly. If you get "NetConnection.Connect.Success", everything is working.
 
  {{< note >}}
-If you receive "NetConnection.Connect.Failed", make sure you have ports 1935 and 1936 open in your firewall. For more information, see the [Securing Your Server guide](/docs/securing-your-server#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls).
+If you receive "NetConnection.Connect.Failed", make sure you have ports 1935 and 1936 open in your firewall. For more information, see the [Securing Your Server guide](/docs/guides/set-up-and-secure/#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls).
 {{< /note >}}
 
 

@@ -15,12 +15,12 @@ title: Using Irssi for Internet Relay Chat
 external_resources:
  - '[Irssi Project Home Page](http://www.irssi.org/)'
  - '[Irssi Themes Page](http://irssi.org/themes/)'
- - '[Screen for Persistent Terminal Sessions](/docs/linux-tools/utilities/screen)'
+ - '[Screen for Persistent Terminal Sessions](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/)'
  - '[An Effective Guide for Using Screen and Irssi](http://quadpoint.org/articles/irssi)'
  - '[The Open and Free Technology Community](http://www.oftc.net/oftc/)'
  - '[The Freenode IRC Network](http://freenode.net/)'
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
- - '[Advanced Irssi Usage](/docs/communications/irc/advanced-irssi)'
+ - '[Advanced Irssi Usage](/docs/guides/advanced-irssi-usage/)'
 ---
 
 ![Using Irssi for Internet Relay Chat](Using-Irssi-for-Internet-Relay-Chat-smg.jpg)
@@ -251,4 +251,4 @@ To remove a `hilight`, use the command:
 
 ## User-friendly Plugins
 
-Enhance your Irssi experience with user-friendly plugins! Add a full list of open windows to the bottom of the screen, colored nicks, and more. Check out the [Using Plugins](/docs/communications/irc/advanced-irssi/#using-plugins) section of the [Advanced Irssi Usage](/docs/guides/advanced-irssi-usage/) guide.
+Enhance your Irssi experience with user-friendly plugins! Add a full list of open windows to the bottom of the screen, colored nicks, and more. Check out the [Using Plugins](/docs/guides/advanced-irssi-usage/#using-plugins) section of the [Advanced Irssi Usage](/docs/guides/advanced-irssi-usage/) guide.

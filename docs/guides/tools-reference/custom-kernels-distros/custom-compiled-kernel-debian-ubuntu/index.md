@@ -24,7 +24,7 @@ aliases: ['/tools-reference/custom-kernels-distros/custom-compiled-kernel-debian
 
 Compiling your own Linux kernel is useful if you need to enable or disable certain kernel features that are not available in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 
-If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm).
+If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/guides/managing-the-kernel-on-a-linode/).
 
 Prior to these instructions, follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Then, log in to your Linode as the `root` user.
 
@@ -118,7 +118,7 @@ GRUB_DISABLE_OS_PROBER=true
 
     ![The GRUB2 Option.](custom-kernel-grub2.png)
 
-3.  Click **Save Changes**. You can now reboot the Linode. We suggest opening a [LISH](/docs/networking/using-the-linode-shell-lish) or [GLISH](/docs/networking/using-the-graphic-shell-glish) session first, so you can monitor the boot process and troubleshoot if necessary.
+3.  Click **Save Changes**. You can now reboot the Linode. We suggest opening a [LISH](/docs/guides/lish/) or [GLISH](/docs/guides/glish/) session first, so you can monitor the boot process and troubleshoot if necessary.
 
     {{< note >}}
 You may need to run `cp /boot/grub/unicode.pf2 /boot/grub/fonts/` for the boot menu to properly display in GLISH. Your Linode will still boot, assuming there are no configuration issues, without this command.

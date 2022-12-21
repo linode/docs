@@ -110,13 +110,13 @@ If your Linode is not out of memory, continue to the next section.
 
 Disk input/output (I/O) bottlenecks can occur when an application or service is reading or writing an excessive amount of information to disk and the processor has to wait to process the information. High I/O wait can significantly slow down your server. To determine if your server currently has an I/O bottleneck, follow the steps below:
 
-1.  [Log in to your Linode via SSH](/docs/getting-started-new-manager/#connect-to-your-linode-via-ssh).
+1.  [Log in to your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh).
 1.  Enter `top` to access the `top` monitoring utility. The screen shown below appears.
 
     ![Check for Disk I/O bottleneck.](939-troubleshooting2.png)
 
 1.  Examine the I/O wait percentage, as shown above. If the number is zero, your server does not currently have a bottleneck.
-1.  If your I/O wait percentage is above zero, verify that your server has enough [free memory available](/docs/troubleshooting/troubleshooting/#is-the-linode-out-of-memory). In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
+1.  If your I/O wait percentage is above zero, verify that your server has enough [free memory available](/docs/guides/troubleshooting-overview/#is-the-linode-out-of-memory). In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
 1.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/guides/use-vmstat-to-monitor-system-performance/) to find the application responsible for the excessive I/O. Databases are often a source of excessive I/O. You may need to stop and/or reconfigure the application.
 
      {{< note >}}
@@ -171,7 +171,7 @@ Use the following checklist if the Linode Manager is displaying "incorrect" info
 
 ### Did You Recently Change your Account?
 
-If you recently created a new account, resized an existing Linode, or added extra bandwidth, the bandwidth displayed in the Linode Cloud Manager will be prorated for the amount of time left in the current billing cycle. For example, if you create an account on the 15th day of the month, the Manager will indicate that your account has been allocated half of the plan's bandwidth for the current month. This information is an accurate representation of the bandwidth available for the rest of the billing period. When then next billing period starts, the Manager will indicate that all of the plan's bandwidth is available. View the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for more information.
+If you recently created a new account, resized an existing Linode, or added extra bandwidth, the bandwidth displayed in the Linode Cloud Manager will be prorated for the amount of time left in the current billing cycle. For example, if you create an account on the 15th day of the month, the Manager will indicate that your account has been allocated half of the plan's bandwidth for the current month. This information is an accurate representation of the bandwidth available for the rest of the billing period. When then next billing period starts, the Manager will indicate that all of the plan's bandwidth is available. View the [Billing and Payments](/docs/products/platform/billing/) guide for more information.
 
 ### Did You Add Additional Storage?
 

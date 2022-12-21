@@ -10,7 +10,7 @@ published: 2020-03-13
 modified: 2022-05-31
 modified_by:
   name: Linode
-title: "Deploying cPanel through the Linode Marketplace"
+title: "Deploy cPanel through the Linode Marketplace"
 external_resources:
 - '[WHM Feature Documentation](https://documentation.cpanel.net/display/78Docs/WHM+Features+List)'
 aliases: ['/platform/marketplace/how-to-deploy-cpanel-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-marketplace-apps/','/guides/cpanel-marketplace-app/']
@@ -55,7 +55,7 @@ WHM is the core interface for managing your server and all websites (also called
 
 1. On the same page, you must also enter in the nameservers for this server. Nameservers are the underlying servers of the DNS system that map domain names to IP addresses. Managing DNS through cPanel allows you to quickly add sites, configure subdomains, set up email, and more without needing to manually update DNS records. For this step, make sure you have a registered domain name.
 
-    1. Within the nameservers for your domain name, create two [*A records*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa). The *hostname* / *name* field should be *ns1* (for the first record) and *ns2* (for the second). The IP address should be the IPv4 address of your new Compute Instance. If you do not have a nameserver for your registered domain, consider using Linode's [DNS Manager](/docs/guides/dns-manager/).
+    1. Within the nameservers for your domain name, create two [*A records*](/docs/guides/dns-overview/#a-and-aaaa). The *hostname* / *name* field should be *ns1* (for the first record) and *ns2* (for the second). The IP address should be the IPv4 address of your new Compute Instance. If you do not have a nameserver for your registered domain, consider using Linode's [DNS Manager](/docs/products/networking/dns-manager/).
 
     1. Within the cPanel form, enter the following values into the nameserver fields. Replace *example.com* with the domain name you are using.
 

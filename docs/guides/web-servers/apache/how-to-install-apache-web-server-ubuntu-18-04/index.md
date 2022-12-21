@@ -31,14 +31,14 @@ The *Apache HTTP Web Sever* (Apache) is an open source web application for deplo
 If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{</ note >}}
 
 ## Before You Begin
 
 1.  Set up your Linode in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
-1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/guides/dns-manager/) guide.
+1.  If you want a custom domain name for your site, you can set this up using our [DNS Manager](/docs/products/networking/dns-manager/) guide.
 
     - Don't forget to update your `/etc/hosts` file with the public IP address and your site's fully qualified domain name as explained in the [Update Your System's hosts File](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file) section of the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
 
@@ -52,7 +52,7 @@ Install Apache 2.4:
 
 ## Multi-Processing Modules
 
-Apache 2.4 offers several multi-processing modules (MPMs) to handle connections. In Ubuntu 18.04 LTS the default MPM is the *event module*, although the *prefork module* is still recommended if you’re using standard PHP. Below are the basic default settings. For detailed explanations and advanced settings for these modules, see the [Tuning Your Apache Server](/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/#multi-processing-modules) guide.
+Apache 2.4 offers several multi-processing modules (MPMs) to handle connections. In Ubuntu 18.04 LTS the default MPM is the *event module*, although the *prefork module* is still recommended if you’re using standard PHP. Below are the basic default settings. For detailed explanations and advanced settings for these modules, see the [Tuning Your Apache Server](/docs/guides/tuning-your-apache-server/#multi-processing-modules) guide.
 
 1.  You can check which MPM is currently configured with the following command:
 

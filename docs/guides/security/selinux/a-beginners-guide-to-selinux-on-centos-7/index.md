@@ -38,9 +38,9 @@ SELinux defaults to denying anything that is not explicitly allowed. SELinux has
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
+1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
     {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
 1.  Update your system:
@@ -150,7 +150,7 @@ If SELinux is currently disabled, update your SELinux configuration file with th
 
         sudo sealert -a /var/log/audit/audit.log
 
-    The output resembles the example, however, it varies depending on the programs and configurations on your system. The example was generated using a [Linode running the Apache webserver](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/#apache) with a virtual hosts configuration.
+    The output resembles the example, however, it varies depending on the programs and configurations on your system. The example was generated using a [Linode running the Apache webserver](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/#apache) with a virtual hosts configuration.
 
     {{< output >}}
 SELinux is preventing /usr/sbin/httpd from write access on the directory logs.

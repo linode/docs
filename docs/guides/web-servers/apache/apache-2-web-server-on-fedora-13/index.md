@@ -152,7 +152,7 @@ In accordance with best practices, we do not recommend modifying the default con
 
     cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd-conf.backup-1
 
-Generally, as specified above and in our [LAMP guide for Fedora 13](/docs/lamp-guides/fedora-13) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file, such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
+Generally, as specified above and in our [LAMP guide for Fedora 13](/docs/guides/lamp-server-on-fedora-13/) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file, such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
 
 ## Install Apache Modules
 
@@ -165,7 +165,7 @@ To see if a module is enabled, look in "conf" files for lines beginning with `Lo
 
 To disable an existing module (at your own risk) edit the file in question, and comment out the `LoadModule` statement by prefixing the line with a hash (e.g. `#`).
 
-To get a list of available Apache modules modules in the Fedora repository use the following commands:
+To get a list of available Apache modules in the Fedora repository use the following commands:
 
     yum search mod_
 

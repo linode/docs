@@ -10,7 +10,7 @@ published: 2021-08-13
 modified: 2022-05-17
 modified_by:
   name: Linode
-title: "Deploying Chevereto through the Linode Marketplace"
+title: "Deploy Chevereto through the Linode Marketplace"
 external_resources:
 - '[Chevereto](https://chevereto.com/)'
 - '[Chevereto Documentation](https://chevereto.com/docs)'
@@ -42,7 +42,7 @@ Chevereto requires a valid license to use the software. To purchase a license, v
 
 ### Access your Chevereto App
 
-1.  After Chevereto has finished installing,log into your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
+1.  After Chevereto has finished installing,log into your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
 
         ssh root@192.0.2.0
 

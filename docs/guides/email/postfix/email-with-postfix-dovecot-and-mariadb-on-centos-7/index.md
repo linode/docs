@@ -46,7 +46,7 @@ example.com MX 10 example.com
 mail.example.com MX 10 example.com
 {{< /output >}}
 
-Make sure that the MX record is changed for all domains and subdomains that might receive email. If setting up a brand new domain, these steps can be performed prior to configuring the mail server. When using Linode's [DNS Manager](/docs/guides/dns-manager/), create an MX record that points to the desired domain or subdomain, and then create an A record for that domain or subdomain, which points to the correct IP address.
+Make sure that the MX record is changed for all domains and subdomains that might receive email. If setting up a brand new domain, these steps can be performed prior to configuring the mail server. When using Linode's [DNS Manager](/docs/products/networking/dns-manager/), create an MX record that points to the desired domain or subdomain, and then create an A record for that domain or subdomain, which points to the correct IP address.
 
 ## Update Hosts File
 
@@ -99,16 +99,9 @@ Follow the steps below to create the database tables for virtual users, domains 
         sudo systemctl start mariadb
         sudo systemctl enable mariadb
 
-1.  Use the [*mysql_secure_installation*](https://mariadb.com/kb/en/library/mysql_secure_installation/) tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
+1.  Use the [*mysql_secure_installation*](https://mariadb.com/kb/en/library/mysql_secure_installation/) tool to configure additional security options. You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
         sudo mysql_secure_installation
-
-    Answer **Y** at the following prompts:
-
-    -   Remove anonymous users?
-    -   Disallow root login remotely?
-    -   Remove test database and access to it?
-    -   Reload privilege tables now?
 
 1.  Create a new database:
 

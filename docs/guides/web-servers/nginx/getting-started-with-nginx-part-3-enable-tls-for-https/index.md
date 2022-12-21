@@ -30,7 +30,7 @@ A single NGINX installation can host multiple websites and any number of them ca
 
 * You will need root access to the system, or a user account with `sudo` privileges.
 
-* You will need a TLS certificate and key for your site. The certificate can be self-signed if this is a private or internal site, or if you are simply experimenting. Alternatively, use a commercial certificate chain if that's what your site requires. If you don't already have a certificate and server key, see our guides for creating a [self-signed certificate](/docs/security/ssl/create-a-self-signed-tls-certificate) or a [certificate signing request](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate).
+* You will need a TLS certificate and key for your site. The certificate can be self-signed if this is a private or internal site, or if you are simply experimenting. Alternatively, use a commercial certificate chain if that's what your site requires. If you don't already have a certificate and server key, see our guides for creating a [self-signed certificate](/docs/guides/create-a-self-signed-tls-certificate/) or a [certificate signing request](/docs/guides/obtain-a-commercially-signed-tls-certificate/).
 
 * If you compiled NGINX from source code, ensure that it was compiled with `--with-http_ssl_module`. Verify in the output of `nginx -V`.
 

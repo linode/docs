@@ -94,10 +94,10 @@ Swap IP addresses so the new Linode uses the IP address assigned to the old Lino
 To swap IP addresses, both Linodes must be located in the same data center.
 {{< /note >}}
 
-Alternatively, you can [update your DNS entries](/docs/websites/hosting-a-website/#add-dns-records) to point to the new Linode's IP address instead. DNS propagation across the Internet may take some time. Boot the new Linode to resume normal operations.
+Alternatively, you can [update your DNS entries](/docs/guides/hosting-a-website-ubuntu-18-04/#add-dns-records) to point to the new Linode's IP address instead. DNS propagation across the Internet may take some time. Boot the new Linode to resume normal operations.
 
 ### Preserving Data for Forensics and Linode Cancellation
 
-You may want to download a complete copy of the compromised Linode's disk(s) for forensic analysis. To do this, follow the instructions in our [SSH disk copy guide](/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh). If you don't need a full copy of the affected disks, you may still want to make a copy of all system log files for later review.
+You may want to download a complete copy of the compromised Linode's disk(s) for forensic analysis. To do this, follow the instructions in our [SSH disk copy guide](/docs/guides/copying-a-disk-image-over-ssh/). If you don't need a full copy of the affected disks, you may still want to make a copy of all system log files for later review.
 
-When you no longer need the old Linode's disks, you should [remove the Linode](/docs/platform/billing-and-support/billing-and-payments/#removing-services). Your account will be issued a pro-rated credit for that Linode's charges in the current billing period.
+When you no longer need the old Linode's disks, you should [remove the Linode](/docs/products/platform/billing/guides/stop-billing/). Your account will only be invoiced for the time the Linode was present on your account since the last invoice. For more information, see [Understanding Billing and Payments](/docs/products/platform/billing/).

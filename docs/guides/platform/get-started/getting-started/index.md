@@ -6,7 +6,7 @@ author:
 keywords: ["getting started", "intro", "basics", "first steps", "linode platform"]
 description: "Learn how to create an account and use the Linode Cloud Platform."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode/']
+aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode/','/products/platform/accounts/get-started/']
 modified: 2022-06-27
 modified_by:
   name: Linode
@@ -40,18 +40,18 @@ First, you need to create a Linode account to start using our services. If you a
 1. In the **Security** section of the signup process, input your phone number. Linode uses phone numbers as a measure to verify identity and prevent fraud. Once a phone number is provided, a verification code is sent to that number as an SMS text message. Enter this code into the signup form.
 
     {{< note >}}
-This phone number provides our team with a secure method of verifying your identity as the owner of the newly created Linode user account. We will only ever use this phone number to verify your identity by sending a verification code as an SMS message. See [Phone Verification](/docs/guides/user-security-controls/#phone-verification) for more details.
+This phone number provides our team with a secure method of verifying your identity as the owner of the newly created Linode user account. We will only ever use this phone number to verify your identity by sending a verification code as an SMS message. See [Phone Verification](/docs/products/platform/accounts/guides/user-security-controls/#phone-verification) for more details.
 {{</ note >}}
 
-1. Within the **Billing** section, select your payment method and enter your billing address details. Linode accepts credit/debit cards, Google Pay, and PayPal. See the [Billing and Payments](/docs/guides/how-linode-billing-works/#payments) guide to learn more about each of these methods. You must also accept the [Master Services Agreement](https://www.linode.com/legal-msa/).
+1. Within the **Billing** section, select your payment method and enter your billing address details. Linode accepts credit/debit cards, Google Pay, and PayPal. See the [Billing and Payments](/docs/products/platform/billing/#payments) guide to learn more about each of these methods. You must also accept the [Master Services Agreement](https://www.linode.com/legal-msa/).
 
 1. Most accounts are activated instantly and you can start adding services right away. A small number of accounts may require manual review prior to activation.
 
 {{< note >}}
-***Sending* email:** Newly created Linode accounts have restrictions on ports `25`, `465`, and `587` applied to Compute Instances, which prevent instances from sending email. If you'd like to send email on a Compute Instance, review the [Running a Mail Server](/docs/email/running-a-mail-server/#sending-email-on-linode) guide, then [open a ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) with our Support team.
+***Sending* email:** Newly created Linode accounts have restrictions on ports `25`, `465`, and `587` applied to Compute Instances, which prevent instances from sending email. If you'd like to send email on a Compute Instance, review the [Running a Mail Server](/docs/guides/running-a-mail-server/#sending-email-on-linode) guide, then [open a ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) with our Support team.
 {{</ note >}}
 
-Once your account has been created, consider **enabling 2FA** to prevent unauthorized access. Anyone that has access to your account may be able to delete your services, add new ones, and reset the root password on your Compute Instances to gain access to them. See [Cloud Manager Security Controls](/docs/guides/linode-manager-security-controls/) for instructions on enabling 2FA. If you are logging in with a third party provider, consider adding 2FA through that provider.
+Once your account has been created, consider **enabling 2FA** to prevent unauthorized access. Anyone that has access to your account may be able to delete your services, add new ones, and reset the root password on your Compute Instances to gain access to them. See [Cloud Manager Security Controls](/docs/products/platform/accounts/guides/user-security-controls/) for instructions on enabling 2FA. If you are logging in with a third party provider, consider adding 2FA through that provider.
 
 ## Navigate the Cloud Manager
 
@@ -103,8 +103,8 @@ In addition to [Compute Instances](#create-your-first-compute-instance), Linode 
 
 Linode services are billed to your primary payment method at the end of each month (or when your accrued charges reach your billing limit). This means you can continuously add, modify, and remove services throughout the month and, after the month is over, you receive an invoice for *the hourly usage of each service **up to the monthly cap***. In affect, billing is *post-paid* and *pro-rated*. See the below resources for more billing information and detailed hourly and monthly pricing.
 
-- [Billing and Payments](/docs/guides/understanding-billing-and-payments/)
-- [Managing Billing in the Cloud Manager](/docs/guides/manage-billing-in-cloud-manager/)
+- [Billing and Payments](/docs/products/platform/billing/)
+- [Managing Billing in the Cloud Manager](/docs/products/platform/billing/guides/)
 - [Linode Price List](https://www.linode.com/pricing/)
 
 Keep in mind that charges will accrue for any active service, even if it is powered off or otherwise not in use. This includes Compute Instances that have been powered off as well as any service you might have added to the account but are not using.

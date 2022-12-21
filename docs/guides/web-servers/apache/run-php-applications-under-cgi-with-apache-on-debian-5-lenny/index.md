@@ -13,7 +13,7 @@ modified: 2014-01-13
 modified_by:
   name: Linode
 published: 2009-12-18
-title: 'Run PHP Applications under CGI with Apache on Debian 5 (Lenny)'
+title: 'Run PHP Applications under CGI with Apache on Debian 5'
 relations:
     platform:
         key: php-cgi-apache
@@ -49,7 +49,7 @@ If you have not already installed the Apache HTTP server, issue the following co
 
     apt-get install apache2
 
-You can now [configure virtual hosting](/docs/web-servers/apache/apache-2-web-server-on-debian-5-lenny/#configure-name-based-virtual-hosts) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
+You can now [configure virtual hosting](/docs/guides/apache-2-web-server-on-debian-5-lenny/#configure-name-based-virtual-hosts) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
 
     apt-get install php5-cgi
 
