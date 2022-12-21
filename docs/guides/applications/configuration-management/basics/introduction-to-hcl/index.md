@@ -163,8 +163,8 @@ variable "token" {
 }
 
 variable "region" {
-    description: "This is the location where the Linode instance is deployed."
-    default = "us-east"
+    description = "This is the location where the Linode instance is deployed."
+    default     = "us-east"
 }
 {{</ file >}}
 
