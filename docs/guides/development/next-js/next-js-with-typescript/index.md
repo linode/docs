@@ -80,9 +80,9 @@ For running the starter script and managing application dependencies, this guide
 
 1. Follow our guide on [How to Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/). NPM handles the project's dependencies and runs the Next.js frontend.
 
-1. Run the `create-next-app` script with `npx` (included with NPM), and add the `--typescript` flag to initialize the project with TypeScript instead of JavaScript. The example below also names the new project — `example-app` — in the same command.
+1. Run the `create-next-app` script with `npx` (included with NPM), and add the `--typescript` or `--ts` flag to initialize the project with TypeScript instead of JavaScript. The example below also names the new project — `example-app` — in the same command.
 
-    The commands below create the new project using the project name in the current user's home directory.
+    The commands below ask whether you want to create a TypeScript project. Click **Yes** to install the necessary types/dependencies and create the new project using the project name in the current user's home directory.
 
         cd ~/
         npx create-next-app --typescript example-app
