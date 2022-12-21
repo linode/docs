@@ -71,9 +71,9 @@ You will be able to create Kubernetes clusters in any Linode data center from th
 
 You will also need to generate an API token and prepare a domain zone:
 
-1.  Rancher will need a Linode APIv4 token with read and write privileges from your Linode account in order to create your cluster. Review the instructions from the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) guide to get a token.
+1.  Rancher will need a Linode APIv4 token with read and write privileges from your Linode account in order to create your cluster. Review the instructions from the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) guide to get a token.
 
-1.  The [Set Up DNS](#set-up-dns-for-the-wordpress-app) section of this guide will assign an address to this guide's example app. In order to do so, you must already have a domain zone created in the Linode Cloud Manager. If you do not have a zone created, review the instructions from our [DNS Manager](/docs/guides/dns-manager/#create-and-manage-domains) guide.
+1.  The [Set Up DNS](#set-up-dns-for-the-wordpress-app) section of this guide will assign an address to this guide's example app. In order to do so, you must already have a domain zone created in the Linode Cloud Manager. If you do not have a zone created, review the instructions from our [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/) guide.
 
     {{< note >}}
 If you haven't purchased a domain name, then you can read along with the DNS section of this guide without implementing it in your own cluster.
@@ -167,7 +167,7 @@ Once Rancher been installed and the cluster driver has been activated, a new LKE
 
    ![Cluster Name Token](cluster-name-token.png "Cluster Name Token")
 
-1. Select the `Region` where the new cluster to be hosted, the `Kubernetes Version` the cluster will use, and any `tags` you would like to apply, along with any Cloud Manager [tags](/docs/quick-answers/linode-platform/tags-and-groups/) you’d like to apply to your nodes. Click on the `Proceed to Node Pool Selection` button to proceed.
+1. Select the `Region` where the new cluster to be hosted, the `Kubernetes Version` the cluster will use, and any `tags` you would like to apply, along with any Cloud Manager [tags](/docs/guides/tags-and-groups/) you’d like to apply to your nodes. Click on the `Proceed to Node Pool Selection` button to proceed.
 
     ![Tags Regions and Version](tags-region-version-lke.png "Tags Region and Version")
 
@@ -208,7 +208,7 @@ The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Cont
 ### Add a Node Template
 
 {{< note >}}
-Nodes created using Rancher are dependent on the [Network Helper](/docs/platform/network-helper/) configuration option being enabled. Due to this, all nodes created using Rancher will have the Network Helper service enabled by default regardless of account wide settings, and disabling the service manually is not recommended.
+Nodes created using Rancher are dependent on the [Network Helper](/docs/guides/network-helper/) configuration option being enabled. Due to this, all nodes created using Rancher will have the Network Helper service enabled by default regardless of account wide settings, and disabling the service manually is not recommended.
 {{< /note >}}
 
 
@@ -231,7 +231,7 @@ Before provisioning your cluster, you will need to add the node template it will
 
 1. Click on the **Create** button.
 
-1. Another dialog will appear which accepts options for your new node template. Under the **Instance Options** section, set the preferred region, instance type, and Linux image for your nodes, along with any Cloud Manager [tags](/docs/quick-answers/linode-platform/tags-and-groups/) you’d like to apply to your nodes.
+1. Another dialog will appear which accepts options for your new node template. Under the **Instance Options** section, set the preferred region, instance type, and Linux image for your nodes, along with any Cloud Manager [tags](/docs/guides/tags-and-groups/) you’d like to apply to your nodes.
 
     ![Rancher Add Node Template form - Linode options](add-node-template-linode-options.png "The Linode options in the Add Node Template form")
 
@@ -344,7 +344,7 @@ Instead, compare your YAML file with the completed example to ensure you have in
     ![Linode Cloud Manager - new cluster nodes](cloud-manager-linodes-provisioning.png "New cluster nodes listed in Linode Cloud Manager")
 
     {{< note >}}
-If your nodes do not not appear in the Linode Cloud Manager as expected, then you may have run into a limit on the number of resources allowed on your Linode account. Contact [Linode Support](/docs/platform/billing-and-support/support/) if you believe this may be the case.
+If your nodes do not appear in the Linode Cloud Manager as expected, then you may have run into a limit on the number of resources allowed on your Linode account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
 {{< /note >}}
 
 ## Explore the New Cluster

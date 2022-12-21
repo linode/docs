@@ -10,7 +10,7 @@ published: 2020-03-13
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying MySQL/MariaDB through the Linode Marketplace"
+title: "Deploy MySQL/MariaDB through the Linode Marketplace"
 external_resources:
 - '[MySQL 5.6 Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/index.html)'
 - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
@@ -152,4 +152,4 @@ The standard tool for interacting with MySQL is the `mysql` client which install
 
 For more on MySQL/MariaDB, checkout the following guides:
 
-- [MariaDB Clusters with Galera](/docs/databases/mariadb/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)
+- [MariaDB Clusters with Galera](/docs/guides/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)

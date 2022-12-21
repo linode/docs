@@ -9,7 +9,7 @@ published: 2019-03-25
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Rust through the Linode Marketplace"
+title: "Deploy Rust through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -34,7 +34,7 @@ Hosting your own Rust server allows you to customize settings and curate the num
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended minimum plan:** 8GB Dedicated CPU or Shared Compute Instance
 
 ### Rust Options

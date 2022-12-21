@@ -21,7 +21,7 @@ modified_by:
 
 ## Verifying the NGINX Installation
 
-NGINX must be installed and configured before Certbot can be used. The following instructions configure the minimal NGINX environment required to install and use Certbot. If NGINX is already installed, skip ahead to the [Installing Certbot](#installing-certbot) section. For more information about NGINX, see the Linode [NGINX configuration guide](/docs/web-servers/nginx/how-to-configure-nginx).
+NGINX must be installed and configured before Certbot can be used. The following instructions configure the minimal NGINX environment required to install and use Certbot. If NGINX is already installed, skip ahead to the [Installing Certbot](#installing-certbot) section. For more information about NGINX, see the Linode [NGINX configuration guide](/docs/guides/how-to-configure-nginx/).
 
 1.  **Confirm that NGINX is installed and running** by running the following command on your server:
 

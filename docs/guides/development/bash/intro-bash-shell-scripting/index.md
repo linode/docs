@@ -38,7 +38,7 @@ Among other things, you will learn about:
 - [How to work with files and directories](#working-with-files-and-directories)
 
 {{< note >}}
-This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Bash Basics
@@ -87,7 +87,7 @@ After that the file permissions of `hello_world.sh` will be similar to the follo
 
 {{< note >}}
 You will need to give all bash scripts of this guide the execute file permission
-in order to be able to execute them as regular UNIX commands. For more information on file permissions, see our [Linux Users and Groups Guide](/docs/tools-reference/linux-users-and-groups/).
+in order to be able to execute them as regular UNIX commands. For more information on file permissions, see our [Linux Users and Groups Guide](/docs/guides/linux-users-and-groups/).
 {{< /note >}}
 
 Executing `hello_world.sh` will generate the following output:

@@ -27,7 +27,7 @@ Nginx is a lightweight and high performance web server designed with the purpose
 
 Although nginx is a relatively new entrant in the web server field, it has achieved a great deal of respect for its agility and efficiency, particularly in high profile situations. Many very high traffic and profile websites have begun to use nginx for its efficiency. At the same time, administrators of smaller systems have found nginx ideal for their systems for its slim memory footprint.
 
-Before we begin installing the nginx web server, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before we begin installing the nginx web server, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Set the Hostname
 
@@ -117,7 +117,7 @@ You can now start, stop, and restart nginx just like any other server daemon. Fo
 
     /etc/init.d/nginx start
 
-Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/docs/web-servers/nginx/websites-with-nginx-on-debian-6-squeeze/) for more information about using and setting up the web server.
+Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/docs/guides/websites-with-nginx-on-debian-6-squeeze/) for more information about using and setting up the web server.
 
 ## More Information
 

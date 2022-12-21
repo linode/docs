@@ -29,11 +29,11 @@ If the amount of data on your disk is much less than the size of the disk, then 
 
 This guide shows you how to download a Linode's disk image over SSH to a separate receiving system, like a personal computer, by executing commands on both the **Origin Linode** as the origin of your disk image, and the **Receiving System** which will receive a copy of this image. The terms "origin Linode" and "receiving system" are used throughout this guide to describe these two separate environments.
 
-While this guide has been written to accommodate computers running Linux as their operating system, if the receiving system is instead running Microsoft Windows, there are multiple SSH solutions available such as [Cygwin and PuTTY](/docs/guides/using-ssh-on-windows) which can alternatively be used to complete this process.
+While this guide has been written to accommodate computers running Linux as their operating system, if the receiving system is instead running Microsoft Windows, there are multiple SSH solutions available such as [Cygwin and PuTTY](/docs/guides/connect-to-server-over-ssh-on-windows/) which can alternatively be used to complete this process.
 
 ### Boot Linode into Rescue Mode
 
-1.  Reboot Your origin Linode into [Rescue Mode](/docs/guides/rescue-and-rebuild/#boot-linode-into-rescue-mode) and connect to it using [Lish](/docs/guides/using-the-lish-console/).
+1.  Reboot Your origin Linode into [Rescue Mode](/docs/guides/rescue-and-rebuild/#boot-linode-into-rescue-mode) and connect to it using [Lish](/docs/guides/lish/).
 
 1.  Set a root password for the rescue system and start the SSH server:
 

@@ -7,10 +7,12 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    product_description: "Managed cloud-based load balancing service offering high availability and horizontal scaling to any application."
+    product_description: "Managed cloud-based load balancing service that provides high availability and horizontal scaling to any application."
+modified: 2022-08-24
+aliases: ['/platform/nodebalancer/','/nodebalancers/','/guides/platform/nodebalancer/']
 ---
 
-**NodeBalancers** are managed *load balancers as a service (LBaaS)*, making load balancing accessible and easy to configure on Linode's platform. They intelligently distribute incoming requests to multiple backend Compute Instances, so that there's no single point of failure. This enables high availability, horizontal scaling, and A/B testing on any application hosted with Linode.
+**NodeBalancers** are managed *load balancers as a service (LBaaS)*, making load balancing accessible and easy to configure on the Linode Platform. They intelligently distribute incoming requests to multiple backend Compute Instances, so that there's no single point of failure. This enables high availability, horizontal scaling, and A/B testing on any application hosted with Linode.
 
 ## High Availability
 

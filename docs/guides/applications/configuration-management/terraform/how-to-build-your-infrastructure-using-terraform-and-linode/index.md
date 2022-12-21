@@ -37,7 +37,7 @@ The configurations and commands used in this guide results in multiple Linodes b
 When following this guide, your Linux user may need sudo privileges in order to install supplementary software packages.
 {{</ note >}}
 
--   You need a personal access token for Linode's [v4 API](/docs/api/) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) to get a token.
+-   You need a personal access token for Linode's [v4 API](/docs/api/) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
 
     {{< note >}}
 Any Personal Access Tokens generated from the previous Linode Manager are API v3 tokens and do not work with Terraform's Linode provider.
@@ -686,7 +686,7 @@ db_type = "g6-standard-8"
 }
 {{< /file >}}
 
-1.  The file structure for your module and for `client1` should now look as follows. This structure is not mandated by Terraform, but it is useful as as simple example:
+1.  The file structure for your module and for `client1` should now look as follows. This structure is not mandated by Terraform, but it is useful as simple example:
 
     {{< output >}}
 client1

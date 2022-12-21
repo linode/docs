@@ -35,18 +35,18 @@ This guide explains how to install the latest Magento release at the time of pub
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  Magento runs on a LAMP stack, and this guide assumes you have already installed and configured Apache. If you haven't, refer to our [Apache on CentOS 7](/docs/websites/apache/install-and-configure-apache-on-centos-7) guide. However, do not install MariaDB or PHP. We will explain how to install compatible versions of those packages in this guide.
+3.  Magento runs on a LAMP stack, and this guide assumes you have already installed and configured Apache. If you haven't, refer to our [Apache on CentOS 7](/docs/guides/install-and-configure-apache-on-centos-7/) guide. However, do not install MariaDB or PHP. We will explain how to install compatible versions of those packages in this guide.
 
 3.  Update your system:
 
         sudo yum update
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prepare Your Server for Magento
@@ -63,7 +63,7 @@ Since Magento will be served by Apache, some additional configuration is needed 
 
     If this shows version 2.2 or another version, upgrade your packages before proceeding.
 
-2.  Modify the virtual host file for your Magento site to resemble the example below. If you have not previously created a virtual host file, do so now and refer to our [Apache on CentOS 7](/docs/websites/apache/install-and-configure-apache-on-centos-7) guide for additional guidance.
+2.  Modify the virtual host file for your Magento site to resemble the example below. If you have not previously created a virtual host file, do so now and refer to our [Apache on CentOS 7](/docs/guides/install-and-configure-apache-on-centos-7/) guide for additional guidance.
 
     {{< file "/etc/httpd/conf.d/vhost.conf" aconf >}}
 <Directory /var/www/html/example.com/public_html>
@@ -216,7 +216,7 @@ When choosing a version, refer to Magento's [prerequisites](http://devdocs.magen
 
         scp /path/on/local/Magento-CE-2.*.tar.gz user@yourhost:~/
 
-    Alternatively, you can use an FTP client, like [Filezilla](/docs/tools-reference/file-transfer/filezilla), if you're running Windows or are otherwise unable to use a command-line tool like `scp`.
+    Alternatively, you can use an FTP client, like [Filezilla](/docs/guides/filezilla/), if you're running Windows or are otherwise unable to use a command-line tool like `scp`.
 
 3.  Log into your Linode via SSH as your standard user account. Navigate to the document root you specified in your virtual host file:
 
@@ -253,7 +253,7 @@ When choosing a version, refer to Magento's [prerequisites](http://devdocs.magen
     This allows your `magento` user (and members of the `apache` group) to write to the various files they need to run and serve Magento on your site.
 
     {{< note >}}
-The first two commands may take some time to run because they are matching various files and directories in your installation folder. It may appear that the system is inactive, but be sure to allow a couple minutes before cancelling the operations. You can always start a new SSH connection, or run these commands in a [screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session, and use tools like [htop & iotop](/docs/uptime/monitoring/top-htop-iotop#additional-top-like-programs) to monitor progress.
+The first two commands may take some time to run because they are matching various files and directories in your installation folder. It may appear that the system is inactive, but be sure to allow a couple minutes before cancelling the operations. You can always start a new SSH connection, or run these commands in a [screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session, and use tools like [htop & iotop](/docs/guides/top-htop-iotop/#additional-top-like-programs) to monitor progress.
 {{< /note >}}
 
 4.  Restart Apache:
@@ -302,7 +302,7 @@ The dashboard is functional at this point, but you've still got work to do befor
 
 ### Set Cron Jobs
 
-Magento relies on [cron](/docs/tools-reference/tools/schedule-tasks-with-cron) to perform tasks like continuously reindexing your site and generating emails and newsletters. If you logged into your admin panel, you may have noticed an error message saying that cron jobs needed to be set. Fortunately, the cron jobs Magento uses for a base installation are easy to configure.
+Magento relies on [cron](/docs/guides/schedule-tasks-with-cron/) to perform tasks like continuously reindexing your site and generating emails and newsletters. If you logged into your admin panel, you may have noticed an error message saying that cron jobs needed to be set. Fortunately, the cron jobs Magento uses for a base installation are easy to configure.
 
 1.  Open the crontab for your `magento` user. Perform this step as a user with `sudo` privileges:
 
@@ -348,19 +348,19 @@ At a minimum, you should restrict write access to the `app/etc` directory before
 Depending on whether you install custom themes or extensions, you may need to do additional configuration. This will vary depending on what you have installed. Once you're ready to deploy your site into production mode, refer to [Magento's ownership and permissions guide](http://devdocs.magento.com/guides/v2.1/config-guide/prod/prod_file-sys-perms.html) for a more comprehensive set of recommendations.
 
 {{< note >}}
-If you need to make additional configuration changes in the future, you'll need to manually add write permissions again before you can do so. For more information, see our guide on [Linux users and groups](/docs/tools-reference/linux-users-and-groups).
+If you need to make additional configuration changes in the future, you'll need to manually add write permissions again before you can do so. For more information, see our guide on [Linux users and groups](/docs/guides/linux-users-and-groups/).
 {{< /note >}}
 
 ### Secure your Site with SSL
 
 Secure sockets layer (SSL) certificates are a vital part of e-commerce. They enable encrypted transmission of sensitive data, such as credit card numbers, that can be verified and trusted by clients. In fact, some payment vendors such as PayPal, require SSL certificates to be used for customer transactions.
 
-For instructions on how to use SSL certificates in your store, see our guides on [obtaining a commercially signed SSL certificate](/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora) and [using SSL certificates with Apache](/docs/security/ssl/ssl-apache2-centos).
+For instructions on how to use SSL certificates in your store, see our guides on [obtaining a commercially signed SSL certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) and [using SSL certificates with Apache](/docs/guides/ssl-apache2-centos/).
 
 {{< note >}}
 Many payment vendors that require SSL do not support self-signed certificates. Depending on how you handle payments, it is likely you will need to purchase a commercially signed certificate.
 
-When you [configure Apache to use the SSL certificate](/docs/security/ssl/ssl-apache2-centos#configure-apache-to-use-the-ssl-certificate), if you installed Magento in a subdirectory of your site and only want that section to be encrypted, make sure to modify your `<VirtualHost *:443>` block to match.
+When you [configure Apache to use the SSL certificate](/docs/guides/ssl-apache2-centos/#configure-apache-to-use-the-ssl-certificate), if you installed Magento in a subdirectory of your site and only want that section to be encrypted, make sure to modify your `<VirtualHost *:443>` block to match.
 {{< /note >}}
 
 Once you've installed your SSL certificate and configured Apache to serve your site securely, you'll need to configure Magento to use secure URLs.

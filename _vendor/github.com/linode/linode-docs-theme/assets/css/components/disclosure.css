@@ -1,0 +1,26 @@
+.disclosure {
+  @apply bg-selected border-gray-500;
+}
+
+.disclosure-content.closed {
+  max-height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  content: "";
+  position: relative;
+}
+
+.disclosure-content.closed:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  @apply bg-gradient-to-b from-transparent to-selected;
+}
+
+.disclosure-content.open {
+  height: auto;
+}

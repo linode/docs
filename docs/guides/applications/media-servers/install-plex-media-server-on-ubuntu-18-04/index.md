@@ -25,12 +25,12 @@ relations:
             - distribution: Ubuntu 18.04
 ---
 
-[Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from anywhere. This guide shows you how to set up the **Plex Media Server** on your Linode running Ubuntu 18.04 LTS, as well as how to connect to your media server from a [Plex client application](https://www.plex.tv/apps-devices/. A Plex media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+[Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from anywhere. This guide shows you how to set up the **Plex Media Server** on your Linode running Ubuntu 18.04 LTS, as well as how to connect to your media server from a [Plex client application](https://www.plex.tv/apps-devices/. A Plex media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
 ![Install Plex Media Server on Ubuntu 18.04](install-plex-media-server-on-ubuntu-18-04.png)
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites to Install Plex Media Server on Ubuntu 18.04

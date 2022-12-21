@@ -9,7 +9,7 @@ published: 2019-04-04
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying a Team Fortress 2 Server through the Linode Marketplace"
+title: "Deploy a Team Fortress 2 Server through the Linode Marketplace"
 contributor:
   name: Linode
 tags: ["linode platform","marketplace","cloud-manager"]
@@ -32,7 +32,7 @@ Setting up a personal game server puts you in control of the game modes and maps
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Debian 11
 - **Recommended minimum plan:** 4GB Dedicated CPU or Shared Compute Instance
 
 ### Team Fortress 2 Options

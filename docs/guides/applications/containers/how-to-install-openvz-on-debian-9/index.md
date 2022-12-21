@@ -69,19 +69,19 @@ If you intend to dedicate an entire Linode VPS to running OpenVZ and no other se
 
         mount /dev/sdc /vztemp
 
-### Remove the Metadata_csum Feature From Ext4 Volumes
+### Remove the Metadata Checksum Feature From Ext4 Volumes
 
-Before OpenVZ can be installed, the system must be configured for compatibility. Debian 9 supports a new checksum feature that is incompatible with custom OpenVZ kernels. Depending on your preference, you may choose to either remove metadata_csum from a mounted partition or reformat the affected partition to a compatible Ext4 volume. Choose either method and follow the instructions in the appropriate section below.
+Before OpenVZ can be installed, the system must be configured for compatibility. Debian 9 supports a new checksum feature that is incompatible with custom OpenVZ kernels. Depending on your preference, you may choose to either remove `metadata_csum` from a mounted partition or reformat the affected partition to a compatible Ext4 volume. Choose either method and follow the instructions in the appropriate section below.
 
 1. List available disk partitions.
 
         lsblk
 
-2. Check if "metadata_csum" is installed in any mounted disk partitions shown in Step 1 (not including the SWAP partition). Follow the format below for each partition, replacing `/dev/sda1` with the appropriate volume name. If the below command yields no output for mounted disk volumes, you may skip this section.
+2. Check if `metadata_csum` is installed in any mounted disk partitions shown in Step 1 (not including the SWAP partition). Follow the format below for each partition, replacing `/dev/sda1` with the appropriate volume name. If the below command yields no output for mounted disk volumes, you may skip this section.
 
         dumpe2fs -h /dev/sda1 2>/dev/null | grep -e metadata_csum
 
-### Remove Metadata_csum From Mounted Partitions
+### Remove Metadata Checksum From Mounted Partitions
 
 1. Issue the commands below to add code to the `fsck` file:
 
@@ -109,7 +109,7 @@ e2fsck -f $Volume
         chmod 755 /etc/initramfs-tools/scripts/local-premount/tune
         update-initramfs -u -k all
 
-4. Reboot your system and run the command below to verify that metadata_csum was disabled from all affected partitions. Again, replace "/dev/sda1" with the correct volume names.
+4. Reboot your system and run the command below to verify that `metadata_csum` was disabled from all affected partitions. Again, replace "/dev/sda1" with the correct volume names.
 
         dumpe2fs -h /dev/sda1 2>/dev/null | grep -e metadata_csum
 

@@ -6,10 +6,10 @@ description: "Deploy a Counter-Strike: Global Offensive server on Linode using M
 keywords: ['counter-strike','cs', 'go','marketplace']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-28
-modified: 2022-03-08
+modified: 2022-05-17
 modified_by:
   name: Linode
-title: "Deploying Counter-Strike Global Offensive through the Linode Marketplace"
+title: "Deploy Counter-Strike Global Offensive through the Linode Marketplace"
 external_resources:
 - '[List of CS:GO Cvar Commands to use with RCON](https://developer.valvesoftware.com/wiki/List_of_CS:GO_Cvars)'
 tags: ["linode platform","marketplace","cloud-manager"]
@@ -18,9 +18,9 @@ aliases: ['/platform/marketplace/deploying-cs-go-with-marketplace-apps/', '/plat
 
 {{< youtube aSivuBZxUgw >}}
 
-Counter-Strike: Global Offensive (CS:GO) is a fast-paced first person shooter. Teams compete against each other to complete objectives or to eliminate the opposing team.
+[Counter-Strike: Global Offensive](https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/) (CS:GO) is a fast-paced first person shooter. Teams compete against each other to complete objectives or to eliminate the opposing team. A competitive match requires two teams of five players, but hosting your own server offers you control over team size and server location, so you and your friends can play with low latency. Up to 64 players can be hosted on a single server.
 
-A competitive match requires two teams of five players, but hosting your own server offers you control over team size and server location, so you and your friends can play with low latency. Up to 64 players can be hosted on a single server.
+This Marketplace App deploys the CS:GO server software through [LinuxGSM](https://linuxgsm.com/). While no additional license is required to run the server, each client needs to have a license for the game.
 
 ## Deploying a Marketplace App
 
@@ -34,7 +34,7 @@ A competitive match requires two teams of five players, but hosting your own ser
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Debian 11, Ubuntu 22.04 LTS
 - **Recommended minimum plan:** 4GB Dedicated CPU Compute Instance
 
 ### CS:GO Options

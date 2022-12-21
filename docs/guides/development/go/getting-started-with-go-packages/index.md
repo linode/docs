@@ -31,7 +31,7 @@ Go packages allow developers to organize and reuse Go code in a simple and maint
 
 ## Before You Begin
 
-If you haven't installed Go on your server yet, follow the instructions from the [Install Go on Ubuntu](/docs/development/go/install-go-on-ubuntu/) guide before proceeding.
+If you haven't installed Go on your server yet, follow the instructions from the [Install Go on Ubuntu](/docs/guides/install-go-on-ubuntu/) guide before proceeding.
 
 If you prefer to experiment with Go without installing it first, you can run the examples found in this guide using the [Go Playground](https://play.golang.org).
 
@@ -41,7 +41,7 @@ Packages provide the capability to organize and reuse source code.
 
 ### Declaring a Package
 
-In a text editor, create a `hellogopher.go` file in your [GOPATH](/docs/development/go/install-go-on-ubuntu/#adjust-the-path-variable) and add the following content to create a simple "Hello world" program:
+In a text editor, create a `hellogopher.go` file in your [GOPATH](/docs/guides/install-go-on-ubuntu/#adjust-the-path-variable) and add the following content to create a simple "Hello world" program:
 
 {{< file "hellogopher.go" go >}}
 package main

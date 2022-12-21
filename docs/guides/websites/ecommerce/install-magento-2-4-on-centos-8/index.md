@@ -44,7 +44,7 @@ Although this guide covers installation of Magento 2.4, version 2.3 is still ava
 1. This guide uses the sample domain name of `example.com` and a Magento root directory of `/var/www/html/example.com/public_html`, along with default username and password variables such as `magentouser` and `magentopassword`. Substitute your own values when you encounter these variables throughout the guide.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Advantages/Drawbacks of Magento
@@ -157,7 +157,7 @@ Follow the instructions in the [How to Install a LAMP Stack on CentOS 8](/docs/g
 
 
     {{< note >}}
-Most payment processors and financial institutions do not recognise or accept self-signed certificates. Before putting your store into production, you must obtain a commercially-signed certificate. More information can be found in [the Linode guide about SSL certificates](/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora).
+Most payment processors and financial institutions do not recognise or accept self-signed certificates. Before putting your store into production, you must obtain a commercially-signed certificate. More information can be found in [the Linode guide about SSL certificates](/docs/guides/obtain-a-commercially-signed-tls-certificate/).
 {{< /note >}}
 
 4.  Configure the virtual host settings for your website on Apache. There are a variety of ways to structure these settings. One straightforward approach is to add them to the `/etc/httpd/conf.d/vhost.conf` file. Add the following contents to the file, replacing `example.com` with your own domain. The directory specified within the virtual host serves as your Magento root directory. Later on, you will install the Magento software from this location.
@@ -202,7 +202,7 @@ Most payment processors and financial institutions do not recognise or accept se
         sudo systemctl restart httpd.service
 
 {{< note >}}
-If you require more information on setting up Apache or configuring virtual hosts, consult Linode's [Apache on CentOS 8](/docs/web-servers/apache/how-to-install-apache-web-server-centos-8) guide.
+If you require more information on setting up Apache or configuring virtual hosts, consult Linode's [Apache on CentOS 8](/docs/guides/how-to-install-apache-web-server-centos-8/) guide.
 {{< /note >}}
 
 {{< note >}}
@@ -620,7 +620,7 @@ We recommend you disable the ability to display your storefront within a frame t
 
 ### SSL Certificates
 
-SSL certificates encrypt and verify sensitive financial and sales data. You should use them when setting up your storefront. A self-signed certificate (as discussed earlier) is sufficient to complete the Magento installation. However, your site requires a commercially-signed certificate in order to interact with most payment processors and to avoid warning messages when customers navigate to your site. More information is available in the Linode guides to [obtaining a commercially signed SSL certificate](/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora) and [using SSL certificates with Apache](/docs/security/ssl/ssl-apache2-centos).
+SSL certificates encrypt and verify sensitive financial and sales data. You should use them when setting up your storefront. A self-signed certificate (as discussed earlier) is sufficient to complete the Magento installation. However, your site requires a commercially-signed certificate in order to interact with most payment processors and to avoid warning messages when customers navigate to your site. More information is available in the Linode guides to [obtaining a commercially signed SSL certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) and [using SSL certificates with Apache](/docs/guides/ssl-apache2-centos/).
 
 The SSL and the HTTPS protocols are enabled on the Magento Admin page.
 

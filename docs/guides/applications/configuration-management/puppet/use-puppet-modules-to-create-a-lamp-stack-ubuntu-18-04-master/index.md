@@ -27,7 +27,7 @@ In this guide, you will create an Apache and a PHP module. A MySQL module will b
 
 ## Before You Begin
 
-Set up a Puppet Master (Ubuntu 18.04) and two Puppet agents (Ubuntu 18.04 and CentOS 7) by following the steps in the [Getting Started with Puppet - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup) guide.
+Set up a Puppet Master (Ubuntu 18.04) and two Puppet agents (Ubuntu 18.04 and CentOS 7) by following the steps in the [Getting Started with Puppet - Basic Installation and Setup](/docs/guides/getting-started-with-puppet-6-1-basic-installation-and-setup/) guide.
 
 ## Create the Apache Module
 
@@ -336,9 +336,9 @@ include apache::vhosts
 
         cd /etc/puppetlabs/code/environments/production/manifests
 
-    If you are continuing this guide from the [Getting Started with Puppet - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/) guide, you should have a `site.pp` file already created. If not, create one now.
+    If you are continuing this guide from the [Getting Started with Puppet - Basic Installation and Setup](/docs/guides/getting-started-with-puppet-6-1-basic-installation-and-setup/) guide, you should have a `site.pp` file already created. If not, create one now.
 
-1.  Open `site.pp` and include the Apache module for each agent node. Also input the variables for the `adminemail` and `servername` parameters. If you followed the [Getting Started with Puppet - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/) guide, a single node configuration within `site.pp` will resemble the following:
+1.  Open `site.pp` and include the Apache module for each agent node. Also input the variables for the `adminemail` and `servername` parameters. If you followed the [Getting Started with Puppet - Basic Installation and Setup](/docs/guides/getting-started-with-puppet-6-1-basic-installation-and-setup/) guide, a single node configuration within `site.pp` will resemble the following:
 
     {{< file "/etc/puppetlabs/code/environments/production/manifests/site.pp" puppet >}}
 node 'ubuntuhost.example.com' {
@@ -385,7 +385,7 @@ node 'centoshost.example.com' {
 
     {{< /file >}}
 
-    If you did not follow the [Getting Started with Puppet - Basic Installation and Setup](/docs/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/) guide, then your `site.pp` file should resemble the following example:
+    If you did not follow the [Getting Started with Puppet - Basic Installation and Setup](/docs/guides/getting-started-with-puppet-6-1-basic-installation-and-setup/) guide, then your `site.pp` file should resemble the following example:
 
     {{< file "/etc/puppetlabs/code/environments/production/manifests/site.pp" puppet >}}
 node 'ubupuppet.ip.linodeusercontent.com' {

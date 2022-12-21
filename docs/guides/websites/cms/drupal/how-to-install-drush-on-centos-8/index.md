@@ -38,15 +38,15 @@ Before installing Drush, ensure that you complete the following steps:
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Install and configure a [LAMP stack on CentOS 8](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/).
+1.  Install and configure a [LAMP stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Git & Composer
 
-The developers of Drush recommend installing Drush using [Composer](https://getcomposer.org/doc/00-intro.md), a PHP dependency manager. Since the Drush project is hosted on [GitHub](https://github.com/) and controlled with [Git](/docs/development/version-control/how-to-configure-git/), you will also need to install Git. In this section, you will install both dependencies.
+The developers of Drush recommend installing Drush using [Composer](https://getcomposer.org/doc/00-intro.md), a PHP dependency manager. Since the Drush project is hosted on [GitHub](https://github.com/) and controlled with [Git](/docs/guides/how-to-configure-git/), you will also need to install Git. In this section, you will install both dependencies.
 
 1.  Install Git:
 
@@ -72,7 +72,7 @@ Composer is designed to install PHP dependencies on a per-project basis. The ste
 
         sudo ln -s /usr/local/bin/composer /usr/bin/composer
 
-1.  Use Git to download - or [clone](/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/#clone-a-github-test-repository) - the [GitHub Drush project](https://github.com/drush-ops/drush) into a new directory, `/usr/local/src/drush`:
+1.  Use Git to download - or [clone](/docs/guides/how-to-install-git-and-clone-a-github-repository/#clone-a-github-test-repository) - the [GitHub Drush project](https://github.com/drush-ops/drush) into a new directory, `/usr/local/src/drush`:
 
         sudo git clone https://github.com/drush-ops/drush.git /usr/local/src/drush
 

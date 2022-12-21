@@ -28,7 +28,7 @@ This guide assumes you are comfortable with the *command-line interface* (CLI) o
 
 #### Docker Marketplace App
 
-You can quickly set up a secure, updated Linode with the Docker Marketplace App. For instructions, see our guide on [How to Deploy Docker with Marketplace Apps](/docs/guides/deploying-docker-with-marketplace-apps/). For the purposes of this guide, we recommend deploying the Docker Marketplace App with the [Docker Options](/docs/guides/deploying-docker-with-marketplace-apps/#docker-options):
+You can quickly set up a secure, updated Linode with the Docker Marketplace App. For instructions, see our guide on [How to Deploy Docker with Marketplace Apps](/docs/products/tools/marketplace/guides/docker/). For the purposes of this guide, we recommend deploying the Docker Marketplace App with the [Docker Options](/docs/products/tools/marketplace/guides/docker/#docker-options):
 
 - The limited sudo user to be created for the Linode
 - The password for the limited sudo user
@@ -37,9 +37,9 @@ You can quickly set up a secure, updated Linode with the Docker Marketplace App.
 
 #### Manual Installation
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for updating your Linode.
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for updating your Linode.
 
-1.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 1.  Install Docker on your Linode by following the steps in our guide on [How to Install and Use Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
 

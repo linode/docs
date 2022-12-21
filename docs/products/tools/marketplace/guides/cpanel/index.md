@@ -7,16 +7,20 @@ keywords: ['cpanel','whm','hosting','manager']
 tags: ["cpanel","linode platform","marketplace","cloud-manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-13
-modified: 2022-03-29
+modified: 2022-05-31
 modified_by:
   name: Linode
-title: "Deploying cPanel through the Linode Marketplace"
+title: "Deploy cPanel through the Linode Marketplace"
 external_resources:
 - '[WHM Feature Documentation](https://documentation.cpanel.net/display/78Docs/WHM+Features+List)'
 aliases: ['/platform/marketplace/how-to-deploy-cpanel-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-marketplace-apps/','/guides/cpanel-marketplace-app/']
 ---
 
 [cPanel](https://cpanel.net/products/) is a Linux-based server/website administration platform that streamlines publishing and managing websites. It is widely used by individual businesses, web development agencies, and hosting platforms. cPanel (and the included WHM interface) provides an easy and intuitive method for managing all aspects of website administration, including software installation, DNS, databases, email, and *much* more.
+
+{{< note >}}
+cPanel requires a valid license to use the software beyond the initial 15 day [free trial](https://cpanel.net/products/trial/) period. To purchase a license, visit [cPanel’s website](https://cpanel.net/pricing/) and select a plan that fits your needs. Licenses are not available directly through Linode.
+{{</ note >}}
 
 ## Deploying a Marketplace App
 
@@ -30,7 +34,7 @@ aliases: ['/platform/marketplace/how-to-deploy-cpanel-with-marketplace-apps/', '
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7
+- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** 2GB Dedicated Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
 
 ## Getting Started after Deployment
@@ -51,7 +55,7 @@ WHM is the core interface for managing your server and all websites (also called
 
 1. On the same page, you must also enter in the nameservers for this server. Nameservers are the underlying servers of the DNS system that map domain names to IP addresses. Managing DNS through cPanel allows you to quickly add sites, configure subdomains, set up email, and more without needing to manually update DNS records. For this step, make sure you have a registered domain name.
 
-    1. Within the nameservers for your domain name, create two [*A records*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa). The *hostname* / *name* field should be *ns1* (for the first record) and *ns2* (for the second). The IP address should be the IPv4 address of your new Compute Instance. If you do not have a nameserver for your registered domain, consider using Linode's [DNS Manager](/docs/guides/dns-manager/).
+    1. Within the nameservers for your domain name, create two [*A records*](/docs/guides/dns-overview/#a-and-aaaa). The *hostname* / *name* field should be *ns1* (for the first record) and *ns2* (for the second). The IP address should be the IPv4 address of your new Compute Instance. If you do not have a nameserver for your registered domain, consider using Linode's [DNS Manager](/docs/products/networking/dns-manager/).
 
     1. Within the cPanel form, enter the following values into the nameserver fields. Replace *example.com* with the domain name you are using.
 

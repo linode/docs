@@ -14,7 +14,7 @@
       Updated
     {{ end }}
     {{ $authorLink := partial "funcs/get-author-link.html" . }}
-    <time datetime="{{ .Lastmod }}"
+    <time datetime="{{ .Lastmod.Format site.Params.time_format_iso8601 }}"
       >{{ .Lastmod.Format site.Params.time_format_default }}</time
     >{{ with $authorLink }}, by {{ $authorLink }}{{ end }}
   </span>

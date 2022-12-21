@@ -52,7 +52,7 @@ This guide does not cover integrating FastAPI with a database. FastAPI uses an i
 FastAPI requires the following items to be installed on your system:
 
 - Python 3.6+  and [pip](https://pypi.org/project/pip/)
-- [Gunicorn](https://www.linode.com/docs/guides/flask-and-gunicorn-on-ubuntu/#install-and-configure-gunicorn) or [Hypercorn](https://pypi.org/project/Hypercorn/). These tools are used as the web server gateway for your API.
+- [Gunicorn](/docs/guides/flask-and-gunicorn-on-ubuntu/#install-and-configure-gunicorn) or [Hypercorn](https://pypi.org/project/Hypercorn/). These tools are used as the web server gateway for your API.
 
 ### Install FastAPI and Hypercorn
 

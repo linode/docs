@@ -36,10 +36,10 @@ In this guide, you'll install AskBot and deploy with **NGINX** as a web server, 
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-4.  A Fully-Qualified Domain Name configured to point to your Linode. You can learn how to point domain names to Linode by following the [DNS Manager Overview](/docs/networking/dns/dns-manager-overview/#add-records) guide.
+4.  A Fully-Qualified Domain Name configured to point to your Linode. You can learn how to point domain names to Linode by following the [DNS Manager > Get Started](/docs/products/networking/dns-manager/get-started/) guide.
 
 {{< note >}}
-Throughout this guide, replace `example_user` with a non-root user with `sudo` access. If you’re not familiar with Linux user permissions and the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+Throughout this guide, replace `example_user` with a non-root user with `sudo` access. If you’re not familiar with Linux user permissions and the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Dependencies and Create a Database
@@ -166,7 +166,7 @@ WantedBy=multi-user.target
         sudo systemctl daemon-reload
         sudo systemctl restart nginx
 
-5.  Use [Let's Encrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) to obtain an SSL certificate for your domain:
+5.  Use [Let's Encrypt](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/) to obtain an SSL certificate for your domain:
 
         sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 

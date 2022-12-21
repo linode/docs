@@ -10,7 +10,7 @@ published: 2020-03-11
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying MongoDB through the Linode Marketplace"
+title: "Deploy MongoDB through the Linode Marketplace"
 image: MongoDB_oneclickapps.png
 contributor:
   name: Linode
@@ -56,7 +56,7 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 
 After MongoDB has finished deploying, you can access and administer it directly from the console.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
 
 1.  Launch the [mongo shell](https://docs.mongodb.com/v4.4/mongo/) by running the following command. When prompted, enter the admin user password you set when creating this instance.
 
@@ -96,5 +96,5 @@ For more information on access control and user management, as well as other tip
 
 For more on MongoDB, checkout the following guides:
 
-- [Creating a MongoDB Replica Set](/docs/databases/mongodb/create-a-mongodb-replica-set/)
-- [Building Database Clusters with MongoDB](/docs/databases/mongodb/build-database-clusters-with-mongodb/)
+- [Creating a MongoDB Replica Set](/docs/guides/create-a-mongodb-replica-set/)
+- [Building Database Clusters with MongoDB](/docs/guides/build-database-clusters-with-mongodb/)

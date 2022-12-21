@@ -54,7 +54,7 @@ Linode's Backup service is one part of a well rounded backup strategy. On-site b
 
 - **Disks are backed up, but not Linode-specific settings such as those stored within Configuration Profiles.**
 
-- **Disks must be unencrypted and able to be mounted.** The Backup service is not compatible with full disk encryption or changes that prevent us from mounting the disk as a file system, such as creating partitions. This is because our service operates at the file level, not at the block level.
+- **Disks must be unencrypted and able to be mounted.** The Backup service is not compatible with full disk encryption or changes that prevent us from mounting the disk as a file system, such as creating partitions. This is because our service operates at the file level, not at the block level. Also, the disk must be formatted and an EXT3 or EXT4 file system should be assigned to it.
 
 - All disks will be restored as an ext4 file system and their UUIDs will be different than the original disks.
 
@@ -66,6 +66,6 @@ The percentage of customers who may run into this limitation is low. If you are 
 
 - Files that have been modified but have the same size and modify time are not be considered "changed" during a subsequent backup. ACLs and extended attributes are *not* tracked.
 
-- The Backup Service uses a snapshot of your disks to take consistent backups while your Linode is running. This method is very reliable, but can fail to properly back up the data files for database services like MySQL. If the snapshot occurs during a transaction, the database's files may be backed up in an unclean state. We recommend scheduling routine dumps of your database to a file on the filesystem. The resulting file is then be backed up, allowing you to restore the contents of the database if you need to restore from a backup.
+- The Backup Service uses a snapshot of your disks to take consistent backups while your Linode is running. This method is very reliable, but can fail to properly back up the data files for database services like MySQL. If the snapshot occurs during a transaction, the database's files may be backed up in an unclean state. We recommend scheduling routine dumps of your database to a file on the filesystem. The resulting file is then included in the daily backup, allowing you to restore the contents of the database if you need to restore from a backup.
 
 -  **Volumes attached to a Compute Instance are not backed up as part of the Backup service**.

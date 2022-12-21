@@ -13,7 +13,7 @@ published: 2017-11-06
 modified: 2019-02-01
 modified_by:
   name: Linode
-title: 'How to Develop and Deploy Your Applications Using Wercker'
+title: 'How to Develop and Deploy Applications Using Wercker'
 contributor:
   name: Damaso Sanoja
 external_resources:
@@ -31,7 +31,7 @@ This guide will use three example [Go](https://golang.org/) apps to demonstrate 
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/getting-started) guide to create a Linode. The commands in this guide are written for Ubuntu 16.04, but should also work with other distributions.
+1.  Complete the [Getting Started](/docs/guides/getting-started/) guide to create a Linode. The commands in this guide are written for Ubuntu 16.04, but should also work with other distributions.
 
 2.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` wherever possible.
 
@@ -39,7 +39,7 @@ This guide will use three example [Go](https://golang.org/) apps to demonstrate 
 
         sudo apt update && sudo apt upgrade
 
-4.  This guide requires Docker installed on your Linode. See our [How to Install Docker and Pull Images for Container Deployment](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment) guide for more information.
+4.  This guide requires Docker installed on your Linode. See our [How to Install Docker and Pull Images for Container Deployment](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) guide for more information.
 
 5.  Create a GitHub or similar account. Modify the commands to match your chosen git variant.
 
@@ -218,7 +218,7 @@ This is one simple way to have a "current" application running all the time. Rem
 
 ### Getting-Started-golang - Example with Wercker CLI
 
-This last example introduces the **Wercker CLI**. This tool requires that Docker be installed on your local machine. You can use the same guide as for your Linode in the [Pull Images for Container Deployment](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment) guide.
+This last example introduces the **Wercker CLI**. This tool requires that Docker be installed on your local machine. You can use the same guide as for your Linode in the [Pull Images for Container Deployment](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) guide.
 
 1.  Install Docker Machine:
 

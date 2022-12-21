@@ -10,7 +10,7 @@ published: 2021-03-31
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Peppermint through the Linode Marketplace"
+title: "Deploy Peppermint through the Linode Marketplace"
 external_resources:
 - "[Peppermint Github](https://github.com/Peppermint-Lab/Peppermint/blob/master/README.md)"
 - "[Peppermint Documentation](https://docs.peppermint.sh/)"
@@ -46,7 +46,7 @@ After Peppermint has finished installing, you can access your Peppermint server 
 
 ![Peppermint login screen](peppermint.png)
 
-The default credentials to login to your Peppermint Peppermint Ticket Management Panel are:
+The default credentials to login to your Peppermint Ticket Management Panel are:
 
     email: admin@admin.com
     password: 1234

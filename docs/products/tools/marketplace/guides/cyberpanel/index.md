@@ -11,13 +11,13 @@ modified: 2022-03-08
 image: DeployCyberPanel_marketplaceapps.png
 modified_by:
   name: Linode
-title: "Deploying CyberPanel through the Linode Marketplace"
+title: "Deploy CyberPanel through the Linode Marketplace"
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
 aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel-marketplace-app']
 ---
 
-CyberPanel is a next-generation hosting control panel, which provides a friendly user interface. The CyberPanel app provides a One-Click installer for OpenLiteSpeed, LSCache, WordPress, Prestashop, Joomla, Magento, and Git. It also automates the initial setup for components like Mail service and DNS, to reduce the time it takes to get set up for hosting.
+[CyberPanel](https://cyberpanel.net/) is a next-generation hosting control panel, which provides a friendly user interface. The CyberPanel app provides a One-Click installer for OpenLiteSpeed, LSCache, WordPress, Prestashop, Joomla, Magento, and Git. It also automates the initial setup for components like mail service and DNS to reduce the time it takes to get set up.
 
 ## Deploying a Marketplace App
 
@@ -31,18 +31,18 @@ CyberPanel is a next-generation hosting control panel, which provides a friendly
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 8, CentOS 7, Ubuntu 18.04, and Ubuntu 20.04
+- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used with CyberPanel.
 
 ## Getting Started after Deployment
 
 ### Access your CyberPanel App
 
-1.  When the installation completes, log into your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
+1.  When the installation completes, log into your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
 
          ssh root@192.0.2.0
 
-1.  You should see the CyberPanel welcome messsage when logging into the Linode. This will include instructions for accessing CyberPanel, phpMyAdmin, and Rainloop in your web browser. Replace `192.0.2.0` with your Linode's IP address.
+1.  You should see the CyberPanel welcome messsage when logging into the Linode. This will include instructions for accessing CyberPanel, phpMyAdmin, and RainLoop in your web browser. Replace `192.0.2.0` with your Linode's IP address.
 
     {{< output >}}
 Welcome to LiteSpeed One-Click CyberPanel Server.
@@ -53,7 +53,7 @@ CyberPanel One-Click Quickstart guide:
 In a web browser, you can view:
 * CyberPanel: https://192.0.2.0:8090
 * phpMyAdmin: https://192.0.2.0:8090/phpmyadmin
-* Rainloop:   https://192.0.2.0:8090/rainloop
+* RainLoop:   https://192.0.2.0:8090/rainloop
 
 On the server:
 * You can get the CyberPanel admin password with the following command:

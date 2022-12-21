@@ -56,7 +56,7 @@ You will be using Python both to create a model and to deploy the model to a Fla
 
         conda install keras tensorflow h5py pillow flask numpy
 
-If you would like to experiment with the model, you may want to use a Jupyter notebook. See our [Install a Jupyter Notebook Server](/docs/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/) guide for more details.
+If you would like to experiment with the model, you may want to use a Jupyter notebook. See our [Install a Jupyter Notebook Server](/docs/guides/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/) guide for more details.
 
 ## Prepare a Model
 
